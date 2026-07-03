@@ -22,7 +22,19 @@
 
 ## 📦 Installation
 
-### From Source (Developer Mode)
+> [!IMPORTANT]
+> This extension **requires a build step** before it can be loaded. The source files in `src/` are bundled by Vite into `dist/` — Chrome loads the built output, not the raw source.
+
+### Option A — Download pre-built zip (easiest, no Node.js needed)
+
+1. Go to the [**Actions tab**](https://github.com/Osamu2500/youtube-premium-extension/actions) on GitHub
+2. Click the latest **Build Extension** workflow run
+3. Scroll to **Artifacts** and download `youtube-premium-plus-<hash>.zip`
+4. Unzip it anywhere on your machine
+5. Open Chrome → `chrome://extensions/` → enable **Developer mode**
+6. Click **Load unpacked** → select the unzipped folder
+
+### Option B — Build from source (for developers)
 
 1. **Clone the repository**
 
@@ -31,16 +43,27 @@
    cd youtube-premium-extension
    ```
 
-2. **Load in Chrome**
-   - Open Chrome and navigate to `chrome://extensions/`
+2. **Install dependencies and build**
+
+   ```bash
+   npm install
+   npm run build
+   ```
+
+   > This generates `dist/content.js`, `dist/style.css`, and `dist/global-bar-external.js` which the manifest references.
+
+3. **Load in Chrome**
+   - Open Chrome → `chrome://extensions/`
    - Enable **Developer mode** (toggle in top-right corner)
    - Click **Load unpacked**
-   - Select the `youtube-premium-extension` folder
+   - Select the **root** `youtube-premium-extension/` folder (where `manifest.json` is)
 
-3. **Start Using**
-   - Navigate to [YouTube](https://youtube.com)
-   - Click the extension icon in the toolbar to access settings
-   - Customize your experience!
+4. **After editing source files**, always rebuild before reloading:
+
+   ```bash
+   npm run build
+   # then click the reload ↺ button in chrome://extensions/
+   ```
 
 ## 🎯 Quick Start
 
@@ -167,14 +190,19 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for technical details.
 
 ### Prerequisites
 
+- Node.js 18+ and npm
 - Google Chrome (or Chromium-based browser)
 - Basic understanding of Chrome Extension Manifest V3
 
 ### Making Changes
 
 1. Edit files in the `src/` directory
-2. Reload the extension in `chrome://extensions/`
-3. Test on YouTube
+2. **Run the build** — `npm run build`
+3. In Chrome → `chrome://extensions/` → click the **reload ↺** button
+4. Test on YouTube
+
+> [!TIP]
+> During active development, keep a terminal open and re-run `npm run build` after each change. There is no hot-reload — you must rebuild and reload the extension manually.
 
 ### Adding New Features
 
