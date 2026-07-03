@@ -1,5 +1,5 @@
-/**
- * Auto PiP — YouTube Premium Plus
+﻿/**
+ * Auto PiP — Spiral Tube
  * Enters Picture-in-Picture automatically when the user switches tabs,
  * and exits PiP when the user comes back.
  */

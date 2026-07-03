@@ -1,7 +1,7 @@
-import { DEFAULT_SETTINGS } from '../../shared/default-settings.js';
+﻿import { DEFAULT_SETTINGS } from '../../shared/default-settings.js';
 
 /**
- * Constants for YouTube Premium Plus
+ * Constants for Spiral Tube
  * Centralized configuration, selectors, and settings
  */
 window.YPP = window.YPP || {};
@@ -189,7 +189,7 @@ window.YPP.CONSTANTS = {
     // CSS CLASSES
     // =========================================================================
     CSS_CLASSES: {
-        THEME_ENABLED: 'yt-premium-plus-theme',
+        THEME_ENABLED: 'yt-spiral-tube-theme',
         HIDE_SHORTS: 'ypp-hide-shorts',
         HIDE_MIXES: 'ypp-hide-mixes',
         HIDE_EXPLORE_TOPICS: 'ypp-hide-explore-topics',

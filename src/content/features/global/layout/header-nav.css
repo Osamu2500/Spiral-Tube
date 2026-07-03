@@ -1,9 +1,9 @@
-/* ===================================================================================
+﻿/* ===================================================================================
    4. HEADER & NAVIGATION
    =================================================================================== */
 
 /* Header Container - Fixed Position */
-.yt-premium-plus-theme #masthead-container {
+.yt-spiral-tube-theme #masthead-container {
   position: fixed;
   top: 0;
   z-index: var(--ypp-z-header);
@@ -13,12 +13,12 @@
 }
 
 /* Push Page Content Down (64px header + 12px gap) */
-.yt-premium-plus-theme ytd-page-manager#page-manager {
+.yt-spiral-tube-theme ytd-page-manager#page-manager {
   margin-top: 76px;
 }
 
 /* Inner Masthead - The Floating Pill */
-.yt-premium-plus-theme ytd-masthead {
+.yt-spiral-tube-theme ytd-masthead {
   position: absolute;
   top: 4px;
   left: var(--ypp-header-margin);
@@ -31,7 +31,7 @@
 }
 
 /* The Visual Glass Container - Premium Frosted */
-.yt-premium-plus-theme ytd-masthead #container {
+.yt-spiral-tube-theme ytd-masthead #container {
   pointer-events: auto;
   background: linear-gradient(
     180deg,
@@ -58,7 +58,7 @@
   
 }
 
-.yt-premium-plus-theme ytd-masthead #container:hover {
+.yt-spiral-tube-theme ytd-masthead #container:hover {
   box-shadow:
     0 12px 48px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
@@ -70,14 +70,14 @@
   ) !important;
 }
 
-.yt-premium-plus-theme ytd-masthead #background {
+.yt-spiral-tube-theme ytd-masthead #background {
   display: none;
 }
 
 /* Search Bar Styling */
 
 /* Search Bar Styling - Premium Upgrade */
-.yt-premium-plus-theme ytd-searchbox {
+.yt-spiral-tube-theme ytd-searchbox {
   margin: 0 16px;
   height: 40px; /* Sleeker height */
   --ytd-searchbox-background: transparent !important;
@@ -86,7 +86,7 @@
   overflow: visible !important; /* Allow pop-out shadows */
 }
 
-.yt-premium-plus-theme ytd-searchbox #container {
+.yt-spiral-tube-theme ytd-searchbox #container {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -95,7 +95,7 @@
   overflow: visible !important;
 }
 
-.yt-premium-plus-theme ytd-searchbox #search-form {
+.yt-spiral-tube-theme ytd-searchbox #search-form {
   display: flex;
   height: 100%;
   max-width: 800px;
@@ -109,13 +109,13 @@
   overflow: visible !important; /* Changed from hidden so inner shadows can bleed if needed */
 }
 
-.yt-premium-plus-theme ytd-searchbox #search-form:focus-within {
+.yt-spiral-tube-theme ytd-searchbox #search-form:focus-within {
   background: rgba(0, 0, 0, 0.4) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
   box-shadow: inset 0 2px 6px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,255,255,0.05), 0 4px 16px rgba(0,0,0,0.2) !important;
 }
 
-.yt-premium-plus-theme ytd-searchbox input#search {
+.yt-spiral-tube-theme ytd-searchbox input#search {
   background: transparent !important;
   border: none !important;
   padding: 0 24px !important;
@@ -130,7 +130,7 @@
   outline: none !important;
 }
 
-.yt-premium-plus-theme ytd-searchbox #search-icon-legacy {
+.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy {
   background: transparent !important;
   border: none !important;
   width: 64px !important;
@@ -144,13 +144,13 @@
   border-radius: 0 20px 20px 0 !important;
 }
 
-.yt-premium-plus-theme ytd-searchbox #search-icon-legacy:hover {
+.yt-spiral-tube-theme ytd-searchbox #search-icon-legacy:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   color: #fff !important;
 }
 
 /* Voice Search Button */
-.yt-premium-plus-theme #voice-search-button {
+.yt-spiral-tube-theme #voice-search-button {
   background: rgba(0, 0, 0, 0.2) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -164,7 +164,7 @@
   transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
 }
 
-.yt-premium-plus-theme #voice-search-button:hover {
+.yt-spiral-tube-theme #voice-search-button:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   transform: translateY(-1px) scale(1.05) !important;
   box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
@@ -172,7 +172,7 @@
 }
 
 /* Center Section Alignment */
-.yt-premium-plus-theme #center.ytd-masthead {
+.yt-spiral-tube-theme #center.ytd-masthead {
   margin-left: 0;
   margin-right: 0;
   justify-content: flex-start;
@@ -182,7 +182,7 @@
 }
 
 /* TopBar Buttons (Notifications, Create, etc) */
-.yt-premium-plus-theme ytd-notification-topbar-button-renderer {
+.yt-spiral-tube-theme ytd-notification-topbar-button-renderer {
   border-radius: 14px !important; /* Premium Squircle */
   width: 40px !important;
   height: 40px !important;
@@ -197,7 +197,7 @@
   overflow: hidden !important;
 }
 
-.yt-premium-plus-theme ytd-notification-topbar-button-renderer:hover {
+.yt-spiral-tube-theme ytd-notification-topbar-button-renderer:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   transform: translateY(-1px) scale(1.05) !important;
   box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
@@ -205,7 +205,7 @@
 }
 
 /* Fix inner button of notification to be transparent/full size */
-.yt-premium-plus-theme ytd-notification-topbar-button-renderer #button {
+.yt-spiral-tube-theme ytd-notification-topbar-button-renderer #button {
   width: 100% !important;
   height: 100% !important;
   background: transparent !important;
@@ -219,7 +219,7 @@
 }
 
 /* Profile Avatar Outer Container */
-.yt-premium-plus-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img) {
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img) {
   border-radius: 14px !important; /* Premium Squircle */
   width: 40px !important;
   height: 40px !important;
@@ -234,13 +234,13 @@
   overflow: hidden !important;
   padding: 0 !important;
 }
-.yt-premium-plus-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):hover {
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):hover {
   transform: translateY(-1px) scale(1.05) !important;
   box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.1) !important;
 }
 
 /* Make inner profile button transparent and full size */
-.yt-premium-plus-theme #avatar-btn {
+.yt-spiral-tube-theme #avatar-btn {
   width: 100% !important;
   height: 100% !important;
   background: transparent !important;
@@ -251,8 +251,8 @@
 }
 
 /* Ensure Image Fills */
-.yt-premium-plus-theme #avatar-btn yt-img-shadow,
-.yt-premium-plus-theme #avatar-btn img {
+.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
+.yt-spiral-tube-theme #avatar-btn img {
   width: 100% !important;
   height: 100% !important;
   border-radius: 0 !important; /* Let container handle shape */

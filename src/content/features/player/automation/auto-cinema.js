@@ -1,5 +1,5 @@
-/**
- * Auto Cinema — YouTube Premium Plus
+﻿/**
+ * Auto Cinema — Spiral Tube
  * Automatically clicks the theater button whenever a watch page loads
  * to ensure the video expands.
  */

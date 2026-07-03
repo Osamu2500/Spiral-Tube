@@ -1,9 +1,9 @@
 {
     "manifest_version": 3,
-    "name": "YouTube Premium Plus",
+    "name": "Spiral Tube",
     "version": "2.3.0",
     "default_locale": "en",
-    "description": "Enhance YouTube UI and add features globally.",
+    "description": "Transform YouTube with 50+ features: glassmorphism themes, 600% volume booster with custom EQ, cinema filters, SponsorBlock integration, focus & zen modes, custom speed controller, ambient mode, screenshot tool, subscription groups, watch history analytics, and a redesigned glassmorphic popup UI.",
     "permissions": [
         "storage",
         "alarms",
@@ -12,21 +12,29 @@
         "contextMenus",
         "notifications"
     ],
+    "oauth2": {
+        "client_id": "REPLACE_WITH_YOUR_GOOGLE_CLOUD_CLIENT_ID.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/drive.appdata"
+        ]
+    },
     "host_permissions": [
         "*://www.youtube.com/*",
         "*://returnyoutubedislikeapi.com/*",
         "*://sponsor.ajay.app/*"
     ],
     "icons": {
-        "16": "src/assets/icon-128.png",
-        "48": "src/assets/icon-128.png",
+        "16": "src/assets/icon-16.png",
+        "32": "src/assets/icon-32.png",
+        "48": "src/assets/icon-48.png",
         "128": "src/assets/icon-128.png"
     },
     "action": {
         "default_popup": "src/popup/popup.html",
         "default_icon": {
-            "16": "src/assets/icon-128.png",
-            "48": "src/assets/icon-128.png",
+            "16": "src/assets/icon-16.png",
+            "32": "src/assets/icon-32.png",
+            "48": "src/assets/icon-48.png",
             "128": "src/assets/icon-128.png"
         }
     },
@@ -68,11 +76,10 @@
         {
             "resources": [
                 "src/assets/*",
-                "src/assets/icon.svg",
+                "src/assets/fonts/*",
                 "src/inject/*",
                 "src/content/themes/*.css",
-                "src/content/features/**/*.css",
-                "src/content/features/**/*.js"
+                "src/content/features/**/*.css"
             ],
             "matches": [
                 "*://www.youtube.com/*",

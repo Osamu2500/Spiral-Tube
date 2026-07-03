@@ -1,5 +1,5 @@
-
-html.yt-premium-plus-theme body:not(.cinematic-home) :is(
+﻿
+html.yt-spiral-tube-theme body:not(.cinematic-home) :is(
 ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer,
   ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer,
   ytd-grid-video-renderer, ytd-grid-channel-renderer,
@@ -32,28 +32,28 @@ body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer),
 body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-shared-post-renderer) {
   display: none !important;
 }
-body.yt-premium-plus-theme ytd-video-renderer ytd-menu-renderer,
-body.yt-premium-plus-theme ytd-playlist-renderer ytd-menu-renderer,
-body.yt-premium-plus-theme ytd-radio-renderer ytd-menu-renderer,
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-menu-renderer,
-body.yt-premium-plus-theme ytd-compact-video-renderer ytd-menu-renderer {
+body.yt-spiral-tube-theme ytd-video-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-playlist-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-radio-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-compact-video-renderer ytd-menu-renderer {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-body.yt-premium-plus-theme ytd-video-renderer:hover ytd-menu-renderer,
-body.yt-premium-plus-theme ytd-playlist-renderer:hover ytd-menu-renderer,
-body.yt-premium-plus-theme ytd-radio-renderer:hover ytd-menu-renderer,
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover ytd-menu-renderer,
-body.yt-premium-plus-theme ytd-compact-video-renderer:hover ytd-menu-renderer {
+body.yt-spiral-tube-theme ytd-video-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-playlist-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-radio-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover ytd-menu-renderer,
+body.yt-spiral-tube-theme ytd-compact-video-renderer:hover ytd-menu-renderer {
   opacity: 1;
 }
-body.yt-premium-plus-theme ytd-video-renderer ytd-menu-renderer yt-icon-button,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme ytd-video-renderer ytd-menu-renderer yt-icon-button,
+body.yt-spiral-tube-theme
   ytd-playlist-renderer
   ytd-menu-renderer
   yt-icon-button,
-body.yt-premium-plus-theme ytd-radio-renderer ytd-menu-renderer yt-icon-button,
-body.yt-premium-plus-theme:not(.cinematic-home) ytd-rich-item-renderer
+body.yt-spiral-tube-theme ytd-radio-renderer ytd-menu-renderer yt-icon-button,
+body.yt-spiral-tube-theme:not(.cinematic-home) ytd-rich-item-renderer
   ytd-menu-renderer
   yt-icon-button {
   width: 32px !important;
@@ -63,10 +63,10 @@ body.yt-premium-plus-theme:not(.cinematic-home) ytd-rich-item-renderer
   backdrop-filter: blur(4px);
   border-radius: 50% !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
   animation: ypp-fade-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
-body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
   display: grid !important;
   grid-template-columns: repeat(var(--ypp-active-columns, 4), 1fr) !important;
   gap: 24px 16px !important;
@@ -74,34 +74,34 @@ body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-
   max-width: none !important;
   padding: 0 !important;
 }
-body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-row {
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-row {
   display: contents !important;
 }
-body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-item-renderer {
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-item-renderer {
   width: 100% !important;
   max-width: none !important;
   min-width: auto !important;
   margin: 0 !important;
   flex: none !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-thumbnail {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-thumbnail {
   width: 100% !important;
   aspect-ratio: 16 / 9 !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer img {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   border-radius: var(--ypp-radius-md) !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #details {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #details {
   margin-top: 12px;
   display: flex !important;
   flex-direction: row !important;
   flex: 1 1 auto !important;
   width: 100% !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
   transition:
     transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.4s ease,
@@ -109,7 +109,7 @@ body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-
   will-change: transform, box-shadow, border-color;
   transform: translateZ(0);
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.4),
@@ -117,14 +117,14 @@ body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-
     var(--ypp-shadow-accent-glow);
   border-color: rgba(255, 255, 255, 0.15);
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn {
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn {
   opacity: 1;
 }
-body.yt-premium-plus-theme ytd-video-renderer #metadata-line,
-body.yt-premium-plus-theme ytd-playlist-renderer #metadata-line,
-body.yt-premium-plus-theme ytd-radio-renderer #metadata-line,
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #metadata-line,
-body.yt-premium-plus-theme ytd-compact-video-renderer #metadata-line {
+body.yt-spiral-tube-theme ytd-video-renderer #metadata-line,
+body.yt-spiral-tube-theme ytd-playlist-renderer #metadata-line,
+body.yt-spiral-tube-theme ytd-radio-renderer #metadata-line,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #metadata-line,
+body.yt-spiral-tube-theme ytd-compact-video-renderer #metadata-line {
   font-size: 12px !important;
   font-weight: 400 !important;
   color: rgba(255, 255, 255, 0.4) !important;
@@ -132,30 +132,30 @@ body.yt-premium-plus-theme ytd-compact-video-renderer #metadata-line {
   line-height: 1.4 !important;
 }
 @media (max-width: 1600px) {
-  body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
     gap: 20px 14px !important;
   }
 }
 @media (max-width: 1200px) {
-  body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
     gap: 18px 12px !important;
   }
 }
 @media (max-width: 900px) {
-  body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
     gap: 16px 10px !important;
   }
 }
 @media (max-width: 640px) {
-  body.yt-premium-plus-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
     gap: 16px !important;
   }
 }
 body:not(.cinematic-home) .ypp-grid-container > ytd-rich-grid-row {
   display: contents !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn,
-.yt-premium-plus-theme ytd-thumbnail:hover .ypp-tag-btn,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-tag-btn,
+.yt-spiral-tube-theme ytd-thumbnail:hover .ypp-tag-btn,
 .ypp-tag-btn.tagged {
   opacity: 1;
   transform: translateY(0);

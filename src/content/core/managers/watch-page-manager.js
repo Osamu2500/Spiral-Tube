@@ -333,7 +333,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
                     if (video && controls) return { video, controls, isShorts };
                 }
                 return null;
-            }, 10000, 500);
+            }, 10000, 100); // Reduced from 500ms → 100ms for faster button injection
 
             if (elements) {
                 const { video, controls, isShorts } = elements;

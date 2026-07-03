@@ -1,4 +1,4 @@
-window.YPP = window.YPP || {};
+﻿window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
 /**
@@ -254,9 +254,9 @@ window.YPP.features.PlayerSettingsMenu = class PlayerSettingsMenu {
                 const toastFeature = window.YPP.featureManager?.getFeature('ZenMode'); // or custom toast
                 if (toastFeature) {
                      // Not easily accessible, let's just alert for now or ignore since they can change it in the popup.
-                     alert("Please configure Auto Quality in the YouTube Premium Plus extension popup.");
+                     alert("Please configure Auto Quality in the Spiral Tube extension popup.");
                 } else {
-                     alert("Please configure Auto Quality in the YouTube Premium Plus extension popup.");
+                     alert("Please configure Auto Quality in the Spiral Tube extension popup.");
                 }
             }));
         }

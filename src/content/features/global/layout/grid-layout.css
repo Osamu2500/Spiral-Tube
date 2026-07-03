@@ -1,4 +1,4 @@
-html[data-ypp-card-style="neon"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+﻿html[data-ypp-card-style="neon"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
     border-radius: 10px 10px 0 0 !important;
 }
 html[data-ypp-card-style="compact"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
@@ -100,11 +100,11 @@ html[style*="--ypp-dynamic-cols"] yt-rich-grid-view-model {
 }
 
 
-body.yt-premium-plus-theme ytd-playlist-renderer:hover ytd-thumbnail-overlay-side-panel-renderer {
+body.yt-spiral-tube-theme ytd-playlist-renderer:hover ytd-thumbnail-overlay-side-panel-renderer {
   background: rgba(99, 102, 241, 0.75) !important;
   box-shadow: -8px 0 24px rgba(99, 102, 241, 0.5) !important;
 }
-body.yt-premium-plus-theme ytd-radio-renderer:hover ytd-thumbnail-overlay-bottom-panel-renderer {
+body.yt-spiral-tube-theme ytd-radio-renderer:hover ytd-thumbnail-overlay-bottom-panel-renderer {
   background: linear-gradient(to top, rgba(168, 85, 247, 0.9), transparent) !important;
 }
 .ypp-grid-container {
@@ -544,7 +544,7 @@ ytd-watch-next-secondary-results-renderer
   font-weight: 700 !important;
   letter-spacing: 0.5px !important;
 }
-body.yt-premium-plus-theme ytd-compact-video-renderer {
+body.yt-spiral-tube-theme ytd-compact-video-renderer {
   transition:
     transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     background-color 0.2s ease,
@@ -552,7 +552,7 @@ body.yt-premium-plus-theme ytd-compact-video-renderer {
   padding: 4px !important;
   border-radius: var(--ypp-radius-md) !important;
 }
-body.yt-premium-plus-theme ytd-compact-video-renderer:hover {
+body.yt-spiral-tube-theme ytd-compact-video-renderer:hover {
   transform: translateX(8px) !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
 }

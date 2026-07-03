@@ -1,4 +1,4 @@
-// popup-components.js — Specialized component initializers
+﻿// popup-components.js — Specialized component initializers
 
 export function initComponents(document, state, ui, updateSetting, notifyThemeChange, saveSettings) {
     
@@ -8,7 +8,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
             themeKey = isDark ? 'midnight' : 'default';
         }
         document.documentElement.setAttribute('data-ypp-theme', themeKey);
-        document.documentElement.classList.add('yt-premium-plus-theme');
+        document.documentElement.classList.add('yt-spiral-tube-theme');
         const link = document.getElementById('ypp-active-theme-css');
         if (link) link.remove();
         

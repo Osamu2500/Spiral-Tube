@@ -1,25 +1,25 @@
-/* ===================================================================================
+﻿/* ===================================================================================
    7. PLAYER ENHANCEMENTS
    =================================================================================== */
 
 /* Adjust Top Gap for Player Page (Thin Gap) */
-.yt-premium-plus-theme ytd-watch-flexy {
+.yt-spiral-tube-theme ytd-watch-flexy {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
 
-.yt-premium-plus-theme ytd-watch-flexy #primary {
+.yt-spiral-tube-theme ytd-watch-flexy #primary {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
 
-.yt-premium-plus-theme ytd-watch-flexy #columns {
+.yt-spiral-tube-theme ytd-watch-flexy #columns {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
 /* Premium Glassmorphic Player Container */
-.yt-premium-plus-theme ytd-watch-flexy .html5-video-player {
+.yt-spiral-tube-theme ytd-watch-flexy .html5-video-player {
   border-radius: var(--ypp-radius-lg) !important;
   overflow: hidden !important;
   box-shadow:
@@ -32,7 +32,7 @@
 }
 
 /* Ensure outer container is transparent so gaps aren't visible as black borders */
-.yt-premium-plus-theme ytd-watch-flexy #ytd-player {
+.yt-spiral-tube-theme ytd-watch-flexy #ytd-player {
   background: transparent !important;
   border-radius: 0 !important;
   box-shadow: none !important;
@@ -42,12 +42,12 @@
 
 
 /* Force video to exactly fill the rounded player, overriding YouTube JS resizing gaps */
-.yt-premium-plus-theme .html5-video-container {
+.yt-spiral-tube-theme .html5-video-container {
   width: 100% !important;
   height: 100% !important;
 }
 
-.yt-premium-plus-theme .html5-video-player video {
+.yt-spiral-tube-theme .html5-video-player video {
   width: 100% !important;
   height: 100% !important;
   top: 0 !important;
@@ -56,7 +56,7 @@
 }
 
 /* Edge Glow effect on player hover */
-.yt-premium-plus-theme ytd-watch-flexy .html5-video-player:hover {
+.yt-spiral-tube-theme ytd-watch-flexy .html5-video-player:hover {
   box-shadow:
     0 16px 64px rgba(0, 0, 0, 0.6),
     0 0 24px rgba(62, 166, 255, 0.3),
@@ -86,7 +86,7 @@ ytd-watch-metadata #top-row,
 /* =========================================================================
    PREMIUM PILL STYLE (ypp-action-style-premium)
    ========================================================================= */
-body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata #owner {
+body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner {
   background: var(--ypp-bg-surface, rgba(30, 30, 30, 0.3));
   padding: 8px 16px 8px 8px;
   border-radius: 40px;
@@ -98,19 +98,19 @@ body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata #owner {
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata #owner:hover {
+body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
   background: var(--ypp-bg-active, rgba(40, 40, 40, 0.45));
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Action Buttons (Premium) */
-body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed > *,
-body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata #actions ytd-menu-renderer > yt-button-shape {
+body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed > *,
+body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > yt-button-shape {
   margin-left: 8px;
 }
 
-body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal {
+body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal {
   background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.04)) !important;
   border-radius: 20px !important;
   border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.03)) !important;
@@ -119,7 +119,7 @@ body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata .yt-spec-
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
+body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
   background: var(--ypp-bg-active, rgba(255, 255, 255, 0.1)) !important;
   transform: translateY(-2px);
   box-shadow:
@@ -131,7 +131,7 @@ body.ypp-action-style-premium.yt-premium-plus-theme ytd-watch-metadata .yt-spec-
    MINIMAL ICONS STYLE (ypp-action-style-minimal)
    ========================================================================= */
 /* Owner block - remove background */
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #owner {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #owner {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -140,21 +140,21 @@ body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #owner {
   padding: 0 !important;
 }
 
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #owner:hover {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
   transform: none;
   background: transparent !important;
 }
 
 /* Smooth transitions for text hiding */
-body.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next__button-text-content {
+body.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next__button-text-content {
   transition: max-width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease, margin 0.3s ease, padding 0.3s ease !important;
   max-width: 200px;
   overflow: hidden;
 }
 
 /* Hide the text labels in the action buttons to leave only icons */
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #actions .yt-spec-button-shape-next__button-text-content,
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #menu .yt-spec-button-shape-next__button-text-content {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions .yt-spec-button-shape-next__button-text-content,
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #menu .yt-spec-button-shape-next__button-text-content {
   max-width: 0 !important;
   opacity: 0 !important;
   margin: 0 !important;
@@ -162,7 +162,7 @@ body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #menu .yt
 }
 
 /* Action Buttons (Minimal) - Circular, crisp, styled SVG */
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -176,25 +176,25 @@ body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata .yt-spec-
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
   background: rgba(255, 255, 255, 0.12) !important;
   transform: scale(1.15) translateY(-2px) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* SVG Shadow and Color for Minimal */
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next__icon svg {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next__icon svg {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
   transition: filter 0.3s ease, fill 0.3s ease;
 }
 
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover .yt-spec-button-shape-next__icon svg {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover .yt-spec-button-shape-next__icon svg {
   filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
   fill: #ffffff !important;
 }
 
 /* Segmented button container fixes for minimal circular style */
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -202,23 +202,23 @@ body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata ytd-segme
 }
 
 /* Hide the divider inside segmented like/dislike button */
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer::before,
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer::before,
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
   display: none !important;
 }
 
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed {
   gap: 12px !important;
 }
 
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed > *,
-body.ypp-action-style-minimal.yt-premium-plus-theme ytd-watch-metadata #actions ytd-menu-renderer > yt-button-shape {
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed > *,
+body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > yt-button-shape {
   margin-left: 0px !important;
 }
 
 /* Description */
-html.yt-premium-plus-theme ytd-watch-metadata #description-inner,
-html.yt-premium-plus-theme ytd-watch-metadata #description {
+html.yt-spiral-tube-theme ytd-watch-metadata #description-inner,
+html.yt-spiral-tube-theme ytd-watch-metadata #description {
   background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.05)) !important;
   border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.08)) !important;
   border-radius: 16px;
@@ -230,17 +230,17 @@ html.yt-premium-plus-theme ytd-watch-metadata #description {
   box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0,0,0,0.25));
 }
 
-html.yt-premium-plus-theme ytd-watch-metadata #description:hover,
-html.yt-premium-plus-theme ytd-watch-metadata #description-inner:hover {
+html.yt-spiral-tube-theme ytd-watch-metadata #description:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #description-inner:hover {
   background: var(--ypp-bg-active, rgba(255, 255, 255, 0.1)) !important;
 }
 
 /* Global Actions/Buttons fallback for Default non-premium/non-minimal styles */
-html.yt-premium-plus-theme ytd-watch-metadata #actions button,
-html.yt-premium-plus-theme ytd-watch-metadata #actions yt-button-shape > button,
-html.yt-premium-plus-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button,
-html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal,
-html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--filled {
+html.yt-spiral-tube-theme ytd-watch-metadata #actions button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions yt-button-shape > button,
+html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button,
+html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal,
+html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--filled {
   border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.08)) !important;
   background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.1)) !important;
   background-color: var(--ypp-bg-surface, rgba(255, 255, 255, 0.1)) !important;
@@ -248,17 +248,17 @@ html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--filled
   color: var(--ypp-text-primary, #fff) !important;
 }
 
-html.yt-premium-plus-theme ytd-watch-metadata #actions button:hover,
-html.yt-premium-plus-theme ytd-watch-metadata #actions yt-button-shape > button:hover,
-html.yt-premium-plus-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button:hover,
-html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover,
-html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--filled:hover {
+html.yt-spiral-tube-theme ytd-watch-metadata #actions button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions yt-button-shape > button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--filled:hover {
   background: var(--ypp-bg-active, rgba(255, 255, 255, 0.2)) !important;
   background-color: var(--ypp-bg-active, rgba(255, 255, 255, 0.2)) !important;
 }
 
-html.yt-premium-plus-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer > div::before,
-html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
+html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer > div::before,
+html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
   background-color: var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
 }
 
@@ -437,9 +437,9 @@ html.yt-premium-plus-theme ytd-watch-metadata .yt-spec-button-shape-next--segmen
 }
 
 
-html.yt-premium-plus-theme ytd-menu-popup-renderer,
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer,
-html.yt-premium-plus-theme .ytp-popup {
+html.yt-spiral-tube-theme ytd-menu-popup-renderer,
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
+html.yt-spiral-tube-theme .ytp-popup {
   border-radius: 16px !important;
   overflow: hidden !important;
   border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;
@@ -448,11 +448,11 @@ html.yt-premium-plus-theme .ytp-popup {
   -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
 }
-html.yt-premium-plus-theme ytd-compact-link-renderer,
-html.yt-premium-plus-theme ytd-account-item-renderer,
-html.yt-premium-plus-theme .ytp-menuitem,
-html.yt-premium-plus-theme ytd-menu-service-item-renderer,
-html.yt-premium-plus-theme ytd-menu-navigation-item-renderer {
+html.yt-spiral-tube-theme ytd-compact-link-renderer,
+html.yt-spiral-tube-theme ytd-account-item-renderer,
+html.yt-spiral-tube-theme .ytp-menuitem,
+html.yt-spiral-tube-theme ytd-menu-service-item-renderer,
+html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer {
   margin: 4px 12px !important;
   width: calc(100% - 24px) !important;
   border-radius: 10px !important;
@@ -460,35 +460,35 @@ html.yt-premium-plus-theme ytd-menu-navigation-item-renderer {
   box-sizing: border-box !important;
   background: transparent !important;
 }
-html.yt-premium-plus-theme ytd-compact-link-renderer:hover,
-html.yt-premium-plus-theme ytd-account-item-renderer:hover,
-html.yt-premium-plus-theme .ytp-menuitem:hover,
-html.yt-premium-plus-theme ytd-menu-service-item-renderer:hover,
-html.yt-premium-plus-theme ytd-menu-navigation-item-renderer:hover {
+html.yt-spiral-tube-theme ytd-compact-link-renderer:hover,
+html.yt-spiral-tube-theme ytd-account-item-renderer:hover,
+html.yt-spiral-tube-theme .ytp-menuitem:hover,
+html.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
+html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
 }
-html.yt-premium-plus-theme ytd-compact-link-renderer yt-icon,
-html.yt-premium-plus-theme ytd-account-item-renderer yt-icon,
-html.yt-premium-plus-theme ytd-menu-service-item-renderer yt-icon,
-html.yt-premium-plus-theme ytd-menu-navigation-item-renderer yt-icon,
-html.yt-premium-plus-theme .ytp-menuitem-icon {
+html.yt-spiral-tube-theme ytd-compact-link-renderer yt-icon,
+html.yt-spiral-tube-theme ytd-account-item-renderer yt-icon,
+html.yt-spiral-tube-theme ytd-menu-service-item-renderer yt-icon,
+html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer yt-icon,
+html.yt-spiral-tube-theme .ytp-menuitem-icon {
   opacity: 0.7 !important;
   transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
-html.yt-premium-plus-theme ytd-compact-link-renderer:hover yt-icon,
-html.yt-premium-plus-theme ytd-account-item-renderer:hover yt-icon,
-html.yt-premium-plus-theme ytd-menu-service-item-renderer:hover yt-icon,
-html.yt-premium-plus-theme ytd-menu-navigation-item-renderer:hover yt-icon,
-html.yt-premium-plus-theme .ytp-menuitem:hover .ytp-menuitem-icon {
+html.yt-spiral-tube-theme ytd-compact-link-renderer:hover yt-icon,
+html.yt-spiral-tube-theme ytd-account-item-renderer:hover yt-icon,
+html.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover yt-icon,
+html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover yt-icon,
+html.yt-spiral-tube-theme .ytp-menuitem:hover .ytp-menuitem-icon {
   opacity: 1 !important;
   color: #fff !important;
   transform: scale(1.15);
 }
-html.yt-premium-plus-theme ytd-menu-popup-renderer,
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer,
-html.yt-premium-plus-theme .ytp-popup {
+html.yt-spiral-tube-theme ytd-menu-popup-renderer,
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
+html.yt-spiral-tube-theme .ytp-popup {
   animation: ypp-popup-enter 0.25s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
   transform-origin: top right !important;
 }
@@ -587,26 +587,26 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
-html body.yt-premium-plus-theme .html5-video-player .ytp-chrome-controls .ytp-button {
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button {
   border-radius: 12px !important;
   transition: transform 0.2s cubic-bezier(0.2,0.8,0.2,1), background 0.2s ease, box-shadow 0.2s ease !important;
 }
-html body.yt-premium-plus-theme .html5-video-player .ytp-chrome-controls .ytp-button:hover {
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:hover {
   background: rgba(255, 255, 255, 0.12) !important;
   transform: translateY(-2px) scale(1.05) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
 }
-html body.yt-premium-plus-theme .html5-video-player .ytp-chrome-controls .ytp-button:active {
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:active {
   transform: translateY(0) scale(0.95) !important;
   background: rgba(255, 255, 255, 0.2) !important;
 }
-body.yt-premium-plus-theme .ytp-gradient-bottom,
-body.yt-premium-plus-theme .ytp-gradient-top {
+body.yt-spiral-tube-theme .ytp-gradient-bottom,
+body.yt-spiral-tube-theme .ytp-gradient-top {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
 }
-body.yt-premium-plus-theme .ytp-popup {
+body.yt-spiral-tube-theme .ytp-popup {
   border-radius: 18px !important;
   background: rgba(10, 10, 18, 0.45) !important;
   backdrop-filter: blur(36px) saturate(180%) !important;

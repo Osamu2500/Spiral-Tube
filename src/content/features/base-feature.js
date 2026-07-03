@@ -1,8 +1,8 @@
-window.YPP = window.YPP || {};
+﻿window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
 /**
- * Base Class for all YouTube Premium Plus Features
+ * Base Class for all Spiral Tube Features
  * Enforces a standard lifecycle: init -> enable/disable -> update -> destroy
  */
 window.YPP.features.BaseFeature = class BaseFeature {

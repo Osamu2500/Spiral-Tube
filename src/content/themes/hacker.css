@@ -1,4 +1,4 @@
-html.yt-premium-plus-theme {
+﻿html.yt-spiral-tube-theme {
     --ypp-bg-base: #050a05;
     --ypp-bg-surface: #0a140a;
     --ypp-bg-glass: rgba(5, 10, 5, 0.95);
@@ -34,7 +34,7 @@ html.yt-premium-plus-theme {
     0% { transform: translateY(0); }
     100% { transform: translateY(-60px); }
 }
-html.yt-premium-plus-theme.ypp-theme-effects::before {
+html.yt-spiral-tube-theme.ypp-theme-effects::before {
     content: "";
     position: fixed;
     top: -60px; left: 0; right: 0; bottom: -120px;

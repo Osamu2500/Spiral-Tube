@@ -1,4 +1,4 @@
-html.yt-premium-plus-theme {
+﻿html.yt-spiral-tube-theme {
     --ypp-bg-base: #2e3440;
     --ypp-bg-surface: #3b4252;
     --ypp-bg-glass: rgba(46, 52, 64, 0.95);
@@ -40,8 +40,8 @@ html.yt-premium-plus-theme {
     50% { transform: translateX(30px) scale(1); opacity: 0.3; }
     100% { transform: translateX(0) scale(1.05); opacity: 0.5; }
 }
-html.yt-premium-plus-theme.ypp-theme-effects::before,
-html.yt-premium-plus-theme.ypp-theme-effects::after {
+html.yt-spiral-tube-theme.ypp-theme-effects::before,
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
     content: "";
     position: fixed;
     top: -10vh; left: -10vw; right: -10vw; bottom: -10vh;
@@ -49,11 +49,11 @@ html.yt-premium-plus-theme.ypp-theme-effects::after {
     pointer-events: none;
     will-change: transform, opacity;
 }
-html.yt-premium-plus-theme.ypp-theme-effects::before {
+html.yt-spiral-tube-theme.ypp-theme-effects::before {
     background: linear-gradient(120deg, transparent 20%, rgba(136, 192, 208, 0.5) 40%, transparent 70%);
     animation: ypp-nord-aurora-bg 20s ease-in-out infinite;
 }
-html.yt-premium-plus-theme.ypp-theme-effects::after {
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
     background: linear-gradient(60deg, transparent 30%, rgba(163, 190, 140, 0.4) 60%, transparent 90%);
     animation: ypp-nord-aurora-fg 25s ease-in-out infinite;
 }

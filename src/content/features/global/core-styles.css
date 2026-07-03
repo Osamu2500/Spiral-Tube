@@ -1,6 +1,6 @@
-/* 
+﻿/* 
 =======================================================================================
-   YOUTUBE PREMIUM PLUS - Glassmorphism Redesign
+   Spiral Tube - Glassmorphism Redesign
 =======================================================================================
    A complete visual overhaul for YouTube with premium glassmorphic aesthetics
    
@@ -22,7 +22,7 @@
    1. CSS VARIABLES & THEME BASE
    =================================================================================== */
 
-.yt-premium-plus-theme {
+.yt-spiral-tube-theme {
   /* 
      NOTE: COLOR VARIABLES ARE NOW HANDLED BY THEME FILES (default.css, ocean.css, etc.)
      DO NOT ADD COLORS HERE TO AVOID SPECIFICITY CONFLICTS.
@@ -103,7 +103,7 @@
 }
 
 /**
- * YouTube Premium Plus - Global Styles
+ * Spiral Tube - Global Styles
  * Core variables and overrides injected into the YouTube page
  */
 
@@ -171,7 +171,7 @@
 
 /* Force YouTube background to respect theme variables */
 
-html.yt-premium-plus-theme {
+html.yt-spiral-tube-theme {
   background-color: var(--ypp-bg-base, #0f0f0f) !important;
   background: var(--ypp-bg-base, #0f0f0f) !important;
   position: relative;
@@ -179,9 +179,9 @@ html.yt-premium-plus-theme {
 
 /* Make inner containers transparent so HTML background and effects show through */
 
-html.yt-premium-plus-theme body, 
-html.yt-premium-plus-theme ytd-app,
-html.yt-premium-plus-theme #background {
+html.yt-spiral-tube-theme body, 
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #background {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -192,19 +192,19 @@ html.yt-premium-plus-theme #background {
 
 /* Typography */
 
-html.yt-premium-plus-theme, 
-html.yt-premium-plus-theme body, 
-html.yt-premium-plus-theme ytd-app,
-html.yt-premium-plus-theme #content-text {
+html.yt-spiral-tube-theme, 
+html.yt-spiral-tube-theme body, 
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #content-text {
   font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
 }
 
-html.yt-premium-plus-theme {
+html.yt-spiral-tube-theme {
     --yt-spec-font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
 }
 
-html.yt-premium-plus-theme tp-yt-paper-button,
-html.yt-premium-plus-theme ytd-button-renderer {
+html.yt-spiral-tube-theme tp-yt-paper-button,
+html.yt-spiral-tube-theme ytd-button-renderer {
   font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
 }
 
@@ -229,7 +229,7 @@ html.ypp-reduced-motion *::after {
 
 /* Accent Color Overrides via injected variables */
 
-html.yt-premium-plus-theme {
+html.yt-spiral-tube-theme {
   --ypp-accent: var(--ypp-accent-primary, #3ea6ff) !important;
   --ypp-accent-hover: var(--ypp-accent-glow, #65b8ff) !important;
   --yt-spec-static-brand-red: var(--ypp-accent-primary, #f00) !important;
@@ -241,16 +241,16 @@ html.yt-premium-plus-theme {
 
 /* Thumbnail Radius */
 
-html.yt-premium-plus-theme {
+html.yt-spiral-tube-theme {
   --ypp-player-radius: var(--ypp-thumb-radius, 12px);
   --ypp-thumbnail-radius: var(--ypp-thumb-radius, 12px);
 }
 
-html.yt-premium-plus-theme ytd-thumbnail, 
-html.yt-premium-plus-theme ytd-thumbnail::before, 
-html.yt-premium-plus-theme ytd-thumbnail a, 
-html.yt-premium-plus-theme yt-image, 
-html.yt-premium-plus-theme .ytd-thumbnail {
+html.yt-spiral-tube-theme ytd-thumbnail, 
+html.yt-spiral-tube-theme ytd-thumbnail::before, 
+html.yt-spiral-tube-theme ytd-thumbnail a, 
+html.yt-spiral-tube-theme yt-image, 
+html.yt-spiral-tube-theme .ytd-thumbnail {
   border-radius: var(--ypp-thumbnail-radius, 12px) !important;
 }
 
@@ -302,7 +302,7 @@ html.yt-premium-plus-theme .ytd-thumbnail {
    in the next tick; overflow:hidden before positioning causes content clipping.
    Also needs border-radius applied to inner content, not the wrapper. */
 
-html.yt-premium-plus-theme tp-yt-iron-dropdown {
+html.yt-spiral-tube-theme tp-yt-iron-dropdown {
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;
   backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
@@ -310,30 +310,30 @@ html.yt-premium-plus-theme tp-yt-iron-dropdown {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
 }
 
-html.yt-premium-plus-theme tp-yt-paper-listbox,
-html.yt-premium-plus-theme ytd-active-account-header-renderer {
+html.yt-spiral-tube-theme tp-yt-paper-listbox,
+html.yt-spiral-tube-theme ytd-active-account-header-renderer {
   background: transparent !important;
 }
 
 /* Popup Inner Structure Overrides */
 
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer {
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer {
   padding: 8px 0 !important;
 }
 
-html.yt-premium-plus-theme ytd-active-account-header-renderer {
+html.yt-spiral-tube-theme ytd-active-account-header-renderer {
   padding: 16px !important;
   margin-bottom: 8px !important;
 }
 
 /* Hide native bottom borders inside header */
 
-html.yt-premium-plus-theme ytd-active-account-header-renderer #header {
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #header {
   border-bottom: none !important;
 }
 
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer #separator,
-html.yt-premium-plus-theme ytd-menu-popup-renderer ytd-menu-service-item-renderer[has-separator] {
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer #separator,
+html.yt-spiral-tube-theme ytd-menu-popup-renderer ytd-menu-service-item-renderer[has-separator] {
   background-color: rgba(255, 255, 255, 0.05) !important;
   margin: 4px 16px !important;
   height: 1px !important;
@@ -347,15 +347,15 @@ html.yt-premium-plus-theme ytd-menu-popup-renderer ytd-menu-service-item-rendere
 
 /* Popup Typography Hierarchy */
 
-html.yt-premium-plus-theme ytd-active-account-header-renderer #account-name {
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #account-name {
   font-weight: 600 !important;
   font-size: 1.5rem !important;
   margin-bottom: 2px !important;
   color: #fff !important;
 }
 
-html.yt-premium-plus-theme ytd-active-account-header-renderer #account-byline,
-html.yt-premium-plus-theme ytd-active-account-header-renderer #channel-handle {
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #account-byline,
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #channel-handle {
   opacity: 0.65 !important;
   font-weight: 400 !important;
   font-size: 1.3rem !important;
@@ -374,7 +374,7 @@ html.yt-premium-plus-theme ytd-active-account-header-renderer #channel-handle {
    is added to DOM. Without a delay, the animation starts at left:0/top:0 causing
    the visible 'jump from left' bug. The 80ms delay lets YouTube place it first. */
 
-html.yt-premium-plus-theme tp-yt-iron-dropdown {
+html.yt-spiral-tube-theme tp-yt-iron-dropdown {
   animation: ypp-popup-enter 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
   animation-delay: 80ms !important;
   animation-fill-mode: both !important; /* stays opacity:0 during the delay */
@@ -383,25 +383,25 @@ html.yt-premium-plus-theme tp-yt-iron-dropdown {
 
 /* Custom Themed Scrollbar for Popups */
 
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar,
-html.yt-premium-plus-theme tp-yt-iron-dropdown ::-webkit-scrollbar {
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar {
   width: 4px !important;
   background: transparent !important;
 }
 
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-track,
-html.yt-premium-plus-theme tp-yt-iron-dropdown ::-webkit-scrollbar-track {
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-track,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-track {
   background: transparent !important;
 }
 
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb,
-html.yt-premium-plus-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb {
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.15) !important;
   border-radius: 4px !important;
 }
 
-html.yt-premium-plus-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb:hover,
-html.yt-premium-plus-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb:hover,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -409,7 +409,7 @@ html.yt-premium-plus-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {
 
 /* Layout Density Grid Gap Override */
 
-html.yt-premium-plus-theme {
+html.yt-spiral-tube-theme {
   --ytd-rich-grid-item-margin: var(--ypp-density-gap, 16px) !important;
 }
 
@@ -419,7 +419,7 @@ html.yt-premium-plus-theme {
 
 /* Theme Base */
 
-html.yt-premium-plus-theme body {
+html.yt-spiral-tube-theme body {
   background-color: var(--ypp-bg-base);
   overflow-x: hidden;
 }
@@ -885,7 +885,7 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
 
 /* Center Mic Icon */
 
-.yt-premium-plus-theme #voice-search-button {
+.yt-spiral-tube-theme #voice-search-button {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -894,9 +894,9 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
 
 /* Profile Icon Squircle */
 
-.yt-premium-plus-theme #avatar-btn,
-.yt-premium-plus-theme #avatar-btn yt-img-shadow,
-.yt-premium-plus-theme #avatar-btn img {
+.yt-spiral-tube-theme #avatar-btn,
+.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
+.yt-spiral-tube-theme #avatar-btn img {
   border-radius: 12px !important;
 }
 
@@ -1354,10 +1354,10 @@ body.ypp-zen-mode #columns {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.yt-premium-plus-theme ytd-multi-page-menu-renderer,
-.yt-premium-plus-theme ytd-simple-menu-header-renderer,
-.yt-premium-plus-theme ytd-active-account-header-renderer,
-.yt-premium-plus-theme ytd-voice-search-dialog-renderer {
+.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
+.yt-spiral-tube-theme ytd-simple-menu-header-renderer,
+.yt-spiral-tube-theme ytd-active-account-header-renderer,
+.yt-spiral-tube-theme ytd-voice-search-dialog-renderer {
   background: rgba(30, 30, 30, 0.95);
   backdrop-filter: var(--ypp-blur-high);
   border: 1px solid var(--ypp-glass-border);
@@ -1365,7 +1365,7 @@ body.ypp-zen-mode #columns {
   box-shadow: var(--ypp-shadow-float);
 }
 
-.yt-premium-plus-theme ytd-popup-container {
+.yt-spiral-tube-theme ytd-popup-container {
   z-index: var(--ypp-z-popup);
 }
 
@@ -1422,8 +1422,8 @@ ytd-searchbox input:focus-visible {
 
 /* Hide 'Top Recommendations' Heading */
 
-body.yt-premium-plus-theme:not(.ypp-channel-page) ytd-rich-section-renderer #title-container,
-body.yt-premium-plus-theme ytd-feed-nudge-renderer {
+body.yt-spiral-tube-theme:not(.ypp-channel-page) ytd-rich-section-renderer #title-container,
+body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
   display: none !important;
 }
 
@@ -1515,7 +1515,7 @@ body.yt-premium-plus-theme ytd-feed-nudge-renderer {
 
 /* Playlist Specific Badge Overlays */
 
-body.yt-premium-plus-theme ytd-playlist-thumbnail {
+body.yt-spiral-tube-theme ytd-playlist-thumbnail {
   border-radius: var(--ypp-radius-md) !important;
   overflow: hidden !important;
   margin-bottom: 12px !important;
@@ -1524,7 +1524,7 @@ body.yt-premium-plus-theme ytd-playlist-thumbnail {
 
 /* Premium Playlist Side Panel Overlay */
 
-body.yt-premium-plus-theme ytd-thumbnail-overlay-side-panel-renderer {
+body.yt-spiral-tube-theme ytd-thumbnail-overlay-side-panel-renderer {
   background: rgba(10, 10, 15, 0.6) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -1539,7 +1539,7 @@ body.yt-premium-plus-theme ytd-thumbnail-overlay-side-panel-renderer {
   justify-content: center !important;
 }
 
-body.yt-premium-plus-theme ytd-thumbnail-overlay-side-panel-renderer yt-formatted-string {
+body.yt-spiral-tube-theme ytd-thumbnail-overlay-side-panel-renderer yt-formatted-string {
   font-weight: 600 !important;
   font-size: 15px !important;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
@@ -1548,7 +1548,7 @@ body.yt-premium-plus-theme ytd-thumbnail-overlay-side-panel-renderer yt-formatte
 
 /* Mix/Radio Premium Overlay */
 
-body.yt-premium-plus-theme ytd-thumbnail-overlay-bottom-panel-renderer {
+body.yt-spiral-tube-theme ytd-thumbnail-overlay-bottom-panel-renderer {
   background: linear-gradient(to top, rgba(10, 10, 15, 0.95), transparent) !important;
   padding: 16px 8px 8px 8px !important;
   display: flex !important;
@@ -1584,7 +1584,7 @@ body.yt-premium-plus-theme ytd-thumbnail-overlay-bottom-panel-renderer {
 
 /* Ensure chip bar doesn't interfere with grid */
 
-body.yt-premium-plus-theme ytd-feed-filter-chip-bar-renderer {
+body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   margin-bottom: 24px;
 }
 
@@ -1781,7 +1781,7 @@ body.yt-premium-plus-theme ytd-feed-filter-chip-bar-renderer {
 
 /* Tag Button on Thumbnail */
 
-.yt-premium-plus-theme ytd-thumbnail .ypp-tag-btn {
+.yt-spiral-tube-theme ytd-thumbnail .ypp-tag-btn {
   position: absolute;
   top: 8px;
   left: 8px;
@@ -1877,18 +1877,18 @@ body.yt-premium-plus-theme ytd-feed-filter-chip-bar-renderer {
 
 /* Playlist Panel on Watch Page (Queue) */
 
-body.yt-premium-plus-theme ytd-playlist-panel-video-renderer {
+body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer {
   margin: 8px;
   border-radius: var(--ypp-radius-sm);
   padding: 8px;
   transition: background-color 0.15s;
 }
 
-body.yt-premium-plus-theme ytd-playlist-panel-video-renderer:hover {
+body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-body.yt-premium-plus-theme ytd-playlist-panel-video-renderer[selected] {
+body.yt-spiral-tube-theme ytd-playlist-panel-video-renderer[selected] {
   background-color: rgba(62, 166, 255, 0.1);
   border-left: 3px solid var(--ypp-accent-blue);
 }
@@ -1907,18 +1907,18 @@ body.yt-premium-plus-theme ytd-playlist-panel-video-renderer[selected] {
 
 /* Global Buttons & Searchbox Tactile Enhancements */
 
-body.yt-premium-plus-theme yt-button-shape {
+body.yt-spiral-tube-theme yt-button-shape {
   transition:
     transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     box-shadow 0.2s ease !important;
 }
 
-body.yt-premium-plus-theme yt-button-shape:hover {
+body.yt-spiral-tube-theme yt-button-shape:hover {
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-body.yt-premium-plus-theme #container.ytd-searchbox {
+body.yt-spiral-tube-theme #container.ytd-searchbox {
   background: rgba(20, 20, 20, 0.8) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -1927,7 +1927,7 @@ body.yt-premium-plus-theme #container.ytd-searchbox {
     box-shadow 0.2s ease !important;
 }
 
-body.yt-premium-plus-theme #container.ytd-searchbox[has-focus] {
+body.yt-spiral-tube-theme #container.ytd-searchbox[has-focus] {
   border-color: var(--ypp-accent) !important;
   box-shadow:
     0 0 12px var(--ypp-accent-glow),
@@ -1950,9 +1950,9 @@ body.yt-premium-plus-theme #container.ytd-searchbox[has-focus] {
 
 /* 5. Live Badge Red Voids */
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   .badge-style-type-live-now.ytd-badge-supported-renderer,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   .badge-style-type-starting-soon.ytd-badge-supported-renderer {
   padding: 4px 6px !important;
   background-color: #cc0000 !important;
@@ -2417,7 +2417,7 @@ body.yt-premium-plus-theme
 
 /* Container for the entire top row (Channel info + Actions) */
 
-body.yt-premium-plus-theme #top-row.ytd-watch-metadata {
+body.yt-spiral-tube-theme #top-row.ytd-watch-metadata {
   margin-top: 16px !important;
   display: flex !important;
   align-items: center !important;
@@ -2427,7 +2427,7 @@ body.yt-premium-plus-theme #top-row.ytd-watch-metadata {
 
 /* Channel Owner Section Pill */
 
-body.yt-premium-plus-theme #owner.ytd-watch-metadata {
+body.yt-spiral-tube-theme #owner.ytd-watch-metadata {
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
@@ -2442,20 +2442,20 @@ body.yt-premium-plus-theme #owner.ytd-watch-metadata {
     box-shadow 0.2s ease !important;
 }
 
-body.yt-premium-plus-theme #owner.ytd-watch-metadata:hover {
+body.yt-spiral-tube-theme #owner.ytd-watch-metadata:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Subscribe Button Container & Positioning */
 
-body.yt-premium-plus-theme ytd-watch-metadata #owner {
+body.yt-spiral-tube-theme ytd-watch-metadata #owner {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
 }
 
-body.yt-premium-plus-theme ytd-watch-metadata #subscribe-button {
+body.yt-spiral-tube-theme ytd-watch-metadata #subscribe-button {
   margin-left: 20px !important;
   display: flex !important;
   align-items: center !important;
@@ -2463,14 +2463,14 @@ body.yt-premium-plus-theme ytd-watch-metadata #subscribe-button {
 
 /* Subscribe Button */
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #subscribe-button
   > ytd-subscribe-button-renderer
   > yt-smartimation
   > div
   > yt-button-shape
   > button,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #subscribe-button
   ytd-button-renderer
   yt-button-shape
@@ -2490,14 +2490,14 @@ body.yt-premium-plus-theme
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #subscribe-button
   > ytd-subscribe-button-renderer
   > yt-smartimation
   > div
   > yt-button-shape
   > button:hover,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #subscribe-button
   ytd-button-renderer
   yt-button-shape
@@ -2510,22 +2510,22 @@ body.yt-premium-plus-theme
 
 /* Subscribed State */
 
-body.yt-premium-plus-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
-body.yt-premium-plus-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button {
+body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
+body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button {
   background: rgba(255, 255, 255, 0.02) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
   color: var(--ypp-text-secondary, #aaa) !important;
   box-shadow: none !important;
 }
 
-body.yt-premium-plus-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
-body.yt-premium-plus-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button:hover {
+body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
+body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--ypp-text-primary, #fff) !important;
 }
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #subscribe-button
   yt-button-shape
   button
@@ -2535,7 +2535,7 @@ body.yt-premium-plus-theme
 
 /* Actions Menu Container */
 
-body.yt-premium-plus-theme #actions.ytd-watch-metadata {
+body.yt-spiral-tube-theme #actions.ytd-watch-metadata {
   display: flex !important;
   gap: 8px !important;
   align-items: center !important;
@@ -2543,49 +2543,49 @@ body.yt-premium-plus-theme #actions.ytd-watch-metadata {
 
 /* Base button container fixes (remove native YouTube backgrounds that cause double layering) */
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-button-renderer
   yt-button-shape
   button,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   button,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button,
-body.yt-premium-plus-theme #subscribe-button yt-button-shape button {
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
   border: none !important; /* Will be overridden by above specific rules if subscribe */
 }
 
 /* Hide native ripple and dark mode overlay pseudo-elements responsible for the "double view" */
 
-body.yt-premium-plus-theme #actions-inner yt-button-shape button::before,
-body.yt-premium-plus-theme #actions-inner yt-button-shape button::after,
-body.yt-premium-plus-theme #actions-inner yt-touch-feedback-shape,
-body.yt-premium-plus-theme #subscribe-button yt-button-shape button::before,
-body.yt-premium-plus-theme #subscribe-button yt-button-shape button::after,
-body.yt-premium-plus-theme #subscribe-button yt-touch-feedback-shape {
+body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
+body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
+body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
+body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
+body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
   display: none !important;
 }
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-button-renderer
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-menu-renderer
   yt-button-shape
@@ -2596,17 +2596,17 @@ body.yt-premium-plus-theme
 
 /* Individual Action Pills (Share, Download, Save, etc.) applying glassmorphism to the outer button structure */
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-button-renderer
   yt-button-shape
   > button,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   > button,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-menu-renderer
   yt-button-shape
@@ -2629,17 +2629,17 @@ body.yt-premium-plus-theme
     box-shadow 0.2s ease !important;
 }
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-button-renderer
   yt-button-shape
   > button:hover,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   > button:hover,
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   #actions-inner
   ytd-menu-renderer
   yt-button-shape
@@ -2653,14 +2653,14 @@ body.yt-premium-plus-theme
 
 /* Reset background on the container so we can style the inner buttons */
 
-body.yt-premium-plus-theme #segmented-like-button yt-button-shape button,
-body.yt-premium-plus-theme #segmented-dislike-button yt-button-shape button {
+body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
+body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-body.yt-premium-plus-theme ytd-segmented-like-dislike-button-renderer {
+body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2675,14 +2675,14 @@ body.yt-premium-plus-theme ytd-segmented-like-dislike-button-renderer {
     box-shadow 0.2s ease !important;
 }
 
-body.yt-premium-plus-theme ytd-segmented-like-dislike-button-renderer:hover {
+body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer:hover {
   background: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Like button side */
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   ytd-segmented-like-dislike-button-renderer
   yt-button-shape:first-child
   button {
@@ -2693,7 +2693,7 @@ body.yt-premium-plus-theme
 
 /* Dislike button side */
 
-body.yt-premium-plus-theme
+body.yt-spiral-tube-theme
   ytd-segmented-like-dislike-button-renderer
   yt-button-shape:last-child
   button {
@@ -2705,14 +2705,14 @@ body.yt-premium-plus-theme
 
 /* Adjust icons inside buttons */
 
-body.yt-premium-plus-theme #actions-inner yt-icon {
+body.yt-spiral-tube-theme #actions-inner yt-icon {
   width: 20px !important;
   height: 20px !important;
 }
 
 /* 3. Pop-up Menus Redesign (3-dot menus) */
 
-body.yt-premium-plus-theme tp-yt-paper-listbox {
+body.yt-spiral-tube-theme tp-yt-paper-listbox {
   border-radius: 16px !important;
   background: rgba(25, 25, 25, 0.8) !important;
   backdrop-filter: blur(24px) saturate(1.5) !important;
@@ -2723,8 +2723,8 @@ body.yt-premium-plus-theme tp-yt-paper-listbox {
 
 /* Added micro-animations on hovering menu items */
 
-body.yt-premium-plus-theme ytd-menu-service-item-renderer,
-body.yt-premium-plus-theme ytd-menu-navigation-item-renderer {
+body.yt-spiral-tube-theme ytd-menu-service-item-renderer,
+body.yt-spiral-tube-theme ytd-menu-navigation-item-renderer {
   border-radius: 8px !important;
   margin: 4px 8px !important;
   transition:
@@ -2732,8 +2732,8 @@ body.yt-premium-plus-theme ytd-menu-navigation-item-renderer {
     transform 0.2s ease !important;
 }
 
-body.yt-premium-plus-theme ytd-menu-service-item-renderer:hover,
-body.yt-premium-plus-theme ytd-menu-navigation-item-renderer:hover {
+body.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
+body.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover {
   background-color: rgba(255, 255, 255, 0.12) !important;
   transform: translateX(4px) !important;
 }
@@ -3656,7 +3656,7 @@ body.ypp-grayscale-thumbnails ytd-thumbnail:hover img {
    Must live in styles.css so they load AFTER the main theme and win specificity.
    =========================================================================== */
 
-/* Reset chip CSS variables that the YPP theme sets with !important on .yt-premium-plus-theme.
+/* Reset chip CSS variables that the YPP theme sets with !important on .yt-spiral-tube-theme.
    Our cinematic selectors are more specific (element + attribute selector) so they win. */
 
 /* Clear button-shape backgrounds — YPP theme adds a subtle fill to .yt-spec-button-shape-next
@@ -3674,7 +3674,7 @@ body.ypp-grayscale-thumbnails ytd-thumbnail:hover img {
 
 /* Global overflow fix to prevent bottom slidebar */
 
-html.yt-premium-plus-theme body {
+html.yt-spiral-tube-theme body {
   overflow-x: hidden !important;
 }
 
@@ -3682,8 +3682,8 @@ html.yt-premium-plus-theme body {
 
 /* Fix the filter chips globally [DISABLED DUE TO INVISIBLE CHIPS BUG] */
 
-html.yt-premium-plus-theme yt-chip-cloud-chip-renderer[selected],
-html.yt-premium-plus-theme yt-chip-cloud-chip-renderer.iron-selected {
+html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer[selected],
+html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer.iron-selected {
   --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.15) !important;
   --yt-spec-button-chip-background-hover: rgba(255, 255, 255, 0.2) !important;
   background: rgba(255, 255, 255, 0.15) !important;
@@ -3725,18 +3725,18 @@ html.yt-premium-plus-theme yt-chip-cloud-chip-renderer.iron-selected {
 ** Ensures native hover previews always sit on top of custom thumbnail z-indexes
 --------------------------------------------------------------------------- */
 
-body.yt-premium-plus-theme #video-preview,
-body.yt-premium-plus-theme ytd-video-preview,
-body.yt-premium-plus-theme #inline-preview-player {
+body.yt-spiral-tube-theme #video-preview,
+body.yt-spiral-tube-theme ytd-video-preview,
+body.yt-spiral-tube-theme #inline-preview-player {
   z-index: var(--ypp-z-card-hover) !important;
 }
 
 /* Thumbnail wrapper must maintain 16:9 and span full width */
 
 /* Hide native stacked background graphics for playlists to match flat video cards */
-body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__background,
-body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-background,
-body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-image {
+body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__background,
+body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-background,
+body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-image {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
@@ -3744,8 +3744,8 @@ body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__conte
   clip-path: none !important;
   border-radius: var(--ypp-radius-md, 12px) !important;
 }
-body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-image::before,
-body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-image::after {
+body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-image::before,
+body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__content-image::after {
   display: none !important;
 }
 
@@ -3760,21 +3760,21 @@ body.yt-premium-plus-theme yt-lockup-view-model .yt-lockup-view-model-wiz__conte
 /* Hide clutter */
 
 /* For older playlist renderers (ytd-grid-playlist-renderer) */
-body.yt-premium-plus-theme ytd-playlist-thumbnail .style-scope.ytd-playlist-thumbnail,
-body.yt-premium-plus-theme ytd-playlist-thumbnail #background {
+body.yt-spiral-tube-theme ytd-playlist-thumbnail .style-scope.ytd-playlist-thumbnail,
+body.yt-spiral-tube-theme ytd-playlist-thumbnail #background {
   background: transparent !important;
   box-shadow: none !important;
 }
-body.yt-premium-plus-theme ytd-playlist-thumbnail::before,
-body.yt-premium-plus-theme ytd-playlist-thumbnail::after {
+body.yt-spiral-tube-theme ytd-playlist-thumbnail::before,
+body.yt-spiral-tube-theme ytd-playlist-thumbnail::after {
   display: none !important;
 }
 
 /* ============================================================
    PLAYLIST FEED PAGE ENHANCEMENTS
    ============================================================ */
-body.yt-premium-plus-theme.ypp-feed-playlists-page #page-header h1,
-body.yt-premium-plus-theme.ypp-feed-playlists-page .ytd-page-header-renderer .title {
+body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header h1,
+body.yt-spiral-tube-theme.ypp-feed-playlists-page .ytd-page-header-renderer .title {
   font-size: 2.8rem !important;
   background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
   -webkit-background-clip: text;
@@ -3785,13 +3785,13 @@ body.yt-premium-plus-theme.ypp-feed-playlists-page .ytd-page-header-renderer .ti
   letter-spacing: -0.5px;
   padding-bottom: 4px;
 }
-body.yt-premium-plus-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chip-renderer {
+body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chip-renderer {
   border-radius: 8px !important;
   background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   transition: all 0.25s ease !important;
 }
-body.yt-premium-plus-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chip-renderer:hover {
+body.yt-spiral-tube-theme.ypp-feed-playlists-page #page-header yt-chip-cloud-chip-renderer:hover {
   background: rgba(255, 255, 255, 0.15) !important;
   transform: translateY(-2px);
 }
@@ -3909,10 +3909,10 @@ body.ypp-floating-player-active #player-container-outer::after {
 
 /* Ensure the dropdown host is wide enough and not clipped */
 
-html.yt-premium-plus-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
-html.yt-premium-plus-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
-html.yt-premium-plus-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
-html.yt-premium-plus-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {
+html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
+html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {
     overflow: visible !important;
     background: transparent !important;
     backdrop-filter: none !important;

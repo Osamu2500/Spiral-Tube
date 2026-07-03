@@ -1,5 +1,5 @@
-/**
- * Context Menu Feature for YouTube Premium Plus
+﻿/**
+ * Context Menu Feature for Spiral Tube
  * Registers native browser context menus for adding channels to groups.
  */
 

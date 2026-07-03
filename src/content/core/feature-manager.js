@@ -205,7 +205,7 @@ window.YPP.FeatureManager = class FeatureManager {
 
         const PRIORITY_ORDER = [
             'theme', 'headerNav', 'sidebarLayout', 'layout', 'autoScaleLayout',
-            'keyboardShortcuts', 'videoSpeedController',
+            'keyboardShortcuts', 'videoSpeedController', 'volumeBoost', 'videoFilters',
             'markWatched', 'hideWatched', 'multiSelect',
             'playlistRedesign', 'gridAnimator', 'ambientMode'
         ];
@@ -219,7 +219,8 @@ window.YPP.FeatureManager = class FeatureManager {
         // 1. Apply layout-critical UI features in strict order to avoid race conditions:
         //    - layout MUST run before autoScaleLayout because AutoScaleGrid.disable() clears
         //      --ypp-active-columns, and GridLayoutManager.onUpdate() must re-set it last.
-        const SEQUENTIAL_UI = ['theme', 'headerNav', 'sidebarLayout', 'layout'];
+        //    - volumeBoost and videoFilters are player-bar UI that should be eager (not idle-deferred)
+        const SEQUENTIAL_UI = ['theme', 'headerNav', 'sidebarLayout', 'layout', 'volumeBoost', 'videoFilters'];
         const AFTER_LAYOUT  = ['autoScaleLayout'];
         const uiFeatures    = sorted.filter(([name]) => SEQUENTIAL_UI.includes(name));
         const postLayout    = sorted.filter(([name]) => AFTER_LAYOUT.includes(name));
@@ -250,7 +251,7 @@ window.YPP.FeatureManager = class FeatureManager {
                 if (window.YPP.events) {
                     window.YPP.events.emit('features:updated', this.settings);
                 }
-            }, { timeout: 2000 });
+            }, { timeout: 300 }); // 300ms: fast enough to not feel delayed, still browser-idle-aware
         } else {
             // Fallback for browsers without requestIdleCallback
             setTimeout(() => {

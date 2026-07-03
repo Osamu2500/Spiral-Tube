@@ -1,4 +1,4 @@
-/* =========================================================================
+﻿/* =========================================================================
    SEARCH GRID: INSTANT CARD ENTRANCE (CSS-native, no JS overhead)
    Applied by the browser compositor — zero scheduling delay.
    ========================================================================= */
@@ -909,8 +909,8 @@ body.ypp-search-grid-mode ytd-search-refinement-card-renderer {
   display: none !important;
 }
 body.ypp-search-grid-mode ytd-continuation-item-renderer,
-body.yt-premium-plus-theme ytd-two-column-search-results-renderer ytd-continuation-item-renderer,
-body.yt-premium-plus-theme ytd-rich-grid-renderer ytd-continuation-item-renderer {
+body.yt-spiral-tube-theme ytd-two-column-search-results-renderer ytd-continuation-item-renderer,
+body.yt-spiral-tube-theme ytd-rich-grid-renderer ytd-continuation-item-renderer {
   grid-column: 1 / -1 !important;
   width: 100% !important;
   flex-basis: 100%;
@@ -1015,18 +1015,18 @@ body.ypp-search-grid-mode ytd-rich-section-renderer {
   max-width: 100%;
 }
 body.ypp-search-grid-mode ytd-ad-slot-renderer,
-body.yt-premium-plus-theme ytd-ad-slot-renderer,
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home)
+body.yt-spiral-tube-theme ytd-ad-slot-renderer,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home)
   ytd-rich-item-renderer:has(ytd-ad-slot-renderer),
-body.yt-premium-plus-theme:not(.ypp-channel-page) ytd-rich-section-renderer:empty {
+body.yt-spiral-tube-theme:not(.ypp-channel-page) ytd-rich-section-renderer:empty {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
   height: 0 !important;
   width: 0 !important;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer,
-body.yt-premium-plus-theme ytd-video-renderer,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer,
+body.yt-spiral-tube-theme ytd-video-renderer,
 body.ypp-search-grid-mode ytd-video-renderer,
 body.ypp-search-grid-mode ytd-playlist-renderer,
 body.ypp-search-grid-mode ytd-radio-renderer,
@@ -1039,8 +1039,8 @@ body.ypp-search-grid-mode ytd-channel-renderer {
   transform: translateZ(0); /* Hardware Acceleration */
   will-change: transform, box-shadow, border-color, background-color;
 }
-body.yt-premium-plus-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover,
-body.yt-premium-plus-theme ytd-video-renderer:hover,
+body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover,
+body.yt-spiral-tube-theme ytd-video-renderer:hover,
 body.ypp-search-grid-mode ytd-video-renderer:hover,
 body.ypp-search-grid-mode ytd-playlist-renderer:hover,
 body.ypp-search-grid-mode ytd-radio-renderer:hover,

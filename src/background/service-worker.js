@@ -1,5 +1,5 @@
-/**
- * Service Worker for YouTube Premium Plus
+﻿/**
+ * Service Worker for Spiral Tube
  * Handles background tasks including timer logic and initial setup
  */
 import { initContextMenu } from './context-menu.js';

@@ -1,5 +1,5 @@
-/**
- * Utilities for YouTube Premium Plus
+﻿/**
+ * Utilities for Spiral Tube
  * Common helper functions and shared classes
  */
 window.YPP = window.YPP || {};

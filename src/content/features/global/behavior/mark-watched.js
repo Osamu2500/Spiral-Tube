@@ -87,11 +87,7 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
             window.YPP.events?.off('app:videoChange', this._boundProcess);
             
             if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.register(
-                    'mark-watched',
-                    MarkWatched.SELECTORS.CARDS.join(', '),
-                    (nodes) => this._processCards()
-                );
+                window.YPP.sharedObserver.unregister('mark-watched');
             }
 
             if (this.delegator) {

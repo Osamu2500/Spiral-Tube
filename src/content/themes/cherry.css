@@ -1,4 +1,4 @@
-html.yt-premium-plus-theme {
+﻿html.yt-spiral-tube-theme {
     --ypp-bg-base: #26181b;
     --ypp-bg-surface: #3c1e28;
     --ypp-bg-glass: rgba(38, 24, 27, 0.95);
@@ -40,8 +40,8 @@ html.yt-premium-plus-theme {
     0% { transform: translate(0, 0) scale(1.1); opacity: 0.8; }
     100% { transform: translate(20px, 20px) scale(1); opacity: 0.5; }
 }
-html.yt-premium-plus-theme.ypp-theme-effects::before,
-html.yt-premium-plus-theme.ypp-theme-effects::after {
+html.yt-spiral-tube-theme.ypp-theme-effects::before,
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
     content: '';
     position: fixed;
     top: -10vh; left: -10vw; width: 120vw; height: 120vh;
@@ -49,11 +49,11 @@ html.yt-premium-plus-theme.ypp-theme-effects::after {
     pointer-events: none;
     will-change: transform, opacity;
 }
-html.yt-premium-plus-theme.ypp-theme-effects::before {
+html.yt-spiral-tube-theme.ypp-theme-effects::before {
     background: radial-gradient(circle at 80% 20%, rgba(253, 164, 175, 0.15) 0%, transparent 50%);
     animation: cherryFloatBg 20s ease-in-out infinite alternate;
 }
-html.yt-premium-plus-theme.ypp-theme-effects::after {
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
     background: radial-gradient(circle at 20% 80%, rgba(253, 164, 175, 0.1) 0%, transparent 40%);
     animation: cherryFloatFg 25s ease-in-out infinite alternate;
 }

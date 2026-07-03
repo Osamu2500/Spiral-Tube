@@ -1,38 +1,38 @@
-
-.yt-premium-plus-theme #guide-button,
-.yt-premium-plus-theme ytd-masthead #buttons ytd-button-renderer,
-.yt-premium-plus-theme ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
+﻿
+.yt-spiral-tube-theme #guide-button,
+.yt-spiral-tube-theme ytd-masthead #buttons ytd-button-renderer,
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
   display: none;
 }
-.yt-premium-plus-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):not([hidden]) {
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):not([hidden]) {
   display: flex;
 }
-.yt-premium-plus-theme ytd-topbar-menu-button-renderer[aria-label*="Create"],
-.yt-premium-plus-theme ytd-button-renderer:has(a[href*="/upload"]),
-.yt-premium-plus-theme ytd-masthead #buttons ytd-topbar-model-builder-renderer,
-.yt-premium-plus-theme
+.yt-spiral-tube-theme ytd-topbar-menu-button-renderer[aria-label*="Create"],
+.yt-spiral-tube-theme ytd-button-renderer:has(a[href*="/upload"]),
+.yt-spiral-tube-theme ytd-masthead #buttons ytd-topbar-model-builder-renderer,
+.yt-spiral-tube-theme
   ytd-topbar-menu-button-renderer:has([aria-label*="Create"]),
-.yt-premium-plus-theme ytd-masthead #buttons #create-button,
-.yt-premium-plus-theme ytd-masthead #buttons ytd-button-renderer:has([aria-label="Create"]),
-.yt-premium-plus-theme ytd-masthead #buttons ytd-button-renderer {
+.yt-spiral-tube-theme ytd-masthead #buttons #create-button,
+.yt-spiral-tube-theme ytd-masthead #buttons ytd-button-renderer:has([aria-label="Create"]),
+.yt-spiral-tube-theme ytd-masthead #buttons ytd-button-renderer {
   /* The big pill button for create is often a generic button renderer in #buttons. 
      Be careful not to hide Sign In if it's there, but we assume signed in. 
      Better to target by icon or specific attributes if possible. */
   display: none !important;
 }
-.yt-premium-plus-theme
+.yt-spiral-tube-theme
   ytd-masthead
   #end
   #buttons
   ytd-button-renderer:has(yt-icon[icon="icons:plus"]),
-.yt-premium-plus-theme
+.yt-spiral-tube-theme
   ytd-masthead
   #end
   #buttons
   ytd-button-renderer:has(path[d*="M20 12h-8v8h-2v-8H2v-2h8V2h2v8h8v2z"]) {
   display: none !important;
 }
-.yt-premium-plus-theme ytd-topbar-logo-renderer {
+.yt-spiral-tube-theme ytd-topbar-logo-renderer {
   padding: 0 16px;
   height: 44px;
   display: flex;

@@ -1,4 +1,4 @@
-html.yt-premium-plus-theme {
+﻿html.yt-spiral-tube-theme {
     --ypp-bg-base: #0f0518;
     --ypp-bg-surface: #1a0524;
     --ypp-bg-glass: rgba(15, 5, 24, 0.95);
@@ -34,7 +34,7 @@ html.yt-premium-plus-theme {
     0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
     100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
 }
-html.yt-premium-plus-theme.ypp-theme-effects::before {
+html.yt-spiral-tube-theme.ypp-theme-effects::before {
     content: "";
     position: fixed;
     bottom: -100px; left: -50vw; right: -50vw; height: 150vh;
@@ -47,7 +47,7 @@ html.yt-premium-plus-theme.ypp-theme-effects::before {
     animation: ypp-outrun-grid 2s linear infinite;
     opacity: 0.6;
 }
-html.yt-premium-plus-theme.ypp-theme-effects::after {
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
     content: "";
     position: fixed;
     bottom: 20vh; left: 50%; width: 300px; height: 300px;

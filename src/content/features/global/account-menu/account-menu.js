@@ -58,10 +58,6 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
         }
     }
 
-    onPageChange() {
-        this._cleanup();
-    }
-
     async disable() {
         await super.disable(); // cleanupEvents() called here — removes all busListeners
         if (window.YPP?.sharedObserver) {

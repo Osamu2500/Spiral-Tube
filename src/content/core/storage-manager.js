@@ -1,6 +1,6 @@
-'use strict';
+﻿'use strict';
 /**
- * @author YouTube Premium+ Team
+ * @author Spiral Tube Team
  * @purpose Unified storage manager with write queue, TTL pruning, and quota protection.
  * @dependencies window.YPP
  * @example

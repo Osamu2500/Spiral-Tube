@@ -1,5 +1,5 @@
-
-html.yt-premium-plus-theme #guide-wrapper {
+﻿
+html.yt-spiral-tube-theme #guide-wrapper {
   opacity: var(--ypp-sidebar-opacity, 1) !important;
 }
 body.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/trending"]),
@@ -48,13 +48,13 @@ body.ypp-floating-guide ytd-guide-section-renderer > h3 {
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
 }
-.yt-premium-plus-theme #guide-inner-content {
+.yt-spiral-tube-theme #guide-inner-content {
   scrollbar-width: none;
 }
-.yt-premium-plus-theme #guide-inner-content:hover {
+.yt-spiral-tube-theme #guide-inner-content:hover {
   scrollbar-width: thin;
 }
-ytd-app[is-watch-page] .yt-premium-plus-theme ytd-guide-renderer {
+ytd-app[is-watch-page] .yt-spiral-tube-theme ytd-guide-renderer {
   display: none;
 }
 ytd-app:not([is-watch-page]) ytd-mini-guide-renderer {
@@ -63,23 +63,23 @@ ytd-app:not([is-watch-page]) ytd-mini-guide-renderer {
   opacity: 0 !important;
   width: 0 !important;
 }
-body.yt-premium-plus-theme #guide-inner-content {
+body.yt-spiral-tube-theme #guide-inner-content {
   background: var(--ypp-bg-surface) !important;
   backdrop-filter: var(--ypp-blur-high) !important;
   border-right: 1px solid var(--ypp-glass-border) !important;
 }
-body.yt-premium-plus-theme ytd-guide-entry-renderer {
+body.yt-spiral-tube-theme ytd-guide-entry-renderer {
   border-radius: var(--ypp-radius-md) !important;
   margin: 2px 12px !important;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease !important;
 }
-body.yt-premium-plus-theme ytd-guide-entry-renderer:hover {
+body.yt-spiral-tube-theme ytd-guide-entry-renderer:hover {
   background-color: rgba(255, 255, 255, 0.08) !important;
   transform: translateX(4px) !important;
 }
-body.yt-premium-plus-theme ytd-guide-entry-renderer[active] {
+body.yt-spiral-tube-theme ytd-guide-entry-renderer[active] {
   background-color: rgba(255, 255, 255, 0.12) !important;
   border-left: 3px solid var(--ypp-accent) !important;
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Theme Manager - Handles visual theming and content visibility features
  * Uses centralized constants for configuration
  */
@@ -262,7 +262,7 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             .map(([k, v]) => `${k}: ${v} !important;`)
             .join('\n');
 
-        style.textContent = `:root.ypp-premium-plus-theme, :root.yt-premium-plus-theme, html[data-ypp-theme="${themeKey}"] {\n${cssVars}\n}`;
+        style.textContent = `:root.ypp-spiral-tube-theme, :root.yt-spiral-tube-theme, html[data-ypp-theme="${themeKey}"] {\n${cssVars}\n}`;
         this._Utils.log(`Injecting Custom Theme: ${themeKey}`, 'THEME');
     }
 

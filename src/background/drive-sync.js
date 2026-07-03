@@ -1,5 +1,5 @@
-/**
- * Google Drive AppData Sync for YouTube Premium Plus
+﻿/**
+ * Google Drive AppData Sync for Spiral Tube
  * Uses the hidden appDataFolder to securely store subscription groups across devices.
  */
 

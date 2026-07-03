@@ -1,5 +1,5 @@
-/**
- * Settings Schema & Validator for YouTube Premium Plus
+﻿/**
+ * Settings Schema & Validator for Spiral Tube
  *
  * Defines the expected type, default, and optional range for every setting key.
  * Used by Utils.loadSettings to sanitize user settings on every load:

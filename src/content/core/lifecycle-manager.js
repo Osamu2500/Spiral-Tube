@@ -1,6 +1,6 @@
-'use strict';
+﻿'use strict';
 /**
- * @author YouTube Premium+ Team
+ * @author Spiral Tube Team
  * @purpose Manages the lifecycle of all extension features, guaranteeing execution order and teardown during SPA navigation.
  * @dependencies window.YPP
  * @example

@@ -1,5 +1,5 @@
-/**
- * YouTube Premium Plus - Main Entry Point
+﻿/**
+ * Spiral Tube - Main Entry Point
  * Bootstraps the application, loads settings, and handles navigation events
  */
 (function () {
@@ -15,7 +15,7 @@
     // =========================================================================
 
     /**
-     * Main Entry Point - YouTube Premium Plus Extension
+     * Main Entry Point - Spiral Tube Extension
      * @description Initializes the feature manager and coordinates all extension features
      */
     window.YPP = window.YPP || {};
@@ -131,7 +131,7 @@
                 this.bootstrapLock = false;
 
                 const loadTime = (performance.now() - startTime).toFixed(2);
-                console.log('%c[YPP] YouTube Premium Plus Global Initialized!', 'color: #a78bfa; font-weight: bold; font-size: 12px;');
+                console.log('%c[YPP] Spiral Tube Global Initialized!', 'color: #a78bfa; font-weight: bold; font-size: 12px;');
                 this.Utils?.log(`Extension Initialized Successfully in ${loadTime}ms`, 'MAIN');
 
                 // Visual feedback
@@ -316,7 +316,7 @@
             // Track Chrome API listeners separately
             this._chromeListeners = [];
 
-            const NAV_DEBOUNCE_MS = 50;
+            const NAV_DEBOUNCE_MS = 0; // 0ms: defer one tick so the URL is committed, but activate features immediately
             const handleNavigation = () => {
                 if (this._navTimeout) clearTimeout(this._navTimeout);
                 this._navTimeout = setTimeout(() => {
@@ -358,10 +358,6 @@
             // Listen for page navigation and track listener
             window.addEventListener('yt-navigate-finish', handleNavigation);
             this.eventListeners.push({ target: window, event: 'yt-navigate-finish', handler: handleNavigation });
-
-            // Also listen for yt-page-data-updated for some YouTube versions
-            window.addEventListener('yt-page-data-updated', handleNavigation);
-            this.eventListeners.push({ target: window, event: 'yt-page-data-updated', handler: handleNavigation });
 
             // Listen for settings changes from popup
             if (chrome?.storage?.onChanged) {
@@ -578,9 +574,9 @@
                     if (this.context.isFeedPlaylists) classes.add('ypp-feed-playlists-page');
 
                     if (this.settings?.premiumTheme) {
-                        classes.add('yt-premium-plus-theme');
+                        classes.add('yt-spiral-tube-theme');
                     } else {
-                        classes.delete('yt-premium-plus-theme');
+                        classes.delete('yt-spiral-tube-theme');
                     }
                     
                     document.body.className = Array.from(classes).join(' ');
@@ -634,7 +630,7 @@
          * @param {string} message - Message to display
          * @param {string} [type] - Toast type
          */
-        showReadyToast(message = 'YouTube Premium+ Ready') {
+        showReadyToast(message = 'Spiral Tube Ready') {
             try {
                 this.Utils?.createToast(message);
             } catch (error) {
@@ -657,7 +653,7 @@
 
             // Show error toast
             try {
-                this.Utils?.createToast?.('YouTube Premium+ failed to load!', 'error');
+                this.Utils?.createToast?.('Spiral Tube failed to load!', 'error');
             } catch (e) {
                 // Last resort fallback
                 console.error('[YPP] Fatal error showing toast:', e);
@@ -761,7 +757,7 @@
     } catch (error) {
         console.error('[YPP] Fatal Bootstrap Error:', error);
         try {
-            window.YPP?.Utils?.createToast?.('YouTube Premium+ encountered a fatal error!', 'error');
+            window.YPP?.Utils?.createToast?.('Spiral Tube encountered a fatal error!', 'error');
         } catch (e) {
             // Last resort
             console.error('[YPP] Could not show fatal error toast:', e);
