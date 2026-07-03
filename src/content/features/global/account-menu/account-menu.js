@@ -53,12 +53,13 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
                     () => { if (!this._injected) this._onMutation(); }
                 );
             }
-
-            // Use onBusEvent() so the subscription is auto-cleaned on disable()
-            this.onBusEvent('page:changed', () => this._cleanup());
         } catch (e) {
             this.utils?.log('Error enabling AccountMenu', 'ACCOUNT', 'error', e);
         }
+    }
+
+    onPageChange() {
+        this._cleanup();
     }
 
     async disable() {
@@ -482,6 +483,13 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
 
     // ─── Cleanup ───────────────────────────────────────────────────────────────
 
+    /**
+     * Standard BaseFeature lifecycle hook called on SPA navigation.
+     */
+    onPageChange(url) {
+        this._cleanup();
+    }
+
     _cleanup() {
         if (typeof this.cleanupEvents === 'function') this.cleanupEvents();
         this._clearPollTimer();
@@ -497,6 +505,10 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
                     child.style.removeProperty('opacity');
                     child.style.removeProperty('pointer-events');
                     child.style.removeProperty('z-index');
+                    child.style.removeProperty('top');
+                    child.style.removeProperty('left');
+                    child.style.removeProperty('width');
+                    child.style.removeProperty('height');
                 }
             });
             // Clean up any nested account items too
@@ -522,6 +534,10 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
                 child.style.removeProperty('opacity');
                 child.style.removeProperty('pointer-events');
                 child.style.removeProperty('z-index');
+                child.style.removeProperty('top');
+                child.style.removeProperty('left');
+                child.style.removeProperty('width');
+                child.style.removeProperty('height');
             });
             delete el.dataset.yppCloaked;
         });

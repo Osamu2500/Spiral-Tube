@@ -49,6 +49,32 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
                     (nodes) => this._processCards()
                 );
             }
+
+            if (this.delegator) {
+                this.delegator.register('mark-watched:toggle', (e, target, payload) => {
+                    if (!this.isEnabled || !payload) return;
+                    if (this._watchedIds.has(payload)) {
+                        this.unmarkAsWatched(payload);
+                    } else {
+                        this.markAsWatched(payload);
+                    }
+                });
+            }
+
+            this._globalContextHandler = (e) => {
+                if (!this.isEnabled) return;
+                const card = e.target.closest(MarkWatched.SELECTORS.CARDS.join(', '));
+                if (!card || !card.dataset.yppContextMenu) return;
+
+                e.preventDefault();
+                const videoId = this._getVideoId(card);
+                if (!videoId) return;
+
+                this._showContextMenu(e, videoId);
+            };
+            this.addListener(document, 'contextmenu', this._globalContextHandler);
+
+            this._injectCSS();
         } catch (e) {
             this.utils.log?.(`Enable error: ${e.message}`, 'MarkWatched', 'error');
         }
@@ -61,7 +87,15 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
             window.YPP.events?.off('app:videoChange', this._boundProcess);
             
             if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.unregister('mark-watched');
+                window.YPP.sharedObserver.register(
+                    'mark-watched',
+                    MarkWatched.SELECTORS.CARDS.join(', '),
+                    (nodes) => this._processCards()
+                );
+            }
+
+            if (this.delegator) {
+                this.delegator.unregister('mark-watched:toggle');
             }
             
             document.querySelectorAll('.ypp-watched-badge').forEach(e => e.remove());
@@ -94,6 +128,29 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
         } catch (e) {
             this.utils.log?.(`Storage load error: ${e.message}`, 'MarkWatched', 'error');
         }
+    }
+
+    _injectCSS() {
+        if (document.getElementById('ypp-mark-watched-style')) return;
+        const style = document.createElement('style');
+        style.id = 'ypp-mark-watched-style';
+        style.textContent = `
+            .ypp-watched-icon-permanent { transition: background 0.2s, transform 0.2s; cursor: pointer; }
+            .ypp-watched-icon-permanent:hover { background: var(--ypp-accent, #3ea6ff) !important; transform: scale(1.1) !important; }
+            .ypp-watch-context-item {
+                padding: 10px 16px;
+                color: white;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border-radius: 4px;
+                margin: 2px 4px;
+                transition: background 0.2s;
+            }
+            .ypp-watch-context-item:hover { background: rgba(255,255,255,0.08); }
+        `;
+        document.head.appendChild(style);
     }
 
     /**
@@ -260,30 +317,10 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
             icon = document.createElement('div');
             icon.className = 'ypp-watched-icon-permanent';
             icon.dataset.yppWatchIconFor = videoId;
+            icon.setAttribute('data-ypp-action', 'mark-watched:toggle');
+            icon.setAttribute('data-ypp-payload', videoId);
             icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`;
             thumbnail.appendChild(icon);
-
-            // Use native listeners — they survive disable/re-enable cycles
-            // because the icon stays in the DOM. The handler reads from `this`
-            // at call time, so it always picks up the latest state.
-            this.addListener(icon, 'mouseenter', () => {
-                icon.style.background = 'var(--ypp-accent, #3ea6ff)';
-                icon.style.transform = 'scale(1.1)';
-            });
-            this.addListener(icon, 'mouseleave', () => {
-                icon.style.background = '';
-                icon.style.transform = '';
-            });
-            this.addListener(icon, 'click', (ev) => {
-                ev.preventDefault();
-                ev.stopPropagation();
-                if (!this.isEnabled) return; // Guard: feature might be disabled
-                if (this._watchedIds.has(videoId)) {
-                    this.unmarkAsWatched(videoId);
-                } else {
-                    this.markAsWatched(videoId);
-                }
-            });
         }
         
         icon.title = this._watchedIds.has(videoId) ? 'Unmark as watched' : 'Mark as watched';
@@ -304,70 +341,60 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
     _addContextMenu(card, videoId) {
         if (card.dataset.yppContextMenu) return;
         card.dataset.yppContextMenu = '1';
+    }
 
-        this.addListener(card, 'contextmenu', (e) => {
-            document.querySelectorAll('.ypp-watch-context-menu').forEach(el => el.remove());
+    _showContextMenu(e, videoId) {
+        document.querySelectorAll('.ypp-watch-context-menu').forEach(el => el.remove());
 
-            const isWatched = this._watchedIds.has(videoId);
-            const menu = document.createElement('div');
-            menu.className = 'ypp-watch-context-menu';
-            menu.style.cssText = `
-                position: fixed;
-                top: ${e.clientY}px;
-                left: ${e.clientX}px;
-                z-index: 99999;
-                background: rgba(28,28,28,0.96);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255,255,255,0.1);
-                border-radius: 8px;
-                padding: 6px 0;
-                min-width: 180px;
-                box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-                font-family: Roboto, sans-serif;
-                font-size: 14px;
-            `;
+        const isWatched = this._watchedIds.has(videoId);
+        const menu = document.createElement('div');
+        menu.className = 'ypp-watch-context-menu';
+        menu.style.cssText = `
+            position: fixed;
+            top: ${e.clientY}px;
+            left: ${e.clientX}px;
+            z-index: 99999;
+            background: rgba(28,28,28,0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 6px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            font-family: Roboto, sans-serif;
+            font-size: 14px;
+        `;
 
-            const item = document.createElement('div');
-            item.style.cssText = `
-                padding: 10px 16px;
-                color: white;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                border-radius: 4px;
-                margin: 2px 4px;
-            `;
-            item.innerHTML = isWatched
-                ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Mark as Unwatched`
-                : `<svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mark as Watched`;
+        const item = document.createElement('div');
+        item.className = 'ypp-watch-context-item';
+        item.innerHTML = isWatched
+            ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Mark as Unwatched`
+            : `<svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mark as Watched`;
 
-            this.addListener(item, 'mouseenter', () => item.style.background = 'rgba(255,255,255,0.08)');
-            this.addListener(item, 'mouseleave', () => item.style.background = 'transparent');
-            this.addListener(item, 'click', (ev) => {
-                ev.preventDefault();
-                ev.stopPropagation();
-                if (isWatched) {
-                    this.unmarkAsWatched(videoId);
-                } else {
-                    this.markAsWatched(videoId);
-                }
-                menu.remove();
-            });
-
-            menu.appendChild(item);
-            document.body.appendChild(menu);
-
-            // Scoped close listener
-            const closeHandler = (ev) => {
-                if (!menu.contains(ev.target)) {
-                    menu.remove();
-                }
-            };
-            setTimeout(() => {
-                this.addListener(document, 'click', closeHandler);
-            }, 0);
+        this.addListener(item, 'click', (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            if (isWatched) {
+                this.unmarkAsWatched(videoId);
+            } else {
+                this.markAsWatched(videoId);
+            }
+            menu.remove();
         });
+
+        menu.appendChild(item);
+        document.body.appendChild(menu);
+
+        // Scoped close listener
+        const closeHandler = (ev) => {
+            if (!menu.contains(ev.target)) {
+                menu.remove();
+                document.removeEventListener('click', closeHandler);
+            }
+        };
+        setTimeout(() => {
+            document.addEventListener('click', closeHandler);
+        }, 0);
     }
 
     _onNavigate() {

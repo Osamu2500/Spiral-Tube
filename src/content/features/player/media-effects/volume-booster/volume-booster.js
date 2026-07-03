@@ -117,9 +117,10 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         if (video && this._needsAudioGraph()) this.initAudioContext(video);
     }
 
-    async disable() {
+    _cleanupVideoBindings() {
         // Clean up UI
         if (this._volumePopup) {
+            if (this._volumeAnimCancel) this._volumeAnimCancel();
             this._volumePopup.remove();
             this._volumePopup = null;
         }
@@ -134,9 +135,6 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
             this._volumePopupEscapeHandler = null;
         }
         
-        // Call super to run cleanupEvents and remove all tracked listeners
-        await super.disable();
-
         if (this._resumeAudioContextBound) {
             document.removeEventListener('click', this._resumeAudioContextBound);
             document.removeEventListener('keydown', this._resumeAudioContextBound);
@@ -144,51 +142,30 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
             this._resumeAudioContextBound = null;
         }
 
-        // Bug fix: scope button removal to this feature instance's video context,
-        // not a global querySelector that could remove buttons on other instances.
+        // Clean up button
         const btn = this._boundVideo?.closest?.('body')?.querySelector?.('#ypp-volume-boost-btn[data-vb-id="' + this._id + '"]')
             || document.getElementById('ypp-volume-boost-btn');
         if (btn) btn.remove();
 
-        // Clean up event listeners
-        if (this._boundVideo && this._initHandler) {
-            // Handled automatically by BaseFeature
-            this._initHandler = null; // release closure reference
-        }
-
         // Safely bypass audio effects without destroying the graph
         if (this._audioConnected) {
-            // Reset Gain
-            if (this.gainNode) {
-                this.gainNode.gain.setTargetAtTime(1, this.ctx.currentTime, 0.05);
-            }
-            
-            // Reset EQ
-            this._eqNodes.forEach(n => { 
-                if (n) n.gain.setTargetAtTime(0, this.ctx.currentTime, 0.05); 
-            });
-            
-            // Bypass compressor safely
+            if (this.gainNode) this.gainNode.gain.setTargetAtTime(1, this.ctx.currentTime, 0.05);
+            this._eqNodes.forEach(n => { if (n) n.gain.setTargetAtTime(0, this.ctx.currentTime, 0.05); });
             if (this.compressorNode) {
                 this.compressorNode.ratio.value = 1;
                 this.compressorNode.threshold.value = 0;
             }
-            
-            // Reset Panner & Mono
-            if (this.pannerNode) {
-                this.pannerNode.pan.setTargetAtTime(0, this.ctx.currentTime, 0.05);
-            }
+            if (this.pannerNode) this.pannerNode.pan.setTargetAtTime(0, this.ctx.currentTime, 0.05);
             if (this.source) {
                 this.source.channelCount = 2;
                 this.source.channelCountMode = 'max';
             }
-            if (this.widenerGain) {
-                this.widenerGain.gain.setTargetAtTime(0, this.ctx.currentTime, 0.05);
-            }
-            if (this.waveShaperNode) {
-                this.waveShaperNode.curve = this._makeDistortionCurve(0);
-            }
         }
+    }
+
+    async disable() {
+        this._cleanupVideoBindings();
+        await super.disable();
     }
 
     onUpdate() {
@@ -233,8 +210,6 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         if (this._volumeGain !== 1.0) return true;
         if (this._balance !== 0.0) return true;
         if (this._monoEnabled) return true;
-        if (this._widenerEnabled) return true;
-        if (this._warmthLevel > 0) return true;
         if (this._eqGains && this._eqGains.some(g => g !== 0)) return true;
         return false;
     }
@@ -243,7 +218,9 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         if (!video) return false;
         if (video.srcObject) return true;
         const src = video.currentSrc || video.src;
-        if (!src) return false;
+        // If no src yet (video element exists but hasn't loaded), trust same-origin pages.
+        // YouTube always serves blob: URLs so an empty src is a transient loading state, not a CORS issue.
+        if (!src) return window.location.hostname === 'www.youtube.com';
         if (src.startsWith('blob:') || src.startsWith('data:')) return true;
         try {
             const url = new URL(src);
@@ -270,7 +247,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         
         // If we were connected to a DIFFERENT video, clean up the old bindings
         if (this._audioConnected && this._boundVideo && this._boundVideo !== video) {
-            this.disable();
+            this._cleanupVideoBindings();
             this._audioConnected = false;
         }
 
@@ -293,18 +270,27 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
                     video.__ypp_source = this.source;
                 }
 
+                // Resume context BEFORE building graph — ensures currentTime is valid
+                // and prevents audio silence on first interaction.
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume().catch(() => {});
+                }
+
                 this._buildAudioGraph();
 
                 this._audioConnected = true;
                 this._restoreAudioState();
 
-                if (this.ctx.state === 'suspended') {
-                    this.ctx.resume().catch(() => {});
-                }
-
             } catch (e) {
                 this.utils?.log?.('[YPP:VolumeBooster] Audio engine init failed: ' + e.message, 'VolumeBooster', 'warn');
                 this._audioConnected = false;
+                // SAFETY: If graph build failed after source was captured, reconnect source
+                // directly to destination to prevent complete audio silence.
+                try {
+                    if (this.source && this.ctx) {
+                        this.source.connect(this.ctx.destination);
+                    }
+                } catch (_) { /* ignore secondary failure */ }
             }
         };
 
@@ -327,15 +313,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         if (!video.paused) this._initHandler();
     }
 
-    /**
-     * Constructs the audio processing chain.
-     * Topology: source -> eqNodes -> panner -> compressor -> gain -> analyser -> destination
-     */
     _buildAudioGraph() {
-        // AGC Gain (Loudness Normalization)
-        this.agcGain = this.ctx.createGain();
-        this.agcGain.gain.value = 1.0;
-
         // 1. Build 10 EQ band nodes
         this._eqNodes = this._bands.map((band, i) => {
             const f = this.ctx.createBiquadFilter();
@@ -346,148 +324,52 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
             return f;
         });
 
-        // 1.5 Harmonic Saturation (Tube Warmth)
-        this.waveShaperNode = this.ctx.createWaveShaper();
-        this.waveShaperNode.curve = this._makeDistortionCurve(this._warmthLevel);
-        this.waveShaperNode.oversample = '4x';
-
         // 2. Panner Node for Balance
         this.pannerNode = this.ctx.createStereoPanner();
         this.pannerNode.pan.value = this._balance;
 
-        // 3. Multi-Band Compression (Replacing Single-Band)
-        this.mbcLowFilter = this.ctx.createBiquadFilter();
-        this.mbcLowFilter.type = 'lowpass';
-        this.mbcLowFilter.frequency.value = 250;
-        
-        this.mbcMidFilterHP = this.ctx.createBiquadFilter();
-        this.mbcMidFilterHP.type = 'highpass';
-        this.mbcMidFilterHP.frequency.value = 250;
-        this.mbcMidFilterLP = this.ctx.createBiquadFilter();
-        this.mbcMidFilterLP.type = 'lowpass';
-        this.mbcMidFilterLP.frequency.value = 4000;
-        
-        this.mbcHighFilter = this.ctx.createBiquadFilter();
-        this.mbcHighFilter.type = 'highpass';
-        this.mbcHighFilter.frequency.value = 4000;
-
-        this.mbcLowComp = this.ctx.createDynamicsCompressor();
-        this.mbcMidComp = this.ctx.createDynamicsCompressor();
-        this.mbcHighComp = this.ctx.createDynamicsCompressor();
-        
-        this.mbcSumNode = this.ctx.createGain();
-        this.mbcSumNode.gain.value = 1.0;
-
-        // Fallback/Bypass route
+        // 3. Simple Compressor (to tame peaks)
         this.compressorNode = this.ctx.createDynamicsCompressor();
-        this.mbcBypassNode = this.ctx.createGain();
-
         this._applyCompressorState();
 
-        // 4. Master Gain
-        this.gainNode = this.ctx.createGain();
-        this.gainNode.gain.value = this._volumeGain;
-
-        // 4.5 Spatial Audio (HRTF)
-        this.spatialSplitter = this.ctx.createChannelSplitter(2);
-        this.spatialMerger = this.ctx.createChannelMerger(2);
-        
-        this.spatialLeftPanner = this.ctx.createPanner();
-        this.spatialLeftPanner.panningModel = 'HRTF';
-        this.spatialLeftPanner.distanceModel = 'inverse';
-        this.spatialLeftPanner.positionX.value = -1.2;
-        this.spatialLeftPanner.positionY.value = 0.2;
-        this.spatialLeftPanner.positionZ.value = -1.5;
-        
-        this.spatialRightPanner = this.ctx.createPanner();
-        this.spatialRightPanner.panningModel = 'HRTF';
-        this.spatialRightPanner.distanceModel = 'inverse';
-        this.spatialRightPanner.positionX.value = 1.2;
-        this.spatialRightPanner.positionY.value = 0.2;
-        this.spatialRightPanner.positionZ.value = -1.5;
-
-        this.spatialSplitter.connect(this.spatialLeftPanner, 0); 
-        this.spatialSplitter.connect(this.spatialRightPanner, 1); 
-        this.spatialLeftPanner.connect(this.spatialMerger, 0, 0);
-        this.spatialRightPanner.connect(this.spatialMerger, 0, 1);
-
-        this.spatialBypassGain = this.ctx.createGain();
-        this.spatialBypassGain.gain.value = this._widenerEnabled ? 0 : 1;
-        this.spatialEffectGain = this.ctx.createGain();
-        this.spatialEffectGain.gain.value = this._widenerEnabled ? 1 : 0;
-
-        // 5. Analyser for Visualization & AGC
+        // 4. Analyser for Visualization
         this.analyserNode = this.ctx.createAnalyser();
         this.analyserNode.fftSize = 256; 
         this.analyserNode.smoothingTimeConstant = 0.85;
 
-        // Chain the nodes sequentially
-        let node = this.source;
-        node.connect(this.agcGain);
-        node = this.agcGain;
-        
-        node.connect(this.waveShaperNode);
-        node = this.waveShaperNode;
+        // 5. Master Gain
+        this.gainNode = this.ctx.createGain();
+        this.gainNode.gain.value = this._volumeGain;
 
+        // Chain the nodes sequentially: Source -> EQ -> Panner -> Compressor -> Analyser
+        let node = this.source;
         this._eqNodes.forEach(eq => { 
             node.connect(eq); 
             node = eq; 
         });
         
         node.connect(this.pannerNode);
-
-        // MBC Route
-        this.pannerNode.connect(this.mbcLowFilter);
-        this.pannerNode.connect(this.mbcMidFilterHP);
-        this.mbcMidFilterHP.connect(this.mbcMidFilterLP);
-        this.pannerNode.connect(this.mbcHighFilter);
-        
-        this.mbcLowFilter.connect(this.mbcLowComp);
-        this.mbcMidFilterLP.connect(this.mbcMidComp);
-        this.mbcHighFilter.connect(this.mbcHighComp);
-
-        this.mbcLowComp.connect(this.mbcSumNode);
-        this.mbcMidComp.connect(this.mbcSumNode);
-        this.mbcHighComp.connect(this.mbcSumNode);
-
-        // Bypass Route
         this.pannerNode.connect(this.compressorNode);
-        this.compressorNode.connect(this.mbcBypassNode);
-        
-        this.mbcSumNode.connect(this.gainNode);
-        this.mbcBypassNode.connect(this.gainNode);
+        this.compressorNode.connect(this.analyserNode);
 
-        // Spatial Audio Route
-        this.gainNode.connect(this.spatialBypassGain);
-        this.gainNode.connect(this.spatialSplitter);
-        
-        this.spatialMerger.connect(this.spatialEffectGain);
-        
-        this.spatialBypassGain.connect(this.analyserNode);
-        this.spatialEffectGain.connect(this.analyserNode);
-
-        // Output
+        // Output routing - GainNode is placed at the absolute end of the chain
         const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
         if (video && video.__ypp_ext_compressor) {
+            // Unboosted signal -> external compressor -> our gain node -> destination
             this.analyserNode.connect(video.__ypp_ext_compressor.input);
-            video.__ypp_ext_compressor.output.connect(this.ctx.destination);
+            try { video.__ypp_ext_compressor.output.disconnect(); } catch (e) {}
+            video.__ypp_ext_compressor.output.connect(this.gainNode);
         } else {
-            this.analyserNode.connect(this.ctx.destination);
+            this.analyserNode.connect(this.gainNode);
         }
         
-        this._startAGC();
+        this.gainNode.connect(this.ctx.destination);
     }
 
-    /**
-     * Restores all internal audio states (gains, mono, etc.) to the graph.
-     * Useful when re-enabling or after initial graph construction.
-     */
     _restoreAudioState() {
         this.setVolume(this._volumeGain);
         this.setBalance(this._balance);
         this.setMono(this._monoEnabled);
-        this.setWidener(this._widenerEnabled);
-        this.setWarmth(this._warmthLevel);
         this._applyCompressorState();
         
         // Restore EQ parameters safely
@@ -506,72 +388,14 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         if (!this.compressorNode) return;
         
         if (this._compressorEnabled) {
-            // Enable Multi-Band Compression
-            if (this.mbcSumNode) this.mbcSumNode.gain.value = 1;
-            if (this.mbcBypassNode) this.mbcBypassNode.gain.value = 0;
-            
-            // Low (Punchy, controlled)
-            if (this.mbcLowComp) {
-                this.mbcLowComp.threshold.value = -30;
-                this.mbcLowComp.ratio.value = 6;
-                this.mbcLowComp.attack.value = 0.01;
-                this.mbcLowComp.release.value = 0.1;
-            }
-            
-            // Mid (Preserve vocals)
-            if (this.mbcMidComp) {
-                this.mbcMidComp.threshold.value = -20;
-                this.mbcMidComp.ratio.value = 2.5;
-                this.mbcMidComp.attack.value = 0.05;
-                this.mbcMidComp.release.value = 0.2;
-            }
-            
-            // High (Tame harshness)
-            if (this.mbcHighComp) {
-                this.mbcHighComp.threshold.value = -24;
-                this.mbcHighComp.ratio.value = 4;
-                this.mbcHighComp.attack.value = 0.02;
-                this.mbcHighComp.release.value = 0.15;
-            }
+            this.compressorNode.threshold.value = -24;
+            this.compressorNode.ratio.value = 4;
+            this.compressorNode.attack.value = 0.02;
+            this.compressorNode.release.value = 0.15;
         } else {
-            // Bypass Multi-Band
-            if (this.mbcSumNode) this.mbcSumNode.gain.value = 0;
-            if (this.mbcBypassNode) this.mbcBypassNode.gain.value = 1;
-            
             this.compressorNode.threshold.value = 0;
             this.compressorNode.ratio.value = 1;
         }
-    }
-
-    _startAGC() {
-        if (this._agcInterval) clearInterval(this._agcInterval);
-        
-        // Simple AGC: Measure RMS every 100ms, adjust agcGain to hit ~ -14dBFS
-        const dataArray = new Float32Array(this.analyserNode.fftSize);
-        const targetRMS = 0.15; // Approx -16 LUFS
-        
-        this._agcInterval = setInterval(() => {
-            if (!this.analyserNode || !this.agcGain || (this._boundVideo && this._boundVideo.paused)) return;
-            
-            this.analyserNode.getFloatTimeDomainData(dataArray);
-            let sumSquares = 0;
-            for (let i = 0; i < dataArray.length; i++) {
-                sumSquares += dataArray[i] * dataArray[i];
-            }
-            const rms = Math.sqrt(sumSquares / dataArray.length);
-            
-            // Very slow, cinematic volume riding
-            if (rms > 0.01) {
-                const currentGain = this.agcGain.gain.value;
-                let desiredGain = targetRMS / rms;
-                // Clamp desired gain to prevent insane boosting or cutting
-                desiredGain = Math.max(0.2, Math.min(3.0, desiredGain));
-                
-                // Low-pass filter the gain adjustment (slow riding)
-                const newGain = currentGain + (desiredGain - currentGain) * 0.05;
-                this.agcGain.gain.setTargetAtTime(newGain, this.ctx.currentTime, 0.5);
-            }
-        }, 100);
     }
 
     setVolume(multiplier) {
@@ -582,20 +406,23 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         }
         if (this.gainNode && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume();
-            // Ramp gracefully to avoid audio clipping/clicks
-            this.gainNode.gain.setTargetAtTime(multiplier, this.ctx.currentTime, 0.05);
+            this.gainNode.gain.cancelScheduledValues(this.ctx.currentTime);
+            this.gainNode.gain.setValueAtTime(this.gainNode.gain.value, this.ctx.currentTime);
+            this.gainNode.gain.linearRampToValueAtTime(multiplier, this.ctx.currentTime + 0.05);
         }
     }
 
-    setBalance(value) {
-        this._balance = value;
+    setBalance(pan) {
+        this._balance = pan;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.pannerNode && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume();
-            this.pannerNode.pan.setTargetAtTime(value, this.ctx.currentTime, 0.05);
+            this.pannerNode.pan.cancelScheduledValues(this.ctx.currentTime);
+            this.pannerNode.pan.setValueAtTime(this.pannerNode.pan.value, this.ctx.currentTime);
+            this.pannerNode.pan.linearRampToValueAtTime(pan, this.ctx.currentTime + 0.05);
         }
     }
 
@@ -605,56 +432,23 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
             const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
-        if (this.ctx && this.source) {
-            // Guard: channelCount setter may throw in some browsers on MediaElementAudioSourceNode
-            try {
-                this.source.channelCount = enabled ? 1 : 2;
-                this.source.channelCountMode = enabled ? 'explicit' : 'max';
-            } catch (e) {
-                // Fallback: channelCountMode alone achieves a useful approximation
-                this.source.channelCountMode = enabled ? 'explicit' : 'max';
-            }
-        }
-    }
-
-    setWidener(enabled) {
-        this._widenerEnabled = enabled;
-        if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
-            if (video) this.initAudioContext(video);
-        }
-        if (this.spatialBypassGain && this.spatialEffectGain && this.ctx) {
+        if (this.source && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume();
-            
-            // Crossfade between normal and HRTF spatial audio
-            this.spatialBypassGain.gain.setTargetAtTime(enabled ? 0 : 1, this.ctx.currentTime, 0.05);
-            this.spatialEffectGain.gain.setTargetAtTime(enabled ? 1 : 0, this.ctx.currentTime, 0.05);
+            this.source.channelCount = enabled ? 1 : 2;
+            this.source.channelCountMode = enabled ? 'clamped-max' : 'max';
         }
     }
 
-    setWarmth(level) {
-        this._warmthLevel = level;
+    setCompressor(enabled) {
+        this._compressorEnabled = enabled;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
-        if (this.waveShaperNode && this.ctx) {
-            this.waveShaperNode.curve = this._makeDistortionCurve(level);
+        if (this.ctx) {
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            this._applyCompressorState();
         }
-    }
-
-    _makeDistortionCurve(amount) {
-        if (amount <= 0) return new Float32Array(2);
-        // Normalize 0-100 to a sensible range for the algorithm
-        const k = typeof amount === 'number' ? amount * 4 : 50;
-        const n_samples = 44100;
-        const curve = new Float32Array(n_samples);
-        const deg = Math.PI / 180;
-        for (let i = 0; i < n_samples; ++i) {
-            const x = i * 2 / n_samples - 1;
-            curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
-        }
-        return curve;
     }
 
     _setEQBand(index, db) {
@@ -665,7 +459,9 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         }
         if (this._eqNodes[index] && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume();
-            this._eqNodes[index].gain.setTargetAtTime(db, this.ctx.currentTime, 0.05);
+            this._eqNodes[index].gain.cancelScheduledValues(this.ctx.currentTime);
+            this._eqNodes[index].gain.setValueAtTime(this._eqNodes[index].gain.value, this.ctx.currentTime);
+            this._eqNodes[index].gain.linearRampToValueAtTime(db, this.ctx.currentTime + 0.05);
         }
     }
 
@@ -677,7 +473,9 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         }
         if (this._eqNodes[index] && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume();
-            this._eqNodes[index].frequency.setTargetAtTime(freq, this.ctx.currentTime, 0.05);
+            this._eqNodes[index].frequency.cancelScheduledValues(this.ctx.currentTime);
+            this._eqNodes[index].frequency.setValueAtTime(this._eqNodes[index].frequency.value, this.ctx.currentTime);
+            this._eqNodes[index].frequency.linearRampToValueAtTime(freq, this.ctx.currentTime + 0.05);
         }
     }
 
@@ -690,7 +488,9 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         if (this._eqNodes[index] && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume();
             if (this._bands[index].type === 'peaking') {
-                this._eqNodes[index].Q.setTargetAtTime(q, this.ctx.currentTime, 0.05);
+                this._eqNodes[index].Q.cancelScheduledValues(this.ctx.currentTime);
+                this._eqNodes[index].Q.setValueAtTime(this._eqNodes[index].Q.value, this.ctx.currentTime);
+                this._eqNodes[index].Q.linearRampToValueAtTime(q, this.ctx.currentTime + 0.05);
             }
         }
     }
