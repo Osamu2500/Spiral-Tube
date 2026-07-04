@@ -397,18 +397,10 @@ export const POPUP_SCHEMA = [
                 ]
             },
             {
-                title: 'External Integrations',
+                title: 'Global Player Bar',
                 items: [
-                    { type:'inlineToggle', id:'enableGlobalPlayerBar', label:'Global Player Bar', desc:'External sites UI', icon:P('M3 3h18v14H3zM3 15h18') },
-                    {
-                        type:'select', id:'globalPlayerBarPosition', label:'Player Bar Position', desc:'Global Player Bar layout',
-                        options: [ {value:'right',label:'Right'}, {value:'left',label:'Left'}, {value:'top',label:'Top'} ]
-                    },
-                ]
-            },
-            {
-                title: 'Global Player Bar (Elements)',
-                items: [
+                    { type:'toggle', id:'enableGlobalPlayerBar', label:'Global Player Bar', desc:'Enable on external sites', icon:P('M3 3h18v14H3zM3 15h18') },
+                    { type:'button-group', id:'globalPlayerBarPosition', label:'Player Bar Position', desc:'Layout position', icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z'), options: [ {value:'right',label:'Right'}, {value:'left',label:'Left'}, {value:'top',label:'Top'} ] },
                     { type:'toggle', id:'gpb_showPlay', label:'Play/Pause', desc:'Native Play/Pause', icon:P('M5 3l14 9-14 9V3z') },
                     { type:'toggle', id:'gpb_showTime', label:'Current Time', desc:'Time Display', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
                     { type:'toggle', id:'gpb_showVolume', label:'Volume/Mute', desc:'Native Volume slider', icon:P('M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07') },
