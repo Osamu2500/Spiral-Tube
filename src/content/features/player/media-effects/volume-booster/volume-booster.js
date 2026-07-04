@@ -105,9 +105,11 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         // Call super to run cleanupEvents and remove all tracked listeners
         await super.disable();
 
-        // Scope button removal to this feature instance
-        const btn = document.querySelector('#ypp-volume-boost-btn[data-vb-id="' + this._id + '"]');
-        if (btn) btn.remove();
+        // Scope button removal to this feature instance, but ONLY if the feature is completely disabled
+        if (!this.settings || !this.settings.enableVolumeBoost) {
+            const btn = document.querySelector('#ypp-volume-boost-btn[data-vb-id="' + this._id + '"]');
+            if (btn) btn.remove();
+        }
 
         // Clean up event listeners
         if (this._boundVideo && this._initHandler) {
@@ -422,9 +424,17 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
             e.stopPropagation();
             if (window.YPP.features.VolumeBoosterUI) {
                 const activeVideo = document.querySelector('.html5-main-video') || document.querySelector('video');
+                // Synchronously initialize AudioContext during a guaranteed user gesture (click)
+                // This prevents the AudioContext from being created in a 'suspended' state,
+                // which would otherwise cause the video to buffer and the audio to mute.
+                if (activeVideo && !this._audioConnected) {
+                    this.initAudioContext(activeVideo);
+                }
+                
                 window.YPP.features.VolumeBoosterUI.toggleEQPanel(this, activeVideo, btn);
             }
         });
+
         return btn;
     }
 };
