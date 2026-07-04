@@ -452,18 +452,108 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
   }
 
   async _showPlaylistPicker() {
-    const first = [...this._selected.values()][0];
-    if (!first) return;
-    // Opens YouTube's native "Save to playlist" dialog for the first selected video.
-    // The user can then pick any playlist from the dialog.
-    const done = await this._invokeMenuAction(first.element, [
-      'save to playlist',
-      'save to',
-      'save',
-    ]);
+    const videos = [...this._selected.values()];
+    if (videos.length === 0) return;
+
+    // We exclude 'watch later' so we don't accidentally click "Save to Watch Later"
+    const matchRules = [{ text: 'save to playlist' }, { text: 'save', exclude: 'watch later' }];
+    const done = await this._invokeMenuAction(videos[0].element, matchRules);
     if (!done) {
       this._showToast('Could not open playlist picker — try clicking ⋮ manually');
+      return;
     }
+
+    if (videos.length === 1) {
+      this._clearAll();
+      return;
+    }
+
+    // Wait for the native dialog to appear
+    const popup = await this.waitForElement('ytd-add-to-playlist-renderer', 3000);
+    if (!popup) {
+      this._clearAll();
+      return;
+    }
+
+    // Listen for clicks on the checkboxes to know which playlists the user selected
+    const checkedPlaylists = new Set();
+    const onClick = (e) => {
+      const option = e.target.closest('ytd-playlist-add-to-option-renderer');
+      if (option) {
+        const titleEl = option.querySelector('#label');
+        if (titleEl) {
+          const title = titleEl.textContent.trim();
+          if (checkedPlaylists.has(title)) {
+              checkedPlaylists.delete(title);
+          } else {
+              checkedPlaylists.add(title);
+          }
+        }
+      }
+    };
+    
+    popup.addEventListener('click', onClick);
+
+    // Wait for the popup to close
+    await new Promise(resolve => {
+       const checkClosed = () => {
+           const dialog = popup.closest('tp-yt-paper-dialog') || popup.closest('ytd-popup-container');
+           return !dialog || dialog.style.display === 'none' || dialog.getAttribute('aria-hidden') === 'true' || !document.body.contains(popup);
+       };
+       const observer = new MutationObserver(() => {
+           if (checkClosed()) { observer.disconnect(); resolve(); }
+       });
+       observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+       const interval = setInterval(() => {
+           if (checkClosed()) { clearInterval(interval); observer.disconnect(); resolve(); }
+       }, 500);
+    });
+
+    popup.removeEventListener('click', onClick);
+
+    if (checkedPlaylists.size === 0) {
+       this._clearAll();
+       return;
+    }
+
+    this._showToast(`Adding remaining ${videos.length - 1} video(s) to playlist(s)…`);
+    
+    let successCount = 1;
+    for (let i = 1; i < videos.length; i++) {
+       const video = videos[i];
+       const opened = await this._invokeMenuAction(video.element, matchRules);
+       if (!opened) continue;
+       
+       await this._delay(300);
+       const dialog = document.querySelector('ytd-add-to-playlist-renderer');
+       if (!dialog) continue;
+
+       const options = Array.from(dialog.querySelectorAll('ytd-playlist-add-to-option-renderer'));
+       for (const option of options) {
+           const titleEl = option.querySelector('#label');
+           if (titleEl && checkedPlaylists.has(titleEl.textContent.trim())) {
+               const checkbox = option.querySelector('tp-yt-paper-checkbox');
+               // Click to check it if it's not checked
+               if (checkbox && !checkbox.hasAttribute('checked')) {
+                   this._simulateMouseClick(checkbox);
+                   await this._delay(100);
+               }
+           }
+       }
+
+       const closeBtn = dialog.querySelector('#close-button');
+       if (closeBtn) {
+           this._simulateMouseClick(closeBtn);
+       } else {
+           document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+       }
+       
+       successCount++;
+       await this._delay(300); // Wait for dialog to fully close
+    }
+
+    this._showToast(`Successfully saved ${successCount} videos to playlist(s)`);
+    this._clearAll();
   }
 
   async _markNotInterested() {
@@ -574,7 +664,7 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
 
   /**
    * @param {Element} popup
-   * @param {string | string[]} match
+   * @param {string | string[] | {text: string, exclude?: string}[]} match
    * @returns {Element | null}
    */
   _findMenuItemByText(popup, match) {
@@ -583,7 +673,13 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
     return (
       items.find((item) => {
         const txt = (item.innerText || item.textContent || '').trim().toLowerCase();
-        return terms.some((term) => txt.includes(term) || txt === term);
+        return terms.some((term) => {
+          if (typeof term === 'string') {
+            return txt.includes(term.toLowerCase());
+          }
+          if (term.exclude && txt.includes(term.exclude.toLowerCase())) return false;
+          return txt.includes(term.text.toLowerCase());
+        });
       }) || null
     );
   }
