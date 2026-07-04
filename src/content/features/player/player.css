@@ -595,15 +595,22 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
 html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button {
   border-radius: 12px !important;
   transition: transform 0.2s cubic-bezier(0.2,0.8,0.2,1), background 0.2s ease, box-shadow 0.2s ease !important;
+  outline: none !important;
+  border: none !important;
 }
-html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:hover {
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:hover,
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:focus {
   background: rgba(255, 255, 255, 0.12) !important;
   transform: translateY(-2px) scale(1.05) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  outline: none !important;
+  border: none !important;
 }
 html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:active {
   transform: translateY(0) scale(0.95) !important;
   background: rgba(255, 255, 255, 0.2) !important;
+  outline: none !important;
+  border: none !important;
 }
 body.yt-spiral-tube-theme .ytp-gradient-bottom,
 body.yt-spiral-tube-theme .ytp-gradient-top {
