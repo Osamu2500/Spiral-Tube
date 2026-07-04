@@ -2376,7 +2376,7 @@ YouTube may have blocked the request. Try visiting the channel page directly.`)}
 #ypp-eq-panel {
     position: fixed;
     bottom: 80px;
-    right: 0px;
+    right: 16px;
     width: 430px;
     background: rgba(0, 0, 0, 0.15); /* Fully transparent with heavy blur */
     border: 1px solid rgba(255,255,255,0.15);
@@ -2537,7 +2537,7 @@ YouTube may have blocked the request. Try visiting the channel page directly.`)}
 
 /* Footer */
 .ypp-eq-footer {
-    display: flex; align-items: center; gap: 0px;
+    display: flex; align-items: center; gap: 8px;
     padding: 0 18px 14px;
 }
 .ypp-eq-comp-btn {
