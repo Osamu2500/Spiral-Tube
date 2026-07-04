@@ -285,9 +285,13 @@ class WatchPageManager extends window.YPP.BasePageManager {
     injectControls(video, controls, isShorts) {
         if (isShorts) {
             const activeShort = video.closest('ytd-reel-video-renderer');
-            if (activeShort && activeShort.querySelector('.ypp-player-controls')) return;
+            if (activeShort) {
+                const existing = activeShort.querySelector('.ypp-player-controls');
+                if (existing) existing.remove();
+            }
         } else {
-            if (document.querySelector('.ypp-player-controls')) return;
+            const existing = document.querySelector('.ypp-player-controls');
+            if (existing) existing.remove();
         }
 
         this._applyNativeButtonStyles();
@@ -299,14 +303,17 @@ class WatchPageManager extends window.YPP.BasePageManager {
         const container = document.createElement('div');
         container.className = 'ypp-player-controls' + (isShorts ? ' ypp-shorts-controls' : '');
 
+        // Helper to check if a button should be on the front bar (handles legacy true/false)
+        const isFront = (val) => val === 'front' || val === true || typeof val === 'undefined';
+
         // Use controlsHelper to create core toggles
-        if (this.controlsHelper && this.settings.enableCustomSpeed !== false && (!this.settings.pb_speed || this.settings.pb_speed === 'front')) 
+        if (this.controlsHelper && this.settings.enableCustomSpeed !== false && isFront(this.settings.pb_speed)) 
             container.appendChild(this.controlsHelper.createSpeedControls(video));
             
         // Button Feature Registrations (call their createButton methods)
         const addFeatureButton = (featureKey, pbKey, overrideSettingsKey) => {
             if (this.settings[overrideSettingsKey] === false) return; // Feature disabled globally
-            if (this.settings[pbKey] && this.settings[pbKey] !== 'front') return; // Hidden from front bar
+            if (!isFront(this.settings[pbKey])) return; // Hidden from front bar
             
             const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(featureKey);
             if (feature && feature.createButton) {
