@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Settings Schema & Validator for Spiral Tube
  *
  * Defines the expected type, default, and optional range for every setting key.
@@ -45,7 +45,6 @@ window.YPP.SettingsSchema = {
         hideWatched:         { type: 'boolean', default: false },
         hideWatchedMode:     { type: 'string',  default: 'dim', values: ['dim', 'hide'] },
         hideWatchedThreshold:{ type: 'number',  default: 80, min: 0, max: 100 },
-        enableMarkWatched:   { type: 'boolean', default: true },
         hideMerch:           { type: 'boolean', default: false },
         hideComments:        { type: 'boolean', default: false },
         hideLiveChat:        { type: 'boolean', default: false },
@@ -224,6 +223,11 @@ window.YPP.SettingsSchema = {
         hideCards:           { type: 'boolean', default: false },
         hideMetrics:         { type: 'boolean', default: false },
         multiSelect:         { type: 'boolean', default: true  },
+        msOptQueue:          { type: 'boolean', default: true  },
+        msOptPlaylist:       { type: 'boolean', default: true  },
+        msOptWatchLater:     { type: 'boolean', default: true  },
+        msOptNotInterested:  { type: 'boolean', default: true  },
+        msOptMarkWatched:    { type: 'boolean', default: true  },
         autoLike:            { type: 'boolean', default: false },
         autoQuality:         { type: 'boolean', default: false },
         intentionalDelay:    { type: 'boolean', default: false },

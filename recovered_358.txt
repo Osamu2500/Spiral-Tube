@@ -1,0 +1,12 @@
+{
+  "AllowMultiple": "false",
+  "Description": "\"Updated the shortcut to Ctrl+Q as requested by the user.\"",
+  "EndLine": "34",
+  "Instruction": "\"Change the registered hotkey combo from 'Ctrl+Shift+S' to 'Ctrl+Q' for the multi-select feature.\"",
+  "ReplacementContent": "\"        if (window.YPP.hotkeysManager) {\\n            window.YPP.hotkeysManager.register('multi-select', [\\n                {\\n                    combo: 'Ctrl+Q',\\n                    callback: () => this._toggleSelectionMode()\\n                }\\n            ]);\\n        }\"",
+  "StartLine": "27",
+  "TargetContent": "\"        if (window.YPP.hotkeysManager) {\\n            window.YPP.hotkeysManager.register('multi-select', [\\n                {\\n                    combo: 'Ctrl+Shift+S',\\n                    callback: () => this._toggleSelectionMode()\\n                }\\n            ]);\\n        }\"",
+  "TargetFile": "\"f:\\\\Youtube 2.0\\\\src\\\\content\\\\features\\\\global\\\\behavior\\\\multi-select.js\"",
+  "toolAction": "\"Changing hotkey to Ctrl+Q\"",
+  "toolSummary": "\"Change to Ctrl+Q\""
+}

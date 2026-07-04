@@ -57,7 +57,6 @@ import './features/global/ui-tweaks/screen-filters.js';
 import './features/global/ui-tweaks/custom-css.js';
 
 import './features/global/behavior/watched-store.js';
-import './features/global/behavior/mark-watched.js';
 import './features/global/behavior/multi-select.js';
 import './features/global/ui-tweaks/multi-select.css';
 

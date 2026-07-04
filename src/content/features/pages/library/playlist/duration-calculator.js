@@ -310,10 +310,11 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends window.YPP
             this.card.appendChild(style);
 
             const stats = container.querySelector('ytd-playlist-byline-renderer') || container.querySelector('.metadata-action-bar');
-            if (stats) {
+            if (stats && stats.parentNode) {
                  stats.parentNode.insertBefore(this.card, stats.nextSibling);
             } else {
-                 container.appendChild(this.card);
+                 const metadataWrapper = container.querySelector('.metadata-wrapper') || container.querySelector('.immersive-header-content') || container;
+                 metadataWrapper.appendChild(this.card);
             }
         }
 

@@ -1,4 +1,4 @@
-﻿import { DEFAULT_SETTINGS } from '../../shared/default-settings.js';
+import { DEFAULT_SETTINGS } from '../../shared/default-settings.js';
 
 /**
  * Constants for Spiral Tube
@@ -408,7 +408,6 @@ window.YPP.CONSTANTS = {
         reversePlaylist: 'ReversePlaylist',
         continueWatching: 'ContinueWatching',
         contextMenu: 'ContextMenu',
-        markWatched: 'MarkWatched',
         hideWatched: 'HideWatched',
         hideMixes: 'HideMixes',
         keyboardShortcuts: 'KeyboardShortcuts',

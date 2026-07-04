@@ -1,0 +1,12 @@
+{
+  "AllowMultiple": "false",
+  "Description": "\"Changed hotkey from Alt+S to Ctrl+Shift+S\"",
+  "EndLine": "34",
+  "Instruction": "\"Change Alt+S to Ctrl+Shift+S\"",
+  "ReplacementContent": "\"        if (window.YPP.hotkeysManager) {\\n            window.YPP.hotkeysManager.register('multi-select', [\\n                {\\n                    combo: 'Ctrl+Shift+S',\\n                    callback: () => this._toggleSelectionMode()\\n                }\\n            ]);\\n        }\"",
+  "StartLine": "27",
+  "TargetContent": "\"        if (window.YPP.hotkeysManager) {\\n            window.YPP.hotkeysManager.register('multi-select', [\\n                {\\n                    combo: 'Alt+S',\\n                    callback: () => this._toggleSelectionMode()\\n                }\\n            ]);\\n        }\"",
+  "TargetFile": "\"f:\\\\Youtube 2.0\\\\src\\\\content\\\\features\\\\global\\\\behavior\\\\multi-select.js\"",
+  "toolAction": "\"Changing hotkey to Ctrl+Shift+S\"",
+  "toolSummary": "\"Change to Ctrl+Shift+S\""
+}

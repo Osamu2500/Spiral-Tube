@@ -1,0 +1,12 @@
+{
+  "AllowMultiple": "false",
+  "Description": "\"Automatically activate selection mode when a video is selected via checkbox, and intercept clicks if there's any selection.\"",
+  "EndLine": "558",
+  "Instruction": "\"Update toggleSelect to automatically handle selection mode.\"",
+  "ReplacementContent": "\"    /**\\n     * Toggles the selection state for a given video\\n     */\\n    toggleSelect(videoId, href, title) {\\n        if (this.selected.has(videoId)) {\\n            this.selected.delete(videoId);\\n            this.ui.toggleCardSelection(videoId, false);\\n        } else {\\n            this.selected.set(videoId, { title, href, videoId });\\n            this.ui.toggleCardSelection(videoId, true);\\n        }\\n\\n        // If the user manually clicked a checkbox and we weren't in mode yet, turn it on\\n        if (this.selected.size > 0 && !this.selectionModeActive) {\\n            this.selectionModeActive = true;\\n            this.ui.setGlobalVisibility(true);\\n        }\\n\\n        this.ui.updateActionBar(this.selected.size, this.selectionModeActive);\\n    }\"",
+  "StartLine": "544",
+  "TargetContent": "\"    /**\\n     * Toggles the selection state for a given video\\n     */\\n    toggleSelect(videoId, href, title) {\\n        if (this.selected.has(videoId)) {\\n            this.selected.delete(videoId);\\n            this.ui.toggleCardSelection(videoId, false);\\n        } else {\\n            this.selected.set(videoId, { title, href, videoId });\\n            this.ui.toggleCardSelection(videoId, true);\\n        }\\n\\n        this.ui.updateActionBar(this.selected.size, this.selectionModeActive);\\n    }\"",
+  "TargetFile": "\"f:\\\\Youtube 2.0\\\\src\\\\content\\\\features\\\\global\\\\behavior\\\\multi-select.js\"",
+  "toolAction": "\"Update toggleSelect logic\"",
+  "toolSummary": "\"Update toggleSelect\""
+}

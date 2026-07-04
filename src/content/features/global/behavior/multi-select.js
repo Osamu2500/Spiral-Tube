@@ -381,11 +381,11 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
         <span class="ypp-ms-label" id="ypp-ms-count-label">videos selected</span>
       </div>
       <div class="ypp-ms-bar-actions">
-        <button class="ypp-ms-btn" id="ypp-ms-queue">${ICONS.OPEN} Open First</button>
-        <button class="ypp-ms-btn" id="ypp-ms-playlist">${ICONS.PLAYLIST} Save to Playlist</button>
-        <button class="ypp-ms-btn" id="ypp-ms-wl">${ICONS.WATCH_LATER} Watch Later</button>
-        <button class="ypp-ms-btn" id="ypp-ms-not-interested">${ICONS.NOT_INTERESTED} Not Interested</button>
-        <button class="ypp-ms-btn" id="ypp-ms-watched">${ICONS.WATCHED} Mark Watched</button>
+        ${this.settings.msOptQueue !== false ? `<button class="ypp-ms-btn" id="ypp-ms-queue">${ICONS.OPEN} Queue Videos</button>` : ''}
+        ${this.settings.msOptPlaylist !== false ? `<button class="ypp-ms-btn" id="ypp-ms-playlist">${ICONS.PLAYLIST} Save to Playlist</button>` : ''}
+        ${this.settings.msOptWatchLater !== false ? `<button class="ypp-ms-btn" id="ypp-ms-wl">${ICONS.WATCH_LATER} Watch Later</button>` : ''}
+        ${this.settings.msOptNotInterested !== false ? `<button class="ypp-ms-btn" id="ypp-ms-not-interested">${ICONS.NOT_INTERESTED} Not Interested</button>` : ''}
+        ${this.settings.msOptMarkWatched !== false ? `<button class="ypp-ms-btn" id="ypp-ms-watched">${ICONS.WATCHED} Mark Watched</button>` : ''}
         <button class="ypp-ms-btn ypp-ms-btn-clear" id="ypp-ms-clear">✕ Clear</button>
       </div>`;
   }
@@ -417,21 +417,23 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
 
   // ─── Actions ─────────────────────────────────────────────────────────────────
 
-  _addToQueue() {
+  async _addToQueue() {
     const videos = [...this._selected.values()];
     if (!videos.length) return;
 
-    const first = videos[0];
-    const ytApp = document.querySelector(SELECTORS.YT_APP);
-    if (ytApp && typeof ytApp.fire === 'function') {
-      ytApp.fire('yt-navigate', { url: first.href });
-    } else {
-      window.location.href = first.href;
+    this._showToast(
+      `Adding ${videos.length} video${videos.length !== 1 ? 's' : ''} to Queue…`
+    );
+
+    let successCount = 0;
+    for (const { element } of videos) {
+      const done = await this._invokeMenuAction(element, 'add to queue');
+      if (done) successCount++;
+      // Small gap so the previous popup fully dismisses before opening the next
+      await this._delay(350);
     }
 
-    const extra =
-      videos.length > 1 ? ` Use YouTube's queue (⋮) to add the other ${videos.length - 1}.` : '';
-    this._showToast(`Navigated to first video.${extra}`);
+    this._showToast(`${successCount} video${successCount !== 1 ? 's' : ''} added to Queue`);
     this._clearAll();
   }
 
@@ -475,43 +477,38 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
       return;
     }
 
-    // Listen for clicks on the checkboxes to know which playlists the user selected
-    const checkedPlaylists = new Set();
-    const onClick = (e) => {
-      const option = e.target.closest('ytd-playlist-add-to-option-renderer');
-      if (option) {
-        const titleEl = option.querySelector('#label');
-        if (titleEl) {
-          const title = titleEl.textContent.trim();
-          if (checkedPlaylists.has(title)) {
-              checkedPlaylists.delete(title);
-          } else {
-              checkedPlaylists.add(title);
-          }
-        }
-      }
+    // Keep track of which playlists are checked in real-time while the popup is open
+    const targetPlaylists = new Set();
+    const updatePlaylists = () => {
+       targetPlaylists.clear();
+       const options = Array.from(popup.querySelectorAll('ytd-playlist-add-to-option-renderer'));
+       for (const option of options) {
+           const checkbox = option.querySelector('tp-yt-paper-checkbox');
+           if (checkbox && (checkbox.hasAttribute('checked') || checkbox.getAttribute('aria-checked') === 'true' || checkbox.checked)) {
+               const titleEl = option.querySelector('#label');
+               if (titleEl) targetPlaylists.add(titleEl.textContent.trim());
+           }
+       }
     };
-    
-    popup.addEventListener('click', onClick);
 
-    // Wait for the popup to close
+    // Wait for the popup to close, continually updating our state
     await new Promise(resolve => {
        const checkClosed = () => {
            const dialog = popup.closest('tp-yt-paper-dialog') || popup.closest('ytd-popup-container');
            return !dialog || dialog.style.display === 'none' || dialog.getAttribute('aria-hidden') === 'true' || !document.body.contains(popup);
        };
        const observer = new MutationObserver(() => {
+           if (!checkClosed()) updatePlaylists();
            if (checkClosed()) { observer.disconnect(); resolve(); }
        });
        observer.observe(document.body, { childList: true, subtree: true, attributes: true });
        const interval = setInterval(() => {
+           if (!checkClosed()) updatePlaylists();
            if (checkClosed()) { clearInterval(interval); observer.disconnect(); resolve(); }
-       }, 500);
+       }, 200);
     });
 
-    popup.removeEventListener('click', onClick);
-
-    if (checkedPlaylists.size === 0) {
+    if (targetPlaylists.size === 0) {
        this._clearAll();
        return;
     }
@@ -531,10 +528,10 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
        const options = Array.from(dialog.querySelectorAll('ytd-playlist-add-to-option-renderer'));
        for (const option of options) {
            const titleEl = option.querySelector('#label');
-           if (titleEl && checkedPlaylists.has(titleEl.textContent.trim())) {
+           if (titleEl && targetPlaylists.has(titleEl.textContent.trim())) {
                const checkbox = option.querySelector('tp-yt-paper-checkbox');
                // Click to check it if it's not checked
-               if (checkbox && !checkbox.hasAttribute('checked')) {
+               if (checkbox && !(checkbox.hasAttribute('checked') || checkbox.getAttribute('aria-checked') === 'true' || checkbox.checked)) {
                    this._simulateMouseClick(checkbox);
                    await this._delay(100);
                }
@@ -583,48 +580,104 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
   async _markSelectedWatched() {
     const videos = [...this._selected.values()];
 
-    // Primary: use the MarkWatched feature's internal API (fast, no UI)
-    const markWatched =
-      window.YPP.featureManager?.getFeature?.('MarkWatched') ||
-      window.YPP.featureManager?.features?.['MarkWatched'];
+    this._showToast(`Syncing ${videos.length} video${videos.length !== 1 ? 's' : ''} to Watch History... (this may take a moment)`);
 
-    if (markWatched) {
-      let count = 0;
-      for (const { href, element } of videos) {
+    let count = 0;
+    const batchSize = 3;
+
+    for (let i = 0; i < videos.length; i += batchSize) {
+      const batch = videos.slice(i, i + batchSize);
+      const syncPromises = [];
+
+      for (const { href, element } of batch) {
         const match = href.match(/[?&]v=([^&]+)|\/shorts\/([^/?]+)/);
         const videoId = match?.[1] || match?.[2];
         if (videoId) {
-          markWatched.markAsWatched(videoId);
-          // Visual feedback: dim the card
+          // Local sync for instant visual feedback
+          window.YPP.WatchedStore?.add(videoId);
+          
           try {
             element.style.opacity = '0.45';
           } catch (_) {}
+
+          // True sync via invisible embed
+          syncPromises.push(this._syncWatchHistory(videoId));
           count++;
         }
       }
-      this._showToast(`${count} video${count !== 1 ? 's' : ''} marked as watched`);
-      this._clearAll();
-      return;
+
+      // Wait for this batch to complete (or timeout) before starting the next batch
+      await Promise.all(syncPromises);
     }
 
-    // Fallback: use the ⋮ menu "Mark as watched" item
-    this._showToast(`Marking ${videos.length} video${videos.length !== 1 ? 's' : ''} as watched…`);
-    let count = 0;
-    for (const { element } of videos) {
-      const done = await this._invokeMenuAction(
-        element,
-        ['mark as watched', 'mark watched'],
-        () => {
-          try {
-            element.style.opacity = '0.45';
-          } catch (_) {}
-        }
-      );
-      if (done) count++;
-      await this._delay(350);
-    }
-    this._showToast(`${count} video${count !== 1 ? 's' : ''} marked as watched`);
+    this._showToast(`Successfully added ${count} video${count !== 1 ? 's' : ''} to Watch History!`);
     this._clearAll();
+  }
+
+  async _syncWatchHistory(videoId) {
+    return new Promise((resolve) => {
+      const iframe = document.createElement('iframe');
+      // CRITICAL: allow="autoplay" is required for the video to start without user interaction
+      iframe.setAttribute('allow', 'autoplay; encrypted-media');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1`;
+      
+      // CRITICAL: Must be in viewport (width/height > 0) so YouTube's IntersectionObserver allows playback
+      iframe.style.cssText = 'position:fixed; bottom:0; right:0; width:300px; height:200px; opacity:0.01; pointer-events:none; z-index:-9999;';
+      
+      let duration = 0;
+      let hasSeeked = false;
+
+      const onMessage = (e) => {
+        if (e.origin !== 'https://www.youtube.com') return;
+        
+        // Ensure this message comes from THIS specific iframe (especially when batching)
+        if (e.source !== iframe.contentWindow) return;
+
+        try {
+          const data = JSON.parse(e.data);
+          
+          if (data.event === 'infoDelivery' && data.info) {
+            if (data.info.duration) duration = data.info.duration;
+            
+            // Once it starts playing (state === 1) and we haven't seeked yet
+            if (data.info.playerState === 1 && duration > 0 && !hasSeeked) {
+              hasSeeked = true;
+              
+              // Wait 1.5s of real playback before seeking to the end. 
+              // Without this, YouTube's backend might reject the watchtime ping as a bot/skip.
+              setTimeout(() => {
+                try {
+                  iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'command',
+                    func: 'seekTo',
+                    args: [Math.max(0, duration - 2), true]
+                  }), '*');
+                } catch (_) {}
+              }, 1500);
+            }
+            
+            // State 0 is ENDED
+            if (data.info.playerState === 0) {
+              cleanup();
+            }
+          } else if (data.event === 'initialDelivery') {
+            if (data.info && data.info.duration) duration = data.info.duration;
+          }
+        } catch (err) {}
+      };
+
+      const cleanup = () => {
+        window.removeEventListener('message', onMessage);
+        if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+        resolve(true);
+      };
+
+      window.addEventListener('message', onMessage);
+      document.body.appendChild(iframe);
+
+      // Failsafe timeout in case the video is unplayable or blocked
+      setTimeout(cleanup, 10000); 
+    });
   }
 
   // ─── YouTube Menu Helpers ────────────────────────────────────────────────────
@@ -734,8 +787,8 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
 
   /** @param {string} message */
   _showToast(message) {
-    if (window.YPP.Utils?.showToast) {
-      window.YPP.Utils.showToast(message);
+    if (window.YPP.Utils?.createToast) {
+      window.YPP.Utils.createToast(message);
     } else {
       window.YPP.Utils?.log?.(message, 'MULTI-SELECT', 'info');
     }
