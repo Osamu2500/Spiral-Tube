@@ -583,7 +583,7 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 #ypp-eq-panel {
     position: fixed;
     bottom: 80px;
-    right: 16px;
+    right: 0px;
     width: 430px;
     background: rgba(0, 0, 0, 0.15); /* Fully transparent with heavy blur */
     border: 1px solid rgba(255,255,255,0.15);
@@ -744,7 +744,7 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 
 /* Footer */
 .ypp-eq-footer {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 0px;
     padding: 0 18px 14px;
 }
 .ypp-eq-comp-btn {

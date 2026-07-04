@@ -25,8 +25,8 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         this.SELECTORS = {
             TITLE: 'h1, yt-formatted-string[id="title"], .title',
             OWNER: 'ytd-channel-name a, #owner-text a, a.yt-simple-endpoint[href*="/@"]',
-            STATS: 'yt-formatted-string#stats, .metadata-stats',
-            BANNER_IMG: 'yt-image img, #thumbnail img, .yt-core-image, img.yt-img-shadow',
+            STATS: 'yt-formatted-string#stats, .metadata-stats, div[class*="metadata"], yt-formatted-string.ytd-playlist-byline-renderer',
+            BANNER_IMG: 'yt-image img, #thumbnail img, .yt-core-image, img.yt-img-shadow, yt-playlist-header-view-model img',
             VIDEO_TITLE: 'a#video-title, yt-formatted-string#video-title, h3 a',
             VIDEO_URL: 'a#video-title, a#thumbnail, a.yt-simple-endpoint[href*="/watch"]',
             VIDEO_CHANNEL: 'ytd-channel-name a, #channel-name a, .ytd-channel-name a',
@@ -172,17 +172,23 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         const owner     = ownerEl?.textContent?.trim() || '';
         const ownerHref = ownerEl?.href || '';
 
-        const bylineEl = header.querySelector('ytd-playlist-byline-renderer, .metadata-stats');
+        const bylineEl = header.querySelector('ytd-playlist-byline-renderer, .metadata-stats, .metadata-wrapper');
         let stats = '';
         if (bylineEl) {
             const textNodes = Array.from(bylineEl.querySelectorAll('yt-formatted-string, span'))
                 .map(n => n.textContent.trim())
-                .filter(text => text && text.length > 0 && text !== '•');
+                .filter(text => text && text.length > 0 && text !== '•' && !text.includes('Save'));
             stats = Array.from(new Set(textNodes)).join(' • ');
         }
         if (!stats) {
-            const statsEl  = header.querySelector(this.SELECTORS.STATS);
-            stats = statsEl?.textContent?.trim().replace(/\n+/g, ' ').replace(/\s+/g, ' ') || '';
+            const statsEls = Array.from(header.querySelectorAll(this.SELECTORS.STATS));
+            for (const el of statsEls) {
+                const text = el.textContent.trim().replace(/\n+/g, ' ').replace(/\s+/g, ' ');
+                if (text.includes('video') || text.includes('view') || text.includes('Updated')) {
+                    stats = text;
+                    break;
+                }
+            }
         }
 
         // Playlist thumbnail — try immersive banner first, then first video thumb
@@ -424,8 +430,12 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
                 </svg>
                 <span>Clean</span>
               </button>
-              <button class="ypp-pl-btn-tool" id="ypp-pl-menu" title="Menu">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+              <button class="ypp-pl-btn-tool" id="ypp-pl-sort" title="Sort">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                <span>Sort</span>
+              </button>
+              <button class="ypp-pl-btn-tool" id="ypp-pl-menu" title="More Actions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
                 <span>More</span>
               </button>
             </div>
@@ -612,23 +622,8 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         
         const _clickNativeButtonAt = (customBtn, nativeBtn) => {
             if (!nativeBtn || !customBtn) return;
-            // Move native button to custom button's position temporarily so YouTube's popup anchors correctly
-            const rect = customBtn.getBoundingClientRect();
-            const originalCss = nativeBtn.style.cssText;
-            nativeBtn.style.visibility = 'visible';
-            nativeBtn.style.position = 'fixed';
-            nativeBtn.style.left = rect.left + 'px';
-            nativeBtn.style.top = rect.top + 'px';
-            nativeBtn.style.width = rect.width + 'px';
-            nativeBtn.style.height = rect.height + 'px';
-            nativeBtn.style.zIndex = '999999';
-            nativeBtn.style.opacity = '0';
-            
+            // Simply click the native button found in the DOM without moving it
             nativeBtn.click();
-            
-            setTimeout(() => {
-                nativeBtn.style.cssText = originalCss;
-            }, 300);
         };
 
         const saveBtn = root.querySelector('#ypp-pl-save');
@@ -646,16 +641,21 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
             const btns = Array.from(document.querySelectorAll('ytd-playlist-header-renderer button, yt-playlist-header-view-model button'));
             const nativeShare = btns.find(b => {
                 const label = (b.getAttribute('aria-label') || b.title || b.textContent || '').toLowerCase();
-                return label.includes('share') || label.includes('partager');
-            });
+                return label.includes('share') || label.includes('partager') || label.includes('compartir');
+            }) || document.querySelector('button[aria-label="Share"], button[aria-label="Partager"]');
             _clickNativeButtonAt(shareBtn, nativeShare);
         });
 
         const menuBtn = root.querySelector('#ypp-pl-menu');
         this.addListener(menuBtn, 'click', () => {
-            // Find the 3-dots menu which is usually inside a ytd-menu-renderer or a generic Action menu button
-            const nativeMenuBtn = document.querySelector('ytd-playlist-header-renderer ytd-menu-renderer button, yt-playlist-header-view-model button[aria-label*="Action"], yt-playlist-header-view-model button[aria-label*="More"]');
+            const nativeMenuBtn = document.querySelector('ytd-playlist-header-renderer ytd-menu-renderer button, yt-playlist-header-view-model button[aria-label*="Action"], yt-playlist-header-view-model button[aria-label*="More"], yt-playlist-header-view-model button[aria-label*="Menu"]');
             _clickNativeButtonAt(menuBtn, nativeMenuBtn);
+        });
+        
+        const sortBtn = root.querySelector('#ypp-pl-sort');
+        this.addListener(sortBtn, 'click', () => {
+            const nativeSort = document.querySelector('ytd-sort-filter-sub-menu-renderer button, yt-sort-filter-sub-menu-view-model button');
+            _clickNativeButtonAt(sortBtn, nativeSort);
         });
 
         // ── Remove Watched Videos ──────────────────────────────────────────

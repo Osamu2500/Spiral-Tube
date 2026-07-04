@@ -137,14 +137,18 @@ window.YPP.features.AudioCompressor = class AudioCompressor extends window.YPP.f
                 this.gainNode.gain.value = 2.5; // Boost the overall normalized signal
             }
 
-            // Dynamic clipping prevention
+            // Dynamic clipping prevention (Replaced DynamicsCompressor with WaveShaper to prevent NaN mute crashes)
             if (!this.limiterNode) {
-                this.limiterNode = this.audioContext.createDynamicsCompressor();
-                this.limiterNode.threshold.value = -1.0; 
-                this.limiterNode.knee.value = 0.0; // Hard knee for absolute limiting
-                this.limiterNode.ratio.value = 20.0;
-                this.limiterNode.attack.value = 0.001;
-                this.limiterNode.release.value = 0.050;
+                this.limiterNode = this.audioContext.createWaveShaper();
+                // Create a smooth soft-clipping curve (tanh) to prevent digital distortion without crashing Web Audio API
+                const n_samples = 8192;
+                const curve = new Float32Array(n_samples);
+                for (let i = 0; i < n_samples; ++i) {
+                    const x = (i * 2) / n_samples - 1;
+                    // For signals > 1.0 (from VolumeBooster), tanh safely asymptotes to 1.0
+                    curve[i] = Math.tanh(x);
+                }
+                this.limiterNode.curve = curve;
             }
 
             // Expose our nodes for VolumeBooster to chain into if it enables AFTER us
