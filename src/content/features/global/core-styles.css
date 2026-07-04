@@ -3087,7 +3087,7 @@ tp-yt-paper-tab:has([title*="podcast"]) {
 
 .ypp-ms-bar {
     position: fixed !important;
-    bottom: 24px !important;
+    bottom: 72px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: var(--ypp-z-popup) !important;
@@ -4326,6 +4326,11 @@ html[data-ypp-card-style] body.ypp-watched-mode-dim [data-ypp-watched="1"]:hover
 html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-ypp-watched="1"]:hover {
     opacity: 0.8 !important;
     filter: grayscale(0%) !important;
+}
+
+/* Generic Hidden Class (Used by BaseFilterFeature) */
+.ypp-hidden {
+    display: none !important;
 }
 
 /* Hide Mixes */

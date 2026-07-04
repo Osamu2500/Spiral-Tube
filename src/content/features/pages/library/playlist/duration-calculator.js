@@ -14,12 +14,23 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends window.YPP
     }
 
     async enable() {
-        if (!location.pathname.includes('/playlist')) return;
         await super.enable();
 
-        this.calculateDuration();
-
         this._debouncedCalculate = this.utils.debounce(this._boundCalculate, 1000);
+        
+        // Watch for SPA navigation to trigger or clear the calculator
+        this.onBusEvent('app:pageChange', () => {
+            if (location.pathname.includes('/playlist')) {
+                // Short delay to let DOM clear out old playlist header
+                setTimeout(() => this.calculateDuration(), 500);
+            } else {
+                if (this.card) {
+                    this.card.remove();
+                    this.card = null;
+                }
+            }
+        });
+
         this.observer.start();
         this.observer.register('playlist-duration', 
             'ytd-playlist-video-renderer, yt-lockup-view-model',
@@ -28,6 +39,11 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends window.YPP
                     this._debouncedCalculate();
                 }
             }, false);
+
+        // Run immediately if we start on a playlist page
+        if (location.pathname.includes('/playlist')) {
+            this.calculateDuration();
+        }
     }
 
     async disable() {

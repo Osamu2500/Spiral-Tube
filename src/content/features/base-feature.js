@@ -52,8 +52,8 @@ window.YPP.features.BaseFeature = class BaseFeature {
         const configKey = this.getConfigKey();
         
         let shouldBeEnabled = true;
-        if (configKey && settings.hasOwnProperty(configKey)) {
-            shouldBeEnabled = !!settings[configKey];
+        if (configKey && this.settings.hasOwnProperty(configKey)) {
+            shouldBeEnabled = !!this.settings[configKey];
         }
 
         if (shouldBeEnabled && !this.isEnabled) {

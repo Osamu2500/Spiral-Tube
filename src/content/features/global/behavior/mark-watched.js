@@ -131,8 +131,26 @@ window.YPP.features.MarkWatched = class MarkWatched extends window.YPP.features.
         const style = document.createElement('style');
         style.id = 'ypp-mark-watched-style';
         style.textContent = `
-            .ypp-watched-icon-permanent { transition: background 0.2s, transform 0.2s; cursor: pointer; }
-            .ypp-watched-icon-permanent:hover { background: var(--ypp-accent, #3ea6ff) !important; transform: scale(1.1) !important; }
+            ytd-thumbnail:hover .ypp-watched-icon-permanent { opacity: 1; pointer-events: auto; }
+            .ypp-watched-icon-permanent {
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                width: 24px;
+                height: 24px;
+                z-index: 100;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s, background 0.2s, transform 0.2s;
+                cursor: pointer;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .ypp-watched-icon-permanent:hover { background: var(--ypp-accent, #3ea6ff) !important; transform: scale(1.1); opacity: 1; pointer-events: auto; }
             .ypp-watch-context-item {
                 padding: 10px 16px;
                 color: white;

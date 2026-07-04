@@ -48,7 +48,7 @@ export const POPUP_SCHEMA = [
             {
                 title: 'Video Management',
                 items: [
-                    { type:'toggle', id:'multiSelect', label:'Multi-Select Videos', desc:'<b style="color:#ff4444; text-shadow: 0 0 8px rgba(255,68,68,0.8);">[BROKEN]</b> Hold Shift + click to select multiple videos', icon:P('M9 12l2 2 4-4 M3 3h18v18H3z') }
+                    { type:'toggle', id:'multiSelect', label:'Multi-Select Videos', desc:'Hold Shift + click to select multiple videos', icon:P('M9 12l2 2 4-4 M3 3h18v18H3z') }
                 ]
             },
             {

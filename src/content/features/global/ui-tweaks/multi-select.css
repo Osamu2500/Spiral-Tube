@@ -1,4 +1,4 @@
-﻿/* f:\Youtube 2.0\src\content\features\global\modifiers\multi-select.css */
+/* f:\Youtube 2.0\src\content\features\global\modifiers\multi-select.css */
 
 .ypp-ms-checkbox {
   position: absolute !important;
@@ -6,9 +6,9 @@
   left: 8px !important;
   width: 24px !important;
   height: 24px !important;
-  background: rgba(0, 0, 0, 0.5) !important;
-  border: 2px solid rgba(255, 255, 255, 0.4) !important;
-  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 6px !important; /* Squircle/Square checkbox look */
   z-index: var(--ypp-z-popup, 100) !important;
   cursor: pointer !important;
   display: flex !important;
@@ -19,19 +19,18 @@
   transition: opacity 0.2s, transform 0.2s, background 0.2s, border-color 0.2s !important;
   pointer-events: none !important;
   backdrop-filter: blur(4px) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
 }
 
-/* Show on hover — works with OR without the theme class on body */
-body.yt-spiral-tube-theme ytd-rich-item-renderer:hover .ypp-ms-checkbox,
-body.yt-spiral-tube-theme ytd-video-renderer:hover .ypp-ms-checkbox,
-body.yt-spiral-tube-theme ytd-compact-video-renderer:hover .ypp-ms-checkbox,
-body.yt-spiral-tube-theme ytd-grid-video-renderer:hover .ypp-ms-checkbox,
-body.yt-spiral-tube-theme ytd-playlist-video-renderer:hover .ypp-ms-checkbox,
-ytd-rich-item-renderer:hover .ypp-ms-checkbox,
-ytd-video-renderer:hover .ypp-ms-checkbox,
-ytd-compact-video-renderer:hover .ypp-ms-checkbox,
-ytd-grid-video-renderer:hover .ypp-ms-checkbox,
-ytd-playlist-video-renderer:hover .ypp-ms-checkbox {
+/* Show on hover — only when the feature is enabled */
+body.ypp-ms-feature-enabled ytd-rich-item-renderer:hover .ypp-ms-checkbox,
+body.ypp-ms-feature-enabled ytd-video-renderer:hover .ypp-ms-checkbox,
+body.ypp-ms-feature-enabled ytd-compact-video-renderer:hover .ypp-ms-checkbox,
+body.ypp-ms-feature-enabled ytd-grid-video-renderer:hover .ypp-ms-checkbox,
+body.ypp-ms-feature-enabled ytd-playlist-video-renderer:hover .ypp-ms-checkbox,
+body.ypp-ms-feature-enabled yt-lockup-view-model:hover .ypp-ms-checkbox,
+body.ypp-ms-feature-enabled ytd-lockup-view-model:hover .ypp-ms-checkbox,
+body.ypp-ms-active .ypp-ms-checkbox {
   opacity: 1 !important;
   pointer-events: auto !important;
   transform: scale(1) !important;
@@ -43,6 +42,31 @@ ytd-playlist-video-renderer:hover .ypp-ms-checkbox {
   opacity: 1 !important;
   pointer-events: auto !important;
   transform: scale(1) !important;
+}
+
+/* Physical overlay — covers the card but sits below the checkbox stacking context */
+.ypp-ms-card-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 90 !important; /* Below the checkbox (100) but above the video thumbnail */
+  cursor: pointer !important;
+  background: transparent !important;
+  display: none !important;
+  pointer-events: none !important; /* Never blocks events in hover-only mode */
+}
+
+body.ypp-ms-active .ypp-ms-card-overlay {
+  display: block !important;
+  pointer-events: auto !important; /* Activate click blocking only when mode is ON */
+}
+
+/* Ensure the card has relative positioning for the pseudo-element to anchor to */
+ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, 
+ytd-grid-video-renderer, yt-lockup-view-model {
+  position: relative;
 }
 
 .ypp-ms-check-icon {
@@ -65,16 +89,16 @@ ytd-playlist-video-renderer:hover .ypp-ms-checkbox {
   background: rgba(62, 166, 255, 0.08) !important;
 }
 
-/* Action Bar */
+/* Action Bar — slides up from the bottom */
 .ypp-ms-bar {
   position: fixed !important;
-  bottom: 24px !important;
+  bottom: 72px !important;
   left: 50% !important;
-  transform: translateX(-50%) translateY(100%) !important;
-  background: rgba(28, 28, 28, 0.85) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  /* No default transform — animation handles it fully to avoid conflict */
+  background: rgba(28, 28, 28, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 40px !important;
   padding: 8px 16px !important;
   display: flex !important;
@@ -82,7 +106,8 @@ ytd-playlist-video-renderer:hover .ypp-ms-checkbox {
   gap: 16px !important;
   z-index: 99999 !important;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-  animation: ypp-ms-bar-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards !important;
+  will-change: transform, opacity !important;
+  animation: ypp-ms-bar-in 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards !important;
 }
 
 @keyframes ypp-ms-bar-in {
