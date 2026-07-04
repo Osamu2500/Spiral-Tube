@@ -503,7 +503,8 @@ const initApp = () => {
 
 
     } catch (e) {
-        document.body.innerHTML = `<div style="color:red; padding:20px; font-size:16px;">Error initializing popup: ${e.message}<br><pre>${e.stack}</pre></div>`;
+        document.body.textContent = `Error initializing popup: ${e.message}\n${e.stack}`;
+        document.body.setAttribute('style', 'color:red; padding:20px; font-size:16px; white-space:pre-wrap; background:#111;');
     }
 };
 

@@ -1,4 +1,14 @@
-﻿// popup-components.js — Specialized component initializers
+// popup-components.js — Specialized component initializers
+
+const escapeHTML = (str) => {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+};
 
 export function initComponents(document, state, ui, updateSetting, notifyThemeChange, saveSettings) {
     
@@ -143,8 +153,8 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     const info = document.createElement('div');
                     info.className = 'theme-info';
                     info.innerHTML = `
-                        <span class="theme-name">${theme.label}</span>
-                        <span class="theme-meta">${theme.meta}</span>
+                        <span class="theme-name">${escapeHTML(theme.label)}</span>
+                        <span class="theme-meta">${escapeHTML(theme.meta)}</span>
                     `;
 
                     btn.appendChild(preview);

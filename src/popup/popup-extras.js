@@ -5,6 +5,16 @@
 // HISTORY WIDGET
 // =========================================================================
 
+const escapeHTML = (str) => {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+};
+
 let currentCalDate = new Date();
 let selectedCalDateString = null;
 
@@ -228,10 +238,10 @@ function renderVideoList(data) {
         const s = v.seconds % 60;
         const timeStr = m > 0 ? `${m}m` : `${s}s`;
         el.innerHTML = `
-            <div class="log-time">${timeStr}</div>
+            <div class="log-time">${escapeHTML(timeStr)}</div>
             <div class="log-info">
-               <a href="${v.url}" target="_blank" class="log-title" title="${v.title}">${v.title}</a>
-               <div class="log-channel">${v.channel}</div>
+               <a href="${escapeHTML(v.url)}" target="_blank" class="log-title" title="${escapeHTML(v.title)}">${escapeHTML(v.title)}</a>
+               <div class="log-channel">${escapeHTML(v.channel)}</div>
             </div>
         `;
         list.appendChild(el);
@@ -398,15 +408,15 @@ export function initBookmarksManager() {
             card.innerHTML = `
                 <div class="bookmark-header">
                     <div style="flex:1;">
-                        <div class="bookmark-title">${bm.videoTitle}</div>
-                        <span class="bookmark-time">${formatTime(bm.timestamp)}</span>
+                        <div class="bookmark-title">${escapeHTML(bm.videoTitle)}</div>
+                        <span class="bookmark-time">${escapeHTML(formatTime(bm.timestamp))}</span>
                     </div>
-                    <button class="bookmark-delete" data-id="${bm.id}" title="Delete Bookmark">
+                    <button class="bookmark-delete" data-id="${escapeHTML(bm.id)}" title="Delete Bookmark">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
                     </button>
                 </div>
-                <div class="bookmark-text">"${bm.text}"</div>
-                <div class="bookmark-date">${date}</div>
+                <div class="bookmark-text">"${escapeHTML(bm.text)}"</div>
+                <div class="bookmark-date">${escapeHTML(date)}</div>
             `;
 
             card.addEventListener('click', (e) => {

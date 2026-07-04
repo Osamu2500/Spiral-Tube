@@ -27,7 +27,7 @@ class UIManager {
     mountPoints = {
         playerControls: () => window.YPP.DomAPI?.getVideoControls(),
         customPlayerControls: () => document.querySelector('.ypp-player-controls'),
-        headerRight: () => window.YPP.DomAPI?.getMasthead()?.querySelector('#buttons') || window.YPP.DomAPI?.getMasthead()?.querySelector('#end'),
+        headerRight: () => window.YPP.DomAPI?.getMasthead()?.querySelector('#end'),
         sidebar: () => window.YPP.DomAPI?.getSecondary(), // We need to add this to DomAPI
         related: () => window.YPP.DomAPI?.getRelatedItems(),
         watchPage: () => window.YPP.DomAPI?.getWatchFlexy(),

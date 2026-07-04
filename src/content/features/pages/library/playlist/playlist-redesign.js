@@ -115,32 +115,29 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         if (!this._isPlaylistPage()) return;
         
         const currentInitId = ++this._initId;
+        
+        // Immediately add the redesign class to hide native elements via CSS instantly
+        document.body.classList.add('ypp-playlist-redesign');
 
-        // Wait up to 10 seconds for the native playlist DOM to load
-        // Do NOT add body class yet — only apply it once we have confirmed data,
-        // preventing the native layout from being hidden on a page where we can't render.
+        // Wait up to 10 seconds for the native playlist header to load
         const ITEM_SEL = 'ytd-playlist-video-renderer, yt-lockup-view-model';
         const isReady = await window.YPP.Utils.pollFor(() => {
             const browse = this._getActiveBrowse();
             if (!browse) return false;
             const header = browse.querySelector('ytd-playlist-header-renderer, yt-playlist-header-view-model, #header');
-            return header && browse.querySelectorAll(ITEM_SEL).length > 0;
+            return !!header;
         }, 10000);
 
-        // Check _initId to prevent stale builds from SPA navigations.
-        // NOTE: We intentionally do NOT check this.isEnabled here — BaseFeature sets
-        // isEnabled=true only AFTER enable() resolves, so during the pollFor() wait
-        // isEnabled is still false even though the feature is actively being enabled.
-        // The _initId increment in _reset() is the correct cancellation mechanism.
-        if (isReady && this._initId === currentInitId && this._isPlaylistPage()) {
-            document.body.classList.add('ypp-playlist-redesign');
-            const browse = this._getActiveBrowse();
-            if (!browse) return;
-            const header = browse.querySelector('ytd-playlist-header-renderer, yt-playlist-header-view-model, #header');
-            const videos = browse.querySelectorAll(ITEM_SEL);
-            this._build(browse, header, videos);
-            this._watchForChanges(browse);
+        if (!isReady || this._initId !== currentInitId || !this._isPlaylistPage()) {
+            return;
         }
+
+        const browse = this._getActiveBrowse();
+        if (!browse) return;
+        const header = browse.querySelector('ytd-playlist-header-renderer, yt-playlist-header-view-model, #header');
+        const videos = browse.querySelectorAll(ITEM_SEL);
+        this._build(browse, header, videos);
+        this._watchForChanges(browse);
     }
 
     // ─── MutationObserver — rebuild if native list grows ────────────────────
@@ -175,8 +172,18 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         const owner     = ownerEl?.textContent?.trim() || '';
         const ownerHref = ownerEl?.href || '';
 
-        const statsEl  = header.querySelector(this.SELECTORS.STATS);
-        const stats    = statsEl?.textContent?.trim() || '';
+        const bylineEl = header.querySelector('ytd-playlist-byline-renderer, .metadata-stats');
+        let stats = '';
+        if (bylineEl) {
+            const textNodes = Array.from(bylineEl.querySelectorAll('yt-formatted-string, span'))
+                .map(n => n.textContent.trim())
+                .filter(text => text && text.length > 0 && text !== '•');
+            stats = Array.from(new Set(textNodes)).join(' • ');
+        }
+        if (!stats) {
+            const statsEl  = header.querySelector(this.SELECTORS.STATS);
+            stats = statsEl?.textContent?.trim().replace(/\n+/g, ' ').replace(/\s+/g, ' ') || '';
+        }
 
         // Playlist thumbnail — try immersive banner first, then first video thumb
         let coverUrl = '';
@@ -391,11 +398,8 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
                 Play all
               </button>
               <button class="ypp-pl-btn-shuffle" id="ypp-pl-shuffle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
-                  <polyline points="16 3 21 3 21 8"/>
-                  <line x1="4" y1="20" x2="21" y2="3"/>
-                  <polyline points="21 16 21 21 16 21"/>
-                  <line x1="15" y1="15" x2="21" y2="21"/>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                  <path d="M18.15,13.65L21.5,17l-3.35,3.35l-0.7-0.71L19.58,17.5H16.4l-2.07-2.07l0.7-0.71l1.71,1.72h2.84l-2.14-2.14L18.15,13.65z M8.34,9.17L6.62,7.45H3.5v1h2.7l1.42,1.43L8.34,9.17z M19.58,6.5H16.4l-9.78,9.77H3.5v1h3.54l9.78-9.77h2.76l-2.14,2.14l0.71,0.71L21.5,7l-3.35-3.35l-0.71,0.71L19.58,6.5z"/>
                 </svg>
                 Shuffle
               </button>
@@ -442,6 +446,9 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
               <span class="ypp-pl-count-label" id="ypp-pl-count">
                 ${videos.length} VIDEO${videos.length !== 1 ? 'S' : ''}
               </span>
+              
+              <div id="ypp-pl-native-sort-container" class="ypp-pl-native-inject"></div>
+              <div id="ypp-pl-native-chips-container" class="ypp-pl-native-inject"></div>
 
               <div class="ypp-pl-col-switcher">
                 <button class="ypp-col-btn ${this._currentCols === 1 ? 'active' : ''}" data-cols="1" title="List view">
@@ -557,6 +564,9 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         return `
         <a class="ypp-pl-card" href="${this._esc(v.href)}"
            data-title="${this._esc(v.title.toLowerCase())}" data-index="${i}" data-progress="${v.progress}">
+          <div class="ypp-pl-card-reorder" title="Reorder (Coming soon)">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21,10H3V8h18V10z M21,14H3v2h18V14z"/></svg>
+          </div>
           <div class="ypp-pl-card-thumb">
             <div class="ypp-pl-card-index">${this._esc(v.index)}</div>
             ${thumbHTML}
@@ -605,6 +615,7 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
             // Move native button to custom button's position temporarily so YouTube's popup anchors correctly
             const rect = customBtn.getBoundingClientRect();
             const originalCss = nativeBtn.style.cssText;
+            nativeBtn.style.visibility = 'visible';
             nativeBtn.style.position = 'fixed';
             nativeBtn.style.left = rect.left + 'px';
             nativeBtn.style.top = rect.top + 'px';
@@ -622,7 +633,7 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
 
         const saveBtn = root.querySelector('#ypp-pl-save');
         this.addListener(saveBtn, 'click', () => {
-            const btns = Array.from(document.querySelectorAll('ytd-playlist-header-renderer button'));
+            const btns = Array.from(document.querySelectorAll('ytd-playlist-header-renderer button, yt-playlist-header-view-model button'));
             const nativeSave = btns.find(b => {
                 const label = (b.getAttribute('aria-label') || b.title || b.textContent || '').toLowerCase();
                 return label.includes('save') && !label.includes('watch later');
@@ -632,7 +643,7 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
 
         const shareBtn = root.querySelector('#ypp-pl-share');
         this.addListener(shareBtn, 'click', () => {
-            const btns = Array.from(document.querySelectorAll('ytd-playlist-header-renderer button'));
+            const btns = Array.from(document.querySelectorAll('ytd-playlist-header-renderer button, yt-playlist-header-view-model button'));
             const nativeShare = btns.find(b => {
                 const label = (b.getAttribute('aria-label') || b.title || b.textContent || '').toLowerCase();
                 return label.includes('share') || label.includes('partager');
@@ -642,8 +653,8 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
 
         const menuBtn = root.querySelector('#ypp-pl-menu');
         this.addListener(menuBtn, 'click', () => {
-            // Find the 3-dots menu which is usually inside a ytd-menu-renderer
-            const nativeMenuBtn = document.querySelector('ytd-playlist-header-renderer ytd-menu-renderer button');
+            // Find the 3-dots menu which is usually inside a ytd-menu-renderer or a generic Action menu button
+            const nativeMenuBtn = document.querySelector('ytd-playlist-header-renderer ytd-menu-renderer button, yt-playlist-header-view-model button[aria-label*="Action"], yt-playlist-header-view-model button[aria-label*="More"]');
             _clickNativeButtonAt(menuBtn, nativeMenuBtn);
         });
 
@@ -762,7 +773,7 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
             });
         });
 
-        // ── Card Context Menu ──────────────────────────────────────────────
+        // ── Card Context Menu (Native Integration) ─────────────────────────
         this.addListener(grid, 'click', e => {
             const menuBtn = e.target.closest('.ypp-pl-card-menu');
             if (!menuBtn) return;
@@ -770,127 +781,33 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
             e.preventDefault();
             e.stopPropagation();
             
-            // Remove existing
-            document.querySelector('.ypp-pl-card-context-menu')?.remove();
-            
-            const href = menuBtn.dataset.href;
             const card = menuBtn.closest('.ypp-pl-card');
+            const idx = parseInt(card.dataset.index, 10);
             
-            const menu = document.createElement('div');
-            menu.className = 'ypp-pl-card-context-menu';
-            menu.innerHTML = `
-                <div class="ypp-ctx-item" data-action="watch-later">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                    Save to Watch Later
-                </div>
-                <div class="ypp-ctx-item" data-action="open-new">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                    Open in new tab
-                </div>
-                <div class="ypp-ctx-item ypp-ctx-danger" data-action="remove">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="3 6 5 6 21 6"/>
-                        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
-                    </svg>
-                    Remove from playlist
-                </div>
-            `;
+            const ITEM_SEL = 'ytd-playlist-video-renderer, yt-lockup-view-model';
+            const nativeItems = browse ? Array.from(browse.querySelectorAll(ITEM_SEL)) : [];
+            const nativeItem = nativeItems[idx];
             
-            // Position context menu
-            const rect = menuBtn.getBoundingClientRect();
-            menu.style.cssText = `
-                position: fixed;
-                top: ${rect.bottom + 4}px;
-                left: ${rect.left - 160}px;
-                z-index: 99999;
-            `;
-            
-            document.body.appendChild(menu);
-            
-            // Wire menu actions
-            this.addListener(menu.querySelector('[data-action="open-new"]'), 'click', () => {
-                window.open(href, '_blank');
-                menu.remove();
-            });
-            
-            this.addListener(menu.querySelector('[data-action="watch-later"]'), 'click', () => {
-                if (card) {
-                    const idx = parseInt(card.dataset.index, 10);
-                    const nativeVideos = document.querySelectorAll('ytd-playlist-video-renderer');
-                    const nativeVideo = nativeVideos[idx];
-                    
-                    if (nativeVideo) {
-                        const menuBtn = nativeVideo.querySelector('ytd-menu-renderer button');
-                        if (menuBtn) {
-                            menuBtn.click();
-                            setTimeout(() => {
-                                const items = document.querySelectorAll('ytd-menu-popup-renderer ytd-menu-service-item-renderer');
-                                for (const item of items) {
-                                    const text = (item.textContent || '').toLowerCase();
-                                    if (text.includes('watch later')) {
-                                        item.click();
-                                        break;
-                                    }
-                                }
-                                // Ensure popup closes
-                                document.body.click();
-                            }, 100);
-                        }
-                    }
+            if (nativeItem) {
+                const nativeBtn = nativeItem.querySelector('yt-icon-button.dropdown-trigger button, ytd-menu-renderer button, button#button[aria-label*="Action"]');
+                if (nativeBtn) {
+                    _clickNativeButtonAt(menuBtn, nativeBtn);
                 }
-                menu.remove();
-            });
-            
-            this.addListener(menu.querySelector('[data-action="remove"]'), 'click', () => {
-                if (card) {
-                    const idx = parseInt(card.dataset.index, 10);
-                    this._removeNativeVideo(idx).then(success => {
-                        if (success) {
-                            card.style.transition = 'opacity 0.3s, transform 0.3s';
-                            card.style.opacity = '0';
-                            card.style.transform = 'scale(0.95)';
-                            setTimeout(() => {
-                                card.remove();
-                                this._updateStatsAfterRemoval();
-                            }, 320);
-                        } else {
-                            card.style.opacity = '';
-                            card.style.pointerEvents = '';
-                        }
-                    });
-                    card.style.opacity = '0.4';
-                    card.style.pointerEvents = 'none';
-                }
-                menu.remove();
-            });
-            
-            // Close on outside click (Memory safe implementation)
-            if (this._menuCloseFn) {
-                document.removeEventListener('click', this._menuCloseFn);
             }
-            
-            this._menuCloseFn = (ev) => {
-                if (!menu.contains(ev.target)) {
-                    menu.remove();
-                    document.removeEventListener('click', this._menuCloseFn);
-                    this._menuCloseFn = null;
-                }
-            };
-            
-            // Push to end of event queue so the current click doesn't trigger close
-            setTimeout(() => {
-                if (document.body.contains(menu)) {
-                    this.addListener(document, 'click', this._menuCloseFn);
-                }
-            }, 0);
         });
+
+        // ── Native Sub-Menu Integration (Sort Dropdown & Filter Chips) ──
+        const sortContainer = root.querySelector('#ypp-pl-native-sort-container');
+        if (sortContainer && browse) {
+            const nativeSort = browse.querySelector('yt-sort-filter-sub-menu-renderer, yt-sort-filter-sub-menu-view-model, yt-dropdown-menu');
+            if (nativeSort) sortContainer.appendChild(nativeSort);
+        }
+
+        const chipsContainer = root.querySelector('#ypp-pl-native-chips-container');
+        if (chipsContainer && browse) {
+            const nativeChips = browse.querySelector('ytd-feed-filter-chip-bar-renderer, yt-chip-cloud-renderer, yt-chip-cloud-chip-renderer');
+            if (nativeChips) chipsContainer.appendChild(nativeChips);
+        }
     }
 
     _esc(str) {

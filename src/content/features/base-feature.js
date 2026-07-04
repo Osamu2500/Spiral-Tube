@@ -1,4 +1,4 @@
-﻿window.YPP = window.YPP || {};
+window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
 /**
@@ -32,6 +32,16 @@ window.YPP.features.BaseFeature = class BaseFeature {
      * @param {Object} settings Current extension settings
      */
     async update(settings) {
+        let settingsChanged = false;
+        if (settings) {
+            for (const key in settings) {
+                if (settings[key] !== this.settings[key]) {
+                    settingsChanged = true;
+                    break;
+                }
+            }
+        }
+        
         this.settings = { ...this.settings, ...settings };
 
         // Fallback for features that extend BaseFeature but implement run() instead of update()/enable()
@@ -59,7 +69,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
             }
             await this.disable();
             this.isEnabled = false;
-        } else if (this.isEnabled && typeof this.onUpdate === 'function') {
+        } else if (this.isEnabled && typeof this.onUpdate === 'function' && settingsChanged) {
             await this.onUpdate();
         }
     }

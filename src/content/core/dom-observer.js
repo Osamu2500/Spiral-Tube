@@ -53,6 +53,7 @@ window.YPP.core.DOMObserver = class DOMObserver {
     stop() {
         if (!this.isRunning) return;
         this.observer.disconnect();
+        if (this._lazyObserver) this._lazyObserver.disconnect();
         this._pendingNodes = [];
         this._rafPending = false;
         this.isRunning = false;

@@ -1,4 +1,4 @@
-﻿/* ===================================================================================
+/* ===================================================================================
    7. PLAYER ENHANCEMENTS
    =================================================================================== */
 
@@ -624,6 +624,17 @@ body.ypp-floating-player-active .ytp-chrome-bottom {
     padding: 0 10px !important;
     box-sizing: border-box !important;
 }
+
+/* Fix: Prevent player bar from getting squished when video has a smaller aspect ratio */
+body.yt-spiral-tube-theme .html5-video-player:not(.ytp-fullscreen) .ytp-chrome-bottom {
+    width: calc(100% - 24px) !important;
+    left: 12px !important;
+}
+body.yt-spiral-tube-theme .html5-video-player.ytp-fullscreen .ytp-chrome-bottom {
+    width: calc(100% - 48px) !important;
+    left: 24px !important;
+}
+
 body.ypp-floating-player-active .ytp-progress-bar-container {
     width: 100% !important;
     bottom: 35px !important;
