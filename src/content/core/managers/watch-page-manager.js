@@ -138,7 +138,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
         
         // 1. Reset all managed classes & Inline Styles
         const classesToRemove = [
-            'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
+            'ypp-sidebar-compact', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
             'ypp-cinema-mode', 'ypp-minimal-mode', 'ypp-zen-mode', 'ypp-focus-mode', 'ypp-study-mode',
             'ypp-action-style-premium', 'ypp-action-style-minimal', 'ypp-action-style-default'
         ];
@@ -150,8 +150,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
             body.classList.add(`ypp-action-style-premium`);
         }
         
-        // Clear JS-injected inline styles from 'spacious' observer when switching modes
-        this._cleanUpLegacyStamps();
+
 
         // 2. Apply Sidebar
         if (this.settings.enableCustomSidebar) {
@@ -192,57 +191,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
         }
     }
 
-    _applySidebarLayout() {
-        const body = document.body;
-        const layout = this.settings.sidebarLayout;
 
-        // 1. Remove all possible layout classes to start fresh
-        body.classList.remove(
-            'ypp-sidebar-compact', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
-            'ypp-theater-mode-override'
-        );
-
-        // 2. If 'hidden' or invalid, exit early
-        if (!layout || layout === 'hidden') {
-            if (layout === 'hidden') body.classList.add('ypp-sidebar-hidden');
-            return;
-        }
-
-        // 3. Apply the layout class
-        body.classList.add(`ypp-sidebar-${layout}`);
-
-        // 4. Force default YouTube view state (prevents A/B test interference)
-        // If they use expanded/grid/compact, ensure we act like the default view is present
-        if (['compact', 'spacious', 'expanded', 'grid'].includes(layout)) {
-            body.classList.remove('ypp-sidebar-hidden');
-            
-            // If in theater mode and expanded/grid is selected, force sidebar to stack below player
-            // Native YouTube hides the sidebar in theater mode sometimes
-            const isTheater = body.hasAttribute('theater');
-            if (isTheater) {
-                body.classList.add('ypp-theater-mode-override');
-            }
-        }
-    }
-
-    _handleTheaterModeChange(e) {
-        // Only run if we're dealing with one of our custom layouts
-        const layout = this.settings.sidebarLayout;
-        if (['compact', 'spacious', 'expanded', 'grid'].includes(layout)) {
-            if (document.body.hasAttribute('theater')) {
-                document.body.classList.add('ypp-theater-mode-override');
-            } else {
-                document.body.classList.remove('ypp-theater-mode-override');
-            }
-        }
-    }
-
-    _removeSidebarLayout() {
-        document.body.classList.remove(
-            'ypp-sidebar-compact', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
-            'ypp-theater-mode-override'
-        );
-    }
 
     _cleanupDOM() {
         const classesToRemove = [
@@ -254,63 +203,6 @@ class WatchPageManager extends window.YPP.BasePageManager {
         document.body.classList.remove(...classesToRemove);
     }
 
-    _cleanUpLegacyStamps() {
-        // One-time cleanup of legacy DOM stamps left over from previous extension versions
-        document.querySelectorAll('[data-ypp-processed-layout]').forEach(el => {
-            el.removeAttribute('data-ypp-processed-layout');
-        });
-
-        // Clean up any legacy inline styles that might have been applied by earlier code
-        document.querySelectorAll(this.ROOT_SELECTORS.join(', ')).forEach(node => {
-            if (node.style) {
-                node.style.removeProperty('display');
-                node.style.removeProperty('margin-bottom');
-            }
-
-            const dismissible = node.querySelector('#dismissible') || node;
-            if (dismissible && dismissible.style) {
-                dismissible.style.removeProperty('display');
-                dismissible.style.removeProperty('flex-direction');
-                dismissible.style.removeProperty('width');
-                dismissible.style.removeProperty('align-items');
-                dismissible.style.removeProperty('gap');
-            }
-
-            const thumbnail = node.querySelector('#thumbnail, ytd-thumbnail, a:has(yt-image)');
-            if (thumbnail && thumbnail.style) {
-                thumbnail.style.removeProperty('display');
-                thumbnail.style.removeProperty('width');
-                thumbnail.style.removeProperty('height');
-                thumbnail.style.removeProperty('aspect-ratio');
-                thumbnail.style.removeProperty('max-width');
-                thumbnail.style.removeProperty('min-width');
-                thumbnail.style.removeProperty('margin-bottom');
-                thumbnail.style.removeProperty('border-radius');
-                thumbnail.style.removeProperty('overflow');
-                thumbnail.style.removeProperty('flex');
-            }
-
-            const details = node.querySelector('#details, .yt-lockup-metadata-view-model-wiz');
-            if (details && details.style) {
-                details.style.removeProperty('display');
-                details.style.removeProperty('flex-direction');
-                details.style.removeProperty('flex');
-                details.style.removeProperty('min-width');
-                details.style.removeProperty('width');
-                details.style.removeProperty('padding');
-                details.style.removeProperty('align-items');
-                details.style.removeProperty('gap');
-            }
-
-            const title = node.querySelector('#video-title, h3');
-            if (title && title.style) {
-                title.style.removeProperty('-webkit-line-clamp');
-                title.style.removeProperty('max-height');
-                title.style.removeProperty('white-space');
-                title.style.removeProperty('overflow');
-            }
-        });
-    }
 
     // ==========================================
     // PLAYER BAR INTEGRATION
@@ -353,75 +245,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
     _startMonitoring() {
         if (!window.YPP?.sharedObserver) return;
         
-        // ── FORCE LAYOUT VIA JS ──
-        // YouTube's A/B tests often use inline Polymer bindings or Shadow DOM that defeat standard CSS.
-        // We MUST use JS to force the inline styles for Spacious mode.
-        window.YPP.sharedObserver.register('watch_layout_spacious', this.ROOT_SELECTORS.join(', '), (elements) => {
-            if (!this.isActive || !this.settings.enableCustomSidebar || this.state.sidebar !== 'spacious') {
-                // If not spacious or feature is disabled, we don't apply inline styles.
-                return;
-            }
-            
-            elements.forEach(node => {
-                if (node.hasAttribute('data-ypp-processed-layout')) return;
-                
-                // Force wrapper
-                node.style.setProperty('display', 'block', 'important');
-                node.style.setProperty('margin-bottom', '8px', 'important');
-                node.style.setProperty('width', '100%', 'important');
 
-                // Force Container (Row)
-                const dismissible = node.querySelector('#dismissible, #content, .yt-lockup-view-model-wiz') || node;
-                if (dismissible) {
-                    dismissible.style.setProperty('display', 'flex', 'important');
-                    dismissible.style.setProperty('flex-direction', 'row', 'important');
-                    dismissible.style.setProperty('width', '100%', 'important');
-                    dismissible.style.setProperty('align-items', 'flex-start', 'important');
-                    dismissible.style.setProperty('gap', '8px', 'important');
-                }
-
-                // Force Thumbnail
-                const thumbnail = node.querySelector('#thumbnail, ytd-thumbnail, a:has(yt-image), a:has(img)');
-                if (thumbnail) {
-                    thumbnail.style.setProperty('display', 'block', 'important');
-                    thumbnail.style.setProperty('width', '168px', 'important');
-                    thumbnail.style.setProperty('min-width', '168px', 'important');
-                    thumbnail.style.setProperty('max-width', '168px', 'important');
-                    thumbnail.style.setProperty('height', 'auto', 'important');
-                    thumbnail.style.setProperty('aspect-ratio', '16 / 9', 'important');
-                    thumbnail.style.setProperty('margin-bottom', '0', 'important');
-                    thumbnail.style.setProperty('margin-right', '0', 'important');
-                    thumbnail.style.setProperty('border-radius', '8px', 'important');
-                    thumbnail.style.setProperty('flex', 'none', 'important');
-                    thumbnail.style.setProperty('overflow', 'hidden', 'important');
-                    thumbnail.style.setProperty('position', 'relative', 'important');
-                }
-
-                // Force Details
-                const details = node.querySelector('#details, .yt-lockup-metadata-view-model-wiz');
-                if (details) {
-                    details.style.setProperty('display', 'flex', 'important');
-                    details.style.setProperty('flex-direction', 'column', 'important');
-                    details.style.setProperty('flex', '1', 'important');
-                    details.style.setProperty('min-width', '0', 'important');
-                    details.style.setProperty('padding', '0', 'important');
-                }
-
-                // Force Title
-                const title = node.querySelector('#video-title, h3');
-                if (title) {
-                    title.style.setProperty('-webkit-line-clamp', '2', 'important');
-                    title.style.setProperty('line-clamp', '2', 'important');
-                    title.style.setProperty('max-height', '3.2rem', 'important');
-                    title.style.setProperty('overflow', 'hidden', 'important');
-                    title.style.setProperty('font-size', '1.4rem', 'important');
-                    title.style.setProperty('line-height', '1.6rem', 'important');
-                }
-                
-                // Mark as processed so we don't spam style updates unless state changes
-                node.setAttribute('data-ypp-processed-layout', 'true');
-            });
-        });
 
         window.YPP.sharedObserver.register('player_shorts', 'ytd-reel-video-renderer[is-active]:not([data-ypp-processed])', (elements) => {
             if (!this.isActive) return;
@@ -444,6 +268,18 @@ class WatchPageManager extends window.YPP.BasePageManager {
                 controls.setAttribute('data-ypp-processed', 'true');
             }
         }, true);
+
+        // Listen for SPA navigation to clear the processed stamps so buttons are re-injected
+        if (!this._hasNavListener) {
+            window.addEventListener('yt-navigate-finish', () => {
+                document.querySelectorAll('[data-ypp-processed="true"]').forEach(el => {
+                    if (el.classList.contains('ytp-right-controls') || el.classList.contains('ytd-reel-video-renderer')) {
+                        el.removeAttribute('data-ypp-processed');
+                    }
+                });
+            });
+            this._hasNavListener = true;
+        }
     }
 
     injectControls(video, controls, isShorts) {

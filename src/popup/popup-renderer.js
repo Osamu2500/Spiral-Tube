@@ -245,7 +245,6 @@ function renderLayoutToggle(item, state) {
     const svgCompactStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="6" height="4" rx="1"/><line x1="11" y1="7" x2="21" y2="7"/><rect x="3" y="13" width="6" height="4" rx="1"/><line x1="11" y1="15" x2="21" y2="15"/></svg>`;
     const svgSpaciousStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`;
     const svgExpandedStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="11" rx="2"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="15" y2="21"/></svg>`;
-    const svgGridStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`;
 
     const parseSVG = (str) => new DOMParser().parseFromString(str, 'image/svg+xml').documentElement;
 
@@ -275,18 +274,9 @@ function renderLayoutToggle(item, state) {
     btnExpanded.appendChild(parseSVG(svgExpandedStr));
     btnExpanded.appendChild(document.createTextNode(' Expanded'));
 
-    const btnGrid = document.createElement('button');
-    btnGrid.type = 'button';
-    btnGrid.className = 'sidebar-layout-btn';
-    btnGrid.dataset.layout = 'grid';
-    btnGrid.style.cssText = btnStyle;
-    btnGrid.appendChild(parseSVG(svgGridStr));
-    btnGrid.appendChild(document.createTextNode(' Grid'));
-
     toggleWrap.appendChild(btnCompact);
     toggleWrap.appendChild(btnSpacious);
     toggleWrap.appendChild(btnExpanded);
-    toggleWrap.appendChild(btnGrid);
     headerRow.appendChild(toggleWrap);
     wrap.appendChild(headerRow);
 
@@ -301,7 +291,7 @@ function renderLayoutToggle(item, state) {
 
     // Logic
     const updateVisuals = (layout) => {
-        [btnCompact, btnSpacious, btnExpanded, btnGrid].forEach(b => {
+        [btnCompact, btnSpacious, btnExpanded].forEach(b => {
             const isActive = b.dataset.layout === layout;
             b.classList.toggle('active', isActive);
             b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
@@ -326,7 +316,6 @@ function renderLayoutToggle(item, state) {
     btnCompact.onclick = () => applyActiveState('compact');
     btnSpacious.onclick = () => applyActiveState('spacious');
     btnExpanded.onclick = () => applyActiveState('expanded');
-    btnGrid.onclick = () => applyActiveState('grid');
 
     const originalValueDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
     Object.defineProperty(hiddenInput, 'value', {

@@ -25,22 +25,24 @@ window.YPP.features.TimeDisplay = class TimeDisplay extends window.YPP.features.
         if (!Utils) return;
 
         if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('time-display-video', 'video', (elements) => {
-                const video = elements[0];
-                if (!video) return;
-
-                const timeDisplay = document.querySelector('.ytp-time-display') ||
-                                    Array.from(document.querySelectorAll('.ytp-left-controls span')).find(el => el.textContent.includes('/'))?.parentElement;
-                
-                if (timeDisplay) {
-                    this.showRemainingTime(video, timeDisplay);
-                } else {
-                     const leftControls = document.querySelector('.ytp-left-controls');
-                     if (leftControls) {
-                         this.showRemainingTime(video, leftControls);
-                     }
-                }
+            // Observe the container itself so we get the fresh one after SPA navigations
+            window.YPP.sharedObserver.register('time-display-container', '.ytp-time-display .ytp-time-duration', (elements) => {
+                const video = document.querySelector('video');
+                const timeDisplay = elements[0].closest('.ytp-time-display');
+                if (video && timeDisplay) this.showRemainingTime(video, timeDisplay);
             }, true);
+
+            // Re-inject on SPA navigation as fallback
+            if (!this._hasNavListener) {
+                window.addEventListener('yt-navigate-finish', () => {
+                    setTimeout(() => {
+                        const video = document.querySelector('video');
+                        const timeDisplay = document.querySelector('.ytp-time-display');
+                        if (video && timeDisplay) this.showRemainingTime(video, timeDisplay);
+                    }, 1000); // give YouTube time to rebuild controls
+                });
+                this._hasNavListener = true;
+            }
         }
     }
 

@@ -250,6 +250,19 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
 
                 this._audioConnected = true;
                 this._restoreAudioState();
+                
+                // IMPORTANT: AudioContext often starts in 'suspended' state without user interaction.
+                // We MUST resume it, otherwise the audio stays permanently muted!
+                if (this.ctx && this.ctx.state === 'suspended') {
+                    this.ctx.resume().catch(() => {});
+                    const resumeAudio = () => {
+                        if (this.ctx && this.ctx.state === 'suspended') {
+                            this.ctx.resume().catch(() => {});
+                        }
+                        ['click', 'touchstart', 'keydown'].forEach(evt => document.removeEventListener(evt, resumeAudio, true));
+                    };
+                    ['click', 'touchstart', 'keydown'].forEach(evt => document.addEventListener(evt, resumeAudio, true));
+                }
 
             } catch (e) {
                 this.utils?.log?.('[YPP:VolumeBooster] Audio engine init failed: ' + e.message, 'VolumeBooster', 'warn');

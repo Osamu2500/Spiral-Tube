@@ -262,6 +262,12 @@ body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-rendere
   flex-direction: column !important;
 }
 
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) .yt-lockup-metadata-view-model-wiz > * {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 /* Expanded Title styling */
 body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3) {
   display: -webkit-box !important;
@@ -277,100 +283,7 @@ body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-rendere
 }
 
 
-/* ══════════════════════════════════════════════════════════════════════════
- * GRID LAYOUT
- * 2-column grid — each cell gets a stacked card.
- * ══════════════════════════════════════════════════════════════════════════ */
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) #items,
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) ytd-item-section-renderer #contents,
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-grid-renderer > #contents,
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-grid-row > #contents,
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) div#contents:has(> ytd-rich-item-renderer),
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) div#contents:has(> ytd-compact-video-renderer),
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) div#contents:has(> yt-lockup-view-model),
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) div#contents:has(> ytd-lockup-view-model) {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
-  gap: 12px !important;
-}
 
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) .yt-lockup-metadata-view-model-wiz > *,
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) .yt-lockup-metadata-view-model-wiz > * {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Reset margins inside grid items */
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
-  margin-bottom: 0 !important;
-  width: 100% !important;
-}
-
-/* Stack layout inside grid cells — legacy */
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-}
-
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer {
-  display: block !important;
-  width: 100% !important;
-  max-width: none !important;
-  aspect-ratio: 16 / 9 !important;
-  height: auto !important;
-  margin-bottom: 8px !important;
-  margin-right: 0 !important;
-  border-radius: 8px !important;
-}
-
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer {
-  padding: 0 !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* Grid — new yt-lockup-view-model */
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-}
-
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)) {
-  display: block !important;
-  width: 100% !important;
-  max-width: none !important;
-  aspect-ratio: 16 / 9 !important;
-  height: auto !important;
-  margin-bottom: 8px !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz {
-  padding: 0 !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* Title text sizing for grid */
-body.ypp-sidebar-grid :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3) {
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  font-size: 1.3rem !important;
-  line-height: 1.8rem !important;
-  margin-bottom: 4px !important;
-  overflow: hidden !important;
-}
 
 /* ══════════════════════════════════════════════════════════════════════════
  * SPACIOUS LAYOUT (NEW)

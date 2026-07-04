@@ -333,14 +333,37 @@ window.YPP.features.GlobalBarUI = class GlobalBarUI {
         const timeEl = this.barElement.querySelector('#ypp-gpb-time');
         if (timeEl) {
             const formatTime = (s) => {
-                if (!s || isNaN(s)) return "0:00";
-                const m = Math.floor(s / 60);
+                if (!s || isNaN(s) || s < 0) return "0:00";
+                const h = Math.floor(s / 3600);
+                const m = Math.floor((s % 3600) / 60);
                 const sec = Math.floor(s % 60).toString().padStart(2, '0');
+                if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${sec}`;
                 return `${m}:${sec}`;
             };
-            timeEl.textContent = primary.duration && !isNaN(primary.duration)
+            
+            let timeStr = primary.duration && !isNaN(primary.duration)
                 ? `${formatTime(primary.currentTime)} / ${formatTime(primary.duration)}`
                 : formatTime(primary.currentTime);
+                
+            if (this.settings.enableRemainingTime !== false && primary.duration && !isNaN(primary.duration)) {
+                const speed = primary.playbackRate || 1;
+                const rawLeft = Math.max(0, primary.duration - primary.currentTime);
+                const adjustedLeft = rawLeft / speed;
+                
+                if (rawLeft > 0) {
+                    if (Math.abs(speed - 1) <= 0.01) {
+                        timeStr += ` ( -${formatTime(rawLeft)} )`;
+                    } else if (speed > 1) {
+                        const totalSaved = primary.duration - (primary.duration / speed);
+                        timeStr += ` ( -${formatTime(adjustedLeft)} · ${formatTime(totalSaved)} saved )`;
+                    } else {
+                        const totalExtra = (primary.duration / speed) - primary.duration;
+                        timeStr += ` ( -${formatTime(adjustedLeft)} · ${formatTime(totalExtra)} extra )`;
+                    }
+                }
+            }
+            
+            timeEl.textContent = timeStr;
         }
 
         // Loop reflects primary video

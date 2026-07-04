@@ -151,6 +151,10 @@ window.YPP.features.AudioCompressor = class AudioCompressor extends window.YPP.f
                 this.limiterNode.curve = curve;
             }
 
+            // We ALWAYS need to connect our internal nodes!
+            this.compressorNode.connect(this.gainNode);
+            this.gainNode.connect(this.limiterNode);
+
             // Expose our nodes for VolumeBooster to chain into if it enables AFTER us
             this.videoElement.__ypp_ext_compressor = {
                 input: this.compressorNode,
@@ -168,8 +172,6 @@ window.YPP.features.AudioCompressor = class AudioCompressor extends window.YPP.f
             } else {
                 // Standalone routing
                 this.sourceNode.connect(this.compressorNode);
-                this.compressorNode.connect(this.gainNode);
-                this.gainNode.connect(this.limiterNode);
                 this.limiterNode.connect(this.audioContext.destination);
             }
 

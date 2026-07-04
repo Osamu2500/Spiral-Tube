@@ -1,4 +1,4 @@
-﻿window.YPP = window.YPP || {};
+window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
 /**
@@ -209,56 +209,6 @@ window.YPP.features.PlayerSettingsMenu = class PlayerSettingsMenu {
                     }
                 }));
             }
-        }
-
-        // New Toggle-Based Features
-        if (this.player.settings.pb_autoPause === 'back') {
-            _addSeparator();
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsToggleItem('Auto Pause', icon, 'autoPause', this.player.settings.autoPause));
-        }
-        if (this.player.settings.pb_autoLike === 'back') {
-            _addSeparator();
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsToggleItem('Auto Like', icon, 'autoLike', this.player.settings.autoLike));
-        }
-        if (this.player.settings.pb_videoResumer === 'back') {
-            _addSeparator();
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsToggleItem('Video Resume', icon, 'videoResumer', this.player.settings.videoResumer));
-        }
-        if (this.player.settings.pb_intentionalDelay === 'back') {
-            _addSeparator();
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42A8.962 8.962 0 0 0 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9a8.994 8.994 0 0 0 7.53-14.39zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsToggleItem('Video Delay', icon, 'intentionalDelay', this.player.settings.intentionalDelay));
-        }
-        if (this.player.settings.pb_audioCompressor === 'back') {
-            _addSeparator();
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsToggleItem('Audio Compressor', icon, 'audioCompressor', this.player.settings.audioCompressor));
-        }
-        if (this.player.settings.pb_durationFilter === 'back') {
-            _addSeparator();
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsToggleItem('Duration Filter', icon, 'durationFilter', this.player.settings.durationFilter));
-        }
-        if (this.player.settings.pb_autoQuality === 'back') {
-            _addSeparator();
-            // Since autoQuality is a select, maybe we just redirect them to the popup for now, or just make it a toggle to turn it off completely?
-            // Wait, we can't do a full select UI inside the native settings menu without recreating the YouTube nested menu system!
-            // Let's just make it a toggle that toggles it on/off based on its current state!
-            // Wait, if it's 'off', newValue could be 'hd1080'. 
-            const icon = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>`;
-            panelMenu.appendChild(this.createSettingsMenuItem('Auto Quality', icon, () => {
-                window.YPP.Utils.log('Auto Quality settings should be modified in the extension popup.', 'SETTINGS');
-                const toastFeature = window.YPP.featureManager?.getFeature('ZenMode'); // or custom toast
-                if (toastFeature) {
-                     // Not easily accessible, let's just alert for now or ignore since they can change it in the popup.
-                     alert("Please configure Auto Quality in the Spiral Tube extension popup.");
-                } else {
-                     alert("Please configure Auto Quality in the Spiral Tube extension popup.");
-                }
-            }));
         }
     }
 };
