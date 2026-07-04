@@ -5,7 +5,7 @@ class SubscriptionsPageManager extends window.YPP.BasePageManager {
         
         // Initialize features managed by this page
         this.features = {
-            deckMode: new window.YPP.features.DeckMode(),
+            // DeckMode is managed by FeatureManager globally via constants.js
             // Ensure folder UI features are managed here if needed
             folderUi: window.YPP.features.FolderUI ? new window.YPP.features.FolderUI() : null,
             subscriptionsUi: window.YPP.features.SubscriptionsUI ? new window.YPP.features.SubscriptionsUI() : null

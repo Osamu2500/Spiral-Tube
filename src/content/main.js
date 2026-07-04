@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Spiral Tube - Main Entry Point
  * Bootstraps the application, loads settings, and handles navigation events
  */
@@ -316,43 +316,37 @@
             // Track Chrome API listeners separately
             this._chromeListeners = [];
 
-            const NAV_DEBOUNCE_MS = 0; // 0ms: defer one tick so the URL is committed, but activate features immediately
             const handleNavigation = () => {
-                if (this._navTimeout) clearTimeout(this._navTimeout);
-                this._navTimeout = setTimeout(() => {
-                    this._navTimeout = null;
+                this.Utils?.log('Navigation detected', 'MAIN', 'debug');
+                this.updateContext();
 
-                    this.Utils?.log('Navigation detected', 'MAIN', 'debug');
-                    this.updateContext();
+                if (window.YPP.events) {
+                    const url = window.location.href;
+                    window.YPP.events.emit('app:pageChange', url);
 
-                    if (window.YPP.events) {
-                        const url = window.location.href;
-                        window.YPP.events.emit('app:pageChange', url);
-
-                        if (window.location.pathname.startsWith('/watch')) {
-                            const urlParams = new URLSearchParams(window.location.search);
-                            const videoId = urlParams.get('v');
-                            if (videoId) {
-                                window.YPP.events.emit('app:videoChange', videoId);
-                                if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
-                                    window.YPP.Utils.VideoSizeTracker.init();
-                                }
-                            }
-                        } else {
+                    if (window.location.pathname.startsWith('/watch')) {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const videoId = urlParams.get('v');
+                        if (videoId) {
+                            window.YPP.events.emit('app:videoChange', videoId);
                             if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
-                                window.YPP.Utils.VideoSizeTracker.stop();
+                                window.YPP.Utils.VideoSizeTracker.init();
                             }
                         }
-                    }
-
-                    if (this.featureManager) {
-                        try {
-                            this.featureManager.init(this.settings);
-                        } catch (error) {
-                            this.Utils?.log(`Error initializing features on navigation: ${error.message}`, 'MAIN', 'error');
+                    } else {
+                        if (window.YPP.Utils && window.YPP.Utils.VideoSizeTracker) {
+                            window.YPP.Utils.VideoSizeTracker.stop();
                         }
                     }
-                }, NAV_DEBOUNCE_MS);
+                }
+
+                if (this.featureManager) {
+                    try {
+                        this.featureManager.init(this.settings);
+                    } catch (error) {
+                        this.Utils?.log(`Error initializing features on navigation: ${error.message}`, 'MAIN', 'error');
+                    }
+                }
             };
 
             // Listen for page navigation and track listener

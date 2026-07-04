@@ -39,8 +39,6 @@
   overflow: visible !important;
 }
 
-
-
 /* Force video to exactly fill the rounded player, overriding YouTube JS resizing gaps */
 .yt-spiral-tube-theme .html5-video-container {
   width: 100% !important;
@@ -66,7 +64,7 @@
 /* Video Title & Metadata */
 ytd-watch-metadata #title h1,
 #below #title h1 {
-  font-family: "Inter", "Roboto", sans-serif;
+  font-family: 'Inter', 'Roboto', sans-serif;
   font-weight: 800;
   font-size: 2.2rem;
   line-height: 1.3;
@@ -100,7 +98,10 @@ body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner {
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.15));
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
@@ -110,21 +111,37 @@ body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner:hov
 }
 
 /* Action Buttons (Premium) */
-body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed > *,
-body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > yt-button-shape {
+body.ypp-action-style-premium.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #actions
+  ytd-menu-renderer
+  > #top-level-buttons-computed
+  > *,
+body.ypp-action-style-premium.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #actions
+  ytd-menu-renderer
+  > yt-button-shape {
   margin-left: 8px;
 }
 
-body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal {
+body.ypp-action-style-premium.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next--tonal {
   background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.04)) !important;
   border-radius: 20px !important;
   border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.03)) !important;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02) !important;
   backdrop-filter: blur(8px) saturate(1.2);
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
+body.ypp-action-style-premium.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next--tonal:hover {
   background: var(--ypp-bg-active, rgba(255, 255, 255, 0.1)) !important;
   transform: translateY(-2px);
   box-shadow:
@@ -152,14 +169,24 @@ body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #owner:hov
 
 /* Smooth transitions for text hiding */
 body.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next__button-text-content {
-  transition: max-width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease, margin 0.3s ease, padding 0.3s ease !important;
+  transition:
+    max-width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.2s ease,
+    margin 0.3s ease,
+    padding 0.3s ease !important;
   max-width: 200px;
   overflow: hidden;
 }
 
 /* Hide the text labels in the action buttons to leave only icons */
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions .yt-spec-button-shape-next__button-text-content,
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #menu .yt-spec-button-shape-next__button-text-content {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #actions
+  .yt-spec-button-shape-next__button-text-content,
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #menu
+  .yt-spec-button-shape-next__button-text-content {
   max-width: 0 !important;
   opacity: 0 !important;
   margin: 0 !important;
@@ -167,7 +194,9 @@ body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #menu .yt-
 }
 
 /* Action Buttons (Minimal) - Circular, crisp, styled SVG */
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next--tonal {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -178,28 +207,44 @@ body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-b
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease !important;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease !important;
 }
 
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next--tonal:hover {
   background: rgba(255, 255, 255, 0.12) !important;
   transform: scale(1.15) translateY(-2px) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* SVG Shadow and Color for Minimal */
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next__icon svg {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next__icon
+  svg {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-  transition: filter 0.3s ease, fill 0.3s ease;
+  transition:
+    filter 0.3s ease,
+    fill 0.3s ease;
 }
 
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover .yt-spec-button-shape-next__icon svg {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next--tonal:hover
+  .yt-spec-button-shape-next__icon
+  svg {
   filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
   fill: #ffffff !important;
 }
 
 /* Segmented button container fixes for minimal circular style */
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  ytd-segmented-like-dislike-button-renderer {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -207,17 +252,34 @@ body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata ytd-segmen
 }
 
 /* Hide the divider inside segmented like/dislike button */
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer::before,
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  ytd-segmented-like-dislike-button-renderer::before,
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  .yt-spec-button-shape-next--segmented-start::after {
   display: none !important;
 }
 
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #actions
+  ytd-menu-renderer
+  > #top-level-buttons-computed {
   gap: 12px !important;
 }
 
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > #top-level-buttons-computed > *,
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-menu-renderer > yt-button-shape {
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #actions
+  ytd-menu-renderer
+  > #top-level-buttons-computed
+  > *,
+body.ypp-action-style-minimal.yt-spiral-tube-theme
+  ytd-watch-metadata
+  #actions
+  ytd-menu-renderer
+  > yt-button-shape {
   margin-left: 0px !important;
 }
 
@@ -232,7 +294,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata #description {
   font-size: 1.05rem;
   backdrop-filter: var(--ypp-glass-blur-active) saturate(1.2);
   -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.2);
-  box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0,0,0,0.25));
+  box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.25));
 }
 
 html.yt-spiral-tube-theme ytd-watch-metadata #description:hover,
@@ -255,22 +317,34 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--filled 
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata #actions yt-button-shape > button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button:hover,
+html.yt-spiral-tube-theme
+  ytd-watch-metadata
+  ytd-segmented-like-dislike-button-renderer
+  button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--filled:hover {
   background: var(--ypp-bg-active, rgba(255, 255, 255, 0.2)) !important;
   background-color: var(--ypp-bg-active, rgba(255, 255, 255, 0.2)) !important;
 }
 
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer > div::before,
+html.yt-spiral-tube-theme
+  ytd-watch-metadata
+  ytd-segmented-like-dislike-button-renderer
+  > div::before,
 html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
   background-color: var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
 }
 
 /* ── Player Controls Container (Global Bar) ── */
 @keyframes ypp-bar-pop-in {
-    0% { opacity: 0; transform: scale(0.95) translateY(10px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* ── Player Container Query Setup ── */
@@ -310,7 +384,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 24px;
     padding: 6px 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
     margin-right: 0;
   }
 }
@@ -367,7 +441,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.18s ease;
 }
@@ -386,12 +460,14 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
   width: 100%;
   height: 100%;
   fill: white;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
   transition: filter 0.18s ease;
 }
 .ypp-action-btn.active {
   background: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .ypp-action-btn.active svg {
   fill: #ffffff;
@@ -410,7 +486,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
   border: none !important;
   box-shadow: none !important;
   margin-left: 4px;
-  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .ypp-speed-controls:hover {
   transform: translateY(-2px);
@@ -426,7 +502,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
   cursor: pointer;
   padding: 3px 7px;
   border-radius: 14px;
-  transition: all 0.18s cubic-bezier(0.2,0.8,0.2,1);
+  transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
   letter-spacing: 0.2px;
 }
 .ypp-speed-btn:hover {
@@ -438,9 +514,8 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
   background: rgba(255, 255, 255, 0.25);
   font-weight: 800;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
-
 
 html.yt-spiral-tube-theme ytd-menu-popup-renderer,
 html.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
@@ -451,7 +526,9 @@ html.yt-spiral-tube-theme .ytp-popup {
   background: var(--ypp-bg-surface) !important;
   backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
   -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 16px 48px rgba(0, 0, 0, 0.6) !important;
 }
 html.yt-spiral-tube-theme ytd-compact-link-renderer,
 html.yt-spiral-tube-theme ytd-account-item-renderer,
@@ -461,7 +538,10 @@ html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer {
   margin: 4px 12px !important;
   width: calc(100% - 24px) !important;
   border-radius: 10px !important;
-  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition:
+    transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   box-sizing: border-box !important;
   background: transparent !important;
 }
@@ -472,7 +552,7 @@ html.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
 html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 html.yt-spiral-tube-theme ytd-compact-link-renderer yt-icon,
 html.yt-spiral-tube-theme ytd-account-item-renderer yt-icon,
@@ -480,7 +560,9 @@ html.yt-spiral-tube-theme ytd-menu-service-item-renderer yt-icon,
 html.yt-spiral-tube-theme ytd-menu-navigation-item-renderer yt-icon,
 html.yt-spiral-tube-theme .ytp-menuitem-icon {
   opacity: 0.7 !important;
-  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 html.yt-spiral-tube-theme ytd-compact-link-renderer:hover yt-icon,
 html.yt-spiral-tube-theme ytd-account-item-renderer:hover yt-icon,
@@ -557,7 +639,7 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   flex: 1;
 }
 .ypp-watch-alert-title {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
   font-weight: 700;
   color: rgba(255, 200, 0, 0.9);
@@ -566,7 +648,7 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   letter-spacing: 0.04em;
 }
 .ypp-watch-alert-msg {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
@@ -594,7 +676,10 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
 }
 html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button {
   border-radius: 12px !important;
-  transition: transform 0.2s cubic-bezier(0.2,0.8,0.2,1), background 0.2s ease, box-shadow 0.2s ease !important;
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
   outline: none !important;
   border: none !important;
 }
@@ -602,7 +687,7 @@ html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-but
 html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:focus {
   background: rgba(255, 255, 255, 0.12) !important;
   transform: translateY(-2px) scale(1.05) !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
   outline: none !important;
   border: none !important;
 }
@@ -623,56 +708,56 @@ body.yt-spiral-tube-theme .ytp-popup {
   background: rgba(10, 10, 18, 0.45) !important;
   backdrop-filter: blur(36px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
-  border-top: 1px solid rgba(255,255,255,0.20) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
   box-shadow:
-    0 16px 56px rgba(0,0,0,0.7),
-    0 4px 16px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    0 16px 56px rgba(0, 0, 0, 0.7),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
 body.ypp-floating-player-active .ytp-chrome-bottom {
-    width: 100% !important;
-    left: 0 !important;
-    padding: 0 10px !important;
-    box-sizing: border-box !important;
+  width: 100% !important;
+  left: 0 !important;
+  padding: 0 10px !important;
+  box-sizing: border-box !important;
 }
 
 /* Fix: Prevent player bar from getting squished when video has a smaller aspect ratio */
 body.yt-spiral-tube-theme .html5-video-player:not(.ytp-fullscreen) .ytp-chrome-bottom {
-    width: calc(100% - 24px) !important;
-    left: 12px !important;
+  width: calc(100% - 24px) !important;
+  left: 12px !important;
 }
 body.yt-spiral-tube-theme .html5-video-player.ytp-fullscreen .ytp-chrome-bottom {
-    width: calc(100% - 48px) !important;
-    left: 24px !important;
+  width: calc(100% - 48px) !important;
+  left: 24px !important;
 }
 
 body.ypp-floating-player-active .ytp-progress-bar-container {
-    width: 100% !important;
-    bottom: 35px !important;
+  width: 100% !important;
+  bottom: 35px !important;
 }
 body.ypp-floating-player-active .ytp-size-button,
 body.ypp-floating-player-active .ytp-miniplayer-button,
 body.ypp-floating-player-active .ytp-chapter-title {
-    display: none !important;
+  display: none !important;
 }
 body.ypp-floating-player-active .html5-video-player {
-    background-color: #000 !important;
+  background-color: #000 !important;
 }
-body.ypp-use-square-corners ytd-thumbnail, 
-body.ypp-use-square-corners ytd-playlist-thumbnail, 
-body.ypp-use-square-corners .ytp-videowall-still-image, 
-body.ypp-use-square-corners ytd-macro-markers-list-item-renderer img, 
-body.ypp-use-square-corners #thumbnail, 
-body.ypp-use-square-corners #avatar, 
-body.ypp-use-square-corners yt-img-shadow, 
+body.ypp-use-square-corners ytd-thumbnail,
+body.ypp-use-square-corners ytd-playlist-thumbnail,
+body.ypp-use-square-corners .ytp-videowall-still-image,
+body.ypp-use-square-corners ytd-macro-markers-list-item-renderer img,
+body.ypp-use-square-corners #thumbnail,
+body.ypp-use-square-corners #avatar,
+body.ypp-use-square-corners yt-img-shadow,
 body.ypp-use-square-corners .yt-spec-button-shape-next,
 body.ypp-use-square-corners .ytThumbnailViewModelSmall,
 body.ypp-use-square-corners .ytThumbnailViewModelMedium,
 body.ypp-use-square-corners .ytThumbnailViewModelLarge,
 body.ypp-use-square-corners yt-avatar-shape,
-body.ypp-use-square-corners yt-img-shadow[shape="circle"] {
-    border-radius: 0 !important;
+body.ypp-use-square-corners yt-img-shadow[shape='circle'] {
+  border-radius: 0 !important;
 }
 body.ypp-revert-progress-bar .ytp-play-progress,
 body.ypp-revert-progress-bar #progress.ytd-thumbnail-overlay-resume-playback-renderer,
@@ -681,40 +766,40 @@ body.ypp-revert-progress-bar .ytChapteredProgressBarChapteredPlayerBarChapterSee
 body.ypp-revert-progress-bar .ytChapteredProgressBarChapteredPlayerBarFill,
 body.ypp-revert-progress-bar .ytSliderSliderPrimary,
 body.ypp-revert-progress-bar .thumbnail-overlay-resume-playback-progress {
-    background: #f00 !important;
+  background: #f00 !important;
 }
 .ypp-cinema-mode ytd-watch-flexy:not([theater]) #columns {
-    --ytd-watch-flexy-sidebar-width: 0px !important;
+  --ytd-watch-flexy-sidebar-width: 0px !important;
 }
 .ypp-cinema-mode .ytp-caption-window-container {
-    bottom: 2% !important;
+  bottom: 2% !important;
 }
 .ypp-minimal-mode.ypp-cinema-idle .ytp-tooltip {
-    opacity: 0 !important;
-    display: none !important;
+  opacity: 0 !important;
+  display: none !important;
 }
 body.ypp-zen-mode .html5-video-player.playing-mode .ytp-chrome-bottom,
 body.ypp-zen-mode .html5-video-player.playing-mode .ytp-chrome-top,
 body.ypp-zen-mode .html5-video-player.playing-mode .ytp-gradient-bottom,
 body.ypp-zen-mode .html5-video-player.playing-mode .ytp-gradient-top {
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transition: opacity 2.0s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 body.ypp-zen-mode .html5-video-player.paused-mode .ytp-chrome-bottom,
 body.ypp-zen-mode .html5-video-player.paused-mode .ytp-chrome-top,
 body.ypp-zen-mode .html5-video-player.paused-mode .ytp-gradient-bottom,
 body.ypp-zen-mode .html5-video-player.paused-mode .ytp-gradient-top {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transition: opacity 0.5s ease !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: opacity 0.5s ease !important;
 }
 body.ypp-zen-mode .html5-video-player.paused-mode video {
-    filter: brightness(0.4) saturate(0.6) blur(2px) !important;
-    animation: zenBreathing 8s infinite ease-in-out !important;
+  filter: brightness(0.4) saturate(0.6) blur(2px) !important;
+  animation: zenBreathing 8s infinite ease-in-out !important;
 }
 body.ypp-sidebar-hidden ytd-watch-flexy:not([theater]) #columns {
-    --ytd-watch-flexy-sidebar-width: 0px !important;
+  --ytd-watch-flexy-sidebar-width: 0px !important;
 }
 .html5-video-player.ytp-rounded-player {
   border-radius: 12px;
@@ -730,14 +815,13 @@ body.ypp-sidebar-hidden ytd-watch-flexy:not([theater]) #columns {
 ytd-thumbnail.player-container-background-image,
 #player-full-bleed-container ytd-thumbnail,
 #player-container ytd-thumbnail {
-    display: none !important;
-    pointer-events: none !important;
+  display: none !important;
+  pointer-events: none !important;
 }
 
 /* Ensure the actual video element remains fully interactive */
 .html5-video-player video,
 video.html5-main-video,
 #movie_player video {
-    pointer-events: auto !important;
+  pointer-events: auto !important;
 }
-

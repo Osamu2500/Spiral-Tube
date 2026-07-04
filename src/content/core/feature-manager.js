@@ -220,7 +220,12 @@ window.YPP.FeatureManager = class FeatureManager {
         //    - layout MUST run before autoScaleLayout because AutoScaleGrid.disable() clears
         //      --ypp-active-columns, and GridLayoutManager.onUpdate() must re-set it last.
         //    - volumeBoost and videoFilters are player-bar UI that should be eager (not idle-deferred)
-        const SEQUENTIAL_UI = ['theme', 'headerNav', 'sidebarLayout', 'layout', 'playlistRedesign', 'volumeBoost', 'videoFilters'];
+        //    - redesign features must run synchronously to prevent FOUC (flash of unstyled content)
+        const SEQUENTIAL_UI = [
+            'theme', 'headerNav', 'sidebarLayout', 'layout', 'playlistRedesign', 
+            'volumeBoost', 'videoFilters', 'historyRedesign', 'watchRedesign', 
+            'globalPlayerBar', 'deckMode', 'subscriptionFolders'
+        ];
         const AFTER_LAYOUT  = ['autoScaleLayout'];
         const uiFeatures    = sorted.filter(([name]) => SEQUENTIAL_UI.includes(name));
         const postLayout    = sorted.filter(([name]) => AFTER_LAYOUT.includes(name));
