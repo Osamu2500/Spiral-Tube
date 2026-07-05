@@ -57,6 +57,7 @@ export const DEFAULT_SETTINGS = {
     hideShortsInteraction: false, // Shorts like/comment bar
     aggressiveShortsBlock: false, // Nuke shorts everywhere
     autoVideoFilter: true,
+    hidePlayerTopics: false,
 
     // Player
     autoCinema: false,

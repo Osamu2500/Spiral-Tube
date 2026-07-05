@@ -42,6 +42,7 @@ window.YPP.SettingsSchema = {
         hideSearchShorts:    { type: 'boolean', default: true },
         hideMixes:           { type: 'boolean', default: false },
         hideExploreTopics:   { type: 'boolean', default: false },
+        hidePlayerTopics:    { type: 'boolean', default: false },
         hideWatched:         { type: 'boolean', default: false },
         hideWatchedMode:     { type: 'string',  default: 'dim', values: ['dim', 'hide'] },
         hideWatchedThreshold:{ type: 'number',  default: 80, min: 0, max: 100 },

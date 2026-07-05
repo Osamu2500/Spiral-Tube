@@ -428,12 +428,12 @@ html.yt-spiral-tube-theme body {
 
 /* Ensure frosted glass doesn't show up as a white bar when scrolling */
 
-body.ypp-home-page.ypp-hide-explore-topics #frosted-glass.with-chipbar,
+body.ypp-hide-explore-topics #frosted-glass.with-chipbar,
 #frosted-glass {
   display: none !important;
 }
 
-body.ypp-home-page.ypp-hide-explore-topics ytd-page-manager {
+body.ypp-hide-explore-topics ytd-page-manager {
   margin-top: var(--ytd-masthead-height, 56px) !important;
 }
 
@@ -4341,7 +4341,7 @@ html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-
 
 /* Hide Feed / Explore / Trending */
 
-body.ypp-home-page.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer {
+body.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer {
     display: none !important;
 }
 

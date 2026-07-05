@@ -61,11 +61,13 @@ html[data-ypp-card-style='minimalist']
   :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
   border-radius: 0 !important;
 }
-body.ypp-home-page.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer,
-body.ypp-home-page.ypp-hide-explore-topics yt-chip-cloud-renderer,
-body.ypp-home-page.ypp-hide-explore-topics yt-related-chip-cloud-renderer,
-body.ypp-home-page.ypp-hide-explore-topics #chips-wrapper,
-body.ypp-home-page.ypp-hide-explore-topics ytd-rich-grid-renderer > #header {
+body.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer,
+body.ypp-hide-explore-topics yt-chip-cloud-renderer,
+body.ypp-hide-explore-topics #chips-wrapper,
+body.ypp-hide-explore-topics ytd-rich-grid-renderer > #header {
+  display: none !important;
+}
+body.ypp-hide-player-topics yt-related-chip-cloud-renderer {
   display: none !important;
 }
 body.ypp-home-page.ypp-hide-mixes

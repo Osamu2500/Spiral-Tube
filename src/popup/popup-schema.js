@@ -192,7 +192,7 @@ export const POPUP_SCHEMA = [
             {
                 title: 'Player Page Filters',
                 items: [
-                    { type:'toggle', id:'hideExploreTopics', label:'Hide Topics Bar',   desc:'Remove category chips',    icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M3.6 9h16.8 M3.6 15h16.8') },
+                    { type:'toggle', id:'hidePlayerTopics', label:'Hide Topics Bar',   desc:'Remove category chips',    icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M3.6 9h16.8 M3.6 15h16.8') },
                     { type:'toggle', id:'hideComments',   label:'Hide Comments',       icon:P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z') },
                     { type:'toggle', id:'commentFilter',  label:'Comment Spam Filter', desc:'Hide suspected bots',        icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
                     { type:'select', id:'commentFilterAction', label:'Spam Action', desc:'What to do with spam', icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'), options: [{value:'dim',label:'Dim (Hover to reveal)'},{value:'hide',label:'Hide completely'}] },

@@ -30,6 +30,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideShortsInteraction: 'ypp-hide-shorts-interaction',
             hideTrending:          'ypp-hide-trending',          // Moved from HomePageManager
             hideExploreTopics:     'ypp-hide-explore-topics',    // Moved from HomePageManager
+            hidePlayerTopics:      'ypp-hide-player-topics',
             hideFeed:              'ypp-hide-feed',              // Moved from HomePageManager
             aggressiveShortsBlock: 'ypp-nuke-shorts',
             hideSearchShorts:      'ypp-hide-search-shorts',
