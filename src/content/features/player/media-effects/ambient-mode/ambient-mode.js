@@ -44,6 +44,8 @@ window.YPP.features.AmbientMode = class AmbientMode extends window.YPP.features.
         
         await super.enable();
         
+        document.body.classList.add('ypp-ambient-mode-active');
+        
         // Wait for video element to be available (replaces setTimeout)
         const videoReady = await this.waitForElement(SELECTORS.VIDEO, 5000);
         if (!videoReady) return;
@@ -54,6 +56,8 @@ window.YPP.features.AmbientMode = class AmbientMode extends window.YPP.features.
 
     async disable() {
         await super.disable();
+        
+        document.body.classList.remove('ypp-ambient-mode-active');
 
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
@@ -132,14 +136,14 @@ window.YPP.features.AmbientMode = class AmbientMode extends window.YPP.features.
         this.container = document.createElement('div');
         this.container.id = 'ypp-massive-ambient-container';
         this.container.style.cssText = `
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Behind the player content */
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Behind everything */
             pointer-events: none;
-            overflow: visible;
+            overflow: hidden;
             transform: translateZ(0); /* Hardware acceleration */
             opacity: ${this.settings?.ambientIntensity || 0.6};
             transition: opacity 0.5s ease;
@@ -159,16 +163,13 @@ window.YPP.features.AmbientMode = class AmbientMode extends window.YPP.features.
             width: 100%;
             height: 100%;
             image-rendering: auto;
-            mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
         `;
         
         this.container.appendChild(this.canvas);
         
-        playerContainer.style.position = 'relative';
-        playerContainer.style.zIndex = '0';
-        
-        playerContainer.insertBefore(this.container, playerContainer.firstChild);
+        document.body.insertBefore(this.container, document.body.firstChild);
 
         this.initWebGL();
     }

@@ -825,3 +825,26 @@ video.html5-main-video,
 #movie_player video {
   pointer-events: auto !important;
 }
+
+/* Ambient Mode Global Overrides */
+body.ypp-ambient-mode-active ytd-masthead,
+body.ypp-ambient-mode-active #masthead-container {
+    background: transparent !important;
+}
+
+body.ypp-ambient-mode-active ytd-masthead #container {
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(24px) saturate(1.5) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
+}
+
+/* Make body background transparent when ambient mode is active to show the full screen canvas */
+body.ypp-ambient-mode-active,
+html:has(body.ypp-ambient-mode-active),
+body.ypp-ambient-mode-active ytd-app,
+body.ypp-ambient-mode-active #background,
+body.ypp-ambient-mode-active ytd-page-manager,
+body.ypp-ambient-mode-active ytd-watch-flexy {
+    background: transparent !important;
+    background-color: transparent !important;
+}
