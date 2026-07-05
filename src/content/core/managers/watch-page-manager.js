@@ -221,7 +221,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
                     if (video && controls) return { video, controls, isShorts };
                 } else {
                     const video = document.querySelector('video.html5-main-video');
-                    const controls = document.querySelector('.ytp-right-controls');
+                    // In the new 'Delhi' bubble UI, .ytp-right-controls might be renamed or wrapped differently.
+                    // We target the more stable .ytp-chrome-controls to ensure we don't timeout.
+                    const controls = document.querySelector('.ytp-chrome-controls');
                     if (video && controls) return { video, controls, isShorts };
                 }
                 return null;
@@ -259,12 +261,15 @@ class WatchPageManager extends window.YPP.BasePageManager {
             }
         }, true);
         
-        window.YPP.sharedObserver.register('player_watch', '.ytp-right-controls:not([data-ypp-processed])', (elements) => {
+        // Also target .ytp-chrome-controls instead of just .ytp-right-controls for the new UI
+        window.YPP.sharedObserver.register('player_watch', '.ytp-chrome-controls:not([data-ypp-processed]), .ytp-right-controls:not([data-ypp-processed])', (elements) => {
             if (!this.isActive || window.location.pathname.startsWith('/shorts')) return;
             const controls = elements[0];
             const video = document.querySelector('video');
             if (video && controls) {
-                this.injectControls(video, controls, false);
+                // If it found .ytp-right-controls directly (old UI), use its parent .ytp-chrome-controls for consistency in injectControls
+                const targetControls = controls.classList.contains('ytp-right-controls') && controls.parentNode ? controls.parentNode : controls;
+                this.injectControls(video, targetControls, false);
                 controls.setAttribute('data-ypp-processed', 'true');
             }
         }, true);
@@ -335,7 +340,19 @@ class WatchPageManager extends window.YPP.BasePageManager {
         if (isShorts) {
             controls.appendChild(container);
         } else {
-            controls.insertBefore(container, controls.firstChild);
+            // Find where to insert our controls
+            const rightControls = controls.querySelector('.ytp-right-controls, .ytp-right-controls-right, .ytp-fullscreen-button');
+            
+            if (rightControls) {
+                // Try to find the highest level right-side container to insert before it
+                let targetNode = rightControls;
+                while (targetNode.parentNode && targetNode.parentNode !== controls) {
+                    targetNode = targetNode.parentNode;
+                }
+                controls.insertBefore(container, targetNode);
+            } else {
+                controls.appendChild(container);
+            }
         }
         
         this.injectedButtons = true;
@@ -363,7 +380,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
         };
 
         for (const [key, selector] of Object.entries(hideMap)) {
-            if (this.settings[key] && this.settings[key] !== 'front') {
+            if (this.settings[key] === 'hidden' || this.settings[key] === true) {
                 css += `${selector} { display: none !important; }\n`;
             }
         }
