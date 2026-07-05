@@ -21,6 +21,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
         this._videoElement = null;
         this._featuresInitialized = false;
         this.eventListeners = [];
+        
+        // Initialize Player Bar UI
+        this.playerBarUI = new window.YPP.features.PlayerBarUI(this);
     }
 
     onActivate() {
@@ -221,9 +224,8 @@ class WatchPageManager extends window.YPP.BasePageManager {
                     if (video && controls) return { video, controls, isShorts };
                 } else {
                     const video = document.querySelector('video.html5-main-video');
-                    // In the new 'Delhi' bubble UI, .ytp-right-controls might be renamed or wrapped differently.
-                    // We target the more stable .ytp-chrome-controls to ensure we don't timeout.
-                    const controls = document.querySelector('.ytp-chrome-controls');
+                    // Target .ytp-chrome-bottom as it is universally present in all YouTube UI versions
+                    const controls = document.querySelector('.ytp-chrome-bottom');
                     if (video && controls) return { video, controls, isShorts };
                 }
                 return null;
@@ -236,7 +238,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
                 // Need to ensure features are initialized before injecting controls!
                 await this._initFeatures();
                 
-                this.injectControls(video, controls, isShorts);
+                this.playerBarUI.injectControls(video, controls, isShorts);
                 this._startMonitoring();
             }
         } catch (error) {
@@ -261,15 +263,13 @@ class WatchPageManager extends window.YPP.BasePageManager {
             }
         }, true);
         
-        // Also target .ytp-chrome-controls instead of just .ytp-right-controls for the new UI
-        window.YPP.sharedObserver.register('player_watch', '.ytp-chrome-controls:not([data-ypp-processed]), .ytp-right-controls:not([data-ypp-processed])', (elements) => {
+        // Target .ytp-chrome-bottom for maximum stability across UI A/B tests
+        window.YPP.sharedObserver.register('player_watch', '.ytp-chrome-bottom:not([data-ypp-processed])', (elements) => {
             if (!this.isActive || window.location.pathname.startsWith('/shorts')) return;
             const controls = elements[0];
             const video = document.querySelector('video');
             if (video && controls) {
-                // If it found .ytp-right-controls directly (old UI), use its parent .ytp-chrome-controls for consistency in injectControls
-                const targetControls = controls.classList.contains('ytp-right-controls') && controls.parentNode ? controls.parentNode : controls;
-                this.injectControls(video, targetControls, false);
+                this.playerBarUI.injectControls(video, controls, false);
                 controls.setAttribute('data-ypp-processed', 'true');
             }
         }, true);
@@ -288,142 +288,20 @@ class WatchPageManager extends window.YPP.BasePageManager {
     }
 
     injectControls(video, controls, isShorts) {
-        if (isShorts) {
-            const activeShort = video.closest('ytd-reel-video-renderer');
-            if (activeShort) {
-                const existing = activeShort.querySelector('.ypp-player-controls');
-                if (existing) existing.remove();
-            }
-        } else {
-            const existing = document.querySelector('.ypp-player-controls');
-            if (existing) existing.remove();
-        }
-
-        this._applyNativeButtonStyles();
-        if (this.settingsMenuHelper) {
-            this.settingsMenuHelper.setupSettingsObserver(video);
-        }
-        this._applyNativeButtonVisibility();
-
-        const container = document.createElement('div');
-        container.className = 'ypp-player-controls' + (isShorts ? ' ypp-shorts-controls' : '');
-
-        // Helper to check if a button should be on the front bar (handles legacy true/false)
-        const isFront = (val) => val === 'front' || val === true || typeof val === 'undefined';
-
-        // Use controlsHelper to create core toggles
-        if (this.controlsHelper && this.settings.enableCustomSpeed !== false && isFront(this.settings.pb_speed)) 
-            container.appendChild(this.controlsHelper.createSpeedControls(video));
-            
-        // Button Feature Registrations (call their createButton methods)
-        const addFeatureButton = (featureKey, pbKey, overrideSettingsKey) => {
-            if (this.settings[overrideSettingsKey] === false) return; // Feature disabled globally
-            if (!isFront(this.settings[pbKey])) return; // Hidden from front bar
-            
-            const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(featureKey);
-            if (feature && feature.createButton) {
-                const btn = feature.createButton(video);
-                if (btn) container.appendChild(btn);
-            }
-        };
-
-        addFeatureButton('snapshotButton', 'pb_snapshot', 'enableSnapshot');
-        addFeatureButton('loopButton', 'pb_loop', 'enableLoop');
-        addFeatureButton('bookmarksManager', 'pb_bookmark', 'enableBookmarks');
-        addFeatureButton('volumeBoost', 'pb_volume', 'enableVolumeBoost');
-        addFeatureButton('videoFilters', 'pb_cinema', 'enableCinemaFilters');
-
-        if (this.controlsHelper && document.pictureInPictureEnabled && this.settings.enablePiP !== false && (!this.settings.pb_pip || this.settings.pb_pip === 'front')) {
-            container.appendChild(this.controlsHelper.createPiPButton(video));
-        }
-
-        if (isShorts) {
-            controls.appendChild(container);
-        } else {
-            // Find where to insert our controls
-            const rightControls = controls.querySelector('.ytp-right-controls, .ytp-right-controls-right, .ytp-fullscreen-button');
-            
-            if (rightControls) {
-                // Try to find the highest level right-side container to insert before it
-                let targetNode = rightControls;
-                while (targetNode.parentNode && targetNode.parentNode !== controls) {
-                    targetNode = targetNode.parentNode;
-                }
-                controls.insertBefore(container, targetNode);
-            } else {
-                controls.appendChild(container);
-            }
-        }
-        
-        this.injectedButtons = true;
+        this.playerBarUI.injectControls(video, controls, isShorts);
     }
 
-    _applyNativeButtonStyles() {
-        let style = document.getElementById('ypp-custom-player-bar-styles');
-        if (!style) {
-            style = document.createElement('style');
-            style.id = 'ypp-custom-player-bar-styles';
-            document.head.appendChild(style);
-        }
-
-        let css = '';
-        const hideMap = {
-            'pb_native_play': '.ytp-play-button',
-            'pb_native_next': '.ytp-next-button',
-            'pb_native_mute': '.ytp-mute-button',
-            'pb_native_cast': '.ytp-remote-button',
-            'pb_native_autoplay': '.ytp-autonav-button, .ytp-autonav-toggle-button',
-            'pb_native_cc': '.ytp-subtitles-button',
-            'pb_native_miniplayer': '.ytp-miniplayer-button',
-            'pb_native_theater': '.ytp-size-button',
-            'pb_native_fullscreen': '.ytp-fullscreen-button'
-        };
-
-        for (const [key, selector] of Object.entries(hideMap)) {
-            if (this.settings[key] === 'hidden' || this.settings[key] === true) {
-                css += `${selector} { display: none !important; }\n`;
-            }
-        }
-        style.textContent = css;
-    }
-
-    _applyNativeButtonVisibility() {
-        let styleNode = document.getElementById('ypp-custom-player-bar-style-vis');
-        if (!styleNode) {
-            styleNode = document.createElement('style');
-            styleNode.id = 'ypp-custom-player-bar-style-vis';
-            document.head.appendChild(styleNode);
-        }
-
-        const hiddenSelectors = [];
-        if (this.settings.pb_native_play === 'hidden') hiddenSelectors.push('.ytp-play-button');
-        if (this.settings.pb_native_next === 'hidden') hiddenSelectors.push('.ytp-next-button');
-        if (this.settings.pb_native_mute === 'hidden') hiddenSelectors.push('.ytp-mute-button', '.ytp-volume-area');
-        if (this.settings.pb_native_cast === 'hidden') hiddenSelectors.push('button[data-tooltip-target-id="ytp-remote-button"]', '.ytp-remote-button');
-        if (this.settings.pb_native_autoplay === 'hidden') hiddenSelectors.push('button[data-tooltip-target-id="ytp-autonav-toggle-button"]', 'button.ytp-button[aria-label*="Autoplay"]', '.ytp-autonav-toggle-button', '.ytp-autonav-button');
-        if (this.settings.pb_native_cc === 'hidden') hiddenSelectors.push('.ytp-subtitles-button');
-        if (this.settings.pb_native_miniplayer === 'hidden') hiddenSelectors.push('.ytp-miniplayer-button');
-        if (this.settings.pb_native_theater === 'hidden') hiddenSelectors.push('.ytp-size-button');
-        if (this.settings.pb_native_fullscreen === 'hidden') hiddenSelectors.push('.ytp-fullscreen-button');
-
-        if (hiddenSelectors.length > 0) {
-            styleNode.textContent = `${hiddenSelectors.join(', ')} { display: none !important; }`;
-        } else {
-            styleNode.textContent = '';
-        }
-    }
+    // Methods moved to PlayerBarUI
 
     _cleanupPlayer() {
-        const controls = document.querySelector('.ypp-player-controls');
-        if (controls) controls.remove();
-        this.injectedButtons = false;
+        if (this.playerBarUI) this.playerBarUI.cleanup();
         this._cleanupEvents();
 
         if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.unregister('player_shorts');
             window.YPP.sharedObserver.unregister('player_watch');
         }
-        document.querySelectorAll('.ytp-right-controls[data-ypp-processed], ytd-reel-video-renderer[data-ypp-processed]').forEach(el => el.removeAttribute('data-ypp-processed'));
+        document.querySelectorAll('.ytp-right-controls[data-ypp-processed], .ytp-chrome-bottom[data-ypp-processed], ytd-reel-video-renderer[data-ypp-processed]').forEach(el => el.removeAttribute('data-ypp-processed'));
 
         this._videoElement = null;
         if (this.settingsMenuHelper) {

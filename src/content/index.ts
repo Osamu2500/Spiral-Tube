@@ -128,6 +128,7 @@ import './features/pages/watch/comment-filter.js';
 import './features/pages/watch/watch-redesign.js';
 
 // Player features
+import './features/player/player-bar-ui.js';
 import './features/player/player-controls.js';
 import './features/player/controls/snapshot-button.js';
 import './features/player/controls/loop-button.js';
