@@ -40,9 +40,9 @@ export const POPUP_SCHEMA = [
                 title: 'Feed Layout',
                 items: [
                     { type:'toggle', id:'displayFullTitle', label:'Full Video Titles', desc:'Prevent truncation',        icon:P('M4 6h16M4 12h16M4 18h16') },
+                    { type:'toggle', id:'useSquareCorners',    label:'Square Corners',     desc:'Sharp edges for videos',   icon:P('M3 3h18v18H3z') },
                     { type:'toggle', id:'autoScaleLayout',  label:'Auto-Scale Grid',  desc:'Adapt to zoom/window size', icon:P('M15 3l6 6M15 3h6v6M9 21l-6-6M9 21H3v-6') },
                     { type:'range', id:'homeColumns', label:'Grid Columns', desc:'0 = auto-scale', unit:'', min:0, max:10, step:1, parent: 'autoScaleLayout' },
-                    { type:'toggle', id:'useSquareCorners',    label:'Square Corners',     desc:'Sharp edges for videos',   icon:P('M3 3h18v18H3z') }
                 ]
             },
             {
@@ -101,9 +101,9 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'autoPiP',          label:'Auto PiP',           desc:'PiP when switching tabs',    icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
                     { type:'toggle', id:'intentionalDelay', label:'Intentional Delay',  desc:'Pause before video',         icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
                     { type:'range',  id:'autoLikeThreshold',label:'Auto Like at (%)',   unit:'%', min:0, max:100, step:5, parent: 'autoLike' },
-                    { type:'select', id:'autoQuality',      label:'Auto-Quality',       desc:'Force specific resolution', icon:P('M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10 8l6 4-6 4V8z'), options:[{value:'highres',label:'Max/4K'},{value:'hd1440',label:'1440p'},{value:'hd1080',label:'1080p'},{value:'hd720',label:'720p'},{value:'off',label:'Off'}] },
                     { type:'range',  id:'intentionalDelayTime',label:'Delay Duration',  unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' },
                     { type:'toggle', id:'smartDownload', label:'Smart Download', badge:'NEW', desc:'Redirect download button to ssvid', icon:P('M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z') },
+                    { type:'select', id:'autoQuality',      label:'Auto-Quality',       desc:'Force specific resolution', icon:P('M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10 8l6 4-6 4V8z'), options:[{value:'highres',label:'Max/4K'},{value:'hd1440',label:'1440p'},{value:'hd1080',label:'1080p'},{value:'hd720',label:'720p'},{value:'off',label:'Off'}] },
                 ]
             },
             {
@@ -120,7 +120,6 @@ export const POPUP_SCHEMA = [
                 items: [
                     { type:'toggle', id:'revertProgressBar',   label:'Classic Progress Bar', desc:'Solid red, no pink gradient', icon:P('M3 3h18v18H3zM3 9h18') },
                     { type:'toggle', id:'videoControlsEnabled', label:'Video Controls UI', desc:'Custom floating panel',     icon:P('M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z') },
-                    { type:'select', id:'playerActionStyle', label:'Action Button Style', desc:'Redesign for Like/Share buttons', icon:P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'), options:[{value:'premium',label:'Premium Pill'},{value:'minimal',label:'Minimal Icons'},{value:'default',label:'Default YouTube'}] },
                     { type:'toggle', id:'enableCinemaFilters',  label:'Filters',          desc:'Visual effects panel',       icon:P('M22 3H2l8 9.46V19l4 2v-8.54L22 3z') },
                     { type:'toggle', id:'enableLoop',           label:'Loop Button',      desc:'Add loop toggle',            icon:P('M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z') },
                     { type:'toggle', id:'enableSnapshot',       label:'Snapshot Button',  desc:'Save frame as image',        icon:P('M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z') },
@@ -129,6 +128,7 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'enableCustomSidebar',  label:'Custom Sidebar',   desc:'Master toggle for sidebar layout', icon:P('M3 3h18v18H3z M14 8h6M14 12h6M14 16h6') },
                     { type:'layoutToggle', id:'sidebarLayout',        label:'Sidebar Layout',   desc:'Video cards size' },
                     { type:'toggle', id:'splitScrolling',       label:'Split Scrolling',  desc:'Scroll sidebar independently', icon:P('M12 5l0 14M19 12l-7 7-7-7') },
+                    { type:'select', id:'playerActionStyle', label:'Action Button Style', desc:'Redesign for Like/Share buttons', icon:P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'), options:[{value:'premium',label:'Premium Pill'},{value:'minimal',label:'Minimal Icons'},{value:'default',label:'Default YouTube'}] },
                 ]
             },
             {
@@ -231,9 +231,9 @@ export const POPUP_SCHEMA = [
             {
                 title: 'Layout & Filters',
                 items: [
-                    { type:'toggle', id:'searchGrid',        label:'Grid View',           desc:'Card layout for search',   icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z') },
                     { type:'toggle', id:'cleanSearch',       label:'Clean Search',         desc:'Remove junk/ads',          icon:P('M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z') },
                     { type:'toggle', id:'autoVideoFilter',   label:'Auto Video Filter',    desc:'Default to Videos tab',    icon:P('M5 4l15 8-15 8V4z'), style:'display:none' },
+                    { type:'toggle', id:'searchGrid',        label:'Grid View',           desc:'Card layout for search',   icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z') },
                     { type:'range',  id:'searchColumns',     label:'Grid Columns', unit:'', min:1, max:8, step:1, parent: 'searchGrid' },
                 ]
             }
@@ -307,8 +307,8 @@ export const POPUP_SCHEMA = [
                 title: 'Sidebar & Folders',
                 items: [
                     { type:'toggle', id:'subscriptionFolders', label:'Sub Folders',     desc:'Create groups',              icon:P('M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z') },
+                    { type:'toggle', id:'contextMenu',         label:'Context Menu',    desc:'Card context menu',          icon:P('M12 12h.01M12 5h.01M12 19h.01') },
                     { type:'toggle', id:'enableSubsManager',   label:'Group Sidebar',   desc:'Show UI sidebar',            icon:P('M3 3h18v18H3zM9 3v18') },
-                    { type:'toggle', id:'contextMenu',         label:'Context Menu',    desc:'Card context menu',          icon:P('M12 12h.01M12 5h.01M12 19h.01') }
                 ]
             },
             {
@@ -373,9 +373,9 @@ export const POPUP_SCHEMA = [
             {
                 title: 'History Interface',
                 items: [
-                    { type:'toggle', id:'historyRedesign', label:'History Redesign', desc:'New history layout', icon:P('M3 3h18v18H3z M14 8h6M14 12h6M14 16h6') },
                     { type:'toggle', id:'playlistDuration', label:'Duration Calc', desc:'Show total length', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
                     { type:'toggle', id:'reversePlaylist', label:'Reverse Playlist', desc:'Toggle direction', icon:P('M15 14l5-5-5-5 M4 20v-7a4 4 0 0 1 4-4h12') },
+                    { type:'toggle', id:'historyRedesign', label:'History Redesign', desc:'New history layout', icon:P('M3 3h18v18H3z M14 8h6M14 12h6M14 16h6') },
                     { type:'range', id:'historyColumns', label:'Grid Columns', unit:'', min:1, max:8, step:1, parent: 'historyRedesign' }
                 ]
             }

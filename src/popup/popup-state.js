@@ -75,6 +75,7 @@ export function loadSettings(updateUICallbacks) {
                 if (el) {
                     if (el.type === 'checkbox') {
                         el.checked = state.settings[key] !== undefined ? state.settings[key] : false;
+                        // experimentalTileUI is now default
                     } else if (el.type === 'range') {
                         el.value = state.settings[key] !== undefined ? state.settings[key] : el.value;
                         const display = document.getElementById(key + 'Value');

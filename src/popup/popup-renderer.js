@@ -54,6 +54,7 @@ function renderToggle(item, state) {
     // Icon
     if (item.icon) {
         const iconWrap = document.createElement('div');
+        iconWrap.style.cursor = 'pointer';
         iconWrap.className = 'feature-icon';
         iconWrap.appendChild(makeSVG(item.icon, 14));
         card.appendChild(iconWrap);
@@ -61,6 +62,7 @@ function renderToggle(item, state) {
 
     // Info
     const info = document.createElement('div');
+    info.style.cursor = 'pointer';
     info.className = 'info';
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
@@ -179,27 +181,24 @@ function renderSelect(item, state) {
     if (item.hidden) return null;
 
     const wrap = document.createElement('div');
-    wrap.className = 'setting-item';
-    wrap.style.marginBottom = '4px';
-    wrap.style.marginTop = '4px';
+    wrap.className = 'toggle-card span-2-tile'; // Gives it the tile look
+    wrap.style.gridColumn = 'span 2';
 
     const headerRow = document.createElement('div');
     headerRow.style.display = 'flex';
     headerRow.style.alignItems = 'center';
     headerRow.style.gap = '10px';
+    headerRow.style.flex = '1';
 
     if (item.icon) {
         const iconWrap = document.createElement('div');
         iconWrap.className = 'feature-icon';
-        iconWrap.style.flexShrink = '0';
         iconWrap.appendChild(makeSVG(item.icon, 14));
         headerRow.appendChild(iconWrap);
     }
 
     const info = document.createElement('div');
     info.className = 'info';
-    info.style.display = 'flex';
-    info.style.flexDirection = 'column';
 
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
@@ -220,7 +219,8 @@ function renderSelect(item, state) {
     select.className = 'theme-select';
     select.style.padding = '4px 10px';
     select.style.fontSize = '11px';
-    select.style.width = '120px';
+    select.style.maxWidth = '100px';
+    select.style.flexShrink = '0';
     
     (item.options || []).forEach(opt => {
         const o = document.createElement('option');
@@ -239,6 +239,7 @@ function renderLayoutToggle(item, state) {
 
     const wrap = document.createElement('div');
     wrap.className = 'setting-item';
+    wrap.style.gridColumn = 'span 2';
     wrap.style.flexDirection = 'column';
     wrap.style.alignItems = 'stretch';
     wrap.style.marginTop = '8px';
@@ -321,8 +322,8 @@ function renderLayoutToggle(item, state) {
         [btnCompact, btnSpacious, btnExpanded].forEach(b => {
             const isActive = b.dataset.layout === layout;
             b.classList.toggle('active', isActive);
-            b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
-            b.style.color = isActive ? 'var(--accent, #3ea6ff)' : 'rgba(255,255,255,0.5)';
+            b.style.background = isActive ? 'color-mix(in srgb, var(--accent-primary) 22%, transparent)' : 'transparent';
+            b.style.color = isActive ? 'var(--accent-primary)' : 'rgba(255,255,255,0.5)';
         });
     };
 
@@ -554,9 +555,9 @@ function renderButtonGroup(item, state) {
                 b.style.color = 'rgba(255,255,255,0.5)';
                 b.style.borderColor = 'rgba(255,255,255,0.1)';
             });
-            btn.style.background = 'rgba(62,166,255,0.22)';
-            btn.style.color = 'var(--accent, #3ea6ff)';
-            btn.style.borderColor = 'rgba(62,166,255,0.5)';
+            btn.style.background = 'color-mix(in srgb, var(--accent-primary) 22%, transparent)';
+            btn.style.color = 'var(--accent-primary)';
+            btn.style.borderColor = 'color-mix(in srgb, var(--accent-primary) 50%, transparent)';
             
             input.value = opt.value;
             input.dispatchEvent(new Event('change', { bubbles: true }));
@@ -580,9 +581,9 @@ function renderButtonGroup(item, state) {
                     b.style.color = 'rgba(255,255,255,0.5)';
                     b.style.borderColor = 'rgba(255,255,255,0.1)';
                 });
-                activeBtn.style.background = 'rgba(62,166,255,0.22)';
-                activeBtn.style.color = 'var(--accent, #3ea6ff)';
-                activeBtn.style.borderColor = 'rgba(62,166,255,0.5)';
+                activeBtn.style.background = 'color-mix(in srgb, var(--accent-primary) 22%, transparent)';
+                activeBtn.style.color = 'var(--accent-primary)';
+                activeBtn.style.borderColor = 'color-mix(in srgb, var(--accent-primary) 50%, transparent)';
             }
             if (iconWrap) {
                 if (val && val !== 'hidden') {
@@ -682,6 +683,8 @@ function buildSection(section, state) {
     children.forEach(childItem => {
         const parentEl = renderedElements[childItem.parent];
         if (parentEl) {
+            parentEl.style.gridColumn = 'span 2';
+            parentEl.classList.add('span-2-tile');
             const fn = ITEM_RENDERERS[childItem.type];
             const childEl = fn ? fn(childItem, state) : null;
             if (childEl) {

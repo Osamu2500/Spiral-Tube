@@ -148,6 +148,21 @@ export function initUI(document) {
     initTabs(document);
     initCollapsibleSections(document);
     initSearch(document);
+
+    // Global event delegation for all toggle cards (schema-generated & hardcoded)
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.toggle-card');
+        if (!card) return;
+
+        if (e.target.closest('.toggle') || e.target.closest('input') || e.target.closest('button')) return;
+        if (e.target.closest('.sub-setting-row, .sub-options, .mode-settings, .shortcut-panel-row')) return;
+
+        const input = card.querySelector('input[type="checkbox"]');
+        if (!input) return;
+
+        input.checked = !input.checked;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
 }
 
 export function showSaveIndicator(document) {

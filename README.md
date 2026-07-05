@@ -102,10 +102,10 @@ For the best experience, enable these features:
 
 ### 🎨 Theme & UI
 
-- **Premium Theme** - Glassmorphism with modern aesthetics
+- **Premium Liquid Glass Theme** - Deep translucent backgrounds layered with dynamic, animated radial color gradients
 - **True Black Mode** - OLED-friendly pure black backgrounds
-- **Redesigned Glassmorphic Popup** - Premium neon-indigo interface with grid layout and spring animations
-- **Glassmorphic Topbar** - Modernized YouTube navigation header with circular widgets
+- **Redesigned Liquid Glass Popup** - Premium glowing interface with grid layout and spring animations
+- **Glassmorphic Overlays** - Cinematic Filters and Pro Equalizer panels now utilize the liquid glass aesthetic
 - **Hide Scrollbar** - Clean, minimal interface
 
 ### 🏠 Home Feed Control

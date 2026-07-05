@@ -585,7 +585,8 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
     bottom: 80px;
     right: 16px;
     width: 430px;
-    background: rgba(0, 0, 0, 0.15); /* Fully transparent with heavy blur */
+    background-color: rgba(18, 18, 20, 0.65);
+    background-image: radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%);
     border: 1px solid rgba(255,255,255,0.15);
     border-top: 1px solid rgba(255,255,255,0.25);
     border-radius: 20px;

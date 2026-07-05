@@ -568,6 +568,8 @@ const initMiscButtons = (document, saveSettings, loadSettings) => {
         });
     }
 
+
+
     const manageSubsBtn = document.getElementById('manageSubsBtn');
     if (manageSubsBtn) {
         manageSubsBtn.addEventListener('click', () => {
