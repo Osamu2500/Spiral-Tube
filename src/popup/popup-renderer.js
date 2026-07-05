@@ -100,24 +100,46 @@ function renderRange(item, state) {
     if (item.hidden) return null;
 
     const wrap = document.createElement('div');
-    wrap.className = 'setting-item toggle-card';
-    wrap.style.flexDirection = 'column';
-    wrap.style.alignItems = 'stretch';
-    wrap.style.gap = '8px';
-    wrap.style.marginTop = '4px';
-    wrap.style.marginBottom = '4px';
+    if (item.parent) {
+        wrap.className = 'sub-setting-row';
+        wrap.style.marginTop = '8px';
+        wrap.style.paddingTop = '8px';
+        wrap.style.borderTop = '1px solid rgba(255,255,255,0.06)';
+        wrap.style.display = 'flex';
+        wrap.style.flexDirection = 'column';
+        wrap.style.gap = '6px';
+    } else {
+        wrap.className = 'setting-item';
+        wrap.style.flexDirection = 'column';
+        wrap.style.alignItems = 'stretch';
+        wrap.style.gap = '8px';
+        wrap.style.marginTop = '4px';
+        wrap.style.marginBottom = '4px';
+    }
 
     const headerRow = document.createElement('div');
     headerRow.style.display = 'flex';
     headerRow.style.alignItems = 'center';
     headerRow.style.justifyContent = 'space-between';
+    headerRow.style.width = '100%';
 
     const info = document.createElement('div');
     info.className = 'info';
+    info.style.margin = '0';
+    info.style.width = '100%';
+    info.style.display = 'flex';
+    info.style.justifyContent = 'space-between';
+    info.style.flexDirection = 'row';
     const valueId = item.id + 'Value';
     const unit = item.unit != null ? item.unit : '%';
     const initialValue = (state?.settings && state.settings[item.id] !== undefined) ? state.settings[item.id] : (item.default ?? item.min ?? 0);
-    info.innerHTML = `<span class="name">${item.label}</span><span class="desc"><span id="${valueId}">${initialValue}</span>${unit}</span>`;
+    
+    if (item.parent) {
+        info.innerHTML = `<span class="name" style="font-size:12px;">${item.label}</span><span class="desc"><span id="${valueId}" style="font-size:12px; font-weight:bold; color:var(--red);">${initialValue}</span><span style="font-size:12px; font-weight:bold; color:var(--red);">${unit}</span></span>`;
+    } else {
+        info.innerHTML = `<span class="name">${item.label}</span><span class="desc"><span id="${valueId}">${initialValue}</span>${unit}</span>`;
+    }
+    
     headerRow.appendChild(info);
     wrap.appendChild(headerRow);
 
@@ -157,10 +179,9 @@ function renderSelect(item, state) {
     if (item.hidden) return null;
 
     const wrap = document.createElement('div');
-    wrap.className = 'toggle-card';
-    wrap.style.flexDirection = 'column';
-    wrap.style.alignItems = 'stretch';
-    wrap.style.gap = '4px';
+    wrap.className = 'setting-item';
+    wrap.style.marginBottom = '4px';
+    wrap.style.marginTop = '4px';
 
     const headerRow = document.createElement('div');
     headerRow.style.display = 'flex';
@@ -197,9 +218,9 @@ function renderSelect(item, state) {
     const select = document.createElement('select');
     select.id = item.id;
     select.className = 'theme-select';
-    select.style.padding = '6px 10px';
+    select.style.padding = '4px 10px';
     select.style.fontSize = '11px';
-    select.style.marginTop = '4px';
+    select.style.width = '120px';
     
     (item.options || []).forEach(opt => {
         const o = document.createElement('option');
@@ -616,9 +637,15 @@ function buildSection(section, state) {
     const grp = document.createElement('div');
     grp.className = 'card-group';
 
-    // Separate items into grid-eligible and full-width
-    const gridItems  = section.items.filter(i => (i.type === 'toggle' || i.type === 'range' || i.type === 'select' || i.type === 'button-group') && !i.hidden);
-    const wideItems  = section.items.filter(i => (i.type !== 'toggle' && i.type !== 'range' && i.type !== 'select' && i.type !== 'button-group') && !i.hidden);
+    // Separate items into grid-eligible, full-width, and children
+    const nonChildren = section.items.filter(i => !i.parent && !i.hidden);
+    const children    = section.items.filter(i => i.parent && !i.hidden);
+
+    const gridItems  = nonChildren.filter(i => i.type === 'toggle' || i.type === 'button-group' || i.type === 'range' || i.type === 'select');
+    const inlineToggleItems = nonChildren.filter(i => i.type === 'inlineToggle');
+    const otherItems  = nonChildren.filter(i => i.type !== 'toggle' && i.type !== 'button-group' && i.type !== 'inlineToggle' && i.type !== 'range' && i.type !== 'select');
+
+    const renderedElements = {};
 
     if (gridItems.length > 0) {
         const grid = document.createElement('div');
@@ -626,11 +653,14 @@ function buildSection(section, state) {
         gridItems.forEach(item => {
             const fn = ITEM_RENDERERS[item.type];
             const el = fn ? fn(item, state) : null;
-            if (el) grid.appendChild(el);
+            if (el) {
+                renderedElements[item.id] = el;
+                grid.appendChild(el);
+            }
         });
         grp.appendChild(grid);
 
-        // Emit slot divs as direct siblings of the grid (NOT inside the grid)
+        // Emit slot divs INSIDE the parent toggle card
         gridItems.forEach(item => {
             if (item.slot) {
                 let slot = document.getElementById(item.slot);
@@ -638,14 +668,27 @@ function buildSection(section, state) {
                     slot = document.createElement('div');
                     slot.id = item.slot;
                 }
-                slot.style.display = 'none';
-                grp.appendChild(slot); // Appends new or moves existing
+                const parentEl = renderedElements[item.id];
+                if (parentEl) {
+                    parentEl.appendChild(slot); // Append inside the card
+                } else {
+                    grp.appendChild(slot); // Fallback
+                }
             }
         });
     }
 
-    const inlineToggleItems = wideItems.filter(i => i.type === 'inlineToggle');
-    const otherItems  = wideItems.filter(i => i.type !== 'inlineToggle');
+    // Append child items (like ranges) inside their parent cards
+    children.forEach(childItem => {
+        const parentEl = renderedElements[childItem.parent];
+        if (parentEl) {
+            const fn = ITEM_RENDERERS[childItem.type];
+            const childEl = fn ? fn(childItem, state) : null;
+            if (childEl) {
+                parentEl.appendChild(childEl);
+            }
+        }
+    });
 
     if (inlineToggleItems.length > 0) {
         const grid = document.createElement('div');
@@ -714,7 +757,12 @@ export function renderSchema(doc, state) {
 
         tab.sections.forEach(s => {
             const node = buildSection(s, state);
-            section.appendChild(node);
+            const firstPreserved = Array.from(section.children).find(el => el.dataset.preserve === 'true');
+            if (firstPreserved) {
+                section.insertBefore(node, firstPreserved);
+            } else {
+                section.appendChild(node);
+            }
         });
     });
 

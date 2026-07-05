@@ -41,7 +41,7 @@ export const POPUP_SCHEMA = [
                 items: [
                     { type:'toggle', id:'displayFullTitle', label:'Full Video Titles', desc:'Prevent truncation',        icon:P('M4 6h16M4 12h16M4 18h16') },
                     { type:'toggle', id:'autoScaleLayout',  label:'Auto-Scale Grid',  desc:'Adapt to zoom/window size', icon:P('M15 3l6 6M15 3h6v6M9 21l-6-6M9 21H3v-6') },
-                    { type:'range', id:'homeColumns', label:'Grid Columns', desc:'0 = auto-scale', unit:'', min:0, max:10, step:1 },
+                    { type:'range', id:'homeColumns', label:'Grid Columns', desc:'0 = auto-scale', unit:'', min:0, max:10, step:1, parent: 'autoScaleLayout' },
                     { type:'toggle', id:'useSquareCorners',    label:'Square Corners',     desc:'Sharp edges for videos',   icon:P('M3 3h18v18H3z') }
                 ]
             },
@@ -78,7 +78,7 @@ export const POPUP_SCHEMA = [
                 items: [
                     { type:'toggle', id:'stopShortsLooping',     label:'Stop Looping', desc:'No auto-replay on Shorts', icon:P('M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z') },
                     { type:'toggle', id:'hideShortVideos', label:'Duration Filter', desc:'Hide short videos', icon:P('M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6') },
-                    { type:'range', id:'minVideoDuration', label:'Min Duration', min: 1, max: 60, step: 1, unit:'m' },
+                    { type:'range', id:'minVideoDuration', label:'Min Duration', min: 1, max: 60, step: 1, unit:'m', parent: 'hideShortVideos' },
                 ]
             }
         ]
@@ -100,9 +100,9 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'autoLike',         label:'Auto Like',          desc:'Automatically like video',   icon:P('M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z') },
                     { type:'toggle', id:'autoPiP',          label:'Auto PiP',           desc:'PiP when switching tabs',    icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
                     { type:'toggle', id:'intentionalDelay', label:'Intentional Delay',  desc:'Pause before video',         icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
-                    { type:'range',  id:'autoLikeThreshold',label:'Auto Like at (%)',   unit:'%', min:0, max:100, step:5 },
+                    { type:'range',  id:'autoLikeThreshold',label:'Auto Like at (%)',   unit:'%', min:0, max:100, step:5, parent: 'autoLike' },
                     { type:'select', id:'autoQuality',      label:'Auto-Quality',       desc:'Force specific resolution', icon:P('M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10 8l6 4-6 4V8z'), options:[{value:'highres',label:'Max/4K'},{value:'hd1440',label:'1440p'},{value:'hd1080',label:'1080p'},{value:'hd720',label:'720p'},{value:'off',label:'Off'}] },
-                    { type:'range',  id:'intentionalDelayTime',label:'Delay Duration',  unit:'s', min:1, max:10, step:1 },
+                    { type:'range',  id:'intentionalDelayTime',label:'Delay Duration',  unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' },
                     { type:'toggle', id:'smartDownload', label:'Smart Download', badge:'NEW', desc:'Redirect download button to ssvid', icon:P('M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z') },
                 ]
             },
@@ -234,7 +234,7 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'searchGrid',        label:'Grid View',           desc:'Card layout for search',   icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z') },
                     { type:'toggle', id:'cleanSearch',       label:'Clean Search',         desc:'Remove junk/ads',          icon:P('M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z') },
                     { type:'toggle', id:'autoVideoFilter',   label:'Auto Video Filter',    desc:'Default to Videos tab',    icon:P('M5 4l15 8-15 8V4z'), style:'display:none' },
-                    { type:'range',  id:'searchColumns',     label:'Grid Columns', unit:'', min:1, max:8, step:1 },
+                    { type:'range',  id:'searchColumns',     label:'Grid Columns', unit:'', min:1, max:8, step:1, parent: 'searchGrid' },
                 ]
             }
         ]
@@ -340,8 +340,8 @@ export const POPUP_SCHEMA = [
                 title: 'Layout & Data',
                 items: [
                     { type:'toggle', id:'enableChannelHealth', label:'Channel Health',  desc:'Show health scanner',        icon:P('M22 12h-4l-3 9L9 3l-3 9H2') },
-                    { type:'range', id:'channelColumns',       label:'Channel Columns',    unit:'', min:2, max:10, step:1 },
-                    { type:'range', id:'subscriptionsColumns', label:'Feed Grid Columns',  unit:'', min:1, max:8,  step:1 }
+                    { type:'range', id:'channelColumns',       label:'Channel Columns',    unit:'', min:2, max:10, step:1, parent: 'enableChannelHealth' },
+                    { type:'range', id:'subscriptionsColumns', label:'Feed Grid Columns',  unit:'', min:1, max:8,  step:1, parent: 'enableSubsManager' }
                 ]
             }
         ]
@@ -376,7 +376,7 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'historyRedesign', label:'History Redesign', desc:'New history layout', icon:P('M3 3h18v18H3z M14 8h6M14 12h6M14 16h6') },
                     { type:'toggle', id:'playlistDuration', label:'Duration Calc', desc:'Show total length', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
                     { type:'toggle', id:'reversePlaylist', label:'Reverse Playlist', desc:'Toggle direction', icon:P('M15 14l5-5-5-5 M4 20v-7a4 4 0 0 1 4-4h12') },
-                    { type:'range', id:'historyColumns', label:'Grid Columns', unit:'', min:1, max:8, step:1 }
+                    { type:'range', id:'historyColumns', label:'Grid Columns', unit:'', min:1, max:8, step:1, parent: 'historyRedesign' }
                 ]
             }
         ]
@@ -456,9 +456,9 @@ export const POPUP_SCHEMA = [
                 subtitle: 'Track and limit your daily watch time',
                 items: [
                     { type:'toggle', id:'watchTimeAlert', label:'Watch Time Alert', desc:'Notify when limit reached', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
-                    { type:'range',  id:'watchTimeAlertHours', label:'Daily Limit', unit:'h', min:1, max:12, step:1 },
+                    { type:'range',  id:'watchTimeAlertHours', label:'Daily Limit', unit:'h', min:1, max:12, step:1, parent: 'watchTimeAlert' },
                     { type:'toggle', id:'intentionalDelay', label:'Intentional Delay', desc:'Add a pause before videos start', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
-                    { type:'range',  id:'intentionalDelayTime', label:'Delay Duration', unit:'s', min:1, max:10, step:1 }
+                    { type:'range',  id:'intentionalDelayTime', label:'Delay Duration', unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' }
                 ]
             },
             {

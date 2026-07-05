@@ -554,9 +554,9 @@ body {
 
 /* ─── Toggle card (feature row) ─── */
 .toggle-card {
-  display: flex; align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 11px 13px; gap: 10px;
+  flex-wrap: wrap;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 10px;
@@ -595,6 +595,20 @@ body {
 }
 .toggle-card:hover .feature-icon {
   color: var(--accent-primary);
+}
+.toggle-card:has(input:checked) .feature-icon,
+.toggle-card.active .feature-icon {
+    color: var(--primary);
+}
+
+.toggle-card:not(:has(input:checked)) .sub-setting-row,
+.toggle-card:not(:has(input:checked)) .sub-options {
+    display: none !important;
+}
+
+.sub-setting-row, .sub-options {
+    flex-basis: 100%;
+    width: 100%;
 }
 .toggle-card:has(input:checked) .feature-icon,
 .feature-icon.active {
