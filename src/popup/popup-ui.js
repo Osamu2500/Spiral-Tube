@@ -33,7 +33,7 @@ function switchTab(document, tabId) {
                             el.style.opacity = '0';
                         });
                         
-                        window.anime.animate({
+                        window.anime({
                             targets: animatableItems,
                             translateX: [ -12, 0 ],
                             opacity: [ 0, 1 ],

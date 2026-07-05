@@ -128,7 +128,7 @@ body.ypp-playlist-redesign ytd-masthead {
     padding: 24px;
     box-sizing: border-box;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: visible; /* Ensure dropdowns can escape */
     scrollbar-width: none;
 }
 
@@ -263,10 +263,38 @@ body.ypp-playlist-redesign ytd-masthead {
     background: rgba(255,255,255,0.1);
     color: #fff;
     border-radius: 12px;
-    padding: 14px;
-    /* Push to bottom of sidebar */
-    margin-top: auto;
-    flex-shrink: 0;
+}
+
+#ypp-pl-root #ypp-pl-native-sort-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#ypp-pl-root #ypp-pl-native-sort-container:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 12px;
+}
+
+#ypp-pl-root #ypp-pl-native-sort-container yt-sort-filter-sub-menu-renderer {
+    margin: 0;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#ypp-pl-root #ypp-pl-native-sort-container yt-sort-filter-sub-menu-renderer yt-icon {
+    margin-right: 4px;
 }
 
 #ypp-pl-root .ypp-pl-btn-remove-watched {
@@ -420,8 +448,20 @@ body.ypp-playlist-redesign ytd-masthead {
 #ypp-pl-native-sort-container {
     display: flex;
     align-items: center;
-    transform: scale(0.95);
-    transform-origin: left center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.7);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 34px;
+    overflow: hidden;
+}
+
+#ypp-pl-native-sort-container:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 12px;
 }
 
 #ypp-pl-native-chips-container {
@@ -437,10 +477,26 @@ body.ypp-playlist-redesign ytd-masthead {
     display: none;
 }
 
-/* Ensure YouTube's native elements don't look broken */
-#ypp-pl-native-sort-container yt-sort-filter-sub-menu-renderer {
+/* Ensure YouTube's native elements don't look broken and match our theme */
+#ypp-pl-native-sort-container > * {
+    width: 100%;
+    height: 100%;
     margin: 0 !important;
 }
+
+#ypp-pl-native-sort-container .yt-spec-button-shape-next--tonal,
+#ypp-pl-native-sort-container .yt-spec-button-shape-next--outline,
+#ypp-pl-native-sort-container .yt-spec-button-shape-next--text,
+#ypp-pl-native-sort-container button {
+    background: transparent !important;
+    border: none !important;
+    color: inherit !important;
+    width: 100% !important;
+    height: 100% !important;
+    justify-content: center !important;
+    padding: 8px !important;
+}
+
 #ypp-pl-native-chips-container ytd-feed-filter-chip-bar-renderer {
     margin: 0 !important;
     --ytd-rich-grid-chips-bar-width: 100%;

@@ -423,10 +423,7 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
                 </svg>
                 <span>Clean</span>
               </button>
-              <button class="ypp-pl-btn-tool" id="ypp-pl-sort" title="Sort">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-                <span>Sort</span>
-              </button>
+              <div id="ypp-pl-native-sort-container" class="ypp-pl-native-inject" style="grid-column: span 1;"></div>
               <button class="ypp-pl-btn-tool" id="ypp-pl-menu" title="More Actions">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
                 <span>More</span>
@@ -450,7 +447,6 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
                 ${videos.length} VIDEO${videos.length !== 1 ? 'S' : ''}
               </span>
               
-              <div id="ypp-pl-native-sort-container" class="ypp-pl-native-inject"></div>
               <div id="ypp-pl-native-chips-container" class="ypp-pl-native-inject"></div>
 
               <div class="ypp-pl-col-switcher">
@@ -643,12 +639,6 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         this.addListener(menuBtn, 'click', () => {
             const nativeMenuBtn = document.querySelector('ytd-playlist-header-renderer ytd-menu-renderer button, yt-playlist-header-view-model button[aria-label*="Action"], yt-playlist-header-view-model button[aria-label*="More"], yt-playlist-header-view-model button[aria-label*="Menu"]');
             _clickNativeButtonAt(menuBtn, nativeMenuBtn);
-        });
-        
-        const sortBtn = root.querySelector('#ypp-pl-sort');
-        this.addListener(sortBtn, 'click', () => {
-            const nativeSort = document.querySelector('ytd-sort-filter-sub-menu-renderer button, yt-sort-filter-sub-menu-view-model button');
-            _clickNativeButtonAt(sortBtn, nativeSort);
         });
 
         // ── Remove Watched Videos ──────────────────────────────────────────

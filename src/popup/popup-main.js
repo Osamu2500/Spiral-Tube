@@ -339,8 +339,8 @@ registerSlot('recapButtons', (container, state) => {
         if (!seconds || isNaN(seconds)) return '0m';
         const h = Math.floor(seconds / 3600);
         const m = Math.floor((seconds % 3600) / 60);
-        if (h > 0) return \`\${h}h \${m}m\`;
-        return \`\${m}m\`;
+        if (h > 0) return `${h}h ${m}m`;
+        return `${m}m`;
     };
 
     const processRecap = (videos) => {
@@ -379,37 +379,37 @@ registerSlot('recapButtons', (container, state) => {
         channelsContainer.innerHTML = topChannels.length ? '' : '<div style="opacity:0.5; font-size:12px;">No channel data.</div>';
         
         topChannels.forEach(([name, time], idx) => {
-            channelsContainer.innerHTML += \`
+            channelsContainer.innerHTML += `
                 <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.05); padding:10px 14px; border-radius:8px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;">
                     <div style="display:flex; align-items:center; gap:12px;">
-                        <span style="color:#ff3366; font-weight:800; font-size:14px; background:rgba(255,51,102,0.1); padding:2px 8px; border-radius:12px;">#\${idx + 1}</span>
-                        <span style="font-size:13px; font-weight:500;">\${name}</span>
+                        <span style="color:#ff3366; font-weight:800; font-size:14px; background:rgba(255,51,102,0.1); padding:2px 8px; border-radius:12px;">#${idx + 1}</span>
+                        <span style="font-size:13px; font-weight:500;">${name}</span>
                     </div>
-                    <span style="font-size:12px; color:rgba(255,255,255,0.7); font-weight:500;">\${formatTime(time)}</span>
+                    <span style="font-size:12px; color:rgba(255,255,255,0.7); font-weight:500;">${formatTime(time)}</span>
                 </div>
-            \`;
+            `;
         });
 
         const videosContainer = container.querySelector('#recapTopVideos');
         videosContainer.innerHTML = topVideos.length ? '' : '<div style="opacity:0.5; font-size:12px;">No video data.</div>';
         
         topVideos.forEach((v, idx) => {
-            videosContainer.innerHTML += \`
-                <div style="display:flex; gap:12px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; cursor:pointer; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;" onclick="window.open('\${v.videolink}', '_blank')" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            videosContainer.innerHTML += `
+                <div style="display:flex; gap:12px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; cursor:pointer; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;" onclick="window.open('${v.videolink}', '_blank')" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
                     <div style="position:relative; width:80px; height:45px; flex-shrink:0;">
-                        <img src="\${v.thumbnail}" style="width:100%; height:100%; border-radius:4px; object-fit:cover;" />
-                        <div style="position:absolute; top:-6px; left:-6px; background:#ff3366; color:white; font-size:10px; font-weight:bold; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.5);">\${idx+1}</div>
+                        <img src="${v.thumbnail}" style="width:100%; height:100%; border-radius:4px; object-fit:cover;" />
+                        <div style="position:absolute; top:-6px; left:-6px; background:#ff3366; color:white; font-size:10px; font-weight:bold; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.5);">${idx+1}</div>
                     </div>
                     <div style="display:flex; flex-direction:column; justify-content:center; overflow:hidden;">
-                        <div style="font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:2px;">\${v.title}</div>
+                        <div style="font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:2px;">${v.title}</div>
                         <div style="font-size:11px; color:rgba(255,255,255,0.6); display:flex; align-items:center; gap:6px;">
-                            <span>\${v.channel}</span>
+                            <span>${v.channel}</span>
                             <span style="background:rgba(255,255,255,0.1); width:4px; height:4px; border-radius:50%;"></span>
-                            <span>\${v.watchCount > 1 ? v.watchCount + ' plays' : formatTime(v.time)}</span>
+                            <span>${v.watchCount > 1 ? v.watchCount + ' plays' : formatTime(v.time)}</span>
                         </div>
                     </div>
                 </div>
-            \`;
+            `;
         });
     };
 
@@ -428,23 +428,23 @@ registerSlot('recapButtons', (container, state) => {
             item.style.cssText = 'display:flex; gap:12px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; position:relative; overflow:hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;';
             item.onmouseover = () => item.style.background = 'rgba(255,255,255,0.1)';
             item.onmouseout = () => item.style.background = 'rgba(255,255,255,0.05)';
-            item.innerHTML = \`
+            item.innerHTML = `
                 <div style="position:relative; width:100px; height:56px; flex-shrink:0; cursor:pointer;" class="resume-thumb">
-                    <img src="\${v.thumbnail}" style="width:100px; height:56px; border-radius:4px; object-fit:cover;" />
+                    <img src="${v.thumbnail}" style="width:100px; height:56px; border-radius:4px; object-fit:cover;" />
                     <div style="position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.2); border-radius:0 0 4px 4px; overflow:hidden;">
-                        <div style="height:100%; width:\${percent}%; background:#00e5ff; box-shadow: 0 0 8px #00e5ff;"></div>
+                        <div style="height:100%; width:${percent}%; background:#00e5ff; box-shadow: 0 0 8px #00e5ff;"></div>
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:column; justify-content:space-between; flex:1; min-width:0;">
-                    <div class="resume-title" style="font-size:12px; font-weight:600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; cursor:pointer;">\${v.title}</div>
+                    <div class="resume-title" style="font-size:12px; font-weight:600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; cursor:pointer;">${v.title}</div>
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-size:11px; color:rgba(255,255,255,0.6); font-weight:500;">\${formatTime(v.time)} / \${formatTime(v.duration)}</span>
+                        <span style="font-size:11px; color:rgba(255,255,255,0.6); font-weight:500;">${formatTime(v.time)} / ${formatTime(v.duration)}</span>
                         <button class="rm-resume-btn" style="background:rgba(255,255,255,0.1); border:none; color:white; cursor:pointer; padding:4px; border-radius:4px; display:flex; align-items:center; justify-content:center; transition:0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" title="Remove from Resume History">
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
                         </button>
                     </div>
                 </div>
-            \`;
+            `;
 
             item.querySelector('.resume-thumb').addEventListener('click', () => window.open(v.videolink + '&t=' + Math.floor(v.time) + 's', '_blank'));
             item.querySelector('.resume-title').addEventListener('click', () => window.open(v.videolink + '&t=' + Math.floor(v.time) + 's', '_blank'));
@@ -499,7 +499,7 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                 if (el.type === 'checkbox' && window.anime) {
                     const toggleCard = el.closest('.toggle-card') || el.closest('.mode-card');
                     if (toggleCard) {
-                        window.anime.animate({
+                        window.anime({
                             targets: toggleCard,
                             scale: [0.97, 1],
                             duration: 400,
@@ -508,7 +508,7 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                     }
                     const slider = el.nextElementSibling;
                     if (slider && slider.classList.contains('slider')) {
-                        window.anime.animate({
+                        window.anime({
                             targets: slider,
                             scale: [0.85, 1],
                             duration: 400,
@@ -693,7 +693,7 @@ const initApp = () => {
             
             // Spring stagger intro animations
             if (window.anime) {
-                window.anime.animate({
+                window.anime({
                     targets: '.nav-item',
                     translateX: [-20, 0],
                     opacity: [0, 1],
@@ -702,7 +702,7 @@ const initApp = () => {
                     easing: 'easeOutElastic(1, .6)'
                 });
                 
-                window.anime.animate({
+                window.anime({
                     targets: '.tab-content.active .card-group, .tab-content.active .feature-grid > div',
                     translateY: [20, 0],
                     opacity: [0, 1],
