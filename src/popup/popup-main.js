@@ -273,6 +273,219 @@ registerSlot('shortcutsPanel', (container, state) => {
     });
 });
 
+registerSlot('recapButtons', (container, state) => {
+    container.innerHTML = `
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <button id="btnOpenRecap" class="action-btn ypp-glass-btn" style="flex:1; background: rgba(255, 0, 80, 0.15); border: 1px solid rgba(255, 0, 80, 0.3); color: #ff3366; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 8px 32px rgba(255, 0, 80, 0.2), inset 0 1px 2px rgba(255,255,255,0.1);">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+                My Recap
+            </button>
+            <button id="btnOpenResumeHistory" class="action-btn ypp-glass-btn" style="flex:1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.1);">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px; vertical-align: middle;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Resume History
+            </button>
+        </div>
+        
+        <!-- Hidden overlay panels -->
+        <div id="ypp-recap-overlay" style="display:none; position:absolute; top:0; left:0; right:0; bottom:0; z-index:100; padding:20px; overflow-y:auto; flex-direction:column; background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-top: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                <h2 style="margin:0; font-size:18px; display:flex; align-items:center; gap:8px;">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ff3366" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+                    Your Youtube Recap
+                </h2>
+                <button id="btnCloseRecap" style="background:rgba(255,255,255,0.1); border:none; color:white; cursor:pointer; padding:5px; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+            </div>
+            
+            <div style="display:flex; gap:10px; margin-bottom:20px;">
+                <div class="ypp-stat-card" style="flex:1; background: linear-gradient(135deg, rgba(255, 51, 102, 0.1), rgba(255, 51, 102, 0.05)); padding:15px; border-radius:12px; border:1px solid rgba(255, 51, 102, 0.2); text-align:center; box-shadow: 0 8px 32px rgba(255, 51, 102, 0.1);">
+                    <div style="font-size:11px; opacity:0.8; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; color:#ff3366;">Videos Watched</div>
+                    <div id="recapTotalVideos" style="font-size:26px; font-weight:800; color:#fff; text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);">0</div>
+                </div>
+                <div class="ypp-stat-card" style="flex:1; background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05)); padding:15px; border-radius:12px; border:1px solid rgba(0, 229, 255, 0.2); text-align:center; box-shadow: 0 8px 32px rgba(0, 229, 255, 0.1);">
+                    <div style="font-size:11px; opacity:0.8; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; color:#00e5ff;">Time Watched</div>
+                    <div id="recapTotalTime" style="font-size:26px; font-weight:800; color:#fff; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);">0h</div>
+                </div>
+            </div>
+            
+            <h3 style="margin:0 0 10px 0; font-size:14px; color:rgba(255,255,255,0.9); font-weight:600; text-transform:uppercase; letter-spacing:1px;">Top 5 Channels</h3>
+            <div id="recapTopChannels" style="display:flex; flex-direction:column; gap:8px; margin-bottom:20px;"></div>
+            
+            <h3 style="margin:0 0 10px 0; font-size:14px; color:rgba(255,255,255,0.9); font-weight:600; text-transform:uppercase; letter-spacing:1px;">Top 5 Videos</h3>
+            <div id="recapTopVideos" style="display:flex; flex-direction:column; gap:8px; padding-bottom: 20px;"></div>
+        </div>
+
+        <div id="ypp-resume-overlay" style="display:none; position:absolute; top:0; left:0; right:0; bottom:0; z-index:100; padding:20px; overflow-y:auto; flex-direction:column; background: rgba(18, 18, 24, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-top: 1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                <h2 style="margin:0; font-size:18px; display:flex; align-items:center; gap:8px;">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#00e5ff" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Resume History
+                </h2>
+                <button id="btnCloseResume" style="background:rgba(255,255,255,0.1); border:none; color:white; cursor:pointer; padding:5px; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(10px);"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+            </div>
+            
+            <div id="resumeHistoryList" style="display:flex; flex-direction:column; gap:10px; padding-bottom: 20px;"></div>
+        </div>
+    `;
+
+    const btnRecap = container.querySelector('#btnOpenRecap');
+    const overlayRecap = container.querySelector('#ypp-recap-overlay');
+    const btnCloseRecap = container.querySelector('#btnCloseRecap');
+    
+    const btnResume = container.querySelector('#btnOpenResumeHistory');
+    const overlayResume = container.querySelector('#ypp-resume-overlay');
+    const btnCloseResume = container.querySelector('#btnCloseResume');
+
+    const formatTime = (seconds) => {
+        if (!seconds || isNaN(seconds)) return '0m';
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        if (h > 0) return \`\${h}h \${m}m\`;
+        return \`\${m}m\`;
+    };
+
+    const processRecap = (videos) => {
+        let totalTime = 0;
+        let channelStats = {};
+        let topVideos = [];
+
+        videos.forEach(v => {
+            totalTime += (v.time || 0);
+            
+            if (v.channel) {
+                if (!channelStats[v.channel]) channelStats[v.channel] = 0;
+                channelStats[v.channel] += (v.time || 0);
+            }
+            
+            // For top videos, we might want by watchCount or duration
+            topVideos.push(v);
+        });
+
+        // Sort channels by time
+        const topChannels = Object.entries(channelStats)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5);
+
+        // Sort videos by watchCount then time
+        topVideos.sort((a, b) => {
+            if ((b.watchCount || 1) !== (a.watchCount || 1)) return (b.watchCount || 1) - (a.watchCount || 1);
+            return (b.time || 0) - (a.time || 0);
+        });
+        topVideos = topVideos.slice(0, 5);
+
+        container.querySelector('#recapTotalVideos').textContent = videos.length;
+        container.querySelector('#recapTotalTime').textContent = formatTime(totalTime);
+
+        const channelsContainer = container.querySelector('#recapTopChannels');
+        channelsContainer.innerHTML = topChannels.length ? '' : '<div style="opacity:0.5; font-size:12px;">No channel data.</div>';
+        
+        topChannels.forEach(([name, time], idx) => {
+            channelsContainer.innerHTML += \`
+                <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.05); padding:10px 14px; border-radius:8px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span style="color:#ff3366; font-weight:800; font-size:14px; background:rgba(255,51,102,0.1); padding:2px 8px; border-radius:12px;">#\${idx + 1}</span>
+                        <span style="font-size:13px; font-weight:500;">\${name}</span>
+                    </div>
+                    <span style="font-size:12px; color:rgba(255,255,255,0.7); font-weight:500;">\${formatTime(time)}</span>
+                </div>
+            \`;
+        });
+
+        const videosContainer = container.querySelector('#recapTopVideos');
+        videosContainer.innerHTML = topVideos.length ? '' : '<div style="opacity:0.5; font-size:12px;">No video data.</div>';
+        
+        topVideos.forEach((v, idx) => {
+            videosContainer.innerHTML += \`
+                <div style="display:flex; gap:12px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; cursor:pointer; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;" onclick="window.open('\${v.videolink}', '_blank')" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                    <div style="position:relative; width:80px; height:45px; flex-shrink:0;">
+                        <img src="\${v.thumbnail}" style="width:100%; height:100%; border-radius:4px; object-fit:cover;" />
+                        <div style="position:absolute; top:-6px; left:-6px; background:#ff3366; color:white; font-size:10px; font-weight:bold; border-radius:50%; width:20px; height:20px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.5);">\${idx+1}</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; justify-content:center; overflow:hidden;">
+                        <div style="font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-bottom:2px;">\${v.title}</div>
+                        <div style="font-size:11px; color:rgba(255,255,255,0.6); display:flex; align-items:center; gap:6px;">
+                            <span>\${v.channel}</span>
+                            <span style="background:rgba(255,255,255,0.1); width:4px; height:4px; border-radius:50%;"></span>
+                            <span>\${v.watchCount > 1 ? v.watchCount + ' plays' : formatTime(v.time)}</span>
+                        </div>
+                    </div>
+                </div>
+            \`;
+        });
+    };
+
+    const processResumeHistory = (videos) => {
+        const list = container.querySelector('#resumeHistoryList');
+        // Filter out completed videos and ones barely started
+        let resumeList = videos.filter(v => !v.complete && v.time > 10 && v.duration && (v.time / v.duration) < 0.95 && !v.doNotResume);
+        resumeList.sort((a, b) => b.timestamp - a.timestamp);
+        
+        list.innerHTML = resumeList.length ? '' : '<div style="text-align:center; padding:30px; opacity:0.5;">No videos in progress.</div>';
+
+        resumeList.forEach(v => {
+            const percent = Math.min(100, (v.time / v.duration) * 100);
+            
+            const item = document.createElement('div');
+            item.style.cssText = 'display:flex; gap:12px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; position:relative; overflow:hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;';
+            item.onmouseover = () => item.style.background = 'rgba(255,255,255,0.1)';
+            item.onmouseout = () => item.style.background = 'rgba(255,255,255,0.05)';
+            item.innerHTML = \`
+                <div style="position:relative; width:100px; height:56px; flex-shrink:0; cursor:pointer;" class="resume-thumb">
+                    <img src="\${v.thumbnail}" style="width:100px; height:56px; border-radius:4px; object-fit:cover;" />
+                    <div style="position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.2); border-radius:0 0 4px 4px; overflow:hidden;">
+                        <div style="height:100%; width:\${percent}%; background:#00e5ff; box-shadow: 0 0 8px #00e5ff;"></div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:column; justify-content:space-between; flex:1; min-width:0;">
+                    <div class="resume-title" style="font-size:12px; font-weight:600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; cursor:pointer;">\${v.title}</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-size:11px; color:rgba(255,255,255,0.6); font-weight:500;">\${formatTime(v.time)} / \${formatTime(v.duration)}</span>
+                        <button class="rm-resume-btn" style="background:rgba(255,255,255,0.1); border:none; color:white; cursor:pointer; padding:4px; border-radius:4px; display:flex; align-items:center; justify-content:center; transition:0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" title="Remove from Resume History">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                        </button>
+                    </div>
+                </div>
+            \`;
+
+            item.querySelector('.resume-thumb').addEventListener('click', () => window.open(v.videolink + '&t=' + Math.floor(v.time) + 's', '_blank'));
+            item.querySelector('.resume-title').addEventListener('click', () => window.open(v.videolink + '&t=' + Math.floor(v.time) + 's', '_blank'));
+            
+            item.querySelector('.rm-resume-btn').addEventListener('click', () => {
+                // Blacklist this video from resuming
+                chrome.storage.local.get('ytProVideos', (data) => {
+                    let h = data.ytProVideos || [];
+                    const found = h.find(x => x.videolink === v.videolink);
+                    if (found) {
+                        found.doNotResume = true;
+                        chrome.storage.local.set({ ytProVideos: h }, () => {
+                            item.remove();
+                        });
+                    }
+                });
+            });
+
+            list.appendChild(item);
+        });
+    };
+
+    btnRecap.addEventListener('click', () => {
+        chrome.storage.local.get('ytProVideos', (data) => {
+            processRecap(data.ytProVideos || []);
+            overlayRecap.style.display = 'flex';
+        });
+    });
+
+    btnResume.addEventListener('click', () => {
+        chrome.storage.local.get('ytProVideos', (data) => {
+            processResumeHistory(data.ytProVideos || []);
+            overlayResume.style.display = 'flex';
+        });
+    });
+
+    btnCloseRecap.addEventListener('click', () => overlayRecap.style.display = 'none');
+    btnCloseResume.addEventListener('click', () => overlayResume.style.display = 'none');
+});
+
+
 const initUniversalListeners = (document, state, UI, saveSettings) => {
     state.settingKeys.forEach(key => {
         const el = state.elements[key];

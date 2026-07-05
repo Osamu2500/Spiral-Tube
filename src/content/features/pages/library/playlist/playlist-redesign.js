@@ -210,24 +210,17 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
             // Channel
             const videoChannel  = videoElement.querySelector(this.SELECTORS.VIDEO_CHANNEL)?.textContent?.trim() || '';
 
-            // Duration — layer 1: find the badge span and read ONLY its own text
-            // avoiding concatenated child markup that produces "0:320:32"
+            // Duration — search deeply for the timestamp
             let videoDuration = '';
-            const timeOverlay = videoElement.querySelector(this.SELECTORS.TIME_OVERLAY);
+            const timeOverlay = videoElement.querySelector('ytd-thumbnail-overlay-time-status-renderer, badge-shape, span.ytd-thumbnail-overlay-time-status-renderer, .yt-lockup-view-model-wiz__badge, yt-formatted-string[class*="time"]');
             if (timeOverlay) {
-                // Try the innermost badge text span first
-                const badgeSpan = timeOverlay.querySelector(this.SELECTORS.BADGE_SPAN);
-                if (badgeSpan) {
-                    // Collapse whitespace from innerText (avoids hidden \n nodes)
-                    const collapsed = (badgeSpan.innerText || badgeSpan.textContent || '')
-                        .replace(/\s+/g, '').trim();
-                    const m = collapsed.match(/(\d{1,3}:\d{2}(?::\d{2})?)/);
-                    if (m) videoDuration = m[1];
-                }
-                // Layer 2: aria-label attribute (clean human-readable timestamp)
-                if (!videoDuration) {
+                const text = (timeOverlay.innerText || timeOverlay.textContent || '').trim();
+                const m = text.match(/(\d{1,3}:\d{2}(?::\d{2})?)/);
+                if (m) {
+                    videoDuration = m[1];
+                } else {
                     const ariaRaw = timeOverlay.getAttribute('aria-label') || '';
-                    const m2 = ariaRaw.match(/(\d+:\d{2}(?::\d{2})?)/);
+                    const m2 = ariaRaw.match(/(\d{1,3}:\d{2}(?::\d{2})?)/);
                     if (m2) videoDuration = m2[1];
                 }
             }

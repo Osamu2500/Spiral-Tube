@@ -33,7 +33,7 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends window.YPP
 
         this.observer.start();
         this.observer.register('playlist-duration', 
-            'ytd-playlist-video-renderer, yt-lockup-view-model',
+            'ytd-playlist-video-renderer, yt-lockup-view-model, #ypp-pl-root',
             () => {
                 if (location.pathname.includes('/playlist')) {
                     this._debouncedCalculate();
@@ -252,8 +252,10 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends window.YPP
     }
 
     renderCard(totalSeconds, videoCount, notCounted, totalPlaylistVideos) {
+        const sidebar = document.querySelector('#ypp-pl-root .ypp-pl-sidebar');
+        
         // Try multiple header selectors for old and new YouTube DOM
-        const container = 
+        const container = sidebar ||
             document.querySelector('ytd-playlist-header-renderer') ||
             document.querySelector('yt-playlist-header-view-model') ||
             document.querySelector('ytd-browse[page-subtype="playlist"] #header');
@@ -308,13 +310,29 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends window.YPP
                 .ypp-speed-val { font-size: 14px; }
             `;
             this.card.appendChild(style);
-
+        }
+        
+        // Ensure the card is attached to the correct location (re-attach if redesign loaded later)
+        if (sidebar) {
+            if (this.card.parentElement !== sidebar) {
+                sidebar.appendChild(this.card);
+            }
+            // Hide the playlist redesign's built-in mini duration card so we don't have duplicates
+            const miniCard = sidebar.querySelector('.ypp-pl-duration-card');
+            if (miniCard && miniCard !== this.card) {
+                miniCard.style.display = 'none';
+            }
+        } else {
             const stats = container.querySelector('ytd-playlist-byline-renderer') || container.querySelector('.metadata-action-bar');
             if (stats && stats.parentNode) {
-                 stats.parentNode.insertBefore(this.card, stats.nextSibling);
+                 if (this.card.parentElement !== stats.parentNode) {
+                     stats.parentNode.insertBefore(this.card, stats.nextSibling);
+                 }
             } else {
                  const metadataWrapper = container.querySelector('.metadata-wrapper') || container.querySelector('.immersive-header-content') || container;
-                 metadataWrapper.appendChild(this.card);
+                 if (this.card.parentElement !== metadataWrapper) {
+                     metadataWrapper.appendChild(this.card);
+                 }
             }
         }
 

@@ -348,6 +348,14 @@ export const POPUP_SCHEMA = [
                 ]
             },
             {
+                title: 'Smart History (Youtube-Pro-Plus Port)',
+                items: [
+                    { type:'toggle', id:'smartHistory', label:'Smart History Tracker', badge:'NEW', desc:'Track individual video progress & watch time', icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z') },
+                    { type:'toggle', id:'autoResume', label:'Auto Resume Videos', badge:'NEW', desc:'Automatically resume from last watched timestamp', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
+                    { type:'custom', id:'recap_buttons', slot:'recapButtons' }
+                ]
+            },
+            {
                 title: 'Layout & Grid',
                 items: [
                     { type:'range', id:'historyColumns', label:'Grid Columns', unit:'', min:1, max:8, step:1 }
@@ -422,12 +430,23 @@ export const POPUP_SCHEMA = [
                 items: [
                     { type:'toggle', id:'enableStatsForNerds', label:'Stats Overlay', desc:'View tech details', icon:P('M4 17l6-6 4 4 6-8') },
                 ]
+            },
+            {
+                title: 'YouTube Pro Plus Port',
+                items: [
+                    { type:'toggle', id:'premiumLogo', label:'Premium Logo', badge:'NEW', desc:'Replace YouTube logo with Premium', icon:P('M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z') },
+                    { type:'toggle', id:'smartDownload', label:'Smart Download', badge:'NEW', desc:'Redirect download button to ssvid', icon:P('M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z') },
+                    { type:'toggle', id:'resumeBadges', label:'Resume Badges', badge:'NEW', desc:'Show resume progress on thumbnails', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
+                    { type:'toggle', id:'speedBooster', label:'10x Speed Booster', badge:'NEW', desc:'Unlock native speed up to 10x', icon:P('M13 10V3L4 14h7v7l9-11h-7z') },
+                    { type:'toggle', id:'liquidGlassTheme', label:'Liquid Glass Theme', badge:'NEW', desc:'Enable the Liquid Glass Theme', icon:P('M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z') },
+                ]
             }
         ]
     },
 
     // ──────────────────────────────────────────────────────────────────
     // GLOBAL (custom — misc toggles + backup)
+
     // ──────────────────────────────────────────────────────────────────
     { id: 'global', label: 'Global', icon: P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M2 12h20 M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'), custom: true, sections: [] },
 ];

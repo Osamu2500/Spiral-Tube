@@ -242,5 +242,11 @@ export const DEFAULT_SETTINGS = {
 
     // Onboarding
     hasSeenOnboarding: false,
+    
+    // --- YouTube Pro Plus Ported Settings ---
+    premiumLogo: true,
+    smartDownload: true,
+    resumeBadges: true,
+    speedBooster: true,
+    liquidGlassTheme: false
 };
-

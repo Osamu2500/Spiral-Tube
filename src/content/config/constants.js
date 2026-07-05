@@ -437,7 +437,13 @@ window.YPP.CONSTANTS = {
         filterBar: 'FilterBar',
         channelHealth: 'ChannelHealth',
         groupSidebar: 'GroupSidebar',
-        deckMode: 'DeckMode'
+        deckMode: 'DeckMode',
+        // --- YouTube Pro Plus Port ---
+        premiumLogo: 'PremiumLogo',
+        smartDownload: 'SmartDownload',
+        resumeBadges: 'ResumeBadges',
+        speedBooster: 'SpeedBooster',
+        liquidGlassTheme: 'LiquidGlassTheme'
     }
 };
 

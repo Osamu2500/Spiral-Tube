@@ -65,6 +65,12 @@ function renderToggle(item, state) {
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
     nameEl.textContent = item.label;
+    if (item.badge) {
+        const b = document.createElement('span');
+        b.textContent = item.badge;
+        b.className = 'new-feature-badge';
+        nameEl.appendChild(b);
+    }
     info.appendChild(nameEl);
     if (item.desc) {
         const descEl = document.createElement('span');

@@ -110,7 +110,7 @@ import './features/pages/search/search-redesign.js';
 
 
 // Library & History features
-import './features/pages/library/history/history-tracker.js';
+
 import './features/pages/library/history/history-redesign.js';
 import './features/pages/library/playlist/playlist-redesign.js';
 import './features/pages/library/playlist/duration-calculator.js';
@@ -118,6 +118,7 @@ import './features/pages/library/playlist/reverse-playlist.js';
 
 // Watch page features
 import './features/pages/watch/watch-history.js';
+import './features/pages/watch/smart-history.js';
 import './features/pages/watch/watch-time-alert.js';
 import './features/pages/watch/watch-time-limit.js';
 import './features/pages/watch/continue-watching.js';
@@ -141,6 +142,13 @@ import './features/player/automation/auto-like.js';
 import './features/player/controls/bookmarks.js';
 import './features/player/enhancements/intentional-delay.js';
 import './features/player/enhancements/return-dislike.js';
+
+// YouTube Pro Plus ported features
+import './features/global/ui-tweaks/premium-logo.js';
+import './features/global/ui-tweaks/liquid-glass-theme.js';
+import './features/player/enhancements/smart-download.js';
+import './features/global/ui-tweaks/resume-badges.js';
+import './features/player/enhancements/speed-booster.js';
 
 import './features/player/enhancements/video-speed-controller.js';
 import './features/player/media-effects/audio-eq.js';
