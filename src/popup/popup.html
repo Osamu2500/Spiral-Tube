@@ -40,6 +40,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6v12l8.5-6L4 6zm9 0v12l8.5-6L13 6z"></path></svg>
             <span class="nav-label">Speed</span>
           </button>
+          <button class="nav-item" data-tab="modes" title="Viewing Modes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
+            <span class="nav-label">Modes</span>
+          </button>
+          <button class="nav-item" data-tab="declutter" title="Declutter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path></svg>
+            <span class="nav-label">Declutter</span>
+          </button>
           <button class="nav-item" data-tab="search" title="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <span class="nav-label" data-i18n="nav_search">Search</span>
@@ -103,25 +111,6 @@
         <!-- HOME — rendered by popup-renderer.js from popup-schema.js -->
         <section id="tab-home" class="tab-content active">
           <!-- schema-driven: populated at runtime -->
-          
-          <!-- Hide Watched sub-options (visible when hideWatched is ON) -->
-          <div id="hideWatchedOptions" data-preserve="true" class="sub-options" style="display:none; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <div class="setting-item" style="margin-bottom: 12px; flex-wrap: wrap; gap: 6px; padding: 0;">
-              <div class="info"><span class="name" style="font-size:12px;">Mode</span></div>
-              <div style="display:flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
-                <button type="button" id="hwMode-dim"  class="view-mode-btn hw-mode-btn active" data-mode="dim"  style="font-size:11px; padding:4px 12px;">Dim</button>
-                <button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn"        data-mode="hide" style="font-size:11px; padding:4px 12px;">Hide</button>
-              </div>
-              <input type="hidden" id="hideWatchedMode" value="dim" />
-            </div>
-            <div class="setting-item" style="flex-direction:column; align-items:flex-start; padding:0;">
-              <div class="info" style="width:100%; display:flex; justify-content:space-between; flex-direction:row; margin-bottom:4px;">
-                <span class="name" style="font-size:12px;">Progress Threshold</span>
-                <span class="desc" id="hideWatchedThresholdValue" style="font-size:12px; font-weight:bold; color:var(--red);">80%</span>
-              </div>
-              <input type="range" id="hideWatchedThreshold" min="0" max="100" step="5" value="80" style="width:100%;" />
-            </div>
-          </div>
         </section>
 
         <!-- SHORTS — rendered by popup-renderer.js -->
@@ -143,36 +132,6 @@
               <input type="range" id="ambientBlur" min="20" max="200" step="10" value="120" style="width:100px;">
             </div>
           </div>
-          
-          <div id="sponsorBlockCategories" data-preserve="true" class="sb-categories" style="display:none; padding:10px 14px;">
-            <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px;">Skip Categories</div>
-            <div class="sb-category-grid">
-              <label class="sb-cat-item" title="Paid promotion / sponsored content">
-                <input type="checkbox" id="sb_sponsor" checked />
-                <span class="sb-dot" style="background:#00d400;"></span><span>Sponsor</span>
-              </label>
-              <label class="sb-cat-item" title="Filler intro / recap">
-                <input type="checkbox" id="sb_intro" checked />
-                <span class="sb-dot" style="background:#00ffff;"></span><span>Intro</span>
-              </label>
-              <label class="sb-cat-item" title="Creator self-promotion">
-                <input type="checkbox" id="sb_selfpromo" checked />
-                <span class="sb-dot" style="background:#ffff00;"></span><span>Self-promo</span>
-              </label>
-              <label class="sb-cat-item" title="Likes / subscribe / comment beg">
-                <input type="checkbox" id="sb_interaction" />
-                <span class="sb-dot" style="background:#cc0000;"></span><span>Interaction</span>
-              </label>
-              <label class="sb-cat-item" title="Non-music parts in music videos">
-                <input type="checkbox" id="sb_music_offtopic" />
-                <span class="sb-dot" style="background:#ff9900;"></span><span>Off-topic</span>
-              </label>
-              <label class="sb-cat-item" title="Preview / highlight reel">
-                <input type="checkbox" id="sb_preview" />
-                <span class="sb-dot" style="background:#008fd6;"></span><span>Preview</span>
-              </label>
-            </div>
-          </div>
         </section>
 
         <!-- SPEED — rendered by popup-renderer.js -->
@@ -182,9 +141,47 @@
 
 
 
+        <!-- MODES — rendered by popup-renderer.js -->
+        <section id="tab-modes" class="tab-content">
+          <!-- schema-driven: populated at runtime -->
+          <div id="ambientModeOptions" data-preserve="true" class="mode-settings" style="width:100%; display:none; padding:12px 14px; border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:12px; color:rgba(255,255,255,0.7);">Intensity</span>
+              <input type="range" id="ambientIntensity" min="0.1" max="1.0" step="0.1" value="0.6" style="width:100px;">
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:12px; color:rgba(255,255,255,0.7);">Blur Amount</span>
+              <input type="range" id="ambientBlur" min="20" max="200" step="10" value="120" style="width:100px;">
+            </div>
+          </div>
+        </section>
+
         <!-- SEARCH — rendered by popup-renderer.js -->
         <section id="tab-search" class="tab-content">
           <!-- schema-driven: populated at runtime -->
+        </section>
+
+        <!-- DECLUTTER — rendered by popup-renderer.js -->
+        <section id="tab-declutter" class="tab-content">
+          <!-- schema-driven: populated at runtime -->
+          <!-- Hide Watched sub-options (visible when hideWatched is ON) -->
+          <div id="hideWatchedOptions" data-preserve="true" class="sub-options" style="display:none; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="setting-item" style="margin-bottom: 12px; flex-wrap: wrap; gap: 6px; padding: 0;">
+              <div class="info"><span class="name" style="font-size:12px;">Mode</span></div>
+              <div style="display:flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+                <button type="button" id="hwMode-dim"  class="view-mode-btn hw-mode-btn active" data-mode="dim"  style="font-size:11px; padding:4px 12px;">Dim</button>
+                <button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn"        data-mode="hide" style="font-size:11px; padding:4px 12px;">Hide</button>
+              </div>
+              <input type="hidden" id="hideWatchedMode" value="dim" />
+            </div>
+            <div class="setting-item" style="flex-direction:column; align-items:flex-start; padding:0;">
+              <div class="info" style="width:100%; display:flex; justify-content:space-between; flex-direction:row; margin-bottom:4px;">
+                <span class="name" style="font-size:12px;">Progress Threshold</span>
+                <span class="desc" id="hideWatchedThresholdValue" style="font-size:12px; font-weight:bold; color:var(--red);">80%</span>
+              </div>
+              <input type="range" id="hideWatchedThreshold" min="0" max="100" step="5" value="80" style="width:100%;" />
+            </div>
+          </div>
         </section>
 
         <!-- SUBSCRIPTIONS — rendered by popup-renderer.js -->
@@ -236,44 +233,6 @@
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">Card Styles</div>
-                     <div class="section-subtitle">Video thumbnail appearance</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group" style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-              <div class="inline-setting-row" style="display: block;">
-                <input type="hidden" id="cardStyle" value="glass" />
-                <div class="card-style-grid" style="margin-top: 0;">
-                  <button type="button" class="card-style-btn" data-style="glass">Glass</button>
-                  <button type="button" class="card-style-btn" data-style="flat">Flat</button>
-                  <button type="button" class="card-style-btn" data-style="elevated">Elevated</button>
-                  <button type="button" class="card-style-btn" data-style="folder">Folder</button>
-                  <button type="button" class="card-style-btn" data-style="bento">Bento</button>
-                  <button type="button" class="card-style-btn" data-style="neon">Neon</button>
-                  <button type="button" class="card-style-btn" data-style="compact">Compact</button>
-                  <button type="button" class="card-style-btn" data-style="polaroid">Polaroid</button>
-                  <button type="button" class="card-style-btn" data-style="neumorphic">Neumorphic</button>
-                  <button type="button" class="card-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                  <button type="button" class="card-style-btn" data-style="holographic">Holographic</button>
-                  <button type="button" class="card-style-btn" data-style="minimalist">Minimalist</button>
-                  <button type="button" class="card-style-btn" data-style="retro">Retro</button>
-                  <button type="button" class="card-style-btn" data-style="brutalism">Brutalism</button>
-                  <button type="button" class="card-style-btn" data-style="skeuomorphic">Skeuomorphic</button>
-                  <button type="button" class="card-style-btn" data-style="frosted">Frosted</button>
-                  <button type="button" class="card-style-btn" data-style="summer">Summer</button>
-                  <button type="button" class="card-style-btn" data-style="winter">Winter</button>
-                  <button type="button" class="card-style-btn" data-style="spring">Spring</button>
-                  <button type="button" class="card-style-btn" data-style="autumn">Autumn</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
                      <div class="section-title">UI Redesigns</div>
                      <div class="section-subtitle">Toggle custom page layouts on or off</div>
                   </div>
@@ -306,6 +265,22 @@
                   </div>
                   <label class="toggle"><input type="checkbox" id="sidebarComments" /><span class="slider"></span></label>
                 </div>
+                <div class="toggle-card">
+                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
+                  <div class="info">
+                    <span class="name">Premium Logo<span class="new-feature-badge">NEW</span></span>
+                    <span class="desc">Replace YouTube logo with Premium</span>
+                  </div>
+                  <label class="toggle"><input type="checkbox" id="premiumLogo" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-card">
+                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div>
+                  <div class="info">
+                    <span class="name">Liquid Glass Theme<span class="new-feature-badge">NEW</span></span>
+                    <span class="desc">Enable the Liquid Glass Theme</span>
+                  </div>
+                  <label class="toggle"><input type="checkbox" id="liquidGlassTheme" /><span class="slider"></span></label>
+                </div>
               </div>
             </div>
           </div>
@@ -314,22 +289,36 @@
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">Screen Filters</div>
+                     <div class="section-title">Card Styles</div>
+                     <div class="section-subtitle">Video thumbnail appearance</div>
                   </div>
                </div>
             </div>
-            <div class="card-group">
-              <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
-                <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
-                  <span class="name">Blue Light Filter</span><span class="desc" id="blueLightValue">0%</span>
+            <div class="card-group" style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+              <div class="inline-setting-row" style="display: block;">
+                <input type="hidden" id="cardStyle" value="glass" />
+                <div class="card-style-grid" style="margin-top: 0;">
+                  <button type="button" class="card-style-btn" data-style="glass">Glass</button>
+                  <button type="button" class="card-style-btn" data-style="flat">Flat</button>
+                  <button type="button" class="card-style-btn" data-style="elevated">Elevated</button>
+                  <button type="button" class="card-style-btn" data-style="folder">Folder</button>
+                  <button type="button" class="card-style-btn" data-style="bento">Bento</button>
+                  <button type="button" class="card-style-btn" data-style="neon">Neon</button>
+                  <button type="button" class="card-style-btn" data-style="compact">Compact</button>
+                  <button type="button" class="card-style-btn" data-style="polaroid">Polaroid</button>
+                  <button type="button" class="card-style-btn" data-style="neumorphic">Neumorphic</button>
+                  <button type="button" class="card-style-btn" data-style="cyberpunk">Cyberpunk</button>
+                  <button type="button" class="card-style-btn" data-style="holographic">Holographic</button>
+                  <button type="button" class="card-style-btn" data-style="minimalist">Minimalist</button>
+                  <button type="button" class="card-style-btn" data-style="retro">Retro</button>
+                  <button type="button" class="card-style-btn" data-style="brutalism">Brutalism</button>
+                  <button type="button" class="card-style-btn" data-style="skeuomorphic">Skeuomorphic</button>
+                  <button type="button" class="card-style-btn" data-style="frosted">Frosted</button>
+                  <button type="button" class="card-style-btn" data-style="summer">Summer</button>
+                  <button type="button" class="card-style-btn" data-style="winter">Winter</button>
+                  <button type="button" class="card-style-btn" data-style="spring">Spring</button>
+                  <button type="button" class="card-style-btn" data-style="autumn">Autumn</button>
                 </div>
-                <input type="range" id="blueLight" min="0" max="90" step="5" />
-              </div>
-              <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
-                <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
-                  <span class="name">Dim Screen</span><span class="desc" id="dimValue">0%</span>
-                </div>
-                <input type="range" id="dim" min="0" max="90" step="5" />
               </div>
             </div>
           </div>
@@ -378,7 +367,6 @@
             </div>
           </div>
 
-
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
@@ -410,6 +398,30 @@
                   <div class="info"><span class="name">Playlists</span></div>
                   <label class="toggle"><input type="checkbox" id="navPlaylists" /><span class="slider"></span></label>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">Screen Filters</div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
+                <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
+                  <span class="name">Blue Light Filter</span><span class="desc" id="blueLightValue">0%</span>
+                </div>
+                <input type="range" id="blueLight" min="0" max="90" step="5" />
+              </div>
+              <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
+                <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
+                  <span class="name">Dim Screen</span><span class="desc" id="dimValue">0%</span>
+                </div>
+                <input type="range" id="dim" min="0" max="90" step="5" />
               </div>
             </div>
           </div>
@@ -510,107 +522,121 @@
 
         <!-- ADVANCED -->
         <section id="tab-advanced" class="tab-content">
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">External Integrations</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group">
-              <div class="feature-grid" style="margin-bottom: 8px;">
-                <div class="toggle-card">
-                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="15" x2="21" y2="15"></line></svg></div>
-                  <div class="info"><span class="name">Global Player Bar</span><span class="desc">External sites UI</span></div>
-                  <label class="toggle"><input type="checkbox" id="enableGlobalPlayerBar" /><span class="slider"></span></label>
-                </div>
-              </div>
-              
-              <div class="inline-setting-row" style="margin-top:8px;">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="15" x2="21" y2="15"></line></svg></div>
-                  <div class="info"><span class="name">Player Bar Position</span><span class="desc">Global Player Bar layout</span></div>
-                <select id="globalPlayerBarPosition" class="theme-select" style="width: 130px;">
-                  <option value="right">Right</option>
-                  <option value="left">Left</option>
-                  <option value="top">Top</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Stats & Overlays</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group">
-              <div class="feature-grid">
-                <div class="toggle-card">
-                  <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg></div>
-                  <div class="info"><span class="name">Stats Overlay</span><span class="desc">View tech details</span></div>
-                  <label class="toggle"><input type="checkbox" id="enableStatsForNerds" /><span class="slider"></span></label>
-                </div>
+          <div id="shortcutsPanel" data-preserve="true" class="hotkey-grid" style="display:none;">
+            <div class="shortcut-row"><span>Zen Mode</span><input type="text" id="shortcut_zenMode" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Focus Mode</span><input type="text" id="shortcut_focusMode" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Cinema Mode</span><input type="text" id="shortcut_cinemaMode" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Snapshot</span><input type="text" id="shortcut_snapshot" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Loop</span><input type="text" id="shortcut_loop" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>PiP</span><input type="text" id="shortcut_pip" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Speed -0.25x</span><input type="text" id="shortcut_speedDown" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Speed +0.25x</span><input type="text" id="shortcut_speedUp" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Reset Speed</span><input type="text" id="shortcut_speedReset" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Ambient Mode</span><input type="text" id="shortcut_ambientMode" class="shortcut-input" /></div>
+            <div class="shortcut-ref-card" style="grid-column:1/-1; margin-top:12px; padding:10px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+              <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;">Quick Reference</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:11px; color:rgba(255,255,255,0.75);">
+                <div class="ref-row"><kbd>Z</kbd><span>Zen Mode</span></div>
+                <div class="ref-row"><kbd>C</kbd><span>Cinema Mode</span></div>
+                <div class="ref-row"><kbd>F</kbd><span>Focus Mode</span></div>
+                <div class="ref-row"><kbd>S</kbd><span>Snapshot</span></div>
+                <div class="ref-row"><kbd>L</kbd><span>Loop</span></div>
+                <div class="ref-row"><kbd>P</kbd><span>PiP</span></div>
+                <div class="ref-row"><kbd>[</kbd><span>Speed −0.25×</span></div>
+                <div class="ref-row"><kbd>]</kbd><span>Speed +0.25×</span></div>
+                <div class="ref-row"><kbd>\</kbd><span>Reset Speed</span></div>
+                <div class="ref-row"><kbd>A</kbd><span>Ambient Mode</span></div>
               </div>
             </div>
           </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Hotkeys (Watch Page)</div>
-                  </div>
-               </div>
+          
+          <div id="globalPlayerBarOptions" data-preserve="true" class="sub-options" style="display:none; padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="setting-item" style="margin-bottom: 12px; padding: 0;">
+              <div class="info">
+                <span class="name" style="font-size:12px;">Player Bar Position</span>
+                <span class="desc" style="font-size:11px;">Where should it appear on external sites?</span>
+              </div>
+              <select id="globalPlayerBarPosition" class="theme-select" style="width: 110px; padding: 4px 8px;">
+                <option value="right">Right</option>
+                <option value="left">Left</option>
+                <option value="top">Top</option>
+              </select>
             </div>
-            <div class="card-group">
-              <div class="setting-item">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><path d="M6 8h.01"></path><path d="M10 8h.01"></path><path d="M14 8h.01"></path><path d="M18 8h.01"></path><path d="M8 12h.01"></path><path d="M12 12h.01"></path><path d="M16 12h.01"></path><path d="M7 16h10"></path></svg></div>
-                <div class="info"><span class="name">Enable Hotkeys</span></div>
-                <label class="toggle"><input type="checkbox" id="keyboardShortcuts" /><span class="slider"></span></label>
+            
+            <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Visible Buttons</div>
+            <div class="feature-grid" style="grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Play/Pause</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showPlay" /><span class="slider"></span></label>
               </div>
-              <div class="hotkey-grid">
-                <div class="shortcut-row"><span>Zen Mode</span><input type="text" id="shortcut_zenMode" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Focus Mode</span><input type="text" id="shortcut_focusMode" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Cinema Mode</span><input type="text" id="shortcut_cinemaMode" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Snapshot</span><input type="text" id="shortcut_snapshot" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Loop</span><input type="text" id="shortcut_loop" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>PiP</span><input type="text" id="shortcut_pip" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Speed -0.25x</span><input type="text" id="shortcut_speedDown" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Speed +0.25x</span><input type="text" id="shortcut_speedUp" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Reset Speed</span><input type="text" id="shortcut_speedReset" class="shortcut-input" /></div>
-                <div class="shortcut-row"><span>Ambient Mode</span><input type="text" id="shortcut_ambientMode" class="shortcut-input" /></div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Time Display</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showTime" /><span class="slider"></span></label>
               </div>
-              <!-- Shortcut quick-reference card (4.1) -->
-              <div class="shortcut-ref-card" style="margin-top:12px; padding:10px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
-                <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;">Quick Reference</div>
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:11px; color:rgba(255,255,255,0.75);">
-                  <div class="ref-row"><kbd>Z</kbd><span>Zen Mode</span></div>
-                  <div class="ref-row"><kbd>C</kbd><span>Cinema Mode</span></div>
-                  <div class="ref-row"><kbd>F</kbd><span>Focus Mode</span></div>
-                  <div class="ref-row"><kbd>S</kbd><span>Snapshot</span></div>
-                  <div class="ref-row"><kbd>L</kbd><span>Loop</span></div>
-                  <div class="ref-row"><kbd>P</kbd><span>PiP</span></div>
-                  <div class="ref-row"><kbd>[</kbd><span>Speed −0.25×</span></div>
-                  <div class="ref-row"><kbd>]</kbd><span>Speed +0.25×</span></div>
-                  <div class="ref-row"><kbd>\</kbd><span>Reset Speed</span></div>
-                  <div class="ref-row"><kbd>A</kbd><span>Ambient Mode</span></div>
-                </div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Volume</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showVolume" /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Vol Booster</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showVolumeBoost" /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Filters</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showFilters" /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Loop</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showLoop" /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">PiP Mode</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showPip" /><span class="slider"></span></label>
+              </div>
+              <div class="toggle-card" style="padding: 8px 12px; min-height: auto;">
+                <div class="info"><span class="name" style="font-size:12px;">Fullscreen</span></div>
+                <label class="toggle" style="transform: scale(0.85);"><input type="checkbox" id="gpb_showFullscreen" /><span class="slider"></span></label>
               </div>
             </div>
           </div>
           <div id="customCSSOptions" data-preserve="true" class="sub-options" style="display:none; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
             <textarea id="customCSSCode" class="feature-search-input" style="width: 100%; height: 120px; font-family: monospace; font-size: 11px; padding: 8px; resize: vertical;" placeholder="Paste userstyle CSS here..."></textarea>
           </div>
+          <div id="sponsorBlockCategories" data-preserve="true" class="sb-categories" style="display:none; padding:10px 14px;">
+            <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px;">Skip Categories</div>
+            <div class="sb-category-grid">
+              <label class="sb-cat-item" title="Paid promotion / sponsored content">
+                <input type="checkbox" id="sb_sponsor" checked />
+                <span class="sb-dot" style="background:#00d400;"></span><span>Sponsor</span>
+              </label>
+              <label class="sb-cat-item" title="Filler intro / recap">
+                <input type="checkbox" id="sb_intro" checked />
+                <span class="sb-dot" style="background:#00ffff;"></span><span>Intro</span>
+              </label>
+              <label class="sb-cat-item" title="Creator self-promotion">
+                <input type="checkbox" id="sb_selfpromo" checked />
+                <span class="sb-dot" style="background:#ffff00;"></span><span>Self-promo</span>
+              </label>
+              <label class="sb-cat-item" title="Likes / subscribe / comment beg">
+                <input type="checkbox" id="sb_interaction" />
+                <span class="sb-dot" style="background:#cc0000;"></span><span>Interaction</span>
+              </label>
+              <label class="sb-cat-item" title="Non-music parts in music videos">
+                <input type="checkbox" id="sb_music_offtopic" />
+                <span class="sb-dot" style="background:#ff9900;"></span><span>Off-topic</span>
+              </label>
+              <label class="sb-cat-item" title="Preview / highlight reel">
+                <input type="checkbox" id="sb_preview" />
+                <span class="sb-dot" style="background:#008fd6;"></span><span>Preview</span>
+              </label>
+            </div>
+          </div>
         </section>
 
-        <!-- GLOBAL CONFIG -->
+        <!-- GLOBAL CONFIG — schema sections rendered by popup-renderer.js, backup/reset HTML preserved -->
         <section id="tab-global" class="tab-content">
 
-          <div class="settings-section" style="margin-top: 16px;">
+          <div class="settings-section" data-preserve="true" style="margin-top: 16px;">
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
@@ -641,7 +667,7 @@
 
           
 
-          <div class="settings-section">
+          <div class="settings-section" data-preserve="true">
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">

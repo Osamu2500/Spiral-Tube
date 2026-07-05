@@ -2,12 +2,17 @@ const TITLES = {
     'home': 'Home & Feed',
     'shorts': 'Shorts Tools',
     'player': 'Player Features',
+    'modes': 'Viewing Modes',
+    'speed': 'Video Speed Controller',
     'search': 'Search Settings',
     'subscriptions': 'Subscriptions',
     'history': 'History & Watch Time',
+    'bookmarks': 'Bookmarks',
     'customization': 'Appearance & UI',
+    'theming': 'Theme Engine',
     'advanced': 'Advanced & System',
-    'global': 'Global Configuration'
+    'global': 'Global Configuration',
+    'declutter': 'Declutter Features'
 };
 
 function switchTab(document, tabId) {
@@ -179,6 +184,12 @@ export function updateDependencyUI(document) {
     const cssOptions = document.getElementById('customCSSOptions');
     if (cssToggle && cssOptions) {
         cssOptions.style.display = cssToggle.checked ? 'block' : 'none';
+    }
+
+    const gpbToggle = document.getElementById('enableGlobalPlayerBar');
+    const gpbOptions = document.getElementById('globalPlayerBarOptions');
+    if (gpbToggle && gpbOptions) {
+        gpbOptions.style.display = gpbToggle.checked ? 'block' : 'none';
     }
 }
 
