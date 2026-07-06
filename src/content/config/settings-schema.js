@@ -23,7 +23,7 @@ window.YPP.SettingsSchema = {
         schemaVersion:       { type: 'number',  default: 1 },
         // --- Theme ---
         premiumTheme:        { type: 'boolean', default: true },
-        activeTheme:         { type: 'string',  default: 'default', values: ['default','ocean','sunset','dracula','forest','midnight','cherry','system', 'coffee', 'cyberpunk', 'nord', 'discord', 'hacker', 'outrun', 'bloodmoon', 'deepspace', 'nebula', 'abyss', 'ember', 'hologram'] },
+        activeTheme:         { type: 'string',  default: 'default', values: ['default','ocean','sunset','dracula','forest','midnight','cherry','system', 'coffee', 'cyberpunk', 'nord', 'discord', 'hacker', 'outrun', 'bloodmoon', 'deepspace', 'nebula', 'abyss', 'ember', 'hologram', 'blue-sky'] },
         trueBlack:           { type: 'boolean', default: false },
         hideScrollbar:       { type: 'boolean', default: false },
 
@@ -74,7 +74,7 @@ window.YPP.SettingsSchema = {
         enableAnimations:    { type: 'boolean', default: true },
         enableThemeEffects:  { type: 'boolean', default: true },
         reducedMotion:       { type: 'boolean', default: false },
-        cardStyle:           { type: 'string',  default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'retro', 'brutalism', 'skeuomorphic', 'frosted', 'summer', 'winter', 'spring', 'autumn'] },
+        cardStyle:           { type: 'string',  default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'retro', 'brutalism', 'skeuomorphic', 'frosted', 'summer', 'winter', 'spring', 'autumn', 'nature', 'forest', 'vintage', 'ocean', 'blue-sky'] },
         customScrollbar:     { type: 'boolean', default: false },
         grayscaleThumbnails: { type: 'boolean', default: false },
 
@@ -330,6 +330,8 @@ window.YPP.SettingsSchema = {
         enableDeckMode:      { type: 'boolean', default: false },
 
         // --- UI Redesigns (popup Customization tab) ---
+        popupUiTheme:        { type: 'string', default: 'liquid-glass', values: ['liquid-glass', 'cyberpunk', 'neumorphic', 'minimal-flat'] },
+        youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'liquid-glass', 'cyberpunk', 'neumorphic', 'nature', 'vintage', 'ocean', 'blue-sky'] },
     }),
 
     // =========================================================================

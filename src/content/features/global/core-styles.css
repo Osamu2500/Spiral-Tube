@@ -179,6 +179,35 @@ html.yt-spiral-tube-theme {
 
 /* Make inner containers transparent so HTML background and effects show through */
 
+html.ypp-no-theme-animations::before,
+html.ypp-no-theme-animations::after {
+  animation-play-state: paused !important;
+}
+
+/* Hide explicit shape/pattern effects when theme animations are disabled */
+html.ypp-no-theme-animations[data-ypp-theme="nature"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="nature"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="vintage"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="vintage"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="outrun"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="outrun"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="holographic"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="holographic"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="hologram"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="hologram"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="hacker"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="hacker"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="dracula"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="dracula"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="deepspace"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="deepspace"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="cyberpunk"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="cyberpunk"]::after,
+html.ypp-no-theme-animations[data-ypp-theme="forest"]::before,
+html.ypp-no-theme-animations[data-ypp-theme="forest"]::after {
+    display: none !important;
+}
+
 html.yt-spiral-tube-theme body, 
 html.yt-spiral-tube-theme ytd-app,
 html.yt-spiral-tube-theme #background {

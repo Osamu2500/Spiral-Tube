@@ -496,6 +496,24 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                 UI.updateCustomizationPreview(document, state);
                 UI.syncModeCards(document);
                 
+                if (key === 'popupUiTheme' && el.value) {
+                    document.body.className = `ypp-theme-${el.value}`;
+                }
+
+                if (key === 'youtubePageTheme' && el.value && el.value !== 'default') {
+                    // Automatically sync Theme Engine and Card Style!
+                    const newTheme = el.value;
+                    if (state.elements.activeTheme) state.elements.activeTheme.value = newTheme;
+                    
+                    // The Card Style setting is hidden, we must update the UI buttons too
+                    if (state.elements.cardStyle) {
+                        state.elements.cardStyle.value = newTheme;
+                        document.querySelectorAll('.card-style-btn').forEach(b => {
+                            b.classList.toggle('active', b.dataset.style === newTheme);
+                        });
+                    }
+                }
+                
                 if (el.type === 'checkbox' && window.anime) {
                     const toggleCard = el.closest('.toggle-card') || el.closest('.mode-card');
                     if (toggleCard) {
@@ -667,7 +685,13 @@ const initApp = () => {
             (settings) => components.initThemeSelector(settings.activeTheme),
             (settings) => UI.updateDependencyUI(document),
             (settings) => UI.updateCustomizationPreview(document, state),
-            (settings) => UI.syncModeCards(document)
+            (settings) => UI.syncModeCards(document),
+            (settings) => {
+                const popupTheme = settings.popupUiTheme || 'liquid-glass';
+                document.body.className = `ypp-theme-${popupTheme}`;
+                const themeSelect = document.getElementById('popupUiTheme');
+                if (themeSelect) themeSelect.value = popupTheme;
+            }
         ]);
 
         components.initPremiumAccentDropdown();

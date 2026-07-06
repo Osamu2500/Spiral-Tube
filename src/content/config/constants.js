@@ -364,12 +364,22 @@ window.YPP.CONSTANTS = {
         OCEAN: { key: 'ocean', label: 'Ocean Blue', class: 'ypp-theme-ocean' },
         SUNSET: { key: 'sunset', label: 'Sunset Glow', class: 'ypp-theme-sunset' },
         DRACULA: { key: 'dracula', label: 'Dracula', class: 'ypp-theme-dracula' },
-        FOREST: { key: 'forest', label: 'Forest', class: 'ypp-theme-forest' },
         MIDNIGHT: { key: 'midnight', label: 'Midnight (OLED)', class: 'ypp-theme-midnight' },
         CHERRY: { key: 'cherry', label: 'Cherry Blossom', class: 'ypp-theme-cherry' },
         COFFEE: { key: 'coffee', label: 'Coffee', class: 'ypp-theme-coffee' },
+        NORD: { key: 'nord', label: 'Nord Frost', class: 'ypp-theme-nord' },
+        NATURE: { key: 'nature', label: 'Nature', class: 'ypp-theme-nature' },
+        VINTAGE: { key: 'vintage', label: 'Vintage', class: 'ypp-theme-vintage' },
         CYBERPUNK: { key: 'cyberpunk', label: 'Cyberpunk', class: 'ypp-theme-cyberpunk' },
-        NORD: { key: 'nord', label: 'Nord Frost', class: 'ypp-theme-nord' }
+        HOLOGRAPHIC: { key: 'holographic', label: 'Hologram', class: 'ypp-theme-hologram' },
+        DEEP_SPACE: { key: 'deepspace', label: 'Deep Space', class: 'ypp-theme-deepspace' },
+        NEBULA: { key: 'nebula', label: 'Nebula', class: 'ypp-theme-nebula' },
+        DISCORD: { key: 'discord', label: 'Discord Dark', class: 'ypp-theme-discord' },
+        HACKER: { key: 'hacker', label: 'Hacker Green', class: 'ypp-theme-hacker' },
+        BLOODMOON: { key: 'bloodmoon', label: 'Blood Moon', class: 'ypp-theme-bloodmoon' },
+        ABYSS: { key: 'abyss', label: 'Abyss', class: 'ypp-theme-abyss' },
+        EMBER: { key: 'ember', label: 'Ember', class: 'ypp-theme-ember' },
+        OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' }
     },
 
     // =========================================================================
@@ -443,9 +453,43 @@ window.YPP.CONSTANTS = {
         smartDownload: 'SmartDownload',
         resumeBadges: 'ResumeBadges',
         speedBooster: 'SpeedBooster',
-        liquidGlassTheme: 'LiquidGlassTheme'
+        liquidGlassUiTheme: 'LiquidGlassUiTheme',
+        cyberpunkUiTheme: 'CyberpunkUiTheme',
+        neumorphicUiTheme: 'NeumorphicUiTheme',
+        natureUiTheme: 'NatureUiTheme',
+        forestUiTheme: 'ForestUiTheme',
+        vintageUiTheme: 'VintageUiTheme',
+        oceanUiTheme: 'OceanUiTheme',
+        blueSkyUiTheme: 'BlueSkyUiTheme'
     }
 };
+
+const CARD_STYLES = [
+  { id: 'elevated', label: 'Elevated Cards (Shadowed)' },
+  { id: 'glass', label: 'Frosted Glass Cards' },
+  { id: 'neon', label: 'Neon Outline Cards' },
+  { id: 'bento', label: 'Bento Box Cards' },
+  { id: 'folder', label: 'Folder Tab Cards' },
+  { id: 'polaroid', label: 'Polaroid Style Cards' },
+  { id: 'cyberpunk', label: 'Cyberpunk Cut Cards' },
+  { id: 'neumorphic', label: 'Neumorphic Cards' },
+  { id: 'holographic', label: 'Holographic Glow Cards' },
+  { id: 'nature', label: 'Nature Style Cards' },
+  { id: 'vintage', label: 'Vintage Style Cards' },
+  { id: 'ocean', label: 'Ocean Style Cards' },
+  { id: 'blue-sky', label: 'Blue Sky Style Cards' }
+];
+
+export const YOUTUBE_PAGE_THEMES = [
+  { id: 'default', label: 'Default (YouTube Standard)' },
+  { id: 'liquid-glass', label: 'Liquid Glass (Transparent blur)' },
+  { id: 'cyberpunk', label: 'Cyberpunk (Neon edges)' },
+  { id: 'neumorphic', label: 'Neumorphic (Soft UI)' },
+  { id: 'nature', label: 'Nature (Organic)' },
+  { id: 'vintage', label: 'Vintage (Retro & Print)' },
+  { id: 'ocean', label: 'Ocean (Deep Water)' },
+  { id: 'blue-sky', label: 'Blue Sky (Clouds)' }
+];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation
 const deepFreeze = obj => {

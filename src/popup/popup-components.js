@@ -91,7 +91,8 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     { key: 'outrun', label: 'Outrun Synth', meta: '80s Retro', color: '#1a0524' },
                     { key: 'deepspace', label: 'Deep Space', meta: 'Nebula', color: '#020205' },
                     { key: 'nebula', label: 'Nebula', meta: 'Purple Space', color: '#0f0518' },
-                    { key: 'hologram', label: 'Hologram', meta: 'Sci-Fi Cyan', color: '#e0f7fa' }
+                    { key: 'hologram', label: 'Hologram', meta: 'Sci-Fi Cyan', color: '#e0f7fa' },
+                    { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' }
                 ]
             }
         ];

@@ -1,17 +1,17 @@
-import cssText from './liquid-glass-theme.css?raw';
+import cssText from './cyberpunk-ui-theme.css?raw';
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.LiquidGlassTheme = class LiquidGlassTheme extends window.YPP.features.BaseFeature {
+window.YPP.features.CyberpunkUiTheme = class CyberpunkUiTheme extends window.YPP.features.BaseFeature {
     constructor() {
-        super('LiquidGlassTheme');
-        this._styleId = 'ypp-liquid-glass-style';
+        super('CyberpunkUiTheme');
+        this._styleId = 'ypp-cyberpunk-style';
     }
 
     async update(settings) {
         this.settings = { ...this.settings, ...settings };
-        if (this.settings.youtubePageTheme === 'liquid-glass') {
+        if (this.settings.youtubePageTheme === 'cyberpunk') {
             if (!this.isEnabled) {
                 this.enable();
                 this.isEnabled = true;

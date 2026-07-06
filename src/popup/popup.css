@@ -1269,34 +1269,34 @@ kbd {
 
 
 /* ─── Experimental Glowing Tiles UI ─── */
-body.ypp-glowing-tiles .feature-grid {
+body .feature-grid {
     grid-template-columns: repeat(4, 1fr);
     grid-auto-flow: row dense;
     gap: 8px;
 }
 
-body.ypp-glowing-tiles .toggle-card .toggle {
+body .toggle-card .toggle {
     display: none !important;
 }
 
-body.ypp-glowing-tiles .toggle-card {
+body .toggle-card {
     cursor: pointer;
     padding: 11px 10px;
 }
 
-body.ypp-glowing-tiles .toggle-card:has(input:checked) {
+body .toggle-card:has(input:checked) {
     background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
     border-color: color-mix(in srgb, var(--accent-primary) 40%, transparent);
     box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
 /* ─── Side-by-side layout for 2-span cards ─── */
-body.ypp-glowing-tiles .span-2-tile {
+body .span-2-tile {
     flex-wrap: nowrap !important;
 }
 
-body.ypp-glowing-tiles .span-2-tile > .sub-options,
-body.ypp-glowing-tiles .span-2-tile > .sub-setting-row {
+body .span-2-tile > .sub-options,
+body .span-2-tile > .sub-setting-row {
     margin-top: 0 !important;
     padding-top: 0 !important;
     border-top: none !important;
@@ -1304,8 +1304,120 @@ body.ypp-glowing-tiles .span-2-tile > .sub-setting-row {
     margin-left: 10px;
 }
 
-body.ypp-glowing-tiles .span-2-tile > select {
+body .span-2-tile > select {
     flex: 1;
     max-width: 130px !important;
     margin-left: 10px;
+}
+
+/* ─── NEW POPUP THEMES ─── */
+
+/* 1. Liquid Glass (Default) - Blur balls only visible here */
+body:not(.ypp-theme-liquid-glass) .blur-balls {
+    display: none !important;
+}
+
+/* 2. Cyberpunk Theme */
+body.ypp-theme-cyberpunk {
+    --bg-primary: #050510;
+    --bg-surface: #0a0a1a;
+    --bg-glass: rgba(10, 10, 26, 0.8);
+    --bg-glass-hover: rgba(20, 20, 40, 0.9);
+    --border-subtle: rgba(0, 255, 255, 0.2);
+    font-family: 'Courier New', Courier, monospace;
+    background-image: linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+body.ypp-theme-cyberpunk .toggle-card {
+    border-radius: 0;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+body.ypp-theme-cyberpunk .toggle-card:has(input:checked) {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: #0ff;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3), 0 0 15px rgba(0, 255, 255, 0.5);
+}
+body.ypp-theme-cyberpunk .sidebar {
+    border-right: 2px solid #0ff;
+    border-radius: 0;
+}
+body.ypp-theme-cyberpunk .nav-item.active {
+    background: rgba(0, 255, 255, 0.2);
+    border-left: 3px solid #0ff;
+    border-radius: 0;
+}
+body.ypp-theme-cyberpunk .app-container {
+    border-radius: 0;
+    border: 1px solid #0ff;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+/* 3. Neumorphic Theme */
+body.ypp-theme-neumorphic {
+    --bg-primary: #1a1b26;
+    --bg-surface: #1a1b26;
+    --bg-glass: #1a1b26;
+    --bg-glass-hover: #1a1b26;
+    --border-subtle: transparent;
+}
+body.ypp-theme-neumorphic .app-container {
+    background: #1a1b26;
+    box-shadow: none;
+}
+body.ypp-theme-neumorphic .toggle-card {
+    background: #1a1b26;
+    border: none;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5), -4px -4px 10px rgba(255,255,255,0.05);
+    border-radius: 12px;
+}
+body.ypp-theme-neumorphic .toggle-card:has(input:checked) {
+    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.5), inset -4px -4px 10px rgba(255,255,255,0.05);
+    background: #1a1b26;
+}
+body.ypp-theme-neumorphic .sidebar {
+    background: #1a1b26;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+/* 4. Minimal Flat Theme */
+body.ypp-theme-minimal-flat {
+    --bg-primary: #0f0f0f;
+    --bg-surface: #1a1a1a;
+    --bg-glass: #1a1a1a;
+    --bg-glass-hover: #222222;
+    --border-subtle: transparent;
+}
+body.ypp-theme-minimal-flat .app-container {
+    background: var(--bg-primary);
+    border: 1px solid #333;
+    box-shadow: none;
+    border-radius: 8px;
+}
+body.ypp-theme-minimal-flat .toggle-card {
+    background: var(--bg-surface);
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+}
+body.ypp-theme-minimal-flat .toggle-card:has(input:checked) {
+    background: var(--accent-primary);
+    box-shadow: none;
+}
+body.ypp-theme-minimal-flat .toggle-card:has(input:checked) .name,
+body.ypp-theme-minimal-flat .toggle-card:has(input:checked) .desc,
+body.ypp-theme-minimal-flat .toggle-card:has(input:checked) .feature-icon {
+    color: #fff !important;
+}
+body.ypp-theme-minimal-flat .sidebar {
+    background: var(--bg-primary);
+    border-right: 1px solid #333;
+    border-radius: 8px 0 0 8px;
+}
+body.ypp-theme-minimal-flat .nav-item.active {
+    background: var(--bg-surface);
+    border-radius: 6px;
 }

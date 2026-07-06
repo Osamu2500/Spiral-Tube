@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Theme Manager - Handles visual theming and content visibility features
  * Uses centralized constants for configuration
  */
@@ -111,8 +111,14 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
         
         // Toggle base premium class
         root.classList.toggle(this._CSS_CLASSES.THEME_ENABLED, enable);
+        
+        // Always add ypp-theme-effects when premium theme is enabled so the gradient backgrounds always show.
+        root.classList.toggle('ypp-theme-effects', enable);
+        
+        // Use a separate class to disable the animations if the user turns off "Theme Effects"
         const enableEffects = this._settings.enableThemeEffects !== false;
-        root.classList.toggle('ypp-theme-effects', enableEffects && enable);
+        root.classList.toggle('ypp-no-theme-animations', !enableEffects && enable);
+        
         if (body) body.classList.toggle(this._CSS_CLASSES.THEME_ENABLED, enable);
 
         this._Utils.log(`Toggling theme: ${enable ? 'ON' : 'OFF'}`, 'THEME');
@@ -205,9 +211,43 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
                 this._injectThemeFile(themeKey);
             }
             
+            document.documentElement.setAttribute('data-ypp-theme', themeKey);
             this._currentThemeKey = themeKey;
+
+            // Enforce YouTube's native Dark Mode for our themes (unless it's 'nature' or 'hologram' which are light)
+            const isLightTheme = ['nature', 'hologram'].includes(themeKey);
+            this._enforceYouTubeTheme(!isLightTheme);
         } else {
              this._Utils.log(`Theme '${themeKey}' already active, skipping injection.`, 'THEME', 'debug');
+        }
+    }
+
+    /**
+     * Enforce YouTube's dark or light attribute on HTML
+     * @private
+     */
+    _enforceYouTubeTheme(forceDark) {
+        if (forceDark) {
+            document.documentElement.setAttribute('dark', 'true');
+        } else {
+            document.documentElement.removeAttribute('dark');
+        }
+        
+        // Setup observer to keep it enforced if YouTube tries to change it
+        if (!this._themeObserver) {
+            this._themeObserver = new MutationObserver((mutations) => {
+                if (!this._currentThemeKey || this._currentThemeKey === 'system' || this._currentThemeKey === 'default') return;
+                
+                const shouldBeDark = !['nature', 'hologram'].includes(this._currentThemeKey);
+                const isDark = document.documentElement.hasAttribute('dark');
+                
+                if (shouldBeDark && !isDark) {
+                    document.documentElement.setAttribute('dark', 'true');
+                } else if (!shouldBeDark && isDark) {
+                    document.documentElement.removeAttribute('dark');
+                }
+            });
+            this._themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['dark'] });
         }
     }
 
@@ -346,10 +386,22 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
 
 
 
-        // Card Style
-        if (this._settings.cardStyle) {
-            root.setAttribute('data-ypp-card-style', this._settings.cardStyle);
+        // Card Style Enforcement by UI Theme
+        let finalCardStyle = this._settings.cardStyle || 'glass';
+        
+        const ytTheme = this._settings.youtubePageTheme;
+
+        if (ytTheme && ytTheme !== 'default') {
+             if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
+             else if (ytTheme === 'nature') finalCardStyle = 'nature';
+             else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
+             else if (ytTheme === 'liquid-glass') finalCardStyle = 'glass';
+             else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
+             else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
+             else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
         }
+
+        root.setAttribute('data-ypp-card-style', finalCardStyle);
 
 
     }

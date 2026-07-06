@@ -1,17 +1,17 @@
-import cssText from './liquid-glass-theme.css?raw';
+import cssText from './nature-ui-theme.css?raw';
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.LiquidGlassTheme = class LiquidGlassTheme extends window.YPP.features.BaseFeature {
+window.YPP.features.NatureUiTheme = class NatureUiTheme extends window.YPP.features.BaseFeature {
     constructor() {
-        super('LiquidGlassTheme');
-        this._styleId = 'ypp-liquid-glass-style';
+        super('NatureUiTheme');
+        this._styleId = 'ypp-nature-style';
     }
 
     async update(settings) {
         this.settings = { ...this.settings, ...settings };
-        if (this.settings.youtubePageTheme === 'liquid-glass') {
+        if (this.settings.youtubePageTheme === 'nature') {
             if (!this.isEnabled) {
                 this.enable();
                 this.isEnabled = true;
