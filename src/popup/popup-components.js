@@ -219,7 +219,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                         updateSetting('activeTheme', newTheme);
                         
                         // Auto-apply UI styles if the theme is an aesthetic theme
-                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic'];
+                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic', 'forest'];
                         if (uiStyles.includes(newTheme)) {
                             updateSetting('youtubePageTheme', newTheme);
                             const selectEl = document.getElementById('youtubePageTheme');

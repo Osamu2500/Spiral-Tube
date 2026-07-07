@@ -145,16 +145,6 @@ import './features/player/enhancements/return-dislike.js';
 
 // YouTube Pro Plus ported features
 import './features/global/ui-tweaks/premium-logo.js';
-import './features/global/ui-tweaks/liquid-glass-theme.js';
-import './features/global/ui-tweaks/cyberpunk-ui-theme.js';
-import './features/global/ui-tweaks/neumorphic-ui-theme.js';
-import './features/global/ui-tweaks/nature-ui-theme.js';
-import './features/global/ui-tweaks/forest-ui-theme.js';
-import './features/global/ui-tweaks/vintage-ui-theme.js';
-import './features/global/ui-tweaks/ocean-ui-theme.js';
-import './features/global/ui-tweaks/blue-sky-ui-theme.js';
-import './features/global/ui-tweaks/retro-ui-theme.js';
-import './features/global/ui-tweaks/technozen-ui-theme.js';
 import './features/player/enhancements/smart-download.js';
 import './features/global/ui-tweaks/resume-badges.js';
 import './features/player/enhancements/speed-booster.js';

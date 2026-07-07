@@ -15,49 +15,22 @@ html, [dark] {
   --bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   --bounce-alt: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   
-  --sky-primary: #87CEFA; /* Lime/leaf green */
-  --sky-secondary: #E0FFFF;
-  --sky-bg: #4682B4; /* very dark slate/greenish */
-  --sky-border: 1px solid rgba(135, 206, 250, 0.3);
-  --sky-border-hover: 1px solid rgba(135, 206, 250, 0.6);
+  --nature-primary: #a3e635; /* Lime/leaf green */
+  --nature-secondary: #bef264;
+  --nature-bg: #0f172a; /* very dark slate/greenish */
+  --nature-border: 1px solid rgba(163, 230, 53, 0.3);
+  --nature-border-hover: 1px solid rgba(163, 230, 53, 0.6);
 }
 html, [dark] body {
-  background-color: #104E8B !important; /* Deep emerald base */
+  background-color: #064e3b !important; /* Deep emerald base */
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(135, 206, 250, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(135, 206, 250, 0.08), transparent 25%),
+    radial-gradient(circle at 15% 50%, rgba(163, 230, 53, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(34, 197, 94, 0.08), transparent 25%),
     url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10,90 Q50,10 90,90" stroke="rgba(255,255,255,0.02)" fill="none" stroke-width="2"/></svg>') !important;
   background-size: 100% 100%, 100% 100%, 200px 200px !important;
   color: #ecfdf5 !important;
 }
-html, [dark] body {
-  background-color: #202020 !important;
-}
-/* === Light mode — use white-tinted glass, dark shadows === */
-html, [dark] {
-  --blur: 4px;
-  --sf: rgba(240, 253, 244, 0.85); /* Honeydew / light mint */
-  --shadow-base: 0 4px 15px rgba(16, 78, 139, 0.1);
-  --shadow-hover: 0 10px 30px rgba(135, 206, 250, 0.2);
-  --shadow-active: 0 2px 10px rgba(16, 78, 139, 0.15);
-  --bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  --bounce-alt: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  
-  --sky-primary: #00BFFF;
-  --sky-secondary: #1E90FF;
-  --sky-bg: #F0F8FF;
-  --sky-border: 1px solid rgba(135, 206, 250, 0.3);
-  --sky-border-hover: 1px solid rgba(135, 206, 250, 0.6);
-}
-html, [dark] body {
-  background-color: #E6E6FA !important;
-  background-image: 
-    radial-gradient(circle at 20% 40%, rgba(253, 224, 71, 0.4), transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(134, 239, 172, 0.4), transparent 40%),
-    url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10,90 Q50,10 90,90" stroke="rgba(22,101,52,0.03)" fill="none" stroke-width="2"/></svg>') !important;
-  background-size: 100% 100%, 100% 100%, 200px 200px !important;
-  color: #104E8B !important;
-}
+/* NOTE: No light-mode background override needed - dark mode emerald background above handles it */
 ytd-app,
 ytd-masthead,
 #page-manager.ytd-app,
@@ -78,18 +51,41 @@ ytd-masthead,
 .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
-#masthead-container {
+/* ============================================================
+   TOPBAR / MASTHEAD — Nature theme
+   ============================================================ */
+#masthead-container,
+#masthead-container.ytd-app {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Force the inner masthead container to take nature glass */
+ytd-masthead #container,
+#container.ytd-masthead {
+  border-radius: 24px 4px 24px 4px !important;
+  background: var(--sf) !important;
+  background-color: var(--sf) !important;
+  margin: 1px !important;
+  box-shadow: var(--shadow-active) !important;
+  border: var(--nature-border) !important;
+}
+/* YouTube's background element inside masthead */
+#background.ytd-masthead {
   background: transparent !important;
   background-color: transparent !important;
 }
-ytd-masthead #container {
-  border-radius: 32px !important;
-  background: var(--sf) !important;
-  
-  
-  margin: 1px !important;
-  box-shadow: var(--shadow-active) !important;
-  border: var(--sky-border) !important;
+/* Force topbar icon/text colors to be readable on light green */
+ytd-masthead #container yt-icon,
+ytd-masthead #container .yt-icon,
+ytd-masthead #container yt-icon-shape svg {
+  color: #166534 !important;
+  fill: #166534 !important;
+}
+ytd-masthead #container yt-formatted-string,
+ytd-masthead #container span,
+ytd-masthead #container a {
+  color: #166534 !important;
 }
 #description.ytd-watch-metadata,
 ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
@@ -97,9 +93,9 @@ ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
   overflow: hidden !important;
   padding: 0 10px !important;
   margin: 16px 16px 0 0 !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: var(--sf) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
@@ -109,7 +105,7 @@ ytd-guide-renderer #sections {
 ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
 ytd-browse[page-subtype="home"] #chips {
   margin: 16px 0 0 0 !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-active) !important;
   
   
@@ -117,7 +113,7 @@ ytd-browse[page-subtype="home"] #chips {
   overflow: hidden !important;
   padding: 0 10px !important;
   background: var(--sf) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition: box-shadow var(--bounce) !important;
 }
 .yt-chip-shape {
@@ -135,7 +131,7 @@ ytd-browse[page-subtype="home"] #chips {
   
   
   border-radius: calc(20px * 1.15) / 20px !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
     box-shadow var(--bounce),
@@ -145,7 +141,7 @@ ytd-browse[page-subtype="home"] #chips {
   background: transparent !important;
   
   box-shadow: none !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -155,7 +151,7 @@ ytd-browse[page-subtype="home"] #chips {
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
   background: var(--sf) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 0px !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05);
@@ -170,8 +166,8 @@ html, [dark],
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: none !important;
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
   overflow: hidden !important;
   transition:
     transform var(--bounce),
@@ -196,12 +192,12 @@ html, [dark],
   .ytp-chrome-bottom.ytp-volume-slider-active
   .ytp-volume-area {
   background: none !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 .ytp-delhi-modern
   .ytp-chrome-controls
@@ -245,17 +241,17 @@ html, [dark],
 .ytSearchboxComponentInputBoxDark,
 .ytSearchboxComponentInputBox {
   background: none !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-base) !important;
 }
 .ytSearchboxComponentSearchButton {
   margin-left: 10px !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   background-color: transparent !important;
   transition:
     transform var(--bounce),
@@ -281,7 +277,7 @@ ytd-comment-view-model[optimal-reading-width-comments]
 tp-yt-paper-menu-button.yt-dropdown-menu::not(
     #trigger.tp-yt-paper-menu-button
   ) {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -306,8 +302,19 @@ ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background-color: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+/* Nature-themed nav button base state */
+.ypp-nav-btn {
+  border-radius: 24px 4px 24px 4px !important;
+  background: rgba(163, 230, 53, 0.08) !important;
+  border: 1px solid rgba(163, 230, 53, 0.2) !important;
+  color: #166534 !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -319,9 +326,9 @@ ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 #trailing-button.ytd-playlist-panel-renderer:hover,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"]:hover,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+  background: rgba(163, 230, 53, 0.18) !important;
+  box-shadow: 0 0 12px rgba(163, 230, 53, 0.4), var(--shadow-hover) !important;
+  transform: scale(1.08) !important;
 }
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
   transition:
@@ -364,7 +371,7 @@ ytd-playlist-panel-video-renderer[selected][use-color-palette],
 ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(
     .dragging
   ) {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 10px !important;
   box-shadow: var(--shadow-active) !important;
   transition:
@@ -372,7 +379,7 @@ ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(
     box-shadow var(--bounce) !important;
 }
 ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 10px !important;
   transition:
     transform var(--bounce),
@@ -389,14 +396,14 @@ ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer:hover {
   background: none !important;
 }
 #container.ytd-playlist-panel-renderer {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 .ytSearchboxComponentSuggestionsContainer,
 ytd-multi-page-menu-renderer {
   top: 55px !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-hover) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -406,8 +413,8 @@ ytd-multi-page-menu-renderer {
     [compact-link-style="compact-link-style-type-disclaimer"]
   ):not(ytd-message-renderer) {
   margin: 10px;
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -421,8 +428,8 @@ ytd-multi-page-menu-renderer {
 }
 .ytSuggestionComponentRoundedSuggestion {
   margin: 5px 10px;
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -436,37 +443,37 @@ ytd-simple-menu-header-renderer {
 }
 .ytp-panel {
   background: var(--sf) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 0 5px !important;
 }
 .ytp-menuitem:not([aria-disabled="true"]) {
   margin-left: 100px !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
 }
 .ytp-menuitem:not([aria-disabled="true"]):hover {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-hover) !important;
   background-color: rgba(0, 0, 0, 0) !important;
 }
 .ytp-delhi-modern .ytp-popup {
   background: none !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 .ytp-popup.ytp-delhi-modern-contextmenu {
   background: none !important;
   padding: 0 5px !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: none !important;
   
 }
@@ -485,7 +492,7 @@ tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   padding: 10px 3px !important;
 }
 ytd-guide-entry-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
   margin-right: 10px;
@@ -501,7 +508,7 @@ ytd-guide-entry-renderer {
 }
 ytd-mini-guide-entry-renderer {
   margin-top: 10px !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -515,7 +522,7 @@ ytd-mini-guide-renderer.ytd-app {
   left: 10px !important;
 }
 .ytChipShapeChip {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -531,7 +538,7 @@ iron-selector.yt-chip-cloud-renderer {
   padding-left: 5px !important;
 }
 ytd-expandable-metadata-renderer:not([is-expanded]) {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -541,11 +548,11 @@ ytd-expandable-metadata-renderer:not([is-expanded]):hover {
 }
 ytd-expandable-metadata-renderer {
   padding: 5px !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
   margin-right: 0 !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   z-index: 30000 !important;
   transition:
     transform var(--bounce),
@@ -558,8 +565,8 @@ ytd-expandable-metadata-renderer {
 ytd-macro-markers-list-item-renderer[modern][layout="MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL"]:not(
     [carousel-type="MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY"]
   ) {
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -575,8 +582,8 @@ ytd-expandable-metadata-renderer:not([is-expanded])
 }
 tp-yt-paper-dialog {
   background: var(--sf) !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
@@ -588,8 +595,8 @@ ytd-video-preview,
 #contentWrapper.tp-yt-iron-dropdown > *,
 tp-yt-paper-dialog {
   background: var(--sf) !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1)
     translate(
@@ -605,7 +612,7 @@ tp-yt-paper-dialog {
 }
 video.video-stream.html5-main-video,
 .html5-video-player {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 #player-container.ytd-video-preview {
   background: none !important;
@@ -621,11 +628,11 @@ video.video-stream.html5-main-video,
 .ytProgressBarLineProgressBarHovered,
 .ytProgressBarLineProgressBarPlayed,
 .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 .ytInlinePlayerControlsTopRightControlsCircleButton {
   background: var(--sf) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -638,8 +645,8 @@ video.video-stream.html5-main-video,
 }
 .yt-badge-shape--thumbnail-default {
   background: var(--sf) !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -648,8 +655,8 @@ video.video-stream.html5-main-video,
 .anchored-panel.ytd-shorts {
   background: var(--sf) !important;
   padding: 5px;
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-active) !important;
   margin-top: 15px !important;
 }
@@ -662,9 +669,9 @@ ytd-engagement-panel-section-list-renderer[match-content-theme]
   background: none !important;
 }
 ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   margin: 10px !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
 }
 ytd-item-section-renderer[static-comments-header][enable-anchored-panel]
@@ -684,7 +691,7 @@ ytd-item-section-renderer[static-comments-header][enable-anchored-panel]
   transform: scale(1.1) !important;
 }
 .tp-yt-paper-tooltip[style-target="tooltip"] {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-active) !important;
   color: white !important;
 }
@@ -694,7 +701,7 @@ tp-yt-paper-listbox {
 ytd-menu-service-item-renderer,
 .yt-list-item-view-model__container--tappable,
 tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -717,7 +724,7 @@ ytd-menu-service-item-renderer[use-list-item-styles]
   overflow: visible !important;
 }
 .immersive-header-container.ytd-playlist-header-renderer {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-active) !important;
 }
 ytd-alert-with-button-renderer[type="INFO"] {
@@ -732,7 +739,7 @@ ytd-playlist-video-renderer:not(.dragging) {
     transform var(--bounce),
     box-shadow var(--bounce) !important;
   margin: 5px;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 ytd-playlist-video-renderer:not(.dragging):hover {
   box-shadow: var(--shadow-hover) !important;
@@ -742,7 +749,7 @@ ytd-thumbnail-overlay-toggle-button-renderer {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 ytd-thumbnail-overlay-toggle-button-renderer:hover {
   transform: scale(1.1) !important;
@@ -752,19 +759,19 @@ ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered]
   #label.ytd-thumbnail-overlay-toggle-button-renderer {
   background-color: black !important;
   margin-right: 10px;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 ytd-macro-markers-list-item-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   margin: 5px;
   transition:
     transform var(--bounce),
@@ -776,7 +783,7 @@ ytd-macro-markers-list-item-renderer:hover {
 }
 #trigger.tp-yt-paper-menu-button {
   padding: 10px !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -791,11 +798,11 @@ html
   body[rounded-container]
   tp-yt-paper-tooltip
   .tp-yt-paper-tooltip[style-target="tooltip"] {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 7px 10px;
 }
 ytd-topbar-logo-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 0px !important;
   max-height: 45px !important;
   transition:
@@ -818,7 +825,7 @@ html, [dark] .ytSearchboxComponentInput {
 }
 .ytp-fullscreen-grid-expand-button {
   background: none !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -844,7 +851,7 @@ tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
   box-shadow: var(--shadow-hover) !important;
 }
 a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -861,7 +868,7 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
 .yt-spec-touch-feedback-shape--thumbnail-size-large
   .yt-spec-touch-feedback-shape__hover-effect {
   padding: 100px !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 #contents.ytd-rich-grid-renderer {
@@ -879,12 +886,12 @@ ytd-rich-grid-slim-media:hover {
 ytd-rich-grid-slim-media #dismissible,
 ytd-reel-item-renderer #dismissible {
   transition: all var(--bounce) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   border: 2px solid transparent !important;
 }
 ytd-rich-grid-slim-media:hover #dismissible,
 ytd-reel-item-renderer:hover #dismissible {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: var(--sf) !important;
   
   box-shadow: var(--shadow-hover) !important;
@@ -976,7 +983,7 @@ body.yt-pro-premium ytd-topbar-logo-renderer #country-code {
 
 /* --- HAMBURGER / GUIDE BUTTON --- */
 yt-icon-button#guide-button {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -996,7 +1003,7 @@ yt-icon-button#guide-button:active {
 
 /* --- CREATE BUTTON (masthead) --- */
 #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: var(--sf) !important;
   
   
@@ -1017,7 +1024,7 @@ yt-icon-button#guide-button:active {
 
 /* --- NOTIFICATION BELL --- */
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 4px !important;
   transition:
     transform var(--bounce),
@@ -1058,7 +1065,7 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
 button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
     .ytSpecButtonShapeNextSegmentedEnd
   ) {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: var(--sf) !important;
   
   
@@ -1094,7 +1101,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
   button.ytSpecButtonShapeNextSegmentedStart,
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper
   button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: var(--sf) !important;
   
   
@@ -1120,7 +1127,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
 
 /* --- TEXT / MONO BUTTONS (camelCase) --- */
 button.ytSpecButtonShapeNextText {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1145,7 +1152,7 @@ ytd-playlist-panel-renderer {
   
 }
 #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 
 /* --- NOTIFICATION PANEL / YOU+SUBSCRIPTIONS POPUP — glass --- */
@@ -1154,13 +1161,13 @@ html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(14, 14, 18, 0.6) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(255, 255, 255, 0.88) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 /* --- SEARCH SUGGESTIONS — frosted glass, mode-aware --- */
@@ -1169,8 +1176,8 @@ html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(10, 10, 14, 0.92) !important;
   
   
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
 }
 /* Light mode: bright frosted glass so dark suggestion text stays readable */
@@ -1178,8 +1185,8 @@ html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(255, 255, 255, 0.94) !important;
   
   
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18) !important;
 }
 
@@ -1210,7 +1217,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 .ytLockupMetadataViewModelMenuButton button {
   opacity: 1 !important;
   visibility: visible !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     background var(--bounce),
     box-shadow var(--bounce) !important;
@@ -1233,7 +1240,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 /* --- COMMENT BUTTONS — no scale/backdrop (flash fix) --- */
 ytd-comment-view-model button,
 ytd-comment-renderer button {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     background 0.15s ease,
     box-shadow 0.15s ease !important;
@@ -1272,7 +1279,7 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-gpb-btn,
 .ypp-action-btn,
 .ypp-icon-btn {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: transparent !important;
   transition:
     transform var(--bounce),
@@ -1301,9 +1308,9 @@ ytd-comment-renderer yt-interaction .fill {
   background: var(--sf) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -1319,15 +1326,15 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-gpb-vol-slider {
   accent-color: #ff4e45 !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 
 .ypp-badge,
 .ypp-value-display {
   background: rgba(255, 255, 255, 0.1) !important;
   
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
 }
 
 /* --- Subscriptions Sidebar / Modals --- */
@@ -1336,8 +1343,8 @@ ytd-comment-renderer yt-interaction .fill {
   background: rgba(10, 10, 15, 0.65) !important;
   
   
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
@@ -1352,7 +1359,7 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-btn-primary,
 .ypp-play-all-btn,
 .ypp-health-btn {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1379,15 +1386,15 @@ ytd-comment-renderer yt-interaction .fill {
   background: var(--sf) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
 .ypp-pill-toggle {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   background: rgba(255, 255, 255, 0.1) !important;
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1402,8 +1409,8 @@ ytd-comment-renderer yt-interaction .fill {
 
 .ypp-filter-dropdown {
   background: rgba(255, 255, 255, 0.05) !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  border: var(--nature-border) !important;
   
   color: white !important;
   transition:
@@ -1425,14 +1432,14 @@ ytd-c4-tabbed-header-renderer {
   background: var(--sf) !important;
   
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-base) !important;
   margin-bottom: 20px !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   border-top: none !important;
 }
 #wrapper.ytd-channel-avatar-editor {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 tp-yt-app-header {
@@ -1445,7 +1452,7 @@ tp-yt-app-header {
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 .tab-content.tp-yt-paper-tab:hover {
   background: rgba(128, 128, 128, 0.1) !important;
@@ -1458,11 +1465,11 @@ ytd-comment-view-model {
   background: rgba(128, 128, 128, 0.05) !important;
   
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
   box-shadow: var(--shadow-base) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1476,20 +1483,20 @@ ytd-comment-view-model:hover {
 ytd-comment-simplebox-renderer {
   background: rgba(128, 128, 128, 0.08) !important;
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 15px !important;
   box-shadow: var(--shadow-active) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 #placeholder-area.ytd-comment-simplebox-renderer {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 /* --- SEARCH RESULTS & FILTERS --- */
 ytd-search-filter-group-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 15px !important;
   box-shadow: var(--shadow-base) !important;
   margin-bottom: 10px !important;
@@ -1501,11 +1508,11 @@ ytd-radio-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
   
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
   box-shadow: var(--shadow-base) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -1523,19 +1530,19 @@ ytd-radio-renderer:hover {
 ytd-settings-sidebar-renderer {
   background: var(--sf) !important;
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-base) !important;
   padding: 15px !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 ytd-settings-options-renderer,
 ytd-account-settings-renderer {
   background: var(--sf) !important;
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-base) !important;
   padding: 25px !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 /* --- LIVE CHAT --- */
@@ -1544,16 +1551,16 @@ yt-live-chat-renderer {
   background: var(--sf) !important;
   
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-base) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   overflow: hidden !important;
 }
 yt-live-chat-text-message-renderer,
 yt-live-chat-paid-message-renderer,
 yt-live-chat-membership-item-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   margin: 4px 8px !important;
   padding: 8px !important;
   transition:
@@ -1570,7 +1577,7 @@ yt-live-chat-text-message-renderer:hover {
 }
 #message-input.yt-live-chat-text-input-field-renderer {
   background: rgba(128, 128, 128, 0.1) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   padding: 5px 15px !important;
 }
 
@@ -1578,10 +1585,10 @@ yt-live-chat-text-message-renderer:hover {
 ytd-reel-video-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-base) !important;
   overflow: hidden !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 .overlay-dir.ytd-reel-video-renderer {
   background: linear-gradient(
@@ -1591,7 +1598,7 @@ ytd-reel-video-renderer {
   ) !important;
 }
 ytd-reel-player-overlay-renderer {
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 
 /* --- SHARE PANEL & MODALS --- */
@@ -1600,9 +1607,9 @@ ytd-add-to-playlist-renderer {
   background: var(--sf) !important;
   
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-hover) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 /* --- TOAST NOTIFICATIONS --- */
@@ -1610,9 +1617,9 @@ tp-yt-paper-toast {
   background: var(--sf) !important;
   
   
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
   box-shadow: var(--shadow-hover) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 /* ============================================================
@@ -1625,12 +1632,12 @@ tp-yt-paper-toast {
   background: var(--sf) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
   box-shadow:
     var(--shadow-hover),
     0 24px 64px rgba(0, 0, 0, 0.6) !important;
-  border-radius: 32px !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 
 /* EQ & Filter Header/Footer Bars */
@@ -1651,7 +1658,7 @@ tp-yt-paper-toast {
   background: var(--sf) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow:
     var(--shadow-hover),
     0 10px 40px rgba(0, 0, 0, 0.4) !important;
@@ -1661,8 +1668,8 @@ tp-yt-paper-toast {
 .ypp-adjust-card,
 .ypp-filter-card {
   background: rgba(128, 128, 128, 0.06) !important;
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1681,7 +1688,7 @@ tp-yt-paper-toast {
 .ypp-vcp-slider,
 .ypp-eq-vslider {
   background: rgba(128, 128, 128, 0.15) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 /* Preset Buttons */
@@ -1689,7 +1696,7 @@ tp-yt-paper-toast {
 .ypp-cinema-tab-btn,
 .ypp-vcp-compare-toggle {
   background: rgba(128, 128, 128, 0.05) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   
   transition:
     transform var(--bounce),
@@ -1706,8 +1713,8 @@ tp-yt-paper-toast {
 /* EQ Canvas (Visualizer) */
 .ypp-eq-canvas {
   background: rgba(128, 128, 128, 0.03) !important;
-  border: var(--sky-border) !important;
-  border-radius: 32px !important;
+  border: var(--nature-border) !important;
+  border-radius: 24px 4px 24px 4px !important;
 }
 
 /* ============================================================
@@ -1719,7 +1726,7 @@ tp-yt-paper-toast {
   background: var(--sf) !important;
   
   
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
   box-shadow: var(--shadow-base) !important;
 }
@@ -1735,7 +1742,7 @@ tp-yt-paper-toast {
 /* Playlist Video Cards */
 #ypp-pl-root .ypp-pl-card {
   background: rgba(128, 128, 128, 0.05) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1751,7 +1758,7 @@ tp-yt-paper-toast {
 /* 1-Column List View (Remove borders & backgrounds for cards) */
 #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
   background: transparent !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: none !important;
 }
 
@@ -1767,7 +1774,7 @@ tp-yt-paper-toast {
 #ypp-pl-root .ypp-pl-filter,
 #ypp-pl-root .ypp-pl-col-switcher {
   background: rgba(128, 128, 128, 0.08) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   
   transition:
     transform var(--bounce),
@@ -1784,13 +1791,13 @@ tp-yt-paper-toast {
 /* Duration Info Card */
 #ypp-pl-root .ypp-pl-duration-card {
   background: rgba(128, 128, 128, 0.05) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 #ypp-pl-root .ypp-pl-duration-grid {
   background: rgba(0, 0, 0, 0.3) !important;
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
 }
 
 
@@ -1800,9 +1807,9 @@ tp-yt-paper-toast {
 
 /* Video Cards Parity */
 ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
-  border: var(--sky-border) !important;
+  border: var(--nature-border) !important;
   background: var(--sf, rgba(0,0,0,0.1)) !important;
-  border-radius: 32px !important;
+  border-radius: 30px 4px 30px 4px !important;
   box-shadow: var(--shadow-base, 0 4px 15px rgba(0,0,0,0.2)) !important;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   position: relative;
@@ -1816,27 +1823,27 @@ ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:
 
 /* Titles and Text Colors */
 #video-title {
-  color: var(--sky-primary) !important;
+  color: var(--nature-primary) !important;
 }
 .ytd-channel-name, .ytd-video-meta-block {
-  color: var(--sky-secondary) !important;
+  color: #a3e635 !important;
 }
 
 /* Progress Bar */
 .ytp-play-progress {
-  background: var(--sky-primary) !important;
+  background: var(--nature-primary) !important;
 }
 .ytp-scrubber-button {
-  background: var(--sky-secondary) !important;
-  border: 2px solid var(--sky-primary) !important;
+  background: #a3e635 !important;
+  border: 2px solid var(--nature-primary) !important;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px !important; }
-::-webkit-scrollbar-track { background: var(--sky-bg) !important; border-radius: 32px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2) !important; border-radius: 30px 4px 30px 4px; }
 ::-webkit-scrollbar-thumb { 
-  background: var(--sky-primary) !important; 
-  border-radius: 32px !important; 
+  background: var(--nature-primary) !important; 
+  border-radius: 30px 4px 30px 4px !important; 
 }
 
 /* Corner Decoration */
@@ -1847,7 +1854,7 @@ ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-rendere
   right: -10px;
   width: 50px;
   height: 50px;
-  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(135%2C206%2C250%2C0.3)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M17.5%2019c2.485%200%204.5-2.015%204.5-4.5%200-2.316-1.745-4.218-4-4.472V10c0-3.314-2.686-6-6-6s-6%202.686-6%206v.028C3.745%2010.282%202%2012.184%202%2014.5%202%2016.985%204.015%2019%206.5%2019h11z%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(163%2C230%2C53%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%202C6.48%202%202%206.48%202%2012s4.48%2010%2010%2010%2010-4.48%2010-10S17.52%202%2012%202zm0%2018c-4.41%200-8-3.59-8-8s3.59-8%208-8%208%203.59%208%208-3.59%208-8%208zm-1-13h2v6h-2zm0%208h2v2h-2z%22%2F%3E%3C%2Fsvg%3E');
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.5;
@@ -1855,203 +1862,39 @@ ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-rendere
   transform: rotate(15deg);
 }
 
-/* ========================================= */
-/* DEEP SKY ADVANCED OVERHAUL */
-/* ========================================= */
-html, [dark] {
-  --sky-blur: 16px;
-  --sf: rgba(235, 248, 255, 0.55); /* ultra clear frost */
-  --shadow-base: 0 8px 32px rgba(135, 206, 250, 0.15);
-  --shadow-hover: 0 15px 40px rgba(0, 191, 255, 0.35);
-  --soar-anim: soar 3.5s ease-in-out infinite alternate;
-  --sky-primary: #87CEFA;
-  --sky-secondary: #00BFFF;
-  --sky-bg: #f0f8ff;
-  --sky-border: 1px solid rgba(255, 255, 255, 0.6);
-  --sky-border-hover: 1px solid rgba(0, 191, 255, 0.8);
-}
-
-html, [dark] body {
-  background-color: #f0f8ff !important;
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(135, 206, 250, 0.3), transparent 60%),
-    radial-gradient(circle at 90% 80%, rgba(0, 191, 255, 0.2), transparent 60%),
-    url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="cloud"><feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23cloud)" opacity="0.05"/></svg>') !important;
-  animation: drift 45s linear infinite !important;
-  background-attachment: fixed !important;
-  color: #1a365d !important;
-}
-
-@keyframes drift {
-  0% { background-position: 0px 0px, 0px 0px, 0px 0px; }
-  100% { background-position: 0px 0px, 0px 0px, 1000px 1000px; }
-}
-
-@keyframes soar {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-6px); }
-}
-
-/* Base structural overrides for glass */
-ytd-rich-grid-media, ytd-compact-video-renderer, ytd-video-renderer, ytd-playlist-video-renderer, ytd-grid-video-renderer {
-  background: var(--sf) !important;
-  backdrop-filter: blur(var(--sky-blur)) !important;
-  border: var(--sky-border) !important;
-  border-radius: 20px !important;
-  padding: 10px !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-}
-
-/* Hover effects */
-ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover, ytd-playlist-video-renderer:hover, ytd-grid-video-renderer:hover {
-  transform: translateY(-5px) scale(1.02) !important;
-  box-shadow: var(--shadow-hover) !important;
-  border: var(--sky-border-hover) !important;
-  animation: var(--soar-anim) !important;
-}
-
-/* Search bar styling */
-.ytSearchboxComponentInputBox {
-  border-radius: 30px !important;
-  background: rgba(255, 255, 255, 0.5) !important;
-  backdrop-filter: blur(16px) !important;
-  border: 2px solid rgba(135, 206, 250, 0.5) !important;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.05), 0 4px 15px rgba(135, 206, 250, 0.1) !important;
-  transition: all 0.3s ease !important;
-}
-
-.ytSearchboxComponentInputBox:focus-within {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border-color: rgba(0, 191, 255, 0.8) !important;
-  box-shadow: 0 0 25px rgba(135, 206, 250, 0.5), inset 0 2px 10px rgba(0,0,0,0.02) !important;
-}
-
-.ytSearchboxComponentSearchButton {
-  background: linear-gradient(135deg, rgba(135, 206, 250, 0.3), rgba(0, 191, 255, 0.3)) !important;
-  border-left: 1px solid rgba(135, 206, 250, 0.3) !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-}
-.ytSearchboxComponentSearchButton:hover {
-  background: linear-gradient(135deg, rgba(135, 206, 250, 0.6), rgba(0, 191, 255, 0.6)) !important;
-}
-
-/* Comments section */
-ytd-comment-thread-renderer {
-  background: rgba(255, 255, 255, 0.35) !important;
-  backdrop-filter: blur(12px) !important;
-  border-radius: 24px !important;
-  padding: 16px !important;
-  margin-bottom: 16px !important;
-  border: var(--sky-border) !important;
-  box-shadow: 0 4px 15px rgba(135, 206, 250, 0.15) !important;
-}
-
-#simplebox-placeholder {
-  background: rgba(255, 255, 255, 0.4) !important;
-  border-radius: 20px !important;
-  padding: 8px 16px !important;
-  border: var(--sky-border) !important;
-}
-
-/* Progress bar */
-.ytp-play-progress {
-  background: linear-gradient(90deg, #87CEFA, #00BFFF, #1E90FF) !important;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.7) !important;
-}
-
-.ytp-swatch-background-color {
-  background-color: #00BFFF !important;
-}
-
-/* Scrollbar overhaul */
-::-webkit-scrollbar {
-  width: 10px !important;
-}
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.2) !important;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(135, 206, 250, 0.6) !important;
-  border-radius: 10px !important;
-  border: 2px solid rgba(255, 255, 255, 0.3) !important;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 191, 255, 0.8) !important;
-}
-
-/* Shorts overlay */
-ytd-reel-video-renderer {
-  background: rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(25px) !important;
-  border-radius: 32px !important;
-  box-shadow: 0 15px 45px rgba(135, 206, 250, 0.2) !important;
-  border: var(--sky-border) !important;
-}
-
-/* Avatar styling */
-yt-img-shadow#avatar {
-  border: 2px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.3) !important;
-}
-
-/* Base text visibility improvement against blue backgrounds */
-yt-formatted-string, span, div, h1, h2, h3, h4, h5, h6 {
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5) !important;
-}
-
-
-/* =========================================
-   FORCE DARK TEXT ON LIGHT BLUE SKY THEME
-   ========================================= */
-
-/* Force dark text on ALL text-bearing elements when blue-sky theme is active */
-html[data-ypp-theme="blue-sky"] yt-formatted-string,
-html[data-ypp-theme="blue-sky"] span,
-html[data-ypp-theme="blue-sky"] a,
-html[data-ypp-theme="blue-sky"] h1,
-html[data-ypp-theme="blue-sky"] h2,
-html[data-ypp-theme="blue-sky"] h3,
-html[data-ypp-theme="blue-sky"] p,
-html[data-ypp-theme="blue-sky"] #video-title,
-html[data-ypp-theme="blue-sky"] .ytd-video-meta-block,
-html[data-ypp-theme="blue-sky"] #metadata-line span,
-html[data-ypp-theme="blue-sky"] yt-formatted-string.ytd-channel-name,
-html[data-ypp-theme="blue-sky"] #channel-name a,
-html[data-ypp-theme="blue-sky"] .ytd-channel-name,
-html[data-ypp-theme="blue-sky"] ytd-badge-supported-renderer span,
-html[data-ypp-theme="blue-sky"] #title-wrapper yt-formatted-string,
-html[data-ypp-theme="blue-sky"] .title-text,
-html[data-ypp-theme="blue-sky"] ytd-rich-grid-renderer #title,
-html[data-ypp-theme="blue-sky"] .shortsLockupViewModelHostThumbnailOverlayFooter,
-html[data-ypp-theme="blue-sky"] ytd-guide-entry-renderer yt-formatted-string {
-  color: #003366 !important;
-  text-shadow: none !important;
-}
-
-html[data-ypp-theme="blue-sky"] #video-title,
-html[data-ypp-theme="blue-sky"] ytd-video-renderer #video-title,
-html[data-ypp-theme="blue-sky"] ytd-rich-item-renderer #video-title {
-  color: #00264d !important;
-}
-
-html[data-ypp-theme="blue-sky"] #metadata-line span,
-html[data-ypp-theme="blue-sky"] .ytd-video-meta-block span,
-html[data-ypp-theme="blue-sky"] yt-formatted-string.ytd-channel-name {
-  color: #1a5276 !important;
-}
-
-/* Force light mode CSS variables */
-html[data-ypp-theme="blue-sky"] {
-  --yt-spec-text-primary: #003366 !important;
-  --yt-spec-text-secondary: #1a5276 !important;
-  --yt-spec-icon-active-other: #003366 !important;
-  --yt-spec-icon-inactive: #1a5276 !important;
-}
-
-/* Added for HeaderNav active state */
+/* Added for HeaderNav active state — nature green glow */
 .ypp-nav-btn.active {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-active) !important;
+  background: rgba(163, 230, 53, 0.22) !important;
+  box-shadow:
+    0 0 16px rgba(163, 230, 53, 0.5),
+    0 0 32px rgba(34, 197, 94, 0.25),
+    var(--shadow-active) !important;
+  border: 1px solid rgba(163, 230, 53, 0.5) !important;
+  color: #14532d !important;
+}
+
+/* ============================================================
+   TOPBAR BUTTONS — nature-specific green icons/text
+   ============================================================ */
+/* Voice search, notification bell, avatar — green tint on light bg */
+#voice-search-button.ytd-masthead yt-icon,
+ytd-topbar-menu-button-renderer.ytd-masthead yt-icon,
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon {
+  color: #166534 !important;
+  fill: #166534 !important;
+}
+/* Nav buttons label text */
+.ypp-nav-btn span,
+.ypp-nav-btn svg {
+  color: #14532d !important;
+  fill: #14532d !important;
+}
+/* Force YT spec text variables so YouTube renders topbar text in dark green */
+html[data-ypp-theme="nature"],
+html[data-ypp-theme="nature"] ytd-masthead {
+  --yt-spec-text-primary: #14532d !important;
+  --yt-spec-text-secondary: #166534 !important;
+  --yt-spec-icon-active-other: #14532d !important;
+  --yt-spec-icon-inactive: #15803d !important;
+  --yt-spec-call-to-action: #166534 !important;
 }

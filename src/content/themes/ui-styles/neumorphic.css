@@ -1,45 +1,32 @@
 /* Blur for video player Settings panel */
 .ytp-panel,
 .ytp-popup.ytp-settings-menu {
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
+  
+  
   background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
 }
 /* === Dark mode (YouTube sets [dark] on <html>) === */
 html, [dark] {
-  --blur: 10px;
-  --sf: #00000022;
-  --shadow-base:
-    0 8px 32px #00000040, 1px 1px 1px #ffffff20 inset,
-    -1px -1px 1px #ffffff10 inset;
-  --shadow-hover:
-    0 10px 36px #00000050, 1px 1px 0.5px #ffffff40 inset,
-    -1px -1px 0.5px #ffffff20 inset;
-  --shadow-active:
-    0 4px 24px #00000030, 2px 2px 1px #ffffff20 inset,
-    -2px -2px 1px #ffffff10 inset;
-  --bounce: 0.35s cubic-bezier(0.3, 2, 0.5, 1);
-  --bounce-alt: 0.75s cubic-bezier(0.2, 1.25, 0.2, 1);
+  --blur: 0px;
+  --sf: #292d32;
+  --shadow-out: 6px 6px 12px #1e2125, -6px -6px 12px #34393f;
+  --shadow-out-hover: 8px 8px 16px #1e2125, -8px -8px 16px #34393f;
+  --shadow-in: inset 5px 5px 10px #1e2125, inset -5px -5px 10px #34393f;
+  --bounce: 0.3s ease-in-out;
+  --bounce-alt: 0.4s ease-in-out;
 }
-html, [dark] body {
-  background-color: #202020 !important;
-}
+html, [dark] body { background-color: #292d32 !important; color: #e0e5ec !important; }
 /* === Light mode — use white-tinted glass, dark shadows === */
 html, [dark] {
-  --blur: 10px;
-  --sf: #ffffff55;
-  --shadow-base:
-    0 8px 32px #00000018, 1px 1px 1px #ffffff90 inset,
-    -1px -1px 1px #ffffff60 inset;
-  --shadow-hover:
-    0 10px 36px #00000025, 1px 1px 0.5px #ffffffa0 inset,
-    -1px -1px 0.5px #ffffff70 inset;
-  --shadow-active:
-    0 4px 24px #00000015, 2px 2px 1px #ffffff90 inset,
-    -2px -2px 1px #ffffff60 inset;
-  --bounce: 0.35s cubic-bezier(0.3, 2, 0.5, 1);
-  --bounce-alt: 0.75s cubic-bezier(0.2, 1.25, 0.2, 1);
+  --blur: 0px;
+  --sf: #e0e5ec;
+  --shadow-out: 8px 8px 16px rgba(163, 177, 198, 0.6), -8px -8px 16px rgba(255, 255, 255, 0.8);
+  --shadow-out-hover: 12px 12px 24px rgba(163, 177, 198, 0.7), -12px -12px 24px rgba(255, 255, 255, 0.9);
+  --shadow-in: inset 6px 6px 10px rgba(163, 177, 198, 0.6), inset -6px -6px 10px rgba(255, 255, 255, 0.8);
+  --bounce: 0.3s ease-in-out;
+  --bounce-alt: 0.4s ease-in-out;
 }
+html, [dark] body { background-color: #e0e5ec !important; color: #4a4a4a !important; }
 ytd-app,
 ytd-masthead,
 #page-manager.ytd-app,
@@ -48,7 +35,7 @@ ytd-masthead,
 }
 #frosted-glass.with-chipbar.ytd-app {
   background: none !important;
-  backdrop-filter: none !important;
+  
 }
 * {
   font-family:
@@ -65,10 +52,10 @@ ytd-masthead,
   background-color: transparent !important;
 }
 ytd-masthead #container {
-  border-radius: 3000px !important;
+  border-radius: 16px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   margin: 1px !important;
   box-shadow: var(--shadow-active) !important;
   border: none !important;
@@ -79,7 +66,7 @@ ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
   overflow: hidden !important;
   padding: 0 10px !important;
   margin: 16px 16px 0 0 !important;
-  border-radius: 34px !important;
+  border-radius: 16px !important;
   background: var(--sf) !important;
   border: none !important;
   box-shadow: var(--shadow-base) !important;
@@ -91,10 +78,10 @@ ytd-guide-renderer #sections {
 ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
 ytd-browse[page-subtype="home"] #chips {
   margin: 16px 0 0 0 !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-active) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   position: relative !important;
   overflow: hidden !important;
   padding: 0 10px !important;
@@ -114,10 +101,10 @@ ytd-browse[page-subtype="home"] #chips {
 }
 #guide-wrapper.ytd-app {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  
+  
   border-radius: calc(20px * 1.15) / 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border: none !important;
   box-shadow: var(--shadow-base) !important;
   transition:
     box-shadow var(--bounce),
@@ -125,9 +112,9 @@ ytd-browse[page-subtype="home"] #chips {
 }
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   background: transparent !important;
-  backdrop-filter: none !important;
+  
   box-shadow: none !important;
-  border-radius: 300px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -137,7 +124,7 @@ ytd-browse[page-subtype="home"] #chips {
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
   background: var(--sf) !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   padding: 0px !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05);
@@ -153,7 +140,7 @@ html, [dark],
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: none !important;
   border: none !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   overflow: hidden !important;
   transition:
     transform var(--bounce),
@@ -183,7 +170,7 @@ html, [dark],
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
 }
 .ytp-delhi-modern
   .ytp-chrome-controls
@@ -231,12 +218,12 @@ html, [dark],
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-base) !important;
 }
 .ytSearchboxComponentSearchButton {
   margin-left: 10px !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   border: none !important;
   background-color: transparent !important;
   transition:
@@ -263,7 +250,7 @@ ytd-comment-view-model[optimal-reading-width-comments]
 tp-yt-paper-menu-button.yt-dropdown-menu::not(
     #trigger.tp-yt-paper-menu-button
   ) {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -288,7 +275,7 @@ ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   background-color: transparent !important;
   transition:
     transform var(--bounce),
@@ -346,7 +333,7 @@ ytd-playlist-panel-video-renderer[selected][use-color-palette],
 ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(
     .dragging
   ) {
-  border-radius: 30px !important;
+  border-radius: 16px !important;
   padding: 10px !important;
   box-shadow: var(--shadow-active) !important;
   transition:
@@ -354,7 +341,7 @@ ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(
     box-shadow var(--bounce) !important;
 }
 ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
-  border-radius: 30px !important;
+  border-radius: 16px !important;
   padding: 10px !important;
   transition:
     transform var(--bounce),
@@ -378,7 +365,7 @@ ytd-multi-page-menu-renderer {
   top: 55px !important;
   border: none !important;
   box-shadow: var(--shadow-hover) !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -389,7 +376,7 @@ ytd-multi-page-menu-renderer {
   ):not(ytd-message-renderer) {
   margin: 10px;
   border: none !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -404,7 +391,7 @@ ytd-multi-page-menu-renderer {
 .ytSuggestionComponentRoundedSuggestion {
   margin: 5px 10px;
   border: none !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -421,24 +408,24 @@ ytd-simple-menu-header-renderer {
   border: none !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   padding: 0 5px !important;
 }
 .ytp-menuitem:not([aria-disabled="true"]) {
   margin-left: 100px !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
 }
 .ytp-menuitem:not([aria-disabled="true"]):hover {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-hover) !important;
   background-color: rgba(0, 0, 0, 0) !important;
 }
 .ytp-delhi-modern .ytp-popup {
   background: none !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
 }
 .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
   border: none !important;
@@ -448,9 +435,9 @@ ytd-simple-menu-header-renderer {
 .ytp-popup.ytp-delhi-modern-contextmenu {
   background: none !important;
   padding: 0 5px !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   box-shadow: none !important;
-  backdrop-filter: none !important;
+  
 }
 .ytp-delhi-modern .ytp-chapter-container {
   width: 100% !important;
@@ -467,7 +454,7 @@ tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   padding: 10px 3px !important;
 }
 ytd-guide-entry-renderer {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
 }
 .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
   margin-right: 10px;
@@ -483,7 +470,7 @@ ytd-guide-entry-renderer {
 }
 ytd-mini-guide-entry-renderer {
   margin-top: 10px !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -497,7 +484,7 @@ ytd-mini-guide-renderer.ytd-app {
   left: 10px !important;
 }
 .ytChipShapeChip {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -513,7 +500,7 @@ iron-selector.yt-chip-cloud-renderer {
   padding-left: 5px !important;
 }
 ytd-expandable-metadata-renderer:not([is-expanded]) {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -523,11 +510,11 @@ ytd-expandable-metadata-renderer:not([is-expanded]):hover {
 }
 ytd-expandable-metadata-renderer {
   padding: 5px !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
 }
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
   margin-right: 0 !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   z-index: 30000 !important;
   transition:
     transform var(--bounce),
@@ -540,7 +527,7 @@ ytd-expandable-metadata-renderer {
 ytd-macro-markers-list-item-renderer[modern][layout="MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL"]:not(
     [carousel-type="MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY"]
   ) {
-  border-radius: 10px !important;
+  border-radius: 16px !important;
   border: none !important;
   transition:
     transform var(--bounce),
@@ -557,7 +544,7 @@ ytd-expandable-metadata-renderer:not([is-expanded])
 }
 tp-yt-paper-dialog {
   background: var(--sf) !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   border: none !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
@@ -570,7 +557,7 @@ ytd-video-preview,
 #contentWrapper.tp-yt-iron-dropdown > *,
 tp-yt-paper-dialog {
   background: var(--sf) !important;
-  border-radius: 30px !important;
+  border-radius: 16px !important;
   border: none !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1)
@@ -587,7 +574,7 @@ tp-yt-paper-dialog {
 }
 video.video-stream.html5-main-video,
 .html5-video-player {
-  border-radius: 20px !important;
+  border-radius: 16px !important;
 }
 #player-container.ytd-video-preview {
   background: none !important;
@@ -603,7 +590,7 @@ video.video-stream.html5-main-video,
 .ytProgressBarLineProgressBarHovered,
 .ytProgressBarLineProgressBarPlayed,
 .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 20px !important;
+  border-radius: 16px !important;
 }
 .ytInlinePlayerControlsTopRightControlsCircleButton {
   background: var(--sf) !important;
@@ -620,7 +607,7 @@ video.video-stream.html5-main-video,
 }
 .yt-badge-shape--thumbnail-default {
   background: var(--sf) !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   border: none !important;
   box-shadow: var(--shadow-base) !important;
   transition:
@@ -631,7 +618,7 @@ video.video-stream.html5-main-video,
   background: var(--sf) !important;
   padding: 5px;
   border: none !important;
-  border-radius: 30px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-active) !important;
   margin-top: 15px !important;
 }
@@ -644,7 +631,7 @@ ytd-engagement-panel-section-list-renderer[match-content-theme]
   background: none !important;
 }
 ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   margin: 10px !important;
   border: none !important;
   box-shadow: var(--shadow-base) !important;
@@ -676,7 +663,7 @@ tp-yt-paper-listbox {
 ytd-menu-service-item-renderer,
 .yt-list-item-view-model__container--tappable,
 tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -714,7 +701,7 @@ ytd-playlist-video-renderer:not(.dragging) {
     transform var(--bounce),
     box-shadow var(--bounce) !important;
   margin: 5px;
-  border-radius: 15px !important;
+  border-radius: 16px !important;
 }
 ytd-playlist-video-renderer:not(.dragging):hover {
   box-shadow: var(--shadow-hover) !important;
@@ -724,7 +711,7 @@ ytd-thumbnail-overlay-toggle-button-renderer {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
 }
 ytd-thumbnail-overlay-toggle-button-renderer:hover {
   transform: scale(1.1) !important;
@@ -734,19 +721,19 @@ ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered]
   #label.ytd-thumbnail-overlay-toggle-button-renderer {
   background-color: black !important;
   margin-right: 10px;
-  border-radius: 10px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
   border: none !important;
 }
 #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: 200px !important;
+  border-radius: 16px !important;
   border: none !important;
   box-shadow: var(--shadow-hover) !important;
 }
 ytd-macro-markers-list-item-renderer {
-  border-radius: 10px !important;
+  border-radius: 16px !important;
   margin: 5px;
   transition:
     transform var(--bounce),
@@ -758,7 +745,7 @@ ytd-macro-markers-list-item-renderer:hover {
 }
 #trigger.tp-yt-paper-menu-button {
   padding: 10px !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -773,11 +760,11 @@ html
   body[rounded-container]
   tp-yt-paper-tooltip
   .tp-yt-paper-tooltip[style-target="tooltip"] {
-  border-radius: 20px !important;
+  border-radius: 16px !important;
   padding: 7px 10px;
 }
 ytd-topbar-logo-renderer {
-  border-radius: 200px !important;
+  border-radius: 16px !important;
   padding: 0px !important;
   max-height: 45px !important;
   transition:
@@ -826,14 +813,14 @@ tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
   box-shadow: var(--shadow-hover) !important;
 }
 a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
 }
 a.yt-simple-endpoint.yt-dropdown-menu:hover {
   transform: scale(1.05) !important;
-  backdrop-filter: brightness(100%) !important;
+  
   box-shadow: var(--shadow-hover) !important;
 }
 .yt-spec-touch-feedback-shape--thumbnail-size-large
@@ -843,7 +830,7 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
 .yt-spec-touch-feedback-shape--thumbnail-size-large
   .yt-spec-touch-feedback-shape__hover-effect {
   padding: 100px !important;
-  border-radius: 30px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 #contents.ytd-rich-grid-renderer {
@@ -861,14 +848,14 @@ ytd-rich-grid-slim-media:hover {
 ytd-rich-grid-slim-media #dismissible,
 ytd-reel-item-renderer #dismissible {
   transition: all var(--bounce) !important;
-  border-radius: 15px !important;
-  border: 2px solid transparent !important;
+  border-radius: 16px !important;
+  border: none !important;
 }
 ytd-rich-grid-slim-media:hover #dismissible,
 ytd-reel-item-renderer:hover #dismissible {
-  border-radius: 30px !important;
+  border-radius: 16px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(10px) !important;
+  
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05) !important;
   padding-bottom: 12px !important;
@@ -958,7 +945,7 @@ body.yt-pro-premium ytd-topbar-logo-renderer #country-code {
 
 /* --- HAMBURGER / GUIDE BUTTON --- */
 yt-icon-button#guide-button {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -966,8 +953,8 @@ yt-icon-button#guide-button {
 }
 yt-icon-button#guide-button:hover {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
@@ -978,10 +965,10 @@ yt-icon-button#guide-button:active {
 
 /* --- CREATE BUTTON (masthead) --- */
 #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -999,7 +986,7 @@ yt-icon-button#guide-button:active {
 
 /* --- NOTIFICATION BELL --- */
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   padding: 4px !important;
   transition:
     transform var(--bounce),
@@ -1008,8 +995,8 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
 }
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
@@ -1040,10 +1027,10 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
 button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
     .ytSpecButtonShapeNextSegmentedEnd
   ) {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -1067,8 +1054,8 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
   display: flex !important;
   gap: 6px !important;
   background: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  
+  
   box-shadow: none !important;
   overflow: visible !important;
 }
@@ -1076,10 +1063,10 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
   button.ytSpecButtonShapeNextSegmentedStart,
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper
   button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -1102,7 +1089,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
 
 /* --- TEXT / MONO BUTTONS (camelCase) --- */
 button.ytSpecButtonShapeNextText {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1110,8 +1097,8 @@ button.ytSpecButtonShapeNextText {
 }
 button.ytSpecButtonShapeNextText:hover {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  
+  
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05);
 }
@@ -1123,45 +1110,45 @@ button.ytSpecButtonShapeNextText:active {
 /* --- MIX PLAYLIST SIDEBAR — glass background, not black --- */
 ytd-playlist-panel-renderer {
   background: rgba(14, 14, 18, 0.55) !important;
-  backdrop-filter: blur(20px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  
+  
 }
 #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 20px !important;
+  border-radius: 16px !important;
 }
 
 /* --- NOTIFICATION PANEL / YOU+SUBSCRIPTIONS POPUP — glass --- */
 html, [dark] .ytSearchboxComponentSuggestionsContainer,
 html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(14, 14, 18, 0.6) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  
+  
+  border: none !important;
 }
 html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  
+  
+  border: none !important;
 }
 
 /* --- SEARCH SUGGESTIONS — frosted glass, mode-aware --- */
 /* Dark mode: deep dark glass */
 html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(10, 10, 14, 0.92) !important;
-  backdrop-filter: blur(32px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  
+  
+  border-radius: 16px !important;
+  border: none !important;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
 }
 /* Light mode: bright frosted glass so dark suggestion text stays readable */
 html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(255, 255, 255, 0.94) !important;
-  backdrop-filter: blur(32px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  
+  
+  border-radius: 16px !important;
+  border: none !important;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18) !important;
 }
 
@@ -1192,7 +1179,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 .ytLockupMetadataViewModelMenuButton button {
   opacity: 1 !important;
   visibility: visible !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     background var(--bounce),
     box-shadow var(--bounce) !important;
@@ -1203,7 +1190,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
     0 2px 12px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.12) !important;
   transform: none !important;
-  backdrop-filter: none !important;
+  
 }
 /* Suppress yt-interaction fill which causes flash */
 .ytLockupMetadataViewModelMenuButton yt-interaction .fill,
@@ -1215,13 +1202,13 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 /* --- COMMENT BUTTONS — no scale/backdrop (flash fix) --- */
 ytd-comment-view-model button,
 ytd-comment-renderer button {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     background 0.15s ease,
     box-shadow 0.15s ease !important;
   transform: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  
+  
 }
 ytd-comment-view-model button:hover,
 ytd-comment-renderer button:hover {
@@ -1245,8 +1232,8 @@ ytd-comment-renderer yt-interaction .fill {
 #ypp-global-player-bar,
 .ypp-global-bar {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  
+  
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: var(--shadow-base) !important;
 }
@@ -1254,7 +1241,7 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-gpb-btn,
 .ypp-action-btn,
 .ypp-icon-btn {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   background: transparent !important;
   transition:
     transform var(--bounce),
@@ -1281,11 +1268,11 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-video-controls,
 .ypp-shadow-panel {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  
+  border: none !important;
   box-shadow: var(--shadow-base) !important;
-  border-radius: 24px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -1301,25 +1288,25 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-gpb-vol-slider {
   accent-color: #ff4e45 !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
 }
 
 .ypp-badge,
 .ypp-value-display {
   background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  
+  border-radius: 16px !important;
+  border: none !important;
 }
 
 /* --- Subscriptions Sidebar / Modals --- */
 .ypp-organizer-modal,
 .ypp-modal-content {
   background: rgba(10, 10, 15, 0.65) !important;
-  backdrop-filter: blur(32px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 32px !important;
+  
+  
+  border: none !important;
+  border-radius: 16px !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
@@ -1334,7 +1321,7 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-btn-primary,
 .ypp-play-all-btn,
 .ypp-health-btn {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1359,17 +1346,17 @@ ytd-comment-renderer yt-interaction .fill {
 .ypp-account-menu,
 #ypp-top-bar {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  
+  border: none !important;
   box-shadow: var(--shadow-base) !important;
 }
 
 .ypp-pill-toggle {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  
+  border: none !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1384,9 +1371,9 @@ ytd-comment-renderer yt-interaction .fill {
 
 .ypp-filter-dropdown {
   background: rgba(255, 255, 255, 0.05) !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
+  border-radius: 16px !important;
+  border: none !important;
+  
   color: white !important;
   transition:
     transform var(--bounce),
@@ -1405,16 +1392,16 @@ ytd-comment-renderer yt-interaction .fill {
 /* --- CHANNEL PAGES --- */
 ytd-c4-tabbed-header-renderer {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border-radius: 0 0 34px 34px !important;
+  
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-base) !important;
   margin-bottom: 20px !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
   border-top: none !important;
 }
 #wrapper.ytd-channel-avatar-editor {
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 tp-yt-app-header {
@@ -1427,7 +1414,7 @@ tp-yt-app-header {
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
-  border-radius: 20px !important;
+  border-radius: 16px !important;
 }
 .tab-content.tp-yt-paper-tab:hover {
   background: rgba(128, 128, 128, 0.1) !important;
@@ -1438,13 +1425,13 @@ tp-yt-app-header {
 ytd-comment-thread-renderer,
 ytd-comment-view-model {
   background: rgba(128, 128, 128, 0.05) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border-radius: 24px !important;
+  
+  
+  border-radius: 16px !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
   box-shadow: var(--shadow-base) !important;
-  border: 1px solid rgba(128, 128, 128, 0.08) !important;
+  border: none !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1457,11 +1444,11 @@ ytd-comment-view-model:hover {
 }
 ytd-comment-simplebox-renderer {
   background: rgba(128, 128, 128, 0.08) !important;
-  backdrop-filter: blur(15px) !important;
-  border-radius: 24px !important;
+  
+  border-radius: 16px !important;
   padding: 15px !important;
   box-shadow: var(--shadow-active) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
 }
 #placeholder-area.ytd-comment-simplebox-renderer {
   border: none !important;
@@ -1470,8 +1457,8 @@ ytd-comment-simplebox-renderer {
 /* --- SEARCH RESULTS & FILTERS --- */
 ytd-search-filter-group-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  border-radius: 24px !important;
+  
+  border-radius: 16px !important;
   padding: 15px !important;
   box-shadow: var(--shadow-base) !important;
   margin-bottom: 10px !important;
@@ -1481,13 +1468,13 @@ ytd-channel-renderer,
 ytd-playlist-renderer,
 ytd-radio-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  border-radius: 24px !important;
+  
+  
+  border-radius: 16px !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
   box-shadow: var(--shadow-base) !important;
-  border: 1px solid rgba(128, 128, 128, 0.05) !important;
+  border: none !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -1504,38 +1491,38 @@ ytd-radio-renderer:hover {
 /* --- YOUTUBE SETTINGS PAGE --- */
 ytd-settings-sidebar-renderer {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border-radius: 24px !important;
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-base) !important;
   padding: 15px !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
 }
 ytd-settings-options-renderer,
 ytd-account-settings-renderer {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border-radius: 24px !important;
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-base) !important;
   padding: 25px !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
 }
 
 /* --- LIVE CHAT --- */
 yt-live-chat-app,
 yt-live-chat-renderer {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border-radius: 24px !important;
+  
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-base) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
   overflow: hidden !important;
 }
 yt-live-chat-text-message-renderer,
 yt-live-chat-paid-message-renderer,
 yt-live-chat-membership-item-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 12px !important;
+  border-radius: 16px !important;
   margin: 4px 8px !important;
   padding: 8px !important;
   transition:
@@ -1548,22 +1535,22 @@ yt-live-chat-text-message-renderer:hover {
 }
 #ticker.yt-live-chat-renderer {
   background: rgba(128, 128, 128, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
+  
 }
 #message-input.yt-live-chat-text-input-field-renderer {
   background: rgba(128, 128, 128, 0.1) !important;
-  border-radius: 2000px !important;
+  border-radius: 16px !important;
   padding: 5px 15px !important;
 }
 
 /* --- SHORTS PLAYER ENHANCEMENTS --- */
 ytd-reel-video-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  backdrop-filter: blur(15px) saturate(180%) !important;
-  border-radius: 34px !important;
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-base) !important;
   overflow: hidden !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
 }
 .overlay-dir.ytd-reel-video-renderer {
   background: linear-gradient(
@@ -1573,28 +1560,28 @@ ytd-reel-video-renderer {
   ) !important;
 }
 ytd-reel-player-overlay-renderer {
-  border-radius: 34px !important;
+  border-radius: 16px !important;
 }
 
 /* --- SHARE PANEL & MODALS --- */
 ytd-unified-share-panel-renderer,
 ytd-add-to-playlist-renderer {
   background: var(--sf) !important;
-  backdrop-filter: blur(30px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
-  border-radius: 34px !important;
+  
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-hover) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
 }
 
 /* --- TOAST NOTIFICATIONS --- */
 tp-yt-paper-toast {
   background: var(--sf) !important;
-  backdrop-filter: blur(25px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-  border-radius: 2000px !important;
+  
+  
+  border-radius: 16px !important;
   box-shadow: var(--shadow-hover) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
 }
 
 /* ============================================================
@@ -1605,14 +1592,14 @@ tp-yt-paper-toast {
 #ypp-eq-panel,
 #ypp-cinema-panel {
   background: var(--sf) !important;
-  backdrop-filter: blur(45px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(45px) saturate(200%) !important;
-  border: 1px solid rgba(128, 128, 128, 0.15) !important;
+  
+  
+  border: none !important;
   border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
   box-shadow:
     var(--shadow-hover),
     0 24px 64px rgba(0, 0, 0, 0.6) !important;
-  border-radius: 24px !important;
+  border-radius: 16px !important;
 }
 
 /* EQ & Filter Header/Footer Bars */
@@ -1631,9 +1618,9 @@ tp-yt-paper-toast {
 .ypp-global-player-bar,
 #ypp-global-player-bar {
   background: var(--sf) !important;
-  backdrop-filter: blur(35px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  
+  
+  border: none !important;
   box-shadow:
     var(--shadow-hover),
     0 10px 40px rgba(0, 0, 0, 0.4) !important;
@@ -1643,8 +1630,8 @@ tp-yt-paper-toast {
 .ypp-adjust-card,
 .ypp-filter-card {
   background: rgba(128, 128, 128, 0.06) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
-  border-radius: 12px !important;
+  border: none !important;
+  border-radius: 16px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1663,7 +1650,7 @@ tp-yt-paper-toast {
 .ypp-vcp-slider,
 .ypp-eq-vslider {
   background: rgba(128, 128, 128, 0.15) !important;
-  border: 1px solid rgba(128, 128, 128, 0.05) !important;
+  border: none !important;
 }
 
 /* Preset Buttons */
@@ -1671,8 +1658,8 @@ tp-yt-paper-toast {
 .ypp-cinema-tab-btn,
 .ypp-vcp-compare-toggle {
   background: rgba(128, 128, 128, 0.05) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
+  border: none !important;
+  
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
@@ -1688,8 +1675,8 @@ tp-yt-paper-toast {
 /* EQ Canvas (Visualizer) */
 .ypp-eq-canvas {
   background: rgba(128, 128, 128, 0.03) !important;
-  border: 1px solid rgba(128, 128, 128, 0.08) !important;
-  border-radius: 12px !important;
+  border: none !important;
+  border-radius: 16px !important;
 }
 
 /* ============================================================
@@ -1699,9 +1686,9 @@ tp-yt-paper-toast {
 /* Playlist Sidebar / Ambient Container */
 #ypp-pl-root .ypp-pl-sidebar {
   background: var(--sf) !important;
-  backdrop-filter: blur(35px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  
+  
+  border: none !important;
   border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
   box-shadow: var(--shadow-base) !important;
 }
@@ -1709,15 +1696,15 @@ tp-yt-paper-toast {
 /* Playlist Toolbar (Filter, Columns) */
 #ypp-pl-root .ypp-pl-toolbar {
   background: var(--sf) !important;
-  backdrop-filter: blur(25px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+  
+  
   border-bottom: 1px solid rgba(128, 128, 128, 0.1) !important;
 }
 
 /* Playlist Video Cards */
 #ypp-pl-root .ypp-pl-card {
   background: rgba(128, 128, 128, 0.05) !important;
-  border: 1px solid rgba(128, 128, 128, 0.08) !important;
+  border: none !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1749,8 +1736,8 @@ tp-yt-paper-toast {
 #ypp-pl-root .ypp-pl-filter,
 #ypp-pl-root .ypp-pl-col-switcher {
   background: rgba(128, 128, 128, 0.08) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
+  border: none !important;
+  
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
@@ -1766,13 +1753,107 @@ tp-yt-paper-toast {
 /* Duration Info Card */
 #ypp-pl-root .ypp-pl-duration-card {
   background: rgba(128, 128, 128, 0.05) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border: none !important;
   box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 #ypp-pl-root .ypp-pl-duration-grid {
   background: rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid rgba(128, 128, 128, 0.05) !important;
+  border: none !important;
+}
+
+/* ========================================= */
+/* ADVANCED NEUMORPHIC OVERRIDES */
+/* ========================================= */
+* {
+  border: none !important;
+}
+
+/* Base Cards and Videos */
+ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer {
+  border-radius: 20px !important;
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-out) !important;
+  padding: 12px !important;
+  margin-bottom: 24px !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
+  box-shadow: var(--shadow-out-hover) !important;
+  transform: translateY(-2px);
+}
+ytd-rich-grid-media:active, ytd-compact-video-renderer:active {
+  box-shadow: var(--shadow-in) !important;
+  transform: translateY(1px);
+}
+
+/* Thumbnails */
+.ytd-thumbnail {
+  border-radius: 14px !important;
+  box-shadow: var(--shadow-in) !important;
+  padding: 4px;
+}
+
+/* Buttons and Chips */
+.yt-chip-shape, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--tonal, ytd-button-renderer {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-out) !important;
+  border-radius: 30px !important;
+  transition: all 0.2s ease;
+  color: inherit;
+}
+.yt-chip-shape:hover, .yt-spec-button-shape-next--filled:hover, .yt-spec-button-shape-next--tonal:hover, ytd-button-renderer:hover {
+  box-shadow: var(--shadow-out-hover) !important;
+}
+.yt-chip-shape[selected], .yt-chip-shape:active, .yt-spec-button-shape-next--filled:active {
+  box-shadow: var(--shadow-in) !important;
+  background: var(--sf) !important;
+}
+
+/* Inputs and Search */
+input, textarea, [contenteditable], ytd-searchbox #container {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-in) !important;
+  border-radius: 20px !important;
+  padding-left: 15px;
+}
+ytd-searchbox #search-icon-legacy {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-out) !important;
+  border-radius: 0 20px 20px 0 !important;
+}
+ytd-searchbox #search-icon-legacy:active {
+  box-shadow: var(--shadow-in) !important;
+}
+
+/* Popups and Menus */
+tp-yt-paper-dialog, ytd-menu-popup-renderer, tp-yt-iron-dropdown, .ytp-popup.ytp-settings-menu {
+  background: var(--sf) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--shadow-out-hover) !important;
+  padding: 10px;
+}
+
+/* Topbar and Guide */
+ytd-masthead {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-out) !important;
+}
+#guide-wrapper {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-out) !important;
+  margin-top: 10px;
+  border-radius: 0 20px 20px 0 !important;
+}
+ytd-guide-entry-renderer {
+  border-radius: 12px !important;
+  margin: 4px 10px;
+}
+ytd-guide-entry-renderer:hover {
+  box-shadow: var(--shadow-out) !important;
+}
+ytd-guide-entry-renderer[active] {
+  box-shadow: var(--shadow-in) !important;
 }
 
 
@@ -1782,43 +1863,43 @@ tp-yt-paper-toast {
 
 /* Video Cards Parity */
 ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
-  border: 1px solid rgba(255,255,255,0.2) !important;
+  border: none !important;
   background: var(--sf, rgba(0,0,0,0.1)) !important;
-  border-radius: 3000px !important;
-  box-shadow: var(--shadow-base, 0 4px 15px rgba(0,0,0,0.2)) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--neu-shadow-out) !important;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   position: relative;
   overflow: hidden;
 }
 
 ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
-  box-shadow: var(--shadow-hover, 0 8px 25px rgba(0,0,0,0.3)) !important;
+  box-shadow: var(--neu-shadow-in) !important;
   transform: translateY(-2px) scale(1.01) !important;
 }
 
 /* Titles and Text Colors */
 #video-title {
-  color: #a8c7fa !important;
+  color: var(--neu-primary) !important;
 }
 .ytd-channel-name, .ytd-video-meta-block {
-  color: #e3e3e3 !important;
+  color: #888888 !important;
 }
 
 /* Progress Bar */
 .ytp-play-progress {
-  background: #a8c7fa !important;
+  background: var(--neu-primary) !important;
 }
 .ytp-scrubber-button {
-  background: #e3e3e3 !important;
-  border: 2px solid #a8c7fa !important;
+  background: #888888 !important;
+  border: 2px solid var(--neu-primary) !important;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px !important; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.1) !important; border-radius: 3000px; }
+::-webkit-scrollbar-track { background: var(--neu-bg) !important; border-radius: 20px; }
 ::-webkit-scrollbar-thumb { 
-  background: #a8c7fa !important; 
-  border-radius: 3000px !important; 
+  background: var(--neu-primary) !important; 
+  border-radius: 20px !important; 
 }
 
 /* Corner Decoration */
@@ -1829,7 +1910,7 @@ ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-rendere
   right: -10px;
   width: 50px;
   height: 50px;
-  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22M12%208v8M8%2012h8%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(0%2C0%2C0%2C0.05)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2218%22%20height%3D%2218%22%20rx%3D%222%22%20ry%3D%222%22%2F%3E%3C%2Fsvg%3E');
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.5;

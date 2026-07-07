@@ -89,8 +89,11 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
         this._isActive = true;
 
         try {
-            // Apply theme
+            // Apply colour theme (e.g. forest.css, midnight.css)
             this._toggleTheme(this._settings.premiumTheme);
+
+            // Apply UI style overlay (e.g. nature.css, ocean.css from ui-styles/)
+            this._applyUiStyle(this._settings.youtubePageTheme);
 
             // Apply global customizations (Typography, density, accent color, etc)
             this._applyCustomizationSettings();
@@ -193,6 +196,43 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             this._systemMediaQuery = null;
             this._systemListener = null;
         }
+    }
+
+    /**
+     * Apply the YouTube UI style overlay from ui-styles/ directory
+     * @private
+     * @param {string} uiStyleKey  e.g. 'nature', 'liquid-glass', 'ocean'
+     */
+    _applyUiStyle(uiStyleKey) {
+        const id = 'ypp-ui-style-css';
+        let link = document.getElementById(id);
+
+        // If no UI style or 'default', remove any previously injected style
+        if (!uiStyleKey || uiStyleKey === 'default') {
+            if (link) link.remove();
+            document.documentElement.removeAttribute('data-ypp-ui-style');
+            return;
+        }
+
+        // Skip if the same UI style is already injected
+        if (link && link.getAttribute('data-ui-style') === uiStyleKey) {
+            return;
+        }
+
+        const cssUrl = chrome.runtime.getURL(`src/content/themes/ui-styles/${uiStyleKey}.css`);
+
+        if (!link) {
+            link = document.createElement('link');
+            link.id = id;
+            link.rel = 'stylesheet';
+            link.className = 'ypp-ui-style-link';
+            document.head.appendChild(link);
+        }
+
+        link.setAttribute('data-ui-style', uiStyleKey);
+        link.href = cssUrl;
+        document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
+        this._Utils.log(`Injecting UI Style: ${uiStyleKey}`, 'THEME');
     }
 
     /**
