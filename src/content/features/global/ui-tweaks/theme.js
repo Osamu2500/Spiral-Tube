@@ -401,6 +401,7 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
              else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
              else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
              else if (ytTheme === 'retro') finalCardStyle = 'retro';
+             else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
         }
 
         root.setAttribute('data-ypp-card-style', finalCardStyle);

@@ -1,0 +1,1974 @@
+/* ============================================================
+   TECHNOZEN UI THEME — Japanese Eco-Tech / Frutiger Aero Aesthetic
+   Inspired by: Nintendo Wii, Sony VAIO, Windows Vista, Sharp Aquos
+   Era: 2005–2010 Japanese Consumer Electronics
+   Mood: Optimistic · Fresh · Glossy · Organic · Bright · Nature-meets-Tech
+   ============================================================ */
+
+/* ============================================================
+   GLOBAL ANIMATIONS
+   ============================================================ */
+
+@keyframes technozenGreenPulse {
+  0%   { box-shadow: 0 0 12px rgba(90, 191, 71, 0.4), 0 0 28px rgba(90, 191, 71, 0.2), inset 0 0 20px rgba(90, 191, 71, 0.1); }
+  50%  { box-shadow: 0 0 20px rgba(48, 184, 200, 0.5), 0 0 44px rgba(48, 184, 200, 0.25), inset 0 0 28px rgba(48, 184, 200, 0.15); }
+  100% { box-shadow: 0 0 12px rgba(90, 191, 71, 0.4), 0 0 28px rgba(90, 191, 71, 0.2), inset 0 0 20px rgba(90, 191, 71, 0.1); }
+}
+
+@keyframes technozenFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-3px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes technozenGlossShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes technozenBubbleRise {
+  0%   { opacity: 0; transform: translateY(0) scale(1); }
+  50%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-60px) scale(1.4); }
+}
+
+/* ============================================================
+   DESIGN TOKENS — Technozen Color System
+   ============================================================ */
+html, [dark],
+html:not([dark]) {
+  /* Core surface — translucent lime-white glossy acrylic */
+  --sf: rgba(228, 248, 218, 0.92);
+
+  /* Shadow system — soft, diffuse, bright, nature-tinted */
+  --shadow-base:  0px 4px 20px rgba(90, 191, 71, 0.12), 0px 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0px 8px 32px rgba(90, 191, 71, 0.22), 0px 2px 8px rgba(48, 184, 200, 0.12);
+  --shadow-active: 0px 2px 8px rgba(90, 191, 71, 0.18), inset 0 1px 3px rgba(255, 255, 255, 0.6);
+
+  /* Animations */
+  --bounce: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --bounce-alt: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+  /* Technozen palette */
+  --tz-lime:     #5abf47;  /* Apple Green / Nintendo Wii green */
+  --tz-aqua:     #30b8c8;  /* Sharp Aquos / Sony Ericsson cyan */
+  --tz-mint:     #a8dba4;  /* Soft mint green */
+  --tz-sky:      #b8e4f0;  /* Ice sky blue */
+  --tz-white:    #f0faf8;  /* Ice white */
+  --tz-silver:   #d8e8e4;  /* Soft silver */
+  --tz-glass:    rgba(255, 255, 255, 0.62);  /* Transparent white */
+  --tz-glass-border: rgba(255, 255, 255, 0.75);
+  /* Structure */
+  --tz-radius-sm: 8px;
+  --tz-radius-md: 12px;
+  --tz-radius-lg: 16px;
+  --tz-radius-xl: 24px;
+  --tz-radius-pill: 500px;
+  --tz-spacing-md: 16px;  /* Glassy white border */
+  --tz-green-border: rgba(90, 191, 71, 0.25);    /* Subtle green border */
+
+  /* Glossy highlight gradient (top specular reflection) */
+  --tz-gloss: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.60) 0%,
+    rgba(255, 255, 255, 0.20) 45%,
+    transparent 50%
+  );
+}
+
+/* ============================================================
+   BODY & BACKGROUND — Bright soft nature gradient
+   ============================================================ */
+html, [dark] body,
+html:not([dark]) body {
+  background-color: #dff4e8 !important;
+  background-image:
+    /* Main ambient gradient — lime-to-sky diagonal */
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(180, 235, 160, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 90%, rgba(144, 218, 230, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 60% 30%, rgba(200, 245, 195, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(160, 225, 240, 0.3) 0%, transparent 55%),
+    /* Soft white bloom center */
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 60%),
+    /* Base gradient */
+    linear-gradient(145deg, #e2f8e0 0%, #d4f0f7 50%, #e8f9df 100%) !important;
+}
+
+/* Decorative: ultra-subtle leaf/bubble organic texture via body::before */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle 3px at 15% 25%, rgba(90, 191, 71, 0.12) 0%, transparent 100%),
+    radial-gradient(circle 5px at 75% 15%, rgba(48, 184, 200, 0.10) 0%, transparent 100%),
+    radial-gradient(circle 2px at 40% 70%, rgba(90, 191, 71, 0.08) 0%, transparent 100%),
+    radial-gradient(circle 4px at 85% 60%, rgba(48, 184, 200, 0.09) 0%, transparent 100%),
+    radial-gradient(circle 6px at 25% 85%, rgba(168, 219, 164, 0.12) 0%, transparent 100%),
+    radial-gradient(circle 3px at 65% 45%, rgba(184, 228, 240, 0.10) 0%, transparent 100%),
+    radial-gradient(circle 4px at 90% 35%, rgba(90, 191, 71, 0.08) 0%, transparent 100%),
+    radial-gradient(circle 2px at 5% 55%, rgba(48, 184, 200, 0.12) 0%, transparent 100%);
+}
+
+/* ============================================================
+   FONT SYSTEM — Windows Vista / Wii UI era
+   ============================================================ */
+* {
+  font-family: "Segoe UI", "Tahoma", "Trebuchet MS", "Verdana", "Lucida Grande", sans-serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Remove YouTube's touch feedback shapes (we roll our own) */
+.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+
+/* ============================================================
+   YOUTUBE CSS VARIABLE OVERRIDES
+   ============================================================ */
+html, [dark],
+html:not([dark]) {
+  --yt-spec-base-background: none !important;
+  --yt-spec-brand-background-primary: rgba(228, 248, 218, 0.95) !important;
+  --yt-spec-brand-background-secondary: rgba(210, 244, 200, 0.90) !important;
+  --yt-spec-general-background-a: rgba(240, 252, 234, 0.88) !important;
+  --yt-spec-general-background-b: rgba(220, 248, 212, 0.85) !important;
+  
+  /* Force light mode text */
+  --yt-spec-call-to-action: #5abf47 !important;
+  --yt-spec-call-to-action-inverse: #2a4a2a !important;
+
+  --yt-spec-badge-chip-background: rgba(210, 244, 200, 0.80) !important;
+  --yt-spec-outline: rgba(90, 191, 71, 0.20) !important;
+  --yt-spec-filled-button-text: #ffffff !important;
+  --yt-spec-mono-tonal-button-bg: rgba(200, 240, 195, 0.85) !important;
+  
+  /* Ensure links are readable */
+  --yt-spec-call-to-action-overlay: rgba(21, 36, 24, 0.1) !important;
+  --yt-spec-brand-link-text: #1b6332 !important;
+}
+
+/* Force specific elements to use dark text if they ignore variables */
+html[data-ypp-theme="technozen"] body, 
+html[data-ypp-theme="technozen"] #content-text,
+html[data-ypp-theme="technozen"] yt-formatted-string {
+  color: var(--yt-spec-text-primary) !important;
+}
+
+/* ============================================================
+   PAGE SKELETON — Transparent containers
+   ============================================================ */
+ytd-app,
+ytd-masthead,
+#page-manager.ytd-app,
+#content.ytd-app {
+  background: transparent !important;
+}
+
+#frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+}
+
+/* ============================================================
+   NAVBAR / MASTHEAD — Wii-style glossy pill bar
+   ============================================================ */
+#masthead-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+ytd-masthead #container {
+  /* Giant pill — like the Wii System Menu bar */
+  border-radius: 3000px !important;
+
+  /* Glossy acrylic surface */
+  background:
+    var(--tz-gloss),
+    linear-gradient(to bottom, rgba(215, 248, 205, 0.96) 0%, rgba(200, 240, 210, 0.92) 100%) !important;
+
+  /* Thin white glassy border */
+  border: 1px solid var(--tz-glass-border) !important;
+  border-bottom-color: rgba(90, 191, 71, 0.18) !important;
+
+  /* Soft nature shadow */
+  box-shadow: var(--shadow-base) !important;
+
+  margin: 6px 8px 4px !important;
+
+  /* Subtle inner highlight */
+  outline: 1px solid rgba(255, 255, 255, 0.5) !important;
+  outline-offset: -2px !important;
+
+  transition:
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+/* ============================================================
+   SEARCH BAR — Acrylic tube with soft reflection (VAIO / Wii)
+   ============================================================ */
+.ytSearchboxComponentInputBoxDark,
+.ytSearchboxComponentInputBox {
+  background:
+    var(--tz-gloss),
+    rgba(240, 252, 236, 0.95) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-bottom-color: rgba(90, 191, 71, 0.22) !important;
+  border-right-color: rgba(90, 191, 71, 0.15) !important;
+  border-radius: var(--tz-radius-pill) !important;
+  box-shadow: var(--shadow-base), inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+  transition:
+    box-shadow var(--bounce),
+    border-color var(--bounce) !important;
+}
+
+.ytSearchboxComponentInputBoxDark:focus-within,
+.ytSearchboxComponentInputBox:focus-within {
+  border-color: rgba(90, 191, 71, 0.5) !important;
+  box-shadow: var(--shadow-hover), 0 0 0 3px rgba(90, 191, 71, 0.12), inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+}
+
+.ytSearchboxComponentInput {
+  color: #2a4a2a !important;
+}
+
+.ytSearchboxComponentSearchButton {
+  margin-left: 8px !important;
+  border-radius: var(--tz-radius-pill) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(to bottom, rgba(210, 245, 200, 0.95) 0%, rgba(180, 230, 175, 0.90) 100%) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytSearchboxComponentSearchButton:hover {
+  background:
+    var(--tz-gloss),
+    linear-gradient(to bottom, rgba(195, 245, 182, 0.98) 0%, rgba(160, 225, 155, 0.95) 100%) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.04);
+}
+
+.ytSearchboxComponentSearchButton:active {
+  transform: translateY(0px) scale(0.97);
+  box-shadow: var(--shadow-active) !important;
+}
+
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  margin-right: 10px;
+  width: 30px !important;
+  height: 30px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* Search suggestions dropdown */
+.ytSearchboxComponentSuggestionsContainer,
+ytd-multi-page-menu-renderer {
+  top: 55px !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  background:
+    var(--tz-gloss),
+    rgba(238, 252, 232, 0.97) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: 24px !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+.ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 1px solid rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--tz-radius-sm) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytSuggestionComponentRoundedSuggestion:hover {
+  transform: translateY(-1px) scale(1.01) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* ============================================================
+   SIDEBAR / GUIDE — Floating translucent glass panel
+   ============================================================ */
+#guide-content.ytd-app {
+  background: transparent;
+}
+
+#guide-wrapper.ytd-app {
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.90) !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-bottom-color: rgba(90, 191, 71, 0.18) !important;
+  box-shadow: var(--shadow-base) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  transition:
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+  top: 75px !important;
+  left: 8px !important;
+}
+
+tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+  background: transparent !important;
+}
+
+#sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
+  padding: 10px 3px !important;
+}
+
+ytd-guide-entry-renderer {
+  border-radius: var(--tz-radius-md) !important;
+}
+
+/* Guide entries — gel pill buttons */
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce),
+    border-radius var(--bounce) !important;
+}
+
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+  background:
+    var(--tz-gloss),
+    rgba(200, 245, 188, 0.75) !important;
+  border-radius: var(--tz-radius-md) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border: 1px solid rgba(90, 191, 71, 0.22) !important;
+  transform: translateX(2px) !important;
+}
+
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+/* Mini guide */
+ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+
+ytd-mini-guide-entry-renderer {
+  margin-top: 10px !important;
+  border-radius: 20px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+ytd-mini-guide-entry-renderer:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.75) !important;
+}
+
+/* ============================================================
+   BUTTONS — Gel appearance, specular highlights (Sony / Wii / Apple Aqua)
+   ============================================================ */
+
+/* --- Icon buttons in masthead --- */
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+ytd-notification-topbar-button-renderer.ytd-masthead,
+yt-icon-button.ytd-masthead,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
+  border-radius: var(--tz-radius-pill) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal:hover,
+ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+yt-icon-button.ytd-masthead:hover,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover {
+  background: rgba(200, 245, 188, 0.65) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.06);
+}
+
+/* --- Voice search, notification, topbar buttons --- */
+#voice-search-button.ytd-masthead,
+.ypp-nav-btn,
+ytd-topbar-menu-button-renderer.ytd-masthead,
+#trailing-button.ytd-playlist-panel-renderer,
+ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+  border-radius: var(--tz-radius-pill) !important;
+  background-color: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#voice-search-button.ytd-masthead:hover,
+.ypp-nav-btn:hover,
+ytd-topbar-menu-button-renderer.ytd-masthead:hover,
+#trailing-button.ytd-playlist-panel-renderer:hover,
+ytd-menu-renderer .ytd-menu-renderer[style-target="button"]:hover,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+  background:
+    var(--tz-gloss),
+    rgba(200, 245, 188, 0.70) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.06);
+}
+
+/* --- Tonal buttons: Share / Ask / Save / Download --- */
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+  border-radius: var(--tz-radius-pill) !important;
+  background:
+    var(--tz-gloss),
+    rgba(215, 248, 205, 0.90) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+  background:
+    var(--tz-gloss),
+    rgba(195, 245, 182, 0.98) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+  transform: translateY(0px) scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+/* --- Filled CTA buttons (Subscribe when not subscribed) --- */
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  border-radius: var(--tz-radius-pill) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(to bottom, #6dd15a, #4aab38) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+}
+
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(to bottom, #7de168, #5ac045) !important;
+  animation: technozenGreenPulse 4s ease-in-out infinite !important;
+  color: white !important;
+}
+
+/* --- Subscribe button --- */
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+  background:
+    var(--tz-gloss),
+    linear-gradient(to bottom, rgba(215, 248, 205, 0.95) 0%, rgba(195, 238, 185, 0.90) 100%) !important;
+  border: 1px solid rgba(90, 191, 71, 0.30) !important;
+  border-radius: var(--tz-radius-pill) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+}
+
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+  color: #2a4a2a !important;
+  animation: technozenGreenPulse 4s ease-in-out infinite !important;
+}
+
+/* --- Segmented buttons (Like/Dislike pair) --- */
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
+  border: none;
+  border-radius: var(--tz-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover {
+  transform: translateY(-1px) scale(1.06) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
+  border: none !important;
+  box-shadow: var(--shadow-base) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+  border-radius: var(--tz-radius-pill) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+/* --- Mono text buttons --- */
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+  margin-right: 0 !important;
+  border-radius: var(--tz-radius-pill) !important;
+  z-index: 30000 !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+
+/* --- Overlay text/tonal buttons --- */
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+
+/* --- New camelCase class names (YouTube 2025+) --- */
+
+/* Guide button */
+yt-icon-button#guide-button {
+  border-radius: var(--tz-radius-pill) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+yt-icon-button#guide-button:hover {
+  background:
+    var(--tz-gloss),
+    rgba(200, 245, 188, 0.70) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.06);
+}
+
+yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+/* Create / Upload button in masthead */
+#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
+  border-radius: var(--tz-radius-pill) !important;
+  background:
+    var(--tz-gloss),
+    rgba(215, 248, 205, 0.92) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-2px) scale(1.06);
+  background:
+    var(--tz-gloss),
+    rgba(195, 245, 182, 0.98) !important;
+}
+
+#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+/* Notification bell */
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+  border-radius: var(--tz-radius-pill) !important;
+  padding: 4px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+  background:
+    var(--tz-gloss),
+    rgba(200, 245, 188, 0.70) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.1);
+}
+
+/* ============================================================
+   FILTER CHIPS — Glossy pill chips (Wii cursor bar style)
+   ============================================================ */
+#description.ytd-watch-metadata,
+ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 0 10px !important;
+  margin: 16px 16px 0 0 !important;
+  border-radius: 3000px !important;
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.90) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+
+ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
+ytd-browse[page-subtype="home"] #chips {
+  margin: 16px 0 0 0 !important;
+  border-radius: 3000px !important;
+  box-shadow: var(--shadow-active) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 0 10px !important;
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.90) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+.yt-chip-shape {
+  background-color: transparent !important;
+}
+
+.ytChipShapeChip {
+  border-radius: var(--tz-radius-pill) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytChipShapeChip:hover {
+  transform: translateY(-1px) scale(1.06) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background:
+    var(--tz-gloss),
+    rgba(200, 245, 188, 0.80) !important;
+}
+
+iron-selector.yt-chip-cloud-renderer {
+  padding-left: 5px !important;
+}
+
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+
+/* ============================================================
+   VIDEO CARDS — Small glossy acrylic devices (Vista-era widgets)
+   ============================================================ */
+#contents.ytd-page-manager {
+  margin-top: 0;
+  margin-left: 16px;
+}
+
+#contents.ytd-rich-grid-renderer {
+  margin-left: 30px !important;
+  margin-right: 20px !important;
+}
+
+/* Shorts capsule hover */
+ytd-rich-grid-slim-media {
+  z-index: 1 !important;
+}
+
+ytd-rich-grid-slim-media:hover {
+  z-index: 2000 !important;
+}
+
+ytd-rich-grid-slim-media #dismissible,
+ytd-reel-item-renderer #dismissible {
+  transition: all var(--bounce) !important;
+  border-radius: 24px !important;
+  border: 1px solid transparent !important;
+}
+
+ytd-rich-grid-slim-media:hover #dismissible,
+ytd-reel-item-renderer:hover #dismissible {
+  border-radius: 24px !important;
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.92) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  padding-bottom: 12px !important;
+  margin-bottom: -12px !important;
+}
+
+/* ============================================================
+   VIDEO PLAYER — Rounded glossy player
+   ============================================================ */
+video.video-stream.html5-main-video,
+.html5-video-player {
+  border-radius: 18px !important;
+}
+
+#player-container.ytd-video-preview {
+  background: none !important;
+}
+
+/* Progress bar — soft rounded green */
+.ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+
+.ytProgressBarLineProgressBarLine,
+.ytProgressBarLineProgressBarBackground,
+.ytProgressBarLineProgressBarLoaded,
+.ytProgressBarLineProgressBarHovered,
+.ytProgressBarLineProgressBarPlayed,
+.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: 20px !important;
+}
+
+/* ============================================================
+   PLAYER CONTROLS — Rounded gel buttons
+   ============================================================ */
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important;
+  border: none !important;
+  border-radius: var(--tz-radius-lg) !important;
+  overflow: hidden !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background:
+    var(--tz-gloss),
+    rgba(210, 248, 200, 0.80) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+
+.ytp-delhi-modern
+  .ytp-chrome-controls
+  .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
+.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls
+  .ytp-chrome-bottom.ytp-volume-slider-active
+  .ytp-volume-area {
+  background: none !important;
+  border: none !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  border-radius: var(--tz-radius-pill) !important;
+}
+
+.ytp-delhi-modern
+  .ytp-chrome-controls
+  .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
+.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls
+  .ytp-chrome-bottom.ytp-volume-slider-active
+  .ytp-volume-area:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background:
+    var(--tz-gloss),
+    rgba(210, 248, 200, 0.80) !important;
+}
+
+.ytp-delhi-modern
+  .ytp-chrome-controls
+  .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active,
+.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active,
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls
+  .ytp-chrome-bottom.ytp-volume-slider-active
+  .ytp-volume-area:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-active) !important;
+}
+
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background:
+    var(--tz-gloss),
+    rgba(210, 248, 200, 0.80) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.1);
+}
+
+.ytp-fullscreen-grid-expand-button {
+  background: none !important;
+  border: 1px solid rgba(90, 191, 71, 0.20) !important;
+  border-radius: var(--tz-radius-sm) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-fullscreen-grid-expand-button:hover {
+  background:
+    var(--tz-gloss),
+    rgba(210, 248, 200, 0.80) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.ytPlayerQuickActionButtonsHost:not(:empty) {
+  background-color: rgba(228, 250, 220, 0.88) !important;
+}
+
+.ytInlinePlayerControlsTopRightControlsCircleButton {
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.90) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+  cursor: pointer !important;
+}
+
+.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* Player settings panel */
+.ytp-panel,
+.ytp-popup.ytp-settings-menu {
+  background:
+    var(--tz-gloss),
+    rgba(232, 250, 224, 0.97) !important;
+}
+
+.ytp-panel {
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transition: box-shadow var(--bounce) !important;
+  border-radius: 20px !important;
+  padding: 0 5px !important;
+}
+
+.ytp-menuitem:not([aria-disabled="true"]) {
+  margin-left: 100px !important;
+  border-radius: var(--tz-radius-sm) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-menuitem:not([aria-disabled="true"]):hover {
+  border-radius: var(--tz-radius-sm) !important;
+  box-shadow: var(--shadow-base) !important;
+  background-color: rgba(200, 245, 188, 0.55) !important;
+}
+
+.ytp-delhi-modern .ytp-popup {
+  background: none !important;
+  border-radius: 20px !important;
+}
+
+.ytp-popup.ytp-delhi-modern-contextmenu {
+  background: none !important;
+  padding: 0 5px !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+}
+
+.ytp-delhi-modern .ytp-chapter-container {
+  width: 100% !important;
+  padding-left: 10px;
+}
+
+/* ============================================================
+   MENUS & DROPDOWNS — Rounded acrylic containers
+   ============================================================ */
+ytd-menu-popup-renderer,
+ytd-video-preview,
+#contentWrapper.tp-yt-iron-dropdown > *,
+tp-yt-paper-dialog {
+  background:
+    var(--tz-gloss),
+    rgba(234, 252, 226, 0.97) !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  transform: scale(1)
+    translate(
+      var(--ytd-video-preview-translate-left),
+      var(--ytd-video-preview-translate-top)
+    );
+  transition:
+    opacity 0.2s ease-in,
+    transform 0.16s ease-out 0.2s;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  max-width: none !important;
+}
+
+tp-yt-paper-dialog {
+  border-radius: 24px !important;
+}
+
+ytd-simple-menu-header-renderer {
+  background: none !important;
+}
+
+#items.yt-multi-page-menu-section-renderer
+  > *.yt-multi-page-menu-section-renderer:not(
+    [compact-link-style="compact-link-style-type-disclaimer"]
+  ):not(ytd-message-renderer) {
+  margin: 10px;
+  border: 1px solid rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#items.yt-multi-page-menu-section-renderer
+  > *.yt-multi-page-menu-section-renderer:not(
+    [compact-link-style="compact-link-style-type-disclaimer"]
+  ):not(ytd-message-renderer):hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+
+ytd-menu-service-item-renderer,
+.yt-list-item-view-model__container--tappable,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-menu-service-item-renderer:hover,
+.yt-list-item-view-model__container--tappable:hover,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+
+ytd-menu-service-item-renderer[use-list-item-styles]
+  tp-yt-paper-item.ytd-menu-service-item-renderer,
+.ytContextualSheetLayoutHost {
+  background: none !important;
+  padding: 13px !important;
+}
+
+tp-yt-paper-listbox {
+  padding: 10px !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu {
+  background:
+    var(--tz-gloss),
+    rgba(234, 252, 226, 0.97) !important;
+  border-radius: 16px !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+  background: rgba(180, 235, 165, 0.60) !important;
+  border-radius: var(--tz-radius-md) !important;
+}
+
+a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+
+/* --- Paper menu button trigger --- */
+#trigger.tp-yt-paper-menu-button {
+  padding: 10px !important;
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#trigger.tp-yt-paper-menu-button:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  background:
+    var(--tz-gloss),
+    rgba(200, 245, 188, 0.70) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ============================================================
+   TOOLTIPS — Rounded bubble with soft green tint
+   ============================================================ */
+.tp-yt-paper-tooltip[style-target="tooltip"] {
+  border: 1px solid var(--tz-glass-border) !important;
+  background:
+    var(--tz-gloss),
+    rgba(220, 248, 210, 0.97) !important;
+  box-shadow: var(--shadow-hover) !important;
+  color: #2a4a2a !important;
+  border-radius: var(--tz-radius-pill) !important;
+}
+
+html
+  body[rounded-container]
+  tp-yt-paper-tooltip
+  .tp-yt-paper-tooltip[style-target="tooltip"] {
+  border-radius: 20px !important;
+  padding: 7px 14px;
+}
+
+/* ============================================================
+   LOGO — Wii-style floating brand element
+   ============================================================ */
+ytd-topbar-logo-renderer {
+  border-radius: var(--tz-radius-md) !important;
+  padding: 0px !important;
+  max-height: 45px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+ytd-topbar-logo-renderer:hover {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ============================================================
+   WATCH PAGE PANELS — Acrylic sidebar & description
+   ============================================================ */
+#description.ytd-watch-metadata {
+  border-radius: 24px !important;
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.88) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+ytd-expandable-metadata-renderer:not([is-expanded]) {
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+ytd-expandable-metadata-renderer:not([is-expanded]):hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: 24px !important;
+}
+
+ytd-expandable-metadata-renderer:not([is-expanded])
+  #header.ytd-expandable-metadata-renderer:hover {
+  background: none !important;
+}
+
+/* ============================================================
+   PLAYLIST PANEL — Floating acrylic panel
+   ============================================================ */
+.anchored-panel.ytd-shorts {
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.92) !important;
+  padding: 5px;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--shadow-hover) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  margin-top: 15px !important;
+}
+
+ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel]
+  #header.ytd-engagement-panel-title-header-renderer {
+  border-bottom: none;
+}
+
+ytd-engagement-panel-section-list-renderer[match-content-theme]
+  #content.ytd-engagement-panel-section-list-renderer {
+  background: none !important;
+}
+
+ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+  border: 1px solid rgba(90, 191, 71, 0.10) !important;
+  border-radius: 24px !important;
+}
+
+#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+  border-radius: var(--tz-radius-xl) !important;
+  border: 1px solid rgba(90, 191, 71, 0.15) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 20px !important;
+  margin: 10px !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.85) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+ytd-item-section-renderer[static-comments-header][enable-anchored-panel]
+  #header.ytd-item-section-renderer {
+  background: none !important;
+}
+
+.header.ytd-playlist-panel-renderer {
+  background: none !important;
+}
+
+#container.ytd-playlist-panel-renderer {
+  border: 1px solid var(--tz-glass-border) !important;
+  border-radius: 20px !important;
+}
+
+ytd-playlist-panel-video-renderer[selected][use-color-palette],
+ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+  border-radius: 20px !important;
+  padding: 10px !important;
+  background: rgba(190, 240, 175, 0.50) !important;
+  box-shadow: var(--shadow-active) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: 20px !important;
+  padding: 10px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+  margin: 5px 0 !important;
+}
+
+ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer:hover {
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.40) !important;
+}
+
+ytd-playlist-video-renderer:not(.dragging) {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+  margin: 5px;
+  border-radius: 16px !important;
+}
+
+ytd-playlist-video-renderer:not(.dragging):hover {
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.35) !important;
+}
+
+.immersive-header-container.ytd-playlist-header-renderer {
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  border-radius: 24px !important;
+}
+
+.ytContextualSheetLayoutContentContainer,
+.ytChipBarViewModelHost,
+.immersive-header-content.ytd-playlist-header-renderer {
+  overflow: visible !important;
+}
+
+/* ============================================================
+   THUMBNAIL OVERLAYS & BADGES
+   ============================================================ */
+ytd-thumbnail-overlay-toggle-button-renderer {
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.90) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered]
+  #label.ytd-thumbnail-overlay-toggle-button-renderer {
+  background-color: rgba(228, 250, 220, 0.95) !important;
+  margin-right: 10px;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-hover) !important;
+  color: #2a4a2a !important;
+}
+
+.yt-badge-shape--thumbnail-default {
+  background:
+    var(--tz-gloss),
+    rgba(228, 250, 220, 0.90) !important;
+  border-radius: var(--tz-radius-md) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+.yt-spec-touch-feedback-shape--thumbnail-size-large
+  .yt-spec-touch-feedback-shape__stroke,
+.yt-spec-touch-feedback-shape--thumbnail-size-large
+  .yt-spec-touch-feedback-shape__fill,
+.yt-spec-touch-feedback-shape--thumbnail-size-large
+  .yt-spec-touch-feedback-shape__hover-effect {
+  padding: 100px !important;
+  border-radius: 24px !important;
+}
+
+/* ============================================================
+   CHAPTER MARKERS
+   ============================================================ */
+ytd-macro-markers-list-item-renderer[modern][layout="MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL"]:not(
+    [carousel-type="MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY"]
+  ) {
+  border-radius: 16px !important;
+  border: 1px solid rgba(90, 191, 71, 0.12) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+ytd-macro-markers-list-item-renderer[modern][layout="MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL"]:not(
+    [carousel-type="MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY"]
+  ):hover {
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.35) !important;
+}
+
+ytd-macro-markers-list-item-renderer {
+  border-radius: 12px !important;
+  margin: 5px;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+ytd-macro-markers-list-item-renderer:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ============================================================
+   ALERTS & INFO BANNERS
+   ============================================================ */
+ytd-alert-with-button-renderer[type="INFO"] {
+  box-shadow: var(--shadow-base) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(90, 191, 71, 0.15) !important;
+  background:
+    var(--tz-gloss),
+    rgba(225, 250, 216, 0.88) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+
+/* ============================================================
+   LIKE BUTTON HOST
+   ============================================================ */
+.ytLikeButtonViewModelHost {
+  margin-right: 5px;
+}
+
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+  background: none !important;
+}
+
+/* ============================================================
+   PREMIUM LOGO — Kept from retro-ui-theme.css pattern
+   ============================================================ */
+body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.05) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+
+body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+
+body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 18px !important;
+  box-shadow:
+    0px 16px 40px rgba(90, 191, 71, 0.20),
+    0px 0px 8px rgba(48, 184, 200, 0.15);
+}
+
+/* ============================================================
+   SEARCH PAGE HEADER
+   ============================================================ */
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+
+/* ============================================================
+   SCROLLBAR — Subtle Technozen styling
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(220, 248, 212, 0.30);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(90, 191, 71, 0.40), rgba(48, 184, 200, 0.35));
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(90, 191, 71, 0.65), rgba(48, 184, 200, 0.55));
+}
+
+
+/* ============================================================
+   WATCH PAGE SIDEBAR FIX — Floating Cards
+   ============================================================ */
+
+/* Reset ANY outer container that might have a pill shape + overflow:hidden */
+ytd-watch-next-secondary-results-renderer,
+ytd-watch-next-secondary-results-renderer #items,
+#related.ytd-watch-flexy,
+
+
+/* Remove default YouTube boundaries on the outer secondary column */
+
+
+#related.ytd-watch-flexy {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+/* Make each individual related video card a floating glossy object */
+ytd-compact-video-renderer,
+ytd-compact-playlist-renderer,
+ytd-compact-radio-renderer {
+  background:
+    var(--tz-gloss),
+    rgba(235, 252, 228, 0.90) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0px 4px 16px rgba(90, 191, 71, 0.15),
+    0px 0px 8px rgba(90, 191, 71, 0.08),
+    inset 0 1px 3px rgba(255, 255, 255, 0.9) !important;
+  padding: 8px !important;
+  margin-bottom: 10px !important;
+  overflow: visible !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+ytd-compact-video-renderer:hover,
+ytd-compact-playlist-renderer:hover,
+ytd-compact-radio-renderer:hover {
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow:
+    0px 8px 28px rgba(90, 191, 71, 0.28),
+    0px 0px 16px rgba(48, 184, 200, 0.18),
+    inset 0 1px 5px rgba(255, 255, 255, 0.95) !important;
+  background:
+    var(--tz-gloss),
+    rgba(220, 248, 212, 0.95) !important;
+}
+
+/* Adjust the internal thumbnail so it fits in the card */
+ytd-compact-video-renderer ytd-thumbnail {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  margin-right: 12px !important;
+}
+
+
+/* ============================================================
+   PHASE 2 & 3: EXPANDED COVERAGE & AUTHENTICITY
+   ============================================================ */
+
+/* --- Organic Layering & Breathing Animations --- */
+@keyframes technozenBreathe {
+  0% { box-shadow: 0 0 15px rgba(90, 191, 71, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(48, 184, 200, 0.25); }
+  100% { box-shadow: 0 0 15px rgba(90, 191, 71, 0.1); }
+}
+
+@keyframes technozenAmbientFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Base floating panels should breathe slightly */
+ytd-rich-grid-media #dismissible, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer {
+  animation: technozenBreathe 8s infinite ease-in-out;
+}
+
+/* --- Channel Pages Coverage --- */
+#channel-header.ytd-c4-tabbed-header-renderer {
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.85) !important;
+  border-bottom: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+#tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: rgba(215, 248, 205, 0.7) !important;
+  border-radius: var(--tz-radius-md) !important;
+  margin: 10px;
+  padding: 5px;
+}
+
+tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
+  border-radius: var(--tz-radius-sm) !important;
+  transition: background var(--bounce), transform var(--bounce);
+}
+
+tp-yt-paper-tab.ytd-c4-tabbed-header-renderer.iron-selected {
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(90, 191, 71, 0.2) !important;
+}
+
+/* --- Search Page Results --- */
+ytd-video-renderer, ytd-channel-renderer, ytd-playlist-renderer {
+  background: var(--tz-gloss), rgba(235, 252, 228, 0.85) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+ytd-video-renderer:hover, ytd-channel-renderer:hover, ytd-playlist-renderer:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: var(--tz-gloss), rgba(225, 250, 216, 0.95) !important;
+}
+
+/* --- Dialogs & Popups --- */
+tp-yt-paper-dialog, ytd-hotkey-dialog-renderer, ytd-multi-page-menu-renderer {
+  background: var(--tz-gloss), rgba(240, 252, 236, 0.95) !important;
+  border-radius: var(--tz-radius-xl) !important;
+  border: 2px solid var(--tz-glass-border) !important;
+  box-shadow: 0px 12px 48px rgba(90, 191, 71, 0.25), inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* --- Settings Page --- */
+#header.ytd-settings-sidebar-renderer {
+  background: transparent !important;
+}
+
+ytd-settings-sidebar-renderer {
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.8) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 16px !important;
+}
+
+/* --- Forms, Toggles, and Sliders (Sony VAIO style) --- */
+tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button {
+  background-color: var(--tz-lime) !important;
+  box-shadow: 0 0 10px var(--tz-lime), inset 0 2px 4px rgba(255, 255, 255, 0.8) !important;
+}
+tp-yt-paper-toggle-button[checked] .toggle-bar.tp-yt-paper-toggle-button {
+  background-color: var(--tz-aqua) !important;
+  opacity: 0.6 !important;
+}
+
+/* --- Comments & Chat --- */
+ytd-comment-simplebox-renderer, yt-live-chat-message-input-renderer {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-radius: var(--tz-radius-md) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  padding: 12px !important;
+  box-shadow: inset 0 2px 6px rgba(90, 191, 71, 0.1) !important;
+}
+
+/* --- Secondary Organic Layer (Leaves / Bubbles) --- */
+#page-manager::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle 2px at 20% 80%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    radial-gradient(circle 3px at 80% 20%, rgba(90, 191, 71, 0.4) 0%, transparent 100%);
+  animation: technozenAmbientFloat 12s infinite alternate ease-in-out;
+}
+
+/* =========================================
+   FORCE DARK TEXT ON LIGHT TECHNOZEN THEME
+   ========================================= */
+
+/* Force dark text on ALL text-bearing elements when technozen theme is active */
+html[data-ypp-theme="technozen"] yt-formatted-string,
+html[data-ypp-theme="technozen"] span,
+html[data-ypp-theme="technozen"] a,
+html[data-ypp-theme="technozen"] h1,
+html[data-ypp-theme="technozen"] h2,
+html[data-ypp-theme="technozen"] h3,
+html[data-ypp-theme="technozen"] p,
+html[data-ypp-theme="technozen"] #video-title,
+html[data-ypp-theme="technozen"] .ytd-video-meta-block,
+html[data-ypp-theme="technozen"] #metadata-line span,
+html[data-ypp-theme="technozen"] yt-formatted-string.ytd-channel-name,
+html[data-ypp-theme="technozen"] #channel-name a,
+html[data-ypp-theme="technozen"] .ytd-channel-name,
+html[data-ypp-theme="technozen"] ytd-badge-supported-renderer span,
+html[data-ypp-theme="technozen"] #title-wrapper yt-formatted-string,
+html[data-ypp-theme="technozen"] .title-text,
+html[data-ypp-theme="technozen"] ytd-rich-grid-renderer #title,
+html[data-ypp-theme="technozen"] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-theme="technozen"] ytd-guide-entry-renderer yt-formatted-string {
+  color: #152418 !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-theme="technozen"] #video-title,
+html[data-ypp-theme="technozen"] ytd-video-renderer #video-title,
+html[data-ypp-theme="technozen"] ytd-rich-item-renderer #video-title {
+  color: #152418 !important;
+}
+
+html[data-ypp-theme="technozen"] #metadata-line span,
+html[data-ypp-theme="technozen"] .ytd-video-meta-block span,
+html[data-ypp-theme="technozen"] yt-formatted-string.ytd-channel-name {
+  color: #3b5c43 !important;
+}
+
+/* Force light mode CSS variables */
+html[data-ypp-theme="technozen"] {
+  --yt-spec-text-primary: #152418 !important;
+  --yt-spec-text-secondary: #3b5c43 !important;
+  --yt-spec-text-disabled: #7a9c82 !important;
+  --yt-spec-text-primary-inverse: #ffffff !important;
+  
+  /* Force light mode icons */
+  --yt-spec-icon-active-other: #152418 !important;
+  --yt-spec-icon-inactive: #3b5c43 !important;
+  --yt-spec-icon-disabled: #7a9c82 !important;
+
+  /* Force light mode background */
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-raised-background: rgba(240, 252, 234, 0.95) !important;
+  --yt-spec-menu-background: rgba(240, 252, 234, 0.95) !important;
+  
+  /* General overrides */
+  color: var(--yt-spec-text-primary) !important;
+}
+
+/* ============================================================
+   GREEN GLOW EFFECTS — Technozen Eco-Tech Ambiance
+   ============================================================ */
+
+/* Home feed video cards — green border glow */
+ytd-rich-grid-media {
+  box-shadow:
+    0 0 0 1px rgba(90, 191, 71, 0.12),
+    0px 4px 20px rgba(90, 191, 71, 0.14),
+    0px 1px 4px rgba(0, 0, 0, 0.05) !important;
+  transition: box-shadow var(--bounce), transform var(--bounce) !important;
+}
+
+ytd-rich-grid-media:hover {
+  box-shadow:
+    0 0 0 1.5px rgba(90, 191, 71, 0.30),
+    0px 8px 32px rgba(90, 191, 71, 0.28),
+    0px 0px 20px rgba(48, 184, 200, 0.16) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Masthead / Header bar — soft green bloom at bottom */
+ytd-masthead#masthead {
+  box-shadow:
+    0 2px 16px rgba(90, 191, 71, 0.18),
+    0 4px 32px rgba(90, 191, 71, 0.10) !important;
+}
+
+/* Left guide sidebar entries on hover — green glow */
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  transition: box-shadow var(--bounce), background var(--bounce), transform var(--bounce) !important;
+}
+
+ytd-guide-entry-renderer:hover #endpoint.yt-simple-endpoint {
+  box-shadow:
+    0 0 12px rgba(90, 191, 71, 0.22),
+    inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Subscribe button — lime glow pulse */
+ytd-subscribe-button-renderer button {
+  box-shadow:
+    0 0 10px rgba(90, 191, 71, 0.25),
+    0 0 20px rgba(90, 191, 71, 0.10) !important;
+  transition: box-shadow var(--bounce), transform var(--bounce) !important;
+}
+
+ytd-subscribe-button-renderer button:hover {
+  box-shadow:
+    0 0 18px rgba(90, 191, 71, 0.45),
+    0 0 36px rgba(48, 184, 200, 0.20) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Search button — aqua glow */
+#search-icon-legacy.ytd-searchbox,
+.ytSearchboxComponentSearchButton {
+  box-shadow: 0 0 12px rgba(48, 184, 200, 0.30) !important;
+}
+
+/* Search input focused glow */
+#search.ytd-searchbox:focus-within,
+ytd-searchbox:focus-within {
+  box-shadow:
+    0 0 0 2px rgba(90, 191, 71, 0.40),
+    0 0 20px rgba(90, 191, 71, 0.18) !important;
+}
+
+/* Like / dislike / action buttons */
+.yt-spec-button-shape-next--tonal:hover {
+  box-shadow:
+    0 0 12px rgba(90, 191, 71, 0.22),
+    0 0 24px rgba(90, 191, 71, 0.10) !important;
+}
+
+/* Chip / filter pills — subtle edge glow on hover */
+yt-chip-cloud-chip-renderer:hover {
+  box-shadow:
+    0 0 10px rgba(90, 191, 71, 0.25),
+    inset 0 0 8px rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Thumbnails — add a very subtle green rim on hover */
+ytd-thumbnail:hover a.yt-simple-endpoint {
+  box-shadow: 0 0 0 3px rgba(90, 191, 71, 0.30) !important;
+  border-radius: 12px !important;
+}
+
+/* Sidebar related cards — already enhanced in SIDEBAR section above */
+/* Extra glow on focused/active state for sidebar cards */
+ytd-compact-video-renderer:focus-within {
+  box-shadow:
+    0px 0px 0px 2px rgba(90, 191, 71, 0.40),
+    0px 8px 28px rgba(90, 191, 71, 0.28) !important;
+}
+
+/* Added for HeaderNav active state — Technozen lime glow */
+.ypp-nav-btn.active {
+  background: rgba(90, 191, 71, 0.18) !important;
+  box-shadow:
+    0 0 14px rgba(90, 191, 71, 0.45),
+    0 0 28px rgba(48, 184, 200, 0.2),
+    var(--shadow-active) !important;
+  border: 1px solid rgba(90, 191, 71, 0.45) !important;
+}
+
+/* ============================================================
+   PLAYLIST REDESIGN — Technozen Frutiger Aero Overrides
+   Lime-green glossy glass · Wii-era rounded shapes · Aqua accents
+   ============================================================ */
+
+/* Playlist Sidebar — glossy lime-white acrylic panel */
+#ypp-pl-root .ypp-pl-sidebar {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(220, 250, 205, 0.88) 0%,
+      rgba(205, 245, 240, 0.82) 100%
+    ) !important;
+  backdrop-filter: blur(40px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
+  border: 1px solid rgba(90, 191, 71, 0.28) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow:
+    var(--shadow-base),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--tz-radius-xl) !important;
+}
+
+/* Gloss highlight overlay on sidebar */
+#ypp-pl-root .ypp-pl-sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tz-radius-xl);
+  background: var(--tz-gloss);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Playlist Toolbar (Filter, Columns) — frosted lime strip */
+#ypp-pl-root .ypp-pl-toolbar {
+  background:
+    linear-gradient(
+      to right,
+      rgba(210, 248, 195, 0.70) 0%,
+      rgba(195, 240, 248, 0.65) 100%
+    ) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(90, 191, 71, 0.18) !important;
+  border-radius: var(--tz-radius-md) var(--tz-radius-md) 0 0 !important;
+}
+
+/* Playlist Video Cards — light aqua glass tiles */
+#ypp-pl-root .ypp-pl-card {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(235, 252, 228, 0.75) 0%,
+      rgba(220, 248, 252, 0.68) 100%
+    ) !important;
+  border: 1px solid rgba(90, 191, 71, 0.20) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#ypp-pl-root .ypp-pl-card:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(225, 250, 215, 0.88) 0%,
+      rgba(210, 245, 250, 0.82) 100%
+    ) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(90, 191, 71, 0.38) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* 1-Column List View */
+#ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
+  background: rgba(220, 248, 215, 0.35) !important;
+  border: 1px solid rgba(90, 191, 71, 0.15) !important;
+  box-shadow: none !important;
+  border-radius: var(--tz-radius-md) !important;
+}
+
+#ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
+  background: rgba(210, 245, 210, 0.55) !important;
+  transform: none !important;
+  border-color: rgba(90, 191, 71, 0.28) !important;
+}
+
+/* Playlist Buttons — Wii-style glossy lime capsules */
+#ypp-pl-root .ypp-pl-btn-play,
+#ypp-pl-root .ypp-pl-btn-shuffle,
+#ypp-pl-root .ypp-pl-btn-tool,
+#ypp-pl-root .ypp-pl-filter,
+#ypp-pl-root .ypp-pl-col-switcher {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(210, 245, 200, 0.80) 45%,
+      rgba(180, 230, 170, 0.85) 100%
+    ) !important;
+  border: 1px solid rgba(90, 191, 71, 0.40) !important;
+  border-radius: var(--tz-radius-pill) !important;
+  box-shadow:
+    var(--shadow-base),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  color: #2a5e1e !important;
+  transition:
+    transform var(--bounce-alt),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#ypp-pl-root .ypp-pl-btn-play:hover,
+#ypp-pl-root .ypp-pl-btn-shuffle:hover,
+#ypp-pl-root .ypp-pl-btn-tool:hover {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(195, 240, 180, 0.90) 45%,
+      rgba(160, 220, 148, 0.92) 100%
+    ) !important;
+  box-shadow:
+    var(--shadow-hover),
+    0 0 16px rgba(90, 191, 71, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 1.0) !important;
+  transform: scale(1.05) translateY(-1px) !important;
+}
+
+/* Duration Info Card — soft lime inset panel */
+#ypp-pl-root .ypp-pl-duration-card {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(225, 250, 215, 0.55) 0%,
+      rgba(210, 248, 248, 0.50) 100%
+    ) !important;
+  border: 1px solid rgba(90, 191, 71, 0.22) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  box-shadow:
+    inset 0 2px 12px rgba(90, 191, 71, 0.10),
+    var(--shadow-base) !important;
+}
+
+#ypp-pl-root .ypp-pl-duration-grid {
+  background: rgba(90, 191, 71, 0.08) !important;
+  border: 1px solid rgba(90, 191, 71, 0.18) !important;
+  border-radius: var(--tz-radius-md) !important;
+}
+
+/* Cover image — rounded technozen corners */
+#ypp-pl-root .ypp-pl-cover-wrap {
+  border-radius: var(--tz-radius-lg) !important;
+  box-shadow:
+    var(--shadow-base),
+    0 0 20px rgba(90, 191, 71, 0.15) !important;
+}
+
+/* Title / Owner text — dark forest green for readability */
+#ypp-pl-root .ypp-pl-title {
+  color: #1a4a12 !important;
+}
+#ypp-pl-root .ypp-pl-owner,
+#ypp-pl-root .ypp-pl-owner:hover {
+  color: #2d6e20 !important;
+}
+#ypp-pl-root .ypp-pl-stats {
+  color: rgba(45, 110, 32, 0.65) !important;
+}
+
+/* Playlist action buttons — aqua tonal style */
+#ypp-pl-root .ypp-pl-btn-play {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(90, 191, 71, 0.90) 0%,
+      rgba(48, 184, 200, 0.85) 100%
+    ) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow:
+    0 4px 16px rgba(90, 191, 71, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.50) !important;
+}
+#ypp-pl-root .ypp-pl-btn-play:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(100, 210, 80, 0.95) 0%,
+      rgba(55, 200, 218, 0.92) 100%
+    ) !important;
+  box-shadow:
+    0 6px 24px rgba(90, 191, 71, 0.55),
+    0 0 20px rgba(48, 184, 200, 0.30) !important;
+}
+

@@ -462,7 +462,8 @@ window.YPP.CONSTANTS = {
         vintageUiTheme: 'VintageUiTheme',
         oceanUiTheme: 'OceanUiTheme',
         blueSkyUiTheme: 'BlueSkyUiTheme',
-        retroUiTheme: 'RetroUiTheme'
+        retroUiTheme: 'RetroUiTheme',
+        technozenUiTheme: 'TechnozenUiTheme'
     }
 };
 
@@ -480,7 +481,8 @@ const CARD_STYLES = [
   { id: 'vintage', label: 'Vintage Style Cards' },
   { id: 'ocean', label: 'Ocean Style Cards' },
   { id: 'blue-sky', label: 'Blue Sky Style Cards' },
-  { id: 'retro', label: 'Retro OS Windows' }
+  { id: 'retro', label: 'Retro OS Windows' },
+  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -492,7 +494,8 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'vintage', label: 'Vintage (Retro & Print)' },
   { id: 'ocean', label: 'Ocean (Deep Water)' },
   { id: 'blue-sky', label: 'Blue Sky (Clouds)' },
-  { id: 'retro', label: 'Retro OS (Win 95)' }
+  { id: 'retro', label: 'Retro OS (Win 95)' },
+  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation

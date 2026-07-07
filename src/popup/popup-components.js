@@ -94,7 +94,8 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     { key: 'hologram', label: 'Hologram', meta: 'Sci-Fi Cyan', color: '#e0f7fa' },
                     { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' },
                     { key: 'retro', label: 'Retro OS', meta: 'Windows 95', color: '#c0c0c0' },
-                    { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' }
+                    { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' },
+                    { key: 'technozen', label: 'Technozen', meta: 'Eco Tech', color: '#dff4e8' }
                 ]
             }
         ];
@@ -216,6 +217,20 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                         btn.classList.add('active');
                         const newTheme = theme.key;
                         updateSetting('activeTheme', newTheme);
+                        
+                        // Auto-apply UI styles if the theme is an aesthetic theme
+                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic'];
+                        if (uiStyles.includes(newTheme)) {
+                            updateSetting('youtubePageTheme', newTheme);
+                            const selectEl = document.getElementById('youtubePageTheme');
+                            if (selectEl) selectEl.value = newTheme;
+                        } else {
+                            // Revert to default UI style if choosing a basic color theme
+                            updateSetting('youtubePageTheme', 'default');
+                            const selectEl = document.getElementById('youtubePageTheme');
+                            if (selectEl) selectEl.value = 'default';
+                        }
+
                         applyThemeToPopup(newTheme, customThemesObj);
                         notifyThemeChange(newTheme);
                     });

@@ -31,8 +31,11 @@ body.ypp-playlist-redesign #page-manager {
 }
 
 body.ypp-playlist-redesign ytd-app {
-    background: #0f0f0f !important;
+    /* Let the active theme's body background show through.
+       Each theme sets its own body background; we just need transparency here. */
+    background: transparent !important;
 }
+
 
 body.ypp-playlist-redesign ytd-browse[page-subtype="playlist"] {
     position: relative !important;
@@ -97,7 +100,10 @@ body.ypp-playlist-redesign ytd-masthead {
 #ypp-pl-root .ypp-pl-ambient-overlay {
     position: fixed;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+    /* Theme-aware overlay: use --ypp-ambient-overlay if defined by theme,
+       otherwise fall back to a neutral semi-dark gradient for dark mode. */
+    background: var(--ypp-pl-ambient-overlay,
+      linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.65)));
     z-index: var(--ypp-z-content);
     pointer-events: none;
 }
@@ -426,7 +432,8 @@ body.ypp-playlist-redesign ytd-masthead {
     left: 408px;
     right: 24px;
     z-index: var(--ypp-z-card-hover);
-    background: rgba(10, 10, 12, 0.35);
+    /* Use theme surface variable — falls back to a neutral dark glass for default dark mode */
+    background: var(--sf, rgba(10, 10, 12, 0.55));
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     display: flex;

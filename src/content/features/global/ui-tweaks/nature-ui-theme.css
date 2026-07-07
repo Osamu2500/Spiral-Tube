@@ -78,21 +78,43 @@ ytd-masthead,
 .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
-#masthead-container {
+/* ============================================================
+   TOPBAR / MASTHEAD — Nature theme
+   ============================================================ */
+#masthead-container,
+#masthead-container.ytd-app {
   background: transparent !important;
   background-color: transparent !important;
+  box-shadow: none !important;
 }
-ytd-masthead #container {
+/* Force the inner masthead container to take nature glass */
+ytd-masthead #container,
+#container.ytd-masthead {
   border-radius: 24px 4px 24px 4px !important;
   background: var(--sf) !important;
-  
-  
+  background-color: var(--sf) !important;
   margin: 1px !important;
   box-shadow: var(--shadow-active) !important;
   border: var(--nature-border) !important;
 }
+/* YouTube's background element inside masthead */
+#background.ytd-masthead {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+/* Force topbar icon/text colors to be readable on light green */
+ytd-masthead #container yt-icon,
+ytd-masthead #container .yt-icon,
+ytd-masthead #container yt-icon-shape svg {
+  color: #166534 !important;
+  fill: #166534 !important;
+}
+ytd-masthead #container yt-formatted-string,
+ytd-masthead #container span,
+ytd-masthead #container a {
+  color: #166534 !important;
+}
 #description.ytd-watch-metadata,
-#secondary-inner,
 ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
   position: relative !important;
   overflow: hidden !important;
@@ -302,6 +324,7 @@ tp-yt-paper-menu-button.yt-dropdown-menu::not(
   transform: scale(1.1);
 }
 #voice-search-button.ytd-masthead,
+.ypp-nav-btn,
 ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
@@ -313,14 +336,26 @@ ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
+/* Nature-themed nav button base state */
+.ypp-nav-btn {
+  border-radius: 24px 4px 24px 4px !important;
+  background: rgba(163, 230, 53, 0.08) !important;
+  border: 1px solid rgba(163, 230, 53, 0.2) !important;
+  color: #166534 !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
 #voice-search-button.ytd-masthead:hover,
+.ypp-nav-btn:hover,
 ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 #trailing-button.ytd-playlist-panel-renderer:hover,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"]:hover,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+  background: rgba(163, 230, 53, 0.18) !important;
+  box-shadow: 0 0 12px rgba(163, 230, 53, 0.4), var(--shadow-hover) !important;
+  transform: scale(1.08) !important;
 }
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
   transition:
@@ -1852,4 +1887,41 @@ ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-rendere
   opacity: 0.5;
   pointer-events: none;
   transform: rotate(15deg);
+}
+
+/* Added for HeaderNav active state — nature green glow */
+.ypp-nav-btn.active {
+  background: rgba(163, 230, 53, 0.22) !important;
+  box-shadow:
+    0 0 16px rgba(163, 230, 53, 0.5),
+    0 0 32px rgba(34, 197, 94, 0.25),
+    var(--shadow-active) !important;
+  border: 1px solid rgba(163, 230, 53, 0.5) !important;
+  color: #14532d !important;
+}
+
+/* ============================================================
+   TOPBAR BUTTONS — nature-specific green icons/text
+   ============================================================ */
+/* Voice search, notification bell, avatar — green tint on light bg */
+#voice-search-button.ytd-masthead yt-icon,
+ytd-topbar-menu-button-renderer.ytd-masthead yt-icon,
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon {
+  color: #166534 !important;
+  fill: #166534 !important;
+}
+/* Nav buttons label text */
+.ypp-nav-btn span,
+.ypp-nav-btn svg {
+  color: #14532d !important;
+  fill: #14532d !important;
+}
+/* Force YT spec text variables so YouTube renders topbar text in dark green */
+html[data-ypp-theme="nature"],
+html[data-ypp-theme="nature"] ytd-masthead {
+  --yt-spec-text-primary: #14532d !important;
+  --yt-spec-text-secondary: #166534 !important;
+  --yt-spec-icon-active-other: #14532d !important;
+  --yt-spec-icon-inactive: #15803d !important;
+  --yt-spec-call-to-action: #166534 !important;
 }

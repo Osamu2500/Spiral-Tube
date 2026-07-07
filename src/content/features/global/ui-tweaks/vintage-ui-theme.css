@@ -85,7 +85,6 @@ ytd-masthead #container {
   border: var(--vintage-border) !important;
 }
 #description.ytd-watch-metadata,
-#secondary-inner,
 ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
   position: relative !important;
   overflow: hidden !important;
@@ -295,6 +294,7 @@ tp-yt-paper-menu-button.yt-dropdown-menu::not(
   transform: scale(1.1);
 }
 #voice-search-button.ytd-masthead,
+.ypp-nav-btn,
 ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
@@ -307,6 +307,7 @@ ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
     background var(--bounce) !important;
 }
 #voice-search-button.ytd-masthead:hover,
+.ypp-nav-btn:hover,
 ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 #trailing-button.ytd-playlist-panel-renderer:hover,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"]:hover,
@@ -2243,4 +2244,10 @@ html[data-ypp-theme="vintage"] {
   --yt-spec-text-secondary: #5c3d2e !important;
   --yt-spec-icon-active-other: #2c1f14 !important;
   --yt-spec-icon-inactive: #5c3d2e !important;
+}
+
+/* Added for HeaderNav active state */
+.ypp-nav-btn.active {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-active) !important;
 }

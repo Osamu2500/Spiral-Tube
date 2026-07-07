@@ -92,7 +92,6 @@ ytd-masthead #container {
   border: var(--ocean-border) !important;
 }
 #description.ytd-watch-metadata,
-#secondary-inner,
 ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
   position: relative !important;
   overflow: hidden !important;
@@ -302,6 +301,7 @@ tp-yt-paper-menu-button.yt-dropdown-menu::not(
   transform: scale(1.1);
 }
 #voice-search-button.ytd-masthead,
+.ypp-nav-btn,
 ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
@@ -314,6 +314,7 @@ ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
     background var(--bounce) !important;
 }
 #voice-search-button.ytd-masthead:hover,
+.ypp-nav-btn:hover,
 ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 #trailing-button.ytd-playlist-panel-renderer:hover,
 ytd-menu-renderer .ytd-menu-renderer[style-target="button"]:hover,
@@ -1986,4 +1987,10 @@ ytd-reel-video-renderer[is-active] {
 
 .overlay.ytd-reel-video-renderer {
   background: linear-gradient(to top, rgba(0,26,51,0.9) 0%, rgba(0,26,51,0) 40%) !important;
+}
+
+/* Added for HeaderNav active state */
+.ypp-nav-btn.active {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-active) !important;
 }

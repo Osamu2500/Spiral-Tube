@@ -331,7 +331,7 @@ window.YPP.SettingsSchema = {
 
         // --- UI Redesigns (popup Customization tab) ---
         popupUiTheme:        { type: 'string', default: 'liquid-glass', values: ['liquid-glass', 'cyberpunk', 'neumorphic', 'minimal-flat'] },
-        youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'liquid-glass', 'cyberpunk', 'neumorphic', 'nature', 'vintage', 'ocean', 'blue-sky', 'retro'] },
+        youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'liquid-glass', 'cyberpunk', 'neumorphic', 'nature', 'vintage', 'ocean', 'blue-sky', 'retro', 'technozen', 'forest'] },
     }),
 
     // =========================================================================
