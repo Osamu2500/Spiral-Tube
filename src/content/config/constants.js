@@ -379,7 +379,8 @@ window.YPP.CONSTANTS = {
         BLOODMOON: { key: 'bloodmoon', label: 'Blood Moon', class: 'ypp-theme-bloodmoon' },
         ABYSS: { key: 'abyss', label: 'Abyss', class: 'ypp-theme-abyss' },
         EMBER: { key: 'ember', label: 'Ember', class: 'ypp-theme-ember' },
-        OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' }
+        OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' },
+        RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' }
     },
 
     // =========================================================================
@@ -460,7 +461,8 @@ window.YPP.CONSTANTS = {
         forestUiTheme: 'ForestUiTheme',
         vintageUiTheme: 'VintageUiTheme',
         oceanUiTheme: 'OceanUiTheme',
-        blueSkyUiTheme: 'BlueSkyUiTheme'
+        blueSkyUiTheme: 'BlueSkyUiTheme',
+        retroUiTheme: 'RetroUiTheme'
     }
 };
 
@@ -477,7 +479,8 @@ const CARD_STYLES = [
   { id: 'nature', label: 'Nature Style Cards' },
   { id: 'vintage', label: 'Vintage Style Cards' },
   { id: 'ocean', label: 'Ocean Style Cards' },
-  { id: 'blue-sky', label: 'Blue Sky Style Cards' }
+  { id: 'blue-sky', label: 'Blue Sky Style Cards' },
+  { id: 'retro', label: 'Retro OS Windows' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -488,7 +491,8 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'nature', label: 'Nature (Organic)' },
   { id: 'vintage', label: 'Vintage (Retro & Print)' },
   { id: 'ocean', label: 'Ocean (Deep Water)' },
-  { id: 'blue-sky', label: 'Blue Sky (Clouds)' }
+  { id: 'blue-sky', label: 'Blue Sky (Clouds)' },
+  { id: 'retro', label: 'Retro OS (Win 95)' }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation

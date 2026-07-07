@@ -214,8 +214,9 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             document.documentElement.setAttribute('data-ypp-theme', themeKey);
             this._currentThemeKey = themeKey;
 
-            // Enforce YouTube's native Dark Mode for our themes (unless it's 'nature' or 'hologram' which are light)
-            const isLightTheme = ['nature', 'hologram'].includes(themeKey);
+            // Treat ALL custom themes as Light themes to remove YouTube's native dark attribute,
+            // allowing custom theme variables to fully control backgrounds and text colors.
+            const isLightTheme = true;
             this._enforceYouTubeTheme(!isLightTheme);
         } else {
              this._Utils.log(`Theme '${themeKey}' already active, skipping injection.`, 'THEME', 'debug');
@@ -238,7 +239,7 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             this._themeObserver = new MutationObserver((mutations) => {
                 if (!this._currentThemeKey || this._currentThemeKey === 'system' || this._currentThemeKey === 'default') return;
                 
-                const shouldBeDark = !['nature', 'hologram'].includes(this._currentThemeKey);
+                const shouldBeDark = false; // Always force remove 'dark' for all custom themes
                 const isDark = document.documentElement.hasAttribute('dark');
                 
                 if (shouldBeDark && !isDark) {
@@ -399,6 +400,7 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
              else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
              else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
              else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
+             else if (ytTheme === 'retro') finalCardStyle = 'retro';
         }
 
         root.setAttribute('data-ypp-card-style', finalCardStyle);

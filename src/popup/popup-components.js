@@ -92,7 +92,9 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     { key: 'deepspace', label: 'Deep Space', meta: 'Nebula', color: '#020205' },
                     { key: 'nebula', label: 'Nebula', meta: 'Purple Space', color: '#0f0518' },
                     { key: 'hologram', label: 'Hologram', meta: 'Sci-Fi Cyan', color: '#e0f7fa' },
-                    { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' }
+                    { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' },
+                    { key: 'retro', label: 'Retro OS', meta: 'Windows 95', color: '#c0c0c0' },
+                    { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' }
                 ]
             }
         ];

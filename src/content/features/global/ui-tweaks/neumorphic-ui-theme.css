@@ -6,7 +6,7 @@
   background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
 }
 /* === Dark mode (YouTube sets [dark] on <html>) === */
-html[dark] {
+html, [dark] {
   --blur: 0px;
   --sf: #292d32;
   --shadow-out: 6px 6px 12px #1e2125, -6px -6px 12px #34393f;
@@ -15,12 +15,12 @@ html[dark] {
   --bounce: 0.3s ease-in-out;
   --bounce-alt: 0.4s ease-in-out;
 }
-html[dark] body { background-color: #292d32 !important; color: #e0e5ec !important; }
-html[dark] body {
+html, [dark] body { background-color: #292d32 !important; color: #e0e5ec !important; }
+html, [dark] body {
   background-color: #202020 !important;
 }
 /* === Light mode — use white-tinted glass, dark shadows === */
-html:not([dark]) {
+html, [dark] {
   --blur: 0px;
   --sf: #e0e5ec;
   --shadow-out: 8px 8px 16px rgba(163, 177, 198, 0.6), -8px -8px 16px rgba(255, 255, 255, 0.8);
@@ -29,7 +29,7 @@ html:not([dark]) {
   --bounce: 0.3s ease-in-out;
   --bounce-alt: 0.4s ease-in-out;
 }
-html:not([dark]) body { background-color: #e0e5ec !important; color: #4a4a4a !important; }
+html, [dark] body { background-color: #e0e5ec !important; color: #4a4a4a !important; }
 ytd-app,
 ytd-masthead,
 #page-manager.ytd-app,
@@ -137,7 +137,7 @@ ytd-browse[page-subtype="home"] #chips {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
-html[dark],
+html, [dark],
 [dark] {
   --yt-spec-base-background: none !important;
 }
@@ -778,10 +778,10 @@ ytd-topbar-logo-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 /* mix-blend-mode: difference inverts on light backgrounds — scope to dark mode only */
-html[dark] .ytSearchboxComponentInput {
+html, [dark] .ytSearchboxComponentInput {
   mix-blend-mode: difference;
 }
-html:not([dark]) .ytSearchboxComponentInput {
+html, [dark] .ytSearchboxComponentInput {
   mix-blend-mode: normal;
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
@@ -1120,14 +1120,14 @@ ytd-playlist-panel-renderer {
 }
 
 /* --- NOTIFICATION PANEL / YOU+SUBSCRIPTIONS POPUP — glass --- */
-html[dark] .ytSearchboxComponentSuggestionsContainer,
-html[dark] ytd-multi-page-menu-renderer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(14, 14, 18, 0.6) !important;
   
   
   border: none !important;
 }
-html:not([dark]) ytd-multi-page-menu-renderer {
+html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(255, 255, 255, 0.88) !important;
   
   
@@ -1136,7 +1136,7 @@ html:not([dark]) ytd-multi-page-menu-renderer {
 
 /* --- SEARCH SUGGESTIONS — frosted glass, mode-aware --- */
 /* Dark mode: deep dark glass */
-html[dark] .ytSearchboxComponentSuggestionsContainer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(10, 10, 14, 0.92) !important;
   
   
@@ -1145,7 +1145,7 @@ html[dark] .ytSearchboxComponentSuggestionsContainer {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
 }
 /* Light mode: bright frosted glass so dark suggestion text stays readable */
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(255, 255, 255, 0.94) !important;
   
   
@@ -1155,20 +1155,20 @@ html:not([dark]) .ytSearchboxComponentSuggestionsContainer {
 }
 
 /* Suggestion text — force correct colour per mode */
-html[dark] .ytSearchboxComponentSuggestionsContainer,
-html[dark] .ytSearchboxComponentSuggestionsContainer * {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] .ytSearchboxComponentSuggestionsContainer * {
   color: #ffffff !important;
 }
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer,
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer * {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] .ytSearchboxComponentSuggestionsContainer * {
   color: #0f0f0f !important;
 }
 
 /* Suggestion row hover — mode-aware tint */
-html[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(255, 255, 255, 0.08) !important;
 }
-html:not([dark]) .ytSuggestionComponentRoundedSuggestion:hover {
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(0, 0, 0, 0.06) !important;
   box-shadow: none !important;
 }
@@ -1856,4 +1856,66 @@ ytd-guide-entry-renderer:hover {
 }
 ytd-guide-entry-renderer[active] {
   box-shadow: var(--shadow-in) !important;
+}
+
+
+/* ========================================= */
+/* ADVANCED AESTHETICS OVERRIDES (AUTO-SYNC) */
+/* ========================================= */
+
+/* Video Cards Parity */
+ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
+  border: none !important;
+  background: var(--sf, rgba(0,0,0,0.1)) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--neu-shadow-out) !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
+  box-shadow: var(--neu-shadow-in) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Titles and Text Colors */
+#video-title {
+  color: var(--neu-primary) !important;
+}
+.ytd-channel-name, .ytd-video-meta-block {
+  color: #888888 !important;
+}
+
+/* Progress Bar */
+.ytp-play-progress {
+  background: var(--neu-primary) !important;
+}
+.ytp-scrubber-button {
+  background: #888888 !important;
+  border: 2px solid var(--neu-primary) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px !important; }
+::-webkit-scrollbar-track { background: var(--neu-bg) !important; border-radius: 20px; }
+::-webkit-scrollbar-thumb { 
+  background: var(--neu-primary) !important; 
+  border-radius: 20px !important; 
+}
+
+/* Corner Decoration */
+ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-renderer::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 50px;
+  height: 50px;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(0%2C0%2C0%2C0.05)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2218%22%20height%3D%2218%22%20rx%3D%222%22%20ry%3D%222%22%2F%3E%3C%2Fsvg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  transform: rotate(15deg);
 }

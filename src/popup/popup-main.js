@@ -502,15 +502,29 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
 
                 if (key === 'youtubePageTheme' && el.value && el.value !== 'default') {
                     // Automatically sync Theme Engine and Card Style!
-                    const newTheme = el.value;
-                    if (state.elements.activeTheme) state.elements.activeTheme.value = newTheme;
+                    const uiStyle = el.value;
+                    
+                    // Map UI Style to Color Theme key
+                    const themeMap = {
+                        'nature': 'forest',
+                        'liquid-glass': 'default',
+                        'neumorphic': 'default'
+                    };
+                    const newTheme = themeMap[uiStyle] || uiStyle;
+                    
+                    // Trigger the theme grid button to properly apply colors
+                    const themeBtn = document.querySelector(`.theme-btn[data-theme="${newTheme}"]`);
+                    if (themeBtn) {
+                        themeBtn.click();
+                    }
                     
                     // The Card Style setting is hidden, we must update the UI buttons too
                     if (state.elements.cardStyle) {
-                        state.elements.cardStyle.value = newTheme;
+                        state.elements.cardStyle.value = uiStyle;
                         document.querySelectorAll('.card-style-btn').forEach(b => {
-                            b.classList.toggle('active', b.dataset.style === newTheme);
+                            b.classList.toggle('active', b.dataset.style === uiStyle);
                         });
+                        state.elements.cardStyle.dispatchEvent(new Event('change', { bubbles: true }));
                     }
                 }
                 

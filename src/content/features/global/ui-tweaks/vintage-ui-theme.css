@@ -6,7 +6,7 @@
   background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
 }
 /* === Dark mode (YouTube sets [dark] on <html>) === */
-html[dark] {
+html, [dark] {
   --sf: #2c241b; /* Dark sepia brown */
   --shadow-base: 4px 4px 0px rgba(0, 0, 0, 0.4);
   --shadow-hover: 6px 6px 0px rgba(193, 58, 58, 0.8);
@@ -14,19 +14,22 @@ html[dark] {
   --bounce: 0.2s ease-out;
   --bounce-alt: 0.3s ease-in-out;
   
+  --ypp-text-primary: #e8d5b5 !important;
+  --ypp-text-secondary: #d4a373 !important;
+  
   --vintage-primary: #d46a6a; /* Faded red */
   --vintage-secondary: #74a59f; /* Faded teal */
   --vintage-bg: #1f1913;
   --vintage-border: 2px solid #4a3f35;
   --vintage-border-hover: 2px solid #d46a6a;
 }
-html[dark] body {
+html, [dark] body {
   background-color: #1a1410 !important;
   background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></svg>') !important;
   color: #e8d5b5 !important; /* Parchment text */
 }
 /* === Light mode — use white-tinted glass, dark shadows === */
-html:not([dark]) {
+html, [dark] {
   --sf: #f4ecd8; /* Warm parchment beige */
   --shadow-base: 4px 4px 0px rgba(62, 53, 47, 0.2);
   --shadow-hover: 6px 6px 0px rgba(193, 58, 58, 0.8);
@@ -34,13 +37,16 @@ html:not([dark]) {
   --bounce: 0.2s ease-out;
   --bounce-alt: 0.3s ease-in-out;
   
+  --ypp-text-primary: #2c1f14 !important;
+  --ypp-text-secondary: #5c3d2e !important;
+  
   --vintage-primary: #c13a3a; /* Retro red */
   --vintage-secondary: #4a7c74; /* Vintage teal */
   --vintage-bg: #e8d5b5; /* Darker beige */
   --vintage-border: 2px solid #d1c0a5;
   --vintage-border-hover: 2px solid #c13a3a;
 }
-html:not([dark]) body {
+html, [dark] body {
   background-color: #e8d5b5 !important;
   background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.06"/></svg>') !important;
   color: #3e352f !important; /* Charcoal brown */
@@ -152,7 +158,7 @@ ytd-browse[page-subtype="home"] #chips {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
-html[dark],
+html, [dark],
 [dark] {
   --yt-spec-base-background: none !important;
 }
@@ -793,10 +799,10 @@ ytd-topbar-logo-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 /* mix-blend-mode: difference inverts on light backgrounds — scope to dark mode only */
-html[dark] .ytSearchboxComponentInput {
+html, [dark] .ytSearchboxComponentInput {
   mix-blend-mode: difference;
 }
-html:not([dark]) .ytSearchboxComponentInput {
+html, [dark] .ytSearchboxComponentInput {
   mix-blend-mode: normal;
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
@@ -1135,14 +1141,14 @@ ytd-playlist-panel-renderer {
 }
 
 /* --- NOTIFICATION PANEL / YOU+SUBSCRIPTIONS POPUP — glass --- */
-html[dark] .ytSearchboxComponentSuggestionsContainer,
-html[dark] ytd-multi-page-menu-renderer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(14, 14, 18, 0.6) !important;
   
   
   border: var(--vintage-border) !important;
 }
-html:not([dark]) ytd-multi-page-menu-renderer {
+html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(255, 255, 255, 0.88) !important;
   
   
@@ -1151,7 +1157,7 @@ html:not([dark]) ytd-multi-page-menu-renderer {
 
 /* --- SEARCH SUGGESTIONS — frosted glass, mode-aware --- */
 /* Dark mode: deep dark glass */
-html[dark] .ytSearchboxComponentSuggestionsContainer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(10, 10, 14, 0.92) !important;
   
   
@@ -1160,7 +1166,7 @@ html[dark] .ytSearchboxComponentSuggestionsContainer {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
 }
 /* Light mode: bright frosted glass so dark suggestion text stays readable */
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(255, 255, 255, 0.94) !important;
   
   
@@ -1170,20 +1176,20 @@ html:not([dark]) .ytSearchboxComponentSuggestionsContainer {
 }
 
 /* Suggestion text — force correct colour per mode */
-html[dark] .ytSearchboxComponentSuggestionsContainer,
-html[dark] .ytSearchboxComponentSuggestionsContainer * {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] .ytSearchboxComponentSuggestionsContainer * {
   color: #ffffff !important;
 }
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer,
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer * {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] .ytSearchboxComponentSuggestionsContainer * {
   color: #0f0f0f !important;
 }
 
 /* Suggestion row hover — mode-aware tint */
-html[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(255, 255, 255, 0.08) !important;
 }
-html:not([dark]) .ytSuggestionComponentRoundedSuggestion:hover {
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(0, 0, 0, 0.06) !important;
   box-shadow: none !important;
 }
@@ -1892,7 +1898,7 @@ ytd-searchbox #search-icon-legacy {
   background: var(--vintage-primary) !important;
   color: #f4ecd8 !important;
 }
-html[dark] ytd-searchbox #container, html[dark] ytd-searchbox #search-icon-legacy {
+html, [dark] ytd-searchbox #container, html, [dark] ytd-searchbox #search-icon-legacy {
   border-color: #a39585 !important;
 }
 
@@ -1909,9 +1915,332 @@ html[dark] ytd-searchbox #container, html[dark] ytd-searchbox #search-icon-legac
 }
 
 /* Custom Scrollbar - Retro */
-::-webkit-scrollbar { width: 14px !important; }
-::-webkit-scrollbar-track { background: var(--vintage-bg) !important; border-left: 1px solid var(--vintage-border); }
+
+
+/* ========================================= */
+/* ADVANCED AESTHETICS OVERRIDES (AUTO-SYNC) */
+/* ========================================= */
+
+/* Video Cards Parity */
+ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
+  border: var(--vintage-border) !important;
+  background: var(--sf, rgba(0,0,0,0.1)) !important;
+  border-radius: 4px !important;
+  box-shadow: var(--shadow-base, 0 4px 15px rgba(0,0,0,0.2)) !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
+  box-shadow: var(--shadow-hover, 0 8px 25px rgba(0,0,0,0.3)) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Titles and Text Colors */
+#video-title {
+  color: var(--vintage-primary) !important;
+}
+.ytd-channel-name, .ytd-video-meta-block {
+  color: var(--vintage-secondary) !important;
+}
+
+/* Progress Bar */
+.ytp-play-progress {
+  background: var(--vintage-primary) !important;
+}
+.ytp-scrubber-button {
+  background: var(--vintage-secondary) !important;
+  border: 2px solid var(--vintage-primary) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px !important; }
+::-webkit-scrollbar-track { background: var(--vintage-bg) !important; border-radius: 4px; }
 ::-webkit-scrollbar-thumb { 
-  background: var(--vintage-secondary) !important; 
-  border: 2px solid var(--vintage-bg);
+  background: var(--vintage-primary) !important; 
+  border-radius: 4px !important; 
+}
+
+/* Corner Decoration */
+ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-renderer::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 50px;
+  height: 50px;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(212%2C106%2C106%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22M12%206v6l4%202%22%2F%3E%3C%2Fsvg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  transform: rotate(15deg);
+}
+
+/* ========================================= */
+/* VINTAGE ADVANCED OVERHAUL */
+/* ========================================= */
+html, [dark] {
+  --vintage-blur: 8px;
+  --sf: #e8d5b5; /* Warm parchment beige */
+  --shadow-base: 6px 6px 0px rgba(62, 53, 47, 0.4);
+  --shadow-hover: 10px 10px 0px rgba(193, 58, 58, 0.6);
+  --vintage-primary: #c13a3a; /* Retro red */
+  --vintage-secondary: #4a7c74; /* Vintage teal */
+  --vintage-bg: #d1c0a5; /* Darker beige */
+  --vintage-border: 6px solid #f4ecd8; /* Thick polaroid white border */
+  --vintage-border-hover: 6px solid #c13a3a;
+}
+
+html, [dark] body {
+  background-color: #d1c0a5 !important;
+  background-image: 
+    radial-gradient(circle at center, transparent 0%, rgba(62, 53, 47, 0.4) 150%),
+    url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.12"/></svg>') !important;
+  color: #3e352f !important;
+  font-family: "Georgia", "Garamond", "Times New Roman", serif !important;
+}
+
+/* Force Typography across elements */
+* {
+  font-family: "Georgia", "Garamond", "Times New Roman", serif !important;
+}
+
+@keyframes sepia-bloom {
+  0% { filter: sepia(0) contrast(1); }
+  100% { filter: sepia(0.4) contrast(1.1); }
+}
+
+/* Polaroid Base structural overrides */
+ytd-rich-grid-media, ytd-compact-video-renderer, ytd-video-renderer, ytd-playlist-video-renderer, ytd-grid-video-renderer {
+  background: var(--sf) !important;
+  border: var(--vintage-border) !important;
+  border-radius: 2px !important;
+  padding: 10px 10px 28px 10px !important; /* Larger bottom padding for Polaroid look */
+  box-shadow: var(--shadow-base) !important;
+  transition: all 0.2s ease-out !important;
+  position: relative !important;
+  margin-top: 15px !important;
+}
+
+/* Add a faux masking tape piece to the top of cards */
+ytd-rich-grid-media::before, ytd-compact-video-renderer::before, ytd-video-renderer::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 70px;
+  height: 22px;
+  background: rgba(230, 220, 190, 0.85);
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+  z-index: 10;
+  pointer-events: none;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Hover effects */
+ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover, ytd-playlist-video-renderer:hover, ytd-grid-video-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border: var(--vintage-border-hover) !important;
+  animation: sepia-bloom 0.3s forwards !important;
+}
+
+/* Search bar styling */
+.ytSearchboxComponentInputBox {
+  border-radius: 0 !important; /* Sharp corners */
+  background: #f4ecd8 !important;
+  border: 2px solid #3e352f !important;
+  box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.2), 4px 4px 0px rgba(62, 53, 47, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.ytSearchboxComponentInputBox:focus-within {
+  background: #fffdf8 !important;
+  border-color: #c13a3a !important;
+  box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.1), 6px 6px 0px rgba(193, 58, 58, 0.4) !important;
+}
+
+.ytSearchboxComponentSearchButton {
+  background: #e8d5b5 !important;
+  border-left: 2px solid #3e352f !important;
+  border-radius: 0 !important;
+}
+.ytSearchboxComponentSearchButton:hover {
+  background: #c13a3a !important;
+}
+.ytSearchboxComponentSearchButton:hover svg {
+  fill: white !important;
+}
+
+/* Comments section (Parchment look) */
+ytd-comment-thread-renderer {
+  background: #f4ecd8 !important;
+  border-radius: 2px !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  border: 1px solid #d1c0a5 !important;
+  border-left: 6px solid #c13a3a !important;
+  box-shadow: 4px 4px 0px rgba(62, 53, 47, 0.15) !important;
+}
+
+#simplebox-placeholder {
+  background: #e8d5b5 !important;
+  border-radius: 2px !important;
+  padding: 8px 16px !important;
+  border: 2px dashed #3e352f !important;
+}
+
+/* Progress bar */
+.ytp-play-progress {
+  background: #c13a3a !important;
+}
+
+.ytp-swatch-background-color {
+  background-color: #c13a3a !important;
+}
+
+/* Scrollbar overhaul (Blocky) */
+::-webkit-scrollbar {
+  width: 14px !important;
+}
+::-webkit-scrollbar-track {
+  background: #d1c0a5 !important;
+  border-left: 2px solid #3e352f !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #4a7c74 !important;
+  border: 2px solid #3e352f !important;
+  border-radius: 0 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c13a3a !important;
+}
+
+/* Shorts overlay */
+ytd-reel-video-renderer {
+  background: #e8d5b5 !important;
+  border-radius: 4px !important;
+  box-shadow: 10px 10px 0px rgba(62, 53, 47, 0.3) !important;
+  border: 8px solid #f4ecd8 !important;
+}
+
+/* Avatar styling */
+yt-img-shadow#avatar {
+  border: 2px solid #3e352f !important;
+  box-shadow: 3px 3px 0px rgba(62, 53, 47, 0.4) !important;
+  border-radius: 0 !important; /* Square avatars! */
+  filter: sepia(0.3);
+}
+
+/* =========================================== */
+/* TEXT READABILITY FIX — Vintage UI Theme     */
+/* All card/metadata text forced to dark brown */
+/* =========================================== */
+
+/* Video title text */
+#video-title,
+#video-title.ytd-rich-grid-media,
+#video-title.ytd-compact-video-renderer,
+ytd-rich-grid-media #video-title,
+ytd-compact-video-renderer #video-title,
+ytd-video-renderer #video-title,
+yt-formatted-string.ytd-rich-grid-media,
+.title.ytd-rich-grid-media,
+#title-wrapper h3 a,
+ytd-watch-metadata h1 {
+  color: #2c1f14 !important;
+  text-shadow: none !important;
+}
+
+/* Channel name / metadata */
+ytd-rich-grid-media #metadata-line,
+ytd-compact-video-renderer #metadata-line,
+ytd-video-renderer #metadata-line,
+ytd-rich-grid-media #byline-container,
+ytd-compact-video-renderer #byline-container,
+ytd-rich-grid-media .yt-simple-endpoint,
+ytd-compact-video-renderer .yt-simple-endpoint,
+ytd-rich-grid-media yt-formatted-string,
+ytd-compact-video-renderer yt-formatted-string,
+ytd-video-renderer yt-formatted-string,
+#channel-name .yt-simple-endpoint,
+ytd-channel-name yt-formatted-string,
+ytd-channel-name a,
+#metadata-line span,
+.inline-metadata-item {
+  color: #5c3d2e !important;
+  text-shadow: none !important;
+}
+
+/* View count, date metadata */
+ytd-rich-grid-media #metadata-line span,
+ytd-compact-video-renderer #metadata-line span,
+ytd-video-renderer #metadata-line span {
+  color: #7a5c45 !important;
+}
+
+/* Video card background */
+ytd-rich-grid-media,
+ytd-compact-video-renderer,
+ytd-video-renderer,
+ytd-playlist-video-renderer,
+ytd-grid-video-renderer {
+  color: #2c1f14 !important;
+}
+
+/* Description text */
+#description-text,
+yt-formatted-string#description-text {
+  color: #3e352f !important;
+}
+
+
+/* =========================================
+   FORCE DARK TEXT ON LIGHT VINTAGE THEME
+   ========================================= */
+
+/* Force dark text on ALL text-bearing elements when vintage theme is active */
+html[data-ypp-theme="vintage"] yt-formatted-string,
+html[data-ypp-theme="vintage"] span,
+html[data-ypp-theme="vintage"] a,
+html[data-ypp-theme="vintage"] h1,
+html[data-ypp-theme="vintage"] h2,
+html[data-ypp-theme="vintage"] h3,
+html[data-ypp-theme="vintage"] p,
+html[data-ypp-theme="vintage"] #video-title,
+html[data-ypp-theme="vintage"] .ytd-video-meta-block,
+html[data-ypp-theme="vintage"] #metadata-line span,
+html[data-ypp-theme="vintage"] yt-formatted-string.ytd-channel-name,
+html[data-ypp-theme="vintage"] #channel-name a,
+html[data-ypp-theme="vintage"] .ytd-channel-name,
+html[data-ypp-theme="vintage"] ytd-badge-supported-renderer span,
+html[data-ypp-theme="vintage"] #title-wrapper yt-formatted-string,
+html[data-ypp-theme="vintage"] .title-text,
+html[data-ypp-theme="vintage"] ytd-rich-grid-renderer #title,
+html[data-ypp-theme="vintage"] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-theme="vintage"] ytd-guide-entry-renderer yt-formatted-string {
+  color: #2c1f14 !important;
+}
+
+html[data-ypp-theme="vintage"] #video-title,
+html[data-ypp-theme="vintage"] ytd-video-renderer #video-title,
+html[data-ypp-theme="vintage"] ytd-rich-item-renderer #video-title {
+  color: #1a0f08 !important;
+}
+
+html[data-ypp-theme="vintage"] #metadata-line span,
+html[data-ypp-theme="vintage"] .ytd-video-meta-block span,
+html[data-ypp-theme="vintage"] yt-formatted-string.ytd-channel-name {
+  color: #5c3d2e !important;
+}
+
+/* Force light mode CSS variables so YouTube inherited colors are also dark */
+html[data-ypp-theme="vintage"] {
+  --yt-spec-text-primary: #2c1f14 !important;
+  --yt-spec-text-secondary: #5c3d2e !important;
+  --yt-spec-icon-active-other: #2c1f14 !important;
+  --yt-spec-icon-inactive: #5c3d2e !important;
 }

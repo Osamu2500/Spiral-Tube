@@ -2191,6 +2191,8 @@ html[data-ypp-card-style='vintage']
     )
   ) {
   background: #f4ecd8 !important;
+  --yt-spec-text-primary: #2c2520 !important;
+  --yt-spec-text-secondary: #5c5046 !important;
   border-radius: 4px !important;
   border: 1px solid #d4c4a8 !important;
   padding: var(--ypp-density-pad, 14px) !important;
@@ -2333,6 +2335,8 @@ html[data-ypp-card-style='blue-sky']
     )
   ) {
   background: rgba(240, 248, 255, 0.6) !important;
+  --yt-spec-text-primary: #000000 !important;
+  --yt-spec-text-secondary: #333333 !important;
   border-radius: 32px !important;
   border: 1px solid rgba(135, 206, 250, 0.2) !important;
   padding: var(--ypp-density-pad, 12px) !important;
@@ -2373,6 +2377,74 @@ html[data-ypp-card-style='blue-sky'] body:not(.ypp-channel-page) #video-title { 
 html[data-ypp-card-style='nature'] #mouseover-overlay, html[data-ypp-card-style='nature'] ytd-video-preview,
 html[data-ypp-card-style='vintage'] #mouseover-overlay, html[data-ypp-card-style='vintage'] ytd-video-preview,
 html[data-ypp-card-style='ocean'] #mouseover-overlay, html[data-ypp-card-style='ocean'] ytd-video-preview,
-html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-style='blue-sky'] ytd-video-preview {
+html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-style='blue-sky'] ytd-video-preview,
+html[data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'] ytd-video-preview {
   display: none !important;
+}
+
+
+/* Retro OS (Win 95) Card Style */
+html[data-ypp-card-style='retro']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: #c0c0c0 !important;
+  --yt-spec-text-primary: #000000 !important;
+  --yt-spec-text-secondary: #000000 !important;
+  border-radius: 0 !important;
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #808080 !important;
+  border-bottom: 2px solid #808080 !important;
+  padding: var(--ypp-density-pad, 12px) !important;
+  box-shadow: 1px 1px 0px #000000 !important;
+  transition: none !important;
+}
+html[data-ypp-card-style='retro']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):active {
+  border-top: 2px solid #808080 !important;
+  border-left: 2px solid #808080 !important;
+  border-right: 2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+  padding: calc(var(--ypp-density-pad, 12px) + 1px) calc(var(--ypp-density-pad, 12px) - 1px) calc(var(--ypp-density-pad, 12px) - 1px) calc(var(--ypp-density-pad, 12px) + 1px) !important;
+}
+html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 0 !important;
+  border: 2px inset #ffffff !important;
+  border-right-color: #808080 !important;
+  border-bottom-color: #808080 !important;
+}
+html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) #video-title { 
+  color: #000080 !important; 
+  font-family: "MS Sans Serif", Tahoma, sans-serif !important;
 }

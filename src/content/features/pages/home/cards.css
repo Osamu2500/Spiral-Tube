@@ -1,4 +1,4 @@
-﻿/* ===================================================================================
+/* ===================================================================================
    5. VIDEO GRID & CARDS
    =================================================================================== */
 
@@ -183,21 +183,21 @@ body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-i
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
   max-height: 4.8rem !important;
-  color: #ffffff !important;
+  color: var(--yt-spec-text-primary, #ffffff) !important;
 }
 
 /* Metadata */
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #metadata-line,
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer #channel-name {
   font-size: 1.3rem !important;
-  color: rgba(255, 255, 255, 0.55) !important;
+  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.55)) !important;
   line-height: 1.5 !important;
   transition: color 0.2s ease !important;
 }
 
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover #metadata-line,
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer:hover #channel-name {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: var(--yt-spec-text-primary, rgba(255, 255, 255, 0.8)) !important;
 }
 
 /* Consolidate Duplicate Hover Effects into One Premium Animation */

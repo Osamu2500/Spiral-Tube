@@ -1,0 +1,61 @@
+html.yt-spiral-tube-theme {
+    --ypp-bg-base: #ddf0fb;
+    --ypp-bg-surface: #eaf6ff;
+    --ypp-bg-glass: rgba(224, 242, 254, 0.88);
+    --ypp-glass-border: rgba(135, 206, 250, 0.35);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.55);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255,255,255,0.65) 0%, transparent 100%);
+
+    --ypp-text-primary: #0d3a5c;
+    --ypp-text-secondary: #1565a8;
+
+    --ypp-accent: #0284c7;
+    --ypp-accent-hover: #0369a1;
+    --ypp-accent-glow: rgba(2, 132, 199, 0.3);
+
+    /* SHADOWS */
+    --ypp-shadow-card: 0 8px 32px rgba(135, 206, 250, 0.2);
+    --ypp-shadow-float: 0 16px 48px rgba(2, 132, 199, 0.25);
+    --ypp-shadow-glow: 0 0 24px rgba(135, 206, 250, 0.3);
+    --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
+
+    /* COMPONENT OVERRIDES */
+    --ytd-searchbox-background: rgba(255, 255, 255, 0.7);
+    --ytd-searchbox-text-color: #0d3a5c;
+    --ytd-searchbox-border-radius: 30px;
+    --ytd-searchbox-height: 44px;
+    --ytd-searchbox-legacy-button-border-radius: 0 30px 30px 0;
+    --ytd-searchbox-legacy-button-width: 60px;
+    --ytd-searchbox-legacy-button-color: rgba(2, 132, 199, 0.1);
+}
+
+/* Drifting sky background */
+@keyframes ypp-sky-drift {
+    0%   { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.25; }
+    50%  { transform: translate(-50%, -50%) scale(1.15) rotate(4deg); opacity: 0.4; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.25; }
+}
+@keyframes ypp-sky-cloud {
+    0%   { transform: translate(-50%, -50%) scale(1.1) rotate(-3deg); opacity: 0.18; }
+    50%  { transform: translate(-50%, -50%) scale(1) rotate(3deg); opacity: 0.3; }
+    100% { transform: translate(-50%, -50%) scale(1.1) rotate(-3deg); opacity: 0.18; }
+}
+
+html.yt-spiral-tube-theme.ypp-theme-effects::before,
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
+    content: "";
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 200vw; height: 200vh;
+    z-index: -2;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+html.yt-spiral-tube-theme.ypp-theme-effects::before {
+    background: radial-gradient(ellipse at center, rgba(135, 206, 250, 0.35) 0%, rgba(186, 230, 253, 0.15) 40%, transparent 70%);
+    animation: ypp-sky-drift 18s ease-in-out infinite;
+}
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
+    background: radial-gradient(ellipse at 30% 70%, rgba(224, 242, 254, 0.4) 0%, transparent 60%);
+    animation: ypp-sky-cloud 25s ease-in-out infinite;
+}

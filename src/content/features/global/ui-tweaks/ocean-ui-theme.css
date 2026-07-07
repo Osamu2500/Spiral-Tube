@@ -6,7 +6,7 @@
   background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
 }
 /* === Dark mode (YouTube sets [dark] on <html>) === */
-html[dark] {
+html, [dark] {
   --blur: 4px;
   --sf: rgba(18, 28, 18, 0.85); /* Deep forest green / dark moss */
   --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -21,7 +21,7 @@ html[dark] {
   --ocean-border: 1px solid rgba(0, 188, 212, 0.3);
   --ocean-border-hover: 1px solid rgba(0, 188, 212, 0.6);
 }
-html[dark] body {
+html, [dark] body {
   background-color: #001a33 !important; /* Deep emerald base */
   background-image: 
     radial-gradient(circle at 15% 50%, rgba(0, 188, 212, 0.08), transparent 25%),
@@ -30,11 +30,11 @@ html[dark] body {
   background-size: 100% 100%, 100% 100%, 200px 200px !important;
   color: #ecfdf5 !important;
 }
-html[dark] body {
+html, [dark] body {
   background-color: #202020 !important;
 }
 /* === Light mode — use white-tinted glass, dark shadows === */
-html:not([dark]) {
+html, [dark] {
   --blur: 4px;
   --sf: rgba(240, 253, 244, 0.85); /* Honeydew / light mint */
   --shadow-base: 0 4px 15px rgba(0, 26, 51, 0.1);
@@ -49,7 +49,7 @@ html:not([dark]) {
   --ocean-border: 1px solid rgba(0, 188, 212, 0.3);
   --ocean-border-hover: 1px solid rgba(0, 188, 212, 0.6);
 }
-html:not([dark]) body {
+html, [dark] body {
   background-color: #b3e5fc !important;
   background-image: 
     radial-gradient(circle at 20% 40%, rgba(253, 224, 71, 0.4), transparent 40%),
@@ -165,7 +165,7 @@ ytd-browse[page-subtype="home"] #chips {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
-html[dark],
+html, [dark],
 [dark] {
   --yt-spec-base-background: none !important;
 }
@@ -806,10 +806,10 @@ ytd-topbar-logo-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 /* mix-blend-mode: difference inverts on light backgrounds — scope to dark mode only */
-html[dark] .ytSearchboxComponentInput {
+html, [dark] .ytSearchboxComponentInput {
   mix-blend-mode: difference;
 }
-html:not([dark]) .ytSearchboxComponentInput {
+html, [dark] .ytSearchboxComponentInput {
   mix-blend-mode: normal;
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
@@ -1148,14 +1148,14 @@ ytd-playlist-panel-renderer {
 }
 
 /* --- NOTIFICATION PANEL / YOU+SUBSCRIPTIONS POPUP — glass --- */
-html[dark] .ytSearchboxComponentSuggestionsContainer,
-html[dark] ytd-multi-page-menu-renderer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(14, 14, 18, 0.6) !important;
   
   
   border: var(--ocean-border) !important;
 }
-html:not([dark]) ytd-multi-page-menu-renderer {
+html, [dark] ytd-multi-page-menu-renderer {
   background: rgba(255, 255, 255, 0.88) !important;
   
   
@@ -1164,7 +1164,7 @@ html:not([dark]) ytd-multi-page-menu-renderer {
 
 /* --- SEARCH SUGGESTIONS — frosted glass, mode-aware --- */
 /* Dark mode: deep dark glass */
-html[dark] .ytSearchboxComponentSuggestionsContainer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(10, 10, 14, 0.92) !important;
   
   
@@ -1173,7 +1173,7 @@ html[dark] .ytSearchboxComponentSuggestionsContainer {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
 }
 /* Light mode: bright frosted glass so dark suggestion text stays readable */
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer {
+html, [dark] .ytSearchboxComponentSuggestionsContainer {
   background: rgba(255, 255, 255, 0.94) !important;
   
   
@@ -1183,20 +1183,20 @@ html:not([dark]) .ytSearchboxComponentSuggestionsContainer {
 }
 
 /* Suggestion text — force correct colour per mode */
-html[dark] .ytSearchboxComponentSuggestionsContainer,
-html[dark] .ytSearchboxComponentSuggestionsContainer * {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] .ytSearchboxComponentSuggestionsContainer * {
   color: #ffffff !important;
 }
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer,
-html:not([dark]) .ytSearchboxComponentSuggestionsContainer * {
+html, [dark] .ytSearchboxComponentSuggestionsContainer,
+html, [dark] .ytSearchboxComponentSuggestionsContainer * {
   color: #0f0f0f !important;
 }
 
 /* Suggestion row hover — mode-aware tint */
-html[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(255, 255, 255, 0.08) !important;
 }
-html:not([dark]) .ytSuggestionComponentRoundedSuggestion:hover {
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(0, 0, 0, 0.06) !important;
   box-shadow: none !important;
 }
@@ -1792,132 +1792,198 @@ tp-yt-paper-toast {
   border: var(--ocean-border) !important;
 }
 
-/* ========================================= */
-/* ADVANCED NATURE AESTHETICS OVERRIDES */
-/* ========================================= */
-* {
-  font-family: "Georgia", "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
-}
 
-/* Add Mist / Frosted Glass */
-ytd-masthead, tp-yt-paper-dialog, ytd-menu-popup-renderer, tp-yt-iron-dropdown, .ytp-popup.ytp-settings-menu {
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  background: var(--sf) !important;
-  border-radius: 24px 8px 24px 8px !important;
-  border: var(--ocean-border) !important;
-}
+/* ========================================= */
+/* ADVANCED AESTHETICS OVERRIDES (AUTO-SYNC) */
+/* ========================================= */
 
-/* Base Cards and Videos - Leaf Shape */
+/* Video Cards Parity */
 ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
   border: var(--ocean-border) !important;
-  background: var(--sf) !important;
-  padding: 12px !important;
-  margin-bottom: 20px !important;
-  border-radius: 30px 4px 30px 4px !important; /* Leaf shape */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: var(--sf, rgba(0,0,0,0.1)) !important;
+  border-radius: 4px 24px 24px 24px !important;
+  box-shadow: var(--shadow-base, 0 4px 15px rgba(0,0,0,0.2)) !important;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  box-shadow: var(--shadow-base) !important;
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle decorative vine in the corner of cards */
-ytd-rich-grid-media::after, ytd-compact-video-renderer::after {
+ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
+  box-shadow: var(--shadow-hover, 0 8px 25px rgba(0,0,0,0.3)) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Titles and Text Colors */
+#video-title {
+  color: var(--ocean-primary) !important;
+}
+.ytd-channel-name, .ytd-video-meta-block {
+  color: var(--ocean-secondary) !important;
+}
+
+/* Progress Bar */
+.ytp-play-progress {
+  background: var(--ocean-primary) !important;
+}
+.ytp-scrubber-button {
+  background: var(--ocean-secondary) !important;
+  border: 2px solid var(--ocean-primary) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px !important; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2) !important; border-radius: 4px 24px 24px 24px; }
+::-webkit-scrollbar-thumb { 
+  background: var(--ocean-primary) !important; 
+  border-radius: 4px 24px 24px 24px !important; 
+}
+
+/* Corner Decoration */
+ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-renderer::after {
   content: '';
   position: absolute;
   top: -10px;
   right: -10px;
   width: 50px;
   height: 50px;
-  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="rgba(163,230,53,0.15)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(0%2C188%2C212%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2%2012c2.5%200%205-2%207.5-2s5%202%207.5%202%205-2%207.5-2v8H2v-6z%22%2F%3E%3C%2Fsvg%3E');
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.5;
   pointer-events: none;
-  transform: rotate(45deg);
+  transform: rotate(15deg);
 }
-html:not([dark]) ytd-rich-grid-media::after {
-  stroke: rgba(22,101,52,0.15);
+
+
+/* ========================================= */
+/* DEEP OCEAN ADVANCED OVERHAUL */
+/* ========================================= */
+
+/* Typography - Fluid and rounded */
+* {
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', system-ui, sans-serif !important;
+}
+
+/* Deep Water Animated Background */
+@keyframes deepWaterDrift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html, [dark] body {
+  background: linear-gradient(135deg, #020a17, #001a33, #053b50, #001a33) !important;
+  background-size: 400% 400% !important;
+  animation: deepWaterDrift 20s ease infinite !important;
+  color: #e0f7fa !important;
+}
+
+html, [dark] body {
+  background: linear-gradient(135deg, #b3e5fc, #e1f5fe, #81d4fa, #e1f5fe) !important;
+  background-size: 400% 400% !important;
+  animation: deepWaterDrift 20s ease infinite !important;
+  color: #013a52 !important;
+}
+
+/* Sea Glass Variables */
+html, [dark] {
+  --sf: rgba(0, 20, 40, 0.45) !important;
+  --ocean-border: 1px solid rgba(0, 188, 212, 0.2) !important;
+  --ocean-border-hover: 1px solid rgba(0, 188, 212, 0.8) !important;
+  --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  --shadow-hover: 0 10px 30px rgba(0, 188, 212, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  --blur: 12px !important;
+}
+
+html, [dark] {
+  --sf: rgba(255, 255, 255, 0.4) !important;
+  --ocean-border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  --ocean-border-hover: 1px solid rgba(0, 188, 212, 0.8) !important;
+  --shadow-base: 0 4px 15px rgba(0, 188, 212, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  --shadow-hover: 0 10px 30px rgba(0, 188, 212, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  --blur: 16px !important;
+}
+
+/* Apply strong blur to video cards */
+ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
+  backdrop-filter: blur(var(--blur)) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
+}
+
+/* Bobbing Animation */
+@keyframes buoyBob {
+  0% { transform: translateY(0px) scale(1.01); }
+  50% { transform: translateY(-6px) scale(1.01); }
+  100% { transform: translateY(0px) scale(1.01); }
 }
 
 ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
-  border: var(--ocean-border-hover) !important;
+  animation: buoyBob 3s ease-in-out infinite !important;
   box-shadow: var(--shadow-hover) !important;
-  transform: translateY(-4px) scale(1.02) !important;
+  border: var(--ocean-border-hover) !important;
 }
 
-/* Thumbnails */
-.ytd-thumbnail {
-  border-radius: 20px 4px 20px 4px !important;
-  border: var(--ocean-border);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+/* Water Ripple Animation for Buttons */
+@keyframes waterRipple {
+  0% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4); }
+  100% { box-shadow: 0 0 0 15px rgba(0, 188, 212, 0); }
 }
 
-/* Titles and Text */
-#video-title {
-  color: var(--ocean-primary) !important;
-  font-weight: 600 !important;
-}
-.ytd-channel-name, .ytd-video-meta-block {
-  color: var(--ocean-secondary) !important;
-  font-family: "Inter", system-ui, sans-serif !important; /* Keep meta readable */
+.yt-spec-button-shape-next--filled:hover, .yt-chip-shape:hover, .ytp-play-button:hover {
+  animation: waterRipple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite !important;
 }
 
-/* Buttons & Chips - Pebble Shape */
-.yt-chip-shape, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--tonal, ytd-button-renderer {
+/* Search Bar Glowing Pill */
+.ytSearchboxComponentInputBoxDark, .ytSearchboxComponentInputBox, ytd-searchbox #container {
+  border-radius: 50px !important;
   background: var(--sf) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
   border: var(--ocean-border) !important;
-  color: var(--ocean-primary) !important;
-  border-radius: 40px !important; /* smooth pebbles */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.yt-chip-shape:hover, .yt-spec-button-shape-next--filled:hover, .yt-spec-button-shape-next--tonal:hover {
-  background: var(--ocean-primary) !important;
-  color: #fff !important;
-  border-color: var(--ocean-primary) !important;
-  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
-  transform: translateY(-2px);
+  transition: all 0.3s ease !important;
+  box-shadow: inset 0 0 10px rgba(0, 188, 212, 0.05);
 }
 
-/* Search Bar - Wooden/Bamboo feel */
-ytd-searchbox #container {
-  background: var(--sf) !important;
-  border: var(--ocean-border) !important;
-  border-radius: 30px 0 0 30px !important;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-}
-ytd-searchbox #search-icon-legacy {
-  border-radius: 0 30px 30px 0 !important;
-  border: var(--ocean-border) !important;
-  background: var(--sf) !important;
-}
-ytd-searchbox #search-icon-legacy:hover {
-  background: var(--ocean-primary) !important;
-  color: white !important;
+.ytSearchboxComponentInputBoxDark:focus-within, .ytSearchboxComponentInputBox:focus-within, ytd-searchbox #container:focus-within {
+  border: 1px solid #00bcd4 !important;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 10px rgba(0, 188, 212, 0.2) !important;
 }
 
-/* Progress Bar */
-.ytp-play-progress {
-  background: linear-gradient(90deg, #84cc16, #22c55e) !important;
-  border-radius: 10px;
-}
-.ytp-scrubber-button {
-  background: #00bcd4 !important;
+/* Avatar Sea Glass Styling */
+yt-img-shadow.ytd-topbar-menu-button-renderer, yt-img-shadow.ytd-comment-view-model, yt-img-shadow.ytd-channel-name, yt-img-shadow.ytd-video-owner-renderer {
   border-radius: 50% !important;
-  box-shadow: 0 0 10px rgba(132, 204, 22, 0.6);
-  border: 2px solid #fff;
+  border: 2px solid rgba(0, 188, 212, 0.4) !important;
+  box-shadow: 0 0 12px rgba(0, 188, 212, 0.2);
+  padding: 2px;
+  background: var(--sf);
+  backdrop-filter: blur(4px);
 }
 
-/* Custom Scrollbar - Vine like */
-::-webkit-scrollbar { width: 12px !important; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.1) !important; border-radius: 10px; }
-::-webkit-scrollbar-thumb { 
-  background: var(--ocean-primary) !important; 
-  border-radius: 10px !important; 
-  border: 3px solid rgba(0,0,0,0.1);
+/* Comments Section Deep Sea Vibe */
+ytd-comment-thread-renderer {
+  background: var(--sf) !important;
+  border-radius: 20px !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  border: var(--ocean-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
+}
+
+#placeholder-area.ytd-comment-simplebox-renderer {
+  border-radius: 20px !important;
+  background: var(--sf) !important;
+  border: var(--ocean-border) !important;
+}
+
+/* Shorts UI Enhancement */
+ytd-reel-video-renderer[is-active] {
+  border-radius: 32px !important;
+  box-shadow: 0 0 40px rgba(0, 188, 212, 0.15) !important;
+  border: var(--ocean-border) !important;
+}
+
+.overlay.ytd-reel-video-renderer {
+  background: linear-gradient(to top, rgba(0,26,51,0.9) 0%, rgba(0,26,51,0) 40%) !important;
 }
