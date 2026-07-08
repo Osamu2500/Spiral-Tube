@@ -6,27 +6,27 @@ You operate within a **3-layer architecture** that separates concerns to maximiz
 
 ### **Layer 1: Directive (What to do)**
 
-* Basically just SOPs written in Markdown, live in `directives/`
-* Define the goals, inputs, tools/scripts to use, outputs, and edge cases
-* Natural language instructions, like you'd give a mid-level employee
+- Basically just SOPs written in Markdown, live in `directives/`
+- Define the goals, inputs, tools/scripts to use, outputs, and edge cases
+- Natural language instructions, like you'd give a mid-level employee
 
 ---
 
 ### **Layer 2: Orchestration (Decision making)**
 
-* This is you. Your job: intelligent routing.
-* Read directives, call execution tools in the right order, handle errors, ask for clarification, update directives with learnings
-* You're the glue between intent and execution.
+- This is you. Your job: intelligent routing.
+- Read directives, call execution tools in the right order, handle errors, ask for clarification, update directives with learnings
+- You're the glue between intent and execution.
   E.g. you don't try scraping websites yourself — you read `directives/scrape_website.md`, come up with inputs/outputs, and then run `execution/scrape_single_site.py`
 
 ---
 
 ### **Layer 3: Execution (Doing the work)**
 
-* Deterministic Python scripts in `execution/`
-* Environment variables, API tokens, etc are stored in `.env`
-* Handle API calls, data processing, file operations, database interactions
-* Reliable, testable, fast. Use scripts instead of manual work.
+- Deterministic Python scripts in `execution/`
+- Environment variables, API tokens, etc are stored in `.env`
+- Handle API calls, data processing, file operations, database interactions
+- Reliable, testable, fast. Use scripts instead of manual work.
 
 ---
 
@@ -51,10 +51,10 @@ Only create new scripts if none exist.
 
 ### **2. Self-anneal when things break**
 
-* Read error message and stack trace
-* Fix the script and test it again
+- Read error message and stack trace
+- Fix the script and test it again
   (unless it uses paid tokens/credits/etc — in which case you check with the user first)
-* Update the directive with what you learned
+- Update the directive with what you learned
   (API limits, timing, edge cases)
 
 **Example:**
@@ -88,9 +88,9 @@ Errors are learning opportunities. When something breaks:
 
 ### **Deliverables vs Intermediates**
 
-* **Deliverables:**
+- **Deliverables:**
   Google Sheets, Google Slides, or other cloud-based outputs that the user can access
-* **Intermediates:**
+- **Intermediates:**
   Temporary files needed during processing
 
 ---
@@ -125,7 +125,6 @@ Read instructions, make decisions, call tools, handle errors, continuously impro
 Be reliable.
 Self-anneal.**
 
-
 ## Skills System
 
 Skills live in `.agent/skills/skills/`. Read the relevant SKILL.md before acting.
@@ -134,23 +133,27 @@ Skills live in `.agent/skills/skills/`. Read the relevant SKILL.md before acting
 
 ### Mandatory Skill Routing Table
 
-| Situation | Skill(s) to Use |
-|-----------|----------------|
-| **Any bug**, unexpected behavior, broken feature | `systematic-debugging` — MUST complete all 4 phases before ANY fix |
-| **Adding any new feature** | `brainstorming` → `browser-extension-builder` → `uncle-bob-craft` |
-| **YouTube DOM interaction** — selectors, CSS override, SPA nav, MutationObserver | `youtube-dom-mastery` — read BEFORE writing any DOM code |
-| **Popup UI building or redesign** | `frontend-design` + `ui-ux-pro-max` + `animejs-animation` |
-| **Popup UI accessibility review** | `web-design-guidelines` |
-| **Code quality review** — after feature complete | `vibe-code-auditor` + `uncle-bob-craft` |
-| **Refactoring messy/long code** | `uncle-bob-craft` |
-| **Adding animations or micro-interactions** | `animejs-animation` |
-| **Pre-feature planning** — unsure how to build something | `brainstorming` |
+| Situation                                                                        | Skill(s) to Use                                                    |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **Any bug**, unexpected behavior, broken feature                                 | `systematic-debugging` — MUST complete all 4 phases before ANY fix |
+| **Adding any new feature**                                                       | `brainstorming` → `browser-extension-builder` → `uncle-bob-craft`  |
+| **YouTube DOM interaction** — selectors, CSS override, SPA nav, MutationObserver | `youtube-dom-mastery` — read BEFORE writing any DOM code           |
+| **Popup UI building or redesign**                                                | `frontend-design` + `ui-ux-pro-max` + `animejs-animation`          |
+| **Popup UI accessibility review**                                                | `web-design-guidelines`                                            |
+| **Code quality review** — after feature complete                                 | `vibe-code-auditor` + `uncle-bob-craft`                            |
+| **Refactoring messy/long code**                                                  | `uncle-bob-craft`                                                  |
+| **Adding animations or micro-interactions**                                      | `animejs-animation`                                                |
+| **Pre-feature planning** — unsure how to build something                         | `brainstorming`                                                    |
+| **Planning a specific feature spec / PRD**                                       | `prd` — generates structured PRD with clarifying questions         |
+| **Converting a PRD to autonomous execution format**                              | `ralph` — converts PRD to `prd.json` for story-by-story execution  |
+| **Reviewing code for bugs, security, quality** before committing                 | `code-review` — runs CodeRabbit CLI with `--agent` flag            |
 
 ---
 
 ### Non-Negotiable Rules for This Extension
 
 1. **ALWAYS merge settings, never overwrite:**
+
    ```js
    this.settings = { ...this.settings, ...request.settings }; // ✅
    this.settings = request.settings; // ❌ BREAKS other features
@@ -169,6 +172,7 @@ Skills live in `.agent/skills/skills/`. Read the relevant SKILL.md before acting
 7. **ALWAYS use constants for selectors** — no magic strings scattered in code
 
 8. **ALWAYS stamp processed DOM nodes** to prevent double-processing:
+
    ```js
    if (el.hasAttribute('data-ypp-processed')) return;
    el.setAttribute('data-ypp-processed', 'true');
@@ -182,33 +186,39 @@ Skills live in `.agent/skills/skills/`. Read the relevant SKILL.md before acting
 
 ### Skill Trigger Examples
 
-| User Says | Use Skills |
-|-----------|-----------|
-| "thumbnails not changing" | `systematic-debugging` → `youtube-dom-mastery` |
-| "add a new [feature]" | `brainstorming` → `browser-extension-builder` → `uncle-bob-craft` |
-| "the popup looks bad/boring" | `frontend-design` + `ui-ux-pro-max` + `animejs-animation` |
-| "audit the codebase" | `vibe-code-auditor` + `uncle-bob-craft` |
-| "nothing happens when I toggle" | `systematic-debugging` → `browser-extension-builder` |
-| "add animations to popup" | `animejs-animation` |
-| "YouTube styles not applying" | `youtube-dom-mastery` → `systematic-debugging` |
-| "plan how to build X" | `brainstorming` |
-| "review my UI" | `web-design-guidelines` |
-| "refactor this feature" | `uncle-bob-craft` |
+| User Says                                         | Use Skills                                                        |
+| ------------------------------------------------- | ----------------------------------------------------------------- |
+| "thumbnails not changing"                         | `systematic-debugging` → `youtube-dom-mastery`                    |
+| "add a new [feature]"                             | `brainstorming` → `browser-extension-builder` → `uncle-bob-craft` |
+| "the popup looks bad/boring"                      | `frontend-design` + `ui-ux-pro-max` + `animejs-animation`         |
+| "audit the codebase"                              | `vibe-code-auditor` + `uncle-bob-craft`                           |
+| "nothing happens when I toggle"                   | `systematic-debugging` → `browser-extension-builder`              |
+| "add animations to popup"                         | `animejs-animation`                                               |
+| "YouTube styles not applying"                     | `youtube-dom-mastery` → `systematic-debugging`                    |
+| "plan how to build X"                             | `brainstorming`                                                   |
+| "review my UI"                                    | `web-design-guidelines`                                           |
+| "refactor this feature"                           | `uncle-bob-craft`                                                 |
+| "create a prd for [feature]"                      | `prd`                                                             |
+| "write requirements for [feature]"                | `prd`                                                             |
+| "convert to ralph format" / "make prd.json"       | `ralph`                                                           |
+| "review my code" / "find bugs" / "run coderabbit" | `code-review`                                                     |
 
 ---
 
 ### Available Skills Registry
 
-| Skill Name | Category | Purpose |
-|------------|----------|---------|
-| `systematic-debugging` | Debugging | Root-cause-first 4-phase debug process |
-| `browser-extension-builder` | Architecture | MV3 patterns, messaging, storage, lifecycle |
-| `youtube-dom-mastery` | YouTube/DOM | Selectors, CSS override, SPA, MutationObserver |
-| `brainstorming` | Planning | Structured feature design before coding |
-| `frontend-design` | UI/Design | Premium dark glassmorphism popup design system |
-| `ui-ux-pro-max` | UI/Design | Design system, animations, 50 styles |
-| `animejs-animation` | Animation | Micro-interactions, stagger, popup polish |
-| `web-design-guidelines` | Accessibility | WCAG + Vercel guidelines audit |
-| `uncle-bob-craft` | Code Quality | SOLID, clean code, naming, code review |
-| `vibe-code-auditor` | Code Quality | Production risk audit of AI-generated code |
-
+| Skill Name                  | Category      | Purpose                                                           |
+| --------------------------- | ------------- | ----------------------------------------------------------------- |
+| `systematic-debugging`      | Debugging     | Root-cause-first 4-phase debug process                            |
+| `browser-extension-builder` | Architecture  | MV3 patterns, messaging, storage, lifecycle                       |
+| `youtube-dom-mastery`       | YouTube/DOM   | Selectors, CSS override, SPA, MutationObserver                    |
+| `brainstorming`             | Planning      | Structured feature design before coding                           |
+| `frontend-design`           | UI/Design     | Premium dark glassmorphism popup design system                    |
+| `ui-ux-pro-max`             | UI/Design     | Design system, animations, 50 styles                              |
+| `animejs-animation`         | Animation     | Micro-interactions, stagger, popup polish                         |
+| `web-design-guidelines`     | Accessibility | WCAG + Vercel guidelines audit                                    |
+| `uncle-bob-craft`           | Code Quality  | SOLID, clean code, naming, code review                            |
+| `vibe-code-auditor`         | Code Quality  | Production risk audit of AI-generated code                        |
+| `prd`                       | Planning      | Generate structured PRDs with clarifying questions (Ralph system) |
+| `ralph`                     | Planning      | Convert PRDs to prd.json for autonomous story-by-story execution  |
+| `code-review`               | Code Quality  | AI code review via CodeRabbit CLI — finds bugs, security issues   |

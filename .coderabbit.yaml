@@ -1,0 +1,54 @@
+# CodeRabbit Configuration
+# https://docs.coderabbit.ai/getting-started/configure-coderabbit
+
+version: "2"
+
+# Language settings
+language: "en-US"
+
+# Review settings
+reviews:
+  # Request changes workflow
+  request_changes_workflow: false
+  
+  # High-level summary of the PR
+  high_level_summary: true
+  
+  # Poem at the end of each review (fun)
+  poem: false
+  
+  # Review status (approve when no issues)
+  review_status: true
+  
+  # Collapse walkthrough for long reviews
+  collapse_walkthrough: false
+  
+  # Auto-review on push
+  auto_review:
+    enabled: true
+    # Only review when these labels are NOT present
+    ignore_title_keywords:
+      - "WIP"
+      - "Draft"
+    # Draft PRs
+    drafts: false
+    
+  # Path filters — only review extension source
+  path_filters:
+    - "src/**"
+    - "manifest.json"
+    - "*.js"
+    - "*.ts"
+    - "!dist/**"
+    - "!node_modules/**"
+    - "!*.min.js"
+
+# Chat settings
+chat:
+  auto_reply: true
+
+# Code review focus areas for this extension
+# These guide what CodeRabbit pays attention to
+finishing_touches:
+  docstrings:
+    enabled: false  # Extension uses JSDoc minimally
