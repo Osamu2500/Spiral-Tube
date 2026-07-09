@@ -442,6 +442,14 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
              else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
              else if (ytTheme === 'retro') finalCardStyle = 'retro';
              else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
+             else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
+             else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
+             else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';
+             else if (ytTheme === 'minimalism') finalCardStyle = 'minimalism';
+             else if (ytTheme === 'maximalism') finalCardStyle = 'maximalism';
+             else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
+             else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
+             else if (ytTheme === 'material') finalCardStyle = 'material';
         }
 
         root.setAttribute('data-ypp-card-style', finalCardStyle);
