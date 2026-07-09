@@ -411,7 +411,7 @@ export const POPUP_SCHEMA = [
             {
                 title: 'Global Player Bar',
                 items: [
-                    { type:'toggle', id:'enableGlobalPlayerBar', label:'Global Player Bar', desc:'Enable on external sites', icon:P('M3 3h18v14H3zM3 15h18'), slot:'globalPlayerBarOptions' },
+                    { type:'toggle', id:'enableGlobalPlayerBar', label:'Global Player Bar', desc:'Enable on external sites', icon:P('M3 3h18v14H3zM3 15h18'), slot:'globalPlayerBarOptions', style: 'grid-column: 1 / -1;' },
                 ]
             },
             {
