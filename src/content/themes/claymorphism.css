@@ -1,0 +1,19 @@
+html[data-ypp-theme='claymorphism'] {
+    --ypp-bg-base: #f0e8ff;
+    --ypp-bg-surface: #fce4f0;
+    --ypp-bg-glass: rgba(255, 255, 255, 0.7);
+    --ypp-glass-border: rgba(255, 255, 255, 0.6);
+    
+    --ypp-text-primary: #3d2a5c;
+    --ypp-text-secondary: #8a72a9;
+    
+    --ypp-accent: #c96ec7;
+    --ypp-accent-hover: #f7a8d0;
+    --ypp-accent-glow: rgba(201, 110, 199, 0.3);
+
+    /* SHADOWS */
+    --ypp-shadow-card: 4px 4px 0px rgba(0,0,0,0.12);
+    --ypp-shadow-float: 6px 6px 0px rgba(0,0,0,0.15);
+    --ypp-shadow-glow: 0 0 24px rgba(201, 110, 199, 0.3);
+    --ypp-shadow-accent-glow: 0 0 32px rgba(201, 110, 199, 0.3);
+}

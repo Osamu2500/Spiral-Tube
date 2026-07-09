@@ -1,0 +1,311 @@
+/* ============================================================
+   MINIMALISM — Clean, ultra-simple, breathable UI for YouTube
+   Extensive whitespace, extremely faint borders, no shadows,
+   monochrome palette, sleek typography, subtle fades.
+   Full 1:1 element coverage matching liquid-glass scope.
+   ============================================================ */
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"],
+html[data-ypp-ui-style="minimalism"] [dark] {
+  --blur: 0px;
+  --sf:   transparent;
+  --shadow-base:   none;
+  --shadow-hover:  none;
+  --shadow-active: none;
+  --bounce:        0.3s ease;
+  --bounce-alt:    0.4s ease;
+
+  --min-radius: 4px;
+  --min-border: 1px solid rgba(0,0,0,0.08);
+  --min-border-hover: 1px solid rgba(0,0,0,0.2);
+  
+  --min-bg:     #fafafa;
+  --min-surf:   #ffffff;
+  --min-text:   #111111;
+  --min-muted:  #666666;
+  --min-accent: #000000;
+
+  --min-font:   "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --yt-spec-base-background: #fafafa !important;
+  --yt-spec-general-background-a: #fafafa !important;
+  --yt-spec-general-background-b: #ffffff !important;
+  --yt-spec-10-percent-layer: rgba(0,0,0,0.04) !important;
+  --yt-spec-text-primary: #111111 !important;
+  --yt-spec-text-secondary: #666666 !important;
+  --yt-spec-icon-active-other: #111111 !important;
+  --yt-spec-call-to-action: #000000 !important;
+}
+
+/* ── Global Font & Reset ───────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] * {
+  font-family: var(--min-font) !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  box-shadow: none !important; /* Force remove all shadows globally */
+}
+
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+
+/* ── Body ──────────────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] body {
+  background: var(--min-bg) !important;
+}
+
+/* ── App Shell ─────────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] ytd-app,
+html[data-ypp-ui-style="minimalism"] ytd-masthead,
+html[data-ypp-ui-style="minimalism"] #page-manager.ytd-app,
+html[data-ypp-ui-style="minimalism"] #content.ytd-app {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="minimalism"] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ── Masthead ──────────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] #masthead-container { background: transparent !important; }
+
+html[data-ypp-ui-style="minimalism"] ytd-masthead #container {
+  background: var(--min-surf) !important;
+  border-bottom: var(--min-border) !important;
+}
+
+/* ── Chips / Category Bar ──────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="minimalism"] ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
+  padding: 0 !important;
+  margin: 16px 16px 0 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+html[data-ypp-ui-style="minimalism"] ytd-guide-renderer #sections { margin-left: 8px !important; }
+
+html[data-ypp-ui-style="minimalism"] ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="minimalism"] ytd-browse[page-subtype="home"] #chips {
+  background: var(--min-surf) !important;
+  border-bottom: var(--min-border) !important;
+  padding: 10px 0 !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .yt-chip-shape {
+  background-color: transparent !important;
+  border: var(--min-border) !important;
+  border-radius: var(--min-radius) !important;
+  transition: all var(--bounce) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] #contents.ytd-page-manager { margin-top: 0; margin-left: 16px; }
+
+/* ── Sidebar Guide ─────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] #guide-content.ytd-app { background: transparent; }
+
+html[data-ypp-ui-style="minimalism"] #guide-wrapper.ytd-app {
+  background: var(--min-surf) !important;
+  border-right: var(--min-border) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: var(--min-radius) !important;
+  margin: 2px 8px !important;
+  transition: background var(--bounce) !important;
+  color: var(--min-text) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="minimalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+  background: rgba(0,0,0,0.04) !important;
+}
+
+/* ── Player Controls ───────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button,
+html[data-ypp-ui-style="minimalism"] .ytp-delhi-modern .ytp-time-wrapper,
+html[data-ypp-ui-style="minimalism"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
+  background: transparent !important;
+  border-radius: var(--min-radius) !important;
+  transition: background var(--bounce) !important;
+  opacity: 0.8;
+}
+
+html[data-ypp-ui-style="minimalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:hover {
+  background: rgba(255,255,255,0.1) !important;
+  opacity: 1;
+}
+
+/* ── Search Bar ────────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-style="minimalism"] .ytSearchboxComponentInputBox {
+  background: var(--min-surf) !important;
+  border: var(--min-border) !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid rgba(0,0,0,0.1) !important;
+  transition: border-bottom-color var(--bounce) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .ytSearchboxComponentInputBox:focus-within {
+  border-bottom-color: #000 !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .ytSearchboxComponentSearchButton {
+  margin-left: 8px !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--min-muted) !important;
+  transition: color var(--bounce) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .ytSearchboxComponentSearchButton:hover {
+  color: #000 !important;
+}
+
+/* ── Masthead Buttons ──────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="minimalism"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="minimalism"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="minimalism"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
+  background: transparent !important;
+  border-radius: var(--min-radius) !important;
+  transition: background var(--bounce), color var(--bounce) !important;
+  color: var(--min-text) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="minimalism"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="minimalism"] yt-icon-button.ytd-masthead:hover,
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
+  background: rgba(0,0,0,0.05) !important;
+}
+
+/* Subscribe button */
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  background: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--min-radius) !important;
+  transition: background var(--bounce) !important;
+  padding: 0 20px !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  background: #333 !important;
+}
+
+/* ── Menus / Dropdowns ─────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style="minimalism"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="minimalism"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="minimalism"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="minimalism"] #contentWrapper.tp-yt-iron-dropdown > * {
+  background: var(--min-surf) !important;
+  border: var(--min-border) !important;
+  border-radius: var(--min-radius) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer {
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="minimalism"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:hover {
+  background: rgba(0,0,0,0.03) !important;
+}
+
+/* ── Video Player ──────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] video.video-stream.html5-main-video,
+html[data-ypp-ui-style="minimalism"] .html5-video-player {
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* Progress bar */
+html[data-ypp-ui-style="minimalism"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style="minimalism"] .ytProgressBarLineProgressBarHovered {
+  background: #000 !important;
+}
+html[data-ypp-ui-style="minimalism"] .ytProgressBarLineProgressBarLoaded {
+  background: rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-ui-style="minimalism"] .ytProgressBarLineProgressBarBackground {
+  background: rgba(0,0,0,0.05) !important;
+}
+
+/* ── Extension panels ──────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] #ypp-global-player-bar,
+html[data-ypp-ui-style="minimalism"] .ypp-global-bar,
+html[data-ypp-ui-style="minimalism"] .ypp-video-controls,
+html[data-ypp-ui-style="minimalism"] .ypp-shadow-panel,
+html[data-ypp-ui-style="minimalism"] .ypp-organizer-modal,
+html[data-ypp-ui-style="minimalism"] .ypp-modal-content,
+html[data-ypp-ui-style="minimalism"] .ypp-account-menu,
+html[data-ypp-ui-style="minimalism"] #ypp-top-bar,
+html[data-ypp-ui-style="minimalism"] #ypp-eq-panel,
+html[data-ypp-ui-style="minimalism"] #ypp-cinema-panel {
+  background: var(--min-surf) !important;
+  border: var(--min-border) !important;
+  border-radius: var(--min-radius) !important;
+}
+
+html[data-ypp-ui-style="minimalism"] .ypp-gpb-btn,
+html[data-ypp-ui-style="minimalism"] .ypp-action-btn,
+html[data-ypp-ui-style="minimalism"] .ypp-icon-btn,
+html[data-ypp-ui-style="minimalism"] .ypp-pill-toggle,
+html[data-ypp-ui-style="minimalism"] .ypp-eq-preset-btn,
+html[data-ypp-ui-style="minimalism"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-style="minimalism"] .ypp-vcp-compare-toggle {
+  background: transparent !important;
+  border: none !important;
+  transition: background var(--bounce), opacity var(--bounce) !important;
+  opacity: 0.7;
+}
+html[data-ypp-ui-style="minimalism"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="minimalism"] .ypp-action-btn:hover,
+html[data-ypp-ui-style="minimalism"] .ypp-icon-btn:hover,
+html[data-ypp-ui-style="minimalism"] .ypp-pill-toggle:hover {
+  background: rgba(0,0,0,0.05) !important;
+  opacity: 1;
+}
+
+html[data-ypp-ui-style="minimalism"] .ypp-slider,
+html[data-ypp-ui-style="minimalism"] .ypp-gpb-vol-slider {
+  accent-color: #000 !important;
+  background: rgba(0,0,0,0.05) !important;
+}
+
+/* ── Video cards ───────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] ytd-rich-grid-media,
+html[data-ypp-ui-style="minimalism"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="minimalism"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="minimalism"] ytd-grid-video-renderer {
+  background: transparent !important;
+  border: none !important;
+  transition: opacity var(--bounce) !important;
+}
+html[data-ypp-ui-style="minimalism"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="minimalism"] ytd-compact-video-renderer:hover {
+  opacity: 0.8;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] ::-webkit-scrollbar { width: 4px !important; }
+html[data-ypp-ui-style="minimalism"] ::-webkit-scrollbar-track { background: transparent !important; }
+html[data-ypp-ui-style="minimalism"] ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2) !important; border-radius: var(--min-radius) !important; }
+
+/* ── Active states ─────────────────────────────────────────── */
+html[data-ypp-ui-style="minimalism"] .ypp-nav-btn.active {
+  background: rgba(0,0,0,0.08) !important;
+  color: #000 !important;
+  font-weight: bold;
+}

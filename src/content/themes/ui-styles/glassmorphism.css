@@ -1,0 +1,268 @@
+/* ============================================================
+   GLASSMORPHISM — Frosted glass, blurred translucent panels
+   Vibrant abstract background blobs, heavy backdrop-filter blur,
+   semi-transparent white/black panels, light structural borders.
+   Full 1:1 element coverage matching liquid-glass scope.
+   ============================================================ */
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"],
+html[data-ypp-ui-style="glassmorphism"] [dark] {
+  --blur: 24px;
+  --sf:   rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+  --glass-border-light: 1px solid rgba(255, 255, 255, 0.15);
+  --glass-highlight: inset 0 1px 0 rgba(255,255,255,0.4);
+  
+  --shadow-base:   0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  --shadow-hover:  0 12px 48px 0 rgba(31, 38, 135, 0.3);
+  --shadow-active: 0 4px 16px 0 rgba(31, 38, 135, 0.15);
+  
+  --bounce:        0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --bounce-alt:    0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  --glass-radius: 16px;
+  --glass-radius-pill: 9999px;
+  
+  --font-base:   "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-general-background-a: transparent !important;
+  --yt-spec-general-background-b: transparent !important;
+  --yt-spec-10-percent-layer: rgba(255,255,255,0.1) !important;
+  --yt-spec-text-primary: #fff !important;
+  --yt-spec-text-secondary: rgba(255,255,255,0.7) !important;
+  --yt-spec-icon-active-other: #fff !important;
+  --yt-spec-icon-inactive: rgba(255,255,255,0.7) !important;
+  --yt-spec-call-to-action: #fff !important;
+}
+
+/* For light mode we invert some text colors but keep the glass structure */
+html[data-ypp-ui-style="glassmorphism"]:not([dark]) {
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --yt-spec-text-primary: #000 !important;
+  --yt-spec-text-secondary: rgba(0,0,0,0.7) !important;
+  --yt-spec-icon-active-other: #000 !important;
+  --yt-spec-icon-inactive: rgba(0,0,0,0.7) !important;
+}
+
+/* ── Global Font & Reset ───────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] * {
+  font-family: var(--font-base) !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Body & Vibrant Background ─────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] body {
+  background: #0f0c29 !important; /* fallback */
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+}
+
+html[data-ypp-ui-style="glassmorphism"]:not([dark]) body {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2, #e0c3fc) !important;
+  background-attachment: fixed !important;
+}
+
+/* Animated background blobs for the glassmorphism effect to refract */
+html[data-ypp-ui-style="glassmorphism"] body::before,
+html[data-ypp-ui-style="glassmorphism"] body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  animation: floatBlobs 20s infinite alternate ease-in-out;
+}
+
+html[data-ypp-ui-style="glassmorphism"] body::before {
+  top: -10%; left: -10%;
+  width: 50vw; height: 50vw;
+  background: rgba(255, 0, 128, 0.3);
+}
+
+html[data-ypp-ui-style="glassmorphism"] body::after {
+  bottom: -10%; right: -10%;
+  width: 60vw; height: 60vw;
+  background: rgba(0, 204, 255, 0.3);
+  animation-delay: -10s;
+}
+
+@keyframes floatBlobs {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10%, 20%) scale(1.1); }
+  100% { transform: translate(-10%, -10%) scale(0.9); }
+}
+
+/* ── App Shell ─────────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] ytd-app,
+html[data-ypp-ui-style="glassmorphism"] ytd-masthead,
+html[data-ypp-ui-style="glassmorphism"] #page-manager.ytd-app,
+html[data-ypp-ui-style="glassmorphism"] #content.ytd-app {
+  background: transparent !important;
+}
+
+/* ── Masthead ──────────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] #masthead-container { background: transparent !important; }
+
+html[data-ypp-ui-style="glassmorphism"] ytd-masthead #container {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border-bottom: var(--glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* ── Chips / Category Bar ──────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="glassmorphism"] ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="glassmorphism"] ytd-browse[page-subtype="home"] #chips {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  margin: 16px 16px 0 0 !important;
+  padding: 8px 16px !important;
+}
+
+html[data-ypp-ui-style="glassmorphism"] .yt-chip-shape { 
+  background-color: rgba(255,255,255,0.1) !important; 
+  border: var(--glass-border-light) !important;
+  border-radius: var(--glass-radius-pill) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] .yt-chip-shape:hover {
+  background-color: rgba(255,255,255,0.25) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] .yt-chip-shape[aria-selected="true"] {
+  background-color: rgba(255,255,255,0.4) !important;
+  border-color: rgba(255,255,255,0.8) !important;
+  box-shadow: var(--glass-highlight), var(--shadow-base) !important;
+}
+
+/* ── Sidebar Guide ─────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] #guide-wrapper.ytd-app {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border-right: var(--glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-style="glassmorphism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: var(--glass-radius) !important;
+  margin: 4px 8px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: rgba(255,255,255,0.15) !important;
+  border: var(--glass-border-light) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Search Bar ────────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] .ytSearchboxComponentInputBox {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius-pill) !important;
+  box-shadow: var(--shadow-base), var(--glass-highlight) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] .ytSearchboxComponentSearchButton {
+  margin-left: 10px !important;
+  background: rgba(255,255,255,0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius-pill) !important;
+  box-shadow: var(--shadow-base), var(--glass-highlight) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] .ytSearchboxComponentSearchButton:hover {
+  background: rgba(255,255,255,0.3) !important;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Menus & Popups ────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style="glassmorphism"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="glassmorphism"] .ytp-popup,
+html[data-ypp-ui-style="glassmorphism"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="glassmorphism"] ytd-menu-popup-renderer {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(30px) !important; /* Higher blur for overlays */
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow: var(--shadow-hover), var(--glass-highlight) !important;
+}
+
+/* ── Video Player ──────────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] video.video-stream.html5-main-video,
+html[data-ypp-ui-style="glassmorphism"] .html5-video-player {
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow: var(--shadow-hover), var(--glass-highlight) !important;
+  background: transparent !important;
+}
+
+/* ── Video cards & Panels ──────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] ytd-rich-grid-media,
+html[data-ypp-ui-style="glassmorphism"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="glassmorphism"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="glassmorphism"] ytd-comment-view-model,
+html[data-ypp-ui-style="glassmorphism"] ytd-playlist-panel-video-renderer {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(15px) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow: var(--shadow-base), var(--glass-highlight) !important;
+  padding: 10px !important; margin: 10px 0 !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="glassmorphism"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="glassmorphism"] ytd-comment-thread-renderer:hover {
+  background: rgba(255,255,255,0.2) !important;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover), var(--glass-highlight) !important;
+}
+
+/* ── Extension panels ──────────────────────────────────────── */
+html[data-ypp-ui-style="glassmorphism"] #ypp-global-player-bar,
+html[data-ypp-ui-style="glassmorphism"] .ypp-organizer-modal,
+html[data-ypp-ui-style="glassmorphism"] #ypp-eq-panel,
+html[data-ypp-ui-style="glassmorphism"] .ypp-video-controls,
+html[data-ypp-ui-style="glassmorphism"] .ypp-account-menu {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(40px) !important;
+  border: var(--glass-border) !important;
+  border-radius: var(--glass-radius) !important;
+  box-shadow: var(--shadow-hover), var(--glass-highlight) !important;
+}
+
+html[data-ypp-ui-style="glassmorphism"] .ypp-gpb-btn,
+html[data-ypp-ui-style="glassmorphism"] .ypp-action-btn,
+html[data-ypp-ui-style="glassmorphism"] .ypp-pill-toggle {
+  background: rgba(255,255,255,0.1) !important;
+  border: var(--glass-border-light) !important;
+  border-radius: var(--glass-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="glassmorphism"] .ypp-pill-toggle:hover {
+  background: rgba(255,255,255,0.25) !important;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-hover), var(--glass-highlight) !important;
+}
+html[data-ypp-ui-style="glassmorphism"] .ypp-slider {
+  background: rgba(255,255,255,0.15) !important;
+  border: var(--glass-border-light) !important;
+  border-radius: var(--glass-radius-pill) !important;
+}

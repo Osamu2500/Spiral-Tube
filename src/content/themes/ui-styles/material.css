@@ -1,0 +1,247 @@
+/* ============================================================
+   MATERIAL — Material You / Google Material Design 3 for YouTube
+   Tonal colors, pill shapes, floating action buttons, elevation,
+   ripple effects, soft layout, dynamic pastel palette.
+   Full 1:1 element coverage matching liquid-glass scope.
+   ============================================================ */
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+html[data-ypp-ui-style="material"],
+html[data-ypp-ui-style="material"] [dark] {
+  --blur: 0px;
+  --sf:   transparent;
+  
+  --mat-sys-primary: #a8c7fa;
+  --mat-sys-on-primary: #062e6f;
+  --mat-sys-primary-container: #d3e3fd;
+  --mat-sys-on-primary-container: #041e49;
+  
+  --mat-sys-secondary-container: #474747;
+  --mat-sys-on-secondary-container: #e3e3e3;
+  
+  --mat-sys-surface: #1f1f1f;
+  --mat-sys-surface-variant: #444746;
+  --mat-sys-on-surface: #e3e3e3;
+  --mat-sys-outline: #8e918f;
+
+  /* Elevations */
+  --shadow-base:   0px 1px 2px 0px rgba(0,0,0,0.3), 0px 1px 3px 1px rgba(0,0,0,0.15); /* Level 1 */
+  --shadow-hover:  0px 2px 6px 2px rgba(0,0,0,0.15), 0px 1px 2px 0px rgba(0,0,0,0.3); /* Level 3 */
+  --shadow-active: 0px 1px 2px 0px rgba(0,0,0,0.3);
+  
+  --bounce:        0.2s cubic-bezier(0.2, 0, 0, 1); /* Standard decelerate */
+  --bounce-alt:    0.3s cubic-bezier(0.2, 0, 0, 1);
+
+  --mat-radius: 16px;
+  --mat-radius-pill: 9999px;
+  --mat-border: 1px solid var(--mat-sys-outline);
+  
+  --font-base:   "Google Sans", "Roboto", sans-serif;
+
+  --yt-spec-base-background: var(--mat-sys-surface) !important;
+  --yt-spec-general-background-a: var(--mat-sys-surface) !important;
+  --yt-spec-general-background-b: var(--mat-sys-surface) !important;
+  --yt-spec-10-percent-layer: rgba(255,255,255,0.08) !important;
+  --yt-spec-text-primary: var(--mat-sys-on-surface) !important;
+  --yt-spec-text-secondary: #c4c7c5 !important;
+  --yt-spec-icon-active-other: var(--mat-sys-primary) !important;
+  --yt-spec-call-to-action: var(--mat-sys-primary) !important;
+}
+
+html[data-ypp-ui-style="material"]:not([dark]) {
+  --mat-sys-primary: #0b57d0;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #d3e3fd;
+  --mat-sys-on-primary-container: #041e49;
+  
+  --mat-sys-secondary-container: #e8def8;
+  --mat-sys-on-secondary-container: #1d192b;
+  
+  --mat-sys-surface: #f3f3f3;
+  --mat-sys-surface-variant: #e1e3e1;
+  --mat-sys-on-surface: #1f1f1f;
+  --mat-sys-outline: #747775;
+
+  --shadow-base:   0px 1px 2px 0px rgba(0,0,0,0.15), 0px 1px 3px 1px rgba(0,0,0,0.1);
+  --shadow-hover:  0px 2px 6px 2px rgba(0,0,0,0.1), 0px 1px 2px 0px rgba(0,0,0,0.15);
+}
+
+/* ── Global Font & Reset ───────────────────────────────────── */
+html[data-ypp-ui-style="material"] * {
+  font-family: var(--font-base) !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Body ──────────────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] body {
+  background: var(--mat-sys-surface) !important;
+}
+
+/* ── App Shell ─────────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] ytd-app,
+html[data-ypp-ui-style="material"] ytd-masthead,
+html[data-ypp-ui-style="material"] #page-manager.ytd-app,
+html[data-ypp-ui-style="material"] #content.ytd-app {
+  background: transparent !important;
+}
+
+/* ── Masthead ──────────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] #masthead-container { background: transparent !important; }
+
+html[data-ypp-ui-style="material"] ytd-masthead #container {
+  background: var(--mat-sys-surface) !important;
+  border-bottom: 1px solid var(--mat-sys-surface-variant) !important;
+}
+
+/* ── Chips / Category Bar ──────────────────────────────────── */
+html[data-ypp-ui-style="material"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="material"] ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="material"] ytd-browse[page-subtype="home"] #chips {
+  background: var(--mat-sys-surface) !important;
+  border: none !important;
+  border-radius: var(--mat-radius-pill) !important;
+  margin: 16px 16px 0 0 !important;
+  padding: 8px 16px !important;
+}
+
+html[data-ypp-ui-style="material"] .yt-chip-shape { 
+  background-color: var(--mat-sys-secondary-container) !important; 
+  color: var(--mat-sys-on-secondary-container) !important; 
+  border: none !important;
+  border-radius: 8px !important; /* Rounded square style from MD3 */
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] .yt-chip-shape:hover {
+  background-color: rgba(71, 71, 71, 0.8) !important;
+}
+html[data-ypp-ui-style="material"] .yt-chip-shape[aria-selected="true"] {
+  background-color: var(--mat-sys-primary-container) !important;
+  color: var(--mat-sys-on-primary-container) !important;
+}
+
+/* ── Sidebar Guide ─────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] #guide-wrapper.ytd-app {
+  background: var(--mat-sys-surface) !important;
+  border-right: none !important;
+}
+
+html[data-ypp-ui-style="material"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: var(--mat-radius-pill) !important;
+  margin: 4px 8px !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: rgba(255,255,255,0.08) !important;
+}
+
+/* ── Search Bar ────────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] .ytSearchboxComponentInputBox {
+  background: var(--mat-sys-surface-variant) !important;
+  border: none !important;
+  border-radius: var(--mat-radius-pill) 0 0 var(--mat-radius-pill) !important;
+}
+html[data-ypp-ui-style="material"] .ytSearchboxComponentSearchButton {
+  margin-left: 0 !important;
+  background: var(--mat-sys-surface-variant) !important;
+  border: none !important;
+  border-radius: 0 var(--mat-radius-pill) var(--mat-radius-pill) 0 !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] .ytSearchboxComponentSearchButton:hover {
+  background: rgba(255,255,255,0.2) !important;
+}
+
+/* ── Masthead Buttons ──────────────────────────────────────── */
+html[data-ypp-ui-style="material"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="material"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="material"] yt-icon-button.ytd-masthead {
+  border-radius: 50% !important;
+  background: transparent !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style="material"] yt-icon-button.ytd-masthead:hover {
+  background: rgba(255,255,255,0.08) !important;
+}
+
+/* Subscribe button (FAB style) */
+html[data-ypp-ui-style="material"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  background: var(--mat-sys-primary) !important;
+  color: var(--mat-sys-on-primary) !important;
+  border: none !important;
+  border-radius: var(--mat-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Menus & Popups ────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style="material"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="material"] .ytp-popup,
+html[data-ypp-ui-style="material"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="material"] ytd-menu-popup-renderer {
+  background: var(--mat-sys-surface) !important;
+  border: none !important;
+  border-radius: var(--mat-radius) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Video Player ──────────────────────────────────────────── */
+html[data-ypp-ui-style="material"] video.video-stream.html5-main-video,
+html[data-ypp-ui-style="material"] .html5-video-player {
+  border-radius: var(--mat-radius) !important;
+}
+
+/* ── Video cards & Panels ──────────────────────────────────── */
+html[data-ypp-ui-style="material"] ytd-rich-grid-media,
+html[data-ypp-ui-style="material"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="material"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="material"] ytd-comment-view-model,
+html[data-ypp-ui-style="material"] ytd-playlist-panel-video-renderer {
+  background: var(--mat-sys-surface) !important;
+  border: 1px solid var(--mat-sys-surface-variant) !important;
+  border-radius: var(--mat-radius) !important;
+  box-shadow: none !important;
+  padding: 10px !important; margin: 10px 0 !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="material"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="material"] ytd-comment-thread-renderer:hover {
+  background: var(--mat-sys-surface-variant) !important;
+}
+
+/* ── Extension panels ──────────────────────────────────────── */
+html[data-ypp-ui-style="material"] #ypp-global-player-bar,
+html[data-ypp-ui-style="material"] .ypp-organizer-modal,
+html[data-ypp-ui-style="material"] #ypp-eq-panel,
+html[data-ypp-ui-style="material"] .ypp-video-controls,
+html[data-ypp-ui-style="material"] .ypp-account-menu {
+  background: var(--mat-sys-surface) !important;
+  border: none !important;
+  border-radius: var(--mat-radius) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-style="material"] .ypp-gpb-btn,
+html[data-ypp-ui-style="material"] .ypp-action-btn,
+html[data-ypp-ui-style="material"] .ypp-pill-toggle {
+  background: var(--mat-sys-secondary-container) !important;
+  color: var(--mat-sys-on-secondary-container) !important;
+  border: none !important;
+  border-radius: var(--mat-radius-pill) !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="material"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="material"] .ypp-pill-toggle:hover {
+  background: rgba(255,255,255,0.2) !important;
+}
+html[data-ypp-ui-style="material"] .ypp-slider {
+  background: var(--mat-sys-surface-variant) !important;
+  border: none !important;
+  border-radius: var(--mat-radius-pill) !important;
+}

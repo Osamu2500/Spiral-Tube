@@ -1,0 +1,512 @@
+/* ============================================================
+   BRUTALISM — Raw, bold, unstyled aesthetic for YouTube
+   Hard black borders, zero blur shadows, high contrast colors,
+   monospace/bold typography, blocky web 1.0 elements.
+   Full 1:1 element coverage matching liquid-glass scope.
+   ============================================================ */
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"],
+html[data-ypp-ui-style="brutalism"] [dark] {
+  --blur: 0px;
+  --sf:   #fff;
+  /* Hard offset shadows characteristic of Brutalism */
+  --shadow-base:   4px 4px 0px 0px #000;
+  --shadow-hover:  8px 8px 0px 0px #000;
+  --shadow-active: 2px 2px 0px 0px #000;
+  --bounce:        0.1s linear;
+  --bounce-alt:    0.1s linear;
+
+  --brut-radius: 0px;
+  --brut-border: 3px solid #000;
+  --brut-border-thin: 2px solid #000;
+  
+  --brut-bg:     #fff;
+  --brut-surf:   #fff;
+  --brut-text:   #000;
+  --brut-muted:  #555;
+  --brut-accent: #f00;
+  
+  /* Primary brutalist colors */
+  --brut-yellow: #ffeb3b;
+  --brut-blue:   #2196f3;
+  --brut-green:  #4caf50;
+  --brut-pink:   #ff4081;
+
+  --brut-font:   "Space Mono", "Courier New", monospace;
+  --brut-font-bold: "Impact", "Helvetica Neue", Arial, sans-serif;
+
+  --yt-spec-base-background: #fff !important;
+  --yt-spec-general-background-a: #fff !important;
+  --yt-spec-general-background-b: #fff !important;
+  --yt-spec-10-percent-layer: #000 !important;
+  --yt-spec-text-primary: #000 !important;
+  --yt-spec-text-secondary: #000 !important;
+  --yt-spec-icon-active-other: #000 !important;
+  --yt-spec-call-to-action: #000 !important;
+}
+
+/* ── Global Font & Reset ───────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] * {
+  font-family: var(--brut-font) !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  border-radius: 0 !important; /* Force blocky everything */
+}
+html[data-ypp-ui-style="brutalism"] h1,
+html[data-ypp-ui-style="brutalism"] h2,
+html[data-ypp-ui-style="brutalism"] h3,
+html[data-ypp-ui-style="brutalism"] .title {
+  font-family: var(--brut-font-bold) !important;
+  text-transform: uppercase;
+}
+
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+
+/* ── Body ──────────────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] body {
+  background: #fff !important;
+  background-image: 
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), 
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000) !important;
+  background-size: 20px 20px !important;
+  background-position: 0 0, 10px 10px !important;
+  background-attachment: fixed !important;
+}
+
+/* ── App Shell ─────────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] ytd-app,
+html[data-ypp-ui-style="brutalism"] ytd-masthead,
+html[data-ypp-ui-style="brutalism"] #page-manager.ytd-app,
+html[data-ypp-ui-style="brutalism"] #content.ytd-app {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="brutalism"] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ── Masthead ──────────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] #masthead-container { background: transparent !important; }
+
+html[data-ypp-ui-style="brutalism"] ytd-masthead #container {
+  background: var(--brut-yellow) !important;
+  margin: 10px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: var(--brut-border) !important;
+}
+
+/* ── Chips / Category Bar ──────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="brutalism"] ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections) {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 0 12px !important;
+  margin: 16px 16px 0 0 !important;
+  background: var(--brut-bg) !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-style="brutalism"] ytd-guide-renderer #sections { margin-left: 8px !important; }
+
+html[data-ypp-ui-style="brutalism"] ytd-browse[page-subtype="home"] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="brutalism"] ytd-browse[page-subtype="home"] #chips {
+  margin: 16px 0 0 0 !important;
+  background: var(--brut-bg) !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 0 12px !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .yt-chip-shape { background-color: transparent !important; color: #000 !important; font-weight: bold !important; text-transform: uppercase; }
+
+html[data-ypp-ui-style="brutalism"] #contents.ytd-page-manager { margin-top: 0; margin-left: 16px; }
+
+/* ── Sidebar Guide ─────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] #guide-content.ytd-app { background: transparent; }
+
+html[data-ypp-ui-style="brutalism"] #guide-wrapper.ytd-app {
+  background: var(--brut-bg) !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-left: 10px;
+}
+
+html[data-ypp-ui-style="brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border: var(--brut-border-thin) !important;
+  margin: 4px 0 !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+  color: #000 !important;
+  font-weight: bold;
+}
+
+html[data-ypp-ui-style="brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+  background: var(--brut-yellow) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translate(-2px, -2px);
+}
+html[data-ypp-ui-style="brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+
+/* ── Player Controls ───────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: var(--brut-bg) !important;
+  border: var(--brut-border-thin) !important;
+  box-shadow: var(--shadow-base) !important;
+  overflow: hidden !important;
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button,
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern .ytp-time-wrapper,
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
+  background: var(--brut-bg) !important;
+  border: var(--brut-border-thin) !important;
+  box-shadow: var(--shadow-base) !important;
+  margin: 0 4px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:hover {
+  background: var(--brut-yellow) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translate(-2px, -2px) !important;
+}
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: none !important;
+}
+
+/* ── Search Bar ────────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-style="brutalism"] .ytSearchboxComponentInputBox {
+  background: var(--brut-bg) !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .ytSearchboxComponentSearchButton {
+  margin-left: 10px !important;
+  border: var(--brut-border) !important;
+  background: var(--brut-blue) !important;
+  color: #000 !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .ytSearchboxComponentSearchButton:hover {
+  background: var(--brut-pink) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translate(-2px, -2px);
+}
+
+html[data-ypp-ui-style="brutalism"] .ytSearchboxComponentSearchButton:active {
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+
+/* ── Masthead Buttons ──────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="brutalism"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="brutalism"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="brutalism"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
+  border: var(--brut-border-thin) !important;
+  background: var(--brut-bg) !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="brutalism"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="brutalism"] yt-icon-button.ytd-masthead:hover,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
+  background: var(--brut-yellow) !important;
+  box-shadow: 4px 4px 0 0 #000 !important;
+  transform: translate(-2px, -2px);
+}
+
+html[data-ypp-ui-style="brutalism"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-style="brutalism"] .ypp-nav-btn,
+html[data-ypp-ui-style="brutalism"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="brutalism"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-menu-renderer .ytd-menu-renderer[style-target="button"],
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+  border: var(--brut-border-thin) !important;
+  background: var(--brut-bg) !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] #voice-search-button.ytd-masthead:hover,
+html[data-ypp-ui-style="brutalism"] .ypp-nav-btn:hover,
+html[data-ypp-ui-style="brutalism"] ytd-topbar-menu-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+  background: var(--brut-yellow) !important;
+  box-shadow: 4px 4px 0 0 #000 !important;
+  transform: translate(-2px, -2px);
+}
+
+/* Subscribe button */
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  background: var(--brut-pink) !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  background: var(--brut-yellow) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translate(-4px, -4px);
+}
+
+/* ── Playlist Panel ────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-ui-style="brutalism"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+  background: var(--brut-yellow) !important;
+  border: var(--brut-border-thin) !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border: var(--brut-border-thin) !important;
+  margin: 5px 0 !important;
+  background: #fff !important;
+}
+
+html[data-ypp-ui-style="brutalism"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer:hover {
+  background: var(--brut-blue) !important;
+  color: #fff !important;
+}
+
+html[data-ypp-ui-style="brutalism"] #container.ytd-playlist-panel-renderer {
+  background: #fff !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* ── Menus / Dropdowns ─────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style="brutalism"] ytd-multi-page-menu-renderer {
+  top: 55px !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  background: #fff !important;
+}
+
+html[data-ypp-ui-style="brutalism"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style="compact-link-style-type-disclaimer"]):not(ytd-message-renderer) {
+  border: var(--brut-border-thin) !important;
+  margin: 4px;
+}
+html[data-ypp-ui-style="brutalism"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style="compact-link-style-type-disclaimer"]):not(ytd-message-renderer):hover {
+  background: var(--brut-yellow) !important;
+}
+
+/* Player settings popup */
+html[data-ypp-ui-style="brutalism"] .ytp-panel,
+html[data-ypp-ui-style="brutalism"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="brutalism"] .ytp-delhi-modern .ytp-popup,
+html[data-ypp-ui-style="brutalism"] .ytp-popup.ytp-delhi-modern-contextmenu {
+  background: #fff !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* ── App Drawer / Sidebar ──────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+  top: 75px !important; left: 8px !important;
+}
+
+/* Mini guide */
+html[data-ypp-ui-style="brutalism"] ytd-mini-guide-entry-renderer {
+  margin-top: 10px !important;
+  border: var(--brut-border-thin) !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  background: #fff !important;
+  transition: transform var(--bounce) !important;
+}
+html[data-ypp-ui-style="brutalism"] ytd-mini-guide-entry-renderer:hover {
+  background: var(--brut-yellow) !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 #000 !important;
+}
+
+/* Chips */
+html[data-ypp-ui-style="brutalism"] .ytChipShapeChip {
+  border: var(--brut-border-thin) !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  background: #fff !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="brutalism"] .ytChipShapeChip:hover {
+  background: var(--brut-pink) !important;
+}
+html[data-ypp-ui-style="brutalism"] .ytChipShapeChip[aria-selected="true"] {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* ── Dialogs ───────────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="brutalism"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-video-preview,
+html[data-ypp-ui-style="brutalism"] #contentWrapper.tp-yt-iron-dropdown > * {
+  background: #fff !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Video Player ──────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] video.video-stream.html5-main-video,
+html[data-ypp-ui-style="brutalism"] .html5-video-player {
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* Progress bar */
+html[data-ypp-ui-style="brutalism"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style="brutalism"] .ytProgressBarLineProgressBarHovered {
+  background: var(--brut-accent) !important;
+  border-top: var(--brut-border-thin) !important;
+  border-bottom: var(--brut-border-thin) !important;
+}
+html[data-ypp-ui-style="brutalism"] .ytProgressBarLineProgressBarLoaded {
+  background: #aaa !important;
+}
+html[data-ypp-ui-style="brutalism"] .ytProgressBarLineProgressBarBackground {
+  background: #fff !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .yt-badge-shape--thumbnail-default {
+  background: #fff !important;
+  border: var(--brut-border-thin) !important;
+  color: #000 !important;
+  font-weight: bold;
+}
+
+/* ── Comments & Panels ─────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] ytd-comments-header-renderer[engagement-panel],
+html[data-ypp-ui-style="brutalism"] .anchored-panel.ytd-shorts,
+html[data-ypp-ui-style="brutalism"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-comment-view-model,
+html[data-ypp-ui-style="brutalism"] ytd-comment-simplebox-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-search-filter-group-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-video-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-channel-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-playlist-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-radio-renderer {
+  background: #fff !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 10px !important; margin: 10px 0 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
+  background: var(--brut-blue) !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  color: #000 !important; font-weight: bold !important;
+}
+html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover {
+  background: var(--brut-pink) !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Extension panels ──────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] #ypp-global-player-bar,
+html[data-ypp-ui-style="brutalism"] .ypp-global-bar,
+html[data-ypp-ui-style="brutalism"] .ypp-video-controls,
+html[data-ypp-ui-style="brutalism"] .ypp-shadow-panel,
+html[data-ypp-ui-style="brutalism"] .ypp-organizer-modal,
+html[data-ypp-ui-style="brutalism"] .ypp-modal-content,
+html[data-ypp-ui-style="brutalism"] .ypp-account-menu,
+html[data-ypp-ui-style="brutalism"] #ypp-top-bar,
+html[data-ypp-ui-style="brutalism"] #ypp-eq-panel,
+html[data-ypp-ui-style="brutalism"] #ypp-cinema-panel {
+  background: #fff !important;
+  border: var(--brut-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .ypp-gpb-btn,
+html[data-ypp-ui-style="brutalism"] .ypp-action-btn,
+html[data-ypp-ui-style="brutalism"] .ypp-icon-btn,
+html[data-ypp-ui-style="brutalism"] .ypp-pill-toggle,
+html[data-ypp-ui-style="brutalism"] .ypp-eq-preset-btn,
+html[data-ypp-ui-style="brutalism"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-style="brutalism"] .ypp-vcp-compare-toggle {
+  background: #fff !important;
+  border: var(--brut-border-thin) !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  color: #000 !important;
+  font-weight: bold;
+}
+html[data-ypp-ui-style="brutalism"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="brutalism"] .ypp-action-btn:hover,
+html[data-ypp-ui-style="brutalism"] .ypp-icon-btn:hover,
+html[data-ypp-ui-style="brutalism"] .ypp-pill-toggle:hover {
+  background: var(--brut-yellow) !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 4px 4px 0 0 #000 !important;
+}
+
+html[data-ypp-ui-style="brutalism"] .ypp-slider,
+html[data-ypp-ui-style="brutalism"] .ypp-gpb-vol-slider {
+  accent-color: #000 !important;
+  background: #fff !important;
+  border: var(--brut-border-thin) !important;
+}
+
+/* ── Video cards ───────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] ytd-rich-grid-media,
+html[data-ypp-ui-style="brutalism"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="brutalism"] ytd-grid-video-renderer {
+  border: var(--brut-border) !important;
+  background: #fff !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 5px !important; margin-bottom: 10px !important;
+  transition: transform 0.1s linear, box-shadow 0.1s linear !important;
+}
+html[data-ypp-ui-style="brutalism"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="brutalism"] ytd-compact-video-renderer:hover {
+  background: var(--brut-yellow) !important;
+  transform: translate(-4px, -4px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] ::-webkit-scrollbar { width: 12px !important; border-left: var(--brut-border-thin); }
+html[data-ypp-ui-style="brutalism"] ::-webkit-scrollbar-track { background: #fff !important; }
+html[data-ypp-ui-style="brutalism"] ::-webkit-scrollbar-thumb { background: #000 !important; border: 2px solid #fff; }
+
+/* ── Active states ─────────────────────────────────────────── */
+html[data-ypp-ui-style="brutalism"] .ypp-nav-btn.active {
+  background: #000 !important;
+  color: #fff !important;
+  box-shadow: inset 2px 2px 0 0 rgba(255,255,255,0.5) !important;
+}

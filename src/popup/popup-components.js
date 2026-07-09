@@ -97,6 +97,19 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' },
                     { key: 'technozen', label: 'Technozen', meta: 'Eco Tech', color: '#dff4e8' }
                 ]
+            },
+            {
+                name: 'New UI Designs',
+                themes: [
+                    { key: 'terminalism', label: 'Terminalism', meta: 'Hacker', color: '#000000' },
+                    { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy 3D', color: '#f0e8ff' },
+                    { key: 'brutalism', label: 'Brutalism', meta: 'Raw UI', color: '#ffffff' },
+                    { key: 'minimalism', label: 'Minimalism', meta: 'Clean', color: '#fafafa' },
+                    { key: 'maximalism', label: 'Maximalism', meta: 'Loud', color: '#ff00ff' },
+                    { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted', color: '#0f0c29' },
+                    { key: 'aurora', label: 'Aurora', meta: 'Lights', color: '#0a0a0a' },
+                    { key: 'material', label: 'Material You', meta: 'Google M3', color: '#1f1f1f' }
+                ]
             }
         ];
 
@@ -219,7 +232,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                         updateSetting('activeTheme', newTheme);
                         
                         // Auto-apply UI styles if the theme is an aesthetic theme
-                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic'];
+                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic', 'terminalism', 'claymorphism', 'brutalism', 'minimalism', 'maximalism', 'glassmorphism', 'aurora', 'material'];
                         if (uiStyles.includes(newTheme)) {
                             updateSetting('youtubePageTheme', newTheme);
                             const selectEl = document.getElementById('youtubePageTheme');

@@ -1,4 +1,4 @@
-html[data-ypp-card-style='brutalism']
+html[data-ypp-card-style='material']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -16,17 +16,17 @@ html[data-ypp-card-style='brutalism']
         *
     )
   ) {
-  background: #ffffff !important;
-  border: 4px solid #000000 !important;
-  border-radius: 0px !important;
+  background: #1f1f1f !important;
+  border: 1px solid #444746 !important;
+  border-radius: 16px !important;
   padding: var(--ypp-density-pad, 16px) !important;
-  box-shadow: 8px 8px 0px #000000 !important;
+  box-shadow: none !important;
   transition:
     transform 0.3s,
     box-shadow 0.3s !important;
 }
 
-html[data-ypp-card-style='brutalism']
+html[data-ypp-card-style='material']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -44,11 +44,11 @@ html[data-ypp-card-style='brutalism']
         *
     )
   ):hover {
-  transform: translate(4px, 4px) !important;
-  box-shadow: 4px 4px 0px #000000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: none !important;
 }
 
-html[data-ypp-card-style='brutalism']
+html[data-ypp-card-style='material']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -67,7 +67,7 @@ html[data-ypp-card-style='brutalism']
     )
   )
   #video-title,
-html[data-ypp-card-style='brutalism']
+html[data-ypp-card-style='material']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -87,10 +87,10 @@ html[data-ypp-card-style='brutalism']
   )
   #metadata-line
   span {
-  color: #000000 !important;
+  color: #e3e3e3 !important;
 }
 
-html[data-ypp-card-style='brutalism']
+html[data-ypp-card-style='material']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -109,5 +109,5 @@ html[data-ypp-card-style='brutalism']
     )
   )
   :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  border-radius: 0px 0px 0 0 !important;
+  border-radius: 16px 16px 0 0 !important;
 }
