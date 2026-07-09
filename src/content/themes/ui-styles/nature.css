@@ -31,7 +31,7 @@ html, [dark] body {
   color: #ecfdf5 !important;
 }
 /* === Glass panel vars — light mint green for visibility against dark emerald body === */
-html, [dark] {
+html:not([dark]) {
   --blur: 4px;
   --sf: rgba(240, 253, 244, 0.88); /* Light mint — visible against dark emerald */
   --shadow-base: 0 4px 15px rgba(20, 83, 45, 0.2), 0 1px 0 rgba(163, 230, 53, 0.2) inset;
@@ -1912,4 +1912,67 @@ html[data-ypp-theme="nature"] ytd-masthead {
   --yt-spec-icon-active-other: #14532d !important;
   --yt-spec-icon-inactive: #15803d !important;
   --yt-spec-call-to-action: #166534 !important;
+}
+
+
+/* NATURE TOPBAR FIX */
+html[data-ypp-theme='forest'] ytd-masthead, 
+ytd-masthead, #masthead-container {
+  background: var(--sf, rgba(18, 28, 18, 0.95)) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 2px solid rgba(163, 230, 53, 0.4) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+/* SEARCH BOX FIX */
+ytd-searchbox #container {
+  background: rgba(18, 28, 18, 0.6) !important;
+  border: 1px solid rgba(163, 230, 53, 0.4) !important;
+  border-radius: 24px 0 0 24px !important;
+}
+ytd-searchbox #search-icon-legacy {
+  background: rgba(34, 197, 94, 0.2) !important;
+  border: 1px solid rgba(163, 230, 53, 0.4) !important;
+  border-radius: 0 24px 24px 0 !important;
+}
+
+
+/* CATEGORY CHIPS FIX */
+ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+  border: none !important;
+}
+yt-chip-cloud-chip-renderer {
+  border-radius: var(--chip-radius, 8px) !important;
+  border: var(--chip-border, 1px solid transparent) !important;
+  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
+  box-shadow: var(--chip-shadow, none) !important;
+  transition: all 0.2s ease !important;
+}
+yt-chip-cloud-chip-renderer:hover {
+  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
+}
+yt-chip-cloud-chip-renderer[selected] {
+  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
+  color: var(--chip-color-selected, black) !important;
+  border: var(--chip-border-selected, 1px solid transparent) !important;
+}
+
+
+yt-chip-cloud-chip-renderer {
+  --chip-radius: 16px 4px 16px 4px;
+  --chip-border: 1px solid rgba(163, 230, 53, 0.3);
+  --chip-bg: rgba(18, 28, 18, 0.8);
+}
+yt-chip-cloud-chip-renderer[selected] {
+  --chip-bg-selected: rgba(163, 230, 53, 0.8);
+  --chip-color-selected: black;
+  --chip-border-selected: 1px solid #65a30d;
+}
+
+
+/* POPUP TRANSPARENCY FIX */
+tp-yt-paper-listbox {
+  background: transparent !important;
 }

@@ -1,0 +1,198 @@
+html[data-ypp-card-style='polaroid']
+  body:not(.ypp-channel-page)
+  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 2px !important;
+}
+
+html[data-ypp-card-style='polaroid'] body:not(.ypp-channel-page) #video-title {
+  font-size: 13px !important;
+  font-family: 'Courier New', monospace, serif !important;
+  font-weight: 600 !important;
+  margin-top: 12px !important;
+}
+
+html[data-ypp-card-style='polaroid'] body:not(.ypp-channel-page) #metadata-line span,
+html[data-ypp-card-style='polaroid'] body:not(.ypp-channel-page) yt-formatted-string[id='text'] {
+  font-family: 'Courier New', monospace, serif !important;
+}
+
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: var(--ypp-thumb-color, var(--ypp-bg-surface, #ffffff)) !important;
+  border-radius: 4px !important;
+  padding: 8px 8px 32px !important;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transform: rotate(1deg) !important;
+}
+
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):nth-child(even) {
+  transform: rotate(-1.5deg) !important;
+}
+
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  transform: rotate(0deg) scale(1.03) translateY(-4px) !important;
+  z-index: var(--ypp-z-content) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  #video-title,
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  .yt-lockup-metadata-view-model-wiz__title {
+  font-size: 13px !important;
+  font-family: 'Courier New', monospace, serif !important;
+  font-weight: 600 !important;
+  margin-top: 12px !important;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 0 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  #metadata-line
+  span,
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  yt-formatted-string[id='text'],
+html[data-ypp-card-style='polaroid']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  .yt-lockup-metadata-view-model-wiz__metadata {
+  font-family: 'Courier New', monospace, serif !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}

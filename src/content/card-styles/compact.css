@@ -1,0 +1,112 @@
+html[data-ypp-card-style='compact']
+  body:not(.ypp-channel-page)
+  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 6px !important;
+}
+
+html[data-ypp-card-style='compact'] body:not(.ypp-channel-page) #video-title {
+  font-size: 13px !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  line-height: 1.2 !important;
+}
+
+html[data-ypp-card-style='compact'] body:not(.ypp-channel-page) #metadata-line {
+  font-size: 11px !important;
+  margin-top: 2px !important;
+}
+
+html[data-ypp-card-style='compact']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 6px !important;
+}
+
+html[data-ypp-card-style='compact']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  transform: none !important;
+}
+
+html[data-ypp-card-style='compact']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  #video-title {
+  font-size: 13px !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  line-height: 1.2 !important;
+}
+
+html[data-ypp-card-style='compact']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  #metadata-line {
+  font-size: 11px !important;
+  margin-top: 2px !important;
+}

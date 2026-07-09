@@ -1,0 +1,51 @@
+html[data-ypp-card-style='minimalist']
+  body:not(.ypp-channel-page)
+  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 0 !important;
+}
+
+html[data-ypp-card-style='minimalist']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 16px !important;
+  border-radius: 0 !important;
+}
+
+html[data-ypp-card-style='minimalist']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  transform: translateY(-2px) !important;
+}

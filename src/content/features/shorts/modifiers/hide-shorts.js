@@ -28,6 +28,20 @@ window.YPP.features.HideShorts = class HideShorts extends window.YPP.features.Ba
         this.applySettings();
     }
 
+    onPageChange() {
+        if (!this.settings.hideShorts && !this.settings.hideSearchShorts) return;
+        
+        // Temporarily stop to force re-registration of the observer with correct selector for new page
+        this.stopShortsMonitoring();
+        
+        // Clean up DOM stamps only so recycled DOM elements are correctly re-evaluated
+        document.querySelectorAll('[data-ypp-is-short]').forEach(el => el.removeAttribute('data-ypp-is-short'));
+        
+        // Manually restart processing for the new page
+        this.removeShortsFromDOM();
+        this.startShortsMonitoring();
+    }
+
     applySettings() {
         // Toggle the body classes that popup.css/content.css relies on
         document.body.classList.toggle('ypp-hide-shorts', !!this.settings.hideShorts);

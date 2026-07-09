@@ -53,7 +53,16 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
 
     async enable() {
         await super.enable();
-        
+        this._registerBindings();
+        this.utils?.log('Keyboard Shortcuts enabled', 'SHORTCUTS', 'debug');
+    }
+
+    async onUpdate() {
+        this._registerBindings();
+        this.utils?.log('Keyboard Shortcuts updated', 'SHORTCUTS', 'debug');
+    }
+
+    _registerBindings() {
         // Build bindings for the hotkeys manager
         const bindings = [];
         for (const [action, definition] of Object.entries(this.actions)) {
@@ -70,7 +79,6 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         }
         
         window.YPP.hotkeysManager?.register('keyboard-shortcuts', bindings);
-        this.utils?.log('Keyboard Shortcuts enabled', 'SHORTCUTS', 'debug');
     }
 
     async disable() {
@@ -95,17 +103,6 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         chrome.runtime.sendMessage({ action: 'UPDATE_SETTINGS_DELTA', delta }, () => {
             // Predictively update local instance state for immediate feedback
             this.settings = { ...this.settings, ...delta };
-            
-            // Only update the specific feature, not all features
-            const featureMap = {
-                zenMode: 'zenMode',
-                enableFocusMode: 'focusMode',
-                ambientMode: 'ambientMode'
-            };
-            const featureKey = featureMap[key];
-            if (featureKey && window.YPP.featureManager?.features?.[featureKey]) {
-                window.YPP.featureManager.features[featureKey].update(this.settings);
-            }
         });
     }
 

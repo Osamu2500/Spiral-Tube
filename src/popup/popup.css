@@ -400,7 +400,40 @@ body {
   box-shadow: 0 2px 12px var(--accent-glow), inset 0 1px 1px rgba(255,255,255,0.25);
 }
 
-.top-bar-right { display: flex; align-items: center; }
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggler-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--surface-light);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggler-btn:hover {
+  background: var(--surface-hover);
+}
+
+.ypp-theme-dark .theme-toggler-btn .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0);
+}
+
+.ypp-theme-dark .theme-toggler-btn .moon-icon {
+  opacity: 1 !important;
+  transform: rotate(0) scale(1) !important;
+}
 
 .search-container {
   display: flex; align-items: center;
@@ -694,6 +727,8 @@ input[type="range"]:focus::-webkit-slider-runnable-track { background: rgba(255,
   transition: all 0.22s var(--ease-spring); font-family: inherit;
   letter-spacing: 0.02em;
   box-shadow: 0 2px 12px var(--accent-glow-sm);
+  position: relative;
+  overflow: hidden;
 }
 .action-btn:hover {
   transform: translateY(-2px);
@@ -705,6 +740,22 @@ input[type="range"]:focus::-webkit-slider-runnable-track { background: rgba(255,
   background: linear-gradient(135deg, #ef4444, #dc2626);
   box-shadow: 0 2px 12px rgba(239, 68, 68, 0.3);
 }
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-animation 600ms linear;
+  pointer-events: none;
+}
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
 
 /* ─── Preset cards (dashboard) ─── */
 .preset-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
@@ -1175,7 +1226,7 @@ kbd {
     gap: 6px;
     margin-top: 10px;
 }
-.card-style-btn {
+.card-style-btn, .youtube-style-btn, .popup-style-btn {
     background: rgba(255,255,255,0.06);
     border: 1px solid transparent;
     color: rgba(255,255,255,0.7);
@@ -1185,10 +1236,10 @@ kbd {
     cursor: pointer;
     transition: all 0.2s;
 }
-.card-style-btn:hover {
+.card-style-btn:hover, .youtube-style-btn:hover, .popup-style-btn:hover {
     background: rgba(255,255,255,0.1);
 }
-.card-style-btn.active {
+.card-style-btn.active, .youtube-style-btn.active, .popup-style-btn.active {
     background: var(--accent-primary, #3ea6ff);
     color: #fff;
     border-color: rgba(255,255,255,0.1);

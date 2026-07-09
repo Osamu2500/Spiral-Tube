@@ -1,4 +1,4 @@
-window.YPP = window.YPP || {};
+﻿window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
 
 // ─── Selectors (single source of truth — no magic strings) ────────────────────
@@ -56,9 +56,10 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
     super('MultiSelect');
     /** @type {Map<string, {title: string, href: string, element: HTMLElement}>} */
     this._selected = new Map();
-    this._selectionModeActive = false;
     this._isActing = false; // true while an async menu action is in progress
+    this._selectionModeActive = false; // Is the mode currently on? (e.g. via keyboard shortcut)
     this._actionBar = null;
+
     // Bound + debounced page-change handler (created once, stable reference for on/off)
     this._onPageChangeBound = null;
   }
@@ -117,12 +118,21 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
 
   /** Called on SPA page navigation (also used by sharedObserver callback) */
   onPageChange() {
-    // Stale element references after SPA nav — clear visual state but keep mode active
+    // Reset selection mode entirely on navigation — stale DOM refs are invalid
+    // and the user expects a clean slate on the new page.
+    if (this._selectionModeActive) {
+      this._selectionModeActive = false;
+      document.body.classList.remove(CSS.SELECTION_ACTIVE);
+    }
     if (this._selected.size > 0) {
-      // Don't iterate stale DOM refs, just clear the map and reset the action bar
       this._selected.clear();
       this._updateActionBar();
     }
+    
+    // Clear all injected checkboxes and DOM stamps before re-attaching, 
+    // because YouTube recycles video elements and changing src breaks our videoId cache
+    this._removeAllCheckboxes();
+    
     // Attach checkboxes to newly rendered cards
     this._attachCheckboxes();
   }
@@ -248,16 +258,35 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
       this._toggleSelect(card, videoId, href, title);
     };
 
-    // Checkbox: always clickable (hover CSS shows it)
-    this.addListener(checkbox, 'click', onSelect);
+    // PRIMARY: Listen on the thumbnail container (parent of checkbox) in capture phase.
+    // This catches clicks even when the checkbox has visual opacity:0 / transform issues.
+    // We detect checkbox hits by checking if click is within the checkbox bounds.
+    const thumb = checkbox.parentElement;
+    if (thumb) {
+      this.addListener(thumb, 'click', (e) => {
+        // Check if the click hit the checkbox element or is very close to it
+        const checkboxRect = checkbox.getBoundingClientRect();
+        const hitCheckbox = e.target === checkbox || checkbox.contains(e.target) ||
+          (checkboxRect.width > 0 &&
+           e.clientX >= checkboxRect.left - 4 &&
+           e.clientX <= checkboxRect.right + 4 &&
+           e.clientY >= checkboxRect.top - 4 &&
+           e.clientY <= checkboxRect.bottom + 4);
+
+        if (hitCheckbox) {
+          onSelect(e);
+        }
+      }, { capture: true });
+    }
+
+    // FALLBACK: Also listen directly on checkbox
+    this.addListener(checkbox, 'click', onSelect, { capture: true });
 
     // Overlay: only active when mode is ON (CSS display:none otherwise)
-    this.addListener(overlay, 'click', onSelect);
+    this.addListener(overlay, 'click', onSelect, { capture: true });
 
     // Card capture-phase: blocks YouTube navigation when mode is active.
     // Only handles clicks that miss both checkbox and overlay (e.g., title/meta area).
-    // IMPORTANT: Must NOT intercept ⋮ menu button clicks (needed by action bar handlers
-    //            that call _simulateMouseClick on the menu btn while mode is active).
     this.addListener(
       card,
       'click',
@@ -322,12 +351,18 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
     this._selected.set(videoId, { title, href, element: card });
     card.classList.add(CSS.CARD_SELECTED);
     card.querySelector(`.${CSS.CHECKBOX}`)?.classList.add(CSS.CHECKBOX_CHECKED);
+    // Activate selection mode body class whenever something is selected
+    document.body.classList.add(CSS.SELECTION_ACTIVE);
   }
 
   _deselect(card, videoId) {
     this._selected.delete(videoId);
     card.classList.remove(CSS.CARD_SELECTED);
     card.querySelector(`.${CSS.CHECKBOX}`)?.classList.remove(CSS.CHECKBOX_CHECKED);
+    // Remove selection mode if nothing left selected and not in persistent mode
+    if (this._selected.size === 0 && !this._selectionModeActive) {
+      document.body.classList.remove(CSS.SELECTION_ACTIVE);
+    }
   }
 
   _clearAll() {
@@ -381,14 +416,27 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
         <span class="ypp-ms-label" id="ypp-ms-count-label">videos selected</span>
       </div>
       <div class="ypp-ms-bar-actions">
-        ${this.settings.msOptQueue !== false ? `<button class="ypp-ms-btn" id="ypp-ms-queue">${ICONS.OPEN} Queue Videos</button>` : ''}
-        ${this.settings.msOptPlaylist !== false ? `<button class="ypp-ms-btn" id="ypp-ms-playlist">${ICONS.PLAYLIST} Save to Playlist</button>` : ''}
-        ${this.settings.msOptWatchLater !== false ? `<button class="ypp-ms-btn" id="ypp-ms-wl">${ICONS.WATCH_LATER} Watch Later</button>` : ''}
-        ${this.settings.msOptNotInterested !== false ? `<button class="ypp-ms-btn" id="ypp-ms-not-interested">${ICONS.NOT_INTERESTED} Not Interested</button>` : ''}
-        ${this.settings.msOptMarkWatched !== false ? `<button class="ypp-ms-btn" id="ypp-ms-watched">${ICONS.WATCHED} Mark Watched</button>` : ''}
-        <button class="ypp-ms-btn ypp-ms-btn-clear" id="ypp-ms-clear">✕ Clear</button>
+        <button class="ypp-ms-btn" data-variant="info"    id="ypp-ms-queue">
+          <span class="ypp-ms-dot"></span>Queue
+        </button>
+        <button class="ypp-ms-btn" data-variant="purple"  id="ypp-ms-playlist">
+          <span class="ypp-ms-dot"></span>Playlist
+        </button>
+        <button class="ypp-ms-btn" data-variant="warning" id="ypp-ms-wl">
+          <span class="ypp-ms-dot"></span>Watch Later
+        </button>
+        <button class="ypp-ms-btn" data-variant="error"   id="ypp-ms-not-interested">
+          <span class="ypp-ms-dot"></span>Not Interested
+        </button>
+        <button class="ypp-ms-btn" data-variant="success" id="ypp-ms-watched">
+          <span class="ypp-ms-dot"></span>Mark Watched
+        </button>
+        <button class="ypp-ms-btn ypp-ms-btn-clear" data-variant="ghost" id="ypp-ms-clear">
+          <span class="ypp-ms-dot"></span>Clear All
+        </button>
       </div>`;
   }
+
 
   _wireActionBarButtons() {
     // Use direct addEventListener (not addListener) since the bar owns these elements —
@@ -415,268 +463,497 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
     if (labelEl) labelEl.textContent = `video${count !== 1 ? 's' : ''} selected`;
   }
 
+
   // ─── Actions ─────────────────────────────────────────────────────────────────
 
-  async _addToQueue() {
+  /**
+   * Generic action runner: iterates videos, fires actionFn for each, shows live
+   * progress toasts, and calls _clearAll when done.
+   *
+   * @param {string}   label     - Human label, e.g. 'queue'
+   * @param {Function} actionFn  - async (video, index, total) => boolean (success?)
+   */
+  async _withProgress(label, actionFn) {
+    if (this._isActing) return; // prevent re-entrance from rapid button clicks
     const videos = [...this._selected.values()];
     if (!videos.length) return;
 
-    this._showToast(
-      `Adding ${videos.length} video${videos.length !== 1 ? 's' : ''} to Queue…`
-    );
+    this._isActing = true;
+    this._setBarBusy(true);
 
-    let successCount = 0;
-    for (const { element } of videos) {
-      const done = await this._invokeMenuAction(element, 'add to queue');
-      if (done) successCount++;
-      // Small gap so the previous popup fully dismisses before opening the next
-      await this._delay(350);
+    let succeeded = 0;
+    let failed = 0;
+
+    try {
+      for (let i = 0; i < videos.length; i++) {
+        if (!this.isEnabled) break; // abort if feature was disabled mid-action
+
+        // Live "X / Y" progress in the bar count display
+        this._setBarStatus(`${i + 1} / ${videos.length}`);
+
+        const ok = await actionFn(videos[i], i, videos.length);
+        if (ok) succeeded++;
+        else failed++;
+      }
+    } finally {
+      this._isActing = false;
+      this._setBarBusy(false);
     }
 
-    this._showToast(`${successCount} video${successCount !== 1 ? 's' : ''} added to Queue`);
+    const total = succeeded + failed;
+    if (failed === 0) {
+      this._showToast(`✓ ${succeeded} video${succeeded !== 1 ? 's' : ''} added to ${label}`);
+    } else {
+      this._showToast(
+        `✓ ${succeeded} added to ${label}${failed > 0 ? ` · ⚠ ${failed} failed` : ''}`
+      );
+    }
     this._clearAll();
   }
+
+  /**
+   * Puts the action bar into a "busy" visual state (buttons dimmed + spinner on count).
+   * @param {boolean} busy
+   */
+  _setBarBusy(busy) {
+    if (!this._actionBar) return;
+    const btns = this._actionBar.querySelectorAll('.ypp-ms-btn');
+    btns.forEach((b) => {
+      b.style.opacity = busy ? '0.45' : '';
+      b.style.pointerEvents = busy ? 'none' : '';
+    });
+  }
+
+  /**
+   * Temporarily override the count display with a status string (e.g. "3 / 10").
+   * @param {string} text
+   */
+  _setBarStatus(text) {
+    const countEl = this._actionBar?.querySelector('#ypp-ms-count-val');
+    const labelEl = this._actionBar?.querySelector('#ypp-ms-count-label');
+    if (countEl) countEl.textContent = text;
+    if (labelEl) labelEl.textContent = '';
+  }
+
+  // ─── Add to Queue ─────────────────────────────────────────────────────────────
+
+  async _addToQueue() {
+    await this._withProgress('queue', async (video) => {
+      const RETRIES = 2;
+      for (let attempt = 0; attempt <= RETRIES; attempt++) {
+        const ok = await this._invokeMenuAction(video.element, [
+          'add to queue',
+          'queue',
+        ]);
+        if (ok) return true;
+        if (attempt < RETRIES) await this._delay(200); // short pause before retry
+      }
+      // Visual indicator for videos that couldn't be queued
+      try { video.element.style.opacity = '0.4'; } catch (_) {}
+      return false;
+    });
+  }
+
+  // ─── Watch Later ─────────────────────────────────────────────────────────────
 
   async _addToWatchLater() {
-    const videos = [...this._selected.values()];
-    this._showToast(
-      `Adding ${videos.length} video${videos.length !== 1 ? 's' : ''} to Watch Later…`
-    );
-    let successCount = 0;
-    for (const { element } of videos) {
-      const done = await this._invokeMenuAction(element, 'watch later');
-      if (done) successCount++;
-      // Small gap so the previous popup fully dismisses before opening the next
-      await this._delay(350);
-    }
-    this._showToast(`${successCount} video${successCount !== 1 ? 's' : ''} added to Watch Later`);
-    this._clearAll();
+    await this._withProgress('Watch Later', async (video) => {
+      const RETRIES = 2;
+      for (let attempt = 0; attempt <= RETRIES; attempt++) {
+        const ok = await this._invokeMenuAction(video.element, 'watch later');
+        if (ok) return true;
+        if (attempt < RETRIES) await this._delay(200);
+      }
+      try { video.element.style.opacity = '0.4'; } catch (_) {}
+      return false;
+    });
   }
 
-  async _showPlaylistPicker() {
-    const videos = [...this._selected.values()];
-    if (videos.length === 0) return;
+  // ─── Save to Playlist ────────────────────────────────────────────────────────
 
-    // We exclude 'watch later' so we don't accidentally click "Save to Watch Later"
-    const matchRules = [{ text: 'save to playlist' }, { text: 'save', exclude: 'watch later' }];
-    const done = await this._invokeMenuAction(videos[0].element, matchRules);
-    if (!done) {
-      this._showToast('Could not open playlist picker — try clicking ⋮ manually');
+  async _showPlaylistPicker() {
+    if (this._isActing) return;
+    const videos = [...this._selected.values()];
+    if (!videos.length) return;
+
+    this._isActing = true;
+    this._setBarBusy(true);
+
+    try {
+      await this._runPlaylistFlow(videos);
+    } finally {
+      this._isActing = false;
+      this._setBarBusy(false);
+    }
+  }
+
+  /**
+   * Core playlist flow:
+   * 1. Open the native "Save to playlist" dialog for the FIRST video.
+   * 2. Wait (up to 30s) for the user to pick playlist(s) and close the dialog.
+   * 3. Remember which playlists were checked.
+   * 4. Apply the same selection to all remaining videos programmatically.
+   *
+   * @param {Array} videos
+   */
+  async _runPlaylistFlow(videos) {
+    const MATCH_RULES = [
+      { text: 'save to playlist' },
+      { text: 'save', exclude: 'watch later' },
+    ];
+
+    // ── Step 1: open dialog for first video ──────────────────────────────────
+    const opened = await this._invokeMenuAction(videos[0].element, MATCH_RULES);
+    if (!opened) {
+      this._showToast('⚠ Could not open playlist picker — try clicking ⋮ manually');
+      this._clearAll();
+      return;
+    }
+
+    // ── Step 2: wait for the native playlist dialog to appear ─────────────────
+    const dialog = await this._waitForPlaylistDialog(3000);
+    if (!dialog) {
+      this._showToast('⚠ Playlist dialog did not appear');
+      this._clearAll();
       return;
     }
 
     if (videos.length === 1) {
+      // Only one video — just let the user interact with the native dialog normally
       this._clearAll();
       return;
     }
 
-    // Wait for the native dialog to appear
-    const popup = await this.waitForElement('ytd-add-to-playlist-renderer', 3000);
-    if (!popup) {
+    // ── Step 3: wait for user to pick & close (max 30s) ──────────────────────
+    this._showToast('Pick your playlist(s), then close the dialog…');
+    this._setBarStatus('waiting…');
+
+    // Reminder at 15s so the user doesn't wonder what's happening
+    const reminderTimer = setTimeout(() => {
+      if (this._isActing) this._showToast('Still waiting for playlist dialog to close…');
+    }, 15_000);
+
+    const chosenPlaylists = await this._waitForPlaylistDialogClose(dialog, 30_000);
+    clearTimeout(reminderTimer);
+
+    if (!chosenPlaylists || chosenPlaylists.size === 0) {
+      this._showToast('No playlists selected — cancelled');
       this._clearAll();
       return;
     }
 
-    // Keep track of which playlists are checked in real-time while the popup is open
-    const targetPlaylists = new Set();
-    const updatePlaylists = () => {
-       targetPlaylists.clear();
-       const options = Array.from(popup.querySelectorAll('ytd-playlist-add-to-option-renderer'));
-       for (const option of options) {
-           const checkbox = option.querySelector('tp-yt-paper-checkbox');
-           if (checkbox && (checkbox.hasAttribute('checked') || checkbox.getAttribute('aria-checked') === 'true' || checkbox.checked)) {
-               const titleEl = option.querySelector('#label');
-               if (titleEl) targetPlaylists.add(titleEl.textContent.trim());
-           }
-       }
-    };
+    // ── Step 4: apply same playlist selection to remaining videos ─────────────
+    let succeeded = 1; // first video counts as done
+    let failed = 0;
 
-    // Wait for the popup to close, continually updating our state
-    await new Promise(resolve => {
-       const checkClosed = () => {
-           const dialog = popup.closest('tp-yt-paper-dialog') || popup.closest('ytd-popup-container');
-           return !dialog || dialog.style.display === 'none' || dialog.getAttribute('aria-hidden') === 'true' || !document.body.contains(popup);
-       };
-       const observer = new MutationObserver(() => {
-           if (!checkClosed()) updatePlaylists();
-           if (checkClosed()) { observer.disconnect(); resolve(); }
-       });
-       observer.observe(document.body, { childList: true, subtree: true, attributes: true });
-       const interval = setInterval(() => {
-           if (!checkClosed()) updatePlaylists();
-           if (checkClosed()) { clearInterval(interval); observer.disconnect(); resolve(); }
-       }, 200);
-    });
-
-    if (targetPlaylists.size === 0) {
-       this._clearAll();
-       return;
-    }
-
-    this._showToast(`Adding remaining ${videos.length - 1} video(s) to playlist(s)…`);
-    
-    let successCount = 1;
     for (let i = 1; i < videos.length; i++) {
-       const video = videos[i];
-       const opened = await this._invokeMenuAction(video.element, matchRules);
-       if (!opened) continue;
-       
-       await this._delay(300);
-       const dialog = document.querySelector('ytd-add-to-playlist-renderer');
-       if (!dialog) continue;
+      if (!this.isEnabled) break;
 
-       const options = Array.from(dialog.querySelectorAll('ytd-playlist-add-to-option-renderer'));
-       for (const option of options) {
-           const titleEl = option.querySelector('#label');
-           if (titleEl && targetPlaylists.has(titleEl.textContent.trim())) {
-               const checkbox = option.querySelector('tp-yt-paper-checkbox');
-               // Click to check it if it's not checked
-               if (checkbox && !(checkbox.hasAttribute('checked') || checkbox.getAttribute('aria-checked') === 'true' || checkbox.checked)) {
-                   this._simulateMouseClick(checkbox);
-                   await this._delay(100);
-               }
-           }
-       }
+      this._setBarStatus(`${i + 1} / ${videos.length}`);
 
-       const closeBtn = dialog.querySelector('#close-button');
-       if (closeBtn) {
-           this._simulateMouseClick(closeBtn);
-       } else {
-           document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-       }
-       
-       successCount++;
-       await this._delay(300); // Wait for dialog to fully close
+      const ok = await this._applyPlaylistsToVideo(videos[i].element, MATCH_RULES, chosenPlaylists);
+      if (ok) succeeded++;
+      else {
+        failed++;
+        try { videos[i].element.style.opacity = '0.4'; } catch (_) {}
+      }
     }
 
-    this._showToast(`Successfully saved ${successCount} videos to playlist(s)`);
+    const msg = failed === 0
+      ? `✓ Saved ${succeeded} video${succeeded !== 1 ? 's' : ''} to playlist`
+      : `✓ ${succeeded} saved · ⚠ ${failed} failed`;
+    this._showToast(msg);
     this._clearAll();
   }
 
-  async _markNotInterested() {
-    const videos = [...this._selected.values()];
-    this._showToast(
-      `Marking ${videos.length} video${videos.length !== 1 ? 's' : ''} as Not Interested…`
+  /**
+   * Poll for the ytd-add-to-playlist-renderer dialog to appear.
+   * @param {number} timeout
+   * @returns {Promise<Element|null>}
+   */
+  _waitForPlaylistDialog(timeout) {
+    return new Promise((resolve) => {
+      const SELECTOR = 'ytd-add-to-playlist-renderer';
+      const existing = document.querySelector(SELECTOR);
+      if (existing && this._isElementVisible(existing)) {
+        return resolve(existing);
+      }
+
+      const start = Date.now();
+      const tick = setInterval(() => {
+        const el = document.querySelector(SELECTOR);
+        if (el && this._isElementVisible(el)) {
+          clearInterval(tick);
+          resolve(el);
+        } else if (Date.now() - start > timeout) {
+          clearInterval(tick);
+          resolve(null);
+        }
+      }, 60);
+    });
+  }
+
+  /**
+   * Wait for the playlist dialog to be closed by the user.
+   * Observes aria-hidden and DOM removal. Returns the Set of chosen playlist names.
+   * @param {Element} dialogContent - The ytd-add-to-playlist-renderer element
+   * @param {number}  timeout       - Max wait in ms
+   * @returns {Promise<Set<string>>}
+   */
+  _waitForPlaylistDialogClose(dialogContent, timeout) {
+    return new Promise((resolve) => {
+      /** @returns {Set<string>} currently checked playlist names */
+      const getChecked = () => {
+        const result = new Set();
+        dialogContent
+          .querySelectorAll('ytd-playlist-add-to-option-renderer')
+          .forEach((opt) => {
+            const cb = opt.querySelector('tp-yt-paper-checkbox');
+            const checked =
+              cb?.hasAttribute('checked') ||
+              cb?.getAttribute('aria-checked') === 'true' ||
+              cb?.checked;
+            if (checked) {
+              const label = opt.querySelector('#label')?.textContent?.trim();
+              if (label) result.add(label);
+            }
+          });
+        return result;
+      };
+
+      /** @returns {boolean} true if the dialog is no longer visible */
+      const isClosed = () => {
+        if (!document.body.contains(dialogContent)) return true;
+        // Walk up to find the host dialog/iron-dropdown
+        let el = dialogContent.parentElement;
+        while (el && el !== document.body) {
+          if (
+            el.getAttribute('aria-hidden') === 'true' ||
+            el.style.display === 'none' ||
+            el.style.visibility === 'hidden'
+          )
+            return true;
+          el = el.parentElement;
+        }
+        return false;
+      };
+
+      let lastChecked = getChecked();
+      const done = (result) => {
+        observer.disconnect();
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
+        resolve(result);
+      };
+
+      const observer = new MutationObserver(() => {
+        lastChecked = getChecked(); // keep snapshot up to date
+        if (isClosed()) done(lastChecked);
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['aria-hidden', 'style'],
+      });
+
+      // Fallback interval for edge cases where MutationObserver might miss something
+      const intervalId = setInterval(() => {
+        lastChecked = getChecked();
+        if (isClosed()) done(lastChecked);
+      }, 250);
+
+      const timeoutId = setTimeout(() => done(lastChecked), timeout);
+    });
+  }
+
+  /**
+   * Open the ⋮ menu for a video, open the playlist dialog, apply the
+   * previously chosen playlists, then close the dialog.
+   * @param {HTMLElement}  cardElement
+   * @param {Array}        matchRules
+   * @param {Set<string>}  targetPlaylists
+   * @returns {Promise<boolean>}
+   */
+  async _applyPlaylistsToVideo(cardElement, matchRules, targetPlaylists) {
+    const opened = await this._invokeMenuAction(cardElement, matchRules);
+    if (!opened) return false;
+
+    await this._delay(300); // let dialog animate in
+
+    const dialog = document.querySelector('ytd-add-to-playlist-renderer');
+    if (!dialog) return false;
+
+    // Check / uncheck to match target state
+    const options = Array.from(
+      dialog.querySelectorAll('ytd-playlist-add-to-option-renderer')
     );
-    let count = 0;
-    for (const { element } of videos) {
-      const done = await this._invokeMenuAction(
-        element,
+    for (const option of options) {
+      const label = option.querySelector('#label')?.textContent?.trim();
+      if (!label) continue;
+
+      const cb = option.querySelector('tp-yt-paper-checkbox');
+      const isChecked =
+        cb?.hasAttribute('checked') ||
+        cb?.getAttribute('aria-checked') === 'true' ||
+        cb?.checked;
+
+      const shouldBeChecked = targetPlaylists.has(label);
+
+      if (shouldBeChecked && !isChecked) {
+        this._simulateMouseClick(cb || option);
+        await this._delay(80);
+      } else if (!shouldBeChecked && isChecked) {
+        // Uncheck if it was pre-checked (e.g. Watch Later auto-added)
+        this._simulateMouseClick(cb || option);
+        await this._delay(80);
+      }
+    }
+
+    await this._delay(100);
+
+    // Close dialog — try multiple strategies for cross-version compat
+    this._closePlaylistDialog(dialog);
+    await this._delay(300);
+    return true;
+  }
+
+  /**
+   * Robustly close a playlist dialog using multiple strategies.
+   * @param {Element} dialogContent
+   */
+  _closePlaylistDialog(dialogContent) {
+    // Strategy 1: dedicated close button (various known IDs/classes)
+    const closeSelectors = [
+      '#close-button button',
+      '#close-button',
+      'button[aria-label*="close" i]',
+      'button[aria-label*="Cancel" i]',
+      '.close-button',
+    ];
+    for (const sel of closeSelectors) {
+      const btn = dialogContent.closest('tp-yt-paper-dialog, ytd-popup-container')?.querySelector(sel)
+        || dialogContent.querySelector(sel);
+      if (btn) {
+        this._simulateMouseClick(btn);
+        return;
+      }
+    }
+    // Strategy 2: Escape key (most reliable cross-version)
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, bubbles: true, cancelable: true })
+    );
+  }
+
+  // ─── Not Interested ──────────────────────────────────────────────────────────
+
+  async _markNotInterested() {
+    await this._withProgress('Not Interested', async (video) => {
+      const ok = await this._invokeMenuAction(
+        video.element,
         ['not interested', "don't recommend"],
         () => {
           try {
-            element.style.opacity = '0.4';
-            element.style.pointerEvents = 'none';
+            video.element.style.opacity = '0.4';
+            video.element.style.pointerEvents = 'none';
           } catch (_) {}
         }
       );
-      if (done) count++;
-      await this._delay(350);
-    }
-    this._showToast(`${count} video${count !== 1 ? 's' : ''} marked Not Interested`);
-    this._clearAll();
+      await this._delay(300);
+      return ok;
+    });
   }
 
-  async _markSelectedWatched() {
-    const videos = [...this._selected.values()];
+  // ─── Mark Watched ────────────────────────────────────────────────────────────
 
-    this._showToast(`Syncing ${videos.length} video${videos.length !== 1 ? 's' : ''} to Watch History... (this may take a moment)`);
+  async _markSelectedWatched() {
+    if (this._isActing) return;
+    const videos = [...this._selected.values()];
+    if (!videos.length) return;
+
+    this._isActing = true;
+    this._setBarBusy(true);
+
+    this._showToast(
+      `Syncing ${videos.length} video${videos.length !== 1 ? 's' : ''} to Watch History…`
+    );
 
     let count = 0;
-    const batchSize = 3;
+    const BATCH_SIZE = 3;
 
-    for (let i = 0; i < videos.length; i += batchSize) {
-      const batch = videos.slice(i, i + batchSize);
-      const syncPromises = [];
+    try {
+      for (let i = 0; i < videos.length; i += BATCH_SIZE) {
+        const batch = videos.slice(i, i + BATCH_SIZE);
+        this._setBarStatus(`${Math.min(i + BATCH_SIZE, videos.length)} / ${videos.length}`);
 
-      for (const { href, element } of batch) {
-        const match = href.match(/[?&]v=([^&]+)|\/shorts\/([^/?]+)/);
-        const videoId = match?.[1] || match?.[2];
-        if (videoId) {
-          // Local sync for instant visual feedback
+        const syncPromises = batch.map(({ href, element }) => {
+          const match = href.match(/[?&]v=([^&]+)|\/shorts\/([^/?]+)/);
+          const videoId = match?.[1] || match?.[2];
+          if (!videoId) return Promise.resolve(false);
+
           window.YPP.WatchedStore?.add(videoId);
-          
-          try {
-            element.style.opacity = '0.45';
-          } catch (_) {}
-
-          // True sync via invisible embed
-          syncPromises.push(this._syncWatchHistory(videoId));
+          try { element.style.opacity = '0.45'; } catch (_) {}
           count++;
-        }
-      }
+          return this._syncWatchHistory(videoId);
+        });
 
-      // Wait for this batch to complete (or timeout) before starting the next batch
-      await Promise.all(syncPromises);
+        await Promise.all(syncPromises);
+      }
+    } finally {
+      this._isActing = false;
+      this._setBarBusy(false);
     }
 
-    this._showToast(`Successfully added ${count} video${count !== 1 ? 's' : ''} to Watch History!`);
+    this._showToast(`✓ ${count} video${count !== 1 ? 's' : ''} added to Watch History`);
     this._clearAll();
   }
 
   async _syncWatchHistory(videoId) {
     return new Promise((resolve) => {
       const iframe = document.createElement('iframe');
-      // CRITICAL: allow="autoplay" is required for the video to start without user interaction
       iframe.setAttribute('allow', 'autoplay; encrypted-media');
       iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1`;
-      
-      // CRITICAL: Must be in viewport (width/height > 0) so YouTube's IntersectionObserver allows playback
-      iframe.style.cssText = 'position:fixed; bottom:0; right:0; width:300px; height:200px; opacity:0.01; pointer-events:none; z-index:-9999;';
-      
+      // Must be visible (non-zero size) for YouTube's IntersectionObserver to allow playback
+      iframe.style.cssText =
+        'position:fixed;bottom:0;right:0;width:300px;height:200px;opacity:0.01;pointer-events:none;z-index:-9999;';
+
       let duration = 0;
       let hasSeeked = false;
 
       const onMessage = (e) => {
-        if (e.origin !== 'https://www.youtube.com') return;
-        
-        // Ensure this message comes from THIS specific iframe (especially when batching)
-        if (e.source !== iframe.contentWindow) return;
-
+        if (e.origin !== 'https://www.youtube.com' || e.source !== iframe.contentWindow) return;
         try {
           const data = JSON.parse(e.data);
-          
           if (data.event === 'infoDelivery' && data.info) {
             if (data.info.duration) duration = data.info.duration;
-            
-            // Once it starts playing (state === 1) and we haven't seeked yet
             if (data.info.playerState === 1 && duration > 0 && !hasSeeked) {
               hasSeeked = true;
-              
-              // Wait 1.5s of real playback before seeking to the end. 
-              // Without this, YouTube's backend might reject the watchtime ping as a bot/skip.
+              // Wait 1.5s of real playback before seeking — avoids bot detection
               setTimeout(() => {
                 try {
-                  iframe.contentWindow.postMessage(JSON.stringify({
-                    event: 'command',
-                    func: 'seekTo',
-                    args: [Math.max(0, duration - 2), true]
-                  }), '*');
+                  iframe.contentWindow.postMessage(
+                    JSON.stringify({ event: 'command', func: 'seekTo', args: [Math.max(0, duration - 2), true] }),
+                    '*'
+                  );
                 } catch (_) {}
               }, 1500);
             }
-            
-            // State 0 is ENDED
-            if (data.info.playerState === 0) {
-              cleanup();
-            }
-          } else if (data.event === 'initialDelivery') {
-            if (data.info && data.info.duration) duration = data.info.duration;
+            if (data.info.playerState === 0) cleanup();
+          } else if (data.event === 'initialDelivery' && data.info?.duration) {
+            duration = data.info.duration;
           }
-        } catch (err) {}
+        } catch (_) {}
       };
 
       const cleanup = () => {
         window.removeEventListener('message', onMessage);
-        if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+        iframe.parentNode?.removeChild(iframe);
         resolve(true);
       };
 
       window.addEventListener('message', onMessage);
       document.body.appendChild(iframe);
-
-      // Failsafe timeout in case the video is unplayable or blocked
-      setTimeout(cleanup, 10000); 
+      setTimeout(cleanup, 10_000); // failsafe
     });
   }
 
@@ -684,18 +961,15 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
 
   /**
    * Opens the ⋮ menu on a card and clicks the first item whose text matches.
-   * Sets _isActing = true for the duration so the card capture listener backs off.
    * @param {HTMLElement} cardElement
-   * @param {string | string[]} labelMatch - text(s) to match (case-insensitive, partial)
-   * @param {Function} [onSuccess] - optional callback after clicking the item
-   * @returns {Promise<boolean>} true if the item was found and clicked
+   * @param {string | string[] | {text:string, exclude?:string}[]} labelMatch
+   * @param {Function} [onSuccess] - callback fired immediately after clicking the item
+   * @returns {Promise<boolean>}
    */
   async _invokeMenuAction(cardElement, labelMatch, onSuccess) {
     const menuBtn = cardElement.querySelector(SELECTORS.MENU_BTN);
     if (!menuBtn) return false;
 
-    // Suspend capture listener so our simulated menu click isn't intercepted
-    this._isActing = true;
     try {
       this._simulateMouseClick(menuBtn);
 
@@ -708,10 +982,10 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
       const clickTarget = item.querySelector(SELECTORS.MENU_LABEL) || item;
       this._simulateMouseClick(clickTarget);
       onSuccess?.();
+      await this._delay(250); // let popup dismiss before next action
       return true;
-    } finally {
-      // Always restore — even if an error occurs
-      this._isActing = false;
+    } catch (_) {
+      return false;
     }
   }
 
@@ -727,9 +1001,7 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
       items.find((item) => {
         const txt = (item.innerText || item.textContent || '').trim().toLowerCase();
         return terms.some((term) => {
-          if (typeof term === 'string') {
-            return txt.includes(term.toLowerCase());
-          }
+          if (typeof term === 'string') return txt.includes(term.toLowerCase());
           if (term.exclude && txt.includes(term.exclude.toLowerCase())) return false;
           return txt.includes(term.text.toLowerCase());
         });
@@ -762,28 +1034,31 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
 
   _findNearestOpenPopup(anchorEl) {
     const { left: ax, top: ay, width: aw, height: ah } = anchorEl.getBoundingClientRect();
-    const cx = ax + aw / 2,
-      cy = ay + ah / 2;
+    const cx = ax + aw / 2;
+    const cy = ay + ah / 2;
 
     const visiblePopups = Array.from(document.querySelectorAll(SELECTORS.POPUP)).filter((d) => {
       const r = d.getBoundingClientRect();
       return r.width > 0 && r.height > 0;
     });
-
     if (!visiblePopups.length) return null;
 
     return visiblePopups.reduce((best, d) => {
       const r = d.getBoundingClientRect();
       const dist = Math.hypot(r.left + r.width / 2 - cx, r.top + r.height / 2 - cy);
-      const bestDist = (() => {
-        const br = best.getBoundingClientRect();
-        return Math.hypot(br.left + br.width / 2 - cx, br.top + br.height / 2 - cy);
-      })();
+      const br = best.getBoundingClientRect();
+      const bestDist = Math.hypot(br.left + br.width / 2 - cx, br.top + br.height / 2 - cy);
       return dist < bestDist ? d : best;
     });
   }
 
   // ─── Utilities ────────────────────────────────────────────────────────────────
+
+  /** @returns {boolean} true if el is rendered with non-zero dimensions */
+  _isElementVisible(el) {
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.height > 0;
+  }
 
   /** @param {string} message */
   _showToast(message) {
@@ -795,8 +1070,6 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
   }
 
   /**
-   * Wait for ms milliseconds. Used to space sequential menu interactions so
-   * the previous popup fully dismisses before the next one is opened.
    * @param {number} ms
    * @returns {Promise<void>}
    */

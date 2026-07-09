@@ -95,7 +95,7 @@ window.YPP.features.PlayerBarUI = class PlayerBarUI {
         addFeatureButton('volumeBoost', 'pb_volume', 'enableVolumeBoost');
         addFeatureButton('videoFilters', 'pb_cinema', 'enableCinemaFilters');
 
-        if (this.manager.controlsHelper && document.pictureInPictureEnabled && this.settings.enablePiP !== false && (!this.settings.pb_pip || this.settings.pb_pip === 'front')) {
+        if (this.manager.controlsHelper && document.pictureInPictureEnabled && isFront(this.settings.pb_pip)) {
             container.appendChild(this.manager.controlsHelper.createPiPButton(video));
         }
 

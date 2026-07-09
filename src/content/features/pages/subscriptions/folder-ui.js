@@ -1160,7 +1160,16 @@ window.YPP.features.ChannelHealthUI = class ChannelHealthUI {
                     <div style="display: flex; gap: 12px; align-items: center;">
                         <button id="ypp-health-create-folder-btn" class="ypp-btn-primary" style="background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.05)'; this.style.transform='translateY(0)';">Create Folder</button>
                         <button id="ypp-health-delete-folder-btn" class="ypp-btn-primary" style="background: transparent; color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.background='rgba(255, 78, 69, 0.1)'; this.style.color='#ff4e45'; this.style.borderColor='rgba(255, 78, 69, 0.3)';" onmouseout="this.style.background='transparent'; this.style.color='rgba(255, 255, 255, 0.6)'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">Delete Folder</button>
-                        <button id="ypp-health-scan-btn" class="ypp-btn-primary" style="background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; border: none; padding: 8px 24px; border-radius: 20px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 20px rgba(99, 102, 241, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(99, 102, 241, 0.3)';">Start Scan</button>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <button id="ypp-health-scan-btn" class="ypp-btn-primary" style="background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; border: none; padding: 8px 24px; border-radius: 20px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 20px rgba(99, 102, 241, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(99, 102, 241, 0.3)';">Start Scan</button>
+                            <div id="ypp-scan-progress-wrapper" style="display: none; width: 32px; height: 32px; position: relative;">
+                                <svg viewBox="0 0 100 100" style="transform:rotate(-90deg); width:100%; height:100%;">
+                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.1)" stroke-width="12"></circle>
+                                    <circle id="ypp-circular-progress" cx="50" cy="50" r="40" fill="transparent" stroke="rgb(79, 70, 229)" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" style="transition: stroke-dashoffset 0.3s ease;"></circle>
+                                </svg>
+                                <div id="ypp-circular-text" style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:bold; color:#fff;">0%</div>
+                            </div>
+                        </div>
                         <button id="ypp-health-unsub-btn" class="ypp-btn-primary" style="background: rgba(255,78,69,0.2); color: #ff6b6b; border: 1px solid rgba(255,78,69,0.3); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none;" onmouseover="this.style.background='rgba(255,78,69,0.3)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,78,69,0.2)'; this.style.transform='translateY(0)';">Unsubscribe Selected</button>
                         <button id="ypp-health-add-folder-btn" class="ypp-btn-primary" style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none;" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.transform='translateY(0)';">Add to Folder</button>
                         <button id="ypp-health-remove-folder-btn" class="ypp-btn-primary" style="background: rgba(255, 152, 0, 0.15); color: #ffb340; border: 1px solid rgba(255, 152, 0, 0.3); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none;" onmouseover="this.style.background='rgba(255, 152, 0, 0.25)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 152, 0, 0.15)'; this.style.transform='translateY(0)';">Remove from Folder</button>
@@ -1741,8 +1750,17 @@ window.YPP.features.ChannelHealthUI = class ChannelHealthUI {
             }
 
             // ── Step 3: Clear and set up streaming UI ─────────────────────
-            resultsEl.innerHTML = '';
+            resultsEl.innerHTML = `
+                <div id="ypp-health-results-list" style="display:flex; flex-direction:column; gap:12px;"></div>
+            `;
             if (statusEl) statusEl.remove();
+
+            const progressWrapper = overlay.querySelector('#ypp-scan-progress-wrapper');
+            if (progressWrapper) progressWrapper.style.display = 'block';
+
+            const progressCircle = overlay.querySelector('#ypp-circular-progress');
+            const progressText = overlay.querySelector('#ypp-circular-text');
+            const resultsListEl = overlay.querySelector('#ypp-health-results-list');
 
             const now = Date.now();
             const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
@@ -1753,6 +1771,22 @@ window.YPP.features.ChannelHealthUI = class ChannelHealthUI {
                 overlay.querySelector('#ypp-health-warning').textContent = warningCount;
                 overlay.querySelector('#ypp-health-dead').textContent    = deadCount;
                 btn.textContent = `Scanning… ${doneCount}/${channels.length}`;
+                
+                if (channels.length > 0) {
+                    const percent = Math.floor((doneCount / channels.length) * 100);
+                    if (progressText) progressText.textContent = `${percent}%`;
+                    if (progressCircle) {
+                        const offset = 251.2 - (251.2 * percent) / 100;
+                        progressCircle.style.strokeDashoffset = offset;
+                    }
+                }
+
+                if (doneCount >= channels.length) {
+                    const pc = overlay.querySelector('#ypp-circular-progress-container');
+                    if (pc) pc.style.opacity = '0';
+                    setTimeout(() => { if (pc) pc.remove(); }, 500);
+                }
+
                 if (deadCount > 0) {
                     overlay.querySelector('#ypp-health-unsub-btn').style.display    = 'inline-block';
                     overlay.querySelector('#ypp-health-add-folder-btn').style.display = 'inline-block';
@@ -1900,7 +1934,11 @@ window.YPP.features.ChannelHealthUI = class ChannelHealthUI {
                 }
                 
                 row.style.display = show ? 'flex' : 'none';
-                resultsEl.appendChild(row);
+                if (resultsListEl) {
+                    resultsListEl.appendChild(row);
+                } else {
+                    resultsEl.appendChild(row);
+                }
                 updateCounters();
             };
 

@@ -13,7 +13,8 @@ window.YPP.features.AutoQuality = class AutoQuality extends window.YPP.features.
 
     getConfigKey() { return 'autoQuality'; }
 
-    enable() {
+    async enable() {
+        await super.enable();
         try {
             this.forceInitialQuality();
             this.startEnforcer();
@@ -27,9 +28,9 @@ window.YPP.features.AutoQuality = class AutoQuality extends window.YPP.features.
         this.startEnforcer();
     }
 
-    disable() {
-        super.disable();
+    async disable() {
         this.stopEnforcer();
+        await super.disable(); // cleanupEvents() removes all this.addListener() registrations
     }
 
     onPageChange() {
@@ -91,6 +92,8 @@ window.YPP.features.AutoQuality = class AutoQuality extends window.YPP.features.
     }
 
     stopEnforcer() {
+        // Note: the actual listener removal is handled by super.disable() → cleanupEvents().
+        // We only null the reference here so startEnforcer() can re-bind on the next enable().
         this._enforcerBound = null;
     }
 

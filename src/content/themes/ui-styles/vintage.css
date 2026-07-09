@@ -29,7 +29,7 @@ html, [dark] body {
   color: #e8d5b5 !important; /* Parchment text */
 }
 /* === Light mode — use white-tinted glass, dark shadows === */
-html, [dark] {
+html:not([dark]) {
   --sf: #f4ecd8; /* Warm parchment beige */
   --shadow-base: 4px 4px 0px rgba(62, 53, 47, 0.2);
   --shadow-hover: 6px 6px 0px rgba(193, 58, 58, 0.8);
@@ -2250,4 +2250,47 @@ html[data-ypp-theme="vintage"] {
 .ypp-nav-btn.active {
   background: var(--sf) !important;
   box-shadow: var(--shadow-active) !important;
+}
+
+
+/* CATEGORY CHIPS FIX */
+ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+  border: none !important;
+}
+yt-chip-cloud-chip-renderer {
+  border-radius: var(--chip-radius, 8px) !important;
+  border: var(--chip-border, 1px solid transparent) !important;
+  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
+  box-shadow: var(--chip-shadow, none) !important;
+  transition: all 0.2s ease !important;
+}
+yt-chip-cloud-chip-renderer:hover {
+  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
+}
+yt-chip-cloud-chip-renderer[selected] {
+  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
+  color: var(--chip-color-selected, black) !important;
+  border: var(--chip-border-selected, 1px solid transparent) !important;
+}
+
+
+yt-chip-cloud-chip-renderer {
+  --chip-radius: 4px;
+  --chip-border: 1px solid #8b7355;
+  --chip-bg: rgba(245, 222, 179, 0.3);
+}
+[dark] yt-chip-cloud-chip-renderer {
+  --chip-bg: rgba(62, 49, 39, 0.8);
+}
+yt-chip-cloud-chip-renderer[selected] {
+  --chip-bg-selected: #8b7355;
+  --chip-color-selected: #f5f5dc;
+  --chip-border-selected: 1px solid #5c4033;
+}
+
+
+/* POPUP TRANSPARENCY FIX */
+tp-yt-paper-listbox {
+  background: transparent !important;
 }

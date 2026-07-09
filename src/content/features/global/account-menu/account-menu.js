@@ -39,9 +39,22 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
         try {
             // Track which topbar button was clicked to definitively separate Account from Notifications!
             this.addListener(document, 'click', e => {
-                const btn = e.target.closest('#avatar-btn, yt-notification-topbar-button-renderer, ytd-topbar-menu-button-renderer');
+                const btn = e.target.closest(
+                    '#avatar-btn, yt-notification-topbar-button-renderer, ' +
+                    'ytd-topbar-menu-button-renderer, #notification-button, ' +
+                    '[aria-label*="notification" i], [aria-label*="bell" i]'
+                );
                 if (btn) {
-                    window.YPP.lastMenuClick = btn.id || btn.tagName;
+                    const tag  = (btn.tagName  || '').toUpperCase();
+                    const id   = (btn.id       || '').toLowerCase();
+                    const aria = (btn.getAttribute('aria-label') || '').toLowerCase();
+                    const isNotif = tag.includes('NOTIFICATION') ||
+                                   id.includes('notification') ||
+                                   aria.includes('notification') ||
+                                   aria.includes('bell');
+                    window.YPP.lastMenuClick = isNotif ? 'NOTIFICATION' :
+                                               id === 'avatar-btn' ? 'avatar-btn' :
+                                               tag;
                 }
             }, { capture: true });
 
@@ -112,13 +125,18 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
     }
 
     _isAccountMenu(menu) {
+        const last = window.YPP.lastMenuClick;
+
+        // Always consume the click signal so it doesn't bleed into future opens.
+        window.YPP.lastMenuClick = null;
+
         // If the user definitively clicked the Notification button, abort.
-        if (window.YPP.lastMenuClick && window.YPP.lastMenuClick.includes('NOTIFICATION')) {
+        if (last === 'NOTIFICATION') {
             return false;
         }
-        
+
         // If the user definitively clicked the Avatar button, accept it!
-        if (window.YPP.lastMenuClick && window.YPP.lastMenuClick.includes('avatar-btn')) {
+        if (last === 'avatar-btn') {
             return true;
         }
 

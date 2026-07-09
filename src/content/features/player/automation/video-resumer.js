@@ -109,8 +109,8 @@ window.YPP.features.VideoResumer = class VideoResumer extends window.YPP.feature
             const savedTime = parseFloat(savedTimeStr);
             if (isNaN(savedTime)) return;
             
-            // Don't seek if we're already past it or it's within the first 5 seconds
-            if (this.videoElement.currentTime < savedTime && savedTime > 5) {
+            // Don't seek if we're already close to it or it's within the first 5 seconds
+            if (Math.abs(this.videoElement.currentTime - savedTime) > 2 && savedTime > 5) {
                 
                 // Check if it's near the end (e.g. 95%) - if so, don't resume, treat as watched
                 const duration = this.videoElement.duration;

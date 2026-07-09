@@ -1,0 +1,97 @@
+html[data-ypp-card-style='summer']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 230, 0, 0.15),
+    rgba(255, 100, 0, 0.2),
+    rgba(255, 230, 0, 0.15)
+  ) !important;
+  background-size: 200% 200% !important;
+  animation: ypp-summer-heat 8s ease infinite !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(255, 190, 0, 0.4) !important;
+  padding: var(--ypp-density-pad, 14px) !important;
+  box-shadow:
+    0 10px 25px rgba(255, 150, 0, 0.15),
+    inset 0 0 15px rgba(255, 200, 0, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-card-style='summer']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 0, 0.8) 0%,
+    rgba(255, 150, 0, 0) 70%
+  ) !important;
+  filter: blur(20px);
+  animation: ypp-sun-pulse 4s infinite alternate !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+html[data-ypp-card-style='summer']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  box-shadow:
+    0 15px 35px rgba(255, 150, 0, 0.3),
+    inset 0 0 20px rgba(255, 200, 0, 0.2) !important;
+  border-color: rgba(255, 190, 0, 0.8) !important;
+}

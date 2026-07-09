@@ -33,7 +33,7 @@ html, [dark] body {
 }
 
 /* === Light mode === */
-html, [dark] {
+html:not([dark]) {
   --blur: 0px;
   --sf: #c0c0c0; /* classic Win95 grey */
   --shadow-base:  1px 1px 0px #000000;
@@ -2558,4 +2558,65 @@ html[data-ypp-theme="retro"] {
 .ypp-nav-btn.active {
   background: var(--sf) !important;
   box-shadow: var(--shadow-active) !important;
+}
+
+
+/* SEARCH BOX FIX */
+ytd-searchbox #container {
+  background: #c0c0c0 !important;
+  border: 2px solid !important;
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  border-radius: 0 !important;
+  color: black !important;
+}
+ytd-searchbox #search-icon-legacy {
+  background: #c0c0c0 !important;
+  border: 2px solid !important;
+  border-color: #ffffff #808080 #808080 #ffffff !important;
+  border-radius: 0 !important;
+}
+ytd-searchbox #search-icon-legacy:active {
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+}
+
+
+/* CATEGORY CHIPS FIX */
+ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+  border: none !important;
+}
+yt-chip-cloud-chip-renderer {
+  border-radius: var(--chip-radius, 8px) !important;
+  border: var(--chip-border, 1px solid transparent) !important;
+  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
+  box-shadow: var(--chip-shadow, none) !important;
+  transition: all 0.2s ease !important;
+}
+yt-chip-cloud-chip-renderer:hover {
+  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
+}
+yt-chip-cloud-chip-renderer[selected] {
+  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
+  color: var(--chip-color-selected, black) !important;
+  border: var(--chip-border-selected, 1px solid transparent) !important;
+}
+
+
+yt-chip-cloud-chip-renderer {
+  --chip-radius: 0px;
+  --chip-border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff !important;
+  --chip-bg: #c0c0c0;
+  color: black !important;
+}
+yt-chip-cloud-chip-renderer[selected] {
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  --chip-bg-selected: #a0a0a0;
+  --chip-color-selected: black;
+}
+
+
+/* POPUP TRANSPARENCY FIX */
+tp-yt-paper-listbox {
+  background: transparent !important;
 }

@@ -86,30 +86,12 @@ window.YPP.features.AccountMenuData = class AccountMenuData {
     static extractData(menu) {
         // ── Inject Page-World Script to bypass MV3 isolated world and grab Polymer data directly ──
         try {
-            const script = document.createElement('script');
-            script.textContent = `
-                (function() {
-                    const items = document.querySelectorAll('ytd-active-account-header-renderer, ytd-account-item-renderer, ytd-account-item');
-                    for (const el of items) {
-                        try {
-                            const d = el.data || el.__data;
-                            if (d) {
-                                const thumbs = d.accountPhoto?.thumbnails || d.thumbnail?.thumbnails || d.photo?.thumbnails || d.thumbnails;
-                                if (Array.isArray(thumbs) && thumbs.length) {
-                                    const best = thumbs[thumbs.length - 1];
-                                    if (best?.url) el.setAttribute('data-ypp-avatar', best.url);
-                                } else if (d.accountPhoto?.url) {
-                                    el.setAttribute('data-ypp-avatar', d.accountPhoto.url);
-                                } else if (d.thumbnail?.url) {
-                                    el.setAttribute('data-ypp-avatar', d.thumbnail.url);
-                                }
-                            }
-                        } catch(e) {}
-                    }
-                })();
-            `;
-            document.documentElement.appendChild(script);
-            script.remove();
+            if (!document.getElementById('ypp-avatar-extractor')) {
+                const script = document.createElement('script');
+                script.id = 'ypp-avatar-extractor';
+                script.src = chrome.runtime.getURL('src/inject/avatar-extractor.js');
+                document.documentElement.appendChild(script);
+            }
         } catch (_) {}
 
         const accounts = [];

@@ -3077,8 +3077,8 @@ tp-yt-paper-tab:has([title*="podcast"]) {
     position: absolute !important;
     top: 8px !important;
     left: 8px !important;
-    width: 22px !important;
-    height: 22px !important;
+    width: 28px !important;
+    height: 28px !important;
     border-radius: 6px !important;
     border: 2px solid rgba(255,255,255,0.7) !important;
     background: rgba(0,0,0,0.5) !important;
@@ -3087,8 +3087,9 @@ tp-yt-paper-tab:has([title*="podcast"]) {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    z-index: var(--ypp-z-card-hover) !important;
+    z-index: 2147483646 !important;
     opacity: 0 !important;
+    pointer-events: auto !important;
     transition: opacity 0.15s, background 0.15s !important;
 }
 
@@ -3116,22 +3117,22 @@ tp-yt-paper-tab:has([title*="podcast"]) {
 
 .ypp-ms-bar {
     position: fixed !important;
-    bottom: 72px !important;
+    bottom: 96px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: var(--ypp-z-popup) !important;
-    background: rgba(18,18,18,0.97) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-    border-radius: 14px !important;
-    padding: 12px 16px !important;
+    z-index: 2147483647 !important;
+    background: rgba(28,28,28,0.98) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 48px !important;
+    padding: 10px 20px !important;
     display: flex !important;
     align-items: center !important;
     gap: 16px !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
-    animation: ypp-ms-bar-in 0.2s cubic-bezier(0.34,1.56,0.64,1) !important;
-    white-space: nowrap !important;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 @keyframes ypp-ms-bar-in {
@@ -4395,3 +4396,85 @@ body.ypp-premium-logo ytd-topbar-logo-renderer #country-code { position: relativ
 .yt-pro-pbar { height: 100%; background: #3ea6ff; transition: width 0.2s ease; }
 .yt-pro-resume-badge { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; font-weight: 500; font-family: "Roboto", Arial, sans-serif; padding: 3px 6px; border-radius: 4px; z-index: 100; pointer-events: none; backdrop-filter: blur(4px); box-shadow: 0 0 4px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px; }
 .yt-pro-resume-badge span { color: #3ea6ff; font-size: 10px; }
+
+/* ==========================================================================
+   GLOBAL SEARCH POP-UP STYLING (THEME INTEGRATION)
+   ========================================================================== */
+
+html.yt-spiral-tube-theme .ytSearchboxComponentSuggestionsContainer,
+html.yt-spiral-tube-theme .sbsb_a,
+html.yt-spiral-tube-theme .sbdd_b {
+    background: var(--sf, var(--ypp-bg-surface, rgba(20, 20, 20, 0.9))) !important;
+    color: var(--yt-spec-text-primary, #fff) !important;
+    backdrop-filter: var(--ypp-glass-blur-active, blur(16px)) !important;
+    -webkit-backdrop-filter: var(--ypp-glass-blur-active, blur(16px)) !important;
+}
+
+/* For light mode fallback if theme doesn't force dark */
+html.yt-spiral-tube-theme:not([dark]) .ytSearchboxComponentSuggestionsContainer,
+html.yt-spiral-tube-theme:not([dark]) .sbsb_a,
+html.yt-spiral-tube-theme:not([dark]) .sbdd_b {
+    background: var(--sf, var(--ypp-bg-surface, rgba(240, 240, 240, 0.9))) !important;
+    color: var(--yt-spec-text-primary, #000) !important;
+}
+
+/* =========================================================================
+   MAGICUI ORBITING CIRCLES
+   ========================================================================= */
+
+@keyframes ypp-orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes ypp-orbit-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.ypp-satellites-container.animating {
+    animation: ypp-orbit 20s linear infinite;
+}
+
+.ypp-satellite.animating .ypp-satellite-inner {
+    animation: ypp-orbit-reverse 20s linear infinite;
+}
+
+.ypp-orbital-wrap:hover .animating,
+.ypp-orbital-wrap:hover .animating .ypp-satellite-inner {
+    animation-play-state: paused !important;
+}
+
+/* =========================================================================
+   ACCOUNT MENU SIZING & DROPDOWN
+   ========================================================================= */
+
+ytd-multi-page-menu-renderer[data-ypp-redesigned="1"],
+tp-yt-iron-dropdown:has(.ypp-account-menu) {
+    width: 360px !important;
+    min-width: 360px !important;
+}
+
+.ypp-account-menu {
+    width: 100%;
+}
+
+.ypp-more-items {
+    display: none;
+    overflow: hidden;
+    animation: ypp-fade-down 0.2s ease forwards;
+}
+
+.ypp-more-items.open {
+    display: block;
+}
+
+.ypp-chevron {
+    transition: transform 0.2s ease;
+    margin-left: auto;
+}
+
+@keyframes ypp-fade-down {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

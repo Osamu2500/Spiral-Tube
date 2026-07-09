@@ -254,9 +254,9 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             document.documentElement.setAttribute('data-ypp-theme', themeKey);
             this._currentThemeKey = themeKey;
 
-            // Treat ALL custom themes as Light themes to remove YouTube's native dark attribute,
-            // allowing custom theme variables to fully control backgrounds and text colors.
-            const isLightTheme = true;
+            // Treat ALL custom themes as Dark themes to ensure YouTube's native UI elements 
+            // (like un-styled popups and tooltips) inherit dark backgrounds rather than blinding white ones.
+            const isLightTheme = false;
             this._enforceYouTubeTheme(!isLightTheme);
         } else {
              this._Utils.log(`Theme '${themeKey}' already active, skipping injection.`, 'THEME', 'debug');
@@ -279,7 +279,7 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             this._themeObserver = new MutationObserver((mutations) => {
                 if (!this._currentThemeKey || this._currentThemeKey === 'system' || this._currentThemeKey === 'default') return;
                 
-                const shouldBeDark = false; // Always force remove 'dark' for all custom themes
+                const shouldBeDark = true; // Always force 'dark' for all custom themes
                 const isDark = document.documentElement.hasAttribute('dark');
                 
                 if (shouldBeDark && !isDark) {
@@ -445,12 +445,46 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
         }
 
         root.setAttribute('data-ypp-card-style', finalCardStyle);
+        this._applyCardStyle(finalCardStyle);
+    }
 
+    /**
+     * Apply the YouTube Card style overlay from card-styles/ directory
+     * @private
+     * @param {string} cardStyleKey  e.g. 'glass', 'flat', 'cyberpunk'
+     */
+    _applyCardStyle(cardStyleKey) {
+        const idVars = 'ypp-card-style-css';
+        let linkVars = document.getElementById(idVars);
 
+        if (!cardStyleKey || cardStyleKey === 'default') {
+            if (linkVars) linkVars.remove();
+            return;
+        }
+
+        if (linkVars && linkVars.getAttribute('data-card-style') === cardStyleKey) {
+            return;
+        }
+
+        const varsUrl = chrome.runtime.getURL(`src/content/card-styles/${cardStyleKey}.css`);
+
+        if (!linkVars) {
+            linkVars = document.createElement('link');
+            linkVars.id = idVars;
+            linkVars.rel = 'stylesheet';
+            linkVars.className = 'ypp-ui-style-link';
+            document.head.appendChild(linkVars);
+        }
+
+        linkVars.setAttribute('data-card-style', cardStyleKey);
+        linkVars.href = varsUrl;
+        
+        this._Utils.log(`Injecting Card Style: ${cardStyleKey}`, 'THEME');
     }
 
     /**
      * Cleanup CSS classes
+
      * @private
      */
     _cleanupClasses() {

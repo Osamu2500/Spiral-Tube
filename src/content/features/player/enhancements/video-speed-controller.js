@@ -11,7 +11,6 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
         this.markers = new WeakMap();
         this._mutationObserver = null;
         this._lastActiveVideo = null;
-        this._lastActiveVideo = null;
     }
 
     getConfigKey() {
@@ -52,8 +51,9 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
         // Cross-tab sync listener
         if (this.settings?.vscRememberSpeed !== false) {
             this._storageListener = (changes, area) => {
-                if (area === 'local' && changes.ypp_settings && changes.ypp_settings.newValue) {
-                    const newSpeed = changes.ypp_settings.newValue.vscLastSpeed;
+                // The settings are stored under the 'settings' key in chrome.storage.local
+                if (area === 'local' && changes.settings && changes.settings.newValue) {
+                    const newSpeed = changes.settings.newValue.vscLastSpeed;
                     if (newSpeed && Math.abs(newSpeed - this.settings.vscLastSpeed) > 0.01) {
                         this.settings.vscLastSpeed = newSpeed;
                         const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
@@ -98,7 +98,10 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
     }
 
     onUpdate() {
-        // Nothing needed here for now
+        if (window.YPP.hotkeysManager) {
+            window.YPP.hotkeysManager.unregister('vsc');
+        }
+        this.registerShortcuts();
     }
 
     onVideoChange(videoId) {
@@ -305,6 +308,8 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
             cleanup: () => {
                 window.removeEventListener('mousemove', onMouseMove);
                 window.removeEventListener('mouseup', onMouseUp);
+                // Disconnect the ResizeObserver to prevent memory leaks
+                resizeObserver.disconnect();
             }
         });
 

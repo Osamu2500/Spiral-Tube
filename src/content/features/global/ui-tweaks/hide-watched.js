@@ -247,8 +247,14 @@ window.YPP.features.HideWatched = class HideWatched extends window.YPP.features.
             if (thumbId) return thumbId;
         }
 
+        // Modern lockup cards often have video-id attributes directly
+        const lockup = card.tagName.toLowerCase().includes('lockup-view-model') ? card : card.querySelector('yt-lockup-view-model, ytd-lockup-view-model');
+        if (lockup && lockup.getAttribute('video-id')) {
+            return lockup.getAttribute('video-id');
+        }
+
         // Strategy 2: Anchor parsing (fallback for custom or modified layouts)
-        const anchor = card.querySelector('a#thumbnail') || card.querySelector('a[href]');
+        const anchor = card.querySelector('a#thumbnail') || card.querySelector('a[href^="/watch"], a[href^="/shorts"]');
         if (anchor) {
             const href = anchor.getAttribute('href') || '';
             const watchMatch = href.match(HideWatched.WATCH_URL_REGEX);

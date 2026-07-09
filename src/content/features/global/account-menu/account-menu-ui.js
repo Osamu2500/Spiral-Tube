@@ -110,7 +110,7 @@ window.YPP.features.AccountMenuUI = class AccountMenuUI {
             const idx   = acc.nativeIndex ?? i;
             const label = (acc.name || '').split(' ')[0].substring(0, 9);
             
-            return `<div class="ypp-satellite"
+            return `<div class="ypp-satellite animating"
                          data-account-index="${idx}"
                          title="${this.esc(acc.name)}"
                          role="button"
@@ -121,30 +121,44 @@ window.YPP.features.AccountMenuUI = class AccountMenuUI {
                                 cursor:pointer;
                                 display:flex;flex-direction:column;
                                 align-items:center;gap:3px;">
-                        ${this.diskHTML(acc, SAT_SIZE)}
-                        <span style="font-size:10px;font-weight:500;
-                                     color:rgba(255,255,255,0.7);
-                                     max-width:${SAT_SIZE + 16}px;
-                                     overflow:hidden;text-overflow:ellipsis;
-                                     white-space:nowrap;line-height:1;
-                                     text-align:center;
-                                     font-family:Roboto,Arial,sans-serif;
-                                     text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
-                            ${this.esc(label)}
-                        </span>
+                        <div class="ypp-satellite-inner" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                            ${this.diskHTML(acc, SAT_SIZE)}
+                            <span style="font-size:10px;font-weight:500;
+                                         color:rgba(255,255,255,0.7);
+                                         max-width:${SAT_SIZE + 16}px;
+                                         overflow:hidden;text-overflow:ellipsis;
+                                         white-space:nowrap;line-height:1;
+                                         text-align:center;
+                                         font-family:Roboto,Arial,sans-serif;
+                                         text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
+                                ${this.esc(label)}
+                            </span>
+                        </div>
                     </div>`;
         }).join('');
 
         const centerHTML = `
             <div style="position:absolute;top:50%;left:50%;
                         transform:translate(-50%,-50%);z-index:2;pointer-events:none;">
+                <div class="ypp-center-blacklight" style="
+                    position:absolute;top:50%;left:50%;
+                    transform:translate(-50%,-50%);
+                    width:110px;height:110px;
+                    border-radius:50%;
+                    background: radial-gradient(circle, rgba(255,78,69,0.35) 0%, rgba(255,120,60,0.18) 35%, transparent 70%);
+                    filter: blur(8px);
+                    z-index:-1;
+                    animation: ypp-blacklight-pulse 3s ease-in-out infinite;
+                "></div>
                 ${this.diskHTML(activeAccount, 68, true)}
             </div>`;
 
         const orbitalSection = `
             <div class="ypp-orbital-wrap"
                  style="position:relative;width:${containerSize}px;height:${containerSize}px;margin:0 auto;">
-                ${satelliteHTML}
+                <div class="ypp-satellites-container animating" style="position:absolute; inset:0;">
+                    ${satelliteHTML}
+                </div>
                 ${centerHTML}
             </div>`;
 
@@ -194,15 +208,6 @@ window.YPP.features.AccountMenuUI = class AccountMenuUI {
         </div>
 
         <div class="ypp-menu-scrollable" style="max-height: 400px; overflow-y: auto; padding: 12px 8px;">
-            ${createBtn('ypp-appearance', icons.appearance, 'Appearance')}
-            ${createBtn('ypp-settings', icons.settings, 'Settings')}
-            ${createBtn('ypp-language', icons.language, 'Language')}
-            ${createBtn('ypp-location', icons.location, 'Location')}
-            ${createBtn('ypp-keyboard', icons.keyboard, 'Keyboard shortcuts')}
-            ${createBtn('ypp-restricted', icons.restricted, 'Restricted Mode')}
-            
-            <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 8px 12px;"></div>
-
             <button class="ypp-menu-item ypp-more-toggle" id="ypp-more-toggle"
                     aria-expanded="false" aria-controls="ypp-more-items"
                     style="padding: 10px 14px; border-radius: 10px; color: rgba(255,255,255,0.7);">
@@ -211,31 +216,36 @@ window.YPP.features.AccountMenuUI = class AccountMenuUI {
                     <circle cx="12" cy="12" r="1" fill="currentColor"/>
                     <circle cx="12" cy="19" r="1" fill="currentColor"/>
                 </svg>
-                More options
+                Settings & More Options
                 <svg class="ypp-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <polyline points="6 9 12 15 18 9"/>
                 </svg>
             </button>
 
             <div class="ypp-more-items" id="ypp-more-items" role="group" style="margin-left: 8px; border-left: 2px solid rgba(255,255,255,0.05); padding-left: 4px; margin-top: 4px;">
+                ${createBtn('ypp-appearance', icons.appearance, 'Appearance')}
+                ${createBtn('ypp-settings', icons.settings, 'Settings')}
+                ${createBtn('ypp-language', icons.language, 'Language')}
+                ${createBtn('ypp-location', icons.location, 'Location')}
+                ${createBtn('ypp-keyboard', icons.keyboard, 'Keyboard shortcuts')}
+                ${createBtn('ypp-restricted', icons.restricted, 'Restricted Mode')}
+                <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 8px 12px;"></div>
                 ${createBtn('', icons.studio, 'YouTube Studio', true, 'https://studio.youtube.com')}
                 ${createBtn('', icons.purchases, 'Purchases & memberships', true, '/paid_memberships')}
                 ${createBtn('', icons.data, 'Your data in YouTube', true, '/account')}
                 ${createBtn('', icons.google, 'Google Account', true, 'https://myaccount.google.com')}
                 ${createBtn('ypp-help', icons.help, 'Help')}
                 ${createBtn('ypp-feedback', icons.feedback, 'Send feedback')}
+                <div style="height: 1px; background: rgba(255,78,69,0.2); margin: 8px 12px;"></div>
+                <button class="ypp-menu-item ypp-signout" id="ypp-signout" style="padding: 10px 14px; border-radius: 10px; color: #ff4e45; font-weight: 500;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="margin-right: 4px;">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    Sign out
+                </button>
             </div>
-        </div>
-
-        <div class="ypp-menu-footer" style="padding: 12px; background: rgba(0,0,0,0.2);">
-            <button class="ypp-menu-item ypp-signout" id="ypp-signout" style="padding: 10px 14px; border-radius: 10px; justify-content: center; background: rgba(255, 78, 69, 0.1); border: 1px solid rgba(255, 78, 69, 0.2); color: #ff4e45; font-weight: 500;">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="margin-right: 4px;">
-                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
-                    <polyline points="16 17 21 12 16 7"/>
-                    <line x1="21" y1="12" x2="9" y2="12"/>
-                </svg>
-                Sign out
-            </button>
         </div>
 
         <div class="ypp-signout-confirm" id="ypp-signout-confirm" role="dialog"

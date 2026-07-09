@@ -520,9 +520,16 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                     
                     // The Card Style setting is hidden, we must update the UI buttons too
                     if (state.elements.cardStyle) {
-                        state.elements.cardStyle.value = uiStyle;
+                        const cardStyleMap = {
+                            'liquid-glass': 'glass',
+                            'forest': 'nature',
+                            'technozen': 'minimalist'
+                        };
+                        const mappedCardStyle = cardStyleMap[uiStyle] || uiStyle;
+                        
+                        state.elements.cardStyle.value = mappedCardStyle;
                         document.querySelectorAll('.card-style-btn').forEach(b => {
-                            b.classList.toggle('active', b.dataset.style === uiStyle);
+                            b.classList.toggle('active', b.dataset.style === mappedCardStyle);
                         });
                         state.elements.cardStyle.dispatchEvent(new Event('change', { bubbles: true }));
                     }
@@ -711,7 +718,10 @@ const initApp = () => {
         components.initPremiumAccentDropdown();
         components.initSearchViewMode();
         components.initHideWatchedModePill();
+        components.initGlobalPlayerBarGrid();
         components.initCardStyleGrid();
+        components.initYoutubeStyleGrid();
+        components.initPopupStyleGrid();
         components.initAccentColorSwatches();
         components.initCustomThemeBuilder();
 
@@ -726,8 +736,54 @@ const initApp = () => {
         initBookmarksManager();
         initSponsorBlockSettings(document, saveSettings, UI);
 
+        // Ripple Effect for buttons
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.action-btn');
+            if (btn) {
+                const circle = document.createElement('span');
+                const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+                const radius = diameter / 2;
+                const rect = btn.getBoundingClientRect();
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${e.clientX - rect.left - radius}px`;
+                circle.style.top = `${e.clientY - rect.top - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = btn.querySelector('.ripple');
+                if (ripple) {
+                    ripple.remove();
+                }
+                btn.appendChild(circle);
+            }
+        });
+
+        // 6.5 Theme Toggler
+        const themeTogglerBtn = document.getElementById('ypp-theme-toggler');
+        if (themeTogglerBtn) {
+            // Check initial state
+            if (localStorage.getItem('ypp-popup-dark') === 'true') {
+                document.body.classList.add('ypp-theme-dark');
+            }
+            themeTogglerBtn.addEventListener('click', () => {
+                const isDark = document.body.classList.toggle('ypp-theme-dark');
+                localStorage.setItem('ypp-popup-dark', isDark);
+                
+                // Add pop animation
+                if (window.anime) {
+                    window.anime({
+                        targets: themeTogglerBtn,
+                        scale: [0.8, 1],
+                        duration: 300,
+                        easing: 'easeOutElastic(1, .5)'
+                    });
+                }
+            });
+        }
+
         // 7. Skeleton — remove popup-loading once settings are hydrated
         document.body.classList.add('popup-loading');
+
         const _removeSkeleton = () => {
             document.body.classList.remove('popup-loading');
             

@@ -1,0 +1,116 @@
+html[data-ypp-card-style='brutalism']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: #ffffff !important;
+  border: 4px solid #000000 !important;
+  border-radius: 0 !important;
+  padding: var(--ypp-density-pad, 16px) !important;
+  box-shadow: 8px 8px 0px #000000 !important;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s !important;
+}
+
+html[data-ypp-card-style='brutalism']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  transform: translate(4px, 4px) !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+html[data-ypp-card-style='brutalism']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  #video-title,
+html[data-ypp-card-style='brutalism']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  #metadata-line
+  span {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+}
+
+html[data-ypp-card-style='brutalism']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )
+  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-bottom: 4px solid #000000 !important;
+  border-radius: 0 !important;
+}

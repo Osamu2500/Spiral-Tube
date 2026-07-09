@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Auto Cinema — Spiral Tube
  * Automatically clicks the theater button whenever a watch page loads
  * to ensure the video expands.
@@ -16,10 +16,13 @@ window.YPP.features.AutoCinema = class AutoCinema extends window.YPP.features.Ba
         this._resizeTimeout = null;
     }
 
-    enable() {
+    async enable() {
+        await super.enable();
         this._userOverridden = false;
         
         // Listen to manual button clicks to respect user override
+        // Use raw addEventListener (not this.addListener) because capture-phase listeners
+        // on document need special handling and this is cleaned up explicitly in disable().
         this._buttonClickListener = (e) => {
             const btn = e.target.closest('.ytp-size-button');
             if (btn && e.isTrusted) {
@@ -40,18 +43,21 @@ window.YPP.features.AutoCinema = class AutoCinema extends window.YPP.features.Ba
         this.utils?.log?.('Auto Cinema enabled', 'AUTO_CINEMA');
     }
 
-    disable() {
+    async disable() {
+        // Clean up the capture-phase listener explicitly (not tracked by addListener)
         if (this._buttonClickListener) {
             document.removeEventListener('click', this._buttonClickListener, true);
+            this._buttonClickListener = null;
         }
-        window.removeEventListener('yt-navigate-finish', this._navHandler);
-        window.removeEventListener('resize', this._resizeHandler);
-        if (this._resizeTimeout) clearTimeout(this._resizeTimeout);
-        if (this._clickTimeout) clearTimeout(this._clickTimeout);
+        if (this._resizeTimeout) { clearTimeout(this._resizeTimeout); this._resizeTimeout = null; }
+        if (this._clickTimeout) { clearTimeout(this._clickTimeout); this._clickTimeout = null; }
+        // super.disable() calls cleanupEvents() which removes all this.addListener() registrations
+        await super.disable();
         this.utils?.log?.('Auto Cinema disabled', 'AUTO_CINEMA');
     }
 
     _onNavigation() {
+        this._userOverridden = false; // Reset override on new video loads
         if (location.pathname === '/watch') {
             this._clickTheaterButton();
         }

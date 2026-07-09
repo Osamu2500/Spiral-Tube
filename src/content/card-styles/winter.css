@@ -1,0 +1,203 @@
+html[data-ypp-card-style='winter']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(180, 230, 255, 0.05)
+  ) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-top: 2px solid rgba(255, 255, 255, 0.8) !important;
+  padding: var(--ypp-density-pad, 16px) !important;
+  box-shadow:
+    0 12px 30px rgba(100, 200, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-card-style='winter']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  transform: rotate(45deg) translateY(-100%) !important;
+  animation: ypp-winter-shimmer 6s infinite linear !important;
+  pointer-events: none !important;
+}
+
+html[data-ypp-card-style='winter']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(180, 230, 255, 0.15)
+  ) !important;
+  transform: translateY(-3px) !important;
+  box-shadow:
+    0 15px 40px rgba(100, 200, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.4) !important;
+  border-top: 2px solid #ffffff !important;
+}
+
+html[data-ypp-card-style='winter']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: linear-gradient(
+    180deg,
+    rgba(240, 248, 255, 0.05),
+    rgba(200, 230, 255, 0.02)
+  ) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(200, 230, 255, 0.2) !important;
+  border-top: 2px solid rgba(255, 255, 255, 0.6) !important;
+  padding: var(--ypp-density-pad, 16px) !important;
+  box-shadow:
+    0 12px 30px rgba(100, 200, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-card-style='winter']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  )::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  transform: rotate(45deg) translateY(-100%) !important;
+  animation: ypp-winter-shimmer 6s infinite linear !important;
+  pointer-events: none !important;
+}
+
+html[data-ypp-card-style='winter']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(180, 230, 255, 0.15)
+  ) !important;
+  transform: translateY(-3px) !important;
+  box-shadow:
+    0 15px 40px rgba(100, 200, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.4) !important;
+  border-top: 2px solid #ffffff !important;
+}

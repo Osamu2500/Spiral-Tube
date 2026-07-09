@@ -219,16 +219,11 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                         updateSetting('activeTheme', newTheme);
                         
                         // Auto-apply UI styles if the theme is an aesthetic theme
-                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic', 'forest'];
+                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic'];
                         if (uiStyles.includes(newTheme)) {
                             updateSetting('youtubePageTheme', newTheme);
                             const selectEl = document.getElementById('youtubePageTheme');
                             if (selectEl) selectEl.value = newTheme;
-                        } else {
-                            // Revert to default UI style if choosing a basic color theme
-                            updateSetting('youtubePageTheme', 'default');
-                            const selectEl = document.getElementById('youtubePageTheme');
-                            if (selectEl) selectEl.value = 'default';
                         }
 
                         applyThemeToPopup(newTheme, customThemesObj);
@@ -459,8 +454,36 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         });
     }
 
+    function initGlobalPlayerBarGrid() {
+        const btns = document.querySelectorAll('.gpb-btn');
+        if (!btns.length) return;
+        
+        const syncState = () => {
+            btns.forEach(btn => {
+                const targetId = btn.dataset.target;
+                const cb = document.getElementById(targetId);
+                if (cb) btn.classList.toggle('active', cb.checked);
+            });
+        };
+
+        // Sync initial state slightly after popup-state.js loads settings
+        setTimeout(syncState, 150);
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                const cb = document.getElementById(targetId);
+                if (cb) {
+                    cb.checked = !cb.checked;
+                    btn.classList.toggle('active', cb.checked);
+                    cb.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+        });
+    }
+
     function initCardStyleGrid() {
-        const btns = document.querySelectorAll('.card-style-btn');
+        const btns = document.querySelectorAll('.card-style-btn[data-style]');
         const hiddenInput = document.getElementById('cardStyle');
         if (!btns.length || !hiddenInput) return;
 
@@ -474,6 +497,60 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
 
         chrome.storage.local.get('settings', (data) => {
             const styleVal = data.settings?.cardStyle || 'glass';
+            applyStyle(styleVal);
+        });
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyStyle(btn.dataset.style);
+                const event = new Event('change', { bubbles: true });
+                hiddenInput.dispatchEvent(event);
+            });
+        });
+    }
+
+    function initYoutubeStyleGrid() {
+        const btns = document.querySelectorAll('.youtube-style-btn');
+        const hiddenInput = document.getElementById('youtubePageTheme');
+        if (!btns.length || !hiddenInput) return;
+
+        const applyStyle = (styleVal) => {
+            hiddenInput.value = styleVal;
+            btns.forEach(b => {
+                const isActive = b.dataset.style === styleVal;
+                b.classList.toggle('active', isActive);
+            });
+        };
+
+        chrome.storage.local.get('settings', (data) => {
+            const styleVal = data.settings?.youtubePageTheme || 'default';
+            applyStyle(styleVal);
+        });
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyStyle(btn.dataset.style);
+                const event = new Event('change', { bubbles: true });
+                hiddenInput.dispatchEvent(event);
+            });
+        });
+    }
+
+    function initPopupStyleGrid() {
+        const btns = document.querySelectorAll('.popup-style-btn');
+        const hiddenInput = document.getElementById('popupUiTheme');
+        if (!btns.length || !hiddenInput) return;
+
+        const applyStyle = (styleVal) => {
+            hiddenInput.value = styleVal;
+            btns.forEach(b => {
+                const isActive = b.dataset.style === styleVal;
+                b.classList.toggle('active', isActive);
+            });
+        };
+
+        chrome.storage.local.get('settings', (data) => {
+            const styleVal = data.settings?.popupUiTheme || 'liquid-glass';
             applyStyle(styleVal);
         });
 
@@ -532,7 +609,10 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         initPremiumAccentDropdown,
         initSearchViewMode,
         initHideWatchedModePill,
+        initGlobalPlayerBarGrid,
         initCardStyleGrid,
+        initYoutubeStyleGrid,
+        initPopupStyleGrid,
         initAccentColorSwatches,
         initCustomThemeBuilder,
         applyThemeToPopup

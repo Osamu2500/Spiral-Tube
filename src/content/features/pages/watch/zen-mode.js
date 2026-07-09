@@ -55,9 +55,8 @@ window.YPP.features.ZenMode = class ZenMode extends window.YPP.features.BaseFeat
         const isWatchPage = location.pathname === '/watch';
         
         if (isWatchPage && this.isEnabled) {
-            if (this.ambientActive) {
-                this._applyAmbientMode(); // Restart/Refresh loop
-            }
+            this._applyAmbientMode(); // Restart/Refresh loop
+            this._enableAudioSpatialization();
         } else {
             this._disableAudioSpatialization();
             this._removeAmbientMode();

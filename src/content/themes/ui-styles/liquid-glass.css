@@ -1828,3 +1828,92 @@ ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-rendere
   background: var(--sf) !important;
   box-shadow: var(--shadow-active) !important;
 }
+
+
+/* SEARCH BOX FIX */
+ytd-searchbox #container {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 24px 0 0 24px !important;
+}
+ytd-searchbox #search-icon-legacy {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0 24px 24px 0 !important;
+}
+
+
+/* CATEGORY CHIPS FIX */
+ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+  border: none !important;
+}
+yt-chip-cloud-chip-renderer {
+  border-radius: var(--chip-radius, 8px) !important;
+  border: var(--chip-border, 1px solid transparent) !important;
+  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
+  box-shadow: var(--chip-shadow, none) !important;
+  transition: all 0.2s ease !important;
+}
+yt-chip-cloud-chip-renderer:hover {
+  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
+}
+yt-chip-cloud-chip-renderer[selected] {
+  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
+  color: var(--chip-color-selected, black) !important;
+  border: var(--chip-border-selected, 1px solid transparent) !important;
+}
+
+
+yt-chip-cloud-chip-renderer {
+  --chip-radius: 12px;
+  --chip-border: 1px solid rgba(255, 255, 255, 0.2);
+  --chip-bg: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+yt-chip-cloud-chip-renderer[selected] {
+  --chip-bg-selected: rgba(255, 255, 255, 0.3);
+  --chip-color-selected: inherit;
+  --chip-border-selected: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* POPUP TRANSPARENCY FIX */
+tp-yt-paper-listbox {
+  background: transparent !important;
+}
+
+/* ───────────────────────────────────────────────────────── */
+/* MAGICUI BACKLIGHT VIDEO DEMO EFFECT (Liquid Glass)        */
+/* ───────────────────────────────────────────────────────── */
+ytd-rich-item-renderer, 
+ytd-video-renderer, 
+ytd-grid-video-renderer {
+    position: relative;
+    z-index: 1;
+}
+
+ytd-rich-item-renderer::before, 
+ytd-video-renderer::before, 
+ytd-grid-video-renderer::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    z-index: -1;
+    background: var(--ypp-thumb-color, conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg));
+    filter: blur(40px);
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 24px;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+ytd-rich-item-renderer:hover::before, 
+ytd-video-renderer:hover::before, 
+ytd-grid-video-renderer:hover::before {
+    opacity: 0.6;
+    transform: scale(1);
+}

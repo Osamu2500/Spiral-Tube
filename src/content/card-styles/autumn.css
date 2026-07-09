@@ -1,0 +1,113 @@
+html[data-ypp-card-style='autumn']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: linear-gradient(150deg, rgba(160, 60, 20, 0.15), rgba(100, 30, 10, 0.2)) !important;
+  background-size: 200% 200% !important;
+  animation: ypp-autumn-leaves 6s infinite alternate ease-in-out !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(200, 100, 50, 0.3) !important;
+  border-left: 4px solid rgba(220, 120, 40, 0.7) !important;
+  padding: var(--ypp-density-pad, 12px) !important;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-card-style='autumn']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  background: linear-gradient(150deg, rgba(180, 70, 25, 0.2), rgba(120, 40, 15, 0.3)) !important;
+  background-size: 200% 200% !important;
+  transform: translateX(4px) translateY(-2px) !important;
+  box-shadow:
+    6px 8px 20px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(200, 100, 50, 0.2) !important;
+  border-color: rgba(220, 120, 40, 0.6) !important;
+  border-left: 4px solid rgba(255, 150, 50, 1) !important;
+}
+
+html[data-ypp-card-style='autumn']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ) {
+  background: linear-gradient(150deg, rgba(160, 60, 20, 0.15), rgba(100, 30, 10, 0.2)) !important;
+  background-size: 200% 200% !important;
+  animation: ypp-autumn-leaves 6s infinite alternate ease-in-out !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(200, 100, 50, 0.3) !important;
+  border-left: 4px solid rgba(220, 120, 40, 0.7) !important;
+  padding: var(--ypp-density-pad, 12px) !important;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-card-style='autumn']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model:not(
+      :is(
+          ytd-rich-item-renderer,
+          ytd-video-renderer,
+          ytd-compact-video-renderer,
+          ytd-grid-video-renderer,
+          .ypp-grid-item
+        )
+        *
+    )
+  ):hover {
+  background: linear-gradient(150deg, rgba(180, 70, 25, 0.2), rgba(120, 40, 15, 0.3)) !important;
+  background-size: 200% 200% !important;
+  transform: translateX(4px) translateY(-2px) !important;
+  box-shadow:
+    6px 8px 20px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(200, 100, 50, 0.2) !important;
+  border-color: rgba(220, 120, 40, 0.6) !important;
+  border-left: 4px solid rgba(255, 150, 50, 1) !important;
+}

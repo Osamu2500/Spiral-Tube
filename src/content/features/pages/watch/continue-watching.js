@@ -22,6 +22,13 @@ window.YPP.features.ContinueWatching = class ContinueWatching extends window.YPP
             // Reset notified set on new pages
             this.addListener(window, 'yt-navigate-finish', () => {
                 this.notifiedVideos.clear();
+                
+                // TEARDOWN: remove processed stamps so recycled DOM elements are re-evaluated
+                document.querySelectorAll('ytd-rich-item-renderer[data-ypp-processed], ytd-compact-video-renderer[data-ypp-processed]').forEach(el => {
+                    el.removeAttribute('data-ypp-processed');
+                    el.classList.remove('previously-watched-video');
+                });
+
                 if (this.isEnabled) this.startObserver();
             });
             
@@ -49,8 +56,6 @@ window.YPP.features.ContinueWatching = class ContinueWatching extends window.YPP
     }
 
     startObserver() {
-        if (this.observer) return;
-
         // Use our robust DOMObserver
         this.observer = window.YPP.sharedObserver || new this.utils.DOMObserver();
         
@@ -60,8 +65,10 @@ window.YPP.features.ContinueWatching = class ContinueWatching extends window.YPP
             this.handleNewVideo.bind(this)
         );
 
-        const target = document.querySelector('ytd-watch-next-secondary-results-renderer, ytd-rich-grid-renderer') || document.body;
-        this.observer.start(target);
+        if (this.observer !== window.YPP.sharedObserver && typeof this.observer.start === 'function') {
+            const target = document.querySelector('ytd-watch-next-secondary-results-renderer, ytd-rich-grid-renderer') || document.body;
+            this.observer.start(target);
+        }
     }
 
     handleNewVideo(videos) {
