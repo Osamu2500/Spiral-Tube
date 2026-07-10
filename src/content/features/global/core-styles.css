@@ -1033,7 +1033,8 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
 /* Full Video Titles */
 
 body.ypp-full-title #video-title,
-body.ypp-full-title yt-formatted-string[id="video-title"] {
+body.ypp-full-title yt-formatted-string[id="video-title"],
+body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
   display: block !important;
   max-height: none !important;
   -webkit-line-clamp: unset !important;

@@ -141,7 +141,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
         
         // 1. Reset all managed classes & Inline Styles
         const classesToRemove = [
-            'ypp-sidebar-compact', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
+            'ypp-sidebar-compact', 'ypp-sidebar-regular', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
             'ypp-cinema-mode', 'ypp-minimal-mode', 'ypp-zen-mode', 'ypp-focus-mode', 'ypp-study-mode',
             'ypp-action-style-premium', 'ypp-action-style-minimal', 'ypp-action-style-default'
         ];
@@ -160,6 +160,8 @@ class WatchPageManager extends window.YPP.BasePageManager {
             // Custom sidebar is ON — apply chosen layout
             if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
                 body.classList.add('ypp-sidebar-compact');
+            } else if (this.state.sidebar === 'regular') {
+                body.classList.add('ypp-sidebar-regular');
             } else if (this.state.sidebar === 'spacious') {
                 body.classList.add('ypp-sidebar-spacious');
             } else if (this.state.sidebar === 'expanded') {
@@ -199,7 +201,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
     _cleanupDOM() {
         const classesToRemove = [
             // Note: 'ypp-sidebar-spacious' is the current name — 'compact' was the old name
-            'ypp-sidebar-compact', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
+            'ypp-sidebar-compact', 'ypp-sidebar-regular', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
             'ypp-cinema-mode', 'ypp-minimal-mode', 'ypp-zen-mode', 'ypp-focus-mode', 'ypp-study-mode', 'ypp-theater-mode-override',
             'ypp-action-style-premium', 'ypp-action-style-minimal', 'ypp-action-style-default'
         ];

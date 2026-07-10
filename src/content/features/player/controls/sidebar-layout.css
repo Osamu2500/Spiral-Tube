@@ -13,122 +13,140 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
- * SPACIOUS LAYOUT  
- * Forces the traditional YouTube compact row layout (thumbnail left, text right).
- * Improved with better readability margins and 12px gaps.
+ * GLOBAL TYPOGRAPHY FIXES
+ * (Applied to Compact, Regular, Spacious. Expanded overrides below)
  * ══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Legacy: ytd-compact-video-renderer ── */
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer {
-  display: block !important;
-  margin-bottom: 10px !important;
-}
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  align-items: flex-start !important;
-  gap: 12px !important; /* Increased from 8px for better breathing room */
-}
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #thumbnail.ytd-compact-video-renderer {
-  display: block !important;
-  width: 168px !important;
-  min-width: 168px !important;
-  max-width: 168px !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  margin-bottom: 0 !important;
-  margin-right: 0 !important;
-  border-radius: 10px !important; /* Softer radius */
-  flex: none !important;
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  max-height: 4rem !important;
   overflow: hidden !important;
+  font-size: 1.4rem !important;
+  line-height: 1.9rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 4px !important;
+  margin-top: 2px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: var(--yt-spec-text-primary) !important;
+  white-space: normal !important;
 }
 
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-thumbnail.ytd-compact-video-renderer {
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  white-space: normal !important;
+}
+
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  .badge-shape-wiz {
+  margin-top: 6px !important;
+  display: inline-flex !important;
+}
+
+:is(body.ypp-sidebar-compact, body.ypp-sidebar-regular, body.ypp-sidebar-spacious, body.ypp-sidebar-expanded)
+  :is(#related, ytd-watch-next-secondary-results-renderer)
+  :is(ytd-video-meta-block, .ytd-channel-name) {
+  line-height: 1.8rem !important;
+  font-size: 1.3rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * REGULAR LAYOUT
+ * Matches YouTube's default thumbnail dimensions while keeping our styling.
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer {
   display: block !important;
-  width: 168px !important;
-  min-width: 168px !important;
-  max-width: 168px !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  flex: none !important;
+  margin-bottom: 12px !important;
 }
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer {
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  padding: 0 !important;
-}
-
-/* ── New A/B UI: yt-lockup-view-model ── */
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) {
-  display: block !important;
-  margin-bottom: 10px !important;
-}
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 12px !important; /* Increased from 8px */
-  width: 100% !important;
-}
-
-/* Thumbnail anchor (wraps yt-image) */
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)) {
-  display: block !important;
-  width: 168px !important;
-  min-width: 168px !important;
-  max-width: 168px !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  margin-bottom: 0 !important;
-  border-radius: 10px !important; /* Softer radius */
-  overflow: hidden !important;
-  flex: none !important;
-  position: relative !important;
-}
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz {
-  flex: 1 !important;
-  min-width: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-}
-
-/* ── Rich Item Grid UI: ytd-rich-item-renderer (A/B Test) ── */
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
-  display: block !important;
-  margin-bottom: 10px !important;
-  width: 100% !important;
-}
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer {
   display: flex !important;
   flex-direction: row !important;
   width: 100% !important;
   align-items: flex-start !important;
   gap: 12px !important;
 }
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer {
+  display: block !important;
+  width: 168px !important; /* Fixed: native default is 168px, not 234px */
+  min-width: 168px !important;
+  max-width: 168px !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  border-radius: 10px !important;
+  flex: none !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) {
+  display: block !important;
+  margin-bottom: 12px !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)) {
   display: block !important;
   width: 168px !important;
   min-width: 168px !important;
   max-width: 168px !important;
   aspect-ratio: 16 / 9 !important;
-  margin-bottom: 0 !important;
+  margin: 0 !important;
+  border-radius: 10px !important;
+  flex: none !important;
+  overflow: hidden !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  display: block !important;
+  margin-bottom: 12px !important;
+  width: 100% !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+  display: block !important;
+  width: 168px !important;
+  min-width: 168px !important;
+  max-width: 168px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
   border-radius: 10px !important;
   flex: none !important;
 }
-
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+body.ypp-sidebar-regular :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
   display: flex !important;
   flex-direction: column !important;
   flex: 1 !important;
@@ -136,112 +154,143 @@ body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer
   padding: 0 !important;
 }
 
-/* ── Global Typography & Spacing Fixes for Spacious ── */
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3) {
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  max-height: 3.8rem !important; /* Better breathing room */
+/* ══════════════════════════════════════════════════════════════════════════
+ * COMPACT LAYOUT (Even smaller than regular, dense)
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  margin-bottom: 8px !important;
+}
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+  display: block !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  flex: none !important;
   overflow: hidden !important;
-  font-size: 1.4rem !important;
-  line-height: 1.8rem !important; /* Improved readability */
-  font-weight: 500 !important;
-  margin-bottom: 4px !important; /* Push channel name down */
-  margin-top: 2px !important;
+}
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer,
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) .badge-shape-wiz {
-  margin-top: 6px !important; /* Fix badges crashing into view counts */
-  display: inline-flex !important;
-}
+/* ══════════════════════════════════════════════════════════════════════════
+ * SPACIOUS LAYOUT (NEW)
+ * Mimics A/B UI: linear view, larger thumbnails.
+ * ══════════════════════════════════════════════════════════════════════════ */
 
-body.ypp-sidebar-compact :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-video-meta-block, .yt-core-attributed-string) {
-  line-height: 1.6rem !important;
-  font-size: 1.2rem !important;
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  margin-bottom: 16px !important;
 }
-
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer,
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
+  display: block !important;
+  width: 250px !important;
+  min-width: 250px !important;
+  max-width: 250px !important;
+  aspect-ratio: 16 / 9 !important;
+  margin: 0 !important;
+  border-radius: 12px !important;
+  flex: none !important;
+  overflow: hidden !important;
+}
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer .text-wrapper,
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+  flex: 1 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
 
 /* ══════════════════════════════════════════════════════════════════════════
  * EXPANDED LAYOUT
  * Full-width stacked thumbnails — each video card shows a big 16:9 preview
- * on top with title/meta below. Matches image 4 desired result.
+ * on top with title/meta below.
  * ══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Legacy: ytd-compact-video-renderer ── */
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer {
-  display: block !important;
-  margin-bottom: 16px !important;
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer,
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model),
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
+  margin-bottom: 24px !important;
 }
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer {
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer #dismissible,
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz,
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
   display: flex !important;
   flex-direction: column !important;
   width: 100% !important;
   align-items: stretch !important;
+  gap: 12px !important;
 }
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) #thumbnail.ytd-compact-video-renderer {
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(#thumbnail, ytd-thumbnail).ytd-compact-video-renderer,
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)),
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
   display: block !important;
   width: 100% !important;
   max-width: none !important;
   min-width: unset !important;
-  height: auto !important;
   aspect-ratio: 16 / 9 !important;
-  margin-bottom: 10px !important;
-  margin-right: 0 !important;
+  margin: 0 !important;
   border-radius: 12px !important;
+  flex: none !important;
   overflow: hidden !important;
 }
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-thumbnail.ytd-compact-video-renderer {
-  display: block !important;
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer .text-wrapper,
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz,
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
+  flex: none !important;
   width: 100% !important;
-  max-width: none !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-}
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) ytd-thumbnail.ytd-compact-video-renderer img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
-}
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer {
+  min-width: 0 !important;
   padding: 0 4px !important;
-  width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   box-sizing: border-box !important;
+  position: relative !important;
+  height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* ── New A/B UI: yt-lockup-view-model ── */
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) {
-  display: block !important;
-  margin-bottom: 16px !important;
-}
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-  width: 100% !important;
-}
-
-/* Thumbnail anchor (full width stacked) */
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)) {
-  display: block !important;
+/* Force the wrapper of the thumbnail to also be 100% wide to prevent flex squishing */
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz__content-image {
   width: 100% !important;
   max-width: none !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  margin-bottom: 10px !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  flex: none !important;
-  position: relative !important;
+  display: block !important;
 }
 
 body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)) :is(yt-image, img) {
@@ -254,180 +303,26 @@ body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-rendere
   left: 0 !important;
 }
 
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz {
-  padding: 0 4px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) .yt-lockup-metadata-view-model-wiz > * {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Expanded Title styling */
-body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3) {
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) {
   -webkit-line-clamp: 3 !important;
   line-clamp: 3 !important;
   max-height: none !important;
-  overflow: hidden !important;
-  font-size: 1.5rem !important;
-  line-height: 2rem !important;
-  font-weight: 500 !important;
+  font-size: 1.6rem !important;
+  line-height: 2.2rem !important;
   margin-bottom: 6px !important;
-}
-
-
-
-
-/* ══════════════════════════════════════════════════════════════════════════
- * SPACIOUS LAYOUT (NEW)
- * Mimics A/B UI: linear view, larger thumbnails.
- * ══════════════════════════════════════════════════════════════════════════ */
-
-/* ── Legacy: ytd-compact-video-renderer ── */
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-compact-video-renderer {
-  display: block !important;
-  margin-bottom: 12px !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) #dismissible.ytd-compact-video-renderer {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  align-items: flex-start !important;
-  gap: 16px !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) #thumbnail.ytd-compact-video-renderer {
-  display: block !important;
-  width: 250px !important;
-  min-width: 250px !important;
-  max-width: 250px !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  margin-bottom: 0 !important;
-  margin-right: 0 !important;
-  border-radius: 12px !important;
-  flex: none !important;
-  overflow: hidden !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-thumbnail.ytd-compact-video-renderer {
-  display: block !important;
-  width: 250px !important;
-  min-width: 250px !important;
-  max-width: 250px !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  flex: none !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) #details.ytd-compact-video-renderer {
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  padding: 0 !important;
-}
-
-/* ── New A/B UI: yt-lockup-view-model ── */
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) {
-  display: block !important;
-  margin-bottom: 12px !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-view-model-wiz {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start !important;
-  gap: 16px !important;
-  width: 100% !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) a:is(:has(yt-image), :has(img)) {
-  display: block !important;
-  width: 250px !important;
-  min-width: 250px !important;
-  max-width: 250px !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  margin-bottom: 0 !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  flex: none !important;
-  position: relative !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(yt-lockup-view-model, ytd-lockup-view-model) .yt-lockup-metadata-view-model-wiz {
-  flex: 1 !important;
-  min-width: 0 !important;
-  padding: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-}
-
-/* ── Rich Item Grid UI: ytd-rich-item-renderer (A/B Test) ── */
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer {
-  display: block !important;
-  margin-bottom: 12px !important;
-  width: 100% !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #content {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  align-items: flex-start !important;
-  gap: 16px !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer ytd-thumbnail {
-  display: block !important;
-  width: 250px !important;
-  min-width: 250px !important;
-  max-width: 250px !important;
-  aspect-ratio: 16 / 9 !important;
-  margin-bottom: 0 !important;
-  border-radius: 12px !important;
-  flex: none !important;
-}
-
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) ytd-rich-item-renderer #details {
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  padding: 0 !important;
-}
-
-/* ── Typography & Spacing Fixes ── */
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3) {
   display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: 2 !important;
-  line-clamp: 2 !important;
-  max-height: 3.8rem !important;
-  overflow: hidden !important;
-  font-size: 1.5rem !important;
-  line-height: 1.9rem !important;
-  font-weight: 500 !important;
-  margin-bottom: 4px !important;
-  margin-top: 2px !important;
 }
 
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) .badge-shape-wiz {
-  margin-top: 6px !important;
-  display: inline-flex !important;
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(#video-title, h3, .yt-lockup-metadata-view-model-wiz__title) .yt-core-attributed-string {
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+  display: -webkit-box !important;
+  white-space: normal !important;
 }
 
-body.ypp-sidebar-spacious :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-video-meta-block, .yt-core-attributed-string) {
-  line-height: 1.8rem !important;
-  font-size: 1.3rem !important;
+/* Force channel names, metadata, and badges to display */
+body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(.yt-lockup-metadata-view-model-wiz__metadata, ytd-video-meta-block, .badge-shape-wiz) {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }

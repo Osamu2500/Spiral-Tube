@@ -24,6 +24,7 @@ export const DEFAULT_SETTINGS = {
     subscriptionsColumns: 4,
     historyColumns: 4,
     displayFullTitle: false,
+    cinematicMode: false,
 
     // Visibility
     hideShorts: false,
@@ -47,6 +48,10 @@ export const DEFAULT_SETTINGS = {
     headerNavEnabled: true,
     hideEndScreens: false,
     hideSearchShelves: true,
+    hideSearchMixes: false,
+    hideSearchPlaylists: false,
+    hideSearchPodcasts: false,
+    hideSearchMusic: false,
     hideChannelCards: false,
     hideCards: false,            // Player video card pop-ups
     hideAnnotations: false,      // Player on-screen annotations

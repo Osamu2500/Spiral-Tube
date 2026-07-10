@@ -164,6 +164,76 @@ body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-i
   background-color: transparent !important;
 }
 
+html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+}
+
+/* ============================================================
+   EXPANDED LAYOUT (1 Column) - Details Below Thumbnail
+   ============================================================ */
+html[data-ypp-grid-layout="expand"] .ypp-grid-container {
+  grid-template-columns: 1fr !important;
+}
+
+html[data-ypp-grid-layout="expand"] ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 1 !important;
+  --ytd-rich-grid-posts-per-row: 1 !important;
+}
+
+html[data-ypp-grid-layout="expand"] .ypp-grid-item,
+html[data-ypp-grid-layout="expand"] ytd-rich-item-renderer {
+  margin-bottom: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* Force vertical flow, overriding proportional grid if active */
+html[data-ypp-grid-layout="expand"] ytd-rich-grid-media #dismissible,
+html[data-ypp-grid-layout="expand"] yt-lockup-view-model .yt-lockup-view-model-wiz {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+html[data-ypp-grid-layout="expand"] ytd-thumbnail,
+html[data-ypp-grid-layout="expand"] .yt-lockup-view-model-wiz__image {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+html[data-ypp-grid-layout="expand"] #details,
+html[data-ypp-grid-layout="expand"] .yt-lockup-view-model-wiz__metadata {
+  width: 100% !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  box-sizing: border-box !important;
+}
+
+html[data-ypp-grid-layout="expand"] #video-title {
+  font-size: 2.2rem !important;
+  line-height: 3rem !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  white-space: normal !important;
+}
+
+html[data-ypp-grid-layout="expand"] #metadata-line,
+html[data-ypp-grid-layout="expand"] #channel-name {
+  font-size: 1.5rem !important;
+  display: flex !important;
+}
+
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer ytd-thumbnail img {
   width: 100% !important;
   height: 100% !important;

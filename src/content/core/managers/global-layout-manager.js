@@ -23,6 +23,10 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideMerch:             'ypp-hide-merch',
             hideFundraiser:        'ypp-hide-fundraiser',
             hideSearchShelves:     'ypp-hide-search-shelves',
+            hideSearchMixes:       'ypp-hide-search-mixes',
+            hideSearchPlaylists:   'ypp-hide-search-playlists',
+            hideSearchPodcasts:    'ypp-hide-search-podcasts',
+            hideSearchMusic:       'ypp-hide-search-music',
             // Previously unhandled — now wired up:
             hideAnnotations:       'ypp-hide-annotations',
             hideRelated:           'ypp-hide-related',

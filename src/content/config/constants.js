@@ -389,6 +389,7 @@ window.YPP.CONSTANTS = {
     FEATURE_MAP: {
         theme: 'Theme',
         subsOrganizer: 'SubscriptionsOrganizer',
+        cinematicMode: 'CinematicMode',
         // NOTE: modesManager is handled by WatchPageManager — not a standalone feature
         accountMenu: 'AccountMenu',
         // NOTE: 'SidebarManager' class does not exist; sidebar is managed by WatchPageManager via SidebarLayout CSS

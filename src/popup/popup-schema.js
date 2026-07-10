@@ -205,6 +205,7 @@ export const POPUP_SCHEMA = [
                 subtitle: 'One-click immersive experiences for the video player',
                 items: [
                     { type:'toggle', id:'zenMode',         label:'Zen Mode',        desc:'Dim everything but video',          icon:P('M12 8v4l3 3 M8 12a4 4 0 0 1 4-4 M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z') },
+                    { type:'toggle', id:'cinematicMode',   label:'Cinematic Home',  desc:'Cinematic styling for homepage',    icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M3.6 9h16.8 M3.6 15h16.8') },
                     { type:'toggle', id:'cinemaMode',      label:'Cinema Mode',     desc:'Theater-like fullscreen viewing',   icon:P('M17 2l5 5M7 2L2 7 M2 7h20v15H2z') },
                     { type:'toggle', id:'ambientMode',     label:'Ambient Theater', desc:'Giant canvas ambilight effect',     icon:P('M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41'), slot:'ambientModeOptions' },
                     { type:'toggle', id:'studyMode',       label:'Study Mode',      desc:'Focus mode + 1.25× playback speed', icon:P('M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z') },
@@ -278,6 +279,10 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'hideSearchShelves', label:'Hide Shelf Sections',  desc:'Remove "For You"',         icon:P('M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z') },
                     { type:'toggle', id:'hideChannelCards',  label:'Hide Channel Cards',   desc:'Show videos only',         icon:P('M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z') },
                     { type:'toggle', id:'hideVoiceSearch',   label:'Hide Voice Search', desc:'Remove microphone icon',    icon:P('M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-4.08A7 7 0 0 0 19 11h-2z') },
+                    { type:'toggle', id:'hideSearchMixes', label:'Hide Mixes', desc:'Remove infinite mixes', icon:P('M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71') },
+                    { type:'toggle', id:'hideSearchPlaylists', label:'Hide Playlists', desc:'Remove playlist cards', icon:P('M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01') },
+                    { type:'toggle', id:'hideSearchPodcasts', label:'Hide Podcasts', desc:'Remove podcast cards', icon:P('M3 18v-6a9 9 0 0 1 18 0v6 M21 19a2 2 0 0 1-2 2h-1v-6h3v4z M3 19a2 2 0 0 0 2 2h1v-6H3v4z') },
+                    { type:'toggle', id:'hideSearchMusic', label:'Hide Music', desc:'Remove music videos', icon:P('M9 18V5l12-2v13 M6 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M18 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z') }
                 ]
             },
             {

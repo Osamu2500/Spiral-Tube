@@ -62,30 +62,58 @@ window.YPP.features.HideMixes = class HideMixes extends window.YPP.features.Base
         
         nodes.forEach(node => {
             if (node.hasAttribute('data-ypp-mix-processed')) return;
-            node.setAttribute('data-ypp-mix-processed', 'true');
             
             // For ytd-radio-renderer (Mixes in search/sidebar)
             if (node.tagName.toLowerCase() === 'ytd-radio-renderer') {
+                node.setAttribute('data-ypp-mix-processed', 'true');
                 this._hideElement(node);
                 return;
             }
             
             // For shelf renderers, check the title
             const titleElement = node.querySelector('#title');
-            if (titleElement && titleElement.textContent) {
-                const titleText = titleElement.textContent.trim().toLowerCase();
-                const isMixShelf = (
-                    titleText === 'mix' ||
-                    titleText.startsWith('mix -') ||
-                    titleText.includes('mix for you') ||
-                    titleText.includes('your mix') ||
-                    node.querySelector('ytd-radio-renderer') !== null
-                );
-                
-                if (isMixShelf) {
-                    this._hideElement(node, 'mix');
+            
+            // If the title hasn't loaded yet, observe the node until it does
+            if (!titleElement || !titleElement.textContent || !titleElement.textContent.trim()) {
+                if (!node.hasAttribute('data-ypp-mix-observing')) {
+                    node.setAttribute('data-ypp-mix-observing', 'true');
+                    const observer = new MutationObserver((mutations, obs) => {
+                        const t = node.querySelector('#title');
+                        if (t && t.textContent && t.textContent.trim()) {
+                            obs.disconnect();
+                            node.removeAttribute('data-ypp-mix-observing');
+                            this._checkAndHideMix(node, t.textContent);
+                        }
+                    });
+                    observer.observe(node, { childList: true, subtree: true, characterData: true });
                 }
+                return; 
             }
+
+            this._checkAndHideMix(node, titleElement.textContent);
         });
+    }
+
+    /**
+     * Check title and hide if it's a mix
+     * @param {Element} node
+     * @param {string} titleText
+     */
+    _checkAndHideMix(node, titleText) {
+        if (node.hasAttribute('data-ypp-mix-processed')) return;
+        node.setAttribute('data-ypp-mix-processed', 'true');
+        
+        titleText = titleText.trim().toLowerCase();
+        const isMixShelf = (
+            titleText === 'mix' ||
+            titleText.startsWith('mix -') ||
+            titleText.includes('mix for you') ||
+            titleText.includes('your mix') ||
+            node.querySelector('ytd-radio-renderer') !== null
+        );
+        
+        if (isMixShelf) {
+            this._hideElement(node, 'mix');
+        }
     }
 };

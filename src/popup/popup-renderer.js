@@ -271,7 +271,8 @@ function renderLayoutToggle(item, state) {
     toggleWrap.style.border = '1px solid rgba(255,255,255,0.08)';
 
     const svgCompactStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="6" height="4" rx="1"/><line x1="11" y1="7" x2="21" y2="7"/><rect x="3" y="13" width="6" height="4" rx="1"/><line x1="11" y1="15" x2="21" y2="15"/></svg>`;
-    const svgSpaciousStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`;
+    const svgRegularStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`;
+    const svgSpaciousStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="10" height="7" rx="1"/><line x1="15" y1="5" x2="21" y2="5"/><rect x="3" y="14" width="10" height="7" rx="1"/><line x1="15" y1="16" x2="21" y2="16"/></svg>`;
     const svgExpandedStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="11" rx="2"/><line x1="3" y1="17" x2="21" y2="17"/><line x1="3" y1="21" x2="15" y2="21"/></svg>`;
 
     const parseSVG = (str) => new DOMParser().parseFromString(str, 'image/svg+xml').documentElement;
@@ -285,6 +286,14 @@ function renderLayoutToggle(item, state) {
     btnCompact.style.cssText = btnStyle;
     btnCompact.appendChild(parseSVG(svgCompactStr));
     btnCompact.appendChild(document.createTextNode(' Compact'));
+
+    const btnRegular = document.createElement('button');
+    btnRegular.type = 'button';
+    btnRegular.className = 'sidebar-layout-btn';
+    btnRegular.dataset.layout = 'regular';
+    btnRegular.style.cssText = btnStyle;
+    btnRegular.appendChild(parseSVG(svgRegularStr));
+    btnRegular.appendChild(document.createTextNode(' Regular'));
 
     const btnSpacious = document.createElement('button');
     btnSpacious.type = 'button';
@@ -303,6 +312,7 @@ function renderLayoutToggle(item, state) {
     btnExpanded.appendChild(document.createTextNode(' Expanded'));
 
     toggleWrap.appendChild(btnCompact);
+    toggleWrap.appendChild(btnRegular);
     toggleWrap.appendChild(btnSpacious);
     toggleWrap.appendChild(btnExpanded);
     headerRow.appendChild(toggleWrap);
@@ -319,7 +329,7 @@ function renderLayoutToggle(item, state) {
 
     // Logic
     const updateVisuals = (layout) => {
-        [btnCompact, btnSpacious, btnExpanded].forEach(b => {
+        [btnCompact, btnRegular, btnSpacious, btnExpanded].forEach(b => {
             const isActive = b.dataset.layout === layout;
             b.classList.toggle('active', isActive);
             b.style.background = isActive ? 'color-mix(in srgb, var(--accent-primary) 22%, transparent)' : 'transparent';
@@ -342,6 +352,7 @@ function renderLayoutToggle(item, state) {
     };
 
     btnCompact.onclick = () => applyActiveState('compact');
+    btnRegular.onclick = () => applyActiveState('regular');
     btnSpacious.onclick = () => applyActiveState('spacious');
     btnExpanded.onclick = () => applyActiveState('expanded');
 
