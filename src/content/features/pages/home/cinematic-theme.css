@@ -638,7 +638,9 @@ body.cinematic-home ytd-rich-grid-renderer > * {
   pointer-events: auto !important;
 }
 
-body.cinematic-home ytd-rich-grid-renderer > #contents {
+body.cinematic-home ytd-rich-grid-renderer #contents,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
   z-index: 9 !important;
   /* Use absolute instead of fixed to avoid creating a small containing block for the hero video */
   position: absolute !important;
@@ -674,8 +676,12 @@ body.cinematic-home ytd-rich-grid-row > #contents {
 }
 
 /* Add fade gradients */
-body.cinematic-home ytd-rich-grid-renderer > #contents::before,
-body.cinematic-home ytd-rich-grid-renderer > #contents::after {
+body.cinematic-home ytd-rich-grid-renderer #contents::before,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row)::before,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row)::before,
+body.cinematic-home ytd-rich-grid-renderer #contents::after,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row)::after,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row)::after {
   content: '';
   position: absolute;
   top: 0;
@@ -685,17 +691,23 @@ body.cinematic-home ytd-rich-grid-renderer > #contents::after {
   pointer-events: none;
 }
 
-body.cinematic-home ytd-rich-grid-renderer #contents::before {
+body.cinematic-home ytd-rich-grid-renderer #contents::before,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row)::before,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row)::before {
   left: 0;
   background: linear-gradient(to right, #0f0f0f, transparent);
 }
 
-body.cinematic-home ytd-rich-grid-renderer #contents::after {
+body.cinematic-home ytd-rich-grid-renderer #contents::after,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row)::after,
+body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row)::after {
   right: 0;
   background: linear-gradient(to left, #0f0f0f, transparent);
 }
 
-body.cinematic-home ytd-rich-grid-renderer:has(ytd-feed-nudge-renderer) #contents {
+body.cinematic-home ytd-rich-grid-renderer:has(ytd-feed-nudge-renderer) #contents,
+body.cinematic-home ytd-rich-grid-renderer:has(ytd-feed-nudge-renderer) div:has(> ytd-rich-grid-row),
+body.cinematic-home ytd-rich-grid-renderer:has(ytd-feed-nudge-renderer) div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
   flex-direction: column !important;
 }
 

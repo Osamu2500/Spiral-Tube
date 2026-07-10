@@ -1,4 +1,4 @@
-﻿
+
 html.yt-spiral-tube-theme body:not(.cinematic-home) :is(
 ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer,
   ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer,
@@ -66,7 +66,9 @@ body.yt-spiral-tube-theme:not(.cinematic-home) ytd-rich-item-renderer
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
   animation: ypp-fade-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
-body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
   display: grid !important;
   grid-template-columns: repeat(var(--ypp-active-columns, 4), 1fr) !important;
   gap: 24px 16px !important;
@@ -132,22 +134,30 @@ body.yt-spiral-tube-theme ytd-compact-video-renderer #metadata-line {
   line-height: 1.4 !important;
 }
 @media (max-width: 1600px) {
-  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
     gap: 20px 14px !important;
   }
 }
 @media (max-width: 1200px) {
-  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
     gap: 18px 12px !important;
   }
 }
 @media (max-width: 900px) {
-  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
     gap: 16px 10px !important;
   }
 }
 @media (max-width: 640px) {
-  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents {
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer #contents,
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-grid-row),
+  body.yt-spiral-tube-theme:not(.cinematic-home):not(.ypp-channel-page).ypp-home-page ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row) {
     gap: 16px !important;
   }
 }
