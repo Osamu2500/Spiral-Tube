@@ -56,15 +56,16 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
         panel.id = 'ypp-cinema-panel';
         Object.assign(panel.style, {
             position: 'fixed',
-            bottom: '80px',
-            right: '16px',
+            top: '90px',
+            right: '32px',
+            maxHeight: 'calc(100vh - 140px)',
+            width: '375px',
             backgroundColor: 'rgba(18, 18, 20, 0.65)',
             backgroundImage: 'radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%)',
             border: '1px solid rgba(255, 255, 255, 0.15)',
             borderTop: '1px solid rgba(255, 255, 255, 0.25)',
             borderRadius: '20px',
             zIndex: '2147483646',
-            width: '440px',
             color: '#fff',
             fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
             boxShadow: '0 24px 64px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
@@ -82,7 +83,7 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
         if (isGlobalBar) {
             Object.assign(panel.style, {
                 boxShadow: '0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)',
-                maxHeight: Math.min(window.innerHeight * 0.85, 560) + 'px',
+                maxHeight: Math.min(window.innerHeight * 0.85, 480) + 'px',
                 overflowY: 'auto',
                 overflowX: 'hidden',
                 bottom: 'auto'
@@ -91,10 +92,10 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
             // Position it next to the global bar
             const bar = btn.closest('.ypp-global-player-bar');
             const panelHeight = 500; // approx height
-            const topPx = Math.max(16, (window.innerHeight - panelHeight) / 2);
+            const topPx = Math.max(60, (window.innerHeight - panelHeight) / 2);
             
             if (bar.classList.contains('ypp-bar-pos-right')) {
-                panel.style.right = '76px';
+                panel.style.right = '110px';
                 panel.style.left = 'auto';
                 panel.style.top = topPx + 'px';
             } else if (bar.classList.contains('ypp-bar-pos-left')) {
@@ -132,13 +133,13 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
             .ypp-filter-cat-details[open] summary::after { transform: rotate(180deg); }
             
             .ypp-filter-card-grid { 
-                display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 10px 14px; 
+                display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 6px; 
             }
             .ypp-filter-card {
                 background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-                border-radius: 8px; padding: 6px 4px; display: flex; flex-direction: column;
+                border-radius: 6px; padding: 4px 2px; display: flex; flex-direction: column;
                 align-items: center; cursor: pointer; transition: all 0.2s cubic-bezier(0.2,0,0,1);
-                text-align: center; position: relative; gap: 2px; overflow: hidden;
+                text-align: center; position: relative; gap: 3px; overflow: hidden;
             }
             .ypp-filter-card:hover {
                 background: rgba(255,255,255,0.08); transform: translateY(-2px);
@@ -161,9 +162,8 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
             @keyframes ypp-card-glow-fade {
                 0%, 100% { opacity: 0.5; }
                 50%       { opacity: 1; }
-            }
-            .ypp-filter-lut-preview {
-                width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0;
+            }            .ypp-filter-lut-preview {
+                width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;
                 background: linear-gradient(135deg, #ff4b4b, #4b6fff, #4bff8b);
                 border: 1px solid rgba(255,255,255,0.2);
                 box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -259,7 +259,7 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
         // Tab content — uses opacity crossfade instead of instant show/hide
         const tabContent = document.createElement('div');
         Object.assign(tabContent.style, {
-            padding: '0', maxHeight: '520px', overflowY: 'auto', overflowX: 'hidden',
+            padding: '0', flex: '1', minHeight: '0', overflowY: 'auto', overflowX: 'hidden',
             background: 'transparent', scrollbarWidth: 'none', position: 'relative'
         });
 
@@ -429,9 +429,10 @@ window.YPP.features.VideoFiltersUI = class VideoFiltersUI {
             const isFav    = currentFavs.includes(index);
             card.className = `ypp-filter-card ${isActive ? 'active' : ''}`;
             const cssFilter = filter.css === 'none' ? 'grayscale(0%)' : filter.css;
+            const previewBg = filter.preview ? filter.preview : 'linear-gradient(135deg, #ff4b4b, #4b6fff, #4bff8b)';
             card.innerHTML = `
-                <div class="ypp-filter-lut-preview" style="filter:${cssFilter}"></div>
-                <span style="font-size:10px;font-weight:600;color:${isActive ? '#fff' : 'rgba(255,255,255,0.8)'};flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;">${filter.name}</span>
+                <div class="ypp-filter-lut-preview" style="background:${previewBg}; filter:${cssFilter}"></div>
+                <span style="font-size:9.5px;font-weight:600;color:${isActive ? '#fff' : 'rgba(255,255,255,0.8)'};flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;letter-spacing:-0.2px;">${filter.name}</span>
                 ${isActive ? '<div class="ypp-card-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>' : ''}
                 <button class="ypp-star-btn" title="${isFav ? 'Remove from Favorites' : 'Add to Favorites'}" data-fav="${isFav}">${isFav ? starFilled : starOutline}</button>
             `;

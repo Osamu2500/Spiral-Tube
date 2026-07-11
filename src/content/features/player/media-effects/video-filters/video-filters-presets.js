@@ -107,77 +107,46 @@ window.YPP.features.VideoFiltersPresets = {
         { category: 'Social Media', name: 'Willow',      css: 'grayscale(100%) sepia(20%) contrast(110%) brightness(120%)', overlay: null },
         { category: 'Social Media', name: 'X-Pro II',    css: 'sepia(45%) contrast(125%) brightness(175%) saturate(130%) hue-rotate(-5deg)', overlay: null },
 
+        // ── FujiFilm Recipes ──
+        { category: 'FujiFilm Recipes', name: 'Classic Chrome', css: 'sepia(20%) saturate(85%) contrast(110%) brightness(105%)', preview: 'linear-gradient(135deg, #d3cbb8, #9a8c78)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Velvia (Vivid)', css: 'saturate(140%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #ff0055, #00ffaa)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Astia (Soft)',   css: 'saturate(110%) contrast(90%) brightness(110%)', preview: 'linear-gradient(135deg, #ffb6c1, #add8e6)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Provia (Std)',   css: 'saturate(105%) contrast(105%)', preview: 'linear-gradient(135deg, #e0e0e0, #888888)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Kodachrome 64',  css: 'sepia(25%) saturate(120%) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #ff4500, #ff8c00)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Portra 400',     css: 'sepia(15%) saturate(110%) contrast(95%) brightness(115%)', preview: 'linear-gradient(135deg, #f5deb3, #d2b48c)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Acros (B&W)',    css: 'grayscale(100%) contrast(125%) brightness(105%)', preview: 'linear-gradient(135deg, #ffffff, #000000)', overlay: null },
+
         // ── Anime Worlds ──
-        { category: 'Anime Worlds', name: 'Studio Ghibli',   css: 'sepia(15%) saturate(160%) contrast(110%) brightness(110%) hue-rotate(5deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'Makoto Shinkai',  css: 'saturate(200%) contrast(125%) brightness(115%) hue-rotate(350deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'KyoAni Soft',     css: 'saturate(140%) contrast(95%) brightness(115%)', overlay: null },
-        { category: 'Anime Worlds', name: 'Ufotable Night',  css: 'saturate(170%) contrast(135%) brightness(105%) hue-rotate(210deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'MAPPA Dark',      css: 'saturate(80%) contrast(130%) brightness(90%) hue-rotate(200deg)', overlay: null },
-        { category: 'Anime Worlds', name: '90s Retro Anime', css: 'sepia(30%) contrast(95%) saturate(120%) brightness(105%) hue-rotate(345deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'Pastel Shojo',    css: 'sepia(20%) saturate(130%) contrast(90%) brightness(120%) hue-rotate(330deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'Isekai Fantasy',  css: 'saturate(170%) contrast(115%) brightness(110%) hue-rotate(10deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'Cyberpunk Edgerunner', css: 'saturate(180%) contrast(140%) brightness(95%) hue-rotate(290deg)', overlay: null },
-        { category: 'Anime Worlds', name: 'Shonen Pop',      css: 'saturate(160%) contrast(120%) brightness(110%)', overlay: null },
+        { category: 'Anime Worlds', name: 'Studio Ghibli',   css: 'saturate(140%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #74ebd5, #9face6)', overlay: null },
+        { category: 'Anime Worlds', name: 'Makoto Shinkai',  css: 'saturate(145%) contrast(125%) brightness(115%)', preview: 'linear-gradient(135deg, #4facfe, #00f2fe)', overlay: null },
+        { category: 'Anime Worlds', name: 'KyoAni Soft',     css: 'saturate(110%) contrast(90%) brightness(115%)', preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', overlay: null },
+        { category: 'Anime Worlds', name: 'Ufotable Night',  css: 'saturate(120%) contrast(135%) brightness(95%)', preview: 'linear-gradient(135deg, #30cfd0, #330867)', overlay: null },
+        { category: 'Anime Worlds', name: 'MAPPA Dark',      css: 'saturate(75%) contrast(130%) brightness(95%)', preview: 'linear-gradient(135deg, #434343, #000000)', overlay: null },
+        { category: 'Anime Worlds', name: '90s Retro Anime', css: 'sepia(20%) saturate(110%) contrast(95%) brightness(105%)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: null },
+        { category: 'Anime Worlds', name: 'Pastel Shojo',    css: 'saturate(115%) contrast(90%) brightness(120%)', preview: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', overlay: null },
+        { category: 'Anime Worlds', name: 'Isekai Fantasy',  css: 'saturate(135%) contrast(115%) brightness(110%)', preview: 'linear-gradient(135deg, #84fab0, #8fd3f4)', overlay: null },
+        { category: 'Anime Worlds', name: 'Cyberpunk Edgerunner', css: 'saturate(150%) contrast(130%) brightness(105%)', preview: 'linear-gradient(135deg, #f83600, #f9d423)', overlay: null },
+        { category: 'Anime Worlds', name: 'Shonen Pop',      css: 'saturate(140%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #f6d365, #fda085)', overlay: null },
 
         // ── Cinematic Worlds ──
         // Each filter is tuned to recreate the iconic color grade of a specific film/franchise
-
-        { category: 'Cinematic Worlds', name: 'Dune',
-          // Arrakis: scorched amber sand, bleached sky, high contrast desert heat
-          css: 'sepia(45%) hue-rotate(10deg) saturate(130%) contrast(130%) brightness(105%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Twilight',
-          // Cold blue-green teal desaturated Pacific Northwest romance grade
-          css: 'hue-rotate(175deg) saturate(70%) contrast(110%) brightness(90%) sepia(15%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Disney Magic',
-          // Vibrant, warm, punchy fairy-tale palette — high saturation with lifted blacks
-          css: 'saturate(220%) contrast(105%) brightness(112%) hue-rotate(350deg)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Pixar Glow',
-          // Soft, warm, slightly over-exposed look — bright highlights and clean colours
-          css: 'brightness(118%) contrast(95%) saturate(170%) hue-rotate(355deg)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Avatar: Pandora',
-          // Bioluminescent blue-green lush jungle — deep teal, vivid cyan, boosted saturation
-          css: 'hue-rotate(155deg) saturate(210%) contrast(125%) brightness(95%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Interstellar',
-          // Cold steel blue space / warm wheat field split — desaturated with cool shift
-          css: 'hue-rotate(195deg) saturate(75%) contrast(125%) brightness(98%) sepia(10%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Mad Max: Fury Road',
-          // Scorched orange chrome — bleached sky, hyper-orange foreground, crushed blacks
-          css: 'sepia(60%) hue-rotate(345deg) saturate(200%) contrast(145%) brightness(105%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Lord of the Rings',
-          // New Zealand epic: warm green lands + golden mist — earthy, high contrast
-          css: 'hue-rotate(20deg) saturate(145%) contrast(118%) brightness(102%) sepia(25%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Blade Runner 2049',
-          // Amber smog dystopia: warm orange fog + cold neon accents, heavy contrast
-          css: 'sepia(50%) hue-rotate(15deg) saturate(160%) contrast(140%) brightness(88%)',
-          overlay: null },
-
-        { category: 'Cinematic Worlds', name: 'Marvel Studios',
-          // MCU bright blockbuster: punchy primaries, slightly teal shadows, vivid highlights
-          css: 'saturate(175%) contrast(120%) brightness(108%) hue-rotate(185deg)',
-          overlay: null },
+        { category: 'Cinematic Worlds', name: 'Dune',                css: 'sepia(30%) saturate(90%) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #d4a373, #faedcd)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Twilight',            css: 'saturate(60%) contrast(115%) brightness(95%)', preview: 'linear-gradient(135deg, #6c757d, #adb5bd)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Disney Magic',        css: 'saturate(150%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Pixar Glow',          css: 'brightness(115%) contrast(105%) saturate(140%)', preview: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Avatar: Pandora',     css: 'saturate(130%) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #43e97b, #38f9d7)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Interstellar',        css: 'saturate(80%) contrast(125%) brightness(95%)', preview: 'linear-gradient(135deg, #09203f, #537895)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Mad Max: Fury Road',  css: 'sepia(20%) saturate(130%) contrast(130%) brightness(110%)', preview: 'linear-gradient(135deg, #e65c00, #F9D423)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Lord of the Rings',   css: 'sepia(10%) saturate(115%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #38ef7d, #11998e)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Blade Runner 2049',   css: 'sepia(15%) saturate(130%) contrast(125%) brightness(105%)', preview: 'linear-gradient(135deg, #f12711, #f5af19)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Marvel Studios',      css: 'saturate(125%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #1cb5e0, #000046)', overlay: null },
 
         // ── Nature & Documentary ──
-        { category: 'Nature & Documentary', name: 'National Geographic', css: 'sepia(15%) saturate(140%) contrast(115%) brightness(105%) hue-rotate(5deg)', overlay: null },
-        { category: 'Nature & Documentary', name: 'Planet Earth', css: 'saturate(180%) contrast(120%) brightness(108%) hue-rotate(350deg)', overlay: null },
-        { category: 'Nature & Documentary', name: 'Deep Ocean', css: 'hue-rotate(190deg) saturate(160%) contrast(115%) brightness(95%)', overlay: null },
-        { category: 'Nature & Documentary', name: 'Safari', css: 'sepia(40%) saturate(150%) contrast(125%) hue-rotate(345deg)', overlay: null },
-        { category: 'Nature & Documentary', name: 'Rainforest', css: 'hue-rotate(120deg) saturate(150%) contrast(120%) brightness(90%)', overlay: null },
-        { category: 'Nature & Documentary', name: 'Arctic Frost', css: 'hue-rotate(210deg) saturate(70%) contrast(110%) brightness(115%)', overlay: null }
+        { category: 'Nature & Documentary', name: 'National Geographic', css: 'saturate(130%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #fffc00, #ffffff)', overlay: null },
+        { category: 'Nature & Documentary', name: 'Planet Earth',        css: 'saturate(140%) contrast(110%) brightness(105%)', preview: 'linear-gradient(135deg, #00c6ff, #0072ff)', overlay: null },
+        { category: 'Nature & Documentary', name: 'Deep Ocean',          css: 'saturate(110%) contrast(115%) brightness(95%)', preview: 'linear-gradient(135deg, #000428, #004e92)', overlay: null },
+        { category: 'Nature & Documentary', name: 'Safari',              css: 'sepia(15%) saturate(120%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #e1eec3, #f05053)', overlay: null },
+        { category: 'Nature & Documentary', name: 'Rainforest',          css: 'saturate(135%) contrast(115%) brightness(100%)', preview: 'linear-gradient(135deg, #11998e, #38ef7d)', overlay: null },
+        { category: 'Nature & Documentary', name: 'Arctic Frost',        css: 'saturate(80%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #e0c3fc, #8ec5fc)', overlay: null }
     ]
 };
