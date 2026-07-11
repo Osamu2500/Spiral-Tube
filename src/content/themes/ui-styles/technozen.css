@@ -50,6 +50,8 @@ html:not([dark]) {
   --bounce-alt: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 
   /* Technozen palette */
+  --ypp-bg-base: #dff4e8 !important;
+  --ypp-bg-base: #dff4e8 !important;
   --tz-lime:     #5abf47;  /* Apple Green / Nintendo Wii green */
   --tz-aqua:     #30b8c8;  /* Sharp Aquos / Sony Ericsson cyan */
   --tz-mint:     #a8dba4;  /* Soft mint green */
@@ -153,9 +155,9 @@ html:not([dark]) {
 }
 
 /* Force specific elements to use dark text if they ignore variables */
-html[data-ypp-theme="technozen"] body, 
-html[data-ypp-theme="technozen"] #content-text,
-html[data-ypp-theme="technozen"] yt-formatted-string {
+html[data-ypp-ui-style="technozen"] body, 
+html[data-ypp-ui-style="technozen"] #content-text,
+html[data-ypp-ui-style="technozen"] yt-formatted-string {
   color: var(--yt-spec-text-primary) !important;
 }
 
@@ -1610,43 +1612,43 @@ ytd-comment-simplebox-renderer, yt-live-chat-message-input-renderer {
    ========================================= */
 
 /* Force dark text on ALL text-bearing elements when technozen theme is active */
-html[data-ypp-theme="technozen"] yt-formatted-string,
-html[data-ypp-theme="technozen"] span,
-html[data-ypp-theme="technozen"] a,
-html[data-ypp-theme="technozen"] h1,
-html[data-ypp-theme="technozen"] h2,
-html[data-ypp-theme="technozen"] h3,
-html[data-ypp-theme="technozen"] p,
-html[data-ypp-theme="technozen"] #video-title,
-html[data-ypp-theme="technozen"] .ytd-video-meta-block,
-html[data-ypp-theme="technozen"] #metadata-line span,
-html[data-ypp-theme="technozen"] yt-formatted-string.ytd-channel-name,
-html[data-ypp-theme="technozen"] #channel-name a,
-html[data-ypp-theme="technozen"] .ytd-channel-name,
-html[data-ypp-theme="technozen"] ytd-badge-supported-renderer span,
-html[data-ypp-theme="technozen"] #title-wrapper yt-formatted-string,
-html[data-ypp-theme="technozen"] .title-text,
-html[data-ypp-theme="technozen"] ytd-rich-grid-renderer #title,
-html[data-ypp-theme="technozen"] .shortsLockupViewModelHostThumbnailOverlayFooter,
-html[data-ypp-theme="technozen"] ytd-guide-entry-renderer yt-formatted-string {
+html[data-ypp-ui-style="technozen"] yt-formatted-string,
+html[data-ypp-ui-style="technozen"] span,
+html[data-ypp-ui-style="technozen"] a,
+html[data-ypp-ui-style="technozen"] h1,
+html[data-ypp-ui-style="technozen"] h2,
+html[data-ypp-ui-style="technozen"] h3,
+html[data-ypp-ui-style="technozen"] p,
+html[data-ypp-ui-style="technozen"] #video-title,
+html[data-ypp-ui-style="technozen"] .ytd-video-meta-block,
+html[data-ypp-ui-style="technozen"] #metadata-line span,
+html[data-ypp-ui-style="technozen"] yt-formatted-string.ytd-channel-name,
+html[data-ypp-ui-style="technozen"] #channel-name a,
+html[data-ypp-ui-style="technozen"] .ytd-channel-name,
+html[data-ypp-ui-style="technozen"] ytd-badge-supported-renderer span,
+html[data-ypp-ui-style="technozen"] #title-wrapper yt-formatted-string,
+html[data-ypp-ui-style="technozen"] .title-text,
+html[data-ypp-ui-style="technozen"] ytd-rich-grid-renderer #title,
+html[data-ypp-ui-style="technozen"] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-ui-style="technozen"] ytd-guide-entry-renderer yt-formatted-string {
   color: #152418 !important;
   text-shadow: none !important;
 }
 
-html[data-ypp-theme="technozen"] #video-title,
-html[data-ypp-theme="technozen"] ytd-video-renderer #video-title,
-html[data-ypp-theme="technozen"] ytd-rich-item-renderer #video-title {
+html[data-ypp-ui-style="technozen"] #video-title,
+html[data-ypp-ui-style="technozen"] ytd-video-renderer #video-title,
+html[data-ypp-ui-style="technozen"] ytd-rich-item-renderer #video-title {
   color: #152418 !important;
 }
 
-html[data-ypp-theme="technozen"] #metadata-line span,
-html[data-ypp-theme="technozen"] .ytd-video-meta-block span,
-html[data-ypp-theme="technozen"] yt-formatted-string.ytd-channel-name {
+html[data-ypp-ui-style="technozen"] #metadata-line span,
+html[data-ypp-ui-style="technozen"] .ytd-video-meta-block span,
+html[data-ypp-ui-style="technozen"] yt-formatted-string.ytd-channel-name {
   color: #3b5c43 !important;
 }
 
 /* Force light mode CSS variables */
-html[data-ypp-theme="technozen"] {
+html[data-ypp-ui-style="technozen"] {
   --yt-spec-text-primary: #152418 !important;
   --yt-spec-text-secondary: #3b5c43 !important;
   --yt-spec-text-disabled: #7a9c82 !important;

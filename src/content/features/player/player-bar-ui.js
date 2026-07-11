@@ -21,10 +21,10 @@ window.YPP.features.PlayerBarUI = class PlayerBarUI {
             const isShorts = window.location.pathname.startsWith('/shorts');
             const video = isShorts 
                 ? document.querySelector('ytd-reel-video-renderer[is-active] video') 
-                : document.querySelector('video.html5-main-video');
+                : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
             const controls = isShorts 
                 ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') 
-                : document.querySelector('.ytp-chrome-bottom');
+                : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
             
             if (video && controls) {
                 if (!controls.querySelector('.ypp-player-controls')) {
@@ -103,7 +103,7 @@ window.YPP.features.PlayerBarUI = class PlayerBarUI {
             controls.appendChild(container);
         } else {
             // Find where to insert our controls within .ytp-chrome-bottom
-            let rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');
+            let rightControls = controls.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO_CONTROLS[0]) || controls.querySelector('.ytp-right-controls-right');
             const fullscreenBtn = controls.querySelector('.ytp-fullscreen-button');
             const chromeControls = controls.querySelector('.ytp-chrome-controls');
             

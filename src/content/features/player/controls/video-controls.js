@@ -55,7 +55,7 @@ window.YPP.features.VideoControls = class VideoControls extends window.YPP.featu
         this._teardownAudio();
 
         // Clean up video inline styles to prevent breaking YouTube controls
-        const video = document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (video) {
             video.style.filter = '';
             video.style.transform = '';
@@ -193,7 +193,7 @@ window.YPP.features.VideoControls = class VideoControls extends window.YPP.featu
             window.YPP.sharedObserver.register('video-controls-btn', '.ytp-right-controls', handleControls, true);
         } else {
             // fallback
-            const controls = document.querySelector('.ytp-right-controls');
+            const controls = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO_CONTROLS[0]);
             if (controls) handleControls([controls]);
         }
     }
@@ -337,7 +337,7 @@ window.YPP.features.VideoControls = class VideoControls extends window.YPP.featu
     }
 
     setupListeners() {
-        const video = document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (!video) return;
 
         // ── Tabs Switching ──────────────────────────────────────────────────

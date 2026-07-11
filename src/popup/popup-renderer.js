@@ -47,7 +47,7 @@ function renderToggle(item, state) {
     if (item.hidden) return null;
 
     const card = document.createElement('div');
-    card.className = 'toggle-card';
+    card.className = `toggle-card ${item.class || ''}`.trim();
     if (item.style) card.style.cssText = item.style;
     if (item.cssText) card.style.cssText = item.cssText;  // alias
 
@@ -71,6 +71,11 @@ function renderToggle(item, state) {
         const b = document.createElement('span');
         b.textContent = item.badge;
         b.className = 'new-feature-badge';
+        nameEl.appendChild(b);
+    }
+    if (item.inlineSlot) {
+        const b = document.createElement('span');
+        b.innerHTML = item.inlineSlot;
         nameEl.appendChild(b);
     }
     info.appendChild(nameEl);
@@ -257,7 +262,7 @@ function renderLayoutToggle(item, state) {
 
     const info = document.createElement('div');
     info.className = 'info';
-    info.innerHTML = `<span class="name">${item.label}</span><span class="desc">${item.desc || 'Video cards size'}</span>`;
+    info.innerHTML = `<span class="name" style="display:flex; align-items:center; gap:6px;">${item.label} <span id="sidebar-layout-lock" style="display:none; color:var(--accent-primary);" title="Locked by Immersive Glass"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span></span><span class="desc">${item.desc || 'Video cards size'}</span>`;
     headerRow.appendChild(info);
 
     // Toggle Buttons
@@ -270,6 +275,7 @@ function renderLayoutToggle(item, state) {
     toggleWrap.style.borderRadius = '8px';
     toggleWrap.style.border = '1px solid rgba(255,255,255,0.08)';
 
+    const svgDenseStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="4" height="3" rx="0.5"/><line x1="9" y1="7.5" x2="21" y2="7.5"/><rect x="3" y="11" width="4" height="3" rx="0.5"/><line x1="9" y1="12.5" x2="21" y2="12.5"/><rect x="3" y="16" width="4" height="3" rx="0.5"/><line x1="9" y1="17.5" x2="21" y2="17.5"/></svg>`;
     const svgCompactStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="6" height="4" rx="1"/><line x1="11" y1="7" x2="21" y2="7"/><rect x="3" y="13" width="6" height="4" rx="1"/><line x1="11" y1="15" x2="21" y2="15"/></svg>`;
     const svgRegularStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`;
     const svgSpaciousStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="10" height="7" rx="1"/><line x1="15" y1="5" x2="21" y2="5"/><rect x="3" y="14" width="10" height="7" rx="1"/><line x1="15" y1="16" x2="21" y2="16"/></svg>`;
@@ -278,6 +284,14 @@ function renderLayoutToggle(item, state) {
     const parseSVG = (str) => new DOMParser().parseFromString(str, 'image/svg+xml').documentElement;
 
     const btnStyle = 'display:flex; align-items:center; justify-content:center; flex:1; gap:4px; font-size:11px; padding:5px 8px; border:none; cursor:pointer; transition:all 0.2s; font-weight:500; border-radius:6px; background:transparent; color:rgba(255,255,255,0.5);';
+
+    const btnDense = document.createElement('button');
+    btnDense.type = 'button';
+    btnDense.className = 'sidebar-layout-btn';
+    btnDense.dataset.layout = 'dense';
+    btnDense.style.cssText = btnStyle;
+    btnDense.appendChild(parseSVG(svgDenseStr));
+    btnDense.appendChild(document.createTextNode(' Dense'));
 
     const btnCompact = document.createElement('button');
     btnCompact.type = 'button';
@@ -311,6 +325,7 @@ function renderLayoutToggle(item, state) {
     btnExpanded.appendChild(parseSVG(svgExpandedStr));
     btnExpanded.appendChild(document.createTextNode(' Expanded'));
 
+    toggleWrap.appendChild(btnDense);
     toggleWrap.appendChild(btnCompact);
     toggleWrap.appendChild(btnRegular);
     toggleWrap.appendChild(btnSpacious);
@@ -329,7 +344,7 @@ function renderLayoutToggle(item, state) {
 
     // Logic
     const updateVisuals = (layout) => {
-        [btnCompact, btnRegular, btnSpacious, btnExpanded].forEach(b => {
+        [btnDense, btnCompact, btnRegular, btnSpacious, btnExpanded].forEach(b => {
             const isActive = b.dataset.layout === layout;
             b.classList.toggle('active', isActive);
             b.style.background = isActive ? 'color-mix(in srgb, var(--accent-primary) 22%, transparent)' : 'transparent';
@@ -351,6 +366,7 @@ function renderLayoutToggle(item, state) {
         });
     };
 
+    btnDense.onclick = () => applyActiveState('dense');
     btnCompact.onclick = () => applyActiveState('compact');
     btnRegular.onclick = () => applyActiveState('regular');
     btnSpacious.onclick = () => applyActiveState('spacious');
@@ -367,6 +383,40 @@ function renderLayoutToggle(item, state) {
 
     // Initialize UI visual state without triggering save
     updateVisuals(hiddenInput.value);
+
+    // Lock logic for Immersive Glass
+    const enforceLock = () => {
+        // ONLY lock the sidebar layout
+        if (item.id !== 'sidebarLayout') {
+            return;
+        }
+
+        const lockIcon = wrap.querySelector('#sidebar-layout-lock');
+        const cardStyleInput = document.getElementById('cardStyle');
+        const isLocked = cardStyleInput && cardStyleInput.value === 'immersive-glass';
+        
+        if (isLocked) {
+            if (lockIcon) lockIcon.style.display = 'inline-block';
+            toggleWrap.style.pointerEvents = 'none';
+            toggleWrap.style.opacity = '0.5';
+            // Visually force "Expanded" layout, without overwriting the actual saved layout value
+            updateVisuals('expanded');
+        } else {
+            if (lockIcon) lockIcon.style.display = 'none';
+            toggleWrap.style.pointerEvents = 'auto';
+            toggleWrap.style.opacity = '1';
+            updateVisuals(hiddenInput.value);
+        }
+    };
+
+    // Wait for DOM to finish rendering schema before attaching listener
+    setTimeout(() => {
+        const cardStyleInput = document.getElementById('cardStyle');
+        if (cardStyleInput) {
+            cardStyleInput.addEventListener('change', enforceLock);
+            enforceLock();
+        }
+    }, 150);
     
     _registerInput(hiddenInput, state);
     return wrap;
@@ -633,7 +683,10 @@ function buildSection(section, state) {
     hdr.innerHTML = `
         <div class="section-title-wrap">
             <div class="section-text-wrap">
-                <div class="section-title">${section.title}</div>
+                <div class="section-title">
+                    ${section.icon ? `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">${section.icon}</svg>` : ''}
+                    ${section.title}
+                </div>
                 ${section.subtitle ? `<div class="section-subtitle">${section.subtitle}</div>` : ''}
             </div>
         </div>`;

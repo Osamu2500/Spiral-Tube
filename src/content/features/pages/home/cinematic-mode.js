@@ -330,14 +330,23 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         fixVideo();
 
         // Also observe for the video element if it's not created yet
-        const vidObserver = new MutationObserver(fixVideo);
-        vidObserver.observe(preview, { childList: true, subtree: true });
+        if (this._vidObserver) this._vidObserver.disconnect();
+        this._vidObserver = new MutationObserver(fixVideo);
+        this._vidObserver.observe(preview, { childList: true, subtree: true });
     }
 
     _releaseHeroVideo() {
         if (this._heroObserver && this._heroState.heroElement) {
             this._heroObserver.disconnect();
             this._heroObserver = null;
+        }
+        if (this._previewObserver) {
+            this._previewObserver.disconnect();
+            this._previewObserver = null;
+        }
+        if (this._vidObserver) {
+            this._vidObserver.disconnect();
+            this._vidObserver = null;
         }
         const iframe = this._heroState.heroElement?.querySelector('.netflix-hero-iframe');
         if (iframe) {

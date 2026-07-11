@@ -33,7 +33,7 @@ class UIManager {
         watchPage: () => window.YPP.DomAPI?.getWatchFlexy(),
         homePageTop: () => document.querySelector('ytd-browse[page-subtype="home"] #contents'),
         searchPageTop: () => document.querySelector('ytd-search #contents'),
-        watchPageTop: () => document.querySelector('#secondary-inner') || document.querySelector('#comments'),
+        watchPageTop: () => document.querySelector(window.YPP.CONSTANTS.SELECTORS.SIDEBAR[1]) || document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]),
         subsPageTop: () => document.querySelector('ytd-browse[page-subtype="subscriptions"] #contents')
     };
 

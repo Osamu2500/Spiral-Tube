@@ -2204,42 +2204,42 @@ yt-formatted-string#description-text {
    ========================================= */
 
 /* Force dark text on ALL text-bearing elements when vintage theme is active */
-html[data-ypp-theme="vintage"] yt-formatted-string,
-html[data-ypp-theme="vintage"] span,
-html[data-ypp-theme="vintage"] a,
-html[data-ypp-theme="vintage"] h1,
-html[data-ypp-theme="vintage"] h2,
-html[data-ypp-theme="vintage"] h3,
-html[data-ypp-theme="vintage"] p,
-html[data-ypp-theme="vintage"] #video-title,
-html[data-ypp-theme="vintage"] .ytd-video-meta-block,
-html[data-ypp-theme="vintage"] #metadata-line span,
-html[data-ypp-theme="vintage"] yt-formatted-string.ytd-channel-name,
-html[data-ypp-theme="vintage"] #channel-name a,
-html[data-ypp-theme="vintage"] .ytd-channel-name,
-html[data-ypp-theme="vintage"] ytd-badge-supported-renderer span,
-html[data-ypp-theme="vintage"] #title-wrapper yt-formatted-string,
-html[data-ypp-theme="vintage"] .title-text,
-html[data-ypp-theme="vintage"] ytd-rich-grid-renderer #title,
-html[data-ypp-theme="vintage"] .shortsLockupViewModelHostThumbnailOverlayFooter,
-html[data-ypp-theme="vintage"] ytd-guide-entry-renderer yt-formatted-string {
+html[data-ypp-ui-style="vintage"] yt-formatted-string,
+html[data-ypp-ui-style="vintage"] span,
+html[data-ypp-ui-style="vintage"] a,
+html[data-ypp-ui-style="vintage"] h1,
+html[data-ypp-ui-style="vintage"] h2,
+html[data-ypp-ui-style="vintage"] h3,
+html[data-ypp-ui-style="vintage"] p,
+html[data-ypp-ui-style="vintage"] #video-title,
+html[data-ypp-ui-style="vintage"] .ytd-video-meta-block,
+html[data-ypp-ui-style="vintage"] #metadata-line span,
+html[data-ypp-ui-style="vintage"] yt-formatted-string.ytd-channel-name,
+html[data-ypp-ui-style="vintage"] #channel-name a,
+html[data-ypp-ui-style="vintage"] .ytd-channel-name,
+html[data-ypp-ui-style="vintage"] ytd-badge-supported-renderer span,
+html[data-ypp-ui-style="vintage"] #title-wrapper yt-formatted-string,
+html[data-ypp-ui-style="vintage"] .title-text,
+html[data-ypp-ui-style="vintage"] ytd-rich-grid-renderer #title,
+html[data-ypp-ui-style="vintage"] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer yt-formatted-string {
   color: #2c1f14 !important;
 }
 
-html[data-ypp-theme="vintage"] #video-title,
-html[data-ypp-theme="vintage"] ytd-video-renderer #video-title,
-html[data-ypp-theme="vintage"] ytd-rich-item-renderer #video-title {
+html[data-ypp-ui-style="vintage"] #video-title,
+html[data-ypp-ui-style="vintage"] ytd-video-renderer #video-title,
+html[data-ypp-ui-style="vintage"] ytd-rich-item-renderer #video-title {
   color: #1a0f08 !important;
 }
 
-html[data-ypp-theme="vintage"] #metadata-line span,
-html[data-ypp-theme="vintage"] .ytd-video-meta-block span,
-html[data-ypp-theme="vintage"] yt-formatted-string.ytd-channel-name {
+html[data-ypp-ui-style="vintage"] #metadata-line span,
+html[data-ypp-ui-style="vintage"] .ytd-video-meta-block span,
+html[data-ypp-ui-style="vintage"] yt-formatted-string.ytd-channel-name {
   color: #5c3d2e !important;
 }
 
 /* Force light mode CSS variables so YouTube inherited colors are also dark */
-html[data-ypp-theme="vintage"] {
+html[data-ypp-ui-style="vintage"] {
   --yt-spec-text-primary: #2c1f14 !important;
   --yt-spec-text-secondary: #5c3d2e !important;
   --yt-spec-icon-active-other: #2c1f14 !important;

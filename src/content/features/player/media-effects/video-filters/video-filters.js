@@ -76,7 +76,7 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
 
     onVideoChange(videoElement) {
         if (!this.settings || !this.settings.enableCinemaFilters) return;
-        const video = videoElement || document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = videoElement || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (video) this._restoreFilterState(video);
     }
 
@@ -88,7 +88,7 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
         btn.className = 'ypp-action-btn';
         btn.onclick = (e) => {
             e.stopPropagation();
-            const activeVideo = document.querySelector('.html5-main-video') || document.querySelector('video');
+            const activeVideo = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             this.toggleFilterPanel(activeVideo, btn);
         };
         this._filterBtn = btn;
@@ -128,7 +128,7 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
 
     _applyComputedFilter(video) {
         // Force fresh video lookup on every application if not explicitly provided
-        video = video || document.querySelector('.html5-main-video') || document.querySelector('video');
+        video = video || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (!video) return;
 
         if (this.isComparing) {

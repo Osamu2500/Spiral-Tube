@@ -57,29 +57,46 @@ window.YPP.features.SmartDownload = class SmartDownload extends window.YPP.featu
     }
 
     startDownloadButtonWatcher() {
-        if (this.downloadButtonObserver) return;
+        this._processButtons = (nodes) => {
+            if (!this.downloadButtonObserver) {
+                this.downloadButtonObserver = new MutationObserver((mutations) => {
+                    mutations.forEach(m => {
+                        if (m.target && m.target.matches && m.target.matches(this.DL_BTN_SELECTORS)) {
+                            if (m.target.hasAttribute('disabled') || m.target.getAttribute('aria-disabled') === 'true' || m.target.style.pointerEvents === 'none') {
+                                m.target.dataset.yppForced = '0';
+                                this.forceEnableDownloadButton(m.target);
+                            }
+                        }
+                    });
+                });
+            }
 
-        document.querySelectorAll(this.DL_BTN_SELECTORS).forEach(btn => this.forceEnableDownloadButton(btn));
-
-        this.downloadButtonObserver = new MutationObserver(() => {
-            document.querySelectorAll(this.DL_BTN_SELECTORS).forEach(btn => {
-                if (btn.hasAttribute('disabled') || btn.getAttribute('aria-disabled') === 'true' ||
-                    btn.style.pointerEvents === 'none' || btn.dataset.yppForced !== '1') {
-                    btn.dataset.yppForced = '0';
+            nodes.forEach(node => {
+                const btns = node.matches && node.matches(this.DL_BTN_SELECTORS) ? [node] : Array.from(node.querySelectorAll ? node.querySelectorAll(this.DL_BTN_SELECTORS) : []);
+                btns.forEach(btn => {
                     this.forceEnableDownloadButton(btn);
-                }
+                    if (!btn.dataset.yppObserved) {
+                        btn.dataset.yppObserved = "true";
+                        this.downloadButtonObserver.observe(btn, { attributes: true, attributeFilter: ['disabled', 'aria-disabled', 'style'] });
+                    }
+                });
             });
-        });
-
-        this.downloadButtonObserver.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['disabled', 'aria-disabled', 'style']
-        });
+        };
+        
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('smart-download', this.DL_BTN_SELECTORS, this._processButtons);
+        }
+        
+        const existing = Array.from(document.querySelectorAll(this.DL_BTN_SELECTORS));
+        if (existing.length) {
+            this._processButtons(existing);
+        }
     }
 
     stopDownloadButtonWatcher() {
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('smart-download');
+        }
         if (this.downloadButtonObserver) {
             this.downloadButtonObserver.disconnect();
             this.downloadButtonObserver = null;

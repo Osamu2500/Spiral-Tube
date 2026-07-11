@@ -26,7 +26,7 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 
     static toggleEQPanel(ctx, video, anchorBtn) {
         // ALWAYS fetch the active video, overriding any stale reference from UI closures
-        video = document.querySelector('.html5-main-video') || document.querySelector('video');
+        video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
 
         if (ctx._volumePopup) {
             ctx._volumePopup.remove();

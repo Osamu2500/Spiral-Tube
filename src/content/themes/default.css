@@ -1,4 +1,4 @@
-﻿html.yt-spiral-tube-theme {
+html.yt-spiral-tube-theme {
     /* Default Premium Theme (Ocean-Dark) */
     --ypp-bg-base: #050505;
     --ypp-bg-surface: rgba(25, 25, 25, 0.6);
@@ -33,6 +33,32 @@
     --ytd-searchbox-legacy-button-border-radius: 0 18px 18px 0;
     --ytd-searchbox-legacy-button-width: 60px;
     --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.05);
+}
+
+html:not([dark]).yt-spiral-tube-theme {
+    /* Light Theme (YouTube Default) Auto-Synced */
+    --ypp-bg-base: #f9f9f9;
+    --ypp-bg-surface: rgba(240, 240, 240, 0.7);
+    --ypp-bg-glass: rgba(255, 255, 255, 0.85);
+    --ypp-glass-border: rgba(0, 0, 0, 0.05);
+    --ypp-glass-highlight: rgba(0, 0, 0, 0.03);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+
+    --ypp-text-primary: #0f0f0f;
+    --ypp-text-secondary: rgba(0, 0, 0, 0.6);
+
+    --ypp-accent: #065fd4;
+    --ypp-accent-hover: #0056b3;
+    --ypp-accent-glow: rgba(6, 95, 212, 0.2);
+
+    --ypp-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.05);
+    --ypp-shadow-float: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --ypp-shadow-glow: 0 0 16px rgba(6, 95, 212, 0.1);
+    --ypp-shadow-accent-glow: 0 0 24px var(--ypp-accent-glow);
+
+    --ytd-searchbox-background: transparent;
+    --ytd-searchbox-text-color: #0f0f0f;
+    --ytd-searchbox-legacy-button-color: rgba(0, 0, 0, 0.05);
 }
 
 

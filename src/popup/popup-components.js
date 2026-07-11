@@ -12,12 +12,12 @@ const escapeHTML = (str) => {
 
 export function initComponents(document, state, ui, updateSetting, notifyThemeChange, saveSettings) {
     
-    function applyThemeToPopup(themeKey, customThemesObj = null) {
+    function applyThemeToPopup(themeKey, customThemesObj = null, nativeThemeMode = 'dark') {
+        let actualThemeKey = themeKey;
         if (themeKey === 'system') {
-            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            themeKey = isDark ? 'midnight' : 'default';
+            actualThemeKey = nativeThemeMode === 'light' ? 'minimalism' : 'midnight';
         }
-        document.documentElement.setAttribute('data-ypp-theme', themeKey);
+        document.documentElement.setAttribute('data-ypp-theme', actualThemeKey);
         document.documentElement.classList.add('yt-spiral-tube-theme');
         const link = document.getElementById('ypp-active-theme-css');
         if (link) link.remove();
@@ -26,8 +26,8 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
             let style = document.getElementById('ypp-custom-theme-style');
             if (style) style.remove();
             
-            if (themeKey.startsWith('custom_') && themes && themes[themeKey]) {
-                const theme = themes[themeKey];
+            if (actualThemeKey.startsWith('custom_') && themes && themes[actualThemeKey]) {
+                const theme = themes[actualThemeKey];
                 style = document.createElement('style');
                 style.id = 'ypp-custom-theme-style';
                 const cssVars = Object.entries(theme.variables || {})
@@ -55,21 +55,23 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
 
         const themeCategories = [
             {
-                name: 'System',
+                name: 'System & Basics',
                 themes: [
                     { key: 'system', label: 'System Auto', meta: 'Follows OS', color: 'split' },
                     { key: 'default', label: 'YouTube Dark', meta: 'Default', color: '#0f0f0f' },
-                    { key: 'midnight', label: 'Midnight', meta: 'OLED Black', color: '#000000' }
+                    { key: 'midnight', label: 'Midnight', meta: 'OLED Black', color: '#000000' },
+                    { key: 'minimalism', label: 'Minimalism', meta: 'Clean', color: '#fafafa' },
+                    { key: 'material', label: 'Material You', meta: 'Google M3', color: '#1f1f1f' }
                 ]
             },
             {
-                name: 'Colors',
+                name: 'Core Colors',
                 themes: [
                     { key: 'ocean', label: 'Ocean Blue', meta: 'Deep Blue', color: '#051421' },
-                    { key: 'sunset', label: 'Sunset Glow', meta: 'Warm', color: '#1a0b1a' },
                     { key: 'forest', label: 'Forest', meta: 'Green', color: '#0f1c15' },
                     { key: 'cherry', label: 'Cherry', meta: 'Pink', color: '#26181b' },
-                    { key: 'coffee', label: 'Coffee', meta: 'Latte', color: '#2a201c' }
+                    { key: 'coffee', label: 'Coffee', meta: 'Latte', color: '#2a201c' },
+                    { key: 'bloodmoon', label: 'Blood Moon', meta: 'Crimson', color: '#1a0505' }
                 ]
             },
             {
@@ -79,41 +81,52 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     { key: 'nord', label: 'Nord', meta: 'Frost', color: '#2e3440' },
                     { key: 'discord', label: 'Discord Dark', meta: 'Chat', color: '#36393f' },
                     { key: 'hacker', label: 'Hacker Green', meta: 'Terminal', color: '#0a140a' },
-                    { key: 'bloodmoon', label: 'Blood Moon', meta: 'Crimson', color: '#1a0505' },
                     { key: 'abyss', label: 'Abyss', meta: 'Deep Sea', color: '#01080a' },
-                    { key: 'ember', label: 'Ember', meta: 'Hot Coals', color: '#141414' }
+                    { key: 'ember', label: 'Ember', meta: 'Hot Coals', color: '#141414' },
+                    { key: 'sunset', label: 'Sunset Glow', meta: 'Warm', color: '#1a0b1a' },
+                    { key: 'deepspace', label: 'Deep Space', meta: 'Nebula', color: '#020205' },
+                    { key: 'nebula', label: 'Nebula', meta: 'Purple Space', color: '#0f0518' },
+                    { key: 'terminalism', label: 'Terminalism', meta: 'Hacker', color: '#000000' }
                 ]
             },
             {
-                name: 'Sci-Fi & Retro',
+                name: 'Sci-Fi & Cyber',
                 themes: [
                     { key: 'cyberpunk', label: 'Cyberpunk', meta: 'Neon', color: '#0a0a0f' },
                     { key: 'outrun', label: 'Outrun Synth', meta: '80s Retro', color: '#1a0524' },
-                    { key: 'deepspace', label: 'Deep Space', meta: 'Nebula', color: '#020205' },
-                    { key: 'nebula', label: 'Nebula', meta: 'Purple Space', color: '#0f0518' },
                     { key: 'hologram', label: 'Hologram', meta: 'Sci-Fi Cyan', color: '#e0f7fa' },
-                    { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' },
-                    { key: 'retro', label: 'Retro OS', meta: 'Windows 95', color: '#c0c0c0' },
-                    { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' },
-                    { key: 'technozen', label: 'Technozen', meta: 'Eco Tech', color: '#dff4e8' }
+                    { key: 'maximalism', label: 'Maximalism', meta: 'Loud', color: '#ff00ff' },
+                    { key: 'aurora', label: 'Aurora', meta: 'Lights', color: '#0a0a0a' }
                 ]
             },
             {
-                name: 'New UI Designs',
+                name: 'Retro & Aesthetics',
                 themes: [
-                    { key: 'terminalism', label: 'Terminalism', meta: 'Hacker', color: '#000000' },
+                    { key: 'retro', label: 'Retro OS', meta: 'Windows 95', color: '#c0c0c0' },
+                    { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' },
+                    { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' },
+                    { key: 'technozen', label: 'Technozen', meta: 'Eco Tech', color: '#dff4e8' },
                     { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy 3D', color: '#f0e8ff' },
                     { key: 'brutalism', label: 'Brutalism', meta: 'Raw UI', color: '#ffffff' },
-                    { key: 'minimalism', label: 'Minimalism', meta: 'Clean', color: '#fafafa' },
-                    { key: 'maximalism', label: 'Maximalism', meta: 'Loud', color: '#ff00ff' },
-                    { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted', color: '#0f0c29' },
-                    { key: 'aurora', label: 'Aurora', meta: 'Lights', color: '#0a0a0a' },
-                    { key: 'material', label: 'Material You', meta: 'Google M3', color: '#1f1f1f' }
+                    { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted', color: '#0f0c29' }
                 ]
             }
         ];
 
         chrome.storage.local.get('settings', (data) => {
+            const nativeMode = data.settings?.nativeThemeMode || 'dark';
+            
+            // Update the system theme entry based on nativeMode
+            const sysCat = themeCategories.find(c => c.name === 'System & Basics');
+            if (sysCat) {
+                const sysTheme = sysCat.themes.find(t => t.key === 'system');
+                if (sysTheme) {
+                    sysTheme.label = nativeMode === 'dark' ? 'Native Dark' : 'Native Light';
+                    sysTheme.meta = 'Toggle to switch';
+                    sysTheme.color = nativeMode === 'dark' ? '#0f0f0f' : '#ffffff';
+                }
+            }
+            
             const customThemesObj = data.settings?.customThemes || {};
             const customThemes = Object.keys(customThemesObj).map(k => ({
                 key: k,
@@ -154,7 +167,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                 const innerGrid = document.createElement('div');
                 innerGrid.className = 'theme-grid-inner';
                 innerGrid.style.display = 'grid';
-                innerGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                innerGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
                 innerGrid.style.gap = '8px';
                 innerGrid.style.width = '100%';
                 
@@ -163,9 +176,21 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     btn.className = `theme-btn ${theme.key === currentTheme ? 'active' : ''}`;
                     btn.dataset.theme = theme.key;
                     
-                    const preview = document.createElement('div');
-                    preview.className = `theme-preview ${theme.key === 'system' ? 'split' : ''}`;
-                    if (theme.key !== 'system') preview.style.backgroundColor = theme.color;
+                    btn.style.backgroundColor = theme.color;
+                    // Determine if color is light to set text color and border
+                    const hex = theme.color.replace('#', '');
+                    const r = parseInt(hex.substr(0, 2), 16) || 0;
+                    const g = parseInt(hex.substr(2, 2), 16) || 0;
+                    const b = parseInt(hex.substr(4, 2), 16) || 0;
+                    const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+                    
+                    if (brightness > 155) {
+                        btn.style.color = '#000';
+                        btn.style.border = '1px solid rgba(0,0,0,0.5)';
+                    } else {
+                        btn.style.color = '#fff';
+                        btn.style.border = '1px solid rgba(255,255,255,0.3)';
+                    }
                     
                     const info = document.createElement('div');
                     info.className = 'theme-info';
@@ -174,7 +199,6 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                         <span class="theme-meta">${escapeHTML(theme.meta)}</span>
                     `;
 
-                    btn.appendChild(preview);
                     btn.appendChild(info);
 
                     if (theme.isCustom) {
@@ -214,7 +238,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                                         notifyThemeChange(st.activeTheme);
                                         chrome.tabs.query({active: true}, (tabs) => {
                                             chrome.tabs.sendMessage(tabs[0].id, {
-                                                type: 'UPDATE_SETTINGS',
+                                                action: 'UPDATE_SETTINGS',
                                                 settings: st
                                             }).catch(() => {});
                                         });
@@ -226,21 +250,86 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     }
 
                     btn.addEventListener('click', () => {
+                        const wasActive = btn.classList.contains('active');
+                        
                         document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         const newTheme = theme.key;
-                        updateSetting('activeTheme', newTheme);
                         
-                        // Auto-apply UI styles if the theme is an aesthetic theme
-                        const uiStyles = ['retro', 'vintage', 'technozen', 'cyberpunk', 'blue-sky', 'ocean', 'nature', 'liquid-glass', 'neumorphic', 'terminalism', 'claymorphism', 'brutalism', 'minimalism', 'maximalism', 'glassmorphism', 'aurora', 'material'];
-                        if (uiStyles.includes(newTheme)) {
-                            updateSetting('youtubePageTheme', newTheme);
-                            const selectEl = document.getElementById('youtubePageTheme');
-                            if (selectEl) selectEl.value = newTheme;
+                        if (theme.key === 'system') {
+                            chrome.storage.local.get('settings', (d) => {
+                                const st = d.settings || {};
+                                if (wasActive) {
+                                    // Toggle mode
+                                    st.nativeThemeMode = (st.nativeThemeMode === 'light') ? 'dark' : 'light';
+                                    
+                                    // Update UI
+                                    const nextMode = st.nativeThemeMode;
+                                    theme.label = nextMode === 'dark' ? 'Native Dark' : 'Native Light';
+                                    theme.color = nextMode === 'dark' ? '#0f0f0f' : '#ffffff';
+                                    btn.style.backgroundColor = theme.color;
+                                    const infoName = btn.querySelector('.theme-name');
+                                    if (infoName) infoName.textContent = theme.label;
+                                    
+                                    if (nextMode === 'light') {
+                                        btn.style.color = '#000';
+                                        btn.style.border = '1px solid rgba(0,0,0,0.5)';
+                                        document.body.classList.remove('ypp-theme-dark');
+                                        localStorage.setItem('ypp-popup-dark', false);
+                                    } else {
+                                        btn.style.color = '#fff';
+                                        btn.style.border = '1px solid rgba(255,255,255,0.3)';
+                                        document.body.classList.add('ypp-theme-dark');
+                                        localStorage.setItem('ypp-popup-dark', true);
+                                    }
+                                } else {
+                                    const mode = st.nativeThemeMode || 'dark';
+                                    if (mode === 'light') {
+                                        document.body.classList.remove('ypp-theme-dark');
+                                        localStorage.setItem('ypp-popup-dark', false);
+                                    } else {
+                                        document.body.classList.add('ypp-theme-dark');
+                                        localStorage.setItem('ypp-popup-dark', true);
+                                    }
+                                }
+                                st.activeTheme = newTheme;
+                                st.premiumTheme = newTheme; // Sync with content script
+                                
+                                chrome.storage.local.set({ settings: st }, () => {
+                                    applyThemeToPopup(newTheme, customThemesObj, st.nativeThemeMode);
+                                    notifyThemeChange(newTheme, st);
+                                    
+                                    // Ensure content script gets the updated nativeThemeMode
+                                    chrome.tabs.query({active: true}, (tabs) => {
+                                        if (tabs[0]) {
+                                            chrome.tabs.sendMessage(tabs[0].id, {
+                                                action: 'UPDATE_SETTINGS',
+                                                settings: st
+                                            }).catch(() => {});
+                                        }
+                                    });
+                                });
+                            });
+                        } else {
+                            // Update popup background color based on theme brightness
+                            const hex = (theme.color || '#000000').replace('#', '');
+                            const r = parseInt(hex.substr(0, 2), 16) || 0;
+                            const g = parseInt(hex.substr(2, 2), 16) || 0;
+                            const b = parseInt(hex.substr(4, 2), 16) || 0;
+                            const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+                            const isDark = brightness <= 155;
+                            if (isDark) {
+                                document.body.classList.add('ypp-theme-dark');
+                                localStorage.setItem('ypp-popup-dark', true);
+                            } else {
+                                document.body.classList.remove('ypp-theme-dark');
+                                localStorage.setItem('ypp-popup-dark', false);
+                            }
+                            
+                            updateSetting('activeTheme', newTheme);
+                            applyThemeToPopup(newTheme, customThemesObj);
+                            notifyThemeChange(newTheme);
                         }
-
-                        applyThemeToPopup(newTheme, customThemesObj);
-                        notifyThemeChange(newTheme);
                     });
 
                     innerGrid.appendChild(btn);
@@ -250,7 +339,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                 themeGrid.appendChild(categoryWrapper);
             });
 
-            applyThemeToPopup(currentTheme, customThemesObj);
+            applyThemeToPopup(currentTheme, customThemesObj, nativeMode);
         });
     }
 
@@ -302,7 +391,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     
                     chrome.tabs.query({active: true}, (tabs) => {
                         chrome.tabs.sendMessage(tabs[0].id, {
-                            type: 'UPDATE_SETTINGS',
+                            action: 'UPDATE_SETTINGS',
                             settings
                         }).catch(() => {});
                     });
@@ -581,6 +670,11 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         const customInput = document.getElementById('accentColor');
         if (!customInput) return;
 
+        const dualModeToggle = document.getElementById('dualColorMode');
+        const secondaryGroup = document.getElementById('secondaryAccentGroup');
+        const primaryInput = document.getElementById('primaryAccentColor');
+        const secondaryInput = document.getElementById('secondaryAccentColor');
+
         const applySwatchActive = (color) => {
             let foundMatch = false;
             swatches.forEach(swatch => {
@@ -588,32 +682,62 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                 swatch.classList.toggle('active', isActive);
                 if (isActive) foundMatch = true;
             });
-            if (!foundMatch) {
+            if (!foundMatch && customInput) {
                 customInput.value = color;
-                customInput.previousElementSibling.classList.add('active');
-            } else {
+                if (customInput.previousElementSibling) customInput.previousElementSibling.classList.add('active');
+            } else if (customInput && customInput.previousElementSibling) {
                 customInput.previousElementSibling.classList.remove('active');
             }
+            if (primaryInput) primaryInput.value = color;
         };
 
         chrome.storage.local.get('settings', (data) => {
             const color = data.settings?.accentColor || '#ff4e45';
+            const dualMode = data.settings?.dualColorMode || false;
+            const secColor = data.settings?.secondaryAccentColor || '#00e5ff';
+            
             applySwatchActive(color);
+            if (dualModeToggle) dualModeToggle.checked = dualMode;
+            if (secondaryInput) secondaryInput.value = secColor;
+            if (secondaryGroup) secondaryGroup.style.display = dualMode ? 'block' : 'none';
         });
 
         swatches.forEach(swatch => {
             swatch.addEventListener('click', () => {
                 const color = swatch.dataset.color;
-                customInput.value = color;
+                if (customInput) customInput.value = color;
+                if (primaryInput) primaryInput.value = color;
                 applySwatchActive(color);
+                
+                // If dual color mode is ON, and user clicks a swatch, we just update primary for now
+                // Or maybe we can update the accentColor
                 const event = new Event('change', { bubbles: true });
-                customInput.dispatchEvent(event);
+                if (customInput) customInput.dispatchEvent(event);
+                if (primaryInput) primaryInput.dispatchEvent(event);
             });
         });
 
-        customInput.addEventListener('input', () => {
-            applySwatchActive(customInput.value);
-        });
+        if (customInput) {
+            customInput.addEventListener('input', () => {
+                applySwatchActive(customInput.value);
+                if (primaryInput) primaryInput.value = customInput.value;
+            });
+        }
+        
+        if (primaryInput) {
+            primaryInput.addEventListener('input', () => {
+                applySwatchActive(primaryInput.value);
+                if (customInput) customInput.value = primaryInput.value;
+                const event = new Event('change', { bubbles: true });
+                if (customInput) customInput.dispatchEvent(event);
+            });
+        }
+
+        if (dualModeToggle) {
+            dualModeToggle.addEventListener('change', () => {
+                if (secondaryGroup) secondaryGroup.style.display = dualModeToggle.checked ? 'block' : 'none';
+            });
+        }
     }
 
     // Export these for external triggering if needed

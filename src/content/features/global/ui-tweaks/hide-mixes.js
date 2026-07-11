@@ -73,19 +73,22 @@ window.YPP.features.HideMixes = class HideMixes extends window.YPP.features.Base
             // For shelf renderers, check the title
             const titleElement = node.querySelector('#title');
             
-            // If the title hasn't loaded yet, observe the node until it does
+            // If the title hasn't loaded yet, poll for it
             if (!titleElement || !titleElement.textContent || !titleElement.textContent.trim()) {
                 if (!node.hasAttribute('data-ypp-mix-observing')) {
                     node.setAttribute('data-ypp-mix-observing', 'true');
-                    const observer = new MutationObserver((mutations, obs) => {
+                    
+                    window.YPP.Utils.pollFor(() => {
                         const t = node.querySelector('#title');
-                        if (t && t.textContent && t.textContent.trim()) {
-                            obs.disconnect();
+                        return (t && t.textContent && t.textContent.trim()) ? t : null;
+                    }, 5000, 200).then(t => {
+                        if (t) {
                             node.removeAttribute('data-ypp-mix-observing');
                             this._checkAndHideMix(node, t.textContent);
                         }
+                    }).catch(() => {
+                        node.removeAttribute('data-ypp-mix-observing');
                     });
-                    observer.observe(node, { childList: true, subtree: true, characterData: true });
                 }
                 return; 
             }

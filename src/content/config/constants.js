@@ -104,6 +104,7 @@ window.YPP.CONSTANTS = {
         PLAYER_CONTAINER: '#player-container-outer',
         PLAYER_OUTER: ['#ytd-player', 'ytd-player[id="ytd-player"]'],
         VIDEO: ['video.html5-main-video', 'video'],
+        PLAYER_BAR: '.ytp-chrome-bottom',
         VIDEO_CONTROLS: ['.ytp-right-controls', '.html5-video-controls .ytp-right-controls'],
         SUBTITLES_BTN: ['.ytp-subtitles-button', '.ytp-captions-button'],
         CAPTIONS_WINDOW: ['.ytp-caption-window-bottom', '.ytp-caption-window-top'],

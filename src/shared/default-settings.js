@@ -92,6 +92,7 @@ export const DEFAULT_SETTINGS = {
     navHistory: true,
     enableCustomSidebar: true,
     sidebarLayout: 'spacious',
+    searchLayout: 'regular',
     
     // Playlist & History
     continueWatching: true,

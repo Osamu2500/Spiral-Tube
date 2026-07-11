@@ -738,7 +738,7 @@ const initApp = () => {
 
         // Ripple Effect for buttons
         document.addEventListener('click', (e) => {
-            const btn = e.target.closest('.action-btn');
+            const btn = e.target.closest('.action-btn, .theme-btn, .toggle-card, .view-mode-btn');
             if (btn) {
                 const circle = document.createElement('span');
                 const diameter = Math.max(btn.clientWidth, btn.clientHeight);
@@ -758,27 +758,11 @@ const initApp = () => {
             }
         });
 
-        // 6.5 Theme Toggler
-        const themeTogglerBtn = document.getElementById('ypp-theme-toggler');
-        if (themeTogglerBtn) {
-            // Check initial state
-            if (localStorage.getItem('ypp-popup-dark') === 'true') {
-                document.body.classList.add('ypp-theme-dark');
-            }
-            themeTogglerBtn.addEventListener('click', () => {
-                const isDark = document.body.classList.toggle('ypp-theme-dark');
-                localStorage.setItem('ypp-popup-dark', isDark);
-                
-                // Add pop animation
-                if (window.anime) {
-                    window.anime({
-                        targets: themeTogglerBtn,
-                        scale: [0.8, 1],
-                        duration: 300,
-                        easing: 'easeOutElastic(1, .5)'
-                    });
-                }
-            });
+        // 6.5 Apply popup theme (based on saved state)
+        if (localStorage.getItem('ypp-popup-dark') === 'true' || localStorage.getItem('ypp-popup-dark') === null) {
+            document.body.classList.add('ypp-theme-dark');
+        } else {
+            document.body.classList.remove('ypp-theme-dark');
         }
 
         // 7. Skeleton — remove popup-loading once settings are hydrated

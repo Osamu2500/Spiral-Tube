@@ -142,7 +142,7 @@ window.YPP.features.WatchHistoryTracker = class WatchHistoryTracker extends wind
              await this.waitForElement(primaryTitleSelector, 5000);
 
              const titleEl = SELECTORS.TITLE.map(s => document.querySelector(s)).find(el => el) 
-                             || document.querySelector('h1.ytd-watch-metadata');
+                             || document.querySelector(window.YPP.CONSTANTS.SELECTORS.METADATA_SELECTORS.TITLE[0]);
 
              const channelEl = SELECTORS.CHANNEL.map(s => document.querySelector(s)).find(el => el)
                                || document.querySelector('ytd-video-owner-renderer #channel-name a');

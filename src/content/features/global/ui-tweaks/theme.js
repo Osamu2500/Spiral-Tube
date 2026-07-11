@@ -62,6 +62,11 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             this._cleanupClasses();
             this._cleanupCustomVariables();
 
+            if (this._themeObserver) {
+                this._themeObserver.disconnect();
+                this._themeObserver = null;
+            }
+
             this._isActive = false;
         } catch (error) {
             this._Utils.log?.(`Error disabling theme: ${error.message}`, 'THEME', 'error');
@@ -254,10 +259,17 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             document.documentElement.setAttribute('data-ypp-theme', themeKey);
             this._currentThemeKey = themeKey;
 
-            // Treat ALL custom themes as Dark themes to ensure YouTube's native UI elements 
-            // (like un-styled popups and tooltips) inherit dark backgrounds rather than blinding white ones.
-            const isLightTheme = false;
-            this._enforceYouTubeTheme(!isLightTheme);
+            // For the system theme, we sync with the user's explicit light/dark choice
+            if (themeKey === 'system') {
+                const isDark = (this._settings.nativeThemeMode !== 'light');
+                this._enforceYouTubeTheme(isDark);
+                this._Utils.log(`Theme is '${themeKey}', enforcing YouTube native mode: ${isDark ? 'dark' : 'light'}.`, 'THEME');
+            } else {
+                // Treat ALL other themes (including 'default' YouTube Dark) as Dark themes to ensure YouTube's native UI elements 
+                // inherit dark backgrounds rather than blinding white ones.
+                const isLightTheme = false;
+                this._enforceYouTubeTheme(!isLightTheme);
+            }
         } else {
              this._Utils.log(`Theme '${themeKey}' already active, skipping injection.`, 'THEME', 'debug');
         }
@@ -425,6 +437,44 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
             root.style.setProperty('--ypp-accent-gradient', `linear-gradient(135deg, ${hex} 0%, ${hex}cc 100%)`);
         }
 
+        // Global Avatar Squircles & Multi-Avatar Support
+        let globalOverrides = `
+            /* Avatar Squircles */
+            #avatar-link yt-img-shadow, 
+            #avatar-link yt-img-shadow img,
+            .ytSpecAvatarShapeHost, 
+            .ytSpecAvatarShapeHost img,
+            .ytLockupMetadataViewModelAvatar,
+            .ytLockupMetadataViewModelAvatar img {
+                border-radius: 12px !important;
+            }
+
+            /* Fix multi-channel avatars overlapping in normal styles */
+            ytd-video-meta-block #avatar-container,
+            .yt-avatar-stack,
+            .ytLockupMetadataViewModelAvatarContainer,
+            .yt-avatar-stack-view-model,
+            .yt-channel-avatar-stack {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 4px !important;
+                align-items: center !important;
+            }
+            
+            #avatar-link, .ytSpecAvatarShapeHost, .ytLockupMetadataViewModelAvatar {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        `;
+
+        const globalStyleId = 'ypp-global-avatar-overrides';
+        let globalStyleEl = document.getElementById(globalStyleId);
+        if (!globalStyleEl) {
+            globalStyleEl = document.createElement('style');
+            globalStyleEl.id = globalStyleId;
+            document.head.appendChild(globalStyleEl);
+        }
+        globalStyleEl.textContent = globalOverrides;
 
 
         // Card Style Enforcement by UI Theme
@@ -432,7 +482,7 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
         
         const ytTheme = this._settings.youtubePageTheme;
 
-        if (ytTheme && ytTheme !== 'default') {
+        if (ytTheme && ytTheme !== 'default' && finalCardStyle === 'glass') {
              if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
              else if (ytTheme === 'nature') finalCardStyle = 'nature';
              else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
@@ -524,6 +574,12 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
         
         // Remove styling data attributes
         root.removeAttribute('data-ypp-card-style');
+
+        // Remove avatar overrides
+        const globalStyleEl = document.getElementById('ypp-global-avatar-overrides');
+        if (globalStyleEl) {
+            globalStyleEl.remove();
+        }
     }
 
 

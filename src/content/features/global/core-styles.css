@@ -172,8 +172,8 @@
 /* Force YouTube background to respect theme variables */
 
 html.yt-spiral-tube-theme {
-  background-color: var(--ypp-bg-base, #0f0f0f) !important;
-  background: var(--ypp-bg-base, #0f0f0f) !important;
+  background-color: var(--ypp-bg-base, #0f0f0f);
+  
   position: relative;
 }
 
@@ -812,6 +812,54 @@ html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar {
 [data-ypp-hidden="watched"] {
     transition: opacity 0.2s ease, filter 0.2s ease;
     filter: grayscale(0.85) opacity(0.4) !important;
+}
+
+/* ===================================================================================
+   PREMIUM VERIFIED BADGE
+   =================================================================================== */
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist {
+    background: var(--ypp-accent, #3ea6ff) !important;
+    border-radius: 50% !important;
+    width: 14px !important;
+    height: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 0 8px var(--ypp-accent, #3ea6ff) !important;
+    margin-left: 4px !important;
+    transition: all 0.3s ease;
+    padding: 0 !important;
+}
+
+/* Ensure the checkmark path is white/dark based on contrast, but let's force white with the accent color */
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon {
+    width: 10px !important;
+    height: 10px !important;
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon svg,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg {
+    fill: #fff !important;
+    color: #fff !important;
+}
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon svg path,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg path {
+    fill: #fff !important;
+}
+
+/* Hover glow effect for the verified badge */
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist,
+html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist {
+    box-shadow: 0 0 12px var(--ypp-accent, #3ea6ff) !important;
+    transform: scale(1.15);
 }
 
 /* ===================================================================================
@@ -4478,4 +4526,10 @@ tp-yt-iron-dropdown:has(.ypp-account-menu) {
 @keyframes ypp-fade-down {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
+ytd-thumbnail-overlay-toggle-button-renderer,
+ytd-thumbnail-overlay-button-renderer {
+  display: none !important;
 }

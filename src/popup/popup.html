@@ -65,13 +65,9 @@
             <span class="nav-label" data-i18n="nav_bookmarks">Bookmarks</span>
           </button>
 
-          <button class="nav-item" data-tab="customization" title="Customization">
+          <button class="nav-item" data-tab="appearance" title="Design">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="17.5" cy="10.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12.5" r="0.5" fill="currentColor" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-            <span class="nav-label" data-i18n="nav_looks">Looks</span>
-          </button>
-          <button class="nav-item" data-tab="theming" title="Theming & Colors">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-            <span class="nav-label" data-i18n="nav_theming">Theme</span>
+            <span class="nav-label" data-i18n="nav_appearance">Design</span>
           </button>
           <button class="nav-item" data-tab="advanced" title="Advanced Settings">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 9.36-7.94l-3.77 3.77a1 1 0 0 0 0 1.4z"></path></svg>
@@ -99,10 +95,6 @@
             <h1 id="page-title" data-i18n="title_dashboard">Dashboard</h1>
           </div>
           <div class="top-bar-right">
-            <button id="ypp-theme-toggler" class="theme-toggler-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
-              <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-              <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; opacity: 0; transform: rotate(90deg) scale(0); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-            </button>
             <div class="search-container">
               <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <input type="text" id="featureSearch" placeholder="Search settings..." data-i18n-placeholder="search_placeholder" class="feature-search-input" />
@@ -168,24 +160,6 @@
         <!-- DECLUTTER — rendered by popup-renderer.js -->
         <section id="tab-declutter" class="tab-content">
           <!-- schema-driven: populated at runtime -->
-          <!-- Hide Watched sub-options (visible when hideWatched is ON) -->
-          <div id="hideWatchedOptions" data-preserve="true" class="sub-options" style="display:none; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <div class="setting-item" style="margin-bottom: 12px; flex-wrap: wrap; gap: 6px; padding: 0;">
-              <div class="info"><span class="name" style="font-size:12px;">Mode</span></div>
-              <div style="display:flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
-                <button type="button" id="hwMode-dim"  class="view-mode-btn hw-mode-btn active" data-mode="dim"  style="font-size:11px; padding:4px 12px;">Dim</button>
-                <button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn"        data-mode="hide" style="font-size:11px; padding:4px 12px;">Hide</button>
-              </div>
-              <input type="hidden" id="hideWatchedMode" value="dim" />
-            </div>
-            <div class="setting-item" style="flex-direction:column; align-items:flex-start; padding:0;">
-              <div class="info" style="width:100%; display:flex; justify-content:space-between; flex-direction:row; margin-bottom:4px;">
-                <span class="name" style="font-size:12px;">Progress Threshold</span>
-                <span class="desc" id="hideWatchedThresholdValue" style="font-size:12px; font-weight:bold; color:var(--red);">80%</span>
-              </div>
-              <input type="range" id="hideWatchedThreshold" min="0" max="100" step="5" value="80" style="width:100%;" />
-            </div>
-          </div>
         </section>
 
         <!-- SUBSCRIPTIONS — rendered by popup-renderer.js -->
@@ -231,25 +205,300 @@
         </section>
 
 
-        <!-- CUSTOMIZATION -->
-        <section id="tab-customization" class="tab-content">
+        <!-- DESIGN -->
+        <section id="tab-appearance" class="tab-content">
+          <!-- 1. Theme Engine -->
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">UI Redesigns</div>
-                     <div class="section-subtitle">Toggle custom page layouts on or off</div>
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        Theme Engine
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div class="setting-item">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
+                <div class="info"><span class="name">Premium Theme</span><span class="desc">Enable custom CSS injection</span></div>
+                <label class="toggle"><input type="checkbox" id="premiumTheme" /><span class="slider"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Themes -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        Color Themes
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div style="padding: 10px;">
+                <div id="themeGrid" class="theme-grid">
+                  <!-- Generated by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accent Color -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"></path></svg>
+                        Accent Color
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div class="inline-setting-row" style="flex-direction:column; align-items:flex-start; gap:12px; margin-top:0; padding: 12px 14px; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
+                <div style="display:flex; justify-content:space-between; width:100%; align-items:center; flex-wrap:wrap; gap:8px;">
+                   <span class="name" style="font-size:13px;">Primary Color</span>
+                   <div class="color-swatches" id="accentSwatches" role="group" aria-label="Accent Color Selection">
+                     <div class="color-swatch" data-color="#ff4e45" style="background: #ff4e45;" role="button" tabindex="0" aria-label="Red Accent"></div>
+                     <div class="color-swatch" data-color="#3ea6ff" style="background: #3ea6ff;" role="button" tabindex="0" aria-label="Blue Accent"></div>
+                     <div class="color-swatch" data-color="#2ba640" style="background: #2ba640;" role="button" tabindex="0" aria-label="Green Accent"></div>
+                     <div class="color-swatch" data-color="#ffb340" style="background: #ffb340;" role="button" tabindex="0" aria-label="Orange Accent"></div>
+                     <div class="color-swatch" data-color="#b62bcf" style="background: #b62bcf;" role="button" tabindex="0" aria-label="Purple Accent"></div>
+                     <div class="color-swatch" data-color="#ff6b6b" style="background: #ff6b6b;" role="button" tabindex="0" aria-label="Pink Accent"></div>
+                     <div class="color-swatch custom-color-picker" role="button" tabindex="0" aria-label="Custom Color">
+                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                       <input type="color" id="accentColor" value="#ff4e45" tabindex="-1" />
+                     </div>
+                   </div>
+                </div>
+                <div style="display:flex; justify-content:space-between; width:100%; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px; flex-wrap:wrap; gap:8px;">
+                   <div style="display:flex; align-items:center; gap:10px;">
+                     <span class="name" style="font-size:13px;">Dual Gradient Accent</span>
+                     <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="enableDualAccent" /><span class="slider"></span></label>
+                   </div>
+                   <div class="color-swatches" id="secondaryAccentSwatches" role="group" style="opacity:0.5; pointer-events:none;">
+                     <div class="color-swatch custom-color-picker" role="button" style="width:28px; height:28px;">
+                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                       <input type="color" id="secondaryAccentColor" value="#b62bcf" tabindex="-1" />
+                     </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Theme Builder -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L22 12l-10 10L2 12 12 2z"></path></svg>
+                        Custom Theme Builder
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div class="custom-theme-builder" style="padding:12px 14px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
+                <!-- Name -->
+                <div class="search-container theme-name-input-container" style="flex:1; min-width:140px; margin:0; border:1px solid rgba(255,255,255,0.1); border-radius:8px;">
+                  <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" style="padding-left:12px; background:rgba(0,0,0,0.2); font-size:13px;" />
+                </div>
+                
+                <!-- Colors -->
+                <div class="theme-builder-colors" style="display:flex; gap:8px; margin:0; align-items:center; flex-wrap:wrap;">
+                  <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                    <input type="color" id="customThemeBgBase" value="#0f0f0f" title="Base Background" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                  </div>
+                  <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                    <input type="color" id="customThemeBgSurface" value="#212121" title="Surface Background" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                  </div>
+                  <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                    <input type="color" id="customThemeAccent" value="#ff4e45" title="Accent Color" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                  </div>
+                  <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+                    <input type="color" id="customThemeText" value="#ffffff" title="Text Color" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="theme-actions-row" style="display:flex; gap:6px; margin:0; margin-left:auto;">
+                  <button id="saveCustomThemeBtn" class="icon-btn" title="Save Theme" style="background:color-mix(in srgb, var(--accent) 20%, transparent); color:var(--accent); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                  </button>
+                  <button id="exportCustomThemeBtn" class="icon-btn" title="Export Theme" style="background:rgba(255,255,255,0.05); color:white; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  </button>
+                  <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme" style="background:rgba(255,255,255,0.05); color:white; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  </button>
+                  <input type="file" id="importCustomThemeFile" accept=".json" style="display:none;" />
+                </div>
+              </div>
+              <div class="setting-item" style="display:none;"><label class="toggle"><input type="checkbox" id="trueBlack" /><span class="slider"></span></label></div>
+            </div>
+          </div>
+          <!-- 2. YouTube Page Theme -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        YouTube Page Theme
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group" style="padding: 10px;">
+              <input type="hidden" id="youtubePageTheme" value="default" />
+              <div class="theme-grid" style="margin-top: 0;">
+                <button type="button" class="theme-btn youtube-style-btn" data-style="default">Default</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="liquid-glass">Liquid Glass</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="nature">Nature</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="vintage">Vintage</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="ocean">Ocean</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="blue-sky">Blue Sky</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="retro">Retro OS</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="technozen">Technozen</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="terminalism">Terminalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="claymorphism">Claymorphism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="brutalism">Brutalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="minimalism">Minimalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="maximalism">Maximalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="glassmorphism">Glassmorphism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="aurora">Aurora</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="material">Material You</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Popup UI Design -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        Popup UI Design
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group" style="padding: 10px;">
+              <input type="hidden" id="popupUiTheme" value="liquid-glass" />
+              <div class="theme-grid" style="margin-top: 0;">
+                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass">Liquid Glass</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="minimal-flat">Minimal Flat</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Video Card Styles -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        Video Card Styles
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group" style="padding: 10px;">
+              <input type="hidden" id="cardStyle" value="glass" />
+              <div class="theme-grid" style="margin-top: 0;">
+                <button type="button" class="theme-btn card-style-btn" data-style="glass">Glass</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="flat">Flat</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="elevated">Elevated</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="folder">Folder</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="bento">Bento</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="neon">Neon</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="compact">Compact</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="polaroid">Polaroid</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="holographic">Holographic</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="minimalist">Minimalist</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="maximalism">Maximalism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="glassmorphism">Glassmorphism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="aurora">Aurora</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="material">Material</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="immersive-glass">Immersive Glass</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="retro">Retro</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="technozen">Technozen</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Top Bar Nav Buttons -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        Top Bar Nav Buttons
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group" style="padding: 10px;">
+              <div class="feature-grid" style="margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));">
+                <div class="toggle-card" style="padding: 10px;">
+                  <div class="info"><span class="name">Shorts</span></div>
+                  <label class="toggle"><input type="checkbox" id="navShorts" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-card" style="padding: 10px;">
+                  <div class="info"><span class="name">Subs</span></div>
+                  <label class="toggle"><input type="checkbox" id="navSubscriptions" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-card" style="padding: 10px;">
+                  <div class="info"><span class="name">History</span></div>
+                  <label class="toggle"><input type="checkbox" id="navHistory" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-card" style="padding: 10px;">
+                  <div class="info"><span class="name">Later</span></div>
+                  <label class="toggle"><input type="checkbox" id="navWatchLater" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-card" style="padding: 10px;">
+                  <div class="info"><span class="name">Playlists</span></div>
+                  <label class="toggle"><input type="checkbox" id="navPlaylists" /><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. UI Enhancements -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">UI Enhancements</div>
+                     <div class="section-subtitle">Toggle specific feature layouts</div>
                   </div>
                </div>
             </div>
             <div class="card-group">
               <div class="feature-grid">
-
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
                   <div class="info">
                     <span class="name">Account Menu</span>
-                    <span class="desc">Premium redesigned profile dropdown</span>
+                    <span class="desc">Premium profile dropdown</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="enableAccountMenu" /><span class="slider"></span></label>
                 </div>
@@ -257,7 +506,7 @@
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="15" rx="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></div>
                   <div class="info">
                     <span class="name">Glass Player UI</span>
-                    <span class="desc">Redesigned transparent video controls</span>
+                    <span class="desc">Transparent controls</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="glassPlayerUI" /><span class="slider"></span></label>
                 </div>
@@ -265,15 +514,15 @@
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
                   <div class="info">
                     <span class="name">Sidebar Comments</span>
-                    <span class="desc">Move comments to the right sidebar (Desktop)</span>
+                    <span class="desc">Move to right sidebar</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="sidebarComments" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
                   <div class="info">
-                    <span class="name">Premium Logo<span class="new-feature-badge">NEW</span></span>
-                    <span class="desc">Replace YouTube logo with Premium</span>
+                    <span class="name">Premium Logo</span>
+                    <span class="desc">Replace standard logo</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="premiumLogo" /><span class="slider"></span></label>
                 </div>
@@ -281,62 +530,12 @@
             </div>
           </div>
 
+          <!-- 4. Animations & Screen Filters -->
           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">Card Styles</div>
-                     <div class="section-subtitle">Video thumbnail appearance</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group" style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-              <div class="inline-setting-row" style="display: block;">
-                <input type="hidden" id="cardStyle" value="glass" />
-                <div class="card-style-grid" style="margin-top: 0;">
-                  <button type="button" class="card-style-btn" data-style="glass">Glass</button>
-                  <button type="button" class="card-style-btn" data-style="flat">Flat</button>
-                  <button type="button" class="card-style-btn" data-style="elevated">Elevated</button>
-                  <button type="button" class="card-style-btn" data-style="folder">Folder</button>
-                  <button type="button" class="card-style-btn" data-style="bento">Bento</button>
-                  <button type="button" class="card-style-btn" data-style="neon">Neon</button>
-                  <button type="button" class="card-style-btn" data-style="compact">Compact</button>
-                  <button type="button" class="card-style-btn" data-style="polaroid">Polaroid</button>
-                  <button type="button" class="card-style-btn" data-style="neumorphic">Neumorphic</button>
-                  <button type="button" class="card-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                  <button type="button" class="card-style-btn" data-style="holographic">Holographic</button>
-                  <button type="button" class="card-style-btn" data-style="minimalist">Minimalist</button>
-                  <button type="button" class="card-style-btn" data-style="retro">Retro</button>
-                  <button type="button" class="card-style-btn" data-style="brutalism">Brutalism</button>
-                  <button type="button" class="card-style-btn" data-style="skeuomorphic">Skeuomorphic</button>
-                  <button type="button" class="card-style-btn" data-style="frosted">Frosted</button>
-                  <button type="button" class="card-style-btn" data-style="summer">Summer</button>
-                  <button type="button" class="card-style-btn" data-style="winter">Winter</button>
-                  <button type="button" class="card-style-btn" data-style="spring">Spring</button>
-                  <button type="button" class="card-style-btn" data-style="autumn">Autumn</button>
-                  <button type="button" class="card-style-btn" data-style="nature">Nature</button>
-                  <button type="button" class="card-style-btn" data-style="vintage">Vintage</button>
-                  <button type="button" class="card-style-btn" data-style="ocean">Ocean</button>
-                  <button type="button" class="card-style-btn" data-style="blue-sky">Blue Sky</button>
-                  <button type="button" class="card-style-btn" data-style="terminalism">Terminalism</button>
-                  <button type="button" class="card-style-btn" data-style="claymorphism">Claymorphism</button>
-                  <button type="button" class="card-style-btn" data-style="minimalism">Minimalism</button>
-                  <button type="button" class="card-style-btn" data-style="maximalism">Maximalism</button>
-                  <button type="button" class="card-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                  <button type="button" class="card-style-btn" data-style="aurora">Aurora</button>
-                  <button type="button" class="card-style-btn" data-style="material">Material</button>
-                  <button type="button" class="card-style-btn" data-style="retro">Retro</button>
-                  <button type="button" class="card-style-btn" data-style="technozen">Technozen</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Animations</div>
+                     <div class="section-title">Animations & Screen Filters</div>
                   </div>
                </div>
             </div>
@@ -349,7 +548,7 @@
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
-                  <div class="info"><span class="name">Theme Effects</span><span class="desc">Background animations</span></div>
+                  <div class="info"><span class="name">Theme Effects</span><span class="desc">Background fx</span></div>
                   <label class="toggle"><input type="checkbox" id="enableThemeEffects" checked /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
@@ -359,218 +558,37 @@
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 3v18"></path><path d="M7 3v18"></path><path d="M3 12h18"></path></svg></div>
-                  <div class="info"><span class="name">Hide Scrollbar</span><span class="desc">Cleaner interface</span></div>
+                  <div class="info"><span class="name">Hide Scrollbar</span></div>
                   <label class="toggle"><input type="checkbox" id="hideScrollbar" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
-                  <div class="info"><span class="name">Custom Scrollbar</span><span class="desc">Stylized scrollbar</span></div>
+                  <div class="info"><span class="name">Custom Scrollbar</span></div>
                   <label class="toggle"><input type="checkbox" id="customScrollbar" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20"></path></svg></div>
-                  <div class="info"><span class="name">Grayscale Thumbs</span><span class="desc">B&W until hovered</span></div>
+                  <div class="info"><span class="name">Grayscale Thumbs</span></div>
                   <label class="toggle"><input type="checkbox" id="grayscaleThumbnails" /><span class="slider"></span></label>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Top Bar Nav Buttons</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group">
-              <div class="feature-grid">
-                <div class="toggle-card">
-                  <div class="info"><span class="name">Shorts</span></div>
-                  <label class="toggle"><input type="checkbox" id="navShorts" /><span class="slider"></span></label>
-                </div>
-                <div class="toggle-card">
-                  <div class="info"><span class="name">Subs</span></div>
-                  <label class="toggle"><input type="checkbox" id="navSubscriptions" /><span class="slider"></span></label>
-                </div>
-                <div class="toggle-card">
-                  <div class="info"><span class="name">History</span></div>
-                  <label class="toggle"><input type="checkbox" id="navHistory" /><span class="slider"></span></label>
-                </div>
-                <div class="toggle-card">
-                  <div class="info"><span class="name">Later</span></div>
-                  <label class="toggle"><input type="checkbox" id="navWatchLater" /><span class="slider"></span></label>
-                </div>
-
-                <div class="toggle-card">
-                  <div class="info"><span class="name">Playlists</span></div>
-                  <label class="toggle"><input type="checkbox" id="navPlaylists" /><span class="slider"></span></label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Screen Filters</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group">
-              <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
-                <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
-                  <span class="name">Blue Light Filter</span><span class="desc" id="blueLightValue">0%</span>
-                </div>
-                <input type="range" id="blueLight" min="0" max="90" step="5" />
-              </div>
-              <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
-                <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
-                  <span class="name">Dim Screen</span><span class="desc" id="dimValue">0%</span>
-                </div>
-                <input type="range" id="dim" min="0" max="90" step="5" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- THEMING -->
-        <section id="tab-theming" class="tab-content">
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Theme Engine</div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group">
-              <div class="setting-item">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
-                <div class="info"><span class="name">Premium Theme</span><span class="desc">Enable custom CSS injection</span></div>
-                <label class="toggle"><input type="checkbox" id="premiumTheme" /><span class="slider"></span></label>
-              </div>
-              <div class="setting-item" style="display: block;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                  <div style="display: flex; align-items: center; gap: 12px;">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
-                    <div class="info"><span class="name">UI Designs</span><span class="desc">Aesthetic for YouTube pages</span></div>
-                  </div>
-                </div>
-                <input type="hidden" id="youtubePageTheme" value="default" />
-                <div class="card-style-grid" style="margin-top: 0;">
-                  <button type="button" class="youtube-style-btn" data-style="default">Default</button>
-                  <button type="button" class="youtube-style-btn" data-style="liquid-glass">Liquid Glass</button>
-                  <button type="button" class="youtube-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                  <button type="button" class="youtube-style-btn" data-style="neumorphic">Neumorphic</button>
-                  <button type="button" class="youtube-style-btn" data-style="nature">Nature</button>
-                  <button type="button" class="youtube-style-btn" data-style="vintage">Vintage</button>
-                  <button type="button" class="youtube-style-btn" data-style="ocean">Ocean</button>
-                  <button type="button" class="youtube-style-btn" data-style="blue-sky">Blue Sky</button>
-                  <button type="button" class="youtube-style-btn" data-style="retro">Retro OS</button>
-                  <button type="button" class="youtube-style-btn" data-style="technozen">Technozen</button>
-                  <button type="button" class="youtube-style-btn" data-style="terminalism">Terminalism</button>
-                  <button type="button" class="youtube-style-btn" data-style="claymorphism">Claymorphism</button>
-                  <button type="button" class="youtube-style-btn" data-style="brutalism">Brutalism</button>
-                  <button type="button" class="youtube-style-btn" data-style="minimalism">Minimalism</button>
-                  <button type="button" class="youtube-style-btn" data-style="maximalism">Maximalism</button>
-                  <button type="button" class="youtube-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                  <button type="button" class="youtube-style-btn" data-style="aurora">Aurora</button>
-                  <button type="button" class="youtube-style-btn" data-style="material">Material You</button>
-                </div>
-              </div>
-              <div class="setting-item" style="display: block;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                  <div style="display: flex; align-items: center; gap: 12px;">
-                    <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div>
-                    <div class="info"><span class="name">Popup UI Design</span><span class="desc">Aesthetic for this popup</span></div>
-                  </div>
-                </div>
-                <input type="hidden" id="popupUiTheme" value="liquid-glass" />
-                <div class="card-style-grid" style="margin-top: 0;">
-                  <button type="button" class="popup-style-btn" data-style="liquid-glass">Liquid Glass</button>
-                  <button type="button" class="popup-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                  <button type="button" class="popup-style-btn" data-style="neumorphic">Neumorphic</button>
-                  <button type="button" class="popup-style-btn" data-style="minimal-flat">Minimal Flat</button>
-                </div>
-              </div>
-              <div style="padding: 0 10px 10px;">
-                <div class="name" style="margin-bottom:6px;">Color Themes</div>
-                <div id="themeGrid" class="theme-grid">
-                  <!-- Generated by JS -->
-                </div>
-              </div>
-
-              <!-- New Custom Theme Builder -->
-              <div class="custom-theme-builder" style="padding: 10px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <div class="name" style="margin-bottom:8px;">Create Custom Theme</div>
-                
-                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                  <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" style="flex: 1;" />
-                  <button id="saveCustomThemeBtn" class="action-btn" style="padding: 6px 12px; background: var(--accent-primary); border: none; color: white; border-radius: 6px; cursor: pointer;">Save</button>
-                </div>
-                
-                <div style="display: flex; gap: 8px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;">
-                  <button id="exportCustomThemeBtn" class="action-btn" style="flex: 1; padding: 4px; font-size: 10px; background: rgba(255,255,255,0.1);">Export Themes</button>
-                  <button id="importCustomThemeBtn" class="action-btn" style="flex: 1; padding: 4px; font-size: 10px; background: rgba(255,255,255,0.1);">Import Themes</button>
-                  <input type="file" id="importCustomThemeFile" accept=".json" style="display:none;" />
-                </div>
-                
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                  <div class="color-picker-item" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.6);">Base BG</span>
-                    <input type="color" id="customThemeBgBase" value="#0f0f0f" style="width: 30px; height: 30px; border: none; border-radius: 4px; cursor: pointer; padding: 0; background: none;" />
-                  </div>
-                  <div class="color-picker-item" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.6);">Surface</span>
-                    <input type="color" id="customThemeBgSurface" value="#212121" style="width: 30px; height: 30px; border: none; border-radius: 4px; cursor: pointer; padding: 0; background: none;" />
-                  </div>
-                  <div class="color-picker-item" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.6);">Accent</span>
-                    <input type="color" id="customThemeAccent" value="#ff4e45" style="width: 30px; height: 30px; border: none; border-radius: 4px; cursor: pointer; padding: 0; background: none;" />
-                  </div>
-                  <div class="color-picker-item" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                    <span style="font-size: 10px; color: rgba(255,255,255,0.6);">Text</span>
-                    <input type="color" id="customThemeText" value="#ffffff" style="width: 30px; height: 30px; border: none; border-radius: 4px; cursor: pointer; padding: 0; background: none;" />
-                  </div>
-                </div>
-              </div>
               
-              <div class="setting-item" style="display:none;"><label class="toggle"><input type="checkbox" id="trueBlack" /><span class="slider"></span></label></div>
-            </div>
-          </div>
-
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">Appearance</div>
+              <div style="margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+                <div class="setting-item" style="flex-direction: column; align-items: flex-start; padding: 0;">
+                  <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
+                    <span class="name">Blue Light Filter</span><span class="desc" id="blueLightValue">0%</span>
                   </div>
-               </div>
-            </div>
-            <div class="card-group">
-
-
-              <div class="inline-setting-row" style="flex-wrap:wrap; gap:10px;">
-                <div class="info"><span class="name">Accent Color</span></div>
-                <div class="color-swatches" id="accentSwatches" role="group" aria-label="Accent Color Selection">
-                  <div class="color-swatch" data-color="#ff4e45" style="background: #ff4e45;" role="button" tabindex="0" aria-label="Red Accent"></div>
-                  <div class="color-swatch" data-color="#3ea6ff" style="background: #3ea6ff;" role="button" tabindex="0" aria-label="Blue Accent"></div>
-                  <div class="color-swatch" data-color="#2ba640" style="background: #2ba640;" role="button" tabindex="0" aria-label="Green Accent"></div>
-                  <div class="color-swatch" data-color="#ffb340" style="background: #ffb340;" role="button" tabindex="0" aria-label="Orange Accent"></div>
-                  <div class="color-swatch" data-color="#b62bcf" style="background: #b62bcf;" role="button" tabindex="0" aria-label="Purple Accent"></div>
-                  <div class="color-swatch" data-color="#ff6b6b" style="background: #ff6b6b;" role="button" tabindex="0" aria-label="Pink Accent"></div>
-                  <div class="color-swatch custom-color-picker" role="button" tabindex="0" aria-label="Custom Color">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    <input type="color" id="accentColor" value="#ff4e45" tabindex="-1" />
+                  <input type="range" id="blueLight" min="0" max="90" step="5" style="width: 100%;" />
+                </div>
+                <div class="setting-item" style="flex-direction: column; align-items: flex-start; padding: 0;">
+                  <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
+                    <span class="name">Dim Screen</span><span class="desc" id="dimValue">0%</span>
                   </div>
+                  <input type="range" id="dim" min="0" max="90" step="5" style="width: 100%;" />
                 </div>
               </div>
             </div>
           </div>
-
         </section>
 
         <!-- ADVANCED -->

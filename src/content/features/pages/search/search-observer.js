@@ -36,6 +36,27 @@ window.YPP.features.SearchObserver = class SearchObserver {
         'ytd-lockup-view-model'
     ]);
 
+    static SELECTORS = {
+        VERTICAL_ITEMS: 'ytd-vertical-list-renderer #items',
+        HORIZONTAL_SCROLL: 'ytd-horizontal-card-list-renderer #scroll-container',
+        HORIZONTAL_ITEMS: 'ytd-horizontal-card-list-renderer #items',
+        GENERIC_ITEMS: '#items',
+        GENERIC_SCROLL: '#scroll-container',
+        CONTENTS: '#contents',
+        RENDERERS: 'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, ytd-channel-renderer',
+        THUMBNAIL: 'ytd-thumbnail, ytd-playlist-thumbnail',
+        DISMISSIBLE: '#dismissible',
+        INNER_THUMB: 'a, yt-image',
+        TEXT_WRAPPER: '.text-wrapper',
+        ACTION_MENU: '#action-menu, .action-menu',
+        BADGES: 'ytd-badge-supported-renderer, #badges',
+        CHANNEL_INFO: '#channel-info',
+        SHORTS_LINK: 'a[href*="/shorts/"]',
+        SHORTS_OVERLAY: '[overlay-style="SHORTS"]',
+        TITLE: '#title-container #title',
+        SHORTS_BTN: 'ytd-icon-button-renderer[aria-label="Shorts"]'
+    };
+
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
@@ -47,6 +68,23 @@ window.YPP.features.SearchObserver = class SearchObserver {
         this._settings  = {};
         this._isEnabled = () => false;
         this._classes   = {};
+        
+        // Listen for asynchronously added badges
+        document.addEventListener('animationstart', (e) => {
+            if (e.animationName === 'yppBadgeAdded' && this._isEnabled()) {
+                const badge = e.target;
+                if (badge.closest('ytd-channel-name') || badge.closest('ytd-thumbnail') || badge.closest('.ytLockupViewModelContentImage') || badge.closest('a#thumbnail')) return; // ignore verified badge and timestamps
+                const renderer = badge.closest('ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer');
+                if (renderer) {
+                    const channelInfo = renderer.querySelector('#channel-info');
+                    if (channelInfo && badge.parentElement !== channelInfo) {
+                        window.YPP.Utils.batch.write(() => {
+                            channelInfo.appendChild(badge);
+                        });
+                    }
+                }
+            }
+        });
     }
 
     // -------------------------------------------------------------------------
@@ -177,27 +215,26 @@ window.YPP.features.SearchObserver = class SearchObserver {
 
                 let flattenData = null;
                 if (isFlattenable) {
-                    const vertical = node.querySelector('ytd-vertical-list-renderer #items');
-                    const horizontal = node.querySelector('ytd-horizontal-card-list-renderer #scroll-container')
-                                    || node.querySelector('ytd-horizontal-card-list-renderer #items');
-                    const generic = node.querySelector('#items')
-                                    || node.querySelector('#scroll-container')
-                                    || node.querySelector('#contents');
+                    const { SELECTORS } = SearchObserver;
+                    const vertical = node.querySelector(SELECTORS.VERTICAL_ITEMS);
+                    const horizontal = node.querySelector(SELECTORS.HORIZONTAL_SCROLL)
+                                    || node.querySelector(SELECTORS.HORIZONTAL_ITEMS);
+                    const generic = node.querySelector(SELECTORS.GENERIC_ITEMS)
+                                    || node.querySelector(SELECTORS.GENERIC_SCROLL)
+                                    || node.querySelector(SELECTORS.CONTENTS);
                     const shelfContainer = vertical || horizontal || generic;
                     let cards = [];
                     let cardsCleanData = [];
                     if (shelfContainer) {
-                        cards = Array.from(shelfContainer.querySelectorAll(
-                            'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, ytd-channel-renderer'
-                        ));
+                        cards = Array.from(shelfContainer.querySelectorAll(SELECTORS.RENDERERS));
                         cardsCleanData = cards.map(c => {
-                            const thumb = c.querySelector('ytd-thumbnail, ytd-playlist-thumbnail');
+                            const thumb = c.querySelector(SELECTORS.THUMBNAIL);
                             return {
-                                dismissible: c.querySelector('#dismissible'),
+                                dismissible: c.querySelector(SELECTORS.DISMISSIBLE),
                                 thumb: thumb,
-                                innerThumb: thumb ? thumb.querySelector('a, yt-image') : null,
-                                textWrapper: c.querySelector('.text-wrapper'),
-                                actionMenu: c.querySelector('#action-menu, .action-menu')
+                                innerThumb: thumb ? thumb.querySelector(SELECTORS.INNER_THUMB) : null,
+                                textWrapper: c.querySelector(SELECTORS.TEXT_WRAPPER),
+                                actionMenu: c.querySelector(SELECTORS.ACTION_MENU)
                             };
                         });
                     }
@@ -215,13 +252,22 @@ window.YPP.features.SearchObserver = class SearchObserver {
                         tag === 'yt-lockup-view-model'       ||
                         tag === 'ytd-lockup-view-model'
                     ) {
-                        const thumb = node.querySelector('ytd-thumbnail, ytd-playlist-thumbnail');
+                        const { SELECTORS } = SearchObserver;
+                        const thumb = node.querySelector(SELECTORS.THUMBNAIL);
+                        const textWrapper = node.querySelector(SELECTORS.TEXT_WRAPPER);
+                        // Aggressively find all badges (4K, Subtitles, New, Live) anywhere in the card, except the verified badge inside channel-name and overlays inside thumbnail
+                        const extraBadges = Array.from(node.querySelectorAll(SELECTORS.BADGES)).filter(badge => {
+                            return !badge.closest('ytd-channel-name') && !badge.closest('ytd-thumbnail') && !badge.closest('.ytLockupViewModelContentImage') && !badge.closest('a#thumbnail');
+                        });
+                            
                         cleanData = {
-                            dismissible: node.querySelector('#dismissible'),
+                            dismissible: node.querySelector(SELECTORS.DISMISSIBLE),
                             thumb: thumb,
-                            innerThumb: thumb ? thumb.querySelector('a, yt-image') : null,
-                            textWrapper: node.querySelector('.text-wrapper'),
-                            actionMenu: node.querySelector('#action-menu, .action-menu')
+                            innerThumb: thumb ? thumb.querySelector(SELECTORS.INNER_THUMB) : null,
+                            textWrapper: textWrapper,
+                            actionMenu: node.querySelector(SELECTORS.ACTION_MENU),
+                            extraBadges: extraBadges,
+                            channelInfo: node.querySelector(SELECTORS.CHANNEL_INFO)
                         };
                     }
                 }
@@ -281,6 +327,16 @@ window.YPP.features.SearchObserver = class SearchObserver {
                         ) {
                             op.node.classList.add(CLASSES.GRID_ITEM);
                             this._cleanInlineStyles(op.node, op.cleanData);
+
+                            // Move all badges (4K, Subtitles, etc.) into #channel-info so they flow next to the channel name
+                            if (op.cleanData && op.cleanData.extraBadges && op.cleanData.channelInfo) {
+                                for (let i = 0; i < op.cleanData.extraBadges.length; i++) {
+                                    const badge = op.cleanData.extraBadges[i];
+                                    if (badge.parentElement !== op.cleanData.channelInfo) {
+                                        op.cleanData.channelInfo.appendChild(badge);
+                                    }
+                                }
+                            }
                         } else if (
                             op.tag === 'ytd-ad-slot-renderer' ||
                             op.tag === 'ytd-promoted-sparkles-web-renderer'
@@ -335,13 +391,14 @@ window.YPP.features.SearchObserver = class SearchObserver {
     // -------------------------------------------------------------------------
 
     _isShorts(node) {
+        const { SELECTORS } = SearchObserver;
         const tag = node.tagName.toLowerCase();
         if (tag === 'ytd-reel-shelf-renderer') return true;
         if (tag === 'ytd-rich-shelf-renderer' && node.hasAttribute('is-shorts')) return true;
-        if (node.querySelector('a[href*="/shorts/"]')) return true;
-        if (node.querySelector('[overlay-style="SHORTS"]')) return true;
+        if (node.querySelector(SELECTORS.SHORTS_LINK)) return true;
+        if (node.querySelector(SELECTORS.SHORTS_OVERLAY)) return true;
 
-        const title = node.querySelector('#title-container #title')?.textContent?.trim() || '';
+        const title = node.querySelector(SELECTORS.TITLE)?.textContent?.trim() || '';
         if (title.includes('Shorts')) return true;
 
         const badges = node.querySelectorAll('ytd-badge-supported-renderer');
@@ -352,10 +409,11 @@ window.YPP.features.SearchObserver = class SearchObserver {
     }
 
     _isShortsShelf(node) {
-        const title = node.querySelector('#title-container #title')?.textContent?.trim() || '';
+        const { SELECTORS } = SearchObserver;
+        const title = node.querySelector(SELECTORS.TITLE)?.textContent?.trim() || '';
         if (/shorts/i.test(title)) return true;
-        if (node.querySelector('ytd-icon-button-renderer[aria-label="Shorts"]')) return true;
-        if (node.querySelector('a[href*="/shorts/"]')) return true;
+        if (node.querySelector(SELECTORS.SHORTS_BTN)) return true;
+        if (node.querySelector(SELECTORS.SHORTS_LINK)) return true;
         return false;
     }
 

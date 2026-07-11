@@ -184,7 +184,7 @@ window.YPP.features.FocusMode = class FocusMode extends window.YPP.features.Base
 
         // Target containers
         const targets = {
-            'comments': document.querySelector('#comments'),
+            'comments': document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]),
             'related': document.querySelector('#secondary #related')
         };
 

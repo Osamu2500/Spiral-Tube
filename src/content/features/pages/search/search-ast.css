@@ -1525,3 +1525,294 @@ body.ypp-hide-search-shelves.ypp-search-page yt-horizontal-list-renderer,
 body.ypp-hide-search-shelves.ypp-search-page yt-collection-shelf-view-model {
   display: none !important;
 }
+
+/* =========================================================================
+   LINEAR SEARCH VIEW CLEANUPS
+   ========================================================================= */
+
+/* Remove Matching Chapters & AI Summaries from Linear View */
+body.ypp-search-list-mode ytd-video-renderer #expandable-metadata,
+body.ypp-search-list-mode ytd-video-renderer ytd-search-match-group-renderer,
+body.ypp-search-list-mode ytd-video-renderer ytd-expandable-metadata-renderer,
+body.ypp-search-list-mode ytd-video-renderer ytd-info-panel-content-renderer,
+body.ypp-search-list-mode ytd-video-renderer ytd-info-panel-container-renderer {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Badges Alignment (4K, Subtitles moved next to Channel Name) */
+ytd-video-renderer #channel-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+@keyframes yppBadgeAdded {
+  from { outline-color: transparent; }
+  to { outline-color: rgba(0,0,0,0); }
+}
+ytd-video-renderer .text-wrapper ytd-badge-supported-renderer {
+  animation: yppBadgeAdded 0.001s;
+}
+
+ytd-video-renderer #channel-info #badges,
+ytd-video-renderer #channel-info > ytd-badge-supported-renderer {
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+/* Ensure hidden or empty badges don't take up space */
+ytd-video-renderer #channel-info > ytd-badge-supported-renderer[hidden],
+ytd-video-renderer #channel-info > ytd-badge-supported-renderer[is-empty] {
+  display: none !important;
+}
+/* =========================================================================
+   LINEAR CARD STYLE ENFORCEMENT
+   ========================================================================= */
+/* We rely on the card-styles/ CSS files to apply backgrounds, borders, and hover effects.
+   This section strictly ensures that Card Styles do NOT break the horizontal linear layout 
+   by accidentally applying flex-direction: column to the dismissible content! */
+   
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-video-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-playlist-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode yt-lockup-view-model,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-radio-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-channel-renderer {
+  margin-bottom: 16px !important;
+  /* Card styles might accidentally apply flex-direction: column if they use wildcard selectors, 
+     but ytd-video-renderer is horizontal by default. We lock it here. */
+}
+
+/* VERY STRICT horizontal layout lock for Linear View */
+body.ypp-search-list-mode ytd-video-renderer > #dismissible {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+body.ypp-search-list-mode ytd-video-renderer:hover > #dismissible {
+  flex-direction: row !important;
+}
+
+body.ypp-search-list-mode ytd-video-renderer #channel-info {
+  margin-bottom: 8px !important;
+}
+
+/* =========================================================================
+   LINEAR SEARCH VIEW SIZES & TRANSITIONS
+   ========================================================================= */
+
+body.ypp-search-list-mode ytd-video-renderer ytd-thumbnail,
+body.ypp-search-list-mode ytd-playlist-renderer ytd-thumbnail,
+body.ypp-search-list-mode ytd-radio-renderer ytd-thumbnail,
+body.ypp-search-list-mode ytd-channel-renderer #avatar-section,
+body.ypp-search-list-mode .ytLockupViewModelContentImage,
+body.ypp-search-list-mode .text-wrapper,
+body.ypp-search-list-mode #video-title,
+body.ypp-search-list-mode #channel-title,
+body.ypp-search-list-mode #metadata-line,
+body.ypp-search-list-mode #channel-info,
+body.ypp-search-list-mode #description-text,
+body.ypp-search-list-mode yt-img-shadow#channel-thumbnail img {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Dense (Smallest) */
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-video-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-playlist-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-radio-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-channel-renderer #avatar-section,
+body.ypp-search-list-mode.ypp-search-layout-dense yt-lockup-view-model .ytLockupViewModelContentImage,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-lockup-view-model .ytLockupViewModelContentImage {
+  max-width: 240px !important;
+  min-width: 240px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-video-renderer,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-playlist-renderer,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-radio-renderer,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-channel-renderer,
+body.ypp-search-list-mode.ypp-search-layout-dense yt-lockup-view-model,
+body.ypp-search-list-mode.ypp-search-layout-dense ytd-lockup-view-model {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-dense .text-wrapper {
+  padding-left: 12px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-dense #video-title,
+body.ypp-search-list-mode.ypp-search-layout-dense #channel-title {
+  font-size: 1.3rem !important;
+  line-height: 1.8rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-dense #metadata-line,
+body.ypp-search-list-mode.ypp-search-layout-dense #channel-info,
+body.ypp-search-list-mode.ypp-search-layout-dense #description-text,
+body.ypp-search-list-mode.ypp-search-layout-dense #metadata,
+body.ypp-search-list-mode.ypp-search-layout-dense #description {
+  font-size: 1.1rem !important;
+  line-height: 1.6rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-dense yt-img-shadow#channel-thumbnail img {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Compact (Small) */
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-video-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-playlist-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-radio-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-channel-renderer #avatar-section,
+body.ypp-search-list-mode.ypp-search-layout-compact yt-lockup-view-model .ytLockupViewModelContentImage,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-lockup-view-model .ytLockupViewModelContentImage {
+  max-width: 320px !important;
+  min-width: 320px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-video-renderer,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-playlist-renderer,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-radio-renderer,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-channel-renderer,
+body.ypp-search-list-mode.ypp-search-layout-compact yt-lockup-view-model,
+body.ypp-search-list-mode.ypp-search-layout-compact ytd-lockup-view-model {
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-compact .text-wrapper {
+  padding-left: 16px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-compact #video-title,
+body.ypp-search-list-mode.ypp-search-layout-compact #channel-title {
+  font-size: 1.5rem !important;
+  line-height: 2.0rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-compact #metadata-line,
+body.ypp-search-list-mode.ypp-search-layout-compact #channel-info,
+body.ypp-search-list-mode.ypp-search-layout-compact #description-text,
+body.ypp-search-list-mode.ypp-search-layout-compact #metadata,
+body.ypp-search-list-mode.ypp-search-layout-compact #description {
+  font-size: 1.2rem !important;
+  line-height: 1.8rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-compact yt-img-shadow#channel-thumbnail img {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Regular (Default YouTube size approx) */
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-video-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-playlist-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-radio-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-channel-renderer #avatar-section,
+body.ypp-search-list-mode.ypp-search-layout-regular yt-lockup-view-model .ytLockupViewModelContentImage,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-lockup-view-model .ytLockupViewModelContentImage {
+  max-width: 360px !important;
+  min-width: 360px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-video-renderer,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-playlist-renderer,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-radio-renderer,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-channel-renderer,
+body.ypp-search-list-mode.ypp-search-layout-regular yt-lockup-view-model,
+body.ypp-search-list-mode.ypp-search-layout-regular ytd-lockup-view-model {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-regular .text-wrapper {
+  padding-left: 16px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-regular #video-title,
+body.ypp-search-list-mode.ypp-search-layout-regular #channel-title {
+  font-size: 1.8rem !important;
+  line-height: 2.6rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-regular #metadata-line,
+body.ypp-search-list-mode.ypp-search-layout-regular #channel-info,
+body.ypp-search-list-mode.ypp-search-layout-regular #description-text,
+body.ypp-search-list-mode.ypp-search-layout-regular #metadata,
+body.ypp-search-list-mode.ypp-search-layout-regular #description {
+  font-size: 1.4rem !important;
+  line-height: 2.0rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-regular yt-img-shadow#channel-thumbnail img {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Spacious (Large) */
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-video-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-playlist-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-radio-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-channel-renderer #avatar-section,
+body.ypp-search-list-mode.ypp-search-layout-spacious yt-lockup-view-model .ytLockupViewModelContentImage,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-lockup-view-model .ytLockupViewModelContentImage {
+  max-width: 480px !important;
+  min-width: 480px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-video-renderer,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-playlist-renderer,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-radio-renderer,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-channel-renderer,
+body.ypp-search-list-mode.ypp-search-layout-spacious yt-lockup-view-model,
+body.ypp-search-list-mode.ypp-search-layout-spacious ytd-lockup-view-model {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-spacious .text-wrapper {
+  padding-left: 24px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-spacious #video-title,
+body.ypp-search-list-mode.ypp-search-layout-spacious #channel-title {
+  font-size: 2.0rem !important;
+  line-height: 2.8rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-spacious #metadata-line,
+body.ypp-search-list-mode.ypp-search-layout-spacious #channel-info,
+body.ypp-search-list-mode.ypp-search-layout-spacious #description-text,
+body.ypp-search-list-mode.ypp-search-layout-spacious #metadata,
+body.ypp-search-list-mode.ypp-search-layout-spacious #description {
+  font-size: 1.5rem !important;
+  line-height: 2.0rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-spacious yt-img-shadow#channel-thumbnail img {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Expanded (Extra Large) */
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-video-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-playlist-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-radio-renderer ytd-thumbnail,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-channel-renderer #avatar-section,
+body.ypp-search-list-mode.ypp-search-layout-expanded yt-lockup-view-model .ytLockupViewModelContentImage,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-lockup-view-model .ytLockupViewModelContentImage {
+  max-width: 640px !important;
+  min-width: 640px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-video-renderer,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-playlist-renderer,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-radio-renderer,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-channel-renderer,
+body.ypp-search-list-mode.ypp-search-layout-expanded yt-lockup-view-model,
+body.ypp-search-list-mode.ypp-search-layout-expanded ytd-lockup-view-model {
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-expanded .text-wrapper {
+  padding-left: 32px !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-expanded #video-title,
+body.ypp-search-list-mode.ypp-search-layout-expanded #channel-title {
+  font-size: 2.4rem !important;
+  line-height: 3.2rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-expanded #metadata-line,
+body.ypp-search-list-mode.ypp-search-layout-expanded #channel-info,
+body.ypp-search-list-mode.ypp-search-layout-expanded #description-text,
+body.ypp-search-list-mode.ypp-search-layout-expanded #metadata,
+body.ypp-search-list-mode.ypp-search-layout-expanded #description {
+  font-size: 1.6rem !important;
+  line-height: 2.2rem !important;
+}
+body.ypp-search-list-mode.ypp-search-layout-expanded yt-img-shadow#channel-thumbnail img {
+  width: 40px !important;
+  height: 40px !important;
+}

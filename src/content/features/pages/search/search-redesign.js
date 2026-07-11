@@ -155,7 +155,12 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
 
         document.body.classList.remove(
             SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE
+            SearchRedesign.CLASSES.LIST_MODE,
+            'ypp-search-layout-dense',
+            'ypp-search-layout-compact',
+            'ypp-search-layout-regular',
+            'ypp-search-layout-spacious',
+            'ypp-search-layout-expanded'
         );
         document.body.classList.remove('ypp-filter-pending');
         
@@ -195,10 +200,17 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
             );
             this._searchFilter.update(this._settings);
 
-            if (this._settings.searchGrid || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.cleanSearch) {
+            if (this._settings.searchGrid || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.cleanSearch || this._settings.searchLayout) {
                 if (this._settings.searchGrid) {
                     this._searchViewMode.applyViewMode();
+                } else {
+                    document.body.classList.add(SearchRedesign.CLASSES.LIST_MODE);
                 }
+
+                // Apply the selected search layout size class
+                const layoutSize = this._settings.searchLayout || 'regular';
+                document.body.classList.add('ypp-search-layout-' + layoutSize);
+
                 this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
             }
 
@@ -231,7 +243,12 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
         // Ensure body classes do not leak to non-search pages
         document.body.classList.remove(
             SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE
+            SearchRedesign.CLASSES.LIST_MODE,
+            'ypp-search-layout-dense',
+            'ypp-search-layout-compact',
+            'ypp-search-layout-regular',
+            'ypp-search-layout-spacious',
+            'ypp-search-layout-expanded'
         );
     }
 
@@ -250,7 +267,12 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
     _removeClasses() {
         document.body.classList.remove(
             SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE
+            SearchRedesign.CLASSES.LIST_MODE,
+            'ypp-search-layout-dense',
+            'ypp-search-layout-compact',
+            'ypp-search-layout-regular',
+            'ypp-search-layout-spacious',
+            'ypp-search-layout-expanded'
         );
     }
 }

@@ -19,7 +19,8 @@ html, [dark] {
   --retro-primary:   #000080;
   --retro-secondary: #800000;
   --retro-accent:    #008080;
-  --retro-bg:        #008080;
+  --retro-bg: #008080;
+  --ypp-bg-base: #008080 !important;
   --retro-border:    2px solid #888888;
   --retro-border-hover: 2px solid #ffffff;
   --retro-border-light: #888888;
@@ -48,7 +49,8 @@ html:not([dark]) {
   --retro-primary:   #000080;
   --retro-secondary: #800000;
   --retro-accent:    #008080;
-  --retro-bg:        #008080;
+  --retro-bg: #008080;
+  --ypp-bg-base: #008080 !important;
   --retro-border:    2px solid #808080;
   --retro-border-hover: 2px solid #ffffff;
   --retro-border-light: #ffffff;
@@ -2059,95 +2061,16 @@ tp-yt-paper-toast {
 /* ========================================= */
 
 /* Video Cards Parity */
-ytd-rich-grid-media, ytd-compact-video-renderer, ytd-playlist-panel-video-renderer, ytd-video-renderer, ytd-grid-video-renderer {
-  border: var(--retro-border-out) !important;
-  background: var(--sf, rgba(0,0,0,0.1)) !important;
-  border-radius: 0px !important;
-  box-shadow: var(--shadow-base, 0 4px 15px rgba(0,0,0,0.2)) !important;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  position: relative;
-  overflow: hidden;
-}
-
-ytd-rich-grid-media:hover, ytd-compact-video-renderer:hover, ytd-video-renderer:hover {
-  box-shadow: var(--shadow-hover, 0 8px 25px rgba(0,0,0,0.3)) !important;
-  transform: translateY(-2px) scale(1.01) !important;
-}
-
-/* Titles and Text Colors */
-#video-title {
-  color: var(--retro-primary) !important;
-}
-.ytd-channel-name, .ytd-video-meta-block {
-  color: var(--retro-secondary) !important;
-}
-
-/* Progress Bar */
-.ytp-play-progress {
-  background: var(--retro-primary) !important;
-}
-.ytp-scrubber-button {
-  background: var(--retro-secondary) !important;
-  border: 2px solid var(--retro-primary) !important;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px !important; }
-::-webkit-scrollbar-track { background: var(--retro-bg) !important; border-radius: 0px; }
-::-webkit-scrollbar-thumb { 
-  background: var(--retro-primary) !important; 
-  border-radius: 0px !important; 
-}
-
-/* Corner Decoration */
-ytd-rich-grid-media::after, ytd-compact-video-renderer::after, ytd-video-renderer::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 50px;
-  height: 50px;
-  background-image: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(0%2C0%2C0%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%229%22%20height%3D%229%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%222%22%20width%3D%229%22%20height%3D%229%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%2213%22%20width%3D%229%22%20height%3D%229%22%2F%3E%3Crect%20x%3D%2213%22%20y%3D%2213%22%20width%3D%229%22%20height%3D%229%22%2F%3E%3C%2Fsvg%3E');
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  pointer-events: none;
-  transform: rotate(15deg);
-}
-
-/* ========================================================= */
-/* RETRO OS ADVANCED OVERHAUL — Windows 95/98 Ultra-Faithful */
-/* ========================================================= */
-
-/* === Win95 3D Beveled Border System === */
-/* This mixin-style approach makes every surface look raised */
-:root {
-  --win95-raise:  inset -1px -1px 0px #000, inset 1px 1px 0px #fff, inset -2px -2px 0px #888, inset 2px 2px 0px #dfdfdf;
-  --win95-sink:   inset 1px 1px 0px #000, inset -1px -1px 0px #fff, inset 2px 2px 0px #888, inset -2px -2px 0px #dfdfdf;
-  --win95-flat:   1px 1px 0px #000;
-  --retro-title-bar: linear-gradient(90deg, #000080 0%, #1084d0 100%);
-}
-
-/* === Tiled desktop background === */
-html, [dark] body {
-  background-color: #008080 !important;
-  background-image: 
-    url('data:image/svg+xml;utf8,<svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="4" height="4" fill="rgba(0,0,0,0.05)"/><rect x="4" y="4" width="4" height="4" fill="rgba(0,0,0,0.05)"/></svg>') !important;
-  background-size: 8px 8px !important;
-  image-rendering: pixelated !important;
-}
-
-/* === Video Cards — OS Window Style === */
-ytd-rich-grid-media,
-ytd-compact-video-renderer,
-ytd-video-renderer,
-ytd-playlist-video-renderer,
-ytd-grid-video-renderer {
+html[data-ypp-ui-style="retro"][data-ypp-card-style] :is(ytd-rich-grid-media, ytd-compact-video-renderer, ytd-video-renderer, ytd-playlist-video-renderer, ytd-grid-video-renderer),
+html[data-ypp-ui-style="retro"] :is(ytd-rich-grid-media, ytd-compact-video-renderer, ytd-video-renderer, ytd-playlist-video-renderer, ytd-grid-video-renderer) {
   background: #c0c0c0 !important;
   box-shadow: var(--win95-raise) !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 0 !important;
+  padding-top: 24px !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  padding-bottom: 4px !important;
   transition: none !important;
   position: relative !important;
 }

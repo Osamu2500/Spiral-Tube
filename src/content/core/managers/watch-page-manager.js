@@ -225,9 +225,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
                     const controls = document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer');
                     if (video && controls) return { video, controls, isShorts };
                 } else {
-                    const video = document.querySelector('video.html5-main-video');
+                    const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
                     // Target .ytp-chrome-bottom as it is universally present in all YouTube UI versions
-                    const controls = document.querySelector('.ytp-chrome-bottom');
+                    const controls = document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
                     if (video && controls) return { video, controls, isShorts };
                 }
                 return null;

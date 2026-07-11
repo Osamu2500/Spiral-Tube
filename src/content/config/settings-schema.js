@@ -74,7 +74,7 @@ window.YPP.SettingsSchema = {
         enableAnimations:    { type: 'boolean', default: true },
         enableThemeEffects:  { type: 'boolean', default: true },
         reducedMotion:       { type: 'boolean', default: false },
-        cardStyle:           { type: 'string',  default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'retro', 'brutalism', 'skeuomorphic', 'frosted', 'summer', 'winter', 'spring', 'autumn', 'nature', 'vintage', 'ocean', 'blue-sky'] },
+        cardStyle:           { type: 'string',  default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'retro', 'brutalism', 'skeuomorphic', 'frosted', 'summer', 'winter', 'spring', 'autumn', 'nature', 'vintage', 'ocean', 'blue-sky', 'immersive-glass'] },
         customScrollbar:     { type: 'boolean', default: false },
         grayscaleThumbnails: { type: 'boolean', default: false },
 
@@ -311,6 +311,9 @@ window.YPP.SettingsSchema = {
         // --- Sidebar Layout ---
         sidebarLayout:       { type: 'string',  default: 'compact', values: ['compact', 'regular', 'spacious', 'expanded'] },
         splitScrolling:      { type: 'boolean', default: false },
+
+        // --- Search Layout ---
+        searchLayout:        { type: 'string',  default: 'regular', values: ['dense', 'compact', 'regular', 'spacious', 'expanded'] },
 
         // --- Navigation ---
         navTrending:         { type: 'boolean', default: true },

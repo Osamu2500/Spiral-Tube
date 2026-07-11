@@ -1,6 +1,4 @@
-html[data-ypp-card-style='cyberpunk']
-  body:not(.ypp-channel-page)
-  :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+html[data-ypp-card-style='cyberpunk'] body:not(.ypp-channel-page) ytd-thumbnail {
   border-radius: 0 !important;
   clip-path: polygon(
     0 0,

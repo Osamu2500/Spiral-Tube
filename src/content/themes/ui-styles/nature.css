@@ -1905,8 +1905,8 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon {
   fill: #14532d !important;
 }
 /* Force YT spec text variables so YouTube renders topbar text in dark green */
-html[data-ypp-theme="nature"],
-html[data-ypp-theme="nature"] ytd-masthead {
+html[data-ypp-ui-style="nature"],
+html[data-ypp-ui-style="nature"] ytd-masthead {
   --yt-spec-text-primary: #14532d !important;
   --yt-spec-text-secondary: #166534 !important;
   --yt-spec-icon-active-other: #14532d !important;

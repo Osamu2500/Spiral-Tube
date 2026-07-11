@@ -88,7 +88,7 @@ window.YPP.features.CommentFilter = class CommentFilter extends window.YPP.featu
         // Rebuild patterns when settings change (e.g. new custom keywords)
         this._buildPatterns();
         if (this.utils.isWatchPage()) {
-            const comments = document.querySelector('#comments');
+            const comments = document.querySelector(window.YPP.CONSTANTS.SELECTORS.COMMENTS_SECTION[1]);
             if (comments) this.observer.start(comments);
         }
     }

@@ -2004,43 +2004,43 @@ yt-formatted-string, span, div, h1, h2, h3, h4, h5, h6 {
    ========================================= */
 
 /* Force dark text on ALL text-bearing elements when blue-sky theme is active */
-html[data-ypp-theme="blue-sky"] yt-formatted-string,
-html[data-ypp-theme="blue-sky"] span,
-html[data-ypp-theme="blue-sky"] a,
-html[data-ypp-theme="blue-sky"] h1,
-html[data-ypp-theme="blue-sky"] h2,
-html[data-ypp-theme="blue-sky"] h3,
-html[data-ypp-theme="blue-sky"] p,
-html[data-ypp-theme="blue-sky"] #video-title,
-html[data-ypp-theme="blue-sky"] .ytd-video-meta-block,
-html[data-ypp-theme="blue-sky"] #metadata-line span,
-html[data-ypp-theme="blue-sky"] yt-formatted-string.ytd-channel-name,
-html[data-ypp-theme="blue-sky"] #channel-name a,
-html[data-ypp-theme="blue-sky"] .ytd-channel-name,
-html[data-ypp-theme="blue-sky"] ytd-badge-supported-renderer span,
-html[data-ypp-theme="blue-sky"] #title-wrapper yt-formatted-string,
-html[data-ypp-theme="blue-sky"] .title-text,
-html[data-ypp-theme="blue-sky"] ytd-rich-grid-renderer #title,
-html[data-ypp-theme="blue-sky"] .shortsLockupViewModelHostThumbnailOverlayFooter,
-html[data-ypp-theme="blue-sky"] ytd-guide-entry-renderer yt-formatted-string {
+html[data-ypp-ui-style="blue-sky"] yt-formatted-string,
+html[data-ypp-ui-style="blue-sky"] span,
+html[data-ypp-ui-style="blue-sky"] a,
+html[data-ypp-ui-style="blue-sky"] h1,
+html[data-ypp-ui-style="blue-sky"] h2,
+html[data-ypp-ui-style="blue-sky"] h3,
+html[data-ypp-ui-style="blue-sky"] p,
+html[data-ypp-ui-style="blue-sky"] #video-title,
+html[data-ypp-ui-style="blue-sky"] .ytd-video-meta-block,
+html[data-ypp-ui-style="blue-sky"] #metadata-line span,
+html[data-ypp-ui-style="blue-sky"] yt-formatted-string.ytd-channel-name,
+html[data-ypp-ui-style="blue-sky"] #channel-name a,
+html[data-ypp-ui-style="blue-sky"] .ytd-channel-name,
+html[data-ypp-ui-style="blue-sky"] ytd-badge-supported-renderer span,
+html[data-ypp-ui-style="blue-sky"] #title-wrapper yt-formatted-string,
+html[data-ypp-ui-style="blue-sky"] .title-text,
+html[data-ypp-ui-style="blue-sky"] ytd-rich-grid-renderer #title,
+html[data-ypp-ui-style="blue-sky"] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-ui-style="blue-sky"] ytd-guide-entry-renderer yt-formatted-string {
   color: #003366 !important;
   text-shadow: none !important;
 }
 
-html[data-ypp-theme="blue-sky"] #video-title,
-html[data-ypp-theme="blue-sky"] ytd-video-renderer #video-title,
-html[data-ypp-theme="blue-sky"] ytd-rich-item-renderer #video-title {
+html[data-ypp-ui-style="blue-sky"] #video-title,
+html[data-ypp-ui-style="blue-sky"] ytd-video-renderer #video-title,
+html[data-ypp-ui-style="blue-sky"] ytd-rich-item-renderer #video-title {
   color: #00264d !important;
 }
 
-html[data-ypp-theme="blue-sky"] #metadata-line span,
-html[data-ypp-theme="blue-sky"] .ytd-video-meta-block span,
-html[data-ypp-theme="blue-sky"] yt-formatted-string.ytd-channel-name {
+html[data-ypp-ui-style="blue-sky"] #metadata-line span,
+html[data-ypp-ui-style="blue-sky"] .ytd-video-meta-block span,
+html[data-ypp-ui-style="blue-sky"] yt-formatted-string.ytd-channel-name {
   color: #1a5276 !important;
 }
 
 /* Force light mode CSS variables */
-html[data-ypp-theme="blue-sky"] {
+html[data-ypp-ui-style="blue-sky"] {
   --yt-spec-text-primary: #003366 !important;
   --yt-spec-text-secondary: #1a5276 !important;
   --yt-spec-icon-active-other: #003366 !important;

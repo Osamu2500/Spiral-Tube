@@ -89,7 +89,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
     async enable() {
         await super.enable();
         this._loadSettings(this.settings);
-        const video = document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (video && this._needsAudioGraph()) this.initAudioContext(video);
     }
 
@@ -159,7 +159,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         // Re-load from persisted settings on every page change to guarantee
         // that in-memory values always match what was saved to Chrome storage.
         this._loadSettings(this.settings);
-        const video = document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (video) {
             if (this._audioConnected && this._boundVideo === video) {
                 // Same video element reused (YouTube SPA) — just re-apply state
@@ -174,7 +174,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         // Called by FeatureManager when a new videoId is detected (app:videoChange event)
         if (!this.settings || !this.settings.enableVolumeBoost) return;
         this._loadSettings(this.settings);
-        const video = document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (!video) return;
         if (this._audioConnected && this._boundVideo === video) {
             // Same video element: just restore the correct audio values
@@ -321,7 +321,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         this.gainNode.connect(this.analyserNode);
 
         // Chain to AudioCompressor if it is active, otherwise go straight to destination
-        const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
+        const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
         if (video && video.__ypp_ext_compressor) {
             this.analyserNode.connect(video.__ypp_ext_compressor.input);
             video.__ypp_ext_compressor.output.connect(this.ctx.destination);
@@ -364,7 +364,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
     setVolume(multiplier) {
         this._volumeGain = multiplier;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.gainNode && this.ctx) {
@@ -377,7 +377,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
     setBalance(value) {
         this._balance = value;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.pannerNode && this.ctx) {
@@ -389,7 +389,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
     setMono(enabled) {
         this._monoEnabled = enabled;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.ctx && this.source) {
@@ -407,7 +407,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
     _setEQBand(index, db) {
         this._eqGains[index] = db;
         if (!this._audioConnected && this._needsAudioGraph()) {
-            const video = this._boundVideo || document.querySelector('.html5-main-video') || document.querySelector('video');
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this._eqNodes[index] && this.ctx) {
@@ -436,7 +436,7 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         this.addListener(btn, 'click', (e) => {
             e.stopPropagation();
             if (window.YPP.features.VolumeBoosterUI) {
-                const activeVideo = document.querySelector('.html5-main-video') || document.querySelector('video');
+                const activeVideo = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
                 // Synchronously initialize AudioContext during a guaranteed user gesture (click)
                 // This prevents the AudioContext from being created in a 'suspended' state,
                 // which would otherwise cause the video to buffer and the audio to mute.
