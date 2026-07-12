@@ -2606,3 +2606,4 @@ export class ChannelHealthUI {
 window.YPP.features.CustomDialog = CustomDialog;
 
 window.YPP.features.FolderUI = FolderUI;
+window.YPP.features.ChannelHealthUI = ChannelHealthUI;

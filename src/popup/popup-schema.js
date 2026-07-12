@@ -324,45 +324,42 @@ export const POPUP_SCHEMA = [
         id: 'subscriptions', label: 'Subs',
         icon: P('M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z'),
         sections: [
+
             {
-                title: 'Sidebar & Folders',
-                items: [
-                    { type:'toggle', id:'subscriptionFolders', label:'Sub Folders',     desc:'Create groups',              icon:P('M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z') },
-                    { type:'toggle', id:'contextMenu',         label:'Context Menu',    desc:'Card context menu',          icon:P('M12 12h.01M12 5h.01M12 19h.01') },
-                    { type:'toggle', id:'enableSubsManager',   label:'Group Sidebar',   desc:'Show UI sidebar',            icon:P('M3 3h18v18H3zM9 3v18') },
-                ]
-            },
-            {
-                title: 'Feed Filters',
+                title: 'Filter Bar Layout',
                 items: [
                     { type:'toggle', id:'enableFilterBar',     label:'Enable Filter Bar', desc:'Show duration/date filters', icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
-                    { type:'toggle', id:'ff_opt_multiselect', label:'Multi-select Chips', desc:'Allow selecting multiple filters', icon:P('M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z') },
-                    { type:'toggle', id:'ff_search_visible', label:'Show Search Bar', desc:'Search within the subscription feed', icon:P('M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z') }
+                    { type:'toggle', id:'ff_opt_multiselect', label:'Multi-select Chips', desc:'Select multiple filters at once', icon:P('M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z') },
+                    { type:'toggle', id:'ff_search_visible', label:'Show Search Bar', desc:'Search feed by title', icon:P('M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z') }
                 ]
             },
             {
-                title: 'Feed Filter Chips',
-                subtitle: 'Select which chips to display on the filter bar',
+                title: 'Filter Chips (Content)',
                 items: [
-                    { type:'toggle', id:'ff_live_visible', label:'Live' },
-                    { type:'toggle', id:'ff_streamed_visible', label:'Streamed' },
                     { type:'toggle', id:'ff_video_visible', label:'Video' },
                     { type:'toggle', id:'ff_shorts_visible', label:'Shorts' },
+                    { type:'toggle', id:'ff_live_visible', label:'Live' },
+                    { type:'toggle', id:'ff_streamed_visible', label:'Streamed' },
                     { type:'toggle', id:'ff_scheduled_visible', label:'Scheduled' },
-                    { type:'toggle', id:'ff_notifon_visible', label:'Notification On' },
-                    { type:'toggle', id:'ff_notifoff_visible', label:'Notification Off' },
                     { type:'toggle', id:'ff_posts_visible', label:'Posts' },
                     { type:'toggle', id:'ff_playlist_visible', label:'Playlist' },
-                    { type:'toggle', id:'ff_unwatched_visible', label:'Unwatched' },
-                    { type:'toggle', id:'ff_watched_visible', label:'Watched' }
                 ]
             },
             {
-                title: 'Layout & Data',
+                title: 'Filter Chips (Status)',
                 items: [
-                    { type:'toggle', id:'enableChannelHealth', label:'Channel Health',  desc:'Show health scanner',        icon:P('M22 12h-4l-3 9L9 3l-3 9H2') },
-                    { type:'range', id:'channelColumns',       label:'Channel Columns',    unit:'', min:2, max:10, step:1, parent: 'enableChannelHealth' },
-                    { type:'range', id:'subscriptionsColumns', label:'Feed Grid Columns',  unit:'', min:1, max:8,  step:1, parent: 'enableSubsManager' }
+                    { type:'toggle', id:'ff_unwatched_visible', label:'Unwatched' },
+                    { type:'toggle', id:'ff_watched_visible', label:'Watched' },
+                    { type:'toggle', id:'ff_notifon_visible', label:'Notification On' },
+                    { type:'toggle', id:'ff_notifoff_visible', label:'Notification Off' },
+                ]
+            },
+            {
+                title: 'Layout & Tools',
+                items: [
+                    { type:'toggle', id:'enableChannelHealth', label:'Channel Health',  desc:'Scan for dead channels',        icon:P('M22 12h-4l-3 9L9 3l-3 9H2') },
+                    { type:'range', id:'channelColumns',       label:'Scanner Columns',    unit:'', min:2, max:10, step:1, parent: 'enableChannelHealth' },
+                    { type:'range', id:'subscriptionsColumns', label:'Feed Grid Columns',  unit:'', min:1, max:8,  step:1 }
                 ]
             }
         ]
