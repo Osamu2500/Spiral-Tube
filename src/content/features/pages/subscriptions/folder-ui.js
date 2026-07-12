@@ -1045,27 +1045,6 @@ export class ChannelHealthUI {
                     </div>
                 </div>
                 <div class="ypp-organizer-body" style="flex-direction: row; padding: 32px; overflow: hidden; display: flex; flex: 1; background: transparent; gap: 32px;">
-                    <!-- LEFT PANE: Folders -->
-                    <div style="width: 280px; display: flex; flex-direction: column; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 24px; flex-shrink: 0; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
-                        <h3 style="color: #f1f5f9; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 16px 0; display: flex; justify-content: space-between; align-items: center;">
-                            Your Folders
-                            <span style="font-size:11px; color:rgba(255,255,255,0.3); font-weight:normal; letter-spacing: 0;">Drag to Add</span>
-                        </h3>
-                        <div id="ypp-organizer-folders-list" class="ypp-scroll-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;">
-                            <!-- Populated dynamically -->
-                        </div>
-                        <div style="margin-top: 24px;">
-                            <h3 style="color: #f1f5f9; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff4e45" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                                Filter Keywords
-                            </h3>
-                            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                                <input type="text" id="ypp-blacklist-input" placeholder="e.g. spoiler, react" style="flex: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 10px 14px; color: #fff; font-size: 13px; outline: none; transition: all 0.2s;" onfocus="this.style.borderColor='rgba(99, 102, 241, 0.5)'; this.style.boxShadow='0 0 0 2px rgba(99, 102, 241, 0.2)';" onblur="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.boxShadow='none';">
-                                <button id="ypp-blacklist-add-btn" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 0 16px; color: #fff; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 500;" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)';">Add</button>
-                            </div>
-                            <div id="ypp-blacklist-tags" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
-                        </div>
-                    </div>
                     <!-- RIGHT PANE: Channels -->
                     <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
                         <div style="display: flex; gap: 24px; margin-bottom: 24px;">
@@ -1095,7 +1074,7 @@ export class ChannelHealthUI {
                             <select id="ypp-health-folder-filter-dropdown" style="background: rgba(255,255,255,0.03); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 10px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: all 0.2s; appearance: none; padding-right: 32px; background-image: url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
                                 <option value="all" style="background:#0a0a0f">All Folders</option>
                                 <option value="__no_folder__" style="background:#0a0a0f">Uncategorized</option>
-                                ${folderUI ? Object.keys(folderUI.storage.folders).map(f => '<option value="' + f + '" style="background:#0a0a0f">' + f + '</option>').join('') : ''}
+                                ${folderUI ? Object.keys((folderUI?.storage?.folders || {})).map(f => '<option value="' + f + '" style="background:#0a0a0f">' + f + '</option>').join('') : ''}
                             </select>
                             <select id="ypp-health-filter-dropdown" style="background: rgba(255,255,255,0.03); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 10px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: all 0.2s; appearance: none; padding-right: 32px; background-image: url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
                                 <option value="all" style="background:#0a0a0f">All Statuses</option>
@@ -1151,14 +1130,14 @@ export class ChannelHealthUI {
         scanBtn.addEventListener('mouseout',   () => { scanBtn.style.filter       = 'brightness(1)'; });
         unsubBtn.addEventListener('mouseover', () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.25)'; });
         unsubBtn.addEventListener('mouseout',  () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.15)'; });
-        addFolderBtn.addEventListener('mouseover', () => { addFolderBtn.style.background = 'rgba(255, 255, 255, 0.2)'; });
-        addFolderBtn.addEventListener('mouseout',  () => { addFolderBtn.style.background = 'rgba(255, 255, 255, 0.1)'; });
-        createBtn.addEventListener('mouseover', () => { createBtn.style.background = 'rgba(255,255,255,0.1)'; });
-        createBtn.addEventListener('mouseout',  () => { createBtn.style.background = 'rgba(255,255,255,0.05)'; });
-        deleteBtn.addEventListener('mouseover', () => { deleteBtn.style.background = 'rgba(255, 78, 69, 0.15)'; deleteBtn.style.color = '#ff4e45'; deleteBtn.style.borderColor = 'rgba(255, 78, 69, 0.3)'; });
-        deleteBtn.addEventListener('mouseout',  () => { deleteBtn.style.background = 'rgba(255,255,255,0.05)'; deleteBtn.style.color = '#fff'; deleteBtn.style.borderColor = 'rgba(255,255,255,0.1)'; });
-        folderSel.addEventListener('mouseover',() => { folderSel.style.background = 'rgba(255,255,255,0.12)'; });
-        folderSel.addEventListener('mouseout', () => { folderSel.style.background = 'rgba(255,255,255,0.08)'; });
+        if(addFolderBtn) addFolderBtn.addEventListener('mouseover', () => { addFolderBtn.style.background = 'rgba(255, 255, 255, 0.2)'; });
+        if(addFolderBtn) addFolderBtn.addEventListener('mouseout',  () => { addFolderBtn.style.background = 'rgba(255, 255, 255, 0.1)'; });
+        if(createBtn) createBtn.addEventListener('mouseover', () => { createBtn.style.background = 'rgba(255,255,255,0.1)'; });
+        if(createBtn) createBtn.addEventListener('mouseout',  () => { createBtn.style.background = 'rgba(255,255,255,0.05)'; });
+        if(deleteBtn) deleteBtn.addEventListener('mouseover', () => { deleteBtn.style.background = 'rgba(255, 78, 69, 0.15)'; deleteBtn.style.color = '#ff4e45'; deleteBtn.style.borderColor = 'rgba(255, 78, 69, 0.3)'; });
+        if(deleteBtn) deleteBtn.addEventListener('mouseout',  () => { deleteBtn.style.background = 'rgba(255,255,255,0.05)'; deleteBtn.style.color = '#fff'; deleteBtn.style.borderColor = 'rgba(255,255,255,0.1)'; });
+        if(folderSel) folderSel.addEventListener('mouseover',() => { folderSel.style.background = 'rgba(255,255,255,0.12)'; });
+        if(folderSel) folderSel.addEventListener('mouseout', () => { folderSel.style.background = 'rgba(255,255,255,0.08)'; });
         filterSel.addEventListener('mouseover',() => { filterSel.style.background = 'rgba(255,255,255,0.12)'; });
         filterSel.addEventListener('mouseout', () => { filterSel.style.background = 'rgba(255,255,255,0.08)'; });
         sortSel.addEventListener('mouseover',  () => { sortSel.style.background   = 'rgba(255,255,255,0.12)'; });
@@ -1193,7 +1172,7 @@ export class ChannelHealthUI {
             }
         });
 
-        createBtn.addEventListener('click', async () => {
+        if(createBtn) createBtn.addEventListener('click', async () => {
             if (!folderUI) return;
             const name = await window.YPP.features.CustomDialog.prompt('Create Folder', 'Enter a name for the new folder:');
             if (name && name.trim()) {
@@ -1207,9 +1186,9 @@ export class ChannelHealthUI {
             }
         });
 
-        deleteBtn.addEventListener('click', async () => {
+        if(deleteBtn) deleteBtn.addEventListener('click', async () => {
             if (!folderUI) return;
-            const folderNames = Object.keys(folderUI.storage.folders);
+            const folderNames = Object.keys((folderUI?.storage?.folders || {}));
             if (folderNames.length === 0) {
                 await window.YPP.features.CustomDialog.alert('No Folders', 'You have no folders to delete.');
                 return;
@@ -1234,50 +1213,6 @@ export class ChannelHealthUI {
             }
         });
 
-        // Blacklist UI handlers
-        const renderBlacklistTags = () => {
-            const tagsContainer = overlay.querySelector('#ypp-blacklist-tags');
-            if (!tagsContainer) return;
-            tagsContainer.innerHTML = '';
-            const bl = folderUI?.storage?.keywordBlacklist || [];
-            bl.forEach(kw => {
-                const tag = document.createElement('div');
-                tag.style.cssText = 'background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 8px; font-size: 12px; color: #fff; display: flex; align-items: center; gap: 4px;';
-                tag.innerHTML = `<span>${_escHtml(kw)}</span><button class="ypp-blacklist-del-btn" style="background: transparent; border: none; color: rgba(255,255,255,0.6); cursor: pointer; padding: 0; font-size: 14px; line-height: 1;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">&times;</button>`;
-                tag.querySelector('button').addEventListener('click', () => {
-                    folderUI.storage.keywordBlacklist = folderUI.storage.keywordBlacklist.filter(item => item !== kw);
-                    folderUI.storage.save();
-                    renderBlacklistTags();
-                });
-                tagsContainer.appendChild(tag);
-            });
-        };
-
-        const blacklistInput = overlay.querySelector('#ypp-blacklist-input');
-        const blacklistAddBtn = overlay.querySelector('#ypp-blacklist-add-btn');
-        if (blacklistInput && blacklistAddBtn && folderUI) {
-            const addKw = () => {
-                const val = blacklistInput.value.trim();
-                if (val) {
-                    const kws = val.split(',').map(s => s.trim()).filter(Boolean);
-                    if (!folderUI.storage.keywordBlacklist) folderUI.storage.keywordBlacklist = [];
-                    kws.forEach(kw => {
-                        if (!folderUI.storage.keywordBlacklist.some(item => item.toLowerCase() === kw.toLowerCase())) {
-                            folderUI.storage.keywordBlacklist.push(kw);
-                        }
-                    });
-                    folderUI.storage.save();
-                    renderBlacklistTags();
-                    blacklistInput.value = '';
-                }
-            };
-            blacklistAddBtn.addEventListener('click', addKw);
-            blacklistInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') addKw();
-            });
-            renderBlacklistTags();
-        }
-
         overlay.querySelector('#ypp-health-scan-btn').addEventListener('click', () => {
             this.runScan(overlay, folderUI);
         });
@@ -1291,7 +1226,7 @@ export class ChannelHealthUI {
         });
 
         overlay.querySelector('#ypp-health-remove-folder-btn').addEventListener('click', () => {
-            const folderFilter = overlay.querySelector('#ypp-health-folder-filter-dropdown').value;
+            const folderFilter = "all";
             if (folderFilter === 'all' || folderFilter === '__no_folder__') return;
             if (folderUI) this.bulkRemoveFromFolder(overlay, folderUI, folderFilter);
         });
@@ -1303,7 +1238,7 @@ export class ChannelHealthUI {
         const updateView = () => {
             const filter = filterSel.value;
             const sort = sortSel.value;
-            const folderFilter = folderSel.value;
+            const folderFilter = "all";
             const searchInput = overlay.querySelector('#ypp-health-search-input');
             const searchQ = searchInput ? searchInput.value.toLowerCase().trim() : '';
             
@@ -1393,7 +1328,7 @@ export class ChannelHealthUI {
             stat.addEventListener('mouseout', () => { if (filterSel.value !== stat.dataset.filter) stat.style.background = 'rgba(255,255,255,0.05)'; });
         });
 
-        folderSel.addEventListener('change', updateView);
+        if(folderSel) folderSel.addEventListener('change', updateView);
         filterSel.addEventListener('change', updateView);
         sortSel.addEventListener('change', updateView);
 
@@ -1409,7 +1344,7 @@ export class ChannelHealthUI {
             if (!listEl || !folderUI) return;
             listEl.innerHTML = '';
             
-            const folders = Object.keys(folderUI.storage.folders);
+            const folders = Object.keys((folderUI?.storage?.folders || {}));
             if (folders.length === 0) {
                 listEl.innerHTML = '<div style="color:rgba(255,255,255,0.4); font-size:12px; text-align:center; margin-top:20px;">No folders yet.</div>';
                 return;
@@ -1424,7 +1359,7 @@ export class ChannelHealthUI {
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                         <span style="color:#E6E1E5; font-size:14px; font-weight:500;">${fName}</span>
                     </div>
-                    <span class="ypp-folder-count-badge" style="background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:20px; font-size:11px; font-weight:600; color:#fff;">${folderUI.storage.folders[fName].length}</span>
+                    <span class="ypp-folder-count-badge" style="background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:20px; font-size:11px; font-weight:600; color:#fff;">${(folderUI?.storage?.folders || {})[fName].length}</span>
                 `;
                 
                 // Click to filter
@@ -1454,8 +1389,8 @@ export class ChannelHealthUI {
                     
                     const channelName = e.dataTransfer.getData('text/plain');
                     if (channelName) {
-                        if (!folderUI.storage.folders[fName].includes(channelName)) {
-                            folderUI.storage.folders[fName].push(channelName);
+                        if (!(folderUI?.storage?.folders || {})[fName].includes(channelName)) {
+                            (folderUI?.storage?.folders || {})[fName].push(channelName);
                             folderUI.storage.save();
                             renderFoldersList();
                             
@@ -1662,8 +1597,8 @@ export class ChannelHealthUI {
 
             const buildRow = (c) => {
                 const channelFolders = [];
-                if (folderUI && folderUI.storage && folderUI.storage.folders) {
-                    for (const [fName, list] of Object.entries(folderUI.storage.folders)) {
+                if (folderUI && folderUI.storage && (folderUI?.storage?.folders || {})) {
+                    for (const [fName, list] of Object.entries((folderUI?.storage?.folders || {}))) {
                         if (list.includes(c.name)) channelFolders.push(fName);
                     }
                 }
@@ -1915,7 +1850,7 @@ export class ChannelHealthUI {
                     const unsubBtn    = overlay.querySelector('#ypp-health-unsub-btn');
                     const addFolderBtn = overlay.querySelector('#ypp-health-add-folder-btn');
                     const removeFolderBtn = overlay.querySelector('#ypp-health-remove-folder-btn');
-                    const folderFilter = overlay.querySelector('#ypp-health-folder-filter-dropdown').value;
+                    const folderFilter = "all";
 
                     unsubBtn.textContent     = n > 0 ? `Unsubscribe Selected (${n})` : 'Unsubscribe Selected';
                     addFolderBtn.textContent = n > 0 ? `Add to Folder (${n})`        : 'Add to Folder';
@@ -2490,7 +2425,7 @@ export class ChannelHealthUI {
         const existingPopup = document.getElementById('ypp-health-folder-popup');
         if (existingPopup) existingPopup.remove();
 
-        const folderNames = Object.keys(folderUI.storage.folders);
+        const folderNames = Object.keys((folderUI?.storage?.folders || {}));
         if (folderNames.length === 0) {
             await window.YPP.features.CustomDialog.alert('No Folders', 'You have not created any folders yet. Please create one from the subscriptions feed.');
             return;
