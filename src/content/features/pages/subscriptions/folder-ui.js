@@ -459,120 +459,75 @@ export class FolderUI {
             // Wipe and rebuild only the left container — preserves the right filter bar
             const existingLeft = chipsBar.querySelector('.ypp-folder-chips-left');
             if (existingLeft) existingLeft.remove();
+            const existingFeedFilter = chipsBar.querySelectorAll('.ypp-feed-filter-chips');
+            existingFeedFilter.forEach(el => el.remove());
+            chipsBar.querySelectorAll('.ypp-feed-filter-chips').forEach(el => el.remove());
 
             const activeFolder = this.orchestrator.getActiveFolder();
 
-            const selectStyle = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px; cursor: pointer; outline: none; font-size: 14px; font-weight: 500; min-width: 160px; transition: 0.2s;';
-
-            const folderSelectContainer = document.createElement('div');
-            folderSelectContainer.className = 'ypp-sub-filter-group ypp-folder-dropdown-container';
-            folderSelectContainer.style.cssText = 'display: flex; align-items: center; gap: 8px;';
-
+            // ================= NEW 2-ROW LAYOUT =================
+            chipsBar.style.display = 'flex';
+            chipsBar.style.flexDirection = 'column';
+            chipsBar.style.gap = '8px';
+            chipsBar.style.marginBottom = '16px';
+            
+            // --- TOP ROW: FOLDERS ---
+            const topRow = document.createElement('div');
+            topRow.className = 'ypp-folder-chips-left';
+            topRow.style.cssText = 'display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%;';
+            
             const label = document.createElement('span');
             label.className = 'ypp-sub-filter-label';
             label.style.cssText = 'color: #aaa; font-size: 13px; font-weight: 500; text-transform: uppercase;';
-            label.textContent = 'Folder';
+            label.textContent = 'Folders:';
+            topRow.appendChild(label);
 
-            const select = document.createElement('select');
-            select.className = 'ypp-filter-dropdown';
-            select.id = 'ypp-folder-select';
-            select.style.cssText = selectStyle;
-
-            // "All Subscriptions" default
-            const allOpt = document.createElement('option');
-            allOpt.value = '';
-            allOpt.style.background = '#222';
-            allOpt.textContent = 'All Subscriptions';
-            if (!activeFolder) allOpt.selected = true;
-            select.appendChild(allOpt);
-
-            const isMulti = activeFolder && activeFolder.includes(',');
-            
-            if (isMulti) {
-                const multiOpt = document.createElement('option');
-                multiOpt.value = activeFolder;
-                multiOpt.style.background = '#222';
-                multiOpt.textContent = 'Multiple Folders';
-                multiOpt.selected = true;
-                select.appendChild(multiOpt);
-            }
-
-            Object.keys(this.storage.folders).forEach(folderName => {
-                const opt = document.createElement('option');
-                opt.value = folderName;
-                opt.style.background = '#222';
-                opt.textContent = folderName;
-                if (!isMulti && activeFolder === folderName) opt.selected = true;
-                select.appendChild(opt);
-            });
-
-            const noFolderOpt = document.createElement('option');
-            noFolderOpt.value = '__no_folder__';
-            noFolderOpt.style.background = '#222';
-            noFolderOpt.textContent = 'Uncategorized (No Folder)';
-            if (activeFolder === '__no_folder__') noFolderOpt.selected = true;
-            select.appendChild(noFolderOpt);
-
-            const newOpt = document.createElement('option');
-            newOpt.value = '__new__';
-            newOpt.style.background = '#222';
-            newOpt.textContent = '+ Create New Folder';
-            select.appendChild(newOpt);
-
-            select.addEventListener('mouseover', () => select.style.background = 'rgba(255,255,255,0.12)');
-            select.addEventListener('mouseout',  () => select.style.background = 'rgba(255,255,255,0.08)');
-
-            select.addEventListener('change', async (e) => {
-                const val = e.target.value;
-                if (val === '__new__') {
-                    // Reset visual selection while dialog is open
-                    e.target.value = this.orchestrator.getActiveFolder() || '';
-                    const name = await window.YPP.features.CustomDialog.prompt(
-                        'New Folder', 'Enter a name for the new folder:'
-                    );
-                    if (name && name.trim()) {
-                        if (this.storage.addFolder(name.trim())) {
-                            this.renderGuideFolders();
-                            this.rebuildChipsContent();
-                        }
-                    }
+            const createFolderChip = (label, id, isActive) => {
+                const chip = document.createElement('button');
+                chip.className = 'ypp-filter-chip';
+                chip.dataset.folder = id;
+                chip.textContent = label;
+                chip.style.cssText = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid transparent; cursor: pointer; padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 500; transition: 0.2s; white-space: nowrap;';
+                if (isActive) {
+                    chip.style.background = 'rgba(255, 255, 255, 1)';
+                    chip.style.color = '#0f0f0f';
                 } else {
-                    // Use Direct setter — dropdown is always a definitive choice, never a toggle
-                    this.orchestrator.setActiveFolderDirect(val || null);
+                    chip.addEventListener('mouseover', () => chip.style.background = 'rgba(255,255,255,0.15)');
+                    chip.addEventListener('mouseout', () => chip.style.background = 'rgba(255,255,255,0.08)');
                 }
+                chip.addEventListener('click', () => {
+                    if (id === '__no_folder__') this.orchestrator.setActiveFolderDirect(null);
+                    else this.orchestrator.setActiveFolderDirect(id);
+                });
+                return chip;
+            };
+
+            topRow.appendChild(createFolderChip('All', '__no_folder__', !activeFolder || activeFolder === '__no_folder__'));
+            Object.keys(this.storage.folders).forEach(folderName => {
+                topRow.appendChild(createFolderChip(folderName, folderName, activeFolder === folderName));
             });
 
-            folderSelectContainer.appendChild(label);
-            folderSelectContainer.appendChild(select);
-
-            // Play All button — only shown when a folder is active
             if (activeFolder && activeFolder !== '__no_folder__') {
                 const playBtn = document.createElement('button');
                 playBtn.className = 'ypp-filter-chip ypp-play-action-chip';
-                playBtn.innerHTML = String.raw`<svg height="16" width="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px; vertical-align: text-bottom;"><path d="M8 5v14l11-7z"/></svg> Play All`;
-                playBtn.style.cssText = 'background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255,255,255,0.2); cursor: pointer;';
+                playBtn.innerHTML = '<svg height="16" width="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px; vertical-align: text-bottom;"><path d="M8 5v14l11-7z"/></svg> PLAY ALL';
+                playBtn.style.cssText = 'background: rgba(255,255,255,0.1); color: #3ea6ff; border: 1px solid rgba(62,166,255,0.5); cursor: pointer; padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 600; transition: 0.2s; white-space: nowrap; margin-left: auto;';
                 playBtn.addEventListener('click', () => this.orchestrator.playAll(activeFolder));
-                folderSelectContainer.appendChild(playBtn);
+                topRow.appendChild(playBtn);
             }
-
-            const leftContainer = document.createElement('div');
-            leftContainer.className = 'ypp-folder-chips-left';
-            leftContainer.appendChild(folderSelectContainer);
-
+            
+            // --- SECOND ROW: FILTER CHIPS ---
             const ffSettings = this.orchestrator.settings || {};
-
-            // --- Subscription Feed Filter Chip Bar ---
             const feedFilterBar = document.createElement('div');
             feedFilterBar.className = 'ypp-sub-filter-group ypp-feed-filter-chips';
-            feedFilterBar.style.cssText = 'display: flex; align-items: center; gap: 4px;';
+            feedFilterBar.style.cssText = 'display: flex; align-items: center; gap: 4px; flex-wrap: wrap; width: 100%;';
             
-            // Get state from Orchestrator or init
             this.orchestrator.ffActiveChips = this.orchestrator.ffActiveChips || {};
 
             const getChipBg = (state) => {
-                if (state === 'show') return 'rgba(43, 166, 64, 0.2)'; // Green tint
-                if (state === 'hide') return 'rgba(235, 64, 52, 0.2)'; // Red tint
-                return 'rgba(255,255,255,0.1)'; // Neutral
+                if (state === 'show') return 'rgba(43, 166, 64, 0.2)';
+                if (state === 'hide') return 'rgba(235, 64, 52, 0.2)';
+                return 'rgba(255,255,255,0.1)';
             };
             
             const getChipBorder = (state) => {
@@ -590,7 +545,6 @@ export class FolderUI {
             const createFfChip = (id, label, iconSvg = '', isDefault = false) => {
                 if (ffSettings[`ff_${id}_visible`] === false) return;
                 
-                // Initialize default state if first load
                 if (!this.orchestrator.ffInitialized) {
                     if (ffSettings[`ff_${id}_default`] || isDefault) {
                         this.orchestrator.ffActiveChips[id] = 'show';
@@ -620,40 +574,33 @@ export class FolderUI {
 
                 chip.addEventListener('click', () => {
                     const multiSelect = ffSettings.ff_opt_multiselect;
-                    
                     if (id === 'all') {
-                        // Reset all to neutral, set 'all' to show
                         Object.keys(this.orchestrator.ffActiveChips).forEach(k => {
                             this.orchestrator.ffActiveChips[k] = 'neutral';
                         });
                         this.orchestrator.ffActiveChips['all'] = 'show';
                     } else {
                         if (!multiSelect) {
-                            // If not multiselect, reset all others to neutral (except if we're just toggling the current one)
                             const currentState = this.orchestrator.ffActiveChips[id] || 'neutral';
                             Object.keys(this.orchestrator.ffActiveChips).forEach(k => {
                                 this.orchestrator.ffActiveChips[k] = 'neutral';
                             });
-                            // Restore state so it can progress
                             this.orchestrator.ffActiveChips[id] = currentState;
                         }
                         
                         this.orchestrator.ffActiveChips['all'] = 'neutral';
                         
-                        // Progress state: neutral -> show -> hide -> neutral
                         const current = this.orchestrator.ffActiveChips[id] || 'neutral';
                         if (current === 'neutral') this.orchestrator.ffActiveChips[id] = 'show';
                         else if (current === 'show') this.orchestrator.ffActiveChips[id] = 'hide';
                         else this.orchestrator.ffActiveChips[id] = 'neutral';
                         
-                        // If everything is neutral, select 'All'
                         const anyActive = Object.values(this.orchestrator.ffActiveChips).some(s => s !== 'neutral');
                         if (!anyActive) {
                             this.orchestrator.ffActiveChips['all'] = 'show';
                         }
                     }
                     
-                    // Re-render chips visual state
                     feedFilterBar.querySelectorAll('.ypp-ff-chip').forEach(c => {
                         const s = this.orchestrator.ffActiveChips[c.dataset.id] || 'neutral';
                         c.className = `ypp-filter-chip ypp-ff-chip ypp-ff-${s}`;
@@ -679,8 +626,7 @@ export class FolderUI {
             createFfChip('posts', 'Posts', '');
             createFfChip('playlist', 'Playlist', '');
 
-            // Unwatched / Watched dropdown
-            const watchSelectStyle = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 16px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: 0.2s; height: 30px;';
+            const watchSelectStyle = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 16px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: 0.2s; height: 30px; margin-left: 8px;';
             const watchDropdown = document.createElement('select');
             watchDropdown.style.cssText = watchSelectStyle;
             
@@ -692,7 +638,6 @@ export class FolderUI {
                 watchDropdown.appendChild(el);
             });
             
-            // Set initial state from default
             if (!this.orchestrator.ffInitialized) {
                 if (ffSettings.ff_unwatched_default) {
                     watchDropdown.value = 'unwatched';
@@ -713,58 +658,38 @@ export class FolderUI {
             });
             feedFilterBar.appendChild(watchDropdown);
 
-            // Search input
             if (ffSettings.ff_search_visible !== false) {
                 const searchInput = document.createElement('input');
                 searchInput.type = 'text';
-                searchInput.placeholder = 'Subscription Feed Filter...';
-                searchInput.style.cssText = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 16px; font-size: 13px; outline: none; width: 160px; height: 30px; transition: width 0.2s;';
+                searchInput.placeholder = 'Search...';
+                searchInput.style.cssText = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 16px; font-size: 13px; outline: none; width: 140px; height: 30px; transition: width 0.2s; margin-left: 8px;';
                 
                 if (!this.orchestrator.ffInitialized) {
                     this.orchestrator.ffActiveSearch = ffSettings.ff_search_default || '';
                 }
                 searchInput.value = this.orchestrator.ffActiveSearch || '';
                 
-                searchInput.addEventListener('focus', () => searchInput.style.width = '240px');
-                searchInput.addEventListener('blur', () => searchInput.style.width = '160px');
+                searchInput.addEventListener('focus', () => searchInput.style.width = '200px');
+                searchInput.addEventListener('blur', () => searchInput.style.width = '140px');
                 searchInput.addEventListener('input', (e) => {
                     this.orchestrator.ffActiveSearch = e.target.value.toLowerCase();
                     this.orchestrator.updateFilterState();
                 });
                 feedFilterBar.appendChild(searchInput);
             }
-            
-            // Options Gear Button
-            const gearBtn = document.createElement('button');
-            gearBtn.innerHTML = '<svg height="16" width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>';
-            gearBtn.style.cssText = 'background: transparent; color: #aaa; border: none; cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.2s;';
-            gearBtn.addEventListener('mouseover', () => { gearBtn.style.background = 'rgba(255,255,255,0.1)'; gearBtn.style.color = '#fff'; });
-            gearBtn.addEventListener('mouseout', () => { gearBtn.style.background = 'transparent'; gearBtn.style.color = '#aaa'; });
-            gearBtn.addEventListener('click', () => {
-                if (window.YPP.features.CustomDialog) {
-                    // We will implement the advanced options modal here soon
-                    window.YPP.features.CustomDialog.alert('Subscription Feed Filter', 'Advanced filter options menu coming soon!');
-                }
-            });
-            feedFilterBar.appendChild(gearBtn);
 
             this.orchestrator.ffInitialized = true;
-            leftContainer.appendChild(feedFilterBar);
 
-            // Insert the left container BEFORE the separator / right container
-            const separator = chipsBar.querySelector('.ypp-filter-separator');
-            if (separator) {
-                chipsBar.insertBefore(leftContainer, separator);
-            } else {
-                chipsBar.appendChild(leftContainer);
-            }
+            // Combine both rows
+            chipsBar.appendChild(topRow);
+            chipsBar.appendChild(feedFilterBar);
 
-            chipsBar.style.display = 'flex';
+            // Hide/remove the old right container which might exist
+            const existingRight = chipsBar.querySelector('.ypp-folder-chips-right');
+            if (existingRight) existingRight.remove();
+            const existingSeparator = chipsBar.querySelector('.ypp-filter-separator');
+            if (existingSeparator) existingSeparator.remove();
 
-            // Inject / refresh the right filter bar only if it hasn't been built yet
-            if (!chipsBar.querySelector('.ypp-folder-chips-right')) {
-                this._injectFilterBar(chipsBar);
-            }
         } else {
             chipsBar.style.display = 'none';
             chipsBar.innerHTML = '';
@@ -958,8 +883,11 @@ export class FolderUI {
                 if (!link || !link.textContent.trim()) return;
 
                 const btn = document.createElement('button');
-                btn.className = 'ypp-card-folder-btn ypp-folder-badge';
-                btn.innerHTML = String.raw`<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> Save`;
+                btn.className = 'ypp-card-folder-btn';
+                btn.style.cssText = 'background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 500; cursor: pointer; display: flex; align-items: center; margin-left: 6px; transition: 0.2s; height: 18px; line-height: 14px;';
+                btn.onmouseover = () => { btn.style.color = '#fff'; btn.style.background = 'rgba(255,255,255,0.2)'; };
+                btn.onmouseout = () => { btn.style.color = '#aaa'; btn.style.background = 'rgba(255,255,255,0.1)'; };
+                btn.innerHTML = String.raw`<svg height="12" width="12" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> Save`;
                 btn.title = "Save to Folder";
 
                 btn.addEventListener('click', (e) => {
@@ -2749,3 +2677,5 @@ export class ChannelHealthUI {
 };
 
 window.YPP.features.CustomDialog = CustomDialog;
+
+window.YPP.features.FolderUI = FolderUI;
