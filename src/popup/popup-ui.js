@@ -155,7 +155,7 @@ export function initUI(document) {
         if (!card) return;
 
         if (e.target.closest('.toggle') || e.target.closest('input') || e.target.closest('button')) return;
-        if (e.target.closest('.sub-setting-row, .sub-options, .mode-settings, .shortcut-panel-row')) return;
+        if (e.target.closest('.sub-setting-row, .sub-options, .mode-settings, .shortcut-panel-row, .inline-slider-wrapper')) return;
 
         const input = card.querySelector('input[type="checkbox"]');
         if (!input) return;

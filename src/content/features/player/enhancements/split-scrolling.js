@@ -93,8 +93,19 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
      * @param {string} _url - Current URL (unused — we act unconditionally)
      */
     onPageChange(_url) {
-        if (this.isEnabled && !document.getElementById(_SPLIT_SCROLL_STYLE_ID)) {
-            this._injectStyles();
+        if (this.isEnabled) {
+            if (!document.getElementById(_SPLIT_SCROLL_STYLE_ID)) {
+                this._injectStyles();
+            }
+            // Reset sidebar scroll position on navigation
+            const secondary = document.getElementById('secondary');
+            if (secondary) {
+                secondary.scrollTop = 0;
+                // YouTube might recreate or shift the layout, so just in case, do it on the next frame too
+                requestAnimationFrame(() => {
+                    if (secondary) secondary.scrollTop = 0;
+                });
+            }
         }
     }
 

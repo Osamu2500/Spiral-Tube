@@ -7,9 +7,6 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         super('HideShorts');
         this.handleShortsAdded = this.handleShortsAdded.bind(this);
         this._isMonitoringShorts = false;
-        
-        // Setup CSS rules to inject
-        this._styleId = 'ypp-hide-shorts-style';
     }
 
     getConfigKey() { return null; } // Controlled by multiple keys (hideShorts, hideSearchShorts)
@@ -48,9 +45,6 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         document.body.classList.toggle('ypp-hide-shorts', !!this.settings.hideShorts);
         document.body.classList.toggle('ypp-hide-search-shorts', !!this.settings.hideSearchShorts);
         
-        // Also inject dynamic styles for absolute hiding without rely entirely on external CSS
-        this._injectStyles();
-
         // If either is enabled, we need to monitor the DOM to add attributes
         if (this.settings.hideShorts || this.settings.hideSearchShorts) {
             this.removeShortsFromDOM();
@@ -61,69 +55,38 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         }
     }
     
-    _injectStyles() {
-        let styleEl = document.getElementById(this._styleId);
-        
-        if (!this.settings.hideShorts && !this.settings.hideSearchShorts) {
-            if (styleEl) styleEl.remove();
-            return;
+    _hideShortsContainer(el) {
+        const container = this.utils.findOutermostMatch(el, [
+            'ytd-rich-item-renderer',
+            'ytd-video-renderer',
+            'ytd-grid-video-renderer',
+            'ytd-compact-video-renderer',
+            'ytd-reel-item-renderer',
+            'ytd-reel-shelf-renderer',
+            'yt-chip-cloud-chip-renderer',
+            'ytm-video-with-context-renderer',
+            'ytm-compact-video-renderer',
+            'ytm-shorts-lockup-view-model'
+        ]);
+        if (container) {
+            container.style.setProperty('display', 'none', 'important');
+            return true;
         }
-
-        if (!styleEl) {
-            styleEl = document.createElement('style');
-            styleEl.id = this._styleId;
-            document.head.appendChild(styleEl);
-        }
-
-        let css = '';
-        if (this.settings.hideShorts) {
-            css += `
-                ytd-reel-shelf-renderer,
-                ytd-rich-shelf-renderer[is-shorts],
-                ytd-rich-section-renderer[is-shorts],
-                ytd-shelf-renderer[is-shorts],
-                ytm-reel-shelf-renderer,
-                grid-shelf-view-model,
-                ytd-reel-item-renderer,
-                ytd-rich-item-renderer:has(a[href*="/shorts/"]),
-                ytd-video-renderer:has(a[href*="/shorts/"]):not([is-search]),
-                ytd-grid-video-renderer:has(a[href*="/shorts/"]),
-                ytd-compact-video-renderer:has(a[href*="/shorts/"]),
-                ytd-playlist-video-renderer:has(a[href*="/shorts/"]),
-                ytd-guide-entry-renderer:has(a[title="Shorts"]),
-                ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
-                tp-yt-paper-tab[aria-label="Shorts"],
-                yt-tab-shape[tab-title="Shorts"],
-                #related ytd-reel-shelf-renderer,
-                ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
-                [data-ypp-is-short="true"] {
-                    display: none !important;
-                }
-            `;
-        }
-        
-        if (this.settings.hideSearchShorts) {
-            css += `
-                ytd-video-renderer[is-search]:has(a[href*="/shorts/"]),
-                ytd-search ytd-reel-shelf-renderer {
-                    display: none !important;
-                }
-            `;
-        }
-
-        styleEl.textContent = css;
+        return false;
     }
 
     _cleanupDOM() {
-        const styleEl = document.getElementById(this._styleId);
-        if (styleEl) styleEl.remove();
-        
         document.body.classList.remove('ypp-hide-shorts', 'ypp-hide-search-shorts');
-        document.querySelectorAll('[data-ypp-is-short]').forEach(el => el.removeAttribute('data-ypp-is-short'));
+        document.querySelectorAll('[data-ypp-is-short]').forEach(el => {
+            el.removeAttribute('data-ypp-is-short');
+            el.style.removeProperty('display');
+        });
     }
 
     removeShortsFromDOM() {
         const SHORTS_PATTERNS = [
+            'ytm-shorts-lockup-view-model',
+            '.pivot-shorts',
             'ytd-reel-shelf-renderer',
             'ytd-rich-shelf-renderer[is-shorts]',
             'ytd-rich-section-renderer[is-shorts]',
@@ -131,16 +94,11 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             'ytm-reel-shelf-renderer',
             'grid-shelf-view-model',
             'ytd-reel-item-renderer',
-            'ytd-rich-item-renderer:has(a[href*="/shorts/"])',
-            'ytd-grid-video-renderer:has(a[href*="/shorts/"])',
-            'ytd-compact-video-renderer:has(a[href*="/shorts/"])',
-            'ytd-playlist-video-renderer:has(a[href*="/shorts/"])',
+            'a[href^="/shorts/"]',
             'ytd-guide-entry-renderer:has(a[title="Shorts"])',
             'ytd-mini-guide-entry-renderer:has(a[title="Shorts"])',
             'tp-yt-paper-tab[aria-label="Shorts"]',
-            'yt-tab-shape[tab-title="Shorts"]',
-            '#related ytd-reel-shelf-renderer',
-            'ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer'
+            'yt-tab-shape[tab-title="Shorts"]'
         ];
 
         let removed = 0;
@@ -149,7 +107,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             const elements = document.querySelectorAll(combinedSelector);
             elements.forEach(el => {
                 if (this._isShortsElement(el)) {
-                    if (!el.hasAttribute('data-ypp-is-short')) {
+                    if (this._hideShortsContainer(el)) {
                         el.setAttribute('data-ypp-is-short', 'true');
                         removed++;
                     }
@@ -158,8 +116,12 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             
             // Search specific shorts videos if enabled
             if (this.settings.hideSearchShorts && window.location.pathname === '/results') {
-                document.querySelectorAll('ytd-video-renderer:has(a[href*="/shorts/"])').forEach(el => {
-                    el.setAttribute('is-search', 'true');
+                document.querySelectorAll('a[href^="/shorts/"]').forEach(link => {
+                    const videoEl = link.closest('ytd-video-renderer, ytd-compact-video-renderer, ytm-video-with-context-renderer');
+                    if (videoEl && this._hideShortsContainer(videoEl)) {
+                        videoEl.setAttribute('is-search', 'true');
+                        removed++;
+                    }
                 });
             }
         } catch (err) {
@@ -176,17 +138,32 @@ export class HideShorts extends window.YPP.features.BaseFeature {
 
     _isShortsElement(element) {
         if (!element) return false;
+        
+        // Fast paths
         const tagName = element.tagName?.toLowerCase();
-        if (tagName === 'ytd-reel-shelf-renderer' || tagName.includes('reel')) return true;
+        if (tagName === 'ytm-shorts-lockup-view-model') return true;
+        if (tagName === 'ytd-reel-shelf-renderer' || tagName === 'ytm-reel-shelf-renderer') return true;
+        if (element.classList?.contains('pivot-shorts')) return true;
+        
+        // Detailed checks
         if (element.hasAttribute('is-shorts')) return true;
-        if (element.querySelector('a[href*="/shorts/"]')) return true;
+        
+        const href = element.getAttribute('href');
+        if (href && href.startsWith('/shorts/')) return true;
+        if (element.querySelector('a[href^="/shorts/"]')) return true;
+        
         const ariaLabel = element.getAttribute('aria-label');
-        if (ariaLabel?.toLowerCase().includes('shorts')) return true;
+        if (ariaLabel?.toLowerCase() === 'shorts') return true;
+        
         const title = element.querySelector('#title, [title]');
-        if (title?.textContent?.toLowerCase().includes('shorts') || 
-            title?.getAttribute('title')?.toLowerCase().includes('shorts')) {
+        if (title?.textContent?.trim().toLowerCase() === 'shorts' || 
+            title?.getAttribute('title')?.trim().toLowerCase() === 'shorts') {
             return true;
         }
+        
+        const timeStatus = element.querySelector('ytd-thumbnail-overlay-time-status-renderer');
+        if (timeStatus?.getAttribute('overlay-style') === 'SHORTS') return true;
+
         return false;
     }
 
@@ -195,7 +172,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         chips.forEach(chip => {
             const textElement = chip.querySelector("#text");
             if (textElement && textElement.innerText.trim() === "Shorts") {
-                if (!chip.hasAttribute('data-ypp-is-short')) {
+                if (this._hideShortsContainer(chip)) {
                     chip.setAttribute('data-ypp-is-short', 'true');
                 }
             }
@@ -203,24 +180,24 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     }
 
     _removeShortsByHeuristics() {
-        if (window.location.pathname === '/results') return;
-        const shelves = document.querySelectorAll('ytd-shelf-renderer, ytd-rich-shelf-renderer');
-        shelves.forEach(shelf => {
-            if (this._isShortsElement(shelf)) {
-                if (!shelf.hasAttribute('data-ypp-is-short')) {
-                    shelf.setAttribute('data-ypp-is-short', 'true');
-                }
-            }
-        });
-        const videos = document.querySelectorAll(
-            'ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer'
+        if (window.location.pathname === '/results' && !this.settings.hideSearchShorts) return;
+        
+        const elementsToCheck = document.querySelectorAll(
+            'ytd-shelf-renderer, ytd-rich-shelf-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytm-video-with-context-renderer, ytm-compact-video-renderer'
         );
-        videos.forEach(video => {
-            const badge = video.querySelector('span[aria-label="Shorts"], ytd-badge-supported-renderer');
-            if (badge?.getAttribute('aria-label') === 'Shorts' ||
-                badge?.textContent?.trim() === 'Shorts') {
-                if (!video.hasAttribute('data-ypp-is-short')) {
-                    video.setAttribute('data-ypp-is-short', 'true');
+        
+        elementsToCheck.forEach(el => {
+            if (this._isShortsElement(el)) {
+                if (this._hideShortsContainer(el)) {
+                    el.setAttribute('data-ypp-is-short', 'true');
+                }
+            } else {
+                // Secondary check for badges
+                const badge = el.querySelector('span[aria-label="Shorts"], ytd-badge-supported-renderer');
+                if (badge?.getAttribute('aria-label') === 'Shorts' || badge?.textContent?.trim() === 'Shorts') {
+                    if (this._hideShortsContainer(el)) {
+                        el.setAttribute('data-ypp-is-short', 'true');
+                    }
                 }
             }
         });
@@ -263,15 +240,18 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             
             // Search specific shorts videos if enabled
             if (this.settings.hideSearchShorts && window.location.pathname === '/results' && el.tagName?.toLowerCase() === 'ytd-video-renderer') {
-                if (el.querySelector('a[href*="/shorts/"]')) {
-                    el.setAttribute('is-search', 'true');
+                if (el.querySelector('a[href^="/shorts/"]')) {
+                    if (this._hideShortsContainer(el)) {
+                        el.setAttribute('is-search', 'true');
+                        removed++;
+                    }
                 }
             }
 
-            if (window.location.pathname === '/results') return; // Do not hide real results
+            if (window.location.pathname === '/results' && !this.settings.hideSearchShorts) return; // Do not hide real results
 
             if (this._isShortsElement(el)) {
-                if (!el.hasAttribute('data-ypp-is-short')) {
+                if (this._hideShortsContainer(el)) {
                     el.setAttribute('data-ypp-is-short', 'true');
                     removed++;
                 }
@@ -281,7 +261,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             if (el.tagName && el.tagName.toLowerCase() === 'yt-chip-cloud-chip-renderer') {
                 const textElement = el.querySelector("#text");
                 if (textElement && textElement.innerText.trim() === "Shorts") {
-                    if (!el.hasAttribute('data-ypp-is-short')) {
+                    if (this._hideShortsContainer(el)) {
                         el.setAttribute('data-ypp-is-short', 'true');
                         removed++;
                     }
@@ -290,9 +270,9 @@ export class HideShorts extends window.YPP.features.BaseFeature {
             }
 
             try {
-                const nestedShorts = el.querySelectorAll('ytd-reel-shelf-renderer, a[href*="/shorts/"]');
+                const nestedShorts = el.querySelectorAll('ytd-reel-shelf-renderer, a[href^="/shorts/"], ytm-shorts-lockup-view-model');
                 if (nestedShorts.length > 0 && this._isShortsElement(el)) {
-                     if (!el.hasAttribute('data-ypp-is-short')) {
+                     if (this._hideShortsContainer(el)) {
                          el.setAttribute('data-ypp-is-short', 'true');
                          removed++;
                      }

@@ -101,7 +101,13 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'autoLike',         label:'Auto Like',          desc:'Automatically like video',   icon:P('M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z') },
                     { type:'toggle', id:'autoPiP',          label:'Auto PiP',           desc:'PiP when switching tabs',    icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
                     { type:'toggle', id:'intentionalDelay', label:'Intentional Delay',  desc:'Pause before video',         icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
-                    { type:'range',  id:'autoLikeThreshold',label:'Auto Like at (%)',   unit:'%', min:0, max:100, step:5, parent: 'autoLike' },
+                    { type:'inlineToggle', id:'autoLikeSubscribedOnly', label:'Subscribed Only', desc:'Only like if you are subscribed', parent: 'autoLike' },
+                    { type:'inlineToggle', id:'autoLikeChannelLists', label:'Use Channel Lists', desc:'Respect global whitelist/blacklist', parent: 'autoLike' },
+                    { type:'inlineToggle', id:'autoLikeWaitAds', label:'Wait for Ads', desc:'Wait until ads finish before liking', parent: 'autoLike' },
+                    { type:'button-group', id:'autoLikeDelayType', label:'Like After Type', parent: 'autoLike', options: [{value:'seconds', label:'Seconds'}, {value:'percent', label:'Percent'}] },
+                    { type:'range',  id:'autoLikeDelaySeconds', label:'Delay (Seconds)', unit:'s', min:0, max:300, step:1, parent: 'autoLike' },
+                    { type:'range',  id:'autoLikeDelayPercent', label:'Delay (Percent)', unit:'%', min:0, max:100, step:5, parent: 'autoLike' },
+                    { type:'inlineToggle', id:'autoLikeHumanize', label:'Humanize seconds delay', desc:'Add random variance to delay', parent: 'autoLike' },
                     { type:'range',  id:'intentionalDelayTime',label:'Delay Duration',  unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' },
                     { type:'toggle', id:'smartDownload', label:'Smart Download', badge:'NEW', desc:'Redirect download button to ssvid', icon:P('M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z') },
                     { type:'select', id:'autoQuality',      label:'Auto-Quality',       desc:'Force specific resolution', icon:P('M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM10 8l6 4-6 4V8z'), options:[{value:'highres',label:'Max/4K'},{value:'hd1440',label:'1440p'},{value:'hd1080',label:'1080p'},{value:'hd720',label:'720p'},{value:'off',label:'Off'}] },
@@ -252,10 +258,10 @@ export const POPUP_SCHEMA = [
     },
 
     // ──────────────────────────────────────────────────────────────────
-    // DECLUTTER (Hide Features)
+    // FILTERS (Hide Features)
     // ──────────────────────────────────────────────────────────────────
     {
-        id: 'declutter', label: 'Declutter',
+        id: 'declutter', label: 'Filters',
         icon: P('M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z'),
         sections: [
             {
@@ -267,12 +273,68 @@ export const POPUP_SCHEMA = [
                     { type:'toggle', id:'hideTrending',   label:'Hide Trending/Explore',icon:P('M13 2L3 14h9l-1 8 10-12h-9l1-8z') },
                     { type:'toggle', id:'hideMetrics',    label:'Hide Views & Subs',   desc:'Hide views, likes, sub counts', icon:P('M 1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z M3 3l18 18') },
                     { type:'toggle', id:'hideThumbnails',    label:'Hide Thumbnails',   desc:'Blur on hover to reveal',  icon:P('M3 3h18v18H3z M8.5 8.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z M21 15l-5-5L5 21') },
-                    { type:'toggle', id:'hideWatched',       class:'span-2', label:'Hide Watched', inlineSlot:`<div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden; margin-left:8px; vertical-align:middle; z-index:10; position:relative;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:10px; padding:2px 8px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:10px; padding:2px 8px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:180px;"><input type="range" id="hideWatchedThreshold" min="10" max="100" step="5" style="width:100%;"><span id="hideWatchedThresholdValue" style="font-size:10px; min-width:26px; opacity:0.7;">80%</span></div><input type="hidden" id="hideWatchedMode" value="dim" />`, desc:'Auto-hide watched videos',  icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z'), slot:'' },
+                    { type:'toggle', id:'hideWatched',       class:'span-2', label:'Hide Watched', inlineSlot:`<div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden; margin-left:8px; vertical-align:middle; z-index:10; position:relative;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:10px; padding:2px 8px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:10px; padding:2px 8px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:180px;"><input type="range" id="hideWatchedThreshold" min="10" max="100" step="5" style="width:100%;"><span id="hideWatchedThresholdValue" style="font-size:10px; min-width:26px; opacity:0.7;">80%</span></div><input type="hidden" id="hideWatchedMode" value="dim" />`, desc:'Auto-hide watched videos',  icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z'), slot:'' },
                     { type:'toggle', id:'hideMixes',         label:'Hide Mixes',        desc:'Remove infinite mixes',    icon:P('M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71') },
                     { type:'toggle', id:'hidePlaylists',     label:'Hide Playlists',    desc:'Remove playlist cards',    icon:P('M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01') },
                     { type:'toggle', id:'hidePodcasts',      label:'Hide Podcasts',     desc:'Remove podcast cards',     icon:P('M3 18v-6a9 9 0 0 1 18 0v6 M21 19a2 2 0 0 1-2 2h-1v-6h3v4z M3 19a2 2 0 0 0 2 2h1v-6H3v4z') },
                     { type:'toggle', id:'hidePosts',         label:'Hide Posts',        desc:'Remove community posts',   icon:P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z') },
                     { type:'toggle', id:'hidePromoShelves',  label:'Hide Promos',       desc:'Remove shelves & games',   icon:P('M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z') },
+                ]
+            },
+            {
+                title: 'Advanced Filters',
+                icon: P('M12 2L2 22h20L12 2z'),
+                items: [
+                    { type:'select', id:'filterMode', label:'Filter Mode', desc:'How to treat filtered content globally', icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'), options: [{value:'hide',label:'Hide completely'},{value:'dim',label:'Dim (Hover to reveal)'}] },
+                    { type:'toggle', id:'channelWhitelistEnabled', label:'Enable Channel Whitelist', desc:'Exempt channels from being hidden', icon:P('M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z') },
+                    { type:'toggle', id:'channelBlacklistEnabled', label:'Enable Channel Blacklist', desc:'Always hide specific channels', icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.69L5.69 16.9C4.63 15.55 4 13.85 4 12zm8 8c-1.85 0-3.55-.63-4.9-1.69L18.31 7.1C19.37 8.45 20 10.15 20 12c0 4.42-3.58 8-8 8z') },
+                    { type:'toggle', id:'viewsFilterEnabled', label:'Hide Low View Videos', desc:'Filter out unpopular content', icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z') },
+                    { type:'range', id:'viewsHideThreshold', label:'Minimum Views', parent: 'viewsFilterEnabled', discreteOptions: [
+                        { value: 0, label: 'Off' },
+                        { value: 100, label: '100' },
+                        { value: 500, label: '500' },
+                        { value: 1000, label: '1,000' },
+                        { value: 5000, label: '5,000' },
+                        { value: 10000, label: '10k' },
+                        { value: 50000, label: '50k' },
+                        { value: 100000, label: '100k' },
+                        { value: 500000, label: '500k' },
+                        { value: 1000000, label: '1M' },
+                        { value: 5000000, label: '5M' },
+                        { value: 10000000, label: '10M' }
+                    ] },
+                    { type:'toggle', id:'dateFilterEnabled', label:'Filter by Upload Date', desc:'Hide videos older/newer than N days', icon:P('M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z') },
+                    { type:'range', id:'dateFilterOlderThreshold', label:'Max Age (Days)', parent: 'dateFilterEnabled', discreteOptions: [
+                        { value: 0, label: 'Off' },
+                        { value: 1, label: '1 day' },
+                        { value: 2, label: '2 days' },
+                        { value: 3, label: '3 days' },
+                        { value: 7, label: '1 week' },
+                        { value: 14, label: '2 weeks' },
+                        { value: 21, label: '3 weeks' },
+                        { value: 30, label: '1 month' },
+                        { value: 90, label: '3 months' },
+                        { value: 180, label: '6 months' },
+                        { value: 365, label: '1 year' },
+                        { value: 730, label: '2 years' },
+                        { value: 1825, label: '5 years' },
+                        { value: 3650, label: '10 years' }
+                    ] },
+                    { type:'range', id:'dateFilterNewerThreshold', label:'Min Age (Days)', parent: 'dateFilterEnabled', discreteOptions: [
+                        { value: 0, label: 'Off' },
+                        { value: 1, label: '1 day' },
+                        { value: 2, label: '2 days' },
+                        { value: 3, label: '3 days' },
+                        { value: 7, label: '1 week' },
+                        { value: 14, label: '2 weeks' },
+                        { value: 21, label: '3 weeks' },
+                        { value: 30, label: '1 month' },
+                        { value: 90, label: '3 months' },
+                        { value: 180, label: '6 months' },
+                        { value: 365, label: '1 year' },
+                        { value: 730, label: '2 years' },
+                        { value: 1825, label: '5 years' }
+                    ] },
                 ]
             },
             {

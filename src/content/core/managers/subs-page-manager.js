@@ -3,13 +3,8 @@ class SubscriptionsPageManager extends window.YPP.BasePageManager {
         super(utils, settings);
         this.matchPatterns = [/^\/feed\/subscriptions/];
         
-        // Initialize features managed by this page
-        this.features = {
-            // DeckMode is managed by FeatureManager globally via constants.js
-            // Ensure folder UI features are managed here if needed
-            folderUi: window.YPP.features.FolderUI ? new window.YPP.features.FolderUI() : null,
-            subscriptionsUi: window.YPP.features.SubscriptionsUI ? new window.YPP.features.SubscriptionsUI() : null
-        };
+        // Features managed by this page. Instances are grabbed from FeatureManager dynamically.
+        this.features = {};
     }
 
     onActivate() {
@@ -28,23 +23,33 @@ class SubscriptionsPageManager extends window.YPP.BasePageManager {
         this.settings = { ...this.settings, ...settings };
         if (!this.isActive) return;
 
+        // Ensure we have references to the features
+        const featureManager = window.YPP.Main?.featureManager;
+        const subFolders = featureManager?.getFeature('subscriptionFolders');
+        const subUi = featureManager?.getFeature('subscriptionUI');
+        const deckMode = featureManager?.getFeature('deckMode');
+        
+        this.features.deckMode = deckMode;
+        this.features.subscriptionFolders = subFolders;
+        this.features.subscriptionUi = subUi;
+
         // Apply Deck Mode if enabled
-        if (this.features.deckMode) {
+        if (deckMode) {
             if (this.settings.enableDeckMode) {
-                this.features.deckMode.enable();
+                deckMode.enable();
             } else {
-                this.features.deckMode.disable();
+                deckMode.disable();
             }
         }
 
         // Apply Folders if enabled
-        if (this.features.folderUi) {
+        if (subFolders) {
             if (this.settings.subscriptionFolders) {
-                this.features.folderUi.enable();
-                this.features.subscriptionsUi?.enable();
+                subFolders.enable();
+                subUi?.enable();
             } else {
-                this.features.folderUi.disable();
-                this.features.subscriptionsUi?.disable();
+                subFolders.disable();
+                subUi?.disable();
             }
         }
     }

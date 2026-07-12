@@ -113,6 +113,42 @@ window.YPP.Utils = Object.assign(window.YPP.Utils || {}, {
     // =====================================================================
 
     /**
+     * Gets common video container selectors for YouTube DOM.
+     * Used for identifying the outermost container of a video/short/mix.
+     * @returns {string}
+     */
+    getVideoContainerSelectors: () => {
+        const pathname = window.location.pathname;
+        const isChannelPage = !!pathname && (pathname.startsWith('/@') || pathname.startsWith('/channel/'));
+
+        if (pathname === '/watch') {
+            return 'ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model, ytm-video-with-context-renderer, ytm-compact-video-renderer';
+        }
+        if (isChannelPage) {
+            return 'ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytm-video-with-context-renderer, ytm-compact-video-renderer';
+        }
+        return 'ytd-compact-video-renderer, ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model, ytm-video-with-context-renderer, ytm-compact-video-renderer, ytm-rich-item-renderer';
+    },
+
+    /**
+     * Walks up the DOM tree from an element to find the outermost matching container.
+     * @param {Element} element
+     * @param {string} selectors
+     * @returns {Element|null}
+     */
+    findOutermostMatch: (element, selectors) => {
+        let item = element;
+        let match = null;
+        while (item) {
+            if (item.matches && item.matches(selectors)) {
+                match = item;
+            }
+            item = item.parentElement;
+        }
+        return match;
+    },
+
+    /**
      * DOM read/write batching utility (similar to fastdom)
      * Prevents layout thrashing by grouping reads and writes in requestAnimationFrame
      */

@@ -1,9 +1,11 @@
-
-
 body.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer,
 body.ypp-hide-explore-topics yt-chip-cloud-renderer,
 body.ypp-hide-explore-topics #chips-wrapper,
-body.ypp-hide-explore-topics ytd-rich-grid-renderer > #header {
+body.ypp-hide-explore-topics ytd-rich-grid-renderer > #header,
+body.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-chip-cloud-renderer),
+body.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
+body.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-related-chip-cloud-renderer),
+body.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-search-query-renderer) {
   display: none !important;
 }
 body.ypp-hide-player-topics yt-related-chip-cloud-renderer {

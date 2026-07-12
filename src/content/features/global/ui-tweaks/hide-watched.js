@@ -68,6 +68,9 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
             this._processCards();
         });
         
+        // React to infinite scroll and virtual DOM recycling
+        this.addListener(document, 'yt-page-data-updated', this._boundSchedule);
+
         // React to user manually marking/unmarking from MarkWatched
         this.onBusEvent('watched:updated', () => {
             this._processCards();
@@ -84,9 +87,6 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         });
         
         if (window.YPP && window.YPP.sharedObserver) {
-            // dom:mutated fires with MutationRecord[] — extract added card nodes
-            // directly so we avoid a full querySelectorAll sweep on every mutation.
-            this.onBusEvent('dom:mutated', (mutations) => this._processMutatedNodes(mutations));
             // Register direct card selector so newly added cards (infinite scroll)
             // are caught immediately without waiting for a full page sweep.
             window.YPP.sharedObserver.register(
@@ -99,19 +99,19 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
                     nodes.forEach(card => this._evaluateCard(card, watchedIds, threshold));
                 },
                 true,
-                true
+                false
             );
             window.YPP.sharedObserver.register(
                 'hide-watched-progress',
-                'ytd-thumbnail-overlay-resume-playback-renderer, .thumbnail-overlay-resume-playback-progress, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
+                'ytd-thumbnail-overlay-resume-playback-renderer, .thumbnail-overlay-resume-playback-progress, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, .yt-progress-bar-view-model, yt-progress-bar-view-model, #progress, .yt-progress-bar-view-model-progress',
                 this._boundProcessProgress,
                 false,
-                true
+                false
             );
         }
 
         // Re-process all cards on SPA navigation (clears stamps so recycled DOM is re-checked)
-        this.addListener(window, 'yt-navigate-finish', () => {
+        this.addListener(document, 'yt-navigate-finish', () => {
             document.querySelectorAll('[data-ypp-watched-processed]').forEach(card => {
                 delete card.dataset.yppWatchedProcessed;
             });
@@ -144,6 +144,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         // Restore all hidden/dimmed cards by removing the data attribute
         document.querySelectorAll('[data-ypp-watched]').forEach(card => {
             card.removeAttribute('data-ypp-watched');
+            card.style.removeProperty('display');
         });
 
         // Clear processing stamps so re-enabling works instantly
@@ -162,6 +163,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         // Re-evaluate every card (mode may have switched dim ↔ hide)
         document.querySelectorAll('[data-ypp-watched]').forEach(card => {
             card.removeAttribute('data-ypp-watched');
+            card.style.removeProperty('display');
         });
         document.querySelectorAll('[data-ypp-watched-processed]').forEach(card => {
             delete card.dataset.yppWatchedProcessed;
@@ -174,7 +176,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
     // =========================================================================
 
     _updateBodyClass() {
-        const mode = this.settings?.hideWatchedMode || 'dim';
+        const mode = this.settings?.hideWatchedMode || 'hide'; // Default to hide
         if (mode === 'hide') {
             document.body.classList.add('ypp-watched-mode-hide');
             document.body.classList.remove('ypp-watched-mode-dim');
@@ -197,36 +199,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
         }, 150);
     }
 
-    /**
-     * Process only the nodes that arrived in a mutation batch — avoids
-     * a full document.querySelectorAll sweep on every DOM change.
-     * @param {MutationRecord[]} mutations
-     */
-    _processMutatedNodes(mutations) {
-        if (!this.isEnabled || !this._shouldRunOnCurrentPage() || !Array.isArray(mutations)) return;
-        const watchedIds = this._getWatchedIds();
-        const threshold  = this.settings?.hideWatchedThreshold ?? 80;
-
-        for (const mutation of mutations) {
-            const added = mutation.addedNodes;
-            for (let i = 0; i < added.length; i++) {
-                const node = added[i];
-                if (node.nodeType !== Node.ELEMENT_NODE || !node.isConnected) continue;
-
-                // Check if the node itself is a card
-                if (node.matches?.(HideWatched.CARD_SELECTORS)) {
-                    this._evaluateCard(node, watchedIds, threshold);
-                }
-
-                // Also check card descendants (e.g. when a shelf is inserted)
-                if (node.querySelectorAll) {
-                    node.querySelectorAll(HideWatched.CARD_SELECTORS).forEach(card => {
-                        this._evaluateCard(card, watchedIds, threshold);
-                    });
-                }
-            }
-        }
-    }
+    // Removed _processMutatedNodes as it bypassed centralized observer batching
 
     // =========================================================================
     // Detection helpers
@@ -269,20 +242,68 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
     }
 
     _getWatchProgress(card) {
-        // Query the main overlay element first (supports legacy and modern view-models)
-        const activeRenderer = card.querySelector('ytd-thumbnail-overlay-resume-playback-renderer, .thumbnail-overlay-resume-playback-progress, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment');
-        // If it's explicitly hidden by YouTube using inline display:none, skip it.
-        if (!activeRenderer || window.getComputedStyle(activeRenderer).display === 'none') return null;
+        // Broad search for anything resembling a progress bar inside the card
+        const progressBars = card.querySelectorAll(
+            'ytd-thumbnail-overlay-resume-playback-renderer, ' +
+            '.thumbnail-overlay-resume-playback-progress, ' +
+            '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, ' +
+            '.yt-progress-bar-view-model, ' +
+            'yt-progress-bar-view-model, ' +
+            '#progress, ' +
+            '.yt-progress-bar-view-model-progress'
+        );
 
-        const progressBar = activeRenderer.querySelector('#progress') || 
-                            activeRenderer.querySelector('div[style*="width"]') ||
-                            activeRenderer;
+        let maxPct = 0;
+        let found = false;
 
-        const widthStyle = progressBar.style.width;
-        if (!widthStyle) return 100; // If it exists but we can't parse width, assume 100% watched
+        for (const bar of progressBars) {
+            if (bar.hasAttribute('hidden') || bar.closest('[hidden]')) continue;
+
+            const pctAttr = bar.getAttribute('aria-valuenow');
+            if (pctAttr) {
+                const pct = parseFloat(pctAttr);
+                if (!isNaN(pct)) {
+                    maxPct = Math.max(maxPct, pct);
+                    found = true;
+                }
+            }
+
+            const widthStyle = bar.style.width;
+            if (widthStyle) {
+                const pct = parseFloat(widthStyle);
+                if (!isNaN(pct)) {
+                    maxPct = Math.max(maxPct, pct);
+                    found = true;
+                }
+            }
+            
+            // Look inside the bar for #progress if it's a wrapper
+            const innerProgress = bar.querySelector('#progress, .yt-progress-bar-view-model-progress, div[style*="width"]');
+            if (innerProgress && !innerProgress.hasAttribute('hidden')) {
+                const innerPctAttr = innerProgress.getAttribute('aria-valuenow');
+                if (innerPctAttr) {
+                    const pct = parseFloat(innerPctAttr);
+                    if (!isNaN(pct)) { maxPct = Math.max(maxPct, pct); found = true; }
+                }
+                const innerWidthStyle = innerProgress.style.width;
+                if (innerWidthStyle) {
+                    const pct = parseFloat(innerWidthStyle);
+                    if (!isNaN(pct)) { maxPct = Math.max(maxPct, pct); found = true; }
+                }
+            }
+        }
         
-        const pct = parseFloat(widthStyle);
-        return isNaN(pct) ? 100 : pct;
+        // If we found a wrapper but couldn't parse any width, assume 100%
+        if (!found && progressBars.length > 0) {
+            // make sure at least one is visible
+            let hasVisibleWrapper = false;
+            for (const bar of progressBars) {
+                if (!bar.hasAttribute('hidden') && !bar.closest('[hidden]')) hasVisibleWrapper = true;
+            }
+            if (hasVisibleWrapper) return 100;
+        }
+
+        return found ? maxPct : null;
     }
 
     _hasWatchedBadge(card) {
@@ -350,13 +371,8 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
     }
     
     _getOutermostCard(card) {
-        if (!card) return null;
-        // If the card is an inner view model, try to find its parent rich-item-renderer
-        if (card.tagName.toLowerCase().includes('lockup-view-model')) {
-            const parentCard = card.closest('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer');
-            if (parentCard) return parentCard;
-        }
-        return card;
+        if (!card || !window.YPP.Utils) return null;
+        return window.YPP.Utils.findOutermostMatch(card, window.YPP.Utils.getVideoContainerSelectors()) || card;
     }
 
     _evaluateCard(card, watchedIds, threshold) {
@@ -376,9 +392,14 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
             if (watched && !currentlyMarked) {
                 targetCard.setAttribute('data-ypp-watched', '1');
                 targetCard.classList.add('ypp-is-watched');
+                // Guarantee hiding if in hide mode, preventing grid flex overrides
+                if (document.body.classList.contains('ypp-watched-mode-hide')) {
+                    targetCard.style.setProperty('display', 'none', 'important');
+                }
             } else if (!watched && currentlyMarked) {
                 targetCard.removeAttribute('data-ypp-watched');
                 targetCard.classList.remove('ypp-is-watched');
+                targetCard.style.removeProperty('display');
             }
         } catch (err) {
             // Silently trap and ignore individual card processing errors
@@ -396,6 +417,9 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
             if (card) {
                 card.setAttribute('data-ypp-watched', '1');
                 card.classList.add('ypp-is-watched');
+                if (document.body.classList.contains('ypp-watched-mode-hide')) {
+                    card.style.setProperty('display', 'none', 'important');
+                }
             }
         });
     }
@@ -408,6 +432,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
             if (card) {
                 card.removeAttribute('data-ypp-watched');
                 card.classList.remove('ypp-is-watched');
+                card.style.removeProperty('display');
             }
         });
     }

@@ -2686,6 +2686,12 @@ body.yt-spiral-tube-theme
   > button,
 body.yt-spiral-tube-theme
   #actions-inner
+  ytd-download-button-renderer
+  yt-button-shape-with-explainer
+  yt-button-shape
+  > button,
+body.yt-spiral-tube-theme
+  #actions-inner
   ytd-menu-renderer
   yt-button-shape
   > button {
@@ -2698,6 +2704,7 @@ body.yt-spiral-tube-theme
   height: 36px !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 6px !important;
   font-weight: 500 !important;
   color: var(--ypp-text-primary, #fff) !important;

@@ -1,0 +1,386 @@
+// Advanced UI interactions for YouTube filtering
+// Provides Dim badges, Hover Pills, and Undo buttons.
+
+const UNDO_WINDOW_MS = 3000;
+const UNDO_COUNTDOWN_RADIUS = 8;
+const UNDO_COUNTDOWN_CIRCUMFERENCE = 2 * Math.PI * UNDO_COUNTDOWN_RADIUS;
+
+function buildUndoCountdownMarkup(seconds) {
+  return `<svg class="yt-hider-undo-countdown" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+    <circle cx="10" cy="10" r="${UNDO_COUNTDOWN_RADIUS}" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="2"></circle>
+    <circle class="yt-hider-undo-countdown-ring" cx="10" cy="10" r="${UNDO_COUNTDOWN_RADIUS}" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="${UNDO_COUNTDOWN_CIRCUMFERENCE}" transform="rotate(-90 10 10)"></circle>
+    <text class="yt-hider-undo-countdown-number" x="10" y="10" text-anchor="middle" dominant-baseline="central">${seconds}</text>
+  </svg>`;
+}
+
+function startUndoCountdown(btn, onComplete) {
+  const ring = btn.querySelector('.yt-hider-undo-countdown-ring');
+  if (ring) {
+    ring.style.setProperty('--yt-hider-countdown-circumference', UNDO_COUNTDOWN_CIRCUMFERENCE);
+    ring.style.animation = `yt-hider-undo-countdown ${UNDO_WINDOW_MS}ms linear forwards`;
+  }
+  const deadline = Date.now() + UNDO_WINDOW_MS;
+  const timer = setInterval(() => {
+    const remainingMs = deadline - Date.now();
+    const numberEl = btn.querySelector('.yt-hider-undo-countdown-number');
+    if (numberEl) numberEl.textContent = Math.max(0, Math.ceil(remainingMs / 1000));
+    if (remainingMs <= 0) {
+      clearInterval(timer);
+      onComplete();
+    }
+  }, 250);
+  return () => clearInterval(timer);
+}
+
+function removeBadgeAnimated(badge) {
+    if (!badge || !badge.isConnected) return;
+    badge.classList.add('ypp-badge-leaving');
+    const onAnimationEnd = e => {
+      if (e.target !== badge) return;
+      badge.removeEventListener('animationend', onAnimationEnd);
+      badge.remove();
+    };
+    badge.addEventListener('animationend', onAnimationEnd);
+    setTimeout(() => badge.remove(), 200);
+}
+
+function getOrCreateBadgeButtonRow(badge) {
+    let row = badge.querySelector('.ypp-badge-buttons');
+    if (!row) {
+        row = document.createElement('div');
+        row.className = 'ypp-badge-buttons';
+        badge.appendChild(row);
+    }
+    return row;
+}
+
+function createWhitelistButton(channelPath) {
+    const btn = document.createElement('button');
+    btn.className = 'ypp-whitelist-btn';
+    
+    let cancelCountdown = null;
+    let pendingContainer = null;
+  
+    const renderIdle = () => {
+      btn.classList.remove('ypp-whitelist-btn-pending');
+      btn.innerHTML = `<span class="ypp-whitelist-label">Whitelist</span>`;
+    };
+    renderIdle();
+  
+    const cancelPending = () => {
+      if (cancelCountdown) {
+        cancelCountdown();
+        cancelCountdown = null;
+      }
+      if (pendingContainer) {
+        delete pendingContainer.dataset.yppPendingAction;
+        pendingContainer = null;
+      }
+    };
+  
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+  
+      if (btn.classList.contains('ypp-whitelist-btn-pending')) {
+        cancelPending();
+        renderIdle();
+        return;
+      }
+      
+      pendingContainer = btn.closest('[data-ypp-dimmed]');
+      if (pendingContainer) pendingContainer.dataset.yppPendingAction = '1';
+  
+      btn.innerHTML = `<span class="ypp-whitelist-label">Undo</span>${buildUndoCountdownMarkup(3)}`;
+      btn.classList.add('ypp-whitelist-btn-pending');
+  
+      cancelCountdown = startUndoCountdown(btn, () => {
+        cancelCountdown = null;
+        if (pendingContainer) {
+            delete pendingContainer.dataset.yppPendingAction;
+            // Actually whitelist the channel
+            const wl = window.YPP.features.ChannelWhitelist;
+            if (wl) {
+                let current = wl._settings.channelWhitelist || '';
+                current += '\n' + channelPath;
+                window.YPP.utils.settings.set('channelWhitelist', current);
+                // Also enable it if it's off
+                if (!wl._settings.channelWhitelistEnabled) {
+                    window.YPP.utils.settings.set('channelWhitelistEnabled', true);
+                }
+            }
+            window.YPP.features.BaseFilterFeature.clearDimmedElement(pendingContainer);
+            pendingContainer = null;
+        }
+      });
+    });
+  
+    return btn;
+}
+
+function createUnblacklistButton(channelPath) {
+    const btn = document.createElement('button');
+    btn.className = 'ypp-blacklist-btn';
+    btn.innerHTML = `<span class="ypp-whitelist-label">Unblacklist</span>`;
+  
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const bl = window.YPP.features.ChannelBlacklist;
+      if (bl) {
+          let current = bl._settings.channelBlacklist || '';
+          current = current.split('\n').filter(c => c.trim().toLowerCase() !== channelPath).join('\n');
+          window.YPP.utils.settings.set('channelBlacklist', current);
+      }
+      const container = btn.closest('[data-ypp-dimmed]');
+      if (container) {
+          window.YPP.features.BaseFilterFeature.clearDimmedElement(container);
+      }
+    });
+  
+    return btn;
+}
+
+export function createDimBadge(reason, channelPath) {
+    const badge = document.createElement('div');
+    badge.className = 'ypp-dim-badge';
+    badge.innerHTML = reason ? `<span class="ypp-badge-reason">${reason}</span>` : '';
+  
+    if (reason === 'Blacklisted channel' || reason === 'blacklist') {
+      badge.dataset.yppBadgeKind = 'blacklist';
+      if (channelPath) {
+          getOrCreateBadgeButtonRow(badge).appendChild(createUnblacklistButton(channelPath));
+      }
+      return badge;
+    }
+  
+    if (channelPath) {
+      getOrCreateBadgeButtonRow(badge).appendChild(createWhitelistButton(channelPath));
+    }
+    return badge;
+}
+
+export function applyDimMode(element, reason, channelPath = null) {
+    if (!element || element.dataset.yppDimmed) return;
+    const badgeTarget = element.querySelector('ytd-thumbnail') || 
+                        element.querySelector('yt-thumbnail-view-model') || 
+                        element.querySelector('ytm-thumbnail-cover-view-model') || 
+                        element;
+    
+    element.dataset.yppDimmed = '1';
+    badgeTarget.dataset.yppBadgeTarget = '1';
+    badgeTarget.appendChild(createDimBadge(reason, channelPath));
+}
+
+// Attach hover preview blocker so that zooming doesn't hide the overlay
+document.addEventListener('mouseover', e => {
+    if (!e.target || !e.target.closest) return;
+    if (e.target.closest('[data-ypp-dimmed]')) {
+        e.stopPropagation();
+    }
+}, true);
+
+// --- Hover Pill ---
+let hoverPillEl = null;
+let hoverPillContainer = null;
+let hoverPillAnchor = null;
+let hoverPillBtn = null;
+let hoverPillPending = false;
+let lastMouseClientX = 0;
+let lastMouseClientY = 0;
+let hoverPillWatchdog = null;
+
+function trackMouseForHoverPillWatchdog(e) {
+  lastMouseClientX = e.clientX;
+  lastMouseClientY = e.clientY;
+}
+
+function positionHoverPill() {
+  if (!hoverPillEl || !hoverPillAnchor) return;
+  if (!hoverPillAnchor.isConnected) {
+    removeBlacklistHoverButton();
+    return;
+  }
+  const rect = hoverPillAnchor.getBoundingClientRect();
+  hoverPillEl.style.left = rect.left + rect.width / 2 + 'px';
+  hoverPillEl.style.top = rect.top + 14 + 'px';
+  hoverPillEl.style.maxWidth = Math.max(24, rect.width - 12) + 'px';
+}
+
+function startHoverPillWatchdog() {
+  if (hoverPillWatchdog) return;
+  hoverPillWatchdog = setInterval(() => {
+    positionHoverPill();
+    if (!hoverPillContainer || hoverPillPending) return;
+    const rect = hoverPillContainer.getBoundingClientRect();
+    const stillInside =
+      lastMouseClientX >= rect.left &&
+      lastMouseClientX <= rect.right &&
+      lastMouseClientY >= rect.top &&
+      lastMouseClientY <= rect.bottom;
+    if (!stillInside) clearBlacklistHoverButton();
+  }, 400);
+}
+
+function stopHoverPillWatchdog() {
+  if (hoverPillWatchdog) {
+    clearInterval(hoverPillWatchdog);
+    hoverPillWatchdog = null;
+  }
+}
+
+function clearBlacklistHoverButton() {
+  stopHoverPillWatchdog();
+  removeBadgeAnimated(hoverPillEl);
+  hoverPillEl = null;
+  hoverPillContainer = null;
+  hoverPillAnchor = null;
+  hoverPillBtn = null;
+}
+
+function removeBlacklistHoverButton() {
+  hoverPillPending = false;
+  clearBlacklistHoverButton();
+}
+
+function createHoverBlacklistButton(channelPath) {
+    const btn = document.createElement('button');
+    btn.className = 'ypp-blacklist-btn ypp-blacklist-btn--solid';
+    
+    let cancelCountdown = null;
+  
+    const renderIdle = () => {
+      btn.classList.remove('ypp-blacklist-btn-pending');
+      btn.innerHTML = `<span class="ypp-whitelist-label">Blacklist</span>`;
+    };
+    renderIdle();
+  
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+  
+      if (btn.classList.contains('ypp-blacklist-btn-pending')) {
+        if (cancelCountdown) {
+            cancelCountdown();
+            cancelCountdown = null;
+        }
+        hoverPillPending = false;
+        renderIdle();
+        return;
+      }
+      
+      hoverPillPending = true;
+      btn.innerHTML = `<span class="ypp-whitelist-label">Undo</span>${buildUndoCountdownMarkup(3)}`;
+      btn.classList.add('ypp-blacklist-btn-pending');
+  
+      cancelCountdown = startUndoCountdown(btn, () => {
+        cancelCountdown = null;
+        
+        // Actually blacklist the channel
+        const bl = window.YPP.features.ChannelBlacklist;
+        if (bl) {
+            let current = bl._settings.channelBlacklist || '';
+            current += '\n' + channelPath;
+            window.YPP.utils.settings.set('channelBlacklist', current);
+            // Also enable it if it's off
+            if (!bl._settings.channelBlacklistEnabled) {
+                window.YPP.utils.settings.set('channelBlacklistEnabled', true);
+            }
+        }
+        hoverPillPending = false;
+        clearBlacklistHoverButton();
+      });
+    });
+  
+    return btn;
+}
+
+function showBlacklistHoverButton(container, channelPath) {
+  if (hoverPillPending) return;
+  if (hoverPillContainer === container && hoverPillEl) return;
+  clearBlacklistHoverButton();
+
+  const anchor = container.querySelector('ytd-thumbnail') || 
+                 container.querySelector('yt-thumbnail-view-model') || 
+                 container.querySelector('ytm-thumbnail-cover-view-model') || 
+                 container;
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'ypp-blacklist-hover-wrapper';
+  // We re-use ypp-dim-badge class for some styles but override position
+  wrapper.style.position = 'fixed';
+  wrapper.style.transform = 'translateX(-50%)';
+  wrapper.style.zIndex = '2000';
+  wrapper.style.pointerEvents = 'none';
+  wrapper.style.width = 'max-content';
+  wrapper.style.animation = 'ypp-badge-in 180ms ease-out';
+
+  const btn = createHoverBlacklistButton(channelPath);
+  wrapper.appendChild(btn);
+  document.body.appendChild(wrapper);
+
+  hoverPillEl = wrapper;
+  hoverPillContainer = container;
+  hoverPillAnchor = anchor;
+  hoverPillBtn = btn;
+  positionHoverPill();
+  startHoverPillWatchdog();
+}
+
+function handleBlacklistHoverOver(e) {
+  if (hoverPillPending) {
+    if (hoverPillContainer && !hoverPillContainer.isConnected) {
+      hoverPillPending = false;
+      clearBlacklistHoverButton();
+    } else {
+      return;
+    }
+  }
+  
+  if (!window.YPP?.settings?.channelBlacklistEnabled) return;
+  if (!e.target || !e.target.closest) return;
+
+  const container = e.target.closest('ytd-video-renderer, ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytd-lockup-view-model');
+  if (!container) return;
+  if (container.dataset.yppDimmed || container.dataset.yppHidden) return; // Don't show if already filtered
+
+  if (hoverPillContainer === container && hoverPillEl) return;
+
+  const parsers = window.YPP.Utils?.youtubeParsers;
+  const channelPath = parsers ? parsers.extractChannelFromContainer(container) : null;
+  if (!channelPath) return;
+
+  showBlacklistHoverButton(container, channelPath);
+}
+
+function handleBlacklistHoverOut(e) {
+  if (hoverPillPending || !hoverPillContainer) return;
+  if (!e.target || !hoverPillContainer.contains(e.target)) return;
+
+  const related = e.relatedTarget;
+  if (related && hoverPillContainer.contains(related)) return;
+
+  const rect = hoverPillContainer.getBoundingClientRect();
+  if (
+    e.clientX >= rect.left &&
+    e.clientX <= rect.right &&
+    e.clientY >= rect.top &&
+    e.clientY <= rect.bottom
+  ) {
+    return;
+  }
+  clearBlacklistHoverButton();
+}
+
+let blacklistHoverListenerAttached = false;
+if (!blacklistHoverListenerAttached) {
+  blacklistHoverListenerAttached = true;
+  document.addEventListener('mouseover', handleBlacklistHoverOver, true);
+  document.addEventListener('mouseout', handleBlacklistHoverOut, true);
+  document.addEventListener('mousemove', trackMouseForHoverPillWatchdog, true);
+  document.addEventListener('scroll', positionHoverPill, true);
+  window.addEventListener('resize', positionHoverPill);
+}
+
+window.YPP.utils = window.YPP.utils || {};
+window.YPP.utils.filterUI = { applyDimMode, createDimBadge, removeBadgeAnimated };

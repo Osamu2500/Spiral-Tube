@@ -256,38 +256,49 @@ window.YPP.core.DOMObserver = class DOMObserver {
             }
         }
 
-        // 3. Find all matching elements using native querySelectorAll per registered listener
-        // This avoids O(n^2) JS loops comparing every element against every selector
-        const matchedBuckets = new Map();
+        // 3. Find all matching elements using the batched selector chunks
+        // This runs querySelectorAll exactly ONCE per root node per chunk, avoiding O(N*M) explosion.
+        const allMatches = new Set();
         
-        for (const [id, { selector }] of this.registry.entries()) {
-            const matches = [];
-            
-            for (const node of rootNodes) {
-                // Check if the root node itself matches
-                if (node.matches && node.matches(selector)) {
-                    matches.push(node);
+        for (const node of rootNodes) {
+            for (let i = 0; i < selectorChunks.length; i++) {
+                const chunk = selectorChunks[i];
+                if (node.matches && node.matches(chunk)) {
+                    allMatches.add(node);
                 }
                 
-                // Check all descendants using native querySelectorAll
                 if (node.querySelectorAll) {
                     try {
-                        const children = node.querySelectorAll(selector);
+                        const children = node.querySelectorAll(chunk);
                         for (let c = 0; c < children.length; c++) {
-                            matches.push(children[c]);
+                            allMatches.add(children[c]);
                         }
                     } catch(e) {
-                        // Ignore bad queries silently to avoid log spam
+                        // Ignore bad queries silently
                     }
                 }
             }
-            
-            if (matches.length > 0) {
-                matchedBuckets.set(id, matches);
+        }
+
+        // 4. Distribute the unique matched elements to the correct listener buckets
+        const matchedBuckets = new Map();
+        
+        if (allMatches.size > 0) {
+            for (const [id, { selector }] of this.registry.entries()) {
+                const matches = [];
+                for (const element of allMatches) {
+                    if (element.matches && element.matches(selector)) {
+                        matches.push(element);
+                    }
+                }
+                
+                if (matches.length > 0) {
+                    matchedBuckets.set(id, matches);
+                }
             }
         }
 
-        // 4. Dispatch results
+        // 5. Dispatch results
         for (const [id, matches] of matchedBuckets.entries()) {
             const data = this.registry.get(id);
             if (!data) continue; // Guard against concurrent unregister

@@ -139,12 +139,22 @@ function renderRange(item, state) {
     info.style.flexDirection = 'row';
     const valueId = item.id + 'Value';
     const unit = item.unit != null ? item.unit : '%';
-    const initialValue = (state?.settings && state.settings[item.id] !== undefined) ? state.settings[item.id] : (item.default ?? item.min ?? 0);
+    
+    // Determine initial value based on discrete options or raw min/max
+    let initialValue = (state?.settings && state.settings[item.id] !== undefined) ? state.settings[item.id] : (item.default ?? item.min ?? 0);
+    
+    // For UI rendering
+    let displayValue = initialValue;
+    if (item.discreteOptions) {
+        // Find the matching option label
+        const opt = item.discreteOptions.find(o => o.value == initialValue) || item.discreteOptions[0];
+        displayValue = opt.label;
+    }
     
     if (item.parent) {
-        info.innerHTML = `<span class="name" style="font-size:12px;">${item.label}</span><span class="desc"><span id="${valueId}" style="font-size:12px; font-weight:bold; color:var(--red);">${initialValue}</span><span style="font-size:12px; font-weight:bold; color:var(--red);">${unit}</span></span>`;
+        info.innerHTML = `<span class="name" style="font-size:12px;">${item.label}</span><span class="desc"><span id="${valueId}" style="font-size:12px; font-weight:bold; color:var(--red);">${displayValue}</span><span style="font-size:12px; font-weight:bold; color:var(--red);">${item.discreteOptions ? '' : unit}</span></span>`;
     } else {
-        info.innerHTML = `<span class="name">${item.label}</span><span class="desc"><span id="${valueId}">${initialValue}</span>${unit}</span>`;
+        info.innerHTML = `<span class="name">${item.label}</span><span class="desc"><span id="${valueId}">${displayValue}</span>${item.discreteOptions ? '' : unit}</span>`;
     }
     
     headerRow.appendChild(info);
@@ -154,31 +164,78 @@ function renderRange(item, state) {
     rangeWrap.className = 'range-container';
     const input = document.createElement('input');
     input.type = 'range';
-    input.id = item.id;
-    input.min = item.min ?? 0;
-    input.max = item.max ?? 100;
-    input.step = item.step ?? 1;
-    input.value = initialValue;
-    // Update displayed value live as user drags the slider
-    input.addEventListener('input', () => {
-        const display = document.getElementById(valueId);
-        if (display) display.textContent = input.value;
-    });
+    
+    let hiddenInput = null;
+    
+    if (item.discreteOptions) {
+        input.min = 0;
+        input.max = item.discreteOptions.length - 1;
+        input.step = 1;
+        // Find the index of the initial value
+        let initialIndex = item.discreteOptions.findIndex(o => o.value == initialValue);
+        if (initialIndex === -1) initialIndex = 0;
+        input.value = initialIndex;
+        
+        // Hidden input to store the actual value in state
+        hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.id = item.id;
+        hiddenInput.value = item.discreteOptions[initialIndex].value;
+        wrap.appendChild(hiddenInput);
+        
+        // Don't set id on the range input so _registerInput skips it, 
+        // we'll register the hidden input instead.
+        input.id = '';
+        
+        input.addEventListener('input', () => {
+            const index = parseInt(input.value, 10);
+            const opt = item.discreteOptions[index];
+            const display = document.getElementById(valueId);
+            if (display) display.textContent = opt.label;
+            hiddenInput.value = opt.value;
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        
+        const originalValueDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+        Object.defineProperty(hiddenInput, 'value', {
+            get: function() { return originalValueDesc.get.call(this); },
+            set: function(val) {
+                originalValueDesc.set.call(this, val);
+                let idx = item.discreteOptions.findIndex(o => o.value == val);
+                if (idx === -1) idx = 0;
+                input.value = idx;
+                const display = document.getElementById(valueId);
+                if (display) display.textContent = item.discreteOptions[idx].label;
+            }
+        });
+        _registerInput(hiddenInput, state);
+    } else {
+        input.id = item.id;
+        input.min = item.min ?? 0;
+        input.max = item.max ?? 100;
+        input.step = item.step ?? 1;
+        input.value = initialValue;
+        
+        input.addEventListener('input', () => {
+            const display = document.getElementById(valueId);
+            if (display) display.textContent = input.value;
+        });
+
+        const originalValueDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+        Object.defineProperty(input, 'value', {
+            get: function() { return originalValueDesc.get.call(this); },
+            set: function(val) {
+                originalValueDesc.set.call(this, val);
+                const display = document.getElementById(valueId);
+                if (display) display.textContent = val;
+            }
+        });
+        _registerInput(input, state);
+    }
+    
     rangeWrap.appendChild(input);
     wrap.appendChild(rangeWrap);
 
-    // Make programmatic value updates sync with label
-    const originalValueDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
-    Object.defineProperty(input, 'value', {
-        get: function() { return originalValueDesc.get.call(this); },
-        set: function(val) {
-            originalValueDesc.set.call(this, val);
-            const display = document.getElementById(valueId);
-            if (display) display.textContent = val;
-        }
-    });
-
-    _registerInput(input, state);
     return wrap;
 }
 
@@ -671,7 +728,67 @@ const ITEM_RENDERERS = {
     'button-group': renderButtonGroup,
 };
 
+
 // ── Section builder ────────────────────────────────────────────────────
+
+/** Apply consistent tile styling to a child element inside the expanded parent card. */
+function applyChildTileStyle(el) {
+    el.style.marginTop    = '0';
+    el.style.paddingTop   = '0';
+    el.style.borderTop    = 'none';
+    el.style.background   = 'rgba(0,0,0,0.15)';
+    el.style.padding      = '10px 12px';
+    el.style.borderRadius = '8px';
+    el.style.boxSizing    = 'border-box';
+}
+
+/** Build a full-width header row by draining the existing children of parentEl. */
+function buildParentHeaderRow(parentEl) {
+    const headerRow = document.createElement('div');
+    headerRow.style.cssText = 'display:flex; align-items:center; width:100%; gap:10px;';
+    while (parentEl.firstChild) headerRow.appendChild(parentEl.firstChild);
+    return headerRow;
+}
+
+/** Build the 4-column sub-settings grid for a parent card. */
+function buildChildrenGrid(childItems, state) {
+    const grid = document.createElement('div');
+    grid.className = 'children-container';
+    grid.style.cssText = [
+        'width:100%',
+        'display:grid',
+        'grid-template-columns:repeat(4,1fr)',
+        'gap:12px',
+        'margin-top:16px',
+        'padding-top:16px',
+        'border-top:1px solid rgba(255,255,255,0.06)',
+    ].join(';');
+
+    childItems.forEach(childItem => {
+        const renderer = ITEM_RENDERERS[childItem.type];
+        if (!renderer) return;
+        const childEl = renderer(childItem, state);
+        if (!childEl) return;
+        applyChildTileStyle(childEl);
+        grid.appendChild(childEl);
+    });
+
+    return grid;
+}
+
+/** Expand a toggle card to full-width and inject its children as a 4-tile grid. */
+function expandParentCardWithChildren(parentEl, childItems, state) {
+    parentEl.style.gridColumn   = '1 / -1';
+    parentEl.style.flexDirection = 'column';
+    parentEl.style.alignItems   = 'stretch';
+    parentEl.classList.add('span-full-tile');
+
+    const headerRow    = buildParentHeaderRow(parentEl);
+    const childrenGrid = buildChildrenGrid(childItems, state);
+
+    parentEl.appendChild(headerRow);
+    parentEl.appendChild(childrenGrid);
+}
 
 function buildSection(section, state) {
     const sec = document.createElement('div');
@@ -743,18 +860,16 @@ function buildSection(section, state) {
         });
     }
 
-    // Append child items (like ranges) inside their parent cards
+    // Group children by parent id and expand each parent card into a 4-tile grid
+    const childrenByParent = {};
     children.forEach(childItem => {
-        const parentEl = renderedElements[childItem.parent];
-        if (parentEl) {
-            parentEl.style.gridColumn = 'span 2';
-            parentEl.classList.add('span-2-tile');
-            const fn = ITEM_RENDERERS[childItem.type];
-            const childEl = fn ? fn(childItem, state) : null;
-            if (childEl) {
-                parentEl.appendChild(childEl);
-            }
-        }
+        const list = childrenByParent[childItem.parent] ?? (childrenByParent[childItem.parent] = []);
+        list.push(childItem);
+    });
+
+    Object.entries(childrenByParent).forEach(([parentId, childItems]) => {
+        const parentEl = renderedElements[parentId];
+        if (parentEl) expandParentCardWithChildren(parentEl, childItems, state);
     });
 
     if (inlineToggleItems.length > 0) {
