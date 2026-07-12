@@ -1004,6 +1004,8 @@ html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton
   margin: 0 !important;
   pointer-events: auto !important;
   z-index: 9999 !important;
+  opacity: 1 !important; /* Force visible */
+  display: flex !important; /* Ensure it's not display:none */
 }
 
 /* Restore native pointer events so YouTube's JS isn't confused by our overrides */
@@ -1171,18 +1173,27 @@ html[data-ypp-card-style='immersive-glass']
 /* ========================================================
    8. GLOBAL TIME BADGES & PROGRESS BAR
    ======================================================== */
-html[data-ypp-card-style='immersive-glass'] badge-shape,
-html[data-ypp-card-style='immersive-glass'] ytd-thumbnail-overlay-time-status-renderer {
-  bottom: 12px !important;
-  right: 12px !important;
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays badge-shape,
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays ytd-thumbnail-overlay-time-status-renderer {
   margin: 0 !important;
   z-index: 10 !important;
   pointer-events: auto !important;
   background: rgba(0, 0, 0, 0.6) !important;
   backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 6px !important;
   padding: 4px 6px !important;
+}
+
+/* Clear native inner background and padding to prevent multiple borders/layers */
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays badge-shape .badge-shape-wiz,
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays ytd-thumbnail-overlay-time-status-renderer[overlay-style="DEFAULT"],
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays ytd-thumbnail-overlay-time-status-renderer .badge-shape-wiz {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
 }
 
 /* De-duplicate timestamps by hiding badge-shape if the old time-status-renderer exists */
@@ -1192,8 +1203,8 @@ html[data-ypp-card-style='immersive-glass']
   display: none !important;
 }
 
-html[data-ypp-card-style='immersive-glass'] badge-shape *,
-html[data-ypp-card-style='immersive-glass'] ytd-thumbnail-overlay-time-status-renderer * {
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays badge-shape *,
+html[data-ypp-card-style='immersive-glass'] ytd-thumbnail #overlays ytd-thumbnail-overlay-time-status-renderer * {
   color: #fff !important;
   font-weight: 600 !important;
 }
