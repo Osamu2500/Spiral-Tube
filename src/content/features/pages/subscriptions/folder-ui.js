@@ -465,58 +465,13 @@ export class FolderUI {
 
             const activeFolder = this.orchestrator.getActiveFolder();
 
-            // ================= NEW 2-ROW LAYOUT =================
+            // ================= 1-ROW LAYOUT =================
             chipsBar.style.display = 'flex';
-            chipsBar.style.flexDirection = 'column';
+            chipsBar.style.flexDirection = 'row';
             chipsBar.style.gap = '8px';
             chipsBar.style.marginBottom = '16px';
             
-            // --- TOP ROW: FOLDERS ---
-            const topRow = document.createElement('div');
-            topRow.className = 'ypp-folder-chips-left';
-            topRow.style.cssText = 'display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%;';
-            
-            const label = document.createElement('span');
-            label.className = 'ypp-sub-filter-label';
-            label.style.cssText = 'color: #aaa; font-size: 13px; font-weight: 500; text-transform: uppercase;';
-            label.textContent = 'Folders:';
-            topRow.appendChild(label);
-
-            const createFolderChip = (label, id, isActive) => {
-                const chip = document.createElement('button');
-                chip.className = 'ypp-filter-chip';
-                chip.dataset.folder = id;
-                chip.textContent = label;
-                chip.style.cssText = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid transparent; cursor: pointer; padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 500; transition: 0.2s; white-space: nowrap;';
-                if (isActive) {
-                    chip.style.background = 'rgba(255, 255, 255, 1)';
-                    chip.style.color = '#0f0f0f';
-                } else {
-                    chip.addEventListener('mouseover', () => chip.style.background = 'rgba(255,255,255,0.15)');
-                    chip.addEventListener('mouseout', () => chip.style.background = 'rgba(255,255,255,0.08)');
-                }
-                chip.addEventListener('click', () => {
-                    if (id === '__no_folder__') this.orchestrator.setActiveFolderDirect(null);
-                    else this.orchestrator.setActiveFolderDirect(id);
-                });
-                return chip;
-            };
-
-            topRow.appendChild(createFolderChip('All', '__no_folder__', !activeFolder || activeFolder === '__no_folder__'));
-            Object.keys(this.storage.folders).forEach(folderName => {
-                topRow.appendChild(createFolderChip(folderName, folderName, activeFolder === folderName));
-            });
-
-            if (activeFolder && activeFolder !== '__no_folder__') {
-                const playBtn = document.createElement('button');
-                playBtn.className = 'ypp-filter-chip ypp-play-action-chip';
-                playBtn.innerHTML = '<svg height="16" width="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px; vertical-align: text-bottom;"><path d="M8 5v14l11-7z"/></svg> PLAY ALL';
-                playBtn.style.cssText = 'background: rgba(255,255,255,0.1); color: #3ea6ff; border: 1px solid rgba(62,166,255,0.5); cursor: pointer; padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 600; transition: 0.2s; white-space: nowrap; margin-left: auto;';
-                playBtn.addEventListener('click', () => this.orchestrator.playAll(activeFolder));
-                topRow.appendChild(playBtn);
-            }
-            
-            // --- SECOND ROW: FILTER CHIPS ---
+            // --- FILTER CHIPS ---
             const ffSettings = this.orchestrator.settings || {};
             const feedFilterBar = document.createElement('div');
             feedFilterBar.className = 'ypp-sub-filter-group ypp-feed-filter-chips';
@@ -621,9 +576,7 @@ export class FolderUI {
             createFfChip('video', 'Video', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z"/></svg>');
             createFfChip('shorts', 'Shorts', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86l-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l1.2-.63s-1.16-.49-1.19-.5c-1.38-.6-2.08-2.14-1.59-3.57.48-1.39 1.96-2.19 3.4-1.92L6 8.52l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72l-1.2.63s1.16.49 1.19.5c1.38.6 2.08 2.14 1.59 3.57-.48 1.39-1.96 2.19-3.4 1.92L18 15.48z"/></svg>');
             createFfChip('scheduled', 'Scheduled', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>');
-            createFfChip('notifon', 'Notification on', '');
-            createFfChip('notifoff', 'Notification off', '');
-            createFfChip('posts', 'Posts', '');
+                                    createFfChip('posts', 'Posts', '');
             createFfChip('playlist', 'Playlist', '');
 
             const watchSelectStyle = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 16px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: 0.2s; height: 30px; margin-left: 8px;';
@@ -681,14 +634,12 @@ export class FolderUI {
             this.orchestrator.ffInitialized = true;
 
             // Combine both rows
-            chipsBar.appendChild(topRow);
-            chipsBar.appendChild(feedFilterBar);
+                        chipsBar.appendChild(feedFilterBar);
 
-            // Hide/remove the old right container which might exist
-            const existingRight = chipsBar.querySelector('.ypp-folder-chips-right');
-            if (existingRight) existingRight.remove();
-            const existingSeparator = chipsBar.querySelector('.ypp-filter-separator');
-            if (existingSeparator) existingSeparator.remove();
+                        // Re-inject the right container (which holds Channel Health button) if it's missing
+            if (!chipsBar.querySelector('.ypp-folder-chips-right')) {
+                this._injectFilterBar(chipsBar);
+            }
 
         } else {
             chipsBar.style.display = 'none';
@@ -876,31 +827,7 @@ export class FolderUI {
 
     /** Inject badges onto feed cards. */
     injectCardBadges() {
-        this.observer.register('feed-card-badges', 'ytd-rich-item-renderer #channel-name, ytd-video-renderer #channel-name', (elements) => {
-            elements.forEach(container => {
-                if (container.querySelector('.ypp-card-folder-btn')) return;
-                const link = container.querySelector('a');
-                if (!link || !link.textContent.trim()) return;
-
-                const btn = document.createElement('button');
-                btn.className = 'ypp-card-folder-btn';
-                btn.style.cssText = 'background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.2); color: #aaa; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 500; cursor: pointer; display: flex; align-items: center; margin-left: 6px; transition: 0.2s; height: 18px; line-height: 14px;';
-                btn.onmouseover = () => { btn.style.color = '#fff'; btn.style.background = 'rgba(255,255,255,0.2)'; };
-                btn.onmouseout = () => { btn.style.color = '#aaa'; btn.style.background = 'rgba(255,255,255,0.1)'; };
-                btn.innerHTML = String.raw`<svg height="12" width="12" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg> Save`;
-                btn.title = "Save to Folder";
-
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    this.renderChannelPopover(btn, link.textContent.trim());
-                });
-
-                container.style.display = 'flex';
-                container.style.alignItems = 'center';
-                container.appendChild(btn);
-            });
-        }, { runOnce: false });
+        // Disabled per user request
     }
 
     /** Inject "Folders" badge onto channel header pages. */
@@ -1098,7 +1025,7 @@ export class ChannelHealthUI {
                         <span class="ypp-modal-title" style="font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.5px;">Channel Organizer</span>
                     </div>
                     <div style="display: flex; gap: 12px; align-items: center;">
-                        <button id="ypp-health-create-folder-btn" class="ypp-btn-primary" style="background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.05)'; this.style.transform='translateY(0)';">Create Folder</button>
+                        
                         <button id="ypp-health-delete-folder-btn" class="ypp-btn-primary" style="background: transparent; color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.background='rgba(255, 78, 69, 0.1)'; this.style.color='#ff4e45'; this.style.borderColor='rgba(255, 78, 69, 0.3)';" onmouseout="this.style.background='transparent'; this.style.color='rgba(255, 255, 255, 0.6)'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">Delete Folder</button>
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <button id="ypp-health-scan-btn" class="ypp-btn-primary" style="background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; border: none; padding: 8px 24px; border-radius: 20px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 20px rgba(99, 102, 241, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(99, 102, 241, 0.3)';">Start Scan</button>
@@ -1111,8 +1038,8 @@ export class ChannelHealthUI {
                             </div>
                         </div>
                         <button id="ypp-health-unsub-btn" class="ypp-btn-primary" style="background: rgba(255,78,69,0.2); color: #ff6b6b; border: 1px solid rgba(255,78,69,0.3); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none;" onmouseover="this.style.background='rgba(255,78,69,0.3)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,78,69,0.2)'; this.style.transform='translateY(0)';">Unsubscribe Selected</button>
-                        <button id="ypp-health-add-folder-btn" class="ypp-btn-primary" style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none;" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.transform='translateY(0)';">Add to Folder</button>
-                        <button id="ypp-health-remove-folder-btn" class="ypp-btn-primary" style="background: rgba(255, 152, 0, 0.15); color: #ffb340; border: 1px solid rgba(255, 152, 0, 0.3); padding: 8px 20px; border-radius: 20px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: none;" onmouseover="this.style.background='rgba(255, 152, 0, 0.25)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255, 152, 0, 0.15)'; this.style.transform='translateY(0)';">Remove from Folder</button>
+                        
+                        
                         <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.1); margin: 0 8px;"></div>
                         <button class="ypp-modal-close" style="background: transparent; border: none; color: #94a3b8; font-size: 28px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; line-height: 1;" onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8';">&times;</button>
                     </div>

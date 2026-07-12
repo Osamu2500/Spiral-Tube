@@ -40,8 +40,7 @@ export class SubscriptionFolders extends window.YPP.features.BaseFeature {
         // to avoid unintentionally stopping other features that share the same observer.
 
         // ── Sub-modules ────────────────────────────────────────────────────
-        this.storage = new window.YPP.features.FolderStorage();
-        this.ui = new window.YPP.features.FolderUI(this.storage, this);
+                this.ui = new window.YPP.features.FolderUI(this.storage, this);
 
         // Bound nav handler stored for later removal in disable()
         this._boundHandleNav = () => this.handleNavigation();
@@ -95,8 +94,7 @@ export class SubscriptionFolders extends window.YPP.features.BaseFeature {
             return;
         }
         
-        await this.storage.load();
-        this._injectGridCSS();
+                this._injectGridCSS();
         this.setupNavigationListener();
         this.handleNavigation();
         
@@ -698,15 +696,14 @@ export class SubscriptionFolders extends window.YPP.features.BaseFeature {
             
             // 4. Chip Bar State Logic (3-state)
             if (show) {
-                // If 'all' is explicitly green, we don't hide by exclusion.
-                // But if 'all' is neutral and other things are green, we use exclusion.
-                
                 let greenCount = 0;
-                for (const state of Object.values(chips)) {
-                    if (state === 'show') greenCount++;
+                for (const [chipId, state] of Object.entries(chips)) {
+                    if (state === 'show' && chipId !== 'unwatched' && chipId !== 'watched' && chipId !== 'all') {
+                        greenCount++;
+                    }
                 }
                 
-                // If anything except 'all' is explicitly SHOW (green), we implicitly hide things that aren't matching a SHOW chip.
+                // If anything except 'all', 'unwatched', 'watched' is explicitly SHOW (green), we implicitly hide things that aren't matching a SHOW chip.
                 const hasExplicitShow = greenCount > 0 && chips['all'] !== 'show';
                 
                 if (hasExplicitShow) {
@@ -735,10 +732,12 @@ export class SubscriptionFolders extends window.YPP.features.BaseFeature {
                 if (!isNotifOn && chips['notifoff'] === 'hide') show = false;
             }
             
-            // 5. Watched Dropdown
+            // 5. Watched Chips (AND logic with the rest)
             if (show) {
-                if (activeWatch === 'unwatched' && isWatched) show = false;
-                if (activeWatch === 'watched' && !isWatched) show = false;
+                if (chips['unwatched'] === 'show' && isWatched) show = false;
+                if (chips['unwatched'] === 'hide' && !isWatched) show = false;
+                if (chips['watched'] === 'show' && !isWatched) show = false;
+                if (chips['watched'] === 'hide' && isWatched) show = false;
             }
             
             // 6. Search String
