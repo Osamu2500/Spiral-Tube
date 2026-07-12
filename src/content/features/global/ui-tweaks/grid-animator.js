@@ -2,10 +2,14 @@
  * GridAnimator
  * Adds premium staggered entrance animations to grid items using anime.js.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.GridAnimator = class GridAnimator extends window.YPP.features.BaseFeature {
+
+
+export class GridAnimator extends window.YPP.features.BaseFeature {
+    static featureId = 'gridAnimator';
+    static executionPhase = 'idle';
+    static priority = 12;
+
     constructor() {
         super();
         this._batch = [];
@@ -96,3 +100,5 @@ window.YPP.features.GridAnimator = class GridAnimator extends window.YPP.feature
         });
     }
 };
+
+window.YPP.features.GridAnimator = GridAnimator;

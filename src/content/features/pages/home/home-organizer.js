@@ -1,12 +1,16 @@
 // Home Feed Organizer (Refactored)
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 /**
  * Home Feed Organizer
  * Manages channel tagging, visual priorities, and feed organization
  */
-window.YPP.features.HomeOrganizer = class HomeOrganizer extends window.YPP.features.BaseFeature {
+export class HomeOrganizer extends window.YPP.features.BaseFeature {
+    static featureId = 'homeOrganizer';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'hideFeed'; }
     constructor() {
         super('HomeOrganizer');
@@ -354,3 +358,5 @@ window.YPP.features.HomeOrganizer = class HomeOrganizer extends window.YPP.featu
 
 
 };
+
+window.YPP.features.HomeOrganizer = HomeOrganizer;

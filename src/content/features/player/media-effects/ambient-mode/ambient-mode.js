@@ -1,12 +1,13 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 const SELECTORS = {
     PLAYER_CONTAINER: 'ytd-player, #player-container-outer, ytd-watch-flexy',
     VIDEO: 'ytd-player video'
 };
 
-window.YPP.features.AmbientMode = class AmbientMode extends window.YPP.features.BaseFeature {
+export class AmbientMode extends window.YPP.features.BaseFeature {
+    static featureId = 'ambientMode';
+    static executionPhase = 'idle';
+    static priority = 13;
+
     constructor() {
         super('AmbientMode');
         this.canvas = null;
@@ -425,3 +426,5 @@ window.YPP.features.AmbientMode = class AmbientMode extends window.YPP.features.
         );
     }
 };
+
+window.YPP.features.AmbientMode = AmbientMode;

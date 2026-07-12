@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class ScreenFilters extends window.YPP.features.BaseFeature {
+    static featureId = 'screenFilters';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.ScreenFilters = class ScreenFilters extends window.YPP.features.BaseFeature {
     constructor() {
         super('ScreenFilters');
         this.filterOverlay = null;
@@ -80,3 +81,5 @@ window.YPP.features.ScreenFilters = class ScreenFilters extends window.YPP.featu
         this.filterOverlay.style.background = overlayCss;
     }
 };
+
+window.YPP.features.ScreenFilters = ScreenFilters;

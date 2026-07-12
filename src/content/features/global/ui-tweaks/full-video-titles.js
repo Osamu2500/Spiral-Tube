@@ -1,11 +1,12 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Full Video Titles
  * Prevents YouTube from truncating video titles with an ellipsis.
  */
-window.YPP.features.FullVideoTitles = class FullVideoTitles extends window.YPP.features.BaseFeature {
+export class FullVideoTitles extends window.YPP.features.BaseFeature {
+    static featureId = 'displayFullTitle';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('FullVideoTitles');
         this.CONSTANTS = window.YPP.CONSTANTS || {};
@@ -26,3 +27,5 @@ window.YPP.features.FullVideoTitles = class FullVideoTitles extends window.YPP.f
         document.body.classList.remove(this.CSS_CLASS);
     }
 };
+
+window.YPP.features.FullVideoTitles = FullVideoTitles;

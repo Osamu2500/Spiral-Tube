@@ -2,7 +2,11 @@
  * Channel Columns
  * Manages the CSS custom property for the number of columns on Channel pages.
  */
-class ChannelColumns extends window.YPP.features.BaseFeature {
+export class ChannelColumns extends window.YPP.features.BaseFeature {
+    static featureId = 'channelColumns';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'channelColumns'; }
     constructor() { super('ChannelColumns'); }
 
@@ -24,4 +28,5 @@ class ChannelColumns extends window.YPP.features.BaseFeature {
         }
     }
 }
+
 window.YPP.features.ChannelColumns = ChannelColumns;

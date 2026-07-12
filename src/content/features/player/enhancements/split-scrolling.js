@@ -39,8 +39,8 @@
  *   explicit and survives specificity changes.
  */
 
-window.YPP          = window.YPP          || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 /** @constant {string} ID of the injected <style> element */
 const _SPLIT_SCROLL_STYLE_ID = 'ypp-split-scrolling-style';
@@ -48,7 +48,11 @@ const _SPLIT_SCROLL_STYLE_ID = 'ypp-split-scrolling-style';
 /** @constant {string} Body class that activates the split-scroll CSS */
 const _SPLIT_SCROLL_ACTIVE_CLASS = 'ypp-split-scrolling-enabled';
 
-window.YPP.features.SplitScrolling = class SplitScrolling extends window.YPP.features.BaseFeature {
+export class SplitScrolling extends window.YPP.features.BaseFeature {
+    static featureId = 'splitScrolling';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     constructor() {
         super('SplitScrolling');
@@ -196,3 +200,5 @@ window.YPP.features.SplitScrolling = class SplitScrolling extends window.YPP.fea
         document.head.appendChild(style);
     }
 };
+
+window.YPP.features.SplitScrolling = SplitScrolling;

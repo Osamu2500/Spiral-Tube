@@ -68,6 +68,14 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
                 if (e.key === 'Tab') return;
                 e.preventDefault();
                 
+                if (e.key === 'Backspace' || e.key === 'Delete') {
+                    sc.key = '';
+                    keyInput.value = '';
+                    keyInput.style.color = '';
+                    save();
+                    return;
+                }
+
                 const keys = [];
                 if (e.ctrlKey) keys.push('Ctrl');
                 if (e.altKey) keys.push('Alt');
@@ -90,9 +98,28 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
                 keys.push(keyName);
                 const finalKey = keys.join('+');
                 
-                sc.key = finalKey;
-                keyInput.value = finalKey;
-                save();
+                // Duplicate detection
+                chrome.storage.local.get('settings', (data) => {
+                    const settings = data.settings || {};
+                    const allAdv = settings.advancedShortcuts || [];
+                    const allVsc = settings.vscShortcuts || [];
+                    const allKeys = [...allAdv, ...allVsc].map(s => s.key).filter(k => k);
+                    
+                    let occurrences = 0;
+                    for (const k of allKeys) {
+                        if (k === finalKey) occurrences++;
+                    }
+                    
+                    if (occurrences > 0 && finalKey !== sc.key) {
+                        keyInput.style.color = '#ff4e45';
+                    } else {
+                        keyInput.style.color = '';
+                    }
+
+                    sc.key = finalKey;
+                    keyInput.value = finalKey;
+                    save();
+                });
             });
 
             const valInput = document.createElement('input');
@@ -139,19 +166,7 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
     };
 
     const save = () => {
-        chrome.storage.local.get('settings', (data) => {
-            const settings = data.settings || {};
-            settings.vscShortcuts = currentShortcuts;
-            chrome.storage.local.set({ settings });
-            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                if (tabs[0]?.id) {
-                    chrome.tabs.sendMessage(tabs[0].id, {
-                        action: 'UPDATE_SETTINGS',
-                        settings: { vscShortcuts: currentShortcuts }
-                    });
-                }
-            });
-        });
+        updateSetting('vscShortcuts', currentShortcuts);
     };
 
     let currentShortcuts = [];
@@ -174,102 +189,303 @@ registerSlot('vsc_shortcuts_manager', (container, state) => {
     });
 });
 
-registerSlot('shortcutsPanel', (container, state) => {
+registerSlot('advanced_shortcuts_manager', (container, state) => {
     container.innerHTML = `
         <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
-            <div style="font-size:12px; color:rgba(255,255,255,0.5);">Click an input to map a new shortcut:</div>
-            <div id="shortcutsList" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;"></div>
+            <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:4px; font-weight:bold; font-size:12px; opacity:0.7;">
+                <span style="flex:2">Action</span>
+                <span style="flex:1; text-align:center;">Key</span>
+                <span style="width:24px"></span>
+            </div>
+            <div id="adv-shortcuts-list" style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;"></div>
+            <button id="adv-add-shortcut" class="action-btn" style="width:100%;">+ Add Shortcut</button>
+            <div id="adv-error-msg" style="color:#ff4e45; font-size:11px; text-align:center; height:14px;"></div>
         </div>
     `;
-    const list = container.querySelector('#shortcutsList');
+
+    const listContainer = container.querySelector('#adv-shortcuts-list');
+    const addBtn = container.querySelector('#adv-add-shortcut');
+    const errorMsg = container.querySelector('#adv-error-msg');
     
-    const svgIcon = (path) => `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${path}"/></svg>`;
+    // Close all popovers when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.custom-select-trigger') && !e.target.closest('.custom-select-popover')) {
+            document.querySelectorAll('.custom-select-popover').forEach(p => p.style.display = 'none');
+        }
+    });
 
-    const shortcuts = [
-        { id: 'shortcut_zenMode', label: 'Toggle Zen Mode', icon: svgIcon('M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6') },
-        { id: 'shortcut_focusMode', label: 'Toggle Focus Mode', icon: svgIcon('M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7') },
-        { id: 'shortcut_cinemaMode', label: 'Toggle Cinema Mode', icon: svgIcon('M2 3h20v14H2zM8 21h8M12 17v4') },
-        { id: 'shortcut_ambientMode', label: 'Toggle Ambient Mode', icon: svgIcon('M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41') },
-        { id: 'shortcut_snapshot', label: 'Take Snapshot', icon: svgIcon('M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z') },
-        { id: 'shortcut_loop', label: 'Toggle Loop', icon: svgIcon('M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z') },
-        { id: 'shortcut_pip', label: 'Picture-in-Picture', icon: svgIcon('M3 3h18v14H3zM12 14h7v5h-7z') }
-    ];
+    const ACTIONS = {
+        // --- Modes ---
+        zenMode: 'Toggle Zen Mode',
+        focusMode: 'Toggle Focus Mode',
+        cinemaMode: 'Toggle Cinema Mode',
+        ambientMode: 'Toggle Ambient Mode',
+        autoCinema: 'Toggle Auto Cinema',
+        // --- Player Controls ---
+        pip: 'Picture-in-Picture',
+        loop: 'Toggle Loop',
+        snapshot: 'Take Snapshot',
+        enableGlobalPlayerBar: 'Toggle Player Bar',
+        enableVolumeBoost: 'Toggle Volume Booster',
+        enableCinemaFilters: 'Toggle Video Filters',
+        enableCustomSpeed: 'Toggle Custom Speed',
+        enableTranscript: 'Toggle Transcript',
+        // --- UI / Theme ---
+        premiumTheme: 'Toggle Premium Theme',
+        trueBlack: 'Toggle True Black Dark Mode',
+        hideScrollbar: 'Toggle Scrollbar',
+        grayscaleThumbnails: 'Toggle Grayscale Thumbs',
+        grid4x4: 'Toggle 4x4 Grid Layout',
+        // --- Declutter ---
+        hideComments: 'Toggle Comments',
+        hideRelated: 'Toggle Related Videos',
+        hideLiveChat: 'Toggle Live Chat',
+        hideShorts: 'Toggle Shorts',
+        hideEndScreens: 'Toggle End Screens',
+        hideAnnotations: 'Toggle Annotations',
+        hideMixes: 'Toggle Mixes',
+        hideWatched: 'Toggle Watched Videos',
+        hideMerch: 'Toggle Merch & Offers',
+        hideFundraiser: 'Toggle Fundraisers',
+        hideChannelCards: 'Toggle Channel Cards',
+        hideFeed: 'Toggle Home Feed',
+        hideTrending: 'Toggle Trending Tab',
+        // --- Search ---
+        searchGrid: 'Toggle Search Grid',
+        cleanSearch: 'Toggle Clean Search',
+        // --- Shorts ---
+        shortsAutoScroll: 'Toggle Shorts Auto Scroll',
+        shortsVolumeNormalizer: 'Toggle Shorts Volume',
+        // --- Automation ---
+        autoSkipAds: 'Toggle Auto Skip Ads',
+        autoPlayNext: 'Toggle Auto Play Next',
+        sponsorBlock: 'Toggle SponsorBlock',
+        // --- Misc ---
+        intentionalDelay: 'Toggle Intentional Delay',
+        watchTimeAlert: 'Toggle Watch Time Alert'
+    };
 
-    shortcuts.forEach(sc => {
-        const row = document.createElement('div');
-        row.className = 'shortcut-panel-row';
-        const labelWrap = document.createElement('div');
-        labelWrap.className = 'shortcut-panel-label-wrap';
+    const renderList = (shortcuts) => {
+        // Clean up previously appended popovers from body
+        document.querySelectorAll('.custom-select-popover').forEach(p => p.remove());
         
-        const iconWrap = document.createElement('div');
-        iconWrap.className = 'shortcut-panel-icon-wrap';
-        iconWrap.innerHTML = sc.icon || '';
-        
-        const label = document.createElement('span');
-        label.textContent = sc.label;
-        label.className = 'shortcut-panel-label';
-        
-        labelWrap.appendChild(iconWrap);
-        labelWrap.appendChild(label);
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.id = sc.id;
-        input.readOnly = true;
-        input.className = 'shortcut-panel-input';
-        
-        state.elements[sc.id] = input;
-        if (!state.settingKeys.includes(sc.id)) state.settingKeys.push(sc.id);
+        listContainer.innerHTML = '';
+        shortcuts.forEach((sc, index) => {
+            const row = document.createElement('div');
+            row.className = 'vsc-shortcut-row';
 
-        input.addEventListener('focus', () => {
-            input.value = 'Press key...';
-        });
-
-        input.addEventListener('blur', () => {
-            chrome.storage.local.get('settings', (res) => {
-                input.value = res.settings?.[sc.id] || input.dataset.default || '';
+            // Custom Masonry Select
+            const selectContainer = document.createElement('div');
+            selectContainer.className = 'custom-select-wrapper';
+            selectContainer.style.position = 'relative';
+            selectContainer.style.flex = '2';
+            
+            const trigger = document.createElement('div');
+            trigger.className = 'vsc-select custom-select-trigger';
+            trigger.style.display = 'flex';
+            trigger.style.justifyContent = 'space-between';
+            trigger.style.alignItems = 'center';
+            trigger.style.cursor = 'pointer';
+            trigger.style.userSelect = 'none';
+            trigger.style.padding = '0 8px';
+            trigger.style.height = '100%';
+            trigger.innerHTML = `<span class="label" style="text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${ACTIONS[sc.action] || 'Select Action'}</span><span style="opacity:0.5; font-size:10px; margin-left:4px;">▼</span>`;
+            
+            const popover = document.createElement('div');
+            popover.className = 'custom-select-popover';
+            popover.style.display = 'none';
+            popover.style.position = 'absolute';
+            popover.style.width = '560px';
+            popover.style.background = '#1a1a1a';
+            popover.style.border = '1px solid rgba(255,255,255,0.1)';
+            popover.style.borderRadius = '8px';
+            popover.style.padding = '8px';
+            popover.style.zIndex = '10000';
+            popover.style.boxShadow = '0 8px 32px rgba(0,0,0,0.7)';
+            // True masonry grid
+            popover.style.columnCount = '4';
+            popover.style.columnGap = '8px';
+            
+            
+            for (const [val, label] of Object.entries(ACTIONS)) {
+                const opt = document.createElement('div');
+                opt.textContent = label;
+                opt.style.padding = '6px 8px';
+                opt.style.fontSize = '11px';
+                opt.style.color = sc.action === val ? '#fff' : 'rgba(255,255,255,0.7)';
+                opt.style.background = sc.action === val ? 'rgba(255,255,255,0.1)' : 'transparent';
+                opt.style.border = '1px solid rgba(255,255,255,0.1)';
+                opt.style.borderRadius = '4px';
+                opt.style.cursor = 'pointer';
+                opt.style.marginBottom = '8px';
+                opt.style.breakInside = 'avoid';
+                
+                opt.addEventListener('mouseenter', () => { if (sc.action !== val) opt.style.background = 'rgba(255,255,255,0.05)'; });
+                opt.addEventListener('mouseleave', () => { if (sc.action !== val) opt.style.background = 'transparent'; });
+                
+                opt.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sc.action = val;
+                    trigger.querySelector('.label').textContent = label;
+                    popover.style.display = 'none';
+                    save();
+                    renderList(shortcuts);
+                });
+                popover.appendChild(opt);
+            }
+            
+            // Append popover to body to escape any overflow: hidden/auto containers
+            document.body.appendChild(popover);
+            
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isVisible = popover.style.display === 'block';
+                document.querySelectorAll('.custom-select-popover').forEach(p => p.style.display = 'none');
+                
+                if (!isVisible) {
+                    const rect = selectContainer.getBoundingClientRect();
+                    // Render first at 0,0 to accurately measure height without viewport constraints affecting it
+                    popover.style.top = '0px';
+                    popover.style.left = (rect.left + window.scrollX) + 'px';
+                    popover.style.display = 'block';
+                    
+                    const popRect = popover.getBoundingClientRect();
+                    let finalTop = rect.bottom + window.scrollY + 4;
+                    
+                    // Smart upward/clamped logic
+                    if (finalTop + popRect.height > window.innerHeight) {
+                        // Try upward
+                        finalTop = rect.top + window.scrollY - popRect.height - 4;
+                        // If it also overflows top, clamp to viewport top
+                        if (finalTop < 8) {
+                            finalTop = 8;
+                        }
+                    }
+                    
+                    popover.style.top = finalTop + 'px';
+                }
             });
+            
+            selectContainer.appendChild(trigger);
+            
+            const keyInput = document.createElement('input');
+            keyInput.type = 'text';
+            keyInput.value = sc.key || '';
+            keyInput.placeholder = 'None';
+            keyInput.className = 'vsc-key-input';
+            keyInput.style.flex = '1';
+            keyInput.style.textAlign = 'center';
+            
+            keyInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') return;
+                e.preventDefault();
+                
+                if (e.key === 'Backspace' || e.key === 'Delete') {
+                    sc.key = '';
+                    keyInput.value = '';
+                    keyInput.style.color = '';
+                    errorMsg.textContent = '';
+                    save();
+                    return;
+                }
+
+                const keys = [];
+                if (e.ctrlKey) keys.push('Ctrl');
+                if (e.altKey) keys.push('Alt');
+                if (e.shiftKey) keys.push('Shift');
+                if (e.metaKey) keys.push('Meta');
+                
+                let keyName = e.key;
+                if (e.shiftKey) {
+                    const shiftMap = { '<': ',', '>': '.', ':': ';', '"': "'", '{': '[', '}': ']', '|': '\\', '?': '/', '~': '`', '!': '1', '@': '2', '#': '3', '$': '4', '%': '5', '^': '6', '&': '7', '*': '8', '(': '9', ')': '0', '_': '-', '+': '=' };
+                    if (shiftMap[keyName]) keyName = shiftMap[keyName];
+                }
+                if (keyName === ' ') keyName = 'Space';
+                
+                if (['Control', 'Shift', 'Alt', 'Meta'].includes(keyName)) {
+                    keyInput.value = keys.join('+') + '+...';
+                    return;
+                }
+                
+                keyName = keyName.length === 1 ? keyName.toUpperCase() : keyName;
+                keys.push(keyName);
+                const finalKey = keys.join('+');
+                
+                // Duplicate detection
+                chrome.storage.local.get('settings', (data) => {
+                    const settings = data.settings || {};
+                    const allAdv = settings.advancedShortcuts || [];
+                    const allVsc = settings.vscShortcuts || [];
+                    const allKeys = [...allAdv, ...allVsc].map(s => s.key).filter(k => k);
+                    
+                    // Count occurrences of this key
+                    let occurrences = 0;
+                    for (const k of allKeys) {
+                        if (k === finalKey) occurrences++;
+                    }
+                    
+                    if (occurrences > 0 && finalKey !== sc.key) {
+                        keyInput.style.color = '#ff4e45';
+                        errorMsg.textContent = `Warning: '${finalKey}' is already used by another action!`;
+                    } else {
+                        keyInput.style.color = '';
+                        errorMsg.textContent = '';
+                    }
+
+                    sc.key = finalKey;
+                    keyInput.value = finalKey;
+                    save();
+                });
+            });
+
+            const rmBtn = document.createElement('button');
+            rmBtn.innerHTML = '✕';
+            rmBtn.className = 'vsc-rm-btn';
+            rmBtn.addEventListener('click', () => {
+                shortcuts.splice(index, 1);
+                errorMsg.textContent = '';
+                save();
+                renderList(shortcuts);
+            });
+
+            row.appendChild(selectContainer);
+            row.appendChild(keyInput);
+            row.appendChild(rmBtn);
+            listContainer.appendChild(row);
         });
+    };
 
-        input.addEventListener('keydown', (e) => {
-            e.preventDefault();
-            if (e.key === 'Escape') {
-                input.blur();
-                return;
-            }
-            if (e.key === 'Backspace' || e.key === 'Delete') {
-                input.value = '';
-                input.dispatchEvent(new Event('change', { bubbles: true }));
-                input.blur();
-                return;
-            }
+    const save = () => {
+        updateSetting('advancedShortcuts', currentShortcuts);
+    };
 
-            let keys = [];
-            if (e.ctrlKey) keys.push('Ctrl');
-            if (e.altKey) keys.push('Alt');
-            if (e.shiftKey) keys.push('Shift');
-            if (e.metaKey) keys.push('Meta');
-            
-            let keyName = e.key;
-            if (e.shiftKey) {
-                const shiftMap = { '<': ',', '>': '.', ':': ';', '"': "'", '{': '[', '}': ']', '|': '\\', '?': '/', '~': '`', '!': '1', '@': '2', '#': '3', '$': '4', '%': '5', '^': '6', '&': '7', '*': '8', '(': '9', ')': '0', '_': '-', '+': '=' };
-                if (shiftMap[keyName]) keyName = shiftMap[keyName];
-            }
-            if (keyName === ' ') keyName = 'Space';
-            
-            if (['Control','Shift','Alt','Meta'].includes(keyName)) return;
-            
-            keyName = keyName.length === 1 ? keyName.toUpperCase() : keyName;
-            keys.push(keyName);
-            
-            const combo = keys.join('+');
-            input.value = combo;
-            input.dispatchEvent(new Event('change', { bubbles: true }));
-            input.blur();
-        });
+    let currentShortcuts = [];
+    chrome.storage.local.get('settings', (data) => {
+        // Fallback to legacy bindings if advancedShortcuts is empty and legacy exists
+        const s = data.settings || {};
+        if (s.advancedShortcuts !== undefined && s.advancedShortcuts.length > 0) {
+            currentShortcuts = s.advancedShortcuts;
+        } else {
+            // Migrate old ones if any
+            const defaults = [
+                { action: 'zenMode', key: s.shortcut_zenMode || 'Shift+Z' },
+                { action: 'focusMode', key: s.shortcut_focusMode || 'Shift+F' },
+                { action: 'cinemaMode', key: s.shortcut_cinemaMode || 'Shift+C' },
+                { action: 'snapshot', key: s.shortcut_snapshot || 'Shift+S' },
+                { action: 'loop', key: s.shortcut_loop || 'Shift+L' },
+                { action: 'pip', key: s.shortcut_pip || 'Shift+P' },
+                { action: 'ambientMode', key: s.shortcut_ambientMode || 'Shift+M' }
+            ];
+            currentShortcuts = defaults;
+            save(); // Immediately save migration
+        }
+        renderList(currentShortcuts);
+    });
 
-        row.appendChild(labelWrap);
-        row.appendChild(input);
-        list.appendChild(row);
+    addBtn.addEventListener('click', () => {
+        currentShortcuts.push({ action: 'zenMode', key: '' });
+        save();
+        renderList(currentShortcuts);
     });
 });
 
@@ -724,6 +940,7 @@ const initApp = () => {
         components.initPopupStyleGrid();
         components.initAccentColorSwatches();
         components.initCustomThemeBuilder();
+        UI.initDualAccentToggle(document);
 
         // 5. Wire Universal Event Listeners
         initUniversalListeners(document, state, UI, saveSettings);

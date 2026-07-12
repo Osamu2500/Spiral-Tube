@@ -3,10 +3,14 @@
  * Remembers exact playback position locally utilizing localStorage.
  * Automatically seeks to saved position on load.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.VideoResumer = class VideoResumer extends window.YPP.features.BaseFeature {
+
+
+export class VideoResumer extends window.YPP.features.BaseFeature {
+    static featureId = 'videoResumer';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('VideoResumer');
         
@@ -160,3 +164,5 @@ window.YPP.features.VideoResumer = class VideoResumer extends window.YPP.feature
         }
     }
 };
+
+window.YPP.features.VideoResumer = VideoResumer;

@@ -2,10 +2,14 @@
  * Feature: Mouse Wheel Controls
  * Allows scrolling over the video player while holding modifiers (Shift/Alt) to change Speed and Volume.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.WheelControls = class WheelControls extends window.YPP.features.BaseFeature {
+
+
+export class WheelControls extends window.YPP.features.BaseFeature {
+    static featureId = 'wheelControls';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('WheelControls');
         this.playerContainer = null;
@@ -116,3 +120,5 @@ window.YPP.features.WheelControls = class WheelControls extends window.YPP.featu
         }
     }
 };
+
+window.YPP.features.WheelControls = WheelControls;

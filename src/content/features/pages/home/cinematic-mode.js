@@ -3,7 +3,11 @@ import cinematicThemeCSS from './cinematic-theme.css?raw';
 /**
  * Cinematic Mode — Netflix-style home feed overlay.
  */
-window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.features.BaseFeature {
+export class CinematicMode extends window.YPP.features.BaseFeature {
+    static featureId = 'cinematicMode';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static SELECTORS = {
         YTD_RICH_ITEM: 'ytd-rich-item-renderer',
         YTD_VIDEO_PREVIEW: 'ytd-video-preview',
@@ -41,12 +45,12 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         this._videoTimer = null;
         this._checkInterval = null;
         this._isUserHovering = false;
-        this._mo = null;
+
         this._abortController = null;
         this._isMuted = true;
         this._isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
         this._navObserver = null;
-        this._darkModeObserver = null;
+
         this._navListenersAdded = false;
         
         this.CONFIG = {
@@ -122,6 +126,11 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         this._teardown();
         const style = document.getElementById('ypp-cinematic-style');
         if (style) style.remove();
+        
+        if (window.YPP?.sharedObserver) {
+            window.YPP.sharedObserver.unregister('cinematic-native-preview');
+            window.YPP.sharedObserver.unregister('cinematic-video-preview');
+        }
     }
 
     /**
@@ -175,7 +184,25 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         this._cinematicActive = true;
         this._abortController = new AbortController();
 
-        document.documentElement.setAttribute('dark', ''); 
+        if (window.YPP?.sharedObserver) {
+            window.YPP.sharedObserver.register('cinematic-native-preview', 'ytd-rich-item-renderer.netflix-active-preview ytd-video-preview:not([data-ypp-hero-projected])', (elements) => {
+                elements.forEach(preview => {
+                    const card = preview.closest('ytd-rich-item-renderer');
+                    if (card && this._cinematicActive) {
+                        this._projectNativePreview(card, preview);
+                    }
+                });
+            }, false);
+
+            window.YPP.sharedObserver.register('cinematic-video-preview', 'ytd-video-preview[data-ypp-hero-projected] video', (elements) => {
+                elements.forEach(video => {
+                    if (this._cinematicActive) {
+                        video.style.cssText = 'width: 100vw !important; height: 200vh !important; object-fit: cover !important; position: absolute !important; top: -50% !important; left: 0 !important; z-index: 9999 !important;';
+                    }
+                });
+            }, false);
+        }
+
         document.body.classList.add(CinematicMode.CLASSES.CINEMATIC);
         document.body.classList.add(CinematicMode.CLASSES.CINEMATIC_HOME);
 
@@ -291,6 +318,8 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
     }
 
     _monitorNativePreview(card) {
+        if (window.YPP?.sharedObserver) return; // Handled declaratively in _activate
+        
         if (this._previewObserver) this._previewObserver.disconnect();
         
         this._previewObserver = new MutationObserver(() => {
@@ -330,16 +359,15 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         fixVideo();
 
         // Also observe for the video element if it's not created yet
-        if (this._vidObserver) this._vidObserver.disconnect();
-        this._vidObserver = new MutationObserver(fixVideo);
-        this._vidObserver.observe(preview, { childList: true, subtree: true });
+        if (!window.YPP?.sharedObserver) {
+            if (this._vidObserver) this._vidObserver.disconnect();
+            this._vidObserver = new MutationObserver(fixVideo);
+            this._vidObserver.observe(preview, { childList: true, subtree: true });
+        }
     }
 
     _releaseHeroVideo() {
-        if (this._heroObserver && this._heroState.heroElement) {
-            this._heroObserver.disconnect();
-            this._heroObserver = null;
-        }
+
         if (this._previewObserver) {
             this._previewObserver.disconnect();
             this._previewObserver = null;
@@ -1020,7 +1048,6 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         
         document.body.classList.remove(CinematicMode.CLASSES.CINEMATIC_HOME);
         document.body.classList.remove(CinematicMode.CLASSES.CINEMATIC);
-        document.documentElement.removeAttribute('dark');
         
         const contents = document.querySelector('ytd-rich-grid-renderer > #contents, ytd-rich-grid-renderer');
         if (contents) contents.classList.remove('ypp-grid-container');
@@ -1033,10 +1060,7 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         this._videoTimer = null;
         this._checkInterval = null;
         
-        if (this._mo) {
-            this._mo.disconnect();
-            this._mo = null;
-        }
+
 
         if (this._navObserver) {
             this._navObserver.disconnect();
@@ -1057,3 +1081,5 @@ window.YPP.features.CinematicMode = class CinematicMode extends window.YPP.featu
         });
     }
 };
+
+window.YPP.features.CinematicMode = CinematicMode;

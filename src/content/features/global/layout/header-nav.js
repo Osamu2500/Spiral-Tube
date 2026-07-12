@@ -2,10 +2,14 @@
  * Header Navigation Manager - Creates custom navigation buttons in the header
  * @class HeaderNav
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.HeaderNav = class HeaderNav extends window.YPP.features.BaseFeature {
+
+
+export class HeaderNav extends window.YPP.features.BaseFeature {
+    static featureId = 'headerNav';
+    static executionPhase = 'sequential-ui';
+    static priority = 1;
+
   static ICONS = {
     Subscriptions:
       '<rect x="2" y="6" width="20" height="12" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></rect><polygon points="10 9 15 12 10 15 10 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></polygon>',
@@ -300,3 +304,5 @@ window.YPP.features.HeaderNav = class HeaderNav extends window.YPP.features.Base
     });
   }
 };
+
+window.YPP.features.HeaderNav = HeaderNav;

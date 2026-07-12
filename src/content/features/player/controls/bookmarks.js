@@ -2,10 +2,14 @@
  * Bookmarks Manager
  * Captures video timestamps and highlights
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.BookmarksManager = class BookmarksManager extends window.YPP.features.BaseFeature {
+
+
+export class BookmarksManager extends window.YPP.features.BaseFeature {
+    static featureId = 'bookmarksManager';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'enableBookmarks'; }
 
     constructor() {
@@ -124,3 +128,5 @@ window.YPP.features.BookmarksManager = class BookmarksManager extends window.YPP
         }
     }
 };
+
+window.YPP.features.BookmarksManager = BookmarksManager;

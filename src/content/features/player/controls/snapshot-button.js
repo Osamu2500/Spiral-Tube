@@ -1,8 +1,12 @@
 // @ts-nocheck
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.SnapshotButton = class SnapshotButton extends window.YPP.features.BaseFeature {
+
+
+export class SnapshotButton extends window.YPP.features.BaseFeature {
+    static featureId = 'snapshotButton';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('SnapshotButton');
     }
@@ -187,3 +191,5 @@ window.YPP.features.SnapshotButton = class SnapshotButton extends window.YPP.fea
         }
     }
 };
+
+window.YPP.features.SnapshotButton = SnapshotButton;

@@ -1,6 +1,10 @@
 import './video-controls.css';
 
-window.YPP.features.VideoControls = class VideoControls extends window.YPP.features.BaseFeature {
+export class VideoControls extends window.YPP.features.BaseFeature {
+    static featureId = 'videoControls';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('VideoControls');
         this.panel = null;
@@ -712,3 +716,5 @@ window.YPP.features.VideoControls = class VideoControls extends window.YPP.featu
         }
     }
 };
+
+window.YPP.features.VideoControls = VideoControls;

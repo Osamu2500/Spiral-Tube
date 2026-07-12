@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class AudioEQ extends window.YPP.features.BaseFeature {
+    static featureId = 'audioEQ';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.AudioEQ = class AudioEQ extends window.YPP.features.BaseFeature {
     constructor() {
         super('AudioEQ');
         this.audioContext = null;
@@ -116,3 +117,5 @@ window.YPP.features.AudioEQ = class AudioEQ extends window.YPP.features.BaseFeat
         }
     }
 };
+
+window.YPP.features.AudioEQ = AudioEQ;

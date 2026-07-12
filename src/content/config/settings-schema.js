@@ -14,7 +14,7 @@ window.YPP.SettingsSchema = {
     // =========================================================================
     // SCHEMA DEFINITION
     // Each key maps to: { type, default, [min], [max], [values] }
-    //   type   - 'boolean' | 'number' | 'string'
+    //   type   - 'boolean' | 'number' | 'string' | 'object' | 'array'
     //   default - value used when key is missing or invalid
     //   min/max - range clamp for numbers
     //   values  - array of allowed values for strings (enum-like)
@@ -192,25 +192,10 @@ window.YPP.SettingsSchema = {
 
         // --- Keyboard Shortcuts ---
         keyboardShortcuts:      { type: 'boolean', default: true },
-        shortcut_zenMode:       { type: 'string', default: 'Shift+Z' },
-        shortcut_focusMode:     { type: 'string', default: 'Shift+F' },
-        shortcut_cinemaMode:    { type: 'string', default: 'Shift+C' },
-        shortcut_snapshot:      { type: 'string', default: 'Shift+S' },
-        shortcut_loop:          { type: 'string', default: 'Shift+L' },
-        shortcut_pip:           { type: 'string', default: 'Shift+P' },
-        shortcut_speedDown:     { type: 'string', default: 'Shift+,' },
-        shortcut_speedUp:       { type: 'string', default: 'Shift+.' },
-        shortcut_speedReset:    { type: 'string', default: 'Shift+R' },
-        shortcut_ambientMode:   { type: 'string', default: 'Shift+M' },
+        advancedShortcuts:      { type: 'array', default: [] },
         
         // Video Speed Controller Shortcuts
-        vscShortcutSlower:       { type: 'string',  default: 's' },
-        vscShortcutFaster:       { type: 'string',  default: 'd' },
-        vscShortcutRewind:       { type: 'string',  default: 'z' },
-        vscShortcutAdvance:      { type: 'string',  default: 'x' },
-        vscShortcutReset:        { type: 'string',  default: 'r' },
-        vscShortcutPreferred:    { type: 'string',  default: 'g' },
-        vscShortcutToggleDisplay:{ type: 'string',  default: 'v' },
+        vscShortcuts:           { type: 'array', default: [] },
 
         // --- Content Visibility (missing from original schema) ---
         feedFilter:          { type: 'boolean', default: true },
@@ -367,7 +352,8 @@ window.YPP.SettingsSchema = {
                 continue;
             }
 
-            if (typeof value !== rule.type) {
+            const isArrayType = rule.type === 'array';
+            if ((!isArrayType && typeof value !== rule.type) || (isArrayType && !Array.isArray(value))) {
                 // Wrong type (e.g. string where boolean expected) — reset silently
                 window.YPP.Utils?.log(`Settings: "${key}" expected ${rule.type}, got ${typeof value}. Resetting to default.`, 'SCHEMA', 'warn');
                 out[key] = rule.default;

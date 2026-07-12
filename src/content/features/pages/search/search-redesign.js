@@ -10,7 +10,11 @@
  * - Features a persistent View Toggle (Grid/List).
  */
 
-class SearchRedesign extends window.YPP.features.BaseFeature {
+export class SearchRedesign extends window.YPP.features.BaseFeature {
+    static featureId = 'searchRedesign';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'searchGrid'; }
 
     // =========================================================================
@@ -72,6 +76,10 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
 
         // Bind navigation handler once
         this._handleNavigation = this._handleNavigation.bind(this);
+        
+        // Bind dynamic CSS adapter
+        this._adaptCardStylesToGrid = this._adaptCardStylesToGrid.bind(this);
+        this._cardStyleObserver = null;
     }
 
     /**
@@ -139,6 +147,7 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
             this._searchViewMode.enable();
 
             this._handleNavigation();
+            this._startCardStyleObserver();
             this._log('SearchRedesign enabled', 'info');
         } catch (e) {
             this._log('Error enabling SearchRedesign: ' + e.message, 'error');
@@ -165,6 +174,7 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
         document.body.classList.remove('ypp-filter-pending');
         
         this._purgeStaleClasses();
+        this._stopCardStyleObserver();
 
         super.disable();
     }
@@ -212,12 +222,117 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
                 document.body.classList.add('ypp-search-layout-' + layoutSize);
 
                 this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
+            } else {
+                // ── CARD STYLE FALLBACK:
+                // Some card styles (e.g. immersive-glass) need a body class on
+                // search pages to activate their CSS, even when Search Grid is OFF.
+                // Check if the active card style requires search-page context and
+                // activate a minimal list-mode + observer without the full grid layout.
+                const activeCardStyle = document.documentElement.getAttribute('data-ypp-card-style');
+                const LAYOUT_AWARE_CARD_STYLES = new Set(['immersive-glass']);
+
+                if (activeCardStyle && LAYOUT_AWARE_CARD_STYLES.has(activeCardStyle)) {
+                    document.body.classList.add(SearchRedesign.CLASSES.LIST_MODE);
+                    this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
+                    this._log(`Card style "${activeCardStyle}" activated search list-mode fallback`, 'info');
+                }
             }
 
         } else {
             this._searchObserver.stop();
             this._removeClasses();
+            this._stopCardStyleObserver();
             this._lastQuery = null;
+        }
+    }
+
+    /**
+     * Start observing for card style changes to instantly update grid styling.
+     * @private
+     */
+    _startCardStyleObserver() {
+        if (!this._isEnabled || this._cardStyleObserver) return;
+        
+        this._cardStyleObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-ypp-card-style') {
+                    this._adaptCardStylesToGrid();
+                    break;
+                }
+            }
+        });
+
+        this._cardStyleObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-ypp-card-style']
+        });
+        
+        // Initial run
+        this._adaptCardStylesToGrid();
+    }
+
+    /**
+     * Stop observing card style changes.
+     * @private
+     */
+    _stopCardStyleObserver() {
+        if (this._cardStyleObserver) {
+            this._cardStyleObserver.disconnect();
+            this._cardStyleObserver = null;
+        }
+        
+        const styleTag = document.getElementById('ypp-search-grid-dynamic-compat');
+        if (styleTag) styleTag.remove();
+    }
+
+    /**
+     * Dynamically generates CSS to adapt any active card style to the search grid.
+     * Fetches the current card style CSS, duplicates rules for `#details` and `#meta`,
+     * and remaps them to `.text-wrapper` so they perfectly map to `ytd-video-renderer`.
+     * @private
+     */
+    async _adaptCardStylesToGrid() {
+        const styleId = document.documentElement.getAttribute('data-ypp-card-style');
+        if (!styleId || styleId === 'default' || styleId === 'none') {
+            const styleTag = document.getElementById('ypp-search-grid-dynamic-compat');
+            if (styleTag) styleTag.remove();
+            return;
+        }
+
+        let styleTag = document.getElementById('ypp-search-grid-dynamic-compat');
+        if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.id = 'ypp-search-grid-dynamic-compat';
+            document.head.appendChild(styleTag);
+        }
+
+        try {
+            const url = chrome.runtime.getURL(`src/content/card-styles/${styleId}.css`);
+            const response = await fetch(url);
+            const cssText = await response.text();
+
+            let adaptedCss = `/* DYNAMIC SEARCH GRID ADAPTER FOR: ${styleId} */\n`;
+            const rules = cssText.match(/[^}]+}/g) || [];
+            
+            for (let rule of rules) {
+                if (rule.trim().length === 0) continue;
+                
+                // We only need to remap internal structural rules. The outer card
+                // is already styled via :is(..., .ypp-grid-item, ...) in the themes!
+                if (rule.includes('#details') || rule.includes('#meta')) {
+                    // Remap #details to .text-wrapper, and #meta to .text-wrapper.
+                    let newRule = rule.replace(/#details/g, '.text-wrapper').replace(/#meta/g, '.text-wrapper');
+                    
+                    // Scope it to search grid to avoid accidentally leaking to other pages
+                    // (even though ytd-video-renderer mostly exists on search).
+                    adaptedCss += `body.ypp-search-grid-mode ${newRule}\n`;
+                }
+            }
+
+            styleTag.textContent = adaptedCss;
+            this._log(`Generated dynamic grid compat for ${styleId}`, 'info');
+        } catch (e) {
+            this._log('Failed to adapt card style: ' + e.message, 'error');
         }
     }
 
@@ -278,6 +393,5 @@ class SearchRedesign extends window.YPP.features.BaseFeature {
 }
 
 // Expose to global namespace for FeatureManager
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
 window.YPP.features.SearchRedesign = SearchRedesign;

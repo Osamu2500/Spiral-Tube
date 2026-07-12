@@ -1,8 +1,9 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
-window.YPP.features.AutoLike = class AutoLike
+export class AutoLike
     extends window.YPP.features.BaseFeature {
+    static featureId = 'autoLike';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     constructor() {
         super('AutoLike');
@@ -169,3 +170,5 @@ window.YPP.features.AutoLike = class AutoLike
         return isPressed || isActive || !!parentActive || isFilled;
     }
 };
+
+window.YPP.features.AutoLike = AutoLike;

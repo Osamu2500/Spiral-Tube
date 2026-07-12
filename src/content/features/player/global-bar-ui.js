@@ -6,8 +6,8 @@ import anime from 'animejs/lib/anime.es.js';
  * tags on external sites, and handling local playback/speed/filter state.
  * Refactored to 1:N architecture (one bar controls ALL tracked videos on the page).
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 const ICONS = {
     play:       `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`,
@@ -32,6 +32,9 @@ const BAR_HTML = `
         <div id="ypp-gpb-vol-wrap" class="ypp-gpb-vol-wrap" title="Volume">
             <input type="range" id="ypp-gpb-vol" min="0" max="1" step="0.02" value="1" class="ypp-gpb-vol-slider">
         </div>
+        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-speed" title="Video Speed (Scroll to adjust, Click to cycle)" style="font-size:12px;font-weight:600;width:auto;padding:0 8px;">
+            <span class="ypp-gpb-speed-value" id="ypp-gpb-speed-text">1.00x</span>
+        </button>
         <div id="ypp-gpb-features-container"></div>
         <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-loop" title="Toggle Loop All">
             ${ICONS.loop}
@@ -48,7 +51,11 @@ const BAR_HTML = `
     </div>
 `;
 
-window.YPP.features.GlobalBarUI = class GlobalBarUI {
+export class GlobalBarUI {
+    static featureId = 'globalBarUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     constructor(filters) {
         this.trackedVideos = new Set();
@@ -157,6 +164,7 @@ window.YPP.features.GlobalBarUI = class GlobalBarUI {
         if (t.gpb_showLoop === false) bar.querySelector('#ypp-gpb-loop').style.display = 'none';
         if (t.gpb_showPip === false) bar.querySelector('#ypp-gpb-pip').style.display = 'none';
         if (t.gpb_showFullscreen === false) bar.querySelector('#ypp-gpb-fullscreen').style.display = 'none';
+        if (t.gpb_showSpeed === false) bar.querySelector('#ypp-gpb-speed').style.display = 'none';
 
         this.barElement = bar;
         this.ICONS = ICONS;
@@ -365,6 +373,12 @@ window.YPP.features.GlobalBarUI = class GlobalBarUI {
             
             timeEl.textContent = timeStr;
         }
+        
+        // Speed
+        const speedText = this.barElement.querySelector('#ypp-gpb-speed-text');
+        if (speedText) {
+            speedText.textContent = primary.playbackRate.toFixed(2) + 'x';
+        }
 
         // Loop reflects primary video
         const loopBtn = this.barElement.querySelector('#ypp-gpb-loop');
@@ -431,6 +445,7 @@ window.YPP.features.GlobalBarUI = class GlobalBarUI {
     _bindEvents(signal) {
         this._bindPlaybackControls();
         this._bindVolumeControls();
+        this._bindSpeedControls();
         this._bindWindowControls();
     }
 
@@ -490,6 +505,46 @@ window.YPP.features.GlobalBarUI = class GlobalBarUI {
         };
     }
 
+    _bindSpeedControls() {
+        const bar = this.barElement;
+        const speedBtn = bar.querySelector('#ypp-gpb-speed');
+        if (!speedBtn) return;
+        
+        speedBtn.onclick = (e) => {
+            e.stopPropagation();
+            const primary = this._getPrimaryVideo();
+            if (!primary) return;
+            // Basic cycle logic: 1.0 -> 1.5 -> 2.0 -> 1.0
+            const current = primary.playbackRate;
+            let next = 1.0;
+            if (current < 1.5) next = 1.5;
+            else if (current < 2.0) next = 2.0;
+            else next = 1.0;
+            
+            for (const v of this.trackedVideos) {
+                v.playbackRate = next;
+            }
+            this.updateUIState();
+        };
+
+        speedBtn.onwheel = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const primary = this._getPrimaryVideo();
+            if (!primary) return;
+            
+            // Adjust speed by 0.05
+            const delta = Math.sign(e.deltaY) * -0.05;
+            let next = Math.max(0.1, Math.min(16.0, primary.playbackRate + delta));
+            next = Math.round(next * 100) / 100; // Snap to 2 decimals
+            
+            for (const v of this.trackedVideos) {
+                v.playbackRate = next;
+            }
+            this.updateUIState();
+        };
+    }
+
     _bindWindowControls() {
         const bar = this.barElement;
 
@@ -527,3 +582,5 @@ window.YPP.features.GlobalBarUI = class GlobalBarUI {
         };
     }
 };
+
+window.YPP.features.GlobalBarUI = GlobalBarUI;

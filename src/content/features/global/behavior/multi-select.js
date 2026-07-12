@@ -1,6 +1,3 @@
-﻿window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 // ─── Selectors (single source of truth — no magic strings) ────────────────────
 const SELECTORS = {
   CARD_ROOTS: [
@@ -51,7 +48,11 @@ const ICONS = {
 };
 
 // ─── Feature Class ─────────────────────────────────────────────────────────────
-window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.BaseFeature {
+export class MultiSelect extends window.YPP.features.BaseFeature {
+    static featureId = 'multiSelect';
+    static executionPhase = 'idle';
+    static priority = 10;
+
   constructor() {
     super('MultiSelect');
     /** @type {Map<string, {title: string, href: string, element: HTMLElement}>} */
@@ -1077,3 +1078,5 @@ window.YPP.features.MultiSelect = class MultiSelect extends window.YPP.features.
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 };
+
+window.YPP.features.MultiSelect = MultiSelect;

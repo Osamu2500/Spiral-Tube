@@ -1,11 +1,12 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Base Class for filter features that hide elements on specific pages.
  * Handles page scoping, unified hiding mechanics via CSS classes, and cleanup.
  */
-window.YPP.features.BaseFilterFeature = class BaseFilterFeature extends window.YPP.features.BaseFeature {
+export class BaseFilterFeature extends window.YPP.features.BaseFeature {
+    static featureId = 'baseFilterFeature';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor(name) {
         super(name);
         this._hiddenElements = new WeakSet();
@@ -84,3 +85,5 @@ window.YPP.features.BaseFilterFeature = class BaseFilterFeature extends window.Y
         this._unhideAll();
     }
 };
+
+window.YPP.features.BaseFilterFeature = BaseFilterFeature;

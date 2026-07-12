@@ -154,28 +154,7 @@ export function saveSettings(showIndicatorCb) {
     state._settingsWriteQueue.push({ fullState: s });
     _processWriteQueue();
     if (showIndicatorCb) showIndicatorCb();
-    sendPreviewUpdate();
 }
-
-const sendPreviewUpdate = (() => {
-    let timer = null;
-    return () => {
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(() => {
-            const s = gatherSettings();
-            // Filter to YouTube-only: prevents sending settings to whatever
-            // non-YouTube tab happens to be active in the current window.
-            chrome.tabs.query({ active: true, currentWindow: true, url: '*://*.youtube.com/*' }, (tabs) => {
-                if (tabs[0] && tabs[0].id) {
-                    chrome.tabs.sendMessage(tabs[0].id, {
-                        action: 'UPDATE_SETTINGS',
-                        settings: s
-                    });
-                }
-            });
-        }, 10);
-    };
-})();
 
 function _processWriteQueue() {
     const Utils = getUtils();
@@ -201,8 +180,8 @@ function _processWriteQueue() {
         try {
             await new Promise((resolve, reject) => {
                 chrome.runtime.sendMessage({
-                    action: 'UPDATE_SETTINGS_DELTA',
-                    delta: delta
+                    action: 'PATCH_SETTINGS',
+                    payload: delta
                 }, (response) => {
                     if (chrome.runtime.lastError) {
                         reject(chrome.runtime.lastError);
@@ -232,12 +211,5 @@ export function updateSetting(key, value) {
 }
 
 export function notifyThemeChange(newTheme) {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs[0] && tabs[0].id) {
-            chrome.tabs.sendMessage(tabs[0].id, { 
-                action: 'UPDATE_SETTINGS', 
-                settings: { activeTheme: newTheme } 
-            });
-        }
-    });
+    updateSetting('activeTheme', newTheme);
 }

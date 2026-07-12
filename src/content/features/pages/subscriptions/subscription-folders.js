@@ -4,10 +4,14 @@
  * Owns: Navigation routing, feed filtering engine, Play All implementation, and settings lifecycle.
  * Delegates storage to FolderStorage and UI to FolderUI.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.SubscriptionFolders = class SubscriptionFolders extends window.YPP.features.BaseFeature {
+
+
+export class SubscriptionFolders extends window.YPP.features.BaseFeature {
+    static featureId = 'subscriptionFolders';
+    static executionPhase = 'sequential-ui';
+    static priority = 999;
+
     static SELECTORS = {
         FEED_CARDS: 'ytd-browse[page-subtype="subscriptions"] ytd-rich-item-renderer, ytd-browse[page-subtype="subscriptions"] ytd-video-renderer',
         FEED_CONTAINER: 'ytd-browse[page-subtype="subscriptions"] ytd-rich-grid-renderer #contents, ytd-browse[page-subtype="subscriptions"] ytd-item-section-renderer #contents',
@@ -1274,3 +1278,5 @@ window.YPP.features.SubscriptionFolders = class SubscriptionFolders extends wind
         }, 5000, 500).then(() => extractAndPlay()).catch(() => extractAndPlay());
     }
 };
+
+window.YPP.features.SubscriptionFolders = SubscriptionFolders;

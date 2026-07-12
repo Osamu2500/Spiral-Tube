@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class IntentionalDelay extends window.YPP.features.BaseFeature {
+    static featureId = 'intentionalDelay';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.IntentionalDelay = class IntentionalDelay extends window.YPP.features.BaseFeature {
     constructor() {
         super('IntentionalDelay');
         this._boundCheck = this._onPageChange.bind(this);
@@ -104,3 +105,5 @@ window.YPP.features.IntentionalDelay = class IntentionalDelay extends window.YPP
         }
     }
 };
+
+window.YPP.features.IntentionalDelay = IntentionalDelay;

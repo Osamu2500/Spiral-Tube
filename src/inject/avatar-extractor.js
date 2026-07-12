@@ -28,12 +28,19 @@
     // Run on mutations (when the menu is opened/populated)
     const observer = new MutationObserver((mutations) => {
         let shouldRun = false;
-        for (const m of mutations) {
-            if (m.addedNodes.length > 0) {
-                shouldRun = true;
-                break;
+        try {
+            for (const m of mutations) {
+                if (m.addedNodes) {
+                    for (const node of m.addedNodes) {
+                        if (node.nodeType === 1) {
+                            shouldRun = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldRun) break;
             }
-        }
+        } catch (e) {}
         if (shouldRun) extractAvatars();
     });
     

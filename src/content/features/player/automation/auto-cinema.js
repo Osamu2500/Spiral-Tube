@@ -3,10 +3,14 @@
  * Automatically clicks the theater button whenever a watch page loads
  * to ensure the video expands.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.AutoCinema = class AutoCinema extends window.YPP.features.BaseFeature {
+
+
+export class AutoCinema extends window.YPP.features.BaseFeature {
+    static featureId = 'autoCinema';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'autoCinema'; }
 
     constructor() {
@@ -97,3 +101,5 @@ window.YPP.features.AutoCinema = class AutoCinema extends window.YPP.features.Ba
         } catch (_) { /* silent fail */ }
     }
 };
+
+window.YPP.features.AutoCinema = AutoCinema;

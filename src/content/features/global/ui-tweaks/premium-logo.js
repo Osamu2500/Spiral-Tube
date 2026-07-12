@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class PremiumLogo extends window.YPP.features.BaseFeature {
+    static featureId = 'premiumLogo';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.PremiumLogo = class PremiumLogo extends window.YPP.features.BaseFeature {
     constructor() {
         super('PremiumLogo');
     }
@@ -20,3 +21,5 @@ window.YPP.features.PremiumLogo = class PremiumLogo extends window.YPP.features.
         document.body.classList.remove('ypp-premium-logo');
     }
 };
+
+window.YPP.features.PremiumLogo = PremiumLogo;

@@ -1,10 +1,11 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Handles HTML generation and UI components for the Account Menu.
  */
-window.YPP.features.AccountMenuUI = class AccountMenuUI {
+export class AccountMenuUI {
+    static featureId = 'accountMenuUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     /**
      * HTML-escapes a string for safe insertion into attribute values and
      * text content. Escapes &, ", <, >, and '.
@@ -260,3 +261,5 @@ window.YPP.features.AccountMenuUI = class AccountMenuUI {
         </div>`;
     }
 };
+
+window.YPP.features.AccountMenuUI = AccountMenuUI;

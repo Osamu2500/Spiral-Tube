@@ -2,10 +2,14 @@
  * Auto-Floating Mini Player
  * Automatically transforms the player into a floating mini-player when scrolling past it.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.FloatingPlayer = class FloatingPlayer extends window.YPP.features.BaseFeature {
+
+
+export class FloatingPlayer extends window.YPP.features.BaseFeature {
+    static featureId = 'floatingPlayer';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('FloatingPlayer');
         this.observer = null;
@@ -173,3 +177,5 @@ window.YPP.features.FloatingPlayer = class FloatingPlayer extends window.YPP.fea
         this.addListener(player, 'mousedown', onMouseDown);
     }
 };
+
+window.YPP.features.FloatingPlayer = FloatingPlayer;

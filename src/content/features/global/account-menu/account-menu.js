@@ -1,6 +1,3 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * AccountMenu — replaces YouTube's native account dropdown with an
  * orbital-style panel: active account centered, other accounts as
@@ -14,7 +11,11 @@ window.YPP.features = window.YPP.features || {};
  *  5. Data extraction is delegated to AccountMenuData.
  *  6. UI generation is delegated to AccountMenuUI.
  */
-window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.BaseFeature {
+export class AccountMenu extends window.YPP.features.BaseFeature {
+    static featureId = 'accountMenu';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     constructor() {
         super('AccountMenu');
@@ -22,8 +23,7 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
         this._pollTimer = null;
         /** @type {ReturnType<typeof setTimeout>|null} */
         this._avatarPollTimer = null;
-        /** @type {MutationObserver|null} — left for backward compat, now unused */
-        this._dropdownObserver = null;
+
         /** @type {boolean} */
         this._injected = false;
         /** @type {Element|null} — the currently observed menu */
@@ -557,3 +557,5 @@ window.YPP.features.AccountMenu = class AccountMenu extends window.YPP.features.
         });
     }
 };
+
+window.YPP.features.AccountMenu = AccountMenu;

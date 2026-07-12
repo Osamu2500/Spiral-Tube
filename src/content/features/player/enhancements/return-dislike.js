@@ -3,10 +3,14 @@
  * Fetches and displays dislike counts using the Return YouTube Dislike API.
  * API: https://returnyoutubedislikeapi.com/
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.ReturnDislike = class ReturnDislike extends window.YPP.features.BaseFeature {
+
+
+export class ReturnDislike extends window.YPP.features.BaseFeature {
+    static featureId = 'returnYouTubeDislike';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('ReturnDislike');
         this.isActive = false;
@@ -199,3 +203,5 @@ window.YPP.features.ReturnDislike = class ReturnDislike extends window.YPP.featu
         return num.toString();
     }
 };
+
+window.YPP.features.ReturnDislike = ReturnDislike;

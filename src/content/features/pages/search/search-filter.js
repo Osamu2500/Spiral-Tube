@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class SearchFilter extends window.YPP.features.BaseFeature {
+    static featureId = 'searchFilter';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.SearchFilter = class SearchFilter extends window.YPP.features.BaseFeature {
     constructor() {
         super('SearchFilter');
         this._boundHandlePageChange = this._handlePageChange.bind(this);
@@ -42,3 +43,5 @@ window.YPP.features.SearchFilter = class SearchFilter extends window.YPP.feature
         }
     }
 };
+
+window.YPP.features.SearchFilter = SearchFilter;

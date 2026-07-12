@@ -1,6 +1,3 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Auto Scale Grid
  * Adjusts the global grid UI scale (fonts/spacing) and auto column count based on window size.
@@ -10,7 +7,11 @@ window.YPP.features = window.YPP.features || {};
  * It signals layout-manager by dispatching a synthetic 'resize' event, which triggers
  * layout-manager's debounced resize listener — clean, decoupled, no circular calls.
  */
-window.YPP.features.AutoScaleGrid = class AutoScaleGrid extends window.YPP.features.BaseFeature {
+export class AutoScaleGrid extends window.YPP.features.BaseFeature {
+    static featureId = 'autoScaleLayout';
+    static executionPhase = 'post-layout';
+    static priority = 4;
+
     constructor() {
         super('AutoScaleGrid');
         this.CONSTANTS = window.YPP.CONSTANTS || {};
@@ -107,3 +108,5 @@ window.YPP.features.AutoScaleGrid = class AutoScaleGrid extends window.YPP.featu
         this._applyScale();
     }
 };
+
+window.YPP.features.AutoScaleGrid = AutoScaleGrid;

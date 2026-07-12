@@ -2,10 +2,14 @@
  * Duration Filter Module
  * Hides videos that are shorter than a specified minimum duration.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.DurationFilter = class DurationFilter extends window.YPP.features.BaseFilterFeature {
+
+
+export class DurationFilter extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'durationFilter';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static SELECTORS = {
         CARDS: 'ytd-rich-item-renderer, ytd-grid-video-renderer, ytd-video-renderer, ytd-compact-video-renderer',
         SHORTS_LINK: 'a[href*="/shorts/"]',
@@ -198,3 +202,5 @@ window.YPP.features.DurationFilter = class DurationFilter extends window.YPP.fea
         this._pumpResetTimer = setTimeout(() => { this._pumpCount = 0; }, 5000);
     }
 };
+
+window.YPP.features.DurationFilter = DurationFilter;

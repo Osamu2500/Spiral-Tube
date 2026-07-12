@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class HideMixes extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'hideMixes';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.HideMixes = class HideMixes extends window.YPP.features.BaseFilterFeature {
     constructor() {
         super('HideMixes');
         this._boundProcess = this._processNodes.bind(this);
@@ -120,3 +121,5 @@ window.YPP.features.HideMixes = class HideMixes extends window.YPP.features.Base
         }
     }
 };
+
+window.YPP.features.HideMixes = HideMixes;

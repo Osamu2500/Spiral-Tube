@@ -3,7 +3,11 @@ import './subs-ui-filter.js';
 import './subs-ui-sidebar.js';
 import './subs-ui-modal.js';
 
-window.YPP.features.SubscriptionUI = class SubscriptionUI extends window.YPP.features.BaseFeature {
+export class SubscriptionUI extends window.YPP.features.BaseFeature {
+    static featureId = 'subscriptionUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor(manager) {
         super('SubscriptionUI');
         this.manager = manager;
@@ -168,3 +172,5 @@ window.YPP.features.SubscriptionUI = class SubscriptionUI extends window.YPP.fea
         return window.YPP.features.SubsUIModal._addChannelToGroup(this, groupName, channel);
     }
 };
+
+window.YPP.features.SubscriptionUI = SubscriptionUI;

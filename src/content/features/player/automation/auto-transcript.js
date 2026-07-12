@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class AutoTranscript extends window.YPP.features.BaseFeature {
+    static featureId = 'autoTranscript';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.AutoTranscript = class AutoTranscript extends window.YPP.features.BaseFeature {
     constructor() {
         super('AutoTranscript');
     }
@@ -53,3 +54,5 @@ window.YPP.features.AutoTranscript = class AutoTranscript extends window.YPP.fea
         }
     }
 };
+
+window.YPP.features.AutoTranscript = AutoTranscript;

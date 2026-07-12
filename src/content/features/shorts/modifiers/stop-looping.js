@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class StopShortsLooping extends window.YPP.features.BaseFeature {
+    static featureId = 'stopShortsLooping';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.StopShortsLooping = class StopShortsLooping extends window.YPP.features.BaseFeature {
     constructor() {
         super('StopShortsLooping');
         this.handleVideoAdded = this.handleVideoAdded.bind(this);
@@ -87,3 +88,5 @@ window.YPP.features.StopShortsLooping = class StopShortsLooping extends window.Y
         }
     }
 };
+
+window.YPP.features.StopShortsLooping = StopShortsLooping;

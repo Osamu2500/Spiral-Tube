@@ -17,6 +17,13 @@
     window.YPP = window.YPP || {};
     window.YPP.features = window.YPP.features || {};
 
+    // Minimal CONSTANTS
+    window.YPP.CONSTANTS = window.YPP.CONSTANTS || {
+        SELECTORS: {
+            VIDEO: ['video']
+        }
+    };
+
     // Minimal Utils — only what GlobalPlayerBar / GlobalBarUI call
     window.YPP.Utils = window.YPP.Utils || {
         log: (msg, ctx = 'GPB', level = 'info') => {
@@ -107,11 +114,12 @@
             dlg = document.createElement('div');
             dlg.id = 'ypp-popup-portal';
             dlg.style.cssText =
-                'position:fixed;inset:0;width:100%;height:100%;' +
-                'max-width:100%;max-height:100%;' +
-                'border:0;outline:0;padding:0;margin:0;' +
-                'background:transparent;overflow:visible;' +
-                'pointer-events:none;z-index:2147483647;';
+                'display:block!important;position:fixed!important;inset:0!important;width:100%!important;height:100%!important;' +
+                'max-width:100%!important;max-height:100%!important;' +
+                'border:0!important;outline:0!important;padding:0!important;margin:0!important;' +
+                'background:transparent!important;overflow:visible!important;' +
+                'pointer-events:none!important;z-index:2147483647!important;' +
+                'transform:none!important;filter:none!important;perspective:none!important;';
             
             if ('popover' in dlg) {
                 dlg.popover = "manual";

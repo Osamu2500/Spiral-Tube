@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Service Worker for Spiral Tube
  * Handles background tasks including timer logic and initial setup
  */
@@ -98,7 +98,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             })();
             return true; // Indicate async response
 
-        case 'UPDATE_SETTINGS_DELTA':
+        case 'PATCH_SETTINGS':
             (async () => {
                 try {
                     // 1. Get current settings
@@ -107,7 +107,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     const currentSettings = { ...(localData.settings || {}), ...(syncData.settings || {}) };
                     
                     // 2. Merge delta
-                    const newSettings = { ...currentSettings, ...request.delta, lastUpdated: Date.now() };
+                    const newSettings = { ...currentSettings, ...request.payload, lastUpdated: Date.now() };
 
                     // 3. Save
                     try {
@@ -130,23 +130,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                         }
                     }
 
-                    // 5. Broadcast update to all tabs
-                    clearTimeout(broadcastTimeout);
-                    broadcastTimeout = setTimeout(async () => {
-                        const tabs = await chrome.tabs.query({ url: "*://*.youtube.com/*" });
-                        tabs.forEach(tab => {
-                            if (tab.id) {
-                                chrome.tabs.sendMessage(tab.id, {
-                                    action: 'UPDATE_SETTINGS',
-                                    settings: request.delta // Broadcast the delta or full state
-                                }).catch(() => {}); // Ignore errors for inactive tabs
-                            }
-                        });
-                    }, 250);
-
+                    // 5. Broadcast update to all tabs - REMOVED (Handled by storage.onChanged in content script)
                     sendResponse({ success: true, settings: newSettings });
                 } catch (error) {
-                    console.error('[YPP] Error in UPDATE_SETTINGS_DELTA:', error);
+                    console.error('[YPP] Error in PATCH_SETTINGS:', error);
                     sendResponse({ success: false, error: error.message });
                 }
             })();
@@ -163,16 +150,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                         } catch (e) {}
                         await chrome.storage.local.set({ settings: restoredSettings });
                         
-                        // Broadcast update
-                        const tabs = await chrome.tabs.query({ url: "*://*.youtube.com/*" });
-                        tabs.forEach(tab => {
-                            if (tab.id) {
-                                chrome.tabs.sendMessage(tab.id, {
-                                    action: 'UPDATE_SETTINGS',
-                                    settings: restoredSettings
-                                }).catch(() => {});
-                            }
-                        });
+                        // Broadcast update is now handled exclusively by storage.onChanged
 
                         sendResponse({ success: true });
                     } else {

@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class HideShorts extends window.YPP.features.BaseFeature {
+    static featureId = 'hideShorts';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.HideShorts = class HideShorts extends window.YPP.features.BaseFeature {
     constructor() {
         super('HideShorts');
         this.handleShortsAdded = this.handleShortsAdded.bind(this);
@@ -304,3 +305,5 @@ window.YPP.features.HideShorts = class HideShorts extends window.YPP.features.Ba
         }
     }
 };
+
+window.YPP.features.HideShorts = HideShorts;

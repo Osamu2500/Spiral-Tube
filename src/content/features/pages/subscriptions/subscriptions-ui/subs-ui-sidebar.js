@@ -1,6 +1,3 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 function escHtml(str) {
     return String(str)
         .replace(/&/g, '&amp;')
@@ -9,7 +6,11 @@ function escHtml(str) {
         .replace(/"/g, '&quot;');
 }
 
-window.YPP.features.SubsUISidebar = class SubsUISidebar {
+export class SubsUISidebar {
+    static featureId = 'subsUISidebar';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static injectSidebarGroups(ctx) {
         const guide = document.querySelector('ytd-guide-renderer #sections');
         if (!guide) return;
@@ -61,3 +62,5 @@ window.YPP.features.SubsUISidebar = class SubsUISidebar {
         `;
     }
 };
+
+window.YPP.features.SubsUISidebar = SubsUISidebar;

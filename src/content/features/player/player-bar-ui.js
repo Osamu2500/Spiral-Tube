@@ -1,12 +1,13 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Player Bar UI
  * Owns: Generating the custom player bar DOM, injecting it into the YouTube watch page player,
  * and handling the visibility/styling of native YouTube buttons based on settings.
  */
-window.YPP.features.PlayerBarUI = class PlayerBarUI {
+export class PlayerBarUI {
+    static featureId = 'playerBarUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor(manager) {
         this.manager = manager;
         this.injectedButtons = false;
@@ -198,3 +199,5 @@ window.YPP.features.PlayerBarUI = class PlayerBarUI {
         if (visNode) visNode.remove();
     }
 };
+
+window.YPP.features.PlayerBarUI = PlayerBarUI;

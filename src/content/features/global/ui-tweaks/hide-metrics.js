@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class HideMetrics extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'hideMetrics';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.HideMetrics = class HideMetrics extends window.YPP.features.BaseFilterFeature {
 
     constructor() {
         super('HideMetrics');
@@ -55,3 +56,5 @@ window.YPP.features.HideMetrics = class HideMetrics extends window.YPP.features.
         document.head.appendChild(style);
     }
 };
+
+window.YPP.features.HideMetrics = HideMetrics;

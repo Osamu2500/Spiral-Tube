@@ -208,10 +208,11 @@ export function updateDependencyUI(document) {
     }
 }
 
-export function applyAccentColor(document, hex) {
+export function applyAccentColor(document, hex, secondaryHex = null) {
     if (!hex || !/^#[0-9a-fA-F]{6}$/.test(hex)) return;
     const root = document.documentElement.style;
-    const sec = `color-mix(in srgb, ${hex} 55%, #a855f7)`;
+    const useDual = secondaryHex && /^#[0-9a-fA-F]{6}$/.test(secondaryHex);
+    const sec = useDual ? secondaryHex : `color-mix(in srgb, ${hex} 55%, #a855f7)`;
     root.setProperty('--accent-primary', hex);
     root.setProperty('--accent-secondary', sec);
     root.setProperty('--red', hex);
@@ -222,11 +223,65 @@ export function applyAccentColor(document, hex) {
     const grad = `linear-gradient(135deg, ${hex} 0%, ${sec} 100%)`;
     root.setProperty('--accent-gradient', grad);
     root.setProperty('--accent-grad', grad);
+    // Apply gradient to buttons and active elements when dual mode is on
+    if (useDual) {
+        root.setProperty('--accent-btn-bg', grad);
+    } else {
+        root.setProperty('--accent-btn-bg', hex);
+    }
 }
 
 export function updateCustomizationPreview(document, state) {
     if (state.elements['cardStyle']) document.documentElement.setAttribute('data-card-style', state.elements['cardStyle'].value);
-    if (state.elements['accentColor']) applyAccentColor(document, state.elements['accentColor'].value);
+    if (state.elements['accentColor']) {
+        const dualToggle = document.getElementById('enableDualAccent');
+        const secInput = document.getElementById('secondaryAccentColor');
+        const isDual = dualToggle?.checked && secInput?.value;
+        applyAccentColor(document, state.elements['accentColor'].value, isDual ? secInput.value : null);
+    }
+}
+
+export function initDualAccentToggle(document) {
+    const dualToggle = document.getElementById('enableDualAccent');
+    const secSwatches = document.getElementById('secondaryAccentSwatches');
+    const primaryInput = document.getElementById('accentColor');
+    const secInput = document.getElementById('secondaryAccentColor');
+    if (!dualToggle) return;
+
+    // Load saved state
+    chrome.storage.local.get('settings', (data) => {
+        const isDual = data.settings?.enableDualAccent || false;
+        const secColor = data.settings?.secondaryAccentColor || '#b62bcf';
+        dualToggle.checked = isDual;
+        if (secInput) secInput.value = secColor;
+        if (secSwatches) {
+            secSwatches.style.opacity = isDual ? '1' : '0.4';
+            secSwatches.style.pointerEvents = isDual ? 'auto' : 'none';
+        }
+        if (isDual && primaryInput) {
+            applyAccentColor(document, primaryInput.value, secColor);
+        }
+    });
+
+    const reapply = () => {
+        const isDual = dualToggle.checked;
+        if (secSwatches) {
+            secSwatches.style.opacity = isDual ? '1' : '0.4';
+            secSwatches.style.pointerEvents = isDual ? 'auto' : 'none';
+        }
+        const sec = (isDual && secInput?.value) ? secInput.value : null;
+        applyAccentColor(document, primaryInput?.value || '#ff4e45', sec);
+        // Persist
+        chrome.storage.local.get('settings', (data) => {
+            const settings = data.settings || {};
+            settings.enableDualAccent = isDual;
+            if (sec) settings.secondaryAccentColor = sec;
+            chrome.storage.local.set({ settings });
+        });
+    };
+
+    dualToggle.addEventListener('change', reapply);
+    if (secInput) secInput.addEventListener('input', () => { if (dualToggle.checked) reapply(); });
 }
 
 export function syncModeCards(document) {

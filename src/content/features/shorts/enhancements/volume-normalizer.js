@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class ShortsVolumeNormalizer extends window.YPP.features.BaseFeature {
+    static featureId = 'shortsVolumeNormalizer';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.ShortsVolumeNormalizer = class ShortsVolumeNormalizer extends window.YPP.features.BaseFeature {
     constructor() {
         super('ShortsVolumeNormalizer');
         this.handleVideoAdded = this.handleVideoAdded.bind(this);
@@ -112,3 +113,5 @@ window.YPP.features.ShortsVolumeNormalizer = class ShortsVolumeNormalizer extend
         }
     }
 };
+
+window.YPP.features.ShortsVolumeNormalizer = ShortsVolumeNormalizer;

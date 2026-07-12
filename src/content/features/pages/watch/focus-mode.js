@@ -2,8 +2,8 @@
  * Focus Mode Feature - Reduces visual distractions and enhances concentration
  * Uses centralized constants for configuration
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 // Helpers
 const waitForElement = (selector, timeout = 5000) => {
@@ -14,7 +14,11 @@ const waitForElement = (selector, timeout = 5000) => {
  * Focus Mode
  * @class FocusMode
  */
-window.YPP.features.FocusMode = class FocusMode extends window.YPP.features.BaseFeature {
+export class FocusMode extends window.YPP.features.BaseFeature {
+    static featureId = 'focusMode';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     /**
      * Initialize Focus Mode
      * @constructor
@@ -383,3 +387,5 @@ window.YPP.features.FocusMode = class FocusMode extends window.YPP.features.Base
         };
     }
 };
+
+window.YPP.features.FocusMode = FocusMode;

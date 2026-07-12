@@ -3,10 +3,14 @@
  * Automatically skips non-content segments (Sponsors, Intros, Outros, etc.) using the SponsorBlock API.
  * API: https://sponsor.ajay.app/
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.SponsorBlock = class SponsorBlock extends window.YPP.features.BaseFeature {
+
+
+export class SponsorBlock extends window.YPP.features.BaseFeature {
+    static featureId = 'sponsorBlock';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('SponsorBlock');
         
@@ -312,3 +316,5 @@ window.YPP.features.SponsorBlock = class SponsorBlock extends window.YPP.feature
         }
     }
 };
+
+window.YPP.features.SponsorBlock = SponsorBlock;

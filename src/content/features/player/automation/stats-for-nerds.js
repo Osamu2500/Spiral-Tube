@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class StatsForNerds extends window.YPP.features.BaseFeature {
+    static featureId = 'statsForNerds';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.StatsForNerds = class StatsForNerds extends window.YPP.features.BaseFeature {
     constructor() {
         super('StatsForNerds');
     }
@@ -61,3 +62,5 @@ window.YPP.features.StatsForNerds = class StatsForNerds extends window.YPP.featu
         }
     }
 };
+
+window.YPP.features.StatsForNerds = StatsForNerds;

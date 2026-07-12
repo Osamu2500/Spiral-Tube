@@ -1,12 +1,16 @@
-﻿/**
+/**
  * Auto PiP — Spiral Tube
  * Enters Picture-in-Picture automatically when the user switches tabs,
  * and exits PiP when the user comes back.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.AutoPiP = class AutoPiP extends window.YPP.features.BaseFeature {
+
+
+export class AutoPiP extends window.YPP.features.BaseFeature {
+    static featureId = 'autoPiP';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'autoPiP'; }
 
     constructor() {
@@ -64,3 +68,5 @@ window.YPP.features.AutoPiP = class AutoPiP extends window.YPP.features.BaseFeat
         this.utils?.log?.('Auto PiP disabled', 'AUTO_PIP');
     }
 };
+
+window.YPP.features.AutoPiP = AutoPiP;

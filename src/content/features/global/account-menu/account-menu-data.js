@@ -1,10 +1,11 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Handles extraction of account data and avatar URLs from YouTube's native DOM.
  */
-window.YPP.features.AccountMenuData = class AccountMenuData {
+export class AccountMenuData {
+    static featureId = 'accountMenuData';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     /**
      * Reads avatar URL from a YouTube custom element using three strategies
      * in order of reliability:
@@ -159,3 +160,5 @@ window.YPP.features.AccountMenuData = class AccountMenuData {
         return { accounts, channelHref };
     }
 };
+
+window.YPP.features.AccountMenuData = AccountMenuData;

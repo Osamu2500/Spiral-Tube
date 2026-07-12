@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class SmartDownload extends window.YPP.features.BaseFeature {
+    static featureId = 'smartDownload';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.SmartDownload = class SmartDownload extends window.YPP.features.BaseFeature {
     constructor() {
         super('SmartDownload');
         this.DL_BTN_SELECTORS = [
@@ -131,3 +132,5 @@ window.YPP.features.SmartDownload = class SmartDownload extends window.YPP.featu
         return `https://www.youtube.com${url.pathname}`;
     }
 };
+
+window.YPP.features.SmartDownload = SmartDownload;

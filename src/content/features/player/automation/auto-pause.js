@@ -3,10 +3,14 @@
  * Automatically pauses the video when the tab loses visibility and resumes it when focused.
  * Intelligent enough to ignore Picture-in-Picture mode and wait for the SPA player to initialize.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.AutoPause = class AutoPause extends window.YPP.features.BaseFeature {
+
+
+export class AutoPause extends window.YPP.features.BaseFeature {
+    static featureId = 'autoPause';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('AutoPause');
         
@@ -131,3 +135,5 @@ window.YPP.features.AutoPause = class AutoPause extends window.YPP.features.Base
         }
     }
 };
+
+window.YPP.features.AutoPause = AutoPause;

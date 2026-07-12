@@ -13,7 +13,7 @@
  * Subscribers (e.g. HideWatched) listen via onChange() and react to changes
  * without polling or coupling to other feature classes.
  */
-window.YPP = window.YPP || {};
+
 
 window.YPP.WatchedStore = (() => {
     const STORAGE_KEY = 'ypp_watched_ids';

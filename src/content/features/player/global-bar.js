@@ -13,10 +13,14 @@ if (typeof document !== 'undefined') {
         document.head.appendChild(style);
     }
 }
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.GlobalPlayerBar = class GlobalPlayerBar extends window.YPP.features.BaseFeature {
+
+
+export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
+    static featureId = 'globalPlayerBar';
+    static executionPhase = 'sequential-ui';
+    static priority = 999;
+
 
     constructor() {
         super('GlobalPlayerBar');
@@ -143,3 +147,5 @@ window.YPP.features.GlobalPlayerBar = class GlobalPlayerBar extends window.YPP.f
         });
     }
 };
+
+window.YPP.features.GlobalPlayerBar = GlobalPlayerBar;

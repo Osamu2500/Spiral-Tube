@@ -1,6 +1,3 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 window.YPP.features.VideoFiltersPresets = {
     FILTERS: [
         { category: 'Classic', name: 'Normal',        css: 'none',                                                        overlay: null },
@@ -115,6 +112,10 @@ window.YPP.features.VideoFiltersPresets = {
         { category: 'FujiFilm Recipes', name: 'Kodachrome 64',  css: 'sepia(25%) saturate(120%) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #ff4500, #ff8c00)', overlay: null },
         { category: 'FujiFilm Recipes', name: 'Portra 400',     css: 'sepia(15%) saturate(110%) contrast(95%) brightness(115%)', preview: 'linear-gradient(135deg, #f5deb3, #d2b48c)', overlay: null },
         { category: 'FujiFilm Recipes', name: 'Acros (B&W)',    css: 'grayscale(100%) contrast(125%) brightness(105%)', preview: 'linear-gradient(135deg, #ffffff, #000000)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Classic Negative', css: 'sepia(15%) saturate(80%) contrast(130%) brightness(95%) hue-rotate(5deg)', preview: 'linear-gradient(135deg, #4b5d67, #322f3d)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'Eterna (Cinema)', css: 'saturate(70%) contrast(85%) brightness(110%)', preview: 'linear-gradient(135deg, #9ca3af, #d1d5db)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'PRO Neg. Hi',    css: 'saturate(95%) contrast(115%)', preview: 'linear-gradient(135deg, #c4aead, #e2d1c3)', overlay: null },
+        { category: 'FujiFilm Recipes', name: 'PRO Neg. Std',   css: 'saturate(90%) contrast(95%)', preview: 'linear-gradient(135deg, #dfd5c9, #f7f1e3)', overlay: null },
 
         // ── Anime Worlds ──
         { category: 'Anime Worlds', name: 'Studio Ghibli',   css: 'saturate(140%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #74ebd5, #9face6)', overlay: null },
@@ -147,6 +148,53 @@ window.YPP.features.VideoFiltersPresets = {
         { category: 'Nature & Documentary', name: 'Deep Ocean',          css: 'saturate(110%) contrast(115%) brightness(95%)', preview: 'linear-gradient(135deg, #000428, #004e92)', overlay: null },
         { category: 'Nature & Documentary', name: 'Safari',              css: 'sepia(15%) saturate(120%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #e1eec3, #f05053)', overlay: null },
         { category: 'Nature & Documentary', name: 'Rainforest',          css: 'saturate(135%) contrast(115%) brightness(100%)', preview: 'linear-gradient(135deg, #11998e, #38ef7d)', overlay: null },
-        { category: 'Nature & Documentary', name: 'Arctic Frost',        css: 'saturate(80%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #e0c3fc, #8ec5fc)', overlay: null }
+        { category: 'Nature & Documentary', name: 'Arctic Frost',        css: 'saturate(80%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #e0c3fc, #8ec5fc)', overlay: null },
+
+        // ── Special Effects ──
+        { category: 'Special Effects', name: 'VHS Tape',         css: 'saturate(150%) contrast(120%) sepia(30%) hue-rotate(-10deg) blur(0.5px)', preview: 'linear-gradient(135deg, #ff00cc, #333399)', overlay: 'vhs' },
+        { category: 'Special Effects', name: 'Dreamy Memory',    css: 'url(#ypp-fx-dreamcolor) blur(1px)', preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', overlay: 'grain_custom' },
+        { category: 'Special Effects', name: 'Infrared Vision',  css: 'invert(100%) hue-rotate(180deg) saturate(200%) contrast(120%)', preview: 'linear-gradient(135deg, #ff0844, #ffb199)', overlay: null },
+        { category: 'Special Effects', name: 'Cyberpunk Glitch', css: 'url(#ypp-fx-glitch) contrast(150%) saturate(200%) hue-rotate(30deg) brightness(90%)', preview: 'linear-gradient(135deg, #f857a6, #ff5858)', overlay: 'crt' },
+        { category: 'Special Effects', name: 'Sin City (Noir)',  css: 'grayscale(100%) contrast(150%) brightness(90%)', preview: 'linear-gradient(135deg, #434343, #000000)', overlay: 'grain_custom' },
+        { category: 'Special Effects', name: 'Thermal Vision',   css: 'invert(100%) hue-rotate(240deg) saturate(300%) contrast(150%) brightness(120%)', preview: 'linear-gradient(135deg, #ff9966, #ff5e62)', overlay: null },
+        { category: 'Special Effects', name: 'Security Camera',  css: 'grayscale(100%) contrast(80%) brightness(80%) sepia(20%) blur(0.5px)', preview: 'linear-gradient(135deg, #8baaaa, #ae8b9c)', overlay: 'crt' },
+        { category: 'Special Effects', name: 'Vintage 8mm',      css: 'sepia(50%) contrast(120%) brightness(90%)', preview: 'linear-gradient(135deg, #d4a373, #faedcd)', overlay: 'oldfilm' },
+
+        // ── Dreamcore & Weirdcore ──
+        { category: 'Dreamcore', name: 'Liminal Space', css: 'url(#ypp-fx-technicolor) saturate(150%) contrast(90%) brightness(110%) blur(0.5px)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: 'grain_custom' },
+        { category: 'Dreamcore', name: 'Poolrooms',     css: 'saturate(80%) contrast(110%) brightness(115%) hue-rotate(15deg)', preview: 'linear-gradient(135deg, #89f7fe, #66a6ff)', overlay: 'grain_custom' },
+        { category: 'Dreamcore', name: 'Nostalgia Trip',css: 'sepia(30%) saturate(140%) contrast(100%) brightness(110%)', preview: 'linear-gradient(135deg, #fdfbfb, #ebedee)', overlay: 'grain_custom' },
+        { category: 'Dreamcore', name: 'Weirdcore',     css: 'url(#ypp-fx-colorize) contrast(150%) saturate(200%) brightness(90%)', preview: 'linear-gradient(135deg, #ff0844, #ffb199)', overlay: 'crt' },
+        { category: 'Dreamcore', name: 'True Dreamcore',css: 'url(#ypp-fx-glitch) saturate(180%) contrast(140%) sepia(40%) hue-rotate(-15deg) blur(0.5px)', preview: 'linear-gradient(135deg, #ff00cc, #333399)', overlay: 'vhs' },
+        
+        { category: 'Dreamcore', name: 'Soft Dreamcore',css: 'saturate(110%) contrast(85%) brightness(125%) sepia(15%) blur(0.8px)', preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', overlay: 'grain_custom' },
+        { category: 'Dreamcore', name: 'Lucid Dream',   css: 'saturate(160%) contrast(95%) brightness(120%) hue-rotate(-10deg)', preview: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', overlay: null },
+        { category: 'Dreamcore', name: 'Fever Dream',   css: 'url(#ypp-fx-dreamcolor) saturate(250%) contrast(130%) hue-rotate(60deg) blur(1px)', preview: 'linear-gradient(135deg, #ff5858, #f09819)', overlay: 'vhs' },
+        { category: 'Dreamcore', name: 'The Backrooms', css: 'sepia(80%) saturate(150%) hue-rotate(35deg) contrast(120%) brightness(90%)', preview: 'linear-gradient(135deg, #d4fc79, #96e6a1)', overlay: 'crt' },
+        { category: 'Dreamcore', name: 'Ethereal Glow', css: 'saturate(70%) contrast(110%) brightness(130%) blur(1.5px)', preview: 'linear-gradient(135deg, #e0c3fc, #8ec5fc)', overlay: null },
+        { category: 'Dreamcore', name: 'False Memory',  css: 'grayscale(40%) sepia(20%) contrast(90%) brightness(115%) blur(0.3px)', preview: 'linear-gradient(135deg, #d5d4d0, #eeeeec)', overlay: 'oldfilm' },
+
+        // ── Anime Styles ──
+        { category: 'Anime', name: 'Studio Ghibli',     css: 'saturate(140%) contrast(110%) brightness(105%) hue-rotate(5deg)', preview: 'linear-gradient(135deg, #a8e063, #56ab2f)', overlay: null },
+        { category: 'Anime', name: 'Makoto Shinkai',    css: 'saturate(180%) contrast(120%) brightness(115%) hue-rotate(-15deg)', preview: 'linear-gradient(135deg, #00c6ff, #0072ff)', overlay: null },
+        { category: 'Anime', name: 'Kyoto Animation',   css: 'saturate(120%) contrast(95%) brightness(110%) blur(0.3px)', preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', overlay: null },
+        { category: 'Anime', name: 'Ufotable (Night)',  css: 'saturate(160%) contrast(130%) brightness(90%) hue-rotate(-10deg)', preview: 'linear-gradient(135deg, #1f1c2c, #928dab)', overlay: null },
+        { category: 'Anime', name: 'Cyberpunk Neon',    css: 'saturate(200%) contrast(140%) brightness(95%) hue-rotate(-30deg)', preview: 'linear-gradient(135deg, #f857a6, #ff5858)', overlay: 'crt' },
+        { category: 'Anime', name: 'Titan Gritty',      css: 'sepia(40%) saturate(70%) contrast(125%) brightness(95%)', preview: 'linear-gradient(135deg, #8b4513, #a0522d)', overlay: 'grain_custom' },
+        { category: 'Anime', name: '90s Retro Cel',     css: 'saturate(110%) contrast(90%) sepia(15%) brightness(110%)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: 'oldfilm' },
+
+        // ── Cinematic Looks ──
+        { category: 'Cinematic', name: 'Teal & Orange',      css: 'saturate(130%) contrast(120%) hue-rotate(-10deg) sepia(15%)', preview: 'linear-gradient(135deg, #004e92, #f05053)', overlay: null },
+        { category: 'Cinematic', name: 'The Matrix',         css: 'saturate(120%) contrast(130%) brightness(90%) hue-rotate(90deg) sepia(40%)', preview: 'linear-gradient(135deg, #000000, #0f9b0f)', overlay: null },
+        { category: 'Cinematic', name: 'Mad Max Desert',     css: 'saturate(180%) contrast(140%) brightness(105%) sepia(30%) hue-rotate(-10deg)', preview: 'linear-gradient(135deg, #ff512f, #dd2476)', overlay: 'grain_custom' },
+        { category: 'Cinematic', name: 'Wes Anderson',       css: 'saturate(110%) contrast(85%) brightness(110%) sepia(35%) hue-rotate(5deg)', preview: 'linear-gradient(135deg, #f6d365, #fda085)', overlay: null },
+        { category: 'Cinematic', name: 'The Batman Noir',    css: 'saturate(50%) contrast(130%) brightness(75%) sepia(30%) hue-rotate(-20deg)', preview: 'linear-gradient(135deg, #000000, #434343)', overlay: 'grain_custom' },
+        { category: 'Cinematic', name: 'Dune Arrakis',       css: 'saturate(45%) contrast(120%) brightness(100%) sepia(50%)', preview: 'linear-gradient(135deg, #bca586, #8c7657)', overlay: 'grain_custom' },
+        { category: 'Cinematic', name: 'Fincher Gloom',      css: 'saturate(80%) contrast(125%) brightness(85%) sepia(25%) hue-rotate(40deg)', preview: 'linear-gradient(135deg, #2c3e50, #3498db)', overlay: null },
+        { category: 'Cinematic', name: 'Bleach Bypass',      css: 'saturate(30%) contrast(160%) brightness(95%) sepia(10%)', preview: 'linear-gradient(135deg, #606c88, #3f4c6b)', overlay: 'grain_custom' },
+        { category: 'Cinematic', name: 'Day for Night',      css: 'saturate(60%) contrast(110%) brightness(50%) sepia(60%) hue-rotate(180deg)', preview: 'linear-gradient(135deg, #141e30, #243b55)', overlay: null },
+        { category: 'Cinematic', name: 'Classic Technicolor',css: 'saturate(160%) contrast(115%) brightness(105%) sepia(10%)', preview: 'linear-gradient(135deg, #ff0844, #ffb199)', overlay: 'oldfilm' },
+        { category: 'Cinematic', name: 'Tatooine Suns',      css: 'saturate(140%) contrast(120%) brightness(110%) sepia(40%) hue-rotate(-15deg)', preview: 'linear-gradient(135deg, #fceabb, #f8b500)', overlay: 'grain_custom' },
+        { category: 'Cinematic', name: 'Death Star Cold',    css: 'saturate(60%) contrast(130%) brightness(90%) hue-rotate(190deg) sepia(20%)', preview: 'linear-gradient(135deg, #2c3e50, #000000)', overlay: null }
     ]
 };

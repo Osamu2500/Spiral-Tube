@@ -3,10 +3,14 @@
  * Tracks actual watch time on video pages via <video> events.
  * Source of truth for all "Personal Analytics".
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.WatchHistoryTracker = class WatchHistoryTracker extends window.YPP.features.BaseFeature {
+
+
+export class WatchHistoryTracker extends window.YPP.features.BaseFeature {
+    static featureId = 'watchHistory';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('WatchHistoryTracker');
         this.STORAGE_PREFIX = 'ypp_analytics_';
@@ -237,3 +241,5 @@ window.YPP.features.WatchHistoryTracker = class WatchHistoryTracker extends wind
         }
     }
 };
+
+window.YPP.features.WatchHistoryTracker = WatchHistoryTracker;

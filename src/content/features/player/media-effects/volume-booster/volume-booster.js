@@ -2,10 +2,14 @@
  * Volume Booster / 10-Band Graphic Equalizer Orchestrator
  * Manages the Web Audio API graph for the active HTML5 video element.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.features.BaseFeature {
+
+
+export class VolumeBooster extends window.YPP.features.BaseFeature {
+    static featureId = 'volumeBoost';
+    static executionPhase = 'sequential-ui';
+    static priority = 7;
+
     constructor() {
         super('VolumeBooster');
         this.name = 'VolumeBooster';
@@ -451,3 +455,5 @@ window.YPP.features.VolumeBooster = class VolumeBooster extends window.YPP.featu
         return btn;
     }
 };
+
+window.YPP.features.VolumeBooster = VolumeBooster;

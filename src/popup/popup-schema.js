@@ -194,6 +194,7 @@ export const POPUP_SCHEMA = [
                     { type:'custom', id:'vsc_shortcuts_manager' }
                 ]
             }
+
         ]
     },
 
@@ -377,7 +378,11 @@ export const POPUP_SCHEMA = [
             {
                 title: 'Watch Time',
                 items: [
-                    { type:'custom', id:'historyWidget', slot:'history-widget' }
+                    { type:'custom', id:'historyWidget', slot:'history-widget' },
+                    { type:'toggle', id:'watchTimeAlert', label:'Watch Time Alert', desc:'Notify when limit reached', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
+                    { type:'range',  id:'watchTimeAlertHours', label:'Daily Limit', unit:'h', min:1, max:12, step:1, parent: 'watchTimeAlert' },
+                    { type:'toggle', id:'intentionalDelay', label:'Intentional Delay', desc:'Add a pause before videos start', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
+                    { type:'range',  id:'intentionalDelayTime', label:'Delay Duration', unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' }
                 ]
             },
             {
@@ -421,13 +426,6 @@ export const POPUP_SCHEMA = [
         icon: P('M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'),
         sections: [
             {
-                title: 'Hotkeys (Watch Page)',
-                items: [
-                    { type:'toggle', id:'keyboardShortcuts', label:'Enable Hotkeys', icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
-                    { type:'custom', id:'shortcutsPanel', slot:'shortcutsPanel' },
-                ]
-            },
-            {
                 title: 'Global Player Bar',
                 items: [
                     { type:'toggle', id:'enableGlobalPlayerBar', label:'Global Player Bar', desc:'Enable on external sites', icon:P('M3 3h18v14H3zM3 15h18'), slot:'globalPlayerBarOptions', style: 'grid-column: 1 / -1;' },
@@ -459,32 +457,29 @@ export const POPUP_SCHEMA = [
     },
 
     // ──────────────────────────────────────────────────────────────────
+    // HOTKEYS
+    // ──────────────────────────────────────────────────────────────────
+    {
+        id: 'hotkey', label: 'Hotkeys',
+        icon: P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10'),
+        sections: [
+            {
+                title: 'Watch Page Hotkeys',
+                items: [
+                    { type:'toggle', id:'keyboardShortcuts', label:'Enable Hotkeys', icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
+                    { type:'custom', id:'advanced_shortcuts_manager', slot:'advanced_shortcuts_manager' },
+                ]
+            }
+        ]
+    },
+
+    // ──────────────────────────────────────────────────────────────────
     // GLOBAL
     // ──────────────────────────────────────────────────────────────────
     {
         id: 'global', label: 'Global',
         icon: P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M2 12h20 M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'),
-        sections: [
-            {
-                title: 'Watch Time & Wellbeing',
-                subtitle: 'Track and limit your daily watch time',
-                items: [
-                    { type:'toggle', id:'watchTimeAlert', label:'Watch Time Alert', desc:'Notify when limit reached', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
-                    { type:'range',  id:'watchTimeAlertHours', label:'Daily Limit', unit:'h', min:1, max:12, step:1, parent: 'watchTimeAlert' },
-                    { type:'toggle', id:'intentionalDelay', label:'Intentional Delay', desc:'Add a pause before videos start', icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6v6l4 2') },
-                    { type:'range',  id:'intentionalDelayTime', label:'Delay Duration', unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' }
-                ]
-            },
-            {
-                title: 'Extension Behaviour',
-                subtitle: 'Global toggles that affect all pages',
-                items: [
-                    { type:'toggle', id:'keyboardShortcuts', label:'Enable Hotkeys',   desc:'Global watch-page shortcuts',        icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
-                    { type:'toggle', id:'enableAnimations',  label:'Enable Animations',desc:'Popup micro-interactions',            icon:P('M5 3l14 9-14 9V3z') },
-                    { type:'toggle', id:'reducedMotion',     label:'Reduced Motion',   desc:'Accessibility motion preference',    icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z') }
-                ]
-            }
-        ]
+        custom: true, sections: []
     },
 ];
 

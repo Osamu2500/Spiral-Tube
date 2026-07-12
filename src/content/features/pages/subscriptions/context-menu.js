@@ -2,10 +2,14 @@
  * Feature: Context Menu / Quick Action
  * Adds an "Add to Group" button to video cards and channel headers.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.ContextMenu = class ContextMenu extends window.YPP.features.BaseFeature {
+
+
+export class ContextMenu extends window.YPP.features.BaseFeature {
+    static featureId = 'contextMenu';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'contextMenu'; }
     constructor() {
         super('contextMenu');
@@ -249,3 +253,5 @@ window.YPP.features.ContextMenu = class ContextMenu extends window.YPP.features.
         document.body.appendChild(popup);
     }
 };
+
+window.YPP.features.ContextMenu = ContextMenu;

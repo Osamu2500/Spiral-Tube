@@ -1,6 +1,3 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * HideWatched
  * -----------
@@ -17,7 +14,11 @@ window.YPP.features = window.YPP.features || {};
  *
  * Processing is debounced (100 ms) to batch rapid-fire dom:nodes-added events.
  */
-window.YPP.features.HideWatched = class HideWatched extends window.YPP.features.BaseFilterFeature {
+export class HideWatched extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'hideWatched';
+    static executionPhase = 'idle';
+    static priority = 9;
+
     // Compiled Regular Expressions for performance
     static WATCH_URL_REGEX = /[?&]v=([^&]+)/;
     static SHORTS_URL_REGEX = /\/shorts\/([A-Za-z0-9_-]{11})/;
@@ -412,3 +413,4 @@ window.YPP.features.HideWatched = class HideWatched extends window.YPP.features.
     }
 };
 
+window.YPP.features.HideWatched = HideWatched;

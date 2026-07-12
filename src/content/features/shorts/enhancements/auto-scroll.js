@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
+    static featureId = 'shortsAutoScroll';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.ShortsAutoScroll = class ShortsAutoScroll extends window.YPP.features.BaseFeature {
     constructor() {
         super('ShortsAutoScroll');
         this._autoScrollInterval = null;
@@ -85,3 +86,5 @@ window.YPP.features.ShortsAutoScroll = class ShortsAutoScroll extends window.YPP
         }
     }
 };
+
+window.YPP.features.ShortsAutoScroll = ShortsAutoScroll;

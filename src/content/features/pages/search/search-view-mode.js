@@ -3,10 +3,14 @@
  * Owns the state and logic for toggling between "Grid" and "List"
  * layout views on the search results page.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.SearchViewMode = class SearchViewMode {
+
+
+export class SearchViewMode {
+    static featureId = 'searchViewMode';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     static MODES = {
         GRID: 'grid',
@@ -52,3 +56,5 @@ window.YPP.features.SearchViewMode = class SearchViewMode {
         body.classList.remove(this._classes.LIST_MODE);
     }
 };
+
+window.YPP.features.SearchViewMode = SearchViewMode;

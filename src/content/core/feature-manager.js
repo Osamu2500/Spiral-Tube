@@ -9,6 +9,14 @@ window.YPP = window.YPP || {};
  * Handles instantiation, initialization, error tracking, and updates
  */
 window.YPP.FeatureManager = class FeatureManager {
+    static registeredFeatures = [];
+
+    static register(FeatureClass) {
+        if (!this.registeredFeatures.includes(FeatureClass)) {
+            this.registeredFeatures.push(FeatureClass);
+        }
+    }
+
     constructor() {
         /** @type {Object<string, Object>} Feature instances keyed by name */
         this.features = {};
@@ -96,26 +104,26 @@ window.YPP.FeatureManager = class FeatureManager {
      * Maps internal keys to global class names.
      */
     instantiateFeatures() {
-        // Use centralized feature map
-        const featureMap = window.YPP?.CONSTANTS?.FEATURE_MAP;
-
-        if (!featureMap) {
-             window.YPP.Utils.log('FEATURE_MAP not found in Constants. Features will not load.', 'MANAGER', 'error');
-             return;
-        }
-
-        // Defensive: Ensure window.YPP.features exists
-        if (!window.YPP?.features) {
-            window.YPP.Utils.log('window.YPP.features namespace not found', 'MANAGER', 'error');
-            return;
-        }
-
         let successCount = 0;
         let failCount = 0;
-        const totalFeatures = Object.keys(featureMap).length;
-        
-        // Clean up stale features that were removed from FEATURE_MAP
-        const currentKeys = new Set(Object.keys(featureMap));
+        const totalFeatures = FeatureManager.registeredFeatures.length;
+
+        for (const FeatureClass of FeatureManager.registeredFeatures) {
+            try {
+                const key = FeatureClass.featureId || FeatureClass.name;
+                if (!this.features[key]) {
+                    this.features[key] = new FeatureClass();
+                    this.errorCounts[key] = 0;
+                    successCount++;
+                }
+            } catch (e) {
+                failCount++;
+                window.YPP.Utils.log(`Failed to instantiate feature: ${e?.message || 'Unknown error'}`, 'MANAGER', 'error');
+            }
+        }
+
+        // Clean up stale features that were removed from the registry
+        const currentKeys = new Set(FeatureManager.registeredFeatures.map(f => f.featureId || f.name));
         for (const key of Object.keys(this.features)) {
             if (!currentKeys.has(key)) {
                 try {
@@ -129,38 +137,9 @@ window.YPP.FeatureManager = class FeatureManager {
             }
         }
 
-        const missing = [];
-
-        for (const [key, className] of Object.entries(featureMap)) {
-            try {
-                // Skip if already instantiated
-                if (this.features[key]) {
-                    successCount++;
-                    continue;
-                }
-
-                // Ensure the class exists in the global namespace
-                if (typeof window.YPP.features[className] === 'function') {
-                    this.features[key] = new window.YPP.features[className]();
-                    this.errorCounts[key] = 0;
-                    successCount++;
-                } else {
-                    failCount++;
-                    missing.push(`${key} → ${className}`);
-                }
-            } catch (e) {
-                failCount++;
-                window.YPP.Utils.log(`Failed to instantiate '${className}': ${e?.message || 'Unknown error'}`, 'MANAGER', 'error');
-            }
-        }
-
-        if (failCount > 0 && missing.length > 0) {
-            window.YPP.Utils.log(`Missing features: ${missing.join(', ')}`, 'MANAGER', 'warn');
-        }
-
         window.YPP.Utils.log(
             `Feature instantiation complete: ${successCount}/${totalFeatures} loaded` +
-            (failCount > 0 ? `, ${failCount} failed/unavailable` : ''),
+            (failCount > 0 ? `, ${failCount} failed` : ''),
             'MANAGER',
             'info'
         );
@@ -203,32 +182,26 @@ window.YPP.FeatureManager = class FeatureManager {
     async _executeApply(applyId) {
         if (this._currentApplyId !== applyId) return; // Cancelled by newer run
 
-        const PRIORITY_ORDER = [
-            'theme', 'headerNav', 'sidebarLayout', 'layout', 'autoScaleLayout',
-            'keyboardShortcuts', 'videoSpeedController', 'volumeBoost', 'videoFilters',
-            'hideWatched', 'multiSelect',
-            'playlistRedesign', 'gridAnimator', 'ambientMode'
-        ];
+        const uiFeatures = [];
+        const postLayout = [];
+        const heavyFeatures = [];
 
-        const sorted = Object.entries(this.features).sort((a, b) => {
-            const idxA = PRIORITY_ORDER.indexOf(a[0]);
-            const idxB = PRIORITY_ORDER.indexOf(b[0]);
-            return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
-        });
+        for (const [name, instance] of Object.entries(this.features)) {
+            const phase = instance.constructor.executionPhase;
+            if (phase === 'sequential-ui') {
+                uiFeatures.push([name, instance]);
+            } else if (phase === 'post-layout') {
+                postLayout.push([name, instance]);
+            } else {
+                heavyFeatures.push([name, instance]);
+            }
+        }
 
-        // 1. Apply layout-critical UI features in strict order to avoid race conditions:
-        //    - layout MUST run before autoScaleLayout because AutoScaleGrid.disable() clears
-        //      --ypp-active-columns, and GridLayoutManager.onUpdate() must re-set it last.
-        //    - volumeBoost and videoFilters are player-bar UI that should be eager (not idle-deferred)
-        //    - redesign features must run synchronously to prevent FOUC (flash of unstyled content)
-        const SEQUENTIAL_UI = [
-            'theme', 'headerNav', 'sidebarLayout', 'layout', 'playlistRedesign', 
-            'volumeBoost', 'videoFilters', 'historyRedesign', 'watchRedesign', 
-            'globalPlayerBar', 'deckMode', 'subscriptionFolders'
-        ];
-        const AFTER_LAYOUT  = ['autoScaleLayout'];
-        const uiFeatures    = sorted.filter(([name]) => SEQUENTIAL_UI.includes(name));
-        const postLayout    = sorted.filter(([name]) => AFTER_LAYOUT.includes(name));
+        const sortByPriority = (a, b) => (a[1].constructor.priority || 999) - (b[1].constructor.priority || 999);
+        
+        uiFeatures.sort(sortByPriority);
+        postLayout.sort(sortByPriority);
+        heavyFeatures.sort(sortByPriority);
 
         await Promise.all(uiFeatures.map(([name, instance]) =>
             this._runFeatureUpdate(name, instance, applyId)
@@ -239,10 +212,8 @@ window.YPP.FeatureManager = class FeatureManager {
             this._runFeatureUpdate(name, instance, applyId)
         ));
 
-
         // 2. Apply the rest of the features in background or later frames
-        const ALL_UI = new Set([...SEQUENTIAL_UI, ...AFTER_LAYOUT]);
-        const heavyFeatures = sorted.filter(([name]) => !ALL_UI.has(name));
+
 
 
         if (window.requestIdleCallback) {

@@ -1,10 +1,14 @@
 // f:\Youtube 2.0\src\content\features\player\enhancements\video-speed-controller.js
 import './video-speed-controller.css';
 
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.VideoSpeedController = class VideoSpeedController extends window.YPP.features.BaseFeature {
+
+
+export class VideoSpeedController extends window.YPP.features.BaseFeature {
+    static featureId = 'videoSpeedController';
+    static executionPhase = 'idle';
+    static priority = 6;
+
     constructor() {
         super('VideoSpeedController');
         this.controllers = new WeakMap();
@@ -43,6 +47,16 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
                     }
                 });
             }, true); // immediate=true scans for existing videos automatically
+        } else {
+            // Fallback for external sites without sharedObserver
+            this.scanForVideos();
+            this._fallbackScanner = (e) => {
+                if (e.target && (e.target.tagName === 'VIDEO' || (this.settings?.vscAudioSupport && e.target.tagName === 'AUDIO'))) {
+                    this.scanForVideos();
+                }
+            };
+            this.addListener(document, 'play', this._fallbackScanner, true);
+            this.addListener(document, 'loadeddata', this._fallbackScanner, true);
         }
 
         // Global keyboard shortcuts are now handled via registerShortcuts()
@@ -86,6 +100,15 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
 
         if (window.YPP.hotkeysManager) {
             window.YPP.hotkeysManager.unregister('vsc');
+        } else if (this._localHotkeyListener) {
+            this.removeListener(document, 'keydown', this._localHotkeyListener, true);
+            this._localHotkeyListener = null;
+        }
+
+        if (this._fallbackScanner) {
+            this.removeListener(document, 'play', this._fallbackScanner, true);
+            this.removeListener(document, 'loadeddata', this._fallbackScanner, true);
+            this._fallbackScanner = null;
         }
 
         const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
@@ -123,6 +146,13 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
                 }
             });
         }
+    }
+
+    scanForVideos() {
+        const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
+        document.querySelectorAll(selector).forEach(node => {
+            this.attachToVideo(node);
+        });
     }
 
     attachToVideo(video) {
@@ -492,7 +522,7 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
         if (this._saveSpeedTimeout) clearTimeout(this._saveSpeedTimeout);
         this._saveSpeedTimeout = setTimeout(() => {
             if (this.settings?.vscRememberSpeed !== false && window.YPP.StorageManager) {
-                chrome.runtime.sendMessage({ action: 'UPDATE_SETTINGS_DELTA', delta: { vscLastSpeed: speed } }, () => {});
+                chrome.runtime.sendMessage({ action: 'PATCH_SETTINGS', payload: { vscLastSpeed: speed } }, () => {});
             }
         }, 500);
     }
@@ -603,13 +633,44 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
                 }
             });
         }
-        
-        window.YPP.hotkeysManager?.register('vsc', bindings);
+        if (window.YPP.hotkeysManager) {
+            window.YPP.hotkeysManager.register('vsc', bindings);
+        } else {
+            // Local fallback for external sites where hotkeysManager is not loaded
+            if (this._localHotkeyListener) {
+                this.removeListener(document, 'keydown', this._localHotkeyListener, true);
+            }
+            this._localHotkeyListener = (e) => {
+                // Prevent hijacking shortcuts when typing in search box or comments
+                const path = e.composedPath ? e.composedPath() : (e.path || [e.target]);
+                for (const node of path) {
+                    if (node && node.tagName) {
+                        const tag = node.tagName.toUpperCase();
+                        if (tag === 'INPUT' || tag === 'TEXTAREA' || node.isContentEditable) {
+                            return;
+                        }
+                    }
+                }
+                if (window.YPP.utils?.isInputFocused?.()) {
+                    return;
+                }
+
+                const key = e.key.toUpperCase();
+                const combo = (e.shiftKey ? 'SHIFT+' : '') + key;
+                const binding = bindings.find(b => b.combo.toUpperCase() === combo);
+                if (binding) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    binding.callback(e);
+                }
+            };
+            this.addListener(document, 'keydown', this._localHotkeyListener, true);
+        }
     }
 
     findLargestVideo() {
         let largest = null;
-        let maxArea = 0;
+        let maxArea = -1;
         const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
         document.querySelectorAll(selector).forEach(video => {
             const rect = video.getBoundingClientRect();
@@ -622,3 +683,5 @@ window.YPP.features.VideoSpeedController = class VideoSpeedController extends wi
         return largest;
     }
 };
+
+window.YPP.features.VideoSpeedController = VideoSpeedController;

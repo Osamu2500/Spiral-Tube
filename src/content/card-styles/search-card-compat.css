@@ -1,0 +1,84 @@
+/* ============================================================
+   SEARCH CARD COMPATIBILITY LAYER
+   Injected by theme.js alongside any active card style CSS.
+
+   CRITICAL NOTE ON SELECTOR ORDER:
+   `html` is NEVER a descendant of `body` in the DOM tree.
+   The correct order is: html[attr] body.class .target
+   NOT: body.class html[attr] .target  ← INVALID, never matches!
+
+   ARCHITECTURE:
+   - This file provides universal guardrails and fixes for the search grid.
+   - Theme-specific layout overrides (like immersive-glass padding) are now handled
+     dynamically by the Dynamic Search Grid Adapter in search-redesign.js.
+   ============================================================ */
+
+
+/* ============================================================
+   0. DARK BACKGROUND GUARD
+   Prevent the page / search containers from showing a white
+   background when search-mode body classes are active.
+   ============================================================ */
+html[data-ypp-card-style] body.ypp-search-grid-mode ytd-search,
+html[data-ypp-card-style] body.ypp-search-list-mode ytd-search,
+html[data-ypp-card-style] body.ypp-search-grid-mode ytd-two-column-search-results-renderer,
+html[data-ypp-card-style] body.ypp-search-list-mode ytd-two-column-search-results-renderer,
+html[data-ypp-card-style] body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary,
+html[data-ypp-card-style] body.ypp-search-list-mode ytd-two-column-search-results-renderer #primary {
+  background: transparent !important;
+}
+
+/* Keep the masthead / topbar dark — never let it inherit white */
+html[data-ypp-card-style] body.ypp-search-grid-mode ytd-masthead,
+html[data-ypp-card-style] body.ypp-search-list-mode ytd-masthead {
+  background: var(--yt-spec-brand-background-primary, #0f0f0f) !important;
+}
+
+
+/* ============================================================
+   1. UNIVERSAL THUMBNAIL FIX
+   Ensure all thumbnails inside grid cards fill correctly after
+   search-ast.css resets their sizing.
+   ============================================================ */
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item ytd-thumbnail,
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item ytd-playlist-thumbnail {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item ytd-thumbnail img,
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item ytd-playlist-thumbnail img,
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item ytd-thumbnail yt-image,
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item ytd-thumbnail a {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* ============================================================
+   UNIVERSAL METADATA FIX FOR ALL CARD STYLES ON SEARCH
+   Ensure text below thumbnails renders correctly in grid layout
+   ============================================================ */
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item .text-wrapper,
+html[data-ypp-card-style] body.ypp-search-grid-mode .ypp-grid-item #meta {
+  padding: 8px 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+}
+
+/* Ensure the text-wrapper is NOT an absolute overlay for non-immersive styles
+   (only immersive-glass uses the full-card overlay pattern) */
+html[data-ypp-card-style]:not([data-ypp-card-style='immersive-glass']) body.ypp-search-grid-mode .ypp-grid-item .text-wrapper {
+  position: static !important;
+  height: auto !important;
+  background: none !important;
+}

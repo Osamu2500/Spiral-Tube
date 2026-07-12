@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class ResumeBadges extends window.YPP.features.BaseFeature {
+    static featureId = 'resumeBadges';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.ResumeBadges = class ResumeBadges extends window.YPP.features.BaseFeature {
     constructor() {
         super('ResumeBadges');
         this.STORAGE_KEY = 'ytProVideos';
@@ -53,6 +54,9 @@ window.YPP.features.ResumeBadges = class ResumeBadges extends window.YPP.feature
         if (this.thumbnailObserver) {
             this.thumbnailObserver.disconnect();
             this.thumbnailObserver = null;
+        }
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('resume-badges');
         }
         
         document.querySelectorAll('.yt-pro-pbar-wrap, .yt-pro-resume-badge').forEach(el => el.remove());
@@ -133,25 +137,35 @@ window.YPP.features.ResumeBadges = class ResumeBadges extends window.YPP.feature
     }
 
     startThumbnailObserver() {
-        this.thumbnailObserver = new MutationObserver((mutations) => {
-            let shouldProcess = false;
-            for (let m of mutations) {
-                if (m.addedNodes.length) {
-                    shouldProcess = true;
-                    break;
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('resume-badges', 'ytd-thumbnail:not([data-ypp-resume-processed="true"])', (elements) => {
+                this.processThumbnailsElements(elements);
+            }, true);
+        } else {
+            this.thumbnailObserver = new MutationObserver((mutations) => {
+                let shouldProcess = false;
+                for (let m of mutations) {
+                    if (m.addedNodes.length) {
+                        shouldProcess = true;
+                        break;
+                    }
                 }
-            }
-            if (shouldProcess) this.processThumbnails();
-        });
-        
-        this.thumbnailObserver.observe(document.body, { childList: true, subtree: true });
-        this.processThumbnails();
+                if (shouldProcess) this.processThumbnails();
+            });
+            this.thumbnailObserver.observe(document.body, { childList: true, subtree: true });
+            this.processThumbnails();
+        }
     }
 
     processThumbnails() {
         const thumbnails = document.querySelectorAll('ytd-thumbnail:not([data-ypp-resume-processed="true"])');
-        
+        this.processThumbnailsElements(thumbnails);
+    }
+
+    processThumbnailsElements(thumbnails) {
         thumbnails.forEach(thumb => {
+            if (thumb.hasAttribute('data-ypp-resume-processed')) return;
+            
             const anchor = thumb.querySelector('a#thumbnail');
             if (!anchor) return;
             
@@ -196,3 +210,5 @@ window.YPP.features.ResumeBadges = class ResumeBadges extends window.YPP.feature
         return h > 0 ? `${h}:${pad(m)}:${pad(sec)}` : `${m}:${pad(sec)}`;
     }
 };
+
+window.YPP.features.ResumeBadges = ResumeBadges;

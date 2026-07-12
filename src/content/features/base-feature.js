@@ -11,8 +11,13 @@ window.YPP.features.BaseFeature = class BaseFeature {
         LOG_LEVEL: 'debug'
     };
 
+    // Metadata properties to be overridden by child classes
+    static featureId = null;
+    static executionPhase = 'idle'; // 'sequential-ui', 'post-layout', 'idle'
+    static priority = 999;
+
     constructor(name) {
-        this.name = name || this.constructor.name;
+        this.name = name || this.constructor.featureId || this.constructor.name;
         this.isEnabled = false;
         this.settings = {};
         this.utils = window.YPP.Utils;

@@ -67,7 +67,7 @@ body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary {
 body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
 body.ypp-search-grid-mode .ypp-flattened-grid {
   display: grid !important;
-  grid-template-columns: repeat(var(--ypp-search-columns, 4), minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--ypp-active-columns, var(--ypp-search-columns, 4)), minmax(0, 1fr)) !important;
   grid-auto-flow: dense !important;
   gap: 20px !important;
   width: 100% !important;
@@ -82,7 +82,7 @@ body.ypp-search-grid-mode ytd-shelf-renderer #items,
 body.ypp-search-grid-mode ytd-shelf-renderer #contents,
 body.ypp-search-grid-mode ytd-vertical-list-renderer #items {
   display: grid !important;
-  grid-template-columns: repeat(var(--ypp-search-columns, 4), minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--ypp-active-columns, var(--ypp-search-columns, 4)), minmax(0, 1fr)) !important;
   grid-auto-flow: dense !important;
   gap: 20px !important;
   width: 100% !important;
@@ -151,7 +151,7 @@ body.ypp-search-grid-mode ytd-reel-shelf-renderer:not(:has(ytd-reel-item-rendere
 }
 .ypp-search-page.ypp-search-grid-mode ytd-shelf-renderer ytd-vertical-list-renderer > #items {
   display: grid !important;
-  grid-template-columns: repeat(var(--ypp-search-columns, 4), minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(var(--ypp-active-columns, var(--ypp-search-columns, 4)), minmax(0, 1fr)) !important;
   grid-auto-flow: dense !important;
   gap: 20px !important;
   width: 100% !important;

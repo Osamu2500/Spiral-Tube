@@ -2,10 +2,14 @@
  * Auto Quality feature
  * Automatically forces high playback quality and prevents YouTube from dynamically downgrading.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.AutoQuality = class AutoQuality extends window.YPP.features.BaseFeature {
+
+
+export class AutoQuality extends window.YPP.features.BaseFeature {
+    static featureId = 'autoQuality';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('AutoQuality');
         this.enforcerInterval = null;
@@ -145,3 +149,5 @@ window.YPP.features.AutoQuality = class AutoQuality extends window.YPP.features.
         }
     }
 };
+
+window.YPP.features.AutoQuality = AutoQuality;

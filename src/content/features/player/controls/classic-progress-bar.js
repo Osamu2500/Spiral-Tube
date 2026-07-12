@@ -1,12 +1,16 @@
 // @ts-nocheck
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 /**
  * Classic Progress Bar Feature
  * Enforces the solid red progress bar and removes the pink gradient added by modern YouTube UI.
  */
-window.YPP.features.ClassicProgressBar = class ClassicProgressBar extends window.YPP.features.BaseFeature {
+export class ClassicProgressBar extends window.YPP.features.BaseFeature {
+    static featureId = 'classicProgressBar';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('ClassicProgressBar');
         this.styleId = 'ypp-classic-progress-bar-style';
@@ -72,3 +76,5 @@ window.YPP.features.ClassicProgressBar = class ClassicProgressBar extends window
         }
     }
 };
+
+window.YPP.features.ClassicProgressBar = ClassicProgressBar;

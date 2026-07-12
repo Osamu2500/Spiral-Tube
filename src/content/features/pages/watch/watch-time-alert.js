@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class WatchTimeAlert extends window.YPP.features.BaseFeature {
+    static featureId = 'watchTimeAlert';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.WatchTimeAlert = class WatchTimeAlert extends window.YPP.features.BaseFeature {
     constructor() {
         super('WatchTimeAlert');
         this.lastAlertTime = 0;
@@ -143,3 +144,5 @@ window.YPP.features.WatchTimeAlert = class WatchTimeAlert extends window.YPP.fea
         document.head.appendChild(style);
     }
 };
+
+window.YPP.features.WatchTimeAlert = WatchTimeAlert;

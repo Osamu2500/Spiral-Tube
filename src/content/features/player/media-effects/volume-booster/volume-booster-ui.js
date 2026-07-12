@@ -1,9 +1,13 @@
 import anime from 'animejs/lib/anime.es.js';
 
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
+
+
+export class VolumeBoosterUI {
+    static featureId = 'volumeBoosterUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static saveVolumeSettings(ctx) {
         // Bug fix: Use a safe inline debounce so this works on external sites
         // where window.YPP.Utils.debounce may not be defined.
@@ -405,9 +409,10 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
         if (isGlobalBar) {
             const dlg = window.YPP.Utils.getPopupPortal();
             panel.style.pointerEvents = 'auto';
-            panel.style.position = 'absolute';
-            panel.style.overflow = 'hidden'; 
-            panel.style.clipPath = 'none';
+            if (window.self !== window.top) {
+                panel.style.right = '16px';
+                panel.style.left = 'auto';
+            }
             dlg.appendChild(panel);
         } else {
             document.body.appendChild(panel);
@@ -582,9 +587,9 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 /* ── EQ Panel ── */
 #ypp-eq-panel {
     position: fixed;
-    bottom: 80px;
+    bottom: 16px;
     right: 16px;
-    width: 430px;
+    width: 420px;
     background-color: rgba(18, 18, 20, 0.65);
     background-image: radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%);
     border: 1px solid rgba(255,255,255,0.15);
@@ -609,21 +614,21 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 /* Header */
 .ypp-eq-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 18px 13px;
+    padding: 12px 16px 11px;
     border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .ypp-eq-title-group { display:flex; align-items:center; gap:10px; }
 .ypp-eq-icon {
-    width: 32px; height: 32px; border-radius: 10px;
+    width: 28px; height: 28px; border-radius: 8px;
     background: rgba(255, 255, 255, 0.15);
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
-.ypp-eq-title { font-size:14px; font-weight:700; letter-spacing:-0.3px; }
+.ypp-eq-title { font-size:13px; font-weight:700; letter-spacing:-0.3px; }
 .ypp-eq-subtitle { font-size:10px; color:rgba(255,255,255,0.38); font-weight:500; margin-top:1px; }
 .ypp-eq-close-btn {
     background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
-    color: rgba(255,255,255,0.7); border-radius: 50%; width:28px; height:28px;
+    color: rgba(255,255,255,0.7); border-radius: 50%; width:24px; height:24px;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer; transition: background 0.2s, color 0.2s;
 }
@@ -631,40 +636,40 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 
 /* Gain Row */
 .ypp-eq-gain-row {
-    display: flex; align-items: center; gap: 12px;
-    padding: 11px 18px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 16px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .ypp-eq-row-label {
-    font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45);
-    text-transform: uppercase; letter-spacing: 0.6px; min-width: 72px;
+    font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.5px; min-width: 60px;
 }
 .ypp-eq-gain-value {
-    font-size: 12px; font-weight: 800; color: #ffffff;
-    min-width: 40px; text-align: right;
+    font-size: 11px; font-weight: 800; color: #ffffff;
+    min-width: 34px; text-align: right;
 }
 
 /* Horizontal slider */
 .ypp-eq-hslider {
     -webkit-appearance: none; appearance: none; flex: 1;
-    height: 4px; border-radius: 4px; outline: none; cursor: pointer;
+    height: 3px; border-radius: 3px; outline: none; cursor: pointer;
     border: none; transition: height 0.15s ease;
 }
-.ypp-eq-hslider:hover { height: 6px; }
+.ypp-eq-hslider:hover { height: 5px; }
 .ypp-eq-hslider::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
-    background: #fff; border: 2.5px solid #fff; cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 0 3px rgba(255,255,255,0.2);
+    -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+    background: #fff; border: 2px solid #fff; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,255,255,0.2);
     transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
 }
 .ypp-eq-hslider::-webkit-slider-thumb:hover {
     transform: scale(1.35);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 0 0 5px rgba(255,255,255,0.3), 0 0 16px rgba(255,255,255,0.4);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,255,255,0.3), 0 0 12px rgba(255,255,255,0.4);
 }
 
 /* Presets */
 .ypp-eq-presets-row {
-    display: flex; gap: 6px; padding: 9px 18px;
+    display: flex; gap: 5px; padding: 7px 16px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -674,8 +679,8 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 .ypp-eq-presets-row::-webkit-scrollbar { display: none; }
 .ypp-eq-preset-btn {
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
-    color: rgba(255,255,255,0.6); border-radius: 20px; cursor: pointer;
-    font-size: 11px; font-weight: 600; padding: 4px 13px;
+    color: rgba(255,255,255,0.6); border-radius: 16px; cursor: pointer;
+    font-size: 10px; font-weight: 600; padding: 3px 10px;
     font-family: inherit; transition: all 0.2s ease;
     white-space: nowrap;
     flex-shrink: 0;
@@ -685,31 +690,31 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
 }
 .ypp-eq-preset-btn.active {
     background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5);
-    color: #ffffff; box-shadow: 0 0 12px rgba(255,255,255,0.15);
+    color: #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.15);
 }
 
 /* Canvas */
 .ypp-eq-canvas {
-    display: block; width: calc(100% - 36px); height: 72px;
-    margin: 0 18px 2px; border-radius: 10px;
+    display: block; width: calc(100% - 32px); height: 56px;
+    margin: 0 16px 2px; border-radius: 8px;
     background: rgba(255,255,255,0.025);
     border: 1px solid rgba(255,255,255,0.06);
 }
 
 /* Band columns */
 .ypp-eq-bands {
-    display: flex; gap: 0; padding: 6px 14px 12px;
+    display: flex; gap: 0; padding: 4px 10px 8px;
     justify-content: space-between;
 }
 .ypp-eq-band-col {
     display: flex; flex-direction: column; align-items: center;
-    gap: 3px; flex: 1; padding: 0 2px;
+    gap: 2px; flex: 1; padding: 0 1px;
 }
 .ypp-eq-band-db {
-    font-size: 9px; font-weight: 800; min-height: 13px; line-height: 1;
+    font-size: 8px; font-weight: 800; min-height: 10px; line-height: 1;
 }
 .ypp-eq-band-track {
-    position: relative; height: 80px; width: 100%;
+    position: relative; height: 64px; width: 100%;
     display: flex; align-items: center; justify-content: center;
 }
 .ypp-eq-band-center {
@@ -718,59 +723,61 @@ window.YPP.features.VolumeBoosterUI = class VolumeBoosterUI {
     pointer-events: none;
 }
 .ypp-eq-band-freq {
-    font-size: 9px; color: rgba(255,255,255,0.38); font-weight:600;
+    font-size: 8px; color: rgba(255,255,255,0.38); font-weight:600;
 }
 
 /* Vertical slider (rotated horizontal) */
 .ypp-eq-vslider {
     -webkit-appearance: none; appearance: none;
-    width: 80px;
-    height: 3px; border-radius: 3px; outline: none; cursor: pointer;
+    width: 64px;
+    height: 2px; border-radius: 2px; outline: none; cursor: pointer;
     background: rgba(255,255,255,0.1); border: none;
     transform: rotate(-90deg);
     transform-origin: center;
     position: absolute;
     transition: height 0.1s ease;
 }
-.ypp-eq-vslider:hover { height: 5px; }
+.ypp-eq-vslider:hover { height: 4px; }
 .ypp-eq-vslider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 13px; height: 13px; border-radius: 50%;
+    width: 10px; height: 10px; border-radius: 50%;
     background: var(--band-color, #ffffff);
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
     transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
 }
 .ypp-eq-vslider::-webkit-slider-thumb:hover { transform: scale(1.45); }
 
 /* Footer */
 .ypp-eq-footer {
-    display: flex; align-items: center; gap: 8px;
-    padding: 0 18px 14px;
+    display: flex; align-items: center; gap: 6px;
+    padding: 0 16px 10px;
 }
 .ypp-eq-comp-btn {
-    display: flex; align-items: center; gap: 5px;
+    display: flex; align-items: center; gap: 4px;
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
-    color: rgba(255,255,255,0.55); border-radius: 20px; cursor: pointer;
-    font-size: 11px; font-weight: 600; padding: 5px 13px;
+    color: rgba(255,255,255,0.55); border-radius: 16px; cursor: pointer;
+    font-size: 10px; font-weight: 600; padding: 4px 10px;
     font-family: inherit; transition: all 0.2s ease;
 }
 .ypp-eq-comp-btn.active {
     background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4);
-    color: #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.15);
+    color: #ffffff; box-shadow: 0 0 8px rgba(255,255,255,0.15);
 }
 .ypp-eq-comp-btn:hover { background: rgba(255,255,255,0.1); }
 .ypp-eq-reset-btn {
     background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22);
-    color: #ffffff; border-radius: 20px; cursor: pointer;
-    font-size: 11px; font-weight: 600; padding: 5px 14px;
+    color: #ffffff; border-radius: 16px; cursor: pointer;
+    font-size: 10px; font-weight: 600; padding: 4px 10px;
     font-family: inherit; transition: all 0.2s ease;
 }
 .ypp-eq-reset-btn:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.4); }
 .ypp-eq-hint {
-    font-size: 9px; color: rgba(255,255,255,0.22); margin-left: auto;
+    font-size: 8px; color: rgba(255,255,255,0.22); margin-left: auto;
 }
         `;
         document.head.appendChild(style);
     }
 };
+
+window.YPP.features.VolumeBoosterUI = VolumeBoosterUI;

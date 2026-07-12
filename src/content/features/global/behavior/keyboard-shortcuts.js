@@ -20,33 +20,65 @@
  * Users can remap any shortcut via the popup Settings tab.
  * Shortcuts stored in settings as `shortcut_<action>` keys (e.g. `shortcut_zenMode`).
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-class KeyboardShortcuts extends window.YPP.features.BaseFeature {
+
+
+export class KeyboardShortcuts extends window.YPP.features.BaseFeature {
+    static featureId = 'keyboardShortcuts';
+    static executionPhase = 'idle';
+    static priority = 5;
+
     constructor() {
         super('KeyboardShortcuts');
 
-        // Default key bindings and labels pulled from static class properties
-        // so getBindings() and the constructor always stay in sync
-        this.defaults = KeyboardShortcuts.DEFAULT_BINDINGS;
         this.actions = {
-            zenMode:     { label: KeyboardShortcuts.ACTION_LABELS.zenMode,     fn: () => this._toggleSetting('zenMode') },
-            focusMode:   { label: KeyboardShortcuts.ACTION_LABELS.focusMode,   fn: () => this._toggleSetting('enableFocusMode') },
-            cinemaMode:  { label: KeyboardShortcuts.ACTION_LABELS.cinemaMode,  fn: () => this._toggleCinema() },
-            snapshot:    { label: KeyboardShortcuts.ACTION_LABELS.snapshot,    fn: () => this._triggerSnapshot() },
-            loop:        { label: KeyboardShortcuts.ACTION_LABELS.loop,        fn: () => this._toggleLoop() },
-            pip:         { label: KeyboardShortcuts.ACTION_LABELS.pip,         fn: () => this._togglePiP() },
-            speedDown:   { label: KeyboardShortcuts.ACTION_LABELS.speedDown,   fn: () => this._adjustSpeed(-0.25) },
-            speedUp:     { label: KeyboardShortcuts.ACTION_LABELS.speedUp,     fn: () => this._adjustSpeed(0.25) },
-            speedReset:  { label: KeyboardShortcuts.ACTION_LABELS.speedReset,  fn: () => this._adjustSpeed(0, true) },
-            ambientMode: { label: KeyboardShortcuts.ACTION_LABELS.ambientMode, fn: () => this._toggleSetting('ambientMode') },
+            zenMode:     { label: 'Toggle Zen Mode',     fn: () => this._toggleSetting('zenMode') },
+            focusMode:   { label: 'Toggle Focus Mode',   fn: () => this._toggleSetting('enableFocusMode') },
+            cinemaMode:  { label: 'Toggle Cinema / Theater',  fn: () => this._toggleCinema() },
+            snapshot:    { label: 'Take Snapshot',    fn: () => this._triggerSnapshot() },
+            loop:        { label: 'Toggle Loop',        fn: () => this._toggleLoop() },
+            pip:         { label: 'Picture-in-Picture',         fn: () => this._togglePiP() },
+            ambientMode: { label: 'Toggle Ambient Mode', fn: () => this._toggleSetting('ambientMode') },
+        };
+        
+        // Human-readable labels for toast notifications for all generic settings
+        this.genericLabels = {
+            enableGlobalPlayerBar: 'Player Bar',
+            intentionalDelay: 'Intentional Delay',
+            watchTimeAlert: 'Watch Time Alert',
+            hideComments: 'Comments Visibility',
+            hideRelated: 'Related Videos',
+            hideLiveChat: 'Live Chat',
+            hideShorts: 'Shorts Visibility',
+            hideEndScreens: 'End Screens',
+            hideAnnotations: 'Annotations',
+            enableVolumeBoost: 'Volume Booster',
+            enableCinemaFilters: 'Video Filters',
+            enableCustomSpeed: 'Custom Speed',
+            autoCinema: 'Auto Cinema',
+            enableTranscript: 'Transcript',
+            premiumTheme: 'Premium Theme',
+            trueBlack: 'True Black Dark Mode',
+            hideScrollbar: 'Scrollbar',
+            grayscaleThumbnails: 'Grayscale Thumbs',
+            grid4x4: '4x4 Grid Layout',
+            hideMixes: 'Mixes',
+            hideWatched: 'Watched Videos',
+            hideMerch: 'Merch & Offers',
+            hideFundraiser: 'Fundraisers',
+            hideChannelCards: 'Channel Cards',
+            hideFeed: 'Home Feed',
+            hideTrending: 'Trending Tab',
+            searchGrid: 'Search Grid',
+            cleanSearch: 'Clean Search',
+            shortsAutoScroll: 'Shorts Auto Scroll',
+            shortsVolumeNormalizer: 'Shorts Volume',
+            autoSkipAds: 'Auto Skip Ads',
+            autoPlayNext: 'Auto Play Next',
+            sponsorBlock: 'SponsorBlock'
         };
     }
 
-    /**
-     * Settings key this feature responds to
-     */
     getConfigKey() {
         return 'keyboardShortcuts';
     }
@@ -63,19 +95,31 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
     }
 
     _registerBindings() {
-        // Build bindings for the hotkeys manager
         const bindings = [];
-        for (const [action, definition] of Object.entries(this.actions)) {
-            const boundKey = this.settings?.[`shortcut_${action}`] ?? this.defaults[action];
-            if (boundKey) {
-                bindings.push({
-                    combo: boundKey,
-                    callback: () => {
-                        definition.fn();
-                        this._showToast(definition.label);
-                    }
-                });
+        const shortcuts = this.settings?.advancedShortcuts || [];
+        
+        for (const sc of shortcuts) {
+            if (!sc.key || !sc.action) continue;
+            
+            let fn;
+            let label;
+            
+            if (this.actions[sc.action]) {
+                fn = this.actions[sc.action].fn;
+                label = this.actions[sc.action].label;
+            } else {
+                const settingKey = sc.action;
+                fn = () => this._toggleSetting(settingKey);
+                label = `Toggle ${this.genericLabels[settingKey] || settingKey}`;
             }
+            
+            bindings.push({
+                combo: sc.key,
+                callback: () => {
+                    fn();
+                    this._showToast(label);
+                }
+            });
         }
         
         window.YPP.hotkeysManager?.register('keyboard-shortcuts', bindings);
@@ -87,21 +131,14 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         this.utils?.log('Keyboard Shortcuts disabled', 'SHORTCUTS', 'debug');
     }
 
-
     // ACTION IMPLEMENTATIONS
     // =========================================================================
 
-    /**
-     * Toggle a boolean setting and broadcast the change
-     */
     async _toggleSetting(key) {
-        // Toggle based on current state (default false if undefined)
         const currentVal = this.settings?.[key] || false;
         const delta = { [key]: !currentVal };
         
-        // Broadcast the update via Service Worker
-        chrome.runtime.sendMessage({ action: 'UPDATE_SETTINGS_DELTA', delta }, () => {
-            // Predictively update local instance state for immediate feedback
+        chrome.runtime.sendMessage({ action: 'PATCH_SETTINGS', payload: delta }, () => {
             this.settings = { ...this.settings, ...delta };
         });
     }
@@ -116,7 +153,6 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             const btn = document.querySelector(sel);
             if (btn) { btn.click(); return; }
         }
-        // Final fallback: toggle theater attribute
         const watchFlexy = document.querySelector('ytd-watch-flexy');
         if (watchFlexy) {
             watchFlexy.toggleAttribute('theater');
@@ -147,7 +183,6 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         const video = document.querySelector('video');
         if (!video) return;
         video.loop = !video.loop;
-        // Sync the loop button active state
         document.querySelectorAll('.ypp-action-btn').forEach(btn => {
             if (btn.title === 'Loop Video') btn.classList.toggle('active', video.loop);
         });
@@ -165,28 +200,11 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         } catch (e) { /* ignore */ }
     }
 
-    _adjustSpeed(delta, reset = false) {
-        const video = document.querySelector('video');
-        if (!video) return;
-
-        const CONSTANTS = window.YPP.CONSTANTS;
-        const min = CONSTANTS?.PLAYER?.SPEED_MIN ?? 0.1;
-        const max = CONSTANTS?.PLAYER?.SPEED_MAX ?? 5.0;
-
-        if (reset) {
-            video.playbackRate = 1;
-        } else {
-            const next = Math.round((video.playbackRate + delta) * 100) / 100;
-            video.playbackRate = Math.min(Math.max(next, min), max);
-        }
-    }
-
     // =========================================================================
     // TOAST FEEDBACK
     // =========================================================================
 
     _showToast(label) {
-        // Remove existing shortcut toast
         document.querySelector('.ypp-shortcut-toast')?.remove();
 
         const toast = document.createElement('div');
@@ -194,7 +212,6 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
         toast.textContent = label;
         document.body.appendChild(toast);
 
-        // Animate in then out
         requestAnimationFrame(() => {
             toast.classList.add('show');
             setTimeout(() => {
@@ -203,50 +220,6 @@ class KeyboardShortcuts extends window.YPP.features.BaseFeature {
             }, 1800);
         });
     }
-
-    // =========================================================================
-    // PUBLIC API — used by popup to list all actions and their current bindings
-    // =========================================================================
-
-    /**
-     * Get all actions with their current bindings from settings
-     * @param {Object} settings - current settings object
-     * @returns {Array<{action, label, binding}>}
-     */
-    static getBindings(settings = {}) {
-        return Object.keys(KeyboardShortcuts.DEFAULT_BINDINGS).map(action => ({
-            action,
-            label: KeyboardShortcuts.ACTION_LABELS[action],
-            binding: settings[`shortcut_${action}`] ?? KeyboardShortcuts.DEFAULT_BINDINGS[action],
-        }));
-    }
-};
-
-// ─── Static class properties (single source of truth) ────────────────────────
-KeyboardShortcuts.DEFAULT_BINDINGS = {
-    zenMode:     'Shift+Z',
-    focusMode:   'Shift+F',
-    cinemaMode:  'Shift+C',
-    snapshot:    'Shift+S',
-    loop:        'Shift+L',
-    pip:         'Shift+P',
-    speedDown:   'Shift+,',
-    speedUp:     'Shift+.',
-    speedReset:  'Shift+R',
-    ambientMode: 'Shift+M',
-};
-
-KeyboardShortcuts.ACTION_LABELS = {
-    zenMode:     'Toggle Zen Mode',
-    focusMode:   'Toggle Focus Mode',
-    cinemaMode:  'Toggle Cinema / Theater',
-    snapshot:    'Take Snapshot',
-    loop:        'Toggle Loop',
-    pip:         'Toggle Picture-in-Picture',
-    speedDown:   'Speed -0.25x',
-    speedUp:     'Speed +0.25x',
-    speedReset:  'Reset Speed to 1x',
-    ambientMode: 'Toggle Ambient Mode',
-};
+}
 
 window.YPP.features.KeyboardShortcuts = KeyboardShortcuts;

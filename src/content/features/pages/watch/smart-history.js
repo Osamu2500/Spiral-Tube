@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class SmartHistory extends window.YPP.features.BaseFeature {
+    static featureId = 'smartHistory';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.SmartHistory = class SmartHistory extends window.YPP.features.BaseFeature {
     constructor() {
         super('SmartHistory');
         
@@ -137,10 +138,10 @@ window.YPP.features.SmartHistory = class SmartHistory extends window.YPP.feature
         if (!duration || isNaN(duration)) {
             // Need to wait for duration
             const onMeta = () => {
-                this.videoElement.removeEventListener('loadedmetadata', onMeta);
+                this.removeListener(this.videoElement, 'loadedmetadata', onMeta);
                 this.checkAutoResume();
             };
-            this.videoElement.addEventListener('loadedmetadata', onMeta);
+            this.addListener(this.videoElement, 'loadedmetadata', onMeta);
             return;
         }
         
@@ -246,3 +247,5 @@ window.YPP.features.SmartHistory = class SmartHistory extends window.YPP.feature
         await new Promise(resolve => chrome.storage.local.set({ [this.STORAGE_KEY]: history }, resolve));
     }
 };
+
+window.YPP.features.SmartHistory = SmartHistory;

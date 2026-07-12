@@ -3,10 +3,14 @@
  * Autodetects and dims/hides suspicious spam comments (crypto, telegram, whatsapp bots).
  * Users can add custom keywords and choose dim vs hide in settings.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.CommentFilter = class CommentFilter extends window.YPP.features.BaseFeature {
+
+
+export class CommentFilter extends window.YPP.features.BaseFeature {
+    static featureId = 'commentFilter';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     // Built-in spam patterns — always active when feature is on
     static BASE_PATTERNS = [
         /whatsapp\s*\+?\d{9,}/i,
@@ -137,3 +141,4 @@ window.YPP.features.CommentFilter = class CommentFilter extends window.YPP.featu
     }
 };
 
+window.YPP.features.CommentFilter = CommentFilter;

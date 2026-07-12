@@ -2,10 +2,14 @@
  * Time Display Feature
  * Injects speed-aware remaining time into the native YouTube player controls.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.TimeDisplay = class TimeDisplay extends window.YPP.features.BaseFeature {
+
+
+export class TimeDisplay extends window.YPP.features.BaseFeature {
+    static featureId = 'timeDisplay';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('TimeDisplay');
         this.name = 'TimeDisplay';
@@ -200,3 +204,5 @@ window.YPP.features.TimeDisplay = class TimeDisplay extends window.YPP.features.
         update(); // Immediate initial render
     }
 };
+
+window.YPP.features.TimeDisplay = TimeDisplay;

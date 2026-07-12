@@ -1,53 +1,49 @@
 /**
  * Video Filters Feature Orchestrator
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.features.BaseFeature {
+export class VideoFilters extends window.YPP.features.BaseFeature {
+    static featureId = 'videoFilters';
+    static executionPhase = 'sequential-ui';
+    static priority = 8;
+
     constructor() {
         super('VideoFilters');
         this.name = 'VideoFilters';
-        // ---- Cinema Filters State ----
+        
         this.currentFilterIndex = 0;
-        this.filterIntensity = 100; // 0-100%
-        this.isComparing = false;   // Toggle for before/after
+        this.filterIntensity = 100;
+        this.isComparing = false;
+        
         this.filterAdjustments = {
-            brightness: 100,
-            contrast: 100,
-            saturate: 100,
-            hueRotate: 0,
-            sepia: 0,
-            grayscale: 0,
-            invert: 0,
-            blur: 0,
-            opacity: 100,
-            dehaze: 0,
-            clarity: 0,
-            grain: 0,
-            sharpness: 0,
-            temperature: 0,
-            vibrance: 100,
-            highlights: 0,
-            shadows: 0,
-            vignette: 0
+            brightness: 100, contrast: 100, saturate: 100, hueRotate: 0,
+            sepia: 0, grayscale: 0, invert: 0, blur: 0, opacity: 100,
+            dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0,
+            vibrance: 100, highlights: 0, shadows: 0, vignette: 0
         };
-        this._filterOverlay = null; // CRT/VHS scanline overlay div
-        this._filterPanel = null;   // The open filter panel
-        this._filterBtn = null;     // Reference to filter button for active state
+        
+        this._filterOverlay = null;
+        this._filterPanel = null;
+        this._filterBtn = null;
         this._filterPanelOutsideHandler = null;
-        this._previewFilterIndex = undefined; // Transient hover-preview state
+        this._filterPanelKeydownHandler = null;
+        this._filterPanelResizeHandler = null;
+        this._previewFilterIndex = undefined;
+        this._lastOverlayKey = null;
     }
 
     getConfigKey() { return 'enableCinemaFilters'; }
 
+    _getVideo() {
+        return document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+    }
+
     async enable() {
         await super.enable();
-        if (!this.settings || !this.settings.enableCinemaFilters) return;
-        const video = document.querySelector('video');
-        if (video) {
-            this._restoreFilterState(video);
-        }
+        if (!this.settings?.enableCinemaFilters) return;
+        
+        const video = this._getVideo();
+        if (video) this._restoreFilterState(video);
     }
 
     async disable() {
@@ -69,14 +65,14 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
     }
 
     onPageChange() {
-        if (!this.settings || !this.settings.enableCinemaFilters) return;
-        const video = document.querySelector('video');
+        if (!this.settings?.enableCinemaFilters) return;
+        const video = this._getVideo();
         if (video) this._restoreFilterState(video);
     }
 
     onVideoChange(videoElement) {
-        if (!this.settings || !this.settings.enableCinemaFilters) return;
-        const video = videoElement || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+        if (!this.settings?.enableCinemaFilters) return;
+        const video = videoElement || this._getVideo();
         if (video) this._restoreFilterState(video);
     }
 
@@ -88,8 +84,7 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
         btn.className = 'ypp-action-btn';
         btn.onclick = (e) => {
             e.stopPropagation();
-            const activeVideo = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-            this.toggleFilterPanel(activeVideo, btn);
+            this.toggleFilterPanel(this._getVideo(), btn);
         };
         this._filterBtn = btn;
         return btn;
@@ -108,79 +103,99 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
             this._filterPanel.remove();
             this._filterPanel = null;
         }
-        if (this._filterPanelOutsideHandler) {
-            if (this.removeListener) this.removeListener(document, 'click', this._filterPanelOutsideHandler);
-            else document.removeEventListener('click', this._filterPanelOutsideHandler);
-            this._filterPanelOutsideHandler = null;
-        }
-        if (this._filterPanelKeydownHandler) {
-            if (this.removeListener) this.removeListener(document, 'keydown', this._filterPanelKeydownHandler);
-            else document.removeEventListener('keydown', this._filterPanelKeydownHandler);
-            this._filterPanelKeydownHandler = null;
-        }
-        if (this._filterPanelResizeHandler) {
-            if (this.removeListener) this.removeListener(window, 'resize', this._filterPanelResizeHandler);
-            else window.removeEventListener('resize', this._filterPanelResizeHandler);
-            this._filterPanelResizeHandler = null;
-        }
-        this._previewFilterIndex = undefined; // always reset on close
+        
+        const removeListenerSafe = (target, type, handler) => {
+            if (!handler) return;
+            if (this.removeListener) this.removeListener(target, type, handler);
+            else target.removeEventListener(type, handler);
+        };
+
+        removeListenerSafe(document, 'click', this._filterPanelOutsideHandler);
+        removeListenerSafe(document, 'keydown', this._filterPanelKeydownHandler);
+        removeListenerSafe(window, 'resize', this._filterPanelResizeHandler);
+        
+        this._filterPanelOutsideHandler = null;
+        this._filterPanelKeydownHandler = null;
+        this._filterPanelResizeHandler = null;
+        this._previewFilterIndex = undefined;
     }
 
     _applyComputedFilter(video) {
-        // Force fresh video lookup on every application if not explicitly provided
-        video = video || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+        video = video || this._getVideo();
         if (!video) return;
 
         if (this.isComparing) {
-            video.style.setProperty('filter', 'none', 'important');
-            video.style.setProperty('opacity', '1', 'important');
-            window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+            this._clearVideoFilters(video);
             return;
         }
 
         const preset = window.YPP.features.VideoFiltersPresets.FILTERS[this.currentFilterIndex];
         const adj = this.filterAdjustments;
         const inst = this.filterIntensity / 100;
-        const s = (v, def = 100) => def + (v - def) * inst;
+        
+        const baseValues = this._calculateBaseValues(adj);
+        const hasSVGCurves = this._applySVGCurves(baseValues, adj);
+        let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
+        
+        if (adj.sharpness > 0) {
+            window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
+            finalFilter += ` url(#ypp-svg-sharpness)`;
+        }
 
-        // Dehaze / Clarity are derived from contrast and brightness for pure CSS approach,
-        // or we handle them via SVG filter if available. We will use simple CSS derivation for Dehaze.
-        let baseContrast = adj.contrast;
-        let baseBrightness = adj.brightness;
+        video.style.setProperty('filter', finalFilter, 'important');
+        this._syncOverlays(preset, adj);
+    }
+
+    _clearVideoFilters(video) {
+        video.style.setProperty('filter', 'none', 'important');
+        video.style.setProperty('opacity', '1', 'important');
+        window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+    }
+
+    _calculateBaseValues(adj) {
+        let contrast = adj.contrast;
+        let brightness = adj.brightness;
         
         if (adj.dehaze > 0) {
-            baseContrast += adj.dehaze * 0.5;
-            baseBrightness -= adj.dehaze * 0.1;
+            contrast += adj.dehaze * 0.5;
+            brightness -= adj.dehaze * 0.1;
         }
         if (adj.clarity > 0) {
-            baseContrast += adj.clarity * 0.3;
+            contrast += adj.clarity * 0.3;
         }
-        // We use SVG ComponentTransfer for true RGB curve manipulation
-        // (Handles Brightness, Contrast, Highlights, Shadows, Temperature)
-        let hasSVGCurves = false;
-        const needsCurves = baseContrast !== 100 || baseBrightness !== 100 || 
+        
+        let saturate = adj.saturate;
+        if (adj.vibrance !== undefined && adj.vibrance !== 100) {
+            saturate = saturate * (adj.vibrance / 100);
+        }
+        
+        return { contrast, brightness, saturate };
+    }
+
+    _applySVGCurves(baseValues, adj) {
+        const needsCurves = baseValues.contrast !== 100 || baseValues.brightness !== 100 || 
                             adj.shadows !== 0 || adj.highlights !== 0 || adj.temperature !== 0;
                             
         if (needsCurves) {
             window.YPP.features.VideoFiltersOverlay.updateDynamicSVGFilter({
-                brightness: baseBrightness,
-                contrast: baseContrast,
+                brightness: baseValues.brightness,
+                contrast: baseValues.contrast,
                 shadows: adj.shadows || 0,
                 highlights: adj.highlights || 0,
                 temperature: adj.temperature || 0
             });
-            hasSVGCurves = true;
+            return true;
         }
+        return false;
+    }
 
-        // Bug fix: use local variables so we never mutate this.filterAdjustments
-        let localSaturate = adj.saturate;
-        if (adj.vibrance !== undefined && adj.vibrance !== 100) {
-            localSaturate = localSaturate * (adj.vibrance / 100);
-        }
+    _buildCSSFilterString(preset, adj, inst, hasSVGCurves) {
+        const s = (v, def = 100) => def + (v - def) * inst;
+        const baseValues = this._calculateBaseValues(adj);
 
         const adjStr = [
             hasSVGCurves ? `url(#ypp-dynamic-filter)` : '',
-            localSaturate !== 100 ? `saturate(${s(localSaturate)}%)` : '',
+            baseValues.saturate !== 100 ? `saturate(${s(baseValues.saturate)}%)` : '',
             adj.hueRotate !== 0 ? `hue-rotate(${adj.hueRotate * inst}deg)` : '',
             adj.sepia > 0 ? `sepia(${adj.sepia * inst}%)` : '',
             adj.grayscale > 0 ? `grayscale(${adj.grayscale * inst}%)` : '',
@@ -189,24 +204,13 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
             adj.opacity !== 100 ? `opacity(${s(adj.opacity)}%)` : ''
         ].filter(Boolean).join(' ');
 
-        let finalFilter = 'none';
-        if (preset.css !== 'none' && adjStr) {
-            finalFilter = `${preset.css} ${adjStr}`;
-        } else if (preset.css !== 'none') {
-            finalFilter = preset.css;
-        } else if (adjStr) {
-            finalFilter = adjStr;
-        }
+        if (preset.css !== 'none' && adjStr) return `${preset.css} ${adjStr}`;
+        if (preset.css !== 'none') return preset.css;
+        if (adjStr) return adjStr;
+        return 'none';
+    }
 
-        // Apply sharpness via SVG if needed
-        if (adj.sharpness > 0) {
-            window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
-            finalFilter += ` url(#ypp-svg-sharpness)`;
-        }
-
-        video.style.setProperty('filter', finalFilter, 'important');
-
-        // Performance fix: only rebuild the overlay when preset, grain, or vignette actually changed
+    _syncOverlays(preset, adj) {
         const overlayKey = `${this.currentFilterIndex}:${adj.grain}:${adj.vignette}`;
         const needsOverlay = preset.overlay || adj.grain > 0 || adj.vignette > 0 || preset.name === 'Night Vision';
         const overlayChanged = this._lastOverlayKey !== overlayKey;
@@ -223,36 +227,46 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
 
     _restoreFilterState(video) {
         const s = this.settings || {};
-        if (s.cinemaFilterBrightness !== undefined) this.filterAdjustments.brightness  = s.cinemaFilterBrightness;
-        if (s.cinemaFilterContrast !== undefined)   this.filterAdjustments.contrast    = s.cinemaFilterContrast;
-        if (s.cinemaFilterSaturate !== undefined)   this.filterAdjustments.saturate    = s.cinemaFilterSaturate;
-        if (s.cinemaFilterHue !== undefined)        this.filterAdjustments.hueRotate   = s.cinemaFilterHue;
-        if (s.cinemaFilterSepia !== undefined)      this.filterAdjustments.sepia       = s.cinemaFilterSepia;
-        if (s.cinemaFilterGrayscale !== undefined)  this.filterAdjustments.grayscale   = s.cinemaFilterGrayscale;
-        if (s.cinemaFilterInvert !== undefined)     this.filterAdjustments.invert      = s.cinemaFilterInvert;
-        if (s.cinemaFilterBlur !== undefined)       this.filterAdjustments.blur        = s.cinemaFilterBlur;
-        if (s.cinemaFilterOpacity !== undefined)    this.filterAdjustments.opacity     = s.cinemaFilterOpacity;
-        if (s.cinemaFilterDehaze !== undefined)     this.filterAdjustments.dehaze      = s.cinemaFilterDehaze;
-        if (s.cinemaFilterClarity !== undefined)    this.filterAdjustments.clarity     = s.cinemaFilterClarity;
-        if (s.cinemaFilterGrain !== undefined)      this.filterAdjustments.grain       = s.cinemaFilterGrain;
-        if (s.cinemaFilterSharpness !== undefined)  this.filterAdjustments.sharpness   = s.cinemaFilterSharpness;
-        if (s.cinemaFilterIndex !== undefined)      this.currentFilterIndex            = s.cinemaFilterIndex;
-        if (s.cinemaFilterIntensity !== undefined)   this.filterIntensity               = s.cinemaFilterIntensity;
-        // Restore extended adjustments (added later — guard with undefined check)
-        if (s.cinemaFilterTemperature !== undefined) this.filterAdjustments.temperature = s.cinemaFilterTemperature;
-        if (s.cinemaFilterVibrance !== undefined)    this.filterAdjustments.vibrance    = s.cinemaFilterVibrance;
-        if (s.cinemaFilterHighlights !== undefined)  this.filterAdjustments.highlights  = s.cinemaFilterHighlights;
-        if (s.cinemaFilterShadows !== undefined)     this.filterAdjustments.shadows     = s.cinemaFilterShadows;
-        if (s.cinemaFilterVignette !== undefined)    this.filterAdjustments.vignette    = s.cinemaFilterVignette;
+        
+        const keyMap = {
+            cinemaFilterBrightness: 'brightness',
+            cinemaFilterContrast: 'contrast',
+            cinemaFilterSaturate: 'saturate',
+            cinemaFilterHue: 'hueRotate',
+            cinemaFilterSepia: 'sepia',
+            cinemaFilterGrayscale: 'grayscale',
+            cinemaFilterInvert: 'invert',
+            cinemaFilterBlur: 'blur',
+            cinemaFilterOpacity: 'opacity',
+            cinemaFilterDehaze: 'dehaze',
+            cinemaFilterClarity: 'clarity',
+            cinemaFilterGrain: 'grain',
+            cinemaFilterSharpness: 'sharpness',
+            cinemaFilterTemperature: 'temperature',
+            cinemaFilterVibrance: 'vibrance',
+            cinemaFilterHighlights: 'highlights',
+            cinemaFilterShadows: 'shadows',
+            cinemaFilterVignette: 'vignette'
+        };
 
-        const hasActiveFilter = this.currentFilterIndex > 0 ||
-            this.filterAdjustments.brightness !== 100 || this.filterAdjustments.contrast !== 100 ||
-            this.filterAdjustments.saturate !== 100 || this.filterAdjustments.hueRotate !== 0 ||
-            this.filterAdjustments.sepia !== 0 || this.filterAdjustments.grayscale !== 0 ||
-            this.filterAdjustments.invert !== 0 || this.filterAdjustments.blur !== 0 ||
-            this.filterAdjustments.opacity !== 100 || this.filterAdjustments.dehaze !== 0 ||
-            this.filterAdjustments.clarity !== 0 || this.filterAdjustments.grain !== 0 ||
-            this.filterAdjustments.sharpness !== 0;
+        let hasActiveFilter = false;
+
+        for (const [settingKey, stateKey] of Object.entries(keyMap)) {
+            if (s[settingKey] !== undefined) {
+                this.filterAdjustments[stateKey] = s[settingKey];
+            }
+            if (this.filterAdjustments[stateKey] !== (['hueRotate','sepia','grayscale','invert','blur','dehaze','clarity','grain','sharpness','temperature','highlights','shadows','vignette'].includes(stateKey) ? 0 : 100)) {
+                hasActiveFilter = true;
+            }
+        }
+
+        if (s.cinemaFilterIndex !== undefined) {
+            this.currentFilterIndex = s.cinemaFilterIndex;
+            if (this.currentFilterIndex > 0) hasActiveFilter = true;
+        }
+        if (s.cinemaFilterIntensity !== undefined) {
+            this.filterIntensity = s.cinemaFilterIntensity;
+        }
 
         if (hasActiveFilter && video) {
             this._applyComputedFilter(video);
@@ -260,18 +274,19 @@ window.YPP.features.VideoFilters = class VideoFilters extends window.YPP.feature
     }
 
     _showToast(video, message) {
-        if (this.utils && this.utils.createToast) {
+        if (this.utils?.createToast) {
             this.utils.createToast(message);
         } else {
-            // Fallback
             const toast = document.createElement('div');
             toast.className = 'ypp-toast-mini';
             toast.textContent = message;
             const parent = document.getElementById('movie_player') || video?.parentElement || document.body;
             if (parent) {
                 parent.appendChild(toast);
-                this.pollFor(() => false, 2000, 2000).catch(() => toast.remove()); // Uses timeout rejection
+                this.pollFor(() => false, 2000, 2000).catch(() => toast.remove());
             }
         }
     }
 };
+
+window.YPP.features.VideoFilters = VideoFilters;

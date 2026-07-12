@@ -2,7 +2,11 @@
  * Feed Grid Columns (Subscriptions Columns)
  * Manages the CSS custom property for the number of columns on the Subscriptions feed.
  */
-class FeedGridColumns extends window.YPP.features.BaseFeature {
+export class FeedGridColumns extends window.YPP.features.BaseFeature {
+    static featureId = 'feedGridColumns';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'subscriptionsColumns'; }
     constructor() { super('FeedGridColumns'); }
 
@@ -24,4 +28,5 @@ class FeedGridColumns extends window.YPP.features.BaseFeature {
         }
     }
 }
+
 window.YPP.features.FeedGridColumns = FeedGridColumns;

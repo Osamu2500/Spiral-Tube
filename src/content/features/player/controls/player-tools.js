@@ -2,14 +2,18 @@
  * Player Tools
  * Adds custom playback speed to the YouTube player
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 /**
  * Player Tools
  * @class PlayerTools
  */
-window.YPP.features.PlayerTools = class PlayerTools extends window.YPP.features.BaseFeature {
+export class PlayerTools extends window.YPP.features.BaseFeature {
+    static featureId = 'playerTools';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'enableCustomSpeed'; }
     /**
      * Initialize Player Tools
@@ -202,3 +206,5 @@ window.YPP.features.PlayerTools = class PlayerTools extends window.YPP.features.
         }
     }
 };
+
+window.YPP.features.PlayerTools = PlayerTools;

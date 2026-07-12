@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class MiniPlayerScroll extends window.YPP.features.BaseFeature {
+    static featureId = 'miniPlayerScroll';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.MiniPlayerScroll = class MiniPlayerScroll extends window.YPP.features.BaseFeature {
     constructor() {
         super('MiniPlayerScroll');
         this._boundHandleScroll = this._handleScroll.bind(this);
@@ -59,3 +60,5 @@ window.YPP.features.MiniPlayerScroll = class MiniPlayerScroll extends window.YPP
         }
     }
 };
+
+window.YPP.features.MiniPlayerScroll = MiniPlayerScroll;

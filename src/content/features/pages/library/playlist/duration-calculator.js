@@ -1,9 +1,13 @@
 // Attach to features namespace
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.PlaylistDuration = class PlaylistDuration extends (
+
+export class PlaylistDuration extends (
   window.YPP.features.BaseFeature
 ) {
+    static featureId = 'playlistDuration';
+    static executionPhase = 'idle';
+    static priority = 999;
+
   constructor() {
     super('PlaylistDuration');
     this.debounceTimer = null;
@@ -506,3 +510,5 @@ window.YPP.features.PlaylistDuration = class PlaylistDuration extends (
         `;
   }
 };
+
+window.YPP.features.PlaylistDuration = PlaylistDuration;

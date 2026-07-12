@@ -1,8 +1,12 @@
 // @ts-nocheck
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.LoopButton = class LoopButton extends window.YPP.features.BaseFeature {
+
+
+export class LoopButton extends window.YPP.features.BaseFeature {
+    static featureId = 'loopButton';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('LoopButton');
     }
@@ -45,3 +49,5 @@ window.YPP.features.LoopButton = class LoopButton extends window.YPP.features.Ba
         }
     }
 };
+
+window.YPP.features.LoopButton = LoopButton;

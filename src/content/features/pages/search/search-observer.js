@@ -3,10 +3,14 @@
  * Owns: MutationObserver, monitor interval, debounce, processAll / processNode.
  * Stateless w.r.t. settings — caller syncs via sync() before use.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.SearchObserver = class SearchObserver {
+
+
+export class SearchObserver {
+    static featureId = 'searchObserver';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     // -------------------------------------------------------------------------
     // Static constants (tag-level classification)
@@ -496,3 +500,5 @@ window.YPP.features.SearchObserver = class SearchObserver {
 
 
 };
+
+window.YPP.features.SearchObserver = SearchObserver;

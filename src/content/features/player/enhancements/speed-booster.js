@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class SpeedBooster extends window.YPP.features.BaseFeature {
+    static featureId = 'speedBooster';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.SpeedBooster = class SpeedBooster extends window.YPP.features.BaseFeature {
     constructor() {
         super('SpeedBooster');
     }
@@ -93,3 +94,5 @@ window.YPP.features.SpeedBooster = class SpeedBooster extends window.YPP.feature
         document.documentElement.appendChild(script);
     }
 };
+
+window.YPP.features.SpeedBooster = SpeedBooster;

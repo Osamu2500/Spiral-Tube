@@ -1,11 +1,12 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Player Settings Menu Helper
  * Handles injecting custom options into the native YouTube player settings menu.
  */
-window.YPP.features.PlayerSettingsMenu = class PlayerSettingsMenu {
+export class PlayerSettingsMenu {
+    static featureId = 'playerSettingsMenu';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor(playerFeature) {
         this.player = playerFeature;
         this.controls = new window.YPP.features.PlayerControls(playerFeature);
@@ -212,3 +213,5 @@ window.YPP.features.PlayerSettingsMenu = class PlayerSettingsMenu {
         }
     }
 };
+
+window.YPP.features.PlayerSettingsMenu = PlayerSettingsMenu;

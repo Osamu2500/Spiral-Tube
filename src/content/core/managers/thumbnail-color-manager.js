@@ -55,13 +55,29 @@ export class ThumbnailColorManager {
         if (this.enabled) return;
         this.enabled = true;
         this.observeNewNodes(document.body);
-        this.mutationObserver.observe(document.body, { childList: true, subtree: true });
+        
+        if (window.YPP?.sharedObserver) {
+            window.YPP.sharedObserver.register('thumbnail-color-manager', 'ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer', (elements) => {
+                if (this.enabled) {
+                    elements.forEach(node => this.observer.observe(node));
+                }
+            }, false);
+        } else if (this.mutationObserver) {
+            this.mutationObserver.observe(document.body, { childList: true, subtree: true });
+        }
     }
 
     stop() {
         this.enabled = false;
         this.observer.disconnect();
-        this.mutationObserver.disconnect();
+        
+        if (window.YPP?.sharedObserver) {
+            window.YPP.sharedObserver.unregister('thumbnail-color-manager');
+        }
+        if (this.mutationObserver) {
+            this.mutationObserver.disconnect();
+        }
+
         this.activeWaitObservers.forEach(mo => mo.disconnect());
         this.activeWaitObservers.clear();
         document.querySelectorAll('[data-ypp-thumb-color]').forEach(el => {

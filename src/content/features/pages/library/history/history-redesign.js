@@ -2,7 +2,11 @@
  * Feature: History Page Redesign
  * Transforms the history list into a responsive 5-column grid and adds stats/calendar.
  */
-window.YPP.features.HistoryRedesign = class HistoryRedesign extends window.YPP.features.BaseFeature {
+export class HistoryRedesign extends window.YPP.features.BaseFeature {
+    static featureId = 'historyRedesign';
+    static executionPhase = 'sequential-ui';
+    static priority = 999;
+
     constructor() {
         super('HistoryRedesign');
         this.styleElement = null;
@@ -442,3 +446,5 @@ window.YPP.features.HistoryRedesign = class HistoryRedesign extends window.YPP.f
 }
 
 // Class is already attached at declaration.
+
+window.YPP.features.HistoryRedesign = HistoryRedesign;

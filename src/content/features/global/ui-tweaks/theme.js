@@ -2,14 +2,18 @@
  * Theme Manager - Handles visual theming and content visibility features
  * Uses centralized constants for configuration
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 /**
  * Theme Manager
  * @class ThemeManager
  */
-window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseFeature {
+export class ThemeManager extends window.YPP.features.BaseFeature {
+    static featureId = 'themeManager';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     /**
      * Initialize Theme Manager
      * @constructor
@@ -515,8 +519,14 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
         const idVars = 'ypp-card-style-css';
         let linkVars = document.getElementById(idVars);
 
+        // Also manage the search compatibility stylesheet
+        const searchCompatId = 'ypp-search-card-compat-css';
+
         if (!cardStyleKey || cardStyleKey === 'default') {
             if (linkVars) linkVars.remove();
+            // Remove search compat too when no card style is active
+            const searchCompatLink = document.getElementById(searchCompatId);
+            if (searchCompatLink) searchCompatLink.remove();
             return;
         }
 
@@ -536,9 +546,22 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
 
         linkVars.setAttribute('data-card-style', cardStyleKey);
         linkVars.href = varsUrl;
-        
-        this._Utils.log(`Injecting Card Style: ${cardStyleKey}`, 'THEME');
+
+        // Inject the shared search compatibility layer (always after card style CSS
+        // so its rules have a higher source order for equal-specificity ties)
+        let searchCompatLink = document.getElementById(searchCompatId);
+        if (!searchCompatLink) {
+            searchCompatLink = document.createElement('link');
+            searchCompatLink.id = searchCompatId;
+            searchCompatLink.rel = 'stylesheet';
+            searchCompatLink.className = 'ypp-ui-style-link';
+            document.head.appendChild(searchCompatLink);
+        }
+        searchCompatLink.href = chrome.runtime.getURL('src/content/card-styles/search-card-compat.css');
+
+        this._Utils.log(`Injecting Card Style: ${cardStyleKey} + search-card-compat`, 'THEME');
     }
+
 
     /**
      * Cleanup CSS classes
@@ -626,5 +649,4 @@ window.YPP.features.Theme = class ThemeManager extends window.YPP.features.BaseF
     }
 };
 
-
-
+window.YPP.features.ThemeManager = ThemeManager;

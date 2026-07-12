@@ -1,4 +1,8 @@
-window.YPP.features.SubscriptionManager = class SubscriptionManager {
+export class SubscriptionManager {
+    static featureId = 'subscriptionManager';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         this.logger = window.YPP.Utils || console;
         this.groups = {}; // { groupName: [channelId1, channelId2, ...] }
@@ -87,3 +91,5 @@ window.YPP.features.SubscriptionManager = class SubscriptionManager {
         return this.groups[groupName] || [];
     }
 };
+
+window.YPP.features.SubscriptionManager = SubscriptionManager;

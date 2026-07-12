@@ -236,12 +236,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                                         initThemeSelector(st.activeTheme);
                                         applyThemeToPopup(st.activeTheme, st.customThemes);
                                         notifyThemeChange(st.activeTheme);
-                                        chrome.tabs.query({active: true}, (tabs) => {
-                                            chrome.tabs.sendMessage(tabs[0].id, {
-                                                action: 'UPDATE_SETTINGS',
-                                                settings: st
-                                            }).catch(() => {});
-                                        });
+                                        // storage.onChanged handles the update in content scripts
                                     });
                                 });
                             }
@@ -299,15 +294,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                                     applyThemeToPopup(newTheme, customThemesObj, st.nativeThemeMode);
                                     notifyThemeChange(newTheme, st);
                                     
-                                    // Ensure content script gets the updated nativeThemeMode
-                                    chrome.tabs.query({active: true}, (tabs) => {
-                                        if (tabs[0]) {
-                                            chrome.tabs.sendMessage(tabs[0].id, {
-                                                action: 'UPDATE_SETTINGS',
-                                                settings: st
-                                            }).catch(() => {});
-                                        }
-                                    });
+                                    // Ensure content script gets the updated nativeThemeMode via storage.onChanged
                                 });
                             });
                         } else {
@@ -389,12 +376,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     
                     if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
                     
-                    chrome.tabs.query({active: true}, (tabs) => {
-                        chrome.tabs.sendMessage(tabs[0].id, {
-                            action: 'UPDATE_SETTINGS',
-                            settings
-                        }).catch(() => {});
-                    });
+                    // UI and background handle storage.onChanged
                 });
             });
         });

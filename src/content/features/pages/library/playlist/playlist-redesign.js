@@ -4,10 +4,14 @@
  * premium glassmorphic design: sidebar info panel + scrollable video list.
  * Reads data from native YouTube DOM — no API calls needed.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP.features.BaseFeature {
+
+
+export class PlaylistRedesign extends window.YPP.features.BaseFeature {
+    static featureId = 'playlistRedesign';
+    static executionPhase = 'sequential-ui';
+    static priority = 11;
+
     constructor() {
         super('PlaylistRedesign');
         this.isActive        = false;
@@ -968,3 +972,5 @@ window.YPP.features.PlaylistRedesign = class PlaylistRedesign extends window.YPP
         }
     }
 };
+
+window.YPP.features.PlaylistRedesign = PlaylistRedesign;

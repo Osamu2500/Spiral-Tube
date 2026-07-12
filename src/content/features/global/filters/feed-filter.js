@@ -1,6 +1,3 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * FeedFilter
  * ----------
@@ -8,7 +5,11 @@ window.YPP.features = window.YPP.features || {};
  * Extends BaseFilterFeature for unified hiding mechanics.
  * Scaffolded based on logic from jpdngflnlekafjhdlcnijphhcmeibdoa
  */
-window.YPP.features.FeedFilter = class FeedFilter extends window.YPP.features.BaseFilterFeature {
+export class FeedFilter extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'feedFilter';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static CARD_SELECTORS = [
         'ytd-rich-item-renderer',
         'ytd-video-renderer',
@@ -126,3 +127,5 @@ window.YPP.features.FeedFilter = class FeedFilter extends window.YPP.features.Ba
         }
     }
 };
+
+window.YPP.features.FeedFilter = FeedFilter;

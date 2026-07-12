@@ -4,10 +4,14 @@
  * Uses the Web Audio API DynamicsCompressorNode to normalize volume levels,
  * boosting quiet sounds (whispers) and clamping loud noises (explosions).
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.AudioCompressor = class AudioCompressor extends window.YPP.features.BaseFeature {
+
+
+export class AudioCompressor extends window.YPP.features.BaseFeature {
+    static featureId = 'audioCompressor';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('AudioCompressor');
         
@@ -216,3 +220,5 @@ window.YPP.features.AudioCompressor = class AudioCompressor extends window.YPP.f
         }
     }
 };
+
+window.YPP.features.AudioCompressor = AudioCompressor;

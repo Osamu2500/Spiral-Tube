@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class SmartThumbnails extends window.YPP.features.BaseFeature {
+    static featureId = 'smartThumbnails';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.SmartThumbnails = class SmartThumbnails extends window.YPP.features.BaseFeature {
     constructor() {
         super('SmartThumbnails');
         this.observer = this.observer || window.YPP.sharedObserver;
@@ -162,3 +163,5 @@ window.YPP.features.SmartThumbnails = class SmartThumbnails extends window.YPP.f
         });
     }
 };
+
+window.YPP.features.SmartThumbnails = SmartThumbnails;

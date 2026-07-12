@@ -1,11 +1,12 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Player Controls Helper
  * Handles creation and interactions of custom player buttons (Speed, PiP).
  */
-window.YPP.features.PlayerControls = class PlayerControls {
+export class PlayerControls {
+    static featureId = 'playerControls';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor(playerFeature) {
         this.player = playerFeature;
         this.utils = window.YPP.Utils;
@@ -92,3 +93,5 @@ window.YPP.features.PlayerControls = class PlayerControls {
         });
     }
 };
+
+window.YPP.features.PlayerControls = PlayerControls;

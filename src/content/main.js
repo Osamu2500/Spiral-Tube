@@ -116,8 +116,15 @@
                     ];
                     
                     if (window.YPP.managers.ThumbnailColorManager) {
-                        this.thumbnailColorManager = new window.YPP.managers.ThumbnailColorManager();
-                        this.thumbnailColorManager.updateSettings(this.settings);
+                        const initColorManager = () => {
+                            this.thumbnailColorManager = new window.YPP.managers.ThumbnailColorManager();
+                            this.thumbnailColorManager.updateSettings(this.settings);
+                        };
+                        if (window.requestIdleCallback) {
+                            requestIdleCallback(initColorManager);
+                        } else {
+                            setTimeout(initColorManager, 500);
+                        }
                     }
                 } else {
                     this.pageManagers = [];
@@ -288,10 +295,10 @@
             try {
                 if (chrome.runtime?.id) {
                     await chrome.runtime.sendMessage({
-                        action: 'UPDATE_SETTINGS_DELTA',
-                        delta: newSettings
+                        action: 'PATCH_SETTINGS',
+                        payload: newSettings
                     });
-                    this.Utils?.log('Settings delta sent to Service Worker', 'MAIN', 'debug');
+                    this.Utils?.log('Settings payload sent to Service Worker', 'MAIN', 'debug');
                 } else {
                     throw new Error('No chrome runtime context');
                 }
@@ -388,24 +395,7 @@
             // Listen for direct messages for instant updates
             if (chrome?.runtime?.onMessage) {
                 const messageHandler = (request, sender, sendResponse) => {
-                    if (request.action === 'UPDATE_SETTINGS' && request.settings) {
-                        // Merge incoming settings over current state
-                        this.settings = { ...this.settings, ...request.settings };
-                        this.Utils?.log('Instant settings update received', 'MAIN', 'debug');
-                        this._queueSettingsUpdate();
-                        
-                        if (this.globalLayoutManager) {
-                            this.globalLayoutManager.updateSettings(this.settings);
-                        }
-                        if (this.pageManagers) {
-                            this.pageManagers.forEach(m => m.updateSettings(this.settings));
-                        }
-                        if (this.thumbnailColorManager) {
-                            this.thumbnailColorManager.updateSettings(this.settings);
-                        }
-
-                        sendResponse({ success: true });
-                    }
+                    // UPDATE_SETTINGS is now handled exclusively by chrome.storage.onChanged
                     
                     if (request.action === 'FORCE_THEME_UPDATE') {
                         this.Utils?.log('Force theme update received', 'MAIN', 'info');

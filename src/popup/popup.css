@@ -520,6 +520,18 @@ body {
 .settings-section.collapsed .section-header::after {
   transform: rotate(-180deg);
 }
+.settings-section .card-group {
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+  max-height: 2000px;
+  overflow: hidden;
+  opacity: 1;
+}
+.settings-section.collapsed .card-group {
+  max-height: 0 !important;
+  opacity: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 
 .section-title-wrap {
   display: flex; align-items: center; gap: 10px;
@@ -1252,29 +1264,44 @@ kbd {
 /* --- VSC Shortcuts --- */
 .vsc-shortcut-row {
   display: flex; gap: 8px; align-items: center;
-  background: rgba(0,0,0,0.2); padding: 6px;
-  border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.03); padding: 8px 10px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.vsc-select {
-  flex: 2; background: var(--bg-surface); color: white;
-  border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
-  padding: 4px; font-size: 12px; outline: none;
+.vsc-shortcut-row:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
 }
-.vsc-key-input {
-  flex: 1; width: 10px; background: var(--bg-surface); color: white;
-  border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
-  padding: 4px; font-size: 12px; text-align: center;
-  text-transform: uppercase; outline: none;
+.vsc-select, .vsc-key-input, .vsc-val-input {
+  background: rgba(0,0,0,0.4); color: #fff;
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 6px;
+  padding: 6px 10px; font-size: 11px; outline: none;
+  font-family: inherit; transition: all 0.2s ease;
 }
-.vsc-val-input {
-  flex: 1; width: 10px; background: var(--bg-surface); color: white;
-  border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
-  padding: 4px; font-size: 12px; outline: none;
+.vsc-select { flex: 2; }
+.vsc-key-input, .vsc-val-input { flex: 1; width: 10px; text-align: center; }
+.vsc-key-input { text-transform: uppercase; font-family: monospace; font-size: 12px; letter-spacing: 0.5px; }
+
+.vsc-select:hover, .vsc-key-input:hover, .vsc-val-input:hover {
+  border-color: rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.6);
 }
+.vsc-select:focus, .vsc-key-input:focus, .vsc-val-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(62,166,255,0.2);
+}
+
 .vsc-rm-btn {
-  width: 24px; height: 24px; background: transparent; color: #ff4e45;
-  border: none; border-radius: 4px; cursor: pointer;
+  width: 26px; height: 26px; background: rgba(255,78,69,0.05); color: #ff4e45;
+  border: 1px solid rgba(255,78,69,0.1); border-radius: 6px; cursor: pointer;
   font-size: 14px; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.vsc-rm-btn:hover {
+  background: rgba(255,78,69,0.2);
+  border-color: rgba(255,78,69,0.4);
+  transform: scale(1.05);
 }
 /* --- Shortcut Panel --- */
 .shortcut-panel-row {

@@ -2,8 +2,8 @@
  * Shared Filter Presets
  * Readonly constants used by both VideoFilters (YouTube player) and GlobalPlayerBar (external video tags).
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+
+
 
 window.YPP.features.FilterPresets = {
     // Defines the available CSS filters and their overlay parameters

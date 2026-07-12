@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
+    static featureId = 'blocklistFilter';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.BlocklistFilter = class BlocklistFilter extends window.YPP.features.BaseFilterFeature {
     constructor() {
         super('BlocklistFilter');
         this.blockedChannels = [];
@@ -102,3 +103,5 @@ window.YPP.features.BlocklistFilter = class BlocklistFilter extends window.YPP.f
         }
     }
 };
+
+window.YPP.features.BlocklistFilter = BlocklistFilter;

@@ -3,10 +3,14 @@
  * Feature: Continue Watching Label & Prompt
  * Tags previously watched videos in the related sidebar and prompts the user.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.ContinueWatching = class ContinueWatching extends window.YPP.features.BaseFeature {
+
+
+export class ContinueWatching extends window.YPP.features.BaseFeature {
+    static featureId = 'continueWatching';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('ContinueWatching');
         this.observer = null;
@@ -126,3 +130,5 @@ window.YPP.features.ContinueWatching = class ContinueWatching extends window.YPP
         }
     }
 };
+
+window.YPP.features.ContinueWatching = ContinueWatching;

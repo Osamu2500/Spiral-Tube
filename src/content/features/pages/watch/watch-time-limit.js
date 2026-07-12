@@ -1,11 +1,12 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
-
 /**
  * Dummy config sync feature for the Watch Time Limit slider.
  * The actual limit enforcement is handled by WatchTimeAlert.
  */
-window.YPP.features.WatchTimeLimit = class WatchTimeLimit extends window.YPP.features.BaseFeature {
+export class WatchTimeLimit extends window.YPP.features.BaseFeature {
+    static featureId = 'watchTimeLimit';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('WatchTimeLimit');
     }
@@ -23,3 +24,5 @@ window.YPP.features.WatchTimeLimit = class WatchTimeLimit extends window.YPP.fea
         await super.disable();
     }
 };
+
+window.YPP.features.WatchTimeLimit = WatchTimeLimit;

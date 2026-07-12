@@ -3,7 +3,11 @@
  * Prevents YouTube's SPA logic from fighting back and resetting custom playback rates.
  * Managed passively as a sub-setting, isolated here per architectural rules.
  */
-class VSCForceSpeed extends window.YPP.features.BaseFeature {
+export class VSCForceSpeed extends window.YPP.features.BaseFeature {
+    static featureId = 'vSCForceSpeed';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'vscForceSpeed'; }
     constructor() { 
         super('VSCForceSpeed'); 
@@ -93,4 +97,5 @@ class VSCForceSpeed extends window.YPP.features.BaseFeature {
         }));
     }
 }
+
 window.YPP.features.VSCForceSpeed = VSCForceSpeed;

@@ -2,10 +2,14 @@
  * Watch Redesign Feature
  * Handles Glassmorphic Player UI and Sidebar Comments
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.WatchRedesign = class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
+
+
+export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
+    static featureId = 'watchRedesign';
+    static executionPhase = 'sequential-ui';
+    static priority = 999;
+
     constructor() {
         super('WatchRedesign');
         this.configKey = null; // Controlled by multiple settings (glassPlayerUI, sidebarComments)
@@ -369,3 +373,5 @@ window.YPP.features.WatchRedesign = class WatchRedesign extends (window.YPP.feat
         // Removed.
     }
 }
+
+window.YPP.features.WatchRedesign = WatchRedesign;

@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class SubsUIFilter {
+    static featureId = 'subsUIFilter';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.SubsUIFilter = class SubsUIFilter {
     static injectFilterBar(ctx) {
         if (document.getElementById('ypp-subs-filter-bar')) return;
 
@@ -134,3 +135,5 @@ window.YPP.features.SubsUIFilter = class SubsUIFilter {
         ctx.injectSidebarGroups();
     }
 };
+
+window.YPP.features.SubsUIFilter = SubsUIFilter;

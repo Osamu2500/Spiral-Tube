@@ -22,10 +22,14 @@
 
 import anime from 'animejs/lib/anime.es.js';
 
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.CustomDialog = class CustomDialog {
+
+
+export class CustomDialog {
+    static featureId = 'customDialog';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     // ── Private helpers ────────────────────────────────────────────────────
 
@@ -184,7 +188,11 @@ function _escHtml(str) {
         .replace(/"/g, '&quot;');
 }
 
-window.YPP.features.FolderUI = class FolderUI {
+export class FolderUI {
+    static featureId = 'folderUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     /**
      * @param {Object} storage       - FolderStorage instance
@@ -1139,7 +1147,11 @@ window.YPP.features.FolderUI = class FolderUI {
 // CHANNEL HEALTH DASHBOARD
 // =========================================================================
 
-window.YPP.features.ChannelHealthUI = class ChannelHealthUI {
+export class ChannelHealthUI {
+    static featureId = 'channelHealthUI';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static openModal(folderUI) {
         if (document.getElementById('ypp-health-modal')) return;
 
@@ -2735,3 +2747,5 @@ window.YPP.features.ChannelHealthUI = class ChannelHealthUI {
         setTimeout(() => document.addEventListener('click', closeListener), 0);
     }
 };
+
+window.YPP.features.CustomDialog = CustomDialog;

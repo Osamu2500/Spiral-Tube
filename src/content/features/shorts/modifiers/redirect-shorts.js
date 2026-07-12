@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class RedirectShorts extends window.YPP.features.BaseFeature {
+    static featureId = 'redirectShorts';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.RedirectShorts = class RedirectShorts extends window.YPP.features.BaseFeature {
     constructor() {
         super('RedirectShorts');
         this.checkRedirect = this.checkRedirect.bind(this);
@@ -52,3 +53,5 @@ window.YPP.features.RedirectShorts = class RedirectShorts extends window.YPP.fea
         }
     }
 };
+
+window.YPP.features.RedirectShorts = RedirectShorts;

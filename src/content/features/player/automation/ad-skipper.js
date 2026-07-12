@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class AdSkipper extends window.YPP.features.BaseFeature {
+    static featureId = 'adSkipper';
+    static executionPhase = 'idle';
+    static priority = 999;
 
-window.YPP.features.AdSkipper = class AdSkipper extends window.YPP.features.BaseFeature {
     constructor() {
         super('AdSkipper');
         this.selectors = [
@@ -136,3 +137,5 @@ window.YPP.features.AdSkipper = class AdSkipper extends window.YPP.features.Base
         }
     }
 };
+
+window.YPP.features.AdSkipper = AdSkipper;

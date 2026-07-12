@@ -1,7 +1,8 @@
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
+export class DeckMode extends window.YPP.features.BaseFeature {
+    static featureId = 'deckMode';
+    static executionPhase = 'sequential-ui';
+    static priority = 999;
 
-window.YPP.features.DeckMode = class DeckMode extends window.YPP.features.BaseFeature {
     constructor() {
         super('deckMode');
         this.isActive = false;
@@ -207,3 +208,5 @@ window.YPP.features.DeckMode = class DeckMode extends window.YPP.features.BaseFe
         return card;
     }
 };
+
+window.YPP.features.DeckMode = DeckMode;

@@ -3,10 +3,14 @@
  * Owns: Chrome storage I/O, folders object, folderConfig object, and all
  * CRUD operations (add/delete folder, add/remove channel from folder).
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.FolderStorage = class FolderStorage {
+
+
+export class FolderStorage {
+    static featureId = 'folderStorage';
+    static executionPhase = 'idle';
+    static priority = 999;
+
 
     constructor() {
         this.STORAGE_KEY = 'ypp_subscription_folders';
@@ -151,3 +155,5 @@ window.YPP.features.FolderStorage = class FolderStorage {
         return true;
     }
 };
+
+window.YPP.features.FolderStorage = FolderStorage;

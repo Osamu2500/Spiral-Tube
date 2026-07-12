@@ -3,10 +3,14 @@
  * Reduces distractions on the Watch Page and adds an ambient glow effect.
  * Refactored for performance: Cached DOM elements, optimized canvas operations.
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.ZenMode = class ZenMode extends window.YPP.features.BaseFeature {
+
+
+export class ZenMode extends window.YPP.features.BaseFeature {
+    static featureId = 'zenMode';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'zenMode'; }
     constructor() {
         super('zenMode');
@@ -292,3 +296,5 @@ window.YPP.features.ZenMode = class ZenMode extends window.YPP.features.BaseFeat
         }
     }
 };
+
+window.YPP.features.ZenMode = ZenMode;

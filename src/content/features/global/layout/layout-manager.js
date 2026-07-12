@@ -6,10 +6,14 @@
  */
 import './grid-layout.css';
 
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.Layout = class GridLayoutManager extends window.YPP.features.BaseFeature {
+
+
+export class GridLayoutManager extends window.YPP.features.BaseFeature {
+    static featureId = 'gridLayoutManager';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     /**
      * Configuration constants
      * @readonly
@@ -371,3 +375,5 @@ window.YPP.features.Layout = class GridLayoutManager extends window.YPP.features
         this.utils.log?.('Cleanup complete', 'LAYOUT', 'debug');
     }
 };
+
+window.YPP.features.GridLayoutManager = GridLayoutManager;

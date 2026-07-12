@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         clearTimeout(_saveTimeout);
         _saveTimeout = setTimeout(() => {
             chrome.runtime.sendMessage(
-                { action: 'UPDATE_SETTINGS_DELTA', delta: { [key]: value } },
+                { action: 'PATCH_SETTINGS', payload: { [key]: value } },
                 (response) => {
                     if (chrome.runtime.lastError) {
                         // Context invalidated — fall back to direct local write

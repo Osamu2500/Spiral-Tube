@@ -1,5 +1,9 @@
 // Main entry point for Subscriptions Feature
-window.YPP.features.SubscriptionsOrganizer = class SubscriptionsOrganizer extends window.YPP.features.BaseFeature {
+export class SubscriptionsOrganizer extends window.YPP.features.BaseFeature {
+    static featureId = 'subsOrganizer';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     constructor() {
         super('SubscriptionsOrganizer');
         this.manager = new window.YPP.features.SubscriptionManager();
@@ -41,3 +45,5 @@ window.YPP.features.SubscriptionsOrganizer = class SubscriptionsOrganizer extend
         this.utils?.removeStyle('ypp-subs-css');
     }
 };
+
+window.YPP.features.SubscriptionsOrganizer = SubscriptionsOrganizer;

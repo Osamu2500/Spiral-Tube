@@ -3,10 +3,14 @@
  * @description Custom playback speed, captions, and learning-focused controls
  * @class StudyMode
  */
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.StudyMode = class StudyMode extends window.YPP.features.BaseFeature {
+
+
+export class StudyMode extends window.YPP.features.BaseFeature {
+    static featureId = 'studyMode';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     getConfigKey() { return 'studyMode'; }
     constructor() {
         super('StudyMode');
@@ -855,3 +859,5 @@ window.YPP.features.StudyMode = class StudyMode extends window.YPP.features.Base
         URL.revokeObjectURL(url);
     }
 };
+
+window.YPP.features.StudyMode = StudyMode;

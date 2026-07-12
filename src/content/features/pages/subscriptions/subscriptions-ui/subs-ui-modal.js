@@ -1,9 +1,13 @@
 import anime from 'animejs/lib/anime.es.js';
 
-window.YPP = window.YPP || {};
-window.YPP.features = window.YPP.features || {};
 
-window.YPP.features.SubsUIModal = class SubsUIModal {
+
+
+export class SubsUIModal {
+    static featureId = 'subsUIModal';
+    static executionPhase = 'idle';
+    static priority = 999;
+
     static openOrganizer(ctx) {
         if (ctx.isModalOpen) return;
 
@@ -303,3 +307,5 @@ window.YPP.features.SubsUIModal = class SubsUIModal {
         }
     }
 };
+
+window.YPP.features.SubsUIModal = SubsUIModal;
