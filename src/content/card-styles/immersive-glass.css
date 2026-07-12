@@ -996,7 +996,7 @@ html[data-ypp-card-style='immersive-glass']
     ytd-compact-video-renderer,
     ytd-grid-video-renderer
   )
-  #menu,
+  :is(#menu, ytd-menu-renderer),
 html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton {
   position: absolute !important;
   top: 12px !important;
@@ -1006,11 +1006,12 @@ html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton
   z-index: 9999 !important;
   opacity: 1 !important; /* Force visible */
   display: flex !important; /* Ensure it's not display:none */
+  visibility: visible !important; /* Override YouTube native hide */
 }
 
 /* Restore native pointer events so YouTube's JS isn't confused by our overrides */
-html[data-ypp-card-style='immersive-glass'] #menu yt-icon-button,
-html[data-ypp-card-style='immersive-glass'] #menu yt-icon-button button,
+html[data-ypp-card-style='immersive-glass'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape),
+html[data-ypp-card-style='immersive-glass'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape) button,
 html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton {
   pointer-events: auto !important;
 }
@@ -1025,7 +1026,7 @@ html[data-ypp-card-style='immersive-glass']
     ytd-compact-video-renderer,
     ytd-grid-video-renderer
   )
-  #menu yt-icon,
+  :is(#menu, ytd-menu-renderer) yt-icon,
 html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton yt-icon,
 html[data-ypp-card-style='immersive-glass']
   :is(
@@ -1037,7 +1038,7 @@ html[data-ypp-card-style='immersive-glass']
     ytd-compact-video-renderer,
     ytd-grid-video-renderer
   )
-  #menu
+  :is(#menu, ytd-menu-renderer)
   svg,
 html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton svg {
   color: #fff !important;
@@ -1048,7 +1049,7 @@ html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton
 }
 
 /* Increase clickable area of the menu button */
-html[data-ypp-card-style='immersive-glass'] #menu yt-icon-button button {
+html[data-ypp-card-style='immersive-glass'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape) button {
   position: relative !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -1064,8 +1065,8 @@ html[data-ypp-card-style='immersive-glass']
     ytd-compact-video-renderer,
     ytd-grid-video-renderer
   )
-  #menu
-  yt-icon-button button,
+  :is(#menu, ytd-menu-renderer)
+  :is(yt-icon-button, yt-button-shape) button,
 html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton {
   background: rgba(0, 0, 0, 0.6) !important;
   border-radius: 50% !important;
@@ -1075,19 +1076,20 @@ html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton
   align-items: center !important;
   justify-content: center !important;
   backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   transition: all 0.2s ease !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-html[data-ypp-card-style='immersive-glass'] #menu yt-icon-button {
+html[data-ypp-card-style='immersive-glass'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape) {
   width: 36px !important;
   height: 36px !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-html[data-ypp-card-style='immersive-glass'] #menu yt-icon-button yt-interaction {
+html[data-ypp-card-style='immersive-glass'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape) yt-interaction {
   display: none !important;
 }
 
@@ -1101,8 +1103,8 @@ html[data-ypp-card-style='immersive-glass']
     ytd-compact-video-renderer,
     ytd-grid-video-renderer
   )
-  #menu
-  yt-icon-button button:hover,
+  :is(#menu, ytd-menu-renderer)
+  :is(yt-icon-button, yt-button-shape) button:hover,
 html[data-ypp-card-style='immersive-glass'] .ytLockupMetadataViewModelMenuButton:hover {
   background: rgba(0, 0, 0, 0.8) !important;
   transform: scale(1.1) !important;
