@@ -26,6 +26,7 @@ window.YPP.SettingsSchema = {
         activeTheme:         { type: 'string',  default: 'default', values: ['default','ocean','sunset','dracula','forest','midnight','cherry','system', 'coffee', 'cyberpunk', 'nord', 'discord', 'hacker', 'outrun', 'bloodmoon', 'deepspace', 'nebula', 'abyss', 'ember', 'hologram', 'blue-sky', 'retro', 'vintage', 'neumorphic'] },
         trueBlack:           { type: 'boolean', default: false },
         hideScrollbar:       { type: 'boolean', default: false },
+        customCursor:        { type: 'string',  default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel'] },
 
         // --- Layout ---
         autoScaleLayout:     { type: 'boolean', default: true },

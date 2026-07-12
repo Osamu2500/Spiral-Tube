@@ -534,6 +534,60 @@
             </div>
           </div>
 
+          <!-- Custom Cursors -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg>
+                        Custom Cursor
+                     </div>
+                     <div class="section-subtitle">Select a unique cursor pack</div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group" style="padding: 10px;">
+              <input type="hidden" id="customCursor" value="default" />
+              <div class="cursor-masonry-grid" id="cursorMasonryGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 10px; margin-top: 0;">
+                <button type="button" class="cursor-style-btn active" data-style="default" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <div class="cursor-icon" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; margin-bottom: 6px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg>
+                  </div>
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Default</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="among-us" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/among-us-pointer.png" alt="Among Us" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Among Us</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="fifa-2026" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/fifa-2026-pointer.png" alt="FIFA 26" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">FIFA 26</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="hello-kitty" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/hello-kitty-pointer.png" alt="Hello Kitty" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Sanrio</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="luffy" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/luffy-pointer.png" alt="Luffy" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Luffy</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="mickey-mouse" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/mickey-mouse-pointer.png" alt="Mickey" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Mickey</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="minecraft-sword" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/minecraft-sword-pointer.png" alt="Minecraft" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Minecraft</span>
+                </button>
+                <button type="button" class="cursor-style-btn" data-style="pinky-pixel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                  <img src="../assets/cursors/pinky-pixel-pointer.png" alt="Pinky Pixel" style="width: 28px; height: 28px; object-fit: contain; margin-bottom: 6px;">
+                  <span style="font-size: 11px; opacity: 0.8; font-weight: 500;">Pixel</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- 4. Animations & Screen Filters -->
           <div class="settings-section">
             <div class="section-header">

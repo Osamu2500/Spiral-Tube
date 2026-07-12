@@ -65,6 +65,8 @@ import { ScreenFilters } from './features/global/ui-tweaks/screen-filters.js';
 window.YPP.FeatureManager.register(ScreenFilters);
 import { CustomCSS } from './features/global/ui-tweaks/custom-css.js';
 window.YPP.FeatureManager.register(CustomCSS);
+import { CustomCursor } from './features/global/ui-tweaks/custom-cursor.js';
+window.YPP.FeatureManager.register(CustomCursor);
 
 import './features/global/behavior/watched-store.js';
 import { MultiSelect } from './features/global/behavior/multi-select.js';

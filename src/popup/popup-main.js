@@ -938,6 +938,7 @@ const initApp = () => {
         components.initCardStyleGrid();
         components.initYoutubeStyleGrid();
         components.initPopupStyleGrid();
+        components.initCursorStyleGrid();
         components.initAccentColorSwatches();
         components.initCustomThemeBuilder();
         UI.initDualAccentToggle(document);

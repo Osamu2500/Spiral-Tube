@@ -647,6 +647,40 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         });
     }
 
+    function initCursorStyleGrid() {
+        const btns = document.querySelectorAll('.cursor-style-btn');
+        const hiddenInput = document.getElementById('customCursor');
+        if (!btns.length || !hiddenInput) return;
+
+        const applyStyle = (styleVal) => {
+            hiddenInput.value = styleVal;
+            btns.forEach(b => {
+                const isActive = b.dataset.style === styleVal;
+                b.classList.toggle('active', isActive);
+                if (isActive) {
+                    b.style.background = 'rgba(255,255,255,0.15)';
+                    b.style.border = '1px solid rgba(255,255,255,0.3)';
+                } else {
+                    b.style.background = 'rgba(255,255,255,0.03)';
+                    b.style.border = '1px solid rgba(255,255,255,0.05)';
+                }
+            });
+        };
+
+        chrome.storage.local.get('settings', (data) => {
+            const styleVal = data.settings?.customCursor || 'default';
+            applyStyle(styleVal);
+        });
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyStyle(btn.dataset.style);
+                const event = new Event('change', { bubbles: true });
+                hiddenInput.dispatchEvent(event);
+            });
+        });
+    }
+
     function initAccentColorSwatches() {
         const swatches = document.querySelectorAll('.color-swatch[data-color]');
         const customInput = document.getElementById('accentColor');
@@ -732,6 +766,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         initCardStyleGrid,
         initYoutubeStyleGrid,
         initPopupStyleGrid,
+        initCursorStyleGrid,
         initAccentColorSwatches,
         initCustomThemeBuilder,
         applyThemeToPopup
