@@ -2,6 +2,18 @@
  * Player Controls Helper
  * Handles creation and interactions of custom player buttons (Speed, PiP).
  */
+const CONSTANTS = {
+    SELECTORS: {
+        SPEED_CONTROLS: 'ypp-speed-controls',
+        SPEED_BTN: 'ypp-speed-btn',
+        ACTION_BTN: 'ypp-action-btn',
+        ACTIVE_CLASS: 'active'
+    },
+    ICONS: {
+        PIP: `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="#fff"><path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/></svg>`
+    }
+};
+
 export class PlayerControls {
     static featureId = 'playerControls';
     static executionPhase = 'idle';
@@ -14,14 +26,14 @@ export class PlayerControls {
 
     createSpeedControls(video) {
         const container = document.createElement('div');
-        container.className = 'ypp-speed-controls';
+        container.className = CONSTANTS.SELECTORS.SPEED_CONTROLS;
         ['1', '1.5', '2', '3'].forEach(rate => {
             const btn = document.createElement('button');
-            btn.className = 'ypp-speed-btn';
+            btn.className = CONSTANTS.SELECTORS.SPEED_BTN;
             btn.textContent = rate + 'x';
             btn.dataset.speed = rate;
-            if (video.playbackRate === parseFloat(rate)) btn.classList.add('active');
-            btn.addEventListener('click', (e) => {
+            if (video.playbackRate === parseFloat(rate)) btn.classList.add(CONSTANTS.SELECTORS.ACTIVE_CLASS);
+            this.player.addListener(btn, 'click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 
@@ -43,8 +55,7 @@ export class PlayerControls {
     }
 
     createPiPButton(video) {
-        const icon = `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="#fff"><path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/></svg>`;
-        const btn = this.createButton(icon, 'Picture-in-Picture', async () => {
+        const btn = this.createButton(CONSTANTS.ICONS.PIP, 'Picture-in-Picture', async () => {
             try {
                 if (document.pictureInPictureElement) {
                     await document.exitPictureInPicture();
@@ -55,8 +66,8 @@ export class PlayerControls {
                 this.utils?.log?.('[YPP:PLAYER] PiP failed: ' + e.message, 'PLAYER', 'error');
             }
         });
-        video.addEventListener('enterpictureinpicture', () => btn.classList.add('active'));
-        video.addEventListener('leavepictureinpicture', () => btn.classList.remove('active'));
+        this.player.addListener(video, 'enterpictureinpicture', () => btn.classList.add(CONSTANTS.SELECTORS.ACTIVE_CLASS));
+        this.player.addListener(video, 'leavepictureinpicture', () => btn.classList.remove(CONSTANTS.SELECTORS.ACTIVE_CLASS));
         return btn;
     }
 
@@ -64,8 +75,8 @@ export class PlayerControls {
         const btn = document.createElement('button');
         btn.innerHTML = svgContent;
         btn.title = title;
-        btn.className = 'ypp-action-btn';
-        btn.addEventListener('click', (e) => {
+        btn.className = CONSTANTS.SELECTORS.ACTION_BTN;
+        this.player.addListener(btn, 'click', (e) => {
             e.stopPropagation();
             onClick(e);
         });
@@ -74,22 +85,22 @@ export class PlayerControls {
 
     createGenericToggleButton(svgContent, title, settingKey, currentValue, onChange) {
         const btn = this.createButton(svgContent, title, (e) => {
-            const newState = !btn.classList.contains('active');
-            btn.classList.toggle('active', newState);
+            const newState = !btn.classList.contains(CONSTANTS.SELECTORS.ACTIVE_CLASS);
+            btn.classList.toggle(CONSTANTS.SELECTORS.ACTIVE_CLASS, newState);
             if (window.YPP.Utils && window.YPP.Utils.saveSettings) {
                 window.YPP.Utils.saveSettings({ [settingKey]: newState });
             }
             if (onChange) onChange(newState);
         });
-        if (currentValue) btn.classList.add('active');
+        if (currentValue) btn.classList.add(CONSTANTS.SELECTORS.ACTIVE_CLASS);
         return btn;
     }
 
 
 
     updateSpeedButtons(container, activeSpeed) {
-        container.querySelectorAll('.ypp-speed-btn').forEach(b => {
-            b.classList.toggle('active', b.dataset.speed === activeSpeed);
+        container.querySelectorAll('.' + CONSTANTS.SELECTORS.SPEED_BTN).forEach(b => {
+            b.classList.toggle(CONSTANTS.SELECTORS.ACTIVE_CLASS, b.dataset.speed === activeSpeed);
         });
     }
 };

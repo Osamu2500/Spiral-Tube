@@ -245,13 +245,18 @@ import { VSCHideByDefault } from './features/player/enhancements/vsc-hide-by-def
 window.YPP.FeatureManager.register(VSCHideByDefault);
 import { VSCForceSpeed } from './features/player/enhancements/vsc-force-speed.js';
 window.YPP.FeatureManager.register(VSCForceSpeed);
+window.YPP.FeatureManager.register(VSCForceSpeed);
 import { VSCRememberSpeed } from './features/player/enhancements/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
 
 import { FloatingPlayer } from './features/player/controls/floating-player.js';
 window.YPP.FeatureManager.register(FloatingPlayer);
+import './features/player/media-effects/video-filters/video-filters-presets.js';
+import './features/player/media-effects/video-filters/video-filters-overlay.js';
+import './features/player/media-effects/video-filters/video-filters-ui.js';
 import { VideoFilters } from './features/player/media-effects/video-filters/video-filters.js';
 window.YPP.FeatureManager.register(VideoFilters);
+import './features/player/media-effects/volume-booster/volume-booster-ui.js';
 import { VolumeBooster } from './features/player/media-effects/volume-booster/volume-booster.js';
 window.YPP.FeatureManager.register(VolumeBooster);
 import { AutoQuality } from './features/player/automation/auto-quality.js';
