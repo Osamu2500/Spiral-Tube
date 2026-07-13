@@ -16,3 +16,22 @@
 @import "./pages/player.css";
 @import "./pages/search.css";
 @import "./pages/watch.css";
+
+
+/* Global AI-generated missing variable fallbacks */
+:root {
+  --sf: var(--ypp-bg-surface, #1e1e1e);
+  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
+  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
+  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
+  --blur: var(--ypp-glass-blur, blur(10px));
+
+  --aurora-1: #00d2ff;
+  --aurora-2: #3a7bd5;
+  --aurora-3: #ff00c8;
+  --aurora-4: #00ffd0;
+  --aurora-border: rgba(255,255,255,0.15);
+  --aurora-radius-pill: 999px;
+  --aurora-radius: 12px;
+
+}

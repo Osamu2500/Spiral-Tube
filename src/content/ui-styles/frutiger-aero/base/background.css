@@ -1,3 +1,23 @@
+html[data-ypp-ui-style=frutiger-aero] body::before {
+  content: "";
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background: url("chrome-extension://__MSG_@@extension_id__/src/assets/frutiger-aero-bg.jpg") no-repeat center center fixed !important;
+  background-size: cover !important;
+  z-index: -1;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body,
+html[data-ypp-ui-style=frutiger-aero] ytd-app {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 html[data-ypp-ui-style=frutiger-aero] .mat-chrome {
   background:
     linear-gradient(

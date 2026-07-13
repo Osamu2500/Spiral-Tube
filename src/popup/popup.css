@@ -1466,40 +1466,40 @@ body.ypp-theme-neumorphic .sidebar {
 }
 
 /* 4. Minimal Flat Theme */
-body.ypp-theme-minimal-flat {
+body.ypp-theme-minimalism {
     --bg-primary: #0f0f0f;
     --bg-surface: #1a1a1a;
     --bg-glass: #1a1a1a;
     --bg-glass-hover: #222222;
     --border-subtle: transparent;
 }
-body.ypp-theme-minimal-flat .app-container {
+body.ypp-theme-minimalism .app-container {
     background: var(--bg-primary);
     border: 1px solid #333;
     box-shadow: none;
     border-radius: 8px;
 }
-body.ypp-theme-minimal-flat .toggle-card {
+body.ypp-theme-minimalism .toggle-card {
     background: var(--bg-surface);
     border: none;
     border-radius: 6px;
     box-shadow: none;
 }
-body.ypp-theme-minimal-flat .toggle-card:has(input:checked) {
+body.ypp-theme-minimalism .toggle-card:has(input:checked) {
     background: var(--accent-primary);
     box-shadow: none;
 }
-body.ypp-theme-minimal-flat .toggle-card:has(input:checked) .name,
-body.ypp-theme-minimal-flat .toggle-card:has(input:checked) .desc,
-body.ypp-theme-minimal-flat .toggle-card:has(input:checked) .feature-icon {
+body.ypp-theme-minimalism .toggle-card:has(input:checked) .name,
+body.ypp-theme-minimalism .toggle-card:has(input:checked) .desc,
+body.ypp-theme-minimalism .toggle-card:has(input:checked) .feature-icon {
     color: #fff !important;
 }
-body.ypp-theme-minimal-flat .sidebar {
+body.ypp-theme-minimalism .sidebar {
     background: var(--bg-primary);
     border-right: 1px solid #333;
     border-radius: 8px 0 0 8px;
 }
-body.ypp-theme-minimal-flat .nav-item.active {
+body.ypp-theme-minimalism .nav-item.active {
     background: var(--bg-surface);
     border-radius: 6px;
 }

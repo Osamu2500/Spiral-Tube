@@ -1,43 +1,407 @@
-html[data-ypp-ui-style=frutiger-aero] #video-title,
-html[data-ypp-ui-style=frutiger-aero] h1,
-html[data-ypp-ui-style=frutiger-aero] h2,
-html[data-ypp-ui-style=frutiger-aero] h3,
-html[data-ypp-ui-style=frutiger-aero] .ytd-video-primary-info-renderer .title,
-html[data-ypp-ui-style=frutiger-aero] yt-formatted-string.ytd-video-primary-info-renderer {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+/* src/content/themes/ui-styles/frutiger-aero/components/cards.css */
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+  border-radius: var(--fa-radius-lg) !important;
+  padding: 10px !important;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1), var(--fa-elevation-2) !important;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(200,235,255,0.7)) !important;
+  border: 1px solid rgba(255,255,255,0.9) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
 }
-html[data-ypp-ui-style=frutiger-aero] #video-title:hover,
-html[data-ypp-ui-style=frutiger-aero] a.yt-simple-endpoint.ytd-video-renderer:hover #video-title,
-html[data-ypp-ui-style=frutiger-aero] a.yt-simple-endpoint.ytd-grid-video-renderer:hover #video-title {
-  color: #12a8dd !important;
-  text-shadow: 0 0 12px rgba(53, 199, 240, 0.6), 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: var(--fa-radius-lg) !important;
+  padding: 10px !important;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+  margin: 5px 0 !important;
+  border: 1px solid transparent !important;
 }
-html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #details,
-html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer #details {
-  margin-top: 12px !important;
+
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: var(--fa-elevation-1), inset 0 1px 4px rgba(255,255,255,1) !important;
 }
+
 html[data-ypp-ui-style=frutiger-aero] .header.ytd-playlist-panel-renderer {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(200, 235, 255, 0.4) 100%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+  background: none !important;
 }
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer:hover {
-  background: rgba(255, 255, 255, 0.6) !important;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+html[data-ypp-ui-style=frutiger-aero] #container.ytd-playlist-panel-renderer {
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
 }
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer[selected][use-color-palette] {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(220, 245, 255, 0.9) 0%,
-      rgba(140, 210, 250, 0.6) 100%) !important;
-  border: 1px solid rgba(130, 210, 250, 0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 2px 8px rgba(18, 168, 221, 0.2) !important;
+
+html[data-ypp-ui-style=frutiger-aero] ytd-expandable-metadata-renderer:not([is-expanded]) {
+  border-radius: var(--fa-radius-md) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
 }
-html[data-ypp-ui-style=frutiger-aero] #header.ytd-rich-grid-renderer {
+
+html[data-ypp-ui-style=frutiger-aero] ytd-expandable-metadata-renderer:not([is-expanded]):hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(200,235,255,0.6)) !important;
+  border-color: rgba(255,255,255,0.9) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,1) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: var(--fa-radius-md) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
+  border-radius: var(--fa-radius-md) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]):hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(200,235,255,0.6)) !important;
+  border-color: rgba(255,255,255,0.9) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,1) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
+  background: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style=frutiger-aero] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-style=frutiger-aero] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-style=frutiger-aero] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-style=frutiger-aero] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style=frutiger-aero] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: var(--fa-radius-pill) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .yt-badge-shape--thumbnail-default {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(200,235,255,0.7)) !important;
+  border-radius: var(--fa-radius-pill) !important;
+  border: 1px solid rgba(255,255,255,0.9) !important;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,1), var(--fa-elevation-1) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .immersive-header-container.ytd-playlist-header-renderer {
+  border: 1px solid rgba(255,255,255,0.6) !important;
+  box-shadow: var(--fa-elevation-2) !important;
+  background: rgba(255,255,255,0.4) !important;
+  backdrop-filter: blur(var(--fa-blur-md));
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer:not(.dragging) {
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+  margin: 5px;
+  border-radius: var(--fa-radius-md) !important;
+  border: 1px solid transparent !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer:not(.dragging):hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,0.9) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-macro-markers-list-item-renderer {
+  border-radius: var(--fa-radius-md) !important;
+  margin: 5px;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-macro-markers-list-item-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--fa-elevation-2) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-topbar-logo-renderer {
+  border-radius: var(--fa-radius-pill) !important;
+  padding: 0px !important;
+  max-height: 45px !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: var(--fa-elevation-1), inset 0 2px 4px rgba(255,255,255,0.5) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
+  padding: 100px !important;
+  border-radius: var(--fa-radius-lg) !important;
+  box-shadow: var(--fa-elevation-2) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-ui-style=frutiger-aero] ytd-reel-item-renderer #dismissible {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  border-radius: var(--fa-radius-lg) !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+  background: rgba(255,255,255,0.1) !important;
+  backdrop-filter: blur(var(--fa-blur-sm));
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-ui-style=frutiger-aero] ytd-reel-item-renderer:hover #dismissible {
+  border-radius: var(--fa-radius-lg) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(200,235,255,0.5)) !important;
+  box-shadow: var(--fa-elevation-3), inset 0 2px 8px rgba(255,255,255,1) !important;
+  border-color: rgba(255,255,255,0.9) !important;
+  transform: scale(1.05) !important;
+  padding-bottom: 12px !important;
+  margin-bottom: -12px !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer {
+  margin-left: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer a#logo {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer a#logo > * {
+  display: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer #country-code {
+  position: relative !important;
+  display: block !important;
+  margin-left: 2px !important;
+  top: -8px !important;
+  color: #555555 !important;
+  font-size: 11px !important;
+  font-family: "Segoe UI", sans-serif !important;
+  font-weight: 600 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-renderer {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(var(--fa-blur-md));
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--fa-elevation-2) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #secondary-inner ytd-playlist-panel-renderer {
+  border-radius: var(--fa-radius-xl) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-settings-options-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-account-settings-renderer {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(var(--fa-blur-lg));
+  border-radius: var(--fa-radius-xl) !important;
+  box-shadow: inset 0 2px 10px rgba(255,255,255,0.9), var(--fa-elevation-3) !important;
+  padding: 25px !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-reel-video-renderer {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--fa-radius-xl) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 6px rgba(255,255,255,0.8) !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .overlay-dir.ytd-reel-video-renderer {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 40%) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-add-to-playlist-renderer {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(var(--fa-blur-lg));
+  border-radius: var(--fa-radius-xl) !important;
+  box-shadow: var(--fa-elevation-4), inset 0 2px 10px rgba(255,255,255,1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(var(--fa-blur-sm));
+  border-radius: var(--fa-radius-xl) !important;
+  box-shadow: var(--fa-elevation-1), inset 0 2px 4px rgba(255,255,255,0.7) !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer:hover {
+  box-shadow: var(--fa-elevation-3), inset 0 2px 10px rgba(255,255,255,1) !important;
+  border-color: rgba(255,255,255,0.9) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(200,235,255,0.4)) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ypp-adjust-card,
+html[data-ypp-ui-style=frutiger-aero] .ypp-filter-card {
+  background: rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: var(--fa-radius-lg) !important;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.8);
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ypp-adjust-card:hover,
+html[data-ypp-ui-style=frutiger-aero] .ypp-filter-card:hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(200,235,255,0.6)) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 6px rgba(255,255,255,1) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-reel-player-overlay-renderer {
+  border-radius: var(--fa-radius-lg) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-card {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: var(--fa-radius-lg);
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.7);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-card:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(200,235,255,0.5)) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 6px rgba(255,255,255,1) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
   background: transparent !important;
-  border-bottom: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8) !important;
+  transform: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-card {
+  background: rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.9) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-grid {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(var(--fa-blur-md));
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border-radius: var(--fa-radius-md);
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
+}
+
+/* ─── TEXT COLOR OVERRIDES ─── */
+/* Force dark/black text on all video card elements since the Frutiger Aero
+   background is light sky-blue — YouTube's default white text would be invisible */
+html[data-ypp-ui-style=frutiger-aero] #video-title,
+html[data-ypp-ui-style=frutiger-aero] #video-title.ytd-rich-grid-media,
+html[data-ypp-ui-style=frutiger-aero] #video-title.ytd-compact-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #video-title,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer #video-title,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer #video-title,
+html[data-ypp-ui-style=frutiger-aero] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-style=frutiger-aero] .title.ytd-rich-grid-media,
+html[data-ypp-ui-style=frutiger-aero] #title-wrapper h3 a,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata h1,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-item-renderer #video-title {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer #metadata-line span,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #metadata-line .yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] .ytdRichGridMediaMetadataLine span {
+  color: #333333 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer {
+  color: #000000 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] h1.ytd-watch-metadata yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata h1 yt-formatted-string {
+  color: #000000 !important;
+}
+
+/* Channel name / author links */
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #channel-name,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer #channel-name,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer #channel-name,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #channel-name a,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer #channel-name a,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer #channel-name a,
+html[data-ypp-ui-style=frutiger-aero] .ytdLockupMetadataViewModelBylineText,
+html[data-ypp-ui-style=frutiger-aero] .yt-lockup-metadata-view-model-wiz__author {
+  color: #222222 !important;
+}
+
+/* Search result text */
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer h3 .yt-simple-endpoint,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer h3 .yt-simple-endpoint {
+  color: #000000 !important;
+}
+
+/* Sidebar / secondary column text */
+html[data-ypp-ui-style=frutiger-aero] #secondary ytd-compact-video-renderer #video-title,
+html[data-ypp-ui-style=frutiger-aero] #secondary ytd-compact-video-renderer #channel-name {
+  color: #000000 !important;
+}
+
+/* Description text under watch metadata */
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description span {
+  color: #111111 !important;
+}
+
+/* Comment text */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #content-text,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #header-author .yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #author-text span {
+  color: #000000 !important;
+}
+
+/* Playlist text */
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer #video-title,
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer #video-title,
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer #channel-name,
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer #channel-name {
+  color: #000000 !important;
+}
+
+/* General formatted strings across the page */
+html[data-ypp-ui-style=frutiger-aero] yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] yt-attributed-string span {
+  color: #000000 !important;
+}
+
+/* But keep video overlays (duration badge, "CC" etc.) as white on dark bg */
+html[data-ypp-ui-style=frutiger-aero] .ytd-thumbnail-overlay-time-status-renderer span,
+html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail-overlay-time-status-renderer span,
+html[data-ypp-ui-style=frutiger-aero] .overlay-dir yt-formatted-string {
+  color: #ffffff !important;
 }

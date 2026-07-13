@@ -16,3 +16,16 @@
 @import "./pages/player.css";
 @import "./pages/search.css";
 @import "./pages/watch.css";
+
+
+/* Global AI-generated missing variable fallbacks */
+:root {
+  --sf: var(--ypp-bg-surface, #1e1e1e);
+  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
+  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
+  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
+  --blur: var(--ypp-glass-blur, blur(10px));
+
+  --ypp-thumb-color: var(--ypp-accent, #00d2ff);
+
+}

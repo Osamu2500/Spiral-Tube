@@ -12,16 +12,24 @@ const getDirs = source => fs.readdirSync(source, { withFileTypes: true })
 // --- Build Color Themes ---
 const themeEntryPoints = [];
 getDirs(themesDir).forEach(dir => {
-    themeEntryPoints.push({ in: path.join(themesDir, dir, 'index.css'), out: path.join(dir, 'bundle') });
+    themeEntryPoints.push({ in: path.join(themesDir, dir, 'index.css'), out: path.join('themes', dir, 'bundle') });
+});
+
+getDirs(uiStylesDir).forEach(dir => {
+    const embeddedThemePath = path.join(uiStylesDir, dir, 'theme', 'index.css');
+    if (fs.existsSync(embeddedThemePath)) {
+        themeEntryPoints.push({ in: embeddedThemePath, out: path.join('ui-styles', dir, 'theme', 'bundle') });
+    }
 });
 
 console.log(`Building ${themeEntryPoints.length} color themes...`);
 esbuild.build({
     entryPoints: themeEntryPoints,
     bundle: true,
-    outdir: themesDir,
+    outdir: path.join(__dirname, '../src/content'),
     minify: true,
-    sourcemap: false
+    sourcemap: false,
+    external: ['chrome-extension://*']
 }).catch(() => process.exit(1));
 
 // --- Build UI Styles ---
@@ -36,5 +44,6 @@ esbuild.build({
     bundle: true,
     outdir: uiStylesDir,
     minify: true,
-    sourcemap: false
+    sourcemap: false,
+    external: ['chrome-extension://*']
 }).catch(() => process.exit(1));

@@ -1,0 +1,498 @@
+/* ─── POPUP THEMES ─── */
+
+/* 5. Nature Theme */
+body.ypp-theme-nature {
+    --bg-primary: #1e2b1d;
+    --bg-surface: #2b4227;
+    --bg-glass: rgba(43, 66, 39, 0.85);
+    --bg-glass-hover: rgba(53, 82, 49, 0.9);
+    --border-subtle: rgba(182, 232, 74, 0.3);
+    --accent-primary: #b6e84a;
+    background-image: radial-gradient(circle at 10% 20%, rgba(182, 232, 74, 0.05) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(93, 148, 81, 0.1) 0%, transparent 40%);
+}
+body.ypp-theme-nature .app-container {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+}
+body.ypp-theme-nature .toggle-card {
+    background: var(--bg-surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+}
+body.ypp-theme-nature .toggle-card:has(input:checked) {
+    background: rgba(182, 232, 74, 0.15);
+    border-color: rgba(182, 232, 74, 0.5);
+    box-shadow: 0 4px 12px rgba(182, 232, 74, 0.1);
+}
+
+/* 6. Vintage Theme */
+body.ypp-theme-vintage {
+    --bg-primary: #d4c4a8;
+    --bg-surface: #e0cda7;
+    --bg-glass: rgba(224, 205, 167, 0.85);
+    --bg-glass-hover: rgba(235, 215, 175, 0.9);
+    --border-subtle: rgba(100, 75, 50, 0.2);
+    --accent-primary: #8c5b3f;
+    --text-1: #3e2723;
+    --text-2: #5d4037;
+    --text-dim: #795548;
+}
+body.ypp-theme-vintage, body.ypp-theme-vintage * {
+    color: var(--text-1);
+}
+body.ypp-theme-vintage .app-container {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    box-shadow: inset 0 0 40px rgba(139,69,19,0.1);
+    font-family: 'Georgia', serif;
+}
+body.ypp-theme-vintage .toggle-card {
+    background: var(--bg-surface);
+    border: 1px solid rgba(139,69,19,0.15);
+    border-radius: 4px;
+}
+body.ypp-theme-vintage .toggle-card:has(input:checked) {
+    background: rgba(140, 91, 63, 0.15);
+    border-color: #8c5b3f;
+}
+
+/* 7. Ocean Theme */
+body.ypp-theme-ocean {
+    --bg-primary: #020a12;
+    --bg-surface: #051421;
+    --bg-glass: rgba(5, 20, 33, 0.85);
+    --bg-glass-hover: rgba(10, 30, 50, 0.9);
+    --border-subtle: rgba(0, 150, 255, 0.3);
+    --accent-primary: #00b4d8;
+    background-image: linear-gradient(180deg, #020a12 0%, #001a33 100%);
+}
+body.ypp-theme-ocean .toggle-card {
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+    border: 1px solid rgba(255,255,255,0.05);
+}
+body.ypp-theme-ocean .toggle-card:has(input:checked) {
+    background: rgba(0, 180, 216, 0.15);
+    border-color: rgba(0, 180, 216, 0.5);
+    box-shadow: inset 0 0 15px rgba(0, 180, 216, 0.2), 0 0 10px rgba(0, 180, 216, 0.3);
+}
+
+/* 8. Blue Sky Theme */
+body.ypp-theme-blue-sky {
+    --bg-primary: #6ab0db;
+    --bg-surface: #87ceeb;
+    --bg-glass: rgba(135, 206, 235, 0.85);
+    --bg-glass-hover: rgba(155, 216, 245, 0.9);
+    --border-subtle: rgba(255, 255, 255, 0.4);
+    --accent-primary: #0277bd;
+    --text-1: #01579b;
+    --text-2: #0277bd;
+    background: linear-gradient(to bottom, #87ceeb, #e0f7fa);
+}
+body.ypp-theme-blue-sky, body.ypp-theme-blue-sky * {
+    color: var(--text-1);
+}
+body.ypp-theme-blue-sky .app-container {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+body.ypp-theme-blue-sky .toggle-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+}
+body.ypp-theme-blue-sky .toggle-card:has(input:checked) {
+    background: rgba(2, 119, 189, 0.15);
+    border-color: #0277bd;
+}
+
+/* 9. Retro Theme */
+body.ypp-theme-retro {
+    --bg-primary: #a0a0a0;
+    --bg-surface: #c0c0c0;
+    --bg-glass: rgba(192, 192, 192, 0.95);
+    --bg-glass-hover: #d0d0d0;
+    --border-subtle: #808080;
+    --accent-primary: #000080;
+    --text-1: #000000;
+    --text-2: #333333;
+}
+body.ypp-theme-retro, body.ypp-theme-retro * {
+    color: var(--text-1);
+    font-family: 'Tahoma', sans-serif;
+}
+body.ypp-theme-retro .app-container {
+    background: var(--bg-surface);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-radius: 0;
+}
+body.ypp-theme-retro .toggle-card {
+    background: var(--bg-surface);
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    border-radius: 0;
+}
+body.ypp-theme-retro .toggle-card:active, body.ypp-theme-retro .toggle-card:has(input:checked) {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    background: #a0a0a0;
+}
+
+/* 10. Technozen Theme */
+body.ypp-theme-technozen {
+    --bg-primary: #c9e8d6;
+    --bg-surface: #dff4e8;
+    --bg-glass: rgba(223, 244, 232, 0.85);
+    --bg-glass-hover: rgba(235, 250, 242, 0.9);
+    --border-subtle: rgba(121, 184, 144, 0.3);
+    --accent-primary: #4a8f65;
+    --text-1: #2a5238;
+}
+body.ypp-theme-technozen, body.ypp-theme-technozen * {
+    color: var(--text-1);
+}
+body.ypp-theme-technozen .app-container {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+}
+body.ypp-theme-technozen .toggle-card {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+body.ypp-theme-technozen .toggle-card:has(input:checked) {
+    background: rgba(74, 143, 101, 0.2);
+    border-color: #4a8f65;
+}
+
+/* 11. Frutiger Aero Theme */
+body.ypp-theme-frutiger-aero {
+    --bg-primary: #bfe6ff;
+    --bg-surface: #d2f0ff;
+    --bg-glass: rgba(255, 255, 255, 0.6);
+    --bg-glass-hover: rgba(255, 255, 255, 0.8);
+    --border-subtle: rgba(255, 255, 255, 0.7);
+    --accent-primary: #12a8dd;
+    --text-1: #0a2a4a;
+    background: linear-gradient(180deg, #bfe6ff, #eafcff);
+}
+body.ypp-theme-frutiger-aero, body.ypp-theme-frutiger-aero * {
+    color: var(--text-1);
+}
+body.ypp-theme-frutiger-aero .app-container {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.9), 0 4px 16px rgba(18,168,221,0.2);
+}
+body.ypp-theme-frutiger-aero .toggle-card {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(200,235,255,0.6));
+    border-radius: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 2px 4px rgba(18, 168, 221, 0.15);
+}
+body.ypp-theme-frutiger-aero .toggle-card:has(input:checked) {
+    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(180,225,255,0.8));
+    border-color: #35c7f0;
+    box-shadow: inset 0 2px 6px rgba(255,255,255,1), 0 0 12px rgba(53,199,240,0.6);
+}
+
+/* 12. Terminalism Theme */
+body.ypp-theme-terminalism {
+    --bg-primary: #000000;
+    --bg-surface: #0a0a0a;
+    --bg-glass: #0a0a0a;
+    --bg-glass-hover: #111111;
+    --border-subtle: #00ff00;
+    --accent-primary: #00ff00;
+    --text-1: #00ff00;
+    --text-2: #00cc00;
+}
+body.ypp-theme-terminalism, body.ypp-theme-terminalism * {
+    color: var(--text-1);
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-terminalism .app-container {
+    background: #000000;
+    border: 1px solid #00ff00;
+    border-radius: 0;
+}
+body.ypp-theme-terminalism .toggle-card {
+    background: #000000;
+    border: 1px dashed #005500;
+    border-radius: 0;
+}
+body.ypp-theme-terminalism .toggle-card:hover {
+    border: 1px dashed #00ff00;
+}
+body.ypp-theme-terminalism .toggle-card:has(input:checked) {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* 13. Claymorphism Theme */
+body.ypp-theme-claymorphism {
+    --bg-primary: #e6dcff;
+    --bg-surface: #f0e8ff;
+    --bg-glass: rgba(240, 232, 255, 0.9);
+    --bg-glass-hover: #ffffff;
+    --border-subtle: transparent;
+    --accent-primary: #9b51e0;
+    --text-1: #4a2b6b;
+}
+body.ypp-theme-claymorphism, body.ypp-theme-claymorphism * {
+    color: var(--text-1);
+}
+body.ypp-theme-claymorphism .app-container {
+    background: var(--bg-surface);
+    border-radius: 32px;
+    box-shadow: inset 6px 6px 12px rgba(255,255,255,1), inset -6px -6px 12px rgba(200,185,225,0.8);
+    border: none;
+}
+body.ypp-theme-claymorphism .toggle-card {
+    background: var(--bg-surface);
+    border-radius: 20px;
+    box-shadow: 4px 4px 10px rgba(190,175,215,0.6), -4px -4px 10px rgba(255,255,255,1);
+    border: none;
+}
+body.ypp-theme-claymorphism .toggle-card:has(input:checked) {
+    box-shadow: inset 4px 4px 10px rgba(190,175,215,0.6), inset -4px -4px 10px rgba(255,255,255,1);
+}
+
+/* 14. Brutalism Theme */
+body.ypp-theme-brutalism {
+    --bg-primary: #ffffff;
+    --bg-surface: #ffffff;
+    --bg-glass: #ffffff;
+    --bg-glass-hover: #eeeeee;
+    --border-subtle: #000000;
+    --accent-primary: #ff0000;
+    --text-1: #000000;
+}
+body.ypp-theme-brutalism, body.ypp-theme-brutalism * {
+    color: var(--text-1);
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+body.ypp-theme-brutalism .app-container {
+    background: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 0;
+    box-shadow: 12px 12px 0 #000000;
+}
+body.ypp-theme-brutalism .toggle-card {
+    background: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 0;
+    box-shadow: 4px 4px 0 #000000;
+    transition: none;
+}
+body.ypp-theme-brutalism .toggle-card:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000000;
+}
+body.ypp-theme-brutalism .toggle-card:has(input:checked) {
+    background: #000000;
+    color: #ffffff;
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 #000000;
+}
+body.ypp-theme-brutalism .toggle-card:has(input:checked) * {
+    color: #ffffff !important;
+}
+
+/* 15. Default (Dark) */
+body.ypp-theme-default {
+    --bg-primary: #0f0f0f;
+    --bg-surface: #1a1a1a;
+    --bg-glass: #222222;
+    --bg-glass-hover: #333333;
+    --border-subtle: #444444;
+    --accent-primary: #3ea6ff;
+}
+body.ypp-theme-default .app-container {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+}
+body.ypp-theme-default .toggle-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+}
+body.ypp-theme-default .toggle-card:has(input:checked) {
+    background: rgba(62, 166, 255, 0.15);
+    border-color: #3ea6ff;
+}
+
+/* 16. Maximalism Theme */
+body.ypp-theme-maximalism {
+    --bg-primary: #ff00ff;
+    --bg-surface: #ffff00;
+    --bg-glass: #00ffff;
+    --bg-glass-hover: #ff0000;
+    --border-subtle: #00ff00;
+    --accent-primary: #0000ff;
+    --text-1: #000000;
+    background: repeating-linear-gradient(45deg, #ff00ff, #ff00ff 20px, #00ffff 20px, #00ffff 40px);
+}
+body.ypp-theme-maximalism, body.ypp-theme-maximalism * {
+    color: var(--text-1);
+    font-weight: 900;
+}
+body.ypp-theme-maximalism .app-container {
+    background: #ffff00;
+    border: 8px dashed #ff0000;
+    border-radius: 20px;
+    box-shadow: 10px 10px 0 #00ff00;
+}
+body.ypp-theme-maximalism .toggle-card {
+    background: #ff00ff;
+    border: 4px dotted #00ffff;
+    border-radius: 50%;
+    transform: rotate(-5deg);
+}
+body.ypp-theme-maximalism .toggle-card:has(input:checked) {
+    background: #00ff00;
+    border: 4px solid #ff0000;
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* 17. Glassmorphism Theme */
+body.ypp-theme-glassmorphism {
+    --bg-primary: #0f0c29;
+    --bg-surface: rgba(255, 255, 255, 0.1);
+    --bg-glass: rgba(255, 255, 255, 0.15);
+    --bg-glass-hover: rgba(255, 255, 255, 0.2);
+    --border-subtle: rgba(255, 255, 255, 0.2);
+    --accent-primary: #ff4b2b;
+    background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+}
+body.ypp-theme-glassmorphism .app-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+body.ypp-theme-glassmorphism .toggle-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 16px;
+}
+body.ypp-theme-glassmorphism .toggle-card:has(input:checked) {
+    background: rgba(255, 75, 43, 0.2);
+    border-color: #ff4b2b;
+}
+
+/* 18. Aurora Theme */
+body.ypp-theme-aurora {
+    --bg-primary: #0a0a0a;
+    --bg-surface: #151515;
+    --bg-glass: rgba(30, 30, 30, 0.8);
+    --bg-glass-hover: rgba(40, 40, 40, 0.9);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --accent-primary: #43e97b;
+    background: #0a0a0a;
+}
+body.ypp-theme-aurora::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(120deg, rgba(67,233,123,0.3) 0%, rgba(56,249,215,0.3) 100%);
+    filter: blur(100px);
+    z-index: -1;
+}
+body.ypp-theme-aurora .app-container {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+}
+body.ypp-theme-aurora .toggle-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+body.ypp-theme-aurora .toggle-card:has(input:checked) {
+    background: rgba(67, 233, 123, 0.1);
+    border-color: #43e97b;
+    box-shadow: 0 0 20px rgba(67, 233, 123, 0.2);
+}
+
+/* 19. Material Theme */
+body.ypp-theme-material {
+    --bg-primary: #121212;
+    --bg-surface: #1f1f1f;
+    --bg-glass: #2c2c2c;
+    --bg-glass-hover: #3a3a3a;
+    --border-subtle: transparent;
+    --accent-primary: #bb86fc;
+}
+body.ypp-theme-material .app-container {
+    background: var(--bg-primary);
+    border-radius: 0;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2);
+}
+body.ypp-theme-material .toggle-card {
+    background: var(--bg-surface);
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 3px 0 rgba(0,0,0,0.12);
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body.ypp-theme-material .toggle-card:hover {
+    box-shadow: 0 3px 3px -2px rgba(0,0,0,0.2), 0 3px 4px 0 rgba(0,0,0,0.14), 0 1px 8px 0 rgba(0,0,0,0.12);
+}
+body.ypp-theme-material .toggle-card:has(input:checked) {
+    background: rgba(187, 134, 252, 0.12);
+}
+
+/* Fix text colors for light themes */
+body.ypp-theme-vintage, 
+body.ypp-theme-blue-sky, 
+body.ypp-theme-retro, 
+body.ypp-theme-technozen, 
+body.ypp-theme-frutiger-aero, 
+body.ypp-theme-claymorphism, 
+body.ypp-theme-brutalism, 
+body.ypp-theme-minimalism {
+    --text-1: #111111;
+    --text-2: #333333;
+    --text-dim: #555555;
+}
+body.ypp-theme-vintage *, 
+body.ypp-theme-blue-sky *, 
+body.ypp-theme-retro *, 
+body.ypp-theme-technozen *, 
+body.ypp-theme-frutiger-aero *, 
+body.ypp-theme-claymorphism *, 
+body.ypp-theme-brutalism *, 
+body.ypp-theme-minimalism * {
+    color: var(--text-1);
+}
+body.ypp-theme-vintage .action-btn svg, 
+body.ypp-theme-blue-sky .action-btn svg, 
+body.ypp-theme-retro .action-btn svg, 
+body.ypp-theme-technozen .action-btn svg, 
+body.ypp-theme-frutiger-aero .action-btn svg, 
+body.ypp-theme-claymorphism .action-btn svg, 
+body.ypp-theme-brutalism .action-btn svg, 
+body.ypp-theme-minimalism .action-btn svg {
+    color: var(--text-1);
+}

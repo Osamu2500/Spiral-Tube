@@ -422,6 +422,18 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
     }
 
     /**
+     * Helper to get correct theme URL based on architecture
+     * @private
+     */
+    _getThemeUrl(themeKey) {
+        const bundledThemes = ['aurora', 'blue-sky', 'brutalism', 'claymorphism', 'cyberpunk', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'neumorphic', 'ocean', 'retro', 'technozen', 'terminalism', 'vintage'];
+        if (bundledThemes.includes(themeKey)) {
+            return chrome.runtime.getURL(`src/content/ui-styles/${themeKey}/theme/bundle.css`);
+        }
+        return chrome.runtime.getURL(`src/content/themes/${themeKey}/bundle.css`);
+    }
+
+    /**
      * Inject specific theme CSS file
      * @param {string} themeKey 
      * @param {boolean} [force=false] - Force cache bust
@@ -436,7 +448,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             link = null;
         }
 
-        const cssUrl = chrome.runtime.getURL(`src/content/themes/${themeKey}/bundle.css`);
+        const cssUrl = this._getThemeUrl(themeKey);
         const fullUrl = force ? `${cssUrl}?t=${Date.now()}` : cssUrl;
 
         if (!link) {
@@ -570,6 +582,18 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
     }
 
     /**
+     * Helper to get correct card style URL based on architecture
+     * @private
+     */
+    _getCardStyleUrl(cardStyleKey) {
+        const bundledCards = ['aurora', 'blue-sky', 'brutalism', 'claymorphism', 'cyberpunk', 'frutiger-aero', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'nature', 'neumorphic', 'ocean', 'retro', 'terminalism', 'vintage'];
+        if (bundledCards.includes(cardStyleKey)) {
+            return chrome.runtime.getURL(`src/content/ui-styles/${cardStyleKey}/card-style.css`);
+        }
+        return chrome.runtime.getURL(`src/content/card-styles/${cardStyleKey}.css`);
+    }
+
+    /**
      * Apply the YouTube Card style overlay from card-styles/ directory
      * @private
      * @param {string} cardStyleKey  e.g. 'glass', 'flat', 'cyberpunk'
@@ -593,7 +617,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             return;
         }
 
-        const varsUrl = chrome.runtime.getURL(`src/content/card-styles/${cardStyleKey}.css`);
+        const varsUrl = this._getCardStyleUrl(cardStyleKey);
 
         if (!linkVars) {
             linkVars = document.createElement('link');
