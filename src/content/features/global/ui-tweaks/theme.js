@@ -220,6 +220,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (!uiStyleKey || uiStyleKey === 'default') {
             if (link) link.remove();
             document.documentElement.removeAttribute('data-ypp-ui-style');
+            this._removeFrutigerBubbles();
             return;
         }
 
@@ -241,7 +242,47 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         link.setAttribute('data-ui-style', uiStyleKey);
         link.href = cssUrl;
         document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
+        
+        // Handle Frutiger Aero specific bubbles (respect Theme Effects toggle)
+        const enableEffects = this._settings.enableThemeEffects !== false;
+        if (uiStyleKey === 'frutiger-aero' && enableEffects) {
+            this._injectFrutigerBubbles();
+        } else {
+            this._removeFrutigerBubbles();
+        }
+        
         this._Utils.log(`Injecting UI Style: ${uiStyleKey}`, 'THEME');
+    }
+    
+    /**
+     * Inject HTML bubbles for Frutiger Aero theme
+     * @private
+     */
+    _injectFrutigerBubbles() {
+        const id = 'ypp-frutiger-bubbles';
+        if (document.getElementById(id)) return;
+
+        const container = document.createElement('div');
+        container.id = id;
+        container.className = 'frutiger-bubbles-container';
+
+        // Add 50 bubbles
+        for (let i = 0; i < 50; i++) {
+            const span = document.createElement('span');
+            span.className = 'fa-bubble';
+            container.appendChild(span);
+        }
+
+        document.body.appendChild(container);
+    }
+
+    /**
+     * Remove HTML bubbles
+     * @private
+     */
+    _removeFrutigerBubbles() {
+        const container = document.getElementById('ypp-frutiger-bubbles');
+        if (container) container.remove();
     }
 
     /**
@@ -496,6 +537,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
              else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
              else if (ytTheme === 'retro') finalCardStyle = 'retro';
              else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
+             else if (ytTheme === 'frutiger-aero') finalCardStyle = 'frutiger-aero';
              else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
              else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
              else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';

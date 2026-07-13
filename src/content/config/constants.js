@@ -402,7 +402,8 @@ const CARD_STYLES = [
   { id: 'ocean', label: 'Ocean Style Cards' },
   { id: 'blue-sky', label: 'Blue Sky Style Cards' },
   { id: 'retro', label: 'Retro OS Windows' },
-  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' }
+  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' },
+  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -415,7 +416,8 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'ocean', label: 'Ocean (Deep Water)' },
   { id: 'blue-sky', label: 'Blue Sky (Clouds)' },
   { id: 'retro', label: 'Retro OS (Win 95)' },
-  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' }
+  { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' },
+  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation

@@ -106,6 +106,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' },
                     { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' },
                     { key: 'technozen', label: 'Technozen', meta: 'Eco Tech', color: '#dff4e8' },
+                    { key: 'frutiger-aero', label: 'Frutiger Aero', meta: 'Web 2.0', color: '#bfe6ff' },
                     { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy 3D', color: '#f0e8ff' },
                     { key: 'brutalism', label: 'Brutalism', meta: 'Raw UI', color: '#ffffff' },
                     { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted', color: '#0f0c29' }
