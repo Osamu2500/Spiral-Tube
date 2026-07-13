@@ -1,0 +1,163 @@
+#frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+}
+#guide-content.ytd-app {
+  background: transparent;
+}
+#guide-wrapper.ytd-app {
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.90) !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-bottom-color: rgba(90, 191, 71, 0.18) !important;
+  box-shadow: var(--shadow-base) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
+}
+ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+yt-icon-button#guide-button {
+  border-radius: var(--tz-radius-pill) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+yt-icon-button#guide-button:hover {
+  background: var(--tz-gloss), rgba(200, 245, 188, 0.70) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.06);
+}
+yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+/* src/content/themes/ui-styles/technozen/pages/home.css */
+#sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
+  padding: 10px 3px !important;
+}
+ytd-guide-entry-renderer {
+  border-radius: var(--tz-radius-md) !important;
+}
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce),
+    border-radius var(--bounce) !important;
+}
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+  background: var(--tz-gloss), rgba(200, 245, 188, 0.75) !important;
+  border-radius: var(--tz-radius-md) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border: 1px solid rgba(90, 191, 71, 0.22) !important;
+  transform: translateX(2px) !important;
+}
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+ytd-mini-guide-entry-renderer {
+  margin-top: 10px !important;
+  border-radius: 20px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+ytd-mini-guide-entry-renderer:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.75) !important;
+}
+#description.ytd-watch-metadata,
+ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 0 10px !important;
+  margin: 16px 16px 0 0 !important;
+  border-radius: 3000px !important;
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.90) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+ytd-browse[page-subtype=home] #chips {
+  margin: 16px 0 0 0 !important;
+  border-radius: 3000px !important;
+  box-shadow: var(--shadow-active) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 0 10px !important;
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.90) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+.yt-chip-shape {
+  background-color: transparent !important;
+}
+.ytChipShapeChip {
+  border-radius: var(--tz-radius-pill) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytChipShapeChip:hover {
+  transform: translateY(-1px) scale(1.06) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: var(--tz-gloss), rgba(200, 245, 188, 0.80) !important;
+}
+iron-selector.yt-chip-cloud-renderer {
+  padding-left: 5px !important;
+}
+.ytContextualSheetLayoutContentContainer,
+.ytChipBarViewModelHost,
+.immersive-header-content.ytd-playlist-header-renderer {
+  overflow: visible !important;
+}
+#header.ytd-settings-sidebar-renderer {
+  background: transparent !important;
+}
+ytd-settings-sidebar-renderer {
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.8) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 16px !important;
+}
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  transition:
+    box-shadow var(--bounce),
+    background var(--bounce),
+    transform var(--bounce) !important;
+}
+ytd-guide-entry-renderer:hover #endpoint.yt-simple-endpoint {
+  box-shadow: 0 0 12px rgba(90, 191, 71, 0.22), inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+yt-chip-cloud-chip-renderer:hover {
+  box-shadow: 0 0 10px rgba(90, 191, 71, 0.25), inset 0 0 8px rgba(255, 255, 255, 0.7) !important;
+}
+#ypp-pl-root .ypp-pl-sidebar {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(220, 250, 205, 0.88) 0%,
+      rgba(205, 245, 240, 0.82) 100%) !important;
+  backdrop-filter: blur(40px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
+  border: 1px solid rgba(90, 191, 71, 0.28) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow:
+    var(--shadow-base),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--tz-radius-xl) !important;
+}

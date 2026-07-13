@@ -1,0 +1,54 @@
+.ypp-eq-preset-btn,
+.ypp-cinema-tab-btn,
+.ypp-vcp-compare-toggle {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border: none !important;
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+.ypp-eq-preset-btn:hover,
+.ypp-cinema-tab-btn:hover,
+.ypp-vcp-compare-toggle:hover {
+  background: rgba(128, 128, 128, 0.15) !important;
+  transform: scale(1.05) !important;
+}
+#ypp-global-player-bar,
+.ypp-global-bar {
+  background: var(--sf) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+#ypp-eq-panel,
+#ypp-cinema-panel {
+  background: var(--sf) !important;
+  border: none !important;
+  border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
+  box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 16px !important;
+}
+.ypp-eq-header,
+.ypp-eq-footer,
+.ypp-intensity-section,
+.ypp-adjust-card-header,
+#ypp-cinema-panel > div:first-child,
+#ypp-cinema-panel > div:last-child {
+  background: transparent !important;
+  border-bottom-color: rgba(128, 128, 128, 0.1) !important;
+  border-top-color: rgba(128, 128, 128, 0.1) !important;
+}
+.ypp-global-player-bar,
+#ypp-global-player-bar {
+  background: var(--sf) !important;
+  border: none !important;
+  box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+.ypp-eq-hslider,
+.ypp-vcp-slider,
+.ypp-eq-vslider {
+  background: rgba(128, 128, 128, 0.15) !important;
+  border: none !important;
+}
+.ypp-eq-canvas {
+  background: rgba(128, 128, 128, 0.03) !important;
+  border: none !important;
+  border-radius: 16px !important;
+}

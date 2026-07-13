@@ -1,0 +1,17 @@
+/* src/content/themes/ui-styles/claymorphism/components/cards.css */
+html[data-ypp-ui-style=claymorphism] .header.ytd-playlist-panel-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style=claymorphism] ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
+  background: none !important;
+}
+html[data-ypp-ui-style=claymorphism] ytd-playlist-panel-renderer {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+}
+html[data-ypp-ui-style=claymorphism] ytd-rich-item-renderer,
+html[data-ypp-ui-style=claymorphism] ytd-video-renderer,
+html[data-ypp-ui-style=claymorphism] ytd-grid-video-renderer {
+  position: relative;
+  z-index: 1;
+}

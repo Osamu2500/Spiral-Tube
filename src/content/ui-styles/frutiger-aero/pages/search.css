@@ -1,0 +1,24 @@
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox#search {
+  position: relative;
+  height: 36px;
+}
+html[data-ypp-ui-style=frutiger-aero] #search-form.ytd-searchbox input {
+  color: #0a2a4a !important;
+  text-shadow: 0 1px 0 #fff;
+  z-index: 2;
+  background: transparent !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #search-icon-legacy.ytd-searchbox:hover {
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #aae0ff 50%,
+      #76cdfa 51%,
+      #cceeff 100%) !important;
+  box-shadow: inset 0 1px 4px rgba(255, 255, 255, 1), 0 0 8px rgba(53, 199, 240, 0.6) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #search-icon-legacy.ytd-searchbox yt-icon {
+  color: #0b86c2 !important;
+  filter: drop-shadow(0 1px 0px rgba(255, 255, 255, 0.8));
+}

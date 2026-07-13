@@ -1,0 +1,31 @@
+.ypp-gpb-btn,
+.ypp-action-btn,
+.ypp-icon-btn {
+  border-radius: 0 !important;
+  background: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ypp-gpb-btn:hover,
+.ypp-action-btn:hover,
+.ypp-icon-btn:hover {
+  background: var(--sf) !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  transform: scale(1.1) !important;
+}
+.ypp-gpb-btn:active,
+.ypp-action-btn:active,
+.ypp-icon-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-dark) !important;
+  border-left: 2px solid var(--retro-border-dark) !important;
+  border-bottom: 2px solid var(--retro-border-light) !important;
+  border-right: 2px solid var(--retro-border-light) !important;
+}

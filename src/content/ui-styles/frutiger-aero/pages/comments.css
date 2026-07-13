@@ -1,0 +1,44 @@
+/* src/content/themes/ui-styles/frutiger-aero/pages/watch.css */
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] #columns.ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] #primary.ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] #primary-inner.ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] #secondary.ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] #secondary-inner.ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] #below.ytd-watch-flexy,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata,
+html[data-ypp-ui-style=frutiger-aero] #description.ytd-watch-metadata,
+html[data-ypp-ui-style=frutiger-aero] #description-inner.ytd-watch-metadata,
+html[data-ypp-ui-style=frutiger-aero] ytd-comments,
+html[data-ypp-ui-style=frutiger-aero] ytd-item-section-renderer {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+/* src/content/themes/ui-styles/frutiger-aero/pages/comments.css */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-thread-renderer {
+  margin-bottom: 24px !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-renderer yt-img-shadow,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model yt-img-shadow {
+  border-radius: 50% !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.8) !important;
+  transform: translate(-28px, 12px);
+  position: absolute;
+  z-index: 2;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-renderer #body,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #body {
+  margin-left: 20px !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-renderer #author-text,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #author-text {
+  color: #0b86c2 !important;
+  font-weight: 600 !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-replies-renderer,
+html[data-ypp-ui-style=frutiger-aero] #replies {
+  margin-left: 48px !important;
+  border-left: 2px dashed rgba(53, 199, 240, 0.3) !important;
+  padding-left: 16px !important;
+}

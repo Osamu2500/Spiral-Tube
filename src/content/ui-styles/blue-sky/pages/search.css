@@ -1,0 +1,124 @@
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+.ytSearchboxComponentInputBoxDark,
+.ytSearchboxComponentInputBox {
+  background: none !important;
+  border: var(--sky-border) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: 32px !important;
+  box-shadow: var(--shadow-base) !important;
+}
+.ytSearchboxComponentSearchButton {
+  margin-left: 10px !important;
+  border-radius: 32px !important;
+  border: var(--sky-border) !important;
+  background-color: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytSearchboxComponentSearchButton:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+.ytSearchboxComponentSearchButton:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-active) !important;
+}
+.ytSearchboxComponentSuggestionsContainer,
+ytd-multi-page-menu-renderer {
+  top: 55px !important;
+  border: var(--sky-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: 32px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  margin-right: 10px;
+  width: 30px !important;
+  height: 30px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+html,
+[dark] .ytSearchboxComponentInput {
+  mix-blend-mode: difference;
+}
+html,
+[dark] .ytSearchboxComponentInput {
+  mix-blend-mode: normal;
+}
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer,
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer * {
+  color: #ffffff !important;
+}
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer,
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer * {
+  color: #0f0f0f !important;
+}
+.ytSearchboxComponentInputBox {
+  border-radius: 30px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 2px solid rgba(135, 206, 250, 0.5) !important;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05), 0 4px 15px rgba(135, 206, 250, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+.ytSearchboxComponentInputBox:focus-within {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 191, 255, 0.8) !important;
+  box-shadow: 0 0 25px rgba(135, 206, 250, 0.5), inset 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+}
+.ytSearchboxComponentSearchButton {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(135, 206, 250, 0.3),
+      rgba(0, 191, 255, 0.3)) !important;
+  border-left: 1px solid rgba(135, 206, 250, 0.3) !important;
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+}
+.ytSearchboxComponentSearchButton:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(135, 206, 250, 0.6),
+      rgba(0, 191, 255, 0.6)) !important;
+}
+ytd-searchbox #container {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(125, 211, 252, 0.5) !important;
+  border-radius: 20px 0 0 20px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+[dark] ytd-searchbox #container {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+ytd-searchbox #search-icon-legacy {
+  border: 1px solid rgba(125, 211, 252, 0.5) !important;
+  background: rgba(224, 242, 254, 0.5) !important;
+  border-radius: 0 20px 20px 0 !important;
+}
+[dark] ytd-searchbox #search-icon-legacy {
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+}
+ytd-search-filter-group-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 32px !important;
+  padding: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-bottom: 10px !important;
+}

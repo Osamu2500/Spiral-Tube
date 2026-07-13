@@ -1,0 +1,14 @@
+html[data-ypp-ui-style=claymorphism] ::-webkit-scrollbar {
+  width: 8px !important;
+}
+html[data-ypp-ui-style=claymorphism] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html {
+  /* YouTube Global Transparent Overrides */
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-additive-background: transparent !important;
+}

@@ -78,11 +78,12 @@
                 "src/assets/*",
                 "src/assets/fonts/*",
                 "src/inject/*",
+                "src/popup/*",
                 "src/content/themes/*.css",
-                "src/content/themes/ui-styles/*.css",
-                "src/content/ui-designs/*.css",
+                "src/content/ui-styles/**/*.css",
                 "src/content/card-styles/*.css",
-                "src/content/features/**/*.css"
+                "src/content/features/**/*.css",
+                "src/content/features/**/*.js"
             ],
             "matches": [
                 "*://www.youtube.com/*",

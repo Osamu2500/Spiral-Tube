@@ -1,0 +1,22 @@
+html[data-ypp-ui-style=minimalism] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+html[data-ypp-ui-style=minimalism] #guide-content.ytd-app {
+  background: transparent;
+}
+/* src/content/themes/ui-styles/minimalism/pages/home.css */
+html[data-ypp-ui-style=minimalism] #description.ytd-watch-metadata,
+html[data-ypp-ui-style=minimalism] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  padding: 0 !important;
+  margin: 16px 16px 0 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+html[data-ypp-ui-style=minimalism] ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+html[data-ypp-ui-style=minimalism] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style=minimalism] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+  background: rgba(0, 0, 0, 0.04) !important;
+}

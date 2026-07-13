@@ -1,0 +1,121 @@
+/* ============================================================
+   BODY & BACKGROUND — Bright soft nature gradient
+   ============================================================ */
+html, [dark] body,
+html:not([dark]) body {
+  background-color: #dff4e8 !important;
+  background-image:
+    /* Main ambient gradient — lime-to-sky diagonal */
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(180, 235, 160, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 90%, rgba(144, 218, 230, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 60% 30%, rgba(200, 245, 195, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(160, 225, 240, 0.3) 0%, transparent 55%),
+    /* Soft white bloom center */
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 60%),
+    /* Base gradient */
+    linear-gradient(145deg, #e2f8e0 0%, #d4f0f7 50%, #e8f9df 100%) !important;
+}
+/* ============================================================
+   FONT SYSTEM — Windows Vista / Wii UI era
+   ============================================================ */
+* {
+  font-family: "Segoe UI", "Tahoma", "Trebuchet MS", "Verdana", "Lucida Grande", sans-serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 1px solid rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--tz-radius-sm) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytSuggestionComponentRoundedSuggestion:hover {
+  transform: translateY(-1px) scale(1.01) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+/* ============================================================
+   PLAYER CONTROLS — Rounded gel buttons
+   ============================================================ */
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important;
+  border: none !important;
+  border-radius: var(--tz-radius-lg) !important;
+  overflow: hidden !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background:
+    var(--tz-gloss),
+    rgba(210, 248, 200, 0.80) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background:
+    var(--tz-gloss),
+    rgba(210, 248, 200, 0.80) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.1);
+}
+.ytp-delhi-modern .ytp-chapter-container {
+  width: 100% !important;
+  padding-left: 10px;
+}
+body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+/* ============================================================
+   SEARCH PAGE HEADER
+   ============================================================ */
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+/* ============================================================
+   SCROLLBAR — Subtle Technozen styling
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(220, 248, 212, 0.30);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(90, 191, 71, 0.40), rgba(48, 184, 200, 0.35));
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(90, 191, 71, 0.65), rgba(48, 184, 200, 0.55));
+}
+/* Added for HeaderNav active state — Technozen lime glow */
+.ypp-nav-btn.active {
+  background: rgba(90, 191, 71, 0.18) !important;
+  box-shadow:
+    0 0 14px rgba(90, 191, 71, 0.45),
+    0 0 28px rgba(48, 184, 200, 0.2),
+    var(--shadow-active) !important;
+  border: 1px solid rgba(90, 191, 71, 0.45) !important;
+}

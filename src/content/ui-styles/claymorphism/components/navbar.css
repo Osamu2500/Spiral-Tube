@@ -1,0 +1,22 @@
+/* src/content/themes/ui-styles/claymorphism/components/navbar.css */
+html[data-ypp-ui-style=claymorphism] ytd-app,
+html[data-ypp-ui-style=claymorphism] ytd-masthead,
+html[data-ypp-ui-style=claymorphism] #page-manager.ytd-app,
+html[data-ypp-ui-style=claymorphism] #content.ytd-app {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=claymorphism] #masthead-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+html[data-ypp-ui-style=claymorphism] #contents.ytd-page-manager {
+  margin-top: 0;
+  margin-left: 16px;
+}
+html[data-ypp-ui-style=claymorphism] ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+  top: 75px !important;
+  left: 8px !important;
+}
+html[data-ypp-ui-style=claymorphism] tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+  background: transparent !important;
+}

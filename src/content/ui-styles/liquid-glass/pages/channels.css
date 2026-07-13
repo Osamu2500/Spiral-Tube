@@ -1,0 +1,43 @@
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: 2000px !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytd-channel-name,
+.ytd-video-meta-block {
+  color: #e3e3e3 !important;
+}
+ytd-video-renderer:hover,
+ytd-channel-renderer:hover,
+ytd-playlist-renderer:hover,
+ytd-radio-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(128, 128, 128, 0.09) !important;
+}
+ytd-c4-tabbed-header-renderer {
+  background: var(--sf) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  border-radius: 0 0 34px 34px !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-bottom: 20px !important;
+  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  border-top: none !important;
+}
+#tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}
+ytd-video-renderer,
+ytd-channel-renderer,
+ytd-playlist-renderer,
+ytd-radio-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-radius: 24px !important;
+  padding: 15px !important;
+  margin-bottom: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: 1px solid rgba(128, 128, 128, 0.05) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}

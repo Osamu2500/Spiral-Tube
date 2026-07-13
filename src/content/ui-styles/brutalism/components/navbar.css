@@ -1,0 +1,18 @@
+/* src/content/themes/ui-styles/brutalism/components/navbar.css */
+html[data-ypp-ui-style=brutalism] ytd-app,
+html[data-ypp-ui-style=brutalism] ytd-masthead,
+html[data-ypp-ui-style=brutalism] #page-manager.ytd-app,
+html[data-ypp-ui-style=brutalism] #content.ytd-app {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=brutalism] #masthead-container {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=brutalism] #contents.ytd-page-manager {
+  margin-top: 0;
+  margin-left: 16px;
+}
+html[data-ypp-ui-style=brutalism] ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+  top: 75px !important;
+  left: 8px !important;
+}

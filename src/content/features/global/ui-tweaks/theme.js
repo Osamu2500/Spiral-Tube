@@ -229,7 +229,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             return;
         }
 
-        const cssUrl = chrome.runtime.getURL(`src/content/themes/ui-styles/${uiStyleKey}.css`);
+        const cssUrl = chrome.runtime.getURL(`src/content/ui-styles/${uiStyleKey}/bundle.css`);
 
         if (!link) {
             link = document.createElement('link');
@@ -265,15 +265,32 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         const container = document.createElement('div');
         container.id = id;
         container.className = 'frutiger-bubbles-container';
+        // Ensure it always stays behind the main content (especially videos)
+        container.style.zIndex = '0';
 
-        // Add 50 bubbles
+        // Add 50 bubbles with randomized properties
         for (let i = 0; i < 50; i++) {
             const span = document.createElement('span');
             span.className = 'fa-bubble';
+            
+            const size = Math.random() * 60 + 10; // 10px to 70px
+            const left = Math.random() * 100; // 0% to 100vw
+            const delay = Math.random() * 20; // 0s to 20s
+            const durationY = Math.random() * 10 + 10; // 10s to 20s
+            const durationX = Math.random() * 5 + 3; // 3s to 8s
+            
+            span.style.width = `${size}px`;
+            span.style.height = `${size}px`;
+            span.style.left = `${left}vw`;
+            span.style.bottom = `-${size + 20}px`; // Start below the screen
+            span.style.animationDuration = `${durationY}s, ${durationX}s`;
+            span.style.animationDelay = `${delay}s, ${delay}s`;
+            
             container.appendChild(span);
         }
 
-        document.body.appendChild(container);
+        // Insert at the beginning of body to ensure it stays behind UI elements
+        document.body.insertBefore(container, document.body.firstChild);
     }
 
     /**
@@ -419,7 +436,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             link = null;
         }
 
-        const cssUrl = chrome.runtime.getURL(`src/content/themes/${themeKey}.css`);
+        const cssUrl = chrome.runtime.getURL(`src/content/themes/${themeKey}/bundle.css`);
         const fullUrl = force ? `${cssUrl}?t=${Date.now()}` : cssUrl;
 
         if (!link) {

@@ -1,0 +1,82 @@
+/* src/content/themes/ui-styles/cyberpunk/components/navbar.css */
+ytd-app,
+ytd-masthead,
+#page-manager.ytd-app,
+#content.ytd-app {
+  background: transparent !important;
+}
+#masthead-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+ytd-masthead #container {
+  border-radius: 0 !important;
+  background: var(--sf) !important;
+  margin: 1px !important;
+  box-shadow: var(--shadow-active) !important;
+  border: var(--cyber-border) !important;
+}
+#contents.ytd-page-manager {
+  margin-top: 0;
+  margin-left: 16px;
+}
+#voice-search-button.ytd-masthead,
+.ypp-nav-btn,
+ytd-topbar-menu-button-renderer.ytd-masthead,
+#trailing-button.ytd-playlist-panel-renderer,
+ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+#voice-search-button.ytd-masthead:hover,
+.ypp-nav-btn:hover,
+ytd-topbar-menu-button-renderer.ytd-masthead:hover,
+#trailing-button.ytd-playlist-panel-renderer:hover,
+ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+  top: 75px !important;
+  left: 8px !important;
+}
+tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+  background: transparent !important;
+}
+#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
+  border-radius: 0 !important;
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.06);
+}
+#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+  border-radius: 0 !important;
+  padding: 4px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}

@@ -1,0 +1,66 @@
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: 32px !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytd-channel-name,
+.ytd-video-meta-block {
+  color: var(--sky-secondary) !important;
+}
+ytd-c4-tabbed-header-renderer {
+  background: var(--sf) !important;
+  border-radius: 32px !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-bottom: 20px !important;
+  border: var(--sky-border) !important;
+  border-top: none !important;
+}
+ytd-video-renderer,
+ytd-channel-renderer,
+ytd-playlist-renderer,
+ytd-radio-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 32px !important;
+  padding: 15px !important;
+  margin-bottom: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: var(--sky-border) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+ytd-video-renderer:hover,
+ytd-channel-renderer:hover,
+ytd-playlist-renderer:hover,
+ytd-radio-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(128, 128, 128, 0.09) !important;
+}
+html[data-ypp-ui-style=blue-sky] #metadata-line span,
+html[data-ypp-ui-style=blue-sky] .ytd-video-meta-block span,
+html[data-ypp-ui-style=blue-sky] yt-formatted-string.ytd-channel-name {
+  color: #1a5276 !important;
+}
+#tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=blue-sky] yt-formatted-string,
+html[data-ypp-ui-style=blue-sky] span,
+html[data-ypp-ui-style=blue-sky] a,
+html[data-ypp-ui-style=blue-sky] h1,
+html[data-ypp-ui-style=blue-sky] h2,
+html[data-ypp-ui-style=blue-sky] h3,
+html[data-ypp-ui-style=blue-sky] p,
+html[data-ypp-ui-style=blue-sky] #video-title,
+html[data-ypp-ui-style=blue-sky] .ytd-video-meta-block,
+html[data-ypp-ui-style=blue-sky] #metadata-line span,
+html[data-ypp-ui-style=blue-sky] yt-formatted-string.ytd-channel-name,
+html[data-ypp-ui-style=blue-sky] #channel-name a,
+html[data-ypp-ui-style=blue-sky] .ytd-channel-name,
+html[data-ypp-ui-style=blue-sky] ytd-badge-supported-renderer span,
+html[data-ypp-ui-style=blue-sky] #title-wrapper yt-formatted-string,
+html[data-ypp-ui-style=blue-sky] .title-text,
+html[data-ypp-ui-style=blue-sky] ytd-rich-grid-renderer #title,
+html[data-ypp-ui-style=blue-sky] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-ui-style=blue-sky] ytd-guide-entry-renderer yt-formatted-string {
+  color: #003366 !important;
+  text-shadow: none !important;
+}

@@ -1,0 +1,24 @@
+html[data-ypp-ui-style=terminalism] .ytLockupMetadataViewModelMenuButton {
+  overflow: visible !important;
+}
+html[data-ypp-ui-style=terminalism] .ytLockupMetadataViewModelMenuButton yt-interaction .fill,
+html[data-ypp-ui-style=terminalism] .ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+/* src/content/themes/ui-styles/terminalism/components/menus.css */
+html[data-ypp-ui-style=terminalism] ytd-simple-menu-header-renderer {
+  background: none !important;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.15) !important;
+}
+html[data-ypp-ui-style=terminalism] tp-yt-paper-listbox {
+  padding: 4px !important;
+}
+html[data-ypp-ui-style=terminalism] ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
+html[data-ypp-ui-style=terminalism] .ytContextualSheetLayoutHost {
+  background: none !important;
+  padding: 10px !important;
+}
+html[data-ypp-ui-style=terminalism] tp-yt-paper-listbox {
+  background: rgba(0, 6, 0, 0.98) !important;
+}

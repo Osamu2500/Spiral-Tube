@@ -1,0 +1,14 @@
+/* src/content/themes/ui-styles/minimalism/components/navbar.css */
+html[data-ypp-ui-style=minimalism] ytd-app,
+html[data-ypp-ui-style=minimalism] ytd-masthead,
+html[data-ypp-ui-style=minimalism] #page-manager.ytd-app,
+html[data-ypp-ui-style=minimalism] #content.ytd-app {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=minimalism] #masthead-container {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=minimalism] #contents.ytd-page-manager {
+  margin-top: 0;
+  margin-left: 16px;
+}

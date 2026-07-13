@@ -1,0 +1,168 @@
+html[data-ypp-ui-style=aurora] ytd-masthead #container {
+  background: rgba(10, 10, 10, 0.6) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border-bottom: var(--aurora-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+html[data-ypp-ui-style=aurora] .ytSearchboxComponentInputBox {
+  background: rgba(10, 10, 10, 0.6) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+html[data-ypp-ui-style=aurora] .ytSearchboxComponentSearchButton {
+  margin-left: 10px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: all var(--bounce) !important;
+}
+/* src/content/themes/ui-styles/aurora/components/buttons.css */
+html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style=aurora] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style=aurora] yt-icon-button.ytd-masthead {
+  border-radius: 50% !important;
+  background: transparent !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style=aurora] yt-icon-button.ytd-masthead:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3) !important;
+  transform: scale(1.1);
+}
+html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  background:
+    linear-gradient(
+      135deg,
+      var(--aurora-1),
+      var(--aurora-2)) !important;
+  border: none !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;
+  color: #fff !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6) !important;
+}
+html[data-ypp-ui-style=aurora] .ypp-gpb-btn,
+html[data-ypp-ui-style=aurora] .ypp-action-btn,
+html[data-ypp-ui-style=aurora] .ypp-pill-toggle {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: all var(--bounce) !important;
+}
+/* src/content/themes/ui-styles/aurora/components/cards.css */
+html[data-ypp-ui-style=aurora] ytd-rich-grid-media,
+html[data-ypp-ui-style=aurora] ytd-compact-video-renderer,
+html[data-ypp-ui-style=aurora] ytd-playlist-panel-video-renderer {
+  background: rgba(10, 10, 10, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius) !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 10px !important;
+  margin: 10px 0 !important;
+  transition: all var(--bounce) !important;
+}
+/* src/content/themes/ui-styles/aurora/components/menus.css */
+html[data-ypp-ui-style=aurora] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style=aurora] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style=aurora] .ytp-popup,
+html[data-ypp-ui-style=aurora] tp-yt-paper-dialog,
+html[data-ypp-ui-style=aurora] ytd-menu-popup-renderer {
+  background: rgba(10, 10, 10, 0.7) !important;
+  backdrop-filter: blur(30px) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+/* src/content/themes/ui-styles/aurora/pages/home.css */
+html[data-ypp-ui-style=aurora] #description.ytd-watch-metadata,
+html[data-ypp-ui-style=aurora] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style=aurora] ytd-browse[page-subtype=home] #chips {
+  background: rgba(10, 10, 10, 0.5) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  box-shadow: var(--shadow-base) !important;
+  margin: 16px 16px 0 0 !important;
+  padding: 8px 16px !important;
+}
+html[data-ypp-ui-style=aurora] .yt-chip-shape {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all var(--bounce) !important;
+  color: #fff !important;
+}
+html[data-ypp-ui-style=aurora] .yt-chip-shape[aria-selected=true] {
+  background:
+    linear-gradient(
+      135deg,
+      var(--aurora-1),
+      var(--aurora-2)) !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.5) !important;
+}
+html[data-ypp-ui-style=aurora] #guide-wrapper.ytd-app {
+  background: rgba(10, 10, 10, 0.5) !important;
+  backdrop-filter: blur(var(--blur)) !important;
+  border-right: var(--aurora-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+html[data-ypp-ui-style=aurora] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: var(--aurora-radius) !important;
+  margin: 4px 8px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style=aurora] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+/* src/content/themes/ui-styles/aurora/pages/watch.css */
+html[data-ypp-ui-style=aurora] video.video-stream.html5-main-video,
+html[data-ypp-ui-style=aurora] .html5-video-player {
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: transparent !important;
+}
+html[data-ypp-ui-style=aurora] #ypp-global-player-bar,
+html[data-ypp-ui-style=aurora] .ypp-organizer-modal,
+html[data-ypp-ui-style=aurora] #ypp-eq-panel,
+html[data-ypp-ui-style=aurora] .ypp-video-controls,
+html[data-ypp-ui-style=aurora] .ypp-account-menu {
+  background: rgba(10, 10, 10, 0.6) !important;
+  backdrop-filter: blur(40px) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+/* src/content/themes/ui-styles/aurora/pages/comments.css */
+html[data-ypp-ui-style=aurora] ytd-comment-thread-renderer,
+html[data-ypp-ui-style=aurora] ytd-comment-view-model {
+  background: rgba(10, 10, 10, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  border: var(--aurora-border) !important;
+  border-radius: var(--aurora-radius) !important;
+  box-shadow: var(--shadow-base) !important;
+  padding: 10px !important;
+  margin: 10px 0 !important;
+  transition: all var(--bounce) !important;
+}
+html {
+  /* YouTube Global Transparent Overrides */
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-additive-background: transparent !important;
+}

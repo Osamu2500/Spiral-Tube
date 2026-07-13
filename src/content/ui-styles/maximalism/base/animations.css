@@ -1,0 +1,33 @@
+/* src/content/themes/ui-styles/maximalism/base/animations.css */
+html[data-ypp-ui-style=maximalism] body {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #ff0055,
+      #ff0055 20px,
+      #ff00ff 20px,
+      #ff00ff 40px,
+      #00ffff 40px,
+      #00ffff 60px) !important;
+  background-attachment: fixed !important;
+  animation: bgPan 10s linear infinite;
+}
+@keyframes bgPan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 120px 120px;
+  }
+}
+@keyframes wobble {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}

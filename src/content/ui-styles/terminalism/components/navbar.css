@@ -1,0 +1,22 @@
+/* src/content/themes/ui-styles/terminalism/components/navbar.css */
+html[data-ypp-ui-style=terminalism] ytd-app,
+html[data-ypp-ui-style=terminalism] ytd-masthead,
+html[data-ypp-ui-style=terminalism] #page-manager.ytd-app,
+html[data-ypp-ui-style=terminalism] #content.ytd-app {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=terminalism] #masthead-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+html[data-ypp-ui-style=terminalism] #contents.ytd-page-manager {
+  margin-top: 0;
+  margin-left: 16px;
+}
+html[data-ypp-ui-style=terminalism] ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+  top: 75px !important;
+  left: 8px !important;
+}
+html[data-ypp-ui-style=terminalism] tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+  background: transparent !important;
+}

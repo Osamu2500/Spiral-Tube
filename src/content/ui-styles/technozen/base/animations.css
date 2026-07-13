@@ -1,0 +1,165 @@
+/* src/content/themes/ui-styles/technozen/base/animations.css */
+@keyframes technozenGreenPulse {
+  0% {
+    box-shadow:
+      0 0 12px rgba(90, 191, 71, 0.4),
+      0 0 28px rgba(90, 191, 71, 0.2),
+      inset 0 0 20px rgba(90, 191, 71, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(48, 184, 200, 0.5),
+      0 0 44px rgba(48, 184, 200, 0.25),
+      inset 0 0 28px rgba(48, 184, 200, 0.15);
+  }
+  100% {
+    box-shadow:
+      0 0 12px rgba(90, 191, 71, 0.4),
+      0 0 28px rgba(90, 191, 71, 0.2),
+      inset 0 0 20px rgba(90, 191, 71, 0.1);
+  }
+}
+@keyframes technozenFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes technozenGlossShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+@keyframes technozenBubbleRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.4);
+  }
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(
+      circle 3px at 15% 25%,
+      rgba(90, 191, 71, 0.12) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 5px at 75% 15%,
+      rgba(48, 184, 200, 0.10) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 2px at 40% 70%,
+      rgba(90, 191, 71, 0.08) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 4px at 85% 60%,
+      rgba(48, 184, 200, 0.09) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 6px at 25% 85%,
+      rgba(168, 219, 164, 0.12) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 3px at 65% 45%,
+      rgba(184, 228, 240, 0.10) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 4px at 90% 35%,
+      rgba(90, 191, 71, 0.08) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 2px at 5% 55%,
+      rgba(48, 184, 200, 0.12) 0%,
+      transparent 100%);
+}
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      #7de168,
+      #5ac045) !important;
+  animation: technozenGreenPulse 4s ease-in-out infinite !important;
+  color: white !important;
+}
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+  color: #2a4a2a !important;
+  animation: technozenGreenPulse 4s ease-in-out infinite !important;
+}
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+  background: none !important;
+}
+@keyframes technozenBreathe {
+  0% {
+    box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(48, 184, 200, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
+  }
+}
+@keyframes technozenAmbientFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+ytd-rich-grid-media #dismissible,
+ytd-compact-video-renderer,
+ytd-playlist-panel-video-renderer {
+  animation: technozenBreathe 8s infinite ease-in-out;
+}
+#page-manager::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(
+      circle 2px at 20% 80%,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 3px at 80% 20%,
+      rgba(90, 191, 71, 0.4) 0%,
+      transparent 100%);
+  animation: technozenAmbientFloat 12s infinite alternate ease-in-out;
+}
+#ypp-pl-root .ypp-pl-sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tz-radius-xl);
+  background: var(--tz-gloss);
+  pointer-events: none;
+  z-index: 0;
+}

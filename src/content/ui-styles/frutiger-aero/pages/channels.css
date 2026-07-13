@@ -1,0 +1,13 @@
+html[data-ypp-ui-style=frutiger-aero] #channel-name .yt-simple-endpoint,
+html[data-ypp-ui-style=frutiger-aero] ytd-channel-name .yt-simple-endpoint {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.2s ease !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #channel-name .yt-simple-endpoint:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-channel-name .yt-simple-endpoint:hover {
+  color: #0b86c2 !important;
+  text-shadow: 0 0 8px rgba(18, 168, 221, 0.4), 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}

@@ -1,0 +1,232 @@
+html, [dark] body {
+  background-color: #104E8B !important; /* Deep emerald base */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(135, 206, 250, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(135, 206, 250, 0.08), transparent 25%),
+    url("data:image/svg+xml;utf8,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10,90 Q50,10 90,90\" stroke=\"rgba(255,255,255,0.02)\" fill=\"none\" stroke-width=\"2\"/></svg>") !important;
+  background-size: 100% 100%, 100% 100%, 200px 200px !important;
+  color: #ecfdf5 !important;
+}
+html, [dark] body {
+  background-color: #E6E6FA !important;
+  background-image: 
+    radial-gradient(circle at 20% 40%, rgba(253, 224, 71, 0.4), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(134, 239, 172, 0.4), transparent 40%),
+    url("data:image/svg+xml;utf8,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10,90 Q50,10 90,90\" stroke=\"rgba(22,101,52,0.03)\" fill=\"none\" stroke-width=\"2\"/></svg>") !important;
+  background-size: 100% 100%, 100% 100%, 200px 200px !important;
+  color: #104E8B !important;
+}
+* {
+  font-family:
+    "SF Pro Text", "Inter", "Segoe UI Variable Text", "Segoe UI", sans-serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important;
+  border: var(--sky-border) !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  color: white !important;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.02);
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+.ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: var(--sky-border) !important;
+  border-radius: 32px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+.ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytp-delhi-modern .ytp-chapter-container {
+  width: 100% !important;
+  padding-left: 10px;
+}
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+@media (width: 1920px) {
+  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
+  }
+}
+@media (width: 1280px) {
+  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
+  }
+}
+/* Suggestion row hover — mode-aware tint */
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+}
+.ypp-gpb-btn,
+.ypp-action-btn,
+.ypp-icon-btn {
+  border-radius: 32px !important;
+  background: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ypp-gpb-btn:hover,
+.ypp-action-btn:hover,
+.ypp-icon-btn:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1) !important;
+}
+.ypp-gpb-btn:active,
+.ypp-action-btn:active,
+.ypp-icon-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+.ypp-vcp-header,
+.ypp-folder-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: transparent !important;
+}
+.ypp-slider,
+.ypp-gpb-vol-slider {
+  accent-color: #ff4e45 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 32px !important;
+}
+.ypp-badge,
+.ypp-value-display {
+  background: rgba(255, 255, 255, 0.1) !important;
+  
+  border-radius: 32px !important;
+  border: var(--sky-border) !important;
+}
+/* --- Subscriptions Sidebar / Modals --- */
+.ypp-organizer-modal,
+.ypp-modal-content {
+  background: rgba(10, 10, 15, 0.65) !important;
+  
+  
+  border: var(--sky-border) !important;
+  border-radius: 32px !important;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+.ypp-modal-header {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: none !important;
+}
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: 32px !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+tp-yt-app-header {
+  background: transparent !important;
+}
+.tab-content.tp-yt-paper-tab {
+  transition:
+    transform var(--bounce),
+    background var(--bounce) !important;
+  border-radius: 32px !important;
+}
+.tab-content.tp-yt-paper-tab:hover {
+  background: rgba(128, 128, 128, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+/* Titles and Text Colors */
+#video-title {
+  color: var(--sky-primary) !important;
+}
+.ytd-channel-name, .ytd-video-meta-block {
+  color: var(--sky-secondary) !important;
+}
+/* Progress Bar */
+.ytp-play-progress {
+  background: var(--sky-primary) !important;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px !important; }
+::-webkit-scrollbar-track { background: var(--sky-bg) !important; border-radius: 32px; }
+::-webkit-scrollbar-thumb { 
+  background: var(--sky-primary) !important; 
+  border-radius: 32px !important; 
+}
+#simplebox-placeholder {
+  background: rgba(255, 255, 255, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  border: var(--sky-border) !important;
+}
+/* Progress bar */
+.ytp-play-progress {
+  background: linear-gradient(90deg, #87CEFA, #00BFFF, #1E90FF) !important;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.7) !important;
+}
+.ytp-swatch-background-color {
+  background-color: #00BFFF !important;
+}
+/* Scrollbar overhaul */
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(135, 206, 250, 0.6) !important;
+  border-radius: 10px !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 191, 255, 0.8) !important;
+}
+/* Avatar styling */
+yt-img-shadow#avatar {
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.3) !important;
+}
+/* Base text visibility improvement against blue backgrounds */
+yt-formatted-string, span, div, h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5) !important;
+}
+/* Added for HeaderNav active state */
+.ypp-nav-btn.active {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-active) !important;
+}

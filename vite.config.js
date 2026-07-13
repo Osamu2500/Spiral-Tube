@@ -12,7 +12,7 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       input: {
-        content: resolve(__dirname, 'src/content/index.ts')
+        content: resolve(__dirname, 'src/content/entry/index.ts')
       },
       output: {
         entryFileNames: '[name].js',

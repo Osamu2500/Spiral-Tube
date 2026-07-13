@@ -1,0 +1,25 @@
+ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
+  border-bottom: none;
+}
+ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
+  background: none !important;
+}
+ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+  border: 1px solid rgba(90, 191, 71, 0.10) !important;
+  border-radius: 24px !important;
+}
+#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+  border-radius: var(--tz-radius-xl) !important;
+  border: 1px solid rgba(90, 191, 71, 0.15) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.anchored-panel.ytd-shorts {
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.92) !important;
+  padding: 5px;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--shadow-hover) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  margin-top: 15px !important;
+}

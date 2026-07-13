@@ -1,0 +1,16 @@
+html[data-ypp-ui-style=maximalism] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+/* src/content/themes/ui-styles/maximalism/pages/home.css */
+html[data-ypp-ui-style=maximalism] .yt-chip-shape:hover {
+  background-color: #ff0055 !important;
+  color: #fff !important;
+  border-color: #ffff00 !important;
+  transform: scale(1.1) rotate(-3deg) !important;
+}
+html[data-ypp-ui-style=maximalism] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: #ffff00 !important;
+  transform: translate(-3px, -3px) scale(1.05);
+  box-shadow: 6px 6px 0 #ff0055 !important;
+}

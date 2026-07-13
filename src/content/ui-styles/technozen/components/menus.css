@@ -1,0 +1,120 @@
+#trigger.tp-yt-paper-menu-button {
+  padding: 10px !important;
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+#trigger.tp-yt-paper-menu-button:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  background: var(--tz-gloss), rgba(200, 245, 188, 0.70) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
+  background-color: rgba(228, 250, 220, 0.95) !important;
+  margin-right: 10px;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-hover) !important;
+  color: #2a4a2a !important;
+}
+ytd-menu-popup-renderer,
+ytd-video-preview,
+#contentWrapper.tp-yt-iron-dropdown > *,
+tp-yt-paper-dialog {
+  background: var(--tz-gloss), rgba(234, 252, 226, 0.97) !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
+  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  max-width: none !important;
+}
+tp-yt-paper-dialog {
+  border-radius: 24px !important;
+}
+ytd-simple-menu-header-renderer {
+  background: none !important;
+}
+#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+  margin: 10px;
+  border: 1px solid rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+ytd-menu-service-item-renderer,
+.yt-list-item-view-model__container--tappable,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--tz-radius-md) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+ytd-menu-service-item-renderer:hover,
+.yt-list-item-view-model__container--tappable:hover,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
+.ytContextualSheetLayoutHost {
+  background: none !important;
+  padding: 13px !important;
+}
+tp-yt-paper-listbox {
+  padding: 10px !important;
+}
+tp-yt-paper-listbox.yt-dropdown-menu {
+  background: var(--tz-gloss), rgba(234, 252, 226, 0.97) !important;
+  border-radius: 16px !important;
+}
+tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+  background: rgba(180, 235, 165, 0.60) !important;
+  border-radius: var(--tz-radius-md) !important;
+}
+a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--tz-radius-md) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(200, 245, 188, 0.55) !important;
+}
+.tp-yt-paper-tooltip[style-target=tooltip] {
+  border: 1px solid var(--tz-glass-border) !important;
+  background: var(--tz-gloss), rgba(220, 248, 210, 0.97) !important;
+  box-shadow: var(--shadow-hover) !important;
+  color: #2a4a2a !important;
+  border-radius: var(--tz-radius-pill) !important;
+}
+html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {
+  border-radius: 20px !important;
+  padding: 7px 14px;
+}
+tp-yt-paper-dialog,
+ytd-hotkey-dialog-renderer,
+ytd-multi-page-menu-renderer {
+  background: var(--tz-gloss), rgba(240, 252, 236, 0.95) !important;
+  border-radius: var(--tz-radius-xl) !important;
+  border: 2px solid var(--tz-glass-border) !important;
+  box-shadow: 0px 12px 48px rgba(90, 191, 71, 0.25), inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+}

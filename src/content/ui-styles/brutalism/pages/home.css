@@ -1,0 +1,25 @@
+html[data-ypp-ui-style=brutalism] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+html[data-ypp-ui-style=brutalism] #guide-content.ytd-app {
+  background: transparent;
+}
+/* src/content/themes/ui-styles/brutalism/pages/home.css */
+html[data-ypp-ui-style=brutalism] ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+html[data-ypp-ui-style=brutalism] .yt-chip-shape {
+  background-color: transparent !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+}
+html[data-ypp-ui-style=brutalism] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+html[data-ypp-ui-style=brutalism] .ytChipShapeChip[aria-selected=true] {
+  background: #000 !important;
+  color: #fff !important;
+}

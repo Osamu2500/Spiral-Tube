@@ -1,0 +1,9 @@
+html[data-ypp-ui-style=terminalism] ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
+  border-bottom: 1px solid rgba(0, 255, 65, 0.1) !important;
+}
+html[data-ypp-ui-style=terminalism] ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style=terminalism] ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+  border: none !important;
+}

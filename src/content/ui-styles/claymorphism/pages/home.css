@@ -1,0 +1,29 @@
+html[data-ypp-ui-style=claymorphism] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+html[data-ypp-ui-style=claymorphism] #guide-content.ytd-app {
+  background: transparent;
+}
+html[data-ypp-ui-style=claymorphism] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+/* src/content/themes/ui-styles/claymorphism/pages/home.css */
+html[data-ypp-ui-style=claymorphism] ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+html[data-ypp-ui-style=claymorphism] .yt-chip-shape {
+  background-color: transparent !important;
+}
+html[data-ypp-ui-style=claymorphism] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
+  padding: 10px 3px !important;
+}
+html[data-ypp-ui-style=claymorphism] iron-selector.yt-chip-cloud-renderer {
+  padding-left: 5px !important;
+}
+html[data-ypp-ui-style=claymorphism] .ytContextualSheetLayoutContentContainer,
+html[data-ypp-ui-style=claymorphism] .ytChipBarViewModelHost,
+html[data-ypp-ui-style=claymorphism] .immersive-header-content.ytd-playlist-header-renderer {
+  overflow: visible !important;
+}

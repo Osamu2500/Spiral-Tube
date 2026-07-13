@@ -1,0 +1,171 @@
+/* src/content/themes/ui-styles/cyberpunk/components/buttons.css */
+.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+}
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
+  border: var(--cyber-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+  margin-right: 0 !important;
+  border-radius: 0 !important;
+  z-index: 30000 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
+  transform: scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytLikeButtonViewModelHost {
+  margin-right: 5px;
+}
+.ytInlinePlayerControlsTopRightControlsCircleButton {
+  background: var(--sf) !important;
+  border: var(--cyber-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  cursor: pointer !important;
+}
+.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
+  border: none;
+  box-shadow: var(--shadow-active) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.1) !important;
+}
+ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: var(--shadow-base) !important;
+  border-radius: 20px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+ytd-thumbnail-overlay-toggle-button-renderer {
+  background: var(--sf) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: 0 !important;
+}
+ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytPlayerQuickActionButtonsHost:not(:empty) {
+  background-color: var(--sf) !important;
+}
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
+  background: var(--sf) !important;
+}
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+}
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+  border-radius: 0 !important;
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.06);
+}
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  display: flex !important;
+  gap: 6px !important;
+  background: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: 0 !important;
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.06);
+}
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
+.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+button.ytSpecButtonShapeNextText {
+  border-radius: 0 !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+button.ytSpecButtonShapeNextText:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.05);
+}
+button.ytSpecButtonShapeNextText:active {
+  transform: scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+.ypp-btn-primary,
+.ypp-play-all-btn,
+.ypp-health-btn {
+  border-radius: 0 !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ypp-btn-primary:hover,
+.ypp-play-all-btn:hover,
+.ypp-health-btn:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.05) !important;
+}
+.ypp-btn-primary:active,
+.ypp-play-all-btn:active,
+.ypp-health-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+.ypp-pill-toggle {
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: var(--cyber-border) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ypp-pill-toggle:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.05) !important;
+}

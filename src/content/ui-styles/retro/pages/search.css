@@ -1,0 +1,143 @@
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+.ytSearchboxComponentInputBoxDark,
+.ytSearchboxComponentInputBox {
+  background: none !important;
+  border: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-base) !important;
+}
+.ytSearchboxComponentSearchButton {
+  margin-left: 10px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  background-color: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytSearchboxComponentSearchButton:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  transform: scale(1.1);
+}
+.ytSearchboxComponentSearchButton:active {
+  transform: scale(0.95);
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-dark) !important;
+  border-left: 2px solid var(--retro-border-dark) !important;
+  border-bottom: 2px solid var(--retro-border-light) !important;
+  border-right: 2px solid var(--retro-border-light) !important;
+}
+.ytSearchboxComponentSuggestionsContainer,
+ytd-multi-page-menu-renderer {
+  top: 55px !important;
+  border: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  border-radius: 0 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  margin-right: 10px;
+  width: 30px !important;
+  height: 30px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+}
+html,
+[dark] .ytSearchboxComponentInput {
+  mix-blend-mode: difference;
+}
+html,
+[dark] .ytSearchboxComponentInput {
+  mix-blend-mode: normal;
+}
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer,
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer * {
+  color: #ffffff !important;
+}
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer,
+html,
+[dark] .ytSearchboxComponentSuggestionsContainer * {
+  color: #0f0f0f !important;
+}
+.ytSearchboxComponentInputBox {
+  border-radius: 0 !important;
+  background: #fff !important;
+  border: none !important;
+  box-shadow: var(--win95-sink) !important;
+  transition: none !important;
+  font-family: "Courier New", monospace !important;
+}
+.ytSearchboxComponentInputBox:focus-within {
+  background: #fffff0 !important;
+  box-shadow: var(--win95-sink), 0 0 0 2px #000080 !important;
+}
+.ytSearchboxComponentSearchButton {
+  background: #c0c0c0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: var(--win95-raise) !important;
+}
+.ytSearchboxComponentSearchButton:hover {
+  box-shadow: var(--win95-raise), 0 0 2px rgba(0, 0, 128, 0.3) !important;
+}
+.ytSearchboxComponentSearchButton:active {
+  box-shadow: var(--win95-sink) !important;
+}
+ytd-searchbox #container {
+  background: #c0c0c0 !important;
+  border: 2px solid !important;
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+  border-radius: 0 !important;
+  color: black !important;
+}
+ytd-searchbox #search-icon-legacy {
+  background: #c0c0c0 !important;
+  border: 2px solid !important;
+  border-color: #ffffff #808080 #808080 #ffffff !important;
+  border-radius: 0 !important;
+}
+ytd-searchbox #search-icon-legacy:active {
+  border-color: #808080 #ffffff #ffffff #808080 !important;
+}
+ytd-search-filter-group-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 0 !important;
+  padding: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-bottom: 10px !important;
+}

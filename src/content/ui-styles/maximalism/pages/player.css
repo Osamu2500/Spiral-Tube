@@ -1,0 +1,19 @@
+/* src/content/themes/ui-styles/maximalism/components/buttons.css */
+html[data-ypp-ui-style=maximalism] .ytp-delhi-modern .ytp-chrome-controls .ytp-button {
+  background: #ff00ff !important;
+  border: 3px solid #000 !important;
+  border-radius: 50% !important;
+  box-shadow: 2px 2px 0 #00ffff !important;
+  margin: 0 5px !important;
+  color: #000 !important;
+}
+html[data-ypp-ui-style=maximalism] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:hover {
+  background: #ffff00 !important;
+  transform: scale(1.2) rotate(15deg) !important;
+  box-shadow: 4px 4px 0 #ff0055 !important;
+}
+html[data-ypp-ui-style=maximalism] .ytp-scrubber-button {
+  background: #00ffcc !important;
+  border: 3px solid #000 !important;
+  transform: scale(1.5) !important;
+}

@@ -1,0 +1,30 @@
+html[data-ypp-ui-style=terminalism] #frosted-glass.with-chipbar.ytd-app {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+html[data-ypp-ui-style=terminalism] #guide-content.ytd-app {
+  background: transparent;
+}
+html[data-ypp-ui-style=terminalism] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+/* src/content/themes/ui-styles/terminalism/pages/home.css */
+html[data-ypp-ui-style=terminalism] ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+html[data-ypp-ui-style=terminalism] .yt-chip-shape {
+  background-color: transparent !important;
+  color: #00aa2b !important;
+}
+html[data-ypp-ui-style=terminalism] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
+  padding: 10px 3px !important;
+}
+html[data-ypp-ui-style=terminalism] iron-selector.yt-chip-cloud-renderer {
+  padding-left: 5px !important;
+}
+html[data-ypp-ui-style=terminalism] .ytContextualSheetLayoutContentContainer,
+html[data-ypp-ui-style=terminalism] .ytChipBarViewModelHost,
+html[data-ypp-ui-style=terminalism] .immersive-header-content.ytd-playlist-header-renderer {
+  overflow: visible !important;
+}

@@ -1,0 +1,18 @@
+html[data-ypp-ui-style=frutiger-aero] yt-live-chat-header-renderer {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(200, 235, 255, 0.4) 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] yt-live-chat-text-message-renderer yt-img-shadow,
+html[data-ypp-ui-style=frutiger-aero] yt-live-chat-paid-message-renderer yt-img-shadow {
+  border-radius: 50% !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  position: absolute;
+  left: -32px;
+  top: auto;
+  bottom: 0;
+  z-index: 2;
+}

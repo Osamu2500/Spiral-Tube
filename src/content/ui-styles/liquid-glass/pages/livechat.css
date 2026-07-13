@@ -1,0 +1,32 @@
+yt-live-chat-text-message-renderer,
+yt-live-chat-paid-message-renderer,
+yt-live-chat-membership-item-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 12px !important;
+  margin: 4px 8px !important;
+  padding: 8px !important;
+  transition: transform 0.2s, background 0.2s !important;
+}
+yt-live-chat-text-message-renderer:hover {
+  background: rgba(128, 128, 128, 0.12) !important;
+  transform: scale(1.02) !important;
+}
+#message-input.yt-live-chat-text-input-field-renderer {
+  background: rgba(128, 128, 128, 0.1) !important;
+  border-radius: 2000px !important;
+  padding: 5px 15px !important;
+}
+yt-live-chat-app,
+yt-live-chat-renderer {
+  background: var(--sf) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  overflow: hidden !important;
+}
+#ticker.yt-live-chat-renderer {
+  background: rgba(128, 128, 128, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+}

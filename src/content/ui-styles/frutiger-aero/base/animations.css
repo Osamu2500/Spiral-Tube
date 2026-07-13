@@ -1,0 +1,353 @@
+html[data-ypp-ui-style=frutiger-aero] .gloss-light::before,
+html[data-ypp-ui-style=frutiger-aero] .gloss-heavy::before,
+html[data-ypp-ui-style=frutiger-aero] .gloss-diagonal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+html[data-ypp-ui-style=frutiger-aero] .gloss-light::before {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 40%);
+}
+html[data-ypp-ui-style=frutiger-aero] .gloss-heavy::before {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.3) 48%,
+      transparent 50%);
+}
+html[data-ypp-ui-style=frutiger-aero] .gloss-diagonal::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0.35) 12%,
+      transparent 28%);
+}
+/* src/content/themes/ui-styles/frutiger-aero/base/animations.css */
+@keyframes faDrift {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(5vw) translateY(-2vh) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10vw) translateY(0) scale(1);
+    opacity: 0.8;
+  }
+}
+@keyframes faSunlightShift {
+  0% {
+    opacity: 0.3;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.5;
+    filter: brightness(1.2);
+  }
+  100% {
+    opacity: 0.3;
+    filter: brightness(1);
+  }
+}
+@keyframes faCaustics {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+@keyframes faLensFlare {
+  0% {
+    transform: translate(-10%, -10%) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(10%, 5%) rotate(15deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-10%, -10%) rotate(0deg);
+    opacity: 0.4;
+  }
+}
+@keyframes faTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+@keyframes faBounceUp {
+  0% {
+    transform: translateY(110vh) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--fa-opacity-glass-base);
+  }
+  90% {
+    opacity: var(--fa-opacity-glass-light);
+  }
+  100% {
+    transform: translateY(-20vh) scale(1.1);
+    opacity: 0;
+  }
+}
+@keyframes faMoveX {
+  0% {
+    margin-left: 0px;
+  }
+  50% {
+    margin-left: 50px;
+  }
+  100% {
+    margin-left: -50px;
+  }
+}
+@keyframes faPulseGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(53, 199, 240, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(53, 199, 240, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(53, 199, 240, 0.4);
+  }
+}
+.frutiger-bubbles-container::before {
+  content: "";
+  position: absolute;
+  top: -20vh;
+  left: -20vw;
+  width: 140vw;
+  height: 140vh;
+  background-image:
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 40%),
+    radial-gradient(
+      ellipse at 80% 40%,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 30%);
+  filter: blur(40px);
+  animation: faDrift 60s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+.frutiger-bubbles-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(255, 250, 220, 0.25) 0%,
+      transparent 60%);
+  animation: faSunlightShift 20s infinite alternate ease-in-out;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+html[data-ypp-ui-style=frutiger-aero] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.8;
+  mix-blend-mode: overlay;
+}
+.fa-bubble::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0) 70%);
+  transform: rotate(-45deg);
+}
+.fa-bubble {
+  animation-name: faBounceUp, faMoveX;
+  animation-iteration-count: infinite, infinite;
+  animation-timing-function: ease-in, ease-in-out;
+  animation-direction: normal, alternate;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-masthead::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(70, 210, 255, 0.4),
+      transparent);
+  pointer-events: none;
+}
+html[data-ypp-ui-style=frutiger-aero] #search-form.ytd-searchbox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.2));
+  border-radius: var(--fa-radius-pill) 0 0 0;
+  pointer-events: none;
+}
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--filled::after,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--tonal::after,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono::after,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--call-to-action::after,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--overlay::after,
+html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-button-shape-next::after,
+html[data-ypp-ui-style=frutiger-aero] .ytLikeButtonViewModelHost .yt-spec-button-shape-next::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer .yt-spec-button-shape-next::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-subscribe-button-renderer .yt-spec-button-shape-next::after,
+html[data-ypp-ui-style=frutiger-aero] #subscribe-button .yt-spec-button-shape-next::after,
+html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] yt-icon-button.ytd-masthead::after,
+html[data-ypp-ui-style=frutiger-aero] #voice-search-button.ytd-masthead::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 40%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8),
+      transparent);
+  border-radius: var(--fa-radius-pill);
+  pointer-events: none;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-item-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-compact-video-renderer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.2) 12%,
+      transparent 30%);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 10;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 100%);
+  pointer-events: none;
+}
+html[data-ypp-ui-style=frutiger-aero] #description.ytd-watch-metadata::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 100%);
+  pointer-events: none;
+  border-radius: var(--fa-radius-lg) var(--fa-radius-lg) 0 0;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent 50%,
+      rgba(240, 250, 255, 0.85) 50%);
+  border-bottom: 1px solid rgba(150, 200, 230, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom-left-radius: 4px;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-renderer::before,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.6) 0%,
+      transparent 100%);
+  border-radius: var(--fa-radius-xl) var(--fa-radius-xl) 0 0;
+  pointer-events: none;
+}
+html[data-ypp-ui-style=frutiger-aero] yt-live-chat-text-message-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] yt-live-chat-paid-message-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] yt-live-chat-membership-item-renderer::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: -10px;
+  width: 20px;
+  height: 16px;
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent 50%,
+      rgba(240, 250, 255, 0.85) 50%);
+  border-bottom: 1px solid rgba(150, 200, 230, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom-left-radius: 4px;
+}

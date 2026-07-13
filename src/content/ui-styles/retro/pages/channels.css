@@ -1,0 +1,95 @@
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+}
+ytd-c4-tabbed-header-renderer {
+  background: var(--sf) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-bottom: 20px !important;
+  border: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  border-top: none !important;
+}
+ytd-video-renderer,
+ytd-channel-renderer,
+ytd-playlist-renderer,
+ytd-radio-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 0 !important;
+  padding: 15px !important;
+  margin-bottom: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+ytd-video-renderer:hover,
+ytd-channel-renderer:hover,
+ytd-playlist-renderer:hover,
+ytd-radio-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  background: rgba(128, 128, 128, 0.09) !important;
+}
+ytd-rich-grid-media #metadata-line,
+ytd-compact-video-renderer #metadata-line,
+ytd-video-renderer #metadata-line,
+ytd-rich-grid-media #byline-container,
+ytd-compact-video-renderer #byline-container,
+ytd-rich-grid-media .yt-simple-endpoint,
+ytd-compact-video-renderer .yt-simple-endpoint,
+ytd-rich-grid-media yt-formatted-string,
+ytd-compact-video-renderer yt-formatted-string,
+ytd-video-renderer yt-formatted-string,
+#channel-name .yt-simple-endpoint,
+ytd-channel-name yt-formatted-string,
+ytd-channel-name a,
+#metadata-line span,
+.inline-metadata-item {
+  color: #333333 !important;
+  text-shadow: none !important;
+  font-family: "Courier New", monospace !important;
+}
+html[data-ypp-theme=retro] yt-formatted-string,
+html[data-ypp-theme=retro] span,
+html[data-ypp-theme=retro] a,
+html[data-ypp-theme=retro] h1,
+html[data-ypp-theme=retro] h2,
+html[data-ypp-theme=retro] h3,
+html[data-ypp-theme=retro] p,
+html[data-ypp-theme=retro] #video-title,
+html[data-ypp-theme=retro] .ytd-video-meta-block,
+html[data-ypp-theme=retro] #metadata-line span,
+html[data-ypp-theme=retro] yt-formatted-string.ytd-channel-name,
+html[data-ypp-theme=retro] #channel-name a,
+html[data-ypp-theme=retro] .ytd-channel-name,
+html[data-ypp-theme=retro] ytd-badge-supported-renderer span,
+html[data-ypp-theme=retro] #title-wrapper yt-formatted-string,
+html[data-ypp-theme=retro] .title-text,
+html[data-ypp-theme=retro] ytd-rich-grid-renderer #title,
+html[data-ypp-theme=retro] .shortsLockupViewModelHostThumbnailOverlayFooter {
+  color: #000000 !important;
+}
+html[data-ypp-theme=retro] #metadata-line span,
+html[data-ypp-theme=retro] .ytd-video-meta-block span,
+html[data-ypp-theme=retro] yt-formatted-string.ytd-channel-name {
+  color: #444444 !important;
+}
+#tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}

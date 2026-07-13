@@ -12,9 +12,10 @@ export default class VideoProcessor {
       throw new Error('No controls added to processor');
     }
 
-    return this.controls.reduce((result, select) => {
+    let result;
+    for (const select of this.controls) {
       result = await select(video, options);
-      return Promise.resolve(result);
-    }, Promise.resolve());
+    }
+    return result;
   }
-}</script>
+}

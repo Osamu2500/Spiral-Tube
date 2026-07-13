@@ -1,0 +1,132 @@
+/* src/content/themes/ui-styles/retro/base/animations.css */
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.1);
+  color: white !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite;
+}
+@keyframes youtubeRedPulse {
+  0% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+  }
+  50% {
+    box-shadow:
+      inset 0 0 25px #f06,
+      inset 0 0 50px #f06,
+      0 0 15px #f06,
+      0 0 30px #f06;
+  }
+  100% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+  }
+}
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+  background: none !important;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
+  transition: background var(--bounce) !important;
+}
+body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+  content: "";
+  display: block !important;
+  width: 34px !important;
+  height: 24px !important;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-right: 2px !important;
+}
+body.yt-pro-premium ytd-topbar-logo-renderer a#logo::after {
+  content: "Premium";
+  display: block !important;
+  font-family:
+    "YouTube Sans",
+    "Roboto",
+    "Segoe UI",
+    Arial,
+    sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  margin-left: 2px !important;
+  letter-spacing: -0.5px !important;
+  line-height: 22px !important;
+}
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important;
+  color: white !important;
+  box-shadow:
+    inset 0 0 25px red,
+    inset 0 0 50px red,
+    0 0 15px red,
+    0 0 30px red !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite !important;
+}
+ytd-rich-grid-media::before,
+ytd-compact-video-renderer::before,
+ytd-video-renderer::before {
+  content: "▪ Video Player";
+  display: block !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px !important;
+  background: var(--retro-title-bar) !important;
+  color: #fff !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  line-height: 20px !important;
+  padding: 0 6px !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  letter-spacing: 0.5px !important;
+}
+ytd-rich-grid-media::after,
+ytd-compact-video-renderer::after,
+ytd-video-renderer::after {
+  content: "─ □ ✕";
+  position: absolute !important;
+  top: 2px !important;
+  right: 4px !important;
+  font-size: 10px !important;
+  color: #fff !important;
+  font-family: "Courier New", monospace !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
+  letter-spacing: 2px !important;
+  width: auto !important;
+  height: auto !important;
+  background: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+ytd-rich-grid-media:hover,
+ytd-compact-video-renderer:hover,
+ytd-video-renderer:hover {
+  box-shadow: var(--win95-raise), 0 0 0 1px #000080 !important;
+  transform: none !important;
+  animation: none !important;
+}
+ytd-thumbnail::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}

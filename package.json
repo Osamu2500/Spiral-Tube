@@ -3,7 +3,8 @@
   "version": "2.3.0",
   "description": "Spiral Tube — YouTube Power Extension",
   "scripts": {
-    "build": "vite build && vite build --config vite.config.external.js",
+    "build:css": "node scripts/build-themes.js",
+    "build": "npm run build:css && vite build && vite build --config vite.config.external.js",
     "test": "vitest run"
   },
   "devDependencies": {

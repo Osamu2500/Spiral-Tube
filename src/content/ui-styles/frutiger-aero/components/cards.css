@@ -1,0 +1,43 @@
+html[data-ypp-ui-style=frutiger-aero] #video-title,
+html[data-ypp-ui-style=frutiger-aero] h1,
+html[data-ypp-ui-style=frutiger-aero] h2,
+html[data-ypp-ui-style=frutiger-aero] h3,
+html[data-ypp-ui-style=frutiger-aero] .ytd-video-primary-info-renderer .title,
+html[data-ypp-ui-style=frutiger-aero] yt-formatted-string.ytd-video-primary-info-renderer {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #video-title:hover,
+html[data-ypp-ui-style=frutiger-aero] a.yt-simple-endpoint.ytd-video-renderer:hover #video-title,
+html[data-ypp-ui-style=frutiger-aero] a.yt-simple-endpoint.ytd-grid-video-renderer:hover #video-title {
+  color: #12a8dd !important;
+  text-shadow: 0 0 12px rgba(53, 199, 240, 0.6), 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-media #details,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer #details {
+  margin-top: 12px !important;
+}
+html[data-ypp-ui-style=frutiger-aero] .header.ytd-playlist-panel-renderer {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(200, 235, 255, 0.4) 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer:hover {
+  background: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-video-renderer[selected][use-color-palette] {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(220, 245, 255, 0.9) 0%,
+      rgba(140, 210, 250, 0.6) 100%) !important;
+  border: 1px solid rgba(130, 210, 250, 0.8) !important;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 2px 8px rgba(18, 168, 221, 0.2) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #header.ytd-rich-grid-renderer {
+  background: transparent !important;
+  border-bottom: none !important;
+}

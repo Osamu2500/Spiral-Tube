@@ -1,0 +1,23 @@
+html[data-ypp-ui-style=minimalism] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style=minimalism] .ytProgressBarLineProgressBarHovered {
+  background: #000 !important;
+}
+html[data-ypp-ui-style=minimalism] .ytProgressBarLineProgressBarLoaded {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+html[data-ypp-ui-style=minimalism] .ytProgressBarLineProgressBarBackground {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+html[data-ypp-ui-style=minimalism] .ypp-slider,
+html[data-ypp-ui-style=minimalism] .ypp-gpb-vol-slider {
+  accent-color: #000 !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+html[data-ypp-ui-style=minimalism] ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html[data-ypp-ui-style=minimalism] .ypp-nav-btn.active {
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: #000 !important;
+  font-weight: bold;
+}

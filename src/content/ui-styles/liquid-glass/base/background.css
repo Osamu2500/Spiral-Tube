@@ -1,0 +1,121 @@
+/* src/content/themes/ui-styles/liquid-glass/base/layout.css */
+html body {
+  background:
+    linear-gradient(
+      135deg,
+      #0d0d1a 0%,
+      #111827 40%,
+      #0d0d1a 100%) !important;
+  background-attachment: fixed !important;
+}
+html,
+[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+html,
+[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+}
+.ypp-vcp-header,
+.ypp-folder-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: transparent !important;
+}
+.ypp-slider,
+.ypp-gpb-vol-slider {
+  accent-color: #ff4e45 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 2000px !important;
+}
+.ypp-modal-header {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: none !important;
+}
+tp-yt-app-header {
+  background: transparent !important;
+}
+.tab-content.tp-yt-paper-tab {
+  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: 20px !important;
+}
+.tab-content.tp-yt-paper-tab:hover {
+  background: rgba(128, 128, 128, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 3000px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a8c7fa !important;
+  border-radius: 3000px !important;
+}
+.ypp-nav-btn.active {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+.ypp-filter-dropdown {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  color: white !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ypp-filter-dropdown:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ypp-video-controls,
+.ypp-shadow-panel {
+  background: var(--sf) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: var(--shadow-base) !important;
+  border-radius: 24px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+.ypp-badge,
+.ypp-value-display {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+.ypp-organizer-modal,
+.ypp-modal-content {
+  background: rgba(10, 10, 15, 0.65) !important;
+  backdrop-filter: blur(32px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 32px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+#player-container.ytd-video-preview {
+  background: none !important;
+}
+#ypp-pl-root .ypp-pl-toolbar {
+  background: var(--sf) !important;
+  backdrop-filter: blur(25px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1) !important;
+}
+#ypp-pl-root .ypp-pl-btn-play,
+#ypp-pl-root .ypp-pl-btn-shuffle,
+#ypp-pl-root .ypp-pl-btn-tool,
+#ypp-pl-root .ypp-pl-filter,
+#ypp-pl-root .ypp-pl-col-switcher {
+  background: rgba(128, 128, 128, 0.08) !important;
+  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+#ypp-pl-root .ypp-pl-btn-play:hover,
+#ypp-pl-root .ypp-pl-btn-shuffle:hover,
+#ypp-pl-root .ypp-pl-btn-tool:hover {
+  background: rgba(128, 128, 128, 0.15) !important;
+  transform: scale(1.02) !important;
+}

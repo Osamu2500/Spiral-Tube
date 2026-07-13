@@ -1,0 +1,9 @@
+html[data-ypp-ui-style=minimalism] ::-webkit-scrollbar {
+  width: 4px !important;
+}
+html {
+  /* YouTube Global Transparent Overrides */
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-additive-background: transparent !important;
+}

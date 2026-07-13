@@ -1,0 +1,271 @@
+/**
+ * global-bar-external.js
+ * ──────────────────────
+ * Standalone entry point injected into ALL non-YouTube sites.
+ * Boots GlobalBarUI + GlobalPlayerBar only.
+ *
+ * KEY: Everything is inside the async IIFE so the YPP namespace and
+ * BaseFeature are defined BEFORE the feature modules evaluate.
+ * Dynamic import() calls are inlined by Rollup (inlineDynamicImports: true)
+ * but their execution is deferred to after the awaits, preserving correct order.
+ */
+(async () => {
+    // ── Guard ────────────────────────────────────────────────────────────────
+    if (window.location.hostname.includes('youtube.com')) return;
+
+    // ── 1. Bootstrap the YPP namespace ──────────────────────────────────────
+    window.YPP = window.YPP || {};
+    window.YPP.features = window.YPP.features || {};
+
+    // Minimal CONSTANTS
+    window.YPP.CONSTANTS = window.YPP.CONSTANTS || {
+        SELECTORS: {
+            VIDEO: ['video']
+        }
+    };
+
+    // Minimal Utils — only what GlobalPlayerBar / GlobalBarUI call
+    window.YPP.Utils = window.YPP.Utils || {
+        log: (msg, ctx = 'GPB', level = 'info') => {
+            if (level === 'debug') return;
+            const styles = {
+                info:  'color:#3ea6ff;font-weight:bold;',
+                warn:  'color:#ff9800;font-weight:bold;',
+                error: 'color:#f44336;font-weight:bold;',
+            };
+            (console[level] || console.log)(
+                `%c[YPP:${ctx}]`, styles[level] || styles.info, msg
+            );
+        },
+        removeStyle: (id) => {
+            if (!id) return;
+            [document.getElementById(id), document.querySelector(`link#${id}`)]
+                .forEach(el => el?.remove());
+        },
+        positionPopupBesideVideo: (panel, triggerBtn, video, panelW) => {
+            const GAP = 10, MARGIN = 8;
+            const W = window.innerWidth, H = window.innerHeight;
+            const btnRect = triggerBtn.getBoundingClientRect();
+            const vRect   = video?.getBoundingClientRect?.() || null;
+            const hasVideo = vRect && vRect.width > 20 && vRect.height > 20;
+
+            // Auto-scale: shrink panelW to never exceed available space
+            let effectiveW = panelW;
+            if (hasVideo) {
+                const spaceLeft  = vRect.left - MARGIN;
+                const spaceRight = W - vRect.right - MARGIN;
+                const maxHoriz   = Math.max(spaceLeft, spaceRight, W * 0.45);
+                effectiveW = Math.min(panelW, Math.max(280, maxHoriz - GAP));
+            } else {
+                effectiveW = Math.min(panelW, W * 0.45);
+            }
+            panel.style.width = effectiveW + 'px';
+
+            // Clamp helpers (use effectiveW for horizontal)
+            const estH     = Math.min(panel.scrollHeight > 40 ? panel.scrollHeight : 380, H * 0.85);
+            const clampTop  = t => Math.max(MARGIN, Math.min(t, H - estH - MARGIN));
+            const clampLeft = l => Math.max(MARGIN, Math.min(l, W - effectiveW - MARGIN));
+
+            let left, top;
+
+            if (hasVideo) {
+                const spaceAbove = vRect.top - MARGIN;
+                const spaceBelow = H - vRect.bottom - MARGIN;
+                const spaceLeft  = vRect.left - MARGIN;
+                const spaceRight = W - vRect.right - MARGIN;
+
+                // Horizontal alignment: centre on button, clamp within viewport
+                const btnCentreX = btnRect.left + btnRect.width / 2;
+                const idealLeft  = clampLeft(btnCentreX - effectiveW / 2);
+
+                if (spaceAbove >= Math.min(estH, 260)) {
+                    // ABOVE the video — preferred when bar is on the side
+                    top  = vRect.top - GAP - estH;
+                    left = idealLeft;
+                } else if (spaceBelow >= Math.min(estH, 260)) {
+                    // BELOW the video
+                    top  = vRect.bottom + GAP;
+                    left = idealLeft;
+                } else if (spaceLeft >= effectiveW + MARGIN) {
+                    // LEFT of video
+                    left = vRect.left - GAP - effectiveW;
+                    top  = clampTop(btnRect.top + btnRect.height / 2 - estH / 2);
+                } else if (spaceRight >= effectiveW + MARGIN) {
+                    // RIGHT of video
+                    left = vRect.right + GAP;
+                    top  = clampTop(btnRect.top + btnRect.height / 2 - estH / 2);
+                } else {
+                    // Fallback: left of button, vertically centred
+                    left = btnRect.left - GAP - effectiveW;
+                    top  = clampTop(btnRect.top + btnRect.height / 2 - estH / 2);
+                }
+            } else {
+                // No video — just go left of the button
+                left = btnRect.left - GAP - effectiveW;
+                top  = clampTop(btnRect.top + btnRect.height / 2 - estH / 2);
+            }
+
+            panel.style.left = clampLeft(left) + 'px';
+            panel.style.top  = clampTop(top)   + 'px';
+        },
+        getPopupPortal: () => {
+            let dlg = document.getElementById('ypp-popup-portal');
+            if (dlg) return dlg;
+            dlg = document.createElement('div');
+            dlg.id = 'ypp-popup-portal';
+            dlg.style.cssText =
+                'display:block!important;position:fixed!important;inset:0!important;width:100%!important;height:100%!important;' +
+                'max-width:100%!important;max-height:100%!important;' +
+                'border:0!important;outline:0!important;padding:0!important;margin:0!important;' +
+                'background:transparent!important;overflow:visible!important;' +
+                'pointer-events:none!important;z-index:2147483647!important;' +
+                'transform:none!important;filter:none!important;perspective:none!important;';
+            
+            if ('popover' in dlg) {
+                dlg.popover = "manual";
+            }
+            
+            document.documentElement.appendChild(dlg);
+            
+            if ('popover' in dlg) {
+                try { dlg.showPopover(); } catch(e) {}
+            }
+            return dlg;
+        },
+    };
+
+
+    // Minimal BaseFeature — GlobalPlayerBar extends this
+    window.YPP.features.BaseFeature = class BaseFeature {
+        constructor(name) {
+            this.name      = name || this.constructor.name;
+            this.isEnabled = false;
+            this.settings  = {};
+            this.utils     = window.YPP.Utils;
+            this.eventListeners = [];
+            this.abortController = new AbortController();
+        }
+        async enable()  {}
+        async disable() {
+            this.eventListeners.forEach(({target, type, listener, options}) => {
+                target.removeEventListener(type, listener, options);
+            });
+            this.eventListeners = [];
+        }
+        update(settings) {
+            this.settings = { ...this.settings, ...settings };
+            if (this.onUpdate) this.onUpdate();
+        }
+        getConfigKey() {
+            if (!this.name) return null;
+            return this.name.charAt(0).toLowerCase() + this.name.slice(1);
+        }
+        addListener(target, type, listener, options) {
+            target.addEventListener(type, listener, options);
+            this.eventListeners.push({ target, type, listener, options });
+        }
+        pollFor(conditionFn, timeout = 10000, intervalMs = 250) {
+            return new Promise((resolve, reject) => {
+                const startTime = Date.now();
+                const check = () => {
+                    if (this.abortController?.signal?.aborted) return reject(new Error('Aborted'));
+                    try {
+                        const result = conditionFn();
+                        if (result) return resolve(result);
+                    } catch (e) {}
+                    if (Date.now() - startTime >= timeout) return reject(new Error('Timeout'));
+                    setTimeout(check, intervalMs);
+                };
+                check();
+            });
+        }
+    };
+
+    // FilterPresets stub so GlobalBarUI constructor doesn't throw
+    window.YPP.features.FilterPresets = window.YPP.features.FilterPresets || { PRESETS: [] };
+
+    // ── 2. Load feature modules AFTER namespace is ready ─────────────────────
+    // Dynamic imports are inlined by Rollup but execute after the awaits,
+    // so BaseFeature above is guaranteed to exist when the modules run.
+    await import('../features/player/global-bar-ui.js');
+    await import('../features/player/global-bar.js');
+
+    // Load rich features
+    await import('../features/player/media-effects/volume-booster/volume-booster.js');
+    await import('../features/player/media-effects/volume-booster/volume-booster-ui.js');
+    await import('../features/player/media-effects/video-filters/video-filters-presets.js');
+    await import('../features/player/media-effects/video-filters/video-filters-overlay.js');
+    await import('../features/player/media-effects/video-filters/video-filters-ui.js');
+    await import('../features/player/media-effects/video-filters/video-filters.js');
+    await import('../features/player/enhancements/video-speed-controller.js');
+
+    // ── 3. Read user settings ────────────────────────────────────────────────
+    let settings = {};
+    try {
+        const { DEFAULT_SETTINGS } = await import('../../shared/default-settings.js');
+        settings = { ...DEFAULT_SETTINGS };
+        const data = await chrome.storage.local.get('settings');
+        Object.assign(settings, data.settings || {});
+    } catch (_) {}
+
+    // Mock FeatureManager so GlobalBarUI can fetch VolumeBoost / VideoFilters
+    const instances = {};
+    window.YPP.featureManager = {
+        getFeature: (name) => instances[name]
+    };
+
+    if (window.YPP.features.VolumeBooster) {
+        instances['volumeBoost'] = new window.YPP.features.VolumeBooster();
+        instances['volumeBoost'].update(settings);
+        if (settings.enableVolumeBoost) instances['volumeBoost'].enable();
+    }
+    if (window.YPP.features.VideoFilters) {
+        instances['videoFilters'] = new window.YPP.features.VideoFilters();
+        instances['videoFilters'].update(settings);
+        if (settings.enableCinemaFilters) instances['videoFilters'].enable();
+    }
+    if (window.YPP.features.VideoSpeedController) {
+        instances['videoSpeedController'] = new window.YPP.features.VideoSpeedController();
+        instances['videoSpeedController'].update(settings);
+        if (settings.enableCustomSpeed !== false) instances['videoSpeedController'].enable();
+    }
+
+    // Default ON — show bar unless user explicitly disabled it
+    if (settings.enableGlobalPlayerBar === false) return;
+
+    // ── 4. Boot the feature ──────────────────────────────────────────────────
+    const bar = new window.YPP.features.GlobalPlayerBar();
+    if (bar.update) bar.update(settings);
+    bar.isEnabled = false;
+    await bar.enable();
+    bar.isEnabled = true;
+
+    // ── 5. React to popup toggle changes in real-time ────────────────────────
+    try {
+        chrome.storage.onChanged.addListener((changes) => {
+            if (!changes.settings) return;
+            const newSettings = changes.settings.newValue || {};
+            const nowEnabled  = newSettings.enableGlobalPlayerBar !== false;
+
+            if (nowEnabled && !bar.isEnabled) {
+                bar.enable();
+                bar.isEnabled = true;
+            } else if (!nowEnabled && bar.isEnabled) {
+                bar.disable();
+                bar.isEnabled = false;
+            }
+            if (bar.update) bar.update(newSettings);
+
+            // Update sub-features
+            if (instances['volumeBoost']) {
+                instances['volumeBoost'].update(newSettings);
+            }
+            if (instances['videoFilters']) {
+                instances['videoFilters'].update(newSettings);
+            }
+            if (instances['videoSpeedController']) {
+                instances['videoSpeedController'].update(newSettings);
+            }
+        });
+    } catch (_) {}
+})();

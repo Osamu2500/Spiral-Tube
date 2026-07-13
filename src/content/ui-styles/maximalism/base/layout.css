@@ -1,0 +1,12 @@
+/* Progress bar */
+html[data-ypp-ui-style="maximalism"] .ytProgressBarLineProgressBarPlayed {
+  background: repeating-linear-gradient(
+    45deg,
+    #ff0055,
+    #ff0055 10px,
+    #ffff00 10px,
+    #ffff00 20px
+  ) !important;
+  border: 2px solid #000 !important;
+  height: 8px !important;
+}

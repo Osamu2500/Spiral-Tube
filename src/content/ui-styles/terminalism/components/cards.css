@@ -1,0 +1,25 @@
+/* src/content/themes/ui-styles/terminalism/components/cards.css */
+html[data-ypp-ui-style=terminalism] .header.ytd-playlist-panel-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style=terminalism] ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
+  background: none !important;
+}
+html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style=terminalism] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: 2px !important;
+}
+html[data-ypp-ui-style=terminalism] ytd-playlist-panel-renderer {
+  background: rgba(0, 6, 0, 0.9) !important;
+  border: 1px solid rgba(0, 255, 65, 0.15) !important;
+}
+html[data-ypp-ui-style=terminalism] ytd-rich-item-renderer,
+html[data-ypp-ui-style=terminalism] ytd-video-renderer,
+html[data-ypp-ui-style=terminalism] ytd-grid-video-renderer {
+  position: relative;
+  z-index: 1;
+}

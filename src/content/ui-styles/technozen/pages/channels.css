@@ -1,0 +1,65 @@
+tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
+  border-radius: var(--tz-radius-sm) !important;
+  transition: background var(--bounce), transform var(--bounce);
+}
+tp-yt-paper-tab.ytd-c4-tabbed-header-renderer.iron-selected {
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(90, 191, 71, 0.2) !important;
+}
+ytd-video-renderer,
+ytd-channel-renderer,
+ytd-playlist-renderer {
+  background: var(--tz-gloss), rgba(235, 252, 228, 0.85) !important;
+  border: 1px solid var(--tz-glass-border) !important;
+  border-radius: var(--tz-radius-lg) !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+ytd-video-renderer:hover,
+ytd-channel-renderer:hover,
+ytd-playlist-renderer:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: var(--tz-gloss), rgba(225, 250, 216, 0.95) !important;
+}
+html[data-ypp-ui-style=technozen] #metadata-line span,
+html[data-ypp-ui-style=technozen] .ytd-video-meta-block span,
+html[data-ypp-ui-style=technozen] yt-formatted-string.ytd-channel-name {
+  color: #3b5c43 !important;
+}
+#channel-header.ytd-c4-tabbed-header-renderer {
+  background: var(--tz-gloss), rgba(228, 250, 220, 0.85) !important;
+  border-bottom: 1px solid var(--tz-glass-border) !important;
+  box-shadow: var(--shadow-base) !important;
+  backdrop-filter: blur(12px) !important;
+}
+#tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: rgba(215, 248, 205, 0.7) !important;
+  border-radius: var(--tz-radius-md) !important;
+  margin: 10px;
+  padding: 5px;
+}
+html[data-ypp-ui-style=technozen] yt-formatted-string,
+html[data-ypp-ui-style=technozen] span,
+html[data-ypp-ui-style=technozen] a,
+html[data-ypp-ui-style=technozen] h1,
+html[data-ypp-ui-style=technozen] h2,
+html[data-ypp-ui-style=technozen] h3,
+html[data-ypp-ui-style=technozen] p,
+html[data-ypp-ui-style=technozen] #video-title,
+html[data-ypp-ui-style=technozen] .ytd-video-meta-block,
+html[data-ypp-ui-style=technozen] #metadata-line span,
+html[data-ypp-ui-style=technozen] yt-formatted-string.ytd-channel-name,
+html[data-ypp-ui-style=technozen] #channel-name a,
+html[data-ypp-ui-style=technozen] .ytd-channel-name,
+html[data-ypp-ui-style=technozen] ytd-badge-supported-renderer span,
+html[data-ypp-ui-style=technozen] #title-wrapper yt-formatted-string,
+html[data-ypp-ui-style=technozen] .title-text,
+html[data-ypp-ui-style=technozen] ytd-rich-grid-renderer #title,
+html[data-ypp-ui-style=technozen] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-ui-style=technozen] ytd-guide-entry-renderer yt-formatted-string {
+  color: #152418 !important;
+  text-shadow: none !important;
+}
