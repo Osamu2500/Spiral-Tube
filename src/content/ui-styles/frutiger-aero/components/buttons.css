@@ -1,193 +1,242 @@
 /* src/content/themes/ui-styles/frutiger-aero/components/buttons.css */
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+
+/* ─────────────────────────────────────────────
+   1. KILL DARK TOUCH-FEEDBACK OVERLAYS
+──────────────────────────────────────────────── */
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer !important;
+/* ─────────────────────────────────────────────
+   2. MASTER TONAL BUTTON RULE — ALWAYS BRIGHT
+   (specificity boosted with :not() to beat YouTube dark-mode !important)
+──────────────────────────────────────────────── */
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal:not([disabled]):not([aria-disabled="true"]),
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal:not([hidden]),
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextTonal:not([disabled]),
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-start:not([disabled]),
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-end:not([disabled]),
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextSegmentedStart:not([disabled]),
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextSegmentedEnd:not([disabled]) {
+  /* Use the previously-hover values as permanent default */
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,1)        0%,
+    rgba(200,235,255,0.95)    48%,
+    rgba(150,215,250,0.90)    50%,
+    rgba(220,245,255,0.95)   100%) !important;
+  background-color: rgba(255,255,255,0.95) !important;
+  border: 1px solid rgba(180,220,250,0.9) !important;
+  border-bottom-color: rgba(100,180,220,0.8) !important;
+  box-shadow:
+    inset 0 2px 5px rgba(255,255,255,1),
+    inset 0 -1px 3px rgba(100,200,240,0.2),
+    0 4px 20px rgba(18,168,221,0.18),
+    0 1px 4px rgba(0,0,0,0.06) !important;
+  color: #0b5fa3 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.9) !important;
+  border-radius: 500px !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.2s ease,
+              background 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(4px) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
-  border: 1px solid rgba(255,255,255,0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), var(--fa-elevation-2) !important;
+/* Hover — brighter glow + lift */
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal:not([disabled]):hover,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextTonal:not([disabled]):hover,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-start:not([disabled]):hover,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-end:not([disabled]):hover,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextSegmentedStart:not([disabled]):hover,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextSegmentedEnd:not([disabled]):hover {
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,1)     0%,
+    rgba(180,230,255,0.98) 48%,
+    rgba(120,200,245,0.95) 50%,
+    rgba(210,245,255,1)   100%) !important;
+  box-shadow:
+    inset 0 3px 8px rgba(255,255,255,1),
+    0 0 18px rgba(53,199,240,0.5),
+    0 8px 32px rgba(18,168,221,0.28),
+    0 2px 8px rgba(53,199,240,0.14) !important;
+  transform: scale(1.06) !important;
+  border-color: rgba(53,199,240,0.8) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-  margin-right: 0 !important;
-  border-radius: var(--fa-radius-pill) !important;
-  z-index: 30000 !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  background: rgba(255,255,255,0.4) !important;
-  border: 1px solid rgba(255,255,255,0.6) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--fa-elevation-3), inset 0 2px 6px rgba(255,255,255,1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,235,255,0.6) 100%) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .ytLikeButtonViewModelHost {
-  margin-right: 5px;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .ytInlinePlayerControlsTopRightControlsCircleButton {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,235,255,0.8) 100%) !important;
-  border: 1px solid rgba(255,255,255,1) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,1), var(--fa-elevation-2) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  cursor: pointer !important;
-  border-radius: var(--fa-radius-pill) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--fa-elevation-4), inset 0 4px 8px rgba(255,255,255,1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(180,225,255,0.9) 100%) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
-  border: 1px solid rgba(255,255,255,0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), var(--fa-elevation-2) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,235,255,0.8) 100%) !important;
-  border-radius: var(--fa-radius-pill) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.05) !important;
-  box-shadow: var(--fa-elevation-3), inset 0 2px 6px rgba(255,255,255,1) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-alert-with-button-renderer[type=INFO] {
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), var(--fa-elevation-2) !important;
-  border-radius: var(--fa-radius-md);
-  border: 1px solid rgba(255,255,255,0.7) !important;
-  background: rgba(255,255,255,0.6) !important;
-  backdrop-filter: blur(var(--fa-blur-md));
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail-overlay-toggle-button-renderer {
-  background: rgba(255,255,255,0.6) !important;
-  backdrop-filter: blur(var(--fa-blur-md));
-  border: 1px solid rgba(255,255,255,0.8) !important;
-  border-radius: var(--fa-radius-pill) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  box-shadow: inset 0 1px 3px rgba(255,255,255,0.9), var(--fa-elevation-1) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail-overlay-toggle-button-renderer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--fa-elevation-3), inset 0 2px 5px rgba(255,255,255,1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,235,255,0.8) 100%) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .ytPlayerQuickActionButtonsHost:not(:empty) {
-  background-color: rgba(255,255,255,0.4) !important;
-  backdrop-filter: blur(var(--fa-blur-md)) !important;
-  border: 1px solid rgba(255,255,255,0.5) !important;
-  border-radius: var(--fa-radius-pill) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
-  background: rgba(255,255,255,0.6) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
-  border-radius: var(--fa-radius-pill) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(200,235,255,0.6) 100%) !important;
-  border: 1px solid rgba(255,255,255,0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), var(--fa-elevation-2) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
-  box-shadow: var(--fa-elevation-3), inset 0 2px 6px rgba(255,255,255,1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(180,225,255,0.8) 100%) !important;
-  transform: scale(1.06);
-}
-
-html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+/* Active / Pressed */
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal:not([disabled]):active,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextTonal:not([disabled]):active,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-start:not([disabled]):active,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-end:not([disabled]):active {
   transform: scale(0.97) !important;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1) !important;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.12) !important;
 }
 
+/* Force icon/text color inside tonal buttons */
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal .yt-core-attributed-string,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal yt-icon,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal yt-icon-shape svg,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--tonal .yt-icon,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-start .yt-core-attributed-string,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-start yt-icon,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-start yt-icon-shape svg,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-end .yt-core-attributed-string,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-end yt-icon,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--segmented-end yt-icon-shape svg,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextTonal .yt-core-attributed-string,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextTonal yt-icon,
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextTonal yt-icon-shape svg {
+  color: #0b5fa3 !important;
+  fill: #0b5fa3 !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. SEGMENTED LIKE/DISLIKE WRAPPER
+──────────────────────────────────────────────── */
 html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   display: flex !important;
-  gap: 6px !important;
+  gap: 4px !important;
   background: none !important;
   box-shadow: none !important;
   overflow: visible !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: var(--fa-radius-pill) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(200,235,255,0.6) 100%) !important;
+/* ─────────────────────────────────────────────
+   4. MONO / TEXT / CALL-TO-ACTION BUTTONS
+──────────────────────────────────────────────── */
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--mono:not([disabled]):not(.yt-spec-button-shape-next--filled) {
+  background: rgba(255,255,255,0.7) !important;
   border: 1px solid rgba(255,255,255,0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), var(--fa-elevation-1) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  border-radius: 500px !important;
+  backdrop-filter: blur(4px) !important;
+  color: #0b5fa3 !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
-  box-shadow: var(--fa-elevation-3), inset 0 2px 6px rgba(255,255,255,1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(180,225,255,0.8) 100%) !important;
-  transform: scale(1.06);
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--mono:not([disabled]):hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(200,235,255,0.95) 100%) !important;
+  box-shadow: 0 0 12px rgba(53,199,240,0.4), inset 0 2px 6px rgba(255,255,255,1) !important;
+  transform: scale(1.04) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--overlay {
+  border-radius: 500px !important;
+  border: 1px solid rgba(180,220,250,0.9) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), 0 4px 20px rgba(18,168,221,0.18) !important;
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,1)     0%,
+    rgba(200,235,255,0.95) 48%,
+    rgba(150,215,250,0.9)  50%,
+    rgba(220,245,255,0.95) 100%) !important;
+  color: #0b5fa3 !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--overlay:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 18px rgba(53,199,240,0.5), inset 0 2px 6px rgba(255,255,255,1) !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. TEXT-STYLE BUTTONS (Share, etc.)
+──────────────────────────────────────────────── */
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextText:not([disabled]),
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--text:not([disabled]) {
+  border-radius: 500px !important;
+  background: rgba(255,255,255,0.75) !important;
+  border: 1px solid rgba(255,255,255,0.8) !important;
+  color: #0b5fa3 !important;
+  backdrop-filter: blur(4px) !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextText:not([disabled]):hover,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--text:not([disabled]):hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(200,235,255,0.95) 100%) !important;
+  box-shadow: 0 4px 20px rgba(18,168,221,0.18), inset 0 2px 4px rgba(255,255,255,0.9) !important;
+  transform: scale(1.05) !important;
+  border-color: rgba(180,220,250,0.9) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body button.ytSpecButtonShapeNextText:active,
+html[data-ypp-ui-style=frutiger-aero] body button.yt-spec-button-shape-next--text:active {
   transform: scale(0.97) !important;
   box-shadow: inset 0 2px 8px rgba(0,0,0,0.1) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextText {
-  border-radius: var(--fa-radius-pill) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s !important;
-  background: rgba(255,255,255,0.2) !important;
-  border: 1px solid rgba(255,255,255,0.4) !important;
+/* ─────────────────────────────────────────────
+   6. INLINE PLAYER + THUMBNAIL OVERLAY BUTTONS
+──────────────────────────────────────────────── */
+html[data-ypp-ui-style=frutiger-aero] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(180,225,255,0.9) 100%) !important;
+  border: 1px solid rgba(255,255,255,1) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,1), 0 4px 20px rgba(18,168,221,0.18) !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease !important;
+  cursor: pointer !important;
+  border-radius: 500px !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextText:hover {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,235,255,0.7) 100%) !important;
-  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,0.9) !important;
-  transform: scale(1.05);
-  border: 1px solid rgba(255,255,255,0.8) !important;
+html[data-ypp-ui-style=frutiger-aero] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 8px 32px rgba(18,168,221,0.28), inset 0 4px 8px rgba(255,255,255,1) !important;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(150,215,250,0.95) 100%) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextText:active {
-  transform: scale(0.97) !important;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1) !important;
+html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255,255,255,0.9) !important;
+  border-radius: 500px !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease !important;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,1), 0 2px 8px rgba(18,168,221,0.05) !important;
 }
 
+html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 8px 32px rgba(18,168,221,0.28), inset 0 2px 5px rgba(255,255,255,1) !important;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(200,235,255,0.95) 100%) !important;
+}
+
+/* ─────────────────────────────────────────────
+   7. QUICK ACTION HOST
+──────────────────────────────────────────────── */
+html[data-ypp-ui-style=frutiger-aero] .ytPlayerQuickActionButtonsHost:not(:empty) {
+  background-color: rgba(255,255,255,0.6) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid rgba(255,255,255,0.6) !important;
+  border-radius: 500px !important;
+}
+
+/* ─────────────────────────────────────────────
+   8. YPP CUSTOM BUTTONS
+──────────────────────────────────────────────── */
 html[data-ypp-ui-style=frutiger-aero] .ypp-btn-primary,
 html[data-ypp-ui-style=frutiger-aero] .ypp-play-all-btn,
 html[data-ypp-ui-style=frutiger-aero] .ypp-health-btn {
-  border-radius: var(--fa-radius-pill) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(200,235,255,0.6) 100%) !important;
-  border: 1px solid rgba(255,255,255,0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), var(--fa-elevation-2) !important;
+  border-radius: 500px !important;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(180,225,255,0.9) 100%) !important;
+  border: 1px solid rgba(180,220,250,0.9) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,1), 0 4px 20px rgba(18,168,221,0.18) !important;
+  color: #0b5fa3 !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background 0.2s ease !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] .ypp-btn-primary:hover,
 html[data-ypp-ui-style=frutiger-aero] .ypp-play-all-btn:hover,
 html[data-ypp-ui-style=frutiger-aero] .ypp-health-btn:hover {
-  box-shadow: var(--fa-elevation-3), inset 0 2px 6px rgba(255,255,255,1) !important;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(180,225,255,0.8) 100%) !important;
+  box-shadow: 0 0 18px rgba(53,199,240,0.5), inset 0 2px 6px rgba(255,255,255,1) !important;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(150,215,250,0.95) 100%) !important;
   transform: scale(1.05) !important;
 }
 
@@ -199,16 +248,16 @@ html[data-ypp-ui-style=frutiger-aero] .ypp-health-btn:active {
 }
 
 html[data-ypp-ui-style=frutiger-aero] .ypp-pill-toggle {
-  border-radius: var(--fa-radius-pill) !important;
-  background: rgba(255, 255, 255, 0.4) !important;
-  border: 1px solid rgba(255,255,255,0.6) !important;
-  box-shadow: inset 0 1px 3px rgba(255,255,255,0.8) !important;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s !important;
+  border-radius: 500px !important;
+  background: rgba(255,255,255,0.75) !important;
+  border: 1px solid rgba(255,255,255,0.8) !important;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.9) !important;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background 0.2s ease !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] .ypp-pill-toggle:hover {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,235,255,0.7) 100%) !important;
-  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,1) !important;
-  border-color: rgba(255,255,255,0.9) !important;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(200,235,255,0.95) 100%) !important;
+  box-shadow: 0 4px 20px rgba(18,168,221,0.18), inset 0 2px 4px rgba(255,255,255,1) !important;
+  border-color: rgba(180,220,250,0.9) !important;
   transform: scale(1.05) !important;
 }

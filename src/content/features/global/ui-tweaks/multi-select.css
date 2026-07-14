@@ -231,5 +231,8 @@ ytd-reel-item-renderer, yt-lockup-view-model, ytd-lockup-view-model {
   opacity: 1 !important;
 }
 
-
-
+/* Busy state for action bar buttons */
+.ypp-ms-btn-busy {
+  opacity: 0.45 !important;
+  pointer-events: none !important;
+}

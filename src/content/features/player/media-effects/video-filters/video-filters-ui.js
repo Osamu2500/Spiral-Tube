@@ -173,7 +173,7 @@ export class VideoFiltersUI {
         const panel = document.createElement('div');
         panel.id = 'ypp-cinema-panel';
         Object.assign(panel.style, {
-            position: 'fixed', top: '16px', right: '16px', maxHeight: 'calc(100vh - 32px)', width: '420px',
+            position: 'fixed', top: '16px', right: '8px', maxHeight: 'calc(100vh - 160px)', width: '380px',
             backgroundColor: 'rgba(18, 18, 20, 0.65)',
             backgroundImage: 'radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%)',
             border: '1px solid rgba(255, 255, 255, 0.15)', borderTop: '1px solid rgba(255, 255, 255, 0.25)', borderRadius: '16px',

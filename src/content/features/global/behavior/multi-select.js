@@ -14,7 +14,6 @@ const SELECTORS = {
   // Used for the parent-nesting filter (prevents double-checkboxes)
   CARD_PARENTS:
     'ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model',
-  THUMBNAIL_ANCHOR: 'a#thumbnail, a.ytd-thumbnail, a[href*="/watch?v="], a[href*="/shorts/"]',
   THUMBNAIL_CONTAINER: 'ytd-thumbnail, #thumbnail, yt-image',
   VIDEO_TITLE: '#video-title, h3 a, .title, .yt-core-attributed-string',
   MENU_BTN:
@@ -49,9 +48,9 @@ const ICONS = {
 
 // ─── Feature Class ─────────────────────────────────────────────────────────────
 export class MultiSelect extends window.YPP.features.BaseFeature {
-    static featureId = 'multiSelect';
-    static executionPhase = 'idle';
-    static priority = 10;
+  static featureId = 'multiSelect';
+  static executionPhase = 'idle';
+  static priority = 10;
 
   constructor() {
     super('MultiSelect');
@@ -61,8 +60,12 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     this._selectionModeActive = false; // Is the mode currently on? (e.g. via keyboard shortcut)
     this._actionBar = null;
 
-    // Bound + debounced page-change handler (created once, stable reference for on/off)
+    // Bound handlers (created once, stable reference for add/remove)
     this._onPageChangeBound = null;
+    this._scheduleScan = null;
+    this._pollInterval = null;
+    // Tracks all active per-card hydration timers so disable() can cancel them all
+    this._hydrationTimers = new Set();
   }
 
   getConfigKey() {
@@ -75,29 +78,52 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     await super.enable();
     document.body.classList.add(CSS.FEATURE_ENABLED);
 
-    // Create a stable debounced reference for page-change events
+    // ── Page navigation: reset mode on SPA route change ──
     const rawBound = () => this.onPageChange();
     this._onPageChangeBound = window.YPP.Utils?.debounce
       ? window.YPP.Utils.debounce(rawBound, 200)
       : rawBound;
-
     window.YPP.events?.on('app:pageChange', this._onPageChangeBound);
+
+    // ── yt-page-data-updated: fires on every infinite-scroll chunk load ──
+    // Debounced full scan — same pattern as HideWatched._scheduleProcess()
+    this._scheduleScan = window.YPP.Utils?.debounce
+      ? window.YPP.Utils.debounce(() => this._attachCheckboxes(), 150)
+      : () => this._attachCheckboxes();
+    this.addListener(document, 'yt-page-data-updated', () => this._scheduleScan());
+
+    // ── yt-navigate-finish: SPA navigation completed ──
+    // NOTE: onPageChange (triggered by app:pageChange) already does removeAllCheckboxes +
+    // attachCheckboxes on nav. This listener just ensures a fresh scan if app:pageChange
+    // hasn't fired yet (race condition on very fast navigations).
+    this.addListener(document, 'yt-navigate-finish', () => {
+      this._attachCheckboxes();
+    });
+
+    // ── sharedObserver: fires synchronously (via rAF) when new cards enter DOM ──
+    // Mirror HideWatched exactly: no timeout, process each node directly.
+    window.YPP.sharedObserver?.register(
+      'multi-select',
+      SELECTORS.CARD_ROOTS.join(', '),
+      (nodes) => {
+        if (!this.isEnabled) return;
+        nodes.forEach(card => this._processCard(card));
+      }
+    );
 
     window.YPP.hotkeysManager?.register('multi-select', [
       { combo: 'Ctrl+Q', callback: () => this._toggleSelectionMode() },
     ]);
 
-    window.YPP.sharedObserver?.register(
-      'multi-select',
-      SELECTORS.CARD_ROOTS.slice(0, 5).join(', '),
-      () => this._onPageChangeBound?.()
-    );
-
+    // Initial scan for cards already on screen
     this._attachCheckboxes();
+
+    // Polling fallback at 1.5s — catches anything the events missed
+    this._pollInterval = setInterval(() => this._attachCheckboxes(), 1500);
   }
 
   async disable() {
-    await super.disable(); // runs cleanupEvents() — removes all addListener registrations
+    await super.disable(); // cleanupEvents() — removes all addListener registrations
 
     // Tear down DOM injections so re-enable starts clean
     this._removeAllCheckboxes();
@@ -112,7 +138,13 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     document.body.classList.remove(CSS.FEATURE_ENABLED);
 
     window.YPP.events?.off('app:pageChange', this._onPageChangeBound);
+    clearInterval(this._pollInterval);
+    this._pollInterval = null;
     this._onPageChangeBound = null;
+    this._scheduleScan = null;
+    // Cancel all pending per-card hydration polls
+    this._hydrationTimers.forEach(t => clearInterval(t));
+    this._hydrationTimers.clear();
     window.YPP.hotkeysManager?.unregister('multi-select');
     window.YPP.sharedObserver?.unregister('multi-select');
   }
@@ -169,34 +201,144 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
 
   // ─── Card Processing ─────────────────────────────────────────────────────────
 
+  /**
+   * Returns valid top-level video card elements.
+   * When `nodes` is provided (from observer), use them directly — they are already
+   * the newly added top-level cards. The parent-nesting filter only applies during
+   * full-document scans to avoid double-injecting nested cards.
+   * @param {Element[]|null} nodes
+   */
   _getVideoCards() {
     const selector = SELECTORS.CARD_ROOTS.join(', ');
     return Array.from(document.querySelectorAll(selector)).filter((el) => {
-      // Exclude cards that are nested inside another card (prevents double checkboxes)
+      // Exclude cards nested inside another card (prevents double checkboxes on e.g. playlists)
       return !el.parentElement?.closest(SELECTORS.CARD_PARENTS);
     });
   }
 
   /** @param {HTMLElement} card */
   _getVideoData(card) {
-    const anchor = card.querySelector(SELECTORS.THUMBNAIL_ANCHOR);
-    const href = anchor?.href || '';
-    const match = href.match(/[?&]v=([^&]+)|\/shorts\/([^/?]+)/);
-    const videoId = match?.[1] || match?.[2];
+    // Strategy 1: data-attributes (fastest, works on hydrated Polymer elements)
+    let videoId = card.dataset.videoId || card.dataset.ytVideoId || card.getAttribute('video-id');
+
+    // Strategy 2: ytd-thumbnail has a video-id attribute set by YouTube
+    if (!videoId) {
+      const thumb = card.querySelector('ytd-thumbnail[video-id]');
+      if (thumb) videoId = thumb.getAttribute('video-id');
+    }
+    // Strategy 3: modern lockup-view-model cards
+    if (!videoId) {
+      const lockup = card.tagName.toLowerCase().includes('lockup-view-model')
+        ? card
+        : card.querySelector('yt-lockup-view-model, ytd-lockup-view-model');
+      if (lockup && lockup.getAttribute('video-id')) videoId = lockup.getAttribute('video-id');
+    }
+
+    // Strategy 4: Parse the thumbnail anchor href
+    const anchor = card.querySelector(
+      'a#thumbnail, a[href^="/watch"], a[href^="/shorts"], a.ytd-thumbnail, a[href*="/watch?v="], a[href*="/shorts/"]'
+    );
+    const href = anchor?.getAttribute('href') || '';
+    if (!videoId && href) {
+      const match = href.match(/[?&]v=([^&]+)|\/shorts\/([^/?]+)/);
+      videoId = match?.[1] || match?.[2];
+    }
+
     const title = card.querySelector(SELECTORS.VIDEO_TITLE)?.textContent?.trim() || '';
     return { videoId, href, title };
   }
 
+  /**
+   * When a card is added to the DOM but Polymer hasn't hydrated its href yet,
+   * poll every 100ms until the videoId appears (max 3s), then inject.
+   * Using setInterval instead of MutationObserver count avoids false exits
+   * when Polymer fires many mutations before the href is set.
+   * @param {HTMLElement} card
+   */
+  _watchCardForHydration(card) {
+    if (card.dataset.yppMsWatching) return; // Already watching this card
+    card.dataset.yppMsWatching = '1';
+
+    let elapsed = 0;
+    const maxWait = 3000;
+    const interval = 100;
+
+    const timer = setInterval(() => {
+      elapsed += interval;
+      if (!this.isEnabled || !card.isConnected || elapsed > maxWait) {
+        clearInterval(timer);
+        this._hydrationTimers.delete(timer);
+        delete card.dataset.yppMsWatching;
+        return;
+      }
+      const { videoId, href, title } = this._getVideoData(card);
+      if (videoId) {
+        clearInterval(timer);
+        this._hydrationTimers.delete(timer);
+        delete card.dataset.yppMsWatching;
+        delete card.dataset[DATA.STAMP];
+        try {
+          card.dataset[DATA.STAMP] = '1';
+          this._injectCheckboxAndOverlay(card, videoId, href, title);
+        } catch (e) {
+          console.error('[MultiSelect] Error injecting on hydration:', e);
+        }
+      }
+    }, interval);
+    this._hydrationTimers.add(timer);
+  }
+
+  /**
+   * Core single-card processing logic — shared by both _processCard (observer path)
+   * and _attachCheckboxes (full-scan path). Handles recycled elements, unhydrated
+   * cards, and idempotent re-injection.
+   * @param {HTMLElement} card
+   */
+  _processOneCard(card) {
+    if (!card || !card.isConnected) return;
+
+    if (card.dataset[DATA.STAMP]) {
+      const existingCb = card.querySelector(`.${CSS.CHECKBOX}`);
+      const existingOverlay = card.querySelector(`.${CSS.CARD_OVERLAY}`);
+      const { videoId: currentId } = this._getVideoData(card);
+      if (!currentId) { this._watchCardForHydration(card); return; }
+      // Both injected elements present and still matching — nothing to do
+      if (existingCb && existingOverlay && existingCb.dataset.videoId === currentId) return;
+      // Recycled or partially wiped by Polymer — strip and re-inject
+      card.querySelectorAll(`.${CSS.CHECKBOX}, .${CSS.CARD_OVERLAY}`).forEach(e => e.remove());
+      card.classList.remove(CSS.CARD_SELECTED);
+      delete card.dataset[DATA.STAMP];
+    }
+
+    const { videoId, href, title } = this._getVideoData(card);
+    if (!videoId) { this._watchCardForHydration(card); return; }
+
+    card.dataset[DATA.STAMP] = '1';
+    this._injectCheckboxAndOverlay(card, videoId, href, title);
+  }
+
+  /**
+   * Process a single card — called directly by sharedObserver for each new card.
+   * @param {HTMLElement} card
+   */
+  _processCard(card) {
+    if (!card || !card.isConnected) return;
+    // Nested card check (e.g. ytd-compact-video inside a playlist)
+    if (card.parentElement?.closest(SELECTORS.CARD_PARENTS)) return;
+    try {
+      this._processOneCard(card);
+    } catch (err) {
+      console.error('[MultiSelect] _processCard error:', err);
+    }
+  }
+
   _attachCheckboxes() {
     this._getVideoCards().forEach((el) => {
-      const card = /** @type {HTMLElement} */ (el);
-      if (card.dataset[DATA.STAMP]) return; // already processed
-      card.dataset[DATA.STAMP] = '1';
-
-      const { videoId, href, title } = this._getVideoData(card);
-      if (!videoId) return;
-
-      this._injectCheckboxAndOverlay(card, videoId, href, title);
+      try {
+        this._processOneCard(/** @type {HTMLElement} */ (el));
+      } catch (err) {
+        console.error('[MultiSelect] Error attaching to card:', err);
+      }
     });
   }
 
@@ -265,16 +407,8 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     const thumb = checkbox.parentElement;
     if (thumb) {
       this.addListener(thumb, 'click', (e) => {
-        // Check if the click hit the checkbox element or is very close to it
-        const checkboxRect = checkbox.getBoundingClientRect();
-        const hitCheckbox = e.target === checkbox || checkbox.contains(e.target) ||
-          (checkboxRect.width > 0 &&
-           e.clientX >= checkboxRect.left - 4 &&
-           e.clientX <= checkboxRect.right + 4 &&
-           e.clientY >= checkboxRect.top - 4 &&
-           e.clientY <= checkboxRect.bottom + 4);
-
-        if (hitCheckbox) {
+        // Only intercept clicks that directly hit the checkbox element
+        if (e.target === checkbox || checkbox.contains(e.target)) {
           onSelect(e);
         }
       }, { capture: true });
@@ -349,7 +483,8 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
   }
 
   _select(card, videoId, href, title) {
-    this._selected.set(videoId, { title, href, element: card });
+    // Store videoId in the value so actions can use it directly without re-parsing href
+    this._selected.set(videoId, { videoId, title, href, element: card });
     card.classList.add(CSS.CARD_SELECTED);
     card.querySelector(`.${CSS.CHECKBOX}`)?.classList.add(CSS.CHECKBOX_CHECKED);
     // Activate selection mode body class whenever something is selected
@@ -501,7 +636,6 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       this._setBarBusy(false);
     }
 
-    const total = succeeded + failed;
     if (failed === 0) {
       this._showToast(`✓ ${succeeded} video${succeeded !== 1 ? 's' : ''} added to ${label}`);
     } else {
@@ -509,7 +643,9 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
         `✓ ${succeeded} added to ${label}${failed > 0 ? ` · ⚠ ${failed} failed` : ''}`
       );
     }
-    this._clearAll();
+    if (succeeded > 0) {
+      this._clearAll();
+    }
   }
 
   /**
@@ -520,8 +656,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     if (!this._actionBar) return;
     const btns = this._actionBar.querySelectorAll('.ypp-ms-btn');
     btns.forEach((b) => {
-      b.style.opacity = busy ? '0.45' : '';
-      b.style.pointerEvents = busy ? 'none' : '';
+      b.classList.toggle('ypp-ms-btn-busy', busy);
     });
   }
 
@@ -538,20 +673,20 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
 
   // ─── Add to Queue ─────────────────────────────────────────────────────────────
 
+  async _invokeMenuActionWithRetry(video, labelMatch, retries = 2) {
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      const ok = await this._invokeMenuAction(video.element, labelMatch);
+      if (ok) return true;
+      if (attempt < retries) await this._delay(200); // short pause before retry
+    }
+    // Visual indicator for videos that failed
+    try { video.element.style.opacity = '0.4'; } catch (_) {}
+    return false;
+  }
+
   async _addToQueue() {
     await this._withProgress('queue', async (video) => {
-      const RETRIES = 2;
-      for (let attempt = 0; attempt <= RETRIES; attempt++) {
-        const ok = await this._invokeMenuAction(video.element, [
-          'add to queue',
-          'queue',
-        ]);
-        if (ok) return true;
-        if (attempt < RETRIES) await this._delay(200); // short pause before retry
-      }
-      // Visual indicator for videos that couldn't be queued
-      try { video.element.style.opacity = '0.4'; } catch (_) {}
-      return false;
+      return this._invokeMenuActionWithRetry(video, ['add to queue', 'queue']);
     });
   }
 
@@ -559,14 +694,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
 
   async _addToWatchLater() {
     await this._withProgress('Watch Later', async (video) => {
-      const RETRIES = 2;
-      for (let attempt = 0; attempt <= RETRIES; attempt++) {
-        const ok = await this._invokeMenuAction(video.element, 'watch later');
-        if (ok) return true;
-        if (attempt < RETRIES) await this._delay(200);
-      }
-      try { video.element.style.opacity = '0.4'; } catch (_) {}
-      return false;
+      return this._invokeMenuActionWithRetry(video, 'watch later');
     });
   }
 
@@ -664,7 +792,9 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       ? `✓ Saved ${succeeded} video${succeeded !== 1 ? 's' : ''} to playlist`
       : `✓ ${succeeded} saved · ⚠ ${failed} failed`;
     this._showToast(msg);
-    this._clearAll();
+    if (succeeded > 0) {
+      this._clearAll();
+    }
   }
 
   /**
@@ -887,9 +1017,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
         const batch = videos.slice(i, i + BATCH_SIZE);
         this._setBarStatus(`${Math.min(i + BATCH_SIZE, videos.length)} / ${videos.length}`);
 
-        const syncPromises = batch.map(({ href, element }) => {
-          const match = href.match(/[?&]v=([^&]+)|\/shorts\/([^/?]+)/);
-          const videoId = match?.[1] || match?.[2];
+        const syncPromises = batch.map(({ videoId, element }) => {
           if (!videoId) return Promise.resolve(false);
 
           window.YPP.WatchedStore?.add(videoId);
@@ -906,7 +1034,9 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     }
 
     this._showToast(`✓ ${count} video${count !== 1 ? 's' : ''} added to Watch History`);
-    this._clearAll();
+    if (count > 0) {
+      this._clearAll();
+    }
   }
 
   async _syncWatchHistory(videoId) {
@@ -920,6 +1050,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
 
       let duration = 0;
       let hasSeeked = false;
+      let isResolved = false;
 
       const onMessage = (e) => {
         if (e.origin !== 'https://www.youtube.com' || e.source !== iframe.contentWindow) return;
@@ -947,6 +1078,8 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       };
 
       const cleanup = () => {
+        if (isResolved) return;
+        isResolved = true;
         window.removeEventListener('message', onMessage);
         iframe.parentNode?.removeChild(iframe);
         resolve(true);

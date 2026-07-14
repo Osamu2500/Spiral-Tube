@@ -1,0 +1,56 @@
+/* src/content/themes/ui-styles/frutiger-aero/components/comments.css */
+
+/* Make comment boxes light and glassy */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(var(--fa-blur-md));
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: var(--fa-radius-lg) !important;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9), var(--fa-elevation-1) !important;
+  padding: 10px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Ensure text inside comments is dark/readable */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model .yt-core-attributed-string {
+  color: #111111 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #author-text span {
+  color: #0b5fa3 !important;
+  font-weight: bold !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model #published-time-text {
+  color: #444444 !important;
+}
+
+/* Make the reply box glossy */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-simplebox-renderer {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(220, 240, 255, 0.8)) !important;
+  border: 1px solid rgba(255, 255, 255, 1) !important;
+  border-radius: var(--fa-radius-lg) !important;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 1), var(--fa-elevation-2) !important;
+  padding: 12px !important;
+}
+
+/* The Replies expand button */
+html[data-ypp-ui-style=frutiger-aero] ytd-button-renderer.ytd-comment-replies-renderer button {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(200, 235, 255, 0.7)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: var(--fa-radius-pill) !important;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9), var(--fa-elevation-1) !important;
+  color: #0b5fa3 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-button-renderer.ytd-comment-replies-renderer button:hover {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(180, 225, 255, 0.9)) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255, 255, 255, 1) !important;
+  transform: scale(1.02);
+}
+
+/* Comment section header */
+html[data-ypp-ui-style=frutiger-aero] #title.ytd-comments-header-renderer {
+  color: #0b5fa3 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}

@@ -207,8 +207,8 @@ export class VolumeBoosterUI {
 
         // ── Canvas Curve (will be moved to eqContentWrap)
         const canvasEl = document.createElement('canvas');
-        canvasEl.width  = isGlobalBar ? 268 : 340;
-        canvasEl.height = isGlobalBar ? 52  : 72;
+        canvasEl.width  = isGlobalBar ? 268 : 308;
+        canvasEl.height = isGlobalBar ? 52  : 50;
         canvasEl.className = 'ypp-eq-canvas';
         // NOTE: NOT appended to panel here — appended via eqContentWrap below
 
@@ -587,9 +587,9 @@ export class VolumeBoosterUI {
 /* ── EQ Panel ── */
 #ypp-eq-panel {
     position: fixed;
-    bottom: 16px;
-    right: 16px;
-    width: 420px;
+    bottom: 72px;
+    right: 24px;
+    width: 340px;
     background-color: rgba(18, 18, 20, 0.65);
     background-image: radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%);
     border: 1px solid rgba(255,255,255,0.15);
@@ -695,7 +695,7 @@ export class VolumeBoosterUI {
 
 /* Canvas */
 .ypp-eq-canvas {
-    display: block; width: calc(100% - 32px); height: 56px;
+    display: block; width: calc(100% - 32px); height: 40px;
     margin: 0 16px 2px; border-radius: 8px;
     background: rgba(255,255,255,0.025);
     border: 1px solid rgba(255,255,255,0.06);
@@ -714,7 +714,7 @@ export class VolumeBoosterUI {
     font-size: 8px; font-weight: 800; min-height: 10px; line-height: 1;
 }
 .ypp-eq-band-track {
-    position: relative; height: 64px; width: 100%;
+    position: relative; height: 46px; width: 100%;
     display: flex; align-items: center; justify-content: center;
 }
 .ypp-eq-band-center {
@@ -729,7 +729,7 @@ export class VolumeBoosterUI {
 /* Vertical slider (rotated horizontal) */
 .ypp-eq-vslider {
     -webkit-appearance: none; appearance: none;
-    width: 64px;
+    width: 42px;
     height: 2px; border-radius: 2px; outline: none; cursor: pointer;
     background: rgba(255,255,255,0.1); border: none;
     transform: rotate(-90deg);
