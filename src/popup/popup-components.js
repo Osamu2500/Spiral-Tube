@@ -248,7 +248,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
                     btn.addEventListener('click', () => {
                         const wasActive = btn.classList.contains('active');
                         
-                        document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+                        document.querySelectorAll('.theme-btn[data-theme]').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         const newTheme = theme.key;
                         
