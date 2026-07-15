@@ -669,8 +669,8 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         };
 
         chrome.storage.local.get('settings', (data) => {
-            const styleVal = data.settings?.customCursor || 'default';
-            applyStyle(styleVal);
+            const savedCursor = data.settings?.customCursor || 'default';
+            applyStyle(savedCursor);
         });
 
         btns.forEach(btn => {

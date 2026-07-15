@@ -190,6 +190,9 @@
     await import('../features/player/global-bar-ui.js');
     await import('../features/player/global-bar.js');
 
+    // Load custom cursor
+    await import('../features/global/ui-tweaks/custom-cursor.js');
+    
     // Load rich features
     await import('../features/player/media-effects/volume-booster/volume-booster.js');
     await import('../features/player/media-effects/volume-booster/volume-booster-ui.js');
@@ -229,6 +232,11 @@
         instances['videoSpeedController'].update(settings);
         if (settings.enableCustomSpeed !== false) instances['videoSpeedController'].enable();
     }
+    if (window.YPP.features.CustomCursor) {
+        instances['customCursor'] = new window.YPP.features.CustomCursor();
+        instances['customCursor'].update(settings);
+        instances['customCursor'].enable();
+    }
 
     // Default ON — show bar unless user explicitly disabled it
     if (settings.enableGlobalPlayerBar === false) return;
@@ -265,6 +273,9 @@
             }
             if (instances['videoSpeedController']) {
                 instances['videoSpeedController'].update(newSettings);
+            }
+            if (instances['customCursor']) {
+                instances['customCursor'].update(newSettings);
             }
         });
     } catch (_) {}

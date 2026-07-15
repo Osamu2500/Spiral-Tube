@@ -1,8 +1,17 @@
-/* Blurred background image via ::after (keeps content sharp) */
-html[data-ypp-ui-style=frutiger-aero] body {
-  position: relative !important;
+/* Background image applied directly to html so it sits behind all stacking contexts */
+html[data-ypp-ui-style=frutiger-aero] {
   background-color: #bfe6ff !important;
+  background-image: url("https://i.postimg.cc/vTw2C9fR/image.avif") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] body {
+  background: transparent !important;
   background-image: none !important;
+  position: relative !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] body::after {
@@ -18,7 +27,7 @@ html[data-ypp-ui-style=frutiger-aero] body::after {
   background-repeat: no-repeat !important;
   filter: blur(8px) !important;
   transform: scale(1.1) !important;
-  z-index: -1 !important;
+  z-index: -2 !important;
   pointer-events: none !important;
 }
 

@@ -240,7 +240,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         }
 
         link.setAttribute('data-ui-style', uiStyleKey);
-        link.href = cssUrl;
+        link.href = cssUrl + '?v=' + Date.now();
         document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
         
         // Handle Frutiger Aero specific bubbles (respect Theme Effects toggle)

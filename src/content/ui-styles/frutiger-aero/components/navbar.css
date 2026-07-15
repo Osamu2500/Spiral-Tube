@@ -126,6 +126,34 @@ html[data-ypp-ui-style=frutiger-aero] ytd-searchbox#search > * {
   border-radius: var(--fa-radius-pill) !important;
 }
 
+/* Force white background on the entire searchbox host/container (new + old YouTube) */
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox,
+html[data-ypp-ui-style=frutiger-aero] #search.ytd-masthead,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentHost,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInputContainer,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInputBox,
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox #container.ytd-searchbox {
+  background: linear-gradient(to bottom, #ffffff 0%, #e6f7ff 100%) !important;
+  background-color: #ffffff !important;
+  color: #0b5fa3 !important;
+}
+
+/* Input field inside search bar - transparent so gradient shows through */
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox input,
+html[data-ypp-ui-style=frutiger-aero] input#search,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInput,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInputBox input {
+  background: transparent !important;
+  color: #0b5fa3 !important;
+  caret-color: #0b86c2 !important;
+}
+
+/* Placeholder text */
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox input::placeholder,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInput::placeholder {
+  color: rgba(11, 95, 163, 0.5) !important;
+}
+
 html[data-ypp-ui-style=frutiger-aero] #search-form.ytd-searchbox {
   background: linear-gradient(to bottom, #ffffff 0%, #e6f7ff 100%) !important;
   background-color: #ffffff !important;

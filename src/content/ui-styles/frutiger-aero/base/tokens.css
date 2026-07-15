@@ -93,10 +93,14 @@ html[data-ypp-ui-style=frutiger-aero] .gloss-edge-lit {
     inset 0 -10px 18px rgba(170, 255, 150, 0.12) !important;
 }
 /* src/content/themes/ui-styles/frutiger-aero/base/background.css */
-html[data-ypp-ui-style=frutiger-aero],
+/* Only body gets background:none - html keeps the actual background image */
 html[data-ypp-ui-style=frutiger-aero] body {
-  background-color: #bfe6ff !important;
+  background: transparent !important;
   background-image: none !important;
+  color: var(--yt-spec-text-primary) !important;
+  min-height: 100vh;
+}
+html[data-ypp-ui-style=frutiger-aero] {
   color: var(--yt-spec-text-primary) !important;
   min-height: 100vh;
 }
@@ -651,4 +655,49 @@ html {
   --yt-spec-badge-chip-background: transparent !important;
   --yt-spec-raised-background: transparent !important;
   --yt-spec-additive-background: transparent !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #center.ytd-masthead {
+    background: transparent !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox,
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox * {
+    --yt-searchbox-background: linear-gradient(to bottom, #ffffff, #f0f8ff) !important;
+    --ytd-searchbox-background: linear-gradient(to bottom, #ffffff, #f0f8ff) !important;
+    --ytd-searchbox-legacy-border-color: #7cbcd6 !important;
+    --ytd-searchbox-legacy-border-shadow-color: rgba(0,0,0,0.1) !important;
+    --ytd-searchbox-legacy-button-color: linear-gradient(to bottom, #ffffff, #dff4ff) !important;
+    --ytd-searchbox-legacy-button-border-color: #7cbcd6 !important;
+    --ytd-searchbox-legacy-button-hover-color: linear-gradient(to bottom, #ffffff, #cef) !important;
+    --ytd-searchbox-legacy-button-hover-border-color: #6ab4d1 !important;
+    --ytd-searchbox-legacy-button-icon-color: #0b5fa3 !important;
+}
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInputBox,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentHost,
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox #search-form.ytd-searchbox {
+    background: linear-gradient(to bottom, #ffffff, #f0f8ff) !important;
+    background-color: #ffffff !important;
+    border: 1px solid #7cbcd6 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), inset 0 -2px 6px #fff !important;
+}
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentSearchButton,
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox #search-icon-legacy {
+    background: linear-gradient(to bottom, #ffffff, #dff4ff) !important;
+    background-color: #dff4ff !important;
+    border: 1px solid #7cbcd6 !important;
+    border-left: none !important;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.9), inset 0 -1px 2px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentSearchButton *,
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox #search-icon-legacy * {
+    color: #0b5fa3 !important;
+    fill: #0b5fa3 !important;
+}
+html[data-ypp-ui-style=frutiger-aero] ytd-searchbox input,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInputBox input,
+html[data-ypp-ui-style=frutiger-aero] .ytSearchboxComponentInputBox {
+    color: #0b5fa3 !important;
+    text-shadow: none !important;
+    background: transparent !important;
 }
