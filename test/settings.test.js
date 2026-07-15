@@ -20,11 +20,11 @@ describe('Settings Schema Validation', () => {
     });
 
     it('should clamp numbers out of bounds', () => {
-        const raw = { thumbRadius: 999, sidebarOpacity: 10 };
+        const raw = { homeColumns: 999, fontScale: 10 };
         const result = schema.validateAndMerge(raw);
-        // max is 24, min is 50
-        expect(result.thumbRadius).toBe(24);
-        expect(result.sidebarOpacity).toBe(50);
+        // max is 10, min is 80
+        expect(result.homeColumns).toBe(10);
+        expect(result.fontScale).toBe(80);
     });
 
     it('should reset wrong types to default', () => {

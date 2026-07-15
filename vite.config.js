@@ -7,6 +7,9 @@ export default defineConfig({
     // from being misread as JSX closing tags during import analysis.
     jsx: 'preserve',
   },
+  test: {
+    exclude: ['scratch/**', 'node_modules/**']
+  },
   build: {
     outDir: 'dist',
     cssCodeSplit: false,
