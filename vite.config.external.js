@@ -25,7 +25,16 @@ export default defineConfig({
       }
     },
     emptyOutDir: false,
-    minify: 'esbuild',
+    minify: 'terser',
+    terserOptions: {
+      mangle: {
+        toplevel: true,
+      },
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     modulePreload: { polyfill: false }
   }
 });
