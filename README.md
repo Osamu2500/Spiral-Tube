@@ -24,11 +24,43 @@
 
 ## 📊 Extension Architecture
 
-[![Extension Architecture](https://quickchart.io/graphviz?graph=digraph%20G%20%7B%20node%20%5Bshape%3Dbox%2C%20style%3Dfilled%2C%20color%3D%22%234BC0C0%22%2C%20fontcolor%3Dwhite%2C%20fontname%3D%22Arial%22%5D%3B%20rankdir%3DTB%3B%20A%20%5Blabel%3D%22Spiral%20Tube%20Extension%22%5D%3B%20B%20%5Blabel%3D%22Background%20Service%20Worker%22%5D%3B%20C%20%5Blabel%3D%22Content%20Scripts%22%5D%3B%20D%20%5Blabel%3D%22Popup%20UI%20(Liquid%20Glass)%22%5D%3B%20E%20%5Blabel%3D%22Chrome%20Storage%20Sync%22%2C%20shape%3Dcylinder%2C%20color%3D%22%23FF6384%22%5D%3B%20F%20%5Blabel%3D%22Alarms%20%26%20Notifications%22%2C%20color%3D%22%2336A2EB%22%5D%3B%20G%20%5Blabel%3D%22MutationObserver%20SPA%20Handling%22%5D%3B%20I%20%5Blabel%3D%22UI%20Themes%22%5D%3B%20J%20%5Blabel%3D%22Player%20Enhancements%22%5D%3B%20K%20%5Blabel%3D%22Custom%20Elements%22%5D%3B%20L%20%5Blabel%3D%22Settings%20Management%22%5D%3B%20A%20-%3E%20B%3B%20A%20-%3E%20C%3B%20A%20-%3E%20D%3B%20B%20-%3E%20E%3B%20B%20-%3E%20F%3B%20C%20-%3E%20G%3B%20G%20-%3E%20I%3B%20G%20-%3E%20J%3B%20G%20-%3E%20K%3B%20D%20-%3E%20L%3B%20L%20-%3E%20E%3B%20%7D)](https://quickchart.io)
+<details open>
+<summary><b>🔍 Click to Expand Architecture Flowchart</b> (Interactive)</summary>
+<br>
 
-### Feature Distribution Overview
+```mermaid
+graph TD
+    classDef primary fill:#4f46e5,stroke:#fff,stroke-width:2px,color:#fff,rx:8px,ry:8px
+    classDef secondary fill:#0ea5e9,stroke:#fff,stroke-width:2px,color:#fff,rx:8px,ry:8px
+    classDef accent fill:#e11d48,stroke:#fff,stroke-width:2px,color:#fff,rx:8px,ry:8px
+    classDef dark fill:#1e293b,stroke:#94a3b8,stroke-width:2px,color:#fff,rx:8px,ry:8px
 
-[![Feature Distribution](https://quickchart.io/chart?c=%7Btype%3A%27outlabeledPie%27%2Cdata%3A%7Blabels%3A%5B%27Themes%20%26%20UI%27%2C%27Player%20Enhancements%27%2C%27Productivity%27%2C%27Navigation%27%2C%27Integrations%27%5D%2Cdatasets%3A%5B%7BbackgroundColor%3A%5B%27%23FF6384%27%2C%27%2336A2EB%27%2C%27%23FFCE56%27%2C%27%234BC0C0%27%2C%27%239966FF%27%5D%2Cdata%3A%5B35%2C25%2C15%2C15%2C10%5D%7D%5D%7D%2Coptions%3A%7Bplugins%3A%7Blegend%3Afalse%2Coutlabels%3A%7Btext%3A%27%25l%20%25p%27%2Ccolor%3A%27white%27%2Cstretch%3A35%2Cfont%3A%7Bresizable%3Atrue%2CminSize%3A12%2CmaxSize%3A18%7D%7D%7D%7D%7D)](https://quickchart.io)
+    A[🌀 Spiral Tube Extension]:::primary --> B[Background Service Worker]:::secondary
+    A --> C[Content Scripts]:::secondary
+    A --> D[Popup UI - Liquid Glass]:::secondary
+    
+    B --> E[(Chrome Storage Sync)]:::accent
+    B --> F[Alarms & Notifications]:::dark
+    
+    C --> G[MutationObserver SPA Handling]:::dark
+    G --> I[🎨 UI Themes: Frutiger Aero, Vintage]:::secondary
+    G --> J[▶️ Player Enhancements]:::secondary
+    G --> K[✨ Custom Elements]:::secondary
+    
+    D --> L[⚙️ Settings Management]:::dark
+    L --> E
+```
+</details>
+
+### 📈 Feature Distribution Overview
+
+| Category | Distribution | Description | Highlight Feature |
+|:---|:---:|:---|:---|
+| 🎨 **Themes & UI** | **35%** | Deep translucent backgrounds, animations, and custom CSS | *Frutiger Aero Theme* |
+| ▶️ **Player Enhancements** | **25%** | Audio EQ, custom speeds, auto-quality, cinema filters | *600% Volume Booster* |
+| ⚡ **Productivity** | **15%** | Time-saving macros and automation | *Multi-Select & AutoLike* |
+| 🧭 **Navigation** | **15%** | Distraction-free modes, zen mode, sidebar replacement | *Zen Mode* |
+| 🔗 **Integrations** | **10%** | Third-party analytics and data integration | *SponsorBlock* |
 
 ---
 
