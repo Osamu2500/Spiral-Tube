@@ -944,6 +944,10 @@ const initApp = () => {
         components.initAutoLikeInlineControls();
         components.initViewsFilterInlineSlider();
         components.initDateFilterInlineSliders();
+        components.initBasicInlineSlider('searchColumns', 4);
+        components.initBasicInlineSlider('channelColumns', 5);
+        components.initBasicInlineSlider('subscriptionsColumns', 5);
+        components.initBasicInlineSlider('historyColumns', 5);
         UI.initDualAccentToggle(document);
 
         // 5. Wire Universal Event Listeners

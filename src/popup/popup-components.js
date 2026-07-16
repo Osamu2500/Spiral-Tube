@@ -837,6 +837,25 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         });
     }
 
+    function initBasicInlineSlider(baseId, defaultValue) {
+        const sliderUI = document.getElementById(baseId + 'UI');
+        const sliderVal = document.getElementById(baseId + 'Value');
+        const hiddenInput = document.getElementById(baseId);
+        if (!sliderUI || !hiddenInput) return;
+
+        chrome.storage.local.get('settings', (data) => {
+            const val = data.settings?.[baseId] !== undefined ? data.settings[baseId] : defaultValue;
+            sliderUI.value = val;
+            if (sliderVal) sliderVal.textContent = val;
+        });
+
+        sliderUI.addEventListener('input', () => {
+            if (sliderVal) sliderVal.textContent = sliderUI.value;
+            hiddenInput.value = sliderUI.value;
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    }
+
     function initDateFilterInlineSliders() {
         const olderUI = document.getElementById('dateFilterOlderThresholdUI');
         const olderVal = document.getElementById('dateFilterOlderThresholdValue');
@@ -904,6 +923,7 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         applyThemeToPopup,
         initAutoLikeInlineControls,
         initViewsFilterInlineSlider,
-        initDateFilterInlineSliders
+        initDateFilterInlineSliders,
+        initBasicInlineSlider
     };
 }
