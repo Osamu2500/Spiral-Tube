@@ -99,6 +99,13 @@ function renderToggle(item, state) {
     label.appendChild(span);
     card.appendChild(label);
 
+    if (item.bottomSlot) {
+        const bottom = document.createElement('div');
+        bottom.className = 'sub-setting-row';
+        bottom.innerHTML = item.bottomSlot;
+        card.appendChild(bottom);
+    }
+
     _registerInput(input, state);
     return card;
 }
