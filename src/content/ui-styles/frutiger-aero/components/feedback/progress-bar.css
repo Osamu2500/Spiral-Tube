@@ -1,0 +1,23 @@
+/* ============================================================
+   components/feedback/progress-bar.css — Frutiger Aero Progress Bar
+   ============================================================ */
+
+/* Red progress bar at top of screen */
+html[data-ypp-ui-style=frutiger-aero] yt-page-navigation-progress {
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] yt-page-navigation-progress .yt-page-navigation-progress {
+  background: linear-gradient(to right, var(--fa-aqua-400, #35c7f0), var(--fa-aqua-600, #0b86c2)) !important;
+  box-shadow: 0 0 10px rgba(53, 199, 240, 0.8) !important;
+}
+
+/* Video player progress bar (red bar to aqua) */
+html[data-ypp-ui-style=frutiger-aero] .ytp-play-progress {
+  background: linear-gradient(to bottom, var(--fa-aqua-300, #7ddcf8) 0%, var(--fa-aqua-600, #0b86c2) 100%) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-swatch-background-color {
+  background-color: var(--fa-aqua-500, #12a8dd) !important;
+}

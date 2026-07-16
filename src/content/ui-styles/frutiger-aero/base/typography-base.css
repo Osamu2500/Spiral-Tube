@@ -1,0 +1,66 @@
+/* ============================================================
+   base/typography-base.css — Frutiger Aero Base Typography
+   Heading hierarchy, body text, links — all Aero-styled.
+   ============================================================ */
+
+/* ── Headings ── */
+html[data-ypp-ui-style=frutiger-aero] h1,
+html[data-ypp-ui-style=frutiger-aero] h2,
+html[data-ypp-ui-style=frutiger-aero] h3,
+html[data-ypp-ui-style=frutiger-aero] h4,
+html[data-ypp-ui-style=frutiger-aero] h5,
+html[data-ypp-ui-style=frutiger-aero] h6 {
+  font-family:  var(--fa-font-display, 'Segoe UI', sans-serif);
+  color:        var(--fa-text-primary, #111111);
+  line-height:  var(--fa-leading-tight, 1.25);
+  font-weight:  var(--fa-weight-bold, 700);
+  text-shadow:  var(--fa-text-shadow-light);
+}
+
+html[data-ypp-ui-style=frutiger-aero] h1 { font-size: var(--fa-text-4xl, 2.25rem); }
+html[data-ypp-ui-style=frutiger-aero] h2 { font-size: var(--fa-text-3xl, 1.875rem); }
+html[data-ypp-ui-style=frutiger-aero] h3 { font-size: var(--fa-text-2xl, 1.5rem); }
+html[data-ypp-ui-style=frutiger-aero] h4 { font-size: var(--fa-text-xl, 1.25rem); }
+html[data-ypp-ui-style=frutiger-aero] h5 { font-size: var(--fa-text-lg, 1.125rem); }
+html[data-ypp-ui-style=frutiger-aero] h6 { font-size: var(--fa-text-base, 1rem); }
+
+/* ── Body Text ── */
+html[data-ypp-ui-style=frutiger-aero] p {
+  color:       var(--fa-text-secondary, #333333);
+  line-height: var(--fa-leading-relaxed, 1.75);
+  margin:      0 0 var(--fa-space-4, 1rem);
+}
+
+/* ── Links ── */
+html[data-ypp-ui-style=frutiger-aero] a {
+  color:            var(--fa-text-link, #0b5fa3);
+  text-decoration:  none;
+  transition:       color var(--fa-duration-fast, 150ms) ease;
+}
+
+html[data-ypp-ui-style=frutiger-aero] a:hover {
+  color: var(--fa-text-link-hover, #0b86c2);
+  text-decoration: underline;
+}
+
+/* ── Small / Muted Text ── */
+html[data-ypp-ui-style=frutiger-aero] small,
+html[data-ypp-ui-style=frutiger-aero] .fa-text-muted {
+  font-size: var(--fa-text-sm, 0.875rem);
+  color:     var(--fa-text-muted, rgba(0, 0, 0, 0.50));
+}
+
+/* ── Code ── */
+html[data-ypp-ui-style=frutiger-aero] code,
+html[data-ypp-ui-style=frutiger-aero] pre {
+  font-family: var(--fa-font-mono, monospace);
+  font-size:   var(--fa-text-sm, 0.875rem);
+}
+
+html[data-ypp-ui-style=frutiger-aero] code {
+  background:    rgba(18, 168, 221, 0.12);
+  color:         #0b5fa3;
+  padding:       0.125rem 0.375rem;
+  border-radius: var(--fa-radius-sm, 8px);
+  border:        1px solid rgba(18, 168, 221, 0.25);
+}

@@ -1,0 +1,58 @@
+/* ============================================================
+   base/reset.css — Frutiger Aero Base Reset
+   Minimal reset scoped to Frutiger Aero context.
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] *,
+html[data-ypp-ui-style=frutiger-aero] *::before,
+html[data-ypp-ui-style=frutiger-aero] *::after {
+  box-sizing: border-box;
+}
+
+html[data-ypp-ui-style=frutiger-aero] img,
+html[data-ypp-ui-style=frutiger-aero] video {
+  max-width: 100%;
+  display: block;
+}
+
+html[data-ypp-ui-style=frutiger-aero] button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+html[data-ypp-ui-style=frutiger-aero] a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ul,
+html[data-ypp-ui-style=frutiger-aero] ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html[data-ypp-ui-style=frutiger-aero] p,
+html[data-ypp-ui-style=frutiger-aero] h1,
+html[data-ypp-ui-style=frutiger-aero] h2,
+html[data-ypp-ui-style=frutiger-aero] h3,
+html[data-ypp-ui-style=frutiger-aero] h4,
+html[data-ypp-ui-style=frutiger-aero] h5,
+html[data-ypp-ui-style=frutiger-aero] h6 {
+  margin: 0;
+  font-weight: inherit;
+}
+
+html[data-ypp-ui-style=frutiger-aero] input,
+html[data-ypp-ui-style=frutiger-aero] textarea,
+html[data-ypp-ui-style=frutiger-aero] select {
+  font: inherit;
+  color: inherit;
+}
+
+html[data-ypp-ui-style=frutiger-aero] svg {
+  display: inline-block;
+  vertical-align: middle;
+}

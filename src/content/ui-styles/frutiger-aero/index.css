@@ -1,19 +1,118 @@
-/* 17-File Structured UI Style */
+/* ============================================================
+   Frutiger Aero — Master UI Design File
+   Follows UI_DESIGN_STRUCTURE.md
+   ============================================================ */
 
-@import "./base/animations.css";
-@import "./base/background.css";
+/* 1. Tokens */
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/borders.css";
+@import "./tokens/shadows.css";
+@import "./tokens/motion.css";
+@import "./tokens/z-index.css";
 @import "./base/tokens.css";
+
+/* 2. Base */
+@import "./base/reset.css";
+@import "./base/root.css";
+@import "./base/typography-base.css";
+@import "./base/scrollbar.css";
+@import "./base/selection.css";
+@import "./base/accessibility.css";
+@import "./base/background.css";
+
+/* 3. Theme */
+@import "./theme/light.css";
+@import "./theme/dark.css";
+
+/* 4. Layout */
+@import "./layout/grid.css";
+@import "./layout/container.css";
+@import "./layout/flex.css";
+@import "./layout/stack.css";
+@import "./layout/sidebar.css";
+@import "./layout/header.css";
+@import "./layout/main.css";
+@import "./layout/footer.css";
+
+/* 5. Core Components */
+@import "./components/core/badge.css";
+@import "./components/core/checkbox.css";
+@import "./components/core/chip.css";
+@import "./components/core/divider.css";
+@import "./components/core/input.css";
+@import "./components/core/label.css";
+@import "./components/core/toggle.css";
+@import "./components/core/avatar.css";
+@import "./components/core/spinner.css";
+@import "./components/core/skeleton.css";
+@import "./components/core/tooltip.css";
+
+/* Original monolithic core components (legacy) */
 @import "./components/buttons.css";
-@import "./components/cards.css";
-@import "./components/comments.css";
 @import "./components/icons.css";
-@import "./components/menus.css";
+@import "./components/comments.css";
+
+/* 6. Cards */
+@import "./components/cards/card-base.css";
+@import "./components/cards/card-hover.css";
+@import "./components/cards/card-image.css";
+@import "./components/cards/card-glass.css";
+@import "./components/cards/card-compact.css";
+@import "./components/cards/card-media.css";
+@import "./components/cards/card-interactive.css";
+@import "./components/cards/card-stat.css";
+@import "./components/cards/card-profile.css";
+@import "./components/cards/card-gradient.css";
+@import "./components/cards/card-action.css";
+
+/* Legacy card fallback */
+@import "./components/cards.css";
+
+/* 7. Navigation */
+@import "./components/navigation/sidebar-nav.css";
+@import "./components/navigation/tabs.css";
+@import "./components/navigation/breadcrumb.css";
+@import "./components/navigation/pagination.css";
+@import "./components/navigation/bottom-nav.css";
 @import "./components/navbar.css";
+
+/* 8. Overlays */
+@import "./components/overlays/modal.css";
+@import "./components/overlays/drawer.css";
+@import "./components/overlays/toast.css";
+@import "./components/overlays/dropdown.css";
+@import "./components/overlays/context-menu.css";
+@import "./components/menus.css";
 @import "./components/panels.css";
-@import "./pages/channels.css";
-@import "./pages/comments.css";
+
+/* 9. Feedback */
+@import "./components/feedback/alert.css";
+@import "./components/feedback/progress-bar.css";
+@import "./components/feedback/progress-ring.css";
+@import "./components/feedback/empty-state.css";
+@import "./components/feedback/error-state.css";
+
+/* 10. Pages */
 @import "./pages/home.css";
-@import "./pages/livechat.css";
-@import "./pages/player.css";
-@import "./pages/search.css";
+@import "./pages/channels.css";
 @import "./pages/watch.css";
+@import "./pages/search.css";
+@import "./pages/player.css";
+@import "./pages/comments.css";
+@import "./pages/livechat.css";
+
+/* 11. Animations */
+@import "./animations/entrance.css";
+@import "./animations/exit.css";
+@import "./animations/transitions.css";
+@import "./animations/micro.css";
+
+/* 12. Utilities */
+@import "./utilities/display.css";
+@import "./utilities/text.css";
+@import "./utilities/sizing.css";
+@import "./utilities/position.css";
+@import "./utilities/cursor.css";
+@import "./utilities/visually-hidden.css";

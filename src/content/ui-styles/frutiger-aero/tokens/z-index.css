@@ -1,0 +1,21 @@
+/* ============================================================
+   tokens/z-index.css — Frutiger Aero Z-Index Scale
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero],
+html[data-ypp-card-style=frutiger-aero] {
+  --fa-z-below:    -1;
+  --fa-z-base:      0;
+  --fa-z-raised:    10;
+  --fa-z-overlay:   20;
+  --fa-z-sticky:    30;
+  --fa-z-navbar:    50;
+  --fa-z-drawer:    100;
+  --fa-z-modal:     200;
+  --fa-z-toast:     300;
+  --fa-z-tooltip:   400;
+  --fa-z-bubbles:   0;
+  --fa-z-gloss:     1;
+  --fa-z-content:   2;
+  --fa-z-noise:     100;
+}

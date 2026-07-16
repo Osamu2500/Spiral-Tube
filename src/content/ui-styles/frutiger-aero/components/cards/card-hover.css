@@ -1,0 +1,48 @@
+/* ============================================================
+   components/cards/card-hover.css — Frutiger Aero Card Hover
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-item-renderer:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--fa-shadow-card-hover, 0 8px 32px rgba(18, 168, 221, 0.28)) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(53, 199, 240, 0.6) !important;
+}
+
+/* Hover shine sweep effect */
+html[data-ypp-ui-style=frutiger-aero] .fa-card::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-item-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: var(--fa-z-gloss, 1);
+  pointer-events: none;
+  transition: none;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card:hover::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-item-renderer:hover::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer:hover::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer:hover::after {
+  animation: faShineSweep 1s ease-out;
+}
+
+@keyframes faShineSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}

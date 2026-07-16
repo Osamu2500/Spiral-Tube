@@ -1,0 +1,39 @@
+/* ============================================================
+   animations/entrance.css — Frutiger Aero Entrance Animations
+   ============================================================ */
+
+@keyframes faBounceUp {
+  0% {
+    transform: translateY(110vh) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.55; /* var(--fa-opacity-glass-base) */
+  }
+  90% {
+    opacity: 0.25; /* var(--fa-opacity-glass-light) */
+  }
+  100% {
+    transform: translateY(-20vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-animate-bounce-up {
+  animation: faBounceUp 10s ease-in-out infinite;
+}
+
+@keyframes faFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-animate-enter {
+  animation: faFadeInUp 0.4s var(--fa-ease-out) forwards;
+}

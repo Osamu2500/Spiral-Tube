@@ -782,7 +782,7 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
         }
     });
 
-    ['ambientIntensity', 'ambientBlur', 'blueLight', 'dim', 'homeColumns', 'searchColumns', 'channelColumns', 'subscriptionsColumns', 'historyColumns', 'minVideoDuration', 'watchTimeAlertHours', 'hideWatchedThreshold', 'autoLikeThreshold', 'intentionalDelayTime'].forEach(key => {
+    ['ambientIntensity', 'ambientBlur', 'blueLight', 'dim', 'homeColumns', 'searchColumns', 'channelColumns', 'subscriptionsColumns', 'historyColumns', 'minVideoDuration', 'watchTimeAlertHours', 'hideWatchedThreshold', 'intentionalDelayTime'].forEach(key => {
         const slider = state.elements[key];
         const display = document.getElementById(key + 'Value');
         if (slider) {
@@ -941,6 +941,9 @@ const initApp = () => {
         components.initCursorStyleGrid();
         components.initAccentColorSwatches();
         components.initCustomThemeBuilder();
+        components.initAutoLikeInlineControls();
+        components.initViewsFilterInlineSlider();
+        components.initDateFilterInlineSliders();
         UI.initDualAccentToggle(document);
 
         // 5. Wire Universal Event Listeners

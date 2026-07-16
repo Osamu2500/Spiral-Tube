@@ -1,0 +1,22 @@
+/* ============================================================
+   components/cards/card-profile.css — Frutiger Aero Profile Card
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card-profile,
+html[data-ypp-ui-style=frutiger-aero] ytd-channel-about-metadata-renderer {
+  background: var(--fa-surface-elevated, rgba(255, 255, 255, 0.85)) !important;
+  border-radius: var(--fa-radius-xl, 24px) !important;
+  padding: var(--fa-space-6, 1.5rem) !important;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 16px rgba(18, 168, 221, 0.1) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card-profile img,
+html[data-ypp-ui-style=frutiger-aero] .fa-card-profile yt-img-shadow {
+  width: 96px !important;
+  height: 96px !important;
+  margin: 0 auto var(--fa-space-4, 1rem) !important;
+  border: 4px solid #ffffff !important;
+  box-shadow: 0 4px 12px rgba(18, 168, 221, 0.2) !important;
+}

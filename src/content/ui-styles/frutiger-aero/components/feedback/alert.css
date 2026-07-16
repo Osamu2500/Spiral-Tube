@@ -1,0 +1,41 @@
+/* ============================================================
+   components/feedback/alert.css — Frutiger Aero Alerts/Banners
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-alert,
+html[data-ypp-ui-style=frutiger-aero] yt-mealbar-promo-renderer {
+  display: flex;
+  align-items: center;
+  padding: var(--fa-space-4, 1rem);
+  border-radius: var(--fa-radius-md, 12px) !important;
+  font-family: var(--fa-font-sans, 'Segoe UI', sans-serif) !important;
+  font-size: var(--fa-text-sm, 0.875rem) !important;
+  color: var(--fa-text-primary, #111111) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 
+    var(--fa-elevation-2, 0 4px 20px rgba(18, 168, 221, 0.14)),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
+}
+
+/* Base/Info Alert */
+html[data-ypp-ui-style=frutiger-aero] .fa-alert-info,
+html[data-ypp-ui-style=frutiger-aero] yt-mealbar-promo-renderer {
+  background: linear-gradient(135deg, rgba(220, 245, 255, 0.9), rgba(180, 225, 255, 0.6)) !important;
+  border-left: 4px solid var(--fa-color-info, #12a8dd) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-alert-success {
+  background: linear-gradient(135deg, rgba(230, 255, 230, 0.9), rgba(180, 240, 180, 0.6)) !important;
+  border-left: 4px solid var(--fa-color-success, #4caf50) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-alert-warning {
+  background: linear-gradient(135deg, rgba(255, 245, 220, 0.9), rgba(255, 225, 180, 0.6)) !important;
+  border-left: 4px solid var(--fa-color-warning, #ff9800) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-alert-error {
+  background: linear-gradient(135deg, rgba(255, 230, 230, 0.9), rgba(255, 180, 180, 0.6)) !important;
+  border-left: 4px solid var(--fa-color-error, #f44336) !important;
+}

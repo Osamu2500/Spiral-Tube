@@ -1,0 +1,24 @@
+/* ============================================================
+   layout/container.css — Frutiger Aero Page Containers
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-container {
+  width: 100%;
+  max-width: 1600px; /* YouTube max width usually */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--fa-space-4, 1rem);
+  padding-right: var(--fa-space-4, 1rem);
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-container-fluid {
+  width: 100%;
+  padding-left: var(--fa-space-4, 1rem);
+  padding-right: var(--fa-space-4, 1rem);
+}
+
+/* YouTube native page manager override */
+html[data-ypp-ui-style=frutiger-aero] ytd-page-manager {
+  max-width: 100vw;
+  overflow-x: hidden;
+}

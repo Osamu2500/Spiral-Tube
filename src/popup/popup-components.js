@@ -757,6 +757,137 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         }
     }
 
+    function initAutoLikeInlineControls() {
+        const typeBtn = document.getElementById('autoLikeDelayTypeBtn');
+        const hiddenType = document.getElementById('autoLikeDelayType');
+        const slider = document.getElementById('autoLikeThreshold');
+        const sliderVal = document.getElementById('autoLikeThresholdValue');
+        if (!typeBtn || !hiddenType || !slider) return;
+
+        const updateVisuals = (type) => {
+            hiddenType.value = type;
+            if (type === 'percent') {
+                typeBtn.textContent = '%';
+                typeBtn.title = 'Switch to Seconds';
+                slider.max = 100;
+                slider.step = 5;
+            } else {
+                typeBtn.textContent = 's';
+                typeBtn.title = 'Switch to Percent';
+                slider.max = 300;
+                slider.step = 1;
+            }
+            if (sliderVal) sliderVal.textContent = slider.value + (type === 'percent' ? '%' : 's');
+        };
+
+        chrome.storage.local.get('settings', (data) => {
+            const type = data.settings?.autoLikeDelayType || 'seconds';
+            updateVisuals(type);
+        });
+
+        typeBtn.addEventListener('click', () => {
+            const newType = hiddenType.value === 'percent' ? 'seconds' : 'percent';
+            updateVisuals(newType);
+            hiddenType.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        slider.addEventListener('input', () => {
+            if (sliderVal) sliderVal.textContent = slider.value + (hiddenType.value === 'percent' ? '%' : 's');
+        });
+    }
+
+    function initViewsFilterInlineSlider() {
+        const sliderUI = document.getElementById('viewsHideThresholdUI');
+        const sliderVal = document.getElementById('viewsHideThresholdValue');
+        const hiddenInput = document.getElementById('viewsHideThreshold');
+        if (!sliderUI || !hiddenInput) return;
+
+        const discreteOptions = [
+            { value: 0, label: 'Off' },
+            { value: 100, label: '100' },
+            { value: 500, label: '500' },
+            { value: 1000, label: '1,000' },
+            { value: 5000, label: '5,000' },
+            { value: 10000, label: '10k' },
+            { value: 50000, label: '50k' },
+            { value: 100000, label: '100k' },
+            { value: 500000, label: '500k' },
+            { value: 1000000, label: '1M' },
+            { value: 5000000, label: '5M' },
+            { value: 10000000, label: '10M' }
+        ];
+
+        const updateUI = (val) => {
+            let index = discreteOptions.findIndex(o => o.value == val);
+            if (index === -1) index = 0;
+            sliderUI.value = index;
+            if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
+        };
+
+        chrome.storage.local.get('settings', (data) => {
+            const val = data.settings?.viewsHideThreshold || 0;
+            updateUI(val);
+        });
+
+        sliderUI.addEventListener('input', () => {
+            const opt = discreteOptions[sliderUI.value];
+            if (sliderVal) sliderVal.textContent = opt.label;
+            hiddenInput.value = opt.value;
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    }
+
+    function initDateFilterInlineSliders() {
+        const olderUI = document.getElementById('dateFilterOlderThresholdUI');
+        const olderVal = document.getElementById('dateFilterOlderThresholdValue');
+        const olderHidden = document.getElementById('dateFilterOlderThreshold');
+        
+        const newerUI = document.getElementById('dateFilterNewerThresholdUI');
+        const newerVal = document.getElementById('dateFilterNewerThresholdValue');
+        const newerHidden = document.getElementById('dateFilterNewerThreshold');
+        
+        if (!olderUI || !newerUI) return;
+
+        const discreteOptions = [
+            { value: 0, label: 'Off' },
+            { value: 1, label: '1 day' },
+            { value: 2, label: '2 days' },
+            { value: 3, label: '3 days' },
+            { value: 7, label: '1 week' },
+            { value: 14, label: '2 weeks' },
+            { value: 21, label: '3 weeks' },
+            { value: 30, label: '1 month' },
+            { value: 90, label: '3 months' },
+            { value: 180, label: '6 months' },
+            { value: 365, label: '1 year' },
+            { value: 730, label: '2 years' },
+            { value: 1825, label: '5 years' },
+            { value: 3650, label: '10 years' }
+        ];
+
+        const setupSlider = (sliderUI, sliderVal, hiddenInput, keyName) => {
+            const updateUI = (val) => {
+                let index = discreteOptions.findIndex(o => o.value == val);
+                if (index === -1) index = 0;
+                sliderUI.value = index;
+                if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
+            };
+            chrome.storage.local.get('settings', (data) => {
+                const val = data.settings?.[keyName] || 0;
+                updateUI(val);
+            });
+            sliderUI.addEventListener('input', () => {
+                const opt = discreteOptions[sliderUI.value];
+                if (sliderVal) sliderVal.textContent = opt.label;
+                hiddenInput.value = opt.value;
+                hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+        };
+
+        setupSlider(olderUI, olderVal, olderHidden, 'dateFilterOlderThreshold');
+        setupSlider(newerUI, newerVal, newerHidden, 'dateFilterNewerThreshold');
+    }
+
     // Export these for external triggering if needed
     return {
         initThemeSelector,
@@ -770,6 +901,9 @@ export function initComponents(document, state, ui, updateSetting, notifyThemeCh
         initCursorStyleGrid,
         initAccentColorSwatches,
         initCustomThemeBuilder,
-        applyThemeToPopup
+        applyThemeToPopup,
+        initAutoLikeInlineControls,
+        initViewsFilterInlineSlider,
+        initDateFilterInlineSliders
     };
 }

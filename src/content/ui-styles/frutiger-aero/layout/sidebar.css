@@ -1,0 +1,13 @@
+/* ============================================================
+   layout/sidebar.css — Frutiger Aero Sidebar Layout
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] app-drawer#guide,
+html[data-ypp-ui-style=frutiger-aero] tp-yt-app-drawer {
+  z-index: var(--fa-z-drawer, 100) !important;
+}
+
+/* Ensure the main content pushes over correctly */
+html[data-ypp-ui-style=frutiger-aero] ytd-app[guide-persistent-and-visible] ytd-page-manager {
+  margin-left: 240px !important; /* Standard YT drawer width */
+}

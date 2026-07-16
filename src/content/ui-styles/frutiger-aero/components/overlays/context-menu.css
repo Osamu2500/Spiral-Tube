@@ -1,0 +1,28 @@
+/* ============================================================
+   components/overlays/context-menu.css — Frutiger Aero Context Menu
+   ============================================================ */
+
+/* Individual menu items */
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style=frutiger-aero] .fa-context-menu-item {
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  font-family: var(--fa-font-sans, 'Segoe UI', sans-serif) !important;
+  color: var(--fa-text-primary, #111111) !important;
+}
+
+/* Hover state on menu items */
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style=frutiger-aero] .fa-context-menu-item:hover {
+  background: linear-gradient(to right, rgba(220, 245, 255, 0.8), rgba(255, 255, 255, 0.4)) !important;
+  color: var(--fa-aqua-700, #066fa8) !important;
+}
+
+/* Icons inside menu items */
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-navigation-item-renderer yt-icon,
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-service-item-renderer yt-icon {
+  color: var(--fa-aqua-500, #12a8dd) !important;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.8)) !important;
+}

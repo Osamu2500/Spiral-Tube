@@ -1,0 +1,29 @@
+/* ============================================================
+   components/cards/card-interactive.css — Frutiger Aero Interactive Card
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card-interactive {
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(220, 240, 255, 0.6) 100%);
+  border: 1px solid rgba(18, 168, 221, 0.3);
+  border-radius: var(--fa-radius-md, 12px);
+  padding: var(--fa-space-4, 1rem);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card-interactive:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(180, 225, 255, 0.8) 100%);
+  border-color: rgba(53, 199, 240, 0.8);
+  box-shadow: 
+    0 4px 12px rgba(18, 168, 221, 0.2),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-card-interactive:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 4px rgba(18, 168, 221, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}

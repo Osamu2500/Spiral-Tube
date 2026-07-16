@@ -1,0 +1,15 @@
+/* ============================================================
+   animations/transitions.css — Frutiger Aero Transitions
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-transition-fast { transition: var(--fa-transition-fast) !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-transition-base { transition: var(--fa-transition-base) !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-transition-slow { transition: var(--fa-transition-slow) !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-transition-spring { transition: var(--fa-transition-spring) !important; }
+
+/* Global specific transitions */
+html[data-ypp-ui-style=frutiger-aero] a,
+html[data-ypp-ui-style=frutiger-aero] button,
+html[data-ypp-ui-style=frutiger-aero] input {
+  transition: var(--fa-transition-hover);
+}

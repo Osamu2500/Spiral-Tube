@@ -1,0 +1,11 @@
+/* ============================================================
+   layout/header.css — Frutiger Aero Header Layout
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] #masthead-container,
+html[data-ypp-ui-style=frutiger-aero] ytd-masthead {
+  position: sticky !important;
+  top: 0;
+  z-index: var(--fa-z-navbar, 50) !important;
+  width: 100%;
+}

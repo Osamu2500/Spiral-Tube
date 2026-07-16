@@ -1,0 +1,47 @@
+/* ============================================================
+   tokens/typography.css — Frutiger Aero Typography Scale
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero],
+html[data-ypp-card-style=frutiger-aero] {
+
+  /* ── Font Families ── */
+  --fa-font-sans:    'Segoe UI', 'Inter', Arial, sans-serif;
+  --fa-font-display: 'Segoe UI', 'Outfit', 'Inter', sans-serif;
+  --fa-font-mono:    'Consolas', 'JetBrains Mono', monospace;
+
+  /* ── Type Scale ── */
+  --fa-text-xs:   0.75rem;    /* 12px */
+  --fa-text-sm:   0.875rem;   /* 14px */
+  --fa-text-base: 1rem;       /* 16px */
+  --fa-text-lg:   1.125rem;   /* 18px */
+  --fa-text-xl:   1.25rem;    /* 20px */
+  --fa-text-2xl:  1.5rem;     /* 24px */
+  --fa-text-3xl:  1.875rem;   /* 30px */
+  --fa-text-4xl:  2.25rem;    /* 36px */
+  --fa-text-5xl:  3rem;       /* 48px */
+
+  /* ── Font Weights ── */
+  --fa-weight-regular:   400;
+  --fa-weight-medium:    500;
+  --fa-weight-semibold:  600;
+  --fa-weight-bold:      700;
+  --fa-weight-extrabold: 800;
+
+  /* ── Line Heights ── */
+  --fa-leading-tight:   1.25;
+  --fa-leading-snug:    1.375;
+  --fa-leading-normal:  1.5;
+  --fa-leading-relaxed: 1.75;
+
+  /* ── Letter Spacing ── */
+  --fa-tracking-tight:  -0.025em;
+  --fa-tracking-normal:  0em;
+  --fa-tracking-wide:    0.05em;
+  --fa-tracking-wider:   0.10em;
+
+  /* ── Text Shadows ── */
+  --fa-text-shadow-light: 0 1px 0 rgba(255, 255, 255, 0.90);
+  --fa-text-shadow-dark:  0 1px 2px rgba(0, 0, 0, 0.80);
+  --fa-text-shadow-glow:  0 0 8px rgba(53, 199, 240, 0.60);
+}

@@ -1,0 +1,58 @@
+/* ============================================================
+   components/core/checkbox.css — Frutiger Aero Checkboxes
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-checkbox,
+html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+  border: 1px solid #a0a0a0;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 1px 2px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-checkbox:checked,
+html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-checkbox[checked] {
+  background: linear-gradient(to bottom, #8fd12a 0%, #b6e84a 100%);
+  border-color: #6eb818;
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.9), 
+    0 0 6px rgba(143, 209, 42, 0.5);
+}
+
+/* Custom checkmark using pseudo-element */
+html[data-ypp-ui-style=frutiger-aero] .fa-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* YouTube native override */
+html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-checkbox #checkbox.tp-yt-paper-checkbox {
+  border: 1px solid #a0a0a0 !important;
+  background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%) !important;
+  border-radius: 4px !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-checkbox[checked] #checkbox.tp-yt-paper-checkbox {
+  background: linear-gradient(to bottom, #8fd12a 0%, #b6e84a 100%) !important;
+  border-color: #6eb818 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-checkbox #checkmark.tp-yt-paper-checkbox {
+  border-color: #ffffff !important;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
+}

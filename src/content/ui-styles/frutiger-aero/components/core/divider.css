@@ -1,0 +1,66 @@
+/* ============================================================
+   components/core/divider.css — Frutiger Aero Dividers
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] hr,
+html[data-ypp-ui-style=frutiger-aero] .fa-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(18, 168, 221, 0.3) 20%,
+    rgba(18, 168, 221, 0.3) 80%,
+    transparent 100%
+  );
+  margin: var(--fa-space-4, 1rem) 0;
+  position: relative;
+}
+
+/* Add a white highlight line below for inset/etched effect */
+html[data-ypp-ui-style=frutiger-aero] hr::after,
+html[data-ypp-ui-style=frutiger-aero] .fa-divider::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(255, 255, 255, 0.8) 80%,
+    transparent 100%
+  );
+}
+
+/* ── Vertical Divider ── */
+html[data-ypp-ui-style=frutiger-aero] .fa-divider-vertical {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(18, 168, 221, 0.3) 20%,
+    rgba(18, 168, 221, 0.3) 80%,
+    transparent 100%
+  );
+  margin: 0 var(--fa-space-4, 1rem);
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-divider-vertical::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(255, 255, 255, 0.8) 80%,
+    transparent 100%
+  );
+}

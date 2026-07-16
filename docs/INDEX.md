@@ -2,6 +2,15 @@
 
 This file serves as a wayfinding index for AI agents and developers. It maps every feature and functionality to its exact file path to prevent massive file scans and save AI context tokens.
 
+## 🎨 UI Design Standards
+
+> All UI designs in this project MUST conform to the master structure defined below.
+
+- **UI_DESIGN_STRUCTURE.md** — `F:\Youtube 2.0\docs\ui\UI_DESIGN_STRUCTURE.md`
+  — Master reference for all UI designs. Defines required tokens, base styles, theme,
+    layout, components, cards, pages, animations, utilities, and accessibility rules.
+    **Check this file before starting any new UI design.**
+
 ## Global & System Features
 - auto-scale-grid.js: `F:\Youtube 2.0\src\content\features\global\layout\auto-scale-grid.js`
 - channel-columns.js: `F:\Youtube 2.0\src\content\features\global\layout\channel-columns.js`

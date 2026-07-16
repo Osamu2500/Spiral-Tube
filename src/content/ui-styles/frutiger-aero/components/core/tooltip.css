@@ -1,0 +1,19 @@
+/* ============================================================
+   components/core/tooltip.css — Frutiger Aero Tooltips
+   Extracted from menus.css for modularity.
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip],
+html[data-ypp-ui-style=frutiger-aero] .fa-tooltip {
+  background: rgba(18, 168, 221, 0.9) !important;
+  backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
+  color: #ffffff !important;
+  border-radius: var(--fa-radius-sm, 8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4) !important;
+  font-family: var(--fa-font-sans, 'Segoe UI', sans-serif) !important;
+  font-size: var(--fa-text-xs, 0.75rem) !important;
+  font-weight: var(--fa-weight-medium, 500) !important;
+  padding: 6px 12px !important;
+}

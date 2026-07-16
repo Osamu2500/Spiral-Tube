@@ -1,0 +1,29 @@
+/* ============================================================
+   components/cards/card-image.css — Frutiger Aero Card Image
+   ============================================================ */
+
+/* Thumbnail styling inside cards */
+html[data-ypp-ui-style=frutiger-aero] .fa-card-image,
+html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail {
+  border-radius: var(--fa-radius-md, 12px) !important;
+  overflow: hidden !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background-color: var(--fa-surface-elevated, rgba(255, 255, 255, 0.85)) !important;
+  position: relative;
+}
+
+/* Glass overlay on the image itself */
+html[data-ypp-ui-style=frutiger-aero] .fa-card-image::after,
+html[data-ypp-ui-style=frutiger-aero] ytd-thumbnail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  pointer-events: none;
+}

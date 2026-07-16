@@ -1,0 +1,51 @@
+/* ============================================================
+   base/scrollbar.css — Frutiger Aero Custom Scrollbar
+   Aqua-tinted glass scrollbar matching the aesthetic.
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ::-webkit-scrollbar-track {
+  background: rgba(191, 230, 255, 0.30);
+  border-radius: var(--fa-radius-pill, 500px);
+}
+
+html[data-ypp-ui-style=frutiger-aero] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.90) 0%,
+    rgba(185, 228, 252, 0.80) 50%,
+    rgba(18,  168, 221, 0.70) 100%
+  );
+  border-radius: var(--fa-radius-pill, 500px);
+  border: 1px solid rgba(255, 255, 255, 0.70);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.90),
+    0 1px 3px rgba(18, 168, 221, 0.30);
+  transition: background var(--fa-duration-fast, 150ms) ease;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1.00) 0%,
+    rgba(160, 218, 250, 0.90) 50%,
+    rgba(11,  134, 194, 0.85) 100%
+  );
+  box-shadow:
+    inset 0 2px 6px rgba(255, 255, 255, 1),
+    0 0 8px rgba(53, 199, 240, 0.50);
+}
+
+html[data-ypp-ui-style=frutiger-aero] ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox scrollbar */
+html[data-ypp-ui-style=frutiger-aero] * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(18, 168, 221, 0.60) rgba(191, 230, 255, 0.30);
+}

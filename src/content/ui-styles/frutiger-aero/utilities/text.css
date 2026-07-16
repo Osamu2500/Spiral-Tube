@@ -1,0 +1,29 @@
+/* ============================================================
+   utilities/text.css — Frutiger Aero Text Utilities
+   ============================================================ */
+
+/* Alignment */
+html[data-ypp-ui-style=frutiger-aero] .fa-text-left { text-align: left !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-text-center { text-align: center !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-text-right { text-align: right !important; }
+
+/* Wrapping */
+html[data-ypp-ui-style=frutiger-aero] .fa-text-nowrap { white-space: nowrap !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-text-wrap { white-space: normal !important; }
+
+/* Truncation */
+html[data-ypp-ui-style=frutiger-aero] .fa-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Transforms */
+html[data-ypp-ui-style=frutiger-aero] .fa-uppercase { text-transform: uppercase !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-lowercase { text-transform: lowercase !important; }
+html[data-ypp-ui-style=frutiger-aero] .fa-capitalize { text-transform: capitalize !important; }
+
+/* Glass/Glow Effects */
+html[data-ypp-ui-style=frutiger-aero] .fa-text-glow {
+  text-shadow: var(--fa-text-shadow-glow, 0 0 8px rgba(53, 199, 240, 0.60)) !important;
+}

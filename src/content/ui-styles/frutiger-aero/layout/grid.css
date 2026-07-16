@@ -1,0 +1,28 @@
+/* ============================================================
+   layout/grid.css — Frutiger Aero Grid System
+   ============================================================ */
+
+html[data-ypp-ui-style=frutiger-aero] .fa-grid {
+  display: grid;
+  gap: var(--fa-space-4, 1rem);
+}
+
+html[data-ypp-ui-style=frutiger-aero] .fa-grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+html[data-ypp-ui-style=frutiger-aero] .fa-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html[data-ypp-ui-style=frutiger-aero] .fa-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+html[data-ypp-ui-style=frutiger-aero] .fa-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+html[data-ypp-ui-style=frutiger-aero] .fa-grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+html[data-ypp-ui-style=frutiger-aero] .fa-grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+/* Responsive YouTube Video Grid Overrides */
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-grid-row > #contents {
+  display: grid !important;
+  gap: var(--fa-space-4, 1rem) !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+  margin: 0 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-rich-item-renderer {
+  margin: 0 !important;
+  width: 100% !important;
+}
