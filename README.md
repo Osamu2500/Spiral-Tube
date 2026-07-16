@@ -53,53 +53,66 @@ graph TD
     G --> K[✨ Custom DOM Overrides]:::feature
     G --> M[⚡ Automation Engine]:::feature
     
-    %% Specific Features Under UI
-    I --> I1(Frutiger Aero Bubbles)
-    I --> I2(True Black / OLED)
-    I --> I3(Vintage & Blue Sky)
+    %% UI & Theming Engine
+    I --> I1(8+ Immersive Themes)
+    I1 -.-> I1a(Liquid Glass / True Black / Ambient)
+    I1 -.-> I1b(Vintage / Retro / Blue Sky)
+    I1 -.-> I1c(Frutiger Aero / Nature)
+    I --> I2(Typography & Layout Engine)
+    I2 -.-> I2a(Custom Fonts / Dynamic Scaling)
+    I2 -.-> I2b(Compact / Comfortable / Spacious Grids)
     
-    %% Specific Features Under Player
-    J --> J1(600% Volume Booster + EQ)
-    J --> J2(Cinema & Color Filters)
-    J --> J3(Auto-Quality 1080p+)
-    J --> J4(Decoupled Global Player Bar)
+    %% Advanced Player Controls
+    J --> J1(Pro Audio DSP)
+    J1 -.-> J1a(Parametric EQ / Compressor)
+    J1 -.-> J1b(600% Volume Booster)
+    J --> J2(Visual Cinema Controls)
+    J2 -.-> J2a(Brightness / Contrast / Saturation)
+    J2 -.-> J2b(Hardware Auto-Quality 1080p+)
+    J --> J3(Decoupled Global Player Bar)
     
-    %% Specific Features Under Custom DOM
-    K --> K1(Custom Cursors / Masonry Grid)
-    K --> K2(Playlist Duration Calculator)
-    K --> K3(Immersive Ambient Mode)
+    %% Custom DOM & Layout Injections
+    K --> K1(Custom Cursor Engine)
+    K1 -.-> K1a(Masonry Grid Selector)
+    K --> K2(Playlist Calculator SPA)
+    K --> K3(Immersive Ambient Extension)
     
-    %% Automation Engine
-    M --> M1(AutoLike Service)
-    M --> M2(Multi-Select Queue)
-    M --> M3(SmartDownload Integration)
+    %% Automation & Productivity
+    M --> M1(AutoLike Neural Trigger)
+    M --> M2(Multi-Select Queue Matrix)
+    M2 -.-> M2a(Save to Playlist Automation)
+    M --> M3(SmartDownload API Wrapper)
     
     %% Popup UI Sub-Modules
     D --> L[⚙️ Settings Management]:::dark
     L --> E[(Sync to Storage)]:::accent
-    D --> P1(Cinematic Filter Sliders)
-    D --> P2(Pro Equalizer UI)
-    D --> P3(Feature Toggles)
+    D --> P1(Cinematic Filter Control Center)
+    D --> P2(Pro Equalizer UI Panel)
+    D --> P3(Modular Feature Toggles)
 ```
 </details>
 
-### 📈 Comprehensive Feature Matrix
+### 📈 The Ultimate Feature Matrix
 
-| Module / Category | Component | Description | Highlights & Capabilities |
+<div align="center">
+  
+| 🧩 Core Module | ⚙️ Specific Sub-System | 📝 Deep-Dive Description | 🌟 Highlighted Capabilities |
 |:---|:---|:---|:---|
-| 🎨 **Themes & Aesthetic** | **Frutiger Aero** | Nostalgic UI complete with bouncing bubbles and aero text styles. | Dynamic radial gradients, CSS animations |
-| | **Liquid Glass** | Premium glowing interface with translucent backgrounds. | True Black OLED mode, spring animations |
-| ▶️ **Player Enhancements** | **Pro Audio Engine** | Full parametric EQ, Compressor, Balance, and up to 600% Volume Boost. | Persistent custom settings across sessions |
-| | **Visuals & Quality** | Brightness, contrast, saturation sliders. Auto-forces 1080p+ playback. | Cinema Filters, Ambient Mode extension |
-| | **Global Player Bar** | Decoupled player bar injected globally for ultimate control everywhere. | Custom Speed Control, Snapshot & Loop Tools |
-| ⚡ **Automation & Tools** | **AutoLike Integration** | Smart algorithm to automatically like videos from subscribed creators. | Configurable triggers, silent execution |
-| | **Multi-Select & Queue** | Advanced bulk selection for creating queues and saving to playlists. | "Save to Playlist" automation |
-| | **SmartDownload** | Direct player button to quickly fetch video resources. | Native UI integration |
-| 🧮 **Analytics & Data** | **ChannelHealthUI** | Comprehensive analytics dashboard overlay for watch history and channel statistics. | In-depth creator analytics |
-| | **Playlist Calculator** | Instantly calculates the precise total duration of any YouTube playlist. | SPA synchronized rendering |
-| 🧭 **Navigation & Focus** | **Custom Overrides** | Replaces default headers and sidebars with custom glassmorphic variants. | Masonry grid UI for Custom Cursors |
-| | **Focus Modes** | Zen Mode, Study Mode (forces 1.25x speed), Hook-Free Home (hides recommended). | Hides shorts, comments, and end screens |
-| 🔗 **Integrations** | **SponsorBlock** | Built directly into the core to seamlessly skip sponsorships and intros. | Community-driven timestamp skipping |
+| 🎨 **UI & Theming Engine** | **8+ Custom Themes** | A massive suite of high-fidelity themes. From glowing neon interfaces to nostalgic aero aesthetics and pure OLED blacks. | *Liquid Glass, True Black, Vintage, Blue Sky, Retro, Nature, Frutiger Aero* |
+| | **Layout Density & Typography** | Completely overwrite YouTube's margins and fonts. Choose from system fonts, Inter, or monospace with dynamic scaling. | *Compact/Spacious grids, Custom Font injections* |
+| ▶️ **Player Overhaul** | **Pro Audio DSP Engine** | Professional-grade audio processing bypassing default limits. Full parametric EQ, balance, and compressor logic. | *600% Volume Booster, Persistent Audio Profiles* |
+| | **Cinematic Visual Filters** | Hardware-accelerated CSS filters applied directly to the video canvas for perfect visual balancing. | *Brightness, Contrast, Saturation sliders* |
+| | **Global Player Bar** | A completely decoupled external player bar that travels with you across pages, giving instant control. | *Speed overrides, Snapshot captures, 1-Click Looping* |
+| ⚡ **Automation & Productivity** | **AutoLike Service** | Intelligent background service that detects subscribed creators and automatically supports them. | *Configurable watch-time triggers, silent execution* |
+| | **Multi-Select Matrix** | Overhauls standard lists into actionable queues. Select dozens of videos and process them instantly. | *"Save to Playlist" macros, advanced queueing* |
+| | **SmartDownload Integration** | Connects to external download APIs and injects a seamless fetch button into the native YouTube player. | *1-Click HQ downloading directly from the player UI* |
+| 🧮 **Analytics & Insights** | **ChannelHealthUI** | Intercepts standard metrics to build a comprehensive analytics dashboard right over the creator's page. | *Deep creator stats, watch-time tracking* |
+| | **Playlist Calculator** | Scrapes DOM elements dynamically in the SPA to calculate the exact total duration of un-watched playlist videos. | *Real-time synchronized rendering, SPA compliant* |
+| 🧭 **Navigation & Focus** | **Focus & Zen Modes** | Drastic layout changes intended for studying or theater-like viewing. Removes hooks and addictive UI traps. | *Hides Comments, Hides Shorts, Hides Recommended* |
+| | **Custom Header Buttons** | Replaces default sidebars and menus with glassmorphic top-bar actions for ultra-fast navigation. | *Custom Masonry UI, Immersive overrides* |
+| 🔗 **Core Integrations** | **SponsorBlock Bridge** | Connects to the community SponsorBlock API to automatically skip baked-in sponsorships and intros. | *Zero-click ad skipping, community-driven database* |
+
+</div>
 
 ---
 
