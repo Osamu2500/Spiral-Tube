@@ -81,6 +81,31 @@ export class GlobalBarUI {
     updateSettings(settings) {
         this.settings = { ...this.settings, ...settings };
         this.updatePosition();
+        this.updateButtonVisibility();
+    }
+
+    update(settings) {
+        this.updateSettings(settings);
+    }
+
+    updateButtonVisibility() {
+        if (!this.barElement) return;
+        const t = this.settings;
+        const b = this.barElement;
+        
+        const setDisp = (sel, show) => {
+            const el = b.querySelector(sel);
+            if (el) el.style.display = show !== false ? '' : 'none';
+        };
+
+        setDisp('#ypp-gpb-play', t.gpb_showPlay);
+        setDisp('#ypp-gpb-time', t.gpb_showTime);
+        setDisp('#ypp-gpb-mute', t.gpb_showVolume);
+        setDisp('.ypp-gpb-vol-container', t.gpb_showVolume);
+        setDisp('#ypp-gpb-loop', t.gpb_showLoop);
+        setDisp('#ypp-gpb-pip', t.gpb_showPip);
+        setDisp('#ypp-gpb-fullscreen', t.gpb_showFullscreen);
+        setDisp('#ypp-gpb-speed', t.gpb_showSpeed);
     }
 
     trackVideo(video) {

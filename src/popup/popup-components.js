@@ -1,929 +1,948 @@
 // popup-components.js — Specialized component initializers
+import { t } from '../shared/i18n.js';
 
 const escapeHTML = (str) => {
-    if (!str) return '';
-    return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 };
 
-export function initComponents(document, state, ui, updateSetting, notifyThemeChange, saveSettings) {
-    
-    function applyThemeToPopup(themeKey, customThemesObj = null, nativeThemeMode = 'dark') {
-        let actualThemeKey = themeKey;
-        if (themeKey === 'system') {
-            actualThemeKey = nativeThemeMode === 'light' ? 'minimalism' : 'midnight';
-        }
-        document.documentElement.setAttribute('data-ypp-theme', actualThemeKey);
-        document.documentElement.classList.add('yt-spiral-tube-theme');
-        const link = document.getElementById('ypp-active-theme-css');
-        if (link) link.remove();
-        
-        const applyCustom = (themes) => {
-            let style = document.getElementById('ypp-custom-theme-style');
-            if (style) style.remove();
-            
-            if (actualThemeKey.startsWith('custom_') && themes && themes[actualThemeKey]) {
-                const theme = themes[actualThemeKey];
-                style = document.createElement('style');
-                style.id = 'ypp-custom-theme-style';
-                const cssVars = Object.entries(theme.variables || {})
-                    .map(([k, v]) => `${k}: ${v} !important;`)
-                    .join('\n');
-                style.textContent = `:root {\n${cssVars}\n}`;
-                document.head.appendChild(style);
-            }
-        };
-
-        if (customThemesObj) {
-            applyCustom(customThemesObj);
-        } else if (themeKey.startsWith('custom_')) {
-            chrome.storage.local.get('settings', (data) => {
-                applyCustom(data.settings?.customThemes);
-            });
-        } else {
-            applyCustom({});
-        }
+export function initComponents(
+  document,
+  state,
+  ui,
+  updateSetting,
+  notifyThemeChange,
+  saveSettings
+) {
+  function applyThemeToPopup(themeKey, customThemesObj = null, nativeThemeMode = 'dark') {
+    let actualThemeKey = themeKey;
+    if (themeKey === 'system') {
+      actualThemeKey = nativeThemeMode === 'light' ? 'minimalism' : 'midnight';
     }
+    document.documentElement.setAttribute('data-ypp-theme', actualThemeKey);
+    document.documentElement.classList.add('yt-spiral-tube-theme');
+    const link = document.getElementById('ypp-active-theme-css');
+    if (link) link.remove();
 
-    function initThemeSelector(currentTheme) {
-        const themeGrid = document.getElementById('themeGrid');
-        if (!themeGrid) return;
+    const applyCustom = (themes) => {
+      let style = document.getElementById('ypp-custom-theme-style');
+      if (style) style.remove();
 
-        const themeCategories = [
-            {
-                name: 'System & Basics',
-                themes: [
-                    { key: 'system', label: 'System Auto', meta: 'Follows OS', color: 'split' },
-                    { key: 'default', label: 'YouTube Dark', meta: 'Default', color: '#0f0f0f' },
-                    { key: 'midnight', label: 'Midnight', meta: 'OLED Black', color: '#000000' },
-                    { key: 'minimalism', label: 'Minimalism', meta: 'Clean', color: '#fafafa' },
-                    { key: 'material', label: 'Material You', meta: 'Google M3', color: '#1f1f1f' }
-                ]
-            },
-            {
-                name: 'Core Colors',
-                themes: [
-                    { key: 'ocean', label: 'Ocean Blue', meta: 'Deep Blue', color: '#051421' },
-                    { key: 'forest', label: 'Forest', meta: 'Green', color: '#0f1c15' },
-                    { key: 'cherry', label: 'Cherry', meta: 'Pink', color: '#26181b' },
-                    { key: 'coffee', label: 'Coffee', meta: 'Latte', color: '#2a201c' },
-                    { key: 'bloodmoon', label: 'Blood Moon', meta: 'Crimson', color: '#1a0505' }
-                ]
-            },
-            {
-                name: 'Dark & Moody',
-                themes: [
-                    { key: 'dracula', label: 'Dracula', meta: 'High Contrast', color: '#282a36' },
-                    { key: 'nord', label: 'Nord', meta: 'Frost', color: '#2e3440' },
-                    { key: 'discord', label: 'Discord Dark', meta: 'Chat', color: '#36393f' },
-                    { key: 'hacker', label: 'Hacker Green', meta: 'Terminal', color: '#0a140a' },
-                    { key: 'abyss', label: 'Abyss', meta: 'Deep Sea', color: '#01080a' },
-                    { key: 'ember', label: 'Ember', meta: 'Hot Coals', color: '#141414' },
-                    { key: 'sunset', label: 'Sunset Glow', meta: 'Warm', color: '#1a0b1a' },
-                    { key: 'deepspace', label: 'Deep Space', meta: 'Nebula', color: '#020205' },
-                    { key: 'nebula', label: 'Nebula', meta: 'Purple Space', color: '#0f0518' },
-                    { key: 'terminalism', label: 'Terminalism', meta: 'Hacker', color: '#000000' }
-                ]
-            },
-            {
-                name: 'Sci-Fi & Cyber',
-                themes: [
-                    { key: 'cyberpunk', label: 'Cyberpunk', meta: 'Neon', color: '#0a0a0f' },
-                    { key: 'outrun', label: 'Outrun Synth', meta: '80s Retro', color: '#1a0524' },
-                    { key: 'hologram', label: 'Hologram', meta: 'Sci-Fi Cyan', color: '#e0f7fa' },
-                    { key: 'maximalism', label: 'Maximalism', meta: 'Loud', color: '#ff00ff' },
-                    { key: 'aurora', label: 'Aurora', meta: 'Lights', color: '#0a0a0a' }
-                ]
-            },
-            {
-                name: 'Retro & Aesthetics',
-                themes: [
-                    { key: 'retro', label: 'Retro OS', meta: 'Windows 95', color: '#c0c0c0' },
-                    { key: 'vintage', label: 'Vintage', meta: 'Classic', color: '#e0cda7' },
-                    { key: 'blue-sky', label: 'Blue Sky', meta: 'Airy Clouds', color: '#87ceeb' },
-                    { key: 'technozen', label: 'Technozen', meta: 'Eco Tech', color: '#dff4e8' },
-                    { key: 'frutiger-aero', label: 'Frutiger Aero', meta: 'Web 2.0', color: '#bfe6ff' },
-                    { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy 3D', color: '#f0e8ff' },
-                    { key: 'brutalism', label: 'Brutalism', meta: 'Raw UI', color: '#ffffff' },
-                    { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted', color: '#0f0c29' }
-                ]
-            }
-        ];
+      if (actualThemeKey.startsWith('custom_') && themes && themes[actualThemeKey]) {
+        const theme = themes[actualThemeKey];
+        style = document.createElement('style');
+        style.id = 'ypp-custom-theme-style';
+        const cssVars = Object.entries(theme.variables || {})
+          .map(([k, v]) => `${k}: ${v} !important;`)
+          .join('\n');
+        style.textContent = `:root {\n${cssVars}\n}`;
+        document.head.appendChild(style);
+      }
+    };
 
-        chrome.storage.local.get('settings', (data) => {
-            const nativeMode = data.settings?.nativeThemeMode || 'dark';
-            
-            // Update the system theme entry based on nativeMode
-            const sysCat = themeCategories.find(c => c.name === 'System & Basics');
-            if (sysCat) {
-                const sysTheme = sysCat.themes.find(t => t.key === 'system');
-                if (sysTheme) {
-                    sysTheme.label = nativeMode === 'dark' ? 'Native Dark' : 'Native Light';
-                    sysTheme.meta = 'Toggle to switch';
-                    sysTheme.color = nativeMode === 'dark' ? '#0f0f0f' : '#ffffff';
-                }
-            }
-            
-            const customThemesObj = data.settings?.customThemes || {};
-            const customThemes = Object.keys(customThemesObj).map(k => ({
-                key: k,
-                label: customThemesObj[k].name || 'Custom Theme',
-                meta: 'Custom',
-                color: customThemesObj[k].variables['--ypp-bg-base'] || '#000000',
-                isCustom: true
-            }));
+    if (customThemesObj) {
+      applyCustom(customThemesObj);
+    } else if (themeKey.startsWith('custom_')) {
+      chrome.storage.local.get('settings', (data) => {
+        applyCustom(data.settings?.customThemes);
+      });
+    } else {
+      applyCustom({});
+    }
+  }
 
-            if (customThemes.length > 0) {
-                themeCategories.unshift({
-                    name: 'Custom Themes',
-                    themes: customThemes
-                });
-            }
+  function initThemeSelector(currentTheme) {
+    const themeGrid = document.getElementById('themeGrid');
+    if (!themeGrid) return;
 
-            themeGrid.innerHTML = '';
-            themeGrid.style.display = 'flex';
-            themeGrid.style.flexDirection = 'column';
-            themeGrid.style.gap = '16px';
-            
-            themeCategories.forEach(category => {
-                const categoryWrapper = document.createElement('div');
-                categoryWrapper.className = 'theme-category-wrapper';
-                
-                const groupLabel = document.createElement('div');
-                groupLabel.className = 'theme-group-label';
-                groupLabel.textContent = category.name;
-                groupLabel.style.width = '100%';
-                groupLabel.style.fontSize = '11px';
-                groupLabel.style.color = 'rgba(255,255,255,0.4)';
-                groupLabel.style.textTransform = 'uppercase';
-                groupLabel.style.letterSpacing = '0.05em';
-                groupLabel.style.marginBottom = '8px';
-                groupLabel.style.fontWeight = '600';
-                categoryWrapper.appendChild(groupLabel);
+    const themeCategories = [
+      {
+        name: t('system_basics'),
+        themes: [
+          { key: 'system', label: t('system_auto'), meta: t('follows_os'), color: 'split' },
+          { key: 'default', label: t('youtube_dark'), meta: t('default'), color: '#0f0f0f' },
+          { key: 'midnight', label: t('midnight'), meta: t('oled_black'), color: '#000000' },
+          { key: 'minimalism', label: t('minimalism'), meta: t('clean'), color: '#fafafa' },
+          { key: 'material', label: t('material_you'), meta: t('google_m3'), color: '#1f1f1f' },
+        ],
+      },
+      {
+        name: t('core_colors'),
+        themes: [
+          { key: 'ocean', label: t('ocean_blue'), meta: t('deep_blue'), color: '#051421' },
+          { key: 'forest', label: t('forest'), meta: t('green'), color: '#0f1c15' },
+          { key: 'cherry', label: t('cherry'), meta: t('pink'), color: '#26181b' },
+          { key: 'coffee', label: t('coffee'), meta: t('latte'), color: '#2a201c' },
+          { key: 'bloodmoon', label: t('blood_moon'), meta: t('crimson'), color: '#1a0505' },
+        ],
+      },
+      {
+        name: t('dark_moody'),
+        themes: [
+          { key: 'dracula', label: t('dracula'), meta: t('high_contrast'), color: '#282a36' },
+          { key: 'nord', label: t('nord'), meta: t('frost'), color: '#2e3440' },
+          { key: 'discord', label: t('discord_dark'), meta: t('chat'), color: '#36393f' },
+          { key: 'hacker', label: t('hacker_green'), meta: t('terminal'), color: '#0a140a' },
+          { key: 'abyss', label: t('abyss'), meta: t('deep_sea'), color: '#01080a' },
+          { key: 'ember', label: t('ember'), meta: t('hot_coals'), color: '#141414' },
+          { key: 'sunset', label: t('sunset_glow'), meta: t('warm'), color: '#1a0b1a' },
+          { key: 'deepspace', label: t('deep_space'), meta: t('nebula'), color: '#020205' },
+          { key: 'nebula', label: t('nebula'), meta: t('purple_space'), color: '#0f0518' },
+          { key: 'terminalism', label: t('terminalism'), meta: t('hacker'), color: '#000000' },
+        ],
+      },
+      {
+        name: t('sci_fi_cyber'),
+        themes: [
+          { key: 'cyberpunk', label: t('cyberpunk'), meta: t('neon'), color: '#0a0a0f' },
+          { key: 'outrun', label: t('outrun_synth'), meta: t('80s_retro'), color: '#1a0524' },
+          { key: 'hologram', label: t('hologram'), meta: t('sci_fi_cyan'), color: '#e0f7fa' },
+          { key: 'maximalism', label: t('maximalism'), meta: t('loud'), color: '#ff00ff' },
+          { key: 'aurora', label: t('aurora'), meta: t('lights'), color: '#0a0a0a' },
+        ],
+      },
+      {
+        name: t('retro_aesthetics'),
+        themes: [
+          { key: 'retro', label: t('retro_os'), meta: t('windows_95'), color: '#c0c0c0' },
+          { key: 'vintage', label: t('vintage'), meta: t('classic'), color: '#e0cda7' },
+          { key: 'blue-sky', label: t('blue_sky'), meta: t('airy_clouds'), color: '#87ceeb' },
+          { key: 'technozen', label: t('technozen'), meta: t('eco_tech'), color: '#dff4e8' },
+          { key: 'frutiger-aero', label: t('frutiger_aero'), meta: t('web_2_0'), color: '#bfe6ff' },
+          { key: 'claymorphism', label: t('claymorphism'), meta: t('puffy_3d'), color: '#f0e8ff' },
+          { key: 'brutalism', label: t('brutalism'), meta: t('raw_ui'), color: '#ffffff' },
+          { key: 'glassmorphism', label: t('glassmorphism'), meta: t('frosted'), color: '#0f0c29' },
+        ],
+      },
+    ];
 
-                const innerGrid = document.createElement('div');
-                innerGrid.className = 'theme-grid-inner';
-                innerGrid.style.display = 'grid';
-                innerGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
-                innerGrid.style.gap = '8px';
-                innerGrid.style.width = '100%';
-                
-                category.themes.forEach(theme => {
-                    const btn = document.createElement('div');
-                    btn.className = `theme-btn ${theme.key === currentTheme ? 'active' : ''}`;
-                    btn.dataset.theme = theme.key;
-                    
-                    btn.style.backgroundColor = theme.color;
-                    // Determine if color is light to set text color and border
-                    const hex = theme.color.replace('#', '');
-                    const r = parseInt(hex.substr(0, 2), 16) || 0;
-                    const g = parseInt(hex.substr(2, 2), 16) || 0;
-                    const b = parseInt(hex.substr(4, 2), 16) || 0;
-                    const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-                    
-                    if (brightness > 155) {
-                        btn.style.color = '#000';
-                        btn.style.border = '1px solid rgba(0,0,0,0.5)';
-                    } else {
-                        btn.style.color = '#fff';
-                        btn.style.border = '1px solid rgba(255,255,255,0.3)';
-                    }
-                    
-                    const info = document.createElement('div');
-                    info.className = 'theme-info';
-                    info.innerHTML = `
+    chrome.storage.local.get('settings', (data) => {
+      const nativeMode = data.settings?.nativeThemeMode || 'dark';
+
+      // Update the system theme entry based on nativeMode
+      const sysCat = themeCategories.find((c) => c.name === 'System & Basics');
+      if (sysCat) {
+        const sysTheme = sysCat.themes.find((t) => t.key === 'system');
+        if (sysTheme) {
+          sysTheme.label = nativeMode === 'dark' ? t('native_dark') : t('native_light');
+          sysTheme.meta = t('toggle_to_switch');
+          sysTheme.color = nativeMode === 'dark' ? '#0f0f0f' : '#ffffff';
+        }
+      }
+
+      const customThemesObj = data.settings?.customThemes || {};
+      const customThemes = Object.keys(customThemesObj).map((k) => ({
+        key: k,
+        label: customThemesObj[k].name || t('custom_theme'),
+        meta: t('custom'),
+        color: customThemesObj[k].variables['--ypp-bg-base'] || '#000000',
+        isCustom: true,
+      }));
+
+      if (customThemes.length > 0) {
+        themeCategories.unshift({
+          name: t('custom_themes'),
+          themes: customThemes,
+        });
+      }
+
+      themeGrid.innerHTML = '';
+      themeGrid.style.display = 'flex';
+      themeGrid.style.flexDirection = 'column';
+      themeGrid.style.gap = '16px';
+
+      themeCategories.forEach((category) => {
+        const categoryWrapper = document.createElement('div');
+        categoryWrapper.className = 'theme-category-wrapper';
+
+        const groupLabel = document.createElement('div');
+        groupLabel.className = 'theme-group-label';
+        groupLabel.textContent = category.name;
+        groupLabel.style.width = '100%';
+        groupLabel.style.fontSize = '11px';
+        groupLabel.style.color = 'rgba(255,255,255,0.4)';
+        groupLabel.style.textTransform = 'uppercase';
+        groupLabel.style.letterSpacing = '0.05em';
+        groupLabel.style.marginBottom = '8px';
+        groupLabel.style.fontWeight = '600';
+        categoryWrapper.appendChild(groupLabel);
+
+        const innerGrid = document.createElement('div');
+        innerGrid.className = 'theme-grid-inner';
+        innerGrid.style.display = 'grid';
+        innerGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+        innerGrid.style.gap = '8px';
+        innerGrid.style.width = '100%';
+
+        category.themes.forEach((theme) => {
+          const btn = document.createElement('div');
+          btn.className = `theme-btn ${theme.key === currentTheme ? 'active' : ''}`;
+          btn.dataset.theme = theme.key;
+
+          btn.style.backgroundColor = theme.color;
+          // Determine if color is light to set text color and border
+          const hex = theme.color.replace('#', '');
+          const r = parseInt(hex.substr(0, 2), 16) || 0;
+          const g = parseInt(hex.substr(2, 2), 16) || 0;
+          const b = parseInt(hex.substr(4, 2), 16) || 0;
+          const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+          if (brightness > 155) {
+            btn.style.color = '#000';
+            btn.style.border = '1px solid rgba(0,0,0,0.5)';
+          } else {
+            btn.style.color = '#fff';
+            btn.style.border = '1px solid rgba(255,255,255,0.3)';
+          }
+
+          const info = document.createElement('div');
+          info.className = 'theme-info';
+          info.innerHTML = `
                         <span class="theme-name">${escapeHTML(theme.label)}</span>
                         <span class="theme-meta">${escapeHTML(theme.meta)}</span>
                     `;
 
-                    btn.appendChild(info);
+          btn.appendChild(info);
 
-                    if (theme.isCustom) {
-                        const delBtn = document.createElement('button');
-                        delBtn.innerHTML = '✕';
-                        delBtn.style.position = 'absolute';
-                        delBtn.style.top = '4px';
-                        delBtn.style.right = '4px';
-                        delBtn.style.background = 'rgba(0,0,0,0.5)';
-                        delBtn.style.border = 'none';
-                        delBtn.style.color = '#fff';
-                        delBtn.style.borderRadius = '50%';
-                        delBtn.style.width = '16px';
-                        delBtn.style.height = '16px';
-                        delBtn.style.fontSize = '10px';
-                        delBtn.style.cursor = 'pointer';
-                        delBtn.style.display = 'none';
-                        
-                        btn.style.position = 'relative';
-                        btn.addEventListener('mouseenter', () => delBtn.style.display = 'block');
-                        btn.addEventListener('mouseleave', () => delBtn.style.display = 'none');
-                        
-                        delBtn.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            if (confirm('Delete this custom theme?')) {
-                                chrome.storage.local.get('settings', (d) => {
-                                    const st = d.settings || {};
-                                    if (st.customThemes) {
-                                        delete st.customThemes[theme.key];
-                                    }
-                                    if (st.activeTheme === theme.key) {
-                                        st.activeTheme = 'default';
-                                    }
-                                    chrome.storage.local.set({ settings: st }, () => {
-                                        initThemeSelector(st.activeTheme);
-                                        applyThemeToPopup(st.activeTheme, st.customThemes);
-                                        notifyThemeChange(st.activeTheme);
-                                        // storage.onChanged handles the update in content scripts
-                                    });
-                                });
-                            }
-                        });
-                        btn.appendChild(delBtn);
-                    }
+          if (theme.isCustom) {
+            const delBtn = document.createElement('button');
+            delBtn.innerHTML = '✕';
+            delBtn.style.position = 'absolute';
+            delBtn.style.top = '4px';
+            delBtn.style.right = '4px';
+            delBtn.style.background = 'rgba(0,0,0,0.5)';
+            delBtn.style.border = 'none';
+            delBtn.style.color = '#fff';
+            delBtn.style.borderRadius = '50%';
+            delBtn.style.width = '16px';
+            delBtn.style.height = '16px';
+            delBtn.style.fontSize = '10px';
+            delBtn.style.cursor = 'pointer';
+            delBtn.style.display = 'none';
 
-                    btn.addEventListener('click', () => {
-                        const wasActive = btn.classList.contains('active');
-                        
-                        document.querySelectorAll('.theme-btn[data-theme]').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        const newTheme = theme.key;
-                        
-                        if (theme.key === 'system') {
-                            chrome.storage.local.get('settings', (d) => {
-                                const st = d.settings || {};
-                                if (wasActive) {
-                                    // Toggle mode
-                                    st.nativeThemeMode = (st.nativeThemeMode === 'light') ? 'dark' : 'light';
-                                    
-                                    // Update UI
-                                    const nextMode = st.nativeThemeMode;
-                                    theme.label = nextMode === 'dark' ? 'Native Dark' : 'Native Light';
-                                    theme.color = nextMode === 'dark' ? '#0f0f0f' : '#ffffff';
-                                    btn.style.backgroundColor = theme.color;
-                                    const infoName = btn.querySelector('.theme-name');
-                                    if (infoName) infoName.textContent = theme.label;
-                                    
-                                    if (nextMode === 'light') {
-                                        btn.style.color = '#000';
-                                        btn.style.border = '1px solid rgba(0,0,0,0.5)';
-                                        document.body.classList.remove('ypp-theme-dark');
-                                        localStorage.setItem('ypp-popup-dark', false);
-                                    } else {
-                                        btn.style.color = '#fff';
-                                        btn.style.border = '1px solid rgba(255,255,255,0.3)';
-                                        document.body.classList.add('ypp-theme-dark');
-                                        localStorage.setItem('ypp-popup-dark', true);
-                                    }
-                                } else {
-                                    const mode = st.nativeThemeMode || 'dark';
-                                    if (mode === 'light') {
-                                        document.body.classList.remove('ypp-theme-dark');
-                                        localStorage.setItem('ypp-popup-dark', false);
-                                    } else {
-                                        document.body.classList.add('ypp-theme-dark');
-                                        localStorage.setItem('ypp-popup-dark', true);
-                                    }
-                                }
-                                st.activeTheme = newTheme;
-                                st.premiumTheme = newTheme; // Sync with content script
-                                
-                                chrome.storage.local.set({ settings: st }, () => {
-                                    applyThemeToPopup(newTheme, customThemesObj, st.nativeThemeMode);
-                                    notifyThemeChange(newTheme, st);
-                                    
-                                    // Ensure content script gets the updated nativeThemeMode via storage.onChanged
-                                });
-                            });
-                        } else {
-                            // Update popup background color based on theme brightness
-                            const hex = (theme.color || '#000000').replace('#', '');
-                            const r = parseInt(hex.substr(0, 2), 16) || 0;
-                            const g = parseInt(hex.substr(2, 2), 16) || 0;
-                            const b = parseInt(hex.substr(4, 2), 16) || 0;
-                            const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-                            const isDark = brightness <= 155;
-                            if (isDark) {
-                                document.body.classList.add('ypp-theme-dark');
-                                localStorage.setItem('ypp-popup-dark', true);
-                            } else {
-                                document.body.classList.remove('ypp-theme-dark');
-                                localStorage.setItem('ypp-popup-dark', false);
-                            }
-                            
-                            updateSetting('activeTheme', newTheme);
-                            applyThemeToPopup(newTheme, customThemesObj);
-                            notifyThemeChange(newTheme);
-                        }
-                    });
+            btn.style.position = 'relative';
+            btn.addEventListener('mouseenter', () => (delBtn.style.display = 'block'));
+            btn.addEventListener('mouseleave', () => (delBtn.style.display = 'none'));
 
-                    innerGrid.appendChild(btn);
+            delBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              if (confirm(t('delete_this_custom_theme'))) {
+                chrome.storage.local.get('settings', (d) => {
+                  const st = d.settings || {};
+                  if (st.customThemes) {
+                    delete st.customThemes[theme.key];
+                  }
+                  if (st.activeTheme === theme.key) {
+                    st.activeTheme = 'default';
+                  }
+                  chrome.storage.local.set({ settings: st }, () => {
+                    initThemeSelector(st.activeTheme);
+                    applyThemeToPopup(st.activeTheme, st.customThemes);
+                    notifyThemeChange(st.activeTheme);
+                    // storage.onChanged handles the update in content scripts
+                  });
                 });
-                
-                categoryWrapper.appendChild(innerGrid);
-                themeGrid.appendChild(categoryWrapper);
+              }
             });
+            btn.appendChild(delBtn);
+          }
 
-            applyThemeToPopup(currentTheme, customThemesObj, nativeMode);
-        });
-    }
+          btn.addEventListener('click', () => {
+            const wasActive = btn.classList.contains('active');
 
-    function initCustomThemeBuilder() {
-        const saveBtn = document.getElementById('saveCustomThemeBtn');
-        const exportBtn = document.getElementById('exportCustomThemeBtn');
-        const importBtn = document.getElementById('importCustomThemeBtn');
-        const importFile = document.getElementById('importCustomThemeFile');
-        
-        if (!saveBtn) return;
-        
-        saveBtn.addEventListener('click', () => {
-            const nameInput = document.getElementById('customThemeName');
-            const bgBase = document.getElementById('customThemeBgBase').value;
-            const bgSurface = document.getElementById('customThemeBgSurface').value;
-            const accent = document.getElementById('customThemeAccent').value;
-            const text = document.getElementById('customThemeText').value;
-            
-            let name = nameInput.value.trim();
-            if (!name) name = 'My Custom Theme';
-            
-            const themeKey = 'custom_' + Date.now();
-            
-            chrome.storage.local.get('settings', (data) => {
-                const settings = data.settings || {};
-                if (!settings.customThemes) settings.customThemes = {};
-                
-                settings.customThemes[themeKey] = {
-                    name: name,
-                    variables: {
-                        '--ypp-bg-base': bgBase,
-                        '--ypp-bg-surface': bgSurface,
-                        '--ypp-accent-primary': accent,
-                        '--ypp-text-primary': text,
-                        '--ypp-bg-card': bgSurface,
-                        '--ypp-text-secondary': text + 'b3', // slightly transparent text
-                    }
-                };
-                
-                settings.activeTheme = themeKey;
-                
-                chrome.storage.local.set({ settings }, () => {
-                    initThemeSelector(themeKey);
-                    applyThemeToPopup(themeKey, settings.customThemes);
-                    notifyThemeChange(themeKey);
-                    nameInput.value = '';
-                    
-                    if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
-                    
-                    // UI and background handle storage.onChanged
-                });
-            });
-        });
+            document
+              .querySelectorAll('.theme-btn[data-theme]')
+              .forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+            const newTheme = theme.key;
 
-        if (exportBtn) {
-            exportBtn.addEventListener('click', () => {
-                chrome.storage.local.get('settings', (data) => {
-                    const customThemes = data.settings?.customThemes || {};
-                    if (Object.keys(customThemes).length === 0) {
-                        alert('No custom themes to export.');
-                        return;
-                    }
-                    const blob = new Blob([JSON.stringify(customThemes, null, 2)], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'ypp-custom-themes.json';
-                    a.click();
-                    URL.revokeObjectURL(url);
-                });
-            });
-        }
+            if (theme.key === 'system') {
+              chrome.storage.local.get('settings', (d) => {
+                const st = d.settings || {};
+                if (wasActive) {
+                  // Toggle mode
+                  st.nativeThemeMode = st.nativeThemeMode === 'light' ? 'dark' : 'light';
 
-        if (importBtn && importFile) {
-            importBtn.addEventListener('click', () => importFile.click());
-            importFile.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = (ev) => {
-                    try {
-                        const imported = JSON.parse(ev.target.result);
-                        chrome.storage.local.get('settings', (data) => {
-                            const settings = data.settings || {};
-                            if (!settings.customThemes) settings.customThemes = {};
-                            
-                            // Merge
-                            for (const [key, theme] of Object.entries(imported)) {
-                                if (key.startsWith('custom_') && theme.variables) {
-                                    settings.customThemes[key] = theme;
-                                }
-                            }
-                            
-                            chrome.storage.local.set({ settings }, () => {
-                                initThemeSelector(settings.activeTheme || 'default');
-                                alert('Themes imported successfully!');
-                                if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
-                            });
-                        });
-                    } catch (err) {
-                        alert('Invalid theme file.');
-                    }
-                };
-                reader.readAsText(file);
-                importFile.value = ''; // Reset
-            });
-        }
-    }
+                  // Update UI
+                  const nextMode = st.nativeThemeMode;
+                  theme.label = nextMode === 'dark' ? t('native_dark') : t('native_light');
+                  theme.color = nextMode === 'dark' ? '#0f0f0f' : '#ffffff';
+                  btn.style.backgroundColor = theme.color;
+                  const infoName = btn.querySelector('.theme-name');
+                  if (infoName) infoName.textContent = theme.label;
 
-    function initPremiumAccentDropdown() {
-        const select = document.getElementById('premiumAccentSelect');
-        const colorPicker = document.getElementById('accentColor');
-        if (!select || !colorPicker) return;
-
-        if (window.YPP && window.YPP.CONSTANTS && window.YPP.CONSTANTS.PREMIUM_COLORS) {
-            const colors = window.YPP.CONSTANTS.PREMIUM_COLORS;
-            for (const [key, hex] of Object.entries(colors)) {
-                const label = key.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-                const opt = document.createElement('option');
-                opt.value = hex;
-                opt.textContent = label;
-                select.appendChild(opt);
-            }
-        }
-
-        select.addEventListener('change', () => {
-            if (select.value) {
-                colorPicker.value = select.value;
-                colorPicker.dispatchEvent(new Event('input'));
-            }
-        });
-
-        colorPicker.addEventListener('input', () => {
-            select.value = colorPicker.value || '';
-        });
-
-        setTimeout(() => {
-            select.value = colorPicker.value || '';
-        }, 100);
-    }
-
-    function initSearchViewMode() {
-        const container = document.getElementById('searchViewModeToggle');
-        if (!container) return;
-
-        const btns = container.querySelectorAll('.view-mode-btn');
-
-        const applyActiveState = (mode) => {
-            btns.forEach(b => {
-                const isActive = b.dataset.mode === mode;
-                b.classList.toggle('active', isActive);
-                b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
-                b.style.color = isActive ? '#ff4e45' : 'rgba(255,255,255,0.5)';
-            });
-        };
-
-        chrome.storage.local.get(['searchViewMode'], (result) => {
-            const savedMode = result.searchViewMode || localStorage.getItem('ypp_searchViewMode') || 'grid';
-            applyActiveState(savedMode);
-        });
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const mode = btn.dataset.mode;
-                applyActiveState(mode);
-
-                chrome.storage.local.set({ searchViewMode: mode });
-                localStorage.setItem('ypp_searchViewMode', mode);
-
-                chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                    const tab = tabs[0];
-                    if (tab && tab.url && tab.url.includes('youtube.com/results')) {
-                        chrome.tabs.sendMessage(tab.id, {
-                            type: 'YPP_SET_SEARCH_VIEW_MODE',
-                            mode: mode
-                        }).catch(() => {});
-                    }
-                });
-            });
-        });
-    }
-
-
-    function initHideWatchedModePill() {
-        const btns = document.querySelectorAll('.hw-mode-btn');
-        const hiddenInput = document.getElementById('hideWatchedMode');
-        if (!btns.length || !hiddenInput) return;
-
-        const applyMode = (mode) => {
-            hiddenInput.value = mode;
-            btns.forEach(b => {
-                const isActive = b.dataset.mode === mode;
-                b.classList.toggle('active', isActive);
-                b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
-                b.style.color = isActive ? 'var(--accent, #3ea6ff)' : 'rgba(255,255,255,0.5)';
-            });
-        };
-
-        chrome.storage.local.get('settings', (data) => {
-            const mode = data.settings?.hideWatchedMode || 'dim';
-            applyMode(mode);
-        });
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                applyMode(btn.dataset.mode);
-                saveSettings(() => ui.showSaveIndicator(document));
-            });
-        });
-    }
-
-    function initGlobalPlayerBarGrid() {
-        const btns = document.querySelectorAll('.gpb-btn');
-        if (!btns.length) return;
-        
-        const syncState = () => {
-            btns.forEach(btn => {
-                const targetId = btn.dataset.target;
-                const cb = document.getElementById(targetId);
-                if (cb) btn.classList.toggle('active', cb.checked);
-            });
-        };
-
-        // Sync initial state slightly after popup-state.js loads settings
-        setTimeout(syncState, 150);
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.dataset.target;
-                const cb = document.getElementById(targetId);
-                if (cb) {
-                    cb.checked = !cb.checked;
-                    btn.classList.toggle('active', cb.checked);
-                    cb.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            });
-        });
-    }
-
-    function initCardStyleGrid() {
-        const btns = document.querySelectorAll('.card-style-btn[data-style]');
-        const hiddenInput = document.getElementById('cardStyle');
-        if (!btns.length || !hiddenInput) return;
-
-        const applyStyle = (styleVal) => {
-            hiddenInput.value = styleVal;
-            btns.forEach(b => {
-                const isActive = b.dataset.style === styleVal;
-                b.classList.toggle('active', isActive);
-            });
-        };
-
-        chrome.storage.local.get('settings', (data) => {
-            const styleVal = data.settings?.cardStyle || 'glass';
-            applyStyle(styleVal);
-        });
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                applyStyle(btn.dataset.style);
-                const event = new Event('change', { bubbles: true });
-                hiddenInput.dispatchEvent(event);
-            });
-        });
-    }
-
-    function initYoutubeStyleGrid() {
-        const btns = document.querySelectorAll('.youtube-style-btn');
-        const hiddenInput = document.getElementById('youtubePageTheme');
-        if (!btns.length || !hiddenInput) return;
-
-        const applyStyle = (styleVal) => {
-            hiddenInput.value = styleVal;
-            btns.forEach(b => {
-                const isActive = b.dataset.style === styleVal;
-                b.classList.toggle('active', isActive);
-            });
-        };
-
-        chrome.storage.local.get('settings', (data) => {
-            const styleVal = data.settings?.youtubePageTheme || 'default';
-            applyStyle(styleVal);
-        });
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                applyStyle(btn.dataset.style);
-                const event = new Event('change', { bubbles: true });
-                hiddenInput.dispatchEvent(event);
-            });
-        });
-    }
-
-    function initPopupStyleGrid() {
-        const btns = document.querySelectorAll('.popup-style-btn');
-        const hiddenInput = document.getElementById('popupUiTheme');
-        if (!btns.length || !hiddenInput) return;
-
-        const applyStyle = (styleVal) => {
-            hiddenInput.value = styleVal;
-            btns.forEach(b => {
-                const isActive = b.dataset.style === styleVal;
-                b.classList.toggle('active', isActive);
-            });
-        };
-
-        chrome.storage.local.get('settings', (data) => {
-            const styleVal = data.settings?.popupUiTheme || 'liquid-glass';
-            applyStyle(styleVal);
-        });
-
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                applyStyle(btn.dataset.style);
-                const event = new Event('change', { bubbles: true });
-                hiddenInput.dispatchEvent(event);
-            });
-        });
-    }
-
-    function initCursorStyleGrid() {
-        const btns = document.querySelectorAll('.cursor-style-btn');
-        const hiddenInput = document.getElementById('customCursor');
-        if (!btns.length || !hiddenInput) return;
-
-        const applyStyle = (styleVal) => {
-            hiddenInput.value = styleVal;
-            btns.forEach(b => {
-                const isActive = b.dataset.style === styleVal;
-                b.classList.toggle('active', isActive);
-                if (isActive) {
-                    b.style.background = 'rgba(255,255,255,0.15)';
-                    b.style.border = '1px solid rgba(255,255,255,0.3)';
+                  if (nextMode === 'light') {
+                    btn.style.color = '#000';
+                    btn.style.border = '1px solid rgba(0,0,0,0.5)';
+                    document.body.classList.remove('ypp-theme-dark');
+                    localStorage.setItem('ypp-popup-dark', false);
+                  } else {
+                    btn.style.color = '#fff';
+                    btn.style.border = '1px solid rgba(255,255,255,0.3)';
+                    document.body.classList.add('ypp-theme-dark');
+                    localStorage.setItem('ypp-popup-dark', true);
+                  }
                 } else {
-                    b.style.background = 'rgba(255,255,255,0.03)';
-                    b.style.border = '1px solid rgba(255,255,255,0.05)';
+                  const mode = st.nativeThemeMode || 'dark';
+                  if (mode === 'light') {
+                    document.body.classList.remove('ypp-theme-dark');
+                    localStorage.setItem('ypp-popup-dark', false);
+                  } else {
+                    document.body.classList.add('ypp-theme-dark');
+                    localStorage.setItem('ypp-popup-dark', true);
+                  }
                 }
-            });
-        };
+                st.activeTheme = newTheme;
+                st.premiumTheme = newTheme; // Sync with content script
 
-        chrome.storage.local.get('settings', (data) => {
-            const savedCursor = data.settings?.customCursor || 'default';
-            applyStyle(savedCursor);
-        });
+                chrome.storage.local.set({ settings: st }, () => {
+                  applyThemeToPopup(newTheme, customThemesObj, st.nativeThemeMode);
+                  notifyThemeChange(newTheme, st);
 
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                applyStyle(btn.dataset.style);
-                const event = new Event('change', { bubbles: true });
-                hiddenInput.dispatchEvent(event);
-            });
-        });
-    }
-
-    function initAccentColorSwatches() {
-        const swatches = document.querySelectorAll('.color-swatch[data-color]');
-        const customInput = document.getElementById('accentColor');
-        if (!customInput) return;
-
-        const dualModeToggle = document.getElementById('dualColorMode');
-        const secondaryGroup = document.getElementById('secondaryAccentGroup');
-        const primaryInput = document.getElementById('primaryAccentColor');
-        const secondaryInput = document.getElementById('secondaryAccentColor');
-
-        const applySwatchActive = (color) => {
-            let foundMatch = false;
-            swatches.forEach(swatch => {
-                const isActive = swatch.dataset.color.toLowerCase() === color.toLowerCase();
-                swatch.classList.toggle('active', isActive);
-                if (isActive) foundMatch = true;
-            });
-            if (!foundMatch && customInput) {
-                customInput.value = color;
-                if (customInput.previousElementSibling) customInput.previousElementSibling.classList.add('active');
-            } else if (customInput && customInput.previousElementSibling) {
-                customInput.previousElementSibling.classList.remove('active');
-            }
-            if (primaryInput) primaryInput.value = color;
-        };
-
-        chrome.storage.local.get('settings', (data) => {
-            const color = data.settings?.accentColor || '#ff4e45';
-            const dualMode = data.settings?.dualColorMode || false;
-            const secColor = data.settings?.secondaryAccentColor || '#00e5ff';
-            
-            applySwatchActive(color);
-            if (dualModeToggle) dualModeToggle.checked = dualMode;
-            if (secondaryInput) secondaryInput.value = secColor;
-            if (secondaryGroup) secondaryGroup.style.display = dualMode ? 'block' : 'none';
-        });
-
-        swatches.forEach(swatch => {
-            swatch.addEventListener('click', () => {
-                const color = swatch.dataset.color;
-                if (customInput) customInput.value = color;
-                if (primaryInput) primaryInput.value = color;
-                applySwatchActive(color);
-                
-                // If dual color mode is ON, and user clicks a swatch, we just update primary for now
-                // Or maybe we can update the accentColor
-                const event = new Event('change', { bubbles: true });
-                if (customInput) customInput.dispatchEvent(event);
-                if (primaryInput) primaryInput.dispatchEvent(event);
-            });
-        });
-
-        if (customInput) {
-            customInput.addEventListener('input', () => {
-                applySwatchActive(customInput.value);
-                if (primaryInput) primaryInput.value = customInput.value;
-            });
-        }
-        
-        if (primaryInput) {
-            primaryInput.addEventListener('input', () => {
-                applySwatchActive(primaryInput.value);
-                if (customInput) customInput.value = primaryInput.value;
-                const event = new Event('change', { bubbles: true });
-                if (customInput) customInput.dispatchEvent(event);
-            });
-        }
-
-        if (dualModeToggle) {
-            dualModeToggle.addEventListener('change', () => {
-                if (secondaryGroup) secondaryGroup.style.display = dualModeToggle.checked ? 'block' : 'none';
-            });
-        }
-    }
-
-    function initAutoLikeInlineControls() {
-        const typeBtn = document.getElementById('autoLikeDelayTypeBtn');
-        const hiddenType = document.getElementById('autoLikeDelayType');
-        const slider = document.getElementById('autoLikeThreshold');
-        const sliderVal = document.getElementById('autoLikeThresholdValue');
-        if (!typeBtn || !hiddenType || !slider) return;
-
-        const updateVisuals = (type) => {
-            hiddenType.value = type;
-            if (type === 'percent') {
-                typeBtn.textContent = '%';
-                typeBtn.title = 'Switch to Seconds';
-                slider.max = 100;
-                slider.step = 5;
+                  // Ensure content script gets the updated nativeThemeMode via storage.onChanged
+                });
+              });
             } else {
-                typeBtn.textContent = 's';
-                typeBtn.title = 'Switch to Percent';
-                slider.max = 300;
-                slider.step = 1;
+              // Update popup background color based on theme brightness
+              const hex = (theme.color || '#000000').replace('#', '');
+              const r = parseInt(hex.substr(0, 2), 16) || 0;
+              const g = parseInt(hex.substr(2, 2), 16) || 0;
+              const b = parseInt(hex.substr(4, 2), 16) || 0;
+              const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+              const isDark = brightness <= 155;
+              if (isDark) {
+                document.body.classList.add('ypp-theme-dark');
+                localStorage.setItem('ypp-popup-dark', true);
+              } else {
+                document.body.classList.remove('ypp-theme-dark');
+                localStorage.setItem('ypp-popup-dark', false);
+              }
+
+              updateSetting('activeTheme', newTheme);
+              applyThemeToPopup(newTheme, customThemesObj);
+              notifyThemeChange(newTheme);
             }
-            if (sliderVal) sliderVal.textContent = slider.value + (type === 'percent' ? '%' : 's');
+          });
+
+          innerGrid.appendChild(btn);
+        });
+
+        categoryWrapper.appendChild(innerGrid);
+        themeGrid.appendChild(categoryWrapper);
+      });
+
+      applyThemeToPopup(currentTheme, customThemesObj, nativeMode);
+    });
+  }
+
+  function initCustomThemeBuilder() {
+    const saveBtn = document.getElementById('saveCustomThemeBtn');
+    const exportBtn = document.getElementById('exportCustomThemeBtn');
+    const importBtn = document.getElementById('importCustomThemeBtn');
+    const importFile = document.getElementById('importCustomThemeFile');
+
+    if (!saveBtn) return;
+
+    saveBtn.addEventListener('click', () => {
+      const nameInput = document.getElementById('customThemeName');
+      const bgBase = document.getElementById('customThemeBgBase').value;
+      const bgSurface = document.getElementById('customThemeBgSurface').value;
+      const accent = document.getElementById('customThemeAccent').value;
+      const text = document.getElementById('customThemeText').value;
+
+      let name = nameInput.value.trim();
+      if (!name) name = 'My Custom Theme';
+
+      const themeKey = 'custom_' + Date.now();
+
+      chrome.storage.local.get('settings', (data) => {
+        const settings = data.settings || {};
+        if (!settings.customThemes) settings.customThemes = {};
+
+        settings.customThemes[themeKey] = {
+          name: name,
+          variables: {
+            '--ypp-bg-base': bgBase,
+            '--ypp-bg-surface': bgSurface,
+            '--ypp-accent-primary': accent,
+            '--ypp-text-primary': text,
+            '--ypp-bg-card': bgSurface,
+            '--ypp-text-secondary': text + 'b3', // slightly transparent text
+          },
         };
 
+        settings.activeTheme = themeKey;
+
+        chrome.storage.local.set({ settings }, () => {
+          initThemeSelector(themeKey);
+          applyThemeToPopup(themeKey, settings.customThemes);
+          notifyThemeChange(themeKey);
+          nameInput.value = '';
+
+          if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+
+          // UI and background handle storage.onChanged
+        });
+      });
+    });
+
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
         chrome.storage.local.get('settings', (data) => {
-            const type = data.settings?.autoLikeDelayType || 'seconds';
-            updateVisuals(type);
+          const customThemes = data.settings?.customThemes || {};
+          if (Object.keys(customThemes).length === 0) {
+            alert(t('no_custom_themes_to_export'));
+            return;
+          }
+          const blob = new Blob([JSON.stringify(customThemes, null, 2)], {
+            type: 'application/json',
+          });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'ypp-custom-themes.json';
+          a.click();
+          URL.revokeObjectURL(url);
         });
-
-        typeBtn.addEventListener('click', () => {
-            const newType = hiddenType.value === 'percent' ? 'seconds' : 'percent';
-            updateVisuals(newType);
-            hiddenType.dispatchEvent(new Event('change', { bubbles: true }));
-        });
-
-        slider.addEventListener('input', () => {
-            if (sliderVal) sliderVal.textContent = slider.value + (hiddenType.value === 'percent' ? '%' : 's');
-        });
+      });
     }
 
-    function initViewsFilterInlineSlider() {
-        const sliderUI = document.getElementById('viewsHideThresholdUI');
-        const sliderVal = document.getElementById('viewsHideThresholdValue');
-        const hiddenInput = document.getElementById('viewsHideThreshold');
-        if (!sliderUI || !hiddenInput) return;
-
-        const discreteOptions = [
-            { value: 0, label: 'Off' },
-            { value: 100, label: '100' },
-            { value: 500, label: '500' },
-            { value: 1000, label: '1,000' },
-            { value: 5000, label: '5,000' },
-            { value: 10000, label: '10k' },
-            { value: 50000, label: '50k' },
-            { value: 100000, label: '100k' },
-            { value: 500000, label: '500k' },
-            { value: 1000000, label: '1M' },
-            { value: 5000000, label: '5M' },
-            { value: 10000000, label: '10M' }
-        ];
-
-        const updateUI = (val) => {
-            let index = discreteOptions.findIndex(o => o.value == val);
-            if (index === -1) index = 0;
-            sliderUI.value = index;
-            if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
-        };
-
-        chrome.storage.local.get('settings', (data) => {
-            const val = data.settings?.viewsHideThreshold || 0;
-            updateUI(val);
-        });
-
-        sliderUI.addEventListener('input', () => {
-            const opt = discreteOptions[sliderUI.value];
-            if (sliderVal) sliderVal.textContent = opt.label;
-            hiddenInput.value = opt.value;
-            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
-        });
-    }
-
-    function initBasicInlineSlider(baseId, defaultValue) {
-        const sliderUI = document.getElementById(baseId + 'UI');
-        const sliderVal = document.getElementById(baseId + 'Value');
-        const hiddenInput = document.getElementById(baseId);
-        if (!sliderUI || !hiddenInput) return;
-
-        chrome.storage.local.get('settings', (data) => {
-            const val = data.settings?.[baseId] !== undefined ? data.settings[baseId] : defaultValue;
-            sliderUI.value = val;
-            if (sliderVal) sliderVal.textContent = val;
-        });
-
-        sliderUI.addEventListener('input', () => {
-            if (sliderVal) sliderVal.textContent = sliderUI.value;
-            hiddenInput.value = sliderUI.value;
-            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
-        });
-    }
-
-    function initDateFilterInlineSliders() {
-        const olderUI = document.getElementById('dateFilterOlderThresholdUI');
-        const olderVal = document.getElementById('dateFilterOlderThresholdValue');
-        const olderHidden = document.getElementById('dateFilterOlderThreshold');
-        
-        const newerUI = document.getElementById('dateFilterNewerThresholdUI');
-        const newerVal = document.getElementById('dateFilterNewerThresholdValue');
-        const newerHidden = document.getElementById('dateFilterNewerThreshold');
-        
-        if (!olderUI || !newerUI) return;
-
-        const discreteOptions = [
-            { value: 0, label: 'Off' },
-            { value: 1, label: '1 day' },
-            { value: 2, label: '2 days' },
-            { value: 3, label: '3 days' },
-            { value: 7, label: '1 week' },
-            { value: 14, label: '2 weeks' },
-            { value: 21, label: '3 weeks' },
-            { value: 30, label: '1 month' },
-            { value: 90, label: '3 months' },
-            { value: 180, label: '6 months' },
-            { value: 365, label: '1 year' },
-            { value: 730, label: '2 years' },
-            { value: 1825, label: '5 years' },
-            { value: 3650, label: '10 years' }
-        ];
-
-        const setupSlider = (sliderUI, sliderVal, hiddenInput, keyName) => {
-            const updateUI = (val) => {
-                let index = discreteOptions.findIndex(o => o.value == val);
-                if (index === -1) index = 0;
-                sliderUI.value = index;
-                if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
-            };
+    if (importBtn && importFile) {
+      importBtn.addEventListener('click', () => importFile.click());
+      importFile.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const imported = JSON.parse(ev.target.result);
             chrome.storage.local.get('settings', (data) => {
-                const val = data.settings?.[keyName] || 0;
-                updateUI(val);
-            });
-            sliderUI.addEventListener('input', () => {
-                const opt = discreteOptions[sliderUI.value];
-                if (sliderVal) sliderVal.textContent = opt.label;
-                hiddenInput.value = opt.value;
-                hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
-            });
-        };
+              const settings = data.settings || {};
+              if (!settings.customThemes) settings.customThemes = {};
 
-        setupSlider(olderUI, olderVal, olderHidden, 'dateFilterOlderThreshold');
-        setupSlider(newerUI, newerVal, newerHidden, 'dateFilterNewerThreshold');
+              // Merge
+              for (const [key, theme] of Object.entries(imported)) {
+                if (key.startsWith('custom_') && theme.variables) {
+                  settings.customThemes[key] = theme;
+                }
+              }
+
+              chrome.storage.local.set({ settings }, () => {
+                initThemeSelector(settings.activeTheme || 'default');
+                alert(t('themes_imported_successfully'));
+                if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+              });
+            });
+          } catch (err) {
+            alert(t('invalid_theme_file'));
+          }
+        };
+        reader.readAsText(file);
+        importFile.value = ''; // Reset
+      });
+    }
+  }
+
+  function initPremiumAccentDropdown() {
+    const select = document.getElementById('premiumAccentSelect');
+    const colorPicker = document.getElementById('accentColor');
+    if (!select || !colorPicker) return;
+
+    if (window.YPP && window.YPP.CONSTANTS && window.YPP.CONSTANTS.PREMIUM_COLORS) {
+      const colors = window.YPP.CONSTANTS.PREMIUM_COLORS;
+      for (const [key, hex] of Object.entries(colors)) {
+        const label = key
+          .split('-')
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' ');
+        const opt = document.createElement('option');
+        opt.value = hex;
+        opt.textContent = label;
+        select.appendChild(opt);
+      }
     }
 
-    // Export these for external triggering if needed
-    return {
-        initThemeSelector,
-        initPremiumAccentDropdown,
-        initSearchViewMode,
-        initHideWatchedModePill,
-        initGlobalPlayerBarGrid,
-        initCardStyleGrid,
-        initYoutubeStyleGrid,
-        initPopupStyleGrid,
-        initCursorStyleGrid,
-        initAccentColorSwatches,
-        initCustomThemeBuilder,
-        applyThemeToPopup,
-        initAutoLikeInlineControls,
-        initViewsFilterInlineSlider,
-        initDateFilterInlineSliders,
-        initBasicInlineSlider
+    select.addEventListener('change', () => {
+      if (select.value) {
+        colorPicker.value = select.value;
+        colorPicker.dispatchEvent(new Event('input'));
+      }
+    });
+
+    colorPicker.addEventListener('input', () => {
+      select.value = colorPicker.value || '';
+    });
+
+    setTimeout(() => {
+      select.value = colorPicker.value || '';
+    }, 100);
+  }
+
+  function initSearchViewMode() {
+    const container = document.getElementById('searchViewModeToggle');
+    if (!container) return;
+
+    const btns = container.querySelectorAll('.view-mode-btn');
+
+    const applyActiveState = (mode) => {
+      btns.forEach((b) => {
+        const isActive = b.dataset.mode === mode;
+        b.classList.toggle('active', isActive);
+        b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
+        b.style.color = isActive ? '#ff4e45' : 'rgba(255,255,255,0.5)';
+      });
     };
+
+    chrome.storage.local.get(['searchViewMode'], (result) => {
+      const savedMode =
+        result.searchViewMode || localStorage.getItem('ypp_searchViewMode') || 'grid';
+      applyActiveState(savedMode);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        applyActiveState(mode);
+
+        chrome.storage.local.set({ searchViewMode: mode });
+        localStorage.setItem('ypp_searchViewMode', mode);
+
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          const tab = tabs[0];
+          if (tab && tab.url && tab.url.includes('youtube.com/results')) {
+            chrome.tabs
+              .sendMessage(tab.id, {
+                type: 'YPP_SET_SEARCH_VIEW_MODE',
+                mode: mode,
+              })
+              .catch(() => {});
+          }
+        });
+      });
+    });
+  }
+
+  function initHideWatchedModePill() {
+    const btns = document.querySelectorAll('.hw-mode-btn');
+    const hiddenInput = document.getElementById('hideWatchedMode');
+    if (!btns.length || !hiddenInput) return;
+
+    const applyMode = (mode) => {
+      hiddenInput.value = mode;
+      btns.forEach((b) => {
+        const isActive = b.dataset.mode === mode;
+        b.classList.toggle('active', isActive);
+        b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
+        b.style.color = isActive ? 'var(--accent, #3ea6ff)' : 'rgba(255,255,255,0.5)';
+      });
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const mode = data.settings?.hideWatchedMode || 'dim';
+      applyMode(mode);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyMode(btn.dataset.mode);
+        saveSettings(() => ui.showSaveIndicator(document));
+      });
+    });
+  }
+
+  function initGlobalPlayerBarGrid() {
+    const btns = document.querySelectorAll('.gpb-btn');
+    if (!btns.length) return;
+
+    const syncState = () => {
+      btns.forEach((btn) => {
+        const targetId = btn.dataset.target;
+        const cb = document.getElementById(targetId);
+        if (cb) btn.classList.toggle('active', cb.checked);
+      });
+    };
+
+    // Sync initial state slightly after popup-state.js loads settings
+    setTimeout(syncState, 150);
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const cb = document.getElementById(targetId);
+        if (cb) {
+          cb.checked = !cb.checked;
+          btn.classList.toggle('active', cb.checked);
+          cb.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+    });
+  }
+
+  function initCardStyleGrid() {
+    const btns = document.querySelectorAll('.card-style-btn[data-style]');
+    const hiddenInput = document.getElementById('cardStyle');
+    if (!btns.length || !hiddenInput) return;
+
+    const applyStyle = (styleVal) => {
+      hiddenInput.value = styleVal;
+      btns.forEach((b) => {
+        const isActive = b.dataset.style === styleVal;
+        b.classList.toggle('active', isActive);
+      });
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const styleVal = data.settings?.cardStyle || 'glass';
+      applyStyle(styleVal);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyStyle(btn.dataset.style);
+        const event = new Event('change', { bubbles: true });
+        hiddenInput.dispatchEvent(event);
+      });
+    });
+  }
+
+  function initYoutubeStyleGrid() {
+    const btns = document.querySelectorAll('.youtube-style-btn');
+    const hiddenInput = document.getElementById('youtubePageTheme');
+    if (!btns.length || !hiddenInput) return;
+
+    const applyStyle = (styleVal) => {
+      hiddenInput.value = styleVal;
+      btns.forEach((b) => {
+        const isActive = b.dataset.style === styleVal;
+        b.classList.toggle('active', isActive);
+      });
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const styleVal = data.settings?.youtubePageTheme || 'default';
+      applyStyle(styleVal);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyStyle(btn.dataset.style);
+        const event = new Event('change', { bubbles: true });
+        hiddenInput.dispatchEvent(event);
+      });
+    });
+  }
+
+  function initPopupStyleGrid() {
+    const btns = document.querySelectorAll('.popup-style-btn');
+    const hiddenInput = document.getElementById('popupUiTheme');
+    if (!btns.length || !hiddenInput) return;
+
+    const applyStyle = (styleVal) => {
+      hiddenInput.value = styleVal;
+      btns.forEach((b) => {
+        const isActive = b.dataset.style === styleVal;
+        b.classList.toggle('active', isActive);
+      });
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const styleVal = data.settings?.popupUiTheme || 'liquid-glass';
+      applyStyle(styleVal);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyStyle(btn.dataset.style);
+        const event = new Event('change', { bubbles: true });
+        hiddenInput.dispatchEvent(event);
+      });
+    });
+  }
+
+  function initCursorStyleGrid() {
+    const btns = document.querySelectorAll('.cursor-style-btn');
+    const hiddenInput = document.getElementById('customCursor');
+    if (!btns.length || !hiddenInput) return;
+
+    const applyStyle = (styleVal) => {
+      hiddenInput.value = styleVal;
+      btns.forEach((b) => {
+        const isActive = b.dataset.style === styleVal;
+        b.classList.toggle('active', isActive);
+        if (isActive) {
+          b.style.background = 'rgba(255,255,255,0.15)';
+          b.style.border = '1px solid rgba(255,255,255,0.3)';
+        } else {
+          b.style.background = 'rgba(255,255,255,0.03)';
+          b.style.border = '1px solid rgba(255,255,255,0.05)';
+        }
+      });
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const savedCursor = data.settings?.customCursor || 'default';
+      applyStyle(savedCursor);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyStyle(btn.dataset.style);
+        const event = new Event('change', { bubbles: true });
+        hiddenInput.dispatchEvent(event);
+      });
+    });
+  }
+
+  function initAccentColorSwatches() {
+    const swatches = document.querySelectorAll('.color-swatch[data-color]');
+    const customInput = document.getElementById('accentColor');
+    if (!customInput) return;
+
+    const dualModeToggle = document.getElementById('dualColorMode');
+    const secondaryGroup = document.getElementById('secondaryAccentGroup');
+    const primaryInput = document.getElementById('primaryAccentColor');
+    const secondaryInput = document.getElementById('secondaryAccentColor');
+
+    const applySwatchActive = (color) => {
+      let foundMatch = false;
+      swatches.forEach((swatch) => {
+        const isActive = swatch.dataset.color.toLowerCase() === color.toLowerCase();
+        swatch.classList.toggle('active', isActive);
+        if (isActive) foundMatch = true;
+      });
+      if (!foundMatch && customInput) {
+        customInput.value = color;
+        if (customInput.previousElementSibling)
+          customInput.previousElementSibling.classList.add('active');
+      } else if (customInput && customInput.previousElementSibling) {
+        customInput.previousElementSibling.classList.remove('active');
+      }
+      if (primaryInput) primaryInput.value = color;
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const color = data.settings?.accentColor || '#ff4e45';
+      const dualMode = data.settings?.dualColorMode || false;
+      const secColor = data.settings?.secondaryAccentColor || '#00e5ff';
+
+      applySwatchActive(color);
+      if (dualModeToggle) dualModeToggle.checked = dualMode;
+      if (secondaryInput) secondaryInput.value = secColor;
+      if (secondaryGroup) secondaryGroup.style.display = dualMode ? 'block' : 'none';
+    });
+
+    swatches.forEach((swatch) => {
+      swatch.addEventListener('click', () => {
+        const color = swatch.dataset.color;
+        if (customInput) customInput.value = color;
+        if (primaryInput) primaryInput.value = color;
+        applySwatchActive(color);
+
+        // If dual color mode is ON, and user clicks a swatch, we just update primary for now
+        // Or maybe we can update the accentColor
+        const event = new Event('change', { bubbles: true });
+        if (customInput) customInput.dispatchEvent(event);
+        if (primaryInput) primaryInput.dispatchEvent(event);
+      });
+    });
+
+    if (customInput) {
+      customInput.addEventListener('input', () => {
+        applySwatchActive(customInput.value);
+        if (primaryInput) primaryInput.value = customInput.value;
+      });
+    }
+
+    if (primaryInput) {
+      primaryInput.addEventListener('input', () => {
+        applySwatchActive(primaryInput.value);
+        if (customInput) customInput.value = primaryInput.value;
+        const event = new Event('change', { bubbles: true });
+        if (customInput) customInput.dispatchEvent(event);
+      });
+    }
+
+    if (dualModeToggle) {
+      dualModeToggle.addEventListener('change', () => {
+        if (secondaryGroup)
+          secondaryGroup.style.display = dualModeToggle.checked ? 'block' : 'none';
+      });
+    }
+  }
+
+  function initAutoLikeInlineControls() {
+    const typeBtn = document.getElementById('autoLikeDelayTypeBtn');
+    const hiddenType = document.getElementById('autoLikeDelayType');
+    const slider = document.getElementById('autoLikeThreshold');
+    const sliderVal = document.getElementById('autoLikeThresholdValue');
+    if (!typeBtn || !hiddenType || !slider) return;
+
+    const updateVisuals = (type) => {
+      hiddenType.value = type;
+      if (type === 'percent') {
+        typeBtn.textContent = '%';
+        typeBtn.title = 'Switch to Seconds';
+        slider.max = 100;
+        slider.step = 5;
+      } else {
+        typeBtn.textContent = 's';
+        typeBtn.title = 'Switch to Percent';
+        slider.max = 300;
+        slider.step = 1;
+      }
+      if (sliderVal) sliderVal.textContent = slider.value + (type === 'percent' ? '%' : 's');
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const type = data.settings?.autoLikeDelayType || 'seconds';
+      updateVisuals(type);
+    });
+
+    typeBtn.addEventListener('click', () => {
+      const newType = hiddenType.value === 'percent' ? 'seconds' : 'percent';
+      updateVisuals(newType);
+      hiddenType.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    slider.addEventListener('input', () => {
+      if (sliderVal)
+        sliderVal.textContent = slider.value + (hiddenType.value === 'percent' ? '%' : 's');
+    });
+  }
+
+  function initViewsFilterInlineSlider() {
+    const sliderUI = document.getElementById('viewsHideThresholdUI');
+    const sliderVal = document.getElementById('viewsHideThresholdValue');
+    const hiddenInput = document.getElementById('viewsHideThreshold');
+    if (!sliderUI || !hiddenInput) return;
+
+    const discreteOptions = [
+      { value: 0, label: t('off') },
+      { value: 100, label: t('100') },
+      { value: 500, label: t('500') },
+      { value: 1000, label: t('1_000') },
+      { value: 5000, label: t('5_000') },
+      { value: 10000, label: t('10k') },
+      { value: 50000, label: t('50k') },
+      { value: 100000, label: t('100k') },
+      { value: 500000, label: t('500k') },
+      { value: 1000000, label: t('1m') },
+      { value: 5000000, label: t('5m') },
+      { value: 10000000, label: t('10m') },
+    ];
+
+    const updateUI = (val) => {
+      let index = discreteOptions.findIndex((o) => o.value == val);
+      if (index === -1) index = 0;
+      sliderUI.value = index;
+      if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
+    };
+
+    chrome.storage.local.get('settings', (data) => {
+      const val = data.settings?.viewsHideThreshold || 0;
+      updateUI(val);
+    });
+
+    sliderUI.addEventListener('input', () => {
+      const opt = discreteOptions[sliderUI.value];
+      if (sliderVal) sliderVal.textContent = opt.label;
+      hiddenInput.value = opt.value;
+      hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
+
+  function initBasicInlineSlider(baseId, defaultValue) {
+    const sliderUI = document.getElementById(baseId + 'UI');
+    const sliderVal = document.getElementById(baseId + 'Value');
+    const hiddenInput = document.getElementById(baseId);
+    if (!sliderUI || !hiddenInput) return;
+
+    chrome.storage.local.get('settings', (data) => {
+      const val = data.settings?.[baseId] !== undefined ? data.settings[baseId] : defaultValue;
+      sliderUI.value = val;
+      if (sliderVal) sliderVal.textContent = val;
+    });
+
+    sliderUI.addEventListener('input', () => {
+      if (sliderVal) sliderVal.textContent = sliderUI.value;
+      hiddenInput.value = sliderUI.value;
+      hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  }
+
+  function initDateFilterInlineSliders() {
+    const olderUI = document.getElementById('dateFilterOlderThresholdUI');
+    const olderVal = document.getElementById('dateFilterOlderThresholdValue');
+    const olderHidden = document.getElementById('dateFilterOlderThreshold');
+
+    const newerUI = document.getElementById('dateFilterNewerThresholdUI');
+    const newerVal = document.getElementById('dateFilterNewerThresholdValue');
+    const newerHidden = document.getElementById('dateFilterNewerThreshold');
+
+    if (!olderUI || !newerUI) return;
+
+    const discreteOptions = [
+      { value: 0, label: t('off') },
+      { value: 1, label: t('1_day') },
+      { value: 2, label: t('2_days') },
+      { value: 3, label: t('3_days') },
+      { value: 7, label: t('1_week') },
+      { value: 14, label: t('2_weeks') },
+      { value: 21, label: t('3_weeks') },
+      { value: 30, label: t('1_month') },
+      { value: 90, label: t('3_months') },
+      { value: 180, label: t('6_months') },
+      { value: 365, label: t('1_year') },
+      { value: 730, label: t('2_years') },
+      { value: 1825, label: t('5_years') },
+      { value: 3650, label: t('10_years') },
+    ];
+
+    const setupSlider = (sliderUI, sliderVal, hiddenInput, keyName) => {
+      const updateUI = (val) => {
+        let index = discreteOptions.findIndex((o) => o.value == val);
+        if (index === -1) index = 0;
+        sliderUI.value = index;
+        if (sliderVal) sliderVal.textContent = discreteOptions[index].label;
+      };
+      chrome.storage.local.get('settings', (data) => {
+        const val = data.settings?.[keyName] || 0;
+        updateUI(val);
+      });
+      sliderUI.addEventListener('input', () => {
+        const opt = discreteOptions[sliderUI.value];
+        if (sliderVal) sliderVal.textContent = opt.label;
+        hiddenInput.value = opt.value;
+        hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    };
+
+    setupSlider(olderUI, olderVal, olderHidden, 'dateFilterOlderThreshold');
+    setupSlider(newerUI, newerVal, newerHidden, 'dateFilterNewerThreshold');
+  }
+
+  // Export these for external triggering if needed
+  return {
+    initThemeSelector,
+    initPremiumAccentDropdown,
+    initSearchViewMode,
+    initHideWatchedModePill,
+    initGlobalPlayerBarGrid,
+    initCardStyleGrid,
+    initYoutubeStyleGrid,
+    initPopupStyleGrid,
+    initCursorStyleGrid,
+    initAccentColorSwatches,
+    initCustomThemeBuilder,
+    applyThemeToPopup,
+    initAutoLikeInlineControls,
+    initViewsFilterInlineSlider,
+    initDateFilterInlineSliders,
+    initBasicInlineSlider,
+  };
 }

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -172,9 +172,9 @@
           <!-- schema-driven: populated at runtime -->
           <!-- Sub-management action buttons — preserved, not replaced by renderer -->
           <div data-preserve="true" style="display:flex; gap:8px; margin:8px 14px 14px;">
-            <button id="manageSubsBtn" class="action-btn">Manage Groups</button>
-            <button id="exportFoldersBtn" class="action-btn" style="background:var(--bg-card);">Export</button>
-            <button id="importFoldersBtn" class="action-btn" style="background:var(--bg-card);">Import</button>
+            <button id="manageSubsBtn" class="action-btn" data-i18n="manage_groups">Manage Groups</button>
+            <button id="exportFoldersBtn" class="action-btn" style="background:var(--bg-card);" data-i18n="export">Export</button>
+            <button id="importFoldersBtn" class="action-btn" style="background:var(--bg-card);" data-i18n="import">Import</button>
             <input type="file" id="importFoldersFile" accept=".json" style="display:none;" />
           </div>
         </section>
@@ -191,7 +191,7 @@
                 <span id="history-today-time">--</span>
                 <span class="label">Today's Watch Time</span>
               </div>
-              <button id="history-calendar-btn" class="history-expand-btn">📅 Calendar</button>
+              <button id="history-calendar-btn" class="history-expand-btn" data-i18n="calendar">📅 Calendar</button>
             </div>
             <div id="history-heatmap" class="history-heatmap"></div>
             <div id="history-details-panel" class="history-details-panel">
@@ -201,7 +201,7 @@
                 <button id="cal-next" style="background:none; border:none; color:#aaa; cursor:pointer;">&gt;</button>
               </div>
               <div id="calendar-grid" class="calendar-grid"></div>
-              <div class="section-title" style="margin: 8px 0 4px 0">WATCH LOG</div>
+              <div class="section-title" style="margin: 8px 0 4px 0" data-i18n="watch_log">WATCH LOG</div>
               <div id="video-log-list" class="video-log-list">
                 <div style="text-align:center; color:#666; font-size:11px; padding:10px;">Select a date to view history</div>
               </div>
@@ -219,15 +219,15 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                        Theme Engine
-                     </div>
+                        <span data-i18n="theme_engine">Theme Engine
+                     </span></div>
                   </div>
                </div>
             </div>
             <div class="card-group">
               <div class="setting-item">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
-                <div class="info"><span class="name">Premium Theme</span><span class="desc">Enable custom CSS injection</span></div>
+                <div class="info"><span class="name" data-i18n="premium_theme">Premium Theme</span><span class="desc" data-i18n="enable_custom_css_injection">Enable custom CSS injection</span></div>
                 <label class="toggle"><input type="checkbox" id="premiumTheme" /><span class="slider"></span></label>
               </div>
             </div>
@@ -240,8 +240,8 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        Color Themes
-                     </div>
+                        <span data-i18n="color_themes">Color Themes
+                     </span></div>
                   </div>
                </div>
             </div>
@@ -261,15 +261,15 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"></path></svg>
-                        Accent Color
-                     </div>
+                        <span data-i18n="accent_color">Accent Color
+                     </span></div>
                   </div>
                </div>
             </div>
             <div class="card-group">
               <div class="inline-setting-row" style="flex-direction:column; align-items:flex-start; gap:12px; margin-top:0; padding: 12px 14px; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                 <div style="display:flex; justify-content:space-between; width:100%; align-items:center; flex-wrap:wrap; gap:8px;">
-                   <span class="name" style="font-size:13px;">Primary Color</span>
+                   <span class="name" style="font-size:13px;" data-i18n="primary_color">Primary Color</span>
                    <div class="color-swatches" id="accentSwatches" role="group" aria-label="Accent Color Selection">
                      <div class="color-swatch" data-color="#ff4e45" style="background: #ff4e45;" role="button" tabindex="0" aria-label="Red Accent"></div>
                      <div class="color-swatch" data-color="#3ea6ff" style="background: #3ea6ff;" role="button" tabindex="0" aria-label="Blue Accent"></div>
@@ -285,7 +285,7 @@
                 </div>
                 <div style="display:flex; justify-content:space-between; width:100%; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px; flex-wrap:wrap; gap:8px;">
                    <div style="display:flex; align-items:center; gap:10px;">
-                     <span class="name" style="font-size:13px;">Dual Gradient Accent</span>
+                     <span class="name" style="font-size:13px;" data-i18n="dual_gradient_accent">Dual Gradient Accent</span>
                      <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="enableDualAccent" /><span class="slider"></span></label>
                    </div>
                    <div class="color-swatches" id="secondaryAccentSwatches" role="group" style="opacity:0.5; pointer-events:none;">
@@ -306,8 +306,8 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L22 12l-10 10L2 12 12 2z"></path></svg>
-                        Custom Theme Builder
-                     </div>
+                        <span data-i18n="custom_theme_builder">Custom Theme Builder
+                     </span></div>
                   </div>
                </div>
             </div>
@@ -358,33 +358,33 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        YouTube Page Theme
-                     </div>
+                        <span data-i18n="youtube_page_theme">YouTube Page Theme
+                     </span></div>
                   </div>
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
               <input type="hidden" id="youtubePageTheme" value="default" />
               <div class="theme-grid" style="margin-top: 0;">
-                <button type="button" class="theme-btn youtube-style-btn" data-style="default">Default</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="liquid-glass">Liquid Glass</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="neumorphic">Neumorphic</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="nature">Nature</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="vintage">Vintage</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="ocean">Ocean</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="blue-sky">Blue Sky</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="retro">Retro OS</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="technozen">Technozen</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="frutiger-aero">Frutiger Aero</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="terminalism">Terminalism</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="claymorphism">Claymorphism</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="brutalism">Brutalism</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="minimalism">Minimalism</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="maximalism">Maximalism</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="aurora">Aurora</button>
-                <button type="button" class="theme-btn youtube-style-btn" data-style="material">Material You</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="default" data-i18n="default">Default</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="liquid-glass" data-i18n="liquid_glass">Liquid Glass</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="cyberpunk" data-i18n="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="neumorphic" data-i18n="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="nature" data-i18n="nature">Nature</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="vintage" data-i18n="vintage">Vintage</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="ocean" data-i18n="ocean">Ocean</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="blue-sky" data-i18n="blue_sky">Blue Sky</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="retro" data-i18n="retro_os">Retro OS</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="technozen" data-i18n="technozen">Technozen</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="frutiger-aero" data-i18n="frutiger_aero">Frutiger Aero</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="terminalism" data-i18n="terminalism">Terminalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="claymorphism" data-i18n="claymorphism">Claymorphism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="brutalism" data-i18n="brutalism">Brutalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="minimalism" data-i18n="minimalism">Minimalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="maximalism" data-i18n="maximalism">Maximalism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="glassmorphism" data-i18n="glassmorphism">Glassmorphism</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="aurora" data-i18n="aurora">Aurora</button>
+                <button type="button" class="theme-btn youtube-style-btn" data-style="material" data-i18n="material_you">Material You</button>
               </div>
             </div>
           </div>
@@ -396,33 +396,33 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                        Popup UI Design
-                     </div>
+                        <span data-i18n="popup_ui_design">Popup UI Design
+                     </span></div>
                   </div>
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
               <input type="hidden" id="popupUiTheme" value="liquid-glass" />
               <div class="theme-grid" style="margin-top: 0;">
-                <button type="button" class="theme-btn popup-style-btn" data-style="default">Default</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass">Liquid Glass</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic">Neumorphic</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="nature">Nature</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="vintage">Vintage</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="ocean">Ocean</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="blue-sky">Blue Sky</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="retro">Retro OS</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="technozen">Technozen</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="frutiger-aero">Frutiger Aero</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="terminalism">Terminalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="claymorphism">Claymorphism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="brutalism">Brutalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="minimalism">Minimalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="maximalism">Maximalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="aurora">Aurora</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="material">Material You</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="default" data-i18n="default">Default</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass" data-i18n="liquid_glass">Liquid Glass</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk" data-i18n="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic" data-i18n="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="nature" data-i18n="nature">Nature</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="vintage" data-i18n="vintage">Vintage</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="ocean" data-i18n="ocean">Ocean</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="blue-sky" data-i18n="blue_sky">Blue Sky</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="retro" data-i18n="retro_os">Retro OS</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="technozen" data-i18n="technozen">Technozen</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="frutiger-aero" data-i18n="frutiger_aero">Frutiger Aero</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="terminalism" data-i18n="terminalism">Terminalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="claymorphism" data-i18n="claymorphism">Claymorphism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="brutalism" data-i18n="brutalism">Brutalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="minimalism" data-i18n="minimalism">Minimalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="maximalism" data-i18n="maximalism">Maximalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="glassmorphism" data-i18n="glassmorphism">Glassmorphism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="aurora" data-i18n="aurora">Aurora</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="material" data-i18n="material_you">Material You</button>
               </div>
             </div>
           </div>
@@ -434,48 +434,48 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        Video Card Styles
-                     </div>
+                        <span data-i18n="video_card_styles">Video Card Styles
+                     </span></div>
                   </div>
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
               <input type="hidden" id="cardStyle" value="glass" />
               <div class="theme-grid" style="margin-top: 0;">
-                <button type="button" class="theme-btn card-style-btn" data-style="glass">Glass</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="flat">Flat</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="elevated">Elevated</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="folder">Folder</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="bento">Bento</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="neon">Neon</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="compact">Compact</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="polaroid">Polaroid</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="neumorphic">Neumorphic</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="holographic">Holographic</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="minimalist">Minimalist</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="maximalism">Maximalism</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="aurora">Aurora</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="material">Material</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="immersive-glass">Immersive Glass</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="retro">Retro</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="technozen">Technozen</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="frutiger-aero">Frutiger Aero</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="autumn">Autumn</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="blue-sky">Blue Sky</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="brutalism">Brutalism</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="claymorphism">Claymorphism</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="frosted">Frosted</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="minimalism">Minimalism</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="nature">Nature</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="ocean">Ocean</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="skeuomorphic">Skeuomorphic</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="spring">Spring</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="summer">Summer</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="terminalism">Terminalism</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="vintage">Vintage</button>
-                <button type="button" class="theme-btn card-style-btn" data-style="winter">Winter</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="glass" data-i18n="glass">Glass</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="flat" data-i18n="flat">Flat</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="elevated" data-i18n="elevated">Elevated</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="folder" data-i18n="folder">Folder</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="bento" data-i18n="bento">Bento</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="neon" data-i18n="neon">Neon</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="compact" data-i18n="compact">Compact</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="polaroid" data-i18n="polaroid">Polaroid</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="neumorphic" data-i18n="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="cyberpunk" data-i18n="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="holographic" data-i18n="holographic">Holographic</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="minimalist" data-i18n="minimalist">Minimalist</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="maximalism" data-i18n="maximalism">Maximalism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="glassmorphism" data-i18n="glassmorphism">Glassmorphism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="aurora" data-i18n="aurora">Aurora</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="material" data-i18n="material">Material</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="immersive-glass" data-i18n="immersive_glass">Immersive Glass</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="retro" data-i18n="retro">Retro</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="technozen" data-i18n="technozen">Technozen</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="frutiger-aero" data-i18n="frutiger_aero">Frutiger Aero</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="autumn" data-i18n="autumn">Autumn</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="blue-sky" data-i18n="blue_sky">Blue Sky</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="brutalism" data-i18n="brutalism">Brutalism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="claymorphism" data-i18n="claymorphism">Claymorphism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="frosted" data-i18n="frosted">Frosted</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="minimalism" data-i18n="minimalism">Minimalism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="nature" data-i18n="nature">Nature</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="ocean" data-i18n="ocean">Ocean</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="skeuomorphic" data-i18n="skeuomorphic">Skeuomorphic</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="spring" data-i18n="spring">Spring</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="summer" data-i18n="summer">Summer</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="terminalism" data-i18n="terminalism">Terminalism</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="vintage" data-i18n="vintage">Vintage</button>
+                <button type="button" class="theme-btn card-style-btn" data-style="winter" data-i18n="winter">Winter</button>
               </div>
             </div>
           </div>
@@ -487,31 +487,31 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                        Top Bar Nav Buttons
-                     </div>
+                        <span data-i18n="top_bar_nav_buttons">Top Bar Nav Buttons
+                     </span></div>
                   </div>
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
               <div class="feature-grid" style="margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));">
                 <div class="toggle-card" style="padding: 10px;">
-                  <div class="info"><span class="name">Shorts</span></div>
+                  <div class="info"><span class="name" data-i18n="shorts">Shorts</span></div>
                   <label class="toggle"><input type="checkbox" id="navShorts" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
-                  <div class="info"><span class="name">Subs</span></div>
+                  <div class="info"><span class="name" data-i18n="subs">Subs</span></div>
                   <label class="toggle"><input type="checkbox" id="navSubscriptions" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
-                  <div class="info"><span class="name">History</span></div>
+                  <div class="info"><span class="name" data-i18n="history">History</span></div>
                   <label class="toggle"><input type="checkbox" id="navHistory" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
-                  <div class="info"><span class="name">Later</span></div>
+                  <div class="info"><span class="name" data-i18n="later">Later</span></div>
                   <label class="toggle"><input type="checkbox" id="navWatchLater" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
-                  <div class="info"><span class="name">Playlists</span></div>
+                  <div class="info"><span class="name" data-i18n="playlists">Playlists</span></div>
                   <label class="toggle"><input type="checkbox" id="navPlaylists" /><span class="slider"></span></label>
                 </div>
               </div>
@@ -523,8 +523,8 @@
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">UI Enhancements</div>
-                     <div class="section-subtitle">Toggle specific feature layouts</div>
+                     <div class="section-title" data-i18n="ui_enhancements">UI Enhancements</div>
+                     <div class="section-subtitle" data-i18n="toggle_specific_feature_layouts">Toggle specific feature layouts</div>
                   </div>
                </div>
             </div>
@@ -533,32 +533,32 @@
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
                   <div class="info">
-                    <span class="name">Account Menu</span>
-                    <span class="desc">Premium profile dropdown</span>
+                    <span class="name" data-i18n="account_menu">Account Menu</span>
+                    <span class="desc" data-i18n="premium_profile_dropdown">Premium profile dropdown</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="enableAccountMenu" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="15" rx="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></div>
                   <div class="info">
-                    <span class="name">Glass Player UI</span>
-                    <span class="desc">Transparent controls</span>
+                    <span class="name" data-i18n="glass_player_ui">Glass Player UI</span>
+                    <span class="desc" data-i18n="transparent_controls">Transparent controls</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="glassPlayerUI" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
                   <div class="info">
-                    <span class="name">Sidebar Comments</span>
-                    <span class="desc">Move to right sidebar</span>
+                    <span class="name" data-i18n="sidebar_comments">Sidebar Comments</span>
+                    <span class="desc" data-i18n="move_to_right_sidebar">Move to right sidebar</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="sidebarComments" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
                   <div class="info">
-                    <span class="name">Premium Logo</span>
-                    <span class="desc">Replace standard logo</span>
+                    <span class="name" data-i18n="premium_logo">Premium Logo</span>
+                    <span class="desc" data-i18n="replace_standard_logo">Replace standard logo</span>
                   </div>
                   <label class="toggle"><input type="checkbox" id="premiumLogo" /><span class="slider"></span></label>
                 </div>
@@ -573,9 +573,9 @@
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg>
-                        Custom Cursor
-                     </div>
-                     <div class="section-subtitle">Select a unique cursor pack</div>
+                        <span data-i18n="custom_cursor">Custom Cursor
+                     </span></div>
+                     <div class="section-subtitle" data-i18n="select_a_unique_cursor_pack">Select a unique cursor pack</div>
                   </div>
                </div>
             </div>
@@ -786,7 +786,7 @@
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">Animations & Screen Filters</div>
+                     <div class="section-title" data-i18n="animations_screen_filters">Animations & Screen Filters</div>
                   </div>
                </div>
             </div>
@@ -794,32 +794,32 @@
               <div class="feature-grid">
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-                  <div class="info"><span class="name">Enable Animations</span></div>
+                  <div class="info"><span class="name" data-i18n="enable_animations">Enable Animations</span></div>
                   <label class="toggle"><input type="checkbox" id="enableAnimations" checked /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
-                  <div class="info"><span class="name">Theme Effects</span><span class="desc">Background fx</span></div>
+                  <div class="info"><span class="name" data-i18n="theme_effects">Theme Effects</span><span class="desc" data-i18n="background_fx">Background fx</span></div>
                   <label class="toggle"><input type="checkbox" id="enableThemeEffects" checked /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></div>
-                  <div class="info"><span class="name">Reduced Motion</span></div>
+                  <div class="info"><span class="name" data-i18n="reduced_motion">Reduced Motion</span></div>
                   <label class="toggle"><input type="checkbox" id="reducedMotion" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 3v18"></path><path d="M7 3v18"></path><path d="M3 12h18"></path></svg></div>
-                  <div class="info"><span class="name">Hide Scrollbar</span></div>
+                  <div class="info"><span class="name" data-i18n="hide_scrollbar">Hide Scrollbar</span></div>
                   <label class="toggle"><input type="checkbox" id="hideScrollbar" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
-                  <div class="info"><span class="name">Custom Scrollbar</span></div>
+                  <div class="info"><span class="name" data-i18n="custom_scrollbar">Custom Scrollbar</span></div>
                   <label class="toggle"><input type="checkbox" id="customScrollbar" /><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20"></path></svg></div>
-                  <div class="info"><span class="name">Grayscale Thumbs</span></div>
+                  <div class="info"><span class="name" data-i18n="grayscale_thumbs">Grayscale Thumbs</span></div>
                   <label class="toggle"><input type="checkbox" id="grayscaleThumbnails" /><span class="slider"></span></label>
                 </div>
               </div>
@@ -827,13 +827,13 @@
               <div style="margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; display: flex; flex-direction: column; gap: 10px;">
                 <div class="setting-item" style="flex-direction: column; align-items: flex-start; padding: 0;">
                   <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
-                    <span class="name">Blue Light Filter</span><span class="desc" id="blueLightValue">0%</span>
+                    <span class="name" data-i18n="blue_light_filter">Blue Light Filter</span><span class="desc" id="blueLightValue" data-i18n="0">0%</span>
                   </div>
                   <input type="range" id="blueLight" min="0" max="90" step="5" style="width: 100%;" />
                 </div>
                 <div class="setting-item" style="flex-direction: column; align-items: flex-start; padding: 0;">
                   <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
-                    <span class="name">Dim Screen</span><span class="desc" id="dimValue">0%</span>
+                    <span class="name" data-i18n="dim_screen">Dim Screen</span><span class="desc" id="dimValue" data-i18n="0">0%</span>
                   </div>
                   <input type="range" id="dim" min="0" max="90" step="5" style="width: 100%;" />
                 </div>
@@ -875,8 +875,8 @@
           <div id="globalPlayerBarOptions" data-preserve="true" class="sub-options" style="display:none; padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
             <div class="setting-item" style="margin-bottom: 12px; padding: 0;">
               <div class="info">
-                <span class="name" style="font-size:12px;">Player Bar Position</span>
-                <span class="desc" style="font-size:11px;">Where should it appear on external sites?</span>
+                <span class="name" style="font-size:12px;" data-i18n="player_bar_position">Player Bar Position</span>
+                <span class="desc" style="font-size:11px;" data-i18n="where_should_it_appear_on_external_sites">Where should it appear on external sites?</span>
               </div>
               <select id="globalPlayerBarPosition" class="theme-select" style="width: 110px; padding: 4px 8px;">
                 <option value="right">Right</option>
@@ -886,47 +886,47 @@
             </div>
             
             <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Visible Buttons</div>
-            <div style="column-count: 3; column-gap: 6px; margin-top: 4px;">
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Play / Pause</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showPlay" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Time Display</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showTime" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Volume</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showVolume" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Vol Booster</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showVolumeBoost" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Filters</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showFilters" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Loop</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showLoop" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">PiP Mode</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showPip" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Speed</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showSpeed" /><span class="slider"></span></label>
               </div>
-              <div class="gpb-btn-pill" style="break-inside: avoid; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px; margin-bottom: 6px;">
+              <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Fullscreen</span>
                 <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showFullscreen" /><span class="slider"></span></label>
               </div>
             </div>
 
           </div>
-          <div id="customCSSOptions" data-preserve="true" class="sub-options" style="display:none; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div id="customCSSOptions" data-preserve="true" class="sub-options" style="display:none; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.1);">
             <textarea id="customCSSCode" class="feature-search-input" style="width: 100%; height: 120px; font-family: monospace; font-size: 11px; padding: 8px; resize: vertical;" placeholder="Paste userstyle CSS here..."></textarea>
           </div>
           <div id="sponsorBlockCategories" data-preserve="true" class="sb-categories" style="display:none; padding:10px 14px;">
@@ -972,8 +972,8 @@
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">Data Management</div>
-                     <div class="section-subtitle">Backup, restore, and reset your extension data</div>
+                     <div class="section-title" data-i18n="data_management">Data Management</div>
+                     <div class="section-subtitle" data-i18n="backup_restore_and_reset_your_extension_data">Backup, restore, and reset your extension data</div>
                   </div>
                </div>
             </div>
@@ -1012,8 +1012,8 @@
             <div class="section-header" style="margin-bottom: 10px;">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
-                     <div class="section-title">Your Bookmarks</div>
-                     <div class="section-subtitle">Captured highlights across all videos</div>
+                     <div class="section-title" data-i18n="your_bookmarks">Your Bookmarks</div>
+                     <div class="section-subtitle" data-i18n="captured_highlights_across_all_videos">Captured highlights across all videos</div>
                   </div>
                </div>
             </div>

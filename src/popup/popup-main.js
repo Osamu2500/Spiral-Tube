@@ -7,6 +7,7 @@ import * as UI from './popup-ui.js';
 import { initComponents } from './popup-components.js';
 import { initHistoryWidget, initBackupTools, initBookmarksManager } from './popup-extras.js';
 import { renderSchema, registerSlot } from './popup-renderer.js';
+import { initI18n, t } from '../shared/i18n.js';
 
 // --- Register Custom Slots ---
 registerSlot('vsc_shortcuts_manager', (container, state) => {
@@ -716,6 +717,11 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                     document.body.className = `ypp-theme-${el.value}`;
                 }
 
+                if (key === 'extensionLanguage' && el.value) {
+                    // Reload popup instantly to apply new language without complex state management
+                    setTimeout(() => window.location.reload(), 100);
+                }
+
                 if (key === 'youtubePageTheme' && el.value && el.value !== 'default') {
                     // Automatically sync Theme Engine and Card Style!
                     const uiStyle = el.value;
@@ -893,20 +899,22 @@ const initSponsorBlockSettings = (document, saveSettings, UI) => {
     }
 };
 
-const initApp = () => {
+const initApp = async () => {
     try {
+        await initI18n();
+
         // 0. i18n Initialization
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            const msg = chrome.i18n.getMessage(el.getAttribute('data-i18n'));
+            const msg = t(el.getAttribute('data-i18n'));
             if (msg) el.textContent = msg;
         });
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const msg = chrome.i18n.getMessage(el.getAttribute('data-i18n-placeholder'));
+            const msg = t(el.getAttribute('data-i18n-placeholder'));
             if (msg) el.setAttribute('placeholder', msg);
         });
 
         // 1. v3.1: Render schema-driven tabs before settings hydration
-        renderSchema(document, state);
+        renderSchema(document, state, t);
 
         // 1.5 Initialize State (cache DOM elements)
         initStorage(document);
@@ -960,28 +968,6 @@ const initApp = () => {
         initBackupTools();
         initBookmarksManager();
         initSponsorBlockSettings(document, saveSettings, UI);
-
-        // Ripple Effect for buttons
-        document.addEventListener('click', (e) => {
-            const btn = e.target.closest('.action-btn, .theme-btn, .toggle-card, .view-mode-btn');
-            if (btn) {
-                const circle = document.createElement('span');
-                const diameter = Math.max(btn.clientWidth, btn.clientHeight);
-                const radius = diameter / 2;
-                const rect = btn.getBoundingClientRect();
-                
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${e.clientX - rect.left - radius}px`;
-                circle.style.top = `${e.clientY - rect.top - radius}px`;
-                circle.classList.add('ripple');
-                
-                const ripple = btn.querySelector('.ripple');
-                if (ripple) {
-                    ripple.remove();
-                }
-                btn.appendChild(circle);
-            }
-        });
 
         // 6.5 Apply popup theme (based on saved state)
         if (localStorage.getItem('ypp-popup-dark') === 'true' || localStorage.getItem('ypp-popup-dark') === null) {

@@ -18,7 +18,7 @@
  * ─────────────────────────────────────────────────────────────────────
  */
 
-import { POPUP_SCHEMA, CUSTOM_SLOT_RENDERERS } from './popup-schema.js';
+import { getPopupSchema, CUSTOM_SLOT_RENDERERS } from './popup-schema.js';
 
 // ── SVG helpers ────────────────────────────────────────────────────────
 const NS_SVG = 'http://www.w3.org/2000/svg';
@@ -114,6 +114,8 @@ function renderRange(item, state) {
     if (item.hidden) return null;
 
     const wrap = document.createElement('div');
+    const isWide = item.class && item.class.includes('span-2');
+
     if (item.parent) {
         wrap.className = 'sub-setting-row';
         wrap.style.marginTop = '8px';
@@ -123,27 +125,30 @@ function renderRange(item, state) {
         wrap.style.flexDirection = 'column';
         wrap.style.gap = '6px';
     } else {
-        wrap.className = 'setting-item';
-        wrap.style.flexDirection = 'column';
-        wrap.style.alignItems = 'stretch';
+        wrap.className = `setting-item toggle-card ${item.class || ''}`.trim();
+        wrap.style.flexDirection = isWide ? 'row' : 'column';
+        wrap.style.alignItems = isWide ? 'center' : 'stretch';
+        wrap.style.justifyContent = isWide ? 'space-between' : 'center';
         wrap.style.gap = '8px';
-        wrap.style.marginTop = '4px';
-        wrap.style.marginBottom = '4px';
     }
 
-    const headerRow = document.createElement('div');
-    headerRow.style.display = 'flex';
-    headerRow.style.alignItems = 'center';
-    headerRow.style.justifyContent = 'space-between';
-    headerRow.style.width = '100%';
+    if (item.icon) {
+        const iconWrap = document.createElement('div');
+        iconWrap.style.cursor = 'pointer';
+        iconWrap.className = 'feature-icon';
+        iconWrap.appendChild(makeSVG(item.icon, 14));
+        wrap.appendChild(iconWrap);
+    }
 
     const info = document.createElement('div');
     info.className = 'info';
     info.style.margin = '0';
-    info.style.width = '100%';
+    if (!isWide) info.style.width = '100%';
     info.style.display = 'flex';
     info.style.justifyContent = 'space-between';
-    info.style.flexDirection = 'row';
+    info.style.flexDirection = isWide ? 'column' : 'row';
+    info.style.flex = isWide ? '1' : 'none'; // Allow info to take remaining space if side-by-side
+
     const valueId = item.id + 'Value';
     const unit = item.unit != null ? item.unit : '%';
     
@@ -164,11 +169,16 @@ function renderRange(item, state) {
         info.innerHTML = `<span class="name">${item.label}</span><span class="desc"><span id="${valueId}">${displayValue}</span>${item.discreteOptions ? '' : unit}</span>`;
     }
     
-    headerRow.appendChild(info);
-    wrap.appendChild(headerRow);
+    wrap.appendChild(info);
 
     const rangeWrap = document.createElement('div');
     rangeWrap.className = 'range-container';
+    if (isWide) {
+        rangeWrap.style.width = '140px';
+        rangeWrap.style.flexShrink = '0';
+        rangeWrap.style.marginTop = '0';
+        rangeWrap.style.marginLeft = 'auto';
+    }
     const input = document.createElement('input');
     input.type = 'range';
     
@@ -249,6 +259,11 @@ function renderRange(item, state) {
 function renderSelect(item, state) {
     if (item.hidden) return null;
 
+    // ── Special case: Language selector → custom flag-pill picker ──────────
+    if (item.id === 'extensionLanguage') {
+        return _renderLangPicker(item, state);
+    }
+
     const wrap = document.createElement('div');
     wrap.className = 'toggle-card span-2-tile'; // Gives it the tile look
     wrap.style.gridColumn = 'span 2';
@@ -300,6 +315,107 @@ function renderSelect(item, state) {
     wrap.appendChild(select);
 
     _registerInput(select, state);
+    return wrap;
+}
+
+/**
+ * Custom language picker: compact pill chips matching the card-style-btn
+ * design — same flex-wrap masonry as Video Card Styles.
+ * A hidden <select> keeps the existing state machinery working with no
+ * other code changes needed.
+ */
+function _renderLangPicker(item, state) {
+    const LANGS = [
+        { 
+            value: 'en', native: 'English',
+            svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="14" height="10" style="border-radius:1px;"><rect width="60" height="40" fill="#fff"/><path fill="#B22234" d="M0 0h60v3.07H0zm0 6.15h60v3.07H0zm0 6.15h60v3.07H0zm0 6.15h60v3.07H0zm0 6.15h60v3.07H0zm0 6.15h60v3.07H0zm0 6.15h60v3.07H0z"/><rect width="26" height="21.5" fill="#3C3B6E"/><path fill="#fff" d="M3 3h2v2H3zm6 0h2v2H9zm6 0h2v2h-2zm6 0h2v2h-2z M3 8h2v2H3zm6 0h2v2H9zm6 0h2v2h-2zm6 0h2v2h-2z M3 13h2v2H3zm6 0h2v2H9zm6 0h2v2h-2zm6 0h2v2h-2z M3 18h2v2H3zm6 0h2v2H9zm6 0h2v2h-2zm6 0h2v2h-2z"/></svg>'
+        },
+        { 
+            value: 'es', native: 'Español',
+            svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="14" height="10" style="border-radius:1px;"><rect width="60" height="10" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/><rect y="30" width="60" height="10" fill="#AA151B"/><circle cx="20" cy="20" r="5" fill="#AA151B"/></svg>'
+        },
+        { 
+            value: 'fr', native: 'Français',
+            svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="14" height="10" style="border-radius:1px;"><rect width="20" height="40" fill="#002654"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>'
+        },
+        { 
+            value: 'de', native: 'Deutsch',
+            svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="14" height="10" style="border-radius:1px;"><rect width="60" height="13.3" fill="#000"/><rect y="13.3" width="60" height="13.3" fill="#D00"/><rect y="26.6" width="60" height="13.4" fill="#FFCE00"/></svg>'
+        },
+        { 
+            value: 'ja', native: '日本語',
+            svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="14" height="10" style="border-radius:1px; border:1px solid rgba(255,255,255,0.1);"><rect width="60" height="40" fill="#fff"/><circle cx="30" cy="20" r="12" fill="#BC002D"/></svg>'
+        },
+    ];
+
+    // ── Simple wrapper, NO toggle-card class to match Video Card Styles exactly ──
+    const wrap = document.createElement('div');
+    wrap.style.gridColumn = 'span 4'; // Full width, matching video card styles
+    wrap.style.marginTop = '4px';
+    wrap.style.marginBottom = '12px';
+
+    // ── Hidden <select> — state machinery unchanged ───────────────────────
+    const hiddenSelect = document.createElement('select');
+    hiddenSelect.id = item.id;
+    hiddenSelect.style.display = 'none';
+    LANGS.forEach(l => {
+        const o = document.createElement('option');
+        o.value = l.value;
+        o.textContent = l.native;
+        hiddenSelect.appendChild(o);
+    });
+    wrap.appendChild(hiddenSelect);
+
+    // ── Pill chips — EXACT same pattern as card-style-btn ────────────────
+    const grid = document.createElement('div');
+    grid.className = 'card-style-grid lang-flag-grid';
+
+    LANGS.forEach(lang => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'theme-btn card-style-btn lang-flag-btn';
+        btn.dataset.value = lang.value;
+        btn.title = lang.native;
+
+        // Custom flex to align SVG and text perfectly
+        btn.style.display = 'flex';
+        btn.style.alignItems = 'center';
+        btn.style.gap = '6px';
+        btn.style.padding = '6px 10px';
+
+        btn.innerHTML = `${lang.svg} <span>${lang.native}</span>`;
+
+        btn.addEventListener('click', () => {
+            grid.querySelectorAll('.lang-flag-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            hiddenSelect.value = lang.value;
+            hiddenSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        grid.appendChild(btn);
+    });
+
+    wrap.appendChild(grid);
+    _registerInput(hiddenSelect, state);
+
+    // we need to activate the matching pill once the value is populated.
+    // Use a MutationObserver on the hidden select's value attribute OR
+    // a short timeout after the state load cycle.
+    const activatePill = () => {
+        const val = hiddenSelect.value || 'en';
+        grid.querySelectorAll('.lang-flag-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.value === val);
+        });
+    };
+
+    // Call immediately (in case value is already set) + after a tick
+    activatePill();
+    requestAnimationFrame(activatePill);
+    setTimeout(activatePill, 150); // Catch async storage load
+
+    // Also react to programmatic changes on the hidden select
+    hiddenSelect.addEventListener('change', activatePill);
+
     return wrap;
 }
 
@@ -924,14 +1040,16 @@ function _registerInput(input, state) {
  * @param {Document} doc
  * @param {object}   state   — from popup-state.js
  */
-export function renderSchema(doc, state) {
+export function renderSchema(doc, state, t) {
     const main = doc.getElementById('tabs-container') || doc.querySelector('main');
     if (!main) {
         console.warn('[YPP:Renderer] No #tabs-container or <main> found — skipping schema render');
         return;
     }
 
-    POPUP_SCHEMA.forEach(tab => {
+    const schema = getPopupSchema(t);
+
+    schema.forEach(tab => {
         // Skip custom tabs — they have their HTML in popup.html
         if (tab.custom) return;
 
@@ -977,8 +1095,9 @@ export function registerSlot(slotId, fn) {
  * @param {string} settingId
  * @returns {object|null}
  */
-export function findSchemaItem(settingId) {
-    for (const tab of POPUP_SCHEMA) {
+export function findSchemaItem(settingId, t) {
+    const schema = getPopupSchema(t);
+    for (const tab of schema) {
         for (const section of (tab.sections || [])) {
             for (const item of (section.items || [])) {
                 if (item.id === settingId) return { tab, section, item };

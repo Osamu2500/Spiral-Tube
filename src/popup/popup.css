@@ -594,7 +594,7 @@ body {
 /* ─── Feature grid ─── */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
@@ -759,20 +759,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track { background: rgba(255,
   box-shadow: 0 2px 12px rgba(239, 68, 68, 0.3);
 }
 
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(0);
-  animation: ripple-animation 600ms linear;
-  pointer-events: none;
-}
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
+
 
 
 /* ─── Preset cards (dashboard) ─── */
@@ -1597,3 +1584,38 @@ body.ypp-theme-minimalism .nav-item.active {
 }. n o - t o g g l e   . t o g g l e   {   d i s p l a y :   n o n e   ! i m p o r t a n t ;   }  
  . n a m e   {   d i s p l a y :   f l e x ;   a l i g n - i t e m s :   c e n t e r ;   w i d t h :   1 0 0 % ;   }  
  
+/* ─────────────────────────────────────────────────────────────────
+   Language Flag Picker — pills match card-style-btn exactly
+───────────────────────────────────────────────────────────────── */
+
+/* Card container: column flex so header sits above the pill row */
+.lang-picker-card {
+  display: flex !important;
+  align-items: stretch !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  padding: 12px 14px !important;
+  cursor: default !important;
+}
+
+/* Header row (icon + label/desc) */
+.lang-picker-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Pill container: flex-wrap so chips flow like card-style-grid */
+.lang-flag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+/* Emoji sizing inside the pill — inherits all other styles from .card-style-btn */
+.lang-flag-btn {
+  font-size: 11.5px !important;
+  letter-spacing: 0.01em;
+  gap: 4px;
+}
