@@ -1,4 +1,4 @@
-﻿html.yt-spiral-tube-theme {
+html.yt-spiral-tube-theme {
     --ypp-bg-base: #051421;
     --ypp-bg-surface: #0a1e32;
     --ypp-bg-glass: rgba(5, 20, 33, 0.95);
@@ -65,6 +65,9 @@ html.yt-spiral-tube-theme.ypp-theme-effects::after {
     animation: ypp-ocean-caustics 20s ease-in-out infinite;
 
 
+  }
+
+html.yt-spiral-tube-theme {
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));

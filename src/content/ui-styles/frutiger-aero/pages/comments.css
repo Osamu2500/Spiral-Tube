@@ -7,13 +7,27 @@ html[data-ypp-ui-style=frutiger-aero] #secondary.ytd-watch-flexy,
 html[data-ypp-ui-style=frutiger-aero] #secondary-inner.ytd-watch-flexy,
 html[data-ypp-ui-style=frutiger-aero] #below.ytd-watch-flexy,
 html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata,
-html[data-ypp-ui-style=frutiger-aero] #description.ytd-watch-metadata,
-html[data-ypp-ui-style=frutiger-aero] #description-inner.ytd-watch-metadata,
 html[data-ypp-ui-style=frutiger-aero] ytd-comments,
 html[data-ypp-ui-style=frutiger-aero] ytd-item-section-renderer {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #description.ytd-watch-metadata,
+html[data-ypp-ui-style=frutiger-aero] #description-inner.ytd-watch-metadata {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(var(--fa-blur-md, 8px));
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--fa-elevation-1) !important;
+  border-radius: var(--fa-radius-lg, 12px) !important;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+}
+html[data-ypp-ui-style=frutiger-aero] #description.ytd-watch-metadata:hover,
+html[data-ypp-ui-style=frutiger-aero] #description-inner.ytd-watch-metadata:hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(200,235,255,0.4)) !important;
+  border-color: rgba(255,255,255,0.8) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 6px rgba(255,255,255,0.9) !important;
 }
 /* src/content/themes/ui-styles/frutiger-aero/pages/comments.css */
 html[data-ypp-ui-style=frutiger-aero] ytd-comment-thread-renderer {
@@ -41,4 +55,29 @@ html[data-ypp-ui-style=frutiger-aero] #replies {
   margin-left: 48px !important;
   border-left: 2px dashed rgba(53, 199, 240, 0.3) !important;
   padding-left: 16px !important;
+}
+
+/* Glossy backgrounds for individual comments */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-thread-renderer,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(var(--fa-blur-md, 8px));
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--fa-elevation-1) !important;
+  border-radius: var(--fa-radius-lg, 12px) !important;
+  padding: 15px !important;
+  margin-bottom: 15px !important;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-thread-renderer:hover,
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model:hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(200,235,255,0.4)) !important;
+  border-color: rgba(255,255,255,0.8) !important;
+  box-shadow: var(--fa-elevation-2), inset 0 2px 6px rgba(255,255,255,0.9) !important;
+}
+
+/* Keep inner elements transparent */
+html[data-ypp-ui-style=frutiger-aero] ytd-comment-renderer {
+  background: transparent !important;
 }

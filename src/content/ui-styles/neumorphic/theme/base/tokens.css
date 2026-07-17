@@ -60,6 +60,9 @@ html.yt-spiral-tube-theme.ypp-theme-effects::after {
     animation: ypp-neumorphic-shift 14s ease-in-out infinite;
 
 
+  }
+
+html.yt-spiral-tube-theme {
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));

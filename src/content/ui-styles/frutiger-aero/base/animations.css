@@ -166,7 +166,7 @@ html[data-ypp-ui-style=frutiger-aero] .gloss-diagonal::before {
   mix-blend-mode: overlay;
   pointer-events: none;
 }
-html[data-ypp-ui-style=frutiger-aero] body::before {
+html[data-ypp-ui-style=frutiger-aero]::before {
   content: "";
   position: fixed;
   inset: 0;

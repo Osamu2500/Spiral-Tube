@@ -22,51 +22,61 @@ html[data-ypp-ui-style=frutiger-aero] .ytp-scrubber-button {
   transform: scale(1.2);
 }
 
-/* Player control bar — light frosted glass instead of dark blue */
+/* Player control bar — totally transparent to let video show */
 html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-bottom {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.15),
-    rgba(200, 235, 255, 0.25)
-  ) !important;
-  backdrop-filter: blur(var(--fa-blur-md)) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow:
-    inset 0 1px rgba(255, 255, 255, 0.6),
-    0 -4px 16px rgba(18, 168, 221, 0.12) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%) !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Individual player control buttons — white/blue glassy like notification button */
-html[data-ypp-ui-style=frutiger-aero] .ytp-button {
+/* Individual player control buttons & extension buttons — distinct glass tiles */
+html[data-ypp-ui-style=frutiger-aero] .ytp-button,
+html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn,
+html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn,
+html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn {
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.9) 0%,
     rgba(200, 235, 255, 0.7) 48%,
     rgba(160, 220, 250, 0.6) 50%,
-    rgba(220, 245, 255, 0.85)
+    rgba(220, 245, 255, 0.85) 100%
   ) !important;
-  border: 1px solid rgba(150, 180, 200, 0.6) !important;
-  border-bottom-color: rgba(90, 150, 180, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
   box-shadow:
     inset 0 2px 4px rgba(255, 255, 255, 0.9),
-    inset 0 -1px 3px rgba(120, 200, 255, 0.2),
-    0 2px 6px rgba(18, 168, 221, 0.15) !important;
+    0 2px 6px rgba(0, 0, 0, 0.3) !important;
   color: #0b5fa3 !important;
-  border-radius: var(--fa-radius-pill) !important;
+  border-radius: 8px !important;
+  margin: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  box-sizing: border-box !important;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .ytp-right-controls,
-html[data-ypp-ui-style=frutiger-aero] .ytp-time-wrapper {
-  border-radius: var(--fa-radius-pill) !important;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
+/* Ensure inner svgs are centered in the 40px box */
+html[data-ypp-ui-style=frutiger-aero] .ytp-button svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn svg {
+  margin: auto !important;
+  position: absolute !important;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-right-controls {
+  border-radius: 0 !important;
 }
 
 /* Button hover — brighter gloss */
-html[data-ypp-ui-style=frutiger-aero] .ytp-button:hover {
+html[data-ypp-ui-style=frutiger-aero] .ytp-button:hover,
+html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn:hover,
+html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn:hover {
   background: linear-gradient(
     to bottom,
     #ffffff,

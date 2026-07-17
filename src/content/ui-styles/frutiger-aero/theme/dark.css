@@ -26,6 +26,6 @@ html[data-ypp-ui-style=frutiger-aero][dark=true] {
 
 /* Ensure body respects dark mode background override */
 html[data-ypp-ui-style=frutiger-aero][dark=true] body {
-  background-color: var(--ypp-bg-base) !important;
+  background-color: transparent !important;
   color: var(--fa-text-primary) !important;
 }

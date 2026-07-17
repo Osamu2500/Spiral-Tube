@@ -22,7 +22,14 @@
    1. CSS VARIABLES & THEME BASE
    =================================================================================== */
 
-.yt-spiral-tube-theme {
+html.yt-spiral-tube-theme,
+html.yt-spiral-tube-theme [dark],
+html.yt-spiral-tube-theme [theme="dark"],
+html.yt-spiral-tube-theme [dark="true"],
+.yt-spiral-tube-theme,
+.yt-spiral-tube-theme [dark],
+.yt-spiral-tube-theme [theme="dark"],
+.yt-spiral-tube-theme [dark="true"] {
   /* 
      NOTE: COLOR VARIABLES ARE NOW HANDLED BY THEME FILES (default.css, ocean.css, etc.)
      DO NOT ADD COLORS HERE TO AVOID SPECIFICITY CONFLICTS.
@@ -171,8 +178,12 @@
 
 /* Force YouTube background to respect theme variables */
 
-html.yt-spiral-tube-theme {
-  background-color: var(--ypp-bg-base, #0f0f0f);
+html.yt-spiral-tube-theme,
+html.yt-spiral-tube-theme:root,
+html.yt-spiral-tube-theme:root[dark],
+html.yt-spiral-tube-theme:root[dark="true"],
+html.yt-spiral-tube-theme:root[system-icons] {
+  background-color: var(--ypp-bg-base, #0f0f0f) !important;
   
   position: relative;
 }
@@ -210,7 +221,17 @@ html.ypp-no-theme-animations[data-ypp-theme="forest"]::after {
 
 html.yt-spiral-tube-theme body, 
 html.yt-spiral-tube-theme ytd-app,
-html.yt-spiral-tube-theme #background {
+html.yt-spiral-tube-theme #background,
+html.yt-spiral-tube-theme yt-page-background,
+html.yt-spiral-tube-theme ytd-page-manager,
+html.yt-spiral-tube-theme ytd-browse,
+html.yt-spiral-tube-theme ytd-watch-flexy,
+html.yt-spiral-tube-theme ytd-search,
+html.yt-spiral-tube-theme ytd-two-column-browse-results-renderer,
+html.yt-spiral-tube-theme ytd-rich-grid-renderer,
+html.yt-spiral-tube-theme #columns,
+html.yt-spiral-tube-theme #primary,
+html.yt-spiral-tube-theme #secondary {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -448,9 +469,29 @@ html.yt-spiral-tube-theme {
 
 /* Theme Base */
 
-html.yt-spiral-tube-theme body {
-  background-color: var(--ypp-bg-base);
+html.yt-spiral-tube-theme body,
+html.yt-spiral-tube-theme:root body,
+html.yt-spiral-tube-theme:root[dark] body {
+  background-color: transparent !important;
   overflow-x: hidden;
+}
+
+/* Force YouTube's native opaque layout wrappers to be transparent globally
+   so that custom theme backgrounds on HTML/Body can show through. */
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #page-manager,
+html.yt-spiral-tube-theme ytd-masthead,
+html.yt-spiral-tube-theme #masthead-container,
+html.yt-spiral-tube-theme tp-yt-app-header,
+html.yt-spiral-tube-theme tp-yt-app-header-layout,
+html.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer,
+html.yt-spiral-tube-theme #chips-wrapper,
+html.yt-spiral-tube-theme ytd-guide-renderer,
+html.yt-spiral-tube-theme ytd-mini-guide-renderer,
+html.yt-spiral-tube-theme tp-yt-app-drawer,
+html.yt-spiral-tube-theme #guide-content {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Hide Explore Topics */
@@ -4540,3 +4581,6 @@ ytd-thumbnail-overlay-toggle-button-renderer,
 ytd-thumbnail-overlay-button-renderer {
   display: none !important;
 }
+
+
+

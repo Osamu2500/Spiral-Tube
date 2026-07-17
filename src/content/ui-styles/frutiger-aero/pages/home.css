@@ -13,3 +13,21 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer.selected {
     inset 0 -2px 6px rgba(53, 199, 240, 0.4),
     0 0 8px rgba(53, 199, 240, 0.4) !important;
 }
+
+/* Fix the large gap and dark background on the topic bar (chips) */
+html[data-ypp-ui-style='frutiger-aero'] ytd-browse[page-subtype=home] #chips,
+html[data-ypp-ui-style='frutiger-aero'] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style='frutiger-aero'] #description.ytd-watch-metadata {
+  margin-top: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Give the chip bar wrapper a subtle glass effect if it's sticky, or keep it totally transparent */
+html[data-ypp-ui-style='frutiger-aero'] ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  margin-top: 5px !important; 
+}

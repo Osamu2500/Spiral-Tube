@@ -381,7 +381,8 @@ window.YPP.CONSTANTS = {
         ABYSS: { key: 'abyss', label: 'Abyss', class: 'ypp-theme-abyss' },
         EMBER: { key: 'ember', label: 'Ember', class: 'ypp-theme-ember' },
         OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' },
-        RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' }
+        RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' },
+        CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' }
     },
 
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
@@ -403,7 +404,8 @@ const CARD_STYLES = [
   { id: 'blue-sky', label: 'Blue Sky Style Cards' },
   { id: 'retro', label: 'Retro OS Windows' },
   { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' },
-  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' }
+  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' },
+  { id: 'christmas', label: 'Christmas (Festive)' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -417,7 +419,8 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'blue-sky', label: 'Blue Sky (Clouds)' },
   { id: 'retro', label: 'Retro OS (Win 95)' },
   { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' },
-  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' }
+  { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' },
+  { id: 'christmas', label: 'Christmas (Festive)' }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation
@@ -438,3 +441,4 @@ const deepFreeze = obj => {
 if (window.YPP.CONSTANTS && window.YPP.CONSTANTS.DEFAULT_SETTINGS) {
     deepFreeze(window.YPP.CONSTANTS.DEFAULT_SETTINGS);
 }
+

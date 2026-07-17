@@ -15,12 +15,14 @@ html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape__stroke {
 ──────────────────────────────────────────────── */
 /* Comprehensive selector list to beat all modern YT dark mode styles */
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--outline,
 html[data-ypp-ui-style=frutiger-aero] a.yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model button,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button,
-html[data-ypp-ui-style=frutiger-aero] .ytLikeButtonViewModelHost button,
-html[data-ypp-ui-style=frutiger-aero] .ytDislikeButtonViewModelHost button,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button.yt-spec-button-shape-next,
+html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style=frutiger-aero] button.ytSpecButtonShapeNextFilled,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"],
+html[data-ypp-ui-style=frutiger-aero] a[class*="ytSpecButtonShapeNextTonal"],
 html[data-ypp-ui-style=frutiger-aero] ytd-subscribe-button-renderer button,
 html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer {
   /* Frutiger Aero Glossy Gradient */
@@ -56,10 +58,17 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer {
 ──────────────────────────────────────────────── */
 /* Force all text and icons inside buttons to be Aquatic Blue */
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next .yt-core-attributed-string,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--tonal .yt-core-attributed-string,
 html[data-ypp-ui-style=frutiger-aero] a.yt-spec-button-shape-next .yt-core-attributed-string,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"] .yt-core-attributed-string,
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next yt-icon,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--tonal yt-icon,
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next .yt-icon,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"] yt-icon,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"] .yt-icon,
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next yt-icon-shape svg,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--tonal yt-icon-shape svg,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"] yt-icon-shape svg,
 html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer * {
   color: var(--fa-aqua-700, #066fa8) !important;
   fill: var(--fa-aqua-700, #066fa8) !important;
@@ -71,7 +80,11 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer * {
    4. HOVER AND ACTIVE STATES
 ──────────────────────────────────────────────── */
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-style=frutiger-aero] a.yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"]:hover,
+html[data-ypp-ui-style=frutiger-aero] a[class*="ytSpecButtonShapeNextTonal"]:hover,
 html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer:hover {
   background: linear-gradient(
     to bottom,
@@ -94,7 +107,11 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer:hover {
 }
 
 html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next:active,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--tonal:active,
+html[data-ypp-ui-style=frutiger-aero] button.yt-spec-button-shape-next--filled:active,
 html[data-ypp-ui-style=frutiger-aero] a.yt-spec-button-shape-next:active,
+html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"]:active,
+html[data-ypp-ui-style=frutiger-aero] a[class*="ytSpecButtonShapeNextTonal"]:active,
 html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer:active {
   transform: translateY(1px) scale(0.98) !important;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1) !important;
@@ -105,7 +122,8 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer:active {
    5. SEGMENTED LIKE/DISLIKE FIXES
 ──────────────────────────────────────────────── */
 /* Seamless segmented container */
-html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer {
+html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer,
+html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   display: flex !important;
   background: linear-gradient(
     to bottom,
@@ -127,7 +145,8 @@ html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer
 }
 
 /* Strip background from internal buttons because the container holds the style */
-html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer button.yt-spec-button-shape-next {
+html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer button,
+html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -137,13 +156,15 @@ html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer
 }
 
 /* Add hover to individual parts within segmented */
-html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer button.yt-spec-button-shape-next:hover {
+html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer button:hover,
+html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover {
   background: rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Divider line between like and dislike */
 html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--segmented-start::after,
+html[data-ypp-ui-style=frutiger-aero] .ytSpecButtonShapeNextSegmentedStart::after,
 html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper::before {
   content: "" !important;
   display: block !important;
@@ -158,14 +179,18 @@ html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegm
 ──────────────────────────────────────────────── */
 /* Some buttons (like Masthead or sort buttons) shouldn't be fully solid */
 html[data-ypp-ui-style=frutiger-aero] ytd-masthead button.yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button.yt-spec-button-shape-next {
+html[data-ypp-ui-style=frutiger-aero] ytd-masthead button[class*="ytSpecButtonShapeNext"],
+html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button.yt-spec-button-shape-next,
+html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button[class*="ytSpecButtonShapeNext"] {
   background: rgba(255, 255, 255, 0.4) !important;
   border-color: rgba(255, 255, 255, 0.8) !important;
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] ytd-masthead button.yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button.yt-spec-button-shape-next:hover {
+html[data-ypp-ui-style=frutiger-aero] ytd-masthead button[class*="ytSpecButtonShapeNext"]:hover,
+html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button.yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button[class*="ytSpecButtonShapeNext"]:hover {
   background: rgba(255, 255, 255, 0.8) !important;
   border-color: rgba(85, 199, 240, 0.8) !important;
   box-shadow: 

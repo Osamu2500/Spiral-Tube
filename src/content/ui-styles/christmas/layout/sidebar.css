@@ -1,0 +1,24 @@
+/* Christmas Theme - Sidebar styling */
+#guide-wrapper.ytd-app, 
+ytd-mini-guide-renderer.ytd-app,
+ytd-guide-renderer {
+    background: rgba(27, 94, 32, 0.85) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-right: 1px solid rgba(255, 215, 0, 0.2) !important;
+    border-radius: 0 16px 16px 0 !important;
+}
+
+[data-theme="dark"] #guide-wrapper.ytd-app,
+[data-theme="dark"] ytd-mini-guide-renderer.ytd-app {
+    background: rgba(10, 50, 15, 0.9) !important;
+}
+
+/* Sidebar links hover */
+ytd-guide-entry-renderer:hover,
+ytd-mini-guide-entry-renderer:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    transform: scale(1.02);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}

@@ -1,0 +1,65 @@
+:root {
+  /* Brand - Deep Reds */
+  --color-brand-50: #ffebee;
+  --color-brand-100: #ffcdd2;
+  --color-brand-500: #f44336;
+  --color-brand-700: #d32f2f;
+  --color-brand-900: #b71c1c;
+
+  /* Accent - Gold */
+  --color-accent-50: #fff8e1;
+  --color-accent-500: #ffc107;
+  --color-accent-900: #ff6f00;
+
+  /* Neutrals - Snowy Whites to Charcoal */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8f9fa;
+  --color-neutral-100: #f1f3f5;
+  --color-neutral-800: #343a40;
+  --color-neutral-900: #212529;
+
+  /* Semantic */
+  --color-success: #2e7d32; /* Forest Green */
+  --color-warning: #ffb300;
+  --color-error: #c62828;
+  --color-info: #0277bd;
+
+  /* Surfaces (Light Mode Default) */
+  --color-surface-primary: var(--color-neutral-0);
+  --color-surface-secondary: var(--color-neutral-50);
+  --color-surface-elevated: var(--color-neutral-0);
+  --color-surface-overlay: rgba(255, 255, 255, 0.8); /* Glass effect */
+
+  /* Text */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-800);
+  --color-text-muted: #6c757d;
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-link: var(--color-brand-700);
+
+  /* Borders */
+  --color-border-default: var(--color-neutral-100);
+  --color-border-subtle: rgba(0, 0, 0, 0.05);
+  --color-border-strong: var(--color-neutral-800);
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  /* Surfaces */
+  --color-surface-primary: #1b2e20; /* Dark Forest Green */
+  --color-surface-secondary: #132417; 
+  --color-surface-elevated: #233b29;
+  --color-surface-overlay: rgba(27, 46, 32, 0.8);
+
+  /* Text */
+  --color-text-primary: var(--color-neutral-0);
+  --color-text-secondary: var(--color-neutral-100);
+  --color-text-muted: #adb5bd;
+  --color-text-inverse: var(--color-neutral-900);
+  --color-text-link: var(--color-accent-500);
+
+  /* Borders */
+  --color-border-default: #2d4a34;
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-strong: #3d6345;
+}

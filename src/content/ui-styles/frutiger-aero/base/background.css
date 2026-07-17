@@ -14,22 +14,6 @@ html[data-ypp-ui-style=frutiger-aero] body {
   position: relative !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] body::after {
-  content: "" !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background-image: url("https://i.postimg.cc/vTw2C9fR/image.avif") !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  filter: blur(8px) !important;
-  transform: scale(1.1) !important;
-  z-index: -2 !important;
-  pointer-events: none !important;
-}
 
 html[data-ypp-ui-style=frutiger-aero] ytd-app,
 html[data-ypp-ui-style=frutiger-aero] #page-manager.ytd-app,

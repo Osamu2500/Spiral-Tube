@@ -1,0 +1,14 @@
+.card-glass {
+  background: var(--color-surface-overlay);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-lg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-default);
+}
+
+[data-theme="dark"] .card-glass {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
