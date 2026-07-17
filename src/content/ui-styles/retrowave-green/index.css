@@ -1,0 +1,59 @@
+html[data-ypp-ui-style="retrowave-green"] {
+    --yt-spec-brand-background-solid: #f5151500;
+    --yt-spec-brand-background-primary: #da000000;
+    --yt-spec-brand-background-secondary: #21212100;
+    --yt-spec-general-background-a: #14031e;
+    --yt-spec-general-background-b: #14031e;
+    --yt-spec-general-background-c: #14031e;
+    --yt-spec-call-to-action: #e1980f;
+    --yt-spec-static-brand-red: #f4cd0a9c !important;
+    --yt-spec-text-primary: #ffffff !important;
+    --yt-spec-text-secondary: #aeaeae !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] body {
+    color: #29636b !important;
+    text-shadow: 0px 1px 2px #29636b;
+}
+
+html[data-ypp-ui-style="retrowave-green"] ytd-app {
+    background-color: #14031e !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] ytd-rich-metadata-renderer,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-dialog {
+    background-image: linear-gradient(200deg, #253c23c7 0%, #f4cd0a 100%) !important;
+    background-color: #172b0547 !important;
+    border: 1px solid #f4cd0a9c !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] ytd-masthead {
+    background: #ff9626 !important;
+    border-bottom: 1px solid #ffbf1e3b !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] #container.ytd-searchbox {
+    background-color: #9f631347 !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] .ytp-swatch-background-color {
+    background-color: #e1980f !important;
+    box-shadow: 0 0 7px 3px #e1980f !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] ytd-button-renderer.style-primary[is-paper-button] {
+    background-color: #e1980f !important;
+    color: #ffffff !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] #like-bar.ytd-sentiment-bar-renderer {
+    background: linear-gradient(200deg, #283a28 0%, #f4960a 100%) !important;
+    box-shadow: 0px 0px 3px 1px #0006;
+}
+
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-button.ytd-subscribe-button-renderer {
+    background-color: #ff9822ed !important;
+    border-radius: 5px !important;
+}
+

@@ -1,3 +1,4 @@
+import anime from 'animejs/lib/anime.es.js';
 /**
  * GridAnimator
  * Adds premium staggered entrance animations to grid items using anime.js.

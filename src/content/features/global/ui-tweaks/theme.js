@@ -426,11 +426,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @private
      */
     _getThemeUrl(themeKey) {
-        const bundledThemes = ['aurora', 'blue-sky', 'brutalism', 'claymorphism', 'cyberpunk', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'neumorphic', 'ocean', 'retro', 'technozen', 'terminalism', 'vintage'];
-        if (bundledThemes.includes(themeKey)) {
-            return chrome.runtime.getURL(`src/content/ui-styles/${themeKey}/theme/bundle.css`);
-        }
-        return chrome.runtime.getURL(`src/content/themes/${themeKey}/bundle.css`);
+        return chrome.runtime.getURL(`src/content/ui-styles/${themeKey}/theme/bundle.css`);
     }
 
     /**
@@ -586,11 +582,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @private
      */
     _getCardStyleUrl(cardStyleKey) {
-        const bundledCards = ['aurora', 'blue-sky', 'brutalism', 'claymorphism', 'cyberpunk', 'frutiger-aero', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'nature', 'neumorphic', 'ocean', 'retro', 'terminalism', 'vintage'];
-        if (bundledCards.includes(cardStyleKey)) {
-            return chrome.runtime.getURL(`src/content/ui-styles/${cardStyleKey}/card-style.css`);
-        }
-        return chrome.runtime.getURL(`src/content/card-styles/${cardStyleKey}.css`);
+        return chrome.runtime.getURL(`src/content/ui-styles/${cardStyleKey}/card-style.css`);
     }
 
     /**

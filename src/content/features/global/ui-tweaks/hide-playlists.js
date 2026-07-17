@@ -8,17 +8,6 @@ export class HidePlaylists extends window.YPP.features.BaseFilterFeature {
         this._boundProcess = this._processNodes.bind(this);
     }
 
-    get isEnabled() {
-        const path = window.location.pathname;
-        if (path === '/' || path === '/index') {
-            return !!this.settings.hidePlaylists;
-        }
-        if (path === '/results') {
-            return !!this.settings.hideSearchPlaylists;
-        }
-        return false;
-    }
-
     _shouldRunOnCurrentPage() {
         const path = window.location.pathname;
         return (path === '/' || path === '/index' || path === '/results');

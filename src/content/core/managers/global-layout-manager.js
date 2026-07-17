@@ -40,10 +40,21 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideSearchShorts:      'ypp-hide-search-shorts',
             cleanSearch:           'ypp-clean-search',
             hideScrollbar:         'ypp-hide-scrollbar',
+            // New Custom feature toggles
+            hideMemberships:       'ypp-hide-memberships',
+            hideUploadButton:      'ypp-hide-upload-button',
+            reduceAnimations:      'ypp-reduce-animations',
+            pinVideoOnScroll:      'ypp-pin-video-scroll',
             // Aesthetic toggles
             customScrollbar:       'ypp-custom-scrollbar',
             grayscaleThumbnails:   'ypp-grayscale-thumbs',
-            useSquareCorners:      'ypp-use-square-corners',
+            useSquareCorners:      'ypp-square-ui', /* Fixed from ypp-use-square-corners */
+            extraRoundedUI:        'ypp-extra-rounded-ui',
+            retroLogo:             'ypp-retro-logo',
+            netflixSubtitles:      'ypp-netflix-subtitles',
+            saveSupremeUI:         'ypp-save-supreme-ui',
+            smallSettingsMenu:     'ypp-small-settings-menu',
+            useLightsaberProgress: 'ypp-lightsaber-progress',
         };
     }
 

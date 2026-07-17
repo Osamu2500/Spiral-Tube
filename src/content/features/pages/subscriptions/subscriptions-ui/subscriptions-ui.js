@@ -1,7 +1,7 @@
 import '../subscriptions.css';
-import './subs-ui-filter.js';
-import './subs-ui-sidebar.js';
-import './subs-ui-modal.js';
+import { SubsUIFilter } from './subs-ui-filter.js';
+import { SubsUISidebar } from './subs-ui-sidebar.js';
+import { SubsUIModal } from './subs-ui-modal.js';
 
 export class SubscriptionUI extends window.YPP.features.BaseFeature {
     static featureId = 'subscriptionUI';
@@ -31,7 +31,7 @@ export class SubscriptionUI extends window.YPP.features.BaseFeature {
 
         if (!this._debouncedFilter) {
             this._debouncedFilter = window.YPP.Utils.debounce(
-                (groupName) => window.YPP.features.SubsUIFilter._filterFeedNow(this, groupName),
+                (groupName) => SubsUIFilter._filterFeedNow(this, groupName),
                 50
             );
         }
@@ -145,31 +145,31 @@ export class SubscriptionUI extends window.YPP.features.BaseFeature {
     }
 
     injectFilterBar() {
-        window.YPP.features.SubsUIFilter.injectFilterBar(this);
+        SubsUIFilter.injectFilterBar(this);
     }
 
     reapplyFilters() {
-        window.YPP.features.SubsUIFilter.reapplyFilters(this);
+        SubsUIFilter.reapplyFilters(this);
     }
 
     filterFeed(groupName) {
         if (this._debouncedFilter) {
             this._debouncedFilter(groupName);
         } else {
-            window.YPP.features.SubsUIFilter._filterFeedNow(this, groupName);
+            SubsUIFilter._filterFeedNow(this, groupName);
         }
     }
 
     injectSidebarGroups() {
-        window.YPP.features.SubsUISidebar.injectSidebarGroups(this);
+        SubsUISidebar.injectSidebarGroups(this);
     }
 
     openOrganizer() {
-        window.YPP.features.SubsUIModal.openOrganizer(this);
+        SubsUIModal.openOrganizer(this);
     }
 
     addChannelToGroup(groupName, channel) {
-        return window.YPP.features.SubsUIModal._addChannelToGroup(this, groupName, channel);
+        return SubsUIModal._addChannelToGroup(this, groupName, channel);
     }
 };
 

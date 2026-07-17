@@ -2,7 +2,6 @@ const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
 
-const themesDir = path.join(__dirname, '../src/content/themes');
 const uiStylesDir = path.join(__dirname, '../src/content/ui-styles');
 
 const getDirs = source => fs.readdirSync(source, { withFileTypes: true })
@@ -11,9 +10,6 @@ const getDirs = source => fs.readdirSync(source, { withFileTypes: true })
 
 // --- Build Color Themes ---
 const themeEntryPoints = [];
-getDirs(themesDir).forEach(dir => {
-    themeEntryPoints.push({ in: path.join(themesDir, dir, 'index.css'), out: path.join('themes', dir, 'bundle') });
-});
 
 getDirs(uiStylesDir).forEach(dir => {
     const embeddedThemePath = path.join(uiStylesDir, dir, 'theme', 'index.css');
@@ -35,7 +31,10 @@ esbuild.build({
 // --- Build UI Styles ---
 const uiStyleEntryPoints = [];
 getDirs(uiStylesDir).forEach(dir => {
-    uiStyleEntryPoints.push({ in: path.join(uiStylesDir, dir, 'index.css'), out: path.join(dir, 'bundle') });
+    const indexPath = path.join(uiStylesDir, dir, 'index.css');
+    if (fs.existsSync(indexPath)) {
+        uiStyleEntryPoints.push({ in: indexPath, out: path.join(dir, 'bundle') });
+    }
 });
 
 console.log(`Building ${uiStyleEntryPoints.length} UI styles...`);

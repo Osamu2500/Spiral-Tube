@@ -277,6 +277,15 @@ html.ypp-reduced-motion *::after {
   transition-timing-function: linear !important;
 }
 
+body.ypp-reduce-animations *,
+body.ypp-reduce-animations *::before,
+body.ypp-reduce-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
 /* Accent Color Overrides via injected variables */
 
 html.yt-spiral-tube-theme {
@@ -545,7 +554,8 @@ body.ypp-hide-live-chat #chat {
 /* Hide Related Feed (Watch Page Sidebar) */
 
 body.ypp-hide-related #related,
-body.ypp-hide-related ytd-watch-next-secondary-results-renderer {
+body.ypp-hide-related ytd-watch-next-secondary-results-renderer,
+body.ypp-hide-related ytd-watch-grid.ytd-page-manager #bottom-grid {
   display: none !important;
 }
 
@@ -573,6 +583,35 @@ body.ypp-hide-fundraiser ytd-donation-shelf-renderer {
 }
 
 /* Hide End Screens */
+body.ypp-hide-endscreens #movie_player .ytp-ce-channel,
+body.ypp-hide-endscreens #movie_player .ytp-ce-video,
+body.ypp-hide-endscreens .ytp-endscreen-content {
+  display: none !important;
+}
+
+/* Hide Memberships */
+body.ypp-hide-memberships ytd-video-owner-renderer ytd-button-renderer#sponsor-button,
+body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
+  display: none !important;
+}
+
+/* Hide Upload Button */
+body.ypp-hide-upload-button #buttons ytd-topbar-menu-button-renderer:has(svg path[d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"]),
+body.ypp-hide-upload-button ytd-masthead #buttons ytd-topbar-menu-button-renderer:nth-child(1),
+body.ypp-hide-upload-button ytd-masthead [aria-label="Create"],
+body.ypp-hide-upload-button ytd-masthead a[href*="/upload"] {
+  display: none !important;
+}
+
+/* Pin Video on Scroll */
+body.ypp-pin-video-scroll ytd-watch-flexy[is-two-columns_]:not([fullscreen]) #player-container-outer {
+    position: sticky !important;
+    top: var(--ytd-masthead-height, 56px) !important;
+    z-index: 100 !important;
+}
+body.ypp-pin-video-scroll ytd-watch-flexy[is-two-columns_]:not([fullscreen]) #player {
+    position: relative !important;
+}
 
 /* ========================================================================== */
 
@@ -4529,6 +4568,34 @@ html.yt-spiral-tube-theme:not([dark]) .sbdd_b {
     100% { transform: rotate(0deg); }
 }
 
+/* =========================================
+   SQUARE UI (Roundless YouTube From 26523)
+========================================= */
+body.ypp-square-ui *,
+body.ypp-square-ui *::after,
+body.ypp-square-ui *::before,
+body.ypp-square-ui *:hover,
+body.ypp-square-ui *:active {
+    border-radius: 0 !important;
+    border-start-start-radius: 0 !important;
+    border-start-end-radius: 0 !important;
+    border-end-start-radius: 0 !important;
+    border-end-end-radius: 0 !important;
+}
+
+body.ypp-square-ui div {
+    mask-image: none !important;
+}
+
+/* KEEP SLIDERS AND SPINNERS ROUND IN SQUARE UI */
+body.ypp-square-ui .ytp-delhi-modern .ytp-scrubber-button,
+body.ypp-square-ui .ytProgressBarPlayheadProgressBarPlayheadDot,
+body.ypp-square-ui .ytp-delhi-modern .ytp-volume-slider-handle,
+body.ypp-square-ui .circle.style-scope.tp-yt-paper-spinner,
+body.ypp-square-ui .ytp-spinner-circle {
+    border-radius: 50% !important;
+}
+
 .ypp-satellites-container.animating {
     animation: ypp-orbit 20s linear infinite;
 }
@@ -4582,5 +4649,141 @@ ytd-thumbnail-overlay-button-renderer {
   display: none !important;
 }
 
+/* =========================================
+   NETFLIX SUBTITLES (From 3881)
+========================================= */
+body.ypp-netflix-subtitles .ytp-caption-segment {
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: 500 !important;
+    text-shadow: 
+        0px 2px 4px rgba(0,0,0,0.8), 
+        0px 4px 8px rgba(0,0,0,0.8), 
+        0px 0px 10px rgba(0,0,0,0.6) !important;
+    background: transparent !important;
+}
+
+/* =========================================
+   RETRO 2011 LOGO (From 5285)
+========================================= */
+body.ypp-retro-logo #logo .style-scope.yt-icon {
+    display: none !important;
+}
+body.ypp-retro-logo #logo-container .logo {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2011.svg/320px-YouTube_Logo_2011.svg.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+    min-width: 100px !important;
+    min-height: 30px !important;
+}
+
+/* =========================================
+   EXTRA ROUNDED UI (From 8064)
+========================================= */
+body.ypp-extra-rounded-ui ytd-thumbnail img,
+body.ypp-extra-rounded-ui .yt-spec-avatar-shape__image,
+body.ypp-extra-rounded-ui #search-form,
+body.ypp-extra-rounded-ui tp-yt-paper-button,
+body.ypp-extra-rounded-ui .yt-spec-button-shape-next,
+body.ypp-extra-rounded-ui ytd-playlist-panel-renderer {
+    border-radius: 20px !important;
+}
+
+/* =========================================
+   SAVE SUPREME UI (From 25092)
+========================================= */
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) {
+    top: 88px !important;
+    left: calc(50% - 250px) !important;
+    max-width: 500px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
+    backdrop-filter: none !important;
+    box-shadow: none;
+    border-radius: 12px;
+    height: 705px !important;
+    max-height: unset !important;
+    max-width: 500px !important;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHost {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(48px);
+    max-width: unset !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHeaderContainer { 
+    display: none; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutContentContainer {
+    padding: 10px;
+    width: 480px;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) yt-list-item-view-model[aria-pressed="true"] {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__container--has-subtitle {
+    padding: 10px;
+    box-sizing: border-box;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__image-container {
+    height: 58px;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionThumbnailViewModelHost {
+    width: 104px !important;
+    height: 60px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackSpacer, 
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackCollectionStack1Small { 
+    display: none; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytThumbnailViewModelSmall {
+    border-radius: 6px;
+    margin: unset;
+    border: 1px solid rgba(255, 255, 255, 0.41);
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__title { 
+    font-size: 1.9rem; 
+    font-weight: 500; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__subtitle-container { 
+    display: none; 
+}
 
 
+
+
+/* --- Compact Settings Menu (Style 27066) --- */
+body.ypp-small-settings-menu #contentContainer.tp-yt-app-drawer[swipe-open]::after {
+    display: none !important;
+}
+body.ypp-small-settings-menu .ytp-panel-menu {
+    display: block !important;
+}
+body.ypp-small-settings-menu .ytp-menuitem:not(.ytp-menuitem-with-footer) {
+    display: flex !important;
+    align-items: center !important;
+    height: 30px !important;
+    border-radius: 4px !important;
+}
+body.ypp-small-settings-menu .ytp-menuitem-label {
+    flex: 1 !important;
+}
+
+/* --- Lightsaber Progress Bar (Style 8462 - Red Sith) --- */
+body.ypp-lightsaber-progress {
+    --ypp-lightsaber-color: #EB212E; 
+}
+body.ypp-lightsaber-progress .ytp-play-progress {
+    background: #fff2f2 !important;
+    box-shadow: 0px 0px 5px var(--ypp-lightsaber-color), 
+                0px 0px 5px var(--ypp-lightsaber-color), 
+                0px 0px 8px var(--ypp-lightsaber-color), 
+                0px 0px 10px var(--ypp-lightsaber-color) !important;
+}
+body.ypp-lightsaber-progress .ytp-scrubber-button {
+    background: #272727 !important;
+    border: solid 2px #d4d4d4 !important;
+    border-radius: 4px !important;
+    transform: scaleY(1.3) scaleX(0.7) !important;
+}

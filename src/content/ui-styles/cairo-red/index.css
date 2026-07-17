@@ -1,0 +1,19 @@
+/* Cairo Red Theme */
+html[data-ypp-ui-style="cairo-red"] {
+  --yt-spec-static-brand-red: #f00 !important;
+  --yt-spec-red-indicator: #f00 !important;
+  --yt-spec-static-overlay-background-brand: #f00 !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] #progress.ytd-thumbnail-overlay-resume-playback-renderer,
+html[data-ypp-ui-style="cairo-red"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="cairo-red"] .ytp-play-progress,
+html[data-ypp-ui-style="cairo-red"] .yt-spec-avatar-shape--live-ring::after {
+  background: var(--yt-spec-static-brand-red) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] .yt-core-image,
+html[data-ypp-ui-style="cairo-red"] .yt-icon {
+  filter: hue-rotate(9deg) saturate(1.35) !important;
+}
+

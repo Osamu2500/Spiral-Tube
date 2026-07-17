@@ -77,6 +77,8 @@ export function initComponents(
           { key: 'ocean', label: t('ocean_blue'), meta: t('deep_blue'), color: '#051421' },
           { key: 'forest', label: t('forest'), meta: t('green'), color: '#0f1c15' },
           { key: 'cherry', label: t('cherry'), meta: t('pink'), color: '#26181b' },
+          { key: 'kawaii', label: t('kawaii'), meta: t('pink_cute'), color: '#fff1f4' },
+          { key: 'player-retouch', label: t('player_retouch'), meta: t('red_accent'), color: '#1a1a1a' },
           { key: 'coffee', label: t('coffee'), meta: t('latte'), color: '#2a201c' },
           { key: 'bloodmoon', label: t('blood_moon'), meta: t('crimson'), color: '#1a0505' },
         ],
@@ -117,6 +119,18 @@ export function initComponents(
           { key: 'claymorphism', label: t('claymorphism'), meta: t('puffy_3d'), color: '#f0e8ff' },
           { key: 'brutalism', label: t('brutalism'), meta: t('raw_ui'), color: '#ffffff' },
           { key: 'glassmorphism', label: t('glassmorphism'), meta: t('frosted'), color: '#0f0c29' },
+          { key: 'colorize', label: t('colorize'), meta: t('glass_dynamic'), color: '#0f0f0f' },
+        ],
+      },
+      {
+        name: 'UserStyles',
+        themes: [
+          { key: 'fluent', label: t('fluent'), meta: 'UI Fix', color: '#111111' },
+          { key: 'crystal-glass', label: t('crystal_glass'), meta: 'Frosted', color: '#f0f0f0' },
+          { key: 'ice-blue', label: t('ice_blue'), meta: 'Cold', color: '#4b73ff' },
+          { key: 'cairo-red', label: t('cairo_red'), meta: 'Pure Red', color: '#ff0000' },
+          { key: 'pink', label: t('cherry'), meta: 'Pink', color: '#ffb6c1' },
+          { key: 'retrowave-green', label: t('hacker_green'), meta: 'Retro', color: '#00ff00' },
         ],
       },
     ];

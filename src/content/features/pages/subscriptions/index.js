@@ -1,3 +1,6 @@
+import { SubscriptionManager } from './subscription-manager.js';
+import { SubscriptionUI } from './subscriptions-ui/subscriptions-ui.js';
+
 // Main entry point for Subscriptions Feature
 export class SubscriptionsOrganizer extends window.YPP.features.BaseFeature {
     static featureId = 'subsOrganizer';
@@ -6,8 +9,8 @@ export class SubscriptionsOrganizer extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('SubscriptionsOrganizer');
-        this.manager = new window.YPP.features.SubscriptionManager();
-        this.ui = new window.YPP.features.SubscriptionUI(this.manager);
+        this.manager = new SubscriptionManager();
+        this.ui = new SubscriptionUI(this.manager);
     }
 
     getConfigKey() {

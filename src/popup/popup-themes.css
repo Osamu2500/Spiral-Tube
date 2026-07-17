@@ -496,3 +496,179 @@ body.ypp-theme-brutalism .action-btn svg,
 body.ypp-theme-minimalism .action-btn svg {
     color: var(--text-1);
 }
+
+/* 20. Cairo Red Theme */
+body.ypp-theme-cairo-red {
+    --bg-primary: #1a0505;
+    --bg-surface: #2b0808;
+    --bg-glass: rgba(43, 8, 8, 0.85);
+    --bg-glass-hover: rgba(53, 10, 10, 0.9);
+    --border-subtle: rgba(255, 0, 0, 0.3);
+    --accent-primary: #ff0000;
+}
+body.ypp-theme-cairo-red .toggle-card:has(input:checked) {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: #ff0000;
+}
+
+/* 21. Cherry Theme */
+body.ypp-theme-pink {
+    --bg-primary: #2a0b16;
+    --bg-surface: #411122;
+    --bg-glass: rgba(65, 17, 34, 0.85);
+    --bg-glass-hover: rgba(75, 20, 39, 0.9);
+    --border-subtle: rgba(230, 60, 115, 0.3);
+    --accent-primary: #e63c73;
+}
+body.ypp-theme-pink .toggle-card:has(input:checked) {
+    background: rgba(230, 60, 115, 0.15);
+    border-color: #e63c73;
+}
+
+/* 22. Hacker Green Theme */
+body.ypp-theme-retrowave-green {
+    --bg-primary: #051a05;
+    --bg-surface: #0a2b0a;
+    --bg-glass: rgba(10, 43, 10, 0.85);
+    --bg-glass-hover: rgba(15, 53, 15, 0.9);
+    --border-subtle: rgba(0, 255, 0, 0.3);
+    --accent-primary: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+}
+body.ypp-theme-retrowave-green .toggle-card:has(input:checked) {
+    background: rgba(0, 255, 0, 0.15);
+    border-color: #00ff00;
+}
+
+/* 23. Kawaii Theme */
+body.ypp-theme-kawaii {
+    --bg-primary: #fff0f5;
+    --bg-surface: #ffe4e1;
+    --bg-glass: rgba(255, 228, 225, 0.85);
+    --bg-glass-hover: rgba(255, 218, 215, 0.9);
+    --border-subtle: rgba(255, 105, 180, 0.3);
+    --accent-primary: #ff69b4;
+    --text-1: #c71585;
+    --text-2: #db7093;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+body.ypp-theme-kawaii, body.ypp-theme-kawaii * {
+    color: var(--text-1);
+}
+body.ypp-theme-kawaii .toggle-card:has(input:checked) {
+    background: rgba(255, 105, 180, 0.15);
+    border-color: #ff69b4;
+}
+
+/* 24. Colorize Theme */
+body.ypp-theme-colorize {
+    --bg-primary: #1c1c1c;
+    --bg-surface: #2d2d2d;
+    --bg-glass: rgba(45, 45, 45, 0.85);
+    --bg-glass-hover: rgba(55, 55, 55, 0.9);
+    --border-subtle: rgba(255, 255, 255, 0.2);
+    --accent-primary: #ff9800;
+}
+body.ypp-theme-colorize .toggle-card:has(input:checked) {
+    background: rgba(255, 152, 0, 0.15);
+    border-color: #ff9800;
+}
+
+/* 25. Player Retouch */
+body.ypp-theme-player-retouch {
+    --bg-primary: #121212;
+    --bg-surface: #1e1e1e;
+    --bg-glass: rgba(30, 30, 30, 0.85);
+    --bg-glass-hover: rgba(40, 40, 40, 0.9);
+    --border-subtle: rgba(255, 255, 255, 0.15);
+    --accent-primary: #dde3e3;
+}
+body.ypp-theme-player-retouch .toggle-card:has(input:checked) {
+    background: rgba(221, 227, 227, 0.15);
+    border-color: #dde3e3;
+}
+
+/* 26. Crystal Glass */
+body.ypp-theme-crystal-glass {
+    --bg-primary: #0a1128;
+    --bg-surface: rgba(255, 255, 255, 0.05);
+    --bg-glass: rgba(255, 255, 255, 0.1);
+    --bg-glass-hover: rgba(255, 255, 255, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.3);
+    --accent-primary: #00d2ff;
+    background: linear-gradient(135deg, #0a1128, #1a2a6c, #b21f1f, #fdbb2d);
+}
+body.ypp-theme-crystal-glass .app-container {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+body.ypp-theme-crystal-glass .toggle-card:has(input:checked) {
+    background: rgba(0, 210, 255, 0.2);
+    border-color: #00d2ff;
+}
+
+/* 27. Ice Blue */
+body.ypp-theme-ice-blue {
+    --bg-primary: #e0f7fa;
+    --bg-surface: #b2ebf2;
+    --bg-glass: rgba(178, 235, 242, 0.85);
+    --bg-glass-hover: rgba(128, 222, 234, 0.9);
+    --border-subtle: rgba(0, 188, 212, 0.3);
+    --accent-primary: #00bcd4;
+    --text-1: #006064;
+    --text-2: #00838f;
+}
+body.ypp-theme-ice-blue, body.ypp-theme-ice-blue * {
+    color: var(--text-1);
+}
+body.ypp-theme-ice-blue .toggle-card:has(input:checked) {
+    background: rgba(0, 188, 212, 0.15);
+    border-color: #00bcd4;
+}
+
+/* 28. Fluent UI */
+body.ypp-theme-fluent {
+    --bg-primary: #f3f2f1;
+    --bg-surface: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --bg-glass-hover: rgba(243, 242, 241, 0.9);
+    --border-subtle: rgba(0, 0, 0, 0.1);
+    --accent-primary: #0078d4;
+    --text-1: #323130;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body.ypp-theme-fluent, body.ypp-theme-fluent * {
+    color: var(--text-1);
+}
+body.ypp-theme-fluent .app-container {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(40px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+body.ypp-theme-fluent .toggle-card:has(input:checked) {
+    background: rgba(0, 120, 212, 0.1);
+    border-color: #0078d4;
+}
+
+/* Fix text colors for new light themes */
+body.ypp-theme-kawaii,
+body.ypp-theme-ice-blue,
+body.ypp-theme-fluent {
+    --text-1: #111111;
+    --text-2: #333333;
+    --text-dim: #555555;
+}
+body.ypp-theme-kawaii *,
+body.ypp-theme-ice-blue *,
+body.ypp-theme-fluent * {
+    color: var(--text-1);
+}
+body.ypp-theme-kawaii .action-btn svg,
+body.ypp-theme-ice-blue .action-btn svg,
+body.ypp-theme-fluent .action-btn svg {
+    color: var(--text-1);
+}

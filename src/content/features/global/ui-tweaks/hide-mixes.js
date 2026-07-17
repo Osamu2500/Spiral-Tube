@@ -11,17 +11,6 @@ export class HideMixes extends window.YPP.features.BaseFilterFeature {
         this._boundSchedule = this._scheduleProcess.bind(this);
     }
 
-    get isEnabled() {
-        const path = window.location.pathname;
-        if (path === '/' || path === '/index') {
-            return !!this.settings.hideMixes;
-        }
-        if (path === '/results') {
-            return !!this.settings.hideSearchMixes;
-        }
-        return false;
-    }
-
     _shouldRunOnCurrentPage() {
         const path = window.location.pathname;
         return (path === '/' || path === '/index' || path === '/results');

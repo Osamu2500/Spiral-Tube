@@ -42,6 +42,11 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'displayFullTitle', label: t('displayFullTitle'), desc: t('displayFullTitle_desc'),        icon:P('M4 6h16M4 12h16M4 18h16') },
                     { type:'toggle', id:'useSquareCorners',    label: t('useSquareCorners'),     desc: t('useSquareCorners_desc'),   icon:P('M3 3h18v18H3z') },
+                    { type:'toggle', id:'extraRoundedUI', label: t('extraRoundedUI'), desc: t('extraRoundedUI_desc'), icon:P('M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm10 6c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6z') },
+                    { type:'toggle', id:'saveSupremeUI', label: t('saveSupremeUI'), desc: t('saveSupremeUI_desc'), icon:P('M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z') },
+                    { type:'toggle', id:'retroLogo',           label: t('retroLogo'),            desc: t('retroLogo_desc'),          icon:P('M12 2L2 22h20L12 2z') },
+                    { type:'toggle', id:'smallSettingsMenu', label: t('smallSettingsMenu'), desc: t('smallSettingsMenu_desc'), icon:P('M3 13h18v-2H3v2zm0 4h18v-2H3v2zm0-8h18V7H3v2z') },
+                    { type:'toggle', id:'useLightsaberProgress', label: t('useLightsaberProgress'), desc: t('useLightsaberProgress_desc'), icon:P('M2 12h20v2H2z') },
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:P('M15 3l6 6M15 3h6v6M9 21l-6-6M9 21H3v-6') },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]
@@ -94,6 +99,7 @@ export const getPopupSchema = (t) => [
                 title: t('playback_automation'),
                 icon: P('M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83'),
                 items: [
+                    { type:'toggle', id:'netflixSubtitles', label: t('player_netflix_subtitles'), icon:P('M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z') },
                     { type:'toggle', id:'autoCinema',       label: t('auto_cinema'),        desc: t('expand_player_on_load'),      icon:P('M2 3h20v14H2zM8 21h8M12 17v4') },
                     { type:'toggle', id:'videoResumer',     label: t('video_resumer'),      desc: t('save_playback_position'),     icon:P('M12 20V4M20 12H4') },
                     { type:'toggle', id:'autoPause',        label: t('auto_pause'),         desc: t('pause_when_backgrounded'),    icon:P('M6 4h4v16H6zM14 4h4v16h-4z') },
@@ -117,6 +123,8 @@ export const getPopupSchema = (t) => [
                 title: t('player_ui_components'),
                 icon: P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'),
                 items: [
+                    { type:'toggle', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:P('M19 8l-4 4h3c0 3.31-2.69 6-6 6') },
+                    { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:P('M12 2L2 22h20L12 2z') },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:P('M3 3h18v18H3zM3 9h18') },
                     { type:'toggle', id:'videoControlsEnabled', label: t('video_controls_ui'), desc: t('custom_floating_panel'),     icon:P('M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z') },
                     { type:'toggle', id:'enableCinemaFilters',  label: t('filters'),          desc: t('visual_effects_panel'),       icon:P('M22 3H2l8 9.46V19l4 2v-8.54L22 3z') },
@@ -147,7 +155,7 @@ export const getPopupSchema = (t) => [
                     { type:'button-group', id:'pb_native_cast', label: t('native_cast_tv'), desc: t('youtube_feature'), icon:P('M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z M1 18v3h3c0-1.66-1.34-3-3-3zM1 14v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_autoplay', label: t('native_autoplay'), desc: t('youtube_feature'), icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_cc', label: t('native_cc_subtitles'), desc: t('youtube_feature'), icon:P('M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
-                    { type:'button-group', id:'pb_native_settings', label: t('native_settings'), desc: t('youtube_feature'), icon:P('M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
+                    { type:'button-group', id:'pb_native_settings', label: t('native_settings'), desc: t('youtube_feature'), icon:P('M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_miniplayer', label: t('native_miniplayer'), desc: t('youtube_feature'), icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_theater', label: t('native_theater_mode'), desc: t('youtube_feature'), icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_fullscreen', label: t('native_fullscreen'), desc: t('youtube_feature'), icon:P('M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
@@ -257,6 +265,7 @@ export const getPopupSchema = (t) => [
                 title: t('home_page'),
                 icon: P('M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'),
                 items: [
+                    { type:'toggle', id:'hideMemberships',   label: t('hide_memberships'),  desc: t('hide_memberships_desc'), icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z') },
                     { type:'toggle', id:'hideFeed',       label: t('hide_homepage_feed'),  desc: t('blank_homepage'), icon:P('M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z') },
                     { type:'toggle', id:'hideExploreTopics', label: t('hide_topics_bar'),   desc: t('remove_category_chips'),    icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M3.6 9h16.8 M3.6 15h16.8') },
                     { type:'toggle', id:'hideTrending',   label: t('hide_trending_explore'),icon:P('M13 2L3 14h9l-1 8 10-12h-9l1-8z') },
@@ -305,6 +314,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideSearchShelves', label: t('hide_shelf_sections'),  desc: t('remove_for_you'),         icon:P('M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z') },
                     { type:'toggle', id:'hideChannelCards',  label: t('hide_channel_cards'),   desc: t('show_videos_only'),         icon:P('M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z') },
                     { type:'toggle', id:'hideVoiceSearch',   label: t('hide_voice_search'), desc: t('remove_microphone_icon'),    icon:P('M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-4.08A7 7 0 0 0 19 11h-2z') },
+                    { type:'toggle', id:'hideUploadButton',   label: t('hide_upload_button'), desc: t('remove_upload_icon'),    icon:P('M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z') },
                     { type:'toggle', id:'hideSearchMixes', label: t('hide_mixes'), desc: t('remove_infinite_mixes'), icon:P('M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71') },
                     { type:'toggle', id:'hideSearchPlaylists', label: t('hide_playlists'), desc: t('remove_playlist_cards'), icon:P('M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01') },
                     { type:'toggle', id:'hideSearchPodcasts', label: t('hide_podcasts'), desc: t('remove_podcast_cards'), icon:P('M3 18v-6a9 9 0 0 1 18 0v6 M21 19a2 2 0 0 1-2 2h-1v-6h3v4z M3 19a2 2 0 0 0 2 2h1v-6H3v4z') },
@@ -317,7 +327,7 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'hideShorts',       label: t('hide_shorts'),        desc: t('remove_from_home_feed'),    icon:P('M12 20V10M18 20V4M6 20v-4') },
                     { type:'toggle', id:'hideSearchShorts', label: t('hide_search_shorts'), desc: t('remove_from_search_results'), icon:P('M21 21l-4.35-4.35M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12z') },
-                    { type:'toggle', id:'aggressiveShortsBlock', label: t('nuke_shorts'), desc: t('remove_everywhere'), icon:P('M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12z') },
+                    { type:'toggle', id:'aggressiveShortsBlock', label: t('nuke_shorts'), desc: t('remove_everywhere'), icon:P('M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10S2 17.52 2 12z') },
                 ]
             }
         ]
@@ -348,7 +358,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'ff_streamed_visible', label: t('streamed') },
                     { type:'toggle', id:'ff_scheduled_visible', label: t('scheduled') },
                     { type:'toggle', id:'ff_posts_visible', label: t('posts') },
-                    { type:'toggle', id:'ff_playlist_visible', label: t('playlist') },
+                    { type:'toggle', id:'ff_playlist_visible', label: t('playlist') }
                 ]
             },
             {

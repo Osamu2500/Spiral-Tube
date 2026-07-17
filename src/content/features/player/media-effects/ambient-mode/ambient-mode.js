@@ -91,6 +91,9 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
             this.container.remove();
             this.container = null;
         }
+
+        const styleNode = document.getElementById('ypp-next-ambient-style');
+        if (styleNode) styleNode.remove();
     }
 
     async onUpdate() {
@@ -136,15 +139,20 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
         // Create container for the massive glow
         this.container = document.createElement('div');
         this.container.id = 'ypp-massive-ambient-container';
+
+        if (window.getComputedStyle(playerContainer).position === 'static') {
+            playerContainer.style.position = 'relative';
+        }
+
         this.container.style.cssText = `
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             z-index: -1; /* Behind everything */
             pointer-events: none;
-            overflow: hidden;
+            overflow: visible; /* Let glow bleed out of bounds */
             transform: translateZ(0); /* Hardware acceleration */
             opacity: ${this.settings?.ambientIntensity || 0.6};
             transition: opacity 0.5s ease;
@@ -160,17 +168,36 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(1.3);
+            transform: translate(-50%, -50%) scale(1.15);
             width: 100%;
             height: 100%;
             image-rendering: auto;
-            mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+            filter: blur(30px);
+            opacity: 0.8;
+            mask-image: radial-gradient(circle, transparent 40%, black 70%);
+            -webkit-mask-image: radial-gradient(circle, transparent 40%, black 70%);
         `;
         
         this.container.appendChild(this.canvas);
         
-        document.body.insertBefore(this.container, document.body.firstChild);
+        playerContainer.insertBefore(this.container, playerContainer.firstChild);
+
+        // YouTube Next Ambient styling for playlist panel
+        let styleNode = document.getElementById('ypp-next-ambient-style');
+        if (!styleNode) {
+            styleNode = document.createElement('style');
+            styleNode.id = 'ypp-next-ambient-style';
+            styleNode.textContent = `
+                body.ypp-ambient-mode-active ytd-playlist-panel-renderer {
+                    background: rgba(255, 255, 255, 0.08) !important;
+                    backdrop-filter: blur(16px) saturate(120%) !important;
+                    -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+                    border-radius: 12px !important;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+                }
+            `;
+            document.head.appendChild(styleNode);
+        }
 
         this.initWebGL();
     }
@@ -412,7 +439,9 @@ export class AmbientMode extends window.YPP.features.BaseFeature {
             this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
             
             if (this.audioContext.state === 'suspended') {
-                this.audioContext.resume();
+                this.audioContext.resume().catch(e => {
+                    this.utils?.log('Failed to resume Audio Context (likely DRM/CORS)', 'AMBIENT', 'warn');
+                });
             }
         } catch (e) {
             this.utils?.log('Failed to init Audio Context (likely DRM/CORS)', 'AMBIENT', 'warn');

@@ -1,0 +1,46 @@
+/* Ice Blue Theme */
+html[data-ypp-ui-style="ice-blue"] {
+  --sr-main-color: #7bd2f4;
+  --sr-deeper-color: #6fa8dc;
+  --sr-purple-color: #4B73FF;
+}
+
+/* Text & Links */
+html[data-ypp-ui-style="ice-blue"] .yt-core-attributed-string__link,
+html[data-ypp-ui-style="ice-blue"] .yt-simple-endpoint.style-scope.yt-formatted-string.bold,
+html[data-ypp-ui-style="ice-blue"] #content-text a.yt-simple-endpoint.style-scope.yt-formatted-string,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="ice-blue"] ytd-compact-video-renderer a.yt-simple-endpoint h3 {
+    color: var(--sr-main-color) !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] #subscribe-button {
+    color: var(--sr-deeper-color) !important;
+}
+
+/* Time & Metadata */
+html[data-ypp-ui-style="ice-blue"] #time,
+html[data-ypp-ui-style="ice-blue"] #default-metadata a.yt-simple-endpoint.style-scope.yt-formatted-string {
+    color: var(--sr-main-color) !important;
+}
+
+/* Progress Bar & Accents */
+html[data-ypp-ui-style="ice-blue"] .yt-page-navigation-progress,
+html[data-ypp-ui-style="ice-blue"] .ytd-thumbnail-overlay-resume-playback-renderer,
+html[data-ypp-ui-style="ice-blue"] .ytp-play-progress.ytp-swatch-background-color,
+html[data-ypp-ui-style="ice-blue"] .ytp-scrubber-button.ytp-swatch-background-color,
+html[data-ypp-ui-style="ice-blue"] .ytp-live-badge[disabled]:before {
+    background: linear-gradient(220.55deg, #7CF7FF 0%, #4B73FF 100%) !important;
+}
+
+/* Logo Color */
+html[data-ypp-ui-style="ice-blue"] #logo-icon-container svg path[fill*="#FF0000"] {
+    fill: #4B73FF !important;
+}
+
+/* Notification & Live Badges */
+html[data-ypp-ui-style="ice-blue"] .yt-spec-icon-badge-shape__badge,
+html[data-ypp-ui-style="ice-blue"] .badge-style-type-live-now-alternate {
+    background: linear-gradient(220.55deg, #5D85A6 0%, #0E2C5E 100%) !important;
+}
+
