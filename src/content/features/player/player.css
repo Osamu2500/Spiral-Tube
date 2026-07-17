@@ -848,3 +848,33 @@ body.ypp-ambient-mode-active ytd-watch-flexy {
     background: transparent !important;
     background-color: transparent !important;
 }
+
+/* ════════════════════════════════════════════════════════════════
+   GLOBAL SAFETY: Player bar native button visibility guarantee
+   Ensures .ytp-button controls never get accidentally hidden or
+   shrunk to 0px by any theme CSS. This acts as a floor rule.
+   ════════════════════════════════════════════════════════════════ */
+.html5-video-player .ytp-chrome-controls button.ytp-button {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  overflow: visible !important;
+  flex-shrink: 0 !important;
+}
+
+/* Ensure SVG icons inside player buttons stay white and visible */
+.html5-video-player .ytp-chrome-controls button.ytp-button svg,
+.html5-video-player .ytp-chrome-controls button.ytp-button .ytp-svg-fill {
+  opacity: 1 !important;
+  fill: #ffffff !important;
+}
+
+/* Ensure the right controls container itself is visible */
+.html5-video-player .ytp-chrome-controls .ytp-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

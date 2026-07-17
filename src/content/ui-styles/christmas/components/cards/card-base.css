@@ -24,3 +24,29 @@ ytd-thumbnail {
     border-radius: 12px !important;
     overflow: hidden !important;
 }
+
+
+/* Christmas YouTube Video Cards */
+ytd-rich-item-renderer {
+  background: var(--color-surface-secondary);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ytd-rich-item-renderer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-color: var(--color-accent-500);
+}
+[data-theme="dark"] ytd-rich-item-renderer:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  border-color: var(--color-brand-700);
+}
+ytd-thumbnail {
+  border-radius: 16px 16px 0 0 !important;
+  overflow: hidden;
+}
+ytd-rich-grid-media #details {
+  padding: 12px;
+}

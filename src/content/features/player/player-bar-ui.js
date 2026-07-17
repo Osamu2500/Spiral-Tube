@@ -147,7 +147,9 @@ export class PlayerBarUI {
         };
 
         for (const [key, selector] of Object.entries(hideMap)) {
-            if (this.settings[key] === 'hidden' || this.settings[key] === true) {
+            // Only hide when EXPLICITLY set to 'hidden'. A value of `true` is a
+            // legacy boolean from older code versions and should NOT hide buttons.
+            if (this.settings[key] === 'hidden') {
                 css += `${selector} { display: none !important; }\n`;
             }
         }

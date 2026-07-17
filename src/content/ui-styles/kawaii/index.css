@@ -96,14 +96,15 @@ div.immersive-header-gradient.style-scope.ytd-playlist-header-renderer{
 }
 
 html {
-    background-image: url("https://i.imgur.com/nOaOAfg.jpg") !important;
-    background: transparent !important;   
-    background-repeat: no-repeat !important;
+    background-color: #fff0f5 !important;
+    background-image: radial-gradient(#ffd9e4 15%, transparent 15%), radial-gradient(#ffd9e4 15%, transparent 15%) !important;
+    background-size: 40px 40px !important;
+    background-position: 0 0, 20px 20px !important;
     background-attachment: fixed !important;
 }
 
 .ytd-page-manager,body.site-center-aligned{
-    background: #fefbfb url("https://i.imgur.com/QXjfQ2i.jpg") repeat !important;
+    background: transparent !important;
 }
 
 ::-webkit-scrollbar {

@@ -44,9 +44,6 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'useSquareCorners',    label: t('useSquareCorners'),     desc: t('useSquareCorners_desc'),   icon:P('M3 3h18v18H3z') },
                     { type:'toggle', id:'extraRoundedUI', label: t('extraRoundedUI'), desc: t('extraRoundedUI_desc'), icon:P('M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm10 6c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6z') },
                     { type:'toggle', id:'saveSupremeUI', label: t('saveSupremeUI'), desc: t('saveSupremeUI_desc'), icon:P('M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z') },
-                    { type:'toggle', id:'retroLogo',           label: t('retroLogo'),            desc: t('retroLogo_desc'),          icon:P('M12 2L2 22h20L12 2z') },
-                    { type:'toggle', id:'smallSettingsMenu', label: t('smallSettingsMenu'), desc: t('smallSettingsMenu_desc'), icon:P('M3 13h18v-2H3v2zm0 4h18v-2H3v2zm0-8h18V7H3v2z') },
-                    { type:'toggle', id:'useLightsaberProgress', label: t('useLightsaberProgress'), desc: t('useLightsaberProgress_desc'), icon:P('M2 12h20v2H2z') },
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:P('M15 3l6 6M15 3h6v6M9 21l-6-6M9 21H3v-6') },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]
