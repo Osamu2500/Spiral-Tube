@@ -14,31 +14,62 @@ export class PlayerBarUI {
         this.setupInjectionObserver();
     }
 
+    async enable() {
+        if (!this.manager.isActive) return;
+        this.injectedButtons = false;
+        
+        if (!this._navigateListener) {
+            this._navigateListener = () => {
+                this.injectedButtons = false; // Reset to allow re-injection on new pages
+                this.attemptInjection();
+                setTimeout(() => this.attemptInjection(), 1000);
+                setTimeout(() => this.attemptInjection(), 2000);
+            };
+            document.addEventListener('yt-navigate-finish', this._navigateListener);
+        }
+        
+        this.setupInjectionObserver();
+    }
+
+    attemptInjection() {
+        if (!this.manager.isActive) return;
+        
+        const isShorts = window.location.pathname.startsWith('/shorts');
+        const video = isShorts 
+            ? document.querySelector('ytd-reel-video-renderer[is-active] video') 
+            : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
+        
+        const controls = isShorts 
+            ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') 
+            : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
+        
+        if (video && controls) {
+            // Remove stale instances from previous extension reloads
+            const existing = controls.querySelector('.ypp-player-controls');
+            if (existing && !this.injectedButtons) {
+                existing.remove();
+            }
+            if (!controls.querySelector('.ypp-player-controls')) {
+                this.injectedButtons = false;
+                this.injectControls(video, controls, isShorts);
+            }
+        }
+    }
+
     setupInjectionObserver() {
-        // Register an observer to detect when the player controls are available
         if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('player-bar-injection', window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR, (elements) => {
-                if (!this.manager.isActive) return;
-                
-                const isShorts = window.location.pathname.startsWith('/shorts');
-                const video = isShorts 
-                    ? document.querySelector('ytd-reel-video-renderer[is-active] video') 
-                    : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
-                
-                // For shorts we might get the chrome-bottom from the main player, so ensure we have the right controls
-                const controls = isShorts 
-                    ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') 
-                    : elements[0];
-                
-                if (video && controls) {
-                    if (!controls.querySelector('.ypp-player-controls')) {
-                        this.injectedButtons = false;
-                        this.injectControls(video, controls, isShorts);
-                    }
-                }
-            }, true); // persistent
+            window.YPP.sharedObserver.register('player-bar-injection', window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR, () => {
+                this.attemptInjection();
+                // Check a few times in case video element lags behind controls
+                setTimeout(() => this.attemptInjection(), 500);
+                setTimeout(() => this.attemptInjection(), 1500);
+            }, true);
+            
+            // Also listen to video element just in case it is added AFTER the player bar
+            window.YPP.sharedObserver.register('player-bar-injection-vid', window.YPP.CONSTANTS.SELECTORS.VIDEO[0], () => {
+                this.attemptInjection();
+            }, true);
         } else {
-            // Fallback for safety if sharedObserver isn't ready
             this.startInjectionPollingFallback();
         }
     }
