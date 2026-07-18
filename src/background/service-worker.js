@@ -363,6 +363,20 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // Shallow merge defaults underneath existing user preferences
     const newSettings = { ...DEFAULT_SETTINGS, ...existingSettings };
 
+    // ── Schema v2 Migration ─────────────────────────────────────────────
+    // These 4 player-page declutter settings were added in v2. If the
+    // stored schemaVersion is still 1 (or absent), they may have been
+    // accidentally written as `true` during a debugging session. Force
+    // them back to false so they only activate when the user explicitly
+    // enables them in the popup.
+    if ((existingSettings.schemaVersion || 0) < 2) {
+      newSettings.hideVideoTitle       = false;
+      newSettings.hideChannelBar       = false;
+      newSettings.hideVideoDescription = false;
+      newSettings.hideActionButtons    = false;
+      newSettings.schemaVersion        = 2;
+    }
+
     // Persist the consolidated settings
     try {
       await chrome.storage.sync.set({ settings: newSettings });

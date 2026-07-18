@@ -1,0 +1,195 @@
+/* ============================================================
+   Christmas Theme — Channel Page
+   Covers: channel banner, avatar, header, tabs navigation,
+   channel name, sub button, About/Videos/Playlists tabs,
+   channel grid cards, channel playlist, radio renderer
+   ============================================================ */
+
+/* ── Channel banner image ── */
+html[data-ypp-ui-style="christmas"] #channel-header-container.ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="christmas"] #channel-header.ytd-c4-tabbed-header-renderer {
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="christmas"] #banner.ytd-c4-tabbed-header-renderer {
+  border-radius: 0 0 20px 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-ypp-ui-style="christmas"] #banner img {
+  border-radius: 0 0 20px 20px !important;
+  filter: brightness(0.9) saturate(1.1) !important;
+}
+
+/* ── Channel tabbed header container ── */
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer {
+  background: rgba(8, 18, 11, 0.88) !important;
+  border-radius: 0 0 20px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px var(--xmas-gold-glow) !important;
+  margin-bottom: 24px !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-top: none !important;
+  backdrop-filter: blur(18px) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="christmas"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}
+
+/* ── Channel avatar ── */
+html[data-ypp-ui-style="christmas"] #channel-header ytd-channel-avatar,
+html[data-ypp-ui-style="christmas"] #avatar.ytd-c4-tabbed-header-renderer img,
+html[data-ypp-ui-style="christmas"] #wrapper.ytd-channel-avatar-editor {
+  border-radius: 50% !important;
+  border: 3px solid var(--xmas-gold) !important;
+  box-shadow: 0 0 20px var(--xmas-gold-glow), 0 0 0 6px rgba(255, 199, 0, 0.1) !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] #wrapper.ytd-channel-avatar-editor:hover {
+  box-shadow: 0 0 28px var(--xmas-gold-glow), 0 0 0 8px rgba(255, 199, 0, 0.18) !important;
+  transform: scale(1.04) !important;
+}
+
+/* ── Channel name & handle ── */
+html[data-ypp-ui-style="christmas"] .ytd-channel-name,
+html[data-ypp-ui-style="christmas"] #channel-name.ytd-c4-tabbed-header-renderer {
+  color: var(--xmas-gold) !important;
+  text-shadow: 0 0 20px rgba(255, 199, 0, 0.4) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-video-meta-block .ytd-video-meta-block {
+  color: var(--xmas-text-dim) !important;
+}
+
+/* ── Subscribe / Join buttons on channel page ── */
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer #subscribe-button yt-button-shape button {
+  background: linear-gradient(135deg, var(--xmas-red-bright), var(--xmas-red)) !important;
+  border: 1px solid var(--xmas-gold) !important;
+  border-radius: 20px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 14px var(--xmas-red-soft) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer #subscribe-button yt-button-shape button:hover {
+  background: linear-gradient(135deg, #ff2e2e, var(--xmas-red-bright)) !important;
+  box-shadow: 0 4px 20px var(--xmas-red-soft), var(--xmas-glow-red) !important;
+  transform: scale(1.04) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer #notification-preference-button yt-button-shape button {
+  background: rgba(13, 31, 20, 0.7) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 20px !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer #notification-preference-button yt-button-shape button:hover {
+  background: rgba(255, 199, 0, 0.14) !important;
+  border-color: var(--xmas-gold) !important;
+}
+
+/* ── Channel tabs (Videos / Playlists / About etc.) ── */
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer tp-yt-paper-tabs,
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer yt-tab-group-shape {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer yt-tab-shape {
+  color: var(--xmas-text-dim) !important;
+  border-radius: 8px 8px 0 0 !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer yt-tab-shape[active],
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer yt-tab-shape:hover {
+  color: var(--xmas-gold) !important;
+  background: rgba(255, 199, 0, 0.08) !important;
+}
+
+/* Active tab underline */
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer yt-tab-shape[active]::after {
+  background: var(--xmas-gold) !important;
+  box-shadow: 0 0 8px var(--xmas-gold-glow) !important;
+}
+
+/* ── Channel page browse section header ── */
+html[data-ypp-ui-style="christmas"] ytd-browse[page-subtype="channels"] ytd-item-section-renderer > #header.ytd-item-section-renderer {
+  background: rgba(8, 18, 11, 0.6) !important;
+  border-bottom: 1px solid var(--xmas-border) !important;
+  padding: 8px 16px !important;
+  border-radius: 10px !important;
+}
+
+/* ── Channel page video/playlist/playlist-renderer cards ── */
+html[data-ypp-ui-style="christmas"] ytd-video-renderer,
+html[data-ypp-ui-style="christmas"] ytd-channel-renderer,
+html[data-ypp-ui-style="christmas"] ytd-playlist-renderer,
+html[data-ypp-ui-style="christmas"] ytd-radio-renderer {
+  background: rgba(13, 31, 20, 0.65) !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 199, 0, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-channel-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-playlist-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-radio-renderer:hover {
+  transform: scale(1.015) !important;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 199, 0, 0.12) !important;
+  border-color: rgba(255, 199, 0, 0.4) !important;
+}
+
+/* ── Channel page playlist grid ── */
+html[data-ypp-ui-style="christmas"] ytd-grid-playlist-renderer {
+  background: rgba(13, 31, 20, 0.65) !important;
+  border: 1px solid rgba(255, 199, 0, 0.14) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  transition: transform 0.2s ease, border-color 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-grid-playlist-renderer:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(255, 199, 0, 0.4) !important;
+}
+
+/* ── Thumbnail on channel grid ── */
+html[data-ypp-ui-style="christmas"] ytd-grid-video-renderer ytd-thumbnail,
+html[data-ypp-ui-style="christmas"] ytd-grid-playlist-renderer ytd-thumbnail {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+/* ── "About" tab card ── */
+html[data-ypp-ui-style="christmas"] ytd-channel-about-metadata-renderer {
+  background: rgba(8, 18, 11, 0.75) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ── Membership / Join button ── */
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer #sponsor-button yt-button-shape button {
+  background: linear-gradient(135deg, var(--xmas-green-mid), var(--xmas-green)) !important;
+  border: 1.5px solid var(--xmas-gold) !important;
+  border-radius: 20px !important;
+  color: #fff !important;
+  box-shadow: 0 2px 12px rgba(46, 125, 50, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer #sponsor-button yt-button-shape button:hover {
+  box-shadow: 0 4px 20px rgba(46, 125, 50, 0.6), var(--xmas-glow-gold) !important;
+  transform: scale(1.04) !important;
+}

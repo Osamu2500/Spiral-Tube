@@ -1,0 +1,288 @@
+/* ============================================================
+   Christmas Theme — Watch Page (Video Player Page)
+   Covers: description box, info cards, related videos sidebar,
+   engagement panels (chapters, transcript, clips), action bar,
+   extension panels (EQ, Cinema, sliders), video action buttons
+   ============================================================ */
+
+/* ── Watch page layout ── */
+html[data-ypp-ui-style="christmas"] ytd-watch-flexy {
+  background: transparent !important;
+}
+
+/* ── Video / player rounded wrapper ── */
+html[data-ypp-ui-style="christmas"] video.video-stream.html5-main-video,
+html[data-ypp-ui-style="christmas"] .html5-video-player {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* ── Description / metadata box ── */
+html[data-ypp-ui-style="christmas"] ytd-watch-metadata {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="christmas"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="christmas"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="christmas"] ytd-text-inline-expander {
+  background: rgba(8, 18, 11, 0.75) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(12px) !important;
+  padding: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: border-color 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-watch-metadata #description-inner:hover,
+html[data-ypp-ui-style="christmas"] #description.ytd-watch-metadata:hover {
+  border-color: rgba(255, 199, 0, 0.5) !important;
+}
+
+/* ── Super thanks / super sticker area ── */
+html[data-ypp-ui-style="christmas"] ytd-purchase-message-renderer {
+  background: rgba(204, 26, 26, 0.15) !important;
+  border: 1px solid var(--xmas-red-soft) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+/* ── Video action row (Like / Dislike / Share / Clip / Save) ── */
+html[data-ypp-ui-style="christmas"] #actions.ytd-watch-metadata,
+html[data-ypp-ui-style="christmas"] ytd-watch-metadata #actions {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] #actions-inner.ytd-watch-metadata,
+html[data-ypp-ui-style="christmas"] ytd-segmented-like-dislike-button-view-model {
+  background: rgba(8, 18, 11, 0.75) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 24px !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 4px 8px !important;
+}
+
+/* Like button active state */
+html[data-ypp-ui-style="christmas"] ytd-segmented-like-dislike-button-view-model button[aria-pressed="true"] {
+  background: rgba(204, 26, 26, 0.3) !important;
+  color: var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] #actions ytd-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="christmas"] #actions .yt-spec-button-shape-next--tonal {
+  background: rgba(13, 31, 20, 0.7) !important;
+  border: 1px solid rgba(255, 199, 0, 0.2) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] #actions ytd-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="christmas"] #actions .yt-spec-button-shape-next--tonal:hover {
+  background: rgba(204, 26, 26, 0.22) !important;
+  border-color: var(--xmas-gold) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 2px 12px var(--xmas-red-soft) !important;
+}
+
+/* ── Channel info box (below video title) ── */
+html[data-ypp-ui-style="christmas"] ytd-video-owner-renderer {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-video-owner-renderer yt-img-shadow img {
+  border-radius: 50% !important;
+  border: 2px solid var(--xmas-gold) !important;
+  box-shadow: 0 0 12px var(--xmas-gold-glow) !important;
+}
+
+/* ── Related videos sidebar ── */
+html[data-ypp-ui-style="christmas"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="christmas"] ytd-compact-radio-renderer,
+html[data-ypp-ui-style="christmas"] ytd-compact-playlist-renderer {
+  background: rgba(13, 31, 20, 0.65) !important;
+  border: 1px solid rgba(255, 199, 0, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  margin-bottom: 8px !important;
+  backdrop-filter: blur(8px) !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-compact-radio-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-compact-playlist-renderer:hover {
+  transform: translateX(-3px) !important;
+  border-color: rgba(255, 199, 0, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-compact-video-renderer ytd-thumbnail {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* ── Engagement panels (Chapters, Transcript, Clips, etc.) ── */
+html[data-ypp-ui-style="christmas"] ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+  background: rgba(8, 18, 11, 0.9) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: var(--xmas-shadow) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
+  background: none !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-engagement-panel-title-header-renderer {
+  background: rgba(6, 14, 10, 0.8) !important;
+  border-bottom: 1px solid var(--xmas-border) !important;
+}
+
+html[data-ypp-ui-style="christmas"] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+  border-radius: 10px !important;
+  border: 1px solid var(--xmas-border) !important;
+  box-shadow: 0 2px 10px rgba(255, 199, 0, 0.12) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
+  border-bottom: none !important;
+}
+
+/* Chapter items ── */
+html[data-ypp-ui-style="christmas"] ytd-macro-markers-list-item-renderer {
+  border-radius: 10px !important;
+  transition: background 0.15s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-macro-markers-list-item-renderer:hover {
+  background: rgba(255, 199, 0, 0.1) !important;
+}
+
+/* ── Transcript items ── */
+html[data-ypp-ui-style="christmas"] ytd-transcript-segment-renderer {
+  border-radius: 8px !important;
+  transition: background 0.15s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-transcript-segment-renderer:hover {
+  background: rgba(204, 26, 26, 0.15) !important;
+}
+
+/* ── Playlist panel (in watch page sidebar) ── */
+html[data-ypp-ui-style="christmas"] ytd-playlist-panel-renderer {
+  background: rgba(8, 18, 11, 0.9) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(14px) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-playlist-panel-renderer #header.ytd-playlist-panel-renderer {
+  background: rgba(6, 14, 10, 0.8) !important;
+  border-bottom: 1px solid var(--xmas-border) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-playlist-panel-video-renderer {
+  border-radius: 10px !important;
+  transition: background 0.15s ease !important;
+  padding: 6px !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-playlist-panel-video-renderer:hover {
+  background: rgba(255, 199, 0, 0.08) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-playlist-panel-video-renderer[selected] {
+  background: rgba(204, 26, 26, 0.2) !important;
+  border-left: 3px solid var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] #trailing-button.ytd-playlist-panel-renderer {
+  border-radius: 10px !important;
+  background-color: transparent !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] #trailing-button.ytd-playlist-panel-renderer:hover {
+  background: rgba(255, 199, 0, 0.12) !important;
+  box-shadow: 0 2px 10px rgba(255, 199, 0, 0.2) !important;
+  transform: scale(1.08) !important;
+}
+
+/* ── Extension EQ + Cinema panels ── */
+html[data-ypp-ui-style="christmas"] .ypp-eq-preset-btn,
+html[data-ypp-ui-style="christmas"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-style="christmas"] .ypp-vcp-compare-toggle {
+  background: rgba(13, 31, 20, 0.7) !important;
+  border: 1px solid var(--xmas-border) !important;
+  color: var(--xmas-text) !important;
+  border-radius: 10px !important;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ypp-eq-preset-btn:hover,
+html[data-ypp-ui-style="christmas"] .ypp-cinema-tab-btn:hover,
+html[data-ypp-ui-style="christmas"] .ypp-vcp-compare-toggle:hover {
+  background: rgba(255, 199, 0, 0.14) !important;
+  transform: scale(1.06) !important;
+  box-shadow: 0 2px 12px rgba(255, 199, 0, 0.2) !important;
+}
+
+html[data-ypp-ui-style="christmas"] #ypp-global-player-bar,
+html[data-ypp-ui-style="christmas"] .ypp-global-bar {
+  background: rgba(8, 18, 11, 0.92) !important;
+  border-top: 1px solid var(--xmas-border) !important;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5), var(--xmas-glow-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] #ypp-eq-panel,
+html[data-ypp-ui-style="christmas"] #ypp-cinema-panel {
+  background: rgba(8, 18, 11, 0.95) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-top: 1px solid rgba(255, 199, 0, 0.25) !important;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(255, 199, 0, 0.12),
+    0 24px 64px rgba(0, 0, 0, 0.7) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ypp-eq-header,
+html[data-ypp-ui-style="christmas"] .ypp-eq-footer,
+html[data-ypp-ui-style="christmas"] .ypp-intensity-section,
+html[data-ypp-ui-style="christmas"] .ypp-adjust-card-header,
+html[data-ypp-ui-style="christmas"] #ypp-cinema-panel > div:first-child,
+html[data-ypp-ui-style="christmas"] #ypp-cinema-panel > div:last-child {
+  background: transparent !important;
+  border-bottom-color: rgba(255, 199, 0, 0.1) !important;
+  border-top-color: rgba(255, 199, 0, 0.1) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ypp-global-player-bar,
+html[data-ypp-ui-style="christmas"] #ypp-global-player-bar {
+  background: rgba(8, 18, 11, 0.92) !important;
+  border: 1px solid var(--xmas-border) !important;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* EQ/slider tracks ── */
+html[data-ypp-ui-style="christmas"] .ypp-eq-hslider,
+html[data-ypp-ui-style="christmas"] .ypp-vcp-slider,
+html[data-ypp-ui-style="christmas"] .ypp-eq-vslider {
+  background: rgba(255, 199, 0, 0.12) !important;
+  border: 1px solid rgba(255, 199, 0, 0.25) !important;
+  border-radius: 8px !important;
+}
+
+/* EQ visualizer canvas ── */
+html[data-ypp-ui-style="christmas"] .ypp-eq-canvas {
+  background: rgba(6, 14, 10, 0.6) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5) !important;
+}

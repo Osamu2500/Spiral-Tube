@@ -878,3 +878,89 @@ body.ypp-ambient-mode-active ytd-watch-flexy {
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+/* ===================================================================================
+   PLAYER PAGE ELEMENT HIDE TOGGLES
+   These body classes are applied by GlobalLayoutManager via TOGGLE_MAP.
+   =================================================================================== */
+
+/* ── Hide Video Title (new layout: ytd-watch-metadata, old: ytd-video-primary-info-renderer) ── */
+body.ypp-hide-video-title ytd-watch-metadata #title,
+body.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
+body.ypp-hide-video-title ytd-video-primary-info-renderer #title,
+body.ypp-hide-video-title ytd-video-primary-info-renderer h1 {
+  display: none !important;
+}
+
+/* ── Hide Channel Bar ── */
+body.ypp-hide-channel-bar ytd-watch-metadata #owner,
+body.ypp-hide-channel-bar ytd-video-secondary-info-renderer #owner,
+body.ypp-hide-channel-bar ytd-watch-metadata ytd-video-owner-renderer,
+body.ypp-hide-channel-bar ytd-video-secondary-info-renderer ytd-video-owner-renderer {
+  display: none !important;
+}
+
+/* ── Hide Video Description ── */
+body.ypp-hide-video-description ytd-watch-metadata #description,
+body.ypp-hide-video-description ytd-watch-metadata ytd-text-inline-expander,
+body.ypp-hide-video-description ytd-video-secondary-info-renderer #description,
+body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-text-inline-expander,
+body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-expander {
+  display: none !important;
+}
+
+/* ── Hide Action Buttons (Like / Dislike / Share / More) ── */
+body.ypp-hide-action-buttons ytd-watch-metadata #actions,
+body.ypp-hide-action-buttons ytd-watch-metadata #top-level-buttons-computed,
+body.ypp-hide-action-buttons ytd-watch-metadata ytd-segmented-like-dislike-button-renderer,
+body.ypp-hide-action-buttons ytd-video-primary-info-renderer #actions,
+body.ypp-hide-action-buttons ytd-video-primary-info-renderer #top-level-buttons-computed,
+body.ypp-hide-action-buttons ytd-video-primary-info-renderer ytd-menu-renderer {
+  display: none !important;
+}
+
+/* ===================================================================================
+   ZEN MODE ENHANCED — Video-Only Mode
+   In Zen Mode, also hide title, channel bar, description & action buttons
+   so only the video player remains visible.
+   =================================================================================== */
+
+/* Hide video title in zen mode */
+body.ypp-zen-mode ytd-watch-metadata #title,
+body.ypp-zen-mode ytd-watch-metadata h1 {
+  display: none !important;
+}
+
+/* Hide channel bar in zen mode */
+body.ypp-zen-mode ytd-watch-metadata #owner,
+body.ypp-zen-mode ytd-watch-metadata ytd-video-owner-renderer {
+  display: none !important;
+}
+
+/* Hide description in zen mode */
+body.ypp-zen-mode ytd-watch-metadata #description,
+body.ypp-zen-mode ytd-watch-metadata #description-inner,
+body.ypp-zen-mode ytd-watch-metadata ytd-text-inline-expander,
+body.ypp-zen-mode ytd-watch-metadata #meta-contents > ytd-expander {
+  display: none !important;
+}
+
+/* Hide action buttons in zen mode */
+body.ypp-zen-mode ytd-watch-metadata #actions,
+body.ypp-zen-mode ytd-watch-metadata #actions-inner,
+body.ypp-zen-mode ytd-watch-metadata ytd-menu-renderer,
+body.ypp-zen-mode ytd-watch-metadata #top-level-buttons-computed,
+body.ypp-zen-mode ytd-watch-metadata ytd-segmented-like-dislike-button-renderer,
+body.ypp-zen-mode ytd-watch-metadata yt-button-shape {
+  display: none !important;
+}
+
+/* Collapse the metadata row gap when all below-player elements are hidden */
+body.ypp-zen-mode ytd-watch-metadata #above-the-fold {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body.ypp-zen-mode #below {
+  display: none !important;
+}

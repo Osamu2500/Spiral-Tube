@@ -1,0 +1,210 @@
+/* ============================================================
+   Christmas Theme — Search Page
+   Covers: search results layout, filter sidebar, filter groups,
+   search bar component deep, suggestions dropdown, result cards,
+   voice search button, search header
+   ============================================================ */
+
+/* ── Search page layout ── */
+html[data-ypp-ui-style="christmas"] ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+
+/* ── In-page search bar (header searchbox) ── */
+html[data-ypp-ui-style="christmas"] ytd-searchbox #container {
+  background: rgba(10, 22, 14, 0.75) !important;
+  border: 1.5px solid rgba(255, 199, 0, 0.3) !important;
+  border-radius: 24px 0 0 24px !important;
+  backdrop-filter: blur(10px) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-searchbox #container:focus-within {
+  border-color: var(--xmas-gold) !important;
+  box-shadow: 0 0 0 3px rgba(255, 199, 0, 0.18) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-searchbox #search-icon-legacy {
+  background: rgba(204, 26, 26, 0.55) !important;
+  border: 1.5px solid rgba(255, 199, 0, 0.3) !important;
+  border-left: none !important;
+  border-radius: 0 24px 24px 0 !important;
+  transition: background 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-searchbox #search-icon-legacy:hover {
+  background: var(--xmas-red-bright) !important;
+  box-shadow: 0 0 12px var(--xmas-red-soft) !important;
+}
+
+/* ── Large searchbox component (search results page) ── */
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentInputBox {
+  background: rgba(8, 18, 11, 0.8) !important;
+  border: 1.5px solid rgba(255, 199, 0, 0.28) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  border-radius: 24px 0 0 24px !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4) !important;
+  color: var(--xmas-text) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentInputBox:focus-within {
+  border-color: var(--xmas-gold) !important;
+  box-shadow: 0 0 0 3px rgba(255, 199, 0, 0.18), 0 2px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSearchButton {
+  margin-left: 0 !important;
+  border-radius: 0 24px 24px 0 !important;
+  border: 1.5px solid rgba(255, 199, 0, 0.28) !important;
+  border-left: none !important;
+  background: rgba(204, 26, 26, 0.55) !important;
+  color: #fff !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSearchButton:hover {
+  background: var(--xmas-red-bright) !important;
+  box-shadow: 0 0 14px var(--xmas-red-soft) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSearchButton:active {
+  transform: scale(0.96) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSearchButton:hover svg {
+  fill: #fff !important;
+}
+
+/* ── Search input text ── */
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentInput {
+  color: var(--xmas-snow) !important;
+  caret-color: var(--xmas-gold) !important;
+}
+
+/* ── Clear button ── */
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  margin-right: 10px;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.14) !important;
+  background: rgba(204, 26, 26, 0.2) !important;
+}
+
+/* ── Voice search button ── */
+html[data-ypp-ui-style="christmas"] #voice-search-button.ytd-masthead {
+  border-radius: 50% !important;
+  background-color: transparent !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] #voice-search-button.ytd-masthead:hover {
+  background: rgba(255, 199, 0, 0.14) !important;
+  box-shadow: 0 2px 12px rgba(255, 199, 0, 0.2) !important;
+  transform: scale(1.1) !important;
+}
+
+/* ── Autocomplete suggestions dropdown ── */
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style="christmas"] ytd-multi-page-menu-renderer {
+  top: 55px !important;
+  background: rgba(6, 14, 10, 0.95) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(255, 199, 0, 0.12) !important;
+  border-radius: 0 0 20px 20px !important;
+  backdrop-filter: blur(20px) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSuggestion {
+  border-radius: 8px !important;
+  margin: 2px 8px !important;
+  padding: 8px 12px !important;
+  transition: background 0.15s ease !important;
+  color: var(--xmas-text) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytSearchboxComponentSuggestion:hover {
+  background: rgba(255, 199, 0, 0.1) !important;
+}
+
+/* ── Filter / facet sidebar on search page ── */
+html[data-ypp-ui-style="christmas"] ytd-search-filter-group-renderer {
+  background: rgba(8, 18, 11, 0.72) !important;
+  border: 1px solid rgba(255, 199, 0, 0.18) !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  margin-bottom: 12px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-search-filter-group-renderer:hover {
+  border-color: rgba(255, 199, 0, 0.4) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-search-filter-renderer a {
+  color: var(--xmas-text) !important;
+  text-decoration: none !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-search-filter-renderer a:hover {
+  background: rgba(204, 26, 26, 0.18) !important;
+  color: var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-search-filter-renderer[selected] a {
+  background: var(--xmas-red) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 10px var(--xmas-red-soft) !important;
+}
+
+/* ── Search result cards ── */
+html[data-ypp-ui-style="christmas"] ytd-video-renderer,
+html[data-ypp-ui-style="christmas"] ytd-channel-renderer,
+html[data-ypp-ui-style="christmas"] ytd-playlist-renderer,
+html[data-ypp-ui-style="christmas"] ytd-radio-renderer,
+html[data-ypp-ui-style="christmas"] ytd-shelf-renderer {
+  background: rgba(13, 31, 20, 0.65) !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 199, 0, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-channel-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-playlist-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-radio-renderer:hover {
+  transform: translateY(-3px) scale(1.005) !important;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 199, 0, 0.12) !important;
+  border-color: rgba(255, 199, 0, 0.4) !important;
+}
+
+/* ── Search result thumbnail ── */
+html[data-ypp-ui-style="christmas"] ytd-video-renderer ytd-thumbnail {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+/* ── "People also search for" shelf ── */
+html[data-ypp-ui-style="christmas"] ytd-horizontal-card-list-renderer {
+  background: rgba(8, 18, 11, 0.6) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 14px !important;
+  padding: 12px !important;
+}

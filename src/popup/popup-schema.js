@@ -292,6 +292,10 @@ export const getPopupSchema = (t) => [
                 icon: P('M2 3h20v14H2zM8 21h8M12 17v4'),
                 items: [
                     { type:'toggle', id:'hidePlayerTopics', label: t('hide_topics_bar'),   desc: t('remove_category_chips'),    icon:P('M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M3.6 9h16.8 M3.6 15h16.8') },
+                    { type:'toggle', id:'hideVideoTitle',   label: t('hide_video_title'),   desc: t('hide_video_title_desc'),    icon:P('M4 6h16M4 12h10') },
+                    { type:'toggle', id:'hideChannelBar',   label: t('hide_channel_bar'),   desc: t('hide_channel_bar_desc'),    icon:P('M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z') },
+                    { type:'toggle', id:'hideVideoDescription', label: t('hide_video_description'), desc: t('hide_video_description_desc'), icon:P('M4 6h16M4 10h16M4 14h10') },
+                    { type:'toggle', id:'hideActionButtons', label: t('hide_action_buttons'), desc: t('hide_action_buttons_desc'), icon:P('M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z') },
                     { type:'toggle', id:'hideComments',   label: t('hide_comments'),       icon:P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z') },
                     { type:'toggle', id:'hideRelated',    label: t('hide_related_feed'),   desc: t('hide_sidebar_videos'), icon:P('M3 3h18v18H3zM14 8h6M14 12h6M14 16h6') },
                     { type:'toggle', id:'hideLiveChat',   label: t('hide_live_chat'),      icon:P('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z') },
