@@ -123,11 +123,19 @@ export class PlayerBarUI {
         if (isShorts) {
             controls.appendChild(container);
         } else {
-            // Force inject into the block-level .ytp-chrome-bottom container
-            // This completely bypasses YouTube's strict flexbox width constraints on .ytp-right-controls
-            const chromeBottom = controls.closest('.ytp-chrome-bottom') || document.querySelector('.ytp-chrome-bottom');
-            if (chromeBottom) {
-                chromeBottom.appendChild(container);
+            // Find where to insert our controls within .ytp-chrome-bottom
+            let rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');
+            const fullscreenBtn = controls.querySelector('.ytp-fullscreen-button');
+            const chromeControls = controls.querySelector('.ytp-chrome-controls');
+            
+            if (rightControls) {
+                // Insert inside the right controls as the very first item
+                rightControls.insertBefore(container, rightControls.firstChild);
+            } else if (fullscreenBtn && fullscreenBtn.parentNode) {
+                // Fallback: insert right before the fullscreen button inside its parent
+                fullscreenBtn.parentNode.insertBefore(container, fullscreenBtn);
+            } else if (chromeControls) {
+                chromeControls.appendChild(container);
             } else {
                 controls.appendChild(container);
             }

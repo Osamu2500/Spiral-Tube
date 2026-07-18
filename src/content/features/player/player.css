@@ -39,7 +39,19 @@
   overflow: visible !important;
 }
 
-/* Removed aggressive video sizing overrides to allow YouTube's native JS to correctly calculate video dimensions and positioning */
+/* Force video to exactly fill the rounded player, overriding YouTube JS resizing gaps */
+.yt-spiral-tube-theme .html5-video-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.yt-spiral-tube-theme .html5-video-player video {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  object-fit: contain !important;
+}
 
 /* Edge Glow effect on player hover */
 .yt-spiral-tube-theme ytd-watch-flexy .html5-video-player:hover {
@@ -343,24 +355,66 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
 } */
 
 .ypp-player-controls {
-  display: inline-flex;
-  position: absolute;
-  right: 12px;
-  bottom: 75px !important;
+  display: flex;
   align-items: center;
+  margin-right: 14px;
   gap: 8px;
-  padding: 4px 8px;
-  background: var(--ypp-bg-surface, rgba(10, 10, 12, 0.85)) !important;
-  border-radius: 24px;
-  backdrop-filter: var(--ypp-glass-blur-active, blur(16px)) !important;
-  -webkit-backdrop-filter: var(--ypp-glass-blur-active, blur(16px)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
-  z-index: 70;
+  padding: 4px 6px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
   animation: ypp-bar-pop-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   will-change: transform, opacity;
+  z-index: 60;
 }
 
+/* ── Responsive Adaptation for Player Controls ── */
+@media (max-width: 860px) {
+  /* At smaller sizes, pop the custom controls above the bottom bar to prevent overlap with time display */
+  .ypp-player-controls {
+    position: absolute;
+    bottom: 54px; /* Above the progress bar */
+    right: 12px;
+    background: rgba(10, 10, 12, 0.85) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px;
+    padding: 6px 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Ultra-compact mode for very small windows/zoom */
+  .ypp-player-controls {
+    gap: 4px;
+    padding: 4px 8px;
+    bottom: 48px;
+  }
+  .ypp-action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+  .ypp-speed-controls {
+    gap: 0;
+  }
+  .ypp-speed-btn {
+    padding: 3px 5px;
+    font-size: 9px;
+  }
+}
+
+.ypp-player-controls:hover {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
 
 /* ── Action Buttons ── */
 .ypp-action-btn {
@@ -405,7 +459,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
 .ypp-action-btn svg {
   width: 100%;
   height: 100%;
-  fill: var(--yt-spec-text-primary, #ffffff);
+  fill: white;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
   transition: filter 0.18s ease;
 }
@@ -416,7 +470,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .ypp-action-btn.active svg {
-  fill: var(--yt-spec-text-primary, #ffffff);
+  fill: #ffffff;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
 }
 
@@ -441,7 +495,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
 .ypp-speed-btn {
   background: none;
   border: none;
-  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.65));
+  color: rgba(255, 255, 255, 0.65);
   font-size: 10px;
   font-weight: 600;
   font-family: 'Inter', 'Roboto', sans-serif;
@@ -452,11 +506,11 @@ html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segment
   letter-spacing: 0.2px;
 }
 .ypp-speed-btn:hover {
-  color: var(--yt-spec-text-primary, #ffffff);
+  color: white;
   background: rgba(255, 255, 255, 0.12);
 }
 .ypp-speed-btn.active {
-  color: var(--yt-spec-text-primary, #ffffff);
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.25);
   font-weight: 800;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
@@ -620,7 +674,29 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
-/* Removed native button hover styling to prevent conflicts with new YouTube UI */
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button {
+  border-radius: 12px !important;
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+  outline: none !important;
+  border: none !important;
+}
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:hover,
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  outline: none !important;
+  border: none !important;
+}
+html body.yt-spiral-tube-theme .html5-video-player .ytp-chrome-controls .ytp-button:active {
+  transform: translateY(0) scale(0.95) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  outline: none !important;
+  border: none !important;
+}
 body.yt-spiral-tube-theme .ytp-gradient-bottom,
 body.yt-spiral-tube-theme .ytp-gradient-top {
   display: none !important;
@@ -639,7 +715,27 @@ body.yt-spiral-tube-theme .ytp-popup {
     0 4px 16px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
-/* Removed ypp-floating-player-active overrides for chrome-bottom and progress-bar as they conflict with YouTube's new native UI */
+body.ypp-floating-player-active .ytp-chrome-bottom {
+  width: 100% !important;
+  left: 0 !important;
+  padding: 0 10px !important;
+  box-sizing: border-box !important;
+}
+
+/* Fix: Prevent player bar from getting squished when video has a smaller aspect ratio */
+body.yt-spiral-tube-theme .html5-video-player:not(.ytp-fullscreen) .ytp-chrome-bottom {
+  width: calc(100% - 24px) !important;
+  left: 12px !important;
+}
+body.yt-spiral-tube-theme .html5-video-player.ytp-fullscreen .ytp-chrome-bottom {
+  width: calc(100% - 48px) !important;
+  left: 24px !important;
+}
+
+body.ypp-floating-player-active .ytp-progress-bar-container {
+  width: 100% !important;
+  bottom: 35px !important;
+}
 body.ypp-floating-player-active .ytp-size-button,
 body.ypp-floating-player-active .ytp-miniplayer-button,
 body.ypp-floating-player-active .ytp-chapter-title {
@@ -751,101 +847,4 @@ body.ypp-ambient-mode-active ytd-page-manager,
 body.ypp-ambient-mode-active ytd-watch-flexy {
     background: transparent !important;
     background-color: transparent !important;
-}
-
-/* Removed global safety rule for native buttons as it conflicts with YouTube's new UI constraints */
-
-/* Ensure SVG icons inside player buttons stay white and visible */
-.html5-video-player .ytp-chrome-controls button.ytp-button svg,
-.html5-video-player .ytp-chrome-controls button.ytp-button .ytp-svg-fill {
-  opacity: 1;
-  fill: #ffffff;
-}
-
-/* Removed display: flex override on right controls to fix native YouTube UI layout */
-
-/* ===================================================================================
-   PLAYER PAGE ELEMENT HIDE TOGGLES
-   These body classes are applied by GlobalLayoutManager via TOGGLE_MAP.
-   =================================================================================== */
-
-/* ── Hide Video Title (new layout: ytd-watch-metadata, old: ytd-video-primary-info-renderer) ── */
-body.ypp-hide-video-title ytd-watch-metadata #title,
-body.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
-body.ypp-hide-video-title ytd-video-primary-info-renderer #title,
-body.ypp-hide-video-title ytd-video-primary-info-renderer h1 {
-  display: none !important;
-}
-
-/* ── Hide Channel Bar ── */
-body.ypp-hide-channel-bar ytd-watch-metadata #owner,
-body.ypp-hide-channel-bar ytd-video-secondary-info-renderer #owner,
-body.ypp-hide-channel-bar ytd-watch-metadata ytd-video-owner-renderer,
-body.ypp-hide-channel-bar ytd-video-secondary-info-renderer ytd-video-owner-renderer {
-  display: none !important;
-}
-
-/* ── Hide Video Description ── */
-body.ypp-hide-video-description ytd-watch-metadata #description,
-body.ypp-hide-video-description ytd-watch-metadata ytd-text-inline-expander,
-body.ypp-hide-video-description ytd-video-secondary-info-renderer #description,
-body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-text-inline-expander,
-body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-expander {
-  display: none !important;
-}
-
-/* ── Hide Action Buttons (Like / Dislike / Share / More) ── */
-body.ypp-hide-action-buttons ytd-watch-metadata #actions,
-body.ypp-hide-action-buttons ytd-watch-metadata #top-level-buttons-computed,
-body.ypp-hide-action-buttons ytd-watch-metadata ytd-segmented-like-dislike-button-renderer,
-body.ypp-hide-action-buttons ytd-video-primary-info-renderer #actions,
-body.ypp-hide-action-buttons ytd-video-primary-info-renderer #top-level-buttons-computed,
-body.ypp-hide-action-buttons ytd-video-primary-info-renderer ytd-menu-renderer {
-  display: none !important;
-}
-
-/* ===================================================================================
-   ZEN MODE ENHANCED — Video-Only Mode
-   In Zen Mode, also hide title, channel bar, description & action buttons
-   so only the video player remains visible.
-   =================================================================================== */
-
-/* Hide video title in zen mode */
-body.ypp-zen-mode ytd-watch-metadata #title,
-body.ypp-zen-mode ytd-watch-metadata h1 {
-  display: none !important;
-}
-
-/* Hide channel bar in zen mode */
-body.ypp-zen-mode ytd-watch-metadata #owner,
-body.ypp-zen-mode ytd-watch-metadata ytd-video-owner-renderer {
-  display: none !important;
-}
-
-/* Hide description in zen mode */
-body.ypp-zen-mode ytd-watch-metadata #description,
-body.ypp-zen-mode ytd-watch-metadata #description-inner,
-body.ypp-zen-mode ytd-watch-metadata ytd-text-inline-expander,
-body.ypp-zen-mode ytd-watch-metadata #meta-contents > ytd-expander {
-  display: none !important;
-}
-
-/* Hide action buttons in zen mode */
-body.ypp-zen-mode ytd-watch-metadata #actions,
-body.ypp-zen-mode ytd-watch-metadata #actions-inner,
-body.ypp-zen-mode ytd-watch-metadata ytd-menu-renderer,
-body.ypp-zen-mode ytd-watch-metadata #top-level-buttons-computed,
-body.ypp-zen-mode ytd-watch-metadata ytd-segmented-like-dislike-button-renderer,
-body.ypp-zen-mode ytd-watch-metadata yt-button-shape {
-  display: none !important;
-}
-
-/* Collapse the metadata row gap when all below-player elements are hidden */
-body.ypp-zen-mode ytd-watch-metadata #above-the-fold {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-body.ypp-zen-mode #below {
-  display: none !important;
 }
