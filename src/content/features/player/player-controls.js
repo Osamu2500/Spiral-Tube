@@ -6,7 +6,7 @@ const CONSTANTS = {
     SELECTORS: {
         SPEED_CONTROLS: 'ypp-speed-controls',
         SPEED_BTN: 'ypp-speed-btn',
-        ACTION_BTN: 'ypp-action-btn ytp-button',
+        ACTION_BTN: 'ypp-action-btn',
         ACTIVE_CLASS: 'active'
     },
     ICONS: {
