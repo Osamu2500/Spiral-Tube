@@ -82,14 +82,36 @@ export class PlayerControls {
         const btn = document.createElement('button');
         btn.innerHTML = svgContent;
         btn.title = title;
+        btn.setAttribute('aria-label', title);
+        btn.tabIndex = 0;
         btn.className = CONSTANTS.SELECTORS.ACTION_BTN;
-        // Also add tooltip target for native YouTube tooltips if needed
+        
+        // Native YouTube tooltip hooks
+        btn.dataset.titleNoTooltip = title;
         btn.dataset.tooltipTargetId = "ypp-custom-button";
         
-        this.player.addListener(btn, 'click', (e) => {
+        const actionHandler = (e) => {
             e.stopPropagation();
             onClick(e);
+        };
+        
+        this.player.addListener(btn, 'click', actionHandler);
+        this.player.addListener(btn, 'keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                actionHandler(e);
+            }
         });
+        
+        this.player.addListener(btn, 'mouseenter', () => {
+            btn.dataset.title = title;
+            btn.removeAttribute('title');
+        });
+        this.player.addListener(btn, 'mouseleave', () => {
+            btn.title = title;
+            delete btn.dataset.title;
+        });
+
         return btn;
     }
 

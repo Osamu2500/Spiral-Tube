@@ -130,22 +130,24 @@ export class PlayerBarUI {
         }
             
         // Button Feature Registrations (call their createButton methods)
-        const addFeatureButton = (featureKey, pbKey, overrideSettingsKey) => {
-            if (this.settings[overrideSettingsKey] === false) return; // Feature disabled globally
-            if (!isFront(this.settings[pbKey])) return; // Hidden from front bar
+        const playerBarFeatures = [
+            { key: 'snapshotButton', pbKey: 'pb_snapshot', override: 'enableSnapshot' },
+            { key: 'loopButton', pbKey: 'pb_loop', override: 'enableLoop' },
+            { key: 'bookmarksManager', pbKey: 'pb_bookmark', override: 'enableBookmarks' },
+            { key: 'volumeBoost', pbKey: 'pb_volume', override: 'enableVolumeBoost' },
+            { key: 'videoFilters', pbKey: 'pb_cinema', override: 'enableCinemaFilters' }
+        ];
+
+        playerBarFeatures.forEach(config => {
+            if (this.settings[config.override] === false) return; // Feature disabled globally
+            if (!isFront(this.settings[config.pbKey])) return; // Hidden from front bar
             
-            const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(featureKey);
+            const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
             if (feature && feature.createButton) {
                 const btn = feature.createButton(video);
                 if (btn) container.appendChild(btn);
             }
-        };
-
-        addFeatureButton('snapshotButton', 'pb_snapshot', 'enableSnapshot');
-        addFeatureButton('loopButton', 'pb_loop', 'enableLoop');
-        addFeatureButton('bookmarksManager', 'pb_bookmark', 'enableBookmarks');
-        addFeatureButton('volumeBoost', 'pb_volume', 'enableVolumeBoost');
-        addFeatureButton('videoFilters', 'pb_cinema', 'enableCinemaFilters');
+        });
 
         if (this.manager.controlsHelper && document.pictureInPictureEnabled && isFront(this.settings.pb_pip)) {
             container.appendChild(this.manager.controlsHelper.createPiPButton(video));
