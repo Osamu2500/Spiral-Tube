@@ -1,0 +1,288 @@
+/* ============================================================
+   Christmas Theme — Player (Deep)
+   Covers: player controls deep, progress bar, time display,
+   volume slider, quality/speed menus, miniplayer, endscreen,
+   cards/annotations, chapter markers, ad skip button,
+   captions/subtitle renderer, immersive header
+   ============================================================ */
+
+/* ── Player container ── */
+html[data-ypp-ui-style="christmas"] #movie_player,
+html[data-ypp-ui-style="christmas"] .html5-video-player {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow:
+    0 16px 64px rgba(0, 0, 0, 0.7),
+    0 0 40px var(--xmas-red-soft),
+    0 0 0 1.5px rgba(255, 199, 0, 0.15) !important;
+}
+
+/* ── Chrome bottom gradient ── */
+html[data-ypp-ui-style="christmas"] .ytp-chrome-bottom {
+  background: linear-gradient(0deg, rgba(6, 14, 10, 0.92) 0%, rgba(6, 14, 10, 0.4) 60%, transparent 100%) !important;
+}
+
+/* ── Progress bar track ── */
+html[data-ypp-ui-style="christmas"] .ytp-progress-bar-container {
+  bottom: 48px !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-load-progress {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-play-progress {
+  background: linear-gradient(90deg, var(--xmas-red) 0%, var(--xmas-red-bright) 100%) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-swatch-background-color {
+  background-color: var(--xmas-red-bright) !important;
+}
+
+/* ── Scrubber (thumb) ── */
+html[data-ypp-ui-style="christmas"] .ytp-scrubber-button {
+  background: var(--xmas-gold) !important;
+  border: 2.5px solid var(--xmas-red-bright) !important;
+  box-shadow: 0 0 10px rgba(255, 199, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  transition: transform 0.15s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-scrubber-button:hover {
+  transform: scale(1.3) !important;
+}
+
+/* ── Chapter markers on progress bar ── */
+html[data-ypp-ui-style="christmas"] .ytp-chapter-hover-container {
+  border-radius: 4px !important;
+}
+
+/* ── Time display ── */
+html[data-ypp-ui-style="christmas"] .ytp-time-display {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-time-current {
+  color: var(--xmas-gold) !important;
+}
+
+/* ── Volume slider ── */
+html[data-ypp-ui-style="christmas"] .ytp-volume-slider-handle {
+  background: var(--xmas-gold) !important;
+  box-shadow: 0 0 8px rgba(255, 199, 0, 0.5) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-volume-bar {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-volume-bar-fill {
+  background: linear-gradient(90deg, var(--xmas-green-mid), var(--xmas-gold)) !important;
+}
+
+/* ── Player top chrome (channel name overlay) ── */
+html[data-ypp-ui-style="christmas"] .ytp-chrome-top {
+  background: linear-gradient(180deg, rgba(6, 14, 10, 0.75) 0%, transparent 100%) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-chrome-top .ytp-title-link {
+  color: var(--xmas-snow) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ── Tooltip ── */
+html[data-ypp-ui-style="christmas"] .ytp-tooltip {
+  background: rgba(6, 14, 10, 0.9) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+  color: var(--xmas-snow) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-tooltip-title {
+  color: var(--xmas-gold) !important;
+}
+
+/* ── Preview thumbnail (hover over progress bar) ── */
+html[data-ypp-ui-style="christmas"] .ytp-tooltip-text-wrapper {
+  background: rgba(6, 14, 10, 0.85) !important;
+}
+
+/* ── Settings/quality panel ── */
+html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-settings-menu {
+  background: rgba(6, 14, 10, 0.96) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(24px) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 199, 0, 0.1) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-panel {
+  background: rgba(6, 14, 10, 0.96) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-panel-header {
+  background: rgba(255, 199, 0, 0.06) !important;
+  border-bottom: 1px solid rgba(255, 199, 0, 0.15) !important;
+  color: var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-menuitem {
+  border-radius: 8px !important;
+  margin: 2px 6px !important;
+  transition: background 0.15s ease !important;
+  color: var(--xmas-text) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-menuitem:hover {
+  background: rgba(255, 199, 0, 0.1) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-menuitem[aria-checked="true"] {
+  color: var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-menuitem-label {
+  color: inherit !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-menuitem-content {
+  color: var(--xmas-text-dim) !important;
+}
+
+/* ── Context menu ── */
+html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-contextmenu,
+html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-delhi-modern-contextmenu {
+  background: rgba(6, 14, 10, 0.96) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7) !important;
+  overflow: hidden !important;
+}
+
+/* ── End screen ── */
+html[data-ypp-ui-style="christmas"] .ytp-endscreen-element {
+  border-radius: 12px !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-endscreen-element:hover {
+  transform: scale(1.04) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 14px rgba(255, 199, 0, 0.2) !important;
+}
+
+/* ── Cards (channel/video popups on player) ── */
+html[data-ypp-ui-style="christmas"] .ytp-cards-teaser {
+  background: rgba(8, 18, 11, 0.85) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 20px !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-cards-button-icon {
+  fill: var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] .iv-card-content,
+html[data-ypp-ui-style="christmas"] .ytp-ce-element {
+  background: rgba(8, 18, 11, 0.9) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* ── Skip ad button ── */
+html[data-ypp-ui-style="christmas"] .ytp-ad-skip-button-container,
+html[data-ypp-ui-style="christmas"] .ytp-skip-ad-button {
+  background: rgba(8, 18, 11, 0.9) !important;
+  border: 1.5px solid var(--xmas-gold) !important;
+  border-radius: 8px !important;
+  color: var(--xmas-gold) !important;
+  box-shadow: 0 0 14px rgba(255, 199, 0, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-skip-ad-button:hover {
+  background: rgba(255, 199, 0, 0.18) !important;
+  transform: scale(1.04) !important;
+}
+
+/* ── Ad overlay text ── */
+html[data-ypp-ui-style="christmas"] .ytp-ad-overlay-container {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+/* ── Captions / Subtitles ── */
+html[data-ypp-ui-style="christmas"] .ytp-caption-segment {
+  background: rgba(6, 14, 10, 0.82) !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  color: var(--xmas-snow) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ── Miniplayer ── */
+html[data-ypp-ui-style="christmas"] .ytp-miniplayer-ui {
+  background: rgba(6, 14, 10, 0.92) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 199, 0, 0.1) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-miniplayer {
+  border-radius: 16px !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ── Autoplay countdown ── */
+html[data-ypp-ui-style="christmas"] .ytp-autonav-endscreen-upnext-thumbnail {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 1.5px solid var(--xmas-border) !important;
+}
+
+/* ── Fullscreen cinematic header ── */
+html[data-ypp-ui-style="christmas"] .ytp-cued-thumbnail-overlay {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+/* ── Immersive playlist header (on watch page) ── */
+html[data-ypp-ui-style="christmas"] .immersive-header-content.ytd-playlist-header-renderer {
+  overflow: visible !important;
+  background: rgba(8, 18, 11, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--xmas-border) !important;
+}
+
+/* ── Right controls group (theater / fullscreen / miniplayer) ── */
+html[data-ypp-ui-style="christmas"] .ytp-right-controls {
+  background: none !important;
+  border-radius: 10px !important;
+  overflow: visible !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* ── Fullscreen expand button ── */
+html[data-ypp-ui-style="christmas"] .ytp-fullscreen-grid-expand-button {
+  background: none !important;
+  border: 1px solid rgba(255, 199, 0, 0.25) !important;
+  border-radius: 8px !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] .ytp-fullscreen-grid-expand-button:hover {
+  background: rgba(255, 199, 0, 0.14) !important;
+  box-shadow: 0 0 10px rgba(255, 199, 0, 0.2) !important;
+  transform: scale(1.1) !important;
+}

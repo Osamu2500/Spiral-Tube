@@ -6,7 +6,7 @@ const CONSTANTS = {
     SELECTORS: {
         SPEED_CONTROLS: 'ypp-speed-controls',
         SPEED_BTN: 'ypp-speed-btn',
-        ACTION_BTN: 'ypp-action-btn',
+        ACTION_BTN: 'ypp-action-btn ytp-button',
         ACTIVE_CLASS: 'active'
     },
     ICONS: {
@@ -27,30 +27,37 @@ export class PlayerControls {
     createSpeedControls(video) {
         const container = document.createElement('div');
         container.className = CONSTANTS.SELECTORS.SPEED_CONTROLS;
+        
+        let html = '';
         ['1', '1.5', '2', '3'].forEach(rate => {
-            const btn = document.createElement('button');
-            btn.className = CONSTANTS.SELECTORS.SPEED_BTN;
-            btn.textContent = rate + 'x';
-            btn.dataset.speed = rate;
-            if (video.playbackRate === parseFloat(rate)) btn.classList.add(CONSTANTS.SELECTORS.ACTIVE_CLASS);
-            this.player.addListener(btn, 'click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const newSpeed = parseFloat(rate);
-                const vsc = window.YPP.featureManager?.getFeature('videoSpeedController');
-                
-                if (vsc) {
-                    if (!vsc.controllers.has(video)) vsc.attachToVideo(video);
-                    vsc.setSpeed(video, newSpeed);
-                } else {
-                    video.playbackRate = newSpeed;
-                }
-                
-                this.updateSpeedButtons(container, rate);
-            });
-            container.appendChild(btn);
+            const isActive = video.playbackRate === parseFloat(rate);
+            const activeClass = isActive ? ` ${CONSTANTS.SELECTORS.ACTIVE_CLASS}` : '';
+            html += `<button class="${CONSTANTS.SELECTORS.SPEED_BTN}${activeClass}" data-speed="${rate}">${rate}x</button>`;
         });
+        container.innerHTML = html;
+        
+        // Event delegation
+        this.player.addListener(container, 'click', (e) => {
+            const btn = e.target.closest('.' + CONSTANTS.SELECTORS.SPEED_BTN);
+            if (!btn) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const rate = btn.dataset.speed;
+            const newSpeed = parseFloat(rate);
+            const vsc = window.YPP.featureManager?.getFeature('videoSpeedController');
+            
+            if (vsc) {
+                if (!vsc.controllers.has(video)) vsc.attachToVideo(video);
+                vsc.setSpeed(video, newSpeed);
+            } else {
+                video.playbackRate = newSpeed;
+            }
+            
+            this.updateSpeedButtons(container, rate);
+        });
+        
         return container;
     }
 
@@ -76,6 +83,9 @@ export class PlayerControls {
         btn.innerHTML = svgContent;
         btn.title = title;
         btn.className = CONSTANTS.SELECTORS.ACTION_BTN;
+        // Also add tooltip target for native YouTube tooltips if needed
+        btn.dataset.tooltipTargetId = "ypp-custom-button";
+        
         this.player.addListener(btn, 'click', (e) => {
             e.stopPropagation();
             onClick(e);
@@ -95,8 +105,6 @@ export class PlayerControls {
         if (currentValue) btn.classList.add(CONSTANTS.SELECTORS.ACTIVE_CLASS);
         return btn;
     }
-
-
 
     updateSpeedButtons(container, activeSpeed) {
         container.querySelectorAll('.' + CONSTANTS.SELECTORS.SPEED_BTN).forEach(b => {

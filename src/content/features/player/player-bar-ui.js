@@ -11,29 +11,50 @@ export class PlayerBarUI {
     constructor(manager) {
         this.manager = manager;
         this.injectedButtons = false;
-        this.startInjectionPolling();
+        this.setupInjectionObserver();
     }
 
-    startInjectionPolling() {
+    setupInjectionObserver() {
+        // Register an observer to detect when the player controls are available
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('player-bar-injection', window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR, (elements) => {
+                if (!this.manager.isActive) return;
+                
+                const isShorts = window.location.pathname.startsWith('/shorts');
+                const video = isShorts 
+                    ? document.querySelector('ytd-reel-video-renderer[is-active] video') 
+                    : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
+                
+                // For shorts we might get the chrome-bottom from the main player, so ensure we have the right controls
+                const controls = isShorts 
+                    ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') 
+                    : elements[0];
+                
+                if (video && controls) {
+                    if (!controls.querySelector('.ypp-player-controls')) {
+                        this.injectedButtons = false;
+                        this.injectControls(video, controls, isShorts);
+                    }
+                }
+            }, true); // persistent
+        } else {
+            // Fallback for safety if sharedObserver isn't ready
+            this.startInjectionPollingFallback();
+        }
+    }
+    
+    startInjectionPollingFallback() {
         if (this._pollingInterval) clearInterval(this._pollingInterval);
         this._pollingInterval = setInterval(() => {
             if (!this.manager.isActive) return;
-            
             const isShorts = window.location.pathname.startsWith('/shorts');
-            const video = isShorts 
-                ? document.querySelector('ytd-reel-video-renderer[is-active] video') 
-                : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
-            const controls = isShorts 
-                ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') 
-                : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
-            
-            if (video && controls) {
-                if (!controls.querySelector('.ypp-player-controls')) {
-                    this.injectedButtons = false;
-                    this.injectControls(video, controls, isShorts);
-                }
+            const video = isShorts ? document.querySelector('ytd-reel-video-renderer[is-active] video') : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
+            const controls = isShorts ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
+            if (video && controls && !controls.querySelector('.ypp-player-controls')) {
+                this.injectedButtons = false;
+                this.injectControls(video, controls, isShorts);
             }
-        }, 1000);
+        }, 2000); // Polling much slower, just as fallback
     }
 
     get settings() {
@@ -55,12 +76,11 @@ export class PlayerBarUI {
             if (existing) existing.remove();
         }
 
-        this.applyNativeButtonStyles();
+        this.updateCustomStyles();
 
         if (this.manager.settingsMenuHelper) {
             this.manager.settingsMenuHelper.setupSettingsObserver(video);
         }
-        this.applyNativeButtonVisibility();
 
         const container = document.createElement('div');
         container.className = 'ypp-player-controls' + (isShorts ? ' ypp-shorts-controls' : '');
@@ -103,19 +123,11 @@ export class PlayerBarUI {
         if (isShorts) {
             controls.appendChild(container);
         } else {
-            // Find where to insert our controls within .ytp-chrome-bottom
-            let rightControls = controls.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO_CONTROLS[0]) || controls.querySelector('.ytp-right-controls-right');
-            const fullscreenBtn = controls.querySelector('.ytp-fullscreen-button');
-            const chromeControls = controls.querySelector('.ytp-chrome-controls');
-            
-            if (rightControls) {
-                // Insert inside the right controls as the very first item
-                rightControls.insertBefore(container, rightControls.firstChild);
-            } else if (fullscreenBtn && fullscreenBtn.parentNode) {
-                // Fallback: insert right before the fullscreen button inside its parent
-                fullscreenBtn.parentNode.insertBefore(container, fullscreenBtn);
-            } else if (chromeControls) {
-                chromeControls.appendChild(container);
+            // Force inject into the block-level .ytp-chrome-bottom container
+            // This completely bypasses YouTube's strict flexbox width constraints on .ytp-right-controls
+            const chromeBottom = controls.closest('.ytp-chrome-bottom') || document.querySelector('.ytp-chrome-bottom');
+            if (chromeBottom) {
+                chromeBottom.appendChild(container);
             } else {
                 controls.appendChild(container);
             }
@@ -124,43 +136,11 @@ export class PlayerBarUI {
         this.injectedButtons = true;
     }
 
-    applyNativeButtonStyles() {
-        let style = document.getElementById('ypp-custom-player-bar-styles');
-        if (!style) {
-            style = document.createElement('style');
-            style.id = 'ypp-custom-player-bar-styles';
-            document.head.appendChild(style);
-        }
-
-        let css = '';
-        const hideMap = {
-            'pb_native_play': '.ytp-play-button',
-            'pb_native_next': '.ytp-next-button',
-            'pb_native_mute': '.ytp-mute-button',
-            'pb_native_cast': '.ytp-remote-button',
-            'pb_native_autoplay': '.ytp-autonav-button, .ytp-autonav-toggle-button',
-            'pb_native_cc': '.ytp-subtitles-button',
-            'pb_native_settings': '.ytp-settings-button',
-            'pb_native_miniplayer': '.ytp-miniplayer-button',
-            'pb_native_theater': '.ytp-size-button',
-            'pb_native_fullscreen': '.ytp-fullscreen-button'
-        };
-
-        for (const [key, selector] of Object.entries(hideMap)) {
-            // Only hide when EXPLICITLY set to 'hidden'. A value of `true` is a
-            // legacy boolean from older code versions and should NOT hide buttons.
-            if (this.settings[key] === 'hidden') {
-                css += `${selector} { display: none !important; }\n`;
-            }
-        }
-        style.textContent = css;
-    }
-
-    applyNativeButtonVisibility() {
-        let styleNode = document.getElementById('ypp-custom-player-bar-style-vis');
+    updateCustomStyles() {
+        let styleNode = document.getElementById('ypp-player-overrides');
         if (!styleNode) {
             styleNode = document.createElement('style');
-            styleNode.id = 'ypp-custom-player-bar-style-vis';
+            styleNode.id = 'ypp-player-overrides';
             document.head.appendChild(styleNode);
         }
 
@@ -176,7 +156,7 @@ export class PlayerBarUI {
         if (this.settings.pb_native_fullscreen === 'hidden') hiddenSelectors.push('.ytp-fullscreen-button');
 
         if (hiddenSelectors.length > 0) {
-            styleNode.textContent = `${hiddenSelectors.join(', ')} { display: none !important; }`;
+            styleNode.textContent = `.html5-video-player ${hiddenSelectors.join(', .html5-video-player ')} { display: none !important; }`;
         } else {
             styleNode.textContent = '';
         }
@@ -187,6 +167,9 @@ export class PlayerBarUI {
             clearInterval(this._pollingInterval);
             this._pollingInterval = null;
         }
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('player-bar-injection');
+        }
         document.querySelectorAll('.ypp-player-controls').forEach(controls => controls.remove());
         this.injectedButtons = false;
 
@@ -194,11 +177,14 @@ export class PlayerBarUI {
             this.manager.settingsMenuHelper.cleanupSettingsObserver();
         }
         
-        const styleNode = document.getElementById('ypp-custom-player-bar-styles');
+        const styleNode = document.getElementById('ypp-player-overrides');
         if (styleNode) styleNode.remove();
         
-        const visNode = document.getElementById('ypp-custom-player-bar-style-vis');
-        if (visNode) visNode.remove();
+        // Remove legacy nodes if they exist
+        const legacyStyle = document.getElementById('ypp-custom-player-bar-styles');
+        if (legacyStyle) legacyStyle.remove();
+        const legacyVis = document.getElementById('ypp-custom-player-bar-style-vis');
+        if (legacyVis) legacyVis.remove();
     }
 };
 
