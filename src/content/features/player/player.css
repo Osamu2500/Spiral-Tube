@@ -723,35 +723,11 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compa
 
 
 /* --- Right Column: Metadata and Comments (Sidebar) --- */
-/* Title, Channel, and Buttons */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    background: var(--ypp-card-bg, rgba(20, 19, 24, 0.6)) !important;
-    backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 16px !important;
-    padding: 16px !important;
-    margin-bottom: 16px !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
-}
-
-/* Comments (also under #below) */
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #below {
     grid-column: 2 !important;
-    grid-row: 2 !important;
-}
-
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #comments {
-    background: var(--ypp-card-bg, rgba(20, 19, 24, 0.6)) !important;
-    backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 16px !important;
-    padding: 16px !important;
-    margin-bottom: 24px !important;
-    max-height: calc(100vh - 120px) !important;
-    overflow-y: auto !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2) !important;
+    grid-row: 1 / span 2 !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 /* Chat Integration (if live) */
@@ -782,7 +758,6 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #secondar
     display: block !important;
 }
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #related,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] ytd-watch-metadata,
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #below {
     grid-column: unset !important;
     grid-row: unset !important;
