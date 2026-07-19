@@ -81,32 +81,28 @@ class DOMTransactionManager {
     }
 
     createPlaceholder(identifier) {
-        const placeholder = document.createElement('div');
-        placeholder.id = `seamless-tx-placeholder-${identifier}`;
-        placeholder.style.display = 'none';
-        placeholder.style.width = '0px';
-        placeholder.style.height = '0px';
-        placeholder.dataset.seamlessPlaceholder = 'true';
+        const placeholder = document.createElement("div");
+        placeholder.id = "seamless-tx-placeholder-" + identifier;
+        placeholder.style.display = "none";
+        placeholder.style.width = "0px";
+        placeholder.style.height = "0px";
+        placeholder.dataset.seamlessPlaceholder = "true";
         placeholder.dataset.txId = identifier;
         return placeholder;
     }
 
     moveNode(txId, node, newParent) {
         if (!node || !newParent) {
-            this.logger.warn(`Transaction ${txId} failed: Missing node or parent`);
+            this.logger.warn("Transaction " + txId + " failed: Missing node or parent");
             return false;
         }
-
-        if (node.parentElement === newParent) {
-            return true;
-        }
+        if (node.parentElement === newParent) return true;
 
         try {
             const placeholder = this.createPlaceholder(txId);
             const originalParent = node.parentElement;
             const originalNextSibling = node.nextSibling;
 
-            // Save state for rollback using WeakRef to prevent memory leaks
             this.history.set(txId, {
                 node: new WeakRef(node),
                 originalParent: originalParent ? new WeakRef(originalParent) : null,
@@ -116,25 +112,19 @@ class DOMTransactionManager {
                 timestamp: Date.now()
             });
 
-            if (originalParent) {
-                originalParent.insertBefore(placeholder, node);
-            }
-
+            if (originalParent) originalParent.insertBefore(placeholder, node);
             newParent.appendChild(node);
-            this.logger.info(`Transaction ${txId} completed successfully.`);
+            this.logger.info("Transaction " + txId + " completed successfully.");
             return true;
         } catch (error) {
-            this.logger.error(`Transaction ${txId} threw a fatal error during move`, error);
+            this.logger.error("Transaction " + txId + " threw a fatal error during move", error);
             return false;
         }
     }
 
     rollback(txId) {
         const tx = this.history.get(txId);
-        if (!tx) {
-            this.logger.warn(`Rollback requested for unknown transaction ${txId}`);
-            return false;
-        }
+        if (!tx) return false;
 
         try {
             const node = tx.node.deref();
@@ -143,7 +133,6 @@ class DOMTransactionManager {
             const placeholder = tx.placeholder.deref();
 
             if (!node) {
-                // Node was already garbage collected, nothing to rollback
                 this.history.delete(txId);
                 return true;
             }
@@ -156,10 +145,9 @@ class DOMTransactionManager {
             }
 
             this.history.delete(txId);
-            this.logger.info(`Transaction ${txId} rolled back successfully.`);
             return true;
         } catch (error) {
-            this.logger.error(`Failed to rollback transaction ${txId}`, error);
+            this.logger.error("Failed to rollback transaction " + txId, error);
             return false;
         }
     }
@@ -185,8 +173,8 @@ class ActionButtonsController {
         if (this.enabled) return;
         this.enabled = true;
         if (!this.styleElement) {
-            this.styleElement = document.createElement('style');
-            this.styleElement.id = 'seamless-action-buttons-enforcer';
+            this.styleElement = document.createElement("style");
+            this.styleElement.id = "seamless-action-buttons-enforcer";
             this.styleElement.textContent = `
                 ytd-watch-metadata #top-row {
                     display: flex !important;
@@ -222,7 +210,7 @@ class ActionButtonsController {
             `;
             document.head.appendChild(this.styleElement);
         }
-        this.logger.info('ActionButtonsController Enabled');
+        this.logger.info("ActionButtonsController Enabled");
     }
 
     disable() {
@@ -232,7 +220,7 @@ class ActionButtonsController {
             this.styleElement.remove();
             this.styleElement = null;
         }
-        this.logger.info('ActionButtonsController Disabled');
+        this.logger.info("ActionButtonsController Disabled");
     }
 }
 
@@ -252,8 +240,8 @@ class ChannelBarController {
         if (this.enabled) return;
         this.enabled = true;
         if (!this.styleElement) {
-            this.styleElement = document.createElement('style');
-            this.styleElement.id = 'seamless-channel-bar-enforcer';
+            this.styleElement = document.createElement("style");
+            this.styleElement.id = "seamless-channel-bar-enforcer";
             this.styleElement.textContent = `
                 ytd-watch-metadata #owner {
                     display: flex !important;
@@ -310,7 +298,7 @@ class ChannelBarController {
             `;
             document.head.appendChild(this.styleElement);
         }
-        this.logger.info('ChannelBarController Enabled');
+        this.logger.info("ChannelBarController Enabled");
     }
 
     disable() {
@@ -320,9 +308,10 @@ class ChannelBarController {
             this.styleElement.remove();
             this.styleElement = null;
         }
-        this.logger.info('ChannelBarController Disabled');
+        this.logger.info("ChannelBarController Disabled");
     }
 }
+
 
 /**
  * Tier 1: Dynamic CSS Matrix Engine
