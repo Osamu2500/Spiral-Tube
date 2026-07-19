@@ -153,9 +153,16 @@ export function saveSettings(showIndicatorCb) {
     if (!state.isLoaded) return;
     const s = gatherSettings();
     state._settingsWriteQueue.push({ fullState: s });
-    _processWriteQueue();
+    
+    if (_writeTimeout) clearTimeout(_writeTimeout);
+    _writeTimeout = setTimeout(() => {
+        _processWriteQueue();
+    }, 300);
+    
     if (showIndicatorCb) showIndicatorCb();
 }
+
+let _writeTimeout = null;
 
 function _processWriteQueue() {
     const Utils = getUtils();
@@ -204,7 +211,12 @@ function _processWriteQueue() {
 
 export function queueSettingsWrite(payload) {
     state._settingsWriteQueue.push(payload);
-    _processWriteQueue();
+    
+    // Debounce the actual write process to prevent Chrome Storage Quota limits
+    if (_writeTimeout) clearTimeout(_writeTimeout);
+    _writeTimeout = setTimeout(() => {
+        _processWriteQueue();
+    }, 300);
 }
 
 export function updateSetting(key, value) {

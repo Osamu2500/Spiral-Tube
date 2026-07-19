@@ -644,11 +644,20 @@ class QuadObserverSystem {
         this.mutationObserver = null;
         this.resizeObserver = null;
         this.intersectionObserver = null;
-        this.rafId = null;
         this.enabled = false;
+        this._debounceTimer = null;
+    }
+    
+    _debouncedCallback() {
+        if (!this.enabled) return;
+        if (this._debounceTimer) clearTimeout(this._debounceTimer);
+        this._debounceTimer = setTimeout(() => {
+            this.callback();
+        }, 150);
     }
     
     start(target) {
+        this.stop(); // Clean up previous instances to prevent memory leaks
         this.enabled = true;
         
         // 1. Mutation Observer
@@ -660,39 +669,38 @@ class QuadObserverSystem {
                     break;
                 }
             }
-            if (needsUpdate) this.callback();
+            if (needsUpdate) this._debouncedCallback();
         });
         this.mutationObserver.observe(target, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
         
         // 2. Resize Observer
         this.resizeObserver = new ResizeObserver(() => {
-            this.callback();
+            this._debouncedCallback();
         });
         this.resizeObserver.observe(target);
         
         // 3. Intersection Observer (for infinite scroll)
         this.intersectionObserver = new IntersectionObserver(() => {
-            this.callback();
+            this._debouncedCallback();
         });
         this.intersectionObserver.observe(target);
         
-        // 4. Request Animation Frame Loop (The brute force fallback)
-        const loop = () => {
-            if (!this.enabled) return;
-            this.callback();
-            this.rafId = requestAnimationFrame(loop);
-        };
-        this.rafId = requestAnimationFrame(loop);
+        // 4. Request Animation Frame Loop (REMOVED due to severe CPU/Battery drain)
+        // Relying on debounced DOM observers is much safer.
         
         this.logger.info('Quad-Observer System Armed and Guarding.');
     }
     
     stop() {
         this.enabled = false;
+        if (this._debounceTimer) clearTimeout(this._debounceTimer);
         if (this.mutationObserver) this.mutationObserver.disconnect();
         if (this.resizeObserver) this.resizeObserver.disconnect();
         if (this.intersectionObserver) this.intersectionObserver.disconnect();
-        if (this.rafId) cancelAnimationFrame(this.rafId);
+        
+        this.mutationObserver = null;
+        this.resizeObserver = null;
+        this.intersectionObserver = null;
     }
 }
 
