@@ -1,0 +1,161 @@
+/* ============================================================
+   Christmas Theme — Modals, Menus & Tooltips
+   Covers: paper-dialogs (Share, Report, Save to Playlist),
+   iron-dropdowns (General context menus), Tooltips,
+   and Toasts/Snackbars (Bottom notification popups).
+   ============================================================ */
+
+/* ── Global Dialog / Modal Container ── */
+html[data-ypp-ui-style="christmas"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="christmas"] ytd-popup-container tp-yt-paper-dialog,
+html[data-ypp-ui-style="christmas"] ytd-engagement-panel-section-list-renderer[dialog] {
+  background: rgba(6, 14, 10, 0.95) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(24px) saturate(1.4) !important;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(255, 199, 0, 0.15) !important;
+  color: var(--xmas-text) !important;
+  overflow: hidden !important;
+}
+
+/* Festive modal header line */
+html[data-ypp-ui-style="christmas"] tp-yt-paper-dialog::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    var(--xmas-red) 25%, 
+    var(--xmas-gold) 50%, 
+    var(--xmas-red) 75%, 
+    transparent 100%
+  ) !important;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+/* Modal Headers */
+html[data-ypp-ui-style="christmas"] tp-yt-paper-dialog h2,
+html[data-ypp-ui-style="christmas"] ytd-add-to-playlist-renderer #header-title {
+  color: var(--xmas-gold) !important;
+  text-shadow: 0 0 10px rgba(255, 199, 0, 0.3) !important;
+  border-bottom: 1px solid rgba(255, 199, 0, 0.15) !important;
+  padding-bottom: 12px !important;
+}
+
+/* ── Context Menus / Iron Dropdowns ── */
+html[data-ypp-ui-style="christmas"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="christmas"] ytd-menu-popup-renderer {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-style="christmas"] tp-yt-iron-dropdown ytd-menu-popup-renderer {
+  background: rgba(8, 18, 11, 0.96) !important;
+  border: 1.5px solid var(--xmas-border) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(18px) saturate(1.5) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 12px var(--xmas-gold-glow) !important;
+}
+
+/* Menu Items inside Dropdowns */
+html[data-ypp-ui-style="christmas"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="christmas"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style="christmas"] tp-yt-paper-item {
+  color: var(--xmas-text) !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+  border-radius: 8px !important;
+  margin: 2px 4px !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="christmas"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="christmas"] tp-yt-paper-item:hover {
+  background: rgba(255, 199, 0, 0.12) !important;
+  color: var(--xmas-gold) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-menu-service-item-renderer yt-icon,
+html[data-ypp-ui-style="christmas"] ytd-menu-navigation-item-renderer yt-icon {
+  color: var(--xmas-text-dim) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-menu-service-item-renderer:hover yt-icon,
+html[data-ypp-ui-style="christmas"] ytd-menu-navigation-item-renderer:hover yt-icon {
+  color: var(--xmas-gold) !important;
+}
+
+/* ── Tooltips ── */
+html[data-ypp-ui-style="christmas"] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip],
+html[data-ypp-ui-style="christmas"] yt-tooltip .yt-tooltip {
+  background: rgba(6, 14, 10, 0.95) !important;
+  color: var(--xmas-snow) !important;
+  border: 1px solid var(--xmas-gold) !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px var(--xmas-gold-glow) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* ── Toasts / Snackbars ── */
+html[data-ypp-ui-style="christmas"] tp-yt-paper-toast {
+  background: rgba(204, 26, 26, 0.9) !important; /* Xmas Red for Toasts */
+  border: 1.5px solid var(--xmas-gold) !important;
+  border-radius: 12px !important;
+  color: #fff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px var(--xmas-red-soft) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html[data-ypp-ui-style="christmas"] tp-yt-paper-toast yt-button-shape button {
+  color: var(--xmas-gold) !important;
+  font-weight: 600 !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 6px !important;
+}
+
+html[data-ypp-ui-style="christmas"] tp-yt-paper-toast yt-button-shape button:hover {
+  background: rgba(0, 0, 0, 0.4) !important;
+  color: #fff !important;
+}
+
+/* ── Modals: specific elements like Share panel ── */
+html[data-ypp-ui-style="christmas"] ytd-third-party-share-target-section-renderer,
+html[data-ypp-ui-style="christmas"] ytd-share-target-renderer {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-share-target-renderer yt-icon-button {
+  background: rgba(13, 31, 20, 0.7) !important;
+  border: 1px solid rgba(255, 199, 0, 0.15) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="christmas"] ytd-share-target-renderer yt-icon-button:hover {
+  background: rgba(255, 199, 0, 0.15) !important;
+  border-color: var(--xmas-gold) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Copy Link input in share modal */
+html[data-ypp-ui-style="christmas"] #copy-link.ytd-unified-share-panel-renderer {
+  background: rgba(8, 18, 11, 0.6) !important;
+  border: 1px solid var(--xmas-border) !important;
+  border-radius: 8px !important;
+}
+html[data-ypp-ui-style="christmas"] #copy-link.ytd-unified-share-panel-renderer input {
+  color: var(--xmas-text) !important;
+}
+
+/* Checkboxes inside Modals (like Save to Playlist) */
+html[data-ypp-ui-style="christmas"] ytd-playlist-add-to-option-renderer tp-yt-paper-checkbox {
+  --paper-checkbox-checked-color: var(--xmas-red) !important;
+  --paper-checkbox-unchecked-color: var(--xmas-border) !important;
+  --paper-checkbox-label-color: var(--xmas-text) !important;
+}
