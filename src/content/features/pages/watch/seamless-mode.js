@@ -464,7 +464,7 @@ class DynamicCSSMatrixEngine {
         this.targets.forEach(target => {
             // Container overrides
             css += `
-                html[seamless-mode] ytd-watch-flexy[seamless-mode] ${target} {
+                #related ${target} {
                     display: inline-block !important;
                     width: ${widthCalc} !important;
                     min-width: ${widthCalc} !important;
@@ -484,7 +484,7 @@ class DynamicCSSMatrixEngine {
             
             // Flex row destruction on inner dismissible
             css += `
-                html[seamless-mode] ytd-watch-flexy[seamless-mode] ${target} #dismissible {
+                #related ${target} #dismissible {
                     display: block !important;
                     width: 100% !important;
                     height: auto !important;
@@ -503,7 +503,7 @@ class DynamicCSSMatrixEngine {
             
             // Thumbnail overrides
             css += `
-                html[seamless-mode] ytd-watch-flexy[seamless-mode] ${target} ytd-thumbnail {
+                #related ${target} ytd-thumbnail {
                     display: block !important;
                     width: 100% !important;
                     min-width: 100% !important;
@@ -521,7 +521,7 @@ class DynamicCSSMatrixEngine {
             
             // Title and Details overrides
             css += `
-                html[seamless-mode] ytd-watch-flexy[seamless-mode] ${target} .details {
+                #related ${target} .details {
                     display: block !important;
                     width: 100% !important;
                     min-width: 100% !important;
@@ -533,8 +533,8 @@ class DynamicCSSMatrixEngine {
                     float: none !important;
                 }
                 
-                html[seamless-mode] ytd-watch-flexy[seamless-mode] ${target} .details a,
-                html[seamless-mode] ytd-watch-flexy[seamless-mode] ${target} .details span {
+                #related ${target} .details a,
+                #related ${target} .details span {
                     white-space: normal !important;
                 }
             `;
