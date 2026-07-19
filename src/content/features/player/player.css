@@ -669,59 +669,63 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #re
     padding: 0 !important;
 }
 
-/* The actual grid container in YouTube is #items inside the secondary results renderer */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-watch-next-secondary-results-renderer #items {
+/* The JS now injects .ypp-seamless-grid-container directly on the correct parent! */
+body.ypp-seamless-mode .ypp-seamless-grid-container {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     gap: 16px !important;
     justify-content: start;
+    width: 100% !important;
 }
 
 /* Fix item sizing inside the Related grid */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-playlist-renderer,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-radio-renderer {
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-video-renderer,
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-playlist-renderer,
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-radio-renderer {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer > div,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-playlist-renderer > div {
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-video-renderer > div,
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-playlist-renderer > div {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
 }
 
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer ytd-thumbnail {
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-video-renderer ytd-thumbnail {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 16/9;
 }
 
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer .details {
+body.ypp-seamless-mode .ypp-seamless-grid-container ytd-compact-video-renderer .details {
     padding-top: 8px !important;
     width: 100% !important;
 }
 
 /* Move Actions below the Channel Card */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #top-row {
+/* The JS now injects .ypp-seamless-stacked-actions to force this behavior */
+body.ypp-seamless-mode .ypp-seamless-stacked-actions {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    flex-wrap: nowrap !important;
 }
 
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #owner {
+body.ypp-seamless-mode .ypp-seamless-stacked-actions #owner {
     margin-bottom: 12px !important;
+    width: 100% !important;
 }
 
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #actions {
+body.ypp-seamless-mode .ypp-seamless-stacked-actions #actions {
     margin-top: 0 !important;
     padding-top: 0 !important;
     width: 100% !important;
 }
 
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #actions-inner {
+body.ypp-seamless-mode .ypp-seamless-stacked-actions #actions-inner {
     justify-content: flex-start !important;
 }
 
