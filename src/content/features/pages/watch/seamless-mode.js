@@ -297,6 +297,141 @@ class ActionButtonsController {
 }
 
 /**
+ * Ultra-Aggressive Channel Bar Controller
+ * Responsible for ruthlessly maintaining the alignment of the Avatar, Channel Name,
+ * Join Button, Subscribe Button, and Bell Icon on a single horizontal line.
+ */
+class ChannelBarController {
+    constructor(logger) {
+        this.logger = logger;
+        this.enabled = false;
+        this.enforcementLoop = null;
+    }
+
+    enable() {
+        if (this.enabled) return;
+        this.enabled = true;
+        this.startEnforcementLoop();
+        this.logger.info('ChannelBarController Enabled');
+    }
+
+    disable() {
+        if (!this.enabled) return;
+        this.enabled = false;
+        this.stopEnforcementLoop();
+        this.cleanup();
+        this.logger.info('ChannelBarController Disabled');
+    }
+
+    startEnforcementLoop() {
+        const loop = () => {
+            if (!this.enabled) return;
+            this.enforceStyles();
+            this.enforcementLoop = requestAnimationFrame(loop);
+        };
+        this.enforcementLoop = requestAnimationFrame(loop);
+    }
+
+    stopEnforcementLoop() {
+        if (this.enforcementLoop) {
+            cancelAnimationFrame(this.enforcementLoop);
+            this.enforcementLoop = null;
+        }
+    }
+
+    enforceStyles() {
+        try {
+            const owner = document.querySelector('ytd-watch-metadata #owner');
+            const ownerInner = document.querySelector('ytd-watch-metadata ytd-video-owner-renderer');
+            const subscribeButtonContainer = document.querySelector('ytd-watch-metadata #subscribe-button');
+            const subscribeRenderer = document.querySelector('ytd-watch-metadata ytd-subscribe-button-renderer');
+            const joinButton = document.querySelector('ytd-watch-metadata #sponsor-button');
+            const bellIcon = document.querySelector('ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer');
+            const subscribeBtn = document.querySelector('ytd-watch-metadata ytd-subscribe-button-renderer tp-yt-paper-button, ytd-watch-metadata ytd-subscribe-button-renderer button');
+
+            if (owner) {
+                // Force #owner to be a flex row that wraps if absolutely necessary, but prefers one line
+                owner.style.setProperty('display', 'flex', 'important');
+                owner.style.setProperty('flex-direction', 'row', 'important');
+                owner.style.setProperty('flex-wrap', 'wrap', 'important');
+                owner.style.setProperty('align-items', 'center', 'important');
+                owner.style.setProperty('justify-content', 'space-between', 'important');
+                owner.style.setProperty('gap', '4px', 'important');
+                owner.style.setProperty('width', '100%', 'important');
+            }
+
+            if (ownerInner) {
+                // The left side (Avatar + Name)
+                ownerInner.style.setProperty('flex', '1 1 auto', 'important');
+                ownerInner.style.setProperty('min-width', '150px', 'important');
+                ownerInner.style.setProperty('margin-right', '4px', 'important');
+            }
+
+            if (subscribeButtonContainer) {
+                // The right side (Join + Subscribe + Bell)
+                subscribeButtonContainer.style.setProperty('display', 'flex', 'important');
+                subscribeButtonContainer.style.setProperty('flex-direction', 'row', 'important');
+                subscribeButtonContainer.style.setProperty('align-items', 'center', 'important');
+                subscribeButtonContainer.style.setProperty('justify-content', 'flex-end', 'important');
+                subscribeButtonContainer.style.setProperty('flex-wrap', 'nowrap', 'important');
+                subscribeButtonContainer.style.setProperty('flex', '0 1 auto', 'important');
+                subscribeButtonContainer.style.setProperty('gap', '4px', 'important');
+            }
+            
+            if (subscribeRenderer) {
+                subscribeRenderer.style.setProperty('display', 'flex', 'important');
+                subscribeRenderer.style.setProperty('flex-direction', 'row', 'important');
+                subscribeRenderer.style.setProperty('align-items', 'center', 'important');
+                subscribeRenderer.style.setProperty('flex-wrap', 'nowrap', 'important');
+                subscribeRenderer.style.setProperty('gap', '4px', 'important');
+            }
+
+            // Micro-manage the buttons to ensure they shrink slightly to fit
+            if (joinButton) {
+                joinButton.style.setProperty('margin', '0', 'important');
+                joinButton.style.setProperty('flex-shrink', '1', 'important');
+                const btn = joinButton.querySelector('button, tp-yt-paper-button');
+                if (btn) btn.style.setProperty('padding', '0 8px', 'important');
+            }
+
+            if (subscribeBtn) {
+                subscribeBtn.style.setProperty('margin', '0', 'important');
+                subscribeBtn.style.setProperty('flex-shrink', '1', 'important');
+                subscribeBtn.style.setProperty('padding', '0 8px', 'important');
+            }
+
+            if (bellIcon) {
+                bellIcon.style.setProperty('margin', '0', 'important');
+                bellIcon.style.setProperty('flex-shrink', '0', 'important');
+                const btn = bellIcon.querySelector('button, yt-icon-button');
+                if (btn) btn.style.setProperty('padding', '4px', 'important');
+            }
+            
+        } catch (error) {
+            this.logger.error('Fatal error during ChannelBar style enforcement', error);
+        }
+    }
+
+    cleanup() {
+        try {
+            const elements = [
+                document.querySelector('ytd-watch-metadata #owner'),
+                document.querySelector('ytd-watch-metadata ytd-video-owner-renderer'),
+                document.querySelector('ytd-watch-metadata #subscribe-button'),
+                document.querySelector('ytd-watch-metadata ytd-subscribe-button-renderer'),
+                document.querySelector('ytd-watch-metadata #sponsor-button'),
+                document.querySelector('ytd-watch-metadata ytd-subscription-notification-toggle-button-renderer')
+            ];
+            elements.forEach(el => {
+                if (el) el.removeAttribute('style');
+            });
+        } catch (error) {
+            this.logger.error('Failed to cleanup ChannelBarController styles', error);
+        }
+    }
+}
+
+/**
  * Ultra-Aggressive Related Grid Controller
  * Analyzes the DOM in real-time to discover asynchronous video cards,
  * traces their origin, and mathematically computes a grid structure.
@@ -472,6 +607,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         this.logger = new TelemetryLogger('SeamlessModeOrchestrator');
         this.txManager = new DOMTransactionManager(this.logger);
         this.actionController = new ActionButtonsController(this.logger);
+        this.channelBarController = new ChannelBarController(this.logger);
         this.gridController = new RelatedGridController(this.logger);
         
         // Internal State
@@ -561,6 +697,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
     _activateEngines() {
         this._executeMacroLayoutSwap();
         this.actionController.enable();
+        this.channelBarController.enable();
         this.gridController.enable();
     }
 
@@ -570,6 +707,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
      */
     _deactivateEngines() {
         this.actionController.disable();
+        this.channelBarController.disable();
         this.gridController.disable();
         this.txManager.rollbackAll();
     }
