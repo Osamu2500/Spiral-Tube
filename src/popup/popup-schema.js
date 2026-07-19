@@ -227,8 +227,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'studyMode',       label: t('study_mode'),      desc: t('focus_mode_1_25_playback_speed'), icon:ICONS.study },
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
                     { type:'toggle', id:'minimalMode',     label: t('minimalist_chrome'), desc: t('strip_non_essential_page_chrome'), icon:ICONS.minimal },
-                    { type:'toggle', id:'seamlessMode',    label: t('seamless_mode'),   desc: t('sidebar_comments'), icon:ICONS.sidebar },
-                    { type:'slider', id:'seamlessModeGridCols', label: 'Grid Columns', desc: 'Number of video cards per grid row', min:1, max:10, step:1 },
+                    { type:'toggle', id:'seamlessMode',    label: t('seamless_mode'),   desc: t('sidebar_comments'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="seamlessModeGridColsUI" min="1" max="10" step="1" style="width:100%;"><span id="seamlessModeGridColsValue" style="font-size:10px; min-width:20px; opacity:0.7;">4</span></div><input type="hidden" id="seamlessModeGridCols" value="4" />` },
                     { type:'toggle', id:'audioModeEnabled', class:'span-2', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
                 ]
             }

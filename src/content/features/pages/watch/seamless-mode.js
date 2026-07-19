@@ -491,7 +491,7 @@ class RelatedGridController {
      * Deeply processes a single video card and forcefully structures it into a column
      * @param {HTMLElement} item - The compact video renderer
      */
-    processVideoCard(item) {
+    processVideoCard(item, cols) {
         try {
             // Check if we've already restructured this item perfectly
             const state = this.virtualDOMRegistry.get(item);
@@ -499,23 +499,22 @@ class RelatedGridController {
                 return; // Skip if recently processed
             }
 
-            // Target wrappers
-            item.style.setProperty('width', '100%', 'important');
-            item.style.setProperty('margin', '0', 'important');
+            // Target wrappers - The Inline-Block Nuclear Option
+            item.style.setProperty('width', `calc((100% / ${cols}) - 16px)`, 'important');
+            item.style.setProperty('margin', '8px', 'important');
             item.style.setProperty('padding', '0', 'important');
-            item.style.setProperty('display', 'block', 'important');
+            item.style.setProperty('display', 'inline-block', 'important');
+            item.style.setProperty('vertical-align', 'top', 'important');
+            item.style.setProperty('font-size', '14px', 'important'); // Restore font size
             item.style.setProperty('float', 'none', 'important');
             
             // Inner Flex Container (dismissible)
             // YouTube typically uses flex-direction: row here. We MUST break it.
             const innerDiv = item.querySelector('#dismissible') || item.querySelector('.details')?.parentElement;
             if (innerDiv) {
-                innerDiv.style.setProperty('display', 'flex', 'important');
-                innerDiv.style.setProperty('flex-direction', 'column', 'important');
-                innerDiv.style.setProperty('align-items', 'stretch', 'important');
-                innerDiv.style.setProperty('justify-content', 'flex-start', 'important');
+                innerDiv.style.setProperty('display', 'block', 'important'); // BLOCK destroys flex row layout
                 innerDiv.style.setProperty('width', '100%', 'important');
-                innerDiv.style.setProperty('height', '100%', 'important');
+                innerDiv.style.setProperty('height', 'auto', 'important');
             }
 
             // Thumbnail container
@@ -617,19 +616,17 @@ class RelatedGridController {
             // 3. Brutally enforce Grid layout on all identified containers
             parentContainers.forEach(container => {
                 this.knownGridContainers.add(container);
-                container.style.setProperty('display', 'grid', 'important');
-                container.style.setProperty('grid-template-columns', `repeat(${cols}, 1fr)`, 'important');
-                container.style.setProperty('gap', '16px', 'important');
-                container.style.setProperty('justify-content', 'start', 'important');
-                container.style.setProperty('align-content', 'start', 'important');
+                container.style.setProperty('display', 'block', 'important'); // NO CSS GRID!
                 container.style.setProperty('width', '100%', 'important');
                 container.style.setProperty('padding', '0', 'important');
                 container.style.setProperty('margin', '0', 'important');
+                container.style.setProperty('font-size', '0', 'important'); // Prevent inline-block spacing bugs
+                container.style.setProperty('text-align', 'left', 'important');
             });
 
             // 4. Surgically enforce column layout on every single child
             for (let i = 0; i < compactItems.length; i++) {
-                this.processVideoCard(compactItems[i]);
+                this.processVideoCard(compactItems[i], cols);
             }
         } catch (error) {
             this.logger.error('Fatal error during Related Grid style enforcement', error);

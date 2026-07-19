@@ -792,7 +792,7 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
         }
     });
 
-    ['ambientIntensity', 'ambientBlur', 'blueLight', 'dim', 'homeColumns', 'searchColumns', 'channelColumns', 'subscriptionsColumns', 'historyColumns', 'minVideoDuration', 'watchTimeAlertHours', 'hideWatchedThreshold', 'intentionalDelayTime'].forEach(key => {
+    ['ambientIntensity', 'ambientBlur', 'blueLight', 'dim', 'homeColumns', 'searchColumns', 'channelColumns', 'subscriptionsColumns', 'historyColumns', 'minVideoDuration', 'watchTimeAlertHours', 'hideWatchedThreshold', 'intentionalDelayTime', 'seamlessModeGridCols'].forEach(key => {
         const slider = state.elements[key];
         const display = document.getElementById(key + 'Value');
         if (slider) {
@@ -957,6 +957,7 @@ const initApp = async () => {
         components.initViewsFilterInlineSlider();
         components.initDateFilterInlineSliders();
         components.initBasicInlineSlider('searchColumns', 4);
+        components.initBasicInlineSlider('seamlessModeGridCols', 4);
         components.initBasicInlineSlider('channelColumns', 5);
         components.initBasicInlineSlider('subscriptionsColumns', 5);
         components.initBasicInlineSlider('historyColumns', 5);
