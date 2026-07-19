@@ -324,7 +324,6 @@ class ChannelBarController {
     }
 }
 
-
 /**
  * Tier 1: Dynamic CSS Matrix Engine
  * Generates an indestructible wall of CSS rules that Polymer cannot wipe out.
