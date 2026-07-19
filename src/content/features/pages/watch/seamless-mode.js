@@ -235,7 +235,6 @@ class ActionButtonsController {
         this.logger.info('ActionButtonsController Disabled');
     }
 }
-}
 
 /**
  * Ultra-Aggressive Channel Bar Controller
