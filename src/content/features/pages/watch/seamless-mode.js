@@ -17,8 +17,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
         // Track Original Locations for Flawless Restoration
         this.originalLocations = {
             below: { parent: null, nextSibling: null, placeholder: null },
-            related: { parent: null, nextSibling: null, placeholder: null },
-            actions: { parent: null, nextSibling: null, placeholder: null }
+            related: { parent: null, nextSibling: null, placeholder: null }
         };
         
         // Observers & Intervals
@@ -180,47 +179,6 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
                 primaryInner.appendChild(related);
             }
 
-            // Advanced DOM Manipulation 1: Action Buttons below Channel Card
-            const topRow = document.querySelector('ytd-watch-metadata #top-row');
-            const owner = document.querySelector('ytd-watch-metadata #owner');
-            const actions = document.querySelector('ytd-watch-metadata #actions');
-            
-            if (topRow && owner && actions && actions.parentElement !== topRow) {
-                // By default #actions is in #top-row. If YouTube changed it, we adapt.
-                // We want #actions to be a distinct block BELOW #owner.
-                // Best way: append #actions directly after #owner inside #top-row, and force #top-row to block or flex-column via CSS.
-            }
-            
-            if (topRow && owner && actions && actions.nextElementSibling !== null) {
-                 // Actions might be before or inline. Let's ensure it's explicitly after Owner
-                 if (actions.previousElementSibling !== owner) {
-                     this.originalLocations.actions.parent = actions.parentElement;
-                     this.originalLocations.actions.nextSibling = actions.nextSibling;
-                     
-                     if (!this.originalLocations.actions.placeholder) {
-                         this.originalLocations.actions.placeholder = this._createPlaceholder('actions');
-                     }
-                     if (actions.parentElement) actions.parentElement.insertBefore(this.originalLocations.actions.placeholder, actions);
-                     
-                     // Move actions to explicitly be immediately after owner
-                     owner.insertAdjacentElement('afterend', actions);
-                     
-                     // Add custom class so CSS can force them to stack
-                     topRow.classList.add('ypp-seamless-stacked-actions');
-                 }
-            }
-
-            // Advanced DOM Manipulation 2: Guarantee Grid Layout for Related Videos
-            // Find the exact container that holds the compact video renderers
-            const compactVideos = related.querySelectorAll('ytd-compact-video-renderer, ytd-compact-playlist-renderer');
-            if (compactVideos.length > 0) {
-                // The direct parent of the first video is the true items container
-                const trueItemsContainer = compactVideos[0].parentElement;
-                if (trueItemsContainer && !trueItemsContainer.classList.contains('ypp-seamless-grid-container')) {
-                    trueItemsContainer.classList.add('ypp-seamless-grid-container');
-                }
-            }
-
             this.domSwapped = true;
             this.Utils.log('Successfully swapped #below and #related nodes.', 'SEAMLESS_MODE', 'debug');
         } catch (e) {
@@ -253,28 +211,11 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
                 this.originalLocations.related.parent.insertBefore(related, this.originalLocations.related.nextSibling);
             }
 
-            // Restore Action Buttons
-            const actions = document.querySelector('ytd-watch-metadata #actions');
-            if (actions && this.originalLocations.actions.placeholder && this.originalLocations.actions.placeholder.parentElement) {
-                this.originalLocations.actions.placeholder.parentElement.insertBefore(actions, this.originalLocations.actions.placeholder);
-                this.originalLocations.actions.placeholder.remove();
-            }
-            
-            const topRow = document.querySelector('ytd-watch-metadata #top-row');
-            if (topRow) topRow.classList.remove('ypp-seamless-stacked-actions');
-
-            // Remove Custom Grid Classes
-            if (related) {
-                const gridContainers = related.querySelectorAll('.ypp-seamless-grid-container');
-                gridContainers.forEach(c => c.classList.remove('ypp-seamless-grid-container'));
-            }
-
             // Reset state
             this.domSwapped = false;
             this.originalLocations = {
                 below: { parent: null, nextSibling: null, placeholder: null },
-                related: { parent: null, nextSibling: null, placeholder: null },
-                actions: { parent: null, nextSibling: null, placeholder: null }
+                related: { parent: null, nextSibling: null, placeholder: null }
             };
             this.Utils.log('Successfully restored original DOM nodes.', 'SEAMLESS_MODE', 'debug');
         } catch (e) {
