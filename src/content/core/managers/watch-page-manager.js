@@ -52,6 +52,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
                 zenMode:    window.YPP.features.ZenMode    ? new window.YPP.features.ZenMode()    : null,
                 studyMode:  window.YPP.features.StudyMode  ? new window.YPP.features.StudyMode()  : null,
                 focusMode:  window.YPP.features.FocusMode  ? new window.YPP.features.FocusMode()  : null,
+                seamlessMode: window.YPP.features.SeamlessMode ? new window.YPP.features.SeamlessMode() : null,
             };
             this._featuresInitialized = true;
             this._featuresInitializing = false;
@@ -111,6 +112,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
             
             if (newMode === 'focus') this.features.focusMode?.enable();
             else this.features.focusMode?.disable();
+            
+            if (newMode === 'seamless') this.features.seamlessMode?.enable();
+            else this.features.seamlessMode?.disable();
         }
     }
     setState(newState) {

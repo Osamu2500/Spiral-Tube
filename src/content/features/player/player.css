@@ -658,36 +658,13 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy] {
     margin-top: 0 !important;
 }
 
-/* Convert the main wrapper into a Grid layout */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #columns {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) var(--ytd-watch-flexy-sidebar-width, 402px) !important;
-    grid-template-rows: auto auto auto !important;
-    column-gap: 24px !important;
-    align-items: start !important;
-}
-
-/* Flatten the hierarchy so children can participate in the Grid */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner {
-    display: contents !important;
-}
-
-/* --- Left Column: Video and Related Videos Grid --- */
-/* Video Player */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #player-container-outer,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #player,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #player-wide {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
+/* Ensure #below takes full width of the sidebar */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #below {
+    width: 100% !important;
 }
 
 /* Move Related Videos under the Video */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related {
-    grid-column: 1 !important;
-    grid-row: 2 !important;
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related {
     margin-top: 24px !important;
     padding: 0 !important;
     display: grid !important;
@@ -696,69 +673,36 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related {
 }
 
 /* Fix item sizing inside the Related grid */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-playlist-renderer,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-radio-renderer {
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-playlist-renderer,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-radio-renderer {
     width: 100% !important;
     margin: 0 !important;
-    /* We want them to display a bit more like standard grid cards (image on top),
-       but compact cards usually flex horizontally. We can force a column layout if needed,
-       or just let them fill the 250px grid cells. */
 }
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer > div,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-playlist-renderer > div {
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer > div,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-playlist-renderer > div {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
 }
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer ytd-thumbnail {
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer ytd-thumbnail {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 16/9;
 }
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer .details {
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer .details {
     padding-top: 8px !important;
     width: 100% !important;
 }
 
-
-/* --- Right Column: Metadata and Comments (Sidebar) --- */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #below {
-    grid-column: 2 !important;
-    grid-row: 1 / span 2 !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-/* Chat Integration (if live) */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #chat {
-    grid-column: 2 !important;
-    grid-row: 1 / span 2 !important;
-}
-
 /* Custom scrollbar for sidebar comments */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #comments::-webkit-scrollbar {
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar {
     width: 6px;
 }
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #comments::-webkit-scrollbar-thumb {
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar-thumb {
     background: rgba(255,255,255,0.2);
     border-radius: 3px;
-}
-
-/* --- Theater Mode Override --- */
-/* In Theater Mode, the player spans full width so grid sidebar doesn't fit well */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #columns {
-    display: flex !important;
-    flex-direction: column !important;
-}
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #primary,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #primary-inner,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #secondary,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #secondary-inner {
-    display: block !important;
-}
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #related,
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #below {
-    grid-column: unset !important;
-    grid-row: unset !important;
 }

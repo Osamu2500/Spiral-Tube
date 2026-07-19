@@ -215,6 +215,8 @@ import { CommentFilter } from '../features/pages/watch/comment-filter.js';
 window.YPP.FeatureManager.register(CommentFilter);
 import { WatchRedesign } from '../features/pages/watch/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
+import { SeamlessMode } from '../features/pages/watch/seamless-mode.js';
+window.YPP.FeatureManager.register(SeamlessMode);
 
 // Player features
 import { PlayerBarUI } from '../features/player/player-bar-ui.js';
