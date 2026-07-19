@@ -323,7 +323,6 @@ class ChannelBarController {
         this.logger.info('ChannelBarController Disabled');
     }
 }
-}
 
 
 /**
