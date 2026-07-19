@@ -225,8 +225,10 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         autoCinema: 'Toggle Auto Cinema',
         // --- Player Controls ---
         pip: 'Picture-in-Picture',
+        zenMode: 'Toggle Zen Mode',
+        seamlessMode: 'Toggle Seamless Mode',
+        snapshot: 'Take Video Snapshot',
         loop: 'Toggle Loop',
-        snapshot: 'Take Snapshot',
         enableGlobalPlayerBar: 'Toggle Player Bar',
         enableVolumeBoost: 'Toggle Volume Booster',
         enableCinemaFilters: 'Toggle Video Filters',
@@ -471,7 +473,8 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             // Migrate old ones if any
             const defaults = [
                 { action: 'zenMode', key: s.shortcut_zenMode || 'Shift+Z' },
-                { action: 'focusMode', key: s.shortcut_focusMode || 'Shift+F' },
+                { action: 'zenMode', key: s.shortcut_zenMode || 'Shift+Z' },
+                { action: 'seamlessMode', key: s.shortcut_seamlessMode || 'Shift+S' },
                 { action: 'cinemaMode', key: s.shortcut_cinemaMode || 'Shift+C' },
                 { action: 'snapshot', key: s.shortcut_snapshot || 'Shift+S' },
                 { action: 'loop', key: s.shortcut_loop || 'Shift+L' },
@@ -486,8 +489,8 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
 
     addBtn.addEventListener('click', () => {
         currentShortcuts.push({ action: 'zenMode', key: '' });
-        save();
-        renderList(currentShortcuts);
+        currentShortcuts.push({ action: 'seamlessMode', key: '' });
+        currentShortcuts.push({ action: 'cinemaMode', key: '' });
     });
 });
 
@@ -868,15 +871,15 @@ const initPresets = (document, saveSettings, UI) => {
 
     document.getElementById('presetFocus')?.addEventListener('click', (e) => {
         e.stopPropagation();
-        applyPresetFromUI({ enableFocusMode: true, hideComments: true, minimalMode: false, cinemaMode: false, zenMode: false });
+        applyPresetFromUI({ enableFocusMode: true, hideComments: true, minimalMode: false, cinemaMode: false, zenMode: false, seamlessMode: false });
     });
     document.getElementById('presetResearch')?.addEventListener('click', (e) => {
         e.stopPropagation();
-        applyPresetFromUI({ enableFocusMode: false, searchGrid: true, hideComments: false, minimalMode: false, cinemaMode: false, zenMode: false });
+        applyPresetFromUI({ enableFocusMode: false, searchGrid: true, hideComments: false, minimalMode: false, cinemaMode: false, zenMode: false, seamlessMode: false });
     });
     document.getElementById('presetMinimal')?.addEventListener('click', (e) => {
         e.stopPropagation();
-        applyPresetFromUI({ minimalMode: true, enableFocusMode: false, cinemaMode: false, zenMode: false });
+        applyPresetFromUI({ minimalMode: true, enableFocusMode: false, cinemaMode: false, zenMode: false, seamlessMode: false });
     });
 };
 

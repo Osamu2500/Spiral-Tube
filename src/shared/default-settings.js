@@ -211,6 +211,9 @@ export const DEFAULT_SETTINGS = {
 
   // Study Mode
   studyMode: false,
+  
+  // Seamless Mode
+  seamlessMode: false,
 
   // Stats Visualizer
   statsVisualizer: false,
@@ -229,6 +232,7 @@ export const DEFAULT_SETTINGS = {
   shortcut_loop: 'Shift+L',
   shortcut_pip: 'Shift+P',
   shortcut_ambientMode: 'Shift+A',
+  shortcut_seamlessMode: 'Shift+E',
 
   // Video Speed Controller (Advanced)
   vscAudioSupport: false,

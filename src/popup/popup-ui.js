@@ -309,7 +309,7 @@ export function initDualAccentToggle(document) {
 export function syncModeCards(document) {
     const modeCardIds = [
         'zenMode', 'cinemaMode', 'studyMode', 'enableFocusMode',
-        'minimalMode', 'ambientMode', 'audioModeEnabled'
+        'minimalMode', 'audioModeEnabled', 'seamlessMode', 'ambientMode'
     ];
 
     modeCardIds.forEach(id => {

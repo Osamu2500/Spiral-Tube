@@ -17,8 +17,6 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
         
         // Settings state
         this.glassPlayerEnabled = false;
-        this.glassPlayerEnabled = false;
-        this.sidebarCommentsEnabled = false;
         this._mountInterval = null; // Track interval
     }
 
@@ -35,7 +33,6 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
             this._checkRoute();
             
             this.glassPlayerEnabled = !!this.settings.glassPlayerUI;
-            this.sidebarCommentsEnabled = !!this.settings.sidebarComments;
             
             this._applyFeatures();
         } catch (e) {
@@ -52,13 +49,9 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
      */
     disable() {
         this.glassPlayerEnabled = false;
-        this.sidebarCommentsEnabled = false;
         if (this._mountInterval) {
             clearInterval(this._mountInterval);
             this._mountInterval = null;
-        }
-        if (window.YPP && window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.unregister('watch-redesign-comments');
         }
         this._applyFeatures();
         this._cleanup();
@@ -197,109 +190,6 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
                this custom grid layout is instantly disabled without any JS delay/glitch. */
             
             /* Decrease gap between player/sidebar and topbar */
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy] {
-                padding-top: 8px !important;
-                margin-top: 0 !important;
-            }
-            
-            /* Convert the main wrapper into a Grid layout */
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #columns {
-                display: grid !important;
-                grid-template-columns: minmax(0, 1fr) var(--ytd-watch-flexy-sidebar-width, 402px) !important;
-                grid-template-rows: auto auto auto !important;
-                column-gap: 24px !important;
-                align-items: start !important;
-            }
-
-            /* Flatten the hierarchy so children can participate in the Grid */
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #primary,
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #primary-inner,
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #secondary,
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #secondary-inner {
-                display: contents !important;
-            }
-
-            /* Place the elements into their grid cells */
-            
-            /* Left column: Video player and description */
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #player-container-outer,
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #player,
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #player-wide {
-                grid-column: 1 !important;
-                grid-row: 1 !important;
-            }
-            
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata {
-                grid-column: 1 !important;
-                grid-row: 2 !important;
-            }
-            
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #below {
-                grid-column: 1 !important;
-                grid-row: 3 !important;
-            }
-
-            /* Right column: Comments */
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #comments {
-                grid-column: 2 !important;
-                grid-row: 1 / span 3 !important;
-                
-                /* Glassmorphic styling for comments */
-                background: var(--ypp-card-bg, rgba(20, 19, 24, 0.6)) !important;
-                backdrop-filter: blur(12px) !important;
-                -webkit-backdrop-filter: blur(12px) !important;
-                border: 1px solid rgba(255, 255, 255, 0.08) !important;
-                border-radius: 16px !important;
-                padding: 16px !important;
-                margin-top: 16px !important;
-                margin-bottom: 24px !important;
-                max-height: calc(100vh - 120px) !important;
-                overflow-y: auto !important;
-                box-shadow: 0 8px 32px rgba(0,0,0,0.2) !important;
-            }
-
-            /* Right column: Related Videos (moved below comments) */
-            html.ypp-sidebar-comments-active:not(:has(body.ypp-zen-mode, body.ypp-cinema-mode, body.ypp-focus-mode, body.ypp-study-mode, body.ypp-minimal-mode)) ytd-watch-flexy[flexy][is-two-columns] #related {
-                grid-column: 2 !important;
-                grid-row: 4 !important;
-                margin-top: 24px !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            
-            /* Custom scrollbar for sidebar comments */
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns] #comments::-webkit-scrollbar {
-                width: 6px;
-            }
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns] #comments::-webkit-scrollbar-thumb {
-                background: rgba(255,255,255,0.2);
-                border-radius: 3px;
-            }
-            
-            /* Chat integration (if active) */
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns] #chat {
-                grid-column: 2 !important;
-                grid-row: 1 / span 3 !important;
-            }
-
-            /* Theater mode override: revert grid layout so comments don't go off-screen.
-               YouTube's theater mode takes the full width — sidebar comments don't fit. */
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns][theater] #columns {
-                display: flex !important;
-                flex-direction: column !important;
-            }
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns][theater] #primary,
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns][theater] #primary-inner,
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns][theater] #secondary,
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns][theater] #secondary-inner {
-                display: block !important;
-            }
-            html.ypp-sidebar-comments-active ytd-watch-flexy[flexy][is-two-columns][theater] #comments {
-                grid-column: unset !important;
-                grid-row: unset !important;
-                max-height: unset !important;
-                overflow-y: unset !important;
-            }
         `;
         document.head.appendChild(style);
     }
@@ -339,17 +229,6 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
         // Track video ratio for progress bar alignment (Unconditional on watch page)
         this._startTrackingVideoRatio();
 
-        // Phase 2: Sidebar Comments
-        // Delegate to LayoutManager
-        if (window.YPP.layoutManager) {
-            window.YPP.layoutManager.setState('sidebarComments', this.sidebarCommentsEnabled);
-        } else {
-            if (this.sidebarCommentsEnabled) {
-                document.documentElement.classList.add('ypp-sidebar-comments-active');
-            } else {
-                document.documentElement.classList.remove('ypp-sidebar-comments-active');
-            }
-        }
     }
 
     /**
@@ -357,11 +236,6 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
      */
     _cleanup() {
         document.documentElement.classList.remove('ypp-glass-player-active');
-        if (window.YPP.layoutManager) {
-            window.YPP.layoutManager.setState('sidebarComments', false);
-        } else {
-            document.documentElement.classList.remove('ypp-sidebar-comments-active');
-        }
         this._stopTrackingVideoRatio();
     }
 

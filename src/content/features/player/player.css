@@ -86,255 +86,6 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   margin-bottom: 0px !important;
 }
 
-/* =========================================================================
-   PREMIUM PILL STYLE (ypp-action-style-premium)
-   ========================================================================= */
-body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner {
-  background: var(--ypp-bg-surface, rgba(30, 30, 30, 0.3));
-  padding: 8px 16px 8px 8px;
-  border-radius: 40px;
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.08));
-  border-top-color: var(--ypp-glass-highlight, rgba(255, 255, 255, 0.15));
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.15));
-  transition:
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-body.ypp-action-style-premium.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
-  background: var(--ypp-bg-active, rgba(40, 40, 40, 0.45));
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Action Buttons (Premium) */
-body.ypp-action-style-premium.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #actions
-  ytd-menu-renderer
-  > #top-level-buttons-computed
-  > *,
-body.ypp-action-style-premium.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #actions
-  ytd-menu-renderer
-  > yt-button-shape {
-  margin-left: 8px;
-}
-
-body.ypp-action-style-premium.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next--tonal {
-  background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.04)) !important;
-  border-radius: 20px !important;
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.03)) !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02) !important;
-  backdrop-filter: blur(8px) saturate(1.2);
-  transition:
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-}
-
-body.ypp-action-style-premium.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next--tonal:hover {
-  background: var(--ypp-bg-active, rgba(255, 255, 255, 0.1)) !important;
-  transform: translateY(-2px);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
-}
-
-/* =========================================================================
-   MINIMAL ICONS STYLE (ypp-action-style-minimal)
-   ========================================================================= */
-/* Owner block - remove background */
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #owner {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  padding: 0 !important;
-}
-
-body.ypp-action-style-minimal.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
-  transform: none;
-  background: transparent !important;
-}
-
-/* Smooth transitions for text hiding */
-body.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next__button-text-content {
-  transition:
-    max-width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 0.2s ease,
-    margin 0.3s ease,
-    padding 0.3s ease !important;
-  max-width: 200px;
-  overflow: hidden;
-}
-
-/* Hide the text labels in the action buttons to leave only icons */
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #actions
-  .yt-spec-button-shape-next__button-text-content,
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #menu
-  .yt-spec-button-shape-next__button-text-content {
-  max-width: 0 !important;
-  opacity: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Action Buttons (Minimal) - Circular, crisp, styled SVG */
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next--tonal {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 50% !important;
-  width: 36px !important;
-  height: 36px !important;
-  padding: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  transition:
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    background 0.3s ease,
-    box-shadow 0.3s ease !important;
-}
-
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  transform: scale(1.15) translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* SVG Shadow and Color for Minimal */
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next__icon
-  svg {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-  transition:
-    filter 0.3s ease,
-    fill 0.3s ease;
-}
-
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next--tonal:hover
-  .yt-spec-button-shape-next__icon
-  svg {
-  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
-  fill: #ffffff !important;
-}
-
-/* Segmented button container fixes for minimal circular style */
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  ytd-segmented-like-dislike-button-renderer {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  gap: 8px !important;
-}
-
-/* Hide the divider inside segmented like/dislike button */
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  ytd-segmented-like-dislike-button-renderer::before,
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  .yt-spec-button-shape-next--segmented-start::after {
-  display: none !important;
-}
-
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #actions
-  ytd-menu-renderer
-  > #top-level-buttons-computed {
-  gap: 12px !important;
-}
-
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #actions
-  ytd-menu-renderer
-  > #top-level-buttons-computed
-  > *,
-body.ypp-action-style-minimal.yt-spiral-tube-theme
-  ytd-watch-metadata
-  #actions
-  ytd-menu-renderer
-  > yt-button-shape {
-  margin-left: 0px !important;
-}
-
-/* Description */
-html.yt-spiral-tube-theme ytd-watch-metadata #description-inner,
-html.yt-spiral-tube-theme ytd-watch-metadata #description {
-  background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.05)) !important;
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.08)) !important;
-  border-radius: 16px;
-  padding: 16px;
-  margin-top: 16px;
-  font-size: 1.05rem;
-  backdrop-filter: var(--ypp-glass-blur-active) saturate(1.2);
-  -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.2);
-  box-shadow: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.25));
-}
-
-html.yt-spiral-tube-theme ytd-watch-metadata #description:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata #description-inner:hover {
-  background: var(--ypp-bg-active, rgba(255, 255, 255, 0.1)) !important;
-}
-
-/* Global Actions/Buttons fallback for Default non-premium/non-minimal styles */
-html.yt-spiral-tube-theme ytd-watch-metadata #actions button,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions yt-button-shape > button,
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button,
-html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal,
-html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--filled {
-  border: 1px solid var(--ypp-glass-border, rgba(255, 255, 255, 0.08)) !important;
-  background: var(--ypp-bg-surface, rgba(255, 255, 255, 0.1)) !important;
-  background-color: var(--ypp-bg-surface, rgba(255, 255, 255, 0.1)) !important;
-  backdrop-filter: blur(8px) saturate(1.2) !important;
-  color: var(--ypp-text-primary, #fff) !important;
-}
-
-html.yt-spiral-tube-theme ytd-watch-metadata #actions button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions yt-button-shape > button:hover,
-html.yt-spiral-tube-theme
-  ytd-watch-metadata
-  ytd-segmented-like-dislike-button-renderer
-  button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--filled:hover {
-  background: var(--ypp-bg-active, rgba(255, 255, 255, 0.2)) !important;
-  background-color: var(--ypp-bg-active, rgba(255, 255, 255, 0.2)) !important;
-}
-
-html.yt-spiral-tube-theme
-  ytd-watch-metadata
-  ytd-segmented-like-dislike-button-renderer
-  > div::before,
-html.yt-spiral-tube-theme ytd-watch-metadata .yt-spec-button-shape-next--segmented-start::after {
-  background-color: var(--ypp-glass-border, rgba(255, 255, 255, 0.15)) !important;
-}
-
 /* ── Player Controls Container (Global Bar) ── */
 @keyframes ypp-bar-pop-in {
   0% {
@@ -897,3 +648,142 @@ body.ypp-ambient-mode-active ytd-watch-flexy {
     color: #fff;
 }
 
+/* ========================================================
+   SEAMLESS MODE (Sidebar Comments)
+   ======================================================== */
+
+/* Decrease gap between player/sidebar and topbar */
+body.ypp-seamless-mode ytd-watch-flexy[flexy] {
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+}
+
+/* Convert the main wrapper into a Grid layout */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #columns {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) var(--ytd-watch-flexy-sidebar-width, 402px) !important;
+    grid-template-rows: auto auto auto !important;
+    column-gap: 24px !important;
+    align-items: start !important;
+}
+
+/* Flatten the hierarchy so children can participate in the Grid */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner {
+    display: contents !important;
+}
+
+/* --- Left Column: Video and Related Videos Grid --- */
+/* Video Player */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #player-container-outer,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #player,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #player-wide {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+}
+
+/* Move Related Videos under the Video */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    margin-top: 24px !important;
+    padding: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+    gap: 16px !important;
+}
+
+/* Fix item sizing inside the Related grid */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-playlist-renderer,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-radio-renderer {
+    width: 100% !important;
+    margin: 0 !important;
+    /* We want them to display a bit more like standard grid cards (image on top),
+       but compact cards usually flex horizontally. We can force a column layout if needed,
+       or just let them fill the 250px grid cells. */
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer > div,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-playlist-renderer > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer ytd-thumbnail {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #related ytd-compact-video-renderer .details {
+    padding-top: 8px !important;
+    width: 100% !important;
+}
+
+
+/* --- Right Column: Metadata and Comments (Sidebar) --- */
+/* Title, Channel, and Buttons */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    background: var(--ypp-card-bg, rgba(20, 19, 24, 0.6)) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+}
+
+/* Comments (also under #below) */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #below {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+}
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #comments {
+    background: var(--ypp-card-bg, rgba(20, 19, 24, 0.6)) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    margin-bottom: 24px !important;
+    max-height: calc(100vh - 120px) !important;
+    overflow-y: auto !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2) !important;
+}
+
+/* Chat Integration (if live) */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #chat {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+}
+
+/* Custom scrollbar for sidebar comments */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #comments::-webkit-scrollbar {
+    width: 6px;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #comments::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+}
+
+/* --- Theater Mode Override --- */
+/* In Theater Mode, the player spans full width so grid sidebar doesn't fit well */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #columns {
+    display: flex !important;
+    flex-direction: column !important;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #primary,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #primary-inner,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #secondary,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #secondary-inner {
+    display: block !important;
+}
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #related,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] ytd-watch-metadata,
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns][theater] #below {
+    grid-column: unset !important;
+    grid-row: unset !important;
+}

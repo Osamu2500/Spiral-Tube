@@ -134,7 +134,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar },
                     { type:'layoutToggle', id:'sidebarLayout',        label: t('sidebar_layout'),   desc: t('video_cards_size') },
                     { type:'toggle', id:'splitScrolling',       label: t('split_scrolling'),  desc: t('scroll_sidebar_independently'), icon:ICONS.splitScroll },
-                    { type:'select', id:'playerActionStyle', class:'span-4', label: t('action_button_style'), desc: t('redesign_for_like_share_buttons'), icon:ICONS.uiComponents, options:[{value:'premium',label: t('premium_pill')},{value:'minimal',label: t('minimal_icons')},{value:'default',label: t('default_youtube')}] },
+
                 ]
             },
             {
@@ -227,6 +227,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'studyMode',       label: t('study_mode'),      desc: t('focus_mode_1_25_playback_speed'), icon:ICONS.study },
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
                     { type:'toggle', id:'minimalMode',     label: t('minimalist_chrome'), desc: t('strip_non_essential_page_chrome'), icon:ICONS.minimal },
+                    { type:'toggle', id:'seamlessMode',    label: t('seamless_mode'),   desc: t('sidebar_comments'), icon:ICONS.sidebar },
                     { type:'toggle', id:'audioModeEnabled', class:'span-2', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
                 ]
             }
