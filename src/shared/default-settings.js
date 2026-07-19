@@ -177,6 +177,7 @@ export const DEFAULT_SETTINGS = {
   enableFocusMode: false,
   cinemaMode: false,
   minimalMode: false,
+  seamlessMode: false,
 
   // Auto Actions
   autoPiP: false,
@@ -224,7 +225,8 @@ export const DEFAULT_SETTINGS = {
 
   // Keyboard Shortcuts
   keyboardShortcuts: true,
-  shortcut_zenMode: 'Shift+Z',
+  shortcut_studyMode: '',
+  shortcut_seamlessMode: 'Shift+S',
   shortcut_focusMode: 'Shift+F',
   shortcut_cinemaMode: 'Shift+C',
   shortcut_minimalMode: 'Shift+M',
