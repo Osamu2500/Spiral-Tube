@@ -667,9 +667,14 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related {
     margin-top: 24px !important;
     padding: 0 !important;
+}
+
+/* The actual grid container in YouTube is #items inside the secondary results renderer */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-watch-next-secondary-results-renderer #items {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
     gap: 16px !important;
+    justify-content: start;
 }
 
 /* Fix item sizing inside the Related grid */
@@ -678,6 +683,7 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #re
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-radio-renderer {
     width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
 }
 
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer > div,
@@ -696,6 +702,27 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #re
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related ytd-compact-video-renderer .details {
     padding-top: 8px !important;
     width: 100% !important;
+}
+
+/* Move Actions below the Channel Card */
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #top-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #owner {
+    margin-bottom: 12px !important;
+}
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #actions {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    width: 100% !important;
+}
+
+body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] ytd-watch-metadata #actions-inner {
+    justify-content: flex-start !important;
 }
 
 /* Custom scrollbar for sidebar comments */
