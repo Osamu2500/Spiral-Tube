@@ -154,6 +154,7 @@ window.YPP.SettingsSchema = {
         minimalMode:         { type: 'boolean', default: false },
         studyMode:           { type: 'boolean', default: false },
         seamlessMode:        { type: 'boolean', default: false },
+        seamlessModeGridCols:{ type: 'number', default: 4 },
 
         // --- Auto Actions ---
         autoPiP:             { type: 'boolean', default: false },

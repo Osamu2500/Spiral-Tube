@@ -435,6 +435,8 @@ class ChannelBarController {
  * Ultra-Aggressive Related Grid Controller
  * Analyzes the DOM in real-time to discover asynchronous video cards,
  * traces their origin, and mathematically computes a grid structure.
+ * This class is heavily expanded to guarantee compliance with the Grid format,
+ * completely breaking YouTube's linear row view.
  */
 class RelatedGridController {
     constructor(logger) {
@@ -442,6 +444,12 @@ class RelatedGridController {
         this.enabled = false;
         this.enforcementInterval = null;
         this.knownGridContainers = new Set();
+        this.virtualDOMRegistry = new WeakMap();
+        this.metrics = {
+            totalEnforcementCycles: 0,
+            videosRestructured: 0,
+            lastCycleTime: 0
+        };
     }
 
     enable() {
@@ -466,16 +474,131 @@ class RelatedGridController {
     }
 
     /**
+     * Gets the number of columns from the settings
+     */
+    getColumnsSetting() {
+        try {
+            if (window.YPP && window.YPP.settings && window.YPP.settings.seamlessModeGridCols) {
+                return window.YPP.settings.seamlessModeGridCols;
+            }
+        } catch (e) {
+            this.logger.warn('Failed to read seamlessModeGridCols setting, defaulting to 4');
+        }
+        return 4; // default
+    }
+
+    /**
+     * Deeply processes a single video card and forcefully structures it into a column
+     * @param {HTMLElement} item - The compact video renderer
+     */
+    processVideoCard(item) {
+        try {
+            // Check if we've already restructured this item perfectly
+            const state = this.virtualDOMRegistry.get(item);
+            if (state && state.restructured === true && state.lastCheck > Date.now() - 1000) {
+                return; // Skip if recently processed
+            }
+
+            // Target wrappers
+            item.style.setProperty('width', '100%', 'important');
+            item.style.setProperty('margin', '0', 'important');
+            item.style.setProperty('padding', '0', 'important');
+            item.style.setProperty('display', 'block', 'important');
+            item.style.setProperty('float', 'none', 'important');
+            
+            // Inner Flex Container (dismissible)
+            // YouTube typically uses flex-direction: row here. We MUST break it.
+            const innerDiv = item.querySelector('#dismissible') || item.querySelector('.details')?.parentElement;
+            if (innerDiv) {
+                innerDiv.style.setProperty('display', 'flex', 'important');
+                innerDiv.style.setProperty('flex-direction', 'column', 'important');
+                innerDiv.style.setProperty('align-items', 'stretch', 'important');
+                innerDiv.style.setProperty('justify-content', 'flex-start', 'important');
+                innerDiv.style.setProperty('width', '100%', 'important');
+                innerDiv.style.setProperty('height', '100%', 'important');
+            }
+
+            // Thumbnail container
+            // YouTube sometimes uses absolute positioning or fixed width. Break it.
+            const thumbnail = item.querySelector('ytd-thumbnail');
+            if (thumbnail) {
+                thumbnail.style.setProperty('position', 'relative', 'important');
+                thumbnail.style.setProperty('width', '100%', 'important');
+                thumbnail.style.setProperty('min-width', '100%', 'important');
+                thumbnail.style.setProperty('max-width', '100%', 'important');
+                thumbnail.style.setProperty('height', 'auto', 'important');
+                thumbnail.style.setProperty('aspect-ratio', '16/9', 'important');
+                thumbnail.style.setProperty('margin-right', '0', 'important');
+                thumbnail.style.setProperty('margin-bottom', '8px', 'important');
+                thumbnail.style.setProperty('display', 'block', 'important');
+                thumbnail.style.setProperty('flex', 'none', 'important');
+            }
+
+            // Details Text container (Right side in linear, Bottom in grid)
+            const details = item.querySelector('.details') || item.querySelector('.metadata');
+            if (details) {
+                details.style.setProperty('position', 'relative', 'important');
+                details.style.setProperty('padding-top', '4px', 'important');
+                details.style.setProperty('padding-right', '0', 'important');
+                details.style.setProperty('padding-left', '0', 'important');
+                details.style.setProperty('width', '100%', 'important');
+                details.style.setProperty('min-width', '100%', 'important');
+                details.style.setProperty('display', 'block', 'important');
+                details.style.setProperty('flex', 'none', 'important');
+            }
+
+            // Channel Name / Meta
+            const meta = item.querySelector('.secondary-metadata') || item.querySelector('#metadata');
+            if (meta) {
+                meta.style.setProperty('display', 'block', 'important');
+                meta.style.setProperty('width', '100%', 'important');
+                meta.style.setProperty('white-space', 'normal', 'important');
+            }
+            
+            // Force title to truncate nicely in a box
+            const title = item.querySelector('#video-title') || item.querySelector('.video-title');
+            if (title) {
+                title.style.setProperty('white-space', 'normal', 'important');
+                title.style.setProperty('display', '-webkit-box', 'important');
+                title.style.setProperty('-webkit-line-clamp', '2', 'important');
+                title.style.setProperty('-webkit-box-orient', 'vertical', 'important');
+                title.style.setProperty('overflow', 'hidden', 'important');
+                title.style.setProperty('width', '100%', 'important');
+                title.style.setProperty('margin-right', '0', 'important');
+            }
+            
+            // Nuclear Option: Physical DOM restructuring
+            // If the thumbnail is somehow INSIDE the details or ordered incorrectly, fix it.
+            if (innerDiv && thumbnail && details) {
+                const innerChildren = Array.from(innerDiv.children);
+                if (innerChildren.indexOf(details) < innerChildren.indexOf(thumbnail)) {
+                    // Title is physically before thumbnail in DOM? Swap them.
+                    innerDiv.insertBefore(thumbnail, details);
+                }
+            }
+
+            this.virtualDOMRegistry.set(item, { restructured: true, lastCheck: Date.now() });
+            this.metrics.videosRestructured++;
+            
+        } catch (error) {
+            this.logger.error('Failed to deeply process video card', error);
+        }
+    }
+
+    /**
      * Executes the heavy grid enforcement logic
      */
     enforceGrid() {
+        const startTime = performance.now();
+        this.metrics.totalEnforcementCycles++;
+        
         try {
             const related = document.querySelector('#related');
             if (!related) return;
 
             // 1. Locate all possible compact items
             const compactItems = Array.from(related.querySelectorAll(
-                'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer'
+                'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer, ytd-rich-item-renderer'
             ));
 
             if (compactItems.length === 0) return;
@@ -483,14 +606,19 @@ class RelatedGridController {
             // 2. Determine true container(s) (YouTube sometimes fragments them)
             const parentContainers = new Set();
             compactItems.forEach(item => {
-                if (item.parentElement) parentContainers.add(item.parentElement);
+                if (item.parentElement && item.parentElement.tagName !== 'YTD-COMPACT-VIDEO-RENDERER') {
+                    parentContainers.add(item.parentElement);
+                }
             });
+
+            // Read the dynamic slider value
+            const cols = this.getColumnsSetting();
 
             // 3. Brutally enforce Grid layout on all identified containers
             parentContainers.forEach(container => {
                 this.knownGridContainers.add(container);
                 container.style.setProperty('display', 'grid', 'important');
-                container.style.setProperty('grid-template-columns', 'repeat(auto-fill, minmax(280px, 1fr))', 'important');
+                container.style.setProperty('grid-template-columns', `repeat(${cols}, 1fr)`, 'important');
                 container.style.setProperty('gap', '16px', 'important');
                 container.style.setProperty('justify-content', 'start', 'important');
                 container.style.setProperty('align-content', 'start', 'important');
@@ -501,57 +629,12 @@ class RelatedGridController {
 
             // 4. Surgically enforce column layout on every single child
             for (let i = 0; i < compactItems.length; i++) {
-                const item = compactItems[i];
-                
-                // Item Container
-                item.style.setProperty('width', '100%', 'important');
-                item.style.setProperty('margin', '0', 'important');
-                item.style.setProperty('padding', '0', 'important');
-                item.style.setProperty('display', 'block', 'important');
-                
-                // Inner Flex Container (dismissible)
-                const innerDiv = item.querySelector('div, #dismissible');
-                if (innerDiv) {
-                    innerDiv.style.setProperty('display', 'flex', 'important');
-                    innerDiv.style.setProperty('flex-direction', 'column', 'important');
-                    innerDiv.style.setProperty('align-items', 'stretch', 'important');
-                    innerDiv.style.setProperty('justify-content', 'flex-start', 'important');
-                }
-
-                // Thumbnail container
-                const thumbnail = item.querySelector('ytd-thumbnail');
-                if (thumbnail) {
-                    thumbnail.style.setProperty('width', '100%', 'important');
-                    thumbnail.style.setProperty('max-width', '100%', 'important');
-                    thumbnail.style.setProperty('height', 'auto', 'important');
-                    thumbnail.style.setProperty('aspect-ratio', '16/9', 'important');
-                    thumbnail.style.setProperty('margin-right', '0', 'important');
-                    thumbnail.style.setProperty('margin-bottom', '8px', 'important');
-                    thumbnail.style.setProperty('display', 'block', 'important');
-                }
-
-                // Details Text container
-                const details = item.querySelector('.details');
-                if (details) {
-                    details.style.setProperty('padding-top', '4px', 'important');
-                    details.style.setProperty('padding-right', '0', 'important');
-                    details.style.setProperty('padding-left', '0', 'important');
-                    details.style.setProperty('width', '100%', 'important');
-                    details.style.setProperty('display', 'block', 'important');
-                }
-                
-                // Force title to truncate nicely
-                const title = item.querySelector('#video-title');
-                if (title) {
-                    title.style.setProperty('white-space', 'normal', 'important');
-                    title.style.setProperty('display', '-webkit-box', 'important');
-                    title.style.setProperty('-webkit-line-clamp', '2', 'important');
-                    title.style.setProperty('-webkit-box-orient', 'vertical', 'important');
-                    title.style.setProperty('overflow', 'hidden', 'important');
-                }
+                this.processVideoCard(compactItems[i]);
             }
         } catch (error) {
             this.logger.error('Fatal error during Related Grid style enforcement', error);
+        } finally {
+            this.metrics.lastCycleTime = performance.now() - startTime;
         }
     }
 
@@ -569,7 +652,7 @@ class RelatedGridController {
                 );
                 compactItems.forEach(item => {
                     item.removeAttribute('style');
-                    const innerDiv = item.querySelector('div, #dismissible');
+                    const innerDiv = item.querySelector('#dismissible');
                     if (innerDiv) innerDiv.removeAttribute('style');
                     const thumbnail = item.querySelector('ytd-thumbnail');
                     if (thumbnail) thumbnail.removeAttribute('style');
@@ -577,6 +660,8 @@ class RelatedGridController {
                     if (details) details.removeAttribute('style');
                     const title = item.querySelector('#video-title');
                     if (title) title.removeAttribute('style');
+                    const meta = item.querySelector('.secondary-metadata');
+                    if (meta) meta.removeAttribute('style');
                 });
             }
         } catch (error) {

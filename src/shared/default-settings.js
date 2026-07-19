@@ -178,6 +178,7 @@ export const DEFAULT_SETTINGS = {
   cinemaMode: false,
   minimalMode: false,
   seamlessMode: false,
+  seamlessModeGridCols: 4,
 
   // Auto Actions
   autoPiP: false,

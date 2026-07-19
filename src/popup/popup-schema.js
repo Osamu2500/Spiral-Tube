@@ -228,6 +228,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
                     { type:'toggle', id:'minimalMode',     label: t('minimalist_chrome'), desc: t('strip_non_essential_page_chrome'), icon:ICONS.minimal },
                     { type:'toggle', id:'seamlessMode',    label: t('seamless_mode'),   desc: t('sidebar_comments'), icon:ICONS.sidebar },
+                    { type:'slider', id:'seamlessModeGridCols', label: 'Grid Columns', desc: 'Number of video cards per grid row', min:1, max:10, step:1 },
                     { type:'toggle', id:'audioModeEnabled', class:'span-2', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
                 ]
             }
