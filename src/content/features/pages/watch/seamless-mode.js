@@ -1556,7 +1556,7 @@ class RelatedGridController {
         }
     }
 }
-\nort class SeamlessMode extends window.YPP.features.BaseFeature {
+export class SeamlessMode extends window.YPP.features.BaseFeature {
     static featureId = 'seamlessMode';
     static executionPhase = 'idle';
     static priority = 999; // Ensure we run after standard YouTube render logic
