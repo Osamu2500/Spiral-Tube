@@ -664,81 +664,16 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #
 }
 
 /* Move Related Videos under the Video */
-body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #primary-inner #related {
+body.ypp-seamless-mode #primary-inner #related {
     margin-top: 24px !important;
     padding: 0 !important;
 }
 
 /* 
- * The actual grid container in YouTube is dynamically generated and varies.
- * We use :has() to find EXACTLY the container that holds the video renderers natively.
+ * The Grid Layout and Action Button Stacking are now 100% managed by 
+ * seamless-mode.js via an ultra-aggressive inline style enforcement loop.
+ * This guarantees they work regardless of YouTube's CSS specificity or Polymer data bindings.
  */
-body.ypp-seamless-mode #related *:has(> ytd-compact-video-renderer),
-body.ypp-seamless-mode #related *:has(> ytd-compact-playlist-renderer) {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-    gap: 16px !important;
-    justify-content: start;
-    width: 100% !important;
-}
-
-/* Fix item sizing inside the Related grid */
-body.ypp-seamless-mode #related ytd-compact-video-renderer,
-body.ypp-seamless-mode #related ytd-compact-playlist-renderer,
-body.ypp-seamless-mode #related ytd-compact-radio-renderer {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-body.ypp-seamless-mode #related ytd-compact-video-renderer > div,
-body.ypp-seamless-mode #related ytd-compact-playlist-renderer > div {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-}
-
-body.ypp-seamless-mode #related ytd-compact-video-renderer ytd-thumbnail {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 16/9;
-}
-
-body.ypp-seamless-mode #related ytd-compact-video-renderer .details {
-    padding-top: 8px !important;
-    width: 100% !important;
-}
-
-/* Move Actions below the Channel Card */
-/* 
- * Action Buttons Formatting 
- * Force #top-row to be a column natively, without removing #actions from the DOM.
- */
-body.ypp-seamless-mode ytd-watch-metadata #top-row {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-}
-
-body.ypp-seamless-mode ytd-watch-metadata #owner {
-    margin-bottom: 12px !important;
-    width: 100% !important;
-}
-
-body.ypp-seamless-mode ytd-watch-metadata #actions {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    width: 100% !important;
-}
-
-body.ypp-seamless-mode ytd-watch-metadata #actions-inner {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: flex-start !important;
-}
 
 /* Custom scrollbar for sidebar comments */
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar {
