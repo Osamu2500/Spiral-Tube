@@ -464,7 +464,7 @@ class DynamicCSSMatrixEngine {
         this.targets.forEach(target => {
             // Container overrides
             css += `
-                #related ${target} {
+                ytd-watch-flexy ${target} {
                     display: inline-block !important;
                     width: ${widthCalc} !important;
                     min-width: ${widthCalc} !important;
@@ -484,7 +484,7 @@ class DynamicCSSMatrixEngine {
             
             // Flex row destruction on inner dismissible
             css += `
-                #related ${target} #dismissible {
+                ytd-watch-flexy ${target} #dismissible {
                     display: block !important;
                     width: 100% !important;
                     height: auto !important;
@@ -503,7 +503,7 @@ class DynamicCSSMatrixEngine {
             
             // Thumbnail overrides
             css += `
-                #related ${target} ytd-thumbnail {
+                ytd-watch-flexy ${target} ytd-thumbnail {
                     display: block !important;
                     width: 100% !important;
                     min-width: 100% !important;
@@ -521,7 +521,7 @@ class DynamicCSSMatrixEngine {
             
             // Title and Details overrides
             css += `
-                #related ${target} .details {
+                ytd-watch-flexy ${target} .details {
                     display: block !important;
                     width: 100% !important;
                     min-width: 100% !important;
@@ -533,8 +533,8 @@ class DynamicCSSMatrixEngine {
                     float: none !important;
                 }
                 
-                #related ${target} .details a,
-                #related ${target} .details span {
+                ytd-watch-flexy ${target} .details a,
+                ytd-watch-flexy ${target} .details span {
                     white-space: normal !important;
                 }
             `;
@@ -730,13 +730,13 @@ class RelatedGridController {
         const cols = this.getColumnsSetting();
         this.cssEngine.inject(cols);
         
-        const related = document.querySelector('#related');
-        if (related) {
-            this.quadObserver.start(related);
+        const watchFlexy = document.querySelector('ytd-watch-flexy');
+        if (watchFlexy) {
+            this.quadObserver.start(watchFlexy);
         } else {
             // If related is missing, fallback to aggressive interval until found
             this.enforcementInterval = setInterval(() => {
-                const r = document.querySelector('#related');
+                const r = document.querySelector('ytd-watch-flexy');
                 if (r) {
                     clearInterval(this.enforcementInterval);
                     this.quadObserver.start(r);
@@ -1483,10 +1483,10 @@ class RelatedGridController {
         this.metrics.totalEnforcementCycles++;
         
         try {
-            const related = document.querySelector('#related');
-            if (!related) return;
+            const watchFlexy = document.querySelector('ytd-watch-flexy');
+            if (!watchFlexy) return;
 
-            const compactItems = Array.from(related.querySelectorAll(
+            const compactItems = Array.from(watchFlexy.querySelectorAll(
                 'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer, ytd-rich-item-renderer'
             ));
 
@@ -1532,10 +1532,10 @@ class RelatedGridController {
             });
             this.knownGridContainers.clear();
 
-            const related = document.querySelector('#related');
-            if (related) {
-                const compactItems = related.querySelectorAll(
-                    'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer'
+            const watchFlexy = document.querySelector('ytd-watch-flexy');
+            if (watchFlexy) {
+                const compactItems = watchFlexy.querySelectorAll(
+                    'ytd-compact-video-renderer, ytd-compact-playlist-renderer, ytd-compact-radio-renderer, ytd-rich-item-renderer'
                 );
                 compactItems.forEach(item => {
                     item.removeAttribute('style');
@@ -1759,7 +1759,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
             }
 
             const below = document.querySelector('#below');
-            const related = document.querySelector('#related');
+            const watchFlexy = document.querySelector('ytd-watch-flexy');
 
             if (!below || !related) {
                 this.logger.warn('Macro swap aborted: Missing #below or #related content nodes');
