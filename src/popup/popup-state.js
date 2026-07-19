@@ -1,3 +1,4 @@
+// @ts-check
 // Lazily resolve Utils so this module works even if utils.js is evaluated after popup-state.js.
 const getUtils = () => window.YPP?.Utils || {
     log: (msg, tag = 'POPUP', level = 'log') => console[level]?.(`[YPP:${tag}] ${msg}`)

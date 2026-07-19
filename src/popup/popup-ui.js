@@ -108,14 +108,30 @@ function initSearch(document) {
 
     featureSearchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase().trim();
-        const allCards = document.querySelectorAll('.toggle-card, .setting-item');
+        const allCards = document.querySelectorAll('.toggle-card, .setting-item, .mode-card');
         const allSections = document.querySelectorAll('.settings-section');
         const allTabs = document.querySelectorAll('.tab-content');
         
         if (!query) {
             allCards.forEach(card => card.style.display = '');
             allSections.forEach(sec => sec.style.display = '');
-            allTabs.forEach(tab => tab.style.display = ''); 
+            allTabs.forEach(tab => tab.style.display = '');
+            
+            // Restore collapsed state based on localStorage
+            allSections.forEach(section => {
+                const header = section.querySelector('.section-header');
+                if (header) {
+                    const titleEl = header.querySelector('.section-title');
+                    const title = titleEl ? titleEl.textContent : 'section';
+                    const isCollapsed = localStorage.getItem('ypp_collapse_' + title) === 'true';
+                    
+                    if (isCollapsed) {
+                        section.classList.add('collapsed');
+                    } else {
+                        section.classList.remove('collapsed');
+                    }
+                }
+            });
             return;
         }
 
@@ -136,7 +152,13 @@ function initSearch(document) {
             const sections = tab.querySelectorAll('.settings-section');
             sections.forEach(sec => {
                 const visibleCards = Array.from(sec.querySelectorAll('.toggle-card, .setting-item, .mode-card')).filter(c => c.style.display !== 'none');
-                sec.style.display = visibleCards.length === 0 ? 'none' : '';
+                if (visibleCards.length === 0) {
+                    sec.style.display = 'none';
+                } else {
+                    sec.style.display = '';
+                    // Force expand the section if there are matches
+                    sec.classList.remove('collapsed');
+                }
             });
 
             tab.style.display = tabHasMatches ? 'block' : 'none';

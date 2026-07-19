@@ -116,45 +116,169 @@ export class PlayerBarUI {
         const container = document.createElement('div');
         container.className = 'ypp-player-controls' + (isShorts ? ' ypp-shorts-controls' : '');
 
-        // Helper to check if a button should be on the front bar (handles legacy true/false)
+        // Helper to check if a button should be on the front bar or back (overflow)
         const isFront = (val) => val === 'front' || val === true || typeof val === 'undefined';
+        const isBack = (val) => val === 'back';
 
         // Ensure controlsHelper is available synchronously
         if (!this.manager.controlsHelper && window.YPP?.features?.PlayerControls) {
             this.manager.controlsHelper = new window.YPP.features.PlayerControls(this.manager);
         }
 
-        // Use controlsHelper to create core toggles
-        if (this.manager.controlsHelper && this.settings.enableCustomSpeed !== false && isFront(this.settings.pb_speed)) {
-            container.appendChild(this.manager.controlsHelper.createSpeedControls(video));
-        }
-            
-        // Button Feature Registrations (call their createButton methods)
-        const playerBarFeatures = [
-            { key: 'snapshotButton', pbKey: 'pb_snapshot', override: 'enableSnapshot' },
-            { key: 'loopButton', pbKey: 'pb_loop', override: 'enableLoop' },
-            { key: 'bookmarksManager', pbKey: 'pb_bookmark', override: 'enableBookmarks' },
-            { key: 'volumeBoost', pbKey: 'pb_volume', override: 'enableVolumeBoost' },
-            { key: 'videoFilters', pbKey: 'pb_cinema', override: 'enableCinemaFilters' }
+        const overflowContainer = document.createElement('div');
+        overflowContainer.className = 'ypp-overflow-menu ytp-popup ytp-settings-menu';
+        overflowContainer.style.display = 'none';
+        
+        const overflowPanel = document.createElement('div');
+        overflowPanel.className = 'ytp-panel ytp-panel-menu';
+        overflowContainer.appendChild(overflowPanel);
+
+        let hasOverflowItems = false;
+
+        // Native YouTube Buttons that can be moved to overflow
+        const nativeFeatures = [
+            { id: 'pb_native_play', selector: '.ytp-play-button', label: 'Play/Pause', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>' },
+            { id: 'pb_native_next', selector: '.ytp-next-button', label: 'Next Video', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M5 4l10 8-10 8V4zM15 4h4v16h-4z"/></svg>' },
+            { id: 'pb_native_mute', selector: '.ytp-mute-button', label: 'Mute/Unmute', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07"/></svg>' },
+            { id: 'pb_native_cast', selector: '.ytp-remote-button', label: 'Cast to TV', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z M1 18v3h3c0-1.66-1.34-3-3-3zM1 14v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/></svg>' },
+            { id: 'pb_native_autoplay', selector: '.ytp-autonav-button, .ytp-autonav-toggle-button', label: 'Autoplay', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>' },
+            { id: 'pb_native_cc', selector: '.ytp-subtitles-button', label: 'Subtitles', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>' },
+            { id: 'pb_native_miniplayer', selector: '.ytp-miniplayer-button', label: 'Miniplayer', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z"/></svg>' },
+            { id: 'pb_native_theater', selector: '.ytp-size-button', label: 'Theater Mode', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>' },
+            { id: 'pb_native_fullscreen', selector: '.ytp-fullscreen-button', label: 'Fullscreen', icon: '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>' }
         ];
 
-        playerBarFeatures.forEach(config => {
-            if (this.settings[config.override] === false) return; // Feature disabled globally
-            if (!isFront(this.settings[config.pbKey])) return; // Hidden from front bar
-            
-            const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
-            if (feature && feature.createButton) {
-                const btn = feature.createButton(video);
-                if (btn) container.appendChild(btn);
+        // Create generic overflow menu item builder
+        const appendToOverflow = (label, svgHtml, onClickAction) => {
+            const menuItem = document.createElement('div');
+            menuItem.className = 'ytp-menuitem ypp-custom-menuitem';
+            menuItem.setAttribute('role', 'menuitem');
+            menuItem.setAttribute('tabindex', '0');
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'ytp-menuitem-icon';
+            iconDiv.innerHTML = svgHtml; 
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'ytp-menuitem-label';
+            labelDiv.textContent = label;
+            menuItem.appendChild(iconDiv);
+            menuItem.appendChild(labelDiv);
+            menuItem.addEventListener('click', (e) => {
+                onClickAction();
+                overflowContainer.style.display = 'none';
+            });
+            overflowPanel.appendChild(menuItem);
+            hasOverflowItems = true;
+        };
+
+        nativeFeatures.forEach(item => {
+            if (isBack(this.settings[item.id])) {
+                appendToOverflow(item.label, item.icon, () => {
+                    const targetBtn = document.querySelector(item.selector);
+                    if (targetBtn) targetBtn.click();
+                });
             }
         });
 
-        if (this.manager.controlsHelper && document.pictureInPictureEnabled && isFront(this.settings.pb_pip)) {
-            container.appendChild(this.manager.controlsHelper.createPiPButton(video));
+        // Setup Custom Player Bar Features Map
+        const featureBuilders = {
+            'pb_speed': () => {
+                if (this.manager.controlsHelper && this.settings.enableCustomSpeed !== false) {
+                    return this.manager.controlsHelper.createSpeedControls(video);
+                }
+                return null;
+            },
+            'pb_pip': () => {
+                if (this.manager.controlsHelper && document.pictureInPictureEnabled) {
+                    return this.manager.controlsHelper.createPiPButton(video);
+                }
+                return null;
+            }
+        };
+
+        const dynamicFeatures = [
+            { id: 'pb_snapshot', key: 'snapshotButton', override: 'enableSnapshot' },
+            { id: 'pb_loop', key: 'loopButton', override: 'enableLoop' },
+            { id: 'pb_bookmark', key: 'bookmarksManager', override: 'enableBookmarks' },
+            { id: 'pb_volume', key: 'volumeBoost', override: 'enableVolumeBoost' },
+            { id: 'pb_cinema', key: 'videoFilters', override: 'enableCinemaFilters' }
+        ];
+
+        dynamicFeatures.forEach(config => {
+            featureBuilders[config.id] = () => {
+                if (this.settings[config.override] === false) return null;
+                const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
+                if (feature && feature.createButton) {
+                    return feature.createButton(video);
+                }
+                return null;
+            };
+        });
+
+        const defaultSeq = ['pb_speed', 'pb_pip', 'pb_snapshot', 'pb_loop', 'pb_bookmark', 'pb_volume', 'pb_cinema'];
+        let sequence = this.settings.playerBarSequence;
+        if (!sequence || !Array.isArray(sequence) || sequence.length === 0) {
+            sequence = defaultSeq;
+        }
+
+        const missing = defaultSeq.filter(x => !sequence.includes(x));
+        const fullSequence = [...sequence, ...missing];
+
+        fullSequence.forEach(id => {
+            const settingValue = this.settings[id]; // 'front', 'back', 'hidden'
+
+            const builder = featureBuilders[id];
+            if (!builder) return;
+
+            const btn = builder();
+            if (!btn) return;
+
+            if (isFront(settingValue)) {
+                container.appendChild(btn);
+            } else if (isBack(settingValue)) {
+                const svgHtml = btn.innerHTML; // Extract SVG
+                const label = btn.getAttribute('aria-label') || btn.title || 'Tool';
+                
+                appendToOverflow(label, svgHtml, () => {
+                    btn.click();
+                });
+            }
+        });
+
+        // Add Overflow Toggle Button if needed
+        if (hasOverflowItems) {
+            const gearSvg = `<svg height="24" width="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>`;
+            const overflowToggle = this.manager.controlsHelper.createButton(gearSvg, 'More Extension Actions', (e) => {
+                overflowContainer.style.display = overflowContainer.style.display === 'none' ? 'block' : 'none';
+                
+                // Position logic
+                const rect = overflowToggle.getBoundingClientRect();
+                overflowContainer.style.bottom = (window.innerHeight - rect.top + 10) + 'px';
+                overflowContainer.style.right = (window.innerWidth - rect.right - 20) + 'px';
+            });
+            container.appendChild(overflowToggle);
+            
+            // Append overflow menu to body so it escapes hidden overflow of player bar
+            document.body.appendChild(overflowContainer);
+            
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!overflowContainer.contains(e.target) && !overflowToggle.contains(e.target)) {
+                    overflowContainer.style.display = 'none';
+                }
+            });
         }
 
         if (isShorts) {
             controls.appendChild(container);
+        } else if (this.settings.floatingPlayerBar) {
+            // Floating Action Bar mode
+            container.classList.add('ypp-floating-action-bar');
+            const playerRoot = video.closest('.html5-video-player');
+            if (playerRoot) {
+                playerRoot.appendChild(container);
+            } else {
+                controls.appendChild(container); // Fallback
+            }
         } else {
             // Find where to insert our controls within .ytp-chrome-bottom
             let rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');

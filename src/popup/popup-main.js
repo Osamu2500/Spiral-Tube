@@ -5,11 +5,12 @@ import '../content/config/utils.js';
 import { initStorage, loadSettings, state, saveSettings, updateSetting, notifyThemeChange } from './popup-state.js';
 import * as UI from './popup-ui.js';
 import { initComponents } from './popup-components.js';
-import { initHistoryWidget, initBackupTools, initBookmarksManager } from './popup-extras.js';
+import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerBarOrganizer } from './popup-extras.js';
 import { renderSchema, registerSlot } from './popup-renderer.js';
 import { initI18n, t } from '../shared/i18n.js';
 
 // --- Register Custom Slots ---
+registerSlot('player_bar_organizer', renderPlayerBarOrganizer);
 registerSlot('vsc_shortcuts_manager', (container, state) => {
     container.innerHTML = `
         <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:bold; font-size:12px; opacity:0.7;">
