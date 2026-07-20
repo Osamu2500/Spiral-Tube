@@ -27,8 +27,10 @@ import { ICONS } from './popup-icons.js';
 
 // Tiny SVG path helper — returns just the <path d="…"> inner string
 // Full <svg> wrapper is added by the renderer
+/** @param {string} d */
 const P = (d) => d;
 
+/** @param {(key: string) => string} t */
 export const getPopupSchema = (t) => [
 
     // ──────────────────────────────────────────────────────────────────
@@ -43,8 +45,6 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.grid,
                 items: [
                     { type:'toggle', id:'displayFullTitle', label: t('displayFullTitle'), desc: t('displayFullTitle_desc'),        icon:ICONS.title },
-                    { type:'toggle', id:'useSquareCorners',    label: t('useSquareCorners'),     desc: t('useSquareCorners_desc'),   icon:ICONS.squareCorners },
-                    { type:'toggle', id:'extraRoundedUI', label: t('extraRoundedUI'), desc: t('extraRoundedUI_desc'), icon:ICONS.roundedUI },
                     { type:'toggle', id:'saveSupremeUI', label: t('saveSupremeUI'), desc: t('saveSupremeUI_desc'), icon:ICONS.saveSupreme },
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:ICONS.autoScale },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
@@ -114,7 +114,6 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'enableVolumeBoost',  label: t('volume_booster'),    desc: t('increase_past_100'),         icon:ICONS.volumeUp },
                     { type:'toggle', id:'audioCompressor',    label: t('audio_compressor'),  desc: t('compress_loud_sounds'),       icon:ICONS.compressor },
-                    { type:'toggle', id:'wheelControls', class:'span-2', label: t('wheel_controls'),    desc: t('shift_alt_scroll_to_control'), icon:ICONS.wheel },
                 ]
             },
 
@@ -249,6 +248,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'autoVideoFilter',   label: t('auto_video_filter'),    desc: t('default_to_videos_tab'),    icon:P('M5 4l15 8-15 8V4z'), style:'display:none' },
                     { type:'layoutToggle', id:'searchLayout',        label: t('list_view_size'),      desc: t('linear_search_thumbnail_size') },
                     { type:'toggle', id:'searchGrid',        class:'span-2', label: t('grid_view'),           desc: t('card_layout_for_search'),   icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="searchColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="searchColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="searchColumns" value="4" />` },
+                    { type:'toggle', id:'copyLinkButton',    label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos },
                 ]
             }
         ]
@@ -299,6 +299,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideChannelBar',   label: t('hide_channel_bar'),   desc: t('hide_channel_bar_desc'),    icon:ICONS.channelBar },
                     { type:'toggle', id:'hideVideoDescription', label: t('hide_video_description'), desc: t('hide_video_description_desc'), icon:ICONS.descHidden },
                     { type:'toggle', id:'hideActionButtons', label: t('hide_action_buttons'), desc: t('hide_action_buttons_desc'), icon:ICONS.like },
+                    { type:'toggle', id:'copyLinkButton',    label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos },
                     { type:'toggle', id:'hideComments',   label: t('hide_comments'),       icon:ICONS.uiComponents },
                     { type:'toggle', id:'hideRelated',    label: t('hide_related_feed'),   desc: t('hide_sidebar_videos'), icon:P('M3 3h18v18H3zM14 8h6M14 12h6M14 16h6') },
                     { type:'toggle', id:'hideLiveChat',   label: t('hide_live_chat'),      icon:ICONS.uiComponents },

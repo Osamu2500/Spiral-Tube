@@ -41,13 +41,37 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         this._Utils = window.YPP.Utils || {};
     }
 
-    /**
-     * Initialize internal state
-     * @private
-     */
     _initState() {
         this._isActive = false;
         this._settings = null;
+        this._startBodyObserver();
+    }
+    
+    /**
+     * Start observing for the body tag to be created
+     * @private
+     */
+    _startBodyObserver() {
+        if (this._bodyObserver) return;
+        this._bodyObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === 'childList') {
+                    for (const node of mutation.addedNodes) {
+                        if (node.nodeName === 'BODY' || node === document.body) {
+                            // Re-run theme manager when body is created/replaced
+                            this.onUpdate();
+                            // Disconnect once body is processed if we only need it once
+                            // But SPA navigations might replace body entirely, so we keep it.
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Ensure document.documentElement exists before observing
+        if (document.documentElement) {
+            this._bodyObserver.observe(document.documentElement, { childList: true });
+        }
     }
 
     /**
@@ -236,7 +260,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             link.id = id;
             link.rel = 'stylesheet';
             link.className = 'ypp-ui-style-link';
-            document.head.appendChild(link);
+            (document.head || document.documentElement).appendChild(link);
         }
 
         link.setAttribute('data-ui-style', uiStyleKey);
@@ -410,7 +434,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             style = document.createElement('style');
             style.id = id;
             style.className = 'ypp-theme-style';
-            document.head.appendChild(style);
+            (document.head || document.documentElement).appendChild(style);
         }
 
         const cssVars = Object.entries(theme.variables || {})
@@ -452,7 +476,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             link.id = id;
             link.rel = 'stylesheet';
             link.className = 'ypp-theme-link';
-            document.head.appendChild(link);
+            (document.head || document.documentElement).appendChild(link);
         }
 
         // Always update to ensure we force a repaint/reload if requested
@@ -488,6 +512,114 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         // Font Scale
         if (this._settings.fontScale !== undefined) {
             root.style.setProperty('--ypp-font-scale', (this._settings.fontScale / 100).toFixed(2));
+        }
+
+        // Image Theme Background
+        const bgContainerId = 'ypp-custom-bg-image-container';
+        let bgContainer = document.getElementById(bgContainerId);
+        
+        const bgStyleId = 'ypp-custom-bg-image-style';
+        let bgStyleEl = document.getElementById(bgStyleId);
+        
+        if (this._settings.customBackgroundImage) {
+            const intensity = this._settings.customBackgroundImageIntensity ?? 0.6;
+            
+            if (!bgContainer) {
+                bgContainer = document.createElement('div');
+                bgContainer.id = bgContainerId;
+                // Insert as first child of body
+                if (document.body) {
+                    document.body.insertBefore(bgContainer, document.body.firstChild);
+                } else {
+                    document.documentElement.appendChild(bgContainer);
+                }
+            }
+            
+            bgContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-image: url("${this._settings.customBackgroundImage}");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                z-index: -9999;
+                opacity: ${intensity};
+                pointer-events: none;
+            `;
+            
+            let bgStyles = `
+                /* Strip theme backgrounds from html and body with high specificity */
+                html, html.yt-spiral-tube-theme, html.yt-spiral-tube-theme:root, 
+                body, html[data-ypp-theme] body, html[data-ypp-ui-style] body,
+                html[data-ypp-theme] body.dir, html[data-ypp-theme] body[dir] {
+                    background: transparent !important;
+                    background-color: transparent !important;
+                    background-image: none !important;
+                }
+                
+                /* Ensure YouTube content sits on top of our custom bg container */
+                ytd-app {
+                    position: relative;
+                    z-index: 1;
+                    background: transparent !important;
+                    background-color: transparent !important;
+                    background-image: none !important;
+                }
+                
+                /* Hide native youtube background block safely */
+                #background,
+                #background.ytd-app,
+                ytd-page-manager,
+                ytd-watch-flexy,
+                #ypp-cinematic-app {
+                    background: transparent !important;
+                    background-color: transparent !important;
+                    background-image: none !important;
+                }
+                
+                #background {
+                    display: none !important;
+                }
+                
+                /* Keep masthead and guide readable */
+                html[data-ypp-theme] #masthead-container.ytd-app,
+                html[data-ypp-theme] ytd-mini-guide-renderer,
+                html[data-ypp-theme] ytd-guide-renderer,
+                html[data-ypp-theme] #guide-wrapper {
+                    background-color: rgba(0, 0, 0, 0.5) !important;
+                    backdrop-filter: blur(16px);
+                }
+            `;
+            
+            // Force Extracted Accent Color if enabled
+            if (this._settings.customBackgroundImageExtractColors && this._settings.accentColor) {
+                bgStyles += `
+                    html[data-ypp-theme] {
+                        --ypp-accent: ${this._settings.accentColor} !important;
+                        --yt-spec-call-to-action: ${this._settings.accentColor} !important;
+                    }
+                    html[data-ypp-theme] .ypp-slider,
+                    html[data-ypp-theme] .ypp-gpb-vol-slider,
+                    html[data-ypp-theme] input[type="range"] {
+                        accent-color: ${this._settings.accentColor} !important;
+                    }
+                    html[data-ypp-theme] .ytp-swatch-background-color {
+                        background-color: ${this._settings.accentColor} !important;
+                    }
+                `;
+            }
+            if (!bgStyleEl) {
+                bgStyleEl = document.createElement('style');
+                bgStyleEl.id = bgStyleId;
+                (document.head || document.documentElement).appendChild(bgStyleEl);
+            }
+            bgStyleEl.textContent = bgStyles;
+        } else {
+            if (bgStyleEl) bgStyleEl.remove();
+            if (bgContainer) bgContainer.remove();
         }
 
 
@@ -542,7 +674,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (!globalStyleEl) {
             globalStyleEl = document.createElement('style');
             globalStyleEl.id = globalStyleId;
-            document.head.appendChild(globalStyleEl);
+            (document.head || document.documentElement).appendChild(globalStyleEl);
         }
         globalStyleEl.textContent = globalOverrides;
 
@@ -616,7 +748,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             linkVars.id = idVars;
             linkVars.rel = 'stylesheet';
             linkVars.className = 'ypp-ui-style-link';
-            document.head.appendChild(linkVars);
+            (document.head || document.documentElement).appendChild(linkVars);
         }
 
         linkVars.setAttribute('data-card-style', cardStyleKey);
@@ -630,7 +762,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             searchCompatLink.id = searchCompatId;
             searchCompatLink.rel = 'stylesheet';
             searchCompatLink.className = 'ypp-ui-style-link';
-            document.head.appendChild(searchCompatLink);
+            (document.head || document.documentElement).appendChild(searchCompatLink);
         }
         searchCompatLink.href = chrome.runtime.getURL('src/content/card-styles/search-card-compat.css');
 

@@ -7,17 +7,9 @@
     "permissions": [
         "storage",
         "alarms",
-        "tabs",
-        "identity",
         "contextMenus",
         "notifications"
     ],
-    "oauth2": {
-        "client_id": "REPLACE_WITH_YOUR_GOOGLE_CLOUD_CLIENT_ID.apps.googleusercontent.com",
-        "scopes": [
-            "https://www.googleapis.com/auth/drive.appdata"
-        ]
-    },
     "host_permissions": [
         "*://www.youtube.com/*",
         "*://returnyoutubedislikeapi.com/*",

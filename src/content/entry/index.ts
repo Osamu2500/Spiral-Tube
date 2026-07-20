@@ -96,6 +96,8 @@ import { HideChannelCards } from '../features/global/ui-tweaks/hide-channel-card
 window.YPP.FeatureManager.register(HideChannelCards);
 import { HideMusic } from '../features/global/ui-tweaks/hide-music.js';
 window.YPP.FeatureManager.register(HideMusic);
+import { CopyLinkButton } from '../features/global/ui-tweaks/copy-link.js';
+window.YPP.FeatureManager.register(CopyLinkButton);
 import { KeyboardShortcuts } from '../features/global/behavior/keyboard-shortcuts.js';
 window.YPP.FeatureManager.register(KeyboardShortcuts);
 import '../features/global/filters/filter-ui-interactions.js';
@@ -249,8 +251,8 @@ window.YPP.FeatureManager.register(ReturnDislike);
 // YouTube Pro Plus ported features
 import { PremiumLogo } from '../features/global/ui-tweaks/premium-logo.js';
 window.YPP.FeatureManager.register(PremiumLogo);
-import { SmartDownload } from '../features/player/enhancements/smart-download.js';
-window.YPP.FeatureManager.register(SmartDownload);
+// import { SmartDownload } from '../features/player/enhancements/smart-download.js';
+// window.YPP.FeatureManager.register(SmartDownload);
 import { ResumeBadges } from '../features/global/ui-tweaks/resume-badges.js';
 window.YPP.FeatureManager.register(ResumeBadges);
 import { SpeedBooster } from '../features/player/enhancements/speed-booster.js';
@@ -302,8 +304,6 @@ import { VideoControls } from '../features/player/controls/video-controls.js';
 window.YPP.FeatureManager.register(VideoControls);
 import { ClassicProgressBar } from '../features/player/controls/classic-progress-bar.js';
 window.YPP.FeatureManager.register(ClassicProgressBar);
-import { WheelControls } from '../features/player/controls/wheel-controls.js';
-window.YPP.FeatureManager.register(WheelControls);
 import { AudioCompressor } from '../features/player/media-effects/audio-compressor.js';
 window.YPP.FeatureManager.register(AudioCompressor);
 import { VideoResumer } from '../features/player/automation/video-resumer.js';

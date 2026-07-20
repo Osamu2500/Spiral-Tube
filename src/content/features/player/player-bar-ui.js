@@ -232,15 +232,15 @@ export class PlayerBarUI {
             const btn = builder();
             if (!btn) return;
 
-            if (isFront(settingValue)) {
-                container.appendChild(btn);
-            } else if (isBack(settingValue)) {
+            if (isBack(settingValue)) {
                 const svgHtml = btn.innerHTML; // Extract SVG
                 const label = btn.getAttribute('aria-label') || btn.title || 'Tool';
                 
                 appendToOverflow(label, svgHtml, () => {
                     btn.click();
                 });
+            } else {
+                container.appendChild(btn);
             }
         });
 

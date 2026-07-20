@@ -12,6 +12,11 @@ export const DEFAULT_SETTINGS = {
   customScrollbar: false,
   grayscaleThumbnails: false,
 
+  // Image Background Theme
+  customBackgroundImage: null,
+  customBackgroundImageIntensity: 0.6,
+  customBackgroundImageExtractColors: true,
+
   // Advanced Theming
 
   // Layout
@@ -193,6 +198,7 @@ export const DEFAULT_SETTINGS = {
   // New Features
   autoLike: false,
   autoLikeThreshold: 50,
+  copyLinkButton: true,
   hidePlaylists: false,
   hidePodcasts: false,
   multiSelect: true,
@@ -202,7 +208,6 @@ export const DEFAULT_SETTINGS = {
   intentionalDelayTime: 3,
   ambientMode: false,
   videoControlsEnabled: true,
-  wheelControls: true,
   audioCompressor: false,
   autoPause: false,
   commentFilter: false,
@@ -263,7 +268,7 @@ export const DEFAULT_SETTINGS = {
 
   // --- YouTube Pro Plus Ported Settings ---
   premiumLogo: true,
-  smartDownload: true,
+
   resumeBadges: true,
   speedBooster: true,
   liquidGlassTheme: false,

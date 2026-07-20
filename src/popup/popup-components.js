@@ -940,6 +940,147 @@ export function initComponents(
     setupSlider(newerUI, newerVal, newerHidden, 'dateFilterNewerThreshold');
   }
 
+  function initImageBackgroundTheme() {
+    const uploadBtn = document.getElementById('uploadImageThemeBtn');
+    const fileInput = document.getElementById('imageThemeFileInput');
+    const clearBtn = document.getElementById('clearImageThemeBtn');
+    const previewContainer = document.getElementById('imageThemePreviewContainer');
+    const preview = document.getElementById('imageThemePreview');
+    const intensitySlider = document.getElementById('imageThemeIntensity');
+    const extractColorsCheck = document.getElementById('imageThemeExtractColors');
+
+    if (!uploadBtn) return;
+
+    // Load saved settings
+    chrome.storage.local.get('settings', (data) => {
+      const settings = data.settings || {};
+      
+      if (settings.customBackgroundImage) {
+        previewContainer.style.display = 'block';
+        preview.style.backgroundImage = `url(${settings.customBackgroundImage})`;
+      } else {
+        previewContainer.style.display = 'none';
+      }
+      
+      if (intensitySlider) intensitySlider.value = settings.customBackgroundImageIntensity ?? 0.6;
+      if (extractColorsCheck) extractColorsCheck.checked = settings.customBackgroundImageExtractColors ?? true;
+    });
+
+    if (intensitySlider) {
+      intensitySlider.addEventListener('input', () => {
+        updateSetting('customBackgroundImageIntensity', parseFloat(intensitySlider.value));
+      });
+    }
+
+    if (extractColorsCheck) {
+      extractColorsCheck.addEventListener('change', () => {
+        updateSetting('customBackgroundImageExtractColors', extractColorsCheck.checked);
+        if (extractColorsCheck.checked) {
+          chrome.storage.local.get('settings', (data) => {
+            const bgUrl = data.settings?.customBackgroundImage;
+            if (bgUrl) {
+              const img = new Image();
+              img.onload = () => {
+                const sampleCanvas = document.createElement('canvas');
+                const sampleCtx = sampleCanvas.getContext('2d');
+                sampleCanvas.width = 1;
+                sampleCanvas.height = 1;
+                sampleCtx.drawImage(img, 0, 0, 1, 1);
+                const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
+                const averageColor = `#${pixel[0].toString(16).padStart(2, '0')}${pixel[1].toString(16).padStart(2, '0')}${pixel[2].toString(16).padStart(2, '0')}`;
+                updateSetting('accentColor', averageColor);
+                const customInput = document.getElementById('accentColor');
+                if (customInput) {
+                  customInput.value = averageColor;
+                  customInput.dispatchEvent(new Event('input', {bubbles:true}));
+                }
+              };
+              img.src = bgUrl;
+            }
+          });
+        }
+      });
+    }
+
+    uploadBtn.addEventListener('click', () => fileInput.click());
+
+    clearBtn.addEventListener('click', () => {
+      previewContainer.style.display = 'none';
+      preview.style.backgroundImage = 'none';
+      updateSetting('customBackgroundImage', null);
+      if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          // Max dimension 1280px for performance and storage
+          const MAX_SIZE = 1280;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Compress as JPEG
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+          
+          // Extract average color if enabled
+          let averageColor = null;
+          if (extractColorsCheck && extractColorsCheck.checked) {
+            const sampleCanvas = document.createElement('canvas');
+            const sampleCtx = sampleCanvas.getContext('2d');
+            sampleCanvas.width = 1;
+            sampleCanvas.height = 1;
+            sampleCtx.drawImage(canvas, 0, 0, 1, 1);
+            const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
+            averageColor = `#${pixel[0].toString(16).padStart(2, '0')}${pixel[1].toString(16).padStart(2, '0')}${pixel[2].toString(16).padStart(2, '0')}`;
+          }
+
+          previewContainer.style.display = 'block';
+          preview.style.backgroundImage = `url(${dataUrl})`;
+
+          updateSetting('customBackgroundImage', dataUrl);
+          
+          if (averageColor) {
+             updateSetting('accentColor', averageColor);
+             const customInput = document.getElementById('accentColor');
+             if (customInput) {
+                customInput.value = averageColor;
+                customInput.dispatchEvent(new Event('input', {bubbles:true}));
+             }
+          }
+          
+          if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+      fileInput.value = ''; // reset
+    });
+  }
+
   // Export these for external triggering if needed
   return {
     initThemeSelector,
@@ -953,6 +1094,7 @@ export function initComponents(
     initCursorStyleGrid,
     initAccentColorSwatches,
     initCustomThemeBuilder,
+    initImageBackgroundTheme,
     applyThemeToPopup,
     initAutoLikeInlineControls,
     initViewsFilterInlineSlider,

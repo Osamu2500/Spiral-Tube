@@ -953,6 +953,7 @@ const initApp = async () => {
         components.initCursorStyleGrid();
         components.initAccentColorSwatches();
         components.initCustomThemeBuilder();
+        components.initImageBackgroundTheme();
         components.initAutoLikeInlineControls();
         components.initViewsFilterInlineSlider();
         components.initDateFilterInlineSliders();

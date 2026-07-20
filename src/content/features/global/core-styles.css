@@ -1163,11 +1163,9 @@ ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
 body.ypp-full-title #video-title,
 body.ypp-full-title yt-formatted-string[id="video-title"],
 body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
-  display: block !important;
+  -webkit-line-clamp: 4 !important;
+  line-clamp: 4 !important;
   max-height: none !important;
-  -webkit-line-clamp: unset !important;
-  line-clamp: unset !important;
-  white-space: normal !important;
 }
 
 /* ===================================================================================
@@ -4571,23 +4569,27 @@ html.yt-spiral-tube-theme:not([dark]) .sbdd_b {
 /* =========================================
    SQUARE UI (Roundless YouTube From 26523)
 ========================================= */
+body.ypp-square-ui,
 body.ypp-square-ui *,
-body.ypp-square-ui *::after,
 body.ypp-square-ui *::before,
-body.ypp-square-ui *:hover,
-body.ypp-square-ui *:active {
+body.ypp-square-ui *::after {
+    --ytd-thumbnail-border-radius: 0px !important;
+    --yt-button-border-radius: 0px !important;
+    --yt-spec-badge-border-radius: 0px !important;
+    --yt-spec-menu-border-radius: 0px !important;
+    --yt-spec-avatar-border-radius: 0px !important;
+    --yt-spec-button-shape-border-radius: 0px !important;
+}
+
+body.ypp-square-ui ytd-thumbnail,
+body.ypp-square-ui ytd-thumbnail img,
+body.ypp-square-ui ytd-playlist-panel-renderer,
+body.ypp-square-ui .yt-spec-avatar-shape__image,
+body.ypp-square-ui tp-yt-paper-button,
+body.ypp-square-ui .yt-spec-button-shape-next,
+body.ypp-square-ui #search-form {
     border-radius: 0 !important;
-    border-start-start-radius: 0 !important;
-    border-start-end-radius: 0 !important;
-    border-end-start-radius: 0 !important;
-    border-end-end-radius: 0 !important;
 }
-
-body.ypp-square-ui div {
-    mask-image: none !important;
-}
-
-/* KEEP SLIDERS AND SPINNERS ROUND IN SQUARE UI */
 body.ypp-square-ui .ytp-delhi-modern .ytp-scrubber-button,
 body.ypp-square-ui .ytProgressBarPlayheadProgressBarPlayheadDot,
 body.ypp-square-ui .ytp-delhi-modern .ytp-volume-slider-handle,
@@ -4680,43 +4682,61 @@ body.ypp-retro-logo #logo-container .logo {
 /* =========================================
    EXTRA ROUNDED UI (From 8064)
 ========================================= */
+body.ypp-extra-rounded-ui,
+body.ypp-extra-rounded-ui *,
+body.ypp-extra-rounded-ui *::before,
+body.ypp-extra-rounded-ui *::after {
+    --ytd-thumbnail-border-radius: 24px !important;
+    --yt-button-border-radius: 24px !important;
+    --yt-spec-menu-border-radius: 24px !important;
+    --yt-spec-badge-border-radius: 24px !important;
+    --yt-spec-avatar-border-radius: 24px !important;
+    --yt-spec-button-shape-border-radius: 24px !important;
+}
+
+body.ypp-extra-rounded-ui ytd-thumbnail,
 body.ypp-extra-rounded-ui ytd-thumbnail img,
+body.ypp-extra-rounded-ui ytd-playlist-panel-renderer,
 body.ypp-extra-rounded-ui .yt-spec-avatar-shape__image,
-body.ypp-extra-rounded-ui #search-form,
 body.ypp-extra-rounded-ui tp-yt-paper-button,
 body.ypp-extra-rounded-ui .yt-spec-button-shape-next,
-body.ypp-extra-rounded-ui ytd-playlist-panel-renderer {
-    border-radius: 20px !important;
+body.ypp-extra-rounded-ui #search-form {
+    border-radius: 24px !important;
 }
 
 /* =========================================
    SAVE SUPREME UI (From 25092)
 ========================================= */
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) {
-    top: 88px !important;
-    left: calc(50% - 250px) !important;
-    max-width: 500px !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 90vw !important;
+    width: 500px !important;
+    margin: 0 !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
     backdrop-filter: none !important;
-    box-shadow: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     border-radius: 12px;
-    height: 705px !important;
-    max-height: unset !important;
-    max-width: 500px !important;
-    border: 1px solid rgba(255, 255, 255, 0.52);
+    height: 70vh !important;
+    max-height: 705px !important;
+    width: 100% !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHost {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(48px);
-    max-width: unset !important;
+    max-width: 100% !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHeaderContainer { 
     display: none; 
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutContentContainer {
     padding: 10px;
-    width: 480px;
+    width: 100%;
+    box-sizing: border-box;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) yt-list-item-view-model[aria-pressed="true"] {
     background: rgba(255, 255, 255, 0.25);

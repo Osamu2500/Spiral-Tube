@@ -232,6 +232,32 @@
               </div>
             </div>
           </div>
+          
+          <!-- UI Shapes -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                        <span data-i18n="ui_shapes">UI Shapes
+                     </span></div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div class="setting-item">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"></rect></svg></div>
+                <div class="info"><span class="name" data-i18n="useSquareCorners">Square Corners</span><span class="desc" data-i18n="useSquareCorners_desc">Remove all rounded edges</span></div>
+                <label class="toggle"><input type="checkbox" id="useSquareCorners" /><span class="slider"></span></label>
+              </div>
+              <div class="setting-item">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="8" ry="8"></rect></svg></div>
+                <div class="info"><span class="name" data-i18n="extraRoundedUI">Extra Rounded UI</span><span class="desc" data-i18n="extraRoundedUI_desc">Make UI elements more circular</span></div>
+                <label class="toggle"><input type="checkbox" id="extraRoundedUI" /><span class="slider"></span></label>
+              </div>
+            </div>
+          </div>
 
           <!-- Color Themes -->
           <div class="settings-section">
@@ -351,6 +377,48 @@
               <div class="setting-item" style="display:none;"><label class="toggle"><input type="checkbox" id="trueBlack" /><span class="slider"></span></label></div>
             </div>
           </div>
+
+          <!-- Image Theme Background -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        <span data-i18n="image_theme_background">Image Background
+                     </span></div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div style="padding:12px 14px; display:flex; flex-direction:column; gap:12px; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
+                
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                  <button id="uploadImageThemeBtn" class="action-btn" style="flex:1; background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:600;" data-i18n="upload_image">Upload Image</button>
+                  <button id="clearImageThemeBtn" class="icon-btn" title="Clear Image" style="background:rgba(255,255,255,0.05); color:white; width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  </button>
+                  <input type="file" id="imageThemeFileInput" accept="image/*" style="display:none;" />
+                </div>
+
+                <!-- Preview Box -->
+                <div id="imageThemePreviewContainer" style="display:none; width:100%; height:80px; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); position:relative;">
+                  <div id="imageThemePreview" style="width:100%; height:100%; background-size:cover; background-position:center;"></div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px;">
+                  <span style="font-size:13px; color:rgba(255,255,255,0.8);" data-i18n="intensity">Intensity</span>
+                  <input type="range" id="imageThemeIntensity" min="0.1" max="1.0" step="0.05" value="0.6" style="width:120px;" />
+                </div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-size:13px; color:rgba(255,255,255,0.8);" data-i18n="extract_colors">Extract UI Colors</span>
+                  <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="imageThemeExtractColors" /><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <!-- 2. YouTube Page Theme -->
           <div class="settings-section">
             <div class="section-header">
