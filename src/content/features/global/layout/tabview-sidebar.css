@@ -29,6 +29,7 @@ body.ypp-tabview-sidebar .ypp-tabview-btn {
   border-bottom: 3px solid transparent !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
+  -webkit-user-select: none !important;
   user-select: none !important;
   text-transform: uppercase !important;
 }

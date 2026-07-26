@@ -1089,6 +1089,7 @@ input[type="color"]::-webkit-color-swatch { border: 2px solid rgba(255,255,255,.
   color: var(--text-2);
   cursor: pointer;
   transition: all .18s var(--ease-smooth);
+  -webkit-user-select: none;
   user-select: none;
 }
 .sb-cat-item:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.14); }
