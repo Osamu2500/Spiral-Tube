@@ -116,8 +116,8 @@ html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #columns,
 html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #page-manager,
 html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary,
 html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary {
-  scrollbar-width: none !important;
   -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
 
 html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
@@ -164,8 +164,8 @@ html[data-ypp-ui-style="harry-potter"] #secondary yt-lockup-view-model:hover {
 html[data-ypp-ui-style="harry-potter"] #ypp-eq-panel,
 html[data-ypp-ui-style="harry-potter"] #ypp-cinema-panel {
   background: linear-gradient(135deg, rgba(16, 15, 12, 0.96) 0%, rgba(20, 18, 14, 0.92) 100%) !important;
-  backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   border: 1.5px solid rgba(180, 150, 60, 0.45) !important;
   border-radius: 4px 20px 4px 20px !important;
   box-shadow:
