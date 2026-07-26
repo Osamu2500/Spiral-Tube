@@ -96,6 +96,7 @@ export function initComponents(
           { key: 'deepspace', label: t('deep_space'), meta: t('nebula'), color: '#020205' },
           { key: 'nebula', label: t('nebula'), meta: t('purple_space'), color: '#0f0518' },
           { key: 'terminalism', label: t('terminalism'), meta: t('hacker'), color: '#000000' },
+          { key: 'harry-potter', label: t('hogwarts_magic'), meta: 'Gold & Parchment', color: '#14151f' },
         ],
       },
       {

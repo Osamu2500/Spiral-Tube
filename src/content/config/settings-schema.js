@@ -24,7 +24,7 @@ window.YPP.SettingsSchema = {
         // --- Theme ---
         premiumTheme:        { type: 'boolean', default: true },
         premiumLogo:         { type: 'boolean', default: false },
-        activeTheme:         { type: 'string',  default: 'default', values: ['default','ocean','sunset','dracula','forest','midnight','cherry','system', 'coffee', 'cyberpunk', 'nord', 'discord', 'hacker', 'outrun', 'bloodmoon', 'deepspace', 'nebula', 'abyss', 'ember', 'hologram', 'blue-sky', 'retro', 'vintage', 'neumorphic', 'aurora', 'nature', 'technozen', 'terminalism', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'claymorphism', 'brutalism', 'christmas', 'liquid-glass', 'frutiger-aero', 'pink', 'retrowave-green'] },
+        activeTheme:         { type: 'string',  default: 'default', values: ['default','ocean','sunset','dracula','forest','midnight','cherry','system', 'coffee', 'cyberpunk', 'nord', 'discord', 'hacker', 'outrun', 'bloodmoon', 'deepspace', 'nebula', 'abyss', 'ember', 'hologram', 'blue-sky', 'retro', 'vintage', 'neumorphic', 'aurora', 'nature', 'technozen', 'terminalism', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'claymorphism', 'brutalism', 'christmas', 'liquid-glass', 'frutiger-aero', 'pink', 'retrowave-green', 'harry-potter'] },
         trueBlack:           { type: 'boolean', default: false },
         hideScrollbar:       { type: 'boolean', default: false },
         customCursor:        { type: 'string',  default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel'] },
@@ -76,7 +76,7 @@ window.YPP.SettingsSchema = {
         enableAnimations:    { type: 'boolean', default: true },
         enableThemeEffects:  { type: 'boolean', default: true },
         reducedMotion:       { type: 'boolean', default: false },
-        cardStyle:           { type: 'string',  default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'retro', 'brutalism', 'skeuomorphic', 'frosted', 'summer', 'winter', 'spring', 'autumn', 'nature', 'vintage', 'ocean', 'blue-sky', 'immersive-glass'] },
+        cardStyle:           { type: 'string',  default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'retro', 'brutalism', 'skeuomorphic', 'frosted', 'summer', 'winter', 'spring', 'autumn', 'nature', 'vintage', 'ocean', 'blue-sky', 'immersive-glass', 'harry-potter'] },
         customScrollbar:     { type: 'boolean', default: false },
         grayscaleThumbnails: { type: 'boolean', default: false },
 
@@ -329,9 +329,9 @@ window.YPP.SettingsSchema = {
         enableDeckMode:      { type: 'boolean', default: false },
 
         // --- UI Redesigns (popup Customization tab) ---
-        popupUiTheme:        { type: 'string', default: 'liquid-glass', values: ['default', 'christmas', 'liquid-glass', 'cyberpunk', 'neumorphic', 'minimal-flat', 'frutiger-aero', 'nature', 'vintage', 'ocean', 'blue-sky', 'retro', 'technozen', 'terminalism', 'claymorphism', 'brutalism', 'minimalism', 'maximalism', 'glassmorphism', 'aurora', 'material'] },
-        youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'christmas', 'liquid-glass', 'crystal-glass', 'ice-blue', 'fluent', 'pink', 'retrowave-green', 'cairo-red', 'kawaii', 'colorize', 'player-retouch', 'cyberpunk', 'neumorphic', 'nature', 'vintage', 'ocean', 'blue-sky', 'retro', 'technozen', 'forest', 'frutiger-aero', 'terminalism', 'claymorphism', 'brutalism', 'minimalism', 'maximalism', 'glassmorphism', 'aurora', 'material'] },
-        cardStyle:           { type: 'string', default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'maximalism', 'glassmorphism', 'aurora', 'material', 'immersive-glass', 'retro', 'technozen', 'frutiger-aero', 'autumn', 'blue-sky', 'brutalism', 'claymorphism', 'frosted', 'minimalism', 'nature', 'ocean', 'skeuomorphic', 'spring', 'summer', 'terminalism', 'vintage', 'winter'] },
+        popupUiTheme:        { type: 'string', default: 'liquid-glass', values: ['default', 'christmas', 'liquid-glass', 'cyberpunk', 'neumorphic', 'minimal-flat', 'frutiger-aero', 'nature', 'vintage', 'ocean', 'blue-sky', 'retro', 'technozen', 'terminalism', 'claymorphism', 'brutalism', 'minimalism', 'maximalism', 'glassmorphism', 'aurora', 'material', 'harry-potter'] },
+        youtubePageTheme:    { type: 'string', default: 'default', values: ['default', 'christmas', 'liquid-glass', 'crystal-glass', 'ice-blue', 'fluent', 'pink', 'retrowave-green', 'cairo-red', 'kawaii', 'colorize', 'player-retouch', 'cyberpunk', 'neumorphic', 'nature', 'vintage', 'ocean', 'blue-sky', 'retro', 'technozen', 'forest', 'frutiger-aero', 'terminalism', 'claymorphism', 'brutalism', 'minimalism', 'maximalism', 'glassmorphism', 'aurora', 'material', 'harry-potter'] },
+        cardStyle:           { type: 'string', default: 'glass', values: ['glass', 'flat', 'elevated', 'folder', 'bento', 'neon', 'compact', 'polaroid', 'neumorphic', 'cyberpunk', 'holographic', 'minimalist', 'maximalism', 'glassmorphism', 'aurora', 'material', 'immersive-glass', 'retro', 'technozen', 'frutiger-aero', 'autumn', 'blue-sky', 'brutalism', 'claymorphism', 'frosted', 'minimalism', 'nature', 'ocean', 'skeuomorphic', 'spring', 'summer', 'terminalism', 'vintage', 'winter', 'harry-potter'] },
         cursorStyle:         { type: 'string', default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel', 'roblox', 'valorant-v', 'zoro-sword'] },
         fontFamily:          { type: 'string', default: 'Roboto', values: ['Roboto', 'Inter', 'Outfit', 'Comic Sans MS'] },
     }),

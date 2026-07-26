@@ -559,6 +559,55 @@ Every UI design must support both light and dark themes:
 
 ---
 
+## 🚨 YouTube Extension UI Blueprint — Mandatory Rules & Critical Element Coverage
+
+When designing or updating YouTube UI themes and extension styles, the following rules **MUST be strictly followed across all themes**:
+
+### 1. Player Page Secondary Video Sidebar — NO BORDER BOX RULE
+- **Rule**: For the video player page's secondary recommendation sidebar (`#secondary`, `#secondary-inner`, `#related`, and all secondary `ytd-compact-video-renderer` items), **DO NOT add border boxes, card container boxes, outlines, or background containers**.
+- **Implementation**:
+  - `#secondary`, `#secondary-inner`, `#related`, and secondary `ytd-compact-video-renderer` items must have `background: transparent !important;`, `border: none !important;`, `box-shadow: none !important;`, and `outline: none !important;`.
+  - Do not wrap secondary video thumbnails or titles in card borders; let them sit cleanly on the page background without visual clutter.
+
+### 2. Action Buttons (Like, Dislike, Share, Save, Download) — Multi-Version & Transparent Theme Compatibility
+- **Rule**: All player action buttons must work reliably across modern and legacy YouTube Polymer DOM layouts and must render cleanly on **transparent, glassmorphic, and dark themes**.
+- **Implementation**:
+  - Target both legacy and modern button shape selectors (`ytd-menu-renderer`, `ytd-watch-metadata`, `yt-button-shape`, `.yt-spec-button-shape-next`).
+  - **Transparent Theme Compatibility**: Do not rely on hardcoded opaque white or grey backgrounds. Action buttons on transparent/glass themes must use translucent glass fills (`rgba(...)` or `--ypp-bg-glass`) with high-contrast foreground icons and text so they never vanish, clip, or appear unreadable against video backgrounds or custom wallpapers.
+
+### 3. Video Player Controls, Progress Bar, Scrubber, Channel Bar & Custom Player Bar Compatibility
+- **Rule**: All video player bar elements and channel header bars must be styled and tested for seamless operation with both **native YouTube player controls** and **custom extension player bars**.
+- **Implementation**:
+  - **Player Controls**: Cover play/pause, volume slider handle (`.ytp-volume-slider-handle`), scrubber button (`.ytp-scrubber-button`), and progress bar (`.ytp-progress-list`, `.ytp-play-progress`).
+  - **Custom Player Bar Support**: Ensure custom progress bars and custom player bars do not suffer from double-borders, clipped scrubbers, or z-index collisions when custom extension controls are active.
+  - **Channel Bar**: Cover channel header banners (`ytd-c4-tabbed-header-renderer`, `#channel-header`) so tabs and subscribe buttons match the theme aesthetic.
+
+### 4. Redesigned Playlist Page Coverage
+- **Rule**: The UI design must cover both legacy and **redesigned YouTube playlist pages** (`ytd-playlist-panel-renderer`, modern playlist headers, and playlist hero cards).
+- **Implementation**:
+  - Ensure the playlist panel container, header hero card, and individual playlist video items (`ytd-playlist-video-renderer`) are styled consistently.
+  - Active/currently playing playlist items must have a clear highlight state without breaking layout or overflowing the playlist drawer.
+
+### 5. Extension Popup Panels (`#ypp-eq-panel`, `#ypp-cinema-panel`, `.ypp-popup-panel`) — NO CSS POSITION OVERRIDES
+- **Rule**: Never apply `position: relative !important;` or hardcoded screen coordinates (`left: 0`, `top: 0`) in CSS theme files to extension popup panels.
+- **Implementation**:
+  - Extension popups are dynamically positioned by JavaScript (`position: fixed` or `position: absolute`) relative to the clicked button on the player bar.
+  - Overriding `position` in CSS breaks JavaScript anchor calculation and causes panels to render incorrectly on the far left of the page.
+
+### 6. Global Hide-Scrollbar Consistency Across All Themes & Sidebars
+- **Rule**: When the `hideScrollbar` feature is enabled (`body.ypp-hide-scrollbar` or attribute `data-ypp-hidescrollbar="true"`), **ALL scrollbars across ALL UI designs and layout columns MUST be hidden**.
+- **Implementation**:
+  - Ensure `#secondary` (Up Next recommendation column), `#secondary-inner`, `#page-manager`, `#columns`, and all inner scroll containers in every UI design theme (such as Harry Potter / Hogwarts) have `scrollbar-width: none !important;` and `::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }` with sufficient specificity to override any theme or split-scrolling scrollbar styles.
+
+### 7. Search Results Page Cleanliness & Static Thumbnail Protection
+- **Rule**: Search result pages (`/results`) must display normal, static thumbnails cleanly without injected filter bars or moving hover-preview boxes.
+- **Implementation**:
+  - Do not inject the YPP filter bar (`#ypp-search-filter-btn`) onto search result pages.
+  - Ensure static thumbnails (`ytd-thumbnail yt-image`, `img`) remain `display: block !important; visibility: visible !important; opacity: 1 !important;` without breaking dimensions.
+  - Suppress moving picture previews (`ytd-moving-thumbnail-renderer`, `ytd-video-preview`) on search results so thumbnails remain normal static images.
+
+---
+
 ## ✅ New UI Design Checklist
 
 Before any UI design is considered **complete**, verify:
@@ -581,6 +630,13 @@ Before any UI design is considered **complete**, verify:
 - [ ] Every page has header, main content, and footer
 - [ ] Loading, empty, and error states on every page
 - [ ] All pages are responsive across all breakpoints
+
+### YouTube-Specific Blueprint Rules (Mandatory)
+- [ ] Player secondary video sidebar (`#secondary`) has **no border boxes or container backgrounds**
+- [ ] Action buttons (like/dislike/share) work on **transparent & glass themes** across all Polymer layouts
+- [ ] Player bar, progress bar, scrubber & channel bar work with **native + custom player bars**
+- [ ] Redesigned playlist page (`ytd-playlist-panel-renderer`) styled and tested
+- [ ] Extension popup panels (`#ypp-eq-panel`, etc.) have **no CSS position overrides**
 
 ### Quality
 - [ ] Accessibility checklist passed

@@ -179,26 +179,59 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
 
             /* ── Webkit scrollbar (shown unless hide-scrollbar is active) ──── */
 
-            body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ${watchCtx} #secondary::-webkit-scrollbar {
+            html:not(.ypp-sidebar-comments-active) body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ytd-watch-flexy:not([hidden]) #secondary::-webkit-scrollbar {
                 width: 6px !important;
                 display: block !important;
             }
-            body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ${watchCtx} #secondary::-webkit-scrollbar-thumb {
+            html:not(.ypp-sidebar-comments-active) body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ytd-watch-flexy:not([hidden]) #secondary::-webkit-scrollbar-thumb {
                 background: rgba(255, 255, 255, 0.2) !important;
                 border-radius: 4px !important;
             }
-            body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ${watchCtx} #secondary::-webkit-scrollbar-track {
+            html:not(.ypp-sidebar-comments-active) body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ytd-watch-flexy:not([hidden]) #secondary::-webkit-scrollbar-track {
                 background: transparent !important;
             }
 
             /* ── Override: hide sidebar scrollbar when global hide-scrollbar is on */
 
-            body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ${watchCtx} #secondary {
+            html body.ypp-hide-scrollbar #secondary,
+            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary,
+            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary,
+            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary,
+            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary,
+            html[data-ypp-ui-style] body.ypp-hide-scrollbar ytd-watch-flexy #secondary,
+            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary,
+            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar ytd-watch-flexy #secondary,
+            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary,
+            html[data-ypp-theme] body.ypp-hide-scrollbar #secondary {
                 scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
             }
-            body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ${watchCtx} #secondary::-webkit-scrollbar {
+            html body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar,
+            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar,
+            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary::-webkit-scrollbar,
+            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+            html[data-ypp-ui-style] body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar,
+            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar,
+            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+            html[data-ypp-theme] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+            html body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
+            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar-thumb,
+            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar-thumb,
+            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
+            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
+            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
+            html body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
+            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar-track,
+            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar-track,
+            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
+            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
+            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track {
                 width: 0 !important;
+                height: 0 !important;
                 display: none !important;
+                background: transparent !important;
             }
 
             /* ── Breathing room at the bottom of the sidebar list ─────────── */

@@ -1,0 +1,192 @@
+/* =========================================================
+   HOGWARTS MAGIC MENUS — Dropdowns, Scrolls & Wax Tooltips
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & parchment.
+   ========================================================= */
+
+/* Three-Dots & Menu Trigger Buttons */
+html[data-ypp-ui-style="harry-potter"] #trigger.tp-yt-paper-menu-button,
+html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton button-view-model,
+html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton button,
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--icon-only-default {
+  border-radius: 4px 12px 4px 12px !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #trigger.tp-yt-paper-menu-button:hover,
+html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton button:hover,
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--icon-only-default:hover {
+  background: rgba(212, 175, 55, 0.15) !important;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25) !important;
+  transform: scale(1.08) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton yt-interaction .fill,
+html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Dropdown Menus, Video Preview Hover Cards & Dialog Modals */
+html[data-ypp-ui-style="harry-potter"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-video-preview,
+html[data-ypp-ui-style="harry-potter"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-listbox.yt-dropdown-menu,
+html[data-ypp-ui-style="harry-potter"] .ypp-account-menu,
+html[data-ypp-ui-style="harry-potter"] #ypp-top-bar {
+  background: linear-gradient(160deg, rgba(20, 16, 12, 0.98) 0%, rgba(14, 12, 8, 0.98) 100%) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 4px 18px 4px 18px !important;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.92),
+    0 0 20px rgba(212, 175, 55, 0.18),
+    inset 0 1px 0 rgba(255, 248, 220, 0.07) !important;
+  padding: 8px !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+}
+
+/* Multi-Page Menu Sections (Account Menu Items) */
+html[data-ypp-ui-style="harry-potter"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer),
+html[data-ypp-ui-style="harry-potter"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="harry-potter"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-item.ytd-menu-service-item-download-renderer,
+html[data-ypp-ui-style="harry-potter"] a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: 4px 12px 4px 12px !important;
+  margin: 4px 6px !important;
+  padding: 8px 12px !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+  border-left: 3px solid transparent !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  background: rgba(116, 0, 1, 0.35) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  border-left: 3px solid var(--hp-gold, #d4af37) !important;
+  box-shadow: 0 4px 15px rgba(116, 0, 1, 0.4), 0 0 10px rgba(212, 175, 55, 0.15) !important;
+  transform: translateX(4px) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-simple-menu-header-renderer,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-listbox {
+  background: transparent !important;
+}
+
+/* =========================================================
+   WAX SEAL STAMP TOOLTIPS & TOASTS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] .tp-yt-paper-tooltip[style-target=tooltip],
+html[data-ypp-ui-style="harry-potter"] body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip],
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-toast {
+  background: rgba(14, 10, 4, 0.97) !important;
+  border: 1px solid rgba(180, 150, 60, 0.45) !important;
+  border-radius: 2px 12px 2px 12px !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.9),
+    0 0 8px rgba(180, 140, 40, 0.18) !important;
+  padding: 6px 14px 6px 20px !important;
+  position: relative !important;
+}
+
+/* Howler Red Wax Seal Dot in Tooltip Corner */
+html[data-ypp-ui-style="harry-potter"] .tp-yt-paper-tooltip[style-target=tooltip]::before,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-toast::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 6px !important;
+  transform: translateY(-50%) !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: radial-gradient(circle, #a00000, #740001) !important;
+  border: 1px solid rgba(212, 175, 55, 0.7) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 4px rgba(116, 0, 1, 0.6) !important;
+}
+
+/* =========================================================
+   LUMOS & NOX APPEARANCE INCANTATIONS (NO EMOJIS)
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-compact-link-renderer[icon-label*="Appearance"],
+html[data-ypp-ui-style="harry-potter"] ytd-compact-link-renderer[icon-label*="Theme"],
+html[data-ypp-ui-style="harry-potter"] ytd-toggle-theme-compact-link-renderer,
+html[data-ypp-ui-style="harry-potter"] .ypp-theme-btn,
+html[data-ypp-ui-style="harry-potter"] #appearance-item,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Appearance"],
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Theme"] {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-compact-link-renderer[icon-label*="Appearance"]:hover::after,
+html[data-ypp-ui-style="harry-potter"] ytd-compact-link-renderer[icon-label*="Theme"]:hover::after,
+html[data-ypp-ui-style="harry-potter"] ytd-toggle-theme-compact-link-renderer:hover::after,
+html[data-ypp-ui-style="harry-potter"] .ypp-theme-btn:hover::after,
+html[data-ypp-ui-style="harry-potter"] #appearance-item:hover::after,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Appearance"]:hover::after,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Theme"]:hover::after {
+  content: "✦ Lumos Maxima / Nox" !important;
+  position: absolute !important;
+  bottom: 115% !important;
+  right: 10px !important;
+  background: linear-gradient(135deg, rgba(20, 16, 12, 0.98) 0%, rgba(14, 12, 8, 0.98) 100%) !important;
+  color: var(--hp-gold, #d4af37) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 4px 14px 4px 14px !important;
+  padding: 5px 12px !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9), 0 0 16px rgba(212, 175, 55, 0.22) !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* =========================================================
+   VIDEO PLAYER SETTINGS MENU & QUALITY/SUBTITLE PANELS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="harry-potter"] .ytp-panel,
+html[data-ypp-ui-style="harry-potter"] .ytp-panel-menu {
+  background: linear-gradient(160deg, rgba(18, 15, 11, 0.98) 0%, rgba(12, 10, 7, 0.98) 100%) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 4px 18px 4px 18px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 175, 55, 0.2) !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytp-menuitem[aria-checked="true"],
+html[data-ypp-ui-style="harry-potter"] .ytp-menuitem:hover {
+  background: rgba(212, 175, 55, 0.15) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  border-left: 3px solid var(--hp-gold, #d4af37) !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
+}
+
+/* =========================================================
+   SHARE MODALS & ADD-TO-PLAYLIST POPUPS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-add-to-playlist-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-dialog.ytd-popup-container {
+  background: linear-gradient(160deg, rgba(20, 17, 12, 0.98) 0%, rgba(14, 12, 9, 0.98) 100%) !important;
+  border: 1.5px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 6px 20px 6px 20px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 24px rgba(212, 175, 55, 0.25) !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+}

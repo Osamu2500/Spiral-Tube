@@ -1,0 +1,149 @@
+/* =========================================================
+   HOGWARTS MAGIC HOME GRID — Category Pills & Guide Sidebar
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & parchment.
+   ========================================================= */
+
+/* Left Sidebar Navigation & Mini Guide */
+html[data-ypp-ui-style="harry-potter"] #guide-wrapper.ytd-app,
+html[data-ypp-ui-style="harry-potter"] ytd-settings-sidebar-renderer,
+html[data-ypp-ui-style="harry-potter"] #guide-wrapper {
+  background: rgba(14, 16, 24, 0.92) !important;
+  border-right: 1px solid var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    4px 0 20px rgba(0, 0, 0, 0.88),
+    0 0 16px rgba(212, 175, 55, 0.15) !important;
+  border-radius: 0 16px 16px 0 !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #guide-content.ytd-app,
+html[data-ypp-ui-style="harry-potter"] #frosted-glass.with-chipbar.ytd-app {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 6px !important;
+  background: rgba(14, 16, 24, 0.92) !important;
+  border: 1px solid var(--hp-border-subtle, rgba(180, 150, 60, 0.28)) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] yt-icon-button#guide-button {
+  border-radius: 4px 12px 4px 12px !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] yt-icon-button#guide-button:hover {
+  background: rgba(212, 175, 55, 0.15) !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.08) !important;
+}
+
+/* Guide Navigation Links */
+html[data-ypp-ui-style="harry-potter"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-entry-renderer {
+  border-radius: 4px 14px 4px 14px !important;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus,
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-entry-renderer:hover {
+  background: rgba(116, 0, 1, 0.35) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  box-shadow:
+    0 4px 15px rgba(116, 0, 1, 0.4),
+    0 0 12px rgba(212, 175, 55, 0.22) !important;
+  transform: translateX(4px) scale(1.01) !important;
+}
+
+/* Homepage Category Chip Bar */
+html[data-ypp-ui-style="harry-potter"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="harry-potter"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="harry-potter"] ytd-browse[page-subtype=home] #chips {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 6px 12px !important;
+  margin: 12px 0 !important;
+  border-radius: 4px 18px 4px 18px !important;
+  background: rgba(18, 16, 12, 0.85) !important;
+  border: 1px solid var(--hp-border-subtle, rgba(180, 150, 60, 0.28)) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75) !important;
+}
+
+/* =========================================================
+   POTION BREWING CAULDRON FILTER CHIPS
+   ========================================================= */
+
+/* Unselected Glass Potion Vials with Silver Cork Caps */
+html[data-ypp-ui-style="harry-potter"] .yt-chip-shape,
+html[data-ypp-ui-style="harry-potter"] .ytChipShapeChip,
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer {
+  background: linear-gradient(180deg, rgba(30, 26, 20, 0.88) 0%, rgba(18, 16, 12, 0.92) 100%) !important;
+  border: 1px solid rgba(180, 150, 60, 0.35) !important;
+  border-top: 2px ridge rgba(190, 190, 200, 0.7) !important;
+  border-radius: 12px 12px 4px 4px !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-weight: 600 !important;
+  padding: 6px 16px !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.08) !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .yt-chip-shape:hover,
+html[data-ypp-ui-style="harry-potter"] .ytChipShapeChip:hover,
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer:hover {
+  background: linear-gradient(180deg, rgba(116, 0, 1, 0.55) 0%, rgba(30, 20, 14, 0.95) 100%) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  border-top-color: var(--hp-gold-bright, #e6c280) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  box-shadow:
+    0 8px 22px rgba(80, 8, 8, 0.6),
+    0 0 12px rgba(212, 175, 55, 0.25),
+    inset 0 2px 6px rgba(255, 248, 220, 0.15) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+
+/* Selected: Felix Felicis Liquid Luck Amber Gold */
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-style="harry-potter"] .ytChipShapeChip[aria-selected="true"],
+html[data-ypp-ui-style="harry-potter"] .iron-selected.yt-chip-cloud-chip-renderer {
+  background: linear-gradient(
+    180deg,
+    rgba(180, 140, 30, 0.92) 0%,
+    rgba(140, 80, 10, 0.95) 55%,
+    rgba(100, 10, 10, 0.98) 100%
+  ) !important;
+  border: 1px solid rgba(220, 185, 80, 0.85) !important;
+  border-top: 2px ridge rgba(240, 210, 100, 0.95) !important;
+  color: #fff8eb !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 6px rgba(180, 140, 30, 0.35) !important;
+  box-shadow:
+    0 10px 26px rgba(80, 40, 5, 0.8),
+    0 0 16px rgba(212, 175, 55, 0.35),
+    inset 0 0 12px rgba(255, 220, 100, 0.25) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+/* Shimmering Runic Spark on Selected Chip (NO EMOJIS) */
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer[selected]::after,
+html[data-ypp-ui-style="harry-potter"] .ytChipShapeChip[aria-selected="true"]::after {
+  content: "✦" !important;
+  position: absolute !important;
+  top: -10px !important;
+  right: 6px !important;
+  font-size: 11px !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  animation: ypp-levitate 1.4s infinite alternate ease-in-out !important;
+  pointer-events: none !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] iron-selector.yt-chip-cloud-renderer {
+  padding-left: 6px !important;
+}

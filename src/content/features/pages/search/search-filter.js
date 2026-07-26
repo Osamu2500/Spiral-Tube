@@ -49,15 +49,10 @@ export class SearchFilter extends window.YPP.features.BaseFeature {
     }
     
     _injectButton() {
-        if (!window.location.pathname.startsWith('/results')) return;
-        
-        // Find the search filter container
-        const filterMenu = document.querySelector('ytd-search-sub-menu-renderer #filter-button, ytd-search-sub-menu-renderer #button, #filter-menu');
-        if (!filterMenu) return;
-        
-        if (document.getElementById('ypp-search-filter-btn')) return;
-        
-        this._btnContainer = document.createElement('div');
+        return; // User directive: completely remove ypp filter bar from search result page
+    }
+    
+    _injectButtonLegacy() {
         this._btnContainer.id = 'ypp-search-filter-btn';
         this._btnContainer.style.cssText = `
             display: flex;

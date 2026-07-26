@@ -1,0 +1,189 @@
+/* 1. Hogwarts Magic Design Tokens — Antique Wizarding Palette */
+html[data-ypp-ui-style="harry-potter"] {
+  /* Brand Palette — Antique, aged, never neon */
+  --hp-crimson: #740001;
+  --hp-crimson-dark: #4a0000;
+  --hp-crimson-muted: rgba(116, 0, 1, 0.45);
+  --hp-gold: #d4af37;               /* Antique gold, not #ffd700 neon */
+  --hp-gold-bright: #e6c280;        /* Warm candlelight highlight */
+  --hp-gold-hover: #c9a227;         /* Darkened hover — not brighter */
+  --hp-silver: #a8b0b8;             /* Pewter silver */
+  --hp-silver-light: #d0d6de;       /* Moonlit silver */
+  --hp-parchment: #f0ddb8;          /* Aged parchment */
+  --hp-parchment-dim: #b8a07a;      /* Faded parchment text */
+  --hp-ink: #0b0c10;
+  --hp-ink-brown: #2a1f14;          /* Old ink, not pure black */
+  --hp-slate: #12131a;
+  --hp-slate-elevated: #1a1b27;
+  --hp-stone: #1e1f28;              /* Castle stone dark surface */
+  --hp-stone-light: #252637;        /* Lighter stone */
+  --hp-dungeon: #0c0e18;            /* Dungeon deep background */
+  --hp-mist: rgba(180, 195, 210, 0.12); /* Ethereal silver mist */
+  
+  /* Emerald Slytherin */
+  --hp-emerald: #1a472a;
+  --hp-emerald-muted: rgba(26, 71, 42, 0.5);
+  --hp-emerald-silver: #a3c1ad;
+
+  /* Ravenclaw Sapphire & Bronze */
+  --hp-sapphire: #0e1a40;
+  --hp-bronze: #b8860b;
+
+  /* Borders — Aged metal filigree, never neon glow */
+  --hp-border-glow: rgba(212, 175, 55, 0.4);      /* Antique gold */
+  --hp-border-subtle: rgba(212, 175, 55, 0.2);
+  --hp-border-stone: rgba(150, 140, 120, 0.25);   /* Stone mortar line */
+  
+  /* Shadows — Deep atmospheric depth */
+  --hp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 10px rgba(212, 175, 55, 0.1);
+  --hp-shadow-lumos: 0 0 16px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(0, 0, 0, 0.7);
+  --hp-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.88), 0 0 14px rgba(212, 175, 55, 0.18);
+  --hp-shadow-deep: 0 24px 60px rgba(0, 0, 0, 0.95), 0 8px 24px rgba(0, 0, 0, 0.7);
+  
+  /* Typography — Two-tier: Cinzel (headings) + EB Garamond (body) */
+  --hp-font-serif: "Cinzel", "Garamond", "Georgia", "Times New Roman", serif;
+  --hp-font-body: "EB Garamond", "Garamond", "Georgia", serif;
+  --hp-font-sans: "SF Pro Text", "Inter", "Segoe UI Variable Text", "Segoe UI", sans-serif;
+  
+  /* Motion & Easing */
+  --hp-ease-spell: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --hp-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --hp-ease-mist: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --hp-transition-fast: 150ms var(--hp-ease-default);
+  --hp-transition-normal: 280ms var(--hp-ease-spell);
+  --hp-transition-slow: 420ms var(--hp-ease-mist);
+}
+
+/* =========================================================
+   ELDER WAND SCROLLBAR
+   Wenge dark wood, knotted grain, elder tip — CSS drawn, no emoji
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ::-webkit-scrollbar-track {
+  /* Dark wenge wood grain: base + subtle light grain lines */
+  background: #110d08 !important;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(80, 50, 20, 0.06) 2px,
+      rgba(80, 50, 20, 0.06) 3px
+    ) !important;
+  border-left: 1px solid rgba(80, 60, 30, 0.3) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ::-webkit-scrollbar-thumb {
+  /* Elder wood: dark heartwood with amber grain bands */
+  background: linear-gradient(
+    180deg,
+    #2a1a08 0%,
+    #5a3818 18%,
+    #7a4e22 30%,
+    #5a3818 42%,
+    #6a4420 50%,
+    #5a3818 58%,
+    #7a4e22 70%,
+    #5a3818 82%,
+    #2a1a08 100%
+  ) !important;
+  border: 1px solid rgba(60, 40, 15, 0.8) !important;
+  border-radius: 3px !important;
+  /* Knot marks at 28%, 55%, 74% via box-shadow stripes */
+  box-shadow:
+    /* Specular highlight along left edge */
+    inset 1px 0 2px rgba(180, 130, 60, 0.22),
+    /* Knot ring 1 */
+    inset 0 28% 0 -3px rgba(40, 25, 8, 0.7),
+    /* Knot ring 2 */
+    inset 0 55% 0 -3px rgba(40, 25, 8, 0.7),
+    /* Knot ring 3 */
+    inset 0 74% 0 -3px rgba(40, 25, 8, 0.7),
+    /* Outer depth */
+    0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #3a2210 0%,
+    #704520 18%,
+    #8e5a28 30%,
+    #704520 42%,
+    #7e5025 50%,
+    #704520 58%,
+    #8e5a28 70%,
+    #704520 82%,
+    #3a2210 100%
+  ) !important;
+  box-shadow:
+    inset 1px 0 3px rgba(212, 175, 55, 0.28),
+    inset 0 28% 0 -3px rgba(40, 25, 8, 0.75),
+    inset 0 55% 0 -3px rgba(40, 25, 8, 0.75),
+    inset 0 74% 0 -3px rgba(40, 25, 8, 0.75),
+    0 1px 6px rgba(0, 0, 0, 0.9),
+    0 0 5px rgba(180, 130, 50, 0.2) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ::-webkit-scrollbar-corner {
+  /* Antique brass corner fitting */
+  background: radial-gradient(circle at 40% 40%, #7a5a20, #3a2a08) !important;
+  border-top: 1px solid rgba(120, 90, 40, 0.5) !important;
+  border-left: 1px solid rgba(120, 90, 40, 0.5) !important;
+}
+
+/* Firefox scrollbar */
+html[data-ypp-ui-style="harry-potter"] * {
+  scrollbar-width: thin !important;
+  scrollbar-color: #5a3818 #110d08 !important;
+}
+
+/* =========================================================
+   GLOBAL TYPOGRAPHY — Two-Tier System
+   Cinzel Decorative (headings, labels) + EB Garamond (body, descriptions)
+   ========================================================= */
+
+/* Headings, titles, tab labels — Cinzel stonework */
+html[data-ypp-ui-style="harry-potter"] h1,
+html[data-ypp-ui-style="harry-potter"] h2,
+html[data-ypp-ui-style="harry-potter"] h3,
+html[data-ypp-ui-style="harry-potter"] #video-title,
+html[data-ypp-ui-style="harry-potter"] .title,
+html[data-ypp-ui-style="harry-potter"] ytd-channel-name,
+html[data-ypp-ui-style="harry-potter"] yt-formatted-string.ytd-video-primary-info-renderer,
+html[data-ypp-ui-style="harry-potter"] .ytd-video-primary-info-renderer h1 {
+  font-family: var(--hp-font-serif) !important;
+  letter-spacing: 0.03em !important;
+  font-weight: 600 !important;
+}
+
+/* Body text — EB Garamond manuscript hand */
+html[data-ypp-ui-style="harry-potter"] body,
+html[data-ypp-ui-style="harry-potter"] #content-text,
+html[data-ypp-ui-style="harry-potter"] .description,
+html[data-ypp-ui-style="harry-potter"] ytd-expander yt-formatted-string,
+html[data-ypp-ui-style="harry-potter"] ytd-comment-view-model #content-text,
+html[data-ypp-ui-style="harry-potter"] ytd-comment-renderer #content-text,
+html[data-ypp-ui-style="harry-potter"] .ytd-comment-view-model,
+html[data-ypp-ui-style="harry-potter"] ytd-video-secondary-info-renderer {
+  font-family: var(--hp-font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Channel names, metadata — EB Garamond italic */
+html[data-ypp-ui-style="harry-potter"] #channel-name .yt-simple-endpoint,
+html[data-ypp-ui-style="harry-potter"] ytd-channel-name a,
+html[data-ypp-ui-style="harry-potter"] #metadata-line span,
+html[data-ypp-ui-style="harry-potter"] .inline-metadata-item {
+  font-family: var(--hp-font-body) !important;
+  font-style: italic !important;
+  font-size: 13px !important;
+  color: var(--hp-parchment-dim) !important;
+  letter-spacing: 0.02em !important;
+}

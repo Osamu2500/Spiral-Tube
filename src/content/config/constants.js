@@ -382,7 +382,8 @@ window.YPP.CONSTANTS = {
         EMBER: { key: 'ember', label: 'Ember', class: 'ypp-theme-ember' },
         OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' },
         RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' },
-        CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' }
+        CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' },
+        HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' }
     },
 
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
@@ -405,7 +406,8 @@ const CARD_STYLES = [
   { id: 'retro', label: 'Retro OS Windows' },
   { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' },
   { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' },
-  { id: 'christmas', label: 'Christmas (Festive)' }
+  { id: 'christmas', label: 'Christmas (Festive)' },
+  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -420,7 +422,8 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'retro', label: 'Retro OS (Win 95)' },
   { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' },
   { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' },
-  { id: 'christmas', label: 'Christmas (Festive)' }
+  { id: 'christmas', label: 'Christmas (Festive)' },
+  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation

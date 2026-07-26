@@ -1,0 +1,168 @@
+/* =========================================================
+   HOGWARTS MAGIC CHANNELS — Great Hall Tapestry & Header
+   No neon (#ffd700). Antique gold (#d4af37), crimson, & parchment.
+   ========================================================= */
+
+/* =========================================================
+   CHANNEL BANNER — Great Hall Tapestry Frame
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-c4-tabbed-header-renderer {
+  background: rgba(12, 14, 22, 0.92) !important;
+  border-bottom: 2px ridge rgba(180, 150, 60, 0.5) !important;
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.88),
+    0 0 20px rgba(212, 175, 55, 0.12) !important;
+  margin-bottom: 20px !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-c4-tabbed-header-renderer #banner,
+html[data-ypp-ui-style="harry-potter"] #banner.ytd-c4-tabbed-header-renderer {
+  border-bottom: 3px ridge rgba(180, 150, 60, 0.75) !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.9),
+    0 4px 14px rgba(212, 175, 55, 0.22) !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Heraldic Tapestry Trim — Studs and Antique Gold Border along Banner Bottom */
+html[data-ypp-ui-style="harry-potter"] ytd-c4-tabbed-header-renderer #banner::after,
+html[data-ypp-ui-style="harry-potter"] #banner.ytd-c4-tabbed-header-renderer::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -10px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 10px !important;
+  background-image:
+    radial-gradient(circle at 10px 0, #d4af37 3px, transparent 4px),
+    radial-gradient(circle at 10px 5px, #8a6510 2px, transparent 3px) !important;
+  background-size: 20px 10px !important;
+  background-repeat: repeat-x !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.85)) !important;
+}
+
+/* =========================================================
+   CHANNEL AVATAR — House Crest Portrait Frame
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #wrapper.ytd-channel-avatar-editor,
+html[data-ypp-ui-style="harry-potter"] ytd-c4-tabbed-header-renderer #avatar-editor {
+  border-radius: 50% !important;
+  border: 3px ridge rgba(212, 175, 55, 0.85) !important;
+  box-shadow:
+    0 0 0 2px rgba(40, 30, 10, 0.9),
+    0 0 0 5px rgba(180, 150, 60, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.85) !important;
+  transition: transform 0.35s var(--hp-ease-spell), box-shadow 0.35s ease !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #wrapper.ytd-channel-avatar-editor:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-c4-tabbed-header-renderer #avatar-editor:hover {
+  transform: scale(1.05) rotate(2deg) !important;
+  box-shadow:
+    0 0 0 2px rgba(40, 30, 10, 0.9),
+    0 0 0 5px rgba(212, 175, 55, 0.6),
+    0 12px 32px rgba(0, 0, 0, 0.9),
+    0 0 24px rgba(212, 175, 55, 0.35) !important;
+}
+
+/* =========================================================
+   CHANNEL TYPOGRAPHY & SUBSCRIBER COUNT
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] .ytd-channel-name,
+html[data-ypp-ui-style="harry-potter"] ytd-channel-name yt-formatted-string,
+html[data-ypp-ui-style="harry-potter"] ytd-channel-name a {
+  color: var(--hp-gold, #d4af37) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #channel-handle,
+html[data-ypp-ui-style="harry-potter"] yt-formatted-string.ytd-channel-tagline-renderer,
+html[data-ypp-ui-style="harry-potter"] .ytd-channel-tagline-renderer {
+  color: var(--hp-parchment-dim, #b8a07a) !important;
+  font-family: var(--hp-font-body, "EB Garamond", Georgia, serif) !important;
+  font-style: italic !important;
+  font-size: 14px !important;
+}
+
+/* Subscriber badge pill */
+html[data-ypp-ui-style="harry-potter"] #subscriber-count.ytd-c4-tabbed-header-renderer {
+  color: #e0d0b0 !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 12px !important;
+  background: rgba(40, 30, 12, 0.75) !important;
+  border: 1px solid rgba(180, 150, 60, 0.35) !important;
+  border-radius: 12px !important;
+  padding: 2px 10px !important;
+  display: inline-block !important;
+}
+
+/* =========================================================
+   CHANNEL TABS — Hogwarts House Navigation Tabs
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  color: rgba(180, 160, 120, 0.65) !important;
+  transition: all 0.25s ease !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer[aria-selected="true"],
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer.iron-selected {
+  color: var(--hp-gold, #d4af37) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer:hover {
+  color: var(--hp-gold-bright, #e6c280) !important;
+}
+
+/* Tab selection bar / indicator line */
+html[data-ypp-ui-style="harry-potter"] tp-yt-paper-tabs.ytd-c4-tabbed-header-renderer #selectionBar.tp-yt-paper-tabs {
+  background-color: var(--hp-gold, #d4af37) !important;
+  height: 3px !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5) !important;
+}
+
+/* =========================================================
+   CHANNEL ITEMS (Playlists, Featured Channels, Cards)
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-channel-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-radio-renderer {
+  background: linear-gradient(
+    155deg,
+    rgba(22, 18, 12, 0.82) 0%,
+    rgba(16, 14, 10, 0.88) 100%
+  ) !important;
+  border-radius: 4px 16px 4px 16px !important;
+  padding: 14px !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65) !important;
+  border: 1px solid rgba(180, 150, 60, 0.25) !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-channel-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-radio-renderer:hover {
+  background: linear-gradient(
+    155deg,
+    rgba(28, 22, 14, 0.95) 0%,
+    rgba(22, 18, 12, 0.98) 100%
+  ) !important;
+  border-color: rgba(212, 175, 55, 0.55) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.88),
+    0 0 16px rgba(212, 175, 55, 0.18) !important;
+  transform: translateY(-3px) !important;
+}

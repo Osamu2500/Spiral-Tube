@@ -672,3 +672,44 @@ body.ypp-theme-ice-blue .action-btn svg,
 body.ypp-theme-fluent .action-btn svg {
     color: var(--text-1);
 }
+
+/* 29. Hogwarts Magic (Harry Potter) */
+body.ypp-theme-harry-potter {
+    --bg-primary: #0c0d14;
+    --bg-surface: #14151f;
+    --bg-glass: rgba(20, 21, 31, 0.85);
+    --bg-glass-hover: rgba(30, 32, 48, 0.9);
+    --border-subtle: rgba(212, 175, 55, 0.25);
+    --accent-primary: #ffd700;
+    --text-1: #f3e5ab;
+    --text-2: #c5b358;
+    background: radial-gradient(circle at 50% 0%, #2b1a1d 0%, #0c0d14 70%);
+    font-family: 'Cinzel', 'Times New Roman', Times, serif;
+}
+body.ypp-theme-harry-potter .app-container {
+    background: rgba(12, 13, 20, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 30px rgba(116, 0, 1, 0.2), inset 0 0 15px rgba(212, 175, 55, 0.1);
+}
+body.ypp-theme-harry-potter .toggle-card {
+    background: rgba(20, 21, 31, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+body.ypp-theme-harry-potter .toggle-card:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    transform: translateY(-2px);
+}
+body.ypp-theme-harry-potter .toggle-card:has(input:checked) {
+    background: linear-gradient(135deg, rgba(116, 0, 1, 0.3), rgba(212, 175, 55, 0.15));
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+}
+body.ypp-theme-harry-potter .theme-btn.active {
+    background: linear-gradient(135deg, #740001, #ae0001);
+    color: #ffd700;
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+

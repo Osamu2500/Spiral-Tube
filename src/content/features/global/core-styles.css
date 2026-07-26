@@ -826,17 +826,63 @@ body.ypp-floating-guide ytd-page-manager {
 
 /* Hide Scrollbar */
 
+/* Hide Scrollbar Globally (Highest Specificity over all UI Styles & Themes) */
 body.ypp-hide-scrollbar,
 body.ypp-hide-scrollbar *,
 html:has(body.ypp-hide-scrollbar),
-html:has(body.ypp-hide-scrollbar) body {
+html:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar),
+html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 
 body.ypp-hide-scrollbar::-webkit-scrollbar,
 body.ypp-hide-scrollbar *::-webkit-scrollbar,
-html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar {
+html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-ui-style] body.ypp-hide-scrollbar *::-webkit-scrollbar,
+html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar,
+html[data-ypp-ui-style] body.ypp-hide-scrollbar::-webkit-scrollbar,
+html[data-ypp-card-style] body.ypp-hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+body.ypp-hide-scrollbar::-webkit-scrollbar-thumb,
+body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
+html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-thumb,
+html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
+html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+body.ypp-hide-scrollbar::-webkit-scrollbar-track,
+body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
+html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-track,
+html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-ui-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
+html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track {
   display: none !important;
   width: 0 !important;
   height: 0 !important;

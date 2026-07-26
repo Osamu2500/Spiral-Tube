@@ -1,0 +1,351 @@
+/* =========================================================
+   HOGWARTS MAGIC PANELS — Stone Corridor & Pensieve Basins
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & stone.
+   ========================================================= */
+
+/* =========================================================
+   SIDEBAR GUIDE — Dungeon Corridor & Torchlit Niches
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-guide-renderer,
+html[data-ypp-ui-style="harry-potter"] #guide-inner-content {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 12, 18, 0.98) 0%,
+    rgba(14, 16, 24, 0.95) 100%
+  ) !important;
+  border-right: 2px solid rgba(120, 100, 60, 0.35) !important;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.88) !important;
+}
+
+/* Sidebar entry rows */
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer {
+  border-radius: 0 16px 16px 0 !important;
+  margin: 2px 8px 2px 0 !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+  border-left: 3px solid transparent !important;
+}
+
+/* Active guide item — Illuminated Entry */
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer[active],
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer[aria-selected="true"],
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer.iron-selected {
+  background: linear-gradient(
+    90deg,
+    rgba(116, 0, 1, 0.35) 0%,
+    rgba(116, 0, 1, 0.05) 90%,
+    transparent 100%
+  ) !important;
+  border-left: 3px solid var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    inset 4px 0 10px rgba(180, 140, 40, 0.22),
+    0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer[active] yt-formatted-string,
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer[aria-selected="true"] yt-formatted-string {
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-weight: 700 !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Guide item hover state */
+html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.12) 0%,
+    rgba(212, 175, 55, 0.02) 100%
+  ) !important;
+  border-left-color: rgba(180, 150, 60, 0.5) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Guide Section Headers — Runic Chapter Breaks */
+html[data-ypp-ui-style="harry-potter"] ytd-guide-section-renderer #guide-section-title,
+html[data-ypp-ui-style="harry-potter"] ytd-guide-section-renderer h3 {
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--hp-parchment-dim, #b8a07a) !important;
+  padding: 12px 16px 6px 16px !important;
+  border-bottom: 1px solid rgba(180, 150, 60, 0.2) !important;
+  margin-bottom: 6px !important;
+}
+
+/* Mini guide (collapsed sidebar) */
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-entry-renderer {
+  border-radius: 12px !important;
+  margin: 4px !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+  border: 1px solid transparent !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-entry-renderer[active],
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-entry-renderer[aria-selected="true"] {
+  background: rgba(116, 0, 1, 0.35) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    inset 0 0 12px rgba(116, 0, 1, 0.6),
+    0 0 10px rgba(212, 175, 55, 0.2) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-entry-renderer:hover {
+  background: rgba(212, 175, 55, 0.12) !important;
+  border-color: rgba(180, 150, 60, 0.4) !important;
+  animation: ypp-candle-flicker 2.5s infinite ease-in-out !important;
+}
+
+/* =========================================================
+   MODAL BACKDROPS — Ethereal Silver Moonbeam Vignette
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container tp-yt-iron-overlay-backdrop,
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container .tp-yt-iron-overlay-backdrop {
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(25, 30, 48, 0.72) 0%,
+    rgba(8, 10, 18, 0.92) 65%,
+    rgba(4, 5, 10, 0.98) 100%
+  ) !important;
+  opacity: 1 !important;
+}
+
+/* Dialog Panels — Ancient Stone Table */
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container tp-yt-paper-dialog,
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container ytd-menu-popup-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container .ytd-popup-container {
+  background: linear-gradient(
+    160deg,
+    rgba(18, 16, 12, 0.97) 0%,
+    rgba(14, 12, 8, 0.98) 100%
+  ) !important;
+  border: 1px solid rgba(180, 150, 60, 0.45) !important;
+  border-radius: 4px 20px 4px 20px !important;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(255, 248, 220, 0.08) !important;
+}
+
+/* Dialog Title — Runic Carving */
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container tp-yt-paper-dialog h2,
+html[data-ypp-ui-style="harry-potter"] ytd-popup-container ytd-menu-popup-renderer .title {
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-weight: 700 !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  border-bottom: 1px double rgba(180, 150, 60, 0.35) !important;
+  padding-bottom: 8px !important;
+}
+
+/* =========================================================
+   EXTENSION POP-OVER PANELS & CARDS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] :is(.ypp-adjust-card, .ypp-filter-card, .ypp-pl-card, .ypp-duration-card, .ypp-stats-panel) {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 17, 26, 0.94) 0%,
+    rgba(12, 20, 52, 0.88) 100%
+  ) !important;
+  border: 1.5px solid rgba(180, 150, 60, 0.45) !important;
+  border-radius: 8px 22px 8px 22px !important;
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.9),
+    0 0 14px rgba(180, 130, 40, 0.18),
+    inset 0 0 18px rgba(80, 10, 10, 0.18),
+    inset 0 1px 0 rgba(255, 248, 220, 0.07) !important;
+  padding: 18px !important;
+  transition: all var(--hp-transition-normal, 280ms cubic-bezier(0.34, 1.56, 0.64, 1)) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] :is(.ypp-adjust-card, .ypp-filter-card, .ypp-pl-card, .ypp-duration-card, .ypp-stats-panel)::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 4px !important;
+  left: 4px !important;
+  right: 4px !important;
+  bottom: 4px !important;
+  border: 1px dashed rgba(180, 150, 60, 0.3) !important;
+  border-radius: 6px 18px 6px 18px !important;
+  pointer-events: none !important;
+  box-shadow: inset 0 0 10px rgba(180, 130, 40, 0.1) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] :is(.ypp-adjust-card, .ypp-filter-card, .ypp-pl-card, .ypp-duration-card, .ypp-stats-panel):hover {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 22, 34, 0.97) 0%,
+    rgba(16, 28, 68, 0.93) 100%
+  ) !important;
+  border-color: rgba(212, 175, 55, 0.65) !important;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(180, 130, 40, 0.28),
+    inset 0 0 22px rgba(90, 10, 10, 0.22),
+    inset 0 1px 0 rgba(255, 248, 220, 0.1) !important;
+  transform: translateY(-3px) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ypp-card-title,
+html[data-ypp-ui-style="harry-potter"] .ypp-section-header {
+  color: var(--hp-gold-bright, #e6c280) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 1.15em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  border-bottom: 1.5px double rgba(180, 150, 60, 0.4) !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 14px !important;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(180, 140, 40, 0.35) !important;
+}
+
+/* =========================================================
+   WIZARDING WORLD EASTER EGGS: RIDDIKULUS BOGGART BANISHER
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] .ypp-dismiss,
+html[data-ypp-ui-style="harry-potter"] .ypp-filter-hidden,
+html[data-ypp-ui-style="harry-potter"] #dismiss-button,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Not interested"],
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Don't recommend"] {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ypp-dismiss:hover::after,
+html[data-ypp-ui-style="harry-potter"] .ypp-filter-hidden:hover::after,
+html[data-ypp-ui-style="harry-potter"] #dismiss-button:hover::after,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Not interested"]:hover::after,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Don't recommend"]:hover::after {
+  content: "✦ Riddikulus! Boggart banished." !important;
+  position: absolute !important;
+  bottom: 115% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 15, 22, 0.98) 0%,
+    rgba(45, 36, 20, 0.96) 100%
+  ) !important;
+  color: rgba(210, 175, 80, 0.95) !important;
+  border: 1px solid rgba(180, 145, 50, 0.5) !important;
+  border-radius: 8px 16px 8px 16px !important;
+  padding: 5px 12px !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(180, 140, 40, 0.22) !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 6px rgba(180, 140, 40, 0.25) !important;
+}
+
+/* =========================================================
+   SWIRLING PENSIEVE MEMORY BASIN DRAWERS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-history-page-renderer,
+html[data-ypp-ui-style="harry-potter"] #playlist.ytd-watch-flexy,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-video-list-renderer {
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(80, 100, 140, 0.18) 0%,
+    rgba(30, 42, 80, 0.22) 30%,
+    rgba(10, 14, 26, 1) 70%,
+    rgba(6, 8, 16, 1) 100%
+  ) !important;
+  background-size: 200% 200% !important;
+  border: 1.5px solid rgba(130, 150, 170, 0.45) !important;
+  border-radius: 12px 24px 12px 24px !important;
+  box-shadow:
+    0 18px 52px rgba(0, 0, 0, 0.96),
+    0 0 18px rgba(100, 130, 160, 0.2),
+    inset 0 0 20px rgba(60, 80, 120, 0.15) !important;
+  animation: ypp-pensieve-swirl 16s infinite alternate ease-in-out !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-video-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-video-history-entry-renderer {
+  border-left: 2px solid rgba(180, 195, 215, 0.25) !important;
+  background: rgba(180, 200, 220, 0.04) !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-panel-video-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-video-history-entry-renderer:hover {
+  border-left-color: rgba(210, 220, 235, 0.8) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(180, 200, 230, 0.12) 0%,
+    rgba(120, 150, 190, 0.06) 100%
+  ) !important;
+  box-shadow:
+    -4px 0 12px rgba(160, 185, 215, 0.3),
+    0 4px 14px rgba(0, 0, 0, 0.75) !important;
+  transform: translateX(5px) scale(1.01) !important;
+}
+
+/* =========================================================
+   EXTENSION POPUP PANELS (#ypp-eq-panel, #ypp-cinema-panel)
+   NO CSS POSITION OVERRIDES — Strictly preserve JS coordinates
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #ypp-eq-panel,
+html[data-ypp-ui-style="harry-potter"] #ypp-cinema-panel,
+html[data-ypp-ui-style="harry-potter"] #ypp-settings-modal,
+html[data-ypp-ui-style="harry-potter"] #ypp-stats-modal,
+html[data-ypp-ui-style="harry-potter"] .ypp-popup-panel {
+  background: linear-gradient(
+    160deg,
+    rgba(16, 14, 10, 0.98) 0%,
+    rgba(10, 9, 6, 0.98) 100%
+  ) !important;
+  border: 1.5px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 6px 20px 6px 20px !important;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(212, 175, 55, 0.22),
+    inset 0 1px 0 rgba(255, 248, 220, 0.08) !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #ypp-eq-panel h3,
+html[data-ypp-ui-style="harry-potter"] #ypp-cinema-panel h3,
+html[data-ypp-ui-style="harry-potter"] .ypp-popup-panel-title {
+  color: var(--hp-gold-bright, #e6c280) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  border-bottom: 1px double rgba(180, 150, 60, 0.35) !important;
+  padding-bottom: 8px !important;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.35) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ypp-cinema-tab-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(180, 150, 60, 0.3) !important;
+  border-radius: 4px 12px 4px 12px !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  transition: all 0.28s ease !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ypp-cinema-tab-btn.active,
+html[data-ypp-ui-style="harry-potter"] .ypp-cinema-tab-btn:hover {
+  background: rgba(116, 0, 1, 0.35) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* EQ Sliders — Golden Tracks */
+html[data-ypp-ui-style="harry-potter"] .ypp-eq-hslider {
+  accent-color: var(--hp-gold, #d4af37) !important;
+}

@@ -1,0 +1,187 @@
+/* =========================================================
+   HOGWARTS MAGIC SEARCH — Marauder's Map & Potion Vial Pills
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & parchment.
+   ========================================================= */
+
+/* Marauder's Map Search Page Background Reveal */
+html[data-ypp-ui-style="harry-potter"] ytd-search {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 28, 15, 0.45) 0%,
+    rgba(18, 14, 8, 0.95) 100%
+  ) !important;
+}
+
+/* Search Results List Items */
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-video-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-channel-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-playlist-renderer {
+  background: rgba(18, 16, 12, 0.82) !important;
+  border-radius: 4px 20px 4px 20px !important;
+  border: 1px solid rgba(180, 150, 60, 0.28) !important;
+  padding: 14px !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7) !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-video-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-channel-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-playlist-renderer:hover {
+  background: rgba(24, 20, 14, 0.95) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.9),
+    0 0 16px rgba(212, 175, 55, 0.18) !important;
+  transform: translateY(-4px) scale(1.01) !important;
+}
+
+/* Search Header Alignment */
+html[data-ypp-ui-style="harry-potter"] ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 6px auto !important;
+}
+
+/* Modern Searchbox Input Box & Button */
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentInputBox,
+html[data-ypp-ui-style="harry-potter"] #container.ytd-searchbox {
+  background: rgba(18, 14, 8, 0.88) !important;
+  border: 1px solid rgba(180, 150, 60, 0.4) !important;
+  border-radius: 24px 4px 24px 4px !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px rgba(212, 175, 55, 0.1) !important;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentInputBoxDark:focus-within,
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentInputBox:focus-within,
+html[data-ypp-ui-style="harry-potter"] #container.ytd-searchbox:focus-within {
+  background: rgba(22, 16, 10, 0.95) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    0 0 25px rgba(212, 175, 55, 0.35),
+    inset 0 0 15px rgba(212, 175, 55, 0.18) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentSearchButton,
+html[data-ypp-ui-style="harry-potter"] #search-icon-legacy {
+  margin-left: 8px !important;
+  border-radius: 4px 14px 4px 14px !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  background: linear-gradient(135deg, var(--hp-crimson, #740001) 0%, #4a0000 100%) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  box-shadow: 0 4px 12px rgba(116, 0, 1, 0.5) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentSearchButton:hover,
+html[data-ypp-ui-style="harry-potter"] #search-icon-legacy:hover {
+  background: linear-gradient(135deg, #a30001 0%, var(--hp-crimson, #740001) 100%) !important;
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.45),
+    0 4px 18px rgba(116, 0, 1, 0.8) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  margin-right: 10px;
+  width: 30px !important;
+  height: 30px !important;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Search Suggestions Container Dropdown */
+html[data-ypp-ui-style="harry-potter"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-style="harry-potter"] ytd-multi-page-menu-renderer {
+  top: 55px !important;
+  background: rgba(18, 16, 12, 0.98) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.95),
+    0 0 25px rgba(212, 175, 55, 0.2) !important;
+  border-radius: 4px 18px 4px 18px !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+}
+
+/* =========================================================
+   POTION VIAL FILTER PILLS & SEARCH FILTER CHIPS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-search-filter-renderer,
+html[data-ypp-ui-style="harry-potter"] #filter-button button,
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer {
+  background: rgba(18, 14, 8, 0.88) !important;
+  border: 1px solid rgba(180, 150, 60, 0.35) !important;
+  border-radius: 4px 16px 4px 16px !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 6px 14px !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-search-filter-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] #filter-button button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer:hover {
+  background: rgba(116, 0, 1, 0.35) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(116, 0, 1, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Selected / Active Filter Pill — Glowing Crimson Potion */
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-style="harry-potter"] yt-chip-cloud-chip-renderer[aria-selected="true"],
+html[data-ypp-ui-style="harry-potter"] ytd-search-filter-renderer[selected] {
+  background: linear-gradient(135deg, rgba(116, 0, 1, 0.75) 0%, rgba(80, 10, 15, 0.9) 100%) !important;
+  border-color: var(--hp-gold-bright, #e6c280) !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 14px rgba(116, 0, 1, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Search Filter Group Cards */
+html[data-ypp-ui-style="harry-potter"] ytd-search-filter-group-renderer {
+  background: rgba(18, 16, 12, 0.82) !important;
+  border-radius: 4px 18px 4px 18px !important;
+  padding: 14px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7) !important;
+  margin-bottom: 12px !important;
+  border: 1px solid rgba(180, 150, 60, 0.28) !important;
+}
+
+/* Ensure normal static thumbnail image remains visible at all times on search results page */
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-thumbnail yt-image,
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-thumbnail img,
+html[data-ypp-card-style="harry-potter"] ytd-search ytd-thumbnail yt-image,
+html[data-ypp-card-style="harry-potter"] ytd-search ytd-thumbnail img {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Remove the moving picture thing (hover video preview) on search results and keep normal thumbnails */
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-moving-thumbnail-renderer,
+html[data-ypp-ui-style="harry-potter"] ytd-search #video-preview,
+html[data-ypp-ui-style="harry-potter"] ytd-search ytd-video-preview,
+html[data-ypp-card-style="harry-potter"] ytd-search ytd-moving-thumbnail-renderer,
+html[data-ypp-card-style="harry-potter"] ytd-search #video-preview,
+html[data-ypp-card-style="harry-potter"] ytd-search ytd-video-preview {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+

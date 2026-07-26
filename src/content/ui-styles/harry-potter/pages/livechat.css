@@ -1,0 +1,89 @@
+/* =========================================================
+   HOGWARTS MAGIC LIVE CHAT — Owl Post & Royal Decree Super Chats
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & crimson.
+   ========================================================= */
+
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-app,
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-renderer {
+  background: rgba(14, 12, 8, 0.92) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 4px 20px 4px 20px !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.88),
+    0 0 16px rgba(212, 175, 55, 0.15) !important;
+  overflow: hidden !important;
+}
+
+/* Chat Messages — Owl Post Parchment Slips */
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-membership-item-renderer {
+  background: rgba(18, 16, 12, 0.75) !important;
+  border-radius: 4px 14px 4px 14px !important;
+  margin: 4px 8px !important;
+  padding: 8px 12px !important;
+  border-left: 3px solid rgba(180, 150, 60, 0.35) !important;
+  transition: all 0.28s var(--hp-ease-spell) !important;
+  font-family: var(--hp-font-body, "EB Garamond", Georgia, serif) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-text-message-renderer #message.yt-live-chat-text-message-renderer {
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-size: 15px !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-text-message-renderer #author-name.yt-live-chat-text-message-renderer {
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  font-weight: 600 !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-text-message-renderer:hover {
+  background: rgba(24, 20, 14, 0.95) !important;
+  border-left-color: var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.75),
+    0 0 10px rgba(212, 175, 55, 0.18) !important;
+  transform: translateX(4px) scale(1.01) !important;
+}
+
+/* Super Chats & Memberships — Royal Decree Proclamation Cards */
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-membership-item-renderer {
+  background: linear-gradient(135deg, rgba(116, 0, 1, 0.88) 0%, rgba(35, 25, 12, 0.95) 100%) !important;
+  border: 2px double var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(212, 175, 55, 0.28) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-paid-message-renderer #author-name,
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-paid-message-renderer #purchase-amount {
+  color: #fff8eb !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Chat Ticker & Message Input Field */
+html[data-ypp-ui-style="harry-potter"] #ticker.yt-live-chat-renderer {
+  background: rgba(14, 12, 8, 0.85) !important;
+  border-bottom: 1px solid rgba(180, 150, 60, 0.28) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #message-input.yt-live-chat-text-input-field-renderer {
+  background: rgba(18, 14, 8, 0.88) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 4px 14px 4px 14px !important;
+  padding: 8px 16px !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7) !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-body, "EB Garamond", Georgia, serif) !important;
+}
+
+/* Live Chat Message Input Box Container */
+html[data-ypp-ui-style="harry-potter"] yt-live-chat-message-input-renderer {
+  background: rgba(14, 12, 8, 0.96) !important;
+  border-top: 1px solid rgba(180, 150, 60, 0.28) !important;
+  padding: 10px !important;
+}

@@ -1,0 +1,231 @@
+/* =========================================================
+   HOGWARTS MAGIC WATCH PAGE — Description Scrolls & Prophecies
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & stone.
+   ========================================================= */
+
+html[data-ypp-ui-style="harry-potter"] #columns.ytd-watch-flexy {
+  gap: 24px !important;
+}
+
+/* =========================================================
+   SPELLBOOK SCROLL DESCRIPTION BOX
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="harry-potter"] ytd-text-inline-expander {
+  background: linear-gradient(135deg, rgba(20, 17, 12, 0.92) 0%, rgba(14, 16, 24, 0.9) 100%) !important;
+  border: 1.5px solid rgba(180, 150, 60, 0.38) !important;
+  border-radius: 4px 20px 4px 20px !important;
+  padding: 18px !important;
+  color: var(--hp-parchment, #f0ddb8) !important;
+  font-family: var(--hp-font-body, "EB Garamond", Georgia, serif) !important;
+  font-size: 15px !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.88),
+    0 0 16px rgba(212, 175, 55, 0.15),
+    inset 0 0 15px rgba(80, 10, 15, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-watch-metadata #description::before,
+html[data-ypp-ui-style="harry-potter"] ytd-text-inline-expander::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 4px !important;
+  left: 4px !important;
+  right: 4px !important;
+  bottom: 4px !important;
+  border: 1px dashed rgba(180, 150, 60, 0.28) !important;
+  border-radius: 6px 18px 6px 18px !important;
+  pointer-events: none !important;
+  box-shadow: inset 0 0 10px rgba(180, 140, 40, 0.08) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-watch-metadata #description:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-text-inline-expander:hover {
+  background: linear-gradient(135deg, rgba(24, 20, 14, 0.95) 0%, rgba(18, 22, 34, 0.92) 100%) !important;
+  border-color: var(--hp-gold, #d4af37) !important;
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.92),
+    0 0 22px rgba(212, 175, 55, 0.22),
+    inset 0 0 20px rgba(116, 0, 1, 0.18) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] ytd-watch-metadata #description:hover::before,
+html[data-ypp-ui-style="harry-potter"] ytd-text-inline-expander:hover::before {
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  box-shadow: inset 0 0 16px rgba(180, 140, 40, 0.15) !important;
+}
+
+/* =========================================================
+   ENCHANTED INK ILLUMINATED DROP CAP
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #description-inline-expander::first-letter,
+html[data-ypp-ui-style="harry-potter"] #description-text::first-letter,
+html[data-ypp-ui-style="harry-potter"] ytd-watch-metadata #description-inline-expander yt-attributed-string span:first-of-type::first-letter {
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 320% !important;
+  font-weight: 800 !important;
+  float: left !important;
+  line-height: 0.85 !important;
+  margin: 4px 10px 4px 2px !important;
+  padding: 6px 10px !important;
+  color: var(--hp-gold-bright, #e6c280) !important;
+  background: linear-gradient(135deg, rgba(116, 0, 1, 0.85) 0%, rgba(20, 18, 14, 0.95) 100%) !important;
+  border: 2px ridge var(--hp-gold, #d4af37) !important;
+  border-radius: 4px !important;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.8),
+    inset 0 0 8px rgba(212, 175, 55, 0.35) !important;
+  text-shadow: 0 2px 4px #000000, 0 0 10px rgba(212, 175, 55, 0.5) !important;
+}
+
+/* =========================================================
+   RECOMMENDATION SIDEBAR — NO BORDER BOX (USER DIRECTIVE)
+   Secondary sidebar and items must NOT have border boxes or backgrounds
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #secondary.ytd-watch-flexy,
+html[data-ypp-ui-style="harry-potter"] #secondary-inner.ytd-watch-flexy,
+html[data-ypp-ui-style="harry-potter"] #related,
+html[data-ypp-ui-style="harry-potter"] #secondary.ytd-watch-flexy ytd-compact-video-renderer,
+html[data-ypp-ui-style="harry-potter"] #related ytd-compact-video-renderer,
+html[data-ypp-ui-style="harry-potter"] #secondary ytd-compact-video-renderer,
+html[data-ypp-ui-style="harry-potter"] #secondary yt-lockup-view-model {
+  background: transparent !important;
+  border: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* =========================================================
+   SCROLLBAR HIDING OVERRIDE FOR HARRY POTTER THEME SIDEBAR
+   Ensure when hide-scrollbar is active, no scrollbars appear on #secondary
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary-inner,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #related,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #columns,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #page-manager,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary-inner::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #related::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #columns::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #page-manager::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary::-webkit-scrollbar,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
+html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy::-webkit-scrollbar-track {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* Ensure no ::before or ::after ornamental borders appear on secondary items */
+html[data-ypp-ui-style="harry-potter"] #secondary.ytd-watch-flexy ytd-compact-video-renderer::before,
+html[data-ypp-ui-style="harry-potter"] #related ytd-compact-video-renderer::before,
+html[data-ypp-ui-style="harry-potter"] #secondary.ytd-watch-flexy ytd-compact-video-renderer::after,
+html[data-ypp-ui-style="harry-potter"] #related ytd-compact-video-renderer::after,
+html[data-ypp-ui-style="harry-potter"] #secondary ytd-compact-video-renderer::before,
+html[data-ypp-ui-style="harry-potter"] #secondary yt-lockup-view-model::before {
+  display: none !important;
+  content: none !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #secondary.ytd-watch-flexy ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] #related ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="harry-potter"] #secondary yt-lockup-view-model:hover {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* =========================================================
+   EXTENSION EQ & CINEMA PANELS
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #ypp-eq-panel,
+html[data-ypp-ui-style="harry-potter"] #ypp-cinema-panel {
+  background: linear-gradient(135deg, rgba(16, 15, 12, 0.96) 0%, rgba(20, 18, 14, 0.92) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1.5px solid rgba(180, 150, 60, 0.45) !important;
+  border-radius: 4px 20px 4px 20px !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(212, 175, 55, 0.18),
+    inset 0 0 15px rgba(116, 0, 1, 0.25) !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #ypp-eq-panel::before,
+html[data-ypp-ui-style="harry-potter"] #ypp-cinema-panel::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 4px !important;
+  left: 4px !important;
+  right: 4px !important;
+  bottom: 4px !important;
+  border: 1px dashed rgba(180, 150, 60, 0.3) !important;
+  border-radius: 6px 18px 6px 18px !important;
+  pointer-events: none !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] .ypp-eq-canvas {
+  background: rgba(11, 12, 16, 0.8) !important;
+  border: 1px solid rgba(180, 150, 60, 0.25) !important;
+  border-radius: 4px 14px 4px 14px !important;
+}
+
+/* =========================================================
+   FELIX FELICIS LIQUID LUCK INCANTATION (NO EMOJIS)
+   ========================================================= */
+html[data-ypp-ui-style="harry-potter"] #shuffle-button,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-panel-renderer #shuffle-button,
+html[data-ypp-ui-style="harry-potter"] .ytp-playlist-menu-shuffle-button,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Shuffle"],
+html[data-ypp-ui-style="harry-potter"] [title*="Shuffle"] {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+html[data-ypp-ui-style="harry-potter"] #shuffle-button:hover::after,
+html[data-ypp-ui-style="harry-potter"] ytd-playlist-panel-renderer #shuffle-button:hover::after,
+html[data-ypp-ui-style="harry-potter"] .ytp-playlist-menu-shuffle-button:hover::after,
+html[data-ypp-ui-style="harry-potter"] [aria-label*="Shuffle"]:hover::after,
+html[data-ypp-ui-style="harry-potter"] [title*="Shuffle"]:hover::after {
+  content: "✦ Felix Felicis — Liquid Luck Shuffle" !important;
+  position: absolute !important;
+  bottom: 115% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, rgba(20, 18, 12, 0.98) 0%, rgba(140, 100, 20, 0.25) 100%) !important;
+  color: var(--hp-gold, #d4af37) !important;
+  border: 1px solid var(--hp-gold, #d4af37) !important;
+  border-radius: 4px 14px 4px 14px !important;
+  padding: 5px 12px !important;
+  font-family: var(--hp-font-serif, "Cinzel", Georgia, serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9), 0 0 16px rgba(212, 175, 55, 0.3) !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  animation: ypp-levitate 1.5s ease-in-out infinite alternate !important;
+}

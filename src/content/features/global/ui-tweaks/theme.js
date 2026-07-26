@@ -703,6 +703,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
              else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
              else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
              else if (ytTheme === 'material') finalCardStyle = 'material';
+             else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
         }
 
         root.setAttribute('data-ypp-card-style', finalCardStyle);

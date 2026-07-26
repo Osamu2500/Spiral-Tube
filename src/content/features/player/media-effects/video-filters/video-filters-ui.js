@@ -281,6 +281,29 @@ export class VideoFiltersUI {
             dlg.appendChild(panel);
         } else {
             document.body.appendChild(panel);
+            if (btn && btn.getBoundingClientRect) {
+                const rect = btn.getBoundingClientRect();
+                if (rect && rect.width > 0 && rect.top > 0) {
+                    let bottomPx = Math.max(16, window.innerHeight - rect.top + 12);
+                    let rightPx = Math.max(16, window.innerWidth - rect.right - 10);
+                    const panelHeight = 440;
+                    if (bottomPx + panelHeight > window.innerHeight - 16) {
+                        bottomPx = Math.max(16, window.innerHeight - panelHeight - 16);
+                    }
+                    if (rightPx + 340 > window.innerWidth - 16) {
+                        rightPx = Math.max(16, window.innerWidth - 356);
+                    }
+                    Object.assign(panel.style, {
+                        position: 'fixed',
+                        top: 'auto',
+                        bottom: `${bottomPx}px`,
+                        left: 'auto',
+                        right: `${rightPx}px`,
+                        maxHeight: 'calc(100vh - 40px)',
+                        zIndex: '9999999'
+                    });
+                }
+            }
         }
     }
 
