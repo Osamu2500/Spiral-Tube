@@ -44,6 +44,7 @@ const ICONS = {
   WATCH_LATER: `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
   NOT_INTERESTED: `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>`,
   WATCHED: `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  COPY: `<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>`,
 };
 
 // ─── Feature Class ─────────────────────────────────────────────────────────────
@@ -567,6 +568,9 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
         <button class="ypp-ms-btn" data-variant="success" id="ypp-ms-watched">
           <span class="ypp-ms-dot"></span>Mark Watched
         </button>
+        <button class="ypp-ms-btn" data-variant="info" id="ypp-ms-copy-links">
+          <span class="ypp-ms-dot"></span>Copy Links
+        </button>
         <button class="ypp-ms-btn ypp-ms-btn-clear" data-variant="ghost" id="ypp-ms-clear">
           <span class="ypp-ms-dot"></span>Clear All
         </button>
@@ -589,6 +593,7 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
     bar
       .querySelector('#ypp-ms-watched')
       ?.addEventListener('click', () => this._markSelectedWatched());
+    bar.querySelector('#ypp-ms-copy-links')?.addEventListener('click', (e) => this._copyLinks(e));
     bar.querySelector('#ypp-ms-clear')?.addEventListener('click', () => this._clearAll());
   }
 
@@ -993,6 +998,51 @@ export class MultiSelect extends window.YPP.features.BaseFeature {
       await this._delay(300);
       return ok;
     });
+  }
+
+  // ─── Copy Links ──────────────────────────────────────────────────────────────
+
+  async _copyLinks(e) {
+    if (this._isActing) return;
+    const videos = [...this._selected.values()];
+    if (!videos.length) return;
+
+    const useMarkdown = e.shiftKey;
+    const lines = [];
+
+    for (const video of videos) {
+      if (!video.href) continue;
+      
+      let cleanUrl = video.href;
+      // Resolve relative URLs to absolute
+      if (cleanUrl.startsWith('/')) {
+        cleanUrl = window.location.origin + cleanUrl;
+      }
+      
+      try {
+          const urlObj = new URL(cleanUrl);
+          urlObj.searchParams.delete('si');
+          urlObj.searchParams.delete('pp');
+          cleanUrl = urlObj.toString();
+      } catch(err) {}
+
+      if (useMarkdown) {
+        lines.push(`* [${video.title || 'Video'}](${cleanUrl})`);
+      } else {
+        lines.push(cleanUrl);
+      }
+    }
+
+    if (!lines.length) return;
+
+    try {
+      await navigator.clipboard.writeText(lines.join('\n'));
+      this._showToast(`✓ Copied ${lines.length} link${lines.length !== 1 ? 's' : ''} to clipboard`);
+      this._clearAll();
+    } catch (err) {
+      this._showToast('⚠ Failed to copy links');
+      console.error('[MultiSelect] Copy failed', err);
+    }
   }
 
   // ─── Mark Watched ────────────────────────────────────────────────────────────

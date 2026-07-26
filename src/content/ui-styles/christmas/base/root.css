@@ -48,6 +48,7 @@ html[data-ypp-ui-style="christmas"] ytd-rich-item-renderer {
   background: var(--ypp-bg-glass) !important;
   border: 1px solid var(--ypp-glass-border) !important;
   border-radius: 12px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   padding: 8px !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(211, 47, 47, 0.2) !important;
@@ -76,5 +77,6 @@ html[data-ypp-ui-style="christmas"] ytd-searchbox {
   background: rgba(27, 94, 32, 0.4) !important;
   border: 2px solid rgba(255, 215, 0, 0.5) !important;
   border-radius: 24px !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }

@@ -83,8 +83,8 @@ ytd-comment-thread-renderer {
   margin-bottom: 16px !important;
   border: var(--ocean-border) !important;
   box-shadow: var(--shadow-base) !important;
-  backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
 }
 #placeholder-area.ytd-comment-simplebox-renderer {
   border-radius: 20px !important;

@@ -33,6 +33,7 @@ html[data-ypp-ui-style=technozen] yt-formatted-string.ytd-channel-name {
   background: var(--tz-gloss), rgba(228, 250, 220, 0.85) !important;
   border-bottom: 1px solid var(--tz-glass-border) !important;
   box-shadow: var(--shadow-base) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
 }
 #tabs-inner-container.ytd-c4-tabbed-header-renderer {

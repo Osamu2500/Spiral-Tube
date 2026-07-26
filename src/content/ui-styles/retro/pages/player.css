@@ -60,7 +60,7 @@
 .ytp-load-progress {
   background: #6666cc !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button),
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
   background: none !important;
@@ -75,7 +75,7 @@
     background var(--bounce) !important;
   border-radius: 0 !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):hover,
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:hover {
   transform: scale(1.1) !important;
@@ -86,7 +86,7 @@
   border-right: 2px solid var(--retro-border-dark) !important;
   background: var(--sf) !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active,
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):active,
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active,
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:active {
   transform: scale(0.95);

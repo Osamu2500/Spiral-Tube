@@ -6,6 +6,7 @@
 html[data-ypp-ui-style=frutiger-aero] tp-yt-iron-overlay-backdrop,
 html[data-ypp-ui-style=frutiger-aero] .fa-modal-backdrop {
   background: rgba(255, 255, 255, 0.4) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
   backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
   opacity: 1 !important;
 }
@@ -14,6 +15,7 @@ html[data-ypp-ui-style=frutiger-aero] .fa-modal-backdrop {
 html[data-ypp-ui-style=frutiger-aero] ytd-popup-container tp-yt-paper-dialog,
 html[data-ypp-ui-style=frutiger-aero] .fa-modal {
   background: rgba(255, 255, 255, 0.85) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-lg, 16px)) saturate(150%) !important;
   backdrop-filter: blur(var(--fa-blur-lg, 16px)) saturate(150%) !important;
   border-radius: var(--fa-radius-xl, 24px) !important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;

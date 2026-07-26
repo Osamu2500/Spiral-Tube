@@ -26,8 +26,8 @@ ytd-comment-renderer button {
   border-radius: 2000px !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
   transform: none !important;
-  backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 ytd-comment-view-model button:hover,
 ytd-comment-renderer button:hover {
@@ -53,8 +53,8 @@ ytd-comment-renderer yt-interaction .fill {
 ytd-comment-thread-renderer,
 ytd-comment-view-model {
   background: rgba(128, 128, 128, 0.05) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border-radius: 24px !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
@@ -72,6 +72,7 @@ ytd-comment-view-model:hover {
 }
 ytd-comment-simplebox-renderer {
   background: rgba(128, 128, 128, 0.08) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
   backdrop-filter: blur(15px) !important;
   border-radius: 24px !important;
   padding: 15px !important;
@@ -80,4 +81,15 @@ ytd-comment-simplebox-renderer {
 }
 #placeholder-area.ytd-comment-simplebox-renderer {
   border: none !important;
+}
+
+/* YouTube UI Update Fixes for Glassmorphic themes (Comments) */
+ytd-comment-thread-renderer #content-text, 
+ytd-comment-view-model #content-text, 
+ytd-comment-thread-renderer #body, 
+ytd-comment-view-model #body, 
+ytd-comments-header-renderer #header,
+ytd-item-section-renderer[static-comments-header] #header {
+  background-color: transparent !important;
+  background: transparent !important;
 }

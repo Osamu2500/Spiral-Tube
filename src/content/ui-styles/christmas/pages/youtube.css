@@ -79,8 +79,8 @@ html[data-ypp-ui-style="christmas"] #masthead-container {
 
 html[data-ypp-ui-style="christmas"] ytd-masthead #container {
   background: rgba(10, 20, 13, 0.88) !important;
-  backdrop-filter: blur(20px) saturate(1.5) !important;
   -webkit-backdrop-filter: blur(20px) saturate(1.5) !important;
+  backdrop-filter: blur(20px) saturate(1.5) !important;
   border-bottom: 1.5px solid var(--xmas-border) !important;
   border-radius: 0 0 16px 16px !important;
   box-shadow:
@@ -112,6 +112,7 @@ html[data-ypp-ui-style="christmas"] #guide-wrapper.ytd-app,
 html[data-ypp-ui-style="christmas"] ytd-mini-guide-renderer.ytd-app,
 html[data-ypp-ui-style="christmas"] ytd-guide-renderer {
   background: rgba(8, 18, 11, 0.88) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.4) !important;
   backdrop-filter: blur(18px) saturate(1.4) !important;
   border-right: 1px solid var(--xmas-border) !important;
   border-radius: 0 12px 12px 0 !important;
@@ -143,6 +144,7 @@ html[data-ypp-ui-style="christmas"] ytd-searchbox#search {
   background: rgba(10, 22, 14, 0.7) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 24px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4) !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
@@ -170,6 +172,7 @@ html[data-ypp-ui-style="christmas"] ytd-grid-video-renderer {
   background: var(--xmas-bg-card) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 14px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   padding: 8px !important;
   box-shadow: var(--xmas-shadow) !important;
@@ -225,6 +228,7 @@ html[data-ypp-ui-style="christmas"] yt-chip-cloud-chip-renderer[selected] {
 /* ── Frosted chip bar ── */
 html[data-ypp-ui-style="christmas"] #frosted-glass.with-chipbar.ytd-app {
   background: rgba(6, 14, 10, 0.75) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
   backdrop-filter: blur(14px) !important;
   border-bottom: 1px solid var(--xmas-border) !important;
 }
@@ -288,6 +292,7 @@ html[data-ypp-ui-style="christmas"] .ytp-panel {
   background: rgba(8, 18, 11, 0.95) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 14px !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), var(--xmas-glow-gold) !important;
 }
@@ -338,6 +343,7 @@ html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--tonal {
   background: rgba(13, 31, 20, 0.7) !important;
   border: 1px solid var(--xmas-border) !important;
   color: var(--xmas-text) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }
 
@@ -353,6 +359,7 @@ html[data-ypp-ui-style="christmas"] #contentWrapper.tp-yt-iron-dropdown > * {
   background: rgba(8, 18, 11, 0.94) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 16px !important;
+  -webkit-backdrop-filter: blur(24px) !important;
   backdrop-filter: blur(24px) !important;
   box-shadow: 0 16px 56px rgba(0, 0, 0, 0.75), var(--xmas-glow-gold) !important;
 }
@@ -431,6 +438,7 @@ html[data-ypp-ui-style="christmas"] ytd-watch-metadata #description {
   background: var(--xmas-bg-card) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 14px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   padding: 16px !important;
 }
@@ -484,6 +492,7 @@ html[data-ypp-ui-style="christmas"] tp-yt-paper-toast {
   background: rgba(8, 18, 11, 0.9) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 10px !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   color: var(--xmas-text) !important;
 }

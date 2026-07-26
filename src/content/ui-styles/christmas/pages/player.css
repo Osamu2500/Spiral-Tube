@@ -114,6 +114,7 @@ html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-settings-menu {
   background: rgba(6, 14, 10, 0.96) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 14px !important;
+  -webkit-backdrop-filter: blur(24px) !important;
   backdrop-filter: blur(24px) !important;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 199, 0, 0.1) !important;
   overflow: hidden !important;
@@ -161,6 +162,7 @@ html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-delhi-modern-contextmenu {
   background: rgba(6, 14, 10, 0.96) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 12px !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7) !important;
   overflow: hidden !important;
@@ -195,6 +197,7 @@ html[data-ypp-ui-style="christmas"] .ytp-ce-element {
   background: rgba(8, 18, 11, 0.9) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 12px !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
 }
 
@@ -261,6 +264,7 @@ html[data-ypp-ui-style="christmas"] .ytp-cued-thumbnail-overlay {
 html[data-ypp-ui-style="christmas"] .immersive-header-content.ytd-playlist-header-renderer {
   overflow: visible !important;
   background: rgba(8, 18, 11, 0.75) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-bottom: 1px solid var(--xmas-border) !important;
 }

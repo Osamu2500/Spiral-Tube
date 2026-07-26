@@ -1,4 +1,8 @@
-/* Player progress bar */
+/* ==========================================================================
+   Frutiger Aero — YouTube Player Bar & Controls (Retro OS / Vintage Pattern)
+   ========================================================================== */
+
+/* 1. Player progress bar */
 html[data-ypp-ui-style=frutiger-aero] .ytp-play-progress {
   background:
     linear-gradient(
@@ -9,7 +13,7 @@ html[data-ypp-ui-style=frutiger-aero] .ytp-play-progress {
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 8px rgba(53, 199, 240, 0.6) !important;
 }
 
-/* Scrubber dot */
+/* 2. Scrubber dot */
 html[data-ypp-ui-style=frutiger-aero] .ytp-scrubber-button {
   background:
     radial-gradient(
@@ -19,91 +23,235 @@ html[data-ypp-ui-style=frutiger-aero] .ytp-scrubber-button {
       #76cdfa 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-  transform: scale(1.2);
 }
 
-/* Player control bar — totally transparent to let video show */
-html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-bottom {
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%) !important;
-  backdrop-filter: none !important;
-  border: none !important;
-  box-shadow: none !important;
+/* 3. Bottom Gradient - Clean Retro/Classic Transparent Gradient (No Blue Blur, No Solid Grey Box) */
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-bottom,
+html[data-ypp-ui-style=frutiger-aero] .ytp-gradient-bottom {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%) !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Individual player control buttons & extension buttons — distinct glass tiles */
-html[data-ypp-ui-style=frutiger-aero] .ytp-button,
+/* 4. Delhi Modern YouTube Player Overrides — Clear default capsule backgrounds without adding borders */
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern .ytp-chrome-controls .ytp-button,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern .ytp-time-wrapper,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-volume-icon, .ytp-mute-button, .ypp-speed-btn):hover,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
+html[data-ypp-ui-style=frutiger-aero] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 6px !important;
+}
+
+/* 5. Custom Extension Button Sizing — Never override native YouTube buttons (.ytp-button) */
 html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn,
 html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn,
 html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(200, 235, 255, 0.7) 48%,
-    rgba(160, 220, 250, 0.6) 50%,
-    rgba(220, 245, 255, 0.85) 100%
-  ) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.9),
-    0 2px 6px rgba(0, 0, 0, 0.3) !important;
-  color: #0b5fa3 !important;
-  border-radius: 8px !important;
-  margin: 4px !important;
-  width: 40px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 6px !important;
+  min-width: 40px !important;
   height: 40px !important;
+  padding: 8px !important;
   box-sizing: border-box !important;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
 }
 
-/* Ensure inner svgs are centered in the 40px box */
-html[data-ypp-ui-style=frutiger-aero] .ytp-button svg,
-html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn svg,
-html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn svg,
-html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn svg {
-  margin: auto !important;
-  position: absolute !important;
-  top: 0; left: 0; bottom: 0; right: 0;
+html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn:hover:not([aria-disabled="true"]),
+html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn:hover:not([aria-disabled="true"]),
+html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn:hover:not([aria-disabled="true"]) {
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+  transform: scale(1.08) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] .ytp-right-controls {
-  border-radius: 0 !important;
+/* 6. Crisp White Colors for SVG Icons inside Player Bar — Do not force width/height on native YouTube SVGs */
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-button svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-player-controls .ypp-action-btn svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-player-controls .ypp-gpb-btn svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85)) !important;
 }
 
-/* Button hover — brighter gloss */
-html[data-ypp-ui-style=frutiger-aero] .ytp-button:hover,
-html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn:hover,
-html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn:hover,
-html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn:hover {
-  background: linear-gradient(
-    to bottom,
-    #ffffff,
-    rgba(180, 225, 255, 0.8) 48%,
-    rgba(130, 210, 250, 0.8) 50%,
-    rgba(200, 240, 255, 0.95)
-  ) !important;
-  box-shadow:
-    inset 0 2px 6px #fff,
-    0 0 12px rgba(53, 199, 240, 0.4),
-    0 2px 8px rgba(18, 168, 221, 0.3) !important;
-  border-color: rgba(107, 180, 215, 0.9) !important;
-  transform: scale(1.1) !important;
+html[data-ypp-ui-style=frutiger-aero] .ypp-player-controls .ypp-action-btn svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-player-controls .ypp-gpb-btn svg {
+  width: 24px !important;
+  height: 24px !important;
 }
 
-/* Button icons — blue not white */
-html[data-ypp-ui-style=frutiger-aero] .ytp-button svg,
-html[data-ypp-ui-style=frutiger-aero] .ytp-button .ytp-svg-fill,
-html[data-ypp-ui-style=frutiger-aero] .ytp-button path {
-  fill: #0b5fa3 !important;
-  color: #0b5fa3 !important;
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-button:hover svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-player-controls .ypp-action-btn:hover svg,
+html[data-ypp-ui-style=frutiger-aero] .ypp-player-controls .ypp-gpb-btn:hover svg {
+  fill: #e6f7ff !important;
+  filter: drop-shadow(0 0 6px rgba(118, 205, 250, 0.8)) !important;
 }
 
-/* Timestamp text */
+/* Ensure settings button and gear icon retain native dimensions, layout, and visibility */
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-settings-button,
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-settings-button.ytp-hd-quality-badge {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-settings-button svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85)) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure volume / mute button and volume area retain native layout and positioning */
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-volume-area,
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-volume-area .ytp-mute-button,
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-mute-button {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-volume-area .ytp-mute-button svg,
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ytp-mute-button svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  transform: none !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85)) !important;
+}
+
+/* 7. Custom Speed Pill (.ypp-speed-controls) — Compact Retro Pill without giant borders */
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-controls,
+html[data-ypp-ui-style=frutiger-aero] .ytp-chrome-controls .ypp-speed-controls {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 2px 4px !important;
+  gap: 2px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 28px !important;
+  margin: 0 6px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-btn,
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-controls .ypp-speed-btn {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  padding: 0 8px !important;
+  height: 22px !important;
+  line-height: 22px !important;
+  border-radius: 11px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  min-width: 0 !important;
+  width: auto !important;
+  margin: 0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-btn:hover,
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-controls .ypp-speed-btn:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  border: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-btn.active,
+html[data-ypp-ui-style=frutiger-aero] .ypp-speed-controls .ypp-speed-btn.active {
+  background: rgba(118, 205, 250, 0.35) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 6px rgba(118, 205, 250, 0.6) !important;
+  transform: none !important;
+}
+
+/* 8. Timestamp Legibility */
 html[data-ypp-ui-style=frutiger-aero] .ytp-time-current,
 html[data-ypp-ui-style=frutiger-aero] .ytp-time-duration,
 html[data-ypp-ui-style=frutiger-aero] .ytp-time-separator {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 9. Player & Extension Popup Menus (settings, speed, overflow, quality) */
+html[data-ypp-ui-style=frutiger-aero] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style=frutiger-aero] .ytp-popup.ytp-contextmenu,
+html[data-ypp-ui-style=frutiger-aero] .ytp-panel,
+html[data-ypp-ui-style=frutiger-aero] .ytp-panel-menu,
+html[data-ypp-ui-style=frutiger-aero] .ypp-overflow-menu {
+  background: rgba(255, 255, 255, 0.75) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-popup .ytp-menuitem-label,
+html[data-ypp-ui-style=frutiger-aero] .ytp-popup .ytp-menuitem-content {
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-popup svg,
+html[data-ypp-ui-style=frutiger-aero] .ytp-popup path {
+  fill: #0b5fa3 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-menuitem:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(200, 235, 255, 0.7) 48%,
+    rgba(160, 220, 250, 0.6) 50%,
+    rgba(220, 245, 255, 0.85)
+  ) !important;
+  border-radius: 6px !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] .ytp-menuitem:hover .ytp-menuitem-label,
+html[data-ypp-ui-style=frutiger-aero] .ytp-menuitem:hover .ytp-menuitem-content {
   color: #0b5fa3 !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) !important;
 }

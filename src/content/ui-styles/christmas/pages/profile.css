@@ -6,6 +6,7 @@ ytd-browse[page-subtype="channels"] {
 }
 #channel-header {
   background: var(--color-surface-overlay);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 2px solid var(--color-brand-500);
 }

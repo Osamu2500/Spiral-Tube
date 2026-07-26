@@ -80,8 +80,8 @@
 /* src/content/themes/ui-styles/liquid-glass/components/menus.css */
 .ytp-panel,
 .ytp-popup.ytp-settings-menu {
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
   background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
 }
 .ytp-menuitem:not([aria-disabled=true]) {
@@ -103,6 +103,7 @@
   padding: 0 5px !important;
   border-radius: 20px !important;
   box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
 .ytp-panel {

@@ -6,6 +6,7 @@
 html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip],
 html[data-ypp-ui-style=frutiger-aero] .fa-tooltip {
   background: rgba(18, 168, 221, 0.9) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
   backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
   color: #ffffff !important;
   border-radius: var(--fa-radius-sm, 8px) !important;

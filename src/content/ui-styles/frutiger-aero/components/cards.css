@@ -87,6 +87,7 @@ html[data-ypp-ui-style=frutiger-aero] .immersive-header-container.ytd-playlist-h
   border: 1px solid rgba(255,255,255,0.6) !important;
   box-shadow: var(--fa-elevation-2) !important;
   background: rgba(255,255,255,0.4) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-md));
   backdrop-filter: blur(var(--fa-blur-md));
 }
 
@@ -130,7 +131,6 @@ html[data-ypp-ui-style=frutiger-aero] ytd-topbar-logo-renderer:hover {
 html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
 html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
 html[data-ypp-ui-style=frutiger-aero] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
-  padding: 100px !important;
   border-radius: var(--fa-radius-lg) !important;
   box-shadow: var(--fa-elevation-2) !important;
 }
@@ -141,6 +141,7 @@ html[data-ypp-ui-style=frutiger-aero] ytd-reel-item-renderer #dismissible {
   border-radius: var(--fa-radius-lg) !important;
   border: 1px solid rgba(255,255,255,0.4) !important;
   background: rgba(255,255,255,0.1) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-sm));
   backdrop-filter: blur(var(--fa-blur-sm));
 }
 
@@ -153,22 +154,6 @@ html[data-ypp-ui-style=frutiger-aero] ytd-reel-item-renderer:hover #dismissible 
   transform: scale(1.05) !important;
   padding-bottom: 12px !important;
   margin-bottom: -12px !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer {
-  margin-left: 16px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer a#logo {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer a#logo > * {
-  display: none !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-renderer #country-code {
@@ -184,6 +169,7 @@ html[data-ypp-ui-style=frutiger-aero] body.yt-pro-premium ytd-topbar-logo-render
 
 html[data-ypp-ui-style=frutiger-aero] ytd-playlist-panel-renderer {
   background: rgba(255, 255, 255, 0.4) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-md));
   backdrop-filter: blur(var(--fa-blur-md));
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--fa-elevation-2) !important;
@@ -196,6 +182,7 @@ html[data-ypp-ui-style=frutiger-aero] #secondary-inner ytd-playlist-panel-render
 html[data-ypp-ui-style=frutiger-aero] ytd-settings-options-renderer,
 html[data-ypp-ui-style=frutiger-aero] ytd-account-settings-renderer {
   background: rgba(255, 255, 255, 0.5) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-lg));
   backdrop-filter: blur(var(--fa-blur-lg));
   border-radius: var(--fa-radius-xl) !important;
   box-shadow: inset 0 2px 10px rgba(255,255,255,0.9), var(--fa-elevation-3) !important;
@@ -218,6 +205,7 @@ html[data-ypp-ui-style=frutiger-aero] .overlay-dir.ytd-reel-video-renderer {
 html[data-ypp-ui-style=frutiger-aero] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-style=frutiger-aero] ytd-add-to-playlist-renderer {
   background: rgba(255, 255, 255, 0.7) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-lg));
   backdrop-filter: blur(var(--fa-blur-lg));
   border-radius: var(--fa-radius-xl) !important;
   box-shadow: var(--fa-elevation-4), inset 0 2px 10px rgba(255,255,255,1) !important;
@@ -231,6 +219,7 @@ html[data-ypp-ui-style=frutiger-aero] ytd-video-renderer,
 html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer {
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   background: rgba(255, 255, 255, 0.3) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-sm));
   backdrop-filter: blur(var(--fa-blur-sm));
   border-radius: var(--fa-radius-xl) !important;
   box-shadow: var(--fa-elevation-1), inset 0 2px 4px rgba(255,255,255,0.7) !important;
@@ -302,6 +291,7 @@ html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-card {
 
 html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-grid {
   background: rgba(255, 255, 255, 0.5) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-md));
   backdrop-filter: blur(var(--fa-blur-md));
   border: 1px solid rgba(255, 255, 255, 0.7) !important;
   border-radius: var(--fa-radius-md);

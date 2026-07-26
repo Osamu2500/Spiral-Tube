@@ -4,7 +4,7 @@
 
 html[data-ypp-ui-style=frutiger-aero] #masthead-container,
 html[data-ypp-ui-style=frutiger-aero] ytd-masthead {
-  position: sticky !important;
+  position: fixed !important;
   top: 0;
   z-index: var(--fa-z-navbar, 50) !important;
   width: 100%;

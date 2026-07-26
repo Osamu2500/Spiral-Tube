@@ -19,8 +19,8 @@ yt-live-chat-text-message-renderer:hover {
 yt-live-chat-app,
 yt-live-chat-renderer {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   border-radius: 24px !important;
   box-shadow: var(--shadow-base) !important;
   border: 1px solid rgba(128, 128, 128, 0.1) !important;
@@ -28,5 +28,6 @@ yt-live-chat-renderer {
 }
 #ticker.yt-live-chat-renderer {
   background: rgba(128, 128, 128, 0.1) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
 }

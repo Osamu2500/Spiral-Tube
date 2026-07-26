@@ -60,6 +60,7 @@ tp-yt-app-header {
   background: rgba(255, 255, 255, 0.05) !important;
   border-radius: 20px !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   color: white !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -71,8 +72,8 @@ tp-yt-app-header {
 .ypp-video-controls,
 .ypp-shadow-panel {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: var(--shadow-base) !important;
   border-radius: 24px !important;
@@ -81,6 +82,7 @@ tp-yt-app-header {
 .ypp-badge,
 .ypp-value-display {
   background: rgba(255, 255, 255, 0.1) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border-radius: 20px !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -88,8 +90,8 @@ tp-yt-app-header {
 .ypp-organizer-modal,
 .ypp-modal-content {
   background: rgba(10, 10, 15, 0.65) !important;
-  backdrop-filter: blur(32px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  backdrop-filter: blur(32px) saturate(200%) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 32px !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
@@ -99,8 +101,8 @@ tp-yt-app-header {
 }
 #ypp-pl-root .ypp-pl-toolbar {
   background: var(--sf) !important;
-  backdrop-filter: blur(25px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+  backdrop-filter: blur(25px) saturate(180%) !important;
   border-bottom: 1px solid rgba(128, 128, 128, 0.1) !important;
 }
 #ypp-pl-root .ypp-pl-btn-play,
@@ -110,6 +112,7 @@ tp-yt-app-header {
 #ypp-pl-root .ypp-pl-col-switcher {
   background: rgba(128, 128, 128, 0.08) !important;
   border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }

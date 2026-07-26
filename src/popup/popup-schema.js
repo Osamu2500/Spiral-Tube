@@ -299,7 +299,6 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideChannelBar',   label: t('hide_channel_bar'),   desc: t('hide_channel_bar_desc'),    icon:ICONS.channelBar },
                     { type:'toggle', id:'hideVideoDescription', label: t('hide_video_description'), desc: t('hide_video_description_desc'), icon:ICONS.descHidden },
                     { type:'toggle', id:'hideActionButtons', label: t('hide_action_buttons'), desc: t('hide_action_buttons_desc'), icon:ICONS.like },
-                    { type:'toggle', id:'copyLinkButton',    label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos },
                     { type:'toggle', id:'hideComments',   label: t('hide_comments'),       icon:ICONS.uiComponents },
                     { type:'toggle', id:'hideRelated',    label: t('hide_related_feed'),   desc: t('hide_sidebar_videos'), icon:P('M3 3h18v18H3zM14 8h6M14 12h6M14 16h6') },
                     { type:'toggle', id:'hideLiveChat',   label: t('hide_live_chat'),      icon:ICONS.uiComponents },

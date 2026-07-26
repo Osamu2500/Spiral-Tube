@@ -72,8 +72,8 @@ ytd-multi-page-menu-renderer {
   background: var(--tz-gloss), rgba(238, 252, 232, 0.97) !important;
   box-shadow: var(--shadow-hover) !important;
   border-radius: 24px !important;
-  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 #search-icon-legacy.ytd-searchbox,

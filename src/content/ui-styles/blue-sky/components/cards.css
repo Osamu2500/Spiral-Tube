@@ -225,6 +225,7 @@ ytd-video-renderer,
 ytd-playlist-video-renderer,
 ytd-grid-video-renderer {
   background: var(--sf) !important;
+  -webkit-backdrop-filter: blur(var(--sky-blur)) !important;
   backdrop-filter: blur(var(--sky-blur)) !important;
   border: var(--sky-border) !important;
   border-radius: 20px !important;
@@ -234,6 +235,7 @@ ytd-grid-video-renderer {
 }
 ytd-reel-video-renderer {
   background: rgba(255, 255, 255, 0.2) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   border-radius: 32px !important;
   box-shadow: 0 15px 45px rgba(135, 206, 250, 0.2) !important;

@@ -17,8 +17,8 @@ ytd-masthead #container::before {
 
 ytd-masthead #container {
     background: rgba(183, 28, 28, 0.85) !important;
-    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     border-bottom: 2px solid rgba(255, 255, 255, 0.4) !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
     transition: background 0.3s ease, box-shadow 0.3s ease !important;

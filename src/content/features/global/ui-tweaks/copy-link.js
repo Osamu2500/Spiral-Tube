@@ -42,12 +42,13 @@ export class CopyLinkButton extends window.YPP.features.BaseFeature {
         if (!this.isEnabled) return;
         
         nodes.forEach(node => {
-            // Find the action menu container
-            const menuContainer = node.querySelector('#menu');
-            if (!menuContainer) return;
+            // Find the action menu renderer
+            const menuRenderer = node.querySelector('ytd-menu-renderer');
+            if (!menuRenderer) return;
+            const menuContainer = menuRenderer.parentElement;
             
-            // If button already exists in this menu, skip
-            if (menuContainer.querySelector('.ypp-copy-link-btn')) return;
+            // If button already exists in this node, skip
+            if (node.querySelector('.ypp-copy-link-btn')) return;
             
             const btn = document.createElement('button');
             btn.className = 'ypp-copy-link-btn';
@@ -81,13 +82,11 @@ export class CopyLinkButton extends window.YPP.features.BaseFeature {
                 }
             });
             
-            // Remove inline style manipulation to prevent breaking YouTube's native hover rules
-            // Place inside #menu, before the three-dots renderer if it exists
-            const menuRenderer = menuContainer.querySelector('ytd-menu-renderer');
-            if (menuRenderer) {
-                menuContainer.insertBefore(btn, menuRenderer);
-            } else {
-                menuContainer.appendChild(btn);
+            // Place before the menu container so it isn't hidden by the parent's hover rules
+            if (menuContainer && menuContainer.parentElement) {
+                menuContainer.parentElement.insertBefore(btn, menuContainer);
+            } else if (menuRenderer && menuRenderer.parentElement) {
+                menuRenderer.parentElement.insertBefore(btn, menuRenderer);
             }
         });
     }

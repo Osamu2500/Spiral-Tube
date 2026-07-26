@@ -38,8 +38,8 @@
     rgba(255, 255, 255, 0.08),
     rgba(255, 255, 255, 0.02)
   ) !important;
-  backdrop-filter: blur(32px) saturate(1.5) !important;
   -webkit-backdrop-filter: blur(32px) saturate(1.5) !important;
+  backdrop-filter: blur(32px) saturate(1.5) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; /* Lighter top, darker bottom */
   border-radius: var(--ypp-radius-pill);
@@ -151,10 +151,10 @@
 }
 
 /* Voice Search Button */
-.yt-spiral-tube-theme #voice-search-button {
-  background: rgba(0, 0, 0, 0.2) !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+body #voice-search-button {
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
   border-radius: 14px !important; /* Premium Squircle */
   margin-left: 12px;
   width: 40px;
@@ -163,13 +163,19 @@
   align-items: center !important;
   justify-content: center !important;
   transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+body #voice-search-button yt-icon,
+body #voice-search-button svg {
+  fill: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
 }
 
-.yt-spiral-tube-theme #voice-search-button:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+body #voice-search-button:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
   transform: translateY(-1px) scale(1.05) !important;
   box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* Center Section Alignment */
@@ -183,30 +189,49 @@
 }
 
 /* TopBar Buttons (Notifications, Create, etc) */
-.yt-spiral-tube-theme ytd-notification-topbar-button-renderer {
+body ytd-notification-topbar-button-renderer,
+body ytd-masthead #buttons yt-button-shape > button,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
   border-radius: 14px !important; /* Premium Squircle */
-  width: 40px !important;
-  height: 40px !important;
-  background: rgba(0, 0, 0, 0.2) !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  margin-left: 8px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+/* Ensure the Create button keeps its auto width for text */
+body ytd-notification-topbar-button-renderer {
+  width: 40px !important;
+  height: 40px !important;
+  margin-left: 8px !important;
   overflow: hidden !important;
 }
 
-.yt-spiral-tube-theme ytd-notification-topbar-button-renderer:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+body ytd-notification-topbar-button-renderer yt-icon,
+body ytd-notification-topbar-button-renderer svg,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) yt-icon,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) svg,
+body ytd-masthead #buttons yt-button-shape yt-icon,
+body ytd-masthead #buttons yt-button-shape * {
+  fill: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+}
+
+body ytd-notification-topbar-button-renderer:hover,
+body ytd-masthead #buttons yt-button-shape > button:hover,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)):hover {
+  background: rgba(255, 255, 255, 0.25) !important;
   transform: translateY(-1px) scale(1.05) !important;
   box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* Fix inner button of notification to be transparent/full size */
-.yt-spiral-tube-theme ytd-notification-topbar-button-renderer #button {
+body ytd-notification-topbar-button-renderer #button,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) #button {
   width: 100% !important;
   height: 100% !important;
   background: transparent !important;
@@ -220,13 +245,13 @@
 }
 
 /* Profile Avatar Outer Container */
-.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img) {
+body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img) {
   border-radius: 14px !important; /* Premium Squircle */
   width: 40px !important;
   height: 40px !important;
-  background: rgba(0, 0, 0, 0.2) !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
   margin-left: 12px !important;
   display: flex !important;
   align-items: center !important;
@@ -235,13 +260,14 @@
   overflow: hidden !important;
   padding: 0 !important;
 }
-.yt-spiral-tube-theme ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):hover {
+body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):hover {
   transform: translateY(-1px) scale(1.05) !important;
-  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.1) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* Make inner profile button transparent and full size */
-.yt-spiral-tube-theme #avatar-btn {
+body #avatar-btn {
   width: 100% !important;
   height: 100% !important;
   background: transparent !important;
@@ -252,8 +278,8 @@
 }
 
 /* Ensure Image Fills */
-.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
-.yt-spiral-tube-theme #avatar-btn img {
+body #avatar-btn yt-img-shadow,
+body #avatar-btn img {
   width: 100% !important;
   height: 100% !important;
   border-radius: 0 !important; /* Let container handle shape */
@@ -291,6 +317,7 @@
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   color: var(--ypp-text-secondary);
   transition:

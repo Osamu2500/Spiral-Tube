@@ -1,1 +1,38 @@
 /* pages/watch.css - Empty by default */
+
+
+/* YouTube UI Update Fixes for Glassmorphic themes (Watch Page) */
+
+/* 1. Action Buttons inner backgrounds */
+ytd-menu-renderer yt-button-shape button,
+.yt-spec-button-shape-next--tonal,
+segmented-like-dislike-button-view-model,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+ytd-download-button-renderer yt-button-shape button,
+ytd-button-renderer yt-button-shape button,
+ytd-menu-renderer yt-button-shape .yt-touch-feedback-shape__fill,
+yt-button-shape .yt-spec-touch-feedback-shape__fill,
+.yt-spec-button-shape-next--tonal .yt-spec-touch-feedback-shape__fill,
+.yt-spec-button-shape-next .yt-spec-touch-feedback-shape__fill,
+yt-button-view-model .yt-spec-touch-feedback-shape__fill {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 2. Description Container */
+ytd-watch-metadata #description-inner,
+ytd-watch-metadata #description,
+ytd-text-inline-expander {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 3. Channel Bar Container */
+ytd-video-owner-renderer,
+ytd-watch-metadata #owner,
+#owner-inner.ytd-video-owner-renderer {
+  background-color: transparent !important;
+  background: transparent !important;
+}

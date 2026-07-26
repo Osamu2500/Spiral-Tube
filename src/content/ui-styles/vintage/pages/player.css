@@ -57,7 +57,7 @@ tp-yt-iron-dropdown,
   border: var(--vintage-border) !important;
   box-shadow: var(--shadow-base) !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button),
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
   background: none !important;
@@ -68,14 +68,14 @@ tp-yt-iron-dropdown,
     background var(--bounce) !important;
   border-radius: 4px !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):hover,
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
   background: var(--sf) !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active,
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):active,
 .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active,
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:active {
   transform: scale(0.95);

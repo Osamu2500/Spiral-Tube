@@ -3,6 +3,7 @@
 /* Make comment boxes light and glassy */
 html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model {
   background: rgba(255, 255, 255, 0.6) !important;
+  -webkit-backdrop-filter: blur(var(--fa-blur-md));
   backdrop-filter: blur(var(--fa-blur-md));
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   border-radius: var(--fa-radius-lg) !important;

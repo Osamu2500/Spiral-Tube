@@ -3,6 +3,7 @@
 .ypp-vcp-compare-toggle {
   background: rgba(128, 128, 128, 0.05) !important;
   border: 1px solid rgba(128, 128, 128, 0.1) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -15,16 +16,16 @@
 #ypp-global-player-bar,
 .ypp-global-bar {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: var(--shadow-base) !important;
 }
 #ypp-eq-panel,
 #ypp-cinema-panel {
   background: var(--sf) !important;
-  backdrop-filter: blur(45px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(45px) saturate(200%) !important;
+  backdrop-filter: blur(45px) saturate(200%) !important;
   border: 1px solid rgba(128, 128, 128, 0.15) !important;
   border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
   box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
@@ -43,8 +44,8 @@
 .ypp-global-player-bar,
 #ypp-global-player-bar {
   background: var(--sf) !important;
-  backdrop-filter: blur(35px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
+  backdrop-filter: blur(35px) saturate(200%) !important;
   border: 1px solid rgba(128, 128, 128, 0.1) !important;
   box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
@@ -58,4 +59,40 @@
   background: rgba(128, 128, 128, 0.03) !important;
   border: 1px solid rgba(128, 128, 128, 0.08) !important;
   border-radius: 12px !important;
+}
+
+/* YouTube UI Update Fixes for Glassmorphic themes (Watch Page) */
+
+/* 1. Action Buttons inner backgrounds */
+ytd-menu-renderer yt-button-shape button,
+.yt-spec-button-shape-next--tonal,
+segmented-like-dislike-button-view-model,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+ytd-download-button-renderer yt-button-shape button,
+ytd-button-renderer yt-button-shape button,
+ytd-menu-renderer yt-button-shape .yt-touch-feedback-shape__fill,
+yt-button-shape .yt-spec-touch-feedback-shape__fill,
+.yt-spec-button-shape-next--tonal .yt-spec-touch-feedback-shape__fill,
+.yt-spec-button-shape-next .yt-spec-touch-feedback-shape__fill,
+yt-button-view-model .yt-spec-touch-feedback-shape__fill {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 2. Description Container */
+ytd-watch-metadata #description-inner,
+ytd-watch-metadata #description,
+ytd-text-inline-expander {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 3. Channel Bar Container */
+ytd-video-owner-renderer,
+ytd-watch-metadata #owner,
+#owner-inner.ytd-video-owner-renderer {
+  background-color: transparent !important;
+  background: transparent !important;
 }

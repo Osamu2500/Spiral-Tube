@@ -9,6 +9,7 @@ html[data-ypp-ui-style=frutiger-aero] .fa-card-gradient {
     rgba(53, 199, 240, 0.6) 50%,
     rgba(180, 235, 255, 0.4) 100%
   );
+  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px));
   backdrop-filter: blur(var(--fa-blur-md, 8px));
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-top-color: rgba(255, 255, 255, 0.8);

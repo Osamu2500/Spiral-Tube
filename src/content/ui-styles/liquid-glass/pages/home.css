@@ -1,5 +1,6 @@
 #frosted-glass.with-chipbar.ytd-app {
   background: none !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
 #guide-content.ytd-app {
@@ -7,8 +8,8 @@
 }
 #guide-wrapper.ytd-app {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
+  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   border-radius: calc(20px * 1.15) / 20px !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
   box-shadow: var(--shadow-base) !important;
@@ -27,8 +28,8 @@ yt-icon-button#guide-button {
 }
 yt-icon-button#guide-button:hover {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
@@ -57,8 +58,8 @@ ytd-browse[page-subtype=home] #chips {
   margin: 16px 0 0 0 !important;
   border-radius: 2000px !important;
   box-shadow: var(--shadow-active) !important;
-  backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   position: relative !important;
   overflow: hidden !important;
   padding: 0 10px !important;
@@ -71,6 +72,7 @@ ytd-browse[page-subtype=home] #chips {
 }
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   background: transparent !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
   border-radius: 300px !important;
@@ -125,6 +127,7 @@ iron-selector.yt-chip-cloud-renderer {
 }
 ytd-settings-sidebar-renderer {
   background: var(--sf) !important;
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   backdrop-filter: blur(var(--blur)) saturate(180%) !important;
   border-radius: 24px !important;
   box-shadow: var(--shadow-base) !important;
@@ -154,6 +157,7 @@ yt-chip-cloud-chip-renderer {
   --chip-radius: 12px;
   --chip-border: 1px solid rgba(255, 255, 255, 0.2);
   --chip-bg: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 yt-chip-cloud-chip-renderer[selected] {
@@ -163,8 +167,8 @@ yt-chip-cloud-chip-renderer[selected] {
 }
 #ypp-pl-root .ypp-pl-sidebar {
   background: var(--sf) !important;
-  backdrop-filter: blur(35px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
+  backdrop-filter: blur(35px) saturate(200%) !important;
   border: 1px solid rgba(128, 128, 128, 0.1) !important;
   border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
   box-shadow: var(--shadow-base) !important;

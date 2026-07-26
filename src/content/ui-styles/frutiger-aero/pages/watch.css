@@ -39,6 +39,7 @@ html[data-ypp-ui-style=frutiger-aero] yt-button-shape button {
     background 0.2s ease !important;
   position: relative !important;
   overflow: hidden !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -169,4 +170,60 @@ html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata ytd-menu-renderer butto
     0 2px 8px rgba(18, 168, 221, 0.18) !important;
   border-radius: 500px !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* YouTube UI Update Fixes for Glassmorphic themes (Watch Page) */
+
+/* 1. Action Buttons inner backgrounds */
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer yt-button-shape .yt-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] yt-button-shape .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--tonal .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer yt-button-shape button.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style=frutiger-aero] segmented-like-dislike-button-view-model .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style=frutiger-aero] ytd-download-button-renderer yt-button-shape button.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style=frutiger-aero] ytd-button-renderer yt-button-shape button.yt-spec-button-shape-next--tonal {
+  background-color: transparent !important;
+}
+
+/* 2. Description Container fix - do not make the main #description container transparent, only the inner ones */
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style=frutiger-aero] ytd-text-inline-expander {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 3. Channel Bar Container fix & Layout */
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner {
+  background: rgba(255, 255, 255, 0.4) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 8px rgba(18, 168, 221, 0.1) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] #owner-inner.ytd-video-owner-renderer {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 4. Global Text Rendering Fix for Watch Page */
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata h1,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata h1 yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner a,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description yt-formatted-string,
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description span {
+  color: #111111 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.5) !important;
+  font-weight: 500 !important;
+}
+
+html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description {
+  color: #111111 !important;
 }

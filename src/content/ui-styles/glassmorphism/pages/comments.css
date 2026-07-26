@@ -1,1 +1,17 @@
 /* pages/comments.css - Empty by default */
+
+
+/* YouTube UI Update Fixes for Glassmorphic themes (Comments Page) */
+
+/* 1. Comments Container & Inner elements */
+ytd-comments-header-renderer,
+ytd-comment-view-model,
+ytd-comment-thread-renderer,
+#author-thumbnail,
+#main,
+#header.ytd-comment-view-model,
+#expander,
+#body.ytd-comment-view-model {
+  background-color: transparent !important;
+  background: transparent !important;
+}

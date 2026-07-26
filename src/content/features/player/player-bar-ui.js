@@ -26,6 +26,7 @@ export class PlayerBarUI {
                 setTimeout(() => this.attemptInjection(), 2000);
             };
             document.addEventListener('yt-navigate-finish', this._navigateListener);
+            document.addEventListener('yt-page-data-updated', this._navigateListener);
         }
         
         this.setupInjectionObserver();
@@ -99,12 +100,12 @@ export class PlayerBarUI {
         if (isShorts) {
             const activeShort = video.closest('ytd-reel-video-renderer');
             if (activeShort) {
-                const existing = activeShort.querySelector('.ypp-player-controls');
-                if (existing) existing.remove();
+                const existing = activeShort.querySelectorAll('.ypp-player-controls');
+                existing.forEach(e => e.remove());
             }
         } else {
-            const existing = document.querySelector('.ypp-player-controls');
-            if (existing) existing.remove();
+            const existing = document.querySelectorAll('.ypp-player-controls');
+            existing.forEach(e => e.remove());
         }
 
         this.updateCustomStyles();

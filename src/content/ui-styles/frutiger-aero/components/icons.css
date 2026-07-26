@@ -11,7 +11,6 @@ html[data-ypp-ui-style=frutiger-aero] yt-icon-shape svg {
 html[data-ypp-ui-style=frutiger-aero] yt-icon:hover svg,
 html[data-ypp-ui-style=frutiger-aero] yt-icon-shape:hover svg {
   filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 1)) drop-shadow(0 0 5px rgba(53, 199, 240, 0.9)) drop-shadow(0 0 12px rgba(18, 168, 221, 0.5));
-  transform: scale(1.05);
 }
 
 /* Custom app icon buttons */
@@ -30,13 +29,11 @@ html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn:hover {
   background: linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(200,235,255,0.6)) !important;
   box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,1) !important;
   border-color: rgba(255,255,255,0.8) !important;
-  transform: scale(1.1) !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] .ypp-gpb-btn:active,
 html[data-ypp-ui-style=frutiger-aero] .ypp-action-btn:active,
 html[data-ypp-ui-style=frutiger-aero] .ypp-icon-btn:active {
-  transform: scale(0.95) !important;
   box-shadow: inset 0 2px 8px rgba(0,0,0,0.1) !important;
 }
 
@@ -71,7 +68,6 @@ html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegm
 
 html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover yt-icon svg {
   filter: drop-shadow(0 1px 0 rgba(255,255,255,1)) drop-shadow(0 0 6px rgba(53,199,240,0.9));
-  transform: scale(1.15);
 }
 
 /* Subscribe bell notification icon */
@@ -127,5 +123,4 @@ html[data-ypp-ui-style=frutiger-aero] #guide-button yt-icon svg {
 
 html[data-ypp-ui-style=frutiger-aero] #guide-button:hover yt-icon svg {
   filter: drop-shadow(0 1px 0 rgba(255,255,255,1)) drop-shadow(0 0 8px rgba(53,199,240,0.8));
-  transform: scale(1.1);
 }

@@ -12,8 +12,8 @@ ytd-masthead,
 ytd-masthead #container {
   border-radius: 3000px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   margin: 1px !important;
   box-shadow: var(--shadow-active) !important;
   border: none !important;
@@ -55,8 +55,8 @@ tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
 #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
   border-radius: 2000px !important;
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -81,8 +81,8 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
 }
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   background: var(--sf) !important;
-  backdrop-filter: blur(var(--blur)) !important;
   -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
