@@ -726,38 +726,65 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                     setTimeout(() => window.location.reload(), 100);
                 }
 
-                if (key === 'youtubePageTheme' && el.value && el.value !== 'default') {
-                    // Automatically sync Theme Engine and Card Style!
+                if (key === 'youtubePageTheme' && el.value) {
                     const uiStyle = el.value;
-                    
-                    // Map UI Style to Color Theme key
                     const themeMap = {
+                        'default': 'default',
                         'nature': 'forest',
                         'liquid-glass': 'default',
                         'neumorphic': 'default'
                     };
                     const newTheme = themeMap[uiStyle] || uiStyle;
-                    
-                    // Trigger the theme grid button to properly apply colors
                     const themeBtn = document.querySelector(`.theme-btn[data-theme="${newTheme}"]`);
-                    if (themeBtn) {
+                    if (themeBtn && !themeBtn.classList.contains('active')) {
                         themeBtn.click();
                     }
                     
-                    // The Card Style setting is hidden, we must update the UI buttons too
                     if (state.elements.cardStyle) {
                         const cardStyleMap = {
+                            'default': 'default',
                             'liquid-glass': 'glass',
                             'forest': 'nature',
                             'technozen': 'minimalist'
                         };
                         const mappedCardStyle = cardStyleMap[uiStyle] || uiStyle;
-                        
-                        state.elements.cardStyle.value = mappedCardStyle;
-                        document.querySelectorAll('.card-style-btn').forEach(b => {
-                            b.classList.toggle('active', b.dataset.style === mappedCardStyle);
+                        if (state.elements.cardStyle.value !== mappedCardStyle) {
+                            state.elements.cardStyle.value = mappedCardStyle;
+                            document.querySelectorAll('.card-style-btn').forEach(b => {
+                                b.classList.toggle('active', b.dataset.style === mappedCardStyle);
+                            });
+                            state.elements.cardStyle.dispatchEvent(new Event('change', { bubbles: true }));
+                        }
+                    }
+                }
+                
+                if (key === 'cardStyle' && el.value) {
+                    const cardVal = el.value;
+                    const reverseUiMap = {
+                        'default': 'default',
+                        'glass': 'liquid-glass',
+                        'nature': 'nature',
+                        'minimalist': 'technozen'
+                    };
+                    const targetUiStyle = reverseUiMap[cardVal] || cardVal;
+                    if (state.elements.youtubePageTheme && state.elements.youtubePageTheme.value !== targetUiStyle) {
+                        state.elements.youtubePageTheme.value = targetUiStyle;
+                        document.querySelectorAll('.youtube-style-btn').forEach(b => {
+                            b.classList.toggle('active', b.dataset.style === targetUiStyle);
                         });
-                        state.elements.cardStyle.dispatchEvent(new Event('change', { bubbles: true }));
+                        state.elements.youtubePageTheme.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    
+                    const reverseThemeMap = {
+                        'default': 'default',
+                        'glass': 'default',
+                        'nature': 'forest',
+                        'minimalist': 'technozen'
+                    };
+                    const targetTheme = reverseThemeMap[cardVal] || cardVal;
+                    const themeBtn = document.querySelector(`.theme-btn[data-theme="${targetTheme}"]`);
+                    if (themeBtn && !themeBtn.classList.contains('active')) {
+                        themeBtn.click();
                     }
                 }
                 

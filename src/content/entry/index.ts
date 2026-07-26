@@ -314,6 +314,28 @@ import { AutoCinema } from '../features/player/automation/auto-cinema.js';
 window.YPP.FeatureManager.register(AutoCinema);
 import { AutoPiP } from '../features/player/automation/auto-pip.js';
 window.YPP.FeatureManager.register(AutoPiP);
+import { RealCinemaMode } from '../features/player/enhancements/real-cinema-mode.js';
+window.YPP.FeatureManager.register(RealCinemaMode);
+import { LiveStreamTime } from '../features/player/enhancements/live-stream-time.js';
+window.YPP.FeatureManager.register(LiveStreamTime);
+import { TwoColumnSubscriptions } from '../features/pages/subscriptions/two-column-subscriptions.js';
+window.YPP.FeatureManager.register(TwoColumnSubscriptions);
+import { FlexWidthPlayer } from '../features/player/enhancements/flex-width-player.js';
+window.YPP.FeatureManager.register(FlexWidthPlayer);
+import { CompactPlayerUI } from '../features/player/enhancements/compact-player-ui.js';
+window.YPP.FeatureManager.register(CompactPlayerUI);
+import { SaveSupremeUI } from '../features/global/ui-tweaks/save-supreme-ui.js';
+window.YPP.FeatureManager.register(SaveSupremeUI);
+import { CustomizeYouTubeUI } from '../features/global/ui-tweaks/customize-youtube-ui.js';
+window.YPP.FeatureManager.register(CustomizeYouTubeUI);
+import { CPUTamer } from '../features/global/behavior/cpu-tamer.js';
+window.YPP.FeatureManager.register(CPUTamer);
+import { TabviewSidebar } from '../features/global/layout/tabview-sidebar.js';
+window.YPP.FeatureManager.register(TabviewSidebar);
+import { VideoEnhancerTools } from '../features/player/enhancements/video-enhancer-tools.js';
+window.YPP.FeatureManager.register(VideoEnhancerTools);
+import { StarTubeLayout } from '../features/global/ui-tweaks/startube-layout.js';
+window.YPP.FeatureManager.register(StarTubeLayout);
 import '../features/player/controls/sidebar-layout.css';
 
 // Feature Manager & Main entry

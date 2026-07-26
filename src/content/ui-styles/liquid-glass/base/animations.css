@@ -1,109 +1,97 @@
-/* src/content/themes/ui-styles/liquid-glass/base/animations.css */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.1);
-  color: white !important;
-  animation: youtubeRedPulse 5s ease-in-out infinite;
+/* =========================================================
+   LIQUID GLASS — ANIMATIONS & OPTICAL EFFECTS
+   Specular Edge Sweep, Liquid Shimmer & Levitation
+   ========================================================= */
+
+@keyframes ypp-liquid-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
-@keyframes youtubeRedPulse {
+
+@keyframes ypp-liquid-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes ypp-liquid-pulse {
   0% {
     box-shadow:
-      inset 0 0 25px red,
-      inset 0 0 50px red,
-      0 0 15px red,
-      0 0 30px red;
+      0 0 12px rgba(255, 255, 255, 0.15),
+      0 0 24px rgba(255, 255, 255, 0.08);
   }
   50% {
     box-shadow:
-      inset 0 0 25px #f06,
-      inset 0 0 50px #f06,
-      0 0 15px #f06,
-      0 0 30px #f06;
+      0 0 22px rgba(255, 255, 255, 0.30),
+      0 0 45px rgba(255, 255, 255, 0.15);
   }
   100% {
     box-shadow:
-      inset 0 0 25px red,
-      inset 0 0 50px red,
-      0 0 15px red,
-      0 0 30px red;
+      0 0 12px rgba(255, 255, 255, 0.15),
+      0 0 24px rgba(255, 255, 255, 0.08);
   }
 }
-.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+
+@keyframes ypp-specular-sweep {
+  0% {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Subscribe button hover luminescence */
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.06) !important;
+  color: white !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+  animation: ypp-liquid-pulse 3s ease-in-out infinite !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
   background: none !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
-  transition: background var(--bounce) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {
+  transition: background var(--lg-spring) !important;
 }
-body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
-  content: "";
-  display: block !important;
-  width: 34px !important;
-  height: 24px !important;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  margin-right: 2px !important;
+
+/* Card Hover Specular Light Shimmer Effect */
+html[data-ypp-ui-style="liquid-glass"] ytd-rich-item-renderer::before,
+html[data-ypp-ui-style="liquid-glass"] ytd-video-renderer::before,
+html[data-ypp-ui-style="liquid-glass"] ytd-grid-video-renderer::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -2px !important;
+  z-index: -1 !important;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 65%) !important;
+  filter: blur(20px) !important;
+  opacity: 0 !important;
+  transition: opacity 0.45s var(--lg-smooth), transform 0.45s var(--lg-smooth) !important;
+  border-radius: 26px !important;
+  transform: scale(0.95) !important;
+  pointer-events: none !important;
 }
-body.yt-pro-premium ytd-topbar-logo-renderer a#logo::after {
-  content: "Premium";
-  display: block !important;
-  font-family:
-    "YouTube Sans",
-    "Roboto",
-    "Segoe UI",
-    Arial,
-    sans-serif !important;
-  font-size: 22px !important;
-  font-weight: 500 !important;
-  color: #ffffff !important;
-  margin-left: 2px !important;
-  letter-spacing: -0.5px !important;
-  line-height: 22px !important;
-}
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
-  transform: scale(1.08) !important;
-  color: white !important;
-  box-shadow:
-    inset 0 0 25px red,
-    inset 0 0 50px red,
-    0 0 15px red,
-    0 0 30px red !important;
-  animation: youtubeRedPulse 5s ease-in-out infinite !important;
-}
-ytd-rich-grid-media::after,
-ytd-compact-video-renderer::after,
-ytd-video-renderer::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 50px;
-  height: 50px;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%2210%22%2F%3E%3Cpath%20d%3D%22M12%208v8M8%2012h8%22%2F%3E%3C%2Fsvg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  pointer-events: none;
-  transform: rotate(15deg);
-}
-ytd-rich-item-renderer::before,
-ytd-video-renderer::before,
-ytd-grid-video-renderer::before {
-  content: "";
-  position: absolute;
-  inset: -15px;
-  z-index: -1;
-  background: var(--ypp-thumb-color, conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg));
-  filter: blur(40px);
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 24px;
-  transform: scale(0.9);
-  pointer-events: none;
-}
-ytd-rich-item-renderer:hover::before,
-ytd-video-renderer:hover::before,
-ytd-grid-video-renderer:hover::before {
-  opacity: 0.6;
-  transform: scale(1);
+
+html[data-ypp-ui-style="liquid-glass"] ytd-rich-item-renderer:hover::before,
+html[data-ypp-ui-style="liquid-glass"] ytd-video-renderer:hover::before,
+html[data-ypp-ui-style="liquid-glass"] ytd-grid-video-renderer:hover::before {
+  opacity: 0.8 !important;
+  transform: scale(1) !important;
 }

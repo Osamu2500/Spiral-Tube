@@ -1,22 +1,103 @@
-.anchored-panel.ytd-shorts {
-  background: var(--sf) !important;
-  padding: 5px;
-  border: none !important;
-  border-radius: 30px !important;
-  box-shadow: var(--shadow-active) !important;
-  margin-top: 15px !important;
+/* =========================================================
+   LIQUID GLASS — EXTENSION CUSTOM PANELS & MODALS
+   Level 2 Frosted Control Pods (EQ, Cinema, Organizer)
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] #ypp-eq-panel,
+html[data-ypp-ui-style="liquid-glass"] #ypp-cinema-panel,
+html[data-ypp-ui-style="liquid-glass"] #ypp-global-player-bar,
+html[data-ypp-ui-style="liquid-glass"] .ypp-global-bar {
+  background: var(--lg-bg-level-2, rgba(30, 30, 30, 0.82)) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
+  border: var(--lg-border-specular) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
+  color: #ffffff !important;
+  overflow: hidden !important;
 }
-ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
-  border-bottom: none;
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-header,
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-footer,
+html[data-ypp-ui-style="liquid-glass"] .ypp-intensity-section,
+html[data-ypp-ui-style="liquid-glass"] .ypp-adjust-card-header {
+  background: transparent !important;
+  border-bottom: var(--lg-border-subtle) !important;
+  border-top: var(--lg-border-subtle) !important;
 }
-ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
-  background: none !important;
+
+/* EQ Frequency Canvas & Sliders */
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-canvas {
+  background: rgba(20, 20, 20, 0.75) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 18px !important;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
-ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
-  border: none !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-hslider,
+html[data-ypp-ui-style="liquid-glass"] .ypp-vcp-slider,
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-vslider {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 2000px !important;
+  height: 6px !important;
+  accent-color: #ffffff !important;
 }
-#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: 200px !important;
-  border: none !important;
-  box-shadow: var(--shadow-hover) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-preset-btn,
+html[data-ypp-ui-style="liquid-glass"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-style="liquid-glass"] .ypp-vcp-compare-toggle {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 2000px !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-preset-btn:hover,
+html[data-ypp-ui-style="liquid-glass"] .ypp-cinema-tab-btn:hover,
+html[data-ypp-ui-style="liquid-glass"] .ypp-vcp-compare-toggle:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-eq-preset-btn.active,
+html[data-ypp-ui-style="liquid-glass"] .ypp-cinema-tab-btn.active {
+  background: rgba(255, 255, 255, 0.90) !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+}
+
+/* Playlist Organizer Modal Panels */
+html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 20px !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-card:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-3px) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-duration-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 18px !important;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-duration-grid {
+  background: rgba(20, 20, 20, 0.55) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 18px !important;
 }

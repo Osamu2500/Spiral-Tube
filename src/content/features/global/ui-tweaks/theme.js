@@ -684,7 +684,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         
         const ytTheme = this._settings.youtubePageTheme;
 
-        if (ytTheme && ytTheme !== 'default' && finalCardStyle === 'glass') {
+        if (ytTheme === 'default') {
+            finalCardStyle = 'default';
+        } else if (ytTheme && ytTheme !== 'default' && (finalCardStyle === 'glass' || finalCardStyle === 'default')) {
              if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
              else if (ytTheme === 'nature') finalCardStyle = 'nature';
              else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
@@ -706,7 +708,11 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
              else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
         }
 
-        root.setAttribute('data-ypp-card-style', finalCardStyle);
+        if (!finalCardStyle || finalCardStyle === 'default' || finalCardStyle === 'none') {
+            root.removeAttribute('data-ypp-card-style');
+        } else {
+            root.setAttribute('data-ypp-card-style', finalCardStyle);
+        }
         this._applyCardStyle(finalCardStyle);
     }
 
@@ -730,11 +736,12 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         // Also manage the search compatibility stylesheet
         const searchCompatId = 'ypp-search-card-compat-css';
 
-        if (!cardStyleKey || cardStyleKey === 'default') {
+        if (!cardStyleKey || cardStyleKey === 'default' || cardStyleKey === 'none') {
             if (linkVars) linkVars.remove();
             // Remove search compat too when no card style is active
             const searchCompatLink = document.getElementById(searchCompatId);
             if (searchCompatLink) searchCompatLink.remove();
+            document.documentElement.removeAttribute('data-ypp-card-style');
             return;
         }
 

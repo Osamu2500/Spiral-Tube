@@ -1,149 +1,86 @@
-ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
-  background-color: black !important;
-  margin-right: 10px;
-  border-radius: 10px !important;
-  box-shadow: var(--shadow-hover) !important;
+/* =========================================================
+   LIQUID GLASS — MENUS & DIALOG MODALS
+   Level 2 Elevated Specular Acrylic Dropdowns
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="liquid-glass"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-account-settings-renderer {
+  background: var(--lg-bg-level-2, rgba(30, 30, 30, 0.85)) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
+  border-radius: 24px !important;
+  border: var(--lg-border-specular) !important;
+  box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
+  padding: 8px !important;
+  overflow: hidden !important;
 }
-#trigger.tp-yt-paper-menu-button {
-  padding: 10px !important;
-  border-radius: 2000px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+
+html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-popup-renderer #content {
+  background: transparent !important;
+  border: none !important;
 }
-#trigger.tp-yt-paper-menu-button:hover {
-  transform: scale(1.1) !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-compact-link-renderer {
+  border-radius: 16px !important;
+  margin: 4px 6px !important;
+  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
+  color: var(--lg-text-primary, #ffffff) !important;
 }
-.ytLockupMetadataViewModelMenuButton {
-  overflow: visible !important;
-}
-.ytLockupMetadataViewModelMenuButton button-view-model,
-.ytLockupMetadataViewModelMenuButton button {
-  opacity: 1 !important;
-  visibility: visible !important;
-  border-radius: 2000px !important;
-  transition: background var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytLockupMetadataViewModelMenuButton button:hover {
+
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-compact-link-renderer:hover {
   background: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
-  transform: none !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
-.ytLockupMetadataViewModelMenuButton yt-interaction .fill,
-.ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+
+/* Share Panel & Add to Playlist Dialog Box */
+html[data-ypp-ui-style="liquid-glass"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-add-to-playlist-renderer {
+  background: var(--lg-bg-level-2, rgba(30, 30, 30, 0.88)) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
+  border-radius: 32px !important;
+  border: var(--lg-border-specular) !important;
+  box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
+  padding: 24px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-unified-share-panel-renderer #header,
+html[data-ypp-ui-style="liquid-glass"] ytd-add-to-playlist-renderer #header {
+  border-bottom: var(--lg-border-subtle) !important;
   background: transparent !important;
-  opacity: 0 !important;
 }
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
-  margin: 10px;
-  border: none !important;
-  border-radius: 2000px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-hover) !important;
-}
-ytd-simple-menu-header-renderer {
-  background: none !important;
-}
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .yt-share-target-renderer {
   border-radius: 20px !important;
-  border: none !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
+  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
 }
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 30px !important;
-  border: none !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
-  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
-  max-height: 80vh !important;
-  overflow-y: auto !important;
-  max-width: none !important;
+
+html[data-ypp-ui-style="liquid-glass"] .yt-share-target-renderer:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  transform: scale(1.08) !important;
 }
-.tp-yt-paper-tooltip[style-target=tooltip] {
-  border: none !important;
-  box-shadow: var(--shadow-active) !important;
-  color: white !important;
-}
-tp-yt-paper-listbox {
-  padding: 10px !important;
-}
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: 2000px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
-.ytContextualSheetLayoutHost {
-  background: none !important;
-  padding: 13px !important;
-}
-html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {
+
+/* Adjust & Filter Cards inside extension popup modals */
+html[data-ypp-ui-style="liquid-glass"] .ypp-adjust-card,
+html[data-ypp-ui-style="liquid-glass"] .ypp-filter-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: var(--lg-border-subtle) !important;
   border-radius: 20px !important;
-  padding: 7px 10px;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
 }
-tp-yt-paper-listbox.yt-dropdown-menu {
-  background: var(--sf) !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
-  background: none !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
-  box-shadow: var(--shadow-hover) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: 2000px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
-  transform: scale(1.05) !important;
-  -webkit-backdrop-filter: brightness(100%) !important;
-  backdrop-filter: brightness(100%) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-html,
-[dark] ytd-multi-page-menu-renderer {
-  background: rgba(255, 255, 255, 0.88) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-}
-.ypp-account-menu,
-#ypp-top-bar {
-  background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: var(--shadow-base) !important;
-}
-tp-yt-paper-toast {
-  background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-  backdrop-filter: blur(25px) saturate(180%) !important;
-  border-radius: 2000px !important;
-  box-shadow: var(--shadow-hover) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
-}
-tp-yt-paper-listbox {
-  background: transparent !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-adjust-card:hover,
+html[data-ypp-ui-style="liquid-glass"] .ypp-filter-card:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  transform: translateY(-2px) !important;
 }

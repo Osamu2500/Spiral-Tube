@@ -1,3 +1,4 @@
+@import "../shared/timeline-visibility.css";
 html[dark], [dark], :root {
     --yt-spec-base-background: rgba(15, 15, 15, 0.8) !important;
     --ytd-searchbox-background: rgba(17, 17, 17, 0.8) !important;
@@ -99,3 +100,33 @@ ytd-expandable-metadata-renderer {
 .ytChipsShelfViewModelGradientButton .ytChipsShelfViewModelLeftArrow, .ytChipsShelfViewModelGradientButton .ytChipsShelfViewModelRightArrow {
     background: var(--yt-spec-base-background) !important;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Style 9521 (Create Your Theme by tsyron) - Complete Native YouTube Overrides
+ * ───────────────────────────────────────────────────────────────────────────── */
+html, html[light], [light], html[dark], [dark], :root {
+    --cyt-background-100: var(--yt-spec-base-background, rgba(15, 15, 15, 0.8));
+    --cyt-foreground-100: var(--yt-spec-text-primary, #fff);
+    --cyt-foreground-30: var(--yt-spec-text-secondary, #aaa);
+    --cyt-foreground-5: rgba(255, 255, 255, 0.05);
+    --cyt-spec-menu-background: var(--yt-spec-menu-background, rgba(40, 40, 40, 0.8));
+    --cyt-yellow-100: #ffd600;
+
+    /* Live Chat & Emoji Picker Integration */
+    --yt-live-chat-author-chip-owner-text-color: var(--cyt-foreground-100) !important;
+    --yt-live-chat-banner-gradient-scrim: linear-gradient(var(--yt-spec-menu-background), transparent) !important;
+    --yt-live-chat-text-input-field-inactive-underline-color: var(--cyt-foreground-30) !important;
+    --yt-live-chat-vem-background-color: var(--cyt-foreground-5) !important;
+    --yt-emoji-picker-category-background-color: var(--yt-spec-menu-background) !important;
+    --yt-emoji-picker-search-background-color: var(--yt-spec-menu-background) !important;
+    --ytls-menu-header-background: var(--yt-spec-menu-background) !important;
+
+    scrollbar-color: var(--yt-spec-text-secondary) var(--yt-spec-base-background) !important;
+}
+
+html[dark], [dark] {
+    --yt-live-chat-author-chip-owner-background-color: var(--cyt-yellow-100) !important;
+    --yt-live-chat-author-chip-owner-text-color: #0f0f0f !important;
+    --yt-live-chat-header-background-color: var(--yt-spec-base-background) !important;
+}
+

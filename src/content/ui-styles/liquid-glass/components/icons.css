@@ -1,23 +1,38 @@
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+/* =========================================================
+   LIQUID GLASS — SVG ICONS & OPTICAL FILTERS
+   Specular Drop Shadows & Luminescent Hover States
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] yt-icon,
+html[data-ypp-ui-style="liquid-glass"] .yt-icon-shape,
+html[data-ypp-ui-style="liquid-glass"] yt-icon-button,
+html[data-ypp-ui-style="liquid-glass"] .ytp-button {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)) !important;
+  transition: filter var(--lg-smooth), transform var(--lg-spring) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-icon:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-icon-shape:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-icon-button:hover,
+html[data-ypp-ui-style="liquid-glass"] .ytp-button:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)) !important;
+  color: #ffffff !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] [active] yt-icon,
+html[data-ypp-ui-style="liquid-glass"] [selected] yt-icon,
+html[data-ypp-ui-style="liquid-glass"] .ypp-nav-btn.active yt-icon {
+  color: #ffffff !important;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) !important;
+}
+
+/* Notification & Badge Dot Droplet Indicators */
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-icon-badge-shape__badge,
+html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer .yt-spec-icon-badge-shape__badge {
+  background: #ffffff !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
   border-radius: 2000px !important;
-  background: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1) !important;
-}
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
 }

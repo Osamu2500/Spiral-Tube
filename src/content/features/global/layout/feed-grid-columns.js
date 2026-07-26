@@ -11,8 +11,9 @@ export class FeedGridColumns extends window.YPP.features.BaseFeature {
     constructor() { super('FeedGridColumns'); }
 
     async enable() {
-        if (this.settings.subscriptionsColumns) {
-            document.documentElement.style.setProperty('--ypp-subscriptions-columns', this.settings.subscriptionsColumns);
+        const cols = this.settings.twoColumnSubscriptions ? 2 : this.settings.subscriptionsColumns;
+        if (cols) {
+            document.documentElement.style.setProperty('--ypp-subscriptions-columns', cols);
         }
     }
 
@@ -21,8 +22,9 @@ export class FeedGridColumns extends window.YPP.features.BaseFeature {
     }
 
     async onUpdate() {
-        if (this.settings.subscriptionsColumns) {
-            document.documentElement.style.setProperty('--ypp-subscriptions-columns', this.settings.subscriptionsColumns);
+        const cols = this.settings.twoColumnSubscriptions ? 2 : this.settings.subscriptionsColumns;
+        if (cols) {
+            document.documentElement.style.setProperty('--ypp-subscriptions-columns', cols);
         } else {
             document.documentElement.style.removeProperty('--ypp-subscriptions-columns');
         }

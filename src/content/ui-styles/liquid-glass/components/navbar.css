@@ -1,88 +1,134 @@
-/* src/content/themes/ui-styles/liquid-glass/components/navbar.css */
-ytd-app,
-ytd-masthead,
-#page-manager.ytd-app,
-#content.ytd-app {
+/* =========================================================
+   LIQUID GLASS — NAVIGATION & MASTHEAD
+   Level 2 Floating Specular Acrylic Header & Search Bar
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] ytd-app,
+html[data-ypp-ui-style="liquid-glass"] ytd-masthead,
+html[data-ypp-ui-style="liquid-glass"] #page-manager.ytd-app,
+html[data-ypp-ui-style="liquid-glass"] #content.ytd-app {
   background: transparent !important;
 }
-#masthead-container {
+
+html[data-ypp-ui-style="liquid-glass"] #masthead-container {
   background: transparent !important;
   background-color: transparent !important;
+  padding: 6px 16px !important;
 }
-ytd-masthead #container {
-  border-radius: 3000px !important;
-  background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  margin: 1px !important;
-  box-shadow: var(--shadow-active) !important;
-  border: none !important;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-masthead #container {
+  border-radius: 2000px !important;
+  background: var(--lg-bg-level-2) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
+  margin: 4px auto !important;
+  padding: 0 24px !important;
+  box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
+  border: var(--lg-border-specular) !important;
+  max-width: 1800px !important;
+  transition: box-shadow var(--lg-spring), border-color var(--lg-spring) !important;
 }
-#contents.ytd-page-manager {
-  margin-top: 0;
-  margin-left: 16px;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-masthead #container:hover {
+  border-color: rgba(255, 255, 255, 0.40) !important;
+  box-shadow: var(--lg-shadow-modal) !important;
 }
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+
+html[data-ypp-ui-style="liquid-glass"] #contents.ytd-page-manager {
+  margin-top: 0 !important;
+  margin-left: 16px !important;
+}
+
+/* Acrylic Search Bar Container */
+html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox {
+  background: rgba(20, 20, 20, 0.65) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 2000px 0 0 2000px !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  transition: border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox:focus-within {
+  border-color: var(--lg-accent, #ffffff) !important;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.20), inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy.ytd-searchbox {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: var(--lg-border-subtle) !important;
+  border-left: none !important;
+  border-radius: 0 2000px 2000px 0 !important;
+  transition: background var(--lg-spring), box-shadow var(--lg-spring) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy.ytd-searchbox:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+}
+
+/* Navbar Action Pills & Notification Bell */
+html[data-ypp-ui-style="liquid-glass"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-style="liquid-glass"] .ypp-nav-btn,
+html[data-ypp-ui-style="liquid-glass"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="liquid-glass"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
   border-radius: 2000px !important;
   background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
-#voice-search-button.ytd-masthead:hover,
-.ypp-nav-btn:hover,
-ytd-topbar-menu-button-renderer.ytd-masthead:hover,
-#trailing-button.ytd-playlist-panel-renderer:hover,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+
+html[data-ypp-ui-style="liquid-glass"] #voice-search-button.ytd-masthead:hover,
+html[data-ypp-ui-style="liquid-glass"] .ypp-nav-btn:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-topbar-menu-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="liquid-glass"] #trailing-button.ytd-playlist-panel-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.08) !important;
 }
-ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
+
+html[data-ypp-ui-style="liquid-glass"] ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
   top: 75px !important;
   left: 8px !important;
 }
-tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+
+html[data-ypp-ui-style="liquid-glass"] tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   background: transparent !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
+
+html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
   border-radius: 2000px !important;
-  background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  background: var(--lg-bg-level-1) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  border: var(--lg-border-specular) !important;
+  box-shadow: var(--lg-shadow-card) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.06);
+
+html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
+  background: rgba(60, 60, 60, 0.75) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.05) !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: var(--shadow-active) !important;
+
+html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
+  transform: scale(0.96) !important;
+  box-shadow: var(--lg-shadow-inset) !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+
+html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: 2000px !important;
   padding: 4px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
-  background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+
+html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+  background: var(--lg-bg-level-1) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.08) !important;
 }

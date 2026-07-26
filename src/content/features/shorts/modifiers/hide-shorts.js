@@ -57,12 +57,17 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     
     _hideShortsContainer(el) {
         const container = this.utils.findOutermostMatch(el, [
+            'ytd-rich-section-renderer',
+            'ytd-rich-shelf-renderer',
+            'ytd-shelf-renderer',
             'ytd-rich-item-renderer',
             'ytd-video-renderer',
             'ytd-grid-video-renderer',
             'ytd-compact-video-renderer',
             'ytd-reel-item-renderer',
             'ytd-reel-shelf-renderer',
+            'ytd-rich-grid-slim-media',
+            'yt-lockup-view-model',
             'yt-chip-cloud-chip-renderer',
             'ytm-video-with-context-renderer',
             'ytm-compact-video-renderer',
@@ -85,16 +90,22 @@ export class HideShorts extends window.YPP.features.BaseFeature {
 
     removeShortsFromDOM() {
         const SHORTS_PATTERNS = [
+            'yt-lockup-view-model',
             'ytm-shorts-lockup-view-model',
             '.pivot-shorts',
             'ytd-reel-shelf-renderer',
             'ytd-rich-shelf-renderer[is-shorts]',
             'ytd-rich-section-renderer[is-shorts]',
+            'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer)',
+            'ytd-rich-section-renderer:has(ytd-rich-grid-slim-media)',
+            'ytd-rich-section-renderer:has(ytd-reel-item-renderer)',
+            'ytd-rich-section-renderer:has(a[href*="/shorts"])',
             'ytd-shelf-renderer[is-shorts]',
             'ytm-reel-shelf-renderer',
             'grid-shelf-view-model',
             'ytd-reel-item-renderer',
-            'a[href^="/shorts/"]',
+            'ytd-rich-grid-slim-media',
+            'a[href*="/shorts"]',
             'ytd-guide-entry-renderer:has(a[title="Shorts"])',
             'ytd-mini-guide-entry-renderer:has(a[title="Shorts"])',
             'tp-yt-paper-tab[aria-label="Shorts"]',
@@ -143,14 +154,16 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         const tagName = element.tagName?.toLowerCase();
         if (tagName === 'ytm-shorts-lockup-view-model') return true;
         if (tagName === 'ytd-reel-shelf-renderer' || tagName === 'ytm-reel-shelf-renderer') return true;
+        if (tagName === 'ytd-rich-grid-slim-media' || tagName === 'ytd-reel-item-renderer' || tagName === 'reels-video-with-pill-title-renderer' || tagName === 'ytd-reel-video-renderer' || tagName === 'ytd-shorts') return true;
         if (element.classList?.contains('pivot-shorts')) return true;
         
         // Detailed checks
         if (element.hasAttribute('is-shorts')) return true;
         
         const href = element.getAttribute('href');
-        if (href && href.startsWith('/shorts/')) return true;
-        if (element.querySelector('a[href^="/shorts/"]')) return true;
+        if (href && (href.startsWith('/shorts/') || href.includes('/shorts/'))) return true;
+        if (element.querySelector('a[href*="/shorts"]')) return true;
+        if (element.querySelector('ytd-rich-grid-slim-media, ytd-reel-item-renderer, yt-icon[icon="yt-icons:shorts"], yt-icon-shape[icon="yt-icons:shorts"], span[aria-label="Shorts"], ytd-badge-supported-renderer[aria-label="Shorts"]')) return true;
         
         const ariaLabel = element.getAttribute('aria-label');
         if (ariaLabel?.toLowerCase() === 'shorts') return true;
@@ -208,8 +221,8 @@ export class HideShorts extends window.YPP.features.BaseFeature {
         this.utils?.log('Starting continuous Shorts monitoring via DOMObserver', 'HideShorts');
         const isSearchPage = window.location.pathname === '/results';
         const monitorSelector = isSearchPage
-            ? 'ytd-rich-item-renderer, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer'
-            : 'ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer';
+            ? 'ytd-rich-item-renderer, yt-lockup-view-model, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer'
+            : 'ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-reel-shelf-renderer, ytd-rich-shelf-renderer, ytd-rich-section-renderer, ytd-guide-entry-renderer, yt-chip-cloud-chip-renderer';
 
         this.observer.register(
             'shorts-monitor',

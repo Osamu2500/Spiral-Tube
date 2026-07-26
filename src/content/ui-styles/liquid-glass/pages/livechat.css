@@ -1,33 +1,84 @@
-yt-live-chat-text-message-renderer,
-yt-live-chat-paid-message-renderer,
-yt-live-chat-membership-item-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 12px !important;
-  margin: 4px 8px !important;
-  padding: 8px !important;
-  transition: transform 0.2s, background 0.2s !important;
-}
-yt-live-chat-text-message-renderer:hover {
-  background: rgba(128, 128, 128, 0.12) !important;
-  transform: scale(1.02) !important;
-}
-#message-input.yt-live-chat-text-input-field-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
-  border-radius: 2000px !important;
-  padding: 5px 15px !important;
-}
-yt-live-chat-app,
-yt-live-chat-renderer {
-  background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  backdrop-filter: blur(var(--blur)) saturate(180%) !important;
-  border-radius: 24px !important;
-  box-shadow: var(--shadow-base) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
+/* =========================================================
+   LIQUID GLASS — LIVE CHAT & SUPERCHATS
+   Level 1 Translucent Chat Frame & Luminescent Superchats
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] ytd-live-chat-frame,
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-renderer {
+  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  border: var(--lg-border-specular) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
   overflow: hidden !important;
 }
-#ticker.yt-live-chat-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-header-renderer {
+  background: rgba(20, 20, 20, 0.75) !important;
+  border-bottom: var(--lg-border-subtle) !important;
+  padding: 12px 16px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-item-list-renderer #items {
+  background: transparent !important;
+}
+
+/* Chat Messages Hover Specular Highlight */
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-membership-item-renderer {
+  border-radius: 14px !important;
+  padding: 4px 12px !important;
+  margin: 2px 8px !important;
+  transition: background var(--lg-smooth), transform var(--lg-spring) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-text-message-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-membership-item-renderer:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Luminescent Glass Prisms for Superchats */
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-sticker-renderer {
+  background: rgba(255, 255, 255, 0.12) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+  margin: 6px 8px !important;
+  overflow: hidden !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-message-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-sticker-renderer:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.25) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-message-renderer #header,
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-message-renderer #content {
+  background: transparent !important;
+}
+
+/* Chat Input Bar */
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-message-input-renderer {
+  background: rgba(20, 20, 20, 0.75) !important;
+  border-top: var(--lg-border-subtle) !important;
+  padding: 12px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-message-input-renderer #container {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 2000px !important;
+  border: var(--lg-border-subtle) !important;
+  padding: 4px 16px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-live-chat-message-input-renderer #container:focus-within {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
 }

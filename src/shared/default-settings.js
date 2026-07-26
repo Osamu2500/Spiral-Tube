@@ -29,7 +29,12 @@ export const DEFAULT_SETTINGS = {
   subscriptionsColumns: 4,
   historyColumns: 4,
   displayFullTitle: false,
+  saveSupremeUI: false,
   cinematicMode: false,
+  realCinemaMode: false, // Style 11811: Real Cinema Mode (100vw Theater & Auto-hide Header)
+  flexWidthPlayer: false, // Style 12492: Flex width player layout
+  showLiveStreamTime: true, // Style 8167: Show elapsed time on live streams
+  twoColumnSubscriptions: false, // Style 4889: Two rows/columns in subscriptions feed
 
   // Visibility
   hideShorts: false,
@@ -41,6 +46,7 @@ export const DEFAULT_SETTINGS = {
   hideLiveStreams: false,
   hideUpcoming: false,
   hidePosts: false,
+  hideMembersOnly: false, // Style 23137: Hide members-only videos
   feedFilterKeywords: '',
   hideWatched: false,
   hideWatchedMode: 'dim',
@@ -62,12 +68,18 @@ export const DEFAULT_SETTINGS = {
   hideAnnotations: false, // Player on-screen annotations
   hideRelated: false, // Watch page related sidebar
   hideVoiceSearch: false, // Header microphone icon
+  hideUploadButton: false, // Header upload button
   hideTrending: false, // Trending guide entries
   hideFeed: false, // Homepage feed
   hideShortsInteraction: false, // Shorts like/comment bar
   aggressiveShortsBlock: false, // Nuke shorts everywhere
   autoVideoFilter: true,
   hidePlayerTopics: false,
+  hideCountryCode: false,       // Style 21084: Hide country code next to logo
+  hideThanksDonate: false,      // Style 21084: Hide Thanks / Donate / Patreon buttons
+  hidePlayerBranding: false,    // Style 21084: Hide channel watermark in player
+  hideUselessGuideLinks: false, // Style 21084: Hide Help, Feedback, Report history in sidebar
+  hidePaidPromotion: false,     // Style 16687: Hide 'Includes paid promotion' banner
 
   // Player Page Declutter (OFF by default)
   hideVideoTitle: false,        // Hide video title below the player
@@ -77,6 +89,7 @@ export const DEFAULT_SETTINGS = {
 
   // Player
   autoCinema: false,
+  compactPlayerUI: false,       // Style 24682: Compact player controls
   autoQuality: 'highres',
   enablePiP: true,
   enableTranscript: true,
@@ -272,4 +285,23 @@ export const DEFAULT_SETTINGS = {
   resumeBadges: true,
   speedBooster: true,
   liquidGlassTheme: false,
+
+  // --- New UserStyles & GreasyFork Features ---
+  realCinemaMode: true,
+  showLiveStreamTime: true,
+  twoColumnSubscriptions: true,
+  flexWidthPlayer: true,
+  compactPlayerUI: false,
+  saveSupremeUI: true,
+  enableRealCinemaMode: true,
+  enableLiveStreamTime: true,
+  enableTwoColumnSubscriptions: true,
+  enableFlexWidthPlayer: true,
+  enableCompactPlayerUI: false,
+  enableSaveSupremeUI: true,
+  enableCustomizeYouTubeUI: true,
+  enableCpuTamer: true,
+  enableTabviewSidebar: false,
+  enableVideoEnhancerTools: true,
+  enableStarTubeLayout: false,
 };

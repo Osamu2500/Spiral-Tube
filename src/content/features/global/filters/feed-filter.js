@@ -81,6 +81,7 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
         const hideLive = this.settings?.hideLiveStreams;
         const hideUpcoming = this.settings?.hideUpcoming;
         const hidePosts = this.settings?.hidePosts;
+        const hideMembersOnly = this.settings?.hideMembersOnly;
         const keywordsRaw = this.settings?.feedFilterKeywords || '';
         
         const keywords = keywordsRaw.split(',').map(k => k.trim().toLowerCase()).filter(k => k.length > 0);
@@ -109,6 +110,16 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
             const isUpcoming = card.querySelector('[overlay-style="UPCOMING"]') || card.querySelector('.badge-style-type-simple[aria-label*="Premiere"]');
             if (isUpcoming) {
                 this._hideElement(card, 'upcoming');
+                return;
+            }
+        }
+
+        // Check Members Only (Style 23137)
+        if (hideMembersOnly) {
+            const isMembersOnly = card.querySelector('.badge-style-type-members-only, [aria-label*="Members only"], [aria-label*="Members-only"], [aria-label*="members only"], ytd-badge-supported-renderer[class*="members"]') ||
+                Array.from(card.querySelectorAll('ytd-badge-supported-renderer, .badge-style-type-simple, .badge, #metadata-line span')).some(b => b.textContent?.toLowerCase().includes('members only') || b.textContent?.toLowerCase().includes('members-only') || b.textContent?.toLowerCase().includes('sponsors only'));
+            if (isMembersOnly) {
+                this._hideElement(card, 'members only');
                 return;
             }
         }

@@ -1,95 +1,83 @@
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
-ytd-notification-topbar-button-renderer.ytd-masthead,
-yt-icon-button.ytd-masthead,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) {
-  border-radius: 2000px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+/* =========================================================
+   LIQUID GLASS — COMMENTS & THREADS
+   Level 1 Specular Comment Cards & Luminescent Badges
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] ytd-comments #header {
+  border-bottom: var(--lg-border-subtle) !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 20px !important;
 }
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal:hover,
-ytd-notification-topbar-button-renderer.ytd-masthead:hover,
-yt-icon-button.ytd-masthead:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button):hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-ytd-comment-view-model button,
-ytd-comment-renderer button {
-  border-radius: 2000px !important;
-  transition: background 0.15s ease, box-shadow 0.15s ease !important;
-  transform: none !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
-ytd-comment-view-model button:hover,
-ytd-comment-renderer button:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
-  transform: none !important;
-}
-/* src/content/themes/ui-styles/liquid-glass/pages/comments.css */
-ytd-comments-header-renderer[engagement-panel] {
+
+/* Acrylic Comment Input Box */
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-simplebox-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-dialog-renderer {
+  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  border: var(--lg-border-specular) !important;
   border-radius: 20px !important;
-  margin: 10px !important;
-  border: none !important;
-  box-shadow: var(--shadow-base) !important;
+  box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  transition: border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
-ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
-  background: none !important;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-simplebox-renderer:focus-within,
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-dialog-renderer:focus-within {
+  border-color: #ffffff !important;
+  box-shadow: var(--lg-shadow-hover), 0 0 16px rgba(255, 255, 255, 0.25) !important;
 }
-ytd-comment-view-model yt-interaction .fill,
-ytd-comment-renderer yt-interaction .fill {
+
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-simplebox-renderer #placeholder-area,
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-simplebox-renderer #input-container {
   background: transparent !important;
-  opacity: 0 !important;
-}
-ytd-comment-thread-renderer,
-ytd-comment-view-model {
-  background: rgba(128, 128, 128, 0.05) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  border-radius: 24px !important;
-  padding: 15px !important;
-  margin-bottom: 15px !important;
-  box-shadow: var(--shadow-base) !important;
-  border: 1px solid rgba(128, 128, 128, 0.08) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-ytd-comment-thread-renderer:hover,
-ytd-comment-view-model:hover {
-  box-shadow: var(--shadow-hover) !important;
-  background: rgba(128, 128, 128, 0.09) !important;
-}
-ytd-comment-simplebox-renderer {
-  background: rgba(128, 128, 128, 0.08) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
-  border-radius: 24px !important;
-  padding: 15px !important;
-  box-shadow: var(--shadow-active) !important;
-  border: 1px solid rgba(128, 128, 128, 0.1) !important;
-}
-#placeholder-area.ytd-comment-simplebox-renderer {
   border: none !important;
 }
 
-/* YouTube UI Update Fixes for Glassmorphic themes (Comments) */
-ytd-comment-thread-renderer #content-text, 
-ytd-comment-view-model #content-text, 
-ytd-comment-thread-renderer #body, 
-ytd-comment-view-model #body, 
-ytd-comments-header-renderer #header,
-ytd-item-section-renderer[static-comments-header] #header {
-  background-color: transparent !important;
+/* Individual Comment Thread Cards */
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-view-model {
   background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 20px !important;
+  padding: 12px 16px !important;
+  margin-bottom: 12px !important;
+  transition: background var(--lg-smooth), border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-thread-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-comment-view-model:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--lg-border-subtle) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Author Badges & Creator Hearts */
+html[data-ypp-ui-style="liquid-glass"] ytd-author-comment-badge-renderer {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border-radius: 2000px !important;
+  padding: 2px 10px !important;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.4) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-author-comment-badge-renderer #author-name,
+html[data-ypp-ui-style="liquid-glass"] ytd-author-comment-badge-renderer yt-formatted-string {
+  color: #111111 !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-creator-heart-renderer {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 2000px !important;
+  padding: 4px !important;
+  border: var(--lg-border-subtle) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #sort-menu.ytd-comments {
+  background: var(--lg-bg-level-1) !important;
+  border: var(--lg-border-specular) !important;
+  border-radius: 2000px !important;
+  padding: 4px 12px !important;
 }

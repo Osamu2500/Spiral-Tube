@@ -4761,39 +4761,42 @@ body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModel
     max-width: 90vw !important;
     width: 500px !important;
     margin: 0 !important;
+    z-index: 9999 !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
     backdrop-filter: none !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    border-radius: 12px;
-    height: 70vh !important;
-    max-height: 705px !important;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.75) !important;
+    border-radius: 12px !important;
+    height: 705px !important;
+    max-height: 80vh !important;
     width: 100% !important;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHost {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(48px);
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(48px) !important;
+    -webkit-backdrop-filter: blur(48px) !important;
     max-width: 100% !important;
+    border-radius: 12px !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHeaderContainer { 
-    display: none; 
+    display: none !important; 
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutContentContainer {
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) yt-list-item-view-model[aria-pressed="true"] {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__container--has-subtitle {
-    padding: 10px;
-    box-sizing: border-box;
+    padding: 10px !important;
+    box-sizing: border-box !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__image-container {
-    height: 58px;
+    height: 58px !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionThumbnailViewModelHost {
     width: 104px !important;
@@ -4801,19 +4804,19 @@ body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModel
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackSpacer, 
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackCollectionStack1Small { 
-    display: none; 
+    display: none !important; 
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytThumbnailViewModelSmall {
-    border-radius: 6px;
-    margin: unset;
-    border: 1px solid rgba(255, 255, 255, 0.41);
+    border-radius: 6px !important;
+    margin: unset !important;
+    border: 1px solid rgba(255, 255, 255, 0.41) !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__title { 
-    font-size: 1.9rem; 
-    font-weight: 500; 
+    font-size: 1.9rem !important; 
+    font-weight: 500 !important; 
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__subtitle-container { 
-    display: none; 
+    display: none !important; 
 }
 
 
@@ -4853,3 +4856,102 @@ body.ypp-lightsaber-progress .ytp-scrubber-button {
     border-radius: 4px !important;
     transform: scaleY(1.3) scaleX(0.7) !important;
 }
+
+/* ==========================================================================
+   USERSTYLE INTEGRATIONS: Flex Width, Compact Player, Customization & Ads
+   ========================================================================== */
+
+/* --- Flex Width Player (Style 12492) --- */
+body.ypp-flex-width-player #columns.ytd-watch-flexy {
+  max-width: 100% !important;
+}
+body.ypp-flex-width-player ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+  max-width: calc(100% - var(--ytd-watch-flexy-sidebar-width, 400px) - 3*var(--ytd-margin-6x, 24px)) !important;
+  min-width: 0 !important;
+}
+body.ypp-flex-width-player ytd-watch-flexy[flexy][theater] #primary.ytd-watch-flexy,
+body.ypp-flex-width-player ytd-watch-flexy[flexy][fullscreen] #primary.ytd-watch-flexy {
+  max-width: 100% !important;
+}
+
+/* --- Compact Player Controls (Style 24682) --- */
+body.ypp-compact-player-ui .ytp-chrome-bottom {
+  opacity: 0.88;
+  transition: opacity 0.2s ease-in-out;
+}
+body.ypp-compact-player-ui .ytp-chrome-bottom:hover {
+  opacity: 1;
+}
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button {
+  padding: 0 4px !important;
+  width: 38px !important;
+}
+body.ypp-compact-player-ui .ytp-time-display {
+  font-size: 11px !important;
+  line-height: 38px !important;
+}
+
+/* --- Customize Your YouTube (Style 21084) --- */
+body.ypp-hide-country-code #country-code {
+  display: none !important;
+}
+body.ypp-hide-thanks-donate button[aria-label="Thanks"],
+body.ypp-hide-thanks-donate #sponsor-button,
+body.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
+body.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
+body.ypp-hide-thanks-donate a[title="Patreon"] {
+  display: none !important;
+}
+body.ypp-hide-player-branding .iv-branding,
+body.ypp-hide-player-branding .annotation-shape {
+  display: none !important;
+}
+body.ypp-hide-useless-guide-links #endpoint[title="Help"],
+body.ypp-hide-useless-guide-links #endpoint[title="Report history"],
+body.ypp-hide-useless-guide-links #endpoint[title="Send feedback"],
+body.ypp-hide-useless-guide-links #guide-content #footer {
+  display: none !important;
+}
+
+/* --- Hide Paid Promotion Banner (Style 16687) --- */
+body.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
+body.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
+body.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
+body.ypp-hide-paid-promotion .ytp-paid-content-overlay,
+body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
+  display: none !important;
+}
+
+/* --- Style 11811: Real Cinema Mode (100vw Theater Mode & Auto-hide Header) --- */
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #player-theater-container.ytd-watch-flexy,
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #full-bleed-container.ytd-watch-flexy {
+  width: 100vw !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+}
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #masthead-container {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+:is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #masthead-container:hover {
+  opacity: 1 !important;
+}
+
+/* --- Style 8167: Show Live Stream Elapsed Time --- */
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-current,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-separator,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-duration {
+  display: inline-block !important;
+}
+
+/* --- Style 4889: Two Rows/Columns in Subscriptions Feed --- */
+:is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 2 !important;
+  --ytd-rich-grid-posts-per-row: 2 !important;
+}
+:is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] #contents.ytd-rich-grid-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+

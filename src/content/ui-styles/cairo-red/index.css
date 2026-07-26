@@ -1,3 +1,4 @@
+@import "../shared/timeline-visibility.css";
 /* Cairo Red Theme */
 html[data-ypp-ui-style="cairo-red"] {
   --yt-spec-static-brand-red: #f00 !important;
@@ -16,4 +17,5 @@ html[data-ypp-ui-style="cairo-red"] .yt-core-image,
 html[data-ypp-ui-style="cairo-red"] .yt-icon {
   filter: hue-rotate(9deg) saturate(1.35) !important;
 }
+
 

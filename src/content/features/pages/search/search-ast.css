@@ -1574,11 +1574,11 @@ ytd-video-renderer #channel-info > ytd-badge-supported-renderer[is-empty] {
    This section strictly ensures that Card Styles do NOT break the horizontal linear layout 
    by accidentally applying flex-direction: column to the dismissible content! */
    
-html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-video-renderer,
-html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-playlist-renderer,
-html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode yt-lockup-view-model,
-html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-radio-renderer,
-html[data-ypp-card-style]:not([data-ypp-card-style="none"]) body.ypp-search-list-mode ytd-channel-renderer {
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-video-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-playlist-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode yt-lockup-view-model,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-radio-renderer,
+html[data-ypp-card-style]:not([data-ypp-card-style="none"]):not([data-ypp-card-style="default"]) body.ypp-search-list-mode ytd-channel-renderer {
   margin-bottom: 16px !important;
   /* Card styles might accidentally apply flex-direction: column if they use wildcard selectors, 
      but ytd-video-renderer is horizontal by default. We lock it here. */

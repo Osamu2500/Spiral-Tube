@@ -1,61 +1,99 @@
+/* =========================================================
+   LIQUID GLASS (visionOS) — DESIGN TOKENS
+   4-Tier Specular Acrylic Glass System
+   ========================================================= */
+
 * {
   font-family:
+    "SF Pro Display",
     "SF Pro Text",
     "Inter",
-    "Segoe UI Variable Text",
+    "Segoe UI Variable Display",
     "Segoe UI",
     sans-serif !important;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.ytSuggestionComponentRoundedSuggestion {
-  margin: 5px 10px;
-  border: none !important;
-  border-radius: 2000px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytSuggestionComponentRoundedSuggestion:hover {
-  transform: scale(1.01) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-body.yt-pro-ambient {
-  overflow-x: hidden !important;
-}
-@media (width: 1920px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
-    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
-  }
-}
-@media (width: 1280px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
-    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
-  }
-}
-#video-title {
-  color: #a8c7fa !important;
-}
-::-webkit-scrollbar {
-  width: 10px !important;
-}
-body.yt-pro-ambient #cinematics.ytd-watch-flexy {
-  filter: saturate(250%) blur(10px) contrast(1.1) brightness(1.3);
-  transform: scale(3);
-  opacity: 1;
-  mix-blend-mode: lighten;
-}
-.ytPlayerProgressBarDragContainer {
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-  margin-bottom: 5px !important;
-}
-body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0px 16px 32px #00000054, 0px 0px 4px #00000038;
-}
-html {
-  /* YouTube Global Transparent Overrides */
+
+html[data-ypp-ui-style="liquid-glass"] {
+  /* --- Pure Transparent Blur / Specular Acrylic Glass System (No Color Tint) --- */
+  --lg-bg-level-0: #0a0a0a;
+  --lg-bg-level-1: rgba(30, 30, 30, 0.60);
+  --lg-bg-level-2: rgba(40, 40, 40, 0.70);
+  --lg-bg-level-3: rgba(255, 255, 255, 0.15);
+  --lg-bg-card-hover: rgba(50, 50, 50, 0.70);
+
+  /* --- Specular Borders & Directional Highlights --- */
+  --lg-border-specular: 1px solid rgba(255, 255, 255, 0.18);
+  --lg-border-subtle: 1px solid rgba(255, 255, 255, 0.08);
+  --lg-border-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  --lg-border-modal-rim: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+  --lg-border-active: 1px solid rgba(255, 255, 255, 0.50);
+
+  /* --- Multi-Tier Glass Blurs & Saturation --- */
+  --lg-blur-card: blur(20px) saturate(180%);
+  --lg-blur-modal: blur(40px) saturate(220%);
+  --lg-blur-subtle: blur(12px) saturate(160%);
+
+  /* --- Elevation & Clean Acrylic Shadows --- */
+  --lg-shadow-card: 0 8px 24px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.20);
+  --lg-shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 255, 255, 0.08);
+  --lg-shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.70), 0 0 30px rgba(255, 255, 255, 0.10);
+  --lg-shadow-glow: 0 0 20px rgba(255, 255, 255, 0.25), 0 0 40px rgba(255, 255, 255, 0.12);
+  --lg-shadow-inset: inset 0 2px 8px rgba(0, 0, 0, 0.40);
+
+  /* --- Neutral White Luminescence Accents --- */
+  --lg-accent: #ffffff;
+  --lg-accent-2: #e0e0e0;
+  --lg-accent-gradient: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  --lg-accent-gradient-hover: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  --lg-text-primary: #ffffff;
+  --lg-text-secondary: #cccccc;
+  --lg-text-muted: rgba(255, 255, 255, 0.60);
+
+  /* --- Fluid Spring Animations & Easings --- */
+  --lg-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --lg-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Backward Compatible Shorthand Tokens --- */
+  --bounce: var(--lg-spring);
+  --sf: var(--lg-bg-level-1);
+  --blur: var(--lg-blur-card);
+  --shadow-base: var(--lg-shadow-card);
+  --shadow-hover: var(--lg-shadow-hover);
+  --shadow-active: 0 4px 12px rgba(0, 0, 0, 0.40);
+  --ypp-thumb-color: #ffffff;
+
+  /* --- YouTube Global Transparent Overrides for Acrylic Glass --- */
   --yt-spec-badge-chip-background: transparent !important;
   --yt-spec-raised-background: transparent !important;
   --yt-spec-additive-background: transparent !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] #video-title {
+  color: var(--lg-text-primary, #ffffff) !important;
+  font-weight: 500 !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+
+@media (width: 1920px) {
+  html[data-ypp-ui-style="liquid-glass"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
+  }
+}
+
+@media (width: 1280px) {
+  html[data-ypp-ui-style="liquid-glass"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
+  }
+}
+
+html[data-ypp-ui-style="liquid-glass"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(250%) blur(50px) contrast(1.1) brightness(1.2);
+  transform: scale(2.5);
+  opacity: 0.9;
+  mix-blend-mode: lighten;
 }

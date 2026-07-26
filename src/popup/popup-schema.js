@@ -45,7 +45,9 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.grid,
                 items: [
                     { type:'toggle', id:'displayFullTitle', label: t('displayFullTitle'), desc: t('displayFullTitle_desc'),        icon:ICONS.title },
-                    { type:'toggle', id:'saveSupremeUI', label: t('saveSupremeUI'), desc: t('saveSupremeUI_desc'), icon:ICONS.saveSupreme },
+                    { type:'toggle', id:'saveSupremeUI', label: t('saveSupremeUI'), badge:'NEW', desc: t('saveSupremeUI_desc'), icon:ICONS.saveSupreme },
+                    { type:'toggle', id:'flexWidthPlayer', label: t('flexWidthPlayer'), badge:'NEW', desc: t('flexWidthPlayer_desc'), icon:ICONS.player },
+                    { type:'toggle', id:'twoColumnSubscriptions', label: t('twoColumnSubscriptions'), badge:'NEW', desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:ICONS.autoScale },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]
@@ -100,6 +102,9 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'netflixSubtitles', label: t('player_netflix_subtitles'), icon:ICONS.subtitles },
                     { type:'toggle', id:'autoCinema',       label: t('auto_cinema'),        desc: t('expand_player_on_load'),      icon:ICONS.autoCinema },
+                    { type:'toggle', id:'compactPlayerUI',  label: t('compactPlayerUI'),    badge:'NEW', desc: t('compactPlayerUI_desc'),       icon:ICONS.autoCinema },
+                    { type:'toggle', id:'enableCpuTamer',   label: t('cpu_tamer'),          badge:'NEW', desc: t('cpu_tamer_desc'),             icon:ICONS.compressor },
+                    { type:'toggle', id:'enableVideoEnhancerTools', label: t('video_enhancer_tools'), badge:'NEW', desc: t('video_enhancer_tools_desc'), icon:ICONS.speed },
                     { type:'toggle', id:'videoResumer',     label: t('video_resumer'),      desc: t('save_playback_position'),     icon:ICONS.resume },
                     { type:'toggle', id:'autoPause',        label: t('auto_pause'),         desc: t('pause_when_backgrounded'),    icon:ICONS.pause },
                     { type:'toggle', id:'autoLike',         class:'span-2', label: t('auto_like'), desc: t('automatically_like_video'), icon:ICONS.like, inlineSlot: `<div style="display:inline-flex; gap:6px; margin-left:8px; vertical-align:middle; z-index:10; position:relative;"><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeSubscribedOnly" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Subscribed Only">Subs</button><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeChannelLists" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Use Channel Lists">Lists</button><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeWaitAds" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Wait for Ads">Ads</button><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeHumanize" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Humanize Delay">Human</button><button type="button" id="autoLikeDelayTypeBtn" class="view-mode-btn" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Switch between Seconds / Percent">% / s</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 10px; flex-grow:1; max-width:180px;"><input type="range" id="autoLikeThreshold" min="0" max="100" step="1" style="width:100%;"><span id="autoLikeThresholdValue" style="font-size:10px; min-width:32px; opacity:0.7; text-align:right;">0s</span></div><input type="hidden" id="autoLikeSubscribedOnly" /><input type="hidden" id="autoLikeChannelLists" /><input type="hidden" id="autoLikeWaitAds" /><input type="hidden" id="autoLikeHumanize" /><input type="hidden" id="autoLikeDelayType" value="seconds" />` },
@@ -121,6 +126,8 @@ export const getPopupSchema = (t) => [
                 title: t('player_ui_components'),
                 icon: ICONS.uiComponents,
                 items: [
+                    { type:'toggle', id:'showLiveStreamTime', label: t('show_live_stream_time'), badge:'NEW', desc: t('show_live_stream_time_desc'), icon:ICONS.clock },
+                    { type:'toggle', id:'enableTabviewSidebar', label: t('tabview_sidebar'), badge:'NEW', desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar },
                     { type:'toggle', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations },
                     { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:ICONS.pinVideo },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
@@ -222,6 +229,8 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'zenMode',         label: t('zen_mode'),        desc: t('dim_everything_but_video'),          icon:ICONS.zen },
                     { type:'toggle', id:'cinemaMode',      label: t('cinema_mode'),     desc: t('theater_like_fullscreen_viewing'),   icon:ICONS.cinema },
+                    { type:'toggle', id:'realCinemaMode',  label: t('real_cinema_mode'), badge:'NEW', desc: t('real_cinema_mode_desc'),             icon:ICONS.cinema },
+                    { type:'toggle', id:'enableStarTubeLayout', label: t('startube_layout'), badge:'NEW', desc: t('startube_layout_desc'),         icon:ICONS.autoCinema },
                     { type:'toggle', id:'ambientMode',     label: t('ambient_theater'), desc: t('giant_canvas_ambilight_effect'),     icon:ICONS.ambient, slot:'ambientModeOptions' },
                     { type:'toggle', id:'studyMode',       label: t('study_mode'),      desc: t('focus_mode_1_25_playback_speed'), icon:ICONS.study },
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
@@ -266,6 +275,7 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.home,
                 items: [
                     { type:'toggle', id:'hideMemberships',   label: t('hide_memberships'),  desc: t('hide_memberships_desc'), icon:ICONS.memberships },
+                    { type:'toggle', id:'hideMembersOnly',   label: t('hide_members_only'), desc: t('hide_members_only_desc'), icon:ICONS.memberships },
                     { type:'toggle', id:'hideFeed',       label: t('hide_homepage_feed'),  desc: t('blank_homepage'), icon:ICONS.home },
                     { type:'toggle', id:'hideExploreTopics', label: t('hide_topics_bar'),   desc: t('remove_category_chips'),    icon:ICONS.cinematic },
                     { type:'toggle', id:'hideTrending',   label: t('hide_trending_explore'),icon:ICONS.explore },
@@ -333,6 +343,17 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideSearchShorts', label: t('hide_search_shorts'), desc: t('remove_from_search_results'), icon:ICONS.search },
                     { type:'toggle', id:'aggressiveShortsBlock', class:'span-2', label: t('nuke_shorts'), desc: t('remove_everywhere'), icon:P('M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10S2 17.52 2 12z') },
                 ]
+            },
+            {
+                title: t('custom_css_userstyles'),
+                icon: ICONS.magicWand,
+                items: [
+                    { type:'toggle', id:'hideCountryCode', label: t('hide_country_code'), badge:'NEW', desc: t('hide_country_code_desc'), icon:ICONS.channelBar },
+                    { type:'toggle', id:'hideThanksDonate', label: t('hide_thanks_donate'), badge:'NEW', desc: t('hide_thanks_donate_desc'), icon:ICONS.fundraiser },
+                    { type:'toggle', id:'hidePlayerBranding', label: t('hide_player_branding'), badge:'NEW', desc: t('hide_player_branding_desc'), icon:ICONS.channelBar },
+                    { type:'toggle', id:'hideUselessGuideLinks', label: t('hide_useless_guide_links'), badge:'NEW', desc: t('hide_useless_guide_links_desc'), icon:ICONS.home },
+                    { type:'toggle', id:'hidePaidPromotion', label: t('hide_paid_promotion'), badge:'NEW', desc: t('hide_paid_promotion_desc'), icon:ICONS.promos },
+                ]
             }
         ]
     },
@@ -377,6 +398,7 @@ export const getPopupSchema = (t) => [
             {
                 title: t('layout_tools'),
                 items: [
+                    { type:'toggle', id:'twoColumnSubscriptions', class:'span-2', label: t('twoColumnSubscriptions'), badge:'NEW', desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                     { type:'toggle', id:'enableChannelHealth', class:'span-2', label: t('channel_health'),  desc: t('scan_for_dead_channels'),        icon:ICONS.compressor, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="channelColumnsUI" min="2" max="10" step="1" style="width:100%;"><span id="channelColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="channelColumns" value="5" />` },
                     { type:'range', id:'subscriptionsColumns', class:'span-2', label: t('feed_grid_columns'), desc: t('grid_layout_size_for_subs'), icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), min: 1, max: 8, step: 1, unit: '' }
                 ]

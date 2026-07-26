@@ -1,0 +1,72 @@
+/**
+ * Tabview Sidebar Styles (Based on Script 560618: YouTube Improvements - Layout & Video Enhancer)
+ * Organizes watch page right sidebar into clean tabs for Related Videos, Comments, and Info.
+ */
+
+body.ypp-tabview-sidebar #secondary.ytd-watch-flexy {
+  position: relative !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-header {
+  display: flex !important;
+  flex-direction: row !important;
+  background: var(--yt-spec-badge-chip-background, rgba(255,255,255,0.08)) !important;
+  border-radius: 12px 12px 0 0 !important;
+  border: 1px solid var(--ytd-searchbox-legacy-border-color, rgba(255,255,255,0.15)) !important;
+  overflow: hidden !important;
+  margin-bottom: 0 !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-btn {
+  flex: 1 !important;
+  padding: 12px 8px !important;
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--yt-spec-text-secondary, #aaa) !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 3px solid transparent !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+  text-transform: uppercase !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-btn:hover {
+  color: var(--yt-spec-text-primary, #fff) !important;
+  background: rgba(255,255,255,0.05) !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-btn.active {
+  color: var(--yt-spec-text-primary, #fff) !important;
+  border-bottom-color: var(--yt-spec-static-brand-red, #ff0000) !important;
+  font-weight: 600 !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-content-wrapper {
+  border: 1px solid var(--ytd-searchbox-legacy-border-color, rgba(255,255,255,0.15)) !important;
+  border-top: none !important;
+  border-radius: 0 0 12px 12px !important;
+  padding: 16px !important;
+  background: var(--yt-spec-general-background-a, transparent) !important;
+  max-height: calc(100vh - 120px) !important;
+  overflow-y: auto !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-pane {
+  display: none !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-pane.active {
+  display: block !important;
+}
+
+/* Scrollbar styling for tabview content */
+body.ypp-tabview-sidebar .ypp-tabview-content-wrapper::-webkit-scrollbar {
+  width: 6px !important;
+}
+body.ypp-tabview-sidebar .ypp-tabview-content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2) !important;
+  border-radius: 4px !important;
+}

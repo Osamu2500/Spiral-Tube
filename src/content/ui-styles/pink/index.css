@@ -1,3 +1,4 @@
+@import "../shared/timeline-visibility.css";
 html[data-ypp-ui-style="pink"] {
     --yt-spec-brand-background-solid: hsl(338, 50%, 52%);
     --yt-spec-brand-background-primary: hsla(338, 50%, 48%, .98);
@@ -79,4 +80,5 @@ html[data-ypp-ui-style="pink"] #voice-search-button {
     margin-left: 5px !important;
     border: none !important;
 }
+
 

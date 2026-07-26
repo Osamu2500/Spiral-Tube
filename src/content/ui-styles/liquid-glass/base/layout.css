@@ -1,162 +1,130 @@
-/* Dark base so the glass blur has content to blur against */
-html body {
-  background: linear-gradient(135deg, #0d0d1a 0%, #111827 40%, #0d0d1a 100%) !important;
-  background-attachment: fixed !important;
-}
-* {
-  font-family:
-    "SF Pro Text", "Inter", "Segoe UI Variable Text", "Segoe UI", sans-serif !important;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+/* =========================================================
+   LIQUID GLASS — GLOBAL LAYOUT & CONTAINERS
+   Level 1 Specular Acrylic & Layout Resets
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: none !important;
   border: none !important;
   border-radius: 2000px !important;
   overflow: hidden !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-  color: white !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
+  color: var(--lg-text-primary, white) !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: var(--lg-bg-level-1) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.02);
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
-  box-shadow: var(--shadow-active) !important;
+  box-shadow: var(--lg-shadow-inset) !important;
 }
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   background: none !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: var(--lg-bg-level-1) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.06);
 }
-.ytSuggestionComponentRoundedSuggestion {
-  margin: 5px 10px;
+
+html[data-ypp-ui-style="liquid-glass"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px !important;
   border: none !important;
   border-radius: 2000px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
-.ytSuggestionComponentRoundedSuggestion:hover {
-  transform: scale(1.01) !important;
-  box-shadow: var(--shadow-hover) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.015) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
 }
-.ytp-delhi-modern .ytp-chapter-container {
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-delhi-modern .ytp-chapter-container {
   width: 100% !important;
-  padding-left: 10px;
+  padding-left: 10px !important;
 }
-ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
   margin: 5px auto !important;
 }
-body.yt-pro-ambient {
-  overflow-x: hidden !important;
-}
-@media (width: 1920px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
-    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
-  }
-}
-@media (width: 1280px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
-    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
-  }
-}
-/* Suggestion row hover — mode-aware tint */
-html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-}
-html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
-  background: rgba(0, 0, 0, 0.06) !important;
-  box-shadow: none !important;
-}
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-gpb-btn,
+html[data-ypp-ui-style="liquid-glass"] .ypp-action-btn,
+html[data-ypp-ui-style="liquid-glass"] .ypp-icon-btn {
   border-radius: 2000px !important;
   background: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="liquid-glass"] .ypp-action-btn:hover,
+html[data-ypp-ui-style="liquid-glass"] .ypp-icon-btn:hover {
+  background: var(--lg-bg-level-1) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.08) !important;
 }
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
+
+html[data-ypp-ui-style="liquid-glass"] .ypp-gpb-btn:active,
+html[data-ypp-ui-style="liquid-glass"] .ypp-action-btn:active,
+html[data-ypp-ui-style="liquid-glass"] .ypp-icon-btn:active {
   transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
+  box-shadow: var(--lg-shadow-inset) !important;
 }
-.ypp-vcp-header,
-.ypp-folder-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+
+html[data-ypp-ui-style="liquid-glass"] #wrapper.ytd-channel-avatar-editor {
+  border-radius: 2000px !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+}
+
+/* Scrollbar Hiding Overrides for Extension Clean Mode */
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary-inner,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #related,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #columns,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #page-manager,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary-inner::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #related::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #columns::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #page-manager::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary::-webkit-scrollbar,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
+html[data-ypp-ui-style="liquid-glass"] body.ypp-hide-scrollbar #secondary.ytd-watch-flexy::-webkit-scrollbar-track {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
   background: transparent !important;
 }
-.ypp-slider,
-.ypp-gpb-vol-slider {
-  accent-color: #ff4e45 !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 2000px !important;
+
+/* Title & Text Typography Accents */
+html[data-ypp-ui-style="liquid-glass"] #video-title {
+  color: var(--lg-text-secondary, #a8c7fa) !important;
+  font-weight: 600 !important;
 }
-.ypp-modal-header {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-  box-shadow: none !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ytd-channel-name,
+html[data-ypp-ui-style="liquid-glass"] .ytd-video-meta-block {
+  color: var(--lg-text-muted, #e3e3e3) !important;
 }
-#wrapper.ytd-channel-avatar-editor {
-  border-radius: 2000px !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-tp-yt-app-header {
-  background: transparent !important;
-}
-.tab-content.tp-yt-paper-tab {
-  transition:
-    transform var(--bounce),
-    background var(--bounce) !important;
-  border-radius: 20px !important;
-}
-.tab-content.tp-yt-paper-tab:hover {
-  background: rgba(128, 128, 128, 0.1) !important;
-  transform: scale(1.05) !important;
-}
-/* Titles and Text Colors */
-#video-title {
-  color: #a8c7fa !important;
-}
-.ytd-channel-name, .ytd-video-meta-block {
-  color: #e3e3e3 !important;
-}
-/* Progress Bar */
-.ytp-play-progress {
-  background: #a8c7fa !important;
-}
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px !important; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.1) !important; border-radius: 3000px; }
-::-webkit-scrollbar-thumb { 
-  background: #a8c7fa !important; 
-  border-radius: 3000px !important; 
-}
-/* Added for HeaderNav active state */
-.ypp-nav-btn.active {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-active) !important;
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-play-progress {
+  background: var(--lg-accent-gradient, linear-gradient(90deg, #00f2fe, #4facfe)) !important;
 }

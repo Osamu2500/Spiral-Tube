@@ -199,10 +199,10 @@ body.ypp-hide-playlists ytd-rich-item-renderer:has(ytd-playlist-thumbnail) {
 
 /* THE TRUE PROPORTIONAL GRID: HORIZONTAL RECTANGLES WITHOUT BREAKING YOUTUBE */
 
-html[data-ypp-card-style] ytd-rich-grid-renderer {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-grid-renderer {
   --ytd-rich-grid-items-per-row: initial;
 }
-html[data-ypp-card-style] ytd-rich-item-renderer {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-item-renderer {
   width: auto;
   max-width: none;
   min-width: 0;
@@ -216,12 +216,12 @@ html[data-ypp-card-style] ytd-rich-item-renderer {
     box-shadow 0.3s ease !important;
 }
 
-html[data-ypp-card-style] ytd-rich-item-renderer:hover {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-item-renderer:hover {
   transform: translateY(-8px) scale(1.02) !important;
 }
 
 /* Proportional Grid on #dismissible */
-html[data-ypp-card-style] ytd-rich-grid-media #dismissible {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-grid-media #dismissible {
   display: grid !important;
   grid-template-columns: 35% 65% !important;
   grid-template-rows: auto auto !important;
@@ -229,7 +229,7 @@ html[data-ypp-card-style] ytd-rich-grid-media #dismissible {
 }
 
 /* The Left Sidebar (Logo Area) */
-html[data-ypp-card-style] ytd-rich-grid-media #dismissible::before {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-grid-media #dismissible::before {
   content: '' !important;
   grid-column: 1;
   grid-row: 1 / span 2;
@@ -240,7 +240,7 @@ html[data-ypp-card-style] ytd-rich-grid-media #dismissible::before {
 }
 
 /* Thumbnail Top Right */
-html[data-ypp-card-style] ytd-thumbnail {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-thumbnail {
   grid-column: 2 !important;
   grid-row: 1 !important;
   margin: 10px 10px 0 0 !important;
@@ -250,7 +250,7 @@ html[data-ypp-card-style] ytd-thumbnail {
 }
 
 /* Details Bottom Right */
-html[data-ypp-card-style] #details {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) #details {
   grid-column: 2 !important;
   grid-row: 2 !important;
   padding: 8px 10px 10px 0 !important;
@@ -259,10 +259,10 @@ html[data-ypp-card-style] #details {
   flex-direction: column !important;
 }
 
-html[data-ypp-card-style] #avatar-link {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) #avatar-link {
   display: none !important;
 }
-html[data-ypp-card-style] #video-title {
+html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) #video-title {
   font-size: 1.4rem !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
@@ -382,4 +382,43 @@ html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbn
 
 :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon {
   color: #fff !important;
+}
+
+/* ==========================================================================
+   SHORTS SAFETY RESET: Protect Shorts & Reel items from proportional grid styling
+   ========================================================================== */
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) #dismissible,
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) ytd-rich-grid-media #dismissible {
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  height: auto !important;
+}
+
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) #dismissible::before,
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) ytd-rich-grid-media #dismissible::before {
+  display: none !important;
+  content: none !important;
+}
+
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) :is(ytd-thumbnail, #details, .yt-lockup-view-model-wiz__image, yt-image) {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+}
+
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) #avatar-link {
+  display: inline-block !important;
+}
+
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) #video-title {
+  font-size: initial !important;
+  font-weight: initial !important;
+  text-transform: none !important;
+  margin-bottom: initial !important;
+  line-height: initial !important;
+  max-height: none !important;
 }

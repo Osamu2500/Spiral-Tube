@@ -1,189 +1,121 @@
-/* src/content/themes/ui-styles/liquid-glass/components/buttons.css */
-.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
-.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
-  display: none !important;
-}
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer !important;
-}
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
-  border: none !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-}
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-  margin-right: 0 !important;
+/* =========================================================
+   LIQUID GLASS — BUTTONS & CHIPS
+   Level 3 Liquid Luminescence & Specular Action Pills
+   ========================================================= */
+
+/* Subscribe Button — Clean Transparent White Glow */
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
   border-radius: 2000px !important;
-  z-index: 30000 !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce) !important;
-}
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytLikeButtonViewModelHost {
-  margin-right: 5px;
-}
-.ytInlinePlayerControlsTopRightControlsCircleButton {
-  background: var(--sf) !important;
-  border: none !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce) !important;
-  cursor: pointer !important;
-}
-.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled {
-  border: none;
-  box-shadow: var(--shadow-active) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce) !important;
-}
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.1) !important;
-}
-ytd-alert-with-button-renderer[type='INFO'] {
-  box-shadow: var(--shadow-base) !important;
-  border-radius: 20px;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce) !important;
-}
-ytd-thumbnail-overlay-toggle-button-renderer {
-  background: var(--sf) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce) !important;
-  border-radius: 2000px !important;
-}
-ytd-thumbnail-overlay-toggle-button-renderer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytPlayerQuickActionButtonsHost:not(:empty) {
-  background-color: var(--sf) !important;
-}
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
-  background: var(--sf) !important;
-}
-/* AGGRESSIVE GLOBAL OVERRIDE FOR ALL YOUTUBE BUTTONS */
-ytd-menu-renderer button,
-ytd-segmented-like-dislike-button-renderer button,
-ytd-download-button-renderer button,
-ytd-button-renderer button,
-ytd-subscribe-button-renderer button,
-.yt-spec-button-shape-next--tonal,
-.yt-spec-button-shape-next--mono,
-.yt-spec-button-shape-next--outline,
-.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next,
-button.yt-spec-button-shape-next--text,
-button.ytSpecButtonShapeNextText {
-  border-radius: 2000px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-  transition:
-    transform var(--bounce, 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)),
-    box-shadow var(--bounce, 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)),
-    background var(--bounce, 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)) !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer !important;
-}
-ytd-menu-renderer button:hover,
-ytd-segmented-like-dislike-button-renderer button:hover,
-ytd-download-button-renderer button:hover,
-ytd-button-renderer button:hover,
-ytd-subscribe-button-renderer button:hover,
-.yt-spec-button-shape-next--tonal:hover,
-.yt-spec-button-shape-next--mono:hover,
-.yt-spec-button-shape-next--outline:hover,
-.yt-spec-button-shape-next--filled:hover,
-.yt-spec-button-shape-next:hover,
-button.yt-spec-button-shape-next--text:hover,
-button.ytSpecButtonShapeNextText:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
-  transform: scale(1.04) !important;
-}
-ytd-menu-renderer button:active,
-ytd-segmented-like-dislike-button-renderer button:active,
-ytd-download-button-renderer button:active,
-ytd-button-renderer button:active,
-ytd-subscribe-button-renderer button:active,
-.yt-spec-button-shape-next--tonal:active,
-.yt-spec-button-shape-next--mono:active,
-.yt-spec-button-shape-next--outline:active,
-.yt-spec-button-shape-next--filled:active,
-.yt-spec-button-shape-next:active,
-button.yt-spec-button-shape-next--text:active,
-button.ytSpecButtonShapeNextText:active {
-  transform: scale(0.97) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), filter var(--lg-smooth) !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
-  display: flex !important;
-  gap: 6px !important;
-  background: none !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  overflow: visible !important;
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.06) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+  filter: brightness(1.1) !important;
 }
-.ypp-btn-primary,
-.ypp-play-all-btn,
-.ypp-health-btn {
-  border-radius: 2000px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+
+/* Subscribed / Tonal Button State */
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer[subscribed] button,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--tonal {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: var(--lg-text-secondary, #cccccc) !important;
+  border: var(--lg-border-specular) !important;
+  box-shadow: var(--lg-shadow-card) !important;
 }
-.ypp-btn-primary:hover,
-.ypp-play-all-btn:hover,
-.ypp-health-btn:hover {
-  box-shadow: var(--shadow-hover) !important;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer[subscribed] button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--tonal:hover {
+  background: rgba(255, 255, 255, 0.20) !important;
+  color: #ffffff !important;
+  box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.05) !important;
 }
-.ypp-btn-primary:active,
-.ypp-play-all-btn:active,
-.ypp-health-btn:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
-}
-.ypp-pill-toggle {
+
+/* Like & Dislike Unified Segmented Pill */
+html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model {
+  background: var(--lg-bg-level-1) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   border-radius: 2000px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  border: var(--lg-border-specular) !important;
+  box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
+  overflow: hidden !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
-.ypp-pill-toggle:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: var(--shadow-hover) !important;
+
+html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model:hover {
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.03) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model button {
+  background: transparent !important;
+  border: none !important;
+  transition: background var(--lg-smooth), color var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Liked State Clean White Luminescent Glow */
+html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model button[aria-pressed="true"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Secondary Action Buttons (Share, Download, Save, More) */
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="liquid-glass"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="liquid-glass"] ytd-button-renderer yt-button-shape button {
+  border-radius: 2000px !important;
+  background: var(--lg-bg-level-1) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  border: var(--lg-border-specular) !important;
+  box-shadow: var(--lg-shadow-card) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-button-renderer yt-button-shape button:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Chip Cloud / Category Shelf Pills */
+html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer {
+  border-radius: 2000px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
+  border: var(--lg-border-subtle) !important;
+  color: var(--lg-text-primary, white) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: var(--lg-shadow-card) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer[selected] {
+  background: rgba(255, 255, 255, 0.90) !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: var(--lg-shadow-glow) !important;
   transform: scale(1.05) !important;
 }

@@ -1,118 +1,62 @@
-ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
-  margin: 5px auto !important;
+/* =========================================================
+   LIQUID GLASS — SEARCH RESULTS & FILTERS
+   Level 1 Full-Width Specular Cards & Filter Pills
+   ========================================================= */
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search-filter-group-renderer {
+  background: transparent !important;
 }
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox {
-  background: none !important;
-  border: none !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search-filter-renderer {
   border-radius: 2000px !important;
-  box-shadow: var(--shadow-base) !important;
+  margin: 4px 6px !important;
+  padding: 4px 12px !important;
+  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
 }
-.ytSearchboxComponentSearchButton {
-  margin-left: 10px !important;
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search-filter-renderer:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search-filter-renderer[is-selected] {
+  background: rgba(255, 255, 255, 0.90) !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+}
+
+/* Search Result Video & Channel Cards */
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-video-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-playlist-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-shelf-renderer {
+  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  border: var(--lg-border-specular) !important;
+  border-radius: 26px !important;
+  box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-video-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-playlist-renderer:hover {
+  background: var(--lg-bg-card-hover, rgba(50, 50, 50, 0.70)) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: translateY(-4px) scale(1.01) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer #avatar-section {
+  padding-right: 24px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer #avatar {
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3) !important;
   border-radius: 2000px !important;
-  border: none !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-.ytSearchboxComponentSearchButton:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-.ytSearchboxComponentSearchButton:active {
-  transform: scale(0.95);
-  box-shadow: var(--shadow-active) !important;
-}
-.ytSearchboxComponentSuggestionsContainer,
-ytd-multi-page-menu-renderer {
-  top: 55px !important;
-  border: none !important;
-  box-shadow: var(--shadow-hover) !important;
-  border-radius: 20px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
-  margin-right: 10px;
-  width: 30px !important;
-  height: 30px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-html,
-[dark] .ytSearchboxComponentInput {
-  mix-blend-mode: difference;
-}
-html,
-[dark] .ytSearchboxComponentInput {
-  mix-blend-mode: normal;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] ytd-multi-page-menu-renderer {
-  background: rgba(14, 14, 18, 0.6) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer {
-  background: rgba(10, 10, 14, 0.92) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
-  backdrop-filter: blur(32px) saturate(180%) !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.09) !important;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer {
-  background: rgba(255, 255, 255, 0.94) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
-  backdrop-filter: blur(32px) saturate(180%) !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18) !important;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #ffffff !important;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #0f0f0f !important;
-}
-ytd-searchbox #container {
-  background: rgba(255, 255, 255, 0.1) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 24px 0 0 24px !important;
-}
-ytd-searchbox #search-icon-legacy {
-  background: rgba(255, 255, 255, 0.15) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 0 24px 24px 0 !important;
-}
-ytd-search-filter-group-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  border-radius: 24px !important;
-  padding: 15px !important;
-  box-shadow: var(--shadow-base) !important;
-  margin-bottom: 10px !important;
 }
