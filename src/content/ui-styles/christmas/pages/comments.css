@@ -19,8 +19,8 @@ html[data-ypp-ui-style="christmas"] ytd-comments-header-renderer[engagement-pane
   border-radius: 14px !important;
   padding: 14px 18px !important;
   margin: 12px 0 !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
@@ -45,8 +45,8 @@ html[data-ypp-ui-style="christmas"] ytd-comment-simplebox-renderer {
   border-radius: 14px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4) !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
@@ -77,8 +77,8 @@ html[data-ypp-ui-style="christmas"] ytd-comment-thread-renderer {
   border-radius: 14px !important;
   padding: 16px !important;
   margin-bottom: 14px !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
 }
@@ -96,8 +96,8 @@ html[data-ypp-ui-style="christmas"] ytd-comment-view-model {
   border-radius: 12px !important;
   padding: 14px !important;
   margin-bottom: 12px !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   transition: border-color 0.2s ease, background 0.2s ease !important;
 }
 

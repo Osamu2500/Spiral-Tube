@@ -14,8 +14,21 @@ export class PlayerBarUI {
         this.setupInjectionObserver();
     }
 
+    get isActive() {
+        const isWatchOrShorts = window.location.pathname.startsWith('/watch') || window.location.pathname.startsWith('/shorts');
+        if (this.manager && typeof this.manager.isActive === 'boolean') {
+            return this.manager.isActive || isWatchOrShorts;
+        }
+        return isWatchOrShorts;
+    }
+
+    get settings() {
+        return this.manager?.settings || window.YPP?.MainApp?.getSettings?.() || window.YPP?.CONSTANTS?.DEFAULT_SETTINGS || {};
+    }
+
     async enable() {
-        if (!this.manager.isActive) return;
+        if (!this.isActive) return;
+        this.updateCustomStyles();
         this.injectedButtons = false;
         
         if (!this._navigateListener) {
@@ -32,8 +45,15 @@ export class PlayerBarUI {
         this.setupInjectionObserver();
     }
 
+    async onUpdate() {
+        if (!this.isActive) return;
+        this.updateCustomStyles();
+        this.injectedButtons = false;
+        this.attemptInjection();
+    }
+
     attemptInjection() {
-        if (!this.manager.isActive) return;
+        if (!this.isActive) return;
         
         const isShorts = window.location.pathname.startsWith('/shorts');
         const video = isShorts 
@@ -70,6 +90,10 @@ export class PlayerBarUI {
             window.YPP.sharedObserver.register('player-bar-injection-vid', window.YPP.CONSTANTS.SELECTORS.VIDEO[0], () => {
                 this.attemptInjection();
             }, true);
+
+            window.YPP.sharedObserver.register('player-bar-injection-shorts', 'ytd-reel-video-renderer[is-active]', () => {
+                this.attemptInjection();
+            }, true);
         } else {
             this.startInjectionPollingFallback();
         }
@@ -78,7 +102,7 @@ export class PlayerBarUI {
     startInjectionPollingFallback() {
         if (this._pollingInterval) clearInterval(this._pollingInterval);
         this._pollingInterval = setInterval(() => {
-            if (!this.manager.isActive) return;
+            if (!this.isActive) return;
             const isShorts = window.location.pathname.startsWith('/shorts');
             const video = isShorts ? document.querySelector('ytd-reel-video-renderer[is-active] video') : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
             const controls = isShorts ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
@@ -226,6 +250,7 @@ export class PlayerBarUI {
 
         fullSequence.forEach(id => {
             const settingValue = this.settings[id]; // 'front', 'back', 'hidden'
+            if (settingValue === 'hidden' || settingValue === false) return;
 
             const builder = featureBuilders[id];
             if (!builder) return;
@@ -311,18 +336,29 @@ export class PlayerBarUI {
         }
 
         const hiddenSelectors = [];
-        if (this.settings.pb_native_play === 'hidden') hiddenSelectors.push('.ytp-play-button');
-        if (this.settings.pb_native_next === 'hidden') hiddenSelectors.push('.ytp-next-button');
-        if (this.settings.pb_native_mute === 'hidden') hiddenSelectors.push('.ytp-mute-button', '.ytp-volume-area');
-        if (this.settings.pb_native_cast === 'hidden') hiddenSelectors.push('button[data-tooltip-target-id="ytp-remote-button"]', '.ytp-remote-button');
-        if (this.settings.pb_native_autoplay === 'hidden') hiddenSelectors.push('button[data-tooltip-target-id="ytp-autonav-toggle-button"]', 'button.ytp-button[aria-label*="Autoplay"]', '.ytp-autonav-toggle-button', '.ytp-autonav-button');
-        if (this.settings.pb_native_cc === 'hidden') hiddenSelectors.push('.ytp-subtitles-button');
-        if (this.settings.pb_native_miniplayer === 'hidden') hiddenSelectors.push('.ytp-miniplayer-button');
-        if (this.settings.pb_native_theater === 'hidden') hiddenSelectors.push('.ytp-size-button');
-        if (this.settings.pb_native_fullscreen === 'hidden') hiddenSelectors.push('.ytp-fullscreen-button');
+        const isHiddenOrBack = (val) => val === 'hidden' || val === 'back';
+        if (isHiddenOrBack(this.settings.pb_native_play)) hiddenSelectors.push('.ytp-play-button', '.ytp-play-button-container');
+        if (isHiddenOrBack(this.settings.pb_native_next)) hiddenSelectors.push('.ytp-next-button');
+        if (isHiddenOrBack(this.settings.pb_native_mute)) hiddenSelectors.push('.ytp-mute-button', '.ytp-volume-area', '.ytp-volume-panel');
+        if (isHiddenOrBack(this.settings.pb_native_cast)) hiddenSelectors.push('button[data-tooltip-target-id="ytp-remote-button"]', '.ytp-remote-button', '.ytp-remote-button-container', 'yt-button-shape[aria-label*="Cast"]');
+        if (isHiddenOrBack(this.settings.pb_native_autoplay)) hiddenSelectors.push('.ytp-autonav-toggle-button-container', 'button[data-tooltip-target-id="ytp-autonav-toggle-button"]', 'button.ytp-button[aria-label*="Autoplay"]', '.ytp-autonav-toggle-button', '.ytp-autonav-button');
+        if (isHiddenOrBack(this.settings.pb_native_cc)) hiddenSelectors.push('.ytp-subtitles-button', '.ytp-subtitles-button-container');
+        if (isHiddenOrBack(this.settings.pb_native_miniplayer)) hiddenSelectors.push('.ytp-miniplayer-button', '.ytp-miniplayer-button-container');
+        if (isHiddenOrBack(this.settings.pb_native_theater)) hiddenSelectors.push('.ytp-size-button', '.ytp-size-button-container');
+        if (isHiddenOrBack(this.settings.pb_native_fullscreen)) hiddenSelectors.push('.ytp-fullscreen-button', '.ytp-fullscreen-button-container');
 
         if (hiddenSelectors.length > 0) {
-            styleNode.textContent = `.html5-video-player ${hiddenSelectors.join(', .html5-video-player ')} { display: none !important; }`;
+            const selectors = hiddenSelectors.map(sel => [
+                `html body .html5-video-player ${sel}`,
+                `html body.ypp-compact-player-ui .html5-video-player ${sel}`,
+                `html body #movie_player .ytp-chrome-controls ${sel}`,
+                `html body .html5-video-player .ytp-chrome-controls ${sel}`,
+                `html body.ypp-compact-player-ui #movie_player .ytp-chrome-controls ${sel}`,
+                `html body.ypp-compact-player-ui .html5-video-player .ytp-chrome-controls ${sel}`,
+                `html body.ypp-compact-player-ui .html5-video-player .ytp-left-controls ${sel}`,
+                `html body.ypp-compact-player-ui .html5-video-player .ytp-right-controls ${sel}`
+            ].join(',\n')).join(',\n');
+            styleNode.textContent = `${selectors} { display: none !important; opacity: 0 !important; pointer-events: none !important; width: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; border: none !important; overflow: hidden !important; }`;
         } else {
             styleNode.textContent = '';
         }

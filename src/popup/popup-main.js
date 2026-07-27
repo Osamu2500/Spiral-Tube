@@ -11,6 +11,92 @@ import { initI18n, t } from '../shared/i18n.js';
 
 // --- Register Custom Slots ---
 registerSlot('player_bar_organizer', renderPlayerBarOrganizer);
+registerSlot('intentionalDelaySlot', (container, state) => {
+    container.className = 'setting-item toggle-card';
+    container.style.cssText = 'grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding: 10px 14px;';
+    container.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0;">
+            <div class="feature-icon" style="cursor: pointer; flex-shrink: 0;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="info" style="cursor: pointer; flex: 1; min-width: 0;">
+                <span class="name" style="font-size: 13px; font-weight: 500; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Intentional Delay</span>
+                <span class="desc" style="font-size: 11px; opacity: 0.6; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Add a pause before videos start</span>
+            </div>
+            <label class="toggle" style="margin-left: auto; flex-shrink: 0;">
+                <input type="checkbox" id="intentionalDelay">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="inline-slider-wrapper" style="display: flex; align-items: center; gap: 8px; width: 100%; padding-left: 12px; border-left: 1px solid rgba(255, 255, 255, 0.08);">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.6; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <input type="range" id="intentionalDelayTimeUI" min="0" max="35" step="1" style="width: 100%; flex-grow: 1; cursor: pointer;">
+            <span style="font-size: 11px; font-weight: 500; min-width: 28px; text-align: right; opacity: 0.8;"><span id="intentionalDelayTimeValue">1</span>s</span>
+        </div>
+        <input type="hidden" id="intentionalDelayTime" value="1" />
+    `;
+    const DELAY_STEPS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 220, 240, 260, 280, 300];
+    const sliderUI = container.querySelector('#intentionalDelayTimeUI');
+    const hiddenInput = container.querySelector('#intentionalDelayTime');
+    const valDisplay = container.querySelector('#intentionalDelayTimeValue');
+    if (sliderUI && hiddenInput && valDisplay) {
+        sliderUI.addEventListener('input', () => {
+            const idx = parseInt(sliderUI.value, 10) || 0;
+            const val = DELAY_STEPS[idx] !== undefined ? DELAY_STEPS[idx] : 1;
+            valDisplay.textContent = val;
+            hiddenInput.value = val;
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        const origDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+        Object.defineProperty(hiddenInput, 'value', {
+            get: function() { return origDesc.get.call(this); },
+            set: function(val) {
+                origDesc.set.call(this, val);
+                let idx = DELAY_STEPS.findIndex(v => v >= Number(val || 1));
+                if (idx === -1) idx = 0;
+                sliderUI.value = idx;
+                valDisplay.textContent = DELAY_STEPS[idx];
+            }
+        });
+    }
+});
+registerSlot('autoLikeSlot', (container, state) => {
+    container.className = 'setting-item toggle-card';
+    container.style.cssText = 'grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr 2fr; align-items: center; gap: 12px; padding: 10px 14px;';
+    container.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0;">
+            <div class="feature-icon" style="cursor: pointer; flex-shrink: 0;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            </div>
+            <div class="info" style="cursor: pointer; flex: 1; min-width: 0;">
+                <span class="name" style="font-size: 13px; font-weight: 500; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Auto Like</span>
+                <span class="desc" style="font-size: 11px; opacity: 0.6; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Automatically like video</span>
+            </div>
+            <label class="toggle" style="margin-left: auto; flex-shrink: 0;">
+                <input type="checkbox" id="autoLike">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="inline-slider-wrapper" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 0 12px; border-left: 1px solid rgba(255, 255, 255, 0.08); border-right: 1px solid rgba(255, 255, 255, 0.08);">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.6; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <input type="range" id="autoLikeThresholdUI" min="0" max="32" step="1" style="width: 100%; flex-grow: 1; cursor: pointer;">
+            <span id="autoLikeThresholdValue" style="font-size: 11px; font-weight: 500; min-width: 36px; text-align: right; opacity: 0.8;">0s</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap;">
+            <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeSubscribedOnly" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Subscribed Only">Subs</button>
+            <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeChannelLists" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Use Channel Lists">Lists</button>
+            <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeWaitAds" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Wait for Ads">Ads</button>
+            <button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeHumanize" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Humanize Delay">Human</button>
+            <button type="button" id="autoLikeDelayTypeBtn" class="view-mode-btn" style="font-size: 11px; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; cursor: pointer; color: inherit; background: rgba(255,255,255,0.04); transition: all 0.2s;" title="Switch between Seconds / Percent">% / s</button>
+        </div>
+        <input type="hidden" id="autoLikeSubscribedOnly" />
+        <input type="hidden" id="autoLikeChannelLists" />
+        <input type="hidden" id="autoLikeWaitAds" />
+        <input type="hidden" id="autoLikeHumanize" />
+        <input type="hidden" id="autoLikeDelayType" value="seconds" />
+        <input type="hidden" id="autoLikeThreshold" value="50" />
+    `;
+});
 registerSlot('vsc_shortcuts_manager', (container, state) => {
     container.innerHTML = `
         <div class="vsc-shortcuts-header" style="display:flex; justify-content:space-between; margin-bottom:10px; font-weight:bold; font-size:12px; opacity:0.7;">

@@ -102,7 +102,7 @@
           <div class="top-bar-right">
             <div class="search-container">
               <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" id="featureSearch" placeholder="Search settings..." data-i18n-placeholder="search_placeholder" class="feature-search-input" />
+              <input type="text" id="featureSearch" placeholder="Search settings..." data-i18n-placeholder="search_placeholder" class="feature-search-input" aria-label="Feature Search" title="Feature Search">
             </div>
           </div>
         </header>
@@ -126,11 +126,11 @@
           <div id="ambientModeOptions" data-preserve="true" class="mode-settings" style="width:100%; display:none; padding:12px 14px; border-top:1px solid rgba(255,255,255,0.1);">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
               <span style="font-size:12px; color:rgba(255,255,255,0.7);">Intensity</span>
-              <input type="range" id="ambientIntensity" min="0.1" max="1.0" step="0.1" value="0.6" style="width:100px;">
+              <input type="range" id="ambientIntensity" min="0.1" max="1.0" step="0.1" value="0.6" style="width:100px;" aria-label="Ambient Intensity" title="Ambient Intensity">
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <span style="font-size:12px; color:rgba(255,255,255,0.7);">Blur Amount</span>
-              <input type="range" id="ambientBlur" min="20" max="200" step="10" value="120" style="width:100px;">
+              <input type="range" id="ambientBlur" min="20" max="200" step="10" value="120" style="width:100px;" aria-label="Ambient Blur" title="Ambient Blur">
             </div>
           </div>
         </section>
@@ -145,16 +145,6 @@
         <!-- MODES — rendered by popup-renderer.js -->
         <section id="tab-modes" class="tab-content">
           <!-- schema-driven: populated at runtime -->
-          <div id="ambientModeOptions" data-preserve="true" class="mode-settings" style="width:100%; display:none; padding:12px 14px; border-top:1px solid rgba(255,255,255,0.1);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-size:12px; color:rgba(255,255,255,0.7);">Intensity</span>
-              <input type="range" id="ambientIntensity" min="0.1" max="1.0" step="0.1" value="0.6" style="width:100px;">
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:12px; color:rgba(255,255,255,0.7);">Blur Amount</span>
-              <input type="range" id="ambientBlur" min="20" max="200" step="10" value="120" style="width:100px;">
-            </div>
-          </div>
         </section>
 
         <!-- SEARCH — rendered by popup-renderer.js -->
@@ -175,7 +165,7 @@
             <button id="manageSubsBtn" class="action-btn" data-i18n="manage_groups">Manage Groups</button>
             <button id="exportFoldersBtn" class="action-btn" style="background:var(--bg-card);" data-i18n="export">Export</button>
             <button id="importFoldersBtn" class="action-btn" style="background:var(--bg-card);" data-i18n="import">Import</button>
-            <input type="file" id="importFoldersFile" accept=".json" style="display:none;" />
+            <input type="file" id="importFoldersFile" accept=".json" style="display:none;" aria-label="Import Folders File" title="Import Folders File">
           </div>
         </section>
 
@@ -228,7 +218,7 @@
               <div class="setting-item">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
                 <div class="info"><span class="name" data-i18n="premium_theme">Premium Theme</span><span class="desc" data-i18n="enable_custom_css_injection">Enable custom CSS injection</span></div>
-                <label class="toggle"><input type="checkbox" id="premiumTheme" /><span class="slider"></span></label>
+                <label class="toggle"><input type="checkbox" id="premiumTheme" aria-label="Premium Theme" title="Premium Theme"><span class="slider"></span></label>
               </div>
             </div>
           </div>
@@ -249,12 +239,39 @@
               <div class="setting-item">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"></rect></svg></div>
                 <div class="info"><span class="name" data-i18n="useSquareCorners">Square Corners</span><span class="desc" data-i18n="useSquareCorners_desc">Remove all rounded edges</span></div>
-                <label class="toggle"><input type="checkbox" id="useSquareCorners" /><span class="slider"></span></label>
+                <label class="toggle"><input type="checkbox" id="useSquareCorners" aria-label="Use Square Corners" title="Use Square Corners"><span class="slider"></span></label>
               </div>
               <div class="setting-item">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="8" ry="8"></rect></svg></div>
                 <div class="info"><span class="name" data-i18n="extraRoundedUI">Extra Rounded UI</span><span class="desc" data-i18n="extraRoundedUI_desc">Make UI elements more circular</span></div>
-                <label class="toggle"><input type="checkbox" id="extraRoundedUI" /><span class="slider"></span></label>
+                <label class="toggle"><input type="checkbox" id="extraRoundedUI" aria-label="Extra Rounded U I" title="Extra Rounded U I"><span class="slider"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popup & Modal Styles -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                        <span data-i18n="popup_modal_styles">Popup & Modal Styles</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card-group">
+              <div class="setting-item">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg></div>
+                <div class="info">
+                  <span class="name">
+                    <span data-i18n="saveSupremeUI">Enhanced Save Popup</span>
+                    <span class="new-feature-badge">NEW</span>
+                  </span>
+                  <span class="desc" data-i18n="saveSupremeUI_desc">Modern glassmorphic popup when saving videos to playlists</span>
+                </div>
+                <label class="toggle"><input type="checkbox" id="saveSupremeUI" aria-label="Save Supreme U I" title="Save Supreme U I"><span class="slider"></span></label>
               </div>
             </div>
           </div>
@@ -303,22 +320,22 @@
                      <div class="color-swatch" data-color="#ffb340" style="background: #ffb340;" role="button" tabindex="0" aria-label="Orange Accent"></div>
                      <div class="color-swatch" data-color="#b62bcf" style="background: #b62bcf;" role="button" tabindex="0" aria-label="Purple Accent"></div>
                      <div class="color-swatch" data-color="#ff6b6b" style="background: #ff6b6b;" role="button" tabindex="0" aria-label="Pink Accent"></div>
-                     <div class="color-swatch custom-color-picker" role="button" tabindex="0" aria-label="Custom Color">
+                     <label class="color-swatch custom-color-picker" title="Custom Color" aria-label="Custom Color">
                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                       <input type="color" id="accentColor" value="#ff4e45" tabindex="-1" />
-                     </div>
+                       <input type="color" id="accentColor" value="#ff4e45" tabindex="-1" aria-label="Accent Color" title="Accent Color">
+                      </label>
                    </div>
                 </div>
                 <div style="display:flex; justify-content:space-between; width:100%; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px; flex-wrap:wrap; gap:8px;">
                    <div style="display:flex; align-items:center; gap:10px;">
                      <span class="name" style="font-size:13px;" data-i18n="dual_gradient_accent">Dual Gradient Accent</span>
-                     <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="enableDualAccent" /><span class="slider"></span></label>
+                     <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="enableDualAccent" aria-label="Enable Dual Accent" title="Enable Dual Accent"><span class="slider"></span></label>
                    </div>
                    <div class="color-swatches" id="secondaryAccentSwatches" role="group" style="opacity:0.5; pointer-events:none;">
-                     <div class="color-swatch custom-color-picker" role="button" style="width:28px; height:28px;">
+                     <label class="color-swatch custom-color-picker" title="Secondary Custom Color" aria-label="Secondary Custom Color" style="width:28px; height:28px;">
                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                       <input type="color" id="secondaryAccentColor" value="#b62bcf" tabindex="-1" />
-                     </div>
+                       <input type="color" id="secondaryAccentColor" value="#b62bcf" tabindex="-1" aria-label="Secondary Accent Color" title="Secondary Accent Color">
+                      </label>
                    </div>
                 </div>
               </div>
@@ -341,22 +358,22 @@
               <div class="custom-theme-builder" style="padding:12px 14px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; background:rgba(255,255,255,0.02); border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
                 <!-- Name -->
                 <div class="search-container theme-name-input-container" style="flex:1; min-width:140px; margin:0; border:1px solid rgba(255,255,255,0.1); border-radius:8px;">
-                  <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" style="padding-left:12px; background:rgba(0,0,0,0.2); font-size:13px;" />
+                  <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" style="padding-left:12px; background:rgba(0,0,0,0.2); font-size:13px;" aria-label="Custom Theme Name" title="Custom Theme Name">
                 </div>
                 
                 <!-- Colors -->
                 <div class="theme-builder-colors" style="display:flex; gap:8px; margin:0; align-items:center; flex-wrap:wrap;">
                   <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-                    <input type="color" id="customThemeBgBase" value="#0f0f0f" title="Base Background" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                    <input type="color" id="customThemeBgBase" value="#0f0f0f" title="Base Background" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" aria-label="Custom Theme Bg Base" title="Custom Theme Bg Base">
                   </div>
                   <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-                    <input type="color" id="customThemeBgSurface" value="#212121" title="Surface Background" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                    <input type="color" id="customThemeBgSurface" value="#212121" title="Surface Background" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" aria-label="Custom Theme Bg Surface" title="Custom Theme Bg Surface">
                   </div>
                   <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-                    <input type="color" id="customThemeAccent" value="#ff4e45" title="Accent Color" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                    <input type="color" id="customThemeAccent" value="#ff4e45" title="Accent Color" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" aria-label="Custom Theme Accent" title="Custom Theme Accent">
                   </div>
                   <div class="color-picker-group" style="display:flex; flex-direction:column; align-items:center; gap:4px;">
-                    <input type="color" id="customThemeText" value="#ffffff" title="Text Color" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" />
+                    <input type="color" id="customThemeText" value="#ffffff" title="Text Color" style="width:24px; height:24px; border-radius:50%; padding:0; border:none;" aria-label="Custom Theme Text" title="Custom Theme Text">
                   </div>
                 </div>
 
@@ -371,10 +388,10 @@
                   <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme" style="background:rgba(255,255,255,0.05); color:white; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer;">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                   </button>
-                  <input type="file" id="importCustomThemeFile" accept=".json" style="display:none;" />
+                  <input type="file" id="importCustomThemeFile" accept=".json" style="display:none;" aria-label="Import Custom Theme File" title="Import Custom Theme File">
                 </div>
               </div>
-              <div class="setting-item" style="display:none;"><label class="toggle"><input type="checkbox" id="trueBlack" /><span class="slider"></span></label></div>
+              <div class="setting-item" style="display:none;"><label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label></div>
             </div>
           </div>
 
@@ -398,7 +415,7 @@
                   <button id="clearImageThemeBtn" class="icon-btn" title="Clear Image" style="background:rgba(255,255,255,0.05); color:white; width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer;">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                   </button>
-                  <input type="file" id="imageThemeFileInput" accept="image/*" style="display:none;" />
+                  <input type="file" id="imageThemeFileInput" accept="image/*" style="display:none;" aria-label="Image Theme File Input" title="Image Theme File Input">
                 </div>
 
                 <!-- Preview Box -->
@@ -408,12 +425,12 @@
 
                 <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px;">
                   <span style="font-size:13px; color:rgba(255,255,255,0.8);" data-i18n="intensity">Intensity</span>
-                  <input type="range" id="imageThemeIntensity" min="0.1" max="1.0" step="0.05" value="0.6" style="width:120px;" />
+                  <input type="range" id="imageThemeIntensity" min="0.1" max="1.0" step="0.05" value="0.6" style="width:120px;" aria-label="Image Theme Intensity" title="Image Theme Intensity">
                 </div>
                 
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                   <span style="font-size:13px; color:rgba(255,255,255,0.8);" data-i18n="extract_colors">Extract UI Colors</span>
-                  <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="imageThemeExtractColors" /><span class="slider"></span></label>
+                  <label class="toggle" style="transform:scale(0.85);"><input type="checkbox" id="imageThemeExtractColors" aria-label="Image Theme Extract Colors" title="Image Theme Extract Colors"><span class="slider"></span></label>
                 </div>
               </div>
             </div>
@@ -432,7 +449,7 @@
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
-              <input type="hidden" id="youtubePageTheme" value="default" />
+              <input type="hidden" id="youtubePageTheme" value="default" aria-label="Youtube Page Theme" title="Youtube Page Theme">
               <div class="theme-grid" style="margin-top: 0;">
                 <button type="button" class="theme-btn youtube-style-btn" data-style="default" data-i18n="default">Default</button>
                 <button type="button" class="theme-btn youtube-style-btn" data-style="christmas" data-i18n="christmas">Christmas</button>
@@ -482,7 +499,7 @@
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
-              <input type="hidden" id="popupUiTheme" value="liquid-glass" />
+              <input type="hidden" id="popupUiTheme" value="liquid-glass" aria-label="Popup Ui Theme" title="Popup Ui Theme">
               <div class="theme-grid" style="margin-top: 0;">
                 <button type="button" class="theme-btn popup-style-btn" data-style="default" data-i18n="default">Default</button>
                 <button type="button" class="theme-btn popup-style-btn" data-style="christmas" data-i18n="christmas">Christmas</button>
@@ -531,7 +548,7 @@
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
-              <input type="hidden" id="cardStyle" value="glass" />
+              <input type="hidden" id="cardStyle" value="glass" aria-label="Card Style" title="Card Style">
               <div class="theme-grid" style="margin-top: 0;">
                 <button type="button" class="theme-btn card-style-btn" data-style="default" data-i18n="default">Default</button>
                 <button type="button" class="theme-btn card-style-btn" data-style="glass" data-i18n="glass">Glass</button>
@@ -590,23 +607,23 @@
               <div class="feature-grid" style="margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));">
                 <div class="toggle-card" style="padding: 10px;">
                   <div class="info"><span class="name" data-i18n="shorts">Shorts</span></div>
-                  <label class="toggle"><input type="checkbox" id="navShorts" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="navShorts" aria-label="Nav Shorts" title="Nav Shorts"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
                   <div class="info"><span class="name" data-i18n="subs">Subs</span></div>
-                  <label class="toggle"><input type="checkbox" id="navSubscriptions" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="navSubscriptions" aria-label="Nav Subscriptions" title="Nav Subscriptions"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
                   <div class="info"><span class="name" data-i18n="history">History</span></div>
-                  <label class="toggle"><input type="checkbox" id="navHistory" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="navHistory" aria-label="Nav History" title="Nav History"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
                   <div class="info"><span class="name" data-i18n="later">Later</span></div>
-                  <label class="toggle"><input type="checkbox" id="navWatchLater" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="navWatchLater" aria-label="Nav Watch Later" title="Nav Watch Later"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card" style="padding: 10px;">
                   <div class="info"><span class="name" data-i18n="playlists">Playlists</span></div>
-                  <label class="toggle"><input type="checkbox" id="navPlaylists" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="navPlaylists" aria-label="Nav Playlists" title="Nav Playlists"><span class="slider"></span></label>
                 </div>
               </div>
             </div>
@@ -630,7 +647,7 @@
                     <span class="name" data-i18n="account_menu">Account Menu</span>
                     <span class="desc" data-i18n="premium_profile_dropdown">Premium profile dropdown</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="enableAccountMenu" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="enableAccountMenu" aria-label="Enable Account Menu" title="Enable Account Menu"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="15" rx="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></div>
@@ -638,7 +655,7 @@
                     <span class="name" data-i18n="glass_player_ui">Glass Player UI</span>
                     <span class="desc" data-i18n="transparent_controls">Transparent controls</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="glassPlayerUI" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="glassPlayerUI" aria-label="Glass Player U I" title="Glass Player U I"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
@@ -646,7 +663,7 @@
                     <span class="name" data-i18n="sidebar_comments">Sidebar Comments</span>
                     <span class="desc" data-i18n="move_to_right_sidebar">Move to right sidebar</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="sidebarComments" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="sidebarComments" aria-label="Sidebar Comments" title="Sidebar Comments"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 22h20L12 2z"></path></svg></div>
@@ -654,7 +671,7 @@
                     <span class="name" data-i18n="retroLogo">Retro Logo</span>
                     <span class="desc" data-i18n="retroLogo_desc">Restores the old retro YouTube logo</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="retroLogo" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="retroLogo" aria-label="Retro Logo" title="Retro Logo"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 13h18v-2H3v2zm0 4h18v-2H3v2zm0-8h18V7H3v2z"></path></svg></div>
@@ -662,7 +679,7 @@
                     <span class="name" data-i18n="smallSettingsMenu">Compact Settings Menu</span>
                     <span class="desc" data-i18n="smallSettingsMenu_desc">Makes the video player settings menu items smaller in height</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="smallSettingsMenu" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="smallSettingsMenu" aria-label="Small Settings Menu" title="Small Settings Menu"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12h20v2H2z"></path></svg></div>
@@ -670,7 +687,7 @@
                     <span class="name" data-i18n="useLightsaberProgress">Lightsaber Progress Bar</span>
                     <span class="desc" data-i18n="useLightsaberProgress_desc">Changes the progress bar into a red Sith Lightsaber</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="useLightsaberProgress" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="useLightsaberProgress" aria-label="Use Lightsaber Progress" title="Use Lightsaber Progress"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
@@ -678,7 +695,7 @@
                     <span class="name" data-i18n="premium_logo">Premium Logo</span>
                     <span class="desc" data-i18n="replace_standard_logo">Replace standard logo</span>
                   </div>
-                  <label class="toggle"><input type="checkbox" id="premiumLogo" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="premiumLogo" aria-label="Premium Logo" title="Premium Logo"><span class="slider"></span></label>
                 </div>
               </div>
             </div>
@@ -698,7 +715,7 @@
                </div>
             </div>
             <div class="card-group" style="padding: 10px;">
-              <input type="hidden" id="customCursor" value="default" />
+              <input type="hidden" id="customCursor" value="default" aria-label="Custom Cursor" title="Custom Cursor">
               <div class="cursor-masonry-grid" id="cursorMasonryGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 10px; margin-top: 0;">
                 <button type="button" class="cursor-style-btn active" data-style="default" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
                   <div class="cursor-icon" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; margin-bottom: 6px;">
@@ -913,32 +930,32 @@
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
                   <div class="info"><span class="name" data-i18n="enable_animations">Enable Animations</span></div>
-                  <label class="toggle"><input type="checkbox" id="enableAnimations" checked /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="enableAnimations" checked aria-label="Enable Animations" title="Enable Animations"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg></div>
                   <div class="info"><span class="name" data-i18n="theme_effects">Theme Effects</span><span class="desc" data-i18n="background_fx">Background fx</span></div>
-                  <label class="toggle"><input type="checkbox" id="enableThemeEffects" checked /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="enableThemeEffects" checked aria-label="Enable Theme Effects" title="Enable Theme Effects"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></div>
                   <div class="info"><span class="name" data-i18n="reduced_motion">Reduced Motion</span></div>
-                  <label class="toggle"><input type="checkbox" id="reducedMotion" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="reducedMotion" aria-label="Reduced Motion" title="Reduced Motion"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 3v18"></path><path d="M7 3v18"></path><path d="M3 12h18"></path></svg></div>
                   <div class="info"><span class="name" data-i18n="hide_scrollbar">Hide Scrollbar</span></div>
-                  <label class="toggle"><input type="checkbox" id="hideScrollbar" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="hideScrollbar" aria-label="Hide Scrollbar" title="Hide Scrollbar"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
                   <div class="info"><span class="name" data-i18n="custom_scrollbar">Custom Scrollbar</span></div>
-                  <label class="toggle"><input type="checkbox" id="customScrollbar" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="customScrollbar" aria-label="Custom Scrollbar" title="Custom Scrollbar"><span class="slider"></span></label>
                 </div>
                 <div class="toggle-card">
                   <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20"></path></svg></div>
                   <div class="info"><span class="name" data-i18n="grayscale_thumbs">Grayscale Thumbs</span></div>
-                  <label class="toggle"><input type="checkbox" id="grayscaleThumbnails" /><span class="slider"></span></label>
+                  <label class="toggle"><input type="checkbox" id="grayscaleThumbnails" aria-label="Grayscale Thumbnails" title="Grayscale Thumbnails"><span class="slider"></span></label>
                 </div>
               </div>
               
@@ -947,13 +964,13 @@
                   <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
                     <span class="name" data-i18n="blue_light_filter">Blue Light Filter</span><span class="desc" id="blueLightValue" data-i18n="0">0%</span>
                   </div>
-                  <input type="range" id="blueLight" min="0" max="90" step="5" style="width: 100%;" />
+                  <input type="range" id="blueLight" min="0" max="90" step="5" style="width: 100%;" aria-label="Blue Light" title="Blue Light">
                 </div>
                 <div class="setting-item" style="flex-direction: column; align-items: flex-start; padding: 0;">
                   <div class="info" style="width: 100%; display: flex; justify-content: space-between; flex-direction: row; margin-bottom: 4px;">
                     <span class="name" data-i18n="dim_screen">Dim Screen</span><span class="desc" id="dimValue" data-i18n="0">0%</span>
                   </div>
-                  <input type="range" id="dim" min="0" max="90" step="5" style="width: 100%;" />
+                  <input type="range" id="dim" min="0" max="90" step="5" style="width: 100%;" aria-label="Dim" title="Dim">
                 </div>
               </div>
             </div>
@@ -963,16 +980,16 @@
         <!-- ADVANCED -->
         <section id="tab-advanced" class="tab-content">
           <div id="shortcutsPanel" data-preserve="true" class="hotkey-grid" style="display:none;">
-            <div class="shortcut-row"><span>Zen Mode</span><input type="text" id="shortcut_zenMode" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Focus Mode</span><input type="text" id="shortcut_focusMode" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Cinema Mode</span><input type="text" id="shortcut_cinemaMode" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Snapshot</span><input type="text" id="shortcut_snapshot" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Loop</span><input type="text" id="shortcut_loop" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>PiP</span><input type="text" id="shortcut_pip" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Speed -0.25x</span><input type="text" id="shortcut_speedDown" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Speed +0.25x</span><input type="text" id="shortcut_speedUp" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Reset Speed</span><input type="text" id="shortcut_speedReset" class="shortcut-input" /></div>
-            <div class="shortcut-row"><span>Ambient Mode</span><input type="text" id="shortcut_ambientMode" class="shortcut-input" /></div>
+            <div class="shortcut-row"><span>Zen Mode</span><input type="text" id="shortcut_zenMode" class="shortcut-input" aria-label="Shortcut zen Mode" title="Shortcut zen Mode"></div>
+            <div class="shortcut-row"><span>Focus Mode</span><input type="text" id="shortcut_focusMode" class="shortcut-input" aria-label="Shortcut focus Mode" title="Shortcut focus Mode"></div>
+            <div class="shortcut-row"><span>Cinema Mode</span><input type="text" id="shortcut_cinemaMode" class="shortcut-input" aria-label="Shortcut cinema Mode" title="Shortcut cinema Mode"></div>
+            <div class="shortcut-row"><span>Snapshot</span><input type="text" id="shortcut_snapshot" class="shortcut-input" aria-label="Shortcut snapshot" title="Shortcut snapshot"></div>
+            <div class="shortcut-row"><span>Loop</span><input type="text" id="shortcut_loop" class="shortcut-input" aria-label="Shortcut loop" title="Shortcut loop"></div>
+            <div class="shortcut-row"><span>PiP</span><input type="text" id="shortcut_pip" class="shortcut-input" aria-label="Shortcut pip" title="Shortcut pip"></div>
+            <div class="shortcut-row"><span>Speed -0.25x</span><input type="text" id="shortcut_speedDown" class="shortcut-input" aria-label="Shortcut speed Down" title="Shortcut speed Down"></div>
+            <div class="shortcut-row"><span>Speed +0.25x</span><input type="text" id="shortcut_speedUp" class="shortcut-input" aria-label="Shortcut speed Up" title="Shortcut speed Up"></div>
+            <div class="shortcut-row"><span>Reset Speed</span><input type="text" id="shortcut_speedReset" class="shortcut-input" aria-label="Shortcut speed Reset" title="Shortcut speed Reset"></div>
+            <div class="shortcut-row"><span>Ambient Mode</span><input type="text" id="shortcut_ambientMode" class="shortcut-input" aria-label="Shortcut ambient Mode" title="Shortcut ambient Mode"></div>
             <div class="shortcut-ref-card" style="grid-column:1/-1; margin-top:12px; padding:10px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
               <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;">Quick Reference</div>
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:11px; color:rgba(255,255,255,0.75);">
@@ -996,7 +1013,7 @@
                 <span class="name" style="font-size:12px;" data-i18n="player_bar_position">Player Bar Position</span>
                 <span class="desc" style="font-size:11px;" data-i18n="where_should_it_appear_on_external_sites">Where should it appear on external sites?</span>
               </div>
-              <select id="globalPlayerBarPosition" class="theme-select" style="width: 110px; padding: 4px 8px;">
+              <select id="globalPlayerBarPosition" class="theme-select" style="width: 110px; padding: 4px 8px;" aria-label="Global Player Bar Position" title="Global Player Bar Position">
                 <option value="right">Right</option>
                 <option value="left">Left</option>
                 <option value="top">Top</option>
@@ -1007,39 +1024,39 @@
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;">
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Play / Pause</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showPlay" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showPlay" aria-label="Gpb show Play" title="Gpb show Play"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Time Display</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showTime" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showTime" aria-label="Gpb show Time" title="Gpb show Time"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Volume</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showVolume" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showVolume" aria-label="Gpb show Volume" title="Gpb show Volume"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Vol Booster</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showVolumeBoost" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showVolumeBoost" aria-label="Gpb show Volume Boost" title="Gpb show Volume Boost"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Filters</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showFilters" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showFilters" aria-label="Gpb show Filters" title="Gpb show Filters"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Loop</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showLoop" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showLoop" aria-label="Gpb show Loop" title="Gpb show Loop"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">PiP Mode</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showPip" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showPip" aria-label="Gpb show Pip" title="Gpb show Pip"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Speed</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showSpeed" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showSpeed" aria-label="Gpb show Speed" title="Gpb show Speed"><span class="slider"></span></label>
               </div>
               <div class="gpb-btn-pill" style="flex: 1 1 calc(33.333% - 8px); min-width: 100px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 5px 8px;">
                 <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Fullscreen</span>
-                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showFullscreen" /><span class="slider"></span></label>
+                <label class="toggle" style="transform: scale(0.75); transform-origin: right center;"><input type="checkbox" id="gpb_showFullscreen" aria-label="Gpb show Fullscreen" title="Gpb show Fullscreen"><span class="slider"></span></label>
               </div>
             </div>
 
@@ -1051,27 +1068,27 @@
             <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px;">Skip Categories</div>
             <div class="sb-category-grid">
               <label class="sb-cat-item" title="Paid promotion / sponsored content">
-                <input type="checkbox" id="sb_sponsor" checked />
+                <input type="checkbox" id="sb_sponsor" checked aria-label="Sb sponsor" title="Sb sponsor">
                 <span class="sb-dot" style="background:#00d400;"></span><span>Sponsor</span>
               </label>
               <label class="sb-cat-item" title="Filler intro / recap">
-                <input type="checkbox" id="sb_intro" checked />
+                <input type="checkbox" id="sb_intro" checked aria-label="Sb intro" title="Sb intro">
                 <span class="sb-dot" style="background:#00ffff;"></span><span>Intro</span>
               </label>
               <label class="sb-cat-item" title="Creator self-promotion">
-                <input type="checkbox" id="sb_selfpromo" checked />
+                <input type="checkbox" id="sb_selfpromo" checked aria-label="Sb selfpromo" title="Sb selfpromo">
                 <span class="sb-dot" style="background:#ffff00;"></span><span>Self-promo</span>
               </label>
               <label class="sb-cat-item" title="Likes / subscribe / comment beg">
-                <input type="checkbox" id="sb_interaction" />
+                <input type="checkbox" id="sb_interaction" aria-label="Sb interaction" title="Sb interaction">
                 <span class="sb-dot" style="background:#cc0000;"></span><span>Interaction</span>
               </label>
               <label class="sb-cat-item" title="Non-music parts in music videos">
-                <input type="checkbox" id="sb_music_offtopic" />
+                <input type="checkbox" id="sb_music_offtopic" aria-label="Sb music offtopic" title="Sb music offtopic">
                 <span class="sb-dot" style="background:#ff9900;"></span><span>Off-topic</span>
               </label>
               <label class="sb-cat-item" title="Preview / highlight reel">
-                <input type="checkbox" id="sb_preview" />
+                <input type="checkbox" id="sb_preview" aria-label="Sb preview" title="Sb preview">
                 <span class="sb-dot" style="background:#008fd6;"></span><span>Preview</span>
               </label>
             </div>
@@ -1138,7 +1155,7 @@
             
             <div class="search-container" style="margin-bottom: 15px; width: 100%; position: relative;">
               <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 10px; top: 10px; width: 16px; height: 16px; color: #aaa;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" id="bookmarkSearchInput" placeholder="Search highlights or videos..." class="feature-search-input" style="width: 100%; box-sizing: border-box; padding-left: 32px;" />
+              <input type="text" id="bookmarkSearchInput" placeholder="Search highlights or videos..." class="feature-search-input" style="width: 100%; box-sizing: border-box; padding-left: 32px;" aria-label="Bookmark Search Input" title="Bookmark Search Input">
             </div>
 
             <div id="bookmarksList" class="bookmarks-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 20px;">

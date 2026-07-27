@@ -4,13 +4,22 @@
    ========================================================= */
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-chrome-bottom {
-  background: var(--lg-bg-level-2, rgba(30, 30, 30, 0.75)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
-  border-top: var(--lg-border-specular) !important;
-  border-radius: 0 0 24px 24px !important;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4), var(--lg-border-highlight) !important;
+  background: transparent !important;
+-webkit-backdrop-filter: ;
+-filter: ;
+  border: none !important;
+  box-shadow: none !important;
   padding: 0 16px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-chrome-controls,
+html[data-ypp-ui-style="liquid-glass"] .ytp-left-controls,
+html[data-ypp-ui-style="liquid-glass"] .ytp-right-controls {
+  background: transparent !important;
+-webkit-backdrop-filter: ;
+-filter: ;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-progress-bar-container {
@@ -52,17 +61,17 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-volume-slider-handle {
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-volume-panel {
   background: var(--lg-bg-level-2) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border-radius: 20px !important;
   border: var(--lg-border-specular) !important;
 }
 
 /* Chapter Hover Preview Glass Cards */
 html[data-ypp-ui-style="liquid-glass"] .ytp-tooltip {
-  background: var(--lg-bg-level-2, rgba(30, 30, 30, 0.85)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+  background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 20px !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;

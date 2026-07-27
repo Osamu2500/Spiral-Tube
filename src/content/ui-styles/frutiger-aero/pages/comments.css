@@ -17,8 +17,8 @@ html[data-ypp-ui-style=frutiger-aero] ytd-item-section-renderer {
 html[data-ypp-ui-style=frutiger-aero] #description.ytd-watch-metadata,
 html[data-ypp-ui-style=frutiger-aero] #description-inner.ytd-watch-metadata {
   background: rgba(255, 255, 255, 0.4) !important;
-  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px));
-  backdrop-filter: blur(var(--fa-blur-md, 8px));
+-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--fa-elevation-1) !important;
   border-radius: var(--fa-radius-lg, 12px) !important;
@@ -61,8 +61,8 @@ html[data-ypp-ui-style=frutiger-aero] #replies {
 html[data-ypp-ui-style=frutiger-aero] ytd-comment-thread-renderer,
 html[data-ypp-ui-style=frutiger-aero] ytd-comment-view-model {
   background: rgba(255, 255, 255, 0.4) !important;
-  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px));
-  backdrop-filter: blur(var(--fa-blur-md, 8px));
+-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), var(--fa-elevation-1) !important;
   border-radius: var(--fa-radius-lg, 12px) !important;

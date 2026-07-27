@@ -17,8 +17,8 @@
   opacity: 0 !important;
   transform: scale(0.8) !important;
   transition: opacity 0.2s, transform 0.2s, background 0.2s, border-color 0.2s !important;
-  pointer-events: auto !important;
-  backdrop-filter: blur(4px) !important;
+  pointer-events: auto !important;-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
 }
 
@@ -95,10 +95,8 @@ ytd-reel-item-renderer, yt-lockup-view-model, ytd-lockup-view-model {
   bottom: 96px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  background: rgba(28, 28, 28, 0.98) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(28, 28, 28, 0.98) !important;-webkit-backdrop-filter: ;
+-filter: ;  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 48px !important;
   padding: 10px 20px !important;
   display: flex !important;

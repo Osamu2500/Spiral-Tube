@@ -536,6 +536,12 @@ function renderLayoutToggle(item, state) {
         hiddenInput.value = layout;
         updateVisuals(layout);
         
+        const customSidebarCb = document.getElementById('enableCustomSidebar');
+        if (customSidebarCb && !customSidebarCb.checked) {
+            customSidebarCb.checked = true;
+            customSidebarCb.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
         hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
         
         // Ensure robust saving
@@ -579,8 +585,16 @@ function renderLayoutToggle(item, state) {
             if (lockIcon) lockIcon.style.display = 'inline-block';
             toggleWrap.style.pointerEvents = 'none';
             toggleWrap.style.opacity = '0.5';
-            // Visually force "Expanded" layout, without overwriting the actual saved layout value
             updateVisuals('expanded');
+            if (hiddenInput.value !== 'expanded') {
+                hiddenInput.value = 'expanded';
+                hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            const customSidebarCb = document.getElementById('enableCustomSidebar');
+            if (customSidebarCb && !customSidebarCb.checked) {
+                customSidebarCb.checked = true;
+                customSidebarCb.dispatchEvent(new Event('change', { bubbles: true }));
+            }
         } else {
             if (lockIcon) lockIcon.style.display = 'none';
             toggleWrap.style.pointerEvents = 'auto';
@@ -946,9 +960,9 @@ function buildSection(section, state) {
     const nonChildren = section.items.filter(i => !i.parent && !i.hidden);
     const children    = section.items.filter(i => i.parent && !i.hidden);
 
-    const gridItems  = nonChildren.filter(i => i.type === 'toggle' || i.type === 'button-group' || i.type === 'range' || i.type === 'select');
+    const gridItems  = nonChildren.filter(i => i.type === 'toggle' || i.type === 'button-group' || i.type === 'range' || i.type === 'select' || i.type === 'custom');
     const inlineToggleItems = nonChildren.filter(i => i.type === 'inlineToggle');
-    const otherItems  = nonChildren.filter(i => i.type !== 'toggle' && i.type !== 'button-group' && i.type !== 'inlineToggle' && i.type !== 'range' && i.type !== 'select');
+    const otherItems  = nonChildren.filter(i => i.type !== 'toggle' && i.type !== 'button-group' && i.type !== 'inlineToggle' && i.type !== 'range' && i.type !== 'select' && i.type !== 'custom');
 
     const renderedElements = {};
 

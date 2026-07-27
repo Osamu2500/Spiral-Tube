@@ -1,10 +1,8 @@
 ﻿
 .yt-spiral-tube-theme ytd-browse[page-subtype="history"] ytd-two-column-browse-results-renderer #secondary,
 .yt-spiral-tube-theme #history-analytics-renderer {
-  background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(20, 20, 20, 0.4) !important;-webkit-backdrop-filter: ;
+-filter: ;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: var(--ypp-radius-lg, 16px) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
   padding: 16px !important;
@@ -20,10 +18,8 @@
     135deg,
     rgba(255, 255, 255, 0.03),
     rgba(255, 255, 255, 0.01)
-  ) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  ) !important;-webkit-backdrop-filter: ;
+-filter: ;  border: 1px solid rgba(255, 255, 255, 0.06) !important;
   border-radius: var(--ypp-radius-md, 12px) !important;
   padding: 12px 16px !important;
   margin-bottom: 12px !important;

@@ -31,10 +31,10 @@ export const DEFAULT_SETTINGS = {
   displayFullTitle: false,
   saveSupremeUI: false,
   cinematicMode: false,
-  realCinemaMode: false, // Style 11811: Real Cinema Mode (100vw Theater & Auto-hide Header)
-  flexWidthPlayer: false, // Style 12492: Flex width player layout
-  showLiveStreamTime: true, // Style 8167: Show elapsed time on live streams
-  twoColumnSubscriptions: false, // Style 4889: Two rows/columns in subscriptions feed
+  realCinemaMode: false, // Real Cinema Mode (100vw Theater & Auto-hide Header)
+  flexWidthPlayer: false, // Flex width player layout
+  showLiveStreamTime: true, // Show elapsed time on live streams
+  twoColumnSubscriptions: false, // Two rows/columns in subscriptions feed
 
   // Visibility
   hideShorts: false,
@@ -46,7 +46,7 @@ export const DEFAULT_SETTINGS = {
   hideLiveStreams: false,
   hideUpcoming: false,
   hidePosts: false,
-  hideMembersOnly: false, // Style 23137: Hide members-only videos
+  hideMembersOnly: false, // Hide members-only videos
   feedFilterKeywords: '',
   hideWatched: false,
   hideWatchedMode: 'dim',
@@ -75,11 +75,11 @@ export const DEFAULT_SETTINGS = {
   aggressiveShortsBlock: false, // Nuke shorts everywhere
   autoVideoFilter: true,
   hidePlayerTopics: false,
-  hideCountryCode: false,       // Style 21084: Hide country code next to logo
-  hideThanksDonate: false,      // Style 21084: Hide Thanks / Donate / Patreon buttons
-  hidePlayerBranding: false,    // Style 21084: Hide channel watermark in player
-  hideUselessGuideLinks: false, // Style 21084: Hide Help, Feedback, Report history in sidebar
-  hidePaidPromotion: false,     // Style 16687: Hide 'Includes paid promotion' banner
+  hideCountryCode: false,       // Hide country code next to logo
+  hideThanksDonate: false,      // Hide Thanks / Donate / Patreon buttons
+  hidePlayerBranding: false,    // Hide channel watermark in player
+  hideUselessGuideLinks: false, // Hide Help, Feedback, Report history in sidebar
+  hidePaidPromotion: false,     // Hide 'Includes paid promotion' banner
 
   // Player Page Declutter (OFF by default)
   hideVideoTitle: false,        // Hide video title below the player
@@ -89,7 +89,7 @@ export const DEFAULT_SETTINGS = {
 
   // Player
   autoCinema: false,
-  compactPlayerUI: false,       // Style 24682: Compact player controls
+  compactPlayerUI: false,       // Compact player controls
   autoQuality: 'highres',
   enablePiP: true,
   enableTranscript: true,
@@ -200,7 +200,6 @@ export const DEFAULT_SETTINGS = {
 
   // Auto Actions
   autoPiP: false,
-  floatingPlayer: false,
 
   // Player Automation
   autoSkipAds: true,
@@ -220,7 +219,6 @@ export const DEFAULT_SETTINGS = {
   intentionalDelay: false,
   intentionalDelayTime: 3,
   ambientMode: false,
-  videoControlsEnabled: true,
   audioCompressor: false,
   autoPause: false,
   commentFilter: false,

@@ -1,14 +1,14 @@
 html[data-ypp-ui-style=aurora] ytd-masthead #container {
   background: rgba(10, 10, 10, 0.6) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border-bottom: var(--aurora-border) !important;
   box-shadow: var(--shadow-base) !important;
 }
 html[data-ypp-ui-style=aurora] .ytSearchboxComponentInputBox {
   background: rgba(10, 10, 10, 0.6) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius-pill) !important;
   box-shadow: var(--shadow-base) !important;
@@ -16,8 +16,8 @@ html[data-ypp-ui-style=aurora] .ytSearchboxComponentInputBox {
 html[data-ypp-ui-style=aurora] .ytSearchboxComponentSearchButton {
   margin-left: 10px !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius-pill) !important;
   box-shadow: var(--shadow-base) !important;
@@ -67,8 +67,8 @@ html[data-ypp-ui-style=aurora] ytd-rich-grid-media,
 html[data-ypp-ui-style=aurora] ytd-compact-video-renderer,
 html[data-ypp-ui-style=aurora] ytd-playlist-panel-video-renderer {
   background: rgba(10, 10, 10, 0.5) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius) !important;
   box-shadow: var(--shadow-base) !important;
@@ -83,8 +83,8 @@ html[data-ypp-ui-style=aurora] .ytp-popup,
 html[data-ypp-ui-style=aurora] tp-yt-paper-dialog,
 html[data-ypp-ui-style=aurora] ytd-menu-popup-renderer {
   background: rgba(10, 10, 10, 0.7) !important;
-  -webkit-backdrop-filter: blur(30px) !important;
-  backdrop-filter: blur(30px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius) !important;
   box-shadow: var(--shadow-hover) !important;
@@ -94,8 +94,8 @@ html[data-ypp-ui-style=aurora] #description.ytd-watch-metadata,
 html[data-ypp-ui-style=aurora] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 html[data-ypp-ui-style=aurora] ytd-browse[page-subtype=home] #chips {
   background: rgba(10, 10, 10, 0.5) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius-pill) !important;
   box-shadow: var(--shadow-base) !important;
@@ -106,8 +106,8 @@ html[data-ypp-ui-style=aurora] .yt-chip-shape {
   background-color: rgba(255, 255, 255, 0.05) !important;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius-pill) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   transition: all var(--bounce) !important;
   color: #fff !important;
 }
@@ -122,8 +122,8 @@ html[data-ypp-ui-style=aurora] .yt-chip-shape[aria-selected=true] {
 }
 html[data-ypp-ui-style=aurora] #guide-wrapper.ytd-app {
   background: rgba(10, 10, 10, 0.5) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border-right: var(--aurora-border) !important;
   box-shadow: var(--shadow-base) !important;
 }
@@ -151,8 +151,8 @@ html[data-ypp-ui-style=aurora] #ypp-eq-panel,
 html[data-ypp-ui-style=aurora] .ypp-video-controls,
 html[data-ypp-ui-style=aurora] .ypp-account-menu {
   background: rgba(10, 10, 10, 0.6) !important;
-  -webkit-backdrop-filter: blur(40px) !important;
-  backdrop-filter: blur(40px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius) !important;
   box-shadow: var(--shadow-hover) !important;
@@ -161,8 +161,8 @@ html[data-ypp-ui-style=aurora] .ypp-account-menu {
 html[data-ypp-ui-style=aurora] ytd-comment-thread-renderer,
 html[data-ypp-ui-style=aurora] ytd-comment-view-model {
   background: rgba(10, 10, 10, 0.5) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--aurora-border) !important;
   border-radius: var(--aurora-radius) !important;
   box-shadow: var(--shadow-base) !important;

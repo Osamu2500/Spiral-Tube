@@ -570,19 +570,31 @@
                 const currentUrl = window.location.href;
                 
                 if (this.globalLayoutManager) {
-                    this.globalLayoutManager.activate(currentUrl);
+                    try {
+                        this.globalLayoutManager.activate(currentUrl);
+                    } catch (err) {
+                        this.Utils?.log(`Error activating GlobalLayoutManager: ${err.message}`, 'MAIN', 'error');
+                    }
                 }
 
                 if (this.pageManagers) {
-                    const newManager = this.pageManagers.find(m => m.matches(currentUrl));
-                    
-                    if (newManager !== this._activeManager) {
-                        if (this._activeManager) this._activeManager.deactivate();
-                        if (newManager) newManager.activate(currentUrl);
-                        this._activeManager = newManager;
-                    } else if (newManager) {
-                        // Keep the active manager updated without deactivating it
-                        newManager.activate(currentUrl);
+                    try {
+                        const newManager = this.pageManagers.find(m => m.matches(currentUrl));
+                        
+                        if (newManager !== this._activeManager) {
+                            if (this._activeManager) {
+                                try { this._activeManager.deactivate(); } catch (e) {}
+                            }
+                            if (newManager) {
+                                try { newManager.activate(currentUrl); } catch (e) {}
+                            }
+                            this._activeManager = newManager;
+                        } else if (newManager) {
+                            // Keep the active manager updated without deactivating it
+                            try { newManager.activate(currentUrl); } catch (e) {}
+                        }
+                    } catch (err) {
+                        this.Utils?.log(`Error updating PageManagers: ${err.message}`, 'MAIN', 'error');
                     }
                 }
 

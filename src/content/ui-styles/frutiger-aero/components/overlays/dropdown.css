@@ -14,8 +14,8 @@ html[data-ypp-ui-style=frutiger-aero] .fa-dropdown {
 html[data-ypp-ui-style=frutiger-aero] .fa-dropdown-content,
 html[data-ypp-ui-style=frutiger-aero] ytd-menu-popup-renderer {
   background: rgba(255, 255, 255, 0.9) !important;
-  -webkit-backdrop-filter: blur(var(--fa-blur-lg, 16px)) !important;
-  backdrop-filter: blur(var(--fa-blur-lg, 16px)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   border-radius: var(--fa-radius-md, 12px) !important;
   overflow: hidden !important;

@@ -265,10 +265,8 @@ body {
   align-items: center;
   padding: 10px 0;
   z-index: 10;
-  flex-shrink: 0;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  box-shadow:
+  flex-shrink: 0;-webkit-backdrop-filter: ;
+-filter: ;  box-shadow:
     0 12px 48px rgba(0,0,0,0.6),
     inset 0 1px 0 rgba(255,255,255,0.1),
     inset 1px 0 0 rgba(255,255,255,0.05);
@@ -358,10 +356,8 @@ body {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  overflow: hidden;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  box-shadow:
+  overflow: hidden;-webkit-backdrop-filter: ;
+-filter: ;  box-shadow:
     0 12px 48px rgba(0,0,0,0.6),
     inset 0 1px 0 rgba(255,255,255,0.1);
   position: relative;
@@ -376,10 +372,8 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  z-index: 5;
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255,255,255,0.1);
+  z-index: 5;-webkit-backdrop-filter: ;
+-filter: ;  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255,255,255,0.1);
 }
 .top-bar-left { display: flex; align-items: center; gap: 10px; }
 
@@ -477,10 +471,8 @@ body {
   background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
   border-radius: 16px;
   border: 1px solid transparent;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);-webkit-backdrop-filter: ;
+-filter: ;  transition: border-color 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
 }
 .settings-section:hover {

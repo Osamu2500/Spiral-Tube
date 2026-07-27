@@ -21,8 +21,8 @@ html[data-ypp-ui-style="harry-potter"] #grid-container.ytd-expanded-shelf-conten
 /* Glassmorphism Backdrop Containers */
 html[data-ypp-ui-style="harry-potter"] :is(ytd-playlist-panel-renderer, ytd-expandable-metadata-renderer, ytd-unified-share-panel-renderer, ytd-add-to-playlist-renderer, ytd-settings-options-renderer, ytd-account-settings-renderer) {
   background: rgba(20, 21, 31, 0.88) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid var(--hp-border-subtle) !important;
   border-radius: 12px !important;
   box-shadow: var(--hp-shadow-float) !important;
@@ -35,8 +35,8 @@ html[data-ypp-ui-style="harry-potter"] #guide-inner-content,
 html[data-ypp-ui-style="harry-potter"] ytd-mini-guide-renderer {
   background: rgba(11, 12, 16, 0.94) !important;
   border-right: 1px solid var(--hp-border-subtle) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
 }
 
 html[data-ypp-ui-style="harry-potter"] ytd-guide-entry-renderer {

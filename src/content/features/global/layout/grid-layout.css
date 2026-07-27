@@ -309,10 +309,8 @@ html[data-ypp-card-style='technozen']
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   border-bottom-color: rgba(90, 191, 71, 0.15) !important;
   padding: var(--ypp-density-pad, 12px) !important;
-  box-shadow: 0 4px 16px rgba(90, 191, 71, 0.08), inset 0 2px 4px rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  box-shadow: 0 4px 16px rgba(90, 191, 71, 0.08), inset 0 2px 4px rgba(255, 255, 255, 0.9) !important;-webkit-backdrop-filter: ;
+-filter: ;  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
 html[data-ypp-card-style='technozen']
@@ -358,10 +356,8 @@ html[data-ypp-card-style='technozen'] body:not(.ypp-channel-page) :is(ytd-thumbn
 
 :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button {
   background: rgba(0, 0, 0, 0.5) !important;
-  border-radius: 50% !important;
-  backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-  transition: all 0.2s ease !important;
+  border-radius: 50% !important;-webkit-backdrop-filter: ;
+-filter: ;  transition: all 0.2s ease !important;
   width: 36px !important;
   height: 36px !important;
   display: flex !important;

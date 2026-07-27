@@ -21,8 +21,8 @@ ypp-vsc-controller.ypp-vsc-hidden {
   display: flex;
   align-items: center;
   gap: 4px;
-  background: rgba(20, 20, 20, 0.45);
-  backdrop-filter: blur(10px);
+  background: rgba(20, 20, 20, 0.45);-webkit-backdrop-filter: ;
+-filter: ;
   border-radius: 8px;
   padding: 6px 8px;
   color: white;

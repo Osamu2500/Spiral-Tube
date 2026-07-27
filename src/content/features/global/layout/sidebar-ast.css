@@ -8,10 +8,8 @@ body.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/explore"]) {
   display: none !important;
 }
 body.ypp-floating-guide ytd-guide-renderer {
-  background: rgba(12, 12, 18, 0.82) !important;
-  backdrop-filter: blur(32px) saturate(1.4) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(1.4) !important;
-  border-radius: 0 18px 18px 0 !important;
+  background: rgba(12, 12, 18, 0.82) !important;-webkit-backdrop-filter: ;
+-filter: ;  border-radius: 0 18px 18px 0 !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
   border-left: none !important; /* flush against left edge */
   border-right-color: rgba(255,255,255,0.12) !important;
@@ -64,8 +62,8 @@ ytd-app:not([is-watch-page]) ytd-mini-guide-renderer {
   width: 0 !important;
 }
 body.yt-spiral-tube-theme #guide-inner-content {
-  background: var(--ypp-bg-surface) !important;
-  backdrop-filter: var(--ypp-blur-high) !important;
+  background: var(--ypp-bg-surface) !important;-webkit-backdrop-filter: ;
+-filter: ;
   border-right: 1px solid var(--ypp-glass-border) !important;
 }
 body.yt-spiral-tube-theme ytd-guide-entry-renderer {

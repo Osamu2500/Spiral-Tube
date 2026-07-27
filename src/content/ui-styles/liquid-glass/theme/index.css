@@ -6,9 +6,9 @@
 
 html.yt-spiral-tube-theme[data-ypp-theme="liquid-glass"],
 html[data-ypp-ui-style="liquid-glass"] {
-  --ypp-bg-base: #0f0f0f;
-  --ypp-bg-surface: #181818;
-  --ypp-bg-glass: rgba(24, 24, 24, 0.75);
+  --ypp-bg-base: transparent;
+  --ypp-bg-surface: rgba(255, 255, 255, 0.05);
+  --ypp-bg-glass: rgba(255, 255, 255, 0.08);
   --ypp-glass-border: rgba(255, 255, 255, 0.22);
   --ypp-glass-highlight: rgba(255, 255, 255, 0.25);
   --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
@@ -25,7 +25,7 @@ html[data-ypp-ui-style="liquid-glass"] {
   --ypp-shadow-glow: 0 0 24px rgba(255, 255, 255, 0.30);
   --ypp-shadow-accent-glow: 0 0 36px var(--ypp-accent-glow);
   
-  --ytd-searchbox-background: rgba(24, 24, 24, 0.75);
+  --ytd-searchbox-background: rgba(255, 255, 255, 0.08);
   --ytd-searchbox-text-color: #ffffff;
   --ytd-searchbox-border-radius: 2000px 0 0 2000px;
   --ytd-searchbox-height: 40px;

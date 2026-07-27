@@ -4,6 +4,17 @@ const getUtils = () => window.YPP?.Utils || {
     log: (msg, tag = 'POPUP', level = 'log') => console[level]?.(`[YPP:${tag}] ${msg}`)
 };
 
+/**
+ * @typedef {Object} PopupState
+ * @property {Record<string, any>} elements
+ * @property {string[]} settingKeys
+ * @property {Record<string, any>} settings
+ * @property {Array<{key: string, value: any}>} _settingsWriteQueue
+ * @property {boolean} _isWritingSettings
+ * @property {boolean} isLoaded
+ */
+
+/** @type {PopupState} */
 export const state = {
     elements: {},
     settingKeys: [],
@@ -75,18 +86,18 @@ export function loadSettings(updateUICallbacks) {
                 const el = state.elements[key];
                 if (el) {
                     if (el.type === 'checkbox') {
-                        el.checked = state.settings[key] !== undefined ? state.settings[key] : false;
+                        el.checked = state.settings[key] !== undefined ? state.settings[key] : (defaultSettings[key] !== undefined ? defaultSettings[key] : false);
                         // experimentalTileUI is now default
                     } else if (el.type === 'range') {
-                        el.value = state.settings[key] !== undefined ? state.settings[key] : el.value;
+                        el.value = state.settings[key] !== undefined ? state.settings[key] : (defaultSettings[key] !== undefined ? defaultSettings[key] : el.value);
                         const display = document.getElementById(key + 'Value');
                         if (display) {
                             display.textContent = el.value;
                         }
                     } else if (el.type === 'color' || el.type === 'text' || el.type === 'select-one') {
-                        el.value = state.settings[key] || '';
+                        el.value = state.settings[key] || defaultSettings[key] || '';
                     } else if (el.type === 'hidden') {
-                        el.value = state.settings[key] || el.value;
+                        el.value = state.settings[key] !== undefined ? state.settings[key] : (defaultSettings[key] !== undefined ? defaultSettings[key] : el.value);
                         if (key === 'hideWatchedMode') {
                             const mode = el.value;
                             document.querySelectorAll('.hw-mode-btn').forEach(b => {

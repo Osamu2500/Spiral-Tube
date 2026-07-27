@@ -1,5 +1,5 @@
 /**
- * Live Stream Time Feature (Style 8167)
+ * Live Stream Time Feature
  * Displays current elapsed livestream duration in the video player controls
  * by unhiding native time indicators that YouTube hides during live broadcasts.
  */
@@ -21,7 +21,7 @@ export class LiveStreamTime extends window.YPP.features.BaseFeature {
     async enable() {
         await super.enable();
         this.applyLiveStreamTime(true);
-        this.utils?.log?.('Live Stream Time enabled (Style 8167)', 'LIVE-STREAM-TIME');
+        this.utils?.log?.('Live Stream Time enabled', 'LIVE-STREAM-TIME');
     }
 
     async disable() {

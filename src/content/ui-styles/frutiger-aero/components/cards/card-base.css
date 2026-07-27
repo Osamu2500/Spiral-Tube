@@ -11,8 +11,8 @@ html[data-ypp-ui-style=frutiger-aero] ytd-grid-video-renderer {
   border-radius: var(--fa-radius-lg, 16px) !important;
   padding: var(--fa-space-3, 0.75rem) !important;
   box-shadow: var(--fa-elevation-2, 0 4px 20px rgba(18, 168, 221, 0.14)) !important;
-  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
-  backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   position: relative;
   overflow: hidden;
   transition: var(--fa-transition-card, all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)) !important;

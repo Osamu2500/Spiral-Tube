@@ -12,9 +12,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-comments #header {
 /* Acrylic Comment Input Box */
 html[data-ypp-ui-style="liquid-glass"] ytd-comment-simplebox-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-comment-dialog-renderer {
-  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 20px !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;

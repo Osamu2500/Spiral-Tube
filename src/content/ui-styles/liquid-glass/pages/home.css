@@ -15,9 +15,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-rich-grid-row {
 
 /* Shorts Shelf Frosted Container */
 html[data-ypp-ui-style="liquid-glass"] ytd-rich-shelf-renderer {
-  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 28px !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
@@ -50,8 +50,8 @@ html[data-ypp-ui-style="liquid-glass"] #chips-wrapper.ytd-feed-filter-chip-bar-r
 html[data-ypp-ui-style="liquid-glass"] #left-arrow.ytd-feed-filter-chip-bar-renderer,
 html[data-ypp-ui-style="liquid-glass"] #right-arrow.ytd-feed-filter-chip-bar-renderer {
   background: var(--lg-bg-level-2) !important;
-  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  backdrop-filter: var(--lg-blur-subtle) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border-radius: 2000px !important;
   border: var(--lg-border-specular) !important;
   box-shadow: var(--lg-shadow-card) !important;

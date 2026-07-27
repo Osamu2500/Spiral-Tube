@@ -31,9 +31,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-video-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-playlist-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-shelf-renderer {
-  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 26px !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
@@ -45,7 +45,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-shelf-renderer {
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-video-renderer:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-playlist-renderer:hover {
-  background: var(--lg-bg-card-hover, rgba(50, 50, 50, 0.70)) !important;
+  background: var(--lg-bg-card-hover, rgba(255, 255, 255, 0.15)) !important;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: translateY(-4px) scale(1.01) !important;
   border-color: rgba(255, 255, 255, 0.35) !important;

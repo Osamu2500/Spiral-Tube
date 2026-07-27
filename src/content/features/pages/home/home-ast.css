@@ -59,8 +59,8 @@ body.yt-spiral-tube-theme:not(.cinematic-home) ytd-rich-item-renderer
   width: 32px !important;
   height: 32px !important;
   padding: 4px !important;
-  background: rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4) !important;-webkit-backdrop-filter: ;
+-filter: ;
   border-radius: 50% !important;
 }
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {

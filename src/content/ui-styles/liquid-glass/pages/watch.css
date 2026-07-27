@@ -10,9 +10,9 @@ html[data-ypp-ui-style="liquid-glass"] #columns.ytd-watch-flexy {
 /* Specular Glass Description Box */
 html[data-ypp-ui-style="liquid-glass"] ytd-watch-metadata #description,
 html[data-ypp-ui-style="liquid-glass"] ytd-text-inline-expander {
-  background: var(--lg-bg-level-1, rgba(30, 30, 30, 0.55)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 24px !important;
   padding: 18px !important;
@@ -25,7 +25,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-text-inline-expander {
 
 html[data-ypp-ui-style="liquid-glass"] ytd-watch-metadata #description:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-text-inline-expander:hover {
-  background: rgba(45, 45, 45, 0.70) !important;
+  background: var(--lg-bg-card-hover, rgba(255, 255, 255, 0.15)) !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
   box-shadow: var(--lg-shadow-hover), var(--lg-border-modal-rim) !important;
 }
@@ -51,8 +51,8 @@ html[data-ypp-ui-style="liquid-glass"] #related {
 html[data-ypp-ui-style="liquid-glass"] #secondary.ytd-watch-flexy ytd-compact-video-renderer,
 html[data-ypp-ui-style="liquid-glass"] #related ytd-compact-video-renderer {
   background: var(--lg-bg-level-1) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 20px !important;
   box-shadow: var(--lg-shadow-card) !important;
@@ -72,8 +72,8 @@ html[data-ypp-ui-style="liquid-glass"] #related ytd-compact-video-renderer:hover
 /* Watch Page Playlist Panel Sidebar */
 html[data-ypp-ui-style="liquid-glass"] #secondary-inner ytd-playlist-panel-renderer {
   background: var(--lg-bg-level-1) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border-radius: 28px !important;
   border: var(--lg-border-specular) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;

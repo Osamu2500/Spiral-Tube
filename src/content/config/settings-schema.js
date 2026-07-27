@@ -158,7 +158,6 @@ window.YPP.SettingsSchema = {
 
         // --- Auto Actions ---
         autoPiP:             { type: 'boolean', default: false },
-        floatingPlayer:      { type: 'boolean', default: false },
 
         // --- Player UI Enhancements ---
         extraRoundedUI:      { type: 'boolean', default: false },
@@ -170,7 +169,6 @@ window.YPP.SettingsSchema = {
         ambientIntensity:    { type: 'number',  default: 0.6, min: 0.1, max: 1.0 },
         ambientBlur:         { type: 'number',  default: 120, min: 20, max: 200 },
         audioModeEnabled:    { type: 'boolean', default: false },
-        videoControlsEnabled:{ type: 'boolean', default: true },
         subscriptionFolders: { type: 'boolean', default: true },
         returnYouTubeDislike:{ type: 'boolean', default: false },
         enableBookmarks:     { type: 'boolean', default: true },
@@ -310,7 +308,7 @@ window.YPP.SettingsSchema = {
         pb_native_fullscreen:{ type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
 
         // --- Sidebar Layout ---
-        sidebarLayout:       { type: 'string',  default: 'compact', values: ['compact', 'regular', 'spacious', 'expanded'] },
+        sidebarLayout:       { type: 'string',  default: 'compact', values: ['dense', 'compact', 'regular', 'spacious', 'expanded'] },
         splitScrolling:      { type: 'boolean', default: false },
 
         // --- Search Layout ---
@@ -353,6 +351,44 @@ window.YPP.SettingsSchema = {
         enableTabviewSidebar:         { type: 'boolean', default: false },
         enableVideoEnhancerTools:     { type: 'boolean', default: true },
         enableStarTubeLayout:         { type: 'boolean', default: false },
+        enableCustomSidebar:          { type: 'boolean', default: true },
+        layout:                       { type: 'boolean', default: true },
+        historyColumns:               { type: 'number',  default: 4, min: 1, max: 10 },
+        cinematicMode:                { type: 'boolean', default: false },
+        hidePromoShelves:             { type: 'boolean', default: false },
+        hideMembersOnly:              { type: 'boolean', default: false },
+        headerNavEnabled:             { type: 'boolean', default: true },
+        hideSearchMixes:              { type: 'boolean', default: false },
+        hideSearchPlaylists:          { type: 'boolean', default: false },
+        hideSearchPodcasts:           { type: 'boolean', default: false },
+        hideSearchMusic:              { type: 'boolean', default: false },
+        hideUploadButton:             { type: 'boolean', default: false },
+        hideCountryCode:              { type: 'boolean', default: false },
+        hideThanksDonate:             { type: 'boolean', default: false },
+        hidePlayerBranding:           { type: 'boolean', default: false },
+        hideUselessGuideLinks:        { type: 'boolean', default: false },
+        hidePaidPromotion:            { type: 'boolean', default: false },
+        volumeWidener:                { type: 'boolean', default: false },
+        volumeWarmth:                 { type: 'number',  default: 0, min: -10, max: 10 },
+        intentionalDelayTime:         { type: 'number',  default: 3, min: 0, max: 60 },
+        statsVisualizer:              { type: 'boolean', default: false },
+        shortcut_studyMode:           { type: 'string',  default: '' },
+        shortcut_seamlessMode:        { type: 'string',  default: 'Shift+S' },
+        shortcut_focusMode:           { type: 'string',  default: 'Shift+F' },
+        shortcut_cinemaMode:          { type: 'string',  default: 'Shift+C' },
+        shortcut_minimalMode:         { type: 'string',  default: 'Shift+M' },
+        shortcut_snapshot:            { type: 'string',  default: 'Shift+S' },
+        shortcut_loop:                { type: 'string',  default: 'Shift+L' },
+        shortcut_pip:                 { type: 'string',  default: 'Shift+P' },
+        shortcut_ambientMode:         { type: 'string',  default: 'Shift+A' },
+        hasSeenOnboarding:            { type: 'boolean', default: false },
+        resumeBadges:                 { type: 'boolean', default: true },
+        speedBooster:                 { type: 'boolean', default: true },
+        liquidGlassTheme:             { type: 'boolean', default: false },
+        hideVideoTitle:               { type: 'boolean', default: false },
+        hideChannelBar:               { type: 'boolean', default: false },
+        hideVideoDescription:         { type: 'boolean', default: false },
+        hideActionButtons:            { type: 'boolean', default: false },
     }),
 
     // =========================================================================
@@ -435,9 +471,14 @@ window.YPP.SettingsSchema = {
         }
 
         // Warn about unknown keys (stale settings from old versions)
+        const defaultSettingsObj = window.YPP?.CONSTANTS?.DEFAULT_SETTINGS || {};
         for (const key of Object.keys(raw)) {
             if (!this.schema[key]) {
-                window.YPP.Utils?.log(`Settings: unknown key "${key}" ignored (stale/renamed?).`, 'SCHEMA', 'debug');
+                if (defaultSettingsObj[key] !== undefined) {
+                    out[key] = raw[key];
+                } else {
+                    window.YPP.Utils?.log(`Settings: unknown key "${key}" ignored (stale/renamed?).`, 'SCHEMA', 'debug');
+                }
             }
         }
 

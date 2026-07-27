@@ -6,8 +6,8 @@ body.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
   border: 1px solid var(--ypp-glass-border) !important;
   background: var(--ypp-bg-surface) !important;
   margin-bottom: 16px !important;
-  box-shadow: var(--ypp-shadow-card) !important;
-  backdrop-filter: var(--ypp-glass-blur-active) saturate(1.2);
+  box-shadow: var(--ypp-shadow-card) !important;-webkit-backdrop-filter: ;
+-filter: ;
 }
 
 body.yt-spiral-tube-theme

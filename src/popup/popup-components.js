@@ -793,25 +793,47 @@ export function initComponents(
   function initAutoLikeInlineControls() {
     const typeBtn = document.getElementById('autoLikeDelayTypeBtn');
     const hiddenType = document.getElementById('autoLikeDelayType');
-    const slider = document.getElementById('autoLikeThreshold');
+    const hiddenInput = document.getElementById('autoLikeThreshold');
+    const sliderUI = document.getElementById('autoLikeThresholdUI');
     const sliderVal = document.getElementById('autoLikeThresholdValue');
-    if (!typeBtn || !hiddenType || !slider) return;
+    if (!typeBtn || !hiddenType || !hiddenInput || !sliderUI) return;
+
+    const AUTO_LIKE_SEC_STEPS = [0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 220, 240, 260, 280, 300];
+    const AUTO_LIKE_PCT_STEPS = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+
+    const getSteps = (type) => type === 'percent' ? AUTO_LIKE_PCT_STEPS : AUTO_LIKE_SEC_STEPS;
+
+    const syncUIFromValue = (val, type) => {
+      const steps = getSteps(type);
+      let idx = steps.findIndex(v => v >= Number(val || 0));
+      if (idx === -1) idx = 0;
+      sliderUI.value = idx;
+      if (sliderVal) sliderVal.textContent = steps[idx] + (type === 'percent' ? '%' : 's');
+    };
 
     const updateVisuals = (type) => {
       hiddenType.value = type;
+      const steps = getSteps(type);
+      sliderUI.max = steps.length - 1;
+      sliderUI.step = 1;
       if (type === 'percent') {
         typeBtn.textContent = '%';
         typeBtn.title = 'Switch to Seconds';
-        slider.max = 100;
-        slider.step = 5;
       } else {
         typeBtn.textContent = 's';
         typeBtn.title = 'Switch to Percent';
-        slider.max = 300;
-        slider.step = 1;
       }
-      if (sliderVal) sliderVal.textContent = slider.value + (type === 'percent' ? '%' : 's');
+      syncUIFromValue(hiddenInput.value, type);
     };
+
+    const origDesc = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+    Object.defineProperty(hiddenInput, 'value', {
+      get: function() { return origDesc.get.call(this); },
+      set: function(val) {
+        origDesc.set.call(this, val);
+        syncUIFromValue(val, hiddenType.value || 'seconds');
+      }
+    });
 
     chrome.storage.local.get('settings', (data) => {
       const type = data.settings?.autoLikeDelayType || 'seconds';
@@ -824,9 +846,13 @@ export function initComponents(
       hiddenType.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    slider.addEventListener('input', () => {
-      if (sliderVal)
-        sliderVal.textContent = slider.value + (hiddenType.value === 'percent' ? '%' : 's');
+    sliderUI.addEventListener('input', () => {
+      const steps = getSteps(hiddenType.value || 'seconds');
+      const idx = parseInt(sliderUI.value, 10) || 0;
+      const val = steps[idx] !== undefined ? steps[idx] : 0;
+      if (sliderVal) sliderVal.textContent = val + (hiddenType.value === 'percent' ? '%' : 's');
+      hiddenInput.value = val;
+      hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
     });
   }
 

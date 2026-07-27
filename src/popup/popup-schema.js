@@ -45,9 +45,6 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.grid,
                 items: [
                     { type:'toggle', id:'displayFullTitle', label: t('displayFullTitle'), desc: t('displayFullTitle_desc'),        icon:ICONS.title },
-                    { type:'toggle', id:'saveSupremeUI', label: t('saveSupremeUI'), badge:'NEW', desc: t('saveSupremeUI_desc'), icon:ICONS.saveSupreme },
-                    { type:'toggle', id:'flexWidthPlayer', label: t('flexWidthPlayer'), badge:'NEW', desc: t('flexWidthPlayer_desc'), icon:ICONS.player },
-                    { type:'toggle', id:'twoColumnSubscriptions', label: t('twoColumnSubscriptions'), badge:'NEW', desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:ICONS.autoScale },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]
@@ -96,53 +93,76 @@ export const getPopupSchema = (t) => [
         icon: ICONS.player,
         sections: [
 
+            // Section 1: Playback Automation & Behaviors
             {
                 title: t('playback_automation'),
                 icon: ICONS.magicWand,
                 items: [
                     { type:'toggle', id:'netflixSubtitles', label: t('player_netflix_subtitles'), icon:ICONS.subtitles },
                     { type:'toggle', id:'autoCinema',       label: t('auto_cinema'),        desc: t('expand_player_on_load'),      icon:ICONS.autoCinema },
-                    { type:'toggle', id:'compactPlayerUI',  label: t('compactPlayerUI'),    badge:'NEW', desc: t('compactPlayerUI_desc'),       icon:ICONS.autoCinema },
+                    { type:'toggle', id:'autoPiP',          label: t('auto_pip'),           desc: t('auto_pip_desc'),              icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
+                    { type:'toggle', id:'enableMiniPlayer', label: t('enable_miniplayer'),  desc: t('enable_miniplayer_desc'),     icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z') },
+                    { type:'toggle', id:'enableTranscript', label: t('enable_transcript'),  desc: t('enable_transcript_desc'),     icon:P('M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z') },
                     { type:'toggle', id:'enableCpuTamer',   label: t('cpu_tamer'),          badge:'NEW', desc: t('cpu_tamer_desc'),             icon:ICONS.compressor },
                     { type:'toggle', id:'enableVideoEnhancerTools', label: t('video_enhancer_tools'), badge:'NEW', desc: t('video_enhancer_tools_desc'), icon:ICONS.speed },
                     { type:'toggle', id:'videoResumer',     label: t('video_resumer'),      desc: t('save_playback_position'),     icon:ICONS.resume },
                     { type:'toggle', id:'autoPause',        label: t('auto_pause'),         desc: t('pause_when_backgrounded'),    icon:ICONS.pause },
-                    { type:'toggle', id:'autoLike',         class:'span-2', label: t('auto_like'), desc: t('automatically_like_video'), icon:ICONS.like, inlineSlot: `<div style="display:inline-flex; gap:6px; margin-left:8px; vertical-align:middle; z-index:10; position:relative;"><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeSubscribedOnly" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Subscribed Only">Subs</button><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeChannelLists" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Use Channel Lists">Lists</button><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeWaitAds" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Wait for Ads">Ads</button><button type="button" class="view-mode-btn gpb-btn" data-target="autoLikeHumanize" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Humanize Delay">Human</button><button type="button" id="autoLikeDelayTypeBtn" class="view-mode-btn" style="font-size:10px; padding:3px 10px; border:1px solid rgba(255,255,255,0.08); border-radius:12px; cursor:pointer; color:inherit; background:rgba(255,255,255,0.04); position:relative; overflow:hidden;" title="Switch between Seconds / Percent">% / s</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 10px; flex-grow:1; max-width:180px;"><input type="range" id="autoLikeThreshold" min="0" max="100" step="1" style="width:100%;"><span id="autoLikeThresholdValue" style="font-size:10px; min-width:32px; opacity:0.7; text-align:right;">0s</span></div><input type="hidden" id="autoLikeSubscribedOnly" /><input type="hidden" id="autoLikeChannelLists" /><input type="hidden" id="autoLikeWaitAds" /><input type="hidden" id="autoLikeHumanize" /><input type="hidden" id="autoLikeDelayType" value="seconds" />` },
-                    { type:'range',  id:'intentionalDelayTime',label: t('delay_duration'),  unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' },
-                    { type:'toggle', id:'smartDownload', label: t('smart_download'), badge:'NEW', desc: t('redirect_download_button_to_ssvid'), icon:ICONS.download },
                     { type:'select', id:'autoQuality',      label: t('auto_quality'),       desc: t('force_specific_resolution'), icon:ICONS.settingsSync, options:[{value:'highres',label: t('max_4k')},{value:'hd1440',label: t('1440p')},{value:'hd1080',label: t('1080p')},{value:'hd720',label: t('720p')},{value:'off',label: t('off')}] },
+                    { type:'custom', id:'intentionalDelaySlot' },
+                    { type:'custom', id:'autoLikeSlot' }
                 ]
             },
+
+            // Section 2: Audio & Equalizer Enhancements
             {
-                title: t('audio_interactions'),
+                title: t('audio_enhancements'),
                 icon: ICONS.volumeBoost,
                 items: [
-                    { type:'toggle', id:'enableVolumeBoost',  label: t('volume_booster'),    desc: t('increase_past_100'),         icon:ICONS.volumeUp },
                     { type:'toggle', id:'audioCompressor',    label: t('audio_compressor'),  desc: t('compress_loud_sounds'),       icon:ICONS.compressor },
                 ]
             },
 
+            // Section 3: Player UI Components
             {
                 title: t('player_ui_components'),
                 icon: ICONS.uiComponents,
                 items: [
-                    { type:'toggle', id:'showLiveStreamTime', label: t('show_live_stream_time'), badge:'NEW', desc: t('show_live_stream_time_desc'), icon:ICONS.clock },
-                    { type:'toggle', id:'enableTabviewSidebar', label: t('tabview_sidebar'), badge:'NEW', desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar },
+                    { type:'toggle', id:'compactPlayerUI',  label: t('compactPlayerUI'),    badge:'NEW', desc: t('compactPlayerUI_desc'),       icon:ICONS.uiComponents },
+                    { type:'toggle', id:'flexWidthPlayer', label: t('flexWidthPlayer'), badge:'NEW', desc: t('flexWidthPlayer_desc'), icon:ICONS.player },
                     { type:'toggle', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations },
                     { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:ICONS.pinVideo },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
-                    { type:'toggle', id:'videoControlsEnabled', label: t('video_controls_ui'), desc: t('custom_floating_panel'),     icon:P('M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z') },
-                    { type:'toggle', id:'enableCinemaFilters',  label: t('filters'),          desc: t('visual_effects_panel'),       icon:ICONS.cinemaFilters },
-                    { type:'toggle', id:'enableLoop',           label: t('loop_button'),      desc: t('add_loop_toggle'),            icon:ICONS.loopButton },
-                    { type:'toggle', id:'enableSnapshot',       label: t('snapshot_button'),  desc: t('save_frame_as_image'),        icon:ICONS.snapshot },
-                    { type:'toggle', id:'enableRemainingTime',  label: t('time_remaining'),   desc: t('next_to_duration'),           icon:ICONS.wheel },
-                    { type:'toggle', id:'enableBookmarks',      label: t('bookmarks'),        desc: t('capture_clips_text'),       icon:ICONS.saveSupreme },
-                    { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar },
-                    { type:'layoutToggle', id:'sidebarLayout',        label: t('sidebar_layout'),   desc: t('video_cards_size') },
-                    { type:'toggle', id:'splitScrolling',       label: t('split_scrolling'),  desc: t('scroll_sidebar_independently'), icon:ICONS.splitScroll },
-
                 ]
             },
+
+            // Section 4: Sidebar Features
+            {
+                title: t('sidebar_features') || 'Sidebar Features',
+                icon: ICONS.sidebar,
+                items: [
+                    { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar, default: true },
+                    { type:'layoutToggle', id:'sidebarLayout',        label: t('sidebar_layout'),   desc: t('video_cards_size') },
+                    { type:'toggle', id:'splitScrolling',       label: t('split_scrolling'),  desc: t('scroll_sidebar_independently'), icon:ICONS.splitScroll },
+                    { type:'toggle', id:'enableTabviewSidebar', label: t('tabview_sidebar'), badge:'NEW', desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar },
+                ]
+            },
+
+            // Section 5: Player Bar Tools
+            {
+                title: 'Player Bar Tools',
+                icon: ICONS.uiComponents,
+                items: [
+                    { type:'toggle', id:'enableLoop',           label: 'Loop',                desc: t('add_loop_toggle'),            icon:ICONS.loopButton },
+                    { type:'toggle', id:'enableSnapshot',       label: 'Snapshot',            desc: t('save_frame_as_image'),        icon:ICONS.snapshot },
+                    { type:'toggle', id:'enableBookmarks',      label: t('bookmarks'),        desc: t('capture_clips_text'),       icon:ICONS.saveSupreme },
+                    { type:'toggle', id:'enableCinemaFilters',  label: t('video_filters'),    desc: t('visual_effects_panel'),       icon:ICONS.cinemaFilters },
+                    { type:'toggle', id:'enableVolumeBoost',    label: t('volume_booster'),   desc: t('increase_past_100'),         icon:ICONS.volumeUp },
+                    { type:'toggle', id:'enableRemainingTime',  label: t('time_remaining'),   desc: t('next_to_duration'),           icon:ICONS.wheel },
+                    { type:'toggle', id:'showLiveStreamTime',   label: t('show_live_stream_time'), badge:'NEW', desc: t('show_live_stream_time_desc'), icon:ICONS.clock },
+                ]
+            },
+
+            // Section 6: Custom Player Bar Placements
             {
                 title: t('custom_player_bar_placements'),
                 icon: ICONS.placement,
@@ -160,11 +180,10 @@ export const getPopupSchema = (t) => [
                     { type:'button-group', id:'pb_native_cast', label: t('native_cast_tv'), desc: t('youtube_feature'), icon:P('M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z M1 18v3h3c0-1.66-1.34-3-3-3zM1 14v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_autoplay', label: t('native_autoplay'), desc: t('youtube_feature'), icon:ICONS.smartHistory, options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_cc', label: t('native_cc_subtitles'), desc: t('youtube_feature'), icon:P('M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
-                    { type:'button-group', id:'pb_native_settings', label: t('native_settings'), desc: t('youtube_feature'), icon:P('M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
+                    { type:'button-group', id:'pb_native_settings', label: t('native_settings'), desc: t('youtube_feature'), icon:P('M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06-.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_miniplayer', label: t('native_miniplayer'), desc: t('youtube_feature'), icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_theater', label: t('native_theater_mode'), desc: t('youtube_feature'), icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_fullscreen', label: t('native_fullscreen'), desc: t('youtube_feature'), icon:P('M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
-
                 ]
             },
 

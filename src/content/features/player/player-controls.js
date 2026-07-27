@@ -20,7 +20,12 @@ export class PlayerControls {
     static priority = 999;
 
     constructor(playerFeature) {
-        this.player = playerFeature;
+        this.player = playerFeature || {};
+        if (!this.player.addListener) {
+            this.player.addListener = (target, event, handler, options) => {
+                target?.addEventListener?.(event, handler, options);
+            };
+        }
         this.utils = window.YPP.Utils;
     }
 

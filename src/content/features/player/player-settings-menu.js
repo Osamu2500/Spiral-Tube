@@ -32,8 +32,13 @@ export class PlayerSettingsMenu {
     static priority = 999;
 
     constructor(playerFeature) {
-        this.player = playerFeature;
-        this.controls = new window.YPP.features.PlayerControls(playerFeature);
+        this.player = playerFeature || {};
+        if (!this.player.addListener) {
+            this.player.addListener = (target, event, handler, options) => {
+                target?.addEventListener?.(event, handler, options);
+            };
+        }
+        this.controls = new window.YPP.features.PlayerControls(this.player);
         this.domObserver = window.YPP.sharedObserver;
     }
 

@@ -760,10 +760,8 @@ body.ypp-search-grid-mode ytd-channel-renderer {
     135deg,
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.01)
-  ) !important;
-  backdrop-filter: blur(24px) saturate(1.2) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  ) !important;-webkit-backdrop-filter: ;
+-filter: ;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-top-color: rgba(255, 255, 255, 0.15) !important;
   border-radius: var(--ypp-radius-lg);
   padding: 32px 24px !important;
@@ -994,10 +992,8 @@ body.ypp-search-list-mode ytd-video-renderer {
   background: none !important;
   border: none !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  transform: none !important;
+  box-shadow: none !important;-webkit-backdrop-filter: ;
+-filter: ;  transform: none !important;
   border-radius: 0 !important;
   padding: 12px 4px !important;
 }
@@ -1163,8 +1159,8 @@ body.ypp-search-grid-mode ytd-item-section-renderer.ytd-section-list-renderer[is
 }
 body.ypp-search-grid-mode #left-arrow-button,
 body.ypp-search-grid-mode #right-arrow-button {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(10, 10, 10, 0.8);-webkit-backdrop-filter: ;
+-filter: ;
 }
 @media (max-width: 1600px) {
   body.ypp-search-grid-mode ytd-item-section-renderer > #contents,

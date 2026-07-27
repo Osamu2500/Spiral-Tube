@@ -3,12 +3,10 @@
  * Injects speed-aware remaining time into the native YouTube player controls.
  */
 
-
-
 export class TimeDisplay extends window.YPP.features.BaseFeature {
     static featureId = 'timeDisplay';
-    static executionPhase = 'idle';
-    static priority = 999;
+    static executionPhase = 'sequential-ui';
+    static priority = 10;
 
     constructor() {
         super('TimeDisplay');
@@ -17,40 +15,79 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         this._boundTimeUpdate = null;
         this._videoElement = null;
         this._pollInterval = null;
-        this._timeRemainingNode = null; // Cached reference — avoids querySelector in disable()
+        this._timeRemainingNodes = new Set();
+        this._updateFn = null;
+        this._handleNavigation = this._handleNavigation.bind(this);
     }
 
     getConfigKey() { return 'enableRemainingTime'; }
 
+    _isWatchPage() {
+        const path = window.location.pathname;
+        return path === '/watch' || 
+               path.startsWith('/watch/') || 
+               path === '/shorts' || 
+               path.startsWith('/shorts/') || 
+               !!document.querySelector('#movie_player');
+    }
+
+    _findTimeDisplays() {
+        const displays = document.querySelectorAll(
+            '#movie_player .ytp-time-display, ' +
+            '#movie_player .ytp-time-wrapper, ' +
+            '.html5-video-player .ytp-time-display, ' +
+            '.html5-video-player .ytp-time-wrapper, ' +
+            '.ytp-time-display, ' +
+            '.ytp-time-wrapper'
+        );
+        return Array.from(displays).filter(el => !el.closest('.ytp-miniplayer-ui'));
+    }
+
     enable() {
         if (!this.settings || !this.settings.enableRemainingTime) return;
+        this.isEnabled = true;
 
         const Utils = window.YPP.Utils;
         if (!Utils) return;
 
-        if (window.YPP.sharedObserver) {
-            // Observe the container itself so we get the fresh one after SPA navigations
-            window.YPP.sharedObserver.register('time-display-container', '.ytp-time-display .ytp-time-duration', (elements) => {
-                const video = document.querySelector('video');
-                const timeDisplay = elements[0].closest('.ytp-time-display');
-                if (video && timeDisplay) this.showRemainingTime(video, timeDisplay);
-            }, true);
+        this.addListener(window, 'yt-navigate-finish', this._handleNavigation);
+        this.addListener(window, 'yt-page-data-updated', this._handleNavigation);
+        this.addListener(window, 'yt-player-updated', this._handleNavigation);
 
-            // Re-inject on SPA navigation as fallback
-            if (!this._hasNavListener) {
-                window.addEventListener('yt-navigate-finish', () => {
-                    setTimeout(() => {
-                        const video = document.querySelector('video');
-                        const timeDisplay = document.querySelector('.ytp-time-display');
-                        if (video && timeDisplay) this.showRemainingTime(video, timeDisplay);
-                    }, 1000); // give YouTube time to rebuild controls
-                });
-                this._hasNavListener = true;
-            }
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('time-display-container', '.ytp-time-display, .ytp-time-wrapper', (elements) => {
+                this.showAll();
+            }, true);
+        }
+
+        if (!this._pollInterval) {
+            this._pollInterval = setInterval(() => {
+                if (!this.isEnabled || !this._isWatchPage()) return;
+                this.showAll();
+            }, 1000);
+        }
+
+        if (this._isWatchPage()) {
+            this.showAll();
         }
     }
 
+    showAll() {
+        if (!this.isEnabled || !this.settings?.enableRemainingTime || !this._isWatchPage()) return;
+        const timeDisplays = this._findTimeDisplays();
+        timeDisplays.forEach(td => this.showRemainingTime(td));
+        if (this._updateFn) this._updateFn();
+    }
+
+    _handleNavigation() {
+        if (!this.isEnabled || !this._isWatchPage()) return;
+        setTimeout(() => {
+            this.showAll();
+        }, 300);
+    }
+
     async disable() {
+        this.isEnabled = false;
         await super.disable();
         try {
             if (this._pollInterval) {
@@ -58,26 +95,18 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
                 this._pollInterval = null;
             }
             if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.unregister('time-display-video');
+                window.YPP.sharedObserver.unregister('time-display-container');
             }
 
-            if (this._videoElement && this._boundTimeUpdate) {
-                this._videoElement.removeEventListener('timeupdate', this._boundTimeUpdate.throttled ?? this._boundTimeUpdate);
-                this._videoElement.removeEventListener('ratechange', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
-                this._boundTimeUpdate = null;
-            }
+            this._unbindVideoListeners();
 
-            if (this._timeRemainingNode) {
-                this._timeRemainingNode.remove();
-                this._timeRemainingNode = null;
-            } else {
-                // Fallback: query only if cached ref is missing (e.g. after hard reload)
-                const timeRemainingNode = document.querySelector('.ypp-time-remaining');
-                if (timeRemainingNode) timeRemainingNode.remove();
-            }
-            const sepNode = document.querySelector('.ypp-time-separator-appended');
-            if (sepNode) sepNode.remove();
+            this._timeRemainingNodes.forEach(node => {
+                if (node && node.parentNode) node.remove();
+            });
+            this._timeRemainingNodes.clear();
 
+            document.querySelectorAll('.ypp-time-remaining').forEach(el => el.remove());
+            this._updateFn = null;
             this._videoElement = null;
         } catch (err) {
             this.utils?.log('TimeDisplay disable error', 'TIME-DISPLAY', 'error', err);
@@ -88,52 +117,70 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         this.enable();
     }
 
-    showRemainingTime(video, container) {
-        if (!container) return;
+    _unbindVideoListeners() {
+        if (this._videoElement && this._boundTimeUpdate) {
+            this._videoElement.removeEventListener('timeupdate', this._boundTimeUpdate.throttled ?? this._boundTimeUpdate);
+            this._videoElement.removeEventListener('ratechange', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
+            this._videoElement.removeEventListener('durationchange', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
+            this._videoElement.removeEventListener('loadedmetadata', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
+            this._videoElement.removeEventListener('play', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
+            this._videoElement.removeEventListener('seeked', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
+            this._boundTimeUpdate = null;
+        }
+    }
 
+    _bindVideoListeners(video, update) {
+        if (video === this._videoElement && this._boundTimeUpdate) return;
+        this._unbindVideoListeners();
         this._videoElement = video;
 
-        // Cleanup old structures
-        const oldDashboard = document.getElementById('ypp-time-dashboard');
-        if (oldDashboard) oldDashboard.remove();
-        const inlineMetrics = document.getElementById('ypp-native-time-metrics');
-        if (inlineMetrics) inlineMetrics.remove();
-        const oldDedicated = document.getElementById('ypp-dedicated-time-metrics');
-        if (oldDedicated) oldDedicated.remove();
+        const throttledUpdate = window.YPP.Utils?.throttle?.(update, 500) ?? update;
+        this._boundTimeUpdate = { throttled: throttledUpdate, raw: update };
 
-        const timeDisplay = container.classList.contains('ytp-time-display') 
-            ? container 
-            : container.querySelector('.ytp-time-display');
+        video.addEventListener('timeupdate', throttledUpdate);
+        video.addEventListener('ratechange', update);
+        video.addEventListener('durationchange', update);
+        video.addEventListener('loadedmetadata', update);
+        video.addEventListener('play', update);
+        video.addEventListener('seeked', update);
+    }
 
-        const durationNode = timeDisplay ? timeDisplay.querySelector('.ytp-time-duration') : null;
+    showRemainingTime(timeDisplay) {
+        if (!timeDisplay || !this.isEnabled || !this.settings?.enableRemainingTime) return;
 
-        if (!timeDisplay || !durationNode) return;
+        const durationNode = timeDisplay.querySelector('.ytp-time-duration') || 
+                             timeDisplay.querySelector('[class*="time-duration"]') || 
+                             timeDisplay.querySelector('.ytp-time-current')?.parentNode?.querySelector('.ytp-time-duration');
+        if (!durationNode) return;
 
-        // Ensure single injection
-        let timeRemainingNode = document.querySelector('.ypp-time-remaining');
-        
-        // Remove legacy separator if it exists
-        const oldSepNode = document.querySelector('.ypp-time-separator-appended');
-        if (oldSepNode) oldSepNode.remove();
+        // Cleanup legacy structures
+        ['ypp-time-dashboard', 'ypp-native-time-metrics', 'ypp-dedicated-time-metrics'].forEach(id => {
+            const old = document.getElementById(id);
+            if (old) old.remove();
+        });
+        document.querySelectorAll('.ypp-time-separator-appended').forEach(el => el.remove());
 
+        let timeRemainingNode = timeDisplay.querySelector('.ypp-time-remaining');
         if (!timeRemainingNode) {
             timeRemainingNode = document.createElement('span');
-            timeRemainingNode.className = 'ypp-time-remaining ytp-time-duration';
-            
+            timeRemainingNode.className = 'ypp-time-remaining';
             timeRemainingNode.style.cssText = `
-                margin-left: 4px;
-                opacity: 0.85;
+                display: inline-block !important;
+                margin-left: 5px !important;
+                opacity: 0.9 !important;
+                font-weight: 500 !important;
+                color: inherit !important;
+                vertical-align: baseline !important;
+                white-space: nowrap !important;
             `;
 
-            if (durationNode && durationNode.parentNode) {
+            if (durationNode.parentNode) {
                 durationNode.parentNode.insertBefore(timeRemainingNode, durationNode.nextSibling);
-            } else if (timeDisplay) {
-                timeDisplay.appendChild(timeRemainingNode);
             } else {
-                return;
+                timeDisplay.appendChild(timeRemainingNode);
             }
         }
-        this._timeRemainingNode = timeRemainingNode; // Cache for teardown — no querySelector needed
+        this._timeRemainingNodes.add(timeRemainingNode);
 
         const format = (s) => {
             if (s === undefined || s === null || isNaN(s) || s < 0) return '0:00';
@@ -147,62 +194,57 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         };
 
         const update = () => {
-            if (!video || !video.duration || !isFinite(video.duration) || isNaN(video.currentTime)) {
+            if (!this.isEnabled || !this.settings?.enableRemainingTime) return;
+
+            const video = timeDisplay.closest('.html5-video-player')?.querySelector('video') || 
+                          document.querySelector('video.html5-main-video') || 
+                          document.querySelector('#movie_player video') || 
+                          document.querySelector('video');
+            if (video) {
+                this._bindVideoListeners(video, update);
+            }
+
+            if (!video || !video.duration || !isFinite(video.duration) || isNaN(video.currentTime) || video.duration <= 0) {
+                if (timeRemainingNode) timeRemainingNode.style.display = 'none';
                 return;
             }
 
-            // Guard against the node being detached
-            if (!document.contains(timeRemainingNode)) {
-                if (timeDisplay) {
-                    timeDisplay.appendChild(timeRemainingNode);
-                } else {
-                    return; // Container is truly gone
-                }
+            // Ensure node remains attached immediately after durationNode
+            const curDurationNode = timeDisplay.querySelector('.ytp-time-duration') || 
+                                    timeDisplay.querySelector('[class*="time-duration"]');
+            if (curDurationNode && curDurationNode.parentNode && curDurationNode.nextSibling !== timeRemainingNode) {
+                curDurationNode.parentNode.insertBefore(timeRemainingNode, curDurationNode.nextSibling);
             }
 
             const speed = video.playbackRate || 1;
             const duration = video.duration;
             const currentTime = video.currentTime;
-            
             const rawLeft = Math.max(0, duration - currentTime);
             const adjustedLeft = rawLeft / speed;
-            
-            // Hide if no time remaining
+
             if (rawLeft <= 0) {
                 timeRemainingNode.style.display = 'none';
                 return;
             }
 
-            timeRemainingNode.style.display = 'inline';
+            timeRemainingNode.style.display = 'inline-block';
 
             if (Math.abs(speed - 1) <= 0.01) {
-                // 1x speed - Native remaining time
-                timeRemainingNode.textContent = ` ( -${format(rawLeft)} )`;
+                timeRemainingNode.textContent = ` (-${format(rawLeft)})`;
             } else {
-                // Speed changed - Show adjusted time + saved/extra
                 if (speed > 1) {
                     const totalSaved = duration - (duration / speed);
-                    timeRemainingNode.textContent = ` ( -${format(adjustedLeft)} · ${format(totalSaved)} saved )`;
+                    timeRemainingNode.textContent = ` (-${format(adjustedLeft)} · ${format(totalSaved)} saved)`;
                 } else {
                     const totalExtra = (duration / speed) - duration;
-                    timeRemainingNode.textContent = ` ( -${format(adjustedLeft)} · ${format(totalExtra)} extra )`;
+                    timeRemainingNode.textContent = ` (-${format(adjustedLeft)} · ${format(totalExtra)} extra)`;
                 }
             }
         };
 
-        if (this._boundTimeUpdate) {
-            video.removeEventListener('timeupdate', this._boundTimeUpdate.throttled ?? this._boundTimeUpdate);
-            video.removeEventListener('ratechange', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
-        }
-
-        // Throttle timeupdate to 1s — it fires 4-8×/sec but display only updates once/sec.
-        // ratechange fires rarely so it gets the unthrottled version for instant response.
-        const throttledUpdate = window.YPP.Utils?.throttle?.(update, 1000) ?? update;
-        this._boundTimeUpdate = { throttled: throttledUpdate, raw: update };
-        this.addListener(video, 'timeupdate', throttledUpdate);
-        this.addListener(video, 'ratechange', update);
-        update(); // Immediate initial render
+        this._updateFn = update;
+        update();
     }
-};
+}
 
 window.YPP.features.TimeDisplay = TimeDisplay;

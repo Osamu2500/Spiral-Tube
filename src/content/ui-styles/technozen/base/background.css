@@ -81,8 +81,8 @@ html:not([dark]) body {
       to right,
       rgba(210, 248, 195, 0.70) 0%,
       rgba(195, 240, 248, 0.65) 100%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  backdrop-filter: blur(20px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border-bottom: 1px solid rgba(90, 191, 71, 0.18) !important;
   border-radius: var(--tz-radius-md) var(--tz-radius-md) 0 0 !important;
 }

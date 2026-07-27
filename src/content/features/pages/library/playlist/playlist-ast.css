@@ -1,7 +1,7 @@
 
 body.yt-spiral-tube-theme ytd-playlist-panel-renderer {
-  background: var(--ypp-bg-surface);
-  backdrop-filter: var(--ypp-blur-high);
+  background: var(--ypp-bg-surface);-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   box-shadow: var(--ypp-shadow-float);
@@ -119,10 +119,8 @@ body.ypp-playlist-redesign ytd-masthead {
     height: calc(100vh - 88px); /* 64px top + 24px bottom */
     z-index: var(--ypp-z-content);
     /* Background (Premium Glassmorphism) */
-    background: var(--ypp-bg-surface, linear-gradient(135deg, rgba(20, 20, 24, 0.45), rgba(20, 20, 24, 0.25)));
-    backdrop-filter: var(--ypp-glass-blur-active, blur(48px) saturate(1.2));
-    -webkit-backdrop-filter: var(--ypp-glass-blur-active, blur(48px) saturate(1.2));
-    border: var(--ypp-glass-border-active, 1px solid rgba(255, 255, 255, 0.08));
+    background: var(--ypp-bg-surface, linear-gradient(135deg, rgba(20, 20, 24, 0.45), rgba(20, 20, 24, 0.25)));-webkit-backdrop-filter: ;
+-filter: ;    border: var(--ypp-glass-border-active, 1px solid rgba(255, 255, 255, 0.08));
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
@@ -433,10 +431,8 @@ body.ypp-playlist-redesign ytd-masthead {
     right: 24px;
     z-index: var(--ypp-z-card-hover);
     /* Use theme surface variable — falls back to a neutral dark glass for default dark mode */
-    background: var(--sf, rgba(10, 10, 12, 0.55));
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    display: flex;
+    background: var(--sf, rgba(10, 10, 12, 0.55));-webkit-backdrop-filter: ;
+-filter: ;    display: flex;
     align-items: center;
     gap: 12px;
     padding: 10px 2px;
@@ -623,8 +619,8 @@ body.ypp-playlist-redesign ytd-masthead {
     font-size: 11px;
     font-weight: 600;
     padding: 2px 6px;
-    border-radius: 5px;
-    backdrop-filter: blur(4px);
+    border-radius: 5px;-webkit-backdrop-filter: ;
+-filter: ;
     z-index: var(--ypp-z-content);
     line-height: 1.4;
 }
@@ -638,8 +634,8 @@ body.ypp-playlist-redesign ytd-masthead {
     font-size: 11px;
     font-weight: 600;
     padding: 2px 6px;
-    border-radius: 5px;
-    backdrop-filter: blur(4px);
+    border-radius: 5px;-webkit-backdrop-filter: ;
+-filter: ;
     z-index: var(--ypp-z-content);
     line-height: 1.4;
     letter-spacing: 0.3px;
@@ -716,10 +712,8 @@ body.ypp-playlist-redesign ytd-masthead {
 }
 
 .ypp-pl-card-context-menu {
-    background: rgba(22,22,22,0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(22,22,22,0.97);-webkit-backdrop-filter: ;
+-filter: ;    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 6px;
     min-width: 200px;

@@ -363,10 +363,7 @@ html.yt-spiral-tube-theme .ytd-thumbnail {
 
 html.yt-spiral-tube-theme tp-yt-iron-dropdown {
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;
-  backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
-  -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
+  border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;-filter: ;  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
 }
 
 html.yt-spiral-tube-theme tp-yt-paper-listbox,
@@ -802,8 +799,7 @@ body.ypp-floating-guide ytd-page-manager {
   font-weight: 500;
   text-align: center;
   font-family: inherit;
-  pointer-events: auto;
-  backdrop-filter: blur(8px);
+  pointer-events: auto;-filter: ;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -921,8 +917,7 @@ html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track {
     align-items: center;
     justify-content: center;
     z-index: var(--ypp-z-card-hover);
-    pointer-events: none;
-    backdrop-filter: blur(4px);
+    pointer-events: none;-filter: ;
     box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
     animation: ypp-pulse-badge 2s infinite ease-in-out;
 }
@@ -1007,8 +1002,7 @@ html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer 
   opacity: 0;
   transition: all 0.2s ease;
   z-index: var(--ypp-z-content);
-  cursor: pointer;
-  backdrop-filter: blur(4px);
+  cursor: pointer;-filter: ;
 }
 
 ytd-thumbnail:hover .ypp-watched-icon {
@@ -1560,8 +1554,7 @@ body.ypp-zen-mode #columns {
 .yt-spiral-tube-theme ytd-simple-menu-header-renderer,
 .yt-spiral-tube-theme ytd-active-account-header-renderer,
 .yt-spiral-tube-theme ytd-voice-search-dialog-renderer {
-  background: rgba(30, 30, 30, 0.95);
-  backdrop-filter: var(--ypp-blur-high);
+  background: rgba(30, 30, 30, 0.95);-filter: ;
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   box-shadow: var(--ypp-shadow-float);
@@ -1655,8 +1648,7 @@ body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: var(--ypp-bg-surface);
-  backdrop-filter: var(--ypp-blur-md);
+  background: var(--ypp-bg-surface);-filter: ;
   color: var(--ypp-text-secondary);
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-sm);
@@ -1686,8 +1678,7 @@ body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
 
 .ypp-tag-popover {
   position: absolute;
-  background: var(--ypp-bg-glass);
-  backdrop-filter: var(--ypp-blur-lg);
+  background: var(--ypp-bg-glass);-filter: ;
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-md);
   box-shadow: var(--ypp-shadow-float);
@@ -1727,10 +1718,7 @@ body.yt-spiral-tube-theme ytd-playlist-thumbnail {
 /* Premium Playlist Side Panel Overlay */
 
 body.yt-spiral-tube-theme ytd-thumbnail-overlay-side-panel-renderer {
-  background: rgba(10, 10, 15, 0.6) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(10, 10, 15, 0.6) !important;-filter: ;  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #fff !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   width: 35% !important;
@@ -1906,8 +1894,7 @@ body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.85);-filter: ;
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
@@ -1990,8 +1977,7 @@ body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   width: 28px;
   height: 28px;
   border-radius: 8px; /* Squircle */
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);-filter: ;
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
   display: flex;
@@ -2172,10 +2158,7 @@ body.yt-spiral-tube-theme
 .ypp-sub-folders {
   margin: 12px 0 12px 12px;
   padding: 16px;
-  background: var(--ypp-bg-surface);
-  backdrop-filter: var(--ypp-blur-lg);
-  -webkit-backdrop-filter: var(--ypp-blur-lg);
-  border: 1px solid var(--ypp-glass-border);
+  background: var(--ypp-bg-surface);-filter: ;  border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-md);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
@@ -2304,10 +2287,7 @@ body.yt-spiral-tube-theme
   gap: 12px;
   padding: 12px 20px;
   margin-bottom: 24px;
-  background: var(--ypp-bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--ypp-glass-border);
+  background: var(--ypp-bg-glass);-filter: ;  border: 1px solid var(--ypp-glass-border);
   border-radius: 12px;
   align-items: center;
   justify-content: space-between;
@@ -2401,8 +2381,7 @@ body.yt-spiral-tube-theme
   font-weight: 500;
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
-  backdrop-filter: var(--ypp-blur-md);
+  align-items: center;-filter: ;
   margin-right: 8px;
   transition:
     transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -2421,10 +2400,7 @@ body.yt-spiral-tube-theme
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgba(18, 18, 26, 0.85);
-  backdrop-filter: var(--ypp-blur-md);
-  -webkit-backdrop-filter: var(--ypp-blur-md);
-  color: var(--ypp-text-primary);
+  background: rgba(18, 18, 26, 0.85);-filter: ;  color: var(--ypp-text-primary);
   font-size: 1.1rem;
   font-weight: 600;
   padding: 4px 8px;
@@ -2444,8 +2420,7 @@ body.yt-spiral-tube-theme
 
 .ypp-glass-popover {
   position: absolute;
-  background: var(--ypp-bg-elevated);
-  backdrop-filter: var(--ypp-blur-high);
+  background: var(--ypp-bg-elevated);-filter: ;
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   padding: 16px;
@@ -2541,10 +2516,7 @@ body.yt-spiral-tube-theme
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%) translateY(12px);
-  background: rgba(20, 20, 30, 0.88);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  color: #fff;
+  background: rgba(20, 20, 30, 0.88);-filter: ;  color: #fff;
   font-family: "Roboto", "Inter", sans-serif;
   font-size: 13px;
   font-weight: 500;
@@ -2601,10 +2573,7 @@ body.yt-spiral-tube-theme
   padding: 2px 6px !important;
   border-radius: 8px !important;
   background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;-filter: ;  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   height: 24px !important;
   font-family: var(--ypp-font-family, "Inter", sans-serif) !important;
 }
@@ -2630,10 +2599,7 @@ body.yt-spiral-tube-theme ytd-watch-metadata #top-row {
 /* Channel Owner Section Pill */
 
 body.yt-spiral-tube-theme ytd-watch-metadata #owner {
-  background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.05) !important;-filter: ;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 100px !important;
   padding: 4px 16px 4px 4px !important;
   display: flex !important;
@@ -2680,10 +2646,7 @@ body.yt-spiral-tube-theme
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
   color: var(--yt-spec-text-primary, #fff) !important;
   border-radius: 100px !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  padding: 0 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;-filter: ;  padding: 0 20px !important;
   height: 40px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
@@ -2820,10 +2783,7 @@ body.yt-spiral-tube-theme
   yt-button-shape
   > button {
   border-radius: 100px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.08) !important;-filter: ;  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   padding: 0 16px !important;
   height: 36px !important;
   display: flex !important;
@@ -2870,10 +2830,7 @@ body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
 }
 
 body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.08) !important;-filter: ;  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 100px !important;
   display: flex !important;
   align-items: center !important;
@@ -2923,10 +2880,7 @@ body.yt-spiral-tube-theme #actions-inner yt-icon {
 
 body.yt-spiral-tube-theme tp-yt-paper-listbox {
   border-radius: 16px !important;
-  background: rgba(25, 25, 25, 0.8) !important;
-  backdrop-filter: blur(24px) saturate(1.5) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(25, 25, 25, 0.8) !important;-filter: ;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -3078,10 +3032,7 @@ ytd-popup-container ytd-multi-page-menu-renderer {
 
 .ypp-account-menu {
     width: 310px;
-    background: rgba(18, 18, 18, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 14px;
+    background: rgba(18, 18, 18, 0.97);-filter: ;    border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.07);
     overflow: hidden;
     font-family: Roboto, Arial, sans-serif;
@@ -3194,8 +3145,7 @@ ytd-popup-container ytd-multi-page-menu-renderer {
     display: none;
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.85);-filter: ;
     align-items: center;
     justify-content: center;
     border-radius: 14px;
@@ -3261,8 +3211,7 @@ tp-yt-paper-tab:has([title*="podcast"]) {
     height: 28px !important;
     border-radius: 6px !important;
     border: 2px solid rgba(255,255,255,0.7) !important;
-    background: rgba(0,0,0,0.5) !important;
-    backdrop-filter: blur(4px) !important;
+    background: rgba(0,0,0,0.5) !important;-filter: ;
     cursor: pointer !important;
     display: flex !important;
     align-items: center !important;
@@ -3301,10 +3250,7 @@ tp-yt-paper-tab:has([title*="podcast"]) {
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: 2147483647 !important;
-    background: rgba(28,28,28,0.98) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-    border: 1px solid rgba(255,255,255,0.2) !important;
+    background: rgba(28,28,28,0.98) !important;-filter: ;    border: 1px solid rgba(255,255,255,0.2) !important;
     border-radius: 48px !important;
     padding: 10px 20px !important;
     display: flex !important;
@@ -3460,8 +3406,7 @@ body.ypp-hide-thumbnails ytd-reel-item-renderer:hover {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background: rgba(10, 10, 10, 0.95) !important;
-    backdrop-filter: blur(15px) !important;
+    background: rgba(10, 10, 10, 0.95) !important;-filter: ;
     z-index: var(--ypp-z-popup) !important;
     display: flex !important;
     align-items: center !important;
@@ -4124,10 +4069,7 @@ html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[d
 html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
 html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {
     overflow: visible !important;
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: none !important;
+    background: transparent !important;-filter: ;    border: none !important;
     box-shadow: none !important;
     animation: none !important;
 }
@@ -4147,10 +4089,7 @@ ytd-popup-container ytd-multi-page-menu-renderer[data-ypp-redesigned] {
 
 .ypp-account-menu {
     width: 320px;
-    background: linear-gradient(135deg, rgba(22, 22, 26, 0.72), rgba(14, 14, 18, 0.82));
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(22, 22, 26, 0.72), rgba(14, 14, 18, 0.82));-filter: ;    border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     overflow: hidden;
@@ -4585,10 +4524,7 @@ html.yt-spiral-tube-theme .ytSearchboxComponentSuggestionsContainer,
 html.yt-spiral-tube-theme .sbsb_a,
 html.yt-spiral-tube-theme .sbdd_b {
     background: var(--sf, var(--ypp-bg-surface, rgba(20, 20, 20, 0.9))) !important;
-    color: var(--yt-spec-text-primary, #fff) !important;
-    backdrop-filter: var(--ypp-glass-blur-active, blur(16px)) !important;
-    -webkit-backdrop-filter: var(--ypp-glass-blur-active, blur(16px)) !important;
-}
+    color: var(--yt-spec-text-primary, #fff) !important;-filter: ;}
 
 /* For light mode fallback if theme doesn't force dark */
 html.yt-spiral-tube-theme:not([dark]) .ytSearchboxComponentSuggestionsContainer,
@@ -4763,8 +4699,7 @@ body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModel
     margin: 0 !important;
     z-index: 9999 !important;
 }
-body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
-    backdrop-filter: none !important;
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {-filter: ;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.75) !important;
     border-radius: 12px !important;
     height: 705px !important;
@@ -4773,10 +4708,7 @@ body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModel
     border: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHost {
-    background: rgba(0, 0, 0, 0.65) !important;
-    backdrop-filter: blur(48px) !important;
-    -webkit-backdrop-filter: blur(48px) !important;
-    max-width: 100% !important;
+    background: rgba(0, 0, 0, 0.65) !important;-filter: ;    max-width: 100% !important;
     border-radius: 12px !important;
 }
 body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHeaderContainer { 
@@ -4822,7 +4754,7 @@ body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModel
 
 
 
-/* --- Compact Settings Menu (Style 27066) --- */
+/* --- Compact Settings Menu --- */
 body.ypp-small-settings-menu #contentContainer.tp-yt-app-drawer[swipe-open]::after {
     display: none !important;
 }
@@ -4839,7 +4771,7 @@ body.ypp-small-settings-menu .ytp-menuitem-label {
     flex: 1 !important;
 }
 
-/* --- Lightsaber Progress Bar (Style 8462 - Red Sith) --- */
+/* --- Lightsaber Progress Bar (Red Sith) --- */
 body.ypp-lightsaber-progress {
     --ypp-lightsaber-color: #EB212E; 
 }
@@ -4861,7 +4793,7 @@ body.ypp-lightsaber-progress .ytp-scrubber-button {
    USERSTYLE INTEGRATIONS: Flex Width, Compact Player, Customization & Ads
    ========================================================================== */
 
-/* --- Flex Width Player (Style 12492) --- */
+/* --- Flex Width Player --- */
 body.ypp-flex-width-player #columns.ytd-watch-flexy {
   max-width: 100% !important;
 }
@@ -4874,24 +4806,209 @@ body.ypp-flex-width-player ytd-watch-flexy[flexy][fullscreen] #primary.ytd-watch
   max-width: 100% !important;
 }
 
-/* --- Compact Player Controls (Style 24682) --- */
+/* --- Compact Player Controls --- */
+body.ypp-compact-player-ui #movie_player,
+body.ypp-compact-player-ui .html5-video-player {
+  --ypp-compact-bar-height: 36px;
+  --ypp-compact-btn-width: 34px;
+  --ypp-compact-icon-scale: 0.85;
+  --ypp-compact-progress-bottom: 34px;
+  --ypp-compact-time-font: 12px;
+  --ypp-compact-chapter-max-width: 240px;
+}
+
+/* Never show hidden elements or empty containers! */
+body.ypp-compact-player-ui [hidden],
+body.ypp-compact-player-ui [style*="display: none"],
+body.ypp-compact-player-ui [style*="display:none"],
+body.ypp-compact-player-ui [style*="display : none"],
+body.ypp-compact-player-ui .ytp-button[hidden],
+body.ypp-compact-player-ui .ytp-button[style*="display: none"],
+body.ypp-compact-player-ui .ytp-button[style*="display:none"],
+body.ypp-compact-player-ui .ytp-button[style*="display : none"],
+body.ypp-compact-player-ui .ytp-button[class*="-hidden"],
+body.ypp-compact-player-ui .ytp-button[class*="hidden"],
+body.ypp-compact-player-ui .ytp-button[aria-hidden="true"],
+body.ypp-compact-player-ui .ytp-button[aria-disabled="true"],
+body.ypp-compact-player-ui .ytp-autonav-toggle-button-container[hidden],
+body.ypp-compact-player-ui .ytp-autonav-toggle-button-container[style*="none"],
+body.ypp-compact-player-ui .ytp-remote-button-container[hidden],
+body.ypp-compact-player-ui .ytp-remote-button-container[style*="none"],
+body.ypp-compact-player-ui .ypp-action-btn[hidden],
+body.ypp-compact-player-ui .ypp-action-btn[style*="display: none"],
+body.ypp-compact-player-ui .ypp-action-btn[style*="display:none"],
+body.ypp-compact-player-ui .ypp-action-btn[style*="display : none"],
+body.ypp-compact-player-ui .ypp-action-btn[aria-hidden="true"],
+body.ypp-compact-player-ui .ypp-player-controls [hidden],
+body.ypp-compact-player-ui .ypp-player-controls [style*="display: none"],
+body.ypp-compact-player-ui .ypp-player-controls [style*="display:none"],
+body.ypp-compact-player-ui .ypp-player-controls:empty {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+/* 1. Control Bar Height & Smooth Hover Transition */
 body.ypp-compact-player-ui .ytp-chrome-bottom {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  padding-bottom: 2px !important;
   opacity: 0.88;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), height 0.2s ease !important;
 }
 body.ypp-compact-player-ui .ytp-chrome-bottom:hover {
   opacity: 1;
 }
-body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button {
-  padding: 0 4px !important;
-  width: 38px !important;
+
+/* 2. Controls Flex Layout */
+body.ypp-compact-player-ui .ytp-chrome-controls {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
 }
-body.ypp-compact-player-ui .ytp-time-display {
-  font-size: 11px !important;
-  line-height: 38px !important;
+body.ypp-compact-player-ui .ytp-left-controls,
+body.ypp-compact-player-ui .ytp-right-controls {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
 }
 
-/* --- Customize Your YouTube (Style 21084) --- */
+/* 3. Ergonomic Button Dimensions & Icon Scale (Only for visible buttons without overriding display!) */
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]):not([aria-disabled="true"]),
+body.ypp-compact-player-ui .ytp-left-controls .ytp-button:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]):not([aria-disabled="true"]),
+body.ypp-compact-player-ui .ytp-right-controls .ytp-button:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]):not([aria-disabled="true"]),
+body.ypp-compact-player-ui .ypp-action-btn:not([hidden]):not([style*="none"]):not([class*="hidden"]):not([aria-hidden="true"]) {
+  width: var(--ypp-compact-btn-width, 34px) !important;
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
+  box-sizing: border-box !important;
+}
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button svg,
+body.ypp-compact-player-ui .ypp-action-btn svg,
+body.ypp-compact-player-ui .ypp-gpb-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  margin: auto !important;
+  display: block !important;
+  transform: scale(var(--ypp-compact-icon-scale, 1)) !important;
+  transform-origin: center center !important;
+  transition: transform 0.15s ease !important;
+  pointer-events: none !important;
+}
+body.ypp-compact-player-ui .ytp-chrome-controls .ytp-button:hover svg,
+body.ypp-compact-player-ui .ypp-action-btn:hover svg,
+body.ypp-compact-player-ui .ypp-gpb-btn:hover svg {
+  transform: scale(calc(var(--ypp-compact-icon-scale, 1) * 1.1)) !important;
+}
+
+/* 4. Custom Player Bar & Buttons Compact Adaptation */
+body.ypp-compact-player-ui .ypp-player-controls:not(.ypp-floating-action-bar) {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 2px !important;
+  gap: 2px !important;
+  margin: 0 4px 0 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+body.ypp-compact-player-ui .ypp-action-btn:not([hidden]):not([style*="none"]) {
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body.ypp-compact-player-ui .ypp-speed-controls {
+  height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 2px !important;
+  gap: 2px !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+body.ypp-compact-player-ui .ypp-speed-btn {
+  height: calc(var(--ypp-compact-bar-height, 36px) - 10px) !important;
+  line-height: 1 !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body.ypp-compact-player-ui .ypp-floating-action-bar {
+  gap: 6px !important;
+  padding: 8px 6px !important;
+  border-radius: 20px !important;
+}
+body.ypp-compact-player-ui .ypp-floating-action-bar .ypp-action-btn:not([hidden]):not([style*="none"]) {
+  width: var(--ypp-compact-btn-width, 34px) !important;
+  height: var(--ypp-compact-btn-width, 34px) !important;
+}
+
+/* 5. Progress Bar Alignment */
+body.ypp-compact-player-ui .ytp-progress-bar-container {
+  bottom: var(--ypp-compact-progress-bottom, 34px) !important;
+  height: 5px !important;
+  transition: bottom 0.2s ease, height 0.15s ease !important;
+}
+body.ypp-compact-player-ui .ytp-progress-bar-container:hover {
+  height: 7px !important;
+}
+body.ypp-compact-player-ui .ytp-scrubber-button {
+  transform: scale(0.8) !important;
+}
+
+/* 6. Time Display & Dynamic Chapter Truncation */
+body.ypp-compact-player-ui .ytp-time-display {
+  font-size: var(--ypp-compact-time-font, 12px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  padding: 0 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+body.ypp-compact-player-ui .ytp-chapter-container {
+  max-width: var(--ypp-compact-chapter-max-width, 240px) !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+body.ypp-compact-player-ui .ytp-chapter-title-content {
+  font-size: var(--ypp-compact-time-font, 12px) !important;
+  line-height: var(--ypp-compact-bar-height, 36px) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 7. Volume Slider Spacing */
+body.ypp-compact-player-ui .ytp-volume-panel {
+  margin-right: 4px !important;
+}
+
+/* 8. Shorter Gradient Footprint */
+body.ypp-compact-player-ui .ytp-gradient-bottom {
+  height: 52px !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+}
+
+/* --- Customize Your YouTube --- */
 body.ypp-hide-country-code #country-code {
   display: none !important;
 }
@@ -4913,7 +5030,7 @@ body.ypp-hide-useless-guide-links #guide-content #footer {
   display: none !important;
 }
 
-/* --- Hide Paid Promotion Banner (Style 16687) --- */
+/* --- Hide Paid Promotion Banner --- */
 body.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
 body.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
 body.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
@@ -4922,7 +5039,7 @@ body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
   display: none !important;
 }
 
-/* --- Style 11811: Real Cinema Mode (100vw Theater Mode & Auto-hide Header) --- */
+/* --- Real Cinema Mode (100vw Theater Mode & Auto-hide Header) --- */
 :is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #player-theater-container.ytd-watch-flexy,
 :is(body, html).ypp-real-cinema-mode ytd-watch-flexy[theater] #full-bleed-container.ytd-watch-flexy {
   width: 100vw !important;
@@ -4937,14 +5054,14 @@ body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
   opacity: 1 !important;
 }
 
-/* --- Style 8167: Show Live Stream Elapsed Time --- */
+/* --- Show Live Stream Elapsed Time --- */
 :is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-current,
 :is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-separator,
 :is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-duration {
   display: inline-block !important;
 }
 
-/* --- Style 4889: Two Rows/Columns in Subscriptions Feed --- */
+/* --- Two Rows/Columns in Subscriptions Feed --- */
 :is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] ytd-rich-grid-renderer {
   --ytd-rich-grid-items-per-row: 2 !important;
   --ytd-rich-grid-posts-per-row: 2 !important;

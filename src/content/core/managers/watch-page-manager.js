@@ -1,7 +1,7 @@
 class WatchPageManager extends window.YPP.BasePageManager {
     constructor(utils, settings) {
         super(utils, settings);
-        this.matchPatterns = [/^\/watch/];
+        this.matchPatterns = [/^\/watch/, /^\/shorts/];
         
         this.state = {
             sidebar: 'default', // 'default', 'compact', 'hidden'
@@ -144,17 +144,20 @@ class WatchPageManager extends window.YPP.BasePageManager {
         
         // 1. Reset all managed classes & Inline Styles
         const classesToRemove = [
-            'ypp-sidebar-compact', 'ypp-sidebar-regular', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
+            'ypp-sidebar-dense', 'ypp-sidebar-compact', 'ypp-sidebar-regular', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
             'ypp-cinema-mode', 'ypp-minimal-mode', 'ypp-zen-mode', 'ypp-focus-mode', 'ypp-study-mode', 'ypp-seamless-mode'
         ];
         body.classList.remove(...classesToRemove);
         
 
 
+
         // 2. Apply Sidebar
         if (this.settings.enableCustomSidebar) {
             // Custom sidebar is ON — apply chosen layout
-            if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
+            if (this.state.sidebar === 'dense') {
+                body.classList.add('ypp-sidebar-dense');
+            } else if (this.state.sidebar === 'compact' || this.state.sidebar === 'default') {
                 body.classList.add('ypp-sidebar-compact');
             } else if (this.state.sidebar === 'regular') {
                 body.classList.add('ypp-sidebar-regular');
@@ -197,7 +200,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
     _cleanupDOM() {
         const classesToRemove = [
             // Note: 'ypp-sidebar-spacious' is the current name — 'compact' was the old name
-            'ypp-sidebar-compact', 'ypp-sidebar-regular', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
+            'ypp-sidebar-dense', 'ypp-sidebar-compact', 'ypp-sidebar-regular', 'ypp-sidebar-spacious', 'ypp-sidebar-expanded', 'ypp-sidebar-grid', 'ypp-sidebar-hidden',
             'ypp-cinema-mode', 'ypp-minimal-mode', 'ypp-zen-mode', 'ypp-focus-mode', 'ypp-study-mode', 'ypp-theater-mode-override'
         ];
         document.body.classList.remove(...classesToRemove);
@@ -255,7 +258,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
             const video = activeShort.querySelector('video');
             const controls = activeShort.querySelector('.overlay.ytd-reel-video-renderer');
             if (video && controls) {
-                this.injectControls(video, controls, true);
+                this.playerBarUI.injectControls(video, controls, true);
                 activeShort.setAttribute('data-ypp-processed', 'true');
             }
         }, true);
@@ -273,13 +276,17 @@ class WatchPageManager extends window.YPP.BasePageManager {
 
         // Listen for SPA navigation to clear the processed stamps so buttons are re-injected
         if (!this._hasNavListener) {
-            window.addEventListener('yt-navigate-finish', () => {
+            const resetProcessed = () => {
                 document.querySelectorAll('[data-ypp-processed="true"]').forEach(el => {
-                    if (el.classList.contains('ytp-right-controls') || el.classList.contains('ytd-reel-video-renderer')) {
-                        el.removeAttribute('data-ypp-processed');
-                    }
+                    el.removeAttribute('data-ypp-processed');
                 });
-            });
+                if (this.playerBarUI) {
+                    this.playerBarUI.injectedButtons = false;
+                    this.playerBarUI.attemptInjection();
+                }
+            };
+            window.addEventListener('yt-navigate-finish', resetProcessed);
+            window.addEventListener('yt-page-data-updated', resetProcessed);
             this._hasNavListener = true;
         }
     }

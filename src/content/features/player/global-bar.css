@@ -17,10 +17,8 @@
     /* Premium Shadows & Glass */
     box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 3px rgba(255,255,255,0.15), inset 0 -1px 3px rgba(0,0,0,0.3);
     opacity: 1;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
-    backdrop-filter: blur(48px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(48px) saturate(200%) !important;
-    
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%) !important;-webkit-backdrop-filter: ;
+-filter: ;    
     /* Elegant Borders */
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -249,10 +247,8 @@
 /* ── Frosted Glass Popups (when opened from Global Bar) ── */
 #ypp-eq-panel.ypp-panel-transparent,
 #ypp-cinema-panel.ypp-panel-transparent {
-    background: rgba(8, 8, 18, 0.62) !important;
-    backdrop-filter: blur(24px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08) !important;
+    background: rgba(8, 8, 18, 0.62) !important;-webkit-backdrop-filter: ;
+-filter: ;    box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
 }
 

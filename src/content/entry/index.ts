@@ -12,7 +12,6 @@ import '../core/dom/dom-observer.js';
 import '../core/system/storage-manager.js';
 import '../core/events/event-delegator.js';
 import '../core/system/feature-manager.js';
-import '../core/system/feature-manager.js';
 
 // CSS Imports
 import '../features/global/core-styles.css';
@@ -70,9 +69,6 @@ window.YPP.FeatureManager.register(CustomCursor);
 
 import '../features/global/behavior/watched-store.js';
 import { MultiSelect } from '../features/global/behavior/multi-select.js';
-window.YPP.FeatureManager.register(MultiSelect);
-import '../features/global/ui-tweaks/multi-select.css';
-
 window.YPP.FeatureManager.register(MultiSelect);
 import '../features/global/ui-tweaks/multi-select.css';
 
@@ -220,17 +216,14 @@ window.YPP.FeatureManager.register(WatchRedesign);
 import { SeamlessMode } from '../features/pages/watch/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
 
-// Player features
-import { PlayerBarUI } from '../features/player/player-bar-ui.js';
-window.YPP.FeatureManager.register(PlayerBarUI);
-import { PlayerControls } from '../features/player/player-controls.js';
-window.YPP.FeatureManager.register(PlayerControls);
+// Player features (imported to register on window.YPP.features for WatchPageManager)
+import '../features/player/player-bar-ui.js';
+import '../features/player/player-controls.js';
 import { SnapshotButton } from '../features/player/controls/snapshot-button.js';
 window.YPP.FeatureManager.register(SnapshotButton);
 import { LoopButton } from '../features/player/controls/loop-button.js';
 window.YPP.FeatureManager.register(LoopButton);
-import { PlayerSettingsMenu } from '../features/player/player-settings-menu.js';
-window.YPP.FeatureManager.register(PlayerSettingsMenu);
+import '../features/player/player-settings-menu.js';
 // FilterPresets is a standalone UI/data manager, not a standard BaseFeature. Keep standard import.
 import '../features/player/filter-presets.js';
 import { GlobalBarUI } from '../features/player/global-bar-ui.js';
@@ -274,12 +267,9 @@ import { VSCHideByDefault } from '../features/player/enhancements/vsc-hide-by-de
 window.YPP.FeatureManager.register(VSCHideByDefault);
 import { VSCForceSpeed } from '../features/player/enhancements/vsc-force-speed.js';
 window.YPP.FeatureManager.register(VSCForceSpeed);
-window.YPP.FeatureManager.register(VSCForceSpeed);
 import { VSCRememberSpeed } from '../features/player/enhancements/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
 
-import { FloatingPlayer } from '../features/player/controls/floating-player.js';
-window.YPP.FeatureManager.register(FloatingPlayer);
 import '../features/player/media-effects/video-filters/video-filters-presets.js';
 import '../features/player/media-effects/video-filters/video-filters-overlay.js';
 import '../features/player/media-effects/video-filters/video-filters-ui.js';
@@ -300,8 +290,6 @@ import { AmbientMode } from '../features/player/media-effects/ambient-mode/ambie
 window.YPP.FeatureManager.register(AmbientMode);
 import { AudioMode } from '../features/player/media-effects/ambient-mode/audio-mode.js';
 window.YPP.FeatureManager.register(AudioMode);
-import { VideoControls } from '../features/player/controls/video-controls.js';
-window.YPP.FeatureManager.register(VideoControls);
 import { ClassicProgressBar } from '../features/player/controls/classic-progress-bar.js';
 window.YPP.FeatureManager.register(ClassicProgressBar);
 import { AudioCompressor } from '../features/player/media-effects/audio-compressor.js';
@@ -338,6 +326,5 @@ import { StarTubeLayout } from '../features/global/ui-tweaks/startube-layout.js'
 window.YPP.FeatureManager.register(StarTubeLayout);
 import '../features/player/controls/sidebar-layout.css';
 
-// Feature Manager & Main entry
-import '../core/system/feature-manager.js';
+// Main entry
 import './main.js';

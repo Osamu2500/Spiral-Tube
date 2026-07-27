@@ -37,10 +37,8 @@
 .ypp-deck-column {
     display: grid;
     grid-template-rows: auto 1fr;
-    background: rgba(30, 30, 34, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(30, 30, 34, 0.4);-webkit-backdrop-filter: ;
+-filter: ;    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     overflow: hidden;
     height: 100%;
@@ -50,10 +48,8 @@
 
 .ypp-deck-col-header {
     padding: 16px 20px;
-    background: rgba(20, 20, 24, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    z-index: 10;
+    background: rgba(20, 20, 24, 0.85);-webkit-backdrop-filter: ;
+-filter: ;    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -132,10 +128,8 @@
     position: absolute;
     bottom: 6px;
     right: 6px;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.85);-webkit-backdrop-filter: ;
+-filter: ;    color: #fff;
     padding: 3px 6px;
     border-radius: 6px;
     font-size: 12px;

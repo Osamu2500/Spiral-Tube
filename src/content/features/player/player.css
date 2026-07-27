@@ -115,8 +115,8 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   background: transparent !important;
   border: none !important;
   border-radius: 0;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: none !important;
   animation: ypp-bar-pop-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   will-change: transform, opacity;
@@ -131,8 +131,8 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
     bottom: 54px; /* Above the progress bar */
     right: 12px;
     background: rgba(10, 10, 12, 0.85) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    backdrop-filter: blur(16px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 24px;
     padding: 6px 12px;
@@ -233,8 +233,8 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   background: transparent !important;
   padding: 4px;
   border-radius: 20px;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: none !important;
   box-shadow: none !important;
   margin-left: 4px;
@@ -276,8 +276,8 @@ html.yt-spiral-tube-theme .ytp-popup {
   overflow: hidden !important;
   border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;
   background: var(--ypp-bg-surface) !important;
-  -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
-  backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 16px 48px rgba(0, 0, 0, 0.6) !important;
@@ -361,8 +361,8 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   align-items: center;
   gap: 14px;
   background: rgba(18, 18, 26, 0.92);
-  -webkit-backdrop-filter: blur(24px) saturate(1.3);
-  backdrop-filter: blur(24px) saturate(1.3);
+-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid rgba(255, 170, 0, 0.35);
   border-top-color: rgba(255, 200, 0, 0.5);
   border-radius: 14px;
@@ -458,8 +458,8 @@ body.yt-spiral-tube-theme .ytp-gradient-top {
 body.yt-spiral-tube-theme .ytp-popup {
   border-radius: 18px !important;
   background: rgba(10, 10, 18, 0.45) !important;
-  -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
-  backdrop-filter: blur(36px) saturate(180%) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
   box-shadow:
@@ -586,8 +586,8 @@ body.ypp-ambient-mode-active #masthead-container {
 
 body.ypp-ambient-mode-active ytd-masthead #container {
     background: rgba(0, 0, 0, 0.4) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
-    backdrop-filter: blur(24px) saturate(1.5) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
 }
 
 /* Make body background transparent when ambient mode is active to show the full screen canvas */
@@ -612,8 +612,8 @@ body.ypp-ambient-mode-active ytd-watch-flexy {
     gap: 8px;
     padding: 12px 8px;
     background: rgba(0, 0, 0, 0.4);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+-webkit-backdrop-filter: ;
+-filter: ;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     z-index: 999;
@@ -683,5 +683,18 @@ body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #
 body.ypp-seamless-mode ytd-watch-flexy[flexy][is-two-columns] #secondary-inner #comments::-webkit-scrollbar-thumb {
     background: rgba(255,255,255,0.2);
     border-radius: 3px;
+}
+
+/* ===================================================================================
+   TIME REMAINING DISPLAY (Speed-aware remaining time beside duration)
+   =================================================================================== */
+.ypp-time-remaining {
+    display: inline-block !important;
+    margin-left: 5px !important;
+    font-weight: 500 !important;
+    opacity: 0.9 !important;
+    white-space: nowrap !important;
+    color: inherit !important;
+    vertical-align: baseline !important;
 }
 

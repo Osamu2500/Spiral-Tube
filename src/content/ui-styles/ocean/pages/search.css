@@ -71,8 +71,8 @@ html,
 ytd-searchbox #container {
   border-radius: 50px !important;
   background: var(--sf) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--ocean-border) !important;
   transition: all 0.3s ease !important;
   box-shadow: inset 0 0 10px rgba(0, 188, 212, 0.05);

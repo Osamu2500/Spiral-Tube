@@ -250,7 +250,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const fetchOptions = { ...request.options, signal: controller.signal };
 
       fetch(request.url, fetchOptions)
-        .then((response) => response.json().then((data) => ({ status: response.status, data })))
+        .then(async (response) => {
+          let data = null;
+          try {
+            data = await response.json();
+          } catch (_) {
+            data = null;
+          }
+          return { status: response.status, data };
+        })
         .then((result) => sendResponse(result))
         .catch((error) => {
           if (error.name === 'AbortError') {

@@ -1046,7 +1046,7 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
             }
 
             const below = document.querySelector('#below');
-            const watchFlexy = document.querySelector('ytd-watch-flexy');
+            const related = document.querySelector('#related');
 
             if (!below || !related) {
                 this.logger.warn('Macro swap aborted: Missing #below or #related content nodes');
@@ -1058,6 +1058,16 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
 
             // Transaction 2: Move Related Videos (#related) to Below Player (#primary-inner)
             this.txManager.moveNode('swap-related', related, primaryInner);
+
+            // Coordinate with Tabview Sidebar feature to ensure tabs are rendered and active
+            try {
+                const tabviewFeature = window.YPP?.featureManager?.getFeature('tabviewSidebar');
+                if (tabviewFeature && typeof tabviewFeature.onUpdate === 'function') {
+                    tabviewFeature.onUpdate();
+                }
+            } catch (e) {
+                this.logger.warn('Failed to coordinate with TabviewSidebar:', e);
+            }
         });
     }
 }

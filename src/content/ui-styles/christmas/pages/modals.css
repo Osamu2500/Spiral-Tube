@@ -12,8 +12,8 @@ html[data-ypp-ui-style="christmas"] ytd-engagement-panel-section-list-renderer[d
   background: rgba(6, 14, 10, 0.95) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 20px !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
-  backdrop-filter: blur(24px) saturate(1.4) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: 
     0 24px 60px rgba(0, 0, 0, 0.8),
     0 0 30px rgba(255, 199, 0, 0.15) !important;
@@ -59,8 +59,8 @@ html[data-ypp-ui-style="christmas"] tp-yt-iron-dropdown ytd-menu-popup-renderer 
   background: rgba(8, 18, 11, 0.96) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 12px !important;
-  -webkit-backdrop-filter: blur(18px) saturate(1.5) !important;
-  backdrop-filter: blur(18px) saturate(1.5) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 12px var(--xmas-gold-glow) !important;
 }
 
@@ -101,8 +101,8 @@ html[data-ypp-ui-style="christmas"] yt-tooltip .yt-tooltip {
   padding: 6px 10px !important;
   font-weight: 500 !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px var(--xmas-gold-glow) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-  backdrop-filter: blur(4px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
 }
 
 /* ── Toasts / Snackbars ── */
@@ -112,8 +112,8 @@ html[data-ypp-ui-style="christmas"] tp-yt-paper-toast {
   border-radius: 12px !important;
   color: #fff !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px var(--xmas-red-soft) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
 }
 
 html[data-ypp-ui-style="christmas"] tp-yt-paper-toast yt-button-shape button {

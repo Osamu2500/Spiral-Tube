@@ -45,10 +45,10 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             cleanSearch:           'ypp-clean-search',
             flexWidthPlayer:       'ypp-flex-width-player',
             compactPlayerUI:       'ypp-compact-player-ui',
-            cinematicMode:         'ypp-real-cinema-mode', // Style 11811: Improve cinematic mode on watch page
-            realCinemaMode:        'ypp-real-cinema-mode', // Style 11811: Explicit theater real cinema mode
-            showLiveStreamTime:    'ypp-live-stream-time', // Style 8167: Live stream time counter
-            twoColumnSubscriptions:'ypp-two-column-subs',  // Style 4889: Two rows in subs feed
+            cinematicMode:         'ypp-real-cinema-mode', // Improve cinematic mode on watch page
+            realCinemaMode:        'ypp-real-cinema-mode', // Explicit theater real cinema mode
+            showLiveStreamTime:    'ypp-live-stream-time', // Live stream time counter
+            twoColumnSubscriptions:'ypp-two-column-subs',  // Two rows in subs feed
             hideCountryCode:       'ypp-hide-country-code',
             hideThanksDonate:      'ypp-hide-thanks-donate',
             hidePlayerBranding:    'ypp-hide-player-branding',

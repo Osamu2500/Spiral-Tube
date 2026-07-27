@@ -15,8 +15,8 @@ export class AudioEQ extends window.YPP.features.BaseFeature {
     }
 
     getConfigKey() {
-        // Runs if any audio setting is defined
-        return 'audioModeEnabled'; 
+        // Return null so AudioEQ is always available to apply bass/treble settings to playing videos
+        return null; 
     }
 
     async enable() {

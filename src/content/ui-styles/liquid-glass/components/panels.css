@@ -4,12 +4,22 @@
    ========================================================= */
 
 html[data-ypp-ui-style="liquid-glass"] #ypp-eq-panel,
-html[data-ypp-ui-style="liquid-glass"] #ypp-cinema-panel,
+html[data-ypp-ui-style="liquid-glass"] #ypp-cinema-panel {
+  background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
+  border: var(--lg-border-specular) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
+  color: #ffffff !important;
+  overflow: hidden !important;
+}
+
 html[data-ypp-ui-style="liquid-glass"] #ypp-global-player-bar,
 html[data-ypp-ui-style="liquid-glass"] .ypp-global-bar {
-  background: var(--lg-bg-level-2, rgba(30, 30, 30, 0.82)) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+  background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 28px !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -28,7 +38,7 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-adjust-card-header {
 
 /* EQ Frequency Canvas & Sliders */
 html[data-ypp-ui-style="liquid-glass"] .ypp-eq-canvas {
-  background: rgba(20, 20, 20, 0.75) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 18px !important;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
@@ -50,8 +60,8 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-vcp-compare-toggle {
   background: rgba(255, 255, 255, 0.08) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
-  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  backdrop-filter: var(--lg-blur-subtle) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
   color: #ffffff !important;
   font-weight: 600 !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
@@ -97,7 +107,7 @@ html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-duration-card {
 }
 
 html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-duration-grid {
-  background: rgba(20, 20, 20, 0.55) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 18px !important;
 }

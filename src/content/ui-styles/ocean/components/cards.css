@@ -231,8 +231,8 @@ ytd-compact-video-renderer,
 ytd-playlist-panel-video-renderer,
 ytd-video-renderer,
 ytd-grid-video-renderer {
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
+-webkit-backdrop-filter: ;
+-filter: ;
 }
 ytd-reel-player-overlay-renderer {
   border-radius: 4px 24px 24px 24px !important;
