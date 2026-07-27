@@ -756,12 +756,13 @@ body.ypp-search-grid-mode ytd-channel-renderer {
   z-index: var(--ypp-z-content); /* Sits above video cards in normal state */
 }
 body.ypp-search-grid-mode ytd-channel-renderer {
+  -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
+  backdrop-filter: blur(24px) saturate(1.2) !important;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.01)
-  ) !important;-webkit-backdrop-filter: ;
--filter: ;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  ) !important;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-top-color: rgba(255, 255, 255, 0.15) !important;
   border-radius: var(--ypp-radius-lg);
   padding: 32px 24px !important;
@@ -986,14 +987,15 @@ body.ypp-search-list-mode ytd-item-section-renderer #contents {
   display: block !important;
 }
 body.ypp-search-list-mode ytd-video-renderer {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   width: 100% !important;
   display: flex !important;
   flex-direction: row !important;
   background: none !important;
   border: none !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-  box-shadow: none !important;-webkit-backdrop-filter: ;
--filter: ;  transform: none !important;
+  box-shadow: none !important;  transform: none !important;
   border-radius: 0 !important;
   padding: 12px 4px !important;
 }
@@ -1159,9 +1161,9 @@ body.ypp-search-grid-mode ytd-item-section-renderer.ytd-section-list-renderer[is
 }
 body.ypp-search-grid-mode #left-arrow-button,
 body.ypp-search-grid-mode #right-arrow-button {
-  background: rgba(10, 10, 10, 0.8);-webkit-backdrop-filter: ;
--filter: ;
-}
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: rgba(10, 10, 10, 0.8);}
 @media (max-width: 1600px) {
   body.ypp-search-grid-mode ytd-item-section-renderer > #contents,
   body.ypp-search-grid-mode ytd-section-list-renderer > #contents,

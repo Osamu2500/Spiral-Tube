@@ -1,7 +1,7 @@
 .card-glass {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   background: var(--color-surface-overlay);
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: var(--shadow-lg);
   border-radius: 12px;

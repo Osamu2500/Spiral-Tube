@@ -18,7 +18,7 @@
  * ─────────────────────────────────────────────────────────────────────
  */
 
-import { getPopupSchema, CUSTOM_SLOT_RENDERERS } from './popup-schema.js';
+import { CUSTOM_SLOT_RENDERERS, getPopupSchema } from './popup-schema.js';
 
 // ── SVG helpers ────────────────────────────────────────────────────────
 const NS_SVG = 'http://www.w3.org/2000/svg';
@@ -535,13 +535,8 @@ function renderLayoutToggle(item, state) {
     const applyActiveState = (layout) => {
         hiddenInput.value = layout;
         updateVisuals(layout);
-        
-        const customSidebarCb = document.getElementById('enableCustomSidebar');
-        if (customSidebarCb && !customSidebarCb.checked) {
-            customSidebarCb.checked = true;
-            customSidebarCb.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-
+        // Note: Do NOT force-enable enableCustomSidebar here.
+        // The master toggle is independent of which layout variant is selected.
         hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
         
         // Ensure robust saving
@@ -590,11 +585,9 @@ function renderLayoutToggle(item, state) {
                 hiddenInput.value = 'expanded';
                 hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
             }
-            const customSidebarCb = document.getElementById('enableCustomSidebar');
-            if (customSidebarCb && !customSidebarCb.checked) {
-                customSidebarCb.checked = true;
-                customSidebarCb.dispatchEvent(new Event('change', { bubbles: true }));
-            }
+            // Note: Do NOT force-enable enableCustomSidebar here.
+            // Immersive Glass lock only controls the layout variant buttons,
+            // not whether the user has the custom sidebar enabled at all.
         } else {
             if (lockIcon) lockIcon.style.display = 'none';
             toggleWrap.style.pointerEvents = 'auto';

@@ -6,9 +6,9 @@
 html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer,
 html[data-ypp-ui-style=frutiger-aero] .immersive-header-container.ytd-playlist-header-renderer,
 html[data-ypp-ui-style=frutiger-aero] .playlist-header-renderer {
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(200, 235, 255, 0.3) 100%) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: var(--fa-radius-lg, 16px) !important;
   border: 1px solid rgba(255, 255, 255, 0.7) !important;
   box-shadow: 
@@ -65,9 +65,9 @@ html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer .yt-spec-butt
 /* 3. Playlist Video List Items (Right side / videos table) */
 html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer,
 html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-list-renderer .yt-list-item-view-model {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   background: rgba(255, 255, 255, 0.35) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   border-radius: var(--fa-radius-lg, 12px) !important;
   margin-bottom: 8px !important;
@@ -84,17 +84,17 @@ html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-list-renderer .yt-list-
 
 /* 4. Custom Extension Playlist Redesign Page (#ypp-pl-root) */
 html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-toolbar {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(200, 235, 255, 0.4) 100%) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-sidebar {
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(200, 235, 255, 0.3) 100%) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-right: 1px solid rgba(255, 255, 255, 0.7) !important;
   box-shadow: var(--fa-elevation-1) !important;
 }
@@ -137,9 +137,9 @@ html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-col-switcher:hover {
 }
 
 html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-card {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(255, 255, 255, 0.35) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   border-radius: var(--fa-radius-lg) !important;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
@@ -166,9 +166,9 @@ html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:h
 
 html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-card,
 html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-grid {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   background: rgba(255, 255, 255, 0.4) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.7) !important;
   border-radius: var(--fa-radius-lg) !important;
   box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.8) !important;

@@ -5,9 +5,9 @@
 /* Mobile or slide-in drawers */
 html[data-ypp-ui-style=frutiger-aero] .fa-drawer,
 html[data-ypp-ui-style=frutiger-aero] tp-yt-app-drawer[position="bottom"] {
+  -webkit-backdrop-filter: blur(var(--fa-blur-xl, 24px)) !important;
+  backdrop-filter: blur(var(--fa-blur-xl, 24px)) !important;
   background: rgba(255, 255, 255, 0.9) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-top-left-radius: var(--fa-radius-xl, 24px) !important;
   border-top-right-radius: var(--fa-radius-xl, 24px) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.9) !important;

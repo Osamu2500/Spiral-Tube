@@ -22,13 +22,13 @@ html[data-ypp-card-style='glass']
         *
     )
   ) {
+  -webkit-backdrop-filter: blur(48px) saturate(200%) !important;
+  backdrop-filter: blur(48px) saturate(200%) !important;
   background: linear-gradient(
     135deg,
     rgba(var(--ypp-thumb-rgb, 255, 255, 255), 0.12),
     rgba(var(--ypp-thumb-rgb, 255, 255, 255), 0.02)
   ) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-top-color: rgba(255, 255, 255, 0.25) !important;
   box-shadow:

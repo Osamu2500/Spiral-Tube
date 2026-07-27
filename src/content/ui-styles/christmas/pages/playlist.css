@@ -7,10 +7,10 @@
 
 /* ── Playlist page container ── */
 html[data-ypp-ui-style="christmas"] ytd-playlist-header-renderer {
+  -webkit-backdrop-filter: blur(18px) !important;
+  backdrop-filter: blur(18px) !important;
   background: rgba(8, 18, 11, 0.88) !important;
   border-bottom: 1.5px solid var(--xmas-border) !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
   overflow: hidden !important;
 }
@@ -68,11 +68,11 @@ html[data-ypp-ui-style="christmas"] ytd-playlist-header-renderer yt-button-shape
 
 /* Shuffle — secondary */
 html[data-ypp-ui-style="christmas"] ytd-playlist-header-renderer .yt-spec-button-shape-next--tonal {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(13, 31, 20, 0.7) !important;
   border: 1.5px solid var(--xmas-border) !important;
   color: var(--xmas-text) !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 html[data-ypp-ui-style="christmas"] ytd-playlist-header-renderer .yt-spec-button-shape-next--tonal:hover {
@@ -139,11 +139,11 @@ html[data-ypp-ui-style="christmas"] ytd-item-section-renderer > #header.ytd-item
 
 /* ── Queue / up-next list ── */
 html[data-ypp-ui-style="christmas"] ytd-playlist-panel-renderer {
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
   background: rgba(8, 18, 11, 0.9) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 14px !important;
--webkit-backdrop-filter: ;
--filter: ;
   overflow: hidden !important;
 }
 

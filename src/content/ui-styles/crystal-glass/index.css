@@ -25,9 +25,9 @@ html[data-ypp-ui-style="crystal-glass"] ytd-playlist-panel-renderer[modern-panel
 html[data-ypp-ui-style="crystal-glass"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
 html[data-ypp-ui-style="crystal-glass"] ytd-miniplayer .ytdMiniplayerComponentContent,
 html[data-ypp-ui-style="crystal-glass"] #background.ytd-masthead {
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+  backdrop-filter: blur(10px) saturate(180%) !important;
     background: rgba(255, 255, 255, 0.15) !important;
--webkit-backdrop-filter: ;
--filter: ;
     border: 1px solid rgba(255, 255, 255, 0.8) !important;
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3) !important;
 }
@@ -55,10 +55,10 @@ html[data-ypp-ui-style="crystal-glass"] yt-touch-feedback-shape [aria-hidden="tr
 }
 
 html[data-ypp-ui-style="crystal-glass"] .ytChipShapeActive {
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+  backdrop-filter: blur(10px) saturate(180%) !important;
     color: #ff0000 !important;
     background: rgba(0, 0, 0, 0.15) !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 html[data-ypp-ui-style="crystal-glass"] #contentContainer.ytd-app {

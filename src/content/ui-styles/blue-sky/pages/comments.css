@@ -77,9 +77,9 @@ ytd-comment-simplebox-renderer {
   border: var(--sky-border) !important;
 }
 ytd-comment-thread-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: rgba(255, 255, 255, 0.35) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: 24px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;

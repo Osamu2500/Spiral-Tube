@@ -56,12 +56,12 @@ body.yt-spiral-tube-theme ytd-radio-renderer ytd-menu-renderer yt-icon-button,
 body.yt-spiral-tube-theme:not(.cinematic-home) ytd-rich-item-renderer
   ytd-menu-renderer
   yt-icon-button {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   width: 32px !important;
   height: 32px !important;
   padding: 4px !important;
-  background: rgba(0, 0, 0, 0.4) !important;-webkit-backdrop-filter: ;
--filter: ;
-  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.4) !important;  border-radius: 50% !important;
 }
 body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-item-renderer {
   animation: ypp-fade-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;

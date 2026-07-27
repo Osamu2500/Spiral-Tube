@@ -17,10 +17,10 @@ html[data-ypp-ui-style="liquid-glass"] #masthead-container {
 }
 
 html[data-ypp-ui-style="liquid-glass"] ytd-masthead #container {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   border-radius: 2000px !important;
   background: var(--lg-bg-level-2) !important;
--webkit-backdrop-filter: ;
--filter: ;
   margin: 4px auto !important;
   padding: 0 24px !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -41,9 +41,9 @@ html[data-ypp-ui-style="liquid-glass"] #contents.ytd-page-manager {
 
 /* Acrylic Search Bar Container */
 html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.06) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px 0 0 2000px !important;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -101,10 +101,10 @@ html[data-ypp-ui-style="liquid-glass"] tp-yt-app-drawer.ytd-app #contentContaine
 }
 
 html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   border-radius: 2000px !important;
   background: var(--lg-bg-level-1) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-specular) !important;
   box-shadow: var(--lg-shadow-card) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
@@ -128,9 +128,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.y
 }
 
 html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.08) !important;
 }

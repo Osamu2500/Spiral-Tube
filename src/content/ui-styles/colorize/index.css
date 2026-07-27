@@ -1,5 +1,7 @@
 @import "../shared/timeline-visibility.css";
 html[dark], [dark], :root {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
     --yt-spec-base-background: rgba(15, 15, 15, 0.8) !important;
     --ytd-searchbox-background: rgba(17, 17, 17, 0.8) !important;
     --yt-spec-menu-background: rgba(40, 40, 40, 0.8) !important;
@@ -21,8 +23,6 @@ html[dark], [dark], :root {
     --yt-frosted-glass-desktop: rgba(15, 15, 15, 0.8);
     --paper-radio-button-checked-color: #fff;
     --yt-spec-frosted-glass-desktop: rgba(15, 15, 15, 0.8) !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 html[dark] {

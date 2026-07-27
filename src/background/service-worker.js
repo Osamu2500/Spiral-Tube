@@ -84,11 +84,27 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'GET_SETTINGS':
       (async () => {
         try {
-          let data = await chrome.storage.sync.get('settings');
-          if (!data || Object.keys(data).length === 0 || !data.settings) {
-            data = await chrome.storage.local.get('settings');
+          const localData = await chrome.storage.local.get('settings');
+          const syncData = await chrome.storage.sync.get('settings');
+
+          const localSettings = localData.settings || {};
+          const syncSettings = syncData.settings || {};
+
+          let currentSettings;
+          const syncTime = syncSettings.lastUpdated || 0;
+          const localTime = localSettings.lastUpdated || 0;
+
+          if (syncTime >= localTime) {
+            currentSettings = { ...localSettings, ...syncSettings };
+          } else {
+            currentSettings = { ...syncSettings, ...localSettings };
           }
-          sendResponse(data.settings || DEFAULT_SETTINGS);
+          
+          if (Object.keys(currentSettings).length === 0) {
+              currentSettings = DEFAULT_SETTINGS;
+          }
+
+          sendResponse(currentSettings);
         } catch (error) {
           console.error('[YPP] Error getting settings:', error);
           sendResponse(DEFAULT_SETTINGS);
@@ -365,8 +381,18 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // Retrieve existing settings
     const localData = await chrome.storage.local.get('settings');
     const syncData = await chrome.storage.sync.get('settings');
+    const localSettings = localData.settings || {};
+    const syncSettings = syncData.settings || {};
+    
+    let existingSettings;
+    const syncTime = syncSettings.lastUpdated || 0;
+    const localTime = localSettings.lastUpdated || 0;
 
-    const existingSettings = { ...(localData.settings || {}), ...(syncData.settings || {}) };
+    if (syncTime >= localTime) {
+      existingSettings = { ...localSettings, ...syncSettings };
+    } else {
+      existingSettings = { ...syncSettings, ...localSettings };
+    }
 
     // Shallow merge defaults underneath existing user preferences
     const newSettings = { ...DEFAULT_SETTINGS, ...existingSettings };

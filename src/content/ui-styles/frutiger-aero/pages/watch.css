@@ -16,6 +16,8 @@ html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button,
 html[data-ypp-ui-style=frutiger-aero] yt-button-view-model button,
 html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style=frutiger-aero] yt-button-shape button {
+  -webkit-backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.92),
@@ -39,8 +41,6 @@ html[data-ypp-ui-style=frutiger-aero] yt-button-shape button {
     background 0.2s ease !important;
   position: relative !important;
   overflow: hidden !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 /* ── Hover state ────────────────────────────────────────────────────────────── */
@@ -196,9 +196,9 @@ html[data-ypp-ui-style=frutiger-aero] ytd-text-inline-expander {
 
 /* 3. Channel Bar Container fix & Layout */
 html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   background: rgba(255, 255, 255, 0.4) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.6) !important;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 8px rgba(18, 168, 221, 0.1) !important;
   border-radius: 12px !important;

@@ -77,14 +77,14 @@ ytd-comment-simplebox-renderer {
   border: var(--ocean-border) !important;
 }
 ytd-comment-thread-renderer {
+  -webkit-backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   background: var(--sf) !important;
   border-radius: 20px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;
   border: var(--ocean-border) !important;
   box-shadow: var(--shadow-base) !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 #placeholder-area.ytd-comment-simplebox-renderer {
   border-radius: 20px !important;

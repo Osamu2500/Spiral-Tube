@@ -16,7 +16,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         this._videoElement = null;
         this._pollInterval = null;
         this._timeRemainingNodes = new Set();
-        this._updateFn = null;
+        this._updateFns = new Set();
         this._handleNavigation = this._handleNavigation.bind(this);
     }
 
@@ -34,11 +34,8 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     _findTimeDisplays() {
         const displays = document.querySelectorAll(
             '#movie_player .ytp-time-display, ' +
-            '#movie_player .ytp-time-wrapper, ' +
             '.html5-video-player .ytp-time-display, ' +
-            '.html5-video-player .ytp-time-wrapper, ' +
-            '.ytp-time-display, ' +
-            '.ytp-time-wrapper'
+            '.ytp-time-display'
         );
         return Array.from(displays).filter(el => !el.closest('.ytp-miniplayer-ui'));
     }
@@ -76,7 +73,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         if (!this.isEnabled || !this.settings?.enableRemainingTime || !this._isWatchPage()) return;
         const timeDisplays = this._findTimeDisplays();
         timeDisplays.forEach(td => this.showRemainingTime(td));
-        if (this._updateFn) this._updateFn();
+        this._updateFns.forEach(fn => fn());
     }
 
     _handleNavigation() {
@@ -106,7 +103,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             this._timeRemainingNodes.clear();
 
             document.querySelectorAll('.ypp-time-remaining').forEach(el => el.remove());
-            this._updateFn = null;
+            this._updateFns = new Set();
             this._videoElement = null;
         } catch (err) {
             this.utils?.log('TimeDisplay disable error', 'TIME-DISPLAY', 'error', err);
@@ -119,30 +116,38 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
 
     _unbindVideoListeners() {
         if (this._videoElement && this._boundTimeUpdate) {
-            this._videoElement.removeEventListener('timeupdate', this._boundTimeUpdate.throttled ?? this._boundTimeUpdate);
-            this._videoElement.removeEventListener('ratechange', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
-            this._videoElement.removeEventListener('durationchange', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
-            this._videoElement.removeEventListener('loadedmetadata', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
-            this._videoElement.removeEventListener('play', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
-            this._videoElement.removeEventListener('seeked', this._boundTimeUpdate.raw ?? this._boundTimeUpdate);
+            this._videoElement.removeEventListener('timeupdate', this._boundTimeUpdate.throttled);
+            this._videoElement.removeEventListener('ratechange', this._boundTimeUpdate.handler);
+            this._videoElement.removeEventListener('durationchange', this._boundTimeUpdate.handler);
+            this._videoElement.removeEventListener('loadedmetadata', this._boundTimeUpdate.handler);
+            this._videoElement.removeEventListener('play', this._boundTimeUpdate.handler);
+            this._videoElement.removeEventListener('seeked', this._boundTimeUpdate.handler);
             this._boundTimeUpdate = null;
         }
     }
 
     _bindVideoListeners(video, update) {
-        if (video === this._videoElement && this._boundTimeUpdate) return;
+        if (video === this._videoElement && this._boundTimeUpdate) {
+            this._boundTimeUpdate.raws.add(update);
+            return;
+        }
         this._unbindVideoListeners();
         this._videoElement = video;
 
-        const throttledUpdate = window.YPP.Utils?.throttle?.(update, 500) ?? update;
-        this._boundTimeUpdate = { throttled: throttledUpdate, raw: update };
+        const handler = () => {
+            if (this._boundTimeUpdate?.raws) {
+                this._boundTimeUpdate.raws.forEach(fn => fn());
+            }
+        };
+        const throttledUpdate = window.YPP.Utils?.throttle?.(handler, 500) ?? handler;
+        this._boundTimeUpdate = { throttled: throttledUpdate, handler, raws: new Set([update]) };
 
         video.addEventListener('timeupdate', throttledUpdate);
-        video.addEventListener('ratechange', update);
-        video.addEventListener('durationchange', update);
-        video.addEventListener('loadedmetadata', update);
-        video.addEventListener('play', update);
-        video.addEventListener('seeked', update);
+        video.addEventListener('ratechange', handler);
+        video.addEventListener('durationchange', handler);
+        video.addEventListener('loadedmetadata', handler);
+        video.addEventListener('play', handler);
+        video.addEventListener('seeked', handler);
     }
 
     showRemainingTime(timeDisplay) {
@@ -242,7 +247,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             }
         };
 
-        this._updateFn = update;
+        this._updateFns.add(update);
         update();
     }
 }

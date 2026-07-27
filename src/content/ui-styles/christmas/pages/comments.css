@@ -14,13 +14,13 @@ html[data-ypp-ui-style="christmas"] ytd-item-section-renderer[static-comments-he
 /* ── Comments header (count + sort) ── */
 html[data-ypp-ui-style="christmas"] ytd-comments-header-renderer,
 html[data-ypp-ui-style="christmas"] ytd-comments-header-renderer[engagement-panel] {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: rgba(8, 18, 11, 0.72) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 14px !important;
   padding: 14px 18px !important;
   margin: 12px 0 !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
@@ -40,13 +40,13 @@ html[data-ypp-ui-style="christmas"] ytd-comments-header-renderer yt-sort-filter-
 
 /* ── "Add a comment..." input box (simplebox) ── */
 html[data-ypp-ui-style="christmas"] ytd-comment-simplebox-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: rgba(8, 18, 11, 0.75) !important;
   border: 1.5px solid rgba(255, 199, 0, 0.25) !important;
   border-radius: 14px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4) !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
@@ -72,13 +72,13 @@ html[data-ypp-ui-style="christmas"] ytd-comment-simplebox-renderer #author-thumb
 
 /* ── Individual comment thread ── */
 html[data-ypp-ui-style="christmas"] ytd-comment-thread-renderer {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(13, 31, 20, 0.65) !important;
   border: 1px solid rgba(255, 199, 0, 0.1) !important;
   border-radius: 14px !important;
   padding: 16px !important;
   margin-bottom: 14px !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
 }
@@ -91,13 +91,13 @@ html[data-ypp-ui-style="christmas"] ytd-comment-thread-renderer:hover {
 
 /* ── Individual comment view ── */
 html[data-ypp-ui-style="christmas"] ytd-comment-view-model {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(13, 31, 20, 0.6) !important;
   border: 1px solid rgba(255, 199, 0, 0.08) !important;
   border-radius: 12px !important;
   padding: 14px !important;
   margin-bottom: 12px !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: border-color 0.2s ease, background 0.2s ease !important;
 }
 

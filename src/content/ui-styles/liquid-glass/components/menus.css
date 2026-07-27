@@ -7,9 +7,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-menu-popup-renderer,
 html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown,
 html[data-ypp-ui-style="liquid-glass"] ytd-settings-options-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-account-settings-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: 24px !important;
   border: var(--lg-border-specular) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -43,9 +43,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-compact-link-renderer:hover {
 /* Share Panel & Add to Playlist Dialog Box */
 html[data-ypp-ui-style="liquid-glass"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-add-to-playlist-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: 32px !important;
   border: var(--lg-border-specular) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;

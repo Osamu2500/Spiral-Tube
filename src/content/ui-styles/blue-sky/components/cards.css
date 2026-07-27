@@ -224,9 +224,9 @@ ytd-compact-video-renderer,
 ytd-video-renderer,
 ytd-playlist-video-renderer,
 ytd-grid-video-renderer {
+  -webkit-backdrop-filter: blur(var(--sky-blur)) !important;
+  backdrop-filter: blur(var(--sky-blur)) !important;
   background: var(--sf) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--sky-border) !important;
   border-radius: 20px !important;
   padding: 10px !important;
@@ -234,9 +234,9 @@ ytd-grid-video-renderer {
   transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 ytd-reel-video-renderer {
+  -webkit-backdrop-filter: blur(25px) !important;
+  backdrop-filter: blur(25px) !important;
   background: rgba(255, 255, 255, 0.2) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: 32px !important;
   box-shadow: 0 15px 45px rgba(135, 206, 250, 0.2) !important;
   border: var(--sky-border) !important;

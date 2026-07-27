@@ -32,14 +32,14 @@
 
 /* The Visual Glass Container - Premium Frosted */
 .yt-spiral-tube-theme ytd-masthead #container {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   pointer-events: auto;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.08),
     rgba(255, 255, 255, 0.02)
-  ) !important;-webkit-backdrop-filter: ;
--filter: ;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  ) !important;  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; /* Lighter top, darker bottom */
   border-radius: var(--ypp-radius-pill);
   box-shadow:
@@ -308,6 +308,8 @@ body #avatar-btn img {
 }
 
 .ypp-nav-btn {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -315,9 +317,7 @@ body #avatar-btn img {
   height: 44px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);-webkit-backdrop-filter: ;
--filter: ;
-  color: var(--ypp-text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);  color: var(--ypp-text-secondary);
   transition:
     transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),

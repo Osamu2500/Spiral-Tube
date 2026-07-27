@@ -5,9 +5,9 @@
 
 html[data-ypp-ui-style="liquid-glass"] #ypp-eq-panel,
 html[data-ypp-ui-style="liquid-glass"] #ypp-cinema-panel {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 28px !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -17,9 +17,9 @@ html[data-ypp-ui-style="liquid-glass"] #ypp-cinema-panel {
 
 html[data-ypp-ui-style="liquid-glass"] #ypp-global-player-bar,
 html[data-ypp-ui-style="liquid-glass"] .ypp-global-bar {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 28px !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
@@ -57,11 +57,11 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-eq-vslider {
 html[data-ypp-ui-style="liquid-glass"] .ypp-eq-preset-btn,
 html[data-ypp-ui-style="liquid-glass"] .ypp-cinema-tab-btn,
 html[data-ypp-ui-style="liquid-glass"] .ypp-vcp-compare-toggle {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(255, 255, 255, 0.08) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
--webkit-backdrop-filter: ;
--filter: ;
   color: #ffffff !important;
   font-weight: 600 !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;

@@ -24,14 +24,14 @@ html[data-ypp-ui-style="christmas"] #banner img {
 
 /* ── Channel tabbed header container ── */
 html[data-ypp-ui-style="christmas"] ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: blur(18px) !important;
+  backdrop-filter: blur(18px) !important;
   background: rgba(8, 18, 11, 0.88) !important;
   border-radius: 0 0 20px 20px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px var(--xmas-gold-glow) !important;
   margin-bottom: 24px !important;
   border: 1px solid var(--xmas-border) !important;
   border-top: none !important;
--webkit-backdrop-filter: ;
--filter: ;
   overflow: hidden !important;
 }
 
@@ -131,14 +131,14 @@ html[data-ypp-ui-style="christmas"] ytd-video-renderer,
 html[data-ypp-ui-style="christmas"] ytd-channel-renderer,
 html[data-ypp-ui-style="christmas"] ytd-playlist-renderer,
 html[data-ypp-ui-style="christmas"] ytd-radio-renderer {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(13, 31, 20, 0.65) !important;
   border-radius: 14px !important;
   padding: 16px !important;
   margin-bottom: 14px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
   border: 1px solid rgba(255, 199, 0, 0.12) !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
 }
 
@@ -174,12 +174,12 @@ html[data-ypp-ui-style="christmas"] ytd-grid-playlist-renderer ytd-thumbnail {
 
 /* ── "About" tab card ── */
 html[data-ypp-ui-style="christmas"] ytd-channel-about-metadata-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: rgba(8, 18, 11, 0.75) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 16px !important;
   padding: 24px !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 /* ── Membership / Join button ── */

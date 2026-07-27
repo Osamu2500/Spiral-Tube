@@ -4,6 +4,8 @@
 
 html[data-ypp-ui-style=frutiger-aero] .fa-chip,
 html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer {
+  -webkit-backdrop-filter: blur(var(--fa-blur-sm, 4px));
+  backdrop-filter: blur(var(--fa-blur-sm, 4px));
   display: inline-flex;
   align-items: center;
   height: 32px;
@@ -16,8 +18,6 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer {
   
   background: rgba(255, 255, 255, 0.3) !important;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.5) !important;
   color: var(--fa-text-primary, #111111) !important;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);

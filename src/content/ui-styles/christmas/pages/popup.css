@@ -10,11 +10,11 @@
 html[data-ypp-ui-style="christmas"] #ypp-popup-root,
 html[data-ypp-ui-style="christmas"] .ypp-popup,
 html[data-ypp-ui-style="christmas"] body.ypp-popup-open {
+  -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
+  backdrop-filter: blur(24px) saturate(1.5) !important;
   background: rgba(6, 14, 10, 0.98) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 18px !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.8),
     0 0 30px rgba(255, 199, 0, 0.1),

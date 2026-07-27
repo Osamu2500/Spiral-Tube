@@ -4,9 +4,9 @@
    ========================================================= */
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-chrome-bottom {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: transparent !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: none !important;
   box-shadow: none !important;
   padding: 0 16px !important;
@@ -15,9 +15,9 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-chrome-bottom {
 html[data-ypp-ui-style="liquid-glass"] .ytp-chrome-controls,
 html[data-ypp-ui-style="liquid-glass"] .ytp-left-controls,
 html[data-ypp-ui-style="liquid-glass"] .ytp-right-controls {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   background: transparent !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: none !important;
   box-shadow: none !important;
 }
@@ -60,18 +60,18 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-volume-slider-handle {
 }
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-volume-panel {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: 20px !important;
   border: var(--lg-border-specular) !important;
 }
 
 /* Chapter Hover Preview Glass Cards */
 html[data-ypp-ui-style="liquid-glass"] .ytp-tooltip {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 20px !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;

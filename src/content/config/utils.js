@@ -810,8 +810,10 @@ window.YPP.Utils = Object.assign(window.YPP.Utils || {}, {
             if (syncSettings && localSettings) {
                 const syncTime = syncSettings.lastUpdated || 0;
                 const localTime = localSettings.lastUpdated || 0;
-                // Prefer the most recently updated settings to avoid stale sync overwrites
-                raw = syncTime >= localTime ? syncSettings : localSettings;
+                // Merge, preferring the most recently updated settings
+                raw = syncTime >= localTime 
+                    ? { ...localSettings, ...syncSettings } 
+                    : { ...syncSettings, ...localSettings };
             } else {
                 raw = syncSettings || localSettings || {};
             }

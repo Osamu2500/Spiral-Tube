@@ -9,9 +9,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-c4-tabbed-header-renderer {
 }
 
 html[data-ypp-ui-style="liquid-glass"] #channel-header-container.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-specular) !important;
   border-radius: 28px !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
@@ -28,9 +28,9 @@ html[data-ypp-ui-style="liquid-glass"] #channel-header ytd-avatar-shape #avatar 
 
 /* Channel Tabs Navigation Bar */
 html[data-ypp-ui-style="liquid-glass"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
   background: var(--lg-bg-level-1) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
   padding: 4px 16px !important;

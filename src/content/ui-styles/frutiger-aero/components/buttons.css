@@ -25,6 +25,8 @@ html[data-ypp-ui-style=frutiger-aero] button[class*="ytSpecButtonShapeNextTonal"
 html[data-ypp-ui-style=frutiger-aero] a[class*="ytSpecButtonShapeNextTonal"],
 html[data-ypp-ui-style=frutiger-aero] ytd-subscribe-button-renderer button,
 html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer {
+  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
+  backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
   /* Frutiger Aero Glossy Gradient */
   background: linear-gradient(
     to bottom,
@@ -46,8 +48,6 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer {
     inset 0 2px 4px rgba(255, 255, 255, 1),
     inset 0 -2px 6px rgba(100, 200, 240, 0.3),
     0 2px 6px rgba(18, 168, 221, 0.15) !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   overflow: hidden !important;
   position: relative !important;
@@ -124,6 +124,8 @@ html[data-ypp-ui-style=frutiger-aero] yt-chip-cloud-chip-renderer:active {
 /* Seamless segmented container */
 html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer,
 html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
+  backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
   display: flex !important;
   background: linear-gradient(
     to bottom,
@@ -140,20 +142,18 @@ html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegm
     inset 0 2px 4px rgba(255, 255, 255, 1),
     inset 0 -2px 6px rgba(100, 200, 240, 0.3),
     0 2px 6px rgba(18, 168, 221, 0.15) !important;
--webkit-backdrop-filter: ;
--filter: ;
   overflow: hidden !important;
 }
 
 /* Strip background from internal buttons because the container holds the style */
 html[data-ypp-ui-style=frutiger-aero] ytd-segmented-like-dislike-button-renderer button,
 html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
--webkit-backdrop-filter: ;
--filter: ;
   transform: none !important;
 }
 
@@ -205,9 +205,9 @@ html[data-ypp-ui-style=frutiger-aero] yt-sort-filter-sub-menu-renderer button[cl
 ──────────────────────────────────────────────── */
 html[data-ypp-ui-style=frutiger-aero] .ytPlayerQuickActionButtonsHost,
 html[data-ypp-ui-style=frutiger-aero] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  -webkit-backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
+  backdrop-filter: blur(var(--fa-blur-sm, 4px)) !important;
   background: rgba(255, 255, 255, 0.8) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 1) !important;
   border-radius: var(--fa-radius-pill, 500px) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;

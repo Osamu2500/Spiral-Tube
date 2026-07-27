@@ -22,6 +22,8 @@ html[data-ypp-card-style='spring']
         *
     )
   ) {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   background: linear-gradient(
     120deg,
     rgba(255, 180, 200, 0.1),
@@ -31,8 +33,6 @@ html[data-ypp-card-style='spring']
   border: 1px solid rgba(255, 180, 200, 0.3) !important;
   padding: var(--ypp-density-pad, 14px) !important;
   box-shadow: 0 8px 24px rgba(255, 150, 180, 0.1) !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: all 0.4s ease !important;
   animation: ypp-spring-bloom 6s infinite alternate ease-in-out !important;
 }
@@ -97,6 +97,8 @@ html[data-ypp-card-style='spring']
         *
     )
   ) {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   background: linear-gradient(
     120deg,
     rgba(255, 180, 200, 0.1),
@@ -106,8 +108,6 @@ html[data-ypp-card-style='spring']
   border: 1px solid rgba(255, 180, 200, 0.3) !important;
   padding: var(--ypp-density-pad, 14px) !important;
   box-shadow: 0 8px 24px rgba(255, 150, 180, 0.1) !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: all 0.4s ease !important;
   animation: ypp-spring-bloom 6s infinite alternate ease-in-out !important;
 }

@@ -844,35 +844,7 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                     }
                 }
                 
-                if (key === 'cardStyle' && el.value) {
-                    const cardVal = el.value;
-                    const reverseUiMap = {
-                        'default': 'default',
-                        'glass': 'liquid-glass',
-                        'nature': 'nature',
-                        'minimalist': 'technozen'
-                    };
-                    const targetUiStyle = reverseUiMap[cardVal] || cardVal;
-                    if (state.elements.youtubePageTheme && state.elements.youtubePageTheme.value !== targetUiStyle) {
-                        state.elements.youtubePageTheme.value = targetUiStyle;
-                        document.querySelectorAll('.youtube-style-btn').forEach(b => {
-                            b.classList.toggle('active', b.dataset.style === targetUiStyle);
-                        });
-                        state.elements.youtubePageTheme.dispatchEvent(new Event('change', { bubbles: true }));
-                    }
-                    
-                    const reverseThemeMap = {
-                        'default': 'default',
-                        'glass': 'default',
-                        'nature': 'forest',
-                        'minimalist': 'technozen'
-                    };
-                    const targetTheme = reverseThemeMap[cardVal] || cardVal;
-                    const themeBtn = document.querySelector(`.theme-btn[data-theme="${targetTheme}"]`);
-                    if (themeBtn && !themeBtn.classList.contains('active')) {
-                        themeBtn.click();
-                    }
-                }
+
                 
                 if (el.type === 'checkbox' && window.anime) {
                     const toggleCard = el.closest('.toggle-card') || el.closest('.mode-card');

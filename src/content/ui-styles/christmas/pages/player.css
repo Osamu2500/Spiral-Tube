@@ -111,11 +111,11 @@ html[data-ypp-ui-style="christmas"] .ytp-tooltip-text-wrapper {
 
 /* ── Settings/quality panel ── */
 html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-settings-menu {
+  -webkit-backdrop-filter: blur(24px) !important;
+  backdrop-filter: blur(24px) !important;
   background: rgba(6, 14, 10, 0.96) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 14px !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 199, 0, 0.1) !important;
   overflow: hidden !important;
 }
@@ -159,11 +159,11 @@ html[data-ypp-ui-style="christmas"] .ytp-menuitem-content {
 /* ── Context menu ── */
 html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-contextmenu,
 html[data-ypp-ui-style="christmas"] .ytp-popup.ytp-delhi-modern-contextmenu {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   background: rgba(6, 14, 10, 0.96) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 12px !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7) !important;
   overflow: hidden !important;
 }
@@ -194,11 +194,11 @@ html[data-ypp-ui-style="christmas"] .ytp-cards-button-icon {
 
 html[data-ypp-ui-style="christmas"] .iv-card-content,
 html[data-ypp-ui-style="christmas"] .ytp-ce-element {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
   background: rgba(8, 18, 11, 0.9) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 12px !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 /* ── Skip ad button ── */
@@ -262,10 +262,10 @@ html[data-ypp-ui-style="christmas"] .ytp-cued-thumbnail-overlay {
 
 /* ── Immersive playlist header (on watch page) ── */
 html[data-ypp-ui-style="christmas"] .immersive-header-content.ytd-playlist-header-renderer {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
   overflow: visible !important;
   background: rgba(8, 18, 11, 0.75) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-bottom: 1px solid var(--xmas-border) !important;
 }
 

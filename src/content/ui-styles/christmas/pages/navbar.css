@@ -20,9 +20,9 @@ html[data-ypp-ui-style="christmas"] #masthead-container {
 
 /* ── Masthead inner bar ── */
 html[data-ypp-ui-style="christmas"] ytd-masthead #container {
+  -webkit-backdrop-filter: blur(22px) saturate(1.5) !important;
+  backdrop-filter: blur(22px) saturate(1.5) !important;
   background: rgba(8, 18, 11, 0.88) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-bottom: 1.5px solid var(--xmas-border) !important;
   border-radius: 0 0 18px 18px !important;
   margin: 0 !important;
@@ -176,11 +176,11 @@ html[data-ypp-ui-style="christmas"] tp-yt-app-drawer.ytd-app #contentContainer.t
 
 /* ── Notification panel (the dropdown list) ── */
 html[data-ypp-ui-style="christmas"] ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+  backdrop-filter: blur(24px) saturate(1.4) !important;
   background: rgba(6, 14, 10, 0.96) !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 18px !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.75),
     0 0 24px rgba(255, 199, 0, 0.12) !important;

@@ -22,13 +22,13 @@ html[data-ypp-card-style='winter']
         *
     )
   ) {
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.1),
     rgba(180, 230, 255, 0.05)
   ) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: 12px !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   border-top: 2px solid rgba(255, 255, 255, 0.8) !important;

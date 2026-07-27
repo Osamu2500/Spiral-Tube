@@ -13,6 +13,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     constructor() {
         super('VolumeBooster');
         this.name = 'VolumeBooster';
+        this._id = 'vb_' + Math.random().toString(36).substring(2, 9);
         this.settings = null;
 
         // Audio graph nodes
@@ -51,7 +52,6 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             { label: '14k', freq: 14000, type: 'peaking',  color: '#ffffff' },
             { label: '16k', freq: 16000, type: 'highshelf',color: '#ffffff' },
         ];
-
         // Presets — array index matches _bands order
         this._presets = {
             'Flat':       [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -109,15 +109,14 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // Call super to run cleanupEvents and remove all tracked listeners
         await super.disable();
 
-        // Scope button removal to this feature instance, but ONLY if the feature is completely disabled
-        if (!this.settings || !this.settings.enableVolumeBoost) {
-            const btn = document.querySelector('#ypp-volume-boost-btn[data-vb-id="' + this._id + '"]');
+        // Scope button removal to this feature instance, but ONLY if the feature is explicitly disabled in settings
+        if (this.settings && this.settings.enableVolumeBoost === false) {
+            const btn = document.querySelector(`#ypp-volume-boost-btn[data-vb-id="${this._id}"]`);
             if (btn) btn.remove();
         }
 
         // Clean up event listeners
         if (this._boundVideo && this._initHandler) {
-            // Handled automatically by BaseFeature
             this._initHandler = null; // release closure reference
         }
 
@@ -225,9 +224,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // If video changed, we must disconnect the old and reconnect.
         if (this._audioConnected && this._boundVideo === video) return;
         
-        // If we were connected to a DIFFERENT video, clean up the old bindings
+        // If we were connected to a DIFFERENT video, cleanly disconnect old source without disabling feature
         if (this._audioConnected && this._boundVideo && this._boundVideo !== video) {
-            this.disable();
+            if (this.source) {
+                try { this.source.disconnect(); } catch (e) {}
+            }
             this._audioConnected = false;
         }
 

@@ -45,11 +45,11 @@ html[data-ypp-ui-style="christmas"] body {
 }
 
 html[data-ypp-ui-style="christmas"] ytd-rich-item-renderer {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   background: var(--ypp-bg-glass) !important;
   border: 1px solid var(--ypp-glass-border) !important;
   border-radius: 12px !important;
--webkit-backdrop-filter: ;
--filter: ;
   padding: 8px !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(211, 47, 47, 0.2) !important;
   transition: transform 0.2s, box-shadow 0.2s !important;
@@ -74,9 +74,9 @@ html[data-ypp-ui-style="christmas"] yt-button-shape button:hover {
 
 /* Green accents for search bar */
 html[data-ypp-ui-style="christmas"] ytd-searchbox {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(27, 94, 32, 0.4) !important;
   border: 2px solid rgba(255, 215, 0, 0.5) !important;
   border-radius: 24px !important;
--webkit-backdrop-filter: ;
--filter: ;
 }

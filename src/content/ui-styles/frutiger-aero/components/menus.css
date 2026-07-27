@@ -67,9 +67,9 @@ html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-dialog,
 html[data-ypp-ui-style=frutiger-aero] ytd-menu-popup-renderer,
 html[data-ypp-ui-style=frutiger-aero] ytd-video-preview,
 html[data-ypp-ui-style=frutiger-aero] #contentWrapper.tp-yt-iron-dropdown > * {
+  -webkit-backdrop-filter: blur(var(--fa-blur-lg));
+  backdrop-filter: blur(var(--fa-blur-lg));
   background: rgba(255, 255, 255, 0.5) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: var(--fa-radius-lg) !important;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   box-shadow: var(--fa-elevation-4), inset 0 2px 10px rgba(255,255,255,0.9) !important;
@@ -79,9 +79,9 @@ html[data-ypp-ui-style=frutiger-aero] #contentWrapper.tp-yt-iron-dropdown > * {
 }
 
 html[data-ypp-ui-style=frutiger-aero] .tp-yt-paper-tooltip[style-target=tooltip] {
+  -webkit-backdrop-filter: blur(var(--fa-blur-md));
+  backdrop-filter: blur(var(--fa-blur-md));
   background: rgba(255, 255, 255, 0.8) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
   box-shadow: var(--fa-elevation-2) !important;
   color: var(--yt-spec-text-primary) !important;
@@ -120,9 +120,9 @@ html[data-ypp-ui-style=frutiger-aero] body[rounded-container] tp-yt-paper-toolti
 }
 
 html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-listbox.yt-dropdown-menu {
+  -webkit-backdrop-filter: blur(var(--fa-blur-lg));
+  backdrop-filter: blur(var(--fa-blur-lg));
   background: rgba(255, 255, 255, 0.5) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   border-radius: var(--fa-radius-lg) !important;
 }
@@ -150,18 +150,18 @@ html[data-ypp-ui-style=frutiger-aero] a.yt-simple-endpoint.yt-dropdown-menu:hove
 
 html[data-ypp-ui-style=frutiger-aero] .ypp-account-menu,
 html[data-ypp-ui-style=frutiger-aero] #ypp-top-bar {
+  -webkit-backdrop-filter: blur(var(--fa-blur-lg));
+  backdrop-filter: blur(var(--fa-blur-lg));
   background: rgba(255, 255, 255, 0.5) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.8) !important;
   box-shadow: var(--fa-elevation-3) !important;
   border-radius: var(--fa-radius-lg) !important;
 }
 
 html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-toast {
+  -webkit-backdrop-filter: blur(var(--fa-blur-md));
+  backdrop-filter: blur(var(--fa-blur-md));
   background: rgba(255, 255, 255, 0.7) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-radius: var(--fa-radius-lg) !important;
   box-shadow: var(--fa-elevation-3), inset 0 2px 8px rgba(255,255,255,1) !important;
   border: 1px solid rgba(255, 255, 255, 0.9) !important;

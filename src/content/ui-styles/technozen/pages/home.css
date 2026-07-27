@@ -5,13 +5,13 @@
   background: transparent;
 }
 #guide-wrapper.ytd-app {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: var(--tz-gloss), rgba(228, 250, 220, 0.90) !important;
   border-radius: 24px !important;
   border: 1px solid var(--tz-glass-border) !important;
   border-bottom-color: rgba(90, 191, 71, 0.18) !important;
   box-shadow: var(--shadow-base) !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 ytd-mini-guide-renderer.ytd-app {
@@ -146,13 +146,13 @@ yt-chip-cloud-chip-renderer:hover {
   box-shadow: 0 0 10px rgba(90, 191, 71, 0.25), inset 0 0 8px rgba(255, 255, 255, 0.7) !important;
 }
 #ypp-pl-root .ypp-pl-sidebar {
+  -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
+  backdrop-filter: blur(40px) saturate(1.4) !important;
   background:
     linear-gradient(
       160deg,
       rgba(220, 250, 205, 0.88) 0%,
       rgba(205, 245, 240, 0.82) 100%) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(90, 191, 71, 0.28) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.70) !important;
   box-shadow:

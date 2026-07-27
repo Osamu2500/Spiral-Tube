@@ -3,9 +3,9 @@
 html[data-ypp-ui-style="harry-potter"] #masthead-container,
 html[data-ypp-ui-style="harry-potter"] #container.ytd-masthead,
 html[data-ypp-ui-style="harry-potter"] ytd-masthead {
+  -webkit-backdrop-filter: blur(24px) saturate(1.15) !important;
+  backdrop-filter: blur(24px) saturate(1.15) !important;
   background: rgba(8, 9, 13, 0.97) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-bottom: 1px solid rgba(120, 100, 60, 0.35) !important;
   box-shadow:
     0 4px 28px rgba(0, 0, 0, 0.92),

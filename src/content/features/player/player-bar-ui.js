@@ -70,7 +70,14 @@ export class PlayerBarUI {
             if (existing && !this.injectedButtons) {
                 existing.remove();
             }
-            if (!controls.querySelector('.ypp-player-controls')) {
+            
+            const current = controls.querySelector('.ypp-player-controls');
+            if (!current) {
+                this.injectedButtons = false;
+                this.injectControls(video, controls, isShorts);
+            } else if (this.settings && this.settings.enableVolumeBoost !== false && this.settings.pb_volume !== 'hidden' && !current.querySelector('#ypp-volume-boost-btn')) {
+                // Feature loaded late or button got removed: re-inject to ensure consistency
+                current.remove();
                 this.injectedButtons = false;
                 this.injectControls(video, controls, isShorts);
             }
@@ -231,7 +238,10 @@ export class PlayerBarUI {
         dynamicFeatures.forEach(config => {
             featureBuilders[config.id] = () => {
                 if (this.settings[config.override] === false) return null;
-                const feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
+                let feature = window.YPP.featureManager && window.YPP.featureManager.getFeature(config.key);
+                if (!feature && config.key === 'volumeBoost') {
+                    feature = window.YPP.featureManager && window.YPP.featureManager.getFeature('VolumeBooster');
+                }
                 if (feature && feature.createButton) {
                     return feature.createButton(video);
                 }
@@ -296,15 +306,6 @@ export class PlayerBarUI {
 
         if (isShorts) {
             controls.appendChild(container);
-        } else if (this.settings.floatingPlayerBar) {
-            // Floating Action Bar mode
-            container.classList.add('ypp-floating-action-bar');
-            const playerRoot = video.closest('.html5-video-player');
-            if (playerRoot) {
-                playerRoot.appendChild(container);
-            } else {
-                controls.appendChild(container); // Fallback
-            }
         } else {
             // Find where to insert our controls within .ytp-chrome-bottom
             let rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');

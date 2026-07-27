@@ -1,14 +1,14 @@
 ﻿
 body.yt-spiral-tube-theme ytd-comment-thread-renderer,
 body.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   padding: 16px !important;
   border-radius: var(--ypp-radius-md) !important;
   border: 1px solid var(--ypp-glass-border) !important;
   background: var(--ypp-bg-surface) !important;
   margin-bottom: 16px !important;
-  box-shadow: var(--ypp-shadow-card) !important;-webkit-backdrop-filter: ;
--filter: ;
-}
+  box-shadow: var(--ypp-shadow-card) !important;}
 
 body.yt-spiral-tube-theme
   ytd-comment-thread-renderer

@@ -60,11 +60,11 @@ html[data-ypp-ui-style="christmas"] ytd-reel-video-renderer ytd-shorts-player-co
 
 html[data-ypp-ui-style="christmas"] ytd-reel-video-renderer yt-button-shape button,
 html[data-ypp-ui-style="christmas"] ytd-reel-video-renderer yt-icon-button {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   background: rgba(8, 18, 11, 0.72) !important;
   border: 1px solid rgba(255, 199, 0, 0.2) !important;
   border-radius: 50% !important;
--webkit-backdrop-filter: ;
--filter: ;
   width: 48px !important;
   height: 48px !important;
   transition: background 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease !important;
@@ -118,13 +118,13 @@ html[data-ypp-ui-style="christmas"] ytd-reel-video-renderer .reel-player-header-
 
 /* ── Shorts anchored side panel (comments/etc.) ── */
 html[data-ypp-ui-style="christmas"] .anchored-panel.ytd-shorts {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   background: rgba(8, 18, 11, 0.95) !important;
   padding: 8px !important;
   border: 1.5px solid var(--xmas-border) !important;
   border-radius: 16px !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 199, 0, 0.1) !important;
--webkit-backdrop-filter: ;
--filter: ;
   margin-top: 12px !important;
 }
 
@@ -156,11 +156,11 @@ html[data-ypp-ui-style="christmas"] ytd-rich-grid-slim-media ytd-thumbnail:hover
 
 /* ── Shorts mini player controls (from extension) ── */
 html[data-ypp-ui-style="christmas"] .ypp-shorts-controls {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: rgba(8, 18, 11, 0.82) !important;
   border: 1px solid var(--xmas-border) !important;
   border-radius: 12px !important;
--webkit-backdrop-filter: ;
--filter: ;
   padding: 6px !important;
   gap: 4px !important;
 }

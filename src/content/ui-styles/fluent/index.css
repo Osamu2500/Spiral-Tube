@@ -85,9 +85,8 @@ html[data-ypp-ui-style="fluent"] #chips-wrapper.ytd-feed-filter-chip-bar-rendere
     /*feed filter blur transition when hover*/
 
 html[data-ypp-ui-style="fluent"] iron-selector {
--webkit-backdrop-filter: ;
--filter: ;
-        transition: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);        transition: none;
     }
 
 
@@ -154,20 +153,20 @@ html[data-ypp-ui-style="fluent"] .ytp-menuitem-toggle-checkbox {
     /*endscreen subscribe card*/
 
 html[data-ypp-ui-style="fluent"] .subscribecard-endscreen .ytp-subscribe-card {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background: rgba(0, 0, 0, 0.75) !important;
         border-radius: 15px !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
     /*endscreen link icon border radius / backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] .ytp-ce-expanding-icon {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background-color: #2323237a !important;
         border-radius: 6px !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -181,10 +180,10 @@ html[data-ypp-ui-style="fluent"] ytd-thumbnail.ytd-rich-movie-renderer:before {
     /*time duration video endscreen*/
 
 html[data-ypp-ui-style="fluent"] .ytp-ce-video-duration {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background-color: rgba(53, 53, 53, 0.49) !important;
         border-radius: 7px !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -235,9 +234,8 @@ html[data-ypp-ui-style="fluent"] ytd-watch-flexy[fullscreen] #player-theater-con
     /*info card teaser backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] .ytp-cards-teaser {
--webkit-backdrop-filter: ;
--filter: ;
-        border-radius: 7px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        border-radius: 7px !important;
     }
 
 
@@ -286,9 +284,8 @@ html[data-ypp-ui-style="fluent"] ytd-call-to-action-button-renderer[button-color
     /*bottom right info renderer*/
 
 html[data-ypp-ui-style="fluent"] paper-toast#toast {
--webkit-backdrop-filter: ;
--filter: ;
-        background: rgba(50, 50, 50, 0.50) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        background: rgba(50, 50, 50, 0.50) !important;
     }
 
 
@@ -336,9 +333,8 @@ html[data-ypp-ui-style="fluent"] #buttons.ytd-rich-grid-video-renderer > *.ytd-r
 html[data-ypp-ui-style="fluent"] ytd-multi-page-menu-renderer[background-color-update],
 html[data-ypp-ui-style="fluent"] ytd-menu-popup-renderer,
 html[data-ypp-ui-style="fluent"] #contentWrapper.iron-dropdown > * {
--webkit-backdrop-filter: ;
--filter: ;
-    }
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;    }
 
 
     /*show more button border delete / color*/
@@ -361,9 +357,9 @@ html[data-ypp-ui-style="fluent"] yt-formatted-string.style-scope.yt-next-continu
     /*playlist overlay backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] ytd-thumbnail-overlay-side-panel-renderer {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background: rgba(50, 50, 50, 0.30) !important;
--webkit-backdrop-filter: ;
--filter: ;
         margin-bottom: -2px !important;
         border-radius: 0px 12px 12px 0px;
     }
@@ -413,9 +409,9 @@ html[data-ypp-ui-style="fluent"] #hearted-border.ytd-creator-heart-renderer {
     /*endscreen playlist count backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] .ytp-ce-playlist-count {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background-color: rgba(0, 0, 0, 0.15) !important;
--webkit-backdrop-filter: ;
--filter: ;
         border-radius: 0px 0px 10px 10px;
     }
 
@@ -573,9 +569,9 @@ html[data-ypp-ui-style="fluent"] ytd-video-secondary-info-renderer {
     /*dark theme background fix*/
 
 html[data-ypp-ui-style="fluent"] #label.ytd-toggle-theme-compact-link-renderer {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
         background: none !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -615,9 +611,9 @@ html[data-ypp-ui-style="fluent"] .ytp-menuitem-content {
     /*next button background fix*/
 
 html[data-ypp-ui-style="fluent"] .ytp-button:not([aria-disabled=true]):not([disabled]):not([aria-hidden=true]) {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
         background-color: transparent !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -626,9 +622,9 @@ html[data-ypp-ui-style="fluent"] .ytp-button:not([aria-disabled=true]):not([disa
 html[data-ypp-ui-style="fluent"] .ytp-tooltip.ytp-bottom,
 html[data-ypp-ui-style="fluent"] .ytp-tooltip-bg,
 html[data-ypp-ui-style="fluent"] a.ytp-next-button.ytp-button {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 8px !important;
--webkit-backdrop-filter: ;
--filter: ;
         background: rgba(50, 50, 50, 0.50);
     }
 
@@ -680,9 +676,9 @@ html[data-ypp-ui-style="fluent"] #tabs-container.ytd-c4-tabbed-header-renderer {
     /*channel header backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] div#channel-header {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
         background-color: rgba(31, 31, 31, 0.55) !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -690,18 +686,18 @@ html[data-ypp-ui-style="fluent"] div#channel-header {
 
 html[data-ypp-ui-style="fluent"] ytd-c4-tabbed-header-renderer[background-color-update] #channel-container.ytd-c4-tabbed-header-renderer,
 html[data-ypp-ui-style="fluent"] ytd-c4-tabbed-header-renderer[background-color-update] #tabs-container.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background-color: rgba(23, 23, 23, 0.55) !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
     /*channel tabs backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
         background-color: rgba(40, 40, 40, 0.4) !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -715,9 +711,9 @@ html[data-ypp-ui-style="fluent"] label.ytd-toggle-theme-compact-link-renderer {
     /*watch later icon (thumbnail) backdrop filter / border radius*/
 
 html[data-ypp-ui-style="fluent"] div#label {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
         background: rgba(50, 50, 50, 0.60) !important;
--webkit-backdrop-filter: ;
--filter: ;
         border-radius: 5px !important;
     }
 
@@ -865,9 +861,8 @@ html[data-ypp-ui-style="fluent"] #container.ytd-searchbox {
     /*searchhead backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] #container.ytd-masthead {
--webkit-backdrop-filter: ;
--filter: ;
-    }
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;    }
 
 
     /*searchhead background color*/
@@ -881,9 +876,8 @@ html[data-ypp-ui-style="fluent"] ytd-video-preview {
         margin: 12px !important;
     }
 html[data-ypp-ui-style="fluent"] ytd-video-preview[active] {
--webkit-backdrop-filter: ;
--filter: ;
-        border-radius: 10px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        border-radius: 10px !important;
     }
 html[data-ypp-ui-style="fluent"] .sbdd_c {
         display: none !important;
@@ -1049,9 +1043,9 @@ html[data-ypp-ui-style="fluent"] yt-live-chat-renderer {
     /*channel sub button (in video / bottom right) border radius / backdrop filter / color*/
 
 html[data-ypp-ui-style="fluent"] .iv-branding .branding-context-container-inner {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
--webkit-backdrop-filter: ;
--filter: ;
         background: rgba(50, 50, 50, 0.50) !important;
     }
 
@@ -1073,9 +1067,9 @@ html[data-ypp-ui-style="fluent"] .iv-card-image {
     /*info card background color / border radius*/
 
 html[data-ypp-ui-style="fluent"] .iv-card {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background: rgba(50, 50, 50, 0.50) !important;
--webkit-backdrop-filter: ;
--filter: ;
         border-radius: 10px !important;
     }
 
@@ -1136,9 +1130,8 @@ html[data-ypp-ui-style="fluent"] .ytp-ce-channel-metadata {
     /*endscreen channel / website info card color / border radius / backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] .ytp-ce-expanding-overlay-background {
--webkit-backdrop-filter: ;
--filter: ;
-        background: rgba(50, 50, 50, 0.50) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        background: rgba(50, 50, 50, 0.50) !important;
         border-radius: 10px !important;
         box-shadow: none !important;
     }
@@ -1270,9 +1263,8 @@ html[data-ypp-ui-style="fluent"] img#img {
     /*save to (playlist) container backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] paper-dialog.style-scope.ytd-popup-container {
--webkit-backdrop-filter: ;
--filter: ;
-        background: rgba(64, 64, 64, 0.40) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        background: rgba(64, 64, 64, 0.40) !important;
     }
 
 
@@ -1322,11 +1314,11 @@ html[data-ypp-ui-style="fluent"] yt-live-chat-header-renderer.style-scope.yt-liv
     /*info popup backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] #tooltip.paper-tooltip {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
         padding: 4px 8px !important;
         margin: 12px 8px !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -1334,9 +1326,8 @@ html[data-ypp-ui-style="fluent"] #tooltip.paper-tooltip {
 
 html[data-ypp-ui-style="fluent"] .ytp-popup,
 html[data-ypp-ui-style="fluent"] .html5-video-info-panel {
--webkit-backdrop-filter: ;
--filter: ;
-        border-radius: 10px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        border-radius: 10px !important;
         background: rgba(50, 50, 50, 0.30) !important;
     }
 
@@ -1345,12 +1336,12 @@ html[data-ypp-ui-style="fluent"] .html5-video-info-panel {
 
 html[data-ypp-ui-style="fluent"] .sbdd_b,
 html[data-ypp-ui-style="fluent"] .sbsb_a {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         margin-top: 5px !important;
         border: 0 !important;
         background: rgba(50, 50, 50, 0.3) !important;
         border-radius: 10px !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 html[data-ypp-ui-style="fluent"] .sbpqs_a {
         color: #BBBBBB !important;
@@ -1384,9 +1375,8 @@ html[data-ypp-ui-style="fluent"] #guide-wrapper.ytd-app {
 html[data-ypp-ui-style="fluent"] #guide-content.ytd-app,
 html[data-ypp-ui-style="fluent"] ytd-app[background-color-update_] #guide-content.ytd-app,
 html[data-ypp-ui-style="fluent"] ytd-mini-guide-renderer.ytd-app {
--webkit-backdrop-filter: ;
--filter: ;
-        background: rgba(35, 35, 35, 0.5) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        background: rgba(35, 35, 35, 0.5) !important;
         overflow: hidden !important;
     }
 
@@ -1413,9 +1403,8 @@ html[data-ypp-ui-style="fluent"] #guide-wrapper.ytd-app {
 html[data-ypp-ui-style="fluent"] #guide-content.ytd-app,
 html[data-ypp-ui-style="fluent"] ytd-app[background-color-update_] #guide-content.ytd-app,
 html[data-ypp-ui-style="fluent"] ytd-mini-guide-renderer.ytd-app {
--webkit-backdrop-filter: ;
--filter: ;
-        background: rgba(35, 35, 35, 0.5) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        background: rgba(35, 35, 35, 0.5) !important;
         overflow: hidden !important;
     }
 
@@ -1492,9 +1481,9 @@ html[data-ypp-ui-style="fluent"] .dropdown-content.paper-menu-button {
     /*menu background transition (closed)*/
 
 html[data-ypp-ui-style="fluent"] iron-overlay-backdrop {
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
         background-color: rgba(31, 33, 53, 0);
--webkit-backdrop-filter: ;
--filter: ;
         opacity: 1;
         transition: all .5s;
     }
@@ -1504,10 +1493,10 @@ html[data-ypp-ui-style="fluent"] iron-overlay-backdrop {
 
 html[data-ypp-ui-style="fluent"] iron-overlay-backdrop.opened,
 html[data-ypp-ui-style="fluent"] .b3-modal-dialog-quantum.b3-modal-dialog.modal-dialog-bg {
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
         background-color: rgba(50, 50, 50, 0.50);
         opacity: 1 !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -1528,9 +1517,9 @@ html[data-ypp-ui-style="fluent"] .dropdown-content.paper-menu-button {
     /*share center link backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] #bar.yt-copy-link-renderer {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
         background: rgba(50, 50, 50, 0.50) !important;
--webkit-backdrop-filter: ;
--filter: ;
         border: 0;
         overflow: hidden;
         border-radius: 10px !important;
@@ -1806,10 +1795,10 @@ html[data-ypp-ui-style="fluent"] ytd-miniplayer.style-scope.ytd-app {
     /*miniplayer info bar border radius / backdrop filter / color*/
 
 html[data-ypp-ui-style="fluent"] #info-bar.ytd-miniplayer {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 0px 0px 13px 13px !important;
         z-index: -1 !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 
 
@@ -1818,9 +1807,8 @@ html[data-ypp-ui-style="fluent"] #info-bar.ytd-miniplayer {
 html[data-ypp-ui-style="fluent"] ytd-miniplayer,
 html[data-ypp-ui-style="fluent"] .video.ytd-miniplayer,
 html[data-ypp-ui-style="fluent"] #card.ytd-miniplayer {
--webkit-backdrop-filter: ;
--filter: ;
-        border-radius: 13px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        border-radius: 13px !important;
     }
 
 
@@ -1833,9 +1821,8 @@ html[data-ypp-ui-style="fluent"] ytd-miniplayer[animate-miniplayer] #expander-sp
         height: 0!important;
     }
 html[data-ypp-ui-style="fluent"] .video-container {
--webkit-backdrop-filter: ;
--filter: ;
-    }
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;    }
 html[data-ypp-ui-style="fluent"] tp-yt-paper-button.ytd-subscribe-button-renderer[subscribed] {
         border-radius: 8px !important;
     }
@@ -1843,9 +1830,9 @@ html[data-ypp-ui-style="fluent"] tp-yt-paper-button.ytd-subscribe-button-rendere
         border-radius: 8px !important;
     }
 html[data-ypp-ui-style="fluent"] #contentWrapper.tp-yt-iron-dropdown > * {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 html[data-ypp-ui-style="fluent"] #tooltip.tp-yt-paper-tooltip {
         border-radius: 10px !important;
@@ -1859,22 +1846,22 @@ html[data-ypp-ui-style="fluent"] #voice-search-button.ytd-masthead {
         background-color: #0000003d !important;
     }
 html[data-ypp-ui-style="fluent"] tp-yt-paper-dialog {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         background: rgba(0, 0, 0, 0.1) !important;
         ;
--webkit-backdrop-filter: ;
--filter: ;
         border-radius: 10px !important;
     }
 html[data-ypp-ui-style="fluent"] .ytp-exp-ppp-update .ytp-paid-content-overlay-link {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
--webkit-backdrop-filter: ;
--filter: ;
         background-color: transparent !important;
     }
 html[data-ypp-ui-style="fluent"] tp-yt-paper-listbox {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
--webkit-backdrop-filter: ;
--filter: ;
         background: none !important;
     }
 html[data-ypp-ui-style="fluent"] tp-yt-iron-overlay-backdrop.opened {
@@ -1897,10 +1884,10 @@ html[data-ypp-ui-style="fluent"] #checkbox.tp-yt-paper-checkbox {
     /*subtitles bg color / backdrop filter*/
 
 html[data-ypp-ui-style="fluent"] .caption-window {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
         background-color: rgba(50, 50, 50, .1) !important;
--webkit-backdrop-filter: ;
--filter: ;
         text-align: center !important;
         width: auto !important;
         left: 50% !important;
@@ -1922,16 +1909,15 @@ html[data-ypp-ui-style="fluent"] #contentWrapper.tp-yt-iron-dropdown > * {
         background-color: #2323233b !important;
     }
 html[data-ypp-ui-style="fluent"] yt-notification-action-renderer {
--webkit-backdrop-filter: ;
--filter: ;
-        background-color: transparent !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;        background-color: transparent !important;
     }
 html[data-ypp-ui-style="fluent"] #contentContainer.tp-yt-app-drawer[opened] {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         background: transparent !important;
--webkit-backdrop-filter: ;
--filter: ;
         border-radius: 10px !important;
         transition-duration: 200ms !important;
     }
@@ -1978,21 +1964,21 @@ html[data-ypp-ui-style="fluent"] ytd-macro-markers-list-item-renderer[layout=MAC
         border-radius: 6px !important;
     }
 html[data-ypp-ui-style="fluent"] ytd-thumbnail-overlay-time-status-renderer {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 10px !important;
         padding: 6px 6px !important;
         background-color: rgb(0 0 0 / 35%) !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 html[data-ypp-ui-style="fluent"] #button.ytd-toggle-button-renderer yt-icon.ytd-toggle-button-renderer + yt-formatted-string.ytd-toggle-button-renderer {
         margin-left: var(--yt-string-icon-padding, 8px);
         color: #ffffffa3 !important;
     }
 html[data-ypp-ui-style="fluent"] span.ytd-thumbnail-overlay-loading-preview-renderer {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
         border-radius: 8px !important;
         background-color: rgb(0 0 0 / 45%) !important;
--webkit-backdrop-filter: ;
--filter: ;
     }
 html[data-ypp-ui-style="fluent"] #right-arrow.ytd-feed-filter-chip-bar-renderer {
         background: linear-gradient(270deg, black, transparent);

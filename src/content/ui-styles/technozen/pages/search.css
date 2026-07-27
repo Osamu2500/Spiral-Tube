@@ -67,13 +67,13 @@ ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
 }
 .ytSearchboxComponentSuggestionsContainer,
 ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   top: 55px !important;
   border: 1px solid var(--tz-glass-border) !important;
   background: var(--tz-gloss), rgba(238, 252, 232, 0.97) !important;
   box-shadow: var(--shadow-hover) !important;
   border-radius: 24px !important;
--webkit-backdrop-filter: ;
--filter: ;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 #search-icon-legacy.ytd-searchbox,

@@ -7,9 +7,9 @@ html[data-ypp-ui-style=frutiger-aero] app-drawer#guide,
 html[data-ypp-ui-style=frutiger-aero] ytd-mini-guide-renderer,
 html[data-ypp-ui-style=frutiger-aero] tp-yt-app-drawer,
 html[data-ypp-ui-style=frutiger-aero] .fa-sidebar {
+  -webkit-backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
+  backdrop-filter: blur(var(--fa-blur-md, 8px)) !important;
   background: var(--fa-surface-elevated, rgba(255, 255, 255, 0.85)) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border-right: 1px solid var(--fa-border-subtle, rgba(180, 225, 255, 0.50)) !important;
   box-shadow: 2px 0 12px rgba(18, 168, 221, 0.08) !important;
 }

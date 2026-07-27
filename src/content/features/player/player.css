@@ -107,6 +107,8 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
 } */
 
 .ypp-player-controls {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   display: flex;
   align-items: center;
   margin-right: 14px;
@@ -115,8 +117,6 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   background: transparent !important;
   border: none !important;
   border-radius: 0;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow: none !important;
   animation: ypp-bar-pop-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   will-change: transform, opacity;
@@ -125,14 +125,14 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
 
 /* ── Responsive Adaptation for Player Controls ── */
 @media (max-width: 860px) {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
   /* At smaller sizes, pop the custom controls above the bottom bar to prevent overlap with time display */
   .ypp-player-controls {
     position: absolute;
     bottom: 54px; /* Above the progress bar */
     right: 12px;
     background: rgba(10, 10, 12, 0.85) !important;
--webkit-backdrop-filter: ;
--filter: ;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 24px;
     padding: 6px 12px;
@@ -228,13 +228,13 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
 
 /* ── Speed Controls — Segmented Pill ── */
 .ypp-speed-controls {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   display: flex;
   gap: 2px;
   background: transparent !important;
   padding: 4px;
   border-radius: 20px;
--webkit-backdrop-filter: ;
--filter: ;
   border: none !important;
   box-shadow: none !important;
   margin-left: 4px;
@@ -272,12 +272,12 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
 html.yt-spiral-tube-theme ytd-menu-popup-renderer,
 html.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
 html.yt-spiral-tube-theme .ytp-popup {
+  -webkit-backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
+  backdrop-filter: var(--ypp-glass-blur-active) saturate(1.5) !important;
   border-radius: 16px !important;
   overflow: hidden !important;
   border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;
   background: var(--ypp-bg-surface) !important;
--webkit-backdrop-filter: ;
--filter: ;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 16px 48px rgba(0, 0, 0, 0.6) !important;
@@ -354,6 +354,8 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   margin-top: 12px !important;
 }
 .ypp-watch-alert {
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  backdrop-filter: blur(24px) saturate(1.3);
   position: fixed;
   top: 80px;
   right: 24px;
@@ -361,8 +363,6 @@ body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
   align-items: center;
   gap: 14px;
   background: rgba(18, 18, 26, 0.92);
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 170, 0, 0.35);
   border-top-color: rgba(255, 200, 0, 0.5);
   border-radius: 14px;
@@ -456,10 +456,10 @@ body.yt-spiral-tube-theme .ytp-gradient-top {
   visibility: hidden !important;
 }
 body.yt-spiral-tube-theme .ytp-popup {
+  -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
+  backdrop-filter: blur(36px) saturate(180%) !important;
   border-radius: 18px !important;
   background: rgba(10, 10, 18, 0.45) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
   box-shadow:
@@ -585,9 +585,9 @@ body.ypp-ambient-mode-active #masthead-container {
 }
 
 body.ypp-ambient-mode-active ytd-masthead #container {
+  -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
+  backdrop-filter: blur(24px) saturate(1.5) !important;
     background: rgba(0, 0, 0, 0.4) !important;
--webkit-backdrop-filter: ;
--filter: ;
 }
 
 /* Make body background transparent when ambient mode is active to show the full screen canvas */
@@ -603,6 +603,8 @@ body.ypp-ambient-mode-active ytd-watch-flexy {
 
 /* Floating Action Bar (FAB) Mode */
 .ypp-floating-action-bar {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
     position: absolute;
     right: 20px;
     top: 50%;
@@ -612,8 +614,6 @@ body.ypp-ambient-mode-active ytd-watch-flexy {
     gap: 8px;
     padding: 12px 8px;
     background: rgba(0, 0, 0, 0.4);
--webkit-backdrop-filter: ;
--filter: ;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     z-index: 999;

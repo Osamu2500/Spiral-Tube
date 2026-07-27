@@ -1,7 +1,10 @@
 // @ts-check
 // Lazily resolve Utils so this module works even if utils.js is evaluated after popup-state.js.
 const getUtils = () => window.YPP?.Utils || {
-    log: (msg, tag = 'POPUP', level = 'log') => console[level]?.(`[YPP:${tag}] ${msg}`)
+    log: (/** @type {string} */ msg, tag = 'POPUP', level = 'log') => {
+        const c = /** @type {any} */(console);
+        if (c[level]) c[level](`[YPP:${tag}] ${msg}`);
+    }
 };
 
 /**
@@ -9,10 +12,13 @@ const getUtils = () => window.YPP?.Utils || {
  * @property {Record<string, any>} elements
  * @property {string[]} settingKeys
  * @property {Record<string, any>} settings
- * @property {Array<{key: string, value: any}>} _settingsWriteQueue
+ * @property {Array<{key?: string, value?: any, fullState?: Record<string, any>}>} _settingsWriteQueue
  * @property {boolean} _isWritingSettings
  * @property {boolean} isLoaded
  */
+
+/** @type {ReturnType<typeof setTimeout> | null} */
+let _writeTimeout = null;
 
 /** @type {PopupState} */
 export const state = {
@@ -24,19 +30,21 @@ export const state = {
     isLoaded: false
 };
 
+/** @param {Document} document */
 export function initStorage(document) {
     const inputs = document.querySelectorAll('input[id]:not(#featureSearch), select[id], textarea[id]');
-    inputs.forEach(el => {
+    inputs.forEach((/** @type {any} */ el) => {
         state.settingKeys.push(el.id);
         state.elements[el.id] = el;
     });
 }
 
+/** @param {Array<(settings: Record<string, any>) => void>} [updateUICallbacks] */
 export function loadSettings(updateUICallbacks) {
     const Utils = getUtils();
     try {
         (async () => {
-            const getStorage = async (area) => {
+            const getStorage = async (/** @type {chrome.storage.StorageArea} */ area) => {
                 if (!area) return {};
                 try {
                     return await new Promise(resolve => {
@@ -48,7 +56,7 @@ export function loadSettings(updateUICallbacks) {
                             isResolved = true;
                             resolve({});
                         }, 2000);
-                        const cb = (res) => {
+                        const cb = (/** @type {any} */ res) => {
                             if (isResolved) return;
                             isResolved = true;
                             clearTimeout(timeoutId);
@@ -71,7 +79,9 @@ export function loadSettings(updateUICallbacks) {
             if (syncSettings && localSettings) {
                 const syncTime = syncSettings.lastUpdated || 0;
                 const localTime = localSettings.lastUpdated || 0;
-                raw = syncTime >= localTime ? syncSettings : localSettings;
+                raw = syncTime >= localTime 
+                    ? { ...localSettings, ...syncSettings } 
+                    : { ...syncSettings, ...localSettings };
             } else {
                 raw = syncSettings || localSettings || {};
             }
@@ -100,7 +110,7 @@ export function loadSettings(updateUICallbacks) {
                         el.value = state.settings[key] !== undefined ? state.settings[key] : (defaultSettings[key] !== undefined ? defaultSettings[key] : el.value);
                         if (key === 'hideWatchedMode') {
                             const mode = el.value;
-                            document.querySelectorAll('.hw-mode-btn').forEach(b => {
+                            document.querySelectorAll('.hw-mode-btn').forEach((/** @type {any} */ b) => {
                                 const isActive = b.dataset.mode === mode;
                                 b.classList.toggle('active', isActive);
                                 b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
@@ -109,13 +119,13 @@ export function loadSettings(updateUICallbacks) {
                         }
                         if (key === 'sidebarLayout') {
                             const layout = el.value || 'compact';
-                            document.querySelectorAll('.sidebar-layout-btn').forEach(b => {
+                            document.querySelectorAll('.sidebar-layout-btn').forEach((/** @type {any} */ b) => {
                                 const isActive = b.dataset.layout === layout;
                                 b.classList.toggle('active', isActive);
                                 b.style.background = isActive ? 'rgba(62,166,255,0.22)' : 'transparent';
                                 b.style.color = isActive ? 'var(--accent, #3ea6ff)' : 'rgba(255,255,255,0.5)';
                             });
-                            document.querySelectorAll('.layout-card').forEach(c => {
+                            document.querySelectorAll('.layout-card').forEach((/** @type {any} */ c) => {
                                 const isActive = c.dataset.layout === layout;
                                 c.style.borderColor = isActive ? 'var(--accent, rgba(62,166,255,0.5))' : 'rgba(255,255,255,0.08)';
                                 c.style.background = isActive ? 'rgba(62,166,255,0.05)' : 'rgba(255,255,255,0.04)';
@@ -123,7 +133,7 @@ export function loadSettings(updateUICallbacks) {
                         }
                         if (key === 'cardStyle') {
                             const styleVal = el.value || 'glass';
-                            document.querySelectorAll('.card-style-btn').forEach(b => {
+                            document.querySelectorAll('.card-style-btn').forEach((/** @type {any} */ b) => {
                                 const isActive = b.dataset.style === styleVal;
                                 b.classList.toggle('active', isActive);
                             });
@@ -138,8 +148,8 @@ export function loadSettings(updateUICallbacks) {
                 updateUICallbacks.forEach(cb => cb(state.settings));
             }
         })();
-    } catch (e) {
-        Utils.log('Critical Load Error: ' + e.message, 'POPUP', 'error');
+    } catch (/** @type {any} */ e) {
+        Utils.log('Critical Load Error: ' + /** @type {any} */(e).message, 'POPUP', 'error');
     }
 }
 
@@ -148,18 +158,13 @@ export function gatherSettings() {
     state.settingKeys.forEach(key => {
         const el = state.elements[key];
         if (el) {
-            if (el.type === 'checkbox') {
-                s[key] = el.checked;
-            } else if (el.type === 'range') {
-                s[key] = Number(el.value);
-            } else {
-                s[key] = el.value;
-            }
+            /** @type {Record<string, any>} */(s)[key] = el.type === 'checkbox' ? el.checked : (el.type === 'range' ? Number(el.value) : el.value);
         }
     });
     return s;
 }
 
+/** @param {(() => void)} [showIndicatorCb] */
 export function saveSettings(showIndicatorCb) {
     if (!state.isLoaded) return;
     const s = gatherSettings();
@@ -172,8 +177,6 @@ export function saveSettings(showIndicatorCb) {
     
     if (showIndicatorCb) showIndicatorCb();
 }
-
-let _writeTimeout = null;
 
 function _processWriteQueue() {
     const Utils = getUtils();
@@ -189,7 +192,7 @@ function _processWriteQueue() {
             if (update.fullState) {
                 Object.assign(delta, update.fullState);
             } else if (update.key) {
-                delta[update.key] = update.value;
+                /** @type {Record<string, any>} */(delta)[update.key] = update.value;
             }
         });
 
@@ -209,8 +212,8 @@ function _processWriteQueue() {
                     }
                 });
             });
-        } catch (e) {
-            Utils.log('Delta Save Error: ' + e.message, 'POPUP', 'warn');
+        } catch (/** @type {any} */ e) {
+            Utils.log('Delta Save Error: ' + /** @type {any} */(e).message, 'POPUP', 'warn');
         }
         
         state._isWritingSettings = false;
@@ -220,6 +223,7 @@ function _processWriteQueue() {
     })();
 }
 
+/** @param {{key?: string, value?: any, fullState?: Record<string, any>}} payload */
 export function queueSettingsWrite(payload) {
     state._settingsWriteQueue.push(payload);
     
@@ -230,10 +234,16 @@ export function queueSettingsWrite(payload) {
     }, 300);
 }
 
+/**
+ * @param {string} key
+ * @param {any} value
+ */
 export function updateSetting(key, value) {
     queueSettingsWrite({ key, value });
 }
 
+/** @param {string} newTheme */
 export function notifyThemeChange(newTheme) {
     updateSetting('activeTheme', newTheme);
 }
+

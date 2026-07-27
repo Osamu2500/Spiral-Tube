@@ -163,9 +163,9 @@ html[data-ypp-ui-style="harry-potter"] #secondary yt-lockup-view-model:hover {
    ========================================================= */
 html[data-ypp-ui-style="harry-potter"] #ypp-eq-panel,
 html[data-ypp-ui-style="harry-potter"] #ypp-cinema-panel {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   background: linear-gradient(135deg, rgba(16, 15, 12, 0.96) 0%, rgba(20, 18, 14, 0.92) 100%) !important;
--webkit-backdrop-filter: ;
--filter: ;
   border: 1.5px solid rgba(180, 150, 60, 0.45) !important;
   border-radius: 4px 20px 4px 20px !important;
   box-shadow:

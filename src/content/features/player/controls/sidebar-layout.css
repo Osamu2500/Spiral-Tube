@@ -366,8 +366,7 @@ body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-rendere
 /* Prevent unwanted backdrop blur on thumbnails and overlays */
 body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-thumbnail, .ytLockupViewModelContentImage, #thumbnail, #meta, .ytLockupMetadataViewModelTextContainer, .text-wrapper, .details, .yt-lockup-view-model-wiz__interactive-overlay-container, ytd-thumbnail-overlay-time-status-renderer, ytd-thumbnail-overlay-time-status-renderer *) {
   -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
+  backdrop-filter: none !important;}
 
 body.ypp-sidebar-expanded :is(#related, ytd-watch-next-secondary-results-renderer) :is(ytd-thumbnail img, .ytCoreImageHost, #thumbnail img, yt-image img) {
   position: relative !important;
