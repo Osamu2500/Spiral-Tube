@@ -1,90 +1,21 @@
-/* =========================================================
-   CYBERPUNK — HOME PAGE
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/pages/home.css */
 
-/* Guide Wrapper */
-html[data-ypp-ui-style="cyberpunk"] #guide-wrapper.ytd-app {
-  background: var(--cyber-bg) !important;
-  border-right: var(--cyber-border-thick) !important;
-  box-shadow: 5px 0 20px rgba(0, 255, 204, 0.08) !important;
+html[data-ypp-theme="cyberpunk"] yt-chip-cloud-chip-renderer {
+  background: var(--ypp-bg-surface) !important;
   border-radius: 0 !important;
+  clip-path: var(--ypp-clip-parallelogram) !important;
+  border: 1px solid var(--ypp-border-light) !important;
+  color: var(--ypp-text-primary) !important;
+  transition: var(--ypp-transition-snap) !important;
 }
 
-/* Topic / Category Chips */
-html[data-ypp-ui-style="cyberpunk"] yt-chip-cloud-chip-renderer {
-  background: rgba(0, 0, 0, 0.8) !important;
-  border: 1px solid rgba(255, 0, 255, 0.5) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  color: var(--cyber-primary) !important;
-  font-family: monospace !important;
-  text-shadow: 0 0 4px var(--cyber-primary) !important;
-  box-shadow: 0 0 5px rgba(255, 0, 255, 0.3) !important;
-  transition: all var(--cyber-snap) !important;
+html[data-ypp-theme="cyberpunk"] yt-chip-cloud-chip-renderer:hover {
+  background: rgba(0, 255, 204, 0.2) !important;
+  border-color: var(--ypp-accent-primary) !important;
 }
-html[data-ypp-ui-style="cyberpunk"] yt-chip-cloud-chip-renderer:hover {
-  background: rgba(0, 255, 204, 0.15) !important;
-  border-color: var(--cyber-secondary) !important;
-  color: var(--cyber-secondary) !important;
-  text-shadow: 0 0 8px var(--cyber-secondary) !important;
-  box-shadow: 0 0 12px rgba(0, 255, 204, 0.4) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] yt-chip-cloud-chip-renderer[selected] {
-  background: var(--cyber-secondary) !important;
+
+html[data-ypp-theme="cyberpunk"] yt-chip-cloud-chip-renderer[selected] {
+  background: var(--ypp-accent-primary) !important;
   color: #000 !important;
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 18px rgba(0, 255, 204, 0.8) !important;
-  text-shadow: none !important;
-  font-weight: 900 !important;
-}
-
-/* Chip bar container */
-html[data-ypp-ui-style="cyberpunk"] ytd-browse[page-subtype=home] #chips,
-html[data-ypp-ui-style="cyberpunk"] ytd-feed-filter-chip-bar-renderer {
-  background: var(--cyber-bg) !important;
-  border-bottom: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  padding: 8px 12px !important;
-  box-shadow: 0 4px 15px rgba(0, 255, 204, 0.05) !important;
-}
-
-/* Settings Sidebar */
-html[data-ypp-ui-style="cyberpunk"] ytd-settings-sidebar-renderer {
-  background: var(--cyber-bg) !important;
-  border-right: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  padding: 15px !important;
-}
-
-/* Shelf / Section header (e.g. "Trending", "Shorts") */
-html[data-ypp-ui-style="cyberpunk"] ytd-shelf-renderer > #dismissible {
-  background: rgba(0, 255, 204, 0.03) !important;
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  padding: 16px !important;
-  margin-bottom: 16px !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #title.ytd-shelf-renderer,
-html[data-ypp-ui-style="cyberpunk"] #title.ytd-reel-shelf-renderer {
-  font-family: monospace !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  color: var(--cyber-secondary) !important;
-  text-shadow: 0 0 6px var(--cyber-secondary) !important;
-  border-bottom: 1px dashed var(--cyber-secondary) !important;
-  padding-bottom: 8px !important;
-}
-
-/* Mini Guide (Collapsed left rail) */
-html[data-ypp-ui-style="cyberpunk"] ytd-mini-guide-entry-renderer {
-  border-radius: 0 !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-mini-guide-entry-renderer:hover {
-  background: rgba(0, 255, 204, 0.1) !important;
-  box-shadow: inset 4px 0 0 var(--cyber-secondary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-mini-guide-entry-renderer[active] {
-  background: rgba(255, 0, 85, 0.15) !important;
-  box-shadow: inset 4px 0 0 var(--cyber-primary) !important;
+  box-shadow: var(--ypp-glow-cyan) !important;
 }

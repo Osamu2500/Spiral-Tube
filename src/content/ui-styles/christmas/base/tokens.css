@@ -1,4 +1,4 @@
-html[data-ypp-ui-style="christmas"] {
+html[data-ypp-theme="christmas"] {
   /* Colors */
   --christmas-bg-primary: #0F2027; /* Deep midnight */
   --christmas-bg-secondary: #203A43; /* Forest midnight */
@@ -20,7 +20,15 @@ html[data-ypp-ui-style="christmas"] {
   --christmas-glow-red: 0 0 15px rgba(230, 57, 70, 0.5);
   --christmas-glow-gold: 0 0 15px rgba(255, 215, 0, 0.5);
   
-  /* Radii */
+  /* Unique Shape: "Ornament / Bell"
+     Very round top, slightly round bottom.
+  */
+  --christmas-shape-card: 32px 32px 12px 12px;
+  --christmas-shape-btn: 20px 20px 8px 8px;
+  --christmas-shape-chip: 16px 16px 6px 6px;
+  --christmas-shape-modal: 32px 32px 16px 16px;
+
+  /* Legacy Radii */
   --christmas-r-sm: 8px;
   --christmas-r-md: 16px;
   --christmas-r-lg: 24px;
@@ -32,7 +40,7 @@ html[data-ypp-ui-style="christmas"] {
 }
 
 /* Mapping standard variables */
-html[data-ypp-ui-style="christmas"] {
+html[data-ypp-theme="christmas"] {
   --yt-spec-base-background: var(--christmas-bg-primary) !important;
   --yt-spec-raised-background: var(--christmas-bg-secondary) !important;
   --yt-spec-menu-background: var(--christmas-glass-bg) !important;

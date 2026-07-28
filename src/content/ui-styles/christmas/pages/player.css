@@ -1,33 +1,33 @@
 /* YouTube Player overrides for Christmas Theme */
-html[data-ypp-ui-style="christmas"] .ytp-swatch-background-color {
+html[data-ypp-theme="christmas"] .ytp-swatch-background-color {
   background-color: var(--christmas-accent-primary) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-swatch-color {
+html[data-ypp-theme="christmas"] .ytp-swatch-color {
   color: var(--christmas-accent-primary) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-play-progress {
+html[data-ypp-theme="christmas"] .ytp-play-progress {
   background: var(--christmas-accent-primary) !important;
   box-shadow: var(--christmas-glow-red) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-scrubber-button {
+html[data-ypp-theme="christmas"] .ytp-scrubber-button {
   background: var(--christmas-accent-primary) !important;
   border: 2px solid #fff !important;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-volume-slider-handle {
+html[data-ypp-theme="christmas"] .ytp-volume-slider-handle {
   background: #fff !important;
   box-shadow: 0 0 8px rgba(255,255,255,0.8) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-volume-slider-handle::before {
+html[data-ypp-theme="christmas"] .ytp-volume-slider-handle::before {
   background: var(--christmas-accent-primary) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-settings-menu {
+html[data-ypp-theme="christmas"] .ytp-settings-menu {
   background: var(--christmas-bg-secondary) !important;
   border-radius: var(--christmas-r-md) !important;
   border: 1px solid var(--christmas-glass-border) !important;
@@ -35,10 +35,10 @@ html[data-ypp-ui-style="christmas"] .ytp-settings-menu {
   backdrop-filter: blur(12px) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-menuitem:hover {
+html[data-ypp-theme="christmas"] .ytp-menuitem:hover {
   background: var(--christmas-glass-bg-hover) !important;
 }
 
-html[data-ypp-ui-style="christmas"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
+html[data-ypp-theme="christmas"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
   background: var(--christmas-accent-primary) !important;
 }

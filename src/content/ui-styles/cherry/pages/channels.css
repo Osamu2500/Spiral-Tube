@@ -1,0 +1,17 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — CHANNELS
+   ========================================================= */
+
+html[data-ypp-ui-style="cherry"] ytd-c4-tabbed-header-renderer {
+  background: var(--cherry-bg-mid) !important;
+  border-bottom: var(--cherry-border) !important;
+}
+
+html[data-ypp-ui-style="cherry"] tp-yt-app-header {
+  background: var(--cherry-bg-mid) !important;
+}
+
+html[data-ypp-ui-style="cherry"] paper-tab.iron-selected {
+  border-bottom: 3px solid var(--cherry-brand) !important;
+  color: var(--cherry-brand-hover) !important;
+}

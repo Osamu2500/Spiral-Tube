@@ -1,0 +1,20 @@
+/* =========================================================
+   CAIRO RED — BACKGROUND
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] body,
+html[data-ypp-ui-style="cairo-red"] ytd-app {
+  background: var(--cairo-bg-base) !important;
+  color: var(--cairo-text-primary) !important;
+}
+
+/* Make sure masthead and other areas don't block background */
+html[data-ypp-ui-style="cairo-red"] #masthead-container,
+html[data-ypp-ui-style="cairo-red"] ytd-masthead {
+  background: var(--cairo-bg-base) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="cairo-red"] ytd-guide-renderer {
+  background: var(--cairo-bg-mid) !important;
+}

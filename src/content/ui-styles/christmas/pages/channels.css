@@ -1,0 +1,26 @@
+/* =========================================================
+   CHRISTMAS — CHANNELS
+   ========================================================= */
+
+html[data-ypp-theme="christmas"] ytd-c4-tabbed-header-renderer {
+  background: linear-gradient(to bottom, rgba(32, 58, 67, 0.8), var(--christmas-bg-primary)) !important;
+  border-bottom: 1px solid var(--christmas-glass-border) !important;
+}
+
+html[data-ypp-theme="christmas"] #channel-avatar img {
+  border-radius: var(--christmas-shape-card) !important;
+  border: 2px solid var(--christmas-accent-primary) !important;
+  box-shadow: var(--christmas-glow-red) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-tab-renderer {
+  border-radius: var(--christmas-shape-btn) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-tab-renderer:hover,
+html[data-ypp-theme="christmas"] ytd-tab-renderer[selected] {
+  background: var(--christmas-glass-bg-hover) !important;
+  border-bottom: 3px solid var(--christmas-accent-primary) !important;
+  color: #fff !important;
+  box-shadow: inset 0 -10px 15px -10px rgba(230, 57, 70, 0.4) !important;
+}

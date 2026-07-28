@@ -423,7 +423,8 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'technozen', label: 'Technozen (Japanese Eco-Tech 2008)' },
   { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' },
   { id: 'christmas', label: 'Christmas (Festive)' },
-  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' }
+  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
+  { id: 'cherry', label: 'Cherry (Night Sakura)' }
 ];
 
 // Deep freeze CONSTANTS.DEFAULT_SETTINGS to prevent accidental state mutation

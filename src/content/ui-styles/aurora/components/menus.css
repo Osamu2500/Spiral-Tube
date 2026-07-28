@@ -3,11 +3,11 @@
    ========================================================= */
 
 /* Floating Dropdowns / Menus */
-html[data-ypp-ui-style="aurora"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="aurora"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="aurora"] ytd-multi-page-menu-renderer,
-html[data-ypp-ui-style="aurora"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="aurora"] .ytSearchboxComponentSuggestionsContainer {
+html[data-ypp-theme="aurora"] tp-yt-iron-dropdown,
+html[data-ypp-theme="aurora"] ytd-menu-popup-renderer,
+html[data-ypp-theme="aurora"] ytd-multi-page-menu-renderer,
+html[data-ypp-theme="aurora"] tp-yt-paper-listbox,
+html[data-ypp-theme="aurora"] .ytSearchboxComponentSuggestionsContainer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -18,8 +18,8 @@ html[data-ypp-ui-style="aurora"] .ytSearchboxComponentSuggestionsContainer {
 }
 
 /* Prevent double shadows on nested menus */
-html[data-ypp-ui-style="aurora"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
-html[data-ypp-ui-style="aurora"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
+html[data-ypp-theme="aurora"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-theme="aurora"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
@@ -27,12 +27,12 @@ html[data-ypp-ui-style="aurora"] tp-yt-iron-dropdown > ytd-multi-page-menu-rende
 }
 
 /* Menu List Items */
-html[data-ypp-ui-style="aurora"] ytd-menu-service-item-renderer,
-html[data-ypp-ui-style="aurora"] ytd-menu-navigation-item-renderer,
-html[data-ypp-ui-style="aurora"] ytd-compact-link-renderer,
-html[data-ypp-ui-style="aurora"] .ytp-menuitem,
-html[data-ypp-ui-style="aurora"] ytd-playlist-add-to-option-renderer,
-html[data-ypp-ui-style="aurora"] .ytSuggestionComponentSuggestion {
+html[data-ypp-theme="aurora"] ytd-menu-service-item-renderer,
+html[data-ypp-theme="aurora"] ytd-menu-navigation-item-renderer,
+html[data-ypp-theme="aurora"] ytd-compact-link-renderer,
+html[data-ypp-theme="aurora"] .ytp-menuitem,
+html[data-ypp-theme="aurora"] ytd-playlist-add-to-option-renderer,
+html[data-ypp-theme="aurora"] .ytSuggestionComponentSuggestion {
   background: transparent !important;
   border-radius: var(--aurora-radius-md) !important;
   margin: 4px 0 !important;
@@ -41,12 +41,12 @@ html[data-ypp-ui-style="aurora"] .ytSuggestionComponentSuggestion {
 }
 
 /* Menu Item Hover */
-html[data-ypp-ui-style="aurora"] ytd-menu-service-item-renderer:hover,
-html[data-ypp-ui-style="aurora"] ytd-menu-navigation-item-renderer:hover,
-html[data-ypp-ui-style="aurora"] ytd-compact-link-renderer:hover,
-html[data-ypp-ui-style="aurora"] .ytp-menuitem:hover,
-html[data-ypp-ui-style="aurora"] ytd-playlist-add-to-option-renderer:hover,
-html[data-ypp-ui-style="aurora"] .ytSuggestionComponentSuggestion:hover {
+html[data-ypp-theme="aurora"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-theme="aurora"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-theme="aurora"] ytd-compact-link-renderer:hover,
+html[data-ypp-theme="aurora"] .ytp-menuitem:hover,
+html[data-ypp-theme="aurora"] ytd-playlist-add-to-option-renderer:hover,
+html[data-ypp-theme="aurora"] .ytSuggestionComponentSuggestion:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   border-left: 2px solid var(--aurora-color-1) !important;
   box-shadow: inset 20px 0 30px -20px rgba(0, 242, 254, 0.3) !important;
@@ -54,39 +54,39 @@ html[data-ypp-ui-style="aurora"] .ytSuggestionComponentSuggestion:hover {
 }
 
 /* Separators */
-html[data-ypp-ui-style="aurora"] ytd-menu-popup-renderer hr,
-html[data-ypp-ui-style="aurora"] ytd-menu-popup-renderer #separator {
+html[data-ypp-theme="aurora"] ytd-menu-popup-renderer hr,
+html[data-ypp-theme="aurora"] ytd-menu-popup-renderer #separator {
   border: none !important;
   border-bottom: var(--aurora-border-glass) !important;
   margin: 8px 0 !important;
 }
 
 /* Notifications Dropdown */
-html[data-ypp-ui-style="aurora"] ytd-notification-renderer {
+html[data-ypp-theme="aurora"] ytd-notification-renderer {
   background: var(--aurora-glass-heavy) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-md) !important;
   margin: 6px !important;
   transition: all var(--aurora-snap) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-notification-renderer:hover {
+html[data-ypp-theme="aurora"] ytd-notification-renderer:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   transform: scale(1.02) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-notification-renderer[is-new] {
+html[data-ypp-theme="aurora"] ytd-notification-renderer[is-new] {
   border-color: var(--aurora-color-3) !important; /* Magenta outline for new */
   box-shadow: var(--aurora-glow-magenta) !important;
 }
 
 /* Account Multi-page Header */
-html[data-ypp-ui-style="aurora"] ytd-active-account-header-renderer {
+html[data-ypp-theme="aurora"] ytd-active-account-header-renderer {
   background: transparent !important;
   border-bottom: var(--aurora-border-glass) !important;
   margin-bottom: 8px !important;
   padding-bottom: 8px !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-active-account-header-renderer yt-img-shadow img {
+html[data-ypp-theme="aurora"] ytd-active-account-header-renderer yt-img-shadow img {
   border-radius: 50% !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;

@@ -1,0 +1,20 @@
+/* =========================================================
+   CAIRO RED — HOME
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] ytd-browse[page-subtype="home"] {
+  background: var(--cairo-bg-base) !important;
+}
+
+/* Category Chips */
+html[data-ypp-ui-style="cairo-red"] yt-chip-cloud-chip-renderer {
+  background: var(--cairo-bg-raised) !important;
+  border: var(--cairo-border) !important;
+  border-radius: var(--cairo-radius-pill) !important;
+  color: var(--cairo-text-primary) !important;
+}
+html[data-ypp-ui-style="cairo-red"] yt-chip-cloud-chip-renderer[selected] {
+  background: var(--cairo-brand) !important;
+  color: var(--cairo-text-inverse) !important;
+  border-color: var(--cairo-brand) !important;
+}

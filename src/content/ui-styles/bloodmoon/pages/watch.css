@@ -1,6 +1,6 @@
-html[data-ypp-ui-style="bloodmoon"] ytd-watch-flexy { background: transparent !important; }
+html[data-ypp-theme="bloodmoon"] ytd-watch-flexy { background: transparent !important; }
 
-html[data-ypp-ui-style="bloodmoon"] ytd-compact-video-renderer {
+html[data-ypp-theme="bloodmoon"] ytd-compact-video-renderer {
   background: var(--bm-bg-surface) !important;
   border: 1px solid var(--bm-glass-border) !important;
   border-radius: var(--bm-r-md) !important;
@@ -10,14 +10,14 @@ html[data-ypp-ui-style="bloodmoon"] ytd-compact-video-renderer {
   transform: none !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] ytd-compact-video-renderer:hover {
+html[data-ypp-theme="bloodmoon"] ytd-compact-video-renderer:hover {
   background: var(--bm-bg-elevated) !important;
   border-color: var(--bm-glass-border-active) !important;
   box-shadow: var(--bm-glow-ember) !important;
   transform: translateX(4px) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] #secondary-inner.ytd-watch-flexy {
+html[data-ypp-theme="bloodmoon"] #secondary-inner.ytd-watch-flexy {
   background: rgba(6, 2, 5, 0.65) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
@@ -26,14 +26,14 @@ html[data-ypp-ui-style="bloodmoon"] #secondary-inner.ytd-watch-flexy {
   padding: 16px !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] #description.ytd-watch-metadata {
+html[data-ypp-theme="bloodmoon"] #description.ytd-watch-metadata {
   background: var(--bm-bg-surface) !important;
   border-radius: var(--bm-r-md) !important;
   border: 1px solid var(--bm-glass-border) !important;
   transition: all 0.25s var(--bm-ease) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] #description.ytd-watch-metadata:hover {
+html[data-ypp-theme="bloodmoon"] #description.ytd-watch-metadata:hover {
   border-color: var(--bm-glass-border-active) !important;
   box-shadow: var(--bm-glow-blood) !important;
 }

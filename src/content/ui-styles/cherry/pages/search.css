@@ -1,0 +1,18 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — SEARCH
+   ========================================================= */
+
+html[data-ypp-ui-style="cherry"] ytd-search {
+  background: var(--cherry-bg-base) !important;
+}
+
+html[data-ypp-ui-style="cherry"] ytd-video-renderer,
+html[data-ypp-ui-style="cherry"] ytd-channel-renderer,
+html[data-ypp-ui-style="cherry"] ytd-playlist-renderer {
+  background: var(--cherry-bg-mid) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: var(--cherry-border) !important;
+  border-radius: var(--cherry-radius) !important;
+  padding: 12px !important;
+}

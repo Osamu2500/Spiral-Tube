@@ -1,0 +1,30 @@
+/* src/content/ui-styles/claymorphism/base/background.css */
+
+html[data-ypp-theme="claymorphism"],
+html[data-ypp-theme="claymorphism"] body {
+  background: var(--ypp-bg-base) !important;
+  background-image: 
+    radial-gradient(at 0% 0%, #fce4f0 0px, transparent 50%),
+    radial-gradient(at 100% 0%, #e4f0ff 0px, transparent 50%),
+    radial-gradient(at 100% 100%, #f0e8ff 0px, transparent 50%),
+    radial-gradient(at 0% 100%, #fef5ff 0px, transparent 50%) !important;
+  background-attachment: fixed !important;
+  color: var(--ypp-text-primary) !important;
+}
+
+/* Rounded pastel scrollbars */
+html[data-ypp-theme="claymorphism"] ::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+html[data-ypp-theme="claymorphism"] ::-webkit-scrollbar-thumb {
+  background: var(--ypp-accent-primary) !important;
+  border: 3px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: var(--ypp-radius-pill) !important;
+}
+
+html[data-ypp-theme="claymorphism"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--ypp-accent-secondary) !important;
+}

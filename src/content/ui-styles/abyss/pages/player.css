@@ -1,0 +1,51 @@
+/* src/content/ui-styles/abyss/pages/player.css */
+
+html[data-ypp-theme="abyss"] #ytd-player {
+  border-radius: var(--ypp-rad-lg) !important;
+  border: 1px solid var(--ypp-border-heavy) !important;
+  box-shadow: var(--ypp-shadow-glow-intense), 0 20px 40px rgba(0,0,0,0.9) !important;
+  overflow: hidden !important;
+}
+
+/* Progress bar */
+html[data-ypp-theme="abyss"] .ytp-play-progress,
+html[data-ypp-theme="abyss"] .ytp-swatch-background-color,
+html[data-ypp-theme="abyss"] .ytp-volume-slider-handle {
+  background: var(--ypp-accent-primary) !important;
+  background-color: var(--ypp-accent-primary) !important;
+  box-shadow: var(--ypp-shadow-glow-intense) !important;
+}
+
+html[data-ypp-theme="abyss"] .ytp-volume-slider-handle::before,
+html[data-ypp-theme="abyss"] .ytp-volume-slider-handle::after {
+  background: var(--ypp-accent-primary) !important;
+}
+
+/* Scrubber button */
+html[data-ypp-theme="abyss"] .ytp-scrubber-button {
+  background: #fff !important;
+  border: 2px solid var(--ypp-accent-primary) !important;
+  border-radius: var(--ypp-rad-sm) !important; /* Abyssal shape */
+  box-shadow: var(--ypp-shadow-glow) !important;
+  transform: scale(1.2) !important;
+}
+
+html[data-ypp-theme="abyss"] .ytp-load-progress {
+  background: rgba(0, 150, 136, 0.4) !important;
+}
+
+/* Player Popups (Settings/Qualities) */
+html[data-ypp-theme="abyss"] .ytp-popup,
+html[data-ypp-theme="abyss"] .ytp-settings-menu {
+  background: rgba(1, 6, 9, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: var(--ypp-rad-md) !important;
+  border: 1px solid var(--ypp-border-heavy) !important;
+  box-shadow: var(--ypp-shadow-glow) !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-theme="abyss"] .ytp-menuitem:hover {
+  background: rgba(0, 229, 255, 0.15) !important;
+  box-shadow: inset 4px 0 0 var(--ypp-accent-primary) !important;
+}

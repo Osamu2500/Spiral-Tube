@@ -1,9 +1,9 @@
-html[data-ypp-ui-style="christmas"] #guide-wrapper {
+html[data-ypp-theme="christmas"] #guide-wrapper {
   background: transparent !important;
 }
 
-html[data-ypp-ui-style="christmas"] ytd-mini-guide-renderer,
-html[data-ypp-ui-style="christmas"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
+html[data-ypp-theme="christmas"] ytd-mini-guide-renderer,
+html[data-ypp-theme="christmas"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
   background: var(--christmas-glass-bg) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
@@ -11,34 +11,34 @@ html[data-ypp-ui-style="christmas"] ytd-app[guide-persistent-and-visible] ytd-gu
 }
 
 /* Sidebar items */
-html[data-ypp-ui-style="christmas"] ytd-guide-entry-renderer,
-html[data-ypp-ui-style="christmas"] ytd-mini-guide-entry-renderer {
+html[data-ypp-theme="christmas"] ytd-guide-entry-renderer,
+html[data-ypp-theme="christmas"] ytd-mini-guide-entry-renderer {
   border-radius: var(--christmas-r-md) !important;
   margin: 4px 8px !important;
   transition: all 0.3s var(--christmas-ease-spring) !important;
 }
 
-html[data-ypp-ui-style="christmas"] ytd-guide-entry-renderer:hover,
-html[data-ypp-ui-style="christmas"] ytd-mini-guide-entry-renderer:hover {
+html[data-ypp-theme="christmas"] ytd-guide-entry-renderer:hover,
+html[data-ypp-theme="christmas"] ytd-mini-guide-entry-renderer:hover {
   background: var(--christmas-glass-bg-hover) !important;
   box-shadow: inset 2px 0 0 var(--christmas-accent-primary) !important;
 }
 
-html[data-ypp-ui-style="christmas"] ytd-guide-entry-renderer[active],
-html[data-ypp-ui-style="christmas"] ytd-mini-guide-entry-renderer[active] {
+html[data-ypp-theme="christmas"] ytd-guide-entry-renderer[active],
+html[data-ypp-theme="christmas"] ytd-mini-guide-entry-renderer[active] {
   background: rgba(230, 57, 70, 0.15) !important;
   box-shadow: inset 4px 0 0 var(--christmas-accent-primary) !important;
 }
 
-html[data-ypp-ui-style="christmas"] ytd-guide-entry-renderer[active] yt-icon,
-html[data-ypp-ui-style="christmas"] ytd-guide-entry-renderer[active] .title {
+html[data-ypp-theme="christmas"] ytd-guide-entry-renderer[active] yt-icon,
+html[data-ypp-theme="christmas"] ytd-guide-entry-renderer[active] .title {
   color: var(--christmas-accent-primary) !important;
 }
 
 /* Context Menus / Popups */
-html[data-ypp-ui-style="christmas"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="christmas"] ytd-multi-page-menu-renderer,
-html[data-ypp-ui-style="christmas"] ytd-menu-popup-renderer {
+html[data-ypp-theme="christmas"] tp-yt-iron-dropdown,
+html[data-ypp-theme="christmas"] ytd-multi-page-menu-renderer,
+html[data-ypp-theme="christmas"] ytd-menu-popup-renderer {
   background: var(--christmas-bg-secondary) !important;
   border: 1px solid var(--christmas-glass-border) !important;
   border-radius: var(--christmas-r-md) !important;

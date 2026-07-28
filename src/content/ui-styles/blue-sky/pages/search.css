@@ -1,125 +1,89 @@
-ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
-  margin: 5px auto !important;
-}
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox {
-  background: none !important;
+/* =========================================================
+   BLUE SKY — SEARCH PAGE
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Search header ── */
+html[data-ypp-theme="blue-sky"] ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 8px auto !important;
+  background: rgba(255, 255, 255, 0.50) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-base) !important;
+  border-radius: var(--sky-shape-card) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  padding: 12px 16px !important;
 }
-.ytSearchboxComponentSearchButton {
-  margin-left: 10px !important;
-  border-radius: 32px !important;
+
+/* ── Search filter bar ── */
+html[data-ypp-theme="blue-sky"] ytd-search-filter-renderer {
+  background: transparent !important;
+  border: none !important;
+}
+html[data-ypp-theme="blue-sky"] ytd-search-filter-renderer a {
+  border-radius: var(--sky-shape-chip) !important;
   border: var(--sky-border) !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: var(--sky-text-secondary) !important;
+  padding: 6px 14px !important;
+  transition: all 0.3s var(--sky-bounce) !important;
+  box-shadow: var(--sky-shadow-card) !important;
 }
-.ytSearchboxComponentSearchButton:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+html[data-ypp-theme="blue-sky"] ytd-search-filter-renderer a:hover,
+html[data-ypp-theme="blue-sky"] ytd-search-filter-renderer a[aria-selected="true"] {
+  background: linear-gradient(135deg, rgba(26, 144, 217, 0.85), rgba(0, 200, 240, 0.85)) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.50) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    0 6px 20px rgba(0, 191, 255, 0.40) !important;
+  transform: translateY(-2px) !important;
 }
-.ytSearchboxComponentSearchButton:active {
-  transform: scale(0.95);
-  box-shadow: var(--shadow-active) !important;
-}
-.ytSearchboxComponentSuggestionsContainer,
-ytd-multi-page-menu-renderer {
-  top: 55px !important;
+
+/* ── Search shelf headers ── */
+html[data-ypp-theme="blue-sky"] ytd-search ytd-shelf-renderer {
+  background: rgba(255, 255, 255, 0.40) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
-  box-shadow: var(--shadow-hover) !important;
-  border-radius: 32px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: var(--sky-shape-card) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
 }
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
-  margin-right: 10px;
-  width: 30px !important;
-  height: 30px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-html,
-[dark] .ytSearchboxComponentInput {
-  mix-blend-mode: difference;
-}
-html,
-[dark] .ytSearchboxComponentInput {
-  mix-blend-mode: normal;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #ffffff !important;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #0f0f0f !important;
-}
-.ytSearchboxComponentInputBox {
-  -webkit-backdrop-filter: blur(16px) !important;
-  backdrop-filter: blur(16px) !important;
-  border-radius: 30px !important;
-  background: rgba(255, 255, 255, 0.5) !important;
-  border: 2px solid rgba(135, 206, 250, 0.5) !important;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05), 0 4px 15px rgba(135, 206, 250, 0.1) !important;
-  transition: all 0.3s ease !important;
-}
-.ytSearchboxComponentInputBox:focus-within {
-  background: rgba(255, 255, 255, 0.8) !important;
-  border-color: rgba(0, 191, 255, 0.8) !important;
-  box-shadow: 0 0 25px rgba(135, 206, 250, 0.5), inset 0 2px 10px rgba(0, 0, 0, 0.02) !important;
-}
-.ytSearchboxComponentSearchButton {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(135, 206, 250, 0.3),
-      rgba(0, 191, 255, 0.3)) !important;
-  border-left: 1px solid rgba(135, 206, 250, 0.3) !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-}
-.ytSearchboxComponentSearchButton:hover {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(135, 206, 250, 0.6),
-      rgba(0, 191, 255, 0.6)) !important;
-}
-ytd-searchbox #container {
-  background: rgba(255, 255, 255, 0.7) !important;
-  border: 1px solid rgba(125, 211, 252, 0.5) !important;
-  border-radius: 20px 0 0 20px !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-}
-[dark] ytd-searchbox #container {
-  background: rgba(15, 23, 42, 0.6) !important;
-  border: 1px solid rgba(56, 189, 248, 0.3) !important;
-}
-ytd-searchbox #search-icon-legacy {
-  border: 1px solid rgba(125, 211, 252, 0.5) !important;
-  background: rgba(224, 242, 254, 0.5) !important;
-  border-radius: 0 20px 20px 0 !important;
-}
-[dark] ytd-searchbox #search-icon-legacy {
-  border: 1px solid rgba(56, 189, 248, 0.3) !important;
-  background: rgba(15, 23, 42, 0.8) !important;
-}
-ytd-search-filter-group-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 32px !important;
-  padding: 15px !important;
-  box-shadow: var(--shadow-base) !important;
+
+/* ── Search result cards ── */
+html[data-ypp-theme="blue-sky"] ytd-search ytd-video-renderer,
+html[data-ypp-theme="blue-sky"] ytd-search ytd-channel-renderer,
+html[data-ypp-theme="blue-sky"] ytd-search ytd-playlist-renderer,
+html[data-ypp-theme="blue-sky"] ytd-search ytd-radio-renderer {
+  border-radius: var(--sky-shape-card) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  border: var(--sky-border) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  padding: 12px !important;
   margin-bottom: 10px !important;
+  transition: all 0.4s var(--sky-ease) !important;
+}
+html[data-ypp-theme="blue-sky"] ytd-search ytd-video-renderer:hover,
+html[data-ypp-theme="blue-sky"] ytd-search ytd-channel-renderer:hover,
+html[data-ypp-theme="blue-sky"] ytd-search ytd-playlist-renderer:hover {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: var(--sky-border-hover) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+  transform: translateX(6px) !important;
+}
+
+/* ── Search result title & meta ── */
+html[data-ypp-theme="blue-sky"] ytd-search ytd-video-renderer #video-title {
+  color: var(--sky-text-primary) !important;
+  font-weight: 600 !important;
+}
+html[data-ypp-theme="blue-sky"] ytd-search ytd-video-renderer #metadata-line span,
+html[data-ypp-theme="blue-sky"] ytd-search ytd-video-renderer .ytd-channel-name {
+  color: var(--sky-text-secondary) !important;
 }

@@ -1,36 +1,39 @@
 /* =========================================================
    AURORA — BUTTONS
+   Rule #11 Blueprint: Target pill containers, NOT child elements
    ========================================================= */
 
-/* Default Button State (Glass Pill) */
-html[data-ypp-ui-style="aurora"] yt-button-shape button,
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next,
-html[data-ypp-ui-style="aurora"] ytd-button-renderer button {
+/* Default Action Buttons */
+html[data-ypp-theme="aurora"] button.yt-spec-button-shape-next--tonal:not(.yt-spec-button-shape-next--call-to-action, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--outline, .yt-spec-button-shape-next--text),
+html[data-ypp-theme="aurora"] yt-button-shape button,
+html[data-ypp-theme="aurora"] ytd-button-renderer button {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
-  border-radius: var(--aurora-radius-pill) !important;
   color: var(--aurora-text-primary) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
+  border-radius: var(--aurora-shape-btn) !important;
   transition: all var(--aurora-bounce) !important;
 }
 
-/* Button Hover State */
-html[data-ypp-ui-style="aurora"] yt-button-shape button:hover,
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="aurora"] ytd-button-renderer button:hover {
+html[data-ypp-theme="aurora"] button.yt-spec-button-shape-next--tonal:not(.yt-spec-button-shape-next--call-to-action, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--outline, .yt-spec-button-shape-next--text):hover,
+html[data-ypp-theme="aurora"] yt-button-shape button:hover,
+html[data-ypp-theme="aurora"] ytd-button-renderer button:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   transform: translateY(-2px) !important;
+  color: #fff !important;
 }
 
-/* Primary/Filled Buttons (The animated gradient) */
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next--call-to-action,
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
-html[data-ypp-ui-style="aurora"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
-html[data-ypp-ui-style="aurora"] #subscribe-button button {
+html[data-ypp-theme="aurora"] yt-button-shape button:active {
+  transform: scale(0.97) !important;
+}
+
+/* Primary Subscribe/Filled Buttons */
+html[data-ypp-theme="aurora"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-theme="aurora"] .yt-spec-button-shape-next--filled {
   background: var(--aurora-gradient-primary) !important;
   background-size: 200% 200% !important;
   animation: aurora-shift 5s ease infinite !important;
@@ -38,57 +41,26 @@ html[data-ypp-ui-style="aurora"] #subscribe-button button {
   color: #000 !important;
   font-weight: 700 !important;
   box-shadow: var(--aurora-glow-cyan) !important;
+  border-radius: var(--aurora-shape-btn) !important;
+  transition: all var(--aurora-bounce) !important;
 }
 
-/* Primary Button Hover */
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next--call-to-action:hover,
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-style="aurora"] #subscribe-button button:hover {
-  transform: scale(1.05) !important;
+html[data-ypp-theme="aurora"] .yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-theme="aurora"] .yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.05) translateY(-2px) !important;
   box-shadow: var(--aurora-glow-mixed) !important;
 }
 
-/* Active / Toggled / Pressed Buttons */
-html[data-ypp-ui-style="aurora"] yt-button-shape button[aria-pressed="true"],
-html[data-ypp-ui-style="aurora"] .yt-spec-button-shape-next[aria-pressed="true"] {
-  background: var(--aurora-glass-solid) !important;
-  border: var(--aurora-border-glow) !important;
-  box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.2) !important;
-  color: var(--aurora-color-1) !important;
+/* Active / Pressed Buttons */
+html[data-ypp-theme="aurora"] yt-button-shape button[aria-pressed="true"],
+html[data-ypp-theme="aurora"] .yt-spec-button-shape-next[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5) !important;
 }
 
-/* Icon Buttons (Circular) */
-html[data-ypp-ui-style="aurora"] yt-icon-button button {
-  background: transparent !important;
-  border-radius: 50% !important;
-  border: none !important;
-  box-shadow: none !important;
-  transition: all var(--aurora-bounce) !important;
-}
-html[data-ypp-ui-style="aurora"] yt-icon-button button:hover {
-  background: var(--aurora-glass-light) !important;
-  box-shadow: var(--aurora-glow-cyan) !important;
-  transform: scale(1.1) !important;
-}
-
-/* Extension Action Buttons */
-html[data-ypp-ui-style="aurora"] .ypp-gpb-btn,
-html[data-ypp-ui-style="aurora"] .ypp-action-btn,
-html[data-ypp-ui-style="aurora"] .ypp-pill-toggle {
-  background: var(--aurora-glass-heavy) !important;
-  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
-  border: var(--aurora-border-glass) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: var(--aurora-shadow-glass) !important;
-  color: var(--aurora-text-primary) !important;
-  transition: all var(--aurora-bounce) !important;
-}
-html[data-ypp-ui-style="aurora"] .ypp-gpb-btn:hover,
-html[data-ypp-ui-style="aurora"] .ypp-action-btn:hover,
-html[data-ypp-ui-style="aurora"] .ypp-pill-toggle:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: var(--aurora-border-glow) !important;
-  box-shadow: var(--aurora-glow-cyan) !important;
-  transform: translateY(-2px) !important;
+/* Touch feedback cleanup */
+html[data-ypp-theme="aurora"] .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-theme="aurora"] .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
 }

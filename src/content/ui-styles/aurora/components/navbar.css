@@ -3,10 +3,10 @@
    ========================================================= */
 
 /* Top Masthead */
-html[data-ypp-ui-style="aurora"] ytd-masthead {
+html[data-ypp-theme="aurora"] ytd-masthead {
   background: transparent !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-masthead #container.ytd-masthead {
+html[data-ypp-theme="aurora"] ytd-masthead #container.ytd-masthead {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -15,7 +15,7 @@ html[data-ypp-ui-style="aurora"] ytd-masthead #container.ytd-masthead {
 }
 
 /* Search Box Container */
-html[data-ypp-ui-style="aurora"] ytd-searchbox {
+html[data-ypp-theme="aurora"] ytd-searchbox {
   background: var(--aurora-glass-light) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -27,52 +27,52 @@ html[data-ypp-ui-style="aurora"] ytd-searchbox {
 }
 
 /* Focus State for Search Box */
-html[data-ypp-ui-style="aurora"] ytd-searchbox[has-focus] {
+html[data-ypp-theme="aurora"] ytd-searchbox[has-focus] {
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   background: rgba(10, 10, 10, 0.8) !important;
 }
 
 /* The actual text input */
-html[data-ypp-ui-style="aurora"] ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-theme="aurora"] ytd-searchbox #container.ytd-searchbox {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-searchbox input {
+html[data-ypp-theme="aurora"] ytd-searchbox input {
   color: var(--aurora-text-primary) !important;
   font-weight: 500 !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-searchbox input::placeholder {
+html[data-ypp-theme="aurora"] ytd-searchbox input::placeholder {
   color: var(--aurora-text-secondary) !important;
 }
 
 /* Search Button */
-html[data-ypp-ui-style="aurora"] ytd-searchbox #search-icon-legacy {
+html[data-ypp-theme="aurora"] ytd-searchbox #search-icon-legacy {
   background: var(--aurora-glass-light) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   margin: 4px !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-searchbox #search-icon-legacy:hover {
+html[data-ypp-theme="aurora"] ytd-searchbox #search-icon-legacy:hover {
   background: var(--aurora-gradient-primary) !important;
   border-color: transparent !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   transform: scale(1.05) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-searchbox #search-icon-legacy:hover yt-icon {
+html[data-ypp-theme="aurora"] ytd-searchbox #search-icon-legacy:hover yt-icon {
   color: #000 !important;
 }
 
 /* Voice Search Button */
-html[data-ypp-ui-style="aurora"] #voice-search-button yt-icon-button {
+html[data-ypp-theme="aurora"] #voice-search-button yt-icon-button {
   background: var(--aurora-glass-heavy) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: 50% !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] #voice-search-button yt-icon-button:hover {
+html[data-ypp-theme="aurora"] #voice-search-button yt-icon-button:hover {
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-magenta) !important;
   transform: scale(1.1) !important;

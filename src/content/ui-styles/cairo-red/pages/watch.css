@@ -1,0 +1,21 @@
+/* =========================================================
+   CAIRO RED — WATCH PAGE
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] ytd-watch-flexy {
+  background: var(--cairo-bg-base) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] #primary-inner,
+html[data-ypp-ui-style="cairo-red"] #secondary-inner {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] #description-inner,
+html[data-ypp-ui-style="cairo-red"] ytd-video-secondary-info-renderer {
+  background: var(--cairo-bg-mid) !important;
+  border: var(--cairo-border) !important;
+  border-radius: var(--cairo-radius) !important;
+  padding: 16px !important;
+  margin-top: 16px !important;
+}

@@ -1,123 +1,24 @@
-/* =========================================================
-   CYBERPUNK — COMMENTS (EXPANDED)
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/pages/comments.css */
 
-/* Comment Input Box */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-simplebox-renderer {
-  border: var(--cyber-border-thin) !important;
+html[data-ypp-theme="cyberpunk"] ytd-comment-thread-renderer {
+  background: transparent !important;
   border-radius: 0 !important;
+  border-left: 2px solid var(--ypp-border-heavy) !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  transition: var(--ypp-transition-snap) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] ytd-comment-thread-renderer:focus-within,
+html[data-ypp-theme="cyberpunk"] ytd-comment-thread-renderer:hover {
+  background: rgba(255, 0, 85, 0.05) !important;
+  border-left: 2px solid var(--ypp-accent-secondary) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] #simple-box {
   background: #000 !important;
-  padding: 12px !important;
-  transition: border-color var(--cyber-snap), box-shadow var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-simplebox-renderer:focus-within {
-  border-color: var(--cyber-primary) !important;
-  box-shadow: var(--cyber-glow-primary) !important;
-}
-
-/* Input placeholder */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-simplebox-renderer #placeholder-area {
-  color: rgba(0, 255, 204, 0.35) !important;
-  font-family: monospace !important;
-}
-
-/* Reply Threads */
-html[data-ypp-ui-style="cyberpunk"] #replies.ytd-comment-thread-renderer {
-  border-left: 2px solid var(--cyber-secondary) !important;
-  box-shadow: -4px 0 12px rgba(0, 255, 204, 0.15) !important;
-  margin-left: 52px !important;
-  padding-left: 16px !important;
-}
-
-/* Individual Comment Renderers */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-renderer {
   border-radius: 0 !important;
-  border-bottom: 1px solid rgba(0, 255, 204, 0.07) !important;
-  padding: 10px 0 !important;
-  transition: background var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-renderer:hover {
-  background: rgba(0, 255, 204, 0.03) !important;
-}
-
-/* Comment Author Name */
-html[data-ypp-ui-style="cyberpunk"] #author-text.ytd-comment-renderer {
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
-  font-weight: bold !important;
-  text-shadow: 0 0 4px rgba(0, 255, 204, 0.4) !important;
-}
-
-/* Comment Author (Creator / Pinned) */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-renderer[is-highlighted] {
-  background: rgba(255, 0, 85, 0.06) !important;
-  border-left: 3px solid var(--cyber-primary) !important;
-  padding-left: 12px !important;
-}
-
-/* Pinned Comment Label */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-renderer #pinned-comment-badge {
-  color: var(--cyber-tertiary) !important;
-  font-family: monospace !important;
-  text-transform: uppercase !important;
-}
-
-/* Comment Action Buttons (Like, Reply, etc.) */
-html[data-ypp-ui-style="cyberpunk"] #reply-button-end yt-button-shape button,
-html[data-ypp-ui-style="cyberpunk"] #comment-action-buttons-end yt-button-shape button {
-  border-radius: 0 !important;
-  border: none !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  color: rgba(0, 255, 204, 0.7) !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #reply-button-end yt-button-shape button:hover,
-html[data-ypp-ui-style="cyberpunk"] #comment-action-buttons-end yt-button-shape button:hover {
-  color: var(--cyber-secondary) !important;
-  background: rgba(0, 255, 204, 0.08) !important;
-  text-shadow: 0 0 5px var(--cyber-secondary) !important;
-}
-
-/* Like count on comment */
-html[data-ypp-ui-style="cyberpunk"] #vote-count-middle.ytd-comment-action-buttons-renderer {
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
-}
-
-/* Sort / Filter */
-html[data-ypp-ui-style="cyberpunk"] #sort-menu yt-sort-filter-sub-menu-renderer .yt-simple-endpoint,
-html[data-ypp-ui-style="cyberpunk"] #sort-menu yt-button-shape button {
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  color: var(--cyber-secondary) !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #sort-menu yt-button-shape button:hover {
-  background: rgba(0, 255, 204, 0.1) !important;
-  border-color: var(--cyber-secondary) !important;
-}
-
-/* Avatars in Comments */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-renderer yt-img-shadow img {
-  clip-path: var(--cyber-clip-hex) !important;
-  border-radius: 0 !important;
-}
-
-/* Heart by Creator */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-action-buttons-renderer #creator-heart {
-  filter: drop-shadow(0 0 4px var(--cyber-primary)) !important;
-}
-
-/* "View X replies" expand button */
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button {
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  color: var(--cyber-secondary) !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button:hover {
-  background: rgba(0, 255, 204, 0.08) !important;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+  clip-path: var(--ypp-clip-md) !important;
+  border: 1px solid var(--ypp-accent-primary) !important;
+  padding: 12px 24px !important;
 }

@@ -1,8 +1,74 @@
-/* base/tokens.css - Empty by default */
+/* =========================================================
+   BRUTALISM — TOKENS & VARIABLES
+   Unique Shape: Perfect Squares (0px radius)
+   Theme: High contrast, thick borders, solid neo-shadows
+   ========================================================= */
 
-html {
-  /* YouTube Global Transparent Overrides */
-  --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-raised-background: transparent !important;
-  --yt-spec-additive-background: transparent !important;
+:root[data-ypp-theme="brutalism"],
+html[data-ypp-theme="brutalism"] {
+  /* ── Core Palette ── */
+  --brutal-black:      #000000;
+  --brutal-white:      #ffffff;
+  --brutal-gray-light: #f0f0f0;
+  --brutal-gray-dark:  #222222;
+  
+  /* Aggressive Accents */
+  --brutal-accent:     #ffd700; /* Neo-Yellow / Gold */
+  --brutal-accent-alt: #ff00ff; /* Neo-Pink (for rare highlights if needed) */
+
+  /* ── Backgrounds ── */
+  --brutal-bg-base:    var(--brutal-white);
+  --brutal-bg-surface: var(--brutal-gray-light);
+  --brutal-bg-card:    var(--brutal-white);
+  --brutal-bg-elevated:var(--brutal-white);
+
+  /* ── Text ── */
+  --brutal-text-primary:   #000000;
+  --brutal-text-secondary: #444444;
+  --brutal-text-muted:     #777777;
+  --brutal-text-on-accent: #000000;
+
+  /* ── Borders (Thick & Solid) ── */
+  --brutal-border-width: 3px;
+  --brutal-border:       var(--brutal-border-width) solid var(--brutal-black);
+  --brutal-border-focus: var(--brutal-border-width) solid var(--brutal-accent);
+  --brutal-border-white: var(--brutal-border-width) solid var(--brutal-white);
+
+  /* ── Shapes (Absolute rigidity) ── */
+  --brutal-shape-card:  0px;
+  --brutal-shape-btn:   0px;
+  --brutal-shape-chip:  0px;
+  --brutal-shape-modal: 0px;
+
+  /* ── Solid Offset Shadows ── */
+  --brutal-shadow-offset: 6px;
+  --brutal-shadow-card:   var(--brutal-shadow-offset) var(--brutal-shadow-offset) 0px var(--brutal-black);
+  --brutal-shadow-hover:  4px 4px 0px var(--brutal-black); /* shadow shrinks as it's pressed down */
+  --brutal-shadow-active: 0px 0px 0px var(--brutal-black); /* flush */
+  
+  --brutal-shadow-accent: var(--brutal-shadow-offset) var(--brutal-shadow-offset) 0px var(--brutal-accent);
+
+  /* ── Easing (Fast, snappy, no organic curves) ── */
+  --brutal-transition:      all 0.1s linear;
+  --brutal-transition-snap: all 0.05s linear;
+
+  /* ── Legacy Variable Fallbacks ── */
+  --sf:            var(--brutal-bg-surface);
+  --bounce:        var(--brutal-transition);
+  --shadow-base:   var(--brutal-shadow-card);
+  --shadow-hover:  var(--brutal-shadow-hover);
+  --shadow-active: var(--brutal-shadow-active);
+}
+
+/* ── YouTube Native Variables overrides ── */
+html[data-ypp-theme="brutalism"] {
+  --yt-spec-base-background:         var(--brutal-bg-base)     !important;
+  --yt-spec-raised-background:       var(--brutal-bg-surface)  !important;
+  --yt-spec-menu-background:         var(--brutal-bg-elevated) !important;
+  --yt-spec-text-primary:            var(--brutal-text-primary) !important;
+  --yt-spec-text-secondary:          var(--brutal-text-secondary) !important;
+  --yt-spec-call-to-action:          var(--brutal-black)       !important;
+  --yt-spec-brand-button-background: var(--brutal-black)       !important;
+  --yt-spec-badge-chip-background:   transparent               !important;
+  --yt-spec-additive-background:     transparent               !important;
 }

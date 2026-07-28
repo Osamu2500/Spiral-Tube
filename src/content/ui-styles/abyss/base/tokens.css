@@ -1,0 +1,35 @@
+/* src/content/ui-styles/abyss/base/tokens.css */
+
+html[data-ypp-theme="abyss"] {
+  /* Core Abyss Palette */
+  --ypp-bg-base: #010609;
+  --ypp-bg-surface: #020c11;
+  --ypp-bg-elevated: #03141a;
+  --ypp-bg-card: #020a0e;
+  
+  --ypp-accent-primary: #00e5ff; /* Bioluminescent Cyan */
+  --ypp-accent-secondary: #009688; /* Deep Teal */
+  
+  --ypp-text-primary: #e0f2f1;
+  --ypp-text-secondary: #80cbc4;
+  --ypp-text-disabled: #4db6ac;
+  
+  --ypp-border-light: rgba(0, 229, 255, 0.1);
+  --ypp-border-heavy: rgba(0, 150, 136, 0.3);
+  
+  /* Abyss Unique Geometries (Fins / Liquid Waves) */
+  --ypp-rad-sm: 0 16px 0 16px;
+  --ypp-rad-md: 0 24px 0 24px;
+  --ypp-rad-lg: 0 32px 0 32px;
+  
+  --ypp-rad-pill: 0 999px 0 999px;
+  
+  /* Glows & Shadows */
+  --ypp-shadow-glow: 0 0 20px rgba(0, 229, 255, 0.15);
+  --ypp-shadow-glow-intense: 0 0 30px rgba(0, 229, 255, 0.3);
+  --ypp-shadow-depth: 0 10px 20px rgba(0, 0, 0, 0.8);
+  
+  /* Fluid Kinetics */
+  --ypp-transition-fluid: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  --ypp-transition-hover: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}

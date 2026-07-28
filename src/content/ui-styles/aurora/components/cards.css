@@ -3,7 +3,7 @@
    ========================================================= */
 
 /* Main Card Wrapper */
-html[data-ypp-card-style="aurora"] :is(
+html[data-ypp-theme="aurora"] :is(
   ytd-rich-item-renderer,
   ytd-video-renderer,
   ytd-compact-video-renderer,
@@ -21,7 +21,7 @@ html[data-ypp-card-style="aurora"] :is(
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
-  border-radius: var(--aurora-radius-lg) !important;
+  border-radius: var(--aurora-shape-card) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
   padding: 12px !important;
   margin-bottom: 16px !important;
@@ -31,12 +31,12 @@ html[data-ypp-card-style="aurora"] :is(
 }
 
 /* Clear default backgrounds on grid media */
-html[data-ypp-card-style="aurora"] ytd-rich-grid-media {
+html[data-ypp-theme="aurora"] ytd-rich-grid-media {
   background: transparent !important;
 }
 
 /* Card Hover Glow Effect */
-html[data-ypp-card-style="aurora"] :is(
+html[data-ypp-theme="aurora"] :is(
   ytd-rich-item-renderer,
   ytd-video-renderer,
   ytd-compact-video-renderer,
@@ -57,7 +57,7 @@ html[data-ypp-card-style="aurora"] :is(
 }
 
 /* Optional: Gradient accent line at the bottom of the card on hover */
-html[data-ypp-card-style="aurora"] :is(
+html[data-ypp-theme="aurora"] :is(
   ytd-rich-item-renderer,
   ytd-video-renderer,
   ytd-compact-video-renderer,
@@ -75,8 +75,8 @@ html[data-ypp-card-style="aurora"] :is(
 }
 
 /* Thumbnails */
-html[data-ypp-card-style="aurora"] ytd-thumbnail,
-html[data-ypp-card-style="aurora"] .ytd-thumbnail {
+html[data-ypp-theme="aurora"] ytd-thumbnail,
+html[data-ypp-theme="aurora"] .ytd-thumbnail {
   border-radius: var(--aurora-radius-md) !important;
   overflow: hidden !important;
   border: var(--aurora-border-glass) !important;
@@ -84,16 +84,16 @@ html[data-ypp-card-style="aurora"] .ytd-thumbnail {
 }
 
 /* Thumbnail Image Hover Zoom */
-html[data-ypp-card-style="aurora"] ytd-thumbnail img {
+html[data-ypp-theme="aurora"] ytd-thumbnail img {
   border-radius: var(--aurora-radius-md) !important;
   transition: transform var(--aurora-bounce) !important;
 }
-html[data-ypp-card-style="aurora"] ytd-thumbnail:hover img {
+html[data-ypp-theme="aurora"] ytd-thumbnail:hover img {
   transform: scale(1.08) !important;
 }
 
 /* Time Status Badge (e.g., 10:05) */
-html[data-ypp-card-style="aurora"] ytd-thumbnail-overlay-time-status-renderer {
+html[data-ypp-theme="aurora"] ytd-thumbnail-overlay-time-status-renderer {
   background: var(--aurora-glass-solid) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -107,14 +107,14 @@ html[data-ypp-card-style="aurora"] ytd-thumbnail-overlay-time-status-renderer {
 }
 
 /* Channel Avatar next to metadata */
-html[data-ypp-card-style="aurora"] #avatar-link img,
-html[data-ypp-card-style="aurora"] yt-img-shadow#avatar img {
+html[data-ypp-theme="aurora"] #avatar-link img,
+html[data-ypp-theme="aurora"] yt-img-shadow#avatar img {
   border-radius: 50% !important;
   border: var(--aurora-border-glass) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-card-style="aurora"] ytd-rich-item-renderer:hover #avatar-link img {
+html[data-ypp-theme="aurora"] ytd-rich-item-renderer:hover #avatar-link img {
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-magenta) !important;
 }

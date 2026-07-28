@@ -1,0 +1,54 @@
+/* src/content/ui-styles/abyss/components/cards.css */
+
+/* Video Cards */
+html[data-ypp-theme="abyss"] ytd-rich-item-renderer,
+html[data-ypp-theme="abyss"] ytd-grid-video-renderer,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer,
+html[data-ypp-theme="abyss"] ytd-video-renderer {
+  background: var(--ypp-bg-card) !important;
+  border-radius: var(--ypp-rad-lg) !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  transition: var(--ypp-transition-fluid) !important;
+  box-shadow: var(--ypp-shadow-depth) !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-rich-item-renderer:hover,
+html[data-ypp-theme="abyss"] ytd-grid-video-renderer:hover,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer:hover,
+html[data-ypp-theme="abyss"] ytd-video-renderer:hover {
+  background: var(--ypp-bg-elevated) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: var(--ypp-shadow-glow-intense) !important;
+}
+
+/* Thumbnails */
+html[data-ypp-theme="abyss"] ytd-thumbnail,
+html[data-ypp-theme="abyss"] ytd-playlist-thumbnail {
+  border-radius: var(--ypp-rad-md) !important;
+  overflow: hidden !important;
+  border-bottom: 1px solid var(--ypp-border-light) !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-thumbnail img {
+  border-radius: var(--ypp-rad-md) !important;
+}
+
+/* Time status pill */
+html[data-ypp-theme="abyss"] ytd-thumbnail-overlay-time-status-renderer {
+  background: rgba(1, 6, 9, 0.9) !important;
+  color: var(--ypp-accent-primary) !important;
+  border-radius: var(--ypp-rad-sm) !important;
+  border: 1px solid var(--ypp-border-light) !important;
+  padding: 4px 8px !important;
+  margin: 8px !important;
+}
+
+/* Avatars */
+html[data-ypp-theme="abyss"] yt-img-shadow#avatar,
+html[data-ypp-theme="abyss"] .ytd-channel-avatar-editor,
+html[data-ypp-theme="abyss"] .yt-spec-avatar-shape {
+  border-radius: var(--ypp-rad-pill) !important; /* Perfect circles for depth */
+  border: 2px solid var(--ypp-border-heavy) !important;
+  box-shadow: var(--ypp-shadow-glow) !important;
+}

@@ -1,11 +1,11 @@
-html[data-ypp-ui-style="christmas"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="christmas"] ytd-popup-container {
+html[data-ypp-theme="christmas"] tp-yt-paper-dialog,
+html[data-ypp-theme="christmas"] ytd-popup-container {
   background: var(--christmas-bg-secondary) !important;
   border-radius: var(--christmas-r-lg) !important;
   border: 1px solid var(--christmas-glass-border) !important;
   box-shadow: 0 16px 48px rgba(0,0,0,0.5) !important;
 }
 
-html[data-ypp-ui-style="christmas"] ytd-modal-with-title-and-button-renderer {
+html[data-ypp-theme="christmas"] ytd-modal-with-title-and-button-renderer {
   background: transparent !important;
 }

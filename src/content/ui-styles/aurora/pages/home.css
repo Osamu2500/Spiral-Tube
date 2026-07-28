@@ -3,7 +3,7 @@
    ========================================================= */
 
 /* Filter Chips ("All", "Music", "Gaming") */
-html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer {
+html[data-ypp-theme="aurora"] yt-chip-cloud-chip-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer {
 }
 
 /* Chip Hover State */
-html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer:hover {
+html[data-ypp-theme="aurora"] yt-chip-cloud-chip-renderer:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
@@ -24,8 +24,8 @@ html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer:hover {
 }
 
 /* Selected Chip (Glowing animated gradient) */
-html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer[selected],
-html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"][selected] {
+html[data-ypp-theme="aurora"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-theme="aurora"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"][selected] {
   background: var(--aurora-gradient-primary) !important;
   background-size: 200% 200% !important;
   animation: aurora-shift 3s ease infinite !important;
@@ -36,7 +36,7 @@ html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer[chip-style="STYLE_D
 }
 
 /* Filter bar container */
-html[data-ypp-ui-style="aurora"] ytd-feed-filter-chip-bar-renderer {
+html[data-ypp-theme="aurora"] ytd-feed-filter-chip-bar-renderer {
   border-top: none !important;
   border-bottom: none !important;
   background: transparent !important;
@@ -44,21 +44,21 @@ html[data-ypp-ui-style="aurora"] ytd-feed-filter-chip-bar-renderer {
 }
 
 /* Left / Right scroll arrows for chips */
-html[data-ypp-ui-style="aurora"] #left-arrow button,
-html[data-ypp-ui-style="aurora"] #right-arrow button {
+html[data-ypp-theme="aurora"] #left-arrow button,
+html[data-ypp-theme="aurora"] #right-arrow button {
   background: var(--aurora-glass-heavy) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: 50% !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] #left-arrow button:hover,
-html[data-ypp-ui-style="aurora"] #right-arrow button:hover {
+html[data-ypp-theme="aurora"] #left-arrow button:hover,
+html[data-ypp-theme="aurora"] #right-arrow button:hover {
   background: var(--aurora-glass-light) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
 }
 
 /* Shelves ("Latest YouTube posts", "Shorts") */
-html[data-ypp-ui-style="aurora"] ytd-rich-shelf-renderer {
+html[data-ypp-theme="aurora"] ytd-rich-shelf-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -68,13 +68,13 @@ html[data-ypp-ui-style="aurora"] ytd-rich-shelf-renderer {
   padding: 24px !important;
   margin: 16px 0 !important;
 }
-html[data-ypp-ui-style="aurora"] #title.ytd-rich-shelf-renderer {
+html[data-ypp-theme="aurora"] #title.ytd-rich-shelf-renderer {
   color: var(--aurora-text-primary) !important;
   font-weight: 700 !important;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Show more button for shelves */
-html[data-ypp-ui-style="aurora"] ytd-button-renderer#show-more-button {
+html[data-ypp-theme="aurora"] ytd-button-renderer#show-more-button {
   margin-top: 16px !important;
 }

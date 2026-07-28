@@ -1,0 +1,22 @@
+/* =========================================================
+   BENTO — SEARCH
+   ========================================================= */
+
+html[data-ypp-theme="bento"] ytd-search ytd-video-renderer {
+  border-radius: 0 !important;
+  border: var(--bn-border-sm) !important;
+  background: var(--bn-bg-surface) !important;
+  margin-bottom: 8px !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  transition: var(--bn-transition) !important;
+}
+html[data-ypp-theme="bento"] ytd-search ytd-video-renderer:hover {
+  border-color: var(--bn-white) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  transform: translate(-2px, -2px) !important;
+}
+
+html[data-ypp-theme="bento"] ytd-search-suggestion-renderer:hover {
+  background: var(--bn-bg-elevated) !important;
+  border-left: 3px solid var(--bn-accent-warm) !important;
+}

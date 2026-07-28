@@ -1,6 +1,6 @@
-html[data-ypp-ui-style="bloodmoon"],
-html[data-ypp-ui-style="bloodmoon"] body,
-html[data-ypp-ui-style="bloodmoon"] ytd-app {
+html[data-ypp-theme="bloodmoon"],
+html[data-ypp-theme="bloodmoon"] body,
+html[data-ypp-theme="bloodmoon"] ytd-app {
   background: var(--bm-bg-obsidian) !important;
   background-image:
     radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192, 21, 42, 0.25) 0%, transparent 65%),
@@ -10,12 +10,12 @@ html[data-ypp-ui-style="bloodmoon"] ytd-app {
   color: var(--bm-text-primary) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] #background.ytd-app {
+html[data-ypp-theme="bloodmoon"] #background.ytd-app {
   display: none !important;
 }
 
 /* Eclipse corona halo at the top */
-html[data-ypp-ui-style="bloodmoon"] ytd-app::before {
+html[data-ypp-theme="bloodmoon"] ytd-app::before {
   content: "" !important;
   position: fixed !important;
   top: -120px !important;

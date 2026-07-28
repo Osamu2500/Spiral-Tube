@@ -1,22 +1,41 @@
-.anchored-panel.ytd-shorts {
-  background: var(--sf) !important;
-  padding: 5px;
+/* =========================================================
+   BLUE SKY — PANELS
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Generic panels ── */
+html[data-ypp-theme="blue-sky"] ytd-engagement-panel-section-list-renderer {
+  background: rgba(230, 245, 255, 0.65) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-active) !important;
-  margin-top: 15px !important;
+  box-shadow: var(--sky-shadow-card) !important;
 }
-ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
-  border-bottom: none;
+
+/* ── Transcript panel ── */
+html[data-ypp-theme="blue-sky"] ytd-transcript-segment-renderer {
+  border-radius: var(--sky-shape-chip) !important;
+  padding: 8px 12px !important;
+  transition: all 0.25s var(--sky-ease) !important;
+  color: var(--sky-text-primary) !important;
 }
-ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
-  background: none !important;
+html[data-ypp-theme="blue-sky"] ytd-transcript-segment-renderer:hover {
+  background: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
 }
-ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+html[data-ypp-theme="blue-sky"] ytd-transcript-segment-renderer .segment-timestamp {
+  color: var(--sky-accent-blue) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Info panel / description panel ── */
+html[data-ypp-theme="blue-sky"] ytd-structured-description-content-renderer {
+  background: rgba(255, 255, 255, 0.40) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
-}
-#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
-  box-shadow: var(--shadow-hover) !important;
+  border-radius: var(--sky-shape-card) !important;
+  padding: 16px !important;
 }

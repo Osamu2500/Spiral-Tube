@@ -1,0 +1,54 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — BUTTONS
+   ========================================================= */
+
+/* Default Action Buttons */
+html[data-ypp-ui-style="cherry"] button.yt-spec-button-shape-next--tonal:not(.yt-spec-button-shape-next--call-to-action, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--outline, .yt-spec-button-shape-next--text),
+html[data-ypp-ui-style="cherry"] yt-button-shape button,
+html[data-ypp-ui-style="cherry"] ytd-button-renderer button {
+  background: var(--cherry-bg-raised) !important;
+  border: var(--cherry-border) !important;
+  border-radius: var(--cherry-radius-pill) !important;
+  color: var(--cherry-text-primary) !important;
+}
+
+html[data-ypp-ui-style="cherry"] button.yt-spec-button-shape-next--tonal:not(.yt-spec-button-shape-next--call-to-action, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--outline, .yt-spec-button-shape-next--text):hover,
+html[data-ypp-ui-style="cherry"] yt-button-shape button:hover,
+html[data-ypp-ui-style="cherry"] ytd-button-renderer button:hover {
+  background: var(--cherry-brand-hover) !important;
+  border-color: var(--cherry-brand-hover) !important;
+  box-shadow: var(--cherry-shadow-glow) !important;
+  color: var(--cherry-text-inverse) !important;
+  transform: translateY(-2px);
+}
+
+html[data-ypp-ui-style="cherry"] yt-button-shape button:active {
+  transform: translateY(1px) !important;
+}
+
+/* Primary Subscribe/Filled Buttons */
+html[data-ypp-ui-style="cherry"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-style="cherry"] .yt-spec-button-shape-next--filled {
+  background: var(--cherry-brand) !important;
+  color: var(--cherry-text-primary) !important;
+  border: var(--cherry-border-glow) !important;
+  border-radius: var(--cherry-radius-pill) !important;
+  box-shadow: 0 4px 10px var(--cherry-brand-glow) !important;
+}
+
+html[data-ypp-ui-style="cherry"] .yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-ui-style="cherry"] .yt-spec-button-shape-next--filled:hover {
+  background: var(--cherry-brand-hover) !important;
+  color: var(--cherry-text-inverse) !important;
+  box-shadow: 0 6px 15px var(--cherry-brand-glow) !important;
+  transform: translateY(-2px);
+}
+
+/* Active / Pressed Buttons */
+html[data-ypp-ui-style="cherry"] yt-button-shape button[aria-pressed="true"],
+html[data-ypp-ui-style="cherry"] .yt-spec-button-shape-next[aria-pressed="true"] {
+  background: var(--cherry-brand) !important;
+  color: var(--cherry-text-primary) !important;
+  border-color: var(--cherry-brand) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5) !important;
+}

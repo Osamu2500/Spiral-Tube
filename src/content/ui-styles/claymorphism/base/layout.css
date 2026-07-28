@@ -1,0 +1,35 @@
+/* src/content/ui-styles/claymorphism/base/layout.css */
+
+html[data-ypp-theme="claymorphism"] ytd-app {
+  background: transparent !important;
+}
+
+/* Force text colors globally */
+html[data-ypp-theme="claymorphism"] {
+  --yt-spec-text-primary: var(--ypp-text-primary) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary) !important;
+  --yt-spec-text-disabled: var(--ypp-text-disabled) !important;
+  --yt-spec-icon-active-other: var(--ypp-text-primary) !important;
+  --yt-spec-icon-inactive: var(--ypp-text-secondary) !important;
+  --yt-spec-icon-disabled: var(--ypp-text-disabled) !important;
+  
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-raised-background: var(--ypp-bg-surface) !important;
+  --yt-spec-menu-background: var(--ypp-bg-card) !important;
+  --yt-spec-inverted-background: var(--ypp-text-primary) !important;
+  --yt-spec-additive-background: rgba(0, 0, 0, 0.05) !important;
+  --yt-spec-10-percent-layer: rgba(0, 0, 0, 0.08) !important;
+  
+  --yt-spec-brand-button-background: var(--ypp-accent-primary) !important;
+  --yt-spec-brand-link-text: var(--ypp-accent-primary) !important;
+  --yt-spec-call-to-action: var(--ypp-accent-primary) !important;
+  
+  /* Disable cinematic lighting */
+  --yt-spec-cinematic-blur: 0px !important;
+}
+
+/* Soft text selection */
+html[data-ypp-theme="claymorphism"] ::selection {
+  background: var(--ypp-accent-glow) !important;
+  color: var(--ypp-text-primary) !important;
+}

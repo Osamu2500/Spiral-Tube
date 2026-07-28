@@ -1,0 +1,15 @@
+/* src/content/ui-styles/claymorphism/pages/search.css */
+
+html[data-ypp-theme="claymorphism"] ytd-search-filter-renderer {
+  background: var(--ypp-bg-surface) !important;
+  border-radius: var(--ypp-radius-md) !important;
+  box-shadow: var(--ypp-shadow-clay-sm) !important;
+  padding: 8px 16px !important;
+  margin-right: 8px !important;
+  transition: var(--ypp-transition-clay) !important;
+}
+
+html[data-ypp-theme="claymorphism"] ytd-search-filter-renderer:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--ypp-shadow-clay-md) !important;
+}

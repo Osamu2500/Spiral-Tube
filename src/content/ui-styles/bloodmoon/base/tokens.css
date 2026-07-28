@@ -1,5 +1,5 @@
 /* Blood Moon — Eclipse red on deep obsidian */
-html[data-ypp-ui-style="bloodmoon"] {
+html[data-ypp-theme="bloodmoon"] {
   /* Colors */
   --bm-bg-obsidian: #060205;       /* Near-black with a red tint */
   --bm-bg-surface: #100409;        /* Dark burgundy surface */
@@ -25,7 +25,15 @@ html[data-ypp-ui-style="bloodmoon"] {
   --bm-glow-ember: 0 0 12px rgba(232, 69, 69, 0.6), 0 0 28px rgba(232, 69, 69, 0.25);
   --bm-glow-lunar: 0 0 16px rgba(255, 140, 105, 0.4);
 
-  /* Radii */
+  /* Unique Shape: "Blood Drop" (Teardrop)
+     Top-Left, Top-Right, Bottom-Right are rounded, Bottom-Left is perfectly sharp.
+  */
+  --bm-shape-card: 32px 32px 32px 0;
+  --bm-shape-btn: 18px 18px 18px 0;
+  --bm-shape-chip: 12px 12px 12px 0;
+  --bm-shape-modal: 24px 24px 24px 0;
+
+  /* Legacy Radii (for fallback/internal) */
   --bm-r-sm: 6px;
   --bm-r-md: 12px;
   --bm-r-lg: 18px;
@@ -36,7 +44,7 @@ html[data-ypp-ui-style="bloodmoon"] {
 }
 
 /* Map YT tokens */
-html[data-ypp-ui-style="bloodmoon"] {
+html[data-ypp-theme="bloodmoon"] {
   --yt-spec-base-background: var(--bm-bg-obsidian) !important;
   --yt-spec-raised-background: var(--bm-bg-surface) !important;
   --yt-spec-menu-background: var(--bm-bg-elevated) !important;

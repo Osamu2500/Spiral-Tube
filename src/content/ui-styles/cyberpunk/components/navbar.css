@@ -1,80 +1,53 @@
-/* =========================================================
-   CYBERPUNK — NAVBAR
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/components/navbar.css */
 
-/* Main Container */
-html[data-ypp-ui-style="cyberpunk"] ytd-masthead #container {
-  background: var(--cyber-bg) !important;
-  border-bottom: var(--cyber-border-thin) !important;
-  box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1) !important;
+/* Masthead (Navbar) */
+html[data-ypp-theme="cyberpunk"] ytd-masthead {
+  background: var(--ypp-bg-base) !important;
+  border-bottom: 2px solid var(--ypp-accent-primary) !important;
+  box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2) !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 10px)) !important;
 }
 
-/* Search Bar Container */
-html[data-ypp-ui-style="cyberpunk"] ytd-searchbox {
+/* Search Box */
+html[data-ypp-theme="cyberpunk"] ytd-searchbox {
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+html[data-ypp-theme="cyberpunk"] ytd-searchbox form {
   background: #000 !important;
-  border: var(--cyber-border-thick) !important;
   border-radius: 0 !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
-  transition: filter var(--cyber-snap) !important;
+  clip-path: var(--ypp-clip-sm) !important;
+  border: 1px solid var(--ypp-accent-primary) !important;
+  border-bottom: 2px solid var(--ypp-accent-primary) !important;
+  padding: 0 16px !important;
 }
 
-html[data-ypp-ui-style="cyberpunk"] ytd-searchbox:focus-within {
-  filter: drop-shadow(0 0 10px var(--cyber-primary)) !important;
-  border-color: var(--cyber-primary) !important;
+html[data-ypp-theme="cyberpunk"] ytd-searchbox form:focus-within {
+  border-color: var(--ypp-accent-secondary) !important;
+  box-shadow: var(--ypp-glow-pink) !important;
 }
 
-html[data-ypp-ui-style="cyberpunk"] ytd-searchbox #search-input {
-  color: var(--cyber-secondary) !important;
+html[data-ypp-theme="cyberpunk"] ytd-searchbox input {
+  color: var(--ypp-accent-primary) !important;
   font-family: monospace !important;
-  font-size: 16px !important;
 }
 
-/* Search Button */
-html[data-ypp-ui-style="cyberpunk"] #search-icon-legacy {
-  background: rgba(0, 255, 204, 0.1) !important;
-  border: none !important;
-  border-left: var(--cyber-border-thin) !important;
+html[data-ypp-theme="cyberpunk"] #search-icon-legacy {
+  background: var(--ypp-bg-elevated) !important;
   border-radius: 0 !important;
-  transition: all var(--cyber-snap) !important;
+  clip-path: var(--ypp-clip-sm) !important;
+  border: 1px solid var(--ypp-accent-primary) !important;
+  margin-left: 8px !important;
+  transition: var(--ypp-transition-snap) !important;
 }
-html[data-ypp-ui-style="cyberpunk"] #search-icon-legacy:hover {
-  background: var(--cyber-secondary) !important;
+
+html[data-ypp-theme="cyberpunk"] #search-icon-legacy:hover {
+  background: var(--ypp-accent-primary) !important;
+  box-shadow: var(--ypp-glow-cyan) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] #search-icon-legacy:hover yt-icon {
   color: #000 !important;
-}
-
-/* Logo (Adding a glitch effect on hover) */
-html[data-ypp-ui-style="cyberpunk"] ytd-topbar-logo-renderer:hover {
-  animation: cyber-glitch var(--cyber-glitch-dur) infinite;
-}
-
-/* Icons in Navbar */
-html[data-ypp-ui-style="cyberpunk"] ytd-masthead .yt-spec-button-shape-next--icon-only-default {
-  border-radius: 0 !important;
-  transition: background var(--cyber-snap), box-shadow var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover {
-  background: rgba(255, 0, 85, 0.2) !important;
-  box-shadow: inset 0 0 8px var(--cyber-primary) !important;
-}
-
-/* Guide Sidebar (Left Panel) */
-html[data-ypp-ui-style="cyberpunk"] ytd-guide-renderer,
-html[data-ypp-ui-style="cyberpunk"] tp-yt-app-drawer #drawer.tp-yt-app-drawer {
-  background: var(--cyber-bg) !important;
-  border-right: var(--cyber-border-thick) !important;
-  box-shadow: 5px 0 20px rgba(0, 255, 204, 0.1) !important;
-}
-
-html[data-ypp-ui-style="cyberpunk"] ytd-guide-entry-renderer {
-  border-radius: 0 !important;
-  transition: padding-left var(--cyber-snap), background var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-guide-entry-renderer:hover {
-  background: rgba(0, 255, 204, 0.1) !important;
-  border-left: 4px solid var(--cyber-secondary) !important;
-  padding-left: 12px !important; /* Push text over */
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-guide-entry-renderer[active] {
-  background: rgba(255, 0, 85, 0.15) !important;
-  border-left: 4px solid var(--cyber-primary) !important;
 }

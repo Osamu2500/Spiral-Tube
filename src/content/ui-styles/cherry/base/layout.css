@@ -1,0 +1,23 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — LAYOUT RESET
+   ========================================================= */
+
+html[data-ypp-ui-style="cherry"] * {
+  --yt-spec-base-background: var(--cherry-bg-base) !important;
+  --yt-spec-raised-background: var(--cherry-bg-mid) !important;
+  --yt-spec-menu-background: var(--cherry-bg-raised) !important;
+  
+  --yt-spec-text-primary: var(--cherry-text-primary) !important;
+  --yt-spec-text-secondary: var(--cherry-text-secondary) !important;
+  
+  scrollbar-color: var(--cherry-brand) transparent !important;
+}
+
+html[data-ypp-ui-style="cherry"] ::-webkit-scrollbar-thumb {
+  background: var(--cherry-brand) !important;
+  border-radius: var(--cherry-radius-pill) !important;
+}
+
+html[data-ypp-ui-style="cherry"] ::-webkit-scrollbar-track {
+  background: transparent !important;
+}

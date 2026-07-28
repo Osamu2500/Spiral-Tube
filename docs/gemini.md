@@ -182,6 +182,8 @@ Skills live in `.agent/skills/skills/`. Read the relevant SKILL.md before acting
 
 10. **ALWAYS listen to `yt-navigate-finish`** for SPA navigation — not `DOMContentLoaded`
 
+11. **ALWAYS use wildcard selectors for Action Buttons** (`[class*="yt-spec-button-shape-next"]`, `[class*="ytSpecButtonShapeNext"]`) to reliably shape Subscribe, Like, Share, and Download buttons regardless of YouTube's nested A/B tests or inline pill shapes.
+
 ---
 
 ### Skill Trigger Examples

@@ -3,9 +3,9 @@
    ========================================================= */
 
 /* Left Navigation Guide (Mini & Expanded) */
-html[data-ypp-ui-style="aurora"] #guide-wrapper.ytd-app,
-html[data-ypp-ui-style="aurora"] ytd-mini-guide-renderer,
-html[data-ypp-ui-style="aurora"] app-drawer#guide-inner-content {
+html[data-ypp-theme="aurora"] #guide-wrapper.ytd-app,
+html[data-ypp-theme="aurora"] ytd-mini-guide-renderer,
+html[data-ypp-theme="aurora"] app-drawer#guide-inner-content {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -14,8 +14,8 @@ html[data-ypp-ui-style="aurora"] app-drawer#guide-inner-content {
 }
 
 /* Guide Links / Endpoints */
-html[data-ypp-ui-style="aurora"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
-html[data-ypp-ui-style="aurora"] ytd-mini-guide-entry-renderer {
+html[data-ypp-theme="aurora"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
+html[data-ypp-theme="aurora"] ytd-mini-guide-entry-renderer {
   background: transparent !important;
   border-radius: var(--aurora-radius-md) !important;
   margin: 4px 8px !important;
@@ -23,27 +23,27 @@ html[data-ypp-ui-style="aurora"] ytd-mini-guide-entry-renderer {
 }
 
 /* Guide Link Hover */
-html[data-ypp-ui-style="aurora"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
-html[data-ypp-ui-style="aurora"] ytd-mini-guide-entry-renderer:hover {
+html[data-ypp-theme="aurora"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-theme="aurora"] ytd-mini-guide-entry-renderer:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-left: 2px solid var(--aurora-color-3) !important; /* Magenta tick */
   box-shadow: inset 20px 0 30px -20px rgba(240, 147, 251, 0.2) !important;
 }
 
 /* Active Guide Link */
-html[data-ypp-ui-style="aurora"] ytd-guide-entry-renderer[active] #endpoint,
-html[data-ypp-ui-style="aurora"] ytd-mini-guide-entry-renderer[active] {
+html[data-ypp-theme="aurora"] ytd-guide-entry-renderer[active] #endpoint,
+html[data-ypp-theme="aurora"] ytd-mini-guide-entry-renderer[active] {
   background: var(--aurora-glass-light) !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   color: var(--aurora-color-1) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-guide-entry-renderer[active] yt-icon {
+html[data-ypp-theme="aurora"] ytd-guide-entry-renderer[active] yt-icon {
   color: var(--aurora-color-1) !important;
 }
 
 /* Guide Sections (Headers) */
-html[data-ypp-ui-style="aurora"] #guide-section-title.ytd-guide-section-renderer {
+html[data-ypp-theme="aurora"] #guide-section-title.ytd-guide-section-renderer {
   color: var(--aurora-text-primary) !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -52,9 +52,9 @@ html[data-ypp-ui-style="aurora"] #guide-section-title.ytd-guide-section-renderer
 }
 
 /* Extension Side Panels (Playlist/Stats organizers) */
-html[data-ypp-ui-style="aurora"] .ypp-organizer-modal,
-html[data-ypp-ui-style="aurora"] #ypp-eq-panel,
-html[data-ypp-ui-style="aurora"] .ypp-account-menu {
+html[data-ypp-theme="aurora"] .ypp-organizer-modal,
+html[data-ypp-theme="aurora"] #ypp-eq-panel,
+html[data-ypp-theme="aurora"] .ypp-account-menu {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;

@@ -1,0 +1,16 @@
+/* =========================================================
+   CAIRO RED — SEARCH
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] ytd-search {
+  background: var(--cairo-bg-base) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] ytd-video-renderer,
+html[data-ypp-ui-style="cairo-red"] ytd-channel-renderer,
+html[data-ypp-ui-style="cairo-red"] ytd-playlist-renderer {
+  background: var(--cairo-bg-mid) !important;
+  border: var(--cairo-border) !important;
+  border-radius: var(--cairo-radius) !important;
+  padding: 12px !important;
+}

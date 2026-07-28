@@ -1,0 +1,131 @@
+/* =========================================================
+   BENTO — BUTTONS
+   Rule #11 Blueprint: Target pill containers, NOT child elements
+   Unique Shape: "Bento Box" — square corners, offset hard shadow
+   ========================================================= */
+
+/* === Shape wrappers only === */
+html[data-ypp-theme="bento"] yt-button-shape,
+html[data-ypp-theme="bento"] ytd-button-renderer {
+  border-radius: var(--bn-shape-btn) !important;
+}
+
+/* === Tonal buttons (like, share, etc.) === */
+html[data-ypp-theme="bento"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd),
+html[data-ypp-theme="bento"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+  background: var(--bn-bg-elevated) !important;
+  border: var(--bn-border-sm) !important;
+  color: var(--bn-text-primary) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  letter-spacing: 0.02em !important;
+  border-radius: var(--bn-shape-btn) !important;
+  transition: var(--bn-transition-snap) !important;
+}
+
+/* === Hover === */
+html[data-ypp-theme="bento"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover,
+html[data-ypp-theme="bento"] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  background: var(--bn-bg-elevated) !important;
+  border-color: var(--bn-white) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  transform: translate(-2px, -2px) !important;
+  color: var(--bn-white) !important;
+}
+
+/* === Active === */
+html[data-ypp-theme="bento"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active,
+html[data-ypp-theme="bento"] button.ytSpecButtonShapeNextText:active,
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: var(--bn-shadow-press) !important;
+  border-color: var(--bn-accent-warm) !important;
+  color: var(--bn-accent-warm) !important;
+}
+
+/* === Subscribe (CTA filled) === */
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
+html[data-ypp-theme="bento"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+  background: var(--bn-white) !important;
+  border: var(--bn-border-white) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  border-radius: var(--bn-shape-btn) !important;
+  transition: var(--bn-transition-snap) !important;
+}
+html[data-ypp-theme="bento"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-theme="bento"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  background: var(--bn-bg-elevated) !important;
+  border-color: var(--bn-white) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  transform: translate(-2px, -2px) !important;
+  color: var(--bn-white) !important;
+}
+
+/* === Like/Dislike segmented === */
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  display: flex !important;
+  gap: 6px !important;
+  background: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  background: var(--bn-bg-elevated) !important;
+  border: var(--bn-border-sm) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  transition: var(--bn-transition-snap) !important;
+  color: var(--bn-text-primary) !important;
+}
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart {
+  border-radius: 4px 0 0 4px !important;
+  border-right: 1px solid var(--bn-border) !important;
+}
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: 0 4px 4px 0 !important;
+}
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+  background: var(--bn-bg-elevated) !important;
+  border-color: var(--bn-white) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  transform: translate(-2px, -2px) !important;
+  color: var(--bn-white) !important;
+}
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
+html[data-ypp-theme="bento"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: var(--bn-shadow-press) !important;
+  border-color: var(--bn-accent-warm) !important;
+  color: var(--bn-accent-warm) !important;
+}
+
+/* === Filter Chips === */
+html[data-ypp-theme="bento"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--bn-shape-chip) !important;
+  background: var(--bn-bg-surface) !important;
+  border: var(--bn-border-sm) !important;
+  color: var(--bn-text-muted) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  transition: var(--bn-transition-snap) !important;
+}
+html[data-ypp-theme="bento"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT_ACTIVE"],
+html[data-ypp-theme="bento"] yt-chip-cloud-chip-renderer:hover {
+  background: var(--bn-white) !important;
+  border-color: var(--bn-white) !important;
+  color: #000 !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+/* === Touch feedback cleanup === */
+html[data-ypp-theme="bento"] .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-theme="bento"] .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}

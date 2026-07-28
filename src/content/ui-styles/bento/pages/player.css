@@ -1,0 +1,63 @@
+/* =========================================================
+   BENTO — PLAYER
+   ========================================================= */
+
+/* Player container — square, thick border */
+html[data-ypp-theme="bento"] #ytd-player,
+html[data-ypp-theme="bento"] ytd-player {
+  border-radius: 0 !important;
+  border: var(--bn-border-md) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  overflow: hidden !important;
+}
+
+/* Progress bar — crisp white bar, gold knob */
+html[data-ypp-theme="bento"] .ytp-play-progress {
+  background: var(--bn-white) !important;
+}
+html[data-ypp-theme="bento"] .ytp-load-progress {
+  background: var(--bn-border-light) !important;
+}
+html[data-ypp-theme="bento"] .ytp-scrubber-button,
+html[data-ypp-theme="bento"] .ytp-scrubber-pull-indicator {
+  background: var(--bn-accent-warm) !important;
+  border-radius: 0 !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+html[data-ypp-theme="bento"] .ytp-progress-bar-container {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Volume slider */
+html[data-ypp-theme="bento"] .ytp-volume-slider-handle {
+  background: var(--bn-white) !important;
+  border-radius: 0 !important;
+}
+
+/* Player controls bar */
+html[data-ypp-theme="bento"] .ytp-chrome-bottom {
+  background: linear-gradient(0deg, rgba(10, 10, 10, 0.95), transparent) !important;
+}
+
+/* Player settings popup */
+html[data-ypp-theme="bento"] .ytp-popup,
+html[data-ypp-theme="bento"] .ytp-settings-menu {
+  background: var(--bn-bg-elevated) !important;
+  border: var(--bn-border-md) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+}
+html[data-ypp-theme="bento"] .ytp-panel-menu li:hover {
+  background: var(--bn-bg-surface) !important;
+  border-left: 3px solid var(--bn-accent-warm) !important;
+  color: var(--bn-accent-warm) !important;
+}
+
+/* Captions */
+html[data-ypp-theme="bento"] .ytp-caption-segment {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-radius: 0 !important;
+  border-left: 3px solid var(--bn-accent-warm) !important;
+  color: var(--bn-white) !important;
+}

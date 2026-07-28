@@ -1,105 +1,28 @@
-/* =========================================================
-   CYBERPUNK — PANELS & ENGAGEMENT DRAWERS
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/components/panels.css */
 
-/* Shorts Anchored Panel */
-html[data-ypp-ui-style="cyberpunk"] .anchored-panel.ytd-shorts {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thick) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-md) !important;
-  box-shadow: var(--cyber-glow-secondary) !important;
-  margin-top: 10px !important;
+/* Sidebar panels */
+html[data-ypp-theme="cyberpunk"] #guide-inner-content {
+  background: var(--ypp-bg-base) !important;
+  border-right: 1px solid var(--ypp-border-light) !important;
 }
 
-/* Engagement Panel (Chapters, Clips, etc.) */
-html[data-ypp-ui-style="cyberpunk"] ytd-engagement-panel-section-list-renderer {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thick) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-md) !important;
-  box-shadow: var(--cyber-glow-secondary) !important;
-}
-
-/* Engagement Panel Header */
-html[data-ypp-ui-style="cyberpunk"] #header.ytd-engagement-panel-title-header-renderer {
-  background: #000 !important;
-  border-bottom: var(--cyber-border-thin) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #title.ytd-engagement-panel-title-header-renderer {
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
-  text-transform: uppercase !important;
-  text-shadow: 0 0 6px var(--cyber-secondary) !important;
-}
-
-/* Chapters list inside engagement panel */
-html[data-ypp-ui-style="cyberpunk"] ytd-macro-markers-list-item-renderer {
+html[data-ypp-theme="cyberpunk"] ytd-guide-entry-renderer {
   border-radius: 0 !important;
   border-left: 2px solid transparent !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-macro-markers-list-item-renderer:hover {
-  background: rgba(0, 255, 204, 0.08) !important;
-  border-left-color: var(--cyber-secondary) !important;
+  transition: var(--ypp-transition-snap) !important;
 }
 
-/* Sub-header / badges inside panels */
-html[data-ypp-ui-style="cyberpunk"] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: 0 !important;
-  border: 1px solid rgba(255, 0, 85, 0.4) !important;
-  box-shadow: 0 0 6px rgba(255, 0, 85, 0.3) !important;
-  padding: 4px 10px !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  color: var(--cyber-primary) !important;
-  font-family: monospace !important;
+html[data-ypp-theme="cyberpunk"] ytd-guide-entry-renderer:hover {
+  background: rgba(0, 255, 204, 0.1) !important;
+  border-left: 2px solid var(--ypp-accent-primary) !important;
 }
 
-/* Player Settings Panel (Quality, Speed, etc.) */
-html[data-ypp-ui-style="cyberpunk"] .ytp-panel-menu {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thick) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-sm) !important;
-  box-shadow: var(--cyber-glow-secondary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ytp-menuitem {
-  border-radius: 0 !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ytp-menuitem:hover {
-  background: rgba(0, 255, 204, 0.12) !important;
-  border-left: 3px solid var(--cyber-secondary) !important;
-  color: var(--cyber-secondary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ytp-panel-header {
-  background: #000 !important;
-  border-bottom: 1px dashed var(--cyber-secondary) !important;
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
-  text-transform: uppercase !important;
+html[data-ypp-theme="cyberpunk"] ytd-guide-entry-renderer[active] {
+  background: rgba(0, 255, 204, 0.15) !important;
+  border-left: 4px solid var(--ypp-accent-primary) !important;
+  box-shadow: inset 20px 0 20px -20px var(--ypp-accent-primary) !important;
 }
 
-/* Playlist sidebar on watch page */
-html[data-ypp-ui-style="cyberpunk"] ytd-playlist-panel-renderer {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-playlist-panel-renderer #header {
-  border-bottom: var(--cyber-border-thin) !important;
-  background: #000 !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-playlist-panel-video-renderer {
-  border-radius: 0 !important;
-  border-left: 2px solid transparent !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-playlist-panel-video-renderer:hover {
-  background: rgba(0, 255, 204, 0.06) !important;
-  border-left-color: var(--cyber-secondary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-playlist-panel-video-renderer[selected] {
-  background: rgba(255, 0, 85, 0.12) !important;
-  border-left-color: var(--cyber-primary) !important;
+html[data-ypp-theme="cyberpunk"] ytd-guide-entry-renderer[active] yt-icon {
+  color: var(--ypp-accent-primary) !important;
 }

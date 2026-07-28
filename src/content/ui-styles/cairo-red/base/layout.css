@@ -1,0 +1,25 @@
+/* =========================================================
+   CAIRO RED — LAYOUT & RESETS
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] :is(
+  ytd-rich-grid-row,
+  ytd-rich-section-renderer,
+  ytd-item-section-renderer
+) {
+  margin-bottom: 24px !important;
+}
+
+/* Remove default YouTube curve, force sharp corners */
+html[data-ypp-ui-style="cairo-red"] ytd-thumbnail,
+html[data-ypp-ui-style="cairo-red"] .yt-core-image,
+html[data-ypp-ui-style="cairo-red"] yt-img-shadow,
+html[data-ypp-ui-style="cairo-red"] ytd-playlist-thumbnail {
+  border-radius: var(--cairo-radius) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] ::selection {
+  background: var(--cairo-brand) !important;
+  color: var(--cairo-text-inverse) !important;
+}

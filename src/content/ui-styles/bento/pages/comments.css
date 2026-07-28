@@ -1,0 +1,38 @@
+/* =========================================================
+   BENTO — COMMENTS
+   ========================================================= */
+
+html[data-ypp-theme="bento"] ytd-comment-thread-renderer {
+  background: transparent !important;
+  border-bottom: var(--bn-border-sm) !important;
+  padding: 12px 0 !important;
+}
+html[data-ypp-theme="bento"] ytd-comment-thread-renderer:hover {
+  border-left: 3px solid var(--bn-border-light) !important;
+  padding-left: 8px !important;
+}
+
+html[data-ypp-theme="bento"] ytd-comment-renderer[is-pinned] {
+  background: var(--bn-bg-elevated) !important;
+  border-radius: 0 !important;
+  border-left: 3px solid var(--bn-accent-warm) !important;
+  padding: 10px 14px !important;
+  box-shadow: var(--bn-shadow-card) !important;
+}
+
+html[data-ypp-theme="bento"] #placeholder-area,
+html[data-ypp-theme="bento"] ytd-commentbox {
+  border-radius: 0 !important;
+  background: var(--bn-bg-elevated) !important;
+  border: var(--bn-border-sm) !important;
+}
+html[data-ypp-theme="bento"] #placeholder-area:focus,
+html[data-ypp-theme="bento"] ytd-commentbox:focus-within {
+  border: var(--bn-border-white) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+}
+
+html[data-ypp-theme="bento"] ytd-comment-renderer #author-thumbnail img {
+  border-radius: 0 !important;
+  border: 2px solid var(--bn-border-light) !important;
+}

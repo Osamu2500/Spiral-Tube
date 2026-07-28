@@ -1,0 +1,48 @@
+/* =========================================================
+   CAIRO RED — TOKENS (Crimson Monolith)
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] {
+  /* Onyx/Charcoal Base (Warm Blacks) */
+  --cairo-bg-base: #0d0707 !important;
+  --cairo-bg-mid: #170e0e !important;
+  --cairo-bg-raised: #241515 !important;
+  
+  /* Cairo Red Primary Colors */
+  --cairo-brand: #e60000 !important;
+  --cairo-brand-hover: #ff1a1a !important;
+  --cairo-brand-heavy: #b30000 !important;
+  
+  /* Desert Sand Typography */
+  --cairo-text-primary: #f7e8d0 !important;
+  --cairo-text-secondary: #b8a594 !important;
+  --cairo-text-inverse: #ffffff !important;
+  
+  /* Structural Properties (Architectural/Monolith) */
+  --cairo-radius: 2px !important;
+  --cairo-radius-pill: 4px !important;
+  
+  /* Shadows & Borders */
+  --cairo-shadow-base: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+  --cairo-border: 1px solid rgba(247, 232, 208, 0.1) !important;
+  --cairo-border-brand: 1px solid var(--cairo-brand) !important;
+  
+  /* Global Overrides */
+  --yt-spec-base-background: var(--cairo-bg-base) !important;
+  --yt-spec-raised-background: var(--cairo-bg-mid) !important;
+  --yt-spec-menu-background: var(--cairo-bg-raised) !important;
+  --yt-spec-inverted-background: var(--cairo-text-primary) !important;
+  --yt-spec-inverted-background-inverse: var(--cairo-bg-base) !important;
+
+  --yt-spec-text-primary: var(--cairo-text-primary) !important;
+  --yt-spec-text-secondary: var(--cairo-text-secondary) !important;
+  --yt-spec-text-inverse: var(--cairo-bg-base) !important;
+  
+  --yt-spec-call-to-action: var(--cairo-brand) !important;
+  --yt-spec-call-to-action-inverse: var(--cairo-text-inverse) !important;
+  
+  /* The original cairo red variables */
+  --yt-spec-static-brand-red: var(--cairo-brand) !important;
+  --yt-spec-red-indicator: var(--cairo-brand) !important;
+  --yt-spec-static-overlay-background-brand: var(--cairo-brand) !important;
+}

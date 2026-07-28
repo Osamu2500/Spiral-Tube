@@ -1,0 +1,14 @@
+/* =========================================================
+   CAIRO RED — LIVE CHAT
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] yt-live-chat-renderer,
+html[data-ypp-ui-style="cairo-red"] yt-live-chat-header-renderer {
+  background: var(--cairo-bg-mid) !important;
+  border: var(--cairo-border) !important;
+  border-radius: var(--cairo-radius) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] yt-live-chat-text-message-renderer:hover {
+  background: var(--cairo-bg-raised) !important;
+}

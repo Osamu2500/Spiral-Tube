@@ -3,10 +3,10 @@
    ========================================================= */
 
 /* Filter Button */
-html[data-ypp-ui-style="aurora"] ytd-search-filter-group-renderer {
+html[data-ypp-theme="aurora"] ytd-search-filter-group-renderer {
   background: transparent !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
+html[data-ypp-theme="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -16,14 +16,14 @@ html[data-ypp-ui-style="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-b
   padding: 6px 16px !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer:hover {
+html[data-ypp-theme="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
 }
 
 /* Expansion Panel for Search Filters */
-html[data-ypp-ui-style="aurora"] ytd-search-sub-menu-renderer {
+html[data-ypp-theme="aurora"] ytd-search-sub-menu-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -35,22 +35,22 @@ html[data-ypp-ui-style="aurora"] ytd-search-sub-menu-renderer {
 }
 
 /* Individual filter options */
-html[data-ypp-ui-style="aurora"] ytd-search-filter-renderer {
+html[data-ypp-theme="aurora"] ytd-search-filter-renderer {
   transition: all var(--aurora-bounce) !important;
   border-radius: var(--aurora-radius-md) !important;
   padding: 4px 8px !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-search-filter-renderer:hover {
+html[data-ypp-theme="aurora"] ytd-search-filter-renderer:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   color: var(--aurora-color-1) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-search-filter-renderer[selected] {
+html[data-ypp-theme="aurora"] ytd-search-filter-renderer[selected] {
   color: var(--aurora-color-3) !important; /* Magenta for selected */
   text-shadow: 0 0 5px rgba(240, 147, 251, 0.5) !important;
 }
 
 /* Channel blocks in search results */
-html[data-ypp-ui-style="aurora"] ytd-channel-renderer {
+html[data-ypp-theme="aurora"] ytd-channel-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -60,18 +60,18 @@ html[data-ypp-ui-style="aurora"] ytd-channel-renderer {
   margin-bottom: 16px !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-channel-renderer:hover {
+html[data-ypp-theme="aurora"] ytd-channel-renderer:hover {
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   transform: translateY(-2px) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-channel-renderer #avatar {
+html[data-ypp-theme="aurora"] ytd-channel-renderer #avatar {
   border-radius: 50% !important;
   box-shadow: var(--aurora-glow-mixed) !important;
 }
 
 /* Playlist blocks in search results */
-html[data-ypp-ui-style="aurora"] ytd-playlist-renderer {
+html[data-ypp-theme="aurora"] ytd-playlist-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -81,14 +81,14 @@ html[data-ypp-ui-style="aurora"] ytd-playlist-renderer {
   margin-bottom: 16px !important;
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-playlist-renderer:hover {
+html[data-ypp-theme="aurora"] ytd-playlist-renderer:hover {
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-magenta) !important;
   transform: translateY(-2px) !important;
 }
 
 /* "People also watched" shelf */
-html[data-ypp-ui-style="aurora"] ytd-horizontal-card-list-renderer {
+html[data-ypp-theme="aurora"] ytd-horizontal-card-list-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;

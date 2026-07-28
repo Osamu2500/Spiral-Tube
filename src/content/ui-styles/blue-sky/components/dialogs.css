@@ -1,0 +1,55 @@
+/* =========================================================
+   BLUE SKY — DIALOGS
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Main dialog ── */
+html[data-ypp-theme="blue-sky"] tp-yt-paper-dialog,
+html[data-ypp-theme="blue-sky"] ytd-popup-container {
+  background: rgba(235, 248, 255, 0.82) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--sky-shape-modal) !important;
+  border: var(--sky-border) !important;
+  box-shadow:
+    0 32px 80px rgba(0, 100, 180, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+  color: var(--sky-text-primary) !important;
+}
+
+/* ── Alert ── */
+html[data-ypp-theme="blue-sky"] ytd-alert-with-button-renderer[type=INFO] {
+  background: rgba(200, 235, 255, 0.65) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(0, 191, 255, 0.30) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  color: var(--sky-text-primary) !important;
+  transition: all 0.3s var(--sky-bounce) !important;
+}
+
+/* ── Share dialog ── */
+html[data-ypp-theme="blue-sky"] ytd-unified-share-panel-renderer {
+  background: rgba(235, 248, 255, 0.82) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--sky-shape-modal) !important;
+  border: var(--sky-border) !important;
+  box-shadow:
+    0 32px 80px rgba(0, 100, 180, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+}
+
+/* ── Add to playlist ── */
+html[data-ypp-theme="blue-sky"] ytd-add-to-playlist-renderer {
+  background: rgba(235, 248, 255, 0.82) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--sky-shape-modal) !important;
+  border: var(--sky-border) !important;
+  box-shadow:
+    0 32px 80px rgba(0, 100, 180, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+  color: var(--sky-text-primary) !important;
+}

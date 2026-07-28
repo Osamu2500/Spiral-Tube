@@ -1,0 +1,21 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — MENUS
+   ========================================================= */
+
+html[data-ypp-ui-style="cherry"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="cherry"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="cherry"] .ytp-popup {
+  background: var(--cherry-bg-raised) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: var(--cherry-border) !important;
+  border-radius: var(--cherry-radius) !important;
+  box-shadow: var(--cherry-shadow-soft) !important;
+}
+
+html[data-ypp-ui-style="cherry"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="cherry"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="cherry"] .ytp-menuitem:hover {
+  background: rgba(255, 183, 178, 0.15) !important;
+  border-radius: 8px !important;
+}

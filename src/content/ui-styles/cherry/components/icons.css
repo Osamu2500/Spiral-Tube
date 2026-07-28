@@ -1,0 +1,17 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — ICONS
+   ========================================================= */
+
+html[data-ypp-ui-style="cherry"] .yt-icon,
+html[data-ypp-ui-style="cherry"] yt-icon {
+  color: var(--cherry-text-primary) !important;
+  fill: var(--cherry-text-primary) !important;
+}
+
+/* Active Icons (Cherry Pink) */
+html[data-ypp-ui-style="cherry"] yt-icon.active,
+html[data-ypp-ui-style="cherry"] ytd-toggle-button-renderer.style-default-active yt-icon {
+  color: var(--cherry-brand) !important;
+  fill: var(--cherry-brand) !important;
+  filter: drop-shadow(0 0 4px var(--cherry-brand-glow)) !important;
+}

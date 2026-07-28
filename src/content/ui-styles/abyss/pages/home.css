@@ -1,0 +1,20 @@
+/* src/content/ui-styles/abyss/pages/home.css */
+
+html[data-ypp-theme="abyss"] yt-chip-cloud-chip-renderer {
+  background: var(--ypp-bg-surface) !important;
+  border-radius: var(--ypp-rad-sm) !important;
+  border: 1px solid var(--ypp-border-heavy) !important;
+  color: var(--ypp-text-primary) !important;
+  transition: var(--ypp-transition-hover) !important;
+}
+
+html[data-ypp-theme="abyss"] yt-chip-cloud-chip-renderer:hover {
+  background: rgba(0, 150, 136, 0.2) !important;
+  border-color: var(--ypp-accent-primary) !important;
+}
+
+html[data-ypp-theme="abyss"] yt-chip-cloud-chip-renderer[selected] {
+  background: var(--ypp-accent-secondary) !important;
+  color: #fff !important;
+  box-shadow: var(--ypp-shadow-glow) !important;
+}

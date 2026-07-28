@@ -1,0 +1,28 @@
+/* src/content/ui-styles/abyss/components/panels.css */
+
+/* Sidebar panels */
+html[data-ypp-theme="abyss"] #guide-inner-content {
+  background: rgba(1, 6, 9, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  border-right: 1px solid var(--ypp-border-heavy) !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-guide-entry-renderer {
+  border-radius: var(--ypp-rad-sm) !important;
+  transition: var(--ypp-transition-fluid) !important;
+  margin: 4px 8px !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-guide-entry-renderer:hover {
+  background: rgba(0, 229, 255, 0.05) !important;
+  box-shadow: inset 4px 0 0 var(--ypp-accent-primary) !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-guide-entry-renderer[active] {
+  background: rgba(0, 150, 136, 0.2) !important;
+  box-shadow: inset 4px 0 0 var(--ypp-accent-primary), var(--ypp-shadow-glow) !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-guide-entry-renderer[active] yt-icon {
+  color: var(--ypp-accent-primary) !important;
+}

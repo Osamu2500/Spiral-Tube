@@ -1,0 +1,143 @@
+/* =========================================================
+   AUTUMN — CARDS
+   Unique Shape: "Fallen Leaf" with left amber accent bar
+   ========================================================= */
+
+html[data-ypp-theme="autumn"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+      ytd-rich-item-renderer,
+      ytd-video-renderer,
+      ytd-playlist-renderer,
+      ytd-radio-renderer,
+      ytd-channel-renderer,
+      ytd-compact-video-renderer,
+      ytd-grid-video-renderer,
+      .ypp-grid-item
+    ) *
+  )
+) {
+  background: var(--au-bg-card) !important;
+  border-radius: var(--au-shape-card) !important;
+  border: var(--au-border-subtle) !important;
+  border-left: var(--au-border-left) !important;
+  padding: 12px !important;
+  box-shadow: var(--au-shadow-card) !important;
+  transition: var(--au-transition) !important;
+  animation: au-warm-glow 5s ease-in-out infinite !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Hover */
+html[data-ypp-theme="autumn"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+      ytd-rich-item-renderer,
+      ytd-video-renderer,
+      ytd-playlist-renderer,
+      ytd-radio-renderer,
+      ytd-channel-renderer,
+      ytd-compact-video-renderer,
+      ytd-grid-video-renderer,
+      .ypp-grid-item
+    ) *
+  )
+):hover {
+  background: var(--au-fog-heavy) !important;
+  border-color: rgba(220, 130, 40, 0.6) !important;
+  border-left: 4px solid var(--au-amber) !important;
+  box-shadow: var(--au-shadow-hover) !important;
+  transform: translateX(3px) translateY(-2px) !important;
+}
+
+/* Harvest accent shimmer line on hover */
+html[data-ypp-theme="autumn"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+      ytd-rich-item-renderer,
+      ytd-video-renderer,
+      ytd-playlist-renderer,
+      ytd-radio-renderer,
+      ytd-channel-renderer,
+      ytd-compact-video-renderer,
+      ytd-grid-video-renderer,
+      .ypp-grid-item
+    ) *
+  )
+):hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--au-amber), var(--au-crimson), var(--au-gold));
+  background-size: 200% 100%;
+  animation: au-leaf-drift 3s ease infinite;
+}
+
+/* Inner grid media transparent */
+html[data-ypp-theme="autumn"] ytd-rich-grid-media {
+  background: transparent !important;
+}
+
+/* Thumbnails */
+html[data-ypp-theme="autumn"] ytd-thumbnail,
+html[data-ypp-theme="autumn"] .ytd-thumbnail {
+  border-radius: 16px 4px 4px 10px !important;
+  overflow: hidden !important;
+}
+html[data-ypp-theme="autumn"] ytd-thumbnail img {
+  transition: transform 0.35s ease !important;
+}
+html[data-ypp-theme="autumn"] ytd-thumbnail:hover img {
+  transform: scale(1.06) !important;
+}
+
+/* Time badge */
+html[data-ypp-theme="autumn"] ytd-thumbnail-overlay-time-status-renderer {
+  background: rgba(15, 8, 2, 0.85) !important;
+  border: var(--au-border-accent) !important;
+  border-radius: 8px 2px 2px 4px !important;
+  color: var(--au-amber) !important;
+  padding: 2px 8px !important;
+  font-weight: 700 !important;
+  margin: 5px !important;
+}
+
+/* Channel avatar */
+html[data-ypp-theme="autumn"] #avatar-link img,
+html[data-ypp-theme="autumn"] yt-img-shadow#avatar img {
+  border-radius: 50% !important;
+  border: 2px solid var(--au-copper) !important;
+  transition: var(--au-transition) !important;
+}
+html[data-ypp-theme="autumn"] ytd-rich-item-renderer:hover #avatar-link img {
+  border-color: var(--au-amber) !important;
+  box-shadow: var(--au-shadow-glow) !important;
+}

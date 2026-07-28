@@ -1,0 +1,19 @@
+/* =========================================================
+   CAIRO RED — MENUS
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="cairo-red"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="cairo-red"] .ytp-popup {
+  background: var(--cairo-bg-raised) !important;
+  border: var(--cairo-border) !important;
+  border-radius: var(--cairo-radius) !important;
+  box-shadow: var(--cairo-shadow-base) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="cairo-red"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="cairo-red"] .ytp-menuitem:hover {
+  background: var(--cairo-brand) !important;
+  color: var(--cairo-text-inverse) !important;
+}

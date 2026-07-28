@@ -1,1 +1,39 @@
-/* pages/channels.css - Empty by default */
+/* =========================================================
+   BRUTALISM — CHANNELS PAGE
+   ========================================================= */
+
+/* ── Channel Header ── */
+html[data-ypp-theme="brutalism"] ytd-c4-tabbed-header-renderer {
+  background: var(--brutal-white) !important;
+  border-bottom: var(--brutal-border) !important;
+  box-shadow: 0 8px 0px var(--brutal-black) !important;
+}
+
+/* Channel Avatar */
+html[data-ypp-theme="brutalism"] ytd-c4-tabbed-header-renderer yt-img-shadow,
+html[data-ypp-theme="brutalism"] ytd-c4-tabbed-header-renderer yt-img-shadow img {
+  border-radius: 0 !important;
+}
+html[data-ypp-theme="brutalism"] ytd-c4-tabbed-header-renderer yt-img-shadow {
+  border: 4px solid var(--brutal-black) !important;
+  box-shadow: 4px 4px 0px var(--brutal-black) !important;
+}
+
+/* Tabs */
+html[data-ypp-theme="brutalism"] tp-yt-paper-tabs {
+  background: var(--brutal-black) !important;
+  color: var(--brutal-white) !important;
+}
+html[data-ypp-theme="brutalism"] tp-yt-paper-tab {
+  border-right: 2px solid var(--brutal-gray-dark) !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+}
+html[data-ypp-theme="brutalism"] tp-yt-paper-tab.iron-selected {
+  background: var(--brutal-accent) !important;
+  color: var(--brutal-black) !important;
+}
+html[data-ypp-theme="brutalism"] paper-tabs paper-selection-bar,
+html[data-ypp-theme="brutalism"] tp-yt-paper-tabs #selectionBar.tp-yt-paper-tabs {
+  border-bottom: 4px solid var(--brutal-white) !important;
+}

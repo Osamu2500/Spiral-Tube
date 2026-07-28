@@ -1,0 +1,29 @@
+/* src/content/ui-styles/claymorphism/pages/player.css */
+
+/* Video Player Frame */
+html[data-ypp-theme="claymorphism"] #ytd-player {
+  border-radius: var(--ypp-radius-xl) !important;
+  box-shadow: var(--ypp-shadow-clay-lg) !important;
+  overflow: hidden !important;
+  border: 12px solid var(--ypp-bg-surface) !important;
+  background: var(--ypp-bg-surface) !important;
+}
+
+/* Progress bar */
+html[data-ypp-theme="claymorphism"] .ytp-play-progress {
+  background: var(--ypp-accent-primary) !important;
+  box-shadow: 0 0 10px var(--ypp-accent-glow) !important;
+}
+
+html[data-ypp-theme="claymorphism"] .ytp-swatch-background-color {
+  background-color: var(--ypp-accent-primary) !important;
+}
+
+/* Scrubber button */
+html[data-ypp-theme="claymorphism"] .ytp-scrubber-button {
+  background: #fff !important;
+  border: 2px solid var(--ypp-accent-primary) !important;
+  box-shadow: var(--ypp-shadow-clay-sm) !important;
+  border-radius: var(--ypp-radius-pill) !important;
+  transform: scale(1.2) !important;
+}

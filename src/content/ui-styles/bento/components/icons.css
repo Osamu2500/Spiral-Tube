@@ -1,0 +1,17 @@
+/* =========================================================
+   BENTO — ICONS
+   ========================================================= */
+
+html[data-ypp-theme="bento"] yt-icon svg,
+html[data-ypp-theme="bento"] .yt-icon-container svg {
+  fill: var(--bn-text-muted) !important;
+  transition: fill 0.15s ease !important;
+}
+html[data-ypp-theme="bento"] yt-icon:hover svg,
+html[data-ypp-theme="bento"] .yt-icon-container:hover svg {
+  fill: var(--bn-white) !important;
+}
+html[data-ypp-theme="bento"] [aria-selected="true"] yt-icon svg,
+html[data-ypp-theme="bento"] [aria-current="page"] yt-icon svg {
+  fill: var(--bn-accent-warm) !important;
+}

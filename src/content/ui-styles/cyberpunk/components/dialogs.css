@@ -1,148 +1,25 @@
-/* =========================================================
-   CYBERPUNK — DIALOGS, MODALS & SCRIM
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/components/dialogs.css */
 
-/* ---- PAGE SCRIM (dimming backdrop) ---- */
-html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-overlay-backdrop {
-  background: rgba(0, 0, 0, 0.85) !important;
-  background-image: var(--cyber-crt-scanline) !important;
-}
-
-/* ---- GENERIC DIALOG CONTAINER ---- */
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer,
-html[data-ypp-ui-style="cyberpunk"] ytd-report-form-modal-renderer,
-html[data-ypp-ui-style="cyberpunk"] ytd-alert-with-button-renderer,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer {
-  background: var(--cyber-bg) !important;
-  border: 2px solid var(--cyber-tertiary) !important;
+/* Modals and Dialogs */
+html[data-ypp-theme="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-theme="cyberpunk"] ytd-popup-container {
+  background: var(--ypp-bg-surface) !important;
   border-radius: 0 !important;
-  clip-path: var(--cyber-clip-md) !important;
-  box-shadow:
-    0 0 20px rgba(252, 238, 10, 0.3),
-    0 0 60px rgba(0, 0, 0, 0.9) !important;
-  color: #fff !important;
-}
-
-/* Dialog header — hazard stripe */
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer #header,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer #header,
-html[data-ypp-ui-style="cyberpunk"] ytd-report-form-modal-renderer #header,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer #header {
-  background: repeating-linear-gradient(
+  clip-path: var(--ypp-clip-lg) !important;
+  border: 2px solid var(--ypp-accent-secondary) !important;
+  box-shadow: var(--ypp-glow-pink) !important;
+  
+  /* Hazard stripes */
+  background-image: repeating-linear-gradient(
     45deg,
-    rgba(252, 238, 10, 0.12),
-    rgba(252, 238, 10, 0.12) 10px,
+    rgba(255, 0, 85, 0.05),
+    rgba(255, 0, 85, 0.05) 10px,
     transparent 10px,
-    transparent 22px
+    transparent 20px
   ) !important;
-  border-bottom: 2px dashed var(--cyber-tertiary) !important;
-  padding: 12px 16px !important;
 }
 
-/* Dialog title */
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer #title,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer #title,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer #title {
-  color: var(--cyber-tertiary) !important;
-  font-family: monospace !important;
+html[data-ypp-theme="cyberpunk"] tp-yt-paper-dialog h2 {
+  color: var(--ypp-accent-secondary) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  text-shadow: 0 0 8px rgba(252, 238, 10, 0.6) !important;
-}
-
-/* Dialog body */
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer #contentWrapper,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer #contentWrapper,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer #content {
-  background: transparent !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-family: monospace !important;
-  font-size: 13px !important;
-}
-
-/* Dialog footer */
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer #footer,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer #footer,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer #footer {
-  border-top: 1px dashed rgba(252, 238, 10, 0.3) !important;
-  background: rgba(0, 0, 0, 0.5) !important;
-  padding: 10px 16px !important;
-}
-
-/* Dialog action buttons */
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer yt-button-shape button,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer yt-button-shape button,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer yt-button-shape button {
-  background: transparent !important;
-  border: 1px solid var(--cyber-tertiary) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  color: var(--cyber-tertiary) !important;
-  font-family: monospace !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-dialog-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="cyberpunk"] yt-dialog-renderer yt-button-shape button:hover {
-  background: var(--cyber-tertiary) !important;
-  color: #000 !important;
-  box-shadow: 0 0 12px var(--cyber-tertiary) !important;
-}
-/* Primary/destructive button variant */
-html[data-ypp-ui-style="cyberpunk"] ytd-confirm-dialog-renderer yt-button-shape button.yt-spec-button-shape-next--call-to-action {
-  background: var(--cyber-primary) !important;
-  border-color: var(--cyber-primary) !important;
-  color: #000 !important;
-  box-shadow: var(--cyber-glow-primary) !important;
-}
-
-/* ---- REPORT DIALOG ---- */
-html[data-ypp-ui-style="cyberpunk"] ytd-report-form-modal-renderer {
-  border-color: var(--cyber-primary) !important;
-  box-shadow: var(--cyber-glow-primary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-report-form-modal-renderer #header {
-  background: rgba(255, 0, 85, 0.1) !important;
-  border-bottom: 2px dashed var(--cyber-primary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-report-form-modal-renderer yt-radio-button-view-model {
-  border-radius: 0 !important;
-  border-left: 2px solid transparent !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
-  background: rgba(255, 0, 85, 0.1) !important;
-  border-left-color: var(--cyber-primary) !important;
-}
-
-/* ---- THANKS / SUPER THANKS DIALOG ---- */
-html[data-ypp-ui-style="cyberpunk"] ytd-super-thanks-dialog-renderer {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thick) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-md) !important;
-  box-shadow: var(--cyber-glow-primary) !important;
-}
-
-/* ---- PURCHASE / PREMIUM UPSELL DIALOG ---- */
-html[data-ypp-ui-style="cyberpunk"] ytd-offer-module-renderer {
-  background: var(--cyber-bg) !important;
-  border: 2px solid var(--cyber-tertiary) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-lg) !important;
-  box-shadow: 0 0 20px rgba(252, 238, 10, 0.2) !important;
-}
-
-/* ---- GENERIC INFO ALERT ---- */
-html[data-ypp-ui-style="cyberpunk"] ytd-alert-with-button-renderer {
-  background: rgba(0, 255, 204, 0.05) !important;
-  border: 1px solid var(--cyber-secondary) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.2) !important;
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
 }

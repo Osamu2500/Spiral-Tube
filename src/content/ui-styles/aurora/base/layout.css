@@ -3,50 +3,50 @@
    ========================================================= */
 
 /* Typography Base */
-html[data-ypp-ui-style="aurora"] * {
+html[data-ypp-theme="aurora"] * {
   font-family: "SF Pro Text", "Inter", "Segoe UI", sans-serif !important;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
 
 /* Video Title */
-html[data-ypp-ui-style="aurora"] #video-title,
-html[data-ypp-ui-style="aurora"] h1.ytd-watch-metadata {
+html[data-ypp-theme="aurora"] #video-title,
+html[data-ypp-theme="aurora"] h1.ytd-watch-metadata {
   color: var(--aurora-text-primary) !important;
   font-weight: 700 !important;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Secondary text */
-html[data-ypp-ui-style="aurora"] .ytd-channel-name,
-html[data-ypp-ui-style="aurora"] .ytd-video-meta-block,
-html[data-ypp-ui-style="aurora"] yt-formatted-string.ytd-video-meta-block,
-html[data-ypp-ui-style="aurora"] #metadata-line.ytd-video-meta-block span {
+html[data-ypp-theme="aurora"] .ytd-channel-name,
+html[data-ypp-theme="aurora"] .ytd-video-meta-block,
+html[data-ypp-theme="aurora"] yt-formatted-string.ytd-video-meta-block,
+html[data-ypp-theme="aurora"] #metadata-line.ytd-video-meta-block span {
   color: var(--aurora-text-secondary) !important;
   font-weight: 400 !important;
 }
 
 /* Ambient Mode Fixes */
-html[data-ypp-ui-style="aurora"] body.yt-pro-ambient {
+html[data-ypp-theme="aurora"] body.yt-pro-ambient {
   overflow-x: hidden !important;
 }
 
 /* Ambient Cinematics - Large vivid blur to match Aurora */
 @media (width: 1920px) {
-  html[data-ypp-ui-style="aurora"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  html[data-ypp-theme="aurora"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
     filter: saturate(200%) blur(50px) opacity(0.7) contrast(1.2);
   }
 }
 @media (width: 1280px) {
-  html[data-ypp-ui-style="aurora"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  html[data-ypp-theme="aurora"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
     filter: saturate(200%) blur(50px) opacity(0.7) contrast(1.2);
   }
 }
 
 /* Ambient Player Frame */
-html[data-ypp-ui-style="aurora"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+html[data-ypp-theme="aurora"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
   overflow: hidden;
   border-radius: var(--aurora-radius-lg) !important;
   border: var(--aurora-border-glass) !important;
@@ -54,7 +54,7 @@ html[data-ypp-ui-style="aurora"] body.yt-pro-ambient .style-scope.ytd-watch-flex
 }
 
 /* Player Controls Group (Right side) */
-html[data-ypp-ui-style="aurora"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-theme="aurora"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -67,7 +67,7 @@ html[data-ypp-ui-style="aurora"] .ytp-delhi-modern .ytp-chrome-controls .ytp-rig
 }
 
 /* Volume Area */
-html[data-ypp-ui-style="aurora"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-theme="aurora"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -78,7 +78,7 @@ html[data-ypp-ui-style="aurora"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-c
 }
 
 /* Progress bar drag container */
-html[data-ypp-ui-style="aurora"] .ytPlayerProgressBarDragContainer {
+html[data-ypp-theme="aurora"] .ytPlayerProgressBarDragContainer {
   background: var(--aurora-glass-light) !important;
   border-radius: var(--aurora-radius-pill) !important;
   height: 8px !important;
@@ -86,14 +86,14 @@ html[data-ypp-ui-style="aurora"] .ytPlayerProgressBarDragContainer {
   margin-right: 15px !important;
   margin-bottom: 8px !important;
 }
-html[data-ypp-ui-style="aurora"] .ytp-play-progress {
+html[data-ypp-theme="aurora"] .ytp-play-progress {
   background: var(--aurora-gradient-primary) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   border-radius: var(--aurora-radius-pill) !important;
 }
 
 /* Suggestions Row (Channel page / Watch sidebar) */
-html[data-ypp-ui-style="aurora"] .ytSuggestionComponentRoundedSuggestion {
+html[data-ypp-theme="aurora"] .ytSuggestionComponentRoundedSuggestion {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -103,7 +103,7 @@ html[data-ypp-ui-style="aurora"] .ytSuggestionComponentRoundedSuggestion {
   padding: 6px 14px !important;
   transition: all var(--aurora-snap) !important;
 }
-html[data-ypp-ui-style="aurora"] .ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-theme="aurora"] .ytSuggestionComponentRoundedSuggestion:hover {
   background: var(--aurora-gradient-primary) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   border-color: transparent !important;
@@ -111,14 +111,14 @@ html[data-ypp-ui-style="aurora"] .ytSuggestionComponentRoundedSuggestion:hover {
 }
 
 /* Channel Avatar Editor */
-html[data-ypp-ui-style="aurora"] #wrapper.ytd-channel-avatar-editor {
+html[data-ypp-theme="aurora"] #wrapper.ytd-channel-avatar-editor {
   border-radius: 50% !important;
   box-shadow: var(--aurora-glow-mixed) !important;
   border: var(--aurora-border-glow) !important;
 }
 
 /* Extension Navigation Button Active State */
-html[data-ypp-ui-style="aurora"] .ypp-nav-btn.active {
+html[data-ypp-theme="aurora"] .ypp-nav-btn.active {
   background: var(--aurora-gradient-primary) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   color: #000 !important;

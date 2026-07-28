@@ -1,0 +1,27 @@
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — PANELS (Sidebars)
+   ========================================================= */
+
+html[data-ypp-ui-style="cherry"] #guide-content.ytd-app,
+html[data-ypp-ui-style="cherry"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="cherry"] tp-yt-app-drawer {
+  background: var(--cherry-bg-mid) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-right: var(--cherry-border) !important;
+}
+
+html[data-ypp-ui-style="cherry"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="cherry"] ytd-mini-guide-entry-renderer:hover {
+  background: rgba(255, 183, 178, 0.1) !important;
+  border-radius: var(--cherry-radius) !important;
+}
+
+/* Active Guide Entry */
+html[data-ypp-ui-style="cherry"] ytd-guide-entry-renderer[active] {
+  background: rgba(255, 183, 178, 0.15) !important;
+  border-radius: var(--cherry-radius) !important;
+}
+html[data-ypp-ui-style="cherry"] ytd-guide-entry-renderer[active] yt-icon {
+  color: var(--cherry-brand-hover) !important;
+}

@@ -3,8 +3,8 @@
    ========================================================= */
 
 /* Force the exact base color everywhere (Dark Void) */
-html[data-ypp-ui-style="aurora"] body,
-html[data-ypp-ui-style="aurora"] ytd-app {
+html[data-ypp-theme="aurora"] body,
+html[data-ypp-theme="aurora"] ytd-app {
   background-color: var(--aurora-bg-void) !important;
   color: var(--aurora-text-primary) !important;
   background-image: radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.05), transparent 40%),
@@ -13,11 +13,11 @@ html[data-ypp-ui-style="aurora"] ytd-app {
 }
 
 /* Base structural overrides to stop YT native styles from interfering */
-html[data-ypp-ui-style="aurora"] * {
+html[data-ypp-theme="aurora"] * {
   border: none !important; 
 }
-html[data-ypp-ui-style="aurora"] ytd-item-section-renderer,
-html[data-ypp-ui-style="aurora"] ytd-rich-grid-renderer {
+html[data-ypp-theme="aurora"] ytd-item-section-renderer,
+html[data-ypp-theme="aurora"] ytd-rich-grid-renderer {
   border-top: none !important;
   border-bottom: none !important;
 }
@@ -25,8 +25,8 @@ html[data-ypp-ui-style="aurora"] ytd-rich-grid-renderer {
 /* ---- Extension Global UI ---- */
 
 /* Badges / Value Displays */
-html[data-ypp-ui-style="aurora"] .ypp-badge,
-html[data-ypp-ui-style="aurora"] .ypp-value-display {
+html[data-ypp-theme="aurora"] .ypp-badge,
+html[data-ypp-theme="aurora"] .ypp-value-display {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -37,21 +37,21 @@ html[data-ypp-ui-style="aurora"] .ypp-value-display {
 }
 
 /* Extension header / folders */
-html[data-ypp-ui-style="aurora"] .ypp-vcp-header,
-html[data-ypp-ui-style="aurora"] .ypp-folder-header {
+html[data-ypp-theme="aurora"] .ypp-vcp-header,
+html[data-ypp-theme="aurora"] .ypp-folder-header {
   background: transparent !important;
   border-bottom: var(--aurora-border-glass) !important; 
   color: var(--aurora-text-primary) !important;
 }
 
 /* App Header (Masthead) */
-html[data-ypp-ui-style="aurora"] tp-yt-app-header {
+html[data-ypp-theme="aurora"] tp-yt-app-header {
   background: transparent !important;
 }
 
 /* Extension Sliders */
-html[data-ypp-ui-style="aurora"] .ypp-slider,
-html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider {
+html[data-ypp-theme="aurora"] .ypp-slider,
+html[data-ypp-theme="aurora"] .ypp-gpb-vol-slider {
   appearance: none !important;
   background: var(--aurora-glass-light) !important;
   border: var(--aurora-border-glass) !important;
@@ -60,8 +60,8 @@ html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider {
   outline: none !important;
 }
 /* Webkit Slider Thumb */
-html[data-ypp-ui-style="aurora"] .ypp-slider::-webkit-slider-thumb,
-html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
+html[data-ypp-theme="aurora"] .ypp-slider::-webkit-slider-thumb,
+html[data-ypp-theme="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
   appearance: none !important;
   width: 16px !important;
   height: 16px !important;
@@ -71,14 +71,14 @@ html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
   cursor: pointer !important;
   transition: transform var(--aurora-snap) !important;
 }
-html[data-ypp-ui-style="aurora"] .ypp-slider::-webkit-slider-thumb:hover,
-html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
+html[data-ypp-theme="aurora"] .ypp-slider::-webkit-slider-thumb:hover,
+html[data-ypp-theme="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
   transform: scale(1.2) !important;
   box-shadow: var(--aurora-glow-magenta) !important;
 }
 
 /* Filter Dropdowns */
-html[data-ypp-ui-style="aurora"] .ypp-filter-dropdown {
+html[data-ypp-theme="aurora"] .ypp-filter-dropdown {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
@@ -89,23 +89,23 @@ html[data-ypp-ui-style="aurora"] .ypp-filter-dropdown {
   transition: all var(--aurora-snap) !important;
   cursor: pointer;
 }
-html[data-ypp-ui-style="aurora"] .ypp-filter-dropdown:hover {
+html[data-ypp-theme="aurora"] .ypp-filter-dropdown:hover {
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
 }
 
 /* Custom Scrollbar */
-html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar {
+html[data-ypp-theme="aurora"] ::-webkit-scrollbar {
   width: 8px !important;
 }
-html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar-track {
+html[data-ypp-theme="aurora"] ::-webkit-scrollbar-track {
   background: transparent !important;
 }
-html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar-thumb {
+html[data-ypp-theme="aurora"] ::-webkit-scrollbar-thumb {
   background: var(--aurora-glass-light) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
 }
-html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar-thumb:hover {
+html[data-ypp-theme="aurora"] ::-webkit-scrollbar-thumb:hover {
   background: var(--aurora-gradient-primary) !important;
 }

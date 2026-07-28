@@ -1,0 +1,68 @@
+/* =========================================================
+   AUTUMN — TOKENS
+   Unique Shape: "Fallen Leaf" — asymmetric left-accent cards,
+   organic corners (tall curve top-left, sharp bottom-right)
+   ========================================================= */
+
+html[data-ypp-theme="autumn"] {
+  /* === Core Palette === */
+  --au-amber:        #e87d0d;
+  --au-copper:       #b5551a;
+  --au-crimson:      #8b1a1a;
+  --au-sienna:       #c4623c;
+  --au-gold:         #d4a017;
+  --au-bark:         #5c3a1e;
+  --au-fog:          rgba(180, 100, 30, 0.12);
+  --au-fog-heavy:    rgba(140, 60, 20, 0.22);
+
+  /* === Backgrounds === */
+  --au-bg-base:      #0f0a06;
+  --au-bg-surface:   #1a1008;
+  --au-bg-elevated:  #261810;
+  --au-bg-card:      #1e1308;
+
+  /* === Text === */
+  --au-text-primary:   #f5ddb8;
+  --au-text-secondary: #c9a47a;
+  --au-text-muted:     #8a6545;
+
+  /* === Borders === */
+  --au-border-subtle: 1px solid rgba(200, 120, 50, 0.18);
+  --au-border-accent: 1px solid rgba(220, 130, 40, 0.55);
+  --au-border-glow:   1px solid rgba(255, 160, 60, 0.8);
+  --au-border-left:   4px solid #e87d0d;
+
+  /* === Shadows === */
+  --au-shadow-card:   4px 4px 18px rgba(0,0,0,0.55);
+  --au-shadow-hover:  6px 10px 24px rgba(0,0,0,0.6), 0 0 20px rgba(200,100,40,0.18);
+  --au-shadow-glow:   0 0 14px rgba(232, 125, 13, 0.4);
+  --au-shadow-glow-warm: 0 0 20px rgba(180, 80, 20, 0.5);
+
+  /* === Unique Shape: "Fallen Leaf" ===
+     Top-left: heavy organic curve (32px)
+     Top-right: slight curve (8px)
+     Bottom-right: sharp (4px) — like a torn leaf tip
+     Bottom-left: medium curve (16px)
+  */
+  --au-shape-card:   32px 8px 4px 16px;
+  --au-shape-btn:    18px 4px 4px 8px;
+  --au-shape-chip:   14px 4px 4px 6px;
+  --au-shape-modal:  24px 8px 4px 12px;
+
+  /* === Animations === */
+  --au-transition:    all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --au-transition-fast: all 0.15s ease-out;
+}
+
+/* === Global YouTube CSS Variable Overrides === */
+html[data-ypp-theme="autumn"] {
+  --yt-spec-base-background:         var(--au-bg-base)     !important;
+  --yt-spec-raised-background:       var(--au-bg-surface)  !important;
+  --yt-spec-menu-background:         var(--au-bg-elevated) !important;
+  --yt-spec-text-primary:            var(--au-text-primary) !important;
+  --yt-spec-text-secondary:          var(--au-text-secondary) !important;
+  --yt-spec-call-to-action:          var(--au-amber)       !important;
+  --yt-spec-brand-button-background: var(--au-amber)       !important;
+  --yt-spec-badge-chip-background:   transparent           !important;
+  --yt-spec-additive-background:     transparent           !important;
+}

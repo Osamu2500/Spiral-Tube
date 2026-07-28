@@ -1,0 +1,27 @@
+/* =========================================================
+   BENTO — LIVE CHAT
+   ========================================================= */
+
+html[data-ypp-theme="bento"] yt-live-chat-renderer,
+html[data-ypp-theme="bento"] ytd-live-chat-frame {
+  background: var(--bn-bg-surface) !important;
+  border-radius: 0 !important;
+  border: var(--bn-border-sm) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+}
+html[data-ypp-theme="bento"] #input-container,
+html[data-ypp-theme="bento"] yt-live-chat-text-input-field-renderer {
+  background: var(--bn-bg-elevated) !important;
+  border: var(--bn-border-sm) !important;
+  border-radius: 0 !important;
+  color: var(--bn-text-primary) !important;
+}
+html[data-ypp-theme="bento"] #input-container:focus-within {
+  border: var(--bn-border-white) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+}
+html[data-ypp-theme="bento"] yt-live-chat-paid-message-renderer {
+  border-radius: 0 !important;
+  border-left: 3px solid var(--bn-accent-warm) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+}

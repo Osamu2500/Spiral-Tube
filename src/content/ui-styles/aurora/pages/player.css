@@ -3,8 +3,8 @@
    ========================================================= */
 
 /* Main Player Frame Container */
-html[data-ypp-ui-style="aurora"] #player-container.ytd-watch-flexy,
-html[data-ypp-ui-style="aurora"] #ytd-player {
+html[data-ypp-theme="aurora"] #player-container.ytd-watch-flexy,
+html[data-ypp-theme="aurora"] #ytd-player {
   border-radius: var(--aurora-radius-lg) !important;
   overflow: hidden !important;
   box-shadow: var(--aurora-glow-mixed) !important;
@@ -13,13 +13,13 @@ html[data-ypp-ui-style="aurora"] #ytd-player {
 }
 
 /* Internal Video Base */
-html[data-ypp-ui-style="aurora"] .html5-video-player {
+html[data-ypp-theme="aurora"] .html5-video-player {
   background: var(--aurora-bg-void) !important;
   border-radius: var(--aurora-radius-lg) !important;
 }
 
 /* Large Center Play/Pause Animation Overlay (The Bezel) */
-html[data-ypp-ui-style="aurora"] .ytp-bezel {
+html[data-ypp-theme="aurora"] .ytp-bezel {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -27,29 +27,29 @@ html[data-ypp-ui-style="aurora"] .ytp-bezel {
   box-shadow: var(--aurora-glow-mixed) !important;
   border-radius: 50% !important;
 }
-html[data-ypp-ui-style="aurora"] .ytp-bezel-icon {
+html[data-ypp-theme="aurora"] .ytp-bezel-icon {
   fill: var(--aurora-color-1) !important; /* Cyan icon */
 }
 
 /* Bottom Player Controls Gradient */
-html[data-ypp-ui-style="aurora"] .ytp-gradient-bottom {
+html[data-ypp-theme="aurora"] .ytp-gradient-bottom {
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent) !important;
 }
 
 /* Player Control Buttons */
-html[data-ypp-ui-style="aurora"] .ytp-button {
+html[data-ypp-theme="aurora"] .ytp-button {
   transition: all var(--aurora-bounce) !important;
 }
-html[data-ypp-ui-style="aurora"] .ytp-button:hover {
+html[data-ypp-theme="aurora"] .ytp-button:hover {
   filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.8)) !important;
   transform: scale(1.1) !important;
 }
 
 /* Active Control Buttons (Like CC or Autoplay toggle) */
-html[data-ypp-ui-style="aurora"] .ytp-button[aria-pressed="true"] {
+html[data-ypp-theme="aurora"] .ytp-button[aria-pressed="true"] {
   color: var(--aurora-color-1) !important;
 }
-html[data-ypp-ui-style="aurora"] .ytp-button[aria-pressed="true"]::after {
+html[data-ypp-theme="aurora"] .ytp-button[aria-pressed="true"]::after {
   content: "";
   position: absolute;
   bottom: 6px;
@@ -63,13 +63,13 @@ html[data-ypp-ui-style="aurora"] .ytp-button[aria-pressed="true"]::after {
 }
 
 /* Error Screen */
-html[data-ypp-ui-style="aurora"] .ytp-error {
+html[data-ypp-theme="aurora"] .ytp-error {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
   border-radius: var(--aurora-radius-lg) !important;
 }
-html[data-ypp-ui-style="aurora"] .ytp-error-content-wrap-reason {
+html[data-ypp-theme="aurora"] .ytp-error-content-wrap-reason {
   color: var(--aurora-color-4) !important;
   text-shadow: 0 0 10px var(--aurora-color-4) !important;
 }

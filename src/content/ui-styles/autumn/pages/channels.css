@@ -1,0 +1,31 @@
+/* =========================================================
+   AUTUMN — CHANNELS
+   ========================================================= */
+
+html[data-ypp-theme="autumn"] ytd-c4-tabbed-header-renderer {
+  background: linear-gradient(135deg, var(--au-bg-surface), var(--au-bg-elevated)) !important;
+  border-bottom: var(--au-border-left) !important;
+}
+
+html[data-ypp-theme="autumn"] #channel-header-container {
+  border-radius: var(--au-shape-card) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-theme="autumn"] #channel-avatar img {
+  border-radius: 50% !important;
+  border: 3px solid var(--au-amber) !important;
+  box-shadow: var(--au-shadow-glow) !important;
+}
+
+/* Channel tabs */
+html[data-ypp-theme="autumn"] ytd-tab-renderer {
+  border-radius: var(--au-shape-chip) !important;
+  transition: var(--au-transition-fast) !important;
+}
+html[data-ypp-theme="autumn"] ytd-tab-renderer:hover,
+html[data-ypp-theme="autumn"] ytd-tab-renderer[selected] {
+  background: var(--au-fog) !important;
+  border-bottom: 2px solid var(--au-amber) !important;
+  color: var(--au-amber) !important;
+}

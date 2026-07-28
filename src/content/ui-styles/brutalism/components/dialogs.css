@@ -1,0 +1,48 @@
+/* =========================================================
+   BRUTALISM — DIALOGS
+   Theme: Massive solid rectangle, thick borders
+   ========================================================= */
+
+/* ── Main dialog ── */
+html[data-ypp-theme="brutalism"] tp-yt-paper-dialog,
+html[data-ypp-theme="brutalism"] ytd-popup-container {
+  background: var(--brutal-white) !important;
+  border: 4px solid var(--brutal-black) !important;
+  border-radius: 0 !important;
+  box-shadow: 16px 16px 0px var(--brutal-black) !important;
+  padding: 16px !important;
+}
+
+/* ── Backdrop ── */
+html[data-ypp-theme="brutalism"] tp-yt-iron-overlay-backdrop {
+  background: rgba(0, 0, 0, 0.8) !important;
+  opacity: 1 !important;
+}
+
+/* ── Dialog Header & Content ── */
+html[data-ypp-theme="brutalism"] .yt-core-attributed-string {
+  color: var(--brutal-black) !important;
+}
+html[data-ypp-theme="brutalism"] h2.ytd-simple-menu-header-renderer {
+  text-transform: uppercase !important;
+  font-weight: 900 !important;
+  border-bottom: var(--brutal-border) !important;
+  padding-bottom: 8px !important;
+}
+
+/* ── Dialog Buttons ── */
+html[data-ypp-theme="brutalism"] tp-yt-paper-dialog yt-button-shape button {
+  border: var(--brutal-border) !important;
+  border-radius: 0 !important;
+  background: var(--brutal-white) !important;
+  color: var(--brutal-black) !important;
+  box-shadow: 4px 4px 0px var(--brutal-black) !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  transition: var(--brutal-transition-snap) !important;
+}
+html[data-ypp-theme="brutalism"] tp-yt-paper-dialog yt-button-shape button:hover {
+  background: var(--brutal-accent) !important;
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px var(--brutal-black) !important;
+}

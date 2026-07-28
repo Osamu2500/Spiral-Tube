@@ -1,0 +1,29 @@
+/* src/content/ui-styles/claymorphism/components/menus.css */
+
+/* Dropdowns and Menus */
+html[data-ypp-theme="claymorphism"] tp-yt-iron-dropdown,
+html[data-ypp-theme="claymorphism"] ytd-multi-page-menu-renderer,
+html[data-ypp-theme="claymorphism"] ytd-menu-popup-renderer {
+  background: var(--ypp-bg-surface) !important;
+  border-radius: var(--ypp-radius-lg) !important;
+  box-shadow: var(--ypp-shadow-clay-lg) !important;
+  border: none !important;
+  overflow: visible !important;
+}
+
+/* Menu Items */
+html[data-ypp-theme="claymorphism"] ytd-menu-service-item-renderer,
+html[data-ypp-theme="claymorphism"] ytd-menu-navigation-item-renderer,
+html[data-ypp-theme="claymorphism"] ytd-compact-link-renderer {
+  border-radius: var(--ypp-radius-md) !important;
+  margin: 4px 8px !important;
+  transition: var(--ypp-transition-clay) !important;
+}
+
+html[data-ypp-theme="claymorphism"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-theme="claymorphism"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-theme="claymorphism"] ytd-compact-link-renderer:hover {
+  background: var(--ypp-bg-elevated) !important;
+  box-shadow: var(--ypp-shadow-clay-sm) !important;
+  transform: translateX(4px) !important;
+}

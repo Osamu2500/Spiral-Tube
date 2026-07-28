@@ -1,28 +1,21 @@
-/* =========================================================
-   CYBERPUNK — ANIMATIONS
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/base/animations.css */
 
 @keyframes cyber-glitch {
-  0% { transform: translate(0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-  20% { transform: translate(-2px, 2px); clip-path: polygon(0 15%, 100% 15%, 100% 85%, 0 85%); filter: drop-shadow(2px 0 var(--cyber-primary)) drop-shadow(-2px 0 var(--cyber-secondary)); }
-  40% { transform: translate(-2px, -2px); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); filter: none; }
-  60% { transform: translate(2px, 2px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); filter: drop-shadow(-2px 0 var(--cyber-primary)) drop-shadow(2px 0 var(--cyber-secondary)); }
-  80% { transform: translate(2px, -2px); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); filter: none; }
-  100% { transform: translate(0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  0% { transform: translate(0); clip-path: inset(0 0 0 0); }
+  20% { transform: translate(-2px, 1px); clip-path: inset(10% 0 80% 0); }
+  40% { transform: translate(2px, -1px); clip-path: inset(40% 0 20% 0); }
+  60% { transform: translate(-1px, 2px); clip-path: inset(80% 0 10% 0); }
+  80% { transform: translate(1px, -2px); clip-path: inset(20% 0 40% 0); }
+  100% { transform: translate(0); clip-path: inset(0 0 0 0); }
 }
 
 @keyframes cyber-pulse {
-  0% { box-shadow: 0 0 10px rgba(0, 255, 204, 0.4); }
-  50% { box-shadow: 0 0 25px rgba(0, 255, 204, 0.8), inset 0 0 15px rgba(0, 255, 204, 0.5); }
-  100% { box-shadow: 0 0 10px rgba(0, 255, 204, 0.4); }
+  0% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 30px rgba(0, 255, 204, 0.4); }
+  100% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.4); }
 }
 
-@keyframes cyber-scanline-move {
+@keyframes crt-scan {
   0% { background-position: 0 0; }
-  100% { background-position: 0 100%; }
-}
-
-/* Add a class for forcing the glitch animation via JS, or just use hover states */
-.cyber-glitch-hover:hover {
-  animation: cyber-glitch var(--cyber-glitch-dur) cubic-bezier(.25, .46, .45, .94) both;
+  100% { background-position: 0 100vh; }
 }

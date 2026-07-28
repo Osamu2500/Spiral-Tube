@@ -1,0 +1,29 @@
+/* =========================================================
+   BENTO — NAVBAR
+   ========================================================= */
+
+html[data-ypp-theme="bento"] ytd-masthead {
+  background: var(--bn-bg-base) !important;
+  border-bottom: var(--bn-border-md) !important;
+  box-shadow: 0 2px 0 var(--bn-border-light) !important;
+}
+
+/* Search bar — square input */
+html[data-ypp-theme="bento"] ytd-searchbox {
+  border-radius: 0 !important;
+  border: var(--bn-border-sm) !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  overflow: hidden !important;
+  transition: var(--bn-transition) !important;
+}
+html[data-ypp-theme="bento"] ytd-searchbox:focus-within {
+  border: var(--bn-border-white) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  transform: translate(-1px, -1px) !important;
+}
+html[data-ypp-theme="bento"] #search-input input,
+html[data-ypp-theme="bento"] ytd-searchbox input {
+  background: var(--bn-bg-surface) !important;
+  border-radius: 0 !important;
+  color: var(--bn-text-primary) !important;
+}

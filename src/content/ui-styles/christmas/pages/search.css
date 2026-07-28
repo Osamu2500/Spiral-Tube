@@ -1,0 +1,26 @@
+/* =========================================================
+   CHRISTMAS — SEARCH
+   ========================================================= */
+
+html[data-ypp-theme="christmas"] ytd-search ytd-video-renderer {
+  border-radius: var(--christmas-shape-card) !important;
+  border: 1px solid var(--christmas-glass-border) !important;
+  background: linear-gradient(145deg, rgba(32, 58, 67, 0.6), rgba(15, 32, 39, 0.8)) !important;
+  margin-bottom: 12px !important;
+  padding: 8px !important;
+  transition: all 0.3s var(--christmas-ease-spring) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-search ytd-video-renderer:hover {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: var(--christmas-glow-red) !important;
+  transform: translateY(-4px) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-search-suggestion-renderer {
+  transition: all 0.2s ease !important;
+}
+html[data-ypp-theme="christmas"] ytd-search-suggestion-renderer:hover {
+  background: var(--christmas-glass-bg-hover) !important;
+  border-left: 3px solid var(--christmas-accent-primary) !important;
+}

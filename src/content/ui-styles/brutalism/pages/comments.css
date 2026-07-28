@@ -1,1 +1,67 @@
-/* pages/comments.css - Empty by default */
+/* =========================================================
+   BRUTALISM — COMMENTS
+   Theme: High contrast, thick borders, neo-brutalist
+   ========================================================= */
+
+/* ── Comment Header ── */
+html[data-ypp-theme="brutalism"] ytd-comments-header-renderer {
+  background: var(--brutal-black) !important;
+  border: var(--brutal-border) !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--brutal-shadow-card) !important;
+}
+html[data-ypp-theme="brutalism"] #count.ytd-comments-header-renderer {
+  color: var(--brutal-white) !important;
+  font-family: monospace !important;
+  font-size: 24px !important;
+}
+
+/* ── Comment Input Box ── */
+html[data-ypp-theme="brutalism"] ytd-comment-simplebox-renderer {
+  background: var(--brutal-white) !important;
+  border: var(--brutal-border) !important;
+  padding: 12px !important;
+  box-shadow: var(--brutal-shadow-card) !important;
+}
+html[data-ypp-theme="brutalism"] #placeholder-area.ytd-comment-simplebox-renderer {
+  border: 2px solid var(--brutal-black) !important;
+  padding: 8px !important;
+}
+html[data-ypp-theme="brutalism"] yt-img-shadow.ytd-comment-simplebox-renderer {
+  border-radius: 0 !important;
+  border: 2px solid var(--brutal-black) !important;
+}
+
+/* ── Individual Comment Thread ── */
+html[data-ypp-theme="brutalism"] ytd-comment-thread-renderer {
+  background: var(--brutal-white) !important;
+  border: var(--brutal-border) !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--brutal-shadow-card) !important;
+  border-radius: 0 !important;
+}
+html[data-ypp-theme="brutalism"] ytd-comment-renderer {
+  background: transparent !important;
+}
+
+/* Comment Author Avatar */
+html[data-ypp-theme="brutalism"] ytd-comment-renderer yt-img-shadow,
+html[data-ypp-theme="brutalism"] ytd-comment-renderer yt-img-shadow img {
+  border-radius: 0 !important;
+}
+html[data-ypp-theme="brutalism"] ytd-comment-renderer yt-img-shadow {
+  border: 2px solid var(--brutal-black) !important;
+}
+
+/* Comment Author Name */
+html[data-ypp-theme="brutalism"] #author-text.ytd-comment-renderer {
+  color: var(--brutal-black) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  background: var(--brutal-accent) !important;
+  padding: 0 4px !important;
+  display: inline-block !important;
+  border: 1px solid var(--brutal-black) !important;
+}

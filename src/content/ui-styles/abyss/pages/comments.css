@@ -1,0 +1,25 @@
+/* src/content/ui-styles/abyss/pages/comments.css */
+
+html[data-ypp-theme="abyss"] ytd-comment-thread-renderer {
+  background: rgba(2, 10, 14, 0.6) !important;
+  border-radius: var(--ypp-rad-md) !important;
+  border: 1px solid var(--ypp-border-light) !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
+  transition: var(--ypp-transition-fluid) !important;
+}
+
+html[data-ypp-theme="abyss"] ytd-comment-thread-renderer:focus-within,
+html[data-ypp-theme="abyss"] ytd-comment-thread-renderer:hover {
+  background: rgba(2, 12, 17, 0.9) !important;
+  border-color: var(--ypp-border-heavy) !important;
+  box-shadow: var(--ypp-shadow-glow) !important;
+  transform: translateY(-2px) !important;
+}
+
+html[data-ypp-theme="abyss"] #simple-box {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: var(--ypp-rad-sm) !important;
+  border: 1px solid var(--ypp-accent-secondary) !important;
+  padding: 12px 24px !important;
+}

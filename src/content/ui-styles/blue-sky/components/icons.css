@@ -1,23 +1,24 @@
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
-  border-radius: 32px !important;
-  background: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+/* =========================================================
+   BLUE SKY — ICONS
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── SVG icons: inherit sky blue tint ── */
+html[data-ypp-theme="blue-sky"] yt-icon svg path {
+  fill: var(--sky-text-secondary) !important;
+  transition: fill 0.25s ease !important;
 }
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1) !important;
+html[data-ypp-theme="blue-sky"] yt-icon-button:hover yt-icon svg path,
+html[data-ypp-theme="blue-sky"] button:hover yt-icon svg path {
+  fill: var(--sky-accent-blue) !important;
 }
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
+
+/* ── Liked / active icon state ── */
+html[data-ypp-theme="blue-sky"] [aria-pressed="true"] yt-icon svg path {
+  fill: var(--sky-accent-blue) !important;
+}
+
+/* ── Subscribed bell icon ── */
+html[data-ypp-theme="blue-sky"] #notification-preference-button yt-icon svg path {
+  fill: var(--sky-accent-blue) !important;
 }

@@ -1,29 +1,80 @@
-yt-live-chat-app,
-yt-live-chat-renderer {
-  background: var(--sf) !important;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-base) !important;
+/* =========================================================
+   BLUE SKY — LIVE CHAT
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Chat container ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-renderer,
+html[data-ypp-theme="blue-sky"] ytd-live-chat-frame {
+  background: rgba(230, 245, 255, 0.60) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;
-  overflow: hidden !important;
+  box-shadow: var(--sky-shadow-card) !important;
 }
-yt-live-chat-text-message-renderer,
-yt-live-chat-paid-message-renderer,
-yt-live-chat-membership-item-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 32px !important;
-  margin: 4px 8px !important;
-  padding: 8px !important;
-  transition: transform 0.2s, background 0.2s !important;
+
+/* ── Chat header ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-header-renderer {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-bottom: var(--sky-border) !important;
+  border-radius: var(--sky-shape-chip) var(--sky-shape-chip) 0 0 !important;
+  color: var(--sky-text-primary) !important;
 }
-yt-live-chat-text-message-renderer:hover {
-  background: rgba(128, 128, 128, 0.12) !important;
-  transform: scale(1.02) !important;
+
+/* ── Chat messages ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-message-renderer {
+  border-radius: var(--sky-shape-chip) !important;
+  transition: all 0.25s var(--sky-ease) !important;
+  padding: 6px 10px !important;
 }
-#ticker.yt-live-chat-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-message-renderer:hover {
+  background: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: var(--sky-shadow-card) !important;
 }
-#message-input.yt-live-chat-text-input-field-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
-  border-radius: 32px !important;
-  padding: 5px 15px !important;
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-message-renderer #author-name {
+  color: var(--sky-accent-blue) !important;
+  font-weight: 600 !important;
+}
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-message-renderer #message {
+  color: var(--sky-text-primary) !important;
+}
+
+/* ── Chat input area ── */
+html[data-ypp-theme="blue-sky"] #input-container,
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-input-field-renderer {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: var(--sky-border) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  color: var(--sky-text-primary) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transition: all 0.3s var(--sky-ease) !important;
+}
+html[data-ypp-theme="blue-sky"] #input-container:focus-within,
+html[data-ypp-theme="blue-sky"] yt-live-chat-text-input-field-renderer:focus-within {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border: var(--sky-border-glow) !important;
+  box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.25), var(--sky-shadow-hover) !important;
+}
+
+/* ── Superchat messages ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--sky-shape-card) !important;
+  background: linear-gradient(135deg, rgba(247, 201, 72, 0.30), rgba(255, 220, 100, 0.20)) !important;
+  border: 1px solid rgba(247, 201, 72, 0.50) !important;
+  box-shadow:
+    0 0 0 1px rgba(247, 201, 72, 0.20),
+    0 6px 20px rgba(247, 201, 72, 0.20) !important;
+}
+
+/* ── Member chat messages ── */
+html[data-ypp-theme="blue-sky"] yt-live-chat-membership-item-renderer {
+  border-radius: var(--sky-shape-chip) !important;
+  background: rgba(200, 235, 255, 0.40) !important;
+  border: 1px solid rgba(0, 191, 255, 0.30) !important;
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15) !important;
 }

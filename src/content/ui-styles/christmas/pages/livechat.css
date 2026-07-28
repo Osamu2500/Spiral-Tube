@@ -1,0 +1,29 @@
+/* =========================================================
+   CHRISTMAS — LIVE CHAT
+   ========================================================= */
+
+html[data-ypp-theme="christmas"] yt-live-chat-renderer,
+html[data-ypp-theme="christmas"] ytd-live-chat-frame {
+  background: var(--christmas-bg-secondary) !important;
+  border-radius: var(--christmas-shape-card) !important;
+  border: 1px solid var(--christmas-glass-border) !important;
+}
+
+html[data-ypp-theme="christmas"] #input-container,
+html[data-ypp-theme="christmas"] yt-live-chat-text-input-field-renderer {
+  background: var(--christmas-glass-bg) !important;
+  border: 1px solid var(--christmas-glass-border) !important;
+  border-radius: var(--christmas-shape-chip) !important;
+  color: var(--christmas-text-primary) !important;
+}
+
+html[data-ypp-theme="christmas"] #input-container:focus-within {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: var(--christmas-glow-red) !important;
+}
+
+html[data-ypp-theme="christmas"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--christmas-shape-chip) !important;
+  border: 1px solid rgba(255, 215, 0, 0.5) !important;
+  box-shadow: var(--christmas-glow-gold) !important;
+}

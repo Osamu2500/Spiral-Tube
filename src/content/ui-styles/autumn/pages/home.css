@@ -1,0 +1,12 @@
+/* =========================================================
+   AUTUMN — HOME
+   ========================================================= */
+
+/* Filter chip shelf */
+html[data-ypp-theme="autumn"] ytd-feed-filter-chip-bar-renderer {
+  background: var(--au-bg-base) !important;
+  border-bottom: var(--au-border-subtle) !important;
+}
+html[data-ypp-theme="autumn"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--au-shape-chip) !important;
+}

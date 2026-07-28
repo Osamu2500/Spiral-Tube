@@ -1,0 +1,24 @@
+/* =========================================================
+   AUTUMN — ANIMATIONS
+   ========================================================= */
+
+@keyframes au-leaf-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes au-warm-glow {
+  0%, 100% { box-shadow: 4px 4px 18px rgba(0,0,0,0.55); }
+  50%       { box-shadow: 4px 4px 18px rgba(0,0,0,0.55), 0 0 15px rgba(200,100,40,0.2); }
+}
+
+@keyframes au-ember-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+@keyframes au-progress-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}

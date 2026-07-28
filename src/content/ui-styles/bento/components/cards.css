@@ -1,0 +1,141 @@
+/* =========================================================
+   BENTO — CARDS
+   Unique Shape: Perfect rectangle, thick border, offset hard shadow
+   The card IS a bento compartment — flat, clean, structured
+   ========================================================= */
+
+html[data-ypp-theme="bento"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+      ytd-rich-item-renderer,
+      ytd-video-renderer,
+      ytd-playlist-renderer,
+      ytd-radio-renderer,
+      ytd-channel-renderer,
+      ytd-compact-video-renderer,
+      ytd-grid-video-renderer,
+      .ypp-grid-item
+    ) *
+  )
+) {
+  background: var(--bn-bg-card) !important;
+  border-radius: var(--bn-shape-card) !important;
+  border: var(--bn-border-md) !important;
+  padding: 12px !important;
+  box-shadow: var(--bn-shadow-card) !important;
+  transition: var(--bn-transition) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  animation: bn-stamp-in 0.2s ease-out both !important;
+}
+
+/* Hover — lift with growing hard shadow */
+html[data-ypp-theme="bento"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+      ytd-rich-item-renderer,
+      ytd-video-renderer,
+      ytd-playlist-renderer,
+      ytd-radio-renderer,
+      ytd-channel-renderer,
+      ytd-compact-video-renderer,
+      ytd-grid-video-renderer,
+      .ypp-grid-item
+    ) *
+  )
+):hover {
+  background: var(--bn-bg-elevated) !important;
+  border-color: var(--bn-white) !important;
+  box-shadow: var(--bn-shadow-hover) !important;
+  transform: translate(-2px, -2px) !important;
+}
+
+/* Gold accent top-border on hover */
+html[data-ypp-theme="bento"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+      ytd-rich-item-renderer,
+      ytd-video-renderer,
+      ytd-playlist-renderer,
+      ytd-radio-renderer,
+      ytd-channel-renderer,
+      ytd-compact-video-renderer,
+      ytd-grid-video-renderer,
+      .ypp-grid-item
+    ) *
+  )
+):hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--bn-accent-warm);
+}
+
+/* Inner transparent */
+html[data-ypp-theme="bento"] ytd-rich-grid-media {
+  background: transparent !important;
+}
+
+/* Thumbnails — keep square */
+html[data-ypp-theme="bento"] ytd-thumbnail,
+html[data-ypp-theme="bento"] .ytd-thumbnail {
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--bn-border) !important;
+}
+html[data-ypp-theme="bento"] ytd-thumbnail img {
+  transition: transform 0.25s ease !important;
+}
+html[data-ypp-theme="bento"] ytd-thumbnail:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* Time badge — monochrome pill */
+html[data-ypp-theme="bento"] ytd-thumbnail-overlay-time-status-renderer {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid var(--bn-border-light) !important;
+  border-radius: 0 !important;
+  color: var(--bn-white) !important;
+  padding: 2px 8px !important;
+  font-weight: 700 !important;
+  font-family: monospace !important;
+  margin: 5px !important;
+}
+
+/* Channel avatar */
+html[data-ypp-theme="bento"] #avatar-link img,
+html[data-ypp-theme="bento"] yt-img-shadow#avatar img {
+  border-radius: 0 !important;  /* square avatar — signature bento look */
+  border: 2px solid var(--bn-border-light) !important;
+  transition: var(--bn-transition) !important;
+}
+html[data-ypp-theme="bento"] ytd-rich-item-renderer:hover #avatar-link img {
+  border-color: var(--bn-white) !important;
+}

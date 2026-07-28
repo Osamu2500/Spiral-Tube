@@ -1,40 +1,29 @@
-/* src/content/themes/ui-styles/brutalism/base/layout.css */
-html[data-ypp-ui-style=brutalism] body {
-  background: #fff !important;
+/* =========================================================
+   BRUTALISM — BACKGROUND
+   Theme: High-contrast Grid / Halftone Paper
+   ========================================================= */
+
+html[data-ypp-theme="brutalism"] body {
+  background-color: var(--brutal-white) !important;
+  /* Aggressive grid pattern overlay */
   background-image:
-    linear-gradient(
-      45deg,
-      #000 25%,
-      transparent 25%,
-      transparent 75%,
-      #000 75%,
-      #000),
-    linear-gradient(
-      45deg,
-      #000 25%,
-      transparent 25%,
-      transparent 75%,
-      #000 75%,
-      #000) !important;
+    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px) !important;
   background-size: 20px 20px !important;
-  background-position: 0 0, 10px 10px !important;
+  background-position: 0 0 !important;
   background-attachment: fixed !important;
 }
-html[data-ypp-ui-style=brutalism] .ytProgressBarLineProgressBarLoaded {
-  background: #aaa !important;
+
+/* Ensure global app shells don't hide the background grid */
+html[data-ypp-theme="brutalism"] ytd-app,
+html[data-ypp-theme="brutalism"] #page-manager.ytd-app,
+html[data-ypp-theme="brutalism"] #content.ytd-app,
+html[data-ypp-theme="brutalism"] #masthead-container {
+  background: transparent !important;
 }
-html[data-ypp-ui-style=brutalism] .ytProgressBarLineProgressBarBackground {
-  background: #fff !important;
-}
-html[data-ypp-ui-style=brutalism] ::-webkit-scrollbar-track {
-  background: #fff !important;
-}
-html[data-ypp-ui-style=brutalism] ::-webkit-scrollbar-thumb {
-  background: #000 !important;
-  border: 2px solid #fff;
-}
-html[data-ypp-ui-style=brutalism] .ypp-nav-btn.active {
-  background: #000 !important;
-  color: #fff !important;
-  box-shadow: inset 2px 2px 0 0 rgba(255, 255, 255, 0.5) !important;
+
+/* Make standard surfaces inherit the pure rigid grid layout */
+html[data-ypp-theme="brutalism"] #guide-content.ytd-app {
+  background: var(--brutal-white) !important;
+  border-right: var(--brutal-border) !important;
 }

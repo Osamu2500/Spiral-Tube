@@ -1,20 +1,20 @@
-html[data-ypp-ui-style="bloodmoon"] .ytp-play-progress {
+html[data-ypp-theme="bloodmoon"] .ytp-play-progress {
   background: linear-gradient(90deg, var(--bm-accent-blood), var(--bm-accent-ember)) !important;
   box-shadow: 0 0 10px rgba(232, 69, 69, 0.6) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] .ytp-scrubber-button {
+html[data-ypp-theme="bloodmoon"] .ytp-scrubber-button {
   background: var(--bm-accent-lunar) !important;
   border: 2px solid rgba(255, 255, 255, 0.5) !important;
   box-shadow: var(--bm-glow-lunar) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] .ytp-volume-slider-handle {
+html[data-ypp-theme="bloodmoon"] .ytp-volume-slider-handle {
   background: var(--bm-accent-ember) !important;
   box-shadow: var(--bm-glow-ember) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] .ytp-settings-menu {
+html[data-ypp-theme="bloodmoon"] .ytp-settings-menu {
   background: var(--bm-bg-elevated) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
@@ -23,10 +23,10 @@ html[data-ypp-ui-style="bloodmoon"] .ytp-settings-menu {
   box-shadow: var(--bm-glow-blood) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] .ytp-menuitem:hover {
+html[data-ypp-theme="bloodmoon"] .ytp-menuitem:hover {
   background: rgba(192, 21, 42, 0.14) !important;
 }
 
-html[data-ypp-ui-style="bloodmoon"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
+html[data-ypp-theme="bloodmoon"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
   background: var(--bm-accent-ember) !important;
 }

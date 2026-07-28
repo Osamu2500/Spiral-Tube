@@ -1,134 +1,133 @@
-ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
-  background-color: black !important;
-  margin-right: 10px;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-#trigger.tp-yt-paper-menu-button {
-  padding: 10px !important;
-  border-radius: 32px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#trigger.tp-yt-paper-menu-button:hover {
-  transform: scale(1.1) !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytLockupMetadataViewModelMenuButton {
-  overflow: visible !important;
-}
-.ytLockupMetadataViewModelMenuButton button-view-model,
-.ytLockupMetadataViewModelMenuButton button {
-  opacity: 1 !important;
-  visibility: visible !important;
-  border-radius: 32px !important;
-  transition: background var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytLockupMetadataViewModelMenuButton button:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
-  transform: none !important;
-}
-.ytLockupMetadataViewModelMenuButton yt-interaction .fill,
-.ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
-  background: transparent !important;
-  opacity: 0 !important;
-}
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
-  margin: 10px;
+/* =========================================================
+   BLUE SKY — MENUS & DROPDOWNS
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Dropdown / Context Menus ── */
+html[data-ypp-theme="blue-sky"] ytd-menu-popup-renderer,
+html[data-ypp-theme="blue-sky"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-dialog {
+  background: rgba(240, 250, 255, 0.80) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important;
+  border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;
-  border-radius: 32px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-hover) !important;
-}
-ytd-simple-menu-header-renderer {
-  background: none !important;
-}
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-}
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 32px !important;
-  border: var(--sky-border) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
-  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
+  box-shadow:
+    0 32px 80px rgba(0, 100, 200, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
   max-height: 80vh !important;
   overflow-y: auto !important;
-  max-width: none !important;
 }
-.tp-yt-paper-tooltip[style-target=tooltip] {
+
+/* ── Menu items ── */
+html[data-ypp-theme="blue-sky"] ytd-menu-service-item-renderer,
+html[data-ypp-theme="blue-sky"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--sky-shape-chip) !important;
+  transition: all 0.25s var(--sky-bounce) !important;
+  color: var(--sky-text-primary) !important;
+}
+html[data-ypp-theme="blue-sky"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-theme="blue-sky"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  background: rgba(255, 255, 255, 0.70) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
+}
+
+/* ── Multi-page menu items ── */
+html[data-ypp-theme="blue-sky"] #items.yt-multi-page-menu-section-renderer > *:not([compact-link-style*="disclaimer"]):not(ytd-message-renderer) {
+  margin: 6px !important;
   border: var(--sky-border) !important;
-  box-shadow: var(--shadow-active) !important;
-  color: white !important;
+  border-radius: var(--sky-shape-chip) !important;
+  transition: all 0.25s var(--sky-bounce) !important;
+  color: var(--sky-text-primary) !important;
 }
-tp-yt-paper-listbox {
-  padding: 10px !important;
+html[data-ypp-theme="blue-sky"] #items.yt-multi-page-menu-section-renderer > *:not([compact-link-style*="disclaimer"]):not(ytd-message-renderer):hover {
+  background: rgba(255, 255, 255, 0.60) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
 }
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: 32px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+
+/* ── Menu trigger button ── */
+html[data-ypp-theme="blue-sky"] #trigger.tp-yt-paper-menu-button {
+  border-radius: var(--sky-shape-chip) !important;
+  transition: all 0.3s var(--sky-bounce) !important;
 }
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--shadow-hover) !important;
+html[data-ypp-theme="blue-sky"] #trigger.tp-yt-paper-menu-button:hover {
+  background: rgba(255, 255, 255, 0.70) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: scale(1.08) !important;
 }
-ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
-.ytContextualSheetLayoutHost {
-  background: none !important;
-  padding: 13px !important;
-}
-html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {
-  border-radius: 32px !important;
-  padding: 7px 10px;
-}
-tp-yt-paper-listbox.yt-dropdown-menu {
-  background: var(--sf) !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
-  background: none !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
-  box-shadow: var(--shadow-hover) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: 32px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
-  transform: scale(1.05) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ypp-account-menu,
-#ypp-top-bar {
-  background: var(--sf) !important;
+
+/* ── Tooltip ── */
+html[data-ypp-theme="blue-sky"] .tp-yt-paper-tooltip[style-target=tooltip] {
+  background: rgba(240, 250, 255, 0.90) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   border: var(--sky-border) !important;
-  box-shadow: var(--shadow-base) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  color: var(--sky-text-primary) !important;
+  padding: 6px 12px !important;
 }
-tp-yt-paper-toast {
-  background: var(--sf) !important;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-hover) !important;
+
+/* ── Listbox & Dropdown ── */
+html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox,
+html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox.yt-dropdown-menu {
+  background: rgba(240, 250, 255, 0.80) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  padding: 8px !important;
+}
+html[data-ypp-theme="blue-sky"] a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--sky-shape-chip) !important;
+  color: var(--sky-text-primary) !important;
+  transition: all 0.25s var(--sky-bounce) !important;
+}
+html[data-ypp-theme="blue-sky"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  background: rgba(255, 255, 255, 0.70) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transform: translateX(4px) !important;
+}
+
+/* ── Lockup metadata menu button ── */
+html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton {
+  overflow: visible !important;
+}
+html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button {
+  opacity: 1 !important;
+  visibility: visible !important;
+  border-radius: var(--sky-shape-chip) !important;
   border: var(--sky-border) !important;
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  transition: all 0.25s var(--sky-bounce) !important;
 }
-tp-yt-paper-listbox {
-  background: transparent !important;
+html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Toast notifications ── */
+html[data-ypp-theme="blue-sky"] tp-yt-paper-toast {
+  background: rgba(240, 250, 255, 0.90) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  border: var(--sky-border) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+  color: var(--sky-text-primary) !important;
+}
+
+/* ── YPP Account Menu ── */
+html[data-ypp-theme="blue-sky"] .ypp-account-menu,
+html[data-ypp-theme="blue-sky"] #ypp-top-bar {
+  background: rgba(240, 250, 255, 0.80) !important;
+  backdrop-filter: var(--sky-blur-nav) !important;
+  -webkit-backdrop-filter: var(--sky-blur-nav) !important;
+  border: var(--sky-border) !important;
+  box-shadow: var(--sky-shadow-nav) !important;
 }

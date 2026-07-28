@@ -1,24 +1,73 @@
-/* ── Body ──────────────────────────────────────────────────── */
-html[data-ypp-ui-style="brutalism"] body {
-  background: #fff !important;
-  background-image: 
-    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), 
-    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000) !important;
-  background-size: 20px 20px !important;
-  background-position: 0 0, 10px 10px !important;
-  background-attachment: fixed !important;
+/* =========================================================
+   BRUTALISM — LAYOUT
+   ========================================================= */
+
+/* ── Custom Scrollbar (Rigid blocky scrollbar) ── */
+html[data-ypp-theme="brutalism"] ::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+  background-color: var(--brutal-gray-light) !important;
+  border-left: var(--brutal-border) !important;
 }
-html[data-ypp-ui-style="brutalism"] .ytProgressBarLineProgressBarLoaded {
-  background: #aaa !important;
+html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-track {
+  background: var(--brutal-white) !important;
+  border-left: var(--brutal-border) !important;
 }
-html[data-ypp-ui-style="brutalism"] .ytProgressBarLineProgressBarBackground {
-  background: #fff !important;
+html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-thumb {
+  background: var(--brutal-black) !important;
+  border: 2px solid var(--brutal-white) !important;
+  border-radius: 0px !important;
 }
-html[data-ypp-ui-style="brutalism"] ::-webkit-scrollbar-track { background: #fff !important; }
-html[data-ypp-ui-style="brutalism"] ::-webkit-scrollbar-thumb { background: #000 !important; border: 2px solid #fff; }
-/* ── Active states ─────────────────────────────────────────── */
-html[data-ypp-ui-style="brutalism"] .ypp-nav-btn.active {
-  background: #000 !important;
-  color: #fff !important;
-  box-shadow: inset 2px 2px 0 0 rgba(255,255,255,0.5) !important;
+html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--brutal-accent) !important;
+  border: 2px solid var(--brutal-black) !important;
+}
+
+/* ── Sidebar Layout ── */
+html[data-ypp-theme="brutalism"] ytd-mini-guide-renderer,
+html[data-ypp-theme="brutalism"] ytd-guide-renderer {
+  background: var(--brutal-bg-base) !important;
+  border-right: var(--brutal-border) !important;
+}
+html[data-ypp-theme="brutalism"] #guide-inner-content {
+  background: transparent !important;
+}
+
+/* ── Mini guide buttons ── */
+html[data-ypp-theme="brutalism"] ytd-mini-guide-entry-renderer {
+  border: var(--brutal-border) !important;
+  margin: 4px 8px !important;
+  border-radius: 0 !important;
+  box-shadow: var(--brutal-shadow-card) !important;
+  background: var(--brutal-white) !important;
+  transition: var(--brutal-transition-snap) !important;
+}
+html[data-ypp-theme="brutalism"] ytd-mini-guide-entry-renderer:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 4px 4px 0px var(--brutal-black) !important;
+  background: var(--brutal-gray-light) !important;
+}
+
+/* ── Full guide entries ── */
+html[data-ypp-theme="brutalism"] ytd-guide-entry-renderer {
+  border-radius: 0 !important;
+  margin: 2px 8px !important;
+  transition: var(--brutal-transition-snap) !important;
+}
+html[data-ypp-theme="brutalism"] ytd-guide-entry-renderer:hover {
+  background: var(--brutal-accent) !important;
+  color: var(--brutal-black) !important;
+  border: var(--brutal-border) !important;
+  box-shadow: var(--brutal-shadow-card) !important;
+  transform: translate(-4px, -2px) !important;
+}
+
+/* Active endpoint marker */
+html[data-ypp-theme="brutalism"] ytd-guide-entry-renderer[active] {
+  background: var(--brutal-black) !important;
+}
+html[data-ypp-theme="brutalism"] ytd-guide-entry-renderer[active] .title,
+html[data-ypp-theme="brutalism"] ytd-guide-entry-renderer[active] yt-icon svg path {
+  color: var(--brutal-white) !important;
+  fill: var(--brutal-white) !important;
 }

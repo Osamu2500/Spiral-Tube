@@ -1,0 +1,17 @@
+/* =========================================================
+   CAIRO RED — CHANNELS
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] ytd-c4-tabbed-header-renderer {
+  background: var(--cairo-bg-mid) !important;
+  border-bottom: var(--cairo-border) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] tp-yt-app-header {
+  background: var(--cairo-bg-mid) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] paper-tab.iron-selected {
+  border-bottom: 3px solid var(--cairo-brand) !important;
+  color: var(--cairo-brand) !important;
+}

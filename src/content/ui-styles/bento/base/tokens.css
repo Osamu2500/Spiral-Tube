@@ -1,0 +1,68 @@
+/* =========================================================
+   BENTO — TOKENS
+   Unique Shape: "Bento Box" — perfectly square corners,
+   thick outer border, bold inset shadow, grid-gap aesthetic.
+   Inspired by Japanese bento compartments: clean, minimal,
+   structured. Zero radius, everything in neat rectangles.
+   ========================================================= */
+
+html[data-ypp-theme="bento"] {
+  /* === Core Palette — Monochrome + 1 accent === */
+  --bn-black:        #0a0a0a;
+  --bn-dark:         #111111;
+  --bn-surface:      #1a1a1a;
+  --bn-elevated:     #222222;
+  --bn-border:       #333333;
+  --bn-border-light: #444444;
+  --bn-white:        #f0f0f0;
+  --bn-accent:       #e8e8e8;
+  --bn-accent-warm:  #f5c842;   /* single pop of color — soy sauce gold */
+  --bn-text-primary: #f0f0f0;
+  --bn-text-muted:   #999999;
+
+  /* === Backgrounds === */
+  --bn-bg-base:     var(--bn-black);
+  --bn-bg-surface:  var(--bn-dark);
+  --bn-bg-card:     var(--bn-surface);
+  --bn-bg-elevated: var(--bn-elevated);
+
+  /* === Borders — Thick, deliberate, neo-brutalist === */
+  --bn-border-sm:    2px solid var(--bn-border);
+  --bn-border-md:    2px solid var(--bn-border-light);
+  --bn-border-gold:  2px solid var(--bn-accent-warm);
+  --bn-border-white: 2px solid var(--bn-white);
+
+  /* === Shadows — Offset inset/hard shadow === */
+  --bn-shadow-card:   4px 4px 0px var(--bn-border);
+  --bn-shadow-hover:  6px 6px 0px var(--bn-border-light);
+  --bn-shadow-gold:   4px 4px 0px var(--bn-accent-warm);
+  --bn-shadow-press:  2px 2px 0px var(--bn-border-light);
+
+  /* === Unique Shape: "Bento Box" ===
+     All corners: 0px (perfectly square).
+     The shape IS the thick offset border + hard shadow.
+     Buttons get a 4px radius at most, very subtle.
+  */
+  --bn-shape-card:  0px;
+  --bn-shape-btn:   4px;
+  --bn-shape-chip:  2px;
+  --bn-shape-input: 0px;
+  --bn-shape-modal: 0px;
+
+  /* === Transitions === */
+  --bn-transition:      all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --bn-transition-snap: all 0.1s ease-out;
+}
+
+/* === Global YouTube CSS Variable Overrides === */
+html[data-ypp-theme="bento"] {
+  --yt-spec-base-background:         var(--bn-bg-base)     !important;
+  --yt-spec-raised-background:       var(--bn-bg-surface)  !important;
+  --yt-spec-menu-background:         var(--bn-bg-elevated) !important;
+  --yt-spec-text-primary:            var(--bn-text-primary) !important;
+  --yt-spec-text-secondary:          var(--bn-text-muted)  !important;
+  --yt-spec-call-to-action:          var(--bn-white)       !important;
+  --yt-spec-brand-button-background: var(--bn-white)       !important;
+  --yt-spec-badge-chip-background:   transparent           !important;
+  --yt-spec-additive-background:     transparent           !important;
+}

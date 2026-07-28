@@ -1,1 +1,65 @@
-/* pages/livechat.css - Empty by default */
+/* =========================================================
+   BRUTALISM — LIVE CHAT
+   ========================================================= */
+
+/* ── Chat Container ── */
+html[data-ypp-theme="brutalism"] yt-live-chat-app,
+html[data-ypp-theme="brutalism"] yt-live-chat-renderer {
+  background: var(--brutal-white) !important;
+  border: var(--brutal-border) !important;
+  border-radius: 0 !important;
+}
+
+/* ── Chat Header ── */
+html[data-ypp-theme="brutalism"] yt-live-chat-header-renderer {
+  background: var(--brutal-black) !important;
+  color: var(--brutal-white) !important;
+  border-bottom: var(--brutal-border) !important;
+}
+html[data-ypp-theme="brutalism"] yt-live-chat-header-renderer yt-formatted-string {
+  color: var(--brutal-white) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+}
+
+/* ── Chat Messages ── */
+html[data-ypp-theme="brutalism"] yt-live-chat-text-message-renderer {
+  background: transparent !important;
+  border-bottom: 1px dashed var(--brutal-black) !important;
+  padding: 8px !important;
+}
+html[data-ypp-theme="brutalism"] yt-live-chat-text-message-renderer:hover {
+  background: var(--brutal-accent) !important;
+}
+
+/* Message Avatar */
+html[data-ypp-theme="brutalism"] yt-live-chat-text-message-renderer yt-img-shadow {
+  border-radius: 0 !important;
+  border: 1px solid var(--brutal-black) !important;
+}
+
+/* ── Superchats (Make them extremely visible) ── */
+html[data-ypp-theme="brutalism"] yt-live-chat-paid-message-renderer {
+  border: 3px solid var(--brutal-black) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0px var(--brutal-black) !important;
+  margin: 8px 0 !important;
+}
+html[data-ypp-theme="brutalism"] #header.yt-live-chat-paid-message-renderer {
+  border-bottom: 3px solid var(--brutal-black) !important;
+}
+html[data-ypp-theme="brutalism"] yt-live-chat-paid-message-renderer yt-img-shadow {
+  border-radius: 0 !important;
+  border: 2px solid var(--brutal-black) !important;
+}
+
+/* ── Input Box ── */
+html[data-ypp-theme="brutalism"] yt-live-chat-message-input-renderer {
+  background: var(--brutal-white) !important;
+  border-top: var(--brutal-border) !important;
+  padding: 8px !important;
+}
+html[data-ypp-theme="brutalism"] #input-panel.yt-live-chat-message-input-renderer {
+  border: 2px solid var(--brutal-black) !important;
+  background: var(--brutal-gray-light) !important;
+}

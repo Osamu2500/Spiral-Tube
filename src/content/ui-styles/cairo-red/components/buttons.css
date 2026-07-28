@@ -1,0 +1,53 @@
+/* =========================================================
+   CAIRO RED — BUTTONS
+   ========================================================= */
+
+/* Default Action Buttons */
+html[data-ypp-ui-style="cairo-red"] button.yt-spec-button-shape-next--tonal:not(
+  .yt-spec-button-shape-next--call-to-action,
+  .yt-spec-button-shape-next--filled,
+  .yt-spec-button-shape-next--outline,
+  .yt-spec-button-shape-next--text
+),
+html[data-ypp-ui-style="cairo-red"] yt-button-shape button,
+html[data-ypp-ui-style="cairo-red"] ytd-button-renderer button {
+  background: var(--cairo-bg-raised) !important;
+  border: var(--cairo-border) !important;
+  border-radius: var(--cairo-radius-pill) !important;
+  color: var(--cairo-text-primary) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] button.yt-spec-button-shape-next--tonal:not(.yt-spec-button-shape-next--call-to-action, .yt-spec-button-shape-next--filled, .yt-spec-button-shape-next--outline, .yt-spec-button-shape-next--text):hover,
+html[data-ypp-ui-style="cairo-red"] yt-button-shape button:hover,
+html[data-ypp-ui-style="cairo-red"] ytd-button-renderer button:hover {
+  background: var(--cairo-brand) !important;
+  border-color: var(--cairo-brand) !important;
+  color: var(--cairo-text-inverse) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] yt-button-shape button:active {
+  transform: translateY(2px) !important;
+}
+
+/* Primary Subscribe/Filled Buttons */
+html[data-ypp-ui-style="cairo-red"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-style="cairo-red"] .yt-spec-button-shape-next--filled {
+  background: var(--cairo-brand) !important;
+  color: var(--cairo-text-inverse) !important;
+  border: var(--cairo-border-brand) !important;
+  border-radius: var(--cairo-radius-pill) !important;
+  box-shadow: 0 4px 10px rgba(230, 0, 0, 0.3) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] .yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-ui-style="cairo-red"] .yt-spec-button-shape-next--filled:hover {
+  background: var(--cairo-brand-hover) !important;
+  box-shadow: 0 6px 15px rgba(255, 26, 26, 0.5) !important;
+}
+
+/* Active / Pressed Buttons */
+html[data-ypp-ui-style="cairo-red"] yt-button-shape button[aria-pressed="true"],
+html[data-ypp-ui-style="cairo-red"] .yt-spec-button-shape-next[aria-pressed="true"] {
+  background: var(--cairo-brand-heavy) !important;
+  color: var(--cairo-text-inverse) !important;
+}

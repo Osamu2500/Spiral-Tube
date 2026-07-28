@@ -1,98 +1,33 @@
-/* =========================================================
-   CYBERPUNK — GLOBAL BUTTONS
-   ========================================================= */
+/* src/content/ui-styles/cyberpunk/components/buttons.css */
 
-/* All YT-spec filled buttons */
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--filled,
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--tonal {
-  background: transparent !important;
-  border: var(--cyber-border-thin) !important;
-  color: var(--cyber-secondary) !important;
+html[data-ypp-theme="cyberpunk"] yt-button-shape,
+html[data-ypp-theme="cyberpunk"] ytd-button-renderer {
+  clip-path: var(--ypp-clip-parallelogram) !important;
   border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  font-family: monospace !important;
+}
+
+html[data-ypp-theme="cyberpunk"] button {
+  border-radius: 0 !important;
+  clip-path: var(--ypp-clip-sm) !important;
+  background: var(--ypp-bg-elevated) !important;
+  border: 1px solid var(--ypp-accent-primary) !important;
+  color: var(--ypp-accent-primary) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  transition: all var(--cyber-snap) !important;
+  font-family: monospace !important;
+  letter-spacing: 1px !important;
+  transition: var(--ypp-transition-snap) !important;
+  position: relative !important;
 }
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--tonal:hover {
-  background: var(--cyber-secondary) !important;
+
+html[data-ypp-theme="cyberpunk"] button:hover {
+  background: var(--ypp-accent-primary) !important;
   color: #000 !important;
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 12px var(--cyber-secondary) !important;
+  box-shadow: var(--ypp-glow-cyan) !important;
 }
 
-/* Call-to-action override (Subscribe, etc.) */
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled {
-  background: var(--cyber-tertiary) !important;
-  color: #000 !important;
-  border-color: var(--cyber-tertiary) !important;
-  box-shadow: 0 0 10px rgba(252, 238, 10, 0.4) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover {
-  background: #fff !important;
-  box-shadow: 0 0 20px rgba(252, 238, 10, 0.8) !important;
-  animation: cyber-glitch 0.2s both !important;
-}
-
-/* Text buttons */
-html[data-ypp-ui-style="cyberpunk"] button.ytSpecButtonShapeNextText,
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-  border-radius: 0 !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] button.ytSpecButtonShapeNextText:hover,
-html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
-  background: rgba(0, 255, 204, 0.08) !important;
-  box-shadow: inset 0 -2px 0 var(--cyber-secondary) !important;
-}
-
-/* Like / Dislike Segmented Buttons */
-html[data-ypp-ui-style="cyberpunk"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
-  gap: 4px !important;
-  background: none !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
-html[data-ypp-ui-style="cyberpunk"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  background: rgba(0, 0, 0, 0.8) !important;
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  color: var(--cyber-secondary) !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover {
-  background: rgba(0, 255, 204, 0.1) !important;
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
-}
-
-/* Thumbnail Overlay Buttons (Watch Later, Save) */
-html[data-ypp-ui-style="cyberpunk"] ytd-thumbnail-overlay-toggle-button-renderer {
-  background: rgba(0, 0, 0, 0.8) !important;
-  border: 1px solid rgba(0, 255, 204, 0.4) !important;
-  border-radius: 0 !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
-  background: rgba(0, 255, 204, 0.2) !important;
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 8px var(--cyber-secondary) !important;
-}
-
-/* Extension-specific buttons (player bar) */
-html[data-ypp-ui-style="cyberpunk"] .ypp-gpb-btn,
-html[data-ypp-ui-style="cyberpunk"] .ypp-action-btn,
-html[data-ypp-ui-style="cyberpunk"] .ypp-icon-btn {
-  border-radius: 0 !important;
-  border: var(--cyber-border-thin) !important;
-  background: transparent !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ypp-gpb-btn:hover,
-html[data-ypp-ui-style="cyberpunk"] .ypp-action-btn:hover,
-html[data-ypp-ui-style="cyberpunk"] .ypp-icon-btn:hover {
-  background: rgba(0, 255, 204, 0.1) !important;
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+html[data-ypp-theme="cyberpunk"] button:active {
+  animation: cyber-glitch 0.2s linear forwards !important;
+  background: var(--ypp-accent-secondary) !important;
+  border-color: var(--ypp-accent-secondary) !important;
+  box-shadow: var(--ypp-glow-pink) !important;
 }

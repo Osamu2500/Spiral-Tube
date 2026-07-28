@@ -1,164 +1,107 @@
-#frosted-glass.with-chipbar.ytd-app {
-  background: none !important;
-}
-#guide-content.ytd-app {
-  background: transparent;
-}
-#guide-wrapper.ytd-app {
-  background: var(--sf) !important;
-  border-radius: calc(20px * 1.15) / 20px !important;
-  border: var(--sky-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce), background var(--bounce) !important;
-}
-ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
-}
-yt-icon-button#guide-button {
-  border-radius: 32px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-yt-icon-button#guide-button:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-yt-icon-button#guide-button:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
-}
-/* src/content/themes/ui-styles/blue-sky/pages/home.css */
-#description.ytd-watch-metadata,
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  margin: 16px 16px 0 0 !important;
-  border-radius: 32px !important;
-  background: var(--sf) !important;
-  border: var(--sky-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-}
-ytd-guide-renderer #sections {
-  margin-left: 8px !important;
-}
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-ytd-browse[page-subtype=home] #chips {
-  margin: 16px 0 0 0 !important;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-active) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  background: var(--sf) !important;
-  border: var(--sky-border) !important;
-  transition: box-shadow var(--bounce) !important;
-}
-.yt-chip-shape {
-  background-color: transparent !important;
-}
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+/* =========================================================
+   BLUE SKY — HOME PAGE
+   Theme: Premium Aero Glass — Stratosphere Edition
+   ========================================================= */
+
+/* ── Home hero section ── */
+html[data-ypp-theme="blue-sky"] ytd-rich-grid-renderer {
   background: transparent !important;
-  box-shadow: none !important;
-  border-radius: 32px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce),
-    border-radius var(--bounce) !important;
 }
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
-  background: var(--sf) !important;
-  border-radius: 32px !important;
-  padding: 0px !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.05);
-}
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
-  transform: scale(0.98);
-  box-shadow: var(--shadow-active) !important;
-}
-#sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
-  padding: 10px 3px !important;
-}
-ytd-guide-entry-renderer {
-  border-radius: 32px !important;
-}
-ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 32px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytChipShapeChip {
-  border-radius: 32px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-iron-selector.yt-chip-cloud-renderer {
-  padding-left: 5px !important;
-}
-.ytContextualSheetLayoutContentContainer,
-.ytChipBarViewModelHost,
-.immersive-header-content.ytd-playlist-header-renderer {
-  overflow: visible !important;
-}
-ytd-settings-sidebar-renderer {
-  background: var(--sf) !important;
-  border-radius: 32px !important;
-  box-shadow: var(--shadow-base) !important;
-  padding: 15px !important;
+
+/* ── Shelf headers (Trending, Recommended etc.) ── */
+html[data-ypp-theme="blue-sky"] ytd-shelf-renderer,
+html[data-ypp-theme="blue-sky"] ytd-rich-section-renderer {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
+  border-radius: var(--sky-shape-card) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  padding: 16px !important;
+  margin-bottom: 16px !important;
 }
-ytd-feed-filter-chip-bar-renderer {
-  background: transparent !important;
-  border: none !important;
+html[data-ypp-theme="blue-sky"] ytd-shelf-renderer #title a,
+html[data-ypp-theme="blue-sky"] ytd-rich-section-renderer #title {
+  color: var(--sky-text-primary) !important;
+  font-weight: 700 !important;
 }
-yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius, 8px) !important;
-  border: var(--chip-border, 1px solid transparent) !important;
-  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
-  box-shadow: var(--chip-shadow, none) !important;
-  transition: all 0.2s ease !important;
+
+/* ── Filter bar ── */
+html[data-ypp-theme="blue-sky"] ytd-feed-filter-chip-bar-renderer {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  border-bottom: var(--sky-border) !important;
+  box-shadow: var(--sky-shadow-nav) !important;
+  position: sticky !important;
+  top: 56px !important;
+  z-index: 100 !important;
 }
-yt-chip-cloud-chip-renderer:hover {
-  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
-}
-yt-chip-cloud-chip-renderer[selected] {
-  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
-  color: var(--chip-color-selected, black) !important;
-  border: var(--chip-border-selected, 1px solid transparent) !important;
-}
-yt-chip-cloud-chip-renderer {
-  --chip-radius: 20px;
-  --chip-border: 1px solid rgba(125, 211, 252, 0.4);
-  --chip-bg: rgba(240, 249, 255, 0.7);
-  --chip-shadow: 0 2px 5px rgba(125, 211, 252, 0.2);
-}
-[dark] yt-chip-cloud-chip-renderer {
-  --chip-bg: rgba(15, 23, 42, 0.7);
-  --chip-border: 1px solid rgba(56, 189, 248, 0.4);
-}
-yt-chip-cloud-chip-renderer[selected] {
-  --chip-bg-selected: #38bdf8;
-  --chip-color-selected: white;
-  --chip-border-selected: 1px solid #0ea5e9;
-}
-#ypp-pl-root .ypp-pl-sidebar {
-  background: var(--sf) !important;
+
+/* ── Hashtag/topic pills ── */
+html[data-ypp-theme="blue-sky"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--sky-shape-chip) !important;
+  background: rgba(255, 255, 255, 0.50) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
-  border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
-  box-shadow: var(--shadow-base) !important;
+  color: var(--sky-text-secondary) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  transition: all 0.3s var(--sky-bounce) !important;
+}
+html[data-ypp-theme="blue-sky"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT_ACTIVE"],
+html[data-ypp-theme="blue-sky"] yt-chip-cloud-chip-renderer:hover {
+  background: linear-gradient(135deg, rgba(26, 144, 217, 0.85), rgba(0, 200, 240, 0.85)) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.50) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    0 6px 20px rgba(0, 191, 255, 0.40) !important;
+  transform: translateY(-3px) scale(1.04) !important;
+}
+
+/* ── Topbar logo ── */
+html[data-ypp-theme="blue-sky"] ytd-topbar-logo-renderer {
+  border-radius: var(--sky-shape-chip) !important;
+  padding: 0 !important;
+  max-height: 45px !important;
+  transition: all 0.3s var(--sky-bounce) !important;
+}
+html[data-ypp-theme="blue-sky"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.04) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+}
+
+/* ── Progress bar on thumbnails ── */
+html[data-ypp-theme="blue-sky"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-theme="blue-sky"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-theme="blue-sky"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-theme="blue-sky"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-theme="blue-sky"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-theme="blue-sky"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: 99px !important;
+}
+html[data-ypp-theme="blue-sky"] .ytProgressBarLineProgressBarPlayed {
+  background: linear-gradient(90deg, #87CEFA, #00BFFF) !important;
+  box-shadow: 0 0 6px rgba(0, 191, 255, 0.50) !important;
+}
+
+/* ── Badge / time status ── */
+html[data-ypp-theme="blue-sky"] .yt-badge-shape--thumbnail-default {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: var(--sky-border) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  color: var(--sky-text-primary) !important;
+}
+
+/* ── Notification badges ── */
+html[data-ypp-theme="blue-sky"] .ytd-badge-supported-renderer[aria-label] {
+  background: linear-gradient(135deg, #1a90d9, #00c8f0) !important;
+  border-radius: var(--sky-shape-chip) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.40) !important;
 }

@@ -3,7 +3,7 @@
    ========================================================= */
 
 /* Scrim / Backdrop */
-html[data-ypp-ui-style="aurora"] tp-yt-iron-overlay-backdrop {
+html[data-ypp-theme="aurora"] tp-yt-iron-overlay-backdrop {
   background: rgba(0, 0, 0, 0.7) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -11,12 +11,12 @@ html[data-ypp-ui-style="aurora"] tp-yt-iron-overlay-backdrop {
 }
 
 /* Base Dialog Modals */
-html[data-ypp-ui-style="aurora"] ytd-dialog-renderer,
-html[data-ypp-ui-style="aurora"] ytd-confirm-dialog-renderer,
-html[data-ypp-ui-style="aurora"] yt-dialog-renderer,
-html[data-ypp-ui-style="aurora"] ytd-super-thanks-dialog-renderer,
-html[data-ypp-ui-style="aurora"] yt-share-panel-renderer,
-html[data-ypp-ui-style="aurora"] ytd-unified-share-panel-renderer {
+html[data-ypp-theme="aurora"] ytd-dialog-renderer,
+html[data-ypp-theme="aurora"] ytd-confirm-dialog-renderer,
+html[data-ypp-theme="aurora"] yt-dialog-renderer,
+html[data-ypp-theme="aurora"] ytd-super-thanks-dialog-renderer,
+html[data-ypp-theme="aurora"] yt-share-panel-renderer,
+html[data-ypp-theme="aurora"] ytd-unified-share-panel-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
@@ -27,10 +27,10 @@ html[data-ypp-ui-style="aurora"] ytd-unified-share-panel-renderer {
 }
 
 /* Dialog Headers */
-html[data-ypp-ui-style="aurora"] ytd-dialog-renderer #header,
-html[data-ypp-ui-style="aurora"] ytd-confirm-dialog-renderer #header,
-html[data-ypp-ui-style="aurora"] yt-dialog-renderer #header,
-html[data-ypp-ui-style="aurora"] yt-share-panel-renderer #header {
+html[data-ypp-theme="aurora"] ytd-dialog-renderer #header,
+html[data-ypp-theme="aurora"] ytd-confirm-dialog-renderer #header,
+html[data-ypp-theme="aurora"] yt-dialog-renderer #header,
+html[data-ypp-theme="aurora"] yt-share-panel-renderer #header {
   background: transparent !important;
   border-bottom: var(--aurora-border-glass) !important;
   margin-bottom: 12px !important;
@@ -38,23 +38,23 @@ html[data-ypp-ui-style="aurora"] yt-share-panel-renderer #header {
 }
 
 /* Titles */
-html[data-ypp-ui-style="aurora"] ytd-dialog-renderer #title,
-html[data-ypp-ui-style="aurora"] ytd-confirm-dialog-renderer #title,
-html[data-ypp-ui-style="aurora"] yt-dialog-renderer #title {
+html[data-ypp-theme="aurora"] ytd-dialog-renderer #title,
+html[data-ypp-theme="aurora"] ytd-confirm-dialog-renderer #title,
+html[data-ypp-theme="aurora"] yt-dialog-renderer #title {
   color: var(--aurora-text-primary) !important;
   font-weight: 700 !important;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
 /* Dialog Body */
-html[data-ypp-ui-style="aurora"] ytd-dialog-renderer #contentWrapper,
-html[data-ypp-ui-style="aurora"] yt-dialog-renderer #content {
+html[data-ypp-theme="aurora"] ytd-dialog-renderer #contentWrapper,
+html[data-ypp-theme="aurora"] yt-dialog-renderer #content {
   background: transparent !important;
   color: var(--aurora-text-secondary) !important;
 }
 
 /* Radio Buttons (Report Menu) */
-html[data-ypp-ui-style="aurora"] ytd-report-form-modal-renderer yt-radio-button-view-model {
+html[data-ypp-theme="aurora"] ytd-report-form-modal-renderer yt-radio-button-view-model {
   background: var(--aurora-glass-heavy) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-md) !important;
@@ -62,15 +62,15 @@ html[data-ypp-ui-style="aurora"] ytd-report-form-modal-renderer yt-radio-button-
   padding: 8px 12px !important;
   transition: all var(--aurora-snap) !important;
 }
-html[data-ypp-ui-style="aurora"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
+html[data-ypp-theme="aurora"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   box-shadow: var(--aurora-glow-cyan) !important;
   transform: translateX(4px) !important;
 }
 
 /* URL Copy Box (Share Menu) */
-html[data-ypp-ui-style="aurora"] yt-share-panel-renderer #copyLink,
-html[data-ypp-ui-style="aurora"] yt-copy-link-renderer {
+html[data-ypp-theme="aurora"] yt-share-panel-renderer #copyLink,
+html[data-ypp-theme="aurora"] yt-copy-link-renderer {
   background: var(--aurora-glass-solid) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;

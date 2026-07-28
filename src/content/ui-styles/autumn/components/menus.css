@@ -1,0 +1,26 @@
+/* =========================================================
+   AUTUMN — MENUS & DROPDOWNS
+   ========================================================= */
+
+html[data-ypp-theme="autumn"] tp-yt-iron-dropdown,
+html[data-ypp-theme="autumn"] ytd-multi-page-menu-renderer,
+html[data-ypp-theme="autumn"] ytd-menu-popup-renderer {
+  background: var(--au-bg-elevated) !important;
+  border: var(--au-border-accent) !important;
+  border-radius: var(--au-shape-modal) !important;
+  box-shadow: var(--au-shadow-hover) !important;
+  overflow: hidden !important;
+}
+
+/* Menu items */
+html[data-ypp-theme="autumn"] ytd-menu-service-item-renderer,
+html[data-ypp-theme="autumn"] ytd-compact-link-renderer {
+  color: var(--au-text-primary) !important;
+  transition: var(--au-transition-fast) !important;
+}
+html[data-ypp-theme="autumn"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-theme="autumn"] ytd-compact-link-renderer:hover {
+  background: var(--au-fog-heavy) !important;
+  border-left: 3px solid var(--au-amber) !important;
+  color: var(--au-amber) !important;
+}

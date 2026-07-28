@@ -1,0 +1,25 @@
+/* =========================================================
+   CAIRO RED — PANELS (Sidebars & Drawers)
+   ========================================================= */
+
+html[data-ypp-ui-style="cairo-red"] #guide-content.ytd-app,
+html[data-ypp-ui-style="cairo-red"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="cairo-red"] tp-yt-app-drawer {
+  background: var(--cairo-bg-mid) !important;
+  border-right: var(--cairo-border) !important;
+}
+
+html[data-ypp-ui-style="cairo-red"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="cairo-red"] ytd-mini-guide-entry-renderer:hover {
+  background: var(--cairo-bg-raised) !important;
+  border-radius: var(--cairo-radius) !important;
+}
+
+/* Active Guide Entry */
+html[data-ypp-ui-style="cairo-red"] ytd-guide-entry-renderer[active] {
+  background: rgba(230, 0, 0, 0.1) !important;
+  border-left: 3px solid var(--cairo-brand) !important;
+}
+html[data-ypp-ui-style="cairo-red"] ytd-guide-entry-renderer[active] yt-icon {
+  color: var(--cairo-brand) !important;
+}
