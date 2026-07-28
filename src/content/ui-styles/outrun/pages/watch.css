@@ -1,0 +1,38 @@
+html[data-ypp-ui-style="outrun"] ytd-watch-flexy {
+  background: transparent !important;
+}
+
+/* Recommended video cards in the sidebar */
+html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer:hover {
+  background: rgba(0, 240, 255, 0.05) !important;
+  border-left: 2px solid var(--outrun-neon-cyan) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+html[data-ypp-ui-style="outrun"] #secondary-inner.ytd-watch-flexy {
+  background: var(--outrun-bg-surface) !important;
+  border: 1px solid var(--outrun-neon-cyan) !important;
+  box-shadow: var(--outrun-glow-cyan) !important;
+  padding: 16px !important;
+}
+
+/* Title and description box */
+html[data-ypp-ui-style="outrun"] #description.ytd-watch-metadata {
+  background: var(--outrun-bg-elevated) !important;
+  border: 1px solid rgba(255, 0, 127, 0.3) !important;
+  border-radius: 0 !important;
+}
+
+html[data-ypp-ui-style="outrun"] #description.ytd-watch-metadata:hover {
+  background: rgba(255, 0, 127, 0.1) !important;
+  border-color: var(--outrun-neon-magenta) !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}

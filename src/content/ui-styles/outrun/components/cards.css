@@ -1,0 +1,65 @@
+/* CRT Flicker Animation */
+@keyframes crt-flicker {
+  0% { opacity: 1; border-color: var(--outrun-neon-cyan); box-shadow: var(--outrun-glow-cyan); }
+  5% { opacity: 0.8; }
+  10% { opacity: 1; border-color: var(--outrun-neon-magenta); box-shadow: var(--outrun-glow-magenta); }
+  15% { opacity: 0.9; }
+  20% { opacity: 1; }
+  100% { opacity: 1; border-color: var(--outrun-neon-magenta); box-shadow: var(--outrun-glow-magenta); }
+}
+
+html[data-ypp-ui-style="outrun"] ytd-rich-grid-media,
+html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="outrun"] ytd-video-renderer,
+html[data-ypp-ui-style="outrun"] ytd-grid-video-renderer,
+html[data-ypp-ui-style="outrun"] ytd-playlist-renderer {
+  background: var(--outrun-bg-surface) !important;
+  border: 1px solid rgba(255, 0, 127, 0.2) !important;
+  border-radius: var(--outrun-r-sm) !important;
+  padding: 10px !important;
+  transition: all 0.2s var(--outrun-ease-retro) !important;
+  box-sizing: border-box !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="outrun"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="outrun"] ytd-grid-video-renderer:hover,
+html[data-ypp-ui-style="outrun"] ytd-playlist-renderer:hover {
+  background: var(--outrun-bg-elevated) !important;
+  animation: crt-flicker 2s infinite !important;
+  border: 1px solid var(--outrun-neon-magenta) !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-thumbnail {
+  border-radius: 0 !important;
+  border: 1px solid var(--outrun-neon-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] #video-title {
+  color: var(--outrun-neon-cyan) !important;
+  font-family: monospace, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-rich-grid-media:hover #video-title,
+html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer:hover #video-title {
+  color: #fff !important;
+  text-shadow: 0 0 5px var(--outrun-neon-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] #metadata-line span,
+html[data-ypp-ui-style="outrun"] #channel-name {
+  color: var(--outrun-text-secondary) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-thumbnail-overlay-time-status-renderer {
+  background: #000 !important;
+  border: 1px solid var(--outrun-neon-magenta) !important;
+  border-radius: 0 !important;
+  color: var(--outrun-neon-magenta) !important;
+  font-family: monospace !important;
+  font-weight: bold !important;
+}

@@ -1,0 +1,11 @@
+html[data-ypp-ui-style="outrun"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="outrun"] ytd-popup-container {
+  background: var(--outrun-bg-surface) !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--outrun-neon-magenta) !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-modal-with-title-and-button-renderer {
+  background: transparent !important;
+}

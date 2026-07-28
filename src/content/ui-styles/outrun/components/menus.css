@@ -1,0 +1,44 @@
+html[data-ypp-ui-style="outrun"] #guide-wrapper {
+  background: var(--outrun-bg-deep) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="outrun"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
+  background: var(--outrun-bg-deep) !important;
+  border-right: 2px solid var(--outrun-neon-magenta) !important;
+  box-shadow: 2px 0 15px rgba(255, 0, 127, 0.2) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-guide-entry-renderer,
+html[data-ypp-ui-style="outrun"] ytd-mini-guide-entry-renderer {
+  border-radius: 0 !important;
+  transition: all 0.2s var(--outrun-ease-retro) !important;
+  margin: 2px 0 !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="outrun"] ytd-mini-guide-entry-renderer:hover {
+  background: rgba(0, 240, 255, 0.1) !important;
+  border-left: 4px solid var(--outrun-neon-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-guide-entry-renderer[active],
+html[data-ypp-ui-style="outrun"] ytd-mini-guide-entry-renderer[active] {
+  background: rgba(255, 0, 127, 0.15) !important;
+  border-left: 4px solid var(--outrun-neon-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-guide-entry-renderer[active] yt-icon,
+html[data-ypp-ui-style="outrun"] ytd-guide-entry-renderer[active] .title {
+  color: var(--outrun-neon-magenta) !important;
+  text-shadow: 0 0 5px var(--outrun-neon-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="outrun"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="outrun"] ytd-menu-popup-renderer {
+  background: var(--outrun-bg-surface) !important;
+  border: 1px solid var(--outrun-neon-cyan) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--outrun-glow-cyan) !important;
+}

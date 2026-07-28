@@ -1,0 +1,41 @@
+html[data-ypp-ui-style="kawaii"] ytd-watch-flexy {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-compact-video-renderer {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border-radius: var(--kawaii-r-md) !important;
+  margin-bottom: 10px !important;
+  transition: all 0.4s var(--kawaii-ease-bouncy) !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-compact-video-renderer:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 158, 187, 0.4) !important;
+  box-shadow: 0 8px 20px rgba(255, 158, 187, 0.15) !important;
+  transform: translateX(4px) !important;
+  animation: none !important;
+}
+
+html[data-ypp-ui-style="kawaii"] #secondary-inner.ytd-watch-flexy {
+  background: rgba(255, 255, 255, 0.4) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: var(--kawaii-r-lg) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  padding: 16px !important;
+}
+
+html[data-ypp-ui-style="kawaii"] #description.ytd-watch-metadata {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border-radius: var(--kawaii-r-lg) !important;
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.3s var(--kawaii-ease-soft) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] #description.ytd-watch-metadata:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: var(--kawaii-shadow-fluffy) !important;
+}

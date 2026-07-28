@@ -1,0 +1,25 @@
+html[data-ypp-ui-style="christmas"] * {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] ::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: transparent !important;
+}
+
+html[data-ypp-ui-style="christmas"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--christmas-r-pill) !important;
+}
+
+html[data-ypp-ui-style="christmas"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--christmas-accent-primary) !important;
+  box-shadow: var(--christmas-glow-red);
+}
+
+html[data-ypp-ui-style="christmas"] ::selection {
+  background: var(--christmas-accent-primary) !important;
+  color: #fff !important;
+}

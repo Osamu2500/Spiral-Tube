@@ -1,0 +1,43 @@
+/* YouTube Player overrides for Outrun Theme */
+html[data-ypp-ui-style="outrun"] .ytp-swatch-background-color {
+  background-color: var(--outrun-neon-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-swatch-color {
+  color: var(--outrun-neon-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-play-progress {
+  background: var(--outrun-neon-magenta) !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-scrubber-button {
+  background: var(--outrun-neon-magenta) !important;
+  border: 2px solid #fff !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-volume-slider-handle {
+  background: var(--outrun-neon-cyan) !important;
+  box-shadow: var(--outrun-glow-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-volume-slider-handle::before {
+  background: var(--outrun-neon-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-settings-menu {
+  background: var(--outrun-bg-surface) !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--outrun-neon-cyan) !important;
+  box-shadow: var(--outrun-glow-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-menuitem:hover {
+  background: rgba(0, 240, 255, 0.15) !important;
+}
+
+html[data-ypp-ui-style="outrun"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
+  background: var(--outrun-neon-cyan) !important;
+}

@@ -1,0 +1,40 @@
+/* Primary buttons like Subscribe */
+html[data-ypp-ui-style="christmas"] yt-button-shape[is-filled] button,
+html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--filled {
+  background: var(--christmas-accent-primary) !important;
+  color: #fff !important;
+  border-radius: var(--christmas-r-pill) !important;
+  font-weight: 700 !important;
+  transition: all 0.3s var(--christmas-ease-spring) !important;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+html[data-ypp-ui-style="christmas"] yt-button-shape[is-filled] button:hover,
+html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--filled:hover {
+  background: #ff4d5a !important;
+  box-shadow: var(--christmas-glow-red) !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(255,255,255,0.5) !important;
+}
+
+/* Secondary / Tonal buttons */
+html[data-ypp-ui-style="christmas"] yt-button-shape[is-tonal] button,
+html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--tonal {
+  background: var(--christmas-glass-bg) !important;
+  color: var(--christmas-text-primary) !important;
+  border-radius: var(--christmas-r-pill) !important;
+  border: 1px solid var(--christmas-glass-border) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.3s var(--christmas-ease-spring) !important;
+}
+
+html[data-ypp-ui-style="christmas"] yt-button-shape[is-tonal] button:hover,
+html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--tonal:hover {
+  background: var(--christmas-glass-bg-hover) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: var(--christmas-glow-gold) !important;
+  color: var(--christmas-accent-secondary) !important;
+  transform: translateY(-2px) !important;
+}

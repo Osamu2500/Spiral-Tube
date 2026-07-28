@@ -1,0 +1,55 @@
+html[data-ypp-ui-style="kawaii"] ytd-rich-grid-media,
+html[data-ypp-ui-style="kawaii"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-video-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-grid-video-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-renderer {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: var(--kawaii-r-lg) !important;
+  padding: 16px !important;
+  transition: all 0.4s var(--kawaii-ease-bouncy) !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 15px rgba(255, 158, 187, 0.1) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="kawaii"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-grid-video-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-renderer:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #fff !important;
+  box-shadow: var(--kawaii-shadow-fluffy) !important;
+  transform: translateY(-8px) scale(1.02) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-thumbnail {
+  border-radius: var(--kawaii-r-md) !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-thumbnail:hover {
+  transform: scale(1.03) !important;
+  transition: transform 0.4s var(--kawaii-ease-bouncy) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] #video-title {
+  color: var(--kawaii-text-primary) !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="kawaii"] #metadata-line span,
+html[data-ypp-ui-style="kawaii"] #channel-name {
+  color: var(--kawaii-text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-thumbnail-overlay-time-status-renderer {
+  background: var(--kawaii-accent-primary) !important;
+  border-radius: var(--kawaii-r-pill) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  padding: 4px 8px !important;
+  box-shadow: 0 2px 8px rgba(255, 158, 187, 0.5) !important;
+}

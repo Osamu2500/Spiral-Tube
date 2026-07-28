@@ -1,0 +1,26 @@
+html[data-ypp-ui-style="kawaii"] * {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--kawaii-accent-primary) transparent !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: transparent !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ::-webkit-scrollbar-thumb {
+  background: var(--kawaii-accent-primary) !important;
+  border-radius: var(--kawaii-r-pill) !important;
+  border: 3px solid transparent !important;
+  background-clip: content-box !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--kawaii-accent-secondary) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ::selection {
+  background: var(--kawaii-accent-primary) !important;
+  color: #fff !important;
+}

@@ -1,0 +1,14 @@
+html[data-ypp-ui-style="kawaii"],
+html[data-ypp-ui-style="kawaii"] body,
+html[data-ypp-ui-style="kawaii"] ytd-app {
+  background: var(--kawaii-bg-primary) !important;
+  background-image: 
+    radial-gradient(ellipse at top right, var(--kawaii-accent-tertiary) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom left, var(--kawaii-bg-tertiary) 0%, transparent 70%) !important;
+  background-attachment: fixed !important;
+  color: var(--kawaii-text-primary) !important;
+}
+
+html[data-ypp-ui-style="kawaii"] #background.ytd-app {
+  display: none !important;
+}

@@ -1,0 +1,66 @@
+html[data-ypp-ui-style="outrun"] ytd-masthead {
+  background: var(--outrun-bg-deep) !important;
+  border-bottom: 2px solid var(--outrun-neon-cyan) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4) !important;
+}
+
+/* Search Box */
+html[data-ypp-ui-style="outrun"] ytd-searchbox#search {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-searchbox#search form {
+  background: #000 !important;
+  border: 1px solid var(--outrun-neon-magenta) !important;
+  border-radius: var(--outrun-r-sm) !important;
+  box-shadow: inset 0 0 8px rgba(255, 0, 127, 0.3) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-searchbox#search input {
+  color: var(--outrun-text-primary) !important;
+  text-shadow: 0 0 2px var(--outrun-neon-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-searchbox#search button#search-icon-legacy {
+  background: var(--outrun-bg-elevated) !important;
+  border-left: 1px solid var(--outrun-neon-magenta) !important;
+  border-radius: 0 var(--outrun-r-sm) var(--outrun-r-sm) 0 !important;
+  transition: all 0.2s var(--outrun-ease-retro) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-searchbox#search button#search-icon-legacy:hover {
+  background: var(--outrun-neon-magenta) !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-searchbox#search button#search-icon-legacy:hover yt-icon {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* Icons */
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon-button,
+html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default {
+  background: transparent !important;
+  border-radius: var(--outrun-r-sm) !important;
+  transition: all 0.2s var(--outrun-ease-retro) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon-button:hover,
+html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover {
+  background: rgba(0, 240, 255, 0.1) !important;
+  box-shadow: var(--outrun-glow-cyan-inset) !important;
+  border: 1px solid var(--outrun-neon-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon {
+  fill: var(--outrun-text-primary) !important;
+  color: var(--outrun-text-primary) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon-button:hover yt-icon,
+html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon {
+  fill: var(--outrun-neon-cyan) !important;
+  color: var(--outrun-neon-cyan) !important;
+  filter: drop-shadow(0 0 5px var(--outrun-neon-cyan)) !important;
+}
