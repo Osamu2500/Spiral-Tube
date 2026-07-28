@@ -1,0 +1,24 @@
+html[data-ypp-ui-style="deepspace"] * {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--ds-accent-blue) var(--ds-bg-hull) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] ::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+  background-color: var(--ds-bg-hull) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] ::-webkit-scrollbar-thumb {
+  background: var(--ds-accent-blue) !important;
+  border-radius: var(--ds-r-pill) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--ds-accent-ice) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] ::selection {
+  background: rgba(59, 130, 246, 0.35) !important;
+  color: #fff !important;
+}

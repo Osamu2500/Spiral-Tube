@@ -1,0 +1,32 @@
+html[data-ypp-ui-style="deepspace"] .ytp-play-progress {
+  background: linear-gradient(90deg, var(--ds-accent-blue), var(--ds-accent-teal)) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] .ytp-scrubber-button {
+  background: var(--ds-accent-ice) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: var(--ds-glow-ice) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] .ytp-volume-slider-handle {
+  background: var(--ds-accent-teal) !important;
+  box-shadow: var(--ds-glow-teal) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] .ytp-settings-menu {
+  background: var(--ds-bg-panel) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: var(--ds-r-md) !important;
+  border: 1px solid var(--ds-glass-border) !important;
+  box-shadow: var(--ds-glow-blue) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] .ytp-menuitem:hover {
+  background: rgba(59, 130, 246, 0.12) !important;
+}
+
+html[data-ypp-ui-style="deepspace"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
+  background: var(--ds-accent-teal) !important;
+}
