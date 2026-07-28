@@ -1,23 +1,38 @@
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
-  border-radius: 16px !important;
-  background: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+/* =========================================================
+   NEUMORPHIC — ICONS
+   ========================================================= */
+
+/* General SVG Icons */
+html[data-ypp-ui-style="neumorphic"] yt-icon,
+html[data-ypp-ui-style="neumorphic"] .yt-icon-container,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-icon-shape {
+  color: var(--neu-text-secondary) !important;
+  transition: all var(--neu-snap) !important;
 }
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1) !important;
+
+/* Hover State for icons (except those in primary buttons) */
+html[data-ypp-ui-style="neumorphic"] yt-icon:hover,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-icon-shape:hover {
+  color: var(--neu-accent) !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
+
+/* Badge (e.g. notifications count) */
+html[data-ypp-ui-style="neumorphic"] .yt-spec-icon-badge-shape__badge {
+  background-color: var(--neu-accent) !important;
+  color: #fff !important;
+  border-radius: var(--neu-radius-pill) !important;
+  border: none !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  font-weight: bold !important;
+}
+
+/* LIVE badge */
+html[data-ypp-ui-style="neumorphic"] ytd-badge-supported-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  border: none !important;
+  color: var(--neu-accent) !important;
+  padding: 2px 6px !important;
 }

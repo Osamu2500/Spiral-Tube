@@ -1,54 +1,117 @@
-.ypp-eq-preset-btn,
-.ypp-cinema-tab-btn,
-.ypp-vcp-compare-toggle {
-  background: rgba(128, 128, 128, 0.05) !important;
+/* =========================================================
+   NEUMORPHIC — WATCH PAGE
+   ========================================================= */
+
+/* Action Button Row (Like, Share, Download) */
+html[data-ypp-ui-style="neumorphic"] #top-level-buttons-computed yt-button-shape button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
   border: none !important;
-  transition: transform var(--bounce), background var(--bounce) !important;
+  color: var(--neu-text-primary) !important;
+  margin: 0 4px !important;
+  transition: all var(--neu-snap) !important;
 }
-.ypp-eq-preset-btn:hover,
-.ypp-cinema-tab-btn:hover,
-.ypp-vcp-compare-toggle:hover {
-  background: rgba(128, 128, 128, 0.15) !important;
-  transform: scale(1.05) !important;
+html[data-ypp-ui-style="neumorphic"] #top-level-buttons-computed yt-button-shape button:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+  color: var(--neu-accent) !important;
+  transform: translateY(-1px) !important;
 }
-#ypp-global-player-bar,
-.ypp-global-bar {
-  background: var(--sf) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-base) !important;
+html[data-ypp-ui-style="neumorphic"] #top-level-buttons-computed yt-button-shape button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+  transform: translateY(1px) !important;
 }
-#ypp-eq-panel,
-#ypp-cinema-panel {
-  background: var(--sf) !important;
-  border: none !important;
-  border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
-  box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
-  border-radius: 16px !important;
+
+/* Subscribe Button */
+html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  color: var(--neu-accent) !important;
+  font-weight: 700 !important;
+  padding: 0 16px !important;
+  transition: all var(--neu-snap) !important;
 }
-.ypp-eq-header,
-.ypp-eq-footer,
-.ypp-intensity-section,
-.ypp-adjust-card-header,
-#ypp-cinema-panel > div:first-child,
-#ypp-cinema-panel > div:last-child {
-  background: transparent !important;
-  border-bottom-color: rgba(128, 128, 128, 0.1) !important;
-  border-top-color: rgba(128, 128, 128, 0.1) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
 }
-.ypp-global-player-bar,
-#ypp-global-player-bar {
-  background: var(--sf) !important;
-  border: none !important;
-  box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer[subscribed] button {
+  box-shadow: var(--neu-shadow-inset) !important;
+  color: var(--neu-text-secondary) !important;
 }
-.ypp-eq-hslider,
-.ypp-vcp-slider,
-.ypp-eq-vslider {
-  background: rgba(128, 128, 128, 0.15) !important;
+
+/* Description Box */
+html[data-ypp-ui-style="neumorphic"] #description-inner,
+html[data-ypp-ui-style="neumorphic"] #description.ytd-watch-metadata {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 16px !important;
   border: none !important;
 }
-.ypp-eq-canvas {
-  background: rgba(128, 128, 128, 0.03) !important;
-  border: none !important;
-  border-radius: 16px !important;
+
+/* Metadata row / Channel info */
+html[data-ypp-ui-style="neumorphic"] #owner.ytd-watch-metadata {
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 16px !important;
+}
+html[data-ypp-ui-style="neumorphic"][dark] #owner.ytd-watch-metadata {
+  border-bottom-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Sidebar Recommendation Cards */
+html[data-ypp-ui-style="neumorphic"] ytd-compact-video-renderer {
+  background-color: transparent !important;
+  border-radius: var(--neu-radius-md) !important;
+  padding: 8px !important;
+  transition: all var(--neu-snap) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-compact-video-renderer:hover {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Up Next / Autoplay Toggle */
+html[data-ypp-ui-style="neumorphic"] ytd-compact-autoplay-renderer #autoplay-toggle {
+  color: var(--neu-accent) !important;
+  font-weight: bold !important;
+}
+
+/* Key Moments / Chapter Markers */
+html[data-ypp-ui-style="neumorphic"] ytd-macro-markers-list-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-macro-markers-list-item-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-md) !important;
+  margin-bottom: 8px !important;
+  transition: all var(--neu-snap) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-macro-markers-list-item-renderer:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Transcript Panel */
+html[data-ypp-ui-style="neumorphic"] ytd-transcript-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-transcript-segment-renderer {
+  border-radius: var(--neu-radius-md) !important;
+  transition: all var(--neu-snap) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-transcript-segment-renderer:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-transcript-segment-renderer[is-highlighted] {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  color: var(--neu-accent) !important;
 }

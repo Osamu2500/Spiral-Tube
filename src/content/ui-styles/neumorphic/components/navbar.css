@@ -1,86 +1,65 @@
-/* src/content/themes/ui-styles/neumorphic/components/navbar.css */
-ytd-app,
-ytd-masthead,
-#page-manager.ytd-app,
-#content.ytd-app {
-  background: transparent !important;
-}
-#masthead-container {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-ytd-masthead #container {
-  border-radius: 16px !important;
-  background: var(--sf) !important;
-  margin: 1px !important;
-  box-shadow: var(--shadow-active) !important;
+/* =========================================================
+   NEUMORPHIC — NAVBAR / MASTHEAD
+   ========================================================= */
+
+/* Main Masthead Container */
+html[data-ypp-ui-style="neumorphic"] ytd-masthead {
+  background-color: var(--neu-bg) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
   border: none !important;
 }
-#contents.ytd-page-manager {
-  margin-top: 0;
-  margin-left: 16px;
+
+/* Center Search Container */
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  border: none !important;
+  padding: 0 8px !important;
 }
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
-  border-radius: 16px !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox[has-focus] {
+  box-shadow: var(--neu-shadow-inset-deep) !important;
 }
-#voice-search-button.ytd-masthead:hover,
-.ypp-nav-btn:hover,
-ytd-topbar-menu-button-renderer.ytd-masthead:hover,
-#trailing-button.ytd-playlist-panel-renderer:hover,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
-  top: 75px !important;
-  left: 8px !important;
-}
-tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
+
+/* The actual text input field */
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox #container.ytd-searchbox {
   background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--neu-text-primary) !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 16px !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox input {
+  color: var(--neu-text-primary) !important;
+  font-weight: 500 !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.06);
+
+/* Search Button */
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox #search-icon-legacy {
+  background-color: var(--neu-bg) !important;
+  border: none !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  margin: 4px !important;
+  transition: all var(--neu-snap) !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: var(--shadow-active) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox #search-icon-legacy:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+  color: var(--neu-accent) !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
-  border-radius: 16px !important;
-  padding: 4px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-searchbox #search-icon-legacy:active {
+  box-shadow: var(--neu-shadow-inset) !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+
+/* Voice Search Mic Button */
+html[data-ypp-ui-style="neumorphic"] #voice-search-button yt-icon-button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: 50% !important;
+  transition: all var(--neu-snap) !important;
 }
-ytd-masthead {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-out) !important;
+html[data-ypp-ui-style="neumorphic"] #voice-search-button yt-icon-button:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+html[data-ypp-ui-style="neumorphic"] #voice-search-button yt-icon-button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
 }

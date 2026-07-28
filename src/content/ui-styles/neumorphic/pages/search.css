@@ -1,113 +1,74 @@
-ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
-  margin: 5px auto !important;
+/* =========================================================
+   NEUMORPHIC — SEARCH PAGE
+   ========================================================= */
+
+/* Filter Button below search box */
+html[data-ypp-ui-style="neumorphic"] ytd-search-filter-group-renderer {
+  background: transparent !important;
 }
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox {
-  background: none !important;
-  border: none !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-base) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  padding: 6px 16px !important;
+  transition: all var(--neu-snap) !important;
 }
-.ytSearchboxComponentSearchButton {
-  margin-left: 10px !important;
-  border-radius: 16px !important;
-  border: none !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+html[data-ypp-ui-style="neumorphic"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer:active {
+  box-shadow: var(--neu-shadow-inset) !important;
 }
-.ytSearchboxComponentSearchButton:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-.ytSearchboxComponentSearchButton:active {
-  transform: scale(0.95);
-  box-shadow: var(--shadow-active) !important;
-}
-.ytSearchboxComponentSuggestionsContainer,
-ytd-multi-page-menu-renderer {
-  top: 55px !important;
-  border: none !important;
-  box-shadow: var(--shadow-hover) !important;
-  border-radius: 16px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
-  margin-right: 10px;
-  width: 30px !important;
-  height: 30px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-html,
-[dark] .ytSearchboxComponentInput {
-  mix-blend-mode: difference;
-}
-html,
-[dark] .ytSearchboxComponentInput {
-  mix-blend-mode: normal;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] ytd-multi-page-menu-renderer {
-  background: rgba(14, 14, 18, 0.6) !important;
+
+/* Search Filters Expansion Panel */
+html[data-ypp-ui-style="neumorphic"] ytd-search-sub-menu-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
   border: none !important;
 }
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer {
-  background: rgba(10, 10, 14, 0.92) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="neumorphic"] ytd-search-filter-renderer {
+  transition: all var(--neu-snap) !important;
+  border-radius: var(--neu-radius-md) !important;
+  padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-search-filter-renderer:hover {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-search-filter-renderer[selected] {
+  color: var(--neu-accent) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Channel blocks in search results */
+html[data-ypp-ui-style="neumorphic"] ytd-channel-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 24px !important;
+  margin-bottom: 16px !important;
   border: none !important;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7) !important;
 }
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="neumorphic"] ytd-channel-renderer #avatar {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* Playlist blocks in search results */
+html[data-ypp-ui-style="neumorphic"] ytd-playlist-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 12px !important;
+  margin-bottom: 16px !important;
   border: none !important;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18) !important;
 }
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #ffffff !important;
-}
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer,
-html,
-[dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #0f0f0f !important;
-}
-input,
-textarea,
-[contenteditable],
-ytd-searchbox #container {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-in) !important;
-  border-radius: 20px !important;
-  padding-left: 15px;
-}
-ytd-searchbox #search-icon-legacy {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-out) !important;
-  border-radius: 0 20px 20px 0 !important;
-}
-ytd-searchbox #search-icon-legacy:active {
-  box-shadow: var(--shadow-in) !important;
-}
-ytd-search-filter-group-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 16px !important;
-  padding: 15px !important;
-  box-shadow: var(--shadow-base) !important;
-  margin-bottom: 10px !important;
+
+/* Search "People also watched" shelf */
+html[data-ypp-ui-style="neumorphic"] ytd-horizontal-card-list-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 16px !important;
+  border: none !important;
 }

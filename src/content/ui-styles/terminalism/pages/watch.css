@@ -1,15 +1,112 @@
-html[data-ypp-ui-style=terminalism] .ypp-eq-preset-btn:hover,
-html[data-ypp-ui-style=terminalism] .ypp-cinema-tab-btn:hover,
-html[data-ypp-ui-style=terminalism] .ypp-vcp-compare-toggle:hover {
-  background: rgba(0, 255, 65, 0.1) !important;
-  border-color: #00ff41 !important;
-  color: #00ff41 !important;
+/* =========================================================
+   TERMINALISM — WATCH PAGE
+   ========================================================= */
+
+/* Action Button Row (Like, Share, Download) */
+html[data-ypp-ui-style="terminalism"] #top-level-buttons-computed yt-button-shape button {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  color: var(--term-text-primary) !important;
+  margin: 0 4px !important;
+  border-radius: 0 !important;
+  text-transform: uppercase !important;
 }
-html[data-ypp-ui-style=terminalism] .ypp-eq-header,
-html[data-ypp-ui-style=terminalism] .ypp-eq-footer,
-html[data-ypp-ui-style=terminalism] .ypp-intensity-section,
-html[data-ypp-ui-style=terminalism] .ypp-adjust-card-header {
+html[data-ypp-ui-style="terminalism"] #top-level-buttons-computed yt-button-shape button:hover {
+  border: var(--term-border) !important;
+  background: var(--term-green-fade) !important;
+  box-shadow: var(--term-glow) !important;
+}
+html[data-ypp-ui-style="terminalism"] #top-level-buttons-computed yt-button-shape button:active {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-ui-style="terminalism"] ytd-subscribe-button-renderer button {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  color: var(--term-green) !important;
+  font-weight: 700 !important;
+  padding: 0 16px !important;
+  border-radius: 0 !important;
+  animation: termBlink 2s step-end infinite !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-subscribe-button-renderer button:hover {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+  box-shadow: var(--term-glow-intense) !important;
+  animation: none !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-subscribe-button-renderer[subscribed] button {
+  background: var(--term-bg) !important;
+  border: 1px dashed var(--term-green-dim) !important;
+  color: var(--term-green-dim) !important;
+  animation: none !important;
+}
+
+/* Description Box */
+html[data-ypp-ui-style="terminalism"] #description-inner,
+html[data-ypp-ui-style="terminalism"] #description.ytd-watch-metadata {
+  background: var(--term-bg) !important;
+  border: 1px dashed var(--term-green-dim) !important;
+  border-radius: 0 !important;
+  padding: 16px !important;
+  position: relative;
+}
+html[data-ypp-ui-style="terminalism"] #description.ytd-watch-metadata::before {
+  content: "--- DESCRIPTION.LOG ---";
+  display: block;
+  color: var(--term-green-dim);
+  margin-bottom: 8px;
+}
+
+/* Metadata row / Channel info */
+html[data-ypp-ui-style="terminalism"] #owner.ytd-watch-metadata {
+  border-bottom: var(--term-border-dim) !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Sidebar Recommendation Cards */
+html[data-ypp-ui-style="terminalism"] ytd-compact-video-renderer {
   background: transparent !important;
-  border-bottom-color: rgba(0, 255, 65, 0.1) !important;
-  border-top-color: rgba(0, 255, 65, 0.1) !important;
+  border-radius: 0 !important;
+  padding: 8px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-compact-video-renderer:hover {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+}
+
+/* Key Moments / Chapter Markers */
+html[data-ypp-ui-style="terminalism"] ytd-macro-markers-list-renderer {
+  background: var(--term-bg) !important;
+  border: 1px dashed var(--term-green-dim) !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-macro-markers-list-item-renderer {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  margin-bottom: 4px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-macro-markers-list-item-renderer:hover {
+  border: var(--term-border) !important;
+  background: var(--term-green-fade) !important;
+}
+
+/* Transcript Panel */
+html[data-ypp-ui-style="terminalism"] ytd-transcript-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-transcript-segment-renderer {
+  border-radius: 0 !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-transcript-segment-renderer:hover {
+  background: var(--term-green-fade) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-transcript-segment-renderer[is-highlighted] {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
 }

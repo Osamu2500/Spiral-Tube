@@ -1,78 +1,102 @@
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
-ytd-notification-topbar-button-renderer.ytd-masthead,
-yt-icon-button.ytd-masthead,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) {
-  border-radius: 16px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal:hover,
-ytd-notification-topbar-button-renderer.ytd-masthead:hover,
-yt-icon-button.ytd-masthead:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button):hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-ytd-comment-view-model button,
-ytd-comment-renderer button {
-  border-radius: 16px !important;
-  transition: background 0.15s ease, box-shadow 0.15s ease !important;
-  transform: none !important;
-}
-ytd-comment-view-model button:hover,
-ytd-comment-renderer button:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
-  transform: none !important;
-}
-/* src/content/themes/ui-styles/neumorphic/pages/comments.css */
-ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 16px !important;
-  margin: 10px !important;
+/* =========================================================
+   NEUMORPHIC — COMMENTS
+   ========================================================= */
+
+/* Main Comment Input Box (Trough) */
+html[data-ypp-ui-style="neumorphic"] ytd-comment-simplebox-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 12px 16px !important;
   border: none !important;
-  box-shadow: var(--shadow-base) !important;
+  transition: all var(--neu-snap) !important;
 }
-ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
-  background: none !important;
+html[data-ypp-ui-style="neumorphic"] ytd-comment-simplebox-renderer:focus-within {
+  box-shadow: var(--neu-shadow-inset-deep) !important;
 }
-ytd-comment-view-model yt-interaction .fill,
-ytd-comment-renderer yt-interaction .fill {
-  background: transparent !important;
-  opacity: 0 !important;
-}
-ytd-comment-thread-renderer,
-ytd-comment-view-model {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 16px !important;
-  padding: 15px !important;
-  margin-bottom: 15px !important;
-  box-shadow: var(--shadow-base) !important;
+
+/* Individual Comment Renderer */
+html[data-ypp-ui-style="neumorphic"] ytd-comment-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 12px !important;
+  margin-bottom: 12px !important;
   border: none !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: all var(--neu-snap) !important;
 }
-ytd-comment-thread-renderer:hover,
-ytd-comment-view-model:hover {
-  box-shadow: var(--shadow-hover) !important;
-  background: rgba(128, 128, 128, 0.09) !important;
+
+/* Comment Thread / Replies Container */
+html[data-ypp-ui-style="neumorphic"] #replies.ytd-comment-thread-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 12px !important;
+  margin-left: 48px !important;
 }
-ytd-comment-simplebox-renderer {
-  background: rgba(128, 128, 128, 0.08) !important;
-  border-radius: 16px !important;
-  padding: 15px !important;
-  box-shadow: var(--shadow-active) !important;
+
+/* Author Name */
+html[data-ypp-ui-style="neumorphic"] #author-text.ytd-comment-renderer {
+  color: var(--neu-text-primary) !important;
+  font-weight: bold !important;
+}
+
+/* Creator Highlighted Comment (or pinned) */
+html[data-ypp-ui-style="neumorphic"] ytd-comment-renderer[is-highlighted] {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+}
+html[data-ypp-ui-style="neumorphic"][dark] ytd-comment-renderer[is-highlighted] {
+  border: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+/* Pinned badge */
+html[data-ypp-ui-style="neumorphic"] ytd-comment-renderer #pinned-comment-badge {
+  color: var(--neu-text-secondary) !important;
+}
+
+/* Comment Action Buttons (Like, Dislike, Reply) */
+html[data-ypp-ui-style="neumorphic"] #reply-button-end yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] #comment-action-buttons-end yt-button-shape button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
   border: none !important;
+  margin: 0 4px !important;
+  transition: all var(--neu-snap) !important;
 }
-#placeholder-area.ytd-comment-simplebox-renderer {
-  border: none !important;
+html[data-ypp-ui-style="neumorphic"] #reply-button-end yt-button-shape button:active,
+html[data-ypp-ui-style="neumorphic"] #comment-action-buttons-end yt-button-shape button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Sort Menu Button */
+html[data-ypp-ui-style="neumorphic"] #sort-menu yt-button-shape button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  padding: 4px 16px !important;
+  transition: all var(--neu-snap) !important;
+}
+html[data-ypp-ui-style="neumorphic"] #sort-menu yt-button-shape button:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+html[data-ypp-ui-style="neumorphic"] #sort-menu yt-button-shape button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* View Replies Expander Button */
+html[data-ypp-ui-style="neumorphic"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+  transition: all var(--neu-snap) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Creator Heart */
+html[data-ypp-ui-style="neumorphic"] ytd-comment-action-buttons-renderer #creator-heart {
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1)) !important;
 }

@@ -1,0 +1,89 @@
+/* =========================================================
+   LIQUID GLASS — SHORTS PLAYER
+   ========================================================= */
+
+/* Main Container */
+html[data-ypp-ui-style="liquid-glass"] ytd-shorts {
+  background: transparent !important;
+}
+
+/* Shorts Video Container Background */
+html[data-ypp-ui-style="liquid-glass"] #shorts-container {
+  background: transparent !important;
+}
+
+/* Shorts Video Player Inner container */
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer[is-active] {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--lg-shadow-card) !important;
+  border: var(--lg-border-specular) !important;
+  overflow: hidden !important;
+}
+
+/* Shorts Action Buttons Sidebar */
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions ytd-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions ytd-toggle-button-renderer yt-button-shape button {
+  -webkit-backdrop-filter: var(--lg-blur-surface) !important;
+  backdrop-filter: var(--lg-blur-surface) !important;
+  background: var(--lg-bg-level-1) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 2000px !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
+  margin-bottom: 8px !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions yt-button-shape button:hover {
+  background: var(--lg-bg-level-2) !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-hover) !important;
+  transform: scale(1.08) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions yt-button-shape button[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #000 !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+}
+
+/* Avatar / Channel Info */
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #channel-info {
+  background: rgba(0, 0, 0, 0.4) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  border: var(--lg-border-subtle) !important;
+}
+
+/* Shorts Subscribe Button */
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #subscribe-button yt-button-shape button {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #000 !important;
+  border-radius: 2000px !important;
+}
+
+/* Progress Bar (Scrubber) */
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #progress-bar {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #progress-bar-line {
+  background: var(--lg-accent-gradient) !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Comments Overlay Modal inside Shorts */
+html[data-ypp-ui-style="liquid-glass"] ytd-engagement-panel-section-list-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
+  background: var(--lg-bg-level-2) !important;
+  border: var(--lg-border-specular) !important;
+  border-radius: 24px 0 0 24px !important;
+  box-shadow: var(--lg-shadow-modal) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] ytd-engagement-panel-section-list-renderer #header {
+  border-bottom: var(--lg-border-subtle) !important;
+  background: transparent !important;
+}

@@ -1,134 +1,399 @@
-ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
-  background-color: black !important;
-  margin-right: 10px;
+/* =========================================================
+   CYBERPUNK — MENUS & ALL POPUPS
+   ========================================================= */
+
+/* ---- OUTER CONTAINER — all iron-dropdown / popup types ---- */
+html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="cyberpunk"] tp-yt-paper-listbox {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thick) !important;
   border-radius: 0 !important;
-  box-shadow: var(--shadow-hover) !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
 }
-#trigger.tp-yt-paper-menu-button {
-  padding: 10px !important;
-  border-radius: 0 !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+
+/* Remove YT CSS var backgrounds so nothing overrides ours */
+html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-dropdown {
+  --yt-spec-menu-background: transparent !important;
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-elevated-background: transparent !important;
 }
-#trigger.tp-yt-paper-menu-button:hover {
-  transform: scale(1.1) !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytLockupMetadataViewModelMenuButton {
-  overflow: visible !important;
-}
-.ytLockupMetadataViewModelMenuButton button-view-model,
-.ytLockupMetadataViewModelMenuButton button {
-  opacity: 1 !important;
-  visibility: visible !important;
-  border-radius: 0 !important;
-  transition: background var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytLockupMetadataViewModelMenuButton button:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
-  transform: none !important;
-}
-.ytLockupMetadataViewModelMenuButton yt-interaction .fill,
-.ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+
+/* Nested popup inside iron-dropdown — strip double border/glow */
+html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-dropdown > #contentWrapper > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="cyberpunk"] tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
   background: transparent !important;
-  opacity: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
 }
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
-  margin: 10px;
-  border: var(--cyber-border) !important;
+
+/* ---- MENU ITEMS — base state ---- */
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-compact-link-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-service-item-download-renderer {
   border-radius: 0 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.06) !important;
+  padding: 8px 12px !important;
+  transition: background var(--cyber-snap), border-left var(--cyber-snap), color var(--cyber-snap) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: 12px !important;
 }
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-hover) !important;
+
+/* Menu item HOVER — glitch pink sweep */
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="cyberpunk"] ytd-compact-link-renderer:hover,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-service-item-download-renderer:hover {
+  background: rgba(255, 0, 85, 0.15) !important;
+  border-left: 3px solid var(--cyber-primary) !important;
+  color: var(--cyber-primary) !important;
+  text-shadow: 0 0 5px var(--cyber-primary) !important;
 }
-ytd-simple-menu-header-renderer {
-  background: none !important;
+
+/* Menu item leading ICON */
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-service-item-renderer yt-icon,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-navigation-item-renderer yt-icon {
+  color: var(--cyber-secondary) !important;
+  transition: filter var(--cyber-snap), transform var(--cyber-snap) !important;
 }
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 0 !important;
-  border: var(--cyber-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-service-item-renderer:hover yt-icon,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-navigation-item-renderer:hover yt-icon {
+  filter: drop-shadow(0 0 5px var(--cyber-primary)) !important;
+  transform: scale(1.15) !important;
+  color: var(--cyber-primary) !important;
 }
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 0 !important;
-  border: var(--cyber-border) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
-  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
-  max-height: 80vh !important;
-  overflow-y: auto !important;
-  max-width: none !important;
+
+/* Separator line */
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-popup-renderer hr,
+html[data-ypp-ui-style="cyberpunk"] ytd-menu-popup-renderer #separator {
+  border: none !important;
+  border-top: 1px dashed var(--cyber-secondary) !important;
+  opacity: 0.4 !important;
+  margin: 4px 12px !important;
 }
-.tp-yt-paper-tooltip[style-target=tooltip] {
-  border: var(--cyber-border) !important;
-  box-shadow: var(--shadow-active) !important;
-  color: white !important;
-}
-tp-yt-paper-listbox {
-  padding: 10px !important;
-}
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: 0 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
-.ytContextualSheetLayoutHost {
-  background: none !important;
-  padding: 13px !important;
-}
-html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {
-  border-radius: 0 !important;
-  padding: 7px 10px;
-}
-tp-yt-paper-listbox.yt-dropdown-menu {
-  background: var(--sf) !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
-  background: none !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
-  box-shadow: var(--shadow-hover) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: 0 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
-  transform: scale(1.05) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ypp-account-menu,
-#ypp-top-bar {
-  background: var(--sf) !important;
-  border: var(--cyber-border) !important;
-  box-shadow: var(--shadow-base) !important;
-}
-tp-yt-paper-toast {
-  background: var(--sf) !important;
-  border-radius: 0 !important;
-  box-shadow: var(--shadow-hover) !important;
-  border: var(--cyber-border) !important;
-}
-tp-yt-paper-listbox {
+
+/* ---- MULTI-PAGE MENU (account dropdown, notification panel) ---- */
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer > #container {
   background: transparent !important;
+}
+
+/* Multi-page menu header (account name / back button row) */
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer #header-container,
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer #header.ytd-multi-page-menu-renderer {
+  background: #000 !important;
+  border-bottom: var(--cyber-border-thick) !important;
+  padding: 10px 14px !important;
+}
+
+/* Header page title text */
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer #title.ytd-multi-page-menu-renderer {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  text-shadow: 0 0 6px var(--cyber-secondary) !important;
+}
+
+/* Back button in sub-menu */
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer #back-button yt-icon-button {
+  border: var(--cyber-border-thin) !important;
+  border-radius: 0 !important;
+  transition: all var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer #back-button yt-icon-button:hover {
+  background: rgba(0, 255, 204, 0.1) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+}
+
+/* ---- ACCOUNT DROPDOWN (Avatar menu) ---- */
+html[data-ypp-ui-style="cyberpunk"] ytd-active-account-header-renderer {
+  background: #000 !important;
+  border-bottom: var(--cyber-border-thick) !important;
+  padding: 12px 14px !important;
+}
+
+/* Account email / name */
+html[data-ypp-ui-style="cyberpunk"] ytd-active-account-header-renderer #channel-handle,
+html[data-ypp-ui-style="cyberpunk"] ytd-active-account-header-renderer #account-name {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-shadow: 0 0 4px rgba(0, 255, 204, 0.4) !important;
+}
+
+/* Account avatar in header */
+html[data-ypp-ui-style="cyberpunk"] ytd-active-account-header-renderer yt-img-shadow img {
+  clip-path: var(--cyber-clip-hex) !important;
+  border-radius: 0 !important;
+  filter: drop-shadow(0 0 6px var(--cyber-secondary)) !important;
+}
+
+/* ---- NOTIFICATION PANEL ---- */
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-renderer {
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.07) !important;
+  border-left: 2px solid transparent !important;
+  padding: 10px 12px !important;
+  transition: all var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-renderer:hover {
+  background: rgba(0, 255, 204, 0.06) !important;
+  border-left-color: var(--cyber-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-renderer[is-new] {
+  background: rgba(255, 0, 85, 0.06) !important;
+  border-left: 2px solid var(--cyber-primary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-renderer[is-new]::before {
+  content: "NEW //";
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  color: var(--cyber-primary);
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-renderer yt-img-shadow img {
+  clip-path: var(--cyber-clip-hex) !important;
+  border-radius: 0 !important;
+}
+
+/* Notification panel header */
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-unseen-count-header-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-multi-page-menu-renderer #header {
+  background: #000 !important;
+  border-bottom: 1px dashed var(--cyber-secondary) !important;
+  padding: 10px 14px !important;
+}
+
+/* ---- SEARCH AUTOCOMPLETE DROPDOWN ---- */
+html[data-ypp-ui-style="cyberpunk"] .ytSearchboxComponentSuggestionsContainer {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thick) !important;
+  border-top: none !important;
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytSearchboxComponentSuggestionsContainer * {
+  color: #fff !important;
+  font-family: monospace !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytSuggestionComponentRoundedSuggestion {
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.08) !important;
+  transition: all var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(0, 255, 204, 0.1) !important;
+  border-left: 3px solid var(--cyber-secondary) !important;
+}
+/* Autocomplete query text (bold part) */
+html[data-ypp-ui-style="cyberpunk"] .ytSuggestionComponentSuggestionText b {
+  color: var(--cyber-secondary) !important;
+  text-shadow: 0 0 4px var(--cyber-secondary) !important;
+}
+
+/* ---- PLAYLIST ADD POPUP (Save to...) ---- */
+html[data-ypp-ui-style="cyberpunk"] ytd-add-to-playlist-renderer {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thick) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-add-to-playlist-renderer #header-title {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  border-bottom: var(--cyber-border-thin) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-playlist-add-to-option-renderer {
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.07) !important;
+  transition: all var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-playlist-add-to-option-renderer:hover {
+  background: rgba(0, 255, 204, 0.08) !important;
+  border-left: 3px solid var(--cyber-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-playlist-add-to-option-renderer[checked] {
+  background: rgba(255, 0, 85, 0.1) !important;
+  border-left: 3px solid var(--cyber-primary) !important;
+}
+/* Create new playlist button */
+html[data-ypp-ui-style="cyberpunk"] ytd-add-to-playlist-create-renderer yt-button-shape button {
+  background: transparent !important;
+  border: var(--cyber-border-thin) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-slash) !important;
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  transition: all var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-add-to-playlist-create-renderer yt-button-shape button:hover {
+  background: rgba(0, 255, 204, 0.1) !important;
+  border-color: var(--cyber-secondary) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+}
+
+/* ---- SHARE POPUP ---- */
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer,
+html[data-ypp-ui-style="cyberpunk"] ytd-unified-share-panel-renderer {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thick) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-md) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer #header,
+html[data-ypp-ui-style="cyberpunk"] ytd-unified-share-panel-renderer #header {
+  border-bottom: var(--cyber-border-thin) !important;
+  background: #000 !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer #title,
+html[data-ypp-ui-style="cyberpunk"] ytd-unified-share-panel-renderer #title {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+/* Share platform buttons (Twitter, Facebook, etc.) */
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer ytd-button-renderer button,
+html[data-ypp-ui-style="cyberpunk"] yt-share-target-button button {
+  background: transparent !important;
+  border: var(--cyber-border-thin) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  transition: all var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer ytd-button-renderer button:hover,
+html[data-ypp-ui-style="cyberpunk"] yt-share-target-button button:hover {
+  background: rgba(0, 255, 204, 0.12) !important;
+  border-color: var(--cyber-secondary) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+}
+/* Copy link field */
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer #copyLink,
+html[data-ypp-ui-style="cyberpunk"] yt-copy-link-renderer {
+  background: #000 !important;
+  border: var(--cyber-border-thin) !important;
+  border-radius: 0 !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer #url,
+html[data-ypp-ui-style="cyberpunk"] yt-copy-link-renderer #url {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-share-panel-renderer #copy-link-button button,
+html[data-ypp-ui-style="cyberpunk"] yt-copy-link-renderer #copy-link-button button {
+  background: var(--cyber-tertiary) !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-slash) !important;
+  font-family: monospace !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+}
+
+/* ---- PLAYER SETTINGS PANEL ---- */
+html[data-ypp-ui-style="cyberpunk"] .ytp-panel-menu {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thick) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-panel-header {
+  background: #000 !important;
+  border-bottom: var(--cyber-border-thin) !important;
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 8px 14px !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-menuitem {
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.07) !important;
+  border-left: 2px solid transparent !important;
+  transition: all var(--cyber-snap) !important;
+  font-family: monospace !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-menuitem:hover {
+  background: rgba(0, 255, 204, 0.1) !important;
+  border-left-color: var(--cyber-secondary) !important;
+  color: var(--cyber-secondary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-menuitem-label {
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  font-size: 12px !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-menuitem-content {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+}
+
+/* ---- PLAYER TOOLTIP ---- */
+html[data-ypp-ui-style="cyberpunk"] .ytp-tooltip {
+  background: var(--cyber-bg) !important;
+  border: 1px solid var(--cyber-secondary) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+  padding: 4px 10px !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-tooltip-title,
+html[data-ypp-ui-style="cyberpunk"] .ytp-tooltip-text,
+html[data-ypp-ui-style="cyberpunk"] .ytp-tooltip-text-no-title {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: 11px !important;
+}
+html[data-ypp-ui-style="cyberpunk"] .ytp-tooltip-image-inner-div {
+  border: 1px solid var(--cyber-secondary) !important;
+  border-radius: 0 !important;
+}
+
+/* ---- AUTOPLAY TOGGLE POPUP ---- */
+html[data-ypp-ui-style="cyberpunk"] ytd-compact-autoplay-renderer #container {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thin) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+
+/* ---- LIVE CHAT EMOJI PICKER ---- */
+html[data-ypp-ui-style="cyberpunk"] yt-emoji-picker-renderer {
+  background: var(--cyber-bg) !important;
+  border: var(--cyber-border-thick) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-md) !important;
+  box-shadow: var(--cyber-glow-primary) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-emoji-picker-renderer #header {
+  background: #000 !important;
+  border-bottom: var(--cyber-border-thin) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-emoji-picker-renderer ytd-emoji-icon-renderer:hover {
+  background: rgba(255, 0, 85, 0.2) !important;
+  box-shadow: 0 0 6px var(--cyber-primary) !important;
 }

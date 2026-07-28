@@ -1,24 +1,95 @@
-html[data-ypp-ui-style=terminalism] .ytLockupMetadataViewModelMenuButton {
-  overflow: visible !important;
+/* =========================================================
+   TERMINALISM — MENUS & DROPDOWNS
+   ========================================================= */
+
+/* Dropdowns / Menus base */
+html[data-ypp-ui-style="terminalism"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="terminalism"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="terminalism"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="terminalism"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="terminalism"] .ytSearchboxComponentSuggestionsContainer {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+  padding: 8px !important;
 }
-html[data-ypp-ui-style=terminalism] .ytLockupMetadataViewModelMenuButton yt-interaction .fill,
-html[data-ypp-ui-style=terminalism] .ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+
+/* Prevent double borders on nested menus */
+html[data-ypp-ui-style="terminalism"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="terminalism"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
   background: transparent !important;
-  opacity: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
 }
-/* src/content/themes/ui-styles/terminalism/components/menus.css */
-html[data-ypp-ui-style=terminalism] ytd-simple-menu-header-renderer {
-  background: none !important;
-  border-bottom: 1px solid rgba(0, 255, 65, 0.15) !important;
+
+/* Menu List Items */
+html[data-ypp-ui-style="terminalism"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="terminalism"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style="terminalism"] ytd-compact-link-renderer,
+html[data-ypp-ui-style="terminalism"] .ytp-menuitem,
+html[data-ypp-ui-style="terminalism"] ytd-playlist-add-to-option-renderer,
+html[data-ypp-ui-style="terminalism"] .ytSuggestionComponentSuggestion {
+  background: transparent !important;
+  margin: 2px 0 !important;
+  color: var(--term-text-primary) !important;
+  border: 1px solid transparent !important;
 }
-html[data-ypp-ui-style=terminalism] tp-yt-paper-listbox {
-  padding: 4px !important;
+
+/* Menu Item Hover */
+html[data-ypp-ui-style="terminalism"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="terminalism"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="terminalism"] ytd-compact-link-renderer:hover,
+html[data-ypp-ui-style="terminalism"] .ytp-menuitem:hover,
+html[data-ypp-ui-style="terminalism"] ytd-playlist-add-to-option-renderer:hover,
+html[data-ypp-ui-style="terminalism"] .ytSuggestionComponentSuggestion:hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
 }
-html[data-ypp-ui-style=terminalism] ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
-html[data-ypp-ui-style=terminalism] .ytContextualSheetLayoutHost {
-  background: none !important;
-  padding: 10px !important;
+
+/* Prefix terminal prompt on hover */
+html[data-ypp-ui-style="terminalism"] ytd-menu-service-item-renderer:hover::before,
+html[data-ypp-ui-style="terminalism"] ytd-menu-navigation-item-renderer:hover::before,
+html[data-ypp-ui-style="terminalism"] ytd-compact-link-renderer:hover::before {
+  content: "> ";
+  position: absolute;
+  left: 4px;
+  color: var(--term-green);
+  font-weight: bold;
+  animation: termBlink 1s step-end infinite;
 }
-html[data-ypp-ui-style=terminalism] tp-yt-paper-listbox {
-  background: rgba(0, 6, 0, 0.98) !important;
+html[data-ypp-ui-style="terminalism"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="terminalism"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style="terminalism"] ytd-compact-link-renderer {
+  padding-left: 20px !important; /* Make room for prefix */
+}
+
+/* Separators */
+html[data-ypp-ui-style="terminalism"] ytd-menu-popup-renderer hr,
+html[data-ypp-ui-style="terminalism"] ytd-menu-popup-renderer #separator {
+  border: none !important;
+  border-bottom: 1px dashed var(--term-green) !important;
+  margin: 8px 0 !important;
+}
+
+/* Notifications */
+html[data-ypp-ui-style="terminalism"] ytd-notification-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  margin: 6px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-notification-renderer:hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-notification-renderer[is-new] {
+  border-left: 4px solid var(--term-green) !important;
+}
+
+/* Account Multi-page Header */
+html[data-ypp-ui-style="terminalism"] ytd-active-account-header-renderer {
+  background: transparent !important;
+  border-bottom: 1px dashed var(--term-green) !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 8px !important;
 }

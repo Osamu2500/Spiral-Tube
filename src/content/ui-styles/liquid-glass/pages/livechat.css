@@ -8,15 +8,16 @@ html[data-ypp-ui-style="liquid-glass"] yt-live-chat-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
-  border: var(--lg-border-specular) !important;
+  border: none !important;
+  outline: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 28px !important;
-  box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
   overflow: hidden !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-header-renderer {
   background: rgba(255, 255, 255, 0.08) !important;
-  border-bottom: var(--lg-border-subtle) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   padding: 12px 16px !important;
 }
 
@@ -47,7 +48,7 @@ html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-sticker-renderer {
   background: rgba(255, 255, 255, 0.12) !important;
   border-radius: 20px !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5), var(--lg-border-top-light) !important;
   margin: 6px 8px !important;
   overflow: hidden !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
@@ -64,18 +65,19 @@ html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-message-renderer #conte
   background: transparent !important;
 }
 
-/* Chat Input Bar */
+/* Chat Input Bar Glass */
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-message-input-renderer {
   background: rgba(255, 255, 255, 0.08) !important;
-  border-top: var(--lg-border-subtle) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   padding: 12px !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-message-input-renderer #container {
   background: rgba(255, 255, 255, 0.08) !important;
   border-radius: 2000px !important;
-  border: var(--lg-border-subtle) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   padding: 4px 16px !important;
+  transition: border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-message-input-renderer #container:focus-within {

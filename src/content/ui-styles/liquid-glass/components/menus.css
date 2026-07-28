@@ -4,6 +4,7 @@
    ========================================================= */
 
 html[data-ypp-ui-style="liquid-glass"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown,
 html[data-ypp-ui-style="liquid-glass"] ytd-settings-options-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-account-settings-renderer {
@@ -11,14 +12,37 @@ html[data-ypp-ui-style="liquid-glass"] ytd-account-settings-renderer {
   backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
   border-radius: 24px !important;
-  border: var(--lg-border-specular) !important;
+  border: none !important;
+  outline: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
   padding: 8px !important;
   overflow: hidden !important;
+  transform-origin: top right !important;
+  animation: lg-popup-scale 0.4s var(--lg-spring) both !important;
+  --yt-spec-menu-background: transparent !important;
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-elevated-background: transparent !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown > #contentWrapper > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="liquid-glass"] ytd-menu-popup-renderer #content {
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-popup-renderer #content,
+html[data-ypp-ui-style="liquid-glass"] ytd-multi-page-menu-renderer > #container,
+html[data-ypp-ui-style="liquid-glass"] ytd-simple-menu-header-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-active-account-header-renderer,
+html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown > #contentWrapper {
   background: transparent !important;
   border: none !important;
 }
@@ -28,7 +52,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-compact-link-renderer {
   border-radius: 16px !important;
   margin: 4px 6px !important;
-  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
+  transition: transform var(--lg-spring), background var(--lg-smooth), box-shadow var(--lg-smooth) !important;
   color: var(--lg-text-primary, #ffffff) !important;
 }
 
@@ -37,7 +61,26 @@ html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-compact-link-renderer:hover {
   background: rgba(255, 255, 255, 0.14) !important;
   transform: translateX(4px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Menu Icons */
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-service-item-renderer yt-icon,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer yt-icon {
+  transition: transform var(--lg-spring), color var(--lg-smooth) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-service-item-renderer:hover yt-icon,
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer:hover yt-icon {
+  transform: scale(1.15) !important;
+  color: #ffffff !important;
+}
+
+/* Section Dividers */
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-service-item-renderer[has-separator],
+html[data-ypp-ui-style="liquid-glass"] ytd-menu-navigation-item-renderer[has-separator] {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
 }
 
 /* Share Panel & Add to Playlist Dialog Box */
@@ -47,15 +90,19 @@ html[data-ypp-ui-style="liquid-glass"] ytd-add-to-playlist-renderer {
   backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2, rgba(255, 255, 255, 0.08)) !important;
   border-radius: 32px !important;
-  border: var(--lg-border-specular) !important;
+  border: none !important;
+  outline: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
   padding: 24px !important;
+  animation: lg-popup-scale 0.5s var(--lg-spring) both !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] ytd-unified-share-panel-renderer #header,
 html[data-ypp-ui-style="liquid-glass"] ytd-add-to-playlist-renderer #header {
-  border-bottom: var(--lg-border-subtle) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   background: transparent !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 16px !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] .yt-share-target-renderer {

@@ -1,13 +1,88 @@
-html[data-ypp-ui-style=terminalism] ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
-  margin: 5px auto !important;
+/* =========================================================
+   TERMINALISM — SEARCH PAGE
+   ========================================================= */
+
+/* Filter Button */
+html[data-ypp-ui-style="terminalism"] ytd-search-filter-group-renderer {
+  background: transparent !important;
 }
-html[data-ypp-ui-style=terminalism] .ytSearchboxComponentSuggestionsContainer,
-html[data-ypp-ui-style=terminalism] ytd-multi-page-menu-renderer {
-  background: rgba(0, 6, 0, 0.98) !important;
-  border: 1px solid #00ff41 !important;
-  color: #00ff41 !important;
+html[data-ypp-ui-style="terminalism"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  border-radius: 0 !important;
+  color: var(--term-text-primary) !important;
+  padding: 6px 16px !important;
+  text-transform: uppercase !important;
 }
-html[data-ypp-ui-style=terminalism] .ytSearchboxComponentSuggestionsContainer *,
-html[data-ypp-ui-style=terminalism] ytd-multi-page-menu-renderer * {
-  color: #00ff41 !important;
+html[data-ypp-ui-style="terminalism"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer:hover {
+  background: var(--term-green-fade) !important;
+  box-shadow: var(--term-glow) !important;
+}
+
+/* Expansion Panel for Search Filters */
+html[data-ypp-ui-style="terminalism"] ytd-search-sub-menu-renderer {
+  background: var(--term-bg) !important;
+  border: 1px dashed var(--term-green) !important;
+  border-radius: 0 !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-search-sub-menu-renderer::before {
+  content: "--- OPTIONS ---";
+  display: block;
+  color: var(--term-green-dim);
+  margin-bottom: 16px;
+}
+
+/* Individual filter options */
+html[data-ypp-ui-style="terminalism"] ytd-search-filter-renderer {
+  border-radius: 0 !important;
+  padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-search-filter-renderer:hover {
+  background: var(--term-green-fade) !important;
+  color: var(--term-text-primary) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-search-filter-renderer[selected] {
+  color: var(--term-bg) !important;
+  background: var(--term-green) !important;
+}
+
+/* Channel blocks in search results */
+html[data-ypp-ui-style="terminalism"] ytd-channel-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  border-radius: 0 !important;
+  padding: 24px !important;
+  margin-bottom: 16px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-channel-renderer:hover {
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+  background: rgba(0, 255, 65, 0.05) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-channel-renderer #avatar {
+  border-radius: 0 !important;
+  border: var(--term-border) !important;
+}
+
+/* Playlist blocks in search results */
+html[data-ypp-ui-style="terminalism"] ytd-playlist-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  border-radius: 0 !important;
+  padding: 12px !important;
+  margin-bottom: 16px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-playlist-renderer:hover {
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+}
+
+/* "People also watched" shelf */
+html[data-ypp-ui-style="terminalism"] ytd-horizontal-card-list-renderer {
+  background: transparent !important;
+  border: 1px dashed var(--term-green-dim) !important;
+  border-radius: 0 !important;
+  padding: 16px !important;
 }

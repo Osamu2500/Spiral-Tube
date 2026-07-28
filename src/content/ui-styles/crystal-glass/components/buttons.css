@@ -1,0 +1,85 @@
+/* =========================================================
+   CRYSTAL GLASS — BUTTONS
+   ========================================================= */
+
+/* Default Button State (Glass Pills) */
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button,
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next,
+html[data-ypp-ui-style="crystal-glass"] ytd-button-renderer button {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  color: var(--cglass-text-primary) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Button Hover State */
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button:hover,
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="crystal-glass"] ytd-button-renderer button:hover {
+  background: var(--cglass-base-hover) !important;
+  border: var(--cglass-border-heavy) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+  transform: translateY(-2px);
+}
+
+/* Active / Pressed Buttons */
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[aria-pressed="true"],
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next[aria-pressed="true"] {
+  background: var(--cglass-base-heavy) !important;
+  border: var(--cglass-border-heavy) !important;
+  box-shadow: inset 0 4px 10px rgba(0,0,0,0.2) !important; /* Invert shadow for pressed */
+  transform: translateY(1px);
+}
+
+/* Primary/Filled Buttons (Like Subscribe) */
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="crystal-glass"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
+html[data-ypp-ui-style="crystal-glass"] #subscribe-button button {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #000 !important;
+  border: var(--cglass-border) !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4), inset 0 2px 10px rgba(255, 255, 255, 1) !important;
+  backdrop-filter: none !important; /* It's mostly solid */
+}
+
+/* Primary Button Hover */
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="crystal-glass"] #subscribe-button button:hover {
+  background: #fff !important;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+/* Icon Buttons */
+html[data-ypp-ui-style="crystal-glass"] yt-icon-button button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html[data-ypp-ui-style="crystal-glass"] yt-icon-button button:hover {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border-radius: 50% !important;
+}
+
+/* Extension Action Buttons */
+html[data-ypp-ui-style="crystal-glass"] .ypp-gpb-btn,
+html[data-ypp-ui-style="crystal-glass"] .ypp-action-btn,
+html[data-ypp-ui-style="crystal-glass"] .ypp-pill-toggle {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  color: var(--cglass-text-primary) !important;
+}
+html[data-ypp-ui-style="crystal-glass"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="crystal-glass"] .ypp-action-btn:hover,
+html[data-ypp-ui-style="crystal-glass"] .ypp-pill-toggle:hover {
+  background: var(--cglass-base-hover) !important;
+  border: var(--cglass-border-heavy) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}

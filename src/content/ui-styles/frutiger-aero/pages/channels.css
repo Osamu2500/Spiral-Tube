@@ -1,13 +1,41 @@
-html[data-ypp-ui-style=frutiger-aero] #channel-name .yt-simple-endpoint,
-html[data-ypp-ui-style=frutiger-aero] ytd-channel-name .yt-simple-endpoint {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
-  transition: all 0.2s ease !important;
+/* =========================================================
+   FRUTIGER AERO — CHANNELS PAGE
+   pages/channels.css
+   ========================================================= */
+
+/* ── Channel Header ─────────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] ytd-c4-tabbed-header-renderer {
+  background: var(--faero-glass-medium) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-bottom: var(--faero-border-white) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }
-html[data-ypp-ui-style=frutiger-aero] #channel-name .yt-simple-endpoint:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-channel-name .yt-simple-endpoint:hover {
-  color: #0b86c2 !important;
-  text-shadow: 0 0 8px rgba(18, 168, 221, 0.4), 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+
+/* Banner gradient overlay */
+html[data-ypp-ui-style="frutiger-aero"] .ytd-banner-image::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+  pointer-events: none;
 }
-html[data-ypp-ui-style=frutiger-aero] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+
+/* ── Channel Navigation Tabs ────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-tabs {
   background: transparent !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-tab {
+  color: var(--faero-text-secondary) !important;
+  font-weight: 600 !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-tab.iron-selected {
+  color: var(--faero-sky-dark) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] paper-ripple {
+  color: var(--faero-sky-blue) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-tabs .selection-bar {
+  background-color: var(--faero-lime) !important;
+  height: 3px !important;
+  box-shadow: 0 0 8px var(--faero-lime) !important;
 }

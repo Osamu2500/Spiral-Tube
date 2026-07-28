@@ -1,0 +1,83 @@
+/* =========================================================
+   CRYSTAL GLASS — CARDS (Thumbnails & Grids)
+   ========================================================= */
+
+/* Main Card Wrapper */
+html[data-ypp-card-style="crystal-glass"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item
+  ) *)
+) {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border) !important;
+  border-radius: var(--cglass-radius-lg) !important;
+  padding: 12px !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--cglass-shadow) !important;
+  transition: all var(--cglass-transition) !important;
+}
+
+/* Clear default backgrounds on grid media */
+html[data-ypp-card-style="crystal-glass"] ytd-rich-grid-media {
+  background: transparent !important;
+}
+
+/* Card Hover State */
+html[data-ypp-card-style="crystal-glass"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item
+  ) *)
+):hover {
+  background: var(--cglass-base-hover) !important;
+  border: var(--cglass-border-heavy) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+  transform: translateY(-4px);
+}
+
+/* Thumbnails */
+html[data-ypp-card-style="crystal-glass"] ytd-thumbnail,
+html[data-ypp-card-style="crystal-glass"] .ytd-thumbnail {
+  border-radius: var(--cglass-radius-md) !important;
+  overflow: hidden !important;
+}
+
+/* Time Status Badge (e.g., 10:05) */
+html[data-ypp-card-style="crystal-glass"] ytd-thumbnail-overlay-time-status-renderer {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  margin: 6px !important;
+  padding: 4px 8px !important;
+}
+
+/* Channel Avatar next to metadata */
+html[data-ypp-card-style="crystal-glass"] #avatar-link img,
+html[data-ypp-card-style="crystal-glass"] yt-img-shadow#avatar img {
+  border: var(--cglass-border) !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-card-style="crystal-glass"] ytd-rich-item-renderer:hover #avatar-link img {
+  border: var(--cglass-border-heavy) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}

@@ -8,21 +8,34 @@ html[data-ypp-ui-style="liquid-glass"] ytd-c4-tabbed-header-renderer {
   background: transparent !important;
 }
 
+/* Banner Fade Overlay */
+html[data-ypp-ui-style="liquid-glass"] ytd-c4-tabbed-header-renderer::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%) !important;
+  pointer-events: none;
+  z-index: 0;
+}
+
 html[data-ypp-ui-style="liquid-glass"] #channel-header-container.ytd-c4-tabbed-header-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
-  border: var(--lg-border-specular) !important;
+  background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
+  border: none !important;
+  outline: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 28px !important;
-  box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
   padding: 24px !important;
   margin: 16px 24px !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] ytd-channel-avatar-editor #avatar,
 html[data-ypp-ui-style="liquid-glass"] #channel-header ytd-avatar-shape #avatar {
   border: 2px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.5) !important;
   border-radius: 2000px !important;
 }
 
@@ -31,17 +44,20 @@ html[data-ypp-ui-style="liquid-glass"] #tabs-inner-container.ytd-c4-tabbed-heade
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
   background: var(--lg-bg-level-1) !important;
-  border: var(--lg-border-subtle) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 2000px !important;
   padding: 4px 16px !important;
   margin: 0 24px 20px 24px !important;
+  box-shadow: var(--lg-border-top-light) !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
   border-radius: 2000px !important;
   margin: 0 4px !important;
   padding: 6px 16px !important;
-  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
+  transition: transform var(--lg-spring), background var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
 html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer:hover {

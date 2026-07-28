@@ -1,334 +1,143 @@
-/* src/content/themes/ui-styles/frutiger-aero/components/navbar.css */
-html[data-ypp-ui-style='frutiger-aero'] ytd-app,
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead,
-html[data-ypp-ui-style='frutiger-aero'] #page-manager.ytd-app,
-html[data-ypp-ui-style='frutiger-aero'] #content.ytd-app {
+/* =========================================================
+   FRUTIGER AERO — NAVBAR / MASTHEAD
+   components/navbar.css
+   
+   Rich gradient masthead, glossy search box.
+   ========================================================= */
+
+/* ── Top Masthead ───────────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead {
   background: transparent !important;
 }
-
-html[data-ypp-ui-style='frutiger-aero'] #masthead-container,
-html[data-ypp-ui-style='frutiger-aero'] #masthead-container.ytd-app {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #container.ytd-masthead {
+  /* Complex multi-stop blue gradient from 4PDA/References */
+  background: var(--faero-gradient-navbar) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+  box-shadow: var(--faero-shadow-navbar) !important;
 }
 
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container,
-html[data-ypp-ui-style='frutiger-aero'] #container.ytd-masthead {
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  border-radius: 0 !important;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
-  margin: 0 !important;
+/* Masthead Text / Icons should be white due to dark blue gradient */
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #container.ytd-masthead yt-icon {
+  color: var(--faero-text-white) !important;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)) !important;
+}
+
+/* ── Search Box Container (Old & New) ───────────────────── */
+/* Container */
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox,
+html[data-ypp-ui-style="frutiger-aero"] yt-searchbox {
+  border-radius: var(--faero-radius-pill) !important;
+}
+
+/* The actual input pill background */
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentInputBox {
+  background: var(--faero-glass-heavy) !important;
+  border: var(--faero-border-btn) !important;
+  border-top: 1px solid rgba(100, 110, 120, 0.6) !important; /* depth */
+  border-radius: var(--faero-radius-pill) 0 0 var(--faero-radius-pill) !important;
+  box-shadow: var(--faero-shadow-search-inset) !important;
   padding: 0 16px !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(255, 255, 255, 0.4) !important;
+  transition: var(--faero-transition) !important;
+  color: var(--faero-text-primary) !important;
+}
+
+/* Focus State */
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox[has-focus] #container.ytd-searchbox,
+html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentInputBox:focus-within {
+  background: #fff !important;
+  border: 1px solid var(--faero-lime) !important;
+  box-shadow: 0 0 10px var(--faero-lime), var(--faero-shadow-search-focus) !important;
+}
+
+/* Input text */
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox input,
+html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentInputBox input {
+  color: var(--faero-text-primary) !important;
+}
+
+/* Search Button (Old & New) */
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentSearchButton {
+  background: var(--faero-gradient-pagebar) !important;
+  border: var(--faero-border-dark) !important;
+  border-left: none !important;
+  border-radius: 0 var(--faero-radius-pill) var(--faero-radius-pill) 0 !important;
+  padding: 0 20px !important;
+  box-shadow: inset 1px 0 0 rgba(255,255,255,1) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox #search-icon-legacy:hover,
+html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentSearchButton:hover {
+  background: #fff !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] ytd-searchbox #search-icon-legacy yt-icon,
+html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentSearchButton yt-icon {
+  color: var(--faero-text-primary) !important;
+  filter: none !important;
+}
+
+/* ── Masthead Base ────────────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #masthead-container.ytd-app,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ── Masthead Icon Buttons (Voice Search, Notifications, Create) ── */
+/* 1. Reset the wrapper elements so they don't cause double-layering */
+html[data-ypp-ui-style="frutiger-aero"] #voice-search-button yt-icon-button,
+html[data-ypp-ui-style="frutiger-aero"] #voice-search-button yt-button-shape,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer yt-button-shape,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-icon-button,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-button-shape {
+  background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #background.ytd-masthead {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container yt-icon:not(ytd-topbar-logo-renderer *),
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container .yt-icon:not(ytd-topbar-logo-renderer *),
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container yt-icon-shape:not(ytd-topbar-logo-renderer *) svg {
-  color: var(--yt-spec-text-primary) !important;
-  fill: var(--yt-spec-text-primary) !important;
-}
-
-/* Ensure YouTube Logo shows up clearly */
-html[data-ypp-ui-style='frutiger-aero'] ytd-topbar-logo-renderer,
-html[data-ypp-ui-style='frutiger-aero'] ytd-topbar-logo-renderer #logo-icon,
-html[data-ypp-ui-style='frutiger-aero'] ytd-topbar-logo-renderer svg {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container yt-formatted-string,
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container span,
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead #container a {
-  color: var(--yt-spec-text-primary) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #contents.ytd-page-manager {
-  margin-top: 0;
-  margin-left: 16px;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #voice-search-button.ytd-masthead,
-html[data-ypp-ui-style='frutiger-aero'] .ypp-nav-btn,
-html[data-ypp-ui-style='frutiger-aero'] ytd-topbar-menu-button-renderer.ytd-masthead yt-icon-button,
-html[data-ypp-ui-style='frutiger-aero'] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button,
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead .yt-spec-button-shape-next,
-html[data-ypp-ui-style='frutiger-aero'] #trailing-button.ytd-playlist-panel-renderer,
-html[data-ypp-ui-style='frutiger-aero'] ytd-menu-renderer .ytd-menu-renderer[style-target='button'] {
-  border-radius: var(--fa-radius-pill) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.9),
-    rgba(200, 235, 255, 0.8)
-  ) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 1),
-    var(--fa-elevation-2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    background 0.2s !important;
-  color: #0b5fa3 !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #voice-search-button.ytd-masthead:hover,
-html[data-ypp-ui-style='frutiger-aero'] .ypp-nav-btn:hover,
-html[data-ypp-ui-style='frutiger-aero'] ytd-topbar-menu-button-renderer.ytd-masthead yt-icon-button:hover,
-html[data-ypp-ui-style='frutiger-aero'] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button:hover,
-html[data-ypp-ui-style='frutiger-aero'] ytd-masthead .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style='frutiger-aero'] #trailing-button.ytd-playlist-panel-renderer:hover,
-html[data-ypp-ui-style='frutiger-aero']
-  ytd-menu-renderer
-  .ytd-menu-renderer[style-target='button']:hover {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    rgba(180, 225, 255, 0.9)
-  ) !important;
-  box-shadow:
-    var(--fa-elevation-3),
-    var(--faBlueGlow),
-    inset 0 2px 4px rgba(255, 255, 255, 1) !important;
-  transform: scale(1.08) !important;
-  border: 1px solid rgba(255, 255, 255, 1) !important;
-}
-
-/* Make sure the custom element wrappers for these buttons are fully transparent */
-html[data-ypp-ui-style='frutiger-aero'] ytd-topbar-menu-button-renderer.ytd-masthead,
-html[data-ypp-ui-style='frutiger-aero'] ytd-notification-topbar-button-renderer.ytd-masthead {
-  background: transparent !important;
-  background-color: transparent !important;
   box-shadow: none !important;
-  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
 }
 
-html[data-ypp-ui-style='frutiger-aero']
-  ytd-app[frosted-glass-exp]
-  tp-yt-app-drawer.ytd-app[persistent] {
-  top: 75px !important;
-  left: 8px !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero']
-  tp-yt-app-drawer.ytd-app
-  #contentContainer.tp-yt-app-drawer {
-  background: transparent !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero']
-  #buttons.ytd-masthead
-  ytd-button-renderer
-  yt-button-shape
-  button {
-  border-radius: var(--fa-radius-pill) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.8),
-    rgba(200, 235, 255, 0.6)
-  ) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.9),
-    var(--fa-elevation-1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    background 0.2s !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero']
-  #buttons.ytd-masthead
-  ytd-button-renderer
-  yt-button-shape
-  button:hover {
-  box-shadow:
-    var(--fa-elevation-2),
-    inset 0 2px 6px rgba(255, 255, 255, 1) !important;
-  transform: scale(1.06);
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    rgba(180, 225, 255, 0.8)
-  ) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero']
-  #buttons.ytd-masthead
-  ytd-button-renderer
-  yt-button-shape
-  button:active {
-  transform: scale(0.97) !important;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero']
-  ytd-notification-topbar-button-renderer.ytd-masthead
-  yt-icon-button#icon,
-html[data-ypp-ui-style='frutiger-aero']
-  ytd-notification-topbar-button-renderer.ytd-masthead
-  button {
-  border-radius: var(--fa-radius-pill) !important;
+/* 2. Apply the actual Frutiger Aero pill styling only to the inner button */
+html[data-ypp-ui-style="frutiger-aero"] #voice-search-button button,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer button,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer button {
+  background: var(--faero-gradient-pagebar) !important;
+  border: var(--faero-border-dark) !important;
+  border-radius: 50% !important;
+  margin-left: 8px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.9) !important;
+  transition: var(--faero-transition) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   width: 40px !important;
   height: 40px !important;
   padding: 0 !important;
-  box-sizing: border-box !important;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    background 0.2s !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] #voice-search-button button:hover,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer button:hover,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer button:hover {
+  background: #fff !important;
+  box-shadow: 0 4px 10px rgba(159,225,30,0.3), inset 0 2px 4px rgba(255,255,255,1) !important;
+  transform: translateY(-1px) scale(1.05);
+  border-color: var(--faero-lime) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] #voice-search-button yt-icon,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer yt-icon,
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-icon {
+  color: var(--faero-text-primary) !important;
+  fill: var(--faero-text-primary) !important;
+  filter: none !important;
 }
 
-html[data-ypp-ui-style='frutiger-aero']
-  ytd-notification-topbar-button-renderer.ytd-masthead
-  yt-icon-button#icon:hover,
-html[data-ypp-ui-style='frutiger-aero']
-  ytd-notification-topbar-button-renderer.ytd-masthead
-  button:hover {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.8),
-    rgba(200, 235, 255, 0.6)
-  ) !important;
-  box-shadow:
-    var(--fa-elevation-2),
-    var(--faBlueGlow),
-    inset 0 2px 4px rgba(255, 255, 255, 1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] ytd-notification-topbar-button-renderer yt-icon,
-html[data-ypp-ui-style='frutiger-aero'] ytd-notification-topbar-button-renderer yt-icon svg {
-  fill: #0b5fa3 !important;
-  color: #0b5fa3 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] ytSearchboxComponentSuggestionsContainer:not([style*="display: none"]):not(:empty) {
-  -webkit-backdrop-filter: blur(var(--fa-blur-lg));
-  backdrop-filter: blur(var(--fa-blur-lg));
-  background: rgba(255, 255, 255, 0.5) !important;
-  border-radius: var(--fa-radius-lg) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow:
-    var(--fa-elevation-4),
-    inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Detailed Frutiger Aero Search Bar */
-html[data-ypp-ui-style='frutiger-aero'] ytd-searchbox#search > * {
-  border-radius: var(--fa-radius-pill) !important;
-}
-
-/* Force transparent background on the outer searchbox host/container (new + old YouTube) */
-html[data-ypp-ui-style='frutiger-aero'] ytd-searchbox,
-html[data-ypp-ui-style='frutiger-aero'] #search.ytd-masthead,
-html[data-ypp-ui-style='frutiger-aero'] .ytSearchboxComponentHost,
-html[data-ypp-ui-style='frutiger-aero'] .ytSearchboxComponentInputContainer,
-html[data-ypp-ui-style='frutiger-aero'] ytd-searchbox #container.ytd-searchbox {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-/* Style only the inner component pill */
-html[data-ypp-ui-style='frutiger-aero'] .ytSearchboxComponentInputBox {
-  background: linear-gradient(to bottom, #ffffff 0%, #e6f7ff 100%) !important;
-  background-color: #ffffff !important;
-  color: #0b5fa3 !important;
-}
-
-/* Input field inside search bar - transparent so gradient shows through */
-html[data-ypp-ui-style='frutiger-aero'] ytd-searchbox input,
-html[data-ypp-ui-style='frutiger-aero'] input#search,
-html[data-ypp-ui-style='frutiger-aero'] .ytSearchboxComponentInput,
-html[data-ypp-ui-style='frutiger-aero'] .ytSearchboxComponentInputBox input {
-  background: transparent !important;
-  color: #0b5fa3 !important;
-  caret-color: #0b86c2 !important;
-}
-
-/* Placeholder text */
-html[data-ypp-ui-style='frutiger-aero'] ytd-searchbox input::placeholder,
-html[data-ypp-ui-style='frutiger-aero'] .ytSearchboxComponentInput::placeholder {
-  color: rgba(11, 95, 163, 0.5) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #search-form.ytd-searchbox {
-  background: linear-gradient(to bottom, #ffffff 0%, #e6f7ff 100%) !important;
-  background-color: #ffffff !important;
-  border: 1px solid #7cbcd6 !important;
-  border-top-color: #559dbd !important;
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 -2px 6px rgba(255, 255, 255, 1),
-    0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  border-radius: var(--fa-radius-pill) 0 0 var(--fa-radius-pill) !important;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] body #search-form.ytd-searchbox input,
-html[data-ypp-ui-style='frutiger-aero'] body #search-form.ytd-searchbox div,
-html[data-ypp-ui-style='frutiger-aero'] body #search-form.ytd-searchbox span {
-  color: #0b5fa3 !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #search-form.ytd-searchbox:focus-within {
-  outline: 2px solid #9fe11e !important;
-  box-shadow:
-    0 0 10px rgba(159, 225, 30, 0.5),
-    inset 0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 -2px 6px rgba(255, 255, 255, 1) !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #search-icon-legacy.ytd-searchbox {
-  background: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #c4ebff 50%,
-    #9adbf9 51%,
-    #dff4ff 100%
-  ) !important;
-  border: 1px solid #6ab4d1 !important;
-  border-left: none !important;
-  border-radius: 0 var(--fa-radius-pill) var(--fa-radius-pill) 0 !important;
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.9),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.1) !important;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.2s ease !important;
-}
-
-html[data-ypp-ui-style='frutiger-aero'] #search-icon-legacy.ytd-searchbox:hover {
-  background: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #aae0ff 50%,
-    #76cdfa 51%,
-    #cceeff 100%
-  ) !important;
-  box-shadow:
-    inset 0 1px 4px rgba(255, 255, 255, 1),
-    0 0 8px rgba(53, 199, 240, 0.6) !important;
+/* Explicitly protect the avatar image from being squished */
+html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
 }

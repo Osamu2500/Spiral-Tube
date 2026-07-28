@@ -95,3 +95,63 @@ html[data-ypp-ui-style="liquid-glass"] ytd-grid-video-renderer:hover::before {
   opacity: 0.8 !important;
   transform: scale(1) !important;
 }
+
+/* ── New Keyframes v3.0 ── */
+
+/* Card entrance — spring rise from below */
+@keyframes lg-card-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Menu/popup scale-in from origin point */
+@keyframes lg-popup-scale {
+  from { opacity: 0; transform: scale(0.90) translateY(-6px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* Shimmer sweep (for logo/button hover shine) */
+@keyframes lg-shimmer {
+  from { transform: translateX(-120%) skewX(-15deg); }
+  to   { transform: translateX(220%)  skewX(-15deg); }
+}
+
+/* Glass pulse (for active/focused elements) */
+@keyframes lg-pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,255,255,0.25); }
+  50%       { box-shadow: 0 0 28px rgba(255,255,255,0.55); }
+}
+
+/* Toast / alert slide-in from right */
+@keyframes lg-toast-in {
+  from { opacity: 0; transform: translateX(32px) scale(0.95); }
+  to   { opacity: 1; transform: translateX(0)    scale(1);    }
+}
+
+/* Animated background mesh shift */
+@keyframes lg-mesh-shift {
+  0%   { background-position: 0% 0%,   100% 100%, 50% 50%; }
+  50%  { background-position: 3% 5%,   97%  95%,  52% 52%; }
+  100% { background-position: 0% 0%,   100% 100%, 50% 50%; }
+}
+
+/* Shimmer overlay on hoverable glass buttons */
+html[data-ypp-ui-style="liquid-glass"] .ytp-button::after,
+html[data-ypp-ui-style="liquid-glass"] ytd-guide-entry-renderer::after,
+html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%) !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s var(--lg-smooth) !important;
+}
+
+html[data-ypp-ui-style="liquid-glass"] .ytp-button:hover::after,
+html[data-ypp-ui-style="liquid-glass"] ytd-guide-entry-renderer:hover::after,
+html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer:hover::after {
+  opacity: 1 !important;
+  animation: lg-shimmer 0.55s var(--lg-smooth) both !important;
+}

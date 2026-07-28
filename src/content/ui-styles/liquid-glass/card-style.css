@@ -1,0 +1,61 @@
+/* =========================================================
+   LIQUID GLASS — CARD STYLE
+   Provides the Liquid Glass card appearance globally when selected as Card Style
+   ========================================================= */
+
+html[data-ypp-card-style="liquid-glass"] {
+  /* Fallback variables if not using full liquid-glass UI theme */
+  --lg-blur-card: var(--ypp-glass-blur, blur(20px));
+  --lg-shine-card: var(--ypp-glass-shine, 135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%);
+  --lg-border-top-light: var(--ypp-glass-border, inset 0 1px 1px rgba(255, 255, 255, 0.4));
+  --lg-shadow-card: var(--ypp-shadow-card, 0 8px 32px rgba(0, 0, 0, 0.15));
+  --lg-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+html[data-ypp-card-style="liquid-glass"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
+) {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
+  border: none !important;
+  outline: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring), outline-color 0.2s ease !important;
+  padding: var(--ypp-density-pad, 12px) !important;
+}
+
+html[data-ypp-card-style="liquid-glass"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
+):hover {
+  background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.10)) !important;
+  outline-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow:
+    var(--lg-border-top-light),
+    0 20px 50px rgba(0, 0, 0, 0.60),
+    0 0 30px rgba(255, 255, 255, 0.10) !important;
+  transform: translateY(-6px) scale(1.015) !important;
+  z-index: 2 !important;
+}
+
+html[data-ypp-card-style="liquid-glass"] ytd-thumbnail {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}

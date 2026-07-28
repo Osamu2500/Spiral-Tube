@@ -1,139 +1,70 @@
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  background: none !important;
-  border: var(--cyber-border) !important;
-  border-radius: 0 !important;
-  overflow: hidden !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-  color: white !important;
+/* =========================================================
+   CYBERPUNK — PLAYER CONTROLS
+   ========================================================= */
+
+/* Progress Bar Track */
+html[data-ypp-ui-style="cyberpunk"] .ytp-progress-bar-container {
+  height: 8px !important;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 4px,
+    transparent 4px,
+    transparent 8px
+  ) !important; /* Segmented track */
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.02);
-}
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
-  transform: scale(0.98);
-  box-shadow: var(--shadow-active) !important;
-}
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
-  background: none !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}
-.ytp-delhi-modern .ytp-chapter-container {
-  width: 100% !important;
-  padding-left: 10px;
-}
-.ytp-play-progress {
+
+/* Progress Fill */
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-progress {
   background: var(--cyber-secondary) !important;
-  box-shadow: 0 0 10px var(--cyber-secondary);
+  box-shadow: 0 0 10px var(--cyber-secondary) !important;
 }
-.ytp-play-progress {
-  background: var(--cyber-primary) !important;
-}
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
-  background: none !important;
-  border: var(--cyber-border) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+
+/* Playhead (Scrubber) */
+html[data-ypp-ui-style="cyberpunk"] .ytp-scrubber-button {
+  width: 14px !important;
+  height: 20px !important;
   border-radius: 0 !important;
+  background: var(--cyber-tertiary) !important;
+  border: none !important;
+  box-shadow: 0 0 10px var(--cyber-tertiary) !important;
+  transform: scale(1) !important;
+  transition: transform 0.05s !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  background: var(--sf) !important;
+html[data-ypp-ui-style="cyberpunk"] .ytp-scrubber-button:hover {
+  transform: scaleY(1.5) !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active,
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active,
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:active {
-  transform: scale(0.95);
-  box-shadow: var(--shadow-active) !important;
-}
-.ytp-fullscreen-grid-expand-button {
-  background: none !important;
-  border: var(--cyber-border) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-.ytp-fullscreen-grid-expand-button:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytp-scrubber-button {
-  background: var(--cyber-primary) !important;
+
+/* Control Buttons */
+html[data-ypp-ui-style="cyberpunk"] .ytp-button {
   border-radius: 0 !important;
-  transform: rotate(45deg);
-  box-shadow: 0 0 8px var(--cyber-primary);
+  transition: all var(--cyber-snap) !important;
 }
-.ytp-scrubber-button {
-  background: var(--cyber-secondary) !important;
-  border: 2px solid var(--cyber-primary) !important;
+html[data-ypp-ui-style="cyberpunk"] .ytp-button:hover {
+  filter: drop-shadow(0 0 5px var(--cyber-primary)) !important;
 }
-/* src/content/themes/ui-styles/cyberpunk/components/menus.css */
-.ytp-panel,
-.ytp-popup.ytp-settings-menu {
-  background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
+
+/* Play Button Bracket */
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-button::before,
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-button::after {
+  content: "";
+  position: absolute;
+  width: 8px; height: 100%;
+  border: 2px solid var(--cyber-primary);
+  opacity: 0;
+  transition: all var(--cyber-snap);
 }
-.ytp-menuitem:not([aria-disabled=true]) {
-  margin-left: 100px !important;
-  border-radius: 0 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-button::before {
+  left: 0; border-right: none;
+  transform: translateX(-10px);
 }
-.ytp-menuitem:not([aria-disabled=true]):hover {
-  border-radius: 0 !important;
-  box-shadow: var(--shadow-hover) !important;
-  background-color: rgba(0, 0, 0, 0) !important;
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-button::after {
+  right: 0; border-left: none;
+  transform: translateX(10px);
 }
-.ytp-delhi-modern .ytp-popup {
-  background: none !important;
-  border-radius: 0 !important;
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-button:hover::before {
+  opacity: 1; transform: translateX(0);
 }
-.ytp-popup.ytp-delhi-modern-contextmenu {
-  background: none !important;
-  padding: 0 5px !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-tp-yt-paper-dialog,
-ytd-menu-popup-renderer,
-tp-yt-iron-dropdown,
-.ytp-popup.ytp-settings-menu {
-  background: var(--cyber-bg) !important;
-  border: 2px solid var(--cyber-secondary) !important;
-  box-shadow: 0 0 20px var(--cyber-secondary) !important;
-  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-}
-.ytp-panel-menu {
-  background: transparent !important;
-}
-.ytp-panel {
-  background: var(--sf) !important;
-  border: var(--cyber-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-  border-radius: 0 !important;
-  padding: 0 5px !important;
-}
-/* src/content/themes/ui-styles/cyberpunk/pages/watch.css */
-video.video-stream.html5-main-video,
-.html5-video-player {
-  border-radius: 0 !important;
+html[data-ypp-ui-style="cyberpunk"] .ytp-play-button:hover::after {
+  opacity: 1; transform: translateX(0);
 }

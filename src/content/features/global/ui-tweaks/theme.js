@@ -521,13 +521,17 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         const bgStyleId = 'ypp-custom-bg-image-style';
         let bgStyleEl = document.getElementById(bgStyleId);
         
+        
         if (this._settings.customBackgroundImage) {
             const intensity = this._settings.customBackgroundImageIntensity ?? 0.6;
+            
+            // Mark html element so core-styles.css and UI style bundles can suppress their bg colors
+            root.setAttribute('data-ypp-has-bg-image', 'true');
             
             if (!bgContainer) {
                 bgContainer = document.createElement('div');
                 bgContainer.id = bgContainerId;
-                // Insert as first child of body
+                // Insert as first child of body so it stays behind all UI elements
                 if (document.body) {
                     document.body.insertBefore(bgContainer, document.body.firstChild);
                 } else {
@@ -548,20 +552,63 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 z-index: -9999;
                 opacity: ${intensity};
                 pointer-events: none;
+                transition: opacity 0.3s ease;
             `;
             
             let bgStyles = `
-                /* Strip theme backgrounds from html and body with high specificity */
-                html, html.yt-spiral-tube-theme, html.yt-spiral-tube-theme:root, 
-                body, html[data-ypp-theme] body, html[data-ypp-ui-style] body,
-                html[data-ypp-theme] body.dir, html[data-ypp-theme] body[dir] {
+                /* ============================================================
+                   Custom Background Image Active — suppress ALL theme bg colors
+                   and pseudo-element gradients/patterns from ui-style bundles
+                   ============================================================ */
+
+                /* Strip background from html, body, and all major layout containers */
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image],
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style],
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image]:root,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image]:root[dark],
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image]:root[dark="true"],
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image].yt-spiral-tube-theme,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image].yt-spiral-tube-theme:root {
+                    background: transparent !important;
+                    background-color: transparent !important;
+                    background-image: none !important;
+                }
+
+                /* Suppress ::before/::after pseudo-element overlays from UI style themes
+                   (these are used by frutiger-aero, cyberpunk, nature, aurora etc. for their
+                   gradient/particle background effects — the image must win) */
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image]::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image]::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style]::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style]::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] body::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] body::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] body::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] body::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-app::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-app::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-app::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-app::after {
+                    background: transparent !important;
+                    background-color: transparent !important;
+                    background-image: none !important;
+                    opacity: 0 !important;
+                    display: none !important;
+                }
+
+                /* Strip body */
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] body,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] body,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] body[dir],
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] body.dir {
                     background: transparent !important;
                     background-color: transparent !important;
                     background-image: none !important;
                 }
                 
                 /* Ensure YouTube content sits on top of our custom bg container */
-                ytd-app {
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-app,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-app {
                     position: relative;
                     z-index: 1;
                     background: transparent !important;
@@ -569,44 +616,63 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                     background-image: none !important;
                 }
                 
-                /* Hide native youtube background block safely */
-                #background,
-                #background.ytd-app,
-                ytd-page-manager,
-                ytd-watch-flexy,
-                #ypp-cinematic-app {
+                /* Hide native YouTube background block and make core layout transparent */
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] #background,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] #background,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] #background.ytd-app,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-page-manager,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-page-manager,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-browse,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-search,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-watch-flexy,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-two-column-browse-results-renderer,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-rich-grid-renderer,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] yt-page-background,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image] #ypp-cinematic-app,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] #contentContainer,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] tp-yt-app-header-layout,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] #columns {
                     background: transparent !important;
                     background-color: transparent !important;
                     background-image: none !important;
                 }
                 
-                #background {
+                html[data-ypp-has-bg-image] #background {
                     display: none !important;
                 }
                 
-                /* Keep masthead and guide readable */
-                html[data-ypp-theme] #masthead-container.ytd-app,
-                html[data-ypp-theme] ytd-mini-guide-renderer,
-                html[data-ypp-theme] ytd-guide-renderer,
-                html[data-ypp-theme] #guide-wrapper {
+                /* Keep masthead and guide readable with a dark overlay (except for frutiger-aero which has its own gradients) */
+                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) #masthead-container.ytd-app,
+                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) ytd-masthead #container.ytd-masthead,
+                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) ytd-mini-guide-renderer,
+                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) ytd-guide-renderer,
+                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) #guide-wrapper.ytd-app,
+                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) app-drawer#guide-inner-content {
+                    background: rgba(0, 0, 0, 0.5) !important;
                     background-color: rgba(0, 0, 0, 0.5) !important;
-                    backdrop-filter: blur(16px);
+                    backdrop-filter: blur(16px) !important;
+                    -webkit-backdrop-filter: blur(16px) !important;
+                }
+
+                /* Frutiger Aero bubble container — keep it visible since it's decorative HTML not CSS */
+                html[data-ypp-has-bg-image] #ypp-frutiger-bubbles {
+                    opacity: 0.3;
                 }
             `;
             
             // Force Extracted Accent Color if enabled
             if (this._settings.customBackgroundImageExtractColors && this._settings.accentColor) {
                 bgStyles += `
-                    html[data-ypp-theme] {
+                    html[data-ypp-has-bg-image] {
                         --ypp-accent: ${this._settings.accentColor} !important;
                         --yt-spec-call-to-action: ${this._settings.accentColor} !important;
                     }
-                    html[data-ypp-theme] .ypp-slider,
-                    html[data-ypp-theme] .ypp-gpb-vol-slider,
-                    html[data-ypp-theme] input[type="range"] {
+                    html[data-ypp-has-bg-image] .ypp-slider,
+                    html[data-ypp-has-bg-image] .ypp-gpb-vol-slider,
+                    html[data-ypp-has-bg-image] input[type="range"] {
                         accent-color: ${this._settings.accentColor} !important;
                     }
-                    html[data-ypp-theme] .ytp-swatch-background-color {
+                    html[data-ypp-has-bg-image] .ytp-swatch-background-color {
                         background-color: ${this._settings.accentColor} !important;
                     }
                 `;
@@ -617,9 +683,13 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 (document.head || document.documentElement).appendChild(bgStyleEl);
             }
             bgStyleEl.textContent = bgStyles;
+            this._Utils.log('Custom background image applied — bg-image override active', 'THEME');
         } else {
+            // Remove bg image mode — restore normal theme background rendering
+            root.removeAttribute('data-ypp-has-bg-image');
             if (bgStyleEl) bgStyleEl.remove();
             if (bgContainer) bgContainer.remove();
+            this._Utils.log('Custom background image cleared — bg-image override removed', 'THEME');
         }
 
 

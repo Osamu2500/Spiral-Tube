@@ -1,25 +1,91 @@
-/* src/content/themes/ui-styles/terminalism/components/cards.css */
-html[data-ypp-ui-style=terminalism] .header.ytd-playlist-panel-renderer {
-  background: none !important;
-}
-html[data-ypp-ui-style=terminalism] ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
-  background: none !important;
-}
-html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarLine,
-html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarBackground,
-html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarLoaded,
-html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarHovered,
-html[data-ypp-ui-style=terminalism] .ytProgressBarLineProgressBarPlayed,
-html[data-ypp-ui-style=terminalism] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 2px !important;
-}
-html[data-ypp-ui-style=terminalism] ytd-playlist-panel-renderer {
-  background: rgba(0, 6, 0, 0.9) !important;
-  border: 1px solid rgba(0, 255, 65, 0.15) !important;
-}
-html[data-ypp-ui-style=terminalism] ytd-rich-item-renderer,
-html[data-ypp-ui-style=terminalism] ytd-video-renderer,
-html[data-ypp-ui-style=terminalism] ytd-grid-video-renderer {
+/* =========================================================
+   TERMINALISM — CARDS (Thumbnails & Grids)
+   ========================================================= */
+
+/* Main Card Wrapper */
+html[data-ypp-card-style="terminalism"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item
+  ) *)
+) {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  padding: 12px !important;
+  margin-bottom: 16px !important;
   position: relative;
   z-index: 1;
+}
+
+/* Clear default backgrounds on grid media */
+html[data-ypp-card-style="terminalism"] ytd-rich-grid-media {
+  background: transparent !important;
+}
+
+/* Card Hover State */
+html[data-ypp-card-style="terminalism"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(:is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item
+  ) *)
+):hover {
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+  background: rgba(0, 255, 65, 0.05) !important;
+}
+
+/* Inject terminal prompt into title on hover */
+html[data-ypp-card-style="terminalism"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer
+):hover #video-title::before {
+  content: "> ";
+  color: var(--term-green);
+  animation: termBlink 1s step-end infinite;
+}
+
+/* Thumbnails */
+html[data-ypp-card-style="terminalism"] ytd-thumbnail,
+html[data-ypp-card-style="terminalism"] .ytd-thumbnail {
+  border: var(--term-border-dim) !important;
+  border-radius: 0 !important;
+  position: relative;
+}
+
+/* Time Status Badge (e.g., 10:05) */
+html[data-ypp-card-style="terminalism"] ytd-thumbnail-overlay-time-status-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  color: var(--term-text-primary) !important;
+  margin: 6px !important;
+  padding: 4px 6px !important;
+  font-weight: bold !important;
+}
+
+/* Channel Avatar next to metadata */
+html[data-ypp-card-style="terminalism"] #avatar-link img,
+html[data-ypp-card-style="terminalism"] yt-img-shadow#avatar img {
+  border: var(--term-border-dim) !important;
+  border-radius: 0 !important; /* Square avatars! */
+}
+html[data-ypp-card-style="terminalism"] ytd-rich-item-renderer:hover #avatar-link img {
+  border: var(--term-border) !important;
 }

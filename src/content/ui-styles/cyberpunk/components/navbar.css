@@ -1,82 +1,80 @@
-/* src/content/themes/ui-styles/cyberpunk/components/navbar.css */
-ytd-app,
-ytd-masthead,
-#page-manager.ytd-app,
-#content.ytd-app {
-  background: transparent !important;
+/* =========================================================
+   CYBERPUNK — NAVBAR
+   ========================================================= */
+
+/* Main Container */
+html[data-ypp-ui-style="cyberpunk"] ytd-masthead #container {
+  background: var(--cyber-bg) !important;
+  border-bottom: var(--cyber-border-thin) !important;
+  box-shadow: 0 5px 15px rgba(0, 255, 204, 0.1) !important;
 }
-#masthead-container {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-ytd-masthead #container {
+
+/* Search Bar Container */
+html[data-ypp-ui-style="cyberpunk"] ytd-searchbox {
+  background: #000 !important;
+  border: var(--cyber-border-thick) !important;
   border-radius: 0 !important;
-  background: var(--sf) !important;
-  margin: 1px !important;
-  box-shadow: var(--shadow-active) !important;
-  border: var(--cyber-border) !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
+  transition: filter var(--cyber-snap) !important;
 }
-#contents.ytd-page-manager {
-  margin-top: 0;
-  margin-left: 16px;
+
+html[data-ypp-ui-style="cyberpunk"] ytd-searchbox:focus-within {
+  filter: drop-shadow(0 0 10px var(--cyber-primary)) !important;
+  border-color: var(--cyber-primary) !important;
 }
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+
+html[data-ypp-ui-style="cyberpunk"] ytd-searchbox #search-input {
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+  font-size: 16px !important;
+}
+
+/* Search Button */
+html[data-ypp-ui-style="cyberpunk"] #search-icon-legacy {
+  background: rgba(0, 255, 204, 0.1) !important;
+  border: none !important;
+  border-left: var(--cyber-border-thin) !important;
   border-radius: 0 !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: all var(--cyber-snap) !important;
 }
-#voice-search-button.ytd-masthead:hover,
-.ypp-nav-btn:hover,
-ytd-topbar-menu-button-renderer.ytd-masthead:hover,
-#trailing-button.ytd-playlist-panel-renderer:hover,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+html[data-ypp-ui-style="cyberpunk"] #search-icon-legacy:hover {
+  background: var(--cyber-secondary) !important;
+  color: #000 !important;
 }
-ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
-  top: 75px !important;
-  left: 8px !important;
+
+/* Logo (Adding a glitch effect on hover) */
+html[data-ypp-ui-style="cyberpunk"] ytd-topbar-logo-renderer:hover {
+  animation: cyber-glitch var(--cyber-glitch-dur) infinite;
 }
-tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
-  background: transparent !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
+
+/* Icons in Navbar */
+html[data-ypp-ui-style="cyberpunk"] ytd-masthead .yt-spec-button-shape-next--icon-only-default {
   border-radius: 0 !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: background var(--cyber-snap), box-shadow var(--cyber-snap) !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.06);
+html[data-ypp-ui-style="cyberpunk"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover {
+  background: rgba(255, 0, 85, 0.2) !important;
+  box-shadow: inset 0 0 8px var(--cyber-primary) !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: var(--shadow-active) !important;
+
+/* Guide Sidebar (Left Panel) */
+html[data-ypp-ui-style="cyberpunk"] ytd-guide-renderer,
+html[data-ypp-ui-style="cyberpunk"] tp-yt-app-drawer #drawer.tp-yt-app-drawer {
+  background: var(--cyber-bg) !important;
+  border-right: var(--cyber-border-thick) !important;
+  box-shadow: 5px 0 20px rgba(0, 255, 204, 0.1) !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+
+html[data-ypp-ui-style="cyberpunk"] ytd-guide-entry-renderer {
   border-radius: 0 !important;
-  padding: 4px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  transition: padding-left var(--cyber-snap), background var(--cyber-snap) !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+html[data-ypp-ui-style="cyberpunk"] ytd-guide-entry-renderer:hover {
+  background: rgba(0, 255, 204, 0.1) !important;
+  border-left: 4px solid var(--cyber-secondary) !important;
+  padding-left: 12px !important; /* Push text over */
+}
+html[data-ypp-ui-style="cyberpunk"] ytd-guide-entry-renderer[active] {
+  background: rgba(255, 0, 85, 0.15) !important;
+  border-left: 4px solid var(--cyber-primary) !important;
 }

@@ -1,139 +1,101 @@
-ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
-  background-color: black !important;
-  margin-right: 10px;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-hover) !important;
+/* =========================================================
+   NEUMORPHIC — MENUS & DROPDOWNS
+   ========================================================= */
+
+/* Base Outer Container */
+html[data-ypp-ui-style="neumorphic"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="neumorphic"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="neumorphic"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="neumorphic"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="neumorphic"] .ytSearchboxComponentSuggestionsContainer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  border: none !important;
+  padding: 8px !important;
 }
-#trigger.tp-yt-paper-menu-button {
-  padding: 10px !important;
-  border-radius: 16px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#trigger.tp-yt-paper-menu-button:hover {
-  transform: scale(1.1) !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytLockupMetadataViewModelMenuButton {
-  overflow: visible !important;
-}
-.ytLockupMetadataViewModelMenuButton button-view-model,
-.ytLockupMetadataViewModelMenuButton button {
-  opacity: 1 !important;
-  visibility: visible !important;
-  border-radius: 16px !important;
-  transition: background var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytLockupMetadataViewModelMenuButton button:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
-  transform: none !important;
-}
-.ytLockupMetadataViewModelMenuButton yt-interaction .fill,
-.ytLockupMetadataViewModelMenuButton .ytSpecTouchFeedbackShapeFill {
+
+/* Fix for nested popups removing double shadows */
+html[data-ypp-ui-style="neumorphic"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="neumorphic"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="neumorphic"] tp-yt-iron-dropdown > #contentWrapper > ytd-menu-popup-renderer,
+html[data-ypp-ui-style="neumorphic"] tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
   background: transparent !important;
-  opacity: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
 }
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
-  margin: 10px;
+
+/* Menu Items (List Items) */
+html[data-ypp-ui-style="neumorphic"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-style="neumorphic"] ytd-compact-link-renderer,
+html[data-ypp-ui-style="neumorphic"] .ytp-menuitem,
+html[data-ypp-ui-style="neumorphic"] ytd-playlist-add-to-option-renderer,
+html[data-ypp-ui-style="neumorphic"] .ytSuggestionComponentRoundedSuggestion {
+  background-color: transparent !important;
+  border-radius: var(--neu-radius-md) !important;
+  margin: 4px 0 !important;
+  transition: all var(--neu-snap) !important;
+}
+
+/* Menu Items Hover state (Soft inset) */
+html[data-ypp-ui-style="neumorphic"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="neumorphic"] ytd-compact-link-renderer:hover,
+html[data-ypp-ui-style="neumorphic"] .ytp-menuitem:hover,
+html[data-ypp-ui-style="neumorphic"] ytd-playlist-add-to-option-renderer:hover,
+html[data-ypp-ui-style="neumorphic"] .ytSuggestionComponentRoundedSuggestion:hover {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Search Autocomplete Match */
+html[data-ypp-ui-style="neumorphic"] .ytSuggestionComponentSuggestionText b {
+  color: var(--neu-accent) !important;
+}
+
+/* Separators */
+html[data-ypp-ui-style="neumorphic"] ytd-menu-popup-renderer hr,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-popup-renderer #separator {
   border: none !important;
-  border-radius: 16px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-bottom: 2px solid transparent !important; /* spacing */
+  box-shadow: 0 2px 2px rgba(0,0,0,0.03) !important;
+  margin: 8px 0 !important;
 }
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-hover) !important;
-}
-ytd-simple-menu-header-renderer {
-  background: none !important;
-}
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 16px !important;
-  border: none !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-}
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
-  background: var(--sf) !important;
-  border-radius: 16px !important;
-  border: none !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
-  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
-  max-height: 80vh !important;
-  overflow-y: auto !important;
-  max-width: none !important;
-}
-.tp-yt-paper-tooltip[style-target=tooltip] {
-  border: none !important;
-  box-shadow: var(--shadow-active) !important;
-  color: white !important;
-}
-tp-yt-paper-listbox {
-  padding: 10px !important;
-}
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: 16px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-ytd-menu-service-item-renderer[use-list-item-styles] tp-yt-paper-item.ytd-menu-service-item-renderer,
-.ytContextualSheetLayoutHost {
-  background: none !important;
-  padding: 13px !important;
-}
-html body[rounded-container] tp-yt-paper-tooltip .tp-yt-paper-tooltip[style-target=tooltip] {
-  border-radius: 16px !important;
-  padding: 7px 10px;
-}
-tp-yt-paper-listbox.yt-dropdown-menu {
-  background: var(--sf) !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu tp-yt-paper-item.yt-dropdown-menu:hover {
-  background: none !important;
-}
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
-  box-shadow: var(--shadow-hover) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: 16px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
-  transform: scale(1.05) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-html,
-[dark] ytd-multi-page-menu-renderer {
-  background: rgba(255, 255, 255, 0.88) !important;
-  border: none !important;
-}
-.ypp-account-menu,
-#ypp-top-bar {
-  background: var(--sf) !important;
-  border: none !important;
-  box-shadow: var(--shadow-base) !important;
-}
-tp-yt-paper-toast {
-  background: var(--sf) !important;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-hover) !important;
-  border: none !important;
-}
-tp-yt-paper-listbox {
+
+/* Account / Multi-page Header */
+html[data-ypp-ui-style="neumorphic"] ytd-multi-page-menu-renderer #header-container,
+html[data-ypp-ui-style="neumorphic"] ytd-multi-page-menu-renderer #header,
+html[data-ypp-ui-style="neumorphic"] ytd-active-account-header-renderer {
   background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: 0 4px 6px -4px rgba(0,0,0,0.1) !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 8px !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-active-account-header-renderer yt-img-shadow img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Notification Items */
+html[data-ypp-ui-style="neumorphic"] ytd-notification-renderer {
+  border-radius: var(--neu-radius-md) !important;
+  margin: 6px !important;
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  transition: all var(--neu-snap) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-notification-renderer:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+html[data-ypp-ui-style="neumorphic"] ytd-notification-renderer[is-new] {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border: 1px solid var(--neu-accent) !important; /* Give new items a tiny color pop */
+}
+html[data-ypp-ui-style="neumorphic"] ytd-notification-renderer yt-img-shadow img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-inset) !important;
 }

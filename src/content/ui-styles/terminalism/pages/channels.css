@@ -1,3 +1,104 @@
-html[data-ypp-ui-style=terminalism] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+/* =========================================================
+   TERMINALISM — CHANNELS
+   ========================================================= */
+
+/* Channel Banner Base Area */
+html[data-ypp-ui-style="terminalism"] #page-header.ytd-tabbed-page-layout-renderer {
+  background: var(--term-bg) !important;
+  border-bottom: 2px solid var(--term-green) !important;
+  border-radius: 0 !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+/* Channel Avatar */
+html[data-ypp-ui-style="terminalism"] ytd-c4-tabbed-header-renderer #avatar {
+  border-radius: 0 !important; /* Square avatar */
+  border: 2px solid var(--term-green) !important;
+  background: var(--term-bg) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-c4-tabbed-header-renderer #avatar img {
+  border-radius: 0 !important;
+}
+
+/* Channel Banner Image - hide the image, show terminal text or just green border */
+html[data-ypp-ui-style="terminalism"] ytd-c4-tabbed-header-renderer #banner {
+  border-radius: 0 !important;
+  border: 2px dashed var(--term-green-dim) !important;
+  position: relative;
+}
+/* Adds a fake "WELCOME TO SYSTEM" text on top of the banner */
+html[data-ypp-ui-style="terminalism"] ytd-c4-tabbed-header-renderer #banner::after {
+  content: "SYS_MSG: WELCOME TO CHANNEL DIR";
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: var(--term-green);
+  font-weight: bold;
+  background: rgba(0,0,0,0.8);
+  padding: 4px 8px;
+  border: 1px solid var(--term-green);
+}
+
+/* Navigation Tabs */
+html[data-ypp-ui-style="terminalism"] tp-yt-paper-tab {
   background: transparent !important;
+  border-radius: 0 !important;
+  margin: 0 4px !important;
+  color: var(--term-text-primary) !important;
+  border: 1px solid transparent !important;
+  text-transform: uppercase !important;
+}
+
+/* Selected Tab */
+html[data-ypp-ui-style="terminalism"] tp-yt-paper-tab.iron-selected {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+  border: var(--term-border) !important;
+}
+html[data-ypp-ui-style="terminalism"] tp-yt-paper-tab.iron-selected::before {
+  content: "[ ";
+}
+html[data-ypp-ui-style="terminalism"] tp-yt-paper-tab.iron-selected::after {
+  content: " ]";
+}
+
+html[data-ypp-ui-style="terminalism"] tp-yt-paper-tab:not(.iron-selected):hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+}
+
+/* Hide native active tab indicator line */
+html[data-ypp-ui-style="terminalism"] paper-ripple,
+html[data-ypp-ui-style="terminalism"] .tab-content.tp-yt-paper-tab {
+  display: none !important;
+}
+
+/* Channel specific search box */
+html[data-ypp-ui-style="terminalism"] ytd-expandable-tab-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  border-radius: 0 !important;
+  margin-left: 16px !important;
+  padding: 0 12px !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-expandable-tab-renderer:focus-within {
+  box-shadow: var(--term-glow) !important;
+}
+
+/* Links in About section */
+html[data-ypp-ui-style="terminalism"] ytd-channel-about-metadata-renderer #links-section a {
+  background: var(--term-bg) !important;
+  border: 1px dashed var(--term-green) !important;
+  border-radius: 0 !important;
+  padding: 6px 12px !important;
+  margin-right: 8px !important;
+  margin-bottom: 8px !important;
+  display: inline-block !important;
+  color: var(--term-text-primary) !important;
+}
+html[data-ypp-ui-style="terminalism"] ytd-channel-about-metadata-renderer #links-section a:hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
 }

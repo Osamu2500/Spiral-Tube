@@ -1,37 +1,81 @@
-/* src/content/themes/ui-styles/frutiger-aero/components/panels.css */
-html[data-ypp-ui-style=frutiger-aero] .anchored-panel.ytd-shorts {
-  -webkit-backdrop-filter: blur(var(--fa-blur-md));
-  backdrop-filter: blur(var(--fa-blur-md));
-  background: rgba(255, 255, 255, 0.4) !important;
-  padding: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: var(--fa-radius-lg) !important;
-  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,0.8) !important;
-  margin-top: 15px !important;
+/* =========================================================
+   FRUTIGER AERO — PANELS & SIDEBARS
+   components/panels.css
+   
+   Green gradients and glass effects.
+   ========================================================= */
+
+/* ── Left Navigation Guide ──────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #guide-wrapper.ytd-app,
+html[data-ypp-ui-style="frutiger-aero"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="frutiger-aero"] app-drawer#guide-inner-content {
+  background: var(--faero-glass-heavy) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border-right: var(--faero-border-white) !important;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.06), inset -1px 0 0 rgba(255,255,255,0.8) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
-  border-bottom: none;
+/* ── Guide Links / Endpoints ────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
+html[data-ypp-ui-style="frutiger-aero"] ytd-mini-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: var(--faero-radius-md) !important;
+  margin: 2px 8px !important;
+  transition: var(--faero-transition) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
-  background: none !important;
+/* Guide Link Hover — subtle glass with lime tint */
+html[data-ypp-ui-style="frutiger-aero"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="frutiger-aero"] ytd-mini-guide-entry-renderer:hover {
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid rgba(159, 225, 30, 0.3) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.9),
+    0 2px 6px rgba(0,0,0,0.06),
+    0 0 8px rgba(159,225,30,0.15) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
-  -webkit-backdrop-filter: blur(var(--fa-blur-sm));
-  backdrop-filter: blur(var(--fa-blur-sm));
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  background: rgba(255, 255, 255, 0.3) !important;
-  border-radius: var(--fa-radius-lg) !important;
-  box-shadow: var(--fa-elevation-1), inset 0 2px 4px rgba(255,255,255,0.5) !important;
+/* Active Guide Link — uses green gradient */
+html[data-ypp-ui-style="frutiger-aero"] ytd-guide-entry-renderer[active] #endpoint,
+html[data-ypp-ui-style="frutiger-aero"] ytd-mini-guide-entry-renderer[active] {
+  background: var(--faero-gradient-sidebar) !important;
+  color: var(--faero-text-primary) !important;
+  border: 1px solid rgba(159,225,30,0.45) !important;
+  box-shadow:
+    inset 0 0 4px rgba(255,255,255,0.7),
+    0 0 10px rgba(159,225,30,0.3) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  -webkit-backdrop-filter: blur(var(--fa-blur-md));
-  backdrop-filter: blur(var(--fa-blur-md));
-  border-radius: var(--fa-radius-lg) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: var(--fa-elevation-2), inset 0 2px 4px rgba(255,255,255,0.8) !important;
-  background: rgba(255, 255, 255, 0.4) !important;
+/* Active guide icon gets lime tint */
+html[data-ypp-ui-style="frutiger-aero"] ytd-guide-entry-renderer[active] #endpoint yt-icon {
+  color: #2a5a00 !important;
+  filter: drop-shadow(0 0 3px rgba(159,225,30,0.5)) !important;
+}
+
+/* ── Scrollbar inside guide ─────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #guide-wrapper::-webkit-scrollbar {
+  width: 6px !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] #guide-wrapper::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] #guide-wrapper::-webkit-scrollbar-thumb {
+  background: var(--faero-gradient-sidebar) !important;
+  border-radius: var(--faero-radius-pill) !important;
+  box-shadow: 0 0 4px rgba(159,225,30,0.3) !important;
+}
+
+/* ── Extension Side Panels (Playlist/Stats organizers) ──── */
+html[data-ypp-ui-style="frutiger-aero"] .ypp-organizer-modal,
+html[data-ypp-ui-style="frutiger-aero"] #ypp-eq-panel,
+html[data-ypp-ui-style="frutiger-aero"] .ypp-account-menu {
+  background: var(--faero-glass-heavy) !important;
+  backdrop-filter: var(--faero-blur-heavy) !important;
+  border: var(--faero-border-white) !important;
+  border-top: var(--faero-border-white2) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.18),
+    0 0 0 1px rgba(159,225,30,0.15),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
 }

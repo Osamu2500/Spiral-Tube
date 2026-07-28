@@ -1,23 +1,63 @@
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+/* =========================================================
+   CYBERPUNK — ICONS & BADGES
+   ========================================================= */
+
+/* Icon base — add neon tint to all SVG icons */
+html[data-ypp-ui-style="cyberpunk"] yt-icon {
+  transition: filter var(--cyber-snap) !important;
+}
+html[data-ypp-ui-style="cyberpunk"] yt-icon-button:hover yt-icon,
+html[data-ypp-ui-style="cyberpunk"] button:hover > yt-icon {
+  filter: drop-shadow(0 0 4px var(--cyber-secondary)) !important;
+}
+
+/* Notification Badge */
+html[data-ypp-ui-style="cyberpunk"] ytd-notification-count-renderer #count {
+  background: var(--cyber-primary) !important;
   border-radius: 0 !important;
-  background: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+  border: 1px solid #000 !important;
+  box-shadow: 0 0 6px var(--cyber-primary) !important;
+  font-family: monospace !important;
+  font-weight: 900 !important;
 }
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1) !important;
+
+/* Duration Badge on Thumbnails */
+html[data-ypp-ui-style="cyberpunk"] ytd-thumbnail-overlay-time-status-renderer span {
+  font-family: monospace !important;
+  letter-spacing: 0.05em !important;
 }
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
+
+/* "LIVE" badge */
+html[data-ypp-ui-style="cyberpunk"] ytd-badge-supported-renderer .badge-style-type-live-now-badge {
+  background: var(--cyber-primary) !important;
+  border-radius: 0 !important;
+  clip-path: var(--cyber-clip-slash) !important;
+  box-shadow: var(--cyber-glow-primary) !important;
+  font-family: monospace !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.1em !important;
+  animation: cyber-pulse 1.5s ease-in-out infinite !important;
+}
+
+/* "NEW" or Info Badges */
+html[data-ypp-ui-style="cyberpunk"] ytd-badge-supported-renderer .badge-style-type-simple .badge {
+  background: rgba(0, 255, 204, 0.15) !important;
+  border: 1px solid var(--cyber-secondary) !important;
+  border-radius: 0 !important;
+  color: var(--cyber-secondary) !important;
+  font-family: monospace !important;
+}
+
+/* "Up Next" and "Autoplay" badges in sidebar */
+html[data-ypp-ui-style="cyberpunk"] .badge.ytd-compact-video-renderer {
+  background: rgba(255, 0, 85, 0.2) !important;
+  border: 1px solid var(--cyber-primary) !important;
+  border-radius: 0 !important;
+  color: var(--cyber-primary) !important;
+}
+
+/* Playlist index number */
+html[data-ypp-ui-style="cyberpunk"] ytd-thumbnail-overlay-now-playing-renderer {
+  background: rgba(0, 255, 204, 0.15) !important;
+  border-top: 2px solid var(--cyber-secondary) !important;
 }

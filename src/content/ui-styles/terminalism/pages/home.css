@@ -1,31 +1,74 @@
-html[data-ypp-ui-style=terminalism] #frosted-glass.with-chipbar.ytd-app {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  background: none !important;
+/* =========================================================
+   TERMINALISM — HOME PAGE
+   ========================================================= */
+
+/* Filter Chips (e.g. "All", "Music") */
+html[data-ypp-ui-style="terminalism"] yt-chip-cloud-chip-renderer {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  border-radius: 0 !important;
+  color: var(--term-text-primary) !important;
+  margin: 4px !important;
+  padding: 0 16px !important;
+  text-transform: uppercase !important;
 }
-html[data-ypp-ui-style=terminalism] #guide-content.ytd-app {
-  background: transparent;
+
+/* Hover on Filter Chip */
+html[data-ypp-ui-style="terminalism"] yt-chip-cloud-chip-renderer:hover {
+  border: var(--term-border) !important;
+  background: var(--term-green-fade) !important;
+  box-shadow: var(--term-glow) !important;
 }
-html[data-ypp-ui-style=terminalism] ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+
+/* Selected Filter Chip */
+html[data-ypp-ui-style="terminalism"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-style="terminalism"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"][selected] {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
 }
-/* src/content/themes/ui-styles/terminalism/pages/home.css */
-html[data-ypp-ui-style=terminalism] ytd-guide-renderer #sections {
-  margin-left: 8px !important;
+html[data-ypp-ui-style="terminalism"] yt-chip-cloud-chip-renderer[selected]::before {
+  content: "[*] ";
+  font-weight: bold;
 }
-html[data-ypp-ui-style=terminalism] .yt-chip-shape {
-  background-color: transparent !important;
-  color: #00aa2b !important;
+
+/* Top filter bar container */
+html[data-ypp-ui-style="terminalism"] ytd-feed-filter-chip-bar-renderer {
+  border-top: 1px dashed var(--term-green-dim) !important;
+  border-bottom: 1px dashed var(--term-green-dim) !important;
+  background: var(--term-bg) !important;
+  padding: 12px 0 !important;
 }
-html[data-ypp-ui-style=terminalism] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
-  padding: 10px 3px !important;
+
+/* Left / Right scroll arrows */
+html[data-ypp-ui-style="terminalism"] #left-arrow button,
+html[data-ypp-ui-style="terminalism"] #right-arrow button {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  border-radius: 0 !important;
 }
-html[data-ypp-ui-style=terminalism] iron-selector.yt-chip-cloud-renderer {
-  padding-left: 5px !important;
+html[data-ypp-ui-style="terminalism"] #left-arrow button:hover,
+html[data-ypp-ui-style="terminalism"] #right-arrow button:hover {
+  background: var(--term-green) !important;
 }
-html[data-ypp-ui-style=terminalism] .ytContextualSheetLayoutContentContainer,
-html[data-ypp-ui-style=terminalism] .ytChipBarViewModelHost,
-html[data-ypp-ui-style=terminalism] .immersive-header-content.ytd-playlist-header-renderer {
-  overflow: visible !important;
+html[data-ypp-ui-style="terminalism"] #left-arrow button:hover yt-icon,
+html[data-ypp-ui-style="terminalism"] #right-arrow button:hover yt-icon {
+  color: var(--term-bg) !important;
+}
+
+/* Home Page Sections / Shelves */
+html[data-ypp-ui-style="terminalism"] ytd-rich-shelf-renderer {
+  background: transparent !important;
+  border: 1px dashed var(--term-green-dim) !important;
+  padding: 24px !important;
+  margin: 16px 0 !important;
+}
+html[data-ypp-ui-style="terminalism"] #title.ytd-rich-shelf-renderer {
+  color: var(--term-text-primary) !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="terminalism"] #title.ytd-rich-shelf-renderer::before {
+  content: "DIR: ";
+  color: var(--term-green-dim);
 }

@@ -1,0 +1,75 @@
+/* =========================================================
+   CRYSTAL GLASS — GLOBAL LAYOUT
+   ========================================================= */
+
+/* Typography overrides if necessary (we stick to default roboto but ensure visibility) */
+
+/* Ambient Mode Fixes - Disable Ambient Mode entirely, it clashes with glass */
+html[data-ypp-ui-style="crystal-glass"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  display: none !important;
+}
+
+/* Base structural fixes */
+html[data-ypp-ui-style="crystal-glass"] #contentContainer.ytd-app {
+  background: transparent !important;
+}
+
+/* Ensure menus and dropdowns don't clip shadows */
+html[data-ypp-ui-style="crystal-glass"] ytd-popup-container,
+html[data-ypp-ui-style="crystal-glass"] .ytSearchboxComponentSuggestionsContainer {
+  overflow: visible !important;
+}
+
+/* Player Controls Group (Right side) - make them glass pills */
+html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  padding: 0 10px !important;
+  margin-bottom: 5px !important;
+  margin-right: 5px !important;
+}
+
+/* Volume Area */
+html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  margin: 0 8px !important;
+  padding: 0 10px !important;
+}
+
+/* Progress bar drag container */
+html[data-ypp-ui-style="crystal-glass"] .ytPlayerProgressBarDragContainer {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+  height: 8px !important;
+}
+
+/* Progress Bar Filled State */
+html[data-ypp-ui-style="crystal-glass"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style="crystal-glass"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-style="crystal-glass"] .ytp-play-progress {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: var(--cglass-radius-pill) !important;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5) !important;
+}
+html[data-ypp-ui-style="crystal-glass"] .ytProgressBarLineProgressBarLoaded {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Extension Navigation Button Active State */
+html[data-ypp-ui-style="crystal-glass"] .ypp-nav-btn.active {
+  background: var(--cglass-base-heavy) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
+  border: var(--cglass-border-heavy) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+  border-radius: var(--cglass-radius-md) !important;
+}

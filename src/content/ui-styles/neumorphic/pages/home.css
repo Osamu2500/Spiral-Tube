@@ -1,198 +1,70 @@
-#frosted-glass.with-chipbar.ytd-app {
-  background: none !important;
-}
-#guide-content.ytd-app {
-  background: transparent;
-}
-#guide-wrapper.ytd-app {
-  background: var(--sf) !important;
-  border-radius: calc(20px * 1.15) / 20px !important;
+/* =========================================================
+   NEUMORPHIC — HOME PAGE
+   ========================================================= */
+
+/* Filter Chips (e.g. "All", "Music", "Gaming" at the top of Home) */
+html[data-ypp-ui-style="neumorphic"] yt-chip-cloud-chip-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
   border: none !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce), background var(--bounce) !important;
+  transition: all var(--neu-snap) !important;
+  margin: 4px !important;
+  padding: 0 16px !important;
 }
-ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+
+/* Hover on Filter Chip */
+html[data-ypp-ui-style="neumorphic"] yt-chip-cloud-chip-renderer:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+  color: var(--neu-accent) !important;
 }
-yt-icon-button#guide-button {
-  border-radius: 16px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+
+/* Selected Filter Chip (inset shadow) */
+html[data-ypp-ui-style="neumorphic"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-style="neumorphic"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"][selected] {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  color: var(--neu-text-primary) !important;
 }
-yt-icon-button#guide-button:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
+
+/* Top filter bar container (remove border) */
+html[data-ypp-ui-style="neumorphic"] ytd-feed-filter-chip-bar-renderer {
+  border-top: none !important;
+  border-bottom: none !important;
+  background: var(--neu-bg) !important;
+  padding: 12px 0 !important;
 }
-yt-icon-button#guide-button:active {
-  transform: scale(0.95) !important;
-  box-shadow: var(--shadow-active) !important;
-}
-.yt-chip-shape,
-.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next--tonal,
-ytd-button-renderer {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-out) !important;
-  border-radius: 30px !important;
-  transition: all 0.2s ease;
-  color: inherit;
-}
-.yt-chip-shape:hover,
-.yt-spec-button-shape-next--filled:hover,
-.yt-spec-button-shape-next--tonal:hover,
-ytd-button-renderer:hover {
-  box-shadow: var(--shadow-out-hover) !important;
-}
-.yt-chip-shape[selected],
-.yt-chip-shape:active,
-.yt-spec-button-shape-next--filled:active {
-  box-shadow: var(--shadow-in) !important;
-  background: var(--sf) !important;
-}
-/* src/content/themes/ui-styles/neumorphic/pages/home.css */
-#description.ytd-watch-metadata,
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  margin: 16px 16px 0 0 !important;
-  border-radius: 16px !important;
-  background: var(--sf) !important;
+
+/* Left / Right scroll arrows for filter chips */
+html[data-ypp-ui-style="neumorphic"] #left-arrow button,
+html[data-ypp-ui-style="neumorphic"] #right-arrow button {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: 50% !important;
   border: none !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
+  transition: all var(--neu-snap) !important;
 }
-ytd-guide-renderer #sections {
-  margin-left: 8px !important;
+html[data-ypp-ui-style="neumorphic"] #left-arrow button:active,
+html[data-ypp-ui-style="neumorphic"] #right-arrow button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
 }
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-ytd-browse[page-subtype=home] #chips {
-  margin: 16px 0 0 0 !important;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-active) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  background: var(--sf) !important;
-  border: none !important;
-  transition: box-shadow var(--bounce) !important;
+
+/* Home Page Sections (e.g. "Latest YouTube posts") */
+html[data-ypp-ui-style="neumorphic"] ytd-rich-shelf-renderer {
+  background: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+  padding: 24px !important;
+  margin: 16px 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
 }
-.yt-chip-shape {
-  background-color: transparent !important;
+html[data-ypp-ui-style="neumorphic"] #title.ytd-rich-shelf-renderer {
+  color: var(--neu-text-primary) !important;
+  font-weight: bold !important;
 }
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
-  box-shadow: none !important;
-  border-radius: 16px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce),
-    border-radius var(--bounce) !important;
-}
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
-  background: var(--sf) !important;
-  border-radius: 16px !important;
-  padding: 0px !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.05);
-}
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
-  transform: scale(0.98);
-  box-shadow: var(--shadow-active) !important;
-}
-#sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
-  padding: 10px 3px !important;
-}
-ytd-guide-entry-renderer {
-  border-radius: 16px !important;
-}
-ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 16px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytChipShapeChip {
-  border-radius: 16px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-iron-selector.yt-chip-cloud-renderer {
-  padding-left: 5px !important;
-}
-.ytContextualSheetLayoutContentContainer,
-.ytChipBarViewModelHost,
-.immersive-header-content.ytd-playlist-header-renderer {
-  overflow: visible !important;
-}
-ytd-settings-sidebar-renderer {
-  background: var(--sf) !important;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-base) !important;
-  padding: 15px !important;
-  border: none !important;
-}
-#guide-wrapper {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-out) !important;
-  margin-top: 10px;
-  border-radius: 0 20px 20px 0 !important;
-}
-ytd-guide-entry-renderer {
-  border-radius: 12px !important;
-  margin: 4px 10px;
-}
-ytd-guide-entry-renderer:hover {
-  box-shadow: var(--shadow-out) !important;
-}
-ytd-guide-entry-renderer[active] {
-  box-shadow: var(--shadow-in) !important;
-}
-ytd-feed-filter-chip-bar-renderer {
-  background: transparent !important;
-  border: none !important;
-}
-yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius, 8px) !important;
-  border: var(--chip-border, 1px solid transparent) !important;
-  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
-  box-shadow: var(--chip-shadow, none) !important;
-  transition: all 0.2s ease !important;
-}
-yt-chip-cloud-chip-renderer:hover {
-  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
-}
-yt-chip-cloud-chip-renderer[selected] {
-  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
-  color: var(--chip-color-selected, black) !important;
-  border: var(--chip-border-selected, 1px solid transparent) !important;
-}
-yt-chip-cloud-chip-renderer {
-  --chip-radius: 12px;
-  --chip-border: none;
-  --chip-bg: var(--yt-spec-base-background);
-  --chip-shadow: 5px 5px 10px rgba(0,0,0,0.1), -5px -5px 10px rgba(255,255,255,0.05);
-}
-yt-chip-cloud-chip-renderer[selected] {
-  --chip-bg-selected: var(--yt-spec-base-background);
-  --chip-color-selected: inherit;
-  --chip-shadow: inset 3px 3px 6px rgba(0,0,0,0.2), inset -3px -3px 6px rgba(255,255,255,0.05);
-}
-#ypp-pl-root .ypp-pl-sidebar {
-  background: var(--sf) !important;
-  border: none !important;
-  border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
-  box-shadow: var(--shadow-base) !important;
+
+/* "Show more" button for shelves */
+html[data-ypp-ui-style="neumorphic"] ytd-button-renderer#show-more-button {
+  margin-top: 16px !important;
 }

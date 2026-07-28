@@ -1,178 +1,66 @@
-html[data-ypp-ui-style=aurora] ytd-masthead #container {
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  background: rgba(10, 10, 10, 0.6) !important;
-  border-bottom: var(--aurora-border) !important;
-  box-shadow: var(--shadow-base) !important;
-}
-html[data-ypp-ui-style=aurora] .ytSearchboxComponentInputBox {
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  background: rgba(10, 10, 10, 0.6) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: var(--shadow-base) !important;
-}
-html[data-ypp-ui-style=aurora] .ytSearchboxComponentSearchButton {
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  margin-left: 10px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: all var(--bounce) !important;
-}
-/* src/content/themes/ui-styles/aurora/components/buttons.css */
-html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-html[data-ypp-ui-style=aurora] ytd-notification-topbar-button-renderer.ytd-masthead,
-html[data-ypp-ui-style=aurora] yt-icon-button.ytd-masthead {
-  border-radius: 50% !important;
-  background: transparent !important;
-  transition: all var(--bounce) !important;
-}
-html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
-html[data-ypp-ui-style=aurora] yt-icon-button.ytd-masthead:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3) !important;
-  transform: scale(1.1);
-}
-html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
-  background:
-    linear-gradient(
-      135deg,
-      var(--aurora-1),
-      var(--aurora-2)) !important;
-  border: none !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4) !important;
-  color: #fff !important;
-  transition: all var(--bounce) !important;
-}
-html[data-ypp-ui-style=aurora] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6) !important;
-}
-html[data-ypp-ui-style=aurora] .ypp-gpb-btn,
-html[data-ypp-ui-style=aurora] .ypp-action-btn,
-html[data-ypp-ui-style=aurora] .ypp-pill-toggle {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: all var(--bounce) !important;
-}
-/* src/content/themes/ui-styles/aurora/components/cards.css */
-html[data-ypp-ui-style=aurora] ytd-rich-grid-media,
-html[data-ypp-ui-style=aurora] ytd-compact-video-renderer,
-html[data-ypp-ui-style=aurora] ytd-playlist-panel-video-renderer {
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
-  background: rgba(10, 10, 10, 0.5) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius) !important;
-  box-shadow: var(--shadow-base) !important;
-  padding: 10px !important;
-  margin: 10px 0 !important;
-  transition: all var(--bounce) !important;
-}
-/* src/content/themes/ui-styles/aurora/components/menus.css */
-html[data-ypp-ui-style=aurora] .ytSearchboxComponentSuggestionsContainer,
-html[data-ypp-ui-style=aurora] ytd-multi-page-menu-renderer,
-html[data-ypp-ui-style=aurora] .ytp-popup,
-html[data-ypp-ui-style=aurora] tp-yt-paper-dialog,
-html[data-ypp-ui-style=aurora] ytd-menu-popup-renderer {
-  -webkit-backdrop-filter: blur(30px) !important;
-  backdrop-filter: blur(30px) !important;
-  background: rgba(10, 10, 10, 0.7) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-/* src/content/themes/ui-styles/aurora/pages/home.css */
-html[data-ypp-ui-style=aurora] #description.ytd-watch-metadata,
-html[data-ypp-ui-style=aurora] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-html[data-ypp-ui-style=aurora] ytd-browse[page-subtype=home] #chips {
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  background: rgba(10, 10, 10, 0.5) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: var(--shadow-base) !important;
-  margin: 16px 16px 0 0 !important;
-  padding: 8px 16px !important;
-}
-html[data-ypp-ui-style=aurora] .yt-chip-shape {
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  transition: all var(--bounce) !important;
-  color: #fff !important;
-}
-html[data-ypp-ui-style=aurora] .yt-chip-shape[aria-selected=true] {
-  background:
-    linear-gradient(
-      135deg,
-      var(--aurora-1),
-      var(--aurora-2)) !important;
-  border-color: transparent !important;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.5) !important;
-}
-html[data-ypp-ui-style=aurora] #guide-wrapper.ytd-app {
-  -webkit-backdrop-filter: blur(var(--blur)) !important;
-  backdrop-filter: blur(var(--blur)) !important;
-  background: rgba(10, 10, 10, 0.5) !important;
-  border-right: var(--aurora-border) !important;
-  box-shadow: var(--shadow-base) !important;
-}
-html[data-ypp-ui-style=aurora] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
-  border-radius: var(--aurora-radius) !important;
-  margin: 4px 8px !important;
-  transition: all var(--bounce) !important;
-}
-html[data-ypp-ui-style=aurora] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-/* src/content/themes/ui-styles/aurora/pages/watch.css */
-html[data-ypp-ui-style=aurora] video.video-stream.html5-main-video,
-html[data-ypp-ui-style=aurora] .html5-video-player {
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius) !important;
-  box-shadow: var(--shadow-hover) !important;
-  background: transparent !important;
-}
-html[data-ypp-ui-style=aurora] #ypp-global-player-bar,
-html[data-ypp-ui-style=aurora] .ypp-organizer-modal,
-html[data-ypp-ui-style=aurora] #ypp-eq-panel,
-html[data-ypp-ui-style=aurora] .ypp-video-controls,
-html[data-ypp-ui-style=aurora] .ypp-account-menu {
-  -webkit-backdrop-filter: blur(40px) !important;
-  backdrop-filter: blur(40px) !important;
-  background: rgba(10, 10, 10, 0.6) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-/* src/content/themes/ui-styles/aurora/pages/comments.css */
-html[data-ypp-ui-style=aurora] ytd-comment-thread-renderer,
-html[data-ypp-ui-style=aurora] ytd-comment-view-model {
-  -webkit-backdrop-filter: blur(15px) !important;
-  backdrop-filter: blur(15px) !important;
-  background: rgba(10, 10, 10, 0.5) !important;
-  border: var(--aurora-border) !important;
-  border-radius: var(--aurora-radius) !important;
-  box-shadow: var(--shadow-base) !important;
-  padding: 10px !important;
-  margin: 10px 0 !important;
-  transition: all var(--bounce) !important;
-}
-html {
-  /* YouTube Global Transparent Overrides */
+/* =========================================================
+   AURORA — TOKENS & VARIABLES
+   ========================================================= */
+
+html[data-ypp-ui-style="aurora"] {
+  /* Animation Timing */
+  --aurora-snap: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --aurora-bounce: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Radii */
+  --aurora-radius-sm: 8px;
+  --aurora-radius-md: 16px;
+  --aurora-radius-lg: 24px;
+  --aurora-radius-pill: 9999px;
+
+  /* YouTube Native Variable Overrides (Force Transparent) */
   --yt-spec-badge-chip-background: transparent !important;
   --yt-spec-raised-background: transparent !important;
   --yt-spec-additive-background: transparent !important;
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-brand-background-solid: transparent !important;
+  --yt-spec-menu-background: transparent !important;
+  --yt-spec-10-percent-layer: transparent !important;
+  
+  /* --- Aurora Specific Variables --- */
+  
+  /* Core Gradients (Cyan to Magenta) */
+  --aurora-color-1: #00f2fe; /* Cyan */
+  --aurora-color-2: #4facfe; /* Deep Cyan */
+  --aurora-color-3: #f093fb; /* Magenta */
+  --aurora-color-4: #f5576c; /* Deep Pink */
+  
+  --aurora-gradient-primary: linear-gradient(135deg, var(--aurora-color-1), var(--aurora-color-3));
+  --aurora-gradient-secondary: linear-gradient(135deg, var(--aurora-color-2), var(--aurora-color-4));
+  
+  /* Glass Surfaces */
+  --aurora-bg-void: #050505; /* Deep dark page background */
+  --aurora-glass-light: rgba(255, 255, 255, 0.05);
+  --aurora-glass-heavy: rgba(10, 10, 10, 0.7);
+  --aurora-glass-solid: rgba(10, 10, 10, 0.9);
+  
+  /* Blur amounts */
+  --aurora-blur-md: blur(15px);
+  --aurora-blur-lg: blur(30px);
+  
+  /* Borders */
+  --aurora-border-glass: 1px solid rgba(255, 255, 255, 0.1);
+  --aurora-border-glow: 1px solid rgba(0, 242, 254, 0.5);
+  
+  /* Shadows & Glows */
+  --aurora-glow-cyan: 0 4px 15px rgba(0, 242, 254, 0.3);
+  --aurora-glow-magenta: 0 4px 15px rgba(240, 147, 251, 0.3);
+  --aurora-glow-mixed: 0 8px 25px rgba(240, 147, 251, 0.15), 0 8px 25px rgba(0, 242, 254, 0.15);
+  --aurora-shadow-glass: 0 10px 30px rgba(0, 0, 0, 0.5);
+  
+  /* Text */
+  --aurora-text-primary: #ffffff;
+  --aurora-text-secondary: rgba(255, 255, 255, 0.6);
+}
+
+/* Define the gradient animation for primary buttons */
+@keyframes aurora-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

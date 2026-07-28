@@ -1,10 +1,79 @@
-/* src/content/themes/ui-styles/aurora/components/navbar.css */
-html[data-ypp-ui-style=aurora] ytd-app,
-html[data-ypp-ui-style=aurora] ytd-masthead,
-html[data-ypp-ui-style=aurora] #page-manager.ytd-app,
-html[data-ypp-ui-style=aurora] #content.ytd-app {
+/* =========================================================
+   AURORA — NAVBAR / MASTHEAD
+   ========================================================= */
+
+/* Top Masthead */
+html[data-ypp-ui-style="aurora"] ytd-masthead {
   background: transparent !important;
 }
-html[data-ypp-ui-style=aurora] #masthead-container {
+html[data-ypp-ui-style="aurora"] ytd-masthead #container.ytd-masthead {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  border-bottom: var(--aurora-border-glass) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Search Box Container */
+html[data-ypp-ui-style="aurora"] ytd-searchbox {
+  background: var(--aurora-glass-light) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5) !important;
+  padding: 0 8px !important;
+  transition: all var(--aurora-snap) !important;
+}
+
+/* Focus State for Search Box */
+html[data-ypp-ui-style="aurora"] ytd-searchbox[has-focus] {
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  background: rgba(10, 10, 10, 0.8) !important;
+}
+
+/* The actual text input */
+html[data-ypp-ui-style="aurora"] ytd-searchbox #container.ytd-searchbox {
   background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-searchbox input {
+  color: var(--aurora-text-primary) !important;
+  font-weight: 500 !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-searchbox input::placeholder {
+  color: var(--aurora-text-secondary) !important;
+}
+
+/* Search Button */
+html[data-ypp-ui-style="aurora"] ytd-searchbox #search-icon-legacy {
+  background: var(--aurora-glass-light) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  margin: 4px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-searchbox #search-icon-legacy:hover {
+  background: var(--aurora-gradient-primary) !important;
+  border-color: transparent !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  transform: scale(1.05) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-searchbox #search-icon-legacy:hover yt-icon {
+  color: #000 !important;
+}
+
+/* Voice Search Button */
+html[data-ypp-ui-style="aurora"] #voice-search-button yt-icon-button {
+  background: var(--aurora-glass-heavy) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: 50% !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] #voice-search-button yt-icon-button:hover {
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-magenta) !important;
+  transform: scale(1.1) !important;
 }

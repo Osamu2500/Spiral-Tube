@@ -1,29 +1,74 @@
-yt-live-chat-app,
-yt-live-chat-renderer {
-  background: var(--sf) !important;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-base) !important;
+/* =========================================================
+   NEUMORPHIC — LIVE CHAT
+   ========================================================= */
+
+/* The whole Live Chat container */
+html[data-ypp-ui-style="neumorphic"] ytd-live-chat-frame {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset-deep) !important;
+  border-radius: var(--neu-radius-lg) !important;
   border: none !important;
   overflow: hidden !important;
 }
-yt-live-chat-text-message-renderer,
-yt-live-chat-paid-message-renderer,
-yt-live-chat-membership-item-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 16px !important;
+
+/* Header */
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-header-renderer {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="neumorphic"][dark] yt-live-chat-header-renderer {
+  border-bottom-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Message Feed area */
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-item-list-renderer {
+  background-color: transparent !important;
+}
+
+/* Individual Messages */
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-membership-item-renderer {
+  background-color: transparent !important;
+  border-radius: var(--neu-radius-md) !important;
+  padding: 6px 10px !important;
   margin: 4px 8px !important;
-  padding: 8px !important;
-  transition: transform 0.2s, background 0.2s !important;
+  transition: all var(--neu-snap) !important;
 }
-yt-live-chat-text-message-renderer:hover {
-  background: rgba(128, 128, 128, 0.12) !important;
-  transform: scale(1.02) !important;
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-text-message-renderer:hover {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
 }
-#ticker.yt-live-chat-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
+
+/* Super Chats (Outset colored blocks) */
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-membership-item-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
 }
-#message-input.yt-live-chat-text-input-field-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
-  border-radius: 16px !important;
-  padding: 5px 15px !important;
+
+/* Avatars in Chat */
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-text-message-renderer #author-photo img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Chat Input Area (The bottom part) */
+html[data-ypp-ui-style="neumorphic"] yt-live-chat-message-input-renderer {
+  background-color: transparent !important;
+  border-top: 1px solid rgba(0,0,0,0.05) !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="neumorphic"][dark] yt-live-chat-message-input-renderer {
+  border-top-color: rgba(255,255,255,0.05) !important;
+}
+
+/* The actual text input box */
+html[data-ypp-ui-style="neumorphic"] #input-panel yt-live-chat-text-input-field-renderer {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-md) !important;
+  padding: 8px 12px !important;
 }

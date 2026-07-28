@@ -1,12 +1,63 @@
-html[data-ypp-ui-style=terminalism] .ytp-delhi-modern .ytp-chapter-container {
-  width: 100% !important;
-  padding-left: 10px;
+/* =========================================================
+   TERMINALISM — PLAYER UI
+   ========================================================= */
+
+/* The outer player container */
+html[data-ypp-ui-style="terminalism"] #player-container.ytd-watch-flexy,
+html[data-ypp-ui-style="terminalism"] #ytd-player {
+  border-radius: 0 !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+  margin-bottom: 12px;
 }
-html[data-ypp-ui-style=terminalism] .ytp-play-progress {
-  background: #00ff41 !important;
-  box-shadow: 0 0 6px #00ff41 !important;
+
+/* Base Video Player */
+html[data-ypp-ui-style="terminalism"] .html5-video-player {
+  background: var(--term-bg) !important;
+  border-radius: 0 !important;
 }
-html[data-ypp-ui-style=terminalism] .ytp-scrubber-button {
-  background: #000000 !important;
-  border: 2px solid #00ff41 !important;
+
+/* Play/Pause Large Center Icon Animation */
+html[data-ypp-ui-style="terminalism"] .ytp-bezel {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--term-glow) !important;
+}
+html[data-ypp-ui-style="terminalism"] .ytp-bezel-icon {
+  fill: var(--term-green) !important;
+}
+
+/* Bottom controls gradient */
+html[data-ypp-ui-style="terminalism"] .ytp-gradient-bottom {
+  background: transparent !important;
+  border-top: var(--term-border-dim) !important;
+}
+
+/* Player Button States */
+html[data-ypp-ui-style="terminalism"] .ytp-button {
+  transition: none !important;
+}
+html[data-ypp-ui-style="terminalism"] .ytp-button:hover {
+  background: var(--term-green-fade) !important;
+}
+
+/* Active/Toggled Buttons */
+html[data-ypp-ui-style="terminalism"] .ytp-button[aria-pressed="true"] {
+  color: var(--term-bg) !important;
+  background: var(--term-green) !important;
+}
+
+/* Player Error Screen */
+html[data-ypp-ui-style="terminalism"] .ytp-error {
+  background: var(--term-bg) !important;
+  border: 2px dashed var(--term-green) !important;
+}
+html[data-ypp-ui-style="terminalism"] .ytp-error-content-wrap-reason {
+  color: var(--term-text-primary) !important;
+}
+html[data-ypp-ui-style="terminalism"] .ytp-error-content-wrap-reason::before {
+  content: "FATAL ERROR: ";
+  color: red;
+  font-weight: bold;
 }

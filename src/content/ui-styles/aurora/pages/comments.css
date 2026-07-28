@@ -1,6 +1,105 @@
-html[data-ypp-ui-style=aurora] ytd-comment-thread-renderer:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
-  transform: translateY(-4px);
-  border-color: rgba(0, 242, 254, 0.3) !important;
-  box-shadow: 0 8px 25px rgba(0, 242, 254, 0.15) !important;
+/* =========================================================
+   AURORA — COMMENTS
+   ========================================================= */
+
+/* Main Comment Input Box (Frosted Glass) */
+html[data-ypp-ui-style="aurora"] ytd-comment-simplebox-renderer {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  padding: 12px 16px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-comment-simplebox-renderer:focus-within {
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
+
+/* Individual Comment Renderer */
+html[data-ypp-ui-style="aurora"] ytd-comment-renderer {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-comment-renderer:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--aurora-shadow-glass) !important;
+}
+
+/* Comment Replies / Thread Indentation */
+html[data-ypp-ui-style="aurora"] #replies.ytd-comment-thread-renderer {
+  border-left: 2px solid rgba(255, 255, 255, 0.1) !important;
+  margin-left: 40px !important;
+  padding-left: 16px !important;
+}
+
+/* Comment Author Name */
+html[data-ypp-ui-style="aurora"] #author-text.ytd-comment-renderer {
+  color: var(--aurora-color-1) !important; /* Cyan Name */
+  font-weight: 700 !important;
+  text-shadow: 0 0 5px rgba(0, 242, 254, 0.3) !important;
+}
+
+/* Creator Highlighted / Pinned Comment */
+html[data-ypp-ui-style="aurora"] ytd-comment-renderer[is-highlighted] {
+  border: 1px solid var(--aurora-color-3) !important; /* Magenta outline */
+  box-shadow: var(--aurora-glow-magenta) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-comment-renderer #pinned-comment-badge {
+  color: var(--aurora-color-3) !important;
+  font-weight: bold !important;
+}
+
+/* Comment Action Buttons (Like/Reply) */
+html[data-ypp-ui-style="aurora"] #reply-button-end yt-button-shape button,
+html[data-ypp-ui-style="aurora"] #comment-action-buttons-end yt-button-shape button {
+  background: transparent !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  margin: 0 4px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] #reply-button-end yt-button-shape button:hover,
+html[data-ypp-ui-style="aurora"] #comment-action-buttons-end yt-button-shape button:hover {
+  background: var(--aurora-glass-light) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Sort Menu */
+html[data-ypp-ui-style="aurora"] #sort-menu yt-button-shape button {
+  background: var(--aurora-glass-heavy) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  padding: 4px 16px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] #sort-menu yt-button-shape button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
+
+/* View Replies Expander */
+html[data-ypp-ui-style="aurora"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button {
+  background: var(--aurora-glass-heavy) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  color: var(--aurora-color-1) !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button:hover {
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
+
+/* Creator Heart Badge */
+html[data-ypp-ui-style="aurora"] ytd-comment-action-buttons-renderer #creator-heart {
+  filter: drop-shadow(0 0 5px var(--aurora-color-4)) !important; /* Glow Pink */
 }

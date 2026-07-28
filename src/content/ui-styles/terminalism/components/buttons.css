@@ -1,13 +1,84 @@
-/* src/content/themes/ui-styles/terminalism/components/buttons.css */
-html[data-ypp-ui-style=terminalism] .ytLikeButtonViewModelHost {
-  margin-right: 5px;
+/* =========================================================
+   TERMINALISM — BUTTONS
+   ========================================================= */
+
+/* Default Button State (Sharp blocks) */
+html[data-ypp-ui-style="terminalism"] yt-button-shape button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next,
+html[data-ypp-ui-style="terminalism"] ytd-button-renderer button {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  color: var(--term-text-primary) !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
 }
-html[data-ypp-ui-style=terminalism] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  display: flex !important;
-  gap: 6px !important;
-  background: none !important;
-  box-shadow: none !important;
-  overflow: visible !important;
+
+/* Button Hover State */
+html[data-ypp-ui-style="terminalism"] yt-button-shape button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="terminalism"] ytd-button-renderer button:hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
+}
+
+/* Primary/Filled Buttons (Like Subscribe) */
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="terminalism"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
+html[data-ypp-ui-style="terminalism"] #subscribe-button button {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+  color: var(--term-green) !important;
+  box-shadow: var(--term-glow) !important;
+  animation: termGlowPulse 3s infinite !important;
+}
+
+/* Primary Button Hover */
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="terminalism"] #subscribe-button button:hover {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+  box-shadow: var(--term-glow-intense) !important;
+  animation: none !important;
+}
+
+/* Active / Toggled / Pressed Buttons */
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-pressed="true"],
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next[aria-pressed="true"] {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+  border: var(--term-border) !important;
+}
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-pressed="true"]::before,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next[aria-pressed="true"]::before {
+  content: "[ON] " !important;
+  font-weight: bold;
+}
+
+/* Icon Buttons */
+html[data-ypp-ui-style="terminalism"] yt-icon-button button {
+  background: transparent !important;
+  border: none !important;
+}
+html[data-ypp-ui-style="terminalism"] yt-icon-button button:hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+}
+
+/* Extension Action Buttons */
+html[data-ypp-ui-style="terminalism"] .ypp-gpb-btn,
+html[data-ypp-ui-style="terminalism"] .ypp-action-btn,
+html[data-ypp-ui-style="terminalism"] .ypp-pill-toggle {
+  background: var(--term-bg) !important;
+  border: var(--term-border-dim) !important;
+  color: var(--term-text-primary) !important;
+}
+html[data-ypp-ui-style="terminalism"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-style="terminalism"] .ypp-action-btn:hover,
+html[data-ypp-ui-style="terminalism"] .ypp-pill-toggle:hover {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+  box-shadow: var(--term-glow) !important;
 }

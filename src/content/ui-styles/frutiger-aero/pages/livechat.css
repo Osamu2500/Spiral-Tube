@@ -1,18 +1,41 @@
-html[data-ypp-ui-style=frutiger-aero] yt-live-chat-header-renderer {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(200, 235, 255, 0.4) 100%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+/* =========================================================
+   FRUTIGER AERO — LIVE CHAT
+   pages/livechat.css
+   
+   Specific targeting for the iframe live chat.
+   ========================================================= */
+
+/* ── Iframe container ───────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] ytd-live-chat-frame {
+  background: var(--faero-glass-heavy) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  overflow: hidden !important;
 }
-html[data-ypp-ui-style=frutiger-aero] yt-live-chat-text-message-renderer yt-img-shadow,
-html[data-ypp-ui-style=frutiger-aero] yt-live-chat-paid-message-renderer yt-img-shadow {
-  border-radius: 50% !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8) !important;
-  position: absolute;
-  left: -32px;
-  top: auto;
-  bottom: 0;
-  z-index: 2;
+
+/* ── Chat inside the iframe (if extension injects there) ── */
+html[data-ypp-ui-style="frutiger-aero"] yt-live-chat-app {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] yt-live-chat-renderer {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="frutiger-aero"] yt-live-chat-text-message-renderer {
+  background: var(--faero-glass-light) !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+  border-radius: var(--faero-radius-sm) !important;
+  margin: 4px 8px !important;
+  padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] yt-live-chat-text-message-renderer:hover {
+  background: #fff !important;
+}
+
+/* Paid Message / Super Chat */
+html[data-ypp-ui-style="frutiger-aero"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--faero-radius-md) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.6) !important;
 }

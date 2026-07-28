@@ -1,6 +1,80 @@
-html[data-ypp-ui-style=aurora] .yt-chip-shape:hover {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 242, 254, 0.3) !important;
-  border-color: rgba(0, 242, 254, 0.5) !important;
+/* =========================================================
+   AURORA — HOME PAGE
+   ========================================================= */
+
+/* Filter Chips ("All", "Music", "Gaming") */
+html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  margin: 4px !important;
+  padding: 0 16px !important;
+  color: var(--aurora-text-primary) !important;
+  transition: all var(--aurora-bounce) !important;
+}
+
+/* Chip Hover State */
+html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Selected Chip (Glowing animated gradient) */
+html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"][selected] {
+  background: var(--aurora-gradient-primary) !important;
+  background-size: 200% 200% !important;
+  animation: aurora-shift 3s ease infinite !important;
+  border: none !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
+
+/* Filter bar container */
+html[data-ypp-ui-style="aurora"] ytd-feed-filter-chip-bar-renderer {
+  border-top: none !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  padding: 12px 0 !important;
+}
+
+/* Left / Right scroll arrows for chips */
+html[data-ypp-ui-style="aurora"] #left-arrow button,
+html[data-ypp-ui-style="aurora"] #right-arrow button {
+  background: var(--aurora-glass-heavy) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: 50% !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] #left-arrow button:hover,
+html[data-ypp-ui-style="aurora"] #right-arrow button:hover {
+  background: var(--aurora-glass-light) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
+
+/* Shelves ("Latest YouTube posts", "Shorts") */
+html[data-ypp-ui-style="aurora"] ytd-rich-shelf-renderer {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  box-shadow: var(--aurora-shadow-glass) !important;
+  padding: 24px !important;
+  margin: 16px 0 !important;
+}
+html[data-ypp-ui-style="aurora"] #title.ytd-rich-shelf-renderer {
+  color: var(--aurora-text-primary) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Show more button for shelves */
+html[data-ypp-ui-style="aurora"] ytd-button-renderer#show-more-button {
+  margin-top: 16px !important;
 }

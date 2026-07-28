@@ -1,0 +1,61 @@
+/* =========================================================
+   LIQUID GLASS — COMMUNITY & POSTS
+   ========================================================= */
+
+/* Community Post Cards */
+html[data-ypp-ui-style="liquid-glass"] ytd-backstage-post-thread-renderer,
+html[data-ypp-ui-style="liquid-glass"] ytd-post-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
+  background: var(--lg-bg-level-1) !important;
+  border: var(--lg-border-specular) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
+  padding: 16px !important;
+  margin-bottom: 24px !important;
+  transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] ytd-backstage-post-thread-renderer:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-post-renderer:hover {
+  background: var(--lg-bg-level-2) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Post Attached Images */
+html[data-ypp-ui-style="liquid-glass"] ytd-backstage-image-renderer {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: var(--lg-border-subtle) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  margin-top: 12px !important;
+}
+
+/* Polls */
+html[data-ypp-ui-style="liquid-glass"] ytd-backstage-poll-renderer {
+  margin-top: 12px !important;
+}
+html[data-ypp-ui-style="liquid-glass"] .choice-info.ytd-backstage-poll-renderer {
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] .choice-info.ytd-backstage-poll-renderer:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  transform: scale(1.02) !important;
+}
+
+/* Selected Poll Choice (Progress Bar) */
+html[data-ypp-ui-style="liquid-glass"] ytd-backstage-poll-renderer[show-results] .choice-info {
+  background: transparent !important; /* the progress bar takes over */
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] .progress-bar.ytd-backstage-poll-renderer {
+  background: rgba(255, 255, 255, 0.15) !important; /* Filled bar */
+  border-radius: 12px !important;
+}

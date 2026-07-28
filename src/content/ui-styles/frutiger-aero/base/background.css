@@ -1,52 +1,46 @@
-/* Background image applied directly to html so it sits behind all stacking contexts */
-html[data-ypp-ui-style=frutiger-aero] {
-  background-color: #bfe6ff !important;
-  background-image: url("https://i.postimg.cc/vTw2C9fR/image.avif") !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+/* =========================================================
+   FRUTIGER AERO — BACKGROUND
+   base/background.css
+   
+   Blueprint Rule 2: Theme Background Enforcement
+   ========================================================= */
+
+/* ── BLUEPRINT RULE 2: Override YouTube Dark Mode ───────── */
+html[data-ypp-ui-style="frutiger-aero"],
+html[data-ypp-ui-style="frutiger-aero"] body,
+html[data-ypp-ui-style="frutiger-aero"] ytd-app,
+html[data-ypp-ui-style="frutiger-aero"] #background {
+  /* Using the authentic Sky-to-Grass gradient from references */
+  background: linear-gradient(to bottom, 
+    var(--faero-sky-light) 0%, 
+    var(--faero-sky-mid) 25%, 
+    var(--faero-sky-deep) 50%, 
+    var(--faero-green-mid) 75%, 
+    var(--faero-green-lt) 100%
+  ) !important;
   background-attachment: fixed !important;
+  background-size: 100vw 100vh !important;
+  background-repeat: no-repeat !important;
+  color: var(--faero-text-primary) !important;
+  font-family: var(--faero-font) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] body {
+/* Ensure #background layer doesn't block the gradient */
+html[data-ypp-ui-style="frutiger-aero"] #background {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Base text color overrides for the whole app */
+html[data-ypp-ui-style="frutiger-aero"] * {
+  color: var(--faero-text-primary);
+  font-family: var(--faero-font);
+}
+
+/* Remove default backgrounds from primary app containers */
+html[data-ypp-ui-style="frutiger-aero"] #page-manager,
+html[data-ypp-ui-style="frutiger-aero"] #contentContainer,
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-app-header-layout,
+html[data-ypp-ui-style="frutiger-aero"] #columns {
   background: transparent !important;
-  background-image: none !important;
-  position: relative !important;
-}
-
-
-html[data-ypp-ui-style=frutiger-aero] ytd-app,
-html[data-ypp-ui-style=frutiger-aero] #page-manager.ytd-app,
-html[data-ypp-ui-style=frutiger-aero] #content.ytd-app {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] .mat-chrome {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(220, 230, 240, 0.85) 45%,
-      rgba(190, 210, 220, 0.80) 50%,
-      rgba(240, 250, 255, 0.90) 100%);
-  border: 1px solid rgba(150, 180, 200, 0.8);
-}
-html[data-ypp-ui-style=frutiger-aero] tp-yt-app-header {
-  background: transparent !important;
-}
-html[data-ypp-ui-style=frutiger-aero] .tab-content.tp-yt-paper-tab:hover {
-  background: rgba(255, 255, 255, 0.6) !important;
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8) !important;
-  transform: scale(1.05) !important;
-}
-html[data-ypp-ui-style=frutiger-aero] tp-yt-paper-tab.iron-selected .tab-content.tp-yt-paper-tab {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(220, 245, 255, 0.9) 0%,
-      rgba(140, 210, 250, 0.8) 100%) !important;
-  border: 1px solid rgba(130, 210, 250, 0.8) !important;
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 2px 8px rgba(18, 168, 221, 0.2) !important;
-  color: #0b5fa3 !important;
 }

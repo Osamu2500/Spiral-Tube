@@ -1,175 +1,37 @@
-/* ============================================================
-   Frutiger Aero — Playlist Redesign Page Styles
-   ============================================================ */
+/* =========================================================
+   FRUTIGER AERO — PLAYLIST PAGE
+   pages/playlist.css
+   ========================================================= */
 
-/* 1. Playlist Redesign Header Container (left sidebar / immersive header) */
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer,
-html[data-ypp-ui-style=frutiger-aero] .immersive-header-container.ytd-playlist-header-renderer,
-html[data-ypp-ui-style=frutiger-aero] .playlist-header-renderer {
-  -webkit-backdrop-filter: blur(14px) !important;
-  backdrop-filter: blur(14px) !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(200, 235, 255, 0.3) 100%) !important;
-  border-radius: var(--fa-radius-lg, 16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.7) !important;
-  box-shadow: 
-    var(--fa-elevation-2),
-    inset 0 2px 6px rgba(255, 255, 255, 0.8) !important;
-  color: #111111 !important;
-  padding: 20px !important;
+/* ── Left Sidebar (Playlist metadata) ───────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] ytd-playlist-header-renderer {
+  background: var(--faero-glass-heavy) !important;
+  backdrop-filter: var(--faero-blur-heavy) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+  padding: 24px !important;
 }
 
-/* Ensure text inside header remains readable and Frutiger Aero colored */
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer yt-formatted-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer h1,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer span {
-  color: #111111 !important;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+/* ── Right side (Video List) ────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] ytd-playlist-video-list-renderer {
+  background: transparent !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer .metadata-stats {
-  color: #333333 !important;
-}
-
-/* 2. Playlist Action Buttons (Play All, Shuffle, Save, Share, etc.) */
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer button,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer ytd-button-renderer {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(200, 235, 255, 0.65)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  border-radius: var(--fa-radius-pill, 999px) !important;
-  box-shadow: 
-    inset 0 1px 3px rgba(255, 255, 255, 0.9),
-    var(--fa-elevation-1) !important;
-  color: #0b5fa3 !important;
-  transition: background 0.2s, box-shadow 0.2s !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer button:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer ytd-button-renderer:hover {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(180, 225, 255, 0.85)) !important;
-  box-shadow: 
-    var(--fa-elevation-2),
-    0 0 10px rgba(53, 199, 240, 0.5),
-    inset 0 2px 4px rgba(255, 255, 255, 1) !important;
-  color: #0b5fa3 !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-header-renderer .yt-spec-button-shape-next__icon svg {
-  fill: #0b5fa3 !important;
-  color: #0b5fa3 !important;
-}
-
-/* 3. Playlist Video List Items (Right side / videos table) */
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-list-renderer .yt-list-item-view-model {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.35) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: var(--fa-radius-lg, 12px) !important;
+/* Target the cards in playlist explicitly */
+html[data-ypp-ui-style="frutiger-aero"] ytd-playlist-video-renderer {
   margin-bottom: 8px !important;
-  padding: 8px !important;
-  transition: background 0.2s, box-shadow 0.2s !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] ytd-playlist-video-renderer:hover {
+  background: var(--faero-glass-heavy) !important;
+  border: var(--faero-border-white2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }
 
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-renderer:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-playlist-video-list-renderer .yt-list-item-view-model:hover {
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(200, 235, 255, 0.4)) !important;
-  border-color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: var(--fa-elevation-1) !important;
-}
-
-/* 4. Custom Extension Playlist Redesign Page (#ypp-pl-root) */
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-toolbar {
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(200, 235, 255, 0.4) 100%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-sidebar {
-  -webkit-backdrop-filter: blur(14px) !important;
-  backdrop-filter: blur(14px) !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(200, 235, 255, 0.3) 100%) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.7) !important;
-  box-shadow: var(--fa-elevation-1) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-btn-play,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-btn-tool,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: var(--fa-radius-pill) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.9),
-    rgba(200, 235, 255, 0.8)
-  ) !important;
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 1),
-    var(--fa-elevation-1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  color: #0b5fa3 !important;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-btn-play:hover,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-btn-tool:hover,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-filter:hover,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-col-switcher:hover {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    rgba(180, 225, 255, 0.9)
-  ) !important;
-  box-shadow:
-    var(--fa-elevation-2),
-    var(--faBlueGlow),
-    inset 0 2px 4px rgba(255, 255, 255, 1) !important;
-  transform: scale(1.04) !important;
-  border-color: rgba(255, 255, 255, 1) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-card {
-  -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
-  background: rgba(255, 255, 255, 0.35) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: var(--fa-radius-lg) !important;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-card:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(200, 235, 255, 0.45) 100%) !important;
-  border-color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: var(--fa-elevation-2) !important;
-  transform: translateY(-2px) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
-  background: rgba(255, 255, 255, 0.3) !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: none !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
-  background: rgba(255, 255, 255, 0.55) !important;
-  transform: none !important;
-  box-shadow: var(--fa-elevation-1) !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-card,
-html[data-ypp-ui-style=frutiger-aero] #ypp-pl-root .ypp-pl-duration-grid {
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  background: rgba(255, 255, 255, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.7) !important;
-  border-radius: var(--fa-radius-lg) !important;
-  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.8) !important;
+/* Currently Playing indicator */
+html[data-ypp-ui-style="frutiger-aero"] ytd-playlist-video-renderer[selected] {
+  background: var(--faero-gradient-pagebar) !important;
+  border: 1px solid var(--faero-sky-blue) !important;
+  box-shadow: inset 0 0 10px rgba(135,206,250,0.5) !important;
 }

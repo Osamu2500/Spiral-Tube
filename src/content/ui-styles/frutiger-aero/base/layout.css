@@ -1,0 +1,38 @@
+/* =========================================================
+   FRUTIGER AERO — LAYOUT & STRUCTURAL
+   base/layout.css
+   
+   Blueprint Rule 1: Grid gap structural enforcement
+   ========================================================= */
+
+/* ── BLUEPRINT RULE 1: Core Layout Metrics ──────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #page-manager,
+html[data-ypp-ui-style="frutiger-aero"] #contentContainer,
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-app-header-layout,
+html[data-ypp-ui-style="frutiger-aero"] #columns {
+  background: transparent !important;
+  gap: 16px !important;
+}
+
+html[data-ypp-ui-style="frutiger-aero"] #page-manager {
+  margin-top: var(--ytd-masthead-height, 56px) !important;
+}
+
+html[data-ypp-ui-style="frutiger-aero"] #contentContainer,
+html[data-ypp-ui-style="frutiger-aero"] tp-yt-app-header-layout,
+html[data-ypp-ui-style="frutiger-aero"] #columns {
+  margin-top: 10px !important;
+}
+
+/* Sidebar gap enforcement */
+html[data-ypp-ui-style="frutiger-aero"] #guide-wrapper {
+  margin-right: 16px !important;
+  margin-left: 8px !important;
+}
+
+/* Prevent overlapping overlays */
+html[data-ypp-ui-style="frutiger-aero"] #primary,
+html[data-ypp-ui-style="frutiger-aero"] #secondary {
+  position: relative !important;
+  z-index: 1 !important;
+}

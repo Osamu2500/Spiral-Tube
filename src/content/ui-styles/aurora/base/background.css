@@ -1,1 +1,111 @@
-/* base/background.css - Empty by default */
+/* =========================================================
+   AURORA — BACKGROUND & GLOBAL SURFACE
+   ========================================================= */
+
+/* Force the exact base color everywhere (Dark Void) */
+html[data-ypp-ui-style="aurora"] body,
+html[data-ypp-ui-style="aurora"] ytd-app {
+  background-color: var(--aurora-bg-void) !important;
+  color: var(--aurora-text-primary) !important;
+  background-image: radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.05), transparent 40%),
+                    radial-gradient(circle at 85% 30%, rgba(240, 147, 251, 0.05), transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Base structural overrides to stop YT native styles from interfering */
+html[data-ypp-ui-style="aurora"] * {
+  border: none !important; 
+}
+html[data-ypp-ui-style="aurora"] ytd-item-section-renderer,
+html[data-ypp-ui-style="aurora"] ytd-rich-grid-renderer {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* ---- Extension Global UI ---- */
+
+/* Badges / Value Displays */
+html[data-ypp-ui-style="aurora"] .ypp-badge,
+html[data-ypp-ui-style="aurora"] .ypp-value-display {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  color: var(--aurora-text-primary) !important;
+  box-shadow: var(--aurora-shadow-glass) !important;
+}
+
+/* Extension header / folders */
+html[data-ypp-ui-style="aurora"] .ypp-vcp-header,
+html[data-ypp-ui-style="aurora"] .ypp-folder-header {
+  background: transparent !important;
+  border-bottom: var(--aurora-border-glass) !important; 
+  color: var(--aurora-text-primary) !important;
+}
+
+/* App Header (Masthead) */
+html[data-ypp-ui-style="aurora"] tp-yt-app-header {
+  background: transparent !important;
+}
+
+/* Extension Sliders */
+html[data-ypp-ui-style="aurora"] .ypp-slider,
+html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider {
+  appearance: none !important;
+  background: var(--aurora-glass-light) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  height: 8px !important;
+  outline: none !important;
+}
+/* Webkit Slider Thumb */
+html[data-ypp-ui-style="aurora"] .ypp-slider::-webkit-slider-thumb,
+html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
+  appearance: none !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  background: var(--aurora-gradient-primary) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  cursor: pointer !important;
+  transition: transform var(--aurora-snap) !important;
+}
+html[data-ypp-ui-style="aurora"] .ypp-slider::-webkit-slider-thumb:hover,
+html[data-ypp-ui-style="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2) !important;
+  box-shadow: var(--aurora-glow-magenta) !important;
+}
+
+/* Filter Dropdowns */
+html[data-ypp-ui-style="aurora"] .ypp-filter-dropdown {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  color: var(--aurora-text-primary) !important;
+  padding: 8px 12px !important;
+  transition: all var(--aurora-snap) !important;
+  cursor: pointer;
+}
+html[data-ypp-ui-style="aurora"] .ypp-filter-dropdown:hover {
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
+
+/* Custom Scrollbar */
+html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar {
+  width: 8px !important;
+}
+html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar-thumb {
+  background: var(--aurora-glass-light) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+}
+html[data-ypp-ui-style="aurora"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--aurora-gradient-primary) !important;
+}

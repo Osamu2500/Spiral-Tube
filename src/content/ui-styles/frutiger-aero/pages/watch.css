@@ -1,229 +1,125 @@
-/* pages/watch.css - Action buttons (like, dislike, share, save, ask, download, three-dots) */
+/* =========================================================
+   FRUTIGER AERO — WATCH PAGE
+   pages/watch.css
+   
+   Specific adjustments for the watch metadata and related vids.
+   ========================================================= */
 
-/* ── Base glass style for ALL watch-page action buttons ────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata button.yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] #actions.ytd-watch-metadata .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] #actions-inner.ytd-watch-metadata .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] #flexible-item-buttons .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] .ytWatchActionsBar .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-flexy #actions .yt-spec-button-shape-next,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model button,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button {
-  -webkit-backdrop-filter: blur(4px) !important;
-  backdrop-filter: blur(4px) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.92),
-    rgba(200, 235, 255, 0.75) 48%,
-    rgba(160, 220, 250, 0.65) 50%,
-    rgba(220, 245, 255, 0.88)
-  ) !important;
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid rgba(150, 180, 200, 0.7) !important;
-  border-bottom-color: rgba(90, 150, 180, 0.85) !important;
+/* ── Video Metadata Panel ───────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #above-the-fold {
+  background: var(--faero-glass-medium) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  padding: 16px !important;
   box-shadow:
-    inset 0 2px 5px rgba(255, 255, 255, 0.95),
-    inset 0 -1px 3px rgba(120, 200, 255, 0.2),
-    0 2px 8px rgba(18, 168, 221, 0.18) !important;
-  color: #0b5fa3 !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-  border-radius: 500px !important;
-  transition:
-    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.2s ease,
-    background 0.2s ease !important;
-  position: relative !important;
-  overflow: hidden !important;
+    0 4px 16px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
+  margin-bottom: 24px !important;
 }
 
-/* ── Hover state ────────────────────────────────────────────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] #actions.ytd-watch-metadata .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-flexy #actions .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button:hover,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button:hover,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model button:hover,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button:hover {
-  background: linear-gradient(
-    to bottom,
-    #ffffff,
-    rgba(180, 225, 255, 0.85) 48%,
-    rgba(130, 210, 250, 0.85) 50%,
-    rgba(200, 240, 255, 0.97)
-  ) !important;
+/* Title text */
+html[data-ypp-ui-style="frutiger-aero"] h1.ytd-watch-metadata {
+  color: var(--faero-text-primary) !important;
+  font-weight: 700 !important;
+  font-family: var(--faero-font) !important;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.6) !important;
+}
+
+/* View count + date */
+html[data-ypp-ui-style="frutiger-aero"] #info-container span,
+html[data-ypp-ui-style="frutiger-aero"] #info-text,
+html[data-ypp-ui-style="frutiger-aero"] .ytd-watch-metadata span {
+  color: var(--faero-text-secondary) !important;
+  font-family: var(--faero-font) !important;
+}
+
+/* ── Description Box (Expander) ─────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #description-inner.ytd-watch-metadata {
+  background: var(--faero-glass-light) !important;
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  border-radius: var(--faero-radius-md) !important;
+  padding: 14px !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.03) !important;
+  transition: var(--faero-transition) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata[description-collapsed] #description-inner:hover {
+  background: rgba(255,255,255,0.95) !important;
+  border-color: rgba(159,225,30,0.35) !important;
   box-shadow:
-    inset 0 2px 8px #fff,
-    0 0 14px rgba(53, 199, 240, 0.5),
-    0 3px 10px rgba(18, 168, 221, 0.3) !important;
-  border-color: rgba(53, 199, 240, 0.75) !important;
-  color: #0b86c2 !important;
-  transform: scale(1.06) translateY(-1px) !important;
+    0 4px 10px rgba(0,0,0,0.05),
+    0 0 8px rgba(159,225,30,0.15) !important;
 }
 
-/* ── Active/click state ─────────────────────────────────────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next:active,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next:active,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next:active,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button:active,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button:active,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:active,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.1) !important;
+/* ── Channel Info Row ───────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #owner {
+  background: var(--faero-glass-light) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  padding: 10px 14px !important;
+  margin-bottom: 12px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 2px 6px rgba(0,0,0,0.04) !important;
+  transition: var(--faero-transition) !important;
 }
 
-/* ── Icons inside action buttons ────────────────────────────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next yt-icon,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-button-shape-next yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-button-shape-next yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button yt-icon,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button yt-icon,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button yt-icon,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button yt-icon path,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button yt-icon,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button yt-icon svg,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button yt-icon path {
-  color: #0b5fa3 !important;
-  fill: #0b5fa3 !important;
-  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.8)) !important;
+/* ── Related Videos Sidebar ─────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #secondary {
+  padding-left: 24px !important;
 }
 
-/* ── Text labels (Share, Save, Ask, etc.) ───────────────────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-button-shape-next .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model button .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button .yt-core-attributed-string,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape .yt-core-attributed-string {
-  color: #0b5fa3 !important;
-  font-weight: 600 !important;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-}
-
-/* ── Gloss highlight overlay on top half of each button ─────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata .yt-spec-button-shape-next::after,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed .yt-spec-button-shape-next::after,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer .yt-spec-button-shape-next::after,
-html[data-ypp-ui-style=frutiger-aero] #top-level-buttons-computed button::after,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer button::after,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape button::after {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 10% !important;
-  right: 10% !important;
-  height: 45% !important;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), transparent) !important;
-  border-radius: 500px 500px 0 0 !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-}
-
-/* ── Ensure the parent container background doesn't show through ────────────── */
-html[data-ypp-ui-style=frutiger-aero] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer {
-  background: transparent !important;
-}
-
-/* ── Three-dots overflow menu icon button ───────────────────────────────────── */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata ytd-menu-renderer yt-icon-button,
-html[data-ypp-ui-style=frutiger-aero] #above-the-fold ytd-menu-renderer yt-icon-button,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #button.ytd-menu-renderer,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata ytd-menu-renderer button {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.92),
-    rgba(200, 235, 255, 0.75) 48%,
-    rgba(160, 220, 250, 0.65) 50%,
-    rgba(220, 245, 255, 0.88)
-  ) !important;
-  border: 1px solid rgba(150, 180, 200, 0.7) !important;
-  border-bottom-color: rgba(90, 150, 180, 0.85) !important;
+html[data-ypp-ui-style="frutiger-aero"] ytd-watch-next-secondary-results-renderer {
+  background: var(--faero-glass-light) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  padding: 16px !important;
   box-shadow:
-    inset 0 2px 5px rgba(255, 255, 255, 0.95),
-    0 2px 8px rgba(18, 168, 221, 0.18) !important;
-  border-radius: 500px !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    0 4px 16px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,1) !important;
 }
 
-/* YouTube UI Update Fixes for Glassmorphic themes (Watch Page) */
-
-/* 1. Action Buttons inner backgrounds */
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer yt-button-shape .yt-touch-feedback-shape__fill,
-html[data-ypp-ui-style=frutiger-aero] yt-button-shape .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next--tonal .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style=frutiger-aero] .yt-spec-button-shape-next .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style=frutiger-aero] yt-button-view-model .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style=frutiger-aero] ytd-menu-renderer yt-button-shape button.yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-style=frutiger-aero] segmented-like-dislike-button-view-model .yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-style=frutiger-aero] ytd-download-button-renderer yt-button-shape button.yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-style=frutiger-aero] ytd-button-renderer yt-button-shape button.yt-spec-button-shape-next--tonal {
-  background-color: transparent !important;
+/* ── Chapters / Heatmap Row ─────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #progress.ytd-macro-markers-list-renderer {
+  background: var(--faero-gradient-sidebar) !important;
+  border-radius: var(--faero-radius-sm) !important;
+  box-shadow: 0 0 6px rgba(159,225,30,0.4) !important;
 }
 
-/* 2. Description Container fix - do not make the main #description container transparent, only the inner ones */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description-inner,
-html[data-ypp-ui-style=frutiger-aero] ytd-text-inline-expander {
-  background-color: transparent !important;
+/* ── Comments Section ───────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #comments {
+  background: var(--faero-glass-light) !important;
+  backdrop-filter: var(--faero-blur) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-lg) !important;
+  padding: 20px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
+  margin-top: 24px !important;
+}
+
+/* ── Comment Input Box ──────────────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] #simple-box.ytd-comment-simplebox-renderer,
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-simplebox-renderer {
+  background: var(--faero-glass-medium) !important;
+  border: var(--faero-border-white) !important;
+  border-radius: var(--faero-radius-md) !important;
+  padding: 10px !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
+  transition: var(--faero-transition) !important;
+}
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-simplebox-renderer:focus-within {
+  border-color: var(--faero-lime) !important;
+  box-shadow: 0 0 10px rgba(159,225,30,0.3), inset 0 2px 4px rgba(0,0,0,0.04) !important;
+}
+
+/* ── Individual Comment Threads ─────────────────────────── */
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-view-model,
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-thread-renderer {
   background: transparent !important;
+  border-bottom: 1px solid rgba(200,220,240,0.5) !important;
+  transition: background var(--faero-transition) !important;
 }
-
-/* 3. Channel Bar Container fix & Layout */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.4) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 8px rgba(18, 168, 221, 0.1) !important;
-  border-radius: 12px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] #owner-inner.ytd-video-owner-renderer {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-/* 4. Global Text Rendering Fix for Watch Page */
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata h1,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata h1 yt-formatted-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner yt-formatted-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #owner a,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description-inner,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description yt-formatted-string,
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description span {
-  color: #111111 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.5) !important;
-  font-weight: 500 !important;
-}
-
-html[data-ypp-ui-style=frutiger-aero] ytd-watch-metadata #description {
-  color: #111111 !important;
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-view-model:hover,
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-thread-renderer:hover {
+  background: rgba(255,255,255,0.5) !important;
+  border-radius: var(--faero-radius-md) !important;
 }

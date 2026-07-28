@@ -1,0 +1,55 @@
+/* =========================================================
+   CRYSTAL GLASS — PANELS (Sidebars, Menus)
+   ========================================================= */
+
+/* Left Navigation Guide (Mini & Expanded) */
+html[data-ypp-ui-style="crystal-glass"] #guide-wrapper.ytd-app,
+html[data-ypp-ui-style="crystal-glass"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="crystal-glass"] app-drawer#guide-inner-content {
+  background: var(--cglass-base) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  border-right: var(--cglass-border) !important;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Guide Links / Endpoints */
+html[data-ypp-ui-style="crystal-glass"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
+html[data-ypp-ui-style="crystal-glass"] ytd-mini-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: var(--cglass-radius-md) !important;
+  margin: 2px 8px !important;
+  transition: all var(--cglass-transition) !important;
+}
+
+/* Guide Link Hover */
+html[data-ypp-ui-style="crystal-glass"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="crystal-glass"] ytd-mini-guide-entry-renderer:hover {
+  background: var(--cglass-base-hover) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Active Guide Link */
+html[data-ypp-ui-style="crystal-glass"] ytd-guide-entry-renderer[active] #endpoint,
+html[data-ypp-ui-style="crystal-glass"] ytd-mini-guide-entry-renderer[active] {
+  background: var(--cglass-base-heavy) !important;
+  border: var(--cglass-border) !important;
+  box-shadow: var(--cglass-shadow-inner) !important;
+}
+
+/* Guide Sections (Headers) */
+html[data-ypp-ui-style="crystal-glass"] #guide-section-title.ytd-guide-section-renderer {
+  color: var(--cglass-text-secondary) !important;
+  font-weight: 600 !important;
+}
+
+/* Extension Side Panels (Playlist/Stats organizers) */
+html[data-ypp-ui-style="crystal-glass"] .ypp-organizer-modal,
+html[data-ypp-ui-style="crystal-glass"] #ypp-eq-panel,
+html[data-ypp-ui-style="crystal-glass"] .ypp-account-menu {
+  background: var(--cglass-base-heavy) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
+  border: var(--cglass-border-heavy) !important;
+  border-radius: var(--cglass-radius-lg) !important;
+  box-shadow: var(--cglass-shadow-hover) !important;
+}

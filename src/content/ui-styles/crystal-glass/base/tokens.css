@@ -1,0 +1,54 @@
+/* =========================================================
+   CRYSTAL GLASS — TOKENS & VARIABLES
+   ========================================================= */
+
+html[data-ypp-ui-style="crystal-glass"] {
+  /* Radii */
+  --cglass-radius-sm: 8px;
+  --cglass-radius-md: 16px;
+  --cglass-radius-lg: 24px;
+  --cglass-radius-pill: 9999px;
+
+  /* YouTube Native Variable Overrides (Force Transparent) */
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-additive-background: transparent !important;
+  --yt-spec-base-background: transparent !important;
+  --yt-spec-brand-background-solid: transparent !important;
+  --yt-spec-menu-background: transparent !important;
+  --yt-spec-10-percent-layer: transparent !important;
+  
+  /* --- Crystal Glass Specific Variables --- */
+  
+  /* Glass Surfaces */
+  --cglass-base: rgba(255, 255, 255, 0.15); /* Light glass base */
+  --cglass-base-hover: rgba(255, 255, 255, 0.25);
+  --cglass-base-heavy: rgba(255, 255, 255, 0.4);
+  
+  /* Blurs */
+  --cglass-blur-sm: blur(8px) saturate(140%);
+  --cglass-blur-md: blur(16px) saturate(180%);
+  --cglass-blur-lg: blur(32px) saturate(200%);
+  
+  /* Borders (Refractions) */
+  --cglass-border: 1px solid rgba(255, 255, 255, 0.4);
+  --cglass-border-heavy: 1px solid rgba(255, 255, 255, 0.8);
+  
+  /* Shadows */
+  /* Outer depth shadow */
+  --cglass-shadow-outer: 0 8px 32px rgba(31, 38, 135, 0.2);
+  /* Inner glare simulating thickness */
+  --cglass-shadow-inner: inset 0 2px 10px rgba(255, 255, 255, 0.3);
+  /* Combined signature glass shadow */
+  --cglass-shadow: var(--cglass-shadow-outer), var(--cglass-shadow-inner);
+  
+  --cglass-shadow-hover: 0 12px 40px rgba(31, 38, 135, 0.3), inset 0 4px 20px rgba(255, 255, 255, 0.5);
+
+  /* Text Colors (Assuming light mode mostly, or dark mode with bright text) 
+     We use standard YT text colors but ensure they are visible. */
+  --cglass-text-primary: var(--yt-spec-text-primary, #fff);
+  --cglass-text-secondary: var(--yt-spec-text-secondary, #aaa);
+  
+  /* Animations */
+  --cglass-transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

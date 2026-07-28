@@ -1,1 +1,130 @@
-/* pages/watch.css - Empty by default */
+/* =========================================================
+   AURORA — WATCH PAGE
+   ========================================================= */
+
+/* Action Button Row (Like, Share, Download) */
+html[data-ypp-ui-style="aurora"] #top-level-buttons-computed yt-button-shape button {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  color: var(--aurora-text-primary) !important;
+  margin: 0 4px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] #top-level-buttons-computed yt-button-shape button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  transform: translateY(-2px) !important;
+}
+html[data-ypp-ui-style="aurora"] #top-level-buttons-computed yt-button-shape button:active {
+  background: var(--aurora-glass-solid) !important;
+  box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.3) !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-ui-style="aurora"] ytd-subscribe-button-renderer button {
+  background: var(--aurora-gradient-primary) !important;
+  background-size: 200% 200% !important;
+  animation: aurora-shift 5s ease infinite !important;
+  border: none !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  padding: 0 16px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-subscribe-button-renderer button:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--aurora-glow-mixed) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-subscribe-button-renderer[subscribed] button {
+  background: var(--aurora-glass-heavy) !important;
+  border: var(--aurora-border-glass) !important;
+  color: var(--aurora-text-secondary) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Video Description Box */
+html[data-ypp-ui-style="aurora"] #description-inner,
+html[data-ypp-ui-style="aurora"] #description.ytd-watch-metadata {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  box-shadow: var(--aurora-shadow-glass) !important;
+  padding: 16px !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+/* Channel Header / Meta Block Row */
+html[data-ypp-ui-style="aurora"] #owner.ytd-watch-metadata {
+  border-bottom: var(--aurora-border-glass) !important;
+  padding-bottom: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Sidebar Recommendation Compact Cards */
+html[data-ypp-ui-style="aurora"] ytd-compact-video-renderer {
+  background: transparent !important;
+  border-radius: var(--aurora-radius-md) !important;
+  padding: 8px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-compact-video-renderer:hover {
+  background: var(--aurora-glass-light) !important;
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Up Next / Autoplay Text */
+html[data-ypp-ui-style="aurora"] ytd-compact-autoplay-renderer #autoplay-toggle {
+  color: var(--aurora-color-1) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 5px rgba(0, 242, 254, 0.5) !important;
+}
+
+/* Chapter Markers / Macro Markers */
+html[data-ypp-ui-style="aurora"] ytd-macro-markers-list-renderer {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-macro-markers-list-item-renderer {
+  background: transparent !important;
+  border-radius: var(--aurora-radius-md) !important;
+  margin-bottom: 8px !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-macro-markers-list-item-renderer:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-left: 2px solid var(--aurora-color-3) !important;
+}
+
+/* Transcript Panel */
+html[data-ypp-ui-style="aurora"] ytd-transcript-renderer {
+  background: var(--aurora-glass-heavy) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
+  border: var(--aurora-border-glass) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  box-shadow: var(--aurora-shadow-glass) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-transcript-segment-renderer {
+  border-radius: var(--aurora-radius-md) !important;
+  transition: all var(--aurora-bounce) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-transcript-segment-renderer:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+html[data-ypp-ui-style="aurora"] ytd-transcript-segment-renderer[is-highlighted] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: var(--aurora-border-glow) !important;
+  box-shadow: var(--aurora-glow-cyan) !important;
+}
