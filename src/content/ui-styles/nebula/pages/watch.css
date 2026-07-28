@@ -1,0 +1,42 @@
+html[data-ypp-ui-style="nebula"] ytd-watch-flexy {
+  background: transparent !important;
+}
+
+html[data-ypp-ui-style="nebula"] ytd-compact-video-renderer {
+  background: rgba(13, 10, 30, 0.5) !important;
+  border: 1px solid var(--nebula-glass-border) !important;
+  border-radius: var(--nebula-r-md) !important;
+  margin-bottom: 8px !important;
+  transition: all 0.3s var(--nebula-ease-out) !important;
+  box-shadow: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+html[data-ypp-ui-style="nebula"] ytd-compact-video-renderer:hover {
+  background: rgba(21, 17, 58, 0.8) !important;
+  border-color: var(--nebula-glass-border-hover) !important;
+  box-shadow: var(--nebula-glow-cyan) !important;
+  transform: translateX(4px) !important;
+}
+
+html[data-ypp-ui-style="nebula"] #secondary-inner.ytd-watch-flexy {
+  background: rgba(4, 2, 13, 0.5) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--nebula-r-lg) !important;
+  border: 1px solid var(--nebula-glass-border) !important;
+  padding: 16px !important;
+}
+
+html[data-ypp-ui-style="nebula"] #description.ytd-watch-metadata {
+  background: var(--nebula-glass-bg) !important;
+  border-radius: var(--nebula-r-md) !important;
+  border: 1px solid var(--nebula-glass-border) !important;
+  transition: all 0.3s var(--nebula-ease) !important;
+}
+
+html[data-ypp-ui-style="nebula"] #description.ytd-watch-metadata:hover {
+  border-color: var(--nebula-glass-border-hover) !important;
+  box-shadow: var(--nebula-glow-purple) !important;
+}

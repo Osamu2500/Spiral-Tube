@@ -1,0 +1,33 @@
+html[data-ypp-ui-style="nebula"] .ytp-play-progress {
+  background: linear-gradient(90deg, var(--nebula-accent-purple), var(--nebula-accent-cyan)) !important;
+  box-shadow: 0 0 10px rgba(0, 245, 212, 0.6) !important;
+}
+
+html[data-ypp-ui-style="nebula"] .ytp-scrubber-button {
+  background: var(--nebula-accent-cyan) !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: var(--nebula-glow-cyan) !important;
+}
+
+html[data-ypp-ui-style="nebula"] .ytp-volume-slider-handle {
+  background: var(--nebula-accent-purple) !important;
+  box-shadow: var(--nebula-glow-purple) !important;
+}
+
+html[data-ypp-ui-style="nebula"] .ytp-settings-menu {
+  background: rgba(13, 10, 30, 0.95) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: var(--nebula-r-md) !important;
+  border: 1px solid var(--nebula-glass-border) !important;
+  box-shadow: var(--nebula-glow-purple) !important;
+}
+
+html[data-ypp-ui-style="nebula"] .ytp-menuitem:hover {
+  background: rgba(155, 93, 229, 0.15) !important;
+}
+
+html[data-ypp-ui-style="nebula"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
+  background: var(--nebula-accent-cyan) !important;
+  box-shadow: 0 0 6px var(--nebula-accent-cyan) !important;
+}

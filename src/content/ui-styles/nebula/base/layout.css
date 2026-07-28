@@ -1,0 +1,27 @@
+html[data-ypp-ui-style="nebula"] * {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--nebula-accent-purple) transparent !important;
+}
+
+html[data-ypp-ui-style="nebula"] ::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: transparent !important;
+}
+
+html[data-ypp-ui-style="nebula"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--nebula-accent-purple), var(--nebula-accent-pink)) !important;
+  border-radius: var(--nebula-r-pill) !important;
+  border: 2px solid transparent !important;
+  background-clip: content-box !important;
+}
+
+html[data-ypp-ui-style="nebula"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--nebula-accent-cyan), var(--nebula-accent-purple)) !important;
+  background-clip: content-box !important;
+}
+
+html[data-ypp-ui-style="nebula"] ::selection {
+  background: rgba(155, 93, 229, 0.4) !important;
+  color: var(--nebula-text-primary) !important;
+}
