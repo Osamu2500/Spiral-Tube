@@ -1,0 +1,52 @@
+html[data-ypp-ui-style="bloodmoon"] ytd-rich-grid-media,
+html[data-ypp-ui-style="bloodmoon"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="bloodmoon"] ytd-video-renderer,
+html[data-ypp-ui-style="bloodmoon"] ytd-grid-video-renderer,
+html[data-ypp-ui-style="bloodmoon"] ytd-playlist-renderer {
+  background: var(--bm-bg-surface) !important;
+  border: 1px solid var(--bm-glass-border) !important;
+  border-radius: var(--bm-r-md) !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s var(--bm-ease) !important;
+  box-shadow: 0 2px 14px rgba(6, 2, 5, 0.5) !important;
+}
+
+html[data-ypp-ui-style="bloodmoon"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="bloodmoon"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="bloodmoon"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="bloodmoon"] ytd-grid-video-renderer:hover,
+html[data-ypp-ui-style="bloodmoon"] ytd-playlist-renderer:hover {
+  background: var(--bm-bg-elevated) !important;
+  border-color: var(--bm-glass-border-active) !important;
+  box-shadow: var(--bm-glow-ember), 0 8px 28px rgba(6, 2, 5, 0.7) !important;
+  transform: translateY(-5px) !important;
+}
+
+html[data-ypp-ui-style="bloodmoon"] ytd-thumbnail {
+  border-radius: var(--bm-r-md) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-ui-style="bloodmoon"] #video-title {
+  color: var(--bm-text-primary) !important;
+  font-weight: 600 !important;
+}
+
+html[data-ypp-ui-style="bloodmoon"] ytd-rich-grid-media:hover #video-title {
+  color: var(--bm-accent-lunar) !important;
+  text-shadow: 0 0 8px rgba(255, 140, 105, 0.4) !important;
+}
+
+html[data-ypp-ui-style="bloodmoon"] #metadata-line span,
+html[data-ypp-ui-style="bloodmoon"] #channel-name {
+  color: var(--bm-text-secondary) !important;
+}
+
+html[data-ypp-ui-style="bloodmoon"] ytd-thumbnail-overlay-time-status-renderer {
+  background: rgba(6, 2, 5, 0.9) !important;
+  border: 1px solid var(--bm-glass-border) !important;
+  border-radius: var(--bm-r-sm) !important;
+  color: var(--bm-accent-lunar) !important;
+  font-weight: 700 !important;
+}
