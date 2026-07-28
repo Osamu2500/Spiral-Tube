@@ -6,6 +6,7 @@
 /* ── Left Sidebar (Playlist metadata) ───────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] ytd-playlist-header-renderer {
   background: var(--faero-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
   backdrop-filter: var(--faero-blur-heavy) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;

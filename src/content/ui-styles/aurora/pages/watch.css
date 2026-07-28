@@ -5,6 +5,7 @@
 /* Action Button Row (Like, Share, Download) */
 html[data-ypp-ui-style="aurora"] #top-level-buttons-computed yt-button-shape button {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
@@ -52,8 +53,8 @@ html[data-ypp-ui-style="aurora"] ytd-subscribe-button-renderer[subscribed] butto
 html[data-ypp-ui-style="aurora"] #description-inner,
 html[data-ypp-ui-style="aurora"] #description.ytd-watch-metadata {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
@@ -92,6 +93,7 @@ html[data-ypp-ui-style="aurora"] ytd-compact-autoplay-renderer #autoplay-toggle 
 /* Chapter Markers / Macro Markers */
 html[data-ypp-ui-style="aurora"] ytd-macro-markers-list-renderer {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
@@ -111,6 +113,7 @@ html[data-ypp-ui-style="aurora"] ytd-macro-markers-list-item-renderer:hover {
 /* Transcript Panel */
 html[data-ypp-ui-style="aurora"] ytd-transcript-renderer {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;

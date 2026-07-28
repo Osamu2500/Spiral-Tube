@@ -12,6 +12,7 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-masthead {
 html[data-ypp-ui-style="frutiger-aero"] ytd-masthead #container.ytd-masthead {
   /* Complex multi-stop blue gradient from 4PDA/References */
   background: var(--faero-gradient-navbar) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border-bottom: 1px solid rgba(0,0,0,0.2) !important;
   box-shadow: var(--faero-shadow-navbar) !important;

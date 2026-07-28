@@ -8,6 +8,7 @@
 /* ── Video Metadata Panel ───────────────────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] #above-the-fold {
   background: var(--faero-glass-medium) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
@@ -69,6 +70,7 @@ html[data-ypp-ui-style="frutiger-aero"] #secondary {
 
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-next-secondary-results-renderer {
   background: var(--faero-glass-light) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
@@ -88,6 +90,7 @@ html[data-ypp-ui-style="frutiger-aero"] #progress.ytd-macro-markers-list-rendere
 /* ── Comments Section ───────────────────────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] #comments {
   background: var(--faero-glass-light) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;

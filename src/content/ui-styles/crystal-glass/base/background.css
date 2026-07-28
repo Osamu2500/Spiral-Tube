@@ -40,6 +40,7 @@ html[data-ypp-ui-style="crystal-glass"] ::-webkit-scrollbar-track {
 }
 html[data-ypp-ui-style="crystal-glass"] ::-webkit-scrollbar-thumb {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
@@ -53,8 +54,8 @@ html[data-ypp-ui-style="crystal-glass"] ::-webkit-scrollbar-thumb:hover {
 html[data-ypp-ui-style="crystal-glass"] .ypp-vcp-header,
 html[data-ypp-ui-style="crystal-glass"] .ypp-folder-header {
   background: var(--cglass-base) !important;
-  backdrop-filter: var(--cglass-blur-sm) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border-bottom: var(--cglass-border) !important; 
   color: var(--cglass-text-primary) !important;
 }
@@ -90,6 +91,7 @@ html[data-ypp-ui-style="crystal-glass"] .ypp-gpb-vol-slider::-webkit-slider-thum
 /* Filter Dropdowns */
 html[data-ypp-ui-style="crystal-glass"] .ypp-filter-dropdown {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-md) !important;

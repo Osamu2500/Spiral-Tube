@@ -6,8 +6,8 @@
 html[data-ypp-ui-style="crystal-glass"] #description-inner,
 html[data-ypp-ui-style="crystal-glass"] #description.ytd-watch-metadata {
   background: var(--cglass-base) !important;
-  backdrop-filter: var(--cglass-blur-sm) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-md) !important;
   padding: 16px !important;
@@ -17,6 +17,7 @@ html[data-ypp-ui-style="crystal-glass"] #description.ytd-watch-metadata {
 /* Sidebar Recommendation Cards */
 html[data-ypp-ui-style="crystal-glass"] ytd-compact-video-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-md) !important;
@@ -50,6 +51,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-macro-markers-list-item-renderer:hov
 /* Transcript Panel */
 html[data-ypp-ui-style="crystal-glass"] ytd-transcript-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-md) !important;

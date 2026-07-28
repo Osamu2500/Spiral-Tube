@@ -5,8 +5,8 @@
 /* Scrim / Backdrop */
 html[data-ypp-ui-style="aurora"] tp-yt-iron-overlay-backdrop {
   background: rgba(0, 0, 0, 0.7) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
   opacity: 1 !important;
 }
 
@@ -18,8 +18,8 @@ html[data-ypp-ui-style="aurora"] ytd-super-thanks-dialog-renderer,
 html[data-ypp-ui-style="aurora"] yt-share-panel-renderer,
 html[data-ypp-ui-style="aurora"] ytd-unified-share-panel-renderer {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   box-shadow: var(--aurora-glow-mixed) !important;

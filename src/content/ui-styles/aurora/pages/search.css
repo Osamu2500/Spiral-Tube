@@ -8,6 +8,7 @@ html[data-ypp-ui-style="aurora"] ytd-search-filter-group-renderer {
 }
 html[data-ypp-ui-style="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
@@ -24,8 +25,8 @@ html[data-ypp-ui-style="aurora"] ytd-toggle-button-renderer #button.ytd-toggle-b
 /* Expansion Panel for Search Filters */
 html[data-ypp-ui-style="aurora"] ytd-search-sub-menu-renderer {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
@@ -51,6 +52,7 @@ html[data-ypp-ui-style="aurora"] ytd-search-filter-renderer[selected] {
 /* Channel blocks in search results */
 html[data-ypp-ui-style="aurora"] ytd-channel-renderer {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
@@ -71,6 +73,7 @@ html[data-ypp-ui-style="aurora"] ytd-channel-renderer #avatar {
 /* Playlist blocks in search results */
 html[data-ypp-ui-style="aurora"] ytd-playlist-renderer {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important;
   backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
@@ -87,6 +90,7 @@ html[data-ypp-ui-style="aurora"] ytd-playlist-renderer:hover {
 /* "People also watched" shelf */
 html[data-ypp-ui-style="aurora"] ytd-horizontal-card-list-renderer {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;

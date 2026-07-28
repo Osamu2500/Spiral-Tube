@@ -5,8 +5,8 @@
 /* Filter Chips (e.g. "All", "Music") */
 html[data-ypp-ui-style="crystal-glass"] yt-chip-cloud-chip-renderer {
   background: var(--cglass-base) !important;
-  backdrop-filter: var(--cglass-blur-sm) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
   color: var(--cglass-text-primary) !important;
@@ -33,6 +33,7 @@ html[data-ypp-ui-style="crystal-glass"] yt-chip-cloud-chip-renderer[chip-style="
 /* Top filter bar container */
 html[data-ypp-ui-style="crystal-glass"] ytd-feed-filter-chip-bar-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
   border-bottom: var(--cglass-border) !important;
   border-radius: 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg) !important;
@@ -43,6 +44,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-feed-filter-chip-bar-renderer {
 html[data-ypp-ui-style="crystal-glass"] #left-arrow button,
 html[data-ypp-ui-style="crystal-glass"] #right-arrow button {
   background: var(--cglass-base-heavy) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: 50% !important;
@@ -56,6 +58,7 @@ html[data-ypp-ui-style="crystal-glass"] #right-arrow button:hover {
 /* Home Page Sections / Shelves */
 html[data-ypp-ui-style="crystal-glass"] ytd-rich-shelf-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;

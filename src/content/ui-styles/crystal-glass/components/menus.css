@@ -9,8 +9,8 @@ html[data-ypp-ui-style="crystal-glass"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-style="crystal-glass"] tp-yt-paper-listbox,
 html[data-ypp-ui-style="crystal-glass"] .ytSearchboxComponentSuggestionsContainer {
   background: var(--cglass-base-heavy) !important;
-  backdrop-filter: var(--cglass-blur-lg) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: var(--cglass-radius-md) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
@@ -21,6 +21,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytSearchboxComponentSuggestionsContaine
 html[data-ypp-ui-style="crystal-glass"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
 html[data-ypp-ui-style="crystal-glass"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
   background: transparent !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
   border: none !important;

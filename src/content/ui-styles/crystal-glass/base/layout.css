@@ -23,6 +23,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytSearchboxComponentSuggestionsContaine
 /* Player Controls Group (Right side) - make them glass pills */
 html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
@@ -34,6 +35,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .
 /* Volume Area */
 html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
@@ -44,6 +46,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-v
 /* Progress bar drag container */
 html[data-ypp-ui-style="crystal-glass"] .ytPlayerProgressBarDragContainer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
@@ -68,6 +71,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytProgressBarLineProgressBarLoaded {
 /* Extension Navigation Button Active State */
 html[data-ypp-ui-style="crystal-glass"] .ypp-nav-btn.active {
   background: var(--cglass-base-heavy) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border-heavy) !important;
   box-shadow: var(--cglass-shadow-inner) !important;

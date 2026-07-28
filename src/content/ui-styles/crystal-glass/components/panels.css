@@ -7,8 +7,8 @@ html[data-ypp-ui-style="crystal-glass"] #guide-wrapper.ytd-app,
 html[data-ypp-ui-style="crystal-glass"] ytd-mini-guide-renderer,
 html[data-ypp-ui-style="crystal-glass"] app-drawer#guide-inner-content {
   background: var(--cglass-base) !important;
-  backdrop-filter: var(--cglass-blur-md) !important;
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
   border-right: var(--cglass-border) !important;
   box-shadow: 4px 0 20px rgba(0,0,0,0.1) !important;
 }
@@ -48,6 +48,7 @@ html[data-ypp-ui-style="crystal-glass"] .ypp-organizer-modal,
 html[data-ypp-ui-style="crystal-glass"] #ypp-eq-panel,
 html[data-ypp-ui-style="crystal-glass"] .ypp-account-menu {
   background: var(--cglass-base-heavy) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: var(--cglass-radius-lg) !important;

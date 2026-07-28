@@ -8,6 +8,7 @@
 /* ── Comment Container Header ───────────────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] ytd-comments-header-renderer {
   background: var(--faero-glass-medium) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;

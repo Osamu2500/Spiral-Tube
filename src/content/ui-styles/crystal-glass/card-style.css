@@ -16,8 +16,8 @@ html[data-ypp-card-style='crystal-glass']
     yt-lockup-view-model:not(:is(ytd-rich-item-renderer,ytd-video-renderer,ytd-playlist-renderer,ytd-radio-renderer,ytd-channel-renderer,ytd-compact-video-renderer,ytd-grid-video-renderer,.ypp-grid-item) *)
   ) {
   background: rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   border-radius: 8px !important; /* sharper edges */
   box-shadow: 

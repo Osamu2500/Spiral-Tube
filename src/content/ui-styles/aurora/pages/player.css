@@ -21,8 +21,8 @@ html[data-ypp-ui-style="aurora"] .html5-video-player {
 /* Large Center Play/Pause Animation Overlay (The Bezel) */
 html[data-ypp-ui-style="aurora"] .ytp-bezel {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-mixed) !important;
   border-radius: 50% !important;
@@ -65,6 +65,7 @@ html[data-ypp-ui-style="aurora"] .ytp-button[aria-pressed="true"]::after {
 /* Error Screen */
 html[data-ypp-ui-style="aurora"] .ytp-error {
   background: var(--aurora-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
   backdrop-filter: var(--aurora-blur-lg) !important;
   border-radius: var(--aurora-radius-lg) !important;
 }

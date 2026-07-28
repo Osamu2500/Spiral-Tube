@@ -6,6 +6,7 @@
 /* ── Top filter bar container ───────────────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] ytd-feed-filter-chip-bar-renderer {
   background: var(--faero-glass-medium) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border-bottom: var(--faero-border-white) !important;
   border-radius: 0 0 var(--faero-radius-lg) var(--faero-radius-lg) !important;
@@ -32,6 +33,7 @@ html[data-ypp-ui-style="frutiger-aero"] #right-arrow button:hover {
 /* ── Home Page Sections / Shelves ───────────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] ytd-rich-shelf-renderer {
   background: var(--faero-glass-light) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
@@ -59,6 +61,7 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-statement-banner-renderer {
 html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-toast,
 html[data-ypp-ui-style="frutiger-aero"] #toast {
   background: var(--faero-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;

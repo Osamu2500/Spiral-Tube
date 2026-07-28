@@ -13,6 +13,7 @@ html[data-ypp-ui-style="crystal-glass"] .yt-spec-icon-shape {
 /* Notification Badge (Number indicator) */
 html[data-ypp-ui-style="crystal-glass"] .yt-spec-icon-badge-shape__badge {
   background: rgba(255, 0, 0, 0.8) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   color: #fff !important;
@@ -23,6 +24,7 @@ html[data-ypp-ui-style="crystal-glass"] .yt-spec-icon-badge-shape__badge {
 /* LIVE badges */
 html[data-ypp-ui-style="crystal-glass"] ytd-badge-supported-renderer {
   background: rgba(255, 0, 0, 0.2) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
   border: 1px solid rgba(255, 100, 100, 0.8) !important;
   color: #ffcccc !important;

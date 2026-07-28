@@ -8,8 +8,8 @@ html[data-ypp-ui-style="crystal-glass"] ytd-masthead {
 }
 html[data-ypp-ui-style="crystal-glass"] ytd-masthead #container.ytd-masthead {
   background: var(--cglass-base) !important;
-  backdrop-filter: var(--cglass-blur-md) !important;
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
   border-bottom: var(--cglass-border) !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
 }

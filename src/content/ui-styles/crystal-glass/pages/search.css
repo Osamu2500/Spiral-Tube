@@ -8,6 +8,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-search-filter-group-renderer {
 }
 html[data-ypp-ui-style="crystal-glass"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
@@ -24,8 +25,8 @@ html[data-ypp-ui-style="crystal-glass"] ytd-toggle-button-renderer #button.ytd-t
 /* Expansion Panel for Search Filters */
 html[data-ypp-ui-style="crystal-glass"] ytd-search-sub-menu-renderer {
   background: var(--cglass-base-heavy) !important;
-  backdrop-filter: var(--cglass-blur-lg) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: var(--cglass-radius-lg) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
@@ -50,6 +51,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-search-filter-renderer[selected] {
 /* Channel blocks in search results */
 html[data-ypp-ui-style="crystal-glass"] ytd-channel-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
@@ -72,6 +74,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-channel-renderer #avatar {
 /* Playlist blocks in search results */
 html[data-ypp-ui-style="crystal-glass"] ytd-playlist-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
@@ -89,6 +92,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-playlist-renderer:hover {
 /* "People also watched" shelf */
 html[data-ypp-ui-style="crystal-glass"] ytd-horizontal-card-list-renderer {
   background: var(--cglass-base) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;

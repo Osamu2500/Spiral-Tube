@@ -5,8 +5,8 @@
 /* Filter Chips ("All", "Music", "Gaming") */
 html[data-ypp-ui-style="aurora"] yt-chip-cloud-chip-renderer {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   margin: 4px !important;
@@ -60,8 +60,8 @@ html[data-ypp-ui-style="aurora"] #right-arrow button:hover {
 /* Shelves ("Latest YouTube posts", "Shorts") */
 html[data-ypp-ui-style="aurora"] ytd-rich-shelf-renderer {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
+  backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   box-shadow: var(--aurora-shadow-glass) !important;

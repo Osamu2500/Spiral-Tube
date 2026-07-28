@@ -8,6 +8,7 @@
 /* ── Only the actual player shell gets the glass bezel ──── */
 html[data-ypp-ui-style="frutiger-aero"] #ytd-player {
   background: var(--faero-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
   backdrop-filter: var(--faero-blur-heavy) !important;
   border: var(--faero-border-white) !important;
   border-top: var(--faero-border-white2) !important;
@@ -27,6 +28,7 @@ html[data-ypp-ui-style="frutiger-aero"] .html5-video-player {
 /* ── Play/Pause Large Center Icon Animation ─────────────── */
 html[data-ypp-ui-style="frutiger-aero"] .ytp-bezel {
   background: var(--faero-glass-heavy) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border: var(--faero-border-white) !important;
   border-radius: 50% !important;
@@ -46,6 +48,7 @@ html[data-ypp-ui-style="frutiger-aero"] .ytp-gradient-bottom {
 /* ── Settings Menu inside Player ────────────────────────── */
 html[data-ypp-ui-style="frutiger-aero"] .ytp-popup {
   background: var(--faero-glass-heavy) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-md) !important;

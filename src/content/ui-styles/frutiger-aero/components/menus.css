@@ -13,6 +13,7 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-listbox,
 html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentSuggestionsContainer {
   background: var(--faero-glass-heavy) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-top: var(--faero-border-white2) !important;
@@ -25,6 +26,7 @@ html[data-ypp-ui-style="frutiger-aero"] .ytSearchboxComponentSuggestionsContaine
 html[data-ypp-ui-style="frutiger-aero"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
 html[data-ypp-ui-style="frutiger-aero"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer {
   background: transparent !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
   border: none !important;

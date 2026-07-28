@@ -18,8 +18,8 @@ html[data-ypp-card-style="aurora"] :is(
   ) *)
 ) {
   background: var(--aurora-glass-heavy) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
@@ -95,8 +95,8 @@ html[data-ypp-card-style="aurora"] ytd-thumbnail:hover img {
 /* Time Status Badge (e.g., 10:05) */
 html[data-ypp-card-style="aurora"] ytd-thumbnail-overlay-time-status-renderer {
   background: var(--aurora-glass-solid) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
+  backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   color: var(--aurora-text-primary) !important;
