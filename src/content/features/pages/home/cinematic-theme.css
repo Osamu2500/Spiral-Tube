@@ -232,8 +232,7 @@ body.cinematic-home .netflix-hero-ui {
 /* Re-enable pointer events specifically on interactive elements inside the hero */
 body.cinematic-home .netflix-hero-content,
 body.cinematic-home .netflix-hero-content *,
-body.cinematic-home .netflix-hero-nav,
-body.cinematic-home .netflix-hero-nav * {
+body.cinematic-home .netflix-hero-nav .netflix-nav-button {
   pointer-events: auto !important;
 }
 
