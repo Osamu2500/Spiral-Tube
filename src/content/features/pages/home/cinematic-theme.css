@@ -214,8 +214,19 @@ body.cinematic-home .netflix-hero {
   overflow: hidden;
 }
 
-body.cinematic-home ytd-miniplayer[is-watch-page] ~ * .netflix-hero {
+body.cinematic-home ytd-miniplayer[is-watch-page] ~ * .netflix-hero,
+body.cinematic-home ytd-miniplayer[is-watch-page] ~ * .netflix-hero-ui {
   display: none !important;
+}
+
+body.cinematic-home .netflix-hero-ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh;
+  z-index: 2200 !important;
+  pointer-events: none !important;
 }
 
 /* Re-enable pointer events specifically on interactive elements inside the hero */

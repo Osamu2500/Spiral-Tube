@@ -269,15 +269,20 @@ class HeroManager {
         gradient.className = 'netflix-hero-gradient';
         heroWrapper.appendChild(gradient);
 
+        const uiWrapper = document.createElement('div');
+        uiWrapper.className = 'netflix-hero-ui fading';
+        this.uiElement = uiWrapper;
+
         const contentOverlay = document.createElement('div');
         contentOverlay.className = 'netflix-hero-content';
-        heroWrapper.appendChild(contentOverlay);
+        uiWrapper.appendChild(contentOverlay);
 
         const hideNativeVolume = document.createElement('style');
         hideNativeVolume.textContent = '.ytp-mute-button, .ytp-volume-area { display: none !important; }';
         heroWrapper.appendChild(hideNativeVolume);
 
         document.body.appendChild(heroWrapper);
+        document.body.appendChild(uiWrapper);
         this.status = 'ready';
 
         this._setupPreviewChangeObserver();
@@ -285,6 +290,9 @@ class HeroManager {
         requestAnimationFrame(() => {
             if (this.heroElement === heroWrapper) {
                 heroWrapper.classList.remove('fading');
+            }
+            if (this.uiElement === uiWrapper) {
+                uiWrapper.classList.remove('fading');
             }
         });
     }
@@ -367,7 +375,9 @@ class HeroManager {
         }
 
         this.heroElement?.remove();
+        this.uiElement?.remove();
         this.heroElement = null;
+        this.uiElement = null;
         this.status = 'inactive';
     }
 
@@ -467,7 +477,7 @@ class HeroManager {
         metadata.title = metadata.title || 'Featured Video';
         metadata.channelName = metadata.channelName || 'YouTube Creator';
 
-        const contentOverlay = this.heroElement.querySelector('.netflix-hero-content');
+        const contentOverlay = this.uiElement ? this.uiElement.querySelector('.netflix-hero-content') : null;
         if (!contentOverlay) return;
 
         const content = {
@@ -938,10 +948,10 @@ class CinematicController {
     }
 
     updateMuteButtonVisibility() {
-        if (!this.hero || !this.hero.heroElement) return;
+        if (!this.hero || !this.hero.uiElement) return;
         
         const preview = document.querySelector('ytd-video-preview');
-        const unmuteBtn = this.hero.heroElement.querySelector('.netflix-unmute-button');
+        const unmuteBtn = this.hero.uiElement.querySelector('.netflix-unmute-button');
         
         if (unmuteBtn) {
             unmuteBtn.style.display = preview ? 'flex' : 'none';
@@ -1032,7 +1042,7 @@ class CinematicController {
                     this.state.isUserHovering = false;
                     this.observerManager.clearTimeout(this.state.videoTimer);
                     this.state.videoTimer = this.observerManager.addTimeout(
-                        setTimeout(() => this.playNextVideo(), 12000)
+                        setTimeout(() => this.playNextVideo(), 5000)
                     );
                 }, { capture: true });
             }
