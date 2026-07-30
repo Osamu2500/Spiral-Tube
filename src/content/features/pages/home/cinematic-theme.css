@@ -679,6 +679,19 @@ html body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer
   background: transparent !important;
 }
 
+/* WebKit Scrollbar Fallbacks for older Chrome/Safari versions */
+html body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row)::-webkit-scrollbar,
+html body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row)::-webkit-scrollbar {
+  height: 6px;
+}
+
+html body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-grid-row)::-webkit-scrollbar-thumb,
+html body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer):not(ytd-rich-grid-row)::-webkit-scrollbar-thumb {
+  background: rgba(122, 122, 122, 0.15);
+  border-radius: 4px;
+}
+
+
 /* Flatten the rows so individual items form a single horizontal line */
 body.cinematic-home ytd-rich-grid-row,
 body.cinematic-home ytd-rich-grid-row > #contents {
