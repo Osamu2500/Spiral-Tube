@@ -295,6 +295,21 @@ body.cinematic-home ytd-video-preview.ypp-projected-preview video {
   pointer-events: none !important;
 }
 
+body.cinematic-home ytd-video-preview.ypp-projected-preview .ytp-inline-preview-ui,
+body.cinematic-home ytd-video-preview.ypp-projected-preview .ytp-chrome-top,
+body.cinematic-home ytd-video-preview.ypp-projected-preview .ytp-chrome-bottom,
+body.cinematic-home ytd-video-preview.ypp-projected-preview ytd-inline-preview-ui,
+body.cinematic-home ytd-video-preview.ypp-projected-preview ytd-inline-preview-ui-renderer,
+body.cinematic-home ytd-video-preview.ypp-projected-preview ytd-toggle-button-renderer,
+body.cinematic-home ytd-video-preview.ypp-projected-preview .ytd-video-preview-mute-button,
+body.cinematic-home ytd-video-preview.ypp-projected-preview [aria-label*="Mute"],
+body.cinematic-home ytd-video-preview.ypp-projected-preview [aria-label*="Unmute"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+
 body.cinematic-home .netflix-hero-bg-container {
   position: absolute;
   inset: 0;

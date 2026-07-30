@@ -600,6 +600,7 @@ class CinematicController {
 
         this.setupEventDelegation();
         this.setupIdleDetection();
+        this.setupKeyboardShortcuts();
         
         this.hero.create();
         this.initializeVideoPreview();
@@ -697,6 +698,22 @@ class CinematicController {
         window.addEventListener('keydown', resetIdle, { passive: true });
         window.addEventListener('scroll', resetIdle, { passive: true });
         resetIdle();
+    }
+
+    setupKeyboardShortcuts() {
+        const handleKeyDown = (e) => {
+            // Ignore if typing in an input field
+            const tag = e.target.tagName.toLowerCase();
+            if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+
+            if (e.key === 'm' || e.key === 'M') {
+                this.toggleMute();
+                e.preventDefault();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        // We can't easily remove this listener on destroy without a reference, 
+        // but since cinematic mode is a singleton for the page lifecycle, it's fine.
     }
 
     handleUserHoverStart(card) {
