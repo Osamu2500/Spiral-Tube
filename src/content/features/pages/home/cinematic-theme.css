@@ -677,9 +677,6 @@ html body.cinematic-home ytd-rich-grid-renderer div:has(> ytd-rich-item-renderer
   min-height: 290px !important;
   max-height: 290px !important;
   padding: 16px 24px 0px 24px !important; /* Balanced left and right padding */
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(122, 122, 122, 0.15) transparent;
   /* Hide default scrollbar in IE/Edge */
   -ms-overflow-style: none;
   display: flex !important;
@@ -1194,4 +1191,28 @@ body.cinematic-home .netflix-fading-preview ytd-video-preview video {
 body.cinematic-home ytd-rich-item-renderer:has(.netflix-active-preview),
 body.cinematic-home ytd-rich-grid-row:has(.netflix-active-preview) {
   transform: none !important;
+}
+
+/* --- Responsive Scaling for Compact Viewports (Laptops / max-height: 800px) --- */
+@media (max-height: 800px) {
+  body.cinematic-home .netflix-hero-content {
+    bottom: 310px !important;
+    padding: 0 4% !important;
+  }
+  body.cinematic-home .netflix-hero-content .netflix-hero-title {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  body.cinematic-home .netflix-hero-content .netflix-buttons {
+    margin-top: 0.75rem !important;
+  }
+  body.cinematic-home #contents.ytd-rich-grid-renderer {
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 240px !important;
+    bottom: 48px !important;
+  }
+  body.cinematic-home ytd-rich-grid-renderer > #header {
+    height: 48px !important;
+  }
 }

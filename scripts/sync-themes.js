@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const uiStylesDir = path.join(__dirname, 'src/content/ui-styles');
+const uiStylesDir = path.join(__dirname, '../src/content/ui-styles');
+const popupHtmlPath = path.join(__dirname, '../src/popup/popup.html');
 
 const dirs = fs.readdirSync(uiStylesDir, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory() && dirent.name !== 'shared' && dirent.name !== 'search-card-compat')
@@ -83,7 +84,7 @@ console.log(`Popup UI Themes (${sortedPopupUiThemes.length}):`, sortedPopupUiThe
 console.log(`Card Styles (${sortedCardStyles.length}):`, sortedCardStyles.join(', '));
 
 // Update popup.html
-let html = fs.readFileSync('src/popup/popup.html', 'utf8');
+let html = fs.readFileSync(popupHtmlPath, 'utf8');
 
 const sections = [
     { id: 'youtubePageTheme', btnClass: 'youtube-style-btn', list: sortedUiPageThemes },
@@ -102,5 +103,5 @@ sections.forEach(sec => {
     });
 });
 
-fs.writeFileSync('src/popup/popup.html', html, 'utf8');
+fs.writeFileSync(popupHtmlPath, html, 'utf8');
 console.log('Successfully synced popup.html!');

@@ -1,11 +1,12 @@
 const fs = require('fs');
+const path = require('path');
 
-const dirs = fs.readdirSync('src/content/ui-styles', { withFileTypes: true })
+const dirs = fs.readdirSync(path.join(__dirname, '../src/content/ui-styles'), { withFileTypes: true })
     .filter(dirent => dirent.isDirectory() && dirent.name !== 'shared' && dirent.name !== 'search-card-compat')
     .map(dirent => dirent.name);
 
-const html = fs.readFileSync('src/popup/popup.html', 'utf8');
-const js = fs.readFileSync('src/popup/popup-components.js', 'utf8');
+const html = fs.readFileSync(path.join(__dirname, '../src/popup/popup.html'), 'utf8');
+const js = fs.readFileSync(path.join(__dirname, '../src/popup/popup-components.js'), 'utf8');
 
 const missingInHtml = [];
 const missingInJs = [];

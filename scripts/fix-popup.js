@@ -1,6 +1,8 @@
 const fs = require('fs');
+const path = require('path');
+const popupHtmlPath = path.join(__dirname, '../src/popup/popup.html');
 
-let html = fs.readFileSync('src/popup/popup.html', 'utf8');
+let html = fs.readFileSync(popupHtmlPath, 'utf8');
 
 // Fix the empty 'data-' attributes on all buttons
 html = html.replace(/data-\s+data-i18n="([^"]+)"/g, (match, i18nKey) => {
@@ -51,5 +53,5 @@ sections.forEach(sec => {
     }
 });
 
-fs.writeFileSync('src/popup/popup.html', html);
+fs.writeFileSync(popupHtmlPath, html);
 console.log('Fixed data-style attributes and added new themes.');

@@ -1,6 +1,8 @@
 const fs = require('fs');
+const path = require('path');
+const popupJsPath = path.join(__dirname, '../src/popup/popup-components.js');
 
-let js = fs.readFileSync('src/popup/popup-components.js', 'utf8');
+let js = fs.readFileSync(popupJsPath, 'utf8');
 
 // A map of light themes and their respective light background hex colors
 const lightThemeColors = {
@@ -32,5 +34,5 @@ for (const [theme, color] of Object.entries(lightThemeColors)) {
   js = js.replace(regex, `$1'${color}'`);
 }
 
-fs.writeFileSync('src/popup/popup-components.js', js);
+fs.writeFileSync(popupJsPath, js);
 console.log('Patched light theme colors in popup-components.js');
