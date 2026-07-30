@@ -56,6 +56,23 @@ body.cinematic ytd-masthead yt-icon-button {
   color: #fff !important;
 }
 
+/* Ensure header icons and text maintain dark mode appearance regardless of system theme */
+body.cinematic ytd-masthead #start *,
+body.cinematic ytd-masthead #center *,
+body.cinematic ytd-masthead #end *,
+body.cinematic ytd-masthead #end yt-icon,
+body.cinematic ytd-masthead #end .yt-spec-icon-shape,
+body.cinematic ytd-masthead #end svg,
+body.cinematic ytd-masthead #start svg,
+body.cinematic ytd-masthead #start yt-icon,
+body.cinematic ytd-masthead yt-icon,
+body.cinematic ytd-masthead .yt-spec-icon-shape svg,
+body.cinematic ytd-masthead ytd-button-renderer,
+body.cinematic ytd-masthead yt-icon-button {
+  fill: #fff !important;
+  color: #fff !important;
+}
+
 /* Make the pill container fully transparent in cinematic mode */
 html.yt-premium-plus-theme body.cinematic-home ytd-masthead #container,
 body.cinematic-home ytd-masthead #container {
