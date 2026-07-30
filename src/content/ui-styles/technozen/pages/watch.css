@@ -1,1 +1,108 @@
-/* pages/watch.css - Empty by default */
+/* pages/watch.css */
+
+/* ==========================================================================
+   TECHNOZEN BIO-ORGANIC GLASS — COMPLETE PLAYER PAGE STYLING
+   Action Buttons, Channel Bar, Description Box & Comments Section Bio-Cards
+   ========================================================================== */
+
+/* 1. Action Buttons (Bio-Pill Glass Buttons) */
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="technozen"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next {
+  background: rgba(228, 248, 218, 0.95) !important;
+  border: 1px solid rgba(90, 191, 71, 0.5) !important;
+  border-radius: 2000px !important;
+  color: #153320 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(90, 191, 71, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="technozen"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next:hover {
+  background: #ffffff !important;
+  border-color: #30b8c8 !important;
+  box-shadow: 0 6px 20px rgba(48, 184, 200, 0.25) !important;
+  transform: translateY(-2px) scale(1.03) !important;
+}
+
+/* High contrast readability for text and icons inside buttons */
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path {
+  fill: #153320 !important;
+  color: #153320 !important;
+}
+
+/* 2. Channel Bar (#owner) */
+html[data-ypp-ui-style="technozen"] #owner {
+  background: rgba(228, 248, 218, 0.85) !important;
+  border: 1px solid rgba(90, 191, 71, 0.4) !important;
+  border-radius: 24px !important;
+  padding: 12px 18px !important;
+  box-shadow: 0 4px 16px rgba(90, 191, 71, 0.12) !important;
+  margin-bottom: 16px !important;
+}
+
+html[data-ypp-ui-style="technozen"] #channel-name a {
+  color: #153320 !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="technozen"] #owner-sub-count {
+  color: #2b593f !important;
+}
+
+/* 3. Description Box (Bio-Curved Organic Card) */
+html[data-ypp-ui-style="technozen"] #description-inner,
+html[data-ypp-ui-style="technozen"] ytd-watch-metadata #description {
+  background: rgba(228, 248, 218, 0.8) !important;
+  border: 1px solid rgba(90, 191, 71, 0.35) !important;
+  border-radius: 28px !important;
+  padding: 18px !important;
+  color: #153320 !important;
+  box-shadow: 0 4px 18px rgba(90, 191, 71, 0.12) !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="technozen"] #description-inner:hover,
+html[data-ypp-ui-style="technozen"] ytd-watch-metadata #description:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #30b8c8 !important;
+  box-shadow: 0 8px 24px rgba(48, 184, 200, 0.2) !important;
+}
+
+/* 4. Comments Section (Organic Mint Petal Cards) */
+html[data-ypp-ui-style="technozen"] #comments {
+  background: rgba(228, 248, 218, 0.7) !important;
+  border: 1px solid rgba(90, 191, 71, 0.3) !important;
+  border-radius: 28px !important;
+  padding: 20px !important;
+  margin-top: 24px !important;
+}
+
+html[data-ypp-ui-style="technozen"] ytd-comment-thread-renderer {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(90, 191, 71, 0.25) !important;
+  border-radius: 20px !important;
+  padding: 14px !important;
+  margin-bottom: 12px !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+html[data-ypp-ui-style="technozen"] ytd-comment-thread-renderer:hover {
+  border-color: #30b8c8 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(48, 184, 200, 0.18) !important;
+}
+
+html[data-ypp-ui-style="technozen"] ytd-comment-thread-renderer #content-text,
+html[data-ypp-ui-style="technozen"] ytd-comment-thread-renderer #author-text span {
+  color: #153320 !important;
+}

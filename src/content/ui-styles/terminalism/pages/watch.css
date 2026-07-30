@@ -110,3 +110,37 @@ html[data-ypp-ui-style="terminalism"] ytd-transcript-segment-renderer[is-highlig
   background: var(--term-green) !important;
   color: var(--term-bg) !important;
 }
+
+/* ==========================================================================
+   TERMINALISM — COMMENTS SECTION UPGRADE (CRT TERMINAL LOG)
+   ========================================================================== */
+html[data-ypp-ui-style="terminalism"] #comments {
+  background: var(--term-bg) !important;
+  border: var(--term-border) !important;
+  padding: 20px !important;
+  margin-top: 24px !important;
+  position: relative !important;
+  box-shadow: var(--term-glow) !important;
+}
+
+html[data-ypp-ui-style="terminalism"] #comments::before {
+  content: "--- COMMENTS.LOG ---";
+  display: block;
+  color: var(--term-green);
+  font-family: monospace;
+  margin-bottom: 12px;
+}
+
+html[data-ypp-ui-style="terminalism"] ytd-comment-thread-renderer {
+  background: var(--term-bg) !important;
+  border: 1px dashed var(--term-green-dim) !important;
+  padding: 14px !important;
+  margin-bottom: 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="terminalism"] ytd-comment-thread-renderer:hover {
+  border: var(--term-border) !important;
+  background: var(--term-green-fade) !important;
+  box-shadow: var(--term-glow) !important;
+}

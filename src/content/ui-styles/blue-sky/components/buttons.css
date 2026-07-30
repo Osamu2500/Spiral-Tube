@@ -162,3 +162,47 @@ html[data-ypp-theme="blue-sky"] .yt-spec-touch-feedback-shape__fill,
 html[data-ypp-theme="blue-sky"] .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
+
+/* ==========================================================================
+   BLUE SKY HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark stratosphere blue (#034078) on Action Buttons, Text, and SVG icons
+   ========================================================================== */
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextTonal {
+  color: #034078 !important;
+}
+
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--tonal svg,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--tonal svg,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono svg,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono svg,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText svg,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText svg,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextTonal svg,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextTonal svg,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--tonal path,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--tonal path,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono path,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono path,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button path,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button path {
+  fill: #034078 !important;
+  color: #034078 !important;
+  stroke: none !important;
+}

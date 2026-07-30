@@ -126,3 +126,24 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-comment-thread-renderer:hover {
   background: rgba(255,255,255,0.5) !important;
   border-radius: var(--faero-radius-md) !important;
 }
+
+/* ==========================================================================
+   FRUTIGER AERO HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark aero slate (#061528) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-ui-style="frutiger-aero"] #owner-sub-count,
+html[data-ypp-ui-style="frutiger-aero"] #channel-name a,
+html[data-ypp-ui-style="frutiger-aero"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="frutiger-aero"] ytd-video-owner-renderer #channel-name * {
+  color: #061528 !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #description *,
+html[data-ypp-ui-style="frutiger-aero"] #content-text,
+html[data-ypp-ui-style="frutiger-aero"] #author-text span,
+html[data-ypp-ui-style="frutiger-aero"] ytd-comment-thread-renderer * {
+  color: #061528 !important;
+}

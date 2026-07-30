@@ -76,31 +76,19 @@ export class VolumeBoosterUI {
                 panel.style.top = topPx + 'px';
             } else if (bar.classList.contains('ypp-bar-pos-top')) {
                 panel.style.top = '76px';
-                panel.style.left = 'calc(50% - 215px)';
-                panel.style.right = 'auto';
+                panel.style.right = '24px';
+                panel.style.left = 'auto';
             }
-        } else if (anchorBtn && anchorBtn.getBoundingClientRect) {
-            const rect = anchorBtn.getBoundingClientRect();
-            if (rect && rect.width > 0 && rect.top > 0) {
-                let bottomPx = Math.max(16, window.innerHeight - rect.top + 12);
-                let rightPx = Math.max(16, window.innerWidth - rect.right - 10);
-                const panelHeight = 440;
-                if (bottomPx + panelHeight > window.innerHeight - 16) {
-                    bottomPx = Math.max(16, window.innerHeight - panelHeight - 16);
-                }
-                if (rightPx + 320 > window.innerWidth - 16) {
-                    rightPx = Math.max(16, window.innerWidth - 336);
-                }
-                Object.assign(panel.style, {
-                    position: 'fixed',
-                    top: 'auto',
-                    bottom: `${bottomPx}px`,
-                    left: 'auto',
-                    right: `${rightPx}px`,
-                    maxHeight: 'calc(100vh - 40px)',
-                    zIndex: '9999999'
-                });
-            }
+        } else {
+            Object.assign(panel.style, {
+                position: 'fixed',
+                top: '110px',
+                right: '24px',
+                left: 'auto',
+                bottom: 'auto',
+                maxHeight: 'calc(100vh - 134px)',
+                zIndex: '2147483646'
+            });
         }
 
 
@@ -440,6 +428,9 @@ export class VolumeBoosterUI {
             document.body.appendChild(panel);
         }
         ctx._volumePopup = panel;
+        if (window.YPP?.Utils?.makePopupZoomInvariant) {
+            window.YPP.Utils.makePopupZoomInvariant(panel);
+        }
 
         anime({
             targets: panel.querySelectorAll('.ypp-eq-band-col'),

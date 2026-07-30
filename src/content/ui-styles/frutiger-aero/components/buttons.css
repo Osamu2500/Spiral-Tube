@@ -143,3 +143,36 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-masthead yt-icon {
   fill: var(--faero-text-secondary) !important;
   filter: none !important;
 }
+
+/* ==========================================================================
+   FRUTIGER AERO HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces crisp readable text and SVG icons on all Action & Tonal Buttons
+   ========================================================================== */
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="frutiger-aero"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="frutiger-aero"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="frutiger-aero"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="frutiger-aero"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style="frutiger-aero"] .ytLikeButtonViewModelHost button {
+  color: #061528 !important;
+  border-color: rgba(6, 21, 40, 0.25) !important;
+}
+
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--tonal svg,
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--mono svg,
+html[data-ypp-ui-style="frutiger-aero"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="frutiger-aero"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="frutiger-aero"] button.ytSpecButtonShapeNextText svg,
+html[data-ypp-ui-style="frutiger-aero"] button.ytSpecButtonShapeNextTonal svg,
+html[data-ypp-ui-style="frutiger-aero"] .ytLikeButtonViewModelHost button svg,
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--tonal path,
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--mono path,
+html[data-ypp-ui-style="frutiger-aero"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
+html[data-ypp-ui-style="frutiger-aero"] ytd-menu-renderer yt-button-shape button path,
+html[data-ypp-ui-style="frutiger-aero"] button.ytSpecButtonShapeNextText path,
+html[data-ypp-ui-style="frutiger-aero"] button.ytSpecButtonShapeNextTonal path {
+  fill: #061528 !important;
+  color: #061528 !important;
+  stroke: none !important;
+}

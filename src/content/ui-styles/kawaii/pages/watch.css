@@ -39,3 +39,24 @@ html[data-ypp-ui-style="kawaii"] #description.ytd-watch-metadata:hover {
   background: rgba(255, 255, 255, 0.8) !important;
   box-shadow: var(--kawaii-shadow-fluffy) !important;
 }
+
+/* ==========================================================================
+   KAWAII HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces deep berry cocoa (#380c1a) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-ui-style="kawaii"] #owner-sub-count,
+html[data-ypp-ui-style="kawaii"] #channel-name a,
+html[data-ypp-ui-style="kawaii"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="kawaii"] ytd-video-owner-renderer #channel-name * {
+  color: #380c1a !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="kawaii"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="kawaii"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="kawaii"] ytd-watch-metadata #description *,
+html[data-ypp-ui-style="kawaii"] #content-text,
+html[data-ypp-ui-style="kawaii"] #author-text span,
+html[data-ypp-ui-style="kawaii"] ytd-comment-thread-renderer * {
+  color: #380c1a !important;
+}

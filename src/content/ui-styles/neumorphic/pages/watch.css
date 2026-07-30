@@ -115,3 +115,24 @@ html[data-ypp-ui-style="neumorphic"] ytd-transcript-segment-renderer[is-highligh
   box-shadow: var(--neu-shadow-outset-sm) !important;
   color: var(--neu-accent) !important;
 }
+
+/* ==========================================================================
+   NEUMORPHIC HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark slate (#1a202c) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-ui-style="neumorphic"] #owner-sub-count,
+html[data-ypp-ui-style="neumorphic"] #channel-name a,
+html[data-ypp-ui-style="neumorphic"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="neumorphic"] ytd-video-owner-renderer #channel-name * {
+  color: #1a202c !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="neumorphic"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="neumorphic"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="neumorphic"] ytd-watch-metadata #description *,
+html[data-ypp-ui-style="neumorphic"] #content-text,
+html[data-ypp-ui-style="neumorphic"] #author-text span,
+html[data-ypp-ui-style="neumorphic"] ytd-comment-thread-renderer * {
+  color: #1a202c !important;
+}

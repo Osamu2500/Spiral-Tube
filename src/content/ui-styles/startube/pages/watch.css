@@ -57,3 +57,92 @@ html[data-ypp-ui-style="startube"] ytd-watch-metadata #owner {
   border-radius: 2px !important;
   margin-bottom: 16px !important;
 }
+
+/* ==========================================================================
+   STARTUBE (CLASSIC 2011 YOUTUBE) — PLAYER PAGE COMPONENT UPGRADES
+   Action Buttons, Channel Bar, Description Box & Comments Section
+   ========================================================================== */
+
+/* 1. Action Buttons (Classic 2011 Grey Bevel Buttons) */
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="startube"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next {
+  background: linear-gradient(to bottom, #fafafa 0%, #dcdcdc 100%) !important;
+  border: 1px solid #cccccc !important;
+  border-radius: 2px !important;
+  color: #333333 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.1s ease !important;
+}
+
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="startube"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 100%) !important;
+  border-color: #999999 !important;
+  color: #111111 !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Force dark SVG icon colors for readability */
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path {
+  fill: #333333 !important;
+  color: #333333 !important;
+}
+
+/* 2. Channel Bar (#owner) */
+html[data-ypp-ui-style="startube"] #channel-name a {
+  color: #167ac6 !important;
+  font-family: Arial, sans-serif !important;
+  font-weight: bold !important;
+}
+
+html[data-ypp-ui-style="startube"] #owner-sub-count {
+  color: #666666 !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 11px !important;
+}
+
+/* 3. Description Box (Classic White Box with Top Border) */
+html[data-ypp-ui-style="startube"] #description-inner,
+html[data-ypp-ui-style="startube"] ytd-watch-metadata #description {
+  background: #ffffff !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 2px !important;
+  padding: 16px !important;
+  color: #333333 !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* 4. Comments Section (Classic White Comments List) */
+html[data-ypp-ui-style="startube"] #comments {
+  background: #ffffff !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 2px !important;
+  padding: 20px !important;
+  margin-top: 20px !important;
+}
+
+html[data-ypp-ui-style="startube"] ytd-comment-thread-renderer {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e8e8e8 !important;
+  padding: 14px 0 !important;
+  margin-bottom: 0 !important;
+}
+
+html[data-ypp-ui-style="startube"] ytd-comment-thread-renderer #content-text,
+html[data-ypp-ui-style="startube"] ytd-comment-thread-renderer #author-text span {
+  color: #333333 !important;
+  font-family: Arial, sans-serif !important;
+}

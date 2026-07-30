@@ -1,22 +1,94 @@
 /* ── Global Player Bar ── */
 .ypp-global-player-bar {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 12px 8px;
+    gap: 6px;
     border-radius: 36px;
     color: #fff;
+    cursor: default;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* z-index is set inline via JS (2147483647) */
+}
+
+/* ── Glass panel base style ── */
+.ypp-glass-panel {
+    background: rgba(12, 12, 20, 0.75);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ── Controls container ── */
+.ypp-gpb-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+/* ── Time display ── */
+.ypp-gpb-time {
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'Inter', 'Roboto', monospace, sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+    transform: rotate(-90deg);
+    max-width: 36px;
+    overflow: visible;
+    padding: 4px 0;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+/* ── Volume slider wrapper ── */
+.ypp-gpb-vol-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 36px;
+}
+
+/* ── Volume slider ── */
+.ypp-gpb-vol-slider {
+    -webkit-appearance: slider-vertical;
+    appearance: slider-vertical;
+    writing-mode: vertical-lr;
+    direction: rtl;
+    width: 4px;
+    height: 70px;
+    cursor: pointer;
+    accent-color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    outline: none;
+}
+
+.ypp-gpb-vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5), inset 0 -2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
     transform: scale(1.4);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
 }
 
 /* ── Speed Controls in bar ── */
@@ -40,22 +112,68 @@
     min-width: 0 !important;
 }
 
+/* ── Divider between feature groups ── */
+.ypp-global-player-bar::before {
+    display: none; /* No pseudo dividers needed */
+}
+
 /* ── Close button ── */
 #ypp-gpb-close {
     opacity: 0.5;
 }
 #ypp-gpb-close:hover {
     opacity: 1;
-    background: rgba(255,60,60,0.18) !important;
+    background: rgba(255, 60, 60, 0.22) !important;
 }
 
 /* ── Frosted Glass Popups (when opened from Global Bar) ── */
 #ypp-eq-panel.ypp-panel-transparent,
 #ypp-cinema-panel.ypp-panel-transparent {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-    background: rgba(8, 8, 18, 0.62) !important;    box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    background: rgba(8, 8, 18, 0.62) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* ── Position variants ── */
+.ypp-bar-pos-right,
+.ypp-bar-pos-left {
+    flex-direction: column;
+}
 
+.ypp-bar-pos-top {
+    flex-direction: row;
+    padding: 8px 12px;
+    border-radius: 36px;
+}
+
+.ypp-bar-pos-top .ypp-gpb-controls {
+    flex-direction: row;
+    gap: 4px;
+}
+
+.ypp-bar-pos-top .ypp-gpb-time {
+    writing-mode: horizontal-tb;
+    transform: none;
+    max-width: none;
+    min-width: 60px;
+}
+
+.ypp-bar-pos-top .ypp-gpb-vol-wrap {
+    width: 80px;
+    height: 36px;
+}
+
+.ypp-bar-pos-top .ypp-gpb-vol-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    writing-mode: horizontal-tb;
+    direction: ltr;
+    width: 70px;
+    height: 4px;
+}
+
+.ypp-bar-pos-top #ypp-gpb-features-container {
+    flex-direction: row;
+}

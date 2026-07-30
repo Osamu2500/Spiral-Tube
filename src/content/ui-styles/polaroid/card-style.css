@@ -244,3 +244,106 @@ html[data-ypp-card-style='polaroid']
   font-family: 'Courier New', monospace, serif !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
 }
+
+/* ==========================================================================
+   POLAROID SNAPSHOT — PLAYER PAGE COMPONENT UPGRADES
+   Action Buttons, Channel Bar, Description & Comments Polaroid Photo-Paper Cards
+   ========================================================================== */
+
+/* 1. Action Buttons */
+html[data-ypp-card-style="polaroid"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="polaroid"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-card-style="polaroid"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="polaroid"] .yt-spec-button-shape-next--mono,
+html[data-ypp-card-style="polaroid"] .yt-spec-button-shape-next,
+html[data-ypp-ui-style="polaroid"] .yt-spec-button-shape-next {
+  background: #ffffff !important;
+  border: 1px solid #dcdcdc !important;
+  border-radius: 4px !important;
+  color: #1a1a1a !important;
+  font-family: 'Courier New', monospace, serif !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.25s ease !important;
+}
+
+html[data-ypp-card-style="polaroid"] .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="polaroid"] .yt-spec-button-shape-next:hover {
+  transform: rotate(-1deg) translateY(-2px) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25) !important;
+  background: #fafafa !important;
+}
+
+/* 2. Channel Bar (#owner - Polaroid Photo Frame) */
+html[data-ypp-card-style="polaroid"] #owner,
+html[data-ypp-ui-style="polaroid"] #owner {
+  background: #ffffff !important;
+  border: 1px solid #d0d0d0 !important;
+  border-radius: 4px !important;
+  padding: 14px 18px !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+  margin-bottom: 16px !important;
+  transform: rotate(0.5deg) !important;
+}
+
+html[data-ypp-card-style="polaroid"] #channel-name a,
+html[data-ypp-ui-style="polaroid"] #channel-name a {
+  color: #111111 !important;
+  font-family: 'Courier New', monospace, serif !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-card-style="polaroid"] #owner-sub-count,
+html[data-ypp-ui-style="polaroid"] #owner-sub-count {
+  color: #555555 !important;
+  font-family: 'Courier New', monospace, serif !important;
+}
+
+/* 3. Description Box (Polaroid Card) */
+html[data-ypp-card-style="polaroid"] #description-inner,
+html[data-ypp-ui-style="polaroid"] #description-inner,
+html[data-ypp-card-style="polaroid"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="polaroid"] ytd-watch-metadata #description {
+  background: #ffffff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  padding: 16px 16px 28px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
+  color: #1a1a1a !important;
+  font-family: 'Courier New', monospace, serif !important;
+  transform: rotate(-0.5deg) !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-card-style="polaroid"] #description-inner:hover,
+html[data-ypp-ui-style="polaroid"] #description-inner:hover {
+  transform: rotate(0deg) scale(1.01) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 4. Comments Section (Polaroid Photo-Paper Cards) */
+html[data-ypp-card-style="polaroid"] #comments,
+html[data-ypp-ui-style="polaroid"] #comments {
+  background: #f4f4f0 !important;
+  border: 1px solid #dcdcdc !important;
+  border-radius: 6px !important;
+  padding: 20px !important;
+  margin-top: 24px !important;
+}
+
+html[data-ypp-card-style="polaroid"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="polaroid"] ytd-comment-thread-renderer {
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 4px !important;
+  padding: 14px 14px 22px !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.25s ease !important;
+}
+
+html[data-ypp-card-style="polaroid"] ytd-comment-thread-renderer:hover,
+html[data-ypp-ui-style="polaroid"] ytd-comment-thread-renderer:hover {
+  transform: rotate(0.5deg) translateY(-2px) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2) !important;
+}

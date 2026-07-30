@@ -162,3 +162,24 @@ video.video-stream.html5-main-video,
 .html5-video-player {
   border-radius: 0 !important;
 }
+
+/* ==========================================================================
+   RETRO HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces black (#000000) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-ui-style="retro"] #owner-sub-count,
+html[data-ypp-ui-style="retro"] #channel-name a,
+html[data-ypp-ui-style="retro"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="retro"] ytd-video-owner-renderer #channel-name * {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description *,
+html[data-ypp-ui-style="retro"] #content-text,
+html[data-ypp-ui-style="retro"] #author-text span,
+html[data-ypp-ui-style="retro"] ytd-comment-thread-renderer * {
+  color: #000000 !important;
+}

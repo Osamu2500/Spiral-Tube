@@ -61,7 +61,8 @@ html.yt-premium-plus-theme body.cinematic-home ytd-masthead #container,
 body.cinematic-home ytd-masthead #container {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  background: transparent !important;  border: none !important;
+  background: transparent !important;
+  border: none !important;
   box-shadow: none !important;
 }
 
@@ -119,7 +120,8 @@ body.cinematic-home #frosted-glass {
   backdrop-filter: blur(12px);
   background: transparent !important;
   background-color: transparent !important;
-  background-image: none !important;  --yt-spec-base-background: transparent !important;
+  background-image: none !important;
+  --yt-spec-base-background: transparent !important;
   --yt-spec-raised-background: transparent !important;
   --yt-spec-menu-background: transparent !important;
   box-shadow: none !important;
@@ -226,6 +228,14 @@ body.cinematic-home .netflix-hero-nav * {
 
 /* Hero Video Container: Remote CSS Projection
    We project the native ytd-video-preview out of the grid and into the hero background. */
+body.cinematic-home .netflix-hero ytd-video-preview,
+body.cinematic-home .netflix-hero ytd-video-preview #video-preview-container,
+body.cinematic-home .netflix-hero ytd-video-preview #player-container,
+body.cinematic-home .netflix-hero ytd-video-preview ytd-player,
+body.cinematic-home .netflix-hero ytd-video-preview #container.ytd-player,
+body.cinematic-home .netflix-hero ytd-video-preview .html5-video-player,
+body.cinematic-home .netflix-hero ytd-video-preview #movie_player,
+body.cinematic-home .netflix-hero ytd-video-preview .html5-video-container,
 body.cinematic-home ytd-video-preview.ypp-projected-preview,
 body.cinematic-home ytd-video-preview.ypp-projected-preview #video-preview-container,
 body.cinematic-home ytd-video-preview.ypp-projected-preview #player-container,
@@ -254,6 +264,7 @@ body.cinematic-home ytd-video-preview.ypp-projected-preview .html5-video-contain
 }
 
 /* The actual <video> element fills the screen — fullscreen */
+body.cinematic-home .netflix-hero ytd-video-preview video,
 body.cinematic-home ytd-video-preview.ypp-projected-preview video {
   position: fixed !important;
   top: 0 !important;
@@ -459,7 +470,8 @@ body.cinematic-home .netflix-hero-buttons button svg {
 body.cinematic-home .netflix-hero-buttons .netflix-play-button {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.25) !important;  color: white !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: white !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
 }
@@ -473,7 +485,8 @@ body.cinematic-home .netflix-hero-buttons .netflix-play-button:hover {
 body.cinematic-home .netflix-hero-buttons .netflix-unmute-button {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
-  background: rgba(20, 20, 20, 0.4) !important;  color: white !important;
+  background: rgba(20, 20, 20, 0.4) !important;
+  color: white !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
   display: flex;
@@ -881,7 +894,8 @@ body.cinematic .ad-skipper-overlay {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);  display: flex;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2147483647;

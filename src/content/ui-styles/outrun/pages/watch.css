@@ -36,3 +36,53 @@ html[data-ypp-ui-style="outrun"] #description.ytd-watch-metadata:hover {
   border-color: var(--outrun-neon-magenta) !important;
   box-shadow: var(--outrun-glow-magenta) !important;
 }
+
+/* ==========================================================================
+   OUTRUN SYNTHWAVE — PLAYER PAGE COMPONENT UPGRADES
+   Channel Bar (#owner) & Comments Section Neon Synth Cards
+   ========================================================================== */
+
+/* 1. Channel Bar (#owner) */
+html[data-ypp-ui-style="outrun"] #owner {
+  background: var(--outrun-bg-surface) !important;
+  border: 1px solid var(--outrun-neon-cyan) !important;
+  border-left: 4px solid var(--outrun-neon-magenta) !important;
+  padding: 12px 16px !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--outrun-glow-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] #channel-name a {
+  color: #fff !important;
+  text-shadow: 0 0 8px var(--outrun-neon-cyan) !important;
+}
+
+html[data-ypp-ui-style="outrun"] #owner-sub-count {
+  color: var(--outrun-neon-magenta) !important;
+  font-family: monospace !important;
+}
+
+/* 2. Comments Section (Synth Grid Cards) */
+html[data-ypp-ui-style="outrun"] #comments {
+  background: var(--outrun-bg-surface) !important;
+  border: 1px solid var(--outrun-neon-magenta) !important;
+  border-top: 3px solid var(--outrun-neon-cyan) !important;
+  padding: 20px !important;
+  margin-top: 24px !important;
+  box-shadow: var(--outrun-glow-magenta) !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-comment-thread-renderer {
+  background: var(--outrun-bg-elevated) !important;
+  border: 1px solid rgba(0, 240, 255, 0.3) !important;
+  border-left: 3px solid var(--outrun-neon-magenta) !important;
+  padding: 14px !important;
+  margin-bottom: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="outrun"] ytd-comment-thread-renderer:hover {
+  border-color: var(--outrun-neon-cyan) !important;
+  border-left-color: var(--outrun-neon-cyan) !important;
+  box-shadow: var(--outrun-glow-cyan) !important;
+}

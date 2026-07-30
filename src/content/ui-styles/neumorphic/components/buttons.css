@@ -98,3 +98,33 @@ html[data-ypp-ui-style="neumorphic"] ytd-thumbnail-overlay-toggle-button-rendere
   box-shadow: var(--neu-shadow-outset) !important;
   color: var(--neu-accent) !important;
 }
+
+/* ==========================================================================
+   NEUMORPHIC HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark slate (#1a202c) on Action Buttons, Text, and SVG icons
+   ========================================================================== */
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style="neumorphic"] .ytLikeButtonViewModelHost button {
+  color: #1a202c !important;
+}
+
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--tonal svg,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono svg,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText svg,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextTonal svg,
+html[data-ypp-ui-style="neumorphic"] .ytLikeButtonViewModelHost button svg,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--tonal path,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono path,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button path {
+  fill: #1a202c !important;
+  color: #1a202c !important;
+  stroke: none !important;
+}

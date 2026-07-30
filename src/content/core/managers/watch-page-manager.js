@@ -293,12 +293,15 @@ class WatchPageManager extends window.YPP.BasePageManager {
           document
             .querySelectorAll('[data-ypp-processed="true"]')
             .forEach((el) => el.removeAttribute('data-ypp-processed'));
-          this.playerBarUI.injectedButtons = false;
-          this.playerBarUI.attemptInjection();
+          if (this.playerBarUI) {
+            this.playerBarUI.injectedButtons = false;
+            this.playerBarUI.attemptInjection();
+          }
         };
         setTimeout(retryInjection, 800);
         setTimeout(retryInjection, 2000);
         setTimeout(retryInjection, 4000);
+        setTimeout(retryInjection, 6000);
       }
     } catch (error) {
       Utils.log('Player initialization timed out or failed', 'WATCH_MANAGER', 'debug');
@@ -325,23 +328,25 @@ class WatchPageManager extends window.YPP.BasePageManager {
       true
     );
 
-    // Target .ytp-chrome-bottom for maximum stability across UI A/B tests
+    // Target .ytp-chrome-bottom and .ytp-right-controls for maximum stability across UI A/B tests and cold load replacements
     window.YPP.sharedObserver.register(
       'player_watch',
-      '.ytp-chrome-bottom:not([data-ypp-processed])',
+      '.ytp-chrome-bottom:not([data-ypp-processed]), .ytp-right-controls:not([data-ypp-processed])',
       (elements) => {
         if (!this.isActive || window.location.pathname.startsWith('/shorts')) return;
-        const controls = elements[0];
+        const target = elements[0];
+        const controls = target.closest('.ytp-chrome-bottom') || target;
         const video = document.querySelector('video');
         if (video && controls) {
           this.playerBarUI.injectControls(video, controls, false);
           controls.setAttribute('data-ypp-processed', 'true');
+          if (target !== controls) target.setAttribute('data-ypp-processed', 'true');
         }
       },
       true
     );
 
-    // Listen for SPA navigation to clear the processed stamps so buttons are re-injected
+    // Listen for SPA navigation and player state changes to clear the processed stamps so buttons are re-injected
     if (!this._hasNavListener) {
       const resetProcessed = () => {
         document.querySelectorAll('[data-ypp-processed="true"]').forEach((el) => {
@@ -358,6 +363,8 @@ class WatchPageManager extends window.YPP.BasePageManager {
       // This is the exact moment YouTube replaces the skeleton controls with the full bar,
       // wiping any custom injection done during early render.
       window.addEventListener('yt-player-updated', resetProcessed);
+      window.addEventListener('yt-player-state-change', resetProcessed);
+      window.addEventListener('yt-page-type-changed', resetProcessed);
       this._hasNavListener = true;
     }
   }

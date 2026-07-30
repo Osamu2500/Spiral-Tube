@@ -263,3 +263,38 @@ button.ytSpecButtonShapeNextText:active {
   background: #a0a0a0 !important;
   box-shadow: var(--win95-sink) !important;
 }
+
+/* ==========================================================================
+   RETRO HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces black (#000000) on Like, Dislike, Share, Download & Action buttons
+   ========================================================================== */
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="retro"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="retro"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next,
+html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style="retro"] .ytLikeButtonViewModelHost button,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--segmented-start,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--segmented-end {
+  color: #000000 !important;
+}
+
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--tonal svg,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono svg,
+html[data-ypp-ui-style="retro"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="retro"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--tonal path,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono path,
+html[data-ypp-ui-style="retro"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
+html[data-ypp-ui-style="retro"] ytd-menu-renderer yt-button-shape button path,
+html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextText svg,
+html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextTonal svg,
+html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextText path,
+html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextTonal path {
+  fill: #000000 !important;
+  color: #000000 !important;
+  stroke: none !important;
+}

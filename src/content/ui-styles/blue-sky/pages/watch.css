@@ -125,3 +125,30 @@ html[data-ypp-theme="blue-sky"] .ypp-eq-footer {
   border-color: rgba(200, 230, 255, 0.50) !important;
   color: var(--sky-text-secondary) !important;
 }
+
+/* ==========================================================================
+   BLUE SKY HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark stratosphere blue (#034078) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-theme="blue-sky"] #owner-sub-count,
+html[data-ypp-ui-style="blue-sky"] #owner-sub-count,
+html[data-ypp-theme="blue-sky"] #channel-name a,
+html[data-ypp-ui-style="blue-sky"] #channel-name a,
+html[data-ypp-theme="blue-sky"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="blue-sky"] ytd-video-owner-renderer #channel-name * {
+  color: #034078 !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="blue-sky"] ytd-watch-metadata #description-inner,
+html[data-ypp-theme="blue-sky"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="blue-sky"] ytd-watch-metadata #description,
+html[data-ypp-theme="blue-sky"] #content-text,
+html[data-ypp-ui-style="blue-sky"] #content-text,
+html[data-ypp-theme="blue-sky"] #author-text span,
+html[data-ypp-ui-style="blue-sky"] #author-text span,
+html[data-ypp-theme="blue-sky"] ytd-comment-thread-renderer *,
+html[data-ypp-ui-style="blue-sky"] ytd-comment-thread-renderer * {
+  color: #034078 !important;
+}

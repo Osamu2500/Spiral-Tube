@@ -1,3 +1,91 @@
 @import "../../shared/timeline-visibility.css";
 @import "./base/tokens.css";
 
+/* ==========================================================================
+   MIDNIGHT OBSIDIAN — COMPLETE PLAYER PAGE STYLING
+   AMOLED Deep Black Cards with Pure White Glass & Subtle Glow
+   ========================================================================== */
+
+/* 1. Action Buttons (Like, Share, Download, Clip, Save) */
+html[data-ypp-ui-style="midnight"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="midnight"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="midnight"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="midnight"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="midnight"] .yt-spec-button-shape-next {
+  background: rgba(20, 20, 20, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+html[data-ypp-ui-style="midnight"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="midnight"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="midnight"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="midnight"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="midnight"] .yt-spec-button-shape-next:hover {
+  background: rgba(40, 40, 40, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 2. Channel Bar (#owner) */
+html[data-ypp-ui-style="midnight"] #owner {
+  background: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.9) !important;
+  margin-bottom: 16px !important;
+}
+
+html[data-ypp-ui-style="midnight"] #channel-name a {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="midnight"] #owner-sub-count {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 3. Description Box (Deep Obsidian Card) */
+html[data-ypp-ui-style="midnight"] #description-inner,
+html[data-ypp-ui-style="midnight"] ytd-watch-metadata #description {
+  background: #080808 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="midnight"] #description-inner:hover,
+html[data-ypp-ui-style="midnight"] ytd-watch-metadata #description:hover {
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 4. Comments Section (Midnight AMOLED Cards) */
+html[data-ypp-ui-style="midnight"] #comments {
+  background: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  margin-top: 24px !important;
+}
+
+html[data-ypp-ui-style="midnight"] ytd-comment-thread-renderer {
+  background: #0d0d0d !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 12px !important;
+  padding: 14px !important;
+  margin-bottom: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="midnight"] ytd-comment-thread-renderer:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  background: #151515 !important;
+}
+

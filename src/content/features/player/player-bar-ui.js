@@ -37,9 +37,12 @@ export class PlayerBarUI {
                 this.attemptInjection();
                 setTimeout(() => this.attemptInjection(), 1000);
                 setTimeout(() => this.attemptInjection(), 2000);
+                setTimeout(() => this.attemptInjection(), 4000);
             };
             document.addEventListener('yt-navigate-finish', this._navigateListener);
             document.addEventListener('yt-page-data-updated', this._navigateListener);
+            document.addEventListener('yt-player-updated', this._navigateListener);
+            document.addEventListener('yt-player-state-change', this._navigateListener);
         }
         
         this.setupInjectionObserver();
@@ -54,6 +57,7 @@ export class PlayerBarUI {
 
     attemptInjection() {
         if (!this.isActive) return;
+        this.updateCustomStyles();
         
         const isShorts = window.location.pathname.startsWith('/shorts');
         const video = isShorts 
@@ -72,7 +76,8 @@ export class PlayerBarUI {
             }
             
             const current = controls.querySelector('.ypp-player-controls');
-            if (!current) {
+            if (!current || !document.contains(current) || current.children.length === 0) {
+                if (current) current.remove();
                 this.injectedButtons = false;
                 this.injectControls(video, controls, isShorts);
             } else if (this.settings && this.settings.enableVolumeBoost !== false && this.settings.pb_volume !== 'hidden' && !current.querySelector('#ypp-volume-boost-btn')) {
@@ -101,23 +106,22 @@ export class PlayerBarUI {
             window.YPP.sharedObserver.register('player-bar-injection-shorts', 'ytd-reel-video-renderer[is-active]', () => {
                 this.attemptInjection();
             }, true);
-        } else {
-            this.startInjectionPollingFallback();
+
+            // Watch inner right/chrome controls so when YouTube replaces native buttons on cold load, we re-inject immediately
+            window.YPP.sharedObserver.register('player-bar-injection-right', '.ytp-right-controls, .ytp-chrome-controls', () => {
+                this.attemptInjection();
+            }, true);
         }
+        // ALWAYS run a lightweight fallback check so if YouTube mutates innerHTML without adding new nodes, we catch it
+        this.startInjectionPollingFallback();
     }
     
     startInjectionPollingFallback() {
         if (this._pollingInterval) clearInterval(this._pollingInterval);
         this._pollingInterval = setInterval(() => {
             if (!this.isActive) return;
-            const isShorts = window.location.pathname.startsWith('/shorts');
-            const video = isShorts ? document.querySelector('ytd-reel-video-renderer[is-active] video') : document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]);
-            const controls = isShorts ? document.querySelector('ytd-reel-video-renderer[is-active] .overlay.ytd-reel-video-renderer') : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
-            if (video && controls && !controls.querySelector('.ypp-player-controls')) {
-                this.injectedButtons = false;
-                this.injectControls(video, controls, isShorts);
-            }
-        }, 2000); // Polling much slower, just as fallback
+            this.attemptInjection();
+        }, 1500);
     }
 
     get settings() {
@@ -372,6 +376,9 @@ export class PlayerBarUI {
         }
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.unregister('player-bar-injection');
+            window.YPP.sharedObserver.unregister('player-bar-injection-vid');
+            window.YPP.sharedObserver.unregister('player-bar-injection-shorts');
+            window.YPP.sharedObserver.unregister('player-bar-injection-right');
         }
         document.querySelectorAll('.ypp-player-controls').forEach(controls => controls.remove());
         this.injectedButtons = false;

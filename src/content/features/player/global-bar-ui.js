@@ -101,7 +101,7 @@ export class GlobalBarUI {
         setDisp('#ypp-gpb-play', t.gpb_showPlay);
         setDisp('#ypp-gpb-time', t.gpb_showTime);
         setDisp('#ypp-gpb-mute', t.gpb_showVolume);
-        setDisp('.ypp-gpb-vol-container', t.gpb_showVolume);
+        setDisp('#ypp-gpb-vol-wrap', t.gpb_showVolume);
         setDisp('#ypp-gpb-loop', t.gpb_showLoop);
         setDisp('#ypp-gpb-pip', t.gpb_showPip);
         setDisp('#ypp-gpb-fullscreen', t.gpb_showFullscreen);

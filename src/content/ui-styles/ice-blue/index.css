@@ -45,4 +45,112 @@ html[data-ypp-ui-style="ice-blue"] .badge-style-type-live-now-alternate {
     background: linear-gradient(220.55deg, #5D85A6 0%, #0E2C5E 100%) !important;
 }
 
+/* ==========================================================================
+   ICE-BLUE — COMPLETE PLAYER PAGE & HIGH-CONTRAST READABILITY
+   Action Buttons, Channel Bar, Description Box, Comments & Dark Arctic Navy Text
+   ========================================================================== */
+
+/* 1. Action Buttons (Like, Dislike, Share, Download, Clip, Save) */
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="ice-blue"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="ice-blue"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next {
+    background: rgba(225, 245, 254, 0.85) !important;
+    border: 1px solid #7bd2f4 !important;
+    border-radius: 20px !important;
+    color: #0d253f !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(123, 210, 244, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="ice-blue"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="ice-blue"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next:hover {
+    background: #ffffff !important;
+    border-color: #4B73FF !important;
+    box-shadow: 0 6px 18px rgba(75, 115, 255, 0.35) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 2. Force Dark Arctic Navy (#0d253f) SVG Icons Inside Buttons */
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--tonal svg,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--mono svg,
+html[data-ypp-ui-style="ice-blue"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
+html[data-ypp-ui-style="ice-blue"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--tonal path,
+html[data-ypp-ui-style="ice-blue"] .yt-spec-button-shape-next--mono path,
+html[data-ypp-ui-style="ice-blue"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
+html[data-ypp-ui-style="ice-blue"] ytd-menu-renderer yt-button-shape button path {
+    fill: #0d253f !important;
+    color: #0d253f !important;
+    stroke: none !important;
+}
+
+/* 3. Channel Bar & Subscriber Count */
+html[data-ypp-ui-style="ice-blue"] #owner {
+    background: rgba(240, 249, 255, 0.8) !important;
+    border: 1px solid rgba(123, 210, 244, 0.5) !important;
+    border-radius: 16px !important;
+    padding: 12px 16px !important;
+    box-shadow: 0 4px 15px rgba(123, 210, 244, 0.15) !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] #owner-sub-count,
+html[data-ypp-ui-style="ice-blue"] #channel-name a,
+html[data-ypp-ui-style="ice-blue"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="ice-blue"] ytd-video-owner-renderer #channel-name * {
+    color: #0d253f !important;
+    font-weight: 700 !important;
+}
+
+/* 4. Description Box (Ice Crystal Card) */
+html[data-ypp-ui-style="ice-blue"] #description-inner,
+html[data-ypp-ui-style="ice-blue"] #description.ytd-watch-metadata {
+    background: rgba(240, 249, 255, 0.85) !important;
+    border: 1px solid #7bd2f4 !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.8), 0 4px 16px rgba(123, 210, 244, 0.15) !important;
+    color: #0d253f !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] ytd-watch-metadata #description-inner *,
+html[data-ypp-ui-style="ice-blue"] ytd-watch-metadata #description * {
+    color: #0d253f !important;
+}
+
+/* 5. Comments Section (Frosty Cards) */
+html[data-ypp-ui-style="ice-blue"] #comments {
+    background: rgba(240, 249, 255, 0.75) !important;
+    border: 1px solid rgba(123, 210, 244, 0.4) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    margin-top: 24px !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] ytd-comment-thread-renderer {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid rgba(123, 210, 244, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] ytd-comment-thread-renderer:hover {
+    background: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(123, 210, 244, 0.25) !important;
+}
+
+html[data-ypp-ui-style="ice-blue"] #content-text,
+html[data-ypp-ui-style="ice-blue"] #author-text span,
+html[data-ypp-ui-style="ice-blue"] ytd-comment-thread-renderer * {
+    color: #0d253f !important;
+}
+
 

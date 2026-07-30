@@ -1,3 +1,96 @@
 @import "../../shared/timeline-visibility.css";
 @import "./base/tokens.css";
 
+/* ==========================================================================
+   SUNSET TWILIGHT — COMPLETE PLAYER PAGE STYLING
+   Action Buttons, Channel Bar, Description Box & Comments Section Dusk Cards
+   ========================================================================== */
+
+/* 1. Action Buttons */
+html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="sunset"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="sunset"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next {
+    background: rgba(255, 107, 107, 0.2) !important;
+    border: 1px solid rgba(255, 107, 107, 0.4) !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.15) !important;
+    transition: all 0.25s ease !important;
+}
+
+html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="sunset"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="sunset"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next:hover {
+    background: rgba(255, 107, 107, 0.35) !important;
+    border-color: #ff8787 !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 2. Channel Bar (#owner) */
+html[data-ypp-ui-style="sunset"] #owner {
+    background: linear-gradient(135deg, rgba(40, 10, 30, 0.85), rgba(26, 11, 26, 0.85)) !important;
+    border: 1px solid rgba(255, 107, 107, 0.3) !important;
+    border-left: 4px solid #ff6b6b !important;
+    border-radius: 16px !important;
+    padding: 12px 16px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    margin-bottom: 16px !important;
+}
+
+html[data-ypp-ui-style="sunset"] #channel-name a {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5) !important;
+}
+
+html[data-ypp-ui-style="sunset"] #owner-sub-count {
+    color: #f8bbd0 !important;
+}
+
+/* 3. Description Box (Sunset Dusk Glass Box) */
+html[data-ypp-ui-style="sunset"] #description-inner,
+html[data-ypp-ui-style="sunset"] ytd-watch-metadata #description {
+    background: rgba(40, 10, 30, 0.75) !important;
+    border: 1px solid rgba(255, 107, 107, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    color: #fff0f5 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="sunset"] #description-inner:hover,
+html[data-ypp-ui-style="sunset"] ytd-watch-metadata #description:hover {
+    border-color: #ff8787 !important;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
+}
+
+/* 4. Comments Section (Sunset Petal Cards) */
+html[data-ypp-ui-style="sunset"] #comments {
+    background: rgba(26, 11, 26, 0.8) !important;
+    border: 1px solid rgba(255, 107, 107, 0.25) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    margin-top: 24px !important;
+}
+
+html[data-ypp-ui-style="sunset"] ytd-comment-thread-renderer {
+    background: rgba(40, 10, 30, 0.6) !important;
+    border: 1px solid rgba(255, 107, 107, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    margin-bottom: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="sunset"] ytd-comment-thread-renderer:hover {
+    border-color: #ff8787 !important;
+    background: rgba(50, 15, 38, 0.8) !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2) !important;
+}
+

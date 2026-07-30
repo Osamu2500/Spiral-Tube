@@ -98,12 +98,22 @@ html[data-ypp-ui-style="liquid-glass"] ytd-text-inline-expander:hover {
   box-shadow: var(--lg-shadow-hover), var(--lg-border-top-light) !important;
 }
 
-/* Ensure Inner YouTube Containers are Transparent */
-html[data-ypp-ui-style="liquid-glass"] ytd-watch-metadata #owner,
-html[data-ypp-ui-style="liquid-glass"] #owner-inner.ytd-video-owner-renderer,
-html[data-ypp-ui-style="liquid-glass"] ytd-video-owner-renderer {
-  background-color: transparent !important;
-  background: transparent !important;
+/* Channel Bar Specular Liquid Glass Card */
+html[data-ypp-ui-style="liquid-glass"] #owner {
+  -webkit-backdrop-filter: var(--lg-blur-surface) !important;
+  backdrop-filter: var(--lg-blur-surface) !important;
+  background: var(--lg-bg-level-1) !important;
+  border: var(--lg-border-subtle) !important;
+  border-radius: 20px !important;
+  padding: 12px 16px !important;
+  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
+  margin-bottom: 16px !important;
+  transition: all var(--lg-spring) !important;
+}
+html[data-ypp-ui-style="liquid-glass"] #owner:hover {
+  background: var(--lg-bg-level-2) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: var(--lg-shadow-hover) !important;
 }
 
 /* Chapter Markers / Key Moments */

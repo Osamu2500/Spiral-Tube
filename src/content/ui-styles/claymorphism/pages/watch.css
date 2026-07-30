@@ -23,3 +23,30 @@ html[data-ypp-theme="claymorphism"] #secondary {
   background: transparent !important;
   padding: 16px !important;
 }
+
+/* ==========================================================================
+   CLAYMORPHISM HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark slate (#1e293b) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-theme="claymorphism"] #owner-sub-count,
+html[data-ypp-ui-style="claymorphism"] #owner-sub-count,
+html[data-ypp-theme="claymorphism"] #channel-name a,
+html[data-ypp-ui-style="claymorphism"] #channel-name a,
+html[data-ypp-theme="claymorphism"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="claymorphism"] ytd-video-owner-renderer #channel-name {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+}
+
+html[data-ypp-theme="claymorphism"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="claymorphism"] ytd-watch-metadata #description-inner,
+html[data-ypp-theme="claymorphism"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="claymorphism"] ytd-watch-metadata #description,
+html[data-ypp-theme="claymorphism"] #content-text,
+html[data-ypp-ui-style="claymorphism"] #content-text,
+html[data-ypp-theme="claymorphism"] #author-text span,
+html[data-ypp-ui-style="claymorphism"] #author-text span,
+html[data-ypp-theme="claymorphism"] ytd-comment-thread-renderer *,
+html[data-ypp-ui-style="claymorphism"] ytd-comment-thread-renderer * {
+  color: #1e293b !important;
+}

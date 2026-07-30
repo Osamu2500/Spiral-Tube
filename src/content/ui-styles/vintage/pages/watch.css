@@ -52,3 +52,24 @@
   border: var(--vintage-border) !important;
   border-radius: 4px !important;
 }
+
+/* ==========================================================================
+   VINTAGE HIGH-CONTRAST READABILITY ENFORCEMENT
+   Forces dark ink (#1a0f08) on Channel Bar, Description & Comments text
+   ========================================================================== */
+html[data-ypp-ui-style="vintage"] #owner-sub-count,
+html[data-ypp-ui-style="vintage"] #channel-name a,
+html[data-ypp-ui-style="vintage"] ytd-video-owner-renderer #channel-name,
+html[data-ypp-ui-style="vintage"] ytd-video-owner-renderer #channel-name * {
+  color: #2c1f14 !important;
+  font-weight: 600 !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="vintage"] ytd-watch-metadata #description,
+html[data-ypp-ui-style="vintage"] ytd-watch-metadata #description *,
+html[data-ypp-ui-style="vintage"] #content-text,
+html[data-ypp-ui-style="vintage"] #author-text span,
+html[data-ypp-ui-style="vintage"] ytd-comment-thread-renderer * {
+  color: #1a0f08 !important;
+}

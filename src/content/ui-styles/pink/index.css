@@ -81,4 +81,95 @@ html[data-ypp-ui-style="pink"] #voice-search-button {
     border: none !important;
 }
 
+/* ==========================================================================
+   ROSE BLOSSOM PINK — COMPLETE PLAYER PAGE STYLING
+   Action Buttons, Channel Bar, Description Box & Comments Section Petal Cards
+   ========================================================================== */
+
+/* 1. Action Buttons (Like, Share, Download, Clip, Save) */
+html[data-ypp-ui-style="pink"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="pink"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="pink"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="pink"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="pink"] .yt-spec-button-shape-next {
+    background: hsla(338, 60%, 55%, 0.85) !important;
+    border: 1px solid hsla(338, 80%, 75%, 0.4) !important;
+    border-radius: 20px !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(255, 105, 180, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html[data-ypp-ui-style="pink"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="pink"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="pink"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="pink"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="pink"] .yt-spec-button-shape-next:hover {
+    background: hsla(338, 70%, 62%, 0.95) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.45) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 2. Channel Bar (#owner) */
+html[data-ypp-ui-style="pink"] #owner {
+    background: hsla(338, 50%, 45%, 0.75) !important;
+    border: 1px solid hsla(338, 80%, 75%, 0.35) !important;
+    border-radius: 16px !important;
+    padding: 12px 16px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+    margin-bottom: 16px !important;
+}
+
+html[data-ypp-ui-style="pink"] #channel-name a {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+html[data-ypp-ui-style="pink"] #owner-sub-count {
+    color: hsla(338, 100%, 90%, 0.85) !important;
+}
+
+/* 3. Description Box (Pink Velvet Card) */
+html[data-ypp-ui-style="pink"] #description-inner,
+html[data-ypp-ui-style="pink"] ytd-watch-metadata #description {
+    background: hsla(338, 50%, 42%, 0.85) !important;
+    border: 1px solid hsla(338, 80%, 75%, 0.35) !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="pink"] #description-inner:hover,
+html[data-ypp-ui-style="pink"] ytd-watch-metadata #description:hover {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(255, 180, 220, 0.3) !important;
+}
+
+/* 4. Comments Section (Pink Petal Cards) */
+html[data-ypp-ui-style="pink"] #comments {
+    background: hsla(338, 50%, 40%, 0.75) !important;
+    border: 1px solid hsla(338, 80%, 75%, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    margin-top: 24px !important;
+}
+
+html[data-ypp-ui-style="pink"] ytd-comment-thread-renderer {
+    background: hsla(338, 50%, 46%, 0.6) !important;
+    border: 1px solid hsla(338, 80%, 75%, 0.25) !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    margin-bottom: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-ui-style="pink"] ytd-comment-thread-renderer:hover {
+    border-color: #ffffff !important;
+    background: hsla(338, 55%, 50%, 0.8) !important;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2) !important;
+}
+
 

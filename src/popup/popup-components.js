@@ -141,25 +141,10 @@ export function initComponents(
           { key: 'autumn', label: 'Autumn', meta: 'New', color: '#1a1a1a' },
           { key: 'bento', label: 'Bento', meta: 'New', color: '#1a1a1a' },
           { key: 'christmas', label: 'Christmas', meta: 'New', color: '#1a1a1a' },
-          { key: 'compact', label: 'Compact', meta: 'New', color: '#1a1a1a' },
-          { key: 'elevated', label: 'Elevated', meta: 'New', color: '#1a1a1a' },
-          { key: 'flat', label: 'Flat', meta: 'New', color: '#ffffff' },
-          { key: 'folder', label: 'Folder', meta: 'New', color: '#ffe082' },
-          { key: 'frosted', label: 'Frosted', meta: 'New', color: '#f5f5f5' },
-          { key: 'glass', label: 'Glass', meta: 'New', color: '#ffffff' },
-          { key: 'holographic', label: 'Holographic', meta: 'New', color: '#1a1a1a' },
-          { key: 'immersive-glass', label: 'Immersive Glass', meta: 'New', color: '#1a1a1a' },
           { key: 'liquid-glass', label: 'Liquid Glass', meta: 'New', color: '#1a1a1a' },
-          { key: 'minimalist', label: 'Minimalist', meta: 'New', color: '#ffffff' },
           { key: 'nature', label: 'Nature', meta: 'New', color: '#d4e157' },
-          { key: 'neon', label: 'Neon', meta: 'New', color: '#1a1a1a' },
           { key: 'neumorphic', label: 'Neumorphic', meta: 'New', color: '#1a1a1a' },
-          { key: 'polaroid', label: 'Polaroid', meta: 'New', color: '#1a1a1a' },
-          { key: 'skeuomorphic', label: 'Skeuomorphic', meta: 'New', color: '#e0e0e0' },
-          { key: 'spring', label: 'Spring', meta: 'New', color: '#c8e6c9' },
-          { key: 'startube', label: 'Startube', meta: 'New', color: '#1a1a1a' },
-          { key: 'summer', label: 'Summer', meta: 'New', color: '#fff9c4' },
-          { key: 'winter', label: 'Winter', meta: 'New', color: '#1a1a1a' }
+          { key: 'startube', label: 'Startube', meta: 'New', color: '#1a1a1a' }
         ]
       },
     ];

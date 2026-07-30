@@ -1470,6 +1470,54 @@ window.YPP.Utils.getPopupPortal = () => {
 
     return dlg;
 };
+
+/**
+ * Calculates Chromium browser page zoom factor (e.g. 0.8 for 80%, 1.25 for 125%, 1.0 for 100%).
+ * Uses outerWidth / innerWidth while guarding against DevTools sidebars.
+ */
+window.YPP.Utils.getBrowserZoomFactor = () => {
+    let zoom = 1;
+    try {
+        const zX = window.outerWidth / window.innerWidth;
+        const zY = window.outerHeight / window.innerHeight;
+        if (zX > 0.3 && zX < 3.5) {
+            if (Math.abs(zX - zY) < 0.25) {
+                zoom = zX;
+            } else {
+                zoom = Math.min(zX, zY);
+            }
+        }
+        zoom = Math.round(zoom * 100) / 100;
+    } catch(e) {}
+    return zoom || 1;
+};
+
+/**
+ * Makes a popup panel immune to browser page zoom percentage so it always renders at 100% scale.
+ */
+window.YPP.Utils.makePopupZoomInvariant = (panel) => {
+    if (!panel) return;
+    const applyZoom = () => {
+        if (!panel.isConnected) return;
+        const zoom = window.YPP.Utils.getBrowserZoomFactor ? window.YPP.Utils.getBrowserZoomFactor() : 1;
+        const invZoom = 1 / (zoom || 1);
+        panel.style.zoom = invZoom;
+        panel.style.setProperty('--ypp-auto-scale', '1');
+        panel.style.setProperty('--ypp-page-zoom', zoom);
+        panel.style.setProperty('--ypp-inv-zoom', invZoom);
+    };
+    applyZoom();
+    const onResize = () => applyZoom();
+    window.addEventListener('resize', onResize, { passive: true });
+    const observer = new MutationObserver(() => {
+        if (!panel.isConnected) {
+            window.removeEventListener('resize', onResize);
+            observer.disconnect();
+        }
+    });
+    if (document.body) observer.observe(document.body, { childList: true, subtree: true });
+    if (document.documentElement) observer.observe(document.documentElement, { childList: true, subtree: true });
+};
 // =====================================================================
 // POPUP POSITIONING — beside-video helper
 // =====================================================================
@@ -1493,84 +1541,15 @@ window.YPP.Utils.getPopupPortal = () => {
  * @param {number}           panelW     - Desired panel width in px
  */
 window.YPP.Utils.positionPopupBesideVideo = (panel, triggerBtn, video, panelW) => {
-    const GAP    = 10; // px gap between panel and video edge
-    const MARGIN = 8;  // minimum distance from viewport edges
-
-    // Guard: panel must have a positioning context; default to absolute
-    if (!panel.style.position || panel.style.position === 'static') {
-        panel.style.position = 'absolute';
-    }
-
-    const W = window.innerWidth;
-    const H = window.innerHeight;
-
-    const btnRect = triggerBtn.getBoundingClientRect();
-    // Use actual rendered height if available, otherwise estimate
-    const estH = Math.min(panel.scrollHeight > 40 ? panel.scrollHeight : 400, H - MARGIN * 2);
-
-    // Helper: clamp a panel's top so it stays in the viewport
-    const clampTop = (t) => Math.max(MARGIN, Math.min(t, H - estH - MARGIN));
-    // Helper: clamp a panel's left so it stays in the viewport
-    const clampLeft = (l) => Math.max(MARGIN, Math.min(l, W - panelW - MARGIN));
-
-    // Vertical centre aligned to button midpoint (used for left/right placement)
-    const centredTop  = clampTop(btnRect.top + btnRect.height / 2 - estH / 2);
-    // Horizontal start at button left (used for above/below placement)
-    const alignedLeft = clampLeft(btnRect.left);
-
-    let left, top;
-    let placed = false;
-
-    // ── Only do smart positioning if we have a valid video rect ──────────────
-    const vRect = video?.getBoundingClientRect?.() || null;
-    const hasVideo = vRect && vRect.width > 20 && vRect.height > 20;
-
-    if (hasVideo) {
-        const spaceRight  = W - vRect.right - GAP;   // room to the right
-        const spaceLeft   = vRect.left - GAP;         // room to the left
-        const spaceBelow  = H - vRect.bottom - GAP;  // room below
-        const spaceAbove  = vRect.top - GAP;          // room above
-
-        if (spaceRight >= panelW + MARGIN) {
-            // ✅ Best case: right of the video
-            left = vRect.right + GAP;
-            top  = centredTop;
-            placed = true;
-        } else if (spaceLeft >= panelW + MARGIN) {
-            // ✅ Left of the video (between bar and video)
-            left = vRect.left - GAP - panelW;
-            top  = centredTop;
-            placed = true;
-        } else if (spaceBelow >= Math.min(estH, 200)) {
-            // ✅ Below the video (partial overlap ok if estH > spaceBelow)
-            left = alignedLeft;
-            top  = vRect.bottom + GAP;
-            placed = true;
-        } else if (spaceAbove >= Math.min(estH, 200)) {
-            // ✅ Above the video
-            left = alignedLeft;
-            top  = vRect.top - GAP - estH;
-            placed = true;
-        }
-        // If all four sides fail (video fills the entire viewport), fall through
-        // to the fallback below — at least position at the nearest free corner.
-        if (!placed) {
-            // Place at the right edge of the bar, vertically centred on the button.
-            // This minimises how much of the video centre gets covered.
-            left = btnRect.right + GAP;
-            top  = centredTop;
-        }
-    } else {
-        // No video element found — just anchor to the right of the button
-        left = btnRect.right + GAP;
-        top  = centredTop;
-    }
-
-    // Final viewport clamp
-    left = clampLeft(left);
-    top  = clampTop(top);
-
-    panel.style.left = left + 'px';
-    panel.style.top  = top  + 'px';
+    Object.assign(panel.style, {
+        position: 'fixed',
+        top: '56px',
+        right: '24px',
+        left: 'auto',
+        bottom: 'auto',
+        height: 'calc(100vh - 72px)',
+        maxHeight: 'calc(100vh - 72px)',
+        zIndex: '2147483646'
+    });
 };
 
