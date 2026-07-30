@@ -317,9 +317,6 @@ class HeroManager {
                     if (hoveredVideo === _lastHoveredCard) return;
                     _lastHoveredCard = hoveredVideo;
 
-                    this.controller.state.isUserHovering = true;
-                    clearTimeout(this.controller.state.videoTimer);
-
                     if (!hoveredVideo.classList.contains('netflix-active-preview')) {
                         document.querySelectorAll('.netflix-active-preview').forEach(el => {
                             el.classList.remove('netflix-active-preview');
@@ -335,25 +332,7 @@ class HeroManager {
                         this.controller.isRecentlyAdded.bind(this.controller)
                     );
                 } else {
-                    if (this.controller.state.isUserHovering) {
-                        _lastHoveredCard = null;
-                        this.controller.state.isUserHovering = false;
-
-                        const currentVideo = this.controller.state.videoQueue[this.controller.state.currentVideoIndex];
-                        if (currentVideo) {
-                            this.updateContent(
-                                currentVideo,
-                                this.controller.state.isMuted,
-                                this.controller.isRecentlyAdded.bind(this.controller)
-                            );
-                            setTimeout(() => {
-                                this.controller.simulateHover(currentVideo);
-                                this.controller.state.videoTimer = this.controller.observerManager.addTimeout(
-                                    setTimeout(() => this.controller.playNextVideo(), 12000)
-                                );
-                            }, 50);
-                        }
-                    }
+                    _lastHoveredCard = null;
                 }
             }, 200);
         });
@@ -569,6 +548,7 @@ class CinematicController {
             isMuted: settings?.cinematicMuted !== undefined ? settings.cinematicMuted : true,
             isUserHovering: false,
             videoTimer: null,
+            postHoverTimer: null,
             activeHoverInterval: null,
             periodicTimer: null,
             previewWatcher: null,
@@ -652,6 +632,9 @@ class CinematicController {
                 }
             } else {
                 this.state.killedCard = null;
+                if (this.state.isUserHovering) {
+                    this.handleUserHoverEnd();
+                }
             }
         }, { passive: true, capture: true });
         
@@ -660,8 +643,10 @@ class CinematicController {
             if (!this.state.isUserHovering || !e.target.closest) return;
             const card = e.target.closest('ytd-rich-item-renderer');
             if (card && card.classList.contains('netflix-active-preview')) {
+                if (e.relatedTarget && card.contains(e.relatedTarget)) return;
                 e.stopPropagation();
                 e.stopImmediatePropagation();
+                this.handleUserHoverEnd();
             }
         };
         
@@ -711,12 +696,20 @@ class CinematicController {
 
     handleUserHoverStart(card) {
         const index = this.state.videoQueue.indexOf(card);
+        if (this.state.currentVideoIndex === index && card.classList.contains('netflix-active-preview')) {
+            this.state.isUserHovering = true;
+            this.state.status = STATES.USER_HOVERING;
+            this.observerManager.clearTimeout(this.state.videoTimer);
+            this.observerManager.clearTimeout(this.state.postHoverTimer);
+            return;
+        }
         if (this.state.isUserHovering && this.state.currentVideoIndex === index) return;
 
         this.state.isUserHovering = true;
         this.state.status = STATES.USER_HOVERING;
         
         this.observerManager.clearTimeout(this.state.videoTimer);
+        this.observerManager.clearTimeout(this.state.postHoverTimer);
         
         this.releaseHeroVideo();
         this.state.currentVideoIndex = index !== -1 ? index : 0;
@@ -728,34 +721,21 @@ class CinematicController {
         HoverSimulator.simulateHover(this, card);
         setTimeout(() => { if (this.state.isUserHovering) HoverSimulator.simulateHover(this, card); }, 300);
         setTimeout(() => { if (this.state.isUserHovering) HoverSimulator.simulateHover(this, card); }, 800);
-
-        // Maximum 20 seconds for the video preview
-        this.observerManager.clearTimeout(this.state.killPreviewTimer);
-        this.state.killPreviewTimer = this.observerManager.addTimeout(setTimeout(() => {
-            if (this.state.isUserHovering) {
-                this.releaseHeroVideo();
-                this.state.isUserHovering = false;
-                this.state.status = STATES.AUTO_PLAYING;
-                this.state.killedCard = card;
-                
-                this.observerManager.clearTimeout(this.state.videoTimer);
-                this.playNextVideo(); // Directly continue thumbnail cycle
-            }
-        }, 20000));
     }
 
     handleUserHoverEnd() {
+        if (!this.state.isUserHovering) return;
         this.state.isUserHovering = false;
         this.state.status = STATES.AUTO_PLAYING;
         
-        this.releaseHeroVideo();
-        this.observerManager.clearTimeout(this.state.killPreviewTimer);
-
         this.observerManager.clearTimeout(this.state.videoTimer);
-        this.state.videoTimer = this.observerManager.addTimeout(setTimeout(
-            () => this.playNextVideo(),
-            5000
-        ));
+        this.observerManager.clearTimeout(this.state.postHoverTimer);
+
+        // Continue playing the current video preview for 12 seconds after cursor leaves
+        this.state.postHoverTimer = this.observerManager.addTimeout(setTimeout(() => {
+            this.releaseHeroVideo();
+            this.playNextVideo();
+        }, 12000));
     }
 
     setupPreviewWatcher() {
@@ -834,6 +814,7 @@ class CinematicController {
 
         setTimeout(() => {
             this.releaseHeroVideo();
+            this.updateVideoQueue();
 
             let targetIndex = this.state.currentVideoIndex + 1;
             if (targetIndex >= this.state.videoQueue.length) {
@@ -1022,15 +1003,34 @@ class CinematicController {
             'ytd-rich-grid-renderer ytd-rich-item-renderer, #contents ytd-rich-item-renderer'
         ));
         items = items.filter(item => {
-            const isHidden = item.closest('[hidden]');
+            const isHidden = item.closest('[hidden]') ||
+                             item.style.display === 'none' ||
+                             window.getComputedStyle(item).display === 'none' ||
+                             item.hasAttribute('data-ypp-mix') ||
+                             item.closest('[data-ypp-mix="true"]') != null ||
+                             item.classList.contains('ypp-is-mix') ||
+                             item.classList.contains('ypp-is-watched') ||
+                             item.classList.contains('ypp-hidden-duration') ||
+                             item.classList.contains('ypp-hidden-channel');
             const isAd = item.querySelector('.badge-style-type-ad') != null;
             const isShorts = item.querySelector('[overlay-style="SHORTS"]') != null ||
                              item.closest('ytd-rich-shelf-renderer[is-shorts]');
+            const isMix = item.querySelector('a[href*="list="], a[href*="start_radio"], ytd-radio-renderer, yt-collection-thumbnail-view-model, yt-collections-stack, [overlay-style="PLAYLIST"], [overlay-style="MIX"], .yt-lockup-view-model-wiz__collection-stack') != null ||
+                          Array.from(item.querySelectorAll('ytd-thumbnail-overlay-bottom-panel-renderer, ytd-badge-supported-renderer, .badge-shape-wiz__text, #video-title, #video-title-link, .yt-lockup-view-model-wiz__title')).some(b => {
+                              const txt = b && b.textContent && b.textContent.trim().toLowerCase();
+                              return txt === 'mix' || (txt && (txt.startsWith('mix - ') || txt.includes('youtube mix') || txt.includes('my mix')));
+                          });
+            if (isMix) {
+                item.setAttribute('data-ypp-mix', 'true');
+                item.classList.add('ypp-is-mix');
+            }
             const hasVideoLink = item.querySelector('#video-title-link, a#video-title, a#thumbnail, a[href*="/watch?v="]');
-            return !isHidden && !isAd && !isShorts && hasVideoLink;
+            return !isHidden && !isAd && !isShorts && !isMix && hasVideoLink;
         });
 
-        if (items.length === this.state.videoQueue.length) return;
+        const queueUnchanged = items.length === this.state.videoQueue.length &&
+                               items.every((item, idx) => item === this.state.videoQueue[idx]);
+        if (queueUnchanged) return;
 
         this.state.videoQueue = items;
         this.state.currentVideoIndex = 0;
@@ -1041,17 +1041,11 @@ class CinematicController {
                 video._cinematicHoverAttached = true;
                 video.addEventListener('mouseenter', (e) => {
                     if (!e.isTrusted) return; 
-                    
-                    if (this.state.currentVideoIndex !== index) {
-                        this.releaseHeroVideo();
-                    }
-                    this.state.isUserHovering = true;
-                    this.state.currentVideoIndex = index;
-                    this.observerManager.clearTimeout(this.state.videoTimer);
-                    this.hero.updateContent(video, this.state.isMuted, this.isRecentlyAdded.bind(this));
-                    video.classList.add('netflix-active-preview');
-                    video._isNetflixHeroPreview = true;
-                    HoverSimulator.simulateHover(this, video);
+                    this.handleUserHoverStart(video);
+                }, { capture: true });
+                video.addEventListener('mouseleave', (e) => {
+                    if (!e.isTrusted) return;
+                    this.handleUserHoverEnd();
                 }, { capture: true });
             }
         });
@@ -1066,25 +1060,39 @@ class CinematicController {
             setTimeout(() => { if (!this.state.isUserHovering) HoverSimulator.startActiveHoverSimulation(this, firstVideo, this.observerManager); }, 2000);
             setTimeout(() => { if (!this.state.isUserHovering) HoverSimulator.startActiveHoverSimulation(this, firstVideo, this.observerManager); }, 4000);
             this.state.videoTimer = this.observerManager.addTimeout(
-                setTimeout(() => this.playNextVideo(), 10000)
+                setTimeout(() => this.playNextVideo(), 5000)
             );
         }
     }
 
     setupContentObserver() {
-        const contents = document.querySelector('#contents');
-        if (!contents) return;
+        const grid = document.querySelector('ytd-rich-grid-renderer') || document.querySelector('#contents');
+        if (!grid) return;
+
+        const chipBar = document.querySelector('ytd-feed-filter-chip-bar-renderer');
+        if (chipBar && !chipBar._topicSwitchListenerAttached) {
+            chipBar._topicSwitchListenerAttached = true;
+            chipBar.addEventListener('click', () => {
+                setTimeout(() => this.updateVideoQueue(), 400);
+                setTimeout(() => this.updateVideoQueue(), 1000);
+            });
+        }
 
         let debounceTimer;
         const observer = new MutationObserver(() => {
             this.observerManager.clearTimeout(debounceTimer);
             debounceTimer = this.observerManager.addTimeout(setTimeout(() => {
                 this.updateVideoQueue();
-            }, 500));
+            }, 300));
         });
         
         this.observerManager.addObserver(observer);
-        observer.observe(contents, { childList: true, subtree: true });
+        observer.observe(grid, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['data-ypp-mix', 'class', 'hidden', 'style']
+        });
     }
 
     setupPeriodicCheck() {
