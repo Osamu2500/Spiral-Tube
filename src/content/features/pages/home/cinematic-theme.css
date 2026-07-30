@@ -231,9 +231,7 @@ body.cinematic-home .netflix-hero-ui {
 
 /* Re-enable pointer events specifically on interactive elements inside the hero */
 body.cinematic-home .netflix-hero-buttons button,
-body.cinematic-home .netflix-hero-buttons button *,
-body.cinematic-home .netflix-hero-nav .netflix-nav-button,
-body.cinematic-home .netflix-hero-nav .netflix-nav-button * {
+body.cinematic-home .netflix-hero-buttons button * {
   pointer-events: auto !important;
 }
 
@@ -546,71 +544,7 @@ body.cinematic-home .netflix-unmute-button:hover {
   transform: scale(1.05);
 }
 
-/* ============================================================================
-** Hero Navigation
-============================================================================ */
-body.cinematic-home .netflix-hero-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  pointer-events: none;
-}
 
-body.cinematic-home .netflix-nav-button {
-  position: relative;
-  top: -80px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: rgba(20, 20, 20, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    transform 0.3s ease-in-out,
-    background 0.3s ease-in-out,
-    opacity 0.3s ease-in-out,
-    color 0.3s ease-in-out;
-  pointer-events: auto;
-  opacity: 0.15;
-}
-
-body.cinematic-home .netflix-nav-button:hover {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.9);
-  border-color: white;
-  color: black;
-  transform: scale(1.1);
-}
-
-body.cinematic-home .netflix-nav-button svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Fade animation for navigation buttons */
-@keyframes fadeInNav {
-  from {
-    transform: scale(0.9);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-body.cinematic-home .netflix-nav-button {
-  animation: fadeInNav 0.3s ease;
-}
 
 /* ============================================================================
 ** Filter Chips Styling
