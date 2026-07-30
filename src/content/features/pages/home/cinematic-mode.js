@@ -128,16 +128,69 @@ class HeroManager {
             }
         }
 
+        const getText = el =>
+            el?.textContent?.trim() || el?.getAttribute('title')?.trim() || null;
+
+        const titleSelectors = [
+            '#video-title-link yt-formatted-string',
+            '#video-title-link',
+            '#video-title',
+            'a[href*="/watch?v="] #video-title',
+            'h3 a',
+            '.yt-lockup-metadata-view-model-wiz__title',
+            '[id*="video-title"]',
+            '[title]',
+        ];
+
+        let title = null;
+        for (const sel of titleSelectors) {
+            const el = videoElement.querySelector(sel);
+            if (el) {
+                const t = getText(el);
+                if (t && t !== 'Video Title') {
+                    title = t;
+                    break;
+                }
+            }
+        }
+
+        const channelSelectors = [
+            'ytd-channel-name a',
+            'ytd-channel-name yt-formatted-string',
+            '#channel-name a',
+            '#text.ytd-channel-name',
+            '.yt-lockup-metadata-view-model-wiz__sub-title',
+            'ytd-channel-name',
+        ];
+
+        let channelName = null;
+        for (const sel of channelSelectors) {
+            const el = videoElement.querySelector(sel);
+            if (el) {
+                const t = getText(el);
+                if (t && t !== 'Channel Name') {
+                    channelName = t;
+                    break;
+                }
+            }
+        }
+
+        if (!title || !channelName || title === '' || channelName === '') {
+            if (!videoElement._heroRetryCount) videoElement._heroRetryCount = 0;
+            if (videoElement._heroRetryCount < 15) {
+                videoElement._heroRetryCount++;
+                setTimeout(() => this.update(videoElement), 200);
+                return;
+            }
+        }
+
         const content = {
-            title:
-                videoElement.querySelector('#video-title')?.textContent?.trim() ||
-                'Video Title',
+            title: title || 'Video Title',
             avatar:
-                videoElement.querySelector('yt-avatar-shape img, yt-img-shadow img, #avatar-link img')?.src || null,
-            channelName:
-                videoElement
-                    .querySelector('ytd-channel-name a, ytd-channel-name')
-                    ?.textContent?.trim() || 'Channel Name',
+                videoElement.querySelector(
+                    'yt-avatar-shape img, yt-img-shadow img, #avatar-link img, ytd-channel-name img'
+                )?.src || null,
+            channelName: channelName || 'Channel Name',
             isRecent: this.controller.isRecentlyAdded(videoElement),
         };
 
@@ -358,7 +411,7 @@ class CinematicController {
         const playButton = overlay.querySelector('.netflix-play-button');
         if (playButton) {
             playButton.addEventListener('click', () => {
-                const videoLink = video?.querySelector('#video-title-link, a#video-title')?.href;
+                const videoLink = video?.querySelector('#video-title-link, a#video-title, a#thumbnail, a[href*="/watch?v="]')?.href;
                 if (videoLink) {
                     window.location.href = videoLink;
                 }
@@ -560,7 +613,7 @@ class CinematicController {
             'ytd-rich-grid-renderer ytd-rich-item-renderer, #contents ytd-rich-item-renderer'
         );
         const newQueue = Array.from(allVideos).filter(item =>
-            item.querySelector('#video-title-link, a#video-title')
+            item.querySelector('#video-title-link, a#video-title, a#thumbnail, a[href*="/watch?v="]')
         );
 
         if (newQueue.length !== this.state.videoQueue.length) {
