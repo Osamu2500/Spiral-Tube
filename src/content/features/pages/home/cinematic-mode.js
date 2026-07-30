@@ -657,16 +657,24 @@ class CinematicController {
                     this.handleUserHoverStart(card);
                 }
             } else {
-                if (this.state.isUserHovering) {
-                    const heroOverlay = e.target.closest('.netflix-hero-content');
-                    const isPreview = e.target.closest('ytd-video-preview');
-                    if (!heroOverlay && !isPreview) {
-                        this.handleUserHoverEnd();
-                    }
-                }
                 this.state.killedCard = null;
             }
         }, { passive: true, capture: true });
+        
+        // Intercept all leave events to prevent native YouTube from stopping the video early
+        const preventLeave = (e) => {
+            if (!this.state.isUserHovering || !e.target.closest) return;
+            const card = e.target.closest('ytd-rich-item-renderer');
+            if (card && card.classList.contains('netflix-active-preview')) {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+            }
+        };
+        
+        contents.addEventListener('mouseleave', preventLeave, { capture: true });
+        contents.addEventListener('mouseout', preventLeave, { capture: true });
+        contents.addEventListener('pointerleave', preventLeave, { capture: true });
+        contents.addEventListener('pointerout', preventLeave, { capture: true });
     }
 
     setupIdleDetection() {
@@ -721,7 +729,7 @@ class CinematicController {
                 this.state.killedCard = card;
                 
                 this.observerManager.clearTimeout(this.state.videoTimer);
-                this.state.videoTimer = this.observerManager.addTimeout(setTimeout(() => this.playNextVideo(), 5000));
+                this.playNextVideo(); // Directly continue thumbnail cycle
             }
         }, 20000));
     }
@@ -1034,16 +1042,6 @@ class CinematicController {
                     video.classList.add('netflix-active-preview');
                     video._isNetflixHeroPreview = true;
                     HoverSimulator.simulateHover(this, video);
-                }, { capture: true });
-
-                video.addEventListener('mouseleave', (e) => {
-                    if (!e.isTrusted) return; 
-                    
-                    this.state.isUserHovering = false;
-                    this.observerManager.clearTimeout(this.state.videoTimer);
-                    this.state.videoTimer = this.observerManager.addTimeout(
-                        setTimeout(() => this.playNextVideo(), 5000)
-                    );
                 }, { capture: true });
             }
         });
