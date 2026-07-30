@@ -128,54 +128,65 @@ class HeroManager {
             }
         }
 
-        const getText = el =>
-            el?.textContent?.trim() || el?.getAttribute('title')?.trim() || null;
-
-        const titleSelectors = [
-            '#video-title-link yt-formatted-string',
-            '#video-title-link',
-            '#video-title',
-            'a[href*="/watch?v="] #video-title',
-            'h3 a',
-            '.yt-lockup-metadata-view-model-wiz__title',
-            '[id*="video-title"]',
-            '[title]',
-        ];
-
-        let title = null;
-        for (const sel of titleSelectors) {
-            const el = videoElement.querySelector(sel);
-            if (el) {
-                const t = getText(el);
-                if (t && t !== 'Video Title') {
-                    title = t;
-                    break;
+        const extractTitle = (videoEl) => {
+            const selectors = [
+                '#video-title-link yt-formatted-string',
+                '#video-title-link',
+                '#video-title',
+                'a[href*="/watch?v="] #video-title',
+                'h3 a',
+                '.yt-lockup-metadata-view-model-wiz__title',
+                '[id*="video-title"]',
+                '[title]'
+            ];
+            for (const sel of selectors) {
+                const els = videoEl.querySelectorAll(sel);
+                for (const el of els) {
+                    const text = el.textContent?.trim() || el.getAttribute('title')?.trim();
+                    if (text && text !== 'Video Title' && text.length > 0) {
+                        return text;
+                    }
                 }
             }
-        }
+            return null;
+        };
 
-        const channelSelectors = [
-            'ytd-channel-name a',
-            'ytd-channel-name yt-formatted-string',
-            '#channel-name a',
-            '#text.ytd-channel-name',
-            '.yt-lockup-metadata-view-model-wiz__sub-title',
-            'ytd-channel-name',
-        ];
-
-        let channelName = null;
-        for (const sel of channelSelectors) {
-            const el = videoElement.querySelector(sel);
-            if (el) {
-                const t = getText(el);
-                if (t && t !== 'Channel Name') {
-                    channelName = t;
-                    break;
+        const extractChannelName = (videoEl, currentTitle) => {
+            const selectors = [
+                'ytd-channel-name a',
+                '#text.ytd-channel-name',
+                'ytd-channel-name yt-formatted-string',
+                '#channel-name a',
+                '#channel-name',
+                'yt-formatted-string.ytd-channel-name',
+                'ytd-channel-name',
+                '.yt-lockup-metadata-view-model-wiz__sub-title',
+                '.yt-core-attributed-string--link-inherit-color',
+                'ytd-video-meta-block yt-formatted-string',
+                'ytd-video-meta-block a',
+                'a[href*="/@"]',
+                'a[href*="/channel/"]',
+                'a[href*="/c/"]',
+                'a[href*="/user/"]'
+            ];
+            for (const sel of selectors) {
+                const els = videoEl.querySelectorAll(sel);
+                for (const el of els) {
+                    const text = el.textContent?.trim() || el.getAttribute('title')?.trim();
+                    if (text && text !== 'Channel Name' && text !== 'Video Title' && text.length > 0) {
+                        if (text !== currentTitle) {
+                            return text;
+                        }
+                    }
                 }
             }
-        }
+            return null;
+        };
 
-        if (!title || !channelName || title === '' || channelName === '') {
+        const title = extractTitle(videoElement);
+        const channelName = extractChannelName(videoElement, title);
+
+        if (!title || !channelName) {
             if (!videoElement._heroRetryCount) videoElement._heroRetryCount = 0;
             if (videoElement._heroRetryCount < 15) {
                 videoElement._heroRetryCount++;
