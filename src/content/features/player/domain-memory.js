@@ -34,6 +34,16 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         this._observer = null;
         this._debouncedRestore = null;
         this._debouncedSave = null;
+
+        // Bug 2 fix: store per-instance navigation hook state
+        this._origPushState = null;
+        this._origReplaceState = null;
+        this._navHookActive = false;
+        this._navHandler = null;
+        this._popstateHandler = null;
+
+        // Bug 3 fix: store loadedmetadata handler for cleanup
+        this._loadedMetadataHandler = null;
     }
 
     /**
@@ -83,7 +93,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             const u = new URL(urlStr);
             let path = u.pathname.replace(/\/+$/, '');
             // Strip trailing episode segment like /1, /episode-1, /ep-2, /2
-            path = path.replace(/\/(?:episode[-_]?)?\d+$/i, '');
+            path = path.replace(/\/(?:episode[-_]?)?(\d+)$/i, '');
             return `${this._domain}${path}`;
         } catch (_) {
             return this._domain;
@@ -121,6 +131,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     async enable() {
         if (this.enableSuper) await super.enable();
         
+        // Load scope preference first (separate key)
+        await this._loadScopePref();
+
         // Load stored profile for this scope
         await this.loadDomainProfile();
 
@@ -137,6 +150,25 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
 
     async disable() {
         if (this.disableSuper) await super.disable();
+
+        // Bug 2 fix: restore patched history methods
+        if (this._navHookActive) {
+            if (this._origPushState) history.pushState = this._origPushState;
+            if (this._origReplaceState) history.replaceState = this._origReplaceState;
+            if (this._popstateHandler) window.removeEventListener('popstate', this._popstateHandler);
+            this._navHookActive = false;
+            this._origPushState = null;
+            this._origReplaceState = null;
+            this._popstateHandler = null;
+            this._navHandler = null;
+        }
+
+        // Bug 3 fix: remove loadedmetadata listener
+        if (this._loadedMetadataHandler) {
+            document.removeEventListener('loadedmetadata', this._loadedMetadataHandler, { capture: true });
+            this._loadedMetadataHandler = null;
+        }
+
         if (this._observer) {
             this._observer.disconnect();
             this._observer = null;
@@ -153,23 +185,43 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     }
 
     /**
+     * Improvement 2: Load scope preference from a dedicated storage key
+     * (separate from profiles so reset/clear never clobbers it)
+     */
+    async _loadScopePref() {
+        try {
+            const data = await chrome.storage.local.get('ypp_domain_scope_prefs');
+            const prefs = data.ypp_domain_scope_prefs || {};
+            if (prefs[this._domain] === 'series') {
+                this._scopeMode = 'series';
+            } else {
+                this._scopeMode = 'domain';
+            }
+        } catch (_) {}
+    }
+
+    /**
+     * Improvement 2: Save scope preference to its own dedicated key
+     */
+    async _saveScopePref() {
+        try {
+            const data = await chrome.storage.local.get('ypp_domain_scope_prefs');
+            const prefs = data.ypp_domain_scope_prefs || {};
+            prefs[this._domain] = this._scopeMode;
+            await chrome.storage.local.set({ ypp_domain_scope_prefs: prefs });
+        } catch (_) {}
+    }
+
+    /**
      * Loads the stored profile for the current scope from chrome.storage.local
      */
     async loadDomainProfile() {
         try {
             const data = await chrome.storage.local.get('ypp_domain_profiles');
             const allProfiles = data.ypp_domain_profiles || {};
-            
-            // Check scope preference (stored in domain metadata or default domain)
-            const domainMeta = allProfiles[this._domain];
-            if (domainMeta && domainMeta.scopeMode === 'series') {
-                this._scopeMode = 'series';
-            } else {
-                this._scopeMode = 'domain';
-            }
 
             const activeKey = this.getScopeKey();
-            const profile = allProfiles[activeKey] || allProfiles[this._domain];
+            const profile = allProfiles[activeKey];
 
             if (profile && profile.enabled !== false) {
                 this._domainProfile = profile;
@@ -280,57 +332,79 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         }
     }
 
+    /**
+     * UI 3: Rich restore toast — shows exactly what was applied
+     */
     _showRestoreToast(video) {
-        const displayLabel = this._scopeMode === 'series' ? 'Series' : this._domain;
-        const msg = `🌐 Restored profile for ${displayLabel}`;
-        if (this.utils?.createToast) {
-            this.utils.createToast(msg);
-        } else {
-            const existing = document.getElementById('ypp-domain-toast');
-            if (existing) existing.remove();
+        const p = this._domainProfile;
+        const displayLabel = this._scopeMode === 'series' ? this.getSeriesPath().split('/').pop() || this._domain : this._domain;
 
-            const toast = document.createElement('div');
-            toast.id = 'ypp-domain-toast';
-            toast.style.cssText = `
-                position: fixed;
-                top: 24px;
-                left: 50%;
-                transform: translateX(-50%) translateY(-20px);
-                background: rgba(14, 15, 23, 0.88);
-                color: #fff;
-                border: 1px solid rgba(16, 185, 129, 0.55);
-                border-radius: 9999px;
-                padding: 7px 18px;
-                font-family: Inter, sans-serif;
-                font-size: 12px;
-                font-weight: 600;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                box-shadow: 0 12px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
-                z-index: 2147483647;
-                opacity: 0;
-                pointer-events: none;
-                transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
-                backdrop-filter: blur(16px);
-            `;
-            toast.innerHTML = `
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="#10b981"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                <span>${msg}</span>
-            `;
-            document.body.appendChild(toast);
-
-            requestAnimationFrame(() => {
-                toast.style.opacity = '1';
-                toast.style.transform = 'translateX(-50%) translateY(0)';
-            });
-
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateX(-50%) translateY(-15px)';
-                setTimeout(() => toast.remove(), 350);
-            }, 2600);
+        // Build applied-settings summary
+        const parts = [];
+        if (p?.volumeBoost?.gain && p.volumeBoost.gain !== 1) {
+            parts.push(`${Math.round(p.volumeBoost.gain * 100)}% Vol`);
         }
+        if (p?.videoFilters?.filterIndex && p.videoFilters.filterIndex !== 0) {
+            const filterName = window.YPP?.features?.VideoFiltersPresets?.FILTERS?.[p.videoFilters.filterIndex]?.name;
+            if (filterName) parts.push(filterName);
+        }
+        if (p?.playbackRate && p.playbackRate !== 1) {
+            parts.push(`${p.playbackRate}x`);
+        }
+
+        const settingsSummary = parts.length > 0 ? parts.join(' · ') : 'Profile';
+        const scopeIcon = this._scopeMode === 'series'
+            ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="#a78bfa"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7l-5 3V8l5 3zm5-3l-5 3 5 3V9z"/></svg>`
+            : `<svg width="14" height="14" viewBox="0 0 24 24" fill="#10b981"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
+
+        const existing = document.getElementById('ypp-domain-toast');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.id = 'ypp-domain-toast';
+        toast.style.cssText = `
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: rgba(14, 15, 23, 0.92);
+            color: #fff;
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            border-top: 1px solid rgba(16, 185, 129, 0.7);
+            border-radius: 9999px;
+            padding: 8px 20px 8px 14px;
+            font-family: Inter, -apple-system, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(16,185,129,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+            z-index: 2147483647;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+            backdrop-filter: blur(20px);
+            white-space: nowrap;
+        `;
+        toast.innerHTML = `
+            ${scopeIcon}
+            <span style="color: rgba(255,255,255,0.65); font-weight: 500; font-size: 11px;">Restored</span>
+            <span style="color: #fff;">${displayLabel}</span>
+            ${parts.length > 0 ? `<span style="color: rgba(255,255,255,0.45);">·</span><span style="color: #10b981; font-size: 11px;">${settingsSummary}</span>` : ''}
+        `;
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+        });
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) translateY(-12px)';
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
     }
 
     recordChange(sourceFeature) {
@@ -382,12 +456,6 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             const data = await chrome.storage.local.get('ypp_domain_profiles');
             const allProfiles = data.ypp_domain_profiles || {};
             allProfiles[activeKey] = p;
-            
-            // Keep default domain entry informed of the chosen scope mode
-            if (this._scopeMode === 'series' && activeKey !== this._domain) {
-                allProfiles[this._domain] = { ...(allProfiles[this._domain] || {}), scopeMode: 'series' };
-            }
-            
             await chrome.storage.local.set({ ypp_domain_profiles: allProfiles });
             this._updateButtonStatus();
             window.YPP?.Utils?.log?.(`Saved profile for scope ${activeKey}`, 'DomainMemory', 'info');
@@ -397,15 +465,17 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     }
 
     /**
-     * Switch scope mode between 'domain' (entire site) and 'series' (specific show)
+     * Bug 6 fix: Switch scope mode — load new scope profile WITHOUT overwriting it first.
+     * Improvement 2: Persist scope pref in a dedicated key.
      */
     async setScopeMode(mode) {
         if (mode !== 'domain' && mode !== 'series') return;
         this._scopeMode = mode;
+        // Save pref first
+        await this._saveScopePref();
+        // Load the profile for the NEW scope (do NOT save before loading)
         await this.loadDomainProfile();
-        if (this._isRemembering) {
-            await this._executeSaveProfile();
-        }
+        // Restore the loaded profile onto the current video
         const video = this._getVideo();
         if (video) this.restoreProfile(video, true);
     }
@@ -490,37 +560,47 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         }
     }
 
+    /**
+     * Bug 2 fix: Per-instance navigation hook — stored on instance, restored in disable().
+     */
     _setupEpisodeNavigationHooks() {
-        if (window._ypp_domain_nav_hooked) return;
-        window._ypp_domain_nav_hooked = true;
+        if (this._navHookActive) return;
+        this._navHookActive = true;
 
+        const self = this;
         const notifyNavigation = () => {
             setTimeout(() => {
-                const video = this._getVideo();
+                const video = self._getVideo();
                 if (video) {
-                    this.restoreProfile(video, true);
+                    self.restoreProfile(video, true);
                 }
-            }, 250);
+            }, 300);
         };
+        this._navHandler = notifyNavigation;
 
-        const originalPushState = history.pushState;
-        const originalReplaceState = history.replaceState;
+        this._origPushState = history.pushState;
+        this._origReplaceState = history.replaceState;
+        const origPush = this._origPushState;
+        const origReplace = this._origReplaceState;
 
         history.pushState = function (...args) {
-            const res = originalPushState.apply(this, args);
+            const res = origPush.apply(this, args);
             notifyNavigation();
             return res;
         };
-
         history.replaceState = function (...args) {
-            const res = originalReplaceState.apply(this, args);
+            const res = origReplace.apply(this, args);
             notifyNavigation();
             return res;
         };
 
-        window.addEventListener('popstate', notifyNavigation);
+        this._popstateHandler = notifyNavigation;
+        window.addEventListener('popstate', this._popstateHandler);
     }
 
+    /**
+     * Bug 3 fix: Store loadedmetadata handler ref so disable() can remove it.
+     */
     _setupVideoSourceMonitoring() {
         if (this._observer) this._observer.disconnect();
 
@@ -557,13 +637,19 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             attributeFilter: ['src', 'currentsrc']
         });
 
-        document.addEventListener('loadedmetadata', (e) => {
+        // Bug 3 fix: store handler reference so it can be removed in disable()
+        this._loadedMetadataHandler = (e) => {
             if (e.target && e.target.tagName === 'VIDEO') {
                 this.restoreProfile(e.target, false);
             }
-        }, { capture: true });
+        };
+        document.addEventListener('loadedmetadata', this._loadedMetadataHandler, { capture: true });
     }
 
+    /**
+     * Improvement 3: Button shows D (Domain) or S (Series) label beside the icon.
+     * Green = Domain active, Purple = Series active.
+     */
     createButton(video) {
         const icon = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
         const btn = document.createElement('button');
@@ -572,6 +658,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         btn.title = `Domain Memory (${this._domain})`;
         btn.innerHTML = `
             ${icon}
+            <span class="ypp-domain-scope-label">D</span>
             <span class="ypp-domain-badge-indicator"></span>
         `;
         btn.onclick = (e) => {
@@ -586,18 +673,37 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     _updateButtonStatus() {
         if (!this._domainBtn) return;
         const ind = this._domainBtn.querySelector('.ypp-domain-badge-indicator');
+        const scopeLabel = this._domainBtn.querySelector('.ypp-domain-scope-label');
         if (!ind) return;
 
-        const activeLabel = this._scopeMode === 'series' ? 'Series' : this._domain;
+        const isSeriesMode = this._scopeMode === 'series';
+        const activeLabel = isSeriesMode ? 'Series' : this._domain;
+
+        // Update the D/S scope label
+        if (scopeLabel) {
+            scopeLabel.textContent = isSeriesMode ? 'S' : 'D';
+            scopeLabel.style.color = isSeriesMode ? '#a78bfa' : '#10b981';
+        }
 
         if (this._domainProfile && this._isRemembering) {
             this._domainBtn.classList.add('ypp-domain-active');
+            // Series mode: purple glow; Domain mode: green glow
+            ind.style.background = isSeriesMode ? '#a78bfa' : '#10b981';
+            ind.style.boxShadow = isSeriesMode
+                ? '0 0 10px #a78bfa, 0 0 4px #fff'
+                : '0 0 10px #10b981, 0 0 4px #fff';
             this._domainBtn.title = `Profile Active (${activeLabel}): Auto-remembers episodes`;
         } else if (this._isRemembering) {
             this._domainBtn.classList.add('ypp-domain-active');
+            ind.style.background = isSeriesMode ? '#a78bfa' : '#10b981';
+            ind.style.boxShadow = isSeriesMode
+                ? '0 0 10px #a78bfa, 0 0 4px #fff'
+                : '0 0 10px #10b981, 0 0 4px #fff';
             this._domainBtn.title = `Auto-Remembering ON (${activeLabel})`;
         } else {
             this._domainBtn.classList.remove('ypp-domain-active');
+            ind.style.background = 'rgba(255,255,255,0.35)';
+            ind.style.boxShadow = 'none';
             this._domainBtn.title = `Domain Memory OFF (${activeLabel})`;
         }
     }
@@ -616,6 +722,15 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         if (this._domainPanel) {
             this._domainPanel.remove();
             this._domainPanel = null;
+        }
+        // Bug 1 fix: clean up event listeners added by DomainMemoryUI
+        if (this._domainPanelOutsideHandler) {
+            document.removeEventListener('click', this._domainPanelOutsideHandler);
+            this._domainPanelOutsideHandler = null;
+        }
+        if (this._domainPanelKeydownHandler) {
+            document.removeEventListener('keydown', this._domainPanelKeydownHandler);
+            this._domainPanelKeydownHandler = null;
         }
     }
 }

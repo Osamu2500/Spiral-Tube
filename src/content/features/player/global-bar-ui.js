@@ -593,6 +593,8 @@ export class GlobalBarUI {
                 v.playbackRate = next;
             }
             this.updateUIState();
+            // Bug 7 fix: notify domain memory to persist the speed change
+            window.YPP?.featureManager?.getFeature?.('domainMemory')?.recordChange?.('speed');
         };
 
         speedBtn.onwheel = (e) => {
@@ -610,6 +612,8 @@ export class GlobalBarUI {
                 v.playbackRate = next;
             }
             this.updateUIState();
+            // Bug 7 fix: notify domain memory to persist the speed change (debounced)
+            window.YPP?.featureManager?.getFeature?.('domainMemory')?.recordChange?.('speed');
         };
     }
 
