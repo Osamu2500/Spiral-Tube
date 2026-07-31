@@ -495,6 +495,7 @@ window.YPP.SettingsSchema = {
      * @returns {Object} Migrated settings object
      */
     migrate(raw) {
+        if (!raw || typeof raw !== 'object') return raw || {};
         let currentVersion = raw.schemaVersion || 0;
         
         // Example: If migrating from version 0 to 1

@@ -40,7 +40,8 @@ export class SubscriptionFolders extends window.YPP.features.BaseFeature {
         // to avoid unintentionally stopping other features that share the same observer.
 
         // ── Sub-modules ────────────────────────────────────────────────────
-                this.ui = new window.YPP.features.FolderUI(this.storage, this);
+        this.storage = new window.YPP.features.FolderStorage();
+        this.ui = new window.YPP.features.FolderUI(this.storage, this);
 
         // Bound nav handler stored for later removal in disable()
         this._boundHandleNav = () => this.handleNavigation();
@@ -267,7 +268,7 @@ export class SubscriptionFolders extends window.YPP.features.BaseFeature {
         this.addListener(window, 'yt-navigate-finish', this._boundHandleNav);
         this.addListener(window, 'popstate', this._boundHandlePopstate);
 
-        this.observer.register('fallback-navigation', 'ytd-app', () => {
+        this.observer.register('fallback-navigation', 'ytd-browse, ytd-rich-grid-renderer, ytd-section-list-renderer, #contents', () => {
             if (this.settings?.enableSubsManager !== false && !document.getElementById('ypp-sub-folders-container')) {
                 this.ui.injectGuideFolders();
             }

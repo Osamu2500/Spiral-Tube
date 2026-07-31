@@ -423,28 +423,47 @@ export class FolderUI {
     renderFilterChips() {
         if (!this.orchestrator.isFeedPage()) return;
 
+        const GRID_SELECTOR = 'ytd-browse ytd-rich-grid-renderer, ytd-browse ytd-section-list-renderer, ytd-browse ytd-item-section-renderer, #contents ytd-rich-grid-renderer, ytd-rich-grid-renderer, ytd-section-list-renderer';
+
+        const inject = (elements) => {
+            const grid = elements?.[0] || document.querySelector(GRID_SELECTOR);
+            if (!grid) return;
+            const parent = grid.parentNode;
+            if (!parent) return;
+
+            let chipsBar = document.getElementById('ypp-folder-chips');
+
+            if (!chipsBar) {
+                chipsBar = document.createElement('div');
+                chipsBar.id = 'ypp-folder-chips';
+                chipsBar.className = 'ypp-folder-chips-bar';
+            }
+
+            // Ensure full width above the grid without overlapping video cards
+            chipsBar.style.cssText = 'width: 100% !important; max-width: 100% !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: space-between !important; position: relative !important; z-index: 100 !important; margin: 0 0 24px 0 !important; box-sizing: border-box !important;';
+
+            if (chipsBar.nextElementSibling !== grid || chipsBar.parentNode !== parent) {
+                parent.insertBefore(chipsBar, grid);
+            }
+
+            this.rebuildChipsContent(chipsBar);
+        };
+
         this.observer.register(
             'inject-filter-chips',
-            'ytd-browse[page-subtype="subscriptions"] ytd-rich-grid-renderer',
-            (elements) => {
-                const grid = elements[0];
-                let chipsBar = document.getElementById('ypp-folder-chips');
-
-                if (!chipsBar) {
-                    chipsBar = document.createElement('div');
-                    chipsBar.id = 'ypp-folder-chips';
-                    chipsBar.className = 'ypp-folder-chips-bar';
-                    const contents = grid.querySelector('#contents');
-                    if (contents) {
-                        grid.insertBefore(chipsBar, contents);
-                    } else {
-                        grid.prepend(chipsBar);
-                    }
-                }
-
-                this.rebuildChipsContent(chipsBar);
-            }
+            GRID_SELECTOR,
+            inject
         );
+
+        // Also poll immediately in case the grid is already in the DOM and mutation observer doesn't fire
+        if (window.YPP?.Utils?.pollFor) {
+            window.YPP.Utils.pollFor(() => document.querySelector(GRID_SELECTOR), 8000, 250)
+                .then(el => { if (el) inject([el]); })
+                .catch(() => {});
+        } else {
+            const existing = document.querySelector(GRID_SELECTOR);
+            if (existing) inject([existing]);
+        }
     }
 
     /**
@@ -455,7 +474,11 @@ export class FolderUI {
         if (!chipsBar) chipsBar = document.getElementById('ypp-folder-chips');
         if (!chipsBar) return; // Bar not injected yet — observer will handle it
 
-        if (this.orchestrator.settings?.subscriptionFolders !== false) {
+        const showFolders = this.orchestrator.settings?.subscriptionFolders !== false;
+        const showFilter = this.orchestrator.settings?.enableFilterBar !== false;
+        const showHealth = this.orchestrator.settings?.enableChannelHealth !== false;
+
+        if (showFolders || showFilter || showHealth) {
             // Wipe and rebuild only the left container — preserves the right filter bar
             const existingLeft = chipsBar.querySelector('.ypp-folder-chips-left');
             if (existingLeft) existingLeft.remove();
@@ -471,172 +494,174 @@ export class FolderUI {
             chipsBar.style.gap = '8px';
             chipsBar.style.marginBottom = '16px';
             
-            // --- FILTER CHIPS ---
-            const ffSettings = this.orchestrator.settings || {};
-            const feedFilterBar = document.createElement('div');
-            feedFilterBar.className = 'ypp-sub-filter-group ypp-feed-filter-chips';
-            feedFilterBar.style.cssText = 'display: flex; align-items: center; gap: 4px; flex-wrap: wrap; width: 100%;';
-            
-            this.orchestrator.ffActiveChips = this.orchestrator.ffActiveChips || {};
-
-            const getChipBg = (state) => {
-                if (state === 'show') return 'rgba(43, 166, 64, 0.2)';
-                if (state === 'hide') return 'rgba(235, 64, 52, 0.2)';
-                return 'rgba(255,255,255,0.1)';
-            };
-            
-            const getChipBorder = (state) => {
-                if (state === 'show') return '1px solid rgba(43, 166, 64, 0.5)';
-                if (state === 'hide') return '1px solid rgba(235, 64, 52, 0.5)';
-                return '1px solid transparent';
-            };
-
-            const getChipColor = (state) => {
-                if (state === 'show') return '#4ade80';
-                if (state === 'hide') return '#f87171';
-                return '#f1f1f1';
-            };
-
-            const createFfChip = (id, label, iconSvg = '', isDefault = false) => {
-                if (ffSettings[`ff_${id}_visible`] === false) return;
+            if (showFolders) {
+                // --- FILTER CHIPS ---
+                const ffSettings = this.orchestrator.settings || {};
+                const feedFilterBar = document.createElement('div');
+                feedFilterBar.className = 'ypp-sub-filter-group ypp-feed-filter-chips';
+                feedFilterBar.style.cssText = 'display: flex; align-items: center; gap: 4px; flex-wrap: wrap; width: 100%;';
                 
-                if (!this.orchestrator.ffInitialized) {
-                    if (ffSettings[`ff_${id}_default`] || isDefault) {
-                        this.orchestrator.ffActiveChips[id] = 'show';
-                    } else {
-                        this.orchestrator.ffActiveChips[id] = 'neutral';
+                this.orchestrator.ffActiveChips = this.orchestrator.ffActiveChips || {};
+
+                const getChipBg = (state) => {
+                    if (state === 'show') return 'rgba(43, 166, 64, 0.2)';
+                    if (state === 'hide') return 'rgba(235, 64, 52, 0.2)';
+                    return 'rgba(255,255,255,0.1)';
+                };
+                
+                const getChipBorder = (state) => {
+                    if (state === 'show') return '1px solid rgba(43, 166, 64, 0.5)';
+                    if (state === 'hide') return '1px solid rgba(235, 64, 52, 0.5)';
+                    return '1px solid transparent';
+                };
+
+                const getChipColor = (state) => {
+                    if (state === 'show') return '#4ade80';
+                    if (state === 'hide') return '#f87171';
+                    return '#f1f1f1';
+                };
+
+                const createFfChip = (id, label, iconSvg = '', isDefault = false) => {
+                    if (ffSettings[`ff_${id}_visible`] === false) return;
+                    
+                    if (!this.orchestrator.ffInitialized) {
+                        if (ffSettings[`ff_${id}_default`] || isDefault) {
+                            this.orchestrator.ffActiveChips[id] = 'show';
+                        } else {
+                            this.orchestrator.ffActiveChips[id] = 'neutral';
+                        }
                     }
-                }
 
-                const chip = document.createElement('button');
-                let state = this.orchestrator.ffActiveChips[id] || 'neutral';
-                chip.className = `ypp-filter-chip ypp-ff-chip ypp-ff-${state}`;
-                chip.dataset.id = id;
-                chip.innerHTML = (iconSvg ? `<span style="margin-right:4px;">${iconSvg}</span>` : '') + label;
-                chip.style.cssText = `
-                    padding: 6px 12px;
-                    border-radius: 16px;
-                    font-size: 13px;
-                    font-weight: 500;
-                    background: ${getChipBg(state)};
-                    color: ${getChipColor(state)};
-                    border: ${getChipBorder(state)};
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    transition: 0.2s;
-                `;
+                    const chip = document.createElement('button');
+                    let state = this.orchestrator.ffActiveChips[id] || 'neutral';
+                    chip.className = `ypp-filter-chip ypp-ff-chip ypp-ff-${state}`;
+                    chip.dataset.id = id;
+                    chip.innerHTML = (iconSvg ? `<span style="margin-right:4px;">${iconSvg}</span>` : '') + label;
+                    chip.style.cssText = `
+                        padding: 6px 12px;
+                        border-radius: 16px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        background: ${getChipBg(state)};
+                        color: ${getChipColor(state)};
+                        border: ${getChipBorder(state)};
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        transition: 0.2s;
+                    `;
 
-                chip.addEventListener('click', () => {
-                    const multiSelect = ffSettings.ff_opt_multiselect;
-                    if (id === 'all') {
-                        Object.keys(this.orchestrator.ffActiveChips).forEach(k => {
-                            this.orchestrator.ffActiveChips[k] = 'neutral';
-                        });
-                        this.orchestrator.ffActiveChips['all'] = 'show';
-                    } else {
-                        if (!multiSelect) {
-                            const currentState = this.orchestrator.ffActiveChips[id] || 'neutral';
+                    chip.addEventListener('click', () => {
+                        const multiSelect = ffSettings.ff_opt_multiselect;
+                        if (id === 'all') {
                             Object.keys(this.orchestrator.ffActiveChips).forEach(k => {
                                 this.orchestrator.ffActiveChips[k] = 'neutral';
                             });
-                            this.orchestrator.ffActiveChips[id] = currentState;
-                        }
-                        
-                        this.orchestrator.ffActiveChips['all'] = 'neutral';
-                        
-                        const current = this.orchestrator.ffActiveChips[id] || 'neutral';
-                        if (current === 'neutral') this.orchestrator.ffActiveChips[id] = 'show';
-                        else if (current === 'show') this.orchestrator.ffActiveChips[id] = 'hide';
-                        else this.orchestrator.ffActiveChips[id] = 'neutral';
-                        
-                        const anyActive = Object.values(this.orchestrator.ffActiveChips).some(s => s !== 'neutral');
-                        if (!anyActive) {
                             this.orchestrator.ffActiveChips['all'] = 'show';
+                        } else {
+                            if (!multiSelect) {
+                                const currentState = this.orchestrator.ffActiveChips[id] || 'neutral';
+                                Object.keys(this.orchestrator.ffActiveChips).forEach(k => {
+                                    this.orchestrator.ffActiveChips[k] = 'neutral';
+                                });
+                                this.orchestrator.ffActiveChips[id] = currentState;
+                            }
+                            
+                            this.orchestrator.ffActiveChips['all'] = 'neutral';
+                            
+                            const current = this.orchestrator.ffActiveChips[id] || 'neutral';
+                            if (current === 'neutral') this.orchestrator.ffActiveChips[id] = 'show';
+                            else if (current === 'show') this.orchestrator.ffActiveChips[id] = 'hide';
+                            else this.orchestrator.ffActiveChips[id] = 'neutral';
+                            
+                            const anyActive = Object.values(this.orchestrator.ffActiveChips).some(s => s !== 'neutral');
+                            if (!anyActive) {
+                                this.orchestrator.ffActiveChips['all'] = 'show';
+                            }
                         }
-                    }
-                    
-                    feedFilterBar.querySelectorAll('.ypp-ff-chip').forEach(c => {
-                        const s = this.orchestrator.ffActiveChips[c.dataset.id] || 'neutral';
-                        c.className = `ypp-filter-chip ypp-ff-chip ypp-ff-${s}`;
-                        c.style.background = getChipBg(s);
-                        c.style.color = getChipColor(s);
-                        c.style.border = getChipBorder(s);
+                        
+                        feedFilterBar.querySelectorAll('.ypp-ff-chip').forEach(c => {
+                            const s = this.orchestrator.ffActiveChips[c.dataset.id] || 'neutral';
+                            c.className = `ypp-filter-chip ypp-ff-chip ypp-ff-${s}`;
+                            c.style.background = getChipBg(s);
+                            c.style.color = getChipColor(s);
+                            c.style.border = getChipBorder(s);
+                        });
+                        
+                        window.YPP.events?.emit('feed-filter:update-chips', this.orchestrator.ffActiveChips);
+                        this.orchestrator.updateFilterState();
                     });
-                    
-                    window.YPP.events?.emit('feed-filter:update-chips', this.orchestrator.ffActiveChips);
-                    this.orchestrator.updateFilterState();
+                    feedFilterBar.appendChild(chip);
+                };
+
+                createFfChip('all', 'All', '', true);
+                createFfChip('live', 'Live', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-5.5l6-4.5-6-4.5v9z"/></svg>');
+                createFfChip('streamed', 'Streamed', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>');
+                createFfChip('video', 'Video', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z"/></svg>');
+                createFfChip('shorts', 'Shorts', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86l-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l1.2-.63s-1.16-.49-1.19-.5c-1.38-.6-2.08-2.14-1.59-3.57.48-1.39 1.96-2.19 3.4-1.92L6 8.52l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72l-1.2.63s1.16.49 1.19.5c1.38.6 2.08 2.14 1.59 3.57-.48 1.39-1.96 2.19-3.4 1.92L18 15.48z"/></svg>');
+                createFfChip('scheduled', 'Scheduled', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>');
+                                        createFfChip('posts', 'Posts', '');
+                createFfChip('playlist', 'Playlist', '');
+
+                const watchSelectStyle = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 16px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: 0.2s; height: 30px; margin-left: 8px;';
+                const watchDropdown = document.createElement('select');
+                watchDropdown.style.cssText = watchSelectStyle;
+                
+                ['All', 'Unwatched', 'Watched'].forEach(opt => {
+                    const el = document.createElement('option');
+                    el.value = opt.toLowerCase();
+                    el.textContent = opt;
+                    el.style.background = '#222';
+                    watchDropdown.appendChild(el);
                 });
-                feedFilterBar.appendChild(chip);
-            };
-
-            createFfChip('all', 'All', '', true);
-            createFfChip('live', 'Live', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-5.5l6-4.5-6-4.5v9z"/></svg>');
-            createFfChip('streamed', 'Streamed', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>');
-            createFfChip('video', 'Video', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z"/></svg>');
-            createFfChip('shorts', 'Shorts', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86l-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l1.2-.63s-1.16-.49-1.19-.5c-1.38-.6-2.08-2.14-1.59-3.57.48-1.39 1.96-2.19 3.4-1.92L6 8.52l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72l-1.2.63s1.16.49 1.19.5c1.38.6 2.08 2.14 1.59 3.57-.48 1.39-1.96 2.19-3.4 1.92L18 15.48z"/></svg>');
-            createFfChip('scheduled', 'Scheduled', '<svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>');
-                                    createFfChip('posts', 'Posts', '');
-            createFfChip('playlist', 'Playlist', '');
-
-            const watchSelectStyle = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 16px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: 0.2s; height: 30px; margin-left: 8px;';
-            const watchDropdown = document.createElement('select');
-            watchDropdown.style.cssText = watchSelectStyle;
-            
-            ['All', 'Unwatched', 'Watched'].forEach(opt => {
-                const el = document.createElement('option');
-                el.value = opt.toLowerCase();
-                el.textContent = opt;
-                el.style.background = '#222';
-                watchDropdown.appendChild(el);
-            });
-            
-            if (!this.orchestrator.ffInitialized) {
-                if (ffSettings.ff_unwatched_default) {
-                    watchDropdown.value = 'unwatched';
-                    this.orchestrator.ffActiveWatch = 'unwatched';
-                } else if (ffSettings.ff_watched_default) {
-                    watchDropdown.value = 'watched';
-                    this.orchestrator.ffActiveWatch = 'watched';
-                } else {
-                    this.orchestrator.ffActiveWatch = 'all';
-                }
-            } else {
-                watchDropdown.value = this.orchestrator.ffActiveWatch || 'all';
-            }
-            
-            watchDropdown.addEventListener('change', (e) => {
-                this.orchestrator.ffActiveWatch = e.target.value;
-                this.orchestrator.updateFilterState();
-            });
-            feedFilterBar.appendChild(watchDropdown);
-
-            if (ffSettings.ff_search_visible !== false) {
-                const searchInput = document.createElement('input');
-                searchInput.type = 'text';
-                searchInput.placeholder = 'Search...';
-                searchInput.style.cssText = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 16px; font-size: 13px; outline: none; width: 140px; height: 30px; transition: width 0.2s; margin-left: 8px;';
                 
                 if (!this.orchestrator.ffInitialized) {
-                    this.orchestrator.ffActiveSearch = ffSettings.ff_search_default || '';
+                    if (ffSettings.ff_unwatched_default) {
+                        watchDropdown.value = 'unwatched';
+                        this.orchestrator.ffActiveWatch = 'unwatched';
+                    } else if (ffSettings.ff_watched_default) {
+                        watchDropdown.value = 'watched';
+                        this.orchestrator.ffActiveWatch = 'watched';
+                    } else {
+                        this.orchestrator.ffActiveWatch = 'all';
+                    }
+                } else {
+                    watchDropdown.value = this.orchestrator.ffActiveWatch || 'all';
                 }
-                searchInput.value = this.orchestrator.ffActiveSearch || '';
                 
-                searchInput.addEventListener('focus', () => searchInput.style.width = '200px');
-                searchInput.addEventListener('blur', () => searchInput.style.width = '140px');
-                searchInput.addEventListener('input', (e) => {
-                    this.orchestrator.ffActiveSearch = e.target.value.toLowerCase();
+                watchDropdown.addEventListener('change', (e) => {
+                    this.orchestrator.ffActiveWatch = e.target.value;
                     this.orchestrator.updateFilterState();
                 });
-                feedFilterBar.appendChild(searchInput);
+                feedFilterBar.appendChild(watchDropdown);
+
+                if (ffSettings.ff_search_visible !== false) {
+                    const searchInput = document.createElement('input');
+                    searchInput.type = 'text';
+                    searchInput.placeholder = 'Search...';
+                    searchInput.style.cssText = 'background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 16px; font-size: 13px; outline: none; width: 140px; height: 30px; transition: width 0.2s; margin-left: 8px;';
+                    
+                    if (!this.orchestrator.ffInitialized) {
+                        this.orchestrator.ffActiveSearch = ffSettings.ff_search_default || '';
+                    }
+                    searchInput.value = this.orchestrator.ffActiveSearch || '';
+                    
+                    searchInput.addEventListener('focus', () => searchInput.style.width = '200px');
+                    searchInput.addEventListener('blur', () => searchInput.style.width = '140px');
+                    searchInput.addEventListener('input', (e) => {
+                        this.orchestrator.ffActiveSearch = e.target.value.toLowerCase();
+                        this.orchestrator.updateFilterState();
+                    });
+                    feedFilterBar.appendChild(searchInput);
+                }
+
+                this.orchestrator.ffInitialized = true;
+
+                // Combine both rows
+                            chipsBar.appendChild(feedFilterBar);
             }
 
-            this.orchestrator.ffInitialized = true;
-
-            // Combine both rows
-                        chipsBar.appendChild(feedFilterBar);
-
-                        // Re-inject the right container (which holds Channel Health button) if it's missing
+            // Re-inject the right container (which holds Channel Health button) if it's missing
             if (!chipsBar.querySelector('.ypp-folder-chips-right')) {
                 this._injectFilterBar(chipsBar);
             }
@@ -1022,11 +1047,9 @@ export class ChannelHealthUI {
                         <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                         </div>
-                        <span class="ypp-modal-title" style="font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.5px;">Channel Organizer</span>
+                        <span class="ypp-modal-title" style="font-size: 24px; font-weight: 600; color: #fff; letter-spacing: -0.5px;">Channel Health Dashboard</span>
                     </div>
                     <div style="display: flex; gap: 12px; align-items: center;">
-                        
-                        <button id="ypp-health-delete-folder-btn" style="display: none !important;" class="ypp-btn-primary" style="background: transparent; color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 16px; font-weight: 500; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);" onmouseover="this.style.background='rgba(255, 78, 69, 0.1)'; this.style.color='#ff4e45'; this.style.borderColor='rgba(255, 78, 69, 0.3)';" onmouseout="this.style.background='transparent'; this.style.color='rgba(255, 255, 255, 0.6)'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">Delete Folder</button>
                         <div style="display: flex; align-items: center; gap: 8px;">
                             <button id="ypp-health-scan-btn" class="ypp-btn-primary" style="background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); padding: 8px 24px; border-radius: 24px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);" onmouseover="this.style.transform='translateY(-1px)'; this.style.background='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='0 6px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)';">Start Scan</button>
                             <div id="ypp-scan-progress-wrapper" style="display: none; width: 32px; height: 32px; position: relative;">
@@ -1070,12 +1093,6 @@ export class ChannelHealthUI {
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" style="position: absolute; left: 14px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                 <input type="text" id="ypp-health-search-input" placeholder="Search channels..." style="width: 100%; background: rgba(255, 255, 255, 0.05); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 10px 16px 10px 38px; border-radius: 12px; outline: none; font-size: 13px; transition: all 0.2s;" onfocus="this.style.borderColor='rgba(99, 102, 241, 0.5)'; this.style.boxShadow='0 0 0 2px rgba(99, 102, 241, 0.2)';" onblur="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.boxShadow='none';"/>
                             </div>
-                            <span style="display: none !important;">Filters:</span>
-                            <select id="ypp-health-folder-filter-dropdown" style="display: none !important;" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 10px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: all 0.2s; appearance: none; padding-right: 32px; background-image: url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
-                                <option value="all" style="background:rgba(20,20,30,0.9); color: white;">All Folders</option>
-                                <option value="__no_folder__" style="background:rgba(20,20,30,0.9); color: white;">Uncategorized</option>
-                                ${folderUI ? Object.keys((folderUI?.storage?.folders || {})).map(f => '<option value="' + f + '" style="background:rgba(20,20,30,0.9); color: white;">' + f + '</option>').join('') : ''}
-                            </select>
                             <select id="ypp-health-filter-dropdown" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); color: #f1f5f9; border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 10px; cursor: pointer; outline: none; font-size: 13px; font-weight: 500; transition: all 0.2s; appearance: none; padding-right: 32px; background-image: url('data:image/svg+xml;utf8,<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
                                 <option value="all" style="background:rgba(20,20,30,0.9); color: white;">All Statuses</option>
                                 <option value="active" style="background:rgba(20,20,30,0.9); color: white;">Active</option>
@@ -1100,7 +1117,7 @@ export class ChannelHealthUI {
         `;
 
         // Animate entrance using anime.js
-        anime({
+        window.anime?.({
             targets: '.ypp-organizer-modal',
             opacity: [0, 1],
             scale: [0.95, 1],
@@ -1108,7 +1125,7 @@ export class ChannelHealthUI {
             duration: 600
         });
 
-        overlay.querySelector('.ypp-modal-close').addEventListener('click', () => {
+        overlay.querySelector('.ypp-modal-close')?.addEventListener('click', () => {
             overlay.classList.remove('open');
             setTimeout(() => overlay.remove(), 300);
         });
@@ -1117,36 +1134,24 @@ export class ChannelHealthUI {
         const closeBtn     = overlay.querySelector('.ypp-modal-close');
         const scanBtn      = overlay.querySelector('#ypp-health-scan-btn');
         const unsubBtn     = overlay.querySelector('#ypp-health-unsub-btn');
-        const addFolderBtn = overlay.querySelector('#ypp-health-add-folder-btn');
-        const createBtn    = overlay.querySelector('#ypp-health-create-folder-btn');
-        const deleteBtn    = overlay.querySelector('#ypp-health-delete-folder-btn');
-        const folderSel    = overlay.querySelector('#ypp-health-folder-filter-dropdown');
         const filterSel    = overlay.querySelector('#ypp-health-filter-dropdown');
         const sortSel      = overlay.querySelector('#ypp-health-sort-dropdown');
 
-        closeBtn.addEventListener('mouseover', () => { closeBtn.style.background  = 'rgba(255,255,255,0.1)'; });
-        closeBtn.addEventListener('mouseout',  () => { closeBtn.style.background  = 'rgba(255,255,255,0.05)'; });
-        scanBtn.addEventListener('mouseover',  () => { scanBtn.style.filter       = 'brightness(1.1)'; });
-        scanBtn.addEventListener('mouseout',   () => { scanBtn.style.filter       = 'brightness(1)'; });
-        unsubBtn.addEventListener('mouseover', () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.25)'; });
-        unsubBtn.addEventListener('mouseout',  () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.15)'; });
-        if(addFolderBtn) addFolderBtn.addEventListener('mouseover', () => { addFolderBtn.style.background = 'rgba(255, 255, 255, 0.2)'; });
-        if(addFolderBtn) addFolderBtn.addEventListener('mouseout',  () => { addFolderBtn.style.background = 'rgba(255, 255, 255, 0.1)'; });
-        if(createBtn) createBtn.addEventListener('mouseover', () => { createBtn.style.background = 'rgba(255,255,255,0.1)'; });
-        if(createBtn) createBtn.addEventListener('mouseout',  () => { createBtn.style.background = 'rgba(255,255,255,0.05)'; });
-        if(deleteBtn) deleteBtn.addEventListener('mouseover', () => { deleteBtn.style.background = 'rgba(255, 78, 69, 0.15)'; deleteBtn.style.color = '#ff4e45'; deleteBtn.style.borderColor = 'rgba(255, 78, 69, 0.3)'; });
-        if(deleteBtn) deleteBtn.addEventListener('mouseout',  () => { deleteBtn.style.background = 'rgba(255,255,255,0.05)'; deleteBtn.style.color = '#fff'; deleteBtn.style.borderColor = 'rgba(255,255,255,0.1)'; });
-        if(folderSel) folderSel.addEventListener('mouseover',() => { folderSel.style.background = 'rgba(255,255,255,0.12)'; });
-        if(folderSel) folderSel.addEventListener('mouseout', () => { folderSel.style.background = 'rgba(255,255,255,0.08)'; });
-        filterSel.addEventListener('mouseover',() => { filterSel.style.background = 'rgba(255,255,255,0.12)'; });
-        filterSel.addEventListener('mouseout', () => { filterSel.style.background = 'rgba(255,255,255,0.08)'; });
-        sortSel.addEventListener('mouseover',  () => { sortSel.style.background   = 'rgba(255,255,255,0.12)'; });
-        sortSel.addEventListener('mouseout',   () => { sortSel.style.background   = 'rgba(255,255,255,0.08)'; });
+        closeBtn?.addEventListener('mouseover', () => { closeBtn.style.background  = 'rgba(255,255,255,0.1)'; });
+        closeBtn?.addEventListener('mouseout',  () => { closeBtn.style.background  = 'rgba(255,255,255,0.05)'; });
+        scanBtn?.addEventListener('mouseover',  () => { scanBtn.style.filter       = 'brightness(1.1)'; });
+        scanBtn?.addEventListener('mouseout',   () => { scanBtn.style.filter       = 'brightness(1)'; });
+        unsubBtn?.addEventListener('mouseover', () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.25)'; });
+        unsubBtn?.addEventListener('mouseout',  () => { unsubBtn.style.background  = 'rgba(255, 78, 69, 0.15)'; });
+        filterSel?.addEventListener('mouseover',() => { filterSel.style.background = 'rgba(255,255,255,0.12)'; });
+        filterSel?.addEventListener('mouseout', () => { filterSel.style.background = 'rgba(255,255,255,0.08)'; });
+        sortSel?.addEventListener('mouseover',  () => { sortSel.style.background   = 'rgba(255,255,255,0.12)'; });
+        sortSel?.addEventListener('mouseout',   () => { sortSel.style.background   = 'rgba(255,255,255,0.08)'; });
 
         const selectAllBtn = overlay.querySelector('#ypp-health-select-all-btn');
         const unselectAllBtn = overlay.querySelector('#ypp-health-unselect-all-btn');
 
-        selectAllBtn.addEventListener('click', () => {
+        selectAllBtn?.addEventListener('click', () => {
             const rows = resultsEl.querySelectorAll('.ypp-channel-health-row');
             let changed = false;
             rows.forEach(row => {
@@ -1159,12 +1164,11 @@ export class ChannelHealthUI {
                 }
             });
             if (changed) {
-                // Must bubble for the listener on resultsEl to catch it
                 resultsEl.dispatchEvent(new Event('change', { bubbles: true }));
             }
         });
 
-        unselectAllBtn.addEventListener('click', () => {
+        unselectAllBtn?.addEventListener('click', () => {
             const checkboxes = resultsEl.querySelectorAll('.ypp-unsub-checkbox:checked');
             if (checkboxes.length > 0) {
                 checkboxes.forEach(cb => { if (!cb.disabled) cb.checked = false; });
@@ -1172,70 +1176,13 @@ export class ChannelHealthUI {
             }
         });
 
-        if(createBtn) createBtn.addEventListener('click', async () => {
-            if (!folderUI) return;
-            const name = await window.YPP.features.CustomDialog.prompt('Create Folder', 'Enter a name for the new folder:');
-            if (name && name.trim()) {
-                if (folderUI.storage.addFolder(name.trim())) {
-                    if (folderUI.renderGuideFolders) folderUI.renderGuideFolders();
-                    if (folderUI.renderFilterChips) folderUI.renderFilterChips();
-                    const oldText = createBtn.textContent;
-                    createBtn.textContent = 'Created!';
-                    setTimeout(() => createBtn.textContent = oldText, 2000);
-                }
-            }
-        });
-
-        if(deleteBtn) deleteBtn.addEventListener('click', async () => {
-            if (!folderUI) return;
-            const folderNames = Object.keys((folderUI?.storage?.folders || {}));
-            if (folderNames.length === 0) {
-                await window.YPP.features.CustomDialog.alert('No Folders', 'You have no folders to delete.');
-                return;
-            }
-            // For simplicity, prompt user to type the name of the folder they want to delete.
-            const name = await window.YPP.features.CustomDialog.prompt('Delete Folder', `Enter the exact name of the folder to delete.nnAvailable folders:n${folderNames.join(', ')}`);
-            if (name && folderNames.includes(name.trim())) {
-                if (await window.YPP.features.CustomDialog.confirm('Delete Folder', `Are you sure you want to permanently delete "${name.trim()}"?`, 'Delete', true)) {
-                    folderUI.storage.deleteFolder(name.trim());
-                    const af = folderUI.orchestrator.getActiveFolder();
-                    if (af && af.split(',').map(f => f.trim()).includes(name.trim())) {
-                        folderUI.orchestrator.setActiveFolder(name.trim(), true); // Toggle it off
-                    }
-                    if (folderUI.renderGuideFolders) folderUI.renderGuideFolders();
-                    if (folderUI.renderFilterChips) folderUI.renderFilterChips();
-                    const oldText = deleteBtn.textContent;
-                    deleteBtn.textContent = 'Deleted!';
-                    setTimeout(() => deleteBtn.textContent = oldText, 2000);
-                }
-            } else if (name) {
-                await window.YPP.features.CustomDialog.alert('Error', 'Folder not found. Make sure you typed the name exactly as shown.');
-            }
-        });
-
-        overlay.querySelector('#ypp-health-scan-btn').addEventListener('click', () => {
+        overlay.querySelector('#ypp-health-scan-btn')?.addEventListener('click', () => {
             this.runScan(overlay, folderUI);
         });
 
-        overlay.querySelector('#ypp-health-unsub-btn').addEventListener('click', () => {
+        overlay.querySelector('#ypp-health-unsub-btn')?.addEventListener('click', () => {
             this.bulkUnsubscribe(overlay);
         });
-
-        const addBtn = overlay.querySelector('#ypp-health-add-folder-btn');
-        if (addBtn) {
-            addBtn.addEventListener('click', () => {
-                if (folderUI) this.bulkAddToFolder(overlay, folderUI);
-            });
-        }
-
-        const rmBtn = overlay.querySelector('#ypp-health-remove-folder-btn');
-        if (rmBtn) {
-            rmBtn.addEventListener('click', () => {
-                const folderFilter = "all";
-                if (folderFilter === 'all' || folderFilter === '__no_folder__') return;
-                if (folderUI) this.bulkRemoveFromFolder(overlay, folderUI, folderFilter);
-            });
-        }
 
         // Add filter functionality
         const stats = overlay.querySelectorAll('.ypp-health-stat');
@@ -1244,7 +1191,6 @@ export class ChannelHealthUI {
         const updateView = () => {
             const filter = filterSel.value;
             const sort = sortSel.value;
-            const folderFilter = "all";
             const searchInput = overlay.querySelector('#ypp-health-search-input');
             const searchQ = searchInput ? searchInput.value.toLowerCase().trim() : '';
             
@@ -1252,33 +1198,6 @@ export class ChannelHealthUI {
             stats.forEach(s => {
                 s.style.background = s.dataset.filter === filter ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)';
             });
-
-            // Sync left pane highlight
-            const listEl = overlay.querySelector('#ypp-organizer-folders-list');
-            if (listEl) {
-                listEl.querySelectorAll('div[data-folder]').forEach(fDiv => {
-                    if (fDiv.dataset.folder === folderFilter) {
-                        fDiv.style.background = 'rgba(208,188,255,0.15)';
-                        fDiv.style.borderLeft = '3px solid #d0bcff';
-                    } else {
-                        fDiv.style.background = 'rgba(255, 255, 255, 0.05)';
-                        fDiv.style.borderLeft = '1px solid rgba(255,255,255,0.05)';
-                    }
-                });
-            }
-
-            // Sync checkbox buttons for Remove Folder
-            const n = resultsEl.querySelectorAll('.ypp-unsub-checkbox:checked').length;
-            const removeFolderBtn = overlay.querySelector('#ypp-health-remove-folder-btn');
-            if (removeFolderBtn) {
-                removeFolderBtn.textContent = n > 0 ? `Remove from Folder (${n})` : 'Remove from Folder';
-                removeFolderBtn.disabled = n === 0;
-                if (folderFilter !== 'all' && folderFilter !== '__no_folder__') {
-                    removeFolderBtn.style.display = n > 0 ? 'inline-block' : 'none';
-                } else {
-                    removeFolderBtn.style.display = 'none';
-                }
-            }
 
             const rows = Array.from(resultsEl.querySelectorAll('.ypp-channel-health-row'));
             
@@ -1299,24 +1218,14 @@ export class ChannelHealthUI {
                 resultsEl.appendChild(row); // Re-appending reorders them
                 
                 let showByStatus = (filter === 'all' || row.dataset.status === filter);
-                let showByFolder = true;
                 let showBySearch = true;
                 
                 if (searchQ) {
                     const name = row.dataset.name.toLowerCase();
                     showBySearch = name.includes(searchQ);
                 }
-                
-                if (folderFilter !== 'all') {
-                    if (folderFilter === '__no_folder__') {
-                        showByFolder = (row.dataset.folders === '');
-                    } else {
-                        const folders = row.dataset.folders ? row.dataset.folders.split(',') : [];
-                        showByFolder = folders.includes(folderFilter);
-                    }
-                }
 
-                if (showByStatus && showByFolder && showBySearch) {
+                if (showByStatus && showBySearch) {
                     row.style.display = 'flex';
                 } else {
                     row.style.display = 'none';
@@ -1334,98 +1243,13 @@ export class ChannelHealthUI {
             stat.addEventListener('mouseout', () => { if (filterSel.value !== stat.dataset.filter) stat.style.background = 'rgba(255,255,255,0.05)'; });
         });
 
-        if(folderSel) folderSel.addEventListener('change', updateView);
-        filterSel.addEventListener('change', updateView);
-        sortSel.addEventListener('change', updateView);
+        filterSel?.addEventListener('change', updateView);
+        sortSel?.addEventListener('change', updateView);
 
         const searchInput = overlay.querySelector('#ypp-health-search-input');
         if (searchInput) {
             searchInput.addEventListener('input', updateView);
         }
-        sortSel.addEventListener('change', updateView);
-
-        // --- Render Organizer Folders ---
-        const renderFoldersList = () => {
-            const listEl = overlay.querySelector('#ypp-organizer-folders-list');
-            if (!listEl || !folderUI) return;
-            listEl.innerHTML = '';
-            
-            const folders = Object.keys((folderUI?.storage?.folders || {}));
-            if (folders.length === 0) {
-                listEl.innerHTML = '<div style="color:rgba(255,255,255,0.4); font-size:12px; text-align:center; margin-top:20px;">No folders yet.</div>';
-                return;
-            }
-
-            folders.forEach(fName => {
-                const fDiv = document.createElement('div');
-                fDiv.dataset.folder = fName;
-                fDiv.style.cssText = 'display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:rgba(255, 255, 255, 0.05); border:1px solid rgba(255,255,255,0.05); border-radius:12px; cursor:pointer; transition:all 0.2s ease;';
-                fDiv.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                        <span style="color:#E6E1E5; font-size:14px; font-weight:500;">${fName}</span>
-                    </div>
-                    <span class="ypp-folder-count-badge" style="background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:20px; font-size:11px; font-weight:600; color:#fff;">${(folderUI?.storage?.folders || {})[fName].length}</span>
-                `;
-                
-                // Click to filter
-                fDiv.addEventListener('click', () => {
-                    const folderSel = overlay.querySelector('#ypp-health-folder-filter-dropdown');
-                    if (folderSel) {
-                        folderSel.value = folderSel.value === fName ? 'all' : fName;
-                        folderSel.dispatchEvent(new Event('change'));
-                    }
-                });
-
-                // Drag & Drop events
-                fDiv.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    fDiv.style.background = 'rgba(99,102,241,0.2)';
-                    fDiv.style.borderColor = 'rgba(99,102,241,0.5)';
-                });
-                fDiv.addEventListener('dragleave', (e) => {
-                    e.preventDefault();
-                    fDiv.style.background = 'rgba(255, 255, 255, 0.05)';
-                    fDiv.style.borderColor = 'rgba(255,255,255,0.05)';
-                });
-                fDiv.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    fDiv.style.background = 'rgba(255, 255, 255, 0.05)';
-                    fDiv.style.borderColor = 'rgba(255,255,255,0.05)';
-                    
-                    const channelName = e.dataTransfer.getData('text/plain');
-                    if (channelName) {
-                        if (!(folderUI?.storage?.folders || {})[fName].includes(channelName)) {
-                            (folderUI?.storage?.folders || {})[fName].push(channelName);
-                            folderUI.storage.save();
-                            renderFoldersList();
-                            
-                            // Visual feedback with anime.js
-                            const newDiv = Array.from(listEl.children).find(d => d.dataset.folder === fName);
-                            if (newDiv) {
-                                const badge = newDiv.querySelector('.ypp-folder-count-badge');
-                                badge.style.background = '#22c55e';
-                                anime({
-                                    targets: badge,
-                                    scale: [1.5, 1],
-                                    duration: 600,
-                                    easing: 'spring(1, 80, 10, 0)',
-                                    complete: () => {
-                                        badge.style.background = 'rgba(255,255,255,0.1)';
-                                    }
-                                });
-                            }
-                            
-                            // Trigger re-render of channels to show new badge
-                            this.runScan(overlay, folderUI, true);
-                        }
-                    }
-                });
-                
-                listEl.appendChild(fDiv);
-            });
-        };
-        renderFoldersList();
     }
 
     static _extractYtInitialData(text) {

@@ -44,8 +44,6 @@ export class WatchHistoryTracker extends window.YPP.features.BaseFeature {
         this.addListener(document, 'visibilitychange', () => {
             if (document.hidden) this.saveData();
         });
-        
-        this._injectAlertStyles();
 
         if (this.utils.isWatchPage() || this._isOnShortsPage()) {
             this._handleStartTracking();

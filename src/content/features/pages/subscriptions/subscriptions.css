@@ -479,3 +479,13 @@ ytd-browse[page-subtype="channels"] #contents.ypp-grid-layout ytd-channel-render
 .ypp-drag-over-bottom {
     border-bottom: 2px solid rgba(255, 255, 255, 0.4) !important;
 }
+
+/* Ensure filter chips bar covers full area below topbar and stays above video grid without overlapping */
+.ypp-folder-chips-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 100 !important;
+    margin: 0 0 24px 0 !important;
+}

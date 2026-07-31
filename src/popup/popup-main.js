@@ -920,13 +920,6 @@ const initMiscButtons = (document, saveSettings, loadSettings) => {
 
 
 
-    const manageSubsBtn = document.getElementById('manageSubsBtn');
-    if (manageSubsBtn) {
-        manageSubsBtn.addEventListener('click', () => {
-             chrome.tabs.create({ url: 'https://www.youtube.com/feed/subscriptions' });
-        });
-    }
-
     const resetBtn = document.getElementById('resetBtn');
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {

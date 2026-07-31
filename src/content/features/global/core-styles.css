@@ -2289,7 +2289,10 @@ body.yt-spiral-tube-theme
   gap: 12px;
   padding: 12px 20px;
   margin-bottom: 24px;
-  background: var(--ypp-bg-glass);-filter: ;  border: 1px solid var(--ypp-glass-border);
+  background: var(--ypp-bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--ypp-glass-border);
   border-radius: 12px;
   align-items: center;
   justify-content: space-between;
