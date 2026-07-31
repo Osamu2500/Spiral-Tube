@@ -488,6 +488,13 @@ export const getPopupSchema = (t) => [
                 ]
             },
             {
+                title: 'Remembered Streaming Sites (Domain Memory)',
+                icon: ICONS.globalBar,
+                items: [
+                    { type:'custom', id:'domain_memory_manager', slot:'domain_memory_manager', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' },
+                ]
+            },
+            {
                 title: t('custom_css_userstyles'),
                 items: [
                     { type:'toggle', id:'enableCustomCSS', class:'span-4', label: t('enable_custom_css'), desc: t('import_or_write_your_own_styles'), icon:ICONS.promos, slot:'customCSSOptions' },

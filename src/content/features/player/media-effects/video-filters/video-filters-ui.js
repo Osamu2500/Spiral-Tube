@@ -48,6 +48,9 @@ export class VideoFiltersUI {
                         chrome.storage.local.set({ settings: updated });
                     }).catch(() => {});
                 }
+                if (window.YPP?.featureManager?.getFeature('domainMemory')?.recordChange) {
+                    window.YPP.featureManager.getFeature('domainMemory').recordChange('videoFilters');
+                }
             }, 300);
         }
         this._debouncedFilterSave(ctx);

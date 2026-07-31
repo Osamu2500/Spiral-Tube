@@ -201,6 +201,8 @@
     await import('../features/player/media-effects/video-filters/video-filters-ui.js');
     await import('../features/player/media-effects/video-filters/video-filters.js');
     await import('../features/player/enhancements/video-speed-controller.js');
+    await import('../features/player/domain-memory.js');
+    await import('../features/player/domain-memory-ui.js');
 
     // ── 3. Read user settings ────────────────────────────────────────────────
     let settings = {};
@@ -211,7 +213,7 @@
         Object.assign(settings, data.settings || {});
     } catch (_) {}
 
-    // Mock FeatureManager so GlobalBarUI can fetch VolumeBoost / VideoFilters
+    // Mock FeatureManager so GlobalBarUI can fetch VolumeBoost / VideoFilters / DomainMemory
     const instances = {};
     window.YPP.featureManager = {
         getFeature: (name) => instances[name]
@@ -232,6 +234,11 @@
         instances['videoSpeedController'].update(settings);
         if (settings.enableCustomSpeed !== false) instances['videoSpeedController'].enable();
     }
+    if (window.YPP.features.DomainMemory) {
+        instances['domainMemory'] = new window.YPP.features.DomainMemory();
+        instances['domainMemory'].init(instances, settings);
+        instances['domainMemory'].enable();
+    }
     if (window.YPP.features.CustomCursor) {
         instances['customCursor'] = new window.YPP.features.CustomCursor();
         instances['customCursor'].update(settings);
@@ -247,6 +254,11 @@
     bar.isEnabled = false;
     await bar.enable();
     bar.isEnabled = true;
+
+    if (instances['domainMemory']) {
+        const video = document.querySelector('video');
+        if (video) instances['domainMemory'].restoreProfile(video, true);
+    }
 
     // ── 5. React to popup toggle changes in real-time ────────────────────────
     try {

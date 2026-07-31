@@ -15,14 +15,24 @@ export class VolumeBoosterUI {
             const debounce = window.YPP?.Utils?.debounce
                 || ((fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; });
             this.debouncedSave = debounce((ctxArg) => {
-                if (!window.YPP?.MainApp?.saveSettings) return;
-                window.YPP.MainApp.saveSettings({
+                const newSettings = {
                     volumeLevel: ctxArg._volumeGain,
                     volumeBalance: ctxArg._balance,
                     volumeCompressor: ctxArg._compressorEnabled,
                     volumeMono: ctxArg._monoEnabled,
                     volumeEqBands: JSON.stringify(ctxArg._eqGains)
-                });
+                };
+                if (window.YPP?.MainApp?.saveSettings) {
+                    window.YPP.MainApp.saveSettings(newSettings);
+                } else if (chrome?.storage?.local) {
+                    chrome.storage.local.get('settings').then(data => {
+                        const updated = { ...(data.settings || {}), ...newSettings };
+                        chrome.storage.local.set({ settings: updated });
+                    }).catch(() => {});
+                }
+                if (window.YPP?.featureManager?.getFeature('domainMemory')?.recordChange) {
+                    window.YPP.featureManager.getFeature('domainMemory').recordChange('volumeBoost');
+                }
             }, 300);
         }
         this.debouncedSave(ctx);

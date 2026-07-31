@@ -488,6 +488,13 @@ export class GlobalBarUI {
             }
         }
 
+        if (this.settings.gpb_showDomainMemory !== false) {
+            const domainFeature = window.YPP.featureManager.getFeature('domainMemory');
+            if (domainFeature?.createButton) {
+                featsCont.appendChild(domainFeature.createButton(primary));
+            }
+        }
+
         // Hide container if empty to avoid double dividers
         const div2 = this.barElement.querySelector('#ypp-gpb-div-2');
         if (featsCont.children.length === 0) {

@@ -1,5 +1,4 @@
-window.YPP.features.VideoFiltersPresets = {
-    FILTERS: [
+export const FILTERS = [
         { category: 'Classic', name: 'Normal',        css: 'none',                                                        overlay: null },
         { category: 'Classic', name: 'Sepia',         css: 'sepia(100%)',                                                  overlay: null },
         { category: 'Classic', name: 'Grayscale',     css: 'grayscale(100%)',                                              overlay: null },
@@ -196,5 +195,11 @@ window.YPP.features.VideoFiltersPresets = {
         { category: 'Cinematic', name: 'Classic Technicolor',css: 'saturate(160%) contrast(115%) brightness(105%) sepia(10%)', preview: 'linear-gradient(135deg, #ff0844, #ffb199)', overlay: 'oldfilm' },
         { category: 'Cinematic', name: 'Tatooine Suns',      css: 'saturate(140%) contrast(120%) brightness(110%) sepia(40%) hue-rotate(-15deg)', preview: 'linear-gradient(135deg, #fceabb, #f8b500)', overlay: 'grain_custom' },
         { category: 'Cinematic', name: 'Death Star Cold',    css: 'saturate(60%) contrast(130%) brightness(90%) hue-rotate(190deg) sepia(20%)', preview: 'linear-gradient(135deg, #2c3e50, #000000)', overlay: null }
-    ]
-};
+];
+
+if (typeof window !== 'undefined') {
+    window.YPP = window.YPP || {};
+    window.YPP.features = window.YPP.features || {};
+    window.YPP.features.VideoFiltersPresets = { FILTERS };
+}
+

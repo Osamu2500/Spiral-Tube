@@ -616,6 +616,8 @@ function renderCustomSlot(item) {
     const slot = document.createElement('div');
     slot.id = item.slot || item.id;
     slot.dataset.slot = item.slot || item.id;
+    if (item.class) slot.className = item.class;
+    if (item.style) slot.style.cssText = item.style;
     return slot;
 }
 
