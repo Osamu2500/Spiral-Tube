@@ -39,6 +39,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._boundVideo = null;
         this._initHandler = null;
 
+        // Pending init retry timer
+        this._initRetryTimer = null;
+        // Visibility change handler ref for cleanup
+        this._visibilityHandler = null;
+
         // 10 EQ band definitions — sub-bass → air
         this._bands = [
             { label: '60',  freq: 60,    type: 'lowshelf', color: '#ffffff' },
@@ -93,11 +98,46 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     async enable() {
         await super.enable();
         this._loadSettings(this.settings);
-        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-        if (video && this._needsAudioGraph()) this.initAudioContext(video);
+
+        // FIX Bug 4: Use waitForElement with a timeout so we don't miss the
+        // video element when enable() is called right after SPA navigation
+        // before YouTube has rendered the player.
+        const findAndInit = async () => {
+            let video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+
+            if (!video) {
+                // Retry up to 3 s via BaseFeature's pollFor/waitForElement
+                try {
+                    video = await this.waitForElement(
+                        window.YPP.CONSTANTS.SELECTORS.VIDEO[0] || 'video',
+                        3000
+                    );
+                } catch (_) {
+                    video = null;
+                }
+            }
+
+            if (video && !this._audioConnected) {
+                this.initAudioContext(video);
+            }
+        };
+
+        findAndInit();
     }
 
     async disable() {
+        // Cancel any pending retry timer
+        if (this._initRetryTimer) {
+            clearTimeout(this._initRetryTimer);
+            this._initRetryTimer = null;
+        }
+
+        // Remove visibility change handler
+        if (this._visibilityHandler) {
+            document.removeEventListener('visibilitychange', this._visibilityHandler);
+            this._visibilityHandler = null;
+        }
+
         // Clean up UI
         if (this._volumePopup) {
             this._volumePopup.remove();
@@ -167,7 +207,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             if (this._audioConnected && this._boundVideo === video) {
                 // Same video element reused (YouTube SPA) — just re-apply state
                 this._restoreAudioState();
-            } else if (this._needsAudioGraph()) {
+            } else if (!this._audioConnected) {
                 this.initAudioContext(video);
             }
         }
@@ -177,16 +217,47 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         // Called by FeatureManager when a new videoId is detected (app:videoChange event)
         if (!this.settings || !this.settings.enableVolumeBoost) return;
         this._loadSettings(this.settings);
-        const video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-        if (!video) return;
-        if (this._audioConnected && this._boundVideo === video) {
-            // Same video element: just restore the correct audio values
-            this._restoreAudioState();
-        } else if (this._needsAudioGraph()) {
-            this.initAudioContext(video);
-        }
+
+        // FIX Bug 4: On YouTube SPA navigation, app:videoChange fires before the
+        // new player is in the DOM. Poll for the video element up to 3 s.
+        const tryInit = async () => {
+            let video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            if (!video) {
+                try {
+                    video = await this.waitForElement(
+                        window.YPP.CONSTANTS.SELECTORS.VIDEO[0] || 'video',
+                        3000
+                    );
+                } catch (_) {
+                    video = null;
+                }
+            }
+            if (!video) return;
+
+            if (this._audioConnected && this._boundVideo === video) {
+                // Same video element: just restore the correct audio values
+                this._restoreAudioState();
+            } else if (!this._audioConnected) {
+                this.initAudioContext(video);
+            } else if (this._boundVideo && this._boundVideo !== video) {
+                // Video element was swapped — reconnect to new one
+                if (this.source) {
+                    try { this.source.disconnect(); } catch (e) {}
+                }
+                this._audioConnected = false;
+                this.initAudioContext(video);
+            }
+        };
+
+        tryInit();
     }
 
+    /**
+     * FIX Bug 2: Removed _needsAudioGraph() guard.
+     * The graph must always be built when the feature is enabled so that
+     * the EQ panel works immediately even at 100% / flat EQ default state.
+     * _needsAudioGraph is kept only as a lazy-init guard inside setVolume/setBalance/setEQ.
+     */
     _needsAudioGraph() {
         if (this._volumeGain !== 1.0) return true;
         if (this._balance !== 0.0) return true;
@@ -195,11 +266,24 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         return false;
     }
 
+    /**
+     * FIX Bug 1: Enhanced safety check.
+     * currentSrc may be empty when the video element first appears on YouTube
+     * because YouTube sets it asynchronously after the element is injected.
+     * Returns true if we can determine the source is safe, OR if we simply
+     * cannot determine safety yet (caller will retry on loadedmetadata).
+     */
     _isSafeToBoost(video) {
         if (!video) return false;
         if (video.srcObject) return true;
+
         const src = video.currentSrc || video.src;
-        if (!src) return false;
+
+        // FIX: src may be empty on YouTube before loadedmetadata — treat as
+        // "safe but not yet determined" by returning 'pending' string, not false.
+        // Caller checks for this.
+        if (!src) return 'pending';
+
         if (src.startsWith('blob:') || src.startsWith('data:')) return true;
         try {
             const url = new URL(src);
@@ -215,16 +299,42 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
      * @param {HTMLVideoElement} video 
      */
     initAudioContext(video) {
-        if (!this._isSafeToBoost(video)) {
+        const safeResult = this._isSafeToBoost(video);
+
+        // FIX Bug 1: If src isn't assigned yet, wait for loadedmetadata and retry.
+        if (safeResult === 'pending') {
+            const retryOnMeta = () => {
+                if (this._audioConnected) return; // Already handled
+                const safe = this._isSafeToBoost(video);
+                if (safe === true) {
+                    this._doInitAudioContext(video);
+                } else if (safe !== 'pending') {
+                    this.utils?.log?.('Volume Booster disabled: Cross-Origin Video detected.', 'VolumeBooster', 'warn');
+                }
+            };
+            // Use addListener so it is tracked and cleaned up by disable()
+            this.addListener(video, 'loadedmetadata', retryOnMeta, { once: true });
+            this.addListener(video, 'canplay', retryOnMeta, { once: true });
+            return;
+        }
+
+        if (!safeResult) {
             this.utils?.log?.('Volume Booster disabled: Cross-Origin Video detected without CORS.', 'VolumeBooster', 'warn');
             return;
         }
 
+        this._doInitAudioContext(video);
+    }
+
+    /**
+     * Internal: performs the actual AudioContext setup after safety is confirmed.
+     * @param {HTMLVideoElement} video
+     */
+    _doInitAudioContext(video) {
         // If we are already connected to THIS video, do nothing.
-        // If video changed, we must disconnect the old and reconnect.
         if (this._audioConnected && this._boundVideo === video) return;
         
-        // If we were connected to a DIFFERENT video, cleanly disconnect old source without disabling feature
+        // If we were connected to a DIFFERENT video, cleanly disconnect old source
         if (this._audioConnected && this._boundVideo && this._boundVideo !== video) {
             if (this.source) {
                 try { this.source.disconnect(); } catch (e) {}
@@ -237,12 +347,14 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._initHandler = () => {
             if (this._audioConnected) return;
             try {
-                // Safely get or create AudioContext for this video
+                // Safely get or create AudioContext for this video.
+                // FIX Bug 3 (companion): Respect __ypp_ctx/__ypp_source set by AudioEQ
+                // or AudioCompressor so we don't call createMediaElementSource twice.
                 if (video.__ypp_ctx && video.__ypp_source) {
                     this.ctx = video.__ypp_ctx;
                     this.source = video.__ypp_source;
                     // PREVENT AUDIO DOUBLING BUG: Disconnect source before rebuilding the graph
-                    this.source.disconnect(); 
+                    try { this.source.disconnect(); } catch (e) {}
                 } else {
                     const AC = window.AudioContext || window.webkitAudioContext;
                     this.ctx = new AC();
@@ -257,17 +369,29 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                 this._restoreAudioState();
                 
                 // IMPORTANT: AudioContext often starts in 'suspended' state without user interaction.
-                // We MUST resume it, otherwise the audio stays permanently muted!
                 if (this.ctx && this.ctx.state === 'suspended') {
                     this.ctx.resume().catch(() => {});
-                    const resumeAudio = () => {
-                        if (this.ctx && this.ctx.state === 'suspended') {
+                }
+
+                // FIX Bug 6: Resume AudioContext when tab becomes visible again.
+                // Chrome/Firefox suspend AudioContext when tabs are backgrounded.
+                if (!this._visibilityHandler) {
+                    this._visibilityHandler = () => {
+                        if (document.visibilityState === 'visible' && this.ctx && this.ctx.state === 'suspended') {
                             this.ctx.resume().catch(() => {});
                         }
-                        ['click', 'touchstart', 'keydown'].forEach(evt => document.removeEventListener(evt, resumeAudio, true));
                     };
-                    ['click', 'touchstart', 'keydown'].forEach(evt => document.addEventListener(evt, resumeAudio, true));
+                    document.addEventListener('visibilitychange', this._visibilityHandler);
                 }
+
+                // Also heal on user interaction as fallback
+                const resumeAudio = () => {
+                    if (this.ctx && this.ctx.state === 'suspended') {
+                        this.ctx.resume().catch(() => {});
+                    }
+                    ['click', 'touchstart', 'keydown'].forEach(evt => document.removeEventListener(evt, resumeAudio, true));
+                };
+                ['click', 'touchstart', 'keydown'].forEach(evt => document.addEventListener(evt, resumeAudio, true));
 
             } catch (e) {
                 this.utils?.log?.('[YPP:VolumeBooster] Audio engine init failed: ' + e.message, 'VolumeBooster', 'warn');
@@ -275,9 +399,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
             }
         };
 
-        // Attempt immediate init if already playing, otherwise wait for interaction
-        this.addListener(video, 'play', this._initHandler, { once: true });
-        this.addListener(video, 'volumechange', this._initHandler, { once: true });
+        // FIX Bug 5: Removed { once: true } — _audioConnected guards idempotency.
+        // With once:true, the listener was consumed before _isSafeToBoost resolved,
+        // leaving no way to retry when the src finally became available.
+        this.addListener(video, 'play', this._initHandler);
+        this.addListener(video, 'volumechange', this._initHandler);
         if (!video.paused) this._initHandler();
     }
 
@@ -368,6 +494,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setVolume(multiplier) {
         this._volumeGain = multiplier;
+        // FIX Bug 2: Only use _needsAudioGraph as lazy-init guard (not in enable/onVideoChange)
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
