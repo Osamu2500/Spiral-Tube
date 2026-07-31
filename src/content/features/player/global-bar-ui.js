@@ -10,44 +10,66 @@ import anime from 'animejs/lib/anime.es.js';
 
 
 const ICONS = {
-    play:       `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`,
-    pause:      `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`,
+    play:       `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14c0 .89 1.01 1.4 1.73.88l10.49-7c.63-.42.63-1.36 0-1.78L9.73 4.26C9.01 3.74 8 4.25 8 5.14z"/></svg>`,
+    pause:      `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h2.5c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5H7c-.83 0-1.5-.67-1.5-1.5v-11C5.5 5.67 6.17 5 7 5zm7.5 0H17c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-2.5c-.83 0-1.5-.67-1.5-1.5v-11c0-.83.67-1.5 1.5-1.5z"/></svg>`,
     mute:       `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`,
-    volumeHigh: `<svg viewBox="0 0 36 36" fill="currentColor"><path d="M 8.5 9 C 6.195898 11.304103 4.7695312 14.486564 4.7695312 18 C 4.7695312 21.513437 6.195898 24.695899 8.5 27 L 9.8496094 25.650391 C 7.8892134 23.689995 6.6796875 20.978784 6.6796875 18 C 6.6796875 15.021216 7.8892134 12.310004 9.8496094 10.349609 L 8.5 9 z M 27.5 9 L 26.150391 10.349609 C 28.110787 12.310004 29.320313 15.021216 29.320312 18 C 29.320312 20.978784 28.110787 23.689995 26.150391 25.650391 L 27.5 27 C 29.804102 24.695899 31.230469 21.513437 31.230469 18 C 31.230469 14.486564 29.804102 11.304103 27.5 9 z M 18.800781 10 L 14 19.599609 L 17.199219 19.599609 L 17.199219 26 L 22 16.400391 L 18.800781 16.400391 L 18.800781 10 z M 11.699219 11.699219 C 10.082529 13.31591 9.0898437 15.54314 9.0898438 18 C 9.0898438 20.45686 10.082529 22.684091 11.699219 24.300781 L 13.048828 22.951172 C 11.775844 21.678187 10.998047 19.934936 10.998047 18 C 10.998047 16.065064 11.788574 14.321814 13.048828 13.048828 L 11.699219 11.699219 z M 24.300781 11.699219 L 22.951172 13.048828 C 24.211427 14.321814 25.001953 16.065064 25.001953 18 C 25.001953 19.934936 24.211427 21.678187 22.951172 22.951172 L 24.300781 24.300781 C 25.917473 22.684091 26.910156 20.45686 26.910156 18 C 26.910156 15.54314 25.917473 13.31591 24.300781 11.699219 z M 18.384766 11.726562 L 18.384766 16.853516 L 21.298828 16.853516 L 17.615234 24.273438 L 17.615234 19.146484 L 14.755859 19.146484 L 18.384766 11.726562 z"/></svg>`,
-    loop:       `<svg viewBox="0 0 36 36" fill="currentColor"><path d="m 13,13 h 10 v 3 l 4,-4 -4,-4 v 3 H 11 v 6 h 2 z M 23,23 H 13 v -3 l -4,4 4,4 v -3 h 12 v -6 h -2 z"/></svg>`,
-    pip:        `<svg viewBox="0 0 36 36" fill="currentColor"><path d="m 21.554375,7.9999999 h 2.02 V 10.02 h -2.02 z m 4.04,0 h 2.02 V 10.02 h -2.02 z M 5.394375,16.08 h 2.02 v 2.02 h -2.02 z m 0,-4.04 h 2.02 v 2.02 h -2.02 z m 0,8.08 h 2.02 v 2.02 h -2.02 z m 12.12,-12.1200001 h 2.02 V 10.02 h -2.02 z M 30.605625,26.18 H 9.434375 V 12.04 h 21.17125 z m -2.02,-12.12 h -17.13125 v 10.1 h 17.13125 z M 13.474375,7.9999999 h 2.02 V 10.02 h -2.02 z m -4.04,0 h 2.02 V 10.02 h -2.02 z m -4.04,0 h 2.02 V 10.02 h -2.02 z"/></svg>`,
-    fullscreen: `<svg viewBox="0 0 36 36" fill="currentColor"><path d="M 5.390625,7.9999999 V 26.179687 h 25.21875 V 7.9999999 Z M 7.410156,10.009766 H 28.589844 V 24.169922 H 7.410156 Z m 4.040294,4.050342 h 3.029835 V 12.040219 H 9.430562 v 5.049722 h 2.019888 z m 15.118897,3.029833 h -2.019888 v 3.029834 h -3.029834 v 2.019889 h 5.049722 z"/></svg>`,
+    volumeHigh: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`,
+    loop:       `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>`,
+    pip:        `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/></svg>`,
+    fullscreen: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>`,
     close:      `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`
 };
 
 const BAR_HTML = `
     <div class="ypp-gpb-controls">
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-play" title="Play / Pause All">
-            ${ICONS.play}
-        </button>
-        <div id="ypp-gpb-time" class="ypp-gpb-time" title="Current Time">0:00</div>
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-mute" title="Mute / Unmute All">
-            ${ICONS.volumeHigh}
-        </button>
-        <div id="ypp-gpb-vol-wrap" class="ypp-gpb-vol-wrap" title="Volume">
-            <input type="range" id="ypp-gpb-vol" min="0" max="1" step="0.02" value="1" class="ypp-gpb-vol-slider">
+        <div class="ypp-gpb-group">
+            <button class="ypp-gpb-btn ypp-action-btn ypp-gpb-play-hero" id="ypp-gpb-play" title="Play / Pause">
+                ${ICONS.play}
+            </button>
+            <div id="ypp-gpb-time" class="ypp-gpb-time-capsule" title="Current / Total Time">
+                <span class="ypp-gpb-time-cur">0:00</span>
+                <span class="ypp-gpb-time-sep"></span>
+                <span class="ypp-gpb-time-tot">0:00</span>
+            </div>
         </div>
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-speed" title="Video Speed (Scroll to adjust, Click to cycle)" style="font-size:12px;font-weight:600;width:auto;padding:0 8px;">
-            <span class="ypp-gpb-speed-value" id="ypp-gpb-speed-text">1.00x</span>
-        </button>
-        <div id="ypp-gpb-features-container"></div>
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-loop" title="Toggle Loop All">
-            ${ICONS.loop}
-        </button>
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-pip" title="Picture-in-Picture">
-            ${ICONS.pip}
-        </button>
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-fullscreen" title="Fullscreen">
-            ${ICONS.fullscreen}
-        </button>
-        <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-close" title="Hide Bar">
-            ${ICONS.close}
-        </button>
+
+        <div class="ypp-gpb-divider" id="ypp-gpb-div-1"></div>
+
+        <div class="ypp-gpb-group">
+            <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-mute" title="Mute / Unmute">
+                ${ICONS.volumeHigh}
+            </button>
+            <div id="ypp-gpb-vol-wrap" class="ypp-gpb-vol-wrap" title="Volume">
+                <input type="range" id="ypp-gpb-vol" min="0" max="1" step="0.02" value="1" class="ypp-gpb-vol-slider">
+            </div>
+            <button class="ypp-gpb-btn ypp-action-btn ypp-gpb-speed-pill" id="ypp-gpb-speed" title="Video Speed (Scroll to adjust, Click to cycle)">
+                <span class="ypp-gpb-speed-value" id="ypp-gpb-speed-text">1.00x</span>
+            </button>
+        </div>
+
+        <div id="ypp-gpb-features-container" class="ypp-gpb-group" style="display:none;"></div>
+
+        <div class="ypp-gpb-divider" id="ypp-gpb-div-2" style="display:none;"></div>
+
+        <div class="ypp-gpb-group">
+            <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-loop" title="Toggle Loop">
+                ${ICONS.loop}
+            </button>
+            <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-pip" title="Picture-in-Picture">
+                ${ICONS.pip}
+            </button>
+            <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-fullscreen" title="Fullscreen">
+                ${ICONS.fullscreen}
+            </button>
+        </div>
+
+        <div class="ypp-gpb-divider" id="ypp-gpb-div-3"></div>
+
+        <div class="ypp-gpb-group">
+            <button class="ypp-gpb-btn ypp-action-btn" id="ypp-gpb-close" title="Hide Bar">
+                ${ICONS.close}
+            </button>
+        </div>
     </div>
 `;
 
@@ -374,10 +396,17 @@ export class GlobalBarUI {
                 return `${m}:${sec}`;
             };
             
-            let timeStr = primary.duration && !isNaN(primary.duration)
-                ? `${formatTime(primary.currentTime)} / ${formatTime(primary.duration)}`
-                : formatTime(primary.currentTime);
-                
+            const isLive = primary.duration === Infinity || isNaN(primary.duration) || primary.duration === 0;
+            const curStr = formatTime(primary.currentTime);
+            const totStr = isLive ? "LIVE" : formatTime(primary.duration);
+            
+            timeEl.innerHTML = `
+                <span class="ypp-gpb-time-cur">${curStr}</span>
+                <span class="ypp-gpb-time-sep"></span>
+                <span class="ypp-gpb-time-tot">${totStr}</span>
+            `;
+
+            let tooltipStr = `${curStr} / ${totStr}`;
             if (this.settings.enableRemainingTime !== false && primary.duration && !isNaN(primary.duration)) {
                 const speed = primary.playbackRate || 1;
                 const rawLeft = Math.max(0, primary.duration - primary.currentTime);
@@ -385,24 +414,28 @@ export class GlobalBarUI {
                 
                 if (rawLeft > 0) {
                     if (Math.abs(speed - 1) <= 0.01) {
-                        timeStr += ` ( -${formatTime(rawLeft)} )`;
+                        tooltipStr += `\nRemaining: -${formatTime(rawLeft)}`;
                     } else if (speed > 1) {
                         const totalSaved = primary.duration - (primary.duration / speed);
-                        timeStr += ` ( -${formatTime(adjustedLeft)} · ${formatTime(totalSaved)} saved )`;
+                        tooltipStr += `\nRemaining: -${formatTime(adjustedLeft)} (${formatTime(totalSaved)} saved at ${speed}x)`;
                     } else {
                         const totalExtra = (primary.duration / speed) - primary.duration;
-                        timeStr += ` ( -${formatTime(adjustedLeft)} · ${formatTime(totalExtra)} extra )`;
+                        tooltipStr += `\nRemaining: -${formatTime(adjustedLeft)} (${formatTime(totalExtra)} extra at ${speed}x)`;
                     }
                 }
             }
-            
-            timeEl.textContent = timeStr;
+            timeEl.title = tooltipStr;
         }
         
         // Speed
+        const speedBtn = this.barElement.querySelector('#ypp-gpb-speed');
         const speedText = this.barElement.querySelector('#ypp-gpb-speed-text');
         if (speedText) {
-            speedText.textContent = primary.playbackRate.toFixed(2) + 'x';
+            const rate = primary.playbackRate || 1;
+            speedText.textContent = rate.toFixed(2) + 'x';
+            if (speedBtn) {
+                speedBtn.classList.toggle('active-speed', Math.abs(rate - 1.0) > 0.01);
+            }
         }
 
         // Loop reflects primary video
@@ -456,10 +489,13 @@ export class GlobalBarUI {
         }
 
         // Hide container if empty to avoid double dividers
+        const div2 = this.barElement.querySelector('#ypp-gpb-div-2');
         if (featsCont.children.length === 0) {
             featsCont.style.display = 'none';
+            if (div2) div2.style.display = 'none';
         } else {
             featsCont.style.display = 'flex';
+            if (div2) div2.style.display = '';
         }
     }
 

@@ -1,179 +1,374 @@
-/* ── Global Player Bar ── */
+/* ==========================================================================
+   YPP Global Player Bar — Luxury Glassmorphism & Adaptive UI
+   ========================================================================== */
+
+/* ── Pill Capsule Dock Base ── */
 .ypp-global-player-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px 8px;
-    gap: 6px;
-    border-radius: 36px;
-    color: #fff;
-    cursor: default;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 14px 7px !important;
+    gap: 10px !important;
+    border-radius: 9999px !important;
+    color: #ffffff !important;
+    cursor: default !important;
+    background: rgba(14, 15, 23, 0.78) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top-color: rgba(255, 255, 255, 0.28) !important;
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.45),
-        0 2px 8px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* z-index is set inline via JS (2147483647) */
+        0 20px 48px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
-/* ── Glass panel base style ── */
-.ypp-glass-panel {
-    background: rgba(12, 12, 20, 0.75);
-    -webkit-backdrop-filter: blur(20px) saturate(1.4);
-    backdrop-filter: blur(20px) saturate(1.4);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-top-color: rgba(255, 255, 255, 0.22);
-}
-
-/* ── Controls container ── */
-.ypp-gpb-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    width: 100%;
-}
-
-/* ── Time display ── */
-.ypp-gpb-time {
-    font-size: 10px;
-    font-weight: 600;
-    font-family: 'Inter', 'Roboto', monospace, sans-serif;
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    white-space: nowrap;
-    writing-mode: horizontal-tb;
-    transform: rotate(-90deg);
-    max-width: 36px;
-    overflow: visible;
-    padding: 4px 0;
-    letter-spacing: -0.3px;
-    line-height: 1.2;
-}
-
-/* ── Volume slider wrapper ── */
-.ypp-gpb-vol-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    width: 36px;
-}
-
-/* ── Volume slider ── */
-.ypp-gpb-vol-slider {
-    -webkit-appearance: slider-vertical;
-    appearance: slider-vertical;
-    writing-mode: vertical-lr;
-    direction: rtl;
-    width: 4px;
-    height: 70px;
-    cursor: pointer;
-    accent-color: rgba(255, 255, 255, 0.85);
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
-    outline: none;
-}
-
-.ypp-gpb-vol-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.4);
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
-}
-
-/* ── Speed Controls in bar ── */
-#ypp-gpb-speed-container .ypp-speed-controls,
-#ypp-gpb-features-container {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
-}
-
-.ypp-global-player-bar .ypp-speed-controls {
-    padding: 6px 4px !important;
-    border-radius: 24px !important;
-}
-
-.ypp-global-player-bar .ypp-speed-btn {
-    font-size: 10px !important;
-    padding: 3px 2px !important;
-    width: 28px !important;
-    min-width: 0 !important;
-}
-
-/* ── Divider between feature groups ── */
-.ypp-global-player-bar::before {
-    display: none; /* No pseudo dividers needed */
-}
-
-/* ── Close button ── */
-#ypp-gpb-close {
-    opacity: 0.5;
-}
-#ypp-gpb-close:hover {
-    opacity: 1;
-    background: rgba(255, 60, 60, 0.22) !important;
+.ypp-global-player-bar:hover {
+    box-shadow:
+        0 24px 56px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+        0 1px 0 rgba(255, 255, 255, 0.35) inset !important;
 }
 
 /* ── Frosted Glass Popups (when opened from Global Bar) ── */
 #ypp-eq-panel.ypp-panel-transparent,
-#ypp-cinema-panel.ypp-panel-transparent {
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    background: rgba(8, 8, 18, 0.62) !important;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+#ypp-cinema-panel.ypp-panel-transparent,
+.ypp-glass-panel {
+    background: rgba(14, 15, 23, 0.78) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top-color: rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08) inset !important;
 }
 
-/* ── Position variants ── */
+/* ── Logical Control Groups & Dividers ── */
+.ypp-global-player-bar .ypp-gpb-controls {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-divider {
+    width: 24px !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent) !important;
+    flex-shrink: 0 !important;
+    margin: 2px 0 !important;
+}
+
+/* ── Universal Glassmorphism Buttons ── */
+.ypp-global-player-bar .ypp-gpb-btn,
+.ypp-global-player-bar .ypp-action-btn,
+.ypp-global-player-bar button {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.11) !important;
+    outline: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    cursor: pointer !important;
+    position: relative !important;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    flex-shrink: 0 !important;
+    text-decoration: none !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-btn:hover,
+.ypp-global-player-bar .ypp-action-btn:hover,
+.ypp-global-player-bar button:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) scale(1.06) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 12px rgba(255, 255, 255, 0.15) !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-btn:active,
+.ypp-global-player-bar .ypp-action-btn:active,
+.ypp-global-player-bar button:active {
+    transform: scale(0.94) !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Active Glowing Button State */
+.ypp-global-player-bar .ypp-gpb-btn.active,
+.ypp-global-player-bar .ypp-action-btn.active,
+.ypp-global-player-bar button.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(99, 102, 241, 0.35)) !important;
+    border-color: rgba(99, 102, 241, 0.6) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.45) !important;
+}
+
+/* SVG icon standard sizing */
+.ypp-global-player-bar svg {
+    width: 20px !important;
+    height: 20px !important;
+    fill: currentColor !important;
+    pointer-events: none !important;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* ── Hero Play/Pause Button ── */
+.ypp-global-player-bar #ypp-gpb-play {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+}
+
+.ypp-global-player-bar #ypp-gpb-play:hover {
+    background: linear-gradient(135deg, #60a5fa, #818cf8) !important;
+    transform: translateY(-2px) scale(1.08) !important;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+}
+
+/* ── Exquisite Stacked Time Capsule Badge ── */
+.ypp-global-player-bar .ypp-gpb-time-capsule {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 4px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    font-family: 'Inter', 'Roboto Mono', 'SF Mono', monospace, sans-serif !important;
+    width: 38px !important;
+    text-align: center !important;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    cursor: default !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-time-capsule:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    transform: scale(1.04) !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-time-cur {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    line-height: 1.15 !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-time-sep {
+    width: 20px !important;
+    height: 1px !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    margin: 3px 0 !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-time-tot {
+    font-size: 9.5px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.65) !important;
+    line-height: 1.15 !important;
+}
+
+/* ── Custom Glassmorphism Volume Capsule ── */
+.ypp-global-player-bar .ypp-gpb-vol-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 76px !important;
+    width: 28px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 14px !important;
+    padding: 8px 0 !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-vol-wrap:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 255, 255, 0.08) !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-vol-slider {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 58px !important;
+    height: 5px !important;
+    transform: rotate(-90deg) !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    border-radius: 3px !important;
+    outline: none !important;
+    cursor: pointer !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.25) !important;
+    cursor: pointer !important;
+    transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.15s ease !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.35) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+.ypp-global-player-bar .ypp-gpb-vol-slider::-moz-range-thumb {
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.25) !important;
+    cursor: pointer !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+/* ── Speed Pill Button ── */
+.ypp-global-player-bar #ypp-gpb-speed {
+    width: auto !important;
+    min-width: 44px !important;
+    height: 32px !important;
+    padding: 0 10px !important;
+    border-radius: 9999px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    font-family: 'Inter', 'Roboto', -apple-system, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px !important;
+    color: #ffffff !important;
+}
+
+.ypp-global-player-bar #ypp-gpb-speed.active-speed {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.32), rgba(99, 102, 241, 0.32)) !important;
+    border-color: rgba(99, 102, 241, 0.55) !important;
+    color: #93c5fd !important;
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.35) !important;
+}
+
+/* ── Ruby-Red Glow Close Button ── */
+.ypp-global-player-bar #ypp-gpb-close {
+    opacity: 0.6 !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    width: 34px !important;
+    height: 34px !important;
+}
+
+.ypp-global-player-bar #ypp-gpb-close:hover {
+    opacity: 1 !important;
+    background: rgba(239, 68, 68, 0.25) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
+    color: #fca5a5 !important;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.45) !important;
+    transform: translateY(-2px) scale(1.08) !important;
+}
+
+/* ── Sub-features container in bar ── */
+.ypp-global-player-bar #ypp-gpb-features-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+}
+
+/* ── Position Variants ── */
 .ypp-bar-pos-right,
 .ypp-bar-pos-left {
-    flex-direction: column;
+    flex-direction: column !important;
 }
 
+/* Horizontal Top Dock Mode */
 .ypp-bar-pos-top {
-    flex-direction: row;
-    padding: 8px 12px;
-    border-radius: 36px;
+    flex-direction: row !important;
+    padding: 8px 16px !important;
+    border-radius: 9999px !important;
+    gap: 12px !important;
 }
 
 .ypp-bar-pos-top .ypp-gpb-controls {
-    flex-direction: row;
-    gap: 4px;
+    flex-direction: row !important;
+    gap: 10px !important;
+    width: auto !important;
 }
 
-.ypp-bar-pos-top .ypp-gpb-time {
-    writing-mode: horizontal-tb;
-    transform: none;
-    max-width: none;
-    min-width: 60px;
+.ypp-bar-pos-top .ypp-gpb-group {
+    flex-direction: row !important;
+    gap: 8px !important;
+    width: auto !important;
+}
+
+.ypp-bar-pos-top .ypp-gpb-divider {
+    width: 1px !important;
+    height: 24px !important;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.22), transparent) !important;
+    margin: 0 4px !important;
+}
+
+.ypp-bar-pos-top .ypp-gpb-time-capsule {
+    flex-direction: row !important;
+    width: auto !important;
+    height: 34px !important;
+    padding: 0 12px !important;
+    border-radius: 9999px !important;
+    gap: 6px !important;
+}
+
+.ypp-bar-pos-top .ypp-gpb-time-sep {
+    width: 1px !important;
+    height: 12px !important;
+    background: rgba(255, 255, 255, 0.28) !important;
+    margin: 0 !important;
 }
 
 .ypp-bar-pos-top .ypp-gpb-vol-wrap {
-    width: 80px;
-    height: 36px;
+    width: 86px !important;
+    height: 34px !important;
+    padding: 0 10px !important;
 }
 
 .ypp-bar-pos-top .ypp-gpb-vol-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    writing-mode: horizontal-tb;
-    direction: ltr;
-    width: 70px;
-    height: 4px;
+    width: 100% !important;
+    height: 5px !important;
+    transform: none !important;
 }
 
 .ypp-bar-pos-top #ypp-gpb-features-container {
-    flex-direction: row;
+    flex-direction: row !important;
+    width: auto !important;
 }
+
