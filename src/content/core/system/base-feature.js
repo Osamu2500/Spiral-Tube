@@ -38,6 +38,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
      */
     async update(settings) {
         let settingsChanged = false;
+        const oldSettings = { ...this.settings };
         if (settings) {
             for (const key in settings) {
                 if (settings[key] !== this.settings[key]) {
@@ -75,7 +76,7 @@ window.YPP.features.BaseFeature = class BaseFeature {
             await this.disable();
             this.isEnabled = false;
         } else if (this.isEnabled && typeof this.onUpdate === 'function' && settingsChanged) {
-            await this.onUpdate();
+            await this.onUpdate(settings, oldSettings);
         }
     }
 

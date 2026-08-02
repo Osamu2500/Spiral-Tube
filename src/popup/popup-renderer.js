@@ -41,6 +41,85 @@ function makeSVG(pathD, size = 15) {
     return svg;
 }
 
+// ── Global Tooltip & Help Badge Helper ──────────────────────────────────
+let globalTooltipEl = null;
+
+function getOrCreateGlobalTooltip(doc) {
+    if (!globalTooltipEl || !doc.body.contains(globalTooltipEl)) {
+        globalTooltipEl = doc.getElementById('ypp-global-tooltip');
+        if (!globalTooltipEl) {
+            globalTooltipEl = doc.createElement('div');
+            globalTooltipEl.id = 'ypp-global-tooltip';
+            globalTooltipEl.className = 'ypp-global-tooltip';
+            doc.body.appendChild(globalTooltipEl);
+            doc.addEventListener('click', (e) => {
+                if (!e.target.closest('.feature-help-btn')) {
+                    hideGlobalTooltip();
+                }
+            });
+        }
+    }
+    return globalTooltipEl;
+}
+
+function showGlobalTooltip(target, text) {
+    if (!text || !target) return;
+    const doc = target.ownerDocument || document;
+    const tooltip = getOrCreateGlobalTooltip(doc);
+    tooltip.innerHTML = text;
+    tooltip.classList.add('show');
+
+    const rect = target.getBoundingClientRect();
+    const tooltipWidth = tooltip.offsetWidth || 220;
+    const tooltipHeight = tooltip.offsetHeight || 50;
+
+    let top = rect.top - tooltipHeight - 8;
+    if (top < 10) {
+        top = rect.bottom + 8;
+    }
+    let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+    left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
+
+    tooltip.style.top = `${Math.round(top)}px`;
+    tooltip.style.left = `${Math.round(left)}px`;
+}
+
+function hideGlobalTooltip() {
+    if (globalTooltipEl) {
+        globalTooltipEl.classList.remove('show');
+    }
+}
+
+export function createHelpButton(descText) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'feature-help-btn';
+    btn.textContent = '?';
+    btn.setAttribute('aria-label', descText || 'Help');
+    btn.addEventListener('mouseenter', (e) => showGlobalTooltip(e.target, descText));
+    btn.addEventListener('mouseleave', () => hideGlobalTooltip());
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showGlobalTooltip(e.target, descText);
+    });
+    return btn;
+}
+
+export function convertStaticDescriptionsToHelpButtons(doc = document) {
+    doc.querySelectorAll('.info').forEach(info => {
+        const nameEl = info.querySelector('.name');
+        const descEl = info.querySelector('.desc');
+        if (nameEl && descEl) {
+            if (descEl.querySelector('[id$="Value"], #blueLightValue, #dimValue') || descEl.id?.endsWith('Value') || descEl.id === 'blueLightValue' || descEl.id === 'dimValue') return;
+            const text = descEl.textContent || '';
+            if (text.trim() && !nameEl.querySelector('.feature-help-btn')) {
+                nameEl.appendChild(createHelpButton(text.trim()));
+                descEl.remove();
+            }
+        }
+    });
+}
+
 // ── Item renderers ─────────────────────────────────────────────────────
 
 function renderToggle(item, state) {
@@ -66,7 +145,11 @@ function renderToggle(item, state) {
     info.className = 'info';
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
+    nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
+    if (item.desc) {
+        nameEl.appendChild(createHelpButton(item.desc));
+    }
     if (item.badge) {
         const b = document.createElement('span');
         b.textContent = item.badge;
@@ -79,12 +162,6 @@ function renderToggle(item, state) {
         nameEl.appendChild(b);
     }
     info.appendChild(nameEl);
-    if (item.desc) {
-        const descEl = document.createElement('span');
-        descEl.className = 'desc';
-        descEl.innerHTML = item.desc;
-        info.appendChild(descEl);
-    }
     card.appendChild(info);
 
     // Toggle
@@ -164,9 +241,13 @@ function renderRange(item, state) {
     }
     
     if (item.parent) {
-        info.innerHTML = `<span class="name" style="font-size:12px;">${item.label}</span><span class="desc"><span id="${valueId}" style="font-size:12px; font-weight:bold; color:var(--red);">${displayValue}</span><span style="font-size:12px; font-weight:bold; color:var(--red);">${item.discreteOptions ? '' : unit}</span></span>`;
+        info.innerHTML = `<span class="name" style="font-size:12px; display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px;">${item.label}</span><span class="desc"><span id="${valueId}" style="font-size:12px; font-weight:bold; color:var(--red);">${displayValue}</span><span style="font-size:12px; font-weight:bold; color:var(--red);">${item.discreteOptions ? '' : unit}</span></span>`;
     } else {
-        info.innerHTML = `<span class="name">${item.label}</span><span class="desc"><span id="${valueId}">${displayValue}</span>${item.discreteOptions ? '' : unit}</span>`;
+        info.innerHTML = `<span class="name" style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px;">${item.label}</span><span class="desc"><span id="${valueId}">${displayValue}</span>${item.discreteOptions ? '' : unit}</span>`;
+    }
+    if (item.desc) {
+        const nameEl = info.querySelector('.name');
+        if (nameEl) nameEl.appendChild(createHelpButton(item.desc));
     }
     
     wrap.appendChild(info);
@@ -286,15 +367,12 @@ function renderSelect(item, state) {
 
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
+    nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    info.appendChild(nameEl);
-    
     if (item.desc) {
-        const d = document.createElement('span');
-        d.className = 'desc';
-        d.innerHTML = item.desc;
-        info.appendChild(d);
+        nameEl.appendChild(createHelpButton(item.desc));
     }
+    info.appendChild(nameEl);
     headerRow.appendChild(info);
     wrap.appendChild(headerRow);
 
@@ -442,7 +520,12 @@ function renderLayoutToggle(item, state) {
 
     const info = document.createElement('div');
     info.className = 'info';
-    info.innerHTML = `<span class="name" style="display:flex; align-items:center; gap:6px;">${item.label} <span id="sidebar-layout-lock" style="display:none; color:var(--accent-primary);" title="Locked by Immersive Glass"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span></span><span class="desc">${item.desc || 'Video cards size'}</span>`;
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'name';
+    nameSpan.style.cssText = 'display:flex; align-items:center; flex-wrap:wrap; gap:6px;';
+    nameSpan.innerHTML = `${item.label} <span id="sidebar-layout-lock" style="display:none; color:var(--accent-primary);" title="Locked by Immersive Glass"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>`;
+    nameSpan.appendChild(createHelpButton(item.desc || 'Video cards size'));
+    info.appendChild(nameSpan);
     headerRow.appendChild(info);
 
     // Toggle Buttons
@@ -648,14 +731,12 @@ function renderInlineToggle(item, state) {
 
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
+    nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    info.appendChild(nameEl);
     if (item.desc) {
-        const d = document.createElement('span');
-        d.className = 'desc';
-        d.innerHTML = item.desc;
-        info.appendChild(d);
+        nameEl.appendChild(createHelpButton(item.desc));
     }
+    info.appendChild(nameEl);
     infoGroup.appendChild(info);
     wrap.appendChild(infoGroup);
 
@@ -701,14 +782,12 @@ function renderColor(item, state) {
 
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
+    nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    info.appendChild(nameEl);
     if (item.desc) {
-        const d = document.createElement('span');
-        d.className = 'desc';
-        d.innerHTML = item.desc;
-        info.appendChild(d);
+        nameEl.appendChild(createHelpButton(item.desc));
     }
+    info.appendChild(nameEl);
     infoGroup.appendChild(info);
     wrap.appendChild(infoGroup);
 
@@ -759,15 +838,12 @@ function renderButtonGroup(item, state) {
 
     const nameEl = document.createElement('span');
     nameEl.className = 'name';
+    nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    info.appendChild(nameEl);
-    
     if (item.desc) {
-        const d = document.createElement('span');
-        d.className = 'desc';
-        d.innerHTML = item.desc;
-        info.appendChild(d);
+        nameEl.appendChild(createHelpButton(item.desc));
     }
+    info.appendChild(nameEl);
     headerRow.appendChild(info);
     wrap.appendChild(headerRow);
 
@@ -1087,6 +1163,9 @@ export function renderSchema(doc, state, t) {
         const el = doc.getElementById(slotId);
         if (el) fn(el, state);
     });
+
+    // Convert static/HTML tab descriptions to interactive round ? help badges
+    convertStaticDescriptionsToHelpButtons(doc);
 }
 
 /**

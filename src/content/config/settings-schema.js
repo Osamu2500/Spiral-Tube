@@ -47,7 +47,12 @@ window.YPP.SettingsSchema = {
         hidePlayerTopics:    { type: 'boolean', default: false },
         hideWatched:         { type: 'boolean', default: false },
         hideWatchedMode:     { type: 'string',  default: 'dim', values: ['dim', 'hide'] },
-        hideWatchedThreshold:{ type: 'number',  default: 80, min: 0, max: 100 },
+        hideWatchedThreshold:{ type: 'number',  default: 80, min: 5, max: 100 },
+        hideWatchedHome:     { type: 'boolean', default: true },
+        hideWatchedChannel:  { type: 'boolean', default: true },
+        hideWatchedSubs:     { type: 'boolean', default: true },
+        hideWatchedSearch:   { type: 'boolean', default: true },
+        hideWatchedRelated:  { type: 'boolean', default: true },
         hideMerch:           { type: 'boolean', default: false },
         hideComments:        { type: 'boolean', default: false },
         hideLiveChat:        { type: 'boolean', default: false },
@@ -495,8 +500,8 @@ window.YPP.SettingsSchema = {
      * @returns {Object} Migrated settings object
      */
     migrate(raw) {
-        if (!raw || typeof raw !== 'object') return raw || {};
-        let currentVersion = raw.schemaVersion || 0;
+        if (!raw || typeof raw !== 'object') return {};
+        let currentVersion = raw?.schemaVersion || 0;
         
         // Example: If migrating from version 0 to 1
         if (currentVersion < 1) {

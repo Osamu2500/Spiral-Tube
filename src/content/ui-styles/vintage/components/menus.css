@@ -132,3 +132,34 @@ tp-yt-paper-toast {
 tp-yt-paper-listbox {
   background: transparent !important;
 }
+
+/* Account Menu Inline Drawers & Satellites */
+@keyframes ypp-fade-down {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ypp-inline-drawer {
+    animation: ypp-fade-down 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ypp-theme-opt:hover,
+.ypp-lang-opt:hover,
+.ypp-loc-opt:hover {
+    background: rgba(255,255,255,0.15) !important;
+    transform: translateY(-1px);
+    transition: all 0.15s ease;
+}
+
+.ypp-quick-sat:hover > div {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 78, 69, 0.4) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ypp-toggle-restricted-btn {
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+#ypp-toggle-restricted-btn:hover {
+    transform: scale(1.05);
+}

@@ -78,11 +78,11 @@ export class AccountMenuData {
 
     /**
      * Extracts account data from the native YouTube menu DOM.
-     * Returns { accounts, channelHref } where accounts[0] is always the
-     * active account (if found).
+     * Returns { accounts, channelHref, currentTheme, currentLanguage, currentLocation, isRestricted, hasSwitchAccountBtn }
+     * where accounts[0] is always the active account (if found).
      *
      * @param {Element} menu
-     * @returns {{ accounts: Array, channelHref: string }}
+     * @returns {Object}
      */
     static extractData(menu) {
         // ── Inject Page-World Script to bypass MV3 isolated world and grab Polymer data directly ──
@@ -99,20 +99,37 @@ export class AccountMenuData {
         let activeName = '';
 
         // ── Active account (header section) ──────────────────────────────────
-        const activeHeader = menu.querySelector('ytd-active-account-header-renderer');
+        const activeHeader = menu.querySelector(
+            'ytd-active-account-header-renderer, ' +
+            'ytd-simple-menu-header-renderer, ' +
+            '#header-section, ' +
+            '#header, ' +
+            '[id*="account-header" i]'
+        ) || menu.querySelector('#account-name')?.closest('div, ytd-active-account-header-renderer, ytd-simple-menu-header-renderer, ytd-account-section-list-renderer');
+
         if (activeHeader) {
             activeName = activeHeader.querySelector(
                 '#account-name yt-formatted-string,' +
                 '#account-name span,' +
-                '#account-name'
+                '#account-name,' +
+                '#channel-title yt-formatted-string,' +
+                '#channel-title,' +
+                '#name'
             )?.textContent?.trim() || '';
+
+            if (!activeName) {
+                const nameEl = activeHeader.querySelector('yt-formatted-string, span, a');
+                if (nameEl && !nameEl.textContent.includes('@')) {
+                    activeName = nameEl.textContent.trim();
+                }
+            }
 
             const handle = activeHeader.querySelector(
                 '#channel-handle, #account-email, #email'
             )?.textContent?.trim() || '';
 
             accounts.push({
-                name: activeName,
+                name: activeName || 'YouTube Account',
                 handle,
                 avatar: this.getAvatarUrl(activeHeader, { isActive: true }),
                 isActive: true,
@@ -157,8 +174,81 @@ export class AccountMenuData {
             }
         });
 
-        return { accounts, channelHref };
+        // ── BULLETPROOF FALLBACK: Never return 0 accounts if this is the Account Menu! ──
+        if (accounts.length === 0) {
+            const mastheadAvatar = document.querySelector(
+                '#masthead #avatar-btn img,' +
+                '#avatar-btn yt-img-shadow img,' +
+                '#masthead ytd-topbar-menu-button-renderer img,' +
+                '#masthead ytd-topbar-menu-button-renderer .yt-core-image'
+            );
+            const fallbackAvatar = mastheadAvatar?.src || mastheadAvatar?.getAttribute('src') || '';
+            const fallbackName =
+                menu.querySelector('#account-name')?.textContent?.trim() ||
+                document.querySelector('#masthead #account-name')?.textContent?.trim() ||
+                'YouTube Account';
+            const fallbackHandle =
+                menu.querySelector('#channel-handle, #account-email, #email')?.textContent?.trim() || '';
+
+            accounts.push({
+                name: fallbackName,
+                handle: fallbackHandle,
+                avatar: fallbackAvatar,
+                isActive: true,
+            });
+        }
+
+        // ── Extract Preferences / Sub-menu secondary statuses ────────────────
+        const getSecondaryText = (keywords) => {
+            const items = Array.from(menu.querySelectorAll(
+                'ytd-compact-link-renderer, ytd-menu-navigation-item-renderer, ytd-toggle-theme-compact-link-renderer'
+            ));
+            const target = items.find(el => {
+                const text = (el.textContent || '').toLowerCase();
+                const aria = (el.getAttribute('aria-label') || '').toLowerCase();
+                return keywords.some(k => text.includes(k) || aria.includes(k));
+            });
+            if (!target) return '';
+            const sec = target.querySelector('#secondary-text, .secondary-text, [class*="secondary-text"]');
+            return sec ? sec.textContent.trim() : '';
+        };
+
+        const isDarkDom = document.documentElement.hasAttribute('dark') ||
+                          document.documentElement.getAttribute('dark') === 'true';
+        const themeLabel = getSecondaryText(['appearance', 'aspecto', 'apparence', 'design', 'wygląd']) ||
+                           (isDarkDom ? 'Dark theme' : 'Light theme');
+
+        const langLabel = getSecondaryText(['language', 'idioma', 'langue', 'sprache', 'język']) ||
+                          (document.documentElement.lang || 'English').toUpperCase();
+
+        const locLabel = getSecondaryText(['location', 'ubicación', 'lieu', 'standort', 'lokalizacja']) ||
+                         (document.querySelector('#country-code')?.textContent?.trim() || 'Global');
+
+        const restrictedLabel = getSecondaryText(['restricted', 'restringido', 'restreint', 'eingeschränkt']) || 'Off';
+        const isRestricted = restrictedLabel.toLowerCase().includes('on') ||
+                             restrictedLabel.toLowerCase().includes('activado') ||
+                             restrictedLabel.toLowerCase().includes('activé');
+
+        // Check if there is a native Switch Account button in this menu
+        const hasSwitchAccountBtn = Array.from(menu.querySelectorAll('ytd-compact-link-renderer, ytd-menu-navigation-item-renderer'))
+            .some(el => {
+                const text = (el.textContent || '').toLowerCase();
+                const icon = el.querySelector('yt-icon')?.getAttribute('icon') || '';
+                return text.includes('switch') || text.includes('cambiar') || icon.includes('switch_account') || icon.includes('switch-account');
+            });
+
+        return {
+            accounts,
+            channelHref,
+            currentTheme: themeLabel,
+            currentLanguage: langLabel,
+            currentLocation: locLabel,
+            isRestricted,
+            hasSwitchAccountBtn
+        };
     }
 };
 
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
 window.YPP.features.AccountMenuData = AccountMenuData;

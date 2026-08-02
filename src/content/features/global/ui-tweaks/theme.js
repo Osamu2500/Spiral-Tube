@@ -264,7 +264,8 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         }
 
         link.setAttribute('data-ui-style', uiStyleKey);
-        link.href = cssUrl + '?v=' + Date.now();
+        link.href = cssUrl; // Browser caches correctly; only bust on explicit forceReload()
+
         document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
         
         // Handle Frutiger Aero specific bubbles (respect Theme Effects toggle)
@@ -506,21 +507,133 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
     _applyCustomizationSettings() {
         if (!this._settings) return;
         const root = document.documentElement;
-        
-
 
         // Font Scale
         if (this._settings.fontScale !== undefined) {
             root.style.setProperty('--ypp-font-scale', (this._settings.fontScale / 100).toFixed(2));
         }
 
-        // Image Theme Background
+        // ── Background Image (dirty-flag guard) ─────────────────────────────
+        // Only rebuild the 100+ line CSS block when the inputs actually change.
+        const bgSig = [
+            this._settings.customBackgroundImage || '',
+            this._settings.customBackgroundImageIntensity ?? 0.6,
+            !!this._settings.customBackgroundImageExtractColors,
+            this._settings.accentColor || ''
+        ].join('|');
+
+        if (bgSig !== this._lastBgSig) {
+            this._lastBgSig = bgSig;
+            this._applyBgImageSettings(root);
+        }
+
+        // ── Accent Color ─────────────────────────────────────────────────────
+        if (this._settings.accentColor) {
+            let hex = this._settings.accentColor;
+            
+            // Check if it's one of the 56 predefined premium colors from tempo
+            if (this._CONSTANTS.PREMIUM_COLORS && this._CONSTANTS.PREMIUM_COLORS[hex]) {
+                hex = this._CONSTANTS.PREMIUM_COLORS[hex];
+            }
+            
+            root.style.setProperty('--ypp-accent-primary', hex);
+            root.style.setProperty('--ypp-accent-color', hex);  // alias for backwards compat
+            root.style.setProperty('--ypp-accent-glow', hex + '66');
+            root.style.setProperty('--ypp-accent-hover', hex + 'cc');
+            root.style.setProperty('--ypp-accent-gradient', `linear-gradient(135deg, ${hex} 0%, ${hex}cc 100%)`);
+        }
+
+        // ── Avatar Squircles (write once — this CSS is static) ───────────────
+        if (!this._lastAvatarStyleWritten) {
+            this._lastAvatarStyleWritten = true;
+            const globalOverrides = `
+            /* Avatar Squircles */
+            #avatar-link yt-img-shadow, 
+            #avatar-link yt-img-shadow img,
+            .ytSpecAvatarShapeHost, 
+            .ytSpecAvatarShapeHost img,
+            .ytLockupMetadataViewModelAvatar,
+            .ytLockupMetadataViewModelAvatar img {
+                border-radius: 12px !important;
+            }
+
+            /* Fix multi-channel avatars overlapping in normal styles */
+            ytd-video-meta-block #avatar-container,
+            .yt-avatar-stack,
+            .ytLockupMetadataViewModelAvatarContainer,
+            .yt-avatar-stack-view-model,
+            .yt-channel-avatar-stack {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 4px !important;
+                align-items: center !important;
+            }
+            
+            #avatar-link, .ytSpecAvatarShapeHost, .ytLockupMetadataViewModelAvatar {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        `;
+
+            const globalStyleId = 'ypp-global-avatar-overrides';
+            let globalStyleEl = document.getElementById(globalStyleId);
+            if (!globalStyleEl) {
+                globalStyleEl = document.createElement('style');
+                globalStyleEl.id = globalStyleId;
+                (document.head || document.documentElement).appendChild(globalStyleEl);
+            }
+            globalStyleEl.textContent = globalOverrides;
+        }
+
+        // ── Card Style ───────────────────────────────────────────────────────
+        let finalCardStyle = this._settings.cardStyle || 'glass';
+        
+        const ytTheme = this._settings.youtubePageTheme;
+
+        if (ytTheme === 'default') {
+            finalCardStyle = 'default';
+        } else if (ytTheme && ytTheme !== 'default' && (finalCardStyle === 'glass' || finalCardStyle === 'default')) {
+             if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
+             else if (ytTheme === 'nature') finalCardStyle = 'nature';
+             else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
+             else if (ytTheme === 'liquid-glass') finalCardStyle = 'glass';
+             else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
+             else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
+             else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
+             else if (ytTheme === 'retro') finalCardStyle = 'retro';
+             else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
+             else if (ytTheme === 'frutiger-aero') finalCardStyle = 'frutiger-aero';
+             else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
+             else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
+             else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';
+             else if (ytTheme === 'minimalism') finalCardStyle = 'minimalism';
+             else if (ytTheme === 'maximalism') finalCardStyle = 'maximalism';
+             else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
+             else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
+             else if (ytTheme === 'material') finalCardStyle = 'material';
+             else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
+        }
+
+        if (!finalCardStyle || finalCardStyle === 'default' || finalCardStyle === 'none') {
+            root.removeAttribute('data-ypp-card-style');
+        } else {
+            root.setAttribute('data-ypp-card-style', finalCardStyle);
+        }
+        this._applyCardStyle(finalCardStyle);
+    }
+
+    /**
+     * Apply background-image CSS overrides. Called only when bg-image-related
+     * settings have changed (dirty-flag guarded in _applyCustomizationSettings).
+     * @private
+     * @param {Element} root - document.documentElement
+     */
+    _applyBgImageSettings(root) {
         const bgContainerId = 'ypp-custom-bg-image-container';
         let bgContainer = document.getElementById(bgContainerId);
         
         const bgStyleId = 'ypp-custom-bg-image-style';
         let bgStyleEl = document.getElementById(bgStyleId);
-        
         
         if (this._settings.customBackgroundImage) {
             const intensity = this._settings.customBackgroundImageIntensity ?? 0.6;
@@ -691,99 +804,6 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             if (bgContainer) bgContainer.remove();
             this._Utils.log('Custom background image cleared — bg-image override removed', 'THEME');
         }
-
-
-        // Accent Color
-        if (this._settings.accentColor) {
-            let hex = this._settings.accentColor;
-            
-            // Check if it's one of the 56 predefined premium colors from tempo
-            if (this._CONSTANTS.PREMIUM_COLORS && this._CONSTANTS.PREMIUM_COLORS[hex]) {
-                hex = this._CONSTANTS.PREMIUM_COLORS[hex];
-            }
-            
-            root.style.setProperty('--ypp-accent-primary', hex);
-            root.style.setProperty('--ypp-accent-color', hex);  // alias for backwards compat
-            root.style.setProperty('--ypp-accent-glow', hex + '66');
-            root.style.setProperty('--ypp-accent-hover', hex + 'cc');
-            root.style.setProperty('--ypp-accent-gradient', `linear-gradient(135deg, ${hex} 0%, ${hex}cc 100%)`);
-        }
-
-        // Global Avatar Squircles & Multi-Avatar Support
-        let globalOverrides = `
-            /* Avatar Squircles */
-            #avatar-link yt-img-shadow, 
-            #avatar-link yt-img-shadow img,
-            .ytSpecAvatarShapeHost, 
-            .ytSpecAvatarShapeHost img,
-            .ytLockupMetadataViewModelAvatar,
-            .ytLockupMetadataViewModelAvatar img {
-                border-radius: 12px !important;
-            }
-
-            /* Fix multi-channel avatars overlapping in normal styles */
-            ytd-video-meta-block #avatar-container,
-            .yt-avatar-stack,
-            .ytLockupMetadataViewModelAvatarContainer,
-            .yt-avatar-stack-view-model,
-            .yt-channel-avatar-stack {
-                display: flex !important;
-                flex-direction: row !important;
-                gap: 4px !important;
-                align-items: center !important;
-            }
-            
-            #avatar-link, .ytSpecAvatarShapeHost, .ytLockupMetadataViewModelAvatar {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-        `;
-
-        const globalStyleId = 'ypp-global-avatar-overrides';
-        let globalStyleEl = document.getElementById(globalStyleId);
-        if (!globalStyleEl) {
-            globalStyleEl = document.createElement('style');
-            globalStyleEl.id = globalStyleId;
-            (document.head || document.documentElement).appendChild(globalStyleEl);
-        }
-        globalStyleEl.textContent = globalOverrides;
-
-
-        // Card Style Enforcement by UI Theme
-        let finalCardStyle = this._settings.cardStyle || 'glass';
-        
-        const ytTheme = this._settings.youtubePageTheme;
-
-        if (ytTheme === 'default') {
-            finalCardStyle = 'default';
-        } else if (ytTheme && ytTheme !== 'default' && (finalCardStyle === 'glass' || finalCardStyle === 'default')) {
-             if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
-             else if (ytTheme === 'nature') finalCardStyle = 'nature';
-             else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
-             else if (ytTheme === 'liquid-glass') finalCardStyle = 'glass';
-             else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
-             else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
-             else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
-             else if (ytTheme === 'retro') finalCardStyle = 'retro';
-             else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
-             else if (ytTheme === 'frutiger-aero') finalCardStyle = 'frutiger-aero';
-             else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
-             else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
-             else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';
-             else if (ytTheme === 'minimalism') finalCardStyle = 'minimalism';
-             else if (ytTheme === 'maximalism') finalCardStyle = 'maximalism';
-             else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
-             else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
-             else if (ytTheme === 'material') finalCardStyle = 'material';
-             else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
-        }
-
-        if (!finalCardStyle || finalCardStyle === 'default' || finalCardStyle === 'none') {
-            root.removeAttribute('data-ypp-card-style');
-        } else {
-            root.setAttribute('data-ypp-card-style', finalCardStyle);
-        }
-        this._applyCardStyle(finalCardStyle);
     }
 
     /**

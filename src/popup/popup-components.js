@@ -577,8 +577,73 @@ export function initComponents(
 
     btns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        applyMode(btn.dataset.mode);
-        saveSettings(() => ui.showSaveIndicator(document));
+        const mode = btn.dataset.mode;
+        applyMode(mode);
+        chrome.runtime.sendMessage(
+          { action: 'PATCH_SETTINGS', payload: { hideWatchedMode: mode } },
+          () => {
+            if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+          }
+        );
+      });
+    });
+  }
+
+  function initHideWatchedPageButtons() {
+    const btns = document.querySelectorAll('.hw-page-btn');
+    if (!btns.length) return;
+
+    const applyState = (settings) => {
+      btns.forEach((btn) => {
+        const page = btn.dataset.page;
+        const key = 'hideWatched' + page.charAt(0).toUpperCase() + page.slice(1);
+        const isActive = settings[key] !== false;
+        btn.classList.toggle('active', isActive);
+        if (isActive) {
+          btn.style.background = 'rgba(255, 78, 69, 0.18)';
+          btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
+          btn.style.color = '#fff';
+        } else {
+          btn.style.background = 'rgba(255, 255, 255, 0.04)';
+          btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+          btn.style.color = 'rgba(255, 255, 255, 0.5)';
+        }
+      });
+    };
+
+    // Initialise button states from storage on popup open
+    chrome.storage.local.get('settings', (data) => {
+      const settings = data.settings || {};
+      applyState(settings);
+    });
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const page = btn.dataset.page;
+        const key = 'hideWatched' + page.charAt(0).toUpperCase() + page.slice(1);
+        const nextState = !btn.classList.contains('active');
+
+        // Optimistically update the button visually immediately
+        btn.classList.toggle('active', nextState);
+        if (nextState) {
+          btn.style.background = 'rgba(255, 78, 69, 0.18)';
+          btn.style.borderColor = 'rgba(255, 78, 69, 0.6)';
+          btn.style.color = '#fff';
+        } else {
+          btn.style.background = 'rgba(255, 255, 255, 0.04)';
+          btn.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+          btn.style.color = 'rgba(255, 255, 255, 0.5)';
+        }
+
+        // Save via PATCH_SETTINGS so it goes through the service worker,
+        // syncs to chrome.storage.sync, AND triggers chrome.storage.onChanged
+        // in the content script for real-time page filtering updates.
+        chrome.runtime.sendMessage(
+          { action: 'PATCH_SETTINGS', payload: { [key]: nextState } },
+          () => {
+            if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
+          }
+        );
       });
     });
   }
@@ -1127,6 +1192,7 @@ export function initComponents(
     initPremiumAccentDropdown,
     initSearchViewMode,
     initHideWatchedModePill,
+    initHideWatchedPageButtons,
     initGlobalPlayerBarGrid,
     initCardStyleGrid,
     initYoutubeStyleGrid,

@@ -35,11 +35,10 @@ export class AdSkipper extends window.YPP.features.BaseFeature {
                 }
             }, true);
             
-            // Catch dynamically added overlays/promos without deprecated DOMNodeInserted
-            this._promoObserver = new MutationObserver(() => {
+            // Register for promos/banners using sharedObserver instead of MutationObserver
+            window.YPP.sharedObserver.register('ad-skipper-promos', '.ytp-ad-overlay-close-button, #dismiss-button.ytd-button-renderer, .ytp-paid-content-overlay', () => {
                 this._checkPromosAndNext();
-            });
-            this._promoObserver.observe(document.body, { childList: true, subtree: true });
+            }, true);
         }
 
         // Initial check
@@ -51,10 +50,7 @@ export class AdSkipper extends window.YPP.features.BaseFeature {
         await super.disable();
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.unregister('ad-skipper');
-        }
-        if (this._promoObserver) {
-            this._promoObserver.disconnect();
-            this._promoObserver = null;
+            window.YPP.sharedObserver.unregister('ad-skipper-promos');
         }
     }
 

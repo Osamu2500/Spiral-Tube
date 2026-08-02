@@ -1675,3 +1675,61 @@ body.ypp-theme-minimalism .nav-item.active {
   letter-spacing: 0.01em;
   gap: 4px;
 }
+
+/* ── Interactive Feature Help Button & Global Tooltip ── */
+.feature-help-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-secondary, #aaa);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: help;
+  margin-left: 6px;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  flex-shrink: 0;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.feature-help-btn:hover,
+.feature-help-btn.active {
+  background: var(--accent-primary, #ff0033);
+  color: #fff;
+  border-color: var(--accent-primary, #ff0033);
+  transform: scale(1.1);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent-primary, #ff0033) 60%, transparent);
+}
+
+.ypp-global-tooltip {
+  position: fixed;
+  z-index: 100000;
+  max-width: 260px;
+  padding: 8px 12px;
+  background: rgba(18, 18, 24, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.ypp-global-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}

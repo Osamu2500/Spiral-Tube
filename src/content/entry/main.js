@@ -327,6 +327,10 @@
                 this.Utils?.log('Navigation detected', 'MAIN', 'debug');
                 this.updateContext();
 
+                const newPageType = this._getPageType(window.location.pathname);
+                const pageTypeChanged = newPageType !== this._lastPageType;
+                this._lastPageType = newPageType;
+
                 if (window.YPP.events) {
                     const url = window.location.href;
                     window.YPP.events.emit('app:pageChange', url);
@@ -347,7 +351,10 @@
                     }
                 }
 
-                if (this.featureManager) {
+                // Only re-run all features when the page TYPE changes (e.g. home → watch).
+                // Same-type navigations (video → video) are already handled by each
+                // feature's onPageChange / onVideoChange subscriptions via the event bus.
+                if (pageTypeChanged && this.featureManager) {
                     try {
                         this.featureManager.init(this.settings);
                     } catch (error) {
@@ -443,6 +450,30 @@
         },
 
         /**
+         * Classify a pathname into a coarse page-type string.
+         * Used to detect whether a SPA navigation crosses a page-type boundary
+         * (e.g., home → watch) vs stays within the same type (video → video).
+         * @private
+         * @param {string} pathname
+         * @returns {string}
+         */
+        _getPageType(pathname) {
+            if (pathname === '/' || pathname === '/index') return 'home';
+            if (pathname.startsWith('/watch'))             return 'watch';
+            if (pathname.startsWith('/results'))           return 'search';
+            if (pathname.startsWith('/shorts'))            return 'shorts';
+            if (pathname === '/feed/subscriptions')        return 'subscriptions';
+            if (pathname === '/feed/library')              return 'library';
+            if (pathname === '/feed/history')              return 'history';
+            if (pathname.startsWith('/@') ||
+                pathname.startsWith('/channel') ||
+                pathname.startsWith('/c/'))                return 'channel';
+            return 'other';
+        },
+
+
+
+        /**
          * Remove all event listeners (cleanup)
          * @private
          */
@@ -517,7 +548,14 @@
                     minimal: this.settings?.minimalMode,
                     detox: this.settings?.dopamineDetox
                 };
-                const contextId = `${pathname}-${JSON.stringify(contextHashObj)}`;
+                let videoParam = '';
+                if (pathname.startsWith('/watch')) {
+                    try {
+                        const params = new URLSearchParams(window.location.search);
+                        videoParam = `-${params.get('v') || ''}`;
+                    } catch (e) {}
+                }
+                const contextId = `${pathname}${videoParam}-${JSON.stringify(contextHashObj)}`;
                 
                 if (this._lastContextId === contextId) {
                     // No context or theme change occurred; bypass heavy DOM updates

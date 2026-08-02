@@ -85,17 +85,13 @@ export class AccountMenuUI {
 
     /**
      * Builds the full menu HTML string.
-     * Layout:
-     *  - Header: orbital container (satellites + center) + name + channel link
-     *  - Actions: Appearance, Settings, More options (collapsed)
-     *  - Footer: Sign out button
-     *  - Overlay: sign-out confirmation dialog
+     * Includes inline interactive drawers and single-account satellite fallbacks.
      *
-     * @param {{ accounts: Array, channelHref: string }} data
+     * @param {Object} data
      * @returns {string} HTML string
      */
     static buildMenuHTML(data) {
-        const { accounts, channelHref } = data;
+        const { accounts, channelHref, currentTheme = 'Dark theme', currentLanguage = 'ENGLISH', currentLocation = 'United States', isRestricted = false } = data;
         const activeAccount  = accounts.find(a => a.isActive) || accounts[0];
         const otherAccounts  = accounts.filter(a => !a.isActive);
 
@@ -104,39 +100,86 @@ export class AccountMenuUI {
         const SAT_SIZE      = 40;           // satellite disk diameter
         const containerSize = R * 2 + SAT_SIZE + 28; // extra 20px for labels
 
-        const satelliteHTML = otherAccounts.map((acc, i) => {
-            const angle = (i / otherAccounts.length) * 2 * Math.PI - Math.PI / 2;
-            const dx    = Math.round(Math.cos(angle) * R);
-            const dy    = Math.round(Math.sin(angle) * R);
-            const idx   = acc.nativeIndex ?? i;
-            const label = (acc.name || '').split(' ')[0].substring(0, 9);
-            
-            return `<div class="ypp-satellite animating"
-                         data-account-index="${idx}"
-                         title="${this.esc(acc.name)}"
-                         role="button"
-                         tabindex="0"
-                         aria-label="Switch to ${this.esc(acc.name)}"
-                         style="position:absolute;top:50%;left:50%;
-                                transform:translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px));
-                                cursor:pointer;
-                                display:flex;flex-direction:column;
-                                align-items:center;gap:3px;">
-                        <div class="ypp-satellite-inner" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
-                            ${this.diskHTML(acc, SAT_SIZE)}
-                            <span style="font-size:10px;font-weight:500;
-                                         color:rgba(255,255,255,0.7);
-                                         max-width:${SAT_SIZE + 16}px;
-                                         overflow:hidden;text-overflow:ellipsis;
-                                         white-space:nowrap;line-height:1;
-                                         text-align:center;
-                                         font-family:Roboto,Arial,sans-serif;
-                                         text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
-                                ${this.esc(label)}
-                            </span>
-                        </div>
-                    </div>`;
-        }).join('');
+        // ── If there are secondary accounts, display them as satellites.
+        // ── If user has only 1 account, render 4 sleek Quick-Action satellites!
+        let satelliteHTML = '';
+        if (otherAccounts.length > 0) {
+            satelliteHTML = otherAccounts.map((acc, i) => {
+                const angle = (i / otherAccounts.length) * 2 * Math.PI - Math.PI / 2;
+                const dx    = Math.round(Math.cos(angle) * R);
+                const dy    = Math.round(Math.sin(angle) * R);
+                const idx   = acc.nativeIndex ?? i;
+                const label = (acc.name || '').split(' ')[0].substring(0, 9);
+                
+                return `<div class="ypp-satellite animating"
+                             data-account-index="${idx}"
+                             title="${this.esc(acc.name)}"
+                             role="button"
+                             tabindex="0"
+                             aria-label="Switch to ${this.esc(acc.name)}"
+                             style="position:absolute;top:50%;left:50%;
+                                    transform:translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px));
+                                    cursor:pointer;
+                                    display:flex;flex-direction:column;
+                                    align-items:center;gap:3px;">
+                            <div class="ypp-satellite-inner" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                                ${this.diskHTML(acc, SAT_SIZE)}
+                                <span style="font-size:10px;font-weight:500;
+                                             color:rgba(255,255,255,0.7);
+                                             max-width:${SAT_SIZE + 16}px;
+                                             overflow:hidden;text-overflow:ellipsis;
+                                             white-space:nowrap;line-height:1;
+                                             text-align:center;
+                                             font-family:Roboto,Arial,sans-serif;
+                                             text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
+                                    ${this.esc(label)}
+                                </span>
+                            </div>
+                        </div>`;
+            }).join('');
+        } else {
+            // Single-account quick-action satellites
+            const quickSats = [
+                { id: 'studio', label: 'Studio', icon: '🎬', bg: 'hsl(0, 75%, 45%)', title: 'YouTube Studio' },
+                { id: 'switch', label: 'Switch', icon: '🔄', bg: 'hsl(210, 80%, 45%)', title: 'Switch Account' },
+                { id: 'google', label: 'Google', icon: 'G', bg: 'hsl(140, 65%, 40%)', title: 'Google Account' },
+                { id: 'settings', label: 'Settings', icon: '⚙️', bg: 'hsl(280, 60%, 45%)', title: 'Account Settings' }
+            ];
+            satelliteHTML = quickSats.map((sat, i) => {
+                const angle = (i / quickSats.length) * 2 * Math.PI - Math.PI / 2;
+                const dx    = Math.round(Math.cos(angle) * R);
+                const dy    = Math.round(Math.sin(angle) * R);
+                return `<div class="ypp-satellite animating ypp-quick-sat"
+                             data-quick-action="${sat.id}"
+                             title="${this.esc(sat.title)}"
+                             role="button"
+                             tabindex="0"
+                             style="position:absolute;top:50%;left:50%;
+                                    transform:translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px));
+                                    cursor:pointer;
+                                    display:flex;flex-direction:column;
+                                    align-items:center;gap:3px;">
+                            <div class="ypp-satellite-inner" style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                                <div style="width:${SAT_SIZE}px;height:${SAT_SIZE}px;border-radius:50%;
+                                            background:${sat.bg};display:flex;align-items:center;
+                                            justify-content:center;font-size:16px;color:#fff;
+                                            font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,0.5);">
+                                    ${sat.icon}
+                                </div>
+                                <span style="font-size:10px;font-weight:500;
+                                             color:rgba(255,255,255,0.7);
+                                             max-width:${SAT_SIZE + 16}px;
+                                             overflow:hidden;text-overflow:ellipsis;
+                                             white-space:nowrap;line-height:1;
+                                             text-align:center;
+                                             font-family:Roboto,Arial,sans-serif;
+                                             text-shadow: 0 1px 2px rgba(0,0,0,0.8);">
+                                    ${this.esc(sat.label)}
+                                </span>
+                            </div>
+                        </div>`;
+            }).join('');
+        }
 
         const centerHTML = `
             <div style="position:absolute;top:50%;left:50%;
@@ -165,7 +208,6 @@ export class AccountMenuUI {
 
         const safeChannelHref = this.esc(channelHref);
 
-        // Added SVG definitions for cleaner code
         const icons = {
             appearance: '<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/>',
             settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 9a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 4.6l.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H10a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51h.09a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V10a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>',
@@ -178,17 +220,56 @@ export class AccountMenuUI {
             studio: '<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-3V8l5 3 5-3v6l-5 3z"/>',
             purchases: '<path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>',
             data: '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>',
-            google: '<path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.545,6.477,2.545,12s4.476,10,10,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/>'
+            google: '<path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.545,6.477,2.545,12s4.476,10,10,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/>',
+            switch: '<path d="M16 17l5-5-5-5M19 12H9M8 7l-5 5 5 5M5 12h10"/>'
         };
 
-        const createBtn = (id, iconSvg, label, isLink = false, href = '') => `
-            <${isLink ? 'a href="'+href+'" target="_blank"' : 'button id="'+id+'"'} class="ypp-menu-item">
+        const createBtn = (id, iconSvg, label, isLink = false, href = '', badgeText = '', hasDrawer = false) => `
+            <${isLink ? 'a href="'+href+'" target="_blank"' : 'button id="'+id+'"'} class="ypp-menu-item ${hasDrawer ? 'ypp-has-drawer' : ''}" style="position: relative;">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="${isLink ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="${isLink ? '0' : '1.5'}" aria-hidden="true" style="opacity:0.8; margin-right: 4px;">
                     ${iconSvg}
                 </svg>
-                ${label}
+                <span style="flex:1; text-align:left;">${label}</span>
+                ${badgeText ? `<span class="ypp-item-badge" style="font-size:11px; color:rgba(255,255,255,0.5); font-weight:500;">${badgeText}</span>` : ''}
+                ${hasDrawer ? `<svg class="ypp-drawer-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.5; margin-left:4px;"><polyline points="6 9 12 15 18 9"/></svg>` : ''}
             </${isLink ? 'a' : 'button'}>
         `;
+
+        const appearanceDrawer = `
+            <div class="ypp-inline-drawer" id="ypp-drawer-appearance" style="display:none; padding:8px 14px; margin:0 8px 6px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:2px solid #ff4e45;">
+                <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom:6px;">Choose Theme</div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                    <button class="ypp-theme-opt" data-theme="dark" style="flex:1; min-width:80px; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,0.07); color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;">Dark</button>
+                    <button class="ypp-theme-opt" data-theme="light" style="flex:1; min-width:80px; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,0.07); color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;">Light</button>
+                    <button class="ypp-theme-opt" data-theme="device" style="flex:1; min-width:80px; padding:6px 10px; border-radius:6px; background:rgba(255,255,255,0.07); color:#fff; font-size:12px; border:1px solid rgba(255,255,255,0.1); cursor:pointer;">Device</button>
+                </div>
+            </div>`;
+
+        const langList = ['English', 'Español', 'Français', 'Deutsch', '日本語', '한국어', 'Hindi', 'Português', 'Русский'];
+        const languageDrawer = `
+            <div class="ypp-inline-drawer" id="ypp-drawer-language" style="display:none; padding:8px 14px; margin:0 8px 6px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:2px solid #3ea6ff;">
+                <input type="text" id="ypp-lang-search" placeholder="Search language..." style="width:100%; padding:6px 10px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:12px; margin-bottom:8px; outline:none; box-sizing:border-box;">
+                <div class="ypp-lang-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; max-height:120px; overflow-y:auto;">
+                    ${langList.map(l => `<button class="ypp-lang-opt" data-lang="${l}" style="padding:4px 6px; border-radius:4px; background:rgba(255,255,255,0.06); color:#fff; font-size:11px; border:none; cursor:pointer; text-align:center;">${l}</button>`).join('')}
+                </div>
+            </div>`;
+
+        const locList = ['United States', 'United Kingdom', 'Japan', 'Germany', 'Canada', 'Australia', 'India', 'Brazil', 'France', 'Global'];
+        const locationDrawer = `
+            <div class="ypp-inline-drawer" id="ypp-drawer-location" style="display:none; padding:8px 14px; margin:0 8px 6px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:2px solid #2ba640;">
+                <input type="text" id="ypp-loc-search" placeholder="Search country..." style="width:100%; padding:6px 10px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:12px; margin-bottom:8px; outline:none; box-sizing:border-box;">
+                <div class="ypp-loc-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; max-height:120px; overflow-y:auto;">
+                    ${locList.map(l => `<button class="ypp-loc-opt" data-loc="${l}" style="padding:4px 6px; border-radius:4px; background:rgba(255,255,255,0.06); color:#fff; font-size:11px; border:none; cursor:pointer; text-align:center;">${l}</button>`).join('')}
+                </div>
+            </div>`;
+
+        const restrictedToggle = `
+            <div class="ypp-inline-drawer" id="ypp-drawer-restricted" style="display:none; padding:10px 14px; margin:0 8px 6px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:2px solid #ff9900; display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:12px; color:rgba(255,255,255,0.8);">Filter mature content</span>
+                <button id="ypp-toggle-restricted-btn" style="padding:4px 12px; border-radius:12px; background:${isRestricted ? '#ff4e45' : 'rgba(255,255,255,0.1)'}; color:#fff; font-size:11px; font-weight:600; border:none; cursor:pointer;">
+                    ${isRestricted ? 'ON' : 'OFF'}
+                </button>
+            </div>`;
 
         return `
         <div class="ypp-menu-header"
@@ -201,10 +282,17 @@ export class AccountMenuUI {
                 ${activeAccount?.handle
                     ? `<div class="ypp-active-handle" style="font-size:13px; color: rgba(255,255,255,0.6); margin-top:4px;">${this.esc(activeAccount.handle)}</div>`
                     : ''}
-                <a class="ypp-channel-link"
-                   href="${safeChannelHref}"
-                   id="ypp-view-channel"
-                   style="display:inline-block; margin-top:12px; padding:6px 16px; background:rgba(255,255,255,0.1); border-radius:20px; text-decoration:none; color:#fff; font-size:13px; font-weight:500; transition:background 0.2s;">View channel</a>
+                <div style="display:flex; justify-content:center; gap:8px; margin-top:12px;">
+                    <a class="ypp-channel-link"
+                       href="${safeChannelHref}"
+                       id="ypp-view-channel"
+                       style="display:inline-block; padding:6px 16px; background:rgba(255,255,255,0.1); border-radius:20px; text-decoration:none; color:#fff; font-size:13px; font-weight:500; transition:background 0.2s;">View channel</a>
+                    <button id="ypp-switch-account-btn"
+                       style="display:inline-flex; align-items:center; gap:4px; padding:6px 12px; background:rgba(62,166,255,0.15); border:1px solid rgba(62,166,255,0.3); border-radius:20px; color:#3ea6ff; font-size:12px; font-weight:500; cursor:pointer;">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M19 12H9M8 7l-5 5 5 5M5 12h10"/></svg>
+                        Switch
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -223,13 +311,23 @@ export class AccountMenuUI {
                 </svg>
             </button>
 
-            <div class="ypp-more-items" id="ypp-more-items" role="group" style="margin-left: 8px; border-left: 2px solid rgba(255,255,255,0.05); padding-left: 4px; margin-top: 4px;">
-                ${createBtn('ypp-appearance', icons.appearance, 'Appearance')}
+            <div class="ypp-more-items open" id="ypp-more-items" role="group" style="margin-left: 8px; border-left: 2px solid rgba(255,255,255,0.05); padding-left: 4px; margin-top: 4px;">
+                ${createBtn('ypp-appearance', icons.appearance, 'Appearance', false, '', currentTheme, true)}
+                ${appearanceDrawer}
+
                 ${createBtn('ypp-settings', icons.settings, 'Settings')}
-                ${createBtn('ypp-language', icons.language, 'Language')}
-                ${createBtn('ypp-location', icons.location, 'Location')}
+
+                ${createBtn('ypp-language', icons.language, 'Language', false, '', currentLanguage, true)}
+                ${languageDrawer}
+
+                ${createBtn('ypp-location', icons.location, 'Location', false, '', currentLocation, true)}
+                ${locationDrawer}
+
                 ${createBtn('ypp-keyboard', icons.keyboard, 'Keyboard shortcuts')}
-                ${createBtn('ypp-restricted', icons.restricted, 'Restricted Mode')}
+
+                ${createBtn('ypp-restricted', icons.restricted, 'Restricted Mode', false, '', isRestricted ? 'On' : 'Off', true)}
+                ${restrictedToggle}
+
                 <div style="height: 1px; background: rgba(255,255,255,0.06); margin: 8px 12px;"></div>
                 ${createBtn('', icons.studio, 'YouTube Studio', true, 'https://studio.youtube.com')}
                 ${createBtn('', icons.purchases, 'Purchases & memberships', true, '/paid_memberships')}
@@ -262,4 +360,6 @@ export class AccountMenuUI {
     }
 };
 
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
 window.YPP.features.AccountMenuUI = AccountMenuUI;

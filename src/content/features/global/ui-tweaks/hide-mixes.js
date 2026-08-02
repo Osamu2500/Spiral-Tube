@@ -31,7 +31,19 @@ export class HideMixes extends window.YPP.features.BaseFilterFeature {
         }
         
         // React to infinite scroll and virtual DOM recycling
-        this.addListener(window, 'yt-page-data-updated', this._boundSchedule);
+        // Only trigger a full-document fallback scan ONCE per page load. 
+        // The shared observer catches incremental additions.
+        this.addListener(window, 'yt-page-data-updated', () => {
+            if (this._pageDataFired) return;
+            this._pageDataFired = true;
+            this._scheduleProcess();
+        });
+        
+        // Reset the flag on navigation so it fires once for the new page
+        this.onBusEvent('app:pageChange', () => {
+            this._pageDataFired = false;
+            this._scheduleProcess();
+        });
         
         // Process existing nodes
         this._scheduleProcess();

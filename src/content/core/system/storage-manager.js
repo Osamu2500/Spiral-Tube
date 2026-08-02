@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 /**
  * @author Spiral Tube Team
  * @purpose Unified storage manager with write queue, TTL pruning, and quota protection.
@@ -24,6 +24,10 @@ window.YPP.StorageManager = class StorageManager {
     static _cache = new Map();
     static _cacheInitialized = false;
     static _inflightRequests = new Map();
+    // Throttle quota checks: only scan storage at most every 30 s
+    static _quotaCache = 0;
+    static _quotaCacheTime = 0;
+    static _QUOTA_TTL_MS = 30_000;
 
     static _initCacheListener() {
         if (this._cacheInitialized) return;
@@ -70,8 +74,15 @@ window.YPP.StorageManager = class StorageManager {
             }
 
             const compressedStr = JSON.stringify(payload, (k, v) => v ?? undefined);
-            const bytes = new TextEncoder().encode(compressedStr).length;
-            const usage = await this.getBytesUsed();
+            // Use string length * 2 as a conservative worst-case byte estimate
+            // (avoids a full TextEncoder scan on every write)
+            const bytes = compressedStr.length * 2;
+            const now2 = Date.now();
+            if (now2 - StorageManager._quotaCacheTime > StorageManager._QUOTA_TTL_MS) {
+                StorageManager._quotaCache = await this.getBytesUsed();
+                StorageManager._quotaCacheTime = now2;
+            }
+            const usage = StorageManager._quotaCache;
             
             if (usage + bytes > this._MAX_BYTES * 0.9) {
                 this._notifyQuotaWarning();

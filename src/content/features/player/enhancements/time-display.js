@@ -57,13 +57,6 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             }, true);
         }
 
-        if (!this._pollInterval) {
-            this._pollInterval = setInterval(() => {
-                if (!this.isEnabled || !this._isWatchPage()) return;
-                this.showAll();
-            }, 1000);
-        }
-
         if (this._isWatchPage()) {
             this.showAll();
         }
@@ -87,10 +80,6 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
         this.isEnabled = false;
         await super.disable();
         try {
-            if (this._pollInterval) {
-                clearInterval(this._pollInterval);
-                this._pollInterval = null;
-            }
             if (window.YPP.sharedObserver) {
                 window.YPP.sharedObserver.unregister('time-display-container');
             }

@@ -6,7 +6,7 @@ import { initStorage, loadSettings, state, saveSettings, updateSetting, notifyTh
 import * as UI from './popup-ui.js';
 import { initComponents } from './popup-components.js';
 import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerBarOrganizer, renderDomainMemoryManager } from './popup-extras.js';
-import { renderSchema, registerSlot } from './popup-renderer.js';
+import { renderSchema, registerSlot, convertStaticDescriptionsToHelpButtons } from './popup-renderer.js';
 import { initI18n, t } from '../shared/i18n.js';
 
 // --- Register Custom Slots ---
@@ -883,7 +883,7 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
         const display = document.getElementById(key + 'Value');
         if (slider) {
             slider.addEventListener('input', () => {
-                if (display) display.textContent = slider.value;
+                if (display) display.textContent = slider.value + (key === 'hideWatchedThreshold' ? '%' : '');
                 saveSettings(() => UI.showSaveIndicator(document));
             });
         }
@@ -1025,6 +1025,7 @@ const initApp = async () => {
         components.initPremiumAccentDropdown();
         components.initSearchViewMode();
         components.initHideWatchedModePill();
+        components.initHideWatchedPageButtons();
         components.initGlobalPlayerBarGrid();
         components.initCardStyleGrid();
         components.initYoutubeStyleGrid();
@@ -1066,6 +1067,7 @@ const initApp = async () => {
 
         const _removeSkeleton = () => {
             document.body.classList.remove('popup-loading');
+            convertStaticDescriptionsToHelpButtons(document);
             
             // Spring stagger intro animations
             if (window.anime) {

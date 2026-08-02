@@ -522,9 +522,7 @@ class QuadObserverSystem {
     constructor(logger, callback) {
         this.logger = logger;
         this.callback = callback;
-        this.mutationObserver = null;
         this.resizeObserver = null;
-        this.intersectionObserver = null;
         this.enabled = false;
         this._debounceTimer = null;
     }
@@ -541,47 +539,33 @@ class QuadObserverSystem {
         this.stop(); // Clean up previous instances to prevent memory leaks
         this.enabled = true;
         
-        // 1. Mutation Observer
-        this.mutationObserver = new MutationObserver((mutations) => {
-            let needsUpdate = false;
-            for (let m of mutations) {
-                if (m.type === 'childList' || (m.type === 'attributes' && m.attributeName === 'style')) {
-                    needsUpdate = true;
-                    break;
-                }
-            }
-            if (needsUpdate) this._debouncedCallback();
-        });
-        this.mutationObserver.observe(target, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('seamless-quad-observer', 'ytd-watch-flexy ytd-compact-video-renderer, ytd-watch-flexy ytd-rich-item-renderer, ytd-watch-flexy', () => {
+                this._debouncedCallback();
+            }, true);
+        }
         
-        // 2. Resize Observer
+        // Resize Observer is still needed because sharedObserver does not track layout resizes
         this.resizeObserver = new ResizeObserver(() => {
             this._debouncedCallback();
         });
         this.resizeObserver.observe(target);
         
-        // 3. Intersection Observer (for infinite scroll)
-        this.intersectionObserver = new IntersectionObserver(() => {
-            this._debouncedCallback();
-        });
-        this.intersectionObserver.observe(target);
-        
-        // 4. Request Animation Frame Loop (REMOVED due to severe CPU/Battery drain)
-        // Relying on debounced DOM observers is much safer.
-        
-        this.logger.info('Quad-Observer System Armed and Guarding.');
+        this.logger.info('Quad-Observer System Armed and Guarding via sharedObserver.');
     }
     
     stop() {
         this.enabled = false;
         if (this._debounceTimer) clearTimeout(this._debounceTimer);
-        if (this.mutationObserver) this.mutationObserver.disconnect();
-        if (this.resizeObserver) this.resizeObserver.disconnect();
-        if (this.intersectionObserver) this.intersectionObserver.disconnect();
         
-        this.mutationObserver = null;
-        this.resizeObserver = null;
-        this.intersectionObserver = null;
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('seamless-quad-observer');
+        }
+
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+            this.resizeObserver = null;
+        }
     }
 }
 
@@ -619,18 +603,13 @@ class RelatedGridController {
         const cols = this.getColumnsSetting();
         this.cssEngine.inject(cols);
         
-        const watchFlexy = document.querySelector('ytd-watch-flexy');
-        if (watchFlexy) {
-            this.quadObserver.start(watchFlexy);
-        } else {
-            // If related is missing, fallback to aggressive interval until found
-            this.enforcementInterval = setInterval(() => {
-                const r = document.querySelector('ytd-watch-flexy');
-                if (r) {
-                    clearInterval(this.enforcementInterval);
-                    this.quadObserver.start(r);
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('seamless-grid-container', 'ytd-watch-flexy', (elements) => {
+                const watchFlexy = elements[0];
+                if (watchFlexy) {
+                    this.quadObserver.start(watchFlexy);
                 }
-            }, 100);
+            }, true);
         }
         
         this.logger.info('Massive RelatedGridController Enabled');
@@ -639,10 +618,11 @@ class RelatedGridController {
     disable() {
         if (!this.enabled) return;
         this.enabled = false;
-        if (this.enforcementInterval) {
-            clearInterval(this.enforcementInterval);
-            this.enforcementInterval = null;
+        
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('seamless-grid-container');
         }
+        
         this.quadObserver.stop();
         this.cssEngine.remove();
         this.cleanup();

@@ -39,10 +39,10 @@ export class PlayerBarUI {
                 setTimeout(() => this.attemptInjection(), 2000);
                 setTimeout(() => this.attemptInjection(), 4000);
             };
-            document.addEventListener('yt-navigate-finish', this._navigateListener);
-            document.addEventListener('yt-page-data-updated', this._navigateListener);
-            document.addEventListener('yt-player-updated', this._navigateListener);
-            document.addEventListener('yt-player-state-change', this._navigateListener);
+            ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change'].forEach(evt => {
+                document.addEventListener(evt, this._navigateListener);
+                window.addEventListener(evt, this._navigateListener);
+            });
         }
         
         this.setupInjectionObserver();
@@ -70,19 +70,34 @@ export class PlayerBarUI {
         
         if (video && controls) {
             // Remove stale instances from previous extension reloads
-            const existing = controls.querySelector('.ypp-player-controls');
-            if (existing && !this.injectedButtons) {
-                existing.remove();
+            const existingAll = controls.querySelectorAll('.ypp-player-controls');
+            if (existingAll.length > 1) {
+                for (let i = 1; i < existingAll.length; i++) {
+                    existingAll[i].remove();
+                }
             }
             
             const current = controls.querySelector('.ypp-player-controls');
+            let needsReinject = false;
+
             if (!current || !document.contains(current) || current.children.length === 0) {
-                if (current) current.remove();
-                this.injectedButtons = false;
-                this.injectControls(video, controls, isShorts);
-            } else if (this.settings && this.settings.enableVolumeBoost !== false && this.settings.pb_volume !== 'hidden' && !current.querySelector('#ypp-volume-boost-btn')) {
-                // Feature loaded late or button got removed: re-inject to ensure consistency
-                current.remove();
+                needsReinject = true;
+            } else if (!isShorts) {
+                // Verify custom player bar is in the correct container (.ytp-right-controls if present)
+                const rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');
+                if (rightControls && current.parentNode !== rightControls) {
+                    needsReinject = true;
+                }
+            }
+
+            if (!needsReinject && current && this.settings) {
+                if (this.settings.enableVolumeBoost !== false && this.settings.pb_volume !== 'hidden' && !current.querySelector('#ypp-volume-boost-btn')) {
+                    needsReinject = true;
+                }
+            }
+
+            if (needsReinject) {
+                if (current && current.parentNode) current.remove();
                 this.injectedButtons = false;
                 this.injectControls(video, controls, isShorts);
             }
@@ -113,23 +128,11 @@ export class PlayerBarUI {
             }, true);
         }
         // ALWAYS run a lightweight fallback check so if YouTube mutates innerHTML without adding new nodes, we catch it
-        this.startInjectionPollingFallback();
-    }
-    
-    startInjectionPollingFallback() {
-        if (this._pollingInterval) clearInterval(this._pollingInterval);
-        this._pollingInterval = setInterval(() => {
-            if (!this.isActive) return;
-            this.attemptInjection();
-        }, 1500);
-    }
-
-    get settings() {
-        return this.manager.settings;
+        // Removed fallback polling loop; relying entirely on robust sharedObserver rules
     }
 
     injectControls(video, controls, isShorts) {
-        if (this.injectedButtons || !this.manager.isActive) return;
+        if (this.injectedButtons || !this.isActive) return;
 
         // Clean up any stale controls first
         if (isShorts) {
@@ -370,10 +373,6 @@ export class PlayerBarUI {
     }
 
     cleanup() {
-        if (this._pollingInterval) {
-            clearInterval(this._pollingInterval);
-            this._pollingInterval = null;
-        }
         if (window.YPP.sharedObserver) {
             window.YPP.sharedObserver.unregister('player-bar-injection');
             window.YPP.sharedObserver.unregister('player-bar-injection-vid');

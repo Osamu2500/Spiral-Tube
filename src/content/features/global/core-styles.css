@@ -4316,112 +4316,6 @@ body.ypp-hide-channel-cards ytd-channel-renderer {
     max-height: 60px;
     overflow: hidden;
 }
-
-.ypp-minimal-mode #comments:hover {
-    opacity: 1;
-    pointer-events: auto;
-    max-height: none;
-}
-
-/* Dim sidebar recommendations */
-
-.ypp-minimal-mode #secondary {
-    opacity: 0.15;
-    transition: opacity 0.3s;
-}
-
-.ypp-minimal-mode #secondary:hover { opacity: 1; }
-
-/* V2: Icon-Only Mode (Hide text labels on actions) */
-
-.ypp-minimal-mode ytd-menu-renderer .yt-core-attributed-string,
-.ypp-minimal-mode ytd-menu-renderer .yt-spec-button-shape-next--button-text-content {
-    display: none !important;
-}
-
-.ypp-minimal-mode ytd-menu-renderer .yt-spec-button-shape-next__icon {
-    margin: 0 !important;
-}
-
-/* Hide tooltips on idle/play */
-
-/* Maximize Real Estate on Grid */
-
-/* =========================================================================
-   ZEN MODE
-   ========================================================================= */
-
-/* True Invisible UI: Hide controls entirely when playing */
-
-/* Reveal on pause */
-
-/* Breathing Visualizer */
-
-@keyframes zenBreathing {
-    0% { box-shadow: 0 0 10px 5px rgba(255,255,255,0.05); transform: scale(0.98); }
-    50% { box-shadow: 0 0 100px 20px rgba(255,255,255,0.25); transform: scale(1.01); }
-    100% { box-shadow: 0 0 10px 5px rgba(255,255,255,0.05); transform: scale(0.98); }
-}
-
-/* Breathing Transitions: Scale and dim video on pause */
-
-body.ypp-zen-mode video {
-    transition: filter 1.5s ease-in-out, transform 1.5s ease-in-out !important;
-    transform-origin: center center !important;
-}
-
-/* =========================================================================
-   FOCUS MODE / DOPAMINE DETOX
-   ========================================================================= */
-
-/* V2: Thumbnail Eraser - completely hide images and show gray box */
-
-body.ypp-dopamine-detox ytd-thumbnail img,
-body.ypp-dopamine-detox ytd-grid-thumbnail img,
-body.ypp-dopamine-detox #thumbnail img {
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
-
-body.ypp-dopamine-detox ytd-thumbnail,
-body.ypp-dopamine-detox ytd-grid-thumbnail {
-    background-color: #222 !important;
-    border: 1px solid #333 !important;
-}
-
-/* V2: Grayscale UI Enforcement - mute logos and buttons */
-
-/* =========================================================================
-   DISTRACTION FREE BASE LAYOUTS
-   ========================================================================= */
-
-body.ypp-sidebar-hidden #secondary {
-    opacity: 0;
-    pointer-events: none;
-    width: 0 !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-    flex: 0 !important;
-}
-
-body.ypp-focus-mode #primary {
-    max-width: 1000px !important;
-    margin: 0 auto !important;
-}
-
-body.ypp-zen-mode #primary {
-    max-width: 100% !important;
-    margin: 0 auto !important;
-}
-
-/* Completely hide the native sidebar in study mode so our Notes panel can replace it */
-
-body.ypp-study-mode #secondary {
-    display: none !important;
-}
-
-/* Study Notes Panel styling to mimic the sidebar layout */
-
 body.ypp-study-mode #ypp-study-notes {
     width: var(--ytd-watch-flexy-sidebar-width, 402px);
     margin-left: 24px;
@@ -4470,16 +4364,20 @@ html[data-ypp-card-style] body.ypp-watched-mode-hide ytd-rich-item-renderer[data
 html body.ypp-watched-mode-dim [data-ypp-watched="1"],
 html[data-ypp-card-style] body.ypp-watched-mode-dim [data-ypp-watched="1"],
 html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-ypp-watched="1"] {
-    opacity: 0.25 !important;
-    filter: grayscale(80%) !important;
-    transition: opacity 0.25s ease, filter 0.25s ease !important;
+    opacity: 0.2 !important;
+    filter: grayscale(90%) brightness(0.7) !important;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    pointer-events: none;
 }
 
+/* Hover — full reveal on intentional hover */
 html body.ypp-watched-mode-dim [data-ypp-watched="1"]:hover,
 html[data-ypp-card-style] body.ypp-watched-mode-dim [data-ypp-watched="1"]:hover,
 html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-ypp-watched="1"]:hover {
-    opacity: 0.8 !important;
-    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    filter: grayscale(0%) brightness(1) !important;
+    pointer-events: auto;
 }
 
 /* Generic Hidden Class (Used by BaseFilterFeature) */

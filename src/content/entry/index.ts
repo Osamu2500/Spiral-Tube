@@ -55,6 +55,8 @@ window.YPP.FeatureManager.register(SplitScrolling);
 // Global features
 import { ThemeManager } from '../features/global/ui-tweaks/theme.js';
 window.YPP.FeatureManager.register(ThemeManager);
+import '../features/global/account-menu/account-menu-data.js';
+import '../features/global/account-menu/account-menu-ui.js';
 import { AccountMenu } from '../features/global/account-menu/account-menu.js';
 window.YPP.FeatureManager.register(AccountMenu);
 import { GridAnimator } from '../features/global/ui-tweaks/grid-animator.js';

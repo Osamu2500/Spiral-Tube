@@ -29,12 +29,7 @@ export const DEFAULT_SETTINGS = {
   subscriptionsColumns: 4,
   historyColumns: 4,
   displayFullTitle: false,
-  saveSupremeUI: false,
   cinematicMode: false,
-  realCinemaMode: false, // Real Cinema Mode (100vw Theater & Auto-hide Header)
-  flexWidthPlayer: false, // Flex width player layout
-  showLiveStreamTime: true, // Show elapsed time on live streams
-  twoColumnSubscriptions: false, // Two rows/columns in subscriptions feed
 
   // Visibility
   hideShorts: false,
@@ -51,6 +46,11 @@ export const DEFAULT_SETTINGS = {
   hideWatched: false,
   hideWatchedMode: 'dim',
   hideWatchedThreshold: 80,
+  hideWatchedHome: true,
+  hideWatchedChannel: true,
+  hideWatchedSubs: true,
+  hideWatchedSearch: true,
+  hideWatchedRelated: true,
   enableMarkWatched: true,
   hideMerch: false,
   hideComments: false,
@@ -89,7 +89,6 @@ export const DEFAULT_SETTINGS = {
 
   // Player
   autoCinema: false,
-  compactPlayerUI: false,       // Compact player controls
   autoQuality: 'highres',
   enablePiP: true,
   enableTranscript: true,
@@ -195,7 +194,6 @@ export const DEFAULT_SETTINGS = {
   enableFocusMode: false,
   cinemaMode: false,
   minimalMode: false,
-  seamlessMode: false,
   seamlessModeGridCols: 4,
 
   // Auto Actions
@@ -243,7 +241,6 @@ export const DEFAULT_SETTINGS = {
   // Keyboard Shortcuts
   keyboardShortcuts: true,
   shortcut_studyMode: '',
-  shortcut_seamlessMode: 'Shift+S',
   shortcut_focusMode: 'Shift+F',
   shortcut_cinemaMode: 'Shift+C',
   shortcut_minimalMode: 'Shift+M',

@@ -84,8 +84,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'GET_SETTINGS':
       (async () => {
         try {
-          const localData = await chrome.storage.local.get('settings');
-          const syncData = await chrome.storage.sync.get('settings');
+          const [localData, syncData] = await Promise.all([
+            chrome.storage.local.get('settings'),
+            chrome.storage.sync.get('settings')
+          ]);
 
           const localSettings = localData.settings || {};
           const syncSettings = syncData.settings || {};
@@ -115,8 +117,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'PATCH_SETTINGS':
       (async () => {
         try {
-          let localData = await chrome.storage.local.get('settings');
-          let syncData = await chrome.storage.sync.get('settings');
+          const [localData, syncData] = await Promise.all([
+            chrome.storage.local.get('settings'),
+            chrome.storage.sync.get('settings')
+          ]);
 
           const localSettings = localData.settings || {};
           const syncSettings = syncData.settings || {};
@@ -403,7 +407,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // accidentally written as `true` during a debugging session. Force
     // them back to false so they only activate when the user explicitly
     // enables them in the popup.
-    if ((existingSettings.schemaVersion || 0) < 2) {
+    if ((existingSettings?.schemaVersion || 0) < 2) {
       newSettings.hideVideoTitle       = false;
       newSettings.hideChannelBar       = false;
       newSettings.hideVideoDescription = false;

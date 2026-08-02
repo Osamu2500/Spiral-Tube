@@ -28,6 +28,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
   onActivate() {
     this.utils.log('Watch Page Active', 'WATCH_MANAGER', 'info');
     this._cleanUpLegacyStamps();
+    if (this.playerBarUI) this.playerBarUI.enable();
     // NOTE: _applyDOM() is NOT called here directly.
     // The base class activate() calls applySettings() immediately after onActivate(),
     // which calls setState() → _applyDOM(). Calling it here too would cause a double DOM apply.
@@ -98,6 +99,12 @@ class WatchPageManager extends window.YPP.BasePageManager {
   applySettings(settings) {
     this.settings = { ...this.settings, ...settings };
     if (!this.isActive) return;
+
+    if (this.playerBarUI) {
+      this.playerBarUI.updateCustomStyles();
+      this.playerBarUI.injectedButtons = false;
+      this.playerBarUI.attemptInjection();
+    }
 
     let newSidebar = 'default';
     let newMode = 'default';
@@ -280,6 +287,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
 
         // Need to ensure features are initialized before injecting controls!
         await this._initFeatures();
+        if (this.playerBarUI) this.playerBarUI.enable();
 
         this.playerBarUI.injectControls(video, controls, isShorts);
         this._startMonitoring();
@@ -294,6 +302,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
             .querySelectorAll('[data-ypp-processed="true"]')
             .forEach((el) => el.removeAttribute('data-ypp-processed'));
           if (this.playerBarUI) {
+            this.playerBarUI.updateCustomStyles();
             this.playerBarUI.injectedButtons = false;
             this.playerBarUI.attemptInjection();
           }
@@ -353,18 +362,15 @@ class WatchPageManager extends window.YPP.BasePageManager {
           el.removeAttribute('data-ypp-processed');
         });
         if (this.playerBarUI) {
+          this.playerBarUI.updateCustomStyles();
           this.playerBarUI.injectedButtons = false;
           this.playerBarUI.attemptInjection();
         }
       };
-      window.addEventListener('yt-navigate-finish', resetProcessed);
-      window.addEventListener('yt-page-data-updated', resetProcessed);
-      // yt-player-updated fires when YouTube fully initializes the player on cold load.
-      // This is the exact moment YouTube replaces the skeleton controls with the full bar,
-      // wiping any custom injection done during early render.
-      window.addEventListener('yt-player-updated', resetProcessed);
-      window.addEventListener('yt-player-state-change', resetProcessed);
-      window.addEventListener('yt-page-type-changed', resetProcessed);
+      ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change', 'yt-page-type-changed'].forEach(evt => {
+        window.addEventListener(evt, resetProcessed);
+        document.addEventListener(evt, resetProcessed);
+      });
       this._hasNavListener = true;
     }
   }
