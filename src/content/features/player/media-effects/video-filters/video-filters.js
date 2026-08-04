@@ -144,6 +144,11 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             finalFilter += ` url(#ypp-svg-sharpness)`;
         }
 
+        window.YPP.features.VideoFiltersOverlay.injectSpecialEffectsSVG();
+        if (preset.overlay && preset.overlay.startsWith('crt')) {
+            window.YPP.features.VideoFiltersOverlay.injectCRTSVGFilter();
+        }
+
         video.style.setProperty('filter', finalFilter, 'important');
         this._syncOverlays(preset, adj);
     }

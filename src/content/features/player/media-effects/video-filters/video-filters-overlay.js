@@ -21,15 +21,6 @@ export class VideoFiltersOverlay {
         this.injectOverlayCSS();
     }
 
-    static removeOverlay(ctx) {
-        if (ctx._filterOverlay) {
-            ctx._filterOverlay.remove();
-            ctx._filterOverlay = null;
-        }
-        const crtSvg = document.getElementById('ypp-crt-svg-defs');
-        if (crtSvg) crtSvg.remove();
-    }
-
     static _buildOverlayElement(container) {
         const overlay = document.createElement('div');
         overlay.id = 'ypp-filter-overlay';
@@ -509,8 +500,6 @@ export class VideoFiltersOverlay {
             ctx._filterOverlay.remove();
             ctx._filterOverlay = null;
         }
-        const crtSvg = document.getElementById('ypp-crt-svg-defs');
-        if (crtSvg) crtSvg.remove();
     }
 
     static setupDynamicSVGFilter() {
