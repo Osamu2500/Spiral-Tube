@@ -19,7 +19,9 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             brightness: 100, contrast: 100, saturate: 100, hueRotate: 0,
             sepia: 0, grayscale: 0, invert: 0, blur: 0, opacity: 100,
             dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0,
-            vibrance: 100, highlights: 0, shadows: 0, vignette: 0
+            vibrance: 100, highlights: 0, shadows: 0, vignette: 0,
+            // V2 new adjustments
+            exposure: 0, tint: 0, fade: 0, noiseReduction: 0
         };
         
         this._filterOverlay = null;
@@ -193,14 +195,32 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         const s = (v, def = 100) => def + (v - def) * inst;
         const baseValues = this._calculateBaseValues(adj);
 
+        // Exposure: maps -100..+100 => brightness(0.5..1.5)
+        const exposureBrightness = adj.exposure !== 0
+            ? 100 + (adj.exposure * inst)
+            : null;
+
+        // Tint: maps -100..+100 => a subtle hue nudge in green-magenta axis
+        const tintHue = adj.tint !== 0 ? adj.tint * 0.5 * inst : null;
+
+        // Fade: lifts blacks — simulated by a slight brightness + contrast reduction
+        const fadeBrightness = adj.fade > 0 ? 100 + (adj.fade * 0.15 * inst) : null;
+        const fadeContrast   = adj.fade > 0 ? 100 - (adj.fade * 0.3 * inst)  : null;
+
+        // Noise Reduction: a very subtle blur
+        const noiseBlur = adj.noiseReduction > 0 ? (adj.noiseReduction / 100) * 1.5 * inst : null;
+
         const adjStr = [
             hasSVGCurves ? `url(#ypp-dynamic-filter)` : '',
             baseValues.saturate !== 100 ? `saturate(${s(baseValues.saturate)}%)` : '',
             adj.hueRotate !== 0 ? `hue-rotate(${adj.hueRotate * inst}deg)` : '',
+            tintHue ? `hue-rotate(${tintHue}deg)` : '',
             adj.sepia > 0 ? `sepia(${adj.sepia * inst}%)` : '',
             adj.grayscale > 0 ? `grayscale(${adj.grayscale * inst}%)` : '',
             adj.invert > 0 ? `invert(${adj.invert * inst}%)` : '',
-            adj.blur > 0 ? `blur(${adj.blur * inst}px)` : '',
+            exposureBrightness ? `brightness(${exposureBrightness}%)` : '',
+            fadeBrightness ? `brightness(${fadeBrightness}%) contrast(${fadeContrast}%)` : '',
+            (adj.blur > 0 || noiseBlur) ? `blur(${((adj.blur || 0) + (noiseBlur || 0)) * inst}px)` : '',
             adj.opacity !== 100 ? `opacity(${s(adj.opacity)}%)` : ''
         ].filter(Boolean).join(' ');
 
@@ -246,7 +266,11 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             cinemaFilterVibrance: 'vibrance',
             cinemaFilterHighlights: 'highlights',
             cinemaFilterShadows: 'shadows',
-            cinemaFilterVignette: 'vignette'
+            cinemaFilterVignette: 'vignette',
+            cinemaFilterExposure: 'exposure',
+            cinemaFilterTint: 'tint',
+            cinemaFilterFade: 'fade',
+            cinemaFilterNoiseReduction: 'noiseReduction'
         };
 
         let hasActiveFilter = false;

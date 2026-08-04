@@ -112,7 +112,7 @@ export class VideoFiltersUI {
         style.textContent = `
             @keyframes ypp-panel-glass-in { from { opacity: 0; transform: translateY(-16px) scale(calc(0.94 * var(--ypp-auto-scale, 1))); } to { opacity: 1; transform: translateY(0) scale(var(--ypp-auto-scale, 1)); } }
             @keyframes ypp-panel-scale-in { from { opacity: 0; transform: scale(calc(0.92 * var(--ypp-auto-scale, 1))); } to { opacity: 1; transform: scale(var(--ypp-auto-scale, 1)); } }
-            @keyframes ypp-card-enter { from { opacity: 0; transform: translateY(8px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+            @keyframes ypp-card-enter { from { opacity: 0; transform: translateY(12px) scale(0.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
             @keyframes ypp-spin-glow { 100% { transform: rotate(360deg); } }
 
             /* Modern Tab Buttons */
@@ -131,13 +131,13 @@ export class VideoFiltersUI {
             
             /* Premium Hover Lift Cards - 5 Columns for high density */
             .ypp-filter-card-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; padding: 4px 6px; }
-            .ypp-filter-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 4px 2px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); text-align: center; position: relative; gap: 2px; overflow: hidden; animation: ypp-card-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
-            .ypp-filter-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); border-color: rgba(255,255,255,0.3); box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1); }
+            .ypp-filter-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 4px 2px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-align: center; position: relative; gap: 2px; overflow: hidden; animation: ypp-card-enter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both; }
+            .ypp-filter-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px) scale(1.03); border-color: rgba(255,255,255,0.5); box-shadow: 0 12px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.3); z-index: 10; }
             
             /* Active State with dynamic conic border */
-            .ypp-filter-card.active { background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05)); border-color: transparent; box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 6px rgba(255,255,255,0.1); }
-            .ypp-filter-card.active::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.4), transparent 30%); animation: ypp-spin-glow 4s linear infinite; pointer-events: none; z-index: 0; opacity: 0.8; }
-            .ypp-filter-card.active::after { content: ''; position: absolute; inset: 1px; background: rgba(20, 20, 22, 0.95); border-radius: 7px; z-index: 1; }
+            .ypp-filter-card.active { background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08)); border-color: transparent; box-shadow: 0 8px 24px rgba(0,0,0,0.8), inset 0 1px 8px rgba(255,255,255,0.3); transform: translateY(-2px); }
+            .ypp-filter-card.active::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.5), transparent 30%); animation: ypp-spin-glow 4s linear infinite; pointer-events: none; z-index: 0; opacity: 0.9; }
+            .ypp-filter-card.active::after { content: ''; position: absolute; inset: 1px; background: rgba(20, 20, 22, 0.92); border-radius: 7px; z-index: 1; }
             .ypp-filter-card > * { position: relative; z-index: 2; }
 
             .ypp-filter-lut-preview { width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 2px 8px rgba(0,0,0,0.4); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -151,7 +151,7 @@ export class VideoFiltersUI {
 
             /* Search Input */
             .ypp-vcp-search-wrap { position: relative; display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0 10px; transition: all 0.3s ease; box-shadow: inset 0 2px 6px rgba(0,0,0,0.2); margin: 6px 10px !important; }
-            .ypp-vcp-search-wrap:focus-within { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); box-shadow: 0 0 0 3px rgba(255,255,255,0.05), inset 0 2px 4px rgba(0,0,0,0.1); }
+            .ypp-vcp-search-wrap:focus-within { background: rgba(255,255,255,0.08); border-color: var(--accent-primary, #3ea6ff); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-primary, #3ea6ff) 30%, transparent), inset 0 2px 4px rgba(0,0,0,0.1); }
             .ypp-vcp-search-input { width: 100%; background: transparent; border: none; color: #fff; padding: 6px 0 6px 6px; font-size: 11px; font-family: inherit; outline: none; }
             .ypp-vcp-search-input::placeholder { color: rgba(255,255,255,0.4); font-weight: 500; }
             .ypp-vcp-search-icon { color: rgba(255,255,255,0.5); display: flex; transition: color 0.3s; transform: scale(0.85); }
@@ -172,10 +172,10 @@ export class VideoFiltersUI {
             .ypp-vcp-slider:active::-webkit-slider-thumb { transform: scale(1.1); background: #f0f0f0; }
 
             /* Custom Sleek Scrollbar */
-            .ypp-cinema-scroll::-webkit-scrollbar { width: 5px; }
-            .ypp-cinema-scroll::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.15); }
-            .ypp-cinema-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.25); border-radius: 3px; }
-            .ypp-cinema-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.45); }
+            .ypp-cinema-scroll::-webkit-scrollbar { width: 6px; }
+            .ypp-cinema-scroll::-webkit-scrollbar-track { background: transparent; }
+            .ypp-cinema-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 6px; border: 1px solid transparent; background-clip: padding-box; }
+            .ypp-cinema-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.35); border-radius: 6px; }
         `;
         document.head.appendChild(style);
     }
@@ -186,11 +186,11 @@ export class VideoFiltersUI {
         Object.assign(panel.style, {
             position: 'fixed', top: '56px', right: '24px', left: 'auto', bottom: 'auto', height: 'calc(100vh - 72px)', maxHeight: 'calc(100vh - 72px)', width: '430px',
             backgroundColor: 'rgba(18, 18, 20, 0.65)',
-            backgroundImage: 'radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.15)', borderTop: '1px solid rgba(255, 255, 255, 0.25)', borderRadius: '14px',
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.04\'/%3E%3C/svg%3E"), radial-gradient(ellipse 80% 60% at 0% 0%, color-mix(in srgb, var(--accent-primary, #3ea6ff) 25%, transparent) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, color-mix(in srgb, var(--accent-secondary, #ff416c) 20%, transparent) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, color-mix(in srgb, var(--accent-secondary, #ff416c) 5%, transparent) 0%, transparent 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.1)', borderTop: '1px solid rgba(255, 255, 255, 0.25)', borderRadius: '14px',
             zIndex: '2147483646', color: '#fff', fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-            boxShadow: '0 24px 64px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
-            backdropFilter: 'blur(64px) saturate(180%)', WebkitBackdropFilter: 'blur(64px) saturate(180%)',
+            boxShadow: '0 24px 64px rgba(0,0,0,0.8), 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15)',
+            backdropFilter: 'blur(72px) saturate(200%)', WebkitBackdropFilter: 'blur(72px) saturate(200%)',
             overflow: 'hidden', userSelect: 'none', display: 'flex', flexDirection: 'column',
             animation: 'ypp-panel-glass-in 0.3s cubic-bezier(0.2, 0, 0, 1) forwards'
         });
@@ -394,14 +394,14 @@ export class VideoFiltersUI {
             const isFav    = currentFavs.includes(index);
             card.className = `ypp-filter-card ${isActive ? 'active' : ''}`;
             card.title = filter.name;
-            card.style.animationDelay = `${Math.min((index % 20) * 30, 500)}ms`;
+            card.style.animationDelay = `${Math.min((index % 20) * 40, 600)}ms`;
             
             const cssFilter = filter.css === 'none' ? 'grayscale(0%)' : filter.css;
             const previewBg = filter.preview ? filter.preview : 'linear-gradient(135deg, #ff4b4b, #4b6fff, #4bff8b)';
             
             card.innerHTML = `
                 <div class="ypp-filter-lut-preview" style="background:${previewBg}; filter:${cssFilter}"></div>
-                <span style="font-size:8.5px;font-weight:600;color:${isActive ? '#fff' : 'rgba(255,255,255,0.8)'};flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;letter-spacing:0px;">${filter.name}</span>
+                <span style="font-size:8.5px;font-weight:600;color:${isActive ? '#fff' : 'rgba(255,255,255,0.9)'};text-shadow:-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000, 0 1px 3px rgba(0,0,0,0.9);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;letter-spacing:0.2px;">${filter.name}</span>
                 ${isActive ? '<div class="ypp-card-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>' : ''}
                 <button class="ypp-star-btn" title="${isFav ? 'Remove from Favorites' : 'Add to Favorites'}" data-fav="${isFav}">${isFav ? starFilled : starOutline}</button>
             `;
@@ -515,161 +515,383 @@ export class VideoFiltersUI {
 
     static buildAdjustTab(ctx, video) {
         const wrap = document.createElement('div');
-        Object.assign(wrap.style, { padding: '8px 0' });
+        Object.assign(wrap.style, { padding: '0' });
 
+        // ── Inject V3 Styles ──
+        this._injectStyle('ypp-adj-v2-styles', `
+            @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(62,166,255, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(62,166,255, 0); } 100% { box-shadow: 0 0 0 0 rgba(62,166,255, 0); } }
+            .ypp-adj-section { border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .ypp-adj-section-header {
+                display: flex; align-items: center; justify-content: space-between;
+                padding: 7px 12px; cursor: pointer; user-select: none;
+                background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+                transition: background 0.3s;
+            }
+            .ypp-adj-section-header:hover { background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); }
+            .ypp-adj-section-title {
+                display: flex; align-items: center; gap: 6px;
+                font-size: 9.5px; font-weight: 700; color: rgba(255,255,255,0.6);
+                letter-spacing: 0.8px; text-transform: uppercase;
+            }
+            .ypp-adj-active-dot {
+                width: 5px; height: 5px; border-radius: 50%;
+                background: var(--accent-primary, #3ea6ff);
+                box-shadow: 0 0 6px var(--accent-primary, #3ea6ff);
+                display: none;
+                animation: pulse-dot 2s infinite;
+            }
+            .ypp-adj-active-dot.visible { display: block; }
+            .ypp-adj-chevron { color: rgba(255,255,255,0.3); font-size: 9px; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+            .ypp-adj-section.open .ypp-adj-chevron { transform: rotate(180deg); }
+            .ypp-adj-section-body { display: none; padding: 4px 8px 8px; }
+            .ypp-adj-section.open .ypp-adj-section-body { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+            
+            .ypp-adjust-card { 
+                background: rgba(0,0,0,0.2); 
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255,255,255,0.08); 
+                border-radius: 8px; 
+                padding: 7px 9px; 
+                display: flex; flex-direction: column; gap: 6px; 
+                transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), background 0.3s, border-color 0.3s, box-shadow 0.3s; 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.1);
+            }
+            .ypp-adjust-card:hover { 
+                transform: translateY(-2px);
+                background: rgba(0,0,0,0.3); 
+                border-color: rgba(255,255,255,0.2); 
+                box-shadow: 0 6px 16px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.15);
+            }
+            .ypp-adjust-card.modified { 
+                border-color: rgba(62,166,255,0.4); 
+                background: rgba(62,166,255,0.08); 
+                box-shadow: 0 4px 12px rgba(62,166,255,0.1), inset 0 1px 1px rgba(255,255,255,0.15);
+            }
+            .ypp-adjust-card-header { display: flex; justify-content: space-between; align-items: center; }
+            .ypp-adjust-card-title { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.7); }
+            .ypp-adjust-card-val { 
+                font-size: 9px; font-weight: 700; color: #fff; 
+                background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 5px; 
+                letter-spacing: 0.3px; transition: background 0.2s, color 0.2s; 
+            }
+            .ypp-adjust-card.modified .ypp-adjust-card-val { background: rgba(62,166,255,0.3); color: #7dd3fc; }
+            .ypp-adj-reset { background: transparent; border: none; color: rgba(255,255,255,0.3); cursor: pointer; font-size: 13px; padding: 0 2px; line-height:1; transition: color 0.2s; }
+            .ypp-adj-reset:hover { color: #fff; }
+            
+            .ypp-vcp-slider { 
+                -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px; 
+                background: rgba(255,255,255,0.1); outline: none; cursor: pointer;
+                box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+            }
+            .ypp-vcp-slider::-webkit-slider-thumb { 
+                -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; 
+                background: #fff; cursor: pointer; 
+                box-shadow: 0 2px 6px rgba(0,0,0,0.6); 
+                transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s; 
+                border: 2px solid rgba(0,0,0,0.2); 
+            }
+            .ypp-vcp-slider::-webkit-slider-thumb:hover { 
+                transform: scale(1.3); 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 0 8px rgba(255,255,255,0.5); 
+            }
+            
+            .ypp-adj-copy-paste { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .ypp-adj-cp-btn { 
+                flex:1; padding: 6px 8px; border-radius: 8px; 
+                border: 1px solid rgba(255,255,255,0.15); 
+                background: rgba(255,255,255,0.05); 
+                color: rgba(255,255,255,0.8); font-size: 9.5px; font-weight: 600; 
+                cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; 
+                transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); 
+                backdrop-filter: blur(8px);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.1);
+            }
+            .ypp-adj-cp-btn:hover { 
+                background: rgba(255,255,255,0.15); color: #fff; 
+                border-color: rgba(255,255,255,0.3);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 10px rgba(255,255,255,0.2), inset 0 1px 1px rgba(255,255,255,0.2);
+            }
+            .ypp-adj-cp-btn:active { transform: translateY(1px) scale(0.96); }
+        `);
+
+        // ── Global Intensity ──
         const intensitySection = document.createElement('div');
-        intensitySection.className = 'ypp-intensity-section';
         Object.assign(intensitySection.style, {
-            padding: '10px 16px 12px',
+            padding: '10px 14px 12px',
             borderBottom: '1px solid rgba(255,255,255,0.07)',
-            background: 'rgba(255,255,255,0.03)'
+            background: 'rgba(255,255,255,0.02)'
         });
-        const intHeader = document.createElement('div');
-        Object.assign(intHeader.style, {
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-            marginBottom: '8px'
-        });
-        intHeader.innerHTML = `
-            <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                Global Intensity
-            </span>
-            <span id="ypp-int-val" style="color:#ffffff;font-weight:800;font-size:11px;background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:20px;">${ctx.filterIntensity}%</span>
+        intensitySection.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:6px;letter-spacing:0.6px;text-transform:uppercase;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                    Global Intensity
+                </span>
+                <span id="ypp-int-val" style="color:#fff;font-weight:800;font-size:10px;background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:20px;">${ctx.filterIntensity}%</span>
+            </div>
         `;
-        intensitySection.appendChild(intHeader);
         const intSlider = document.createElement('input');
-        intSlider.type = 'range';
-        intSlider.className = 'ypp-vcp-slider';
-        intSlider.min = '0';
-        intSlider.max = '100';
+        intSlider.type = 'range'; intSlider.className = 'ypp-vcp-slider';
+        intSlider.min = '0'; intSlider.max = '100';
         intSlider.value = ctx.filterIntensity !== undefined ? ctx.filterIntensity : 100;
-        intSlider.style.cssText = 'width:100%;-webkit-appearance:none;height:4px;border-radius:4px;background:rgba(255,255,255,0.15);outline:none;cursor:pointer;';
+        const updateIntTrack = (v) => {
+            intSlider.style.background = `linear-gradient(to right, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.6) ${v}%, rgba(255,255,255,0.1) ${v}%)`;
+        };
+        updateIntTrack(intSlider.value);
         intSlider.oninput = (e) => {
             ctx.filterIntensity = Number(e.target.value);
             intensitySection.querySelector('#ypp-int-val').textContent = ctx.filterIntensity + '%';
+            updateIntTrack(e.target.value);
             ctx._applyComputedFilter(video);
             VideoFiltersUI.saveFilterSettings(ctx);
         };
         intensitySection.appendChild(intSlider);
         wrap.appendChild(intensitySection);
 
-        // Core Adjustments — SVG icons, no emojis
-        const SVG = {
-            brightness: `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0zM7.05 18.36l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0z"/></svg>`,
-            contrast:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"/></svg>`,
-            saturate:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`,
-            hueRotate:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`,
-            dehaze:     `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>`,
-            clarity:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>`,
-            sharpness:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>`,
-            grain:      `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM11 7h2v2h-2zm0 4h2v2h-2zm0 4h2v2h-2zm-4-8h2v2H7zm0 4h2v2H7zm0 4h2v2H7zm8-8h2v2h-2zm0 4h2v2h-2zm0 4h2v2h-2z"/></svg>`,
-            sepia:      `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5S15.01 22 17.5 22s4.5-2.01 4.5-4.5S19.99 13 17.5 13zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg>`,
-            grayscale:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>`,
-            invert:     `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11 1L1 11l10 10L21 11 11 1zm0 17.17L3.83 11 11 3.83V18.17z"/></svg>`,
-            blur:       `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 13c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0 4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0-8c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-3 5.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3-7c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0-4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0 8c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm3-6c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg>`,
-            opacity:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`,
-            temperature:`<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15 13V5c0-1.66-1.34-3-3-3S9 3.34 9 5v8c-1.21.91-2 2.37-2 4 0 2.76 2.24 5 5 5s5-2.24 5-5c0-1.63-.79-3.09-2-4zm-3 7c-1.65 0-3-1.35-3-3 0-1.3.84-2.4 2-2.82V5c0-.55.45-1 1-1s1 .45 1 1v9.18c1.16.42 2 1.52 2 2.82 0 1.65-1.35 3-3 3z"/></svg>`,
-            vibrance:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>`,
-            highlights: `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>`,
-            shadows:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 21h20L12 3zm0 3.99L19.53 19H4.47L12 6.99z"/></svg>`,
-            vignette:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>`
+        // ── Copy / Paste Buttons ──
+        const cpRow = document.createElement('div');
+        cpRow.className = 'ypp-adj-copy-paste';
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'ypp-adj-cp-btn';
+        copyBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy Settings`;
+        copyBtn.onclick = () => {
+            const data = JSON.stringify({ adjustments: ctx.filterAdjustments, intensity: ctx.filterIntensity, filterIndex: ctx.currentFilterIndex }, null, 2);
+            navigator.clipboard?.writeText(data).then(() => {
+                copyBtn.textContent = '✓ Copied!';
+                setTimeout(() => { copyBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copy Settings`; }, 1500);
+            });
         };
-        const configs = [
-            { id: 'brightness',  label: 'Brightness',  svgKey: 'brightness',  min: 0,   max: 200, def: 100, unit: '%' },
-            { id: 'contrast',    label: 'Contrast',    svgKey: 'contrast',    min: 0,   max: 200, def: 100, unit: '%' },
-            { id: 'saturate',    label: 'Saturation',  svgKey: 'saturate',    min: 0,   max: 300, def: 100, unit: '%' },
-            { id: 'temperature', label: 'Temperature', svgKey: 'temperature', min: -100,max: 100, def: 0,   unit: 'K' },
-            { id: 'vibrance',    label: 'Vibrance',    svgKey: 'vibrance',    min: 0,   max: 200, def: 100, unit: '%' },
-            { id: 'highlights',  label: 'Highlights',  svgKey: 'highlights',  min: -100,max: 100, def: 0,   unit: '%' },
-            { id: 'shadows',     label: 'Shadows',     svgKey: 'shadows',     min: -100,max: 100, def: 0,   unit: '%' },
-            { id: 'hueRotate',   label: 'Hue Rotate',  svgKey: 'hueRotate',   min: 0,   max: 360, def: 0,   unit: '°' },
-            { id: 'dehaze',      label: 'Dehaze',      svgKey: 'dehaze',      min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'clarity',     label: 'Clarity',     svgKey: 'clarity',     min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'sharpness',   label: 'Sharpness',   svgKey: 'sharpness',   min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'vignette',    label: 'Vignette',    svgKey: 'vignette',    min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'grain',       label: 'Film Grain',  svgKey: 'grain',       min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'sepia',       label: 'Sepia',       svgKey: 'sepia',       min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'grayscale',   label: 'Grayscale',   svgKey: 'grayscale',   min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'invert',      label: 'Invert',      svgKey: 'invert',      min: 0,   max: 100, def: 0,   unit: '%' },
-            { id: 'blur',        label: 'Blur',        svgKey: 'blur',        min: 0,   max: 20,  def: 0,   unit: 'px' },
-            { id: 'opacity',     label: 'Opacity',     svgKey: 'opacity',     min: 0,   max: 100, def: 100, unit: '%' }
+        const pasteBtn = document.createElement('button');
+        pasteBtn.className = 'ypp-adj-cp-btn';
+        pasteBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg> Paste Settings`;
+        pasteBtn.onclick = async () => {
+            try {
+                const text = await navigator.clipboard?.readText();
+                const parsed = JSON.parse(text);
+                if (parsed.adjustments) {
+                    Object.assign(ctx.filterAdjustments, parsed.adjustments);
+                    if (parsed.intensity !== undefined) ctx.filterIntensity = parsed.intensity;
+                    ctx._applyComputedFilter(video);
+                    VideoFiltersUI.saveFilterSettings(ctx);
+                    // Rebuild the tab to show new values
+                    const tab = wrap.closest('[data-tab-content]') || wrap.parentElement;
+                    wrap.remove();
+                    const newAdj = VideoFiltersUI.buildAdjustTab(ctx, video);
+                    tab?.appendChild(newAdj);
+                    pasteBtn.textContent = '✓ Applied!';
+                }
+            } catch { pasteBtn.textContent = '✗ Invalid'; }
+            setTimeout(() => { pasteBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg> Paste Settings`; }, 2000);
+        };
+        cpRow.appendChild(copyBtn);
+        cpRow.appendChild(pasteBtn);
+        wrap.appendChild(cpRow);
+
+        // ── SVG icon map ──
+        const SVG = {
+            brightness: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg>`,
+            contrast:   `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"/></svg>`,
+            saturate:   `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`,
+            hueRotate:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>`,
+            dehaze:     `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>`,
+            clarity:    `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z"/></svg>`,
+            sharpness:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>`,
+            grain:      `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>`,
+            sepia:      `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84z"/></svg>`,
+            grayscale:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2z"/></svg>`,
+            invert:     `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M11 1L1 11l10 10L21 11 11 1zm0 17.17L3.83 11 11 3.83V18.17z"/></svg>`,
+            blur:       `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M6 13c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-3 5.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>`,
+            opacity:    `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>`,
+            temperature:`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M15 13V5c0-1.66-1.34-3-3-3S9 3.34 9 5v8c-1.21.91-2 2.37-2 4 0 2.76 2.24 5 5 5s5-2.24 5-5c0-1.63-.79-3.09-2-4z"/></svg>`,
+            vibrance:   `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4z"/></svg>`,
+            highlights: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>`,
+            shadows:    `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 21h20L12 3zm0 3.99L19.53 19H4.47L12 6.99z"/></svg>`,
+            vignette:   `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>`,
+            exposure:   `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zM11 9h2v2h2v2h-2v2h-2v-2H9v-2h2V9zM3 5.27L4.28 4 20 19.72 18.73 21l-2.83-2.83C14.68 19.3 13.39 20 12 20c-4.42 0-8-3.58-8-8 0-1.39.7-2.68 1.83-3.9L3 5.27z"/></svg>`,
+            tint:       `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10m0-2a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8z"/></svg>`,
+            fade:       `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3H3v18h2V3zm4 0v18h2V3H9zm4 0v18h2V3h-2zm4 0v18h2V3h-2z"/></svg>`,
+            noiseReduce:`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`,
+        };
+
+        // ── Section definitions ──
+        const SECTIONS = [
+            {
+                id: 'exposure', label: '🌅 Exposure', open: true,
+                sliders: [
+                    { id: 'exposure',    label: 'Exposure',    svgKey: 'exposure',    min: -100, max: 100, def: 0,   unit: '' },
+                    { id: 'brightness',  label: 'Brightness',  svgKey: 'brightness',  min: 0,    max: 200, def: 100, unit: '%' },
+                    { id: 'contrast',    label: 'Contrast',    svgKey: 'contrast',    min: 0,    max: 200, def: 100, unit: '%' },
+                    { id: 'highlights',  label: 'Highlights',  svgKey: 'highlights',  min: -100, max: 100, def: 0,   unit: '%' },
+                    { id: 'shadows',     label: 'Shadows',     svgKey: 'shadows',     min: -100, max: 100, def: 0,   unit: '%' },
+                    { id: 'fade',        label: 'Fade',        svgKey: 'fade',        min: 0,    max: 100, def: 0,   unit: '%' },
+                ]
+            },
+            {
+                id: 'color', label: '🎨 Color', open: true,
+                sliders: [
+                    { id: 'saturate',    label: 'Saturation',  svgKey: 'saturate',    min: 0,   max: 300, def: 100, unit: '%' },
+                    { id: 'vibrance',    label: 'Vibrance',    svgKey: 'vibrance',    min: 0,   max: 200, def: 100, unit: '%' },
+                    { id: 'temperature', label: 'Temperature', svgKey: 'temperature', min: -100,max: 100, def: 0,   unit: 'K' },
+                    { id: 'tint',        label: 'Tint',        svgKey: 'tint',        min: -100,max: 100, def: 0,   unit: '' },
+                    { id: 'hueRotate',   label: 'Hue Rotate',  svgKey: 'hueRotate',   min: 0,   max: 360, def: 0,   unit: '°' },
+                    { id: 'sepia',       label: 'Sepia',       svgKey: 'sepia',       min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'grayscale',   label: 'Grayscale',   svgKey: 'grayscale',   min: 0,   max: 100, def: 0,   unit: '%' },
+                ]
+            },
+            {
+                id: 'effects', label: '✨ Effects', open: false,
+                sliders: [
+                    { id: 'clarity',      label: 'Clarity',        svgKey: 'clarity',     min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'dehaze',       label: 'Dehaze',         svgKey: 'dehaze',      min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'sharpness',    label: 'Sharpness',      svgKey: 'sharpness',   min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'noiseReduction',label:'Noise Reduce',   svgKey: 'noiseReduce', min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'blur',         label: 'Blur',           svgKey: 'blur',        min: 0,   max: 20,  def: 0,   unit: 'px' },
+                    { id: 'vignette',     label: 'Vignette',       svgKey: 'vignette',    min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'grain',        label: 'Film Grain',     svgKey: 'grain',       min: 0,   max: 100, def: 0,   unit: '%' },
+                ]
+            },
+            {
+                id: 'other', label: '🔧 Other', open: false,
+                sliders: [
+                    { id: 'invert',      label: 'Invert',          svgKey: 'invert',      min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'opacity',     label: 'Opacity',         svgKey: 'opacity',     min: 0,   max: 100, def: 100, unit: '%' },
+                ]
+            }
         ];
+
         // Ensure new adjustment keys are initialized
-        ['temperature','vibrance','highlights','shadows','vignette'].forEach(k => {
+        ['temperature','vibrance','highlights','shadows','vignette','exposure','tint','fade','noiseReduction'].forEach(k => {
             if (ctx.filterAdjustments[k] === undefined) {
                 ctx.filterAdjustments[k] = (k === 'vibrance') ? 100 : 0;
             }
         });
 
-        const grid = document.createElement('div');
-        grid.className = 'ypp-adjust-grid';
+        // Helper: compute track fill %
+        const trackPct = (val, min, max) => ((val - min) / (max - min)) * 100;
 
-        configs.forEach(cfg => {
-            const card = document.createElement('div');
-            card.className = 'ypp-adjust-card';
+        // Helper: is this value non-default?
+        const isModified = (cfg) => {
+            const v = ctx.filterAdjustments[cfg.id] !== undefined ? ctx.filterAdjustments[cfg.id] : cfg.def;
+            return Math.abs(v - cfg.def) > 0.01;
+        };
 
-            const headerRow = document.createElement('div');
-            headerRow.className = 'ypp-adjust-card-header';
+        SECTIONS.forEach(section => {
+            const sec = document.createElement('div');
+            sec.className = `ypp-adj-section${section.open ? ' open' : ''}`;
 
-            const title = document.createElement('div');
-            title.className = 'ypp-adjust-card-title';
-            title.innerHTML = `<span style="opacity:0.7;display:flex;">${SVG[cfg.svgKey] || ''}</span><span>${cfg.label}</span>`;
+            // Header
+            const hdr = document.createElement('div');
+            hdr.className = 'ypp-adj-section-header';
+            const dot = document.createElement('div');
+            dot.className = 'ypp-adj-active-dot';
+            const anyModified = section.sliders.some(isModified);
+            if (anyModified) dot.classList.add('visible');
+            hdr.innerHTML = `
+                <div class="ypp-adj-section-title">
+                    <span>${section.label}</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;">
+                    <span class="ypp-adj-chevron">▼</span>
+                </div>
+            `;
+            hdr.querySelector('.ypp-adj-section-title').appendChild(dot);
+            hdr.onclick = () => { sec.classList.toggle('open'); };
 
-            const valWrap = document.createElement('div');
-            valWrap.style.display = 'flex';
-            valWrap.style.alignItems = 'center';
-            valWrap.style.gap = '6px';
+            // Body (grid)
+            const body = document.createElement('div');
+            body.className = 'ypp-adj-section-body';
 
-            const currentValue = ctx.filterAdjustments[cfg.id] !== undefined ? ctx.filterAdjustments[cfg.id] : cfg.def;
+            section.sliders.forEach(cfg => {
+                const currentValue = ctx.filterAdjustments[cfg.id] !== undefined ? ctx.filterAdjustments[cfg.id] : cfg.def;
+                const modified = Math.abs(currentValue - cfg.def) > 0.01;
 
-            const val = document.createElement('div');
-            val.className = 'ypp-adjust-card-val';
-            val.textContent = currentValue + cfg.unit;
+                const card = document.createElement('div');
+                card.className = `ypp-adjust-card${modified ? ' modified' : ''}`;
 
-            const resetBtn = document.createElement('button');
-            resetBtn.innerHTML = '↺';
-            Object.assign(resetBtn.style, {
-                background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.5)',
-                cursor: 'pointer', fontSize: '14px', padding: '0 4px'
+                const headerRow = document.createElement('div');
+                headerRow.className = 'ypp-adjust-card-header';
+
+                const titleEl = document.createElement('div');
+                titleEl.className = 'ypp-adjust-card-title';
+                titleEl.innerHTML = `<span style="opacity:0.65;display:flex;">${SVG[cfg.svgKey] || ''}</span><span>${cfg.label}</span>`;
+
+                const valWrap = document.createElement('div');
+                valWrap.style.cssText = 'display:flex;align-items:center;gap:4px;';
+
+                const val = document.createElement('div');
+                val.className = 'ypp-adjust-card-val';
+                val.textContent = currentValue + cfg.unit;
+
+                const resetBtn = document.createElement('button');
+                resetBtn.className = 'ypp-adj-reset';
+                resetBtn.innerHTML = '↺';
+                resetBtn.title = `Reset ${cfg.label}`;
+
+                const slider = document.createElement('input');
+                slider.type = 'range';
+                slider.className = 'ypp-vcp-slider';
+                slider.min = cfg.min; slider.max = cfg.max;
+                slider.value = currentValue;
+
+                // Live track fill
+                const updateTrack = (v) => {
+                    const pct = trackPct(Number(v), cfg.min, cfg.max);
+                    const color = modified || Math.abs(Number(v) - cfg.def) > 0.01
+                        ? 'rgba(62,166,255,0.8)'
+                        : 'rgba(255,255,255,0.55)';
+                    slider.style.background = `linear-gradient(to right, ${color} 0%, ${color} ${pct}%, rgba(255,255,255,0.1) ${pct}%)`;
+                };
+                updateTrack(currentValue);
+
+                slider.oninput = (e) => {
+                    const v = Number(e.target.value);
+                    ctx.filterAdjustments[cfg.id] = v;
+                    val.textContent = v + cfg.unit;
+                    const nowModified = Math.abs(v - cfg.def) > 0.01;
+                    card.classList.toggle('modified', nowModified);
+                    updateTrack(v);
+                    // Update section dot
+                    dot.classList.toggle('visible', section.sliders.some(s => {
+                        const sv = ctx.filterAdjustments[s.id] !== undefined ? ctx.filterAdjustments[s.id] : s.def;
+                        return Math.abs(sv - s.def) > 0.01;
+                    }));
+                    ctx._applyComputedFilter(video);
+                    VideoFiltersUI.saveFilterSettings(ctx);
+                };
+
+                resetBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    ctx.filterAdjustments[cfg.id] = cfg.def;
+                    slider.value = cfg.def;
+                    val.textContent = cfg.def + cfg.unit;
+                    card.classList.remove('modified');
+                    updateTrack(cfg.def);
+                    dot.classList.toggle('visible', section.sliders.some(s => {
+                        const sv = ctx.filterAdjustments[s.id] !== undefined ? ctx.filterAdjustments[s.id] : s.def;
+                        return Math.abs(sv - s.def) > 0.01;
+                    }));
+                    ctx._applyComputedFilter(video);
+                    VideoFiltersUI.saveFilterSettings(ctx);
+                };
+
+                valWrap.appendChild(val);
+                valWrap.appendChild(resetBtn);
+                headerRow.appendChild(titleEl);
+                headerRow.appendChild(valWrap);
+                card.appendChild(headerRow);
+                card.appendChild(slider);
+                body.appendChild(card);
             });
-            resetBtn.title = `Reset ${cfg.label}`;
-            resetBtn.onclick = (e) => {
-                e.stopPropagation();
-                ctx.filterAdjustments[cfg.id] = cfg.def;
-                slider.value = cfg.def;
-                val.textContent = cfg.def + cfg.unit;
-                ctx._applyComputedFilter(video);
-                VideoFiltersUI.saveFilterSettings(ctx);
-            };
-            resetBtn.onmouseenter = () => resetBtn.style.color = '#fff';
-            resetBtn.onmouseleave = () => resetBtn.style.color = 'rgba(255,255,255,0.5)';
 
-            valWrap.appendChild(val);
-            valWrap.appendChild(resetBtn);
-            headerRow.appendChild(title);
-            headerRow.appendChild(valWrap);
-
-            const slider = document.createElement('input');
-            slider.type = 'range';
-            slider.className = 'ypp-vcp-slider';
-            slider.min = cfg.min; slider.max = cfg.max;
-            slider.value = currentValue;
-            slider.oninput = (e) => {
-                const v = Number(e.target.value);
-                ctx.filterAdjustments[cfg.id] = v;
-                val.textContent = v + cfg.unit;
-                ctx._applyComputedFilter(video);
-                VideoFiltersUI.saveFilterSettings(ctx);
-            };
-
-            card.appendChild(headerRow);
-            card.appendChild(slider);
-            grid.appendChild(card);
+            sec.appendChild(hdr);
+            sec.appendChild(body);
+            wrap.appendChild(sec);
         });
 
-        wrap.appendChild(grid);
         return wrap;
     }
+
 
     static _injectStyle(id, css) {
         if (!document.getElementById(id)) {

@@ -62,17 +62,40 @@ export class VideoFiltersOverlay {
             `;
             overlay.style.boxShadow = 'inset 0 0 100px rgba(0, 255, 0, 0.1)';
             overlay.style.mixBlendMode = 'multiply';
-        } else if (type === 'crt') {
+        } else if (type && type.startsWith('crt')) {
             this.injectCRTSVGFilter();
-            overlay.style.backgroundImage = `
-                radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%),
-                repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),
-                repeating-linear-gradient(90deg, rgba(255,40,40,0.1) 0px, rgba(255,40,40,0.1) 1px, rgba(40,255,40,0.1) 1px, rgba(40,255,40,0.1) 2px, rgba(40,40,255,0.1) 2px, rgba(40,40,255,0.1) 3px, transparent 3px, transparent 3px)
-            `;
-            overlay.style.backgroundSize = '100% 100%, 100% 3px, 3px 100%';
-            overlay.style.boxShadow = 'inset 0 0 80px rgba(0,0,0,0.6)';
-            overlay.style.borderRadius = '6px';
+            
+            let vignette = 'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%),';
+            let scanlines = 'repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),';
+            let rgbMask = 'repeating-linear-gradient(90deg, rgba(255,40,40,0.1) 0px, rgba(255,40,40,0.1) 1px, rgba(40,255,40,0.1) 1px, rgba(40,255,40,0.1) 2px, rgba(40,40,255,0.1) 2px, rgba(40,40,255,0.1) 3px, transparent 3px, transparent 3px)';
+            let boxShadow = 'inset 0 0 80px rgba(0,0,0,0.6)';
+            
+            if (type === 'crt-light') {
+                vignette = '';
+                scanlines = 'repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 3px),';
+                rgbMask = 'repeating-linear-gradient(90deg, rgba(255,40,40,0.05) 0px, rgba(255,40,40,0.05) 1px, rgba(40,255,40,0.05) 1px, rgba(40,255,40,0.05) 2px, rgba(40,40,255,0.05) 2px, rgba(40,40,255,0.05) 3px, transparent 3px, transparent 3px)';
+                boxShadow = 'none';
+            } else if (type === 'crt-arcade') {
+                vignette = 'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 75%, rgba(0,0,0,0.2) 100%),';
+                scanlines = 'repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 3px),';
+                rgbMask = 'repeating-linear-gradient(90deg, rgba(255,40,40,0.15) 0px, rgba(255,40,40,0.15) 1px, rgba(40,255,40,0.15) 1px, rgba(40,255,40,0.15) 2px, rgba(40,40,255,0.15) 2px, rgba(40,40,255,0.15) 3px, transparent 3px, transparent 3px)';
+                boxShadow = 'inset 0 0 40px rgba(0,0,0,0.4)';
+            } else if (type === 'crt-green') {
+                rgbMask = 'repeating-linear-gradient(90deg, rgba(0,255,0,0.15) 0px, rgba(0,255,0,0.15) 1px, transparent 1px, transparent 3px)';
+            } else if (type === 'crt-amber') {
+                rgbMask = 'repeating-linear-gradient(90deg, rgba(255,176,0,0.15) 0px, rgba(255,176,0,0.15) 1px, transparent 1px, transparent 3px)';
+            }
+
+            overlay.style.backgroundImage = `${vignette}\n${scanlines}\n${rgbMask}`;
+            overlay.style.backgroundSize = vignette ? '100% 100%, 100% 3px, 3px 100%' : '100% 3px, 3px 100%';
+            overlay.style.boxShadow = boxShadow;
+            overlay.style.borderRadius = vignette ? '6px' : '0px';
             overlay.style.animation = 'ypp-crt-flicker 3s ease-in-out infinite';
+        } else if (type === 'halftone') {
+            overlay.style.backgroundImage = `radial-gradient(circle, #000 1px, transparent 1.5px)`;
+            overlay.style.backgroundSize = '4px 4px';
+            overlay.style.opacity = '0.25';
+            overlay.style.mixBlendMode = 'multiply';
         } else if (type === 'vhs') {
             overlay.style.backgroundImage = `
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 2px, transparent 2px, transparent 5px)
@@ -91,6 +114,37 @@ export class VideoFiltersOverlay {
                 radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.65) 100%)
             `;
             overlay.style.animation = 'ypp-grain 0.1s steps(1) infinite';
+        } else if (type === 'security-cam') {
+            overlay.style.backgroundImage = `
+                repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 2px, transparent 2px, transparent 4px)
+            `;
+            overlay.style.boxShadow = 'inset 0 0 60px rgba(0,0,0,0.6)';
+            overlay.style.mixBlendMode = 'multiply';
+        } else if (type === 'gameboy') {
+            overlay.style.backgroundImage = `
+                repeating-linear-gradient(0deg, rgba(15, 56, 15, 0.25) 0px, rgba(15, 56, 15, 0.25) 1px, transparent 1px, transparent 3px),
+                repeating-linear-gradient(90deg, rgba(15, 56, 15, 0.1) 0px, rgba(15, 56, 15, 0.1) 1px, transparent 1px, transparent 3px)
+            `;
+            overlay.style.boxShadow = 'inset 0 0 80px rgba(15, 56, 15, 0.5)';
+        } else if (type === 'daguerreotype') {
+            overlay.style.backgroundImage = `
+                radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.75) 100%)
+            `;
+            overlay.style.animation = 'ypp-grain 0.08s steps(1) infinite, ypp-daguerreotype-flicker 5s ease-in-out infinite';
+        } else if (type === 'chroma-bleed') {
+            const band = document.createElement('div');
+            Object.assign(band.style, {
+                position: 'absolute', left: '0', width: '100%', height: '3px',
+                background: 'linear-gradient(90deg, rgba(255,0,128,0.4), rgba(0,255,255,0.4))',
+                filter: 'blur(2px)',
+                animation: 'ypp-chroma-band 6s linear infinite',
+                pointerEvents: 'none'
+            });
+            overlay.appendChild(band);
+            overlay.style.backgroundImage = `
+                repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px)
+            `;
+            overlay.style.mixBlendMode = 'multiply';
         }
     }
 
@@ -224,6 +278,172 @@ export class VideoFiltersOverlay {
                     <feBlend mode="screen" in="red-only" in2="green-only" result="red-green"/>
                     <feBlend mode="screen" in="red-green" in2="blue-only"/>
                 </filter>
+                <filter id="ypp-fx-sketch" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feGaussianBlur in="gray" stdDeviation="4" result="blur"/>
+                    <feComponentTransfer in="blur" result="invertedBlur">
+                        <feFuncR type="linear" slope="-1" intercept="1"/>
+                        <feFuncG type="linear" slope="-1" intercept="1"/>
+                        <feFuncB type="linear" slope="-1" intercept="1"/>
+                    </feComponentTransfer>
+                    <feBlend mode="color-dodge" in="invertedBlur" in2="gray" result="sketch"/>
+                    <feComponentTransfer in="sketch">
+                        <feFuncR type="linear" slope="1.2" intercept="-0.2"/>
+                        <feFuncG type="linear" slope="1.2" intercept="-0.2"/>
+                        <feFuncB type="linear" slope="1.2" intercept="-0.2"/>
+                    </feComponentTransfer>
+                </filter>
+                <filter id="ypp-fx-colored-pencil" color-interpolation-filters="sRGB">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                    <feComponentTransfer in="blur" result="invertedBlur">
+                        <feFuncR type="linear" slope="-1" intercept="1"/>
+                        <feFuncG type="linear" slope="-1" intercept="1"/>
+                        <feFuncB type="linear" slope="-1" intercept="1"/>
+                    </feComponentTransfer>
+                    <feBlend mode="color-dodge" in="invertedBlur" in2="SourceGraphic" result="sketch"/>
+                    <feComponentTransfer in="sketch">
+                        <feFuncR type="linear" slope="1.2" intercept="-0.2"/>
+                        <feFuncG type="linear" slope="1.2" intercept="-0.2"/>
+                        <feFuncB type="linear" slope="1.2" intercept="-0.2"/>
+                    </feComponentTransfer>
+                </filter>
+                <filter id="ypp-fx-pop-art" color-interpolation-filters="sRGB">
+                    <feComponentTransfer>
+                        <feFuncR type="discrete" tableValues="0.1 0.4 0.8 1"/>
+                        <feFuncG type="discrete" tableValues="0.1 0.4 0.8 1"/>
+                        <feFuncB type="discrete" tableValues="0.1 0.4 0.8 1"/>
+                    </feComponentTransfer>
+                    <feColorMatrix type="matrix" values="1 0 0 0 0.1  0 1 0 0 0.1  0 0 1 0 0.1  0 0 0 1 0"/>
+                </filter>
+                <filter id="ypp-fx-8bit" color-interpolation-filters="sRGB">
+                    <feComponentTransfer>
+                        <feFuncR type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
+                        <feFuncG type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
+                        <feFuncB type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
+                    </feComponentTransfer>
+                </filter>
+                <filter id="ypp-fx-manga-bw" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feComponentTransfer in="gray" result="highContrast">
+                        <feFuncR type="discrete" tableValues="0 1"/>
+                        <feFuncG type="discrete" tableValues="0 1"/>
+                        <feFuncB type="discrete" tableValues="0 1"/>
+                    </feComponentTransfer>
+                    <feConvolveMatrix order="3 3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" in="gray" result="edge"/>
+                    <feComponentTransfer in="edge" result="invertedEdge">
+                        <feFuncR type="linear" slope="-1" intercept="1"/>
+                        <feFuncG type="linear" slope="-1" intercept="1"/>
+                        <feFuncB type="linear" slope="-1" intercept="1"/>
+                    </feComponentTransfer>
+                    <feBlend mode="multiply" in="highContrast" in2="invertedEdge"/>
+                </filter>
+                <filter id="ypp-fx-neon-glow" color-interpolation-filters="sRGB">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feComponentTransfer in="blur" result="glow">
+                        <feFuncR type="linear" slope="1.5"/>
+                        <feFuncG type="linear" slope="1.5"/>
+                        <feFuncB type="linear" slope="1.5"/>
+                    </feComponentTransfer>
+                    <feBlend mode="screen" in="glow" in2="SourceGraphic"/>
+                </filter>
+                <filter id="ypp-fx-predator" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feComponentTransfer in="gray">
+                        <feFuncR type="table" tableValues="0 0 0.5 1 1 1 0.5"/>
+                        <feFuncG type="table" tableValues="0 0 1 1 0 0 0"/>
+                        <feFuncB type="table" tableValues="1 1 0 0 0 0 0"/>
+                    </feComponentTransfer>
+                </filter>
+
+                <!-- V4: Gameboy DMG-01 — strict 4-shade green palette -->
+                <filter id="ypp-fx-gameboy" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feComponentTransfer in="gray">
+                        <feFuncR type="discrete" tableValues="0.059 0.188 0.306 0.616"/>
+                        <feFuncG type="discrete" tableValues="0.220 0.392 0.545 0.749"/>
+                        <feFuncB type="discrete" tableValues="0.059 0.188 0.306 0.616"/>
+                    </feComponentTransfer>
+                </filter>
+
+                <!-- V4: Aerochrome / Kodak Infrared Film -->
+                <filter id="ypp-fx-aerochrome" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix"
+                        values="0   1   0   0   0
+                                0   0   1   0   0
+                               -0.5 0  0.2  0   0.1
+                                0   0   0   1   0"/>
+                </filter>
+
+                <!-- V4: Sin City — full B&W except vivid reds -->
+                <filter id="ypp-fx-sin-city" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feColorMatrix in="SourceGraphic" type="matrix"
+                        values="1  -0.5 -0.5 0 0
+                                0   0    0  0 0
+                                0   0    0  0 0
+                                0   0    0  1 0" result="redChannel"/>
+                    <feComposite in="SourceGraphic" in2="redChannel" operator="in" result="redOnly"/>
+                    <feBlend in="gray" in2="redOnly" mode="screen"/>
+                </filter>
+
+                <!-- V4: Watercolor — soft wet-paint look -->
+                <filter id="ypp-fx-watercolor" color-interpolation-filters="sRGB">
+                    <feGaussianBlur stdDeviation="2.5" result="blurred"/>
+                    <feComponentTransfer in="blurred" result="boosted">
+                        <feFuncR type="linear" slope="1.1" intercept="-0.05"/>
+                        <feFuncG type="linear" slope="1.1" intercept="-0.05"/>
+                        <feFuncB type="linear" slope="1.1" intercept="-0.05"/>
+                    </feComponentTransfer>
+                    <feConvolveMatrix order="3 3" kernelMatrix="0 -0.3 0 -0.3 2.2 -0.3 0 -0.3 0" in="boosted"/>
+                </filter>
+
+                <!-- V4: Cyberpunk 2077 — neon cyan/magenta split-tone -->
+                <filter id="ypp-fx-cyberpunk" color-interpolation-filters="sRGB">
+                    <feComponentTransfer>
+                        <feFuncR type="table" tableValues="0.0 0.05 0.3 0.75 1.0"/>
+                        <feFuncG type="table" tableValues="0.0 0.1  0.4 0.8  1.0"/>
+                        <feFuncB type="table" tableValues="0.2 0.5  0.8 0.9  1.0"/>
+                    </feComponentTransfer>
+                </filter>
+
+                <!-- V4: VHS Pro — heavy chroma lateral bleed -->
+                <filter id="ypp-fx-vhs-pro" color-interpolation-filters="sRGB">
+                    <feOffset in="SourceGraphic" dx="5" dy="0" result="rShift"/>
+                    <feOffset in="SourceGraphic" dx="-5" dy="0" result="bShift"/>
+                    <feColorMatrix in="rShift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="rOnly"/>
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gOnly"/>
+                    <feColorMatrix in="bShift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="bOnly"/>
+                    <feBlend mode="screen" in="rOnly" in2="gOnly" result="rg"/>
+                    <feBlend mode="screen" in="rg" in2="bOnly"/>
+                </filter>
+
+                <!-- V4: Cross Process (E6 in C-41) — film cross-processing -->
+                <filter id="ypp-fx-cross-process" color-interpolation-filters="sRGB">
+                    <feComponentTransfer>
+                        <feFuncR type="table" tableValues="0.0 0.05 0.1 0.6 1.2"/>
+                        <feFuncG type="table" tableValues="0.0 0.1  0.3 0.7 1.0"/>
+                        <feFuncB type="table" tableValues="0.2 0.6  0.9 0.8 0.6"/>
+                    </feComponentTransfer>
+                </filter>
+
+                <!-- V4: Duotone Teal-Orange — cinematic grade -->
+                <filter id="ypp-fx-duotone-teal" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feComponentTransfer in="gray">
+                        <feFuncR type="table" tableValues="0.0 0.8 1.0"/>
+                        <feFuncG type="table" tableValues="0.2 0.5 0.7"/>
+                        <feFuncB type="table" tableValues="0.3 0.1 0.0"/>
+                    </feComponentTransfer>
+                </filter>
+
+                <!-- V4: Golden Sunset LUT -->
+                <filter id="ypp-fx-golden-lut" color-interpolation-filters="sRGB">
+                    <feComponentTransfer>
+                        <feFuncR type="table" tableValues="0.05 0.4 0.9 1.1"/>
+                        <feFuncG type="table" tableValues="0.02 0.3 0.7 0.9"/>
+                        <feFuncB type="table" tableValues="0.0  0.1 0.2 0.4"/>
+                    </feComponentTransfer>
+                </filter>
             </defs>
         `;
         document.body.appendChild(svg);
@@ -259,6 +479,17 @@ export class VideoFiltersOverlay {
                 80% { background-position: -15% 0%; }
                 90% { background-position: 10% 5%; }
                 100%{ background-position: 5% 0%; }
+            }
+            @keyframes ypp-daguerreotype-flicker {
+                0%, 100% { opacity: 1; }
+                15%       { opacity: 0.96; }
+                40%       { opacity: 1; }
+                70%       { opacity: 0.93; }
+                85%       { opacity: 1; }
+            }
+            @keyframes ypp-chroma-band {
+                0%   { top: -4px; }
+                100% { top: 102%; }
             }
         `;
         document.head.appendChild(style);
