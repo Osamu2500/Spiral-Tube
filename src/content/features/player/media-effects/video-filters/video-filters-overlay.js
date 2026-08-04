@@ -1,233 +1,269 @@
 export class VideoFiltersOverlay {
-    static featureId = 'videoFiltersOverlay';
-    static executionPhase = 'idle';
-    static priority = 999;
+  static featureId = 'videoFiltersOverlay';
+  static executionPhase = 'idle';
+  static priority = 999;
 
+  static applyOverlay(ctx, type, grainAmount = 0) {
+    const container =
+      document.getElementById('movie_player') ||
+      document.querySelector('.html5-video-player') ||
+      document.body;
 
-    static applyOverlay(ctx, type, grainAmount = 0) {
-        const container = document.getElementById('movie_player')
-            || document.querySelector('.html5-video-player')
-            || document.body;
-            
-        if (!container) return;
+    if (!container) return;
 
-        const overlay = this._buildOverlayElement(container);
-        this.injectSpecialEffectsSVG();
-        
-        this._applyOverlayStyles(overlay, ctx, type, grainAmount);
+    const overlay = this._buildOverlayElement(container);
+    this.injectSpecialEffectsSVG();
 
-        container.appendChild(overlay);
-        ctx._filterOverlay = overlay;
-        this.injectOverlayCSS();
+    this._applyOverlayStyles(overlay, ctx, type, grainAmount);
+
+    container.appendChild(overlay);
+    ctx._filterOverlay = overlay;
+    this.injectOverlayCSS();
+  }
+
+  static _buildOverlayElement(container) {
+    const overlay = document.createElement('div');
+    overlay.id = 'ypp-filter-overlay';
+    const isBody = container === document.body;
+
+    Object.assign(overlay.style, {
+      position: isBody ? 'fixed' : 'absolute',
+      top: '0',
+      left: '0',
+      width: isBody ? '100vw' : '100%',
+      height: isBody ? '100vh' : '100%',
+      pointerEvents: 'none',
+      zIndex: isBody ? '2147483640' : '5',
+    });
+
+    return overlay;
+  }
+
+  static _applyOverlayStyles(overlay, ctx, type, grainAmount) {
+    const vignette = ctx.filterAdjustments?.vignette || 0;
+
+    if (vignette > 0) {
+      const spread = vignette * 2.5;
+      const alpha = vignette / 100;
+      overlay.style.boxShadow = `inset 0 0 ${spread}px rgba(0,0,0,${alpha})`;
     }
 
-    static _buildOverlayElement(container) {
-        const overlay = document.createElement('div');
-        overlay.id = 'ypp-filter-overlay';
-        const isBody = container === document.body;
-        
-        Object.assign(overlay.style, {
-            position: isBody ? 'fixed' : 'absolute',
-            top: '0',
-            left: '0',
-            width: isBody ? '100vw' : '100%',
-            height: isBody ? '100vh' : '100%',
-            pointerEvents: 'none',
-            zIndex: isBody ? '2147483640' : '5'
-        });
-        
-        return overlay;
+    if (grainAmount > 0 || type === 'grain_custom') {
+      overlay.style.backgroundImage = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
+      overlay.style.opacity = (grainAmount || 20) / 100;
+      overlay.style.mixBlendMode = 'overlay';
+      overlay.style.pointerEvents = 'none';
     }
 
-    static _applyOverlayStyles(overlay, ctx, type, grainAmount) {
-        const vignette = ctx.filterAdjustments?.vignette || 0;
-        
-        if (vignette > 0) {
-            const spread = vignette * 2.5;
-            const alpha = vignette / 100;
-            overlay.style.boxShadow = `inset 0 0 ${spread}px rgba(0,0,0,${alpha})`;
-        }
-
-        if (grainAmount > 0 || type === 'grain_custom') {
-            overlay.style.backgroundImage = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
-            overlay.style.opacity = (grainAmount || 20) / 100;
-            overlay.style.mixBlendMode = 'overlay';
-            overlay.style.pointerEvents = 'none';
-        }
-
-        if (type === 'nightvision') {
-            overlay.style.backgroundImage = `
+    if (type === 'nightvision') {
+      overlay.style.backgroundImage = `
                 radial-gradient(circle, transparent 40%, rgba(0, 30, 0, 0.8) 100%),
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px)
             `;
-            overlay.style.boxShadow = 'inset 0 0 100px rgba(0, 255, 0, 0.1)';
-            overlay.style.mixBlendMode = 'multiply';
-        } else if (type && type.startsWith('crt')) {
-            this.injectCRTSVGFilter();
-            
-            let vignette = 'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%),';
-            let scanlines = 'repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),';
-            let rgbMask = 'repeating-linear-gradient(90deg, rgba(255,40,40,0.1) 0px, rgba(255,40,40,0.1) 1px, rgba(40,255,40,0.1) 1px, rgba(40,255,40,0.1) 2px, rgba(40,40,255,0.1) 2px, rgba(40,40,255,0.1) 3px, transparent 3px, transparent 3px)';
-            let boxShadow = 'inset 0 0 80px rgba(0,0,0,0.6)';
-            
-            if (type === 'crt-light') {
-                vignette = '';
-                scanlines = 'repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 3px),';
-                rgbMask = 'repeating-linear-gradient(90deg, rgba(255,40,40,0.05) 0px, rgba(255,40,40,0.05) 1px, rgba(40,255,40,0.05) 1px, rgba(40,255,40,0.05) 2px, rgba(40,40,255,0.05) 2px, rgba(40,40,255,0.05) 3px, transparent 3px, transparent 3px)';
-                boxShadow = 'none';
-            } else if (type === 'crt-arcade') {
-                vignette = 'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 75%, rgba(0,0,0,0.2) 100%),';
-                scanlines = 'repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 3px),';
-                rgbMask = 'repeating-linear-gradient(90deg, rgba(255,40,40,0.15) 0px, rgba(255,40,40,0.15) 1px, rgba(40,255,40,0.15) 1px, rgba(40,255,40,0.15) 2px, rgba(40,40,255,0.15) 2px, rgba(40,40,255,0.15) 3px, transparent 3px, transparent 3px)';
-                boxShadow = 'inset 0 0 40px rgba(0,0,0,0.4)';
-            } else if (type === 'crt-green') {
-                rgbMask = 'repeating-linear-gradient(90deg, rgba(0,255,0,0.15) 0px, rgba(0,255,0,0.15) 1px, transparent 1px, transparent 3px)';
-            } else if (type === 'crt-amber') {
-                rgbMask = 'repeating-linear-gradient(90deg, rgba(255,176,0,0.15) 0px, rgba(255,176,0,0.15) 1px, transparent 1px, transparent 3px)';
-            }
+      overlay.style.boxShadow = 'inset 0 0 100px rgba(0, 255, 0, 0.1)';
+      overlay.style.mixBlendMode = 'multiply';
+    } else if (type && type.startsWith('crt')) {
+      this.injectCRTSVGFilter();
 
-            overlay.style.backgroundImage = `${vignette}\n${scanlines}\n${rgbMask}`;
-            overlay.style.backgroundSize = vignette ? '100% 100%, 100% 3px, 3px 100%' : '100% 3px, 3px 100%';
-            overlay.style.boxShadow = boxShadow;
-            overlay.style.borderRadius = vignette ? '6px' : '0px';
-            overlay.style.animation = 'ypp-crt-flicker 3s ease-in-out infinite';
-        } else if (type === 'halftone') {
-            overlay.style.backgroundImage = `radial-gradient(circle, #000 1px, transparent 1.5px)`;
-            overlay.style.backgroundSize = '4px 4px';
-            overlay.style.opacity = '0.25';
-            overlay.style.mixBlendMode = 'multiply';
-        } else if (type === 'vhs') {
-            overlay.style.backgroundImage = `
+      let vignette =
+        'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(0,0,0,0.4) 100%),';
+      let scanlines =
+        'repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),';
+      let rgbMask =
+        'repeating-linear-gradient(90deg, rgba(255,40,40,0.1) 0px, rgba(255,40,40,0.1) 1px, rgba(40,255,40,0.1) 1px, rgba(40,255,40,0.1) 2px, rgba(40,40,255,0.1) 2px, rgba(40,40,255,0.1) 3px, transparent 3px, transparent 3px)';
+      let boxShadow = 'inset 0 0 80px rgba(0,0,0,0.6)';
+
+      if (type === 'crt-light') {
+        vignette = '';
+        scanlines =
+          'repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 3px),';
+        rgbMask =
+          'repeating-linear-gradient(90deg, rgba(255,40,40,0.05) 0px, rgba(255,40,40,0.05) 1px, rgba(40,255,40,0.05) 1px, rgba(40,255,40,0.05) 2px, rgba(40,40,255,0.05) 2px, rgba(40,40,255,0.05) 3px, transparent 3px, transparent 3px)';
+        boxShadow = 'none';
+      } else if (type === 'crt-arcade') {
+        vignette =
+          'radial-gradient(ellipse 85% 85% at 50% 50%, transparent 75%, rgba(0,0,0,0.2) 100%),';
+        scanlines =
+          'repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 3px),';
+        rgbMask =
+          'repeating-linear-gradient(90deg, rgba(255,40,40,0.15) 0px, rgba(255,40,40,0.15) 1px, rgba(40,255,40,0.15) 1px, rgba(40,255,40,0.15) 2px, rgba(40,40,255,0.15) 2px, rgba(40,40,255,0.15) 3px, transparent 3px, transparent 3px)';
+        boxShadow = 'inset 0 0 40px rgba(0,0,0,0.4)';
+      } else if (type === 'crt-green') {
+        rgbMask =
+          'repeating-linear-gradient(90deg, rgba(0,255,0,0.15) 0px, rgba(0,255,0,0.15) 1px, transparent 1px, transparent 3px)';
+      } else if (type === 'crt-amber') {
+        rgbMask =
+          'repeating-linear-gradient(90deg, rgba(255,176,0,0.15) 0px, rgba(255,176,0,0.15) 1px, transparent 1px, transparent 3px)';
+      }
+
+      overlay.style.backgroundImage = `${vignette}\n${scanlines}\n${rgbMask}`;
+      overlay.style.backgroundSize = vignette
+        ? '100% 100%, 100% 3px, 3px 100%'
+        : '100% 3px, 3px 100%';
+      overlay.style.boxShadow = boxShadow;
+      overlay.style.borderRadius = vignette ? '6px' : '0px';
+      overlay.style.animation = 'ypp-crt-flicker 3s ease-in-out infinite';
+    } else if (type === 'halftone') {
+      overlay.style.backgroundImage = `radial-gradient(circle, #000 1px, transparent 1.5px)`;
+      overlay.style.backgroundSize = '4px 4px';
+      overlay.style.opacity = '0.25';
+      overlay.style.mixBlendMode = 'multiply';
+    } else if (type === 'vhs') {
+      overlay.style.backgroundImage = `
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 2px, transparent 2px, transparent 5px)
             `;
-            overlay.style.mixBlendMode = 'multiply';
-            const band = document.createElement('div');
-            Object.assign(band.style, {
-                position: 'absolute', left: '0', width: '100%', height: '6px',
-                background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(1px)',
-                animation: 'ypp-vhs-band 4s linear infinite',
-                pointerEvents: 'none'
-            });
-            overlay.appendChild(band);
-        } else if (type === 'oldfilm') {
-            overlay.style.backgroundImage = `
+      overlay.style.mixBlendMode = 'multiply';
+      const band = document.createElement('div');
+      Object.assign(band.style, {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        height: '6px',
+        background: 'rgba(255,255,255,0.06)',
+        backdropFilter: 'blur(1px)',
+        animation: 'ypp-vhs-band 4s linear infinite',
+        pointerEvents: 'none',
+      });
+      overlay.appendChild(band);
+    } else if (type === 'oldfilm') {
+      overlay.style.backgroundImage = `
                 radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.65) 100%)
             `;
-            overlay.style.animation = 'ypp-grain 0.1s steps(1) infinite';
-        } else if (type === 'security-cam') {
-            overlay.style.backgroundImage = `
+      overlay.style.animation = 'ypp-grain 0.1s steps(1) infinite';
+    } else if (type === 'security-cam') {
+      overlay.style.backgroundImage = `
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 2px, transparent 2px, transparent 4px)
             `;
-            overlay.style.boxShadow = 'inset 0 0 60px rgba(0,0,0,0.6)';
-            overlay.style.mixBlendMode = 'multiply';
-        } else if (type === 'gameboy') {
-            overlay.style.backgroundImage = `
+      overlay.style.boxShadow = 'inset 0 0 60px rgba(0,0,0,0.6)';
+      overlay.style.mixBlendMode = 'multiply';
+    } else if (type === 'gameboy') {
+      overlay.style.backgroundImage = `
                 repeating-linear-gradient(0deg, rgba(15, 56, 15, 0.25) 0px, rgba(15, 56, 15, 0.25) 1px, transparent 1px, transparent 3px),
                 repeating-linear-gradient(90deg, rgba(15, 56, 15, 0.1) 0px, rgba(15, 56, 15, 0.1) 1px, transparent 1px, transparent 3px)
             `;
-            overlay.style.boxShadow = 'inset 0 0 80px rgba(15, 56, 15, 0.5)';
-        } else if (type === 'daguerreotype') {
-            overlay.style.backgroundImage = `
+      overlay.style.boxShadow = 'inset 0 0 80px rgba(15, 56, 15, 0.5)';
+    } else if (type === 'daguerreotype') {
+      overlay.style.backgroundImage = `
                 radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.75) 100%)
             `;
-            overlay.style.animation = 'ypp-grain 0.08s steps(1) infinite, ypp-daguerreotype-flicker 5s ease-in-out infinite';
-        } else if (type === 'chroma-bleed') {
-            const band = document.createElement('div');
-            Object.assign(band.style, {
-                position: 'absolute', left: '0', width: '100%', height: '3px',
-                background: 'linear-gradient(90deg, rgba(255,0,128,0.4), rgba(0,255,255,0.4))',
-                filter: 'blur(2px)',
-                animation: 'ypp-chroma-band 6s linear infinite',
-                pointerEvents: 'none'
-            });
-            overlay.appendChild(band);
-            overlay.style.backgroundImage = `
+      overlay.style.animation =
+        'ypp-grain 0.08s steps(1) infinite, ypp-daguerreotype-flicker 5s ease-in-out infinite';
+    } else if (type === 'chroma-bleed') {
+      const band = document.createElement('div');
+      Object.assign(band.style, {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        height: '3px',
+        background: 'linear-gradient(90deg, rgba(255,0,128,0.4), rgba(0,255,255,0.4))',
+        filter: 'blur(2px)',
+        animation: 'ypp-chroma-band 6s linear infinite',
+        pointerEvents: 'none',
+      });
+      overlay.appendChild(band);
+      overlay.style.backgroundImage = `
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px)
             `;
-            overlay.style.mixBlendMode = 'multiply';
-        }
+      overlay.style.mixBlendMode = 'multiply';
     }
+  }
 
-    static injectSVGSharpness(amount) {
-        if (amount <= 0) return;
+  static injectSVGSharpness(amount) {
+    if (amount <= 0) return;
 
-        const strength = (amount / 100) * 2;
-        const center   = 1 + (4 * strength);
-        const edge     = -strength;
-        const matrix   = `0 ${edge} 0 ${edge} ${center} ${edge} 0 ${edge} 0`;
+    const strength = (amount / 100) * 2;
+    const center = 1 + 4 * strength;
+    const edge = -strength;
+    const matrix = `0 ${edge} 0 ${edge} ${center} ${edge} 0 ${edge} 0`;
 
-        let svg = document.getElementById('ypp-svg-sharpness-defs');
-        if (!svg) {
-            svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.id = 'ypp-svg-sharpness-defs';
-            svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+    let svg = document.getElementById('ypp-svg-sharpness-defs');
+    if (!svg) {
+      svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.id = 'ypp-svg-sharpness-defs';
+      svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
 
-            const defs   = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-            const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
-            filter.id = 'ypp-svg-sharpness';
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+      filter.id = 'ypp-svg-sharpness';
 
-            const convolve = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');
-            convolve.setAttribute('order', '3 3');
-            convolve.setAttribute('preserveAlpha', 'true');
-            convolve.setAttribute('kernelMatrix', matrix);
-            convolve.id = 'ypp-sharpness-kernel'; 
+      const convolve = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');
+      convolve.setAttribute('order', '3 3');
+      convolve.setAttribute('preserveAlpha', 'true');
+      convolve.setAttribute('kernelMatrix', matrix);
+      convolve.id = 'ypp-sharpness-kernel';
 
-            filter.appendChild(convolve);
-            defs.appendChild(filter);
-            svg.appendChild(defs);
-            document.body.appendChild(svg);
-        } else {
-            const kernel = document.getElementById('ypp-sharpness-kernel') || svg.querySelector('feConvolveMatrix');
-            if (kernel) kernel.setAttribute('kernelMatrix', matrix);
-        }
+      filter.appendChild(convolve);
+      defs.appendChild(filter);
+      svg.appendChild(defs);
+      document.body.appendChild(svg);
+    } else {
+      const kernel =
+        document.getElementById('ypp-sharpness-kernel') || svg.querySelector('feConvolveMatrix');
+      if (kernel) kernel.setAttribute('kernelMatrix', matrix);
     }
+  }
 
-    static injectCRTSVGFilter() {
-        if (document.getElementById('ypp-crt-svg-defs')) return;
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.id = 'ypp-crt-svg-defs';
-        svg.setAttribute('xmlns', svgNS);
-        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+  static injectCRTSVGFilter() {
+    if (document.getElementById('ypp-crt-svg-defs')) return;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.id = 'ypp-crt-svg-defs';
+    svg.setAttribute('xmlns', svgNS);
+    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
 
-        const defs = document.createElementNS(svgNS, 'defs');
-        const filter = document.createElementNS(svgNS, 'filter');
-        filter.id = 'ypp-crt-rgb';
-        filter.setAttribute('x', '0%');
-        filter.setAttribute('y', '0%');
-        filter.setAttribute('width', '100%');
-        filter.setAttribute('height', '100%');
-        filter.setAttribute('color-interpolation-filters', 'sRGB');
+    const defs = document.createElementNS(svgNS, 'defs');
+    const filter = document.createElementNS(svgNS, 'filter');
+    filter.id = 'ypp-crt-rgb';
+    filter.setAttribute('x', '0%');
+    filter.setAttribute('y', '0%');
+    filter.setAttribute('width', '100%');
+    filter.setAttribute('height', '100%');
+    filter.setAttribute('color-interpolation-filters', 'sRGB');
 
-        const el = (tag, attrs) => {
-            const e = document.createElementNS(svgNS, tag);
-            Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
-            return e;
-        };
+    const el = (tag, attrs) => {
+      const e = document.createElementNS(svgNS, tag);
+      Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, v));
+      return e;
+    };
 
-        filter.append(
-            el('feOffset',      { in: 'SourceGraphic', dx: '1.5', dy: '0', result: 'rShifted' }),
-            el('feColorMatrix', { in: 'rShifted', type: 'matrix', values: '1 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 1 0', result: 'rOnly' }),
-            el('feColorMatrix', { in: 'SourceGraphic', type: 'matrix', values: '0 0 0 0 0   0 1 0 0 0   0 0 0 0 0   0 0 0 1 0', result: 'gOnly' }),
-            el('feOffset',      { in: 'SourceGraphic', dx: '-1.5', dy: '0', result: 'bShifted' }),
-            el('feColorMatrix', { in: 'bShifted', type: 'matrix', values: '0 0 0 0 0   0 0 0 0 0   0 0 1 0 0   0 0 0 1 0', result: 'bOnly' }),
-            el('feBlend', { in: 'rOnly',  in2: 'gOnly', mode: 'screen', result: 'rg' }),
-            el('feBlend', { in: 'rg',     in2: 'bOnly', mode: 'screen' })
-        );
+    filter.append(
+      el('feOffset', { in: 'SourceGraphic', dx: '1.5', dy: '0', result: 'rShifted' }),
+      el('feColorMatrix', {
+        in: 'rShifted',
+        type: 'matrix',
+        values: '1 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 1 0',
+        result: 'rOnly',
+      }),
+      el('feColorMatrix', {
+        in: 'SourceGraphic',
+        type: 'matrix',
+        values: '0 0 0 0 0   0 1 0 0 0   0 0 0 0 0   0 0 0 1 0',
+        result: 'gOnly',
+      }),
+      el('feOffset', { in: 'SourceGraphic', dx: '-1.5', dy: '0', result: 'bShifted' }),
+      el('feColorMatrix', {
+        in: 'bShifted',
+        type: 'matrix',
+        values: '0 0 0 0 0   0 0 0 0 0   0 0 1 0 0   0 0 0 1 0',
+        result: 'bOnly',
+      }),
+      el('feBlend', { in: 'rOnly', in2: 'gOnly', mode: 'screen', result: 'rg' }),
+      el('feBlend', { in: 'rg', in2: 'bOnly', mode: 'screen' })
+    );
 
-        defs.appendChild(filter);
-        svg.appendChild(defs);
-        document.body.appendChild(svg);
-    }
+    defs.appendChild(filter);
+    svg.appendChild(defs);
+    document.body.appendChild(svg);
+  }
 
-    static injectSpecialEffectsSVG() {
-        if (document.getElementById('ypp-special-fx-defs')) return;
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.id = 'ypp-special-fx-defs';
-        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+  static injectSpecialEffectsSVG() {
+    if (document.getElementById('ypp-special-fx-defs')) return;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.id = 'ypp-special-fx-defs';
+    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
 
-        svg.innerHTML = `
+    svg.innerHTML = `
             <defs>
                 <filter id="ypp-fx-matrix" color-interpolation-filters="sRGB">
                     <feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
@@ -446,14 +482,14 @@ export class VideoFiltersOverlay {
                 </filter>
             </defs>
         `;
-        document.body.appendChild(svg);
-    }
+    document.body.appendChild(svg);
+  }
 
-    static injectOverlayCSS() {
-        if (document.getElementById('ypp-overlay-css')) return;
-        const style = document.createElement('style');
-        style.id = 'ypp-overlay-css';
-        style.textContent = `
+  static injectOverlayCSS() {
+    if (document.getElementById('ypp-overlay-css')) return;
+    const style = document.createElement('style');
+    style.id = 'ypp-overlay-css';
+    style.textContent = `
             @keyframes ypp-crt-flicker {
                 0%   { opacity: 1; }
                 48%  { opacity: 1; }
@@ -492,24 +528,24 @@ export class VideoFiltersOverlay {
                 100% { top: 102%; }
             }
         `;
-        document.head.appendChild(style);
-    }
+    document.head.appendChild(style);
+  }
 
-    static removeOverlay(ctx) {
-        if (ctx._filterOverlay) {
-            ctx._filterOverlay.remove();
-            ctx._filterOverlay = null;
-        }
+  static removeOverlay(ctx) {
+    if (ctx._filterOverlay) {
+      ctx._filterOverlay.remove();
+      ctx._filterOverlay = null;
     }
+  }
 
-    static setupDynamicSVGFilter() {
-        if (document.getElementById('ypp-dynamic-svg-grade')) return;
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.id = 'ypp-dynamic-svg-grade';
-        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
-        
-        svg.innerHTML = `
+  static setupDynamicSVGFilter() {
+    if (document.getElementById('ypp-dynamic-svg-grade')) return;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.id = 'ypp-dynamic-svg-grade';
+    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+
+    svg.innerHTML = `
             <defs>
                 <filter id="ypp-dynamic-filter" color-interpolation-filters="sRGB">
                     <feComponentTransfer id="ypp-svg-curves">
@@ -520,64 +556,74 @@ export class VideoFiltersOverlay {
                 </filter>
             </defs>
         `;
-        document.body.appendChild(svg);
-    }
+    document.body.appendChild(svg);
+  }
 
-    static updateDynamicSVGFilter(adj) {
-        this.setupDynamicSVGFilter();
-        const curves = document.getElementById('ypp-svg-curves');
-        if (!curves) return;
-        
-        const steps = 20;
-        const rTable = [], gTable = [], bTable = [];
-        
-        for (let i = 0; i <= steps; i++) {
-            let t = i / steps;
-            
-            if (adj.shadows !== 0) {
-                const shadowEffect = Math.max(0, 1 - (t * 2)); 
-                t += (adj.shadows / 100) * 0.4 * shadowEffect;
-            }
-            
-            if (adj.highlights !== 0) {
-                const highlightEffect = Math.max(0, (t - 0.5) * 2); 
-                t += (adj.highlights / 100) * 0.4 * highlightEffect;
-            }
-            
-            if (adj.contrast !== 100) {
-                const c = adj.contrast / 100;
-                t = (t - 0.5) * c + 0.5;
-            }
-            
-            if (adj.brightness !== 100) {
-                t = t * (adj.brightness / 100);
-            }
-            
-            t = Math.max(0, Math.min(1, t));
-            
-            let rt = t, gt = t, bt = t;
+  static updateDynamicSVGFilter(adj) {
+    this.setupDynamicSVGFilter();
+    const curves = document.getElementById('ypp-svg-curves');
+    if (!curves) return;
 
-            if (adj.temperature !== 0) {
-                const temp = adj.temperature / 100;
-                if (temp > 0) {
-                    rt = Math.min(1, rt * (1 + temp * 0.2));
-                    bt = Math.max(0, bt * (1 - temp * 0.15));
-                } else {
-                    rt = Math.max(0, rt * (1 + temp * 0.15));
-                    bt = Math.min(1, bt * (1 - temp * 0.2));
-                }
-            }
-            
-            rTable.push(rt);
-            gTable.push(gt);
-            bTable.push(bt);
+    const steps = 20;
+    const rTable = [],
+      gTable = [],
+      bTable = [];
+
+    for (let i = 0; i <= steps; i++) {
+      let t = i / steps;
+
+      if (adj.shadows !== 0) {
+        const shadowEffect = Math.max(0, 1 - t * 2);
+        t += (adj.shadows / 100) * 0.4 * shadowEffect;
+      }
+
+      if (adj.highlights !== 0) {
+        const highlightEffect = Math.max(0, (t - 0.5) * 2);
+        t += (adj.highlights / 100) * 0.4 * highlightEffect;
+      }
+
+      if (adj.contrast !== 100) {
+        const c = adj.contrast / 100;
+        t = (t - 0.5) * c + 0.5;
+      }
+
+      if (adj.brightness !== 100) {
+        t = t * (adj.brightness / 100);
+      }
+
+      t = Math.max(0, Math.min(1, t));
+
+      let rt = t,
+        gt = t,
+        bt = t;
+
+      if (adj.temperature !== 0) {
+        const temp = adj.temperature / 100;
+        if (temp > 0) {
+          rt = Math.min(1, rt * (1 + temp * 0.2));
+          bt = Math.max(0, bt * (1 - temp * 0.15));
+        } else {
+          rt = Math.max(0, rt * (1 + temp * 0.15));
+          bt = Math.min(1, bt * (1 - temp * 0.2));
         }
-        
-        curves.querySelector('feFuncR').setAttribute('tableValues', rTable.map(n=>n.toFixed(3)).join(' '));
-        curves.querySelector('feFuncG').setAttribute('tableValues', gTable.map(n=>n.toFixed(3)).join(' '));
-        curves.querySelector('feFuncB').setAttribute('tableValues', bTable.map(n=>n.toFixed(3)).join(' '));
+      }
+
+      rTable.push(rt);
+      gTable.push(gt);
+      bTable.push(bt);
     }
-};
+
+    curves
+      .querySelector('feFuncR')
+      .setAttribute('tableValues', rTable.map((n) => n.toFixed(3)).join(' '));
+    curves
+      .querySelector('feFuncG')
+      .setAttribute('tableValues', gTable.map((n) => n.toFixed(3)).join(' '));
+    curves
+      .querySelector('feFuncB')
+      .setAttribute('tableValues', bTable.map((n) => n.toFixed(3)).join(' '));
+  }
+}
 
 window.YPP = window.YPP || {};
 window.YPP.features = window.YPP.features || {};
