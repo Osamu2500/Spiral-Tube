@@ -903,4 +903,6 @@ export class VideoFiltersUI {
     }
 };
 
+window.YPP = window.YPP || {};
+window.YPP.features = window.YPP.features || {};
 window.YPP.features.VideoFiltersUI = VideoFiltersUI;
