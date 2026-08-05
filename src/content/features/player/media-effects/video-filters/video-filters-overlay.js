@@ -12,13 +12,33 @@ export class VideoFiltersOverlay {
     if (!container) return;
 
     const overlay = this._buildOverlayElement(container);
-    this.injectSpecialEffectsSVG();
 
     this._applyOverlayStyles(overlay, ctx, type, grainAmount);
 
     container.appendChild(overlay);
     ctx._filterOverlay = overlay;
     this.injectOverlayCSS();
+  }
+
+  static manageSVGFilters(activeCSS = '') {
+    // Lazy inject CRT filter (id: ypp-crt-rgb)
+    if (activeCSS.includes('ypp-crt-rgb')) this.injectCRTSVGFilter();
+
+    // Lazy inject all static special-effects filters (ypp-fx-*)
+    // bloom, sketch, matrix, posterize, selective-color, etc. are all in this block
+    if (activeCSS.includes('ypp-fx-') && !document.getElementById('ypp-special-fx-defs')) {
+        this.injectSpecialEffectsSVG();
+    }
+
+    // Glitch SVG: inject + pause/unpause animated filters based on active use (GPU saver)
+    if (activeCSS.includes('ypp-fx-glitch') || activeCSS.includes('ypp-fx-rgb-split')) {
+        this.injectGlitchSVGFilter();
+        const glitchSVG = document.getElementById('ypp-glitch-svg-defs');
+        if (glitchSVG && glitchSVG.unpauseAnimations) glitchSVG.unpauseAnimations();
+    } else {
+        const glitchSVG = document.getElementById('ypp-glitch-svg-defs');
+        if (glitchSVG && glitchSVG.pauseAnimations) glitchSVG.pauseAnimations();
+    }
   }
 
   static _buildOverlayElement(container) {
@@ -175,7 +195,9 @@ export class VideoFiltersOverlay {
         background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent)',
         animation: 'ypp-vhs-tracking 2s linear infinite',
         pointerEvents: 'none',
-        mixBlendMode: 'overlay'
+        mixBlendMode: 'overlay',
+        transform: 'translateZ(0)',
+        willChange: 'top'
       });
       overlay.appendChild(band);
       
@@ -273,7 +295,7 @@ export class VideoFiltersOverlay {
     `;
 
     const datamosh = `
-        <filter id="ypp-fx-glitch-datamosh" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="ypp-fx-glitch-datamosh" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.01 0.2" numOctaves="1" result="noise">
                 <animate attributeName="baseFrequency" values="0.01 0.2; 0.05 0.5; 0.01 0.2; 0.1 0.1; 0.01 0.2" dur="2s" keyTimes="0; 0.1; 0.2; 0.9; 1" repeatCount="indefinite" />
             </feTurbulence>

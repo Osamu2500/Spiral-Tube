@@ -32,6 +32,9 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         this._filterPanelResizeHandler = null;
         this._previewFilterIndex = undefined;
         this._lastOverlayKey = null;
+        // rAF throttle handles for slider dragging
+        this._rafPending = false;
+        this._savePending = null;
     }
 
     getConfigKey() { return 'enableCinemaFilters'; }
@@ -123,6 +126,16 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
     }
 
     _applyComputedFilter(video) {
+        // rAF-throttle: skip if a frame is already queued
+        if (this._rafPending) return;
+        this._rafPending = true;
+        requestAnimationFrame(() => {
+            this._rafPending = false;
+            this._doApplyComputedFilter(video);
+        });
+    }
+
+    _doApplyComputedFilter(video) {
         video = video || this._getVideo();
         if (!video) return;
 
@@ -144,11 +157,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             finalFilter += ` url(#ypp-svg-sharpness)`;
         }
 
-        window.YPP.features.VideoFiltersOverlay.injectCRTSVGFilter();
-        window.YPP.features.VideoFiltersOverlay.injectDynamicSVGFilter();
-        window.YPP.features.VideoFiltersOverlay.injectBloomSVGFilter();
-        window.YPP.features.VideoFiltersOverlay.injectSelectiveColorSVGFilter();
-        window.YPP.features.VideoFiltersOverlay.injectGlitchSVGFilter();
+        window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
         video.style.setProperty('filter', finalFilter, 'important');
         this._syncOverlays(preset, adj);
@@ -185,6 +194,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                             adj.shadows !== 0 || adj.highlights !== 0 || adj.temperature !== 0;
                             
         if (needsCurves) {
+            window.YPP.features.VideoFiltersOverlay.setupDynamicSVGFilter();
             window.YPP.features.VideoFiltersOverlay.updateDynamicSVGFilter({
                 brightness: baseValues.brightness,
                 contrast: baseValues.contrast,

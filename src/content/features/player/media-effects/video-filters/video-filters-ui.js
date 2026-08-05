@@ -942,8 +942,9 @@ export class VideoFiltersUI {
                         return Math.abs(sv - s.def) > 0.01;
                     }));
                     ctx._applyComputedFilter(video);
-                    VideoFiltersUI.saveFilterSettings(ctx);
                 };
+                // Save to storage only on release (not on every drag tick)
+                slider.onchange = () => VideoFiltersUI.saveFilterSettings(ctx);
 
                 resetBtn.onclick = (e) => {
                     e.stopPropagation();
