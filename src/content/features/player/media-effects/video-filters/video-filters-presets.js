@@ -59,6 +59,8 @@ export const FILTERS = [
         { category: 'Special Effects', name: 'Thermal',      css: 'invert(100%) hue-rotate(180deg) saturate(400%) contrast(200%)', overlay: null },
         { category: 'Special Effects', name: 'X-Ray',        css: 'invert(100%) grayscale(100%) contrast(150%)', overlay: null },
         { category: 'Special Effects', name: 'Psychedelic',  css: 'hue-rotate(90deg) saturate(300%) contrast(150%) invert(20%)', overlay: null },
+        { category: 'Special Effects', name: 'Chromatic Aberration', css: 'url(#ypp-fx-rgb-split)', preview: 'linear-gradient(135deg, #ff0844, #00f2fe)', overlay: null },
+        { category: 'Special Effects', name: 'Cyberpunk Glitch', css: 'url(#ypp-fx-glitch-datamosh)', preview: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)', overlay: 'glitch-tracking' },
         { category: 'Special Effects', name: 'Psychedelic Glitch', css: 'url(#ypp-fx-glitch) hue-rotate(180deg) saturate(300%) contrast(150%) invert(10%)', overlay: null },
         { category: 'Special Effects', name: 'RGB Glitch',   css: 'url(#ypp-fx-glitch) contrast(120%) brightness(110%) saturate(120%)', overlay: null },
         { category: 'Special Effects', name: 'The Matrix',   css: 'url(#ypp-fx-matrix) contrast(150%) brightness(130%)', overlay: null },

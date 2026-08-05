@@ -165,6 +165,27 @@ export class VideoFiltersOverlay {
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px)
             `;
       overlay.style.mixBlendMode = 'multiply';
+    } else if (type === 'glitch-tracking') {
+      const band = document.createElement('div');
+      Object.assign(band.style, {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        height: '20px',
+        background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent)',
+        animation: 'ypp-vhs-tracking 2s linear infinite',
+        pointerEvents: 'none',
+        mixBlendMode: 'overlay'
+      });
+      overlay.appendChild(band);
+      
+      const styleId = 'ypp-glitch-anim';
+      if (!document.getElementById(styleId)) {
+          const s = document.createElement('style');
+          s.id = styleId;
+          s.textContent = `@keyframes ypp-vhs-tracking { 0% { top: -10%; } 100% { top: 110%; } }`;
+          document.head.appendChild(s);
+      }
     } else if (type === 'cinemascope') {
       overlay.style.boxShadow = 'inset 0 12vh 0 0 #000, inset 0 -12vh 0 0 #000';
       const flare = document.createElement('div');
@@ -225,6 +246,52 @@ export class VideoFiltersOverlay {
         document.getElementById('ypp-sharpness-kernel') || svg.querySelector('feConvolveMatrix');
       if (kernel) kernel.setAttribute('kernelMatrix', matrix);
     }
+  }
+
+  static injectGlitchSVGFilter() {
+    if (document.getElementById('ypp-glitch-svg-defs')) return;
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.id = 'ypp-glitch-svg-defs';
+    svg.setAttribute('xmlns', svgNS);
+    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+
+    const rgbSplit = `
+        <filter id="ypp-fx-rgb-split" color-interpolation-filters="sRGB">
+            <feOffset in="SourceGraphic" dx="4" dy="0" result="red-shift">
+                <animate attributeName="dx" values="2; 5; 2; 1; 2" dur="4s" repeatCount="indefinite" />
+            </feOffset>
+            <feOffset in="SourceGraphic" dx="-4" dy="0" result="blue-shift">
+                <animate attributeName="dx" values="-2; -1; -2; -5; -2" dur="4s" repeatCount="indefinite" />
+            </feOffset>
+            <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red-only" />
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green-only" />
+            <feColorMatrix in="blue-shift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue-only" />
+            <feBlend mode="screen" in="red-only" in2="green-only" result="rg" />
+            <feBlend mode="screen" in="rg" in2="blue-only" result="rgb" />
+        </filter>
+    `;
+
+    const datamosh = `
+        <filter id="ypp-fx-glitch-datamosh" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.2" numOctaves="1" result="noise">
+                <animate attributeName="baseFrequency" values="0.01 0.2; 0.05 0.5; 0.01 0.2; 0.1 0.1; 0.01 0.2" dur="2s" keyTimes="0; 0.1; 0.2; 0.9; 1" repeatCount="indefinite" />
+            </feTurbulence>
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  3 -1 -1 0 0" in="noise" result="chunky-noise" />
+            <feDisplacementMap in="SourceGraphic" in2="chunky-noise" scale="30" xChannelSelector="R" yChannelSelector="G" result="displaced">
+                <animate attributeName="scale" values="0; 50; 0; 0; 0" dur="2s" keyTimes="0; 0.1; 0.2; 0.9; 1" repeatCount="indefinite" />
+            </feDisplacementMap>
+            <feOffset in="displaced" dx="10" dy="0" result="red-shift">
+                <animate attributeName="dx" values="0; 30; 0; 0; 0" dur="2s" keyTimes="0; 0.1; 0.2; 0.9; 1" repeatCount="indefinite" />
+            </feOffset>
+            <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red-only" />
+            <feColorMatrix in="displaced" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="cyan-only" />
+            <feBlend mode="screen" in="red-only" in2="cyan-only" result="glitch-final" />
+        </filter>
+    `;
+
+    svg.innerHTML = `<defs>${rgbSplit}${datamosh}</defs>`;
+    document.body.appendChild(svg);
   }
 
   static injectCRTSVGFilter() {
