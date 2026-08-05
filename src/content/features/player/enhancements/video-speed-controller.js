@@ -236,91 +236,36 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         const parent = video.parentElement || document.body;
         parent.insertBefore(controller, video.nextSibling || video);
         
-        // Position Calculation Logic (from folder 4's battle-tested approach)
-        let currentOffsetX = 12;
-        let currentOffsetY = 12;
-
-        let isPositioning = false;
-        const applyPosition = () => {
-            if (!video.isConnected || !controller.isConnected) return;
-            if (isPositioning) return;
-            
-            const t = video.getBoundingClientRect();
-            
-            if (t.width === 0 && t.height === 0) {
-                // Audio element with no dimensions
-                isPositioning = true;
-                requestAnimationFrame(() => {
-                    controller.style.position = 'fixed';
-                    controller.style.top = `${Math.max(currentOffsetY, 12)}px`;
-                    controller.style.left = `${Math.max(currentOffsetX, 12)}px`;
-                    controller.style.right = 'auto';
-                    controller.style.bottom = 'auto';
-                    isPositioning = false;
-                });
-                return;
-            }
-
-            const o = controller.offsetParent?.getBoundingClientRect();
-            
-            const topOffset = Math.max(t.top - (o?.top || 0), 0) + currentOffsetY;
-            const leftOffset = Math.max(t.left - (o?.left || 0), 0) + currentOffsetX;
-            
-            isPositioning = true;
-            requestAnimationFrame(() => {
-                controller.style.position = 'absolute';
-                controller.style.top = `${topOffset}px`;
-                controller.style.left = `${leftOffset}px`;
-                controller.style.right = 'auto';
-                controller.style.bottom = 'auto';
-                isPositioning = false;
-            });
-        };
-
-        // Initial position
-        applyPosition();
-
-        // Listen for layout changes
-        const resizeObserver = new ResizeObserver(() => applyPosition());
-        resizeObserver.observe(video);
-        if (controller.offsetParent) {
-            resizeObserver.observe(controller.offsetParent);
-        }
-        
-        // Handle window resizes and scrolls
-        this.addListener(window, 'resize', applyPosition, { passive: true });
-        
-        // Dragging Logic
+        let translateX = 0;
+        let translateY = 0;
         let isDragging = false;
         let startX, startY;
 
-        const applyPositionDragged = () => {
-            applyPosition();
+        const updateTransform = () => {
+            controller.style.setProperty('--ypp-vsc-x', `${translateX}px`);
+            controller.style.setProperty('--ypp-vsc-y', `${translateY}px`);
         };
 
         this.addListener(display, 'mousedown', (e) => {
             isDragging = true;
-            startX = e.clientX;
-            startY = e.clientY;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
             e.preventDefault(); // prevent text selection
+            controller.style.transition = 'none'; // Disable transition during drag
         });
 
         const onMouseMove = (e) => {
             if (!isDragging) return;
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
-            
-            currentOffsetX += dx;
-            currentOffsetY += dy;
-            
-            startX = e.clientX;
-            startY = e.clientY;
-            
-            applyPosition();
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
         };
 
         const onMouseUp = () => {
-            isDragging = false;
+            if (isDragging) {
+                isDragging = false;
+                controller.style.transition = ''; // Restore CSS transitions
+            }
         };
 
         this.addListener(window, 'mousemove', onMouseMove);
@@ -338,8 +283,6 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
             cleanup: () => {
                 window.removeEventListener('mousemove', onMouseMove);
                 window.removeEventListener('mouseup', onMouseUp);
-                // Disconnect the ResizeObserver to prevent memory leaks
-                resizeObserver.disconnect();
             }
         });
 
