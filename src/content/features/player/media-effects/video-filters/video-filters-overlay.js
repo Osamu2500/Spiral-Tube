@@ -453,6 +453,29 @@ export class VideoFiltersOverlay {
                     <feBlend mode="screen" in="rg" in2="bOnly"/>
                 </filter>
 
+                <!-- V4: Glitch Art — RGB split and displacement -->
+                <filter id="ypp-fx-glitch" color-interpolation-filters="sRGB">
+                    <feOffset in="SourceGraphic" dx="15" dy="5" result="rShift"/>
+                    <feOffset in="SourceGraphic" dx="-15" dy="-5" result="bShift"/>
+                    <feColorMatrix in="rShift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.8 0" result="rOnly"/>
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 0.8 0" result="gOnly"/>
+                    <feColorMatrix in="bShift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 0.8 0" result="bOnly"/>
+                    <feBlend in="rOnly" in2="gOnly" mode="screen" result="rgBlend"/>
+                    <feBlend in="rgBlend" in2="bOnly" mode="screen"/>
+                </filter>
+
+                <!-- V7 LUTs: Anime & Cinematic Worlds -->
+                <filter id="ypp-fx-anime-warm" color-interpolation-filters="sRGB">
+                    <feComponentTransfer>
+                        <feFuncR type="table" tableValues="0.1 0.4 0.7 0.9 1.0"/>
+                        <feFuncG type="table" tableValues="0.05 0.35 0.65 0.85 0.95"/>
+                        <feFuncB type="table" tableValues="0.0 0.25 0.5 0.7 0.85"/>
+                    </feComponentTransfer>
+                </filter>
+                <filter id="ypp-fx-anime-cold" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="matrix" values="0.7 0.1 0.1 0 0  0 0.85 0.15 0 0  0 0.1 0.9 0 0.05  0 0 0 1 0"/>
+                </filter>
+
                 <!-- V4: Cross Process (E6 in C-41) — film cross-processing -->
                 <filter id="ypp-fx-cross-process" color-interpolation-filters="sRGB">
                     <feComponentTransfer>

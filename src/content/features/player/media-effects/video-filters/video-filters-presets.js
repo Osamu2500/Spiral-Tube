@@ -160,15 +160,15 @@ export const FILTERS = [
 
         // ── Cinematic Worlds ──
         // Each filter is tuned to recreate the iconic color grade of a specific film/franchise
-        { category: 'Cinematic Worlds', name: 'Dune',                css: 'sepia(30%) saturate(90%) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #d4a373, #faedcd)', overlay: null },
-        { category: 'Cinematic Worlds', name: 'Twilight',            css: 'saturate(60%) contrast(115%) brightness(95%)', preview: 'linear-gradient(135deg, #6c757d, #adb5bd)', overlay: null },
-        { category: 'Cinematic Worlds', name: 'Disney Magic',        css: 'saturate(150%) contrast(110%) brightness(110%)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Dune',                css: 'sepia(20%) saturate(85%) contrast(125%) brightness(105%)', preview: 'linear-gradient(135deg, #d4a373, #faedcd)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Twilight',            css: 'saturate(55%) contrast(125%) brightness(95%) sepia(10%) hue-rotate(180deg)', preview: 'linear-gradient(135deg, #6c757d, #adb5bd)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Disney Magic',        css: 'saturate(135%) contrast(115%) brightness(110%)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Pixar Glow',          css: 'brightness(115%) contrast(105%) saturate(140%)', preview: 'linear-gradient(135deg, #a1c4fd, #c2e9fb)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Avatar: Pandora',     css: 'saturate(130%) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #43e97b, #38f9d7)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Interstellar',        css: 'saturate(80%) contrast(125%) brightness(95%)', preview: 'linear-gradient(135deg, #09203f, #537895)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Mad Max: Fury Road',  css: 'sepia(20%) saturate(130%) contrast(130%) brightness(110%)', preview: 'linear-gradient(135deg, #e65c00, #F9D423)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Lord of the Rings',   css: 'sepia(10%) saturate(115%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #38ef7d, #11998e)', overlay: null },
-        { category: 'Cinematic Worlds', name: 'Blade Runner 2049',   css: 'sepia(15%) saturate(130%) contrast(125%) brightness(105%)', preview: 'linear-gradient(135deg, #f12711, #f5af19)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Blade Runner 2049',   css: 'sepia(10%) saturate(140%) contrast(130%) brightness(105%)', preview: 'linear-gradient(135deg, #f12711, #f5af19)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Marvel Studios',      css: 'saturate(125%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #1cb5e0, #000046)', overlay: null },
 
         // ── Nature & Documentary ──
@@ -214,11 +214,11 @@ export const FILTERS = [
 
         // ── Cinematic Looks ──
         { category: 'Cinematic', name: 'Teal & Orange',      css: 'saturate(130%) contrast(120%) hue-rotate(-10deg) sepia(15%)', preview: 'linear-gradient(135deg, #004e92, #f05053)', overlay: null },
-        { category: 'Cinematic', name: 'The Matrix',         css: 'saturate(120%) contrast(130%) brightness(90%) hue-rotate(90deg) sepia(40%)', preview: 'linear-gradient(135deg, #000000, #0f9b0f)', overlay: null },
+        { category: 'Cinematic', name: 'The Matrix',         css: 'url(#ypp-fx-matrix) contrast(120%) brightness(105%)', preview: 'linear-gradient(135deg, #000000, #0f9b0f)', overlay: null },
         { category: 'Cinematic', name: 'Mad Max Desert',     css: 'saturate(180%) contrast(140%) brightness(105%) sepia(30%) hue-rotate(-10deg)', preview: 'linear-gradient(135deg, #ff512f, #dd2476)', overlay: 'grain_custom' },
         { category: 'Cinematic', name: 'Wes Anderson',       css: 'saturate(110%) contrast(85%) brightness(110%) sepia(35%) hue-rotate(5deg)', preview: 'linear-gradient(135deg, #f6d365, #fda085)', overlay: null },
         { category: 'Cinematic', name: 'The Batman Noir',    css: 'saturate(50%) contrast(130%) brightness(75%) sepia(30%) hue-rotate(-20deg)', preview: 'linear-gradient(135deg, #000000, #434343)', overlay: 'grain_custom' },
-        { category: 'Cinematic', name: 'Dune Arrakis',       css: 'saturate(45%) contrast(120%) brightness(100%) sepia(50%)', preview: 'linear-gradient(135deg, #bca586, #8c7657)', overlay: 'grain_custom' },
+        { category: 'Cinematic', name: 'Dune Arrakis',       css: 'saturate(55%) contrast(125%) brightness(102%) sepia(35%)', preview: 'linear-gradient(135deg, #bca586, #8c7657)', overlay: 'grain_custom' },
         { category: 'Cinematic', name: 'Fincher Gloom',      css: 'saturate(80%) contrast(125%) brightness(85%) sepia(25%) hue-rotate(40deg)', preview: 'linear-gradient(135deg, #2c3e50, #3498db)', overlay: null },
         { category: 'Cinematic', name: 'Bleach Bypass',      css: 'saturate(30%) contrast(160%) brightness(95%) sepia(10%)', preview: 'linear-gradient(135deg, #606c88, #3f4c6b)', overlay: 'grain_custom' },
         { category: 'Cinematic', name: 'Day for Night',      css: 'saturate(60%) contrast(110%) brightness(50%) sepia(60%) hue-rotate(180deg)', preview: 'linear-gradient(135deg, #141e30, #243b55)', overlay: null },
@@ -306,11 +306,11 @@ export const FILTERS = [
         // Violet Evergarden: KyoAni's lush pastel watercolor — soft blur, lifted whites, warm greens
         { category: 'Anime', name: 'Violet Evergarden', css: 'saturate(142%) contrast(102%) brightness(115%) sepia(10%) blur(0.25px)', preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', overlay: null },
         // AoT Paths: the golden sand/wheat sepia dream dimension — warm, ethereal, high contrast
-        { category: 'Anime', name: 'Attack on Titan (Paths)', css: 'saturate(85%) contrast(128%) brightness(108%) sepia(40%)', preview: 'linear-gradient(135deg, #e0b866, #c8943a)', overlay: null },
+        { category: 'Anime', name: 'Attack on Titan (Paths)', css: 'url(#ypp-fx-anime-warm) contrast(110%) brightness(105%)', preview: 'linear-gradient(135deg, #e0b866, #c8943a)', overlay: null },
         // Ghost in the Shell 1995: Oshii's rainy Hong Kong future — muted, slightly blue-green, clinical
-        { category: 'Anime', name: 'Ghost in the Shell (95)', css: 'saturate(80%) contrast(118%) brightness(92%) sepia(8%) hue-rotate(12deg)', preview: 'linear-gradient(135deg, #00b4db, #0083b0)', overlay: null },
+        { category: 'Anime', name: 'Ghost in the Shell (95)', css: 'url(#ypp-fx-anime-cold) contrast(110%) brightness(95%)', preview: 'linear-gradient(135deg, #00b4db, #0083b0)', overlay: null },
         // Demon Slayer: Ufotable's ultra-vivid breathing art — brilliant warm oranges, ultra-high saturation
-        { category: 'Anime', name: 'Demon Slayer (Breathing)', css: 'saturate(175%) contrast(128%) brightness(112%)', preview: 'linear-gradient(135deg, #fceabb, #f8b500)', overlay: null },
+        { category: 'Anime', name: 'Demon Slayer (Breathing)', css: 'saturate(150%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #fceabb, #f8b500)', overlay: null },
         // Retro 80s Anime: VHS tape degredation — soft, warm, chroma bleed, nostalgic
         { category: 'Anime', name: 'Retro 80s Anime (VHS)', css: 'url(#ypp-fx-vhs-pro) saturate(108%) contrast(98%) brightness(110%) sepia(18%)', preview: 'linear-gradient(135deg, #ff9a9e, #fecfef)', overlay: 'chroma-bleed' },
 

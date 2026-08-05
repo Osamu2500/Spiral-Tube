@@ -93,9 +93,13 @@ export class VideoFiltersUI {
         adjustContent.style.opacity = '0';
         presetsContent.style.opacity = '1';
 
-        this._setupTabSwitching(tabFiltersBtn, tabAdjustBtn, presetsContent, adjustContent);
-        tabContent.append(presetsContent, adjustContent);
+        this._setupTabSwitching(tabsWrap.children[0], tabsWrap.children[1], presetsContent, adjustContent);
 
+        tabContent.append(presetsContent, adjustContent);
+        
+        // Prevent wheel events from bubbling to movie_player
+        tabContent.addEventListener('wheel', (e) => e.stopPropagation(), { passive: true });
+        
         const footer = this._buildFooter(ctx, video, btn);
 
         panel.append(header, tabsWrap, tabContent, footer);
@@ -294,6 +298,8 @@ export class VideoFiltersUI {
             panel.style.bottom = 'auto';
             const panelHeight = Math.min(620, window.innerHeight - 200);
             const topPx = Math.max(76, Math.floor((window.innerHeight - panelHeight) / 2));
+            panel.style.height = panelHeight + 'px';
+            panel.style.maxHeight = panelHeight + 'px';
             if (bar.classList.contains('ypp-bar-pos-right')) {
                 panel.style.right = '76px';
                 panel.style.left = 'auto';
