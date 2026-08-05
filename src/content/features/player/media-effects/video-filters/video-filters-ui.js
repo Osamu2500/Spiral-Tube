@@ -76,6 +76,7 @@ export class VideoFiltersUI {
 
         const tabContent = document.createElement('div');
         tabContent.className = 'ypp-cinema-scroll';
+        tabContent.id = 'ypp-cinema-scroll-container';
         Object.assign(tabContent.style, {
             padding: '0', flex: '1 1 0%', minHeight: '0', overflowY: 'auto', overflowX: 'hidden',
             background: 'transparent', scrollbarWidth: 'thin', position: 'relative'
@@ -172,10 +173,14 @@ export class VideoFiltersUI {
             .ypp-vcp-slider:active::-webkit-slider-thumb { transform: scale(1.1); background: #f0f0f0; }
 
             /* Custom Sleek Scrollbar */
-            .ypp-cinema-scroll::-webkit-scrollbar { width: 6px; }
-            .ypp-cinema-scroll::-webkit-scrollbar-track { background: transparent; }
-            .ypp-cinema-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 6px; border: 1px solid transparent; background-clip: padding-box; }
-            .ypp-cinema-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.35); border-radius: 6px; }
+            #ypp-cinema-scroll-container::-webkit-scrollbar,
+            .ypp-cinema-scroll::-webkit-scrollbar { width: 6px !important; display: block !important; opacity: 1 !important; visibility: visible !important; }
+            #ypp-cinema-scroll-container::-webkit-scrollbar-track,
+            .ypp-cinema-scroll::-webkit-scrollbar-track { background: transparent !important; }
+            #ypp-cinema-scroll-container::-webkit-scrollbar-thumb,
+            .ypp-cinema-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15) !important; border-radius: 6px !important; border: 1px solid transparent !important; background-clip: padding-box !important; }
+            #ypp-cinema-scroll-container::-webkit-scrollbar-thumb:hover,
+            .ypp-cinema-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.35) !important; border-radius: 6px !important; }
         `;
         document.head.appendChild(style);
     }
