@@ -174,13 +174,13 @@ export class VideoFiltersUI {
 
             /* Custom Sleek Scrollbar */
             #ypp-cinema-scroll-container::-webkit-scrollbar,
-            .ypp-cinema-scroll::-webkit-scrollbar { width: 6px !important; display: block !important; opacity: 1 !important; visibility: visible !important; }
+            .ypp-cinema-scroll::-webkit-scrollbar { width: 10px !important; display: block !important; opacity: 1 !important; visibility: visible !important; }
             #ypp-cinema-scroll-container::-webkit-scrollbar-track,
             .ypp-cinema-scroll::-webkit-scrollbar-track { background: transparent !important; }
             #ypp-cinema-scroll-container::-webkit-scrollbar-thumb,
-            .ypp-cinema-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15) !important; border-radius: 6px !important; border: 1px solid transparent !important; background-clip: padding-box !important; }
+            .ypp-cinema-scroll::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.45) !important; border-radius: 10px !important; border: 2px solid transparent !important; background-clip: padding-box !important; }
             #ypp-cinema-scroll-container::-webkit-scrollbar-thumb:hover,
-            .ypp-cinema-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.35) !important; border-radius: 6px !important; }
+            .ypp-cinema-scroll::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 255, 255, 0.7) !important; border-radius: 10px !important; }
         `;
         document.head.appendChild(style);
     }
