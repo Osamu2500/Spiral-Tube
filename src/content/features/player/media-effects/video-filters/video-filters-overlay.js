@@ -24,10 +24,10 @@ export class VideoFiltersOverlay {
     // Lazy inject CRT filter (id: ypp-crt-rgb)
     if (activeCSS.includes('ypp-crt-rgb')) this.injectCRTSVGFilter();
 
-    // Lazy inject all static special-effects filters (ypp-fx-*)
-    // bloom, sketch, matrix, posterize, selective-color, etc. are all in this block
-    if (activeCSS.includes('ypp-fx-') && !document.getElementById('ypp-special-fx-defs')) {
-        this.injectSpecialEffectsSVG();
+    // Modular dynamic filter injection
+    const matches = activeCSS.matchAll(/url\(#(ypp-fx-[^)]+)\)/g);
+    for (const match of matches) {
+        this.injectSpecialEffectsSVG(match[1]);
     }
 
     // Glitch SVG: inject + pause/unpause animated filters based on active use (GPU saver)
@@ -369,292 +369,198 @@ export class VideoFiltersOverlay {
     document.body.appendChild(svg);
   }
 
-  static injectSpecialEffectsSVG() {
-    if (document.getElementById('ypp-special-fx-defs')) return;
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(svgNS, 'svg');
-    svg.id = 'ypp-special-fx-defs';
-    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+  static _SVG_EFFECT_MAP = {
+      'ypp-fx-matrix': `<feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>`,
+      'ypp-fx-edge': `<feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1"/>`,
+      'ypp-fx-emboss': `<feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="-2 -1 0 -1 1 1 0 1 2"/>`,
+      'ypp-fx-posterize': `<feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 0.1 0.25 0.5 0.75 0.9 1"/>
+          <feFuncG type="discrete" tableValues="0 0.1 0.25 0.5 0.75 0.9 1"/>
+          <feFuncB type="discrete" tableValues="0 0.1 0.25 0.5 0.75 0.9 1"/>
+      </feComponentTransfer>`,
+      'ypp-fx-colorize': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feComponentTransfer in="gray">
+          <feFuncR type="table" tableValues="0.05 0.3 0.8 1.0 1.0"/>
+          <feFuncG type="table" tableValues="0.00 0.0 0.1 0.7 1.0"/>
+          <feFuncB type="table" tableValues="0.10 0.4 0.3 0.1 1.0"/>
+      </feComponentTransfer>`,
+      'ypp-fx-technicolor': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feComponentTransfer in="gray">
+          <feFuncR type="table" tableValues="0.0 0.3 0.7 0.9 1.0"/>
+          <feFuncG type="table" tableValues="0.1 0.2 0.5 0.8 0.95"/>
+          <feFuncB type="table" tableValues="0.2 0.4 0.2 0.4 0.9"/>
+      </feComponentTransfer>`,
+      'ypp-fx-dreamcolor': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feComponentTransfer in="gray">
+          <feFuncR type="table" tableValues="0.1 0.4 0.8 0.5 0.9"/>
+          <feFuncG type="table" tableValues="0.0 0.2 0.5 0.8 1.0"/>
+          <feFuncB type="table" tableValues="0.3 0.5 0.7 0.9 0.9"/>
+      </feComponentTransfer>`,
+      'ypp-fx-glitch': `<feOffset in="SourceGraphic" dx="6" dy="0" result="red-shift"/>
+      <feOffset in="SourceGraphic" dx="-6" dy="0" result="blue-shift"/>
+      <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red-only"/>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green-only"/>
+      <feColorMatrix in="blue-shift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue-only"/>
+      <feBlend mode="screen" in="red-only" in2="green-only" result="red-green"/>
+      <feBlend mode="screen" in="red-green" in2="blue-only"/>`,
+      'ypp-fx-sketch': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feGaussianBlur in="gray" stdDeviation="4" result="blur"/>
+      <feComponentTransfer in="blur" result="invertedBlur">
+          <feFuncR type="linear" slope="-1" intercept="1"/>
+          <feFuncG type="linear" slope="-1" intercept="1"/>
+          <feFuncB type="linear" slope="-1" intercept="1"/>
+      </feComponentTransfer>
+      <feBlend mode="color-dodge" in="invertedBlur" in2="gray" result="sketch"/>
+      <feComponentTransfer in="sketch">
+          <feFuncR type="linear" slope="1.2" intercept="-0.2"/>
+          <feFuncG type="linear" slope="1.2" intercept="-0.2"/>
+          <feFuncB type="linear" slope="1.2" intercept="-0.2"/>
+      </feComponentTransfer>`,
+      'ypp-fx-colored-pencil': `<feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feComponentTransfer in="blur" result="invertedBlur">
+          <feFuncR type="linear" slope="-1" intercept="1"/>
+          <feFuncG type="linear" slope="-1" intercept="1"/>
+          <feFuncB type="linear" slope="-1" intercept="1"/>
+      </feComponentTransfer>
+      <feBlend mode="color-dodge" in="invertedBlur" in2="SourceGraphic" result="sketch"/>
+      <feComponentTransfer in="sketch">
+          <feFuncR type="linear" slope="1.2" intercept="-0.2"/>
+          <feFuncG type="linear" slope="1.2" intercept="-0.2"/>
+          <feFuncB type="linear" slope="1.2" intercept="-0.2"/>
+      </feComponentTransfer>`,
+      'ypp-fx-pop-art': `<feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0.1 0.4 0.8 1"/>
+          <feFuncG type="discrete" tableValues="0.1 0.4 0.8 1"/>
+          <feFuncB type="discrete" tableValues="0.1 0.4 0.8 1"/>
+      </feComponentTransfer>
+      <feColorMatrix type="matrix" values="1 0 0 0 0.1  0 1 0 0 0.1  0 0 1 0 0.1  0 0 0 1 0"/>`,
+      'ypp-fx-8bit': `<feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
+          <feFuncG type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
+          <feFuncB type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
+      </feComponentTransfer>`,
+      'ypp-fx-manga-bw': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feComponentTransfer in="gray" result="highContrast">
+          <feFuncR type="discrete" tableValues="0 1"/>
+          <feFuncG type="discrete" tableValues="0 1"/>
+          <feFuncB type="discrete" tableValues="0 1"/>
+      </feComponentTransfer>`,
+      'ypp-fx-gameboy': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feComponentTransfer in="gray">
+          <feFuncR type="discrete" tableValues="0.059 0.188 0.306 0.616"/>
+          <feFuncG type="discrete" tableValues="0.220 0.392 0.545 0.749"/>
+          <feFuncB type="discrete" tableValues="0.059 0.188 0.306 0.616"/>
+      </feComponentTransfer>`,
+      'ypp-fx-aerochrome': `<feColorMatrix type="matrix"
+          values="0   1   0   0   0
+                  0   0   1   0   0
+                 -0.5 0  0.2  0   0.1
+                  0   0   0   1   0"/>`,
+      'ypp-fx-selective-red': `<feColorMatrix in="SourceGraphic" type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feColorMatrix in="SourceGraphic" type="matrix"
+          values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  4 -2 -2 0 -0.1" result="maskRaw"/>
+      <feComponentTransfer in="maskRaw" result="mask">
+          <feFuncA type="linear" slope="5" intercept="0"/>
+      </feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="mask" operator="in" result="isolated"/>
+      <feBlend in="isolated" in2="gray" mode="normal"/>`,
+      'ypp-fx-selective-blue': `<feColorMatrix in="SourceGraphic" type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feColorMatrix in="SourceGraphic" type="matrix"
+          values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  -2 -2 4 0 -0.1" result="maskRaw"/>
+      <feComponentTransfer in="maskRaw" result="mask">
+          <feFuncA type="linear" slope="5" intercept="0"/>
+      </feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="mask" operator="in" result="isolated"/>
+      <feBlend in="isolated" in2="gray" mode="normal"/>`,
+      'ypp-fx-bloom': `<!-- Extract bright highlights -->
+      <feComponentTransfer in="SourceGraphic" result="highlights">
+          <feFuncR type="linear" slope="2" intercept="-1"/>
+          <feFuncG type="linear" slope="2" intercept="-1"/>
+          <feFuncB type="linear" slope="2" intercept="-1"/>
+      </feComponentTransfer>
+      <feGaussianBlur in="highlights" stdDeviation="12" result="blurred"/>
+      <!-- Warm Halation Tint -->
+      <feColorMatrix in="blurred" type="matrix" 
+          values="1.3 0 0 0 0
+                  0 0.9 0 0 0
+                  0 0 0.7 0 0
+                  0 0 0 1 0" result="glow"/>
+      <feBlend in="glow" in2="SourceGraphic" mode="screen"/>`,
+      'ypp-fx-watercolor': `<feGaussianBlur stdDeviation="2.5" result="blurred"/>
+      <feComponentTransfer in="blurred" result="boosted">
+          <feFuncR type="linear" slope="1.1" intercept="-0.05"/>
+          <feFuncG type="linear" slope="1.1" intercept="-0.05"/>
+          <feFuncB type="linear" slope="1.1" intercept="-0.05"/>
+      </feComponentTransfer>
+      <feConvolveMatrix order="3 3" kernelMatrix="0 -0.3 0 -0.3 2.2 -0.3 0 -0.3 0" in="boosted"/>`,
+      'ypp-fx-cyberpunk': `<feComponentTransfer>
+          <feFuncR type="table" tableValues="0.0 0.05 0.3 0.75 1.0"/>
+          <feFuncG type="table" tableValues="0.0 0.1  0.4 0.8  1.0"/>
+          <feFuncB type="table" tableValues="0.2 0.5  0.8 0.9  1.0"/>
+      </feComponentTransfer>`,
+      'ypp-fx-vhs-pro': `<feOffset in="SourceGraphic" dx="5" dy="0" result="rShift"/>
+      <feOffset in="SourceGraphic" dx="-5" dy="0" result="bShift"/>
+      <feColorMatrix in="rShift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="rOnly"/>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gOnly"/>
+      <feColorMatrix in="bShift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="bOnly"/>
+      <feBlend mode="screen" in="rOnly" in2="gOnly" result="rg"/>
+      <feBlend mode="screen" in="rg" in2="bOnly"/>`,
+      'ypp-fx-anime-warm': `<feComponentTransfer>
+          <feFuncR type="table" tableValues="0.1 0.4 0.7 0.9 1.0"/>
+          <feFuncG type="table" tableValues="0.05 0.35 0.65 0.85 0.95"/>
+          <feFuncB type="table" tableValues="0.0 0.25 0.5 0.7 0.85"/>
+      </feComponentTransfer>`,
+      'ypp-fx-anime-cold': `<feColorMatrix type="matrix" values="0.7 0.1 0.1 0 0  0 0.85 0.15 0 0  0 0.1 0.9 0 0.05  0 0 0 1 0"/>`,
+      'ypp-fx-cross-process': `<feComponentTransfer>
+          <feFuncR type="table" tableValues="0.0 0.05 0.1 0.6 1.2"/>
+          <feFuncG type="table" tableValues="0.0 0.1  0.3 0.7 1.0"/>
+          <feFuncB type="table" tableValues="0.2 0.6  0.9 0.8 0.6"/>
+      </feComponentTransfer>`,
+      'ypp-fx-duotone-teal': `<feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+      <feComponentTransfer in="gray">
+          <feFuncR type="table" tableValues="0.0 0.8 1.0"/>
+          <feFuncG type="table" tableValues="0.2 0.5 0.7"/>
+          <feFuncB type="table" tableValues="0.3 0.1 0.0"/>
+      </feComponentTransfer>`,
+      'ypp-fx-golden-lut': `<feComponentTransfer>
+          <feFuncR type="table" tableValues="0.05 0.4 0.9 1.1"/>
+          <feFuncG type="table" tableValues="0.02 0.3 0.7 0.9"/>
+          <feFuncB type="table" tableValues="0.0  0.1 0.2 0.4"/>
+      </feComponentTransfer>`
+  };
 
-    svg.innerHTML = `
-            <defs>
-                <filter id="ypp-fx-matrix" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
-                </filter>
-                <filter id="ypp-fx-edge" color-interpolation-filters="sRGB">
-                    <feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1"/>
-                </filter>
-                <filter id="ypp-fx-emboss" color-interpolation-filters="sRGB">
-                    <feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="-2 -1 0 -1 1 1 0 1 2"/>
-                </filter>
-                <filter id="ypp-fx-posterize" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="discrete" tableValues="0 0.1 0.25 0.5 0.75 0.9 1"/>
-                        <feFuncG type="discrete" tableValues="0 0.1 0.25 0.5 0.75 0.9 1"/>
-                        <feFuncB type="discrete" tableValues="0 0.1 0.25 0.5 0.75 0.9 1"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-colorize" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray">
-                        <feFuncR type="table" tableValues="0.05 0.3 0.8 1.0 1.0"/>
-                        <feFuncG type="table" tableValues="0.00 0.0 0.1 0.7 1.0"/>
-                        <feFuncB type="table" tableValues="0.10 0.4 0.3 0.1 1.0"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-technicolor" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray">
-                        <feFuncR type="table" tableValues="0.0 0.3 0.7 0.9 1.0"/>
-                        <feFuncG type="table" tableValues="0.1 0.2 0.5 0.8 0.95"/>
-                        <feFuncB type="table" tableValues="0.2 0.4 0.2 0.4 0.9"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-dreamcolor" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray">
-                        <feFuncR type="table" tableValues="0.1 0.4 0.8 0.5 0.9"/>
-                        <feFuncG type="table" tableValues="0.0 0.2 0.5 0.8 1.0"/>
-                        <feFuncB type="table" tableValues="0.3 0.5 0.7 0.9 0.9"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-glitch" color-interpolation-filters="sRGB">
-                    <feOffset in="SourceGraphic" dx="6" dy="0" result="red-shift"/>
-                    <feOffset in="SourceGraphic" dx="-6" dy="0" result="blue-shift"/>
-                    <feColorMatrix in="red-shift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red-only"/>
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green-only"/>
-                    <feColorMatrix in="blue-shift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue-only"/>
-                    <feBlend mode="screen" in="red-only" in2="green-only" result="red-green"/>
-                    <feBlend mode="screen" in="red-green" in2="blue-only"/>
-                </filter>
-                <filter id="ypp-fx-sketch" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feGaussianBlur in="gray" stdDeviation="4" result="blur"/>
-                    <feComponentTransfer in="blur" result="invertedBlur">
-                        <feFuncR type="linear" slope="-1" intercept="1"/>
-                        <feFuncG type="linear" slope="-1" intercept="1"/>
-                        <feFuncB type="linear" slope="-1" intercept="1"/>
-                    </feComponentTransfer>
-                    <feBlend mode="color-dodge" in="invertedBlur" in2="gray" result="sketch"/>
-                    <feComponentTransfer in="sketch">
-                        <feFuncR type="linear" slope="1.2" intercept="-0.2"/>
-                        <feFuncG type="linear" slope="1.2" intercept="-0.2"/>
-                        <feFuncB type="linear" slope="1.2" intercept="-0.2"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-colored-pencil" color-interpolation-filters="sRGB">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
-                    <feComponentTransfer in="blur" result="invertedBlur">
-                        <feFuncR type="linear" slope="-1" intercept="1"/>
-                        <feFuncG type="linear" slope="-1" intercept="1"/>
-                        <feFuncB type="linear" slope="-1" intercept="1"/>
-                    </feComponentTransfer>
-                    <feBlend mode="color-dodge" in="invertedBlur" in2="SourceGraphic" result="sketch"/>
-                    <feComponentTransfer in="sketch">
-                        <feFuncR type="linear" slope="1.2" intercept="-0.2"/>
-                        <feFuncG type="linear" slope="1.2" intercept="-0.2"/>
-                        <feFuncB type="linear" slope="1.2" intercept="-0.2"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-pop-art" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="discrete" tableValues="0.1 0.4 0.8 1"/>
-                        <feFuncG type="discrete" tableValues="0.1 0.4 0.8 1"/>
-                        <feFuncB type="discrete" tableValues="0.1 0.4 0.8 1"/>
-                    </feComponentTransfer>
-                    <feColorMatrix type="matrix" values="1 0 0 0 0.1  0 1 0 0 0.1  0 0 1 0 0.1  0 0 0 1 0"/>
-                </filter>
-                <filter id="ypp-fx-8bit" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
-                        <feFuncG type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
-                        <feFuncB type="discrete" tableValues="0 0.25 0.5 0.75 1"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-manga-bw" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray" result="highContrast">
-                        <feFuncR type="discrete" tableValues="0 1"/>
-                        <feFuncG type="discrete" tableValues="0 1"/>
-                        <feFuncB type="discrete" tableValues="0 1"/>
-                    </feComponentTransfer>
-                    <feConvolveMatrix order="3 3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" in="gray" result="edge"/>
-                    <feComponentTransfer in="edge" result="invertedEdge">
-                        <feFuncR type="linear" slope="-1" intercept="1"/>
-                        <feFuncG type="linear" slope="-1" intercept="1"/>
-                        <feFuncB type="linear" slope="-1" intercept="1"/>
-                    </feComponentTransfer>
-                    <feBlend mode="multiply" in="highContrast" in2="invertedEdge"/>
-                </filter>
-                <filter id="ypp-fx-neon-glow" color-interpolation-filters="sRGB">
-                    <feGaussianBlur stdDeviation="3" result="blur"/>
-                    <feComponentTransfer in="blur" result="glow">
-                        <feFuncR type="linear" slope="1.5"/>
-                        <feFuncG type="linear" slope="1.5"/>
-                        <feFuncB type="linear" slope="1.5"/>
-                    </feComponentTransfer>
-                    <feBlend mode="screen" in="glow" in2="SourceGraphic"/>
-                </filter>
-                <filter id="ypp-fx-predator" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray">
-                        <feFuncR type="table" tableValues="0 0 0.5 1 1 1 0.5"/>
-                        <feFuncG type="table" tableValues="0 0 1 1 0 0 0"/>
-                        <feFuncB type="table" tableValues="1 1 0 0 0 0 0"/>
-                    </feComponentTransfer>
-                </filter>
+  static injectSpecialEffectsSVG(filterId) {
+    if (!filterId || document.getElementById(filterId)) return;
+    
+    let svg = document.getElementById('ypp-special-fx-defs');
+    let defs;
+    if (!svg) {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        svg = document.createElementNS(svgNS, 'svg');
+        svg.id = 'ypp-special-fx-defs';
+        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+        defs = document.createElementNS(svgNS, 'defs');
+        svg.appendChild(defs);
+        document.body.appendChild(svg);
+    } else {
+        defs = svg.querySelector('defs');
+    }
 
-                <!-- V4: Gameboy DMG-01 — strict 4-shade green palette -->
-                <filter id="ypp-fx-gameboy" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray">
-                        <feFuncR type="discrete" tableValues="0.059 0.188 0.306 0.616"/>
-                        <feFuncG type="discrete" tableValues="0.220 0.392 0.545 0.749"/>
-                        <feFuncB type="discrete" tableValues="0.059 0.188 0.306 0.616"/>
-                    </feComponentTransfer>
-                </filter>
-
-                <!-- V4: Aerochrome / Kodak Infrared Film -->
-                <filter id="ypp-fx-aerochrome" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix"
-                        values="0   1   0   0   0
-                                0   0   1   0   0
-                               -0.5 0  0.2  0   0.1
-                                0   0   0   1   0"/>
-                </filter>
-
-                <!-- V4: Selective Red (Sin City) — full B&W except vivid reds -->
-                <filter id="ypp-fx-selective-red" color-interpolation-filters="sRGB">
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feColorMatrix in="SourceGraphic" type="matrix"
-                        values="0 0 0 0 0
-                                0 0 0 0 0
-                                0 0 0 0 0
-                                4 -2 -2 0 -0.1" result="maskRaw"/>
-                    <feComponentTransfer in="maskRaw" result="mask">
-                        <feFuncA type="linear" slope="5" intercept="0"/>
-                    </feComponentTransfer>
-                    <feComposite in="SourceGraphic" in2="mask" operator="in" result="isolated"/>
-                    <feBlend in="isolated" in2="gray" mode="normal"/>
-                </filter>
-
-                <!-- V4: Selective Blue (Cold Steel) — full B&W except blues -->
-                <filter id="ypp-fx-selective-blue" color-interpolation-filters="sRGB">
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feColorMatrix in="SourceGraphic" type="matrix"
-                        values="0 0 0 0 0
-                                0 0 0 0 0
-                                0 0 0 0 0
-                                -2 -2 4 0 -0.1" result="maskRaw"/>
-                    <feComponentTransfer in="maskRaw" result="mask">
-                        <feFuncA type="linear" slope="5" intercept="0"/>
-                    </feComponentTransfer>
-                    <feComposite in="SourceGraphic" in2="mask" operator="in" result="isolated"/>
-                    <feBlend in="isolated" in2="gray" mode="normal"/>
-                </filter>
-
-                <!-- V4: Cinematic Bloom & Halation -->
-                <filter id="ypp-fx-bloom" color-interpolation-filters="sRGB">
-                    <!-- Extract bright highlights -->
-                    <feComponentTransfer in="SourceGraphic" result="highlights">
-                        <feFuncR type="linear" slope="2" intercept="-1"/>
-                        <feFuncG type="linear" slope="2" intercept="-1"/>
-                        <feFuncB type="linear" slope="2" intercept="-1"/>
-                    </feComponentTransfer>
-                    <feGaussianBlur in="highlights" stdDeviation="12" result="blurred"/>
-                    <!-- Warm Halation Tint -->
-                    <feColorMatrix in="blurred" type="matrix" 
-                        values="1.3 0 0 0 0
-                                0 0.9 0 0 0
-                                0 0 0.7 0 0
-                                0 0 0 1 0" result="glow"/>
-                    <feBlend in="glow" in2="SourceGraphic" mode="screen"/>
-                </filter>
-
-                <!-- V4: Watercolor — soft wet-paint look -->
-                <filter id="ypp-fx-watercolor" color-interpolation-filters="sRGB">
-                    <feGaussianBlur stdDeviation="2.5" result="blurred"/>
-                    <feComponentTransfer in="blurred" result="boosted">
-                        <feFuncR type="linear" slope="1.1" intercept="-0.05"/>
-                        <feFuncG type="linear" slope="1.1" intercept="-0.05"/>
-                        <feFuncB type="linear" slope="1.1" intercept="-0.05"/>
-                    </feComponentTransfer>
-                    <feConvolveMatrix order="3 3" kernelMatrix="0 -0.3 0 -0.3 2.2 -0.3 0 -0.3 0" in="boosted"/>
-                </filter>
-
-                <!-- V4: Cyberpunk 2077 — neon cyan/magenta split-tone -->
-                <filter id="ypp-fx-cyberpunk" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="table" tableValues="0.0 0.05 0.3 0.75 1.0"/>
-                        <feFuncG type="table" tableValues="0.0 0.1  0.4 0.8  1.0"/>
-                        <feFuncB type="table" tableValues="0.2 0.5  0.8 0.9  1.0"/>
-                    </feComponentTransfer>
-                </filter>
-
-                <!-- V4: VHS Pro — heavy chroma lateral bleed -->
-                <filter id="ypp-fx-vhs-pro" color-interpolation-filters="sRGB">
-                    <feOffset in="SourceGraphic" dx="5" dy="0" result="rShift"/>
-                    <feOffset in="SourceGraphic" dx="-5" dy="0" result="bShift"/>
-                    <feColorMatrix in="rShift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="rOnly"/>
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gOnly"/>
-                    <feColorMatrix in="bShift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="bOnly"/>
-                    <feBlend mode="screen" in="rOnly" in2="gOnly" result="rg"/>
-                    <feBlend mode="screen" in="rg" in2="bOnly"/>
-                </filter>
-
-                <!-- V4: Glitch Art — RGB split and displacement -->
-                <filter id="ypp-fx-glitch" color-interpolation-filters="sRGB">
-                    <feOffset in="SourceGraphic" dx="15" dy="5" result="rShift"/>
-                    <feOffset in="SourceGraphic" dx="-15" dy="-5" result="bShift"/>
-                    <feColorMatrix in="rShift" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.8 0" result="rOnly"/>
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 0.8 0" result="gOnly"/>
-                    <feColorMatrix in="bShift" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 0.8 0" result="bOnly"/>
-                    <feBlend in="rOnly" in2="gOnly" mode="screen" result="rgBlend"/>
-                    <feBlend in="rgBlend" in2="bOnly" mode="screen"/>
-                </filter>
-
-                <!-- V7 LUTs: Anime & Cinematic Worlds -->
-                <filter id="ypp-fx-anime-warm" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="table" tableValues="0.1 0.4 0.7 0.9 1.0"/>
-                        <feFuncG type="table" tableValues="0.05 0.35 0.65 0.85 0.95"/>
-                        <feFuncB type="table" tableValues="0.0 0.25 0.5 0.7 0.85"/>
-                    </feComponentTransfer>
-                </filter>
-                <filter id="ypp-fx-anime-cold" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.7 0.1 0.1 0 0  0 0.85 0.15 0 0  0 0.1 0.9 0 0.05  0 0 0 1 0"/>
-                </filter>
-
-                <!-- V4: Cross Process (E6 in C-41) — film cross-processing -->
-                <filter id="ypp-fx-cross-process" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="table" tableValues="0.0 0.05 0.1 0.6 1.2"/>
-                        <feFuncG type="table" tableValues="0.0 0.1  0.3 0.7 1.0"/>
-                        <feFuncB type="table" tableValues="0.2 0.6  0.9 0.8 0.6"/>
-                    </feComponentTransfer>
-                </filter>
-
-                <!-- V4: Duotone Teal-Orange — cinematic grade -->
-                <filter id="ypp-fx-duotone-teal" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
-                    <feComponentTransfer in="gray">
-                        <feFuncR type="table" tableValues="0.0 0.8 1.0"/>
-                        <feFuncG type="table" tableValues="0.2 0.5 0.7"/>
-                        <feFuncB type="table" tableValues="0.3 0.1 0.0"/>
-                    </feComponentTransfer>
-                </filter>
-
-                <!-- V4: Golden Sunset LUT -->
-                <filter id="ypp-fx-golden-lut" color-interpolation-filters="sRGB">
-                    <feComponentTransfer>
-                        <feFuncR type="table" tableValues="0.05 0.4 0.9 1.1"/>
-                        <feFuncG type="table" tableValues="0.02 0.3 0.7 0.9"/>
-                        <feFuncB type="table" tableValues="0.0  0.1 0.2 0.4"/>
-                    </feComponentTransfer>
-                </filter>
-            </defs>
-        `;
-    document.body.appendChild(svg);
+    const filterContent = this._SVG_EFFECT_MAP[filterId];
+    if (filterContent) {
+        const temp = document.createElement('div');
+        temp.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg"><filter id="${filterId}" color-interpolation-filters="sRGB">${filterContent}</filter></svg>`;
+        const newFilter = temp.querySelector('filter');
+        if (newFilter) {
+            defs.appendChild(newFilter);
+        }
+    }
   }
 
   static injectOverlayCSS() {
@@ -731,15 +637,23 @@ export class VideoFiltersOverlay {
     document.body.appendChild(svg);
   }
 
-  static updateDynamicSVGFilter(adj) {
-    this.setupDynamicSVGFilter();
-    const curves = document.getElementById('ypp-svg-curves');
-    if (!curves) return;
+  static _pendingDynamicUpdate = null;
 
-    const steps = 20;
-    const rTable = [],
-      gTable = [],
-      bTable = [];
+  static updateDynamicSVGFilter(adj) {
+    if (this._pendingDynamicUpdate) {
+      cancelAnimationFrame(this._pendingDynamicUpdate);
+    }
+    
+    this._pendingDynamicUpdate = requestAnimationFrame(() => {
+      this._pendingDynamicUpdate = null;
+      this.setupDynamicSVGFilter();
+      const curves = document.getElementById('ypp-svg-curves');
+      if (!curves) return;
+
+      const steps = 32; // Reduced steps for performance, still smooth enough
+      const rTable = [];
+      const gTable = [];
+      const bTable = [];
 
     for (let i = 0; i <= steps; i++) {
       let t = i / steps;
@@ -791,9 +705,10 @@ export class VideoFiltersOverlay {
     curves
       .querySelector('feFuncG')
       .setAttribute('tableValues', gTable.map((n) => n.toFixed(3)).join(' '));
-    curves
-      .querySelector('feFuncB')
-      .setAttribute('tableValues', bTable.map((n) => n.toFixed(3)).join(' '));
+      curves
+        .querySelector('feFuncB')
+        .setAttribute('tableValues', bTable.map((n) => n.toFixed(3)).join(' '));
+    });
   }
 }
 

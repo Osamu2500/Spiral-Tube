@@ -120,6 +120,13 @@ export class VideoFiltersUI {
             @keyframes ypp-card-enter { from { opacity: 0; transform: translateY(12px) scale(0.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
             @keyframes ypp-spin-glow { 100% { transform: rotate(360deg); } }
 
+            /* Hardware Accelerated Video Filtering */
+            .ypp-cinema-active {
+                filter: var(--ypp-video-filter) !important;
+                will-change: filter !important;
+                transform: translateZ(0) !important;
+            }
+
             /* Modern Tab Buttons */
             .ypp-cinema-tab-btn { flex: 1; padding: 6px 10px; background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 600; cursor: pointer; position: relative; transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
             .ypp-cinema-tab-btn::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0%; height: 2px; background: #fff; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(-50%); border-radius: 2px 2px 0 0; }
@@ -641,7 +648,8 @@ export class VideoFiltersUI {
             
             .ypp-vcp-slider { 
                 -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px; 
-                background: rgba(255,255,255,0.1); outline: none; cursor: pointer;
+                background: linear-gradient(to right, var(--track-color, rgba(255,255,255,0.55)) 0%, var(--track-color, rgba(255,255,255,0.55)) var(--track-fill, 0%), rgba(255,255,255,0.1) var(--track-fill, 0%));
+                outline: none; cursor: pointer;
                 box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
             }
             .ypp-vcp-slider::-webkit-slider-thumb { 
@@ -940,13 +948,14 @@ export class VideoFiltersUI {
                 slider.min = cfg.min; slider.max = cfg.max;
                 slider.value = currentValue;
 
-                // Live track fill
+                // Live track fill via CSS variables (hardware optimized)
                 const updateTrack = (v) => {
                     const pct = trackPct(Number(v), cfg.min, cfg.max);
                     const color = modified || Math.abs(Number(v) - cfg.def) > 0.01
                         ? 'rgba(62,166,255,0.8)'
                         : 'rgba(255,255,255,0.55)';
-                    slider.style.background = `linear-gradient(to right, ${color} 0%, ${color} ${pct}%, rgba(255,255,255,0.1) ${pct}%)`;
+                    slider.style.setProperty('--track-fill', pct + '%');
+                    slider.style.setProperty('--track-color', color);
                 };
                 updateTrack(currentValue);
 

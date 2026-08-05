@@ -159,12 +159,17 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
 
         window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
-        video.style.setProperty('filter', finalFilter, 'important');
+        // Hardware-accelerated CSS variable pipeline
+        video.classList.add('ypp-cinema-active');
+        video.style.setProperty('--ypp-video-filter', finalFilter);
+        
         this._syncOverlays(preset, adj);
     }
 
     _clearVideoFilters(video) {
-        video.style.setProperty('filter', 'none', 'important');
+        video.classList.remove('ypp-cinema-active');
+        video.style.removeProperty('--ypp-video-filter');
+        video.style.setProperty('filter', 'none', 'important'); // Fallback clear
         video.style.setProperty('opacity', '1', 'important');
         window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
     }
