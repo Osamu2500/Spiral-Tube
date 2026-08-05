@@ -428,6 +428,11 @@ export class VideoFiltersUI {
                 // Clear preview state FIRST — prevents mouseleave from reverting this commit
                 ctx._previewFilterIndex = undefined;
                 ctx.currentFilterIndex = index;
+                const f = FILTERS[index];
+                if (f.adjustments) {
+                    Object.assign(ctx.filterAdjustments, f.adjustments);
+                    if (f.intensity !== undefined) ctx.filterIntensity = f.intensity;
+                }
                 ctx._applyComputedFilter(video);
                 VideoFiltersUI.saveFilterSettings(ctx);
                 if (btn) { index > 0 ? btn.classList.add('active') : btn.classList.remove('active'); }
@@ -481,7 +486,17 @@ export class VideoFiltersUI {
         const renderFilteredList = (query = '') => {
             listContainer.innerHTML = '';
             const q = query.toLowerCase();
-            const FILTERS = window.YPP?.features?.VideoFiltersPresets?.FILTERS || [];
+            const baseFilters = window.YPP?.features?.VideoFiltersPresets?.FILTERS || [];
+            let customPresets = [];
+            try { customPresets = JSON.parse(localStorage.getItem('ypp-custom-presets') || '[]'); } catch {}
+            
+            // Deduplicate to avoid multiple runs pushing the same presets
+            customPresets.forEach(cp => {
+                if (!baseFilters.some(bf => bf.name === cp.name && bf.category === cp.category)) {
+                    baseFilters.push(cp);
+                }
+            });
+            const FILTERS = baseFilters;
 
             // Favorites at top — always open, only shown without search
             if (!query && currentFavs.length > 0) {
@@ -695,8 +710,31 @@ export class VideoFiltersUI {
             } catch { pasteBtn.textContent = '✗ Invalid'; }
             setTimeout(() => { pasteBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg> Paste Settings`; }, 2000);
         };
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'ypp-adj-cp-btn';
+        saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save Preset`;
+        saveBtn.onclick = () => {
+            const name = prompt('Enter a name for your custom preset:');
+            if (!name) return;
+            const newPreset = {
+                category: 'My Presets',
+                name: name.trim(),
+                css: 'none',
+                adjustments: { ...ctx.filterAdjustments },
+                intensity: ctx.filterIntensity,
+                preview: 'linear-gradient(135deg, #1f4037, #99f2c8)',
+                overlay: null
+            };
+            let custom = [];
+            try { custom = JSON.parse(localStorage.getItem('ypp-custom-presets') || '[]'); } catch {}
+            custom.push(newPreset);
+            localStorage.setItem('ypp-custom-presets', JSON.stringify(custom));
+            saveBtn.textContent = '✓ Saved!';
+            setTimeout(() => { saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save Preset`; }, 2000);
+        };
         cpRow.appendChild(copyBtn);
         cpRow.appendChild(pasteBtn);
+        cpRow.appendChild(saveBtn);
         wrap.appendChild(cpRow);
 
         // ── SVG icon map ──
