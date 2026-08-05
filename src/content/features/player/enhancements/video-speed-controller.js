@@ -148,9 +148,26 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         }
     }
 
+    _queryAllShadows(root, selector) {
+        const nodes = Array.from(root.querySelectorAll(selector));
+        const allElements = root.querySelectorAll('*');
+        for (const el of allElements) {
+            if (el.shadowRoot) {
+                nodes.push(...this._queryAllShadows(el.shadowRoot, selector));
+            }
+        }
+        return nodes;
+    }
+
     scanForVideos() {
         const selector = this.settings?.vscAudioSupport ? 'video, audio' : 'video';
-        document.querySelectorAll(selector).forEach(node => {
+        let mediaElements = [];
+        try {
+            mediaElements = this._queryAllShadows(document, selector);
+        } catch (e) {
+            mediaElements = Array.from(document.querySelectorAll(selector));
+        }
+        mediaElements.forEach(node => {
             this.attachToVideo(node);
         });
     }
@@ -310,10 +327,11 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         
         // Listen to document for mouse events because video players often have complex overlays
         // In iframes, moving the mouse anywhere should reveal the controls.
-        const doc = video.ownerDocument;
-        if (doc) {
-            this.addListener(doc, 'mousemove', triggerShow);
-            this.addListener(doc, 'click', () => { 
+        // Listen to the video container instead of document to prevent UI showing when reading other parts of the site
+        const container = video.parentElement || video;
+        if (container) {
+            this.addListener(container, 'mousemove', triggerShow);
+            this.addListener(container, 'click', () => { 
                 this._lastActiveVideo = video; 
                 triggerShow();
             });
@@ -399,6 +417,30 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         }
     }
 
+    showOSDFlash(video, text) {
+        const state = this.controllers.get(video);
+        if (!state) return;
+
+        let osd = video.parentElement.querySelector('.ypp-vsc-osd');
+        if (!osd) {
+            osd = document.createElement('div');
+            osd.className = 'ypp-vsc-osd';
+            video.parentElement.insertBefore(osd, video.nextSibling || video);
+        }
+
+        osd.textContent = text;
+        
+        // Retrigger animation
+        osd.classList.remove('ypp-vsc-osd-show');
+        void osd.offsetWidth; // trigger reflow
+        osd.classList.add('ypp-vsc-osd-show');
+        
+        if (state.osdTimeout) clearTimeout(state.osdTimeout);
+        state.osdTimeout = setTimeout(() => {
+            osd.classList.remove('ypp-vsc-osd-show');
+        }, 800);
+    }
+
     showController(video) {
         const state = this.controllers.get(video);
         if (!state) return;
@@ -459,6 +501,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         let current = video.playbackRate;
         let newSpeed = Math.round((current + delta) * 100) / 100;
         this.setSpeed(video, newSpeed);
+        this.showOSDFlash(video, newSpeed.toFixed(2) + 'x');
     }
 
     _debouncedSaveSpeed(speed) {
@@ -547,6 +590,7 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
                         case 'reset':
                         case 'preferred':
                             this.setSpeed(video, val);
+                            this.showOSDFlash(video, val.toFixed(2) + 'x');
                             break;
                         case 'mute':
                             video.muted = !video.muted;
