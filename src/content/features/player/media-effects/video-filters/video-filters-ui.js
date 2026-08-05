@@ -578,9 +578,21 @@ export class VideoFiltersUI {
             }
             .ypp-adj-section-header:hover { background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); }
             .ypp-adj-section-title {
-                display: flex; align-items: center; gap: 6px;
-                font-size: 9.5px; font-weight: 700; color: rgba(255,255,255,0.6);
-                letter-spacing: 0.8px; text-transform: uppercase;
+                display: flex; align-items: center; gap: 7px;
+                font-size: 9.5px; font-weight: 800; color: rgba(255,255,255,0.9);
+                letter-spacing: 1px; text-transform: uppercase;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7);
+            }
+            .ypp-adj-section-icon {
+                display: flex; align-items: center; justify-content: center;
+                flex-shrink: 0;
+                color: rgba(255,255,255,0.75);
+                filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+                transition: color 0.2s, transform 0.2s;
+            }
+            .ypp-adj-section-header:hover .ypp-adj-section-icon {
+                color: rgba(255,255,255,1);
+                transform: scale(1.1);
             }
             .ypp-adj-active-dot {
                 width: 5px; height: 5px; border-radius: 50%;
@@ -617,14 +629,14 @@ export class VideoFiltersUI {
                 box-shadow: 0 4px 12px rgba(62,166,255,0.1), inset 0 1px 1px rgba(255,255,255,0.15);
             }
             .ypp-adjust-card-header { display: flex; justify-content: space-between; align-items: center; }
-            .ypp-adjust-card-title { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.7); }
+            .ypp-adjust-card-title { display: flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.85); text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.6); }
             .ypp-adjust-card-val { 
                 font-size: 9px; font-weight: 700; color: #fff; 
                 background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 5px; 
                 letter-spacing: 0.3px; transition: background 0.2s, color 0.2s; 
             }
             .ypp-adjust-card.modified .ypp-adjust-card-val { background: rgba(62,166,255,0.3); color: #7dd3fc; }
-            .ypp-adj-reset { background: transparent; border: none; color: rgba(255,255,255,0.3); cursor: pointer; font-size: 13px; padding: 0 2px; line-height:1; transition: color 0.2s; }
+            .ypp-adj-reset { background: transparent; border: none; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 13px; padding: 0 2px; line-height:1; transition: color 0.2s; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
             .ypp-adj-reset:hover { color: #fff; }
             
             .ypp-vcp-slider { 
@@ -799,10 +811,18 @@ export class VideoFiltersUI {
             noiseReduce:`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`,
         };
 
+        // ── Section icon SVGs ──
+        const SECTION_ICONS = {
+            exposure: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
+            color:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5" fill="currentColor" opacity="0.9"/><circle cx="17.5" cy="10.5" r="2.5" fill="currentColor" opacity="0.55"/><circle cx="8.5" cy="7" r="2.5" fill="currentColor" opacity="0.7"/><path d="M12 22C6.5 22 2 17.5 2 12A10 10 0 0 1 12 2c0 2.76 2.24 5 5 5a5 5 0 0 1 5 5c0 5.52-4.48 10-10 10z"/></svg>`,
+            effects:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+            other:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>`,
+        };
+
         // ── Section definitions ──
         const SECTIONS = [
             {
-                id: 'exposure', label: '🌅 Exposure', open: true,
+                id: 'exposure', label: 'Exposure', open: true,
                 sliders: [
                     { id: 'exposure',    label: 'Exposure',    svgKey: 'exposure',    min: -100, max: 100, def: 0,   unit: '' },
                     { id: 'brightness',  label: 'Brightness',  svgKey: 'brightness',  min: 0,    max: 200, def: 100, unit: '%' },
@@ -813,7 +833,7 @@ export class VideoFiltersUI {
                 ]
             },
             {
-                id: 'color', label: '🎨 Color', open: true,
+                id: 'color', label: 'Color', open: true,
                 sliders: [
                     { id: 'saturate',    label: 'Saturation',  svgKey: 'saturate',    min: 0,   max: 300, def: 100, unit: '%' },
                     { id: 'vibrance',    label: 'Vibrance',    svgKey: 'vibrance',    min: 0,   max: 200, def: 100, unit: '%' },
@@ -825,7 +845,7 @@ export class VideoFiltersUI {
                 ]
             },
             {
-                id: 'effects', label: '✨ Effects', open: false,
+                id: 'effects', label: 'Effects', open: false,
                 sliders: [
                     { id: 'clarity',      label: 'Clarity',        svgKey: 'clarity',     min: 0,   max: 100, def: 0,   unit: '%' },
                     { id: 'dehaze',       label: 'Dehaze',         svgKey: 'dehaze',      min: 0,   max: 100, def: 0,   unit: '%' },
@@ -837,7 +857,7 @@ export class VideoFiltersUI {
                 ]
             },
             {
-                id: 'other', label: '🔧 Other', open: false,
+                id: 'other', label: 'Other', open: false,
                 sliders: [
                     { id: 'invert',      label: 'Invert',          svgKey: 'invert',      min: 0,   max: 100, def: 0,   unit: '%' },
                     { id: 'opacity',     label: 'Opacity',         svgKey: 'opacity',     min: 0,   max: 100, def: 100, unit: '%' },
@@ -874,6 +894,7 @@ export class VideoFiltersUI {
             if (anyModified) dot.classList.add('visible');
             hdr.innerHTML = `
                 <div class="ypp-adj-section-title">
+                    <span class="ypp-adj-section-icon">${SECTION_ICONS[section.id] || ''}</span>
                     <span>${section.label}</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:6px;">
