@@ -39,9 +39,21 @@ export class PlayerBarUI {
                 setTimeout(() => this.attemptInjection(), 2000);
                 setTimeout(() => this.attemptInjection(), 4000);
             };
-            ['yt-navigate-finish', 'yt-page-data-updated', 'yt-player-updated', 'yt-player-state-change'].forEach(evt => {
+            
+            this._dataUpdatedListener = () => {
+                // Debounce simple attempts on data update without resetting injectedButtons
+                if (this._attemptTimer) clearTimeout(this._attemptTimer);
+                this._attemptTimer = setTimeout(() => this.attemptInjection(), 300);
+            };
+
+            ['yt-navigate-finish'].forEach(evt => {
                 document.addEventListener(evt, this._navigateListener);
                 window.addEventListener(evt, this._navigateListener);
+            });
+            
+            ['yt-page-data-updated'].forEach(evt => {
+                document.addEventListener(evt, this._dataUpdatedListener);
+                window.addEventListener(evt, this._dataUpdatedListener);
             });
         }
         

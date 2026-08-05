@@ -55,7 +55,7 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         await super.disable();
         this._isEnabled = false;
         if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('channel-blacklist');
+            window.YPP.sharedObserver.unregister('channel-blacklist');
         }
         this._unhideAll();
         document.querySelectorAll('[data-ypp-blacklist-processed]').forEach(el => {

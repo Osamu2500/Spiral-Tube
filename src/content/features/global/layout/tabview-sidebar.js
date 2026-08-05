@@ -15,7 +15,7 @@ export class TabviewSidebar extends window.YPP.features.BaseFeature {
         super('TabviewSidebar');
         this.name = 'TabviewSidebar';
         this._headerEl = null;
-        this._activeTab = 'comments'; // In Seamless mode, Comments is the primary sidebar tab
+        this._activeTab = null;
     }
 
     getConfigKey() {
@@ -34,7 +34,12 @@ export class TabviewSidebar extends window.YPP.features.BaseFeature {
         await super.enable();
         document.body.classList.add('ypp-tabview-sidebar');
         if (!this._activeTab) {
-            this._activeTab = this._isSeamlessActive() ? 'comments' : 'related';
+            try {
+                const savedTab = localStorage.getItem('ypp-tabview-active-tab');
+                this._activeTab = savedTab || (this._isSeamlessActive() ? 'comments' : 'related');
+            } catch(e) {
+                this._activeTab = this._isSeamlessActive() ? 'comments' : 'related';
+            }
         }
         this._injectHeader();
         this._switchTab(this._activeTab);
@@ -85,7 +90,12 @@ export class TabviewSidebar extends window.YPP.features.BaseFeature {
             }
             document.body.classList.add('ypp-tabview-sidebar');
             if (!this._activeTab) {
-                this._activeTab = this._isSeamlessActive() ? 'comments' : 'related';
+                try {
+                    const savedTab = localStorage.getItem('ypp-tabview-active-tab');
+                    this._activeTab = savedTab || (this._isSeamlessActive() ? 'comments' : 'related');
+                } catch(e) {
+                    this._activeTab = this._isSeamlessActive() ? 'comments' : 'related';
+                }
             }
             this._injectHeader();
             this._switchTab(this._activeTab);
@@ -137,6 +147,10 @@ export class TabviewSidebar extends window.YPP.features.BaseFeature {
             btn.addEventListener('click', () => this._switchTab(tab.id));
             header.appendChild(btn);
         });
+        
+        const slider = document.createElement('div');
+        slider.className = 'ypp-tabview-slider';
+        header.appendChild(slider);
 
         secondaryInner.insertBefore(header, secondaryInner.firstChild);
         this._headerEl = header;
@@ -144,12 +158,13 @@ export class TabviewSidebar extends window.YPP.features.BaseFeature {
 
     _switchTab(tabId) {
         this._activeTab = tabId;
+        try { localStorage.setItem('ypp-tabview-active-tab', tabId); } catch(e) {}
+        document.body.setAttribute('data-ypp-active-tab', tabId);
+        
         if (!this._headerEl) return;
 
-        this._headerEl.querySelectorAll('.ypp-tabview-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.tab === tabId);
-        });
-
+        // Batch DOM reads
+        const headerBtns = Array.from(this._headerEl.querySelectorAll('.ypp-tabview-btn'));
         const related = document.querySelector('#related');
         const comments = document.querySelector('#comments');
         const below = document.querySelector('#below');
@@ -160,76 +175,53 @@ export class TabviewSidebar extends window.YPP.features.BaseFeature {
         const seamlessFeature = window.YPP?.featureManager?.getFeature('seamlessMode');
         const gridController = seamlessFeature?.gridController;
 
-        if (tabId === 'comments') {
-            if (below && secondaryInner && below.parentElement !== secondaryInner) {
-                secondaryInner.appendChild(below);
-            }
-            if (below) {
-                below.style.display = '';
-                Array.from(below.children).forEach(child => {
-                    if (child.id === 'comments' || child.tagName?.toLowerCase() === 'ytd-comments') {
-                        child.style.display = '';
-                    } else if (child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE' && child !== this._headerEl) {
-                        child.style.display = 'none';
-                    }
-                });
-            }
-            if (isSeamless && related && primaryInner && related.parentElement !== primaryInner) {
-                primaryInner.appendChild(related);
-                if (gridController && typeof gridController.enable === 'function') {
-                    gridController.enable();
+        // Batch DOM writes in rAF
+        window.requestAnimationFrame(() => {
+            const hideComments = document.body.classList.contains('ypp-hide-comments');
+            const hideRelated = document.body.classList.contains('ypp-hide-related');
+
+            headerBtns.forEach(btn => {
+                const tab = btn.dataset.tab;
+                btn.classList.toggle('active', tab === tabId);
+                
+                // Hide tabs if the user explicitly hid the content via declutter
+                if (tab === 'comments') {
+                    btn.style.display = hideComments ? 'none' : '';
+                } else if (tab === 'related') {
+                    btn.style.display = hideRelated ? 'none' : '';
                 }
-            }
-            if (related) {
-                related.style.display = isSeamless ? '' : 'none';
-            }
-            if (comments && typeof comments.scrollIntoView === 'function') {
-                comments.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        } else if (tabId === 'info') {
-            if (below && secondaryInner && below.parentElement !== secondaryInner) {
-                secondaryInner.appendChild(below);
-            }
-            if (below) {
-                below.style.display = '';
-                Array.from(below.children).forEach(child => {
-                    if (child.id === 'comments' || child.tagName?.toLowerCase() === 'ytd-comments') {
-                        child.style.display = 'none';
-                    } else if (child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE' && child !== this._headerEl) {
-                        child.style.display = '';
-                    }
-                });
-            }
-            if (isSeamless && related && primaryInner && related.parentElement !== primaryInner) {
-                primaryInner.appendChild(related);
-                if (gridController && typeof gridController.enable === 'function') {
-                    gridController.enable();
+            });
+
+            // Physical DOM nodes only move when absolutely required (between primary and secondary)
+            // CSS handles all visibility via the data-ypp-active-tab attribute.
+            if (tabId === 'comments' || tabId === 'info') {
+                if (below && secondaryInner && below.parentElement !== secondaryInner) {
+                    secondaryInner.appendChild(below);
                 }
-            }
-            if (related) {
-                related.style.display = isSeamless ? '' : 'none';
-            }
-        } else if (tabId === 'related') {
-            if (isSeamless) {
-                // In Seamless mode, move #related into #secondary-inner for sidebar viewing
+                
+                if (isSeamless && related && primaryInner && related.parentElement !== primaryInner) {
+                    primaryInner.appendChild(related);
+                    if (gridController && typeof gridController.enable === 'function') {
+                        gridController.enable();
+                    }
+                }
+                
+                if (tabId === 'comments' && comments && typeof comments.scrollIntoView === 'function') {
+                    // Smooth scroll without blocking main thread execution
+                    setTimeout(() => {
+                        if (document.body.classList.contains('ypp-hide-comments')) return;
+                        try { comments.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch(e) {}
+                    }, 50);
+                }
+            } else if (tabId === 'related') {
                 if (related && secondaryInner && related.parentElement !== secondaryInner) {
-                    if (gridController && typeof gridController.cleanup === 'function') {
+                    if (isSeamless && gridController && typeof gridController.cleanup === 'function') {
                         gridController.cleanup();
                     }
                     secondaryInner.appendChild(related);
                 }
-            } else {
-                if (related && secondaryInner && related.parentElement !== secondaryInner) {
-                    secondaryInner.appendChild(related);
-                }
             }
-            if (related) {
-                related.style.display = '';
-            }
-            if (below) {
-                below.style.display = 'none';
-            }
-        }
+        });
     }
 }
 

@@ -7,7 +7,8 @@ export class ThumbnailColorManager {
         this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
         this.enabled = false;
         this.activeStyle = '';
-        this.activeWaitObservers = new Set();
+        this.waitingElements = new Set();
+        this._pollingInterval = null;
 
         this.observer = new IntersectionObserver((entries) => {
             if (!this.enabled) return;
@@ -78,8 +79,11 @@ export class ThumbnailColorManager {
             this.mutationObserver.disconnect();
         }
 
-        this.activeWaitObservers.forEach(mo => mo.disconnect());
-        this.activeWaitObservers.clear();
+        if (this._pollingInterval) {
+            clearInterval(this._pollingInterval);
+            this._pollingInterval = null;
+        }
+        this.waitingElements.clear();
         document.querySelectorAll('[data-ypp-thumb-color]').forEach(el => {
             el.style.removeProperty('--ypp-thumb-color');
             el.removeAttribute('data-ypp-thumb-color');
@@ -118,29 +122,38 @@ export class ThumbnailColorManager {
         if (!isReady) {
             if (!el.hasAttribute('data-ypp-color-wait')) {
                 el.setAttribute('data-ypp-color-wait', 'true');
-                const mo = new MutationObserver(() => {
-                    const currentImg = this.getImage(el);
-                    const currentSrc = currentImg ? currentImg.src : null;
-                    if (currentSrc && !currentSrc.includes('data:image')) {
-                        mo.disconnect();
-                        this.activeWaitObservers.delete(mo);
-                        el.removeAttribute('data-ypp-color-wait');
-                        this.processElement(el);
-                    }
-                });
-                this.activeWaitObservers.add(mo);
-                // Observe the entire element for both DOM swaps and attribute changes
-                mo.observe(el, { 
-                    childList: true, 
-                    subtree: true, 
-                    attributes: true, 
-                    attributeFilter: ['src'] 
-                });
+                this.waitingElements.add(el);
+                this.startPolling();
             }
             return;
         }
 
         const cleanSrc = src;
+
+    startPolling() {
+        if (this._pollingInterval) return;
+        this._pollingInterval = setInterval(() => {
+            if (this.waitingElements.size === 0) {
+                clearInterval(this._pollingInterval);
+                this._pollingInterval = null;
+                return;
+            }
+            
+            for (const el of this.waitingElements) {
+                if (!document.body.contains(el)) {
+                    this.waitingElements.delete(el);
+                    continue;
+                }
+                const currentImg = this.getImage(el);
+                const currentSrc = currentImg ? currentImg.src : null;
+                if (currentSrc && !currentSrc.includes('data:image')) {
+                    this.waitingElements.delete(el);
+                    el.removeAttribute('data-ypp-color-wait');
+                    this.processElement(el);
+                }
+            }
+        }, 300); // Poll every 300ms
+    }
 
         if (this.cache.has(cleanSrc)) {
             const cached = this.cache.get(cleanSrc);

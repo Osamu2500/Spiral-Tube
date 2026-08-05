@@ -100,7 +100,14 @@
                 
                 // Initial feature application BEFORE page managers
                 if (this.featureManager) {
-                    this.featureManager.init(this.settings);
+                    const initFeatures = () => {
+                        this.featureManager.init(this.settings);
+                    };
+                    if (window.requestIdleCallback) {
+                        requestIdleCallback(initFeatures, { timeout: 1500 });
+                    } else {
+                        setTimeout(initFeatures, 1000);
+                    }
                 }
 
                 // Initialize Page Managers
@@ -128,6 +135,11 @@
                     }
                 } else {
                     this.pageManagers = [];
+                }
+
+                // Wait for body before updating context
+                if (!document.body) {
+                    await this.waitFor(() => document.body !== null, 10000);
                 }
 
                 this.updateContext();
@@ -230,7 +242,10 @@
             // Initialize and start the global shared DOMObserver
             // NOTE: The class lives at window.YPP.core.DOMObserver, not window.YPP.Utils.DOMObserver
             window.YPP.sharedObserver = window.YPP.sharedObserver || new window.YPP.core.DOMObserver();
-            window.YPP.sharedObserver.start();
+            // Start it only after the first page navigation so YouTube has time to paint
+            window.YPP.events.once('app:pageChange', () => {
+                window.YPP.sharedObserver.start();
+            });
 
             // Initialize EventDelegator
             window.YPP.sharedEventDelegator = window.YPP.sharedEventDelegator || new window.YPP.core.EventDelegator();
@@ -601,6 +616,21 @@
                         classes.delete('yt-spiral-tube-theme');
                     }
                     
+                    // V7 Zero-JS Declutter Architecture Toggles
+                    const toggleClass = (condition, className) => {
+                        if (condition) classes.add(className);
+                        else classes.delete(className);
+                    };
+
+                    toggleClass(this.settings?.hideMixes, 'ypp-hide-mixes');
+                    toggleClass(this.settings?.hidePlaylists, 'ypp-hide-playlists');
+                    toggleClass(this.settings?.hidePosts, 'ypp-hide-posts');
+                    toggleClass(this.settings?.hidePodcasts, 'ypp-hide-podcasts');
+                    toggleClass(this.settings?.hideChannelCards, 'ypp-hide-channel-cards');
+                    toggleClass(this.settings?.hideSearchMusic, 'ypp-hide-search-music');
+                    toggleClass(this.settings?.hidePromoShelves, 'ypp-hide-promos');
+                    toggleClass(this.settings?.hideExploreTopics, 'ypp-hide-explore-topics');
+                    
                     document.body.className = Array.from(classes).join(' ');
                 });
 
@@ -781,13 +811,8 @@
     // =========================================================================
 
     try {
-        // Wait for DOM if needed
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => YPPMainApp.start());
-        } else {
-            // DOM already loaded, start immediately
-            YPPMainApp.start();
-        }
+        // Start bootstrapping immediately to fetch settings parallel to DOM parsing
+        YPPMainApp.start();
     } catch (error) {
         console.error('[YPP] Fatal Bootstrap Error:', error);
         try {

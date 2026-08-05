@@ -954,14 +954,20 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
     _startGlobalObserver() {
         this._stopGlobalObserver(); // Prevent memory leaks
         
-        const targetNode = document.body;
-        if (targetNode) {
-            this.spaObserver = new MutationObserver(this._handleGlobalMutations);
-            this.spaObserver.observe(targetNode, {
-                childList: true,
-                subtree: true
-            });
-            this.logger.info('Global SPA Observer attached to document.body');
+        if (window.YPP && window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.register('seamless-global-spa', '#below, #related, #primary-inner, #secondary-inner', () => {
+                if (!this.isEnabled || !this.isWatchPage) return;
+                
+                // Clear the debounce timer if it exists
+                if (this._macroSwapTimer) clearTimeout(this._macroSwapTimer);
+                
+                // Debounce the macro layout swap to prevent UI thrashing
+                this._macroSwapTimer = setTimeout(() => {
+                    this.logger.info('Global SPA structural nodes detected, triggering macro swap.');
+                    this._executeMacroLayoutSwap();
+                }, 150);
+            }, false); // lazy = false, immediate = false to avoid running it just because they exist already
+            this.logger.info('Global SPA Observer attached via sharedObserver');
         }
     }
 
@@ -970,41 +976,12 @@ export class SeamlessMode extends window.YPP.features.BaseFeature {
      * @private
      */
     _stopGlobalObserver() {
-        if (this.spaObserver) {
-            this.spaObserver.disconnect();
-            this.spaObserver = null;
+        if (window.YPP && window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('seamless-global-spa');
         }
-    }
-
-    /**
-     * Highly optimized mutation handler for global SPA events
-     * @param {MutationRecord[]} mutations 
-     * @private
-     */
-    _handleGlobalMutations(mutations) {
-        if (!this.isEnabled || !this.isWatchPage) return;
-        
-        // We only care if massive structural nodes are injected (like `#related` or `#below`)
-        let triggerMacroSwap = false;
-        
-        for (let i = 0; i < mutations.length; i++) {
-            const mutation = mutations[i];
-            if (mutation.addedNodes.length > 0) {
-                for (let j = 0; j < mutation.addedNodes.length; j++) {
-                    const node = mutation.addedNodes[j];
-                    if (node.id === 'below' || node.id === 'related' || node.id === 'primary-inner' || node.id === 'secondary-inner') {
-                        triggerMacroSwap = true;
-                        break;
-                    }
-                }
-            }
-            if (triggerMacroSwap) break; // Fast exit
-        }
-        
-        if (triggerMacroSwap) {
-            this.logger.info('Macro DOM structural nodes detected in mutation, executing Swap Protocol');
-            // Defer execution slightly to avoid thrashing during rapid Polymer hydration
-            setTimeout(this._executeMacroLayoutSwap, 50);
+        if (this._macroSwapTimer) {
+            clearTimeout(this._macroSwapTimer);
+            this._macroSwapTimer = null;
         }
     }
 

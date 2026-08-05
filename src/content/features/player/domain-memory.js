@@ -173,6 +173,16 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             this._observer.disconnect();
             this._observer = null;
         }
+        
+        if (this._videoWatcherId && window.YPP?.sharedObserver) {
+            window.YPP.sharedObserver.unobserve(this._videoWatcherId);
+            this._videoWatcherId = null;
+        }
+        if (this._videoObservers) {
+            this._videoObservers.forEach(mo => mo.disconnect());
+            this._videoObservers = [];
+        }
+
         this._removePanel();
         if (this._domainBtn) {
             this._domainBtn.remove();
@@ -603,39 +613,54 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
      */
     _setupVideoSourceMonitoring() {
         if (this._observer) this._observer.disconnect();
+        this._observer = null;
 
-        this._observer = new MutationObserver((mutations) => {
-            let videoChanged = false;
-            for (const m of mutations) {
-                if (m.type === 'attributes' && (m.attributeName === 'src' || m.attributeName === 'currentsrc')) {
-                    if (m.target && m.target.tagName === 'VIDEO') {
-                        videoChanged = true;
-                        break;
-                    }
-                }
-                if (m.addedNodes?.length) {
-                    for (const node of m.addedNodes) {
-                        if (node.tagName === 'VIDEO' || node.querySelector?.('video')) {
+        const videoSelector = window.YPP?.CONSTANTS?.SELECTORS?.VIDEO?.[0] || 'video';
+        
+        if (window.YPP?.sharedObserver) {
+            this._videoWatcherId = window.YPP.sharedObserver.observeSelector(
+                videoSelector,
+                (video) => {
+                    this._attachLocalVideoObserver(video);
+                    this.restoreProfile(video, true);
+                },
+                true // continuous
+            );
+        } else {
+            // Fallback just in case, though sharedObserver should always be present
+            this._observer = new MutationObserver((mutations) => {
+                let videoChanged = false;
+                for (const m of mutations) {
+                    if (m.type === 'attributes' && (m.attributeName === 'src' || m.attributeName === 'currentsrc')) {
+                        if (m.target && m.target.tagName === 'VIDEO') {
                             videoChanged = true;
                             break;
                         }
                     }
+                    if (m.addedNodes?.length) {
+                        for (const node of m.addedNodes) {
+                            if (node.tagName === 'VIDEO' || node.querySelector?.('video')) {
+                                videoChanged = true;
+                                break;
+                            }
+                        }
+                    }
                 }
-            }
-            if (videoChanged) {
-                const video = this._getVideo();
-                if (video) {
-                    this.restoreProfile(video, true);
+                if (videoChanged) {
+                    const video = this._getVideo();
+                    if (video) {
+                        this.restoreProfile(video, true);
+                    }
                 }
-            }
-        });
+            });
 
-        this._observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['src', 'currentsrc']
-        });
+            this._observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['src', 'currentsrc']
+            });
+        }
 
         // Bug 3 fix: store handler reference so it can be removed in disable()
         this._loadedMetadataHandler = (e) => {
@@ -644,6 +669,28 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             }
         };
         document.addEventListener('loadedmetadata', this._loadedMetadataHandler, { capture: true });
+        
+        // Initial attach
+        const existingVideo = this._getVideo();
+        if (existingVideo) this._attachLocalVideoObserver(existingVideo);
+    }
+    
+    _attachLocalVideoObserver(video) {
+        if (!video || video._yppDomainMemoryObserved) return;
+        video._yppDomainMemoryObserved = true;
+        
+        const mo = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+                if (m.type === 'attributes' && (m.attributeName === 'src' || m.attributeName === 'currentsrc')) {
+                    this.restoreProfile(video, true);
+                    break;
+                }
+            }
+        });
+        mo.observe(video, { attributes: true, attributeFilter: ['src', 'currentsrc'] });
+        
+        this._videoObservers = this._videoObservers || [];
+        this._videoObservers.push(mo);
     }
 
     /**

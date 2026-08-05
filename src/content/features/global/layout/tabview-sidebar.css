@@ -25,8 +25,8 @@ body.ypp-tabview-sidebar .ypp-tabview-header {
     inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
   margin-bottom: 14px !important;
   position: sticky !important;
-  top: 70px !important;
-  z-index: 50 !important;
+  top: 64px !important; /* Tighter to the YouTube top bar */
+  z-index: 100 !important;
   transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
@@ -117,6 +117,18 @@ body.ypp-tabview-sidebar .ypp-tabview-content-wrapper {
   overflow-y: auto !important;
 }
 
+/* Fade-in Animation for Content Swapping */
+@keyframes ypp-tabview-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body.ypp-tabview-sidebar #comments,
+body.ypp-tabview-sidebar #related,
+body.ypp-tabview-sidebar #below {
+  animation: ypp-tabview-fade-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
 /* Custom Smooth Scrollbar for Tabview and Sidebar Comments */
 body.ypp-tabview-sidebar #secondary-inner::-webkit-scrollbar,
 body.ypp-tabview-sidebar .ypp-tabview-content-wrapper::-webkit-scrollbar,
@@ -154,3 +166,71 @@ body.ypp-tabview-sidebar #comments::-webkit-scrollbar-thumb:hover {
   }
 }
 
+/* 
+  CSS-based Tab Visibility 
+  Replaces the expensive Javascript child.style.display loop
+*/
+
+/* Hide all children of #below except comments/header when in Comments tab */
+body.ypp-tabview-sidebar[data-ypp-active-tab="comments"] #below > *:not(#comments):not(ytd-comments):not(.ypp-tabview-header):not(script):not(style) {
+    display: none !important;
+}
+
+/* Hide comments when in Info tab */
+body.ypp-tabview-sidebar[data-ypp-active-tab="info"] #below > #comments,
+body.ypp-tabview-sidebar[data-ypp-active-tab="info"] #below > ytd-comments {
+    display: none !important;
+}
+
+/* Hide #related when not in Related tab (unless seamless mode has put it in primary inner) */
+body.ypp-tabview-sidebar:not(.ypp-seamless-mode)[data-ypp-active-tab="comments"] #secondary-inner > #related,
+body.ypp-tabview-sidebar:not(.ypp-seamless-mode)[data-ypp-active-tab="info"] #secondary-inner > #related {
+    display: none !important;
+}
+
+/* Hide #below when in Related tab */
+body.ypp-tabview-sidebar[data-ypp-active-tab="related"] #secondary-inner > #below {
+    display: none !important;
+}
+/* Sliding Pill Background */
+body.ypp-tabview-sidebar .ypp-tabview-header {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+body.ypp-tabview-sidebar .ypp-tabview-slider {
+  position: absolute !important;
+  top: 6px !important;
+  bottom: 6px !important;
+  left: 6px !important;
+  width: calc((100% - 24px) / 3) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Move slider based on active tab attribute */
+body[data-ypp-active-tab="comments"] .ypp-tabview-slider {
+  transform: translateX(0) !important;
+}
+body[data-ypp-active-tab="info"] .ypp-tabview-slider {
+  transform: translateX(calc(100% + 6px)) !important;
+}
+body[data-ypp-active-tab="related"] .ypp-tabview-slider {
+  transform: translateX(calc(200% + 12px)) !important;
+}
+
+/* Reset button active states since slider acts as background */
+body.ypp-tabview-sidebar .ypp-tabview-btn {
+  z-index: 1 !important;
+}
+body.ypp-tabview-sidebar .ypp-tabview-btn.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}

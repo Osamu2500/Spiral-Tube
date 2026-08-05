@@ -75,57 +75,10 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
 
     onActivate() {
         this.utils.log('Global Layout Active', 'GLOBAL_MANAGER', 'info');
-        this._injectToggleStyles();
         this._startMonitoring();
     }
 
-    _injectToggleStyles() {
-        const STYLE_ID = 'ypp-player-toggle-styles';
-        if (document.getElementById(STYLE_ID)) return;
-        const style = document.createElement('style');
-        style.id = STYLE_ID;
-        style.textContent = `
-            /* Hide Video Title */
-            body.ypp-hide-video-title ytd-watch-metadata #title,
-            body.ypp-hide-video-title ytd-watch-metadata h1.ytd-watch-metadata,
-            body.ypp-hide-video-title ytd-video-primary-info-renderer #title,
-            body.ypp-hide-video-title ytd-video-primary-info-renderer h1 { display:none!important; }
 
-            /* Hide Channel Bar */
-            body.ypp-hide-channel-bar ytd-watch-metadata #owner,
-            body.ypp-hide-channel-bar ytd-video-secondary-info-renderer #owner,
-            body.ypp-hide-channel-bar ytd-watch-metadata ytd-video-owner-renderer,
-            body.ypp-hide-channel-bar ytd-video-secondary-info-renderer ytd-video-owner-renderer { display:none!important; }
-
-            /* Hide Description */
-            body.ypp-hide-video-description ytd-watch-metadata #description,
-            body.ypp-hide-video-description ytd-watch-metadata ytd-text-inline-expander,
-            body.ypp-hide-video-description ytd-video-secondary-info-renderer #description,
-            body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-text-inline-expander,
-            body.ypp-hide-video-description ytd-video-secondary-info-renderer ytd-expander { display:none!important; }
-
-            /* Hide Action Buttons */
-            body.ypp-hide-action-buttons ytd-watch-metadata #actions,
-            body.ypp-hide-action-buttons ytd-watch-metadata #top-level-buttons-computed,
-            body.ypp-hide-action-buttons ytd-watch-metadata ytd-segmented-like-dislike-button-renderer,
-            body.ypp-hide-action-buttons ytd-video-primary-info-renderer #actions,
-            body.ypp-hide-action-buttons ytd-video-primary-info-renderer #top-level-buttons-computed,
-            body.ypp-hide-action-buttons ytd-video-primary-info-renderer ytd-menu-renderer { display:none!important; }
-
-            /* Zen Mode — hide everything except the video */
-            body.ypp-zen-mode ytd-watch-metadata #title,
-            body.ypp-zen-mode ytd-watch-metadata h1.ytd-watch-metadata,
-            body.ypp-zen-mode ytd-watch-metadata #owner,
-            body.ypp-zen-mode ytd-watch-metadata ytd-video-owner-renderer,
-            body.ypp-zen-mode ytd-watch-metadata #actions,
-            body.ypp-zen-mode ytd-watch-metadata #top-level-buttons-computed,
-            body.ypp-zen-mode ytd-watch-metadata ytd-segmented-like-dislike-button-renderer,
-            body.ypp-zen-mode ytd-watch-metadata #description,
-            body.ypp-zen-mode ytd-watch-metadata ytd-text-inline-expander,
-            body.ypp-zen-mode #below { display:none!important; }
-        `;
-        document.head.appendChild(style);
-    }
 
     onDeactivate() {
         if (window.YPP?.sharedObserver) {

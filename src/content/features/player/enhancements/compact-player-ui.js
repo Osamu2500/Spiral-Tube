@@ -293,19 +293,11 @@ export class CompactPlayerUI extends window.YPP.features.BaseFeature {
                 this.requestRecalculate();
             });
             this.resizeObserver.observe(player);
-        }
-
-        const bottomBar = document.querySelector('.ytp-chrome-bottom');
-        if (bottomBar && window.MutationObserver) {
-            this.mutationObserver = new MutationObserver(() => {
-                this.requestRecalculate();
-            });
-            this.mutationObserver.observe(bottomBar, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['class', 'style', 'hidden']
-            });
+            
+            const leftControls = player.querySelector('.ytp-left-controls');
+            const rightControls = player.querySelector('.ytp-right-controls');
+            if (leftControls) this.resizeObserver.observe(leftControls);
+            if (rightControls) this.resizeObserver.observe(rightControls);
         }
     }
 
@@ -351,12 +343,12 @@ export class CompactPlayerUI extends window.YPP.features.BaseFeature {
 
     requestRecalculate() {
         if (this.recalculateDebounce) {
-            cancelAnimationFrame(this.recalculateDebounce);
+            clearTimeout(this.recalculateDebounce);
         }
-        this.recalculateDebounce = requestAnimationFrame(() => {
+        this.recalculateDebounce = setTimeout(() => {
             this.recalculateDebounce = null;
-            this.recalculateLayout();
-        });
+            requestAnimationFrame(() => this.recalculateLayout());
+        }, 150);
     }
 
     recalculateLayout() {

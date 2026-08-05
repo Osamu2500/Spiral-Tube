@@ -743,47 +743,93 @@ class CinematicController {
     setupPreviewWatcher() {
         if (this.state.previewWatcher) return;
         
-        const observer = new MutationObserver(() => {
-            const heroElement = document.querySelector('.netflix-hero');
-            if (!heroElement) return;
-            
-            let activePreview = document.querySelector(
-                'ytd-rich-item-renderer.netflix-active-preview ytd-video-preview:not(.ypp-projected-preview)'
-            );
+        if (window.YPP && window.YPP.sharedObserver) {
+            const watcherId = 'cinematic-preview-watcher';
+            window.YPP.sharedObserver.register(watcherId, 'ytd-video-preview:not(.ypp-projected-preview)', () => {
+                const heroElement = document.querySelector('.netflix-hero');
+                if (!heroElement) return;
+                
+                let activePreview = document.querySelector(
+                    'ytd-rich-item-renderer.netflix-active-preview ytd-video-preview:not(.ypp-projected-preview)'
+                );
 
-            if (!activePreview && document.querySelector('.netflix-active-preview')) {
-                const anyPreview = document.querySelector('ytd-video-preview:not(.ypp-projected-preview)');
-                if (anyPreview) {
-                    activePreview = anyPreview;
-                }
-            }
-            
-            if (activePreview) {
-                activePreview._yppOwnerCard = activePreview.closest('ytd-rich-item-renderer') || document.querySelector('.netflix-active-preview');
-                activePreview.classList.add('ypp-projected-preview');
-                const gradient = heroElement.querySelector('.netflix-hero-gradient');
-                if (gradient) {
-                    heroElement.insertBefore(activePreview, gradient);
-                } else {
-                    heroElement.appendChild(activePreview);
+                if (!activePreview && document.querySelector('.netflix-active-preview')) {
+                    const anyPreview = document.querySelector('ytd-video-preview:not(.ypp-projected-preview)');
+                    if (anyPreview) {
+                        activePreview = anyPreview;
+                    }
                 }
                 
-                if (!activePreview._yppLeaveBlocked) {
-                    const blockLeave = (e) => {
-                        e.stopPropagation();
-                        e.stopImmediatePropagation();
-                    };
-                    activePreview.addEventListener('mouseleave', blockLeave, true);
-                    activePreview.addEventListener('mouseout', blockLeave, true);
-                    activePreview._yppLeaveBlocked = true;
-                }
+                if (activePreview) {
+                    activePreview._yppOwnerCard = activePreview.closest('ytd-rich-item-renderer') || document.querySelector('.netflix-active-preview');
+                    activePreview.classList.add('ypp-projected-preview');
+                    const gradient = heroElement.querySelector('.netflix-hero-gradient');
+                    if (gradient) {
+                        heroElement.insertBefore(activePreview, gradient);
+                    } else {
+                        heroElement.appendChild(activePreview);
+                    }
+                    
+                    if (!activePreview._yppLeaveBlocked) {
+                        const blockLeave = (e) => {
+                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+                        };
+                        activePreview.addEventListener('mouseleave', blockLeave, true);
+                        activePreview.addEventListener('mouseout', blockLeave, true);
+                        activePreview._yppLeaveBlocked = true;
+                    }
 
-                this.syncMuteState();
-            }
-        });
-        
-        this.state.previewWatcher = this.observerManager.addObserver(observer);
-        observer.observe(document.documentElement, { childList: true, subtree: true });
+                    this.syncMuteState();
+                }
+            }, false);
+            
+            // Mock observer for cleanup compatibility
+            this.state.previewWatcher = { disconnect: () => window.YPP.sharedObserver.unregister(watcherId) };
+            this.observerManager.addObserver(this.state.previewWatcher);
+        } else {
+            const observer = new MutationObserver(() => {
+                const heroElement = document.querySelector('.netflix-hero');
+                if (!heroElement) return;
+                
+                let activePreview = document.querySelector(
+                    'ytd-rich-item-renderer.netflix-active-preview ytd-video-preview:not(.ypp-projected-preview)'
+                );
+
+                if (!activePreview && document.querySelector('.netflix-active-preview')) {
+                    const anyPreview = document.querySelector('ytd-video-preview:not(.ypp-projected-preview)');
+                    if (anyPreview) {
+                        activePreview = anyPreview;
+                    }
+                }
+                
+                if (activePreview) {
+                    activePreview._yppOwnerCard = activePreview.closest('ytd-rich-item-renderer') || document.querySelector('.netflix-active-preview');
+                    activePreview.classList.add('ypp-projected-preview');
+                    const gradient = heroElement.querySelector('.netflix-hero-gradient');
+                    if (gradient) {
+                        heroElement.insertBefore(activePreview, gradient);
+                    } else {
+                        heroElement.appendChild(activePreview);
+                    }
+                    
+                    if (!activePreview._yppLeaveBlocked) {
+                        const blockLeave = (e) => {
+                            e.stopPropagation();
+                            e.stopImmediatePropagation();
+                        };
+                        activePreview.addEventListener('mouseleave', blockLeave, true);
+                        activePreview.addEventListener('mouseout', blockLeave, true);
+                        activePreview._yppLeaveBlocked = true;
+                    }
+
+                    this.syncMuteState();
+                }
+            });
+            
+            this.state.previewWatcher = this.observerManager.addObserver(observer);
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
     }
 
     async initializeVideoPreview() {
@@ -1181,14 +1227,22 @@ class CinematicController {
             const existing = document.querySelector(selector);
             if (existing) return resolve(existing);
 
-            const observer = new MutationObserver(() => {
-                const found = document.querySelector(selector);
-                if (found) {
-                    observer.disconnect();
-                    resolve(found);
-                }
-            });
-            observer.observe(document.documentElement, { childList: true, subtree: true });
+            if (window.YPP && window.YPP.sharedObserver) {
+                const observerId = 'cinematic-wait-' + Date.now() + Math.random();
+                window.YPP.sharedObserver.register(observerId, selector, (elements) => {
+                    window.YPP.sharedObserver.unregister(observerId);
+                    resolve(elements[0]);
+                }, true); // immediate = true
+            } else {
+                const observer = new MutationObserver(() => {
+                    const found = document.querySelector(selector);
+                    if (found) {
+                        observer.disconnect();
+                        resolve(found);
+                    }
+                });
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+            }
         });
     }
 }
