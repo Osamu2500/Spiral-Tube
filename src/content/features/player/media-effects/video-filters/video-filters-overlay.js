@@ -165,6 +165,30 @@ export class VideoFiltersOverlay {
                 repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px)
             `;
       overlay.style.mixBlendMode = 'multiply';
+    } else if (type === 'cinemascope') {
+      overlay.style.boxShadow = 'inset 0 12vh 0 0 #000, inset 0 -12vh 0 0 #000';
+      const flare = document.createElement('div');
+      Object.assign(flare.style, {
+        position: 'absolute',
+        top: '30%',
+        left: '-100%',
+        width: '200%',
+        height: '4px',
+        background: 'linear-gradient(90deg, transparent, rgba(0, 150, 255, 0.4), rgba(255, 255, 255, 0.8), rgba(0, 150, 255, 0.4), transparent)',
+        filter: 'blur(3px)',
+        transform: 'scaleY(0.5)',
+        mixBlendMode: 'screen',
+        animation: 'ypp-flare-pan 8s cubic-bezier(0.25, 1, 0.5, 1) infinite',
+        pointerEvents: 'none',
+      });
+      overlay.appendChild(flare);
+      const styleId = 'ypp-cinemascope-anim';
+      if (!document.getElementById(styleId)) {
+          const s = document.createElement('style');
+          s.id = styleId;
+          s.textContent = `@keyframes ypp-flare-pan { 0% { transform: translateX(0) scaleY(0.5); opacity: 0; } 10% { opacity: 1; transform: translateX(20%) scaleY(1); } 90% { opacity: 1; transform: translateX(80%) scaleY(1); } 100% { transform: translateX(100%) scaleY(0.5); opacity: 0; } }`;
+          document.head.appendChild(s);
+      }
     }
   }
 
@@ -410,16 +434,52 @@ export class VideoFiltersOverlay {
                                 0   0   0   1   0"/>
                 </filter>
 
-                <!-- V4: Sin City — full B&W except vivid reds -->
-                <filter id="ypp-fx-sin-city" color-interpolation-filters="sRGB">
-                    <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                <!-- V4: Selective Red (Sin City) — full B&W except vivid reds -->
+                <filter id="ypp-fx-selective-red" color-interpolation-filters="sRGB">
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
                     <feColorMatrix in="SourceGraphic" type="matrix"
-                        values="1  -0.5 -0.5 0 0
-                                0   0    0  0 0
-                                0   0    0  0 0
-                                0   0    0  1 0" result="redChannel"/>
-                    <feComposite in="SourceGraphic" in2="redChannel" operator="in" result="redOnly"/>
-                    <feBlend in="gray" in2="redOnly" mode="screen"/>
+                        values="0 0 0 0 0
+                                0 0 0 0 0
+                                0 0 0 0 0
+                                4 -2 -2 0 -0.1" result="maskRaw"/>
+                    <feComponentTransfer in="maskRaw" result="mask">
+                        <feFuncA type="linear" slope="5" intercept="0"/>
+                    </feComponentTransfer>
+                    <feComposite in="SourceGraphic" in2="mask" operator="in" result="isolated"/>
+                    <feBlend in="isolated" in2="gray" mode="normal"/>
+                </filter>
+
+                <!-- V4: Selective Blue (Cold Steel) — full B&W except blues -->
+                <filter id="ypp-fx-selective-blue" color-interpolation-filters="sRGB">
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" result="gray"/>
+                    <feColorMatrix in="SourceGraphic" type="matrix"
+                        values="0 0 0 0 0
+                                0 0 0 0 0
+                                0 0 0 0 0
+                                -2 -2 4 0 -0.1" result="maskRaw"/>
+                    <feComponentTransfer in="maskRaw" result="mask">
+                        <feFuncA type="linear" slope="5" intercept="0"/>
+                    </feComponentTransfer>
+                    <feComposite in="SourceGraphic" in2="mask" operator="in" result="isolated"/>
+                    <feBlend in="isolated" in2="gray" mode="normal"/>
+                </filter>
+
+                <!-- V4: Cinematic Bloom & Halation -->
+                <filter id="ypp-fx-bloom" color-interpolation-filters="sRGB">
+                    <!-- Extract bright highlights -->
+                    <feComponentTransfer in="SourceGraphic" result="highlights">
+                        <feFuncR type="linear" slope="2" intercept="-1"/>
+                        <feFuncG type="linear" slope="2" intercept="-1"/>
+                        <feFuncB type="linear" slope="2" intercept="-1"/>
+                    </feComponentTransfer>
+                    <feGaussianBlur in="highlights" stdDeviation="12" result="blurred"/>
+                    <!-- Warm Halation Tint -->
+                    <feColorMatrix in="blurred" type="matrix" 
+                        values="1.3 0 0 0 0
+                                0 0.9 0 0 0
+                                0 0 0.7 0 0
+                                0 0 0 1 0" result="glow"/>
+                    <feBlend in="glow" in2="SourceGraphic" mode="screen"/>
                 </filter>
 
                 <!-- V4: Watercolor — soft wet-paint look -->

@@ -82,11 +82,13 @@ export const FILTERS = [
         // ── V4 Special Effects ──
         { category: 'Special Effects', name: 'Gameboy (DMG-01)', css: 'url(#ypp-fx-gameboy)', preview: 'linear-gradient(135deg, #0f380f, #9bbc0f)', overlay: 'gameboy' },
         { category: 'Special Effects', name: 'Aerochrome IR',   css: 'url(#ypp-fx-aerochrome) saturate(130%) contrast(115%)', preview: 'linear-gradient(135deg, #ff6b6b, #ffa07a)', overlay: null },
-        { category: 'Special Effects', name: 'Sin City Red',    css: 'url(#ypp-fx-sin-city) contrast(130%)', preview: 'linear-gradient(135deg, #1a1a1a, #cc0000)', overlay: null },
+        { category: 'Special Effects', name: 'Sin City (Red)',    css: 'url(#ypp-fx-selective-red) contrast(130%)', preview: 'linear-gradient(135deg, #1a1a1a, #cc0000)', overlay: null },
         { category: 'Special Effects', name: 'Watercolor',      css: 'url(#ypp-fx-watercolor) saturate(130%) brightness(105%)', preview: 'linear-gradient(135deg, #a8edea, #fed6e3)', overlay: null },
         { category: 'Special Effects', name: 'Cyberpunk 2077',  css: 'url(#ypp-fx-cyberpunk) contrast(130%) brightness(90%)', preview: 'linear-gradient(135deg, #00f2fe, #f857a6)', overlay: null },
         { category: 'Special Effects', name: 'VHS Pro',         css: 'url(#ypp-fx-vhs-pro) contrast(110%) brightness(95%) saturate(80%)', preview: 'linear-gradient(135deg, #833ab4, #fd1d1d)', overlay: 'chroma-bleed' },
         { category: 'Special Effects', name: 'Cross Process',   css: 'url(#ypp-fx-cross-process) contrast(120%) saturate(130%)', preview: 'linear-gradient(135deg, #f7971e, #ffd200)', overlay: null },
+        { category: 'Special Effects', name: 'Cold Steel (Blue)', css: 'url(#ypp-fx-selective-blue) contrast(130%)', preview: 'linear-gradient(135deg, #1a1a1a, #005c99)', overlay: null },
+        { category: 'Special Effects', name: 'Dreamy Bloom',    css: 'url(#ypp-fx-bloom) saturate(130%) contrast(110%)', preview: 'linear-gradient(135deg, #fbc2eb, #a6c1ee)', overlay: null },
 
         // ── V4 Cinematic LUTs ──
         { category: 'Cinematic', name: 'Duotone Teal',      css: 'url(#ypp-fx-duotone-teal) contrast(120%)', preview: 'linear-gradient(135deg, #2afadf, #4c83ff)', overlay: null },
@@ -169,6 +171,7 @@ export const FILTERS = [
         { category: 'Cinematic Worlds', name: 'Mad Max: Fury Road',  css: 'sepia(20%) saturate(130%) contrast(130%) brightness(110%)', preview: 'linear-gradient(135deg, #e65c00, #F9D423)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Lord of the Rings',   css: 'sepia(10%) saturate(115%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #38ef7d, #11998e)', overlay: null },
         { category: 'Cinematic Worlds', name: 'Blade Runner 2049',   css: 'sepia(10%) saturate(140%) contrast(130%) brightness(105%)', preview: 'linear-gradient(135deg, #f12711, #f5af19)', overlay: null },
+        { category: 'Cinematic Worlds', name: 'Cinemascope 2.35:1',  css: 'saturate(110%) contrast(115%)', preview: 'linear-gradient(135deg, #000000, #2b5876)', overlay: 'cinemascope' },
         { category: 'Cinematic Worlds', name: 'Marvel Studios',      css: 'saturate(125%) contrast(115%) brightness(105%)', preview: 'linear-gradient(135deg, #1cb5e0, #000046)', overlay: null },
 
         // ── Nature & Documentary ──
