@@ -410,10 +410,14 @@ export class VideoFiltersUI {
             const cssFilter = filter.css === 'none' ? 'grayscale(0%)' : filter.css;
             const previewBg = filter.preview ? filter.preview : 'linear-gradient(135deg, #ff4b4b, #4b6fff, #4bff8b)';
             
+            const isCustom = filter.category === 'My Presets';
+            const trashIcon = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>`;
+            
             card.innerHTML = `
                 <div class="ypp-filter-lut-preview" style="background:${previewBg}; filter:${cssFilter}"></div>
                 <span style="font-size:8.5px;font-weight:600;color:${isActive ? '#fff' : 'rgba(255,255,255,0.9)'};text-shadow:-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000, 0 1px 3px rgba(0,0,0,0.9);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;letter-spacing:0.2px;">${filter.name}</span>
                 ${isActive ? '<div class="ypp-card-check"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>' : ''}
+                ${isCustom ? `<button class="ypp-trash-btn" title="Delete Preset">${trashIcon}</button>` : ''}
                 <button class="ypp-star-btn" title="${isFav ? 'Remove from Favorites' : 'Add to Favorites'}" data-fav="${isFav}">${isFav ? starFilled : starOutline}</button>
             `;
             const starBtn = card.querySelector('.ypp-star-btn');
@@ -422,8 +426,22 @@ export class VideoFiltersUI {
                 toggleFav(index);
                 renderFilteredList(searchInput.value);
             };
+            const trashBtn = card.querySelector('.ypp-trash-btn');
+            if (trashBtn) {
+                trashBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (confirm(`Delete custom preset "${filter.name}"?`)) {
+                        let custom = [];
+                        try { custom = JSON.parse(localStorage.getItem('ypp-custom-presets') || '[]'); } catch {}
+                        custom = custom.filter(cp => cp.name !== filter.name);
+                        localStorage.setItem('ypp-custom-presets', JSON.stringify(custom));
+                        renderFilteredList(searchInput.value);
+                    }
+                };
+            }
+
             card.onclick = (e) => {
-                if (e.target.closest('.ypp-star-btn')) return;
+                if (e.target.closest('.ypp-star-btn') || e.target.closest('.ypp-trash-btn')) return;
                 e.stopPropagation();
                 // Clear preview state FIRST — prevents mouseleave from reverting this commit
                 ctx._previewFilterIndex = undefined;
@@ -432,6 +450,9 @@ export class VideoFiltersUI {
                 if (f.adjustments) {
                     Object.assign(ctx.filterAdjustments, f.adjustments);
                     if (f.intensity !== undefined) ctx.filterIntensity = f.intensity;
+                } else {
+                    Object.assign(ctx.filterAdjustments, { brightness: 100, contrast: 100, saturate: 100, hueRotate: 0, sepia: 0, grayscale: 0, invert: 0, blur: 0, opacity: 100, dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0, vibrance: 100, highlights: 0, shadows: 0, vignette: 0, exposure: 0, tint: 0, fade: 0, noiseReduction: 0 });
+                    ctx.filterIntensity = 100;
                 }
                 ctx._applyComputedFilter(video);
                 VideoFiltersUI.saveFilterSettings(ctx);
@@ -530,8 +551,10 @@ export class VideoFiltersUI {
         // Star button styles (once)
         this._injectStyle('ypp-star-btn-style', `
             .ypp-star-btn{background:transparent;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;width:20px;height:20px;opacity:0;transition:opacity 0.15s,transform 0.15s;transform:scale(0.85);}
-            .ypp-filter-card:hover .ypp-star-btn,.ypp-star-btn[data-fav="true"]{opacity:1;transform:scale(1);}
+            .ypp-trash-btn{background:transparent;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;width:20px;height:20px;opacity:0;transition:opacity 0.15s,transform 0.15s;transform:scale(0.85);color:#ff4b4b;}
+            .ypp-filter-card:hover .ypp-star-btn,.ypp-star-btn[data-fav="true"],.ypp-filter-card:hover .ypp-trash-btn{opacity:1;transform:scale(1);}
             .ypp-star-btn:hover{background:rgba(255,215,0,0.12);transform:scale(1.15)!important;}
+            .ypp-trash-btn:hover{background:rgba(255,75,75,0.12);transform:scale(1.15)!important;}
             .ypp-card-check{background:#fff;color:#000;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
         `);
 
@@ -730,7 +753,11 @@ export class VideoFiltersUI {
             custom.push(newPreset);
             localStorage.setItem('ypp-custom-presets', JSON.stringify(custom));
             saveBtn.textContent = '✓ Saved!';
-            setTimeout(() => { saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save Preset`; }, 2000);
+            setTimeout(() => { 
+                saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save Preset`; 
+                const tabs = document.querySelectorAll('.ypp-filter-tab-btn');
+                if (tabs.length > 0) tabs[0].click();
+            }, 800);
         };
         cpRow.appendChild(copyBtn);
         cpRow.appendChild(pasteBtn);
