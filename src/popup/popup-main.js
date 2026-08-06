@@ -929,7 +929,9 @@ const initMiscButtons = (document, saveSettings, loadSettings) => {
                     : {};
             if (confirm('Are you sure you want to reset all settings to default?')) {
                 chrome.storage.local.set({ settings: defaultSettings }, () => {
-                    loadSettings();
+                    chrome.storage.local.remove(['ytProVolumeSettings'], () => {
+                        loadSettings();
+                    });
                 });
             }
         });
