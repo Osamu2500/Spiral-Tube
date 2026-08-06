@@ -328,10 +328,10 @@ export class VideoSpeedController extends window.YPP.features.BaseFeature {
         // Listen to document for mouse events because video players often have complex overlays
         // In iframes, moving the mouse anywhere should reveal the controls.
         // Listen to the video container instead of document to prevent UI showing when reading other parts of the site
-        const container = video.parentElement || video;
-        if (container) {
-            this.addListener(container, 'mousemove', triggerShow);
-            this.addListener(container, 'click', () => { 
+        const videoContainer = video.parentElement || video;
+        if (videoContainer) {
+            this.addListener(videoContainer, 'mousemove', triggerShow);
+            this.addListener(videoContainer, 'click', () => { 
                 this._lastActiveVideo = video; 
                 triggerShow();
             });

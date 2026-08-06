@@ -22,6 +22,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this.source = null;
         this.gainNode = null;
         this.compressorNode = null;
+        this.limiterNode = null;
         this.pannerNode = null;
         this.analyserNode = null;
         this._eqNodes = [];          // 10 BiquadFilterNodes
@@ -32,6 +33,23 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this._eqGains = new Array(10).fill(0);   // current dB per band
         this._volumeGain = 1.0;                  // 1.0 = 100%
         this._balance = 0.0;                     // -1.0 (Left) to 1.0 (Right)
+        this._stereoWidth = 1.0;                 // 0.0 (Mono) to 2.0 (Wide)
+        this._bypassed = false;
+        
+        // Vinyl Mode
+        this._vinylMode = false;
+        this._playbackRate = 1.0;
+
+        // Reverb Environment
+        this._reverbEnv = 'None';                // 'None', 'Studio', 'Club', 'Concert Hall', 'Cave'
+        this._reverbMix = 0.0;                   // 0.0 to 1.0
+
+        // Phase Inversion
+        this._invertL = false;
+        this._invertR = false;
+
+        // Auto-Gain
+        this._autoGain = false;
 
         // DOM refs
         this._volumePopup = null;
@@ -59,17 +77,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         ];
         // Presets — array index matches _bands order
         this._presets = {
-            'Flat':       [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-            'Bass Boost': [ 8,  6,  4,  2,  0, -1,  0,  0,  0,  0],
-            'Acoustic':   [ 4,  4,  3,  1,  1,  1,  3,  4,  3,  2],
-            'Classical':  [ 4,  3,  2,  1, -1, -1,  0,  2,  3,  4],
-            'Dance':      [ 8,  6,  3,  0,  0, -1, -2, -2,  0,  1],
-            'Electronic': [ 6,  5,  2,  0, -2,  1,  0,  1,  4,  5],
-            'Lo-Fi':      [ 3,  2,  0, -2, -4, -4, -3, -2, -1,  0],
-            'Pop':        [-2, -1,  1,  3,  4,  4,  2,  1,  0, -1],
-            'Rock':       [ 6,  4,  2, -1, -2, -1,  1,  3,  4,  5],
-            'Vocal':      [-2, -1,  0,  2,  4,  4,  3,  2,  1,  0],
-            'Cinematic':  [ 5,  3,  1, -1, -2,  1,  3,  4,  4,  3],
+            'Flat':           { eq: [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0] },
+            'Bass Boost':     { eq: [ 8,  6,  4,  2,  0, -1,  0,  0,  0,  0] },
+            'Vocal Enhancer': { eq: [-2, -1,  0,  2,  4,  4,  3,  2,  1,  0], compressor: { ratio: 6, threshold: -20 } },
+            'Night Mode':     { eq: [ 2,  2,  0,  0,  0,  1,  1, -2, -3, -5], compressor: { ratio: 20, threshold: -35 }, volume: 1.2, mono: true, width: 0.8 },
+            'Electronic':     { eq: [ 5,  4,  1,  0, -1,  1,  3,  4,  5,  6] }
         };
     }
 
@@ -82,7 +94,21 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         if (settings.volumeLevel !== undefined) this._volumeGain = settings.volumeLevel;
         if (settings.volumeBalance !== undefined) this._balance = settings.volumeBalance;
         if (settings.volumeCompressor !== undefined) this._compressorEnabled = settings.volumeCompressor;
+        if (settings.volumeCompThreshold !== undefined) this._compThreshold = settings.volumeCompThreshold;
+        if (settings.volumeCompRatio !== undefined) this._compRatio = settings.volumeCompRatio;
+        if (settings.volumeCompAttack !== undefined) this._compAttack = settings.volumeCompAttack;
+        if (settings.volumeCompRelease !== undefined) this._compRelease = settings.volumeCompRelease;
+        if (settings.volumeCompKnee !== undefined) this._compKnee = settings.volumeCompKnee;
         if (settings.volumeMono !== undefined) this._monoEnabled = settings.volumeMono;
+        if (settings.volumeStereoWidth !== undefined) this._stereoWidth = settings.volumeStereoWidth;
+        if (settings.volumeBypassed !== undefined) this._bypassed = settings.volumeBypassed;
+        if (settings.volumeVinylMode !== undefined) this._vinylMode = settings.volumeVinylMode;
+        if (settings.volumePlaybackRate !== undefined) this._playbackRate = settings.volumePlaybackRate;
+        if (settings.volumeReverbEnv !== undefined) this._reverbEnv = settings.volumeReverbEnv;
+        if (settings.volumeReverbMix !== undefined) this._reverbMix = settings.volumeReverbMix;
+        if (settings.volumeInvertL !== undefined) this._invertL = settings.volumeInvertL;
+        if (settings.volumeInvertR !== undefined) this._invertR = settings.volumeInvertR;
+        if (settings.volumeAutoGain !== undefined) this._autoGain = settings.volumeAutoGain;
         if (settings.volumeEqBands) {
             try {
                 const bands = JSON.parse(settings.volumeEqBands);
@@ -93,11 +119,180 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                 this.utils?.log?.('[YPP:VolumeBooster] Failed to parse EQ bands: ' + e.message, 'VolumeBooster', 'warn');
             }
         }
+        if (settings.volumeVisualizerMode !== undefined) {
+            this._visualizerMode = settings.volumeVisualizerMode;
+        }
+        if (settings.volumeCustomPresets) {
+            try {
+                const custom = JSON.parse(settings.volumeCustomPresets);
+                if (typeof custom === 'object' && custom !== null) {
+                    this._presets = { ...this._presets, ...custom };
+                }
+            } catch (e) {
+                this.utils?.log?.('[YPP:VolumeBooster] Failed to parse custom presets: ' + e.message, 'VolumeBooster', 'warn');
+            }
+        }
+        if (settings.volumeChannelProfiles) {
+            try {
+                this._channelProfiles = JSON.parse(settings.volumeChannelProfiles);
+            } catch (e) { }
+        }
+    }
+
+    setVinylMode(enabled) {
+        this._vinylMode = !!enabled;
+        if (this._boundVideo) {
+            this._boundVideo.preservesPitch = !this._vinylMode;
+        }
+    }
+
+    setPlaybackRate(rate) {
+        this._playbackRate = rate;
+        if (this._boundVideo) {
+            this._boundVideo.playbackRate = rate;
+        }
+    }
+    
+    _generateSyntheticIR(duration, decay) {
+        if (!this.ctx) return null;
+        const sampleRate = this.ctx.sampleRate;
+        const length = sampleRate * duration;
+        const impulse = this.ctx.createBuffer(2, length, sampleRate);
+        const left = impulse.getChannelData(0);
+        const right = impulse.getChannelData(1);
+        
+        for (let i = 0; i < length; i++) {
+            const multiplier = Math.pow(1 - i / length, decay);
+            left[i] = (Math.random() * 2 - 1) * multiplier;
+            right[i] = (Math.random() * 2 - 1) * multiplier;
+        }
+        return impulse;
+    }
+
+    setReverbEnvironment(envName) {
+        this._reverbEnv = envName;
+        if (!this.reverbNode) return;
+        
+        let duration = 0, decay = 0;
+        switch (envName) {
+            case 'Studio': duration = 0.5; decay = 5.0; break;
+            case 'Club': duration = 1.5; decay = 3.0; break;
+            case 'Concert Hall': duration = 3.0; decay = 2.0; break;
+            case 'Cave': duration = 5.0; decay = 1.0; break;
+            case 'None':
+            default:
+                this.reverbNode.buffer = null;
+                this.setReverbMix(this._reverbMix);
+                return;
+        }
+        this.reverbNode.buffer = this._generateSyntheticIR(duration, decay);
+        this.setReverbMix(this._reverbMix);
+    }
+    
+    setReverbMix(value) {
+        this._reverbMix = value;
+        if (this._bypassed) return;
+        if (this.reverbDryGain && this.reverbWetGain && this.ctx) {
+            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
+            const effectiveMix = (this._reverbEnv === 'None') ? 0.0 : value;
+            this.reverbDryGain.gain.setTargetAtTime(1.0 - effectiveMix, this.ctx.currentTime, 0.05);
+            this.reverbWetGain.gain.setTargetAtTime(effectiveMix, this.ctx.currentTime, 0.05);
+        }
+    }
+
+    setPhaseInvert(channel, inverted) {
+        if (channel === 'L') {
+            this._invertL = inverted;
+            if (this.phaseGainL) this.phaseGainL.gain.value = inverted ? -1 : 1;
+        } else if (channel === 'R') {
+            this._invertR = inverted;
+            if (this.phaseGainR) this.phaseGainR.gain.value = inverted ? -1 : 1;
+        }
+    }
+
+    setAutoGain(enabled) {
+        this._autoGain = enabled;
+        if (this.agcNode && this.agcMakeup) {
+            this.agcNode.ratio.value = enabled ? 10 : 1;
+            this.agcMakeup.gain.value = enabled ? 4.0 : 1.0;
+        }
+    }
+
+    setBypass(enabled) {
+        this._bypassed = enabled;
+        if (!this._audioConnected && this._needsAudioGraph()) {
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            if (video) this.initAudioContext(video);
+        }
+        
+        if (this._audioConnected) {
+            if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
+            
+            if (this.gainNode) {
+                this.gainNode.gain.setTargetAtTime(enabled ? 1 : this._volumeGain, this.ctx.currentTime, 0.05);
+            }
+            
+            if (this.widthMatrix) {
+                this.widthMatrix.widthGain.gain.setTargetAtTime(enabled ? 1 : this._stereoWidth, this.ctx.currentTime, 0.05);
+            }
+            
+            this._eqNodes.forEach((n, i) => { 
+                if (n) n.gain.setTargetAtTime(enabled ? 0 : this._eqGains[i], this.ctx.currentTime, 0.05); 
+            });
+            
+            this._applyCompressorState();
+            this.setMono(this._monoEnabled, enabled);
+            
+            if (this.reverbDryGain && this.reverbWetGain) {
+                const effectiveMix = (this._reverbEnv === 'None') ? 0.0 : this._reverbMix;
+                this.reverbDryGain.gain.setTargetAtTime(enabled ? 1.0 : (1.0 - effectiveMix), this.ctx.currentTime, 0.05);
+                this.reverbWetGain.gain.setTargetAtTime(enabled ? 0.0 : effectiveMix, this.ctx.currentTime, 0.05);
+            }
+            
+            if (this.phaseGainL) this.phaseGainL.gain.setTargetAtTime(enabled ? 1.0 : (this._invertL ? -1 : 1), this.ctx.currentTime, 0.05);
+            if (this.phaseGainR) this.phaseGainR.gain.setTargetAtTime(enabled ? 1.0 : (this._invertR ? -1 : 1), this.ctx.currentTime, 0.05);
+            
+            if (this.agcNode) this.agcNode.ratio.setTargetAtTime(enabled ? 1.0 : (this._autoGain ? 10 : 1), this.ctx.currentTime, 0.05);
+            if (this.agcMakeup) this.agcMakeup.gain.setTargetAtTime(enabled ? 1.0 : (this._autoGain ? 4.0 : 1.0), this.ctx.currentTime, 0.05);
+            
+            if (this._boundVideo) {
+                this._boundVideo.preservesPitch = enabled ? true : !this._vinylMode;
+                if (this._playbackRate !== 1.0) this._boundVideo.playbackRate = enabled ? 1.0 : this._playbackRate;
+            }
+        }
     }
 
     async enable() {
         await super.enable();
         this._loadSettings(this.settings);
+
+        // -- Keyboard Shortcuts --
+        this.addListener(document, 'keydown', (e) => {
+            if (!this._audioConnected) return;
+            if (e.target.matches('input, textarea, [contenteditable]')) return;
+            
+            let handled = false;
+            if (e.altKey && e.code === 'KeyV') {
+                e.preventDefault();
+                this.setBypass(!this._bypassed);
+                this.utils?.log?.('[YPP:VolumeBooster] Toggled Bypass via Hotkey: ' + this._bypassed, 'VolumeBooster');
+                handled = true;
+            }
+            else if (e.altKey && e.code === 'KeyM') {
+                e.preventDefault();
+                this.setMono(!this._monoEnabled);
+                this.utils?.log?.('[YPP:VolumeBooster] Toggled Mono via Hotkey: ' + this._monoEnabled, 'VolumeBooster');
+                handled = true;
+            }
+            
+            if (handled && this._volumePopup && window.VolumeBoosterUI) {
+                const anchorBtn = document.querySelector(`#ypp-volume-boost-btn[data-vb-id="${this._id}"]`);
+                if (anchorBtn) {
+                    window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn);
+                    setTimeout(() => window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn), 10);
+                }
+            }
+        });
 
         // FIX Bug 4: Use waitForElement with a timeout so we don't miss the
         // video element when enable() is called right after SPA navigation
@@ -178,6 +373,34 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                 this.compressorNode.threshold.value = 0;
             }
             
+            // Bypass limiter safely
+            if (this.limiterNode) {
+                this.limiterNode.ratio.value = 1;
+                this.limiterNode.threshold.value = 0;
+            }
+            
+            // Bypass width
+            if (this.widthMatrix) {
+                this.widthMatrix.widthGain.gain.setTargetAtTime(this._stereoWidth, this.ctx.currentTime, 0.05);
+            }
+            
+            if (this.reverbDryGain && this.reverbWetGain) {
+                this.reverbDryGain.gain.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
+                this.reverbWetGain.gain.setTargetAtTime(0.0, this.ctx.currentTime, 0.05);
+            }
+            
+            if (this.phaseGainL) this.phaseGainL.gain.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
+            if (this.phaseGainR) this.phaseGainR.gain.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
+            
+            if (this.agcNode) this.agcNode.ratio.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
+            if (this.agcMakeup) this.agcMakeup.gain.setTargetAtTime(1.0, this.ctx.currentTime, 0.05);
+            
+            // Restore Vinyl Mode
+            if (this._boundVideo) {
+                this._boundVideo.preservesPitch = true;
+                if (this._playbackRate !== 1.0) this._boundVideo.playbackRate = 1.0;
+            }
+            
             // Reset Panner & Mono
             if (this.pannerNode) {
                 this.pannerNode.pan.setTargetAtTime(0, this.ctx.currentTime, 0.05);
@@ -218,18 +441,18 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         if (!this.settings || !this.settings.enableVolumeBoost) return;
         this._loadSettings(this.settings);
 
-        // FIX Bug 4: On YouTube SPA navigation, app:videoChange fires before the
-        // new player is in the DOM. Poll for the video element up to 3 s.
         const tryInit = async () => {
             let video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (!video) {
                 try {
-                    video = await this.waitForElement(
-                        window.YPP.CONSTANTS.SELECTORS.VIDEO[0] || 'video',
-                        3000
-                    );
-                } catch (_) {
-                    video = null;
+                    video = await this.utils.pollFor({
+                        target: window.YPP.CONSTANTS.SELECTORS.VIDEO[0] || 'video',
+                        maxAttempts: 15,
+                        intervalMs: 200
+                    });
+                } catch (e) {
+                    this.utils?.log?.('[YPP:VolumeBooster] Could not find video element on navigation', 'VolumeBooster', 'warn');
+                    return;
                 }
             }
             if (!video) return;
@@ -247,9 +470,41 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                 this._audioConnected = false;
                 this.initAudioContext(video);
             }
+            
+            this._applyChannelProfile();
         };
 
         tryInit();
+    }
+
+    _applyChannelProfile() {
+        if (!this._channelProfiles || Object.keys(this._channelProfiles).length === 0) return;
+        
+        let attempts = 0;
+        const currentUrl = window.location.href;
+        const tryMatch = () => {
+            if (window.location.href !== currentUrl) return; // abort if navigated away
+            const el = document.querySelector('ytd-video-owner-renderer ytd-channel-name yt-formatted-string a') || document.querySelector('#owner #channel-name a');
+            if (el && el.textContent) {
+                const channel = el.textContent.trim();
+                const presetName = this._channelProfiles[channel];
+                if (presetName && this._presets[presetName]) {
+                    this.applyPreset(presetName);
+                    this.utils?.log?.(`[YPP:VolumeBooster] Auto-applied preset "${presetName}" for channel "${channel}"`, 'VolumeBooster');
+                    // Sync UI if open
+                    if (this._volumePopup && window.VolumeBoosterUI) {
+                        const anchorBtn = document.querySelector(`#ypp-volume-boost-btn[data-vb-id="${this._id}"]`);
+                        if (anchorBtn) {
+                            window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn);
+                            setTimeout(() => window.VolumeBoosterUI.toggleEQPanel(this, this._boundVideo, anchorBtn), 10);
+                        }
+                    }
+                }
+                return;
+            }
+            if (++attempts < 10) setTimeout(tryMatch, 500);
+        };
+        tryMatch();
     }
 
     /**
@@ -261,6 +516,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     _needsAudioGraph() {
         if (this._volumeGain !== 1.0) return true;
         if (this._balance !== 0.0) return true;
+        if (this._stereoWidth !== 1.0) return true;
         if (this._monoEnabled) return true;
         if (this._eqGains && this._eqGains.some(g => g !== 0)) return true;
         return false;
@@ -364,9 +620,6 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
                 }
 
                 this._buildAudioGraph();
-
-                this._audioConnected = true;
-                this._restoreAudioState();
                 
                 // IMPORTANT: AudioContext often starts in 'suspended' state without user interaction.
                 if (this.ctx && this.ctx.state === 'suspended') {
@@ -412,53 +665,150 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
      * Topology: source -> eqNodes -> panner -> compressor -> gain -> analyser -> destination
      */
     _buildAudioGraph() {
-        // 1. Build 10 EQ band nodes
-        this._eqNodes = this._bands.map((band, i) => {
-            const f = this.ctx.createBiquadFilter();
-            f.type = band.type;
-            f.frequency.value = band.freq;
-            f.gain.value = this._eqGains[i];
-            if (band.type === 'peaking') f.Q.value = 1.4;
-            return f;
-        });
+        try {
+            // 0. Phase Inversion
+            this.phaseSplitter = this.ctx.createChannelSplitter(2);
+            this.phaseGainL = this.ctx.createGain();
+            this.phaseGainR = this.ctx.createGain();
+            this.phaseMerger = this.ctx.createChannelMerger(2);
+            this.phaseGainL.gain.value = this._invertL ? -1 : 1;
+            this.phaseGainR.gain.value = this._invertR ? -1 : 1;
+            
+            this.phaseSplitter.connect(this.phaseGainL, 0);
+            this.phaseSplitter.connect(this.phaseGainR, 1);
+            this.phaseGainL.connect(this.phaseMerger, 0, 0);
+            this.phaseGainR.connect(this.phaseMerger, 0, 1);
 
-        // 2. Panner Node for Balance
-        this.pannerNode = this.ctx.createStereoPanner();
-        this.pannerNode.pan.value = this._balance;
+            // 1. Setup Input/EQ Nodes
+            this.inputGain = this.ctx.createGain();
+            this.eqInGain = this.ctx.createGain();
+            this._eqNodes = this._bands.map((band, i) => {
+                const f = this.ctx.createBiquadFilter();
+                f.type = band.type;
+                f.frequency.value = band.freq;
+                f.gain.value = this._eqGains[i];
+                if (band.type === 'peaking') f.Q.value = 1.4;
+                return f;
+            });
 
-        // 3. Compressor (Prevents clipping at high gain)
-        this.compressorNode = this.ctx.createDynamicsCompressor();
-        this._applyCompressorState();
+            // 2. Dynamics: Compressor
+            this.compressorNode = this.ctx.createDynamicsCompressor();
+            this.compressorNode.threshold.value = this._compressorEnabled ? (this._compThreshold ?? -24) : 0;
+            this.compressorNode.knee.value = this._compKnee ?? 30;
+            this.compressorNode.ratio.value = this._compressorEnabled ? (this._compRatio ?? 4) : 1;
+            this.compressorNode.attack.value = this._compAttack ?? 0.003;
+            this.compressorNode.release.value = this._compRelease ?? 0.25;
+            
+            // Reverb System (Parallel Dry/Wet)
+            this.reverbNode = this.ctx.createConvolver();
+            this.reverbDryGain = this.ctx.createGain();
+            this.reverbWetGain = this.ctx.createGain();
+            
+            // Stereo Width & Panning
+            this.widthMatrix = this._createStereoWidthMatrix(this.ctx);
+            this.pannerNode = this.ctx.createStereoPanner();
+            
+            // ── ROUTING ──
+            this.source.connect(this.phaseSplitter);
+            this.phaseMerger.connect(this.inputGain);
+            this.inputGain.connect(this.eqInGain);
+            
+            this.eqInGain.connect(this._eqNodes[0]);
+            for (let i = 0; i < 9; i++) {
+                this._eqNodes[i].connect(this._eqNodes[i + 1]);
+            }
+            this._eqNodes[9].connect(this.compressorNode);
+            
+            // Split to Reverb (Dry and Wet)
+            this.compressorNode.connect(this.reverbDryGain);
+            this.compressorNode.connect(this.reverbNode);
+            this.reverbNode.connect(this.reverbWetGain);
+            
+            // Recombine at Stereo Width
+            this.reverbDryGain.connect(this.widthMatrix.input);
+            this.reverbWetGain.connect(this.widthMatrix.input);
+            
+            // 4. Master Gain
+            this.gainNode = this.ctx.createGain();
+            this.gainNode.gain.value = this._volumeGain;
 
-        // 4. Master Gain
-        this.gainNode = this.ctx.createGain();
-        this.gainNode.gain.value = this._volumeGain;
+            // 4.2 Auto-Gain Leveling Amplifier
+            this.agcNode = this.ctx.createDynamicsCompressor();
+            this.agcNode.threshold.value = -40;
+            this.agcNode.knee.value = 40;
+            this.agcNode.ratio.value = this._autoGain ? 10 : 1;
+            this.agcNode.attack.value = 0.1;
+            this.agcNode.release.value = 0.5;
+            
+            this.agcMakeup = this.ctx.createGain();
+            this.agcMakeup.gain.value = this._autoGain ? 4.0 : 1.0;
 
-        // 5. Analyser for Visualization
-        this.analyserNode = this.ctx.createAnalyser();
-        this.analyserNode.fftSize = 128; // 64 bins, smooth enough for mini spectrum
-        this.analyserNode.smoothingTimeConstant = 0.85;
+            // 4.5. Hard Limiter
+            this.limiterNode = this.ctx.createDynamicsCompressor();
+            this.limiterNode.threshold.value = -0.5;
+            this.limiterNode.ratio.value = 20;
+            this.limiterNode.knee.value = 0;
+            this.limiterNode.attack.value = 0.002;
+            this.limiterNode.release.value = 0.1;
 
-        // Chain the nodes sequentially
-        let node = this.source;
-        this._eqNodes.forEach(eq => { 
-            node.connect(eq); 
-            node = eq; 
-        });
-        
-        node.connect(this.pannerNode);
-        this.pannerNode.connect(this.compressorNode);
-        this.compressorNode.connect(this.gainNode);
-        this.gainNode.connect(this.analyserNode);
-
-        // Chain to AudioCompressor if it is active, otherwise go straight to destination
-        const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
-        if (video && video.__ypp_ext_compressor) {
-            this.analyserNode.connect(video.__ypp_ext_compressor.input);
-            video.__ypp_ext_compressor.output.connect(this.ctx.destination);
-        } else {
-            this.analyserNode.connect(this.ctx.destination);
+            // 5. Analyser
+            this.analyserNode = this.ctx.createAnalyser();
+            this.analyserNode.fftSize = 128;
+            this.analyserNode.smoothingTimeConstant = 0.85;
+            
+            // Final Output chain
+            this.widthMatrix.output.connect(this.pannerNode);
+            this.pannerNode.connect(this.agcNode);
+            this.agcNode.connect(this.agcMakeup);
+            this.agcMakeup.connect(this.gainNode);
+            this.gainNode.connect(this.limiterNode);
+            this.limiterNode.connect(this.analyserNode);
+            
+            // Chain to AudioCompressor if it is active, otherwise go straight to destination
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            if (video && video.__ypp_ext_compressor) {
+                this.analyserNode.connect(video.__ypp_ext_compressor.input);
+                video.__ypp_ext_compressor.output.connect(this.ctx.destination);
+            } else {
+                this.analyserNode.connect(this.ctx.destination);
+            }
+            
+            this.utils?.log?.('[YPP:VolumeBooster] AudioContext and Reverb initialized successfully', 'VolumeBooster');
+            this._audioConnected = true;
+            this._restoreAudioState();
+            this.setReverbEnvironment(this._reverbEnv);
+            this.setReverbMix(this._reverbMix);
+        } catch (error) {
+            this.utils?.log?.('[YPP:VolumeBooster] Audio graph build failed: ' + error.message, 'VolumeBooster', 'error');
         }
+    }
+
+    _createStereoWidthMatrix(ctx) {
+        const input = ctx.createGain();
+        const output = ctx.createGain();
+        const widthGain = ctx.createGain();
+        const splitter = ctx.createChannelSplitter(2);
+        const merger = ctx.createChannelMerger(2);
+        const mid = ctx.createGain(); mid.gain.value = 0.5;
+        const rInvert = ctx.createGain(); rInvert.gain.value = -1;
+        const side = ctx.createGain(); side.gain.value = 0.5;
+        const sideInvert = ctx.createGain(); sideInvert.gain.value = -1;
+
+        input.connect(splitter);
+        splitter.connect(mid, 0); splitter.connect(mid, 1);
+        splitter.connect(rInvert, 1);
+        splitter.connect(side, 0);
+        rInvert.connect(side);
+        widthGain.gain.value = this._stereoWidth;
+        side.connect(widthGain);
+        mid.connect(merger, 0, 0);
+        widthGain.connect(merger, 0, 0);
+        widthGain.connect(sideInvert);
+        mid.connect(merger, 0, 1);
+        sideInvert.connect(merger, 0, 1);
+        merger.connect(output);
+        
+        return { input, output, widthGain };
     }
 
     /**
@@ -466,10 +816,27 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
      * Useful when re-enabling or after initial graph construction.
      */
     _restoreAudioState() {
+        if (this._bypassed) {
+            if (this.gainNode) this.gainNode.gain.setTargetAtTime(1, this.ctx.currentTime, 0.05);
+            if (this.pannerNode) this.pannerNode.pan.setTargetAtTime(0, this.ctx.currentTime, 0.05);
+            if (this.widthMatrix) this.widthMatrix.widthGain.gain.setTargetAtTime(1, this.ctx.currentTime, 0.05);
+            this.setMono(false, true); // Use internal bypass param if added, or just rely on state
+            if (this.compressorNode) {
+                this.compressorNode.ratio.value = 1;
+                this.compressorNode.threshold.value = 0;
+            }
+            this._eqNodes.forEach((n) => { 
+                if (n) n.gain.setTargetAtTime(0, this.ctx.currentTime, 0.05); 
+            });
+            return;
+        }
+
         this.setVolume(this._volumeGain);
         this.setBalance(this._balance);
+        this.setWidth(this._stereoWidth);
         this.setMono(this._monoEnabled);
         this._applyCompressorState();
+        this.setReverbMix(this._reverbMix);
         
         // Restore EQ gains safely
         this._eqNodes.forEach((n, i) => { 
@@ -480,11 +847,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     _applyCompressorState() {
         if (!this.compressorNode) return;
         if (this._compressorEnabled) {
-            this.compressorNode.threshold.value = -24;
-            this.compressorNode.knee.value = 10;
-            this.compressorNode.ratio.value = 4;
-            this.compressorNode.attack.value = 0.003;
-            this.compressorNode.release.value = 0.25;
+            this.compressorNode.threshold.value = this._compThreshold ?? -24;
+            this.compressorNode.knee.value = this._compKnee ?? 30;
+            this.compressorNode.ratio.value = this._compRatio ?? 4;
+            this.compressorNode.attack.value = this._compAttack ?? 0.003;
+            this.compressorNode.release.value = this._compRelease ?? 0.25;
         } else {
             // Transparent bypass values
             this.compressorNode.threshold.value = 0;
@@ -494,13 +861,14 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setVolume(multiplier) {
         this._volumeGain = multiplier;
+        if (this._bypassed) return;
         // FIX Bug 2: Only use _needsAudioGraph as lazy-init guard (not in enable/onVideoChange)
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.gainNode && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume();
+            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
             // Ramp gracefully to avoid audio clipping/clicks
             this.gainNode.gain.setTargetAtTime(multiplier, this.ctx.currentTime, 0.05);
         }
@@ -508,51 +876,92 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setBalance(value) {
         this._balance = value;
+        if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.pannerNode && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume();
+            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
             this.pannerNode.pan.setTargetAtTime(value, this.ctx.currentTime, 0.05);
         }
     }
 
-    setMono(enabled) {
-        this._monoEnabled = enabled;
+    setWidth(value) {
+        this._stereoWidth = value;
+        if (this._bypassed) return;
+        if (!this._audioConnected && this._needsAudioGraph()) {
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            if (video) this.initAudioContext(video);
+        }
+        if (this.widthMatrix && this.ctx) {
+            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
+            this.widthMatrix.widthGain.gain.setTargetAtTime(value, this.ctx.currentTime, 0.05);
+        }
+    }
+
+    setMono(enabled, forceBypass = false) {
+        if (!forceBypass) this._monoEnabled = enabled;
+        const targetMono = forceBypass ? false : (this._bypassed ? false : this._monoEnabled);
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this.ctx && this.source) {
-            // Guard: channelCount setter may throw in some browsers on MediaElementAudioSourceNode
             try {
-                this.source.channelCount = enabled ? 1 : 2;
-                this.source.channelCountMode = enabled ? 'explicit' : 'max';
+                this.source.channelCount = targetMono ? 1 : 2;
+                this.source.channelCountMode = targetMono ? 'explicit' : 'max';
             } catch (e) {
-                // Fallback: channelCountMode alone achieves a useful approximation
-                this.source.channelCountMode = enabled ? 'explicit' : 'max';
+                this.source.channelCountMode = targetMono ? 'explicit' : 'max';
             }
         }
     }
 
+    setBypass(enabled) {
+        this._bypassed = enabled;
+        if (!this._audioConnected && this._needsAudioGraph()) {
+            const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+            if (video) this.initAudioContext(video);
+        }
+        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
+        this._restoreAudioState();
+    }
+
     _setEQBand(index, db) {
         this._eqGains[index] = db;
+        if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
         }
         if (this._eqNodes[index] && this.ctx) {
-            if (this.ctx.state === 'suspended') this.ctx.resume();
+            if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
             this._eqNodes[index].gain.setTargetAtTime(db, this.ctx.currentTime, 0.05);
         }
     }
 
-    _applyPreset(name) {
-        const gains = this._presets[name];
-        if (!gains) return;
-        if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
-        gains.forEach((db, i) => this._setEQBand(i, db));
+    applyPreset(presetName) {
+        const preset = this._presets[presetName];
+        if (preset) {
+            const eq = preset.eq || preset; // fallback if it's just an array
+            if (Array.isArray(eq)) eq.forEach((val, i) => this._setEQBand(i, val));
+            
+            if (preset.compressor) {
+                this._compressorEnabled = true;
+                if (this.compressorNode) {
+                    this.compressorNode.ratio.setTargetAtTime(preset.compressor.ratio, this.ctx.currentTime, 0.05);
+                    this.compressorNode.threshold.setTargetAtTime(preset.compressor.threshold, this.ctx.currentTime, 0.05);
+                }
+            } else {
+                this._applyCompressorState();
+            }
+            if (preset.volume !== undefined) this.setVolume(preset.volume);
+            if (preset.mono !== undefined) this.setMono(preset.mono);
+            if (preset.width !== undefined) this.setWidth(preset.width);
+            
+            return true;
+        }
+        return false;
     }
 
     createButton(initialVideo) {

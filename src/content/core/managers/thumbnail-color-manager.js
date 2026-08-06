@@ -129,32 +129,6 @@ export class ThumbnailColorManager {
         }
 
         const cleanSrc = src;
-
-    startPolling() {
-        if (this._pollingInterval) return;
-        this._pollingInterval = setInterval(() => {
-            if (this.waitingElements.size === 0) {
-                clearInterval(this._pollingInterval);
-                this._pollingInterval = null;
-                return;
-            }
-            
-            for (const el of this.waitingElements) {
-                if (!document.body.contains(el)) {
-                    this.waitingElements.delete(el);
-                    continue;
-                }
-                const currentImg = this.getImage(el);
-                const currentSrc = currentImg ? currentImg.src : null;
-                if (currentSrc && !currentSrc.includes('data:image')) {
-                    this.waitingElements.delete(el);
-                    el.removeAttribute('data-ypp-color-wait');
-                    this.processElement(el);
-                }
-            }
-        }, 300); // Poll every 300ms
-    }
-
         if (this.cache.has(cleanSrc)) {
             const cached = this.cache.get(cleanSrc);
             // Support both old string cache and new object cache during transition
@@ -201,6 +175,31 @@ export class ThumbnailColorManager {
                 el.setAttribute('data-ypp-thumb-color', 'true');
             }
         });
+    }
+
+    startPolling() {
+        if (this._pollingInterval) return;
+        this._pollingInterval = setInterval(() => {
+            if (this.waitingElements.size === 0) {
+                clearInterval(this._pollingInterval);
+                this._pollingInterval = null;
+                return;
+            }
+            
+            for (const el of this.waitingElements) {
+                if (!document.body.contains(el)) {
+                    this.waitingElements.delete(el);
+                    continue;
+                }
+                const currentImg = this.getImage(el);
+                const currentSrc = currentImg ? currentImg.src : null;
+                if (currentSrc && !currentSrc.includes('data:image')) {
+                    this.waitingElements.delete(el);
+                    el.removeAttribute('data-ypp-color-wait');
+                    this.processElement(el);
+                }
+            }
+        }, 300); // Poll every 300ms
     }
 
     enhanceColorForGlow(r, g, b) {
