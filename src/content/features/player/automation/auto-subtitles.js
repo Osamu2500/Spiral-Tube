@@ -30,7 +30,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._injectStyles();
         
         // Polling for the player and caption container
-        this.utils.pollFor(() => {
+        this.pollFor(() => {
             const player = document.getElementById('movie_player');
             const native = document.getElementById('ytp-caption-window-container');
             if (player && native) {
@@ -39,7 +39,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             }
             return false;
         }, 10000, 500).catch(() => {
-            this.utils.log?.('AutoSubtitles: Player not found', 'SUBS', 'warn');
+            this.utils.log?.('AutoSubtitles: Player not found or polling aborted', 'SUBS', 'warn');
         });
         
         // Auto-enable CC button if requested
@@ -82,7 +82,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     _initRenderer(player, native) {
-        if (!this.isEnabled) return;
+        if (this._abortController?.signal.aborted) return;
         this._nativeContainer = native;
         
         // Create our custom Netflix-style container
@@ -109,7 +109,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     _handleMutation(mutations) {
-        if (!this.isEnabled) return;
+        if (this._abortController?.signal.aborted) return;
         
         // V4: Sync Fix for Rollup/Live Captions
         // YouTube often keeps multiple old lines in the DOM during rollups.
