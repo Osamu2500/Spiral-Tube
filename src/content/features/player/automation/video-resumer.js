@@ -173,11 +173,46 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                 }
 
                 // V4: Cloud Sync UI
-                this._showSyncPanel(savedTime);
+                // RESUMER-UP-2: Smart Chapter-Aware Resume
+                const smartTime = this._calculateResumeTime(savedTime);
+                this._showSyncPanel(savedTime, smartTime);
             }
         } catch (e) {
             this.utils.log?.('Failed to restore time from storage', 'RESUMER', 'warn', e);
         }
+    }
+
+    // RESUMER-UP-2: Smart Chapter-Aware Resume
+    _calculateResumeTime(savedTime) {
+        // Find chapters from description links
+        const chapters = [];
+        const timeLinks = document.querySelectorAll('a.yt-core-attributed-string__link');
+        timeLinks.forEach(link => {
+            const text = link.textContent.trim();
+            const timeMatch = text.match(/^(?:(?:(\d+):)?(\d+):)?(\d+)$/);
+            if (timeMatch && link.href.includes('&t=')) {
+                const url = new URL(link.href);
+                const tMatch = url.searchParams.get('t')?.replace('s','');
+                if (tMatch && !isNaN(parseInt(tMatch))) {
+                    chapters.push(parseInt(tMatch));
+                }
+            }
+        });
+        
+        const sorted = [...new Set(chapters)].sort((a, b) => a - b);
+        let resumeTime = Math.max(0, savedTime - 3); // Default 3s context rewind
+
+        for (let i = sorted.length - 1; i >= 0; i--) {
+            const chap = sorted[i];
+            if (chap <= savedTime) {
+                // If we are within 30s of a chapter start, snap to it
+                if (savedTime - chap <= 30) {
+                    resumeTime = chap;
+                }
+                break;
+            }
+        }
+        return resumeTime;
     }
 
     forceSave() {
@@ -256,10 +291,19 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
     }
     
     handleHotkey(e) {
+        if (!this.videoElement || !this.videoId) return;
+
+        // RESUMER-UP-3: Shift+B to toggle Bookmark Manager
+        if (e.shiftKey && e.key.toLowerCase() === 'b' && !(e.ctrlKey || e.metaKey)) {
+            if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA') return;
+            e.preventDefault();
+            this._toggleBookmarkManager();
+            return;
+        }
+
         // Ctrl+B or Cmd+B to bookmark
         if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
             e.preventDefault();
-            if (!this.videoElement || !this.videoId) return;
             
             const time = this.videoElement.currentTime;
             const key = this.BOOKMARK_KEY_PREFIX + this.videoId + '_' + Math.floor(time);
@@ -271,7 +315,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             }
             
             if (this.utils.createToast) {
-                this.utils.createToast('Timestamp Bookmarked', 'success');
+                this.utils.createToast('Timestamp Bookmarked (Press Shift+B to view)', 'success');
             }
             this.utils.log?.(`Bookmarked at ${time}s`, 'RESUMER');
             
@@ -418,7 +462,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         }
     }
     
-    _showSyncPanel(savedTime) {
+    _showSyncPanel(savedTime, smartTime) {
         if (document.getElementById('ypp-sync-panel')) return;
         
         const panel = document.createElement('div');
@@ -444,12 +488,16 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         const updateText = () => {
             const mins = Math.floor(savedTime / 60);
             const secs = Math.floor(savedTime % 60).toString().padStart(2, '0');
+            let contextMsg = smartTime < savedTime - 4 ? "(Snapped to chapter)" : "(Rewound 3s for context)";
             panel.innerHTML = `
                 <div style="font-weight: 500; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center;">
                     <span style="color: #3ea6ff; margin-right: 8px;">☁️</span> Cloud Sync Detected
                 </div>
-                <div style="font-size: 13px; margin-bottom: 16px; color: #aaaaaa;">
+                <div style="font-size: 13px; margin-bottom: 4px; color: #aaaaaa;">
                     Resuming from ${mins}:${secs} on another device.
+                </div>
+                <div style="font-size: 11px; margin-bottom: 16px; color: #888;">
+                    ${contextMsg}
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-size: 13px; color: #ff4e45;">Resuming in ${seconds}s...</span>
@@ -472,17 +520,117 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             if (seconds <= 0) {
                 clearInterval(interval);
                 panel.remove();
-                // RESUMER-BUG-2: Guard against null videoElement if user navigated away during countdown
                 if (!this.videoElement) return;
-                // Context Rewind: Rewind 3 seconds
-                const resumeTime = Math.max(0, savedTime - 3);
-                this.videoElement.currentTime = resumeTime;
-                this.utils.log?.(`Resumed at ${resumeTime}s (rewound 3s)`, 'RESUMER');
-                if (this.utils.createToast) this.utils.createToast('Playback Resumed (Cloud Sync)', 'info');
+                
+                this.videoElement.currentTime = smartTime;
+                this.utils.log?.(`Resumed at ${smartTime}s`, 'RESUMER');
+                if (this.utils.createToast) this.utils.createToast('Playback Resumed', 'info');
             } else {
                 updateText();
             }
         }, 1000);
+    }
+
+    // RESUMER-UP-3: Bookmark Manager Panel
+    async _toggleBookmarkManager() {
+        let modal = document.getElementById('ypp-bookmark-modal');
+        if (modal) {
+            modal.remove();
+            return;
+        }
+
+        modal = document.createElement('div');
+        modal.id = 'ypp-bookmark-modal';
+        modal.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 400px; max-height: 80vh; background: #212121; color: white;
+            border-radius: 12px; z-index: 10000; display: flex; flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); font-family: Roboto, Arial, sans-serif;
+            border: 1px solid #3d3d3d;
+        `;
+
+        modal.innerHTML = `
+            <div style="padding: 16px; border-bottom: 1px solid #3d3d3d; display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0; font-size: 18px;">🔖 My Bookmarks</h2>
+                <button id="ypp-bm-close" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
+            </div>
+            <div id="ypp-bm-list" style="padding: 16px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 12px;">
+                <div style="color: #aaa; text-align: center;">Loading bookmarks...</div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.querySelector('#ypp-bm-close').onclick = () => modal.remove();
+
+        // Fetch bookmarks
+        let data = {};
+        if (chrome && chrome.storage && chrome.storage.sync) {
+            data = await chrome.storage.sync.get(null);
+        } else {
+            data = window.localStorage;
+        }
+
+        const keys = Object.keys(data).filter(k => k.startsWith(this.BOOKMARK_KEY_PREFIX));
+        const listEl = modal.querySelector('#ypp-bm-list');
+        listEl.innerHTML = '';
+
+        if (keys.length === 0) {
+            listEl.innerHTML = `<div style="color: #aaa; text-align: center;">No bookmarks found. Press Ctrl+B while watching to save a moment.</div>`;
+            return;
+        }
+
+        for (const key of keys) {
+            let parsed = null;
+            try {
+                parsed = typeof data[key] === 'string' ? JSON.parse(data[key]) : data[key];
+            } catch {}
+            if (!parsed) continue;
+
+            const time = parsed.time;
+            const parts = key.replace(this.BOOKMARK_KEY_PREFIX, '').split('_');
+            const vidId = parts[0];
+
+            const item = document.createElement('div');
+            item.style.cssText = `
+                display: flex; align-items: center; justify-content: space-between;
+                background: #303030; padding: 12px; border-radius: 8px;
+            `;
+            
+            const mins = Math.floor(time / 60);
+            const secs = Math.floor(time % 60).toString().padStart(2, '0');
+            const url = `/watch?v=${vidId}&t=${Math.floor(time)}s`;
+
+            item.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                    <img src="https://i.ytimg.com/vi/${vidId}/default.jpg" style="width: 60px; border-radius: 4px;" />
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-size: 14px; font-weight: 500;">Timestamp: ${mins}:${secs}</span>
+                        <a href="${url}" style="font-size: 12px; color: #3ea6ff; text-decoration: none; margin-top: 4px;" class="ypp-bm-jump">Jump to Video</a>
+                    </div>
+                </div>
+                <button class="ypp-bm-delete" style="background: #ff4e45; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">Delete</button>
+            `;
+
+            item.querySelector('.ypp-bm-jump').onclick = (e) => {
+                if (this.videoId === vidId) {
+                    e.preventDefault();
+                    this.videoElement.currentTime = time;
+                    modal.remove();
+                }
+            };
+
+            item.querySelector('.ypp-bm-delete').onclick = () => {
+                if (chrome && chrome.storage && chrome.storage.sync) {
+                    chrome.storage.sync.remove(key);
+                } else {
+                    window.YPP.StorageManager.remove(key);
+                }
+                item.remove();
+                this._renderBookmarkMarkers();
+            };
+
+            listEl.appendChild(item);
+        }
     }
 };
 
