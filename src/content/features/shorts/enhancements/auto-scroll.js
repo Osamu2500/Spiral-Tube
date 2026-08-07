@@ -43,6 +43,16 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         }
     }
 
+    onUpdate(settings, oldSettings) {
+        if (settings.shortsPlaybackSpeed !== oldSettings?.shortsPlaybackSpeed) {
+            const activeReel = document.querySelector('ytd-reel-video-renderer[is-active]');
+            if (activeReel) {
+                const video = activeReel.querySelector('video');
+                if (video) video.playbackRate = settings.shortsPlaybackSpeed || 1.0;
+            }
+        }
+    }
+
     startMonitoring() {
         if (this._isMonitoring) return;
         this.utils?.log('Starting Shorts Auto-Scroll interval monitoring', 'AutoScroll');

@@ -59,6 +59,15 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._removeStyles();
     }
 
+    onUpdate(settings, oldSettings) {
+        if (settings.subtitleStyle !== oldSettings?.subtitleStyle) {
+            this._currentStyle = settings.subtitleStyle || 'netflix';
+            if (this._customContainer) {
+                this._customContainer.className = `ypp-custom-subtitles style-${this._currentStyle}`;
+            }
+        }
+    }
+
     _autoEnableCC() {
         if (!this.settings?.autoSubtitlesEnable) return;
         const ccBtn = document.querySelector('.ytp-subtitles-button');

@@ -93,6 +93,22 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
         }
     }
 
+    onUpdate(settings, oldSettings) {
+        if (settings.ambilight !== oldSettings?.ambilight) {
+            if (settings.ambilight === false) {
+                this._stopAmbilight();
+            } else {
+                this._initAmbilight();
+            }
+        }
+        if (settings.dynamicHDR !== oldSettings?.dynamicHDR) {
+            if (settings.dynamicHDR === false) {
+                const video = document.querySelector('video.html5-main-video');
+                if (video) video.style.filter = '';
+            }
+        }
+    }
+
     _onResize() {
         if (location.pathname !== '/watch') return;
         
