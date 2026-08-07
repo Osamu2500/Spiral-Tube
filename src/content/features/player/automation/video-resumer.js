@@ -41,9 +41,10 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         
         // Listen for SPA navigation
         this.addListener(window, 'yt-navigate-finish', this.handleNavigation);
-        
         if (this.utils.isWatchPage()) {
             this.init();
+        } else if (window.location.pathname === '/') {
+            this._injectContinueWatchingRow();
         }
     }
 

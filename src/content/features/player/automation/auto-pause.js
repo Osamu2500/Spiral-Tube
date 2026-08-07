@@ -51,7 +51,8 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         
         // Attempt to find the video immediately if already on a watch page
         if (this.utils.isWatchPage()) {
-            this._cacheVideoElement();
+            await this._cacheVideoElement();
+            this.handleVisibilityChange(); // INSTANT APPLY
         }
         
         // V4 Optimization: Use IntersectionObserver instead of scroll listener
@@ -83,6 +84,11 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         // Restore unmuted state if we muted it
         if (this.video && this.wasMutedByUs) {
             this.video.muted = false;
+        }
+        
+        // Resume video if we paused it!
+        if (this.video && this.wasPausedByUs && this.video.paused) {
+            this.video.play().catch(()=>{});
         }
         
         this.video = null;

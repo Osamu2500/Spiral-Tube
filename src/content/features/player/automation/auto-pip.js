@@ -83,6 +83,11 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         }
         
         this.utils?.log?.('Auto PiP enabled', 'AUTO_PIP');
+        
+        // Instant apply if the tab is already hidden when toggled via popup
+        if (document.hidden) {
+            this._boundAutoPiP('hidden');
+        }
     }
 
     async disable() {
