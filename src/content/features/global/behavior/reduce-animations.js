@@ -21,6 +21,7 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
         this.name = 'ReduceAnimations';
         this._currentMode = 'off';
         this._originalScrollIntoView = null;
+        this._originalAnimate = null;
         this._motionQuery = null;
         this._motionHandler = null;
     }
@@ -89,9 +90,10 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
 
         document.body.classList.add(`ypp-reduce-anim-${mode}`);
 
-        // 2D: Intercept JS smooth scroll calls in Minimal mode
+        // 2D: Intercept JS smooth scroll and Web Animations API in Minimal mode
         if (mode === 'minimal') {
             this._patchScrollIntoView();
+            this._patchWebAnimationsAPI();
         }
 
         // 2B: Listen for OS setting changes live
@@ -110,6 +112,7 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
             'ypp-reduce-anim-minimal'
         );
         this._restoreScrollIntoView();
+        this._restoreWebAnimationsAPI();
         if (this._motionQuery && this._motionHandler) {
             this._motionQuery.removeEventListener('change', this._motionHandler);
             this._motionQuery = null;
@@ -139,6 +142,37 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
         Element.prototype.scrollIntoView = this._originalScrollIntoView;
         delete Element.prototype._yppOrigScrollIntoView;
         this._originalScrollIntoView = null;
+    }
+
+    // ─── 2F: Web Animations API Patch ─────────────────────────────────────────
+
+    _patchWebAnimationsAPI() {
+        if (this._originalAnimate) return;
+        this._originalAnimate = Element.prototype.animate;
+        const origAnimate = this._originalAnimate;
+        
+        Element.prototype.animate = function(keyframes, options) {
+            // Instantly finish JS animations by forcing duration to 0
+            if (options) {
+                if (typeof options === 'number') {
+                    options = 0;
+                } else {
+                    options.duration = 0;
+                    options.iterations = 1;
+                }
+            } else {
+                options = 0;
+            }
+            return origAnimate.call(this, keyframes, options);
+        };
+        Element.prototype._yppOrigAnimate = origAnimate;
+    }
+
+    _restoreWebAnimationsAPI() {
+        if (!this._originalAnimate) return;
+        Element.prototype.animate = this._originalAnimate;
+        delete Element.prototype._yppOrigAnimate;
+        this._originalAnimate = null;
     }
 }
 

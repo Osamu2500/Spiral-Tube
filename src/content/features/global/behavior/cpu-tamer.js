@@ -221,9 +221,14 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
                 display: none !important;
             }
 
-            /* 3. yt-animated-icon — morphing SVG icons (like, subscribe bell, etc.) */
+            /* 3. yt-animated-icon & yt-animated-action — morphing SVG/Lottie icons (like, subscribe bell) */
             yt-animated-icon > *,
-            yt-animated-icon svg * {
+            yt-animated-icon svg *,
+            yt-animated-action > *,
+            yt-animated-action svg *,
+            yt-animated-action canvas,
+            segmented-like-dislike-button-view-model yt-animated-action *,
+            .YtSegmentedLikeDislikeButtonViewModelSegmentedLikeDislikeButtonViewModelLikeButton yt-animated-action * {
                 animation: none !important;
                 transition: none !important;
             }
