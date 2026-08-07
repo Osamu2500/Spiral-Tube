@@ -222,6 +222,8 @@ import { BookmarksManager } from '../features/player/controls/bookmarks.js';
 window.YPP.FeatureManager.register(BookmarksManager);
 import { IntentionalDelay } from '../features/player/enhancements/intentional-delay.js';
 window.YPP.FeatureManager.register(IntentionalDelay);
+import { PinVideo } from '../features/player/enhancements/pin-video.js';
+window.YPP.FeatureManager.register(PinVideo);
 import { ReturnDislike } from '../features/player/enhancements/return-dislike.js';
 window.YPP.FeatureManager.register(ReturnDislike);
 
@@ -284,8 +286,6 @@ import { AudioMode } from '../features/player/media-effects/ambient-mode/audio-m
 window.YPP.FeatureManager.register(AudioMode);
 import { ClassicProgressBar } from '../features/player/controls/classic-progress-bar.js';
 window.YPP.FeatureManager.register(ClassicProgressBar);
-import { AudioCompressor } from '../features/player/media-effects/audio-compressor.js';
-window.YPP.FeatureManager.register(AudioCompressor);
 import { VideoResumer } from '../features/player/automation/video-resumer.js';
 window.YPP.FeatureManager.register(VideoResumer);
 import { AutoPause } from '../features/player/automation/auto-pause.js';
@@ -300,10 +300,8 @@ import { LiveStreamTime } from '../features/player/enhancements/live-stream-time
 window.YPP.FeatureManager.register(LiveStreamTime);
 import { TwoColumnSubscriptions } from '../features/pages/subscriptions/two-column-subscriptions.js';
 window.YPP.FeatureManager.register(TwoColumnSubscriptions);
-import { FlexWidthPlayer } from '../features/player/enhancements/flex-width-player.js';
-window.YPP.FeatureManager.register(FlexWidthPlayer);
-import { CompactPlayerUI } from '../features/player/enhancements/compact-player-ui.js';
-window.YPP.FeatureManager.register(CompactPlayerUI);
+
+
 import { SaveSupremeUI } from '../features/global/ui-tweaks/save-supreme-ui.js';
 window.YPP.FeatureManager.register(SaveSupremeUI);
 import { CustomizeYouTubeUI } from '../features/global/ui-tweaks/customize-youtube-ui.js';

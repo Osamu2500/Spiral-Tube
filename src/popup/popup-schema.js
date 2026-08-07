@@ -111,22 +111,15 @@ export const getPopupSchema = (t) => [
                 ]
             },
 
-            // Section 2: Audio & Equalizer Enhancements
-            {
-                title: t('audio_enhancements'),
-                icon: ICONS.volumeBoost,
-                items: [
-                    { type:'toggle', id:'audioCompressor',    label: t('audio_compressor'),  desc: t('compress_loud_sounds'),       icon:ICONS.compressor },
-                ]
-            },
+
 
             // Section 3: Player UI Components
             {
                 title: t('player_ui_components'),
                 icon: ICONS.uiComponents,
                 items: [
-                    { type:'toggle', id:'compactPlayerUI',  label: t('compactPlayerUI'),    badge:'NEW', desc: t('compactPlayerUI_desc'),       icon:ICONS.uiComponents },
-                    { type:'toggle', id:'flexWidthPlayer', label: t('flexWidthPlayer'), badge:'NEW', desc: t('flexWidthPlayer_desc'), icon:ICONS.player },
+
+
                     { type:'select', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, options:[{value:'off',label:t('reduce_animations_off')},{value:'balanced',label:t('reduce_animations_balanced')},{value:'minimal',label:t('reduce_animations_minimal')}] },
                     { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:ICONS.pinVideo },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
@@ -141,7 +134,6 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar, default: true },
                     { type:'layoutToggle', id:'sidebarLayout',        label: t('sidebar_layout'),   desc: t('video_cards_size') },
                     { type:'toggle', id:'splitScrolling',       label: t('split_scrolling'),  desc: t('scroll_sidebar_independently'), icon:ICONS.splitScroll },
-                    { type:'toggle', id:'enableTabviewSidebar', label: t('tabview_sidebar'), badge:'NEW', desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar },
                 ]
             },
 
@@ -236,7 +228,8 @@ export const getPopupSchema = (t) => [
                 subtitle: 'Immersive experiences for the home feed',
                 icon: ICONS.home,
                 items: [
-                    { type:'toggle', id:'cinematicMode', class:'span-4',  label: t('cinematic_home'),  desc: t('cinematic_styling_for_homepage'),    icon:ICONS.cinematic }
+                    { type:'toggle', id:'cinematicMode', class:'span-4',  label: t('cinematic_home'),  desc: t('cinematic_styling_for_homepage'),    icon:ICONS.cinematic },
+                    { type:'toggle', id:'enableTabviewSidebar', class:'span-4', label: t('tabview_sidebar'), badge:'NEW', desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar }
                 ]
             },
             {

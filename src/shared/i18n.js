@@ -97,34 +97,6 @@ const dictionaries = {
         animations_screen_filters: 'Animations & Screen Filters',
         your_bookmarks: 'Your Bookmarks',
 
-        // ── Home Tab Features ──
-        displayFullTitle: 'Show Full Titles',
-        displayFullTitle_desc: 'Always expand video titles so no text is truncated with ellipsis (...)',
-        saveSupremeUI: 'Enhanced Save Popup',
-        saveSupremeUI_desc: 'Modern glassmorphic popup when saving videos to playlists with smooth animations',
-        popup_modal_styles: 'Popup & Modal Styles',
-        useSquareCorners: 'Square Corners',
-        useSquareCorners_desc: 'Remove all rounded card borders for a clean, sharp rectangular aesthetic',
-        auto_scale_grid: 'Auto-Scale Grid',
-        adapt_to_zoom_window_size: 'Automatically scale grid columns so video cards fit perfectly at any zoom level',
-        grid_columns: 'Grid Columns',
-        '0_auto_scale': '0 = auto-scale',
-        multi_select_videos: 'Multi-Select Videos',
-        hold_shift_click_to_select_multiple_videos: 'Hold Shift while clicking video cards to select and manage multiple videos at once',
-        clean_mix_urls: 'Clean Mix URLs',
-        prevent_mix_auto_play: 'Stop YouTube Mixes and auto-generated playlists from automatically playing the next video',
-        flexWidthPlayer: 'Flex Width Player',
-        flexWidthPlayer_desc: 'Dynamically widen the video player to use extra horizontal space on widescreen monitors',
-
-        // ── Shorts Tab Features ──
-        redirect_shorts: 'Redirect Shorts',
-        play_in_normal_ui: 'Automatically redirect Shorts URLs to the normal desktop video player with seek controls',
-        stop_looping: 'Stop Looping',
-        no_auto_replay_on_shorts: 'Stop Shorts from automatically looping when playback reaches the end of the video',
-        duration_filter: 'Duration Filter',
-        hide_short_videos: 'Filter out videos shorter than your selected minimum duration from all video feeds',
-        min_duration: 'Min Duration',
-
         // ── Player Tab Features ──
         auto_cinema: 'Auto Cinema',
         expand_player_on_load: 'Automatically switch the video player to theater mode whenever a watch page opens',

@@ -97,7 +97,6 @@ window.YPP.SettingsSchema = {
         volumeBoostTreble:   { type: 'number',  default: 0, min: -12, max: 12 },
         volumeBalance:       { type: 'number',  default: 0, min: -1, max: 1 },
         volumeEqBands:       { type: 'string',  default: '[0,0,0,0,0,0,0,0,0,0]' },
-        volumeCompressor:    { type: 'boolean', default: true },
         volumeMono:          { type: 'boolean', default: false },
 
         // --- Search ---
@@ -175,7 +174,6 @@ window.YPP.SettingsSchema = {
         subscriptionFolders: { type: 'boolean', default: true },
         returnYouTubeDislike:{ type: 'boolean', default: false },
         enableBookmarks:     { type: 'boolean', default: true },
-        audioCompressor:     { type: 'boolean', default: false },
         videoResumer:        { type: 'boolean', default: true },
         autoPause:           { type: 'boolean', default: false },
         commentFilter:       { type: 'boolean', default: true },
@@ -311,11 +309,11 @@ window.YPP.SettingsSchema = {
         pb_native_fullscreen:{ type: 'string', default: 'front', values: ['front', 'back', 'hidden'] },
 
         // --- Sidebar Layout ---
-        sidebarLayout:       { type: 'string',  default: 'compact', values: ['dense', 'compact', 'regular', 'spacious', 'expanded'] },
+        sidebarLayout:       { type: 'string',  default: 'compact', values: ['compact', 'regular', 'spacious', 'expanded'] },
         splitScrolling:      { type: 'boolean', default: false },
 
         // --- Search Layout ---
-        searchLayout:        { type: 'string',  default: 'regular', values: ['dense', 'compact', 'regular', 'spacious', 'expanded'] },
+        searchLayout:        { type: 'string',  default: 'regular', values: ['compact', 'regular', 'spacious', 'expanded'] },
 
         // --- Navigation ---
         navTrending:         { type: 'boolean', default: true },
@@ -340,14 +338,13 @@ window.YPP.SettingsSchema = {
         realCinemaMode:               { type: 'boolean', default: true },
         showLiveStreamTime:           { type: 'boolean', default: true },
         twoColumnSubscriptions:       { type: 'boolean', default: true },
-        flexWidthPlayer:              { type: 'boolean', default: true },
-        compactPlayerUI:              { type: 'boolean', default: false },
+
         saveSupremeUI:                { type: 'boolean', default: true },
         enableRealCinemaMode:         { type: 'boolean', default: true },
         enableLiveStreamTime:         { type: 'boolean', default: true },
         enableTwoColumnSubscriptions: { type: 'boolean', default: true },
-        enableFlexWidthPlayer:        { type: 'boolean', default: true },
-        enableCompactPlayerUI:        { type: 'boolean', default: false },
+
+
         enableSaveSupremeUI:          { type: 'boolean', default: true },
         enableCustomizeYouTubeUI:     { type: 'boolean', default: true },
         enableCpuTamer:               { type: 'boolean', default: true },

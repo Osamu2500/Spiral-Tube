@@ -56,6 +56,8 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('SplitScrolling');
+        this._onScroll = this._onScroll.bind(this);
+        this._scrollDebounceTimer = null;
     }
 
     // ── BaseFeature contract ──────────────────────────────────────────────────
@@ -79,6 +81,20 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
      */
     disable() {
         document.body.classList.remove(_SPLIT_SCROLL_ACTIVE_CLASS);
+        const secondary = document.getElementById('secondary');
+        if (secondary) secondary.removeEventListener('scroll', this._onScroll);
+        
+        if (this._scrollDebounceTimer) {
+            clearTimeout(this._scrollDebounceTimer);
+            this._scrollDebounceTimer = null;
+        }
+        
+        if (this._sidebarObserver) {
+            this._sidebarObserver.disconnect();
+            this._sidebarObserver = null;
+        }
+        
+        this._scrollBound = false;
         super.disable(); // runs BaseFeature.cleanupEvents() — future-safe
     }
 
@@ -97,19 +113,120 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
             if (!document.getElementById(_SPLIT_SCROLL_STYLE_ID)) {
                 this._injectStyles();
             }
-            // Reset sidebar scroll position on navigation
-            const secondary = document.getElementById('secondary');
-            if (secondary) {
-                secondary.scrollTop = 0;
-                // YouTube might recreate or shift the layout, so just in case, do it on the next frame too
-                requestAnimationFrame(() => {
-                    if (secondary) secondary.scrollTop = 0;
-                });
-            }
+            // Defensively clear memory flag to re-bind on new page
+            this._scrollBound = false;
+            this._initScrollObserver();
         }
     }
 
-    // ── Private helpers ───────────────────────────────────────────────────────
+// ── Private helpers ───────────────────────────────────────────────────────
+
+/**
+ * Initialize scroll observer for shadow and scroll-to-top button
+ * @private
+ */
+_initScrollObserver() {
+    if (this._scrollBound) return;
+    this._scrollBound = true;
+
+    // We can't rely just on onPageChange because the sidebar might be rebuilt
+    // So we use a MutationObserver or just set up the event when the element exists
+    const setup = () => {
+        const secondary = document.getElementById('secondary');
+        if (!secondary) {
+            setTimeout(setup, 1000);
+            return;
+        }
+
+        // V2: Add scroll-to-top button
+        let topBtn = document.getElementById('ypp-scroll-top-btn');
+        if (!topBtn) {
+            topBtn = document.createElement('button');
+            topBtn.id = 'ypp-scroll-top-btn';
+            topBtn.className = 'ypp-scroll-top-btn';
+            topBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>';
+            topBtn.title = 'Scroll to top';
+            topBtn.addEventListener('click', () => {
+                secondary.scrollTo({ top: 0, behavior: 'smooth' });
+                // Clear saved position when returning to top
+                try {
+                    const videoId = new URLSearchParams(window.location.search).get('v');
+                    if (videoId) sessionStorage.removeItem(`ypp-scroll-${videoId}`);
+                } catch(e) {}
+            });
+            secondary.appendChild(topBtn);
+        }
+
+        // Use a MutationObserver to wait for YouTube to populate the sidebar before restoring scroll
+        // V4: Prevent leak by tracking the observer
+        if (this._sidebarObserver) {
+            this._sidebarObserver.disconnect();
+        }
+        
+        this._sidebarObserver = new MutationObserver((mutations, obs) => {
+            if (secondary.scrollHeight > window.innerHeight) {
+                obs.disconnect();
+                this._sidebarObserver = null;
+                
+                // Restore scroll position or set to 0
+                try {
+                    const videoId = new URLSearchParams(window.location.search).get('v');
+                    if (videoId) {
+                        const savedScroll = sessionStorage.getItem(`ypp-scroll-${videoId}`);
+                        if (savedScroll) {
+                            secondary.scrollTop = parseInt(savedScroll, 10);
+                        } else {
+                            secondary.scrollTop = 0;
+                        }
+                    }
+                } catch (e) {}
+            }
+        });
+        this._sidebarObserver.observe(secondary, { childList: true, subtree: true });
+
+        secondary.removeEventListener('scroll', this._onScroll);
+        secondary.addEventListener('scroll', this._onScroll, { passive: true });
+    };
+
+    setup();
+}
+
+/**
+ * Scroll event handler, debounced for performance
+ * @private
+ */
+_onScroll(e) {
+    if (!this.isEnabled) return;
+    const secondary = e.target;
+    if (!secondary) return;
+    
+    const scrollPos = secondary.scrollTop;
+    const isScrolled = scrollPos > 50;
+    secondary.classList.toggle('ypp-is-scrolling', isScrolled);
+    
+    const topBtn = document.getElementById('ypp-scroll-top-btn');
+    if (topBtn) {
+        if (scrollPos > 2000) {
+            topBtn.classList.add('pulse-anim');
+        } else {
+            topBtn.classList.remove('pulse-anim');
+        }
+    }
+    
+    // V3: Debounce sessionStorage for high performance
+    if (this._scrollDebounceTimer) {
+        clearTimeout(this._scrollDebounceTimer);
+        this._scrollDebounceTimer = null;
+    }
+    this._scrollDebounceTimer = setTimeout(() => {
+        try {
+            const videoId = new URLSearchParams(window.location.search).get('v');
+            if (videoId) {
+                sessionStorage.setItem(`ypp-scroll-${videoId}`, scrollPos);
+            }
+        } catch(err) {}
+    }, 300);
+}
 
     /**
      * Inject the split-scrolling <style> block into <head>.
@@ -172,66 +289,73 @@ export class SplitScrolling extends window.YPP.features.BaseFeature {
                 overflow-x: hidden !important;
                 margin-top: 0 !important;
                 padding-top: var(--ytd-margin-6x, 24px) !important;
-                /* Firefox */
-                scrollbar-width: thin;
-                scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-            }
-
-            /* ── Webkit scrollbar (shown unless hide-scrollbar is active) ──── */
-
-            html:not(.ypp-sidebar-comments-active) body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ytd-watch-flexy:not([hidden]) #secondary::-webkit-scrollbar {
-                width: 6px !important;
-                display: block !important;
-            }
-            html:not(.ypp-sidebar-comments-active) body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ytd-watch-flexy:not([hidden]) #secondary::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.2) !important;
-                border-radius: 4px !important;
-            }
-            html:not(.ypp-sidebar-comments-active) body.ypp-split-scrolling-enabled:not(.ypp-hide-scrollbar) ytd-watch-flexy:not([hidden]) #secondary::-webkit-scrollbar-track {
-                background: transparent !important;
-            }
-
-            /* ── Override: hide sidebar scrollbar when global hide-scrollbar is on */
-
-            html body.ypp-hide-scrollbar #secondary,
-            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary,
-            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary,
-            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary,
-            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary,
-            html[data-ypp-ui-style] body.ypp-hide-scrollbar ytd-watch-flexy #secondary,
-            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary,
-            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar ytd-watch-flexy #secondary,
-            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary,
-            html[data-ypp-theme] body.ypp-hide-scrollbar #secondary {
-                scrollbar-width: none !important;
+                scrollbar-width: none !important; /* User requested NO scrollbar */
                 -ms-overflow-style: none !important;
+                transition: box-shadow 0.3s ease !important;
             }
-            html body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
-            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar,
-            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar,
-            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled ytd-watch-flexy #secondary::-webkit-scrollbar,
-            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
-            html[data-ypp-ui-style] body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar,
-            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
-            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar,
-            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
-            html[data-ypp-theme] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar,
-            html body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
-            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar-thumb,
-            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar-thumb,
-            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
-            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
-            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-thumb,
-            html body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
-            html body.ypp-hide-scrollbar ytd-watch-flexy #secondary::-webkit-scrollbar-track,
-            html body.ypp-hide-scrollbar.ypp-split-scrolling-enabled #secondary::-webkit-scrollbar-track,
-            html[data-ypp-ui-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
-            html[data-ypp-ui-style="harry-potter"] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track,
-            html[data-ypp-card-style] body.ypp-hide-scrollbar #secondary::-webkit-scrollbar-track {
+            
+            ${watchCtx} #secondary::-webkit-scrollbar {
+                display: none !important;
                 width: 0 !important;
                 height: 0 !important;
-                display: none !important;
-                background: transparent !important;
+            }
+
+            /* Scroll Shadow */
+            ${watchCtx} #secondary.ypp-is-scrolling {
+                box-shadow: inset 0 10px 15px -10px rgba(0,0,0,0.3) !important;
+            }
+
+            /* ── Scroll to Top Button ─────────────── */
+            .ypp-scroll-top-btn {
+                position: fixed !important;
+                bottom: 30px !important;
+                right: 30px !important;
+                width: 44px !important;
+                height: 44px !important;
+                border-radius: 50% !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+                border: 1px solid rgba(255,255,255,0.1) !important;
+                color: #fff !important;
+                cursor: pointer !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                backdrop-filter: blur(8px) !important;
+                -webkit-backdrop-filter: blur(8px) !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transform: translateY(10px) !important;
+                transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+                z-index: 9999 !important;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+            }
+            
+            #secondary.ypp-is-scrolling .ypp-scroll-top-btn {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+            }
+
+            .ypp-scroll-top-btn:hover {
+                background: rgba(255, 255, 255, 0.2) !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+            }
+            
+            /* V2: Pulse Animation */
+            @keyframes ypp-pulse {
+                0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+                70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+            }
+            .ypp-scroll-top-btn.pulse-anim {
+                animation: ypp-pulse 2s infinite;
+            }
+            
+            .ypp-scroll-top-btn svg {
+                width: 24px !important;
+                height: 24px !important;
+                fill: currentColor !important;
             }
 
             /* ── Breathing room at the bottom of the sidebar list ─────────── */

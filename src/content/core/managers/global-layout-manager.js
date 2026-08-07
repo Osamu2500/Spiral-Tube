@@ -43,8 +43,8 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             aggressiveShortsBlock: 'ypp-nuke-shorts',
             hideSearchShorts:      'ypp-hide-search-shorts',
             cleanSearch:           'ypp-clean-search',
-            flexWidthPlayer:       'ypp-flex-width-player',
-            compactPlayerUI:       'ypp-compact-player-ui',
+
+
             cinematicMode:         'ypp-real-cinema-mode', // Improve cinematic mode on watch page
             realCinemaMode:        'ypp-real-cinema-mode', // Explicit theater real cinema mode
             showLiveStreamTime:    'ypp-live-stream-time', // Live stream time counter
@@ -58,7 +58,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideScrollbar:         'ypp-hide-scrollbar',
             // New Custom feature toggles
             hideMemberships:       'ypp-hide-memberships',
-            pinVideoOnScroll:      'ypp-pin-video-scroll',
+
             // Aesthetic toggles
             customScrollbar:       'ypp-custom-scrollbar',
             grayscaleThumbnails:   'ypp-grayscale-thumbs',

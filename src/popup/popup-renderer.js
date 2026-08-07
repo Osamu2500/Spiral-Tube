@@ -538,7 +538,6 @@ function renderLayoutToggle(item, state) {
     toggleWrap.style.borderRadius = '8px';
     toggleWrap.style.border = '1px solid rgba(255,255,255,0.08)';
 
-    const svgDenseStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="4" height="3" rx="0.5"/><line x1="9" y1="7.5" x2="21" y2="7.5"/><rect x="3" y="11" width="4" height="3" rx="0.5"/><line x1="9" y1="12.5" x2="21" y2="12.5"/><rect x="3" y="16" width="4" height="3" rx="0.5"/><line x1="9" y1="17.5" x2="21" y2="17.5"/></svg>`;
     const svgCompactStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="6" height="4" rx="1"/><line x1="11" y1="7" x2="21" y2="7"/><rect x="3" y="13" width="6" height="4" rx="1"/><line x1="11" y1="15" x2="21" y2="15"/></svg>`;
     const svgRegularStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="8" height="6" rx="1"/><line x1="13" y1="6" x2="21" y2="6"/><rect x="3" y="14" width="8" height="6" rx="1"/><line x1="13" y1="16" x2="21" y2="16"/></svg>`;
     const svgSpaciousStr = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="10" height="7" rx="1"/><line x1="15" y1="5" x2="21" y2="5"/><rect x="3" y="14" width="10" height="7" rx="1"/><line x1="15" y1="16" x2="21" y2="16"/></svg>`;
@@ -547,14 +546,6 @@ function renderLayoutToggle(item, state) {
     const parseSVG = (str) => new DOMParser().parseFromString(str, 'image/svg+xml').documentElement;
 
     const btnStyle = 'display:flex; align-items:center; justify-content:center; flex:1; gap:4px; font-size:11px; padding:5px 8px; border:none; cursor:pointer; transition:all 0.2s; font-weight:500; border-radius:6px; background:transparent; color:rgba(255,255,255,0.5);';
-
-    const btnDense = document.createElement('button');
-    btnDense.type = 'button';
-    btnDense.className = 'sidebar-layout-btn';
-    btnDense.dataset.layout = 'dense';
-    btnDense.style.cssText = btnStyle;
-    btnDense.appendChild(parseSVG(svgDenseStr));
-    btnDense.appendChild(document.createTextNode(' Dense'));
 
     const btnCompact = document.createElement('button');
     btnCompact.type = 'button';
@@ -588,7 +579,6 @@ function renderLayoutToggle(item, state) {
     btnExpanded.appendChild(parseSVG(svgExpandedStr));
     btnExpanded.appendChild(document.createTextNode(' Expanded'));
 
-    toggleWrap.appendChild(btnDense);
     toggleWrap.appendChild(btnCompact);
     toggleWrap.appendChild(btnRegular);
     toggleWrap.appendChild(btnSpacious);
@@ -607,7 +597,7 @@ function renderLayoutToggle(item, state) {
 
     // Logic
     const updateVisuals = (layout) => {
-        [btnDense, btnCompact, btnRegular, btnSpacious, btnExpanded].forEach(b => {
+        [btnCompact, btnRegular, btnSpacious, btnExpanded].forEach(b => {
             const isActive = b.dataset.layout === layout;
             b.classList.toggle('active', isActive);
             b.style.background = isActive ? 'color-mix(in srgb, var(--accent-primary) 22%, transparent)' : 'transparent';
@@ -630,7 +620,6 @@ function renderLayoutToggle(item, state) {
         });
     };
 
-    btnDense.onclick = () => applyActiveState('dense');
     btnCompact.onclick = () => applyActiveState('compact');
     btnRegular.onclick = () => applyActiveState('regular');
     btnSpacious.onclick = () => applyActiveState('spacious');

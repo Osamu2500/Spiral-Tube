@@ -1,8 +1,3 @@
-/**
- * Time Display Feature
- * Injects speed-aware remaining time into the native YouTube player controls.
- */
-
 export class TimeDisplay extends window.YPP.features.BaseFeature {
     static featureId = 'timeDisplay';
     static executionPhase = 'sequential-ui';
@@ -11,96 +6,135 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     constructor() {
         super('TimeDisplay');
         this.name = 'TimeDisplay';
-        this.settings = null;
+        this._mode = 'default'; // 'default' | 'remaining' | 'chapter'
         this._boundTimeUpdate = null;
         this._videoElement = null;
-        this._pollInterval = null;
-        this._timeRemainingNodes = new Set();
+        this._timeDisplays = new Set();
         this._updateFns = new Set();
         this._handleNavigation = this._handleNavigation.bind(this);
+        this._handleClick = this._handleClick.bind(this);
     }
 
     getConfigKey() { return 'enableRemainingTime'; }
 
     _isWatchPage() {
         const path = window.location.pathname;
-        return path === '/watch' || 
-               path.startsWith('/watch/') || 
-               path === '/shorts' || 
-               path.startsWith('/shorts/') || 
-               !!document.querySelector('#movie_player');
+        return path === '/watch' || path.startsWith('/watch/') || !!document.querySelector('#movie_player');
     }
 
-    _findTimeDisplays() {
-        const displays = document.querySelectorAll(
-            '#movie_player .ytp-time-display, ' +
-            '.html5-video-player .ytp-time-display, ' +
-            '.ytp-time-display'
-        );
-        return Array.from(displays).filter(el => !el.closest('.ytp-miniplayer-ui'));
-    }
+    async enable() {
+        await super.enable();
+        if (!this.settings?.enableRemainingTime) return;
 
-    enable() {
-        if (!this.settings || !this.settings.enableRemainingTime) return;
-        this.isEnabled = true;
-
-        const Utils = window.YPP.Utils;
-        if (!Utils) return;
-
+        this._injectStyles();
+        
         this.addListener(window, 'yt-navigate-finish', this._handleNavigation);
         this.addListener(window, 'yt-page-data-updated', this._handleNavigation);
         this.addListener(window, 'yt-player-updated', this._handleNavigation);
 
         if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register('time-display-container', '.ytp-time-display, .ytp-time-wrapper', (elements) => {
-                this.showAll();
+            window.YPP.sharedObserver.register('time-display-container', '.ytp-time-display, .ytp-time-wrapper', () => {
+                this._initDisplays();
             }, true);
         }
 
         if (this._isWatchPage()) {
-            this.showAll();
+            this._initDisplays();
         }
     }
 
-    showAll() {
-        if (!this.isEnabled || !this.settings?.enableRemainingTime || !this._isWatchPage()) return;
-        const timeDisplays = this._findTimeDisplays();
-        timeDisplays.forEach(td => this.showRemainingTime(td));
-        this._updateFns.forEach(fn => fn());
+    async disable() {
+        await super.disable();
+        if (window.YPP.sharedObserver) {
+            window.YPP.sharedObserver.unregister('time-display-container');
+        }
+        this._unbindVideoListeners();
+        this._cleanupDisplays();
+    }
+
+    _injectStyles() {
+        if (document.getElementById('ypp-time-display-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'ypp-time-display-styles';
+        style.textContent = `
+            .ytp-time-display { cursor: pointer !important; user-select: none !important; }
+            .ytp-time-display:hover { opacity: 0.8 !important; }
+            .ypp-time-mode-remaining .ytp-time-current,
+            .ypp-time-mode-remaining .ytp-time-separator,
+            .ypp-time-mode-remaining .ytp-time-duration { display: none !important; }
+            .ypp-custom-time { display: none; font-weight: 500; font-variant-numeric: tabular-nums; }
+            .ypp-time-mode-remaining .ypp-custom-time { display: inline-block !important; }
+        `;
+        document.head.appendChild(style);
     }
 
     _handleNavigation() {
         if (!this.isEnabled || !this._isWatchPage()) return;
-        setTimeout(() => {
-            this.showAll();
-        }, 300);
+        setTimeout(() => this._initDisplays(), 300);
     }
 
-    async disable() {
-        this.isEnabled = false;
-        await super.disable();
-        try {
-            if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.unregister('time-display-container');
+    _cleanupDisplays() {
+        this._timeDisplays.forEach(td => {
+            td.removeEventListener('click', this._handleClick);
+            td.classList.remove('ypp-time-mode-remaining');
+            const custom = td.querySelector('.ypp-custom-time');
+            if (custom) custom.remove();
+        });
+        this._timeDisplays.clear();
+        this._updateFns.clear();
+    }
+
+    _initDisplays() {
+        if (!this.isEnabled || !this._isWatchPage()) return;
+        
+        const displays = document.querySelectorAll('#movie_player .ytp-time-display');
+        displays.forEach(td => {
+            if (this._timeDisplays.has(td)) return;
+            
+            // Avoid miniplayer
+            if (td.closest('.ytp-miniplayer-ui')) return;
+
+            let customSpan = td.querySelector('.ypp-custom-time');
+            if (!customSpan) {
+                customSpan = document.createElement('span');
+                customSpan.className = 'ypp-custom-time';
+                td.appendChild(customSpan);
             }
 
-            this._unbindVideoListeners();
+            td.addEventListener('click', this._handleClick);
+            this._timeDisplays.add(td);
+            
+            if (this._mode === 'remaining') {
+                td.classList.add('ypp-time-mode-remaining');
+            }
 
-            this._timeRemainingNodes.forEach(node => {
-                if (node && node.parentNode) node.remove();
-            });
-            this._timeRemainingNodes.clear();
-
-            document.querySelectorAll('.ypp-time-remaining').forEach(el => el.remove());
-            this._updateFns = new Set();
-            this._videoElement = null;
-        } catch (err) {
-            this.utils?.log('TimeDisplay disable error', 'TIME-DISPLAY', 'error', err);
-        }
+            const updateFn = () => this._updateTime(td, customSpan);
+            this._updateFns.add(updateFn);
+            updateFn();
+        });
     }
 
-    onUpdate() {
-        this.enable();
+    _handleClick(e) {
+        e.stopPropagation();
+        
+        // Cycle modes: default -> remaining -> chapter
+        if (this._mode === 'default') {
+            this._mode = 'remaining';
+        } else if (this._mode === 'remaining') {
+            this._mode = 'chapter';
+        } else {
+            this._mode = 'default';
+        }
+        
+        this._timeDisplays.forEach(td => {
+            if (this._mode !== 'default') {
+                td.classList.add('ypp-time-mode-remaining');
+            } else {
+                td.classList.remove('ypp-time-mode-remaining');
+            }
+        });
+        
+        this._updateFns.forEach(fn => fn());
     }
 
     _unbindVideoListeners() {
@@ -108,136 +142,96 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
             this._videoElement.removeEventListener('timeupdate', this._boundTimeUpdate.throttled);
             this._videoElement.removeEventListener('ratechange', this._boundTimeUpdate.handler);
             this._videoElement.removeEventListener('durationchange', this._boundTimeUpdate.handler);
-            this._videoElement.removeEventListener('loadedmetadata', this._boundTimeUpdate.handler);
-            this._videoElement.removeEventListener('play', this._boundTimeUpdate.handler);
-            this._videoElement.removeEventListener('seeked', this._boundTimeUpdate.handler);
             this._boundTimeUpdate = null;
         }
     }
 
-    _bindVideoListeners(video, update) {
-        if (video === this._videoElement && this._boundTimeUpdate) {
-            this._boundTimeUpdate.raws.add(update);
-            return;
-        }
+    _bindVideoListeners(video) {
+        if (video === this._videoElement && this._boundTimeUpdate) return;
         this._unbindVideoListeners();
         this._videoElement = video;
 
         const handler = () => {
-            if (this._boundTimeUpdate?.raws) {
-                this._boundTimeUpdate.raws.forEach(fn => fn());
-            }
+            this._updateFns.forEach(fn => fn());
         };
         const throttledUpdate = window.YPP.Utils?.throttle?.(handler, 500) ?? handler;
-        this._boundTimeUpdate = { throttled: throttledUpdate, handler, raws: new Set([update]) };
+        this._boundTimeUpdate = { throttled: throttledUpdate, handler };
 
         video.addEventListener('timeupdate', throttledUpdate);
         video.addEventListener('ratechange', handler);
         video.addEventListener('durationchange', handler);
-        video.addEventListener('loadedmetadata', handler);
-        video.addEventListener('play', handler);
-        video.addEventListener('seeked', handler);
     }
 
-    showRemainingTime(timeDisplay) {
-        if (!timeDisplay || !this.isEnabled || !this.settings?.enableRemainingTime) return;
+    _format(s) {
+        if (s === undefined || s === null || isNaN(s) || s < 0) return '0:00';
+        const h = Math.floor(s / 3600);
+        const m = Math.floor((s % 3600) / 60);
+        const sec = Math.floor(s % 60);
+        if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        return `${m}:${sec.toString().padStart(2, '0')}`;
+    }
 
-        const durationNode = timeDisplay.querySelector('.ytp-time-duration') || 
-                             timeDisplay.querySelector('[class*="time-duration"]') || 
-                             timeDisplay.querySelector('.ytp-time-current')?.parentNode?.querySelector('.ytp-time-duration');
-        if (!durationNode) return;
+    _updateTime(td, customSpan) {
+        if (!this.isEnabled || this._mode === 'default') return;
 
-        // Cleanup legacy structures
-        ['ypp-time-dashboard', 'ypp-native-time-metrics', 'ypp-dedicated-time-metrics'].forEach(id => {
-            const old = document.getElementById(id);
-            if (old) old.remove();
-        });
-        document.querySelectorAll('.ypp-time-separator-appended').forEach(el => el.remove());
+        const video = td.closest('.html5-video-player')?.querySelector('video') || document.querySelector('video.html5-main-video');
+        if (!video) return;
 
-        let timeRemainingNode = timeDisplay.querySelector('.ypp-time-remaining');
-        if (!timeRemainingNode) {
-            timeRemainingNode = document.createElement('span');
-            timeRemainingNode.className = 'ypp-time-remaining';
-            timeRemainingNode.style.cssText = `
-                display: inline-block !important;
-                margin-left: 5px !important;
-                opacity: 0.9 !important;
-                font-weight: 500 !important;
-                color: inherit !important;
-                vertical-align: baseline !important;
-                white-space: nowrap !important;
-            `;
+        this._bindVideoListeners(video);
 
-            if (durationNode.parentNode) {
-                durationNode.parentNode.insertBefore(timeRemainingNode, durationNode.nextSibling);
+        // Live stream protection
+        if (!video.duration || video.duration === Infinity || isNaN(video.currentTime) || video.duration <= 0) {
+            customSpan.textContent = 'Live';
+            return;
+        }
+
+        const speed = video.playbackRate || 1;
+        const duration = video.duration;
+        const currentTime = video.currentTime;
+        
+        let targetDuration = duration;
+        let prefix = '';
+        
+        if (this._mode === 'chapter') {
+            // Try to find current chapter end time
+            const chapters = document.querySelectorAll('.ytp-chapters-container .ytp-chapter-hover-container');
+            if (chapters && chapters.length > 0) {
+                let accumulatedWidth = 0;
+                let foundChapter = false;
+                for (const chap of chapters) {
+                    const widthPercent = parseFloat(chap.style.width || '0');
+                    accumulatedWidth += widthPercent;
+                    const chapEndTime = (accumulatedWidth / 100) * duration;
+                    if (currentTime < chapEndTime) {
+                        targetDuration = chapEndTime;
+                        foundChapter = true;
+                        break;
+                    }
+                }
+                if (!foundChapter) targetDuration = duration;
+            }
+            prefix = 'Ch: ';
+        }
+        
+        const rawLeft = Math.max(0, targetDuration - currentTime);
+        const adjustedLeft = rawLeft / speed;
+
+        if (rawLeft <= 0) {
+            customSpan.textContent = `${prefix}0:00`;
+            return;
+        }
+
+        if (Math.abs(speed - 1) <= 0.01) {
+            customSpan.textContent = `${prefix}-${this._format(rawLeft)}`;
+        } else {
+            if (speed > 1) {
+                const totalSaved = targetDuration - (targetDuration / speed);
+                customSpan.textContent = `${prefix}-${this._format(adjustedLeft)} · ${this._format(totalSaved)} saved`;
             } else {
-                timeDisplay.appendChild(timeRemainingNode);
+                const totalExtra = (targetDuration / speed) - targetDuration;
+                customSpan.textContent = `${prefix}-${this._format(adjustedLeft)} · ${this._format(totalExtra)} extra`;
             }
         }
-        this._timeRemainingNodes.add(timeRemainingNode);
-
-        const format = (s) => {
-            if (s === undefined || s === null || isNaN(s) || s < 0) return '0:00';
-            const h = Math.floor(s / 3600);
-            const m = Math.floor((s % 3600) / 60);
-            const sec = Math.floor(s % 60);
-            if (h > 0) {
-                return `${h}:${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-            }
-            return `${m}:${sec.toString().padStart(2, '0')}`;
-        };
-
-        const update = () => {
-            if (!this.isEnabled || !this.settings?.enableRemainingTime) return;
-
-            const video = timeDisplay.closest('.html5-video-player')?.querySelector('video') || 
-                          document.querySelector('video.html5-main-video') || 
-                          document.querySelector('#movie_player video') || 
-                          document.querySelector('video');
-            if (video) {
-                this._bindVideoListeners(video, update);
-            }
-
-            if (!video || !video.duration || !isFinite(video.duration) || isNaN(video.currentTime) || video.duration <= 0) {
-                if (timeRemainingNode) timeRemainingNode.style.display = 'none';
-                return;
-            }
-
-            // Ensure node remains attached immediately after durationNode
-            const curDurationNode = timeDisplay.querySelector('.ytp-time-duration') || 
-                                    timeDisplay.querySelector('[class*="time-duration"]');
-            if (curDurationNode && curDurationNode.parentNode && curDurationNode.nextSibling !== timeRemainingNode) {
-                curDurationNode.parentNode.insertBefore(timeRemainingNode, curDurationNode.nextSibling);
-            }
-
-            const speed = video.playbackRate || 1;
-            const duration = video.duration;
-            const currentTime = video.currentTime;
-            const rawLeft = Math.max(0, duration - currentTime);
-            const adjustedLeft = rawLeft / speed;
-
-            if (rawLeft <= 0) {
-                timeRemainingNode.style.display = 'none';
-                return;
-            }
-
-            timeRemainingNode.style.display = 'inline-block';
-
-            if (Math.abs(speed - 1) <= 0.01) {
-                timeRemainingNode.textContent = ` (-${format(rawLeft)})`;
-            } else {
-                if (speed > 1) {
-                    const totalSaved = duration - (duration / speed);
-                    timeRemainingNode.textContent = ` (-${format(adjustedLeft)} · ${format(totalSaved)} saved)`;
-                } else {
-                    const totalExtra = (duration / speed) - duration;
-                    timeRemainingNode.textContent = ` (-${format(adjustedLeft)} · ${format(totalExtra)} extra)`;
-                }
-            }
-        };
-
-        this._updateFns.add(update);
-        update();
     }
 }
 

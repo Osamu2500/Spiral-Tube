@@ -284,14 +284,13 @@ export const DEFAULT_SETTINGS = {
   realCinemaMode: true,
   showLiveStreamTime: true,
   twoColumnSubscriptions: true,
-  flexWidthPlayer: true,
-  compactPlayerUI: false,
+
+
   saveSupremeUI: true,
   enableRealCinemaMode: true,
   enableLiveStreamTime: true,
   enableTwoColumnSubscriptions: true,
-  enableFlexWidthPlayer: true,
-  enableCompactPlayerUI: false,
+
   enableSaveSupremeUI: true,
   enableCustomizeYouTubeUI: true,
   enableCpuTamer: true,

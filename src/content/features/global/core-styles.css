@@ -652,6 +652,28 @@ body.ypp-hide-memberships ytd-video-owner-renderer ytd-button-renderer#sponsor-b
 body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
   display: none !important;
 }
+body.ypp-hide-merch ytd-merch-shelf-renderer {
+  display: none !important;
+}
+
+/* Hide Fundraiser / Donations */
+
+body.ypp-hide-fundraiser ytd-donation-shelf-renderer {
+  display: none !important;
+}
+
+/* Hide End Screens */
+body.ypp-hide-endscreens #movie_player .ytp-ce-channel,
+body.ypp-hide-endscreens #movie_player .ytp-ce-video,
+body.ypp-hide-endscreens .ytp-endscreen-content {
+  display: none !important;
+}
+
+/* Hide Memberships */
+body.ypp-hide-memberships ytd-video-owner-renderer ytd-button-renderer#sponsor-button,
+body.ypp-hide-memberships ytd-sponsorships-offer-renderer {
+  display: none !important;
+}
 
 /* Hide Upload Button */
 body.ypp-hide-upload-button #buttons ytd-topbar-menu-button-renderer:has(svg path[d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"]),
@@ -659,16 +681,6 @@ body.ypp-hide-upload-button ytd-masthead #buttons ytd-topbar-menu-button-rendere
 body.ypp-hide-upload-button ytd-masthead [aria-label="Create"],
 body.ypp-hide-upload-button ytd-masthead a[href*="/upload"] {
   display: none !important;
-}
-
-/* Pin Video on Scroll */
-body.ypp-pin-video-scroll ytd-watch-flexy[is-two-columns_]:not([fullscreen]) #player-container-outer {
-    position: sticky !important;
-    top: var(--ytd-masthead-height, 56px) !important;
-    z-index: 100 !important;
-}
-body.ypp-pin-video-scroll ytd-watch-flexy[is-two-columns_]:not([fullscreen]) #player {
-    position: relative !important;
 }
 
 /* ========================================================================== */
