@@ -298,7 +298,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             /* Base Subtitle Container */
             .ypp-custom-subtitles {
                 position: absolute;
-                bottom: 5%;
+                bottom: 2%;
                 left: 50%;
                 --base-y: 0px;
                 --obstruction-y: 0px;
