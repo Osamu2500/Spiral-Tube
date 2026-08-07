@@ -58,24 +58,33 @@ export class VolumeBoosterUI {
         video = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
 
         if (ctx._volumePopup) {
-            ctx._volumePopup.remove();
+            if (document.body.contains(ctx._volumePopup)) ctx._volumePopup.remove();
+            if (ctx._volumePopup.parentNode) ctx._volumePopup.parentNode.removeChild(ctx._volumePopup);
             ctx._volumePopup = null;
-            anchorBtn.classList.remove('active');
+            
+            // Force clean up any orphaned elements
+            document.querySelectorAll('#ypp-eq-panel').forEach(e => e.remove());
+            
+            if (anchorBtn && anchorBtn.classList) anchorBtn.classList.remove('active');
+            
             if (ctx._volumePopupOutsideHandler) {
                 if (ctx.removeListener) ctx.removeListener(document, 'click', ctx._volumePopupOutsideHandler);
-                else document.removeEventListener('click', ctx._volumePopupOutsideHandler);
+                document.removeEventListener('click', ctx._volumePopupOutsideHandler);
                 ctx._volumePopupOutsideHandler = null;
             }
             if (ctx._volumePopupEscapeHandler) {
                 if (ctx.removeListener) ctx.removeListener(document, 'keydown', ctx._volumePopupEscapeHandler);
-                else document.removeEventListener('keydown', ctx._volumePopupEscapeHandler);
+                document.removeEventListener('keydown', ctx._volumePopupEscapeHandler);
                 ctx._volumePopupEscapeHandler = null;
             }
             return;
         }
 
+        // Force clean up before building a new one
+        document.querySelectorAll('#ypp-eq-panel').forEach(e => e.remove());
+
         this.injectEQStyles();
-        anchorBtn.classList.add('active');
+        if (anchorBtn && anchorBtn.classList) anchorBtn.classList.add('active');
 
         const panel = document.createElement('div');
         panel.id = 'ypp-eq-panel';
@@ -838,14 +847,16 @@ export class VolumeBoosterUI {
             };
         });
 
-        anime({
-            targets: panel.querySelectorAll('.ypp-eq-band-col'),
-            translateY: [20, 0],
-            opacity: [0, 1],
-            delay: anime.stagger(30, { start: 150 }),
-            easing: 'spring(1, 80, 10, 0)',
-            duration: 600,
-        });
+        if (typeof anime !== 'undefined') {
+            anime({
+                targets: panel.querySelectorAll('.ypp-eq-band-col'),
+                translateY: [20, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(30, { start: 150 }),
+                easing: 'spring(1, 80, 10, 0)',
+                duration: 600,
+            });
+        }
 
         // Visualizer Loop
         let animFrameId = null;
