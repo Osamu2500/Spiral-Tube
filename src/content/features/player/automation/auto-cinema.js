@@ -78,6 +78,9 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
         document.body.classList.remove('ypp-audio-focus');
         document.body.classList.remove('ypp-idle');
         
+        // Revert Theater Mode if we activated it and user hasn't manually overridden it
+        this._revertTheaterMode();
+        
         // super.disable() calls cleanupEvents() which removes all this.addListener() registrations
         await super.disable();
         this.utils?.log?.('Auto Cinema disabled', 'AUTO_CINEMA');
@@ -154,6 +157,19 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
                 }
             }, 300); // Wait 300ms for YouTube's own layout calculation to settle
         } catch (_) { /* silent fail */ }
+    }
+
+    _revertTheaterMode() {
+        if (this._userOverridden) return;
+        
+        const flexy = document.querySelector('ytd-watch-flexy');
+        if (flexy && flexy.hasAttribute('theater')) {
+            const btn = document.querySelector('.ytp-size-button');
+            if (btn) {
+                btn.click();
+                this.utils?.log?.('Reverted from theater mode on disable', 'AUTO_CINEMA', 'debug');
+            }
+        }
     }
 
     _setupDistractionFree() {
