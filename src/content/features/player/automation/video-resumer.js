@@ -195,17 +195,52 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                     window.YPP.StorageManager.remove(key);
                 }
             } else if (currentTime > 5) {
-                // RESUMER-BUG-4: Store both time AND duration for accurate progress bar rendering
-                const saveData = JSON.stringify({ time: currentTime, duration: duration || 0 });
+                // RESUMER-BUG-4 & RESUMER-UP-4: Store time, duration, and timestamp
+                const saveData = JSON.stringify({ time: currentTime, duration: duration || 0, savedAt: Date.now() });
                 if (chrome && chrome.storage && chrome.storage.sync) {
-                    chrome.storage.sync.set({ [key]: saveData });
+                    chrome.storage.sync.set({ [key]: saveData }, () => this._pruneOldResumes());
                 } else {
                     window.YPP.StorageManager.set(key, saveData);
+                    this._pruneOldResumes();
                 }
             }
         } catch (e) {
             // Ignore quota errors during unload
         }
+    }
+
+    // RESUMER-UP-4: Auto-delete old resumes (>50) to prevent storage bloat
+    async _pruneOldResumes() {
+        try {
+            let data = {};
+            if (chrome && chrome.storage && chrome.storage.sync) {
+                data = await chrome.storage.sync.get(null);
+            } else {
+                data = window.localStorage;
+            }
+            
+            const keys = Object.keys(data).filter(k => k.startsWith(this.STORAGE_KEY_PREFIX));
+            if (keys.length <= 50) return;
+
+            // Sort by savedAt timestamp (oldest first)
+            const parsed = keys.map(k => {
+                try {
+                    const obj = JSON.parse(data[k]);
+                    return { key: k, ts: obj.savedAt || 0 };
+                } catch {
+                    return { key: k, ts: 0 };
+                }
+            }).sort((a, b) => a.ts - b.ts);
+
+            const toDelete = parsed.slice(0, parsed.length - 50).map(item => item.key);
+            
+            if (chrome && chrome.storage && chrome.storage.sync) {
+                chrome.storage.sync.remove(toDelete);
+            } else {
+                toDelete.forEach(k => window.YPP.StorageManager.remove(k));
+            }
+            this.utils.log?.(`Pruned ${toDelete.length} old resume entries`, 'RESUMER');
+        } catch (e) {}
     }
 
     handleTimeUpdate() {
@@ -331,30 +366,47 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             
             let html = `<h2 style="color:var(--yt-spec-text-primary); margin-top:0; font-size:20px; margin-bottom:16px;">▶ Continue Watching</h2><div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px;">`;
             
-            // RESUMER-BUG-4: Compute accurate progress width from stored data
-            resumeItems.slice(0, 5).forEach(key => {
-                const vidId = key.replace(this.STORAGE_KEY_PREFIX, '');
+            // RESUMER-UP-1: Sort by most recent and fetch titles
+            const sortedItems = resumeItems.map(key => {
+                let ts = 0, p = null;
+                try {
+                    p = typeof data[key] === 'string' ? JSON.parse(data[key]) : null;
+                    ts = p?.savedAt || 0;
+                } catch {}
+                return { key, ts, p };
+            }).sort((a, b) => b.ts - a.ts).slice(0, 5);
+
+            for (const item of sortedItems) {
+                const vidId = item.key.replace(this.STORAGE_KEY_PREFIX, '');
                 const url = `https://www.youtube.com/watch?v=${vidId}`;
                 const imgUrl = `https://i.ytimg.com/vi/${vidId}/mqdefault.jpg`;
                 
-                let progressWidth = 50; // fallback
+                let progressWidth = 50;
+                const parsed = item.p;
+                if (parsed && parsed.time && parsed.duration && parsed.duration > 0) {
+                    progressWidth = Math.min(100, Math.round((parsed.time / parsed.duration) * 100));
+                }
+
+                // RESUMER-UP-1: Fetch title via oEmbed
+                let title = 'YouTube Video';
                 try {
-                    const raw = data[key];
-                    const parsed = typeof raw === 'string' ? JSON.parse(raw) : null;
-                    if (parsed && parsed.time && parsed.duration && parsed.duration > 0) {
-                        progressWidth = Math.min(100, Math.round((parsed.time / parsed.duration) * 100));
+                    const oembedRes = await fetch(`https://www.youtube.com/oembed?url=${url}&format=json`);
+                    if (oembedRes.ok) {
+                        const oembedData = await oembedRes.json();
+                        title = oembedData.title || title;
                     }
-                } catch (_) {}
+                } catch (e) {}
                 
                 html += `
-                    <a href="${url}" style="text-decoration:none; flex-shrink:0; width:210px;">
+                    <a href="${url}" style="text-decoration:none; flex-shrink:0; width:210px; display:flex; flex-direction:column; gap:8px;">
                         <div style="position:relative; width:100%; border-radius:8px; overflow:hidden; aspect-ratio:16/9; background:#000;">
                             <img src="${imgUrl}" style="width:100%; height:100%; object-fit:cover;" />
                             <div style="position:absolute; bottom:0; left:0; height:4px; background:red; width:${progressWidth}%;"></div>
                         </div>
+                        <div style="color:var(--yt-spec-text-primary); font-size:14px; font-weight:500; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${title}</div>
                     </a>
                 `;
-            });
+            }
             
             html += `</div>`;
             row.innerHTML = html;

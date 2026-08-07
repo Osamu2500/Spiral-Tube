@@ -63,17 +63,40 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         // FIX-1: Listen for SPA navigations so subtitles re-attach on new videos
         this.addListener(window, 'yt-navigate-finish', this._handleNavigation);
 
-        this._startPolling();
+        // SUBS-UP-3: Fullscreen repositioning — lift subtitles when in fullscreen
+        this.addListener(document, 'fullscreenchange', () => {
+            if (!this._customContainer) return;
+            if (document.fullscreenElement) {
+                this._customContainer.style.setProperty('--fullscreen-y', '-48px');
+            } else {
+                this._customContainer.style.setProperty('--fullscreen-y', '0px');
+            }
+        });
 
-        // Auto-enable CC button if requested
+        this._startPolling();
         this._autoEnableCC();
+
+        // SUBS-UP-4: After 5s, warn user if no captions appear
+        this._ccToastShown = false;
+        this._ccCheckTimer = setTimeout(() => {
+            if (this.isEnabled && this._customContainer && !this._customContainer.classList.contains('active')) {
+                if (!this._ccToastShown) {
+                    this._ccToastShown = true;
+                    this.utils.createToast?.('🎬 Netflix Subtitles: No captions detected. Press C to enable CC.', 'info', 7000);
+                }
+            }
+        }, 5000);
     }
 
     async disable() {
         await super.disable();
 
-        // Step 1: Immediately hide the custom container so nothing is visible
-        // even during the async teardown (prevents flash while DOM is being cleaned)
+        // Clear CC check timer
+        if (this._ccCheckTimer) { clearTimeout(this._ccCheckTimer); this._ccCheckTimer = null; }
+        // Clear karaoke timer
+        if (this._karaokeTimer) { clearTimeout(this._karaokeTimer); this._karaokeTimer = null; }
+
+        // Step 1: Immediately hide the custom container
         if (this._customContainer) {
             this._customContainer.style.display = 'none';
         }
@@ -81,10 +104,10 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         // Step 2: Full teardown
         this._teardown();
 
-        // Step 3: Remove the CSS !important rule that hides native subtitles
+        // Step 3: Remove the CSS !important rule
         this._removeStyles();
 
-        // Step 4: Restore native container — re-query DOM in case _nativeContainer is null
+        // Step 4: Restore native container
         const nativeToRestore = this._nativeContainer || document.getElementById('ytp-caption-window-container');
         if (nativeToRestore) {
             nativeToRestore.style.removeProperty('opacity');
@@ -92,8 +115,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             nativeToRestore.style.removeProperty('pointer-events');
         }
 
-        // Step 5: Nuclear option — purge any remaining orphaned containers
-        // (catches the case where _customContainer ref was lost due to a race)
+        // Step 5: Nuclear — purge any remaining orphaned containers
         document.querySelectorAll('.ypp-custom-subtitles').forEach(el => el.remove());
 
         this._nativeContainer = null;
@@ -105,6 +127,13 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             if (this._customContainer) {
                 this._customContainer.className = `ypp-custom-subtitles style-${this._currentStyle}`;
             }
+        }
+        // SUBS-UP-2: Apply scale and opacity CSS variables live when settings change
+        if (this._customContainer) {
+            const scale = settings.subtitleScale ?? 1;
+            const bgOpacity = settings.subtitleBgOpacity ?? 0.4;
+            this._customContainer.style.setProperty('--subtitle-scale', scale);
+            this._customContainer.style.setProperty('--subtitle-bg-opacity', bgOpacity);
         }
     }
 
@@ -272,11 +301,48 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             });
         }
 
+        // SUBS-UP-1: Karaoke — highlight the active word based on video time
+        if (this.settings?.karaokeMode === true) {
+            this._startKaraoke(captions);
+        }
+
         // Render in our container
         clearTimeout(this._clearTimeout);
         this._customContainer.innerHTML = html;
         this._customContainer.classList.add('active');
-        // FIX-6: No longer setting inline opacity/visibility here — CSS !important handles it
+    }
+
+    // SUBS-UP-1: Karaoke word highlight
+    _startKaraoke(rawText) {
+        if (this._karaokeTimer) clearTimeout(this._karaokeTimer);
+        const video = document.querySelector('video.html5-main-video');
+        if (!video || !this._customContainer) return;
+
+        const words = rawText.split(' ');
+        const msPerWord = Math.min(800, Math.max(150, (words.length > 0 ? 4000 / words.length : 400)));
+
+        // Wrap each word in a span for highlight control
+        const mainSpan = this._customContainer.querySelector('span');
+        if (!mainSpan) return;
+        mainSpan.innerHTML = words.map((w, i) =>
+            `<span class="ypp-word" id="ypp-word-${i}">${w}</span>`
+        ).join(' ');
+
+        let wordIdx = 0;
+        const highlightNext = () => {
+            if (!this._customContainer || wordIdx >= words.length) return;
+            // Remove previous
+            const prev = this._customContainer.querySelector('.ypp-word.active-word');
+            if (prev) prev.classList.remove('active-word');
+            // Highlight current
+            const el = this._customContainer.querySelector(`#ypp-word-${wordIdx}`);
+            if (el) el.classList.add('active-word');
+            wordIdx++;
+            if (wordIdx < words.length) {
+                this._karaokeTimer = setTimeout(highlightNext, msPerWord);
+            }
+        };
+        highlightNext();
     }
 
     _setupDraggable(container) {
@@ -399,7 +465,10 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 left: 50%;
                 --base-y: 0px;
                 --obstruction-y: 0px;
-                transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y))) scale(0.95);
+                --fullscreen-y: 0px;
+                --subtitle-scale: 1;
+                --subtitle-bg-opacity: 0.4;
+                transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y) + var(--fullscreen-y))) scale(calc(var(--subtitle-scale) * 0.95));
                 width: 80%;
                 text-align: center;
                 pointer-events: auto;
@@ -415,8 +484,12 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
 
             .ypp-custom-subtitles.active {
                 opacity: 1;
-                transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y))) scale(1);
+                transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y) + var(--fullscreen-y))) scale(var(--subtitle-scale));
             }
+
+            /* Karaoke Highlight */
+            .ypp-word { transition: color 0.1s ease, text-shadow 0.1s ease; }
+            .ypp-word.active-word { color: #FFD700 !important; text-shadow: 0 0 10px rgba(255,215,0,0.8) !important; }
 
             /* Profile: Netflix */
             .ypp-custom-subtitles.style-netflix {
@@ -425,7 +498,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 font-weight: 700;
                 color: #ffffff;
                 text-shadow: 0px 0px 4px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.8);
-                background: rgba(0,0,0,0.4);
+                background: rgba(0, 0, 0, var(--subtitle-bg-opacity));
                 padding: 4px 16px;
                 border-radius: 8px;
             }

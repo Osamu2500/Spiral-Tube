@@ -81,11 +81,20 @@ export class MiniPlayerScroll extends window.YPP.features.BaseFeature {
     _handleScroll() {
         if (!this.isEnabled) return;
 
+        // MINI-UP-3: Do not trigger if the user is actively typing a comment
+        const activeTag = document.activeElement?.tagName;
+        if (activeTag === 'TEXTAREA' || activeTag === 'INPUT' || document.activeElement?.isContentEditable) {
+            return;
+        }
+
         const playerContainer = document.querySelector('#player-container-outer') || document.querySelector('#player');
         if (!playerContainer) return;
 
         const rect = playerContainer.getBoundingClientRect();
-        const isPastVideo = rect.bottom < 0;
+        // MINI-UP-2: Configurable scroll threshold
+        const thresholdPct = this.settings?.miniPlayerThreshold || 0;
+        const thresholdPx = (window.innerHeight * thresholdPct) / 100;
+        const isPastVideo = rect.bottom < -thresholdPx;
 
         const miniBtn = document.querySelector('.ytp-miniplayer-button');
         if (!miniBtn) return;

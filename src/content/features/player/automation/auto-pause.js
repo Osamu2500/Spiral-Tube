@@ -15,21 +15,20 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     constructor() {
         super('AutoPause');
         
-        // Bound handlers to ensure proper context when added/removed as event listeners
         this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
         
-        // State tracking
         this.wasPausedByUs = false;
         this.wasMutedByUs = false;
         this.video = null;
         this.originalVolume = null;
         this.fadeInterval = null;
         
-        // V2
         this.idleTimeout = null;
         this.idleHandler = this._handleMouseMove.bind(this);
         this.mediaSessionActive = false;
-        this._observerReady = false;  // PAUSE-BUG-2: guard against spurious fire on init
+        this._observerReady = false;
+        this._resumeDelayTimer = null;      // PAUSE-UP-1: smart re-engage delay
+        this._originalPlaybackRate = null;  // PAUSE-UP-2: slow-down mode
     }
 
     /**
@@ -72,19 +71,20 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         if (this.fadeInterval) clearInterval(this.fadeInterval);
+        if (this._resumeDelayTimer) { clearTimeout(this._resumeDelayTimer); this._resumeDelayTimer = null; }
         this._teardownIntersectionObserver();
         
-        // Restore volume if we were fading
         if (this.video && this.originalVolume !== null) {
             this.video.volume = this.originalVolume;
         }
-        
-        // Restore unmuted state if we muted it
         if (this.video && this.wasMutedByUs) {
             this.video.muted = false;
         }
-        
-        // Resume video if we paused it!
+        // PAUSE-UP-2: Restore playback rate if slow-down mode was active
+        if (this.video && this._originalPlaybackRate !== null) {
+            this.video.playbackRate = this._originalPlaybackRate;
+            this._originalPlaybackRate = null;
+        }
         if (this.video && this.wasPausedByUs && this.video.paused) {
             this.video.play().catch(()=>{});
         }
@@ -141,31 +141,35 @@ export class AutoPause extends window.YPP.features.BaseFeature {
      * Core logic handler for document visibility changes
      */
     handleVisibilityChange() {
-        // Exit early if feature is disabled or we aren't on a watch page
         if (!this.isEnabled || !this.utils.isWatchPage()) return;
         
-        // Fallback: if cache failed, attempt synchronous fetch
         if (!this.video) {
             const videoSelectors = window.YPP.CONSTANTS?.SELECTORS?.VIDEO || 'video.html5-main-video';
             this.video = document.querySelector(videoSelectors);
         }
-
-        // If no video is present in the DOM, there's nothing to pause
         if (!this.video) return;
 
-        // CRITICAL EDGE CASE: Picture-in-Picture
-        // If the user has explicitly triggered PiP, they want the video to play while hidden.
-        // We MUST NOT pause the video in this scenario.
         if (document.pictureInPictureElement) {
-            this.wasPausedByUs = false; // Reset state
+            this.wasPausedByUs = false;
             return;
         }
 
         if (document.hidden) {
+            // Cancel any pending resume when tab hides again
+            if (this._resumeDelayTimer) { clearTimeout(this._resumeDelayTimer); this._resumeDelayTimer = null; }
+
             if (this.settings?.tabAwayAction === 'mute') {
                 this.wasMutedByUs = true;
                 if (!this.video.muted) this.video.muted = true;
                 this.utils.log?.('Auto muted video (reason: hidden)', 'AutoPause');
+            } else if (this.settings?.tabAwayAction === 'slowdown') {
+                // PAUSE-UP-2: Slow down instead of pausing
+                if (this._originalPlaybackRate === null) {
+                    this._originalPlaybackRate = this.video.playbackRate;
+                }
+                this.video.playbackRate = 0.25;
+                this.wasPausedByUs = true;
+                this.utils.log?.('Auto slowed video (reason: hidden)', 'AutoPause');
             } else {
                 this._triggerPause('hidden');
             }
@@ -174,6 +178,12 @@ export class AutoPause extends window.YPP.features.BaseFeature {
                 this.video.muted = false;
                 this.wasMutedByUs = false;
                 this.utils.log?.('Auto unmuted video', 'AutoPause');
+            } else if (this._originalPlaybackRate !== null) {
+                // PAUSE-UP-2: Restore playback speed
+                this.video.playbackRate = this._originalPlaybackRate;
+                this._originalPlaybackRate = null;
+                this.wasPausedByUs = false;
+                this.utils.log?.('Restored playback speed', 'AutoPause');
             } else {
                 this._triggerResume();
             }
@@ -224,6 +234,8 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         if (!this.video.paused && !this.video.ended) {
             this.wasPausedByUs = true;
             this._fadeVolumeAndPause();
+            // PAUSE-UP-3: Toast notification
+            this.utils.createToast?.('⏸ Auto-paused', 'info', 2000);
             this.utils.log?.(`Auto paused video (reason: ${reason})`, 'AutoPause');
         } else if (!this.wasPausedByUs) {
             this.wasPausedByUs = false;
@@ -231,17 +243,31 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     }
 
     _triggerResume() {
-        if (this.wasPausedByUs) {
-            if (this.originalVolume !== null) {
-                this.video.volume = 0; // Start from 0 for fade in
-            }
-            this.video.play().then(() => {
-                this._fadeVolumeIn();
-            }).catch(e => {
-                this.utils.log?.('Failed to auto-resume video: ' + e.message, 'AutoPause', 'warn');
-            });
-            this.utils.log?.('Auto resumed video', 'AutoPause');
+        if (!this.wasPausedByUs) return;
+        // PAUSE-UP-1: Apply smart re-engage delay before resuming
+        const delayMs = (this.settings?.resumeDelaySeconds ?? 0) * 1000;
+        if (delayMs > 0) {
+            this._resumeDelayTimer = setTimeout(() => {
+                this._resumeDelayTimer = null;
+                if (this.wasPausedByUs) this._doResume();
+            }, delayMs);
+        } else {
+            this._doResume();
         }
+    }
+
+    _doResume() {
+        if (this.originalVolume !== null) {
+            this.video.volume = 0;
+        }
+        this.video.play().then(() => {
+            this._fadeVolumeIn();
+            // PAUSE-UP-3: Toast notification
+            this.utils.createToast?.('▶ Auto-resumed', 'success', 1500);
+        }).catch(e => {
+            this.utils.log?.('Failed to auto-resume video: ' + e.message, 'AutoPause', 'warn');
+        });
+        this.utils.log?.('Auto resumed video', 'AutoPause');
         this.wasPausedByUs = false;
     }
     
