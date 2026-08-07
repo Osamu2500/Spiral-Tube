@@ -59,12 +59,17 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             this._customContainer.remove();
             this._customContainer = null;
         }
-        if (this._nativeContainer) {
-            this._nativeContainer.style.opacity = '1';
-            this._nativeContainer.style.visibility = 'visible';
-            this._nativeContainer = null;
-        }
+        // CRITICAL: Remove the CSS !important rule FIRST so inline style reset isn't blocked
         this._removeStyles();
+        // Then force-restore the native container — re-query DOM in case _nativeContainer is null
+        // due to a race between enable() poll and disable() being called quickly
+        const nativeToRestore = this._nativeContainer || document.getElementById('ytp-caption-window-container');
+        if (nativeToRestore) {
+            nativeToRestore.style.removeProperty('opacity');
+            nativeToRestore.style.removeProperty('visibility');
+            nativeToRestore.style.removeProperty('pointer-events');
+        }
+        this._nativeContainer = null;
     }
 
     onUpdate(settings, oldSettings) {
