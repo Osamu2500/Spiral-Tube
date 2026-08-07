@@ -154,7 +154,14 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         const style = pipWindow.document.createElement('style');
         style.textContent = `
             body { margin: 0; padding: 0; background: black; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-            video { width: 100vw; height: 100vh; object-fit: contain; outline: none; }
+            video { 
+                width: 100vw !important; 
+                height: 100vh !important; 
+                top: 0 !important; 
+                left: 0 !important; 
+                object-fit: contain !important; 
+                outline: none !important; 
+            }
             .pip-controls { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); padding: 8px 16px; border-radius: 20px; color: white; font-family: sans-serif; opacity: 0; transition: opacity 0.2s; display: flex; gap: 15px; }
             body:hover .pip-controls { opacity: 1; }
             .pip-btn { cursor: pointer; user-select: none; font-size: 14px; font-weight: bold; }
