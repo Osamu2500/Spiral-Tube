@@ -90,8 +90,6 @@ import { BlocklistFilter } from '../features/global/filters/blocklist-filter.js'
 window.YPP.FeatureManager.register(BlocklistFilter);
 import { FeedFilter } from '../features/global/filters/feed-filter.js';
 window.YPP.FeatureManager.register(FeedFilter);
-import { FullVideoTitles } from '../features/global/ui-tweaks/full-video-titles.js';
-window.YPP.FeatureManager.register(FullVideoTitles);
 import { FiltersManager } from '../features/global/filters/filters-manager.js';
 window.YPP.FeatureManager.register(FiltersManager);
 import { MetadataFilters } from '../features/global/filters/metadata-filters.js';
@@ -241,6 +239,8 @@ import { VideoSpeedController } from '../features/player/enhancements/video-spee
 window.YPP.FeatureManager.register(VideoSpeedController);
 import { AudioEQ } from '../features/player/media-effects/audio-eq.js';
 window.YPP.FeatureManager.register(AudioEQ);
+import { AutoSubtitles } from '../features/player/automation/auto-subtitles.js';
+window.YPP.FeatureManager.register(AutoSubtitles);
 import { AutoTranscript } from '../features/player/automation/auto-transcript.js';
 window.YPP.FeatureManager.register(AutoTranscript);
 import { StatsForNerds } from '../features/player/automation/stats-for-nerds.js';

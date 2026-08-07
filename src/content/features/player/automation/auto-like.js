@@ -24,6 +24,10 @@ const SELECTORS = {
         'ytd-subscribe-button-renderer',
         'yt-smartimation',
     ],
+    CHANNEL_NAME: [
+        'ytd-video-owner-renderer ytd-channel-name a',
+        '#upload-info .ytd-channel-name a'
+    ],
     VIDEO: 'video.html5-main-video',
     MOVIE_PLAYER: '#movie_player',
     AD_ELEMENTS: '.video-ads, .ytp-ad-module',
@@ -49,6 +53,10 @@ export class AutoLike extends window.YPP.features.BaseFeature {
         this._timeoutId  = null;
         this._progressCheckHandler = null;
         this._progressVideo        = null;
+        
+        // V3 Cache
+        this._sponsoredCacheId     = null;
+        this._sponsoredCacheValue  = null;
     }
 
     getConfigKey() { return 'autoLike'; }
@@ -93,7 +101,11 @@ export class AutoLike extends window.YPP.features.BaseFeature {
         }
 
         const delayType = this.settings.autoLikeDelayType || 'seconds';
-        if (delayType === 'percent') {
+        
+        if (this._isWhitelistedCreator()) {
+            this.utils.log?.(`Auto-liking immediately for whitelisted creator`, 'AutoLike', 'info');
+            this._scheduleBySeconds(videoId, 0); // instant
+        } else if (delayType === 'percent') {
             this._scheduleByPercent(videoId);
         } else {
             this._scheduleBySeconds(videoId);
@@ -102,8 +114,8 @@ export class AutoLike extends window.YPP.features.BaseFeature {
 
     // ── Delay strategies ──────────────────────────────────────────────────────
 
-    _scheduleBySeconds(videoId) {
-        let delaySeconds = this.settings.autoLikeDelaySeconds ?? 1;
+    _scheduleBySeconds(videoId, overrideDelay = null) {
+        let delaySeconds = overrideDelay !== null ? overrideDelay : (this.settings.autoLikeDelaySeconds ?? 1);
 
         if (this.settings.autoLikeHumanize) {
             const variance = delaySeconds * HUMANIZE_VARIANCE_PERCENT;
@@ -137,11 +149,79 @@ export class AutoLike extends window.YPP.features.BaseFeature {
         const currentPercent = video.duration > 0
             ? (video.currentTime / video.duration) * 100
             : 0;
+            
+        // Heuristic Liking: calculate actual time played vs skipped
+        let playedSeconds = 0;
+        if (video.played) {
+            for (let i = 0; i < video.played.length; i++) {
+                playedSeconds += (video.played.end(i) - video.played.start(i));
+            }
+        }
+        
+        const playedPercent = video.duration > 0 ? (playedSeconds / video.duration) * 100 : 0;
+        const isHeuristicPassed = playedPercent >= (targetPercent * 0.8); // Must actually play 80% of the target time
 
-        if (currentPercent >= targetPercent || video.ended) {
+        if ((currentPercent >= targetPercent && isHeuristicPassed) || video.ended) {
             this._detachProgressListener();
+            
+            // V2: Smart Sentiment Liking
+            if (!this._passesV2Heuristics(videoId)) {
+                this.utils.log?.(`Skipped auto-like for ${videoId}: failed V2 heuristics (Sentiment/SponsorBlock)`, 'AutoLike', 'warn');
+                this._markAttempted(videoId);
+                return;
+            }
+            
             this._checkAdsAndLike(videoId);
         }
+    }
+    
+    // --- V2 Features ---
+    
+    _passesV2Heuristics(videoId) {
+        // 1. SponsorBlock Synergy (prevent like if >30% sponsored)
+        let sponsoredPercent = 0;
+        
+        if (this._sponsoredCacheId === videoId) {
+            sponsoredPercent = this._sponsoredCacheValue;
+        } else {
+            document.querySelectorAll('.sponsorBlockSegment').forEach(segment => {
+                const width = parseFloat(segment.style.width || '0');
+                if (!isNaN(width)) sponsoredPercent += width;
+            });
+            this._sponsoredCacheId = videoId;
+            this._sponsoredCacheValue = sponsoredPercent;
+        }
+        
+        if (sponsoredPercent > 30) {
+            this.utils.log?.(`Video is ${sponsoredPercent.toFixed(1)}% sponsored. Skipping like.`, 'AutoLike', 'info');
+            return false;
+        }
+        
+        // 2. Transcript/Title Sentiment
+        const negativeKeywords = ['clickbait', 'scam', 'terrible', 'awful', 'waste of time', 'fake', 'hate', 'apology'];
+        const title = document.querySelector('h1.ytd-watch-metadata')?.textContent?.toLowerCase() || '';
+        
+        let sentimentScore = 0;
+        negativeKeywords.forEach(word => {
+            if (title.includes(word)) sentimentScore++;
+        });
+        
+        if (sentimentScore > 1) {
+            this.utils.log?.(`Negative sentiment detected in title. Skipping like.`, 'AutoLike', 'info');
+            return false;
+        }
+        
+        // V4: Community Consensus (Return YouTube Dislike integration)
+        const rydBar = document.querySelector('#ryd-bar');
+        if (rydBar && rydBar.style.width) {
+            const likePercentage = parseFloat(rydBar.style.width);
+            if (!isNaN(likePercentage) && likePercentage < 50) {
+                this.utils.log?.(`Video is heavily disliked (${(100 - likePercentage).toFixed(1)}%). Skipping like.`, 'AutoLike', 'warn');
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     // ── Ad gating ─────────────────────────────────────────────────────────────
@@ -240,6 +320,19 @@ export class AutoLike extends window.YPP.features.BaseFeature {
         }
         // No subscribe button found — treat as subscribed (e.g. own channel, or logged out)
         return true;
+    }
+    
+    _isWhitelistedCreator() {
+        if (!this.settings.autoLikeWhitelist || !Array.isArray(this.settings.autoLikeWhitelist)) return false;
+        
+        for (const selector of SELECTORS.CHANNEL_NAME) {
+            const el = document.querySelector(selector);
+            if (el && el.textContent) {
+                const channelName = el.textContent.trim().toLowerCase();
+                return this.settings.autoLikeWhitelist.some(w => channelName.includes(w.toLowerCase()));
+            }
+        }
+        return false;
     }
 
     _isAdPlaying() {

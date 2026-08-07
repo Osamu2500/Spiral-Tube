@@ -9,6 +9,15 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         this._isMonitoring = false;
         // Keep track of the last scrolled video to prevent double-skipping
         this._lastScrolledVideo = null;
+        
+        // Smart Feed Control state
+        this._sessionStartTime = null;
+        this._skipCountByCreator = new Map();
+        this._currentVideoStartTime = null;
+        
+        // V2 State
+        this._loopCount = 0;
+        this._lastTime = 0;
     }
 
     getConfigKey() { return 'shortsAutoScroll'; }
@@ -38,6 +47,9 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         if (this._isMonitoring) return;
         this.utils?.log('Starting Shorts Auto-Scroll interval monitoring', 'AutoScroll');
         
+        this._sessionStartTime = Date.now();
+        this._skipCountByCreator.clear();
+        
         this._autoScrollInterval = setInterval(() => {
             if (document.hidden) return;
             this._checkAndScroll();
@@ -54,6 +66,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         }
         this._isMonitoring = false;
         this._lastScrolledVideo = null;
+        this._loopCount = 0;
         this.utils?.log('Stopped Shorts Auto-Scroll monitoring', 'AutoScroll');
     }
 
@@ -63,25 +76,138 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         
         const video = activeReel.querySelector('video');
         if (!video || isNaN(video.duration) || video.duration === 0) return;
+        
+        const nextButton = document.querySelector('#navigation-button-down ytd-button-renderer button, .navigation-button.down button');
+
+        // V4: Variable Speed Playback (Attention-Span Optimizer)
+        let targetSpeed = this.settings?.shortsPlaybackSpeed || 1.0;
+        
+        if (this.settings?.variableSpeed !== false && video.duration > 30) {
+            const timeRemaining = video.duration - video.currentTime;
+            if (timeRemaining > 5) {
+                targetSpeed = Math.max(1.25, targetSpeed); // Speed up boring parts
+            } else {
+                targetSpeed = 1.0; // Slow down for the punchline
+            }
+        }
+        
+        if (video.playbackRate !== targetSpeed) {
+            video.playbackRate = targetSpeed;
+        }
+
+        // Anti-Doomscroll: Stop auto-scrolling if session limit reached
+        if (this.settings?.shortsSessionLimitMinutes) {
+            const sessionDurationMins = (Date.now() - this._sessionStartTime) / 60000;
+            if (sessionDurationMins >= this.settings.shortsSessionLimitMinutes) {
+                this.stopMonitoring();
+                this.utils?.log('Shorts session limit reached. Stopping auto-scroll.', 'AutoScroll', 'warn');
+                return;
+            }
+        }
+        
+        // Setup state for new video
+        if (this._lastScrolledVideo !== video) {
+            this._currentVideoStartTime = Date.now();
+            this._lastScrolledVideo = video;
+            this._loopCount = 0;
+            this._lastTime = video.currentTime;
+            
+            const channelNameEl = activeReel.querySelector('#channel-name a, .ytd-channel-name a');
+            const titleEl = activeReel.querySelector('h2.title');
+            const creator = channelNameEl ? channelNameEl.textContent.trim() : '';
+            const titleText = titleEl ? titleEl.textContent.trim() : '';
+            
+            // V2: Topic Banning
+            if (this._isBannedTopic(creator, titleText)) {
+                this.utils?.log(`Auto-skipping banned topic: ${titleText}`, 'AutoScroll', 'info');
+                if (nextButton) nextButton.click();
+                return;
+            }
+            
+            // Engagement Tracking: Skip if creator is ignored
+            if (creator) {
+                const skipCount = this._skipCountByCreator.get(creator) || 0;
+                if (skipCount >= 3) {
+                    this.utils?.log(`Auto-skipping ${creator} due to low engagement`, 'AutoScroll', 'info');
+                    if (nextButton) nextButton.click();
+                    return; // Skip rest of checks
+                }
+            }
+        }
+        
+        // Loop Tracking: Only count if it jumped back from near the end
+        if (video.currentTime < this._lastTime - 1) {
+            const wasNearEnd = video.duration && this._lastTime > (video.duration - 2);
+            if (wasNearEnd) {
+                this._loopCount++;
+                
+                // V2: Auto-Bookmark
+                if (this._loopCount === 3 && this.settings?.shortsAutoBookmark) {
+                    this.utils?.log('Short looped 3 times! Bookmarking...', 'AutoScroll', 'info');
+                    this._autoBookmark(activeReel);
+                }
+            } else {
+                this.utils?.log('Manual rewind detected, ignoring loop count', 'AutoScroll', 'debug');
+            }
+        }
+        this._lastTime = video.currentTime;
+        
+        const targetLoops = this.settings?.shortsAllowedLoops || 0;
 
         // If the video has ended naturally OR is within 0.1s of ending (which catches it before it loops)
         if (video.ended || (video.currentTime > 0 && video.duration > 0 && video.duration - video.currentTime <= 0.1)) {
             
             // Prevent scrolling multiple times for the same video instance during transition
-            if (this._lastScrolledVideo === video && video.currentTime > 0.5) {
-                return;
+            if (video.currentTime > 0.5 && (Date.now() - this._currentVideoStartTime) < 1000) {
+                return; // Debounce transition
+            }
+            
+            // Should we let it loop?
+            if (this._loopCount < targetLoops) {
+                return; // Wait for it to loop naturally
             }
 
-            const nextButton = document.querySelector('#navigation-button-down ytd-button-renderer button, .navigation-button.down button');
             if (nextButton) {
-                this._lastScrolledVideo = video;
                 this.utils?.log('Short ended. Auto-scrolling to next.', 'AutoScroll', 'info');
                 nextButton.click();
             }
-        } else {
-            // Reset last scrolled video if we're playing a new video
-            if (this._lastScrolledVideo && video !== this._lastScrolledVideo && video.currentTime < 1) {
-                this._lastScrolledVideo = null;
+        }
+    }
+    
+    // --- V2 Features ---
+    
+    _isBannedTopic(creator, title) {
+        const bannedWords = this.settings?.shortsBannedWords || [];
+        if (!bannedWords.length) return false;
+        
+        const textToScan = `${creator} ${title}`.toLowerCase();
+        return bannedWords.some(word => textToScan.includes(word.toLowerCase()));
+    }
+    
+    _autoBookmark(activeReel) {
+        // Find the "Save" or "Like" button and click it to bookmark
+        const likeBtn = activeReel.querySelector('#like-button button, [aria-label*="like" i]');
+        if (likeBtn && likeBtn.getAttribute('aria-pressed') !== 'true') {
+            likeBtn.click();
+        }
+    }
+    
+    // Hook into YouTube's navigation to track manual skips
+    onBusEvent(eventName, data) {
+        if (eventName === 'page:changed' && location.pathname.startsWith('/shorts/')) {
+            if (this._lastScrolledVideo && this._currentVideoStartTime) {
+                const watchedTimeMs = Date.now() - this._currentVideoStartTime;
+                if (watchedTimeMs > 0 && watchedTimeMs < 3000) { // Skipped within 3 seconds
+                    const activeReel = document.querySelector('ytd-reel-video-renderer[is-active]');
+                    if (activeReel) {
+                        const channelNameEl = activeReel.querySelector('#channel-name a, .ytd-channel-name a');
+                        if (channelNameEl) {
+                            const creator = channelNameEl.textContent.trim();
+                            const currentSkips = this._skipCountByCreator.get(creator) || 0;
+                            this._skipCountByCreator.set(creator, currentSkips + 1);
+                        }
+                    }
+                }
             }
         }
     }
