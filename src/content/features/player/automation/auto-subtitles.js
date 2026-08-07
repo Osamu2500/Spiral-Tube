@@ -136,8 +136,8 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             .map(line => line.textContent.trim())
             .filter(text => text.length > 0);
             
-        // Keep only max 2 lines for Rollup/Live captions to prevent huge text walls
-        activeLines = activeLines.slice(-2);
+        // Keep only the single most recent line for Rollup/Live captions
+        activeLines = activeLines.slice(-1);
         
         let captions = activeLines.join('\n');
         
