@@ -1,8 +1,13 @@
 /**
  * YouTube CPU Tamer by AnimationFrame (Based on Script 431573 by CY Fung)
  * Reduces Browser's Energy and CPU Impact when playing YouTube videos.
- * Synchronizes high-frequency setTimeout and setInterval calls to requestAnimationFrame pulses
- * and throttles background/idle timer execution to conserve battery and CPU resources.
+ *
+ * Two-pronged approach:
+ * 1. Timer coalescing — patches setTimeout/setInterval to sync short timers (<40ms)
+ *    to requestAnimationFrame pulses, reducing CPU wakeups and battery drain.
+ * 2. Animation suppression — surgically kills YouTube's decorative animations
+ *    (skeleton loaders, ripple effects, icon morphs, hover transforms) while
+ *    leaving functional player transitions (progress bar, volume) intact.
  */
 
 export class CPUTamer extends window.YPP.features.BaseFeature {
@@ -18,9 +23,9 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         this._originalClearTimeout = null;
         this._originalClearInterval = null;
         this._isTamed = false;
-        this._rafLoopId = null;
         this._timerStore = new Map();
         this._nextTimerId = 1;
+        this._animStyle = null;
     }
 
     getConfigKey() {
@@ -33,7 +38,8 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
 
         try {
             this._installTamer();
-            this.utils?.log?.('YouTube CPU Tamer by AnimationFrame enabled (Script 431573)', 'CPU-TAMER');
+            this._suppressAnimations();
+            this.utils?.log?.('CPU Tamer enabled — timers tamed + animations suppressed', 'CPU-TAMER');
         } catch (err) {
             this.utils?.log?.('CPU Tamer initialization warning: ' + err.message, 'CPU-TAMER', 'warn');
         }
@@ -42,8 +48,11 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         this._restoreTimers();
-        this.utils?.log?.('YouTube CPU Tamer disabled', 'CPU-TAMER');
+        this._restoreAnimations();
+        this.utils?.log?.('CPU Tamer disabled', 'CPU-TAMER');
     }
+
+    // ─── Timer Coalescing ────────────────────────────────────────────────────
 
     _installTamer() {
         if (!window.requestAnimationFrame || this._isTamed) return;
@@ -60,14 +69,13 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         const origClearTimeout = this._originalClearTimeout.bind(win);
         const origClearInterval = this._originalClearInterval.bind(win);
 
-        // Coalesce high-frequency timers (< 16ms) to animation frames when document is visible
         const createTamedTimer = (origFunc, isInterval) => {
             return (handler, delay = 0, ...args) => {
                 if (typeof handler !== 'function') {
                     return origFunc(handler, delay, ...args);
                 }
 
-                // For standard longer timers or when document is hidden, use original timer
+                // Pass through longer timers and background-tab timers unchanged
                 if (delay > 40 || document.hidden) {
                     return origFunc(handler, delay, ...args);
                 }
@@ -117,7 +125,7 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             }
         };
 
-        // Preserve toString for compatibility
+        // Preserve native toString for anti-detection compatibility
         try {
             win.setTimeout.toString = () => origSetTimeout.toString();
             win.setInterval.toString = () => origSetInterval.toString();
@@ -139,6 +147,91 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         this._timerStore.forEach(item => item.cancel());
         this._timerStore.clear();
         this._isTamed = false;
+    }
+
+    // ─── Animation Suppression ───────────────────────────────────────────────
+
+    _suppressAnimations() {
+        if (document.getElementById('ypp-cpu-tamer-anim')) return;
+
+        const style = document.createElement('style');
+        style.id = 'ypp-cpu-tamer-anim';
+        style.textContent = `
+            /* ── CPU TAMER: Surgical animation suppression ── */
+
+            /* 1. Skeleton loaders — pulsing grey loading placeholders */
+            ytd-skeleton, .ytd-skeleton, ytd-ghost-card-renderer,
+            .yt-spec-skeleton-text, .skeleton-bg, .skeleton-animation {
+                animation: none !important;
+                background: rgba(255,255,255,0.06) !important;
+            }
+
+            /* 2. Ripple / ink effects on buttons (GPU waste, zero value) */
+            paper-ripple, tp-yt-paper-ripple, .paper-ripple {
+                display: none !important;
+            }
+
+            /* 3. yt-animated-icon — morphing SVG icons (like, subscribe bell, etc.) */
+            yt-animated-icon > *,
+            yt-animated-icon svg * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            /* 4. Thumbnail hover zoom — saves GPU composite layers on scroll */
+            ytd-thumbnail:hover img,
+            yt-image:hover img,
+            .ytd-thumbnail:hover img {
+                transform: none !important;
+                transition: none !important;
+            }
+
+            /* 5. Card hover lift/scale on feed items */
+            ytd-rich-item-renderer,
+            ytd-compact-video-renderer,
+            yt-lockup-view-model {
+                transition: none !important;
+            }
+
+            /* 6. Sidebar guide entry hover slide effects */
+            ytd-guide-entry-renderer,
+            ytd-mini-guide-entry-renderer {
+                transition: none !important;
+            }
+
+            /* 7. Auto-play countdown ring animation */
+            .ytp-autonav-endscreen-countdown-overlay circle {
+                animation: none !important;
+            }
+
+            /* 8. Page-level loading spinners */
+            .ytd-loading-spinner,
+            #spinner.ytd-masthead {
+                animation: none !important;
+            }
+
+            /* 9. Notification bell active pulse */
+            yt-icon[icon="notifications_active"] {
+                animation: none !important;
+            }
+
+            /* 10. Subscribe button color-flash on press */
+            ytd-subscribe-button-renderer tp-yt-paper-button {
+                transition: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+        this._animStyle = style;
+    }
+
+    _restoreAnimations() {
+        if (this._animStyle) {
+            this._animStyle.remove();
+            this._animStyle = null;
+        }
+        // Also clean up by id in case of orphan from previous session
+        const orphan = document.getElementById('ypp-cpu-tamer-anim');
+        if (orphan) orphan.remove();
     }
 }
 
