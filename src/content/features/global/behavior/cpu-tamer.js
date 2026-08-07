@@ -156,7 +156,9 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
           }
         };
 
-        const nativeId = origSetTimeout(checkFrame, Math.max(16, delay));
+        // V6 FIX: Only throttle intervals. Allow setTimeout to run at native speed (delay)
+        const executionDelay = isInterval ? Math.max(16, delay) : delay;
+        const nativeId = origSetTimeout(checkFrame, executionDelay);
         timerStore.set(id, {
           nativeId,
           cancel: () => {
@@ -219,6 +221,7 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
 
     this._timerStore.forEach((item) => item.cancel());
     this._timerStore.clear();
+    this._isTamed = true;
     this._isTamed = false;
   }
 
@@ -255,7 +258,9 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             /* 1. Skeleton loaders — pulsing grey loading placeholders */
             ytd-skeleton, .ytd-skeleton, ytd-ghost-card-renderer,
             .yt-spec-skeleton-text, .skeleton-bg, .skeleton-animation {
-                animation: none !important;
+                /* V6 FIX: Use 0.01ms instead of 'none' to fire animationend events */
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
                 background: rgba(255,255,255,0.06) !important;
             }
 
@@ -265,7 +270,7 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
                 display: none !important;
             }
 
-            /* 3. yt-animated-icon & yt-animated-action — morphing SVG/Lottie icons (like, subscribe bell) */
+            /* 3. yt-animated-icon & yt-animated-action — morphing SVG/Lottie icons */
             yt-animated-icon > *,
             yt-animated-icon svg *,
             yt-animated-action > *,
@@ -273,8 +278,10 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             yt-animated-action canvas,
             segmented-like-dislike-button-view-model yt-animated-action *,
             .YtSegmentedLikeDislikeButtonViewModelSegmentedLikeDislikeButtonViewModelLikeButton yt-animated-action * {
-                animation: none !important;
-                transition: none !important;
+                /* V6 FIX: Preserve transitions but make them instantaneous */
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 4. Thumbnail hover zoom — saves GPU composite layers on scroll */
@@ -285,17 +292,16 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
                 transition: none !important;
             }
 
-            /* 5. Card hover lift/scale on feed items (REMOVED in V4 to allow sidebar layout transitions) */
-
             /* 6. Sidebar guide entry hover slide effects */
             ytd-guide-entry-renderer,
             ytd-mini-guide-entry-renderer {
-                transition: none !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 7. Auto-play countdown ring animation */
             .ytp-autonav-endscreen-countdown-overlay circle {
-                animation: none !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
 
             /* 8. Page-level loading spinners */
@@ -303,44 +309,49 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             #spinner.ytd-masthead,
             .ytp-spinner-container,
             .ytp-spinner {
-                animation: none !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
 
             /* 9. Notification bell active pulse */
             yt-icon[icon="notifications_active"] {
-                animation: none !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
 
             /* 10. Subscribe button color-flash on press */
             ytd-subscribe-button-renderer tp-yt-paper-button {
-                transition: none !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 11. (NEW) All button hover transitions */
             ytd-button-renderer tp-yt-paper-button {
-                transition: none !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 12. (NEW) "You're all caught up!" nudge banners */
             ytd-feed-nudge-renderer {
-                animation: none !important;
-                transition: none !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 13. (NEW) Filter chip hover/select transitions */
             yt-chip-cloud-chip-renderer {
-                transition: none !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 14. (NEW) Shorts shelf entry animations */
             ytd-reel-shelf-renderer {
-                animation: none !important;
-                transition: none !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
 
             /* 15. (NEW) Animated text on shelf titles */
             .yt-core-attributed-string {
-                animation: none !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
         `;
     document.head.appendChild(style);

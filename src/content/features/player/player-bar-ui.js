@@ -58,6 +58,30 @@ export class PlayerBarUI {
         }
         
         this.setupInjectionObserver();
+        this._startHeartbeat();
+    }
+
+    _startHeartbeat() {
+        if (this._heartbeatTimer) return;
+        this._heartbeatTimer = setInterval(() => {
+            if (!this.isActive) return;
+            // V5: Double Check System - Microscopic DOM check to detect orphaned UI
+            const isShorts = window.location.pathname.startsWith('/shorts');
+            const selector = isShorts ? 'ytd-reel-video-renderer[is-active] .ypp-player-controls' : '.ypp-player-controls';
+            const container = document.querySelector(selector);
+            
+            // If the container is missing or destroyed, instantly attempt reinjection
+            if (!container || !document.contains(container) || container.children.length === 0) {
+                this.attemptInjection();
+            }
+        }, 2000);
+    }
+
+    _stopHeartbeat() {
+        if (this._heartbeatTimer) {
+            clearInterval(this._heartbeatTimer);
+            this._heartbeatTimer = null;
+        }
     }
 
     async onUpdate() {
@@ -81,6 +105,13 @@ export class PlayerBarUI {
             : document.querySelector(window.YPP.CONSTANTS.SELECTORS.PLAYER_BAR);
         
         if (video && controls) {
+            // V5: Ad-Transition Hardening
+            // If an Ad is showing, DO NOT inject. Ads use hijacked player modules that will be destroyed anyway.
+            const isAdShowing = video.closest('.ad-showing') || document.querySelector('.ytp-ad-player-overlay, .ytp-ad-module[style*="display: block"]');
+            if (isAdShowing && !isShorts) {
+                this.injectedButtons = false; // Mark for reinjection when Ad finishes
+                return; // Abort
+            }
             // Remove stale instances from previous extension reloads
             const existingAll = controls.querySelectorAll('.ypp-player-controls');
             if (existingAll.length > 1) {
@@ -458,13 +489,16 @@ export class PlayerBarUI {
             const fullscreenBtn = controls.querySelector('.ytp-fullscreen-button');
             const chromeControls = controls.querySelector('.ytp-chrome-controls');
             
-            if (rightControls) {
+            // V5: Safe Container Fallback
+            // If YouTube is testing a new layout without `.ytp-right-controls`, we inject
+            // directly before the fullscreen button to ensure the sequence remains visually consistent.
+            if (rightControls && document.contains(rightControls)) {
                 // Insert inside the right controls as the very first item
                 rightControls.insertBefore(container, rightControls.firstChild);
-            } else if (fullscreenBtn && fullscreenBtn.parentNode) {
+            } else if (fullscreenBtn && fullscreenBtn.parentNode && document.contains(fullscreenBtn)) {
                 // Fallback: insert right before the fullscreen button inside its parent
                 fullscreenBtn.parentNode.insertBefore(container, fullscreenBtn);
-            } else if (chromeControls) {
+            } else if (chromeControls && document.contains(chromeControls)) {
                 chromeControls.appendChild(container);
             } else {
                 controls.appendChild(container);
@@ -526,6 +560,8 @@ export class PlayerBarUI {
     }
 
     cleanup() {
+        this._stopHeartbeat();
+        
         if (this._resizeObserver) {
             this._resizeObserver.disconnect();
             this._resizeObserver = null;

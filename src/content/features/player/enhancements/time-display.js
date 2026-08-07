@@ -69,13 +69,13 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     }
 
     _handleNavigation() {
-        if (!this.isEnabled || !this._isWatchPage()) return;
+        if (!this.settings?.enableRemainingTime || !this._isWatchPage()) return;
         setTimeout(() => this._initDisplays(), 300);
     }
 
     _cleanupDisplays() {
         this._timeDisplays.forEach(td => {
-            td.removeEventListener('click', this._handleClick);
+            td.removeEventListener('click', this._handleClick, true);
             td.classList.remove('ypp-time-mode-remaining');
             const custom = td.querySelector('.ypp-custom-time');
             if (custom) custom.remove();
@@ -85,7 +85,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     }
 
     _initDisplays() {
-        if (!this.isEnabled || !this._isWatchPage()) return;
+        if (!this.settings?.enableRemainingTime || !this._isWatchPage()) return;
         
         const displays = document.querySelectorAll('#movie_player .ytp-time-display');
         displays.forEach(td => {
@@ -101,7 +101,7 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
                 td.appendChild(customSpan);
             }
 
-            td.addEventListener('click', this._handleClick);
+            td.addEventListener('click', this._handleClick, true);
             this._timeDisplays.add(td);
             
             if (this._mode === 'remaining') {
@@ -115,7 +115,9 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     }
 
     _handleClick(e) {
+        e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
         
         // Cycle modes: default -> remaining -> chapter
         if (this._mode === 'default') {
@@ -172,7 +174,12 @@ export class TimeDisplay extends window.YPP.features.BaseFeature {
     }
 
     _updateTime(td, customSpan) {
-        if (!this.isEnabled || this._mode === 'default') return;
+        if (!this.settings?.enableRemainingTime || this._mode === 'default') return;
+
+        // Ensure customSpan is still in the DOM (YouTube SPA might wipe it)
+        if (!td.contains(customSpan)) {
+            td.appendChild(customSpan);
+        }
 
         const video = td.closest('.html5-video-player')?.querySelector('video') || document.querySelector('video.html5-main-video');
         if (!video) return;
