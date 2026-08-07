@@ -53,7 +53,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     getConfigKey() {
-        return 'autoSubtitles';
+        return 'netflixSubtitles';
     }
 
     async enable() {
@@ -247,19 +247,16 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         if (!this._nativeContainer || !this._customContainer) return;
 
         // Extract only the single most recent caption line
-        let activeLines = Array.from(this._nativeContainer.querySelectorAll('.caption-visual-line'))
-            .map(line => line.textContent.trim())
-            .filter(text => text.length > 0);
-
-        activeLines = activeLines.slice(-1);
-        let captions = activeLines.join('\n');
+        let activeLines = Array.from(this._nativeContainer.querySelectorAll('.caption-visual-line'));
 
         // Fallback for different YouTube DOM structures
-        if (!captions) {
-            captions = Array.from(this._nativeContainer.querySelectorAll('.ytp-caption-segment'))
-                .map(el => el.textContent.trim())
-                .filter(text => text.length > 0)
-                .join(' ');
+        if (activeLines.length === 0) {
+            activeLines = Array.from(this._nativeContainer.querySelectorAll('.ytp-caption-segment'));
+        }
+
+        let captions = '';
+        if (activeLines.length > 0) {
+            captions = activeLines[activeLines.length - 1].textContent.trim();
         }
 
         if (!captions) {
@@ -301,15 +298,15 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             });
         }
 
-        // SUBS-UP-1: Karaoke — highlight the active word based on video time
-        if (this.settings?.karaokeMode === true) {
-            this._startKaraoke(captions);
-        }
-
         // Render in our container
         clearTimeout(this._clearTimeout);
         this._customContainer.innerHTML = html;
         this._customContainer.classList.add('active');
+
+        // SUBS-UP-1: Karaoke — highlight the active word based on video time
+        if (this.settings?.karaokeMode === true) {
+            this._startKaraoke(captions);
+        }
     }
 
     // SUBS-UP-1: Karaoke word highlight
