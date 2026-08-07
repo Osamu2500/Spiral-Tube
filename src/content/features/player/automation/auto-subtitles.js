@@ -17,8 +17,9 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._currentStyle = 'netflix';
         
         this._handleMutation = this._handleMutation.bind(this);
-        this._handleMouseMove = this._handleMouseMove.bind(this);
-        this._handleMouseLeave = this._handleMouseLeave.bind(this);
+        this._dragStart = this._dragStart.bind(this);
+        this._dragMove = this._dragMove.bind(this);
+        this._dragEnd = this._dragEnd.bind(this);
     }
 
     getConfigKey() {
@@ -52,13 +53,19 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             this._observer.disconnect();
             this._observer = null;
         }
+        if (this._chromeObserver) {
+            this._chromeObserver.disconnect();
+            this._chromeObserver = null;
+        }
+        this._cleanupDraggable();
         if (this._customContainer) {
             this._customContainer.remove();
             this._customContainer = null;
         }
         if (this._nativeContainer) {
-            this._nativeContainer.style.opacity = '';
-            this._nativeContainer.style.visibility = '';
+            this._nativeContainer.style.opacity = '1';
+            this._nativeContainer.style.visibility = 'visible';
+            this._nativeContainer = null;
         }
         this._removeStyles();
     }
@@ -103,9 +110,23 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             attributeFilter: ['class', 'style']
         });
         
-        // Smart Positioning: watch for player hover
-        this.addListener(player, 'mousemove', this._handleMouseMove);
-        this.addListener(player, 'mouseleave', this._handleMouseLeave);
+        // Smart Obstruction Avoidance
+        const chromeBottom = player.querySelector('.ytp-chrome-bottom');
+        if (chromeBottom) {
+            this._chromeObserver = new ResizeObserver(() => {
+                const isVisible = chromeBottom.style.opacity !== '0' && chromeBottom.style.display !== 'none';
+                if (isVisible) {
+                    const height = chromeBottom.getBoundingClientRect().height;
+                    this._customContainer.style.setProperty('--obstruction-y', `-${height + 15}px`);
+                } else {
+                    this._customContainer.style.setProperty('--obstruction-y', `0px`);
+                }
+            });
+            this._chromeObserver.observe(chromeBottom);
+        }
+
+        // Setup Draggable
+        this._setupDraggable(this._customContainer);
     }
 
     _handleMutation(mutations) {
@@ -132,8 +153,11 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         }
             
         if (!captions) {
-            this._customContainer.style.opacity = '0';
-            this._customContainer.innerHTML = '';
+            this._customContainer.classList.remove('active');
+            clearTimeout(this._clearTimeout);
+            this._clearTimeout = setTimeout(() => {
+                this._customContainer.innerHTML = '';
+            }, 300); // Wait for fade out
             return;
         }
         
@@ -148,43 +172,103 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         // V2: True Dual-Language
         let html = `<span>${processedCaptions}</span>`;
         if (this.settings?.dualLanguage) {
-            // Mock translation logic: append a dummy translation based on length
-            const mockTranslation = this._mockTranslation(captions.replace(/\n/g, ' '));
-            html += `<br/><span class="dual-lang-sub" style="font-size: 0.8em; color: var(--yt-spec-text-secondary, #ccc);">${mockTranslation}</span>`;
+            const transId = 'ypp-trans-' + Math.random().toString(36).substr(2, 9);
+            html += `<br/><span id="${transId}" class="dual-lang-sub" style="font-size: 0.8em; color: var(--yt-spec-text-secondary, #ccc);">...</span>`;
+            
+            this._getTranslation(captions.replace(/\n/g, ' ')).then(translated => {
+                const transSpan = document.getElementById(transId);
+                if (transSpan && translated) {
+                    transSpan.textContent = translated;
+                }
+            });
         }
         
         // Render in our container
+        clearTimeout(this._clearTimeout);
         this._customContainer.innerHTML = html;
-        this._customContainer.style.opacity = '1';
+        this._customContainer.classList.add('active');
         
         // Native container is hidden via CSS, but let's be sure
         this._nativeContainer.style.opacity = '0';
         this._nativeContainer.style.visibility = 'hidden';
     }
 
-    _handleMouseMove() {
-        if (!this._isHovered) {
-            this._isHovered = true;
-            if (this._customContainer) {
-                this._customContainer.classList.add('player-hovered');
+    _setupDraggable(container) {
+        let isDragging = false;
+        let startY, startBaseY;
+
+        this._dragStart = (e) => {
+            isDragging = true;
+            startY = e.clientY;
+            startBaseY = parseFloat(container.style.getPropertyValue('--base-y')) || 0;
+            container.style.cursor = 'grabbing';
+            container.classList.add('dragging');
+            e.preventDefault();
+        };
+
+        this._dragMove = (e) => {
+            if (!isDragging) return;
+            const deltaY = e.clientY - startY;
+            const newBaseY = startBaseY + deltaY;
+            container.style.setProperty('--base-y', `${newBaseY}px`);
+        };
+
+        this._dragEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            container.style.cursor = 'grab';
+            container.classList.remove('dragging');
+            if (this.settings) {
+                this.settings.customSubtitleBaseY = container.style.getPropertyValue('--base-y');
+                // Ideally we'd persist this using FeatureManager
             }
+        };
+
+        container.addEventListener('mousedown', this._dragStart);
+        document.addEventListener('mousemove', this._dragMove);
+        document.addEventListener('mouseup', this._dragEnd);
+        
+        // Apply saved position
+        if (this.settings?.customSubtitleBaseY) {
+            container.style.setProperty('--base-y', this.settings.customSubtitleBaseY);
+        } else {
+            container.style.setProperty('--base-y', '0px');
         }
+        container.style.setProperty('--obstruction-y', '0px');
     }
 
-    _handleMouseLeave() {
-        if (this._isHovered) {
-            this._isHovered = false;
-            if (this._customContainer) {
-                this._customContainer.classList.remove('player-hovered');
-            }
+    _cleanupDraggable() {
+        if (this._customContainer) {
+            this._customContainer.removeEventListener('mousedown', this._dragStart);
         }
+        document.removeEventListener('mousemove', this._dragMove);
+        document.removeEventListener('mouseup', this._dragEnd);
     }
     
     // --- V2 Features ---
     
-    _mockTranslation(text) {
-        // Simple mock to demonstrate the UI
-        return text.split(' ').map(w => w.split('').reverse().join('')).join(' ');
+    async _getTranslation(text) {
+        if (!text) return '';
+        
+        if (!this._translationCache) this._translationCache = new Map();
+        if (this._translationCache.has(text)) return this._translationCache.get(text);
+        
+        const targetLang = this.settings?.targetLanguage || navigator.language.split('-')[0] || 'en';
+        
+        try {
+            const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            const translatedText = data[0].map(item => item[0]).join('');
+            
+            if (this._translationCache.size > 100) this._translationCache.clear();
+            this._translationCache.set(text, translatedText);
+            
+            return translatedText;
+        } catch (e) {
+            this.utils.log?.('Translation failed', 'SUBS', 'warn');
+            return '';
+        }
     }
     
     // V4: Bionic Reading
@@ -214,17 +298,26 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 position: absolute;
                 bottom: 5%;
                 left: 50%;
-                transform: translateX(-50%);
+                --base-y: 0px;
+                --obstruction-y: 0px;
+                transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y))) scale(0.95);
                 width: 80%;
                 text-align: center;
-                pointer-events: none;
+                pointer-events: auto;
+                cursor: grab;
                 z-index: 50;
-                transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
                 opacity: 0;
             }
             
-            /* Smart Positioning */
-            .ypp-custom-subtitles.player-hovered { bottom: 12%; }
+            .ypp-custom-subtitles.dragging {
+                transition: none; /* Instant follow */
+            }
+
+            .ypp-custom-subtitles.active {
+                opacity: 1;
+                transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y))) scale(1);
+            }
             
             /* Profile: Netflix */
             .ypp-custom-subtitles.style-netflix {
