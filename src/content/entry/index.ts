@@ -312,8 +312,6 @@ import { CPUTamer } from '../features/global/behavior/cpu-tamer.js';
 window.YPP.FeatureManager.register(CPUTamer);
 import { TabviewSidebar } from '../features/global/layout/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
-import { VideoEnhancerTools } from '../features/player/enhancements/video-enhancer-tools.js';
-window.YPP.FeatureManager.register(VideoEnhancerTools);
 import { StarTubeLayout } from '../features/global/ui-tweaks/startube-layout.js';
 window.YPP.FeatureManager.register(StarTubeLayout);
 import '../features/player/controls/sidebar-layout.css';

@@ -352,7 +352,6 @@ window.YPP.SettingsSchema = {
         enableCustomizeYouTubeUI:     { type: 'boolean', default: true },
         enableCpuTamer:               { type: 'boolean', default: true },
         enableTabviewSidebar:         { type: 'boolean', default: false },
-        enableVideoEnhancerTools:     { type: 'boolean', default: true },
         enableStarTubeLayout:         { type: 'boolean', default: false },
         enableCustomSidebar:          { type: 'boolean', default: true },
         layout:                       { type: 'boolean', default: true },

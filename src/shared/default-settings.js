@@ -296,6 +296,5 @@ export const DEFAULT_SETTINGS = {
   enableCustomizeYouTubeUI: true,
   enableCpuTamer: true,
   enableTabviewSidebar: false,
-  enableVideoEnhancerTools: true,
   enableStarTubeLayout: false,
 };
