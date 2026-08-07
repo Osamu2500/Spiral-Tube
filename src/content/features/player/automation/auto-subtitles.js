@@ -17,6 +17,24 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     static executionPhase = 'idle';
     static priority = 999;
 
+    // --- STATIC INIT: Run once when the class is first loaded ---
+    // Cleans up any orphaned subtitle DOM left over from a previous page session
+    // (e.g. extension update, content script re-injection, hard reload with feature OFF)
+    static _purgeOrphans() {
+        // Remove any leftover custom containers
+        document.querySelectorAll('.ypp-custom-subtitles').forEach(el => el.remove());
+        // Remove stale style tag that hides native subtitles
+        const stale = document.getElementById('ypp-netflix-subs-style');
+        if (stale) stale.remove();
+        // Restore native subtitle container visibility if it was hidden
+        const native = document.getElementById('ytp-caption-window-container');
+        if (native) {
+            native.style.removeProperty('opacity');
+            native.style.removeProperty('visibility');
+            native.style.removeProperty('pointer-events');
+        }
+    }
+
     constructor() {
         super('AutoSubtitles');
         this._observer = null;
@@ -53,17 +71,31 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
 
     async disable() {
         await super.disable();
+
+        // Step 1: Immediately hide the custom container so nothing is visible
+        // even during the async teardown (prevents flash while DOM is being cleaned)
+        if (this._customContainer) {
+            this._customContainer.style.display = 'none';
+        }
+
+        // Step 2: Full teardown
         this._teardown();
-        // CRITICAL: Remove the CSS !important rule FIRST so inline style reset isn't blocked
+
+        // Step 3: Remove the CSS !important rule that hides native subtitles
         this._removeStyles();
-        // Force-restore the native container — re-query DOM in case _nativeContainer is null
-        // due to a race between enable() poll and disable() being called quickly
+
+        // Step 4: Restore native container — re-query DOM in case _nativeContainer is null
         const nativeToRestore = this._nativeContainer || document.getElementById('ytp-caption-window-container');
         if (nativeToRestore) {
             nativeToRestore.style.removeProperty('opacity');
             nativeToRestore.style.removeProperty('visibility');
             nativeToRestore.style.removeProperty('pointer-events');
         }
+
+        // Step 5: Nuclear option — purge any remaining orphaned containers
+        // (catches the case where _customContainer ref was lost due to a race)
+        document.querySelectorAll('.ypp-custom-subtitles').forEach(el => el.remove());
+
         this._nativeContainer = null;
     }
 

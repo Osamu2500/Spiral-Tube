@@ -240,6 +240,9 @@ window.YPP.FeatureManager.register(VideoSpeedController);
 import { AudioEQ } from '../features/player/media-effects/audio-eq.js';
 window.YPP.FeatureManager.register(AudioEQ);
 import { AutoSubtitles } from '../features/player/automation/auto-subtitles.js';
+// Always purge leftover subtitle DOM from previous sessions before deciding whether to enable.
+// This is what prevents the custom subtitles from appearing when the feature is toggled OFF.
+AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
 import { AutoTranscript } from '../features/player/automation/auto-transcript.js';
 window.YPP.FeatureManager.register(AutoTranscript);
