@@ -310,6 +310,8 @@ import { CustomizeYouTubeUI } from '../features/global/ui-tweaks/customize-youtu
 window.YPP.FeatureManager.register(CustomizeYouTubeUI);
 import { CPUTamer } from '../features/global/behavior/cpu-tamer.js';
 window.YPP.FeatureManager.register(CPUTamer);
+import { ReduceAnimations } from '../features/global/behavior/reduce-animations.js';
+window.YPP.FeatureManager.register(ReduceAnimations);
 import { TabviewSidebar } from '../features/global/layout/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
 import { StarTubeLayout } from '../features/global/ui-tweaks/startube-layout.js';

@@ -277,9 +277,18 @@ html.ypp-reduced-motion *::after {
   transition-timing-function: linear !important;
 }
 
-body.ypp-reduce-animations *,
-body.ypp-reduce-animations *::before,
-body.ypp-reduce-animations *::after {
+/* ── Reduce Animations: Balanced mode ── halves all durations, keeps easing */
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.15s !important;
+  transition-duration: 0.15s !important;
+}
+
+/* ── Reduce Animations: Minimal mode ── near-instant, kills iterations & scroll */
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::after {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;

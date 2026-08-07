@@ -58,7 +58,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideScrollbar:         'ypp-hide-scrollbar',
             // New Custom feature toggles
             hideMemberships:       'ypp-hide-memberships',
-            reduceAnimations:      'ypp-reduce-animations',
             pinVideoOnScroll:      'ypp-pin-video-scroll',
             // Aesthetic toggles
             customScrollbar:       'ypp-custom-scrollbar',

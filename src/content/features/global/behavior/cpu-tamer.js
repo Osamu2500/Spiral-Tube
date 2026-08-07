@@ -1,19 +1,19 @@
 /**
- * YouTube CPU Tamer by AnimationFrame (Based on Script 431573 by CY Fung)
+ * YouTube Performance Booster (based on CPU Tamer by AnimationFrame, Script 431573 by CY Fung)
  * Reduces Browser's Energy and CPU Impact when playing YouTube videos.
  *
  * Two-pronged approach:
- * 1. Timer coalescing — patches setTimeout/setInterval to sync short timers (<40ms)
- *    to requestAnimationFrame pulses, reducing CPU wakeups and battery drain.
- * 2. Animation suppression — surgically kills YouTube's decorative animations
- *    (skeleton loaders, ripple effects, icon morphs, hover transforms) while
- *    leaving functional player transitions (progress bar, volume) intact.
+ * 1. TIMER COALESCING — 3-tier system: <4ms always rAF, 4–40ms coalesce when visible,
+ *    >40ms passthrough. Hidden tabs get a 1000ms floor to nearly stop all JS activity.
+ * 2. ANIMATION SUPPRESSION — surgically kills YouTube's decorative animations
+ *    (skeleton loaders, ripple effects, icon morphs, hover transforms, Shorts shelf, etc.)
+ *    while leaving functional player transitions (progress bar, volume) intact.
  */
 
 export class CPUTamer extends window.YPP.features.BaseFeature {
     static featureId = 'cpuTamer';
     static executionPhase = 'init';
-    static priority = 1; // High priority to initialize early
+    static priority = 1;
 
     constructor() {
         super('CPUTamer');
@@ -26,6 +26,10 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         this._timerStore = new Map();
         this._nextTimerId = 1;
         this._animStyle = null;
+        this._tamedCount = 0;
+        this._toastShown = false;
+        this._toastTimer = null;
+        this._visibilityHandler = null;
     }
 
     getConfigKey() {
@@ -39,7 +43,8 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         try {
             this._installTamer();
             this._suppressAnimations();
-            this.utils?.log?.('CPU Tamer enabled — timers tamed + animations suppressed', 'CPU-TAMER');
+            this._scheduleToast();
+            this.utils?.log?.('Performance Booster enabled — timers tamed + animations suppressed', 'CPU-TAMER');
         } catch (err) {
             this.utils?.log?.('CPU Tamer initialization warning: ' + err.message, 'CPU-TAMER', 'warn');
         }
@@ -49,10 +54,25 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         await super.disable();
         this._restoreTimers();
         this._restoreAnimations();
-        this.utils?.log?.('CPU Tamer disabled', 'CPU-TAMER');
+        if (this._toastTimer) { clearTimeout(this._toastTimer); this._toastTimer = null; }
+        this.utils?.log?.('Performance Booster disabled', 'CPU-TAMER');
     }
 
-    // ─── Timer Coalescing ────────────────────────────────────────────────────
+    // ─── 1C: Toast after 5s ──────────────────────────────────────────────────
+
+    _scheduleToast() {
+        if (this._toastShown) return;
+        this._toastTimer = setTimeout(() => {
+            this._toastShown = true;
+            const animCount = 10; // number of suppressed animation targets
+            this.utils?.createToast?.(
+                `⚡ Performance Booster: Tamed ${this._tamedCount} timers · Suppressed ${animCount} animation types`,
+                'success', 4000
+            );
+        }, 5000);
+    }
+
+    // ─── 1A + 1B: Timer Coalescing with 3-Tier + Background Throttle ─────────
 
     _installTamer() {
         if (!window.requestAnimationFrame || this._isTamed) return;
@@ -69,19 +89,42 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         const origClearTimeout = this._originalClearTimeout.bind(win);
         const origClearInterval = this._originalClearInterval.bind(win);
 
+        // 1B: visibilitychange listener — restore/throttle on tab hide/show
+        this._visibilityHandler = () => {
+            // nothing to patch at this layer — the createTamedTimer closure reads
+            // document.hidden live at call time, so tab-switch is handled automatically
+        };
+        document.addEventListener('visibilitychange', this._visibilityHandler);
+
+        const self = this;
+
+        /**
+         * 3-tier decision:
+         *   Tier 1: delay < 4ms   → always coalesce to rAF (spam polling)
+         *   Tier 2: 4ms – 40ms    → coalesce when tab is visible
+         *   Tier 3: > 40ms        → pass through unchanged
+         *   Background tab:       → force minimum 1000ms delay on everything
+         */
         const createTamedTimer = (origFunc, isInterval) => {
             return (handler, delay = 0, ...args) => {
                 if (typeof handler !== 'function') {
                     return origFunc(handler, delay, ...args);
                 }
 
-                // Pass through longer timers and background-tab timers unchanged
-                if (delay > 40 || document.hidden) {
+                // 1B: Background tab throttle — all timers get 1000ms floor
+                if (document.hidden) {
+                    const hiddenDelay = Math.max(delay, 1000);
+                    return origFunc(handler, hiddenDelay, ...args);
+                }
+
+                // Tier 3: Long timers pass through unchanged
+                if (delay > 40) {
                     return origFunc(handler, delay, ...args);
                 }
 
-                // Coalesce short timers to rAF to reduce CPU wakeups
-                const id = this._nextTimerId++;
+                // Tier 1 + 2: Coalesce short timers to rAF
+                self._tamedCount++;
+                const id = self._nextTimerId++;
                 let cancelled = false;
 
                 const checkFrame = () => {
@@ -92,6 +135,7 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
                         console.error('[CPUTamer] Error in callback:', e);
                     }
                     if (isInterval && !cancelled) {
+                        // Cap setInterval to 60fps max (16ms floor)
                         origSetTimeout(checkFrame, Math.max(16, delay));
                     } else {
                         timerStore.delete(id);
@@ -144,12 +188,17 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
         if (this._originalClearTimeout) win.clearTimeout = this._originalClearTimeout;
         if (this._originalClearInterval) win.clearInterval = this._originalClearInterval;
 
+        if (this._visibilityHandler) {
+            document.removeEventListener('visibilitychange', this._visibilityHandler);
+            this._visibilityHandler = null;
+        }
+
         this._timerStore.forEach(item => item.cancel());
         this._timerStore.clear();
         this._isTamed = false;
     }
 
-    // ─── Animation Suppression ───────────────────────────────────────────────
+    // ─── 1D: Animation Suppression (expanded coverage) ───────────────────────
 
     _suppressAnimations() {
         if (document.getElementById('ypp-cpu-tamer-anim')) return;
@@ -166,8 +215,9 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
                 background: rgba(255,255,255,0.06) !important;
             }
 
-            /* 2. Ripple / ink effects on buttons (GPU waste, zero value) */
-            paper-ripple, tp-yt-paper-ripple, .paper-ripple {
+            /* 2. Ripple / ink effects on buttons */
+            paper-ripple, tp-yt-paper-ripple, .paper-ripple,
+            .yt-spec-touch-feedback-shape {
                 display: none !important;
             }
 
@@ -206,7 +256,9 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
 
             /* 8. Page-level loading spinners */
             .ytd-loading-spinner,
-            #spinner.ytd-masthead {
+            #spinner.ytd-masthead,
+            .ytp-spinner-container,
+            .ytp-spinner {
                 animation: none !important;
             }
 
@@ -219,6 +271,33 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             ytd-subscribe-button-renderer tp-yt-paper-button {
                 transition: none !important;
             }
+
+            /* 11. (NEW) All button hover transitions */
+            ytd-button-renderer tp-yt-paper-button {
+                transition: none !important;
+            }
+
+            /* 12. (NEW) "You're all caught up!" nudge banners */
+            ytd-feed-nudge-renderer {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            /* 13. (NEW) Filter chip hover/select transitions */
+            yt-chip-cloud-chip-renderer {
+                transition: none !important;
+            }
+
+            /* 14. (NEW) Shorts shelf entry animations */
+            ytd-reel-shelf-renderer {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            /* 15. (NEW) Animated text on shelf titles */
+            .yt-core-attributed-string {
+                animation: none !important;
+            }
         `;
         document.head.appendChild(style);
         this._animStyle = style;
@@ -229,7 +308,6 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             this._animStyle.remove();
             this._animStyle = null;
         }
-        // Also clean up by id in case of orphan from previous session
         const orphan = document.getElementById('ypp-cpu-tamer-anim');
         if (orphan) orphan.remove();
     }

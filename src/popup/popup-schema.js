@@ -127,7 +127,7 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'compactPlayerUI',  label: t('compactPlayerUI'),    badge:'NEW', desc: t('compactPlayerUI_desc'),       icon:ICONS.uiComponents },
                     { type:'toggle', id:'flexWidthPlayer', label: t('flexWidthPlayer'), badge:'NEW', desc: t('flexWidthPlayer_desc'), icon:ICONS.player },
-                    { type:'toggle', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations },
+                    { type:'select', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, options:[{value:'off',label:t('reduce_animations_off')},{value:'balanced',label:t('reduce_animations_balanced')},{value:'minimal',label:t('reduce_animations_minimal')}] },
                     { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:ICONS.pinVideo },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
                 ]

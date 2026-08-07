@@ -576,8 +576,13 @@ const dictionaries = {
         search_page: 'Search Page',
 
         // ── New UserStyles & GreasyFork Features ──
-        cpu_tamer: 'CPU Tamer (AnimationFrame)',
-        cpu_tamer_desc: 'Reduce browser CPU & energy usage during video playback',
+        cpu_tamer: 'Performance Booster',
+        cpu_tamer_desc: 'Tames background timers & kills useless animations to reduce CPU & battery usage',
+        reduce_animations: 'Reduce Animations',
+        reduce_animations_desc: 'Suppress decorative animations across YouTube for smoother performance',
+        reduce_animations_off: 'Off',
+        reduce_animations_balanced: 'Balanced',
+        reduce_animations_minimal: 'Minimal',
         video_enhancer_tools: 'Video Enhancer Tools',
         video_enhancer_tools_desc: 'Fast-forward boost on click/key hold & quick download helper',
         tabview_sidebar: 'Tabview Sidebar',
