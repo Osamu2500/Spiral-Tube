@@ -1,6 +1,15 @@
 /**
- * Feature: Auto Subtitles (Netflix-Style)
+ * Feature: Auto Subtitles (Netflix-Style) — V6
  * Intercepts YouTube's native captions and renders them with a premium, custom UI.
+ *
+ * V6 Fixes:
+ * - FIX-1: SPA re-initialization via yt-navigate-finish
+ * - FIX-2: Bionic Reading is now opt-in (not opt-out)
+ * - FIX-3: Translation race condition fixed via _lastTransId guard
+ * - FIX-4: Obstruction avoidance now uses MutationObserver (opacity-aware)
+ * - FIX-5: Draggable position persisted to chrome.storage.sync
+ * - FIX-6: Removed redundant inline opacity/visibility from _handleMutation
+ * - FIX-7: Caption deduplication to skip redundant re-renders
  */
 
 export class AutoSubtitles extends window.YPP.features.BaseFeature {
@@ -11,57 +20,42 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     constructor() {
         super('AutoSubtitles');
         this._observer = null;
+        this._chromeObserver = null;
         this._customContainer = null;
         this._nativeContainer = null;
-        this._isHovered = false;
         this._currentStyle = 'netflix';
-        
+        this._clearTimeout = null;
+        this._lastCaptionText = null;   // FIX-7: deduplication
+        this._lastTransId = null;       // FIX-3: translation race guard
+        this._translationCache = null;
+
         this._handleMutation = this._handleMutation.bind(this);
+        this._handleNavigation = this._handleNavigation.bind(this);
     }
 
     getConfigKey() {
-        return 'autoSubtitles'; // Assuming setting exists
+        return 'autoSubtitles';
     }
 
     async enable() {
         await super.enable();
         this._injectStyles();
-        
-        // Polling for the player and caption container
-        this.pollFor(() => {
-            const player = document.getElementById('movie_player');
-            const native = document.getElementById('ytp-caption-window-container');
-            if (player && native) {
-                this._initRenderer(player, native);
-                return true;
-            }
-            return false;
-        }, 10000, 500).catch(() => {
-            this.utils.log?.('AutoSubtitles: Player not found or polling aborted', 'SUBS', 'warn');
-        });
-        
+
+        // FIX-1: Listen for SPA navigations so subtitles re-attach on new videos
+        this.addListener(window, 'yt-navigate-finish', this._handleNavigation);
+
+        this._startPolling();
+
         // Auto-enable CC button if requested
         this._autoEnableCC();
     }
 
     async disable() {
         await super.disable();
-        if (this._observer) {
-            this._observer.disconnect();
-            this._observer = null;
-        }
-        if (this._chromeObserver) {
-            this._chromeObserver.disconnect();
-            this._chromeObserver = null;
-        }
-        this._cleanupDraggable();
-        if (this._customContainer) {
-            this._customContainer.remove();
-            this._customContainer = null;
-        }
+        this._teardown();
         // CRITICAL: Remove the CSS !important rule FIRST so inline style reset isn't blocked
         this._removeStyles();
-        // Then force-restore the native container — re-query DOM in case _nativeContainer is null
+        // Force-restore the native container — re-query DOM in case _nativeContainer is null
         // due to a race between enable() poll and disable() being called quickly
         const nativeToRestore = this._nativeContainer || document.getElementById('ytp-caption-window-container');
         if (nativeToRestore) {
@@ -81,6 +75,49 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         }
     }
 
+    // FIX-1: SPA navigation handler — teardown old state and re-init
+    _handleNavigation() {
+        if (!this.isEnabled) return;
+        this._teardown();
+        this._lastCaptionText = null;
+        this._lastTransId = null;
+        this._startPolling();
+        this._autoEnableCC();
+    }
+
+    // Shared polling logic used by enable() and _handleNavigation()
+    _startPolling() {
+        this.pollFor(() => {
+            const player = document.getElementById('movie_player');
+            const native = document.getElementById('ytp-caption-window-container');
+            if (player && native) {
+                this._initRenderer(player, native);
+                return true;
+            }
+            return false;
+        }, 10000, 500).catch(() => {
+            this.utils.log?.('AutoSubtitles: Player not found or polling aborted', 'SUBS', 'warn');
+        });
+    }
+
+    // Tears down observers and removes the custom container, but does NOT touch native styles
+    _teardown() {
+        if (this._observer) {
+            this._observer.disconnect();
+            this._observer = null;
+        }
+        if (this._chromeObserver) {
+            this._chromeObserver.disconnect();
+            this._chromeObserver = null;
+        }
+        clearTimeout(this._clearTimeout);
+        this._cleanupDraggable();
+        if (this._customContainer) {
+            this._customContainer.remove();
+            this._customContainer = null;
+        }
+    }
+
     _autoEnableCC() {
         if (!this.settings?.autoSubtitlesEnable) return;
         const ccBtn = document.querySelector('.ytp-subtitles-button');
@@ -93,7 +130,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     _initRenderer(player, native) {
         if (!this._abortController || this._abortController.signal.aborted) return;
         this._nativeContainer = native;
-        
+
         // Create our custom Netflix-style container
         if (!this._customContainer) {
             this._customContainer = document.createElement('div');
@@ -111,12 +148,14 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             attributes: true,
             attributeFilter: ['class', 'style']
         });
-        
-        // Smart Obstruction Avoidance
+
+        // FIX-4: Smart Obstruction Avoidance via MutationObserver (opacity-aware, not resize-based)
         const chromeBottom = player.querySelector('.ytp-chrome-bottom');
         if (chromeBottom) {
-            this._chromeObserver = new ResizeObserver(() => {
-                const isVisible = chromeBottom.style.opacity !== '0' && chromeBottom.style.display !== 'none';
+            this._chromeObserver = new MutationObserver(() => {
+                if (!this._customContainer) return;
+                const opacity = parseFloat(chromeBottom.style.opacity ?? '1');
+                const isVisible = opacity > 0.1 && chromeBottom.style.display !== 'none';
                 if (isVisible) {
                     const height = chromeBottom.getBoundingClientRect().height;
                     this._customContainer.style.setProperty('--obstruction-y', `-${height + 15}px`);
@@ -124,28 +163,28 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                     this._customContainer.style.setProperty('--obstruction-y', `0px`);
                 }
             });
-            this._chromeObserver.observe(chromeBottom);
+            this._chromeObserver.observe(chromeBottom, {
+                attributes: true,
+                attributeFilter: ['style', 'class']
+            });
         }
 
         // Setup Draggable
         this._setupDraggable(this._customContainer);
     }
 
-    _handleMutation(mutations) {
+    _handleMutation() {
         if (!this._abortController || this._abortController.signal.aborted) return;
-        
-        // Don't process if native container is missings
-        // YouTube often keeps multiple old lines in the DOM during rollups.
-        // We only extract the most recent 1-2 lines to ensure it stays synced.
+        if (!this._nativeContainer || !this._customContainer) return;
+
+        // Extract only the single most recent caption line
         let activeLines = Array.from(this._nativeContainer.querySelectorAll('.caption-visual-line'))
             .map(line => line.textContent.trim())
             .filter(text => text.length > 0);
-            
-        // Keep only the single most recent line for Rollup/Live captions
+
         activeLines = activeLines.slice(-1);
-        
         let captions = activeLines.join('\n');
-        
+
         // Fallback for different YouTube DOM structures
         if (!captions) {
             captions = Array.from(this._nativeContainer.querySelectorAll('.ytp-caption-segment'))
@@ -153,51 +192,58 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 .filter(text => text.length > 0)
                 .join(' ');
         }
-            
+
         if (!captions) {
             this._customContainer.classList.remove('active');
             clearTimeout(this._clearTimeout);
             this._clearTimeout = setTimeout(() => {
-                this._customContainer.innerHTML = '';
-            }, 300); // Wait for fade out
+                if (this._customContainer) this._customContainer.innerHTML = '';
+            }, 300);
             return;
         }
-        
-        // V4: Bionic Reading
+
+        // FIX-7: Skip re-render if caption text hasn't changed
+        if (captions === this._lastCaptionText) return;
+        this._lastCaptionText = captions;
+
+        // FIX-2: Bionic Reading is now opt-in (default OFF)
         let processedCaptions = captions;
-        if (this.settings?.bionicReading !== false) { // Default enabled for V4
+        if (this.settings?.bionicReading === true) {
             processedCaptions = captions.split('\n').map(line => this._applyBionicReading(line)).join('<br/>');
         } else {
             processedCaptions = captions.replace(/\n/g, '<br/>');
         }
-        
-        // V2: True Dual-Language
+
+        // Dual-Language Translation
         let html = `<span>${processedCaptions}</span>`;
         if (this.settings?.dualLanguage) {
+            // FIX-3: Generate a unique ID and track it; skip stale resolutions
             const transId = 'ypp-trans-' + Math.random().toString(36).substr(2, 9);
+            this._lastTransId = transId;
             html += `<br/><span id="${transId}" class="dual-lang-sub" style="font-size: 0.8em; color: var(--yt-spec-text-secondary, #ccc);">...</span>`;
-            
+
             this._getTranslation(captions.replace(/\n/g, ' ')).then(translated => {
+                // FIX-3: Only update if this translation is still the latest one
+                if (this._lastTransId !== transId) return;
                 const transSpan = document.getElementById(transId);
                 if (transSpan && translated) {
                     transSpan.textContent = translated;
                 }
             });
         }
-        
+
         // Render in our container
         clearTimeout(this._clearTimeout);
         this._customContainer.innerHTML = html;
         this._customContainer.classList.add('active');
-        
-        // Native container is hidden via CSS, but let's be sure
-        this._nativeContainer.style.opacity = '0';
-        this._nativeContainer.style.visibility = 'hidden';
+        // FIX-6: No longer setting inline opacity/visibility here — CSS !important handles it
     }
 
     _setupDraggable(container) {
         let isDragging = false;
         let startY, startBaseY;
+
+        const STORAGE_KEY = 'ypp_subtitle_base_y';
 
         this._dragStart = (e) => {
             isDragging = true;
@@ -220,63 +266,74 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             isDragging = false;
             container.style.cursor = 'grab';
             container.classList.remove('dragging');
-            if (this.settings) {
-                this.settings.customSubtitleBaseY = container.style.getPropertyValue('--base-y');
-                // Ideally we'd persist this using FeatureManager
-            }
+            // FIX-5: Persist position to chrome.storage.sync
+            const newY = container.style.getPropertyValue('--base-y');
+            try {
+                if (chrome?.storage?.sync) {
+                    chrome.storage.sync.set({ [STORAGE_KEY]: newY });
+                }
+            } catch (_) {}
         };
 
         container.addEventListener('mousedown', this._dragStart);
         document.addEventListener('mousemove', this._dragMove);
         document.addEventListener('mouseup', this._dragEnd);
-        
-        // Apply saved position
-        if (this.settings?.customSubtitleBaseY) {
-            container.style.setProperty('--base-y', this.settings.customSubtitleBaseY);
-        } else {
+
+        // FIX-5: Restore persisted position from chrome.storage.sync
+        container.style.setProperty('--obstruction-y', '0px');
+        try {
+            if (chrome?.storage?.sync) {
+                chrome.storage.sync.get(STORAGE_KEY).then(data => {
+                    const saved = data[STORAGE_KEY];
+                    container.style.setProperty('--base-y', saved || '0px');
+                }).catch(() => {
+                    container.style.setProperty('--base-y', '0px');
+                });
+            } else {
+                container.style.setProperty('--base-y', '0px');
+            }
+        } catch (_) {
             container.style.setProperty('--base-y', '0px');
         }
-        container.style.setProperty('--obstruction-y', '0px');
     }
 
     _cleanupDraggable() {
-        if (this._customContainer) {
+        if (this._customContainer && this._dragStart) {
             this._customContainer.removeEventListener('mousedown', this._dragStart);
         }
-        document.removeEventListener('mousemove', this._dragMove);
-        document.removeEventListener('mouseup', this._dragEnd);
+        if (this._dragMove) document.removeEventListener('mousemove', this._dragMove);
+        if (this._dragEnd) document.removeEventListener('mouseup', this._dragEnd);
+        this._dragStart = null;
+        this._dragMove = null;
+        this._dragEnd = null;
     }
-    
-    // --- V2 Features ---
-    
+
     async _getTranslation(text) {
         if (!text) return '';
-        
+
         if (!this._translationCache) this._translationCache = new Map();
         if (this._translationCache.has(text)) return this._translationCache.get(text);
-        
+
         const targetLang = this.settings?.targetLanguage || navigator.language.split('-')[0] || 'en';
-        
+
         try {
             const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
             const response = await fetch(url);
             const data = await response.json();
             const translatedText = data[0].map(item => item[0]).join('');
-            
+
             if (this._translationCache.size > 100) this._translationCache.clear();
             this._translationCache.set(text, translatedText);
-            
+
             return translatedText;
         } catch (e) {
             this.utils.log?.('Translation failed', 'SUBS', 'warn');
             return '';
         }
     }
-    
-    // V4: Bionic Reading
+
     _applyBionicReading(text) {
         return text.split(' ').map(word => {
-            // Strip HTML/punctuation if necessary, but keep it simple
             if (word.length <= 1) return `<b>${word}</b>`;
             const half = Math.ceil(word.length / 2);
             return `<b style="font-weight:900;">${word.substring(0, half)}</b>${word.substring(half)}`;
@@ -294,7 +351,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 visibility: hidden !important;
                 pointer-events: none !important;
             }
-            
+
             /* Base Subtitle Container */
             .ypp-custom-subtitles {
                 position: absolute;
@@ -311,16 +368,16 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
                 opacity: 0;
             }
-            
+
             .ypp-custom-subtitles.dragging {
-                transition: none; /* Instant follow */
+                transition: none;
             }
 
             .ypp-custom-subtitles.active {
                 opacity: 1;
                 transform: translate(-50%, calc(var(--base-y) + var(--obstruction-y))) scale(1);
             }
-            
+
             /* Profile: Netflix */
             .ypp-custom-subtitles.style-netflix {
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -332,7 +389,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 padding: 4px 16px;
                 border-radius: 8px;
             }
-            
+
             /* Profile: Prime Video */
             .ypp-custom-subtitles.style-prime {
                 font-family: 'Amazon Ember', Arial, sans-serif;
@@ -343,7 +400,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 padding: 8px 16px;
                 border-radius: 4px;
             }
-            
+
             /* Profile: Apple TV */
             .ypp-custom-subtitles.style-apple {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -353,7 +410,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 text-shadow: 0 1px 2px rgba(0,0,0,0.5);
                 letter-spacing: 0.5px;
             }
-            
+
             /* Profile: Anime */
             .ypp-custom-subtitles.style-anime {
                 font-family: 'Trebuchet MS', Arial, sans-serif;
@@ -364,8 +421,8 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
                 text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
                 letter-spacing: 1px;
             }
-            
-            /* Profile: Accessibility (V4) */
+
+            /* Profile: Accessibility */
             .ypp-custom-subtitles.style-accessibility {
                 font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
                 font-size: clamp(20px, 4.5vh, 50px);
