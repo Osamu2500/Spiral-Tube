@@ -77,6 +77,11 @@ export class AutoPause extends window.YPP.features.BaseFeature {
             this.video.volume = this.originalVolume;
         }
         
+        // Restore unmuted state if we muted it
+        if (this.video && this.wasMutedByUs) {
+            this.video.muted = false;
+        }
+        
         this.video = null;
         this.wasPausedByUs = false;
         this.wasMutedByUs = false;

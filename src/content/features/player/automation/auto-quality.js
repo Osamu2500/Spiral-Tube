@@ -26,11 +26,12 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
             if ('getBattery' in navigator) {
                 navigator.getBattery().then(battery => {
                     this._battery = battery;
-                    battery.addEventListener('chargingchange', () => {
+                    this._batteryListener = () => {
                         this.utils?.log(`Battery state changed (charging: ${battery.charging})`, this.name);
                         const player = document.getElementById('movie_player');
                         if (player) this.applyAutoQuality(player);
-                    });
+                    };
+                    battery.addEventListener('chargingchange', this._batteryListener);
                 }).catch(() => {});
             }
             
@@ -48,6 +49,10 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
 
     async disable() {
         this.stopEnforcer();
+        if (this._battery && this._batteryListener) {
+            this._battery.removeEventListener('chargingchange', this._batteryListener);
+            this._batteryListener = null;
+        }
         await super.disable();
     }
 

@@ -74,6 +74,16 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
             clearInterval(this._autoScrollInterval);
             this._autoScrollInterval = null;
         }
+        
+        // V4: Restore playback speed when disabled
+        const activeReel = document.querySelector('ytd-reel-video-renderer[is-active]');
+        if (activeReel) {
+            const video = activeReel.querySelector('video');
+            if (video && video.playbackRate !== 1.0) {
+                video.playbackRate = 1.0;
+            }
+        }
+        
         this._isMonitoring = false;
         this._lastScrolledVideo = null;
         this._loopCount = 0;

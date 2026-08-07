@@ -80,6 +80,13 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         document.removeEventListener('keydown', this.handleHotkey);
         this.videoElement = null;
         this.videoId = null;
+        
+        // V4: Cleanup injected DOM elements
+        document.querySelectorAll('.ypp-bookmark-marker').forEach(el => el.remove());
+        const syncPanel = document.getElementById('ypp-sync-panel');
+        if (syncPanel) syncPanel.remove();
+        const continueRow = document.getElementById('ypp-continue-watching-row');
+        if (continueRow) continueRow.remove();
     }
 
     getVideoId() {

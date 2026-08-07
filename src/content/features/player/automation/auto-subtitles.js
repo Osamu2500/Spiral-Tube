@@ -56,6 +56,10 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
             this._customContainer.remove();
             this._customContainer = null;
         }
+        if (this._nativeContainer) {
+            this._nativeContainer.style.opacity = '';
+            this._nativeContainer.style.visibility = '';
+        }
         this._removeStyles();
     }
 

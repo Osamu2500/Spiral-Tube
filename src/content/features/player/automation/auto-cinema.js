@@ -75,6 +75,9 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
             this._distractionStyle = null;
         }
         
+        document.body.classList.remove('ypp-audio-focus');
+        document.body.classList.remove('ypp-idle');
+        
         // super.disable() calls cleanupEvents() which removes all this.addListener() registrations
         await super.disable();
         this.utils?.log?.('Auto Cinema disabled', 'AUTO_CINEMA');
