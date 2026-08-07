@@ -17,9 +17,6 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._currentStyle = 'netflix';
         
         this._handleMutation = this._handleMutation.bind(this);
-        this._dragStart = this._dragStart.bind(this);
-        this._dragMove = this._dragMove.bind(this);
-        this._dragEnd = this._dragEnd.bind(this);
     }
 
     getConfigKey() {
