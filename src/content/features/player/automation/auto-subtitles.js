@@ -86,7 +86,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     _initRenderer(player, native) {
-        if (this._abortController?.signal.aborted) return;
+        if (!this._abortController || this._abortController.signal.aborted) return;
         this._nativeContainer = native;
         
         // Create our custom Netflix-style container
@@ -127,9 +127,9 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     _handleMutation(mutations) {
-        if (this._abortController?.signal.aborted) return;
+        if (!this._abortController || this._abortController.signal.aborted) return;
         
-        // V4: Sync Fix for Rollup/Live Captions
+        // Don't process if native container is missings
         // YouTube often keeps multiple old lines in the DOM during rollups.
         // We only extract the most recent 1-2 lines to ensure it stays synced.
         let activeLines = Array.from(this._nativeContainer.querySelectorAll('.caption-visual-line'))
