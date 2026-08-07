@@ -93,8 +93,10 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         
-        this._boundAutoPiP = null;
+        // PIP-BUG-1: Teardown observer FIRST before nulling _boundAutoPiP
+        // This prevents the observer callback firing after the function is null, causing TypeError
         this._teardownIntersectionObserver();
+        this._boundAutoPiP = null;
         
         // Exit PiP if currently active
         if (document.pictureInPictureElement) {
@@ -108,6 +110,25 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         if (video) this._restoreAudio(video);
         
         this.utils?.log?.('Auto PiP disabled', 'AUTO_PIP');
+    }
+    
+    // PIP-BUG-3: Reset PiP state on SPA navigation
+    onVideoChange() {
+        if (!this.isEnabled) return;
+        // Close any active PiP from the previous video
+        if (document.pictureInPictureElement) {
+            document.exitPictureInPicture().catch(() => {});
+        }
+        if (this._docPipWindow) {
+            this._docPipWindow.close();
+        }
+        // Reset tracking state
+        this._videoContainer = null;
+        this._pipReason = null;
+        // Re-setup intersection observer for the new video's player
+        if (this.utils.isWatchPage()) {
+            this._setupIntersectionObserver();
+        }
     }
     
     _setupIntersectionObserver() {
@@ -193,9 +214,11 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         
         this._applyAudioDucking(video);
         
-        // Listen for closure
+        // PIP-BUG-2: Re-query the container at close time, not at open time
+        // The original container element may have been replaced by YouTube on SPA nav
         pipWindow.addEventListener("pagehide", () => {
-            this._videoContainer.appendChild(video);
+            const container = document.querySelector('.html5-video-container') || this._videoContainer;
+            if (container) container.appendChild(video);
             this._docPipWindow = null;
             this._pipReason = null;
             this._restoreAudio(video);

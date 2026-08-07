@@ -28,6 +28,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._lastCaptionText = null;   // FIX-7: deduplication
         this._lastTransId = null;       // FIX-3: translation race guard
         this._translationCache = null;
+        this._navVersion = 0;           // SUB-BUG-3: stale poll guard
 
         this._handleMutation = this._handleMutation.bind(this);
         this._handleNavigation = this._handleNavigation.bind(this);
@@ -81,13 +82,20 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         this._teardown();
         this._lastCaptionText = null;
         this._lastTransId = null;
+        // SUB-BUG-4: Clear translation cache on video change to avoid stale translations
+        if (this._translationCache) this._translationCache.clear();
+        // SUB-BUG-3: Increment version so any in-flight poll callbacks are discarded
+        this._navVersion++;
         this._startPolling();
         this._autoEnableCC();
     }
 
     // Shared polling logic used by enable() and _handleNavigation()
     _startPolling() {
+        const expectedVersion = this._navVersion;
         this.pollFor(() => {
+            // SUB-BUG-3: If user navigated again while polling, discard this callback
+            if (this._navVersion !== expectedVersion) return true; // abort gracefully
             const player = document.getElementById('movie_player');
             const native = document.getElementById('ytp-caption-window-container');
             if (player && native) {

@@ -5,13 +5,6 @@
  */
 
 
-/**
- * Feature: Smart Video Resumer
- * Remembers exact playback position locally utilizing localStorage.
- * Automatically seeks to saved position on load.
- */
-
-
 
 export class VideoResumer extends window.YPP.features.BaseFeature {
     static featureId = 'videoResumer';
@@ -24,6 +17,7 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
         this.videoElement = null;
         this.videoId = null;
         this.saveInterval = null;
+        this.lastSave = null;  // RESUMER-BUG-5: declare properly in constructor
         
         this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
         this.handleNavigation = this.handleNavigation.bind(this);
@@ -76,7 +70,8 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             this.saveInterval = null;
         }
         if (this.videoElement) {
-            this.videoElement.removeEventListener('timeupdate', this.handleTimeUpdate);
+            // RESUMER-BUG-3: Use this.removeListener for consistency with addListener
+            this.removeListener(this.videoElement, 'timeupdate', this.handleTimeUpdate);
         }
         document.removeEventListener('keydown', this.handleHotkey);
         this.videoElement = null;
@@ -147,15 +142,28 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             
             if (!savedTimeStr) return;
 
-            const savedTime = parseFloat(savedTimeStr);
-            if (isNaN(savedTime)) return;
+            let savedTime, duration;
+            try {
+                const parsed = JSON.parse(savedTimeStr);
+                // RESUMER-BUG-4: Support both new {time, duration} format and legacy string format
+                if (typeof parsed === 'object' && parsed !== null) {
+                    savedTime = parseFloat(parsed.time);
+                    duration = parseFloat(parsed.duration) || null;
+                } else {
+                    savedTime = parseFloat(savedTimeStr);
+                    duration = null;
+                }
+            } catch (_) {
+                savedTime = parseFloat(savedTimeStr);
+                duration = null;
+            }
             
             // Don't seek if we're already close to it or it's within the first 5 seconds
             if (Math.abs(this.videoElement.currentTime - savedTime) > 2 && savedTime > 5) {
                 
                 // Check if it's near the end (e.g. 95%) - if so, don't resume, treat as watched
-                const duration = this.videoElement.duration;
-                if (duration && savedTime / duration > 0.95) {
+                const videoDuration = duration || this.videoElement.duration;
+                if (videoDuration && savedTime / videoDuration > 0.95) {
                     if (chrome && chrome.storage && chrome.storage.sync) {
                         chrome.storage.sync.remove(key);
                     } else {
@@ -187,10 +195,12 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
                     window.YPP.StorageManager.remove(key);
                 }
             } else if (currentTime > 5) {
+                // RESUMER-BUG-4: Store both time AND duration for accurate progress bar rendering
+                const saveData = JSON.stringify({ time: currentTime, duration: duration || 0 });
                 if (chrome && chrome.storage && chrome.storage.sync) {
-                    chrome.storage.sync.set({ [key]: currentTime.toString() });
+                    chrome.storage.sync.set({ [key]: saveData });
                 } else {
-                    window.YPP.StorageManager.set(key, currentTime.toString());
+                    window.YPP.StorageManager.set(key, saveData);
                 }
             }
         } catch (e) {
@@ -321,16 +331,26 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             
             let html = `<h2 style="color:var(--yt-spec-text-primary); margin-top:0; font-size:20px; margin-bottom:16px;">▶ Continue Watching</h2><div style="display:flex; gap:16px; overflow-x:auto; padding-bottom:8px;">`;
             
+            // RESUMER-BUG-4: Compute accurate progress width from stored data
             resumeItems.slice(0, 5).forEach(key => {
                 const vidId = key.replace(this.STORAGE_KEY_PREFIX, '');
                 const url = `https://www.youtube.com/watch?v=${vidId}`;
                 const imgUrl = `https://i.ytimg.com/vi/${vidId}/mqdefault.jpg`;
                 
+                let progressWidth = 50; // fallback
+                try {
+                    const raw = data[key];
+                    const parsed = typeof raw === 'string' ? JSON.parse(raw) : null;
+                    if (parsed && parsed.time && parsed.duration && parsed.duration > 0) {
+                        progressWidth = Math.min(100, Math.round((parsed.time / parsed.duration) * 100));
+                    }
+                } catch (_) {}
+                
                 html += `
                     <a href="${url}" style="text-decoration:none; flex-shrink:0; width:210px;">
                         <div style="position:relative; width:100%; border-radius:8px; overflow:hidden; aspect-ratio:16/9; background:#000;">
                             <img src="${imgUrl}" style="width:100%; height:100%; object-fit:cover;" />
-                            <div style="position:absolute; bottom:0; left:0; height:4px; background:red; width:50%;"></div>
+                            <div style="position:absolute; bottom:0; left:0; height:4px; background:red; width:${progressWidth}%;"></div>
                         </div>
                     </a>
                 `;
@@ -400,6 +420,8 @@ export class VideoResumer extends window.YPP.features.BaseFeature {
             if (seconds <= 0) {
                 clearInterval(interval);
                 panel.remove();
+                // RESUMER-BUG-2: Guard against null videoElement if user navigated away during countdown
+                if (!this.videoElement) return;
                 // Context Rewind: Rewind 3 seconds
                 const resumeTime = Math.max(0, savedTime - 3);
                 this.videoElement.currentTime = resumeTime;

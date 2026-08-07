@@ -29,6 +29,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         this.idleTimeout = null;
         this.idleHandler = this._handleMouseMove.bind(this);
         this.mediaSessionActive = false;
+        this._observerReady = false;  // PAUSE-BUG-2: guard against spurious fire on init
     }
 
     /**
@@ -63,9 +64,6 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         // V2: Attention Tracking
         this.addListener(document, 'mousemove', this.idleHandler);
         this.addListener(document, 'keydown', this.idleHandler);
-        
-        // V2: Media Session
-        this._setupMediaSession();
     }
 
     /**
@@ -103,13 +101,22 @@ export class AutoPause extends window.YPP.features.BaseFeature {
      * Lifecycle method: Hook fired when YouTube SPA navigates to a new video
      * @param {string} videoId - The YouTube Video ID
      */
-    onVideoChange(videoId) {
+    // PAUSE-BUG-3: Made async to properly await video element before setting up observer
+    // PAUSE-BUG-4: Clear idle timeout to prevent stale pause across video changes
+    async onVideoChange(videoId) {
         if (!this.isEnabled) return;
+        
+        // PAUSE-BUG-4: Clear idle timer from previous video
+        if (this.idleTimeout) {
+            clearTimeout(this.idleTimeout);
+            this.idleTimeout = null;
+        }
         
         // Reset state for the new video
         this.wasPausedByUs = false;
         this.wasMutedByUs = false;
-        this._cacheVideoElement();
+        // PAUSE-BUG-3: Await so video is cached before observer fires
+        await this._cacheVideoElement();
         this._setupIntersectionObserver();
     }
 
@@ -175,7 +182,11 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     
     _setupIntersectionObserver() {
         this._teardownIntersectionObserver();
+        // PAUSE-BUG-2: Reset the ready flag each time we set up the observer
+        this._observerReady = false;
         this._observer = new IntersectionObserver((entries) => {
+            // PAUSE-BUG-2: Ignore the initial synchronous fire that happens on observe()
+            if (!this._observerReady) return;
             entries.forEach(entry => {
                 if (document.hidden || !this.isEnabled || !this.utils.isWatchPage()) return;
                 if (this.settings?.autoPiP) return;
@@ -198,6 +209,8 @@ export class AutoPause extends window.YPP.features.BaseFeature {
                 .then(p => { if (p && this._observer) this._observer.observe(p); })
                 .catch(() => {});
         }
+        // PAUSE-BUG-2: Allow a short delay before the observer can trigger actions
+        setTimeout(() => { this._observerReady = true; }, 250);
     }
     
     _teardownIntersectionObserver() {
@@ -292,23 +305,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         }, idleMinutes * 60 * 1000);
     }
     
-    _setupMediaSession() {
-        // Attempt to integrate with OS Media Session to detect external pauses
-        if ('mediaSession' in navigator) {
-            try {
-                // We wrap the existing pause handler so we don't break YouTube's native media keys
-                // However, the MediaSession API only allows one handler per action.
-                // YouTube might overwrite this, so we poll to re-attach or use a different heuristic.
-                // For safety, we will just listen to the 'pause' event on the video and check if 
-                // it was triggered by a media key, but that's hard to distinguish.
-                
-                // Let's implement a "focus" based audio ducking: if another tab plays audio, 
-                // Chrome might fire a 'pause' event on our video if "Audio Focus" is lost (on some OSes).
-                // We just log it for V2.
-                this.utils.log?.('Media Session V2 Active', 'AutoPause', 'debug');
-            } catch (e) {}
-        }
-    }
+    // PAUSE-BUG-5: Removed dead _setupMediaSession code
 };
 
 window.YPP.features.AutoPause = AutoPause;
