@@ -1733,3 +1733,20 @@ body.ypp-theme-minimalism .nav-item.active {
   opacity: 1;
   transform: translateY(0);
 }
+body .toggle-card.compact-toggle .toggle {
+    display: inline-block !important;
+    transform: scale(0.85);
+    transform-origin: right center;
+}
+body .toggle-card.compact-toggle {
+    padding: 8px 10px;
+    min-height: 42px;
+}
+body .toggle-card.compact-toggle:has(input:checked) {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+}
+body .toggle-card.compact-toggle:hover {
+    background: color-mix(in srgb, var(--accent-primary) 8%, transparent);
+}

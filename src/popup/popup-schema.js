@@ -44,7 +44,9 @@ export const getPopupSchema = (t) => [
                 title: t('section_feed_layout'),
                 icon: ICONS.grid,
                 items: [
-                    { type:'toggle', id:'displayFullTitle', label: t('displayFullTitle'), desc: t('displayFullTitle_desc'),        icon:ICONS.title },
+                    { type:'button-group', id:'displayFullTitle', class:'span-2', label: t('displayFullTitle'), desc: t('displayFullTitle_desc'), icon:ICONS.title, options: [{value:'off',label: t('off')},{value:'hover',label: t('on_hover')},{value:'always',label: t('always')}] },
+                    { type:'toggle', id:'declickbaitTitles', class:'compact-toggle', label: 'Anti-Clickbait', desc: 'Convert ALL CAPS to Sentence case', icon:ICONS.magicWand },
+                    { type:'toggle', id:'smoothTitleScroll', class:'compact-toggle', label: 'Marquee Scroll', desc: 'Scroll long titles on hover', icon:ICONS.autoScale },
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:ICONS.autoScale },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]

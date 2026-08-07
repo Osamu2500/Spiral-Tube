@@ -29,13 +29,7 @@ body.ypp-home-page.ypp-hide-mixes ytd-compact-radio-renderer,
 body.ypp-home-page.ypp-hide-mixes ytd-radio-renderer {
   display: none !important;
 }
-body.ypp-display-full-title #video-title,
-body.ypp-display-full-title .ytd-rich-grid-media span#video-title,
-body.ypp-display-full-title ytd-video-renderer #video-title {
-  max-height: unset !important;
-  line-clamp: unset !important;
-  -webkit-line-clamp: unset !important;
-}
+
 html[style*='--ypp-dynamic-cols'] ytd-rich-grid-renderer,
 html[style*='--ypp-dynamic-cols'] yt-rich-grid-renderer,
 html[style*='--ypp-dynamic-cols'] yt-rich-grid-view-model {

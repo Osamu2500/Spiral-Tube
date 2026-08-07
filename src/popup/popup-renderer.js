@@ -811,16 +811,23 @@ function renderColor(item, state) {
 function renderButtonGroup(item, state) {
     if (item.hidden) return null;
 
+    const isWide = item.class && item.class.includes('span-2');
+
     const wrap = document.createElement('div');
-    wrap.className = 'toggle-card';
-    wrap.style.flexDirection = 'column';
-    wrap.style.alignItems = 'stretch';
+    wrap.className = `toggle-card ${item.class || ''}`.trim();
+    wrap.style.flexDirection = isWide ? 'row' : 'column';
+    wrap.style.alignItems = isWide ? 'center' : 'stretch';
+    wrap.style.justifyContent = isWide ? 'space-between' : 'center';
+    wrap.style.flexWrap = isWide ? 'nowrap' : 'wrap';
     wrap.style.gap = '8px';
 
     const headerRow = document.createElement('div');
     headerRow.style.display = 'flex';
     headerRow.style.alignItems = 'center';
     headerRow.style.gap = '10px';
+    if (isWide) {
+        headerRow.style.flex = '1';
+    }
 
     let iconWrap = null;
     if (item.icon) {
@@ -851,7 +858,15 @@ function renderButtonGroup(item, state) {
     btnGroup.className = 'button-group';
     btnGroup.style.display = 'flex';
     btnGroup.style.gap = '4px';
-    btnGroup.style.marginTop = '4px';
+    
+    if (isWide) {
+        btnGroup.style.width = '240px';
+        btnGroup.style.flexShrink = '0';
+        btnGroup.style.marginTop = '0';
+        btnGroup.style.marginLeft = 'auto';
+    } else {
+        btnGroup.style.marginTop = '4px';
+    }
     
     const input = document.createElement('input');
     input.type = 'hidden';

@@ -28,7 +28,9 @@ export const DEFAULT_SETTINGS = {
   channelColumns: 4,
   subscriptionsColumns: 4,
   historyColumns: 4,
-  displayFullTitle: false,
+  displayFullTitle: 'off',
+  declickbaitTitles: false,
+  smoothTitleScroll: false,
   cinematicMode: false,
 
   // Visibility
