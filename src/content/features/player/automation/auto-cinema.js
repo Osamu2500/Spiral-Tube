@@ -227,6 +227,21 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
     _drawAmbilight(video) {
         if (!this._ambilightCanvas || !this._ambilightCtx) return;
         
+        if (document.hidden) {
+            // Suspend loop completely while hidden
+            if (!this._visibilityHandler) {
+                this._visibilityHandler = () => {
+                    if (!document.hidden) {
+                        document.removeEventListener('visibilitychange', this._visibilityHandler);
+                        this._visibilityHandler = null;
+                        this._drawAmbilight(video);
+                    }
+                };
+                document.addEventListener('visibilitychange', this._visibilityHandler);
+            }
+            return;
+        }
+        
         if (!video.paused && !video.ended) {
             try {
                 this._ambilightCanvas.width = 128;
@@ -277,6 +292,10 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
         if (this._ambilightReq) {
             clearTimeout(this._ambilightReq);
             this._ambilightReq = null;
+        }
+        if (this._visibilityHandler) {
+            document.removeEventListener('visibilitychange', this._visibilityHandler);
+            this._visibilityHandler = null;
         }
         if (this._ambilightCanvas) {
             this._ambilightCanvas.style.opacity = '0';

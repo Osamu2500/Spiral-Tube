@@ -16,7 +16,7 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
     constructor() {
         super('AutoPiP');
         this._boundAutoPiP = null;
-        this._scrollHandler = null;
+        this._observer = null;
         this._originalVolume = null;
         this._pipReason = null; // 'hidden' or 'scroll'
         this._docPipWindow = null;
@@ -77,21 +77,10 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         
         this.addListener(document, 'visibilitychange', () => this._boundAutoPiP('hidden'));
         
-        // Scroll-triggered PiP
-        this._scrollHandler = this.utils.debounce(() => {
-            if (document.hidden) return; // Let visibility change handle it
-            if (window.location.pathname !== '/watch') return;
-            
-            const playerRect = document.querySelector('#movie_player')?.getBoundingClientRect();
-            if (playerRect && playerRect.bottom < 0) {
-                // Player is out of view
-                this._boundAutoPiP('scroll');
-            } else if (this._pipReason === 'scroll' && (document.pictureInPictureElement || this._docPipWindow)) {
-                // Player is back in view and we were the ones who PiP'd it due to scroll
-                this._boundAutoPiP('visible'); // pass a reason that evaluates shouldBePip to false
-            }
-        }, 200);
-        this.addListener(window, 'scroll', this._scrollHandler);
+        // V4 Optimization: Use IntersectionObserver instead of scroll listener
+        if (this.utils.isWatchPage()) {
+            this._setupIntersectionObserver();
+        }
         
         this.utils?.log?.('Auto PiP enabled', 'AUTO_PIP');
     }
@@ -100,7 +89,7 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         await super.disable();
         
         this._boundAutoPiP = null;
-        this._scrollHandler = null;
+        this._teardownIntersectionObserver();
         
         // Exit PiP if currently active
         if (document.pictureInPictureElement) {
@@ -116,8 +105,39 @@ export class AutoPiP extends window.YPP.features.BaseFeature {
         this.utils?.log?.('Auto PiP disabled', 'AUTO_PIP');
     }
     
-    // --- V2 Document PiP & Audio Utilities ---
+    _setupIntersectionObserver() {
+        this._teardownIntersectionObserver();
+        this._observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (document.hidden || !this.isEnabled || !this.utils.isWatchPage()) return;
+                
+                if (!entry.isIntersecting && entry.boundingClientRect.bottom < 0) {
+                    // Player is out of view
+                    this._boundAutoPiP('scroll');
+                } else if (entry.isIntersecting && this._pipReason === 'scroll' && (document.pictureInPictureElement || this._docPipWindow)) {
+                    // Player is back in view
+                    this._boundAutoPiP('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        const player = document.getElementById('movie_player');
+        if (player) {
+            this._observer.observe(player);
+        } else {
+            this.utils.pollFor(() => document.getElementById('movie_player'), 5000, 500)
+                .then(p => { if (p && this._observer) this._observer.observe(p); })
+                .catch(() => {});
+        }
+    }
     
+    _teardownIntersectionObserver() {
+        if (this._observer) {
+            this._observer.disconnect();
+            this._observer = null;
+        }
+    }
+
     async _enterDocumentPiP(video, reason) {
         if (this._docPipWindow) return;
         

@@ -5,7 +5,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('ShortsAutoScroll');
-        this._autoScrollInterval = null;
+        this._timeupdateHandler = null;
         this._isMonitoring = false;
         // Keep track of the last scrolled video to prevent double-skipping
         this._lastScrolledVideo = null;
@@ -60,19 +60,23 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         this._sessionStartTime = Date.now();
         this._skipCountByCreator.clear();
         
-        this._autoScrollInterval = setInterval(() => {
+        this._timeupdateHandler = (e) => {
             if (document.hidden) return;
-            this._checkAndScroll();
-        }, 200);
+            if (e.target && e.target.tagName === 'VIDEO' && e.target.closest('ytd-reel-video-renderer[is-active]')) {
+                // Pass video to avoid re-querying
+                this._checkAndScroll(e.target, e.target.closest('ytd-reel-video-renderer'));
+            }
+        };
+        document.addEventListener('timeupdate', this._timeupdateHandler, true);
 
         this._isMonitoring = true;
     }
 
     stopMonitoring() {
         if (!this._isMonitoring) return;
-        if (this._autoScrollInterval) {
-            clearInterval(this._autoScrollInterval);
-            this._autoScrollInterval = null;
+        if (this._timeupdateHandler) {
+            document.removeEventListener('timeupdate', this._timeupdateHandler, true);
+            this._timeupdateHandler = null;
         }
         
         // V4: Restore playback speed when disabled
@@ -90,12 +94,9 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         this.utils?.log('Stopped Shorts Auto-Scroll monitoring', 'AutoScroll');
     }
 
-    _checkAndScroll() {
-        const activeReel = document.querySelector('ytd-reel-video-renderer[is-active]');
-        if (!activeReel) return;
-        
-        const video = activeReel.querySelector('video');
-        if (!video || isNaN(video.duration) || video.duration === 0) return;
+    _checkAndScroll(video, activeReel) {
+        if (!activeReel || !video) return;
+        if (isNaN(video.duration) || video.duration === 0) return;
         
         const nextButton = document.querySelector('#navigation-button-down ytd-button-renderer button, .navigation-button.down button');
 

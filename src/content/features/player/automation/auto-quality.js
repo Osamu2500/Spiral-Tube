@@ -10,7 +10,6 @@ export class AutoQuality extends window.YPP.features.BaseFeature {
 
     constructor() {
         super('AutoQuality');
-        this.enforcerInterval = null;
         this._isBackground = false;
         this._isPaused = false;
         this._bufferStallCount = 0;

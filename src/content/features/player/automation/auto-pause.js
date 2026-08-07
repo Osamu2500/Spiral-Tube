@@ -24,7 +24,6 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         this.video = null;
         this.originalVolume = null;
         this.fadeInterval = null;
-        this.scrollHandler = this.handleScroll.bind(this);
         
         // V2
         this.idleTimeout = null;
@@ -55,7 +54,10 @@ export class AutoPause extends window.YPP.features.BaseFeature {
             this._cacheVideoElement();
         }
         
-        this.addListener(window, 'scroll', this.scrollHandler);
+        // V4 Optimization: Use IntersectionObserver instead of scroll listener
+        if (this.utils.isWatchPage()) {
+            this._setupIntersectionObserver();
+        }
         
         // V2: Attention Tracking
         this.addListener(document, 'mousemove', this.idleHandler);
@@ -71,6 +73,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         if (this.fadeInterval) clearInterval(this.fadeInterval);
+        this._teardownIntersectionObserver();
         
         // Restore volume if we were fading
         if (this.video && this.originalVolume !== null) {
@@ -101,6 +104,7 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         this.wasPausedByUs = false;
         this.wasMutedByUs = false;
         this._cacheVideoElement();
+        this._setupIntersectionObserver();
     }
 
     /**
@@ -163,22 +167,37 @@ export class AutoPause extends window.YPP.features.BaseFeature {
         }
     }
     
-    handleScroll() {
-        if (!this.isEnabled || !this.utils.isWatchPage() || document.hidden) return;
+    _setupIntersectionObserver() {
+        this._teardownIntersectionObserver();
+        this._observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (document.hidden || !this.isEnabled || !this.utils.isWatchPage()) return;
+                if (this.settings?.autoPiP) return;
+                if (!this.video || document.pictureInPictureElement) return;
+
+                // Only pause if the top of the player has scrolled past the top of the viewport
+                if (!entry.isIntersecting && entry.boundingClientRect.bottom < 0) {
+                    this._triggerPause('scroll');
+                } else if (entry.isIntersecting && this.wasPausedByUs) {
+                    this._triggerResume();
+                }
+            });
+        }, { threshold: 0.1 });
         
-        // If Auto PiP is enabled, let it handle the scroll
-        if (this.settings?.autoPiP) return;
-        
-        if (!this.video) return;
-        if (document.pictureInPictureElement) return;
-        
-        const playerRect = document.querySelector('#movie_player')?.getBoundingClientRect();
-        if (playerRect && playerRect.bottom < 0) {
-            // Player is out of view
-            this._triggerPause('scroll');
-        } else if (this.wasPausedByUs) {
-            // Player is back in view
-            this._triggerResume();
+        const player = document.getElementById('movie_player');
+        if (player) {
+            this._observer.observe(player);
+        } else {
+            this.utils.pollFor(() => document.getElementById('movie_player'), 5000, 500)
+                .then(p => { if (p && this._observer) this._observer.observe(p); })
+                .catch(() => {});
+        }
+    }
+    
+    _teardownIntersectionObserver() {
+        if (this._observer) {
+            this._observer.disconnect();
+            this._observer = null;
         }
     }
 

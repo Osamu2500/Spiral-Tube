@@ -82,6 +82,7 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     _initRenderer(player, native) {
+        if (!this.isEnabled) return;
         this._nativeContainer = native;
         
         // Create our custom Netflix-style container
@@ -108,10 +109,27 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
     }
 
     _handleMutation(mutations) {
-        // Extract text from native captions
-        const captions = Array.from(this._nativeContainer.querySelectorAll('.ytp-caption-segment'))
-            .map(el => el.textContent.trim())
-            .join(' ');
+        if (!this.isEnabled) return;
+        
+        // V4: Sync Fix for Rollup/Live Captions
+        // YouTube often keeps multiple old lines in the DOM during rollups.
+        // We only extract the most recent 1-2 lines to ensure it stays synced.
+        let activeLines = Array.from(this._nativeContainer.querySelectorAll('.caption-visual-line'))
+            .map(line => line.textContent.trim())
+            .filter(text => text.length > 0);
+            
+        // Keep only max 2 lines for Rollup/Live captions to prevent huge text walls
+        activeLines = activeLines.slice(-2);
+        
+        let captions = activeLines.join('\n');
+        
+        // Fallback for different YouTube DOM structures
+        if (!captions) {
+            captions = Array.from(this._nativeContainer.querySelectorAll('.ytp-caption-segment'))
+                .map(el => el.textContent.trim())
+                .filter(text => text.length > 0)
+                .join(' ');
+        }
             
         if (!captions) {
             this._customContainer.style.opacity = '0';
@@ -122,14 +140,16 @@ export class AutoSubtitles extends window.YPP.features.BaseFeature {
         // V4: Bionic Reading
         let processedCaptions = captions;
         if (this.settings?.bionicReading !== false) { // Default enabled for V4
-            processedCaptions = this._applyBionicReading(captions);
+            processedCaptions = captions.split('\n').map(line => this._applyBionicReading(line)).join('<br/>');
+        } else {
+            processedCaptions = captions.replace(/\n/g, '<br/>');
         }
         
         // V2: True Dual-Language
         let html = `<span>${processedCaptions}</span>`;
         if (this.settings?.dualLanguage) {
             // Mock translation logic: append a dummy translation based on length
-            const mockTranslation = this._mockTranslation(captions);
+            const mockTranslation = this._mockTranslation(captions.replace(/\n/g, ' '));
             html += `<br/><span class="dual-lang-sub" style="font-size: 0.8em; color: var(--yt-spec-text-secondary, #ccc);">${mockTranslation}</span>`;
         }
         
