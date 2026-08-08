@@ -1,10 +1,47 @@
-﻿/**
+/**
  * Google Drive AppData Sync for Spiral Tube
  * Uses the hidden appDataFolder to securely store subscription groups across devices.
  */
 
 const FILE_NAME = 'ypp_full_backup.json';
 const LEGACY_FILE_NAME = 'ypp_subscription_folders_backup.json';
+
+// Maximum size (in characters) we'll accept from Drive to prevent storage poisoning.
+const MAX_BACKUP_SIZE = 512_000; // 512 KB
+
+// Known top-level storage keys this extension writes.
+// Only keys in this list will be restored from Drive backup.
+const ALLOWED_BACKUP_KEYS = new Set([
+  'settings',
+  'ypp_subscription_folders',
+  'ypp_watch_history',
+  'ypp_bookmarks',
+  'ypp_custom_themes',
+  'ypp_keyword_blacklist',
+]);
+
+/**
+ * Validates and sanitizes a downloaded backup object before restoring.
+ * Only allows known keys; strips any key not in the allowlist.
+ * @param {object} data - raw parsed backup
+ * @returns {object} sanitized subset safe to write to storage
+ */
+function validateBackupData(data) {
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    throw new Error('Backup is not a plain object.');
+  }
+  const sanitized = {};
+  for (const [key, value] of Object.entries(data)) {
+    if (!ALLOWED_BACKUP_KEYS.has(key)) {
+      console.warn(`[YPP Drive] Skipping unknown backup key: ${key}`);
+      continue;
+    }
+    // Basic type sanity: reject functions and reject deeply weird values
+    if (typeof value === 'function') continue;
+    sanitized[key] = value;
+  }
+  return sanitized;
+}
 
 /**
  * Gets an OAuth2 token from chrome.identity
@@ -136,18 +173,27 @@ export async function syncDown() {
             throw new Error('Failed to download sync data from Drive');
         }
         
-        const downloadedData = await response.json();
-        
+        const rawText = await response.text();
+
+        // Security: reject oversized backups
+        if (rawText.length > MAX_BACKUP_SIZE) {
+          throw new Error(`Backup file too large (${rawText.length} chars). Aborting restore.`);
+        }
+
+        const downloadedData = JSON.parse(rawText);
+
         if (isLegacy) {
             // Legacy backup only contained subscription folders, so we wrap it properly
             await chrome.storage.local.set({ ypp_subscription_folders: downloadedData });
             console.log('[YPP] Successfully restored legacy subscription groups from Google Drive.');
         } else {
-            // Full backup: remove keys that shouldn't overwrite local device state
+            // Security: validate and sanitize downloaded keys before restoring.
+            // Remove keys that shouldn't overwrite local device state.
             const keysToExclude = ['timerState', 'ypp_last_sync_time', 'ypp_backup_time', 'ypp_settings_backup'];
             keysToExclude.forEach(key => delete downloadedData[key]);
-            
-            await chrome.storage.local.set(downloadedData);
+
+            const safeData = validateBackupData(downloadedData);
+            await chrome.storage.local.set(safeData);
             console.log('[YPP] Successfully restored all memory from Google Drive.');
         }
         

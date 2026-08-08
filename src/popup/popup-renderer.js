@@ -62,23 +62,61 @@ function getOrCreateGlobalTooltip(doc) {
     return globalTooltipEl;
 }
 
-function showGlobalTooltip(target, text) {
-    if (!text || !target) return;
-    const doc = target.ownerDocument || document;
+let tooltipTimer = null;
+let lastMouseX = 0;
+let lastMouseY = 0;
+const TOOLTIP_DELAY = 1200;
+
+export function handleTooltipMove(e, text) {
+    if (!text) return;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+    
+    const doc = (e.target && e.target.ownerDocument) || document;
     const tooltip = getOrCreateGlobalTooltip(doc);
-    tooltip.innerHTML = text;
+    
+    if (tooltip.classList.contains('show')) {
+        updateTooltipPosition(doc, lastMouseX, lastMouseY);
+    } else {
+        clearTimeout(tooltipTimer);
+        tooltipTimer = setTimeout(() => {
+            showGlobalTooltip(doc, text, lastMouseX, lastMouseY);
+        }, TOOLTIP_DELAY);
+    }
+}
+
+export function handleTooltipLeave() {
+    clearTimeout(tooltipTimer);
+    hideGlobalTooltip();
+}
+
+function showGlobalTooltip(doc, text, clientX, clientY) {
+    if (!text) return;
+    
+    const tooltip = getOrCreateGlobalTooltip(doc);
+    // Security: use textContent — tooltip text comes from schema/desc fields
+    // and must never be rendered as HTML to prevent XSS if those fields are
+    // ever populated from user/storage data.
+    tooltip.textContent = text;
     tooltip.classList.add('show');
 
-    const rect = target.getBoundingClientRect();
+    updateTooltipPosition(doc, clientX, clientY);
+}
+
+function updateTooltipPosition(doc, clientX, clientY) {
+    const tooltip = getOrCreateGlobalTooltip(doc);
     const tooltipWidth = tooltip.offsetWidth || 220;
     const tooltipHeight = tooltip.offsetHeight || 50;
 
-    let top = rect.top - tooltipHeight - 8;
-    if (top < 10) {
-        top = rect.bottom + 8;
+    let left = clientX + 15;
+    let top = clientY + 15;
+
+    if (left + tooltipWidth > window.innerWidth - 10) {
+        left = window.innerWidth - tooltipWidth - 10;
     }
-    let left = rect.left + rect.width / 2 - tooltipWidth / 2;
-    left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
+    if (top + tooltipHeight > window.innerHeight - 10) {
+        top = clientY - tooltipHeight - 15;
+    }
 
     tooltip.style.top = `${Math.round(top)}px`;
     tooltip.style.left = `${Math.round(left)}px`;
@@ -96,25 +134,37 @@ export function createHelpButton(descText) {
     btn.className = 'feature-help-btn';
     btn.textContent = '?';
     btn.setAttribute('aria-label', descText || 'Help');
-    btn.addEventListener('mouseenter', (e) => showGlobalTooltip(e.target, descText));
-    btn.addEventListener('mouseleave', () => hideGlobalTooltip());
+    btn.addEventListener('mousemove', (e) => handleTooltipMove(e, descText));
+    btn.addEventListener('mouseleave', () => handleTooltipLeave());
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        showGlobalTooltip(e.target, descText);
+        const doc = e.target.ownerDocument || document;
+        showGlobalTooltip(doc, descText, e.clientX, e.clientY);
     });
     return btn;
 }
 
 export function convertStaticDescriptionsToHelpButtons(doc = document) {
     doc.querySelectorAll('.info').forEach(info => {
+        const card = info.closest('.toggle-card') || info.closest('.setting-item') || info.closest('.inline-setting-row') || info;
+        if (card.dataset.tooltipHandled === "true") return;
+
         const nameEl = info.querySelector('.name');
         const descEl = info.querySelector('.desc');
-        if (nameEl && descEl) {
-            if (descEl.querySelector('[id$="Value"], #blueLightValue, #dimValue') || descEl.id?.endsWith('Value') || descEl.id === 'blueLightValue' || descEl.id === 'dimValue') return;
-            const text = descEl.textContent || '';
-            if (text.trim() && !nameEl.querySelector('.feature-help-btn')) {
-                nameEl.appendChild(createHelpButton(text.trim()));
+        if (nameEl) {
+            let text = '';
+            if (descEl) {
+                if (descEl.querySelector('[id$="Value"], #blueLightValue, #dimValue') || descEl.id?.endsWith('Value') || descEl.id === 'blueLightValue' || descEl.id === 'dimValue') return;
+                text = descEl.textContent || '';
                 descEl.remove();
+            }
+            if (!text.trim()) {
+                text = nameEl.textContent || '';
+            }
+            if (text.trim()) {
+                card.dataset.tooltipHandled = "true";
+                card.addEventListener('mousemove', (e) => handleTooltipMove(e, text.trim()));
+                card.addEventListener('mouseleave', () => handleTooltipLeave());
             }
         }
     });
@@ -147,14 +197,11 @@ function renderToggle(item, state) {
     nameEl.className = 'name';
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
-    }
-    if (item.badge) {
-        const b = document.createElement('span');
-        b.textContent = item.badge;
-        b.className = 'new-feature-badge';
-        nameEl.appendChild(b);
+    const tooltipText = item.desc || item.label;
+    if (tooltipText) {
+        card.dataset.tooltipHandled = "true";
+        card.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        card.addEventListener('mouseleave', () => handleTooltipLeave());
     }
     if (item.inlineSlot) {
         const b = document.createElement('span');
@@ -241,13 +288,46 @@ function renderRange(item, state) {
     }
     
     if (item.parent) {
-        info.innerHTML = `<span class="name" style="font-size:12px; display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px;">${item.label}</span><span class="desc"><span id="${valueId}" style="font-size:12px; font-weight:bold; color:var(--red);">${displayValue}</span><span style="font-size:12px; font-weight:bold; color:var(--red);">${item.discreteOptions ? '' : unit}</span></span>`;
+        // Build with DOM methods to avoid innerHTML XSS risk
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'name';
+        nameSpan.style.cssText = 'font-size:12px; display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px;';
+        nameSpan.textContent = item.label;
+        const descSpan = document.createElement('span');
+        descSpan.className = 'desc';
+        const valSpan = document.createElement('span');
+        valSpan.id = valueId;
+        valSpan.style.cssText = 'font-size:12px; font-weight:bold; color:var(--red);';
+        valSpan.textContent = String(displayValue);
+        const unitSpan = document.createElement('span');
+        unitSpan.style.cssText = 'font-size:12px; font-weight:bold; color:var(--red);';
+        unitSpan.textContent = item.discreteOptions ? '' : unit;
+        descSpan.appendChild(valSpan);
+        descSpan.appendChild(unitSpan);
+        info.appendChild(nameSpan);
+        info.appendChild(descSpan);
     } else {
-        info.innerHTML = `<span class="name" style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px;">${item.label}</span><span class="desc"><span id="${valueId}">${displayValue}</span>${item.discreteOptions ? '' : unit}</span>`;
+        // Build with DOM methods to avoid innerHTML XSS risk
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'name';
+        nameSpan.style.cssText = 'display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px;';
+        nameSpan.textContent = item.label;
+        const descSpan = document.createElement('span');
+        descSpan.className = 'desc';
+        const valSpan = document.createElement('span');
+        valSpan.id = valueId;
+        valSpan.textContent = String(displayValue);
+        const unitText = document.createTextNode(item.discreteOptions ? '' : unit);
+        descSpan.appendChild(valSpan);
+        descSpan.appendChild(unitText);
+        info.appendChild(nameSpan);
+        info.appendChild(descSpan);
     }
-    if (item.desc) {
-        const nameEl = info.querySelector('.name');
-        if (nameEl) nameEl.appendChild(createHelpButton(item.desc));
+    const tooltipText = item.desc || item.label;
+    if (tooltipText) {
+        wrap.dataset.tooltipHandled = "true";
+        wrap.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        wrap.addEventListener('mouseleave', () => handleTooltipLeave());
     }
     
     wrap.appendChild(info);
@@ -369,8 +449,11 @@ function renderSelect(item, state) {
     nameEl.className = 'name';
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+    const tooltipText = item.desc || item.label;
+    if (tooltipText) {
+        wrap.dataset.tooltipHandled = "true";
+        wrap.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        wrap.addEventListener('mouseleave', () => handleTooltipLeave());
     }
     info.appendChild(nameEl);
     headerRow.appendChild(info);
@@ -524,7 +607,12 @@ function renderLayoutToggle(item, state) {
     nameSpan.className = 'name';
     nameSpan.style.cssText = 'display:flex; align-items:center; flex-wrap:wrap; gap:6px;';
     nameSpan.innerHTML = `${item.label} <span id="sidebar-layout-lock" style="display:none; color:var(--accent-primary);" title="Locked by Immersive Glass"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>`;
-    nameSpan.appendChild(createHelpButton(item.desc || 'Video cards size'));
+    const tooltipText = item.desc || item.label || 'Video cards size';
+    if (tooltipText) {
+        wrap.dataset.tooltipHandled = "true";
+        wrap.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        wrap.addEventListener('mouseleave', () => handleTooltipLeave());
+    }
     info.appendChild(nameSpan);
     headerRow.appendChild(info);
 
@@ -722,8 +810,11 @@ function renderInlineToggle(item, state) {
     nameEl.className = 'name';
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+    const tooltipText = item.desc || item.label;
+    if (tooltipText) {
+        wrap.dataset.tooltipHandled = "true";
+        wrap.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        wrap.addEventListener('mouseleave', () => handleTooltipLeave());
     }
     info.appendChild(nameEl);
     infoGroup.appendChild(info);
@@ -773,8 +864,11 @@ function renderColor(item, state) {
     nameEl.className = 'name';
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+    const tooltipText = item.desc || item.label;
+    if (tooltipText) {
+        wrap.dataset.tooltipHandled = "true";
+        wrap.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        wrap.addEventListener('mouseleave', () => handleTooltipLeave());
     }
     info.appendChild(nameEl);
     infoGroup.appendChild(info);
@@ -836,8 +930,11 @@ function renderButtonGroup(item, state) {
     nameEl.className = 'name';
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
-    if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+    const tooltipText = item.desc || item.label;
+    if (tooltipText) {
+        wrap.dataset.tooltipHandled = "true";
+        wrap.addEventListener('mousemove', (e) => handleTooltipMove(e, tooltipText));
+        wrap.addEventListener('mouseleave', () => handleTooltipLeave());
     }
     info.appendChild(nameEl);
     headerRow.appendChild(info);

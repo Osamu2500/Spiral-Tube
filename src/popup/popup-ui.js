@@ -1,3 +1,5 @@
+import { convertStaticDescriptionsToHelpButtons } from './popup-renderer.js';
+
 const TITLES = {
     'home': 'Home & Feed',
     'shorts': 'Shorts Tools',
@@ -62,6 +64,10 @@ function switchTab(document, tabId) {
         }
         
         localStorage.setItem('ypp-last-tab', tabId);
+
+        // Re-run static tooltip binding for newly visible tab content
+        const activeTab = document.getElementById(`tab-${tabId}`);
+        if (activeTab) convertStaticDescriptionsToHelpButtons(activeTab);
     });
 }
 

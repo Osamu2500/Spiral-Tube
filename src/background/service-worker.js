@@ -13,6 +13,25 @@ const BACKUP_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours
 let broadcastTimeout = null;
 
 // =========================================================================
+// SECURITY: FETCH_API Rate Limiter
+// Prevents a misbehaving content script from spamming external APIs.
+// =========================================================================
+const _rateLimitCounters = new Map(); // domain -> { count, resetAt }
+const RATE_LIMIT_MAX = 30;            // max requests per window
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute window
+
+function isRateLimited(hostname) {
+  const now = Date.now();
+  let entry = _rateLimitCounters.get(hostname);
+  if (!entry || now > entry.resetAt) {
+    entry = { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
+    _rateLimitCounters.set(hostname, entry);
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+// =========================================================================
 // TIMER LOGIC (Robust End-Time Based)
 // =========================================================================
 
@@ -78,6 +97,15 @@ chrome.alarms.onAlarm.addListener((alarm) => {
  * Handle messages from content scripts and popup
  */
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  // ── Security: reject messages from any external webpage.
+  // All legitimate senders (content scripts, popup, options) share the
+  // same extension ID. We have no externally_connectable entries, so any
+  // message NOT from this extension is suspicious.
+  if (sender.id !== chrome.runtime.id) {
+    console.warn('[YPP] Blocked message from unauthorized sender:', sender.id, sender.url);
+    return false;
+  }
+
   const action = request.action || request.type;
 
   switch (action) {
@@ -117,6 +145,27 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'PATCH_SETTINGS':
       (async () => {
         try {
+          // ── Security: validate payload keys and types against DEFAULT_SETTINGS schema
+          const payload = request.payload;
+          if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+            return sendResponse({ success: false, error: 'Invalid payload' });
+          }
+          const validatedPayload = {};
+          for (const [key, value] of Object.entries(payload)) {
+            // Only allow keys that exist in DEFAULT_SETTINGS
+            if (!(key in DEFAULT_SETTINGS)) continue;
+            const expectedType = typeof DEFAULT_SETTINGS[key];
+            const actualType = typeof value;
+            // Allow null values (used to reset some settings)
+            if (value === null) { validatedPayload[key] = value; continue; }
+            // Type must match the default
+            if (actualType !== expectedType) continue;
+            // For strings, enforce a reasonable max length
+            if (actualType === 'string' && value.length > 2048) continue;
+            // For numbers, must be finite
+            if (actualType === 'number' && !Number.isFinite(value)) continue;
+            validatedPayload[key] = value;
+          }
           const [localData, syncData] = await Promise.all([
             chrome.storage.local.get('settings'),
             chrome.storage.sync.get('settings')
@@ -135,8 +184,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             currentSettings = { ...syncSettings, ...localSettings };
           }
 
-          // 2. Merge delta
-          const newSettings = { ...currentSettings, ...request.payload, lastUpdated: Date.now() };
+          // 2. Merge validated delta only
+          const newSettings = { ...currentSettings, ...validatedPayload, lastUpdated: Date.now() };
 
           // 3. Save
           try {
@@ -240,26 +289,30 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 
     case 'FETCH_API': {
-      // Security: only allow HTTP and HTTPS requests to prevent
-      // the content script from using this as a proxy to chrome-extension://,
-      // file://, or other privileged schemes.
+      // Security: only allow HTTPS requests to a pre-approved allowlist of domains.
       let fetchUrl;
       try {
         fetchUrl = new URL(request.url);
       } catch (_) {
         sendResponse({ error: 'Invalid URL' });
-        return true; // Keep channel open so sendResponse can fire
+        return true;
       }
       if (fetchUrl.protocol !== 'https:') {
         sendResponse({
           error: `Disallowed URL scheme: ${fetchUrl.protocol}. Only HTTPS is permitted.`,
         });
-        return true; // Keep channel open so sendResponse can fire
+        return true;
       }
 
       const ALLOWED_DOMAINS = ['sponsor.ajay.app', 'returnyoutubedislikeapi.com'];
       if (!ALLOWED_DOMAINS.includes(fetchUrl.hostname)) {
         sendResponse({ error: `Disallowed domain: ${fetchUrl.hostname}.` });
+        return true;
+      }
+
+      // Security: rate limit per domain to prevent API abuse
+      if (isRateLimited(fetchUrl.hostname)) {
+        sendResponse({ error: `Rate limit exceeded for ${fetchUrl.hostname}. Try again later.` });
         return true;
       }
 
@@ -305,6 +358,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'EXTRACT_COLOR': {
       (async () => {
         try {
+          // Security: only allow fetching images from YouTube's known thumbnail CDNs.
+          // This prevents the service worker from being used as an image proxy
+          // for arbitrary external domains (SSRF-like risk).
+          const ALLOWED_THUMBNAIL_DOMAINS = [
+            'i.ytimg.com',
+            'yt3.ggpht.com',
+            'yt3.googleusercontent.com',
+            'lh3.googleusercontent.com',
+            'i9.ytimg.com',
+          ];
+          let extractUrl;
+          try {
+            extractUrl = new URL(request.url);
+          } catch (_) {
+            return sendResponse({ success: false, error: 'Invalid URL' });
+          }
+          if (extractUrl.protocol !== 'https:' || !ALLOWED_THUMBNAIL_DOMAINS.includes(extractUrl.hostname)) {
+            return sendResponse({ success: false, error: `Disallowed URL for color extraction: ${extractUrl.hostname}` });
+          }
+
           if (typeof OffscreenCanvas === 'undefined') {
             return sendResponse({ success: false, error: 'OffscreenCanvas not supported' });
           }

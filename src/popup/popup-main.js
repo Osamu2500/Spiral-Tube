@@ -684,18 +684,32 @@ registerSlot('recapButtons', (container, state) => {
         container.querySelector('#recapTotalTime').textContent = formatTime(totalTime);
 
         const channelsContainer = container.querySelector('#recapTopChannels');
-        channelsContainer.innerHTML = topChannels.length ? '' : '<div style="opacity:0.5; font-size:12px;">No channel data.</div>';
+        if (!topChannels.length) {
+            channelsContainer.innerHTML = '<div style="opacity:0.5; font-size:12px;">No channel data.</div>';
+        } else {
+            channelsContainer.innerHTML = '';
+        }
         
         topChannels.forEach(([name, time], idx) => {
-            channelsContainer.innerHTML += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.05); padding:10px 14px; border-radius:8px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;">
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <span style="color:#ff3366; font-weight:800; font-size:14px; background:rgba(255,51,102,0.1); padding:2px 8px; border-radius:12px;">#${idx + 1}</span>
-                        <span style="font-size:13px; font-weight:500;">${name}</span>
-                    </div>
-                    <span style="font-size:12px; color:rgba(255,255,255,0.7); font-weight:500;">${formatTime(time)}</span>
-                </div>
-            `;
+            // Build with DOM methods — channel names come from storage and must not be HTML-injected
+            const row = document.createElement('div');
+            row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.05); padding:10px 14px; border-radius:8px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;';
+            const left = document.createElement('div');
+            left.style.cssText = 'display:flex; align-items:center; gap:12px;';
+            const rank = document.createElement('span');
+            rank.style.cssText = 'color:#ff3366; font-weight:800; font-size:14px; background:rgba(255,51,102,0.1); padding:2px 8px; border-radius:12px;';
+            rank.textContent = `#${idx + 1}`;
+            const nameEl = document.createElement('span');
+            nameEl.style.cssText = 'font-size:13px; font-weight:500;';
+            nameEl.textContent = name; // textContent — safe
+            left.appendChild(rank);
+            left.appendChild(nameEl);
+            const timeEl = document.createElement('span');
+            timeEl.style.cssText = 'font-size:12px; color:rgba(255,255,255,0.7); font-weight:500;';
+            timeEl.textContent = formatTime(time);
+            row.appendChild(left);
+            row.appendChild(timeEl);
+            channelsContainer.appendChild(row);
         });
 
         const videosContainer = container.querySelector('#recapTopVideos');
@@ -736,23 +750,31 @@ registerSlot('recapButtons', (container, state) => {
             item.style.cssText = 'display:flex; gap:12px; background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; position:relative; overflow:hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.2s;';
             item.onmouseover = () => item.style.background = 'rgba(255,255,255,0.1)';
             item.onmouseout = () => item.style.background = 'rgba(255,255,255,0.05)';
+            // Build with DOM methods — title, channel, thumbnail come from storage
+            // and must not be embedded in innerHTML (XSS risk)
             item.innerHTML = `
                 <div style="position:relative; width:100px; height:56px; flex-shrink:0; cursor:pointer;" class="resume-thumb">
-                    <img src="${v.thumbnail}" style="width:100px; height:56px; border-radius:4px; object-fit:cover;" />
+                    <img style="width:100px; height:56px; border-radius:4px; object-fit:cover;" />
                     <div style="position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.2); border-radius:0 0 4px 4px; overflow:hidden;">
                         <div style="height:100%; width:${percent}%; background:#00e5ff; box-shadow: 0 0 8px #00e5ff;"></div>
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:column; justify-content:space-between; flex:1; min-width:0;">
-                    <div class="resume-title" style="font-size:12px; font-weight:600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; cursor:pointer;">${v.title}</div>
+                    <div class="resume-title" style="font-size:12px; font-weight:600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; cursor:pointer;"></div>
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-size:11px; color:rgba(255,255,255,0.6); font-weight:500;">${formatTime(v.time)} / ${formatTime(v.duration)}</span>
-                        <button class="rm-resume-btn" style="background:rgba(255,255,255,0.1); border:none; color:white; cursor:pointer; padding:4px; border-radius:4px; display:flex; align-items:center; justify-content:center; transition:0.2s;" onmouseover="this.style.background='rgba(255,0,0,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" title="Remove from Resume History">
+                        <span class="resume-time" style="font-size:11px; color:rgba(255,255,255,0.6); font-weight:500;"></span>
+                        <button class="rm-resume-btn" style="background:rgba(255,255,255,0.1); border:none; color:white; cursor:pointer; padding:4px; border-radius:4px; display:flex; align-items:center; justify-content:center; transition:0.2s;" title="Remove from Resume History">
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
                         </button>
                     </div>
                 </div>
             `;
+            // Set text safely via textContent
+            item.querySelector('img').src = v.thumbnail || '';
+            item.querySelector('.resume-title').textContent = v.title || '';
+            item.querySelector('.resume-time').textContent = `${formatTime(v.time)} / ${formatTime(v.duration)}`;
+            item.querySelector('.rm-resume-btn').addEventListener('mouseover', function() { this.style.background='rgba(255,0,0,0.5)'; });
+            item.querySelector('.rm-resume-btn').addEventListener('mouseout', function() { this.style.background='rgba(255,255,255,0.1)'; });
 
             item.querySelector('.resume-thumb').addEventListener('click', () => window.open(v.videolink + '&t=' + Math.floor(v.time) + 's', '_blank'));
             item.querySelector('.resume-title').addEventListener('click', () => window.open(v.videolink + '&t=' + Math.floor(v.time) + 's', '_blank'));

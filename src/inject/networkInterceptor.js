@@ -51,7 +51,25 @@
         try {
             const activeFolder = localStorage.getItem('ypp_active_folder');
             const blacklistStr = localStorage.getItem('ypp_keyword_blacklist');
-            const blacklist = blacklistStr ? JSON.parse(blacklistStr) : [];
+
+            // Security: reject oversized values to prevent DoS from a tampered localStorage
+            const MAX_STR_LEN = 50_000;
+            if ((activeFolder && activeFolder.length > MAX_STR_LEN) ||
+                (blacklistStr && blacklistStr.length > MAX_STR_LEN)) {
+                _cachedFilterState = null;
+                return null;
+            }
+
+            let blacklist = [];
+            if (blacklistStr) {
+                const parsed = JSON.parse(blacklistStr);
+                // Validate: must be an array of strings
+                if (Array.isArray(parsed)) {
+                    blacklist = parsed
+                        .filter(k => typeof k === 'string' && k.length <= 200)
+                        .slice(0, 500); // cap at 500 keywords
+                }
+            }
             
             if (!activeFolder && blacklist.length === 0) {
                 _cachedFilterState = null;
@@ -59,7 +77,17 @@
             }
 
             const folderDataStr = localStorage.getItem('ypp_folder_data');
+            // Security: reject oversized folder data
+            if (folderDataStr && folderDataStr.length > MAX_STR_LEN * 2) {
+                _cachedFilterState = null;
+                return null;
+            }
             const folders = folderDataStr ? JSON.parse(folderDataStr) : {};
+            // Validate: folders must be a plain object
+            if (typeof folders !== 'object' || Array.isArray(folders) || folders === null) {
+                _cachedFilterState = null;
+                return null;
+            }
 
             let state = { type: 'none', channels: new Set(), blacklist: blacklist };
 
@@ -70,8 +98,8 @@
                 const activeNames = activeFolder.split(',').map(f => f.trim());
                 let channels = [];
                 for (const f of activeNames) {
-                    if (folders[f]) {
-                        channels.push(...folders[f]);
+                    if (folders[f] && Array.isArray(folders[f])) {
+                        channels.push(...folders[f].filter(ch => typeof ch === 'string'));
                     }
                 }
                 state.type = 'folder';

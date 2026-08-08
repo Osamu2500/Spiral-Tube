@@ -707,6 +707,9 @@ export class ChannelHealthUI {
             let resolved = false;
 
             const listener = (e) => {
+                // Security: only accept responses from the YouTube origin
+                if (e.origin !== 'https://www.youtube.com') return;
+
                 if (e.data && e.data.type === 'YPP_YTCFG_RESPONSE' && e.data.reqId === reqId) {
                     window.removeEventListener('message', listener);
                     if (!resolved) {
@@ -1264,7 +1267,13 @@ export class ChannelHealthUI {
         folderNames.forEach(folder => {
             const item = document.createElement('div');
             item.style.cssText = 'padding: 10px 16px; color: #fff; cursor: pointer; transition: 0.2s; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px;';
-            item.innerHTML = String.raw`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> ${folder}`;
+            // Security: separate static SVG (safe for innerHTML) from user-created folder name
+            // which must be set as textContent to prevent XSS injection.
+            const iconSpan = document.createElement('span');
+            iconSpan.style.flexShrink = '0';
+            iconSpan.innerHTML = String.raw`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`;
+            item.appendChild(iconSpan);
+            item.appendChild(document.createTextNode(' ' + folder)); // textContent — safe
             
             item.addEventListener('mouseover', () => item.style.background = 'rgba(255,255,255,0.1)');
             item.addEventListener('mouseout', () => item.style.background = 'transparent');

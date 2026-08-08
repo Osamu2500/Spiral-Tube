@@ -1,23 +1,6 @@
 
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="neumorphic"] {
 
-  /* Global AI-generated missing variable fallbacks */
-  --sf: var(--ypp-bg-surface, #1e1e1e);
-  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
-  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
-  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
-  --blur: var(--ypp-glass-blur, blur(10px));
-
-  --neu-bg: var(--ypp-bg-base, #e0e5ec);
-  --neu-primary: var(--ypp-accent, #4a90e2);
-  --shadow-out: 5px 5px 10px #b3b9c5, -5px -5px 10px #ffffff;
-  --neu-shadow-out: var(--shadow-out);
-  --shadow-in: inset 5px 5px 10px #b3b9c5, inset -5px -5px 10px #ffffff;
-  --neu-shadow-in: var(--shadow-in);
-  --shadow-out-hover: 7px 7px 14px #b3b9c5, -7px -7px 14px #ffffff;
-
-}
 html[data-ypp-card-style='neumorphic']
   body:not(.ypp-channel-page)
   :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {

@@ -191,10 +191,10 @@ export class HomeOrganizer extends window.YPP.features.BaseFeature {
                 const tags = this.channelTags[channelName];
                 if (tags && tags.length > 0) {
                     btn.classList.add('tagged');
-                    btn.innerHTML = tags[0][0]; // Print the first letter of the first folder name
+                    btn.textContent = tags[0][0]; // First letter — textContent safe
                 } else {
                     btn.classList.remove('tagged');
-                    btn.innerHTML = '#';
+                    btn.textContent = '#';
                 }
             }
         });
@@ -255,7 +255,7 @@ export class HomeOrganizer extends window.YPP.features.BaseFeature {
                 if (thumbnail) {
                     const btn = document.createElement('button');
                     btn.className = 'ypp-tag-btn';
-                    btn.innerHTML = '#';
+                    btn.textContent = '#'; // textContent — safe
                     btn.title = 'Tag Channel';
             
                     const channelName = item.querySelector('#text.ytd-channel-name')?.textContent?.trim() || '';
@@ -263,7 +263,7 @@ export class HomeOrganizer extends window.YPP.features.BaseFeature {
                         const tags = this.channelTags[channelName];
                         if (tags && tags.length > 0) {
                             btn.classList.add('tagged');
-                            btn.innerHTML = tags[0][0]; 
+                            btn.textContent = tags[0][0]; // textContent — safe
                         }
                     }
             
@@ -306,7 +306,16 @@ export class HomeOrganizer extends window.YPP.features.BaseFeature {
                 
                 // Show a checkmark if this channel is already in this folder
                 const isInFolder = this.channelTags[channelName] && this.channelTags[channelName].includes(folderName);
-                item.innerHTML = isInFolder ? `<strong style="color:var(--ypp-accent)">✓</strong> ${folderName}` : folderName;
+                // Security: folder name from user storage — use textContent, not innerHTML
+                if (isInFolder) {
+                    const check = document.createElement('strong');
+                    check.style.color = 'var(--ypp-accent)';
+                    check.textContent = '✓';
+                    item.appendChild(check);
+                    item.appendChild(document.createTextNode(' ' + folderName));
+                } else {
+                    item.textContent = folderName;
+                }
                 
                 item.onclick = async () => {
                     await this.toggleFolderForChannel(channelName, folderName);

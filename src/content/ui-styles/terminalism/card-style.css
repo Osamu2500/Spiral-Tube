@@ -1,15 +1,6 @@
 
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="terminalism"] {
 
-  /* Global AI-generated missing variable fallbacks */
-  --sf: var(--ypp-bg-surface, #1e1e1e);
-  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
-  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
-  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
-  --blur: var(--ypp-glass-blur, blur(10px));
-
-}
 html[data-ypp-card-style='terminalism']
   :is(
     ytd-rich-item-renderer,

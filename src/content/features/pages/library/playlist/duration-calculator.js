@@ -24,6 +24,11 @@ export class PlaylistDuration extends (
       const reqId = Math.random().toString(36).slice(2);
       let resolved = false;
       const listener = (e) => {
+        // Security: only accept responses from the YouTube origin.
+        // A malicious cross-origin page could otherwise inject a fake config
+        // with a crafted apiKey or session context.
+        if (e.origin !== 'https://www.youtube.com') return;
+
         if (e.data && e.data.type === 'YPP_YTCFG_RESPONSE' && e.data.reqId === reqId) {
           window.removeEventListener('message', listener);
           if (!resolved) {
@@ -47,7 +52,8 @@ export class PlaylistDuration extends (
         document.documentElement.appendChild(script);
       }
       setTimeout(() => {
-        window.postMessage({ type: 'YPP_YTCFG_REQUEST', reqId: reqId }, '*');
+        // Target YouTube origin specifically — matches what ytcfg-bridge.js expects
+        window.postMessage({ type: 'YPP_YTCFG_REQUEST', reqId: reqId }, 'https://www.youtube.com');
       }, 50);
     });
   }
@@ -259,7 +265,7 @@ export class PlaylistDuration extends (
               totalPlaylistVideos
             );
 
-            // Give CPU time to breath
+            // Give CPU time to breathe
             await new Promise((r) => setTimeout(r, 250));
           } catch (fetchErr) {
             break;
@@ -474,6 +480,7 @@ export class PlaylistDuration extends (
             `;
     }
 
+    // Note: videoCount, notCounted, totalPlaylistVideos are all integers — safe for innerHTML
     this.contentDiv.innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
                 <div>

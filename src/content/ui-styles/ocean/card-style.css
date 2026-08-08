@@ -1,20 +1,6 @@
 
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="ocean"] {
 
-  /* Global AI-generated missing variable fallbacks */
-  --sf: var(--ypp-bg-surface, #1e1e1e);
-  --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));
-  --shadow-hover: var(--ypp-shadow-float, 0 8px 15px rgba(0,0,0,0.2));
-  --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
-  --blur: var(--ypp-glass-blur, blur(10px));
-
-  --ocean-primary: var(--ypp-accent, #00b4d8);
-  --ocean-secondary: var(--ypp-text-secondary, #90e0ef);
-  --ocean-border: var(--ypp-glass-border, 1px solid rgba(0,180,216,0.2));
-  --ocean-border-hover: var(--ypp-glass-highlight, 1px solid rgba(0,180,216,0.4));
-
-}
 html[data-ypp-card-style='ocean']
   :is(
     ytd-rich-item-renderer,

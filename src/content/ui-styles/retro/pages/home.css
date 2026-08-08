@@ -1,70 +1,8 @@
-#frosted-glass.with-chipbar.ytd-app {
-  background: none !important;
-}
-#guide-content.ytd-app {
-  background: transparent;
-}
-#guide-wrapper.ytd-app {
-  background: var(--sf) !important;
-  border-radius: 0 !important;
-  border: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce), background var(--bounce) !important;
-}
-ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
-}
-yt-icon-button#guide-button {
-  border-radius: 0 !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-yt-icon-button#guide-button:hover {
-  background: var(--sf) !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.1);
-}
-yt-icon-button#guide-button:active {
-  transform: scale(0.95) !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-dark) !important;
-  border-left: 2px solid var(--retro-border-dark) !important;
-  border-bottom: 2px solid var(--retro-border-light) !important;
-  border-right: 2px solid var(--retro-border-light) !important;
-}
 /* src/content/themes/ui-styles/retro/pages/home.css */
-#description.ytd-watch-metadata,
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  margin: 16px 16px 0 0 !important;
-  border-radius: 0 !important;
-  background: var(--sf) !important;
-  border: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-}
-ytd-guide-renderer #sections {
-  margin-left: 8px !important;
-}
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-ytd-browse[page-subtype=home] #chips {
+
+/* Chips Container */
+html[data-ypp-ui-style="retro"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="retro"] ytd-browse[page-subtype=home] #chips {
   margin: 16px 0 0 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
@@ -72,162 +10,98 @@ ytd-browse[page-subtype=home] #chips {
   border-left: 2px solid var(--retro-border-dark) !important;
   border-bottom: 2px solid var(--retro-border-light) !important;
   border-right: 2px solid var(--retro-border-light) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
   background: var(--sf) !important;
   border: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
-  transition: box-shadow var(--bounce) !important;
+  transition: none !important;
+  padding: 4px 10px !important;
 }
-.yt-chip-shape {
-  background-color: transparent !important;
+
+html[data-ypp-ui-style="retro"] ytd-feed-filter-chip-bar-renderer {
+  background: transparent !important;
+  border: none !important;
 }
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+
+/* Individual Chips */
+html[data-ypp-ui-style="retro"] .yt-chip-shape,
+html[data-ypp-ui-style="retro"] .ytChipShapeChip,
+html[data-ypp-ui-style="retro"] yt-chip-cloud-chip-renderer {
+  border-radius: 0 !important;
+  background: #c0c0c0 !important;
+  box-shadow: var(--win95-raise) !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 12px !important;
+  transition: none !important;
+  border: none !important;
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="retro"] .yt-chip-shape:hover,
+html[data-ypp-ui-style="retro"] .ytChipShapeChip:hover,
+html[data-ypp-ui-style="retro"] yt-chip-cloud-chip-renderer:hover {
+  background: #d0d0d0 !important;
+  transform: none !important;
+  box-shadow: var(--win95-raise) !important;
+}
+
+html[data-ypp-ui-style="retro"] .yt-chip-shape[aria-selected=true],
+html[data-ypp-ui-style="retro"] .ytChipShapeChip[aria-selected=true],
+html[data-ypp-ui-style="retro"] yt-chip-cloud-chip-renderer[selected] {
+  background: #a0a0a0 !important;
+  color: #000 !important;
+  box-shadow: var(--win95-sink) !important;
+}
+
+/* Sidebar Navigation (Guide) */
+html[data-ypp-ui-style="retro"] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+
+html[data-ypp-ui-style="retro"] ytd-guide-renderer #sections {
+  margin-left: 8px !important;
+}
+
+html[data-ypp-ui-style="retro"] ytd-guide-entry-renderer,
+html[data-ypp-ui-style="retro"] ytd-mini-guide-entry-renderer {
+  border-radius: 0 !important;
+  transition: none !important;
+}
+
+html[data-ypp-ui-style="retro"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce),
-    border-radius var(--bounce) !important;
+  transition: none !important;
 }
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
-  background: var(--sf) !important;
+
+html[data-ypp-ui-style="retro"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="retro"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
+  background: #000080 !important;
+  color: #fff !important;
+  box-shadow: none !important;
   border-radius: 0 !important;
   padding: 0px !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.05);
+  transform: none !important;
 }
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
-  transform: scale(0.98);
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-dark) !important;
-  border-left: 2px solid var(--retro-border-dark) !important;
-  border-bottom: 2px solid var(--retro-border-light) !important;
-  border-right: 2px solid var(--retro-border-light) !important;
+
+html[data-ypp-ui-style="retro"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover *,
+html[data-ypp-ui-style="retro"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus * {
+  color: #fff !important;
+  fill: #fff !important;
 }
-#sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child {
-  padding: 10px 3px !important;
-}
-ytd-guide-entry-renderer {
-  border-radius: 0 !important;
-}
-ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 0 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-}
-.ytChipShapeChip {
-  border-radius: 0 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-}
-iron-selector.yt-chip-cloud-renderer {
-  padding-left: 5px !important;
-}
-.ytContextualSheetLayoutContentContainer,
-.ytChipBarViewModelHost,
-.immersive-header-content.ytd-playlist-header-renderer {
-  overflow: visible !important;
-}
-ytd-settings-sidebar-renderer {
+
+html[data-ypp-ui-style="retro"] ytd-settings-sidebar-renderer {
   background: var(--sf) !important;
   border-radius: 0 !important;
-  box-shadow: var(--shadow-base) !important;
+  box-shadow: none !important;
   padding: 15px !important;
   border: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
-}
-.yt-chip-shape {
-  border-radius: 0 !important;
-  background: #c0c0c0 !important;
-  box-shadow: var(--win95-raise) !important;
-  font-family: "Courier New", monospace !important;
-  font-size: 11px !important;
-  transition: none !important;
-}
-.yt-chip-shape[aria-selected=true] {
-  background: #000080 !important;
-  color: #fff !important;
-  box-shadow: var(--win95-sink) !important;
-}
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  border-radius: 0 !important;
-  transition: none !important;
-}
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: #000080 !important;
-  color: #fff !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  transform: none !important;
-}
-ytd-feed-filter-chip-bar-renderer {
-  background: transparent !important;
-  border: none !important;
-}
-yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius, 8px) !important;
-  border: var(--chip-border, 1px solid transparent) !important;
-  background: var(--chip-bg, rgba(255,255,255,0.1)) !important;
-  box-shadow: var(--chip-shadow, none) !important;
-  transition: all 0.2s ease !important;
-}
-yt-chip-cloud-chip-renderer:hover {
-  background: var(--chip-bg-hover, rgba(255,255,255,0.2)) !important;
-}
-yt-chip-cloud-chip-renderer[selected] {
-  background: var(--chip-bg-selected, rgba(255,255,255,0.9)) !important;
-  color: var(--chip-color-selected, black) !important;
-  border: var(--chip-border-selected, 1px solid transparent) !important;
-}
-yt-chip-cloud-chip-renderer {
-  --chip-radius: 0px;
-  --chip-border: 2px solid;
-  border-color: #ffffff #808080 #808080 #ffffff !important;
-  --chip-bg: #c0c0c0;
-  color: black !important;
-}
-yt-chip-cloud-chip-renderer[selected] {
-  border-color: #808080 #ffffff #ffffff #808080 !important;
-  --chip-bg-selected: #a0a0a0;
-  --chip-color-selected: black;
-}
-#ypp-pl-root .ypp-pl-sidebar {
-  background: var(--sf) !important;
-  border: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
-  box-shadow: var(--shadow-base) !important;
 }

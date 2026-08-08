@@ -97,7 +97,7 @@ export const getPopupSchema = (t) => [
                 title: t('playback_automation'),
                 icon: ICONS.magicWand,
                 items: [
-                    { type:'toggle', id:'netflixSubtitles', label: t('player_netflix_subtitles'), icon:ICONS.subtitles },
+                    { type:'toggle', id:'netflixSubtitles', label: t('player_netflix_subtitles'), desc: 'Style video subtitles with a clean Netflix-inspired font and drop shadow for better readability', icon:ICONS.subtitles },
                     { type:'toggle', id:'autoCinema',       label: t('auto_cinema'),        desc: t('expand_player_on_load'),      icon:ICONS.autoCinema },
                     { type:'toggle', id:'autoPiP',          label: t('auto_pip'),           desc: t('auto_pip_desc'),              icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
                     { type:'toggle', id:'enableMiniPlayer', label: t('enable_miniplayer'),  desc: t('enable_miniplayer_desc'),     icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z') },
@@ -121,7 +121,6 @@ export const getPopupSchema = (t) => [
 
 
                     { type:'select', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, options:[{value:'off',label:t('reduce_animations_off')},{value:'balanced',label:t('reduce_animations_balanced')},{value:'minimal',label:t('reduce_animations_minimal')}] },
-                    { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:ICONS.pinVideo },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
                 ]
             },
@@ -299,7 +298,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideMembersOnly',   label: t('hide_members_only'), desc: t('hide_members_only_desc'), icon:ICONS.memberships },
                     { type:'toggle', id:'hideFeed',       label: t('hide_homepage_feed'),  desc: t('blank_homepage'), icon:ICONS.home },
                     { type:'toggle', id:'hideExploreTopics', label: t('hide_topics_bar'),   desc: t('remove_category_chips'),    icon:ICONS.cinematic },
-                    { type:'toggle', id:'hideTrending',   label: t('hide_trending_explore'),icon:ICONS.explore },
+                    { type:'toggle', id:'hideTrending',   label: t('hide_trending_explore'), desc: 'Remove the Trending and Explore sections from the YouTube homepage and navigation bar', icon:ICONS.explore },
                     { type:'toggle', id:'hideMixes',         label: t('hide_mixes'),        desc: t('remove_infinite_mixes'),    icon:ICONS.mixes },
                     { type:'toggle', id:'hidePlaylists',     label: t('hide_playlists'),    desc: t('remove_playlist_cards'),    icon:ICONS.playlists },
                     { type:'toggle', id:'hidePodcasts',      label: t('hide_podcasts'),     desc: t('remove_podcast_cards'),     icon:ICONS.podcasts },
@@ -327,14 +326,14 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideChannelBar',   label: t('hide_channel_bar'),   desc: t('hide_channel_bar_desc'),    icon:ICONS.channelBar },
                     { type:'toggle', id:'hideVideoDescription', label: t('hide_video_description'), desc: t('hide_video_description_desc'), icon:ICONS.descHidden },
                     { type:'toggle', id:'hideActionButtons', label: t('hide_action_buttons'), desc: t('hide_action_buttons_desc'), icon:ICONS.like },
-                    { type:'toggle', id:'hideComments',   label: t('hide_comments'),       icon:ICONS.uiComponents },
+                    { type:'toggle', id:'hideComments',   label: t('hide_comments'),       desc: 'Hide the entire comments section below the video player on watch pages', icon:ICONS.uiComponents },
                     { type:'toggle', id:'hideRelated',    label: t('hide_related_feed'),   desc: t('hide_sidebar_videos'), icon:P('M3 3h18v18H3zM14 8h6M14 12h6M14 16h6') },
-                    { type:'toggle', id:'hideLiveChat',   label: t('hide_live_chat'),      icon:ICONS.uiComponents },
-                    { type:'toggle', id:'hideEndScreens', label: t('hide_end_screens'),    icon:P('M3 3h18v18H3zM3 9h18M9 21V9') },
-                    { type:'toggle', id:'hideCards',      label: t('hide_video_cards'),    icon:ICONS.cards },
-                    { type:'toggle', id:'hideAnnotations',label: t('hide_annotations'),    icon:ICONS.uiComponents },
-                    { type:'toggle', id:'hideMerch',      label: t('hide_merch_offers'),   icon:ICONS.merch },
-                    { type:'toggle', id:'hideFundraiser', label: t('hide_donations'),      icon:ICONS.fundraiser },
+                    { type:'toggle', id:'hideLiveChat',   label: t('hide_live_chat'),      desc: 'Hide the live chat panel during streams so you can focus on the video', icon:ICONS.uiComponents },
+                    { type:'toggle', id:'hideEndScreens', label: t('hide_end_screens'),    desc: 'Remove video end-screen overlays that recommend other videos in the final seconds', icon:P('M3 3h18v18H3zM3 9h18M9 21V9') },
+                    { type:'toggle', id:'hideCards',      label: t('hide_video_cards'),    desc: 'Remove interactive info cards that pop up at the top-right corner during video playback', icon:ICONS.cards },
+                    { type:'toggle', id:'hideAnnotations',label: t('hide_annotations'),    desc: 'Remove legacy annotation overlays and interactive cards that appear on top of the video', icon:ICONS.uiComponents },
+                    { type:'toggle', id:'hideMerch',      label: t('hide_merch_offers'),   desc: 'Remove the merch shelf and product placement panels that appear below the video description', icon:ICONS.merch },
+                    { type:'toggle', id:'hideFundraiser', label: t('hide_donations'),      desc: 'Remove Super Thanks, fundraiser banners, and donation prompts from the watch page', icon:ICONS.fundraiser },
                     { type:'toggle', id:'commentFilter',  label: t('comment_spam_filter'), desc: t('hide_suspected_bots'),        icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
                     { type:'select', id:'commentFilterAction', class:'span-2', label: t('spam_action'), desc: t('what_to_do_with_spam'), icon:ICONS.filterMode, options: [{value:'dim',label: t('dim_hover_to_reveal')},{value:'hide',label: t('hide_completely')}] },
                     { type:'toggle', id:'hideThanksDonate', label: t('hide_thanks_donate'), desc: t('hide_thanks_donate_desc'), icon:ICONS.fundraiser },
@@ -520,7 +519,7 @@ export const getPopupSchema = (t) => [
             {
                 title: t('watch_page_hotkeys'),
                 items: [
-                    { type:'toggle', id:'keyboardShortcuts', class:'span-4', label: t('enable_hotkeys'), icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
+                    { type:'toggle', id:'keyboardShortcuts', class:'span-4', label: t('enable_hotkeys'), desc: 'Enable custom keyboard shortcuts for controlling playback speed, skipping, volume, and more on the watch page', icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
                     { type:'custom', id:'advanced_shortcuts_manager', slot:'advanced_shortcuts_manager' },
                 ]
             }

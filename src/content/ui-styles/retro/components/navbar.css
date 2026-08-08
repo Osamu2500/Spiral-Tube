@@ -1,112 +1,96 @@
 /* src/content/themes/ui-styles/retro/components/navbar.css */
-ytd-app,
-ytd-masthead,
-#page-manager.ytd-app,
-#content.ytd-app {
+
+html[data-ypp-ui-style="retro"] ytd-app,
+html[data-ypp-ui-style="retro"] ytd-masthead,
+html[data-ypp-ui-style="retro"] #page-manager.ytd-app,
+html[data-ypp-ui-style="retro"] #content.ytd-app {
   background: transparent !important;
 }
-#masthead-container {
+
+html[data-ypp-ui-style="retro"] #masthead-container,
+html[data-ypp-ui-style="retro"] ytd-masthead #background {
   background: transparent !important;
   background-color: transparent !important;
 }
-ytd-masthead #container {
+
+html[data-ypp-ui-style="retro"] ytd-masthead #container {
   border-radius: 0 !important;
-  background: var(--retro-primary) !important;
+  background: var(--retro-title-bar) !important;
   margin: 1px !important;
   box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-dark) !important;
-  border-left: 2px solid var(--retro-border-dark) !important;
-  border-bottom: 2px solid var(--retro-border-light) !important;
-  border-right: 2px solid var(--retro-border-light) !important;
   border: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
 }
-#contents.ytd-page-manager {
+
+html[data-ypp-ui-style="retro"] #contents.ytd-page-manager {
   margin-top: 0;
   margin-left: 16px;
 }
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+
+html[data-ypp-ui-style="retro"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-style="retro"] .ypp-nav-btn,
+html[data-ypp-ui-style="retro"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-style="retro"] ytd-topbar-menu-button-renderer.ytd-masthead yt-icon-button,
+html[data-ypp-ui-style="retro"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="retro"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="retro"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: 0 !important;
   background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#voice-search-button.ytd-masthead:hover,
-.ypp-nav-btn:hover,
-ytd-topbar-menu-button-renderer.ytd-masthead:hover,
-#trailing-button.ytd-playlist-panel-renderer:hover,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
   box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.1);
+  border: 2px solid transparent !important;
+  transition: transform 0.1s ease !important;
 }
-ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
-  top: 75px !important;
-  left: 8px !important;
-}
-tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
-  background: transparent !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 0 !important;
+
+html[data-ypp-ui-style="retro"] #voice-search-button.ytd-masthead:hover,
+html[data-ypp-ui-style="retro"] .ypp-nav-btn:hover,
+html[data-ypp-ui-style="retro"] yt-icon-button.ytd-masthead:hover,
+html[data-ypp-ui-style="retro"] ytd-topbar-menu-button-renderer.ytd-masthead yt-icon-button:hover,
+html[data-ypp-ui-style="retro"] #trailing-button.ytd-playlist-panel-renderer:hover,
+html[data-ypp-ui-style="retro"] ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-ui-style="retro"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   background: var(--sf) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.06);
+  transform: none !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: none !important;
+
+html[data-ypp-ui-style="retro"] #voice-search-button.ytd-masthead:active,
+html[data-ypp-ui-style="retro"] .ypp-nav-btn:active,
+html[data-ypp-ui-style="retro"] yt-icon-button.ytd-masthead:active,
+html[data-ypp-ui-style="retro"] ytd-topbar-menu-button-renderer.ytd-masthead yt-icon-button:active,
+html[data-ypp-ui-style="retro"] #trailing-button.ytd-playlist-panel-renderer:active,
+html[data-ypp-ui-style="retro"] ytd-menu-renderer .ytd-menu-renderer[style-target=button]:active,
+html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:active,
+html[data-ypp-ui-style="retro"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:active {
+  background: var(--sf) !important;
   border-top: 2px solid var(--retro-border-dark) !important;
   border-left: 2px solid var(--retro-border-dark) !important;
   border-bottom: 2px solid var(--retro-border-light) !important;
   border-right: 2px solid var(--retro-border-light) !important;
+  transform: none !important;
 }
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+
+html[data-ypp-ui-style="retro"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
   border-radius: 0 !important;
-  padding: 4px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   background: var(--sf) !important;
-  box-shadow: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.1);
+  box-shadow: none !important;
+  transition: none !important;
 }
-ytd-masthead #container {
-  background: var(--retro-title-bar) !important;
-  border-radius: 0 !important;
-  box-shadow: var(--win95-flat) !important;
-  border: 2px solid #000 !important;
+
+html[data-ypp-ui-style="retro"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
+  border-top: 2px solid var(--retro-border-dark) !important;
+  border-left: 2px solid var(--retro-border-dark) !important;
+  border-bottom: 2px solid var(--retro-border-light) !important;
+  border-right: 2px solid var(--retro-border-light) !important;
 }

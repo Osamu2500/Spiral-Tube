@@ -126,9 +126,10 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
             }
 
             /* Action Buttons under player (Like, Share, etc.) */
-            html.ypp-glass-player-active ytd-watch-metadata #actions ytd-button-renderer button,
-            html.ypp-glass-player-active ytd-watch-metadata #actions ytd-toggle-button-renderer button,
-            html.ypp-glass-player-active ytd-watch-metadata #actions yt-button-shape button {
+            html:not([data-ypp-ui-style]).ypp-glass-player-active ytd-watch-metadata #actions ytd-button-renderer button,
+            html:not([data-ypp-ui-style]).ypp-glass-player-active ytd-watch-metadata #actions ytd-toggle-button-renderer button,
+            html:not([data-ypp-ui-style]).ypp-glass-player-active ytd-watch-metadata #actions ytd-download-button-renderer button,
+            html:not([data-ypp-ui-style]).ypp-glass-player-active ytd-watch-metadata #actions yt-button-shape button {
                 background: rgba(255, 255, 255, 0.08) !important;
                 border: 1px solid rgba(255, 255, 255, 0.05) !important;
                 backdrop-filter: blur(8px) !important;
@@ -136,10 +137,55 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
                 transition: all 0.2s ease !important;
             }
             
-            html.ypp-glass-player-active ytd-watch-metadata #actions yt-button-shape button:hover {
+            html:not([data-ypp-ui-style]).ypp-glass-player-active ytd-watch-metadata #actions yt-button-shape button:hover {
                 background: rgba(255, 255, 255, 0.15) !important;
                 transform: translateY(-1px) !important;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+            }
+            
+            /* Watch Metadata Padding & Alignment Fixes */
+            html ytd-watch-metadata {
+                margin-top: 8px !important;
+            }
+            html ytd-watch-metadata #top-row {
+                margin-top: 8px !important;
+            }
+            html ytd-watch-metadata #bottom-row {
+                margin-top: 8px !important;
+            }
+            
+            /* Download button spacing & native rendering fix */
+            html ytd-watch-metadata #actions ytd-download-button-renderer {
+                margin-left: 0px !important;
+            }
+            html ytd-watch-metadata #actions ytd-download-button-renderer yt-button-shape button {
+                background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
+                color: var(--yt-spec-text-primary, #fff) !important;
+                border-radius: 18px !important;
+                padding: 0 16px !important;
+                height: 36px !important;
+                border: none !important;
+            }
+            html ytd-watch-metadata #actions ytd-download-button-renderer yt-button-shape button yt-icon {
+                fill: var(--yt-spec-text-primary, #fff) !important;
+                color: var(--yt-spec-text-primary, #fff) !important;
+            }
+            html ytd-watch-metadata #actions ytd-download-button-renderer yt-button-shape button:hover {
+                background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important;
+            }
+            
+            /* AI Badge alignment inside actions */
+            html #actions .ytd-badge-supported-renderer, 
+            html #actions ytd-badge-supported-renderer {
+                margin-right: 8px !important;
+                display: flex !important;
+                align-items: center !important;
+                height: 36px !important; /* align with buttons */
+                border-radius: 18px !important;
+                background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
+                padding: 0 12px !important;
+                box-sizing: border-box !important;
+                order: -1 !important;
             }
 
             /* ========================================================
@@ -226,9 +272,34 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
             document.documentElement.classList.remove('ypp-glass-player-active');
         }
         
-        // Track video ratio for progress bar alignment (Unconditional on watch page)
-        this._startTrackingVideoRatio();
+        // Move AI Badge to Actions
+        this._moveAIBadge();
+    }
 
+    _moveAIBadge() {
+        // Clear existing interval if any
+        if (this._badgeInterval) {
+            clearInterval(this._badgeInterval);
+        }
+        
+        // Attempt to find and move the AI badge periodically
+        this._badgeInterval = setInterval(() => {
+            const watchMetadata = document.querySelector('ytd-watch-metadata');
+            if (!watchMetadata) return;
+            
+            // Native AI Badge is often rendered right under the title or top-row
+            // It has class .ytd-badge-supported-renderer
+            // We need to make sure we don't grab generic badges (like "Premium"), so we look for "AI" or specific parent
+            const badges = Array.from(watchMetadata.querySelectorAll('ytd-badge-supported-renderer'));
+            const aiBadge = badges.find(b => b.textContent.includes('AI') && b.closest('#actions') === null);
+            
+            const actionsContainer = watchMetadata.querySelector('#actions-inner') || watchMetadata.querySelector('#actions');
+            
+            if (aiBadge && actionsContainer) {
+                // Prepend it to the left of the action buttons
+                actionsContainer.insertBefore(aiBadge, actionsContainer.firstChild);
+            }
+        }, 1000);
     }
 
     /**
@@ -236,15 +307,10 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
      */
     _cleanup() {
         document.documentElement.classList.remove('ypp-glass-player-active');
-        this._stopTrackingVideoRatio();
-    }
-
-    _startTrackingVideoRatio() {
-        // Removed: Letterbox tracking causes player controls to overlap and breaks autohide.
-    }
-
-    _stopTrackingVideoRatio() {
-        // Removed.
+        if (this._badgeInterval) {
+            clearInterval(this._badgeInterval);
+            this._badgeInterval = null;
+        }
     }
 }
 

@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Security: Content Security Policy — blocks inline scripts and external sources -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://yt3.ggpht.com https://yt3.googleusercontent.com; object-src 'none';" />
     <title>Spiral Tube</title>
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="popup.css" />
@@ -261,7 +263,6 @@
                 <div class="info">
                   <span class="name">
                     <span data-i18n="saveSupremeUI">Enhanced Save Popup</span>
-                    <span class="new-feature-badge">NEW</span>
                   </span>
                   <span class="desc" data-i18n="saveSupremeUI_desc">Modern glassmorphic popup when saving videos to playlists</span>
                 </div>
@@ -609,23 +610,23 @@
             <div class="ypp-inline-170 card-group">
               <div class="ypp-inline-171 feature-grid">
                 <div class="ypp-inline-172 toggle-card">
-                  <div class="info"><span class="name" data-i18n="shorts">Shorts</span></div>
+                  <div class="info"><span class="name" data-i18n="shorts">Shorts</span><span class="desc">Show or hide the Shorts button in YouTube's top navigation bar</span></div>
                   <label class="toggle"><input type="checkbox" id="navShorts" aria-label="Nav Shorts" title="Nav Shorts"><span class="slider"></span></label>
                 </div>
                 <div class="ypp-inline-173 toggle-card">
-                  <div class="info"><span class="name" data-i18n="subs">Subs</span></div>
+                  <div class="info"><span class="name" data-i18n="subs">Subs</span><span class="desc">Show or hide the Subscriptions button in YouTube's top navigation bar</span></div>
                   <label class="toggle"><input type="checkbox" id="navSubscriptions" aria-label="Nav Subscriptions" title="Nav Subscriptions"><span class="slider"></span></label>
                 </div>
                 <div class="ypp-inline-174 toggle-card">
-                  <div class="info"><span class="name" data-i18n="history">History</span></div>
+                  <div class="info"><span class="name" data-i18n="history">History</span><span class="desc">Show or hide the History button in YouTube's top navigation bar</span></div>
                   <label class="toggle"><input type="checkbox" id="navHistory" aria-label="Nav History" title="Nav History"><span class="slider"></span></label>
                 </div>
                 <div class="ypp-inline-175 toggle-card">
-                  <div class="info"><span class="name" data-i18n="later">Later</span></div>
+                  <div class="info"><span class="name" data-i18n="later">Later</span><span class="desc">Show or hide the Watch Later button in YouTube's top navigation bar</span></div>
                   <label class="toggle"><input type="checkbox" id="navWatchLater" aria-label="Nav Watch Later" title="Nav Watch Later"><span class="slider"></span></label>
                 </div>
                 <div class="ypp-inline-176 toggle-card">
-                  <div class="info"><span class="name" data-i18n="playlists">Playlists</span></div>
+                  <div class="info"><span class="name" data-i18n="playlists">Playlists</span><span class="desc">Show or hide the Playlists button in YouTube's top navigation bar</span></div>
                   <label class="toggle"><input type="checkbox" id="navPlaylists" aria-label="Nav Playlists" title="Nav Playlists"><span class="slider"></span></label>
                 </div>
               </div>
@@ -1176,11 +1177,21 @@
 
     <script src="anime.min.js"></script>
     <script>
+        // Security: use textContent only — error messages must never be rendered as HTML
+        // since they can contain attacker-controlled strings.
         window.addEventListener('error', (e) => {
-            document.body.innerHTML = `<div class="ypp-inline-392">Global Error: ${e.message}<br>File: ${e.filename}<br>Line: ${e.lineno}</div>`;
+            const div = document.createElement('div');
+            div.className = 'ypp-inline-392';
+            div.textContent = `Global Error: ${e.message || ''} | File: ${e.filename || ''} | Line: ${e.lineno || ''}`;
+            document.body.innerHTML = '';
+            document.body.appendChild(div);
         });
         window.addEventListener('unhandledrejection', (e) => {
-            document.body.innerHTML = `<div class="ypp-inline-393">Promise Rejection: ${e.reason}</div>`;
+            const div = document.createElement('div');
+            div.className = 'ypp-inline-393';
+            div.textContent = `Promise Rejection: ${String(e.reason || '')}`;
+            document.body.innerHTML = '';
+            document.body.appendChild(div);
         });
     </script>
     <script type="module" src="popup-main.js"></script>

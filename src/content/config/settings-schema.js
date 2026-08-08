@@ -79,6 +79,7 @@ window.YPP.SettingsSchema = {
         enableAnimations:    { type: 'boolean', default: true },
         enableThemeEffects:  { type: 'boolean', default: true },
         reducedMotion:       { type: 'boolean', default: false },
+        reduceAnimations:    { type: 'string',  default: 'off', values: ['off', 'balanced', 'minimal'] },
         cardStyle:           { type: 'string',  default: 'glass', values: ['aurora', 'autumn', 'bento', 'compact', 'crystal-glass', 'cyberpunk', 'elevated', 'flat', 'folder', 'frosted', 'frutiger-aero', 'glass', 'glassmorphism', 'harry-potter', 'holographic', 'immersive-glass', 'liquid-glass', 'material', 'maximalism', 'minimalism', 'minimalist', 'nature', 'neon', 'neumorphic', 'ocean', 'polaroid', 'retro', 'skeuomorphic', 'spring', 'summer', 'terminalism', 'vintage', 'winter'] },
         customScrollbar:     { type: 'boolean', default: false },
         grayscaleThumbnails: { type: 'boolean', default: false },

@@ -307,7 +307,7 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
         }
 
         try {
-            const url = chrome.runtime.getURL(`src/content/card-styles/${styleId}.css`);
+            const url = chrome.runtime.getURL(`src/content/ui-styles/${styleId}/card-style.css`);
             const response = await fetch(url);
             const cssText = await response.text();
 

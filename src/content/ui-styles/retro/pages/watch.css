@@ -1,74 +1,107 @@
-.ypp-eq-preset-btn,
-.ypp-cinema-tab-btn,
-.ypp-vcp-compare-toggle {
+/* src/content/themes/ui-styles/retro/pages/watch.css */
+
+/* Extension Tools */
+html[data-ypp-ui-style="retro"] .ypp-eq-preset-btn,
+html[data-ypp-ui-style="retro"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-style="retro"] .ypp-vcp-compare-toggle {
   background: rgba(128, 128, 128, 0.05) !important;
   border: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
-  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: 0 !important;
+  transition: none !important;
 }
-.ypp-eq-preset-btn:hover,
-.ypp-cinema-tab-btn:hover,
-.ypp-vcp-compare-toggle:hover {
+
+html[data-ypp-ui-style="retro"] .ypp-eq-preset-btn:active,
+html[data-ypp-ui-style="retro"] .ypp-cinema-tab-btn:active,
+html[data-ypp-ui-style="retro"] .ypp-vcp-compare-toggle:active {
   background: rgba(128, 128, 128, 0.15) !important;
-  transform: scale(1.05) !important;
+  border-top: 2px solid var(--retro-border-dark) !important;
+  border-left: 2px solid var(--retro-border-dark) !important;
+  border-bottom: 2px solid var(--retro-border-light) !important;
+  border-right: 2px solid var(--retro-border-light) !important;
 }
-#ypp-global-player-bar,
-.ypp-global-bar {
+
+html[data-ypp-ui-style="retro"] #ypp-global-player-bar,
+html[data-ypp-ui-style="retro"] .ypp-global-bar {
   background: var(--sf) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: var(--shadow-base) !important;
-}
-#ypp-eq-panel,
-#ypp-cinema-panel {
-  background: var(--sf) !important;
+  border-radius: 0 !important;
   border: none !important;
   border-top: 2px solid var(--retro-border-light) !important;
   border-left: 2px solid var(--retro-border-light) !important;
   border-bottom: 2px solid var(--retro-border-dark) !important;
   border-right: 2px solid var(--retro-border-dark) !important;
-  border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
-  box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-style="retro"] #ypp-eq-panel,
+html[data-ypp-ui-style="retro"] #ypp-cinema-panel {
+  background: var(--sf) !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-top: 2px solid var(--retro-border-light) !important;
+  border-left: 2px solid var(--retro-border-light) !important;
+  border-bottom: 2px solid var(--retro-border-dark) !important;
+  border-right: 2px solid var(--retro-border-dark) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-ui-style="retro"] .ypp-eq-canvas {
+  background: #fff !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: var(--win95-sink) !important;
+}
+
+/* YouTube Watch Page Native Elements */
+
+/* Description Box */
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description {
+  border-radius: 0 !important;
+  background: #fff !important;
+  border: none !important;
+  box-shadow: var(--win95-sink) !important;
+  color: #000 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description * {
+  color: #000 !important;
+}
+
+html[data-ypp-ui-style="retro"] ytd-watch-metadata #description:hover {
+  background: #fffff0 !important;
+}
+
+/* Channel Owner */
+html[data-ypp-ui-style="retro"] ytd-video-owner-renderer {
   border-radius: 0 !important;
 }
-.ypp-eq-header,
-.ypp-eq-footer,
-.ypp-intensity-section,
-.ypp-adjust-card-header,
-#ypp-cinema-panel > div:first-child,
-#ypp-cinema-panel > div:last-child {
+
+html[data-ypp-ui-style="retro"] #owner-sub-count,
+html[data-ypp-ui-style="retro"] #channel-name a {
+  color: #000 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+html[data-ypp-ui-style="retro"] yt-img-shadow#avatar,
+html[data-ypp-ui-style="retro"] yt-img-shadow#avatar img {
+  border-radius: 0 !important;
+  border: 1px solid #000 !important;
+}
+
+/* Related Videos (Sidebar) */
+html[data-ypp-ui-style="retro"] ytd-compact-video-renderer {
+  border-radius: 0 !important;
   background: transparent !important;
-  border-bottom-color: rgba(128, 128, 128, 0.1) !important;
-  border-top-color: rgba(128, 128, 128, 0.1) !important;
-}
-.ypp-global-player-bar,
-#ypp-global-player-bar {
-  background: var(--sf) !important;
   border: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
-.ypp-eq-hslider,
-.ypp-vcp-slider,
-.ypp-eq-vslider {
-  background: rgba(128, 128, 128, 0.15) !important;
-  border: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
+html[data-ypp-ui-style="retro"] ytd-compact-video-renderer:hover {
+  background: #000080 !important; /* Windows 95 blue selection */
 }
-.ypp-eq-canvas {
-  background: rgba(128, 128, 128, 0.03) !important;
-  border: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  border-radius: 0 !important;
+html[data-ypp-ui-style="retro"] ytd-compact-video-renderer:hover * {
+  color: #fff !important;
 }

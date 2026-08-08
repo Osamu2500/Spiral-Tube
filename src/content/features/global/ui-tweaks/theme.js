@@ -25,7 +25,11 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
     }
 
     getConfigKey() {
-        return 'premiumTheme';
+        // Return null so ThemeManager is always active.
+        // The premiumTheme toggle is handled inside _toggleTheme() directly.
+        // UI styles, card styles, accent colors etc. are independent of premiumTheme
+        // and must always run regardless of that toggle.
+        return null;
     }
 
     /**
@@ -243,6 +247,8 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         // If no UI style or 'default', remove any previously injected style
         if (!uiStyleKey || uiStyleKey === 'default') {
             if (link) link.remove();
+            let fallbackLink = document.getElementById('ypp-core-ui-fallback-css');
+            if (fallbackLink) fallbackLink.remove();
             document.documentElement.removeAttribute('data-ypp-ui-style');
             this._removeFrutigerBubbles();
             return;
@@ -253,18 +259,35 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             return;
         }
 
+        const fallbackUrl = chrome.runtime.getURL(`src/content/ui-styles/shared/core-ui-fallback.css`);
         const cssUrl = chrome.runtime.getURL(`src/content/ui-styles/${uiStyleKey}/bundle.css`);
 
-        if (!link) {
-            link = document.createElement('link');
-            link.id = id;
-            link.rel = 'stylesheet';
-            link.className = 'ypp-ui-style-link';
-            (document.head || document.documentElement).appendChild(link);
+        // Inject Core UI Fallback first
+        let fallbackStyle = document.getElementById('ypp-core-ui-fallback-css');
+        if (!fallbackStyle) {
+            fallbackStyle = document.createElement('style');
+            fallbackStyle.id = 'ypp-core-ui-fallback-css';
+            fallbackStyle.className = 'ypp-ui-style-link';
+            (document.head || document.documentElement).appendChild(fallbackStyle);
+            fetch(fallbackUrl)
+                .then(r => r.text())
+                .then(css => { fallbackStyle.textContent = css; })
+                .catch(e => console.error('Failed to load fallback CSS', e));
         }
 
-        link.setAttribute('data-ui-style', uiStyleKey);
-        link.href = cssUrl; // Browser caches correctly; only bust on explicit forceReload()
+        let mainStyle = document.getElementById(id);
+        if (!mainStyle) {
+            mainStyle = document.createElement('style');
+            mainStyle.id = id;
+            mainStyle.className = 'ypp-ui-style-link';
+            (document.head || document.documentElement).appendChild(mainStyle);
+        }
+
+        mainStyle.setAttribute('data-ui-style', uiStyleKey);
+        fetch(cssUrl)
+            .then(r => r.text())
+            .then(css => { mainStyle.textContent = css; })
+            .catch(e => console.error('Failed to load UI style CSS', e));
 
         document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
         
@@ -590,9 +613,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         
         const ytTheme = this._settings.youtubePageTheme;
 
-        if (ytTheme === 'default') {
-            finalCardStyle = 'default';
-        } else if (ytTheme && ytTheme !== 'default' && (finalCardStyle === 'glass' || finalCardStyle === 'default')) {
+        if (ytTheme && ytTheme !== 'default' && (finalCardStyle === 'glass' || finalCardStyle === 'default')) {
              if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
              else if (ytTheme === 'nature') finalCardStyle = 'nature';
              else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
@@ -862,7 +883,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             searchCompatLink.className = 'ypp-ui-style-link';
             (document.head || document.documentElement).appendChild(searchCompatLink);
         }
-        searchCompatLink.href = chrome.runtime.getURL('src/content/card-styles/search-card-compat.css');
+        searchCompatLink.href = chrome.runtime.getURL('src/content/ui-styles/search-card-compat/card-style.css');
 
         this._Utils.log(`Injecting Card Style: ${cardStyleKey} + search-card-compat`, 'THEME');
     }

@@ -1,0 +1,136 @@
+/* 
+  Core UI Fallback
+  Provides generic, highly-polished structural styling for UI themes that lack component-specific CSS.
+  Can be safely overridden by specific UI Styles (nature, vintage, etc.) due to injection order.
+*/
+
+/* Topbar (Masthead) */
+ytd-masthead,
+#masthead-container,
+ytd-masthead #background {
+    background: transparent !important;
+}
+ytd-masthead #container {
+    border-radius: 20px !important;
+    background: var(--sf, rgba(25, 25, 25, 0.8)) !important;
+    margin: 4px 8px !important;
+    box-shadow: var(--shadow-base, 0 4px 12px rgba(0,0,0,0.15)) !important;
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: var(--blur, blur(10px)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Nav / Guide Button */
+.ypp-nav-btn,
+yt-icon-button#guide-button {
+    border-radius: 14px !important;
+    transition: all 0.2s ease !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+.ypp-nav-btn:hover,
+yt-icon-button#guide-button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Search Bar */
+ytd-searchbox #container.ytd-searchbox,
+ytd-searchbox #search-form {
+    border-radius: var(--ytd-searchbox-border-radius, 20px) !important;
+    background: var(--ytd-searchbox-background, rgba(255, 255, 255, 0.08)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+ytd-searchbox #search-icon-legacy {
+    border-radius: var(--ytd-searchbox-legacy-button-border-radius, 0 20px 20px 0) !important;
+    background: var(--ytd-searchbox-legacy-button-color, rgba(255, 255, 255, 0.12)) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Chips / Feed Filters */
+yt-chip-cloud-chip-renderer {
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px) !important;
+    transition: all 0.2s ease !important;
+}
+yt-chip-cloud-chip-renderer[selected] {
+    background: var(--ypp-accent-primary, #fff) !important;
+    color: #000 !important;
+}
+yt-chip-cloud-chip-renderer:hover:not([selected]) {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-1px);
+}
+
+/* Channel Bar (Owner) */
+ytd-video-owner-renderer {
+    padding: 8px 12px !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Action Buttons (Like, Share, etc. - Generic Fallback if watch-redesign doesn't apply) */
+ytd-menu-renderer yt-button-shape button,
+ytd-segmented-like-dislike-button-renderer yt-button-shape button,
+ytd-download-button-renderer yt-button-shape button,
+ytd-button-renderer yt-button-shape button,
+yt-button-view-model button {
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.2s ease !important;
+}
+ytd-menu-renderer yt-button-shape button:hover,
+ytd-segmented-like-dislike-button-renderer yt-button-shape button:hover,
+ytd-download-button-renderer yt-button-shape button:hover,
+ytd-button-renderer yt-button-shape button:hover,
+yt-button-view-model button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Comments Block */
+ytd-comments-header-renderer,
+ytd-comment-thread-renderer {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 16px !important;
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Description Box */
+ytd-watch-metadata #description {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Player Bar & Controls */
+.ytp-chrome-bottom {
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%) !important;
+    padding-bottom: 8px !important;
+}
+.ytp-chrome-controls .ytp-button {
+    transition: all 0.2s ease !important;
+}
+.ytp-chrome-controls .ytp-button:hover {
+    transform: scale(1.1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+}
+
+/* Progress Bar */
+.ytp-progress-list {
+    background: rgba(255,255,255,0.2) !important;
+    border-radius: 4px !important;
+}
+.ytp-play-progress {
+    background: var(--ypp-accent-primary, #ff0000) !important;
+    border-radius: 4px !important;
+}

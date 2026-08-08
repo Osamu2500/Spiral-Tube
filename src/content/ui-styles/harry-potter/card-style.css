@@ -1,15 +1,6 @@
 /* Hogwarts Magic (Harry Potter) Video Card Style */
 
-html[data-ypp-card-style="harry-potter"] {
-  --sf: var(--ypp-bg-surface, #14151f);
-  --shadow-base: var(--ypp-shadow-card, 0 8px 24px rgba(0, 0, 0, 0.7));
-  --shadow-hover: var(--ypp-shadow-float, 0 16px 36px rgba(0, 0, 0, 0.8));
-  --shadow-active: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.5));
-  --blur: var(--ypp-glass-blur, blur(12px));
 
-  --hp-gold: var(--ypp-accent, #d4af37);
-  --hp-border: 1px solid rgba(211, 166, 37, 0.35);
-}
 
 /* Base Card Styling — Spellbook & Parchment Aesthetic */
 html[data-ypp-card-style="harry-potter"]
