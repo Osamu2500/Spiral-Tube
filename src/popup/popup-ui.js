@@ -245,6 +245,11 @@ export function applyAccentColor(document, hex, secondaryHex = null) {
     const grad = `linear-gradient(135deg, ${hex} 0%, ${sec} 100%)`;
     root.setProperty('--accent-gradient', grad);
     root.setProperty('--accent-grad', grad);
+
+    // Create a beautiful background glow effect using the primary and secondary colors
+    const bgGlow = `radial-gradient(circle at top left, color-mix(in srgb, ${hex} 10%, transparent), transparent 45%), radial-gradient(circle at bottom right, color-mix(in srgb, ${sec} 10%, transparent), transparent 45%)`;
+    root.setProperty('--bg-glow-effect', bgGlow);
+
     // Apply gradient to buttons and active elements when dual mode is on
     if (useDual) {
         root.setProperty('--accent-btn-bg', grad);

@@ -229,7 +229,8 @@ body {
   zoom: 0.8;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
+    background-image: var(--bg-glow-effect, none);
   color: var(--text-1);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
@@ -1519,7 +1520,8 @@ body.ypp-theme-minimalism {
     --border-subtle: transparent;
 }
 body.ypp-theme-minimalism .app-container {
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
+    background-image: var(--bg-glow-effect, none);
     border: 1px solid #333;
     box-shadow: none;
     border-radius: 8px;
@@ -1540,7 +1542,8 @@ body.ypp-theme-minimalism .toggle-card:has(input:checked) .feature-icon {
     color: #fff !important;
 }
 body.ypp-theme-minimalism .sidebar {
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
+    background-image: var(--bg-glow-effect, none);
     border-right: 1px solid #333;
     border-radius: 8px 0 0 8px;
 }
@@ -1944,5 +1947,6 @@ body.ypp-theme-minimalism .nav-item.active {
   width: 14px;
   height: 14px;
 }
+
 
 
