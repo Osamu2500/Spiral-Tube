@@ -4,13 +4,11 @@
    ========================================================= */
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-chrome-bottom {
-  -webkit-backdrop-filter: blur(48px) saturate(220%) !important;
-  backdrop-filter: blur(48px) saturate(220%) !important;
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: transparent !important;
+  border-top: none !important;
   border-radius: 0 0 24px 24px !important;
-  padding: 6px 20px 10px !important;
-  box-shadow: var(--lg-border-top-light), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  padding: 10px 20px !important;
+  box-shadow: none !important;
   transition: opacity 0.3s var(--lg-smooth) !important;
 }
 
@@ -25,7 +23,6 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-right-controls {
 /* Base button reset to glass-native style */
 html[data-ypp-ui-style="liquid-glass"] .ytp-button {
   border-radius: 2000px !important;
-  padding: 6px !important;
   transition: background var(--lg-spring), transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 html[data-ypp-ui-style="liquid-glass"] .ytp-button:hover {
@@ -52,12 +49,12 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-play-button {
 /* Progress bar container — frosted channel */
 html[data-ypp-ui-style="liquid-glass"] .ytp-progress-bar-container {
   height: 6px !important;
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: transparent !important;
   border-radius: 2000px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+  border: none !important;
+  box-shadow: none !important;
   overflow: visible !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 10px !important;
 }
 
 /* Liquid fill — animated gradient */

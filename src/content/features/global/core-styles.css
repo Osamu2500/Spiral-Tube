@@ -577,6 +577,39 @@ body.ypp-hide-action-buttons ytd-video-primary-info-renderer #actions,
 body.ypp-hide-action-buttons ytd-video-primary-info-renderer #top-level-buttons-computed,
 body.ypp-hide-action-buttons ytd-video-primary-info-renderer ytd-menu-renderer { display:none!important; }
 
+/* Move Save, Download, and Ask to the three dots (overflow menu) */
+/* 1. Hide from top-level row */
+ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Save" i]),
+ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Save" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[aria-label*="Save" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[title*="Save" i]),
+ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Download" i]),
+ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Download" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[aria-label*="Download" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[title*="Download" i]),
+ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Ask" i]),
+ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Ask" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[aria-label*="Ask" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[title*="Ask" i]),
+ytd-watch-metadata #top-level-buttons-computed > ytd-download-button-renderer,
+ytd-watch-metadata #top-level-buttons-computed > yt-download-button-view-model {
+    display: none !important;
+}
+
+/* 2. Force them to appear in the overflow menu */
+tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Save" i]),
+tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Save" i]),
+tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Download" i]),
+tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Download" i]),
+tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([aria-label*="Ask" i]),
+tp-yt-paper-listbox#items > ytd-menu-service-item-renderer:has([title*="Ask" i]),
+tp-yt-paper-listbox#items > ytd-menu-service-item-download-renderer,
+tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Save" i]),
+tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Download" i]),
+tp-yt-paper-listbox#items > yt-menu-service-item-view-model:has([aria-label*="Ask" i]) {
+    display: flex !important;
+}
+
 /* Zen Mode — hide everything except the video */
 body.ypp-zen-mode ytd-watch-metadata #title,
 body.ypp-zen-mode ytd-watch-metadata h1.ytd-watch-metadata,

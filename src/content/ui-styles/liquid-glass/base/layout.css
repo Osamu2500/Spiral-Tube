@@ -128,3 +128,37 @@ html[data-ypp-ui-style="liquid-glass"] .ytd-video-meta-block {
 html[data-ypp-ui-style="liquid-glass"] .ytp-play-progress {
   background: var(--lg-accent-gradient, linear-gradient(90deg, #00f2fe, #4facfe)) !important;
 }
+
+/* Apply black border/outline to all texts */
+html[data-ypp-ui-style="liquid-glass"] h1,
+html[data-ypp-ui-style="liquid-glass"] h2,
+html[data-ypp-ui-style="liquid-glass"] h3,
+html[data-ypp-ui-style="liquid-glass"] h4,
+html[data-ypp-ui-style="liquid-glass"] h5,
+html[data-ypp-ui-style="liquid-glass"] h6,
+html[data-ypp-ui-style="liquid-glass"] span,
+html[data-ypp-ui-style="liquid-glass"] p,
+html[data-ypp-ui-style="liquid-glass"] a,
+html[data-ypp-ui-style="liquid-glass"] yt-formatted-string {
+    text-shadow: 
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000,
+      -1px  0   0 #000,
+       1px  0   0 #000,
+       0   -1px 0 #000,
+       0    1px 0 #000,
+       0    2px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix oversized emojis */
+html[data-ypp-ui-style="liquid-glass"] img.emoji,
+html[data-ypp-ui-style="liquid-glass"] yt-emoji-image,
+html[data-ypp-ui-style="liquid-glass"] .ytp-reaction-button img,
+html[data-ypp-ui-style="liquid-glass"] img[src*="emoji"] {
+    max-width: 24px !important;
+    max-height: 24px !important;
+    width: auto;
+    height: auto;
+}

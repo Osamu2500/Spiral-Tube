@@ -215,3 +215,13 @@ html[data-ypp-ui-style="liquid-glass"] ytd-guide-entry-renderer[aria-selected="t
   border: var(--lg-border-active) !important;
   box-shadow: var(--lg-shadow-glow), var(--lg-border-top-light) !important;
 }
+
+/* Fix top black line and tint */
+html[data-ypp-ui-style="liquid-glass"] yt-page-navigation-progress,
+html[data-ypp-ui-style="liquid-glass"] #ticker.ytd-app,
+html[data-ypp-ui-style="liquid-glass"] ytd-app > div.style-scope.ytd-app {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
