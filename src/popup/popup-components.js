@@ -1365,3 +1365,5 @@ export function initComponents(
     initBasicInlineSlider,
   };
 }
+
+// UI Changes Restored

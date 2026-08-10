@@ -288,44 +288,58 @@
                </div>
             </div>
             <div class="card-group">
-              <div class="ypp-inline-33 custom-theme-builder">
-                <!-- Name -->
-                <div class="ypp-inline-34 search-container theme-name-input-container">
-                  <input type="text" id="customThemeName" placeholder="Theme Name" class="ypp-inline-35 feature-search-input" aria-label="Custom Theme Name" title="Custom Theme Name">
+                <div class="custom-theme-builder-container">
+                  <div class="inline-setting-row" style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="search-container theme-name-input-container" style="flex: 1; margin-right: 12px; margin-bottom: 0;">
+                      <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" aria-label="Custom Theme Name" title="Custom Theme Name" style="width: 100%;">
+                    </div>
+                    <div class="theme-actions-row" style="display: flex; gap: 8px;">
+                      <button id="saveCustomThemeBtn" class="icon-btn" title="Save Theme">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                      </button>
+                      <button id="exportCustomThemeBtn" class="icon-btn" title="Export Theme">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      </button>
+                      <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                      </button>
+                      <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" style="display: none;">
+                    </div>
+                  </div>
+                  
+                  <div class="theme-palette-grid" style="display: flex; justify-content: space-around; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; margin-bottom: 12px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                      <div class="color-swatch-wrapper" title="Base Background">
+                        <input type="color" id="customThemeBgBase" value="#0f0f0f" aria-label="Custom Theme Bg Base">
+                      </div>
+                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Base</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                      <div class="color-swatch-wrapper" title="Surface Background">
+                        <input type="color" id="customThemeBgSurface" value="#212121" aria-label="Custom Theme Bg Surface">
+                      </div>
+                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Surface</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                      <div class="color-swatch-wrapper" title="Accent Color">
+                        <input type="color" id="customThemeAccent" value="#ff4e45" aria-label="Custom Theme Accent">
+                      </div>
+                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Accent</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                      <div class="color-swatch-wrapper" title="Text Color">
+                        <input type="color" id="customThemeText" value="#ffffff" aria-label="Custom Theme Text">
+                      </div>
+                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Text</span>
+                    </div>
+                  </div>
+                  
+                  <div class="inline-setting-row" style="padding: 0 4px;">
+                     <span class="name" style="font-size: 13px;">True Black</span>
+                     <label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label>
+                  </div>
                 </div>
-                
-                <!-- Colors -->
-                <div class="theme-palette-grid">
-                  <div class="color-swatch-wrapper" title="Base Background">
-                    <input type="color" id="customThemeBgBase" value="#0f0f0f" aria-label="Custom Theme Bg Base">
-                  </div>
-                  <div class="color-swatch-wrapper" title="Surface Background">
-                    <input type="color" id="customThemeBgSurface" value="#212121" aria-label="Custom Theme Bg Surface">
-                  </div>
-                  <div class="color-swatch-wrapper" title="Accent Color">
-                    <input type="color" id="customThemeAccent" value="#ff4e45" aria-label="Custom Theme Accent">
-                  </div>
-                  <div class="color-swatch-wrapper" title="Text Color">
-                    <input type="color" id="customThemeText" value="#ffffff" aria-label="Custom Theme Text">
-                  </div>
-                </div>
-
-                <!-- Actions -->
-                <div class="ypp-inline-45 theme-actions-row">
-                  <button id="saveCustomThemeBtn" class="ypp-inline-46 icon-btn" title="Save Theme">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                  </button>
-                  <button id="exportCustomThemeBtn" class="ypp-inline-47 icon-btn" title="Export Theme">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  </button>
-                  <button id="importCustomThemeBtn" class="ypp-inline-48 icon-btn" title="Import Theme">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                  </button>
-                  <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" class="ypp-inline-49">
-                </div>
-                <div class="ypp-inline-50 setting-item"><label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label></div>
               </div>
-            </div>
           </div>
 
           <!-- Image Theme Background -->
@@ -1190,4 +1204,7 @@
 
 
 
+
+
+<!-- UI Changes Restored -->
 
