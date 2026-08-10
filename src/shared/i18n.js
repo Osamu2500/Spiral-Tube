@@ -2598,7 +2598,7 @@ export const t = (key) => {
     }
 
     // 5. Return key itself as last resort
-    return key;
+    return key.replace(/[-_]/g, ' ');
 };
 
 /**
