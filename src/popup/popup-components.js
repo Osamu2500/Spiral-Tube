@@ -404,24 +404,66 @@ export function initComponents(
     });
 
 
+    const randomBtn = document.getElementById('randomCustomThemeBtn');
+
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         document.getElementById('customThemeName').value = '';
-        document.getElementById('customThemeBgBase').value = '#0f0f0f';
-        document.getElementById('customThemeBgSurface').value = '#212121';
-        document.getElementById('customThemeAccent').value = '#ff4e45';
-        document.getElementById('customThemeText').value = '#ffffff';
+        
+        const resetColor = (id, color) => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.value = color;
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        };
+        
+        resetColor('customThemeBgBase', '#0f0f0f');
+        resetColor('customThemeBgSurface', '#212121');
+        resetColor('customThemeAccent', '#ff4e45');
+        resetColor('customThemeText', '#ffffff');
+        
         syncPreviews();
         
         chrome.storage.local.get('settings', (data) => {
           const settings = data.settings || {};
           settings.activeTheme = 'default';
           chrome.storage.local.set({ settings }, () => {
-            initThemeSelector('default');
-            applyThemeToPopup('default', settings.customThemes || {});
-            notifyThemeChange('default');
+            if (typeof initThemeSelector === 'function') initThemeSelector('default');
+            if (typeof applyThemeToPopup === 'function') applyThemeToPopup('default', settings.customThemes || {});
+            if (typeof notifyThemeChange === 'function') notifyThemeChange('default');
           });
         });
+      });
+    }
+
+    if (randomBtn) {
+      randomBtn.addEventListener('click', () => {
+        const getRandomColor = () => {
+          const letters = '0123456789ABCDEF';
+          let color = '#';
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        };
+
+        const randomColor = (id) => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.value = getRandomColor();
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        };
+
+        randomColor('customThemeBgBase');
+        randomColor('customThemeBgSurface');
+        randomColor('customThemeAccent');
+        randomColor('customThemeText');
+        
+        syncPreviews();
       });
     }
 
