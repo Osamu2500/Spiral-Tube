@@ -1117,21 +1117,28 @@ export function initComponents(
         sampleCtx.drawImage(imgSource, 0, 0, 64, 64);
         const data = sampleCtx.getImageData(0, 0, 64, 64).data;
         const colorCounts = {};
+        
+        // Use a bucket size of 32 for broader grouping
         for (let i = 0; i < data.length; i += 4) {
-            const r = Math.round(data[i] / 16) * 16;
-            const g = Math.round(data[i+1] / 16) * 16;
-            const b = Math.round(data[i+2] / 16) * 16;
+            const r = Math.round(data[i] / 32) * 32;
+            const g = Math.round(data[i+1] / 32) * 32;
+            const b = Math.round(data[i+2] / 32) * 32;
             const rgb = `${r},${g},${b}`;
             colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
         }
+        
         const sortedColors = Object.entries(colorCounts).sort((a, b) => b[1] - a[1]);
         const palette = [];
-        const dist = (c1, c2) => Math.abs(c1[0]-c2[0]) + Math.abs(c1[1]-c2[1]) + Math.abs(c1[2]-c2[2]);
+        
+        // Euclidean distance for better visual distinctness check
+        const dist = (c1, c2) => Math.sqrt(Math.pow(c1[0]-c2[0], 2) + Math.pow(c1[1]-c2[1], 2) + Math.pow(c1[2]-c2[2], 2));
+        
         for (const [rgbStr] of sortedColors) {
             const rgb = rgbStr.split(',').map(Number);
             let distinct = true;
             for (const p of palette) {
-                if (dist(rgb, p) < 60) {
+                // Ensure at least ~70 distance between selected palette colors
+                if (dist(rgb, p) < 70) {
                     distinct = false;
                     break;
                 }
@@ -1141,6 +1148,8 @@ export function initComponents(
                 if (palette.length >= 4) break;
             }
         }
+        
+        // Fallback: fill with next most common if distinctness is too strict
         while (palette.length < 4 && sortedColors.length > palette.length) {
             palette.push(sortedColors[palette.length][0].split(',').map(Number));
         }
