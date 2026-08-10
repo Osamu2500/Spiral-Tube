@@ -167,7 +167,9 @@ export const DEFAULT_SETTINGS = {
   gpb_showFilters: true,
   gpb_showLoop: true,
   gpb_showPip: true,
+  gpb_showSpeed: true,
   gpb_showFullscreen: true,
+  gpb_showDomain: true,
 
   // Ad Skipper
   adSkipper: true,
