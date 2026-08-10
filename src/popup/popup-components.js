@@ -1264,6 +1264,19 @@ export function initComponents(
             if (bgUrl) {
               const img = new Image();
               img.onload = () => {
+                const sampleCanvas = document.createElement('canvas');
+                const sampleCtx = sampleCanvas.getContext('2d');
+                sampleCanvas.width = 1;
+                sampleCanvas.height = 1;
+                sampleCtx.drawImage(img, 0, 0, 1, 1);
+                const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
+                const averageColor = '#' + pixel[0].toString(16).padStart(2, '0') + pixel[1].toString(16).padStart(2, '0') + pixel[2].toString(16).padStart(2, '0');
+                updateSetting('accentColor', averageColor);
+                const customInput = document.getElementById('accentColor');
+                if (customInput) {
+                  customInput.value = averageColor;
+                  customInput.dispatchEvent(new Event('input', {bubbles:true}));
+                }
                 extractAndApplyPalette(img);
               };
               img.src = bgUrl;
