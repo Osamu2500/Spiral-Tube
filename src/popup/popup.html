@@ -295,18 +295,18 @@
                 </div>
                 
                 <!-- Colors -->
-                <div class="ypp-inline-36 theme-builder-colors">
-                  <div class="ypp-inline-37 color-picker-group">
-                    <input type="color" id="customThemeBgBase" value="#0f0f0f" title="Base Background" aria-label="Custom Theme Bg Base" title="Custom Theme Bg Base" class="ypp-inline-38">
+                <div class="theme-palette-grid">
+                  <div class="color-swatch-wrapper" title="Base Background">
+                    <input type="color" id="customThemeBgBase" value="#0f0f0f" aria-label="Custom Theme Bg Base">
                   </div>
-                  <div class="ypp-inline-39 color-picker-group">
-                    <input type="color" id="customThemeBgSurface" value="#212121" title="Surface Background" aria-label="Custom Theme Bg Surface" title="Custom Theme Bg Surface" class="ypp-inline-40">
+                  <div class="color-swatch-wrapper" title="Surface Background">
+                    <input type="color" id="customThemeBgSurface" value="#212121" aria-label="Custom Theme Bg Surface">
                   </div>
-                  <div class="ypp-inline-41 color-picker-group">
-                    <input type="color" id="customThemeAccent" value="#ff4e45" title="Accent Color" aria-label="Custom Theme Accent" title="Custom Theme Accent" class="ypp-inline-42">
+                  <div class="color-swatch-wrapper" title="Accent Color">
+                    <input type="color" id="customThemeAccent" value="#ff4e45" aria-label="Custom Theme Accent">
                   </div>
-                  <div class="ypp-inline-43 color-picker-group">
-                    <input type="color" id="customThemeText" value="#ffffff" title="Text Color" aria-label="Custom Theme Text" title="Custom Theme Text" class="ypp-inline-44">
+                  <div class="color-swatch-wrapper" title="Text Color">
+                    <input type="color" id="customThemeText" value="#ffffff" aria-label="Custom Theme Text">
                   </div>
                 </div>
 
@@ -323,10 +323,11 @@
                   </button>
                   <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" class="ypp-inline-49">
                 </div>
+                <div class="ypp-inline-50 setting-item"><label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label></div>
               </div>
-              <div class="ypp-inline-50 setting-item"><label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label></div>
             </div>
           </div>
+
           <!-- Image Theme Background -->
           <div class="settings-section">
             <div class="section-header">
@@ -359,14 +360,25 @@
                   </div>
                 </div>
 
-                <div class="ypp-inline-59">
-                  <span data-i18n="intensity" class="ypp-inline-60">Intensity</span>
-                  <input type="range" id="imageThemeIntensity" min="0.1" max="1.0" step="0.05" value="0.6" aria-label="Image Theme Intensity" title="Image Theme Intensity" class="ypp-inline-61">
-                </div>
-                
-                <div class="ypp-inline-62">
-                  <span data-i18n="extract_colors" class="ypp-inline-63">Extract UI Colors</span>
-                  <label class="ypp-inline-64 toggle"><input type="checkbox" id="imageThemeExtractColors" aria-label="Image Theme Extract Colors" title="Image Theme Extract Colors"><span class="slider"></span></label>
+                <div class="card-group">
+                  <div class="ypp-inline-50 inline-setting-row">
+                     <div class="ypp-inline-51">
+                        <span class="ypp-inline-52 name" data-i18n="intensity">Intensity</span>
+                     </div>
+                     <input type="range" id="imageThemeIntensity" min="0" max="100" value="80" class="ypp-inline-53 slider">
+                  </div>
+                  <div class="ypp-inline-54 inline-setting-row">
+                     <div class="ypp-inline-55" style="display: flex; align-items: center; gap: 12px;">
+                        <span class="ypp-inline-56 name" data-i18n="extract_ui_colors">Extract UI Colors</span>
+                        <div id="extractedColorsPreview" class="extracted-colors-preview" style="display: none;">
+                          <div class="extracted-box" id="extractedBox1"></div>
+                          <div class="extracted-box" id="extractedBox2"></div>
+                          <div class="extracted-box" id="extractedBox3"></div>
+                          <div class="extracted-box" id="extractedBox4"></div>
+                        </div>
+                     </div>
+                     <label class="ypp-inline-57 toggle"><input type="checkbox" id="extractImageColors" aria-label="Extract Image Colors" title="Extract Image Colors"><span class="slider"></span></label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -608,195 +620,195 @@
             <div class="ypp-inline-177 card-group">
               <input type="hidden" id="customCursor" value="default" aria-label="Custom Cursor" title="Custom Cursor">
               <div class="ypp-inline-178 cursor-masonry-grid" id="cursorMasonryGrid">
-                <button type="button" class="ypp-inline-179 cursor-style-btn active" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 8px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-179 cursor-style-btn active" >
                   <div class="ypp-inline-180 cursor-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L5.5 3.21z"></path></svg>
                   </div>
                   <span class="ypp-inline-181">Default</span>
                 </button>
-                <button type="button" class="ypp-inline-182 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-182 cursor-style-btn" >
                   <div class="ypp-inline-183">
                     <img src="../assets/cursors/among-us/cursor.png" alt="Cursor" class="ypp-inline-184">
                     <img src="../assets/cursors/among-us/pointer.png" alt="Pointer" class="ypp-inline-185">
                   </div>
                   <span class="ypp-inline-186">Among Us</span>
                 </button>
-                <button type="button" class="ypp-inline-187 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-187 cursor-style-btn" >
                   <div class="ypp-inline-188">
                     <img src="../assets/cursors/dr-stone-senku-ishigami-chemical-flask-animated/cursor.png" alt="Cursor" class="ypp-inline-189">
                     <img src="../assets/cursors/dr-stone-senku-ishigami-chemical-flask-animated/pointer.png" alt="Pointer" class="ypp-inline-190">
                   </div>
                   <span class="ypp-inline-191">Dr Stone Senku ...</span>
                 </button>
-                <button type="button" class="ypp-inline-192 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-192 cursor-style-btn" >
                   <div class="ypp-inline-193">
                     <img src="../assets/cursors/dr-stone-suika/cursor.png" alt="Cursor" class="ypp-inline-194">
                     <img src="../assets/cursors/dr-stone-suika/pointer.png" alt="Pointer" class="ypp-inline-195">
                   </div>
                   <span class="ypp-inline-196">Dr Stone Suika</span>
                 </button>
-                <button type="button" class="ypp-inline-197 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-197 cursor-style-btn" >
                   <div class="ypp-inline-198">
                     <img src="../assets/cursors/dr-stone-xeno-houston-wingfield/cursor.png" alt="Cursor" class="ypp-inline-199">
                     <img src="../assets/cursors/dr-stone-xeno-houston-wingfield/pointer.png" alt="Pointer" class="ypp-inline-200">
                   </div>
                   <span class="ypp-inline-201">Dr Stone Xeno H...</span>
                 </button>
-                <button type="button" class="ypp-inline-202 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-202 cursor-style-btn" >
                   <div class="ypp-inline-203">
                     <img src="../assets/cursors/dr-stone-xeno-houston-wingfield-1/cursor.png" alt="Cursor" class="ypp-inline-204">
                     <img src="../assets/cursors/dr-stone-xeno-houston-wingfield-1/pointer.png" alt="Pointer" class="ypp-inline-205">
                   </div>
                   <span class="ypp-inline-206">Dr Stone Xeno H...</span>
                 </button>
-                <button type="button" class="ypp-inline-207 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-207 cursor-style-btn" >
                   <div class="ypp-inline-208">
                     <img src="../assets/cursors/fifa-2026/cursor.png" alt="Cursor" class="ypp-inline-209">
                     <img src="../assets/cursors/fifa-2026/pointer.png" alt="Pointer" class="ypp-inline-210">
                   </div>
                   <span class="ypp-inline-211">FIFA 26</span>
                 </button>
-                <button type="button" class="ypp-inline-212 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-212 cursor-style-btn" >
                   <div class="ypp-inline-213">
                     <img src="../assets/cursors/genshin-impact-arataki-itto-mace-hammer/cursor.png" alt="Cursor" class="ypp-inline-214">
                     <img src="../assets/cursors/genshin-impact-arataki-itto-mace-hammer/pointer.png" alt="Pointer" class="ypp-inline-215">
                   </div>
                   <span class="ypp-inline-216">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-217 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-217 cursor-style-btn" >
                   <div class="ypp-inline-218">
                     <img src="../assets/cursors/genshin-impact-chibi-paimon-gray-arrow/cursor.png" alt="Cursor" class="ypp-inline-219">
                     <img src="../assets/cursors/genshin-impact-chibi-paimon-gray-arrow/pointer.png" alt="Pointer" class="ypp-inline-220">
                   </div>
                   <span class="ypp-inline-221">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-222 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-222 cursor-style-btn" >
                   <div class="ypp-inline-223">
                     <img src="../assets/cursors/genshin-impact-flins/cursor.png" alt="Cursor" class="ypp-inline-224">
                     <img src="../assets/cursors/genshin-impact-flins/pointer.png" alt="Pointer" class="ypp-inline-225">
                   </div>
                   <span class="ypp-inline-226">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-227 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-227 cursor-style-btn" >
                   <div class="ypp-inline-228">
                     <img src="../assets/cursors/genshin-impact-hu-tao-ghost/cursor.png" alt="Cursor" class="ypp-inline-229">
                     <img src="../assets/cursors/genshin-impact-hu-tao-ghost/pointer.png" alt="Pointer" class="ypp-inline-230">
                   </div>
                   <span class="ypp-inline-231">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-232 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-232 cursor-style-btn" >
                   <div class="ypp-inline-233">
                     <img src="../assets/cursors/genshin-impact-kamisato-ayaka-fan-animated/cursor.png" alt="Cursor" class="ypp-inline-234">
                     <img src="../assets/cursors/genshin-impact-kamisato-ayaka-fan-animated/pointer.png" alt="Pointer" class="ypp-inline-235">
                   </div>
                   <span class="ypp-inline-236">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-237 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-237 cursor-style-btn" >
                   <div class="ypp-inline-238">
                     <img src="../assets/cursors/genshin-impact-navia-umbrella-animated/cursor.png" alt="Cursor" class="ypp-inline-239">
                     <img src="../assets/cursors/genshin-impact-navia-umbrella-animated/pointer.png" alt="Pointer" class="ypp-inline-240">
                   </div>
                   <span class="ypp-inline-241">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-242 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-242 cursor-style-btn" >
                   <div class="ypp-inline-243">
                     <img src="../assets/cursors/genshin-impact-neuvillette-scepter/cursor.png" alt="Cursor" class="ypp-inline-244">
                     <img src="../assets/cursors/genshin-impact-neuvillette-scepter/pointer.png" alt="Pointer" class="ypp-inline-245">
                   </div>
                   <span class="ypp-inline-246">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-247 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-247 cursor-style-btn" >
                   <div class="ypp-inline-248">
                     <img src="../assets/cursors/genshin-impact-paimon-masterless-starglitter/cursor.png" alt="Cursor" class="ypp-inline-249">
                     <img src="../assets/cursors/genshin-impact-paimon-masterless-starglitter/pointer.png" alt="Pointer" class="ypp-inline-250">
                   </div>
                   <span class="ypp-inline-251">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-252 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-252 cursor-style-btn" >
                   <div class="ypp-inline-253">
                     <img src="../assets/cursors/genshin-impact-venti-lyre-animated/cursor.png" alt="Cursor" class="ypp-inline-254">
                     <img src="../assets/cursors/genshin-impact-venti-lyre-animated/pointer.png" alt="Pointer" class="ypp-inline-255">
                   </div>
                   <span class="ypp-inline-256">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-257 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-257 cursor-style-btn" >
                   <div class="ypp-inline-258">
                     <img src="../assets/cursors/genshin-impact-yaoyao-animated/cursor.png" alt="Cursor" class="ypp-inline-259">
                     <img src="../assets/cursors/genshin-impact-yaoyao-animated/pointer.png" alt="Pointer" class="ypp-inline-260">
                   </div>
                   <span class="ypp-inline-261">Genshin Impact ...</span>
                 </button>
-                <button type="button" class="ypp-inline-262 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-262 cursor-style-btn" >
                   <div class="ypp-inline-263">
                     <img src="../assets/cursors/gurren-lagann-kamina-glasses/cursor.png" alt="Cursor" class="ypp-inline-264">
                     <img src="../assets/cursors/gurren-lagann-kamina-glasses/pointer.png" alt="Pointer" class="ypp-inline-265">
                   </div>
                   <span class="ypp-inline-266">Gurren Lagann K...</span>
                 </button>
-                <button type="button" class="ypp-inline-267 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-267 cursor-style-btn" >
                   <div class="ypp-inline-268">
                     <img src="../assets/cursors/gurren-lagann-simon-core-drill-animated/cursor.png" alt="Cursor" class="ypp-inline-269">
                     <img src="../assets/cursors/gurren-lagann-simon-core-drill-animated/pointer.png" alt="Pointer" class="ypp-inline-270">
                   </div>
                   <span class="ypp-inline-271">Gurren Lagann S...</span>
                 </button>
-                <button type="button" class="ypp-inline-272 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-272 cursor-style-btn" >
                   <div class="ypp-inline-273">
                     <img src="../assets/cursors/hello-kitty/cursor.png" alt="Cursor" class="ypp-inline-274">
                     <img src="../assets/cursors/hello-kitty/pointer.png" alt="Pointer" class="ypp-inline-275">
                   </div>
                   <span class="ypp-inline-276">Sanrio</span>
                 </button>
-                <button type="button" class="ypp-inline-277 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-277 cursor-style-btn" >
                   <div class="ypp-inline-278">
                     <img src="../assets/cursors/luffy/cursor.png" alt="Cursor" class="ypp-inline-279">
                     <img src="../assets/cursors/luffy/pointer.png" alt="Pointer" class="ypp-inline-280">
                   </div>
                   <span class="ypp-inline-281">Luffy</span>
                 </button>
-                <button type="button" class="ypp-inline-282 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-282 cursor-style-btn" >
                   <div class="ypp-inline-283">
                     <img src="../assets/cursors/mickey-mouse/cursor.png" alt="Cursor" class="ypp-inline-284">
                     <img src="../assets/cursors/mickey-mouse/pointer.png" alt="Pointer" class="ypp-inline-285">
                   </div>
                   <span class="ypp-inline-286">Mickey</span>
                 </button>
-                <button type="button" class="ypp-inline-287 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-287 cursor-style-btn" >
                   <div class="ypp-inline-288">
                     <img src="../assets/cursors/minecraft-sword/cursor.png" alt="Cursor" class="ypp-inline-289">
                     <img src="../assets/cursors/minecraft-sword/pointer.png" alt="Pointer" class="ypp-inline-290">
                   </div>
                   <span class="ypp-inline-291">Minecraft</span>
                 </button>
-                <button type="button" class="ypp-inline-292 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-292 cursor-style-btn" >
                   <div class="ypp-inline-293">
                     <img src="../assets/cursors/naruto-akatsuki-cloud-arrow/cursor.png" alt="Cursor" class="ypp-inline-294">
                     <img src="../assets/cursors/naruto-akatsuki-cloud-arrow/pointer.png" alt="Pointer" class="ypp-inline-295">
                   </div>
                   <span class="ypp-inline-296">Naruto Akatsuki...</span>
                 </button>
-                <button type="button" class="ypp-inline-297 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-297 cursor-style-btn" >
                   <div class="ypp-inline-298">
                     <img src="../assets/cursors/naruto-sasuke-uchiha-red-sharingan-eye/cursor.png" alt="Cursor" class="ypp-inline-299">
                     <img src="../assets/cursors/naruto-sasuke-uchiha-red-sharingan-eye/pointer.png" alt="Pointer" class="ypp-inline-300">
                   </div>
                   <span class="ypp-inline-301">Naruto Sasuke U...</span>
                 </button>
-                <button type="button" class="ypp-inline-302 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-302 cursor-style-btn" >
                   <div class="ypp-inline-303">
                     <img src="../assets/cursors/pinky-pixel/cursor.png" alt="Cursor" class="ypp-inline-304">
                     <img src="../assets/cursors/pinky-pixel/pointer.png" alt="Pointer" class="ypp-inline-305">
                   </div>
                   <span class="ypp-inline-306">Pixel</span>
                 </button>
-                <button type="button" class="ypp-inline-307 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-307 cursor-style-btn" >
                   <div class="ypp-inline-308">
                     <img src="../assets/cursors/spy-x-family-anya-forger-funny-mustache-sombrero/cursor.png" alt="Cursor" class="ypp-inline-309">
                     <img src="../assets/cursors/spy-x-family-anya-forger-funny-mustache-sombrero/pointer.png" alt="Pointer" class="ypp-inline-310">
                   </div>
                   <span class="ypp-inline-311">Spy X Family An...</span>
                 </button>
-                <button type="button" class="ypp-inline-312 cursor-style-btn" data- style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 4px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s;">
+                <button type="button" class="ypp-inline-312 cursor-style-btn" >
                   <div class="ypp-inline-313">
                     <img src="../assets/cursors/witch-hat-atelier-coco-magic-quill-animated/cursor.png" alt="Cursor" class="ypp-inline-314">
                     <img src="../assets/cursors/witch-hat-atelier-coco-magic-quill-animated/pointer.png" alt="Pointer" class="ypp-inline-315">
@@ -1174,6 +1186,7 @@
     <script type="module" src="popup-main.js"></script>
   </body>
 </html>
+
 
 
 
