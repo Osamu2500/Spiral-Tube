@@ -64,8 +64,6 @@ window.YPP.FeatureManager.register(GridAnimator);
 // Toggles handled by GlobalLayoutManager
 import { ScreenFilters } from '../features/global/ui-tweaks/screen-filters.js';
 window.YPP.FeatureManager.register(ScreenFilters);
-import { CustomCSS } from '../features/global/ui-tweaks/custom-css.js';
-window.YPP.FeatureManager.register(CustomCSS);
 import { CustomCursor } from '../features/global/ui-tweaks/custom-cursor.js';
 window.YPP.FeatureManager.register(CustomCursor);
 
@@ -222,8 +220,6 @@ import { BookmarksManager } from '../features/player/controls/bookmarks.js';
 window.YPP.FeatureManager.register(BookmarksManager);
 import { IntentionalDelay } from '../features/player/enhancements/intentional-delay.js';
 window.YPP.FeatureManager.register(IntentionalDelay);
-import { PinVideo } from '../features/player/enhancements/pin-video.js';
-window.YPP.FeatureManager.register(PinVideo);
 import { ReturnDislike } from '../features/player/enhancements/return-dislike.js';
 window.YPP.FeatureManager.register(ReturnDislike);
 
@@ -248,8 +244,6 @@ AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
 import { AutoTranscript } from '../features/player/automation/auto-transcript.js';
 window.YPP.FeatureManager.register(AutoTranscript);
-import { StatsForNerds } from '../features/player/automation/stats-for-nerds.js';
-window.YPP.FeatureManager.register(StatsForNerds);
 import { MiniPlayerScroll } from '../features/player/automation/mini-player-scroll.js';
 window.YPP.FeatureManager.register(MiniPlayerScroll);
 import { VSCAudioSupport } from '../features/player/enhancements/vsc-audio-support.js';

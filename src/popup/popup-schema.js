@@ -121,7 +121,6 @@ export const getPopupSchema = (t) => [
 
 
                     { type:'select', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, options:[{value:'off',label:t('reduce_animations_off')},{value:'balanced',label:t('reduce_animations_balanced')},{value:'minimal',label:t('reduce_animations_minimal')}] },
-                    { type:'toggle', id:'pinVideoOnScroll', label: t('pin_video_on_scroll'), desc: t('pin_video_on_scroll_desc'), icon:ICONS.pinVideo },
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
                 ]
             },
@@ -484,18 +483,6 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.globalBar,
                 items: [
                     { type:'custom', id:'domain_memory_manager', slot:'domain_memory_manager', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' },
-                ]
-            },
-            {
-                title: t('custom_css_userstyles'),
-                items: [
-                    { type:'toggle', id:'enableCustomCSS', class:'span-4', label: t('enable_custom_css'), desc: t('import_or_write_your_own_styles'), icon:ICONS.promos, slot:'customCSSOptions' },
-                ]
-            },
-            {
-                title: t('stats_overlays'),
-                items: [
-                    { type:'toggle', id:'enableStatsForNerds', class:'span-4', label: t('stats_overlay'), desc: t('view_tech_details'), icon:P('M4 17l6-6 4 4 6-8') },
                 ]
             },
             {
