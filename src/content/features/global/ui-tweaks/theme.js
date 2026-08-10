@@ -811,23 +811,54 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                     opacity: 0.3;
                 }
             `;
-            
-            // Force Extracted Accent Color if enabled
-            if (this._settings.customBackgroundImageExtractColors && this._settings.accentColor) {
-                bgStyles += `
-                    html[data-ypp-has-bg-image] {
-                        --ypp-accent: ${this._settings.accentColor} !important;
-                        --yt-spec-call-to-action: ${this._settings.accentColor} !important;
-                    }
-                    html[data-ypp-has-bg-image] .ypp-slider,
-                    html[data-ypp-has-bg-image] .ypp-gpb-vol-slider,
-                    html[data-ypp-has-bg-image] input[type="range"] {
-                        accent-color: ${this._settings.accentColor} !important;
-                    }
-                    html[data-ypp-has-bg-image] .ytp-swatch-background-color {
-                        background-color: ${this._settings.accentColor} !important;
-                    }
-                `;
+            // Helper to convert hex to rgba
+            const hexToRgba = (hex, alpha) => {
+                const r = parseInt(hex.slice(1, 3), 16) || 0;
+                const g = parseInt(hex.slice(3, 5), 16) || 0;
+                const b = parseInt(hex.slice(5, 7), 16) || 0;
+                return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            };
+
+            // Force Extracted Colors if enabled
+            if (this._settings.customBackgroundImageExtractColors) {
+                if (this._settings.extractedPalette && this._settings.extractedPalette.length === 4) {
+                    const [c1, c2, c3, c4] = this._settings.extractedPalette;
+                    bgStyles += `
+                        html[data-ypp-has-bg-image] {
+                            --ypp-accent: ${c1} !important;
+                            --yt-spec-call-to-action: ${c1} !important;
+                            --ypp-accent-primary: ${c1} !important;
+                            --ypp-bg-surface: ${hexToRgba(c2, 0.7)} !important;
+                            --ypp-text-primary: ${c3} !important;
+                            --yt-spec-text-primary: ${c3} !important;
+                            --ypp-bg-base: ${hexToRgba(c4, 0.8)} !important;
+                            --yt-spec-brand-background-solid: ${hexToRgba(c4, 0.8)} !important;
+                            --yt-spec-general-background-a: ${hexToRgba(c4, 0.8)} !important;
+                            --yt-spec-menu-background: ${hexToRgba(c2, 0.9)} !important;
+                        }
+                    `;
+                } else if (this._settings.accentColor) {
+                    bgStyles += `
+                        html[data-ypp-has-bg-image] {
+                            --ypp-accent: ${this._settings.accentColor} !important;
+                            --yt-spec-call-to-action: ${this._settings.accentColor} !important;
+                        }
+                    `;
+                }
+                
+                const acc = (this._settings.extractedPalette && this._settings.extractedPalette[0]) || this._settings.accentColor;
+                if (acc) {
+                    bgStyles += `
+                        html[data-ypp-has-bg-image] .ypp-slider,
+                        html[data-ypp-has-bg-image] .ypp-gpb-vol-slider,
+                        html[data-ypp-has-bg-image] input[type="range"] {
+                            accent-color: ${acc} !important;
+                        }
+                        html[data-ypp-has-bg-image] .ytp-swatch-background-color {
+                            background-color: ${acc} !important;
+                        }
+                    `;
+                }
             }
             if (!bgStyleEl) {
                 bgStyleEl = document.createElement('style');

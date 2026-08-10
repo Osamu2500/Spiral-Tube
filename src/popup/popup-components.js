@@ -373,8 +373,57 @@ export function initComponents(
     const exportBtn = document.getElementById('exportCustomThemeBtn');
     const importBtn = document.getElementById('importCustomThemeBtn');
     const importFile = document.getElementById('importCustomThemeFile');
+    const resetBtn = document.getElementById('resetCustomThemeBtn');
 
     if (!saveBtn) return;
+
+    const colorIds = ['customThemeBgBase', 'customThemeBgSurface', 'customThemeAccent', 'customThemeText'];
+    const syncPreviews = () => {
+      colorIds.forEach(id => {
+        const el = document.getElementById(id);
+        const preview = document.getElementById('preview' + id.replace('customTheme', ''));
+        if (el && preview) preview.style.backgroundColor = el.value;
+      });
+    };
+    colorIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', syncPreviews);
+    });
+    
+    chrome.storage.local.get('settings', (data) => {
+      const settings = data.settings || {};
+      const activeKey = settings.activeTheme;
+      if (activeKey && settings.customThemes && settings.customThemes[activeKey]) {
+        const vars = settings.customThemes[activeKey].variables;
+        if (vars['--ypp-bg-base']) document.getElementById('customThemeBgBase').value = vars['--ypp-bg-base'];
+        if (vars['--ypp-bg-surface']) document.getElementById('customThemeBgSurface').value = vars['--ypp-bg-surface'];
+        if (vars['--ypp-accent-primary']) document.getElementById('customThemeAccent').value = vars['--ypp-accent-primary'];
+        if (vars['--ypp-text-primary']) document.getElementById('customThemeText').value = vars['--ypp-text-primary'];
+      }
+      syncPreviews();
+    });
+
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        document.getElementById('customThemeName').value = '';
+        document.getElementById('customThemeBgBase').value = '#0f0f0f';
+        document.getElementById('customThemeBgSurface').value = '#212121';
+        document.getElementById('customThemeAccent').value = '#ff4e45';
+        document.getElementById('customThemeText').value = '#ffffff';
+        syncPreviews();
+        
+        chrome.storage.local.get('settings', (data) => {
+          const settings = data.settings || {};
+          settings.activeTheme = 'default';
+          chrome.storage.local.set({ settings }, () => {
+            initThemeSelector('default');
+            applyThemeToPopup('default', settings.customThemes || {});
+            notifyThemeChange('default');
+          });
+        });
+      });
+    }
 
     saveBtn.addEventListener('click', () => {
       const nameInput = document.getElementById('customThemeName');
@@ -1049,30 +1098,98 @@ export function initComponents(
     const uploadBtn = document.getElementById('uploadImageThemeBtn');
     const fileInput = document.getElementById('imageThemeFileInput');
     const clearBtn = document.getElementById('clearImageThemeBtn');
-    const previewContainer = document.getElementById('imagePreviewContainer');
-    const previewImg = document.getElementById('customBgPreview');
-    const placeholderSvg = document.getElementById('customBgPlaceholder');
+    const previewContainer = document.getElementById('imageThemePreviewContainer');
+    const previewDiv = document.getElementById('imageThemePreview');
+    const overrideBadge = document.getElementById('imageThemeOverrideBadge');
     const intensitySlider = document.getElementById('imageThemeIntensity');
-    const blurSlider = document.getElementById('customBackgroundImageBlur');
-    const brightnessSlider = document.getElementById('customBackgroundImageBrightness');
-    const saturationSlider = document.getElementById('customBackgroundImageSaturation');
+    const blurSlider = document.getElementById('imageThemeBlur');
+    const brightnessSlider = document.getElementById('imageThemeBrightness');
+    const saturationSlider = document.getElementById('imageThemeSaturation');
     const extractColorsCheck = document.getElementById('imageThemeExtractColors');
 
     if (!fileInput) return;
+
+    const extractAndApplyPalette = (imgSource) => {
+        const sampleCanvas = document.createElement('canvas');
+        const sampleCtx = sampleCanvas.getContext('2d');
+        sampleCanvas.width = 64;
+        sampleCanvas.height = 64;
+        sampleCtx.drawImage(imgSource, 0, 0, 64, 64);
+        const data = sampleCtx.getImageData(0, 0, 64, 64).data;
+        const colorCounts = {};
+        for (let i = 0; i < data.length; i += 4) {
+            const r = Math.round(data[i] / 16) * 16;
+            const g = Math.round(data[i+1] / 16) * 16;
+            const b = Math.round(data[i+2] / 16) * 16;
+            const rgb = `${r},${g},${b}`;
+            colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
+        }
+        const sortedColors = Object.entries(colorCounts).sort((a, b) => b[1] - a[1]);
+        const palette = [];
+        const dist = (c1, c2) => Math.abs(c1[0]-c2[0]) + Math.abs(c1[1]-c2[1]) + Math.abs(c1[2]-c2[2]);
+        for (const [rgbStr] of sortedColors) {
+            const rgb = rgbStr.split(',').map(Number);
+            let distinct = true;
+            for (const p of palette) {
+                if (dist(rgb, p) < 60) {
+                    distinct = false;
+                    break;
+                }
+            }
+            if (distinct) {
+                palette.push(rgb);
+                if (palette.length >= 4) break;
+            }
+        }
+        while (palette.length < 4 && sortedColors.length > palette.length) {
+            palette.push(sortedColors[palette.length][0].split(',').map(Number));
+        }
+        while (palette.length < 4) palette.push([0,0,0]);
+        
+        const hexPalette = palette.map(rgb => '#' + rgb[0].toString(16).padStart(2,'0') + rgb[1].toString(16).padStart(2,'0') + rgb[2].toString(16).padStart(2,'0'));
+        
+        updateSetting('extractedPalette', hexPalette);
+        updateSetting('accentColor', hexPalette[0]);
+        
+        const boxesContainer = document.getElementById('extractedPaletteBoxes');
+        if (boxesContainer) {
+            boxesContainer.style.display = 'flex';
+            for (let i = 0; i < 4; i++) {
+                const box = document.getElementById('paletteBox' + (i+1));
+                if (box) box.style.backgroundColor = hexPalette[i];
+            }
+        }
+        
+        const customInput = document.getElementById('accentColor');
+        if (customInput) {
+            customInput.value = hexPalette[0];
+            customInput.dispatchEvent(new Event('input', {bubbles:true}));
+        }
+    };
 
     // Load saved settings
     chrome.storage.local.get('settings', (data) => {
       const settings = data.settings || {};
       
       if (settings.customBackgroundImage) {
-        if(previewImg) {
-            previewImg.src = settings.customBackgroundImage;
-            previewImg.style.display = 'block';
+        if(previewDiv) {
+            previewDiv.style.backgroundImage = `url("${settings.customBackgroundImage}")`;
         }
-        if(placeholderSvg) placeholderSvg.style.display = 'none';
+        if(overrideBadge) overrideBadge.style.display = 'flex';
+        
+        if (settings.extractedPalette && settings.extractedPalette.length === 4) {
+            const boxesContainer = document.getElementById('extractedPaletteBoxes');
+            if (boxesContainer) {
+                boxesContainer.style.display = 'flex';
+                for (let i = 0; i < 4; i++) {
+                    const box = document.getElementById('paletteBox' + (i+1));
+                    if (box) box.style.backgroundColor = settings.extractedPalette[i];
+                }
+            }
+        }
       } else {
-        if(previewImg) previewImg.style.display = 'none';
-        if(placeholderSvg) placeholderSvg.style.display = 'block';
+        if(previewDiv) previewDiv.style.backgroundImage = 'none';
+        if(overrideBadge) overrideBadge.style.display = 'none';
       }
       
       if (intensitySlider) {
@@ -1096,7 +1213,20 @@ export function initComponents(
           if (valEl) valEl.textContent = Number(settings.customBackgroundImageSaturation ?? 1.0).toFixed(1) + 'x';
       }
       if (extractColorsCheck) extractColorsCheck.checked = settings.customBackgroundImageExtractColors ?? true;
+      
+      updatePreviewStyles();
     });
+
+    const updatePreviewStyles = () => {
+        if (!previewDiv) return;
+        const blur = blurSlider ? blurSlider.value : 0;
+        const bright = brightnessSlider ? brightnessSlider.value : 1.0;
+        const sat = saturationSlider ? saturationSlider.value : 1.0;
+        const int = intensitySlider ? intensitySlider.value : 0.6;
+        
+        previewDiv.style.filter = `blur(${blur}px) brightness(${bright}) saturate(${sat})`;
+        previewDiv.style.opacity = int;
+    };
 
     const bindSlider = (slider, key, isFloat = true, formatter = (v)=>v) => {
         if (!slider) return;
@@ -1106,6 +1236,8 @@ export function initComponents(
             const displayEl = document.getElementById(slider.id + 'Value') || document.getElementById('customBackgroundImageIntensityValue');
             if (displayEl && slider.id !== 'imageThemeIntensity') displayEl.textContent = formatter(val);
             else if (displayEl && slider.id === 'imageThemeIntensity') displayEl.textContent = Math.round(val * 100) + '%';
+            
+            updatePreviewStyles();
         });
     };
 
@@ -1123,19 +1255,7 @@ export function initComponents(
             if (bgUrl) {
               const img = new Image();
               img.onload = () => {
-                const sampleCanvas = document.createElement('canvas');
-                const sampleCtx = sampleCanvas.getContext('2d');
-                sampleCanvas.width = 1;
-                sampleCanvas.height = 1;
-                sampleCtx.drawImage(img, 0, 0, 1, 1);
-                const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
-                const averageColor = '#' + pixel[0].toString(16).padStart(2, '0') + pixel[1].toString(16).padStart(2, '0') + pixel[2].toString(16).padStart(2, '0');
-                updateSetting('accentColor', averageColor);
-                const customInput = document.getElementById('accentColor');
-                if (customInput) {
-                  customInput.value = averageColor;
-                  customInput.dispatchEvent(new Event('input', {bubbles:true}));
-                }
+                extractAndApplyPalette(img);
               };
               img.src = bgUrl;
             }
@@ -1145,16 +1265,18 @@ export function initComponents(
     }
 
     if(uploadBtn) uploadBtn.addEventListener('click', (e) => {
-        // Just let it work natively
+        if (fileInput) fileInput.click();
     });
 
     if(clearBtn) clearBtn.addEventListener('click', () => {
-      if(previewImg) {
-        previewImg.src = '';
-        previewImg.style.display = 'none';
+      if(previewDiv) {
+        previewDiv.style.backgroundImage = 'none';
       }
-      if(placeholderSvg) placeholderSvg.style.display = 'block';
+      if(overrideBadge) overrideBadge.style.display = 'none';
+      const boxesContainer = document.getElementById('extractedPaletteBoxes');
+      if (boxesContainer) boxesContainer.style.display = 'none';
       updateSetting('customBackgroundImage', null);
+      updateSetting('extractedPalette', null);
       if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
     });
 
@@ -1188,37 +1310,22 @@ export function initComponents(
           canvas.width = width;
           canvas.height = height;
           ctx.drawImage(img, 0, 0, width, height);
-
           const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
           
-          let averageColor = null;
           if (extractColorsCheck && extractColorsCheck.checked) {
-            const sampleCanvas = document.createElement('canvas');
-            const sampleCtx = sampleCanvas.getContext('2d');
-            sampleCanvas.width = 1;
-            sampleCanvas.height = 1;
-            sampleCtx.drawImage(canvas, 0, 0, 1, 1);
-            const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
-            averageColor = '#' + pixel[0].toString(16).padStart(2, '0') + pixel[1].toString(16).padStart(2, '0') + pixel[2].toString(16).padStart(2, '0');
+            extractAndApplyPalette(canvas);
+          } else {
+             const boxesContainer = document.getElementById('extractedPaletteBoxes');
+             if (boxesContainer) boxesContainer.style.display = 'none';
           }
-
-          if(previewImg) {
-            previewImg.src = dataUrl;
-            previewImg.style.display = 'block';
-          }
-          if(placeholderSvg) placeholderSvg.style.display = 'none';
-
+          
           updateSetting('customBackgroundImage', dataUrl);
           
-          if (averageColor) {
-            updateSetting('accentColor', averageColor);
-            const customInput = document.getElementById('accentColor');
-            if (customInput) {
-              customInput.value = averageColor;
-              customInput.dispatchEvent(new Event('input', {bubbles:true}));
-            }
+          if(previewDiv) {
+            previewDiv.style.backgroundImage = `url("${dataUrl}")`;
           }
-
+          if(overrideBadge) overrideBadge.style.display = 'flex';
+          
           if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
         };
         img.src = event.target.result;
