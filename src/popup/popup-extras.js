@@ -675,17 +675,26 @@ export function renderDomainMemoryManager(container, state) {
                 border: 1px solid rgba(255,255,255,0.12);
                 color: rgba(255,255,255,0.8);
                 border-radius: 8px;
-                padding: 5px 8px;
-                font-size: 11px;
-                font-weight: 600;
-                cursor: pointer;
+                padding: 5px 24px 5px 10px;
+                font-family: 'Inter', sans-serif;
+                font-size: 11.5px;
+                font-weight: 500;
                 outline: none;
-                display: flex;
-                align-items: center;
-                gap: 5px;
+                cursor: pointer;
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right 8px center;
+                background-size: 14px;
+                transition: all 0.2s var(--ease-smooth);
+            }
+            .dmm-sort-select option {
+                background: #1a1a1a;
+                color: white;
             }
             .dmm-sort-select:hover {
                 border-color: rgba(0,229,255,0.4);
+                background-color: rgba(255,255,255,0.08);
             }
             .dmm-btn {
                 background: rgba(255, 255, 255, 0.06);
@@ -907,7 +916,7 @@ export function renderDomainMemoryManager(container, state) {
             </div>
             <div class="dmm-controls-row">
                 <div style="display:flex;align-items:center;gap:5px;">
-                    ${dmmSVG('sort', 11)}
+                    
                     <select id="dmm-sort" class="dmm-sort-select">
                         <option value="time">Last Updated</option>
                         <option value="name">Name A–Z</option>

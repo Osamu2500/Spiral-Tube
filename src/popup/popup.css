@@ -2136,3 +2136,46 @@ body.ypp-theme-minimalism .nav-item.active {
 
 
 
+
+/* Global Player Bar Buttons */
+.gpb-btn-pill {
+    flex: 1 1 calc(33.333% - 8px) !important;
+    min-width: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    padding: 7px 9px !important;
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid rgba(255,255,255,.07) !important;
+    border-radius: 8px !important;
+    font-size: 11px !important; 
+    font-weight: 500 !important;
+    color: var(--text-2) !important;
+    cursor: pointer !important;
+    transition: all .18s var(--ease-smooth) !important;
+    user-select: none !important;
+}
+.gpb-btn-pill:hover { 
+    background: rgba(255,255,255,.07) !important; 
+    border-color: rgba(255,255,255,.14) !important; 
+}
+.gpb-btn-pill input[type="checkbox"] { 
+    display: none !important; 
+}
+.gpb-btn-pill:has(input:checked) { 
+    background: rgba(255,255,255,.08) !important; 
+    color: #fff !important; 
+}
+.gpb-dot {
+    width: 8px !important; 
+    height: 8px !important;
+    border-radius: 50% !important; 
+    flex-shrink: 0 !important;
+    box-shadow: 0 0 5px currentColor !important;
+    opacity: .45 !important;
+    transition: opacity .18s !important;
+}
+.gpb-btn-pill:has(input:checked) .gpb-dot { 
+    opacity: 1 !important; 
+}
