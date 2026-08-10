@@ -2139,13 +2139,13 @@ body.ypp-theme-minimalism .nav-item.active {
 
 /* Global Player Bar Buttons */
 .gpb-btn-pill {
-    flex: 1 1 calc(33.333% - 8px) !important;
-    min-width: 100px !important;
+    flex: 0 0 auto !important;
+    min-width: unset !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     gap: 7px !important;
-    padding: 7px 9px !important;
+    padding: 6px 10px !important;
     background: rgba(255,255,255,.04) !important;
     border: 1px solid rgba(255,255,255,.07) !important;
     border-radius: 8px !important;
@@ -2172,10 +2172,13 @@ body.ypp-theme-minimalism .nav-item.active {
     height: 8px !important;
     border-radius: 50% !important; 
     flex-shrink: 0 !important;
-    box-shadow: 0 0 5px currentColor !important;
-    opacity: .45 !important;
-    transition: opacity .18s !important;
+    background-color: #ff4a4a !important;
+    box-shadow: 0 0 5px #ff4a4a !important;
+    opacity: .7 !important;
+    transition: all .2s var(--ease-smooth) !important;
 }
 .gpb-btn-pill:has(input:checked) .gpb-dot { 
+    background-color: #10b981 !important;
+    box-shadow: 0 0 5px #10b981 !important;
     opacity: 1 !important; 
 }
