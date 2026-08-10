@@ -288,58 +288,64 @@
                </div>
             </div>
             <div class="card-group">
-                <div class="custom-theme-builder-container">
-                  <div class="inline-setting-row" style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
-                    <div class="search-container theme-name-input-container" style="flex: 1; margin-right: 12px; margin-bottom: 0;">
-                      <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" aria-label="Custom Theme Name" title="Custom Theme Name" style="width: 100%;">
-                    </div>
-                    <div class="theme-actions-row" style="display: flex; gap: 8px;">
-                      <button id="saveCustomThemeBtn" class="icon-btn" title="Save Theme">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-                      </button>
-                      <button id="exportCustomThemeBtn" class="icon-btn" title="Export Theme">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                      </button>
-                      <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                      </button>
-                      <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" style="display: none;">
-                    </div>
+              <div class="custom-theme-builder-grid">
+                <!-- Name & Actions Row -->
+                <div class="theme-header-row">
+                  <div class="search-container theme-name-input-container">
+                    <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" aria-label="Custom Theme Name" title="Custom Theme Name">
                   </div>
-                  
-                  <div class="theme-palette-grid" style="display: flex; justify-content: space-around; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; margin-bottom: 12px;">
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                      <div class="color-swatch-wrapper" title="Base Background">
-                        <input type="color" id="customThemeBgBase" value="#0f0f0f" aria-label="Custom Theme Bg Base">
-                      </div>
-                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Base</span>
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                      <div class="color-swatch-wrapper" title="Surface Background">
-                        <input type="color" id="customThemeBgSurface" value="#212121" aria-label="Custom Theme Bg Surface">
-                      </div>
-                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Surface</span>
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                      <div class="color-swatch-wrapper" title="Accent Color">
-                        <input type="color" id="customThemeAccent" value="#ff4e45" aria-label="Custom Theme Accent">
-                      </div>
-                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Accent</span>
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                      <div class="color-swatch-wrapper" title="Text Color">
-                        <input type="color" id="customThemeText" value="#ffffff" aria-label="Custom Theme Text">
-                      </div>
-                      <span style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Text</span>
-                    </div>
-                  </div>
-                  
-                  <div class="inline-setting-row" style="padding: 0 4px;">
-                     <span class="name" style="font-size: 13px;">True Black</span>
-                     <label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label>
+                  <div class="theme-actions-row">
+                    <button id="resetCustomThemeBtn" class="icon-btn" title="Reset Theme">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+                    </button>
+                    <button id="saveCustomThemeBtn" class="icon-btn" title="Save Theme">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    </button>
+                    <button id="exportCustomThemeBtn" class="icon-btn" title="Export Theme">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    </button>
+                    <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </button>
+                    <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" class="hidden-input" style="display:none;">
                   </div>
                 </div>
-              </div>
+                
+                <!-- Palette Grid -->
+                <div class="theme-palette-grid">
+                  <div class="color-picker-card">
+                    <div class="color-swatch-wrapper">
+                      <input type="color" id="customThemeBgBase" value="#0f0f0f" aria-label="Base Background">
+                      <div class="color-swatch-preview" id="previewBgBase"></div>
+                    </div>
+                    <span class="color-label">Base</span>
+                  </div>
+                  <div class="color-picker-card">
+                    <div class="color-swatch-wrapper">
+                      <input type="color" id="customThemeBgSurface" value="#212121" aria-label="Surface Background">
+                      <div class="color-swatch-preview" id="previewBgSurface"></div>
+                    </div>
+                    <span class="color-label">Surface</span>
+                  </div>
+                  <div class="color-picker-card">
+                    <div class="color-swatch-wrapper">
+                      <input type="color" id="customThemeAccent" value="#ff4e45" aria-label="Accent Color">
+                      <div class="color-swatch-preview" id="previewAccent"></div>
+                    </div>
+                    <span class="color-label">Accent</span>
+                  </div>
+                  <div class="color-picker-card">
+                    <div class="color-swatch-wrapper">
+                      <input type="color" id="customThemeText" value="#ffffff" aria-label="Text Color">
+                      <div class="color-swatch-preview" id="previewText"></div>
+                    </div>
+                    <span class="color-label">Text</span>
+                  </div>
+                </div>
+                
+              <div class="setting-item" title="Force completely black backgrounds"><div class="info"><span class="name">True Black</span></div><label class="toggle"><input type="checkbox" id="trueBlack" aria-label="True Black" title="True Black"><span class="slider"></span></label></div>
+            </div>
+            </div>
           </div>
 
           <!-- Image Theme Background -->
@@ -355,43 +361,77 @@
                </div>
             </div>
             <div class="card-group">
-              <div class="ypp-inline-51">
+              <div class="image-theme-split-view">
+                <!-- Left: Preview -->
+                <div class="image-theme-preview-side">
+                  <div id="imageThemePreviewContainer" class="premium-preview-container">
+                    <div id="imageThemePreview" class="preview-image"></div>
+                    <div id="imageThemeOverrideBadge" class="override-badge">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Overrides Theme Colors
+                    </div>
+                  </div>
+                </div>
                 
-                <div class="ypp-inline-52">
-                  <button id="uploadImageThemeBtn" class="ypp-inline-53 action-btn" data-i18n="upload_image">Upload Image</button>
-                  <button id="clearImageThemeBtn" class="ypp-inline-54 icon-btn" title="Clear Image">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                  </button>
-                  <input type="file" id="imageThemeFileInput" accept="image/*" aria-label="Image Theme File Input" title="Image Theme File Input" class="ypp-inline-55">
-                </div>
-
-                <!-- Preview Box -->
-                <div id="imageThemePreviewContainer" class="ypp-inline-56">
-                  <div id="imageThemePreview" class="ypp-inline-57"></div>
-                  <div id="imageThemeOverrideBadge" class="ypp-inline-58">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--accent)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Overrides Theme Colors
+                <!-- Right: Controls -->
+                <div class="image-theme-controls-side">
+                  <div class="upload-actions-row">
+                    <button id="uploadImageThemeBtn" class="action-btn" data-i18n="upload_image">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                      Upload
+                    </button>
+                    <button id="clearImageThemeBtn" class="action-btn danger-btn" title="Clear Image">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      Clear
+                    </button>
+                    <input type="file" id="imageThemeFileInput" accept="image/*" aria-label="Image Theme File Input" title="Image Theme File Input" style="display:none;">
                   </div>
-                </div>
-
-                <div class="card-group">
-                  <div class="ypp-inline-50 inline-setting-row">
-                     <div class="ypp-inline-51">
-                        <span class="ypp-inline-52 name" data-i18n="intensity">Intensity</span>
-                     </div>
-                     <input type="range" id="imageThemeIntensity" min="0" max="100" value="80" class="ypp-inline-53 slider">
+                  
+                  <div class="slider-group">
+                    <div class="slider-item">
+                      <div class="slider-header">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <span data-i18n="intensity">Intensity</span>
+                      </div>
+                      <input type="range" id="imageThemeIntensity" min="0.1" max="1.0" step="0.05" value="0.6" aria-label="Image Theme Intensity" title="Image Theme Intensity">
+                    </div>
+                    
+                    <div class="slider-item">
+                      <div class="slider-header">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span data-i18n="blur">Blur</span>
+                      </div>
+                      <input type="range" id="imageThemeBlur" min="0" max="50" step="1" value="0" aria-label="Image Theme Blur" title="Image Theme Blur">
+                    </div>
+                    
+                    <div class="slider-item">
+                      <div class="slider-header">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <span data-i18n="brightness">Brightness</span>
+                      </div>
+                      <input type="range" id="imageThemeBrightness" min="0.5" max="2.0" step="0.1" value="1.0" aria-label="Image Theme Brightness" title="Image Theme Brightness">
+                    </div>
+                    
+                    <div class="slider-item">
+                      <div class="slider-header">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        <span data-i18n="saturation">Saturation</span>
+                      </div>
+                      <input type="range" id="imageThemeSaturation" min="0.0" max="3.0" step="0.1" value="1.0" aria-label="Image Theme Saturation" title="Image Theme Saturation">
+                    </div>
                   </div>
-                  <div class="ypp-inline-54 inline-setting-row">
-                     <div class="ypp-inline-55" style="display: flex; align-items: center; gap: 12px;">
-                        <span class="ypp-inline-56 name" data-i18n="extract_ui_colors">Extract UI Colors</span>
-                        <div id="extractedColorsPreview" class="extracted-colors-preview" style="display: none;">
-                          <div class="extracted-box" id="extractedBox1"></div>
-                          <div class="extracted-box" id="extractedBox2"></div>
-                          <div class="extracted-box" id="extractedBox3"></div>
-                          <div class="extracted-box" id="extractedBox4"></div>
-                        </div>
-                     </div>
-                     <label class="ypp-inline-57 toggle"><input type="checkbox" id="extractImageColors" aria-label="Extract Image Colors" title="Extract Image Colors"><span class="slider"></span></label>
+                  
+                  <div class="setting-item toggle-row mt-2" title="Automatically extract the primary color from the image and apply it to YouTube's UI">
+                    <div class="info" style="display:flex; align-items:center; gap: 8px;">
+                      <span class="name" data-i18n="extract_colors">Extract UI Colors</span>
+                      <div id="extractedColorsPreview" class="extracted-palette" style="display: none;">
+                        <div class="extracted-box" id="extractedBox1"></div>
+                        <div class="extracted-box" id="extractedBox2"></div>
+                        <div class="extracted-box" id="extractedBox3"></div>
+                        <div class="extracted-box" id="extractedBox4"></div>
+                      </div>
+                    </div>
+                    <label class="toggle"><input type="checkbox" id="imageThemeExtractColors" aria-label="Image Theme Extract Colors" title="Image Theme Extract Colors"><span class="slider"></span></label>
                   </div>
                 </div>
               </div>
@@ -1207,4 +1247,6 @@
 
 
 <!-- UI Changes Restored -->
+
+
 
