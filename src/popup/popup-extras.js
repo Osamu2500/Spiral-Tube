@@ -623,14 +623,18 @@ export function renderDomainMemoryManager(container, state) {
                 width: 100%;
                 box-sizing: border-box;
                 margin-top: 12px;
-                background: rgba(14, 15, 22, 0.7);
-                border: 1px solid rgba(255, 255, 255, 0.08);
+                background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+                border: 1px solid transparent;
                 border-radius: 16px;
                 padding: 16px;
                 display: flex;
                 flex-direction: column;
-                gap: 11px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                gap: 12px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+                transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            }
+            .dmm-wrap:hover {
+                border-color: color-mix(in srgb, var(--accent-primary) 20%, transparent);
             }
             .dmm-header-row {
                 display: flex;
@@ -640,12 +644,15 @@ export function renderDomainMemoryManager(container, state) {
                 gap: 8px;
             }
             .dmm-title {
-                font-size: 13px;
+                font-size: 13.5px;
                 font-weight: 700;
-                color: #ffffff;
+                color: var(--text-1);
                 display: flex;
                 align-items: center;
                 gap: 8px;
+            }
+            .dmm-title svg {
+                color: var(--accent-primary);
             }
             .dmm-header-actions {
                 display: flex;
@@ -654,12 +661,12 @@ export function renderDomainMemoryManager(container, state) {
             }
             .dmm-storage-pill {
                 font-size: 10px;
-                font-weight: 600;
-                color: rgba(255,255,255,0.55);
-                background: rgba(255,255,255,0.06);
-                border: 1px solid rgba(255,255,255,0.1);
-                border-radius: 20px;
-                padding: 3px 10px;
+                font-weight: 700;
+                color: var(--text-2);
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: var(--r-pill);
+                padding: 4px 10px;
                 display: flex;
                 align-items: center;
                 gap: 5px;
@@ -671,14 +678,14 @@ export function renderDomainMemoryManager(container, state) {
                 gap: 8px;
             }
             .dmm-sort-select {
-                background: rgba(255,255,255,0.06);
-                border: 1px solid rgba(255,255,255,0.12);
-                color: rgba(255,255,255,0.8);
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.08);
+                color: var(--text-1);
                 border-radius: 8px;
-                padding: 5px 24px 5px 10px;
+                padding: 6px 28px 6px 12px;
                 font-family: 'Inter', sans-serif;
-                font-size: 11.5px;
-                font-weight: 500;
+                font-size: 11px;
+                font-weight: 600;
                 outline: none;
                 cursor: pointer;
                 appearance: none;
@@ -693,33 +700,32 @@ export function renderDomainMemoryManager(container, state) {
                 color: white;
             }
             .dmm-sort-select:hover {
-                border-color: rgba(0,229,255,0.4);
-                background-color: rgba(255,255,255,0.08);
+                border-color: color-mix(in srgb, var(--accent-primary) 40%, transparent);
+                background-color: color-mix(in srgb, var(--accent-primary) 8%, transparent);
             }
             .dmm-btn {
-                background: rgba(255, 255, 255, 0.06);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                color: rgba(255, 255, 255, 0.85);
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                color: var(--text-1);
                 border-radius: 8px;
-                padding: 6px 10px;
+                padding: 6px 12px;
                 font-size: 11px;
                 font-weight: 600;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 gap: 6px;
-                transition: all 0.2s ease;
+                transition: all 0.2s var(--ease-smooth);
                 white-space: nowrap;
             }
             .dmm-btn:hover {
-                background: rgba(255, 255, 255, 0.14);
-                color: #fff;
-                border-color: rgba(255, 255, 255, 0.25);
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.15);
             }
             .dmm-btn-danger:hover {
-                background: rgba(255, 51, 102, 0.2);
-                border-color: #ff3366;
-                color: #ff3366;
+                background: rgba(255, 51, 102, 0.12);
+                border-color: rgba(255, 51, 102, 0.3);
+                color: #ff5e84;
             }
             .dmm-search-wrap {
                 position: relative;
@@ -729,59 +735,64 @@ export function renderDomainMemoryManager(container, state) {
             }
             .dmm-search-icon {
                 position: absolute;
-                left: 12px;
-                color: rgba(255, 255, 255, 0.4);
+                left: 14px;
+                color: var(--text-dim);
                 pointer-events: none;
                 display: flex;
             }
             .dmm-search-input {
                 width: 100%;
-                background: rgba(0, 0, 0, 0.35);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 10px;
-                padding: 8px 12px 8px 36px;
+                padding: 10px 14px 10px 38px;
                 font-size: 12px;
-                color: #fff;
+                color: var(--text-1);
                 outline: none;
-                transition: border-color 0.2s;
+                transition: all 0.2s var(--ease-smooth);
                 box-sizing: border-box;
+                font-family: 'Inter', sans-serif;
             }
             .dmm-search-input:focus {
-                border-color: #00e5ff;
+                border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+                background: rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-primary) 15%, transparent);
             }
             .dmm-list {
                 display: flex;
                 flex-direction: column;
-                gap: 7px;
-                max-height: 360px;
+                gap: 8px;
+                max-height: 380px;
                 overflow-y: auto;
                 padding-right: 4px;
             }
             .dmm-list::-webkit-scrollbar { width: 5px; }
-            .dmm-list::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 4px; }
-            .dmm-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22); border-radius: 4px; }
-            .dmm-list::-webkit-scrollbar-thumb:hover { background: rgba(0,229,255,0.55); }
+            .dmm-list::-webkit-scrollbar-track { background: transparent; }
+            .dmm-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+            .dmm-list::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
             .dmm-row {
-                background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: rgba(255,255,255,0.02);
+                border: 1px solid rgba(255,255,255,0.04);
                 border-radius: 12px;
-                padding: 10px 12px 10px 14px;
+                padding: 12px 14px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                gap: 12px;
-                transition: all 0.2s ease;
+                gap: 14px;
+                transition: all 0.2s var(--ease-smooth);
                 width: 100%;
                 box-sizing: border-box;
-                border-left-width: 3px;
+                border-left: 3px solid transparent;
                 animation: dmm-row-in 0.2s ease forwards;
                 position: relative;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
             .dmm-row:hover {
-                background: rgba(255, 255, 255, 0.08);
-                border-color: rgba(255, 255, 255, 0.14);
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+                background: rgba(255,255,255,0.05);
+                border-color: rgba(255,255,255,0.1);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             }
             .dmm-row.scope-domain { border-left-color: #10b981; }
             .dmm-row.scope-series { border-left-color: #a78bfa; }
@@ -790,116 +801,119 @@ export function renderDomainMemoryManager(container, state) {
                 position: absolute;
                 inset: 0;
                 border-radius: 12px;
-                background: rgba(10,10,16,0.92);
+                background: rgba(15,15,20,0.95);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 10px;
+                gap: 12px;
                 backdrop-filter: blur(8px);
                 z-index: 10;
                 animation: dmm-row-in 0.15s ease forwards;
             }
             .dmm-confirm-msg {
-                font-size: 11.5px;
+                font-size: 12px;
                 font-weight: 600;
-                color: rgba(255,255,255,0.9);
+                color: rgba(255,255,255,0.95);
             }
             .dmm-confirm-yes {
-                background: rgba(239,68,68,0.2);
-                border: 1px solid #ef4444;
+                background: rgba(239,68,68,0.15);
+                border: 1px solid rgba(239,68,68,0.3);
                 color: #fca5a5;
-                border-radius: 7px;
-                padding: 5px 12px;
+                border-radius: 8px;
+                padding: 6px 14px;
                 font-size: 11px;
                 font-weight: 700;
                 cursor: pointer;
                 transition: all 0.15s;
             }
-            .dmm-confirm-yes:hover { background: rgba(239,68,68,0.4); color: #fff; }
+            .dmm-confirm-yes:hover { background: rgba(239,68,68,0.3); color: #fff; }
             .dmm-confirm-no {
-                background: rgba(255,255,255,0.07);
-                border: 1px solid rgba(255,255,255,0.15);
-                color: rgba(255,255,255,0.75);
-                border-radius: 7px;
-                padding: 5px 12px;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                color: rgba(255,255,255,0.8);
+                border-radius: 8px;
+                padding: 6px 14px;
                 font-size: 11px;
                 font-weight: 600;
                 cursor: pointer;
                 transition: all 0.15s;
             }
-            .dmm-confirm-no:hover { background: rgba(255,255,255,0.14); color: #fff; }
+            .dmm-confirm-no:hover { background: rgba(255,255,255,0.12); color: #fff; }
             .dmm-site-info {
                 display: flex;
                 align-items: center;
-                gap: 9px;
-                min-width: 130px;
-                max-width: 200px;
+                gap: 10px;
+                min-width: 140px;
+                max-width: 220px;
                 flex-shrink: 0;
             }
             .dmm-site-icon {
                 width: 24px;
                 height: 24px;
                 border-radius: 6px;
-                background: rgba(255, 255, 255, 0.07);
+                background: rgba(255, 255, 255, 0.05);
                 object-fit: contain;
-                padding: 2px;
+                padding: 3px;
                 flex-shrink: 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.15);
             }
             .dmm-site-title {
                 font-size: 12px;
                 font-weight: 700;
-                color: #fff;
+                color: var(--text-1);
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                margin-bottom: 2px;
             }
             .dmm-site-time {
                 font-size: 10px;
-                color: rgba(255, 255, 255, 0.4);
+                color: var(--text-dim);
                 white-space: nowrap;
+                font-weight: 500;
             }
             .dmm-settings-row {
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
-                gap: 5px;
+                gap: 6px;
                 flex: 1;
                 min-width: 0;
             }
             .dmm-badge {
-                font-size: 10.5px;
-                font-weight: 600;
-                padding: 3px 8px;
-                border-radius: 10px;
-                background: rgba(255, 255, 255, 0.06);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                color: rgba(255, 255, 255, 0.8);
+                font-size: 10px;
+                font-weight: 700;
+                padding: 4px 10px;
+                border-radius: var(--r-pill);
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                color: var(--text-2);
                 display: inline-flex;
                 align-items: center;
-                gap: 4px;
+                gap: 5px;
                 white-space: nowrap;
             }
-            .dmm-badge-red    { background: rgba(255, 51, 102, 0.14); border-color: rgba(255, 51, 102, 0.4); color: #ff5e84; }
-            .dmm-badge-cyan   { background: rgba(0, 229, 255, 0.12); border-color: rgba(0, 229, 255, 0.35); color: #00e5ff; }
-            .dmm-badge-purple { background: rgba(167, 139, 250, 0.14); border-color: rgba(167, 139, 250, 0.35); color: #c4b5fd; }
-            .dmm-badge-orange { background: rgba(249, 115, 22, 0.14); border-color: rgba(249, 115, 22, 0.35); color: #fb923c; }
-            .dmm-badge-series { background: rgba(167, 139, 250, 0.14); border-color: rgba(167, 139, 250, 0.4); color: #c4b5fd; }
-            .dmm-badge-domain { background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.35); color: #6ee7b7; }
-            .dmm-badge-neutral { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.07); color: rgba(255, 255, 255, 0.45); }
+            .dmm-badge-red    { background: color-mix(in srgb, #ff5e84 15%, transparent); border-color: color-mix(in srgb, #ff5e84 30%, transparent); color: #ff5e84; }
+            .dmm-badge-cyan   { background: color-mix(in srgb, #00e5ff 15%, transparent); border-color: color-mix(in srgb, #00e5ff 30%, transparent); color: #00e5ff; }
+            .dmm-badge-purple { background: color-mix(in srgb, #c4b5fd 15%, transparent); border-color: color-mix(in srgb, #c4b5fd 30%, transparent); color: #c4b5fd; }
+            .dmm-badge-orange { background: color-mix(in srgb, #fb923c 15%, transparent); border-color: color-mix(in srgb, #fb923c 30%, transparent); color: #fb923c; }
+            .dmm-badge-series { background: color-mix(in srgb, #a78bfa 15%, transparent); border-color: color-mix(in srgb, #a78bfa 30%, transparent); color: #c4b5fd; }
+            .dmm-badge-domain { background: color-mix(in srgb, #10b981 15%, transparent); border-color: color-mix(in srgb, #10b981 30%, transparent); color: #6ee7b7; }
+            .dmm-badge-neutral { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.06); color: var(--text-dim); }
             .dmm-row-actions {
                 display: flex;
                 align-items: center;
-                gap: 5px;
+                gap: 6px;
                 flex-shrink: 0;
             }
             .dmm-empty-state {
                 text-align: center;
-                padding: 36px 16px;
-                color: rgba(255, 255, 255, 0.5);
+                padding: 40px 16px;
+                color: var(--text-dim);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 8px;
+                gap: 12px;
             }
         `;
         document.head.appendChild(style);
