@@ -1,715 +1,891 @@
-/* ─── POPUP THEMES ─── */
+/* ─── MASSIVE POPUP THEMES OVERHAUL ─── */
 
-/* 5. Nature Theme */
-body.ypp-theme-nature {
-    --bg-primary: #1e2b1d;
-    --bg-surface: #2b4227;
-    --bg-glass: rgba(43, 66, 39, 0.85);
-    --bg-glass-hover: rgba(53, 82, 49, 0.9);
-    --border-subtle: rgba(182, 232, 74, 0.3);
-    --accent-primary: #b6e84a;
-    background-image: radial-gradient(circle at 10% 20%, rgba(182, 232, 74, 0.05) 0%, transparent 40%),
-                      radial-gradient(circle at 90% 80%, rgba(93, 148, 81, 0.1) 0%, transparent 40%);
-}
-body.ypp-theme-nature .app-container {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-subtle);
-}
-body.ypp-theme-nature .toggle-card {
-    background: var(--bg-surface);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 12px;
-}
-body.ypp-theme-nature .toggle-card:has(input:checked) {
-    background: rgba(182, 232, 74, 0.15);
-    border-color: rgba(182, 232, 74, 0.5);
-    box-shadow: 0 4px 12px rgba(182, 232, 74, 0.1);
-}
 
-/* 6. Vintage Theme */
-body.ypp-theme-vintage {
-    --bg-primary: #d4c4a8;
-    --bg-surface: #e0cda7;
-    --bg-glass: rgba(224, 205, 167, 0.85);
-    --bg-glass-hover: rgba(235, 215, 175, 0.9);
-    --border-subtle: rgba(100, 75, 50, 0.2);
-    --accent-primary: #8c5b3f;
-    --text-1: #3e2723;
-    --text-2: #5d4037;
-    --text-dim: #795548;
+body.ypp-theme-liquid-glass .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
 }
-body.ypp-theme-vintage, body.ypp-theme-vintage * {
-    color: var(--text-1);
-}
-body.ypp-theme-vintage .app-container {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-subtle);
-    border-radius: 4px;
-    box-shadow: inset 0 0 40px rgba(139,69,19,0.1);
-    font-family: 'Georgia', serif;
-}
-body.ypp-theme-vintage .toggle-card {
-    background: var(--bg-surface);
-    border: 1px solid rgba(139,69,19,0.15);
-    border-radius: 4px;
-}
-body.ypp-theme-vintage .toggle-card:has(input:checked) {
-    background: rgba(140, 91, 63, 0.15);
-    border-color: #8c5b3f;
-}
-
-/* 7. Ocean Theme */
-body.ypp-theme-ocean {
-    --bg-primary: #020a12;
-    --bg-surface: #051421;
-    --bg-glass: rgba(5, 20, 33, 0.85);
-    --bg-glass-hover: rgba(10, 30, 50, 0.9);
-    --border-subtle: rgba(0, 150, 255, 0.3);
-    --accent-primary: #00b4d8;
-    background-image: linear-gradient(180deg, #020a12 0%, #001a33 100%);
-}
-body.ypp-theme-ocean .toggle-card {
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
-    border: 1px solid rgba(255,255,255,0.05);
-}
-body.ypp-theme-ocean .toggle-card:has(input:checked) {
-    background: rgba(0, 180, 216, 0.15);
-    border-color: rgba(0, 180, 216, 0.5);
-    box-shadow: inset 0 0 15px rgba(0, 180, 216, 0.2), 0 0 10px rgba(0, 180, 216, 0.3);
-}
-
-/* 8. Blue Sky Theme */
-body.ypp-theme-blue-sky {
-    --bg-primary: #6ab0db;
-    --bg-surface: #87ceeb;
-    --bg-glass: rgba(135, 206, 235, 0.85);
-    --bg-glass-hover: rgba(155, 216, 245, 0.9);
-    --border-subtle: rgba(255, 255, 255, 0.4);
-    --accent-primary: #0277bd;
-    --text-1: #01579b;
-    --text-2: #0277bd;
-    background: linear-gradient(to bottom, #87ceeb, #e0f7fa);
-}
-body.ypp-theme-blue-sky, body.ypp-theme-blue-sky * {
-    color: var(--text-1);
-}
-body.ypp-theme-blue-sky .app-container {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.3);    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-body.ypp-theme-blue-sky .toggle-card {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 16px;
-}
-body.ypp-theme-blue-sky .toggle-card:has(input:checked) {
-    background: rgba(2, 119, 189, 0.15);
-    border-color: #0277bd;
-}
-
-/* 9. Retro Theme */
-body.ypp-theme-retro {
-    --bg-primary: #a0a0a0;
-    --bg-surface: #c0c0c0;
-    --bg-glass: rgba(192, 192, 192, 0.95);
-    --bg-glass-hover: #d0d0d0;
-    --border-subtle: #808080;
-    --accent-primary: #000080;
-    --text-1: #000000;
-    --text-2: #333333;
-}
-body.ypp-theme-retro, body.ypp-theme-retro * {
-    color: var(--text-1);
-    font-family: 'Tahoma', sans-serif;
-}
-body.ypp-theme-retro .app-container {
-    background: var(--bg-surface);
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #808080;
-    border-bottom: 2px solid #808080;
-    border-radius: 0;
-}
-body.ypp-theme-retro .toggle-card {
-    background: var(--bg-surface);
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
-    border-right: 2px solid #808080;
-    border-bottom: 2px solid #808080;
-    border-radius: 0;
-}
-body.ypp-theme-retro .toggle-card:active, body.ypp-theme-retro .toggle-card:has(input:checked) {
-    border-top: 2px solid #808080;
-    border-left: 2px solid #808080;
-    border-right: 2px solid #ffffff;
-    border-bottom: 2px solid #ffffff;
-    background: #a0a0a0;
-}
-
-/* 10. Technozen Theme */
-body.ypp-theme-technozen {
-    --bg-primary: #c9e8d6;
-    --bg-surface: #dff4e8;
-    --bg-glass: rgba(223, 244, 232, 0.85);
-    --bg-glass-hover: rgba(235, 250, 242, 0.9);
-    --border-subtle: rgba(121, 184, 144, 0.3);
-    --accent-primary: #4a8f65;
-    --text-1: #2a5238;
-}
-body.ypp-theme-technozen, body.ypp-theme-technozen * {
-    color: var(--text-1);
-}
-body.ypp-theme-technozen .app-container {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-}
-body.ypp-theme-technozen .toggle-card {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-}
-body.ypp-theme-technozen .toggle-card:has(input:checked) {
-    background: rgba(74, 143, 101, 0.2);
-    border-color: #4a8f65;
-}
-
-/* 11. Frutiger Aero Theme */
-body.ypp-theme-frutiger-aero {
-    --bg-primary: #bfe6ff;
-    --bg-surface: #d2f0ff;
-    --bg-glass: rgba(255, 255, 255, 0.6);
-    --bg-glass-hover: rgba(255, 255, 255, 0.8);
-    --border-subtle: rgba(255, 255, 255, 0.7);
-    --accent-primary: #12a8dd;
-    --text-1: #0a2a4a;
-    background: linear-gradient(180deg, #bfe6ff, #eafcff);
-}
-body.ypp-theme-frutiger-aero, body.ypp-theme-frutiger-aero * {
-    color: var(--text-1);
-}
-body.ypp-theme-frutiger-aero .app-container {
-  -webkit-backdrop-filter: blur(12px);
+body.ypp-theme-liquid-glass .toggle-card {
   backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.4);    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: inset 0 2px 6px rgba(255,255,255,0.9), 0 4px 16px rgba(18,168,221,0.2);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-body.ypp-theme-frutiger-aero .toggle-card {
-    background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(200,235,255,0.6));
-    border-radius: 500px;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 2px 4px rgba(18, 168, 221, 0.15);
+body.ypp-theme-liquid-glass .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-body.ypp-theme-frutiger-aero .toggle-card:has(input:checked) {
-    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(180,225,255,0.8));
-    border-color: #35c7f0;
-    box-shadow: inset 0 2px 6px rgba(255,255,255,1), 0 0 12px rgba(53,199,240,0.6);
-}
-
-/* 12. Terminalism Theme */
-body.ypp-theme-terminalism {
-    --bg-primary: #000000;
-    --bg-surface: #0a0a0a;
-    --bg-glass: #0a0a0a;
-    --bg-glass-hover: #111111;
-    --border-subtle: #00ff00;
-    --accent-primary: #00ff00;
-    --text-1: #00ff00;
-    --text-2: #00cc00;
-}
-body.ypp-theme-terminalism, body.ypp-theme-terminalism * {
-    color: var(--text-1);
-    font-family: 'Consolas', 'Courier New', monospace;
-}
-body.ypp-theme-terminalism .app-container {
-    background: #000000;
-    border: 1px solid #00ff00;
-    border-radius: 0;
-}
-body.ypp-theme-terminalism .toggle-card {
-    background: #000000;
-    border: 1px dashed #005500;
-    border-radius: 0;
-}
-body.ypp-theme-terminalism .toggle-card:hover {
-    border: 1px dashed #00ff00;
-}
-body.ypp-theme-terminalism .toggle-card:has(input:checked) {
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid #00ff00;
-    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
+body.ypp-theme-liquid-glass .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
 }
 
-/* 13. Claymorphism Theme */
-body.ypp-theme-claymorphism {
-    --bg-primary: #e6dcff;
-    --bg-surface: #f0e8ff;
-    --bg-glass: rgba(240, 232, 255, 0.9);
-    --bg-glass-hover: #ffffff;
-    --border-subtle: transparent;
-    --accent-primary: #9b51e0;
-    --text-1: #4a2b6b;
-}
-body.ypp-theme-claymorphism, body.ypp-theme-claymorphism * {
-    color: var(--text-1);
-}
-body.ypp-theme-claymorphism .app-container {
-    background: var(--bg-surface);
-    border-radius: 32px;
-    box-shadow: inset 6px 6px 12px rgba(255,255,255,1), inset -6px -6px 12px rgba(200,185,225,0.8);
-    border: none;
-}
-body.ypp-theme-claymorphism .toggle-card {
-    background: var(--bg-surface);
-    border-radius: 20px;
-    box-shadow: 4px 4px 10px rgba(190,175,215,0.6), -4px -4px 10px rgba(255,255,255,1);
-    border: none;
-}
-body.ypp-theme-claymorphism .toggle-card:has(input:checked) {
-    box-shadow: inset 4px 4px 10px rgba(190,175,215,0.6), inset -4px -4px 10px rgba(255,255,255,1);
-}
-
-/* 14. Brutalism Theme */
-body.ypp-theme-brutalism {
-    --bg-primary: #ffffff;
-    --bg-surface: #ffffff;
-    --bg-glass: #ffffff;
-    --bg-glass-hover: #eeeeee;
-    --border-subtle: #000000;
-    --accent-primary: #ff0000;
-    --text-1: #000000;
-}
-body.ypp-theme-brutalism, body.ypp-theme-brutalism * {
-    color: var(--text-1);
-    font-family: 'Arial', sans-serif;
-    font-weight: 700;
-}
-body.ypp-theme-brutalism .app-container {
-    background: #ffffff;
-    border: 4px solid #000000;
-    border-radius: 0;
-    box-shadow: 12px 12px 0 #000000;
-}
-body.ypp-theme-brutalism .toggle-card {
-    background: #ffffff;
-    border: 3px solid #000000;
-    border-radius: 0;
-    box-shadow: 4px 4px 0 #000000;
-    transition: none;
-}
-body.ypp-theme-brutalism .toggle-card:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 #000000;
-}
-body.ypp-theme-brutalism .toggle-card:has(input:checked) {
-    background: #000000;
-    color: #ffffff;
-    transform: translate(4px, 4px);
-    box-shadow: 0 0 0 #000000;
-}
-body.ypp-theme-brutalism .toggle-card:has(input:checked) * {
-    color: #ffffff !important;
-}
-
-/* 15. Default (Dark) */
-body.ypp-theme-default {
-    --bg-primary: #0f0f0f;
-    --bg-surface: #1a1a1a;
-    --bg-glass: #222222;
-    --bg-glass-hover: #333333;
-    --border-subtle: #444444;
-    --accent-primary: #3ea6ff;
-}
-body.ypp-theme-default .app-container {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-}
-body.ypp-theme-default .toggle-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-}
-body.ypp-theme-default .toggle-card:has(input:checked) {
-    background: rgba(62, 166, 255, 0.15);
-    border-color: #3ea6ff;
-}
-
-/* 16. Maximalism Theme */
-body.ypp-theme-maximalism {
-    --bg-primary: #ff00ff;
-    --bg-surface: #ffff00;
-    --bg-glass: #00ffff;
-    --bg-glass-hover: #ff0000;
-    --border-subtle: #00ff00;
-    --accent-primary: #0000ff;
-    --text-1: #000000;
-    background: repeating-linear-gradient(45deg, #ff00ff, #ff00ff 20px, #00ffff 20px, #00ffff 40px);
-}
-body.ypp-theme-maximalism, body.ypp-theme-maximalism * {
-    color: var(--text-1);
-    font-weight: 900;
-}
-body.ypp-theme-maximalism .app-container {
-    background: #ffff00;
-    border: 8px dashed #ff0000;
-    border-radius: 20px;
-    box-shadow: 10px 10px 0 #00ff00;
-}
-body.ypp-theme-maximalism .toggle-card {
-    background: #ff00ff;
-    border: 4px dotted #00ffff;
-    border-radius: 50%;
-    transform: rotate(-5deg);
-}
-body.ypp-theme-maximalism .toggle-card:has(input:checked) {
-    background: #00ff00;
-    border: 4px solid #ff0000;
-    transform: rotate(5deg) scale(1.1);
-}
-
-/* 17. Glassmorphism Theme */
-body.ypp-theme-glassmorphism {
-    --bg-primary: #0f0c29;
-    --bg-surface: rgba(255, 255, 255, 0.1);
-    --bg-glass: rgba(255, 255, 255, 0.15);
-    --bg-glass-hover: rgba(255, 255, 255, 0.2);
-    --border-subtle: rgba(255, 255, 255, 0.2);
-    --accent-primary: #ff4b2b;
-    background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
-}
-body.ypp-theme-glassmorphism .app-container {
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05);    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-body.ypp-theme-glassmorphism .toggle-card {
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);    border-radius: 16px;
-}
-body.ypp-theme-glassmorphism .toggle-card:has(input:checked) {
-    background: rgba(255, 75, 43, 0.2);
-    border-color: #ff4b2b;
-}
-
-/* 18. Aurora Theme */
-body.ypp-theme-aurora {
-    --bg-primary: #0a0a0a;
-    --bg-surface: #151515;
-    --bg-glass: rgba(30, 30, 30, 0.8);
-    --bg-glass-hover: rgba(40, 40, 40, 0.9);
-    --border-subtle: rgba(255, 255, 255, 0.05);
-    --accent-primary: #43e97b;
-    background: #0a0a0a;
-}
-body.ypp-theme-aurora::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(120deg, rgba(67,233,123,0.3) 0%, rgba(56,249,215,0.3) 100%);
-    filter: blur(100px);
-    z-index: -1;
-}
-body.ypp-theme-aurora .app-container {
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-    background: rgba(10, 10, 10, 0.7);    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-}
-body.ypp-theme-aurora .toggle-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-}
-body.ypp-theme-aurora .toggle-card:has(input:checked) {
-    background: rgba(67, 233, 123, 0.1);
-    border-color: #43e97b;
-    box-shadow: 0 0 20px rgba(67, 233, 123, 0.2);
-}
-
-/* 19. Material Theme */
-body.ypp-theme-material {
-    --bg-primary: #121212;
-    --bg-surface: #1f1f1f;
-    --bg-glass: #2c2c2c;
-    --bg-glass-hover: #3a3a3a;
-    --border-subtle: transparent;
-    --accent-primary: #bb86fc;
-}
-body.ypp-theme-material .app-container {
-    background: var(--bg-primary);
-    border-radius: 0;
-    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2);
-}
-body.ypp-theme-material .toggle-card {
-    background: var(--bg-surface);
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 3px 0 rgba(0,0,0,0.12);
-    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-body.ypp-theme-material .toggle-card:hover {
-    box-shadow: 0 3px 3px -2px rgba(0,0,0,0.2), 0 3px 4px 0 rgba(0,0,0,0.14), 0 1px 8px 0 rgba(0,0,0,0.12);
-}
-body.ypp-theme-material .toggle-card:has(input:checked) {
-    background: rgba(187, 134, 252, 0.12);
-}
-
-/* Fix text colors for light themes */
-body.ypp-theme-vintage, 
-body.ypp-theme-blue-sky, 
-body.ypp-theme-retro, 
-body.ypp-theme-technozen, 
-body.ypp-theme-frutiger-aero, 
-body.ypp-theme-claymorphism, 
-body.ypp-theme-brutalism, 
-body.ypp-theme-minimalism {
-    --text-1: #111111;
-    --text-2: #333333;
-    --text-dim: #555555;
-}
-body.ypp-theme-vintage *, 
-body.ypp-theme-blue-sky *, 
-body.ypp-theme-retro *, 
-body.ypp-theme-technozen *, 
-body.ypp-theme-frutiger-aero *, 
-body.ypp-theme-claymorphism *, 
-body.ypp-theme-brutalism *, 
-body.ypp-theme-minimalism * {
-    color: var(--text-1);
-}
-body.ypp-theme-vintage .action-btn svg, 
-body.ypp-theme-blue-sky .action-btn svg, 
-body.ypp-theme-retro .action-btn svg, 
-body.ypp-theme-technozen .action-btn svg, 
-body.ypp-theme-frutiger-aero .action-btn svg, 
-body.ypp-theme-claymorphism .action-btn svg, 
-body.ypp-theme-brutalism .action-btn svg, 
-body.ypp-theme-minimalism .action-btn svg {
-    color: var(--text-1);
-}
-
-/* 20. Cairo Red Theme */
-body.ypp-theme-cairo-red {
-    --bg-primary: #1a0505;
-    --bg-surface: #2b0808;
-    --bg-glass: rgba(43, 8, 8, 0.85);
-    --bg-glass-hover: rgba(53, 10, 10, 0.9);
-    --border-subtle: rgba(255, 0, 0, 0.3);
-    --accent-primary: #ff0000;
-}
-body.ypp-theme-cairo-red .toggle-card:has(input:checked) {
-    background: rgba(255, 0, 0, 0.15);
-    border-color: #ff0000;
-}
-
-/* 21. Cherry Theme */
-body.ypp-theme-pink {
-    --bg-primary: #2a0b16;
-    --bg-surface: #411122;
-    --bg-glass: rgba(65, 17, 34, 0.85);
-    --bg-glass-hover: rgba(75, 20, 39, 0.9);
-    --border-subtle: rgba(230, 60, 115, 0.3);
-    --accent-primary: #e63c73;
-}
-body.ypp-theme-pink .toggle-card:has(input:checked) {
-    background: rgba(230, 60, 115, 0.15);
-    border-color: #e63c73;
-}
-
-/* 22. Hacker Green Theme */
-body.ypp-theme-retrowave-green {
-    --bg-primary: #051a05;
-    --bg-surface: #0a2b0a;
-    --bg-glass: rgba(10, 43, 10, 0.85);
-    --bg-glass-hover: rgba(15, 53, 15, 0.9);
-    --border-subtle: rgba(0, 255, 0, 0.3);
-    --accent-primary: #00ff00;
-    font-family: 'Courier New', Courier, monospace;
-}
-body.ypp-theme-retrowave-green .toggle-card:has(input:checked) {
-    background: rgba(0, 255, 0, 0.15);
-    border-color: #00ff00;
-}
-
-/* 23. Kawaii Theme */
-body.ypp-theme-kawaii {
-    --bg-primary: #fff0f5;
-    --bg-surface: #ffe4e1;
-    --bg-glass: rgba(255, 228, 225, 0.85);
-    --bg-glass-hover: rgba(255, 218, 215, 0.9);
-    --border-subtle: rgba(255, 105, 180, 0.3);
-    --accent-primary: #ff69b4;
-    --text-1: #c71585;
-    --text-2: #db7093;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-body.ypp-theme-kawaii, body.ypp-theme-kawaii * {
-    color: var(--text-1);
-}
-body.ypp-theme-kawaii .toggle-card:has(input:checked) {
-    background: rgba(255, 105, 180, 0.15);
-    border-color: #ff69b4;
-}
-
-/* 24. Colorize Theme */
-body.ypp-theme-colorize {
-    --bg-primary: #1c1c1c;
-    --bg-surface: #2d2d2d;
-    --bg-glass: rgba(45, 45, 45, 0.85);
-    --bg-glass-hover: rgba(55, 55, 55, 0.9);
-    --border-subtle: rgba(255, 255, 255, 0.2);
-    --accent-primary: #ff9800;
-}
-body.ypp-theme-colorize .toggle-card:has(input:checked) {
-    background: rgba(255, 152, 0, 0.15);
-    border-color: #ff9800;
-}
-
-/* 25. Player Retouch */
-body.ypp-theme-player-retouch {
-    --bg-primary: #121212;
-    --bg-surface: #1e1e1e;
-    --bg-glass: rgba(30, 30, 30, 0.85);
-    --bg-glass-hover: rgba(40, 40, 40, 0.9);
-    --border-subtle: rgba(255, 255, 255, 0.15);
-    --accent-primary: #dde3e3;
-}
-body.ypp-theme-player-retouch .toggle-card:has(input:checked) {
-    background: rgba(221, 227, 227, 0.15);
-    border-color: #dde3e3;
-}
-
-/* 26. Crystal Glass */
-body.ypp-theme-crystal-glass {
-    --bg-primary: #0a1128;
-    --bg-surface: rgba(255, 255, 255, 0.05);
-    --bg-glass: rgba(255, 255, 255, 0.1);
-    --bg-glass-hover: rgba(255, 255, 255, 0.15);
-    --border-subtle: rgba(255, 255, 255, 0.3);
-    --accent-primary: #00d2ff;
-    background: linear-gradient(135deg, #0a1128, #1a2a6c, #b21f1f, #fdbb2d);
-}
 body.ypp-theme-crystal-glass .app-container {
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
+}
+body.ypp-theme-crystal-glass .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-crystal-glass .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 body.ypp-theme-crystal-glass .toggle-card:has(input:checked) {
-    background: rgba(0, 210, 255, 0.2);
-    border-color: #00d2ff;
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
 }
 
-/* 27. Ice Blue */
-body.ypp-theme-ice-blue {
-    --bg-primary: #e0f7fa;
-    --bg-surface: #b2ebf2;
-    --bg-glass: rgba(178, 235, 242, 0.85);
-    --bg-glass-hover: rgba(128, 222, 234, 0.9);
-    --border-subtle: rgba(0, 188, 212, 0.3);
-    --accent-primary: #00bcd4;
-    --text-1: #006064;
-    --text-2: #00838f;
+body.ypp-theme-glassmorphism .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
 }
-body.ypp-theme-ice-blue, body.ypp-theme-ice-blue * {
-    color: var(--text-1);
+body.ypp-theme-glassmorphism .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-glassmorphism .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+body.ypp-theme-glassmorphism .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+}
+
+body.ypp-theme-nebula .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
+}
+body.ypp-theme-nebula .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-nebula .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+body.ypp-theme-nebula .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+}
+
+body.ypp-theme-deepspace .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
+}
+body.ypp-theme-deepspace .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-deepspace .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+body.ypp-theme-deepspace .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+}
+
+body.ypp-theme-aurora .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
+}
+body.ypp-theme-aurora .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-aurora .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+body.ypp-theme-aurora .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+}
+
+body.ypp-theme-hologram .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
+}
+body.ypp-theme-hologram .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-hologram .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+body.ypp-theme-hologram .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+}
+
+body.ypp-theme-ice-blue .app-container {
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  background: rgba(25, 25, 30, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 24px;
+}
+body.ypp-theme-ice-blue .toggle-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body.ypp-theme-ice-blue .toggle-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 body.ypp-theme-ice-blue .toggle-card:has(input:checked) {
-    background: rgba(0, 188, 212, 0.15);
-    border-color: #00bcd4;
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 30%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
 }
 
-/* 28. Fluent UI */
-body.ypp-theme-fluent {
-    --bg-primary: #f3f2f1;
-    --bg-surface: #ffffff;
-    --bg-glass: rgba(255, 255, 255, 0.85);
-    --bg-glass-hover: rgba(243, 242, 241, 0.9);
-    --border-subtle: rgba(0, 0, 0, 0.1);
-    --accent-primary: #0078d4;
-    --text-1: #323130;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Neumorphic */
+body.ypp-theme-neumorphic .app-container {
+  background: #1a1b26 !important;
+  border: none;
+  border-radius: 30px;
+  box-shadow: inset 2px 2px 5px rgba(255,255,255,0.05), inset -3px -3px 7px rgba(0,0,0,0.5);
 }
-body.ypp-theme-fluent, body.ypp-theme-fluent * {
-    color: var(--text-1);
+body.ypp-theme-neumorphic .toggle-card {
+  background: #1a1b26;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.6), -5px -5px 10px rgba(255,255,255,0.03);
+  transition: all 0.3s ease;
 }
-body.ypp-theme-fluent .app-container {
-  -webkit-backdrop-filter: blur(40px);
-  backdrop-filter: blur(40px);
-    background: rgba(255, 255, 255, 0.6);    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+body.ypp-theme-neumorphic .toggle-card:has(input:checked) {
+  box-shadow: inset 4px 4px 8px rgba(0,0,0,0.6), inset -4px -4px 8px rgba(255,255,255,0.03);
+  background: #1a1b26;
 }
-body.ypp-theme-fluent .toggle-card:has(input:checked) {
-    background: rgba(0, 120, 212, 0.1);
-    border-color: #0078d4;
+body.ypp-theme-neumorphic .toggle-card:has(input:checked) .name {
+  color: var(--accent-primary);
+  text-shadow: 0 0 8px var(--accent-glow-sm);
 }
 
-/* Fix text colors for new light themes */
+/* Claymorphism */
+body.ypp-theme-claymorphism .app-container {
+  background: #f0e8ff !important;
+  border-radius: 32px;
+  box-shadow: inset 8px 8px 16px #ffffff, inset -8px -8px 16px rgba(200,185,225,0.8);
+  border: none;
+}
+body.ypp-theme-claymorphism .toggle-card {
+  background: #f0e8ff;
+  border-radius: 20px;
+  box-shadow: 6px 6px 12px rgba(190,175,215,0.6), -6px -6px 12px #ffffff;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+body.ypp-theme-claymorphism .toggle-card:has(input:checked) {
+  box-shadow: inset 6px 6px 12px rgba(190,175,215,0.6), inset -6px -6px 12px #ffffff;
+  transform: scale(0.98);
+}
+
+/* Bento */
+body.ypp-theme-bento .app-container {
+  background: #f4f4f5 !important;
+  border-radius: 24px;
+  padding: 16px;
+  gap: 12px;
+}
+body.ypp-theme-bento .toggle-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+body.ypp-theme-bento .toggle-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+body.ypp-theme-bento .toggle-card:has(input:checked) {
+  background: var(--accent-primary);
+  color: #fff !important;
+}
+
+/* Brutalism */
+body.ypp-theme-brutalism .app-container {
+  background: #ffffff !important;
+  border: 4px solid #000000;
+  border-radius: 0;
+  box-shadow: 12px 12px 0 #000000;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+body.ypp-theme-brutalism .toggle-card {
+  background: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #000000;
+  transition: all 0.1s;
+}
+body.ypp-theme-brutalism .toggle-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000000;
+}
+body.ypp-theme-brutalism .toggle-card:has(input:checked) {
+  background: var(--accent-primary);
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 #000000;
+}
+body.ypp-theme-brutalism .toggle-card:has(input:checked) * {
+  color: #ffffff !important;
+}
+
+/* Maximalism */
+body.ypp-theme-maximalism .app-container {
+  background: #ffff00 !important;
+  border: 8px dashed #ff0000;
+  border-radius: 30px;
+  box-shadow: 15px 15px 0 #00ff00;
+}
+body.ypp-theme-maximalism .toggle-card {
+  background: #ff00ff;
+  border: 4px dotted #00ffff;
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+body.ypp-theme-maximalism .toggle-card:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+body.ypp-theme-maximalism .toggle-card:has(input:checked) {
+  background: #00ff00;
+  border: 4px solid #ff0000;
+  transform: rotate(10deg) scale(1.1);
+}
+
+body.ypp-theme-cyberpunk, body.ypp-theme-cyberpunk * {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-cyberpunk .app-container {
+  border-radius: 0;
+  border: 1px solid var(--accent-primary);
+  box-shadow: inset 0 0 20px var(--accent-glow-sm), 0 0 30px var(--accent-glow-sm);
+  background: rgba(0,0,0,0.8) !important;
+  position: relative;
+}
+body.ypp-theme-cyberpunk .app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  z-index: 99;
+}
+body.ypp-theme-cyberpunk .toggle-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border-radius: 0;
+  transition: all 0.15s steps(3);
+}
+body.ypp-theme-cyberpunk .toggle-card:hover {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+body.ypp-theme-cyberpunk .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary), inset 0 0 10px var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+body.ypp-theme-outrun, body.ypp-theme-outrun * {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-outrun .app-container {
+  border-radius: 0;
+  border: 1px solid var(--accent-primary);
+  box-shadow: inset 0 0 20px var(--accent-glow-sm), 0 0 30px var(--accent-glow-sm);
+  background: rgba(0,0,0,0.8) !important;
+  position: relative;
+}
+body.ypp-theme-outrun .app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  z-index: 99;
+}
+body.ypp-theme-outrun .toggle-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border-radius: 0;
+  transition: all 0.15s steps(3);
+}
+body.ypp-theme-outrun .toggle-card:hover {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+body.ypp-theme-outrun .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary), inset 0 0 10px var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+body.ypp-theme-retrowave-green, body.ypp-theme-retrowave-green * {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-retrowave-green .app-container {
+  border-radius: 0;
+  border: 1px solid var(--accent-primary);
+  box-shadow: inset 0 0 20px var(--accent-glow-sm), 0 0 30px var(--accent-glow-sm);
+  background: rgba(0,0,0,0.8) !important;
+  position: relative;
+}
+body.ypp-theme-retrowave-green .app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  z-index: 99;
+}
+body.ypp-theme-retrowave-green .toggle-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border-radius: 0;
+  transition: all 0.15s steps(3);
+}
+body.ypp-theme-retrowave-green .toggle-card:hover {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+body.ypp-theme-retrowave-green .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary), inset 0 0 10px var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+body.ypp-theme-terminalism, body.ypp-theme-terminalism * {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-terminalism .app-container {
+  border-radius: 0;
+  border: 1px solid var(--accent-primary);
+  box-shadow: inset 0 0 20px var(--accent-glow-sm), 0 0 30px var(--accent-glow-sm);
+  background: rgba(0,0,0,0.8) !important;
+  position: relative;
+}
+body.ypp-theme-terminalism .app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  z-index: 99;
+}
+body.ypp-theme-terminalism .toggle-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border-radius: 0;
+  transition: all 0.15s steps(3);
+}
+body.ypp-theme-terminalism .toggle-card:hover {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+body.ypp-theme-terminalism .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary), inset 0 0 10px var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+body.ypp-theme-hacker, body.ypp-theme-hacker * {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-hacker .app-container {
+  border-radius: 0;
+  border: 1px solid var(--accent-primary);
+  box-shadow: inset 0 0 20px var(--accent-glow-sm), 0 0 30px var(--accent-glow-sm);
+  background: rgba(0,0,0,0.8) !important;
+  position: relative;
+}
+body.ypp-theme-hacker .app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  z-index: 99;
+}
+body.ypp-theme-hacker .toggle-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border-radius: 0;
+  transition: all 0.15s steps(3);
+}
+body.ypp-theme-hacker .toggle-card:hover {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+body.ypp-theme-hacker .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary), inset 0 0 10px var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+body.ypp-theme-technozen, body.ypp-theme-technozen * {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+body.ypp-theme-technozen .app-container {
+  border-radius: 0;
+  border: 1px solid var(--accent-primary);
+  box-shadow: inset 0 0 20px var(--accent-glow-sm), 0 0 30px var(--accent-glow-sm);
+  background: rgba(0,0,0,0.8) !important;
+  position: relative;
+}
+body.ypp-theme-technozen .app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  z-index: 99;
+}
+body.ypp-theme-technozen .toggle-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border-radius: 0;
+  transition: all 0.15s steps(3);
+}
+body.ypp-theme-technozen .toggle-card:hover {
+  border-style: solid;
+  border-color: var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+body.ypp-theme-technozen .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 20%, transparent);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary), inset 0 0 10px var(--accent-primary);
+  text-shadow: 0 0 5px var(--accent-primary);
+}
+
+body.ypp-theme-nature .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-nature .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-nature .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-nature .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-ocean .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-ocean .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-ocean .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-ocean .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-forest .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-forest .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-forest .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-forest .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-sunset .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-sunset .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-sunset .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-sunset .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-blue-sky .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-blue-sky .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-blue-sky .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-blue-sky .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-bloodmoon .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-bloodmoon .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-bloodmoon .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-bloodmoon .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-cherry .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-cherry .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-cherry .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-cherry .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+body.ypp-theme-autumn .app-container {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 20, 20, 0.4) !important;
+  backdrop-filter: blur(16px);
+}
+body.ypp-theme-autumn .toggle-card {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.1));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+body.ypp-theme-autumn .toggle-card:hover {
+  transform: scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.15));
+}
+body.ypp-theme-autumn .toggle-card:has(input:checked) {
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+/* Vintage, Coffee, Harry Potter */
+body.ypp-theme-vintage .app-container,
+body.ypp-theme-coffee .app-container,
+body.ypp-theme-harry-potter .app-container {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: rgba(30, 25, 20, 0.85) !important;
+  border: 2px solid color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-radius: 8px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.6);
+}
+body.ypp-theme-vintage .toggle-card,
+body.ypp-theme-coffee .toggle-card,
+body.ypp-theme-harry-potter .toggle-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+body.ypp-theme-vintage .toggle-card:has(input:checked),
+body.ypp-theme-coffee .toggle-card:has(input:checked),
+body.ypp-theme-harry-potter .toggle-card:has(input:checked) {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-primary) 30%, transparent), transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+}
+
+/* Kawaii */
+body.ypp-theme-kawaii .app-container {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: #fff0f5 !important;
+  border-radius: 40px;
+  border: 4px solid #ffb6c1;
+}
+body.ypp-theme-kawaii .toggle-card {
+  background: #ffe4e1;
+  border-radius: 30px;
+  border: 2px solid #ffb6c1;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+body.ypp-theme-kawaii .toggle-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 182, 193, 0.4);
+}
+body.ypp-theme-kawaii .toggle-card:has(input:checked) {
+  background: var(--accent-primary);
+  border-color: #ff69b4;
+  color: white !important;
+}
+
+/* Retro / Windows 95 */
+body.ypp-theme-retro .app-container {
+  font-family: 'Tahoma', sans-serif;
+  background: #c0c0c0 !important;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  border-radius: 0;
+}
+body.ypp-theme-retro .toggle-card {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  border-radius: 0;
+}
+body.ypp-theme-retro .toggle-card:active, body.ypp-theme-retro .toggle-card:has(input:checked) {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  background: #a0a0a0;
+}
+
+/* Frutiger Aero */
+body.ypp-theme-frutiger-aero .app-container {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 2px 6px rgba(255,255,255,0.9), 0 4px 16px rgba(18,168,221,0.2);
+}
+body.ypp-theme-frutiger-aero .toggle-card {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(200,235,255,0.6));
+  border-radius: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 1), 0 2px 4px rgba(18, 168, 221, 0.15);
+  transition: all 0.3s;
+}
+body.ypp-theme-frutiger-aero .toggle-card:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 2px 6px rgba(255,255,255,1), 0 6px 12px rgba(18, 168, 221, 0.25);
+}
+body.ypp-theme-frutiger-aero .toggle-card:has(input:checked) {
+  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(180,225,255,0.8));
+  border-color: var(--accent-primary);
+  box-shadow: inset 0 2px 6px rgba(255,255,255,1), 0 0 12px color-mix(in srgb, var(--accent-primary) 60%, transparent);
+}
+
 body.ypp-theme-kawaii,
 body.ypp-theme-ice-blue,
-body.ypp-theme-fluent {
-    --text-1: #111111;
-    --text-2: #333333;
-    --text-dim: #555555;
+body.ypp-theme-fluent,
+body.ypp-theme-vintage,
+body.ypp-theme-blue-sky,
+body.ypp-theme-retro,
+body.ypp-theme-technozen,
+body.ypp-theme-frutiger-aero,
+body.ypp-theme-claymorphism,
+body.ypp-theme-brutalism,
+body.ypp-theme-minimalism {
+  --text-1: #111111;
+  --text-2: #333333;
+  --text-dim: #555555;
 }
 body.ypp-theme-kawaii *,
 body.ypp-theme-ice-blue *,
-body.ypp-theme-fluent * {
-    color: var(--text-1);
+body.ypp-theme-fluent *,
+body.ypp-theme-vintage *,
+body.ypp-theme-blue-sky *,
+body.ypp-theme-retro *,
+body.ypp-theme-technozen *,
+body.ypp-theme-frutiger-aero *,
+body.ypp-theme-claymorphism *,
+body.ypp-theme-brutalism *,
+body.ypp-theme-minimalism * {
+  color: var(--text-1);
 }
 body.ypp-theme-kawaii .action-btn svg,
 body.ypp-theme-ice-blue .action-btn svg,
-body.ypp-theme-fluent .action-btn svg {
-    color: var(--text-1);
+body.ypp-theme-fluent .action-btn svg,
+body.ypp-theme-vintage .action-btn svg,
+body.ypp-theme-blue-sky .action-btn svg,
+body.ypp-theme-retro .action-btn svg,
+body.ypp-theme-technozen .action-btn svg,
+body.ypp-theme-frutiger-aero .action-btn svg,
+body.ypp-theme-claymorphism .action-btn svg,
+body.ypp-theme-brutalism .action-btn svg,
+body.ypp-theme-minimalism .action-btn svg {
+  color: var(--text-1);
 }
-
-/* 29. Hogwarts Magic (Harry Potter) */
-body.ypp-theme-harry-potter {
-    --bg-primary: #0c0d14;
-    --bg-surface: #14151f;
-    --bg-glass: rgba(20, 21, 31, 0.85);
-    --bg-glass-hover: rgba(30, 32, 48, 0.9);
-    --border-subtle: rgba(212, 175, 55, 0.25);
-    --accent-primary: #ffd700;
-    --text-1: #f3e5ab;
-    --text-2: #c5b358;
-    background: radial-gradient(circle at 50% 0%, #2b1a1d 0%, #0c0d14 70%);
-    font-family: 'Cinzel', 'Times New Roman', Times, serif;
-}
-body.ypp-theme-harry-potter .app-container {
-    background: rgba(12, 13, 20, 0.85);
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    box-shadow: 0 0 30px rgba(116, 0, 1, 0.2), inset 0 0 15px rgba(212, 175, 55, 0.1);
-}
-body.ypp-theme-harry-potter .toggle-card {
-    background: rgba(20, 21, 31, 0.7);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    transition: all 0.3s ease;
-}
-body.ypp-theme-harry-potter .toggle-card:hover {
-    border-color: rgba(212, 175, 55, 0.6);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-    transform: translateY(-2px);
-}
-body.ypp-theme-harry-potter .toggle-card:has(input:checked) {
-    background: linear-gradient(135deg, rgba(116, 0, 1, 0.3), rgba(212, 175, 55, 0.15));
-    border-color: #ffd700;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
-}
-body.ypp-theme-harry-potter .theme-btn.active {
-    background: linear-gradient(135deg, #740001, #ae0001);
-    color: #ffd700;
-    border-color: #ffd700;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-}
-
