@@ -102,7 +102,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'autoPiP',          label: t('auto_pip'),           desc: t('auto_pip_desc'),              icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
                     { type:'toggle', id:'enableMiniPlayer', label: t('enable_miniplayer'),  desc: t('enable_miniplayer_desc'),     icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z') },
                     { type:'toggle', id:'enableTranscript', label: t('enable_transcript'),  desc: t('enable_transcript_desc'),     icon:P('M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z') },
-                    { type:'toggle', id:'enableCpuTamer',   label: t('cpu_tamer'),          badge:'NEW', desc: t('cpu_tamer_desc'),             icon:ICONS.compressor },
+                    { type:'toggle', id:'enableCpuTamer',   label: t('cpu_tamer'),          desc: t('cpu_tamer_desc'),             icon:ICONS.compressor },
                     { type:'toggle', id:'videoResumer',     label: t('video_resumer'),      desc: t('save_playback_position'),     icon:ICONS.resume },
                     { type:'toggle', id:'autoPause',        label: t('auto_pause'),         desc: t('pause_when_backgrounded'),    icon:ICONS.pause },
                     { type:'select', id:'autoQuality',      label: t('auto_quality'),       desc: t('force_specific_resolution'), icon:ICONS.settingsSync, options:[{value:'highres',label: t('max_4k')},{value:'hd1440',label: t('1440p')},{value:'hd1080',label: t('1080p')},{value:'hd720',label: t('720p')},{value:'off',label: t('off')}] },
@@ -148,7 +148,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'enableCinemaFilters',  label: t('video_filters'),    desc: t('visual_effects_panel'),       icon:ICONS.cinemaFilters },
                     { type:'toggle', id:'enableVolumeBoost',    label: t('volume_booster'),   desc: t('increase_past_100'),         icon:ICONS.volumeUp },
                     { type:'toggle', id:'enableRemainingTime',  label: t('time_remaining'),   desc: t('next_to_duration'),           icon:ICONS.wheel },
-                    { type:'toggle', id:'showLiveStreamTime',   label: t('show_live_stream_time'), badge:'NEW', desc: t('show_live_stream_time_desc'), icon:ICONS.clock },
+                    { type:'toggle', id:'showLiveStreamTime',   label: t('show_live_stream_time'), desc: t('show_live_stream_time_desc'), icon:ICONS.clock },
                 ]
             },
 
@@ -192,7 +192,7 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.speed,
                 items: [
                     { type:'toggle', id:'enableCustomSpeed', class:'span-2', label: t('enable_controller'), desc: t('master_toggle'), icon:ICONS.speed },
-                    { type:'toggle', id:'speedBooster', label: t('10x_speed_booster'), badge:'NEW', desc: t('unlock_native_speed_up_to_10x'), icon:ICONS.speedBooster },
+                    { type:'toggle', id:'speedBooster', label: t('10x_speed_booster'), desc: t('unlock_native_speed_up_to_10x'), icon:ICONS.speedBooster },
                     { type:'toggle', id:'vscForceSpeed',    label: t('force_saved_speed'), desc: t('prevent_players_from_overriding'), icon:ICONS.forceSpeed },
                 ]
             },
@@ -228,8 +228,8 @@ export const getPopupSchema = (t) => [
                 subtitle: 'Immersive experiences for the home feed',
                 icon: ICONS.home,
                 items: [
-                    { type:'toggle', id:'cinematicMode', class:'span-4',  label: t('cinematic_home'),  desc: t('cinematic_styling_for_homepage'),    icon:ICONS.cinematic },
-                    { type:'toggle', id:'enableTabviewSidebar', class:'span-4', label: t('tabview_sidebar'), badge:'NEW', desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar }
+                    { type:'toggle', id:'cinematicMode',  label: t('cinematic_home'),  desc: t('cinematic_styling_for_homepage'),    icon:ICONS.cinematic },
+                    { type:'toggle', id:'enableTabviewSidebar', label: t('tabview_sidebar'), desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar }
                 ]
             },
             {
@@ -239,8 +239,8 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'zenMode',         label: t('zen_mode'),        desc: t('dim_everything_but_video'),          icon:ICONS.zen },
                     { type:'toggle', id:'cinemaMode',      label: t('cinema_mode'),     desc: t('theater_like_fullscreen_viewing'),   icon:ICONS.cinema },
-                    { type:'toggle', id:'realCinemaMode',  label: t('real_cinema_mode'), badge:'NEW', desc: t('real_cinema_mode_desc'),             icon:ICONS.cinema },
-                    { type:'toggle', id:'enableStarTubeLayout', label: t('startube_layout'), badge:'NEW', desc: t('startube_layout_desc'),         icon:ICONS.autoCinema },
+                    { type:'toggle', id:'realCinemaMode',  label: t('real_cinema_mode'), desc: t('real_cinema_mode_desc'),             icon:ICONS.cinema },
+                    { type:'toggle', id:'enableStarTubeLayout', label: t('startube_layout'), desc: t('startube_layout_desc'),         icon:ICONS.autoCinema },
                     { type:'toggle', id:'ambientMode',     label: t('ambient_theater'), desc: t('giant_canvas_ambilight_effect'),     icon:ICONS.ambient, slot:'ambientModeOptions' },
                     { type:'toggle', id:'studyMode',       label: t('study_mode'),      desc: t('focus_mode_1_25_playback_speed'), icon:ICONS.study },
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
@@ -408,7 +408,7 @@ export const getPopupSchema = (t) => [
             {
                 title: t('layout_tools'),
                 items: [
-                    { type:'toggle', id:'twoColumnSubscriptions', class:'span-2', label: t('twoColumnSubscriptions'), badge:'NEW', desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
+                    { type:'toggle', id:'twoColumnSubscriptions', class:'span-2', label: t('twoColumnSubscriptions'), desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                     { type:'toggle', id:'enableChannelHealth', class:'span-2', label: t('channel_health'),  desc: t('scan_for_dead_channels'),        icon:ICONS.compressor, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="channelColumnsUI" min="2" max="10" step="1" style="width:100%;"><span id="channelColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="channelColumns" value="5" />` },
                     { type:'range', id:'subscriptionsColumns', class:'span-2', label: t('feed_grid_columns'), desc: t('grid_layout_size_for_subs'), icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), min: 1, max: 8, step: 1, unit: '' }
                 ]
@@ -436,9 +436,9 @@ export const getPopupSchema = (t) => [
             {
                 title: t('tracking_resume'),
                 items: [
-                    { type:'toggle', id:'smartHistory', label: t('smart_history_tracker'), badge:'NEW', desc: t('track_individual_video_progress_watch_time'), icon:ICONS.smartHistory },
-                    { type:'toggle', id:'autoResume', label: t('auto_resume_videos'), badge:'NEW', desc: t('automatically_resume_from_last_watched_timestamp'), icon:ICONS.wheel },
-                    { type:'toggle', id:'resumeBadges', label: t('resume_badges'), badge:'NEW', desc: t('show_resume_progress_on_thumbnails'), icon:ICONS.wheel },
+                    { type:'toggle', id:'smartHistory', label: t('smart_history_tracker'), desc: t('track_individual_video_progress_watch_time'), icon:ICONS.smartHistory },
+                    { type:'toggle', id:'autoResume', label: t('auto_resume_videos'), desc: t('automatically_resume_from_last_watched_timestamp'), icon:ICONS.wheel },
+                    { type:'toggle', id:'resumeBadges', label: t('resume_badges'), desc: t('show_resume_progress_on_thumbnails'), icon:ICONS.wheel },
                     { type:'toggle', id:'continueWatching', label: t('continue_watching'), desc: t('resume_from_history'), icon:ICONS.continueWatch },
                     { type:'custom', id:'recap_buttons', slot:'recapButtons' }
                 ]
