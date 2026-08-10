@@ -265,10 +265,29 @@ export function updateCustomizationPreview(document, state) {
 
 export function initDualAccentToggle(document) {
     const dualToggle = document.getElementById('enableDualAccent');
-    const secSwatches = document.getElementById('secondaryAccentSwatches');
+    const secSwatchesContainer = document.getElementById('secondaryAccentSwatches');
     const primaryInput = document.getElementById('accentColor');
     const secInput = document.getElementById('secondaryAccentColor');
     if (!dualToggle) return;
+
+    const secSwatches = document.querySelectorAll('.secondary-color-swatch[data-sec-color]');
+
+    const applySecSwatchActive = (color) => {
+        if (!color) return;
+        let foundMatch = false;
+        secSwatches.forEach((swatch) => {
+            const isActive = swatch.dataset.secColor.toLowerCase() === color.toLowerCase();
+            swatch.classList.toggle('active', isActive);
+            if (isActive) foundMatch = true;
+        });
+        if (!foundMatch && secInput) {
+            secInput.value = color;
+            if (secInput.previousElementSibling)
+                secInput.previousElementSibling.classList.add('active');
+        } else if (secInput && secInput.previousElementSibling) {
+            secInput.previousElementSibling.classList.remove('active');
+        }
+    };
 
     // Load saved state
     chrome.storage.local.get('settings', (data) => {
@@ -276,9 +295,10 @@ export function initDualAccentToggle(document) {
         const secColor = data.settings?.secondaryAccentColor || '#b62bcf';
         dualToggle.checked = isDual;
         if (secInput) secInput.value = secColor;
-        if (secSwatches) {
-            secSwatches.style.opacity = isDual ? '1' : '0.4';
-            secSwatches.style.pointerEvents = isDual ? 'auto' : 'none';
+        applySecSwatchActive(secColor);
+        if (secSwatchesContainer) {
+            secSwatchesContainer.style.opacity = isDual ? '1' : '0.4';
+            secSwatchesContainer.style.pointerEvents = isDual ? 'auto' : 'none';
         }
         if (isDual && primaryInput) {
             applyAccentColor(document, primaryInput.value, secColor);
@@ -287,12 +307,14 @@ export function initDualAccentToggle(document) {
 
     const reapply = () => {
         const isDual = dualToggle.checked;
-        if (secSwatches) {
-            secSwatches.style.opacity = isDual ? '1' : '0.4';
-            secSwatches.style.pointerEvents = isDual ? 'auto' : 'none';
+        if (secSwatchesContainer) {
+            secSwatchesContainer.style.opacity = isDual ? '1' : '0.4';
+            secSwatchesContainer.style.pointerEvents = isDual ? 'auto' : 'none';
         }
         const sec = (isDual && secInput?.value) ? secInput.value : null;
         applyAccentColor(document, primaryInput?.value || '#ff4e45', sec);
+        if (sec) applySecSwatchActive(sec);
+        
         // Persist
         chrome.storage.local.get('settings', (data) => {
             const settings = data.settings || {};
@@ -304,6 +326,16 @@ export function initDualAccentToggle(document) {
 
     dualToggle.addEventListener('change', reapply);
     if (secInput) secInput.addEventListener('input', () => { if (dualToggle.checked) reapply(); });
+    
+    secSwatches.forEach((swatch) => {
+        swatch.addEventListener('click', () => {
+            if (!dualToggle.checked) return;
+            const color = swatch.dataset.secColor;
+            if (secInput) secInput.value = color;
+            applySecSwatchActive(color);
+            reapply();
+        });
+    });
 }
 
 export function syncModeCards(document) {
