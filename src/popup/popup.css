@@ -1310,7 +1310,7 @@ kbd {
   display: flex; gap: 8px; align-items: center;
   background: rgba(255,255,255,0.03); padding: 8px 10px;
   border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; box-sizing: border-box;
 }
 .vsc-shortcut-row:hover {
   background: rgba(255,255,255,0.06);
@@ -1324,7 +1324,7 @@ kbd {
   font-family: inherit; transition: all 0.2s ease;
 }
 .vsc-select { flex: 2; }
-.vsc-key-input, .vsc-val-input { flex: 1; width: 10px; text-align: center; }
+.vsc-key-input, .vsc-val-input { flex: 1; min-width: 0; width: 100%; box-sizing: border-box; text-align: center; }
 .vsc-key-input { text-transform: uppercase; font-family: monospace; font-size: 12px; letter-spacing: 0.5px; }
 
 .vsc-select:hover, .vsc-key-input:hover, .vsc-val-input:hover {
@@ -1944,3 +1944,5 @@ body.ypp-theme-minimalism .nav-item.active {
   width: 14px;
   height: 14px;
 }
+
+

@@ -369,6 +369,7 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
             selectContainer.className = 'custom-select-wrapper';
             selectContainer.style.position = 'relative';
             selectContainer.style.flex = '2';
+              selectContainer.style.minWidth = '0';
             
             const trigger = document.createElement('div');
             trigger.className = 'vsc-select custom-select-trigger';
@@ -1105,3 +1106,4 @@ if (document.readyState === 'loading') {
 } else {
     initApp();
 }
+
