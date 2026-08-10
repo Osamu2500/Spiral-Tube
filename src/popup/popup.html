@@ -241,7 +241,7 @@
                   <div class="search-container theme-name-input-container">
                     <input type="text" id="customThemeName" placeholder="Theme Name" class="feature-search-input" aria-label="Custom Theme Name" title="Custom Theme Name">
                   </div>
-                  <div class="theme-actions-row" style="display:flex; gap: 8px;">
+                  <div class="theme-actions-row">
     <button id="randomCustomThemeBtn" class="icon-btn" title="Randomize Theme Colors">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
     </button>
@@ -257,7 +257,7 @@
                     <button id="importCustomThemeBtn" class="icon-btn" title="Import Theme">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                     </button>
-                    <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" class="hidden-input" style="display:none;">
+                    <input type="file" id="importCustomThemeFile" accept=".json" aria-label="Import Custom Theme File" title="Import Custom Theme File" class="hidden-file-input">
                   </div>
                 </div>
                 
@@ -334,7 +334,7 @@
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                       Clear
                     </button>
-                    <input type="file" id="imageThemeFileInput" accept="image/*" aria-label="Image Theme File Input" title="Image Theme File Input" style="display:none;">
+                    <input type="file" id="imageThemeFileInput" accept="image/*" aria-label="Image Theme File Input" title="Image Theme File Input" class="hidden-file-input">
                   </div>
                   
                   <div class="slider-group">
@@ -372,9 +372,9 @@
                   </div>
                   
                   <div class="setting-item toggle-row mt-2" title="Automatically extract the primary color from the image and apply it to YouTube's UI">
-                    <div class="info" style="display:flex; flex-direction:row; align-items:center; gap: 8px;">
+                    <div class="info info-row">
                       <span class="name" data-i18n="extract_colors">Extract UI Colors</span>
-                      <div id="extractedPaletteBoxes" class="extracted-palette" style="display: none;">
+                      <div id="extractedPaletteBoxes" class="extracted-palette hidden-element">
                         <div class="extracted-box" id="paletteBox1"></div>
                         <div class="extracted-box" id="paletteBox2"></div>
                         <div class="extracted-box" id="paletteBox3"></div>
@@ -866,20 +866,20 @@
                 </div>
               </div>
               
-              <div class="slider-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
-                <div class="slider-item" style="background: rgba(255,255,255,0.04); padding: 12px 16px; border-radius: 500px; border: 1px solid rgba(255,255,255,0.06); box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);">
-                  <div class="slider-header" style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                    <span class="name" data-i18n="blue_light_filter" style="font-size: 11px; opacity: 0.8; font-weight: 600;">Blue Light Filter</span>
-                    <span class="desc" id="blueLightValue" style="font-size: 11px; font-weight: 700; color: var(--accent-primary);">0%</span>
+              <div class="slider-group slider-group-grid">
+                <div class="slider-item slider-item-pill">
+                  <div class="slider-header slider-header-spaced">
+                    <span class="name slider-name" data-i18n="blue_light_filter">Blue Light Filter</span>
+                    <span class="desc slider-value" id="blueLightValue">0%</span>
                   </div>
-                  <input type="range" id="blueLight" min="0" max="90" step="5" aria-label="Blue Light" title="Blue Light" style="width: 100%;">
+                  <input type="range" id="blueLight" min="0" max="90" step="5" aria-label="Blue Light" title="Blue Light" class="full-width-range">
                 </div>
-                <div class="slider-item" style="background: rgba(255,255,255,0.04); padding: 12px 16px; border-radius: 500px; border: 1px solid rgba(255,255,255,0.06); box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);">
-                  <div class="slider-header" style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                    <span class="name" data-i18n="dim_screen" style="font-size: 11px; opacity: 0.8; font-weight: 600;">Dim Screen</span>
-                    <span class="desc" id="dimValue" style="font-size: 11px; font-weight: 700; color: var(--accent-primary);">0%</span>
+                <div class="slider-item slider-item-pill">
+                  <div class="slider-header slider-header-spaced">
+                    <span class="name slider-name" data-i18n="dim_screen">Dim Screen</span>
+                    <span class="desc slider-value" id="dimValue">0%</span>
                   </div>
-                  <input type="range" id="dim" min="0" max="90" step="5" aria-label="Dim" title="Dim" style="width: 100%;">
+                  <input type="range" id="dim" min="0" max="90" step="5" aria-label="Dim" title="Dim" class="full-width-range">
                 </div>
               </div>
           </div>
