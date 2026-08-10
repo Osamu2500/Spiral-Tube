@@ -610,11 +610,7 @@
                     if (this.context.isSubscriptions) classes.add('ypp-subscriptions-page');
                     if (this.context.isFeedPlaylists) classes.add('ypp-feed-playlists-page');
 
-                    if (this.settings?.premiumTheme) {
-                        classes.add('yt-spiral-tube-theme');
-                    } else {
-                        classes.delete('yt-spiral-tube-theme');
-                    }
+                    classes.add('yt-spiral-tube-theme');
                     
                     // V7 Zero-JS Declutter Architecture Toggles
                     const toggleClass = (condition, className) => {

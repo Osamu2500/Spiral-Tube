@@ -72,6 +72,12 @@ window.YPP.SettingsSchema = {
 
         // --- Customization ---
         customThemes:        { type: 'object',  default: {} },
+        customBackgroundImage:           { type: 'string', default: '' },
+        customBackgroundImageIntensity:  { type: 'number', default: 0.6, min: 0.1, max: 1.0 },
+        customBackgroundImageBlur:       { type: 'number', default: 0, min: 0, max: 20 },
+        customBackgroundImageBrightness: { type: 'number', default: 1.0, min: 0.2, max: 2.0 },
+        customBackgroundImageSaturation: { type: 'number', default: 1.0, min: 0, max: 3.0 },
+        customBackgroundImageExtractColors:{ type: 'boolean', default: true },
         enableCustomCSS:     { type: 'boolean', default: false },
         customCSSCode:       { type: 'string',  default: '' },
         fontScale:           { type: 'number',  default: 100, min: 80, max: 130 },
@@ -388,6 +394,9 @@ window.YPP.SettingsSchema = {
         hideChannelBar:               { type: 'boolean', default: false },
         hideVideoDescription:         { type: 'boolean', default: false },
         hideActionButtons:            { type: 'boolean', default: false },
+    // UI Shapes
+    useSquareCorners: { type: 'boolean', default: false },
+    extraRoundedUI: { type: 'boolean', default: false },
     }),
 
     // =========================================================================
@@ -524,6 +533,8 @@ window.YPP.SettingsSchema = {
         }
         return out;
     }
+
+
 };
 
 

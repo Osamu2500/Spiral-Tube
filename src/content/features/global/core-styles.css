@@ -296,7 +296,6 @@ body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::after {
 }
 
 /* Accent Color Overrides via injected variables */
-
 html.yt-spiral-tube-theme {
   --ypp-accent: var(--ypp-accent-primary, #3ea6ff) !important;
   --ypp-accent-hover: var(--ypp-accent-glow, #65b8ff) !important;
@@ -307,16 +306,23 @@ html.yt-spiral-tube-theme {
   --paper-toggle-button-checked-button-color: var(--ypp-accent-primary, #3ea6ff) !important;
 }
 
-/* Thumbnail Radius */
+body.ypp-dual-accent-enabled .ytp-play-progress,
+body.ypp-dual-accent-enabled .ytp-swatch-background-color,
+body.ypp-dual-accent-enabled tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button,
+body.ypp-dual-accent-enabled #progress.ytd-thumbnail-overlay-resume-playback-renderer {
+    background: var(--ypp-accent-gradient) !important;
+    background-color: transparent !important;
+}
+body.ypp-dual-accent-enabled .ytp-scrubber-button {
+    background: var(--ypp-accent-gradient) !important;
+    border-color: transparent !important;
+}
 
+/* Thumbnail Radius */
 html.yt-spiral-tube-theme {
   --ypp-player-radius: var(--ypp-thumb-radius, 12px);
   --ypp-thumbnail-radius: var(--ypp-thumb-radius, 12px);
 }
-
-html.yt-spiral-tube-theme ytd-thumbnail, 
-html.yt-spiral-tube-theme ytd-thumbnail::before, 
-html.yt-spiral-tube-theme ytd-thumbnail a, 
 html.yt-spiral-tube-theme yt-image, 
 html.yt-spiral-tube-theme .ytd-thumbnail {
   border-radius: var(--ypp-thumbnail-radius, 12px) !important;
@@ -4636,6 +4642,201 @@ body.ypp-hide-trending ytd-rich-section-renderer:has(a[href*="/trending"]) {
    NEW FEATURES (Premium Logo & Resume Badges)
    ========================================================================= */
 
+/* Expand primary column */
+
+.ypp-cinema-mode #primary {
+    max-width: 100% !important;
+}
+
+/* Darken the page background for immersion */
+
+.ypp-cinema-mode ytd-page-manager {
+    background: #050505 !important;
+}
+
+/* Dim masthead by default, hide completely on idle */
+
+/* Ultra-Dark Contrast for Video */
+
+.ypp-cinema-mode video {
+    filter: contrast(1.1) brightness(0.95) !important;
+}
+
+/* Letterbox Subtitle Repositioning */
+
+/* Vignette Overlay */
+
+.ypp-cinema-mode #player-container-outer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 130%);
+    z-index: 10;
+    opacity: 1;
+    animation: yppFadeInVignette 2s ease forwards;
+}
+
+@keyframes yppFadeInVignette {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Curtain Animation */
+
+@keyframes yppOpenCurtains {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}
+
+.ypp-cinema-mode::before, .ypp-cinema-mode::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    pointer-events: none;
+    animation: yppOpenCurtains 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.ypp-cinema-mode::before {
+    left: 0;
+    transform-origin: left;
+    box-shadow: inset -10px 0 30px rgba(0,0,0,0.8);
+}
+
+.ypp-cinema-mode::after {
+    right: 0;
+    transform-origin: right;
+    box-shadow: inset 10px 0 30px rgba(0,0,0,0.8);
+}
+
+/* Minimal Mode — strip non-essentials */
+
+/* Hide action buttons row (Like/Share/Save/…) */
+
+.ypp-minimal-mode ytd-watch-metadata #top-level-buttons-computed,
+.ypp-minimal-mode ytd-watch-metadata #flexible-item-buttons {
+    opacity: 0.2;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.ypp-minimal-mode ytd-watch-metadata #top-level-buttons-computed:hover,
+.ypp-minimal-mode ytd-watch-metadata #flexible-item-buttons:hover {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Fade subscriptions/channel row */
+
+.ypp-minimal-mode #owner {
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.ypp-minimal-mode #owner:hover { opacity: 1; }
+
+/* Collapse comments section */
+
+.ypp-minimal-mode #comments {
+    opacity: 0.08;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    max-height: 60px;
+    overflow: hidden;
+}
+body.ypp-study-mode #ypp-study-notes {
+    width: var(--ytd-watch-flexy-sidebar-width, 402px);
+    margin-left: 24px;
+    flex-shrink: 0;
+    margin-top: 24px;
+}
+
+@media (max-width: 1000px) {
+    body.ypp-study-mode #ypp-study-notes {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * YOUTUBE UI AESTHETIC SYNC
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+/* =========================================================================
+   GRAYSCALE THUMBNAILS (Re-implemented via Global Layout)
+   ========================================================================= */
+
+body.ypp-grayscale-thumbs ytd-thumbnail img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
+    filter: grayscale(100%) !important;
+    transition: filter 0.3s ease !important;
+}
+
+body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
+    filter: grayscale(0%) !important;
+}
+
+/* =========================================================================
+   HOMESCREEN HIDE FEATURES (DOM Stamping & Pure CSS)
+   ========================================================================= */
+
+/* Hide Watched */
+
+html body.ypp-watched-mode-hide [data-ypp-watched="1"],
+html[data-ypp-card-style] body.ypp-watched-mode-hide [data-ypp-watched="1"],
+html[data-ypp-card-style] body.ypp-watched-mode-hide ytd-rich-item-renderer[data-ypp-watched="1"] {
+    display: none !important;
+}
+
+html body.ypp-watched-mode-dim [data-ypp-watched="1"],
+html[data-ypp-card-style] body.ypp-watched-mode-dim [data-ypp-watched="1"],
+html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-ypp-watched="1"] {
+    opacity: 0.2 !important;
+    filter: grayscale(90%) brightness(0.7) !important;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    pointer-events: none;
+}
+
+/* Hover — full reveal on intentional hover */
+html body.ypp-watched-mode-dim [data-ypp-watched="1"]:hover,
+html[data-ypp-card-style] body.ypp-watched-mode-dim [data-ypp-watched="1"]:hover,
+html[data-ypp-card-style] body.ypp-watched-mode-dim ytd-rich-item-renderer[data-ypp-watched="1"]:hover {
+    opacity: 1 !important;
+    filter: grayscale(0%) brightness(1) !important;
+    pointer-events: auto;
+}
+
+/* Generic Hidden Class (Used by BaseFilterFeature) */
+.ypp-hidden {
+    display: none !important;
+}
+
+/* Hide Mixes */
+
+/* Hide Shorts */
+
+/* Hide Playlists */
+
+/* Hide Feed / Explore / Trending */
+
+body.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer {
+    display: none !important;
+}
+
+body.ypp-hide-trending ytd-rich-section-renderer:has(a[href*="/trending"]) {
+    display: none !important;
+}
+
+/* =========================================================================
+   NEW FEATURES (Premium Logo & Resume Badges)
+   ========================================================================= */
+
 /* --- PREMIUM LOGO --- */
 body.ypp-premium-logo ytd-topbar-logo-renderer { margin-left: 16px !important; display: flex !important; align-items: center !important; }
 body.ypp-premium-logo ytd-topbar-logo-renderer a#logo { display: flex !important; align-items: center !important; text-decoration: none !important; }
@@ -4649,96 +4850,6 @@ body.ypp-premium-logo ytd-topbar-logo-renderer #country-code { position: relativ
 .yt-pro-pbar { height: 100%; background: #3ea6ff; transition: width 0.2s ease; }
 .yt-pro-resume-badge {
   -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px); position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.8); color: #fff; font-size: 12px; font-weight: 500; font-family: "Roboto", Arial, sans-serif; padding: 3px 6px; border-radius: 4px; z-index: 100; pointer-events: none; backdrop-filter: blur(4px); box-shadow: 0 0 4px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px; }
-.yt-pro-resume-badge span { color: #3ea6ff; font-size: 10px; }
-
-/* ==========================================================================
-   GLOBAL SEARCH POP-UP STYLING (THEME INTEGRATION)
-   ========================================================================== */
-
-html.yt-spiral-tube-theme .ytSearchboxComponentSuggestionsContainer,
-html.yt-spiral-tube-theme .sbsb_a,
-html.yt-spiral-tube-theme .sbdd_b {
-    background: var(--sf, var(--ypp-bg-surface, rgba(20, 20, 20, 0.9))) !important;
-    color: var(--yt-spec-text-primary, #fff) !important;}
-
-/* For light mode fallback if theme doesn't force dark */
-html.yt-spiral-tube-theme:not([dark]) .ytSearchboxComponentSuggestionsContainer,
-html.yt-spiral-tube-theme:not([dark]) .sbsb_a,
-html.yt-spiral-tube-theme:not([dark]) .sbdd_b {
-    background: var(--sf, var(--ypp-bg-surface, rgba(240, 240, 240, 0.9))) !important;
-    color: var(--yt-spec-text-primary, #000) !important;
-}
-
-/* =========================================================================
-   MAGICUI ORBITING CIRCLES
-   ========================================================================= */
-
-@keyframes ypp-orbit {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes ypp-orbit-reverse {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-}
-
-/* =========================================
-   SQUARE UI (Roundless YouTube From 26523)
-========================================= */
-body.ypp-square-ui,
-body.ypp-square-ui *,
-body.ypp-square-ui *::before,
-body.ypp-square-ui *::after {
-    --ytd-thumbnail-border-radius: 0px !important;
-    --yt-button-border-radius: 0px !important;
-    --yt-spec-badge-border-radius: 0px !important;
-    --yt-spec-menu-border-radius: 0px !important;
-    --yt-spec-avatar-border-radius: 0px !important;
-    --yt-spec-button-shape-border-radius: 0px !important;
-}
-
-body.ypp-square-ui ytd-thumbnail,
-body.ypp-square-ui ytd-thumbnail img,
-body.ypp-square-ui ytd-playlist-panel-renderer,
-body.ypp-square-ui .yt-spec-avatar-shape__image,
-body.ypp-square-ui tp-yt-paper-button,
-body.ypp-square-ui .yt-spec-button-shape-next,
-body.ypp-square-ui #search-form {
-    border-radius: 0 !important;
-}
-body.ypp-square-ui .ytp-delhi-modern .ytp-scrubber-button,
-body.ypp-square-ui .ytProgressBarPlayheadProgressBarPlayheadDot,
-body.ypp-square-ui .ytp-delhi-modern .ytp-volume-slider-handle,
-body.ypp-square-ui .circle.style-scope.tp-yt-paper-spinner,
-body.ypp-square-ui .ytp-spinner-circle {
-    border-radius: 50% !important;
-}
-
-.ypp-satellites-container.animating {
-    animation: ypp-orbit 20s linear infinite;
-}
-
-.ypp-satellite.animating .ypp-satellite-inner {
-    animation: ypp-orbit-reverse 20s linear infinite;
-}
-
-.ypp-orbital-wrap:hover .animating,
-.ypp-orbital-wrap:hover .animating .ypp-satellite-inner {
-    animation-play-state: paused !important;
-}
-
-/* =========================================================================
-   ACCOUNT MENU SIZING & DROPDOWN
-   ========================================================================= */
-
-ytd-multi-page-menu-renderer[data-ypp-redesigned="1"],
-tp-yt-iron-dropdown:has(.ypp-account-menu) {
-    width: 360px !important;
-    min-width: 360px !important;
-}
-
 .ypp-account-menu {
     width: 100%;
 }
@@ -5295,4 +5406,40 @@ body.ypp-smooth-title-scroll :is(
   10% { transform: translateX(0); }
   90% { transform: translateX(calc(-100% + 200px)); }
   100% { transform: translateX(calc(-100% + 200px)); }
+}
+
+
+/* ────────────────────────────────────────────────────────────────── */
+/* UI Shapes - Square Corners                                         */
+/* ────────────────────────────────────────────────────────────────── */
+body.ypp-ui-square-corners * {
+    border-radius: 0 !important;
+}
+
+/* ────────────────────────────────────────────────────────────────── */
+/* UI Shapes - Extra Rounded UI                                       */
+/* ────────────────────────────────────────────────────────────────── */
+body.ypp-ui-extra-rounded ytd-thumbnail,
+body.ypp-ui-extra-rounded ytd-thumbnail img,
+body.ypp-ui-extra-rounded ytd-playlist-thumbnail,
+body.ypp-ui-extra-rounded ytd-macro-markers-list-item-renderer {
+    border-radius: 24px !important;
+}
+
+body.ypp-ui-extra-rounded .ytp-videowall-still-image,
+body.ypp-ui-extra-rounded .ytp-videowall-still-info-content {
+    border-radius: 24px !important;
+}
+
+body.ypp-ui-extra-rounded ytd-rich-grid-media,
+body.ypp-ui-extra-rounded ytd-compact-video-renderer {
+    border-radius: 24px !important;
+}
+
+body.ypp-ui-extra-rounded #avatar {
+    border-radius: 50% !important;
+}
+
+body.ypp-ui-extra-rounded ytd-button-renderer {
+    border-radius: 32px !important;
 }

@@ -90,19 +90,24 @@ function hideGlobalTooltip() {
     }
 }
 
-export function createHelpButton(descText) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'feature-help-btn';
-    btn.textContent = '?';
-    btn.setAttribute('aria-label', descText || 'Help');
-    btn.addEventListener('mouseenter', (e) => showGlobalTooltip(e.target, descText));
-    btn.addEventListener('mouseleave', () => hideGlobalTooltip());
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showGlobalTooltip(e.target, descText);
+export function attachHoverTooltip(element, descText) {
+    if (!descText || !element) return;
+    
+    let hoverTimer = null;
+    let isHovered = false;
+
+    element.addEventListener('mouseenter', (e) => {
+        isHovered = true;
+        hoverTimer = setTimeout(() => {
+            if (isHovered) showGlobalTooltip(element, descText);
+        }, 2000); // 2 second delay
     });
-    return btn;
+
+    element.addEventListener('mouseleave', () => {
+        isHovered = false;
+        if (hoverTimer) clearTimeout(hoverTimer);
+        hideGlobalTooltip();
+    });
 }
 
 export function convertStaticDescriptionsToHelpButtons(doc = document) {
@@ -112,8 +117,8 @@ export function convertStaticDescriptionsToHelpButtons(doc = document) {
         if (nameEl && descEl) {
             if (descEl.querySelector('[id$="Value"], #blueLightValue, #dimValue') || descEl.id?.endsWith('Value') || descEl.id === 'blueLightValue' || descEl.id === 'dimValue') return;
             const text = descEl.textContent || '';
-            if (text.trim() && !nameEl.querySelector('.feature-help-btn')) {
-                nameEl.appendChild(createHelpButton(text.trim()));
+            if (text.trim()) {
+                attachHoverTooltip(info, text.trim());
                 descEl.remove();
             }
         }
@@ -148,7 +153,7 @@ function renderToggle(item, state) {
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
     if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+        attachHoverTooltip(info, item.desc);
     }
     if (item.badge) {
         const b = document.createElement('span');
@@ -247,7 +252,7 @@ function renderRange(item, state) {
     }
     if (item.desc) {
         const nameEl = info.querySelector('.name');
-        if (nameEl) nameEl.appendChild(createHelpButton(item.desc));
+        if (nameEl && item.desc) attachHoverTooltip(info, item.desc);
     }
     
     wrap.appendChild(info);
@@ -370,7 +375,7 @@ function renderSelect(item, state) {
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
     if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+        attachHoverTooltip(info, item.desc);
     }
     info.appendChild(nameEl);
     headerRow.appendChild(info);
@@ -524,7 +529,7 @@ function renderLayoutToggle(item, state) {
     nameSpan.className = 'name';
     nameSpan.style.cssText = 'display:flex; align-items:center; flex-wrap:wrap; gap:6px;';
     nameSpan.innerHTML = `${item.label} <span id="sidebar-layout-lock" style="display:none; color:var(--accent-primary);" title="Locked by Immersive Glass"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>`;
-    nameSpan.appendChild(createHelpButton(item.desc || 'Video cards size'));
+    attachHoverTooltip(info, item.desc || 'Video cards size');
     info.appendChild(nameSpan);
     headerRow.appendChild(info);
 
@@ -723,7 +728,7 @@ function renderInlineToggle(item, state) {
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
     if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+        attachHoverTooltip(info, item.desc);
     }
     info.appendChild(nameEl);
     infoGroup.appendChild(info);
@@ -774,7 +779,7 @@ function renderColor(item, state) {
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
     if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+        attachHoverTooltip(info, item.desc);
     }
     info.appendChild(nameEl);
     infoGroup.appendChild(info);
@@ -837,7 +842,7 @@ function renderButtonGroup(item, state) {
     nameEl.style.cssText = 'display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px;';
     nameEl.textContent = item.label;
     if (item.desc) {
-        nameEl.appendChild(createHelpButton(item.desc));
+        attachHoverTooltip(info, item.desc);
     }
     info.appendChild(nameEl);
     headerRow.appendChild(info);

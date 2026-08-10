@@ -463,7 +463,8 @@ export const getPopupSchema = (t) => [
     // ──────────────────────────────────────────────────────────────────
     // DESIGN (custom — UI layout, cards, theming, effects)
     // ──────────────────────────────────────────────────────────────────
-    { id: 'appearance', label: t('tab_design'), icon: ICONS.promos, custom: true, sections: [] },
+    { id: 'appearance', label: 'Designs', icon: ICONS.promos, custom: true, sections: [] },
+    { id: 'popup_design', label: 'Popup Design', icon: ICONS.uiComponents, custom: true, sections: [] },
 
     // ──────────────────────────────────────────────────────────────────
     // ADVANCED

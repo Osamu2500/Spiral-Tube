@@ -71,6 +71,11 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="17.5" cy="10.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="8.5" cy="7.5" r="0.5" fill="currentColor" stroke="none"/><circle cx="6.5" cy="12.5" r="0.5" fill="currentColor" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
             <span class="nav-label" data-i18n="nav_appearance">Design</span>
           </button>
+
+          <button class="nav-item" data-tab="popup_design" title="Popup Design">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+            <span class="nav-label" data-i18n="nav_popup_design">Popup Design</span>
+          </button>
           <button class="nav-item" data-tab="advanced" title="Advanced Settings">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 9.36l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 9.36-7.94l-3.77 3.77a1 1 0 0 0 0 1.4z"></path></svg>
             <span class="nav-label" data-i18n="nav_pro">Pro</span>
@@ -196,27 +201,6 @@
 
         <!-- DESIGN -->
         <section id="tab-appearance" class="tab-content">
-          <!-- 1. Theme Engine -->
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">
-                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                        <span data-i18n="theme_engine">Theme Engine
-                     </span></div>
-                  </div>
-               </div>
-            </div>
-            <div class="card-group">
-              <div class="setting-item">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
-                <div class="info"><span class="name" data-i18n="premium_theme">Premium Theme</span><span class="desc" data-i18n="enable_custom_css_injection">Enable custom CSS injection</span></div>
-                <label class="toggle"><input type="checkbox" id="premiumTheme" aria-label="Premium Theme" title="Premium Theme"><span class="slider"></span></label>
-              </div>
-            </div>
-          </div>
-          
           <!-- UI Shapes -->
           <div class="settings-section">
             <div class="section-header">
@@ -487,57 +471,6 @@
                 <button type="button" class="theme-btn youtube-style-btn" data-style="technozen">Technozen</button>
                 <button type="button" class="theme-btn youtube-style-btn" data-style="terminalism">Terminalism</button>
                 <button type="button" class="theme-btn youtube-style-btn" data-style="vintage">Vintage</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Popup UI Design -->
-          <div class="settings-section">
-            <div class="section-header">
-               <div class="section-title-wrap">
-                  <div class="section-text-wrap">
-                     <div class="section-title">
-                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                        <span data-i18n="popup_ui_design">Popup UI Design
-                     </span></div>
-                  </div>
-               </div>
-            </div>
-            <div class="ypp-inline-98 card-group">
-              <input type="hidden" id="popupUiTheme" value="liquid-glass" aria-label="Popup Ui Theme" title="Popup Ui Theme">
-              <div class="ypp-inline-99 theme-grid">
-                <button type="button" class="theme-btn popup-style-btn" data-style="default" data-i18n="default">Default</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="abyss">Abyss</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="aurora">Aurora</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="autumn">Autumn</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="bento">Bento</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="bloodmoon">Blood Moon</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="blue-sky">Blue Sky</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="brutalism">Brutalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cairo-red">Cairo Red</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cherry">Cherry</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="christmas">Christmas</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="claymorphism">Claymorphism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="crystal-glass">Crystal Glass</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="deepspace">Deep Space</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="frutiger-aero">Frutiger Aero</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="harry-potter">Harry Potter</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="kawaii">Kawaii</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass">Liquid Glass</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="material">Material</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="maximalism">Maximalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="minimalism">Minimalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="nature">Nature</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="nebula">Nebula</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic">Neumorphic</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="ocean">Ocean</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="outrun">Outrun</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="retro">Retro</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="technozen">Technozen</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="terminalism">Terminalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="vintage">Vintage</button>
               </div>
             </div>
           </div>
@@ -980,6 +913,61 @@
           </div>
         </section>
 
+
+        <!-- POPUP DESIGN -->
+        <section id="tab-popup_design" class="tab-content">
+          <!-- 3. Popup UI Design -->
+          <div class="settings-section">
+            <div class="section-header">
+               <div class="section-title-wrap">
+                  <div class="section-text-wrap">
+                     <div class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        <span data-i18n="popup_ui_design">Popup UI Design
+                     </span></div>
+                  </div>
+               </div>
+            </div>
+            <div class="ypp-inline-98 card-group">
+              <input type="hidden" id="popupUiTheme" value="liquid-glass" aria-label="Popup Ui Theme" title="Popup Ui Theme">
+              <div class="ypp-inline-99 theme-grid">
+                <button type="button" class="theme-btn popup-style-btn" data-style="default" data-i18n="default">Default</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="abyss">Abyss</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="aurora">Aurora</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="autumn">Autumn</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="bento">Bento</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="bloodmoon">Blood Moon</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="blue-sky">Blue Sky</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="brutalism">Brutalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cairo-red">Cairo Red</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cherry">Cherry</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="christmas">Christmas</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="claymorphism">Claymorphism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="crystal-glass">Crystal Glass</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk">Cyberpunk</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="deepspace">Deep Space</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="frutiger-aero">Frutiger Aero</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="glassmorphism">Glassmorphism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="harry-potter">Harry Potter</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="kawaii">Kawaii</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass">Liquid Glass</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="material">Material</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="maximalism">Maximalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="minimalism">Minimalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="nature">Nature</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="nebula">Nebula</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic">Neumorphic</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="ocean">Ocean</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="outrun">Outrun</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="retro">Retro</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="technozen">Technozen</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="terminalism">Terminalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="vintage">Vintage</button>
+              </div>
+            </div>
+          </div>
+
+        </section>
         <!-- ADVANCED -->
         <section id="tab-advanced" class="tab-content">
           <div id="shortcutsPanel" data-preserve="true" class="ypp-inline-324 hotkey-grid">

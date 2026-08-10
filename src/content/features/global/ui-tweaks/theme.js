@@ -123,7 +123,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
 
         try {
             // Apply colour theme (e.g. forest.css, midnight.css)
-            this._toggleTheme(this._settings.premiumTheme);
+            this._toggleTheme(true);
 
             // Apply UI style overlay (e.g. nature.css, ocean.css from ui-styles/)
             this._applyUiStyle(this._settings.youtubePageTheme);
@@ -518,6 +518,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         const bgSig = [
             this._settings.customBackgroundImage || '',
             this._settings.customBackgroundImageIntensity ?? 0.6,
+            this._settings.customBackgroundImageBlur ?? 0,
+            this._settings.customBackgroundImageBrightness ?? 1.0,
+            this._settings.customBackgroundImageSaturation ?? 1.0,
             !!this._settings.customBackgroundImageExtractColors,
             this._settings.accentColor || ''
         ].join('|');
@@ -525,6 +528,18 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (bgSig !== this._lastBgSig) {
             this._lastBgSig = bgSig;
             this._applyBgImageSettings(root);
+        }
+
+        // ── UI Shapes ────────────────────────────────────────────────────────
+        if (this._settings.useSquareCorners) {
+            document.body.classList.add('ypp-ui-square-corners');
+            document.body.classList.remove('ypp-ui-extra-rounded');
+        } else if (this._settings.extraRoundedUI) {
+            document.body.classList.add('ypp-ui-extra-rounded');
+            document.body.classList.remove('ypp-ui-square-corners');
+        } else {
+            document.body.classList.remove('ypp-ui-square-corners');
+            document.body.classList.remove('ypp-ui-extra-rounded');
         }
 
         // ── Accent Color ─────────────────────────────────────────────────────
@@ -540,7 +555,27 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             root.style.setProperty('--ypp-accent-color', hex);  // alias for backwards compat
             root.style.setProperty('--ypp-accent-glow', hex + '66');
             root.style.setProperty('--ypp-accent-hover', hex + 'cc');
-            root.style.setProperty('--ypp-accent-gradient', `linear-gradient(135deg, ${hex} 0%, ${hex}cc 100%)`);
+            
+            // Apply to YouTube native spec variables for seamless extraction
+            root.style.setProperty('--yt-spec-static-brand-red', hex);
+            root.style.setProperty('--yt-spec-icon-active-other', hex);
+            root.style.setProperty('--yt-spec-brand-icon-active', hex);
+            root.style.setProperty('--yt-spec-call-to-action', hex);
+            
+            let gradientStr = `linear-gradient(135deg, ${hex} 0%, ${hex}cc 100%)`;
+            if (this._settings.enableDualAccent && this._settings.secondaryAccentColor) {
+                let sec = this._settings.secondaryAccentColor;
+                if (this._CONSTANTS.PREMIUM_COLORS && this._CONSTANTS.PREMIUM_COLORS[sec]) {
+                    sec = this._CONSTANTS.PREMIUM_COLORS[sec];
+                }
+                gradientStr = `linear-gradient(135deg, ${hex} 0%, ${sec} 100%)`;
+                root.style.setProperty('--ypp-accent-secondary', sec);
+                document.body.classList.add('ypp-dual-accent-enabled');
+            } else {
+                root.style.removeProperty('--ypp-accent-secondary');
+                document.body.classList.remove('ypp-dual-accent-enabled');
+            }
+            root.style.setProperty('--ypp-accent-gradient', gradientStr);
         }
 
         // ── Avatar Squircles (write once — this CSS is static) ───────────────
@@ -637,6 +672,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         
         if (this._settings.customBackgroundImage) {
             const intensity = this._settings.customBackgroundImageIntensity ?? 0.6;
+            const blur = this._settings.customBackgroundImageBlur ?? 0;
+            const brightness = this._settings.customBackgroundImageBrightness ?? 1.0;
+            const saturation = this._settings.customBackgroundImageSaturation ?? 1.0;
             
             // Mark html element so core-styles.css and UI style bundles can suppress their bg colors
             root.setAttribute('data-ypp-has-bg-image', 'true');
@@ -654,18 +692,19 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             
             bgContainer.style.cssText = `
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
+                top: -10vh;
+                left: -10vw;
+                width: 120vw;
+                height: 120vh;
                 background-image: url("${this._settings.customBackgroundImage}");
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
                 z-index: -9999;
                 opacity: ${intensity};
+                filter: blur(${blur}px) brightness(${brightness}) saturate(${saturation});
                 pointer-events: none;
-                transition: opacity 0.3s ease;
+                transition: opacity 0.3s ease, filter 0.3s ease;
             `;
             
             let bgStyles = `

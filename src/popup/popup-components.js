@@ -1049,33 +1049,70 @@ export function initComponents(
     const uploadBtn = document.getElementById('uploadImageThemeBtn');
     const fileInput = document.getElementById('imageThemeFileInput');
     const clearBtn = document.getElementById('clearImageThemeBtn');
-    const previewContainer = document.getElementById('imageThemePreviewContainer');
-    const preview = document.getElementById('imageThemePreview');
+    const previewContainer = document.getElementById('imagePreviewContainer');
+    const previewImg = document.getElementById('customBgPreview');
+    const placeholderSvg = document.getElementById('customBgPlaceholder');
     const intensitySlider = document.getElementById('imageThemeIntensity');
+    const blurSlider = document.getElementById('customBackgroundImageBlur');
+    const brightnessSlider = document.getElementById('customBackgroundImageBrightness');
+    const saturationSlider = document.getElementById('customBackgroundImageSaturation');
     const extractColorsCheck = document.getElementById('imageThemeExtractColors');
 
-    if (!uploadBtn) return;
+    if (!fileInput) return;
 
     // Load saved settings
     chrome.storage.local.get('settings', (data) => {
       const settings = data.settings || {};
       
       if (settings.customBackgroundImage) {
-        previewContainer.style.display = 'block';
-        preview.style.backgroundImage = `url(${settings.customBackgroundImage})`;
+        if(previewImg) {
+            previewImg.src = settings.customBackgroundImage;
+            previewImg.style.display = 'block';
+        }
+        if(placeholderSvg) placeholderSvg.style.display = 'none';
       } else {
-        previewContainer.style.display = 'none';
+        if(previewImg) previewImg.style.display = 'none';
+        if(placeholderSvg) placeholderSvg.style.display = 'block';
       }
       
-      if (intensitySlider) intensitySlider.value = settings.customBackgroundImageIntensity ?? 0.6;
+      if (intensitySlider) {
+          intensitySlider.value = settings.customBackgroundImageIntensity ?? 0.6;
+          const valEl = document.getElementById('customBackgroundImageIntensityValue');
+          if (valEl) valEl.textContent = Math.round((settings.customBackgroundImageIntensity ?? 0.6) * 100) + '%';
+      }
+      if (blurSlider) {
+          blurSlider.value = settings.customBackgroundImageBlur ?? 0;
+          const valEl = document.getElementById('customBackgroundImageBlurValue');
+          if (valEl) valEl.textContent = (settings.customBackgroundImageBlur ?? 0) + 'px';
+      }
+      if (brightnessSlider) {
+          brightnessSlider.value = settings.customBackgroundImageBrightness ?? 1.0;
+          const valEl = document.getElementById('customBackgroundImageBrightnessValue');
+          if (valEl) valEl.textContent = Number(settings.customBackgroundImageBrightness ?? 1.0).toFixed(1) + 'x';
+      }
+      if (saturationSlider) {
+          saturationSlider.value = settings.customBackgroundImageSaturation ?? 1.0;
+          const valEl = document.getElementById('customBackgroundImageSaturationValue');
+          if (valEl) valEl.textContent = Number(settings.customBackgroundImageSaturation ?? 1.0).toFixed(1) + 'x';
+      }
       if (extractColorsCheck) extractColorsCheck.checked = settings.customBackgroundImageExtractColors ?? true;
     });
 
-    if (intensitySlider) {
-      intensitySlider.addEventListener('input', () => {
-        updateSetting('customBackgroundImageIntensity', parseFloat(intensitySlider.value));
-      });
-    }
+    const bindSlider = (slider, key, isFloat = true, formatter = (v)=>v) => {
+        if (!slider) return;
+        slider.addEventListener('input', () => {
+            const val = isFloat ? parseFloat(slider.value) : parseInt(slider.value, 10);
+            updateSetting(key, val);
+            const displayEl = document.getElementById(slider.id + 'Value') || document.getElementById('customBackgroundImageIntensityValue');
+            if (displayEl && slider.id !== 'imageThemeIntensity') displayEl.textContent = formatter(val);
+            else if (displayEl && slider.id === 'imageThemeIntensity') displayEl.textContent = Math.round(val * 100) + '%';
+        });
+    };
+
+    bindSlider(intensitySlider, 'customBackgroundImageIntensity', true);
+    bindSlider(blurSlider, 'customBackgroundImageBlur', false, (v) => v + 'px');
+    bindSlider(brightnessSlider, 'customBackgroundImageBrightness', true, (v) => v.toFixed(1) + 'x');
+    bindSlider(saturationSlider, 'customBackgroundImageSaturation', true, (v) => v.toFixed(1) + 'x');
 
     if (extractColorsCheck) {
       extractColorsCheck.addEventListener('change', () => {
@@ -1092,7 +1129,7 @@ export function initComponents(
                 sampleCanvas.height = 1;
                 sampleCtx.drawImage(img, 0, 0, 1, 1);
                 const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
-                const averageColor = `#${pixel[0].toString(16).padStart(2, '0')}${pixel[1].toString(16).padStart(2, '0')}${pixel[2].toString(16).padStart(2, '0')}`;
+                const averageColor = '#' + pixel[0].toString(16).padStart(2, '0') + pixel[1].toString(16).padStart(2, '0') + pixel[2].toString(16).padStart(2, '0');
                 updateSetting('accentColor', averageColor);
                 const customInput = document.getElementById('accentColor');
                 if (customInput) {
@@ -1107,11 +1144,16 @@ export function initComponents(
       });
     }
 
-    uploadBtn.addEventListener('click', () => fileInput.click());
+    if(uploadBtn) uploadBtn.addEventListener('click', (e) => {
+        // Just let it work natively
+    });
 
-    clearBtn.addEventListener('click', () => {
-      previewContainer.style.display = 'none';
-      preview.style.backgroundImage = 'none';
+    if(clearBtn) clearBtn.addEventListener('click', () => {
+      if(previewImg) {
+        previewImg.src = '';
+        previewImg.style.display = 'none';
+      }
+      if(placeholderSvg) placeholderSvg.style.display = 'block';
       updateSetting('customBackgroundImage', null);
       if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
     });
@@ -1127,7 +1169,6 @@ export function initComponents(
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           
-          // Max dimension 1280px for performance and storage
           const MAX_SIZE = 1280;
           let width = img.width;
           let height = img.height;
@@ -1148,10 +1189,8 @@ export function initComponents(
           canvas.height = height;
           ctx.drawImage(img, 0, 0, width, height);
 
-          // Compress as JPEG
           const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
           
-          // Extract average color if enabled
           let averageColor = null;
           if (extractColorsCheck && extractColorsCheck.checked) {
             const sampleCanvas = document.createElement('canvas');
@@ -1160,29 +1199,31 @@ export function initComponents(
             sampleCanvas.height = 1;
             sampleCtx.drawImage(canvas, 0, 0, 1, 1);
             const pixel = sampleCtx.getImageData(0, 0, 1, 1).data;
-            averageColor = `#${pixel[0].toString(16).padStart(2, '0')}${pixel[1].toString(16).padStart(2, '0')}${pixel[2].toString(16).padStart(2, '0')}`;
+            averageColor = '#' + pixel[0].toString(16).padStart(2, '0') + pixel[1].toString(16).padStart(2, '0') + pixel[2].toString(16).padStart(2, '0');
           }
 
-          previewContainer.style.display = 'block';
-          preview.style.backgroundImage = `url(${dataUrl})`;
+          if(previewImg) {
+            previewImg.src = dataUrl;
+            previewImg.style.display = 'block';
+          }
+          if(placeholderSvg) placeholderSvg.style.display = 'none';
 
           updateSetting('customBackgroundImage', dataUrl);
           
           if (averageColor) {
-             updateSetting('accentColor', averageColor);
-             const customInput = document.getElementById('accentColor');
-             if (customInput) {
-                customInput.value = averageColor;
-                customInput.dispatchEvent(new Event('input', {bubbles:true}));
-             }
+            updateSetting('accentColor', averageColor);
+            const customInput = document.getElementById('accentColor');
+            if (customInput) {
+              customInput.value = averageColor;
+              customInput.dispatchEvent(new Event('input', {bubbles:true}));
+            }
           }
-          
+
           if (ui && ui.showSaveIndicator) ui.showSaveIndicator(document);
         };
         img.src = event.target.result;
       };
       reader.readAsDataURL(file);
-      fileInput.value = ''; // reset
     });
   }
 

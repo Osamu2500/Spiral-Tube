@@ -322,7 +322,6 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         enableCustomSpeed: 'Toggle Custom Speed',
         enableTranscript: 'Toggle Transcript',
         // --- UI / Theme ---
-        premiumTheme: 'Toggle Premium Theme',
         trueBlack: 'Toggle True Black Dark Mode',
         hideScrollbar: 'Toggle Scrollbar',
         grayscaleThumbnails: 'Toggle Grayscale Thumbs',

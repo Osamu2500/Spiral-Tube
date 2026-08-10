@@ -1750,3 +1750,61 @@ body .toggle-card.compact-toggle:has(input:checked) {
 body .toggle-card.compact-toggle:hover {
     background: color-mix(in srgb, var(--accent-primary) 8%, transparent);
 }
+
+
+/* ─────────────────────────────────────────────────────────
+ * NEW PREMIUM UI CLASSES
+ * ───────────────────────────────────────────────────────── */
+.premium-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.premium-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+.premium-btn:active {
+  transform: translateY(0);
+}
+.premium-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.custom-color-picker {
+  transition: transform 0.2s;
+}
+.custom-color-picker:hover {
+  transform: scale(1.1);
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.custom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
