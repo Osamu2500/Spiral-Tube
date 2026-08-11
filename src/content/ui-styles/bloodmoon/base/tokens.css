@@ -1,68 +1,16 @@
-/* Blood Moon — Eclipse red on deep obsidian */
-html[data-ypp-theme="bloodmoon"] {
-  /* Colors */
-  --bm-bg-obsidian: #060205;       /* Near-black with a red tint */
-  --bm-bg-surface: #100409;        /* Dark burgundy surface */
-  --bm-bg-elevated: #1C0810;       /* Elevated blood-tinted panel */
-  --bm-bg-vessel: #2A0D19;         /* Deeper raised element */
-
-  --bm-accent-blood: #C0152A;      /* Blood red */
-  --bm-accent-ember: #E84545;      /* Ember glow red */
-  --bm-accent-lunar: #FF8C69;      /* Lunar halo salmon */
-  --bm-accent-gold: #C9A84C;       /* Eclipse corona gold */
-
-  --bm-glass-bg: rgba(16, 4, 9, 0.72);
-  --bm-glass-bg-hover: rgba(28, 8, 16, 0.92);
-  --bm-glass-border: rgba(192, 21, 42, 0.2);
-  --bm-glass-border-active: rgba(232, 69, 69, 0.5);
-
-  --bm-text-primary: #F5E6E8;      /* Pale moonlit white with red tint */
-  --bm-text-secondary: rgba(245, 230, 232, 0.6);
-  --bm-text-muted: rgba(245, 230, 232, 0.3);
-
-  /* Glows */
-  --bm-glow-blood: 0 0 12px rgba(192, 21, 42, 0.55), 0 0 28px rgba(192, 21, 42, 0.25);
-  --bm-glow-ember: 0 0 12px rgba(232, 69, 69, 0.6), 0 0 28px rgba(232, 69, 69, 0.25);
-  --bm-glow-lunar: 0 0 16px rgba(255, 140, 105, 0.4);
-
-  /* Unique Shape: "Blood Drop" (Teardrop)
-     Top-Left, Top-Right, Bottom-Right are rounded, Bottom-Left is perfectly sharp.
-  */
-  --bm-shape-card: 32px 32px 32px 0;
-  --bm-shape-btn: 18px 18px 18px 0;
-  --bm-shape-chip: 12px 12px 12px 0;
-  --bm-shape-modal: 24px 24px 24px 0;
-
-  /* Legacy Radii (for fallback/internal) */
-  --bm-r-sm: 6px;
-  --bm-r-md: 12px;
-  --bm-r-lg: 18px;
-  --bm-r-pill: 999px;
-
-  /* Easing */
-  --bm-ease: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Map YT tokens */
-html[data-ypp-theme="bloodmoon"] {
-  --yt-spec-base-background: var(--bm-bg-obsidian) !important;
-  --yt-spec-raised-background: var(--bm-bg-surface) !important;
-  --yt-spec-menu-background: var(--bm-bg-elevated) !important;
-  --yt-spec-inverted-background: var(--bm-accent-blood) !important;
-  --yt-spec-additive-background: rgba(192, 21, 42, 0.1) !important;
-
-  --yt-spec-text-primary: var(--bm-text-primary) !important;
-  --yt-spec-text-secondary: var(--bm-text-secondary) !important;
-  --yt-spec-text-disabled: var(--bm-text-muted) !important;
-  --yt-spec-icon-active-other: var(--bm-text-primary) !important;
-  --yt-spec-icon-inactive: var(--bm-text-secondary) !important;
-  --yt-spec-icon-disabled: var(--bm-text-muted) !important;
-
-  --yt-spec-brand-button-background: var(--bm-accent-blood) !important;
-  --yt-spec-brand-link-text: var(--bm-accent-lunar) !important;
-  --yt-spec-call-to-action: var(--bm-accent-ember) !important;
-
-  --yt-spec-10-percent-layer: rgba(192, 21, 42, 0.1) !important;
-  --yt-spec-badge-chip-background: rgba(192, 21, 42, 0.18) !important;
-  --yt-spec-button-chip-background-hover: rgba(232, 69, 69, 0.22) !important;
+/* Bloodmoon Tokens */
+html[data-ypp-card-style="bloodmoon"] {
+  --bl-bg: #0a0000 !important;
+  --bl-surface: #170505 !important;
+  --bl-border: 1px solid #330a0a !important;
+  --bl-crimson: #900000 !important;
+  --bl-crimson-hover: #c00000 !important;
+  --bl-text: #ffd0d0 !important;
+  --bl-muted: #804040 !important;
+  --bl-radius: 6px !important;
+  
+  --yt-spec-text-primary: var(--bl-text) !important;
+  --yt-spec-text-secondary: var(--bl-muted) !important;
+  --yt-spec-base-background: var(--bl-bg) !important;
+  --yt-spec-menu-background: var(--bl-surface) !important;
 }

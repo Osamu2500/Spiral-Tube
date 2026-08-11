@@ -1,52 +1,24 @@
-html[data-ypp-theme="bloodmoon"] ytd-rich-grid-media,
-html[data-ypp-theme="bloodmoon"] ytd-compact-video-renderer,
-html[data-ypp-theme="bloodmoon"] ytd-video-renderer,
-html[data-ypp-theme="bloodmoon"] ytd-grid-video-renderer,
-html[data-ypp-theme="bloodmoon"] ytd-playlist-renderer {
-  background: var(--bm-bg-surface) !important;
-  border: 1px solid var(--bm-glass-border) !important;
-  border-radius: var(--bm-shape-card) !important;
-  padding: 10px !important;
-  box-sizing: border-box !important;
-  transition: all 0.3s var(--bm-ease) !important;
-  box-shadow: 0 2px 14px rgba(6, 2, 5, 0.5) !important;
+/* Bloodmoon Cards */
+html[data-ypp-card-style="bloodmoon"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--bl-surface) !important;
+    border: var(--bl-border) !important;
+    border-radius: var(--bl-radius) !important;
+    padding: 12px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;
+    transition: all 0.3s ease !important;
 }
-
-html[data-ypp-theme="bloodmoon"] ytd-rich-grid-media:hover,
-html[data-ypp-theme="bloodmoon"] ytd-compact-video-renderer:hover,
-html[data-ypp-theme="bloodmoon"] ytd-video-renderer:hover,
-html[data-ypp-theme="bloodmoon"] ytd-grid-video-renderer:hover,
-html[data-ypp-theme="bloodmoon"] ytd-playlist-renderer:hover {
-  background: var(--bm-bg-elevated) !important;
-  border-color: var(--bm-glass-border-active) !important;
-  box-shadow: var(--bm-glow-ember), 0 8px 28px rgba(6, 2, 5, 0.7) !important;
-  transform: translateY(-5px) !important;
+html[data-ypp-card-style="bloodmoon"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    border-color: var(--bl-crimson) !important;
+    box-shadow: 0 5px 25px rgba(144, 0, 0, 0.4) !important;
+    background: #200505 !important;
 }
-
-html[data-ypp-theme="bloodmoon"] ytd-thumbnail {
-  border-radius: var(--bm-r-md) !important;
-  overflow: hidden !important;
-}
-
-html[data-ypp-theme="bloodmoon"] #video-title {
-  color: var(--bm-text-primary) !important;
-  font-weight: 600 !important;
-}
-
-html[data-ypp-theme="bloodmoon"] ytd-rich-grid-media:hover #video-title {
-  color: var(--bm-accent-lunar) !important;
-  text-shadow: 0 0 8px rgba(255, 140, 105, 0.4) !important;
-}
-
-html[data-ypp-theme="bloodmoon"] #metadata-line span,
-html[data-ypp-theme="bloodmoon"] #channel-name {
-  color: var(--bm-text-secondary) !important;
-}
-
-html[data-ypp-theme="bloodmoon"] ytd-thumbnail-overlay-time-status-renderer {
-  background: rgba(6, 2, 5, 0.9) !important;
-  border: 1px solid var(--bm-glass-border) !important;
-  border-radius: var(--bm-r-sm) !important;
-  color: var(--bm-accent-lunar) !important;
-  font-weight: 700 !important;
+html[data-ypp-card-style="bloodmoon"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 4px !important;
+    filter: sepia(0.3) hue-rotate(-30deg) saturate(1.5) !important; /* Blood tint on images */
 }

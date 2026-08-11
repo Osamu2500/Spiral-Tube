@@ -1,0 +1,16 @@
+/* Retrowave-Green Player */
+html[data-ypp-card-style="retrowave-green"] .ytp-chrome-bottom {
+    background: var(--rw-surface) !important;
+    border: 1px solid var(--rw-neon) !important;
+    border-radius: 0 !important;
+    margin: 8px !important;
+    width: calc(100% - 16px) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2) !important;
+}
+html[data-ypp-card-style="retrowave-green"] .ytp-play-progress { background: var(--rw-neon) !important; box-shadow: 0 0 10px var(--rw-neon) !important; }
+html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button {
+    background: #000 !important;
+    border: 2px solid var(--rw-neon) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 5px var(--rw-neon) !important;
+}

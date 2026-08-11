@@ -1,0 +1,11 @@
+/* Colorize Background */
+html[data-ypp-card-style="colorize"] body {
+  background: var(--col-bg) !important;
+  color: var(--col-text) !important;
+}
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar { width: 10px !important; }
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-track { background: var(--col-bg) !important; }
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb {
+  animation: rgbBg 10s infinite linear !important;
+  border-radius: 5px !important;
+}

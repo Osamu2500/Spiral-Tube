@@ -1,0 +1,16 @@
+/* Colorize Menus */
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog,
+html[data-ypp-card-style="colorize"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="colorize"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="colorize"] ytd-masthead {
+    background: var(--col-surface) !important;
+    border: 2px solid transparent !important;
+    border-radius: var(--col-radius) !important;
+    animation: rgbBorder 10s infinite linear !important;
+}
+html[data-ypp-card-style="colorize"] ytd-masthead {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+}

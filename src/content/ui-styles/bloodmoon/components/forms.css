@@ -1,0 +1,27 @@
+/* Bloodmoon Forms */
+html[data-ypp-card-style="bloodmoon"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--bl-bg) !important;
+    border: var(--bl-border) !important;
+    border-radius: 4px 0 0 4px !important;
+}
+html[data-ypp-card-style="bloodmoon"] ytd-searchbox #search-icon-legacy {
+    background: var(--bl-surface) !important;
+    border: var(--bl-border) !important;
+    border-left: none !important;
+    border-radius: 0 4px 4px 0 !important;
+}
+
+html[data-ypp-card-style="bloodmoon"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="bloodmoon"] .yt-spec-button-shape-next--filled {
+    background: var(--bl-crimson) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    text-transform: uppercase !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="bloodmoon"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="bloodmoon"] .yt-spec-button-shape-next--filled:hover {
+    background: var(--bl-crimson-hover) !important;
+    box-shadow: 0 0 20px rgba(192, 0, 0, 0.6) !important;
+}

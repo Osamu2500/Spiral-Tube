@@ -1,0 +1,29 @@
+/* Ice-Blue Forms */
+html[data-ypp-card-style="ice-blue"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--ice-bg) !important;
+    border: var(--ice-border) !important;
+    border-radius: 0 !important;
+}
+html[data-ypp-card-style="ice-blue"] ytd-searchbox #search-icon-legacy {
+    background: var(--ice-surface) !important;
+    border: var(--ice-border) !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    color: var(--ice-accent) !important;
+}
+
+html[data-ypp-card-style="ice-blue"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="ice-blue"] .yt-spec-button-shape-next--filled {
+    background: transparent !important;
+    color: var(--ice-accent) !important;
+    border: 2px solid var(--ice-accent) !important;
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="ice-blue"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="ice-blue"] .yt-spec-button-shape-next--filled:hover {
+    background: var(--ice-accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6) !important;
+}

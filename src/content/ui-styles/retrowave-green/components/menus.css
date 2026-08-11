@@ -1,0 +1,14 @@
+/* Retrowave-Green Menus */
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog,
+html[data-ypp-card-style="retrowave-green"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="retrowave-green"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="retrowave-green"] ytd-masthead {
+    background: var(--rw-surface) !important;
+    border: var(--rw-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-card-style="retrowave-green"] ytd-masthead {
+    border-bottom: 2px solid var(--rw-neon) !important;
+    box-shadow: 0 2px 15px rgba(0, 255, 65, 0.3) !important;
+}

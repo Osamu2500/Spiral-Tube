@@ -1,0 +1,30 @@
+/* Ice-Blue Cards */
+html[data-ypp-card-style="ice-blue"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--ice-surface) !important;
+    border: var(--ice-border) !important;
+    border-radius: 0 !important; /* Crystalline sharp edges */
+    backdrop-filter: blur(8px) !important;
+    padding: 12px !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="ice-blue"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    border-color: var(--ice-accent-hover) !important;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="ice-blue"] :is(
+        ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+        ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+    ):hover { background: rgba(0, 60, 80, 0.9) !important; }
+}
+html[data-ypp-card-style="ice-blue"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 0 !important;
+    filter: brightness(1.1) contrast(1.1) !important; /* Frost effect on images */
+}

@@ -1,0 +1,24 @@
+/* Ice-Blue Tokens */
+html[data-ypp-card-style="ice-blue"] {
+  --ice-bg: #e0f7fa !important;
+  --ice-surface: rgba(255, 255, 255, 0.7) !important;
+  --ice-text: #006064 !important;
+  --ice-muted: #00838f !important;
+  --ice-border: 1px solid rgba(0, 188, 212, 0.3) !important;
+  --ice-accent: #00bcd4 !important;
+  --ice-accent-hover: #00e5ff !important;
+  
+  --yt-spec-text-primary: var(--ice-text) !important;
+  --yt-spec-text-secondary: var(--ice-muted) !important;
+  --yt-spec-base-background: var(--ice-bg) !important;
+  --yt-spec-menu-background: var(--ice-surface) !important;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="ice-blue"] {
+    --ice-bg: #001f24 !important;
+    --ice-surface: rgba(0, 40, 50, 0.7) !important;
+    --ice-text: #e0f7fa !important;
+    --ice-muted: #b2ebf2 !important;
+    --ice-border: 1px solid rgba(0, 229, 255, 0.2) !important;
+  }
+}

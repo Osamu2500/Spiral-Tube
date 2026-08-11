@@ -1,0 +1,48 @@
+/* Colorize Tokens */
+html[data-ypp-card-style="colorize"] {
+  --col-bg: #ffffff !important;
+  --col-surface: #f8f9fa !important;
+  --col-text: #212529 !important;
+  --col-radius: 12px !important;
+  
+  --yt-spec-text-primary: var(--col-text) !important;
+  --yt-spec-base-background: var(--col-bg) !important;
+  --yt-spec-menu-background: var(--col-surface) !important;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="colorize"] {
+    --col-bg: #121212 !important;
+    --col-surface: #1e1e1e !important;
+    --col-text: #f8f9fa !important;
+  }
+}
+
+@keyframes rgbBorder {
+    0%   { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+    16%  { border-color: #ff7f00; box-shadow: 0 0 15px rgba(255, 127, 0, 0.4); }
+    33%  { border-color: #ffff00; box-shadow: 0 0 15px rgba(255, 255, 0, 0.4); }
+    50%  { border-color: #00ff00; box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); }
+    66%  { border-color: #0000ff; box-shadow: 0 0 15px rgba(0, 0, 255, 0.4); }
+    83%  { border-color: #4b0082; box-shadow: 0 0 15px rgba(75, 0, 130, 0.4); }
+    100% { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+}
+
+@keyframes rgbText {
+    0%   { color: #ff0000; }
+    16%  { color: #ff7f00; }
+    33%  { color: #ffff00; }
+    50%  { color: #00ff00; }
+    66%  { color: #0000ff; }
+    83%  { color: #4b0082; }
+    100% { color: #ff0000; }
+}
+
+@keyframes rgbBg {
+    0%   { background-color: #ff0000; }
+    16%  { background-color: #ff7f00; }
+    33%  { background-color: #ffff00; }
+    50%  { background-color: #00ff00; }
+    66%  { background-color: #0000ff; }
+    83%  { background-color: #4b0082; }
+    100% { background-color: #ff0000; }
+}

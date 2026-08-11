@@ -1,0 +1,29 @@
+/* Colorize Forms */
+html[data-ypp-card-style="colorize"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--col-bg) !important;
+    border: 2px solid transparent !important;
+    border-radius: 20px 0 0 20px !important;
+    animation: rgbBorder 10s infinite linear !important;
+}
+html[data-ypp-card-style="colorize"] ytd-searchbox #search-icon-legacy {
+    background: var(--col-surface) !important;
+    border: 2px solid transparent !important;
+    border-left: none !important;
+    border-radius: 0 20px 20px 0 !important;
+    animation: rgbBorder 10s infinite linear !important;
+}
+
+html[data-ypp-card-style="colorize"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="colorize"] .yt-spec-button-shape-next--filled {
+    animation: rgbBg 5s infinite linear !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 20px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: transform 0.2s ease !important;
+}
+html[data-ypp-card-style="colorize"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="colorize"] .yt-spec-button-shape-next--filled:hover {
+    transform: scale(1.05) !important;
+}

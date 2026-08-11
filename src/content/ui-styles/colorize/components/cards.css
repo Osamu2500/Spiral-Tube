@@ -1,0 +1,27 @@
+/* Colorize Cards */
+html[data-ypp-card-style="colorize"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--col-surface) !important;
+    border: 2px solid transparent !important;
+    border-radius: var(--col-radius) !important;
+    padding: 12px !important;
+    transition: transform 0.2s ease !important;
+}
+html[data-ypp-card-style="colorize"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    transform: translateY(-4px) !important;
+    animation: rgbBorder 5s infinite linear !important;
+}
+html[data-ypp-card-style="colorize"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover #video-title {
+    animation: rgbText 5s infinite linear !important;
+}
+html[data-ypp-card-style="colorize"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 8px !important;
+}

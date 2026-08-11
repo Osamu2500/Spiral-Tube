@@ -1,0 +1,31 @@
+/* Retrowave-Green Forms */
+html[data-ypp-card-style="retrowave-green"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--rw-bg) !important;
+    border: var(--rw-border) !important;
+    border-radius: 0 !important;
+}
+html[data-ypp-card-style="retrowave-green"] ytd-searchbox #search-icon-legacy {
+    background: var(--rw-surface) !important;
+    border: var(--rw-border) !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    color: var(--rw-neon) !important;
+}
+
+html[data-ypp-card-style="retrowave-green"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="retrowave-green"] .yt-spec-button-shape-next--filled {
+    background: transparent !important;
+    color: var(--rw-neon) !important;
+    border: 1px solid var(--rw-neon) !important;
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    box-shadow: 0 0 5px var(--rw-neon-dim) !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="retrowave-green"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="retrowave-green"] .yt-spec-button-shape-next--filled:hover {
+    background: var(--rw-neon) !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px var(--rw-neon) !important;
+}
