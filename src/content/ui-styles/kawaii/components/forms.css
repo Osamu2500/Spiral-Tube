@@ -1,0 +1,37 @@
+/* Kawaii Forms, Buttons, and Search */
+html[data-ypp-card-style="kawaii"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-style="kawaii"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--kawaii-bg-primary) !important;
+    border: 3px solid #fff !important;
+    border-radius: 30px 0 0 30px !important;
+    color: var(--kawaii-text-primary) !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-style="kawaii"] ytd-searchbox #search-icon-legacy {
+    background: var(--kawaii-accent-primary) !important;
+    border: 3px solid #fff !important;
+    border-left: none !important;
+    border-radius: 0 30px 30px 0 !important;
+    color: #fff !important;
+}
+
+html[data-ypp-card-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled {
+    background: var(--kawaii-accent-primary) !important;
+    color: #fff !important;
+    border: 3px solid #fff !important;
+    border-radius: 30px !important;
+    font-family: 'Fredoka', sans-serif !important;
+    font-size: 16px !important;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    box-shadow: 0 4px 0px rgba(255, 158, 187, 0.6) !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 0px rgba(255, 158, 187, 0.6) !important;
+}

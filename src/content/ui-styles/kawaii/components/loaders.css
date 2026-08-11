@@ -1,0 +1,46 @@
+/* Kawaii Loaders & Spinners */
+
+/* Top Navigation Progress Bar */
+html[data-ypp-card-style="kawaii"] yt-page-navigation-progress,
+html[data-ypp-ui-style="kawaii"] yt-page-navigation-progress {
+    height: 4px !important;
+    background-color: var(--kawaii-accent-primary) !important;
+    box-shadow: 0 0 10px var(--kawaii-accent-primary) !important;
+    border-radius: 0 4px 4px 0 !important;
+}
+
+/* Custom Buffering Spinner Override */
+/* Hide the default SVG paths */
+html[data-ypp-card-style="kawaii"] .ytp-spinner-container,
+html[data-ypp-ui-style="kawaii"] .ytp-spinner-container {
+    display: none !important;
+}
+
+/* Create our own bouncing dots using pseudo-elements on the spinner container */
+html[data-ypp-card-style="kawaii"] .ytp-spinner,
+html[data-ypp-ui-style="kawaii"] .ytp-spinner {
+    width: 60px !important;
+    height: 60px !important;
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+html[data-ypp-card-style="kawaii"] .ytp-spinner::before,
+html[data-ypp-card-style="kawaii"] .ytp-spinner::after,
+html[data-ypp-ui-style="kawaii"] .ytp-spinner::before,
+html[data-ypp-ui-style="kawaii"] .ytp-spinner::after {
+    content: "💖" !important;
+    font-size: 24px !important;
+    animation: kawaiiBounce 1s infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+html[data-ypp-card-style="kawaii"] .ytp-spinner::after,
+html[data-ypp-ui-style="kawaii"] .ytp-spinner::after {
+    animation-delay: 0.2s !important;
+    content: "✨" !important;
+}
+
+@keyframes kawaiiBounce {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-15px) scale(1.2); }
+}

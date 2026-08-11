@@ -1,0 +1,49 @@
+/* Kawaii Playlist Queue */
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-renderer {
+    background: var(--kawaii-bg-secondary) !important;
+    border: var(--kawaii-border-thick) !important;
+    border-radius: var(--kawaii-radius-squircle) !important;
+    box-shadow: var(--kawaii-shadow-fluffy) !important;
+}
+
+/* Notepad binding style on the header */
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-renderer #header,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-renderer #header {
+    background: var(--kawaii-accent-tertiary) !important; /* Soft peach */
+    border-bottom: 3px dashed #fff !important;
+}
+
+/* Individual Queue Items */
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer {
+    border-radius: 12px !important;
+    margin: 4px !important;
+    transition: background 0.2s ease !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer:hover {
+    background: var(--kawaii-bg-primary) !important;
+}
+
+/* Active Playing Track */
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer[selected],
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer[selected] {
+    background: var(--kawaii-accent-primary) !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer[selected] #video-title,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer[selected] #video-title {
+    color: #fff !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer[selected]::before,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer[selected]::before {
+    content: "✨" !important;
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    z-index: 10;
+}

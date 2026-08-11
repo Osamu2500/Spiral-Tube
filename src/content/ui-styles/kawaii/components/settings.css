@@ -1,0 +1,42 @@
+/* Kawaii Video Settings & Toggles */
+html[data-ypp-card-style="kawaii"] .ytp-settings-menu,
+html[data-ypp-ui-style="kawaii"] .ytp-settings-menu,
+html[data-ypp-card-style="kawaii"] .ytp-panel-menu,
+html[data-ypp-ui-style="kawaii"] .ytp-panel-menu {
+    background: var(--kawaii-bg-secondary) !important;
+    border: var(--kawaii-border-thick) !important;
+    border-radius: var(--kawaii-radius-squircle) !important;
+    box-shadow: var(--kawaii-shadow-bubbly) !important;
+    color: var(--kawaii-text-primary) !important;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+/* Inner panel items */
+html[data-ypp-card-style="kawaii"] .ytp-panel-header,
+html[data-ypp-ui-style="kawaii"] .ytp-panel-header {
+    border-bottom: 2px solid var(--kawaii-accent-primary) !important;
+    color: var(--kawaii-text-primary) !important;
+}
+
+html[data-ypp-card-style="kawaii"] .ytp-menuitem:hover,
+html[data-ypp-ui-style="kawaii"] .ytp-menuitem:hover {
+    background: var(--kawaii-accent-tertiary) !important;
+    border-radius: 12px !important;
+}
+
+/* Custom Autoplay/Toggle Switches */
+html[data-ypp-card-style="kawaii"] .ytp-autonav-toggle-button,
+html[data-ypp-ui-style="kawaii"] .ytp-autonav-toggle-button {
+    background: var(--kawaii-bg-tertiary) !important;
+    border-radius: 20px !important;
+    border: 2px solid #fff !important;
+}
+html[data-ypp-card-style="kawaii"] .ytp-autonav-toggle-button[aria-checked="true"],
+html[data-ypp-ui-style="kawaii"] .ytp-autonav-toggle-button[aria-checked="true"] {
+    background: var(--kawaii-accent-secondary) !important; /* Mint Green when ON */
+}
+html[data-ypp-card-style="kawaii"] .ytp-autonav-toggle-button::after,
+html[data-ypp-ui-style="kawaii"] .ytp-autonav-toggle-button::after {
+    background: var(--kawaii-accent-primary) !important; /* Bubblegum dot */
+    box-shadow: 0 2px 5px rgba(255,158,187,0.5) !important;
+}

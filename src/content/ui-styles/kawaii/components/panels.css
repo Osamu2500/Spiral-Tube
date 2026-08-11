@@ -1,0 +1,31 @@
+/* Kawaii Panels (Transcript / Chapters) */
+html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-engagement-panel-section-list-renderer {
+    background: var(--kawaii-bg-secondary) !important;
+    border: var(--kawaii-border-thick) !important;
+    border-radius: var(--kawaii-radius-squircle) !important;
+    box-shadow: var(--kawaii-shadow-fluffy) !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer #header,
+html[data-ypp-ui-style="kawaii"] ytd-engagement-panel-section-list-renderer #header {
+    background: var(--kawaii-accent-secondary) !important; /* Mint header */
+    border-bottom: var(--kawaii-border-thick) !important;
+    border-radius: 24px 24px 0 0 !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer #content,
+html[data-ypp-ui-style="kawaii"] ytd-engagement-panel-section-list-renderer #content {
+    background: var(--kawaii-bg-primary) !important; /* Notebook aesthetic */
+    background-image: repeating-linear-gradient(transparent, transparent 31px, rgba(255,158,187,0.2) 31px, rgba(255,158,187,0.2) 32px) !important;
+    color: var(--kawaii-text-primary) !important;
+}
+
+/* Description Box Expandable */
+html[data-ypp-card-style="kawaii"] ytd-text-inline-expander,
+html[data-ypp-ui-style="kawaii"] ytd-text-inline-expander,
+html[data-ypp-card-style="kawaii"] #description-inner,
+html[data-ypp-ui-style="kawaii"] #description-inner {
+    background: var(--kawaii-bg-secondary) !important;
+    border-radius: 20px !important;
+    padding: 12px !important;
+    border: 2px solid #fff !important;
+}

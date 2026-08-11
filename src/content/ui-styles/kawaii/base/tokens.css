@@ -1,56 +1,63 @@
-html[data-ypp-ui-style="kawaii"] {
-  /* Colors */
-  --kawaii-bg-primary: #FFE3E3; /* Soft Pastel Pink */
-  --kawaii-bg-secondary: #FFF0F0; /* Lighter Pink */
-  --kawaii-bg-tertiary: #E8DFF5; /* Soft Lavender */
-  
-  --kawaii-accent-primary: #FF9EBB; /* Bubblegum Pink */
-  --kawaii-accent-secondary: #C4F5D6; /* Mint Green */
-  --kawaii-accent-tertiary: #FFDFD3; /* Soft Peach */
-  
-  --kawaii-glass-bg: rgba(255, 255, 255, 0.6);
-  --kawaii-glass-bg-hover: rgba(255, 255, 255, 0.85);
-  
-  --kawaii-text-primary: #594A4E; /* Deep Plum/Charcoal */
-  --kawaii-text-secondary: #8C7A80; /* Soft Mauve */
-  --kawaii-text-muted: #B8A8AD;
-  
-  /* Shadows */
-  --kawaii-shadow-fluffy: 0 10px 25px rgba(255, 158, 187, 0.25);
-  --kawaii-shadow-button: 0 6px 16px rgba(255, 158, 187, 0.35);
-  --kawaii-shadow-inset: inset 0 2px 4px rgba(255, 255, 255, 0.8);
-  
-  /* Radii - Ultra Rounded */
-  --kawaii-r-sm: 12px;
-  --kawaii-r-md: 20px;
-  --kawaii-r-lg: 32px;
-  --kawaii-r-pill: 999px;
-  
-  /* Easing */
-  --kawaii-ease-bouncy: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Playful spring */
-  --kawaii-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* Kawaii Tokens - Dark Text Locked */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap');
 
-/* Mapping standard variables */
+html[data-ypp-card-style="kawaii"],
 html[data-ypp-ui-style="kawaii"] {
+  /* Pastel Palette */
+  --kawaii-bg-primary: #FFE3E3 !important;
+  --kawaii-bg-secondary: #FFF0F0 !important;
+  --kawaii-accent-primary: #FF9EBB !important;
+  --kawaii-accent-secondary: #C4F5D6 !important;
+  
+  /* Text - Locked to Dark Plum regardless of theme */
+  --kawaii-text-primary: #594A4E !important;
+  --kawaii-text-secondary: #8C7A80 !important;
+  --kawaii-text-muted: #B8A8AD !important;
+  
+  --kawaii-border-thick: 4px solid #FFFFFF !important;
+  --kawaii-radius-squircle: 28px !important;
+  --kawaii-shadow-bubbly: 0 8px 0px rgba(255, 158, 187, 0.4) !important;
+  
   --yt-spec-base-background: var(--kawaii-bg-primary) !important;
   --yt-spec-raised-background: var(--kawaii-bg-secondary) !important;
-  --yt-spec-menu-background: rgba(255, 255, 255, 0.8) !important;
-  --yt-spec-inverted-background: var(--kawaii-text-primary) !important;
-  --yt-spec-additive-background: rgba(255, 158, 187, 0.15) !important;
+  --yt-spec-menu-background: var(--kawaii-bg-secondary) !important;
   
+  /* Forcing Dark Text Globally */
   --yt-spec-text-primary: var(--kawaii-text-primary) !important;
   --yt-spec-text-secondary: var(--kawaii-text-secondary) !important;
-  --yt-spec-text-disabled: var(--kawaii-text-muted) !important;
+  --yt-spec-text-primary-inverse: #FFFFFF !important;
   --yt-spec-icon-active-other: var(--kawaii-text-primary) !important;
   --yt-spec-icon-inactive: var(--kawaii-text-secondary) !important;
-  --yt-spec-icon-disabled: var(--kawaii-text-muted) !important;
-  
-  --yt-spec-brand-button-background: var(--kawaii-accent-primary) !important;
-  --yt-spec-brand-link-text: var(--kawaii-accent-primary) !important;
-  --yt-spec-call-to-action: var(--kawaii-accent-primary) !important;
-  
-  --yt-spec-10-percent-layer: rgba(255, 158, 187, 0.15) !important;
-  --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.6) !important;
-  --yt-spec-button-chip-background-hover: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Force dark mode variables to also be dark text + pastel bg */
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="kawaii"],
+  html[data-ypp-ui-style="kawaii"] {
+    --yt-spec-base-background: var(--kawaii-bg-primary) !important;
+    --yt-spec-raised-background: var(--kawaii-bg-secondary) !important;
+    --yt-spec-menu-background: var(--kawaii-bg-secondary) !important;
+    --yt-spec-text-primary: var(--kawaii-text-primary) !important;
+    --yt-spec-text-secondary: var(--kawaii-text-secondary) !important;
+    --yt-spec-icon-active-other: var(--kawaii-text-primary) !important;
+    --yt-spec-icon-inactive: var(--kawaii-text-secondary) !important;
+  }
+}
+
+/* Global Font Override */
+html[data-ypp-card-style="kawaii"] *,
+html[data-ypp-ui-style="kawaii"] * {
+  font-family: 'Quicksand', 'Roboto', sans-serif !important;
+}
+html[data-ypp-card-style="kawaii"] h1, 
+html[data-ypp-card-style="kawaii"] h2, 
+html[data-ypp-card-style="kawaii"] h3,
+html[data-ypp-card-style="kawaii"] #video-title,
+html[data-ypp-ui-style="kawaii"] h1, 
+html[data-ypp-ui-style="kawaii"] h2, 
+html[data-ypp-ui-style="kawaii"] h3,
+html[data-ypp-ui-style="kawaii"] #video-title {
+  font-family: 'Fredoka', 'Roboto', sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--kawaii-text-primary) !important;
 }

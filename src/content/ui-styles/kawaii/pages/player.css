@@ -1,49 +1,30 @@
-html[data-ypp-ui-style="kawaii"] .ytp-swatch-background-color {
-  background-color: var(--kawaii-accent-primary) !important;
+/* Kawaii Player & Shorts */
+html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="kawaii"] .ytp-chrome-bottom {
+    background: var(--kawaii-bg-secondary) !important;
+    border: var(--kawaii-border-thick) !important;
+    border-radius: 20px !important;
+    margin: 8px !important;
+    width: calc(100% - 16px) !important;
+    box-shadow: var(--kawaii-shadow-bubbly) !important;
 }
-
-html[data-ypp-ui-style="kawaii"] .ytp-swatch-color {
-  color: var(--kawaii-accent-primary) !important;
+html[data-ypp-card-style="kawaii"] .ytp-play-progress,
+html[data-ypp-ui-style="kawaii"] .ytp-play-progress { 
+    background: var(--kawaii-accent-primary) !important; 
+    border-radius: 10px !important;
 }
-
-html[data-ypp-ui-style="kawaii"] .ytp-play-progress {
-  background: var(--kawaii-accent-primary) !important;
-  box-shadow: 0 0 8px rgba(255, 158, 187, 0.7) !important;
-}
-
+html[data-ypp-card-style="kawaii"] .ytp-scrubber-button,
 html[data-ypp-ui-style="kawaii"] .ytp-scrubber-button {
-  background: var(--kawaii-accent-primary) !important;
-  border: 3px solid #fff !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 12px rgba(255, 158, 187, 0.8) !important;
-  transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
+    background: var(--kawaii-accent-secondary) !important;
+    border: 3px solid #fff !important;
+    border-radius: 50% !important;
+    transform: scale(1.2) !important;
 }
 
-html[data-ypp-ui-style="kawaii"] .ytp-scrubber-button:hover {
-  transform: scale(1.4) !important;
-}
-
-html[data-ypp-ui-style="kawaii"] .ytp-volume-slider-handle {
-  background: var(--kawaii-accent-secondary) !important;
-  box-shadow: 0 0 8px rgba(196, 245, 214, 0.8) !important;
-}
-
-html[data-ypp-ui-style="kawaii"] .ytp-settings-menu {
-  background: rgba(255, 255, 255, 0.9) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  border-radius: var(--kawaii-r-md) !important;
-  border: 2px solid rgba(255, 255, 255, 0.9) !important;
-  box-shadow: var(--kawaii-shadow-fluffy) !important;
-  color: var(--kawaii-text-primary) !important;
-}
-
-html[data-ypp-ui-style="kawaii"] .ytp-menuitem:hover {
-  background: rgba(255, 158, 187, 0.15) !important;
-  border-radius: var(--kawaii-r-sm) !important;
-}
-
-html[data-ypp-ui-style="kawaii"] .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
-  background: var(--kawaii-accent-primary) !important;
-  border-radius: 50% !important;
+/* Shorts Player Scalloped/Rounded Edges */
+html[data-ypp-card-style="kawaii"] ytd-reel-video-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-reel-video-renderer {
+    border: var(--kawaii-border-thick) !important;
+    border-radius: var(--kawaii-radius-squircle) !important;
+    overflow: hidden !important;
 }
