@@ -1,0 +1,110 @@
+/* KAWAII SUB-SYSTEMS PAYLOAD V11 */
+
+/* =========================================
+   1. PLAYLIST INTERFACE
+========================================= */
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-renderer {
+    border: 4px dashed #ff9ebb; border-radius: 28px; background: #fff0f5 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes slideInPlaylist {
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer {
+    transition: background 0.2s ease !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-playlist-panel-video-renderer:hover {
+    background: rgba(128, 128, 128, 0.1) !important;
+}
+
+/* =========================================
+   2. COMMUNITY POSTS & POLLS
+========================================= */
+html[data-ypp-card-style="kawaii"] ytd-backstage-post-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-backstage-post-renderer {
+    background: #fff0f5 !important;
+    border: 2px dashed #ff9ebb !important;
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+    border-radius: 24px !important;
+}
+
+/* Community Poll Progress Bars */
+html[data-ypp-card-style="kawaii"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-ui-style="kawaii"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-card-style="kawaii"] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-ui-style="kawaii"] .progress-bar.ytd-backstage-poll-renderer {
+    background: #ff9ebb !important;
+    border-radius: 4px !important;
+    opacity: 0.8 !important;
+    box-shadow: 0 0 10px #ff9ebb !important;
+}
+
+/* =========================================
+   3. MERCH & SHOPPING SHELVES
+========================================= */
+html[data-ypp-card-style="kawaii"] ytd-merch-shelf-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-merch-shelf-renderer {
+    background: #fff0f5 !important;
+    border: 2px dashed #ff9ebb !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+}
+
+/* Product Image Geometry Override */
+html[data-ypp-card-style="kawaii"] .ytd-shopping-carousel-item-renderer img,
+html[data-ypp-ui-style="kawaii"] .ytd-shopping-carousel-item-renderer img,
+html[data-ypp-card-style="kawaii"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
+html[data-ypp-ui-style="kawaii"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
+    clip-path: circle(50% at 50% 50%) !important; border-radius: 0 !important;
+    transition: transform 0.3s ease !important;
+}
+html[data-ypp-card-style="kawaii"] .ytd-shopping-carousel-item-renderer:hover img,
+html[data-ypp-ui-style="kawaii"] .ytd-shopping-carousel-item-renderer:hover img {
+    transform: scale(1.1) !important;
+}
+
+/* Buy Buttons */
+html[data-ypp-card-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+    background: #ff9ebb !important;
+    color: #fff !important;
+    border-radius: 20px !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+    filter: brightness(1.2) !important;
+}
+
+/* =========================================
+   4. GAMING & LIVE HUBS
+========================================= */
+html[data-ypp-card-style="kawaii"] ytd-browse[page-subtype="channels"],
+html[data-ypp-ui-style="kawaii"] ytd-browse[page-subtype="channels"],
+html[data-ypp-card-style="kawaii"] ytd-browse[page-subtype="gaming"],
+html[data-ypp-ui-style="kawaii"] ytd-browse[page-subtype="gaming"] {
+    background-color: #fff0f5 !important;
+}
+
+html[data-ypp-card-style="kawaii"] .badge-style-type-live-now-alternate,
+html[data-ypp-ui-style="kawaii"] .badge-style-type-live-now-alternate {
+    background: #ff9ebb !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    animation: pulseBadge 1.5s infinite alternate !important;
+}
+
+@keyframes pulseBadge {
+    0% { box-shadow: 0 0 5px #ff9ebb; }
+    100% { box-shadow: 0 0 20px #ff9ebb; }
+}
