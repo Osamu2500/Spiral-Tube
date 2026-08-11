@@ -1,0 +1,100 @@
+/* DRACULA CORE ARCHITECTURE PAYLOAD V9 */
+
+/* =========================================
+   1. MASTHEAD OVERHAUL
+========================================= */
+html[data-ypp-card-style="dracula"] ytd-masthead,
+html[data-ypp-ui-style="dracula"] ytd-masthead {
+    border-bottom: 2px solid #bd93f9; background: #282a36 !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-card-style="dracula"] #background.ytd-masthead,
+html[data-ypp-ui-style="dracula"] #background.ytd-masthead {
+    background: transparent !important; /* Let the parent masthead rule apply */
+}
+
+/* =========================================
+   2. SEARCH AUTOCOMPLETE & INPUT
+========================================= */
+html[data-ypp-card-style="dracula"] ytd-searchbox,
+html[data-ypp-ui-style="dracula"] ytd-searchbox {
+    border-radius: 8px !important;
+}
+html[data-ypp-card-style="dracula"] ytd-searchbox > #container,
+html[data-ypp-ui-style="dracula"] ytd-searchbox > #container {
+    border-radius: 8px 0 0 8px !important;
+}
+html[data-ypp-card-style="dracula"] #search-icon-legacy.ytd-searchbox,
+html[data-ypp-ui-style="dracula"] #search-icon-legacy.ytd-searchbox {
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* Autocomplete Dropdown Box */
+html[data-ypp-card-style="dracula"] .sbsb_a,
+html[data-ypp-ui-style="dracula"] .sbsb_a,
+html[data-ypp-card-style="dracula"] .gstl_50.sbdd_a,
+html[data-ypp-ui-style="dracula"] .gstl_50.sbdd_a {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+}
+
+/* =========================================
+   3. AVATAR GEOMETRY (Hexagons, Squares, Squircles)
+========================================= */
+html[data-ypp-card-style="dracula"] yt-img-shadow,
+html[data-ypp-ui-style="dracula"] yt-img-shadow,
+html[data-ypp-card-style="dracula"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-style="dracula"] .yt-spec-avatar-shape__image {
+    clip-path: polygon(10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%, 0 10%) !important;
+    border-radius: 0 !important; /* Strip default circle */
+}
+
+/* Comment cards geometry */
+html[data-ypp-card-style="dracula"] ytd-comment-renderer,
+html[data-ypp-ui-style="dracula"] ytd-comment-renderer,
+html[data-ypp-card-style="dracula"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="dracula"] ytd-comment-thread-renderer {
+    border-radius: 8px !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    background: rgba(128, 128, 128, 0.05) !important;
+}
+
+/* =========================================
+   4. SIDEBAR ENGINE
+========================================= */
+html[data-ypp-card-style="dracula"] #guide-inner-content,
+html[data-ypp-ui-style="dracula"] #guide-inner-content {
+    background: transparent !important;
+}
+html[data-ypp-card-style="dracula"] ytd-guide-entry-renderer,
+html[data-ypp-ui-style="dracula"] ytd-guide-entry-renderer,
+html[data-ypp-card-style="dracula"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-style="dracula"] ytd-mini-guide-entry-renderer {
+    border-radius: 8px !important;
+}
+html[data-ypp-card-style="dracula"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="dracula"] ytd-guide-entry-renderer:hover {
+    clip-path: none !important;
+}
+
+/* =========================================
+   5. SHORTS INTERFACE Overhaul
+========================================= */
+html[data-ypp-card-style="dracula"] ytd-reel-video-renderer,
+html[data-ypp-ui-style="dracula"] ytd-reel-video-renderer {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+/* Shorts Floating Actions (Like, Dislike, Share) */
+html[data-ypp-card-style="dracula"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-ui-style="dracula"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="dracula"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
+html[data-ypp-ui-style="dracula"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+    background: rgba(128, 128, 128, 0.2) !important;
+    border-radius: 8px !important;
+    backdrop-filter: blur(5px) !important;
+}

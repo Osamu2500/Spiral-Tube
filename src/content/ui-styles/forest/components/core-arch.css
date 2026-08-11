@@ -1,0 +1,100 @@
+/* FOREST CORE ARCHITECTURE PAYLOAD V9 */
+
+/* =========================================
+   1. MASTHEAD OVERHAUL
+========================================= */
+html[data-ypp-card-style="forest"] ytd-masthead,
+html[data-ypp-ui-style="forest"] ytd-masthead {
+    border-bottom: 4px solid #2E7D32; background: #E8F5E9 !important;
+    transition: all 0.3s ease !important;
+}
+
+html[data-ypp-card-style="forest"] #background.ytd-masthead,
+html[data-ypp-ui-style="forest"] #background.ytd-masthead {
+    background: transparent !important; /* Let the parent masthead rule apply */
+}
+
+/* =========================================
+   2. SEARCH AUTOCOMPLETE & INPUT
+========================================= */
+html[data-ypp-card-style="forest"] ytd-searchbox,
+html[data-ypp-ui-style="forest"] ytd-searchbox {
+    border-radius: 16px !important;
+}
+html[data-ypp-card-style="forest"] ytd-searchbox > #container,
+html[data-ypp-ui-style="forest"] ytd-searchbox > #container {
+    border-radius: 16px 0 0 16px !important;
+}
+html[data-ypp-card-style="forest"] #search-icon-legacy.ytd-searchbox,
+html[data-ypp-ui-style="forest"] #search-icon-legacy.ytd-searchbox {
+    border-radius: 0 16px 16px 0 !important;
+}
+
+/* Autocomplete Dropdown Box */
+html[data-ypp-card-style="forest"] .sbsb_a,
+html[data-ypp-ui-style="forest"] .sbsb_a,
+html[data-ypp-card-style="forest"] .gstl_50.sbdd_a,
+html[data-ypp-ui-style="forest"] .gstl_50.sbdd_a {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+}
+
+/* =========================================
+   3. AVATAR GEOMETRY (Hexagons, Squares, Squircles)
+========================================= */
+html[data-ypp-card-style="forest"] yt-img-shadow,
+html[data-ypp-ui-style="forest"] yt-img-shadow,
+html[data-ypp-card-style="forest"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-style="forest"] .yt-spec-avatar-shape__image {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
+    border-radius: 0 !important; /* Strip default circle */
+}
+
+/* Comment cards geometry */
+html[data-ypp-card-style="forest"] ytd-comment-renderer,
+html[data-ypp-ui-style="forest"] ytd-comment-renderer,
+html[data-ypp-card-style="forest"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="forest"] ytd-comment-thread-renderer {
+    border-radius: 16px !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    background: rgba(128, 128, 128, 0.05) !important;
+}
+
+/* =========================================
+   4. SIDEBAR ENGINE
+========================================= */
+html[data-ypp-card-style="forest"] #guide-inner-content,
+html[data-ypp-ui-style="forest"] #guide-inner-content {
+    background: transparent !important;
+}
+html[data-ypp-card-style="forest"] ytd-guide-entry-renderer,
+html[data-ypp-ui-style="forest"] ytd-guide-entry-renderer,
+html[data-ypp-card-style="forest"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-style="forest"] ytd-mini-guide-entry-renderer {
+    border-radius: 16px !important;
+}
+html[data-ypp-card-style="forest"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-style="forest"] ytd-guide-entry-renderer:hover {
+    clip-path: none !important;
+}
+
+/* =========================================
+   5. SHORTS INTERFACE Overhaul
+========================================= */
+html[data-ypp-card-style="forest"] ytd-reel-video-renderer,
+html[data-ypp-ui-style="forest"] ytd-reel-video-renderer {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+}
+
+/* Shorts Floating Actions (Like, Dislike, Share) */
+html[data-ypp-card-style="forest"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-ui-style="forest"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="forest"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
+html[data-ypp-ui-style="forest"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+    background: rgba(128, 128, 128, 0.2) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(5px) !important;
+}
