@@ -1,38 +1,20 @@
-/* src/content/ui-styles/cyberpunk/base/tokens.css */
-
-html[data-ypp-theme="cyberpunk"] {
-  /* Core Cyberpunk Palette */
-  --ypp-bg-base: #050505;
-  --ypp-bg-surface: #111111;
-  --ypp-bg-elevated: #1a1a1a;
-  --ypp-bg-card: #0a0a0a;
+/* Cyberpunk Tokens */
+html[data-ypp-card-style="cyberpunk"] {
+  --cyb-bg: #050508 !important;
+  --cyb-panel: rgba(10,10,15,0.9) !important;
+  --cyb-primary: #ff003c !important;
+  --cyb-secondary: #00f0ff !important;
+  --cyb-tertiary: #fce205 !important;
   
-  --ypp-accent-primary: #00ffcc; /* Cyan */
-  --ypp-accent-secondary: #ff0055; /* Hot Pink */
-  --ypp-accent-warning: #fae600; /* Cyber Yellow */
+  --yt-spec-text-primary: #00f0ff !important;
+  --yt-spec-text-secondary: #ff003c !important;
+  --yt-spec-base-background: var(--cyb-bg) !important;
+  --yt-spec-menu-background: var(--cyb-panel) !important;
   
-  --ypp-text-primary: #e0e0e0;
-  --ypp-text-secondary: #a0a0a0;
-  --ypp-text-disabled: #555555;
-  
-  --ypp-border-light: rgba(0, 255, 204, 0.3);
-  --ypp-border-heavy: rgba(255, 0, 85, 0.5);
-  
-  /* Cyberpunk Clip Paths (Unique Shapes) */
-  --ypp-clip-sm: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  --ypp-clip-md: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
-  --ypp-clip-lg: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
-  
-  --ypp-clip-parallelogram: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  --ypp-clip-hexagon: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  --ypp-clip-reverse-sm: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-  
-  /* Glows */
-  --ypp-glow-cyan: 0 0 10px rgba(0, 255, 204, 0.5), 0 0 20px rgba(0, 255, 204, 0.3);
-  --ypp-glow-pink: 0 0 10px rgba(255, 0, 85, 0.5), 0 0 20px rgba(255, 0, 85, 0.3);
-  --ypp-glow-dual: -4px -4px 10px rgba(0, 255, 204, 0.4), 4px 4px 10px rgba(255, 0, 85, 0.4);
-  
-  /* Kinetics */
-  --ypp-transition-snap: all 0.1s cubic-bezier(0, 0, 0.2, 1);
-  --ypp-transition-glitch: all 0.05s linear;
+  --cyb-clip: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+  --cyb-clip-hover: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+}
+html[data-ypp-card-style="cyberpunk"] body {
+  font-family: 'Courier New', monospace, sans-serif !important;
+  letter-spacing: 0.5px !important;
 }

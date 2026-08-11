@@ -1,0 +1,38 @@
+/* src/content/themes/ui-styles/vintage/pages/shorts.css */
+/* Vintage Shorts Player */
+
+/* Progress Bar */
+html[data-ypp-ui-style="vintage"] ytd-shorts-player-controls .ytp-play-progress {
+    background: #8b0000 !important;
+}
+html[data-ypp-ui-style="vintage"] ytd-shorts-player-controls .ytp-load-progress {
+    background: rgba(232, 213, 181, 0.3) !important;
+}
+
+/* Floating Action Buttons */
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer ytd-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer ytd-toggle-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: 2px 2px #0000001a !important;
+    color: var(--vintage-secondary) !important;
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer ytd-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer ytd-toggle-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    fill: var(--sf) !important;
+    border: 2px solid var(--vintage-secondary) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
+    transform: translate(-2px, -2px) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button path {
+    fill: inherit !important;
+}

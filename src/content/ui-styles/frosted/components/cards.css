@@ -1,0 +1,45 @@
+/* Frosted Cards */
+html[data-ypp-card-style="frosted"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--fro-glass-light) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+    border: var(--fro-border-light) !important;
+    border-radius: var(--fro-radius) !important;
+    padding: 14px !important;
+    box-shadow: var(--fro-shadow) !important;
+    transition: transform 0.3s ease, background 0.3s ease !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="frosted"] :is(
+        ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+        ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+    ) {
+        background: var(--fro-glass-dark) !important;
+        border: var(--fro-border-dark) !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    }
+}
+
+html[data-ypp-card-style="frosted"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    transform: translateY(-5px) !important;
+    background: rgba(255,255,255,0.6) !important;
+}
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="frosted"] :is(
+        ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+        ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+    ):hover {
+        background: rgba(40,40,60,0.6) !important;
+    }
+}
+
+html[data-ypp-card-style="frosted"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 10px !important;
+}

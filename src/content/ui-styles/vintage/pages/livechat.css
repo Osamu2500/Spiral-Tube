@@ -27,3 +27,31 @@ yt-live-chat-text-message-renderer:hover {
   border-radius: 4px !important;
   padding: 5px 15px !important;
 }
+
+/* Vintage Superchat & Members */
+html[data-ypp-ui-style="vintage"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-style="vintage"] yt-live-chat-membership-item-renderer,
+html[data-ypp-ui-style="vintage"] yt-live-chat-paid-sticker-renderer {
+    background: var(--sf) !important;
+    border: 2px dashed #8b0000 !important;
+    border-radius: 0 !important;
+    margin-bottom: 8px !important;
+}
+
+html[data-ypp-ui-style="vintage"] yt-live-chat-paid-message-renderer #header,
+html[data-ypp-ui-style="vintage"] yt-live-chat-membership-item-renderer #header {
+    background: rgba(139, 0, 0, 0.1) !important;
+    color: #8b0000 !important;
+}
+
+html[data-ypp-ui-style="vintage"] yt-live-chat-paid-message-renderer #content,
+html[data-ypp-ui-style="vintage"] yt-live-chat-membership-item-renderer #content,
+html[data-ypp-ui-style="vintage"] yt-live-chat-paid-message-renderer *,
+html[data-ypp-ui-style="vintage"] yt-live-chat-membership-item-renderer * {
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] yt-live-chat-message-input-renderer {
+    background: var(--sf) !important;
+    border-top: 2px solid var(--vintage-secondary) !important;
+}

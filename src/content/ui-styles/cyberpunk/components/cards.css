@@ -1,61 +1,37 @@
-/* src/content/ui-styles/cyberpunk/components/cards.css */
-
-/* Video Cards */
-html[data-ypp-theme="cyberpunk"] ytd-rich-item-renderer,
-html[data-ypp-theme="cyberpunk"] ytd-grid-video-renderer,
-html[data-ypp-theme="cyberpunk"] ytd-compact-video-renderer,
-html[data-ypp-theme="cyberpunk"] ytd-video-renderer {
-  background: var(--ypp-bg-card) !important;
-  clip-path: var(--ypp-clip-lg) !important;
-  border-radius: 0 !important;
-  padding: 10px !important;
-  margin-bottom: 16px !important;
-  transition: var(--ypp-transition-snap) !important;
-  border-left: 2px solid transparent !important;
+/* Cyberpunk Cards */
+html[data-ypp-card-style="cyberpunk"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--cyb-panel) !important;
+    border: none !important;
+    border-left: 3px solid var(--cyb-tertiary) !important;
+    border-bottom: 1px solid var(--cyb-secondary) !important;
+    padding: 12px !important;
+    border-radius: 0 !important;
+    clip-path: var(--cyb-clip) !important;
+    box-shadow: 4px 4px 0px rgba(0, 240, 255, 0.2) !important;
+    transition: all 0.2s ease !important;
 }
 
-html[data-ypp-theme="cyberpunk"] ytd-rich-item-renderer:hover,
-html[data-ypp-theme="cyberpunk"] ytd-grid-video-renderer:hover,
-html[data-ypp-theme="cyberpunk"] ytd-compact-video-renderer:hover,
-html[data-ypp-theme="cyberpunk"] ytd-video-renderer:hover {
-  background: var(--ypp-bg-elevated) !important;
-  border-left: 2px solid var(--ypp-accent-primary) !important;
-  box-shadow: var(--ypp-glow-dual) !important;
-  transform: scale(1.02) !important;
+html[data-ypp-card-style="cyberpunk"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    background: #111 !important;
+    border-left: 3px solid var(--cyb-secondary) !important;
+    border-bottom: 1px solid var(--cyb-primary) !important;
+    clip-path: var(--cyb-clip-hover) !important;
+    transform: translate(-3px, -3px) !important;
+    box-shadow: 7px 7px 0px rgba(255, 0, 60, 0.4) !important;
 }
 
-/* Thumbnails */
-html[data-ypp-theme="cyberpunk"] ytd-thumbnail,
-html[data-ypp-theme="cyberpunk"] ytd-playlist-thumbnail {
-  clip-path: var(--ypp-clip-md) !important;
-  border-radius: 0 !important;
-  border-bottom: 2px solid var(--ypp-accent-primary) !important;
+html[data-ypp-card-style="cyberpunk"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 0 !important;
+    clip-path: var(--cyb-clip) !important;
 }
 
-html[data-ypp-theme="cyberpunk"] ytd-thumbnail img {
-  border-radius: 0 !important;
-}
-
-/* Time status pill (HUD Badge) */
-html[data-ypp-theme="cyberpunk"] ytd-thumbnail-overlay-time-status-renderer {
-  background: #000 !important;
-  color: var(--ypp-accent-warning) !important;
-  font-family: monospace !important;
-  border-radius: 0 !important;
-  clip-path: var(--ypp-clip-sm) !important;
-  border: 1px solid var(--ypp-accent-warning) !important;
-  padding: 2px 6px !important;
-  box-shadow: inset 0 0 5px var(--ypp-accent-warning) !important;
-}
-
-/* Hexagon Avatars */
-html[data-ypp-theme="cyberpunk"] yt-img-shadow#avatar,
-html[data-ypp-theme="cyberpunk"] .ytd-channel-avatar-editor,
-html[data-ypp-theme="cyberpunk"] .yt-spec-avatar-shape {
-  border-radius: 0 !important;
-  clip-path: var(--ypp-clip-hexagon) !important;
-  border: 2px solid var(--ypp-accent-primary) !important;
-  box-shadow: var(--ypp-glow-cyan) !important;
-  padding: 2px !important;
-  background: #000 !important;
+html[data-ypp-card-style="cyberpunk"] #video-title {
+    color: var(--cyb-tertiary) !important;
+    text-transform: uppercase !important;
 }

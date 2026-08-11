@@ -1,0 +1,10 @@
+/* Sunset Background */
+html[data-ypp-card-style="sunset"] body {
+  background: var(--sun-grad-bg) !important;
+  background-attachment: fixed !important;
+  color: var(--sun-text) !important;
+}
+html[data-ypp-card-style="sunset"] ::-webkit-scrollbar-thumb {
+  background: var(--sun-grad-card) !important;
+  border-radius: 10px !important;
+}

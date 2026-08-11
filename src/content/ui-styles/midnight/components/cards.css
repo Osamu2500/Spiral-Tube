@@ -1,0 +1,23 @@
+/* Midnight Cards */
+html[data-ypp-card-style="midnight"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--mid-surface) !important;
+    border: var(--mid-border) !important;
+    border-radius: var(--mid-radius) !important;
+    padding: 16px !important;
+    box-shadow: var(--mid-shadow) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+html[data-ypp-card-style="midnight"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), var(--mid-glow) !important;
+    border-color: var(--mid-accent) !important;
+}
+html[data-ypp-card-style="midnight"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 8px !important;
+}

@@ -146,3 +146,38 @@ html[data-ypp-ui-style="startube"] ytd-comment-thread-renderer #author-text span
   color: #333333 !important;
   font-family: Arial, sans-serif !important;
 }
+
+/*Heavy Theme Action Button Coverage Fix
+ */
+
+html[data-ypp-ui-style="startube"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="startube"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="startube"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="startube"] #ask-button button,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="startube"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="startube"] button.ytSpecButtonShapeNextText {
+  background: linear-gradient(to bottom, #fafafa 0%, #dcdcdc 100%) !important;
+  border: 1px solid #cccccc !important;
+  border-radius: 2px !important;
+  color: #333333 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.1s ease !important;
+}
+
+html[data-ypp-ui-style="startube"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="startube"] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="startube"] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="startube"] #ask-button button:hover,
+html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="startube"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="startube"] button.ytSpecButtonShapeNextText:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 100%) !important;
+  border-color: #999999 !important;
+  color: #111111 !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 1px 2px rgba(0, 0, 0, 0.15) !important;
+}

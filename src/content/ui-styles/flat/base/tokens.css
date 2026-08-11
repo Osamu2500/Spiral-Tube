@@ -1,0 +1,28 @@
+/* Flat Tokens */
+html[data-ypp-card-style="flat"] {
+  --yt-spec-text-primary: #111 !important;
+  --yt-spec-text-secondary: #444 !important;
+  --yt-spec-menu-background: #fff !important;
+  --yt-spec-base-background: #f0f0f0 !important;
+  --yt-spec-raised-background: #fff !important;
+  --flat-border: 2px solid #000 !important;
+  --flat-accent: #ff0055 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="flat"] {
+    --yt-spec-text-primary: #fff !important;
+    --yt-spec-text-secondary: #ccc !important;
+    --yt-spec-menu-background: #222 !important;
+    --yt-spec-base-background: #111 !important;
+    --yt-spec-raised-background: #222 !important;
+    --flat-border: 2px solid #fff !important;
+    --flat-accent: #ff0055 !important;
+  }
+}
+
+html[data-ypp-card-style="flat"] body,
+html[data-ypp-card-style="flat"] yt-formatted-string,
+html[data-ypp-card-style="flat"] .yt-core-attributed-string {
+  font-family: Arial, Helvetica, sans-serif !important;
+}

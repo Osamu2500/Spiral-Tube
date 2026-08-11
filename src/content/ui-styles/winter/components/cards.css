@@ -1,0 +1,12 @@
+/* src/content/themes/ui-styles/winter/components/cards.css */
+/* Icy Thumbnails */
+
+html[data-ypp-card-style="winter"] .ytd-thumbnail {
+    filter: saturate(0.8) hue-rotate(190deg) brightness(1.05) !important;
+    border-radius: 8px !important;
+    transition: filter 0.3s ease !important;
+}
+
+html[data-ypp-card-style="winter"] .ytd-thumbnail:hover {
+    filter: saturate(1) hue-rotate(190deg) brightness(1.1) !important;
+}

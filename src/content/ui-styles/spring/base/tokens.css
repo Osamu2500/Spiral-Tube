@@ -1,0 +1,31 @@
+/* Spring Tokens */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+html[data-ypp-card-style="spring"] {
+  --yt-spec-text-primary: #5a3e46 !important;
+  --yt-spec-text-secondary: #8c6b75 !important;
+  --yt-spec-menu-background: rgba(255, 255, 255, 0.9) !important;
+  --yt-spec-base-background: #fff0f5 !important;
+  --yt-font-family: 'Quicksand', sans-serif !important;
+  
+  --spring-grad: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%) !important;
+  --spring-shadow: 0 10px 25px rgba(255, 175, 189, 0.4) !important;
+  --spring-radius: 24px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="spring"] {
+    --yt-spec-text-primary: #fff0f5 !important;
+    --yt-spec-text-secondary: #ffc3a0 !important;
+    --yt-spec-menu-background: rgba(40, 20, 30, 0.9) !important;
+    --yt-spec-base-background: #1a0b12 !important;
+    --spring-grad: linear-gradient(120deg, #b8627d 0%, #8c425e 100%) !important;
+    --spring-shadow: 0 10px 25px rgba(184, 98, 125, 0.3) !important;
+  }
+}
+
+html[data-ypp-card-style="spring"] body,
+html[data-ypp-card-style="spring"] yt-formatted-string,
+html[data-ypp-card-style="spring"] .yt-core-attributed-string {
+  font-family: 'Quicksand', sans-serif !important;
+}

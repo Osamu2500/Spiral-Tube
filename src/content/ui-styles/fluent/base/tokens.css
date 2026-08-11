@@ -1,0 +1,24 @@
+/* Fluent Tokens */
+html[data-ypp-card-style="fluent"] {
+  --flu-bg: #f3f3f3 !important;
+  --flu-surface: rgba(255, 255, 255, 0.7) !important;
+  --flu-surface-hover: rgba(255, 255, 255, 0.9) !important;
+  --flu-border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  --flu-border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
+  --flu-radius: 8px !important;
+  --flu-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  
+  --yt-spec-base-background: var(--flu-bg) !important;
+  --yt-spec-menu-background: var(--flu-surface) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="fluent"] {
+    --flu-bg: #202020 !important;
+    --flu-surface: rgba(40, 40, 40, 0.7) !important;
+    --flu-surface-hover: rgba(60, 60, 60, 0.9) !important;
+    --flu-border: 1px solid rgba(0, 0, 0, 0.4) !important;
+    --flu-border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    --flu-shadow: 0 8px 16px rgba(0,0,0,0.4) !important;
+  }
+}

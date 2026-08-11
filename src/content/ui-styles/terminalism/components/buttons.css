@@ -82,3 +82,31 @@ html[data-ypp-ui-style="terminalism"] .ypp-pill-toggle:hover {
   border: var(--term-border) !important;
   box-shadow: var(--term-glow) !important;
 }
+/* Heavy Theme Action Button Coverage Fix */
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText {
+  background: var(--term-green-fade) !important;
+  border: var(--term-border) !important;
+  color: var(--term-green) !important;
+  box-shadow: var(--term-glow) !important;
+  animation: termGlowPulse 3s infinite !important;
+}
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover {
+  background: var(--term-green) !important;
+  color: var(--term-bg) !important;
+  box-shadow: var(--term-glow-intense) !important;
+  animation: none !important;
+}

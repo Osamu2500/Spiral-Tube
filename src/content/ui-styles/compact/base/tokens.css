@@ -1,0 +1,20 @@
+/* Compact Tokens */
+html[data-ypp-card-style="compact"] {
+  --ypp-density-pad: 4px !important;
+  --ypp-density-gap: 8px !important;
+  --ypp-radius-md: 4px !important;
+}
+
+html[data-ypp-card-style="compact"] body,
+html[data-ypp-card-style="compact"] yt-formatted-string,
+html[data-ypp-card-style="compact"] .yt-core-attributed-string {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+
+html[data-ypp-card-style="compact"] h1,
+html[data-ypp-card-style="compact"] h2,
+html[data-ypp-card-style="compact"] h3 {
+  font-size: 14px !important;
+  margin: 2px 0 !important;
+}

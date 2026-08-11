@@ -1,0 +1,48 @@
+/* src/content/themes/ui-styles/winter/components/menus.css */
+html[data-ypp-card-style="winter"] tp-yt-paper-dialog,
+html[data-ypp-card-style="winter"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="winter"] tp-yt-iron-dropdown,
+html[data-ypp-card-style="winter"] ytd-multi-page-menu-renderer {
+  background: rgba(15, 25, 40, 0.5) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(100, 200, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-ypp-card-style="winter"] tp-yt-paper-item:hover,
+html[data-ypp-card-style="winter"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-card-style="winter"] ytd-menu-service-item-renderer:hover {
+  background: var(--winter-frost-strong) !important;
+  border-radius: 8px !important;
+  transform: translateX(4px) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Global Frosted Tooltips */
+html[data-ypp-card-style="winter"] tp-yt-paper-tooltip .tp-yt-paper-tooltip {
+    background: rgba(15, 25, 40, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(180, 230, 255, 0.4) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    font-family: 'Quicksand', sans-serif !important;
+    font-size: 13px !important;
+    padding: 6px 12px !important;
+}
+
+/* Frozen Playlist Panels */
+html[data-ypp-card-style="winter"] ytd-playlist-panel-renderer {
+    background: rgba(15, 25, 40, 0.6) !important;
+    backdrop-filter: blur(24px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 30px rgba(100, 200, 255, 0.1) !important;
+    margin-left: 10px !important;
+}
+html[data-ypp-card-style="winter"] ytd-playlist-panel-video-renderer:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+}

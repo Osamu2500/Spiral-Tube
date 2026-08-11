@@ -82,3 +82,81 @@ html[data-ypp-theme="christmas"] .yt-spec-touch-feedback-shape__fill,
 html[data-ypp-theme="christmas"] .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
+/* Heavy Theme Action Button Coverage Fix */
+html[data-ypp-theme="christmas"] button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="christmas"] button ytd-download-button-renderer button,
+html[data-ypp-theme="christmas"] button #ask-button yt-button-shape button,
+html[data-ypp-theme="christmas"] button #ask-button button,
+html[data-ypp-theme="christmas"] button .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="christmas"] button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="christmas"] button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="christmas"] button button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="christmas"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="christmas"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="christmas"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="christmas"] #ask-button button,
+html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="christmas"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="christmas"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="christmas"] button.ytSpecButtonShapeNextText {
+  background: var(--christmas-glass-bg) !important;
+  color: var(--christmas-text-primary) !important;
+  border: 1px solid var(--christmas-glass-border) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  font-weight: 600 !important;
+  border-radius: var(--christmas-shape-btn) !important;
+  transition: all 0.3s var(--christmas-ease-spring) !important;
+}
+html[data-ypp-theme="christmas"] button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="christmas"] button ytd-download-button-renderer button,
+html[data-ypp-theme="christmas"] button #ask-button yt-button-shape button,
+html[data-ypp-theme="christmas"] button #ask-button button,
+html[data-ypp-theme="christmas"] button .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="christmas"] button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="christmas"] button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="christmas"] button button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="christmas"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="christmas"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="christmas"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="christmas"] #ask-button button,
+html[data-ypp-ui-style="christmas"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="christmas"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="christmas"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="christmas"] button.ytSpecButtonShapeNextText {
+  background: var(--christmas-glass-bg-hover) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: var(--christmas-glow-gold) !important;
+  color: var(--christmas-accent-secondary) !important;
+  transform: translateY(-2px) !important;
+}
+html[data-ypp-theme="christmas"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="christmas"] ytd-download-button-renderer button,
+html[data-ypp-theme="christmas"] #ask-button yt-button-shape button,
+html[data-ypp-theme="christmas"] #ask-button button,
+html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="christmas"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="christmas"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="christmas"] button.ytSpecButtonShapeNextText {
+  background: var(--christmas-accent-primary) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3) !important;
+  font-weight: 700 !important;
+  border-radius: var(--christmas-shape-btn) !important;
+  transition: all 0.3s var(--christmas-ease-spring) !important;
+}
+html[data-ypp-theme="christmas"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="christmas"] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="christmas"] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="christmas"] #ask-button button:hover,
+html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-theme="christmas"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="christmas"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="christmas"] button.ytSpecButtonShapeNextText:hover {
+  background: #ff4d5a !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: var(--christmas-glow-red) !important;
+  transform: translateY(-2px) !important;
+}

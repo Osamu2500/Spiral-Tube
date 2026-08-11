@@ -206,3 +206,212 @@ html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button path
   color: #034078 !important;
   stroke: none !important;
 }
+
+/* Heavy Theme Action Button Coverage Fix */
+
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: var(--sky-text-primary) !important;
+  border: var(--sky-border) !important;
+  box-shadow: var(--sky-shadow-card) !important;
+  font-weight: 600 !important;
+  border-radius: var(--sky-shape-btn) !important;
+  transition: all 0.35s var(--sky-bounce) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono #ask-button button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: var(--sky-border-hover) !important;
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: var(--sky-shadow-hover) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText {
+  transform: translateY(1px) scale(0.97) !important;
+  box-shadow: var(--sky-shadow-active) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--overlay button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer #ask-button button,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText {
+  background: linear-gradient(135deg, #1a90d9 0%, #00c8f0 60%, #87CEFA 100%) !important;
+  color: var(--sky-text-on-accent) !important;
+  border: 1px solid rgba(255, 255, 255, 0.50) !important;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.35) inset,
+    0 8px 24px rgba(0, 150, 220, 0.45) !important;
+  font-weight: 700 !important;
+  border-radius: var(--sky-shape-btn) !important;
+  transition: all 0.35s var(--sky-bounce) !important;
+}
+
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action ytd-download-button-renderer button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action #ask-button button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--call-to-action button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer ytd-download-button-renderer button:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer #ask-button button:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="blue-sky"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover {
+  background: linear-gradient(135deg, #00c8f0 0%, #1E90FF 60%, #1a90d9 100%) !important;
+  transform: translateY(-3px) scale(1.04) !important;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.4) inset,
+    0 14px 36px rgba(0, 191, 255, 0.55) !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] #ask-button button,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] #ask-button button,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText {
+  color: #034078 !important;
+}
+
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] #ask-button button,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] #ask-button button,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-theme="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-theme="blue-sky"] #ask-button button,
+html[data-ypp-theme="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="blue-sky"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="blue-sky"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] #ask-button button,
+html[data-ypp-ui-style="blue-sky"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="blue-sky"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="blue-sky"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="blue-sky"] button.ytSpecButtonShapeNextText {
+  fill: #034078 !important;
+  color: #034078 !important;
+  stroke: none !important;
+}

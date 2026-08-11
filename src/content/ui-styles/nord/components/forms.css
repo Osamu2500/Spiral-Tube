@@ -1,0 +1,28 @@
+/* Nord Forms */
+html[data-ypp-card-style="nord"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--nord-bg) !important;
+    border: var(--nord-border) !important;
+    border-radius: 4px 0 0 4px !important;
+}
+html[data-ypp-card-style="nord"] ytd-searchbox input { color: var(--yt-spec-text-primary) !important; }
+html[data-ypp-card-style="nord"] ytd-searchbox #search-icon-legacy {
+    background: var(--nord2) !important;
+    border: var(--nord-border) !important;
+    border-left: none !important;
+    border-radius: 0 4px 4px 0 !important;
+    color: var(--nord4) !important;
+}
+
+html[data-ypp-card-style="nord"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled {
+    background: var(--nord8) !important;
+    color: var(--nord0) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    transition: background 0.15s ease !important;
+}
+html[data-ypp-card-style="nord"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled:hover {
+    background: var(--nord9) !important;
+}

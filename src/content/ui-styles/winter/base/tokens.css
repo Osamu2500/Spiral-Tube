@@ -1,0 +1,60 @@
+/* src/content/themes/ui-styles/winter/base/tokens.css */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+html[data-ypp-ui-style="winter"],
+html[data-ypp-card-style="winter"] {
+  /* Core Winter Variables */
+  --winter-ice: #b4e6ff;
+  --winter-ice-glow: #87cefa;
+  --winter-frost: rgba(255, 255, 255, 0.1);
+  --winter-frost-strong: rgba(255, 255, 255, 0.2);
+  --winter-text: #ffffff;
+  --winter-text-muted: rgba(255, 255, 255, 0.7);
+  
+  /* Hijack YouTube Variables */
+  --yt-spec-text-primary: var(--winter-text) !important;
+  --yt-spec-text-secondary: var(--winter-text-muted) !important;
+  --yt-spec-icon-active-other: var(--winter-ice) !important;
+  --yt-spec-icon-inactive: var(--winter-text-muted) !important;
+  
+  --yt-spec-menu-background: rgba(15, 25, 40, 0.6) !important;
+  --yt-spec-raised-background: rgba(15, 25, 40, 0.6) !important;
+  --yt-spec-base-background: rgba(15, 25, 40, 0.6) !important;
+
+  /* Global Typography Override */
+  --ytd-user-comment-font-family: 'Quicksand', sans-serif !important;
+  --yt-font-family: 'Quicksand', sans-serif !important;
+}
+
+/* Enforce Typography */
+html[data-ypp-card-style="winter"] body,
+html[data-ypp-card-style="winter"] yt-formatted-string,
+html[data-ypp-card-style="winter"] .yt-core-attributed-string,
+html[data-ypp-card-style="winter"] input,
+html[data-ypp-card-style="winter"] textarea,
+html[data-ypp-card-style="winter"] button,
+html[data-ypp-card-style="winter"] tp-yt-paper-item,
+html[data-ypp-card-style="winter"] .ytp-menuitem-label,
+html[data-ypp-card-style="winter"] .ytp-menuitem-content {
+  font-family: 'Quicksand', sans-serif !important;
+}
+
+/* Base Body Background for Winter (assuming dark mode) */
+html[data-ypp-card-style="winter"] body {
+  background: #0a1128 !important;
+  color: var(--winter-text) !important;
+}
+
+/* Glowing SVG Icons */
+html[data-ypp-card-style="winter"] yt-icon,
+html[data-ypp-card-style="winter"] .yt-icon,
+html[data-ypp-card-style="winter"] ytd-logo,
+html[data-ypp-card-style="winter"] .ytp-svg-fill {
+    filter: drop-shadow(0 0 3px rgba(180, 230, 255, 0.6)) !important;
+    transition: filter 0.2s ease !important;
+}
+html[data-ypp-card-style="winter"] yt-icon:hover,
+html[data-ypp-card-style="winter"] .yt-icon:hover,
+html[data-ypp-card-style="winter"] .ytp-svg-fill:hover {
+    filter: drop-shadow(0 0 8px rgba(180, 230, 255, 1)) !important;
+}

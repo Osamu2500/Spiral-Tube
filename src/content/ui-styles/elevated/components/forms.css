@@ -1,0 +1,26 @@
+/* Elevated Forms */
+html[data-ypp-card-style="elevated"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--yt-spec-raised-background) !important;
+    border: none !important;
+    border-radius: 24px 0 0 24px !important;
+    box-shadow: var(--el-shadow-base) !important;
+}
+html[data-ypp-card-style="elevated"] ytd-searchbox #search-icon-legacy {
+    background: var(--yt-spec-raised-background) !important;
+    border: none !important;
+    border-radius: 0 24px 24px 0 !important;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+html[data-ypp-card-style="elevated"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="elevated"] .yt-spec-button-shape-next--filled {
+    border: none !important;
+    border-radius: 24px !important;
+    box-shadow: var(--el-shadow-base) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+html[data-ypp-card-style="elevated"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="elevated"] .yt-spec-button-shape-next--filled:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--el-shadow-hover) !important;
+}

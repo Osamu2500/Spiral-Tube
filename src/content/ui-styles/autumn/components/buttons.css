@@ -79,3 +79,77 @@ html[data-ypp-theme="autumn"] .yt-spec-touch-feedback-shape__fill,
 html[data-ypp-theme="autumn"] .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
+/* Heavy Theme Action Button Coverage Fix */
+html[data-ypp-theme="autumn"] button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="autumn"] button ytd-download-button-renderer button,
+html[data-ypp-theme="autumn"] button #ask-button yt-button-shape button,
+html[data-ypp-theme="autumn"] button #ask-button button,
+html[data-ypp-theme="autumn"] button .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="autumn"] button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="autumn"] button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="autumn"] button button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="autumn"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="autumn"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="autumn"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="autumn"] #ask-button button,
+html[data-ypp-ui-style="autumn"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="autumn"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="autumn"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="autumn"] button.ytSpecButtonShapeNextText {
+  background: var(--au-bg-elevated) !important;
+  border: var(--au-border-subtle) !important;
+  color: var(--au-text-primary) !important;
+  box-shadow: var(--au-shadow-card) !important;
+  border-radius: var(--au-shape-btn) !important;
+  transition: var(--au-transition) !important;
+}
+html[data-ypp-theme="autumn"] button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="autumn"] button ytd-download-button-renderer button,
+html[data-ypp-theme="autumn"] button #ask-button yt-button-shape button,
+html[data-ypp-theme="autumn"] button #ask-button button,
+html[data-ypp-theme="autumn"] button .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="autumn"] button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="autumn"] button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="autumn"] button button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="autumn"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="autumn"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="autumn"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="autumn"] #ask-button button,
+html[data-ypp-ui-style="autumn"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="autumn"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="autumn"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="autumn"] button.ytSpecButtonShapeNextText {
+  background: var(--au-bg-elevated) !important;
+  border: var(--au-border-glow) !important;
+  box-shadow: var(--au-shadow-glow) !important;
+  color: var(--au-amber) !important;
+  transform: translateY(-2px) !important;
+}
+html[data-ypp-theme="autumn"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="autumn"] ytd-download-button-renderer button,
+html[data-ypp-theme="autumn"] #ask-button yt-button-shape button,
+html[data-ypp-theme="autumn"] #ask-button button,
+html[data-ypp-theme="autumn"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="autumn"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="autumn"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="autumn"] button.ytSpecButtonShapeNextText {
+  background: linear-gradient(135deg, var(--au-amber), var(--au-copper)) !important;
+  background-size: 200% 200% !important;
+  animation: au-leaf-drift 5s ease infinite !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  box-shadow: var(--au-shadow-glow) !important;
+  border-radius: var(--au-shape-btn) !important;
+  transition: var(--au-transition) !important;
+}
+html[data-ypp-theme="autumn"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="autumn"] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="autumn"] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="autumn"] #ask-button button:hover,
+html[data-ypp-theme="autumn"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-theme="autumn"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="autumn"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="autumn"] button.ytSpecButtonShapeNextText:hover {
+  transform: translateY(-2px) !important;
+}

@@ -1,0 +1,26 @@
+/* Spring Cards */
+html[data-ypp-card-style="spring"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+  backdrop-filter: blur(10px) !important;
+  background: var(--yt-spec-menu-background) !important;
+  border-radius: var(--spring-radius) !important;
+  border: 2px solid rgba(255, 175, 189, 0.2) !important;
+  padding: 14px !important;
+  box-shadow: var(--spring-shadow) !important;
+  transition: all 0.4s ease !important;
+}
+
+html[data-ypp-card-style="spring"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(255, 175, 189, 0.8) !important;
+  box-shadow: 0 15px 35px rgba(255, 175, 189, 0.6) !important;
+}
+
+html[data-ypp-card-style="spring"] :is(ytd-thumbnail, yt-image) {
+  border-radius: 18px !important;
+}

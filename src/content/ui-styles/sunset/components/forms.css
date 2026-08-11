@@ -1,0 +1,28 @@
+/* Sunset Forms */
+html[data-ypp-card-style="sunset"] ytd-searchbox #container.ytd-searchbox {
+    background: rgba(255,255,255,0.4) !important;
+    border: var(--sun-border) !important;
+    border-radius: 20px 0 0 20px !important;
+}
+html[data-ypp-card-style="sunset"] ytd-searchbox #search-icon-legacy {
+    background: rgba(255,255,255,0.4) !important;
+    border: var(--sun-border) !important;
+    border-left: none !important;
+    border-radius: 0 20px 20px 0 !important;
+}
+
+html[data-ypp-card-style="sunset"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="sunset"] .yt-spec-button-shape-next--filled,
+html[data-ypp-card-style="sunset"] .yt-spec-button-shape-next--tonal {
+    background: var(--sun-grad-card) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 24px !important;
+    box-shadow: 0 6px 15px rgba(255, 78, 80, 0.4) !important;
+    transition: transform 0.2s ease !important;
+}
+html[data-ypp-card-style="sunset"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="sunset"] .yt-spec-button-shape-next--filled:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 10px 25px rgba(255, 78, 80, 0.6) !important;
+}

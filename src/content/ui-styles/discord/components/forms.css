@@ -1,0 +1,29 @@
+/* Discord Forms */
+html[data-ypp-card-style="discord"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--dis-secondary) !important;
+    border: none !important;
+    border-radius: 4px 0 0 4px !important;
+}
+html[data-ypp-card-style="discord"] ytd-searchbox input {
+    color: var(--dis-text) !important;
+}
+html[data-ypp-card-style="discord"] ytd-searchbox #search-icon-legacy {
+    background: var(--dis-secondary) !important;
+    border: none !important;
+    border-radius: 0 4px 4px 0 !important;
+    color: var(--dis-muted) !important;
+}
+
+html[data-ypp-card-style="discord"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="discord"] .yt-spec-button-shape-next--filled {
+    background: var(--dis-accent) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 3px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s ease !important;
+}
+html[data-ypp-card-style="discord"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="discord"] .yt-spec-button-shape-next--filled:hover {
+    background: #4752C4 !important;
+}

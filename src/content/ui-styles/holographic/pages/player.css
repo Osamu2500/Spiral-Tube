@@ -1,0 +1,12 @@
+/* Holographic Player */
+html[data-ypp-card-style="holographic"] .ytp-play-progress {
+    background: var(--holo-gradient) !important;
+    background-size: 400% !important;
+    animation: ypp-holo-sweep 3s linear infinite !important;
+}
+
+html[data-ypp-card-style="holographic"] .ytp-scrubber-button {
+    background: #fff !important;
+    box-shadow: 0 0 15px #fff !important;
+    border: none !important;
+}

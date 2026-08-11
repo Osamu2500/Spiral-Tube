@@ -34,110 +34,79 @@
   width: 100% !important;
   padding-left: 10px;
 }
-.ytp-play-progress {
-  background: var(--vintage-primary) !important;
-  border-radius: 0px;
+
+
+/* ==========================================================================
+   VINTAGE PLAYER OVERHAUL (PLAN V3)
+   ========================================================================== */
+
+/* Progress Bar Colors */
+html[data-ypp-ui-style="vintage"] .ytp-play-progress,
+html[data-ypp-ui-style="vintage"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="vintage"] .ytp-volume-slider-handle,
+html[data-ypp-ui-style="vintage"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="vintage"] .ytp-volume-slider-handle::after {
+    background: #8b0000 !important;
 }
-.ytp-play-progress {
-  background: var(--vintage-primary) !important;
+
+html[data-ypp-ui-style="vintage"] .ytp-swatch-color {
+    color: #8b0000 !important;
 }
-.ytp-play-progress {
-  background: #c13a3a !important;
+
+html[data-ypp-ui-style="vintage"] .ytp-load-progress {
+    background: rgba(232, 213, 181, 0.3) !important;
 }
-.ytp-swatch-background-color {
-  background-color: #c13a3a !important;
+
+/* Scrubber Button (Diamond Shape) */
+html[data-ypp-ui-style="vintage"] .ytp-scrubber-button {
+    background: #8b0000 !important;
+    border: 2px solid var(--sf) !important;
+    border-radius: 0 !important;
+    transform: rotate(45deg) scale(0.8) !important;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+    transition: transform 0.1s ease !important;
 }
-ytd-masthead,
-tp-yt-paper-dialog,
-ytd-menu-popup-renderer,
-tp-yt-iron-dropdown,
-.ytp-popup.ytp-settings-menu {
-  background: var(--sf) !important;
-  border-radius: 4px !important;
-  border: var(--vintage-border) !important;
-  box-shadow: var(--shadow-base) !important;
+
+html[data-ypp-ui-style="vintage"] .ytp-scrubber-button:hover {
+    transform: rotate(45deg) scale(1) !important;
+    background: var(--sf) !important;
+    border-color: #8b0000 !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button),
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
-  background: none !important;
-  border: var(--vintage-border) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-  border-radius: 4px !important;
+
+/* Player Typography */
+html[data-ypp-ui-style="vintage"] .ytp-time-display,
+html[data-ypp-ui-style="vintage"] .ytp-chapter-title-content {
+    font-family: Georgia, "Times New Roman", serif !important;
+    color: var(--sf) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):hover,
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-  background: var(--sf) !important;
+
+/* Player Tooltips (Hovering over progress bar) */
+html[data-ypp-ui-style="vintage"] .ytp-tooltip-text {
+    font-family: Georgia, "Times New Roman", serif !important;
+    background: var(--sf) !important;
+    color: var(--vintage-secondary) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2) !important;
+    padding: 4px 8px !important;
 }
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):active,
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active,
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area:active {
-  transform: scale(0.95);
-  box-shadow: var(--shadow-active) !important;
+html[data-ypp-ui-style="vintage"] .ytp-tooltip-bg {
+    display: none !important; /* Hide native dark tooltip background */
 }
-.ytp-fullscreen-grid-expand-button {
-  background: none !important;
-  border: var(--vintage-border) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
+
+/* Player Menus */
+html[data-ypp-ui-style="vintage"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="vintage"] .ytp-panel {
+    background: var(--sf) !important;
+    border: 2px solid var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
 }
-.ytp-fullscreen-grid-expand-button:hover {
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-.ytp-scrubber-button {
-  background: var(--vintage-secondary) !important;
-  border-radius: 0 !important;
-  border: 2px solid #fff;
-  transform: rotate(45deg);
-}
-.ytp-scrubber-button {
-  background: var(--vintage-secondary) !important;
-  border: 2px solid var(--vintage-primary) !important;
-}
-/* src/content/themes/ui-styles/vintage/components/menus.css */
-.ytp-panel,
-.ytp-popup.ytp-settings-menu {
-  background: var(--sf, rgba(0, 0, 0, 0.35)) !important;
-}
-.ytp-menuitem:not([aria-disabled=true]) {
-  margin-left: 100px !important;
-  border-radius: 4px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-}
-.ytp-menuitem:not([aria-disabled=true]):hover {
-  border-radius: 4px !important;
-  box-shadow: var(--shadow-hover) !important;
-  background-color: rgba(0, 0, 0, 0) !important;
-}
-.ytp-delhi-modern .ytp-popup {
-  background: none !important;
-  border-radius: 4px !important;
-}
-.ytp-popup.ytp-delhi-modern-contextmenu {
-  background: none !important;
-  padding: 0 5px !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
-}
-.ytp-panel {
-  background: var(--sf) !important;
-  border: var(--vintage-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition: box-shadow var(--bounce) !important;
-  border-radius: 4px !important;
-  padding: 0 5px !important;
-}
-/* src/content/themes/ui-styles/vintage/pages/watch.css */
-video.video-stream.html5-main-video,
-.html5-video-player {
+
+/* Base video radius override */
+html[data-ypp-ui-style="vintage"] video.video-stream.html5-main-video,
+html[data-ypp-ui-style="vintage"] .html5-video-player {
   border-radius: 4px !important;
 }

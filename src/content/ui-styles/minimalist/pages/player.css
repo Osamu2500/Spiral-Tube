@@ -1,0 +1,20 @@
+/* Minimalist Player */
+html[data-ypp-card-style="minimalist"] .ytp-chrome-bottom {
+    background: transparent !important;
+    text-shadow: none !important;
+}
+/* 1px Progress Bar */
+html[data-ypp-card-style="minimalist"] .ytp-progress-bar-container {
+    height: 1px !important;
+    bottom: 0 !important;
+}
+html[data-ypp-card-style="minimalist"] .ytp-play-progress {
+    background: #fff !important;
+}
+html[data-ypp-card-style="minimalist"] .ytp-load-progress {
+    background: rgba(255,255,255,0.2) !important;
+}
+/* Hide Scrubber Dot */
+html[data-ypp-card-style="minimalist"] .ytp-scrubber-button {
+    display: none !important;
+}

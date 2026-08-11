@@ -1,0 +1,69 @@
+/* src/content/themes/ui-styles/winter/base/background.css */
+/* Frosted Scrollbars */
+html[data-ypp-card-style="winter"] ::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+html[data-ypp-card-style="winter"] ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+html[data-ypp-card-style="winter"] ::-webkit-scrollbar-thumb {
+  background: rgba(180, 230, 255, 0.3) !important;
+  border-radius: 10px !important;
+  border: 2px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
+html[data-ypp-card-style="winter"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--winter-ice) !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Glowing Skeleton Loaders */
+@keyframes winter-pulse {
+    0% { background-color: rgba(180, 230, 255, 0.1); }
+    50% { background-color: rgba(180, 230, 255, 0.3); }
+    100% { background-color: rgba(180, 230, 255, 0.1); }
+}
+
+html[data-ypp-card-style="winter"] #ghost-cards,
+html[data-ypp-card-style="winter"] ytd-ghost-grid-renderer,
+html[data-ypp-card-style="winter"] .skeleton-bg-color,
+html[data-ypp-card-style="winter"] .ytd-ghost-grid-renderer {
+    background: transparent !important;
+}
+
+html[data-ypp-card-style="winter"] .ytd-ghost-grid-renderer > div,
+html[data-ypp-card-style="winter"] .skeleton-bg-color {
+    animation: winter-pulse 2s infinite ease-in-out !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* The Blizzard Background Shimmer */
+@keyframes winter-blizzard-shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+html[data-ypp-card-style="winter"] body {
+    background: linear-gradient(-45deg, #0a1128, #0d1b2a, #1b263b, #0a1128) !important;
+    background-size: 400% 400% !important;
+    animation: winter-blizzard-shimmer 20s ease infinite !important;
+}
+
+/* Icy Text Selection */
+html[data-ypp-card-style="winter"] ::selection {
+    background: rgba(180, 230, 255, 0.4) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8) !important;
+}
+html[data-ypp-card-style="winter"] ::-moz-selection {
+    background: rgba(180, 230, 255, 0.4) !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8) !important;
+}

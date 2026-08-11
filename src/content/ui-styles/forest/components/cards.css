@@ -1,0 +1,23 @@
+/* Forest Cards */
+html[data-ypp-card-style="forest"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--for-surface) !important;
+    border: var(--for-border) !important;
+    border-radius: var(--for-radius) !important;
+    padding: 16px !important;
+    box-shadow: var(--for-shadow) !important;
+    transition: all 0.4s ease !important;
+}
+html[data-ypp-card-style="forest"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 12px 30px rgba(27, 94, 32, 0.2) !important;
+    border-color: var(--for-secondary) !important;
+}
+html[data-ypp-card-style="forest"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 4px 16px 4px 16px !important;
+}

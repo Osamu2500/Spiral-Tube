@@ -163,3 +163,63 @@ tp-yt-paper-listbox {
 #ypp-toggle-restricted-btn:hover {
     transform: scale(1.05);
 }
+
+/* Fix Popup Menus text color for vintage */
+html[data-ypp-ui-style="vintage"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="vintage"] .ytp-panel-menu,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-label,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-content,
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer yt-formatted-string,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer yt-formatted-string,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-label *,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-content *,
+html[data-ypp-ui-style="vintage"] .yt-core-attributed-string,
+html[data-ypp-ui-style="vintage"] #cinematic-filters-menu,
+html[data-ypp-ui-style="vintage"] #cinematic-filters-menu * {
+    color: var(--vintage-secondary) !important;
+}
+
+/* Fix popup hover colors */
+html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover .ytp-menuitem-label,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover .ytp-menuitem-content,
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover yt-formatted-string,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover yt-formatted-string,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item:hover,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item:hover *,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover * {
+    color: var(--sf) !important;
+}
+
+/* Fix popup SVG icons */
+html[data-ypp-ui-style="vintage"] .ytp-menuitem svg,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem path,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer path {
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover svg,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover path,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:hover path,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer tp-yt-paper-item:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer tp-yt-paper-item:hover path {
+    fill: var(--sf) !important;
+}
+
+/* Advanced Dialog styling */
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog * {
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] .tp-yt-paper-tooltip[style-target=tooltip] {
+    background: var(--sf) !important;
+    color: var(--vintage-secondary) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    font-weight: bold !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.1) !important;
+}

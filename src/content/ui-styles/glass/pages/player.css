@@ -1,0 +1,54 @@
+/* src/content/themes/ui-styles/glass/pages/player.css */
+/* Minimalist Glass Player */
+
+html[data-ypp-card-style="glass"] .ytp-chrome-bottom {
+    background: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    border-radius: 12px !important;
+    margin: 10px !important;
+    width: calc(100% - 20px) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+html[data-ypp-card-style="glass"] .ytp-progress-bar-container {
+    height: 6px !important;
+}
+html[data-ypp-card-style="glass"] .ytp-play-progress {
+    background: #fff !important;
+    box-shadow: 0 0 10px #fff !important;
+}
+html[data-ypp-card-style="glass"] .ytp-load-progress {
+    background: rgba(255,255,255,0.3) !important;
+}
+
+/* Glass Action Buttons */
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--mono,
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next,
+html[data-ypp-card-style="glass"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-card-style="glass"] #ask-button yt-button-shape button,
+html[data-ypp-card-style="glass"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-card-style="glass"] ytd-menu-renderer yt-button-shape button {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 20px !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next:hover,
+html[data-ypp-card-style="glass"] ytd-menu-renderer yt-button-shape button:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Glass Mini Player */
+html[data-ypp-card-style="glass"] ytd-miniplayer {
+    background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}

@@ -1,0 +1,29 @@
+/* Ember Forms */
+html[data-ypp-card-style="ember"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--emb-bg) !important;
+    border: var(--emb-border) !important;
+    border-radius: 0 !important;
+}
+html[data-ypp-card-style="ember"] ytd-searchbox #search-icon-legacy {
+    background: var(--emb-surface) !important;
+    border: var(--emb-border) !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+}
+
+html[data-ypp-card-style="ember"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="ember"] .yt-spec-button-shape-next--filled {
+    background: var(--emb-flame) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 2px !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    transition: background 0.2s ease !important;
+}
+html[data-ypp-card-style="ember"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="ember"] .yt-spec-button-shape-next--filled:hover {
+    background: var(--emb-flame-hover) !important;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.4) !important;
+}

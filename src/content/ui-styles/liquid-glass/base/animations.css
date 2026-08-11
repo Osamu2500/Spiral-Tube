@@ -155,3 +155,28 @@ html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer:hover::after 
   opacity: 1 !important;
   animation: lg-shimmer 0.55s var(--lg-smooth) both !important;
 }
+
+/* Heavy Theme Action Button Coverage Fix */
+
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer #ask-button button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono #ask-button button:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover {
+  transform: scale(1.06) !important;
+  color: white !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: var(--lg-shadow-glow) !important;
+  animation: ypp-liquid-pulse 3s ease-in-out infinite !important;
+}

@@ -1,0 +1,24 @@
+/* src/content/themes/ui-styles/glass/base/tokens.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+html[data-ypp-ui-style="glass"],
+html[data-ypp-card-style="glass"] {
+  --yt-spec-text-primary: #ffffff !important;
+  --yt-spec-text-secondary: rgba(255, 255, 255, 0.7) !important;
+  --yt-spec-menu-background: transparent !important;
+  --yt-spec-raised-background: transparent !important;
+  --yt-spec-base-background: transparent !important;
+  
+  --yt-font-family: 'Inter', sans-serif !important;
+  --ytd-user-comment-font-family: 'Inter', sans-serif !important;
+}
+
+html[data-ypp-card-style="glass"] body,
+html[data-ypp-card-style="glass"] yt-formatted-string,
+html[data-ypp-card-style="glass"] .yt-core-attributed-string,
+html[data-ypp-card-style="glass"] input,
+html[data-ypp-card-style="glass"] button,
+html[data-ypp-card-style="glass"] tp-yt-paper-item {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 300 !important;
+}

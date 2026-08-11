@@ -1,0 +1,31 @@
+/* src/content/themes/ui-styles/neon/components/chat.css */
+/* Hacker Chat */
+html[data-ypp-card-style="neon"] yt-live-chat-renderer,
+html[data-ypp-card-style="neon"] yt-live-chat-message-input-renderer,
+html[data-ypp-card-style="neon"] yt-live-chat-header-renderer {
+    background: #050505 !important;
+    border: 1px solid var(--neon-cyan) !important;
+    border-radius: 0 !important;
+}
+
+html[data-ypp-card-style="neon"] yt-live-chat-text-message-renderer {
+    border-radius: 0 !important;
+    padding: 4px 8px !important;
+    transition: background 0.1s ease !important;
+}
+html[data-ypp-card-style="neon"] yt-live-chat-text-message-renderer:hover {
+    background: rgba(0, 255, 255, 0.1) !important;
+    border-left: 2px solid var(--neon-cyan) !important;
+}
+
+html[data-ypp-card-style="neon"] yt-live-chat-author-chip #author-name {
+    color: var(--neon-magenta) !important;
+    font-weight: bold !important;
+}
+
+/* Chat Inputs */
+html[data-ypp-card-style="neon"] #input-panel.yt-live-chat-message-input-renderer {
+    background: #000000 !important;
+    border: 1px dashed var(--neon-cyan) !important;
+    border-radius: 0 !important;
+}

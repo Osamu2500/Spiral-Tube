@@ -1,0 +1,18 @@
+/* Midnight Tokens */
+html[data-ypp-card-style="midnight"] {
+  --mid-bg: #0f172a !important;
+  --mid-surface: #1e293b !important;
+  --mid-border: 1px solid #334155 !important;
+  --mid-accent: #6366f1 !important;
+  --mid-accent-hover: #818cf8 !important;
+  --mid-text: #f8fafc !important;
+  --mid-muted: #94a3b8 !important;
+  --mid-radius: 12px !important;
+  --mid-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  --mid-glow: 0 0 15px rgba(99, 102, 241, 0.3) !important;
+  
+  --yt-spec-text-primary: var(--mid-text) !important;
+  --yt-spec-text-secondary: var(--mid-muted) !important;
+  --yt-spec-base-background: var(--mid-bg) !important;
+  --yt-spec-menu-background: var(--mid-surface) !important;
+}

@@ -1,0 +1,46 @@
+/* src/content/themes/ui-styles/neon/base/tokens.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+html[data-ypp-ui-style="neon"],
+html[data-ypp-card-style="neon"] {
+  /* Core Neon Variables */
+  --neon-cyan: #00ffff;
+  --neon-magenta: #ff00ff;
+  --neon-bg: #050505;
+  --neon-bg-elevated: #0a0a0a;
+  --neon-text: #e0e0e0;
+  
+  /* Hijack YouTube Variables */
+  --yt-spec-text-primary: var(--neon-cyan) !important;
+  --yt-spec-text-secondary: var(--neon-text) !important;
+  --yt-spec-icon-active-other: var(--neon-cyan) !important;
+  --yt-spec-icon-inactive: rgba(0, 255, 255, 0.6) !important;
+  
+  --yt-spec-menu-background: var(--neon-bg-elevated) !important;
+  --yt-spec-raised-background: var(--neon-bg-elevated) !important;
+  --yt-spec-base-background: var(--neon-bg) !important;
+
+  /* Global Typography Override */
+  --ytd-user-comment-font-family: 'Orbitron', sans-serif !important;
+  --yt-font-family: 'Orbitron', sans-serif !important;
+}
+
+/* Enforce Typography */
+html[data-ypp-card-style="neon"] body,
+html[data-ypp-card-style="neon"] yt-formatted-string,
+html[data-ypp-card-style="neon"] .yt-core-attributed-string,
+html[data-ypp-card-style="neon"] input,
+html[data-ypp-card-style="neon"] textarea,
+html[data-ypp-card-style="neon"] button,
+html[data-ypp-card-style="neon"] tp-yt-paper-item,
+html[data-ypp-card-style="neon"] .ytp-menuitem-label,
+html[data-ypp-card-style="neon"] .ytp-menuitem-content {
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Base Body Background for Neon */
+html[data-ypp-card-style="neon"] body {
+  background: var(--neon-bg) !important;
+  color: var(--neon-text) !important;
+}

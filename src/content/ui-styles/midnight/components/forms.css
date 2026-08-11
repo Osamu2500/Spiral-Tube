@@ -1,0 +1,27 @@
+/* Midnight Forms */
+html[data-ypp-card-style="midnight"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--mid-bg) !important;
+    border: var(--mid-border) !important;
+    border-radius: 24px 0 0 24px !important;
+}
+html[data-ypp-card-style="midnight"] ytd-searchbox #search-icon-legacy {
+    background: var(--mid-surface) !important;
+    border: var(--mid-border) !important;
+    border-left: none !important;
+    border-radius: 0 24px 24px 0 !important;
+}
+
+html[data-ypp-card-style="midnight"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="midnight"] .yt-spec-button-shape-next--filled {
+    background: var(--mid-accent) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 24px !important;
+    box-shadow: var(--mid-glow) !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="midnight"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="midnight"] .yt-spec-button-shape-next--filled:hover {
+    background: var(--mid-accent-hover) !important;
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.6) !important;
+}

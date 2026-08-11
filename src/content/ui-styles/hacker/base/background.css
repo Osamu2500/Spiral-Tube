@@ -1,0 +1,20 @@
+/* Hacker Background */
+html[data-ypp-card-style="hacker"] body {
+  background: var(--hac-bg) !important;
+  color: var(--hac-text) !important;
+}
+
+html[data-ypp-card-style="hacker"] ::-webkit-scrollbar {
+  width: 10px !important;
+}
+html[data-ypp-card-style="hacker"] ::-webkit-scrollbar-track {
+  background: var(--hac-bg) !important;
+  border-left: var(--hac-border) !important;
+}
+html[data-ypp-card-style="hacker"] ::-webkit-scrollbar-thumb {
+  background: var(--hac-dim) !important;
+  border-radius: 0 !important;
+}
+html[data-ypp-card-style="hacker"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--hac-text) !important;
+}

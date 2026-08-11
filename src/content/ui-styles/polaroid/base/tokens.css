@@ -1,0 +1,15 @@
+/* Polaroid Tokens */
+html[data-ypp-card-style="polaroid"] {
+  --yt-spec-text-primary: #1a1a1a !important;
+  --yt-spec-text-secondary: #4a4a4a !important;
+  --yt-spec-menu-background: #fff !important;
+  --yt-spec-raised-background: #fff !important;
+  --yt-font-family: 'Courier New', Courier, monospace !important;
+}
+
+html[data-ypp-card-style="polaroid"] body,
+html[data-ypp-card-style="polaroid"] yt-formatted-string,
+html[data-ypp-card-style="polaroid"] .yt-core-attributed-string {
+  font-family: 'Courier New', Courier, monospace !important;
+  font-weight: 600 !important;
+}

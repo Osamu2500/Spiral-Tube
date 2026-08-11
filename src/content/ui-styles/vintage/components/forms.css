@@ -1,0 +1,25 @@
+/* src/content/themes/ui-styles/vintage/components/forms.css */
+/* Vintage Comment Box & Forms */
+
+html[data-ypp-ui-style="vintage"] ytd-comment-simplebox-renderer,
+html[data-ypp-ui-style="vintage"] ytd-commentbox {
+    background: transparent !important;
+}
+
+html[data-ypp-ui-style="vintage"] #placeholder-area.ytd-commentbox,
+html[data-ypp-ui-style="vintage"] #contenteditable-root.ytd-commentbox {
+    color: var(--vintage-secondary) !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-commentbox #creation-box {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
+    padding: 8px !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-commentbox[is-focused] #creation-box {
+    border: 2px solid var(--vintage-secondary) !important;
+}

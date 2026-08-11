@@ -1,0 +1,14 @@
+/* Midnight Menus */
+html[data-ypp-card-style="midnight"] tp-yt-paper-dialog,
+html[data-ypp-card-style="midnight"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="midnight"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="midnight"] ytd-masthead {
+    background: var(--mid-surface) !important;
+    border: var(--mid-border) !important;
+    border-radius: var(--mid-radius) !important;
+    box-shadow: var(--mid-shadow) !important;
+}
+html[data-ypp-card-style="midnight"] ytd-masthead {
+    border-bottom: 2px solid var(--mid-accent) !important;
+    border-radius: 0 0 16px 16px !important;
+}

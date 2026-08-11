@@ -5477,3 +5477,10 @@ body.ypp-ui-extra-rounded #avatar {
 body.ypp-ui-extra-rounded ytd-button-renderer {
     border-radius: 32px !important;
 }
+
+/* Fix for squished buttons in action bar (e.g. Download) */
+#top-level-buttons-computed > *,
+#top-level-buttons-computed yt-button-view-model,
+#top-level-buttons-computed ytd-download-button-renderer {
+    flex-shrink: 0 !important;
+}

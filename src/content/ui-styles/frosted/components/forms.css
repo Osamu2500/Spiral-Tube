@@ -1,0 +1,41 @@
+/* Frosted Forms */
+html[data-ypp-card-style="frosted"] ytd-searchbox #container.ytd-searchbox {
+    background: rgba(255,255,255,0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    border: var(--fro-border-light) !important;
+    border-radius: 20px 0 0 20px !important;
+}
+html[data-ypp-card-style="frosted"] ytd-searchbox #search-icon-legacy {
+    background: rgba(255,255,255,0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    border: var(--fro-border-light) !important;
+    border-left: none !important;
+    border-radius: 0 20px 20px 0 !important;
+}
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="frosted"] ytd-searchbox #container.ytd-searchbox,
+    html[data-ypp-card-style="frosted"] ytd-searchbox #search-icon-legacy {
+        background: rgba(0,0,0,0.2) !important;
+        border: var(--fro-border-dark) !important;
+    }
+    html[data-ypp-card-style="frosted"] ytd-searchbox #search-icon-legacy { border-left: none !important; }
+}
+
+html[data-ypp-card-style="frosted"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--filled,
+html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal {
+    background: var(--fro-glass-light) !important;
+    backdrop-filter: blur(10px) !important;
+    border: var(--fro-border-light) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="frosted"] ytd-subscribe-button-renderer yt-button-shape button,
+    html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--filled,
+    html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal {
+        background: var(--fro-glass-dark) !important;
+        border: var(--fro-border-dark) !important;
+        color: #fff !important;
+    }
+}

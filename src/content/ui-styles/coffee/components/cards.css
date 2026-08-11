@@ -1,0 +1,31 @@
+/* Coffee Cards */
+html[data-ypp-card-style="coffee"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+    background: var(--cof-surface) !important;
+    border: var(--cof-border) !important;
+    border-radius: var(--cof-radius) !important;
+    padding: 16px !important;
+    box-shadow: var(--cof-shadow) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+html[data-ypp-card-style="coffee"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 25px rgba(92, 58, 33, 0.15) !important;
+    border-color: var(--cof-accent) !important;
+}
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="coffee"] :is(
+        ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+        ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+    ):hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+    }
+}
+html[data-ypp-card-style="coffee"] :is(ytd-thumbnail, yt-image) {
+    border-radius: 8px !important;
+}

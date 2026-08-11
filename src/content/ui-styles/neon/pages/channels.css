@@ -1,0 +1,20 @@
+/* src/content/themes/ui-styles/neon/pages/channels.css */
+/* Synthwave Channel Banners */
+
+html[data-ypp-card-style="neon"] .yt-page-header-renderer,
+html[data-ypp-card-style="neon"] ytd-c4-tabbed-header-renderer #banner {
+    filter: contrast(150%) saturate(200%) hue-rotate(45deg) !important;
+    border-radius: 0 !important;
+}
+
+html[data-ypp-card-style="neon"] ytd-c4-tabbed-header-renderer {
+    background: #050505 !important;
+    border: 2px solid var(--neon-cyan) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2) !important;
+    margin-bottom: 20px !important;
+    border-radius: 0 !important;
+}
+
+html[data-ypp-card-style="neon"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
+    background: transparent !important;
+}

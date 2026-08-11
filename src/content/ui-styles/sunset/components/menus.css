@@ -1,0 +1,12 @@
+/* Sunset Menus */
+html[data-ypp-card-style="sunset"] tp-yt-paper-dialog,
+html[data-ypp-card-style="sunset"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="sunset"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="sunset"] ytd-masthead {
+    background: var(--sun-surface) !important;
+    border: var(--sun-border) !important;
+    border-radius: var(--sun-radius) !important;
+    box-shadow: var(--sun-shadow) !important;
+    backdrop-filter: blur(15px) !important;
+}
+html[data-ypp-card-style="sunset"] ytd-masthead { border-radius: 0 0 24px 24px !important; }

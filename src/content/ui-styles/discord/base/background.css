@@ -1,0 +1,16 @@
+/* Discord Background */
+html[data-ypp-card-style="discord"] body {
+  background: var(--dis-bg) !important;
+  color: var(--dis-text) !important;
+}
+
+html[data-ypp-card-style="discord"] ::-webkit-scrollbar {
+  width: 8px !important;
+}
+html[data-ypp-card-style="discord"] ::-webkit-scrollbar-track {
+  background: var(--dis-secondary) !important;
+}
+html[data-ypp-card-style="discord"] ::-webkit-scrollbar-thumb {
+  background: var(--dis-panel) !important;
+  border-radius: 4px !important;
+}

@@ -1,0 +1,41 @@
+/* Polaroid Cards */
+html[data-ypp-card-style="polaroid"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+) {
+  background: #ffffff !important;
+  border-radius: 4px !important;
+  padding: 8px 8px 32px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  transform: rotate(1deg) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+html[data-ypp-card-style="polaroid"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):nth-child(even) {
+  transform: rotate(-1.5deg) !important;
+}
+
+html[data-ypp-card-style="polaroid"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
+):hover {
+  transform: rotate(0deg) scale(1.03) translateY(-4px) !important;
+  z-index: 10 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-ypp-card-style="polaroid"] :is(ytd-thumbnail, yt-image) {
+  border-radius: 2px !important;
+  border: 1px solid #eee !important;
+}
+
+/* Handwritten Video Titles */
+html[data-ypp-card-style="polaroid"] #video-title {
+  font-size: 14px !important;
+  color: #1a1a1a !important;
+  margin-top: 12px !important;
+  font-weight: bold !important;
+}

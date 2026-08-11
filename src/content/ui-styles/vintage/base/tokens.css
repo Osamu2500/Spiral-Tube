@@ -94,3 +94,43 @@ html {
   --yt-spec-raised-background: transparent !important;
   --yt-spec-additive-background: transparent !important;
 }
+
+/* ==========================================================================
+   VINTAGE GLOBAL OVERRIDES (PLAN V2)
+   ========================================================================== */
+html[data-ypp-ui-style="vintage"],
+html[data-ypp-ui-style="vintage"] body,
+html[data-ypp-ui-style="vintage"] [dark] {
+  /* Core Text Colors */
+  --yt-spec-text-primary: var(--vintage-secondary) !important;
+  --yt-spec-text-secondary: rgba(44, 31, 20, 0.8) !important;
+  --yt-spec-text-disabled: rgba(44, 31, 20, 0.5) !important;
+  --yt-spec-text-primary-inverse: var(--sf) !important;
+  
+  /* Icon Colors */
+  --yt-spec-icon-active-other: var(--vintage-secondary) !important;
+  --yt-spec-icon-inactive: rgba(44, 31, 20, 0.8) !important;
+  --yt-spec-icon-disabled: rgba(44, 31, 20, 0.5) !important;
+
+  /* Menu and Popup Backgrounds */
+  --yt-spec-menu-background: var(--sf) !important;
+  --yt-spec-raised-background: var(--sf) !important;
+  --yt-spec-base-background: var(--sf) !important;
+  
+  /* Global Typography Override Variables */
+  --ytd-user-comment-font-family: Georgia, "Times New Roman", serif !important;
+  --yt-font-family: Georgia, "Times New Roman", serif !important;
+}
+
+/* Hard enforce typography on text nodes */
+html[data-ypp-ui-style="vintage"] body,
+html[data-ypp-ui-style="vintage"] yt-formatted-string,
+html[data-ypp-ui-style="vintage"] .yt-core-attributed-string,
+html[data-ypp-ui-style="vintage"] input,
+html[data-ypp-ui-style="vintage"] textarea,
+html[data-ypp-ui-style="vintage"] button,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-label,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-content {
+  font-family: Georgia, "Times New Roman", serif !important;
+}

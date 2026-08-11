@@ -1,0 +1,19 @@
+/* Summer Player */
+html[data-ypp-card-style="summer"] .ytp-chrome-bottom {
+    background: rgba(255, 100, 0, 0.4) !important;
+    backdrop-filter: blur(15px) !important;
+    border: var(--sum-border) !important;
+    border-radius: 16px !important;
+    margin: 10px !important;
+    width: calc(100% - 20px) !important;
+}
+
+html[data-ypp-card-style="summer"] .ytp-play-progress {
+    background: var(--sum-grad) !important;
+    box-shadow: 0 0 10px rgba(255, 230, 0, 0.8) !important;
+}
+html[data-ypp-card-style="summer"] .ytp-scrubber-button {
+    background: #fff !important;
+    border: 2px solid #fc6076 !important;
+    box-shadow: 0 0 15px rgba(255, 230, 0, 1) !important;
+}

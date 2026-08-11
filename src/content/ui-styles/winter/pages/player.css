@@ -1,0 +1,101 @@
+/* src/content/themes/ui-styles/winter/pages/player.css */
+/* Icy Video Player Overhaul */
+
+html[data-ypp-card-style="winter"] .ytp-play-progress,
+html[data-ypp-card-style="winter"] .ytp-swatch-background-color,
+html[data-ypp-card-style="winter"] .ytp-volume-slider-handle,
+html[data-ypp-card-style="winter"] .ytp-volume-slider-handle::before,
+html[data-ypp-card-style="winter"] .ytp-volume-slider-handle::after {
+    background: var(--winter-ice-glow) !important;
+    box-shadow: 0 0 10px var(--winter-ice-glow) !important;
+}
+
+html[data-ypp-card-style="winter"] .ytp-swatch-color {
+    color: var(--winter-ice-glow) !important;
+}
+
+html[data-ypp-card-style="winter"] .ytp-load-progress {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Scrubber Button (Glowing Circular Dot) */
+html[data-ypp-card-style="winter"] .ytp-scrubber-button {
+    background: #ffffff !important;
+    border: 2px solid var(--winter-ice-glow) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 15px rgba(135, 206, 250, 0.8), 0 0 5px #ffffff !important;
+    transform: scale(0.9) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+html[data-ypp-card-style="winter"] .ytp-scrubber-button:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 20px rgba(135, 206, 250, 1), 0 0 10px #ffffff !important;
+}
+
+/* Player Typography */
+html[data-ypp-card-style="winter"] .ytp-time-display,
+html[data-ypp-card-style="winter"] .ytp-chapter-title-content {
+    font-family: 'Quicksand', sans-serif !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* Frosted Tooltips */
+html[data-ypp-card-style="winter"] .ytp-tooltip-text {
+    font-family: 'Quicksand', sans-serif !important;
+    background: rgba(15, 25, 40, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(180, 230, 255, 0.4) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    padding: 6px 12px !important;
+}
+html[data-ypp-card-style="winter"] .ytp-tooltip-bg { display: none !important; }
+
+/* Frosted Player Popups */
+html[data-ypp-card-style="winter"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-card-style="winter"] .ytp-panel {
+    background: rgba(15, 25, 40, 0.6) !important;
+    backdrop-filter: blur(24px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 30px rgba(100, 200, 255, 0.1) !important;
+}
+
+/* Player Frame */
+html[data-ypp-card-style="winter"] video.video-stream.html5-main-video,
+html[data-ypp-card-style="winter"] .html5-video-player {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(100, 200, 255, 0.1) !important;
+}
+
+/* Frosted Mini-Player */
+html[data-ypp-card-style="winter"] ytd-miniplayer {
+    background: rgba(15, 25, 40, 0.6) !important;
+    backdrop-filter: blur(24px) saturate(150%) !important;
+    border: 1px solid rgba(180, 230, 255, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 15px 40px rgba(100, 200, 255, 0.3) !important;
+    overflow: hidden !important;
+}
+
+html[data-ypp-card-style="winter"] ytd-miniplayer .video-stream.html5-main-video {
+    border-radius: 16px !important;
+}
+
+/* Frosted Video End Screens */
+html[data-ypp-card-style="winter"] .ytp-ce-element {
+    background: rgba(15, 25, 40, 0.3) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(180, 230, 255, 0.4) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+    transition: all 0.3s ease !important;
+}
+html[data-ypp-card-style="winter"] .ytp-ce-element:hover {
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 8px 25px rgba(180, 230, 255, 0.5) !important;
+    transform: scale(1.05) !important;
+}

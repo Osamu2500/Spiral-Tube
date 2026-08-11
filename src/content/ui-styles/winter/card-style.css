@@ -237,3 +237,34 @@ html[data-ypp-card-style='winter']
     0 0 20px rgba(255, 255, 255, 0.4) !important;
   border-top: 2px solid #ffffff !important;
 }
+
+
+/* Bespoke Action Button Coverage Fix */
+html[data-ypp-theme="winter"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="winter"] yt-download-button-view-model yt-button-shape button,
+html[data-ypp-theme="winter"] yt-download-button-view-model button,
+html[data-ypp-theme="winter"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="winter"] ytd-download-button-renderer button,
+html[data-ypp-theme="winter"] #ask-button yt-button-shape button,
+html[data-ypp-theme="winter"] #ask-button button,
+html[data-ypp-theme="winter"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-theme="winter"] .yt-spec-button-shape-next--outline,
+html[data-ypp-theme="winter"] .yt-spec-button-shape-next--mono {
+    background-color: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.1)) !important;
+    color: var(--ypp-text-primary, #fff) !important;
+    transition: all 0.2s ease !important;
+    border-radius: 16px !important; backdrop-filter: blur(8px) !important; border: 1px solid rgba(173,216,230,0.5) !important;
+}
+
+html[data-ypp-theme="winter"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="winter"] yt-download-button-view-model yt-button-shape button:hover,
+html[data-ypp-theme="winter"] yt-download-button-view-model button:hover,
+html[data-ypp-theme="winter"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="winter"] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="winter"] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="winter"] #ask-button button:hover,
+html[data-ypp-theme="winter"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-theme="winter"] .yt-spec-button-shape-next--outline:hover,
+html[data-ypp-theme="winter"] .yt-spec-button-shape-next--mono:hover {
+    background-color: var(--ypp-accent, rgba(255, 255, 255, 0.2)) !important; transform: scale(1.05) !important;
+}

@@ -205,3 +205,81 @@ html[data-ypp-ui-style="vintage"] button.ytSpecButtonShapeNextTonal path {
   color: #1a0f08 !important;
   stroke: none !important;
 }
+
+
+/* Vintage Action Buttons Final */
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-download-button-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] yt-download-button-view-model .yt-spec-button-shape-next {
+  background: var(--sf) !important;
+  border: 2px dashed var(--vintage-secondary) !important;
+  color: var(--vintage-secondary) !important;
+  border-radius: 0 !important;
+  box-shadow: 2px 2px #0000001a !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-right: 8px !important;
+}
+
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-download-button-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] yt-download-button-view-model .yt-spec-button-shape-next:hover {
+  background: var(--vintage-secondary) !important;
+  color: var(--sf) !important;
+  border: 2px solid var(--vintage-secondary) !important;
+  box-shadow: 4px 4px #0003 !important;
+  transform: translate(-2px, -2px) !important;
+}
+
+/* Force icons */
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next path {
+  fill: var(--vintage-secondary) !important;
+  color: var(--vintage-secondary) !important;
+  stroke: none !important;
+}
+
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next:hover path,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next:hover path,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next:hover path {
+  fill: var(--sf) !important;
+  color: var(--sf) !important;
+}
+
+/* Force nested text */
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next *,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next *,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next *,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next * {
+  color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next:hover *,
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next:hover *,
+html[data-ypp-ui-style="vintage"] ytd-menu-renderer .yt-spec-button-shape-next:hover *,
+html[data-ypp-ui-style="vintage"] yt-button-view-model .yt-spec-button-shape-next:hover * {
+  color: var(--sf) !important;
+}
+
+/* Override YouTube's segmented button wrapper background/border that might conflict */
+html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  background: none !important;
+  border: none !important;
+}

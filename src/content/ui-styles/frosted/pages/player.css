@@ -1,0 +1,20 @@
+/* Frosted Player */
+html[data-ypp-card-style="frosted"] .ytp-chrome-bottom {
+    background: var(--fro-glass-light) !important;
+    backdrop-filter: blur(30px) saturate(200%) !important;
+    border: var(--fro-border-light) !important;
+    border-radius: var(--fro-radius) !important;
+    margin: 10px !important;
+    width: calc(100% - 20px) !important;
+    box-shadow: var(--fro-shadow) !important;
+}
+@media (prefers-color-scheme: dark) {
+    html[data-ypp-card-style="frosted"] .ytp-chrome-bottom {
+        background: var(--fro-glass-dark) !important;
+        border: var(--fro-border-dark) !important;
+    }
+}
+html[data-ypp-card-style="frosted"] .ytp-scrubber-button {
+    background: #fff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+}

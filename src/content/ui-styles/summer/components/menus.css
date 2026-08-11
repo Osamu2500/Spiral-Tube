@@ -1,0 +1,10 @@
+/* Summer Menus */
+html[data-ypp-card-style="summer"] tp-yt-paper-dialog,
+html[data-ypp-card-style="summer"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="summer"] ytd-multi-page-menu-renderer {
+    background: rgba(255, 100, 0, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    border: var(--sum-border) !important;
+    border-radius: var(--sum-radius) !important;
+    box-shadow: 0 10px 30px rgba(255, 100, 0, 0.5) !important;
+}

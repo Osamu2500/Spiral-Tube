@@ -1,0 +1,37 @@
+/* src/content/themes/ui-styles/glass/components/forms.css */
+/* Frosted Search Bar */
+html[data-ypp-card-style="glass"] ytd-searchbox #container.ytd-searchbox {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px 0 0 20px !important;
+    color: #fff !important;
+}
+html[data-ypp-card-style="glass"] ytd-searchbox #search-icon-legacy {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-left: none !important;
+    border-radius: 0 20px 20px 0 !important;
+    color: #fff !important;
+}
+html[data-ypp-card-style="glass"] ytd-searchbox #search-icon-legacy:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-card-style="glass"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 20px !important;
+    color: #fff !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="glass"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.05) !important;
+}

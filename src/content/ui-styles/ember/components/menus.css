@@ -1,0 +1,13 @@
+/* Ember Menus */
+html[data-ypp-card-style="ember"] tp-yt-paper-dialog,
+html[data-ypp-card-style="ember"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="ember"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="ember"] ytd-masthead {
+    background: var(--emb-surface) !important;
+    border: var(--emb-border) !important;
+    border-radius: var(--emb-radius) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-card-style="ember"] ytd-masthead {
+    border-bottom: 2px solid var(--emb-flame) !important;
+}

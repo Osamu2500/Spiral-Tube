@@ -128,3 +128,89 @@ html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button pa
   color: #1a202c !important;
   stroke: none !important;
 }
+
+/* Heavy Theme Action Button Coverage Fix */
+
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-download-button-renderer button,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button #ask-button yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button #ask-button button,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button button.ytSpecButtonShapeNextText {
+  background-color: var(--neu-bg) !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+  color: var(--neu-accent) !important;
+  font-weight: bold !important;
+}
+
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button #ask-button button:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button button.ytSpecButtonShapeNextText:hover {
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-download-button-renderer yt-button-shape button:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-download-button-renderer button:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button #ask-button yt-button-shape button:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button #ask-button button:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button .yt-spec-button-shape-next--mono:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button ytd-menu-renderer yt-button-shape button:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape button button.ytSpecButtonShapeNextText:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="neumorphic"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] #ask-button button,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="neumorphic"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] #ask-button button,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText {
+  color: #1a202c !important;
+}
+
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="neumorphic"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] #ask-button button,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="neumorphic"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] #ask-button button,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="neumorphic"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] #ask-button button,
+html[data-ypp-ui-style="neumorphic"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="neumorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="neumorphic"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="neumorphic"] button.ytSpecButtonShapeNextText {
+  fill: #1a202c !important;
+  color: #1a202c !important;
+  stroke: none !important;
+}

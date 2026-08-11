@@ -1,0 +1,14 @@
+/* Nord Player */
+html[data-ypp-card-style="nord"] .ytp-chrome-bottom {
+    background: var(--nord-surface) !important;
+    border: var(--nord-border) !important;
+    border-radius: var(--nord-radius) !important;
+    margin: 8px !important;
+    width: calc(100% - 16px) !important;
+}
+html[data-ypp-card-style="nord"] .ytp-play-progress { background: var(--nord8) !important; }
+html[data-ypp-card-style="nord"] .ytp-scrubber-button {
+    background: var(--nord6) !important;
+    border: 2px solid var(--nord8) !important;
+    border-radius: 50% !important;
+}

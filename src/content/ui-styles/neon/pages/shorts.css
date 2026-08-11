@@ -1,0 +1,29 @@
+/* src/content/themes/ui-styles/neon/pages/shorts.css */
+/* Hollow Neon Buttons for Shorts */
+
+html[data-ypp-card-style="neon"] ytd-shorts-player-controls .ytp-play-progress {
+    background: var(--neon-magenta) !important;
+    box-shadow: 0 0 10px var(--neon-magenta) !important;
+}
+
+html[data-ypp-card-style="neon"] ytd-reel-player-overlay-renderer ytd-button-renderer yt-button-shape button,
+html[data-ypp-card-style="neon"] ytd-reel-player-overlay-renderer ytd-toggle-button-renderer yt-button-shape button,
+html[data-ypp-card-style="neon"] ytd-reel-player-overlay-renderer yt-button-shape button {
+    background: transparent !important;
+    border: 2px solid var(--neon-cyan) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4), inset 0 0 5px rgba(0, 255, 255, 0.2) !important;
+    color: var(--neon-cyan) !important;
+    fill: var(--neon-cyan) !important;
+    transition: all 0.2s ease !important;
+}
+
+html[data-ypp-card-style="neon"] ytd-reel-player-overlay-renderer ytd-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="neon"] ytd-reel-player-overlay-renderer ytd-toggle-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="neon"] ytd-reel-player-overlay-renderer yt-button-shape button:hover {
+    background: var(--neon-cyan) !important;
+    color: #000 !important;
+    fill: #000 !important;
+    box-shadow: 0 0 20px var(--neon-cyan), 0 0 5px var(--neon-cyan) !important;
+    transform: scale(1.1) !important;
+}

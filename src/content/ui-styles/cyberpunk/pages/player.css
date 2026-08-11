@@ -1,32 +1,23 @@
-/* src/content/ui-styles/cyberpunk/pages/player.css */
-
-html[data-ypp-theme="cyberpunk"] #ytd-player {
-  clip-path: var(--ypp-clip-lg) !important;
-  border-radius: 0 !important;
-  border: 2px solid var(--ypp-accent-primary) !important;
-  box-shadow: var(--ypp-glow-cyan) !important;
-  background: #000 !important;
+/* Cyberpunk Player */
+html[data-ypp-card-style="cyberpunk"] .ytp-chrome-bottom {
+    background: var(--cyb-panel) !important;
+    border: 1px solid var(--cyb-secondary) !important;
+    border-left: 4px solid var(--cyb-primary) !important;
+    border-radius: 0 !important;
+    margin: 10px !important;
+    width: calc(100% - 20px) !important;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%) !important;
+    box-shadow: 0 0 15px rgba(0,240,255,0.3) !important;
 }
 
-/* Progress bar */
-html[data-ypp-theme="cyberpunk"] .ytp-play-progress {
-  background: var(--ypp-accent-primary) !important;
-  box-shadow: var(--ypp-glow-cyan) !important;
+html[data-ypp-card-style="cyberpunk"] .ytp-play-progress {
+    background: var(--cyb-primary) !important;
+    box-shadow: 0 0 10px var(--cyb-primary) !important;
 }
-
-html[data-ypp-theme="cyberpunk"] .ytp-swatch-background-color {
-  background-color: var(--ypp-accent-primary) !important;
-}
-
-/* Scrubber button */
-html[data-ypp-theme="cyberpunk"] .ytp-scrubber-button {
-  background: var(--ypp-accent-warning) !important;
-  border-radius: 0 !important;
-  clip-path: var(--ypp-clip-sm) !important;
-  transform: scale(1.5) !important;
-  box-shadow: 0 0 10px var(--ypp-accent-warning) !important;
-}
-
-html[data-ypp-theme="cyberpunk"] .ytp-load-progress {
-  background: rgba(255, 0, 85, 0.5) !important;
+html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button {
+    background: #000 !important;
+    border: 2px solid var(--cyb-secondary) !important;
+    box-shadow: 0 0 10px var(--cyb-secondary) !important;
+    border-radius: 0 !important;
+    transform: rotate(45deg) !important;
 }

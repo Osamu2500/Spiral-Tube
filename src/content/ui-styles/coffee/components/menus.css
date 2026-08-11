@@ -1,0 +1,14 @@
+/* Coffee Menus */
+html[data-ypp-card-style="coffee"] tp-yt-paper-dialog,
+html[data-ypp-card-style="coffee"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="coffee"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="coffee"] ytd-masthead {
+    background: var(--cof-surface) !important;
+    border: var(--cof-border) !important;
+    border-radius: var(--cof-radius) !important;
+    box-shadow: 0 8px 30px rgba(92, 58, 33, 0.12) !important;
+}
+html[data-ypp-card-style="coffee"] ytd-masthead {
+    border-bottom: 2px solid var(--cof-accent) !important;
+    border-radius: 0 0 var(--cof-radius) var(--cof-radius) !important;
+}

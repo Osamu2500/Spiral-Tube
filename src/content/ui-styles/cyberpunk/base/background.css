@@ -1,118 +1,14 @@
-/* =========================================================
-   CYBERPUNK — BACKGROUND & GLOBAL SURFACE
-   ========================================================= */
-
-/* Page Background */
-html[data-ypp-ui-style="cyberpunk"] body,
-html[data-ypp-ui-style="cyberpunk"] ytd-app {
-  background-color: var(--cyber-bg) !important;
-  background-image:
-    /* Subtle neon grid lines */
-    linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* Cyberpunk Background */
+html[data-ypp-card-style="cyberpunk"] body {
+  background: var(--cyb-bg) !important;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
 }
 
-/* Top-level transparent override for YT elements */
-html[data-ypp-ui-style="cyberpunk"] {
-  --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-raised-background: transparent !important;
-  --yt-spec-additive-background: transparent !important;
-  --yt-spec-base-background: var(--cyber-bg) !important;
-  --yt-spec-brand-background-solid: var(--cyber-bg) !important;
-}
-
-/* Suggestion Hover */
-html[data-ypp-ui-style="cyberpunk"] .ytSuggestionComponentRoundedSuggestion:hover {
-  background: rgba(0, 255, 204, 0.1) !important;
-}
-
-/* Paper Tab (Channel Tabs) */
-html[data-ypp-ui-style="cyberpunk"] .tab-content.tp-yt-paper-tab {
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb {
+  background: var(--cyb-secondary) !important;
   border-radius: 0 !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .tab-content.tp-yt-paper-tab:hover {
-  background: rgba(0, 255, 204, 0.08) !important;
-  box-shadow: inset 0 -2px 0 var(--cyber-secondary) !important;
-}
-
-/* App Header (needed to stop it re-painting) */
-html[data-ypp-ui-style="cyberpunk"] tp-yt-app-header {
-  background: transparent !important;
-}
-
-/* Extension Modals */
-html[data-ypp-ui-style="cyberpunk"] .ypp-organizer-modal,
-html[data-ypp-ui-style="cyberpunk"] .ypp-modal-content {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thick) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-md) !important;
-  box-shadow: var(--cyber-glow-secondary) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ypp-modal-header {
-  background: #000 !important;
-  border-bottom: var(--cyber-border-thin) !important;
-}
-
-/* Extension badges / value displays */
-html[data-ypp-ui-style="cyberpunk"] .ypp-badge,
-html[data-ypp-ui-style="cyberpunk"] .ypp-value-display {
-  background: rgba(0, 0, 0, 0.8) !important;
-  border: 1px solid var(--cyber-secondary) !important;
-  border-radius: 0 !important;
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
-  box-shadow: 0 0 4px rgba(0, 255, 204, 0.3) !important;
-}
-
-/* Extension filter dropdowns */
-html[data-ypp-ui-style="cyberpunk"] .ypp-filter-dropdown {
-  background: rgba(0, 0, 0, 0.9) !important;
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  color: var(--cyber-secondary) !important;
-  font-family: monospace !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] .ypp-filter-dropdown:hover {
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
-}
-
-/* Extension sliders */
-html[data-ypp-ui-style="cyberpunk"] .ypp-slider,
-html[data-ypp-ui-style="cyberpunk"] .ypp-gpb-vol-slider {
-  accent-color: var(--cyber-secondary) !important;
-  background: rgba(0, 255, 204, 0.1) !important;
-  border-radius: 0 !important;
-}
-
-/* Playlist sidebar */
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-sidebar {
-  background: var(--cyber-bg) !important;
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-toolbar {
-  background: #000 !important;
-  border-bottom: var(--cyber-border-thin) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-btn-play,
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-btn-tool,
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-filter {
-  background: transparent !important;
-  border: var(--cyber-border-thin) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-btn-play:hover,
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
-html[data-ypp-ui-style="cyberpunk"] #ypp-pl-root .ypp-pl-btn-tool:hover {
-  background: rgba(0, 255, 204, 0.15) !important;
-  border-color: var(--cyber-secondary) !important;
-  box-shadow: 0 0 8px rgba(0, 255, 204, 0.3) !important;
+  box-shadow: 0 0 10px var(--cyb-secondary) !important;
 }

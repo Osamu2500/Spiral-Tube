@@ -1,0 +1,14 @@
+/* Nord Menus */
+html[data-ypp-card-style="nord"] tp-yt-paper-dialog,
+html[data-ypp-card-style="nord"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="nord"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="nord"] ytd-masthead {
+    background: var(--nord-surface) !important;
+    border: var(--nord-border) !important;
+    border-radius: var(--nord-radius) !important;
+    box-shadow: var(--nord-shadow) !important;
+}
+html[data-ypp-card-style="nord"] ytd-masthead {
+    border-bottom: 2px solid var(--nord8) !important;
+    border-radius: 0 !important;
+}

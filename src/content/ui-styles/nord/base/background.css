@@ -1,0 +1,12 @@
+/* Nord Background */
+html[data-ypp-card-style="nord"] body {
+  background: var(--nord-bg) !important;
+  color: var(--yt-spec-text-primary) !important;
+}
+html[data-ypp-card-style="nord"] ::-webkit-scrollbar { width: 10px !important; }
+html[data-ypp-card-style="nord"] ::-webkit-scrollbar-track { background: var(--nord-bg) !important; }
+html[data-ypp-card-style="nord"] ::-webkit-scrollbar-thumb {
+  background: var(--nord3) !important;
+  border-radius: 5px !important;
+}
+html[data-ypp-card-style="nord"] ::-webkit-scrollbar-thumb:hover { background: var(--nord8) !important; }

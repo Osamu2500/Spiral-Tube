@@ -1,0 +1,16 @@
+/* Elevated Menus */
+html[data-ypp-card-style="elevated"] tp-yt-paper-dialog,
+html[data-ypp-card-style="elevated"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="elevated"] ytd-multi-page-menu-renderer {
+    background: var(--yt-spec-raised-background) !important;
+    border: none !important;
+    border-radius: var(--el-radius) !important;
+    box-shadow: var(--el-shadow-heavy) !important;
+    transform-origin: top right !important;
+    animation: ypp-elevate-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+@keyframes ypp-elevate-pop {
+    0% { transform: scale(0.9) translateY(-10px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}

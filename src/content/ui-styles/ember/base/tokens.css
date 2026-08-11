@@ -1,0 +1,16 @@
+/* Ember Tokens */
+html[data-ypp-card-style="ember"] {
+  --emb-bg: #121212 !important;
+  --emb-surface: #1c1c1c !important;
+  --emb-border: 1px solid #333333 !important;
+  --emb-flame: #ff4500 !important;
+  --emb-flame-hover: #ff8c00 !important;
+  --emb-text: #e0e0e0 !important;
+  --emb-muted: #888888 !important;
+  --emb-radius: 4px !important;
+  
+  --yt-spec-text-primary: var(--emb-text) !important;
+  --yt-spec-text-secondary: var(--emb-muted) !important;
+  --yt-spec-base-background: var(--emb-bg) !important;
+  --yt-spec-menu-background: var(--emb-surface) !important;
+}

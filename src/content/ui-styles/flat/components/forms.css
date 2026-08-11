@@ -1,0 +1,31 @@
+/* Flat Forms */
+html[data-ypp-card-style="flat"] ytd-searchbox #container.ytd-searchbox {
+    background: var(--yt-spec-raised-background) !important;
+    border: var(--flat-border) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+html[data-ypp-card-style="flat"] ytd-searchbox #search-icon-legacy {
+    background: var(--yt-spec-text-primary) !important;
+    color: var(--yt-spec-base-background) !important;
+    border: var(--flat-border) !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+}
+
+html[data-ypp-card-style="flat"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="flat"] .yt-spec-button-shape-next--filled {
+    background: var(--flat-accent) !important;
+    color: #fff !important;
+    border: var(--flat-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0px var(--yt-spec-text-primary) !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    transition: none !important;
+}
+html[data-ypp-card-style="flat"] ytd-subscribe-button-renderer yt-button-shape button:active,
+html[data-ypp-card-style="flat"] .yt-spec-button-shape-next--filled:active {
+    transform: translate(4px, 4px) !important;
+    box-shadow: 0px 0px 0px var(--yt-spec-text-primary) !important;
+}

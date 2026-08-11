@@ -153,4 +153,49 @@ html[data-ypp-ui-style="retrowave-green"] ytd-comment-thread-renderer:hover {
     box-shadow: 0 0 15px rgba(244, 205, 10, 0.25) !important;
 }
 
+/* Heavy Theme Action Button Coverage Fix */
+
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono #ask-button button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText {
+    background-color: #ff9822ed !important;
+    border-radius: 5px !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="retrowave-green"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="retrowave-green"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="retrowave-green"] #ask-button button,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="retrowave-green"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="retrowave-green"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="retrowave-green"] button.ytSpecButtonShapeNextText {
+    background: rgba(23, 43, 5, 0.85) !important;
+    border: 1px solid #00ff66 !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.3) !important;
+    transition: all 0.25s ease !important;
+}
+
+html[data-ypp-ui-style="retrowave-green"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="retrowave-green"] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="retrowave-green"] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="retrowave-green"] #ask-button button:hover,
+html[data-ypp-ui-style="retrowave-green"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="retrowave-green"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="retrowave-green"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="retrowave-green"] button.ytSpecButtonShapeNextText:hover {
+    background: #e1980f !important;
+    border-color: #f4cd0a !important;
+    color: #000000 !important;
+    box-shadow: 0 0 16px rgba(244, 205, 10, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
 

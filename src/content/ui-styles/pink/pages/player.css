@@ -1,0 +1,16 @@
+/* Pink Player */
+html[data-ypp-card-style="pink"] .ytp-chrome-bottom {
+    background: var(--pin-surface) !important;
+    border: var(--pin-border) !important;
+    border-radius: 20px !important;
+    margin: 12px !important;
+    width: calc(100% - 24px) !important;
+    box-shadow: var(--pin-shadow) !important;
+}
+html[data-ypp-card-style="pink"] .ytp-play-progress { background: var(--pin-primary) !important; }
+html[data-ypp-card-style="pink"] .ytp-scrubber-button {
+    background: #fff !important;
+    border: 4px solid var(--pin-primary) !important;
+    border-radius: 50% !important;
+    width: 20px !important; height: 20px !important;
+}

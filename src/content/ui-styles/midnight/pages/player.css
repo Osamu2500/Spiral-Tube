@@ -1,0 +1,16 @@
+/* Midnight Player */
+html[data-ypp-card-style="midnight"] .ytp-chrome-bottom {
+    background: var(--mid-surface) !important;
+    border: var(--mid-border) !important;
+    border-radius: 12px !important;
+    margin: 12px !important;
+    width: calc(100% - 24px) !important;
+    box-shadow: var(--mid-glow) !important;
+}
+html[data-ypp-card-style="midnight"] .ytp-play-progress { background: var(--mid-accent) !important; }
+html[data-ypp-card-style="midnight"] .ytp-scrubber-button {
+    background: #fff !important;
+    border: 3px solid var(--mid-accent) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 10px var(--mid-accent) !important;
+}

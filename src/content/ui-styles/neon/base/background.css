@@ -1,0 +1,47 @@
+/* src/content/themes/ui-styles/neon/base/background.css */
+/* Neon Scrollbars */
+html[data-ypp-card-style="neon"] ::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+html[data-ypp-card-style="neon"] ::-webkit-scrollbar-track {
+  background: #000000 !important;
+}
+html[data-ypp-card-style="neon"] ::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan) !important;
+  border-radius: 0 !important;
+  border: 1px solid #000000 !important;
+  box-shadow: 0 0 10px var(--neon-cyan) !important;
+}
+
+/* Neon Text Selection */
+html[data-ypp-card-style="neon"] ::selection {
+    background: var(--neon-magenta) !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+}
+html[data-ypp-card-style="neon"] ::-moz-selection {
+    background: var(--neon-magenta) !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+}
+
+/* Cyberpunk Skeleton Loaders */
+@keyframes neon-laser-scan {
+    0% { background: linear-gradient(90deg, #050505 0%, var(--neon-magenta) 50%, #050505 100%); background-size: 200% 100%; background-position: 100% 0; }
+    100% { background: linear-gradient(90deg, #050505 0%, var(--neon-magenta) 50%, #050505 100%); background-size: 200% 100%; background-position: -100% 0; }
+}
+
+html[data-ypp-card-style="neon"] #ghost-cards,
+html[data-ypp-card-style="neon"] ytd-ghost-grid-renderer,
+html[data-ypp-card-style="neon"] .skeleton-bg-color,
+html[data-ypp-card-style="neon"] .ytd-ghost-grid-renderer {
+    background: #050505 !important;
+}
+
+html[data-ypp-card-style="neon"] .ytd-ghost-grid-renderer > div,
+html[data-ypp-card-style="neon"] .skeleton-bg-color {
+    animation: neon-laser-scan 1.5s linear infinite !important;
+    border-radius: 0 !important;
+    border: 1px solid rgba(255, 0, 255, 0.3) !important;
+}

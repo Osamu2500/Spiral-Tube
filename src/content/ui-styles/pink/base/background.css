@@ -1,0 +1,11 @@
+/* Pink Background */
+html[data-ypp-card-style="pink"] body {
+  background: var(--pin-bg) !important;
+}
+html[data-ypp-card-style="pink"] ::-webkit-scrollbar { width: 14px !important; }
+html[data-ypp-card-style="pink"] ::-webkit-scrollbar-track { background: var(--pin-bg) !important; }
+html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb {
+  background: var(--pin-secondary) !important;
+  border-radius: 7px !important;
+  border: 3px solid var(--pin-bg) !important;
+}

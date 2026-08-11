@@ -232,3 +232,20 @@ yt-formatted-string#description-text {
   background: var(--sf) !important;
   box-shadow: var(--shadow-active) !important;
 }
+
+/* Vintage Scrollbar */
+html[data-ypp-ui-style="vintage"] ::-webkit-scrollbar {
+    width: 14px !important;
+    height: 14px !important;
+}
+html[data-ypp-ui-style="vintage"] ::-webkit-scrollbar-track {
+    background: var(--sf) !important;
+    border-left: 2px dashed rgba(44, 31, 20, 0.3) !important;
+}
+html[data-ypp-ui-style="vintage"] ::-webkit-scrollbar-thumb {
+    background: var(--vintage-secondary) !important;
+    border: 2px solid var(--sf) !important;
+}
+html[data-ypp-ui-style="vintage"] ::-webkit-scrollbar-thumb:hover {
+    background: #1a0f08 !important;
+}

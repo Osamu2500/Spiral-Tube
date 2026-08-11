@@ -1,0 +1,49 @@
+/* src/content/themes/ui-styles/winter/components/buttons.css */
+html[data-ypp-card-style="winter"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-card-style="winter"] yt-download-button-view-model yt-button-shape button,
+html[data-ypp-card-style="winter"] yt-download-button-view-model button,
+html[data-ypp-card-style="winter"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-card-style="winter"] ytd-download-button-renderer button,
+html[data-ypp-card-style="winter"] #ask-button yt-button-shape button,
+html[data-ypp-card-style="winter"] #ask-button button,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--outline,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--mono {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(180, 230, 255, 0.4) !important;
+    border-radius: 24px !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: 0 4px 10px rgba(100, 200, 255, 0.1) !important;
+}
+
+html[data-ypp-card-style="winter"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="winter"] yt-download-button-view-model yt-button-shape button:hover,
+html[data-ypp-card-style="winter"] yt-download-button-view-model button:hover,
+html[data-ypp-card-style="winter"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="winter"] ytd-download-button-renderer button:hover,
+html[data-ypp-card-style="winter"] #ask-button yt-button-shape button:hover,
+html[data-ypp-card-style="winter"] #ask-button button:hover,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--outline:hover,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--mono:hover {
+    background: rgba(180, 230, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 15px rgba(100, 200, 255, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-ypp-card-style="winter"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--filled {
+    background: linear-gradient(135deg, var(--winter-ice), #64b5f6) !important;
+    color: #0a1128 !important;
+    border-radius: 24px !important;
+    box-shadow: 0 4px 15px rgba(100, 200, 255, 0.4) !important;
+    border: none !important;
+}
+html[data-ypp-card-style="winter"] ytd-subscribe-button-renderer yt-button-shape button:hover,
+html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--filled:hover {
+    box-shadow: 0 8px 25px rgba(100, 200, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+}

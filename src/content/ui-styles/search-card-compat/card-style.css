@@ -82,3 +82,34 @@ html[data-ypp-card-style]:not([data-ypp-card-style='immersive-glass']) body.ypp-
   height: auto !important;
   background: none !important;
 }
+
+
+/* Bespoke Action Button Coverage Fix */
+html[data-ypp-theme="search-card-compat"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="search-card-compat"] yt-download-button-view-model yt-button-shape button,
+html[data-ypp-theme="search-card-compat"] yt-download-button-view-model button,
+html[data-ypp-theme="search-card-compat"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="search-card-compat"] ytd-download-button-renderer button,
+html[data-ypp-theme="search-card-compat"] #ask-button yt-button-shape button,
+html[data-ypp-theme="search-card-compat"] #ask-button button,
+html[data-ypp-theme="search-card-compat"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-theme="search-card-compat"] .yt-spec-button-shape-next--outline,
+html[data-ypp-theme="search-card-compat"] .yt-spec-button-shape-next--mono {
+    background-color: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.1)) !important;
+    color: var(--ypp-text-primary, #fff) !important;
+    transition: all 0.2s ease !important;
+    border-radius: 18px !important; border: none !important;
+}
+
+html[data-ypp-theme="search-card-compat"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="search-card-compat"] yt-download-button-view-model yt-button-shape button:hover,
+html[data-ypp-theme="search-card-compat"] yt-download-button-view-model button:hover,
+html[data-ypp-theme="search-card-compat"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="search-card-compat"] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="search-card-compat"] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="search-card-compat"] #ask-button button:hover,
+html[data-ypp-theme="search-card-compat"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-theme="search-card-compat"] .yt-spec-button-shape-next--outline:hover,
+html[data-ypp-theme="search-card-compat"] .yt-spec-button-shape-next--mono:hover {
+    background-color: var(--ypp-accent, rgba(255, 255, 255, 0.2)) !important; transform: scale(1.05) !important;
+}

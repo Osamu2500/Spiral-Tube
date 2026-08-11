@@ -1,0 +1,14 @@
+/* Hacker Menus */
+html[data-ypp-card-style="hacker"] tp-yt-paper-dialog,
+html[data-ypp-card-style="hacker"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="hacker"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="hacker"] ytd-masthead {
+    background: var(--hac-bg) !important;
+    border: var(--hac-border) !important;
+    border-radius: 0 !important;
+    box-shadow: 5px 5px 0px var(--hac-dim) !important;
+}
+html[data-ypp-card-style="hacker"] ytd-masthead {
+    border-bottom: 2px solid var(--hac-text) !important;
+    box-shadow: 0 2px 10px rgba(0,255,0,0.2) !important;
+}

@@ -1,0 +1,10 @@
+/* Elevated Background */
+html[data-ypp-card-style="elevated"] body {
+  background: var(--yt-spec-base-background) !important;
+}
+html[data-ypp-card-style="elevated"] .skeleton-bg-color,
+html[data-ypp-card-style="elevated"] .ytd-ghost-grid-renderer > div {
+    background: var(--yt-spec-raised-background) !important;
+    border-radius: var(--el-radius) !important;
+    box-shadow: var(--el-shadow-base) !important;
+}

@@ -1,0 +1,9 @@
+/* Minimalist Menus */
+html[data-ypp-card-style="minimalist"] tp-yt-paper-dialog,
+html[data-ypp-card-style="minimalist"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="minimalist"] ytd-multi-page-menu-renderer {
+    background: #000 !important;
+    border: 1px solid #333 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}

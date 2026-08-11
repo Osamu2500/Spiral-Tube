@@ -1,0 +1,16 @@
+/* Frosted Background */
+html[data-ypp-card-style="frosted"] body {
+  background: var(--fro-bg-light) !important;
+  background-attachment: fixed !important;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="frosted"] body {
+    background: var(--fro-bg-dark) !important;
+    background-attachment: fixed !important;
+  }
+}
+
+html[data-ypp-card-style="frosted"] ::-webkit-scrollbar-thumb {
+  background: rgba(128,128,128,0.4) !important;
+  border-radius: 8px !important;
+}

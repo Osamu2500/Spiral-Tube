@@ -1,0 +1,18 @@
+/* Minimalist Background */
+html[data-ypp-card-style="minimalist"] body {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* Hide Scrollbars */
+html[data-ypp-card-style="minimalist"] ::-webkit-scrollbar {
+  width: 0px !important;
+  background: transparent !important;
+}
+
+/* Minimal Skeletons */
+html[data-ypp-card-style="minimalist"] .skeleton-bg-color,
+html[data-ypp-card-style="minimalist"] .ytd-ghost-grid-renderer > div {
+    background: #111 !important;
+    border-radius: 0 !important;
+}

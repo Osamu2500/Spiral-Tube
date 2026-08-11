@@ -1,26 +1,10 @@
-/* =========================================================
-   BENTO — MENUS
-   ========================================================= */
-
-html[data-ypp-theme="bento"] tp-yt-iron-dropdown,
-html[data-ypp-theme="bento"] ytd-multi-page-menu-renderer,
-html[data-ypp-theme="bento"] ytd-menu-popup-renderer {
-  background: var(--bn-bg-elevated) !important;
-  border: var(--bn-border-md) !important;
-  border-radius: 0 !important;
-  box-shadow: var(--bn-shadow-hover) !important;
-  overflow: hidden !important;
-}
-
-html[data-ypp-theme="bento"] ytd-menu-service-item-renderer,
-html[data-ypp-theme="bento"] ytd-compact-link-renderer {
-  color: var(--bn-text-primary) !important;
-  transition: var(--bn-transition-snap) !important;
-  border-radius: 0 !important;
-}
-html[data-ypp-theme="bento"] ytd-menu-service-item-renderer:hover,
-html[data-ypp-theme="bento"] ytd-compact-link-renderer:hover {
-  background: var(--bn-bg-surface) !important;
-  border-left: 3px solid var(--bn-accent-warm) !important;
-  color: var(--bn-accent-warm) !important;
+/* Bento Menus */
+html[data-ypp-card-style="bento"] tp-yt-paper-dialog,
+html[data-ypp-card-style="bento"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="bento"] ytd-multi-page-menu-renderer {
+    background: var(--ben-surface) !important;
+    border: var(--ben-border) !important;
+    border-radius: var(--ben-radius) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
+    padding: 8px !important;
 }

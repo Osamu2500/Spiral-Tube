@@ -1,0 +1,13 @@
+/* Pink Menus */
+html[data-ypp-card-style="pink"] tp-yt-paper-dialog,
+html[data-ypp-card-style="pink"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="pink"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="pink"] ytd-masthead {
+    background: var(--pin-surface) !important;
+    border: var(--pin-border) !important;
+    border-radius: var(--pin-radius) !important;
+    box-shadow: var(--pin-shadow) !important;
+}
+html[data-ypp-card-style="pink"] ytd-masthead {
+    border-radius: 0 0 32px 32px !important;
+}

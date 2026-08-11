@@ -1,0 +1,26 @@
+/* Pink Tokens */
+html[data-ypp-card-style="pink"] {
+  --pin-bg: #ffe4e1 !important; /* Misty Rose */
+  --pin-surface: #fff0f5 !important; /* Lavender Blush */
+  --pin-border: 4px solid #ffffff !important;
+  --pin-primary: #ff69b4 !important; /* Hot Pink */
+  --pin-secondary: #ffb6c1 !important; /* Light Pink */
+  --pin-text: #db7093 !important; /* Pale Violet Red */
+  --pin-muted: #ffc0cb !important; /* Pink */
+  --pin-radius: 24px !important;
+  --pin-shadow: 0 8px 20px rgba(255, 105, 180, 0.15) !important;
+  
+  --yt-spec-text-primary: var(--pin-text) !important;
+  --yt-spec-text-secondary: var(--pin-primary) !important;
+  --yt-spec-base-background: var(--pin-bg) !important;
+  --yt-spec-menu-background: var(--pin-surface) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="pink"] {
+    --pin-bg: #2b1119 !important;
+    --pin-surface: #421c27 !important;
+    --pin-border: 4px solid #5c2736 !important;
+    --pin-text: #ffb6c1 !important;
+  }
+}

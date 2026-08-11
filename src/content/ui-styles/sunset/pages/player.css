@@ -1,0 +1,15 @@
+/* Sunset Player */
+html[data-ypp-card-style="sunset"] .ytp-chrome-bottom {
+    background: var(--sun-surface) !important;
+    border: var(--sun-border) !important;
+    border-radius: 16px !important;
+    margin: 12px !important;
+    width: calc(100% - 24px) !important;
+}
+html[data-ypp-card-style="sunset"] .ytp-play-progress { background: var(--sun-grad-card) !important; }
+html[data-ypp-card-style="sunset"] .ytp-scrubber-button {
+    background: #fff !important;
+    border: 3px solid #ff4e50 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 15px rgba(255, 78, 80, 0.8) !important;
+}

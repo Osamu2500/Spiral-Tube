@@ -1,0 +1,30 @@
+/* Minimalist Forms */
+/* Search Bar */
+html[data-ypp-card-style="minimalist"] ytd-searchbox #container.ytd-searchbox {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #555 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+html[data-ypp-card-style="minimalist"] ytd-searchbox[has-focus] #container.ytd-searchbox {
+    border-bottom: 1px solid #fff !important;
+}
+html[data-ypp-card-style="minimalist"] ytd-searchbox #search-icon-legacy {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #555 !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-card-style="minimalist"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="minimalist"] .yt-spec-button-shape-next--filled {
+    background: transparent !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+    border-radius: 0 !important;
+}
+html[data-ypp-card-style="minimalist"] ytd-subscribe-button-renderer yt-button-shape button:hover {
+    background: #fff !important;
+    color: #000 !important;
+}

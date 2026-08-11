@@ -236,3 +236,34 @@ html[data-ypp-card-style='folder']
   ):nth-child(6n + 6)::before {
   --ypp-folder-tab: #ec4899;
 }
+
+
+/* Bespoke Action Button Coverage Fix */
+html[data-ypp-theme="folder"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="folder"] yt-download-button-view-model yt-button-shape button,
+html[data-ypp-theme="folder"] yt-download-button-view-model button,
+html[data-ypp-theme="folder"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="folder"] ytd-download-button-renderer button,
+html[data-ypp-theme="folder"] #ask-button yt-button-shape button,
+html[data-ypp-theme="folder"] #ask-button button,
+html[data-ypp-theme="folder"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-theme="folder"] .yt-spec-button-shape-next--outline,
+html[data-ypp-theme="folder"] .yt-spec-button-shape-next--mono {
+    background-color: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.1)) !important;
+    color: var(--ypp-text-primary, #fff) !important;
+    transition: all 0.2s ease !important;
+    border-radius: 8px 8px 0 0 !important; border-bottom: none !important;
+}
+
+html[data-ypp-theme="folder"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="folder"] yt-download-button-view-model yt-button-shape button:hover,
+html[data-ypp-theme="folder"] yt-download-button-view-model button:hover,
+html[data-ypp-theme="folder"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="folder"] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="folder"] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="folder"] #ask-button button:hover,
+html[data-ypp-theme="folder"] .yt-spec-button-shape-next--tonal:hover,
+html[data-ypp-theme="folder"] .yt-spec-button-shape-next--outline:hover,
+html[data-ypp-theme="folder"] .yt-spec-button-shape-next--mono:hover {
+    background-color: var(--ypp-accent, rgba(255, 255, 255, 0.2)) !important; transform: scale(1.05) !important;
+}

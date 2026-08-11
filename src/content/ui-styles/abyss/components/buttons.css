@@ -74,3 +74,73 @@ html[data-ypp-theme="abyss"] .yt-spec-touch-feedback-shape__fill,
 html[data-ypp-theme="abyss"] .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
+/* Heavy Theme Action Button Coverage Fix */
+html[data-ypp-theme="abyss"] button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="abyss"] button ytd-download-button-renderer button,
+html[data-ypp-theme="abyss"] button #ask-button yt-button-shape button,
+html[data-ypp-theme="abyss"] button #ask-button button,
+html[data-ypp-theme="abyss"] button .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="abyss"] button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="abyss"] button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="abyss"] button button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="abyss"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="abyss"] #ask-button button,
+html[data-ypp-ui-style="abyss"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="abyss"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="abyss"] button.ytSpecButtonShapeNextText {
+  background: var(--ab-bg-elevated) !important;
+  border: 1px solid var(--ab-accent-primary) !important;
+  color: var(--ab-text-primary) !important;
+  border-radius: 2px 50% 2px 50% !important;
+  box-shadow: var(--ab-glow-void) !important;
+  transition: all 0.3s var(--ab-ease) !important;
+}
+html[data-ypp-theme="abyss"] button ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="abyss"] button ytd-download-button-renderer button,
+html[data-ypp-theme="abyss"] button #ask-button yt-button-shape button,
+html[data-ypp-theme="abyss"] button #ask-button button,
+html[data-ypp-theme="abyss"] button .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="abyss"] button .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="abyss"] button ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="abyss"] button button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="abyss"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="abyss"] #ask-button button,
+html[data-ypp-ui-style="abyss"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="abyss"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="abyss"] button.ytSpecButtonShapeNextText {
+  transform: scale(1.06) !important;
+  box-shadow: 0 0 18px rgba(138, 43, 226, 0.7) !important;
+  border-color: var(--ab-accent-secondary) !important;
+}
+html[data-ypp-theme="abyss"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="abyss"] ytd-download-button-renderer button,
+html[data-ypp-theme="abyss"] #ask-button yt-button-shape button,
+html[data-ypp-theme="abyss"] #ask-button button,
+html[data-ypp-theme="abyss"] .yt-spec-button-shape-next--mono,
+html[data-ypp-theme="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="abyss"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="abyss"] button.ytSpecButtonShapeNextText {
+  background: linear-gradient(135deg, var(--ab-accent-primary), var(--ab-accent-secondary)) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: var(--ab-glow-void) !important;
+  border-radius: 2px 50% 2px 50% !important;
+  transition: all 0.3s var(--ab-ease) !important;
+}
+html[data-ypp-theme="abyss"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="abyss"] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="abyss"] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="abyss"] #ask-button button:hover,
+html[data-ypp-theme="abyss"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-theme="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="abyss"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="abyss"] button.ytSpecButtonShapeNextText:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 28px rgba(138, 43, 226, 0.8) !important;
+}
