@@ -1,0 +1,127 @@
+/* COLORIZE EXTREME UNIVERSE PAYLOAD */
+
+/* =========================================
+   1. CUSTOM WEBKIT SCROLLBAR
+========================================= */
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar,
+html[data-ypp-ui-style="colorize"] ::-webkit-scrollbar {
+    width: 14px !important;
+    height: 14px !important;
+    background: transparent !important;
+}
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-track,
+html[data-ypp-ui-style="colorize"] ::-webkit-scrollbar-track {
+    background: #fff !important;
+    border-radius: 10px !important;
+}
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb,
+html[data-ypp-ui-style="colorize"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, red, yellow, green, blue) !important;
+    border-radius: 10px !important;
+    border: 3px solid #fff !important; /* Creates padding effect */
+}
+html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb:hover,
+html[data-ypp-ui-style="colorize"] ::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.2) !important;
+}
+
+/* =========================================
+   2. CUSTOM VIDEO PLAYER SCRUBBER
+========================================= */
+html[data-ypp-card-style="colorize"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="colorize"] .ytp-swatch-background-color,
+html[data-ypp-card-style="colorize"] .ytp-play-progress,
+html[data-ypp-ui-style="colorize"] .ytp-play-progress {
+    background: linear-gradient(to right, red, yellow, green, blue) !important;
+    border-radius: 10px !important;
+}
+html[data-ypp-card-style="colorize"] .ytp-scrubber-button,
+html[data-ypp-ui-style="colorize"] .ytp-scrubber-button {
+    background: linear-gradient(to bottom, red, yellow, green, blue) !important;
+    border-radius: 10px !important;
+    border: 2px solid #fff !important;
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+html[data-ypp-card-style="colorize"] .ytp-load-progress,
+html[data-ypp-ui-style="colorize"] .ytp-load-progress {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* =========================================
+   3. UNIQUE BUFFERING SPINNER
+========================================= */
+html[data-ypp-card-style="colorize"] .ytp-spinner-container,
+html[data-ypp-ui-style="colorize"] .ytp-spinner-container {
+    display: none !important;
+}
+html[data-ypp-card-style="colorize"] .ytp-spinner,
+html[data-ypp-ui-style="colorize"] .ytp-spinner {
+    width: 60px !important;
+    height: 60px !important;
+    background: #fff !important;
+    border: 4px solid linear-gradient(to bottom, red, yellow, green, blue) !important;
+    border-radius: 10px !important;
+    animation: rainbowSpin 1.5s infinite ease-in-out !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
+}
+html[data-ypp-card-style="colorize"] .ytp-spinner::after,
+html[data-ypp-ui-style="colorize"] .ytp-spinner::after {
+    content: "" !important;
+    width: 30px !important;
+    height: 30px !important;
+    background: linear-gradient(to right, red, yellow, green, blue) !important;
+    border-radius: 50% !important;
+    animation: rainbowSpinInner 1s infinite alternate !important;
+}
+
+@keyframes rainbowSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes rainbowSpinInner {
+    0% { transform: scale(0.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   4. DIALOGS & TOOLTIPS
+========================================= */
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="colorize"] tp-yt-paper-dialog,
+html[data-ypp-card-style="colorize"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="colorize"] ytd-unified-share-panel-renderer {
+    background: #fff !important;
+    border-radius: 10px !important;
+    border: 2px solid linear-gradient(to bottom, red, yellow, green, blue) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+    animation: rainbowSpinEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
+html[data-ypp-ui-style="colorize"] tp-yt-paper-tooltip {
+    background: linear-gradient(to bottom, red, yellow, green, blue) !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 8px 12px !important;
+    font-weight: bold !important;
+    animation: rainbowSpinEntrance 0.3s ease forwards !important;
+}
+
+@keyframes rainbowSpinEntrance {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   5. EXTENDED SVG ENGINE (IF APPLICABLE)
+========================================= */
+
+
+
+
+
