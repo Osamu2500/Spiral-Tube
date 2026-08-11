@@ -1,0 +1,97 @@
+/* SUNSET MICRO-INTERACTIONS PAYLOAD V12 */
+
+/* =========================================
+   1. DIALOGS & OVERLAYS
+========================================= */
+html[data-ypp-card-style="sunset"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="sunset"] tp-yt-paper-dialog,
+html[data-ypp-card-style="sunset"] ytd-popup-container,
+html[data-ypp-ui-style="sunset"] ytd-popup-container {
+    border-radius: 16px !important;
+    border: 2px solid #FF7043 !important;
+    
+    animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes slideUpDialog {
+    0% { transform: translateY(50px) scale(0.9); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes snapInDialog {
+    0% { transform: scale(1.2); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   2. TOOLTIPS & TOASTS
+========================================= */
+html[data-ypp-card-style="sunset"] tp-yt-paper-tooltip,
+html[data-ypp-ui-style="sunset"] tp-yt-paper-tooltip {
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    padding: 8px 12px !important;
+}
+
+html[data-ypp-card-style="sunset"] tp-yt-paper-toast,
+html[data-ypp-ui-style="sunset"] tp-yt-paper-toast {
+    border-radius: 16px !important;
+    border: 2px solid #FF7043 !important;
+    
+}
+
+/* =========================================
+   3. SEARCH FILTERS
+========================================= */
+html[data-ypp-card-style="sunset"] ytd-search-filter-renderer,
+html[data-ypp-ui-style="sunset"] ytd-search-filter-renderer {
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="sunset"] ytd-search-filter-renderer:hover,
+html[data-ypp-ui-style="sunset"] ytd-search-filter-renderer:hover {
+    background: rgba(128, 128, 128, 0.1) !important;
+    text-shadow: 0 0 10px #FF7043 !important;
+}
+
+/* =========================================
+   4. EMPTY STATES & ERROR PAGES
+========================================= */
+html[data-ypp-card-style="sunset"] ytd-background-promo-renderer,
+html[data-ypp-ui-style="sunset"] ytd-background-promo-renderer,
+html[data-ypp-card-style="sunset"] #error-page,
+html[data-ypp-ui-style="sunset"] #error-page {
+    background: #FBE9E7 !important;
+    border: 2px solid #FF7043 !important;
+    border-radius: 16px !important;
+    padding: 40px !important;
+}
+
+/* Empty state icon geometry override */
+html[data-ypp-card-style="sunset"] ytd-background-promo-renderer yt-icon,
+html[data-ypp-ui-style="sunset"] ytd-background-promo-renderer yt-icon {
+    
+    transform: scale(1.5) !important;
+    margin-bottom: 20px !important;
+}
+
+/* =========================================
+   5. THE MINI-GUIDE
+========================================= */
+html[data-ypp-card-style="sunset"] ytd-mini-guide-renderer,
+html[data-ypp-ui-style="sunset"] ytd-mini-guide-renderer {
+    background: #FBE9E7 !important;
+    border-right: 2px solid #FF7043 !important;
+    
+}
+
+html[data-ypp-card-style="sunset"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-style="sunset"] ytd-mini-guide-entry-renderer {
+    border-radius: 8px !important;
+    margin: 4px !important;
+    transition: transform 0.2s ease !important;
+}
+html[data-ypp-card-style="sunset"] ytd-mini-guide-entry-renderer:hover,
+html[data-ypp-ui-style="sunset"] ytd-mini-guide-entry-renderer:hover {
+    transform: translateX(5px) !important;
+    background: rgba(128, 128, 128, 0.1) !important;
+}
