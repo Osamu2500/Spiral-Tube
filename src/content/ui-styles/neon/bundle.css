@@ -4,3 +4,42 @@
 html[data-ypp-card-style="neon"][dark], html[data-ypp-card-style="neon"] [dark] {
 --neon-cyan: #00ffff;--neon-magenta: #ff00ff;--neon-bg: #050505;--neon-bg-elevated: #0a0a0a;--neon-text: #e0e0e0;--yt-spec-text-primary: var(--neon-cyan) !important;--yt-spec-text-secondary: var(--neon-text) !important;--yt-spec-icon-active-other: var(--neon-cyan) !important;--yt-spec-icon-inactive: rgba(0, 255, 255, .6) !important;--yt-spec-menu-background: var(--neon-bg-elevated) !important;--yt-spec-raised-background: var(--neon-bg-elevated) !important;--yt-spec-base-background: var(--neon-bg) !important;--ytd-user-comment-font-family: "Orbitron", sans-serif !important;--yt-font-family: "Orbitron", sans-serif !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="neon"][dark] body, html[data-ypp-ui-style="neon"][dark] body,
+html[data-ypp-card-style="neon"][dark] ytd-app, html[data-ypp-ui-style="neon"][dark] ytd-app,
+html[data-ypp-card-style="neon"][dark] #page-manager, html[data-ypp-ui-style="neon"][dark] #page-manager,
+html[data-ypp-card-style="neon"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="neon"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="neon"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="neon"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="neon"][dark] #guide-content, html[data-ypp-ui-style="neon"][dark] #guide-content,
+html[data-ypp-card-style="neon"][dark] ytd-app > #content, html[data-ypp-ui-style="neon"][dark] ytd-app > #content {
+    background-color: var(--neon-bg) !important;
+    background: var(--neon-bg) !important;
+}
+
+html[data-ypp-card-style="neon"][dark], html[data-ypp-card-style="neon"] [dark],
+html[data-ypp-ui-style="neon"][dark], html[data-ypp-ui-style="neon"] [dark] {
+    --yt-spec-base-background: var(--neon-bg) !important;
+    --yt-spec-raised-background: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-menu-background: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-inverted-background: var(--neon-text, #fff) !important;
+    --yt-spec-additive-background: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-text-primary: var(--neon-text, #000) !important;
+    --yt-spec-text-secondary: var(--neon-primary, var(--neon-muted)) !important;
+    --yt-spec-text-disabled: var(--neon-secondary, var(--neon-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--neon-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--neon-primary, var(--neon-text)) !important;
+    --yt-spec-icon-inactive: var(--neon-secondary, var(--neon-muted)) !important;
+    --yt-spec-icon-disabled: var(--neon-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-touch-response: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-brand-background-solid: var(--neon-bg) !important;
+    --yt-spec-brand-background-primary: var(--neon-bg) !important;
+    --yt-spec-brand-background-secondary: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-general-background-a: var(--neon-bg) !important;
+    --yt-spec-general-background-b: var(--neon-bg) !important;
+    --yt-spec-general-background-c: var(--neon-surface, var(--neon-bg)) !important;
+    --yt-spec-error-indicator: var(--neon-primary, red) !important;
+    background-color: var(--neon-bg) !important;
+    color: var(--neon-text, #000) !important;
+}

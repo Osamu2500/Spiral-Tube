@@ -4,3 +4,42 @@ html[data-ypp-card-style=polaroid]{--yt-spec-text-primary: #1a1a1a !important;--
 html[data-ypp-card-style="polaroid"][dark], html[data-ypp-card-style="polaroid"] [dark] {
 --yt-spec-text-primary: #1a1a1a !important;--yt-spec-text-secondary: #4a4a4a !important;--yt-spec-menu-background: #fff !important;--yt-spec-raised-background: #fff !important;--yt-font-family: "Courier New", Courier, monospace !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="polaroid"][dark] body, html[data-ypp-ui-style="polaroid"][dark] body,
+html[data-ypp-card-style="polaroid"][dark] ytd-app, html[data-ypp-ui-style="polaroid"][dark] ytd-app,
+html[data-ypp-card-style="polaroid"][dark] #page-manager, html[data-ypp-ui-style="polaroid"][dark] #page-manager,
+html[data-ypp-card-style="polaroid"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="polaroid"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="polaroid"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="polaroid"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="polaroid"][dark] #guide-content, html[data-ypp-ui-style="polaroid"][dark] #guide-content,
+html[data-ypp-card-style="polaroid"][dark] ytd-app > #content, html[data-ypp-ui-style="polaroid"][dark] ytd-app > #content {
+    background-color: var(--pol-bg) !important;
+    background: var(--pol-bg) !important;
+}
+
+html[data-ypp-card-style="polaroid"][dark], html[data-ypp-card-style="polaroid"] [dark],
+html[data-ypp-ui-style="polaroid"][dark], html[data-ypp-ui-style="polaroid"] [dark] {
+    --yt-spec-base-background: var(--pol-bg) !important;
+    --yt-spec-raised-background: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-menu-background: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-inverted-background: var(--pol-text, #fff) !important;
+    --yt-spec-additive-background: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-text-primary: var(--pol-text, #000) !important;
+    --yt-spec-text-secondary: var(--pol-primary, var(--pol-muted)) !important;
+    --yt-spec-text-disabled: var(--pol-secondary, var(--pol-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--pol-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--pol-primary, var(--pol-text)) !important;
+    --yt-spec-icon-inactive: var(--pol-secondary, var(--pol-muted)) !important;
+    --yt-spec-icon-disabled: var(--pol-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-touch-response: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-brand-background-solid: var(--pol-bg) !important;
+    --yt-spec-brand-background-primary: var(--pol-bg) !important;
+    --yt-spec-brand-background-secondary: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-general-background-a: var(--pol-bg) !important;
+    --yt-spec-general-background-b: var(--pol-bg) !important;
+    --yt-spec-general-background-c: var(--pol-surface, var(--pol-bg)) !important;
+    --yt-spec-error-indicator: var(--pol-primary, red) !important;
+    background-color: var(--pol-bg) !important;
+    color: var(--pol-text, #000) !important;
+}

@@ -4,3 +4,42 @@ html[data-ypp-card-style=holographic]{--holo-gradient: linear-gradient(45deg, #f
 html[data-ypp-card-style="holographic"][dark], html[data-ypp-card-style="holographic"] [dark] {
 --holo-gradient: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="holographic"][dark] body, html[data-ypp-ui-style="holographic"][dark] body,
+html[data-ypp-card-style="holographic"][dark] ytd-app, html[data-ypp-ui-style="holographic"][dark] ytd-app,
+html[data-ypp-card-style="holographic"][dark] #page-manager, html[data-ypp-ui-style="holographic"][dark] #page-manager,
+html[data-ypp-card-style="holographic"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="holographic"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="holographic"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="holographic"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="holographic"][dark] #guide-content, html[data-ypp-ui-style="holographic"][dark] #guide-content,
+html[data-ypp-card-style="holographic"][dark] ytd-app > #content, html[data-ypp-ui-style="holographic"][dark] ytd-app > #content {
+    background-color: var(--hol-bg) !important;
+    background: var(--hol-bg) !important;
+}
+
+html[data-ypp-card-style="holographic"][dark], html[data-ypp-card-style="holographic"] [dark],
+html[data-ypp-ui-style="holographic"][dark], html[data-ypp-ui-style="holographic"] [dark] {
+    --yt-spec-base-background: var(--hol-bg) !important;
+    --yt-spec-raised-background: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-menu-background: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-inverted-background: var(--hol-text, #fff) !important;
+    --yt-spec-additive-background: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-text-primary: var(--hol-text, #000) !important;
+    --yt-spec-text-secondary: var(--hol-primary, var(--hol-muted)) !important;
+    --yt-spec-text-disabled: var(--hol-secondary, var(--hol-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--hol-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--hol-primary, var(--hol-text)) !important;
+    --yt-spec-icon-inactive: var(--hol-secondary, var(--hol-muted)) !important;
+    --yt-spec-icon-disabled: var(--hol-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-touch-response: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-brand-background-solid: var(--hol-bg) !important;
+    --yt-spec-brand-background-primary: var(--hol-bg) !important;
+    --yt-spec-brand-background-secondary: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-general-background-a: var(--hol-bg) !important;
+    --yt-spec-general-background-b: var(--hol-bg) !important;
+    --yt-spec-general-background-c: var(--hol-surface, var(--hol-bg)) !important;
+    --yt-spec-error-indicator: var(--hol-primary, red) !important;
+    background-color: var(--hol-bg) !important;
+    color: var(--hol-text, #000) !important;
+}

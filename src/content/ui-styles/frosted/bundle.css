@@ -4,3 +4,42 @@ html[data-ypp-card-style=frosted]{--fro-bg-light: linear-gradient(135deg, #e0eaf
 html[data-ypp-card-style="frosted"][dark], html[data-ypp-card-style="frosted"] [dark] {
 --fro-bg-light: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%) !important;--fro-bg-dark: linear-gradient(135deg, #1f1c2c 0%, #928DAB 100%) !important;--fro-glass-light: rgba(255, 255, 255, .4) !important;--fro-glass-dark: rgba(20, 20, 30, .4) !important;--fro-border-light: 1px solid rgba(255, 255, 255, .7) !important;--fro-border-dark: 1px solid rgba(255, 255, 255, .1) !important;--fro-shadow: 0 10px 30px rgba(0,0,0,.1) !important;--fro-radius: 16px !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="frosted"][dark] body, html[data-ypp-ui-style="frosted"][dark] body,
+html[data-ypp-card-style="frosted"][dark] ytd-app, html[data-ypp-ui-style="frosted"][dark] ytd-app,
+html[data-ypp-card-style="frosted"][dark] #page-manager, html[data-ypp-ui-style="frosted"][dark] #page-manager,
+html[data-ypp-card-style="frosted"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="frosted"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="frosted"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="frosted"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="frosted"][dark] #guide-content, html[data-ypp-ui-style="frosted"][dark] #guide-content,
+html[data-ypp-card-style="frosted"][dark] ytd-app > #content, html[data-ypp-ui-style="frosted"][dark] ytd-app > #content {
+    background-color: var(--fro-bg) !important;
+    background: var(--fro-bg) !important;
+}
+
+html[data-ypp-card-style="frosted"][dark], html[data-ypp-card-style="frosted"] [dark],
+html[data-ypp-ui-style="frosted"][dark], html[data-ypp-ui-style="frosted"] [dark] {
+    --yt-spec-base-background: var(--fro-bg) !important;
+    --yt-spec-raised-background: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-menu-background: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-inverted-background: var(--fro-text, #fff) !important;
+    --yt-spec-additive-background: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-text-primary: var(--fro-text, #000) !important;
+    --yt-spec-text-secondary: var(--fro-primary, var(--fro-muted)) !important;
+    --yt-spec-text-disabled: var(--fro-secondary, var(--fro-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--fro-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--fro-primary, var(--fro-text)) !important;
+    --yt-spec-icon-inactive: var(--fro-secondary, var(--fro-muted)) !important;
+    --yt-spec-icon-disabled: var(--fro-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-touch-response: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-brand-background-solid: var(--fro-bg) !important;
+    --yt-spec-brand-background-primary: var(--fro-bg) !important;
+    --yt-spec-brand-background-secondary: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-general-background-a: var(--fro-bg) !important;
+    --yt-spec-general-background-b: var(--fro-bg) !important;
+    --yt-spec-general-background-c: var(--fro-surface, var(--fro-bg)) !important;
+    --yt-spec-error-indicator: var(--fro-primary, red) !important;
+    background-color: var(--fro-bg) !important;
+    color: var(--fro-text, #000) !important;
+}

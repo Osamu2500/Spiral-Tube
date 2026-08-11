@@ -1,55 +1,92 @@
 const fs = require('fs');
 const path = require('path');
 
-const themes = ['pink', 'ice-blue', 'cairo-red', 'crystal-glass', 'fluent', 'retrowave-green', 'cherry', 'hacker'];
 const stylesDir = path.join(__dirname, 'src', 'content', 'ui-styles');
+const excludedDirs = ['shared', 'vintage', 'retro'];
 
-for (const theme of themes) {
-    const themeDir = path.join(stylesDir, theme);
-    if (!fs.existsSync(themeDir)) {
-        console.log(`Skipping ${theme}, directory not found.`);
-        continue;
+function updateFile(filePath, themeName, isThemeBundle) {
+    if (!fs.existsSync(filePath)) return;
+
+    let content = fs.readFileSync(filePath, 'utf8');
+    
+    // Remove our previously appended dark mode overrides if they exist
+    content = content.replace(/\/\* Dark mode override logic[\s\S]*$/m, '');
+    content = content.replace(/\/\* Heavy Background Override[\s\S]*$/m, '');
+    content = content.replace(/\/\* Dark mode background override[\s\S]*$/m, '');
+    
+    // Extract the theme variables (e.g., --pin-bg, --ice-surface)
+    // The first line usually contains the declarations.
+    const varMatch = content.match(/--([a-z0-9\-]+)-bg:\s*([^!]+)!\s*important/i);
+    let prefix = themeName.substring(0, 3); // fallback
+    if (varMatch) {
+        prefix = varMatch[1];
     }
-
-    const bundlePath = path.join(themeDir, 'bundle.css');
-    if (!fs.existsSync(bundlePath)) {
-        console.log(`Skipping ${theme}, bundle.css not found.`);
-        continue;
-    }
-
-    let css = fs.readFileSync(bundlePath, 'utf8');
-
-    // Replace [data-ypp-card-style="theme"] and [data-ypp-ui-style="theme"] with [data-ypp-theme="theme"]
-    const regex1 = new RegExp(`html\\[data-ypp-card-style="${theme}"\\]`, 'gi');
-    const regex2 = new RegExp(`html\\[data-ypp-card-style=${theme}\\]`, 'gi');
-    const regex3 = new RegExp(`html\\[data-ypp-ui-style="${theme}"\\]`, 'gi');
-    const regex4 = new RegExp(`html\\[data-ypp-ui-style=${theme}\\]`, 'gi');
     
-    css = css.replace(regex1, `html[data-ypp-theme="${theme}"]`);
-    css = css.replace(regex2, `html[data-ypp-theme="${theme}"]`);
-    css = css.replace(regex3, `html[data-ypp-theme="${theme}"]`);
-    css = css.replace(regex4, `html[data-ypp-theme="${theme}"]`);
-
-    // Ensure body background is strictly applied for [dark]
-    // Some themes had: html[data-ypp-card-style=pink] body { background: var(--pin-bg) !important; }
-    // We want to make sure it covers dark mode too if they use CSS variables.
+    // Also, retro/vintage removes the @media queries completely but I already did that.
     
-    // We will append a heavy global background override at the end of the file
-    // to solve the "background stays black" issue
-    let heavyOverride = `\n/* Heavy Background Override for ${theme} */\n`;
-    heavyOverride += `html[data-ypp-theme="${theme}"], html[data-ypp-theme="${theme}"] body, html[data-ypp-theme="${theme}"] [dark], html[data-ypp-theme="${theme}"] [dark] body {\n`;
-    heavyOverride += `    background-color: var(--yt-spec-base-background) !important;\n`;
-    heavyOverride += `}\n`;
+    // Build the selector based on whether it's a UI Design (card-style) or Color Theme (theme)
+    const attr = isThemeBundle ? 'data-ypp-theme' : 'data-ypp-card-style';
     
-    css += heavyOverride;
-
-    const themeSubDir = path.join(themeDir, 'theme');
-    if (!fs.existsSync(themeSubDir)) {
-        fs.mkdirSync(themeSubDir, { recursive: true });
-    }
-
-    const themeBundlePath = path.join(themeSubDir, 'bundle.css');
-    fs.writeFileSync(themeBundlePath, css, 'utf8');
-    
-    console.log(`Successfully generated theme/bundle.css for ${theme}`);
+    const extraCss = `
+/* Dark mode override logic to mimic Vintage/Retro */
+html[${attr}="${themeName}"][dark] body, html[data-ypp-ui-style="${themeName}"][dark] body,
+html[${attr}="${themeName}"][dark] ytd-app, html[data-ypp-ui-style="${themeName}"][dark] ytd-app,
+html[${attr}="${themeName}"][dark] #page-manager, html[data-ypp-ui-style="${themeName}"][dark] #page-manager,
+html[${attr}="${themeName}"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="${themeName}"][dark] ytd-mini-guide-renderer,
+html[${attr}="${themeName}"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="${themeName}"][dark] ytd-mini-guide-entry-renderer,
+html[${attr}="${themeName}"][dark] #guide-content, html[data-ypp-ui-style="${themeName}"][dark] #guide-content,
+html[${attr}="${themeName}"][dark] ytd-app > #content, html[data-ypp-ui-style="${themeName}"][dark] ytd-app > #content {
+    background-color: var(--${prefix}-bg) !important;
+    background: var(--${prefix}-bg) !important;
 }
+
+html[${attr}="${themeName}"][dark], html[${attr}="${themeName}"] [dark],
+html[data-ypp-ui-style="${themeName}"][dark], html[data-ypp-ui-style="${themeName}"] [dark] {
+    --yt-spec-base-background: var(--${prefix}-bg) !important;
+    --yt-spec-raised-background: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-menu-background: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-inverted-background: var(--${prefix}-text, #fff) !important;
+    --yt-spec-additive-background: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-text-primary: var(--${prefix}-text, #000) !important;
+    --yt-spec-text-secondary: var(--${prefix}-primary, var(--${prefix}-muted)) !important;
+    --yt-spec-text-disabled: var(--${prefix}-secondary, var(--${prefix}-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--${prefix}-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--${prefix}-primary, var(--${prefix}-text)) !important;
+    --yt-spec-icon-inactive: var(--${prefix}-secondary, var(--${prefix}-muted)) !important;
+    --yt-spec-icon-disabled: var(--${prefix}-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-touch-response: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-brand-background-solid: var(--${prefix}-bg) !important;
+    --yt-spec-brand-background-primary: var(--${prefix}-bg) !important;
+    --yt-spec-brand-background-secondary: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-general-background-a: var(--${prefix}-bg) !important;
+    --yt-spec-general-background-b: var(--${prefix}-bg) !important;
+    --yt-spec-general-background-c: var(--${prefix}-surface, var(--${prefix}-bg)) !important;
+    --yt-spec-error-indicator: var(--${prefix}-primary, red) !important;
+    background-color: var(--${prefix}-bg) !important;
+    color: var(--${prefix}-text, #000) !important;
+}
+`;
+
+    // Write back the updated content
+    fs.writeFileSync(filePath, content.trim() + '\n' + extraCss, 'utf8');
+    console.log("Updated: " + filePath + " with prefix: " + prefix);
+}
+
+function processThemeDirectory(themeDir, themeName) {
+    const bundlePath = path.join(themeDir, 'bundle.css');
+    updateFile(bundlePath, themeName, false);
+
+    const themeBundlePath = path.join(themeDir, 'theme', 'bundle.css');
+    updateFile(themeBundlePath, themeName, true);
+}
+
+const items = fs.readdirSync(stylesDir);
+for (const item of items) {
+    const itemPath = path.join(stylesDir, item);
+    if (fs.statSync(itemPath).isDirectory() && !excludedDirs.includes(item)) {
+        processThemeDirectory(itemPath, item);
+    }
+}
+
+console.log('Finished processing all themes.');

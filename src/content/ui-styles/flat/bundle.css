@@ -4,3 +4,42 @@ html[data-ypp-card-style=flat]{--yt-spec-text-primary: #111 !important;--yt-spec
 html[data-ypp-card-style="flat"][dark], html[data-ypp-card-style="flat"] [dark] {
 --yt-spec-text-primary: #111 !important;--yt-spec-text-secondary: #444 !important;--yt-spec-menu-background: #fff !important;--yt-spec-base-background: #f0f0f0 !important;--yt-spec-raised-background: #fff !important;--flat-border: 2px solid #000 !important;--flat-accent: #ff0055 !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="flat"][dark] body, html[data-ypp-ui-style="flat"][dark] body,
+html[data-ypp-card-style="flat"][dark] ytd-app, html[data-ypp-ui-style="flat"][dark] ytd-app,
+html[data-ypp-card-style="flat"][dark] #page-manager, html[data-ypp-ui-style="flat"][dark] #page-manager,
+html[data-ypp-card-style="flat"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="flat"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="flat"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="flat"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="flat"][dark] #guide-content, html[data-ypp-ui-style="flat"][dark] #guide-content,
+html[data-ypp-card-style="flat"][dark] ytd-app > #content, html[data-ypp-ui-style="flat"][dark] ytd-app > #content {
+    background-color: var(--fla-bg) !important;
+    background: var(--fla-bg) !important;
+}
+
+html[data-ypp-card-style="flat"][dark], html[data-ypp-card-style="flat"] [dark],
+html[data-ypp-ui-style="flat"][dark], html[data-ypp-ui-style="flat"] [dark] {
+    --yt-spec-base-background: var(--fla-bg) !important;
+    --yt-spec-raised-background: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-menu-background: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-inverted-background: var(--fla-text, #fff) !important;
+    --yt-spec-additive-background: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-text-primary: var(--fla-text, #000) !important;
+    --yt-spec-text-secondary: var(--fla-primary, var(--fla-muted)) !important;
+    --yt-spec-text-disabled: var(--fla-secondary, var(--fla-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--fla-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--fla-primary, var(--fla-text)) !important;
+    --yt-spec-icon-inactive: var(--fla-secondary, var(--fla-muted)) !important;
+    --yt-spec-icon-disabled: var(--fla-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-touch-response: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-brand-background-solid: var(--fla-bg) !important;
+    --yt-spec-brand-background-primary: var(--fla-bg) !important;
+    --yt-spec-brand-background-secondary: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-general-background-a: var(--fla-bg) !important;
+    --yt-spec-general-background-b: var(--fla-bg) !important;
+    --yt-spec-general-background-c: var(--fla-surface, var(--fla-bg)) !important;
+    --yt-spec-error-indicator: var(--fla-primary, red) !important;
+    background-color: var(--fla-bg) !important;
+    color: var(--fla-text, #000) !important;
+}

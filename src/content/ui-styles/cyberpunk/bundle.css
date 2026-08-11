@@ -4,3 +4,42 @@
 html[data-ypp-card-style="cyberpunk"][dark], html[data-ypp-card-style="cyberpunk"] [dark] {
 --cyb-bg: #050508 !important;--cyb-panel: rgba(10,10,15,.9) !important;--cyb-primary: #ff003c !important;--cyb-secondary: #00f0ff !important;--cyb-tertiary: #fce205 !important;--yt-spec-text-primary: #00f0ff !important;--yt-spec-text-secondary: #ff003c !important;--yt-spec-base-background: var(--cyb-bg) !important;--yt-spec-menu-background: var(--cyb-panel) !important;--cyb-clip: polygon(0 0, 100% 0, 100% calc(100% - 15px) , calc(100% - 15px) 100%, 0 100%) !important;--cyb-clip-hover: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px) , calc(100% - 15px) 100%, 0 100%) !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="cyberpunk"][dark] body, html[data-ypp-ui-style="cyberpunk"][dark] body,
+html[data-ypp-card-style="cyberpunk"][dark] ytd-app, html[data-ypp-ui-style="cyberpunk"][dark] ytd-app,
+html[data-ypp-card-style="cyberpunk"][dark] #page-manager, html[data-ypp-ui-style="cyberpunk"][dark] #page-manager,
+html[data-ypp-card-style="cyberpunk"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="cyberpunk"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="cyberpunk"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="cyberpunk"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="cyberpunk"][dark] #guide-content, html[data-ypp-ui-style="cyberpunk"][dark] #guide-content,
+html[data-ypp-card-style="cyberpunk"][dark] ytd-app > #content, html[data-ypp-ui-style="cyberpunk"][dark] ytd-app > #content {
+    background-color: var(--cyb-bg) !important;
+    background: var(--cyb-bg) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"][dark], html[data-ypp-card-style="cyberpunk"] [dark],
+html[data-ypp-ui-style="cyberpunk"][dark], html[data-ypp-ui-style="cyberpunk"] [dark] {
+    --yt-spec-base-background: var(--cyb-bg) !important;
+    --yt-spec-raised-background: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-menu-background: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-inverted-background: var(--cyb-text, #fff) !important;
+    --yt-spec-additive-background: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-text-primary: var(--cyb-text, #000) !important;
+    --yt-spec-text-secondary: var(--cyb-primary, var(--cyb-muted)) !important;
+    --yt-spec-text-disabled: var(--cyb-secondary, var(--cyb-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--cyb-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--cyb-primary, var(--cyb-text)) !important;
+    --yt-spec-icon-inactive: var(--cyb-secondary, var(--cyb-muted)) !important;
+    --yt-spec-icon-disabled: var(--cyb-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-touch-response: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-brand-background-solid: var(--cyb-bg) !important;
+    --yt-spec-brand-background-primary: var(--cyb-bg) !important;
+    --yt-spec-brand-background-secondary: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-general-background-a: var(--cyb-bg) !important;
+    --yt-spec-general-background-b: var(--cyb-bg) !important;
+    --yt-spec-general-background-c: var(--cyb-surface, var(--cyb-bg)) !important;
+    --yt-spec-error-indicator: var(--cyb-primary, red) !important;
+    background-color: var(--cyb-bg) !important;
+    color: var(--cyb-text, #000) !important;
+}

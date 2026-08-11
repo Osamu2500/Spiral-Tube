@@ -4,3 +4,42 @@
 html[data-ypp-card-style="winter"][dark], html[data-ypp-card-style="winter"] [dark] {
 --winter-ice: #b4e6ff;--winter-ice-glow: #87cefa;--winter-frost: rgba(255, 255, 255, .1);--winter-frost-strong: rgba(255, 255, 255, .2);--winter-text: #ffffff;--winter-text-muted: rgba(255, 255, 255, .7);--yt-spec-text-primary: var(--winter-text) !important;--yt-spec-text-secondary: var(--winter-text-muted) !important;--yt-spec-icon-active-other: var(--winter-ice) !important;--yt-spec-icon-inactive: var(--winter-text-muted) !important;--yt-spec-menu-background: rgba(15, 25, 40, .6) !important;--yt-spec-raised-background: rgba(15, 25, 40, .6) !important;--yt-spec-base-background: rgba(15, 25, 40, .6) !important;--ytd-user-comment-font-family: "Quicksand", sans-serif !important;--yt-font-family: "Quicksand", sans-serif !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="winter"][dark] body, html[data-ypp-ui-style="winter"][dark] body,
+html[data-ypp-card-style="winter"][dark] ytd-app, html[data-ypp-ui-style="winter"][dark] ytd-app,
+html[data-ypp-card-style="winter"][dark] #page-manager, html[data-ypp-ui-style="winter"][dark] #page-manager,
+html[data-ypp-card-style="winter"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="winter"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="winter"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="winter"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="winter"][dark] #guide-content, html[data-ypp-ui-style="winter"][dark] #guide-content,
+html[data-ypp-card-style="winter"][dark] ytd-app > #content, html[data-ypp-ui-style="winter"][dark] ytd-app > #content {
+    background-color: var(--win-bg) !important;
+    background: var(--win-bg) !important;
+}
+
+html[data-ypp-card-style="winter"][dark], html[data-ypp-card-style="winter"] [dark],
+html[data-ypp-ui-style="winter"][dark], html[data-ypp-ui-style="winter"] [dark] {
+    --yt-spec-base-background: var(--win-bg) !important;
+    --yt-spec-raised-background: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-menu-background: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-inverted-background: var(--win-text, #fff) !important;
+    --yt-spec-additive-background: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-text-primary: var(--win-text, #000) !important;
+    --yt-spec-text-secondary: var(--win-primary, var(--win-muted)) !important;
+    --yt-spec-text-disabled: var(--win-secondary, var(--win-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--win-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--win-primary, var(--win-text)) !important;
+    --yt-spec-icon-inactive: var(--win-secondary, var(--win-muted)) !important;
+    --yt-spec-icon-disabled: var(--win-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-touch-response: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-brand-background-solid: var(--win-bg) !important;
+    --yt-spec-brand-background-primary: var(--win-bg) !important;
+    --yt-spec-brand-background-secondary: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-general-background-a: var(--win-bg) !important;
+    --yt-spec-general-background-b: var(--win-bg) !important;
+    --yt-spec-general-background-c: var(--win-surface, var(--win-bg)) !important;
+    --yt-spec-error-indicator: var(--win-primary, red) !important;
+    background-color: var(--win-bg) !important;
+    color: var(--win-text, #000) !important;
+}

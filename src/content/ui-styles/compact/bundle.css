@@ -4,3 +4,42 @@ html[data-ypp-card-style=compact]{--ypp-density-pad: 4px !important;--ypp-densit
 html[data-ypp-card-style="compact"][dark], html[data-ypp-card-style="compact"] [dark] {
 --ypp-density-pad: 4px !important;--ypp-density-gap: 8px !important;--ypp-radius-md: 4px !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="compact"][dark] body, html[data-ypp-ui-style="compact"][dark] body,
+html[data-ypp-card-style="compact"][dark] ytd-app, html[data-ypp-ui-style="compact"][dark] ytd-app,
+html[data-ypp-card-style="compact"][dark] #page-manager, html[data-ypp-ui-style="compact"][dark] #page-manager,
+html[data-ypp-card-style="compact"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="compact"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="compact"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="compact"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="compact"][dark] #guide-content, html[data-ypp-ui-style="compact"][dark] #guide-content,
+html[data-ypp-card-style="compact"][dark] ytd-app > #content, html[data-ypp-ui-style="compact"][dark] ytd-app > #content {
+    background-color: var(--com-bg) !important;
+    background: var(--com-bg) !important;
+}
+
+html[data-ypp-card-style="compact"][dark], html[data-ypp-card-style="compact"] [dark],
+html[data-ypp-ui-style="compact"][dark], html[data-ypp-ui-style="compact"] [dark] {
+    --yt-spec-base-background: var(--com-bg) !important;
+    --yt-spec-raised-background: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-menu-background: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-inverted-background: var(--com-text, #fff) !important;
+    --yt-spec-additive-background: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-text-primary: var(--com-text, #000) !important;
+    --yt-spec-text-secondary: var(--com-primary, var(--com-muted)) !important;
+    --yt-spec-text-disabled: var(--com-secondary, var(--com-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--com-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--com-primary, var(--com-text)) !important;
+    --yt-spec-icon-inactive: var(--com-secondary, var(--com-muted)) !important;
+    --yt-spec-icon-disabled: var(--com-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-touch-response: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-brand-background-solid: var(--com-bg) !important;
+    --yt-spec-brand-background-primary: var(--com-bg) !important;
+    --yt-spec-brand-background-secondary: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-general-background-a: var(--com-bg) !important;
+    --yt-spec-general-background-b: var(--com-bg) !important;
+    --yt-spec-general-background-c: var(--com-surface, var(--com-bg)) !important;
+    --yt-spec-error-indicator: var(--com-primary, red) !important;
+    background-color: var(--com-bg) !important;
+    color: var(--com-text, #000) !important;
+}

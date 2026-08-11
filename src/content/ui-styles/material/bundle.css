@@ -1,1 +1,40 @@
 .ytp-time-current,.ytp-time-separator,.ytp-time-duration,.ytp-chapter-title-content,.ytp-tooltip-title>span{text-shadow:1px 1px 2px black,0 0 5px black!important}.ytp-svg-shadow{stroke-opacity:.55!important}.ytp-chapter-hover-container{background:linear-gradient(180deg,rgba(0,0,0,.45),transparent)!important;box-sizing:border-box!important}.ytp-chapter-hover-container:before,.ytp-chapter-hover-container:after{content:""!important;position:absolute!important;top:0!important;bottom:0!important;width:2px!important;background:#fff!important;height:140%!important;margin-top:-1px!important}.ytp-chapter-hover-container:before{left:0!important}.ytp-chapter-hover-container:after{right:0!important}.ytp-chapter-hover-container:hover{border-right:solid #f1f1f1 5px!important;border-left:solid #fff 5px!important}.caption-window.ytp-caption-window-bottom{background:transparent!important}html{--yt-spec-badge-chip-background: transparent !important;--yt-spec-raised-background: transparent !important;--yt-spec-additive-background: transparent !important}html[data-ypp-ui-style=material] .ypp-gpb-btn:hover,html[data-ypp-ui-style=material] .ypp-pill-toggle:hover{background:#fff3!important}html[data-ypp-ui-style=material] ytd-app,html[data-ypp-ui-style=material] ytd-masthead,html[data-ypp-ui-style=material] #page-manager.ytd-app,html[data-ypp-ui-style=material] #content.ytd-app{background:transparent!important}html[data-ypp-ui-style=material] #masthead-container{background:transparent!important}html[data-ypp-ui-style=material] .yt-chip-shape:hover{background-color:#474747cc!important}html[data-ypp-ui-style=material] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover{background:#ffffff14!important}html[data-ypp-ui-style=material] .ytSearchboxComponentSearchButton:hover{background:#fff3!important}
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="material"][dark] body, html[data-ypp-ui-style="material"][dark] body,
+html[data-ypp-card-style="material"][dark] ytd-app, html[data-ypp-ui-style="material"][dark] ytd-app,
+html[data-ypp-card-style="material"][dark] #page-manager, html[data-ypp-ui-style="material"][dark] #page-manager,
+html[data-ypp-card-style="material"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="material"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="material"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="material"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="material"][dark] #guide-content, html[data-ypp-ui-style="material"][dark] #guide-content,
+html[data-ypp-card-style="material"][dark] ytd-app > #content, html[data-ypp-ui-style="material"][dark] ytd-app > #content {
+    background-color: var(--mat-bg) !important;
+    background: var(--mat-bg) !important;
+}
+
+html[data-ypp-card-style="material"][dark], html[data-ypp-card-style="material"] [dark],
+html[data-ypp-ui-style="material"][dark], html[data-ypp-ui-style="material"] [dark] {
+    --yt-spec-base-background: var(--mat-bg) !important;
+    --yt-spec-raised-background: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-menu-background: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-inverted-background: var(--mat-text, #fff) !important;
+    --yt-spec-additive-background: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-text-primary: var(--mat-text, #000) !important;
+    --yt-spec-text-secondary: var(--mat-primary, var(--mat-muted)) !important;
+    --yt-spec-text-disabled: var(--mat-secondary, var(--mat-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--mat-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--mat-primary, var(--mat-text)) !important;
+    --yt-spec-icon-inactive: var(--mat-secondary, var(--mat-muted)) !important;
+    --yt-spec-icon-disabled: var(--mat-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-touch-response: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-brand-background-solid: var(--mat-bg) !important;
+    --yt-spec-brand-background-primary: var(--mat-bg) !important;
+    --yt-spec-brand-background-secondary: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-general-background-a: var(--mat-bg) !important;
+    --yt-spec-general-background-b: var(--mat-bg) !important;
+    --yt-spec-general-background-c: var(--mat-surface, var(--mat-bg)) !important;
+    --yt-spec-error-indicator: var(--mat-primary, red) !important;
+    background-color: var(--mat-bg) !important;
+    color: var(--mat-text, #000) !important;
+}

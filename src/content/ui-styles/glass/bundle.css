@@ -4,3 +4,42 @@
 html[data-ypp-card-style="glass"][dark], html[data-ypp-card-style="glass"] [dark] {
 --yt-spec-text-primary: #ffffff !important;--yt-spec-text-secondary: rgba(255, 255, 255, .7) !important;--yt-spec-menu-background: transparent !important;--yt-spec-raised-background: transparent !important;--yt-spec-base-background: transparent !important;--yt-font-family: "Inter", sans-serif !important;--ytd-user-comment-font-family: "Inter", sans-serif !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="glass"][dark] body, html[data-ypp-ui-style="glass"][dark] body,
+html[data-ypp-card-style="glass"][dark] ytd-app, html[data-ypp-ui-style="glass"][dark] ytd-app,
+html[data-ypp-card-style="glass"][dark] #page-manager, html[data-ypp-ui-style="glass"][dark] #page-manager,
+html[data-ypp-card-style="glass"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="glass"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="glass"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="glass"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="glass"][dark] #guide-content, html[data-ypp-ui-style="glass"][dark] #guide-content,
+html[data-ypp-card-style="glass"][dark] ytd-app > #content, html[data-ypp-ui-style="glass"][dark] ytd-app > #content {
+    background-color: var(--gla-bg) !important;
+    background: var(--gla-bg) !important;
+}
+
+html[data-ypp-card-style="glass"][dark], html[data-ypp-card-style="glass"] [dark],
+html[data-ypp-ui-style="glass"][dark], html[data-ypp-ui-style="glass"] [dark] {
+    --yt-spec-base-background: var(--gla-bg) !important;
+    --yt-spec-raised-background: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-menu-background: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-inverted-background: var(--gla-text, #fff) !important;
+    --yt-spec-additive-background: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-text-primary: var(--gla-text, #000) !important;
+    --yt-spec-text-secondary: var(--gla-primary, var(--gla-muted)) !important;
+    --yt-spec-text-disabled: var(--gla-secondary, var(--gla-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--gla-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--gla-primary, var(--gla-text)) !important;
+    --yt-spec-icon-inactive: var(--gla-secondary, var(--gla-muted)) !important;
+    --yt-spec-icon-disabled: var(--gla-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-touch-response: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-brand-background-solid: var(--gla-bg) !important;
+    --yt-spec-brand-background-primary: var(--gla-bg) !important;
+    --yt-spec-brand-background-secondary: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-general-background-a: var(--gla-bg) !important;
+    --yt-spec-general-background-b: var(--gla-bg) !important;
+    --yt-spec-general-background-c: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-error-indicator: var(--gla-primary, red) !important;
+    background-color: var(--gla-bg) !important;
+    color: var(--gla-text, #000) !important;
+}

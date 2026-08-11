@@ -4,3 +4,42 @@ html[data-ypp-card-style=sunset]{--sun-grad-bg: linear-gradient(135deg, #fceabb 
 html[data-ypp-card-style="sunset"][dark], html[data-ypp-card-style="sunset"] [dark] {
 --sun-grad-bg: linear-gradient(135deg, #fceabb 0%, #f8b500 100%) !important;--sun-grad-card: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%) !important;--sun-surface: rgba(255, 255, 255, .9) !important;--sun-text: #6b0f1a !important;--sun-border: 1px solid rgba(255, 78, 80, .3) !important;--sun-radius: 20px !important;--sun-shadow: 0 8px 30px rgba(255, 78, 80, .2) !important;--yt-spec-text-primary: var(--sun-text) !important;--yt-spec-base-background: transparent !important;--yt-spec-menu-background: var(--sun-surface) !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="sunset"][dark] body, html[data-ypp-ui-style="sunset"][dark] body,
+html[data-ypp-card-style="sunset"][dark] ytd-app, html[data-ypp-ui-style="sunset"][dark] ytd-app,
+html[data-ypp-card-style="sunset"][dark] #page-manager, html[data-ypp-ui-style="sunset"][dark] #page-manager,
+html[data-ypp-card-style="sunset"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="sunset"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="sunset"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="sunset"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="sunset"][dark] #guide-content, html[data-ypp-ui-style="sunset"][dark] #guide-content,
+html[data-ypp-card-style="sunset"][dark] ytd-app > #content, html[data-ypp-ui-style="sunset"][dark] ytd-app > #content {
+    background-color: var(--sun-grad-bg) !important;
+    background: var(--sun-grad-bg) !important;
+}
+
+html[data-ypp-card-style="sunset"][dark], html[data-ypp-card-style="sunset"] [dark],
+html[data-ypp-ui-style="sunset"][dark], html[data-ypp-ui-style="sunset"] [dark] {
+    --yt-spec-base-background: var(--sun-grad-bg) !important;
+    --yt-spec-raised-background: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-menu-background: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-inverted-background: var(--sun-grad-text, #fff) !important;
+    --yt-spec-additive-background: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-text-primary: var(--sun-grad-text, #000) !important;
+    --yt-spec-text-secondary: var(--sun-grad-primary, var(--sun-grad-muted)) !important;
+    --yt-spec-text-disabled: var(--sun-grad-secondary, var(--sun-grad-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--sun-grad-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--sun-grad-primary, var(--sun-grad-text)) !important;
+    --yt-spec-icon-inactive: var(--sun-grad-secondary, var(--sun-grad-muted)) !important;
+    --yt-spec-icon-disabled: var(--sun-grad-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-touch-response: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-brand-background-solid: var(--sun-grad-bg) !important;
+    --yt-spec-brand-background-primary: var(--sun-grad-bg) !important;
+    --yt-spec-brand-background-secondary: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-general-background-a: var(--sun-grad-bg) !important;
+    --yt-spec-general-background-b: var(--sun-grad-bg) !important;
+    --yt-spec-general-background-c: var(--sun-grad-surface, var(--sun-grad-bg)) !important;
+    --yt-spec-error-indicator: var(--sun-grad-primary, red) !important;
+    background-color: var(--sun-grad-bg) !important;
+    color: var(--sun-grad-text, #000) !important;
+}

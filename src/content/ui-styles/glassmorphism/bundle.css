@@ -1,1 +1,40 @@
 .ytp-time-current,.ytp-time-separator,.ytp-time-duration,.ytp-chapter-title-content,.ytp-tooltip-title>span{text-shadow:1px 1px 2px black,0 0 5px black!important}.ytp-svg-shadow{stroke-opacity:.55!important}.ytp-chapter-hover-container{background:linear-gradient(180deg,rgba(0,0,0,.45),transparent)!important;box-sizing:border-box!important}.ytp-chapter-hover-container:before,.ytp-chapter-hover-container:after{content:""!important;position:absolute!important;top:0!important;bottom:0!important;width:2px!important;background:#fff!important;height:140%!important;margin-top:-1px!important}.ytp-chapter-hover-container:before{left:0!important}.ytp-chapter-hover-container:after{right:0!important}.ytp-chapter-hover-container:hover{border-right:solid #f1f1f1 5px!important;border-left:solid #fff 5px!important}.caption-window.ytp-caption-window-bottom{background:transparent!important}html[data-ypp-ui-style=glassmorphism] body:before,html[data-ypp-ui-style=glassmorphism] body:after{content:"";position:fixed;border-radius:50%;filter:blur(80px);z-index:-1;animation:floatBlobs 20s infinite alternate ease-in-out}html[data-ypp-ui-style=glassmorphism] body:before{top:-10%;left:-10%;width:50vw;height:50vw;background:#ff00804d}html[data-ypp-ui-style=glassmorphism] body:after{bottom:-10%;right:-10%;width:60vw;height:60vw;background:#00ccff4d;animation-delay:-10s}@keyframes floatBlobs{0%{transform:translate(0) scale(1)}50%{transform:translate(10%,20%) scale(1.1)}to{transform:translate(-10%,-10%) scale(.9)}}html[data-ypp-ui-style=glassmorphism] body{background:#0f0c29!important;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e)!important;background-attachment:fixed!important;min-height:100vh}html[data-ypp-ui-style=glassmorphism]:not([dark]) body{background:linear-gradient(135deg,#f5f7fa,#c3cfe2,#e0c3fc)!important;background-attachment:fixed!important}html{--yt-spec-badge-chip-background: transparent !important;--yt-spec-raised-background: transparent !important;--yt-spec-additive-background: transparent !important}html[data-ypp-ui-style=glassmorphism] ytd-app,html[data-ypp-ui-style=glassmorphism] ytd-masthead,html[data-ypp-ui-style=glassmorphism] #page-manager.ytd-app,html[data-ypp-ui-style=glassmorphism] #content.ytd-app{background:transparent!important}html[data-ypp-ui-style=glassmorphism] #masthead-container{background:transparent!important}ytd-comments-header-renderer,ytd-comment-view-model,ytd-comment-thread-renderer,#author-thumbnail,#main,#header.ytd-comment-view-model,#expander,#body.ytd-comment-view-model{background-color:transparent!important;background:transparent!important}ytd-menu-renderer yt-button-shape button,.yt-spec-button-shape-next--tonal,segmented-like-dislike-button-view-model,.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,ytd-download-button-renderer yt-button-shape button,ytd-button-renderer yt-button-shape button,ytd-menu-renderer yt-button-shape .yt-touch-feedback-shape__fill,yt-button-shape .yt-spec-touch-feedback-shape__fill,.yt-spec-button-shape-next--tonal .yt-spec-touch-feedback-shape__fill,.yt-spec-button-shape-next .yt-spec-touch-feedback-shape__fill,yt-button-view-model .yt-spec-touch-feedback-shape__fill{background-color:transparent!important;background:transparent!important}ytd-watch-metadata #description-inner,ytd-watch-metadata #description,ytd-text-inline-expander{background-color:transparent!important;background:transparent!important}ytd-video-owner-renderer,ytd-watch-metadata #owner,#owner-inner.ytd-video-owner-renderer{background-color:transparent!important;background:transparent!important}html[data-ypp-ui-style=glassmorphism] ytd-download-button-renderer yt-button-shape button,html[data-ypp-ui-style=glassmorphism] ytd-download-button-renderer button,html[data-ypp-ui-style=glassmorphism] #ask-button yt-button-shape button,html[data-ypp-ui-style=glassmorphism] #ask-button button,html[data-ypp-ui-style=glassmorphism] .yt-spec-button-shape-next--mono,html[data-ypp-ui-style=glassmorphism] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,html[data-ypp-ui-style=glassmorphism] ytd-menu-renderer yt-button-shape button,html[data-ypp-ui-style=glassmorphism] button.ytSpecButtonShapeNextText{background-color:transparent!important;background:transparent!important}
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="glassmorphism"][dark] body, html[data-ypp-ui-style="glassmorphism"][dark] body,
+html[data-ypp-card-style="glassmorphism"][dark] ytd-app, html[data-ypp-ui-style="glassmorphism"][dark] ytd-app,
+html[data-ypp-card-style="glassmorphism"][dark] #page-manager, html[data-ypp-ui-style="glassmorphism"][dark] #page-manager,
+html[data-ypp-card-style="glassmorphism"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="glassmorphism"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="glassmorphism"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="glassmorphism"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="glassmorphism"][dark] #guide-content, html[data-ypp-ui-style="glassmorphism"][dark] #guide-content,
+html[data-ypp-card-style="glassmorphism"][dark] ytd-app > #content, html[data-ypp-ui-style="glassmorphism"][dark] ytd-app > #content {
+    background-color: var(--gla-bg) !important;
+    background: var(--gla-bg) !important;
+}
+
+html[data-ypp-card-style="glassmorphism"][dark], html[data-ypp-card-style="glassmorphism"] [dark],
+html[data-ypp-ui-style="glassmorphism"][dark], html[data-ypp-ui-style="glassmorphism"] [dark] {
+    --yt-spec-base-background: var(--gla-bg) !important;
+    --yt-spec-raised-background: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-menu-background: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-inverted-background: var(--gla-text, #fff) !important;
+    --yt-spec-additive-background: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-text-primary: var(--gla-text, #000) !important;
+    --yt-spec-text-secondary: var(--gla-primary, var(--gla-muted)) !important;
+    --yt-spec-text-disabled: var(--gla-secondary, var(--gla-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--gla-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--gla-primary, var(--gla-text)) !important;
+    --yt-spec-icon-inactive: var(--gla-secondary, var(--gla-muted)) !important;
+    --yt-spec-icon-disabled: var(--gla-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-touch-response: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-brand-background-solid: var(--gla-bg) !important;
+    --yt-spec-brand-background-primary: var(--gla-bg) !important;
+    --yt-spec-brand-background-secondary: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-general-background-a: var(--gla-bg) !important;
+    --yt-spec-general-background-b: var(--gla-bg) !important;
+    --yt-spec-general-background-c: var(--gla-surface, var(--gla-bg)) !important;
+    --yt-spec-error-indicator: var(--gla-primary, red) !important;
+    background-color: var(--gla-bg) !important;
+    color: var(--gla-text, #000) !important;
+}

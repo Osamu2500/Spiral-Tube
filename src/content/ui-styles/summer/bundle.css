@@ -4,3 +4,42 @@ html[data-ypp-card-style=summer]{--yt-spec-text-primary: #fff !important;--yt-sp
 html[data-ypp-card-style="summer"][dark], html[data-ypp-card-style="summer"] [dark] {
 --yt-spec-text-primary: #fff !important;--yt-spec-text-secondary: rgba(255,255,255,.8) !important;--sum-grad: linear-gradient(135deg, #ff9a44 0%, #fc6076 100%) !important;--sum-bg: linear-gradient(45deg, #f83600 0%, #f9d423 100%) !important;--sum-border: 1px solid rgba(255, 200, 0, .4) !important;--sum-radius: 18px !important
 }
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-card-style="summer"][dark] body, html[data-ypp-ui-style="summer"][dark] body,
+html[data-ypp-card-style="summer"][dark] ytd-app, html[data-ypp-ui-style="summer"][dark] ytd-app,
+html[data-ypp-card-style="summer"][dark] #page-manager, html[data-ypp-ui-style="summer"][dark] #page-manager,
+html[data-ypp-card-style="summer"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="summer"][dark] ytd-mini-guide-renderer,
+html[data-ypp-card-style="summer"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="summer"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-card-style="summer"][dark] #guide-content, html[data-ypp-ui-style="summer"][dark] #guide-content,
+html[data-ypp-card-style="summer"][dark] ytd-app > #content, html[data-ypp-ui-style="summer"][dark] ytd-app > #content {
+    background-color: var(--sum-bg) !important;
+    background: var(--sum-bg) !important;
+}
+
+html[data-ypp-card-style="summer"][dark], html[data-ypp-card-style="summer"] [dark],
+html[data-ypp-ui-style="summer"][dark], html[data-ypp-ui-style="summer"] [dark] {
+    --yt-spec-base-background: var(--sum-bg) !important;
+    --yt-spec-raised-background: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-menu-background: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-inverted-background: var(--sum-text, #fff) !important;
+    --yt-spec-additive-background: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-text-primary: var(--sum-text, #000) !important;
+    --yt-spec-text-secondary: var(--sum-primary, var(--sum-muted)) !important;
+    --yt-spec-text-disabled: var(--sum-secondary, var(--sum-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--sum-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--sum-primary, var(--sum-text)) !important;
+    --yt-spec-icon-inactive: var(--sum-secondary, var(--sum-muted)) !important;
+    --yt-spec-icon-disabled: var(--sum-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-touch-response: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-brand-background-solid: var(--sum-bg) !important;
+    --yt-spec-brand-background-primary: var(--sum-bg) !important;
+    --yt-spec-brand-background-secondary: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-general-background-a: var(--sum-bg) !important;
+    --yt-spec-general-background-b: var(--sum-bg) !important;
+    --yt-spec-general-background-c: var(--sum-surface, var(--sum-bg)) !important;
+    --yt-spec-error-indicator: var(--sum-primary, red) !important;
+    background-color: var(--sum-bg) !important;
+    color: var(--sum-text, #000) !important;
+}

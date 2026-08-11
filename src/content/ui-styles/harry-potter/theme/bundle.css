@@ -1,1 +1,40 @@
 .ytp-time-current,.ytp-time-separator,.ytp-time-duration,.ytp-chapter-title-content,.ytp-tooltip-title>span{text-shadow:1px 1px 2px black,0 0 5px black!important}.ytp-svg-shadow{stroke-opacity:.55!important}.ytp-chapter-hover-container{background:linear-gradient(180deg,rgba(0,0,0,.45),transparent)!important;box-sizing:border-box!important}.ytp-chapter-hover-container:before,.ytp-chapter-hover-container:after{content:""!important;position:absolute!important;top:0!important;bottom:0!important;width:2px!important;background:#fff!important;height:140%!important;margin-top:-1px!important}.ytp-chapter-hover-container:before{left:0!important}.ytp-chapter-hover-container:after{right:0!important}.ytp-chapter-hover-container:hover{border-right:solid #f1f1f1 5px!important;border-left:solid #fff 5px!important}.caption-window.ytp-caption-window-bottom{background:transparent!important}html.yt-spiral-tube-theme[data-ypp-theme=harry-potter]{--ypp-bg-base: #0b0c10;--ypp-bg-surface: #14151f;--ypp-bg-glass: rgba(20, 21, 31, .92);--ypp-glass-border: rgba(211, 166, 37, .35);--ypp-glass-highlight: rgba(212, 175, 55, .15);--ypp-glass-shine: linear-gradient(135deg, rgba(211, 166, 37, .12) 0%, rgba(116, 0, 1, .1) 50%, transparent 100%);--ypp-text-primary: #f5e6cc;--ypp-text-secondary: #c8b69b;--ypp-accent: #d4af37;--ypp-accent-hover: #e6c280;--ypp-accent-glow: rgba(212, 175, 55, .45);--ypp-shadow-card: 0 8px 32px rgba(0, 0, 0, .7), 0 0 10px rgba(211, 166, 37, .15);--ypp-shadow-float: 0 16px 48px rgba(0, 0, 0, .85), 0 0 20px rgba(211, 166, 37, .25);--ypp-shadow-glow: 0 0 24px rgba(212, 175, 55, .35);--ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);--ytd-searchbox-background: rgba(20, 21, 31, .85);--ytd-searchbox-text-color: #f5e6cc;--ytd-searchbox-border-radius: 6px 18px 6px 18px;--ytd-searchbox-height: 44px;--ytd-searchbox-legacy-button-border-radius: 0 18px 6px 0;--ytd-searchbox-legacy-button-width: 64px;--ytd-searchbox-legacy-button-color: rgba(211, 166, 37, .15)}@keyframes ypp-hogwarts-lumos-bg{0%{transform:translate(-50%) scale(1);opacity:.12}50%{transform:translate(-50%,-10px) scale(1.25);opacity:.28}to{transform:translate(-50%) scale(1);opacity:.12}}@keyframes ypp-hogwarts-ink-fg{0%{transform:translate(-50%) scale(1.15);opacity:.22}50%{transform:translate(-50%,15px) scale(.95);opacity:.1}to{transform:translate(-50%) scale(1.15);opacity:.22}}html.yt-spiral-tube-theme.ypp-theme-effects[data-ypp-theme=harry-potter]:before,html.yt-spiral-tube-theme.ypp-theme-effects[data-ypp-theme=harry-potter]:after{content:"";position:fixed;top:-50vh;left:50%;width:150vw;height:150vh;z-index:-2;pointer-events:none;will-change:transform,opacity}html.yt-spiral-tube-theme.ypp-theme-effects[data-ypp-theme=harry-potter]:before{background:radial-gradient(circle at center,rgba(212,175,55,.2) 0%,rgba(116,0,1,.1) 40%,transparent 70%);animation:ypp-hogwarts-lumos-bg 14s ease-in-out infinite}html.yt-spiral-tube-theme.ypp-theme-effects[data-ypp-theme=harry-potter]:after{background:radial-gradient(circle at center,rgba(211,166,37,.18) 0%,rgba(14,26,64,.15) 50%,transparent 75%);animation:ypp-hogwarts-ink-fg 10s ease-in-out infinite}
+
+/* Dark mode override logic to mimic Vintage/Retro */
+html[data-ypp-theme="harry-potter"][dark] body, html[data-ypp-ui-style="harry-potter"][dark] body,
+html[data-ypp-theme="harry-potter"][dark] ytd-app, html[data-ypp-ui-style="harry-potter"][dark] ytd-app,
+html[data-ypp-theme="harry-potter"][dark] #page-manager, html[data-ypp-ui-style="harry-potter"][dark] #page-manager,
+html[data-ypp-theme="harry-potter"][dark] ytd-mini-guide-renderer, html[data-ypp-ui-style="harry-potter"][dark] ytd-mini-guide-renderer,
+html[data-ypp-theme="harry-potter"][dark] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="harry-potter"][dark] ytd-mini-guide-entry-renderer,
+html[data-ypp-theme="harry-potter"][dark] #guide-content, html[data-ypp-ui-style="harry-potter"][dark] #guide-content,
+html[data-ypp-theme="harry-potter"][dark] ytd-app > #content, html[data-ypp-ui-style="harry-potter"][dark] ytd-app > #content {
+    background-color: var(--har-bg) !important;
+    background: var(--har-bg) !important;
+}
+
+html[data-ypp-theme="harry-potter"][dark], html[data-ypp-theme="harry-potter"] [dark],
+html[data-ypp-ui-style="harry-potter"][dark], html[data-ypp-ui-style="harry-potter"] [dark] {
+    --yt-spec-base-background: var(--har-bg) !important;
+    --yt-spec-raised-background: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-menu-background: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-inverted-background: var(--har-text, #fff) !important;
+    --yt-spec-additive-background: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-text-primary: var(--har-text, #000) !important;
+    --yt-spec-text-secondary: var(--har-primary, var(--har-muted)) !important;
+    --yt-spec-text-disabled: var(--har-secondary, var(--har-muted)) !important;
+    --yt-spec-text-primary-inverse: var(--har-bg, #000) !important;
+    --yt-spec-icon-active-other: var(--har-primary, var(--har-text)) !important;
+    --yt-spec-icon-inactive: var(--har-secondary, var(--har-muted)) !important;
+    --yt-spec-icon-disabled: var(--har-muted, #ccc) !important;
+    --yt-spec-button-chip-background-hover: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-touch-response: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-brand-background-solid: var(--har-bg) !important;
+    --yt-spec-brand-background-primary: var(--har-bg) !important;
+    --yt-spec-brand-background-secondary: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-general-background-a: var(--har-bg) !important;
+    --yt-spec-general-background-b: var(--har-bg) !important;
+    --yt-spec-general-background-c: var(--har-surface, var(--har-bg)) !important;
+    --yt-spec-error-indicator: var(--har-primary, red) !important;
+    background-color: var(--har-bg) !important;
+    color: var(--har-text, #000) !important;
+}
