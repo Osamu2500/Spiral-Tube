@@ -4,3 +4,8 @@
 html[data-ypp-card-style="retrowave-green"][dark] body, html[data-ypp-ui-style="retrowave-green"][dark] body {
     background-color: var(--yt-spec-base-background) !important;
 }
+
+/* Forced light theme over dark mode */
+html[data-ypp-card-style="retrowave-green"][dark], html[data-ypp-card-style="retrowave-green"] [dark] {
+--rw-bg: #051005 !important;--rw-surface: #0a200a !important;--rw-border: 1px solid #1f551f !important;--rw-neon: #00ff41 !important;--rw-neon-dim: #008f11 !important;--rw-text: #e0ffe0 !important;--yt-spec-text-primary: var(--rw-text) !important;--yt-spec-text-secondary: var(--rw-neon-dim) !important;--yt-spec-base-background: var(--rw-bg) !important;--yt-spec-menu-background: var(--rw-surface) !important
+}

@@ -4,3 +4,8 @@
 html[data-ypp-theme="neumorphic"][dark] body, html[data-ypp-theme="neumorphic"][dark] body {
     background-color: var(--yt-spec-base-background) !important;
 }
+
+/* Forced light theme over dark mode */
+html[data-ypp-theme="neumorphic"][dark], html[data-ypp-theme="neumorphic"] [dark] {
+--neu-snap: .15s cubic-bezier(.4, 0, .2, 1);--neu-bounce: .3s cubic-bezier(.175, .885, .32, 1.275);--neu-radius-sm: 8px;--neu-radius-md: 16px;--neu-radius-lg: 24px;--neu-radius-pill: 9999px;--yt-spec-badge-chip-background: transparent !important;--yt-spec-raised-background: transparent !important;--yt-spec-additive-background: transparent !important;--yt-spec-base-background: transparent !important;--yt-spec-brand-background-solid: transparent !important;--yt-spec-menu-background: transparent !important;--yt-spec-10-percent-layer: transparent !important
+}

@@ -4,3 +4,8 @@
 html[data-ypp-card-style="hacker"][dark] body, html[data-ypp-ui-style="hacker"][dark] body {
     background-color: var(--yt-spec-base-background) !important;
 }
+
+/* Forced light theme over dark mode */
+html[data-ypp-card-style="hacker"][dark], html[data-ypp-card-style="hacker"] [dark] {
+--hac-bg: #000000 !important;--hac-text: #00ff00 !important;--hac-dim: #008800 !important;--hac-border: 1px solid var(--hac-dim) !important;--hac-border-hover: 1px solid var(--hac-text) !important;--yt-spec-text-primary: var(--hac-text) !important;--yt-spec-text-secondary: var(--hac-dim) !important;--yt-spec-base-background: var(--hac-bg) !important;--yt-spec-menu-background: var(--hac-bg) !important
+}

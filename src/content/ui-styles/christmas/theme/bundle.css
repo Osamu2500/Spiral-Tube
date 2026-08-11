@@ -4,3 +4,8 @@ html[data-ypp-theme=christmas]{--christmas-bg-primary: #0F2027;--christmas-bg-se
 html[data-ypp-theme="christmas"][dark] body, html[data-ypp-theme="christmas"][dark] body {
     background-color: var(--yt-spec-base-background) !important;
 }
+
+/* Forced light theme over dark mode */
+html[data-ypp-theme="christmas"][dark], html[data-ypp-theme="christmas"] [dark] {
+--christmas-bg-primary: #0F2027;--christmas-bg-secondary: #203A43;--christmas-bg-tertiary: #2C5364;--christmas-accent-primary: #E63946;--christmas-accent-secondary: #FFD700;--christmas-glass-bg: rgba(255, 255, 255, .05);--christmas-glass-bg-hover: rgba(255, 255, 255, .1);--christmas-glass-border: rgba(255, 255, 255, .15);--christmas-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, .37);--christmas-text-primary: #FFFFFF;--christmas-text-secondary: rgba(255, 255, 255, .7);--christmas-text-muted: rgba(255, 255, 255, .4);--christmas-snow-shadow: 0 4px 16px rgba(255, 255, 255, .1);--christmas-glow-red: 0 0 15px rgba(230, 57, 70, .5);--christmas-glow-gold: 0 0 15px rgba(255, 215, 0, .5);--christmas-shape-card: 32px 32px 12px 12px;--christmas-shape-btn: 20px 20px 8px 8px;--christmas-shape-chip: 16px 16px 6px 6px;--christmas-shape-modal: 32px 32px 16px 16px;--christmas-r-sm: 8px;--christmas-r-md: 16px;--christmas-r-lg: 24px;--christmas-r-pill: 999px;--christmas-ease-spring: cubic-bezier(.34, 1.56, .64, 1);--christmas-ease-smooth: cubic-bezier(.4, 0, .2, 1)
+}
