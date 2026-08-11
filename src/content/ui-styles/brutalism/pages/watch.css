@@ -1,47 +1,5 @@
-/* =========================================================
-   BRUTALISM — WATCH INFO
-   Theme: Boxy player containers and headers
-   ========================================================= */
 
-/* ── Primary Info (Title & Buttons) ── */
-html[data-ypp-theme="brutalism"] ytd-watch-metadata {
-  background: var(--brutal-white) !important;
-  border: var(--brutal-border) !important;
-  padding: 16px !important;
-  box-shadow: var(--brutal-shadow-card) !important;
-  margin-bottom: 16px !important;
-  border-radius: 0 !important;
-}
-
-/* ── Channel Info ── */
-html[data-ypp-theme="brutalism"] ytd-video-owner-renderer {
-  border-right: var(--brutal-border) !important;
-  padding-right: 16px !important;
-  margin-right: 16px !important;
-}
-html[data-ypp-theme="brutalism"] ytd-video-owner-renderer yt-img-shadow {
-  border-radius: 0 !important;
-  border: 2px solid var(--brutal-black) !important;
-}
-html[data-ypp-theme="brutalism"] ytd-video-owner-renderer yt-img-shadow img {
-  border-radius: 0 !important;
-}
-
-/* ── Playlist Panel (Queue) ── */
-html[data-ypp-theme="brutalism"] ytd-playlist-panel-renderer {
-  background: var(--brutal-white) !important;
-  border: var(--brutal-border) !important;
-  border-radius: 0 !important;
-  box-shadow: var(--brutal-shadow-card) !important;
-  margin-bottom: 16px !important;
-}
-html[data-ypp-theme="brutalism"] .header.ytd-playlist-panel-renderer {
-  background: var(--brutal-black) !important;
-  color: var(--brutal-white) !important;
-  border-bottom: var(--brutal-border) !important;
-}
-html[data-ypp-theme="brutalism"] .header.ytd-playlist-panel-renderer .title {
-  color: var(--brutal-white) !important;
-  font-weight: 900 !important;
-  text-transform: uppercase !important;
-}
+/* Watch for brutalism */
+#ytd-player { border-radius: 0px; box-shadow: 8px 8px 0px #000; border: 4px solid #000; }
+ytd-segmented-like-dislike-button-renderer { border-radius: 0px; border: 4px solid #000; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+ytd-comment-thread-renderer { border-radius: 0px; border: 4px solid #000; box-shadow: 8px 8px 0px #000; margin-bottom: 16px; padding: 16px; }

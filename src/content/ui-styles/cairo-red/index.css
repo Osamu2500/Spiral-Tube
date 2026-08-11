@@ -1,17 +1,8 @@
-/* =========================================================
-   CAIRO RED THEME (Crimson Monolith)
-   ========================================================= */
-
-/* Imports */
 @import "../shared/timeline-visibility.css";
-
-/* Base */
 @import "./base/tokens.css";
 @import "./base/animations.css";
 @import "./base/background.css";
 @import "./base/layout.css";
-
-/* Components */
 @import "./components/navbar.css";
 @import "./components/cards.css";
 @import "./components/buttons.css";
@@ -19,8 +10,6 @@
 @import "./components/dialogs.css";
 @import "./components/icons.css";
 @import "./components/panels.css";
-
-/* Pages */
 @import "./pages/home.css";
 @import "./pages/watch.css";
 @import "./pages/player.css";
@@ -28,3 +17,16 @@
 @import "./pages/search.css";
 @import "./pages/channels.css";
 @import "./pages/livechat.css";
+@import './components/sidebar.css';
+
+/* =========================================================
+   CAIRO RED THEME (Crimson Monolith)
+   ========================================================= */
+
+/* Imports */
+
+/* Base */
+
+/* Components */
+
+/* Pages */

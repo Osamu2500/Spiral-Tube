@@ -1,26 +1,4 @@
-/* =========================================================
-   BRUTALISM — SEARCH PAGE
-   ========================================================= */
 
-/* ── Search Header (Filters) ── */
-html[data-ypp-theme="brutalism"] ytd-search-header-renderer {
-  background: var(--brutal-white) !important;
-  border-bottom: var(--brutal-border) !important;
-  box-shadow: 0 4px 0px var(--brutal-black) !important;
-}
-html[data-ypp-theme="brutalism"] ytd-search-filter-group-renderer {
-  border-right: var(--brutal-border) !important;
-  padding-right: 16px !important;
-}
-
-/* ── Active Filter ── */
-html[data-ypp-theme="brutalism"] ytd-search-filter-renderer[selected] {
-  background: var(--brutal-black) !important;
-  color: var(--brutal-accent) !important;
-  border: 2px solid var(--brutal-black) !important;
-  padding: 4px 8px !important;
-}
-html[data-ypp-theme="brutalism"] ytd-search-filter-renderer[selected] yt-formatted-string {
-  color: var(--brutal-accent) !important;
-  font-weight: 900 !important;
-}
+/* Search for brutalism */
+ytd-video-renderer { border-radius: 0px; border: 4px solid #000; box-shadow: 8px 8px 0px #000; padding: 16px; }
+ytd-toggle-button-renderer a { border-radius: 0px; border: 4px solid #000; }

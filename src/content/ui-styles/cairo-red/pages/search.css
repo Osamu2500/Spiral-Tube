@@ -1,16 +1,4 @@
-/* =========================================================
-   CAIRO RED — SEARCH
-   ========================================================= */
 
-html[data-ypp-ui-style="cairo-red"] ytd-search {
-  background: var(--cairo-bg-base) !important;
-}
-
-html[data-ypp-ui-style="cairo-red"] ytd-video-renderer,
-html[data-ypp-ui-style="cairo-red"] ytd-channel-renderer,
-html[data-ypp-ui-style="cairo-red"] ytd-playlist-renderer {
-  background: var(--cairo-bg-mid) !important;
-  border: var(--cairo-border) !important;
-  border-radius: var(--cairo-radius) !important;
-  padding: 12px !important;
-}
+/* Search for cairo-red */
+ytd-video-renderer { border-radius: 8px; border: 1px solid #c91818; box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3); padding: 16px; }
+ytd-toggle-button-renderer a { border-radius: 8px; border: 1px solid #c91818; }

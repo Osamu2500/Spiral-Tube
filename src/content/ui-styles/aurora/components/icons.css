@@ -1,41 +1,4 @@
-/* =========================================================
-   AURORA — ICONS & BADGES
-   ========================================================= */
 
-/* Base SVG Icons */
-html[data-ypp-theme="aurora"] yt-icon,
-html[data-ypp-theme="aurora"] .yt-icon-container,
-html[data-ypp-theme="aurora"] .yt-spec-icon-shape {
-  color: var(--aurora-text-primary) !important;
-  transition: all var(--aurora-bounce) !important;
-}
-
-/* Icon Hover State */
-html[data-ypp-theme="aurora"] yt-icon:hover,
-html[data-ypp-theme="aurora"] .yt-spec-icon-shape:hover {
-  color: var(--aurora-color-1) !important; /* Cyan */
-  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.6)) !important;
-  transform: scale(1.1) !important;
-}
-
-/* Notification Badge (Red dot with count) */
-html[data-ypp-theme="aurora"] .yt-spec-icon-badge-shape__badge {
-  background: var(--aurora-color-4) !important; /* Deep Pink */
-  color: #fff !important;
-  border: var(--aurora-border-glass) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: 0 0 10px var(--aurora-color-4) !important;
-  font-weight: 700 !important;
-}
-
-/* LIVE badges */
-html[data-ypp-theme="aurora"] ytd-badge-supported-renderer {
-  background: rgba(245, 87, 108, 0.2) !important; /* Translucent pink */
-  border: 1px solid var(--aurora-color-4) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  box-shadow: 0 0 15px rgba(245, 87, 108, 0.3) !important;
-  color: var(--aurora-color-4) !important;
-  padding: 2px 8px !important;
-  font-weight: 800 !important;
-  text-shadow: 0 0 5px var(--aurora-color-4) !important;
-}
+/* Icons for aurora */
+yt-icon { transition: all 0.3s; }
+yt-icon:hover { transform: scale(1.1); color: var(--ypp-accent-color) !important; }

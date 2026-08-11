@@ -1,27 +1,6 @@
-/* =========================================================
-   AUTUMN — NAVBAR
-   ========================================================= */
 
-html[data-ypp-theme="autumn"] ytd-masthead {
-  background: var(--au-bg-base) !important;
-  border-bottom: 2px solid var(--au-amber) !important;
-  box-shadow: 0 2px 12px rgba(232, 125, 13, 0.25) !important;
-}
-
-/* Search bar */
-html[data-ypp-theme="autumn"] #search-input input,
-html[data-ypp-theme="autumn"] ytd-searchbox input {
-  background: var(--au-bg-elevated) !important;
-  border: var(--au-border-accent) !important;
-  border-radius: 18px 4px 4px 8px !important;
-  color: var(--au-text-primary) !important;
-}
-html[data-ypp-theme="autumn"] ytd-searchbox {
-  border-radius: 18px 4px 4px 8px !important;
-  border: var(--au-border-subtle) !important;
-  overflow: hidden !important;
-}
-html[data-ypp-theme="autumn"] ytd-searchbox:focus-within {
-  border: var(--au-border-glow) !important;
-  box-shadow: var(--au-shadow-glow) !important;
-}
+/* Navbar UI for autumn */
+ytd-masthead { background: var(--ypp-bg-color) !important; border-bottom: 2px solid #d4a373; box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4); }
+ytd-searchbox #container.ytd-searchbox { border-radius: 12px 0 0 12px !important; border: 2px solid #d4a373; }
+ytd-searchbox #search-icon-legacy.ytd-searchbox { border-radius: 0 12px 12px 0 !important; border: 2px solid #d4a373; }
+#voice-search-button { border-radius: 50% !important; border: 2px solid #d4a373; }

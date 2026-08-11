@@ -1,33 +1,4 @@
-/* =========================================================
-   BRUTALISM — ICONS
-   Theme: Solid black SVG fills, yellow accents
-   ========================================================= */
 
-/* ── Generic SVG icons ── */
-html[data-ypp-theme="brutalism"] yt-icon svg path,
-html[data-ypp-theme="brutalism"] .yt-icon-container svg path {
-  fill: var(--brutal-black) !important;
-}
-
-/* ── Active / Selected Icons ── */
-html[data-ypp-theme="brutalism"] [aria-selected="true"] yt-icon svg path,
-html[data-ypp-theme="brutalism"] [active] yt-icon svg path,
-html[data-ypp-theme="brutalism"] .active yt-icon svg path {
-  fill: var(--brutal-accent-alt) !important; /* Neo-Pink for high contrast */
-}
-
-/* ── Like / Dislike filled states ── */
-html[data-ypp-theme="brutalism"] button[aria-pressed="true"] yt-icon svg path {
-  fill: var(--brutal-accent) !important;
-  stroke: var(--brutal-black) !important;
-  stroke-width: 1px !important;
-}
-
-/* ── Logo Overrides ── */
-/* Keep YouTube logo red or force it black */
-html[data-ypp-theme="brutalism"] ytd-logo yt-icon svg path {
-  fill: var(--brutal-black) !important;
-}
-html[data-ypp-theme="brutalism"] ytd-logo #triangle {
-  fill: var(--brutal-white) !important;
-}
+/* Icons for brutalism */
+yt-icon { transition: all 0.3s; }
+yt-icon:hover { transform: scale(1.1); color: var(--ypp-accent-color) !important; }

@@ -1,6 +1,4 @@
 @import "../shared/timeline-visibility.css";
-/* 17-File Structured UI Style */
-
 @import "./base/animations.css";
 @import "./base/background.css";
 @import "./base/tokens.css";
@@ -17,6 +15,11 @@
 @import "./pages/player.css";
 @import "./pages/search.css";
 @import "./pages/watch.css";
+@import './components/sidebar.css';
+@import './components/dialogs.css';
+
+/* 17-File Structured UI Style */
+
 
 
 /* Global AI-generated missing variable fallbacks */

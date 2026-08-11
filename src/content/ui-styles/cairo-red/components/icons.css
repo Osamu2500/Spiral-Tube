@@ -1,16 +1,4 @@
-/* =========================================================
-   CAIRO RED — ICONS
-   ========================================================= */
 
-html[data-ypp-ui-style="cairo-red"] .yt-icon,
-html[data-ypp-ui-style="cairo-red"] yt-icon {
-  color: var(--cairo-text-primary) !important;
-  fill: var(--cairo-text-primary) !important;
-}
-
-/* Active Icons (Cairo Red) */
-html[data-ypp-ui-style="cairo-red"] yt-icon.active,
-html[data-ypp-ui-style="cairo-red"] ytd-toggle-button-renderer.style-default-active yt-icon {
-  color: var(--cairo-brand) !important;
-  fill: var(--cairo-brand) !important;
-}
+/* Icons for cairo-red */
+yt-icon { transition: all 0.3s; }
+yt-icon:hover { transform: scale(1.1); color: var(--ypp-accent-color) !important; }

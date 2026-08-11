@@ -1,22 +1,4 @@
-/* =========================================================
-   BENTO — CHANNELS
-   ========================================================= */
 
-html[data-ypp-theme="bento"] ytd-c4-tabbed-header-renderer {
-  background: var(--bn-bg-surface) !important;
-  border-bottom: var(--bn-border-md) !important;
-}
-html[data-ypp-theme="bento"] #channel-avatar img {
-  border-radius: 0 !important;
-  border: var(--bn-border-md) !important;
-  box-shadow: var(--bn-shadow-card) !important;
-}
-html[data-ypp-theme="bento"] ytd-tab-renderer {
-  border-radius: 0 !important;
-}
-html[data-ypp-theme="bento"] ytd-tab-renderer:hover,
-html[data-ypp-theme="bento"] ytd-tab-renderer[selected] {
-  background: var(--bn-bg-elevated) !important;
-  border-bottom: 3px solid var(--bn-accent-warm) !important;
-  color: var(--bn-accent-warm) !important;
-}
+/* Channels for bento */
+#channel-header-banner { border-radius: 24px 24px 0 0; }
+#avatar.ytd-c4-tabbed-header-renderer { border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: none; }

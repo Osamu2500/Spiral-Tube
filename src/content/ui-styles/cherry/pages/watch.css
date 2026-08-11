@@ -1,23 +1,5 @@
-/* =========================================================
-   CHERRY (NIGHT SAKURA) — WATCH PAGE
-   ========================================================= */
 
-html[data-ypp-ui-style="cherry"] ytd-watch-flexy {
-  background: var(--cherry-bg-base) !important;
-}
-
-html[data-ypp-ui-style="cherry"] #primary-inner,
-html[data-ypp-ui-style="cherry"] #secondary-inner {
-  background: transparent !important;
-}
-
-html[data-ypp-ui-style="cherry"] #description-inner,
-html[data-ypp-ui-style="cherry"] ytd-video-secondary-info-renderer {
-  background: var(--cherry-bg-mid) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: var(--cherry-border) !important;
-  border-radius: var(--cherry-radius) !important;
-  padding: 16px !important;
-  margin-top: 16px !important;
-}
+/* Watch for cherry */
+#ytd-player { border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6); border: 3px dashed #ffb7b2; }
+ytd-segmented-like-dislike-button-renderer { border-radius: 50px; border: 3px dashed #ffb7b2; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+ytd-comment-thread-renderer { border-radius: 50px; border: 3px dashed #ffb7b2; box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6); margin-bottom: 16px; padding: 16px; }

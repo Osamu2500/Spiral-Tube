@@ -1,35 +1,5 @@
-/* =========================================================
-   AUTUMN — WATCH PAGE
-   ========================================================= */
 
-/* Video info section */
-html[data-ypp-theme="autumn"] #above-the-fold,
-html[data-ypp-theme="autumn"] #info-contents {
-  background: var(--au-bg-surface) !important;
-  border-radius: var(--au-shape-card) !important;
-  border: var(--au-border-subtle) !important;
-  border-left: var(--au-border-left) !important;
-  padding: 16px !important;
-  margin-bottom: 12px !important;
-}
-
-/* Description box */
-html[data-ypp-theme="autumn"] ytd-text-inline-expander,
-html[data-ypp-theme="autumn"] #description {
-  background: var(--au-bg-elevated) !important;
-  border-radius: var(--au-shape-modal) !important;
-  border: var(--au-border-subtle) !important;
-  border-left: var(--au-border-left) !important;
-  padding: 12px 16px !important;
-  color: var(--au-text-secondary) !important;
-}
-
-/* Chapters & related */
-html[data-ypp-theme="autumn"] ytd-macro-markers-list-item-renderer {
-  border-radius: var(--au-shape-chip) !important;
-  transition: var(--au-transition-fast) !important;
-}
-html[data-ypp-theme="autumn"] ytd-macro-markers-list-item-renderer:hover {
-  background: var(--au-fog) !important;
-  border-left: 3px solid var(--au-amber) !important;
-}
+/* Watch for autumn */
+#ytd-player { border-radius: 12px; box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4); border: 2px solid #d4a373; }
+ytd-segmented-like-dislike-button-renderer { border-radius: 12px; border: 2px solid #d4a373; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+ytd-comment-thread-renderer { border-radius: 12px; border: 2px solid #d4a373; box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4); margin-bottom: 16px; padding: 16px; }

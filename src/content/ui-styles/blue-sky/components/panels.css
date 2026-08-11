@@ -1,41 +1,4 @@
-/* =========================================================
-   BLUE SKY — PANELS
-   Theme: Premium Aero Glass — Stratosphere Edition
-   ========================================================= */
 
-/* ── Generic panels ── */
-html[data-ypp-theme="blue-sky"] ytd-engagement-panel-section-list-renderer {
-  background: rgba(230, 245, 255, 0.65) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important;
-  border-radius: var(--sky-shape-card) !important;
-  border: var(--sky-border) !important;
-  box-shadow: var(--sky-shadow-card) !important;
-}
-
-/* ── Transcript panel ── */
-html[data-ypp-theme="blue-sky"] ytd-transcript-segment-renderer {
-  border-radius: var(--sky-shape-chip) !important;
-  padding: 8px 12px !important;
-  transition: all 0.25s var(--sky-ease) !important;
-  color: var(--sky-text-primary) !important;
-}
-html[data-ypp-theme="blue-sky"] ytd-transcript-segment-renderer:hover {
-  background: rgba(255, 255, 255, 0.65) !important;
-  box-shadow: var(--sky-shadow-card) !important;
-  transform: translateX(4px) !important;
-}
-html[data-ypp-theme="blue-sky"] ytd-transcript-segment-renderer .segment-timestamp {
-  color: var(--sky-accent-blue) !important;
-  font-weight: 600 !important;
-}
-
-/* ── Info panel / description panel ── */
-html[data-ypp-theme="blue-sky"] ytd-structured-description-content-renderer {
-  background: rgba(255, 255, 255, 0.40) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important;
-  border: var(--sky-border) !important;
-  border-radius: var(--sky-shape-card) !important;
-  padding: 16px !important;
-}
+/* Panels for blue-sky */
+#description.ytd-watch-metadata { border-radius: 30px !important; border: 4px solid #87CEEB !important; padding: 16px !important; }
+ytd-live-chat-frame { border-radius: 30px !important; border: 4px solid #87CEEB !important; }

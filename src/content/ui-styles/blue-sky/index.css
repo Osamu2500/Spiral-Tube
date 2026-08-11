@@ -1,17 +1,8 @@
 @import "../shared/timeline-visibility.css";
-/* =========================================================
-   BLUE SKY — INDEX
-   Theme: Premium Aero Glass — Stratosphere Edition
-   17-File Structured UI Style
-   ========================================================= */
-
-/* Base */
 @import "./base/tokens.css";
 @import "./base/animations.css";
 @import "./base/background.css";
 @import "./base/layout.css";
-
-/* Components */
 @import "./components/navbar.css";
 @import "./components/cards.css";
 @import "./components/buttons.css";
@@ -19,8 +10,6 @@
 @import "./components/dialogs.css";
 @import "./components/icons.css";
 @import "./components/panels.css";
-
-/* Pages */
 @import "./pages/watch.css";
 @import "./pages/player.css";
 @import "./pages/comments.css";
@@ -28,3 +17,16 @@
 @import "./pages/search.css";
 @import "./pages/channels.css";
 @import "./pages/livechat.css";
+@import './components/sidebar.css';
+
+/* =========================================================
+   BLUE SKY — INDEX
+   Theme: Premium Aero Glass — Stratosphere Edition
+   17-File Structured UI Style
+   ========================================================= */
+
+/* Base */
+
+/* Components */
+
+/* Pages */

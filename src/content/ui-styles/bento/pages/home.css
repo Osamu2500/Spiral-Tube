@@ -1,8 +1,4 @@
-/* =========================================================
-   BENTO — HOME
-   ========================================================= */
 
-html[data-ypp-theme="bento"] ytd-feed-filter-chip-bar-renderer {
-  background: var(--bn-bg-base) !important;
-  border-bottom: var(--bn-border-sm) !important;
-}
+/* Home for bento */
+yt-chip-cloud-chip-renderer { border-radius: 24px !important; border: none; }
+ytd-rich-grid-renderer { --ytd-rich-grid-items-per-row: 4 !important; }

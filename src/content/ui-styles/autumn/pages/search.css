@@ -1,29 +1,4 @@
-/* =========================================================
-   AUTUMN — SEARCH PAGE
-   ========================================================= */
 
-html[data-ypp-theme="autumn"] ytd-search ytd-video-renderer {
-  border-radius: var(--au-shape-card) !important;
-  border-left: var(--au-border-left) !important;
-  background: var(--au-bg-card) !important;
-  margin-bottom: 12px !important;
-  transition: var(--au-transition) !important;
-}
-html[data-ypp-theme="autumn"] ytd-search ytd-video-renderer:hover {
-  border-color: var(--au-amber) !important;
-  box-shadow: var(--au-shadow-glow) !important;
-  transform: translateX(3px) !important;
-}
-
-/* Search autocomplete */
-html[data-ypp-theme="autumn"] ytd-searchbox[has-query] {
-  border: var(--au-border-glow) !important;
-  box-shadow: var(--au-shadow-glow) !important;
-}
-html[data-ypp-theme="autumn"] ytd-search-suggestion-renderer {
-  transition: var(--au-transition-fast) !important;
-}
-html[data-ypp-theme="autumn"] ytd-search-suggestion-renderer:hover {
-  background: var(--au-fog) !important;
-  border-left: 3px solid var(--au-amber) !important;
-}
+/* Search for autumn */
+ytd-video-renderer { border-radius: 12px; border: 2px solid #d4a373; box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4); padding: 16px; }
+ytd-toggle-button-renderer a { border-radius: 12px; border: 2px solid #d4a373; }

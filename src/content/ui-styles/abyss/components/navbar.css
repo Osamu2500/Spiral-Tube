@@ -1,46 +1,6 @@
-/* src/content/ui-styles/abyss/components/navbar.css */
 
-/* Masthead (Navbar) */
-html[data-ypp-theme="abyss"] ytd-masthead {
-  background: rgba(1, 6, 9, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid var(--ypp-border-heavy) !important;
-  box-shadow: var(--ypp-shadow-glow) !important;
-}
-
-/* Search Box (Submarine Radar) */
-html[data-ypp-theme="abyss"] ytd-searchbox {
-  background: transparent !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-html[data-ypp-theme="abyss"] ytd-searchbox form {
-  background: rgba(0, 0, 0, 0.4) !important;
-  border-radius: var(--ypp-rad-sm) !important;
-  border: 1px solid var(--ypp-border-heavy) !important;
-  padding: 0 16px !important;
-  transition: var(--ypp-transition-hover) !important;
-}
-
-html[data-ypp-theme="abyss"] ytd-searchbox form:focus-within {
-  border-color: var(--ypp-accent-primary) !important;
-  box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.2) !important;
-}
-
-html[data-ypp-theme="abyss"] ytd-searchbox input {
-  color: var(--ypp-text-primary) !important;
-}
-
-html[data-ypp-theme="abyss"] #search-icon-legacy {
-  background: var(--ypp-bg-elevated) !important;
-  border-radius: var(--ypp-rad-sm) !important;
-  border: 1px solid var(--ypp-border-light) !important;
-  margin-left: 8px !important;
-  transition: var(--ypp-transition-hover) !important;
-}
-
-html[data-ypp-theme="abyss"] #search-icon-legacy:hover {
-  background: rgba(0, 150, 136, 0.3) !important;
-  box-shadow: var(--ypp-shadow-glow) !important;
-}
+/* Navbar UI for abyss */
+ytd-masthead { background: var(--ypp-bg-color) !important; border-bottom: 1px solid #1a1a2e; box-shadow: inset 0 0 10px #0f0f1a; }
+ytd-searchbox #container.ytd-searchbox { border-radius: 2px 0 0 2px !important; border: 1px solid #1a1a2e; }
+ytd-searchbox #search-icon-legacy.ytd-searchbox { border-radius: 0 2px 2px 0 !important; border: 1px solid #1a1a2e; }
+#voice-search-button { border-radius: 50% !important; border: 1px solid #1a1a2e; }

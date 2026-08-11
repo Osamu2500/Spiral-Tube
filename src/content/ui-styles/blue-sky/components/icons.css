@@ -1,24 +1,4 @@
-/* =========================================================
-   BLUE SKY — ICONS
-   Theme: Premium Aero Glass — Stratosphere Edition
-   ========================================================= */
 
-/* ── SVG icons: inherit sky blue tint ── */
-html[data-ypp-theme="blue-sky"] yt-icon svg path {
-  fill: var(--sky-text-secondary) !important;
-  transition: fill 0.25s ease !important;
-}
-html[data-ypp-theme="blue-sky"] yt-icon-button:hover yt-icon svg path,
-html[data-ypp-theme="blue-sky"] button:hover yt-icon svg path {
-  fill: var(--sky-accent-blue) !important;
-}
-
-/* ── Liked / active icon state ── */
-html[data-ypp-theme="blue-sky"] [aria-pressed="true"] yt-icon svg path {
-  fill: var(--sky-accent-blue) !important;
-}
-
-/* ── Subscribed bell icon ── */
-html[data-ypp-theme="blue-sky"] #notification-preference-button yt-icon svg path {
-  fill: var(--sky-accent-blue) !important;
-}
+/* Icons for blue-sky */
+yt-icon { transition: all 0.3s; }
+yt-icon:hover { transform: scale(1.1); color: var(--ypp-accent-color) !important; }

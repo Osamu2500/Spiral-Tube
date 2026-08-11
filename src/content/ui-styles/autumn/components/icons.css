@@ -1,21 +1,4 @@
-/* =========================================================
-   AUTUMN — ICONS
-   ========================================================= */
 
-html[data-ypp-theme="autumn"] yt-icon svg,
-html[data-ypp-theme="autumn"] .yt-icon-container svg {
-  fill: var(--au-text-secondary) !important;
-  transition: fill 0.2s ease !important;
-}
-
-html[data-ypp-theme="autumn"] yt-icon:hover svg,
-html[data-ypp-theme="autumn"] .yt-icon-container:hover svg {
-  fill: var(--au-amber) !important;
-  filter: drop-shadow(0 0 4px rgba(232, 125, 13, 0.5)) !important;
-}
-
-/* Active / selected icons */
-html[data-ypp-theme="autumn"] [aria-selected="true"] yt-icon svg,
-html[data-ypp-theme="autumn"] [aria-current="page"] yt-icon svg {
-  fill: var(--au-amber) !important;
-}
+/* Icons for autumn */
+yt-icon { transition: all 0.3s; }
+yt-icon:hover { transform: scale(1.1); color: var(--ypp-accent-color) !important; }

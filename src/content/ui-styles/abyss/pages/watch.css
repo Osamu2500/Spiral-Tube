@@ -1,33 +1,5 @@
-/* src/content/ui-styles/abyss/pages/watch.css */
 
-/* Video info box */
-html[data-ypp-theme="abyss"] #above-the-fold {
-  background: var(--ypp-bg-surface) !important;
-  border-radius: var(--ypp-rad-lg) !important;
-  border: 1px solid var(--ypp-border-heavy) !important;
-  box-shadow: var(--ypp-shadow-depth) !important;
-  padding: 24px !important;
-  margin-top: 16px !important;
-}
-
-/* Subscribe Button */
-html[data-ypp-theme="abyss"] #subscribe-button button {
-  background: var(--ypp-accent-secondary) !important;
-  color: #fff !important;
-  border-radius: var(--ypp-rad-sm) !important;
-}
-
-html[data-ypp-theme="abyss"] #subscribe-button button:hover {
-  background: var(--ypp-accent-primary) !important;
-  color: #000 !important;
-  box-shadow: var(--ypp-shadow-glow-intense) !important;
-}
-
-/* Description box */
-html[data-ypp-theme="abyss"] #bottom-row {
-  background: var(--ypp-bg-card) !important;
-  border-radius: var(--ypp-rad-md) !important;
-  border: 1px solid var(--ypp-border-light) !important;
-  padding: 16px !important;
-  margin-top: 16px !important;
-}
+/* Watch for abyss */
+#ytd-player { border-radius: 2px; box-shadow: inset 0 0 10px #0f0f1a; border: 1px solid #1a1a2e; }
+ytd-segmented-like-dislike-button-renderer { border-radius: 2px; border: 1px solid #1a1a2e; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+ytd-comment-thread-renderer { border-radius: 2px; border: 1px solid #1a1a2e; box-shadow: inset 0 0 10px #0f0f1a; margin-bottom: 16px; padding: 16px; }

@@ -1,28 +1,4 @@
-/* =========================================================
-   AUTUMN — PANELS (Sidebar)
-   ========================================================= */
 
-html[data-ypp-theme="autumn"] #guide-inner-content,
-html[data-ypp-theme="autumn"] ytd-mini-guide-renderer {
-  background: var(--au-bg-base) !important;
-  border-right: 2px solid rgba(200, 120, 50, 0.25) !important;
-}
-
-/* Sidebar guide items */
-html[data-ypp-theme="autumn"] ytd-guide-entry-renderer {
-  border-radius: var(--au-shape-chip) !important;
-  transition: var(--au-transition-fast) !important;
-}
-html[data-ypp-theme="autumn"] ytd-guide-entry-renderer:hover,
-html[data-ypp-theme="autumn"] ytd-guide-entry-renderer[active] {
-  background: var(--au-fog) !important;
-  border-left: 3px solid var(--au-amber) !important;
-}
-
-/* Mini guide icons */
-html[data-ypp-theme="autumn"] ytd-mini-guide-entry-renderer svg {
-  filter: sepia(30%) hue-rotate(-10deg) brightness(1.1) !important;
-}
-html[data-ypp-theme="autumn"] ytd-mini-guide-entry-renderer:hover svg {
-  filter: sepia(80%) hue-rotate(-10deg) brightness(1.3) !important;
-}
+/* Panels for autumn */
+#description.ytd-watch-metadata { border-radius: 12px !important; border: 2px solid #d4a373 !important; padding: 16px !important; }
+ytd-live-chat-frame { border-radius: 12px !important; border: 2px solid #d4a373 !important; }

@@ -1,20 +1,4 @@
-/* =========================================================
-   BENTO — PANELS (Sidebar)
-   ========================================================= */
 
-html[data-ypp-theme="bento"] #guide-inner-content,
-html[data-ypp-theme="bento"] ytd-mini-guide-renderer {
-  background: var(--bn-bg-base) !important;
-  border-right: var(--bn-border-sm) !important;
-}
-
-html[data-ypp-theme="bento"] ytd-guide-entry-renderer {
-  border-radius: 0 !important;
-  transition: var(--bn-transition-snap) !important;
-}
-html[data-ypp-theme="bento"] ytd-guide-entry-renderer:hover,
-html[data-ypp-theme="bento"] ytd-guide-entry-renderer[active] {
-  background: var(--bn-bg-elevated) !important;
-  border-left: 3px solid var(--bn-accent-warm) !important;
-  color: var(--bn-accent-warm) !important;
-}
+/* Panels for bento */
+#description.ytd-watch-metadata { border-radius: 24px !important; border: none !important; padding: 16px !important; }
+ytd-live-chat-frame { border-radius: 24px !important; border: none !important; }
