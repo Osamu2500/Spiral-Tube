@@ -1,0 +1,94 @@
+/* Watch Page UI Design for nord */
+ytd-watch-flexy {
+    background: var(--ypp-bg-color) !important;
+    font-family: var(--ypp-font-family) !important;
+}
+
+/* Video Player Geometry */
+#ytd-player {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(46, 52, 64, 0.3);
+    border: 1px solid #4c566a;
+}
+
+/* Theater Mode adjustments */
+ytd-watch-flexy[theater] #ytd-player {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #4c566a;
+}
+
+/* Info Panel below video */
+#top-row.ytd-watch-metadata {
+    border-bottom: 1px dashed var(--ypp-border-color);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+ytd-watch-metadata h1.ytd-watch-metadata {
+    font-family: var(--ypp-font-family);
+    font-weight: 800 !important;
+    font-size: 2.4rem !important;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+/* Action Buttons (Like, Share, etc.) */
+#actions.ytd-watch-metadata {
+    display: flex;
+    gap: 8px;
+}
+
+ytd-segmented-like-dislike-button-renderer {
+    background: var(--ypp-bg-elevated);
+    border-radius: 14px;
+    border: 1px solid #4c566a;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+ytd-button-renderer.style-text[is-icon-button] {
+    border-radius: 14px;
+    background: var(--ypp-bg-elevated);
+    border: 1px solid #4c566a;
+    transition: all 0.2s ease;
+}
+
+ytd-button-renderer.style-text[is-icon-button]:hover {
+    background: var(--ypp-hover-color);
+    box-shadow: 0 4px 6px rgba(46, 52, 64, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Comments Section */
+#comments {
+    background: var(--ypp-bg-color);
+    border-radius: 14px;
+    padding: 24px 0;
+}
+
+ytd-comment-thread-renderer {
+    background: var(--ypp-bg-elevated);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #4c566a;
+    transition: box-shadow 0.3s ease;
+}
+
+ytd-comment-thread-renderer:hover {
+    box-shadow: 0 4px 6px rgba(46, 52, 64, 0.3);
+}
+
+#author-text.ytd-comment-renderer {
+    font-family: var(--ypp-font-family);
+    font-weight: bold;
+    color: var(--ypp-accent-color) !important;
+}
+
+#content-text.ytd-comment-renderer {
+    font-family: var(--ypp-font-family);
+    line-height: 1.6;
+    font-size: 1.4rem;
+}
