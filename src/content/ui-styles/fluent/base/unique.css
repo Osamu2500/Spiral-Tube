@@ -1,0 +1,43 @@
+/* FLUENT - Unique Typographics, Shapes & Cursors */
+
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
+
+/* Global Font Injection */
+html[data-ypp-card-style="fluent"],
+html[data-ypp-ui-style="fluent"],
+html[data-ypp-card-style="fluent"] *,
+html[data-ypp-ui-style="fluent"] * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    
+}
+
+/* Typography Color Injection */
+html[data-ypp-card-style="fluent"] h1,
+html[data-ypp-ui-style="fluent"] h1,
+html[data-ypp-card-style="fluent"] h2,
+html[data-ypp-ui-style="fluent"] h2,
+html[data-ypp-card-style="fluent"] h3,
+html[data-ypp-ui-style="fluent"] h3,
+html[data-ypp-card-style="fluent"] yt-formatted-string,
+html[data-ypp-ui-style="fluent"] yt-formatted-string,
+html[data-ypp-card-style="fluent"] span,
+html[data-ypp-ui-style="fluent"] span {
+    color: #fff !important;
+}
+html[data-ypp-card-style="fluent"] a:hover,
+html[data-ypp-ui-style="fluent"] a:hover,
+html[data-ypp-card-style="fluent"] yt-formatted-string:hover,
+html[data-ypp-ui-style="fluent"] yt-formatted-string:hover {
+    color: #fff !important;
+}
+
+
+            /* Microsoft Fluent Acrylic & Highlights */
+            html[data-ypp-card-style="fluent"] ytd-rich-item-renderer,
+            html[data-ypp-ui-style="fluent"] ytd-rich-item-renderer {
+                backdrop-filter: blur(10px) !important;
+                background-color: rgba(255,255,255,0.05) !important;
+                border-top: 1px solid rgba(255,255,255,0.15) !important;
+                border-radius: 8px !important;
+            }
+        

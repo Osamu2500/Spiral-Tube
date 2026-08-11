@@ -1,0 +1,44 @@
+/* COFFEE - Unique Typographics, Shapes & Cursors */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+/* Global Font Injection */
+html[data-ypp-card-style="coffee"],
+html[data-ypp-ui-style="coffee"],
+html[data-ypp-card-style="coffee"] *,
+html[data-ypp-ui-style="coffee"] * {
+    font-family: 'Playfair Display', serif !important;
+    
+}
+
+/* Typography Color Injection */
+html[data-ypp-card-style="coffee"] h1,
+html[data-ypp-ui-style="coffee"] h1,
+html[data-ypp-card-style="coffee"] h2,
+html[data-ypp-ui-style="coffee"] h2,
+html[data-ypp-card-style="coffee"] h3,
+html[data-ypp-ui-style="coffee"] h3,
+html[data-ypp-card-style="coffee"] yt-formatted-string,
+html[data-ypp-ui-style="coffee"] yt-formatted-string,
+html[data-ypp-card-style="coffee"] span,
+html[data-ypp-ui-style="coffee"] span {
+    color: #5D4037 !important;
+}
+html[data-ypp-card-style="coffee"] a:hover,
+html[data-ypp-ui-style="coffee"] a:hover,
+html[data-ypp-card-style="coffee"] yt-formatted-string:hover,
+html[data-ypp-ui-style="coffee"] yt-formatted-string:hover {
+    color: #3E2723 !important;
+}
+
+
+            /* Cozy 12px Soft Radii & Inset Physical Shadows */
+            html[data-ypp-card-style="coffee"] *,
+            html[data-ypp-ui-style="coffee"] * {
+                border-radius: 12px !important;
+            }
+            html[data-ypp-card-style="coffee"] ytd-button-renderer:hover,
+            html[data-ypp-ui-style="coffee"] ytd-button-renderer:hover {
+                box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+            }
+        

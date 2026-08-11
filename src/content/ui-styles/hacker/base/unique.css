@@ -1,0 +1,41 @@
+/* HACKER - Unique Typographics, Shapes & Cursors */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+/* Global Font Injection */
+html[data-ypp-card-style="hacker"],
+html[data-ypp-ui-style="hacker"],
+html[data-ypp-card-style="hacker"] *,
+html[data-ypp-ui-style="hacker"] * {
+    font-family: 'Courier Prime', monospace !important;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24"><rect width="10" height="20" fill="%2300ff00"/></svg>') 0 0, auto !important;
+}
+
+/* Typography Color Injection */
+html[data-ypp-card-style="hacker"] h1,
+html[data-ypp-ui-style="hacker"] h1,
+html[data-ypp-card-style="hacker"] h2,
+html[data-ypp-ui-style="hacker"] h2,
+html[data-ypp-card-style="hacker"] h3,
+html[data-ypp-ui-style="hacker"] h3,
+html[data-ypp-card-style="hacker"] yt-formatted-string,
+html[data-ypp-ui-style="hacker"] yt-formatted-string,
+html[data-ypp-card-style="hacker"] span,
+html[data-ypp-ui-style="hacker"] span {
+    color: #00ff00 !important;
+}
+html[data-ypp-card-style="hacker"] a:hover,
+html[data-ypp-ui-style="hacker"] a:hover,
+html[data-ypp-card-style="hacker"] yt-formatted-string:hover,
+html[data-ypp-ui-style="hacker"] yt-formatted-string:hover {
+    color: #fff !important;
+}
+
+
+            /* Absolute Zero Border Radius */
+            html[data-ypp-card-style="hacker"] *,
+            html[data-ypp-ui-style="hacker"] * {
+                border-radius: 0 !important;
+                box-shadow: none !important;
+            }
+        

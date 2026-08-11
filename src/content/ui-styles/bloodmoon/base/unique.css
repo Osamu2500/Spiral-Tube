@@ -1,0 +1,40 @@
+/* BLOODMOON - Unique Typographics, Shapes & Cursors */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&display=swap');
+
+/* Global Font Injection */
+html[data-ypp-card-style="bloodmoon"],
+html[data-ypp-ui-style="bloodmoon"],
+html[data-ypp-card-style="bloodmoon"] *,
+html[data-ypp-ui-style="bloodmoon"] * {
+    font-family: 'Crimson Text', serif !important;
+    
+}
+
+/* Typography Color Injection */
+html[data-ypp-card-style="bloodmoon"] h1,
+html[data-ypp-ui-style="bloodmoon"] h1,
+html[data-ypp-card-style="bloodmoon"] h2,
+html[data-ypp-ui-style="bloodmoon"] h2,
+html[data-ypp-card-style="bloodmoon"] h3,
+html[data-ypp-ui-style="bloodmoon"] h3,
+html[data-ypp-card-style="bloodmoon"] yt-formatted-string,
+html[data-ypp-ui-style="bloodmoon"] yt-formatted-string,
+html[data-ypp-card-style="bloodmoon"] span,
+html[data-ypp-ui-style="bloodmoon"] span {
+    color: #ff0000 !important;
+}
+html[data-ypp-card-style="bloodmoon"] a:hover,
+html[data-ypp-ui-style="bloodmoon"] a:hover,
+html[data-ypp-card-style="bloodmoon"] yt-formatted-string:hover,
+html[data-ypp-ui-style="bloodmoon"] yt-formatted-string:hover {
+    color: #ff4444 !important;
+}
+
+
+            /* Gothic Sharp Edges */
+            html[data-ypp-card-style="bloodmoon"] *,
+            html[data-ypp-ui-style="bloodmoon"] * {
+                border-radius: 0 !important;
+            }
+        

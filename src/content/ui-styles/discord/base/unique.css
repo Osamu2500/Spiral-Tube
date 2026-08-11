@@ -1,0 +1,46 @@
+/* DISCORD - Unique Typographics, Shapes & Cursors */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+/* Global Font Injection */
+html[data-ypp-card-style="discord"],
+html[data-ypp-ui-style="discord"],
+html[data-ypp-card-style="discord"] *,
+html[data-ypp-ui-style="discord"] * {
+    font-family: 'gg sans', 'Roboto', sans-serif !important;
+    
+}
+
+/* Typography Color Injection */
+html[data-ypp-card-style="discord"] h1,
+html[data-ypp-ui-style="discord"] h1,
+html[data-ypp-card-style="discord"] h2,
+html[data-ypp-ui-style="discord"] h2,
+html[data-ypp-card-style="discord"] h3,
+html[data-ypp-ui-style="discord"] h3,
+html[data-ypp-card-style="discord"] yt-formatted-string,
+html[data-ypp-ui-style="discord"] yt-formatted-string,
+html[data-ypp-card-style="discord"] span,
+html[data-ypp-ui-style="discord"] span {
+    color: #dcddde !important;
+}
+html[data-ypp-card-style="discord"] a:hover,
+html[data-ypp-ui-style="discord"] a:hover,
+html[data-ypp-card-style="discord"] yt-formatted-string:hover,
+html[data-ypp-ui-style="discord"] yt-formatted-string:hover {
+    color: #ffffff !important;
+}
+
+
+            /* Discord Strict 8px Blurple Overrides */
+            html[data-ypp-card-style="discord"] ytd-button-renderer,
+            html[data-ypp-ui-style="discord"] ytd-button-renderer {
+                border-radius: 3px !important; /* Discord button radius */
+                background-color: #5865F2 !important; /* Blurple */
+                color: #fff !important;
+            }
+            html[data-ypp-card-style="discord"] ytd-button-renderer:hover,
+            html[data-ypp-ui-style="discord"] ytd-button-renderer:hover {
+                background-color: #4752C4 !important; /* Darker Blurple */
+            }
+        

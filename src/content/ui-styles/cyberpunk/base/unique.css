@@ -1,0 +1,47 @@
+/* CYBERPUNK - Unique Typographics, Shapes & Cursors */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap');
+
+/* Global Font Injection */
+html[data-ypp-card-style="cyberpunk"],
+html[data-ypp-ui-style="cyberpunk"],
+html[data-ypp-card-style="cyberpunk"] *,
+html[data-ypp-ui-style="cyberpunk"] * {
+    font-family: 'Rajdhani', sans-serif !important;
+    cursor: crosshair !important;
+}
+
+/* Typography Color Injection */
+html[data-ypp-card-style="cyberpunk"] h1,
+html[data-ypp-ui-style="cyberpunk"] h1,
+html[data-ypp-card-style="cyberpunk"] h2,
+html[data-ypp-ui-style="cyberpunk"] h2,
+html[data-ypp-card-style="cyberpunk"] h3,
+html[data-ypp-ui-style="cyberpunk"] h3,
+html[data-ypp-card-style="cyberpunk"] yt-formatted-string,
+html[data-ypp-ui-style="cyberpunk"] yt-formatted-string,
+html[data-ypp-card-style="cyberpunk"] span,
+html[data-ypp-ui-style="cyberpunk"] span {
+    color: var(--cyberpunk-accent-primary) !important;
+}
+html[data-ypp-card-style="cyberpunk"] a:hover,
+html[data-ypp-ui-style="cyberpunk"] a:hover,
+html[data-ypp-card-style="cyberpunk"] yt-formatted-string:hover,
+html[data-ypp-ui-style="cyberpunk"] yt-formatted-string:hover {
+    color: var(--cyberpunk-accent-secondary) !important;
+}
+
+
+            /* Cut-corner Clip Paths for Cyberpunk */
+            html[data-ypp-card-style="cyberpunk"] ytd-thumbnail,
+            html[data-ypp-ui-style="cyberpunk"] ytd-thumbnail,
+            html[data-ypp-card-style="cyberpunk"] ytd-button-renderer,
+            html[data-ypp-ui-style="cyberpunk"] ytd-button-renderer {
+                border-radius: 0 !important;
+                clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+            }
+            html[data-ypp-card-style="cyberpunk"] *,
+            html[data-ypp-ui-style="cyberpunk"] * {
+                border-radius: 0 !important;
+            }
+        
