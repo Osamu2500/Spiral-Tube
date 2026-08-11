@@ -1,0 +1,64 @@
+/* Kawaii Massive Animation Library */
+
+@keyframes kawaiHeartBeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.4); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+@keyframes kawaiShake {
+    0% { transform: translateX(0) rotate(0); }
+    25% { transform: translateX(-4px) rotate(-10deg); }
+    50% { transform: translateX(4px) rotate(10deg); }
+    75% { transform: translateX(-4px) rotate(-10deg); }
+    100% { transform: translateX(0) rotate(0); }
+}
+
+@keyframes kawaiRing {
+    0% { transform: rotate(0); }
+    5% { transform: rotate(15deg); }
+    10% { transform: rotate(-15deg); }
+    15% { transform: rotate(20deg); }
+    20% { transform: rotate(-20deg); }
+    25% { transform: rotate(15deg); }
+    30% { transform: rotate(-15deg); }
+    35% { transform: rotate(0); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes kawaiiSlideIn {
+    0% { transform: translateY(40px) scale(0.9); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Floating Particle System in Background */
+html[data-ypp-card-style="kawaii"] body::before,
+html[data-ypp-ui-style="kawaii"] body::before {
+    content: "🌸 💖 ✨ ☁️";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 24px;
+    opacity: 0.1; /* Very subtle */
+    text-align: justify;
+    line-height: 200px;
+    letter-spacing: 200px;
+    animation: floatingParticles 60s infinite linear;
+}
+
+@keyframes floatingParticles {
+    0% { background-position: 0px 0px; transform: translateY(0); }
+    100% { background-position: 500px 500px; transform: translateY(-100vh); }
+}
+
+/* Page Load Animation */
+html[data-ypp-card-style="kawaii"] ytd-page-manager > *,
+html[data-ypp-ui-style="kawaii"] ytd-page-manager > * {
+    animation: kawaiiSlideIn 0.8s var(--kawaii-ease-bouncy) forwards !important;
+}

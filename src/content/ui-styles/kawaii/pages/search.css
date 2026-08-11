@@ -1,0 +1,58 @@
+/* Kawaii Search Filters & Autocomplete Dropdown */
+
+/* The Autocomplete Dropdown */
+html[data-ypp-card-style="kawaii"] .sbdd_b,
+html[data-ypp-ui-style="kawaii"] .sbdd_b,
+html[data-ypp-card-style="kawaii"] .sbsb_a,
+html[data-ypp-ui-style="kawaii"] .sbsb_a {
+    background: var(--kawaii-bg-primary) !important;
+    border: var(--kawaii-border-thick) !important;
+    border-radius: 0 0 24px 24px !important;
+    box-shadow: 0 10px 25px rgba(255,158,187,0.3) !important;
+}
+html[data-ypp-card-style="kawaii"] .sbsb_c:hover,
+html[data-ypp-ui-style="kawaii"] .sbsb_c:hover {
+    background: var(--kawaii-accent-secondary) !important; /* Mint hover */
+    color: var(--kawaii-text-primary) !important;
+}
+html[data-ypp-card-style="kawaii"] .sbsb_c,
+html[data-ypp-ui-style="kawaii"] .sbsb_c {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 700 !important;
+    padding: 8px 16px !important;
+    transition: padding-left 0.2s var(--kawaii-ease-bouncy) !important;
+}
+html[data-ypp-card-style="kawaii"] .sbsb_c:hover,
+html[data-ypp-ui-style="kawaii"] .sbsb_c:hover {
+    padding-left: 24px !important; /* Bouncy text indent */
+}
+
+/* Search Filters Panel */
+html[data-ypp-card-style="kawaii"] ytd-search-filter-group-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-search-filter-group-renderer {
+    background: var(--kawaii-bg-secondary) !important;
+    border-radius: var(--kawaii-radius-squircle) !important;
+    padding: 16px !important;
+    margin: 8px !important;
+    border: 2px dashed var(--kawaii-accent-tertiary) !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer,
+html[data-ypp-ui-style="kawaii"] ytd-search-filter-renderer {
+    border-radius: 12px !important;
+    padding: 4px 8px !important;
+    transition: background 0.3s ease, transform 0.2s var(--kawaii-ease-bouncy) !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer:hover,
+html[data-ypp-ui-style="kawaii"] ytd-search-filter-renderer:hover {
+    background: var(--kawaii-bg-primary) !important;
+    transform: translateX(4px) !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer[selected],
+html[data-ypp-ui-style="kawaii"] ytd-search-filter-renderer[selected] {
+    color: var(--kawaii-accent-primary) !important;
+    font-weight: 700 !important;
+}
+html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer[selected]::before,
+html[data-ypp-ui-style="kawaii"] ytd-search-filter-renderer[selected]::before {
+    content: "🌸 " !important;
+}
