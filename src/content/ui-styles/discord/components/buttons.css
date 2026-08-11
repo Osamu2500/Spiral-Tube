@@ -1,0 +1,30 @@
+/* Buttons UI Design for discord */
+yt-button-shape button {
+    border-radius: 8px !important;
+    font-family: var(--ypp-font-family) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: none !important;
+}
+
+yt-button-shape button:hover {
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2) !important;
+    transform: translateY(-2px);
+}
+
+yt-button-shape button:active {
+    transform: translateY(1px);
+    box-shadow: none !important;
+}
+
+/* Action Buttons in Videos */
+ytd-menu-renderer ytd-button-renderer button {
+    background-color: var(--ypp-bg-elevated) !important;
+}
+
+/* Notifications Bell */
+ytd-notification-topbar-button-renderer {
+    transition: transform 0.3s;
+}
+ytd-notification-topbar-button-renderer:hover {
+    transform: rotate(15deg);
+}
