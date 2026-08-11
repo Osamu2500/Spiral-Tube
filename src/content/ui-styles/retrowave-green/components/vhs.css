@@ -1,0 +1,64 @@
+/* Retrowave-Green VHS Distortions */
+
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail {
+    position: relative !important;
+    overflow: hidden !important;
+    border: 1px solid var(--retrowave-green-border) !important;
+    transition: border-color 0.3s ease !important;
+}
+
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail:hover,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail:hover {
+    border-color: var(--retrowave-green-accent-primary) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4) !important;
+}
+
+/* The Glitch Image Overlay */
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail:hover img,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail:hover img {
+    animation: vhsGlitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite !important;
+    filter: contrast(1.2) saturate(1.5) !important;
+}
+
+/* RGB Split Pseudo Elements on Hover */
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail::before,
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail::after,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail::before,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    background: inherit !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    z-index: 2 !important;
+}
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail:hover::before,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail:hover::before {
+    opacity: 0.5 !important;
+    background-color: rgba(255, 0, 0, 0.3) !important;
+    mix-blend-mode: screen !important;
+    animation: vhsRgbShift 0.2s linear infinite alternate !important;
+}
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail:hover::after,
+html[data-ypp-ui-style="retrowave-green"] ytd-thumbnail:hover::after {
+    opacity: 0.5 !important;
+    background-color: rgba(0, 255, 255, 0.3) !important;
+    mix-blend-mode: screen !important;
+    animation: vhsRgbShift 0.3s linear infinite alternate-reverse !important;
+}
+
+@keyframes vhsGlitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 1px) }
+    40% { transform: translate(-1px, -1px) }
+    60% { transform: translate(2px, 1px) }
+    80% { transform: translate(1px, -1px) }
+    100% { transform: translate(0) }
+}
+
+@keyframes vhsRgbShift {
+    0% { transform: translateX(-3px); }
+    100% { transform: translateX(3px); }
+}

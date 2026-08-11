@@ -1,0 +1,41 @@
+/* Retrowave-Green Fonts & Global Neon Glow */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Apply Hacker/Terminal font globally */
+html[data-ypp-card-style="retrowave-green"],
+html[data-ypp-ui-style="retrowave-green"],
+html[data-ypp-card-style="retrowave-green"] *,
+html[data-ypp-ui-style="retrowave-green"] * {
+    font-family: 'Share Tech Mono', monospace, sans-serif !important;
+}
+
+/* Base Text Styles - Neon Glow */
+html[data-ypp-card-style="retrowave-green"] {
+    --retrowave-green-text-glow: 0 0 5px rgba(0, 255, 65, 0.5), 0 0 10px rgba(0, 255, 65, 0.3) !important;
+    --retrowave-green-text-glow-intense: 0 0 5px #00ff41, 0 0 15px #00ff41, 0 0 30px #00ff41 !important;
+}
+
+/* Headers and Active Text */
+html[data-ypp-card-style="retrowave-green"] h1,
+html[data-ypp-ui-style="retrowave-green"] h1,
+html[data-ypp-card-style="retrowave-green"] h2,
+html[data-ypp-ui-style="retrowave-green"] h2,
+html[data-ypp-card-style="retrowave-green"] h3,
+html[data-ypp-ui-style="retrowave-green"] h3,
+html[data-ypp-card-style="retrowave-green"] #video-title,
+html[data-ypp-ui-style="retrowave-green"] #video-title {
+    color: var(--retrowave-green-accent-primary) !important;
+    text-shadow: var(--retrowave-green-text-glow) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* Hovering over links causes intense neon glow */
+html[data-ypp-card-style="retrowave-green"] a:hover,
+html[data-ypp-ui-style="retrowave-green"] a:hover,
+html[data-ypp-card-style="retrowave-green"] #video-title:hover,
+html[data-ypp-ui-style="retrowave-green"] #video-title:hover {
+    color: #fff !important;
+    text-shadow: var(--retrowave-green-text-glow-intense) !important;
+}

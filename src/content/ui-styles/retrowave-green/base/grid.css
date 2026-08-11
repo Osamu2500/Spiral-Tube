@@ -1,0 +1,60 @@
+/* Retrowave-Green 3D Animated Grid & CRT Overlay Engine */
+
+/* CRT Scanlines Overlay */
+html[data-ypp-card-style="retrowave-green"] body::after,
+html[data-ypp-ui-style="retrowave-green"] body::after {
+    content: " " !important;
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)) !important;
+    z-index: 99999 !important;
+    background-size: 100% 2px, 3px 100% !important;
+    pointer-events: none !important;
+    opacity: 0.8 !important;
+    /* Subtle screen flicker */
+    animation: crtFlicker 0.15s infinite !important;
+}
+
+@keyframes crtFlicker {
+    0% { opacity: 0.75; }
+    50% { opacity: 0.85; }
+    100% { opacity: 0.75; }
+}
+
+/* 3D Moving Perspective Grid Background */
+html[data-ypp-card-style="retrowave-green"] body::before,
+html[data-ypp-ui-style="retrowave-green"] body::before {
+    content: "" !important;
+    position: fixed !important;
+    width: 200vw !important;
+    height: 200vh !important;
+    left: -50vw !important;
+    top: 0 !important;
+    z-index: -1 !important;
+    background-image: 
+        linear-gradient(var(--retrowave-green-accent-primary) 1px, transparent 1px),
+        linear-gradient(90deg, var(--retrowave-green-accent-primary) 1px, transparent 1px) !important;
+    background-size: 40px 40px !important;
+    /* Tilt the grid back in 3D space */
+    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px) !important;
+    animation: gridMove 2s linear infinite !important;
+    opacity: 0.15 !important;
+    pointer-events: none !important;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%) !important;
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%) !important;
+}
+
+@keyframes gridMove {
+    0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+    100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
+}
+
+/* Base Page Background Enforcement */
+html[data-ypp-card-style="retrowave-green"],
+html[data-ypp-ui-style="retrowave-green"] {
+    background-color: #050505 !important;
+}

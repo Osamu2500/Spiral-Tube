@@ -1,0 +1,53 @@
+/* Retrowave-Green Terminal Dialogs & Popups */
+
+/* Share/Save Modals */
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-dialog,
+html[data-ypp-card-style="retrowave-green"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="retrowave-green"] ytd-unified-share-panel-renderer {
+    background: #050505 !important;
+    border: 1px solid #00ff41 !important;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2) !important;
+    border-radius: 0 !important; /* Sharp corners */
+}
+
+/* Dialog Headers */
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog h2,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-dialog h2,
+html[data-ypp-card-style="retrowave-green"] #header.ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="retrowave-green"] #header.ytd-unified-share-panel-renderer {
+    background: rgba(0, 255, 65, 0.1) !important;
+    border-bottom: 1px dashed #00ff41 !important;
+    color: #00ff41 !important;
+    text-transform: uppercase !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    text-shadow: 0 0 5px #00ff41 !important;
+}
+
+/* Action Buttons inside dialogs */
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog yt-button-renderer,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-dialog yt-button-renderer {
+    background: transparent !important;
+    border: 1px solid #00ff41 !important;
+    color: #00ff41 !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease !important;
+}
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog yt-button-renderer:hover,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-dialog yt-button-renderer:hover {
+    background: #00ff41 !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px #00ff41 !important;
+}
+
+/* Tooltips */
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
+html[data-ypp-ui-style="retrowave-green"] tp-yt-paper-tooltip {
+    background: #000 !important;
+    border: 1px solid #00ff41 !important;
+    color: #00ff41 !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    text-transform: uppercase !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0 rgba(0, 255, 65, 0.3) !important;
+}
