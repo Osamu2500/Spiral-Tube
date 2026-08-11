@@ -1,0 +1,107 @@
+/* PINK ECOSYSTEM PAYLOAD V10 */
+
+/* =========================================
+   1. LIVE CHAT ENGINE
+========================================= */
+html[data-ypp-card-style="pink"] yt-live-chat-renderer,
+html[data-ypp-ui-style="pink"] yt-live-chat-renderer {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    background: transparent !important;
+}
+
+html[data-ypp-card-style="pink"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-style="pink"] yt-live-chat-text-message-renderer {
+    background: rgba(128, 128, 128, 0.05) !important;
+    margin: 4px 8px !important;
+    padding: 8px !important;
+    border-radius: 20px !important;
+    transition: background 0.2s ease !important;
+    
+}
+html[data-ypp-card-style="pink"] yt-live-chat-text-message-renderer:hover,
+html[data-ypp-ui-style="pink"] yt-live-chat-text-message-renderer:hover {
+    background: rgba(128, 128, 128, 0.1) !important;
+}
+
+/* =========================================
+   2. CHANNEL PAGE & BANNERS
+========================================= */
+html[data-ypp-card-style="pink"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="pink"] ytd-c4-tabbed-header-renderer {
+    border-bottom: 2px solid #f48fb1 !important;
+    
+    background: transparent !important;
+}
+
+html[data-ypp-card-style="pink"] #channel-header.ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="pink"] #channel-header.ytd-c4-tabbed-header-renderer {
+    padding: 20px !important;
+    background: rgba(128, 128, 128, 0.02) !important;
+    border-radius: 20px !important;
+    margin: 10px !important;
+}
+
+/* =========================================
+   3. CONTEXT MENUS & SETTINGS
+========================================= */
+html[data-ypp-card-style="pink"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-style="pink"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="pink"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="pink"] ytd-menu-popup-renderer {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 35px rgba(244,143,177,0.4) !important;
+    border: 1px solid rgba(128, 128, 128, 0.2) !important;
+    animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+    transform-origin: top right !important;
+}
+
+@keyframes menuEntranceV10 {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+html[data-ypp-card-style="pink"] ytd-compact-link-renderer,
+html[data-ypp-ui-style="pink"] ytd-compact-link-renderer {
+    border-radius: 20px !important;
+    margin: 2px 8px !important;
+}
+
+/* =========================================
+   4. THE FLOATING MINIPLAYER
+========================================= */
+html[data-ypp-card-style="pink"] ytd-miniplayer,
+html[data-ypp-ui-style="pink"] ytd-miniplayer {
+    border-radius: 20px !important;
+    box-shadow: 0 15px 35px rgba(244,143,177,0.4) !important;
+    overflow: hidden !important;
+    
+    transition: transform 0.3s ease !important;
+}
+html[data-ypp-card-style="pink"] ytd-miniplayer:hover,
+html[data-ypp-ui-style="pink"] ytd-miniplayer:hover {
+    transform: scale(1.05) !important;
+}
+
+/* =========================================
+   5. YOUTUBE STUDIO / CREATOR BACKEND
+========================================= */
+html[data-ypp-card-style="pink"] ytcp-header,
+html[data-ypp-ui-style="pink"] ytcp-header {
+    background: #fce4ec !important;
+    border-bottom: 2px solid #f48fb1 !important;
+    
+}
+
+html[data-ypp-card-style="pink"] ytcp-navigation,
+html[data-ypp-ui-style="pink"] ytcp-navigation {
+    background: #fce4ec !important;
+    border-right: 2px solid #f48fb1 !important;
+    
+}
+
+html[data-ypp-card-style="pink"] ytcp-navigation-drawer,
+html[data-ypp-ui-style="pink"] ytcp-navigation-drawer {
+    border-radius: 0 20px 20px 0 !important;
+}
