@@ -3,7 +3,7 @@
 html[data-ypp-ui-style="abyss"] yt-chip-cloud-chip-renderer {
     background: var(--sf) !important;
     border: 1px solid var(--abyss-secondary) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     color: var(--abyss-secondary) !important;
     font-weight: 700 !important;
     box-shadow: 2px 2px rgba(0,0,0,0.1) !important;
@@ -27,16 +27,16 @@ html[data-ypp-ui-style="abyss"] ytd-badge-supported-renderer {
 }
 
 html[data-ypp-ui-style="abyss"] .badge-style-type-verified yt-icon {
-    color: #8b0000 !important;
-    fill: #8b0000 !important;
+    color: var(--abyss-primary) !important;
+    fill: var(--abyss-primary) !important;
 }
 
 html[data-ypp-ui-style="abyss"] .badge-style-type-live-now,
 html[data-ypp-ui-style="abyss"] .badge-style-type-premiere {
-    background: #8b0000 !important;
+    background: var(--abyss-primary) !important;
     color: var(--sf) !important;
     border: 1px solid var(--sf) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     padding: 2px 4px !important;

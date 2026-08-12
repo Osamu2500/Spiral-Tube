@@ -9,13 +9,13 @@ html[data-ypp-ui-style="abyss"] ytd-commentbox {
 html[data-ypp-ui-style="abyss"] #placeholder-area.ytd-commentbox,
 html[data-ypp-ui-style="abyss"] #contenteditable-root.ytd-commentbox {
     color: var(--abyss-secondary) !important;
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Orbitron", "Inter", sans-serif !important;
 }
 
 html[data-ypp-ui-style="abyss"] ytd-commentbox #creation-box {
     background: var(--sf) !important;
     border: 1px solid var(--abyss-secondary) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
     padding: 8px !important;
 }

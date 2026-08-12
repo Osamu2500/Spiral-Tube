@@ -28,7 +28,7 @@ html[data-ypp-ui-style="abyss"] ytd-reel-player-overlay-renderer yt-button-shape
 html[data-ypp-ui-style="abyss"] .ytd-shorts-player-controls button {
     background: var(--sf) !important;
     border: 1px solid var(--abyss-secondary) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     box-shadow: 2px 2px #0000001a !important;
     color: var(--abyss-secondary) !important;
 }
@@ -61,6 +61,6 @@ html[data-ypp-ui-style="abyss"] .ytd-reel-player-overlay-renderer #channel-name 
 html[data-ypp-ui-style="abyss"] .ytd-reel-player-overlay-renderer .title * {
     color: var(--sf) !important;
     font-weight: bold !important;
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Orbitron", "Inter", sans-serif !important;
     text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000 !important;
 }

@@ -69,11 +69,11 @@ html,
 ytd-searchbox #container {
   background: var(--sf) !important;
   border: 2px solid var(--abyss-primary) !important;
-  border-radius: 0 !important;
+  border-radius: 50% !important;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 ytd-searchbox #search-icon-legacy {
-  border-radius: 0 !important;
+  border-radius: 50% !important;
   border: 2px solid var(--abyss-primary) !important;
   border-left: none !important;
   background: var(--abyss-primary) !important;
@@ -86,7 +86,7 @@ html,
   border-color: #a39585 !important;
 }
 .ytSearchboxComponentInputBox {
-  border-radius: 0 !important;
+  border-radius: 50% !important;
   background: var(--abyss-card) !important;
   border: 2px solid var(--abyss-primary) !important;
   box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.2), 4px 4px 0px rgba(62, 53, 47, 0.2) !important;
@@ -100,7 +100,7 @@ html,
 .ytSearchboxComponentSearchButton {
   background: var(--abyss-bg) !important;
   border-left: 2px solid var(--abyss-primary) !important;
-  border-radius: 0 !important;
+  border-radius: 50% !important;
 }
 .ytSearchboxComponentSearchButton:hover {
   background: var(--abyss-primary) !important;

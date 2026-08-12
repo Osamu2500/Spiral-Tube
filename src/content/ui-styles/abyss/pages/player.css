@@ -46,22 +46,22 @@ html[data-ypp-ui-style="abyss"] .ytp-swatch-background-color,
 html[data-ypp-ui-style="abyss"] .ytp-volume-slider-handle,
 html[data-ypp-ui-style="abyss"] .ytp-volume-slider-handle::before,
 html[data-ypp-ui-style="abyss"] .ytp-volume-slider-handle::after {
-    background: #8b0000 !important;
+    background: var(--abyss-primary) !important;
 }
 
 html[data-ypp-ui-style="abyss"] .ytp-swatch-color {
-    color: #8b0000 !important;
+    color: var(--abyss-primary) !important;
 }
 
 html[data-ypp-ui-style="abyss"] .ytp-load-progress {
-    background: rgba(232, 213, 181, 0.3) !important;
+    background: rgba(0, 229, 255, 0.3) !important;
 }
 
 /* Scrubber Button (Diamond Shape) */
 html[data-ypp-ui-style="abyss"] .ytp-scrubber-button {
-    background: #8b0000 !important;
+    background: var(--abyss-primary) !important;
     border: 2px solid var(--sf) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     transform: rotate(45deg) scale(0.8) !important;
     box-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
     transition: transform 0.1s ease !important;
@@ -70,24 +70,24 @@ html[data-ypp-ui-style="abyss"] .ytp-scrubber-button {
 html[data-ypp-ui-style="abyss"] .ytp-scrubber-button:hover {
     transform: rotate(45deg) scale(1) !important;
     background: var(--sf) !important;
-    border-color: #8b0000 !important;
+    border-color: var(--abyss-primary) !important;
 }
 
 /* Player Typography */
 html[data-ypp-ui-style="abyss"] .ytp-time-display,
 html[data-ypp-ui-style="abyss"] .ytp-chapter-title-content {
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Orbitron", "Inter", sans-serif !important;
     color: var(--sf) !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 /* Player Tooltips (Hovering over progress bar) */
 html[data-ypp-ui-style="abyss"] .ytp-tooltip-text {
-    font-family: Georgia, "Times New Roman", serif !important;
+    font-family: "Orbitron", "Inter", sans-serif !important;
     background: var(--sf) !important;
     color: var(--abyss-secondary) !important;
     border: 1px solid var(--abyss-secondary) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     text-shadow: none !important;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2) !important;
     padding: 4px 8px !important;
@@ -101,7 +101,7 @@ html[data-ypp-ui-style="abyss"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-ui-style="abyss"] .ytp-panel {
     background: var(--sf) !important;
     border: 2px solid var(--abyss-secondary) !important;
-    border-radius: 0 !important;
+    border-radius: 50% !important;
     box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
 }
 

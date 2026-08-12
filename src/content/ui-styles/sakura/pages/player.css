@@ -46,20 +46,20 @@ html[data-ypp-ui-style="sakura"] .ytp-swatch-background-color,
 html[data-ypp-ui-style="sakura"] .ytp-volume-slider-handle,
 html[data-ypp-ui-style="sakura"] .ytp-volume-slider-handle::before,
 html[data-ypp-ui-style="sakura"] .ytp-volume-slider-handle::after {
-    background: #8b0000 !important;
+    background: var(--sakura-primary) !important;
 }
 
 html[data-ypp-ui-style="sakura"] .ytp-swatch-color {
-    color: #8b0000 !important;
+    color: var(--sakura-primary) !important;
 }
 
 html[data-ypp-ui-style="sakura"] .ytp-load-progress {
-    background: rgba(232, 213, 181, 0.3) !important;
+    background: rgba(255, 105, 180, 0.3) !important;
 }
 
 /* Scrubber Button (Diamond Shape) */
 html[data-ypp-ui-style="sakura"] .ytp-scrubber-button {
-    background: #8b0000 !important;
+    background: var(--sakura-primary) !important;
     border: 2px solid var(--sf) !important;
     border-radius: 20px !important;
     transform: rotate(45deg) scale(0.8) !important;
@@ -70,7 +70,7 @@ html[data-ypp-ui-style="sakura"] .ytp-scrubber-button {
 html[data-ypp-ui-style="sakura"] .ytp-scrubber-button:hover {
     transform: rotate(45deg) scale(1) !important;
     background: var(--sf) !important;
-    border-color: #8b0000 !important;
+    border-color: var(--sakura-primary) !important;
 }
 
 /* Player Typography */

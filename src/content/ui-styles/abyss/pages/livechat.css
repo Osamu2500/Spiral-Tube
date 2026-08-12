@@ -33,15 +33,15 @@ html[data-ypp-ui-style="abyss"] yt-live-chat-paid-message-renderer,
 html[data-ypp-ui-style="abyss"] yt-live-chat-membership-item-renderer,
 html[data-ypp-ui-style="abyss"] yt-live-chat-paid-sticker-renderer {
     background: var(--sf) !important;
-    border: 1px solid #8b0000 !important;
-    border-radius: 0 !important;
+    border: 1px solid var(--abyss-primary) !important;
+    border-radius: 50% !important;
     margin-bottom: 8px !important;
 }
 
 html[data-ypp-ui-style="abyss"] yt-live-chat-paid-message-renderer #header,
 html[data-ypp-ui-style="abyss"] yt-live-chat-membership-item-renderer #header {
     background: rgba(139, 0, 0, 0.1) !important;
-    color: #8b0000 !important;
+    color: var(--abyss-primary) !important;
 }
 
 html[data-ypp-ui-style="abyss"] yt-live-chat-paid-message-renderer #content,
