@@ -1,55 +1,251 @@
-/* src/content/ui-styles/abyss/base/layout.css */
-
-html[data-ypp-theme="abyss"] {
-  --yt-spec-text-primary: var(--ypp-text-primary) !important;
-  --yt-spec-text-secondary: var(--ypp-text-secondary) !important;
-  --yt-spec-text-disabled: var(--ypp-text-disabled) !important;
-  --yt-spec-icon-active-other: var(--ypp-accent-primary) !important;
-  --yt-spec-icon-inactive: var(--ypp-text-secondary) !important;
-  --yt-spec-icon-disabled: var(--ypp-text-disabled) !important;
-  
-  --yt-spec-base-background: transparent !important;
-  --yt-spec-raised-background: var(--ypp-bg-surface) !important;
-  --yt-spec-menu-background: var(--ypp-bg-elevated) !important;
-  --yt-spec-inverted-background: var(--ypp-text-primary) !important;
-  --yt-spec-additive-background: rgba(0, 229, 255, 0.05) !important;
-  --yt-spec-10-percent-layer: rgba(0, 150, 136, 0.15) !important;
-  
-  --yt-spec-brand-button-background: var(--ypp-accent-secondary) !important;
-  --yt-spec-brand-link-text: var(--ypp-accent-primary) !important;
-  --yt-spec-call-to-action: var(--ypp-accent-primary) !important;
-  
-  background-color: var(--ypp-bg-base) !important;
-  color: var(--ypp-text-primary) !important;
+* {
+  font-family:
+    "SF Pro Text", "Inter", "Segoe UI Variable Text", "Segoe UI", sans-serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-
-html[data-ypp-theme="abyss"] ytd-app {
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important;
+  border: var(--abyss-border) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  color: white !important;
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.02);
+}
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+.ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: var(--abyss-border) !important;
+  border-radius: 4px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce) !important;
+}
+.ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytp-delhi-modern .ytp-chapter-container {
+  width: 100% !important;
+  padding-left: 10px;
+}
+ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
+  margin: 5px auto !important;
+}
+body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+@media (width: 1920px) {
+  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
+  }
+}
+@media (width: 1280px) {
+  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
+  }
+}
+/* Suggestion row hover — mode-aware tint */
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: none !important;
+}
+.ypp-gpb-btn,
+.ypp-action-btn,
+.ypp-icon-btn {
+  border-radius: 4px !important;
+  background: transparent !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.ypp-gpb-btn:hover,
+.ypp-action-btn:hover,
+.ypp-icon-btn:hover {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1) !important;
+}
+.ypp-gpb-btn:active,
+.ypp-action-btn:active,
+.ypp-icon-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+.ypp-vcp-header,
+.ypp-folder-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
   background: transparent !important;
 }
-
-/* Background Bioluminescence */
-html[data-ypp-theme="abyss"] body::before,
-html[data-ypp-theme="abyss"] body::after {
-  content: "";
-  position: fixed;
-  bottom: -20vh; left: -20vw; right: -20vw; height: 120vh;
-  z-index: -2;
-  pointer-events: none;
-  will-change: transform, opacity;
+.ypp-slider,
+.ypp-gpb-vol-slider {
+  accent-color: #ff4e45 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+}
+.ypp-badge,
+.ypp-value-display {
+  background: rgba(255, 255, 255, 0.1) !important;
+  
+  border-radius: 4px !important;
+  border: var(--abyss-border) !important;
+}
+/* --- Subscriptions Sidebar / Modals --- */
+.ypp-organizer-modal,
+.ypp-modal-content {
+  background: rgba(10, 10, 15, 0.65) !important;
+  
+  
+  border: var(--abyss-border) !important;
+  border-radius: 4px !important;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+.ypp-modal-header {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: none !important;
+}
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: 4px !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+tp-yt-app-header {
+  background: transparent !important;
+}
+.tab-content.tp-yt-paper-tab {
+  transition:
+    transform var(--bounce),
+    background var(--bounce) !important;
+  border-radius: 4px !important;
+}
+.tab-content.tp-yt-paper-tab:hover {
+  background: rgba(128, 128, 128, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+/* ========================================= */
+* {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace !important;
+}
+/* Titles and Text */
+#video-title {
+  color: var(--abyss-primary) !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+.ytd-channel-name, .ytd-video-meta-block {
+  color: var(--abyss-secondary) !important;
+  font-style: italic !important;
+}
+/* Progress Bar */
+.ytp-play-progress {
+  background: var(--abyss-primary) !important;
+  border-radius: 0px;
+}
+/* Titles and Text Colors */
+#video-title {
+  color: var(--abyss-primary) !important;
+}
+.ytd-channel-name, .ytd-video-meta-block {
+  color: var(--abyss-secondary) !important;
+}
+/* Progress Bar */
+.ytp-play-progress {
+  background: var(--abyss-primary) !important;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px !important; }
+::-webkit-scrollbar-track { background: var(--abyss-bg) !important; border-radius: 4px; }
+::-webkit-scrollbar-thumb { 
+  background: var(--abyss-primary) !important; 
+  border-radius: 4px !important; 
+}
+/* Force Typography across elements */
+* {
+  font-family: "Georgia", "Garamond", "Times New Roman", serif !important;
+}
+#simplebox-placeholder {
+  background: #e8d5b5 !important;
+  border-radius: 2px !important;
+  padding: 8px 16px !important;
+  border: 2px dashed #3e352f !important;
+}
+/* Progress bar */
+.ytp-play-progress {
+  background: #c13a3a !important;
+}
+.ytp-swatch-background-color {
+  background-color: #c13a3a !important;
+}
+/* Scrollbar overhaul (Blocky) */
+::-webkit-scrollbar {
+  width: 14px !important;
+}
+::-webkit-scrollbar-track {
+  background: #d1c0a5 !important;
+  border-left: 2px solid #3e352f !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #4a7c74 !important;
+  border: 2px solid #3e352f !important;
+  border-radius: 0 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c13a3a !important;
+}
+/* Description text */
+#description-text,
+yt-formatted-string#description-text {
+  color: #3e352f !important;
+}
+/* Added for HeaderNav active state */
+.ypp-nav-btn.active {
+  background: var(--sf) !important;
+  box-shadow: var(--shadow-active) !important;
 }
 
-html[data-ypp-theme="abyss"] body::before {
-  background: radial-gradient(ellipse at bottom center, rgba(0, 229, 255, 0.3) 0%, transparent 60%);
-  animation: abyss-glow-bg 20s ease-in-out infinite;
+/* Vintage Scrollbar */
+html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar {
+    width: 14px !important;
+    height: 14px !important;
 }
-
-html[data-ypp-theme="abyss"] body::after {
-  background: radial-gradient(ellipse at bottom 30% center, rgba(0, 150, 136, 0.2) 0%, transparent 70%);
-  animation: abyss-glow-fg 28s ease-in-out infinite;
+html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar-track {
+    background: var(--sf) !important;
+    border-left: 2px dashed rgba(44, 31, 20, 0.3) !important;
 }
-
-/* Selection */
-html[data-ypp-theme="abyss"] ::selection {
-  background: rgba(0, 229, 255, 0.3) !important;
-  color: #fff !important;
+html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar-thumb {
+    background: var(--abyss-secondary) !important;
+    border: 2px solid var(--sf) !important;
+}
+html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar-thumb:hover {
+    background: #1a0f08 !important;
 }

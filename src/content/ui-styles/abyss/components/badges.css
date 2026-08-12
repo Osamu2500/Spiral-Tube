@@ -1,0 +1,43 @@
+/* src/content/themes/ui-styles/vintage/components/badges.css */
+/* Chips and Filters */
+html[data-ypp-ui-style="abyss"] yt-chip-cloud-chip-renderer {
+    background: var(--sf) !important;
+    border: 2px dashed var(--abyss-secondary) !important;
+    border-radius: 0 !important;
+    color: var(--abyss-secondary) !important;
+    font-weight: 700 !important;
+    box-shadow: 2px 2px rgba(0,0,0,0.1) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-style="abyss"] yt-chip-cloud-chip-renderer[selected] {
+    background: var(--abyss-secondary) !important;
+    color: var(--sf) !important;
+    border: 2px solid var(--abyss-secondary) !important;
+}
+
+html[data-ypp-ui-style="abyss"] yt-chip-cloud-chip-renderer:hover {
+    transform: translate(-1px, -1px) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.2) !important;
+}
+
+/* Badges (Verified, Live, Premiere) */
+html[data-ypp-ui-style="abyss"] ytd-badge-supported-renderer {
+    background: transparent !important;
+}
+
+html[data-ypp-ui-style="abyss"] .badge-style-type-verified yt-icon {
+    color: #8b0000 !important;
+    fill: #8b0000 !important;
+}
+
+html[data-ypp-ui-style="abyss"] .badge-style-type-live-now,
+html[data-ypp-ui-style="abyss"] .badge-style-type-premiere {
+    background: #8b0000 !important;
+    color: var(--sf) !important;
+    border: 1px dashed var(--sf) !important;
+    border-radius: 0 !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    padding: 2px 4px !important;
+}

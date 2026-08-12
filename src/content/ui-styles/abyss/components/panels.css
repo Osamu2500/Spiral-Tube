@@ -1,4 +1,22 @@
-
-/* Panels for abyss */
-#description.ytd-watch-metadata { border-radius: 2px !important; border: 1px solid #1a1a2e !important; padding: 16px !important; }
-ytd-live-chat-frame { border-radius: 2px !important; border: 1px solid #1a1a2e !important; }
+.anchored-panel.ytd-shorts {
+  background: var(--sf) !important;
+  padding: 5px;
+  border: var(--abyss-border) !important;
+  border-radius: 4px !important;
+  box-shadow: var(--shadow-active) !important;
+  margin-top: 15px !important;
+}
+ytd-engagement-panel-title-header-renderer[shorts-panel][enable-anchored-panel] #header.ytd-engagement-panel-title-header-renderer {
+  border-bottom: none;
+}
+ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
+  background: none !important;
+}
+ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+  border: var(--abyss-border) !important;
+}
+#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+  border-radius: 4px !important;
+  border: var(--abyss-border) !important;
+  box-shadow: var(--shadow-hover) !important;
+}

@@ -1,25 +1,113 @@
-/* src/content/ui-styles/abyss/pages/comments.css */
-
-html[data-ypp-theme="abyss"] ytd-comment-thread-renderer {
-  background: rgba(2, 10, 14, 0.6) !important;
-  border-radius: var(--ypp-rad-md) !important;
-  border: 1px solid var(--ypp-border-light) !important;
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+ytd-notification-topbar-button-renderer.ytd-masthead,
+yt-icon-button.ytd-masthead,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
+tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) {
+  border-radius: 4px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal:hover,
+ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+yt-icon-button.ytd-masthead:hover,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover,
+tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button):hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
+}
+ytd-comment-view-model button,
+ytd-comment-renderer button {
+  border-radius: 4px !important;
+  transition: background 0.15s ease, box-shadow 0.15s ease !important;
+  transform: none !important;
+}
+ytd-comment-view-model button:hover,
+ytd-comment-renderer button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+  transform: none !important;
+}
+/* src/content/themes/ui-styles/vintage/pages/comments.css */
+ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 4px !important;
+  margin: 10px !important;
+  border: var(--abyss-border) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
+  background: none !important;
+}
+ytd-comment-view-model yt-interaction .fill,
+ytd-comment-renderer yt-interaction .fill {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+ytd-comment-thread-renderer,
+ytd-comment-view-model {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 4px !important;
+  padding: 15px !important;
+  margin-bottom: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: var(--abyss-border) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+ytd-comment-thread-renderer:hover,
+ytd-comment-view-model:hover {
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(128, 128, 128, 0.09) !important;
+}
+ytd-comment-simplebox-renderer {
+  background: rgba(128, 128, 128, 0.08) !important;
+  border-radius: 4px !important;
+  padding: 15px !important;
+  box-shadow: var(--shadow-active) !important;
+  border: var(--abyss-border) !important;
+}
+#placeholder-area.ytd-comment-simplebox-renderer {
+  border: var(--abyss-border) !important;
+}
+ytd-comment-thread-renderer {
+  background: #f4ecd8 !important;
+  border-radius: 2px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;
-  transition: var(--ypp-transition-fluid) !important;
+  border: 1px solid #d1c0a5 !important;
+  border-left: 6px solid #c13a3a !important;
+  box-shadow: 4px 4px 0px rgba(62, 53, 47, 0.15) !important;
 }
-
-html[data-ypp-theme="abyss"] ytd-comment-thread-renderer:focus-within,
-html[data-ypp-theme="abyss"] ytd-comment-thread-renderer:hover {
-  background: rgba(2, 12, 17, 0.9) !important;
-  border-color: var(--ypp-border-heavy) !important;
-  box-shadow: var(--ypp-shadow-glow) !important;
-  transform: translateY(-2px) !important;
+/* Heavy Theme Action Button Coverage Fix */
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="abyss"] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="abyss"] #ask-button button,
+html[data-ypp-ui-style="abyss"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="abyss"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="abyss"] button.ytSpecButtonShapeNextText {
+  border-radius: 4px !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
 }
-
-html[data-ypp-theme="abyss"] #simple-box {
-  background: rgba(0, 0, 0, 0.5) !important;
-  border-radius: var(--ypp-rad-sm) !important;
-  border: 1px solid var(--ypp-accent-secondary) !important;
-  padding: 12px 24px !important;
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="abyss"] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="abyss"] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="abyss"] #ask-button button:hover,
+html[data-ypp-ui-style="abyss"] .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-style="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="abyss"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="abyss"] button.ytSpecButtonShapeNextText:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1.1);
 }
