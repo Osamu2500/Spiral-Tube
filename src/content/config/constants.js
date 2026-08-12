@@ -383,7 +383,8 @@ window.YPP.CONSTANTS = {
         OUTRUN: { key: 'outrun', label: 'Outrun Synth', class: 'ypp-theme-outrun' },
         RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' },
         CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' },
-        HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' }
+        HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' },
+        AURORA: { key: 'aurora', label: 'Aurora', class: 'ypp-theme-aurora' }
     },
 
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
@@ -409,7 +410,8 @@ const CARD_STYLES = [
   { id: 'technozen', label: 'Technozen (Japanese Eco-Tech)' },
   { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' },
   { id: 'christmas', label: 'Christmas (Festive)' },
-  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' }
+  { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
+  { id: 'aurora', label: 'Aurora (Northern Lights)' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -428,6 +430,7 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0)' },
   { id: 'christmas', label: 'Christmas (Festive)' },
   { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
+  { id: 'aurora', label: 'Aurora (Northern Lights)' },
   { id: 'cherry', label: 'Cherry (Night Sakura)' }
 ];
 
