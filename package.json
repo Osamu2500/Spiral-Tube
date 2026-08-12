@@ -4,6 +4,7 @@
   "description": "Spiral Tube — YouTube Power Extension",
   "scripts": {
     "build:css": "node scripts/build-themes.js",
+    "create-theme": "node scripts/create-theme.js",
     "build": "npm run build:css && vite build && vite build --config vite.config.external.js",
     "test": "vitest run"
   },
