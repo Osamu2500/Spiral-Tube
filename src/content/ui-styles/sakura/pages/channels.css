@@ -1,0 +1,92 @@
+#wrapper.ytd-channel-avatar-editor {
+  border-radius: 20px !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+.ytd-channel-name,
+.ytd-video-meta-block {
+  color: var(--vintage-secondary) !important;
+  font-style: italic !important;
+}
+.ytd-channel-name,
+.ytd-video-meta-block {
+  color: var(--vintage-secondary) !important;
+}
+ytd-c4-tabbed-header-renderer {
+  background: var(--sf) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--shadow-base) !important;
+  margin-bottom: 20px !important;
+  border: var(--vintage-border) !important;
+  border-top: none !important;
+}
+ytd-video-renderer { box-sizing: border-box !important; }
+ytd-video-renderer,
+ytd-channel-renderer,
+ytd-playlist-renderer,
+ytd-radio-renderer {
+  background: rgba(128, 128, 128, 0.05) !important;
+  border-radius: 20px !important;
+  padding: 15px !important;
+  margin-bottom: 15px !important;
+  box-shadow: var(--shadow-base) !important;
+  border: var(--vintage-border) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+ytd-video-renderer:hover,
+ytd-channel-renderer:hover,
+ytd-playlist-renderer:hover,
+ytd-radio-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+  background: rgba(128, 128, 128, 0.09) !important;
+}
+
+/* Channel Banner Sepia */
+html[data-ypp-ui-style="sakura"] .yt-page-header-renderer,
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer #banner {
+    filter: sepia(0.3) contrast(1.1) !important;
+}
+
+/* Channel Header Overrides */
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="sakura"] tp-yt-app-header,
+html[data-ypp-ui-style="sakura"] #page-header.ytd-tabbed-page-header,
+html[data-ypp-ui-style="sakura"] #page-header-container,
+html[data-ypp-ui-style="sakura"] .ytd-c4-tabbed-header-renderer {
+    background: var(--sf) !important;
+    background-color: var(--sf) !important;
+}
+
+/* Channel page text colors */
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer *,
+html[data-ypp-ui-style="sakura"] ytd-shelf-renderer *,
+html[data-ypp-ui-style="sakura"] ytd-item-section-renderer *,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer *,
+html[data-ypp-ui-style="sakura"] .ytd-channel-name,
+html[data-ypp-ui-style="sakura"] .tp-yt-paper-tab {
+    color: var(--vintage-secondary) !important;
+}
+
+/* Channel Subscribe/Join buttons */
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer button,
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer button,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer button {
+    background: var(--sf) !important;
+    border: 1px solid rgba(232, 82, 122, 0.45) !important;
+    color: var(--vintage-secondary) !important;
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer button:hover,
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer button:hover,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer button:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    fill: var(--sf) !important;
+}

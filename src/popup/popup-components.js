@@ -165,6 +165,7 @@ export function initComponents(
       {
         name: 'UI Designs — Art & Culture',
         themes: [
+          { key: 'sakura', label: 'Sakura', meta: 'Cherry Blossom', color: '#fff0f5' },
           { key: 'y2k', label: 'Y2K', meta: 'Late 90s', color: '#e6e6fa' },
           { key: 'steampunk', label: 'Steampunk', meta: 'Brass & Copper', color: '#f5deb3' },
           { key: 'origami', label: 'Origami', meta: 'Paper Folds', color: '#fdfbf7' },
