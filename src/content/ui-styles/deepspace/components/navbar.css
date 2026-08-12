@@ -66,10 +66,10 @@ html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--ico
   filter: drop-shadow(0 0 4px var(--ds-accent-blue)) !important;
 }
 
-
 /* Navbar Overhaul for deepspace */
-html[data-ypp-ui-style="deepspace"] #masthead-container, ytd-masthead {
-background: linear-gradient(135deg, rgba(30,30,30,0.7), rgba(10,10,10,0.7)) !important; border-bottom: 3px dotted hsl(122, 70%, 50%) !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px hsl(242, 70%, 40%)44 !important;
+html[data-ypp-ui-style="deepspace"] #masthead-container,
+html[data-ypp-ui-style="deepspace"] ytd-masthead {
+background: linear-gradient(135deg, rgba(30,30,30,0.7), rgba(10,10,10,0.7)) !important; border: none !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px hsl(242, 70%, 40%)44 !important;
 }
 html[data-ypp-ui-style="deepspace"] ytd-topbar-logo-renderer {
 filter: drop-shadow(2px 2px 4px hsl(122, 70%, 50%)) !important; transition: transform 0.3s !important;
@@ -77,7 +77,8 @@ filter: drop-shadow(2px 2px 4px hsl(122, 70%, 50%)) !important; transition: tran
 html[data-ypp-ui-style="deepspace"] ytd-topbar-logo-renderer:hover {
 transform: scale(1.05) !important;
 }
-html[data-ypp-ui-style="deepspace"] #container.ytd-searchbox, ytd-searchbox {
+html[data-ypp-ui-style="deepspace"] #container.ytd-searchbox,
+html[data-ypp-ui-style="deepspace"] ytd-searchbox {
 border-radius: 20px !important; border: 2px dotted hsl(122, 70%, 50%) !important; background: rgba(0,0,0,0.4) !important; box-shadow: inset 0 0 10px hsl(242, 70%, 40%)33 !important;
 }
 html[data-ypp-ui-style="deepspace"] #search-input input {
@@ -95,7 +96,8 @@ color: #fff !important;
 html[data-ypp-ui-style="deepspace"] #voice-search-button {
 background: hsl(242, 70%, 40%) !important; border-radius: 20px !important; border: 2px dotted hsl(122, 70%, 50%) !important; color: #fff !important; box-shadow: 0 0 10px hsl(122, 70%, 50%)66 !important;
 }
-html[data-ypp-ui-style="deepspace"] .sbdd_b, .sbsb_a {
+html[data-ypp-ui-style="deepspace"] .sbdd_b,
+html[data-ypp-ui-style="deepspace"] .sbsb_a {
 border-radius: 20px !important; border: 2px dotted hsl(122, 70%, 50%) !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px hsl(242, 70%, 40%)66 !important;
 }
 html[data-ypp-ui-style="deepspace"] .sbsb_c {
@@ -104,10 +106,12 @@ color: #ccc !important; font-family: inherit !important;
 html[data-ypp-ui-style="deepspace"] .sbsb_c:hover {
 background: hsl(242, 70%, 40%)33 !important; color: hsl(122, 70%, 50%) !important; padding-left: 15px !important; transition: all 0.2s !important;
 }
-html[data-ypp-ui-style="deepspace"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+html[data-ypp-ui-style="deepspace"] ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-style="deepspace"] ytd-notification-topbar-button-renderer yt-icon-button {
 background: rgba(255,255,255,0.05) !important; border-radius: 20px !important; border: 1px solid hsl(122, 70%, 50%) !important; transition: all 0.3s !important;
 }
-html[data-ypp-ui-style="deepspace"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+html[data-ypp-ui-style="deepspace"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
+html[data-ypp-ui-style="deepspace"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
 background: hsl(122, 70%, 50%) !important; color: #fff !important; transform: translateY(-2px) !important; box-shadow: 0 4px 12px hsl(122, 70%, 50%)88 !important;
 }
 html[data-ypp-ui-style="deepspace"] #avatar-btn yt-img-shadow {

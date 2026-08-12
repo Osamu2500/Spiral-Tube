@@ -40,15 +40,16 @@ html[data-ypp-ui-style="grunge"] ytd-mini-guide-entry-renderer:hover {
   transform: scale(1.1) !important; box-shadow: 3px 3px 0 #111 !important;
 }
 
-
 /* Navbar Overhaul for grunge */
-html[data-ypp-ui-style="grunge"] #masthead-container, ytd-masthead {
-background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border-bottom: 3px dashed #111 !important;
+html[data-ypp-ui-style="grunge"] #masthead-container,
+html[data-ypp-ui-style="grunge"] ytd-masthead {
+background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border: none !important;
 }
 html[data-ypp-ui-style="grunge"] ytd-topbar-logo-renderer {
 filter: grayscale(80%) contrast(150%) !important; transform: rotate(-2deg) !important;
 }
-html[data-ypp-ui-style="grunge"] #container.ytd-searchbox, ytd-searchbox {
+html[data-ypp-ui-style="grunge"] #container.ytd-searchbox,
+html[data-ypp-ui-style="grunge"] ytd-searchbox {
 border-radius: 2px 8px 3px 5px !important; border: 2px solid #000 !important; background: #222 !important; box-shadow: 3px 3px 0 #000 !important;
 }
 html[data-ypp-ui-style="grunge"] #search-input input {
@@ -60,13 +61,15 @@ background: #444 !important; border-radius: 0 5px 2px 0 !important; border: 2px 
 html[data-ypp-ui-style="grunge"] #voice-search-button {
 background: #222 !important; border-radius: 40% 60% 70% 30% !important; border: 2px dashed #000 !important;
 }
-html[data-ypp-ui-style="grunge"] .sbdd_b, .sbsb_a {
+html[data-ypp-ui-style="grunge"] .sbdd_b,
+html[data-ypp-ui-style="grunge"] .sbsb_a {
 border-radius: 2px 8px 3px 5px !important; border: 3px solid #000 !important; background: #222 !important; box-shadow: 6px 6px 0 #000 !important;
 }
 html[data-ypp-ui-style="grunge"] .sbsb_c:hover {
 background: #444 !important; text-decoration: line-through !important;
 }
-html[data-ypp-ui-style="grunge"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+html[data-ypp-ui-style="grunge"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
+html[data-ypp-ui-style="grunge"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
 background: #000 !important; color: #fff !important; transform: rotate(5deg) scale(1.1) !important;
 }
 html[data-ypp-ui-style="grunge"] #avatar-btn yt-img-shadow {

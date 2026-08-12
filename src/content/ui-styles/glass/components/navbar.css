@@ -1,8 +1,9 @@
 
 
 /* Navbar Overhaul for glass */
-html[data-ypp-ui-style="glass"] #masthead-container, ytd-masthead {
-background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(10,10,10,0.8)) !important; border-bottom: 3px solid hsl(28, 70%, 50%) !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px hsl(148, 70%, 40%)44 !important;
+html[data-ypp-ui-style="glass"] #masthead-container,
+html[data-ypp-ui-style="glass"] ytd-masthead {
+background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(10,10,10,0.8)) !important; border: none !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px hsl(148, 70%, 40%)44 !important;
 }
 html[data-ypp-ui-style="glass"] ytd-topbar-logo-renderer {
 filter: drop-shadow(2px 2px 4px hsl(28, 70%, 50%)) !important; transition: transform 0.3s !important;
@@ -10,7 +11,8 @@ filter: drop-shadow(2px 2px 4px hsl(28, 70%, 50%)) !important; transition: trans
 html[data-ypp-ui-style="glass"] ytd-topbar-logo-renderer:hover {
 transform: scale(1.05) !important;
 }
-html[data-ypp-ui-style="glass"] #container.ytd-searchbox, ytd-searchbox {
+html[data-ypp-ui-style="glass"] #container.ytd-searchbox,
+html[data-ypp-ui-style="glass"] ytd-searchbox {
 border-radius: 0px !important; border: 2px solid hsl(28, 70%, 50%) !important; background: rgba(0,0,0,0.4) !important; box-shadow: inset 0 0 10px hsl(148, 70%, 40%)33 !important;
 }
 html[data-ypp-ui-style="glass"] #search-input input {
@@ -28,7 +30,8 @@ color: #fff !important;
 html[data-ypp-ui-style="glass"] #voice-search-button {
 background: hsl(148, 70%, 40%) !important; border-radius: 0px !important; border: 2px solid hsl(28, 70%, 50%) !important; color: #fff !important; box-shadow: 0 0 10px hsl(28, 70%, 50%)66 !important;
 }
-html[data-ypp-ui-style="glass"] .sbdd_b, .sbsb_a {
+html[data-ypp-ui-style="glass"] .sbdd_b,
+html[data-ypp-ui-style="glass"] .sbsb_a {
 border-radius: 0px !important; border: 2px solid hsl(28, 70%, 50%) !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px hsl(148, 70%, 40%)66 !important;
 }
 html[data-ypp-ui-style="glass"] .sbsb_c {
@@ -37,10 +40,12 @@ color: #ccc !important; font-family: inherit !important;
 html[data-ypp-ui-style="glass"] .sbsb_c:hover {
 background: hsl(148, 70%, 40%)33 !important; color: hsl(28, 70%, 50%) !important; padding-left: 15px !important; transition: all 0.2s !important;
 }
-html[data-ypp-ui-style="glass"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+html[data-ypp-ui-style="glass"] ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-style="glass"] ytd-notification-topbar-button-renderer yt-icon-button {
 background: rgba(255,255,255,0.05) !important; border-radius: 0px !important; border: 1px solid hsl(28, 70%, 50%) !important; transition: all 0.3s !important;
 }
-html[data-ypp-ui-style="glass"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+html[data-ypp-ui-style="glass"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
+html[data-ypp-ui-style="glass"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
 background: hsl(28, 70%, 50%) !important; color: #fff !important; transform: translateY(-2px) !important; box-shadow: 0 4px 12px hsl(28, 70%, 50%)88 !important;
 }
 html[data-ypp-ui-style="glass"] #avatar-btn yt-img-shadow {

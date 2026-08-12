@@ -40,15 +40,16 @@ html[data-ypp-ui-style="gothic"] ytd-mini-guide-entry-renderer:hover {
   transform: scale(1.1) !important; box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
 }
 
-
 /* Navbar Overhaul for gothic */
-html[data-ypp-ui-style="gothic"] #masthead-container, ytd-masthead {
-background: #1a1a1a !important; border-bottom: 4px double #800000 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;
+html[data-ypp-ui-style="gothic"] #masthead-container,
+html[data-ypp-ui-style="gothic"] ytd-masthead {
+background: #1a1a1a !important; border: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;
 }
 html[data-ypp-ui-style="gothic"] ytd-topbar-logo-renderer {
 filter: sepia(1) hue-rotate(300deg) saturate(3) drop-shadow(2px 2px 0px #000) !important;
 }
-html[data-ypp-ui-style="gothic"] #container.ytd-searchbox, ytd-searchbox {
+html[data-ypp-ui-style="gothic"] #container.ytd-searchbox,
+html[data-ypp-ui-style="gothic"] ytd-searchbox {
 border-radius: 0 !important; border: 2px solid #4a0404 !important; background: #000 !important;
 }
 html[data-ypp-ui-style="gothic"] #search-input input {
@@ -66,7 +67,8 @@ color: #b30000 !important;
 html[data-ypp-ui-style="gothic"] #voice-search-button {
 background: #000 !important; border-radius: 0 !important; border: 1px solid #4a0404 !important; color: #b30000 !important;
 }
-html[data-ypp-ui-style="gothic"] .sbdd_b, .sbsb_a {
+html[data-ypp-ui-style="gothic"] .sbdd_b,
+html[data-ypp-ui-style="gothic"] .sbsb_a {
 border-radius: 0 !important; border: 4px double #800000 !important; background: #1a1a1a !important; box-shadow: 0 10px 30px rgba(0,0,0,0.9) !important;
 }
 html[data-ypp-ui-style="gothic"] .sbsb_c {
@@ -75,10 +77,12 @@ font-family: 'Playfair Display', serif !important; color: #a0a0a0 !important;
 html[data-ypp-ui-style="gothic"] .sbsb_c:hover {
 background: #2a0000 !important; color: #ff3333 !important; font-style: italic !important;
 }
-html[data-ypp-ui-style="gothic"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+html[data-ypp-ui-style="gothic"] ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-style="gothic"] ytd-notification-topbar-button-renderer yt-icon-button {
 border-radius: 0 !important; border: 1px solid transparent !important;
 }
-html[data-ypp-ui-style="gothic"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+html[data-ypp-ui-style="gothic"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
+html[data-ypp-ui-style="gothic"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
 border: 1px solid #800000 !important; background: #2a0000 !important;
 }
 html[data-ypp-ui-style="gothic"] #avatar-btn yt-img-shadow {

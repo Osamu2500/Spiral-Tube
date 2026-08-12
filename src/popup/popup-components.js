@@ -78,7 +78,6 @@ export function initComponents(
           { key: 'forest', label: t('forest'), meta: t('green'), color: '#0f1c15' },
           { key: 'cherry', label: t('cherry'), meta: t('pink'), color: '#26181b' },
           { key: 'kawaii', label: t('kawaii'), meta: t('pink_cute'), color: '#fff1f4' },
-          { key: 'player-retouch', label: t('player_retouch'), meta: t('red_accent'), color: '#1a1a1a' },
           { key: 'coffee', label: t('coffee'), meta: t('latte'), color: '#2a201c' },
           { key: 'bloodmoon', label: t('blood_moon'), meta: t('crimson'), color: '#1a0505' },
         ],
@@ -143,8 +142,7 @@ export function initComponents(
           { key: 'christmas', label: 'Christmas', meta: 'Festive', color: '#165016' },
           { key: 'liquid-glass', label: 'Liquid Glass', meta: 'Apple', color: '#1a1a1a' },
           { key: 'nature', label: 'Nature', meta: 'Forest', color: '#2e8b57' },
-          { key: 'neumorphic', label: 'Neumorphic', meta: 'Soft 3D', color: '#e0e5ec' },
-          { key: 'startube', label: 'Startube', meta: 'Custom', color: '#1a1a1a' }
+          { key: 'neumorphic', label: 'Neumorphic', meta: 'Soft 3D', color: '#e0e5ec' }
         ]
       },
 

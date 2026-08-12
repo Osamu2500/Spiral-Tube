@@ -5,18 +5,15 @@ const uiStylesDir = path.join(__dirname, '..', 'src', 'content', 'ui-styles');
 
 // Helper to wrap css in the proper html[data-ypp-ui-style="theme"] selector
 function buildCSS(themeName, rules) {
-    const selector = `html[data-ypp-ui-style="${themeName}"]`;
+    const prefix = `html[data-ypp-ui-style="${themeName}"]`;
     let cssString = `\n/* Navbar Overhaul for ${themeName} */\n`;
     
     for (const [target, cssText] of Object.entries(rules)) {
-        // Special case for dropdowns that are attached to body and need the root selector
-        if (target.includes('.sbdd_b') || target.includes('.sbsb_a') || target.includes('tp-yt-iron-dropdown')) {
-            // Because dropdowns are at the end of the body, the html data attribute still applies to them.
-            cssString += `${selector} ${target} {\n${cssText}\n}\n`;
-        } else {
-            // Normal masthead elements
-            cssString += `${selector} ${target} {\n${cssText}\n}\n`;
-        }
+        // Properly scope every comma-separated sub-selector with the theme prefix
+        const scopedSelector = target.split(',')
+            .map(s => `${prefix} ${s.trim()}`)
+            .join(`,\n`);
+        cssString += `${scopedSelector} {\n${cssText}\n}\n`;
     }
     return cssString;
 }
@@ -286,13 +283,20 @@ for (const theme of allThemes) {
         existingContent = fs.readFileSync(targetPath, 'utf8');
     }
     
-    // Simple check to avoid duplicate injections
-    if (!existingContent.includes(`/* Navbar Overhaul for ${theme} */`)) {
+    // Always replace existing navbar block to fix broken selectors
+    const marker = `/* Navbar Overhaul for ${theme} */`;
+    if (existingContent.includes(marker)) {
+        // Remove the old (potentially broken) block and replace with fresh one
+        const startIdx = existingContent.indexOf(marker);
+        // Trim everything from the marker to end of file, then re-append
+        const beforeBlock = existingContent.substring(0, startIdx).trimEnd();
+        fs.writeFileSync(targetPath, beforeBlock + `\n${cssText}`, 'utf8');
+        console.log(`Replaced Navbar CSS in ${theme}`);
+        injectedCount++;
+    } else {
         fs.appendFileSync(targetPath, `\n${cssText}`, 'utf8');
         console.log(`Injected Navbar CSS into ${theme}`);
         injectedCount++;
-    } else {
-        console.log(`Skipping ${theme} (Already injected)`);
     }
 }
 
