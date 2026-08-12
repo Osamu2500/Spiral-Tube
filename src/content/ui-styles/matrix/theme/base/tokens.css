@@ -1,9 +1,6 @@
 /* matrix/theme/base/tokens.css */
 html[data-ypp-ui-style="matrix"] {
-  /* Popup/Extension theme mirror */
-  --ypp-bg-base:    #000000;
-  --ypp-bg-surface: #001100;
-  --ypp-accent:     #00ff00;
-  --ypp-text-primary: #00ff00;
+  --ypp-bg-base: #000; --ypp-bg-surface: #001100;
+  --ypp-accent: #00ff00; --ypp-text-primary: #00ff00;
   --ypp-text-secondary: #009900;
 }

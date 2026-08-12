@@ -1,53 +1,42 @@
-/* src/content/ui-styles/neo-brutalism/components/menus.css */
-html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="neo-brutalism"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="neo-brutalism"] #contentWrapper tp-yt-iron-dropdown,
+/* neo-brutalism/components/menus.css */
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-dialog, html[data-ypp-ui-style="neo-brutalism"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-iron-dropdown, html[data-ypp-ui-style="neo-brutalism"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-style="neo-brutalism"] ytd-multi-page-menu-renderer {
-  background: #fffbf0 !important;
-  border: 4px solid #000000 !important;
-  border-radius: 0px !important;
-  box-shadow: 10px 10px 0px #000000 !important;
-  backdrop-filter: blur(12px) !important;
-  color: #000000 !important;
+  background: #fffbf0 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; box-shadow: 10px 10px 0px #000 !important;
+  backdrop-filter: blur(12px) !important; color: #000 !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] .ytp-settings-menu,
-html[data-ypp-ui-style="neo-brutalism"] .ytp-panel-menu {
-  background: #fffbf0 !important;
-  border: 4px solid #000000 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="neo-brutalism"] .ytp-settings-menu, html[data-ypp-ui-style="neo-brutalism"] .ytp-panel-menu, html[data-ypp-ui-style="neo-brutalism"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-panel {
+  background: #fffbf0 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; box-shadow: 10px 10px 0px #000 !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem {
-  color: #000000 !important;
-  font-family: "Space Mono","Courier New",monospace !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem:hover {
-  background: #ffcc00 !important;
-  color: #000000 !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-item {
-  background: transparent !important;
-  color: #000000 !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-item:hover {
-  background: #ffcc00 !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] ytd-notification-renderer {
-  background: #fffbf0 !important;
-  border-bottom: 4px solid #000000 !important;
+  color: #000 !important; font-family: "Space Mono","Courier New",monospace !important;
   transition: background var(--bounce) !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] ytd-notification-renderer:hover {
-  background: #ffcc00 !important;
+html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem:hover { background: #ffcc00 !important; color: #000 !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-tooltip-text {
+  font-family: "Space Mono","Courier New",monospace !important; background: #fffbf0 !important;
+  color: #000 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; text-shadow: none !important;
+  box-shadow: 6px 6px 0px #000 !important; padding: 4px 8px !important;
 }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-listbox, html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-item {
+  background: transparent !important; color: #000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-item:hover { background: #ffcc00 !important; }
+html[data-ypp-ui-style="neo-brutalism"] ytd-notification-renderer {
+  background: #fffbf0 !important; border-bottom: 4px solid #000 !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-notification-renderer:hover { background: #ffcc00 !important; }
 html[data-ypp-ui-style="neo-brutalism"] ytd-settings-sidebar-renderer {
-  background: #fffbf0 !important;
-  border-radius: 0px !important;
-  box-shadow: 6px 6px 0px #000000 !important;
-  padding: 15px !important;
-  border: 4px solid #000000 !important;
+  background: #fffbf0 !important; border-radius: 0px !important;
+  box-shadow: 6px 6px 0px #000 !important; padding: 15px !important; border: 4px solid #000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 6px 6px 0px #000 !important; border-radius: 0px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

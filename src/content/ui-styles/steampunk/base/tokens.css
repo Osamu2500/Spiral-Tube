@@ -1,64 +1,39 @@
-/* src/content/ui-styles/steampunk/base/tokens.css */
+/* steampunk/base/tokens.css */
 html[data-ypp-ui-style="steampunk"],
 html[data-ypp-ui-style="steampunk"] body,
 html[data-ypp-ui-style="steampunk"] [dark] {
-  /* Core Palette */
-  --steampunk-bg:           #3b2f2f;
-  --steampunk-sf:           #4a3a30;
-  --steampunk-primary:      #5c4033;
-  --steampunk-secondary:    #8b5a2b;
-  --steampunk-accent:       #d2b48c;
-  --steampunk-text:         #f5deb3;
-  --steampunk-text-sub:     #c8a882;
-  --steampunk-border:       3px double #d2b48c;
-  --steampunk-border-hover: 3px solid #d2b48c;
-  --steampunk-radius:       6px;
-  --steampunk-shadow:       inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5);
-  --steampunk-shadow-hover: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3);
-  --steampunk-shadow-active:inset 0 4px 8px rgba(0,0,0,0.8);
-  --steampunk-bounce:       ease 0.5s;
-  --steampunk-font:         "Playfair Display","Palatino Linotype",serif;
-  --steampunk-font-alt:     "IM Fell English","Playfair Display",serif;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--steampunk-sf);
-  --bounce:       var(--steampunk-bounce);
-  --shadow-base:  var(--steampunk-shadow);
-  --shadow-hover: var(--steampunk-shadow-hover);
-  --shadow-active:var(--steampunk-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             rgba(210,180,140,0.15);
-  --chip-bg-hover:       rgba(210,180,140,0.3);
-  --chip-bg-selected:    #d2b48c;
-  --chip-color-selected: #3b2f2f;
-  --chip-border:         3px double #d2b48c;
-  --chip-border-selected:3px solid #b8964e;
-  --chip-radius:         6px;
-  --chip-shadow:         inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5);
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #f5deb3 !important;
-  --yt-spec-text-secondary:        #c8a882 !important;
-  --yt-spec-text-disabled:         #c8a882 !important;
-  --yt-spec-icon-active-other:     #d2b48c !important;
-  --yt-spec-icon-inactive:         #c8a882 !important;
-  --yt-spec-menu-background:       #4a3a30 !important;
-  --yt-spec-raised-background:     #4a3a30 !important;
-  --yt-spec-base-background:       #3b2f2f !important;
+  --steampunk-bg: #3b2f2f; --steampunk-sf: #4a3a30; --steampunk-primary: #5c4033;
+  --steampunk-secondary: #8b5a2b; --steampunk-accent: #d2b48c;
+  --steampunk-text: #f5deb3; --steampunk-text-sub: #c8a882;
+  --steampunk-border: 3px double #d2b48c; --steampunk-border-hover: 3px solid #d2b48c;
+  --steampunk-border-accent: 3px solid #c8961a;
+  --steampunk-radius: 6px; --steampunk-font: "Playfair Display","Palatino Linotype",serif;
+  --steampunk-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5); --steampunk-shadow-hover: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3);
+  --steampunk-shadow-active: inset 0 4px 8px rgba(0,0,0,0.8); --steampunk-bounce: ease 0.5s;
+  --sf: var(--steampunk-sf); --bounce: var(--steampunk-bounce);
+  --shadow-base: var(--steampunk-shadow); --shadow-hover: var(--steampunk-shadow-hover);
+  --shadow-active: var(--steampunk-shadow-active);
+  --chip-bg: rgba(210,180,140,0.15); --chip-bg-hover: rgba(210,180,140,0.3);
+  --chip-bg-selected: #d2b48c; --chip-color-selected: #3b2f2f;
+  --chip-border: 3px double #d2b48c; --chip-border-selected: 3px solid #b8964e;
+  --chip-radius: 6px; --chip-shadow: none;
+  --yt-spec-text-primary: #f5deb3 !important;
+  --yt-spec-text-secondary: #c8a882 !important;
+  --yt-spec-text-disabled: #c8a882 !important;
+  --yt-spec-icon-active-other: #d2b48c !important;
+  --yt-spec-icon-inactive: #c8a882 !important;
+  --yt-spec-menu-background: #4a3a30 !important;
+  --yt-spec-raised-background: #4a3a30 !important;
+  --yt-spec-base-background: #3b2f2f !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "Playfair Display","Palatino Linotype",serif !important;
-  --yt-font-family:                "Playfair Display","Palatino Linotype",serif !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Playfair Display","Palatino Linotype",serif !important;
+  --yt-font-family: "Playfair Display","Palatino Linotype",serif !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="steampunk"] body,
 html[data-ypp-ui-style="steampunk"] yt-formatted-string,
 html[data-ypp-ui-style="steampunk"] .yt-core-attributed-string,
-html[data-ypp-ui-style="steampunk"] input,
-html[data-ypp-ui-style="steampunk"] textarea,
-html[data-ypp-ui-style="steampunk"] button,
+html[data-ypp-ui-style="steampunk"] input, html[data-ypp-ui-style="steampunk"] textarea, html[data-ypp-ui-style="steampunk"] button,
 html[data-ypp-ui-style="steampunk"] tp-yt-paper-item,
 html[data-ypp-ui-style="steampunk"] .ytp-menuitem-label,
 html[data-ypp-ui-style="steampunk"] .ytp-menuitem-content {

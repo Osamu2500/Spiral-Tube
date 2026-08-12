@@ -1,54 +1,35 @@
-/* src/content/ui-styles/galaxy/base/layout.css */
-html[data-ypp-ui-style="galaxy"] * {
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient {
-  overflow-x: hidden !important;
-}
+/* galaxy/base/layout.css */
+html[data-ypp-ui-style="galaxy"] * { font-family: "Space Grotesk","Segoe UI",sans-serif !important; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient { overflow-x: hidden !important; }
 html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
   filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
-  transform: scale(3);
-  opacity: 1;
-  mix-blend-mode: lighten;
+  transform: scale(3); opacity: 1; mix-blend-mode: lighten;
 }
 html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5);
+  overflow: hidden; border-radius: 16px; box-shadow: 0 0 35px rgba(0,240,255,0.5);
 }
 html[data-ypp-ui-style="galaxy"] #video-title {
-  color: #e0e0e0 !important;
-  font-weight: bold !important;
-  letter-spacing: 0.5px !important;
+  color: #e0e0e0 !important; font-weight: bold !important; letter-spacing: 0.5px !important;
 }
-html[data-ypp-ui-style="galaxy"] #description-text,
-html[data-ypp-ui-style="galaxy"] yt-formatted-string#description-text {
+html[data-ypp-ui-style="galaxy"] #description-text, html[data-ypp-ui-style="galaxy"] yt-formatted-string#description-text {
   color: #a0a0c0 !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytSuggestionComponentRoundedSuggestion {
-  margin: 5px 10px;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  margin: 5px 10px; border: 1px solid rgba(0,240,255,0.3) !important;
   border-radius: 16px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytSuggestionComponentRoundedSuggestion:hover {
-  transform: scale(1.01) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.01) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] yt-img-shadow#avatar {
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
   border-radius: 50% !important;
+  
 }
 html[data-ypp-ui-style="galaxy"] .ytPlayerProgressBarDragContainer {
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-  margin-bottom: 5px !important;
+  margin-left: 15px !important; margin-right: 15px !important; margin-bottom: 5px !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarLine,
-html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarPlayed {
-  border-radius: 16px !important;
-}
-
+html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarPlayed { border-radius: 16px !important; }
+html[data-ypp-ui-style="galaxy"] html { --yt-spec-badge-chip-background: transparent !important; --yt-spec-raised-background: transparent !important; --yt-spec-additive-background: transparent !important; }

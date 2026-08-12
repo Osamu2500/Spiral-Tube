@@ -1,45 +1,44 @@
-/* src/content/ui-styles/anime/pages/comments.css */
-html[data-ypp-ui-style="anime"] ytd-comment-thread-renderer,
-html[data-ypp-ui-style="anime"] ytd-comment-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  padding: 12px !important;
-  margin-bottom: 8px !important;
+/* anime/pages/comments.css */
+html[data-ypp-ui-style="anime"] ytd-comment-view-model button, html[data-ypp-ui-style="anime"] ytd-comment-renderer button {
+  border-radius: 20px !important; transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-ypp-ui-style="anime"] ytd-comment-view-model button:hover, html[data-ypp-ui-style="anime"] ytd-comment-renderer button:hover {
+  background: #ff69b4 !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important; transform: none !important;
+}
+html[data-ypp-ui-style="anime"] ytd-comment-view-model yt-interaction .fill,
+html[data-ypp-ui-style="anime"] ytd-comment-renderer yt-interaction .fill { background: transparent !important; opacity: 0 !important; }
+html[data-ypp-ui-style="anime"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 20px !important; margin: 10px !important;
+  border: 2px solid #ffb6c1 !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style="anime"] ytd-comment-thread-renderer, html[data-ypp-ui-style="anime"] ytd-comment-view-model {
+  background: #ffe4ef !important; border-radius: 20px !important;
+  padding: 16px !important; margin-bottom: 16px !important;
+  border: 2px solid #ffb6c1 !important; border-left: 6px solid #ff1493 !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="anime"] ytd-comment-renderer:hover {
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
-  border: 2px solid #ff69b4 !important;
+html[data-ypp-ui-style="anime"] ytd-comment-thread-renderer:hover, html[data-ypp-ui-style="anime"] ytd-comment-view-model:hover {
+  box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; background: #ff69b433 !important;
 }
-html[data-ypp-ui-style="anime"] #author-text.ytd-comment-renderer {
-  color: #ff1493 !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="anime"] ytd-comment-simplebox-renderer {
+  background: #ffe4ef !important; border-radius: 20px !important;
+  padding: 15px !important; box-shadow: 0 2px 8px rgba(255,105,180,0.2) !important; border: 2px solid #ffb6c1 !important;
 }
-html[data-ypp-ui-style="anime"] #content-text.ytd-comment-renderer {
-  color: #3a1a2a !important;
-  font-family: "Nunito","Segoe UI",sans-serif !important;
-}
+html[data-ypp-ui-style="anime"] #author-text.ytd-comment-renderer { color: #ff1493 !important; font-weight: bold !important; }
+html[data-ypp-ui-style="anime"] #content-text.ytd-comment-renderer { color: #3a1a2a !important; font-family: "Nunito","Segoe UI",sans-serif !important; }
 html[data-ypp-ui-style="anime"] ytd-comment-replies-renderer {
-  border-left: 2px solid #ffb6c1 !important;
-  margin-left: 16px !important;
-  padding-left: 12px !important;
+  border-left: 2px solid #ffb6c1 !important; margin-left: 16px !important; padding-left: 12px !important;
 }
-html[data-ypp-ui-style="anime"] #header-author yt-img-shadow {
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 50% !important;
-}
-html[data-ypp-ui-style="anime"] #simplebox-placeholder {
-  background: #ffe4ef !important;
-  border-radius: 20px !important;
-  border: 2px solid #ffb6c1 !important;
-  color: #7a4a5a !important;
-}
+html[data-ypp-ui-style="anime"] #header-author yt-img-shadow { border: 2px solid #ffb6c1 !important; border-radius: 50% !important; }
 html[data-ypp-ui-style="anime"] ytd-backstage-post-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 16px !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
   border-radius: 20px !important;
-  padding: 16px !important;
-  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

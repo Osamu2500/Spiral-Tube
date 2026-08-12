@@ -1,66 +1,41 @@
-/* src/content/ui-styles/retro-wave/base/tokens.css */
+/* retro-wave/base/tokens.css */
 html[data-ypp-ui-style="retro-wave"],
 html[data-ypp-ui-style="retro-wave"] body,
 html[data-ypp-ui-style="retro-wave"] [dark] {
-  /* Core Palette */
-  --retro-wave-bg:           #1a0b2e;
-  --retro-wave-sf:           #22103c;
-  --retro-wave-primary:      #4a0e4e;
-  --retro-wave-secondary:    #2b0940;
-  --retro-wave-accent:       #ff007f;
-  --retro-wave-text:         #00ffff;
-  --retro-wave-text-sub:     #cc66ff;
-  --retro-wave-border:       2px solid #ff007f;
-  --retro-wave-border-hover: 2px solid #00ffff;
-  --retro-wave-radius:       8px;
-  --retro-wave-shadow:       0 0 15px rgba(255,0,127,0.5);
-  --retro-wave-shadow-hover: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3);
-  --retro-wave-shadow-active:0 0 6px rgba(255,0,127,0.3);
-  --retro-wave-bounce:       ease 0.2s;
-  --retro-wave-font:         "VT323","Share Tech Mono",monospace;
-  --retro-wave-font-alt:     "Audiowide","VT323",monospace;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--retro-wave-sf);
-  --bounce:       var(--retro-wave-bounce);
-  --shadow-base:  var(--retro-wave-shadow);
-  --shadow-hover: var(--retro-wave-shadow-hover);
-  --shadow-active:var(--retro-wave-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             rgba(255,0,127,0.1);
-  --chip-bg-hover:       rgba(255,0,127,0.3);
-  --chip-bg-selected:    #ff007f;
-  --chip-color-selected: #ffffff;
-  --chip-border:         2px solid #ff007f;
-  --chip-border-selected:2px solid #00ffff;
-  --chip-radius:         8px;
-  --chip-shadow:         0 0 15px rgba(255,0,127,0.5);
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #00ffff !important;
-  --yt-spec-text-secondary:        #cc66ff !important;
-  --yt-spec-text-disabled:         #cc66ff !important;
-  --yt-spec-icon-active-other:     #ff007f !important;
-  --yt-spec-icon-inactive:         #cc66ff !important;
-  --yt-spec-menu-background:       #22103c !important;
-  --yt-spec-raised-background:     #22103c !important;
-  --yt-spec-base-background:       #1a0b2e !important;
+  --retro-wave-bg: #1a0b2e; --retro-wave-sf: #22103c; --retro-wave-primary: #2e0f50;
+  --retro-wave-secondary: #4a0e4e; --retro-wave-accent: #ff007f;
+  --retro-wave-text: #00ffff; --retro-wave-text-sub: #cc66ff;
+  --retro-wave-border: 2px solid #ff007f; --retro-wave-border-hover: 2px solid #00ffff;
+  --retro-wave-border-accent: 2px solid #ff007f;
+  --retro-wave-radius: 8px; --retro-wave-font: "Audiowide","VT323",cursive;
+  --retro-wave-shadow: 0 0 15px rgba(255,0,127,0.5); --retro-wave-shadow-hover: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3);
+  --retro-wave-shadow-active: 0 0 6px rgba(255,0,127,0.3); --retro-wave-bounce: ease 0.2s;
+  --sf: var(--retro-wave-sf); --bounce: var(--retro-wave-bounce);
+  --shadow-base: var(--retro-wave-shadow); --shadow-hover: var(--retro-wave-shadow-hover);
+  --shadow-active: var(--retro-wave-shadow-active);
+  --chip-bg: rgba(255,0,127,0.1); --chip-bg-hover: rgba(255,0,127,0.3);
+  --chip-bg-selected: #ff007f; --chip-color-selected: #fff;
+  --chip-border: 2px solid #ff007f; --chip-border-selected: 2px solid #00ffff;
+  --chip-radius: 8px; --chip-shadow: none;
+  --yt-spec-text-primary: #00ffff !important;
+  --yt-spec-text-secondary: #cc66ff !important;
+  --yt-spec-text-disabled: #cc66ff !important;
+  --yt-spec-icon-active-other: #ff007f !important;
+  --yt-spec-icon-inactive: #cc66ff !important;
+  --yt-spec-menu-background: #22103c !important;
+  --yt-spec-raised-background: #22103c !important;
+  --yt-spec-base-background: #1a0b2e !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "VT323","Share Tech Mono",monospace !important;
-  --yt-font-family:                "VT323","Share Tech Mono",monospace !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Audiowide","VT323",cursive !important;
+  --yt-font-family: "Audiowide","VT323",cursive !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="retro-wave"] body,
 html[data-ypp-ui-style="retro-wave"] yt-formatted-string,
 html[data-ypp-ui-style="retro-wave"] .yt-core-attributed-string,
-html[data-ypp-ui-style="retro-wave"] input,
-html[data-ypp-ui-style="retro-wave"] textarea,
-html[data-ypp-ui-style="retro-wave"] button,
+html[data-ypp-ui-style="retro-wave"] input, html[data-ypp-ui-style="retro-wave"] textarea, html[data-ypp-ui-style="retro-wave"] button,
 html[data-ypp-ui-style="retro-wave"] tp-yt-paper-item,
 html[data-ypp-ui-style="retro-wave"] .ytp-menuitem-label,
 html[data-ypp-ui-style="retro-wave"] .ytp-menuitem-content {
-  font-family: "VT323","Share Tech Mono",monospace !important;
+  font-family: "Audiowide","VT323",cursive !important;
 }

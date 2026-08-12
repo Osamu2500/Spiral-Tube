@@ -1,38 +1,30 @@
-/* src/content/ui-styles/retro-wave/pages/search.css */
-html[data-ypp-ui-style="retro-wave"] ytd-search,
-html[data-ypp-ui-style="retro-wave"] ytd-search-header-renderer {
-  background: #1a0b2e !important;
-}
+/* retro-wave/pages/search.css */
+html[data-ypp-ui-style="retro-wave"] ytd-search, html[data-ypp-ui-style="retro-wave"] ytd-search-header-renderer { background: #1a0b2e !important; }
 html[data-ypp-ui-style="retro-wave"] ytd-video-renderer {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
-  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
-  margin-bottom: 12px !important;
-  padding: 12px !important;
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  margin-bottom: 12px !important; padding: 12px !important;
   transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="retro-wave"] ytd-video-renderer:hover {
-  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
-  border: 2px solid #00ffff !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important; border: 2px solid #00ffff !important;
   transform: translateY(-2px) !important;
 }
 html[data-ypp-ui-style="retro-wave"] ytd-search-pyv-renderer {
-  background: #22103c !important;
-  border: 2px solid #00ffff !important;
-  border-radius: 8px !important;
-  padding: 12px !important;
+  background: #22103c !important; border: 2px solid #00ffff !important;
+  border-radius: 8px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="retro-wave"] ytd-shelf-renderer {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
-  margin-bottom: 16px !important;
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; padding: 16px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important; margin-bottom: 16px !important;
 }
-html[data-ypp-ui-style="retro-wave"] ytd-searchbox {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
+html[data-ypp-ui-style="retro-wave"] ytd-channel-renderer {
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; padding: 12px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-horizontal-card-list-renderer {
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; padding: 12px !important;
 }

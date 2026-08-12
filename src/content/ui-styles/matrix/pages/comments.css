@@ -1,45 +1,44 @@
-/* src/content/ui-styles/matrix/pages/comments.css */
-html[data-ypp-ui-style="matrix"] ytd-comment-thread-renderer,
-html[data-ypp-ui-style="matrix"] ytd-comment-renderer {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
-  padding: 12px !important;
-  margin-bottom: 8px !important;
+/* matrix/pages/comments.css */
+html[data-ypp-ui-style="matrix"] ytd-comment-view-model button, html[data-ypp-ui-style="matrix"] ytd-comment-renderer button {
+  border-radius: 0px !important; transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-comment-view-model button:hover, html[data-ypp-ui-style="matrix"] ytd-comment-renderer button:hover {
+  background: #002200 !important; box-shadow: 0 0 10px #00ff00 !important; transform: none !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-comment-view-model yt-interaction .fill,
+html[data-ypp-ui-style="matrix"] ytd-comment-renderer yt-interaction .fill { background: transparent !important; opacity: 0 !important; }
+html[data-ypp-ui-style="matrix"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 0px !important; margin: 10px !important;
+  border: 1px dotted #00ff00 !important; box-shadow: 0 0 10px #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-comment-thread-renderer, html[data-ypp-ui-style="matrix"] ytd-comment-view-model {
+  background: #001100 !important; border-radius: 0px !important;
+  padding: 16px !important; margin-bottom: 16px !important;
+  border: 1px dotted #00ff00 !important; border-left: 6px solid #00ff00 !important;
   box-shadow: 0 0 10px #00ff00 !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="matrix"] ytd-comment-renderer:hover {
-  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
-  border: 1px solid #00ff00 !important;
+html[data-ypp-ui-style="matrix"] ytd-comment-thread-renderer:hover, html[data-ypp-ui-style="matrix"] ytd-comment-view-model:hover {
+  box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important; background: #00220033 !important;
 }
-html[data-ypp-ui-style="matrix"] #author-text.ytd-comment-renderer {
-  color: #00ff00 !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="matrix"] ytd-comment-simplebox-renderer {
+  background: #001100 !important; border-radius: 0px !important;
+  padding: 15px !important; box-shadow: 0 0 5px #00ff00 !important; border: 1px dotted #00ff00 !important;
 }
-html[data-ypp-ui-style="matrix"] #content-text.ytd-comment-renderer {
-  color: #00ff00 !important;
-  font-family: "Courier New",Courier,monospace !important;
-}
+html[data-ypp-ui-style="matrix"] #author-text.ytd-comment-renderer { color: #00ff00 !important; font-weight: bold !important; }
+html[data-ypp-ui-style="matrix"] #content-text.ytd-comment-renderer { color: #00ff00 !important; font-family: "Share Tech Mono","Courier New",monospace !important; }
 html[data-ypp-ui-style="matrix"] ytd-comment-replies-renderer {
-  border-left: 1px dotted #00ff00 !important;
-  margin-left: 16px !important;
-  padding-left: 12px !important;
+  border-left: 1px dotted #00ff00 !important; margin-left: 16px !important; padding-left: 12px !important;
 }
-html[data-ypp-ui-style="matrix"] #header-author yt-img-shadow {
-  border: 1px dotted #00ff00 !important;
-  border-radius: 50% !important;
-}
-html[data-ypp-ui-style="matrix"] #simplebox-placeholder {
-  background: #001100 !important;
-  border-radius: 0px !important;
-  border: 1px dotted #00ff00 !important;
-  color: #009900 !important;
-}
+html[data-ypp-ui-style="matrix"] #header-author yt-img-shadow { border: 1px dotted #00ff00 !important; border-radius: 50% !important; }
 html[data-ypp-ui-style="matrix"] ytd-backstage-post-renderer {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
+  background: #001100 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important; padding: 16px !important; box-shadow: 0 0 10px #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
   border-radius: 0px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 10px #00ff00 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

@@ -1,55 +1,41 @@
-/* src/content/ui-styles/y2k/components/navbar.css */
-html[data-ypp-ui-style="y2k"] ytd-masthead,
-html[data-ypp-ui-style="y2k"] #masthead-container {
-  background: #ff69b4 !important;
-  border-bottom: 3px solid #00ccff !important;
+/* y2k/components/navbar.css */
+html[data-ypp-ui-style="y2k"] ytd-masthead, html[data-ypp-ui-style="y2k"] #masthead-container {
+  background: #c8c8ff !important; border-bottom: 3px solid #00ccff !important;
   box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
 }
 html[data-ypp-ui-style="y2k"] ytd-topbar-logo-renderer {
-  border-radius: 30px !important;
-  padding: 0 !important;
-  max-height: 45px !important;
+  border-radius: 24px !important; padding: 0 !important; max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="y2k"] ytd-topbar-logo-renderer:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.05) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }
 html[data-ypp-ui-style="y2k"] #guide-wrapper.ytd-app {
-  background: #f0f0ff !important;
-  border-radius: 0 30px 30px 0 !important;
-  border: 3px solid #00ccff !important;
-  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  background: #f0f0ff !important; border-radius: 0 24px 24px 0 !important;
+  border: 3px solid #00ccff !important; box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="y2k"] #guide-content.ytd-app {
-  background: transparent;
-}
-html[data-ypp-ui-style="y2k"] ytd-guide-section-renderer {
-  border-bottom: 3px solid #00ccff !important;
-}
-html[data-ypp-ui-style="y2k"] ytd-guide-entry-renderer {
-  border-radius: 30px !important;
-  transition: all var(--bounce) !important;
-}
+html[data-ypp-ui-style="y2k"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="y2k"] ytd-guide-section-renderer { border-bottom: 3px solid #00ccff !important; }
+html[data-ypp-ui-style="y2k"] ytd-guide-entry-renderer { border-radius: 24px !important; }
 html[data-ypp-ui-style="y2k"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
-  border-radius: 30px !important;
-  transition: all var(--bounce) !important;
+  background: transparent !important; box-shadow: none !important;
+  border-radius: 24px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 html[data-ypp-ui-style="y2k"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: #f0f0ff !important;
+  background: #f0f0ff !important; border-radius: 24px !important;
   box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }
-html[data-ypp-ui-style="y2k"] ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+html[data-ypp-ui-style="y2k"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98); box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
 }
+html[data-ypp-ui-style="y2k"] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child { padding: 10px 3px !important; }
+html[data-ypp-ui-style="y2k"] ytd-mini-guide-renderer.ytd-app { top: 70px !important; left: 10px !important; }
 html[data-ypp-ui-style="y2k"] ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 30px !important;
+  margin-top: 10px !important; border-radius: 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="y2k"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.1) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }

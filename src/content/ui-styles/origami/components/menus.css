@@ -1,53 +1,42 @@
-/* src/content/ui-styles/origami/components/menus.css */
-html[data-ypp-ui-style="origami"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="origami"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="origami"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="origami"] #contentWrapper tp-yt-iron-dropdown,
+/* origami/components/menus.css */
+html[data-ypp-ui-style="origami"] tp-yt-paper-dialog, html[data-ypp-ui-style="origami"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="origami"] tp-yt-iron-dropdown, html[data-ypp-ui-style="origami"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-style="origami"] ytd-multi-page-menu-renderer {
-  background: #f8f8f5 !important;
-  border: 1px solid #d0d0c0 !important;
-  border-radius: 0px !important;
-  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #444444 !important;
+  background: #f8f8f5 !important; border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important; box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
+  backdrop-filter: blur(12px) !important; color: #444 !important;
 }
-html[data-ypp-ui-style="origami"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="origami"] .ytp-settings-menu,
-html[data-ypp-ui-style="origami"] .ytp-panel-menu {
-  background: #f8f8f5 !important;
-  border: 1px solid #d0d0c0 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="origami"] .ytp-settings-menu, html[data-ypp-ui-style="origami"] .ytp-panel-menu, html[data-ypp-ui-style="origami"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="origami"] .ytp-panel {
+  background: #f8f8f5 !important; border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important; box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
 }
 html[data-ypp-ui-style="origami"] .ytp-menuitem {
-  color: #444444 !important;
-  font-family: "Quicksand","Nunito",sans-serif !important;
-}
-html[data-ypp-ui-style="origami"] .ytp-menuitem:hover {
-  background: #f4f4f0 !important;
-  color: #ff7f50 !important;
-}
-html[data-ypp-ui-style="origami"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="origami"] tp-yt-paper-item {
-  background: transparent !important;
-  color: #444444 !important;
-}
-html[data-ypp-ui-style="origami"] tp-yt-paper-item:hover {
-  background: #f4f4f0 !important;
-}
-html[data-ypp-ui-style="origami"] ytd-notification-renderer {
-  background: #f8f8f5 !important;
-  border-bottom: 1px solid #d0d0c0 !important;
+  color: #444 !important; font-family: "Quicksand","Nunito",sans-serif !important;
   transition: background var(--bounce) !important;
 }
-html[data-ypp-ui-style="origami"] ytd-notification-renderer:hover {
-  background: #f4f4f0 !important;
+html[data-ypp-ui-style="origami"] .ytp-menuitem:hover { background: #f4f4f0 !important; color: #ff7f50 !important; }
+html[data-ypp-ui-style="origami"] .ytp-tooltip-text {
+  font-family: "Quicksand","Nunito",sans-serif !important; background: #f8f8f5 !important;
+  color: #ff7f50 !important; border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important; text-shadow: none !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important; padding: 4px 8px !important;
 }
+html[data-ypp-ui-style="origami"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="origami"] tp-yt-paper-listbox, html[data-ypp-ui-style="origami"] tp-yt-paper-item {
+  background: transparent !important; color: #444 !important;
+}
+html[data-ypp-ui-style="origami"] tp-yt-paper-item:hover { background: #f4f4f0 !important; }
+html[data-ypp-ui-style="origami"] ytd-notification-renderer {
+  background: #f8f8f5 !important; border-bottom: 1px solid #d0d0c0 !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-notification-renderer:hover { background: #f4f4f0 !important; }
 html[data-ypp-ui-style="origami"] ytd-settings-sidebar-renderer {
-  background: #f8f8f5 !important;
-  border-radius: 0px !important;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
-  padding: 15px !important;
-  border: 1px solid #d0d0c0 !important;
+  background: #f8f8f5 !important; border-radius: 0px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important; padding: 15px !important; border: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important; border-radius: 0px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

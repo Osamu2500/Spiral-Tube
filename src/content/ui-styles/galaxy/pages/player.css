@@ -1,52 +1,65 @@
-/* src/content/ui-styles/galaxy/pages/player.css */
-html[data-ypp-ui-style="galaxy"] .ytp-chrome-bottom,
-html[data-ypp-ui-style="galaxy"] .ytp-gradient-bottom {
-  background: linear-gradient(to top, #450256 0%, transparent 100%) !important;
+/* galaxy/pages/player.css */
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; overflow: hidden !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-progress-bar-container {
-  height: 4px !important;
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: #101318 !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.02);
 }
-html[data-ypp-ui-style="galaxy"] .ytp-play-progress,
-html[data-ypp-ui-style="galaxy"] .ytp-swatch-background-color {
-  background-color: #00f0ff !important;
-  box-shadow: 0 0 8px #00f0ff !important;
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-load-progress {
-  background-color: #a0a0c0 !important;
-  opacity: 0.5 !important;
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: #101318 !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.1);
+}
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern .ytp-chapter-container { width: 100% !important; padding-left: 10px; }
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-bottom, html[data-ypp-ui-style="galaxy"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #0d1b2e 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-progress-bar-container { height: 4px !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-play-progress, html[data-ypp-ui-style="galaxy"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle, html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle::after { background: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-swatch-color { color: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-load-progress { background: rgba(255,255,255,0.2) !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-scrubber-button {
+  background: #00f0ff !important; border: 2px solid #101318 !important;
+  border-radius: 0 !important;
+  transform: rotate(45deg) scale(0.85) scale(0.8) !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; transition: transform 0.1s ease !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-scrubber-button:hover {
+  transform: rotate(45deg) scale(0.85) scale(1) !important;
+  background: #101318 !important; border-color: #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-time-display, html[data-ypp-ui-style="galaxy"] .ytp-chapter-title-content {
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important; color: #e0e0e0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-text {
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important; background: #101318 !important;
+  color: #00f0ff !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; text-shadow: none !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-style="galaxy"] .ytp-panel {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle {
   background: #00f0ff !important;
   border-radius: 50% !important;
   border: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button {
-  color: #e0e0e0 !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button:hover {
-  color: #00f0ff !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-settings-menu,
-html[data-ypp-ui-style="galaxy"] .ytp-panel-menu {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-menuitem {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover {
-  background: #450256 !important;
-  color: #00f0ff !important;
-}
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button { color: #e0e0e0 !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button:hover { color: #00f0ff !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; }
 html[data-ypp-ui-style="galaxy"] .ytp-ce-element {
   border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  overflow: hidden !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-ce-element:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="galaxy"] .ytp-ce-element:hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.04) !important; }
+html[data-ypp-ui-style="galaxy"] video.video-stream.html5-main-video, html[data-ypp-ui-style="galaxy"] .html5-video-player {
+  border-radius: 16px !important;
 }

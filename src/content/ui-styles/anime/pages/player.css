@@ -1,52 +1,65 @@
-/* src/content/ui-styles/anime/pages/player.css */
-html[data-ypp-ui-style="anime"] .ytp-chrome-bottom,
-html[data-ypp-ui-style="anime"] .ytp-gradient-bottom {
+/* anime/pages/player.css */
+html[data-ypp-ui-style="anime"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; overflow: hidden !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="anime"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: #ffe4ef !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; transform: scale(1.02);
+}
+html[data-ypp-ui-style="anime"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="anime"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: #ffe4ef !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; transform: scale(1.1);
+}
+html[data-ypp-ui-style="anime"] .ytp-delhi-modern .ytp-chapter-container { width: 100% !important; padding-left: 10px; }
+html[data-ypp-ui-style="anime"] .ytp-chrome-bottom, html[data-ypp-ui-style="anime"] .ytp-gradient-bottom {
   background: linear-gradient(to top, #ff69b4 0%, transparent 100%) !important;
 }
-html[data-ypp-ui-style="anime"] .ytp-progress-bar-container {
-  height: 4px !important;
+html[data-ypp-ui-style="anime"] .ytp-progress-bar-container { height: 4px !important; }
+html[data-ypp-ui-style="anime"] .ytp-play-progress, html[data-ypp-ui-style="anime"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="anime"] .ytp-volume-slider-handle, html[data-ypp-ui-style="anime"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="anime"] .ytp-volume-slider-handle::after { background: #ff1493 !important; }
+html[data-ypp-ui-style="anime"] .ytp-swatch-color { color: #ff1493 !important; }
+html[data-ypp-ui-style="anime"] .ytp-load-progress { background: rgba(255,255,255,0.2) !important; }
+html[data-ypp-ui-style="anime"] .ytp-scrubber-button {
+  background: #ff1493 !important; border: 2px solid #ffe4ef !important;
+  border-radius: 50% !important;
+  transform: rotate(0deg) scale(0.8) !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important; transition: transform 0.1s ease !important;
 }
-html[data-ypp-ui-style="anime"] .ytp-play-progress,
-html[data-ypp-ui-style="anime"] .ytp-swatch-background-color {
-  background-color: #ff1493 !important;
-  box-shadow: 0 0 8px #ff1493 !important;
+html[data-ypp-ui-style="anime"] .ytp-scrubber-button:hover {
+  transform: rotate(0deg) scale(1) !important;
+  background: #ffe4ef !important; border-color: #ff1493 !important;
 }
-html[data-ypp-ui-style="anime"] .ytp-load-progress {
-  background-color: #7a4a5a !important;
-  opacity: 0.5 !important;
+html[data-ypp-ui-style="anime"] .ytp-time-display, html[data-ypp-ui-style="anime"] .ytp-chapter-title-content {
+  font-family: "Nunito","Segoe UI",sans-serif !important; color: #3a1a2a !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="anime"] .ytp-tooltip-text {
+  font-family: "Nunito","Segoe UI",sans-serif !important; background: #ffe4ef !important;
+  color: #ff1493 !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; text-shadow: none !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important; padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="anime"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="anime"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-style="anime"] .ytp-panel {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 html[data-ypp-ui-style="anime"] .ytp-volume-slider-handle {
   background: #ff1493 !important;
   border-radius: 50% !important;
   border: 2px solid #ffb6c1 !important;
 }
-html[data-ypp-ui-style="anime"] .ytp-chrome-controls button {
-  color: #3a1a2a !important;
-}
-html[data-ypp-ui-style="anime"] .ytp-chrome-controls button:hover {
-  color: #ff1493 !important;
-}
-html[data-ypp-ui-style="anime"] .ytp-settings-menu,
-html[data-ypp-ui-style="anime"] .ytp-panel-menu {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-}
-html[data-ypp-ui-style="anime"] .ytp-menuitem {
-  color: #3a1a2a !important;
-  font-family: "Nunito","Segoe UI",sans-serif !important;
-}
-html[data-ypp-ui-style="anime"] .ytp-menuitem:hover {
-  background: #ff69b4 !important;
-  color: #ff1493 !important;
-}
+html[data-ypp-ui-style="anime"] .ytp-chrome-controls button { color: #3a1a2a !important; }
+html[data-ypp-ui-style="anime"] .ytp-chrome-controls button:hover { color: #ff1493 !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important; }
 html[data-ypp-ui-style="anime"] .ytp-ce-element {
   border-radius: 20px !important;
-  border: 2px solid #ffb6c1 !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
-  overflow: hidden !important;
+  border: 2px solid #ffb6c1 !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="anime"] .ytp-ce-element:hover {
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="anime"] .ytp-ce-element:hover { box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; transform: scale(1.04) !important; }
+html[data-ypp-ui-style="anime"] video.video-stream.html5-main-video, html[data-ypp-ui-style="anime"] .html5-video-player {
+  border-radius: 20px !important;
 }

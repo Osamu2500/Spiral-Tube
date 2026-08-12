@@ -1,38 +1,30 @@
-/* src/content/ui-styles/gothic/pages/search.css */
-html[data-ypp-ui-style="gothic"] ytd-search,
-html[data-ypp-ui-style="gothic"] ytd-search-header-renderer {
-  background: #121212 !important;
-}
+/* gothic/pages/search.css */
+html[data-ypp-ui-style="gothic"] ytd-search, html[data-ypp-ui-style="gothic"] ytd-search-header-renderer { background: #121212 !important; }
 html[data-ypp-ui-style="gothic"] ytd-video-renderer {
-  background: #1c1c1c !important;
-  border: 2px solid #8b0000 !important;
-  border-radius: 0px !important;
-  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
-  margin-bottom: 12px !important;
-  padding: 12px !important;
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
+  border-radius: 0px !important; box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  margin-bottom: 12px !important; padding: 12px !important;
   transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="gothic"] ytd-video-renderer:hover {
-  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
-  border: 2px solid #cc0000 !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important; border: 2px solid #cc0000 !important;
   transform: translateY(-2px) !important;
 }
 html[data-ypp-ui-style="gothic"] ytd-search-pyv-renderer {
-  background: #1c1c1c !important;
-  border: 2px solid #cc0000 !important;
-  border-radius: 0px !important;
-  padding: 12px !important;
+  background: #1c1c1c !important; border: 2px solid #cc0000 !important;
+  border-radius: 0px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="gothic"] ytd-shelf-renderer {
-  background: #1c1c1c !important;
-  border: 2px solid #8b0000 !important;
-  border-radius: 0px !important;
-  padding: 16px !important;
-  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
-  margin-bottom: 16px !important;
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
+  border-radius: 0px !important; padding: 16px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important; margin-bottom: 16px !important;
 }
-html[data-ypp-ui-style="gothic"] ytd-searchbox {
-  background: #1c1c1c !important;
-  border: 2px solid #8b0000 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="gothic"] ytd-channel-renderer {
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
+  border-radius: 0px !important; padding: 12px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-horizontal-card-list-renderer {
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
+  border-radius: 0px !important; padding: 12px !important;
 }

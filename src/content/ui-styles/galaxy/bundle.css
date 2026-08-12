@@ -1,4 +1,4 @@
-/* src/content/ui-styles/galaxy/base/animations.css */
+/* galaxy/base/animations.css */
 @keyframes galaxy-pulse {
   0%   { box-shadow: 0 0 20px rgba(0,240,255,0.2); }
   50%  { box-shadow: 0 0 35px rgba(0,240,255,0.5); }
@@ -7,14 +7,16 @@
 
 
 
-/* Subscribe button pulse */
+@keyframes sepia-bloom { 0%{filter:brightness(1);} 100%{filter:brightness(1.1) saturate(1.1);} }
+
+/* Subscribe button */
 html[data-ypp-ui-style="galaxy"] #subscribe-button .yt-spec-button-shape-next--filled {
   transition: all 0.3s ease !important;
   animation: galaxy-pulse 2.5s ease-in-out infinite !important;
   
 }
 
-/* Card hover lift */
+/* Card hover */
 html[data-ypp-ui-style="galaxy"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-style="galaxy"] ytd-compact-video-renderer:hover,
 html[data-ypp-ui-style="galaxy"] ytd-video-renderer:hover,
@@ -23,1127 +25,936 @@ html[data-ypp-ui-style="galaxy"] ytd-grid-video-renderer:hover {
   
   
   
-  transform: translateY(-3px) scale(1.01) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  border: 1px solid rgba(0,240,255,0.8) !important;
+  transform:translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; border: 1px solid rgba(0,240,255,0.8) !important;
+  animation: sepia-bloom 0.3s forwards !important;
 }
 
-/* Guide sidebar hover slide */
+/* Sidebar guide */
 html[data-ypp-ui-style="galaxy"] ytd-guide-entry-renderer:hover {
   background-color: #101318 !important;
-  transform: translateX(8px) !important;
+  transform:translateX(8px) !important;
   border-left: 4px solid #00f0ff !important;
   transition: all var(--bounce) !important;
 }
-
-/* Mini guide hover */
 html[data-ypp-ui-style="galaxy"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.15) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 
-/* Button scale */
+/* Button base */
 html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.08);
-  animation: galaxy-pulse 5s ease-in-out infinite;
+  transform: scale(1.08); animation: galaxy-pulse 5s ease-in-out infinite;
 }
-
-/* src/content/ui-styles/galaxy/base/background.css */
-html[data-ypp-ui-style="galaxy"] html,
-html[data-ypp-ui-style="galaxy"] body,
-html[data-ypp-ui-style="galaxy"] ytd-app,
-html[data-ypp-ui-style="galaxy"] #page-manager {
-  background-color: #0b0c10 !important;
-  color: #e0e0e0 !important;
-}
-
-html[data-ypp-ui-style="galaxy"] tp-yt-app-header {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar {
-  width: 12px !important;
-  background-color: #0b0c10 !important;
-}
-html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-track {
-  background: #0b0c10 !important;
-  border-left: 1px solid #00f0ff;
-}
-html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-thumb {
-  background: #450256 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-}
-html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-thumb:hover {
-  background: #00f0ff !important;
-}
-html[data-ypp-ui-style="galaxy"] .ypp-organizer-modal,
-html[data-ypp-ui-style="galaxy"] .ypp-modal-content {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important; color: white !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  animation: galaxy-pulse 5s ease-in-out infinite !important;
+}
+
+/* Masthead topbar logo */
+html[data-ypp-ui-style="galaxy"] ytd-topbar-logo-renderer a#logo::before {
+  content: ""; display: block !important;
+  width: 34px !important; height: 24px !important;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
+  background-size: contain !important; background-repeat: no-repeat !important;
+  background-position: center !important; margin-right: 2px !important;
+}
+
+/* galaxy/base/background.css */
+html[data-ypp-ui-style="galaxy"] html, html[data-ypp-ui-style="galaxy"] body, html[data-ypp-ui-style="galaxy"] ytd-app, html[data-ypp-ui-style="galaxy"] #page-manager {
+  background-color: #0b0c10 !important; color: #e0e0e0 !important;
+}
+html[data-ypp-ui-style="galaxy"] tp-yt-app-header { background: transparent !important; }
+html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar { width: 12px !important; background: #0b0c10 !important; }
+html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-track { background: #0b0c10 !important; border-left: 1px solid #00f0ff; }
+html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-thumb {
+  background: #00f0ff !important; border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 16px !important;
+}
+html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-thumb:hover { background: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] ::-webkit-scrollbar-corner { background: #0b0c10 !important; }
+html[data-ypp-ui-style="galaxy"] .ypp-organizer-modal, html[data-ypp-ui-style="galaxy"] .ypp-modal-content {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ypp-modal-header {
+  background: #0d1b2e !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
 }
 html[data-ypp-ui-style="galaxy"] #simplebox-placeholder {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  background: #101318 !important; border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ypp-slider,
-html[data-ypp-ui-style="galaxy"] .ypp-gpb-vol-slider {
-  accent-color: #00f0ff !important;
-  background: #101318 !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] .ypp-slider, html[data-ypp-ui-style="galaxy"] .ypp-gpb-vol-slider {
+  accent-color: #00f0ff !important; border-radius: 16px !important;
 }
 html[data-ypp-ui-style="galaxy"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
   border-radius: 16px !important;
 }
 html[data-ypp-ui-style="galaxy"] .tab-content.tp-yt-paper-tab:hover {
-  background: rgba(0,240,255,0.15) !important;
-  transform: scale(1.05) !important;
+  background: rgba(0,240,255,0.15) !important; transform: scale(1.05) !important;
 }
+html[data-ypp-ui-style="galaxy"] .ypp-nav-btn.active {
+  background: #101318 !important; box-shadow: 0 0 8px rgba(0,240,255,0.1) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ypp-badge, html[data-ypp-ui-style="galaxy"] .ypp-value-display {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 16px !important;
+}
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-toolbar {
+  background: #101318 !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+}
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; transition: transform var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-tool:hover {
+  background: #0d1b2e !important; transform: scale(1.02) !important;
+}
+html[data-ypp-ui-style="galaxy"] body::before { content:""; position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; background: radial-gradient(ellipse at 20% 30%, rgba(69,2,86,0.4) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(3,4,94,0.4) 0%, transparent 50%); z-index:0; }
 
-/* src/content/ui-styles/galaxy/base/layout.css */
-html[data-ypp-ui-style="galaxy"] * {
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient {
-  overflow-x: hidden !important;
-}
+/* galaxy/base/layout.css */
+html[data-ypp-ui-style="galaxy"] * { font-family: "Space Grotesk","Segoe UI",sans-serif !important; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient { overflow-x: hidden !important; }
 html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
   filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
-  transform: scale(3);
-  opacity: 1;
-  mix-blend-mode: lighten;
+  transform: scale(3); opacity: 1; mix-blend-mode: lighten;
 }
 html[data-ypp-ui-style="galaxy"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5);
+  overflow: hidden; border-radius: 16px; box-shadow: 0 0 35px rgba(0,240,255,0.5);
 }
 html[data-ypp-ui-style="galaxy"] #video-title {
-  color: #e0e0e0 !important;
-  font-weight: bold !important;
-  letter-spacing: 0.5px !important;
+  color: #e0e0e0 !important; font-weight: bold !important; letter-spacing: 0.5px !important;
 }
-html[data-ypp-ui-style="galaxy"] #description-text,
-html[data-ypp-ui-style="galaxy"] yt-formatted-string#description-text {
+html[data-ypp-ui-style="galaxy"] #description-text, html[data-ypp-ui-style="galaxy"] yt-formatted-string#description-text {
   color: #a0a0c0 !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytSuggestionComponentRoundedSuggestion {
-  margin: 5px 10px;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  margin: 5px 10px; border: 1px solid rgba(0,240,255,0.3) !important;
   border-radius: 16px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytSuggestionComponentRoundedSuggestion:hover {
-  transform: scale(1.01) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.01) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] yt-img-shadow#avatar {
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
   border-radius: 50% !important;
+  
 }
 html[data-ypp-ui-style="galaxy"] .ytPlayerProgressBarDragContainer {
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-  margin-bottom: 5px !important;
+  margin-left: 15px !important; margin-right: 15px !important; margin-bottom: 5px !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarLine,
-html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarPlayed {
-  border-radius: 16px !important;
-}
+html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarPlayed { border-radius: 16px !important; }
+html[data-ypp-ui-style="galaxy"] html { --yt-spec-badge-chip-background: transparent !important; --yt-spec-raised-background: transparent !important; --yt-spec-additive-background: transparent !important; }
 
-
-/* src/content/ui-styles/galaxy/base/tokens.css */
+/* galaxy/base/tokens.css */
 html[data-ypp-ui-style="galaxy"],
 html[data-ypp-ui-style="galaxy"] body,
 html[data-ypp-ui-style="galaxy"] [dark] {
-  /* Core Palette */
-  --galaxy-bg:           #0b0c10;
-  --galaxy-sf:           #101318;
-  --galaxy-primary:      #450256;
-  --galaxy-secondary:    #03045e;
-  --galaxy-accent:       #00f0ff;
-  --galaxy-text:         #e0e0e0;
-  --galaxy-text-sub:     #a0a0c0;
-  --galaxy-border:       1px solid rgba(0,240,255,0.3);
-  --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
-  --galaxy-radius:       16px;
-  --galaxy-shadow:       0 0 20px rgba(0,240,255,0.2);
-  --galaxy-shadow-hover: 0 0 35px rgba(0,240,255,0.5);
-  --galaxy-shadow-active:0 0 8px rgba(0,240,255,0.1);
-  --galaxy-bounce:       cubic-bezier(0.25,0.8,0.25,1) 0.3s;
-  --galaxy-font:         "Space Grotesk","Segoe UI",sans-serif;
-  --galaxy-font-alt:     "Orbitron","Space Grotesk",sans-serif;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--galaxy-sf);
-  --bounce:       var(--galaxy-bounce);
-  --shadow-base:  var(--galaxy-shadow);
-  --shadow-hover: var(--galaxy-shadow-hover);
-  --shadow-active:var(--galaxy-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             rgba(0,240,255,0.05);
-  --chip-bg-hover:       rgba(0,240,255,0.15);
-  --chip-bg-selected:    #00f0ff;
-  --chip-color-selected: #0b0c10;
-  --chip-border:         1px solid rgba(0,240,255,0.3);
-  --chip-border-selected:1px solid #00f0ff;
-  --chip-radius:         16px;
-  --chip-shadow:         0 0 20px rgba(0,240,255,0.2);
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #e0e0e0 !important;
-  --yt-spec-text-secondary:        #a0a0c0 !important;
-  --yt-spec-text-disabled:         #a0a0c0 !important;
-  --yt-spec-icon-active-other:     #00f0ff !important;
-  --yt-spec-icon-inactive:         #a0a0c0 !important;
-  --yt-spec-menu-background:       #101318 !important;
-  --yt-spec-raised-background:     #101318 !important;
-  --yt-spec-base-background:       #0b0c10 !important;
+  --galaxy-bg: #0b0c10; --galaxy-sf: #101318; --galaxy-primary: #0d1b2e;
+  --galaxy-secondary: #03045e; --galaxy-accent: #00f0ff;
+  --galaxy-text: #e0e0e0; --galaxy-text-sub: #a0a0c0;
+  --galaxy-border: 1px solid rgba(0,240,255,0.3); --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
+  --galaxy-border-accent: 1px solid #00f0ff;
+  --galaxy-radius: 16px; --galaxy-font: "Space Grotesk","Segoe UI",sans-serif;
+  --galaxy-shadow: 0 0 20px rgba(0,240,255,0.2); --galaxy-shadow-hover: 0 0 35px rgba(0,240,255,0.5);
+  --galaxy-shadow-active: 0 0 8px rgba(0,240,255,0.1); --galaxy-bounce: cubic-bezier(0.25,0.8,0.25,1) 0.3s;
+  --sf: var(--galaxy-sf); --bounce: var(--galaxy-bounce);
+  --shadow-base: var(--galaxy-shadow); --shadow-hover: var(--galaxy-shadow-hover);
+  --shadow-active: var(--galaxy-shadow-active);
+  --chip-bg: rgba(0,240,255,0.05); --chip-bg-hover: rgba(0,240,255,0.15);
+  --chip-bg-selected: #00f0ff; --chip-color-selected: #0b0c10;
+  --chip-border: 1px solid rgba(0,240,255,0.3); --chip-border-selected: 1px solid #00f0ff;
+  --chip-radius: 16px; --chip-shadow: none;
+  --yt-spec-text-primary: #e0e0e0 !important;
+  --yt-spec-text-secondary: #a0a0c0 !important;
+  --yt-spec-text-disabled: #a0a0c0 !important;
+  --yt-spec-icon-active-other: #00f0ff !important;
+  --yt-spec-icon-inactive: #a0a0c0 !important;
+  --yt-spec-menu-background: #101318 !important;
+  --yt-spec-raised-background: #101318 !important;
+  --yt-spec-base-background: #0b0c10 !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "Space Grotesk","Segoe UI",sans-serif !important;
-  --yt-font-family:                "Space Grotesk","Segoe UI",sans-serif !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+  --yt-font-family: "Space Grotesk","Segoe UI",sans-serif !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="galaxy"] body,
 html[data-ypp-ui-style="galaxy"] yt-formatted-string,
 html[data-ypp-ui-style="galaxy"] .yt-core-attributed-string,
-html[data-ypp-ui-style="galaxy"] input,
-html[data-ypp-ui-style="galaxy"] textarea,
-html[data-ypp-ui-style="galaxy"] button,
+html[data-ypp-ui-style="galaxy"] input, html[data-ypp-ui-style="galaxy"] textarea, html[data-ypp-ui-style="galaxy"] button,
 html[data-ypp-ui-style="galaxy"] tp-yt-paper-item,
 html[data-ypp-ui-style="galaxy"] .ytp-menuitem-label,
 html[data-ypp-ui-style="galaxy"] .ytp-menuitem-content {
   font-family: "Space Grotesk","Segoe UI",sans-serif !important;
 }
 
-/* src/content/ui-styles/galaxy/components/badges.css */
+/* galaxy/components/badges.css */
 html[data-ypp-ui-style="galaxy"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-style="galaxy"] .ypp-badge,
-html[data-ypp-ui-style="galaxy"] .ypp-value-display {
-  background: #101318 !important;
-  color: #e0e0e0 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="galaxy"] .ypp-badge, html[data-ypp-ui-style="galaxy"] .ypp-value-display {
+  background: #101318 !important; color: #e0e0e0 !important;
+  border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important; font-weight: bold !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-badge-supported-renderer {
-  border-radius: 16px !important;
-}
+html[data-ypp-ui-style="galaxy"] ytd-badge-supported-renderer { border-radius: 16px !important; }
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarBackground,
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-style="galaxy"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 16px !important;
-  background-color: #00f0ff !important;
+  border-radius: 16px !important; background-color: #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarBackground { background-color: #a0a0c0 !important; opacity: 0.3 !important; }
+html[data-ypp-ui-style="galaxy"] .ytProgressBarLineProgressBarLoaded { background-color: #a0a0c0 !important; opacity: 0.5 !important; }
+html[data-ypp-ui-style="galaxy"] ytd-thumbnail-overlay-time-status-renderer {
+  background: #0d1b2e !important; color: #00f0ff !important;
+  border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: #101318 !important; border-radius: 16px !important;
+  border: 1px solid rgba(0,240,255,0.3) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 
-/* src/content/ui-styles/galaxy/components/buttons.css */
+/* galaxy/components/buttons.css */
 html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
-  display: none !important;
-}
-html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke { display: none !important; }
+
+html[data-ypp-ui-style="galaxy"] .yt-chip-shape,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="galaxy"] ytd-button-renderer,
 html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--tonal {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  color: #e0e0e0 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextText {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  color: #e0e0e0 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; font-weight: bold !important;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+  position: relative; overflow: hidden; cursor: pointer !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
 }
-html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="galaxy"] .yt-chip-shape:hover,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--tonal:hover,
 html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextTonal:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.06) !important;
-  border: 1px solid rgba(0,240,255,0.8) !important;
+  background: #0d1b2e !important; color: #00f0ff !important;
+  border: 1px solid rgba(0,240,255,0.8) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform:scale(1.06) !important;
 }
-html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:active,
-html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextTonal:active {
-  transform: scale(0.97) !important;
-  box-shadow: 0 0 8px rgba(0,240,255,0.1) !important;
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+  margin-right: 0 !important; border-radius: 16px !important; z-index: 30000 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
+  transform: scale(1.04) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytLikeButtonViewModelHost { margin-right: 5px; }
 html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
-  display: flex !important;
-  gap: 6px !important;
-  background: none !important;
-  box-shadow: none !important;
-  overflow: visible !important;
+  display: flex !important; gap: 6px !important; background: none !important;
+  box-shadow: none !important; overflow: visible !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button {
-  border-radius: 16px !important;
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: 16px !important; background: #101318 !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; border: 1px solid rgba(0,240,255,0.3) !important;
   color: #e0e0e0 !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.06) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.06) !important;
+  border: 1px solid rgba(0,240,255,0.8) !important;
 }
-html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextText {
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:active {
+  transform: scale(0.97) !important; box-shadow: 0 0 8px rgba(0,240,255,0.1) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ypp-pill-toggle {
+  border-radius: 16px !important; background: #101318 !important;
+  border: 1px solid rgba(0,240,255,0.3) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextText:hover {
-  background: #101318 !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.05) !important;
-}
+html[data-ypp-ui-style="galaxy"] .ypp-pill-toggle:hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.05) !important; }
 
 /* Full action button coverage */
 html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next,
 html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
 html[data-ypp-ui-style="galaxy"] ytd-menu-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-style="galaxy"] yt-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="galaxy"] ytd-download-button-renderer .yt-spec-button-shape-next {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  color: #e0e0e0 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  font-weight: 700 !important;
-  margin-right: 6px !important;
+html[data-ypp-ui-style="galaxy"] ytd-download-button-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="galaxy"] yt-download-button-view-model .yt-spec-button-shape-next,
+html[data-ypp-ui-style="galaxy"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="galaxy"] ytd-download-button-renderer button,
+html[data-ypp-ui-style="galaxy"] #ask-button yt-button-shape button, html[data-ypp-ui-style="galaxy"] #ask-button button,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-style="galaxy"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextText {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  color: #e0e0e0 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; font-weight: 700 !important;
+  transition: all var(--bounce) !important; margin-right: 6px !important;
 }
 html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="galaxy"] ytd-menu-renderer .yt-spec-button-shape-next:hover {
-  border: 1px solid rgba(0,240,255,0.8) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: translate(-2px,-2px) !important;
+html[data-ypp-ui-style="galaxy"] ytd-menu-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="galaxy"] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="galaxy"] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="galaxy"] button.ytSpecButtonShapeNextText:hover {
+  background: #0d1b2e !important; color: #00f0ff !important;
+  border: 1px solid rgba(0,240,255,0.8) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.05) !important;
 }
-
-/* SVG icon colors */
 html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
 html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="galaxy"] ytd-menu-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="galaxy"] ytd-menu-renderer .yt-spec-button-shape-next path {
-  fill: #e0e0e0 !important;
-}
+html[data-ypp-ui-style="galaxy"] ytd-menu-renderer .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="galaxy"] ytd-menu-renderer yt-button-shape button svg,
+html[data-ypp-ui-style="galaxy"] ytd-menu-renderer yt-button-shape button path { fill: #e0e0e0 !important; }
 html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path {
-  fill: #00f0ff !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
-  background: none !important;
-  border: none !important;
-}
-
-/* YPP custom buttons */
-html[data-ypp-ui-style="galaxy"] .ypp-btn-primary,
-html[data-ypp-ui-style="galaxy"] .ypp-play-all-btn,
-html[data-ypp-ui-style="galaxy"] .ypp-health-btn {
-  border-radius: 16px !important;
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  color: #e0e0e0 !important;
+html[data-ypp-ui-style="galaxy"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path { fill: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper { background: none !important; border: none !important; }
+html[data-ypp-ui-style="galaxy"] .ypp-btn-primary, html[data-ypp-ui-style="galaxy"] .ypp-play-all-btn, html[data-ypp-ui-style="galaxy"] .ypp-health-btn {
+  border-radius: 16px !important; background: #101318 !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; color: #e0e0e0 !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ypp-btn-primary:hover,
-html[data-ypp-ui-style="galaxy"] .ypp-play-all-btn:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.05) !important;
+html[data-ypp-ui-style="galaxy"] .ypp-btn-primary:hover, html[data-ypp-ui-style="galaxy"] .ypp-play-all-btn:hover {
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.05) !important;
 }
 
-/* src/content/ui-styles/galaxy/components/cards.css */
+/* galaxy/components/cards.css */
 html[data-ypp-ui-style="galaxy"] ytd-rich-grid-media,
 html[data-ypp-ui-style="galaxy"] ytd-compact-video-renderer,
 html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-video-renderer,
 html[data-ypp-ui-style="galaxy"] ytd-video-renderer,
 html[data-ypp-ui-style="galaxy"] ytd-grid-video-renderer {
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  background: #101318 !important;
-  padding: 10px !important;
-  margin-bottom: 16px !important;
-  border-radius: 16px !important;
-  transition: all var(--bounce) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(0,240,255,0.3) !important; background: #101318 !important;
+  padding: 10px !important; margin-bottom: 16px !important;
+  border-radius: 16px !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  transition: all var(--bounce) !important; position: relative; overflow: hidden;
 }
 html[data-ypp-ui-style="galaxy"] ytd-rich-item-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  transition: all var(--bounce) !important;
-  margin-bottom: 8px !important;
+  background: #101318 !important; border-radius: 16px !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  transition: all var(--bounce) !important; margin-bottom: 8px !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-thumbnail,
-html[data-ypp-ui-style="galaxy"] #thumbnail {
+html[data-ypp-ui-style="galaxy"] ytd-thumbnail, html[data-ypp-ui-style="galaxy"] #thumbnail {
   border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  overflow: hidden !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; overflow: hidden !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-reel-video-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  overflow: hidden !important;
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; border: 1px solid rgba(0,240,255,0.3) !important; overflow: hidden !important;
+}
+html[data-ypp-ui-style="galaxy"] .overlay-dir.ytd-reel-video-renderer {
+  background: linear-gradient(to top, #0d1b2e99 0%, transparent 40%) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
-  border-radius: 16px !important;
-  padding: 10px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  margin: 5px 0 !important;
+  border-radius: 16px !important; padding: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important; margin: 5px 0 !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-video-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: translateX(4px) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: translateX(5px) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+  border-radius: 16px !important; box-shadow: 0 0 8px rgba(0,240,255,0.1) !important; padding: 10px !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-macro-markers-list-item-renderer {
-  border-radius: 16px !important;
-  margin: 5px;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; margin: 5px; border: 1px solid rgba(0,240,255,0.3) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-macro-markers-list-item-renderer:hover {
-  transform: scale(1.02) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.02) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-unified-share-panel-renderer,
-html[data-ypp-ui-style="galaxy"] ytd-add-to-playlist-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+html[data-ypp-ui-style="galaxy"] ytd-unified-share-panel-renderer, html[data-ypp-ui-style="galaxy"] ytd-add-to-playlist-renderer {
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; border: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-settings-options-renderer,
-html[data-ypp-ui-style="galaxy"] ytd-account-settings-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  padding: 25px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+html[data-ypp-ui-style="galaxy"] ytd-settings-options-renderer, html[data-ypp-ui-style="galaxy"] ytd-account-settings-renderer {
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 25px !important; border: 1px solid rgba(0,240,255,0.3) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-rich-grid-slim-media #dismissible,
 html[data-ypp-ui-style="galaxy"] ytd-reel-item-renderer #dismissible {
-  transition: all var(--bounce) !important;
-  border-radius: 16px !important;
+  transition: all var(--bounce) !important; border-radius: 16px !important;
   border: 2px solid transparent !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-rich-grid-slim-media:hover #dismissible,
 html[data-ypp-ui-style="galaxy"] ytd-reel-item-renderer:hover #dismissible {
-  background: #101318 !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.04) !important;
+  background: #101318 !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.04) !important; padding-bottom: 12px !important; margin-bottom: -12px !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-expandable-metadata-renderer {
-  padding: 5px !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  padding: 5px !important; border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-expandable-metadata-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+html[data-ypp-ui-style="galaxy"] ytd-expandable-metadata-renderer:hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; }
+html[data-ypp-ui-style="galaxy"] ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
+  background: none !important;
 }
-html[data-ypp-ui-style="galaxy"] #contents.ytd-rich-grid-renderer {
-  margin-left: 24px !important;
-  margin-right: 12px !important;
+html[data-ypp-ui-style="galaxy"] #contents.ytd-rich-grid-renderer { margin-left: 24px !important; margin-right: 12px !important; }
+html[data-ypp-ui-style="galaxy"] ytd-rich-grid-slim-media { z-index: 1 !important; }
+html[data-ypp-ui-style="galaxy"] ytd-rich-grid-slim-media:hover { z-index: 2000 !important; }
+html[data-ypp-ui-style="galaxy"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-ui-style="galaxy"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="galaxy"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-
-/* src/content/ui-styles/galaxy/components/forms.css */
-html[data-ypp-ui-style="galaxy"] ytd-searchbox,
-html[data-ypp-ui-style="galaxy"] #search-form,
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-input,
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-textarea {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  color: #e0e0e0 !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-  transition: all var(--bounce) !important;
+html[data-ypp-ui-style="galaxy"] ytd-playlist-video-renderer:not(.dragging) {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  margin: 5px; border-radius: 16px !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-searchbox[has-focus],
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-input:focus-within {
-  border: 1px solid rgba(0,240,255,0.8) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+html[data-ypp-ui-style="galaxy"] ytd-playlist-video-renderer:not(.dragging):hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; }
+html[data-ypp-ui-style="galaxy"] .immersive-header-container.ytd-playlist-header-renderer {
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 8px rgba(0,240,255,0.1) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ypp-filter-dropdown {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  color: #e0e0e0 !important;
+html[data-ypp-ui-style="galaxy"] ytd-topbar-logo-renderer {
+  border-radius: 16px !important; padding: 0 !important; max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ypp-filter-dropdown:hover {
-  background: #101318 !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-comment-simplebox-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.05) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 
-/* src/content/ui-styles/galaxy/components/icons.css */
-html[data-ypp-ui-style="galaxy"] yt-icon svg,
-html[data-ypp-ui-style="galaxy"] yt-icon path {
-  fill: #e0e0e0 !important;
-  transition: fill 0.2s ease !important;
+/* galaxy/components/forms.css */
+html[data-ypp-ui-style="galaxy"] ytd-searchbox, html[data-ypp-ui-style="galaxy"] #search-form,
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-input, html[data-ypp-ui-style="galaxy"] tp-yt-paper-textarea {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; color: #e0e0e0 !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+  transition: all var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] yt-icon:hover svg,
-html[data-ypp-ui-style="galaxy"] yt-icon:hover path {
-  fill: #00f0ff !important;
+html[data-ypp-ui-style="galaxy"] ytd-searchbox[has-focus], html[data-ypp-ui-style="galaxy"] tp-yt-paper-input:focus-within {
+  border: 1px solid rgba(0,240,255,0.8) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-button svg,
-html[data-ypp-ui-style="galaxy"] .ytp-button path {
-  fill: #e0e0e0 !important;
+html[data-ypp-ui-style="galaxy"] #search-icon-legacy {
+  background: #0d1b2e !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 0 16px 16px 0 !important; color: #00f0ff !important;
+  transition: all var(--bounce) !important;
 }
+html[data-ypp-ui-style="galaxy"] #search-icon-legacy:hover { background: #00f0ff !important; color: #0b0c10 !important; }
+html[data-ypp-ui-style="galaxy"] .ypp-filter-dropdown {
+  background: #101318 !important; border-radius: 16px !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; color: #e0e0e0 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ypp-filter-dropdown:hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; }
+html[data-ypp-ui-style="galaxy"] ytd-comment-simplebox-renderer {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 15px !important;
+  box-shadow: 0 0 8px rgba(0,240,255,0.1) !important;
+}
+html[data-ypp-ui-style="galaxy"] #placeholder-area.ytd-comment-simplebox-renderer { border: 1px solid rgba(0,240,255,0.3) !important; }
+
+/* galaxy/components/icons.css */
+html[data-ypp-ui-style="galaxy"] yt-icon svg, html[data-ypp-ui-style="galaxy"] yt-icon path { fill: #e0e0e0 !important; transition: fill 0.2s ease !important; }
+html[data-ypp-ui-style="galaxy"] yt-icon:hover svg, html[data-ypp-ui-style="galaxy"] yt-icon:hover path { fill: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-button svg, html[data-ypp-ui-style="galaxy"] .ytp-button path { fill: #e0e0e0 !important; }
 html[data-ypp-ui-style="galaxy"] yt-icon-button#guide-button {
   border-radius: 16px !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] yt-icon-button#guide-button:hover {
-  background: #101318 !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.1);
+  background: #101318 !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.1);
 }
-html[data-ypp-ui-style="galaxy"] yt-icon-button#guide-button:active {
-  transform: scale(0.95) !important;
-}
+html[data-ypp-ui-style="galaxy"] yt-icon-button#guide-button:active { transform: scale(0.95) !important; box-shadow: 0 0 8px rgba(0,240,255,0.1) !important; }
 html[data-ypp-ui-style="galaxy"] .ytInlinePlayerControlsTopRightControlsCircleButton {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  cursor: pointer !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important; cursor: pointer !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.1) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-svg-fill { fill: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="galaxy"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="galaxy"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+  border-radius: 16px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style="galaxy"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="galaxy"] yt-icon-button.ytd-masthead:hover {
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.1);
 }
 
-/* src/content/ui-styles/galaxy/components/menus.css */
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="galaxy"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="galaxy"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="galaxy"] #contentWrapper tp-yt-iron-dropdown,
+/* galaxy/components/menus.css */
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-dialog, html[data-ypp-ui-style="galaxy"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="galaxy"] tp-yt-iron-dropdown, html[data-ypp-ui-style="galaxy"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-style="galaxy"] ytd-multi-page-menu-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #e0e0e0 !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  backdrop-filter: blur(12px) !important; color: #e0e0e0 !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-settings-menu,
-html[data-ypp-ui-style="galaxy"] .ytp-panel-menu {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] .ytp-settings-menu, html[data-ypp-ui-style="galaxy"] .ytp-panel-menu, html[data-ypp-ui-style="galaxy"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="galaxy"] .ytp-panel {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytp-menuitem {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover {
-  background: #450256 !important;
-  color: #00f0ff !important;
-}
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-item {
-  background: transparent !important;
-  color: #e0e0e0 !important;
-}
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-item:hover {
-  background: #450256 !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-notification-renderer {
-  background: #101318 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+  color: #e0e0e0 !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
   transition: background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-notification-renderer:hover {
-  background: #450256 !important;
+html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover { background: #0d1b2e !important; color: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-text {
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important; background: #101318 !important;
+  color: #00f0ff !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; text-shadow: none !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 4px 8px !important;
 }
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-listbox, html[data-ypp-ui-style="galaxy"] tp-yt-paper-item {
+  background: transparent !important; color: #e0e0e0 !important;
+}
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-item:hover { background: #0d1b2e !important; }
+html[data-ypp-ui-style="galaxy"] ytd-notification-renderer {
+  background: #101318 !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-notification-renderer:hover { background: #0d1b2e !important; }
 html[data-ypp-ui-style="galaxy"] ytd-settings-sidebar-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  padding: 15px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 15px !important; border: 1px solid rgba(0,240,255,0.3) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; border-radius: 16px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-/* src/content/ui-styles/galaxy/components/navbar.css */
-html[data-ypp-ui-style="galaxy"] ytd-masthead,
-html[data-ypp-ui-style="galaxy"] #masthead-container {
-  background: #450256 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+/* galaxy/components/navbar.css */
+html[data-ypp-ui-style="galaxy"] ytd-masthead, html[data-ypp-ui-style="galaxy"] #masthead-container {
+  background: #0d1b2e !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
   box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-topbar-logo-renderer {
-  border-radius: 16px !important;
-  padding: 0 !important;
-  max-height: 45px !important;
+  border-radius: 16px !important; padding: 0 !important; max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-topbar-logo-renderer:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.05) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] #guide-wrapper.ytd-app {
-  background: #101318 !important;
-  border-radius: 0 16px 16px 0 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  background: #101318 !important; border-radius: 0 16px 16px 0 !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] #guide-content.ytd-app {
-  background: transparent;
-}
-html[data-ypp-ui-style="galaxy"] ytd-guide-section-renderer {
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-guide-entry-renderer {
-  border-radius: 16px !important;
-  transition: all var(--bounce) !important;
-}
+html[data-ypp-ui-style="galaxy"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="galaxy"] ytd-guide-section-renderer { border-bottom: 1px solid rgba(0,240,255,0.3) !important; }
+html[data-ypp-ui-style="galaxy"] ytd-guide-entry-renderer { border-radius: 16px !important; }
 html[data-ypp-ui-style="galaxy"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
+  background: transparent !important; box-shadow: none !important;
   border-radius: 16px !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: #101318 !important;
+  background: #101318 !important; border-radius: 16px !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+html[data-ypp-ui-style="galaxy"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98); box-shadow: 0 0 8px rgba(0,240,255,0.1) !important;
 }
+html[data-ypp-ui-style="galaxy"] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child { padding: 10px 3px !important; }
+html[data-ypp-ui-style="galaxy"] ytd-mini-guide-renderer.ytd-app { top: 70px !important; left: 10px !important; }
 html[data-ypp-ui-style="galaxy"] ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 16px !important;
+  margin-top: 10px !important; border-radius: 16px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.1) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 
-/* src/content/ui-styles/galaxy/components/panels.css */
+/* galaxy/components/panels.css */
 html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 16px !important;
 }
-html[data-ypp-ui-style="galaxy"] #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] #secondary-inner ytd-playlist-panel-renderer { border-radius: 16px !important; }
+html[data-ypp-ui-style="galaxy"] .header.ytd-playlist-panel-renderer { background: none !important; }
+html[data-ypp-ui-style="galaxy"] #container.ytd-playlist-panel-renderer { border: 1px solid rgba(0,240,255,0.3) !important; }
+html[data-ypp-ui-style="galaxy"] ytd-miniplayer, html[data-ypp-ui-style="galaxy"] #miniplayer-bar {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="galaxy"] .header.ytd-playlist-panel-renderer {
-  background: #450256 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-miniplayer,
-html[data-ypp-ui-style="galaxy"] #miniplayer-bar {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  overflow: hidden !important;
-}
-html[data-ypp-ui-style="galaxy"] .ypp-video-controls,
-html[data-ypp-ui-style="galaxy"] .ypp-shadow-panel {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] .ypp-video-controls, html[data-ypp-ui-style="galaxy"] .ypp-shadow-panel {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; border-radius: 16px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-transcript-search-panel-renderer,
-html[data-ypp-ui-style="galaxy"] ytd-transcript-segment-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  color: #e0e0e0 !important;
+html[data-ypp-ui-style="galaxy"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="galaxy"] #segments-container {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; color: #e0e0e0 !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-transcript-segment-renderer:hover {
-  background: #450256 !important;
-  color: #00f0ff !important;
+  background: #0d1b2e !important; color: #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-macro-markers-info-item-renderer {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 16px !important;
 }
 html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-sidebar {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important; border-top: 1px solid rgba(0,240,255,0.3) !important;
   box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
-html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-play,
-html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-tool {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 16px !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-play:hover,
-html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
-  background: #450256 !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-play:hover, html[data-ypp-ui-style="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
+  background: #0d1b2e !important; transform: scale(1.02) !important;
 }
 
-/* src/content/ui-styles/galaxy/pages/channels.css */
-html[data-ypp-ui-style="galaxy"] ytd-c4-tabbed-header-renderer,
-html[data-ypp-ui-style="galaxy"] #channel-header,
-html[data-ypp-ui-style="galaxy"] #channel-container {
-  background: #0b0c10 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+/* galaxy/pages/channels.css */
+html[data-ypp-ui-style="galaxy"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-style="galaxy"] #channel-header, html[data-ypp-ui-style="galaxy"] #channel-container {
+  background: #0b0c10 !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] #tabs-inner-container {
-  background: #101318 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
-}
+html[data-ypp-ui-style="galaxy"] #tabs-inner-container { background: #101318 !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important; }
 html[data-ypp-ui-style="galaxy"] tp-yt-paper-tab {
-  border-radius: 16px !important;
-  transition: all var(--bounce) !important;
-  color: #e0e0e0 !important;
+  border-radius: 16px !important; transition: all var(--bounce) !important; color: #e0e0e0 !important;
 }
 html[data-ypp-ui-style="galaxy"] tp-yt-paper-tab:hover {
-  background: #450256 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  background: #0d1b2e !important; transform: translateY(-2px) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
 html[data-ypp-ui-style="galaxy"] tp-yt-paper-tab[aria-selected="true"] {
-  background: #00f0ff !important;
-  color: #0b0c10 !important;
-  border-radius: 16px !important;
+  background: #00f0ff !important; color: #0b0c10 !important; border-radius: 16px !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-channel-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  padding: 16px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  padding: 16px !important; transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-channel-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: translateY(-2px) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: translateY(-3px) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-c4-tabbed-header-renderer yt-img-shadow {
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 50% !important;
+  border: 1px solid #00f0ff !important; border-radius: 50% !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-
-/* src/content/ui-styles/galaxy/pages/comments.css */
-html[data-ypp-ui-style="galaxy"] ytd-comment-thread-renderer,
-html[data-ypp-ui-style="galaxy"] ytd-comment-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 12px !important;
-  margin-bottom: 8px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  transition: all var(--bounce) !important;
+html[data-ypp-ui-style="galaxy"] ytd-expandable-tab-renderer {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; margin: 4px !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-comment-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  border: 1px solid rgba(0,240,255,0.8) !important;
-}
-html[data-ypp-ui-style="galaxy"] #author-text.ytd-comment-renderer {
-  color: #00f0ff !important;
-  font-weight: bold !important;
-}
-html[data-ypp-ui-style="galaxy"] #content-text.ytd-comment-renderer {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-comment-replies-renderer {
-  border-left: 1px solid rgba(0,240,255,0.3) !important;
-  margin-left: 16px !important;
-  padding-left: 12px !important;
-}
-html[data-ypp-ui-style="galaxy"] #header-author yt-img-shadow {
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 50% !important;
-}
-html[data-ypp-ui-style="galaxy"] #simplebox-placeholder {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  color: #a0a0c0 !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-backstage-post-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+html[data-ypp-ui-style="galaxy"] ytd-expandable-tab-renderer:hover {
+  background: #0d1b2e !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 
-/* src/content/ui-styles/galaxy/pages/home.css */
-html[data-ypp-ui-style="galaxy"] #frosted-glass.with-chipbar.ytd-app {
+/* galaxy/pages/comments.css */
+html[data-ypp-ui-style="galaxy"] ytd-comment-view-model button, html[data-ypp-ui-style="galaxy"] ytd-comment-renderer button {
+  border-radius: 16px !important; transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-comment-view-model button:hover, html[data-ypp-ui-style="galaxy"] ytd-comment-renderer button:hover {
+  background: #0d1b2e !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; transform: none !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-comment-view-model yt-interaction .fill,
+html[data-ypp-ui-style="galaxy"] ytd-comment-renderer yt-interaction .fill { background: transparent !important; opacity: 0 !important; }
+html[data-ypp-ui-style="galaxy"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 16px !important; margin: 10px !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
   background: none !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-feed-filter-chip-bar-renderer {
-  background: transparent !important;
-  border: none !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-browse[page-subtype=home] #chips {
-  margin: 16px 0 0 0 !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] ytd-comment-thread-renderer, html[data-ypp-ui-style="galaxy"] ytd-comment-view-model {
+  background: #101318 !important; border-radius: 16px !important;
+  padding: 16px !important; margin-bottom: 16px !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; border-left: 6px solid #00f0ff !important;
   box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  transition: box-shadow var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius) !important;
-  border: var(--chip-border) !important;
-  background: var(--chip-bg) !important;
-  box-shadow: var(--chip-shadow) !important;
-  transition: all 0.2s ease !important;
-  color: #e0e0e0 !important;
+html[data-ypp-ui-style="galaxy"] ytd-comment-thread-renderer:hover, html[data-ypp-ui-style="galaxy"] ytd-comment-view-model:hover {
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; background: #0d1b2e33 !important;
 }
-html[data-ypp-ui-style="galaxy"] yt-chip-cloud-chip-renderer:hover {
-  background: var(--chip-bg-hover) !important;
-  transform: scale(1.05) !important;
+html[data-ypp-ui-style="galaxy"] ytd-comment-simplebox-renderer {
+  background: #101318 !important; border-radius: 16px !important;
+  padding: 15px !important; box-shadow: 0 0 8px rgba(0,240,255,0.1) !important; border: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] yt-chip-cloud-chip-renderer[selected] {
-  background: var(--chip-bg-selected) !important;
-  color: var(--chip-color-selected) !important;
-  border: var(--chip-border-selected) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+html[data-ypp-ui-style="galaxy"] #author-text.ytd-comment-renderer { color: #00f0ff !important; font-weight: bold !important; }
+html[data-ypp-ui-style="galaxy"] #content-text.ytd-comment-renderer { color: #e0e0e0 !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important; }
+html[data-ypp-ui-style="galaxy"] ytd-comment-replies-renderer {
+  border-left: 1px solid rgba(0,240,255,0.3) !important; margin-left: 16px !important; padding-left: 12px !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytChipShapeChip {
+html[data-ypp-ui-style="galaxy"] #header-author yt-img-shadow { border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 50% !important; }
+html[data-ypp-ui-style="galaxy"] ytd-backstage-post-renderer {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 16px !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
   border-radius: 16px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+
+/* galaxy/pages/home.css */
+html[data-ypp-ui-style="galaxy"] #frosted-glass.with-chipbar.ytd-app { background: none !important; }
+html[data-ypp-ui-style="galaxy"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="galaxy"] ytd-feed-filter-chip-bar-renderer { background: transparent !important; border: none !important; }
+html[data-ypp-ui-style="galaxy"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="galaxy"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  position: relative !important; overflow: hidden !important; padding: 0 10px !important;
+  margin: 16px 16px 0 0 !important; border-radius: 16px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; transition: box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-rich-grid-renderer {
-  background: #0b0c10 !important;
+html[data-ypp-ui-style="galaxy"] ytd-guide-renderer #sections { margin-left: 8px !important; }
+html[data-ypp-ui-style="galaxy"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-style="galaxy"] ytd-browse[page-subtype=home] #chips {
+  margin: 16px 0 0 0 !important; border-radius: 16px !important;
+  box-shadow: 0 0 8px rgba(0,240,255,0.1) !important; position: relative !important;
+  overflow: hidden !important; padding: 0 10px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  transition: box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] #primary.ytd-app {
-  background: #0b0c10 !important;
+html[data-ypp-ui-style="galaxy"] .yt-chip-shape { background-color: transparent !important; }
+html[data-ypp-ui-style="galaxy"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--chip-radius) !important; border: var(--chip-border) !important;
+  background: var(--chip-bg) !important; box-shadow: var(--chip-shadow) !important;
+  transition: all 0.2s ease !important; color: #e0e0e0 !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-browse {
-  background: #0b0c10 !important;
+html[data-ypp-ui-style="galaxy"] yt-chip-cloud-chip-renderer:hover {
+  background: var(--chip-bg-hover) !important; transform: scale(1.05) !important;
+}
+html[data-ypp-ui-style="galaxy"] yt-chip-cloud-chip-renderer[selected] {
+  background: var(--chip-bg-selected) !important; color: var(--chip-color-selected) !important;
+  border: var(--chip-border-selected) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytChipShapeChip {
+  border-radius: 16px !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytChipShapeChip:hover { transform: scale(1.1) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; }
+html[data-ypp-ui-style="galaxy"] iron-selector.yt-chip-cloud-renderer { padding-left: 5px !important; }
+html[data-ypp-ui-style="galaxy"] .ytContextualSheetLayoutContentContainer,
+html[data-ypp-ui-style="galaxy"] .ytChipBarViewModelHost,
+html[data-ypp-ui-style="galaxy"] .immersive-header-content.ytd-playlist-header-renderer { overflow: visible !important; }
+html[data-ypp-ui-style="galaxy"] ytd-rich-grid-renderer, html[data-ypp-ui-style="galaxy"] ytd-browse,
+html[data-ypp-ui-style="galaxy"] #primary.ytd-app, html[data-ypp-ui-style="galaxy"] #content.ytd-app { background: #0b0c10 !important; }
+html[data-ypp-ui-style="galaxy"] ytd-settings-sidebar-renderer {
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 15px !important; border: 1px solid rgba(0,240,255,0.3) !important;
 }
 
-/* src/content/ui-styles/galaxy/pages/livechat.css */
-html[data-ypp-ui-style="galaxy"] yt-live-chat-app,
-html[data-ypp-ui-style="galaxy"] #chat,
-html[data-ypp-ui-style="galaxy"] yt-live-chat-renderer {
-  background: #0b0c10 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-  color: #e0e0e0 !important;
+/* galaxy/pages/livechat.css */
+html[data-ypp-ui-style="galaxy"] yt-live-chat-app, html[data-ypp-ui-style="galaxy"] #chat, html[data-ypp-ui-style="galaxy"] yt-live-chat-renderer {
+  background: #0b0c10 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important; color: #e0e0e0 !important;
 }
 html[data-ypp-ui-style="galaxy"] yt-live-chat-text-message-renderer {
-  background: #101318 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
-  padding: 6px 12px !important;
-  transition: background var(--bounce) !important;
-  color: #e0e0e0 !important;
+  background: #101318 !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+  padding: 6px 12px !important; transition: background var(--bounce) !important; color: #e0e0e0 !important;
 }
-html[data-ypp-ui-style="galaxy"] yt-live-chat-text-message-renderer:hover {
-  background: #450256 !important;
-}
-html[data-ypp-ui-style="galaxy"] yt-live-chat-ticker-renderer {
-  background: #450256 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
-}
-html[data-ypp-ui-style="galaxy"] #author-name.yt-live-chat-author-chip {
-  color: #00f0ff !important;
-  font-weight: bold !important;
-}
+html[data-ypp-ui-style="galaxy"] yt-live-chat-text-message-renderer:hover { background: #0d1b2e !important; }
+html[data-ypp-ui-style="galaxy"] yt-live-chat-ticker-renderer { background: #0d1b2e !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important; }
+html[data-ypp-ui-style="galaxy"] #author-name.yt-live-chat-author-chip { color: #00f0ff !important; font-weight: bold !important; }
 html[data-ypp-ui-style="galaxy"] yt-live-chat-paid-message-renderer {
-  background: linear-gradient(135deg, #450256, #03045e) !important;
-  border: 1px solid rgba(0,240,255,0.8) !important;
-  border-radius: 16px !important;
+  background: linear-gradient(135deg, #0d1b2e, #03045e) !important;
+  border: 1px solid rgba(0,240,255,0.8) !important; border-radius: 16px !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
+html[data-ypp-ui-style="galaxy"] yt-live-chat-paid-sticker-renderer {
+  background: #0d1b2e !important; border: 1px solid rgba(0,240,255,0.3) !important; border-radius: 16px !important;
+}
+html[data-ypp-ui-style="galaxy"] yt-live-chat-membership-item-renderer {
+  background: #03045e44 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important;
+}
+html[data-ypp-ui-style="galaxy"] #input-panel.yt-live-chat-renderer {
+  background: #101318 !important; border-top: 1px solid rgba(0,240,255,0.3) !important;
+}
 
-/* src/content/ui-styles/galaxy/pages/player.css */
-html[data-ypp-ui-style="galaxy"] .ytp-chrome-bottom,
-html[data-ypp-ui-style="galaxy"] .ytp-gradient-bottom {
-  background: linear-gradient(to top, #450256 0%, transparent 100%) !important;
+/* galaxy/pages/player.css */
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; overflow: hidden !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-progress-bar-container {
-  height: 4px !important;
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: #101318 !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.02);
 }
-html[data-ypp-ui-style="galaxy"] .ytp-play-progress,
-html[data-ypp-ui-style="galaxy"] .ytp-swatch-background-color {
-  background-color: #00f0ff !important;
-  box-shadow: 0 0 8px #00f0ff !important;
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-load-progress {
-  background-color: #a0a0c0 !important;
-  opacity: 0.5 !important;
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: #101318 !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.1);
+}
+html[data-ypp-ui-style="galaxy"] .ytp-delhi-modern .ytp-chapter-container { width: 100% !important; padding-left: 10px; }
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-bottom, html[data-ypp-ui-style="galaxy"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #0d1b2e 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-progress-bar-container { height: 4px !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-play-progress, html[data-ypp-ui-style="galaxy"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle, html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle::after { background: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-swatch-color { color: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-load-progress { background: rgba(255,255,255,0.2) !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-scrubber-button {
+  background: #00f0ff !important; border: 2px solid #101318 !important;
+  border-radius: 0 !important;
+  transform: rotate(45deg) scale(0.85) scale(0.8) !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; transition: transform 0.1s ease !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-scrubber-button:hover {
+  transform: rotate(45deg) scale(0.85) scale(1) !important;
+  background: #101318 !important; border-color: #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-time-display, html[data-ypp-ui-style="galaxy"] .ytp-chapter-title-content {
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important; color: #e0e0e0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-text {
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important; background: #101318 !important;
+  color: #00f0ff !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; text-shadow: none !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-style="galaxy"] .ytp-panel {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle {
   background: #00f0ff !important;
   border-radius: 50% !important;
   border: 1px solid rgba(0,240,255,0.3) !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button {
-  color: #e0e0e0 !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button:hover {
-  color: #00f0ff !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-settings-menu,
-html[data-ypp-ui-style="galaxy"] .ytp-panel-menu {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-menuitem {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover {
-  background: #450256 !important;
-  color: #00f0ff !important;
-}
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button { color: #e0e0e0 !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button:hover { color: #00f0ff !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; }
 html[data-ypp-ui-style="galaxy"] .ytp-ce-element {
   border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  overflow: hidden !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="galaxy"] .ytp-ce-element:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="galaxy"] .ytp-ce-element:hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.04) !important; }
+html[data-ypp-ui-style="galaxy"] video.video-stream.html5-main-video, html[data-ypp-ui-style="galaxy"] .html5-video-player {
+  border-radius: 16px !important;
 }
 
-/* src/content/ui-styles/galaxy/pages/search.css */
-html[data-ypp-ui-style="galaxy"] ytd-search,
-html[data-ypp-ui-style="galaxy"] ytd-search-header-renderer {
-  background: #0b0c10 !important;
-}
+/* galaxy/pages/search.css */
+html[data-ypp-ui-style="galaxy"] ytd-search, html[data-ypp-ui-style="galaxy"] ytd-search-header-renderer { background: #0b0c10 !important; }
 html[data-ypp-ui-style="galaxy"] ytd-video-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  margin-bottom: 12px !important;
-  padding: 12px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  margin-bottom: 12px !important; padding: 12px !important;
   transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-video-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  border: 1px solid rgba(0,240,255,0.8) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; border: 1px solid rgba(0,240,255,0.8) !important;
   transform: translateY(-2px) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-search-pyv-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.8) !important;
-  border-radius: 16px !important;
-  padding: 12px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.8) !important;
+  border-radius: 16px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-shelf-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  margin-bottom: 16px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; margin-bottom: 16px !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-searchbox {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] ytd-channel-renderer {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 12px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-horizontal-card-list-renderer {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 12px !important;
 }
 
-/* src/content/ui-styles/galaxy/pages/shorts.css */
-html[data-ypp-ui-style="galaxy"] ytd-shorts,
-html[data-ypp-ui-style="galaxy"] #shorts-container {
-  background: #0b0c10 !important;
-}
+/* galaxy/pages/shorts.css */
+html[data-ypp-ui-style="galaxy"] ytd-shorts, html[data-ypp-ui-style="galaxy"] #shorts-container { background: #0b0c10 !important; }
 html[data-ypp-ui-style="galaxy"] ytd-reel-video-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  overflow: hidden !important;
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; border: 1px solid rgba(0,240,255,0.3) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-reel-player-overlay-renderer {
-  background: transparent !important;
-}
+html[data-ypp-ui-style="galaxy"] ytd-reel-player-overlay-renderer { background: transparent !important; }
 html[data-ypp-ui-style="galaxy"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
-  background: #101318 !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  margin-bottom: 12px !important;
-  transition: all var(--bounce) !important;
+  background: #101318 !important; border-radius: 50% !important;
+  border: 1px solid rgba(0,240,255,0.3) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  margin-bottom: 12px !important; transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="galaxy"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.1) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; transform: scale(1.1) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-reel-item-renderer {
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  overflow: hidden !important;
-  transition: all var(--bounce) !important;
+  border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  overflow: hidden !important; transition: all var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-reel-item-renderer:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+html[data-ypp-ui-style="galaxy"] ytd-reel-item-renderer:hover { box-shadow: 0 0 35px rgba(0,240,255,0.5) !important; }
+html[data-ypp-ui-style="galaxy"] .ytd-reel-video-renderer .overlay-dir {
+  background: linear-gradient(to top, #0d1b2eaa 0%, transparent 40%) !important;
 }
 
-/* src/content/ui-styles/galaxy/pages/watch.css */
-html[data-ypp-ui-style="galaxy"] ytd-watch-flexy {
-  background: #0b0c10 !important;
-}
-html[data-ypp-ui-style="galaxy"] #primary.ytd-watch-flexy,
-html[data-ypp-ui-style="galaxy"] #secondary.ytd-watch-flexy {
-  background: #0b0c10 !important;
-}
+/* galaxy/pages/watch.css */
+html[data-ypp-ui-style="galaxy"] ytd-watch-flexy { background: #0b0c10 !important; }
+html[data-ypp-ui-style="galaxy"] #primary.ytd-watch-flexy, html[data-ypp-ui-style="galaxy"] #secondary.ytd-watch-flexy { background: #0b0c10 !important; }
 html[data-ypp-ui-style="galaxy"] ytd-video-primary-info-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 16px !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-video-secondary-info-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  margin-top: 8px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 16px !important; margin-top: 8px !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-watch-metadata {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 12px !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-playlist-panel-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-}
-html[data-ypp-ui-style="galaxy"] #description-inline-expander {
-  color: #e0e0e0 !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-expandable-metadata-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  padding: 12px !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; padding: 12px !important;
 }
-html[data-ypp-ui-style="galaxy"] #above-the-fold {
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
-  padding-bottom: 12px !important;
-}
+html[data-ypp-ui-style="galaxy"] #above-the-fold { border-bottom: 1px solid rgba(0,240,255,0.3) !important; padding-bottom: 12px !important; }
+html[data-ypp-ui-style="galaxy"] ytd-watch-flexy[theater] #below.ytd-watch-flexy { padding: 12px !important; }
+html[data-ypp-ui-style="galaxy"] #description-inline-expander { color: #e0e0e0 !important; }
+html[data-ypp-ui-style="galaxy"] ytd-item-section-renderer { background: #0b0c10 !important; }
 
-/* src/content/ui-styles/galaxy/card-style.css */
+/* galaxy/card-style.css */
 html[data-ypp-card-style="galaxy"] {
-  --sf:           #101318;
-  --shadow-base:  0 0 20px rgba(0,240,255,0.2);
-  --shadow-hover: 0 0 35px rgba(0,240,255,0.5);
-  --shadow-active:0 0 8px rgba(0,240,255,0.1);
-  --blur:         blur(10px);
-  --galaxy-bg:       #0b0c10;
-  --galaxy-sf:       #101318;
-  --galaxy-primary:  #450256;
-  --galaxy-secondary:#03045e;
-  --galaxy-accent:   #00f0ff;
-  --galaxy-border:   1px solid rgba(0,240,255,0.3);
-  --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
-  --galaxy-text:     #e0e0e0;
-  --galaxy-text-sub: #a0a0c0;
-  --galaxy-radius:   16px;
+  --sf: #101318; --shadow-base: 0 0 20px rgba(0,240,255,0.2); --shadow-hover: 0 0 35px rgba(0,240,255,0.5);
+  --shadow-active: 0 0 8px rgba(0,240,255,0.1); --blur: blur(10px);
+  --galaxy-bg: #0b0c10; --galaxy-sf: #101318; --galaxy-primary: #0d1b2e;
+  --galaxy-secondary: #03045e; --galaxy-accent: #00f0ff;
+  --galaxy-border: 1px solid rgba(0,240,255,0.3); --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
+  --galaxy-text: #e0e0e0; --galaxy-text-sub: #a0a0c0; --galaxy-radius: 16px;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model
-  ) {
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+  ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model) {
   background: #101318 !important;
   --yt-spec-text-primary: #e0e0e0 !important;
   --yt-spec-text-secondary: #a0a0c0 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  padding: var(--ypp-density-pad, 14px) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  padding: var(--ypp-density-pad, 14px) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
   transition: all 0.2s ease !important;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model
-  ):hover {
-  background: #450256 !important;
-  border-color: #00f0ff !important;
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+  ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model):hover {
+  background: #0d1b2e !important; border-color: #00f0ff !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
+  color: #e0e0e0 !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
   color: #a0a0c0 !important;
 }
-
-html[data-ypp-card-style='galaxy'] ytd-thumbnail {
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  overflow: hidden !important;
-}
-
-html[data-ypp-card-style='galaxy'] #mouseover-overlay,
-html[data-ypp-card-style='galaxy'] ytd-video-preview {
-  display: none !important;
-}
+html[data-ypp-card-style="galaxy"] ytd-thumbnail { border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important; overflow: hidden !important; }
+html[data-ypp-card-style="galaxy"] #mouseover-overlay, html[data-ypp-card-style="galaxy"] ytd-video-preview { display: none !important; }
 
 /* galaxy/theme/base/tokens.css */
 html[data-ypp-ui-style="galaxy"] {
-  /* Popup/Extension theme mirror */
-  --ypp-bg-base:    #0b0c10;
-  --ypp-bg-surface: #101318;
-  --ypp-accent:     #00f0ff;
-  --ypp-text-primary: #e0e0e0;
+  --ypp-bg-base: #0b0c10; --ypp-bg-surface: #101318;
+  --ypp-accent: #00f0ff; --ypp-text-primary: #e0e0e0;
   --ypp-text-secondary: #a0a0c0;
 }
 

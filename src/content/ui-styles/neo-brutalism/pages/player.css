@@ -1,52 +1,65 @@
-/* src/content/ui-styles/neo-brutalism/pages/player.css */
-html[data-ypp-ui-style="neo-brutalism"] .ytp-chrome-bottom,
-html[data-ypp-ui-style="neo-brutalism"] .ytp-gradient-bottom {
+/* neo-brutalism/pages/player.css */
+html[data-ypp-ui-style="neo-brutalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; overflow: hidden !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: #fffbf0 !important; box-shadow: 10px 10px 0px #000 !important; transform: scale(1.02);
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: #fffbf0 !important; box-shadow: 10px 10px 0px #000 !important; transform: scale(1.1);
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-delhi-modern .ytp-chapter-container { width: 100% !important; padding-left: 10px; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-chrome-bottom, html[data-ypp-ui-style="neo-brutalism"] .ytp-gradient-bottom {
   background: linear-gradient(to top, #ffcc00 0%, transparent 100%) !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ytp-progress-bar-container {
-  height: 8px !important;
+html[data-ypp-ui-style="neo-brutalism"] .ytp-progress-bar-container { height: 8px !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-play-progress, html[data-ypp-ui-style="neo-brutalism"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-volume-slider-handle, html[data-ypp-ui-style="neo-brutalism"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-volume-slider-handle::after { background: #000 !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-swatch-color { color: #000 !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-load-progress { background: rgba(255,255,255,0.2) !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-scrubber-button {
+  background: #000 !important; border: 2px solid #fffbf0 !important;
+  border-radius: 0 !important;
+  transform: rotate(0deg) scale(0.8) !important;
+  box-shadow: 6px 6px 0px #000 !important; transition: transform 0.1s ease !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ytp-play-progress,
-html[data-ypp-ui-style="neo-brutalism"] .ytp-swatch-background-color {
-  background-color: #000000 !important;
-  box-shadow: 0 0 8px #000000 !important;
+html[data-ypp-ui-style="neo-brutalism"] .ytp-scrubber-button:hover {
+  transform: rotate(0deg) scale(1) !important;
+  background: #fffbf0 !important; border-color: #000 !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ytp-load-progress {
-  background-color: #333333 !important;
-  opacity: 0.5 !important;
+html[data-ypp-ui-style="neo-brutalism"] .ytp-time-display, html[data-ypp-ui-style="neo-brutalism"] .ytp-chapter-title-content {
+  font-family: "Space Mono","Courier New",monospace !important; color: #000 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-tooltip-text {
+  font-family: "Space Mono","Courier New",monospace !important; background: #fffbf0 !important;
+  color: #000 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; text-shadow: none !important;
+  box-shadow: 6px 6px 0px #000 !important; padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-style="neo-brutalism"] .ytp-panel {
+  background: #fffbf0 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; box-shadow: 10px 10px 0px #000 !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] .ytp-volume-slider-handle {
-  background: #000000 !important;
+  background: #000 !important;
   border-radius: 0px !important;
-  border: 4px solid #000000 !important;
+  border: 4px solid #000 !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ytp-chrome-controls button {
-  color: #000000 !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] .ytp-chrome-controls button:hover {
-  color: #000000 !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] .ytp-settings-menu,
-html[data-ypp-ui-style="neo-brutalism"] .ytp-panel-menu {
-  background: #fffbf0 !important;
-  border: 4px solid #000000 !important;
-  border-radius: 0px !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem {
-  color: #000000 !important;
-  font-family: "Space Mono","Courier New",monospace !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem:hover {
-  background: #ffcc00 !important;
-  color: #000000 !important;
-}
+html[data-ypp-ui-style="neo-brutalism"] .ytp-chrome-controls button { color: #000 !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ytp-chrome-controls button:hover { color: #000 !important; box-shadow: 6px 6px 0px #000 !important; }
 html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-element {
-  border-radius: 0px !important;
-  border: 4px solid #000000 !important;
-  box-shadow: 10px 10px 0px #000000 !important;
-  overflow: hidden !important;
+  border-radius: 0 !important;
+  border: 4px solid #000 !important; box-shadow: 10px 10px 0px #000 !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-element:hover {
-  box-shadow: 10px 10px 0px #000000 !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-element:hover { box-shadow: 10px 10px 0px #000 !important; transform: scale(1.04) !important; }
+html[data-ypp-ui-style="neo-brutalism"] video.video-stream.html5-main-video, html[data-ypp-ui-style="neo-brutalism"] .html5-video-player {
+  border-radius: 0px !important;
 }

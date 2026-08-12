@@ -1,52 +1,65 @@
-/* src/content/ui-styles/hologram/pages/player.css */
-html[data-ypp-ui-style="hologram"] .ytp-chrome-bottom,
-html[data-ypp-ui-style="hologram"] .ytp-gradient-bottom {
+/* hologram/pages/player.css */
+html[data-ypp-ui-style="hologram"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important; border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important; overflow: hidden !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: #f0fdff !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important; transform: scale(1.02);
+}
+html[data-ypp-ui-style="hologram"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: #f0fdff !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important; transform: scale(1.1);
+}
+html[data-ypp-ui-style="hologram"] .ytp-delhi-modern .ytp-chapter-container { width: 100% !important; padding-left: 10px; }
+html[data-ypp-ui-style="hologram"] .ytp-chrome-bottom, html[data-ypp-ui-style="hologram"] .ytp-gradient-bottom {
   background: linear-gradient(to top, #cff4fc 0%, transparent 100%) !important;
 }
-html[data-ypp-ui-style="hologram"] .ytp-progress-bar-container {
-  height: 4px !important;
+html[data-ypp-ui-style="hologram"] .ytp-progress-bar-container { height: 4px !important; }
+html[data-ypp-ui-style="hologram"] .ytp-play-progress, html[data-ypp-ui-style="hologram"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="hologram"] .ytp-volume-slider-handle, html[data-ypp-ui-style="hologram"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="hologram"] .ytp-volume-slider-handle::after { background: #00ffff !important; }
+html[data-ypp-ui-style="hologram"] .ytp-swatch-color { color: #00ffff !important; }
+html[data-ypp-ui-style="hologram"] .ytp-load-progress { background: rgba(255,255,255,0.2) !important; }
+html[data-ypp-ui-style="hologram"] .ytp-scrubber-button {
+  background: #00ffff !important; border: 2px solid #f0fdff !important;
+  border-radius: 0 !important;
+  transform: rotate(45deg) scale(0.8) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important; transition: transform 0.1s ease !important;
 }
-html[data-ypp-ui-style="hologram"] .ytp-play-progress,
-html[data-ypp-ui-style="hologram"] .ytp-swatch-background-color {
-  background-color: #00e5e5 !important;
-  box-shadow: 0 0 8px #00e5e5 !important;
+html[data-ypp-ui-style="hologram"] .ytp-scrubber-button:hover {
+  transform: rotate(45deg) scale(1) !important;
+  background: #f0fdff !important; border-color: #00ffff !important;
 }
-html[data-ypp-ui-style="hologram"] .ytp-load-progress {
-  background-color: #005566 !important;
-  opacity: 0.5 !important;
+html[data-ypp-ui-style="hologram"] .ytp-time-display, html[data-ypp-ui-style="hologram"] .ytp-chapter-title-content {
+  font-family: "Orbitron","Space Mono",monospace !important; color: #003344 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-tooltip-text {
+  font-family: "Orbitron","Space Mono",monospace !important; background: #f0fdff !important;
+  color: #00ffff !important; border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important; text-shadow: none !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important; padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="hologram"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-style="hologram"] .ytp-panel {
+  background: #f0fdff !important; border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
 }
 html[data-ypp-ui-style="hologram"] .ytp-volume-slider-handle {
-  background: #00e5e5 !important;
+  background: #00ffff !important;
   border-radius: 50% !important;
   border: 1px solid rgba(0,255,255,0.5) !important;
 }
-html[data-ypp-ui-style="hologram"] .ytp-chrome-controls button {
-  color: #003344 !important;
-}
-html[data-ypp-ui-style="hologram"] .ytp-chrome-controls button:hover {
-  color: #00e5e5 !important;
-}
-html[data-ypp-ui-style="hologram"] .ytp-settings-menu,
-html[data-ypp-ui-style="hologram"] .ytp-panel-menu {
-  background: #f0fdff !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  border-radius: 10px !important;
-}
-html[data-ypp-ui-style="hologram"] .ytp-menuitem {
-  color: #003344 !important;
-  font-family: "Orbitron","Space Mono",monospace !important;
-}
-html[data-ypp-ui-style="hologram"] .ytp-menuitem:hover {
-  background: #cff4fc !important;
-  color: #00e5e5 !important;
-}
+html[data-ypp-ui-style="hologram"] .ytp-chrome-controls button { color: #003344 !important; }
+html[data-ypp-ui-style="hologram"] .ytp-chrome-controls button:hover { color: #00ffff !important; box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important; }
 html[data-ypp-ui-style="hologram"] .ytp-ce-element {
   border-radius: 10px !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
-  overflow: hidden !important;
+  border: 1px solid rgba(0,255,255,0.5) !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="hologram"] .ytp-ce-element:hover {
-  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="hologram"] .ytp-ce-element:hover { box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important; transform: scale(1.04) !important; }
+html[data-ypp-ui-style="hologram"] video.video-stream.html5-main-video, html[data-ypp-ui-style="hologram"] .html5-video-player {
+  border-radius: 10px !important;
 }

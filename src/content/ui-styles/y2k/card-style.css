@@ -1,80 +1,34 @@
-/* src/content/ui-styles/y2k/card-style.css */
+/* y2k/card-style.css */
 html[data-ypp-card-style="y2k"] {
-  --sf:           #f0f0ff;
-  --shadow-base:  0 0 15px rgba(255,105,180,0.4);
-  --shadow-hover: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3);
-  --shadow-active:0 0 6px rgba(147,112,219,0.2);
-  --blur:         blur(10px);
-  --y2k-bg:       #e6e6fa;
-  --y2k-sf:       #f0f0ff;
-  --y2k-primary:  #ff69b4;
-  --y2k-secondary:#00ccff;
-  --y2k-accent:   #9370db;
-  --y2k-border:   3px solid #00ccff;
-  --y2k-border-hover: 3px solid #ff69b4;
-  --y2k-text:     #191970;
-  --y2k-text-sub: #4040aa;
-  --y2k-radius:   30px;
+  --sf: #f0f0ff; --shadow-base: 0 0 15px rgba(255,105,180,0.4); --shadow-hover: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3);
+  --shadow-active: 0 0 6px rgba(147,112,219,0.2); --blur: blur(10px);
+  --y2k-bg: #e6e6fa; --y2k-sf: #f0f0ff; --y2k-primary: #c8c8ff;
+  --y2k-secondary: #ff69b4; --y2k-accent: #9370db;
+  --y2k-border: 3px solid #00ccff; --y2k-border-hover: 3px solid #ff69b4;
+  --y2k-text: #191970; --y2k-text-sub: #4040aa; --y2k-radius: 24px;
 }
-
-html[data-ypp-card-style='y2k']
-  :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model
-  ) {
+html[data-ypp-card-style="y2k"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+  ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model) {
   background: #f0f0ff !important;
   --yt-spec-text-primary: #191970 !important;
   --yt-spec-text-secondary: #4040aa !important;
-  border-radius: 30px !important;
-  border: 3px solid #00ccff !important;
-  padding: var(--ypp-density-pad, 14px) !important;
-  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  border-radius: 24px !important; border: 3px solid #00ccff !important;
+  padding: var(--ypp-density-pad, 14px) !important; box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
   transition: all 0.2s ease !important;
 }
-
-html[data-ypp-card-style='y2k']
-  :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model
-  ):hover {
-  background: #ff69b4 !important;
-  border-color: #9370db !important;
+html[data-ypp-card-style="y2k"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+  ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model):hover {
+  background: #c8c8ff !important; border-color: #9370db !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }
-
-html[data-ypp-card-style='y2k']
-  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
-  color: #191970 !important;
-  font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
+html[data-ypp-card-style="y2k"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
+  color: #191970 !important; font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
 }
-
-html[data-ypp-card-style='y2k']
-  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
+html[data-ypp-card-style="y2k"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
   color: #4040aa !important;
 }
-
-html[data-ypp-card-style='y2k'] ytd-thumbnail {
-  border-radius: 30px !important;
-  border: 3px solid #00ccff !important;
-  overflow: hidden !important;
-}
-
-html[data-ypp-card-style='y2k'] #mouseover-overlay,
-html[data-ypp-card-style='y2k'] ytd-video-preview {
-  display: none !important;
-}
+html[data-ypp-card-style="y2k"] ytd-thumbnail { border-radius: 24px !important; border: 3px solid #00ccff !important; overflow: hidden !important; }
+html[data-ypp-card-style="y2k"] #mouseover-overlay, html[data-ypp-card-style="y2k"] ytd-video-preview { display: none !important; }

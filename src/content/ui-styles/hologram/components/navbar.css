@@ -1,55 +1,41 @@
-/* src/content/ui-styles/hologram/components/navbar.css */
-html[data-ypp-ui-style="hologram"] ytd-masthead,
-html[data-ypp-ui-style="hologram"] #masthead-container {
-  background: #cff4fc !important;
-  border-bottom: 1px solid rgba(0,255,255,0.5) !important;
+/* hologram/components/navbar.css */
+html[data-ypp-ui-style="hologram"] ytd-masthead, html[data-ypp-ui-style="hologram"] #masthead-container {
+  background: #cff4fc !important; border-bottom: 1px solid rgba(0,255,255,0.5) !important;
   box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
 }
 html[data-ypp-ui-style="hologram"] ytd-topbar-logo-renderer {
-  border-radius: 10px !important;
-  padding: 0 !important;
-  max-height: 45px !important;
+  border-radius: 10px !important; padding: 0 !important; max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="hologram"] ytd-topbar-logo-renderer:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.05) !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
 }
 html[data-ypp-ui-style="hologram"] #guide-wrapper.ytd-app {
-  background: #f0fdff !important;
-  border-radius: 0 10px 10px 0 !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  background: #f0fdff !important; border-radius: 0 10px 10px 0 !important;
+  border: 1px solid rgba(0,255,255,0.5) !important; box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="hologram"] #guide-content.ytd-app {
-  background: transparent;
-}
-html[data-ypp-ui-style="hologram"] ytd-guide-section-renderer {
-  border-bottom: 1px solid rgba(0,255,255,0.5) !important;
-}
-html[data-ypp-ui-style="hologram"] ytd-guide-entry-renderer {
-  border-radius: 10px !important;
-  transition: all var(--bounce) !important;
-}
+html[data-ypp-ui-style="hologram"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="hologram"] ytd-guide-section-renderer { border-bottom: 1px solid rgba(0,255,255,0.5) !important; }
+html[data-ypp-ui-style="hologram"] ytd-guide-entry-renderer { border-radius: 10px !important; }
 html[data-ypp-ui-style="hologram"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
+  background: transparent !important; box-shadow: none !important;
   border-radius: 10px !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 html[data-ypp-ui-style="hologram"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: #f0fdff !important;
-  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  background: #f0fdff !important; border-radius: 10px !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
 }
-html[data-ypp-ui-style="hologram"] ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+html[data-ypp-ui-style="hologram"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98); box-shadow: 0 0 5px rgba(0,255,255,0.2) !important;
 }
+html[data-ypp-ui-style="hologram"] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child { padding: 10px 3px !important; }
+html[data-ypp-ui-style="hologram"] ytd-mini-guide-renderer.ytd-app { top: 70px !important; left: 10px !important; }
 html[data-ypp-ui-style="hologram"] ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 10px !important;
+  margin-top: 10px !important; border-radius: 10px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="hologram"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.1) !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
 }

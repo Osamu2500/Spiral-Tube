@@ -1,25 +1,30 @@
-/* src/content/ui-styles/matrix/components/badges.css */
+/* matrix/components/badges.css */
 html[data-ypp-ui-style="matrix"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-style="matrix"] .ypp-badge,
-html[data-ypp-ui-style="matrix"] .ypp-value-display {
-  background: #001100 !important;
-  color: #00ff00 !important;
-  border-radius: 0px !important;
-  border: 1px dotted #00ff00 !important;
-  box-shadow: 0 0 10px #00ff00 !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  font-family: "Courier New",Courier,monospace !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="matrix"] .ypp-badge, html[data-ypp-ui-style="matrix"] .ypp-value-display {
+  background: #001100 !important; color: #00ff00 !important;
+  border-radius: 0px !important; border: 1px dotted #00ff00 !important;
+  box-shadow: 0 0 10px #00ff00 !important; font-family: "Share Tech Mono","Courier New",monospace !important; font-weight: bold !important;
 }
-html[data-ypp-ui-style="matrix"] ytd-badge-supported-renderer {
-  border-radius: 0px !important;
-}
+html[data-ypp-ui-style="matrix"] ytd-badge-supported-renderer { border-radius: 0px !important; }
 html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarBackground,
 html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-style="matrix"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 0px !important;
-  background-color: #00ff00 !important;
+  border-radius: 0px !important; background-color: #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarBackground { background-color: #009900 !important; opacity: 0.3 !important; }
+html[data-ypp-ui-style="matrix"] .ytProgressBarLineProgressBarLoaded { background-color: #009900 !important; opacity: 0.5 !important; }
+html[data-ypp-ui-style="matrix"] ytd-thumbnail-overlay-time-status-renderer {
+  background: #002200 !important; color: #00ff00 !important;
+  border-radius: 0px !important; border: 1px dotted #00ff00 !important; font-family: "Share Tech Mono","Courier New",monospace !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: #001100 !important; border-radius: 0px !important;
+  border: 1px dotted #00ff00 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important; box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }

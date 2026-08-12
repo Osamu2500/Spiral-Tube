@@ -1,38 +1,30 @@
-/* src/content/ui-styles/anime/pages/search.css */
-html[data-ypp-ui-style="anime"] ytd-search,
-html[data-ypp-ui-style="anime"] ytd-search-header-renderer {
-  background: #fff0f5 !important;
-}
+/* anime/pages/search.css */
+html[data-ypp-ui-style="anime"] ytd-search, html[data-ypp-ui-style="anime"] ytd-search-header-renderer { background: #fff0f5 !important; }
 html[data-ypp-ui-style="anime"] ytd-video-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
-  margin-bottom: 12px !important;
-  padding: 12px !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  margin-bottom: 12px !important; padding: 12px !important;
   transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-video-renderer:hover {
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
-  border: 2px solid #ff69b4 !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; border: 2px solid #ff69b4 !important;
   transform: translateY(-2px) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-search-pyv-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ff69b4 !important;
-  border-radius: 20px !important;
-  padding: 12px !important;
+  background: #ffe4ef !important; border: 2px solid #ff69b4 !important;
+  border-radius: 20px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="anime"] ytd-shelf-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  padding: 16px !important;
-  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
-  margin-bottom: 16px !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 16px !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important; margin-bottom: 16px !important;
 }
-html[data-ypp-ui-style="anime"] ytd-searchbox {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
+html[data-ypp-ui-style="anime"] ytd-channel-renderer {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 12px !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-horizontal-card-list-renderer {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 12px !important;
 }

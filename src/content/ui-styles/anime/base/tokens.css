@@ -1,64 +1,39 @@
-/* src/content/ui-styles/anime/base/tokens.css */
+/* anime/base/tokens.css */
 html[data-ypp-ui-style="anime"],
 html[data-ypp-ui-style="anime"] body,
 html[data-ypp-ui-style="anime"] [dark] {
-  /* Core Palette */
-  --anime-bg:           #fff0f5;
-  --anime-sf:           #ffe4ef;
-  --anime-primary:      #ff69b4;
-  --anime-secondary:    #d63384;
-  --anime-accent:       #ff1493;
-  --anime-text:         #3a1a2a;
-  --anime-text-sub:     #7a4a5a;
-  --anime-border:       2px solid #ffb6c1;
-  --anime-border-hover: 2px solid #ff69b4;
-  --anime-radius:       20px;
-  --anime-shadow:       0 8px 30px rgba(255,105,180,0.3);
-  --anime-shadow-hover: 0 16px 45px rgba(255,105,180,0.5);
-  --anime-shadow-active:0 2px 8px rgba(255,105,180,0.2);
-  --anime-bounce:       cubic-bezier(0.34,1.56,0.64,1) 0.3s;
-  --anime-font:         "Nunito","Segoe UI",sans-serif;
-  --anime-font-alt:     "Nunito","Comic Neue",cursive;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--anime-sf);
-  --bounce:       var(--anime-bounce);
-  --shadow-base:  var(--anime-shadow);
-  --shadow-hover: var(--anime-shadow-hover);
-  --shadow-active:var(--anime-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             rgba(255,182,193,0.3);
-  --chip-bg-hover:       rgba(255,105,180,0.4);
-  --chip-bg-selected:    #ff69b4;
-  --chip-color-selected: #3a1a2a;
-  --chip-border:         2px solid #ffb6c1;
-  --chip-border-selected:2px solid #ff1493;
-  --chip-radius:         20px;
-  --chip-shadow:         0 8px 30px rgba(255,105,180,0.3);
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #3a1a2a !important;
-  --yt-spec-text-secondary:        #7a4a5a !important;
-  --yt-spec-text-disabled:         #7a4a5a !important;
-  --yt-spec-icon-active-other:     #ff1493 !important;
-  --yt-spec-icon-inactive:         #7a4a5a !important;
-  --yt-spec-menu-background:       #ffe4ef !important;
-  --yt-spec-raised-background:     #ffe4ef !important;
-  --yt-spec-base-background:       #fff0f5 !important;
+  --anime-bg: #fff0f5; --anime-sf: #ffe4ef; --anime-primary: #ff69b4;
+  --anime-secondary: #d63384; --anime-accent: #ff1493;
+  --anime-text: #3a1a2a; --anime-text-sub: #7a4a5a;
+  --anime-border: 2px solid #ffb6c1; --anime-border-hover: 2px solid #ff69b4;
+  --anime-border-accent: 2px solid #ff1493;
+  --anime-radius: 20px; --anime-font: "Nunito","Segoe UI",sans-serif;
+  --anime-shadow: 0 8px 30px rgba(255,105,180,0.3); --anime-shadow-hover: 0 16px 45px rgba(255,105,180,0.55);
+  --anime-shadow-active: 0 2px 8px rgba(255,105,180,0.2); --anime-bounce: cubic-bezier(0.34,1.56,0.64,1) 0.3s;
+  --sf: var(--anime-sf); --bounce: var(--anime-bounce);
+  --shadow-base: var(--anime-shadow); --shadow-hover: var(--anime-shadow-hover);
+  --shadow-active: var(--anime-shadow-active);
+  --chip-bg: rgba(255,182,193,0.3); --chip-bg-hover: rgba(255,105,180,0.4);
+  --chip-bg-selected: #ff69b4; --chip-color-selected: #fff;
+  --chip-border: 2px solid #ffb6c1; --chip-border-selected: 2px solid #ff1493;
+  --chip-radius: 20px; --chip-shadow: none;
+  --yt-spec-text-primary: #3a1a2a !important;
+  --yt-spec-text-secondary: #7a4a5a !important;
+  --yt-spec-text-disabled: #7a4a5a !important;
+  --yt-spec-icon-active-other: #ff1493 !important;
+  --yt-spec-icon-inactive: #7a4a5a !important;
+  --yt-spec-menu-background: #ffe4ef !important;
+  --yt-spec-raised-background: #ffe4ef !important;
+  --yt-spec-base-background: #fff0f5 !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "Nunito","Segoe UI",sans-serif !important;
-  --yt-font-family:                "Nunito","Segoe UI",sans-serif !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Nunito","Segoe UI",sans-serif !important;
+  --yt-font-family: "Nunito","Segoe UI",sans-serif !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="anime"] body,
 html[data-ypp-ui-style="anime"] yt-formatted-string,
 html[data-ypp-ui-style="anime"] .yt-core-attributed-string,
-html[data-ypp-ui-style="anime"] input,
-html[data-ypp-ui-style="anime"] textarea,
-html[data-ypp-ui-style="anime"] button,
+html[data-ypp-ui-style="anime"] input, html[data-ypp-ui-style="anime"] textarea, html[data-ypp-ui-style="anime"] button,
 html[data-ypp-ui-style="anime"] tp-yt-paper-item,
 html[data-ypp-ui-style="anime"] .ytp-menuitem-label,
 html[data-ypp-ui-style="anime"] .ytp-menuitem-content {

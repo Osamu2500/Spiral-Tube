@@ -1,25 +1,30 @@
-/* src/content/ui-styles/y2k/components/badges.css */
+/* y2k/components/badges.css */
 html[data-ypp-ui-style="y2k"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-style="y2k"] .ypp-badge,
-html[data-ypp-ui-style="y2k"] .ypp-value-display {
-  background: #f0f0ff !important;
-  color: #191970 !important;
-  border-radius: 30px !important;
-  border: 3px solid #00ccff !important;
-  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="y2k"] .ypp-badge, html[data-ypp-ui-style="y2k"] .ypp-value-display {
+  background: #f0f0ff !important; color: #191970 !important;
+  border-radius: 24px !important; border: 3px solid #00ccff !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important; font-family: "Comic Sans MS","Trebuchet MS",cursive !important; font-weight: bold !important;
 }
-html[data-ypp-ui-style="y2k"] ytd-badge-supported-renderer {
-  border-radius: 30px !important;
-}
+html[data-ypp-ui-style="y2k"] ytd-badge-supported-renderer { border-radius: 24px !important; }
 html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarBackground,
 html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-style="y2k"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 30px !important;
-  background-color: #9370db !important;
+  border-radius: 24px !important; background-color: #9370db !important;
+}
+html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarBackground { background-color: #4040aa !important; opacity: 0.3 !important; }
+html[data-ypp-ui-style="y2k"] .ytProgressBarLineProgressBarLoaded { background-color: #4040aa !important; opacity: 0.5 !important; }
+html[data-ypp-ui-style="y2k"] ytd-thumbnail-overlay-time-status-renderer {
+  background: #c8c8ff !important; color: #9370db !important;
+  border-radius: 24px !important; border: 3px solid #00ccff !important; font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: #f0f0ff !important; border-radius: 24px !important;
+  border: 3px solid #00ccff !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }

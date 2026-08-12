@@ -1,25 +1,30 @@
-/* src/content/ui-styles/hologram/components/badges.css */
+/* hologram/components/badges.css */
 html[data-ypp-ui-style="hologram"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-style="hologram"] .ypp-badge,
-html[data-ypp-ui-style="hologram"] .ypp-value-display {
-  background: #f0fdff !important;
-  color: #003344 !important;
-  border-radius: 10px !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  font-family: "Orbitron","Space Mono",monospace !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="hologram"] .ypp-badge, html[data-ypp-ui-style="hologram"] .ypp-value-display {
+  background: #f0fdff !important; color: #003344 !important;
+  border-radius: 10px !important; border: 1px solid rgba(0,255,255,0.5) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important; font-family: "Orbitron","Space Mono",monospace !important; font-weight: bold !important;
 }
-html[data-ypp-ui-style="hologram"] ytd-badge-supported-renderer {
-  border-radius: 10px !important;
-}
+html[data-ypp-ui-style="hologram"] ytd-badge-supported-renderer { border-radius: 10px !important; }
 html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarBackground,
 html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-style="hologram"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 10px !important;
-  background-color: #00e5e5 !important;
+  border-radius: 10px !important; background-color: #00ffff !important;
+}
+html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarBackground { background-color: #005566 !important; opacity: 0.3 !important; }
+html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarLoaded { background-color: #005566 !important; opacity: 0.5 !important; }
+html[data-ypp-ui-style="hologram"] ytd-thumbnail-overlay-time-status-renderer {
+  background: #cff4fc !important; color: #00ffff !important;
+  border-radius: 10px !important; border: 1px solid rgba(0,255,255,0.5) !important; font-family: "Orbitron","Space Mono",monospace !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: #f0fdff !important; border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important; box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
 }

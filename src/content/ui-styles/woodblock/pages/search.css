@@ -1,38 +1,30 @@
-/* src/content/ui-styles/woodblock/pages/search.css */
-html[data-ypp-ui-style="woodblock"] ytd-search,
-html[data-ypp-ui-style="woodblock"] ytd-search-header-renderer {
-  background: #f5f5dc !important;
-}
+/* woodblock/pages/search.css */
+html[data-ypp-ui-style="woodblock"] ytd-search, html[data-ypp-ui-style="woodblock"] ytd-search-header-renderer { background: #f5f5dc !important; }
 html[data-ypp-ui-style="woodblock"] ytd-video-renderer {
-  background: #faf8f0 !important;
-  border: 2px solid #8b4513 !important;
-  border-radius: 4px !important;
-  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
-  margin-bottom: 12px !important;
-  padding: 12px !important;
+  background: #faf8f0 !important; border: 2px solid #8b4513 !important;
+  border-radius: 4px !important; box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  margin-bottom: 12px !important; padding: 12px !important;
   transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="woodblock"] ytd-video-renderer:hover {
-  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
-  border: 2px solid #a0522d !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important; border: 2px solid #a0522d !important;
   transform: translateY(-2px) !important;
 }
 html[data-ypp-ui-style="woodblock"] ytd-search-pyv-renderer {
-  background: #faf8f0 !important;
-  border: 2px solid #a0522d !important;
-  border-radius: 4px !important;
-  padding: 12px !important;
+  background: #faf8f0 !important; border: 2px solid #a0522d !important;
+  border-radius: 4px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="woodblock"] ytd-shelf-renderer {
-  background: #faf8f0 !important;
-  border: 2px solid #8b4513 !important;
-  border-radius: 4px !important;
-  padding: 16px !important;
-  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
-  margin-bottom: 16px !important;
+  background: #faf8f0 !important; border: 2px solid #8b4513 !important;
+  border-radius: 4px !important; padding: 16px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important; margin-bottom: 16px !important;
 }
-html[data-ypp-ui-style="woodblock"] ytd-searchbox {
-  background: #faf8f0 !important;
-  border: 2px solid #8b4513 !important;
-  border-radius: 4px !important;
+html[data-ypp-ui-style="woodblock"] ytd-channel-renderer {
+  background: #faf8f0 !important; border: 2px solid #8b4513 !important;
+  border-radius: 4px !important; padding: 12px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-horizontal-card-list-renderer {
+  background: #faf8f0 !important; border: 2px solid #8b4513 !important;
+  border-radius: 4px !important; padding: 12px !important;
 }

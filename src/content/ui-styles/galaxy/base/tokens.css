@@ -1,64 +1,39 @@
-/* src/content/ui-styles/galaxy/base/tokens.css */
+/* galaxy/base/tokens.css */
 html[data-ypp-ui-style="galaxy"],
 html[data-ypp-ui-style="galaxy"] body,
 html[data-ypp-ui-style="galaxy"] [dark] {
-  /* Core Palette */
-  --galaxy-bg:           #0b0c10;
-  --galaxy-sf:           #101318;
-  --galaxy-primary:      #450256;
-  --galaxy-secondary:    #03045e;
-  --galaxy-accent:       #00f0ff;
-  --galaxy-text:         #e0e0e0;
-  --galaxy-text-sub:     #a0a0c0;
-  --galaxy-border:       1px solid rgba(0,240,255,0.3);
-  --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
-  --galaxy-radius:       16px;
-  --galaxy-shadow:       0 0 20px rgba(0,240,255,0.2);
-  --galaxy-shadow-hover: 0 0 35px rgba(0,240,255,0.5);
-  --galaxy-shadow-active:0 0 8px rgba(0,240,255,0.1);
-  --galaxy-bounce:       cubic-bezier(0.25,0.8,0.25,1) 0.3s;
-  --galaxy-font:         "Space Grotesk","Segoe UI",sans-serif;
-  --galaxy-font-alt:     "Orbitron","Space Grotesk",sans-serif;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--galaxy-sf);
-  --bounce:       var(--galaxy-bounce);
-  --shadow-base:  var(--galaxy-shadow);
-  --shadow-hover: var(--galaxy-shadow-hover);
-  --shadow-active:var(--galaxy-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             rgba(0,240,255,0.05);
-  --chip-bg-hover:       rgba(0,240,255,0.15);
-  --chip-bg-selected:    #00f0ff;
-  --chip-color-selected: #0b0c10;
-  --chip-border:         1px solid rgba(0,240,255,0.3);
-  --chip-border-selected:1px solid #00f0ff;
-  --chip-radius:         16px;
-  --chip-shadow:         0 0 20px rgba(0,240,255,0.2);
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #e0e0e0 !important;
-  --yt-spec-text-secondary:        #a0a0c0 !important;
-  --yt-spec-text-disabled:         #a0a0c0 !important;
-  --yt-spec-icon-active-other:     #00f0ff !important;
-  --yt-spec-icon-inactive:         #a0a0c0 !important;
-  --yt-spec-menu-background:       #101318 !important;
-  --yt-spec-raised-background:     #101318 !important;
-  --yt-spec-base-background:       #0b0c10 !important;
+  --galaxy-bg: #0b0c10; --galaxy-sf: #101318; --galaxy-primary: #0d1b2e;
+  --galaxy-secondary: #03045e; --galaxy-accent: #00f0ff;
+  --galaxy-text: #e0e0e0; --galaxy-text-sub: #a0a0c0;
+  --galaxy-border: 1px solid rgba(0,240,255,0.3); --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
+  --galaxy-border-accent: 1px solid #00f0ff;
+  --galaxy-radius: 16px; --galaxy-font: "Space Grotesk","Segoe UI",sans-serif;
+  --galaxy-shadow: 0 0 20px rgba(0,240,255,0.2); --galaxy-shadow-hover: 0 0 35px rgba(0,240,255,0.5);
+  --galaxy-shadow-active: 0 0 8px rgba(0,240,255,0.1); --galaxy-bounce: cubic-bezier(0.25,0.8,0.25,1) 0.3s;
+  --sf: var(--galaxy-sf); --bounce: var(--galaxy-bounce);
+  --shadow-base: var(--galaxy-shadow); --shadow-hover: var(--galaxy-shadow-hover);
+  --shadow-active: var(--galaxy-shadow-active);
+  --chip-bg: rgba(0,240,255,0.05); --chip-bg-hover: rgba(0,240,255,0.15);
+  --chip-bg-selected: #00f0ff; --chip-color-selected: #0b0c10;
+  --chip-border: 1px solid rgba(0,240,255,0.3); --chip-border-selected: 1px solid #00f0ff;
+  --chip-radius: 16px; --chip-shadow: none;
+  --yt-spec-text-primary: #e0e0e0 !important;
+  --yt-spec-text-secondary: #a0a0c0 !important;
+  --yt-spec-text-disabled: #a0a0c0 !important;
+  --yt-spec-icon-active-other: #00f0ff !important;
+  --yt-spec-icon-inactive: #a0a0c0 !important;
+  --yt-spec-menu-background: #101318 !important;
+  --yt-spec-raised-background: #101318 !important;
+  --yt-spec-base-background: #0b0c10 !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "Space Grotesk","Segoe UI",sans-serif !important;
-  --yt-font-family:                "Space Grotesk","Segoe UI",sans-serif !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+  --yt-font-family: "Space Grotesk","Segoe UI",sans-serif !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="galaxy"] body,
 html[data-ypp-ui-style="galaxy"] yt-formatted-string,
 html[data-ypp-ui-style="galaxy"] .yt-core-attributed-string,
-html[data-ypp-ui-style="galaxy"] input,
-html[data-ypp-ui-style="galaxy"] textarea,
-html[data-ypp-ui-style="galaxy"] button,
+html[data-ypp-ui-style="galaxy"] input, html[data-ypp-ui-style="galaxy"] textarea, html[data-ypp-ui-style="galaxy"] button,
 html[data-ypp-ui-style="galaxy"] tp-yt-paper-item,
 html[data-ypp-ui-style="galaxy"] .ytp-menuitem-label,
 html[data-ypp-ui-style="galaxy"] .ytp-menuitem-content {

@@ -1,53 +1,42 @@
-/* src/content/ui-styles/galaxy/components/menus.css */
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="galaxy"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="galaxy"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="galaxy"] #contentWrapper tp-yt-iron-dropdown,
+/* galaxy/components/menus.css */
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-dialog, html[data-ypp-ui-style="galaxy"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="galaxy"] tp-yt-iron-dropdown, html[data-ypp-ui-style="galaxy"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-style="galaxy"] ytd-multi-page-menu-renderer {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #e0e0e0 !important;
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  backdrop-filter: blur(12px) !important; color: #e0e0e0 !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-settings-menu,
-html[data-ypp-ui-style="galaxy"] .ytp-panel-menu {
-  background: #101318 !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  border-radius: 16px !important;
+html[data-ypp-ui-style="galaxy"] .ytp-settings-menu, html[data-ypp-ui-style="galaxy"] .ytp-panel-menu, html[data-ypp-ui-style="galaxy"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="galaxy"] .ytp-panel {
+  background: #101318 !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] .ytp-menuitem {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
-}
-html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover {
-  background: #450256 !important;
-  color: #00f0ff !important;
-}
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-item {
-  background: transparent !important;
-  color: #e0e0e0 !important;
-}
-html[data-ypp-ui-style="galaxy"] tp-yt-paper-item:hover {
-  background: #450256 !important;
-}
-html[data-ypp-ui-style="galaxy"] ytd-notification-renderer {
-  background: #101318 !important;
-  border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+  color: #e0e0e0 !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
   transition: background var(--bounce) !important;
 }
-html[data-ypp-ui-style="galaxy"] ytd-notification-renderer:hover {
-  background: #450256 !important;
+html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover { background: #0d1b2e !important; color: #00f0ff !important; }
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-text {
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important; background: #101318 !important;
+  color: #00f0ff !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important; text-shadow: none !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 4px 8px !important;
 }
+html[data-ypp-ui-style="galaxy"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-listbox, html[data-ypp-ui-style="galaxy"] tp-yt-paper-item {
+  background: transparent !important; color: #e0e0e0 !important;
+}
+html[data-ypp-ui-style="galaxy"] tp-yt-paper-item:hover { background: #0d1b2e !important; }
+html[data-ypp-ui-style="galaxy"] ytd-notification-renderer {
+  background: #101318 !important; border-bottom: 1px solid rgba(0,240,255,0.3) !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-notification-renderer:hover { background: #0d1b2e !important; }
 html[data-ypp-ui-style="galaxy"] ytd-settings-sidebar-renderer {
-  background: #101318 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
-  padding: 15px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
+  background: #101318 !important; border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; padding: 15px !important; border: 1px solid rgba(0,240,255,0.3) !important;
+}
+html[data-ypp-ui-style="galaxy"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important; border-radius: 16px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

@@ -1,34 +1,29 @@
-/* src/content/ui-styles/retro-wave/components/forms.css */
-html[data-ypp-ui-style="retro-wave"] ytd-searchbox,
-html[data-ypp-ui-style="retro-wave"] #search-form,
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-input,
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-textarea {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
-  color: #00ffff !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
-  font-family: "VT323","Share Tech Mono",monospace !important;
+/* retro-wave/components/forms.css */
+html[data-ypp-ui-style="retro-wave"] ytd-searchbox, html[data-ypp-ui-style="retro-wave"] #search-form,
+html[data-ypp-ui-style="retro-wave"] tp-yt-paper-input, html[data-ypp-ui-style="retro-wave"] tp-yt-paper-textarea {
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; color: #00ffff !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important; font-family: "Audiowide","VT323",cursive !important;
   transition: all var(--bounce) !important;
 }
-html[data-ypp-ui-style="retro-wave"] ytd-searchbox[has-focus],
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-input:focus-within {
-  border: 2px solid #00ffff !important;
-  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+html[data-ypp-ui-style="retro-wave"] ytd-searchbox[has-focus], html[data-ypp-ui-style="retro-wave"] tp-yt-paper-input:focus-within {
+  border: 2px solid #00ffff !important; box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
 }
+html[data-ypp-ui-style="retro-wave"] #search-icon-legacy {
+  background: #2e0f50 !important; border: 2px solid #ff007f !important;
+  border-radius: 0 8px 8px 0 !important; color: #ff007f !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] #search-icon-legacy:hover { background: #ff007f !important; color: #1a0b2e !important; }
 html[data-ypp-ui-style="retro-wave"] .ypp-filter-dropdown {
-  background: #22103c !important;
-  border-radius: 8px !important;
-  border: 2px solid #ff007f !important;
-  color: #00ffff !important;
+  background: #22103c !important; border-radius: 8px !important;
+  border: 2px solid #ff007f !important; color: #00ffff !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="retro-wave"] .ypp-filter-dropdown:hover {
-  background: #22103c !important;
-  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
-}
+html[data-ypp-ui-style="retro-wave"] .ypp-filter-dropdown:hover { box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important; }
 html[data-ypp-ui-style="retro-wave"] ytd-comment-simplebox-renderer {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; padding: 15px !important;
+  box-shadow: 0 0 6px rgba(255,0,127,0.3) !important;
 }
+html[data-ypp-ui-style="retro-wave"] #placeholder-area.ytd-comment-simplebox-renderer { border: 2px solid #ff007f !important; }

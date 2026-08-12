@@ -1,53 +1,42 @@
-/* src/content/ui-styles/y2k/components/menus.css */
-html[data-ypp-ui-style="y2k"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="y2k"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="y2k"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="y2k"] #contentWrapper tp-yt-iron-dropdown,
+/* y2k/components/menus.css */
+html[data-ypp-ui-style="y2k"] tp-yt-paper-dialog, html[data-ypp-ui-style="y2k"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="y2k"] tp-yt-iron-dropdown, html[data-ypp-ui-style="y2k"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-style="y2k"] ytd-multi-page-menu-renderer {
-  background: #f0f0ff !important;
-  border: 3px solid #00ccff !important;
-  border-radius: 30px !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #191970 !important;
+  background: #f0f0ff !important; border: 3px solid #00ccff !important;
+  border-radius: 24px !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  backdrop-filter: blur(12px) !important; color: #191970 !important;
 }
-html[data-ypp-ui-style="y2k"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="y2k"] .ytp-settings-menu,
-html[data-ypp-ui-style="y2k"] .ytp-panel-menu {
-  background: #f0f0ff !important;
-  border: 3px solid #00ccff !important;
-  border-radius: 30px !important;
+html[data-ypp-ui-style="y2k"] .ytp-settings-menu, html[data-ypp-ui-style="y2k"] .ytp-panel-menu, html[data-ypp-ui-style="y2k"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="y2k"] .ytp-panel {
+  background: #f0f0ff !important; border: 3px solid #00ccff !important;
+  border-radius: 24px !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }
 html[data-ypp-ui-style="y2k"] .ytp-menuitem {
-  color: #191970 !important;
-  font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
-}
-html[data-ypp-ui-style="y2k"] .ytp-menuitem:hover {
-  background: #ff69b4 !important;
-  color: #9370db !important;
-}
-html[data-ypp-ui-style="y2k"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="y2k"] tp-yt-paper-item {
-  background: transparent !important;
-  color: #191970 !important;
-}
-html[data-ypp-ui-style="y2k"] tp-yt-paper-item:hover {
-  background: #ff69b4 !important;
-}
-html[data-ypp-ui-style="y2k"] ytd-notification-renderer {
-  background: #f0f0ff !important;
-  border-bottom: 3px solid #00ccff !important;
+  color: #191970 !important; font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
   transition: background var(--bounce) !important;
 }
-html[data-ypp-ui-style="y2k"] ytd-notification-renderer:hover {
-  background: #ff69b4 !important;
+html[data-ypp-ui-style="y2k"] .ytp-menuitem:hover { background: #c8c8ff !important; color: #9370db !important; }
+html[data-ypp-ui-style="y2k"] .ytp-tooltip-text {
+  font-family: "Comic Sans MS","Trebuchet MS",cursive !important; background: #f0f0ff !important;
+  color: #9370db !important; border: 3px solid #00ccff !important;
+  border-radius: 24px !important; text-shadow: none !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important; padding: 4px 8px !important;
 }
+html[data-ypp-ui-style="y2k"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="y2k"] tp-yt-paper-listbox, html[data-ypp-ui-style="y2k"] tp-yt-paper-item {
+  background: transparent !important; color: #191970 !important;
+}
+html[data-ypp-ui-style="y2k"] tp-yt-paper-item:hover { background: #c8c8ff !important; }
+html[data-ypp-ui-style="y2k"] ytd-notification-renderer {
+  background: #f0f0ff !important; border-bottom: 3px solid #00ccff !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-notification-renderer:hover { background: #c8c8ff !important; }
 html[data-ypp-ui-style="y2k"] ytd-settings-sidebar-renderer {
-  background: #f0f0ff !important;
-  border-radius: 30px !important;
-  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
-  padding: 15px !important;
-  border: 3px solid #00ccff !important;
+  background: #f0f0ff !important; border-radius: 24px !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important; padding: 15px !important; border: 3px solid #00ccff !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important; border-radius: 24px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

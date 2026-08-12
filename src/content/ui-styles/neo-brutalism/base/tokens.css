@@ -1,64 +1,39 @@
-/* src/content/ui-styles/neo-brutalism/base/tokens.css */
+/* neo-brutalism/base/tokens.css */
 html[data-ypp-ui-style="neo-brutalism"],
 html[data-ypp-ui-style="neo-brutalism"] body,
 html[data-ypp-ui-style="neo-brutalism"] [dark] {
-  /* Core Palette */
-  --neo-brutalism-bg:           #ffffff;
-  --neo-brutalism-sf:           #fffbf0;
-  --neo-brutalism-primary:      #ffcc00;
-  --neo-brutalism-secondary:    #ff6699;
-  --neo-brutalism-accent:       #000000;
-  --neo-brutalism-text:         #000000;
-  --neo-brutalism-text-sub:     #333333;
-  --neo-brutalism-border:       4px solid #000000;
-  --neo-brutalism-border-hover: 4px solid #ff6699;
-  --neo-brutalism-radius:       0px;
-  --neo-brutalism-shadow:       6px 6px 0px #000000;
-  --neo-brutalism-shadow-hover: 10px 10px 0px #000000;
-  --neo-brutalism-shadow-active:2px 2px 0px #000000;
-  --neo-brutalism-bounce:       ease 0.1s;
-  --neo-brutalism-font:         "Space Mono","Courier New",monospace;
-  --neo-brutalism-font-alt:     "Space Mono",monospace;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--neo-brutalism-sf);
-  --bounce:       var(--neo-brutalism-bounce);
-  --shadow-base:  var(--neo-brutalism-shadow);
-  --shadow-hover: var(--neo-brutalism-shadow-hover);
-  --shadow-active:var(--neo-brutalism-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             #ffcc00;
-  --chip-bg-hover:       #ff6699;
-  --chip-bg-selected:    #000000;
-  --chip-color-selected: #ffffff;
-  --chip-border:         4px solid #000000;
-  --chip-border-selected:4px solid #000000;
-  --chip-radius:         0px;
-  --chip-shadow:         6px 6px 0px #000000;
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #000000 !important;
-  --yt-spec-text-secondary:        #333333 !important;
-  --yt-spec-text-disabled:         #333333 !important;
-  --yt-spec-icon-active-other:     #000000 !important;
-  --yt-spec-icon-inactive:         #333333 !important;
-  --yt-spec-menu-background:       #fffbf0 !important;
-  --yt-spec-raised-background:     #fffbf0 !important;
-  --yt-spec-base-background:       #ffffff !important;
+  --neo-brutalism-bg: #fff; --neo-brutalism-sf: #fffbf0; --neo-brutalism-primary: #ffcc00;
+  --neo-brutalism-secondary: #ff6699; --neo-brutalism-accent: #000;
+  --neo-brutalism-text: #000; --neo-brutalism-text-sub: #333;
+  --neo-brutalism-border: 4px solid #000; --neo-brutalism-border-hover: 4px solid #ff6699;
+  --neo-brutalism-border-accent: 4px solid #000;
+  --neo-brutalism-radius: 0px; --neo-brutalism-font: "Space Mono","Courier New",monospace;
+  --neo-brutalism-shadow: 6px 6px 0px #000; --neo-brutalism-shadow-hover: 10px 10px 0px #000;
+  --neo-brutalism-shadow-active: 2px 2px 0px #000; --neo-brutalism-bounce: ease 0.1s;
+  --sf: var(--neo-brutalism-sf); --bounce: var(--neo-brutalism-bounce);
+  --shadow-base: var(--neo-brutalism-shadow); --shadow-hover: var(--neo-brutalism-shadow-hover);
+  --shadow-active: var(--neo-brutalism-shadow-active);
+  --chip-bg: #ffcc00; --chip-bg-hover: #ff6699;
+  --chip-bg-selected: #000; --chip-color-selected: #fff;
+  --chip-border: 4px solid #000; --chip-border-selected: 4px solid #000;
+  --chip-radius: 0px; --chip-shadow: none;
+  --yt-spec-text-primary: #000 !important;
+  --yt-spec-text-secondary: #333 !important;
+  --yt-spec-text-disabled: #333 !important;
+  --yt-spec-icon-active-other: #000 !important;
+  --yt-spec-icon-inactive: #333 !important;
+  --yt-spec-menu-background: #fffbf0 !important;
+  --yt-spec-raised-background: #fffbf0 !important;
+  --yt-spec-base-background: #fff !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "Space Mono","Courier New",monospace !important;
-  --yt-font-family:                "Space Mono","Courier New",monospace !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Space Mono","Courier New",monospace !important;
+  --yt-font-family: "Space Mono","Courier New",monospace !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="neo-brutalism"] body,
 html[data-ypp-ui-style="neo-brutalism"] yt-formatted-string,
 html[data-ypp-ui-style="neo-brutalism"] .yt-core-attributed-string,
-html[data-ypp-ui-style="neo-brutalism"] input,
-html[data-ypp-ui-style="neo-brutalism"] textarea,
-html[data-ypp-ui-style="neo-brutalism"] button,
+html[data-ypp-ui-style="neo-brutalism"] input, html[data-ypp-ui-style="neo-brutalism"] textarea, html[data-ypp-ui-style="neo-brutalism"] button,
 html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-item,
 html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem-label,
 html[data-ypp-ui-style="neo-brutalism"] .ytp-menuitem-content {

@@ -1,37 +1,33 @@
-/* src/content/ui-styles/y2k/components/icons.css */
-html[data-ypp-ui-style="y2k"] yt-icon svg,
-html[data-ypp-ui-style="y2k"] yt-icon path {
-  fill: #191970 !important;
-  transition: fill 0.2s ease !important;
-}
-html[data-ypp-ui-style="y2k"] yt-icon:hover svg,
-html[data-ypp-ui-style="y2k"] yt-icon:hover path {
-  fill: #9370db !important;
-}
-html[data-ypp-ui-style="y2k"] .ytp-button svg,
-html[data-ypp-ui-style="y2k"] .ytp-button path {
-  fill: #191970 !important;
-}
+/* y2k/components/icons.css */
+html[data-ypp-ui-style="y2k"] yt-icon svg, html[data-ypp-ui-style="y2k"] yt-icon path { fill: #191970 !important; transition: fill 0.2s ease !important; }
+html[data-ypp-ui-style="y2k"] yt-icon:hover svg, html[data-ypp-ui-style="y2k"] yt-icon:hover path { fill: #9370db !important; }
+html[data-ypp-ui-style="y2k"] .ytp-button svg, html[data-ypp-ui-style="y2k"] .ytp-button path { fill: #191970 !important; }
 html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button {
-  border-radius: 30px !important;
+  border-radius: 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button:hover {
-  background: #f0f0ff !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
-  transform: scale(1.1);
+  background: #f0f0ff !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important; transform: scale(1.1);
 }
-html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button:active {
-  transform: scale(0.95) !important;
-}
+html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button:active { transform: scale(0.95) !important; box-shadow: 0 0 6px rgba(147,112,219,0.2) !important; }
 html[data-ypp-ui-style="y2k"] .ytInlinePlayerControlsTopRightControlsCircleButton {
-  background: #f0f0ff !important;
-  border: 3px solid #00ccff !important;
-  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  cursor: pointer !important;
+  background: #f0f0ff !important; border: 3px solid #00ccff !important; box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important; cursor: pointer !important;
 }
 html[data-ypp-ui-style="y2k"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.1) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-svg-fill { fill: #9370db !important; }
+html[data-ypp-ui-style="y2k"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="y2k"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="y2k"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="y2k"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-style="y2k"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+  border-radius: 24px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="y2k"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style="y2k"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="y2k"] yt-icon-button.ytd-masthead:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important; transform: scale(1.1);
 }

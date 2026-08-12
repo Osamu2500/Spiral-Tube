@@ -1,36 +1,23 @@
-/* src/content/ui-styles/woodblock/pages/shorts.css */
-html[data-ypp-ui-style="woodblock"] ytd-shorts,
-html[data-ypp-ui-style="woodblock"] #shorts-container {
-  background: #f5f5dc !important;
-}
+/* woodblock/pages/shorts.css */
+html[data-ypp-ui-style="woodblock"] ytd-shorts, html[data-ypp-ui-style="woodblock"] #shorts-container { background: #f5f5dc !important; }
 html[data-ypp-ui-style="woodblock"] ytd-reel-video-renderer {
-  background: #faf8f0 !important;
-  border-radius: 4px !important;
-  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
-  border: 2px solid #8b4513 !important;
-  overflow: hidden !important;
+  background: #faf8f0 !important; border-radius: 4px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important; border: 2px solid #8b4513 !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="woodblock"] ytd-reel-player-overlay-renderer {
-  background: transparent !important;
-}
+html[data-ypp-ui-style="woodblock"] ytd-reel-player-overlay-renderer { background: transparent !important; }
 html[data-ypp-ui-style="woodblock"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
-  background: #faf8f0 !important;
-  border-radius: 50% !important;
-  border: 2px solid #8b4513 !important;
-  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
-  margin-bottom: 12px !important;
-  transition: all var(--bounce) !important;
+  background: #faf8f0 !important; border-radius: 50% !important;
+  border: 2px solid #8b4513 !important; box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  margin-bottom: 12px !important; transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="woodblock"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
-  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
-  transform: scale(1.1) !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important; transform: scale(1.1) !important;
 }
 html[data-ypp-ui-style="woodblock"] ytd-reel-item-renderer {
-  border-radius: 4px !important;
-  border: 2px solid #8b4513 !important;
-  overflow: hidden !important;
-  transition: all var(--bounce) !important;
+  border-radius: 4px !important; border: 2px solid #8b4513 !important;
+  overflow: hidden !important; transition: all var(--bounce) !important;
 }
-html[data-ypp-ui-style="woodblock"] ytd-reel-item-renderer:hover {
-  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+html[data-ypp-ui-style="woodblock"] ytd-reel-item-renderer:hover { box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important; }
+html[data-ypp-ui-style="woodblock"] .ytd-reel-video-renderer .overlay-dir {
+  background: linear-gradient(to top, #deb887aa 0%, transparent 40%) !important;
 }

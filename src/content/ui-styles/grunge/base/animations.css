@@ -1,20 +1,22 @@
-/* src/content/ui-styles/grunge/base/animations.css */
+/* grunge/base/animations.css */
 @keyframes grunge-pulse {
   0%   { box-shadow: inset 0 0 6px rgba(0,0,0,0.7); }
-  50%  { box-shadow: 2px 2px 0 #111; }
+  50%  { box-shadow: 3px 3px 0 #111; }
   100% { box-shadow: inset 0 0 6px rgba(0,0,0,0.7); }
 }
 
 
 
-/* Subscribe button pulse */
+@keyframes sepia-bloom { 0%{filter:brightness(1);} 100%{filter:brightness(1.1) saturate(1.1);} }
+
+/* Subscribe button */
 html[data-ypp-ui-style="grunge"] #subscribe-button .yt-spec-button-shape-next--filled {
   transition: all 0.3s ease !important;
   
   
 }
 
-/* Card hover lift */
+/* Card hover */
 html[data-ypp-ui-style="grunge"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-style="grunge"] ytd-compact-video-renderer:hover,
 html[data-ypp-ui-style="grunge"] ytd-video-renderer:hover,
@@ -23,27 +25,37 @@ html[data-ypp-ui-style="grunge"] ytd-grid-video-renderer:hover {
   
   
   
-  transform: translateY(-3px) scale(1.01) !important;
-  box-shadow: 2px 2px 0 #111 !important;
-  border: 1px solid #a8b870 !important;
+  transform:translateY(-3px) scale(1.01) !important;
+  box-shadow: 3px 3px 0 #111 !important; border: 2px solid #a8b870 !important;
+  animation: sepia-bloom 0.3s forwards !important;
 }
 
-/* Guide sidebar hover slide */
+/* Sidebar guide */
 html[data-ypp-ui-style="grunge"] ytd-guide-entry-renderer:hover {
-  background-color: #333333 !important;
-  transform: translateX(8px) !important;
+  background-color: #333 !important;
+  transform:translateX(8px) !important;
   border-left: 4px solid #a8b870 !important;
   transition: all var(--bounce) !important;
 }
-
-/* Mini guide hover */
 html[data-ypp-ui-style="grunge"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 2px 2px 0 #111 !important;
+  transform: scale(1.15) !important; box-shadow: 3px 3px 0 #111 !important;
 }
 
-/* Button scale */
+/* Button base */
 html[data-ypp-ui-style="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.08);
-  animation: grunge-pulse 5s ease-in-out infinite;
+  transform: scale(1.08); animation: grunge-pulse 5s ease-in-out infinite;
+}
+html[data-ypp-ui-style="grunge"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important; color: white !important;
+  box-shadow: 3px 3px 0 #111 !important;
+  animation: grunge-pulse 5s ease-in-out infinite !important;
+}
+
+/* Masthead topbar logo */
+html[data-ypp-ui-style="grunge"] ytd-topbar-logo-renderer a#logo::before {
+  content: ""; display: block !important;
+  width: 34px !important; height: 24px !important;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
+  background-size: contain !important; background-repeat: no-repeat !important;
+  background-position: center !important; margin-right: 2px !important;
 }

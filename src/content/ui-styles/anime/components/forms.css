@@ -1,34 +1,29 @@
-/* src/content/ui-styles/anime/components/forms.css */
-html[data-ypp-ui-style="anime"] ytd-searchbox,
-html[data-ypp-ui-style="anime"] #search-form,
-html[data-ypp-ui-style="anime"] tp-yt-paper-input,
-html[data-ypp-ui-style="anime"] tp-yt-paper-textarea {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  color: #3a1a2a !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
-  font-family: "Nunito","Segoe UI",sans-serif !important;
+/* anime/components/forms.css */
+html[data-ypp-ui-style="anime"] ytd-searchbox, html[data-ypp-ui-style="anime"] #search-form,
+html[data-ypp-ui-style="anime"] tp-yt-paper-input, html[data-ypp-ui-style="anime"] tp-yt-paper-textarea {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; color: #3a1a2a !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important; font-family: "Nunito","Segoe UI",sans-serif !important;
   transition: all var(--bounce) !important;
 }
-html[data-ypp-ui-style="anime"] ytd-searchbox[has-focus],
-html[data-ypp-ui-style="anime"] tp-yt-paper-input:focus-within {
-  border: 2px solid #ff69b4 !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+html[data-ypp-ui-style="anime"] ytd-searchbox[has-focus], html[data-ypp-ui-style="anime"] tp-yt-paper-input:focus-within {
+  border: 2px solid #ff69b4 !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
+html[data-ypp-ui-style="anime"] #search-icon-legacy {
+  background: #ff69b4 !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 0 20px 20px 0 !important; color: #ff1493 !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="anime"] #search-icon-legacy:hover { background: #ff1493 !important; color: #fff0f5 !important; }
 html[data-ypp-ui-style="anime"] .ypp-filter-dropdown {
-  background: #ffe4ef !important;
-  border-radius: 20px !important;
-  border: 2px solid #ffb6c1 !important;
-  color: #3a1a2a !important;
+  background: #ffe4ef !important; border-radius: 20px !important;
+  border: 2px solid #ffb6c1 !important; color: #3a1a2a !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="anime"] .ypp-filter-dropdown:hover {
-  background: #ffe4ef !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
-}
+html[data-ypp-ui-style="anime"] .ypp-filter-dropdown:hover { box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; }
 html[data-ypp-ui-style="anime"] ytd-comment-simplebox-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 15px !important;
+  box-shadow: 0 2px 8px rgba(255,105,180,0.2) !important;
 }
+html[data-ypp-ui-style="anime"] #placeholder-area.ytd-comment-simplebox-renderer { border: 2px solid #ffb6c1 !important; }

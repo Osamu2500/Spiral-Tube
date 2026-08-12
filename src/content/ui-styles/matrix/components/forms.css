@@ -1,34 +1,29 @@
-/* src/content/ui-styles/matrix/components/forms.css */
-html[data-ypp-ui-style="matrix"] ytd-searchbox,
-html[data-ypp-ui-style="matrix"] #search-form,
-html[data-ypp-ui-style="matrix"] tp-yt-paper-input,
-html[data-ypp-ui-style="matrix"] tp-yt-paper-textarea {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
-  color: #00ff00 !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
-  font-family: "Courier New",Courier,monospace !important;
+/* matrix/components/forms.css */
+html[data-ypp-ui-style="matrix"] ytd-searchbox, html[data-ypp-ui-style="matrix"] #search-form,
+html[data-ypp-ui-style="matrix"] tp-yt-paper-input, html[data-ypp-ui-style="matrix"] tp-yt-paper-textarea {
+  background: #001100 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important; color: #00ff00 !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important; font-family: "Share Tech Mono","Courier New",monospace !important;
   transition: all var(--bounce) !important;
 }
-html[data-ypp-ui-style="matrix"] ytd-searchbox[has-focus],
-html[data-ypp-ui-style="matrix"] tp-yt-paper-input:focus-within {
-  border: 1px solid #00ff00 !important;
-  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
+html[data-ypp-ui-style="matrix"] ytd-searchbox[has-focus], html[data-ypp-ui-style="matrix"] tp-yt-paper-input:focus-within {
+  border: 1px solid #00ff00 !important; box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
+html[data-ypp-ui-style="matrix"] #search-icon-legacy {
+  background: #002200 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0 0px 0px 0 !important; color: #00ff00 !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="matrix"] #search-icon-legacy:hover { background: #00ff00 !important; color: #000 !important; }
 html[data-ypp-ui-style="matrix"] .ypp-filter-dropdown {
-  background: #001100 !important;
-  border-radius: 0px !important;
-  border: 1px dotted #00ff00 !important;
-  color: #00ff00 !important;
+  background: #001100 !important; border-radius: 0px !important;
+  border: 1px dotted #00ff00 !important; color: #00ff00 !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="matrix"] .ypp-filter-dropdown:hover {
-  background: #001100 !important;
-  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
-}
+html[data-ypp-ui-style="matrix"] .ypp-filter-dropdown:hover { box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important; }
 html[data-ypp-ui-style="matrix"] ytd-comment-simplebox-renderer {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
+  background: #001100 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important; padding: 15px !important;
+  box-shadow: 0 0 5px #00ff00 !important;
 }
+html[data-ypp-ui-style="matrix"] #placeholder-area.ytd-comment-simplebox-renderer { border: 1px dotted #00ff00 !important; }

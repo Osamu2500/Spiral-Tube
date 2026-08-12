@@ -1,34 +1,27 @@
-/* src/content/ui-styles/matrix/pages/livechat.css */
-html[data-ypp-ui-style="matrix"] yt-live-chat-app,
-html[data-ypp-ui-style="matrix"] #chat,
-html[data-ypp-ui-style="matrix"] yt-live-chat-renderer {
-  background: #000000 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
-  font-family: "Courier New",Courier,monospace !important;
-  color: #00ff00 !important;
+/* matrix/pages/livechat.css */
+html[data-ypp-ui-style="matrix"] yt-live-chat-app, html[data-ypp-ui-style="matrix"] #chat, html[data-ypp-ui-style="matrix"] yt-live-chat-renderer {
+  background: #000 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important; font-family: "Share Tech Mono","Courier New",monospace !important; color: #00ff00 !important;
 }
 html[data-ypp-ui-style="matrix"] yt-live-chat-text-message-renderer {
-  background: #001100 !important;
-  border-bottom: 1px dotted #00ff00 !important;
-  padding: 6px 12px !important;
-  transition: background var(--bounce) !important;
-  color: #00ff00 !important;
+  background: #001100 !important; border-bottom: 1px dotted #00ff00 !important;
+  padding: 6px 12px !important; transition: background var(--bounce) !important; color: #00ff00 !important;
 }
-html[data-ypp-ui-style="matrix"] yt-live-chat-text-message-renderer:hover {
-  background: #002200 !important;
-}
-html[data-ypp-ui-style="matrix"] yt-live-chat-ticker-renderer {
-  background: #002200 !important;
-  border-bottom: 1px dotted #00ff00 !important;
-}
-html[data-ypp-ui-style="matrix"] #author-name.yt-live-chat-author-chip {
-  color: #00ff00 !important;
-  font-weight: bold !important;
-}
+html[data-ypp-ui-style="matrix"] yt-live-chat-text-message-renderer:hover { background: #002200 !important; }
+html[data-ypp-ui-style="matrix"] yt-live-chat-ticker-renderer { background: #002200 !important; border-bottom: 1px dotted #00ff00 !important; }
+html[data-ypp-ui-style="matrix"] #author-name.yt-live-chat-author-chip { color: #00ff00 !important; font-weight: bold !important; }
 html[data-ypp-ui-style="matrix"] yt-live-chat-paid-message-renderer {
   background: linear-gradient(135deg, #002200, #003300) !important;
-  border: 1px solid #00ff00 !important;
+  border: 1px solid #00ff00 !important; border-radius: 0px !important;
+  box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
+}
+html[data-ypp-ui-style="matrix"] yt-live-chat-paid-sticker-renderer {
+  background: #002200 !important; border: 1px dotted #00ff00 !important; border-radius: 0px !important;
+}
+html[data-ypp-ui-style="matrix"] yt-live-chat-membership-item-renderer {
+  background: #00330044 !important; border: 1px dotted #00ff00 !important;
   border-radius: 0px !important;
-  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] #input-panel.yt-live-chat-renderer {
+  background: #001100 !important; border-top: 1px dotted #00ff00 !important;
 }

@@ -1,54 +1,55 @@
-/* src/content/ui-styles/gothic/base/background.css */
-html[data-ypp-ui-style="gothic"] html,
-html[data-ypp-ui-style="gothic"] body,
-html[data-ypp-ui-style="gothic"] ytd-app,
-html[data-ypp-ui-style="gothic"] #page-manager {
-  background-color: #121212 !important;
-  color: #d3d3d3 !important;
+/* gothic/base/background.css */
+html[data-ypp-ui-style="gothic"] html, html[data-ypp-ui-style="gothic"] body, html[data-ypp-ui-style="gothic"] ytd-app, html[data-ypp-ui-style="gothic"] #page-manager {
+  background-color: #121212 !important; color: #d3d3d3 !important;
 }
-
-html[data-ypp-ui-style="gothic"] tp-yt-app-header {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar {
-  width: 12px !important;
-  background-color: #121212 !important;
-}
-html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar-track {
-  background: #121212 !important;
-  border-left: 1px solid #cc0000;
-}
+html[data-ypp-ui-style="gothic"] tp-yt-app-header { background: transparent !important; }
+html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar { width: 12px !important; background: #121212 !important; }
+html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar-track { background: #121212 !important; border-left: 1px solid #cc0000; }
 html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar-thumb {
-  background: #2a0800 !important;
-  border: 2px solid #8b0000 !important;
-  border-radius: 0px !important;
+  background: #8b0000 !important; border: 2px solid #8b0000 !important; border-radius: 0px !important;
 }
-html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar-thumb:hover {
-  background: #cc0000 !important;
+html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar-thumb:hover { background: #cc0000 !important; }
+html[data-ypp-ui-style="gothic"] ::-webkit-scrollbar-corner { background: #121212 !important; }
+html[data-ypp-ui-style="gothic"] .ypp-organizer-modal, html[data-ypp-ui-style="gothic"] .ypp-modal-content {
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
+  border-radius: 0px !important; box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
 }
-html[data-ypp-ui-style="gothic"] .ypp-organizer-modal,
-html[data-ypp-ui-style="gothic"] .ypp-modal-content {
-  background: #1c1c1c !important;
-  border: 2px solid #8b0000 !important;
-  border-radius: 0px !important;
-  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+html[data-ypp-ui-style="gothic"] .ypp-modal-header {
+  background: #2a0800 !important; border-bottom: 2px solid #8b0000 !important;
 }
 html[data-ypp-ui-style="gothic"] #simplebox-placeholder {
-  background: #1c1c1c !important;
-  border-radius: 0px !important;
-  border: 2px solid #8b0000 !important;
+  background: #1c1c1c !important; border-radius: 0px !important; border: 2px solid #8b0000 !important;
 }
-html[data-ypp-ui-style="gothic"] .ypp-slider,
-html[data-ypp-ui-style="gothic"] .ypp-gpb-vol-slider {
-  accent-color: #cc0000 !important;
-  background: #1c1c1c !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="gothic"] .ypp-slider, html[data-ypp-ui-style="gothic"] .ypp-gpb-vol-slider {
+  accent-color: #cc0000 !important; border-radius: 0px !important;
 }
 html[data-ypp-ui-style="gothic"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
   border-radius: 0px !important;
 }
 html[data-ypp-ui-style="gothic"] .tab-content.tp-yt-paper-tab:hover {
-  background: rgba(139,0,0,0.4) !important;
-  transform: scale(1.05) !important;
+  background: rgba(139,0,0,0.4) !important; transform: scale(1.05) !important;
 }
+html[data-ypp-ui-style="gothic"] .ypp-nav-btn.active {
+  background: #1c1c1c !important; box-shadow: 0 2px 8px rgba(139,0,0,0.3) !important;
+}
+html[data-ypp-ui-style="gothic"] .ypp-badge, html[data-ypp-ui-style="gothic"] .ypp-value-display {
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important; border-radius: 0px !important;
+}
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-toolbar {
+  background: #1c1c1c !important; border-bottom: 2px solid #8b0000 !important;
+}
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
+  border-radius: 0px !important; transition: transform var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-style="gothic"] #ypp-pl-root .ypp-pl-btn-tool:hover {
+  background: #2a0800 !important; transform: scale(1.02) !important;
+}
+

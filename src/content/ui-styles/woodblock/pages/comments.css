@@ -1,45 +1,44 @@
-/* src/content/ui-styles/woodblock/pages/comments.css */
-html[data-ypp-ui-style="woodblock"] ytd-comment-thread-renderer,
-html[data-ypp-ui-style="woodblock"] ytd-comment-renderer {
-  background: #faf8f0 !important;
-  border: 2px solid #8b4513 !important;
-  border-radius: 4px !important;
-  padding: 12px !important;
-  margin-bottom: 8px !important;
+/* woodblock/pages/comments.css */
+html[data-ypp-ui-style="woodblock"] ytd-comment-view-model button, html[data-ypp-ui-style="woodblock"] ytd-comment-renderer button {
+  border-radius: 4px !important; transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-comment-view-model button:hover, html[data-ypp-ui-style="woodblock"] ytd-comment-renderer button:hover {
+  background: #deb887 !important; box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important; transform: none !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-comment-view-model yt-interaction .fill,
+html[data-ypp-ui-style="woodblock"] ytd-comment-renderer yt-interaction .fill { background: transparent !important; opacity: 0 !important; }
+html[data-ypp-ui-style="woodblock"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 4px !important; margin: 10px !important;
+  border: 2px solid #8b4513 !important; box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-comment-thread-renderer, html[data-ypp-ui-style="woodblock"] ytd-comment-view-model {
+  background: #faf8f0 !important; border-radius: 4px !important;
+  padding: 16px !important; margin-bottom: 16px !important;
+  border: 2px solid #8b4513 !important; border-left: 6px solid #8b4513 !important;
   box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="woodblock"] ytd-comment-renderer:hover {
-  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
-  border: 2px solid #a0522d !important;
+html[data-ypp-ui-style="woodblock"] ytd-comment-thread-renderer:hover, html[data-ypp-ui-style="woodblock"] ytd-comment-view-model:hover {
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important; background: #deb88733 !important;
 }
-html[data-ypp-ui-style="woodblock"] #author-text.ytd-comment-renderer {
-  color: #8b4513 !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="woodblock"] ytd-comment-simplebox-renderer {
+  background: #faf8f0 !important; border-radius: 4px !important;
+  padding: 15px !important; box-shadow: 1px 1px 4px rgba(139,69,19,0.2) !important; border: 2px solid #8b4513 !important;
 }
-html[data-ypp-ui-style="woodblock"] #content-text.ytd-comment-renderer {
-  color: #5c3d1e !important;
-  font-family: "Noto Serif","Palatino Linotype",serif !important;
-}
+html[data-ypp-ui-style="woodblock"] #author-text.ytd-comment-renderer { color: #8b4513 !important; font-weight: bold !important; }
+html[data-ypp-ui-style="woodblock"] #content-text.ytd-comment-renderer { color: #5c3d1e !important; font-family: "Lora","Noto Serif",serif !important; }
 html[data-ypp-ui-style="woodblock"] ytd-comment-replies-renderer {
-  border-left: 2px solid #8b4513 !important;
-  margin-left: 16px !important;
-  padding-left: 12px !important;
+  border-left: 2px solid #8b4513 !important; margin-left: 16px !important; padding-left: 12px !important;
 }
-html[data-ypp-ui-style="woodblock"] #header-author yt-img-shadow {
-  border: 2px solid #8b4513 !important;
-  border-radius: 50% !important;
-}
-html[data-ypp-ui-style="woodblock"] #simplebox-placeholder {
-  background: #faf8f0 !important;
-  border-radius: 4px !important;
-  border: 2px solid #8b4513 !important;
-  color: #8b6914 !important;
-}
+html[data-ypp-ui-style="woodblock"] #header-author yt-img-shadow { border: 2px solid #8b4513 !important; border-radius: 50% !important; }
 html[data-ypp-ui-style="woodblock"] ytd-backstage-post-renderer {
-  background: #faf8f0 !important;
-  border: 2px solid #8b4513 !important;
+  background: #faf8f0 !important; border: 2px solid #8b4513 !important;
+  border-radius: 4px !important; padding: 16px !important; box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
   border-radius: 4px !important;
-  padding: 16px !important;
-  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

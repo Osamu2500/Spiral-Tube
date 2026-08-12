@@ -1,55 +1,41 @@
-/* src/content/ui-styles/anime/components/navbar.css */
-html[data-ypp-ui-style="anime"] ytd-masthead,
-html[data-ypp-ui-style="anime"] #masthead-container {
-  background: #ff69b4 !important;
-  border-bottom: 2px solid #ffb6c1 !important;
+/* anime/components/navbar.css */
+html[data-ypp-ui-style="anime"] ytd-masthead, html[data-ypp-ui-style="anime"] #masthead-container {
+  background: #ff69b4 !important; border-bottom: 2px solid #ffb6c1 !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-topbar-logo-renderer {
-  border-radius: 20px !important;
-  padding: 0 !important;
-  max-height: 45px !important;
+  border-radius: 20px !important; padding: 0 !important; max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-topbar-logo-renderer:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  transform: scale(1.05) !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 html[data-ypp-ui-style="anime"] #guide-wrapper.ytd-app {
-  background: #ffe4ef !important;
-  border-radius: 0 20px 20px 0 !important;
-  border: 2px solid #ffb6c1 !important;
-  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  background: #ffe4ef !important; border-radius: 0 20px 20px 0 !important;
+  border: 2px solid #ffb6c1 !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="anime"] #guide-content.ytd-app {
-  background: transparent;
-}
-html[data-ypp-ui-style="anime"] ytd-guide-section-renderer {
-  border-bottom: 2px solid #ffb6c1 !important;
-}
-html[data-ypp-ui-style="anime"] ytd-guide-entry-renderer {
-  border-radius: 20px !important;
-  transition: all var(--bounce) !important;
-}
+html[data-ypp-ui-style="anime"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="anime"] ytd-guide-section-renderer { border-bottom: 2px solid #ffb6c1 !important; }
+html[data-ypp-ui-style="anime"] ytd-guide-entry-renderer { border-radius: 20px !important; }
 html[data-ypp-ui-style="anime"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
+  background: transparent !important; box-shadow: none !important;
   border-radius: 20px !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 html[data-ypp-ui-style="anime"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: #ffe4ef !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  background: #ffe4ef !important; border-radius: 20px !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
-html[data-ypp-ui-style="anime"] ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+html[data-ypp-ui-style="anime"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98); box-shadow: 0 2px 8px rgba(255,105,180,0.2) !important;
 }
+html[data-ypp-ui-style="anime"] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child { padding: 10px 3px !important; }
+html[data-ypp-ui-style="anime"] ytd-mini-guide-renderer.ytd-app { top: 70px !important; left: 10px !important; }
 html[data-ypp-ui-style="anime"] ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 20px !important;
+  margin-top: 10px !important; border-radius: 20px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  transform: scale(1.1) !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }

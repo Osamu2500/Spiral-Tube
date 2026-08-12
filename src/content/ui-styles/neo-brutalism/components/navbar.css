@@ -1,55 +1,41 @@
-/* src/content/ui-styles/neo-brutalism/components/navbar.css */
-html[data-ypp-ui-style="neo-brutalism"] ytd-masthead,
-html[data-ypp-ui-style="neo-brutalism"] #masthead-container {
-  background: #ffcc00 !important;
-  border-bottom: 4px solid #000000 !important;
-  box-shadow: 6px 6px 0px #000000 !important;
+/* neo-brutalism/components/navbar.css */
+html[data-ypp-ui-style="neo-brutalism"] ytd-masthead, html[data-ypp-ui-style="neo-brutalism"] #masthead-container {
+  background: #ffcc00 !important; border-bottom: 4px solid #000 !important;
+  box-shadow: 6px 6px 0px #000 !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] ytd-topbar-logo-renderer {
-  border-radius: 0px !important;
-  padding: 0 !important;
-  max-height: 45px !important;
+  border-radius: 0px !important; padding: 0 !important; max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] ytd-topbar-logo-renderer:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 10px 10px 0px #000000 !important;
+  transform: scale(1.05) !important; box-shadow: 10px 10px 0px #000 !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] #guide-wrapper.ytd-app {
-  background: #fffbf0 !important;
-  border-radius: 0 0px 0px 0 !important;
-  border: 4px solid #000000 !important;
-  box-shadow: 6px 6px 0px #000000 !important;
+  background: #fffbf0 !important; border-radius: 0 0px 0px 0 !important;
+  border: 4px solid #000 !important; box-shadow: 6px 6px 0px #000 !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] #guide-content.ytd-app {
-  background: transparent;
-}
-html[data-ypp-ui-style="neo-brutalism"] ytd-guide-section-renderer {
-  border-bottom: 4px solid #000000 !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] ytd-guide-entry-renderer {
-  border-radius: 0px !important;
-  transition: all var(--bounce) !important;
-}
+html[data-ypp-ui-style="neo-brutalism"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="neo-brutalism"] ytd-guide-section-renderer { border-bottom: 4px solid #000 !important; }
+html[data-ypp-ui-style="neo-brutalism"] ytd-guide-entry-renderer { border-radius: 0px !important; }
 html[data-ypp-ui-style="neo-brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
-  background: transparent !important;
+  background: transparent !important; box-shadow: none !important;
   border-radius: 0px !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  background: #fffbf0 !important;
-  box-shadow: 10px 10px 0px #000000 !important;
+  background: #fffbf0 !important; border-radius: 0px !important;
+  box-shadow: 10px 10px 0px #000 !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-renderer.ytd-app {
-  top: 70px !important;
-  left: 10px !important;
+html[data-ypp-ui-style="neo-brutalism"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:active {
+  transform: scale(0.98); box-shadow: 2px 2px 0px #000 !important;
 }
+html[data-ypp-ui-style="neo-brutalism"] #sections.ytd-guide-renderer > *.ytd-guide-renderer:first-child { padding: 10px 3px !important; }
+html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-renderer.ytd-app { top: 70px !important; left: 10px !important; }
 html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-entry-renderer {
-  margin-top: 10px !important;
-  border-radius: 0px !important;
+  margin-top: 10px !important; border-radius: 0px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 10px 10px 0px #000000 !important;
+  transform: scale(1.1) !important; box-shadow: 10px 10px 0px #000 !important;
 }

@@ -1,54 +1,47 @@
-/* src/content/ui-styles/y2k/pages/home.css */
-html[data-ypp-ui-style="y2k"] #frosted-glass.with-chipbar.ytd-app {
-  background: none !important;
+/* y2k/pages/home.css */
+html[data-ypp-ui-style="y2k"] #frosted-glass.with-chipbar.ytd-app { background: none !important; }
+html[data-ypp-ui-style="y2k"] #guide-content.ytd-app { background: transparent; }
+html[data-ypp-ui-style="y2k"] ytd-feed-filter-chip-bar-renderer { background: transparent !important; border: none !important; }
+html[data-ypp-ui-style="y2k"] #description.ytd-watch-metadata,
+html[data-ypp-ui-style="y2k"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  position: relative !important; overflow: hidden !important; padding: 0 10px !important;
+  margin: 16px 16px 0 0 !important; border-radius: 24px !important;
+  background: #f0f0ff !important; border: 3px solid #00ccff !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important; transition: box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="y2k"] ytd-feed-filter-chip-bar-renderer {
-  background: transparent !important;
-  border: none !important;
-}
+html[data-ypp-ui-style="y2k"] ytd-guide-renderer #sections { margin-left: 8px !important; }
+html[data-ypp-ui-style="y2k"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 html[data-ypp-ui-style="y2k"] ytd-browse[page-subtype=home] #chips {
-  margin: 16px 0 0 0 !important;
-  border-radius: 30px !important;
-  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 0 10px !important;
-  background: #f0f0ff !important;
-  border: 3px solid #00ccff !important;
+  margin: 16px 0 0 0 !important; border-radius: 24px !important;
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important; position: relative !important;
+  overflow: hidden !important; padding: 0 10px !important;
+  background: #f0f0ff !important; border: 3px solid #00ccff !important;
   transition: box-shadow var(--bounce) !important;
 }
+html[data-ypp-ui-style="y2k"] .yt-chip-shape { background-color: transparent !important; }
 html[data-ypp-ui-style="y2k"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius) !important;
-  border: var(--chip-border) !important;
-  background: var(--chip-bg) !important;
-  box-shadow: var(--chip-shadow) !important;
-  transition: all 0.2s ease !important;
-  color: #191970 !important;
+  border-radius: var(--chip-radius) !important; border: var(--chip-border) !important;
+  background: var(--chip-bg) !important; box-shadow: var(--chip-shadow) !important;
+  transition: all 0.2s ease !important; color: #191970 !important;
 }
 html[data-ypp-ui-style="y2k"] yt-chip-cloud-chip-renderer:hover {
-  background: var(--chip-bg-hover) !important;
-  transform: scale(1.05) !important;
+  background: var(--chip-bg-hover) !important; transform: scale(1.05) !important;
 }
 html[data-ypp-ui-style="y2k"] yt-chip-cloud-chip-renderer[selected] {
-  background: var(--chip-bg-selected) !important;
-  color: var(--chip-color-selected) !important;
-  border: var(--chip-border-selected) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  background: var(--chip-bg-selected) !important; color: var(--chip-color-selected) !important;
+  border: var(--chip-border-selected) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }
 html[data-ypp-ui-style="y2k"] .ytChipShapeChip {
-  border-radius: 30px !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: 24px !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-html[data-ypp-ui-style="y2k"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
-}
-html[data-ypp-ui-style="y2k"] ytd-rich-grid-renderer {
-  background: #e6e6fa !important;
-}
-html[data-ypp-ui-style="y2k"] #primary.ytd-app {
-  background: #e6e6fa !important;
-}
-html[data-ypp-ui-style="y2k"] ytd-browse {
-  background: #e6e6fa !important;
+html[data-ypp-ui-style="y2k"] .ytChipShapeChip:hover { transform: scale(1.1) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important; }
+html[data-ypp-ui-style="y2k"] iron-selector.yt-chip-cloud-renderer { padding-left: 5px !important; }
+html[data-ypp-ui-style="y2k"] .ytContextualSheetLayoutContentContainer,
+html[data-ypp-ui-style="y2k"] .ytChipBarViewModelHost,
+html[data-ypp-ui-style="y2k"] .immersive-header-content.ytd-playlist-header-renderer { overflow: visible !important; }
+html[data-ypp-ui-style="y2k"] ytd-rich-grid-renderer, html[data-ypp-ui-style="y2k"] ytd-browse,
+html[data-ypp-ui-style="y2k"] #primary.ytd-app, html[data-ypp-ui-style="y2k"] #content.ytd-app { background: #e6e6fa !important; }
+html[data-ypp-ui-style="y2k"] ytd-settings-sidebar-renderer {
+  background: #f0f0ff !important; border-radius: 24px !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important; padding: 15px !important; border: 3px solid #00ccff !important;
 }

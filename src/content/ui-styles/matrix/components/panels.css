@@ -1,57 +1,41 @@
-/* src/content/ui-styles/matrix/components/panels.css */
+/* matrix/components/panels.css */
 html[data-ypp-ui-style="matrix"] ytd-playlist-panel-renderer {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
+  background: #001100 !important; border: 1px dotted #00ff00 !important; border-radius: 0px !important;
 }
-html[data-ypp-ui-style="matrix"] #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 0px !important;
+html[data-ypp-ui-style="matrix"] #secondary-inner ytd-playlist-panel-renderer { border-radius: 0px !important; }
+html[data-ypp-ui-style="matrix"] .header.ytd-playlist-panel-renderer { background: none !important; }
+html[data-ypp-ui-style="matrix"] #container.ytd-playlist-panel-renderer { border: 1px dotted #00ff00 !important; }
+html[data-ypp-ui-style="matrix"] ytd-miniplayer, html[data-ypp-ui-style="matrix"] #miniplayer-bar {
+  background: #001100 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important; box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="matrix"] .header.ytd-playlist-panel-renderer {
-  background: #002200 !important;
-  border-bottom: 1px dotted #00ff00 !important;
-}
-html[data-ypp-ui-style="matrix"] ytd-miniplayer,
-html[data-ypp-ui-style="matrix"] #miniplayer-bar {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
-  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
-  overflow: hidden !important;
-}
-html[data-ypp-ui-style="matrix"] .ypp-video-controls,
-html[data-ypp-ui-style="matrix"] .ypp-shadow-panel {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  box-shadow: 0 0 10px #00ff00 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="matrix"] .ypp-video-controls, html[data-ypp-ui-style="matrix"] .ypp-shadow-panel {
+  background: #001100 !important; border: 1px dotted #00ff00 !important;
+  box-shadow: 0 0 10px #00ff00 !important; border-radius: 0px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="matrix"] ytd-transcript-search-panel-renderer,
-html[data-ypp-ui-style="matrix"] ytd-transcript-segment-renderer {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
-  color: #00ff00 !important;
+html[data-ypp-ui-style="matrix"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="matrix"] #segments-container {
+  background: #001100 !important; border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important; color: #00ff00 !important;
 }
 html[data-ypp-ui-style="matrix"] ytd-transcript-segment-renderer:hover {
-  background: #002200 !important;
-  color: #00ff00 !important;
+  background: #002200 !important; color: #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-macro-markers-info-item-renderer {
+  background: #001100 !important; border: 1px dotted #00ff00 !important; border-radius: 0px !important;
 }
 html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-sidebar {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
+  background: #001100 !important; border: 1px dotted #00ff00 !important; border-top: 1px dotted #00ff00 !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
-html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-play,
-html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-tool {
-  background: #001100 !important;
-  border: 1px dotted #00ff00 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #001100 !important; border: 1px dotted #00ff00 !important; border-radius: 0px !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-play:hover,
-html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
-  background: #002200 !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-play:hover, html[data-ypp-ui-style="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
+  background: #002200 !important; transform: scale(1.02) !important;
 }

@@ -1,37 +1,33 @@
-/* src/content/ui-styles/vaporwave/components/icons.css */
-html[data-ypp-ui-style="vaporwave"] yt-icon svg,
-html[data-ypp-ui-style="vaporwave"] yt-icon path {
-  fill: #f0e6ff !important;
-  transition: fill 0.2s ease !important;
-}
-html[data-ypp-ui-style="vaporwave"] yt-icon:hover svg,
-html[data-ypp-ui-style="vaporwave"] yt-icon:hover path {
-  fill: #ff71ce !important;
-}
-html[data-ypp-ui-style="vaporwave"] .ytp-button svg,
-html[data-ypp-ui-style="vaporwave"] .ytp-button path {
-  fill: #f0e6ff !important;
-}
+/* vaporwave/components/icons.css */
+html[data-ypp-ui-style="vaporwave"] yt-icon svg, html[data-ypp-ui-style="vaporwave"] yt-icon path { fill: #f0e6ff !important; transition: fill 0.2s ease !important; }
+html[data-ypp-ui-style="vaporwave"] yt-icon:hover svg, html[data-ypp-ui-style="vaporwave"] yt-icon:hover path { fill: #ff71ce !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-button svg, html[data-ypp-ui-style="vaporwave"] .ytp-button path { fill: #f0e6ff !important; }
 html[data-ypp-ui-style="vaporwave"] yt-icon-button#guide-button {
   border-radius: 12px !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 html[data-ypp-ui-style="vaporwave"] yt-icon-button#guide-button:hover {
-  background: #200e38 !important;
-  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
-  transform: scale(1.1);
+  background: #200e38 !important; box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; transform: scale(1.1);
 }
-html[data-ypp-ui-style="vaporwave"] yt-icon-button#guide-button:active {
-  transform: scale(0.95) !important;
-}
+html[data-ypp-ui-style="vaporwave"] yt-icon-button#guide-button:active { transform: scale(0.95) !important; box-shadow: 0 0 8px rgba(255,113,206,0.2) !important; }
 html[data-ypp-ui-style="vaporwave"] .ytInlinePlayerControlsTopRightControlsCircleButton {
-  background: #200e38 !important;
-  border: 2px solid #ff71ce !important;
-  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  cursor: pointer !important;
+  background: #200e38 !important; border: 2px solid #ff71ce !important; box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important; cursor: pointer !important;
 }
 html[data-ypp-ui-style="vaporwave"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+  transform: scale(1.1) !important; box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-svg-fill { fill: #ff71ce !important; }
+html[data-ypp-ui-style="vaporwave"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-style="vaporwave"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-style="vaporwave"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="vaporwave"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-style="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+  border-radius: 12px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-style="vaporwave"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="vaporwave"] yt-icon-button.ytd-masthead:hover {
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; transform: scale(1.1);
 }

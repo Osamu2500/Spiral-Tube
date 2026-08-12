@@ -1,46 +1,23 @@
-/* src/content/ui-styles/anime/pages/watch.css */
-html[data-ypp-ui-style="anime"] ytd-watch-flexy {
-  background: #fff0f5 !important;
-}
-html[data-ypp-ui-style="anime"] #primary.ytd-watch-flexy,
-html[data-ypp-ui-style="anime"] #secondary.ytd-watch-flexy {
-  background: #fff0f5 !important;
-}
+/* anime/pages/watch.css */
+html[data-ypp-ui-style="anime"] ytd-watch-flexy { background: #fff0f5 !important; }
+html[data-ypp-ui-style="anime"] #primary.ytd-watch-flexy, html[data-ypp-ui-style="anime"] #secondary.ytd-watch-flexy { background: #fff0f5 !important; }
 html[data-ypp-ui-style="anime"] ytd-video-primary-info-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  padding: 16px !important;
-  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 16px !important; box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-video-secondary-info-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  padding: 16px !important;
-  margin-top: 8px !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 16px !important; margin-top: 8px !important;
 }
 html[data-ypp-ui-style="anime"] ytd-watch-metadata {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  padding: 12px !important;
-}
-html[data-ypp-ui-style="anime"] ytd-playlist-panel-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-}
-html[data-ypp-ui-style="anime"] #description-inline-expander {
-  color: #3a1a2a !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="anime"] ytd-expandable-metadata-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  padding: 12px !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; padding: 12px !important;
 }
-html[data-ypp-ui-style="anime"] #above-the-fold {
-  border-bottom: 2px solid #ffb6c1 !important;
-  padding-bottom: 12px !important;
-}
+html[data-ypp-ui-style="anime"] #above-the-fold { border-bottom: 2px solid #ffb6c1 !important; padding-bottom: 12px !important; }
+html[data-ypp-ui-style="anime"] ytd-watch-flexy[theater] #below.ytd-watch-flexy { padding: 12px !important; }
+html[data-ypp-ui-style="anime"] #description-inline-expander { color: #3a1a2a !important; }
+html[data-ypp-ui-style="anime"] ytd-item-section-renderer { background: #fff0f5 !important; }

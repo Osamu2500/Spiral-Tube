@@ -1,45 +1,44 @@
-/* src/content/ui-styles/hologram/pages/comments.css */
-html[data-ypp-ui-style="hologram"] ytd-comment-thread-renderer,
-html[data-ypp-ui-style="hologram"] ytd-comment-renderer {
-  background: #f0fdff !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  border-radius: 10px !important;
-  padding: 12px !important;
-  margin-bottom: 8px !important;
+/* hologram/pages/comments.css */
+html[data-ypp-ui-style="hologram"] ytd-comment-view-model button, html[data-ypp-ui-style="hologram"] ytd-comment-renderer button {
+  border-radius: 10px !important; transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-comment-view-model button:hover, html[data-ypp-ui-style="hologram"] ytd-comment-renderer button:hover {
+  background: #cff4fc !important; box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important; transform: none !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-comment-view-model yt-interaction .fill,
+html[data-ypp-ui-style="hologram"] ytd-comment-renderer yt-interaction .fill { background: transparent !important; opacity: 0 !important; }
+html[data-ypp-ui-style="hologram"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: 10px !important; margin: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important; box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-item-section-renderer[static-comments-header][enable-anchored-panel] #header.ytd-item-section-renderer {
+  background: none !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-comment-thread-renderer, html[data-ypp-ui-style="hologram"] ytd-comment-view-model {
+  background: #f0fdff !important; border-radius: 10px !important;
+  padding: 16px !important; margin-bottom: 16px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important; border-left: 6px solid #00ffff !important;
   box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
-  transition: all var(--bounce) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="hologram"] ytd-comment-renderer:hover {
-  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
-  border: 1px solid #00ffff !important;
+html[data-ypp-ui-style="hologram"] ytd-comment-thread-renderer:hover, html[data-ypp-ui-style="hologram"] ytd-comment-view-model:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important; background: #cff4fc33 !important;
 }
-html[data-ypp-ui-style="hologram"] #author-text.ytd-comment-renderer {
-  color: #00e5e5 !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="hologram"] ytd-comment-simplebox-renderer {
+  background: #f0fdff !important; border-radius: 10px !important;
+  padding: 15px !important; box-shadow: 0 0 5px rgba(0,255,255,0.2) !important; border: 1px solid rgba(0,255,255,0.5) !important;
 }
-html[data-ypp-ui-style="hologram"] #content-text.ytd-comment-renderer {
-  color: #003344 !important;
-  font-family: "Orbitron","Space Mono",monospace !important;
-}
+html[data-ypp-ui-style="hologram"] #author-text.ytd-comment-renderer { color: #00ffff !important; font-weight: bold !important; }
+html[data-ypp-ui-style="hologram"] #content-text.ytd-comment-renderer { color: #003344 !important; font-family: "Orbitron","Space Mono",monospace !important; }
 html[data-ypp-ui-style="hologram"] ytd-comment-replies-renderer {
-  border-left: 1px solid rgba(0,255,255,0.5) !important;
-  margin-left: 16px !important;
-  padding-left: 12px !important;
+  border-left: 1px solid rgba(0,255,255,0.5) !important; margin-left: 16px !important; padding-left: 12px !important;
 }
-html[data-ypp-ui-style="hologram"] #header-author yt-img-shadow {
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  border-radius: 50% !important;
-}
-html[data-ypp-ui-style="hologram"] #simplebox-placeholder {
-  background: #f0fdff !important;
-  border-radius: 10px !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
-  color: #005566 !important;
-}
+html[data-ypp-ui-style="hologram"] #header-author yt-img-shadow { border: 1px solid rgba(0,255,255,0.5) !important; border-radius: 50% !important; }
 html[data-ypp-ui-style="hologram"] ytd-backstage-post-renderer {
-  background: #f0fdff !important;
-  border: 1px solid rgba(0,255,255,0.5) !important;
+  background: #f0fdff !important; border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important; padding: 16px !important; box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
   border-radius: 10px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

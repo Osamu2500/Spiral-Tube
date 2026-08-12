@@ -1,52 +1,65 @@
-/* src/content/ui-styles/vaporwave/pages/player.css */
-html[data-ypp-ui-style="vaporwave"] .ytp-chrome-bottom,
-html[data-ypp-ui-style="vaporwave"] .ytp-gradient-bottom {
+/* vaporwave/pages/player.css */
+html[data-ypp-ui-style="vaporwave"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  background: none !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; overflow: hidden !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  background: #200e38 !important; box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; transform: scale(1.02);
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  background: none !important; transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  background: #200e38 !important; box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; transform: scale(1.1);
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-delhi-modern .ytp-chapter-container { width: 100% !important; padding-left: 10px; }
+html[data-ypp-ui-style="vaporwave"] .ytp-chrome-bottom, html[data-ypp-ui-style="vaporwave"] .ytp-gradient-bottom {
   background: linear-gradient(to top, #6b2fa0 0%, transparent 100%) !important;
 }
-html[data-ypp-ui-style="vaporwave"] .ytp-progress-bar-container {
-  height: 4px !important;
+html[data-ypp-ui-style="vaporwave"] .ytp-progress-bar-container { height: 4px !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-play-progress, html[data-ypp-ui-style="vaporwave"] .ytp-swatch-background-color,
+html[data-ypp-ui-style="vaporwave"] .ytp-volume-slider-handle, html[data-ypp-ui-style="vaporwave"] .ytp-volume-slider-handle::before,
+html[data-ypp-ui-style="vaporwave"] .ytp-volume-slider-handle::after { background: #ff71ce !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-swatch-color { color: #ff71ce !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-load-progress { background: rgba(255,255,255,0.2) !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-scrubber-button {
+  background: #ff71ce !important; border: 2px solid #200e38 !important;
+  border-radius: 0 !important;
+  transform: rotate(45deg) scale(0.85) scale(0.8) !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important; transition: transform 0.1s ease !important;
 }
-html[data-ypp-ui-style="vaporwave"] .ytp-play-progress,
-html[data-ypp-ui-style="vaporwave"] .ytp-swatch-background-color {
-  background-color: #ff71ce !important;
-  box-shadow: 0 0 8px #ff71ce !important;
+html[data-ypp-ui-style="vaporwave"] .ytp-scrubber-button:hover {
+  transform: rotate(45deg) scale(0.85) scale(1) !important;
+  background: #200e38 !important; border-color: #ff71ce !important;
 }
-html[data-ypp-ui-style="vaporwave"] .ytp-load-progress {
-  background-color: #c8a0e0 !important;
-  opacity: 0.5 !important;
+html[data-ypp-ui-style="vaporwave"] .ytp-time-display, html[data-ypp-ui-style="vaporwave"] .ytp-chapter-title-content {
+  font-family: "Syncopate","Audiowide",sans-serif !important; color: #f0e6ff !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-tooltip-text {
+  font-family: "Syncopate","Audiowide",sans-serif !important; background: #200e38 !important;
+  color: #ff71ce !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; text-shadow: none !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important; padding: 4px 8px !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-style="vaporwave"] .ytp-panel {
+  background: #200e38 !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
 }
 html[data-ypp-ui-style="vaporwave"] .ytp-volume-slider-handle {
   background: #ff71ce !important;
   border-radius: 50% !important;
   border: 2px solid #ff71ce !important;
 }
-html[data-ypp-ui-style="vaporwave"] .ytp-chrome-controls button {
-  color: #f0e6ff !important;
-}
-html[data-ypp-ui-style="vaporwave"] .ytp-chrome-controls button:hover {
-  color: #ff71ce !important;
-}
-html[data-ypp-ui-style="vaporwave"] .ytp-settings-menu,
-html[data-ypp-ui-style="vaporwave"] .ytp-panel-menu {
-  background: #200e38 !important;
-  border: 2px solid #ff71ce !important;
-  border-radius: 12px !important;
-}
-html[data-ypp-ui-style="vaporwave"] .ytp-menuitem {
-  color: #f0e6ff !important;
-  font-family: "Syncopate","Audiowide",sans-serif !important;
-}
-html[data-ypp-ui-style="vaporwave"] .ytp-menuitem:hover {
-  background: #6b2fa0 !important;
-  color: #ff71ce !important;
-}
+html[data-ypp-ui-style="vaporwave"] .ytp-chrome-controls button { color: #f0e6ff !important; }
+html[data-ypp-ui-style="vaporwave"] .ytp-chrome-controls button:hover { color: #ff71ce !important; box-shadow: 0 0 20px rgba(255,113,206,0.4) !important; }
 html[data-ypp-ui-style="vaporwave"] .ytp-ce-element {
   border-radius: 12px !important;
-  border: 2px solid #ff71ce !important;
-  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
-  overflow: hidden !important;
+  border: 2px solid #ff71ce !important; box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="vaporwave"] .ytp-ce-element:hover {
-  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="vaporwave"] .ytp-ce-element:hover { box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; transform: scale(1.04) !important; }
+html[data-ypp-ui-style="vaporwave"] video.video-stream.html5-main-video, html[data-ypp-ui-style="vaporwave"] .html5-video-player {
+  border-radius: 12px !important;
 }

@@ -1,49 +1,61 @@
-/* src/content/ui-styles/neo-brutalism/base/animations.css */
+/* neo-brutalism/base/animations.css */
 @keyframes neo-brutalism-pulse {
-  0%   { box-shadow: 6px 6px 0px #000000; }
-  50%  { box-shadow: 10px 10px 0px #000000; }
-  100% { box-shadow: 6px 6px 0px #000000; }
+  0%   { box-shadow: 6px 6px 0px #000; }
+  50%  { box-shadow: 10px 10px 0px #000; }
+  100% { box-shadow: 6px 6px 0px #000; }
 }
 
 
 
-/* Subscribe button pulse */
+@keyframes sepia-bloom { 0%{filter:brightness(1);} 100%{filter:brightness(1.1) saturate(1.1);} }
+
+/* Subscribe button */
 html[data-ypp-ui-style="neo-brutalism"] #subscribe-button .yt-spec-button-shape-next--filled {
   transition: all 0.3s ease !important;
   
   
 }
 
-/* Card hover lift */
+/* Card hover */
 html[data-ypp-ui-style="neo-brutalism"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-style="neo-brutalism"] ytd-compact-video-renderer:hover,
 html[data-ypp-ui-style="neo-brutalism"] ytd-video-renderer:hover,
 html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-video-renderer:hover,
 html[data-ypp-ui-style="neo-brutalism"] ytd-grid-video-renderer:hover {
-  transform: translate(-4px,-4px) !important;
+  transform:translate(-4px,-4px) !important;
   
   
   
-  box-shadow: 10px 10px 0px #000000 !important;
-  border: 4px solid #ff6699 !important;
+  box-shadow: 10px 10px 0px #000 !important; border: 4px solid #ff6699 !important;
+  animation: sepia-bloom 0.3s forwards !important;
 }
 
-/* Guide sidebar hover slide */
+/* Sidebar guide */
 html[data-ypp-ui-style="neo-brutalism"] ytd-guide-entry-renderer:hover {
   background-color: #fffbf0 !important;
-  transform: translate(-4px,-4px) !important; box-shadow: 4px 4px 0px #000 !important;
-  border-left: 4px solid #000000 !important;
+  transform:translate(-4px,-4px) !important; box-shadow:4px 4px 0 #000 !important;
+  border-left: 4px solid #000 !important;
   transition: all var(--bounce) !important;
 }
-
-/* Mini guide hover */
 html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 10px 10px 0px #000000 !important;
+  transform: scale(1.15) !important; box-shadow: 10px 10px 0px #000 !important;
 }
 
-/* Button scale */
+/* Button base */
 html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.08);
-  animation: neo-brutalism-pulse 5s ease-in-out infinite;
+  transform: scale(1.08); animation: neo-brutalism-pulse 5s ease-in-out infinite;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important; color: white !important;
+  box-shadow: 10px 10px 0px #000 !important;
+  animation: neo-brutalism-pulse 5s ease-in-out infinite !important;
+}
+
+/* Masthead topbar logo */
+html[data-ypp-ui-style="neo-brutalism"] ytd-topbar-logo-renderer a#logo::before {
+  content: ""; display: block !important;
+  width: 34px !important; height: 24px !important;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
+  background-size: contain !important; background-repeat: no-repeat !important;
+  background-position: center !important; margin-right: 2px !important;
 }

@@ -1,54 +1,55 @@
-/* src/content/ui-styles/origami/base/background.css */
-html[data-ypp-ui-style="origami"] html,
-html[data-ypp-ui-style="origami"] body,
-html[data-ypp-ui-style="origami"] ytd-app,
-html[data-ypp-ui-style="origami"] #page-manager {
-  background-color: #fdfdfd !important;
-  color: #444444 !important;
+/* origami/base/background.css */
+html[data-ypp-ui-style="origami"] html, html[data-ypp-ui-style="origami"] body, html[data-ypp-ui-style="origami"] ytd-app, html[data-ypp-ui-style="origami"] #page-manager {
+  background-color: #fdfdfd !important; color: #444 !important;
 }
-
-html[data-ypp-ui-style="origami"] tp-yt-app-header {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="origami"] ::-webkit-scrollbar {
-  width: 12px !important;
-  background-color: #fdfdfd !important;
-}
-html[data-ypp-ui-style="origami"] ::-webkit-scrollbar-track {
-  background: #fdfdfd !important;
-  border-left: 1px solid #ff7f50;
-}
+html[data-ypp-ui-style="origami"] tp-yt-app-header { background: transparent !important; }
+html[data-ypp-ui-style="origami"] ::-webkit-scrollbar { width: 12px !important; background: #fdfdfd !important; }
+html[data-ypp-ui-style="origami"] ::-webkit-scrollbar-track { background: #fdfdfd !important; border-left: 1px solid #ff7f50; }
 html[data-ypp-ui-style="origami"] ::-webkit-scrollbar-thumb {
-  background: #f4f4f0 !important;
-  border: 1px solid #d0d0c0 !important;
-  border-radius: 0px !important;
+  background: #ff7f50 !important; border: 1px solid #d0d0c0 !important; border-radius: 0px !important;
 }
-html[data-ypp-ui-style="origami"] ::-webkit-scrollbar-thumb:hover {
-  background: #ff7f50 !important;
+html[data-ypp-ui-style="origami"] ::-webkit-scrollbar-thumb:hover { background: #ff7f50 !important; }
+html[data-ypp-ui-style="origami"] ::-webkit-scrollbar-corner { background: #fdfdfd !important; }
+html[data-ypp-ui-style="origami"] .ypp-organizer-modal, html[data-ypp-ui-style="origami"] .ypp-modal-content {
+  background: #f8f8f5 !important; border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important; box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
 }
-html[data-ypp-ui-style="origami"] .ypp-organizer-modal,
-html[data-ypp-ui-style="origami"] .ypp-modal-content {
-  background: #f8f8f5 !important;
-  border: 1px solid #d0d0c0 !important;
-  border-radius: 0px !important;
-  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+html[data-ypp-ui-style="origami"] .ypp-modal-header {
+  background: #f4f4f0 !important; border-bottom: 1px solid #d0d0c0 !important;
 }
 html[data-ypp-ui-style="origami"] #simplebox-placeholder {
-  background: #f8f8f5 !important;
-  border-radius: 0px !important;
-  border: 1px solid #d0d0c0 !important;
+  background: #f8f8f5 !important; border-radius: 0px !important; border: 1px solid #d0d0c0 !important;
 }
-html[data-ypp-ui-style="origami"] .ypp-slider,
-html[data-ypp-ui-style="origami"] .ypp-gpb-vol-slider {
-  accent-color: #ff7f50 !important;
-  background: #f8f8f5 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="origami"] .ypp-slider, html[data-ypp-ui-style="origami"] .ypp-gpb-vol-slider {
+  accent-color: #ff7f50 !important; border-radius: 0px !important;
 }
 html[data-ypp-ui-style="origami"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
   border-radius: 0px !important;
 }
 html[data-ypp-ui-style="origami"] .tab-content.tp-yt-paper-tab:hover {
-  background: rgba(255,127,80,0.2) !important;
-  transform: scale(1.05) !important;
+  background: rgba(255,127,80,0.2) !important; transform: scale(1.05) !important;
 }
+html[data-ypp-ui-style="origami"] .ypp-nav-btn.active {
+  background: #f8f8f5 !important; box-shadow: 1px 1px 5px rgba(0,0,0,0.08) !important;
+}
+html[data-ypp-ui-style="origami"] .ypp-badge, html[data-ypp-ui-style="origami"] .ypp-value-display {
+  background: #f8f8f5 !important; border: 1px solid #d0d0c0 !important; border-radius: 0px !important;
+}
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-toolbar {
+  background: #f8f8f5 !important; border-bottom: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #f8f8f5 !important; border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important; transition: transform var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-style="origami"] #ypp-pl-root .ypp-pl-btn-tool:hover {
+  background: #f4f4f0 !important; transform: scale(1.02) !important;
+}
+

@@ -1,57 +1,41 @@
-/* src/content/ui-styles/anime/components/panels.css */
+/* anime/components/panels.css */
 html[data-ypp-ui-style="anime"] ytd-playlist-panel-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important; border-radius: 20px !important;
 }
-html[data-ypp-ui-style="anime"] #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 20px !important;
+html[data-ypp-ui-style="anime"] #secondary-inner ytd-playlist-panel-renderer { border-radius: 20px !important; }
+html[data-ypp-ui-style="anime"] .header.ytd-playlist-panel-renderer { background: none !important; }
+html[data-ypp-ui-style="anime"] #container.ytd-playlist-panel-renderer { border: 2px solid #ffb6c1 !important; }
+html[data-ypp-ui-style="anime"] ytd-miniplayer, html[data-ypp-ui-style="anime"] #miniplayer-bar {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; overflow: hidden !important;
 }
-html[data-ypp-ui-style="anime"] .header.ytd-playlist-panel-renderer {
-  background: #ff69b4 !important;
-  border-bottom: 2px solid #ffb6c1 !important;
-}
-html[data-ypp-ui-style="anime"] ytd-miniplayer,
-html[data-ypp-ui-style="anime"] #miniplayer-bar {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
-  overflow: hidden !important;
-}
-html[data-ypp-ui-style="anime"] .ypp-video-controls,
-html[data-ypp-ui-style="anime"] .ypp-shadow-panel {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
-  border-radius: 20px !important;
+html[data-ypp-ui-style="anime"] .ypp-video-controls, html[data-ypp-ui-style="anime"] .ypp-shadow-panel {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important; border-radius: 20px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-transcript-search-panel-renderer,
-html[data-ypp-ui-style="anime"] ytd-transcript-segment-renderer {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
-  color: #3a1a2a !important;
+html[data-ypp-ui-style="anime"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="anime"] #segments-container {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important; color: #3a1a2a !important;
 }
 html[data-ypp-ui-style="anime"] ytd-transcript-segment-renderer:hover {
-  background: #ff69b4 !important;
-  color: #ff1493 !important;
+  background: #ff69b4 !important; color: #ff1493 !important;
+}
+html[data-ypp-ui-style="anime"] ytd-macro-markers-info-item-renderer {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important; border-radius: 20px !important;
 }
 html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-sidebar {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important; border-top: 2px solid #ffb6c1 !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
-html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-play,
-html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-tool {
-  background: #ffe4ef !important;
-  border: 2px solid #ffb6c1 !important;
-  border-radius: 20px !important;
+html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #ffe4ef !important; border: 2px solid #ffb6c1 !important; border-radius: 20px !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
-html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-play:hover,
-html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
-  background: #ff69b4 !important;
-  transform: scale(1.04) !important;
+html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-play:hover, html[data-ypp-ui-style="anime"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
+  background: #ff69b4 !important; transform: scale(1.02) !important;
 }

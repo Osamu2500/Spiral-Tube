@@ -1,25 +1,30 @@
-/* src/content/ui-styles/grunge/components/badges.css */
+/* grunge/components/badges.css */
 html[data-ypp-ui-style="grunge"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-style="grunge"] .ypp-badge,
-html[data-ypp-ui-style="grunge"] .ypp-value-display {
-  background: #333333 !important;
-  color: #cccccc !important;
-  border-radius: 2px !important;
-  border: 1px dashed #8a9a5b !important;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
-  transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  font-family: "Courier New",Courier,monospace !important;
-  font-weight: bold !important;
+html[data-ypp-ui-style="grunge"] .ypp-badge, html[data-ypp-ui-style="grunge"] .ypp-value-display {
+  background: #333 !important; color: #ccc !important;
+  border-radius: 2px !important; border: 1px dashed #8a9a5b !important;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important; font-family: "Special Elite","Courier New",monospace !important; font-weight: bold !important;
 }
-html[data-ypp-ui-style="grunge"] ytd-badge-supported-renderer {
-  border-radius: 2px !important;
-}
+html[data-ypp-ui-style="grunge"] ytd-badge-supported-renderer { border-radius: 2px !important; }
 html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarBackground,
 html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-style="grunge"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 2px !important;
-  background-color: #a8b870 !important;
+  border-radius: 2px !important; background-color: #a8b870 !important;
+}
+html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarBackground { background-color: #999 !important; opacity: 0.3 !important; }
+html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarLoaded { background-color: #999 !important; opacity: 0.5 !important; }
+html[data-ypp-ui-style="grunge"] ytd-thumbnail-overlay-time-status-renderer {
+  background: #3d3d3d !important; color: #a8b870 !important;
+  border-radius: 2px !important; border: 1px dashed #8a9a5b !important; font-family: "Special Elite","Courier New",monospace !important;
+}
+html[data-ypp-ui-style="grunge"] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: #333 !important; border-radius: 2px !important;
+  border: 1px dashed #8a9a5b !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="grunge"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  transform: scale(1.1) !important; box-shadow: 3px 3px 0 #111 !important;
 }

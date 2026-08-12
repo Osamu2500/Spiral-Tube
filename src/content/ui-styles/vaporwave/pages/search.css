@@ -1,38 +1,30 @@
-/* src/content/ui-styles/vaporwave/pages/search.css */
-html[data-ypp-ui-style="vaporwave"] ytd-search,
-html[data-ypp-ui-style="vaporwave"] ytd-search-header-renderer {
-  background: #1a0a2e !important;
-}
+/* vaporwave/pages/search.css */
+html[data-ypp-ui-style="vaporwave"] ytd-search, html[data-ypp-ui-style="vaporwave"] ytd-search-header-renderer { background: #1a0a2e !important; }
 html[data-ypp-ui-style="vaporwave"] ytd-video-renderer {
-  background: #200e38 !important;
-  border: 2px solid #ff71ce !important;
-  border-radius: 12px !important;
-  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
-  margin-bottom: 12px !important;
-  padding: 12px !important;
+  background: #200e38 !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+  margin-bottom: 12px !important; padding: 12px !important;
   transition: all var(--bounce) !important;
 }
 html[data-ypp-ui-style="vaporwave"] ytd-video-renderer:hover {
-  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
-  border: 2px solid #01cdfe !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important; border: 2px solid #01cdfe !important;
   transform: translateY(-2px) !important;
 }
 html[data-ypp-ui-style="vaporwave"] ytd-search-pyv-renderer {
-  background: #200e38 !important;
-  border: 2px solid #01cdfe !important;
-  border-radius: 12px !important;
-  padding: 12px !important;
+  background: #200e38 !important; border: 2px solid #01cdfe !important;
+  border-radius: 12px !important; padding: 12px !important;
 }
 html[data-ypp-ui-style="vaporwave"] ytd-shelf-renderer {
-  background: #200e38 !important;
-  border: 2px solid #ff71ce !important;
-  border-radius: 12px !important;
-  padding: 16px !important;
-  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
-  margin-bottom: 16px !important;
+  background: #200e38 !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; padding: 16px !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important; margin-bottom: 16px !important;
 }
-html[data-ypp-ui-style="vaporwave"] ytd-searchbox {
-  background: #200e38 !important;
-  border: 2px solid #ff71ce !important;
-  border-radius: 12px !important;
+html[data-ypp-ui-style="vaporwave"] ytd-channel-renderer {
+  background: #200e38 !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; padding: 12px !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-horizontal-card-list-renderer {
+  background: #200e38 !important; border: 2px solid #ff71ce !important;
+  border-radius: 12px !important; padding: 12px !important;
 }

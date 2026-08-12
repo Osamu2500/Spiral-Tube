@@ -1,80 +1,34 @@
-/* src/content/ui-styles/galaxy/card-style.css */
+/* galaxy/card-style.css */
 html[data-ypp-card-style="galaxy"] {
-  --sf:           #101318;
-  --shadow-base:  0 0 20px rgba(0,240,255,0.2);
-  --shadow-hover: 0 0 35px rgba(0,240,255,0.5);
-  --shadow-active:0 0 8px rgba(0,240,255,0.1);
-  --blur:         blur(10px);
-  --galaxy-bg:       #0b0c10;
-  --galaxy-sf:       #101318;
-  --galaxy-primary:  #450256;
-  --galaxy-secondary:#03045e;
-  --galaxy-accent:   #00f0ff;
-  --galaxy-border:   1px solid rgba(0,240,255,0.3);
-  --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
-  --galaxy-text:     #e0e0e0;
-  --galaxy-text-sub: #a0a0c0;
-  --galaxy-radius:   16px;
+  --sf: #101318; --shadow-base: 0 0 20px rgba(0,240,255,0.2); --shadow-hover: 0 0 35px rgba(0,240,255,0.5);
+  --shadow-active: 0 0 8px rgba(0,240,255,0.1); --blur: blur(10px);
+  --galaxy-bg: #0b0c10; --galaxy-sf: #101318; --galaxy-primary: #0d1b2e;
+  --galaxy-secondary: #03045e; --galaxy-accent: #00f0ff;
+  --galaxy-border: 1px solid rgba(0,240,255,0.3); --galaxy-border-hover: 1px solid rgba(0,240,255,0.8);
+  --galaxy-text: #e0e0e0; --galaxy-text-sub: #a0a0c0; --galaxy-radius: 16px;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model
-  ) {
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+  ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model) {
   background: #101318 !important;
   --yt-spec-text-primary: #e0e0e0 !important;
   --yt-spec-text-secondary: #a0a0c0 !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  padding: var(--ypp-density-pad, 14px) !important;
-  box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
+  border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important;
+  padding: var(--ypp-density-pad, 14px) !important; box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
   transition: all 0.2s ease !important;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model
-  ):hover {
-  background: #450256 !important;
-  border-color: #00f0ff !important;
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+  ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model):hover {
+  background: #0d1b2e !important; border-color: #00f0ff !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
-  color: #e0e0e0 !important;
-  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
+  color: #e0e0e0 !important; font-family: "Space Grotesk","Segoe UI",sans-serif !important;
 }
-
-html[data-ypp-card-style='galaxy']
-  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
+html[data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
   color: #a0a0c0 !important;
 }
-
-html[data-ypp-card-style='galaxy'] ytd-thumbnail {
-  border-radius: 16px !important;
-  border: 1px solid rgba(0,240,255,0.3) !important;
-  overflow: hidden !important;
-}
-
-html[data-ypp-card-style='galaxy'] #mouseover-overlay,
-html[data-ypp-card-style='galaxy'] ytd-video-preview {
-  display: none !important;
-}
+html[data-ypp-card-style="galaxy"] ytd-thumbnail { border-radius: 16px !important; border: 1px solid rgba(0,240,255,0.3) !important; overflow: hidden !important; }
+html[data-ypp-card-style="galaxy"] #mouseover-overlay, html[data-ypp-card-style="galaxy"] ytd-video-preview { display: none !important; }

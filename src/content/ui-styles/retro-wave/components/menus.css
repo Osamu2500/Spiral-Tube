@@ -1,53 +1,42 @@
-/* src/content/ui-styles/retro-wave/components/menus.css */
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-dialog,
-html[data-ypp-ui-style="retro-wave"] ytd-menu-popup-renderer,
-html[data-ypp-ui-style="retro-wave"] tp-yt-iron-dropdown,
-html[data-ypp-ui-style="retro-wave"] #contentWrapper tp-yt-iron-dropdown,
+/* retro-wave/components/menus.css */
+html[data-ypp-ui-style="retro-wave"] tp-yt-paper-dialog, html[data-ypp-ui-style="retro-wave"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="retro-wave"] tp-yt-iron-dropdown, html[data-ypp-ui-style="retro-wave"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-style="retro-wave"] ytd-multi-page-menu-renderer {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
-  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #00ffff !important;
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  backdrop-filter: blur(12px) !important; color: #00ffff !important;
 }
-html[data-ypp-ui-style="retro-wave"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="retro-wave"] .ytp-settings-menu,
-html[data-ypp-ui-style="retro-wave"] .ytp-panel-menu {
-  background: #22103c !important;
-  border: 2px solid #ff007f !important;
-  border-radius: 8px !important;
+html[data-ypp-ui-style="retro-wave"] .ytp-settings-menu, html[data-ypp-ui-style="retro-wave"] .ytp-panel-menu, html[data-ypp-ui-style="retro-wave"] .ytp-popup.ytp-settings-menu,
+html[data-ypp-ui-style="retro-wave"] .ytp-panel {
+  background: #22103c !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
 }
 html[data-ypp-ui-style="retro-wave"] .ytp-menuitem {
-  color: #00ffff !important;
-  font-family: "VT323","Share Tech Mono",monospace !important;
-}
-html[data-ypp-ui-style="retro-wave"] .ytp-menuitem:hover {
-  background: #4a0e4e !important;
-  color: #ff007f !important;
-}
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-listbox,
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-item {
-  background: transparent !important;
-  color: #00ffff !important;
-}
-html[data-ypp-ui-style="retro-wave"] tp-yt-paper-item:hover {
-  background: #4a0e4e !important;
-}
-html[data-ypp-ui-style="retro-wave"] ytd-notification-renderer {
-  background: #22103c !important;
-  border-bottom: 2px solid #ff007f !important;
+  color: #00ffff !important; font-family: "Audiowide","VT323",cursive !important;
   transition: background var(--bounce) !important;
 }
-html[data-ypp-ui-style="retro-wave"] ytd-notification-renderer:hover {
-  background: #4a0e4e !important;
+html[data-ypp-ui-style="retro-wave"] .ytp-menuitem:hover { background: #2e0f50 !important; color: #ff007f !important; }
+html[data-ypp-ui-style="retro-wave"] .ytp-tooltip-text {
+  font-family: "Audiowide","VT323",cursive !important; background: #22103c !important;
+  color: #ff007f !important; border: 2px solid #ff007f !important;
+  border-radius: 8px !important; text-shadow: none !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important; padding: 4px 8px !important;
 }
+html[data-ypp-ui-style="retro-wave"] .ytp-tooltip-bg { display: none !important; }
+html[data-ypp-ui-style="retro-wave"] tp-yt-paper-listbox, html[data-ypp-ui-style="retro-wave"] tp-yt-paper-item {
+  background: transparent !important; color: #00ffff !important;
+}
+html[data-ypp-ui-style="retro-wave"] tp-yt-paper-item:hover { background: #2e0f50 !important; }
+html[data-ypp-ui-style="retro-wave"] ytd-notification-renderer {
+  background: #22103c !important; border-bottom: 2px solid #ff007f !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-notification-renderer:hover { background: #2e0f50 !important; }
 html[data-ypp-ui-style="retro-wave"] ytd-settings-sidebar-renderer {
-  background: #22103c !important;
-  border-radius: 8px !important;
-  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
-  padding: 15px !important;
-  border: 2px solid #ff007f !important;
+  background: #22103c !important; border-radius: 8px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important; padding: 15px !important; border: 2px solid #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important; border-radius: 8px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }

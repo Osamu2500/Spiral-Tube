@@ -1,54 +1,55 @@
-/* src/content/ui-styles/neo-brutalism/base/background.css */
-html[data-ypp-ui-style="neo-brutalism"] html,
-html[data-ypp-ui-style="neo-brutalism"] body,
-html[data-ypp-ui-style="neo-brutalism"] ytd-app,
-html[data-ypp-ui-style="neo-brutalism"] #page-manager {
-  background-color: #ffffff !important;
-  color: #000000 !important;
+/* neo-brutalism/base/background.css */
+html[data-ypp-ui-style="neo-brutalism"] html, html[data-ypp-ui-style="neo-brutalism"] body, html[data-ypp-ui-style="neo-brutalism"] ytd-app, html[data-ypp-ui-style="neo-brutalism"] #page-manager {
+  background-color: #fff !important; color: #000 !important;
 }
-
-html[data-ypp-ui-style="neo-brutalism"] tp-yt-app-header {
-  background: transparent !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar {
-  width: 12px !important;
-  background-color: #ffffff !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar-track {
-  background: #ffffff !important;
-  border-left: 1px solid #000000;
-}
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-app-header { background: transparent !important; }
+html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar { width: 12px !important; background: #fff !important; }
+html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar-track { background: #fff !important; border-left: 1px solid #000; }
 html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar-thumb {
-  background: #ffcc00 !important;
-  border: 4px solid #000000 !important;
-  border-radius: 0px !important;
+  background: #000 !important; border: 4px solid #000 !important; border-radius: 0px !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar-thumb:hover {
-  background: #000000 !important;
+html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar-thumb:hover { background: #000 !important; }
+html[data-ypp-ui-style="neo-brutalism"] ::-webkit-scrollbar-corner { background: #fff !important; }
+html[data-ypp-ui-style="neo-brutalism"] .ypp-organizer-modal, html[data-ypp-ui-style="neo-brutalism"] .ypp-modal-content {
+  background: #fffbf0 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; box-shadow: 10px 10px 0px #000 !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ypp-organizer-modal,
-html[data-ypp-ui-style="neo-brutalism"] .ypp-modal-content {
-  background: #fffbf0 !important;
-  border: 4px solid #000000 !important;
-  border-radius: 0px !important;
-  box-shadow: 10px 10px 0px #000000 !important;
+html[data-ypp-ui-style="neo-brutalism"] .ypp-modal-header {
+  background: #ffcc00 !important; border-bottom: 4px solid #000 !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] #simplebox-placeholder {
-  background: #fffbf0 !important;
-  border-radius: 0px !important;
-  border: 4px solid #000000 !important;
+  background: #fffbf0 !important; border-radius: 0px !important; border: 4px solid #000 !important;
 }
-html[data-ypp-ui-style="neo-brutalism"] .ypp-slider,
-html[data-ypp-ui-style="neo-brutalism"] .ypp-gpb-vol-slider {
-  accent-color: #000000 !important;
-  background: #fffbf0 !important;
-  border-radius: 0px !important;
+html[data-ypp-ui-style="neo-brutalism"] .ypp-slider, html[data-ypp-ui-style="neo-brutalism"] .ypp-gpb-vol-slider {
+  accent-color: #000 !important; border-radius: 0px !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
   border-radius: 0px !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] .tab-content.tp-yt-paper-tab:hover {
-  background: #ff6699 !important;
-  transform: scale(1.05) !important;
+  background: #ff6699 !important; transform: scale(1.05) !important;
 }
+html[data-ypp-ui-style="neo-brutalism"] .ypp-nav-btn.active {
+  background: #fffbf0 !important; box-shadow: 2px 2px 0px #000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ypp-badge, html[data-ypp-ui-style="neo-brutalism"] .ypp-value-display {
+  background: #fffbf0 !important; border: 4px solid #000 !important; border-radius: 0px !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-toolbar {
+  background: #fffbf0 !important; border-bottom: 4px solid #000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-col-switcher {
+  background: #fffbf0 !important; border: 4px solid #000 !important;
+  border-radius: 0px !important; transition: transform var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-style="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-tool:hover {
+  background: #ffcc00 !important; transform: scale(1.02) !important;
+}
+

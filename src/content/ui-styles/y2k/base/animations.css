@@ -1,25 +1,22 @@
-/* src/content/ui-styles/y2k/base/animations.css */
+/* y2k/base/animations.css */
 @keyframes y2k-pulse {
   0%   { box-shadow: 0 0 15px rgba(255,105,180,0.4); }
   50%  { box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3); }
   100% { box-shadow: 0 0 15px rgba(255,105,180,0.4); }
 }
 
+@keyframes y2k-float { 0%{transform:translateY(0);} 50%{transform:translateY(-7px);} 100%{transform:translateY(0);} }
 
-@keyframes y2k-float {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
+@keyframes sepia-bloom { 0%{filter:brightness(1);} 100%{filter:brightness(1.1) saturate(1.1);} }
 
-/* Subscribe button pulse */
+/* Subscribe button */
 html[data-ypp-ui-style="y2k"] #subscribe-button .yt-spec-button-shape-next--filled {
   transition: all 0.3s ease !important;
   
   
 }
 
-/* Card hover lift */
+/* Card hover */
 html[data-ypp-ui-style="y2k"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-style="y2k"] ytd-compact-video-renderer:hover,
 html[data-ypp-ui-style="y2k"] ytd-video-renderer:hover,
@@ -27,28 +24,38 @@ html[data-ypp-ui-style="y2k"] ytd-playlist-video-renderer:hover,
 html[data-ypp-ui-style="y2k"] ytd-grid-video-renderer:hover {
   
   
-  transform: scale(1.05) rotate(1deg) !important;
+  transform:scale(1.05) rotate(1deg) !important;
   
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
-  border: 3px solid #ff69b4 !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important; border: 3px solid #ff69b4 !important;
+  animation: sepia-bloom 0.3s forwards !important;
 }
 
-/* Guide sidebar hover slide */
+/* Sidebar guide */
 html[data-ypp-ui-style="y2k"] ytd-guide-entry-renderer:hover {
   background-color: #f0f0ff !important;
-  transform: translateX(8px) !important;
+  transform:translateX(8px) !important;
   border-left: 4px solid #9370db !important;
   transition: all var(--bounce) !important;
 }
-
-/* Mini guide hover */
 html[data-ypp-ui-style="y2k"] ytd-mini-guide-entry-renderer:hover {
-  transform: scale(1.15) !important;
-  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.15) !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
 }
 
-/* Button scale */
+/* Button base */
 html[data-ypp-ui-style="y2k"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
-  transform: scale(1.08);
-  animation: y2k-pulse 5s ease-in-out infinite;
+  transform: scale(1.08); animation: y2k-pulse 5s ease-in-out infinite;
+}
+html[data-ypp-ui-style="y2k"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important; color: white !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  animation: y2k-pulse 5s ease-in-out infinite !important;
+}
+
+/* Masthead topbar logo */
+html[data-ypp-ui-style="y2k"] ytd-topbar-logo-renderer a#logo::before {
+  content: ""; display: block !important;
+  width: 34px !important; height: 24px !important;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==) !important;
+  background-size: contain !important; background-repeat: no-repeat !important;
+  background-position: center !important; margin-right: 2px !important;
 }

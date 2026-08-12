@@ -1,64 +1,39 @@
-/* src/content/ui-styles/y2k/base/tokens.css */
+/* y2k/base/tokens.css */
 html[data-ypp-ui-style="y2k"],
 html[data-ypp-ui-style="y2k"] body,
 html[data-ypp-ui-style="y2k"] [dark] {
-  /* Core Palette */
-  --y2k-bg:           #e6e6fa;
-  --y2k-sf:           #f0f0ff;
-  --y2k-primary:      #ff69b4;
-  --y2k-secondary:    #00ccff;
-  --y2k-accent:       #9370db;
-  --y2k-text:         #191970;
-  --y2k-text-sub:     #4040aa;
-  --y2k-border:       3px solid #00ccff;
-  --y2k-border-hover: 3px solid #ff69b4;
-  --y2k-radius:       30px;
-  --y2k-shadow:       0 0 15px rgba(255,105,180,0.4);
-  --y2k-shadow-hover: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3);
-  --y2k-shadow-active:0 0 6px rgba(147,112,219,0.2);
-  --y2k-bounce:       cubic-bezier(0.175,0.885,0.32,1.275) 0.3s;
-  --y2k-font:         "Comic Sans MS","Trebuchet MS",cursive;
-  --y2k-font-alt:     "Comic Sans MS",cursive;
-
-  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
-  --sf:           var(--y2k-sf);
-  --bounce:       var(--y2k-bounce);
-  --shadow-base:  var(--y2k-shadow);
-  --shadow-hover: var(--y2k-shadow-hover);
-  --shadow-active:var(--y2k-shadow-active);
-
-  /* Chip tokens */
-  --chip-bg:             rgba(0,204,255,0.15);
-  --chip-bg-hover:       rgba(0,204,255,0.3);
-  --chip-bg-selected:    #9370db;
-  --chip-color-selected: #ffffff;
-  --chip-border:         3px solid #00ccff;
-  --chip-border-selected:3px solid #ff69b4;
-  --chip-radius:         30px;
-  --chip-shadow:         0 0 15px rgba(255,105,180,0.4);
-
-  /* YouTube spec variable overrides */
-  --yt-spec-text-primary:          #191970 !important;
-  --yt-spec-text-secondary:        #4040aa !important;
-  --yt-spec-text-disabled:         #4040aa !important;
-  --yt-spec-icon-active-other:     #9370db !important;
-  --yt-spec-icon-inactive:         #4040aa !important;
-  --yt-spec-menu-background:       #f0f0ff !important;
-  --yt-spec-raised-background:     #f0f0ff !important;
-  --yt-spec-base-background:       #e6e6fa !important;
+  --y2k-bg: #e6e6fa; --y2k-sf: #f0f0ff; --y2k-primary: #c8c8ff;
+  --y2k-secondary: #ff69b4; --y2k-accent: #9370db;
+  --y2k-text: #191970; --y2k-text-sub: #4040aa;
+  --y2k-border: 3px solid #00ccff; --y2k-border-hover: 3px solid #ff69b4;
+  --y2k-border-accent: 3px solid #9370db;
+  --y2k-radius: 24px; --y2k-font: "Comic Sans MS","Trebuchet MS",cursive;
+  --y2k-shadow: 0 0 15px rgba(255,105,180,0.4); --y2k-shadow-hover: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3);
+  --y2k-shadow-active: 0 0 6px rgba(147,112,219,0.2); --y2k-bounce: cubic-bezier(0.175,0.885,0.32,1.275) 0.3s;
+  --sf: var(--y2k-sf); --bounce: var(--y2k-bounce);
+  --shadow-base: var(--y2k-shadow); --shadow-hover: var(--y2k-shadow-hover);
+  --shadow-active: var(--y2k-shadow-active);
+  --chip-bg: rgba(0,204,255,0.15); --chip-bg-hover: rgba(0,204,255,0.3);
+  --chip-bg-selected: #9370db; --chip-color-selected: #fff;
+  --chip-border: 3px solid #00ccff; --chip-border-selected: 3px solid #ff69b4;
+  --chip-radius: 24px; --chip-shadow: none;
+  --yt-spec-text-primary: #191970 !important;
+  --yt-spec-text-secondary: #4040aa !important;
+  --yt-spec-text-disabled: #4040aa !important;
+  --yt-spec-icon-active-other: #9370db !important;
+  --yt-spec-icon-inactive: #4040aa !important;
+  --yt-spec-menu-background: #f0f0ff !important;
+  --yt-spec-raised-background: #f0f0ff !important;
+  --yt-spec-base-background: #e6e6fa !important;
   --yt-spec-badge-chip-background: transparent !important;
-  --yt-spec-additive-background:   transparent !important;
-  --ytd-user-comment-font-family:  "Comic Sans MS","Trebuchet MS",cursive !important;
-  --yt-font-family:                "Comic Sans MS","Trebuchet MS",cursive !important;
+  --yt-spec-additive-background: transparent !important;
+  --ytd-user-comment-font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
+  --yt-font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
 }
-
-/* Hard-enforce typography on every text node */
 html[data-ypp-ui-style="y2k"] body,
 html[data-ypp-ui-style="y2k"] yt-formatted-string,
 html[data-ypp-ui-style="y2k"] .yt-core-attributed-string,
-html[data-ypp-ui-style="y2k"] input,
-html[data-ypp-ui-style="y2k"] textarea,
-html[data-ypp-ui-style="y2k"] button,
+html[data-ypp-ui-style="y2k"] input, html[data-ypp-ui-style="y2k"] textarea, html[data-ypp-ui-style="y2k"] button,
 html[data-ypp-ui-style="y2k"] tp-yt-paper-item,
 html[data-ypp-ui-style="y2k"] .ytp-menuitem-label,
 html[data-ypp-ui-style="y2k"] .ytp-menuitem-content {
