@@ -197,7 +197,7 @@ tp-yt-app-header {
   background: #fff0f5 !important;
   border-radius: 20px !important;
   padding: 8px 16px !important;
-  border: 1px solid rgba(232, 82, 122, 0.45) #4a2a3e !important;
+  border: 1px solid rgba(232, 82, 122, 0.45) var(--sakura-primary) !important;
 }
 /* Progress bar */
 .ytp-play-progress {
@@ -211,12 +211,12 @@ tp-yt-app-header {
   width: 14px !important;
 }
 ::-webkit-scrollbar-track {
-  background: #d1c0a5 !important;
-  border-left: 2px solid #4a2a3e !important;
+  background: var(--sakura-bg) !important;
+  border-left: 2px solid var(--sakura-primary) !important;
 }
 ::-webkit-scrollbar-thumb {
   background: #4a7c74 !important;
-  border: 2px solid #4a2a3e !important;
+  border: 2px solid var(--sakura-primary) !important;
   border-radius: 20px !important;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -225,7 +225,7 @@ tp-yt-app-header {
 /* Description text */
 #description-text,
 yt-formatted-string#description-text {
-  color: #4a2a3e !important;
+  color: var(--sakura-primary) !important;
 }
 /* Added for HeaderNav active state */
 .ypp-nav-btn.active {

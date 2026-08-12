@@ -35,7 +35,7 @@ body.yt-pro-ambient {
 }
 #description-text,
 yt-formatted-string#description-text {
-  color: #4a2a3e !important;
+  color: var(--sakura-primary) !important;
 }
 body.yt-pro-ambient #cinematics.ytd-watch-flexy {
   filter: saturate(250%) blur(10px) contrast(1.1) brightness(1.3);

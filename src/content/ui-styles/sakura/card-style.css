@@ -1,6 +1,6 @@
 
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="vintage"] {
+html[data-ypp-card-style="sakura"] {
 
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
@@ -16,7 +16,7 @@ html[data-ypp-card-style="vintage"] {
   --vintage-border-hover: var(--ypp-glass-highlight, 1px solid rgba(62,53,47,0.4));
 
 }
-html[data-ypp-card-style='vintage']
+html[data-ypp-card-style="sakura"]
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -51,7 +51,7 @@ html[data-ypp-card-style='vintage']
   transition: all 0.2s ease !important;
 }
 
-html[data-ypp-card-style='vintage']
+html[data-ypp-card-style="sakura"]
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -82,7 +82,7 @@ html[data-ypp-card-style='vintage']
   filter: sepia(0) !important;
 }
 
-html[data-ypp-card-style='vintage']
+html[data-ypp-card-style="sakura"]
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -107,7 +107,7 @@ html[data-ypp-card-style='vintage']
     )
   ) #video-title { color: #2c2520 !important; }
 
-html[data-ypp-card-style='vintage']
+html[data-ypp-card-style="sakura"]
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -132,7 +132,7 @@ html[data-ypp-card-style='vintage']
     )
   ) #metadata-line span { color: #5c5046 !important; }
 
-html[data-ypp-card-style='vintage'] #mouseover-overlay, html[data-ypp-card-style='vintage'] ytd-video-preview,
+html[data-ypp-card-style="sakura"] #mouseover-overlay, html[data-ypp-card-style="sakura"] ytd-video-preview,
 html[data-ypp-card-style='ocean'] #mouseover-overlay, html[data-ypp-card-style='ocean'] ytd-video-preview,
 html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-style='blue-sky'] ytd-video-preview,
 html[data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'] ytd-video-preview {

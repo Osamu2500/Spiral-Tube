@@ -117,7 +117,7 @@ ytd-grid-video-renderer {
 /* Description text */
 #description-text,
 yt-formatted-string#description-text {
-  color: #4a2a3e !important;
+  color: var(--sakura-primary) !important;
 }
 
 html.yt-spiral-tube-theme {
