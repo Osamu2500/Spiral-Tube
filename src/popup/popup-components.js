@@ -138,13 +138,44 @@ export function initComponents(
       {
         name: 'New Additions',
         themes: [
-          { key: 'autumn', label: 'Autumn', meta: 'New', color: '#1a1a1a' },
-          { key: 'bento', label: 'Bento', meta: 'New', color: '#1a1a1a' },
-          { key: 'christmas', label: 'Christmas', meta: 'New', color: '#1a1a1a' },
-          { key: 'liquid-glass', label: 'Liquid Glass', meta: 'New', color: '#1a1a1a' },
-          { key: 'nature', label: 'Nature', meta: 'New', color: '#d4e157' },
-          { key: 'neumorphic', label: 'Neumorphic', meta: 'New', color: '#1a1a1a' },
-          { key: 'startube', label: 'Startube', meta: 'New', color: '#1a1a1a' }
+          { key: 'autumn', label: 'Autumn', meta: 'Seasonal', color: '#b5541b' },
+          { key: 'bento', label: 'Bento', meta: 'Japanese', color: '#1a1a1a' },
+          { key: 'christmas', label: 'Christmas', meta: 'Festive', color: '#165016' },
+          { key: 'liquid-glass', label: 'Liquid Glass', meta: 'Apple', color: '#1a1a1a' },
+          { key: 'nature', label: 'Nature', meta: 'Forest', color: '#2e8b57' },
+          { key: 'neumorphic', label: 'Neumorphic', meta: 'Soft 3D', color: '#e0e5ec' },
+          { key: 'startube', label: 'Startube', meta: 'Custom', color: '#1a1a1a' }
+        ]
+      },
+
+      {
+        name: 'UI Designs — Aesthetics',
+        themes: [
+          { key: 'kawaii', label: 'Kawaii', meta: 'Bubbly Pink', color: '#ffb6c1' },
+          { key: 'cyberpunk', label: 'Cyberpunk', meta: 'Neon Glitch', color: '#0a0a0f' },
+          { key: 'brutalism', label: 'Brutalism', meta: 'Stark Blocks', color: '#ffffff' },
+          { key: 'neo-brutalism', label: 'Neo-Brutal', meta: 'Bold Offset', color: '#f4f4f0' },
+          { key: 'vaporwave', label: 'Vaporwave', meta: '90s Neon', color: '#b967ff' },
+          { key: 'matrix', label: 'Matrix', meta: 'Digital Rain', color: '#000000' },
+          { key: 'hologram', label: 'Hologram', meta: 'Cyan Tech', color: '#001a1a' },
+          { key: 'retro-wave', label: 'Retro Wave', meta: '80s Synth', color: '#2b003a' },
+          { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted Glass', color: '#0f0c29' },
+          { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy Clay', color: '#e0e5ec' }
+        ]
+      },
+
+      {
+        name: 'UI Designs — Art & Culture',
+        themes: [
+          { key: 'y2k', label: 'Y2K', meta: 'Late 90s', color: '#e6e6fa' },
+          { key: 'steampunk', label: 'Steampunk', meta: 'Brass & Copper', color: '#f5deb3' },
+          { key: 'origami', label: 'Origami', meta: 'Paper Folds', color: '#fdfbf7' },
+          { key: 'gothic', label: 'Gothic', meta: 'Dark Arches', color: '#121212' },
+          { key: 'anime', label: 'Anime', meta: 'Manga & Sakura', color: '#fff0f8' },
+          { key: 'woodblock', label: 'Woodblock', meta: 'Ukiyo-e Art', color: '#f5e6c8' },
+          { key: 'grunge', label: 'Grunge', meta: 'Zine & Torn', color: '#1c1c1c' },
+          { key: 'galaxy', label: 'Galaxy', meta: 'Deep Space', color: '#03001c' },
+          { key: 'aurora', label: 'Aurora', meta: 'Northern Lights', color: '#0f172a' }
         ]
       },
     ];

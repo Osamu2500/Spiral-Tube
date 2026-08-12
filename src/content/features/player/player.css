@@ -344,7 +344,7 @@ body.ypp-hide-endscreens .ytp-ce-element,
 body.ypp-hide-endscreens .ytp-endscreen-content {
   display: none !important;
 }
-body.ypp-zen-mode ytd-watch-flexy:not([theater]) #columns {
+body.ypp-zen-mode:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
   --ytd-watch-flexy-sidebar-width: 0px !important;
 }
 #player.ytd-watch-flexy {
@@ -520,7 +520,7 @@ body.ypp-revert-progress-bar .ytSliderSliderPrimary,
 body.ypp-revert-progress-bar .thumbnail-overlay-resume-playback-progress {
   background: #f00 !important;
 }
-.ypp-cinema-mode ytd-watch-flexy:not([theater]) #columns {
+.ypp-cinema-mode:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
   --ytd-watch-flexy-sidebar-width: 0px !important;
 }
 .ypp-cinema-mode .ytp-caption-window-container {
@@ -550,8 +550,22 @@ body.ypp-zen-mode .html5-video-player.paused-mode video {
   filter: brightness(0.4) saturate(0.6) blur(2px) !important;
   animation: zenBreathing 8s infinite ease-in-out !important;
 }
-body.ypp-sidebar-hidden ytd-watch-flexy:not([theater]) #columns {
+body.ypp-sidebar-hidden:not(.ypp-pip-active) ytd-watch-flexy:not([theater]) #columns {
   --ytd-watch-flexy-sidebar-width: 0px !important;
+}
+
+/* ── PiP Active: Always keep sidebar visible ─────────────────────────── */
+body.ypp-pip-active ytd-watch-flexy #secondary,
+body.ypp-pip-active ytd-watch-flexy #related,
+body.ypp-pip-active ytd-watch-flexy #secondary-inner {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.ypp-pip-active ytd-watch-flexy #columns {
+  --ytd-watch-flexy-sidebar-width: var(--ytd-watch-flexy-sidebar-width-normal, 402px) !important;
 }
 .html5-video-player.ytp-rounded-player {
   border-radius: 12px;

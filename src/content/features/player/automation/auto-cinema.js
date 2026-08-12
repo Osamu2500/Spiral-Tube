@@ -42,6 +42,21 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
         };
         document.addEventListener('click', this._buttonClickListener, true);
 
+        // Track PiP state to protect sidebar visibility
+        this._onEnterPiP = () => {
+            document.body.classList.add('ypp-pip-active');
+            document.body.classList.remove('ypp-idle'); // Ensure sidebar is fully visible in PiP
+        };
+        this._onLeavePiP = () => {
+            document.body.classList.remove('ypp-pip-active');
+        };
+        document.addEventListener('enterpictureinpicture', this._onEnterPiP);
+        document.addEventListener('leavepictureinpicture', this._onLeavePiP);
+        // Set initial state in case PiP is already active
+        if (document.pictureInPictureElement) {
+            document.body.classList.add('ypp-pip-active');
+        }
+
         // Run immediately if we're on a watch page
         if (location.pathname === '/watch') {
             this._clickTheaterButton();
@@ -65,6 +80,17 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
             document.removeEventListener('click', this._buttonClickListener, true);
             this._buttonClickListener = null;
         }
+        // Clean up PiP listeners
+        if (this._onEnterPiP) {
+            document.removeEventListener('enterpictureinpicture', this._onEnterPiP);
+            this._onEnterPiP = null;
+        }
+        if (this._onLeavePiP) {
+            document.removeEventListener('leavepictureinpicture', this._onLeavePiP);
+            this._onLeavePiP = null;
+        }
+        document.body.classList.remove('ypp-pip-active');
+        
         if (this._resizeTimeout) { clearTimeout(this._resizeTimeout); this._resizeTimeout = null; }
         if (this._clickTimeout) { clearTimeout(this._clickTimeout); this._clickTimeout = null; }
         if (this._mouseTimeout) { clearTimeout(this._mouseTimeout); this._mouseTimeout = null; }
@@ -117,6 +143,7 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
 
     _onResize() {
         if (location.pathname !== '/watch') return;
+        if (document.pictureInPictureElement) return; // Don't re-trigger theater when PiP causes layout shifts
         
         // Debounce resize
         if (this._resizeTimeout) clearTimeout(this._resizeTimeout);
@@ -128,6 +155,7 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
     async _clickTheaterButton() {
         if (this._userOverridden) return;
         if (this.settings?.zenMode) return; // Prevent conflict with Zen Mode
+        if (document.pictureInPictureElement) return; // Don't touch theater mode when PiP is active
         
         try {
             const btn = await this.utils?.pollFor?.(
@@ -149,6 +177,7 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
             // Debounce the click to prevent UI flickering
             if (this._clickTimeout) clearTimeout(this._clickTimeout);
             this._clickTimeout = setTimeout(() => {
+                if (document.pictureInPictureElement) return; // Re-check inside timeout
                 const flexy = document.querySelector('ytd-watch-flexy');
                 // Check if theater mode is already active
                 const isTheater = flexy && flexy.hasAttribute('theater');
@@ -161,6 +190,7 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
 
     _revertTheaterMode() {
         if (this._userOverridden) return;
+        if (document.pictureInPictureElement) return; // Never revert theater while PiP is active
         
         const flexy = document.querySelector('ytd-watch-flexy');
         if (flexy && flexy.hasAttribute('theater')) {
@@ -182,9 +212,9 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
                 ytd-watch-flexy[theater] #related {
                     transition: opacity 0.8s ease-in-out;
                 }
-                body.ypp-idle ytd-watch-flexy[theater] #secondary,
-                body.ypp-idle ytd-watch-flexy[theater] #comments,
-                body.ypp-idle ytd-watch-flexy[theater] #related {
+                body.ypp-idle:not(.ypp-pip-active) ytd-watch-flexy[theater] #secondary,
+                body.ypp-idle:not(.ypp-pip-active) ytd-watch-flexy[theater] #comments,
+                body.ypp-idle:not(.ypp-pip-active) ytd-watch-flexy[theater] #related {
                     opacity: 0.1 !important;
                     pointer-events: none;
                 }
@@ -201,6 +231,8 @@ export class AutoCinema extends window.YPP.features.BaseFeature {
         
         if (this._mouseTimeout) clearTimeout(this._mouseTimeout);
         this._mouseTimeout = setTimeout(() => {
+            // Never go idle while PiP is active — sidebar must remain visible
+            if (document.pictureInPictureElement) return;
             const flexy = document.querySelector('ytd-watch-flexy');
             const isTheater = flexy && flexy.hasAttribute('theater');
             if (isTheater && !document.querySelector('video')?.paused) {
