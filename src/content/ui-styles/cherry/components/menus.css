@@ -6,7 +6,7 @@ html[data-ypp-ui-style="cherry"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-style="cherry"] tp-yt-paper-listbox,
 html[data-ypp-ui-style="cherry"] .ytp-popup {
   background: var(--cherry-bg-raised) !important;
-  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: var(--cherry-border) !important;
   border-radius: var(--cherry-radius) !important;

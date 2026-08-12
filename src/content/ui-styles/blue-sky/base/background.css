@@ -102,7 +102,7 @@ html[data-ypp-theme="blue-sky"] .ypp-modal-content,
 html[data-ypp-theme="blue-sky"] ytd-unified-share-panel-renderer,
 html[data-ypp-theme="blue-sky"] ytd-add-to-playlist-renderer {
   background: rgba(220, 240, 255, 0.75) !important;
-  -webkit-backdrop-filter: var(--sky-blur-modal) !important; backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-modal) !important;
@@ -115,7 +115,7 @@ html[data-ypp-theme="blue-sky"] ytd-add-to-playlist-renderer {
 html[data-ypp-theme="blue-sky"] .ypp-adjust-card,
 html[data-ypp-theme="blue-sky"] .ypp-filter-card {
   background: var(--sky-bg-card) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-card) !important;
@@ -143,7 +143,7 @@ html[data-ypp-theme="blue-sky"] .ypp-gpb-vol-slider {
 /* ── Filter dropdown ── */
 html[data-ypp-theme="blue-sky"] .ypp-filter-dropdown {
   background: var(--sky-bg-surface) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -159,7 +159,7 @@ html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion {
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
   background: var(--sky-bg-surface) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   transition: all 0.3s var(--sky-bounce) !important;
 }
@@ -172,7 +172,7 @@ html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion:hover {
 /* ── Playlist panel ── */
 html[data-ypp-theme="blue-sky"] ytd-playlist-panel-renderer {
   background: rgba(220, 240, 255, 0.5) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
 }
 html[data-ypp-theme="blue-sky"] #secondary-inner ytd-playlist-panel-renderer {

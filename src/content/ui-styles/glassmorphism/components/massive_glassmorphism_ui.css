@@ -23,7 +23,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-video-renderer, html[data-ypp-ui-s
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -40,7 +40,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-rich-item-renderer, html[data-ypp-
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -57,7 +57,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-playlist-renderer, html[data-ypp-u
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -74,7 +74,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-grid-video-renderer, html[data-ypp
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -91,7 +91,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-compact-video-renderer, html[data-
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -108,7 +108,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-reel-item-renderer, html[data-ypp-
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -125,7 +125,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-rich-shelf-renderer, html[data-ypp
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -142,7 +142,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-comment-thread-renderer, html[data
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -159,7 +159,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-channel-renderer, html[data-ypp-ui
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -176,7 +176,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-playlist-panel-renderer, html[data
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -193,7 +193,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-watch-metadata, html[data-ypp-ui-s
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -210,7 +210,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-multi-page-menu-renderer, html[dat
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -227,7 +227,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-menu-popup-renderer, html[data-ypp
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -244,7 +244,7 @@ html[data-ypp-card-style="glassmorphism"] tp-yt-paper-dialog, html[data-ypp-ui-s
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -261,7 +261,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-notification-renderer, html[data-y
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -278,7 +278,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-account-item-renderer, html[data-y
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -295,7 +295,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-guide-entry-renderer, html[data-yp
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -312,7 +312,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-mini-guide-entry-renderer, html[da
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -329,7 +329,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-search-filter-renderer, html[data-
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -346,7 +346,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-macro-markers-list-item-renderer, 
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -363,7 +363,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-c4-tabbed-header-renderer, html[da
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -380,7 +380,7 @@ html[data-ypp-card-style="glassmorphism"] #channel-header, html[data-ypp-ui-styl
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -397,7 +397,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-live-chat-renderer, html[data-ypp-
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -414,7 +414,7 @@ html[data-ypp-card-style="glassmorphism"] yt-live-chat-text-message-renderer, ht
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -431,7 +431,7 @@ html[data-ypp-card-style="glassmorphism"] ytd-miniplayer, html[data-ypp-ui-style
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -448,7 +448,7 @@ html[data-ypp-card-style="glassmorphism"] .ytp-settings-menu, html[data-ypp-ui-s
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -465,7 +465,7 @@ html[data-ypp-card-style="glassmorphism"] .ytp-chrome-bottom, html[data-ypp-ui-s
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -482,7 +482,7 @@ html[data-ypp-card-style="glassmorphism"] .ytp-endscreen-content, html[data-ypp-
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;
@@ -499,7 +499,7 @@ html[data-ypp-card-style="glassmorphism"] .ytp-ce-element, html[data-ypp-ui-styl
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
@@ -516,7 +516,7 @@ html[data-ypp-card-style="glassmorphism"] yt-error-screen, html[data-ypp-ui-styl
     border: var(--glassmorphism-border) !important;
     box-shadow: var(--glassmorphism-shadow) !important;
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
     padding: 8px !important;
     margin-bottom: 4px !important;

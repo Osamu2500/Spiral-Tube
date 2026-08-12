@@ -1,0 +1,59 @@
+html.yt-spiral-tube-theme {
+    --ypp-bg-base: #0f1c15;
+    --ypp-bg-surface: #1b2e24;
+    --ypp-bg-glass: rgba(15, 28, 21, 0.85);
+    --ypp-glass-border: rgba(255, 255, 255, 0.08);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.1);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+
+    
+    --ypp-text-primary: #e8f5e9;
+    --ypp-text-secondary: #81c784;
+    
+    --ypp-accent: #66bb6a;
+    --ypp-accent-hover: #81c784;
+    --ypp-accent-glow: rgba(102, 187, 106, 0.3);
+
+    /* SHADOWS */
+    --ypp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.25);
+    --ypp-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --ypp-shadow-glow: 0 0 24px rgba(102, 187, 106, 0.15);
+    --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
+
+    /* COMPONENT OVERRIDES */
+    --ytd-searchbox-background: transparent;
+    --ytd-searchbox-text-color: #e8f5e9;
+    --ytd-searchbox-border-radius: 18px;
+    --ytd-searchbox-height: 44px;
+    --ytd-searchbox-legacy-button-border-radius: 0 18px 18px 0;
+    --ytd-searchbox-legacy-button-width: 60px;
+    --ytd-searchbox-legacy-button-color: rgba(232, 245, 233, 0.05);
+}
+
+
+/* Animated Forest Light Rays */
+@keyframes forestBreezeBg {
+    0% { transform: rotate(-5deg) scale(1); opacity: 0.6; }
+    100% { transform: rotate(5deg) scale(1.1); opacity: 1; }
+}
+@keyframes forestBreezeFg {
+    0% { transform: rotate(5deg) scale(1.1); opacity: 0.8; }
+    100% { transform: rotate(-2deg) scale(1); opacity: 0.5; }
+}
+html.yt-spiral-tube-theme.ypp-theme-effects::before,
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
+    content: '';
+    position: fixed;
+    top: -50vh; left: -50vw; width: 200vw; height: 200vh;
+    z-index: -2;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+html.yt-spiral-tube-theme.ypp-theme-effects::before {
+    background: radial-gradient(ellipse at 30% 70%, rgba(163, 190, 140, 0.15) 0%, transparent 40%);
+    animation: forestBreezeBg 25s ease-in-out infinite alternate;
+}
+html.yt-spiral-tube-theme.ypp-theme-effects::after {
+    background: radial-gradient(ellipse at 80% 40%, rgba(163, 190, 140, 0.1) 0%, transparent 50%);
+    animation: forestBreezeFg 35s ease-in-out infinite alternate;
+}

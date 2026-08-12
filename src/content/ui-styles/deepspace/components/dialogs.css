@@ -2,7 +2,7 @@ html[data-ypp-ui-style="deepspace"] tp-yt-paper-dialog,
 html[data-ypp-ui-style="deepspace"] ytd-popup-container {
   background: var(--ds-bg-panel) !important;
   -webkit-backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important; backdrop-filter: blur(24px) !important;
+  backdrop-filter: blur(24px) !important;
   border-radius: var(--ds-r-md) !important;
   border: 1px solid var(--ds-glass-border-active) !important;
   box-shadow: var(--ds-glow-blue), 0 24px 60px rgba(0, 0, 5, 0.9) !important;

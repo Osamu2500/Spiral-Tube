@@ -9,7 +9,7 @@
 html[data-ypp-ui-style="frutiger-aero"] #above-the-fold {
   background: var(--faero-glass-medium) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   padding: 16px !important;
@@ -71,7 +71,7 @@ html[data-ypp-ui-style="frutiger-aero"] #secondary {
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-next-secondary-results-renderer {
   background: var(--faero-glass-light) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   padding: 16px !important;
@@ -91,7 +91,7 @@ html[data-ypp-ui-style="frutiger-aero"] #progress.ytd-macro-markers-list-rendere
 html[data-ypp-ui-style="frutiger-aero"] #comments {
   background: var(--faero-glass-light) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   padding: 20px !important;

@@ -1,0 +1,3158 @@
+/* ========================================================================== */
+/* WOODBLOCK PRINT: JAPANESE UKIYO-E ART, BOLD OUTLINES, EARTHY PIGMENTS */
+/* ========================================================================== */
+
+html[data-ypp-card-style="woodblock"], html[data-ypp-ui-style="woodblock"] {
+    --woodblock-primary: #8b0000;
+    --woodblock-secondary: #2f4f4f;
+    --woodblock-accent: #daa520;
+    --woodblock-bg: #f5e6c8;
+    --woodblock-font: "Noto Serif JP", "Playfair Display", serif;
+    --woodblock-radius: 0px;
+}
+
+html[data-ypp-card-style="woodblock"] *, html[data-ypp-ui-style="woodblock"] * {
+    font-family: var(--woodblock-font) !important;
+    color: #1a0a00 !important;
+    font-weight: 700 !important;
+}
+
+html[data-ypp-card-style="woodblock"] ytd-app, html[data-ypp-ui-style="woodblock"] ytd-app {
+    background: #f5e6c8 !important;
+    background-image: repeating-linear-gradient(90deg, rgba(139,0,0,0.04) 0px, rgba(139,0,0,0.04) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(0deg, rgba(139,0,0,0.04) 0px, rgba(139,0,0,0.04) 1px, transparent 1px, transparent 40px) !important;
+}
+
+html[data-ypp-card-style="woodblock"] #masthead, html[data-ypp-ui-style="woodblock"] #masthead {
+    background: #8b0000 !important;
+    border-bottom: 6px solid #daa520 !important;
+}
+
+html[data-ypp-card-style="woodblock"] ytd-guide-renderer, html[data-ypp-ui-style="woodblock"] ytd-guide-renderer {
+    background: #f5e6c8 !important;
+    border-right: 6px solid #8b0000 !important;
+}
+
+html[data-ypp-card-style="woodblock"] #search, html[data-ypp-ui-style="woodblock"] #search {
+    background: #ffe4b5 !important;
+    border: 3px solid #8b0000 !important;
+    border-radius: 0 !important;
+}
+
+/* woodblock -> ytd-video-renderer */
+html[data-ypp-card-style="woodblock"] ytd-video-renderer, html[data-ypp-ui-style="woodblock"] ytd-video-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-video-renderer, html[data-ypp-ui-style="woodblock"] ytd-video-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-rich-item-renderer */
+html[data-ypp-card-style="woodblock"] ytd-rich-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-rich-item-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-rich-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-rich-item-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-playlist-renderer */
+html[data-ypp-card-style="woodblock"] ytd-playlist-renderer, html[data-ypp-ui-style="woodblock"] ytd-playlist-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-playlist-renderer, html[data-ypp-ui-style="woodblock"] ytd-playlist-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-grid-video-renderer */
+html[data-ypp-card-style="woodblock"] ytd-grid-video-renderer, html[data-ypp-ui-style="woodblock"] ytd-grid-video-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-grid-video-renderer, html[data-ypp-ui-style="woodblock"] ytd-grid-video-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-compact-video-renderer */
+html[data-ypp-card-style="woodblock"] ytd-compact-video-renderer, html[data-ypp-ui-style="woodblock"] ytd-compact-video-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-compact-video-renderer, html[data-ypp-ui-style="woodblock"] ytd-compact-video-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-reel-item-renderer */
+html[data-ypp-card-style="woodblock"] ytd-reel-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-reel-item-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-reel-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-reel-item-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-rich-shelf-renderer */
+html[data-ypp-card-style="woodblock"] ytd-rich-shelf-renderer, html[data-ypp-ui-style="woodblock"] ytd-rich-shelf-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-rich-shelf-renderer, html[data-ypp-ui-style="woodblock"] ytd-rich-shelf-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-comment-thread-renderer */
+html[data-ypp-card-style="woodblock"] ytd-comment-thread-renderer, html[data-ypp-ui-style="woodblock"] ytd-comment-thread-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-comment-thread-renderer, html[data-ypp-ui-style="woodblock"] ytd-comment-thread-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-channel-renderer */
+html[data-ypp-card-style="woodblock"] ytd-channel-renderer, html[data-ypp-ui-style="woodblock"] ytd-channel-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-channel-renderer, html[data-ypp-ui-style="woodblock"] ytd-channel-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-playlist-panel-renderer */
+html[data-ypp-card-style="woodblock"] ytd-playlist-panel-renderer, html[data-ypp-ui-style="woodblock"] ytd-playlist-panel-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-playlist-panel-renderer, html[data-ypp-ui-style="woodblock"] ytd-playlist-panel-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-watch-metadata */
+html[data-ypp-card-style="woodblock"] ytd-watch-metadata, html[data-ypp-ui-style="woodblock"] ytd-watch-metadata {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-watch-metadata, html[data-ypp-ui-style="woodblock"] ytd-watch-metadata:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-multi-page-menu-renderer */
+html[data-ypp-card-style="woodblock"] ytd-multi-page-menu-renderer, html[data-ypp-ui-style="woodblock"] ytd-multi-page-menu-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-multi-page-menu-renderer, html[data-ypp-ui-style="woodblock"] ytd-multi-page-menu-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-menu-popup-renderer */
+html[data-ypp-card-style="woodblock"] ytd-menu-popup-renderer, html[data-ypp-ui-style="woodblock"] ytd-menu-popup-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-menu-popup-renderer, html[data-ypp-ui-style="woodblock"] ytd-menu-popup-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> tp-yt-paper-dialog */
+html[data-ypp-card-style="woodblock"] tp-yt-paper-dialog, html[data-ypp-ui-style="woodblock"] tp-yt-paper-dialog {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] tp-yt-paper-dialog, html[data-ypp-ui-style="woodblock"] tp-yt-paper-dialog:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-notification-renderer */
+html[data-ypp-card-style="woodblock"] ytd-notification-renderer, html[data-ypp-ui-style="woodblock"] ytd-notification-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-notification-renderer, html[data-ypp-ui-style="woodblock"] ytd-notification-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-account-item-renderer */
+html[data-ypp-card-style="woodblock"] ytd-account-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-account-item-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-account-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-account-item-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-guide-entry-renderer */
+html[data-ypp-card-style="woodblock"] ytd-guide-entry-renderer, html[data-ypp-ui-style="woodblock"] ytd-guide-entry-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-guide-entry-renderer, html[data-ypp-ui-style="woodblock"] ytd-guide-entry-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-mini-guide-entry-renderer */
+html[data-ypp-card-style="woodblock"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="woodblock"] ytd-mini-guide-entry-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-style="woodblock"] ytd-mini-guide-entry-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-search-filter-renderer */
+html[data-ypp-card-style="woodblock"] ytd-search-filter-renderer, html[data-ypp-ui-style="woodblock"] ytd-search-filter-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-search-filter-renderer, html[data-ypp-ui-style="woodblock"] ytd-search-filter-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-macro-markers-list-item-renderer */
+html[data-ypp-card-style="woodblock"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-macro-markers-list-item-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-style="woodblock"] ytd-macro-markers-list-item-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-c4-tabbed-header-renderer */
+html[data-ypp-card-style="woodblock"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-style="woodblock"] ytd-c4-tabbed-header-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-style="woodblock"] ytd-c4-tabbed-header-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> #channel-header */
+html[data-ypp-card-style="woodblock"] #channel-header, html[data-ypp-ui-style="woodblock"] #channel-header {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] #channel-header, html[data-ypp-ui-style="woodblock"] #channel-header:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-live-chat-renderer */
+html[data-ypp-card-style="woodblock"] ytd-live-chat-renderer, html[data-ypp-ui-style="woodblock"] ytd-live-chat-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-live-chat-renderer, html[data-ypp-ui-style="woodblock"] ytd-live-chat-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> yt-live-chat-text-message-renderer */
+html[data-ypp-card-style="woodblock"] yt-live-chat-text-message-renderer, html[data-ypp-ui-style="woodblock"] yt-live-chat-text-message-renderer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] yt-live-chat-text-message-renderer, html[data-ypp-ui-style="woodblock"] yt-live-chat-text-message-renderer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> ytd-miniplayer */
+html[data-ypp-card-style="woodblock"] ytd-miniplayer, html[data-ypp-ui-style="woodblock"] ytd-miniplayer {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-miniplayer, html[data-ypp-ui-style="woodblock"] ytd-miniplayer:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> .ytp-settings-menu */
+html[data-ypp-card-style="woodblock"] .ytp-settings-menu, html[data-ypp-ui-style="woodblock"] .ytp-settings-menu {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] .ytp-settings-menu, html[data-ypp-ui-style="woodblock"] .ytp-settings-menu:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> .ytp-chrome-bottom */
+html[data-ypp-card-style="woodblock"] .ytp-chrome-bottom, html[data-ypp-ui-style="woodblock"] .ytp-chrome-bottom {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] .ytp-chrome-bottom, html[data-ypp-ui-style="woodblock"] .ytp-chrome-bottom:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> .ytp-endscreen-content */
+html[data-ypp-card-style="woodblock"] .ytp-endscreen-content, html[data-ypp-ui-style="woodblock"] .ytp-endscreen-content {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] .ytp-endscreen-content, html[data-ypp-ui-style="woodblock"] .ytp-endscreen-content:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> .ytp-ce-element */
+html[data-ypp-card-style="woodblock"] .ytp-ce-element, html[data-ypp-ui-style="woodblock"] .ytp-ce-element {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+html[data-ypp-card-style="woodblock"] .ytp-ce-element, html[data-ypp-ui-style="woodblock"] .ytp-ce-element:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* woodblock -> yt-error-screen */
+html[data-ypp-card-style="woodblock"] yt-error-screen, html[data-ypp-ui-style="woodblock"] yt-error-screen {
+    background: #f5e6c8 !important;
+    border-radius: 0 !important;
+    border: 4px solid #2f4f4f !important;
+    box-shadow: 6px 6px 0px #8b0000 !important;
+    outline: 2px solid #daa520 !important;
+    outline-offset: 4px !important;
+    transition: all 0.2s ease !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+}
+html[data-ypp-card-style="woodblock"] yt-error-screen, html[data-ypp-ui-style="woodblock"] yt-error-screen:hover {
+    transform: translate(-4px, -4px) !important;
+    box-shadow: 10px 10px 0px #8b0000 !important;
+    background: #fffaed !important;
+}
+
+/* Thumbnails */
+html[data-ypp-card-style="woodblock"] ytd-thumbnail, html[data-ypp-ui-style="woodblock"] ytd-thumbnail {
+    border-radius: 0 !important; border: 4px solid #2f4f4f !important; filter: sepia(0.4) contrast(1.1) !important;
+}
+html[data-ypp-card-style="woodblock"] ytd-thumbnail, html[data-ypp-ui-style="woodblock"] ytd-thumbnail:hover {
+    filter: sepia(0.6) contrast(1.3) !important; transform: scale(1.03) !important;
+}
+html[data-ypp-card-style="woodblock"] yt-image, html[data-ypp-ui-style="woodblock"] yt-image {
+    border-radius: 0 !important; border: 4px solid #2f4f4f !important; filter: sepia(0.4) contrast(1.1) !important;
+}
+html[data-ypp-card-style="woodblock"] yt-image, html[data-ypp-ui-style="woodblock"] yt-image:hover {
+    filter: sepia(0.6) contrast(1.3) !important; transform: scale(1.03) !important;
+}
+
+/* Avatars */
+html[data-ypp-card-style="woodblock"] yt-img-shadow, html[data-ypp-ui-style="woodblock"] yt-img-shadow {
+    border-radius: 0 !important; border: 4px solid #2f4f4f !important; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important; box-shadow: 4px 4px 0px #8b0000 !important;
+}
+html[data-ypp-card-style="woodblock"] yt-img-shadow, html[data-ypp-ui-style="woodblock"] yt-img-shadow:hover {
+    transform: scale(1.05) !important; box-shadow: 6px 6px 0px #daa520 !important;
+}
+html[data-ypp-card-style="woodblock"] .yt-spec-avatar-shape__image, html[data-ypp-ui-style="woodblock"] .yt-spec-avatar-shape__image {
+    border-radius: 0 !important; border: 4px solid #2f4f4f !important; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important; box-shadow: 4px 4px 0px #8b0000 !important;
+}
+html[data-ypp-card-style="woodblock"] .yt-spec-avatar-shape__image, html[data-ypp-ui-style="woodblock"] .yt-spec-avatar-shape__image:hover {
+    transform: scale(1.05) !important; box-shadow: 6px 6px 0px #daa520 !important;
+}
+
+/* Buttons & Chips */
+html[data-ypp-card-style="woodblock"] yt-button-shape button, html[data-ypp-ui-style="woodblock"] yt-button-shape button {
+    border-radius: 0 !important; border: 3px solid #2f4f4f !important; background: #daa520 !important; color: #1a0a00 !important; font-weight: 900 !important; box-shadow: 4px 4px 0 #8b0000 !important;
+    transition: all 0.3s ease !important;
+}
+html[data-ypp-card-style="woodblock"] yt-button-shape button, html[data-ypp-ui-style="woodblock"] yt-button-shape button:hover {
+    transform: translate(-2px, -2px) !important; box-shadow: 6px 6px 0 #2f4f4f !important; background: #fff8dc !important;
+}
+html[data-ypp-card-style="woodblock"] .yt-spec-button-shape-next, html[data-ypp-ui-style="woodblock"] .yt-spec-button-shape-next {
+    border-radius: 0 !important; border: 3px solid #2f4f4f !important; background: #daa520 !important; color: #1a0a00 !important; font-weight: 900 !important; box-shadow: 4px 4px 0 #8b0000 !important;
+    transition: all 0.3s ease !important;
+}
+html[data-ypp-card-style="woodblock"] .yt-spec-button-shape-next, html[data-ypp-ui-style="woodblock"] .yt-spec-button-shape-next:hover {
+    transform: translate(-2px, -2px) !important; box-shadow: 6px 6px 0 #2f4f4f !important; background: #fff8dc !important;
+}
+html[data-ypp-card-style="woodblock"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-style="woodblock"] yt-chip-cloud-chip-renderer {
+    border-radius: 0 !important; border: 3px solid #2f4f4f !important; background: #daa520 !important; color: #1a0a00 !important; font-weight: 900 !important; box-shadow: 4px 4px 0 #8b0000 !important;
+    transition: all 0.3s ease !important;
+}
+html[data-ypp-card-style="woodblock"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-style="woodblock"] yt-chip-cloud-chip-renderer:hover {
+    transform: translate(-2px, -2px) !important; box-shadow: 6px 6px 0 #2f4f4f !important; background: #fff8dc !important;
+}
+
+/* Scrollbars */
+html[data-ypp-card-style="woodblock"] ::-webkit-scrollbar, html[data-ypp-ui-style="woodblock"] ::-webkit-scrollbar { width: 12px !important; }
+html[data-ypp-card-style="woodblock"] ::-webkit-scrollbar-track, html[data-ypp-ui-style="woodblock"] ::-webkit-scrollbar-track {
+    background: #f5e6c8 !important;
+}
+html[data-ypp-card-style="woodblock"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-style="woodblock"] ::-webkit-scrollbar-thumb {
+    background: #8b0000 !important; border: 2px solid #daa520 !important;
+}
+
+/* Progress bar */
+html[data-ypp-card-style="woodblock"] .ytp-play-progress, html[data-ypp-ui-style="woodblock"] .ytp-play-progress {
+    background: #8b0000 !important;
+}
+html[data-ypp-card-style="woodblock"] .ytp-scrubber-button, html[data-ypp-ui-style="woodblock"] .ytp-scrubber-button {
+    background: #daa520 !important; border: 3px solid #8b0000 !important; border-radius: 0 !important; transform: scale(1.8) !important;
+}
+
+/* Chip filters */
+html[data-ypp-card-style="woodblock"] yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"], html[data-ypp-ui-style="woodblock"] yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"] {
+    background: #ffe4b5 !important; border: 3px solid #2f4f4f !important; border-radius: 0 !important;
+}
+
+/* Comments styling */
+html[data-ypp-card-style="woodblock"] ytd-comment-view-model, html[data-ypp-ui-style="woodblock"] ytd-comment-view-model {
+    border-left: 6px solid #8b0000 !important; border-bottom: 2px solid #daa520 !important; padding: 12px !important; background: #fffaed !important;
+}
+
+/* woodblock Deep UI Ruleset 1 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-1, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-1 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 2 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-2, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-2 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 3 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-3, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-3 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 4 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-4, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-4 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 5 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-5, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-5 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 6 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-6, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-6 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 7 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-7, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-7 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 8 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-8, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-8 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 9 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-9, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-9 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 10 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-10, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-10 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 11 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-11, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-11 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 12 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-12, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-12 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 13 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-13, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-13 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 14 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-14, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-14 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 15 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-15, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-15 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 16 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-16, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-16 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 17 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-17, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-17 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 18 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-18, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-18 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 19 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-19, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-19 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 20 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-20, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-20 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 21 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-21, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-21 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 22 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-22, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-22 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 23 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-23, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-23 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 24 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-24, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-24 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 25 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-25, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-25 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 26 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-26, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-26 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 27 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-27, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-27 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 28 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-28, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-28 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 29 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-29, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-29 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 30 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-30, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-30 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 31 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-31, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-31 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 32 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-32, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-32 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 33 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-33, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-33 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 34 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-34, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-34 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 35 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-35, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-35 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 36 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-36, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-36 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 37 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-37, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-37 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 38 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-38, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-38 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 39 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-39, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-39 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 40 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-40, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-40 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 41 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-41, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-41 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 42 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-42, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-42 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 43 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-43, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-43 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 44 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-44, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-44 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 45 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-45, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-45 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 46 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-46, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-46 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 47 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-47, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-47 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 48 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-48, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-48 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 49 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-49, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-49 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 50 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-50, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-50 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 51 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-51, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-51 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 52 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-52, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-52 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 53 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-53, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-53 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 54 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-54, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-54 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 55 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-55, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-55 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 56 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-56, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-56 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 57 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-57, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-57 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 58 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-58, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-58 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 59 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-59, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-59 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 60 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-60, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-60 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 61 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-61, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-61 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 62 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-62, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-62 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 63 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-63, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-63 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 64 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-64, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-64 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 65 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-65, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-65 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 66 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-66, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-66 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 67 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-67, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-67 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 68 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-68, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-68 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 69 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-69, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-69 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 70 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-70, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-70 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 71 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-71, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-71 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 72 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-72, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-72 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 73 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-73, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-73 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 74 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-74, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-74 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 75 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-75, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-75 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 76 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-76, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-76 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 77 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-77, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-77 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 78 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-78, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-78 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 79 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-79, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-79 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 80 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-80, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-80 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 81 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-81, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-81 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 82 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-82, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-82 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 83 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-83, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-83 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 84 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-84, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-84 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 85 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-85, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-85 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 86 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-86, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-86 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 87 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-87, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-87 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 88 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-88, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-88 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 89 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-89, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-89 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 90 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-90, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-90 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 91 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-91, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-91 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 92 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-92, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-92 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 93 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-93, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-93 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 94 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-94, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-94 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 95 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-95, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-95 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 96 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-96, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-96 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 97 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-97, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-97 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 98 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-98, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-98 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 99 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-99, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-99 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 100 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-100, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-100 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 101 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-101, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-101 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 102 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-102, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-102 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 103 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-103, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-103 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 104 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-104, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-104 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 105 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-105, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-105 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 106 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-106, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-106 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 107 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-107, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-107 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 108 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-108, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-108 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 109 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-109, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-109 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 110 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-110, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-110 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 111 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-111, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-111 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 112 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-112, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-112 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 113 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-113, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-113 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 114 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-114, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-114 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 115 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-115, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-115 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 116 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-116, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-116 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 117 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-117, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-117 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 118 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-118, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-118 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 119 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-119, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-119 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 120 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-120, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-120 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 121 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-121, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-121 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 122 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-122, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-122 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 123 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-123, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-123 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 124 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-124, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-124 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 125 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-125, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-125 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 126 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-126, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-126 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 127 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-127, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-127 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 128 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-128, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-128 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 129 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-129, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-129 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 130 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-130, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-130 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 131 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-131, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-131 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 132 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-132, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-132 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 133 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-133, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-133 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 134 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-134, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-134 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 135 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-135, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-135 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 136 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-136, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-136 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 137 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-137, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-137 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 138 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-138, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-138 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 139 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-139, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-139 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 140 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-140, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-140 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 141 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-141, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-141 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 142 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-142, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-142 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 143 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-143, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-143 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 144 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-144, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-144 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 145 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-145, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-145 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 146 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-146, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-146 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 147 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-147, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-147 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 148 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-148, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-148 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 149 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-149, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-149 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 150 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-150, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-150 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 151 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-151, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-151 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 152 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-152, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-152 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 153 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-153, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-153 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 154 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-154, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-154 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 155 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-155, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-155 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 156 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-156, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-156 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 157 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-157, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-157 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 158 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-158, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-158 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 159 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-159, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-159 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 160 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-160, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-160 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 161 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-161, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-161 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 162 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-162, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-162 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 163 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-163, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-163 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 164 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-164, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-164 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 165 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-165, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-165 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 166 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-166, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-166 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 167 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-167, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-167 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 168 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-168, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-168 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 169 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-169, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-169 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 170 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-170, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-170 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 171 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-171, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-171 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 172 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-172, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-172 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 173 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-173, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-173 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 174 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-174, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-174 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 175 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-175, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-175 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 176 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-176, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-176 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 177 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-177, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-177 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 178 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-178, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-178 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 179 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-179, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-179 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 180 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-180, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-180 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 181 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-181, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-181 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 182 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-182, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-182 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 183 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-183, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-183 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 184 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-184, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-184 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 185 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-185, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-185 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 186 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-186, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-186 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 187 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-187, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-187 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 188 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-188, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-188 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 189 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-189, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-189 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 190 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-190, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-190 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 191 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-191, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-191 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 192 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-192, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-192 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 193 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-193, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-193 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 194 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-194, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-194 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 195 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-195, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-195 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 196 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-196, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-196 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 197 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-197, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-197 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 198 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-198, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-198 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 199 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-199, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-199 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 200 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-200, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-200 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 201 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-201, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-201 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 202 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-202, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-202 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 203 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-203, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-203 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 204 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-204, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-204 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 205 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-205, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-205 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 206 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-206, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-206 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 207 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-207, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-207 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 208 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-208, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-208 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 209 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-209, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-209 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 210 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-210, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-210 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 211 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-211, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-211 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 212 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-212, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-212 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 213 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-213, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-213 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 214 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-214, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-214 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 215 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-215, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-215 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 216 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-216, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-216 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 217 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-217, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-217 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 218 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-218, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-218 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 219 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-219, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-219 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 220 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-220, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-220 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 221 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-221, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-221 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 222 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-222, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-222 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 223 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-223, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-223 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 224 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-224, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-224 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 225 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-225, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-225 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 226 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-226, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-226 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 227 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-227, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-227 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 228 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-228, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-228 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 229 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-229, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-229 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 230 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-230, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-230 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 231 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-231, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-231 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 232 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-232, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-232 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 233 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-233, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-233 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 234 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-234, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-234 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 235 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-235, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-235 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 236 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-236, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-236 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 237 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-237, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-237 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 238 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-238, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-238 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 239 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-239, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-239 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 240 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-240, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-240 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 241 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-241, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-241 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 242 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-242, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-242 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 243 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-243, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-243 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 244 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-244, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-244 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 245 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-245, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-245 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 246 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-246, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-246 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 247 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-247, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-247 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 248 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-248, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-248 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 249 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-249, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-249 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}
+/* woodblock Deep UI Ruleset 250 */
+html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-250, html[data-ypp-ui-style="woodblock"] .woodblock-lvl2-class-250 {
+    border-color: var(--woodblock-primary) !important;
+    border-radius: var(--woodblock-radius) !important;
+    box-shadow: var(--woodblock-shadow) !important;
+    background-color: var(--woodblock-bg) !important;
+    font-family: var(--woodblock-font) !important;
+    color: var(--woodblock-accent) !important;
+    transition: all 0.3s ease !important;
+}

@@ -70,7 +70,7 @@ html,
 .ytSearchboxComponentInputBox,
 ytd-searchbox #container {
   -webkit-backdrop-filter: blur(var(--blur)) !important;
-  -webkit-backdrop-filter: blur(var(--blur)) !important; backdrop-filter: blur(var(--blur)) !important;
+  backdrop-filter: blur(var(--blur)) !important;
   border-radius: 50px !important;
   background: var(--sf) !important;
   border: var(--ocean-border) !important;

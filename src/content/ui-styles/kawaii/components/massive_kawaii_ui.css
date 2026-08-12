@@ -371,7 +371,7 @@ html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom, html[data-ypp-ui-style="k
     padding: 10px 20px !important;
     border: 3px solid var(--kawaii-primary) !important;
     box-shadow: 0 6px 0 var(--kawaii-primary) !important;
-    -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 /* Specific Styling for .ytp-endscreen-content */

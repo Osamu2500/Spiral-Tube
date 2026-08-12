@@ -4,7 +4,7 @@ html[data-ypp-card-style="fluent"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="fluent"] ytd-masthead {
     background: var(--flu-surface) !important;
-    -webkit-backdrop-filter: blur(30px) saturate(200%) !important; backdrop-filter: blur(30px) saturate(200%) !important;
+    backdrop-filter: blur(30px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
     border: var(--flu-border) !important;
     border-top: var(--flu-border-top) !important;

@@ -6,7 +6,7 @@ html[data-ypp-theme="christmas"] ytd-mini-guide-renderer,
 html[data-ypp-theme="christmas"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
   background: var(--christmas-glass-bg) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important; backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
   border-right: 1px solid var(--christmas-glass-border) !important;
 }
 

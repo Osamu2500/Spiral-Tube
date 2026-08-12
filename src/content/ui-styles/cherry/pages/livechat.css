@@ -5,7 +5,7 @@
 html[data-ypp-ui-style="cherry"] yt-live-chat-renderer,
 html[data-ypp-ui-style="cherry"] yt-live-chat-header-renderer {
   background: var(--cherry-bg-mid) !important;
-  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: var(--cherry-border) !important;
   border-radius: var(--cherry-radius) !important;

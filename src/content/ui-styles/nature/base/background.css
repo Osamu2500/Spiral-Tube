@@ -1,7 +1,7 @@
 /* src/content/themes/ui-styles/nature/base/layout.css */
 html,
 [dark] body {
-  background-color: var(--nature-bg) !important;
+  background-color: #064e3b !important;
   background-image:
     radial-gradient(
       circle at 15% 50%,
@@ -56,10 +56,10 @@ html,
 }
 .ypp-organizer-modal,
 .ypp-modal-content {
-  background: var(--nature-surface) !important;
+  background: rgba(10, 10, 15, 0.65) !important;
   border: var(--nature-border) !important;
   border-radius: 24px 4px 24px 4px !important;
-  box-shadow: var(--nature-shadow) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 .ypp-modal-header {
   background: rgba(255, 255, 255, 0.03) !important;

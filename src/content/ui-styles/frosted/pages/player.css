@@ -1,7 +1,7 @@
 /* Frosted Player */
 html[data-ypp-card-style="frosted"] .ytp-chrome-bottom {
     background: var(--fro-glass-light) !important;
-    -webkit-backdrop-filter: blur(30px) saturate(200%) !important; backdrop-filter: blur(30px) saturate(200%) !important;
+    backdrop-filter: blur(30px) saturate(200%) !important;
     border: var(--fro-border-light) !important;
     border-radius: var(--fro-radius) !important;
     margin: 10px !important;

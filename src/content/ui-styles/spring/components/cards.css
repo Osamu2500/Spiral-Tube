@@ -3,7 +3,7 @@ html[data-ypp-card-style="spring"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ) {
-  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   background: var(--yt-spec-menu-background) !important;
   border-radius: var(--spring-radius) !important;
   border: 2px solid rgba(255, 175, 189, 0.2) !important;

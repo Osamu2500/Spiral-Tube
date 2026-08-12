@@ -7,7 +7,7 @@
 html[data-ypp-ui-style="frutiger-aero"] ytd-search-filter-group-renderer {
   background: var(--faero-glass-light) !important;
   -webkit-backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important; backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-md) !important;
   padding: 12px !important;
@@ -18,7 +18,7 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-search-filter-group-renderer {
 html[data-ypp-ui-style="frutiger-aero"] ytd-video-renderer {
   background: var(--faero-glass-medium) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
+  backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   padding: 12px !important;

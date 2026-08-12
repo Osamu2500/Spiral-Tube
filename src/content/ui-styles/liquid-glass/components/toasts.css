@@ -5,7 +5,7 @@
 /* Paper Toast (Bottom left notifications) */
 html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-toast {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important; backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: rgba(0, 0, 0, 0.65) !important; /* Darker background for contrast against videos */
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 20px !important;
@@ -32,7 +32,7 @@ html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-toast yt-button-shape button:
 /* Generic Tooltips */
 html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-tooltip .tooltip {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(255, 255, 255, 0.15) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
   border-radius: 12px !important;

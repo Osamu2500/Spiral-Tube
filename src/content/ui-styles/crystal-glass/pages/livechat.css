@@ -6,7 +6,7 @@
 html[data-ypp-ui-style="crystal-glass"] ytd-live-chat-frame {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-lg) !important; backdrop-filter: var(--cglass-blur-lg) !important;
+  backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   box-shadow: var(--cglass-shadow) !important;

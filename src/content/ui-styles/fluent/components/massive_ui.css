@@ -62,7 +62,7 @@ html[data-ypp-ui-style="fluent"] ytd-compact-video-renderer {
     padding: 12px !important;
     margin-bottom: 16px !important;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 
 html[data-ypp-card-style="fluent"] ytd-rich-item-renderer:hover,
@@ -105,7 +105,7 @@ html[data-ypp-ui-style="fluent"] yt-img-shadow:hover {
 html[data-ypp-card-style="fluent"] ytd-masthead, html[data-ypp-ui-style="fluent"] ytd-masthead {
     border-bottom: 1px solid rgba(255,255,255,0.1) !important;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 html[data-ypp-card-style="fluent"] #masthead-container, html[data-ypp-ui-style="fluent"] #masthead-container {
     padding-top: 0 !important;
@@ -184,7 +184,7 @@ html[data-ypp-ui-style="fluent"] ytd-comment-thread-renderer {
     box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 html[data-ypp-card-style="fluent"] #simplebox-placeholder, html[data-ypp-ui-style="fluent"] #simplebox-placeholder {
     border-radius: 8px !important;
@@ -201,7 +201,7 @@ html[data-ypp-ui-style="fluent"] .ytp-chrome-bottom {
     margin: 16px !important;
     width: calc(100% - 32px) !important;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 html[data-ypp-card-style="fluent"] .ytp-scrubber-button,
 html[data-ypp-ui-style="fluent"] .ytp-scrubber-button {
@@ -231,13 +231,13 @@ html[data-ypp-ui-style="fluent"] tp-yt-paper-dialog, html[data-ypp-ui-style="flu
     border: 1px solid rgba(255,255,255,0.1) !important;
     box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
     background: rgba(255,255,255,0.6) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer, html[data-ypp-ui-style="fluent"] ytd-multi-page-menu-renderer {
     border-radius: 8px !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
     background: rgba(255,255,255,0.6) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -253,7 +253,7 @@ html[data-ypp-ui-style="fluent"] #channel-header {
     margin: 16px !important;
     padding: 24px !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 
 /* 15. Subscribe & Primary Buttons */
@@ -343,7 +343,7 @@ html[data-ypp-card-style="fluent"] ytd-watch-metadata, html[data-ypp-ui-style="f
     padding: 16px !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 
 /* 22. SVG Icons (Thumb up, Share, Save) */
@@ -372,7 +372,7 @@ html[data-ypp-card-style="fluent"] ytd-miniplayer, html[data-ypp-ui-style="fluen
     border: 1px solid rgba(255,255,255,0.1) !important;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
     background: rgba(255,255,255,0.6) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
@@ -381,7 +381,7 @@ html[data-ypp-card-style="fluent"] .ytp-settings-menu, html[data-ypp-ui-style="f
     border: 1px solid rgba(255,255,255,0.1) !important;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
     background: rgba(255,255,255,0.6) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) saturate(150%) !important; -webkit-backdrop-filter: blur(20px) !important;
 }
 
 /* 26. Account Switcher & Profiles */

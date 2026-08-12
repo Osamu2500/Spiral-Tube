@@ -19,7 +19,7 @@ html[data-ypp-ui-style="liquid-glass"] #masthead-container {
 /* Masthead Container Pill */
 html[data-ypp-ui-style="liquid-glass"] ytd-masthead #container {
   -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
-  -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important; backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
+  backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
   background: var(--lg-shine-modal), rgba(255, 255, 255, 0.06) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -64,7 +64,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-topbar-logo-renderer:hover {
 /* Acrylic Search Bar Container */
 html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.06) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px 0 0 2000px !important;
@@ -95,7 +95,7 @@ html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox:focus-within::af
 
 html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   background: var(--lg-bg-level-2) !important;
   border: var(--lg-border-subtle) !important;
   border-left: none !important;
@@ -143,7 +143,7 @@ html[data-ypp-ui-style="liquid-glass"] tp-yt-app-drawer.ytd-app #contentContaine
 
 html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   border-radius: 2000px !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
@@ -166,7 +166,7 @@ html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer
 html[data-ypp-ui-style="liquid-glass"] yt-icon-badge-shape .badge {
   border-radius: 2000px !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   background: rgba(255, 255, 255, 0.85) !important;
   color: black !important;
 }
@@ -179,7 +179,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.y
 
 html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.08) !important;
@@ -193,7 +193,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-masthead #avatar-btn:hover yt-img-sha
 html[data-ypp-ui-style="liquid-glass"] tp-yt-app-drawer #drawer.tp-yt-app-drawer,
 html[data-ypp-ui-style="liquid-glass"] ytd-guide-renderer {
   -webkit-backdrop-filter: var(--lg-blur-panel) !important;
-  -webkit-backdrop-filter: var(--lg-blur-panel) !important; backdrop-filter: var(--lg-blur-panel) !important;
+  backdrop-filter: var(--lg-blur-panel) !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border-right: var(--lg-border-specular) !important;
   box-shadow: var(--lg-border-top-light), 4px 0 32px rgba(0, 0, 0, 0.4) !important;
@@ -221,7 +221,7 @@ html[data-ypp-ui-style="liquid-glass"] yt-page-navigation-progress,
 html[data-ypp-ui-style="liquid-glass"] #ticker.ytd-app,
 html[data-ypp-ui-style="liquid-glass"] ytd-app > div.style-scope.ytd-app {
   background: transparent !important;
-  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  backdrop-filter: none !important;
   box-shadow: none !important;
   border: none !important;
 }
@@ -249,65 +249,4 @@ html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono button.y
   background: rgba(255, 255, 255, 0.14) !important;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.08) !important;
-}
-
-/* Navbar Overhaul for liquid-glass */
-html[data-ypp-ui-style="liquid-glass"] #masthead-container,
-html[data-ypp-ui-style="liquid-glass"] ytd-masthead {
-background: linear-gradient(to right, rgba(0,0,0,0.9), hsl(171, 80%, 55%)88) !important; border: none !important; border-top: none !important; border-bottom: none !important; backdrop-filter: blur(12px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] ytd-topbar-logo-renderer {
-filter: drop-shadow(2px 2px 4px hsl(171, 80%, 55%)) hue-rotate(171deg) saturate(2) !important; transition: transform 0.3s !important;
-}
-html[data-ypp-ui-style="liquid-glass"] ytd-topbar-logo-renderer:hover {
-transform: scale(1.08) rotate(-4deg) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox,
-html[data-ypp-ui-style="liquid-glass"] ytd-searchbox {
-border-radius: 10px 30px 10px 30px !important; border: 1px double hsl(171, 80%, 55%) !important; background: rgba(10,10,10,0.6) !important; box-shadow: inset 0 0 10px hsl(342, 70%, 45%)66 !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #search-input input {
-font-family: 'Arial Black', sans-serif !important; color: hsl(171, 80%, 55%) !important; font-weight: bold !important; letter-spacing: 1px !important; text-shadow: 1px 1px 2px hsl(342, 70%, 45%)88 !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy {
-background: hsl(342, 70%, 45%)33 !important; border-radius: 0 10px 30px 10px 30px 10px 30px 10px 30px 0 !important; border: none !important; border-left: 1px double hsl(171, 80%, 55%) !important; transition: all 0.3s !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy:hover {
-background: hsl(171, 80%, 55%)88 !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy yt-icon {
-color: #ffffff !important; filter: drop-shadow(0 0 2px hsl(171, 80%, 55%)) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #voice-search-button {
-background: hsl(342, 70%, 45%)44 !important; border-radius: 10px 30px 10px 30px !important; border: 1px double hsl(171, 80%, 55%) !important; color: #fff !important; box-shadow: 0 0 8px hsl(171, 80%, 55%)88 !important; transition: transform 0.2s !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #voice-search-button:hover {
-transform: scale(1.1) !important; background: hsl(171, 80%, 55%)66 !important;
-}
-html[data-ypp-ui-style="liquid-glass"] .sbdd_b,
-html[data-ypp-ui-style="liquid-glass"] .sbsb_a {
-border-radius: 10px 30px 10px 30px !important; border: 1px double hsl(171, 80%, 55%) !important; background: rgba(15,15,20,0.95) !important; backdrop-filter: blur(20px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] .sbsb_c {
-color: #e0e0e0 !important; font-family: 'Arial Black', sans-serif !important; transition: all 0.2s !important;
-}
-html[data-ypp-ui-style="liquid-glass"] .sbsb_c:hover {
-background: hsl(342, 70%, 45%)55 !important; color: hsl(171, 80%, 55%) !important; padding-left: 20px !important; font-weight: bold !important; box-shadow: inset 4px 0 0 hsl(171, 80%, 55%) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] ytd-topbar-menu-button-renderer yt-icon-button,
-html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer yt-icon-button {
-background: hsl(342, 70%, 45%)22 !important; border-radius: 10px 30px 10px 30px !important; border: 1px double hsl(171, 80%, 55%) !important; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
-background: hsl(171, 80%, 55%)66 !important; color: #fff !important; transform: translateY(-4px) scale(1.1) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #avatar-btn yt-img-shadow {
-border-radius: 10px 30px 10px 30px !important; border: 1px double hsl(171, 80%, 55%) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; padding: 2px !important; background: hsl(342, 70%, 45%)44 !important; transition: transform 0.4s !important;
-}
-html[data-ypp-ui-style="liquid-glass"] #avatar-btn yt-img-shadow:hover {
-transform: rotate(171deg) scale(1.15) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-border-radius: 10px 30px 10px 30px !important; border: 1px double hsl(171, 80%, 55%) !important; background: rgba(10,10,15,0.95) !important; backdrop-filter: blur(25px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }

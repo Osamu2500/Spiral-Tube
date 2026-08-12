@@ -9,7 +9,7 @@
 html[data-ypp-ui-style="frutiger-aero"] #ytd-player {
   background: var(--faero-glass-heavy) !important;
   -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
-  -webkit-backdrop-filter: var(--faero-blur-heavy) !important; backdrop-filter: var(--faero-blur-heavy) !important;
+  backdrop-filter: var(--faero-blur-heavy) !important;
   border: var(--faero-border-white) !important;
   border-top: var(--faero-border-white2) !important;
   border-radius: var(--faero-radius-lg) !important;
@@ -29,7 +29,7 @@ html[data-ypp-ui-style="frutiger-aero"] .html5-video-player {
 html[data-ypp-ui-style="frutiger-aero"] .ytp-bezel {
   background: var(--faero-glass-heavy) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border: var(--faero-border-white) !important;
   border-radius: 50% !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.9) !important;
@@ -49,7 +49,7 @@ html[data-ypp-ui-style="frutiger-aero"] .ytp-gradient-bottom {
 html[data-ypp-ui-style="frutiger-aero"] .ytp-popup {
   background: var(--faero-glass-heavy) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-md) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;

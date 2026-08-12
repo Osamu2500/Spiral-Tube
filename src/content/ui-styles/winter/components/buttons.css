@@ -10,7 +10,7 @@ html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--outline,
 html[data-ypp-card-style="winter"] .yt-spec-button-shape-next--mono {
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
     color: #ffffff !important;
     border: 1px solid rgba(180, 230, 255, 0.4) !important;
     border-radius: 24px !important;

@@ -62,7 +62,7 @@ html[data-ypp-ui-style="holographic"] ytd-compact-video-renderer {
     padding: 12px !important;
     margin-bottom: 16px !important;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 html[data-ypp-card-style="holographic"] ytd-rich-item-renderer:hover,
@@ -105,7 +105,7 @@ html[data-ypp-ui-style="holographic"] yt-img-shadow:hover {
 html[data-ypp-card-style="holographic"] ytd-masthead, html[data-ypp-ui-style="holographic"] ytd-masthead {
     border-bottom: 1px solid rgba(128,128,128,0.2) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 html[data-ypp-card-style="holographic"] #masthead-container, html[data-ypp-ui-style="holographic"] #masthead-container {
     padding-top: 0 !important;
@@ -184,7 +184,7 @@ html[data-ypp-ui-style="holographic"] ytd-comment-thread-renderer {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
     padding: 16px !important;
     margin-bottom: 20px !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 html[data-ypp-card-style="holographic"] #simplebox-placeholder, html[data-ypp-ui-style="holographic"] #simplebox-placeholder {
     border-radius: 12px !important;
@@ -201,7 +201,7 @@ html[data-ypp-ui-style="holographic"] .ytp-chrome-bottom {
     margin: 16px !important;
     width: calc(100% - 32px) !important;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 html[data-ypp-card-style="holographic"] .ytp-scrubber-button,
 html[data-ypp-ui-style="holographic"] .ytp-scrubber-button {
@@ -231,13 +231,13 @@ html[data-ypp-ui-style="holographic"] tp-yt-paper-dialog, html[data-ypp-ui-style
     border: 1px solid rgba(128,128,128,0.2) !important;
     box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
     background: var(--yt-spec-raised-background) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 html[data-ypp-card-style="holographic"] ytd-multi-page-menu-renderer, html[data-ypp-ui-style="holographic"] ytd-multi-page-menu-renderer {
     border-radius: 12px !important;
     border: 1px solid rgba(128,128,128,0.2) !important;
     background: var(--yt-spec-raised-background) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -253,7 +253,7 @@ html[data-ypp-ui-style="holographic"] #channel-header {
     margin: 16px !important;
     padding: 24px !important;
     border: 1px solid rgba(128,128,128,0.2) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 /* 15. Subscribe & Primary Buttons */
@@ -343,7 +343,7 @@ html[data-ypp-card-style="holographic"] ytd-watch-metadata, html[data-ypp-ui-sty
     padding: 16px !important;
     border: 1px solid rgba(128,128,128,0.2) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 /* 22. SVG Icons (Thumb up, Share, Save) */
@@ -372,7 +372,7 @@ html[data-ypp-card-style="holographic"] ytd-miniplayer, html[data-ypp-ui-style="
     border: 1px solid rgba(128,128,128,0.2) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
     background: var(--yt-spec-raised-background) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
@@ -381,7 +381,7 @@ html[data-ypp-card-style="holographic"] .ytp-settings-menu, html[data-ypp-ui-sty
     border: 1px solid rgba(128,128,128,0.2) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
     background: var(--yt-spec-raised-background) !important;
-    -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important; backdrop-filter: blur(5px) hue-rotate(90deg) !important;
+    backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 /* 26. Account Switcher & Profiles */

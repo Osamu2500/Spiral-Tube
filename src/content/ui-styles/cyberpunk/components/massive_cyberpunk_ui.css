@@ -286,7 +286,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer, html[data-yp
     border: 2px solid var(--cyber-primary) !important;
     box-shadow: var(--cyber-shadow-glitch) !important;
     clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
-    -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 /* Specific Styling for ytd-menu-popup-renderer */
@@ -296,7 +296,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer, html[data-ypp-ui-
     border: 2px solid var(--cyber-primary) !important;
     box-shadow: var(--cyber-shadow-glitch) !important;
     clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
-    -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 /* Specific Styling for tp-yt-paper-dialog */
@@ -306,7 +306,7 @@ html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-ui-style
     border: 2px solid var(--cyber-primary) !important;
     box-shadow: var(--cyber-shadow-glitch) !important;
     clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
-    -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 /* Specific Styling for ytd-notification-renderer */
@@ -441,7 +441,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-miniplayer, html[data-ypp-ui-style="cy
     border: 2px solid var(--cyber-primary) !important;
     box-shadow: var(--cyber-shadow-glitch) !important;
     clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
-    -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 /* Specific Styling for .ytp-settings-menu */
@@ -451,7 +451,7 @@ html[data-ypp-card-style="cyberpunk"] .ytp-settings-menu, html[data-ypp-ui-style
     border: 2px solid var(--cyber-primary) !important;
     box-shadow: var(--cyber-shadow-glitch) !important;
     clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
-    -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 /* Specific Styling for .ytp-chrome-bottom */

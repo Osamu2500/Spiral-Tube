@@ -4,7 +4,7 @@ html[data-ypp-ui-style="harry-potter"] #masthead-container,
 html[data-ypp-ui-style="harry-potter"] #container.ytd-masthead,
 html[data-ypp-ui-style="harry-potter"] ytd-masthead {
   -webkit-backdrop-filter: blur(24px) saturate(1.15) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.15) !important; backdrop-filter: blur(24px) saturate(1.15) !important;
+  backdrop-filter: blur(24px) saturate(1.15) !important;
   background: rgba(8, 9, 13, 0.97) !important;
   border-bottom: 1px solid rgba(120, 100, 60, 0.35) !important;
   box-shadow:
@@ -374,63 +374,3 @@ html[data-ypp-ui-style="harry-potter"] #buttons ytd-button-renderer button:activ
   animation: ypp-wand-cast-spark 0.35s ease-out !important;
 }
 
-/* Navbar Overhaul for harry-potter */
-html[data-ypp-ui-style="harry-potter"] #masthead-container,
-html[data-ypp-ui-style="harry-potter"] ytd-masthead {
-background: linear-gradient(to right, rgba(0,0,0,0.9), hsl(153, 80%, 55%)88) !important; border: none !important; border-top: none !important; border-bottom: none !important; backdrop-filter: blur(12px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="harry-potter"] ytd-topbar-logo-renderer {
-filter: drop-shadow(2px 2px 4px hsl(153, 80%, 55%)) hue-rotate(153deg) saturate(2) !important; transition: transform 0.3s !important;
-}
-html[data-ypp-ui-style="harry-potter"] ytd-topbar-logo-renderer:hover {
-transform: scale(1.08) rotate(-2deg) !important;
-}
-html[data-ypp-ui-style="harry-potter"] #container.ytd-searchbox,
-html[data-ypp-ui-style="harry-potter"] ytd-searchbox {
-border-radius: 12px !important; border: 1px dashed hsl(153, 80%, 55%) !important; background: rgba(10,10,10,0.6) !important; box-shadow: inset 0 0 10px hsl(306, 70%, 45%)66 !important;
-}
-html[data-ypp-ui-style="harry-potter"] #search-input input {
-font-family: 'Trebuchet MS', sans-serif !important; color: hsl(153, 80%, 55%) !important; font-weight: bold !important; letter-spacing: 1px !important; text-shadow: 1px 1px 2px hsl(306, 70%, 45%)88 !important;
-}
-html[data-ypp-ui-style="harry-potter"] #search-icon-legacy {
-background: hsl(306, 70%, 45%)33 !important; border-radius: 0 12px 12px 0 !important; border: none !important; border-left: 1px dashed hsl(153, 80%, 55%) !important; transition: all 0.3s !important;
-}
-html[data-ypp-ui-style="harry-potter"] #search-icon-legacy:hover {
-background: hsl(153, 80%, 55%)88 !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="harry-potter"] #search-icon-legacy yt-icon {
-color: #ffffff !important; filter: drop-shadow(0 0 2px hsl(153, 80%, 55%)) !important;
-}
-html[data-ypp-ui-style="harry-potter"] #voice-search-button {
-background: hsl(306, 70%, 45%)44 !important; border-radius: 12px !important; border: 1px dashed hsl(153, 80%, 55%) !important; color: #fff !important; box-shadow: 0 0 8px hsl(153, 80%, 55%)88 !important; transition: transform 0.2s !important;
-}
-html[data-ypp-ui-style="harry-potter"] #voice-search-button:hover {
-transform: scale(1.1) !important; background: hsl(153, 80%, 55%)66 !important;
-}
-html[data-ypp-ui-style="harry-potter"] .sbdd_b,
-html[data-ypp-ui-style="harry-potter"] .sbsb_a {
-border-radius: 12px !important; border: 1px dashed hsl(153, 80%, 55%) !important; background: rgba(15,15,20,0.95) !important; backdrop-filter: blur(20px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="harry-potter"] .sbsb_c {
-color: #e0e0e0 !important; font-family: 'Trebuchet MS', sans-serif !important; transition: all 0.2s !important;
-}
-html[data-ypp-ui-style="harry-potter"] .sbsb_c:hover {
-background: hsl(306, 70%, 45%)55 !important; color: hsl(153, 80%, 55%) !important; padding-left: 20px !important; font-weight: bold !important; box-shadow: inset 4px 0 0 hsl(153, 80%, 55%) !important;
-}
-html[data-ypp-ui-style="harry-potter"] ytd-topbar-menu-button-renderer yt-icon-button,
-html[data-ypp-ui-style="harry-potter"] ytd-notification-topbar-button-renderer yt-icon-button {
-background: hsl(306, 70%, 45%)22 !important; border-radius: 12px !important; border: 1px dashed hsl(153, 80%, 55%) !important; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
-html[data-ypp-ui-style="harry-potter"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
-html[data-ypp-ui-style="harry-potter"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
-background: hsl(153, 80%, 55%)66 !important; color: #fff !important; transform: translateY(-4px) scale(1.1) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-html[data-ypp-ui-style="harry-potter"] #avatar-btn yt-img-shadow {
-border-radius: 12px !important; border: 1px dashed hsl(153, 80%, 55%) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important; padding: 2px !important; background: hsl(306, 70%, 45%)44 !important; transition: transform 0.4s !important;
-}
-html[data-ypp-ui-style="harry-potter"] #avatar-btn yt-img-shadow:hover {
-transform: rotate(153deg) scale(1.15) !important;
-}
-html[data-ypp-ui-style="harry-potter"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-border-radius: 12px !important; border: 1px dashed hsl(153, 80%, 55%) !important; background: rgba(10,10,15,0.95) !important; backdrop-filter: blur(25px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}

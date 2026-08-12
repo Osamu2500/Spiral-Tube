@@ -3,7 +3,7 @@ html[data-ypp-card-style="spring"] tp-yt-paper-dialog,
 html[data-ypp-card-style="spring"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="spring"] ytd-multi-page-menu-renderer {
     background: var(--yt-spec-menu-background) !important;
-    -webkit-backdrop-filter: blur(20px) !important; backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
     border: 2px solid rgba(255, 175, 189, 0.3) !important;
     border-radius: var(--spring-radius) !important;
     box-shadow: var(--spring-shadow) !important;

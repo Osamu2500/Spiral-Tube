@@ -1,36 +1,3 @@
-/* Combined Nature & Forest Tokens */
-html[data-ypp-ui-style="nature"] {
-  --nature-bg: #e8f5e9 !important;
-  --nature-surface: #ffffff !important;
-  --nature-primary: #1b5e20 !important;
-  --nature-secondary: #388e3c !important;
-  --nature-accent: #81c784 !important;
-  --nature-border: 1px solid rgba(27, 94, 32, 0.15) !important;
-  --nature-radius: 4px 24px 4px 24px !important; /* Organic leaf shape from forest */
-  --nature-shadow: 0 4px 20px rgba(27, 94, 32, 0.08) !important;
-  
-  --yt-spec-text-primary: var(--nature-primary) !important;
-  --yt-spec-text-secondary: var(--nature-secondary) !important;
-  --yt-spec-base-background: var(--nature-bg) !important;
-  --yt-spec-menu-background: var(--nature-surface) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  html[data-ypp-ui-style="nature"] {
-    --nature-bg: #0b1f10 !important;
-    --nature-surface: #14361b !important;
-    --nature-primary: #c8e6c9 !important;
-    --nature-secondary: #81c784 !important;
-    --nature-border: 1px solid rgba(200, 230, 201, 0.1) !important;
-    --nature-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
-    
-    --yt-spec-text-primary: var(--nature-primary) !important;
-    --yt-spec-text-secondary: var(--nature-secondary) !important;
-    --yt-spec-base-background: var(--nature-bg) !important;
-    --yt-spec-menu-background: var(--nature-surface) !important;
-  }
-}
-
 * {
   font-family:
     "SF Pro Text",

@@ -6,7 +6,7 @@
 html[data-ypp-ui-style="crystal-glass"] yt-chip-cloud-chip-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
   color: var(--cglass-text-primary) !important;
@@ -34,7 +34,7 @@ html[data-ypp-ui-style="crystal-glass"] yt-chip-cloud-chip-renderer[chip-style="
 html[data-ypp-ui-style="crystal-glass"] ytd-feed-filter-chip-bar-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-md) !important; backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
   border-bottom: var(--cglass-border) !important;
   border-radius: 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg) !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
@@ -45,7 +45,7 @@ html[data-ypp-ui-style="crystal-glass"] #left-arrow button,
 html[data-ypp-ui-style="crystal-glass"] #right-arrow button {
   background: var(--cglass-base-heavy) !important;
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-md) !important; backdrop-filter: var(--cglass-blur-md) !important;
+  backdrop-filter: var(--cglass-blur-md) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: 50% !important;
   box-shadow: var(--cglass-shadow-hover) !important;
@@ -59,7 +59,7 @@ html[data-ypp-ui-style="crystal-glass"] #right-arrow button:hover {
 html[data-ypp-ui-style="crystal-glass"] ytd-rich-shelf-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   padding: 16px !important;

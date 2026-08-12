@@ -10,7 +10,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-playlist-panel-video-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-video-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-grid-video-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.14) !important;
@@ -81,7 +81,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-grid-video-renderer:hover yt-avatar-s
 html[data-ypp-ui-style="liquid-glass"] span.ytd-thumbnail-overlay-time-status-renderer,
 html[data-ypp-ui-style="liquid-glass"] .yt-badge-shape--thumbnail-default {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(0, 0, 0, 0.45) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 8px !important;
@@ -98,7 +98,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-rich-grid-slim-media #dismissible,
 html[data-ypp-ui-style="liquid-glass"] ytd-reel-item-renderer #dismissible {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border-radius: 20px !important;
   border: none !important;
@@ -179,7 +179,7 @@ html[data-ypp-ui-style="liquid-glass"] .immersive-header-container.ytd-playlist-
 
 html[data-ypp-ui-style="liquid-glass"] ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
   border-radius: 24px !important;
   border: var(--lg-border-specular) !important;

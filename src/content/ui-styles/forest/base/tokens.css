@@ -1,0 +1,27 @@
+/* Forest Tokens */
+html[data-ypp-card-style="forest"] {
+  --for-bg: #e8f5e9 !important;
+  --for-surface: #ffffff !important;
+  --for-primary: #1b5e20 !important;
+  --for-secondary: #388e3c !important;
+  --for-accent: #81c784 !important;
+  --for-border: 1px solid rgba(27, 94, 32, 0.15) !important;
+  --for-radius: 4px 24px 4px 24px !important; /* Organic leaf shape */
+  --for-shadow: 0 4px 20px rgba(27, 94, 32, 0.08) !important;
+  
+  --yt-spec-text-primary: var(--for-primary) !important;
+  --yt-spec-text-secondary: var(--for-secondary) !important;
+  --yt-spec-base-background: var(--for-bg) !important;
+  --yt-spec-menu-background: var(--for-surface) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-ypp-card-style="forest"] {
+    --for-bg: #0b1f10 !important;
+    --for-surface: #14361b !important;
+    --for-primary: #c8e6c9 !important;
+    --for-secondary: #81c784 !important;
+    --for-border: 1px solid rgba(200, 230, 201, 0.1) !important;
+    --for-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+  }
+}

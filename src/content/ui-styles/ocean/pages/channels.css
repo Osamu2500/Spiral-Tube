@@ -11,7 +11,7 @@ yt-img-shadow.ytd-comment-view-model,
 yt-img-shadow.ytd-channel-name,
 yt-img-shadow.ytd-video-owner-renderer {
   -webkit-backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   border-radius: 50% !important;
   border: 2px solid rgba(0, 188, 212, 0.4) !important;
   box-shadow: 0 0 12px rgba(0, 188, 212, 0.2);

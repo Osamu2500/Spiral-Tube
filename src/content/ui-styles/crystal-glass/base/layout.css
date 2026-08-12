@@ -24,7 +24,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytSearchboxComponentSuggestionsContaine
 html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
   padding: 0 10px !important;
@@ -36,7 +36,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .
 html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
   margin: 0 8px !important;
@@ -47,7 +47,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-v
 html[data-ypp-ui-style="crystal-glass"] .ytPlayerProgressBarDragContainer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
   margin-left: 15px !important;
@@ -72,7 +72,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytProgressBarLineProgressBarLoaded {
 html[data-ypp-ui-style="crystal-glass"] .ypp-nav-btn.active {
   background: var(--cglass-base-heavy) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border-heavy) !important;
   box-shadow: var(--cglass-shadow-inner) !important;
   border-radius: var(--cglass-radius-md) !important;

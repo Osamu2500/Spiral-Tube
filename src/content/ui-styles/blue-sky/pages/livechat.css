@@ -7,7 +7,7 @@
 html[data-ypp-theme="blue-sky"] yt-live-chat-renderer,
 html[data-ypp-theme="blue-sky"] ytd-live-chat-frame {
   background: rgba(230, 245, 255, 0.60) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;
@@ -17,7 +17,7 @@ html[data-ypp-theme="blue-sky"] ytd-live-chat-frame {
 /* ── Chat header ── */
 html[data-ypp-theme="blue-sky"] yt-live-chat-header-renderer {
   background: rgba(255, 255, 255, 0.55) !important;
-  -webkit-backdrop-filter: blur(15px) !important; backdrop-filter: blur(15px) !important;
+  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
   border-bottom: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) var(--sky-shape-chip) 0 0 !important;
@@ -46,7 +46,7 @@ html[data-ypp-theme="blue-sky"] yt-live-chat-text-message-renderer #message {
 html[data-ypp-theme="blue-sky"] #input-container,
 html[data-ypp-theme="blue-sky"] yt-live-chat-text-input-field-renderer {
   background: rgba(255, 255, 255, 0.65) !important;
-  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;

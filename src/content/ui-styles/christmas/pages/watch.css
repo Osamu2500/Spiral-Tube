@@ -23,7 +23,7 @@ html[data-ypp-theme="christmas"] ytd-compact-video-renderer:hover {
 html[data-ypp-theme="christmas"] #secondary-inner.ytd-watch-flexy {
   background: var(--christmas-glass-bg) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border-radius: var(--christmas-r-lg) !important;
   border: 1px solid var(--christmas-glass-border) !important;
   padding: 16px !important;

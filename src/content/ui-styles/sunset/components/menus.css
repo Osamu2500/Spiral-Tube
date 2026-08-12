@@ -7,6 +7,6 @@ html[data-ypp-card-style="sunset"] ytd-masthead {
     border: var(--sun-border) !important;
     border-radius: var(--sun-radius) !important;
     box-shadow: var(--sun-shadow) !important;
-    -webkit-backdrop-filter: blur(15px) !important; backdrop-filter: blur(15px) !important;
+    backdrop-filter: blur(15px) !important;
 }
 html[data-ypp-card-style="sunset"] ytd-masthead { border-radius: 0 0 24px 24px !important; }

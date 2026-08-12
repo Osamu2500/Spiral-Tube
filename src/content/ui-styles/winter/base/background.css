@@ -39,7 +39,7 @@ html[data-ypp-card-style="winter"] .ytd-ghost-grid-renderer > div,
 html[data-ypp-card-style="winter"] .skeleton-bg-color {
     animation: winter-pulse 2s infinite ease-in-out !important;
     border-radius: 12px !important;
-    -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 

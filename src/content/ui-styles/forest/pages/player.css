@@ -1,0 +1,15 @@
+/* Forest Player */
+html[data-ypp-card-style="forest"] .ytp-chrome-bottom {
+    background: var(--for-surface) !important;
+    border: var(--for-border) !important;
+    border-radius: var(--for-radius) !important;
+    margin: 12px !important;
+    width: calc(100% - 24px) !important;
+}
+html[data-ypp-card-style="forest"] .ytp-play-progress { background: var(--for-secondary) !important; }
+html[data-ypp-card-style="forest"] .ytp-scrubber-button {
+    background: var(--for-surface) !important;
+    border: 3px solid var(--for-primary) !important;
+    border-radius: 4px 10px 4px 10px !important;
+    box-shadow: 0 2px 5px rgba(27, 94, 32, 0.4) !important;
+}

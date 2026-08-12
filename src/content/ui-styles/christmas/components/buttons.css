@@ -11,7 +11,7 @@ html[data-ypp-theme="christmas"] ytd-button-renderer button {
   color: var(--christmas-text-primary) !important;
   border: 1px solid var(--christmas-glass-border) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   font-weight: 600 !important;
   border-radius: var(--christmas-shape-btn) !important;
   transition: all 0.3s var(--christmas-ease-spring) !important;
@@ -103,7 +103,7 @@ html[data-ypp-ui-style="christmas"] button.ytSpecButtonShapeNextText {
   color: var(--christmas-text-primary) !important;
   border: 1px solid var(--christmas-glass-border) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   font-weight: 600 !important;
   border-radius: var(--christmas-shape-btn) !important;
   transition: all 0.3s var(--christmas-ease-spring) !important;

@@ -4,7 +4,7 @@ html[data-ypp-card-style="frosted"] :is(
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ) {
     background: var(--fro-glass-light) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(200%) !important; backdrop-filter: blur(24px) saturate(200%) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
     border: var(--fro-border-light) !important;
     border-radius: var(--fro-radius) !important;

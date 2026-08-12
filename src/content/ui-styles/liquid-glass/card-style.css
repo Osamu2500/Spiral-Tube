@@ -24,7 +24,7 @@ html[data-ypp-card-style="liquid-glass"] :is(
   yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
 ) {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.14) !important;

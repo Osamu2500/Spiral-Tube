@@ -4,7 +4,7 @@ html[data-ypp-card-style="winter"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="winter"] tp-yt-iron-dropdown,
 html[data-ypp-card-style="winter"] ytd-multi-page-menu-renderer {
   background: rgba(15, 25, 40, 0.5) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(150%) !important; backdrop-filter: blur(24px) saturate(150%) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
@@ -23,7 +23,7 @@ html[data-ypp-card-style="winter"] ytd-menu-service-item-renderer:hover {
 /* Global Frosted Tooltips */
 html[data-ypp-card-style="winter"] tp-yt-paper-tooltip .tp-yt-paper-tooltip {
     background: rgba(15, 25, 40, 0.7) !important;
-    -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
     color: #ffffff !important;
     border: 1px solid rgba(180, 230, 255, 0.4) !important;
     border-radius: 8px !important;
@@ -36,7 +36,7 @@ html[data-ypp-card-style="winter"] tp-yt-paper-tooltip .tp-yt-paper-tooltip {
 /* Frozen Playlist Panels */
 html[data-ypp-card-style="winter"] ytd-playlist-panel-renderer {
     background: rgba(15, 25, 40, 0.6) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(150%) !important; backdrop-filter: blur(24px) saturate(150%) !important;
+    backdrop-filter: blur(24px) saturate(150%) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 16px !important;
     box-shadow: 0 12px 30px rgba(100, 200, 255, 0.1) !important;

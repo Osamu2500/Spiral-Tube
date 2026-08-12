@@ -19,7 +19,7 @@ html[data-ypp-card-style="crystal-glass"] :is(
 ) {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
+  backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   padding: 12px !important;
@@ -65,7 +65,7 @@ html[data-ypp-card-style="crystal-glass"] .ytd-thumbnail {
 html[data-ypp-card-style="crystal-glass"] ytd-thumbnail-overlay-time-status-renderer {
   background: rgba(0, 0, 0, 0.6) !important;
   -webkit-backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important; backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   border-radius: var(--cglass-radius-pill) !important;
   margin: 6px !important;

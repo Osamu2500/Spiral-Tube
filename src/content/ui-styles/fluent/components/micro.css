@@ -9,7 +9,7 @@ html[data-ypp-card-style="fluent"] ytd-popup-container,
 html[data-ypp-ui-style="fluent"] ytd-popup-container {
     border-radius: 12px !important;
     border: 1px solid rgba(255,255,255,0.2) !important;
-    -webkit-backdrop-filter: blur(30px) !important; backdrop-filter: blur(30px) !important; background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(30px) !important; background: rgba(255,255,255,0.1) !important;
     animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
@@ -36,7 +36,7 @@ html[data-ypp-card-style="fluent"] tp-yt-paper-toast,
 html[data-ypp-ui-style="fluent"] tp-yt-paper-toast {
     border-radius: 12px !important;
     border: 1px solid rgba(255,255,255,0.2) !important;
-    -webkit-backdrop-filter: blur(30px) !important; backdrop-filter: blur(30px) !important; background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(30px) !important; background: rgba(255,255,255,0.1) !important;
 }
 
 /* =========================================
@@ -81,7 +81,7 @@ html[data-ypp-card-style="fluent"] ytd-mini-guide-renderer,
 html[data-ypp-ui-style="fluent"] ytd-mini-guide-renderer {
     background: transparent !important;
     border-right: 1px solid rgba(255,255,255,0.2) !important;
-    -webkit-backdrop-filter: blur(30px) !important; backdrop-filter: blur(30px) !important; background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(30px) !important; background: rgba(255,255,255,0.1) !important;
 }
 
 html[data-ypp-card-style="fluent"] ytd-mini-guide-entry-renderer,

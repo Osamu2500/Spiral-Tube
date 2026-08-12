@@ -1,0 +1,78 @@
+/* Sidebar / Guide UI Design for forest */
+#guide-wrapper.ytd-app {
+    background: var(--ypp-bg-color, var(--yt-spec-base-background)) !important;
+    border-right: 2px solid #2d4a22;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.03);
+}
+
+#guide-content.ytd-app {
+    background: transparent !important;
+}
+
+ytd-guide-entry-renderer {
+    border-radius: 4px !important;
+    margin: 4px 12px !important;
+    overflow: hidden;
+    transition: all 0.2s ease !important;
+    font-family: var(--ypp-font-family) !important;
+}
+
+ytd-guide-entry-renderer[active] {
+    background-color: var(--ypp-accent-color) !important;
+    box-shadow: 0 4px 12px rgba(45, 74, 34, 0.4);
+}
+
+ytd-guide-entry-renderer[active] .title.ytd-guide-entry-renderer {
+    color: var(--ypp-bg-color) !important;
+    font-weight: bold;
+}
+
+ytd-guide-entry-renderer[active] .yt-spec-icon-shape {
+    color: var(--ypp-bg-color) !important;
+}
+
+ytd-guide-entry-renderer:hover:not([active]) {
+    background-color: var(--ypp-hover-color) !important;
+    transform: translateX(5px);
+}
+
+ytd-guide-section-renderer {
+    border-bottom: 1px solid var(--ypp-border-color) !important;
+    padding: 12px 0 !important;
+}
+
+#guide-section-title.ytd-guide-section-renderer {
+    font-family: var(--ypp-font-family);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1.2rem;
+    color: var(--ypp-text-color);
+    opacity: 0.7;
+    margin-bottom: 8px;
+    padding-left: 24px;
+}
+
+/* Mini Guide */
+ytd-mini-guide-entry-renderer {
+    border-radius: 4px !important;
+    margin: 8px !important;
+    transition: background 0.3s, transform 0.2s;
+    font-family: var(--ypp-font-family) !important;
+}
+
+ytd-mini-guide-entry-renderer:hover {
+    background-color: var(--ypp-hover-color) !important;
+    transform: scale(1.05);
+}
+
+/* Scrollbar within guide */
+#guide-inner-content::-webkit-scrollbar {
+    width: 6px;
+}
+#guide-inner-content::-webkit-scrollbar-thumb {
+    background: var(--ypp-border-color);
+    border-radius: 10px;
+}
+#guide-inner-content::-webkit-scrollbar-thumb:hover {
+    background: var(--ypp-accent-color);
+}

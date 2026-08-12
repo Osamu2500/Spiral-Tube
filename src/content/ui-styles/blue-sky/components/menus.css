@@ -8,7 +8,7 @@ html[data-ypp-theme="blue-sky"] ytd-menu-popup-renderer,
 html[data-ypp-theme="blue-sky"] #contentWrapper.tp-yt-iron-dropdown > *,
 html[data-ypp-theme="blue-sky"] tp-yt-paper-dialog {
   background: rgba(240, 250, 255, 0.80) !important;
-  -webkit-backdrop-filter: var(--sky-blur-modal) !important; backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
   border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;
@@ -63,7 +63,7 @@ html[data-ypp-theme="blue-sky"] #trigger.tp-yt-paper-menu-button:hover {
 /* ── Tooltip ── */
 html[data-ypp-theme="blue-sky"] .tp-yt-paper-tooltip[style-target=tooltip] {
   background: rgba(240, 250, 255, 0.90) !important;
-  -webkit-backdrop-filter: blur(16px) !important; backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -76,7 +76,7 @@ html[data-ypp-theme="blue-sky"] .tp-yt-paper-tooltip[style-target=tooltip] {
 html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox,
 html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox.yt-dropdown-menu {
   background: rgba(240, 250, 255, 0.80) !important;
-  -webkit-backdrop-filter: blur(20px) !important; backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border-radius: var(--sky-shape-chip) !important;
   padding: 8px !important;
@@ -102,7 +102,7 @@ html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button {
   border-radius: var(--sky-shape-chip) !important;
   border: var(--sky-border) !important;
   background: rgba(255, 255, 255, 0.55) !important;
-  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   transition: all 0.25s var(--sky-bounce) !important;
 }
@@ -114,7 +114,7 @@ html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button:hove
 /* ── Toast notifications ── */
 html[data-ypp-theme="blue-sky"] tp-yt-paper-toast {
   background: rgba(240, 250, 255, 0.90) !important;
-  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--sky-shape-chip) !important;
   border: var(--sky-border) !important;
@@ -126,7 +126,7 @@ html[data-ypp-theme="blue-sky"] tp-yt-paper-toast {
 html[data-ypp-theme="blue-sky"] .ypp-account-menu,
 html[data-ypp-theme="blue-sky"] #ypp-top-bar {
   background: rgba(240, 250, 255, 0.80) !important;
-  -webkit-backdrop-filter: var(--sky-blur-nav) !important; backdrop-filter: var(--sky-blur-nav) !important;
+  backdrop-filter: var(--sky-blur-nav) !important;
   -webkit-backdrop-filter: var(--sky-blur-nav) !important;
   border: var(--sky-border) !important;
   box-shadow: var(--sky-shadow-nav) !important;

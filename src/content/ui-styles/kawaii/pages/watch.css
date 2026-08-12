@@ -22,7 +22,7 @@ html[data-ypp-ui-style="kawaii"] ytd-compact-video-renderer:hover {
 html[data-ypp-ui-style="kawaii"] #secondary-inner.ytd-watch-flexy {
   background: rgba(255, 255, 255, 0.4) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   border-radius: var(--kawaii-r-lg) !important;
   border: 2px solid rgba(255, 255, 255, 0.6) !important;
   padding: 16px !important;

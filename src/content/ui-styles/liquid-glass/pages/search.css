@@ -37,7 +37,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-channel-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-playlist-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-search ytd-shelf-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.14) !important;

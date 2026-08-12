@@ -41,7 +41,7 @@ html[data-ypp-theme="christmas"] #channel-name {
 html[data-ypp-theme="christmas"] ytd-thumbnail-overlay-time-status-renderer {
   background: rgba(0, 0, 0, 0.7) !important;
   -webkit-backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important; backdrop-filter: blur(4px) !important;
+  backdrop-filter: blur(4px) !important;
   border-radius: var(--christmas-r-sm) !important;
   color: #fff !important;
   font-weight: 700 !important;

@@ -14,7 +14,7 @@ html[data-ypp-ui-style="liquid-glass"] #top-level-buttons-computed {
 html[data-ypp-ui-style="liquid-glass"] #top-level-buttons-computed yt-button-shape button,
 html[data-ypp-ui-style="liquid-glass"] #top-level-buttons-computed ytd-button-renderer button {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
-  -webkit-backdrop-filter: var(--lg-blur-surface) !important; backdrop-filter: var(--lg-blur-surface) !important;
+  backdrop-filter: var(--lg-blur-surface) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
@@ -37,7 +37,7 @@ html[data-ypp-ui-style="liquid-glass"] #top-level-buttons-computed yt-button-sha
 /* Subscribe Button */
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: rgba(255, 255, 255, 0.85) !important;
   color: #000 !important;
   border-radius: 2000px !important;
@@ -62,7 +62,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer[subscribed]
 html[data-ypp-ui-style="liquid-glass"] ytd-watch-metadata #description,
 html[data-ypp-ui-style="liquid-glass"] ytd-text-inline-expander {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -101,7 +101,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-text-inline-expander:hover {
 /* Channel Bar Specular Liquid Glass Card */
 html[data-ypp-ui-style="liquid-glass"] #owner {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
-  -webkit-backdrop-filter: var(--lg-blur-surface) !important; backdrop-filter: var(--lg-blur-surface) !important;
+  backdrop-filter: var(--lg-blur-surface) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 20px !important;
@@ -119,7 +119,7 @@ html[data-ypp-ui-style="liquid-glass"] #owner:hover {
 /* Chapter Markers / Key Moments */
 html[data-ypp-ui-style="liquid-glass"] ytd-macro-markers-list-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
   border-radius: 24px !important;
@@ -149,7 +149,7 @@ html[data-ypp-ui-style="liquid-glass"] #related {
 html[data-ypp-ui-style="liquid-glass"] #secondary.ytd-watch-flexy ytd-compact-video-renderer,
 html[data-ypp-ui-style="liquid-glass"] #related ytd-compact-video-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
+  backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
   border-radius: 20px !important;
@@ -183,7 +183,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-item-section-renderer {
 /* Up Next Badge */
 html[data-ypp-ui-style="liquid-glass"] .badge-style-type-simple .badge {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
+  backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(255, 255, 255, 0.15) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
@@ -194,7 +194,7 @@ html[data-ypp-ui-style="liquid-glass"] .badge-style-type-simple .badge {
 /* Watch Page Playlist Panel Sidebar */
 html[data-ypp-ui-style="liquid-glass"] #secondary-inner ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  -webkit-backdrop-filter: var(--lg-blur-modal) !important; backdrop-filter: var(--lg-blur-modal) !important;
+  backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-1) !important;
   border-radius: 28px !important;
   border: var(--lg-border-specular) !important;

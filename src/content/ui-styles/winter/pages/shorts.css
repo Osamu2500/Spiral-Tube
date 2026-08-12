@@ -13,7 +13,7 @@ html[data-ypp-card-style="winter"] ytd-reel-player-overlay-renderer ytd-button-r
 html[data-ypp-card-style="winter"] ytd-reel-player-overlay-renderer ytd-toggle-button-renderer yt-button-shape button,
 html[data-ypp-card-style="winter"] ytd-reel-player-overlay-renderer yt-button-shape button {
     background: rgba(255, 255, 255, 0.1) !important;
-    -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 50% !important; /* Perfect circles */
     box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;

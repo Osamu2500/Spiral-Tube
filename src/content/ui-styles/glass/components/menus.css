@@ -5,7 +5,7 @@ html[data-ypp-card-style="glass"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="glass"] tp-yt-iron-dropdown,
 html[data-ypp-card-style="glass"] ytd-multi-page-menu-renderer {
   background: rgba(255, 255, 255, 0.1) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(200%) !important; backdrop-filter: blur(40px) saturate(200%) !important;
+  backdrop-filter: blur(40px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(40px) saturate(200%) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -22,7 +22,7 @@ html[data-ypp-card-style="glass"] ytd-menu-service-item-renderer:hover {
 /* Tooltips */
 html[data-ypp-card-style="glass"] tp-yt-paper-tooltip .tp-yt-paper-tooltip {
   background: rgba(255, 255, 255, 0.15) !important;
-  -webkit-backdrop-filter: blur(20px) !important; backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   color: #fff !important;
   border: 1px solid rgba(255,255,255,0.4) !important;
   border-radius: 20px !important;
