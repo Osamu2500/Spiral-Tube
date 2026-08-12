@@ -195,18 +195,13 @@ html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover * {
 
 /* Fix popup SVG icons */
 html[data-ypp-ui-style="vintage"] .ytp-menuitem svg,
-html[data-ypp-ui-style="vintage"] .ytp-menuitem path,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer path {
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg {
     fill: var(--vintage-secondary) !important;
 }
 
 html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover svg,
-html[data-ypp-ui-style="vintage"] .ytp-menuitem:hover path,
 html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer ytd-menu-service-item-renderer:hover path,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer tp-yt-paper-item:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer tp-yt-paper-item:hover path {
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer tp-yt-paper-item:hover svg {
     fill: var(--sf) !important;
 }
 

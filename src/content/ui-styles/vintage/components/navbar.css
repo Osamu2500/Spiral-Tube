@@ -177,19 +177,15 @@ html[data-ypp-ui-style="vintage"] li.sbsb_c:hover * {
 /* History icon inside search suggestions */
 html[data-ypp-ui-style="vintage"] .sbsb_c .gsst_a,
 html[data-ypp-ui-style="vintage"] .sbsb_c .lsb,
-html[data-ypp-ui-style="vintage"] .sbsb_c svg,
-html[data-ypp-ui-style="vintage"] .sbsb_c path {
+html[data-ypp-ui-style="vintage"] .sbsb_c svg {
     fill: var(--vintage-secondary) !important;
     color: var(--vintage-secondary) !important;
 }
 
 /* Topbar history clock button icon fix */
 html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer path,
 html[data-ypp-ui-style="vintage"] #end.ytd-masthead yt-icon svg,
-html[data-ypp-ui-style="vintage"] #end.ytd-masthead yt-icon path,
-html[data-ypp-ui-style="vintage"] [aria-label="History"] svg,
-html[data-ypp-ui-style="vintage"] [aria-label="History"] path {
+html[data-ypp-ui-style="vintage"] [aria-label="History"] svg {
     fill: var(--vintage-secondary) !important;
     color: var(--vintage-secondary) !important;
 }

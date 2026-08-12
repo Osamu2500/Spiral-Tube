@@ -175,9 +175,7 @@ html[data-ypp-ui-style="vintage"] #masthead *:not(img):not(video) {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-masthead svg,
-html[data-ypp-ui-style="vintage"] ytd-masthead path,
-html[data-ypp-ui-style="vintage"] #masthead svg,
-html[data-ypp-ui-style="vintage"] #masthead path {
+html[data-ypp-ui-style="vintage"] #masthead svg {
   fill: var(--vintage-secondary) !important;
 }
 
@@ -188,8 +186,7 @@ html[data-ypp-ui-style="vintage"] #guide *:not(img):not(video) {
   color: var(--vintage-secondary) !important;
 }
 
-html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer path {
+html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer svg {
   fill: var(--vintage-secondary) !important;
 }
 
@@ -205,11 +202,8 @@ html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown * {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer path,
 html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer path,
-html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer path {
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer svg {
   fill: var(--vintage-secondary) !important;
 }
 
@@ -233,8 +227,7 @@ html[data-ypp-ui-style="vintage"] #secondary *:not(img):not(video):not(iframe) {
   color: var(--vintage-secondary) !important;
 }
 
-html[data-ypp-ui-style="vintage"] #secondary svg,
-html[data-ypp-ui-style="vintage"] #secondary path {
+html[data-ypp-ui-style="vintage"] #secondary svg {
   fill: var(--vintage-secondary) !important;
 }
 

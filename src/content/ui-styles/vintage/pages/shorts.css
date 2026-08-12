@@ -45,20 +45,14 @@ html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button:hover {
 
 /* Icons inside shorts buttons */
 html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button svg,
-html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button path,
-html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button svg,
-html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button path {
+html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button svg {
     fill: var(--vintage-secondary) !important;
 }
 
 html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next:hover path,
 html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-reel-player-overlay-renderer yt-button-shape button:hover path,
-html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button:hover svg,
-html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button:hover path {
+html[data-ypp-ui-style="vintage"] .ytd-shorts-player-controls button:hover svg {
     fill: var(--sf) !important;
 }
 

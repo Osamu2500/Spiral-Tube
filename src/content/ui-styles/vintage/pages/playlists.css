@@ -30,8 +30,7 @@ html[data-ypp-ui-style="vintage"] yt-page-header-renderer {
 }
 
 /* Dark SVG icons inside header */
-html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header svg,
-html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header path {
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -73,9 +72,7 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer * {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer path,
-html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer path {
+html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -94,9 +91,7 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-view-mo
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button path {
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -109,9 +104,7 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover path,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover path {
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover svg {
     fill: var(--sf) !important;
 }
 
@@ -128,8 +121,7 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer * {
     color: var(--vintage-secondary) !important;
 }
 
-html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer path {
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -140,8 +132,7 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover *,
-html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover path {
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover svg {
     color: var(--sf) !important;
     fill: var(--sf) !important;
 }
@@ -159,8 +150,7 @@ html[data-ypp-ui-style="vintage"] #secondary.ytd-browse * {
     color: var(--vintage-secondary) !important;
 }
 
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse path {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -176,9 +166,7 @@ html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-ne
 }
 
 html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button path,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next path {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -192,9 +180,7 @@ html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-ne
 }
 
 html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover path,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover path {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover svg {
     fill: var(--sf) !important;
 }
 
@@ -208,7 +194,6 @@ html[data-ypp-ui-style="vintage"] tp-yt-paper-toast,
 html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer,
 html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer,
-html[data-ypp-ui-style="vintage"] ytd-popup-container,
 html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown > *,
 html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox {
     background: var(--sf) !important;
@@ -224,20 +209,15 @@ html[data-ypp-ui-style="vintage"] tp-yt-paper-toast *,
 html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer *,
 html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer *,
 html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer *,
-html[data-ypp-ui-style="vintage"] ytd-popup-container *,
 html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown *,
 html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox * {
     color: var(--vintage-secondary) !important;
 }
 
 html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer path,
 html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog svg,
-html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog path,
 html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer path,
-html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer svg,
-html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer path {
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer svg {
     fill: var(--vintage-secondary) !important;
 }
 
@@ -257,9 +237,7 @@ html[data-ypp-ui-style="vintage"] tp-yt-paper-item:hover * {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover path,
-html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover path {
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover svg {
     fill: var(--sf) !important;
 }
 

@@ -215,17 +215,11 @@ html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmente
 
 /* ── Icons: dark fill on all action button icons ── */
 html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="vintage"] #flexible-item-buttons .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] #flexible-item-buttons .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="vintage"] ytd-watch-metadata .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] ytd-watch-metadata .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
-html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path,
 html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button svg,
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button path,
-html[data-ypp-ui-style="vintage"] yt-download-button-view-model button svg,
-html[data-ypp-ui-style="vintage"] yt-download-button-view-model button path {
+html[data-ypp-ui-style="vintage"] yt-download-button-view-model button svg {
     fill: var(--vintage-secondary) !important;
     color: var(--vintage-secondary) !important;
     stroke: none !important;
@@ -254,15 +248,10 @@ html[data-ypp-ui-style="vintage"] yt-download-button-view-model button:hover {
 }
 
 html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path,
 html[data-ypp-ui-style="vintage"] #flexible-item-buttons .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] #flexible-item-buttons .yt-spec-button-shape-next:hover path,
 html[data-ypp-ui-style="vintage"] ytd-watch-metadata .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-watch-metadata .yt-spec-button-shape-next:hover path,
 html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover svg,
-html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover path,
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button:hover path {
+html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button:hover svg {
     fill: var(--sf) !important;
     color: var(--sf) !important;
 }
@@ -308,9 +297,7 @@ html[data-ypp-ui-style="vintage"] ytd-comment-replies-renderer > .yt-spec-button
 }
 
 html[data-ypp-ui-style="vintage"] ytd-comment-action-buttons-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] ytd-comment-action-buttons-renderer .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next path {
+html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next svg {
     fill: var(--vintage-secondary) !important;
     color: var(--vintage-secondary) !important;
 }
@@ -324,9 +311,7 @@ html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next:h
 }
 
 html[data-ypp-ui-style="vintage"] ytd-comment-action-buttons-renderer .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-comment-action-buttons-renderer .yt-spec-button-shape-next:hover path,
-html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next:hover path {
+html[data-ypp-ui-style="vintage"] #reply-button-end .yt-spec-button-shape-next:hover svg {
     fill: var(--sf) !important;
     color: var(--sf) !important;
 }
@@ -355,15 +340,11 @@ html[data-ypp-ui-style="vintage"] ytd-watch-metadata yt-button-view-model button
 
 html[data-ypp-ui-style="vintage"] #menu.ytd-watch-metadata yt-button-shape button svg,
 html[data-ypp-ui-style="vintage"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button svg,
-html[data-ypp-ui-style="vintage"] ytd-watch-metadata yt-button-view-model button svg,
-html[data-ypp-ui-style="vintage"] #menu.ytd-watch-metadata yt-button-shape button path,
-html[data-ypp-ui-style="vintage"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button path {
+html[data-ypp-ui-style="vintage"] ytd-watch-metadata yt-button-view-model button svg {
     fill: var(--vintage-secondary) !important;
 }
 
 html[data-ypp-ui-style="vintage"] #menu.ytd-watch-metadata yt-button-shape button:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button:hover svg,
-html[data-ypp-ui-style="vintage"] #menu.ytd-watch-metadata yt-button-shape button:hover path,
-html[data-ypp-ui-style="vintage"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button:hover path {
+html[data-ypp-ui-style="vintage"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button:hover svg {
     fill: var(--sf) !important;
 }
