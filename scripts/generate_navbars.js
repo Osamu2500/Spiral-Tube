@@ -23,7 +23,7 @@ function buildCSS(themeName, rules) {
 
 const themeConfigs = {
     'anime': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border-bottom: 3px solid #ff758c !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border: none !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(2px 2px 0px #fff) !important; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;`,
         'ytd-topbar-logo-renderer:hover': `transform: scale(1.1) rotate(-3deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 50px !important; border: 2px solid #ff758c !important; background: rgba(255, 255, 255, 0.9) !important; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05) !important; padding: 0 10px !important;`,
@@ -40,7 +40,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer, tp-yt-iron-dropdown ytd-account-settings-menu-renderer': `border-radius: 20px !important; border: 2px solid #ff758c !important; background: #fffafb !important; box-shadow: 0 10px 25px rgba(255,117,140,0.3) !important;`
     },
     'galaxy': {
-        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;`,
+        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important; border: none !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(0 0 8px rgba(138,43,226,0.8)) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 30px !important; border: 1px solid rgba(255,255,255,0.2) !important; background: rgba(0, 0, 0, 0.4) !important; box-shadow: 0 0 15px rgba(138, 43, 226, 0.3) !important;`,
         '#search-input input': `color: #e0e0e0 !important; font-family: 'Space Mono', monospace, sans-serif !important; text-shadow: 0 0 5px rgba(255,255,255,0.3) !important;`,
@@ -55,7 +55,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 16px !important; border: 1px solid rgba(138,43,226,0.5) !important; background: rgba(15,32,39,0.95) !important; box-shadow: 0 0 30px rgba(138,43,226,0.4) !important; backdrop-filter: blur(10px) !important;`
     },
     'gothic': {
-        '#masthead-container, ytd-masthead': `background: #1a1a1a !important; border-bottom: 4px double #800000 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;`,
+        '#masthead-container, ytd-masthead': `background: #1a1a1a !important; border: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;`,
         'ytd-topbar-logo-renderer': `filter: sepia(1) hue-rotate(300deg) saturate(3) drop-shadow(2px 2px 0px #000) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 2px solid #4a0404 !important; background: #000 !important;`,
         '#search-input input': `font-family: 'Playfair Display', serif !important; color: #b30000 !important; text-align: center !important; font-style: italic !important;`,
@@ -72,7 +72,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border: 4px double #800000 !important; background: #1a1a1a !important; box-shadow: 0 10px 30px rgba(0,0,0,0.9) !important;`
     },
     'grunge': {
-        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border-bottom: 3px dashed #111 !important;`,
+        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border: none !important;`,
         'ytd-topbar-logo-renderer': `filter: grayscale(80%) contrast(150%) !important; transform: rotate(-2deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 2px 8px 3px 5px !important; border: 2px solid #000 !important; background: #222 !important; box-shadow: 3px 3px 0 #000 !important;`,
         '#search-input input': `font-family: 'Courier New', monospace !important; color: #fff !important; text-transform: uppercase !important;`,
@@ -84,7 +84,7 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow': `border-radius: 10% !important; border: 2px solid #000 !important; filter: sepia(0.5) contrast(1.2) !important; transform: rotate(3deg) !important;`
     },
     'hologram': {
-        '#masthead-container, ytd-masthead': `background: rgba(255, 255, 255, 0.05) !important; border-bottom: 1px solid rgba(0, 255, 255, 0.3) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;`,
+        '#masthead-container, ytd-masthead': `background: rgba(255, 255, 255, 0.05) !important; border: none !important; backdrop-filter: blur(15px) !important; box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(0 0 5px rgba(0,255,255,0.8)) hue-rotate(180deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 8px !important; border: 1px solid rgba(0, 255, 255, 0.4) !important; background: rgba(0, 255, 255, 0.05) !important; box-shadow: inset 0 0 10px rgba(0,255,255,0.2), 0 0 10px rgba(0,255,255,0.2) !important; backdrop-filter: blur(5px) !important;`,
         '#search-input input': `font-family: 'Inter', sans-serif !important; color: #00ffff !important; text-shadow: 0 0 3px #00ffff !important; letter-spacing: 1px !important;`,
@@ -100,7 +100,7 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow:hover': `opacity: 1 !important; filter: brightness(1.2) !important;`
     },
     'matrix': {
-        '#masthead-container, ytd-masthead': `background: #000 !important; border-bottom: 2px solid #0f0 !important; box-shadow: 0 0 15px #0f0 !important;`,
+        '#masthead-container, ytd-masthead': `background: #000 !important; border: none !important; box-shadow: 0 0 15px #0f0 !important;`,
         'ytd-topbar-logo-renderer': `filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(5) drop-shadow(0 0 5px #0f0) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 1px solid #0f0 !important; background: #001100 !important;`,
         '#search-input input': `font-family: 'Courier New', Courier, monospace !important; color: #0f0 !important; text-shadow: 0 0 2px #0f0 !important;`,
@@ -116,7 +116,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border: 1px solid #0f0 !important; background: #000 !important; font-family: 'Courier New', Courier, monospace !important;`
     },
     'neo-brutalism': {
-        '#masthead-container, ytd-masthead': `background: #fdf5e6 !important; border-bottom: 4px solid #000 !important; box-shadow: 0 8px 0 #000 !important;`,
+        '#masthead-container, ytd-masthead': `background: #fdf5e6 !important; border: none !important; box-shadow: 0 8px 0 #000 !important;`,
         'ytd-topbar-logo-renderer': `filter: none !important; transform: scale(1.1) !important; transform-origin: left center !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 3px solid #000 !important; background: #fff !important; box-shadow: 5px 5px 0 #000 !important; margin-right: 15px !important;`,
         '#search-input input': `font-family: 'Space Grotesk', sans-serif !important; color: #000 !important; font-weight: 800 !important; font-size: 16px !important;`,
@@ -133,7 +133,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border: 4px solid #000 !important; background: #fdf5e6 !important; box-shadow: 10px 10px 0 #000 !important;`
     },
     'origami': {
-        '#masthead-container, ytd-masthead': `background: #f0f0f0 !important; border-bottom: none !important; box-shadow: 0 5px 15px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05) !important;`,
+        '#masthead-container, ytd-masthead': `background: #f0f0f0 !important; border: none !important; box-shadow: 0 5px 15px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 1px solid #ccc !important; background: #fff !important; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important; padding-left: 15px !important;`,
         '#search-input input': `font-family: 'Lato', sans-serif !important; color: #333 !important;`,
         '#search-icon-legacy': `background: #e0e0e0 !important; border-radius: 0 !important; border: none !important; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important; margin-left: 5px !important;`,
@@ -144,7 +144,7 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow': `border-radius: 0 !important; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important; border: 2px solid #ccc !important; padding: 2px !important; background: #fff !important;`
     },
     'retro-wave': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #10002b 0%, #240046 100%) !important; border-bottom: 2px solid #ff00ff !important; box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #10002b 0%, #240046 100%) !important; border: none !important; box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(2px 2px 0px #00ffff) drop-shadow(-2px -2px 0px #ff00ff) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 20px !important; border: 2px solid #00ffff !important; background: rgba(36,0,70,0.8) !important; box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff !important;`,
         '#search-input input': `font-family: 'Impact', sans-serif !important; color: #ff00ff !important; font-size: 16px !important; text-shadow: 1px 1px 2px #000 !important; letter-spacing: 1px !important;`,
@@ -160,7 +160,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 12px !important; border: 2px solid #ff00ff !important; background: #10002b !important; box-shadow: 0 0 20px #ff00ff !important;`
     },
     'steampunk': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(to bottom, #5c4033 0%, #3b2f2f 100%) !important; border-bottom: 4px groove #d2b48c !important; box-shadow: 0 8px 15px rgba(0,0,0,0.6) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(to bottom, #5c4033 0%, #3b2f2f 100%) !important; border: none !important; box-shadow: 0 8px 15px rgba(0,0,0,0.6) !important;`,
         'ytd-topbar-logo-renderer': `filter: sepia(0.8) contrast(1.2) drop-shadow(1px 1px 2px #000) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 5px !important; border: 3px double #d2b48c !important; background: url('https://www.transparenttextures.com/patterns/old-wall.png'), #4a3a30 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.8) !important;`,
         '#search-input input': `font-family: 'Playfair Display', serif !important; color: #wheat !important; font-size: 16px !important; text-shadow: 1px 1px 1px #000 !important;`,
@@ -176,7 +176,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 5px !important; border: 4px groove #d2b48c !important; background: #3b2f2f !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; font-family: 'Playfair Display', serif !important;`
     },
     'vaporwave': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%) !important; border-bottom: 3px solid #b967ff !important; box-shadow: 0 4px 15px rgba(185,103,255,0.4) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%) !important; border: none !important; box-shadow: 0 4px 15px rgba(185,103,255,0.4) !important;`,
         'ytd-topbar-logo-renderer': `filter: hue-rotate(90deg) drop-shadow(2px 2px 0px #fff) !important; transform: skewX(-5deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border-top: 2px solid #fff !important; border-left: 2px solid #fff !important; border-right: 2px solid #000 !important; border-bottom: 2px solid #000 !important; background: #c0c0c0 !important; padding: 2px !important;`,
         '#search-input input': `font-family: 'MS Sans Serif', 'Tahoma', sans-serif !important; color: #000 !important; font-size: 14px !important; font-weight: bold !important; letter-spacing: 1px !important;`,
@@ -192,7 +192,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border-top: 2px solid #fff !important; border-left: 2px solid #fff !important; border-right: 2px solid #000 !important; border-bottom: 2px solid #000 !important; background: #c0c0c0 !important;`
     },
     'woodblock': {
-        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #8b5a2b !important; border-bottom: 6px solid #5c3a21 !important; box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;`,
+        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #8b5a2b !important; border: none !important; box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;`,
         'ytd-topbar-logo-renderer': `filter: sepia(0.5) brightness(0.8) contrast(1.2) drop-shadow(1px 1px 1px #333) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 12px !important; border: 3px inset #5c3a21 !important; background: #cd853f !important; box-shadow: inset 3px 3px 6px rgba(0,0,0,0.4) !important;`,
         '#search-input input': `font-family: 'Georgia', serif !important; color: #3e2723 !important; font-weight: bold !important; text-shadow: 1px 1px 0px rgba(255,255,255,0.2) !important;`,
@@ -207,7 +207,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 12px !important; border: 4px solid #5c3a21 !important; background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #cd853f !important; box-shadow: 5px 5px 15px rgba(0,0,0,0.6) !important;`
     },
     'y2k': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #d4d4d4 0%, #ffffff 50%, #b5b5b5 100%) !important; border-bottom: 3px solid #888 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #d4d4d4 0%, #ffffff 50%, #b5b5b5 100%) !important; border: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)) saturate(1.5) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 25px !important; border: 2px solid #999 !important; background: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%) !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 4px rgba(255,255,255,0.8) !important; padding: 0 15px !important;`,
         '#search-input input': `font-family: 'Verdana', sans-serif !important; color: #333 !important; font-size: 14px !important; font-weight: bold !important; text-shadow: 1px 1px 0 #fff !important;`,
@@ -225,8 +225,6 @@ const themeConfigs = {
     }
 };
 
-// Generic Fallback generator for the remaining ~40 themes to ensure EVERYTHING gets a highly unique look
-// We will deterministically generate colors and border-radii based on the string name of the theme.
 function getGenericDesign(themeName) {
     let hash = 0;
     for (let i = 0; i < themeName.length; i++) {
@@ -239,7 +237,7 @@ function getGenericDesign(themeName) {
     const bgOpacity = (Math.abs(hash % 5) * 0.1) + 0.5;
 
     return {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(135deg, rgba(30,30,30,${bgOpacity}), rgba(10,10,10,${bgOpacity})) !important; border-bottom: 3px ${borderStyle} ${color1} !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px ${color2}44 !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(135deg, rgba(30,30,30,${bgOpacity}), rgba(10,10,10,${bgOpacity})) !important; border: none !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px ${color2}44 !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(2px 2px 4px ${color1}) !important; transition: transform 0.3s !important;`,
         'ytd-topbar-logo-renderer:hover': `transform: scale(1.05) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: ${radius} !important; border: 2px ${borderStyle} ${color1} !important; background: rgba(0,0,0,0.4) !important; box-shadow: inset 0 0 10px ${color2}33 !important;`,
