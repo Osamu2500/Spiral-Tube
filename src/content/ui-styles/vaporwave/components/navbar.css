@@ -43,7 +43,7 @@ html[data-ypp-ui-style="vaporwave"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for vaporwave */
 html[data-ypp-ui-style="vaporwave"] #masthead-container,
 html[data-ypp-ui-style="vaporwave"] ytd-masthead {
-background: linear-gradient(90deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%) !important; border: none !important; box-shadow: 0 4px 15px rgba(185,103,255,0.4) !important;
+background: linear-gradient(90deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 15px rgba(185,103,255,0.4) !important;
 }
 html[data-ypp-ui-style="vaporwave"] ytd-topbar-logo-renderer {
 filter: hue-rotate(90deg) drop-shadow(2px 2px 0px #fff) !important; transform: skewX(-5deg) !important;

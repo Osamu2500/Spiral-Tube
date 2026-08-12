@@ -43,7 +43,7 @@ html[data-ypp-ui-style="anime"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for anime */
 html[data-ypp-ui-style="anime"] #masthead-container,
 html[data-ypp-ui-style="anime"] ytd-masthead {
-background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border: none !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;
+background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;
 }
 html[data-ypp-ui-style="anime"] ytd-topbar-logo-renderer {
 filter: drop-shadow(2px 2px 0px #fff) !important; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;

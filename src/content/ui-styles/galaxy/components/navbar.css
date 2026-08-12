@@ -43,7 +43,7 @@ html[data-ypp-ui-style="galaxy"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for galaxy */
 html[data-ypp-ui-style="galaxy"] #masthead-container,
 html[data-ypp-ui-style="galaxy"] ytd-masthead {
-background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important; border: none !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;
+background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;
 }
 html[data-ypp-ui-style="galaxy"] ytd-topbar-logo-renderer {
 filter: drop-shadow(0 0 8px rgba(138,43,226,0.8)) !important;

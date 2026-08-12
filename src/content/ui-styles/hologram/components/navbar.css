@@ -43,7 +43,7 @@ html[data-ypp-ui-style="hologram"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for hologram */
 html[data-ypp-ui-style="hologram"] #masthead-container,
 html[data-ypp-ui-style="hologram"] ytd-masthead {
-background: rgba(255, 255, 255, 0.05) !important; border: none !important; backdrop-filter: blur(15px) !important; box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;
+background: rgba(255, 255, 255, 0.05) !important; border: none !important; border-bottom: none !important; border-top: none !important; backdrop-filter: blur(15px) !important; box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;
 }
 html[data-ypp-ui-style="hologram"] ytd-topbar-logo-renderer {
 filter: drop-shadow(0 0 5px rgba(0,255,255,0.8)) hue-rotate(180deg) !important;

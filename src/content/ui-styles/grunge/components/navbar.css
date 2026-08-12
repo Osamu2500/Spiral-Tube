@@ -43,7 +43,7 @@ html[data-ypp-ui-style="grunge"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for grunge */
 html[data-ypp-ui-style="grunge"] #masthead-container,
 html[data-ypp-ui-style="grunge"] ytd-masthead {
-background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border: none !important;
+background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border: none !important; border-bottom: none !important; border-top: none !important;
 }
 html[data-ypp-ui-style="grunge"] ytd-topbar-logo-renderer {
 filter: grayscale(80%) contrast(150%) !important; transform: rotate(-2deg) !important;

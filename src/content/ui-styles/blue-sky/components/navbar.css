@@ -8,54 +8,60 @@ ytd-searchbox #search-icon-legacy.ytd-searchbox { border-radius: 0 30px 30px 0 !
 /* Navbar Overhaul for blue-sky */
 html[data-ypp-ui-style="blue-sky"] #masthead-container,
 html[data-ypp-ui-style="blue-sky"] ytd-masthead {
-background: linear-gradient(135deg, rgba(30,30,30,0.9), rgba(10,10,10,0.9)) !important; border: none !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px hsl(154, 70%, 40%)44 !important;
+background: hsl(274, 80%, 55%)ff !important; border: none !important; border-top: none !important; border-bottom: none !important; backdrop-filter: blur(12px) !important; box-shadow: 0 0 10px hsl(274, 80%, 55%), 0 0 20px hsl(274, 80%, 55%) !important;
 }
 html[data-ypp-ui-style="blue-sky"] ytd-topbar-logo-renderer {
-filter: drop-shadow(2px 2px 4px hsl(274, 70%, 50%)) !important; transition: transform 0.3s !important;
+filter: drop-shadow(2px 2px 4px hsl(274, 80%, 55%)) hue-rotate(94deg) saturate(1) !important; transition: transform 0.3s !important;
 }
 html[data-ypp-ui-style="blue-sky"] ytd-topbar-logo-renderer:hover {
-transform: scale(1.05) !important;
+transform: scale(1.08) rotate(-1deg) !important;
 }
 html[data-ypp-ui-style="blue-sky"] #container.ytd-searchbox,
 html[data-ypp-ui-style="blue-sky"] ytd-searchbox {
-border-radius: 20px !important; border: 2px dotted hsl(274, 70%, 50%) !important; background: rgba(0,0,0,0.4) !important; box-shadow: inset 0 0 10px hsl(154, 70%, 40%)33 !important;
+border-radius: 50px !important; border: 2px dotted hsl(274, 80%, 55%) !important; background: rgba(10,10,10,0.6) !important; box-shadow: inset 0 0 10px hsl(68, 70%, 45%)66 !important;
 }
 html[data-ypp-ui-style="blue-sky"] #search-input input {
-font-family: inherit !important; color: hsl(274, 70%, 50%) !important; font-weight: 500 !important; letter-spacing: 0.5px !important;
+font-family: 'Playfair Display', serif !important; color: hsl(274, 80%, 55%) !important; font-weight: bold !important; letter-spacing: 1px !important; text-shadow: 1px 1px 2px hsl(68, 70%, 45%)88 !important;
 }
 html[data-ypp-ui-style="blue-sky"] #search-icon-legacy {
-background: hsl(154, 70%, 40%) !important; border-radius: 0 20px 20px 0 !important; border: none !important; border-left: 2px dotted hsl(274, 70%, 50%) !important; transition: background 0.2s !important;
+background: hsl(68, 70%, 45%)33 !important; border-radius: 0 50px 50px 0 !important; border: none !important; border-left: 2px dotted hsl(274, 80%, 55%) !important; transition: all 0.3s !important;
 }
 html[data-ypp-ui-style="blue-sky"] #search-icon-legacy:hover {
-background: hsl(274, 70%, 50%) !important;
+background: hsl(274, 80%, 55%)88 !important; box-shadow: 0 0 10px hsl(274, 80%, 55%), 0 0 20px hsl(274, 80%, 55%) !important;
 }
 html[data-ypp-ui-style="blue-sky"] #search-icon-legacy yt-icon {
-color: #fff !important;
+color: #ffffff !important; filter: drop-shadow(0 0 2px hsl(274, 80%, 55%)) !important;
 }
 html[data-ypp-ui-style="blue-sky"] #voice-search-button {
-background: hsl(154, 70%, 40%) !important; border-radius: 20px !important; border: 2px dotted hsl(274, 70%, 50%) !important; color: #fff !important; box-shadow: 0 0 10px hsl(274, 70%, 50%)66 !important;
+background: hsl(68, 70%, 45%)44 !important; border-radius: 50px !important; border: 2px dotted hsl(274, 80%, 55%) !important; color: #fff !important; box-shadow: 0 0 8px hsl(274, 80%, 55%)88 !important; transition: transform 0.2s !important;
+}
+html[data-ypp-ui-style="blue-sky"] #voice-search-button:hover {
+transform: scale(1.1) !important; background: hsl(274, 80%, 55%)66 !important;
 }
 html[data-ypp-ui-style="blue-sky"] .sbdd_b,
 html[data-ypp-ui-style="blue-sky"] .sbsb_a {
-border-radius: 20px !important; border: 2px dotted hsl(274, 70%, 50%) !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px hsl(154, 70%, 40%)66 !important;
+border-radius: 50px !important; border: 2px dotted hsl(274, 80%, 55%) !important; background: rgba(15,15,20,0.95) !important; backdrop-filter: blur(20px) !important; box-shadow: 0 0 10px hsl(274, 80%, 55%), 0 0 20px hsl(274, 80%, 55%) !important;
 }
 html[data-ypp-ui-style="blue-sky"] .sbsb_c {
-color: #ccc !important; font-family: inherit !important;
+color: #e0e0e0 !important; font-family: 'Playfair Display', serif !important; transition: all 0.2s !important;
 }
 html[data-ypp-ui-style="blue-sky"] .sbsb_c:hover {
-background: hsl(154, 70%, 40%)33 !important; color: hsl(274, 70%, 50%) !important; padding-left: 15px !important; transition: all 0.2s !important;
+background: hsl(68, 70%, 45%)55 !important; color: hsl(274, 80%, 55%) !important; padding-left: 20px !important; font-weight: bold !important; box-shadow: inset 4px 0 0 hsl(274, 80%, 55%) !important;
 }
 html[data-ypp-ui-style="blue-sky"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-style="blue-sky"] ytd-notification-topbar-button-renderer yt-icon-button {
-background: rgba(255,255,255,0.05) !important; border-radius: 20px !important; border: 1px solid hsl(274, 70%, 50%) !important; transition: all 0.3s !important;
+background: hsl(68, 70%, 45%)22 !important; border-radius: 50px !important; border: 1px dotted hsl(274, 80%, 55%) !important; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 html[data-ypp-ui-style="blue-sky"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
 html[data-ypp-ui-style="blue-sky"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
-background: hsl(274, 70%, 50%) !important; color: #fff !important; transform: translateY(-2px) !important; box-shadow: 0 4px 12px hsl(274, 70%, 50%)88 !important;
+background: hsl(274, 80%, 55%)66 !important; color: #fff !important; transform: translateY(-4px) scale(1.1) !important; box-shadow: 0 0 10px hsl(274, 80%, 55%), 0 0 20px hsl(274, 80%, 55%) !important;
 }
 html[data-ypp-ui-style="blue-sky"] #avatar-btn yt-img-shadow {
-border-radius: 20px !important; border: 2px solid hsl(274, 70%, 50%) !important; box-shadow: 0 0 15px hsl(154, 70%, 40%)66 !important; padding: 2px !important; background: rgba(255,255,255,0.1) !important;
+border-radius: 50px !important; border: 2px dotted hsl(274, 80%, 55%) !important; box-shadow: 0 0 10px hsl(274, 80%, 55%), 0 0 20px hsl(274, 80%, 55%) !important; padding: 2px !important; background: hsl(68, 70%, 45%)44 !important; transition: transform 0.4s !important;
+}
+html[data-ypp-ui-style="blue-sky"] #avatar-btn yt-img-shadow:hover {
+transform: rotate(274deg) scale(1.15) !important;
 }
 html[data-ypp-ui-style="blue-sky"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-border-radius: 20px !important; border: 2px dotted hsl(274, 70%, 50%) !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px hsl(154, 70%, 40%)66 !important;
+border-radius: 50px !important; border: 2px dotted hsl(274, 80%, 55%) !important; background: rgba(10,10,15,0.95) !important; backdrop-filter: blur(25px) !important; box-shadow: 0 0 10px hsl(274, 80%, 55%), 0 0 20px hsl(274, 80%, 55%) !important;
 }

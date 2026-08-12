@@ -3,16 +3,11 @@ const path = require('path');
 
 const uiStylesDir = path.join(__dirname, '..', 'src', 'content', 'ui-styles');
 
-// Helper to wrap css in the proper html[data-ypp-ui-style="theme"] selector
 function buildCSS(themeName, rules) {
     const prefix = `html[data-ypp-ui-style="${themeName}"]`;
     let cssString = `\n/* Navbar Overhaul for ${themeName} */\n`;
-    
     for (const [target, cssText] of Object.entries(rules)) {
-        // Properly scope every comma-separated sub-selector with the theme prefix
-        const scopedSelector = target.split(',')
-            .map(s => `${prefix} ${s.trim()}`)
-            .join(`,\n`);
+        const scopedSelector = target.split(',').map(s => `${prefix} ${s.trim()}`).join(`,\n`);
         cssString += `${scopedSelector} {\n${cssText}\n}\n`;
     }
     return cssString;
@@ -20,7 +15,7 @@ function buildCSS(themeName, rules) {
 
 const themeConfigs = {
     'anime': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border: none !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(2px 2px 0px #fff) !important; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;`,
         'ytd-topbar-logo-renderer:hover': `transform: scale(1.1) rotate(-3deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 50px !important; border: 2px solid #ff758c !important; background: rgba(255, 255, 255, 0.9) !important; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05) !important; padding: 0 10px !important;`,
@@ -37,7 +32,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer, tp-yt-iron-dropdown ytd-account-settings-menu-renderer': `border-radius: 20px !important; border: 2px solid #ff758c !important; background: #fffafb !important; box-shadow: 0 10px 25px rgba(255,117,140,0.3) !important;`
     },
     'galaxy': {
-        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important; border: none !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;`,
+        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(0 0 8px rgba(138,43,226,0.8)) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 30px !important; border: 1px solid rgba(255,255,255,0.2) !important; background: rgba(0, 0, 0, 0.4) !important; box-shadow: 0 0 15px rgba(138, 43, 226, 0.3) !important;`,
         '#search-input input': `color: #e0e0e0 !important; font-family: 'Space Mono', monospace, sans-serif !important; text-shadow: 0 0 5px rgba(255,255,255,0.3) !important;`,
@@ -52,7 +47,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 16px !important; border: 1px solid rgba(138,43,226,0.5) !important; background: rgba(15,32,39,0.95) !important; box-shadow: 0 0 30px rgba(138,43,226,0.4) !important; backdrop-filter: blur(10px) !important;`
     },
     'gothic': {
-        '#masthead-container, ytd-masthead': `background: #1a1a1a !important; border: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;`,
+        '#masthead-container, ytd-masthead': `background: #1a1a1a !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;`,
         'ytd-topbar-logo-renderer': `filter: sepia(1) hue-rotate(300deg) saturate(3) drop-shadow(2px 2px 0px #000) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 2px solid #4a0404 !important; background: #000 !important;`,
         '#search-input input': `font-family: 'Playfair Display', serif !important; color: #b30000 !important; text-align: center !important; font-style: italic !important;`,
@@ -69,7 +64,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border: 4px double #800000 !important; background: #1a1a1a !important; box-shadow: 0 10px 30px rgba(0,0,0,0.9) !important;`
     },
     'grunge': {
-        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border: none !important;`,
+        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/concrete-wall.png'), #333 !important; border: none !important; border-bottom: none !important; border-top: none !important;`,
         'ytd-topbar-logo-renderer': `filter: grayscale(80%) contrast(150%) !important; transform: rotate(-2deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 2px 8px 3px 5px !important; border: 2px solid #000 !important; background: #222 !important; box-shadow: 3px 3px 0 #000 !important;`,
         '#search-input input': `font-family: 'Courier New', monospace !important; color: #fff !important; text-transform: uppercase !important;`,
@@ -81,7 +76,7 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow': `border-radius: 10% !important; border: 2px solid #000 !important; filter: sepia(0.5) contrast(1.2) !important; transform: rotate(3deg) !important;`
     },
     'hologram': {
-        '#masthead-container, ytd-masthead': `background: rgba(255, 255, 255, 0.05) !important; border: none !important; backdrop-filter: blur(15px) !important; box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;`,
+        '#masthead-container, ytd-masthead': `background: rgba(255, 255, 255, 0.05) !important; border: none !important; border-bottom: none !important; border-top: none !important; backdrop-filter: blur(15px) !important; box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(0 0 5px rgba(0,255,255,0.8)) hue-rotate(180deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 8px !important; border: 1px solid rgba(0, 255, 255, 0.4) !important; background: rgba(0, 255, 255, 0.05) !important; box-shadow: inset 0 0 10px rgba(0,255,255,0.2), 0 0 10px rgba(0,255,255,0.2) !important; backdrop-filter: blur(5px) !important;`,
         '#search-input input': `font-family: 'Inter', sans-serif !important; color: #00ffff !important; text-shadow: 0 0 3px #00ffff !important; letter-spacing: 1px !important;`,
@@ -97,7 +92,7 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow:hover': `opacity: 1 !important; filter: brightness(1.2) !important;`
     },
     'matrix': {
-        '#masthead-container, ytd-masthead': `background: #000 !important; border: none !important; box-shadow: 0 0 15px #0f0 !important;`,
+        '#masthead-container, ytd-masthead': `background: #000 !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 0 15px #0f0 !important;`,
         'ytd-topbar-logo-renderer': `filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(5) drop-shadow(0 0 5px #0f0) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 1px solid #0f0 !important; background: #001100 !important;`,
         '#search-input input': `font-family: 'Courier New', Courier, monospace !important; color: #0f0 !important; text-shadow: 0 0 2px #0f0 !important;`,
@@ -112,8 +107,27 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow': `border-radius: 0 !important; border: 2px solid #0f0 !important; filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(3) !important;`,
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border: 1px solid #0f0 !important; background: #000 !important; font-family: 'Courier New', Courier, monospace !important;`
     },
+    'nature': {
+        '#masthead-container, ytd-masthead': `background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 15px rgba(27, 94, 32, 0.4) !important;`,
+        'ytd-topbar-logo-renderer': `filter: sepia(0.6) hue-rotate(80deg) saturate(1.5) drop-shadow(1px 1px 2px #000) !important; transition: transform 0.4s ease-in-out !important;`,
+        'ytd-topbar-logo-renderer:hover': `transform: scale(1.05) rotate(2deg) !important;`,
+        '#container.ytd-searchbox, ytd-searchbox': `border-radius: 4px 24px 4px 24px !important; border: 2px solid #81c784 !important; background: rgba(255, 255, 255, 0.1) !important; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2) !important; padding: 0 10px !important;`,
+        '#search-input input': `font-family: 'Georgia', serif !important; color: #e8f5e9 !important; font-style: italic !important; font-size: 16px !important;`,
+        '#search-icon-legacy': `background: #2e7d32 !important; border-radius: 0 24px 4px 0 !important; border: none !important; border-left: 2px solid #81c784 !important; transition: background 0.3s !important;`,
+        '#search-icon-legacy:hover': `background: #1b5e20 !important;`,
+        '#search-icon-legacy yt-icon': `color: #c8e6c9 !important;`,
+        '#voice-search-button': `background: #2e7d32 !important; border-radius: 4px 24px 4px 24px !important; border: 2px solid #81c784 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; color: #c8e6c9 !important;`,
+        '.sbdd_b, .sbsb_a': `border-radius: 4px 24px 4px 24px !important; border: 2px solid #81c784 !important; background: #0b1f10 !important; box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;`,
+        '.sbsb_c': `font-family: 'Georgia', serif !important; color: #a5d6a7 !important;`,
+        '.sbsb_c:hover': `background: #1b5e20 !important; color: #e8f5e9 !important; padding-left: 20px !important; transition: all 0.2s !important;`,
+        'ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button': `background: rgba(46, 125, 50, 0.4) !important; border-radius: 4px 24px 4px 24px !important; border: 1px solid #81c784 !important; color: #e8f5e9 !important; transition: transform 0.3s !important;`,
+        'ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover': `transform: scale(1.1) !important; background: #2e7d32 !important; box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;`,
+        '#avatar-btn yt-img-shadow': `border-radius: 4px 24px 4px 24px !important; border: 2px solid #81c784 !important; padding: 2px !important; background: #1b5e20 !important; transition: transform 0.4s !important;`,
+        '#avatar-btn yt-img-shadow:hover': `transform: rotate(-10deg) scale(1.1) !important;`,
+        'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 4px 24px 4px 24px !important; border: 2px solid #81c784 !important; background: #0b1f10 !important; box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;`
+    },
     'neo-brutalism': {
-        '#masthead-container, ytd-masthead': `background: #fdf5e6 !important; border: none !important; box-shadow: 0 8px 0 #000 !important;`,
+        '#masthead-container, ytd-masthead': `background: #fdf5e6 !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 8px 0 #000 !important;`,
         'ytd-topbar-logo-renderer': `filter: none !important; transform: scale(1.1) !important; transform-origin: left center !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 3px solid #000 !important; background: #fff !important; box-shadow: 5px 5px 0 #000 !important; margin-right: 15px !important;`,
         '#search-input input': `font-family: 'Space Grotesk', sans-serif !important; color: #000 !important; font-weight: 800 !important; font-size: 16px !important;`,
@@ -130,7 +144,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border: 4px solid #000 !important; background: #fdf5e6 !important; box-shadow: 10px 10px 0 #000 !important;`
     },
     'origami': {
-        '#masthead-container, ytd-masthead': `background: #f0f0f0 !important; border: none !important; box-shadow: 0 5px 15px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05) !important;`,
+        '#masthead-container, ytd-masthead': `background: #f0f0f0 !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 5px 15px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border: 1px solid #ccc !important; background: #fff !important; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important; padding-left: 15px !important;`,
         '#search-input input': `font-family: 'Lato', sans-serif !important; color: #333 !important;`,
         '#search-icon-legacy': `background: #e0e0e0 !important; border-radius: 0 !important; border: none !important; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important; margin-left: 5px !important;`,
@@ -141,7 +155,7 @@ const themeConfigs = {
         '#avatar-btn yt-img-shadow': `border-radius: 0 !important; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important; border: 2px solid #ccc !important; padding: 2px !important; background: #fff !important;`
     },
     'retro-wave': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #10002b 0%, #240046 100%) !important; border: none !important; box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #10002b 0%, #240046 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(2px 2px 0px #00ffff) drop-shadow(-2px -2px 0px #ff00ff) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 20px !important; border: 2px solid #00ffff !important; background: rgba(36,0,70,0.8) !important; box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff !important;`,
         '#search-input input': `font-family: 'Impact', sans-serif !important; color: #ff00ff !important; font-size: 16px !important; text-shadow: 1px 1px 2px #000 !important; letter-spacing: 1px !important;`,
@@ -157,7 +171,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 12px !important; border: 2px solid #ff00ff !important; background: #10002b !important; box-shadow: 0 0 20px #ff00ff !important;`
     },
     'steampunk': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(to bottom, #5c4033 0%, #3b2f2f 100%) !important; border: none !important; box-shadow: 0 8px 15px rgba(0,0,0,0.6) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(to bottom, #5c4033 0%, #3b2f2f 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 8px 15px rgba(0,0,0,0.6) !important;`,
         'ytd-topbar-logo-renderer': `filter: sepia(0.8) contrast(1.2) drop-shadow(1px 1px 2px #000) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 5px !important; border: 3px double #d2b48c !important; background: url('https://www.transparenttextures.com/patterns/old-wall.png'), #4a3a30 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.8) !important;`,
         '#search-input input': `font-family: 'Playfair Display', serif !important; color: #wheat !important; font-size: 16px !important; text-shadow: 1px 1px 1px #000 !important;`,
@@ -173,7 +187,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 5px !important; border: 4px groove #d2b48c !important; background: #3b2f2f !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; font-family: 'Playfair Display', serif !important;`
     },
     'vaporwave': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%) !important; border: none !important; box-shadow: 0 4px 15px rgba(185,103,255,0.4) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(90deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 15px rgba(185,103,255,0.4) !important;`,
         'ytd-topbar-logo-renderer': `filter: hue-rotate(90deg) drop-shadow(2px 2px 0px #fff) !important; transform: skewX(-5deg) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 0 !important; border-top: 2px solid #fff !important; border-left: 2px solid #fff !important; border-right: 2px solid #000 !important; border-bottom: 2px solid #000 !important; background: #c0c0c0 !important; padding: 2px !important;`,
         '#search-input input': `font-family: 'MS Sans Serif', 'Tahoma', sans-serif !important; color: #000 !important; font-size: 14px !important; font-weight: bold !important; letter-spacing: 1px !important;`,
@@ -189,7 +203,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 0 !important; border-top: 2px solid #fff !important; border-left: 2px solid #fff !important; border-right: 2px solid #000 !important; border-bottom: 2px solid #000 !important; background: #c0c0c0 !important;`
     },
     'woodblock': {
-        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #8b5a2b !important; border: none !important; box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;`,
+        '#masthead-container, ytd-masthead': `background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #8b5a2b !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;`,
         'ytd-topbar-logo-renderer': `filter: sepia(0.5) brightness(0.8) contrast(1.2) drop-shadow(1px 1px 1px #333) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 12px !important; border: 3px inset #5c3a21 !important; background: #cd853f !important; box-shadow: inset 3px 3px 6px rgba(0,0,0,0.4) !important;`,
         '#search-input input': `font-family: 'Georgia', serif !important; color: #3e2723 !important; font-weight: bold !important; text-shadow: 1px 1px 0px rgba(255,255,255,0.2) !important;`,
@@ -204,7 +218,7 @@ const themeConfigs = {
         'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: 12px !important; border: 4px solid #5c3a21 !important; background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #cd853f !important; box-shadow: 5px 5px 15px rgba(0,0,0,0.6) !important;`
     },
     'y2k': {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #d4d4d4 0%, #ffffff 50%, #b5b5b5 100%) !important; border: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;`,
+        '#masthead-container, ytd-masthead': `background: linear-gradient(180deg, #d4d4d4 0%, #ffffff 50%, #b5b5b5 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;`,
         'ytd-topbar-logo-renderer': `filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)) saturate(1.5) !important;`,
         '#container.ytd-searchbox, ytd-searchbox': `border-radius: 25px !important; border: 2px solid #999 !important; background: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%) !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 4px rgba(255,255,255,0.8) !important; padding: 0 15px !important;`,
         '#search-input input': `font-family: 'Verdana', sans-serif !important; color: #333 !important; font-size: 14px !important; font-weight: bold !important; text-shadow: 1px 1px 0 #fff !important;`,
@@ -222,37 +236,92 @@ const themeConfigs = {
     }
 };
 
+const BORDER_STYLES = ['solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset'];
+const FONTS = [
+    "'Comic Sans MS', cursive",
+    "'Space Mono', monospace",
+    "'Playfair Display', serif",
+    "'Courier New', monospace",
+    "'Space Grotesk', sans-serif",
+    "'Lato', sans-serif",
+    "'Impact', sans-serif",
+    "'Georgia', serif",
+    "'Verdana', sans-serif",
+    "'Trebuchet MS', sans-serif",
+    "'Times New Roman', serif",
+    "'Arial Black', sans-serif",
+    "'Palatino Linotype', serif",
+    "'Lucida Console', monospace",
+    "'Brush Script MT', cursive",
+    "'Garamond', serif"
+];
+const BOX_SHADOWS = [
+    (c1, c2) => "0 4px 20px " + c2 + "66",
+    (c1, c2) => "5px 5px 0 " + c2,
+    (c1, c2) => "inset 0 0 15px " + c1 + "33, 0 0 15px " + c1 + "88",
+    (c1, c2) => "0 10px 30px rgba(0,0,0,0.5)",
+    (c1, c2) => "0 0 10px " + c1 + ", 0 0 20px " + c1,
+    (c1, c2) => "8px 8px 16px rgba(0,0,0,0.2), -8px -8px 16px rgba(255,255,255,0.1)"
+];
+const BACKGROUNDS = [
+    (c1, c2, op) => "linear-gradient(135deg, " + c1 + op + ", " + c2 + op + ")",
+    (c1, c2, op) => "radial-gradient(circle, " + c1 + op + ", " + c2 + op + ")",
+    (c1, c2, op) => "repeating-linear-gradient(45deg, " + c1 + "22, " + c1 + "22 10px, " + c2 + "22 10px, " + c2 + "22 20px), rgba(20,20,20, 0.9)",
+    (c1, c2, op) => "linear-gradient(to right, rgba(0,0,0,0.9), " + c1 + "88)",
+    (c1, c2, op) => c1 + op,
+    (c1, c2, op) => "url('https://www.transparenttextures.com/patterns/dark-matter.png'), " + c2 + op
+];
+const BORDER_RADIUS = [
+    '0px', '4px', '8px', '12px', '20px', '30px', '50px',
+    '20px 0 20px 0', '0 20px 0 20px', '10px 30px 10px 30px', '50% 10% 50% 10%'
+];
+
 function getGenericDesign(themeName) {
     let hash = 0;
     for (let i = 0; i < themeName.length; i++) {
         hash = themeName.charCodeAt(i) + ((hash << 5) - hash);
     }
-    const color1 = `hsl(${Math.abs(hash % 360)}, 70%, 50%)`;
-    const color2 = `hsl(${Math.abs((hash + 120) % 360)}, 70%, 40%)`;
-    const radius = (Math.abs(hash % 4) * 10) + 'px';
-    const borderStyle = ['solid', 'dashed', 'dotted', 'double'][Math.abs(hash % 4)];
-    const bgOpacity = (Math.abs(hash % 5) * 0.1) + 0.5;
+    
+    // Pseudo-random deterministic selector
+    const p = (max) => Math.abs(hash % max);
+    
+    const hue1 = p(360);
+    const hue2 = (hue1 + 120 + p(60)) % 360;
+    
+    const c1 = "hsl(" + hue1 + ", 80%, 55%)";
+    const c2 = "hsl(" + hue2 + ", 70%, 45%)";
+    const bgOpacity = Math.abs(hash % 2) === 0 ? 'ff' : 'ee';
+    
+    const bStyle = BORDER_STYLES[p(BORDER_STYLES.length)];
+    const font = FONTS[p(FONTS.length)];
+    const shadowGen = BOX_SHADOWS[p(BOX_SHADOWS.length)];
+    const bgGen = BACKGROUNDS[p(BACKGROUNDS.length)];
+    const radius = BORDER_RADIUS[p(BORDER_RADIUS.length)];
+    
+    const bWidth = (p(3) + 1) + 'px';
+    const borderFull = bWidth + " " + bStyle + " " + c1;
 
     return {
-        '#masthead-container, ytd-masthead': `background: linear-gradient(135deg, rgba(30,30,30,${bgOpacity}), rgba(10,10,10,${bgOpacity})) !important; border: none !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px ${color2}44 !important;`,
-        'ytd-topbar-logo-renderer': `filter: drop-shadow(2px 2px 4px ${color1}) !important; transition: transform 0.3s !important;`,
-        'ytd-topbar-logo-renderer:hover': `transform: scale(1.05) !important;`,
-        '#container.ytd-searchbox, ytd-searchbox': `border-radius: ${radius} !important; border: 2px ${borderStyle} ${color1} !important; background: rgba(0,0,0,0.4) !important; box-shadow: inset 0 0 10px ${color2}33 !important;`,
-        '#search-input input': `font-family: inherit !important; color: ${color1} !important; font-weight: 500 !important; letter-spacing: 0.5px !important;`,
-        '#search-icon-legacy': `background: ${color2} !important; border-radius: 0 ${radius} ${radius} 0 !important; border: none !important; border-left: 2px ${borderStyle} ${color1} !important; transition: background 0.2s !important;`,
-        '#search-icon-legacy:hover': `background: ${color1} !important;`,
-        '#search-icon-legacy yt-icon': `color: #fff !important;`,
-        '#voice-search-button': `background: ${color2} !important; border-radius: ${radius} !important; border: 2px ${borderStyle} ${color1} !important; color: #fff !important; box-shadow: 0 0 10px ${color1}66 !important;`,
-        '.sbdd_b, .sbsb_a': `border-radius: ${radius} !important; border: 2px ${borderStyle} ${color1} !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px ${color2}66 !important;`,
-        '.sbsb_c': `color: #ccc !important; font-family: inherit !important;`,
-        '.sbsb_c:hover': `background: ${color2}33 !important; color: ${color1} !important; padding-left: 15px !important; transition: all 0.2s !important;`,
-        'ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button': `background: rgba(255,255,255,0.05) !important; border-radius: ${radius} !important; border: 1px solid ${color1} !important; transition: all 0.3s !important;`,
-        'ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover': `background: ${color1} !important; color: #fff !important; transform: translateY(-2px) !important; box-shadow: 0 4px 12px ${color1}88 !important;`,
-        '#avatar-btn yt-img-shadow': `border-radius: ${radius} !important; border: 2px solid ${color1} !important; box-shadow: 0 0 15px ${color2}66 !important; padding: 2px !important; background: rgba(255,255,255,0.1) !important;`,
-        'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': `border-radius: ${radius} !important; border: 2px ${borderStyle} ${color1} !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px ${color2}66 !important;`
+        '#masthead-container, ytd-masthead': "background: " + bgGen(c1, c2, bgOpacity) + " !important; border: none !important; border-top: none !important; border-bottom: none !important; backdrop-filter: blur(12px) !important; box-shadow: " + shadowGen(c1, c2) + " !important;",
+        'ytd-topbar-logo-renderer': "filter: drop-shadow(2px 2px 4px " + c1 + ") hue-rotate(" + p(180) + "deg) saturate(" + (p(2)+1) + ") !important; transition: transform 0.3s !important;",
+        'ytd-topbar-logo-renderer:hover': "transform: scale(1.08) rotate(" + (p(10)-5) + "deg) !important;",
+        '#container.ytd-searchbox, ytd-searchbox': "border-radius: " + radius + " !important; border: " + borderFull + " !important; background: rgba(10,10,10,0.6) !important; box-shadow: inset 0 0 10px " + c2 + "66 !important;",
+        '#search-input input': "font-family: " + font + " !important; color: " + c1 + " !important; font-weight: bold !important; letter-spacing: 1px !important; text-shadow: 1px 1px 2px " + c2 + "88 !important;",
+        '#search-icon-legacy': "background: " + c2 + "33 !important; border-radius: 0 " + radius + " " + radius + " 0 !important; border: none !important; border-left: " + borderFull + " !important; transition: all 0.3s !important;",
+        '#search-icon-legacy:hover': "background: " + c1 + "88 !important; box-shadow: " + shadowGen(c1, c2) + " !important;",
+        '#search-icon-legacy yt-icon': "color: #ffffff !important; filter: drop-shadow(0 0 2px " + c1 + ") !important;",
+        '#voice-search-button': "background: " + c2 + "44 !important; border-radius: " + radius + " !important; border: " + borderFull + " !important; color: #fff !important; box-shadow: 0 0 8px " + c1 + "88 !important; transition: transform 0.2s !important;",
+        '#voice-search-button:hover': "transform: scale(1.1) !important; background: " + c1 + "66 !important;",
+        '.sbdd_b, .sbsb_a': "border-radius: " + radius + " !important; border: " + borderFull + " !important; background: rgba(15,15,20,0.95) !important; backdrop-filter: blur(20px) !important; box-shadow: " + shadowGen(c1, c2) + " !important;",
+        '.sbsb_c': "color: #e0e0e0 !important; font-family: " + font + " !important; transition: all 0.2s !important;",
+        '.sbsb_c:hover': "background: " + c2 + "55 !important; color: " + c1 + " !important; padding-left: 20px !important; font-weight: bold !important; box-shadow: inset 4px 0 0 " + c1 + " !important;",
+        'ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button': "background: " + c2 + "22 !important; border-radius: " + radius + " !important; border: 1px " + bStyle + " " + c1 + " !important; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;",
+        'ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover': "background: " + c1 + "66 !important; color: #fff !important; transform: translateY(-4px) scale(1.1) !important; box-shadow: " + shadowGen(c1, c2) + " !important;",
+        '#avatar-btn yt-img-shadow': "border-radius: " + radius + " !important; border: " + bWidth + " " + bStyle + " " + c1 + " !important; box-shadow: " + shadowGen(c1, c2) + " !important; padding: 2px !important; background: " + c2 + "44 !important; transition: transform 0.4s !important;",
+        '#avatar-btn yt-img-shadow:hover': "transform: rotate(" + p(360) + "deg) scale(1.15) !important;",
+        'tp-yt-iron-dropdown ytd-multi-page-menu-renderer': "border-radius: " + radius + " !important; border: " + borderFull + " !important; background: rgba(10,10,15,0.95) !important; backdrop-filter: blur(25px) !important; box-shadow: " + shadowGen(c1, c2) + " !important;"
     };
 }
-
 
 const allThemes = fs.readdirSync(uiStylesDir).filter(f => fs.statSync(path.join(uiStylesDir, f)).isDirectory());
 
@@ -262,7 +331,6 @@ for (const theme of allThemes) {
     const rules = themeConfigs[theme] || getGenericDesign(theme);
     const cssText = buildCSS(theme, rules);
     
-    // Determine where to inject
     const modularNavbarPath = path.join(uiStylesDir, theme, 'components', 'navbar.css');
     const flatBundlePath = path.join(uiStylesDir, theme, 'bundle.css');
     
@@ -273,31 +341,26 @@ for (const theme of allThemes) {
     } else if (fs.existsSync(flatBundlePath)) {
         targetPath = flatBundlePath;
     } else {
-        // Create bundle.css if it doesn't even exist
         targetPath = flatBundlePath;
     }
 
-    // Read existing to avoid duplicate injections if run multiple times
     let existingContent = '';
     if (fs.existsSync(targetPath)) {
         existingContent = fs.readFileSync(targetPath, 'utf8');
     }
     
-    // Always replace existing navbar block to fix broken selectors
-    const marker = `/* Navbar Overhaul for ${theme} */`;
+    const marker = "/* Navbar Overhaul for " + theme + " */";
     if (existingContent.includes(marker)) {
-        // Remove the old (potentially broken) block and replace with fresh one
         const startIdx = existingContent.indexOf(marker);
-        // Trim everything from the marker to end of file, then re-append
         const beforeBlock = existingContent.substring(0, startIdx).trimEnd();
-        fs.writeFileSync(targetPath, beforeBlock + `\n${cssText}`, 'utf8');
-        console.log(`Replaced Navbar CSS in ${theme}`);
+        fs.writeFileSync(targetPath, beforeBlock + "\n" + cssText, 'utf8');
+        console.log("Replaced Navbar CSS in " + theme);
         injectedCount++;
     } else {
-        fs.appendFileSync(targetPath, `\n${cssText}`, 'utf8');
-        console.log(`Injected Navbar CSS into ${theme}`);
+        fs.appendFileSync(targetPath, "\n" + cssText, 'utf8');
+        console.log("Injected Navbar CSS into " + theme);
         injectedCount++;
     }
 }
 
-console.log(`\nDone! Successfully injected unique navbar designs into ${injectedCount} themes.`);
+console.log("\\nDone! Successfully injected unique navbar designs into " + injectedCount + " themes.");

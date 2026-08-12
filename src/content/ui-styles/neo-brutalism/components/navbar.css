@@ -43,7 +43,7 @@ html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for neo-brutalism */
 html[data-ypp-ui-style="neo-brutalism"] #masthead-container,
 html[data-ypp-ui-style="neo-brutalism"] ytd-masthead {
-background: #fdf5e6 !important; border: none !important; box-shadow: 0 8px 0 #000 !important;
+background: #fdf5e6 !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 8px 0 #000 !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] ytd-topbar-logo-renderer {
 filter: none !important; transform: scale(1.1) !important; transform-origin: left center !important;

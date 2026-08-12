@@ -43,7 +43,7 @@ html[data-ypp-ui-style="retro-wave"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for retro-wave */
 html[data-ypp-ui-style="retro-wave"] #masthead-container,
 html[data-ypp-ui-style="retro-wave"] ytd-masthead {
-background: linear-gradient(180deg, #10002b 0%, #240046 100%) !important; border: none !important; box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff !important;
+background: linear-gradient(180deg, #10002b 0%, #240046 100%) !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff !important;
 }
 html[data-ypp-ui-style="retro-wave"] ytd-topbar-logo-renderer {
 filter: drop-shadow(2px 2px 0px #00ffff) drop-shadow(-2px -2px 0px #ff00ff) !important;

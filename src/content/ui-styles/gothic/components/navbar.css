@@ -43,7 +43,7 @@ html[data-ypp-ui-style="gothic"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for gothic */
 html[data-ypp-ui-style="gothic"] #masthead-container,
 html[data-ypp-ui-style="gothic"] ytd-masthead {
-background: #1a1a1a !important; border: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;
+background: #1a1a1a !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;
 }
 html[data-ypp-ui-style="gothic"] ytd-topbar-logo-renderer {
 filter: sepia(1) hue-rotate(300deg) saturate(3) drop-shadow(2px 2px 0px #000) !important;

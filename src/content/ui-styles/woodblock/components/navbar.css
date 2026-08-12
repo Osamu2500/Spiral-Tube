@@ -43,7 +43,7 @@ html[data-ypp-ui-style="woodblock"] ytd-mini-guide-entry-renderer:hover {
 /* Navbar Overhaul for woodblock */
 html[data-ypp-ui-style="woodblock"] #masthead-container,
 html[data-ypp-ui-style="woodblock"] ytd-masthead {
-background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #8b5a2b !important; border: none !important; box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;
+background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #8b5a2b !important; border: none !important; border-bottom: none !important; border-top: none !important; box-shadow: 0 5px 10px rgba(0,0,0,0.5) !important;
 }
 html[data-ypp-ui-style="woodblock"] ytd-topbar-logo-renderer {
 filter: sepia(0.5) brightness(0.8) contrast(1.2) drop-shadow(1px 1px 1px #333) !important;
