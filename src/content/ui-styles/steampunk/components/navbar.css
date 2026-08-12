@@ -39,3 +39,48 @@ html[data-ypp-ui-style="steampunk"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-style="steampunk"] ytd-mini-guide-entry-renderer:hover {
   transform: scale(1.1) !important; box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
+
+
+/* Navbar Overhaul for steampunk */
+html[data-ypp-ui-style="steampunk"] #masthead-container, ytd-masthead {
+background: linear-gradient(to bottom, #5c4033 0%, #3b2f2f 100%) !important; border-bottom: 4px groove #d2b48c !important; box-shadow: 0 8px 15px rgba(0,0,0,0.6) !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-topbar-logo-renderer {
+filter: sepia(0.8) contrast(1.2) drop-shadow(1px 1px 2px #000) !important;
+}
+html[data-ypp-ui-style="steampunk"] #container.ytd-searchbox, ytd-searchbox {
+border-radius: 5px !important; border: 3px double #d2b48c !important; background: url('https://www.transparenttextures.com/patterns/old-wall.png'), #4a3a30 !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="steampunk"] #search-input input {
+font-family: 'Playfair Display', serif !important; color: #wheat !important; font-size: 16px !important; text-shadow: 1px 1px 1px #000 !important;
+}
+html[data-ypp-ui-style="steampunk"] #search-icon-legacy {
+background: linear-gradient(to bottom, #d2b48c, #8b6508) !important; border-radius: 0 5px 5px 0 !important; border-left: 2px solid #3b2f2f !important; box-shadow: inset 0 0 5px rgba(255,255,255,0.3) !important;
+}
+html[data-ypp-ui-style="steampunk"] #search-icon-legacy yt-icon {
+color: #3b2f2f !important;
+}
+html[data-ypp-ui-style="steampunk"] #voice-search-button {
+background: radial-gradient(circle, #8b6508, #4a3a30) !important; border-radius: 50% !important; border: 3px double #d2b48c !important; box-shadow: 2px 2px 5px rgba(0,0,0,0.5), inset 0 0 5px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="steampunk"] .sbdd_b, .sbsb_a {
+border-radius: 5px !important; border: 4px groove #d2b48c !important; background: url('https://www.transparenttextures.com/patterns/old-wall.png'), #3b2f2f !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+}
+html[data-ypp-ui-style="steampunk"] .sbsb_c {
+font-family: 'Playfair Display', serif !important; color: #wheat !important; border-bottom: 1px dotted #8b6508 !important;
+}
+html[data-ypp-ui-style="steampunk"] .sbsb_c:hover {
+background: rgba(139,101,8,0.3) !important; color: #fff !important; font-style: italic !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+border-radius: 50% !important; background: transparent !important; border: 2px solid transparent !important; color: #d2b48c !important; transition: transform 0.5s !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+transform: rotate(90deg) !important; background: rgba(139,101,8,0.2) !important; border: 2px solid #8b6508 !important;
+}
+html[data-ypp-ui-style="steampunk"] #avatar-btn yt-img-shadow {
+border-radius: 50% !important; border: 4px ridge #d2b48c !important; box-shadow: 2px 2px 8px rgba(0,0,0,0.6) !important; filter: sepia(0.6) contrast(1.1) !important;
+}
+html[data-ypp-ui-style="steampunk"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
+border-radius: 5px !important; border: 4px groove #d2b48c !important; background: #3b2f2f !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; font-family: 'Playfair Display', serif !important;
+}

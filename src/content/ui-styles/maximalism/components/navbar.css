@@ -8,3 +8,53 @@ html[data-ypp-ui-style=maximalism] #content.ytd-app {
 html[data-ypp-ui-style=maximalism] #masthead-container {
   background: transparent !important;
 }
+
+/* Navbar Overhaul for maximalism */
+html[data-ypp-ui-style="maximalism"] #masthead-container, ytd-masthead {
+background: linear-gradient(135deg, rgba(30,30,30,0.7), rgba(10,10,10,0.7)) !important; border-bottom: 3px solid hsl(352, 70%, 50%) !important; backdrop-filter: blur(10px) !important; box-shadow: 0 4px 20px hsl(112, 70%, 40%)44 !important;
+}
+html[data-ypp-ui-style="maximalism"] ytd-topbar-logo-renderer {
+filter: drop-shadow(2px 2px 4px hsl(352, 70%, 50%)) !important; transition: transform 0.3s !important;
+}
+html[data-ypp-ui-style="maximalism"] ytd-topbar-logo-renderer:hover {
+transform: scale(1.05) !important;
+}
+html[data-ypp-ui-style="maximalism"] #container.ytd-searchbox, ytd-searchbox {
+border-radius: 0px !important; border: 2px solid hsl(352, 70%, 50%) !important; background: rgba(0,0,0,0.4) !important; box-shadow: inset 0 0 10px hsl(112, 70%, 40%)33 !important;
+}
+html[data-ypp-ui-style="maximalism"] #search-input input {
+font-family: inherit !important; color: hsl(352, 70%, 50%) !important; font-weight: 500 !important; letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="maximalism"] #search-icon-legacy {
+background: hsl(112, 70%, 40%) !important; border-radius: 0 0px 0px 0 !important; border: none !important; border-left: 2px solid hsl(352, 70%, 50%) !important; transition: background 0.2s !important;
+}
+html[data-ypp-ui-style="maximalism"] #search-icon-legacy:hover {
+background: hsl(352, 70%, 50%) !important;
+}
+html[data-ypp-ui-style="maximalism"] #search-icon-legacy yt-icon {
+color: #fff !important;
+}
+html[data-ypp-ui-style="maximalism"] #voice-search-button {
+background: hsl(112, 70%, 40%) !important; border-radius: 0px !important; border: 2px solid hsl(352, 70%, 50%) !important; color: #fff !important; box-shadow: 0 0 10px hsl(352, 70%, 50%)66 !important;
+}
+html[data-ypp-ui-style="maximalism"] .sbdd_b, .sbsb_a {
+border-radius: 0px !important; border: 2px solid hsl(352, 70%, 50%) !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px hsl(112, 70%, 40%)66 !important;
+}
+html[data-ypp-ui-style="maximalism"] .sbsb_c {
+color: #ccc !important; font-family: inherit !important;
+}
+html[data-ypp-ui-style="maximalism"] .sbsb_c:hover {
+background: hsl(112, 70%, 40%)33 !important; color: hsl(352, 70%, 50%) !important; padding-left: 15px !important; transition: all 0.2s !important;
+}
+html[data-ypp-ui-style="maximalism"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+background: rgba(255,255,255,0.05) !important; border-radius: 0px !important; border: 1px solid hsl(352, 70%, 50%) !important; transition: all 0.3s !important;
+}
+html[data-ypp-ui-style="maximalism"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+background: hsl(352, 70%, 50%) !important; color: #fff !important; transform: translateY(-2px) !important; box-shadow: 0 4px 12px hsl(352, 70%, 50%)88 !important;
+}
+html[data-ypp-ui-style="maximalism"] #avatar-btn yt-img-shadow {
+border-radius: 0px !important; border: 2px solid hsl(352, 70%, 50%) !important; box-shadow: 0 0 15px hsl(112, 70%, 40%)66 !important; padding: 2px !important; background: rgba(255,255,255,0.1) !important;
+}
+html[data-ypp-ui-style="maximalism"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
+border-radius: 0px !important; border: 2px solid hsl(352, 70%, 50%) !important; background: rgba(15,15,15,0.95) !important; backdrop-filter: blur(15px) !important; box-shadow: 0 10px 30px hsl(112, 70%, 40%)66 !important;
+}

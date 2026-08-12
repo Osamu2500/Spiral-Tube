@@ -39,3 +39,48 @@ html[data-ypp-ui-style="matrix"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-style="matrix"] ytd-mini-guide-entry-renderer:hover {
   transform: scale(1.1) !important; box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
+
+
+/* Navbar Overhaul for matrix */
+html[data-ypp-ui-style="matrix"] #masthead-container, ytd-masthead {
+background: #000 !important; border-bottom: 2px solid #0f0 !important; box-shadow: 0 0 15px #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-topbar-logo-renderer {
+filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(5) drop-shadow(0 0 5px #0f0) !important;
+}
+html[data-ypp-ui-style="matrix"] #container.ytd-searchbox, ytd-searchbox {
+border-radius: 0 !important; border: 1px solid #0f0 !important; background: #001100 !important;
+}
+html[data-ypp-ui-style="matrix"] #search-input input {
+font-family: 'Courier New', Courier, monospace !important; color: #0f0 !important; text-shadow: 0 0 2px #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] #search-icon-legacy {
+background: #002200 !important; border-radius: 0 !important; border-left: 1px solid #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] #search-icon-legacy yt-icon {
+color: #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] #voice-search-button {
+background: #001100 !important; border-radius: 0 !important; border: 1px solid #0f0 !important; color: #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] .sbdd_b, .sbsb_a {
+border-radius: 0 !important; border: 1px solid #0f0 !important; background: #000 !important; box-shadow: 0 5px 20px rgba(0,255,0,0.4) !important;
+}
+html[data-ypp-ui-style="matrix"] .sbsb_c {
+font-family: 'Courier New', Courier, monospace !important; color: #0a0 !important;
+}
+html[data-ypp-ui-style="matrix"] .sbsb_c:hover {
+background: #003300 !important; color: #0f0 !important; text-shadow: 0 0 4px #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+border-radius: 0 !important; color: #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+background: #003300 !important; box-shadow: 0 0 10px #0f0 !important;
+}
+html[data-ypp-ui-style="matrix"] #avatar-btn yt-img-shadow {
+border-radius: 0 !important; border: 2px solid #0f0 !important; filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(3) !important;
+}
+html[data-ypp-ui-style="matrix"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
+border-radius: 0 !important; border: 1px solid #0f0 !important; background: #000 !important; font-family: 'Courier New', Courier, monospace !important;
+}

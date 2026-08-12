@@ -39,3 +39,51 @@ html[data-ypp-ui-style="anime"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-style="anime"] ytd-mini-guide-entry-renderer:hover {
   transform: scale(1.1) !important; box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
+
+
+/* Navbar Overhaul for anime */
+html[data-ypp-ui-style="anime"] #masthead-container, ytd-masthead {
+background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%) !important; border-bottom: 3px solid #ff758c !important; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-topbar-logo-renderer {
+filter: drop-shadow(2px 2px 0px #fff) !important; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-topbar-logo-renderer:hover {
+transform: scale(1.1) rotate(-3deg) !important;
+}
+html[data-ypp-ui-style="anime"] #container.ytd-searchbox, ytd-searchbox {
+border-radius: 50px !important; border: 2px solid #ff758c !important; background: rgba(255, 255, 255, 0.9) !important; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05) !important; padding: 0 10px !important;
+}
+html[data-ypp-ui-style="anime"] #search-input input {
+font-family: 'Comic Sans MS', cursive, sans-serif !important; color: #ff758c !important; font-weight: bold !important; font-size: 16px !important;
+}
+html[data-ypp-ui-style="anime"] #search-icon-legacy {
+background: #ff758c !important; border-radius: 0 50px 50px 0 !important; border: none !important; width: 60px !important;
+}
+html[data-ypp-ui-style="anime"] #search-icon-legacy yt-icon {
+color: white !important;
+}
+html[data-ypp-ui-style="anime"] #voice-search-button {
+background: #ff758c !important; border-radius: 50% !important; border: 2px solid #fff !important; box-shadow: 0 2px 10px rgba(255,117,140,0.4) !important;
+}
+html[data-ypp-ui-style="anime"] .sbdd_b, .sbsb_a {
+border-radius: 20px !important; border: 2px solid #ff758c !important; background: #fffafb !important; box-shadow: 0 10px 25px rgba(255,117,140,0.3) !important; overflow: hidden !important;
+}
+html[data-ypp-ui-style="anime"] .sbsb_c:hover {
+background: #ffecf0 !important; font-weight: bold !important; color: #ff758c !important;
+}
+html[data-ypp-ui-style="anime"] ytd-topbar-menu-button-renderer yt-icon-button, ytd-notification-topbar-button-renderer yt-icon-button {
+background: rgba(255,255,255,0.5) !important; border-radius: 50% !important; border: 2px solid transparent !important; transition: all 0.2s !important;
+}
+html[data-ypp-ui-style="anime"] ytd-topbar-menu-button-renderer yt-icon-button:hover, ytd-notification-topbar-button-renderer yt-icon-button:hover {
+border: 2px solid #ff758c !important; background: #fff !important; transform: translateY(-3px) !important;
+}
+html[data-ypp-ui-style="anime"] #avatar-btn yt-img-shadow {
+border-radius: 50% !important; border: 3px solid #ff758c !important; padding: 2px !important; background: #fff !important; transition: transform 0.3s !important;
+}
+html[data-ypp-ui-style="anime"] #avatar-btn yt-img-shadow:hover {
+transform: rotate(360deg) scale(1.1) !important;
+}
+html[data-ypp-ui-style="anime"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer, tp-yt-iron-dropdown ytd-account-settings-menu-renderer {
+border-radius: 20px !important; border: 2px solid #ff758c !important; background: #fffafb !important; box-shadow: 0 10px 25px rgba(255,117,140,0.3) !important;
+}
