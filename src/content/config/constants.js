@@ -384,7 +384,8 @@ window.YPP.CONSTANTS = {
         RETRO: { key: 'retro', label: 'Retro OS', class: 'ypp-theme-retro' },
         CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' },
         HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' },
-        AURORA: { key: 'aurora', label: 'Aurora', class: 'ypp-theme-aurora' }
+        AURORA: { key: 'aurora', label: 'Aurora', class: 'ypp-theme-aurora' },
+        AUTUMN: { key: 'autumn', label: 'Autumn', class: 'ypp-theme-autumn' }
     },
 
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
@@ -411,7 +412,8 @@ const CARD_STYLES = [
   { id: 'frutiger-aero', label: 'Frutiger Aero (Web 2.0 Glass)' },
   { id: 'christmas', label: 'Christmas (Festive)' },
   { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
-  { id: 'aurora', label: 'Aurora (Northern Lights)' }
+  { id: 'aurora', label: 'Aurora (Northern Lights)' },
+  { id: 'autumn', label: 'Autumn (Fallen Leaf)' }
 ];
 
 export const YOUTUBE_PAGE_THEMES = [
@@ -431,6 +433,7 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'christmas', label: 'Christmas (Festive)' },
   { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
   { id: 'aurora', label: 'Aurora (Northern Lights)' },
+  { id: 'autumn', label: 'Autumn (Fallen Leaf)' },
   { id: 'cherry', label: 'Cherry (Night Sakura)' }
 ];
 
