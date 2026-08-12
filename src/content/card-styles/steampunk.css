@@ -266,6 +266,83 @@ html[data-ypp-ui-style="steampunk"] ytd-guide-entry-renderer:hover {
 }
 
 
+/* === STEAMPUNK - CHANNEL PAGE === */
+html[data-ypp-ui-style="steampunk"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="steampunk"] #channel-header,
+html[data-ypp-ui-style="steampunk"] #tabs-inner-container,
+html[data-ypp-ui-style="steampunk"] tp-yt-paper-tab,
+html[data-ypp-ui-style="steampunk"] ytd-expandable-tab-renderer,
+html[data-ypp-ui-style="steampunk"] #channel-container {
+    background-color: var(--steampunk-bg) !important;
+    border-bottom: var(--steampunk-border) !important;
+}
+
+/* === STEAMPUNK - CHANNEL TABS HOVER === */
+html[data-ypp-ui-style="steampunk"] tp-yt-paper-tab:hover {
+    background-color: var(--steampunk-primary) !important;
+    border-radius: var(--steampunk-radius) !important;
+    transform: translateY(-2px) !important;
+}
+
+
+/* === STEAMPUNK - PLAYLISTS === */
+html[data-ypp-ui-style="steampunk"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="steampunk"] .playlist-items,
+html[data-ypp-ui-style="steampunk"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="steampunk"] ytd-playlist-sidebar-renderer,
+html[data-ypp-ui-style="steampunk"] ytd-playlist-header-renderer {
+    background-color: var(--steampunk-secondary) !important;
+    border: var(--steampunk-border) !important;
+    border-radius: var(--steampunk-radius) !important;
+    box-shadow: var(--steampunk-shadow) !important;
+}
+
+/* === STEAMPUNK - PLAYLIST VIDEO HOVER === */
+html[data-ypp-ui-style="steampunk"] ytd-playlist-panel-video-renderer:hover {
+    background-color: var(--steampunk-primary) !important;
+    transform: translateX(5px) !important;
+}
+
+
+/* === STEAMPUNK - MINIPLAYER === */
+html[data-ypp-ui-style="steampunk"] ytd-miniplayer,
+html[data-ypp-ui-style="steampunk"] #miniplayer-bar,
+html[data-ypp-ui-style="steampunk"] .ytp-miniplayer-ui,
+html[data-ypp-ui-style="steampunk"] .miniplayer,
+html[data-ypp-ui-style="steampunk"] ytd-miniplayer[active] {
+    background-color: var(--steampunk-secondary) !important;
+    border: var(--steampunk-border) !important;
+    border-radius: var(--steampunk-radius) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
+    overflow: hidden !important;
+}
+
+
+/* === STEAMPUNK - END SCREENS === */
+html[data-ypp-ui-style="steampunk"] .ytp-ce-element, html[data-ypp-card-style="steampunk"] .ytp-ce-element,
+html[data-ypp-ui-style="steampunk"] .ytp-ce-video, html[data-ypp-card-style="steampunk"] .ytp-ce-video,
+html[data-ypp-ui-style="steampunk"] .ytp-ce-channel, html[data-ypp-card-style="steampunk"] .ytp-ce-channel,
+html[data-ypp-ui-style="steampunk"] .ytp-ce-playlist, html[data-ypp-card-style="steampunk"] .ytp-ce-playlist,
+html[data-ypp-ui-style="steampunk"] .ytp-ce-covering-overlay, html[data-ypp-card-style="steampunk"] .ytp-ce-covering-overlay,
+html[data-ypp-ui-style="steampunk"] .ytp-ce-expanding-image, html[data-ypp-card-style="steampunk"] .ytp-ce-expanding-image {
+    border-radius: 50% !important;
+    border: var(--steampunk-border) !important;
+    box-shadow: var(--steampunk-shadow) !important;
+}
+
+
+/* === STEAMPUNK - TRANSCRIPTS & CHAPTERS === */
+html[data-ypp-ui-style="steampunk"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="steampunk"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="steampunk"] ytd-macro-markers-list-item-renderer,
+html[data-ypp-ui-style="steampunk"] ytd-macro-markers-info-item-renderer,
+html[data-ypp-ui-style="steampunk"] #segments-container {
+    background-color: var(--steampunk-secondary) !important;
+    border: var(--steampunk-border) !important;
+    border-radius: var(--steampunk-radius) !important;
+}
+
+
 /* === STEAMPUNK - DEEP TEXT RULES === */
 html[data-ypp-ui-style="steampunk"] .yt-core-attributed-string *:nth-child(1),
 html[data-ypp-ui-style="steampunk"] .title *:nth-child(1),

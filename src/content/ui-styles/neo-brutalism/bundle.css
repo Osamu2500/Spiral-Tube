@@ -267,6 +267,83 @@ html[data-ypp-ui-style="neo-brutalism"] ytd-guide-entry-renderer:hover {
 }
 
 
+/* === NEO-BRUTALISM - CHANNEL PAGE === */
+html[data-ypp-ui-style="neo-brutalism"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="neo-brutalism"] #channel-header,
+html[data-ypp-ui-style="neo-brutalism"] #tabs-inner-container,
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-tab,
+html[data-ypp-ui-style="neo-brutalism"] ytd-expandable-tab-renderer,
+html[data-ypp-ui-style="neo-brutalism"] #channel-container {
+    background-color: var(--neo-brutalism-bg) !important;
+    border-bottom: var(--neo-brutalism-border) !important;
+}
+
+/* === NEO-BRUTALISM - CHANNEL TABS HOVER === */
+html[data-ypp-ui-style="neo-brutalism"] tp-yt-paper-tab:hover {
+    background-color: var(--neo-brutalism-primary) !important;
+    border-radius: var(--neo-brutalism-radius) !important;
+    transform: translateY(-2px) !important;
+}
+
+
+/* === NEO-BRUTALISM - PLAYLISTS === */
+html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="neo-brutalism"] .playlist-items,
+html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-sidebar-renderer,
+html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-header-renderer {
+    background-color: var(--neo-brutalism-secondary) !important;
+    border: var(--neo-brutalism-border) !important;
+    border-radius: var(--neo-brutalism-radius) !important;
+    box-shadow: var(--neo-brutalism-shadow) !important;
+}
+
+/* === NEO-BRUTALISM - PLAYLIST VIDEO HOVER === */
+html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-panel-video-renderer:hover {
+    background-color: var(--neo-brutalism-primary) !important;
+    transform: translateX(5px) !important;
+}
+
+
+/* === NEO-BRUTALISM - MINIPLAYER === */
+html[data-ypp-ui-style="neo-brutalism"] ytd-miniplayer,
+html[data-ypp-ui-style="neo-brutalism"] #miniplayer-bar,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-miniplayer-ui,
+html[data-ypp-ui-style="neo-brutalism"] .miniplayer,
+html[data-ypp-ui-style="neo-brutalism"] ytd-miniplayer[active] {
+    background-color: var(--neo-brutalism-secondary) !important;
+    border: var(--neo-brutalism-border) !important;
+    border-radius: var(--neo-brutalism-radius) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
+    overflow: hidden !important;
+}
+
+
+/* === NEO-BRUTALISM - END SCREENS === */
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-element, html[data-ypp-card-style="neo-brutalism"] .ytp-ce-element,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-video, html[data-ypp-card-style="neo-brutalism"] .ytp-ce-video,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-channel, html[data-ypp-card-style="neo-brutalism"] .ytp-ce-channel,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-playlist, html[data-ypp-card-style="neo-brutalism"] .ytp-ce-playlist,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-covering-overlay, html[data-ypp-card-style="neo-brutalism"] .ytp-ce-covering-overlay,
+html[data-ypp-ui-style="neo-brutalism"] .ytp-ce-expanding-image, html[data-ypp-card-style="neo-brutalism"] .ytp-ce-expanding-image {
+    border-radius: 0px !important;
+    border: var(--neo-brutalism-border) !important;
+    box-shadow: var(--neo-brutalism-shadow) !important;
+}
+
+
+/* === NEO-BRUTALISM - TRANSCRIPTS & CHAPTERS === */
+html[data-ypp-ui-style="neo-brutalism"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="neo-brutalism"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="neo-brutalism"] ytd-macro-markers-list-item-renderer,
+html[data-ypp-ui-style="neo-brutalism"] ytd-macro-markers-info-item-renderer,
+html[data-ypp-ui-style="neo-brutalism"] #segments-container {
+    background-color: var(--neo-brutalism-secondary) !important;
+    border: var(--neo-brutalism-border) !important;
+    border-radius: var(--neo-brutalism-radius) !important;
+}
+
+
 /* === NEO-BRUTALISM - DEEP TEXT RULES === */
 html[data-ypp-ui-style="neo-brutalism"] .yt-core-attributed-string *:nth-child(1),
 html[data-ypp-ui-style="neo-brutalism"] .title *:nth-child(1),

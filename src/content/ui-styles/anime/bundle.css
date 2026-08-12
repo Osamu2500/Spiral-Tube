@@ -266,6 +266,83 @@ html[data-ypp-ui-style="anime"] ytd-guide-entry-renderer:hover {
 }
 
 
+/* === ANIME - CHANNEL PAGE === */
+html[data-ypp-ui-style="anime"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="anime"] #channel-header,
+html[data-ypp-ui-style="anime"] #tabs-inner-container,
+html[data-ypp-ui-style="anime"] tp-yt-paper-tab,
+html[data-ypp-ui-style="anime"] ytd-expandable-tab-renderer,
+html[data-ypp-ui-style="anime"] #channel-container {
+    background-color: var(--anime-bg) !important;
+    border-bottom: var(--anime-border) !important;
+}
+
+/* === ANIME - CHANNEL TABS HOVER === */
+html[data-ypp-ui-style="anime"] tp-yt-paper-tab:hover {
+    background-color: var(--anime-primary) !important;
+    border-radius: var(--anime-radius) !important;
+    transform: translateY(-2px) !important;
+}
+
+
+/* === ANIME - PLAYLISTS === */
+html[data-ypp-ui-style="anime"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="anime"] .playlist-items,
+html[data-ypp-ui-style="anime"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="anime"] ytd-playlist-sidebar-renderer,
+html[data-ypp-ui-style="anime"] ytd-playlist-header-renderer {
+    background-color: var(--anime-secondary) !important;
+    border: var(--anime-border) !important;
+    border-radius: var(--anime-radius) !important;
+    box-shadow: var(--anime-shadow) !important;
+}
+
+/* === ANIME - PLAYLIST VIDEO HOVER === */
+html[data-ypp-ui-style="anime"] ytd-playlist-panel-video-renderer:hover {
+    background-color: var(--anime-primary) !important;
+    transform: translateX(5px) !important;
+}
+
+
+/* === ANIME - MINIPLAYER === */
+html[data-ypp-ui-style="anime"] ytd-miniplayer,
+html[data-ypp-ui-style="anime"] #miniplayer-bar,
+html[data-ypp-ui-style="anime"] .ytp-miniplayer-ui,
+html[data-ypp-ui-style="anime"] .miniplayer,
+html[data-ypp-ui-style="anime"] ytd-miniplayer[active] {
+    background-color: var(--anime-secondary) !important;
+    border: var(--anime-border) !important;
+    border-radius: var(--anime-radius) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
+    overflow: hidden !important;
+}
+
+
+/* === ANIME - END SCREENS === */
+html[data-ypp-ui-style="anime"] .ytp-ce-element, html[data-ypp-card-style="anime"] .ytp-ce-element,
+html[data-ypp-ui-style="anime"] .ytp-ce-video, html[data-ypp-card-style="anime"] .ytp-ce-video,
+html[data-ypp-ui-style="anime"] .ytp-ce-channel, html[data-ypp-card-style="anime"] .ytp-ce-channel,
+html[data-ypp-ui-style="anime"] .ytp-ce-playlist, html[data-ypp-card-style="anime"] .ytp-ce-playlist,
+html[data-ypp-ui-style="anime"] .ytp-ce-covering-overlay, html[data-ypp-card-style="anime"] .ytp-ce-covering-overlay,
+html[data-ypp-ui-style="anime"] .ytp-ce-expanding-image, html[data-ypp-card-style="anime"] .ytp-ce-expanding-image {
+    border-radius: 20px !important;
+    border: var(--anime-border) !important;
+    box-shadow: var(--anime-shadow) !important;
+}
+
+
+/* === ANIME - TRANSCRIPTS & CHAPTERS === */
+html[data-ypp-ui-style="anime"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="anime"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="anime"] ytd-macro-markers-list-item-renderer,
+html[data-ypp-ui-style="anime"] ytd-macro-markers-info-item-renderer,
+html[data-ypp-ui-style="anime"] #segments-container {
+    background-color: var(--anime-secondary) !important;
+    border: var(--anime-border) !important;
+    border-radius: var(--anime-radius) !important;
+}
+
+
 /* === ANIME - DEEP TEXT RULES === */
 html[data-ypp-ui-style="anime"] .yt-core-attributed-string *:nth-child(1),
 html[data-ypp-ui-style="anime"] .title *:nth-child(1),

@@ -266,6 +266,83 @@ html[data-ypp-ui-style="grunge"] ytd-guide-entry-renderer:hover {
 }
 
 
+/* === GRUNGE - CHANNEL PAGE === */
+html[data-ypp-ui-style="grunge"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="grunge"] #channel-header,
+html[data-ypp-ui-style="grunge"] #tabs-inner-container,
+html[data-ypp-ui-style="grunge"] tp-yt-paper-tab,
+html[data-ypp-ui-style="grunge"] ytd-expandable-tab-renderer,
+html[data-ypp-ui-style="grunge"] #channel-container {
+    background-color: var(--grunge-bg) !important;
+    border-bottom: var(--grunge-border) !important;
+}
+
+/* === GRUNGE - CHANNEL TABS HOVER === */
+html[data-ypp-ui-style="grunge"] tp-yt-paper-tab:hover {
+    background-color: var(--grunge-primary) !important;
+    border-radius: var(--grunge-radius) !important;
+    transform: translateY(-2px) !important;
+}
+
+
+/* === GRUNGE - PLAYLISTS === */
+html[data-ypp-ui-style="grunge"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="grunge"] .playlist-items,
+html[data-ypp-ui-style="grunge"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="grunge"] ytd-playlist-sidebar-renderer,
+html[data-ypp-ui-style="grunge"] ytd-playlist-header-renderer {
+    background-color: var(--grunge-secondary) !important;
+    border: var(--grunge-border) !important;
+    border-radius: var(--grunge-radius) !important;
+    box-shadow: var(--grunge-shadow) !important;
+}
+
+/* === GRUNGE - PLAYLIST VIDEO HOVER === */
+html[data-ypp-ui-style="grunge"] ytd-playlist-panel-video-renderer:hover {
+    background-color: var(--grunge-primary) !important;
+    transform: translateX(5px) !important;
+}
+
+
+/* === GRUNGE - MINIPLAYER === */
+html[data-ypp-ui-style="grunge"] ytd-miniplayer,
+html[data-ypp-ui-style="grunge"] #miniplayer-bar,
+html[data-ypp-ui-style="grunge"] .ytp-miniplayer-ui,
+html[data-ypp-ui-style="grunge"] .miniplayer,
+html[data-ypp-ui-style="grunge"] ytd-miniplayer[active] {
+    background-color: var(--grunge-secondary) !important;
+    border: var(--grunge-border) !important;
+    border-radius: var(--grunge-radius) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
+    overflow: hidden !important;
+}
+
+
+/* === GRUNGE - END SCREENS === */
+html[data-ypp-ui-style="grunge"] .ytp-ce-element, html[data-ypp-card-style="grunge"] .ytp-ce-element,
+html[data-ypp-ui-style="grunge"] .ytp-ce-video, html[data-ypp-card-style="grunge"] .ytp-ce-video,
+html[data-ypp-ui-style="grunge"] .ytp-ce-channel, html[data-ypp-card-style="grunge"] .ytp-ce-channel,
+html[data-ypp-ui-style="grunge"] .ytp-ce-playlist, html[data-ypp-card-style="grunge"] .ytp-ce-playlist,
+html[data-ypp-ui-style="grunge"] .ytp-ce-covering-overlay, html[data-ypp-card-style="grunge"] .ytp-ce-covering-overlay,
+html[data-ypp-ui-style="grunge"] .ytp-ce-expanding-image, html[data-ypp-card-style="grunge"] .ytp-ce-expanding-image {
+    border-radius: 2px !important;
+    border: var(--grunge-border) !important;
+    box-shadow: var(--grunge-shadow) !important;
+}
+
+
+/* === GRUNGE - TRANSCRIPTS & CHAPTERS === */
+html[data-ypp-ui-style="grunge"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="grunge"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="grunge"] ytd-macro-markers-list-item-renderer,
+html[data-ypp-ui-style="grunge"] ytd-macro-markers-info-item-renderer,
+html[data-ypp-ui-style="grunge"] #segments-container {
+    background-color: var(--grunge-secondary) !important;
+    border: var(--grunge-border) !important;
+    border-radius: var(--grunge-radius) !important;
+}
+
+
 /* === GRUNGE - DEEP TEXT RULES === */
 html[data-ypp-ui-style="grunge"] .yt-core-attributed-string *:nth-child(1),
 html[data-ypp-ui-style="grunge"] .title *:nth-child(1),

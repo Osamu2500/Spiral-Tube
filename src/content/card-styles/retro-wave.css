@@ -266,6 +266,83 @@ html[data-ypp-ui-style="retro-wave"] ytd-guide-entry-renderer:hover {
 }
 
 
+/* === RETRO-WAVE - CHANNEL PAGE === */
+html[data-ypp-ui-style="retro-wave"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="retro-wave"] #channel-header,
+html[data-ypp-ui-style="retro-wave"] #tabs-inner-container,
+html[data-ypp-ui-style="retro-wave"] tp-yt-paper-tab,
+html[data-ypp-ui-style="retro-wave"] ytd-expandable-tab-renderer,
+html[data-ypp-ui-style="retro-wave"] #channel-container {
+    background-color: var(--retro-wave-bg) !important;
+    border-bottom: var(--retro-wave-border) !important;
+}
+
+/* === RETRO-WAVE - CHANNEL TABS HOVER === */
+html[data-ypp-ui-style="retro-wave"] tp-yt-paper-tab:hover {
+    background-color: var(--retro-wave-primary) !important;
+    border-radius: var(--retro-wave-radius) !important;
+    transform: translateY(-2px) !important;
+}
+
+
+/* === RETRO-WAVE - PLAYLISTS === */
+html[data-ypp-ui-style="retro-wave"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-style="retro-wave"] .playlist-items,
+html[data-ypp-ui-style="retro-wave"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="retro-wave"] ytd-playlist-sidebar-renderer,
+html[data-ypp-ui-style="retro-wave"] ytd-playlist-header-renderer {
+    background-color: var(--retro-wave-secondary) !important;
+    border: var(--retro-wave-border) !important;
+    border-radius: var(--retro-wave-radius) !important;
+    box-shadow: var(--retro-wave-shadow) !important;
+}
+
+/* === RETRO-WAVE - PLAYLIST VIDEO HOVER === */
+html[data-ypp-ui-style="retro-wave"] ytd-playlist-panel-video-renderer:hover {
+    background-color: var(--retro-wave-primary) !important;
+    transform: translateX(5px) !important;
+}
+
+
+/* === RETRO-WAVE - MINIPLAYER === */
+html[data-ypp-ui-style="retro-wave"] ytd-miniplayer,
+html[data-ypp-ui-style="retro-wave"] #miniplayer-bar,
+html[data-ypp-ui-style="retro-wave"] .ytp-miniplayer-ui,
+html[data-ypp-ui-style="retro-wave"] .miniplayer,
+html[data-ypp-ui-style="retro-wave"] ytd-miniplayer[active] {
+    background-color: var(--retro-wave-secondary) !important;
+    border: var(--retro-wave-border) !important;
+    border-radius: var(--retro-wave-radius) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
+    overflow: hidden !important;
+}
+
+
+/* === RETRO-WAVE - END SCREENS === */
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-element, html[data-ypp-card-style="retro-wave"] .ytp-ce-element,
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-video, html[data-ypp-card-style="retro-wave"] .ytp-ce-video,
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-channel, html[data-ypp-card-style="retro-wave"] .ytp-ce-channel,
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-playlist, html[data-ypp-card-style="retro-wave"] .ytp-ce-playlist,
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-covering-overlay, html[data-ypp-card-style="retro-wave"] .ytp-ce-covering-overlay,
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-expanding-image, html[data-ypp-card-style="retro-wave"] .ytp-ce-expanding-image {
+    border-radius: 8px !important;
+    border: var(--retro-wave-border) !important;
+    box-shadow: var(--retro-wave-shadow) !important;
+}
+
+
+/* === RETRO-WAVE - TRANSCRIPTS & CHAPTERS === */
+html[data-ypp-ui-style="retro-wave"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="retro-wave"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-style="retro-wave"] ytd-macro-markers-list-item-renderer,
+html[data-ypp-ui-style="retro-wave"] ytd-macro-markers-info-item-renderer,
+html[data-ypp-ui-style="retro-wave"] #segments-container {
+    background-color: var(--retro-wave-secondary) !important;
+    border: var(--retro-wave-border) !important;
+    border-radius: var(--retro-wave-radius) !important;
+}
+
+
 /* === RETRO-WAVE - DEEP TEXT RULES === */
 html[data-ypp-ui-style="retro-wave"] .yt-core-attributed-string *:nth-child(1),
 html[data-ypp-ui-style="retro-wave"] .title *:nth-child(1),

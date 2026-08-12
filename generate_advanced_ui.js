@@ -70,6 +70,27 @@ const selectors = {
     liveChat: [
         'yt-live-chat-app', '#chat', 'yt-live-chat-renderer', '#chat-messages',
         'yt-live-chat-text-message-renderer', 'yt-live-chat-ticker-renderer'
+    ],
+    channelPage: [
+        'ytd-c4-tabbed-header-renderer', '#channel-header', '#tabs-inner-container',
+        'tp-yt-paper-tab', 'ytd-expandable-tab-renderer', '#channel-container'
+    ],
+    playlists: [
+        'ytd-playlist-panel-renderer', '.playlist-items', 'ytd-playlist-panel-video-renderer',
+        'ytd-playlist-sidebar-renderer', 'ytd-playlist-header-renderer'
+    ],
+    miniplayer: [
+        'ytd-miniplayer', '#miniplayer-bar', '.ytp-miniplayer-ui', '.miniplayer',
+        'ytd-miniplayer[active]'
+    ],
+    endscreens: [
+        '.ytp-ce-element', '.ytp-ce-video', '.ytp-ce-channel', '.ytp-ce-playlist',
+        '.ytp-ce-covering-overlay', '.ytp-ce-expanding-image'
+    ],
+    transcript: [
+        'ytd-transcript-search-panel-renderer', 'ytd-transcript-segment-renderer',
+        'ytd-macro-markers-list-item-renderer', 'ytd-macro-markers-info-item-renderer',
+        '#segments-container'
     ]
 };
 
@@ -96,7 +117,7 @@ function generateCSSBlock(theme, moduleName, selectorList, propertiesGenerator) 
     const prefix = `html[data-ypp-ui-style="${theme}"]`;
     const specificSelectors = selectorList.map(s => {
         let cardPrefix = '';
-        if (moduleName.includes('Cards') || moduleName.includes('Thumbnails') || moduleName.includes('Avatars') || moduleName.includes('Global Fonts')) {
+        if (moduleName.includes('Cards') || moduleName.includes('Thumbnails') || moduleName.includes('Avatars') || moduleName.includes('Global Fonts') || moduleName.includes('End Screens')) {
             cardPrefix = `, html[data-ypp-card-style="${theme}"] ${s}`;
         }
         return `${prefix} ${s}${cardPrefix}`;
@@ -170,8 +191,6 @@ function generateTheme(theme) {
     });
 
     // Phase 2 Modules
-    
-    // Shorts
     modules['11_shorts.css'] = generateCSSBlock(theme, 'Shorts UI', selectors.shortsUI, () => {
         return `    background-color: var(--${theme}-bg) !important;\n    border: var(--${theme}-border) !important;\n    border-radius: var(--${theme}-radius) !important;\n    box-shadow: var(--${theme}-shadow) !important;\n`;
     });
@@ -180,7 +199,6 @@ function generateTheme(theme) {
         return `    background-color: var(--${theme}-secondary) !important;\n    border-radius: 50% !important;\n    border: var(--${theme}-border) !important;\n    box-shadow: var(--${theme}-btn-shadow) !important;\n    margin-bottom: 12px !important;\n`;
     });
 
-    // Player UI
     modules['12_player.css'] = generateCSSBlock(theme, 'Player Controls Container', ['.ytp-chrome-bottom', '.ytp-gradient-bottom'], () => {
         return `    background: linear-gradient(to top, var(--${theme}-primary) 0%, transparent 100%) !important;\n    text-shadow: none !important;\n`;
     });
@@ -195,7 +213,6 @@ function generateTheme(theme) {
         return `    background-color: var(--${theme}-accent) !important;\n    border-radius: ${br} !important;\n    border: var(--${theme}-border) !important;\n`;
     });
 
-    // Live Chat
     modules['13_live_chat.css'] = generateCSSBlock(theme, 'Live Chat Window', selectors.liveChat, () => {
         return `    background-color: var(--${theme}-bg) !important;\n    font-family: var(--${theme}-font) !important;\n    color: var(--${theme}-text) !important;\n`;
     });
@@ -204,7 +221,6 @@ function generateTheme(theme) {
         return `    background-color: var(--${theme}-primary) !important;\n    border-bottom: var(--${theme}-border) !important;\n`;
     });
 
-    // Animations & Advanced Hover states
     modules['14_animations.css'] = generateCSSBlock(theme, 'Subscribe Button Glow', ['#subscribe-button:not([subscribed]) .yt-spec-button-shape-next--filled'], () => {
         let anim = '';
         if(theme === 'galaxy' || theme === 'hologram' || theme === 'vaporwave') {
@@ -221,6 +237,41 @@ function generateTheme(theme) {
             fx = `    background-color: var(--${theme}-accent) !important;\n    color: var(--${theme}-bg) !important;\n    transform: translate(-4px, -4px) !important;\n    box-shadow: 4px 4px 0px #000 !important;\n`;
         }
         return fx;
+    });
+
+    // Phase 3 Modules
+
+    // Channel Page
+    modules['15_channel.css'] = generateCSSBlock(theme, 'Channel Page', selectors.channelPage, () => {
+        return `    background-color: var(--${theme}-bg) !important;\n    border-bottom: var(--${theme}-border) !important;\n`;
+    });
+    modules['15_channel.css'] += generateCSSBlock(theme, 'Channel Tabs Hover', ['tp-yt-paper-tab:hover'], () => {
+        return `    background-color: var(--${theme}-primary) !important;\n    border-radius: var(--${theme}-radius) !important;\n    transform: translateY(-2px) !important;\n`;
+    });
+
+    // Playlists & Queues
+    modules['16_playlists.css'] = generateCSSBlock(theme, 'Playlists', selectors.playlists, () => {
+        return `    background-color: var(--${theme}-secondary) !important;\n    border: var(--${theme}-border) !important;\n    border-radius: var(--${theme}-radius) !important;\n    box-shadow: var(--${theme}-shadow) !important;\n`;
+    });
+    modules['16_playlists.css'] += generateCSSBlock(theme, 'Playlist Video Hover', ['ytd-playlist-panel-video-renderer:hover'], () => {
+        return `    background-color: var(--${theme}-primary) !important;\n    transform: translateX(5px) !important;\n`;
+    });
+
+    // Miniplayer
+    modules['17_miniplayer.css'] = generateCSSBlock(theme, 'Miniplayer', selectors.miniplayer, () => {
+        return `    background-color: var(--${theme}-secondary) !important;\n    border: var(--${theme}-border) !important;\n    border-radius: var(--${theme}-radius) !important;\n    box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;\n    overflow: hidden !important;\n`;
+    });
+
+    // End Screens
+    modules['18_endscreens.css'] = generateCSSBlock(theme, 'End Screens', selectors.endscreens, () => {
+        let r = conf.radius;
+        if(theme === 'neo-brutalism') r = '0px';
+        return `    border-radius: ${r} !important;\n    border: var(--${theme}-border) !important;\n    box-shadow: var(--${theme}-shadow) !important;\n`;
+    });
+
+    // Transcripts
+    modules['19_transcript.css'] = generateCSSBlock(theme, 'Transcripts & Chapters', selectors.transcript, () => {
+        return `    background-color: var(--${theme}-secondary) !important;\n    border: var(--${theme}-border) !important;\n    border-radius: var(--${theme}-radius) !important;\n`;
     });
 
     let deepTextCSS = '';
@@ -284,7 +335,6 @@ html[data-ypp-ui-style="${theme}"] ::-webkit-scrollbar-thumb:hover {
 
     fs.writeFileSync(path.join(baseDir, theme, 'bundle.css'), finalCSS);
 
-    // Also copy to card-styles to support the user's request
     const cardStylesDir = path.join(__dirname, 'src', 'content', 'card-styles');
     if (!fs.existsSync(cardStylesDir)) fs.mkdirSync(cardStylesDir, { recursive: true });
     fs.writeFileSync(path.join(cardStylesDir, `${theme}.css`), finalCSS);
@@ -292,7 +342,7 @@ html[data-ypp-ui-style="${theme}"] ::-webkit-scrollbar-thumb:hover {
     fs.rmSync(tempDir, { recursive: true, force: true });
     
     const lines = finalCSS.split('\n').length;
-    console.log(`Successfully leveled up phase 2 '${theme}'! Copied to card-styles. Total Lines: ${lines}`);
+    console.log(`Successfully leveled up phase 3 '${theme}'! Total Lines: ${lines}`);
 }
 
 themes.forEach(generateTheme);
