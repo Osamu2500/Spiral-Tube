@@ -1,7 +1,7 @@
 html[data-ypp-theme="bloodmoon"] ytd-masthead {
   background: rgba(6, 2, 5, 0.88) !important;
   -webkit-backdrop-filter: blur(18px) !important;
-  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important; backdrop-filter: blur(18px) !important;
   border-bottom: 1px solid var(--bm-glass-border) !important;
   box-shadow: 0 2px 20px rgba(192, 21, 42, 0.15), 0 0 0 1px rgba(192, 21, 42, 0.05) !important;
 }

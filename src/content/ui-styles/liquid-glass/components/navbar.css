@@ -19,7 +19,7 @@ html[data-ypp-ui-style="liquid-glass"] #masthead-container {
 /* Masthead Container Pill */
 html[data-ypp-ui-style="liquid-glass"] ytd-masthead #container {
   -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
-  backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
+  -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important; backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
   background: var(--lg-shine-modal), rgba(255, 255, 255, 0.06) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -64,7 +64,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-topbar-logo-renderer:hover {
 /* Acrylic Search Bar Container */
 html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.06) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px 0 0 2000px !important;
@@ -95,7 +95,7 @@ html[data-ypp-ui-style="liquid-glass"] #container.ytd-searchbox:focus-within::af
 
 html[data-ypp-ui-style="liquid-glass"] #search-icon-legacy.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   background: var(--lg-bg-level-2) !important;
   border: var(--lg-border-subtle) !important;
   border-left: none !important;
@@ -143,7 +143,7 @@ html[data-ypp-ui-style="liquid-glass"] tp-yt-app-drawer.ytd-app #contentContaine
 
 html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   border-radius: 2000px !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
@@ -166,7 +166,7 @@ html[data-ypp-ui-style="liquid-glass"] #buttons.ytd-masthead ytd-button-renderer
 html[data-ypp-ui-style="liquid-glass"] yt-icon-badge-shape .badge {
   border-radius: 2000px !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   background: rgba(255, 255, 255, 0.85) !important;
   color: black !important;
 }
@@ -179,7 +179,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.y
 
 html[data-ypp-ui-style="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.08) !important;
@@ -193,7 +193,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-masthead #avatar-btn:hover yt-img-sha
 html[data-ypp-ui-style="liquid-glass"] tp-yt-app-drawer #drawer.tp-yt-app-drawer,
 html[data-ypp-ui-style="liquid-glass"] ytd-guide-renderer {
   -webkit-backdrop-filter: var(--lg-blur-panel) !important;
-  backdrop-filter: var(--lg-blur-panel) !important;
+  -webkit-backdrop-filter: var(--lg-blur-panel) !important; backdrop-filter: var(--lg-blur-panel) !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border-right: var(--lg-border-specular) !important;
   box-shadow: var(--lg-border-top-light), 4px 0 32px rgba(0, 0, 0, 0.4) !important;
@@ -221,7 +221,7 @@ html[data-ypp-ui-style="liquid-glass"] yt-page-navigation-progress,
 html[data-ypp-ui-style="liquid-glass"] #ticker.ytd-app,
 html[data-ypp-ui-style="liquid-glass"] ytd-app > div.style-scope.ytd-app {
   background: transparent !important;
-  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
   box-shadow: none !important;
   border: none !important;
 }

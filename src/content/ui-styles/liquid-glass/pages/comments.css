@@ -12,7 +12,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-comments #header {
 /* Sort Menu Button */
 html[data-ypp-ui-style="liquid-glass"] #sort-menu.ytd-comments {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
-  backdrop-filter: var(--lg-blur-surface) !important;
+  -webkit-backdrop-filter: var(--lg-blur-surface) !important; backdrop-filter: var(--lg-blur-surface) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
   border-radius: 2000px !important;
@@ -29,7 +29,7 @@ html[data-ypp-ui-style="liquid-glass"] #sort-menu.ytd-comments:hover {
 html[data-ypp-ui-style="liquid-glass"] ytd-comment-simplebox-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-comment-dialog-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.14) !important;

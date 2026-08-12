@@ -23,7 +23,7 @@ html[data-ypp-card-style='winter']
     )
   ) {
   -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
-  backdrop-filter: blur(24px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important; backdrop-filter: blur(24px) saturate(150%) !important;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.1),
@@ -253,7 +253,7 @@ html[data-ypp-theme="winter"] .yt-spec-button-shape-next--mono {
     background-color: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.1)) !important;
     color: var(--ypp-text-primary, #fff) !important;
     transition: all 0.2s ease !important;
-    border-radius: 16px !important; backdrop-filter: blur(8px) !important; border: 1px solid rgba(173,216,230,0.5) !important;
+    border-radius: 16px !important; -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important; border: 1px solid rgba(173,216,230,0.5) !important;
 }
 
 html[data-ypp-theme="winter"] ytd-menu-renderer yt-button-shape button:hover,

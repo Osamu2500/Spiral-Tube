@@ -28,7 +28,7 @@ html[data-ypp-theme="blue-sky"] ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-
 }
 html[data-ypp-theme="blue-sky"] tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   background: rgba(220, 240, 255, 0.55) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
 }
 html[data-ypp-theme="blue-sky"] ytd-guide-entry-renderer {
@@ -71,7 +71,7 @@ html[data-ypp-theme="blue-sky"] .tp-yt-paper-tab[aria-selected="true"] .tab-cont
 html[data-ypp-theme="blue-sky"] #simplebox-placeholder,
 html[data-ypp-theme="blue-sky"] ytd-commentbox {
   background: var(--sky-bg-surface) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -85,7 +85,7 @@ html[data-ypp-theme="blue-sky"] ytd-commentbox:focus-within {
 /* ── Player controls area ── */
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -119,7 +119,7 @@ html[data-ypp-theme="blue-sky"] .ypp-icon-btn,
 html[data-ypp-theme="blue-sky"] .ypp-video-controls,
 html[data-ypp-theme="blue-sky"] .ypp-shadow-panel {
   background: var(--sky-bg-surface) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -146,7 +146,7 @@ html[data-ypp-theme="blue-sky"] .ypp-icon-btn:active {
 html[data-ypp-theme="blue-sky"] ytd-settings-options-renderer,
 html[data-ypp-theme="blue-sky"] ytd-account-settings-renderer {
   background: var(--sky-bg-surface) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--sky-shape-card) !important;
   box-shadow: var(--sky-shadow-card) !important;
@@ -158,7 +158,7 @@ html[data-ypp-theme="blue-sky"] ytd-account-settings-renderer {
 /* ── Reel videos ── */
 html[data-ypp-theme="blue-sky"] ytd-reel-video-renderer {
   background: rgba(220, 240, 255, 0.35) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;

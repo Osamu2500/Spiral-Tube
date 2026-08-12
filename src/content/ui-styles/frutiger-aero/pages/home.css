@@ -7,7 +7,7 @@
 html[data-ypp-ui-style="frutiger-aero"] ytd-feed-filter-chip-bar-renderer {
   background: var(--faero-glass-medium) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  backdrop-filter: var(--faero-blur) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
   border-bottom: var(--faero-border-white) !important;
   border-radius: 0 0 var(--faero-radius-lg) var(--faero-radius-lg) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
@@ -34,7 +34,7 @@ html[data-ypp-ui-style="frutiger-aero"] #right-arrow button:hover {
 html[data-ypp-ui-style="frutiger-aero"] ytd-rich-shelf-renderer {
   background: var(--faero-glass-light) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   padding: 16px !important;
@@ -62,7 +62,7 @@ html[data-ypp-ui-style="frutiger-aero"] tp-yt-paper-toast,
 html[data-ypp-ui-style="frutiger-aero"] #toast {
   background: var(--faero-glass-heavy) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  backdrop-filter: var(--faero-blur) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   color: var(--faero-text-primary) !important;

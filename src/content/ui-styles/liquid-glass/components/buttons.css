@@ -43,7 +43,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-bu
 /* Like & Dislike Unified Segmented Pill */
 html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   border-radius: 2000px !important;
   border: var(--lg-border-specular) !important;
@@ -78,7 +78,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer yt-button-shape button,
 html[data-ypp-ui-style="liquid-glass"] ytd-download-button-renderer yt-button-shape button,
 html[data-ypp-ui-style="liquid-glass"] ytd-button-renderer yt-button-shape button {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   border-radius: 2000px !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
@@ -97,7 +97,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-button-renderer yt-button-shape butto
 /* Chip Cloud / Category Shelf Pills */
 html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
   border-radius: 2000px !important;
   background: rgba(255, 255, 255, 0.08) !important;
   border: var(--lg-border-subtle) !important;

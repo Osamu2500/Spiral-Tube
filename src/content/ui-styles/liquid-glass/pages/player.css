@@ -39,7 +39,7 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-button:active {
 /* Play button — larger, more prominent glass pill */
 html[data-ypp-ui-style="liquid-glass"] .ytp-play-button {
   -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   background: rgba(255, 255, 255, 0.12) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
@@ -116,7 +116,7 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-volume-slider-handle {
 /* Chapter Hover Preview Glass Cards */
 html[data-ypp-ui-style="liquid-glass"] .ytp-tooltip {
   -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
-  backdrop-filter: blur(56px) saturate(240%) !important;
+  -webkit-backdrop-filter: blur(56px) saturate(240%) !important; backdrop-filter: blur(56px) saturate(240%) !important;
   background: linear-gradient(var(--lg-shine-modal), rgba(255, 255, 255, 0.08)) !important;
   border-radius: 20px !important;
   border: none !important;
@@ -130,7 +130,7 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-tooltip {
 
 html[data-ypp-ui-style="liquid-glass"] .ytp-timed-markers-dial-tooltip {
   -webkit-backdrop-filter: blur(20px) !important;
-  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important; backdrop-filter: blur(20px) !important;
   background: rgba(255, 255, 255, 0.10) !important;
   border: var(--lg-border-specular) !important;
   border-radius: 12px !important;
@@ -144,7 +144,7 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-tooltip-image-inner-div {
 /* Player Settings Panel */
 html[data-ypp-ui-style="liquid-glass"] .ytp-panel-menu {
   -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
-  backdrop-filter: blur(56px) saturate(240%) !important;
+  -webkit-backdrop-filter: blur(56px) saturate(240%) !important; backdrop-filter: blur(56px) saturate(240%) !important;
   background: rgba(255, 255, 255, 0.06) !important;
   border-radius: 20px !important;
   border: var(--lg-border-specular) !important;
@@ -172,7 +172,7 @@ html[data-ypp-ui-style="liquid-glass"] .ytp-panel-header {
 /* Captions / Subtitles */
 html[data-ypp-ui-style="liquid-glass"] .caption-window {
   -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   background: rgba(0, 0, 0, 0.45) !important;
   border-radius: 12px !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;

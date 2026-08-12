@@ -1,7 +1,7 @@
 /* Summer Player */
 html[data-ypp-card-style="summer"] .ytp-chrome-bottom {
     background: rgba(255, 100, 0, 0.4) !important;
-    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important; backdrop-filter: blur(15px) !important;
     border: var(--sum-border) !important;
     border-radius: 16px !important;
     margin: 10px !important;

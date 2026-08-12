@@ -57,7 +57,7 @@ html[data-ypp-theme="aurora"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#p
 html[data-ypp-theme="aurora"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   padding: 0 10px !important;
@@ -70,7 +70,7 @@ html[data-ypp-theme="aurora"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-
 html[data-ypp-theme="aurora"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   margin: 0 8px !important;
@@ -96,7 +96,7 @@ html[data-ypp-theme="aurora"] .ytp-play-progress {
 html[data-ypp-theme="aurora"] .ytSuggestionComponentRoundedSuggestion {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   margin: 6px 8px;

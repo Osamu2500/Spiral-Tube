@@ -11,7 +11,7 @@ html[data-ypp-theme="blue-sky"] ytd-comments {
 /* ── Individual comment threads ── */
 html[data-ypp-theme="blue-sky"] ytd-comment-thread-renderer {
   background: rgba(255, 255, 255, 0.40) !important;
-  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important; backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-card) !important;
@@ -41,7 +41,7 @@ html[data-ypp-theme="blue-sky"] ytd-comment-renderer[is-pinned] {
 html[data-ypp-theme="blue-sky"] #placeholder-area,
 html[data-ypp-theme="blue-sky"] ytd-commentbox {
   background: rgba(255, 255, 255, 0.55) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;

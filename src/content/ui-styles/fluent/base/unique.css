@@ -35,7 +35,7 @@ html[data-ypp-ui-style="fluent"] yt-formatted-string:hover {
             /* Microsoft Fluent Acrylic & Highlights */
             html[data-ypp-card-style="fluent"] ytd-rich-item-renderer,
             html[data-ypp-ui-style="fluent"] ytd-rich-item-renderer {
-                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
                 background-color: rgba(255,255,255,0.05) !important;
                 border-top: 1px solid rgba(255,255,255,0.15) !important;
                 border-radius: 8px !important;

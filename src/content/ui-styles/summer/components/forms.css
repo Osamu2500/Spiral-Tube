@@ -2,7 +2,7 @@
 html[data-ypp-card-style="summer"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-card-style="summer"] ytd-searchbox #search-icon-legacy {
     background: rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
     border: var(--sum-border) !important;
     color: #fff !important;
 }

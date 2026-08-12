@@ -1,7 +1,7 @@
 html[data-ypp-theme="christmas"] ytd-masthead {
   background: var(--christmas-glass-bg) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important; backdrop-filter: blur(16px) saturate(180%) !important;
   border-bottom: 1px solid var(--christmas-glass-border) !important;
   box-shadow: var(--christmas-glass-shadow) !important;
 }

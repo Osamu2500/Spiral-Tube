@@ -7,7 +7,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-dialog-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-confirm-dialog-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-report-form-modal-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important; backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2) !important;
   border-radius: 32px !important;
   border: var(--lg-border-specular) !important;
@@ -37,7 +37,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-report-form-modal-renderer #footer {
 html[data-ypp-ui-style="liquid-glass"] ytd-dialog-renderer yt-button-shape button,
 html[data-ypp-ui-style="liquid-glass"] ytd-confirm-dialog-renderer yt-button-shape button {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
-  backdrop-filter: var(--lg-blur-surface) !important;
+  -webkit-backdrop-filter: var(--lg-blur-surface) !important; backdrop-filter: var(--lg-blur-surface) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 2000px !important;
@@ -53,7 +53,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-confirm-dialog-renderer yt-button-sha
 /* The Page Dimming Scrim */
 html[data-ypp-ui-style="liquid-glass"] tp-yt-iron-overlay-backdrop {
   -webkit-backdrop-filter: blur(6px) !important;
-  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important; backdrop-filter: blur(6px) !important;
   background: rgba(0, 0, 0, 0.4) !important; /* Soften the default harsh black */
   opacity: 1 !important;
 }

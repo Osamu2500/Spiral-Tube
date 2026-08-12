@@ -6,7 +6,7 @@
 html[data-ypp-ui-style="crystal-glass"] tp-yt-iron-overlay-backdrop {
   background: rgba(0, 0, 0, 0.4) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   opacity: 1 !important;
 }
 
@@ -19,7 +19,7 @@ html[data-ypp-ui-style="crystal-glass"] yt-share-panel-renderer,
 html[data-ypp-ui-style="crystal-glass"] ytd-unified-share-panel-renderer {
   background: var(--cglass-base-heavy) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
-  backdrop-filter: var(--cglass-blur-lg) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important; backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: var(--cglass-radius-lg) !important;
   box-shadow: var(--cglass-shadow-hover) !important;

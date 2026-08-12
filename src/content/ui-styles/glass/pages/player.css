@@ -3,7 +3,7 @@
 
 html[data-ypp-card-style="glass"] .ytp-chrome-bottom {
     background: rgba(0, 0, 0, 0.2) !important;
-    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important; backdrop-filter: blur(15px) !important;
     border-radius: 12px !important;
     margin: 10px !important;
     width: calc(100% - 20px) !important;
@@ -30,7 +30,7 @@ html[data-ypp-card-style="glass"] #ask-button yt-button-shape button,
 html[data-ypp-card-style="glass"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-card-style="glass"] ytd-menu-renderer yt-button-shape button {
   background: rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   border-radius: 20px !important;
   color: #fff !important;
@@ -47,7 +47,7 @@ html[data-ypp-card-style="glass"] ytd-menu-renderer yt-button-shape button:hover
 /* Glass Mini Player */
 html[data-ypp-card-style="glass"] ytd-miniplayer {
     background: rgba(255,255,255,0.1) !important;
-    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important; backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(255,255,255,0.3) !important;
     border-radius: 16px !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;

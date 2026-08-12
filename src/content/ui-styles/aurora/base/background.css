@@ -29,7 +29,7 @@ html[data-ypp-theme="aurora"] .ypp-badge,
 html[data-ypp-theme="aurora"] .ypp-value-display {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   color: var(--aurora-text-primary) !important;
@@ -81,7 +81,7 @@ html[data-ypp-theme="aurora"] .ypp-gpb-vol-slider::-webkit-slider-thumb:hover {
 html[data-ypp-theme="aurora"] .ypp-filter-dropdown {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-md) !important;
   color: var(--aurora-text-primary) !important;

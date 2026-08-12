@@ -19,7 +19,7 @@ html[data-ypp-theme="aurora"] :is(
 ) {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-shape-card) !important;
   box-shadow: var(--aurora-shadow-glass) !important;
@@ -96,7 +96,7 @@ html[data-ypp-theme="aurora"] ytd-thumbnail:hover img {
 html[data-ypp-theme="aurora"] ytd-thumbnail-overlay-time-status-renderer {
   background: var(--aurora-glass-solid) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-pill) !important;
   color: var(--aurora-text-primary) !important;

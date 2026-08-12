@@ -1,7 +1,7 @@
 html[data-ypp-ui-style="kawaii"] ytd-masthead {
   background: var(--kawaii-glass-bg) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   border-bottom: 2px solid rgba(255, 255, 255, 0.4) !important;
   box-shadow: 0 4px 15px rgba(255, 158, 187, 0.1) !important;
 }

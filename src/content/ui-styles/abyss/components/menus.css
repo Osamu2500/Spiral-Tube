@@ -8,7 +8,7 @@ html[data-ypp-theme="abyss"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-rad-md) !important;
   border: 1px solid var(--ypp-border-heavy) !important;
   box-shadow: var(--ypp-shadow-glow-intense) !important;
-  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important; backdrop-filter: blur(16px) !important;
 }
 
 /* Menu Items */

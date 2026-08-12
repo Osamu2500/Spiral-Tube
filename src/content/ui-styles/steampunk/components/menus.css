@@ -4,7 +4,7 @@ html[data-ypp-ui-style="steampunk"] tp-yt-iron-dropdown, html[data-ypp-ui-style=
 html[data-ypp-ui-style="steampunk"] ytd-multi-page-menu-renderer {
   background: #4a3a30 !important; border: 3px double #d2b48c !important;
   border-radius: 6px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
-  backdrop-filter: blur(12px) !important; color: #f5deb3 !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important; color: #f5deb3 !important;
 }
 html[data-ypp-ui-style="steampunk"] .ytp-settings-menu, html[data-ypp-ui-style="steampunk"] .ytp-panel-menu, html[data-ypp-ui-style="steampunk"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-ui-style="steampunk"] .ytp-panel {

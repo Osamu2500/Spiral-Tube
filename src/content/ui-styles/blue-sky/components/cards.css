@@ -27,7 +27,7 @@ html[data-ypp-theme="blue-sky"] :is(
   )
 ) {
   background: var(--sky-glass-gradient) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
+  -webkit-backdrop-filter: var(--sky-blur-card) !important; backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--sky-shape-card) !important;
   border: var(--sky-border) !important;
@@ -95,7 +95,7 @@ html[data-ypp-theme="blue-sky"] ytd-thumbnail:hover img {
 /* ── Time badge ── */
 html[data-ypp-theme="blue-sky"] ytd-thumbnail-overlay-time-status-renderer {
   background: rgba(255, 255, 255, 0.80) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -161,7 +161,7 @@ html[data-ypp-theme="blue-sky"] ytd-reel-item-renderer:hover #dismissible {
 html[data-ypp-theme="blue-sky"] ytd-expandable-metadata-renderer {
   border-radius: var(--sky-shape-chip) !important;
   background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
 }
@@ -175,7 +175,7 @@ html[data-ypp-theme="blue-sky"] ytd-macro-markers-list-item-renderer {
   border-radius: var(--sky-shape-chip) !important;
   margin: 4px !important;
   background: rgba(255, 255, 255, 0.40) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   border: var(--sky-border) !important;
   transition: all 0.3s var(--sky-bounce) !important;

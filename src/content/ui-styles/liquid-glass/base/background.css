@@ -77,7 +77,7 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-nav-btn.active {
 
 html[data-ypp-ui-style="liquid-glass"] .ypp-filter-dropdown {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important; backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2) !important;
   border-radius: 20px !important;
   border: var(--lg-border-specular) !important;
@@ -93,7 +93,7 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-filter-dropdown:hover {
 html[data-ypp-ui-style="liquid-glass"] .ypp-video-controls,
 html[data-ypp-ui-style="liquid-glass"] .ypp-shadow-panel {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
   box-shadow: var(--lg-shadow-card) !important;
@@ -104,7 +104,7 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-shadow-panel {
 html[data-ypp-ui-style="liquid-glass"] .ypp-badge,
 html[data-ypp-ui-style="liquid-glass"] .ypp-value-display {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(255, 255, 255, 0.12) !important;
   border-radius: 20px !important;
   border: var(--lg-border-subtle) !important;
@@ -114,7 +114,7 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-value-display {
 html[data-ypp-ui-style="liquid-glass"] .ypp-organizer-modal,
 html[data-ypp-ui-style="liquid-glass"] .ypp-modal-content {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important; backdrop-filter: var(--lg-blur-modal) !important;
   background: var(--lg-bg-level-2) !important;
   border: var(--lg-border-specular) !important;
   border-radius: 32px !important;
@@ -127,7 +127,7 @@ html[data-ypp-ui-style="liquid-glass"] #player-container.ytd-video-preview {
 
 html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-toolbar {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   border-bottom: var(--lg-border-subtle) !important;
 }
@@ -138,7 +138,7 @@ html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-btn-tool,
 html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-style="liquid-glass"] #ypp-pl-root .ypp-pl-col-switcher {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border: var(--lg-border-specular) !important;
   transition: transform var(--lg-spring), background var(--lg-spring) !important;

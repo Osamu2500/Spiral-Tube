@@ -100,7 +100,7 @@ html[data-ypp-ui-style="frutiger-aero"] ytd-subscribe-button-renderer[subscribed
 html[data-ypp-ui-style="frutiger-aero"] yt-chip-cloud-chip-renderer {
   background: var(--faero-glass-heavy) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  backdrop-filter: var(--faero-blur) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
   border: 1px solid rgba(100,130,160,0.3) !important;
   border-radius: var(--faero-radius-pill) !important;
   color: var(--faero-text-primary) !important;

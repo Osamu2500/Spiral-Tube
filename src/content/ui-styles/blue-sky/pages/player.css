@@ -12,7 +12,7 @@ html[data-ypp-theme="blue-sky"] .html5-video-player {
 /* ── Player chrome controls ── */
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: rgba(255, 255, 255, 0.20) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -36,7 +36,7 @@ html[data-ypp-theme="blue-sky"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-co
 }
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   background: rgba(255, 255, 255, 0.30) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   box-shadow: var(--sky-shadow-card) !important;
   transform: scale(1.06) !important;
@@ -84,7 +84,7 @@ html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-min
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover {
   background: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   border: var(--sky-border) !important;
   box-shadow: var(--sky-shadow-card) !important;
@@ -99,7 +99,7 @@ html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-min
 /* ── Fullscreen expand ── */
 html[data-ypp-theme="blue-sky"] .ytp-fullscreen-grid-expand-button {
   background: rgba(255, 255, 255, 0.20) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-chip) !important;
@@ -115,7 +115,7 @@ html[data-ypp-theme="blue-sky"] .ytp-fullscreen-grid-expand-button:hover {
 html[data-ypp-theme="blue-sky"] .ytp-panel,
 html[data-ypp-theme="blue-sky"] .ytp-popup.ytp-settings-menu {
   background: rgba(240, 250, 255, 0.85) !important;
-  backdrop-filter: var(--sky-blur-modal) !important;
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important; backdrop-filter: var(--sky-blur-modal) !important;
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-card) !important;
@@ -134,7 +134,7 @@ html[data-ypp-theme="blue-sky"] .ytp-menuitem:not([aria-disabled=true]):hover {
 /* ── Context menu ── */
 html[data-ypp-theme="blue-sky"] .ytp-popup.ytp-delhi-modern-contextmenu {
   background: rgba(240, 250, 255, 0.90) !important;
-  backdrop-filter: var(--sky-blur-modal) !important;
+  -webkit-backdrop-filter: var(--sky-blur-modal) !important; backdrop-filter: var(--sky-blur-modal) !important;
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
   border: var(--sky-border) !important;
   border-radius: var(--sky-shape-card) !important;

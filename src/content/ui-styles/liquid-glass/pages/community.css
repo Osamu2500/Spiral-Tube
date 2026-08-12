@@ -6,7 +6,7 @@
 html[data-ypp-ui-style="liquid-glass"] ytd-backstage-post-thread-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-post-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1) !important;
   border: var(--lg-border-specular) !important;
   border-radius: 24px !important;
@@ -37,7 +37,7 @@ html[data-ypp-ui-style="liquid-glass"] ytd-backstage-poll-renderer {
 }
 html[data-ypp-ui-style="liquid-glass"] .choice-info.ytd-backstage-poll-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
-  backdrop-filter: var(--lg-blur-subtle) !important;
+  -webkit-backdrop-filter: var(--lg-blur-subtle) !important; backdrop-filter: var(--lg-blur-subtle) !important;
   background: rgba(255, 255, 255, 0.06) !important;
   border: var(--lg-border-subtle) !important;
   border-radius: 12px !important;

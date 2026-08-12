@@ -9,7 +9,7 @@
 html[data-ypp-ui-style="frutiger-aero"] ytd-live-chat-frame {
   background: var(--faero-glass-heavy) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  backdrop-filter: var(--faero-blur) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
   border: var(--faero-border-white) !important;
   border-radius: var(--faero-radius-lg) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;

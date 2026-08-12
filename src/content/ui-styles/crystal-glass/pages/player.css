@@ -7,7 +7,7 @@ html[data-ypp-ui-style="crystal-glass"] #player-container.ytd-watch-flexy,
 html[data-ypp-ui-style="crystal-glass"] #ytd-player {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
-  backdrop-filter: var(--cglass-blur-md) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important; backdrop-filter: var(--cglass-blur-md) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   box-shadow: var(--cglass-shadow) !important;
@@ -25,7 +25,7 @@ html[data-ypp-ui-style="crystal-glass"] .html5-video-player {
 html[data-ypp-ui-style="crystal-glass"] .ytp-bezel {
   background: var(--cglass-base-heavy) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
-  backdrop-filter: var(--cglass-blur-lg) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important; backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: 50% !important;
   box-shadow: var(--cglass-shadow-hover) !important;
@@ -44,7 +44,7 @@ html[data-ypp-ui-style="crystal-glass"] .ytp-gradient-bottom {
 html[data-ypp-ui-style="crystal-glass"] .ytp-popup {
   background: var(--cglass-base-heavy) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
-  backdrop-filter: var(--cglass-blur-lg) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important; backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: var(--cglass-radius-md) !important;
   box-shadow: var(--cglass-shadow-hover) !important;

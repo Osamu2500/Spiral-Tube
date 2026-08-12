@@ -4,7 +4,7 @@ html[data-ypp-card-style="winter"] yt-live-chat-renderer,
 html[data-ypp-card-style="winter"] yt-live-chat-message-input-renderer,
 html[data-ypp-card-style="winter"] yt-live-chat-header-renderer {
     background: rgba(15, 25, 40, 0.4) !important;
-    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important; backdrop-filter: blur(16px) !important;
     border-radius: 16px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }

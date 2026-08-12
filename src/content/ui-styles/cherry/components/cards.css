@@ -30,7 +30,7 @@ html[data-ypp-ui-style="cherry"] :is(
   border-radius: var(--cherry-radius) !important;
   padding: 8px !important;
   box-shadow: var(--cherry-shadow-soft) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
 }
 

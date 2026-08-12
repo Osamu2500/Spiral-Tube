@@ -22,7 +22,7 @@ html[data-ypp-theme="aurora"] .html5-video-player {
 html[data-ypp-theme="aurora"] .ytp-bezel {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important; backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glow) !important;
   box-shadow: var(--aurora-glow-mixed) !important;
   border-radius: 50% !important;
@@ -66,7 +66,7 @@ html[data-ypp-theme="aurora"] .ytp-button[aria-pressed="true"]::after {
 html[data-ypp-theme="aurora"] .ytp-error {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important; backdrop-filter: var(--aurora-blur-lg) !important;
   border-radius: var(--aurora-radius-lg) !important;
 }
 html[data-ypp-theme="aurora"] .ytp-error-content-wrap-reason {

@@ -22,7 +22,7 @@ html[data-ypp-ui-style="deepspace"] ytd-compact-video-renderer:hover {
 html[data-ypp-ui-style="deepspace"] #secondary-inner.ytd-watch-flexy {
   background: rgba(7, 8, 15, 0.7) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   border-radius: var(--ds-r-lg) !important;
   border: 1px solid var(--ds-glass-border) !important;
   padding: 16px !important;

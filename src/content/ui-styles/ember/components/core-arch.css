@@ -96,5 +96,5 @@ html[data-ypp-card-style="ember"] #actions.ytd-reel-video-renderer ytd-toggle-bu
 html[data-ypp-ui-style="ember"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
     background: rgba(128, 128, 128, 0.2) !important;
     border-radius: 0 !important;
-    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important;
 }

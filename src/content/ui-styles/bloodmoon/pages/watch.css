@@ -20,7 +20,7 @@ html[data-ypp-theme="bloodmoon"] ytd-compact-video-renderer:hover {
 html[data-ypp-theme="bloodmoon"] #secondary-inner.ytd-watch-flexy {
   background: rgba(6, 2, 5, 0.65) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   border-radius: var(--bm-r-lg) !important;
   border: 1px solid var(--bm-glass-border) !important;
   padding: 16px !important;

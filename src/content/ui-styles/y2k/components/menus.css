@@ -4,7 +4,7 @@ html[data-ypp-ui-style="y2k"] tp-yt-iron-dropdown, html[data-ypp-ui-style="y2k"]
 html[data-ypp-ui-style="y2k"] ytd-multi-page-menu-renderer {
   background: #f0f0ff !important; border: 3px solid #00ccff !important;
   border-radius: 24px !important; box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
-  backdrop-filter: blur(12px) !important; color: #191970 !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important; color: #191970 !important;
 }
 html[data-ypp-ui-style="y2k"] .ytp-settings-menu, html[data-ypp-ui-style="y2k"] .ytp-panel-menu, html[data-ypp-ui-style="y2k"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-ui-style="y2k"] .ytp-panel {

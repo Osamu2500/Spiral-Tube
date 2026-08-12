@@ -6,7 +6,7 @@
 html[data-ypp-theme="aurora"] ytd-comment-simplebox-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   padding: 12px 16px !important;
@@ -21,7 +21,7 @@ html[data-ypp-theme="aurora"] ytd-comment-simplebox-renderer:focus-within {
 html[data-ypp-theme="aurora"] ytd-comment-renderer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-md) !important;
-  backdrop-filter: var(--aurora-blur-md) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-md) !important; backdrop-filter: var(--aurora-blur-md) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   padding: 16px !important;

@@ -1,7 +1,7 @@
 /* Fluent Player */
 html[data-ypp-card-style="fluent"] .ytp-chrome-bottom {
     background: var(--flu-surface) !important;
-    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important; backdrop-filter: blur(20px) !important;
     border: var(--flu-border) !important;
     border-top: var(--flu-border-top) !important;
     border-radius: 8px !important;

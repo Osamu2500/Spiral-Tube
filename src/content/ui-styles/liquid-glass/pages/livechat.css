@@ -6,7 +6,7 @@
 html[data-ypp-ui-style="liquid-glass"] ytd-live-chat-frame,
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
+  -webkit-backdrop-filter: var(--lg-blur-card) !important; backdrop-filter: var(--lg-blur-card) !important;
   background: var(--lg-bg-level-1, rgba(255, 255, 255, 0.05)) !important;
   border: none !important;
   outline: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -44,7 +44,7 @@ html[data-ypp-ui-style="liquid-glass"] yt-live-chat-membership-item-renderer:hov
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-message-renderer,
 html[data-ypp-ui-style="liquid-glass"] yt-live-chat-paid-sticker-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
-  backdrop-filter: var(--lg-blur-modal) !important;
+  -webkit-backdrop-filter: var(--lg-blur-modal) !important; backdrop-filter: var(--lg-blur-modal) !important;
   background: rgba(255, 255, 255, 0.12) !important;
   border-radius: 20px !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;

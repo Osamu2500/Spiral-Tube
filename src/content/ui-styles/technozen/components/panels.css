@@ -15,7 +15,7 @@ ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
 }
 .anchored-panel.ytd-shorts {
   -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
   background: var(--tz-gloss), rgba(228, 250, 220, 0.92) !important;
   padding: 5px;
   border: 1px solid var(--tz-glass-border) !important;

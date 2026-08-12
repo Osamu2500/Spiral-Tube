@@ -25,7 +25,8 @@ esbuild.build({
     outdir: path.join(__dirname, '../src/content'),
     minify: true,
     sourcemap: false,
-    external: ['chrome-extension://*']
+    external: ['chrome-extension://*'],
+    target: ['chrome100', 'safari14']
 }).catch(() => process.exit(1));
 
 // --- Build UI Styles ---
@@ -44,5 +45,6 @@ esbuild.build({
     outdir: uiStylesDir,
     minify: true,
     sourcemap: false,
-    external: ['chrome-extension://*']
+    external: ['chrome-extension://*'],
+    target: ['chrome100', 'safari14']
 }).catch(() => process.exit(1));

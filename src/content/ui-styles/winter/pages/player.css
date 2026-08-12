@@ -44,7 +44,7 @@ html[data-ypp-card-style="winter"] .ytp-chapter-title-content {
 html[data-ypp-card-style="winter"] .ytp-tooltip-text {
     font-family: 'Quicksand', sans-serif !important;
     background: rgba(15, 25, 40, 0.7) !important;
-    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
     color: #ffffff !important;
     border: 1px solid rgba(180, 230, 255, 0.4) !important;
     border-radius: 8px !important;
@@ -57,7 +57,7 @@ html[data-ypp-card-style="winter"] .ytp-tooltip-bg { display: none !important; }
 html[data-ypp-card-style="winter"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-card-style="winter"] .ytp-panel {
     background: rgba(15, 25, 40, 0.6) !important;
-    backdrop-filter: blur(24px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(150%) !important; backdrop-filter: blur(24px) saturate(150%) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
     border-radius: 16px !important;
@@ -74,7 +74,7 @@ html[data-ypp-card-style="winter"] .html5-video-player {
 /* Frosted Mini-Player */
 html[data-ypp-card-style="winter"] ytd-miniplayer {
     background: rgba(15, 25, 40, 0.6) !important;
-    backdrop-filter: blur(24px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(150%) !important; backdrop-filter: blur(24px) saturate(150%) !important;
     border: 1px solid rgba(180, 230, 255, 0.4) !important;
     border-radius: 16px !important;
     box-shadow: 0 15px 40px rgba(100, 200, 255, 0.3) !important;
@@ -88,7 +88,7 @@ html[data-ypp-card-style="winter"] ytd-miniplayer .video-stream.html5-main-video
 /* Frosted Video End Screens */
 html[data-ypp-card-style="winter"] .ytp-ce-element {
     background: rgba(15, 25, 40, 0.3) !important;
-    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
     border: 1px solid rgba(180, 230, 255, 0.4) !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;

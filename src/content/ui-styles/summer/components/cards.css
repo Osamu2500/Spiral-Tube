@@ -8,7 +8,7 @@ html[data-ypp-card-style="summer"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ) {
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   background: rgba(255, 100, 0, 0.2) !important;
   border-radius: var(--sum-radius) !important;
   border: var(--sum-border) !important;

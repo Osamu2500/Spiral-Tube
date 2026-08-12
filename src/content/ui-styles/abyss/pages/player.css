@@ -38,7 +38,7 @@ html[data-ypp-theme="abyss"] .ytp-load-progress {
 html[data-ypp-theme="abyss"] .ytp-popup,
 html[data-ypp-theme="abyss"] .ytp-settings-menu {
   background: rgba(1, 6, 9, 0.95) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-rad-md) !important;
   border: 1px solid var(--ypp-border-heavy) !important;
   box-shadow: var(--ypp-shadow-glow) !important;

@@ -2,7 +2,7 @@ html[data-ypp-theme="bloodmoon"] tp-yt-paper-dialog,
 html[data-ypp-theme="bloodmoon"] ytd-popup-container {
   background: var(--bm-bg-elevated) !important;
   -webkit-backdrop-filter: blur(22px) !important;
-  backdrop-filter: blur(22px) !important;
+  -webkit-backdrop-filter: blur(22px) !important; backdrop-filter: blur(22px) !important;
   border-radius: var(--bm-r-md) !important;
   border: 1px solid var(--bm-glass-border-active) !important;
   box-shadow: var(--bm-glow-blood), 0 24px 60px rgba(6, 2, 5, 0.9) !important;

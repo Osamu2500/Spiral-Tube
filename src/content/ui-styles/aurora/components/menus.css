@@ -10,7 +10,7 @@ html[data-ypp-theme="aurora"] tp-yt-paper-listbox,
 html[data-ypp-theme="aurora"] .ytSearchboxComponentSuggestionsContainer {
   background: var(--aurora-glass-heavy) !important;
   -webkit-backdrop-filter: var(--aurora-blur-lg) !important;
-  backdrop-filter: var(--aurora-blur-lg) !important;
+  -webkit-backdrop-filter: var(--aurora-blur-lg) !important; backdrop-filter: var(--aurora-blur-lg) !important;
   border: var(--aurora-border-glass) !important;
   border-radius: var(--aurora-radius-lg) !important;
   box-shadow: var(--aurora-glow-mixed) !important;

@@ -4,7 +4,7 @@ html[data-ypp-card-style="fluent"] :is(
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ) {
     background: var(--flu-surface) !important;
-    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important; backdrop-filter: blur(20px) saturate(150%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
     border: var(--flu-border) !important;
     border-top: var(--flu-border-top) !important;

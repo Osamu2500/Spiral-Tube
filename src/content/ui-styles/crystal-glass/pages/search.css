@@ -9,7 +9,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-search-filter-group-renderer {
 html[data-ypp-ui-style="crystal-glass"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  backdrop-filter: var(--cglass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-pill) !important;
   color: var(--cglass-text-primary) !important;
@@ -26,7 +26,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-toggle-button-renderer #button.ytd-t
 html[data-ypp-ui-style="crystal-glass"] ytd-search-sub-menu-renderer {
   background: var(--cglass-base-heavy) !important;
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
-  backdrop-filter: var(--cglass-blur-lg) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-lg) !important; backdrop-filter: var(--cglass-blur-lg) !important;
   border: var(--cglass-border-heavy) !important;
   border-radius: var(--cglass-radius-lg) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
@@ -52,7 +52,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-search-filter-renderer[selected] {
 html[data-ypp-ui-style="crystal-glass"] ytd-channel-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  backdrop-filter: var(--cglass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   padding: 24px !important;
@@ -75,7 +75,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-channel-renderer #avatar {
 html[data-ypp-ui-style="crystal-glass"] ytd-playlist-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
-  backdrop-filter: var(--cglass-blur-sm) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-sm) !important; backdrop-filter: var(--cglass-blur-sm) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   padding: 12px !important;
@@ -93,7 +93,7 @@ html[data-ypp-ui-style="crystal-glass"] ytd-playlist-renderer:hover {
 html[data-ypp-ui-style="crystal-glass"] ytd-horizontal-card-list-renderer {
   background: var(--cglass-base) !important;
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
-  backdrop-filter: var(--cglass-blur-md) !important;
+  -webkit-backdrop-filter: var(--cglass-blur-md) !important; backdrop-filter: var(--cglass-blur-md) !important;
   border: var(--cglass-border) !important;
   border-radius: var(--cglass-radius-lg) !important;
   padding: 16px !important;

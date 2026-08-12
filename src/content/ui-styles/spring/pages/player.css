@@ -1,7 +1,7 @@
 /* Spring Player */
 html[data-ypp-card-style="spring"] .ytp-chrome-bottom {
     background: rgba(255,255,255,0.8) !important;
-    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
     border-radius: 20px !important;
     margin: 10px !important;
     width: calc(100% - 20px) !important;

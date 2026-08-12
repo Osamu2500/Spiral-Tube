@@ -7,7 +7,7 @@
 html[data-ypp-ui-style="frutiger-aero"] ytd-c4-tabbed-header-renderer {
   background: var(--faero-glass-medium) !important;
   -webkit-backdrop-filter: var(--faero-blur) !important;
-  backdrop-filter: var(--faero-blur) !important;
+  -webkit-backdrop-filter: var(--faero-blur) !important; backdrop-filter: var(--faero-blur) !important;
   border-bottom: var(--faero-border-white) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }

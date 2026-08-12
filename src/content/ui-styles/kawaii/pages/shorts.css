@@ -14,7 +14,7 @@ html[data-ypp-ui-style="kawaii"] ytd-reel-video-renderer {
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions,
 html[data-ypp-ui-style="kawaii"] ytd-reel-player-overlay-renderer #actions {
     background: rgba(255, 255, 255, 0.4) !important;
-    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important;
     border: 3px solid #fff !important;
     border-radius: 40px !important;
     padding: 10px 5px !important;
