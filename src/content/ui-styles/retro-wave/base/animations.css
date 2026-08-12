@@ -1,0 +1,49 @@
+/* src/content/ui-styles/retro-wave/base/animations.css */
+@keyframes retro-wave-pulse {
+  0%   { box-shadow: 0 0 15px rgba(255,0,127,0.5); }
+  50%  { box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3); }
+  100% { box-shadow: 0 0 15px rgba(255,0,127,0.5); }
+}
+
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="retro-wave"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="retro-wave"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="retro-wave"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="retro-wave"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="retro-wave"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="retro-wave"] ytd-grid-video-renderer:hover {
+  
+  
+  
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  border: 2px solid #00ffff !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="retro-wave"] ytd-guide-entry-renderer:hover {
+  background-color: #22103c !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #ff007f !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="retro-wave"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: retro-wave-pulse 5s ease-in-out infinite;
+}

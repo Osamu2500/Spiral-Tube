@@ -1,0 +1,34 @@
+/* src/content/ui-styles/origami/components/forms.css */
+html[data-ypp-ui-style="origami"] ytd-searchbox,
+html[data-ypp-ui-style="origami"] #search-form,
+html[data-ypp-ui-style="origami"] tp-yt-paper-input,
+html[data-ypp-ui-style="origami"] tp-yt-paper-textarea {
+  background: #f8f8f5 !important;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+  color: #444444 !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
+  font-family: "Quicksand","Nunito",sans-serif !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-searchbox[has-focus],
+html[data-ypp-ui-style="origami"] tp-yt-paper-input:focus-within {
+  border: 1px solid #ff7f50 !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+html[data-ypp-ui-style="origami"] .ypp-filter-dropdown {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  color: #444444 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] .ypp-filter-dropdown:hover {
+  background: #f8f8f5 !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-comment-simplebox-renderer {
+  background: #f8f8f5 !important;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+}

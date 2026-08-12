@@ -1,0 +1,38 @@
+/* src/content/ui-styles/hologram/pages/search.css */
+html[data-ypp-ui-style="hologram"] ytd-search,
+html[data-ypp-ui-style="hologram"] ytd-search-header-renderer {
+  background: #e0f8ff !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-video-renderer {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  margin-bottom: 12px !important;
+  padding: 12px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-video-renderer:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  border: 1px solid #00ffff !important;
+  transform: translateY(-2px) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-search-pyv-renderer {
+  background: #f0fdff !important;
+  border: 1px solid #00ffff !important;
+  border-radius: 10px !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-shelf-renderer {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+  padding: 16px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  margin-bottom: 16px !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-searchbox {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+}

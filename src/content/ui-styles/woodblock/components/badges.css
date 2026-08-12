@@ -1,0 +1,25 @@
+/* src/content/ui-styles/woodblock/components/badges.css */
+html[data-ypp-ui-style="woodblock"] .yt-badge-shape--thumbnail-default,
+html[data-ypp-ui-style="woodblock"] .ypp-badge,
+html[data-ypp-ui-style="woodblock"] .ypp-value-display {
+  background: #faf8f0 !important;
+  color: #5c3d1e !important;
+  border-radius: 4px !important;
+  border: 2px solid #8b4513 !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  font-family: "Noto Serif","Palatino Linotype",serif !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-badge-supported-renderer {
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="woodblock"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-style="woodblock"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-style="woodblock"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-style="woodblock"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style="woodblock"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: 4px !important;
+  background-color: #8b4513 !important;
+}

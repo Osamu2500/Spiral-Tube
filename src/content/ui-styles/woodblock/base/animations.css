@@ -1,0 +1,49 @@
+/* src/content/ui-styles/woodblock/base/animations.css */
+@keyframes woodblock-pulse {
+  0%   { box-shadow: 3px 3px 8px rgba(139,69,19,0.25); }
+  50%  { box-shadow: 5px 5px 15px rgba(139,69,19,0.4); }
+  100% { box-shadow: 3px 3px 8px rgba(139,69,19,0.25); }
+}
+
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="woodblock"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="woodblock"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="woodblock"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="woodblock"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="woodblock"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="woodblock"] ytd-grid-video-renderer:hover {
+  
+  
+  
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+  border: 2px solid #a0522d !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="woodblock"] ytd-guide-entry-renderer:hover {
+  background-color: #faf8f0 !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #8b4513 !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="woodblock"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: woodblock-pulse 5s ease-in-out infinite;
+}

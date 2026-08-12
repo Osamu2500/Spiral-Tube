@@ -1,0 +1,66 @@
+/* src/content/ui-styles/hologram/base/tokens.css */
+html[data-ypp-ui-style="hologram"],
+html[data-ypp-ui-style="hologram"] body,
+html[data-ypp-ui-style="hologram"] [dark] {
+  /* Core Palette */
+  --hologram-bg:           #e0f8ff;
+  --hologram-sf:           #f0fdff;
+  --hologram-primary:      #cff4fc;
+  --hologram-secondary:    #00ffff;
+  --hologram-accent:       #00e5e5;
+  --hologram-text:         #003344;
+  --hologram-text-sub:     #005566;
+  --hologram-border:       1px solid rgba(0,255,255,0.5);
+  --hologram-border-hover: 1px solid #00ffff;
+  --hologram-radius:       10px;
+  --hologram-shadow:       0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15);
+  --hologram-shadow-hover: 0 0 30px rgba(0,255,255,0.7);
+  --hologram-shadow-active:0 0 5px rgba(0,255,255,0.2);
+  --hologram-bounce:       ease-out 0.3s;
+  --hologram-font:         "Orbitron","Space Mono",monospace;
+  --hologram-font-alt:     "Exo 2","Orbitron",sans-serif;
+
+  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
+  --sf:           var(--hologram-sf);
+  --bounce:       var(--hologram-bounce);
+  --shadow-base:  var(--hologram-shadow);
+  --shadow-hover: var(--hologram-shadow-hover);
+  --shadow-active:var(--hologram-shadow-active);
+
+  /* Chip tokens */
+  --chip-bg:             rgba(0,255,255,0.1);
+  --chip-bg-hover:       rgba(0,255,255,0.25);
+  --chip-bg-selected:    #00ffff;
+  --chip-color-selected: #003344;
+  --chip-border:         1px solid rgba(0,255,255,0.5);
+  --chip-border-selected:1px solid #00e5e5;
+  --chip-radius:         10px;
+  --chip-shadow:         0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15);
+
+  /* YouTube spec variable overrides */
+  --yt-spec-text-primary:          #003344 !important;
+  --yt-spec-text-secondary:        #005566 !important;
+  --yt-spec-text-disabled:         #005566 !important;
+  --yt-spec-icon-active-other:     #00e5e5 !important;
+  --yt-spec-icon-inactive:         #005566 !important;
+  --yt-spec-menu-background:       #f0fdff !important;
+  --yt-spec-raised-background:     #f0fdff !important;
+  --yt-spec-base-background:       #e0f8ff !important;
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-additive-background:   transparent !important;
+  --ytd-user-comment-font-family:  "Orbitron","Space Mono",monospace !important;
+  --yt-font-family:                "Orbitron","Space Mono",monospace !important;
+}
+
+/* Hard-enforce typography on every text node */
+html[data-ypp-ui-style="hologram"] body,
+html[data-ypp-ui-style="hologram"] yt-formatted-string,
+html[data-ypp-ui-style="hologram"] .yt-core-attributed-string,
+html[data-ypp-ui-style="hologram"] input,
+html[data-ypp-ui-style="hologram"] textarea,
+html[data-ypp-ui-style="hologram"] button,
+html[data-ypp-ui-style="hologram"] tp-yt-paper-item,
+html[data-ypp-ui-style="hologram"] .ytp-menuitem-label,
+html[data-ypp-ui-style="hologram"] .ytp-menuitem-content {
+  font-family: "Orbitron","Space Mono",monospace !important;
+}

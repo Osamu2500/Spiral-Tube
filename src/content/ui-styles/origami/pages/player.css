@@ -1,0 +1,52 @@
+/* src/content/ui-styles/origami/pages/player.css */
+html[data-ypp-ui-style="origami"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="origami"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #f4f4f0 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-play-progress,
+html[data-ypp-ui-style="origami"] .ytp-swatch-background-color {
+  background-color: #ff7f50 !important;
+  box-shadow: 0 0 8px #ff7f50 !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-load-progress {
+  background-color: #888888 !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-volume-slider-handle {
+  background: #ff7f50 !important;
+  border-radius: 50% !important;
+  border: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-chrome-controls button {
+  color: #444444 !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-chrome-controls button:hover {
+  color: #ff7f50 !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-settings-menu,
+html[data-ypp-ui-style="origami"] .ytp-panel-menu {
+  background: #f8f8f5 !important;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-menuitem {
+  color: #444444 !important;
+  font-family: "Quicksand","Nunito",sans-serif !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-menuitem:hover {
+  background: #f4f4f0 !important;
+  color: #ff7f50 !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-ce-element {
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="origami"] .ytp-ce-element:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  transform: scale(1.04) !important;
+}

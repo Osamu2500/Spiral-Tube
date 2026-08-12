@@ -1,0 +1,54 @@
+/* src/content/ui-styles/gothic/base/layout.css */
+html[data-ypp-ui-style="gothic"] * {
+  font-family: "Cinzel","Palatino Linotype",serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html[data-ypp-ui-style="gothic"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+html[data-ypp-ui-style="gothic"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+html[data-ypp-ui-style="gothic"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7);
+}
+html[data-ypp-ui-style="gothic"] #video-title {
+  color: #d3d3d3 !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="gothic"] #description-text,
+html[data-ypp-ui-style="gothic"] yt-formatted-string#description-text {
+  color: #888888 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 2px solid #8b0000 !important;
+  border-radius: 0px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="gothic"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+}
+html[data-ypp-ui-style="gothic"] yt-img-shadow#avatar {
+  border: 2px solid #8b0000 !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="gothic"] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html[data-ypp-ui-style="gothic"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="gothic"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: 0px !important;
+}
+

@@ -1,0 +1,66 @@
+/* src/content/ui-styles/vaporwave/base/tokens.css */
+html[data-ypp-ui-style="vaporwave"],
+html[data-ypp-ui-style="vaporwave"] body,
+html[data-ypp-ui-style="vaporwave"] [dark] {
+  /* Core Palette */
+  --vaporwave-bg:           #1a0a2e;
+  --vaporwave-sf:           #200e38;
+  --vaporwave-primary:      #6b2fa0;
+  --vaporwave-secondary:    #1a8fa0;
+  --vaporwave-accent:       #ff71ce;
+  --vaporwave-text:         #f0e6ff;
+  --vaporwave-text-sub:     #c8a0e0;
+  --vaporwave-border:       2px solid #ff71ce;
+  --vaporwave-border-hover: 2px solid #01cdfe;
+  --vaporwave-radius:       12px;
+  --vaporwave-shadow:       0 0 20px rgba(255,113,206,0.4);
+  --vaporwave-shadow-hover: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3);
+  --vaporwave-shadow-active:0 0 8px rgba(255,113,206,0.2);
+  --vaporwave-bounce:       cubic-bezier(0.25,0.8,0.25,1) 0.4s;
+  --vaporwave-font:         "Syncopate","Audiowide",sans-serif;
+  --vaporwave-font-alt:     "Syncopate",sans-serif;
+
+  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
+  --sf:           var(--vaporwave-sf);
+  --bounce:       var(--vaporwave-bounce);
+  --shadow-base:  var(--vaporwave-shadow);
+  --shadow-hover: var(--vaporwave-shadow-hover);
+  --shadow-active:var(--vaporwave-shadow-active);
+
+  /* Chip tokens */
+  --chip-bg:             rgba(255,113,206,0.1);
+  --chip-bg-hover:       rgba(255,113,206,0.25);
+  --chip-bg-selected:    #ff71ce;
+  --chip-color-selected: #1a0a2e;
+  --chip-border:         2px solid #ff71ce;
+  --chip-border-selected:2px solid #01cdfe;
+  --chip-radius:         12px;
+  --chip-shadow:         0 0 20px rgba(255,113,206,0.4);
+
+  /* YouTube spec variable overrides */
+  --yt-spec-text-primary:          #f0e6ff !important;
+  --yt-spec-text-secondary:        #c8a0e0 !important;
+  --yt-spec-text-disabled:         #c8a0e0 !important;
+  --yt-spec-icon-active-other:     #ff71ce !important;
+  --yt-spec-icon-inactive:         #c8a0e0 !important;
+  --yt-spec-menu-background:       #200e38 !important;
+  --yt-spec-raised-background:     #200e38 !important;
+  --yt-spec-base-background:       #1a0a2e !important;
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-additive-background:   transparent !important;
+  --ytd-user-comment-font-family:  "Syncopate","Audiowide",sans-serif !important;
+  --yt-font-family:                "Syncopate","Audiowide",sans-serif !important;
+}
+
+/* Hard-enforce typography on every text node */
+html[data-ypp-ui-style="vaporwave"] body,
+html[data-ypp-ui-style="vaporwave"] yt-formatted-string,
+html[data-ypp-ui-style="vaporwave"] .yt-core-attributed-string,
+html[data-ypp-ui-style="vaporwave"] input,
+html[data-ypp-ui-style="vaporwave"] textarea,
+html[data-ypp-ui-style="vaporwave"] button,
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-item,
+html[data-ypp-ui-style="vaporwave"] .ytp-menuitem-label,
+html[data-ypp-ui-style="vaporwave"] .ytp-menuitem-content {
+  font-family: "Syncopate","Audiowide",sans-serif !important;
+}

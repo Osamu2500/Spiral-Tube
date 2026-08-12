@@ -1,0 +1,57 @@
+/* src/content/ui-styles/matrix/base/animations.css */
+@keyframes matrix-pulse {
+  0%   { box-shadow: 0 0 10px #00ff00; }
+  50%  { box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00; }
+  100% { box-shadow: 0 0 10px #00ff00; }
+}
+
+@keyframes matrix-glitch {
+  0%   { transform: translate(0); }
+  20%  { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+  40%  { transform: translate(-2px, -2px); }
+  60%  { transform: translate(2px, 2px); }
+  80%  { transform: translate(2px, -2px); filter: hue-rotate(0deg); }
+  100% { transform: translate(0); }
+}
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="matrix"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  animation: matrix-glitch 4s linear infinite !important;
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="matrix"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="matrix"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="matrix"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="matrix"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="matrix"] ytd-grid-video-renderer:hover {
+  
+  
+  
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
+  border: 1px solid #00ff00 !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="matrix"] ytd-guide-entry-renderer:hover {
+  background-color: #001100 !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #00ff00 !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="matrix"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: matrix-pulse 5s ease-in-out infinite;
+}

@@ -1,0 +1,55 @@
+/* src/content/ui-styles/woodblock/components/navbar.css */
+html[data-ypp-ui-style="woodblock"] ytd-masthead,
+html[data-ypp-ui-style="woodblock"] #masthead-container {
+  background: #deb887 !important;
+  border-bottom: 2px solid #8b4513 !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-topbar-logo-renderer {
+  border-radius: 4px !important;
+  padding: 0 !important;
+  max-height: 45px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+}
+html[data-ypp-ui-style="woodblock"] #guide-wrapper.ytd-app {
+  background: #faf8f0 !important;
+  border-radius: 0 4px 4px 0 !important;
+  border: 2px solid #8b4513 !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] #guide-content.ytd-app {
+  background: transparent;
+}
+html[data-ypp-ui-style="woodblock"] ytd-guide-section-renderer {
+  border-bottom: 2px solid #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-guide-entry-renderer {
+  border-radius: 4px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: 4px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: #faf8f0 !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-mini-guide-entry-renderer {
+  margin-top: 10px !important;
+  border-radius: 4px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+}

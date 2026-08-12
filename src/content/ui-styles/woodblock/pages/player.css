@@ -1,0 +1,52 @@
+/* src/content/ui-styles/woodblock/pages/player.css */
+html[data-ypp-ui-style="woodblock"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="woodblock"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #deb887 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-play-progress,
+html[data-ypp-ui-style="woodblock"] .ytp-swatch-background-color {
+  background-color: #8b4513 !important;
+  box-shadow: 0 0 8px #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-load-progress {
+  background-color: #8b6914 !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-volume-slider-handle {
+  background: #8b4513 !important;
+  border-radius: 50% !important;
+  border: 2px solid #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-chrome-controls button {
+  color: #5c3d1e !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-chrome-controls button:hover {
+  color: #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-settings-menu,
+html[data-ypp-ui-style="woodblock"] .ytp-panel-menu {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-menuitem {
+  color: #5c3d1e !important;
+  font-family: "Noto Serif","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-menuitem:hover {
+  background: #deb887 !important;
+  color: #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-ce-element {
+  border-radius: 4px !important;
+  border: 2px solid #8b4513 !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-ce-element:hover {
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+  transform: scale(1.04) !important;
+}

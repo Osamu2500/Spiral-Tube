@@ -1,0 +1,54 @@
+/* src/content/ui-styles/vaporwave/base/layout.css */
+html[data-ypp-ui-style="vaporwave"] * {
+  font-family: "Syncopate","Audiowide",sans-serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html[data-ypp-ui-style="vaporwave"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+html[data-ypp-ui-style="vaporwave"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+html[data-ypp-ui-style="vaporwave"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3);
+}
+html[data-ypp-ui-style="vaporwave"] #video-title {
+  color: #f0e6ff !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="vaporwave"] #description-text,
+html[data-ypp-ui-style="vaporwave"] yt-formatted-string#description-text {
+  color: #c8a0e0 !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 2px solid #ff71ce !important;
+  border-radius: 12px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}
+html[data-ypp-ui-style="vaporwave"] yt-img-shadow#avatar {
+  border: 2px solid #ff71ce !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="vaporwave"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: 12px !important;
+}
+

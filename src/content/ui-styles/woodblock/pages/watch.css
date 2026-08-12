@@ -1,0 +1,46 @@
+/* src/content/ui-styles/woodblock/pages/watch.css */
+html[data-ypp-ui-style="woodblock"] ytd-watch-flexy {
+  background: #f5f5dc !important;
+}
+html[data-ypp-ui-style="woodblock"] #primary.ytd-watch-flexy,
+html[data-ypp-ui-style="woodblock"] #secondary.ytd-watch-flexy {
+  background: #f5f5dc !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-video-primary-info-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  padding: 16px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-video-secondary-info-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  padding: 16px !important;
+  margin-top: 8px !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-watch-metadata {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-playlist-panel-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] #description-inline-expander {
+  color: #5c3d1e !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-expandable-metadata-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="woodblock"] #above-the-fold {
+  border-bottom: 2px solid #8b4513 !important;
+  padding-bottom: 12px !important;
+}

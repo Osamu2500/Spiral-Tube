@@ -1,0 +1,49 @@
+/* src/content/ui-styles/neo-brutalism/base/animations.css */
+@keyframes neo-brutalism-pulse {
+  0%   { box-shadow: 6px 6px 0px #000000; }
+  50%  { box-shadow: 10px 10px 0px #000000; }
+  100% { box-shadow: 6px 6px 0px #000000; }
+}
+
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="neo-brutalism"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="neo-brutalism"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="neo-brutalism"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="neo-brutalism"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="neo-brutalism"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="neo-brutalism"] ytd-grid-video-renderer:hover {
+  transform: translate(-4px,-4px) !important;
+  
+  
+  
+  box-shadow: 10px 10px 0px #000000 !important;
+  border: 4px solid #ff6699 !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="neo-brutalism"] ytd-guide-entry-renderer:hover {
+  background-color: #fffbf0 !important;
+  transform: translate(-4px,-4px) !important; box-shadow: 4px 4px 0px #000 !important;
+  border-left: 4px solid #000000 !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="neo-brutalism"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 10px 10px 0px #000000 !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: neo-brutalism-pulse 5s ease-in-out infinite;
+}

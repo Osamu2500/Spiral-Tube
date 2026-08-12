@@ -1,0 +1,80 @@
+/* src/content/ui-styles/hologram/card-style.css */
+html[data-ypp-card-style="hologram"] {
+  --sf:           #f0fdff;
+  --shadow-base:  0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15);
+  --shadow-hover: 0 0 30px rgba(0,255,255,0.7);
+  --shadow-active:0 0 5px rgba(0,255,255,0.2);
+  --blur:         blur(10px);
+  --hologram-bg:       #e0f8ff;
+  --hologram-sf:       #f0fdff;
+  --hologram-primary:  #cff4fc;
+  --hologram-secondary:#00ffff;
+  --hologram-accent:   #00e5e5;
+  --hologram-border:   1px solid rgba(0,255,255,0.5);
+  --hologram-border-hover: 1px solid #00ffff;
+  --hologram-text:     #003344;
+  --hologram-text-sub: #005566;
+  --hologram-radius:   10px;
+}
+
+html[data-ypp-card-style='hologram']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model
+  ) {
+  background: #f0fdff !important;
+  --yt-spec-text-primary: #003344 !important;
+  --yt-spec-text-secondary: #005566 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  padding: var(--ypp-density-pad, 14px) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-card-style='hologram']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model
+  ):hover {
+  background: #cff4fc !important;
+  border-color: #00e5e5 !important;
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+}
+
+html[data-ypp-card-style='hologram']
+  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
+  color: #003344 !important;
+  font-family: "Orbitron","Space Mono",monospace !important;
+}
+
+html[data-ypp-card-style='hologram']
+  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
+  color: #005566 !important;
+}
+
+html[data-ypp-card-style='hologram'] ytd-thumbnail {
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-card-style='hologram'] #mouseover-overlay,
+html[data-ypp-card-style='hologram'] ytd-video-preview {
+  display: none !important;
+}

@@ -1,0 +1,54 @@
+/* src/content/ui-styles/hologram/base/layout.css */
+html[data-ypp-ui-style="hologram"] * {
+  font-family: "Orbitron","Space Mono",monospace !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html[data-ypp-ui-style="hologram"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+html[data-ypp-ui-style="hologram"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+html[data-ypp-ui-style="hologram"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7);
+}
+html[data-ypp-ui-style="hologram"] #video-title {
+  color: #003344 !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="hologram"] #description-text,
+html[data-ypp-ui-style="hologram"] yt-formatted-string#description-text {
+  color: #005566 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+}
+html[data-ypp-ui-style="hologram"] yt-img-shadow#avatar {
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="hologram"] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="hologram"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: 10px !important;
+}
+

@@ -1,0 +1,53 @@
+/* src/content/ui-styles/vaporwave/components/menus.css */
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="vaporwave"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="vaporwave"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="vaporwave"] #contentWrapper tp-yt-iron-dropdown,
+html[data-ypp-ui-style="vaporwave"] ytd-multi-page-menu-renderer {
+  background: #200e38 !important;
+  border: 2px solid #ff71ce !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #f0e6ff !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-settings-menu,
+html[data-ypp-ui-style="vaporwave"] .ytp-panel-menu {
+  background: #200e38 !important;
+  border: 2px solid #ff71ce !important;
+  border-radius: 12px !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-menuitem {
+  color: #f0e6ff !important;
+  font-family: "Syncopate","Audiowide",sans-serif !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ytp-menuitem:hover {
+  background: #6b2fa0 !important;
+  color: #ff71ce !important;
+}
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-item {
+  background: transparent !important;
+  color: #f0e6ff !important;
+}
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-item:hover {
+  background: #6b2fa0 !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-notification-renderer {
+  background: #200e38 !important;
+  border-bottom: 2px solid #ff71ce !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-notification-renderer:hover {
+  background: #6b2fa0 !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-settings-sidebar-renderer {
+  background: #200e38 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+  padding: 15px !important;
+  border: 2px solid #ff71ce !important;
+}

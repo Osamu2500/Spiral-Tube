@@ -1,0 +1,54 @@
+/* src/content/ui-styles/anime/base/animations.css */
+@keyframes anime-pulse {
+  0%   { box-shadow: 0 8px 30px rgba(255,105,180,0.3); }
+  50%  { box-shadow: 0 16px 45px rgba(255,105,180,0.5); }
+  100% { box-shadow: 0 8px 30px rgba(255,105,180,0.3); }
+}
+
+
+@keyframes anime-float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="anime"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="anime"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="anime"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="anime"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="anime"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="anime"] ytd-grid-video-renderer:hover {
+  
+  transform: translateY(-8px) scale(1.02) !important;
+  
+  
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  border: 2px solid #ff69b4 !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="anime"] ytd-guide-entry-renderer:hover {
+  background-color: #ffe4ef !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #ff1493 !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="anime"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: anime-pulse 5s ease-in-out infinite;
+}

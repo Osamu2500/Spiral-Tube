@@ -1,0 +1,36 @@
+/* src/content/ui-styles/neo-brutalism/pages/shorts.css */
+html[data-ypp-ui-style="neo-brutalism"] ytd-shorts,
+html[data-ypp-ui-style="neo-brutalism"] #shorts-container {
+  background: #ffffff !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-reel-video-renderer {
+  background: #fffbf0 !important;
+  border-radius: 0px !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+  border: 4px solid #000000 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-reel-player-overlay-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+  background: #fffbf0 !important;
+  border-radius: 50% !important;
+  border: 4px solid #000000 !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+  margin-bottom: 12px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+  box-shadow: 10px 10px 0px #000000 !important;
+  transform: scale(1.1) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-reel-item-renderer {
+  border-radius: 0px !important;
+  border: 4px solid #000000 !important;
+  overflow: hidden !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] ytd-reel-item-renderer:hover {
+  box-shadow: 10px 10px 0px #000000 !important;
+}

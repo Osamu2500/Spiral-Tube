@@ -1,0 +1,53 @@
+/* src/content/ui-styles/woodblock/components/menus.css */
+html[data-ypp-ui-style="woodblock"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="woodblock"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="woodblock"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="woodblock"] #contentWrapper tp-yt-iron-dropdown,
+html[data-ypp-ui-style="woodblock"] ytd-multi-page-menu-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #5c3d1e !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-settings-menu,
+html[data-ypp-ui-style="woodblock"] .ytp-panel-menu {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-menuitem {
+  color: #5c3d1e !important;
+  font-family: "Noto Serif","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="woodblock"] .ytp-menuitem:hover {
+  background: #deb887 !important;
+  color: #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="woodblock"] tp-yt-paper-item {
+  background: transparent !important;
+  color: #5c3d1e !important;
+}
+html[data-ypp-ui-style="woodblock"] tp-yt-paper-item:hover {
+  background: #deb887 !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-notification-renderer {
+  background: #faf8f0 !important;
+  border-bottom: 2px solid #8b4513 !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-notification-renderer:hover {
+  background: #deb887 !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-settings-sidebar-renderer {
+  background: #faf8f0 !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  padding: 15px !important;
+  border: 2px solid #8b4513 !important;
+}

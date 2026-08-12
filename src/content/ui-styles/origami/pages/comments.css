@@ -1,0 +1,45 @@
+/* src/content/ui-styles/origami/pages/comments.css */
+html[data-ypp-ui-style="origami"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="origami"] ytd-comment-renderer {
+  background: #f8f8f5 !important;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-comment-renderer:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  border: 1px solid #ff7f50 !important;
+}
+html[data-ypp-ui-style="origami"] #author-text.ytd-comment-renderer {
+  color: #ff7f50 !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="origami"] #content-text.ytd-comment-renderer {
+  color: #444444 !important;
+  font-family: "Quicksand","Nunito",sans-serif !important;
+}
+html[data-ypp-ui-style="origami"] ytd-comment-replies-renderer {
+  border-left: 1px solid #d0d0c0 !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="origami"] #header-author yt-img-shadow {
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="origami"] #simplebox-placeholder {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  color: #888888 !important;
+}
+html[data-ypp-ui-style="origami"] ytd-backstage-post-renderer {
+  background: #f8f8f5 !important;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+  padding: 16px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+}

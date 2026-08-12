@@ -1,0 +1,36 @@
+/* src/content/ui-styles/origami/pages/shorts.css */
+html[data-ypp-ui-style="origami"] ytd-shorts,
+html[data-ypp-ui-style="origami"] #shorts-container {
+  background: #fdfdfd !important;
+}
+html[data-ypp-ui-style="origami"] ytd-reel-video-renderer {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  border: 1px solid #d0d0c0 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="origami"] ytd-reel-player-overlay-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="origami"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+  background: #f8f8f5 !important;
+  border-radius: 50% !important;
+  border: 1px solid #d0d0c0 !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  margin-bottom: 12px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  transform: scale(1.1) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-reel-item-renderer {
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  overflow: hidden !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-reel-item-renderer:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}

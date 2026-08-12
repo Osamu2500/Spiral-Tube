@@ -1,0 +1,54 @@
+/* src/content/ui-styles/y2k/base/animations.css */
+@keyframes y2k-pulse {
+  0%   { box-shadow: 0 0 15px rgba(255,105,180,0.4); }
+  50%  { box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3); }
+  100% { box-shadow: 0 0 15px rgba(255,105,180,0.4); }
+}
+
+
+@keyframes y2k-float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="y2k"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="y2k"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="y2k"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="y2k"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="y2k"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="y2k"] ytd-grid-video-renderer:hover {
+  
+  
+  transform: scale(1.05) rotate(1deg) !important;
+  
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  border: 3px solid #ff69b4 !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="y2k"] ytd-guide-entry-renderer:hover {
+  background-color: #f0f0ff !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #9370db !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="y2k"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="y2k"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: y2k-pulse 5s ease-in-out infinite;
+}

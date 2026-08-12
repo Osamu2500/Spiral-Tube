@@ -1,0 +1,45 @@
+/* src/content/ui-styles/grunge/pages/comments.css */
+html[data-ypp-ui-style="grunge"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="grunge"] ytd-comment-renderer {
+  background: #333333 !important;
+  border: 1px dashed #8a9a5b !important;
+  border-radius: 2px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="grunge"] ytd-comment-renderer:hover {
+  box-shadow: 2px 2px 0 #111 !important;
+  border: 1px solid #a8b870 !important;
+}
+html[data-ypp-ui-style="grunge"] #author-text.ytd-comment-renderer {
+  color: #a8b870 !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="grunge"] #content-text.ytd-comment-renderer {
+  color: #cccccc !important;
+  font-family: "Courier New",Courier,monospace !important;
+}
+html[data-ypp-ui-style="grunge"] ytd-comment-replies-renderer {
+  border-left: 1px dashed #8a9a5b !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="grunge"] #header-author yt-img-shadow {
+  border: 1px dashed #8a9a5b !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="grunge"] #simplebox-placeholder {
+  background: #333333 !important;
+  border-radius: 2px !important;
+  border: 1px dashed #8a9a5b !important;
+  color: #999999 !important;
+}
+html[data-ypp-ui-style="grunge"] ytd-backstage-post-renderer {
+  background: #333333 !important;
+  border: 1px dashed #8a9a5b !important;
+  border-radius: 2px !important;
+  padding: 16px !important;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
+}

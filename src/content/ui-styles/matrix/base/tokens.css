@@ -1,0 +1,66 @@
+/* src/content/ui-styles/matrix/base/tokens.css */
+html[data-ypp-ui-style="matrix"],
+html[data-ypp-ui-style="matrix"] body,
+html[data-ypp-ui-style="matrix"] [dark] {
+  /* Core Palette */
+  --matrix-bg:           #000000;
+  --matrix-sf:           #001100;
+  --matrix-primary:      #002200;
+  --matrix-secondary:    #003300;
+  --matrix-accent:       #00ff00;
+  --matrix-text:         #00ff00;
+  --matrix-text-sub:     #009900;
+  --matrix-border:       1px dotted #00ff00;
+  --matrix-border-hover: 1px solid #00ff00;
+  --matrix-radius:       0px;
+  --matrix-shadow:       0 0 10px #00ff00;
+  --matrix-shadow-hover: 0 0 20px #00ff00,0 0 40px #00ff00;
+  --matrix-shadow-active:0 0 5px #00ff00;
+  --matrix-bounce:       linear 0s;
+  --matrix-font:         "Courier New",Courier,monospace;
+  --matrix-font-alt:     "Share Tech Mono","Courier New",monospace;
+
+  /* Convenience shorthands (like vintage's --sf, --bounce etc.) */
+  --sf:           var(--matrix-sf);
+  --bounce:       var(--matrix-bounce);
+  --shadow-base:  var(--matrix-shadow);
+  --shadow-hover: var(--matrix-shadow-hover);
+  --shadow-active:var(--matrix-shadow-active);
+
+  /* Chip tokens */
+  --chip-bg:             rgba(0,255,0,0.07);
+  --chip-bg-hover:       rgba(0,255,0,0.2);
+  --chip-bg-selected:    #00ff00;
+  --chip-color-selected: #000000;
+  --chip-border:         1px dotted #00ff00;
+  --chip-border-selected:1px solid #00ff00;
+  --chip-radius:         0px;
+  --chip-shadow:         0 0 10px #00ff00;
+
+  /* YouTube spec variable overrides */
+  --yt-spec-text-primary:          #00ff00 !important;
+  --yt-spec-text-secondary:        #009900 !important;
+  --yt-spec-text-disabled:         #009900 !important;
+  --yt-spec-icon-active-other:     #00ff00 !important;
+  --yt-spec-icon-inactive:         #009900 !important;
+  --yt-spec-menu-background:       #001100 !important;
+  --yt-spec-raised-background:     #001100 !important;
+  --yt-spec-base-background:       #000000 !important;
+  --yt-spec-badge-chip-background: transparent !important;
+  --yt-spec-additive-background:   transparent !important;
+  --ytd-user-comment-font-family:  "Courier New",Courier,monospace !important;
+  --yt-font-family:                "Courier New",Courier,monospace !important;
+}
+
+/* Hard-enforce typography on every text node */
+html[data-ypp-ui-style="matrix"] body,
+html[data-ypp-ui-style="matrix"] yt-formatted-string,
+html[data-ypp-ui-style="matrix"] .yt-core-attributed-string,
+html[data-ypp-ui-style="matrix"] input,
+html[data-ypp-ui-style="matrix"] textarea,
+html[data-ypp-ui-style="matrix"] button,
+html[data-ypp-ui-style="matrix"] tp-yt-paper-item,
+html[data-ypp-ui-style="matrix"] .ytp-menuitem-label,
+html[data-ypp-ui-style="matrix"] .ytp-menuitem-content {
+  font-family: "Courier New",Courier,monospace !important;
+}

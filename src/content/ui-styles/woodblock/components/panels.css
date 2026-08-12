@@ -1,0 +1,57 @@
+/* src/content/ui-styles/woodblock/components/panels.css */
+html[data-ypp-ui-style="woodblock"] ytd-playlist-panel-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] #secondary-inner ytd-playlist-panel-renderer {
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] .header.ytd-playlist-panel-renderer {
+  background: #deb887 !important;
+  border-bottom: 2px solid #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-miniplayer,
+html[data-ypp-ui-style="woodblock"] #miniplayer-bar {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="woodblock"] .ypp-video-controls,
+html[data-ypp-ui-style="woodblock"] .ypp-shadow-panel {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  border-radius: 4px !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="woodblock"] ytd-transcript-segment-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  color: #5c3d1e !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-transcript-segment-renderer:hover {
+  background: #deb887 !important;
+  color: #8b4513 !important;
+}
+html[data-ypp-ui-style="woodblock"] #ypp-pl-root .ypp-pl-sidebar {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}
+html[data-ypp-ui-style="woodblock"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-style="woodblock"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="woodblock"] #ypp-pl-root .ypp-pl-btn-tool {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-style="woodblock"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
+  background: #deb887 !important;
+  transform: scale(1.04) !important;
+}

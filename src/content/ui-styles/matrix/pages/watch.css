@@ -1,0 +1,46 @@
+/* src/content/ui-styles/matrix/pages/watch.css */
+html[data-ypp-ui-style="matrix"] ytd-watch-flexy {
+  background: #000000 !important;
+}
+html[data-ypp-ui-style="matrix"] #primary.ytd-watch-flexy,
+html[data-ypp-ui-style="matrix"] #secondary.ytd-watch-flexy {
+  background: #000000 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-video-primary-info-renderer {
+  background: #001100 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+  padding: 16px !important;
+  box-shadow: 0 0 10px #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-video-secondary-info-renderer {
+  background: #001100 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+  padding: 16px !important;
+  margin-top: 8px !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-watch-metadata {
+  background: #001100 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-playlist-panel-renderer {
+  background: #001100 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="matrix"] #description-inline-expander {
+  color: #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] ytd-expandable-metadata-renderer {
+  background: #001100 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+  padding: 12px !important;
+}
+html[data-ypp-ui-style="matrix"] #above-the-fold {
+  border-bottom: 1px dotted #00ff00 !important;
+  padding-bottom: 12px !important;
+}

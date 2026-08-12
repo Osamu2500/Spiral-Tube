@@ -1,0 +1,96 @@
+/* src/content/ui-styles/origami/components/cards.css */
+html[data-ypp-ui-style="origami"] ytd-rich-grid-media,
+html[data-ypp-ui-style="origami"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="origami"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="origami"] ytd-video-renderer,
+html[data-ypp-ui-style="origami"] ytd-grid-video-renderer {
+  border: 1px solid #d0d0c0 !important;
+  background: #f8f8f5 !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  border-radius: 0px !important;
+  transition: all var(--bounce) !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  position: relative;
+  overflow: hidden;
+}
+html[data-ypp-ui-style="origami"] ytd-rich-item-renderer {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  transition: all var(--bounce) !important;
+  margin-bottom: 8px !important;
+}
+html[data-ypp-ui-style="origami"] ytd-thumbnail,
+html[data-ypp-ui-style="origami"] #thumbnail {
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="origami"] ytd-reel-video-renderer {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  border: 1px solid #d0d0c0 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="origami"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: 0px !important;
+  padding: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  margin: 5px 0 !important;
+}
+html[data-ypp-ui-style="origami"] ytd-playlist-panel-video-renderer:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  transform: translateX(4px) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-macro-markers-list-item-renderer {
+  border-radius: 0px !important;
+  margin: 5px;
+  border: 1px solid #d0d0c0 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-macro-markers-list-item-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="origami"] ytd-add-to-playlist-renderer {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  border: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="origami"] ytd-account-settings-renderer {
+  background: #f8f8f5 !important;
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  padding: 25px !important;
+  border: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-ui-style="origami"] ytd-reel-item-renderer #dismissible {
+  transition: all var(--bounce) !important;
+  border-radius: 0px !important;
+  border: 2px solid transparent !important;
+}
+html[data-ypp-ui-style="origami"] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-ui-style="origami"] ytd-reel-item-renderer:hover #dismissible {
+  background: #f8f8f5 !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  transform: scale(1.04) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] ytd-expandable-metadata-renderer:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+html[data-ypp-ui-style="origami"] #contents.ytd-rich-grid-renderer {
+  margin-left: 24px !important;
+  margin-right: 12px !important;
+}

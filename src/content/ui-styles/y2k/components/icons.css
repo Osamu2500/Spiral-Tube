@@ -1,0 +1,37 @@
+/* src/content/ui-styles/y2k/components/icons.css */
+html[data-ypp-ui-style="y2k"] yt-icon svg,
+html[data-ypp-ui-style="y2k"] yt-icon path {
+  fill: #191970 !important;
+  transition: fill 0.2s ease !important;
+}
+html[data-ypp-ui-style="y2k"] yt-icon:hover svg,
+html[data-ypp-ui-style="y2k"] yt-icon:hover path {
+  fill: #9370db !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-button svg,
+html[data-ypp-ui-style="y2k"] .ytp-button path {
+  fill: #191970 !important;
+}
+html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button {
+  border-radius: 30px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button:hover {
+  background: #f0f0ff !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.1);
+}
+html[data-ypp-ui-style="y2k"] yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+}
+html[data-ypp-ui-style="y2k"] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  cursor: pointer !important;
+}
+html[data-ypp-ui-style="y2k"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}

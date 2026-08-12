@@ -1,0 +1,52 @@
+/* src/content/ui-styles/hologram/pages/player.css */
+html[data-ypp-ui-style="hologram"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="hologram"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #cff4fc 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-play-progress,
+html[data-ypp-ui-style="hologram"] .ytp-swatch-background-color {
+  background-color: #00e5e5 !important;
+  box-shadow: 0 0 8px #00e5e5 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-load-progress {
+  background-color: #005566 !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-volume-slider-handle {
+  background: #00e5e5 !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-chrome-controls button {
+  color: #003344 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-chrome-controls button:hover {
+  color: #00e5e5 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-settings-menu,
+html[data-ypp-ui-style="hologram"] .ytp-panel-menu {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-menuitem {
+  color: #003344 !important;
+  font-family: "Orbitron","Space Mono",monospace !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-menuitem:hover {
+  background: #cff4fc !important;
+  color: #00e5e5 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-ce-element {
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-ce-element:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.04) !important;
+}

@@ -1,0 +1,80 @@
+/* src/content/ui-styles/origami/card-style.css */
+html[data-ypp-card-style="origami"] {
+  --sf:           #f8f8f5;
+  --shadow-base:  2px 2px 10px rgba(0,0,0,0.1);
+  --shadow-hover: 4px 4px 18px rgba(0,0,0,0.18);
+  --shadow-active:1px 1px 5px rgba(0,0,0,0.08);
+  --blur:         blur(10px);
+  --origami-bg:       #fdfdfd;
+  --origami-sf:       #f8f8f5;
+  --origami-primary:  #f4f4f0;
+  --origami-secondary:#eaeae0;
+  --origami-accent:   #ff7f50;
+  --origami-border:   1px solid #d0d0c0;
+  --origami-border-hover: 1px solid #ff7f50;
+  --origami-text:     #444444;
+  --origami-text-sub: #888888;
+  --origami-radius:   0px;
+}
+
+html[data-ypp-card-style='origami']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model
+  ) {
+  background: #f8f8f5 !important;
+  --yt-spec-text-primary: #444444 !important;
+  --yt-spec-text-secondary: #888888 !important;
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  padding: var(--ypp-density-pad, 14px) !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-ypp-card-style='origami']
+  :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-playlist-renderer,
+    ytd-radio-renderer,
+    ytd-channel-renderer,
+    ytd-compact-video-renderer,
+    ytd-grid-video-renderer,
+    .ypp-grid-item,
+    yt-lockup-view-model
+  ):hover {
+  background: #f4f4f0 !important;
+  border-color: #ff7f50 !important;
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+
+html[data-ypp-card-style='origami']
+  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title {
+  color: #444444 !important;
+  font-family: "Quicksand","Nunito",sans-serif !important;
+}
+
+html[data-ypp-card-style='origami']
+  :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span {
+  color: #888888 !important;
+}
+
+html[data-ypp-card-style='origami'] ytd-thumbnail {
+  border-radius: 0px !important;
+  border: 1px solid #d0d0c0 !important;
+  overflow: hidden !important;
+}
+
+html[data-ypp-card-style='origami'] #mouseover-overlay,
+html[data-ypp-card-style='origami'] ytd-video-preview {
+  display: none !important;
+}

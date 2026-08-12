@@ -1,0 +1,53 @@
+/* src/content/ui-styles/steampunk/components/menus.css */
+html[data-ypp-ui-style="steampunk"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="steampunk"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="steampunk"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="steampunk"] #contentWrapper tp-yt-iron-dropdown,
+html[data-ypp-ui-style="steampunk"] ytd-multi-page-menu-renderer {
+  background: #4a3a30 !important;
+  border: 3px double #d2b48c !important;
+  border-radius: 6px !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #f5deb3 !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-settings-menu,
+html[data-ypp-ui-style="steampunk"] .ytp-panel-menu {
+  background: #4a3a30 !important;
+  border: 3px double #d2b48c !important;
+  border-radius: 6px !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-menuitem {
+  color: #f5deb3 !important;
+  font-family: "Playfair Display","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-menuitem:hover {
+  background: #5c4033 !important;
+  color: #d2b48c !important;
+}
+html[data-ypp-ui-style="steampunk"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="steampunk"] tp-yt-paper-item {
+  background: transparent !important;
+  color: #f5deb3 !important;
+}
+html[data-ypp-ui-style="steampunk"] tp-yt-paper-item:hover {
+  background: #5c4033 !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-notification-renderer {
+  background: #4a3a30 !important;
+  border-bottom: 3px double #d2b48c !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-notification-renderer:hover {
+  background: #5c4033 !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-settings-sidebar-renderer {
+  background: #4a3a30 !important;
+  border-radius: 6px !important;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
+  padding: 15px !important;
+  border: 3px double #d2b48c !important;
+}

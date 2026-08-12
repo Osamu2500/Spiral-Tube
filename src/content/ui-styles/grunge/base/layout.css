@@ -1,0 +1,54 @@
+/* src/content/ui-styles/grunge/base/layout.css */
+html[data-ypp-ui-style="grunge"] * {
+  font-family: "Courier New",Courier,monospace !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html[data-ypp-ui-style="grunge"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+html[data-ypp-ui-style="grunge"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+html[data-ypp-ui-style="grunge"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 2px 2px 0 #111;
+}
+html[data-ypp-ui-style="grunge"] #video-title {
+  color: #cccccc !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="grunge"] #description-text,
+html[data-ypp-ui-style="grunge"] yt-formatted-string#description-text {
+  color: #999999 !important;
+}
+html[data-ypp-ui-style="grunge"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 1px dashed #8a9a5b !important;
+  border-radius: 2px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="grunge"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 2px 2px 0 #111 !important;
+}
+html[data-ypp-ui-style="grunge"] yt-img-shadow#avatar {
+  border: 1px dashed #8a9a5b !important;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="grunge"] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="grunge"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: 2px !important;
+}
+

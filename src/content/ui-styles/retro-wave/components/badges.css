@@ -1,0 +1,25 @@
+/* src/content/ui-styles/retro-wave/components/badges.css */
+html[data-ypp-ui-style="retro-wave"] .yt-badge-shape--thumbnail-default,
+html[data-ypp-ui-style="retro-wave"] .ypp-badge,
+html[data-ypp-ui-style="retro-wave"] .ypp-value-display {
+  background: #22103c !important;
+  color: #00ffff !important;
+  border-radius: 8px !important;
+  border: 2px solid #ff007f !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  font-family: "VT323","Share Tech Mono",monospace !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-badge-supported-renderer {
+  border-radius: 8px !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="retro-wave"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-style="retro-wave"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-style="retro-wave"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-style="retro-wave"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-style="retro-wave"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: 8px !important;
+  background-color: #ff007f !important;
+}

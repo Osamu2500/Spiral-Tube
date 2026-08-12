@@ -1,0 +1,49 @@
+/* src/content/ui-styles/origami/base/animations.css */
+@keyframes origami-pulse {
+  0%   { box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+  50%  { box-shadow: 4px 4px 18px rgba(0,0,0,0.18); }
+  100% { box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+}
+
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="origami"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="origami"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="origami"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="origami"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="origami"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="origami"] ytd-grid-video-renderer:hover {
+  
+  
+  
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  border: 1px solid #ff7f50 !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="origami"] ytd-guide-entry-renderer:hover {
+  background-color: #f8f8f5 !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #ff7f50 !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="origami"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: origami-pulse 5s ease-in-out infinite;
+}

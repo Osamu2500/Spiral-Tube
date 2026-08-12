@@ -1,0 +1,53 @@
+/* src/content/ui-styles/gothic/components/menus.css */
+html[data-ypp-ui-style="gothic"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="gothic"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="gothic"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="gothic"] #contentWrapper tp-yt-iron-dropdown,
+html[data-ypp-ui-style="gothic"] ytd-multi-page-menu-renderer {
+  background: #1c1c1c !important;
+  border: 2px solid #8b0000 !important;
+  border-radius: 0px !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #d3d3d3 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-settings-menu,
+html[data-ypp-ui-style="gothic"] .ytp-panel-menu {
+  background: #1c1c1c !important;
+  border: 2px solid #8b0000 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-menuitem {
+  color: #d3d3d3 !important;
+  font-family: "Cinzel","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-menuitem:hover {
+  background: #2a0800 !important;
+  color: #cc0000 !important;
+}
+html[data-ypp-ui-style="gothic"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="gothic"] tp-yt-paper-item {
+  background: transparent !important;
+  color: #d3d3d3 !important;
+}
+html[data-ypp-ui-style="gothic"] tp-yt-paper-item:hover {
+  background: #2a0800 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-notification-renderer {
+  background: #1c1c1c !important;
+  border-bottom: 2px solid #8b0000 !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-notification-renderer:hover {
+  background: #2a0800 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-settings-sidebar-renderer {
+  background: #1c1c1c !important;
+  border-radius: 0px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  padding: 15px !important;
+  border: 2px solid #8b0000 !important;
+}

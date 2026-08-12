@@ -1,0 +1,54 @@
+/* src/content/ui-styles/origami/base/layout.css */
+html[data-ypp-ui-style="origami"] * {
+  font-family: "Quicksand","Nunito",sans-serif !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html[data-ypp-ui-style="origami"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+html[data-ypp-ui-style="origami"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+html[data-ypp-ui-style="origami"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18);
+}
+html[data-ypp-ui-style="origami"] #video-title {
+  color: #444444 !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="origami"] #description-text,
+html[data-ypp-ui-style="origami"] yt-formatted-string#description-text {
+  color: #888888 !important;
+}
+html[data-ypp-ui-style="origami"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="origami"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}
+html[data-ypp-ui-style="origami"] yt-img-shadow#avatar {
+  border: 1px solid #d0d0c0 !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="origami"] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html[data-ypp-ui-style="origami"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="origami"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: 0px !important;
+}
+

@@ -1,0 +1,111 @@
+/* src/content/ui-styles/hologram/components/buttons.css */
+html[data-ypp-ui-style="hologram"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="hologram"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+html[data-ypp-ui-style="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="hologram"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style="hologram"] .yt-spec-button-shape-next--tonal {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  color: #003344 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="hologram"] button.ytSpecButtonShapeNextTonal:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.06) !important;
+  border: 1px solid #00ffff !important;
+}
+html[data-ypp-ui-style="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:active,
+html[data-ypp-ui-style="hologram"] button.ytSpecButtonShapeNextTonal:active {
+  transform: scale(0.97) !important;
+  box-shadow: 0 0 5px rgba(0,255,255,0.2) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  display: flex !important;
+  gap: 6px !important;
+  background: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+html[data-ypp-ui-style="hologram"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button {
+  border-radius: 10px !important;
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  color: #003344 !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.06) !important;
+}
+html[data-ypp-ui-style="hologram"] button.ytSpecButtonShapeNextText {
+  border-radius: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] button.ytSpecButtonShapeNextText:hover {
+  background: #f0fdff !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Full action button coverage */
+html[data-ypp-ui-style="hologram"] #top-level-buttons-computed .yt-spec-button-shape-next,
+html[data-ypp-ui-style="hologram"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
+html[data-ypp-ui-style="hologram"] ytd-menu-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="hologram"] yt-button-view-model .yt-spec-button-shape-next,
+html[data-ypp-ui-style="hologram"] ytd-download-button-renderer .yt-spec-button-shape-next {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  color: #003344 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  font-weight: 700 !important;
+  margin-right: 6px !important;
+}
+html[data-ypp-ui-style="hologram"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="hologram"] ytd-menu-renderer .yt-spec-button-shape-next:hover {
+  border: 1px solid #00ffff !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: translate(-2px,-2px) !important;
+}
+
+/* SVG icon colors */
+html[data-ypp-ui-style="hologram"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="hologram"] #top-level-buttons-computed .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="hologram"] ytd-menu-renderer .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="hologram"] ytd-menu-renderer .yt-spec-button-shape-next path {
+  fill: #003344 !important;
+}
+html[data-ypp-ui-style="hologram"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="hologram"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path {
+  fill: #00e5e5 !important;
+}
+html[data-ypp-ui-style="hologram"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  background: none !important;
+  border: none !important;
+}
+
+/* YPP custom buttons */
+html[data-ypp-ui-style="hologram"] .ypp-btn-primary,
+html[data-ypp-ui-style="hologram"] .ypp-play-all-btn,
+html[data-ypp-ui-style="hologram"] .ypp-health-btn {
+  border-radius: 10px !important;
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  color: #003344 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] .ypp-btn-primary:hover,
+html[data-ypp-ui-style="hologram"] .ypp-play-all-btn:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.05) !important;
+}

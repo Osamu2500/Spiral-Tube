@@ -1,0 +1,111 @@
+/* src/content/ui-styles/retro-wave/components/buttons.css */
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+  display: none !important;
+}
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-style="retro-wave"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--tonal {
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  color: #00ffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-style="retro-wave"] button.ytSpecButtonShapeNextTonal:hover {
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: scale(1.06) !important;
+  border: 2px solid #00ffff !important;
+}
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:active,
+html[data-ypp-ui-style="retro-wave"] button.ytSpecButtonShapeNextTonal:active {
+  transform: scale(0.97) !important;
+  box-shadow: 0 0 6px rgba(255,0,127,0.3) !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  display: flex !important;
+  gap: 6px !important;
+  background: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button {
+  border-radius: 8px !important;
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  color: #00ffff !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover {
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: scale(1.06) !important;
+}
+html[data-ypp-ui-style="retro-wave"] button.ytSpecButtonShapeNextText {
+  border-radius: 8px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] button.ytSpecButtonShapeNextText:hover {
+  background: #22103c !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Full action button coverage */
+html[data-ypp-ui-style="retro-wave"] #top-level-buttons-computed .yt-spec-button-shape-next,
+html[data-ypp-ui-style="retro-wave"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
+html[data-ypp-ui-style="retro-wave"] ytd-menu-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="retro-wave"] yt-button-view-model .yt-spec-button-shape-next,
+html[data-ypp-ui-style="retro-wave"] ytd-download-button-renderer .yt-spec-button-shape-next {
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  color: #00ffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  font-weight: 700 !important;
+  margin-right: 6px !important;
+}
+html[data-ypp-ui-style="retro-wave"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="retro-wave"] ytd-menu-renderer .yt-spec-button-shape-next:hover {
+  border: 2px solid #00ffff !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: translate(-2px,-2px) !important;
+}
+
+/* SVG icon colors */
+html[data-ypp-ui-style="retro-wave"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="retro-wave"] #top-level-buttons-computed .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="retro-wave"] ytd-menu-renderer .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="retro-wave"] ytd-menu-renderer .yt-spec-button-shape-next path {
+  fill: #00ffff !important;
+}
+html[data-ypp-ui-style="retro-wave"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="retro-wave"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path {
+  fill: #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  background: none !important;
+  border: none !important;
+}
+
+/* YPP custom buttons */
+html[data-ypp-ui-style="retro-wave"] .ypp-btn-primary,
+html[data-ypp-ui-style="retro-wave"] .ypp-play-all-btn,
+html[data-ypp-ui-style="retro-wave"] .ypp-health-btn {
+  border-radius: 8px !important;
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  color: #00ffff !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ypp-btn-primary:hover,
+html[data-ypp-ui-style="retro-wave"] .ypp-play-all-btn:hover {
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: scale(1.05) !important;
+}

@@ -1,0 +1,37 @@
+/* src/content/ui-styles/anime/components/icons.css */
+html[data-ypp-ui-style="anime"] yt-icon svg,
+html[data-ypp-ui-style="anime"] yt-icon path {
+  fill: #3a1a2a !important;
+  transition: fill 0.2s ease !important;
+}
+html[data-ypp-ui-style="anime"] yt-icon:hover svg,
+html[data-ypp-ui-style="anime"] yt-icon:hover path {
+  fill: #ff1493 !important;
+}
+html[data-ypp-ui-style="anime"] .ytp-button svg,
+html[data-ypp-ui-style="anime"] .ytp-button path {
+  fill: #3a1a2a !important;
+}
+html[data-ypp-ui-style="anime"] yt-icon-button#guide-button {
+  border-radius: 20px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="anime"] yt-icon-button#guide-button:hover {
+  background: #ffe4ef !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  transform: scale(1.1);
+}
+html[data-ypp-ui-style="anime"] yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+}
+html[data-ypp-ui-style="anime"] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  background: #ffe4ef !important;
+  border: 2px solid #ffb6c1 !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  cursor: pointer !important;
+}
+html[data-ypp-ui-style="anime"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+}

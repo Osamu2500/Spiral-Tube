@@ -1,0 +1,52 @@
+/* src/content/ui-styles/retro-wave/pages/player.css */
+html[data-ypp-ui-style="retro-wave"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="retro-wave"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #4a0e4e 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-play-progress,
+html[data-ypp-ui-style="retro-wave"] .ytp-swatch-background-color {
+  background-color: #ff007f !important;
+  box-shadow: 0 0 8px #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-load-progress {
+  background-color: #cc66ff !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-volume-slider-handle {
+  background: #ff007f !important;
+  border-radius: 50% !important;
+  border: 2px solid #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-chrome-controls button {
+  color: #00ffff !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-chrome-controls button:hover {
+  color: #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-settings-menu,
+html[data-ypp-ui-style="retro-wave"] .ytp-panel-menu {
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  border-radius: 8px !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-menuitem {
+  color: #00ffff !important;
+  font-family: "VT323","Share Tech Mono",monospace !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-menuitem:hover {
+  background: #4a0e4e !important;
+  color: #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-element {
+  border-radius: 8px !important;
+  border: 2px solid #ff007f !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-ce-element:hover {
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: scale(1.04) !important;
+}

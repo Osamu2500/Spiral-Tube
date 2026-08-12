@@ -1,0 +1,45 @@
+/* src/content/ui-styles/woodblock/pages/comments.css */
+html[data-ypp-ui-style="woodblock"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="woodblock"] ytd-comment-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-comment-renderer:hover {
+  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
+  border: 2px solid #a0522d !important;
+}
+html[data-ypp-ui-style="woodblock"] #author-text.ytd-comment-renderer {
+  color: #8b4513 !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="woodblock"] #content-text.ytd-comment-renderer {
+  color: #5c3d1e !important;
+  font-family: "Noto Serif","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-comment-replies-renderer {
+  border-left: 2px solid #8b4513 !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="woodblock"] #header-author yt-img-shadow {
+  border: 2px solid #8b4513 !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="woodblock"] #simplebox-placeholder {
+  background: #faf8f0 !important;
+  border-radius: 4px !important;
+  border: 2px solid #8b4513 !important;
+  color: #8b6914 !important;
+}
+html[data-ypp-ui-style="woodblock"] ytd-backstage-post-renderer {
+  background: #faf8f0 !important;
+  border: 2px solid #8b4513 !important;
+  border-radius: 4px !important;
+  padding: 16px !important;
+  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
+}

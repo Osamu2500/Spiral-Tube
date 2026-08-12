@@ -1,0 +1,45 @@
+/* src/content/ui-styles/anime/pages/comments.css */
+html[data-ypp-ui-style="anime"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="anime"] ytd-comment-renderer {
+  background: #ffe4ef !important;
+  border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-comment-renderer:hover {
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  border: 2px solid #ff69b4 !important;
+}
+html[data-ypp-ui-style="anime"] #author-text.ytd-comment-renderer {
+  color: #ff1493 !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="anime"] #content-text.ytd-comment-renderer {
+  color: #3a1a2a !important;
+  font-family: "Nunito","Segoe UI",sans-serif !important;
+}
+html[data-ypp-ui-style="anime"] ytd-comment-replies-renderer {
+  border-left: 2px solid #ffb6c1 !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="anime"] #header-author yt-img-shadow {
+  border: 2px solid #ffb6c1 !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="anime"] #simplebox-placeholder {
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+  border: 2px solid #ffb6c1 !important;
+  color: #7a4a5a !important;
+}
+html[data-ypp-ui-style="anime"] ytd-backstage-post-renderer {
+  background: #ffe4ef !important;
+  border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important;
+  padding: 16px !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+}

@@ -1,0 +1,96 @@
+/* src/content/ui-styles/gothic/components/cards.css */
+html[data-ypp-ui-style="gothic"] ytd-rich-grid-media,
+html[data-ypp-ui-style="gothic"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="gothic"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="gothic"] ytd-video-renderer,
+html[data-ypp-ui-style="gothic"] ytd-grid-video-renderer {
+  border: 2px solid #8b0000 !important;
+  background: #1c1c1c !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  border-radius: 0px !important;
+  transition: all var(--bounce) !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  position: relative;
+  overflow: hidden;
+}
+html[data-ypp-ui-style="gothic"] ytd-rich-item-renderer {
+  background: #1c1c1c !important;
+  border-radius: 0px !important;
+  border: 2px solid #8b0000 !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  transition: all var(--bounce) !important;
+  margin-bottom: 8px !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-thumbnail,
+html[data-ypp-ui-style="gothic"] #thumbnail {
+  border-radius: 0px !important;
+  border: 2px solid #8b0000 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-reel-video-renderer {
+  background: #1c1c1c !important;
+  border-radius: 0px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  border: 2px solid #8b0000 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: 0px !important;
+  padding: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  margin: 5px 0 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-playlist-panel-video-renderer:hover {
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  transform: translateX(4px) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-macro-markers-list-item-renderer {
+  border-radius: 0px !important;
+  margin: 5px;
+  border: 2px solid #8b0000 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-macro-markers-list-item-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="gothic"] ytd-add-to-playlist-renderer {
+  background: #1c1c1c !important;
+  border-radius: 0px !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  border: 2px solid #8b0000 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="gothic"] ytd-account-settings-renderer {
+  background: #1c1c1c !important;
+  border-radius: 0px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  padding: 25px !important;
+  border: 2px solid #8b0000 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-ui-style="gothic"] ytd-reel-item-renderer #dismissible {
+  transition: all var(--bounce) !important;
+  border-radius: 0px !important;
+  border: 2px solid transparent !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-ui-style="gothic"] ytd-reel-item-renderer:hover #dismissible {
+  background: #1c1c1c !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  transform: scale(1.04) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: 0px !important;
+  border: 2px solid #8b0000 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-expandable-metadata-renderer:hover {
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+}
+html[data-ypp-ui-style="gothic"] #contents.ytd-rich-grid-renderer {
+  margin-left: 24px !important;
+  margin-right: 12px !important;
+}

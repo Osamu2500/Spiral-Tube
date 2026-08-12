@@ -1,0 +1,37 @@
+/* src/content/ui-styles/retro-wave/components/icons.css */
+html[data-ypp-ui-style="retro-wave"] yt-icon svg,
+html[data-ypp-ui-style="retro-wave"] yt-icon path {
+  fill: #00ffff !important;
+  transition: fill 0.2s ease !important;
+}
+html[data-ypp-ui-style="retro-wave"] yt-icon:hover svg,
+html[data-ypp-ui-style="retro-wave"] yt-icon:hover path {
+  fill: #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytp-button svg,
+html[data-ypp-ui-style="retro-wave"] .ytp-button path {
+  fill: #00ffff !important;
+}
+html[data-ypp-ui-style="retro-wave"] yt-icon-button#guide-button {
+  border-radius: 8px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] yt-icon-button#guide-button:hover {
+  background: #22103c !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  transform: scale(1.1);
+}
+html[data-ypp-ui-style="retro-wave"] yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  cursor: pointer !important;
+}
+html[data-ypp-ui-style="retro-wave"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+}

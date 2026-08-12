@@ -1,0 +1,96 @@
+/* src/content/ui-styles/anime/components/cards.css */
+html[data-ypp-ui-style="anime"] ytd-rich-grid-media,
+html[data-ypp-ui-style="anime"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="anime"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="anime"] ytd-video-renderer,
+html[data-ypp-ui-style="anime"] ytd-grid-video-renderer {
+  border: 2px solid #ffb6c1 !important;
+  background: #ffe4ef !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  border-radius: 20px !important;
+  transition: all var(--bounce) !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  position: relative;
+  overflow: hidden;
+}
+html[data-ypp-ui-style="anime"] ytd-rich-item-renderer {
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+  border: 2px solid #ffb6c1 !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  transition: all var(--bounce) !important;
+  margin-bottom: 8px !important;
+}
+html[data-ypp-ui-style="anime"] ytd-thumbnail,
+html[data-ypp-ui-style="anime"] #thumbnail {
+  border-radius: 20px !important;
+  border: 2px solid #ffb6c1 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="anime"] ytd-reel-video-renderer {
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  border: 2px solid #ffb6c1 !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="anime"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: 20px !important;
+  padding: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  margin: 5px 0 !important;
+}
+html[data-ypp-ui-style="anime"] ytd-playlist-panel-video-renderer:hover {
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  transform: translateX(4px) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-macro-markers-list-item-renderer {
+  border-radius: 20px !important;
+  margin: 5px;
+  border: 2px solid #ffb6c1 !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-macro-markers-list-item-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="anime"] ytd-add-to-playlist-renderer {
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  border: 2px solid #ffb6c1 !important;
+}
+html[data-ypp-ui-style="anime"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="anime"] ytd-account-settings-renderer {
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
+  padding: 25px !important;
+  border: 2px solid #ffb6c1 !important;
+}
+html[data-ypp-ui-style="anime"] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-ui-style="anime"] ytd-reel-item-renderer #dismissible {
+  transition: all var(--bounce) !important;
+  border-radius: 20px !important;
+  border: 2px solid transparent !important;
+}
+html[data-ypp-ui-style="anime"] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-ui-style="anime"] ytd-reel-item-renderer:hover #dismissible {
+  background: #ffe4ef !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+  transform: scale(1.04) !important;
+}
+html[data-ypp-ui-style="anime"] ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: 20px !important;
+  border: 2px solid #ffb6c1 !important;
+}
+html[data-ypp-ui-style="anime"] ytd-expandable-metadata-renderer:hover {
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+}
+html[data-ypp-ui-style="anime"] #contents.ytd-rich-grid-renderer {
+  margin-left: 24px !important;
+  margin-right: 12px !important;
+}

@@ -1,0 +1,49 @@
+/* src/content/ui-styles/gothic/base/animations.css */
+@keyframes gothic-pulse {
+  0%   { box-shadow: 0 4px 25px rgba(139,0,0,0.5); }
+  50%  { box-shadow: 0 8px 40px rgba(204,0,0,0.7); }
+  100% { box-shadow: 0 4px 25px rgba(139,0,0,0.5); }
+}
+
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="gothic"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="gothic"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="gothic"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="gothic"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="gothic"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="gothic"] ytd-grid-video-renderer:hover {
+  
+  
+  
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  border: 2px solid #cc0000 !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="gothic"] ytd-guide-entry-renderer:hover {
+  background-color: #1c1c1c !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #cc0000 !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="gothic"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: gothic-pulse 5s ease-in-out infinite;
+}

@@ -1,0 +1,55 @@
+/* src/content/ui-styles/vaporwave/components/navbar.css */
+html[data-ypp-ui-style="vaporwave"] ytd-masthead,
+html[data-ypp-ui-style="vaporwave"] #masthead-container {
+  background: #6b2fa0 !important;
+  border-bottom: 2px solid #ff71ce !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-topbar-logo-renderer {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  max-height: 45px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}
+html[data-ypp-ui-style="vaporwave"] #guide-wrapper.ytd-app {
+  background: #200e38 !important;
+  border-radius: 0 12px 12px 0 !important;
+  border: 2px solid #ff71ce !important;
+  box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
+}
+html[data-ypp-ui-style="vaporwave"] #guide-content.ytd-app {
+  background: transparent;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-guide-section-renderer {
+  border-bottom: 2px solid #ff71ce !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-guide-entry-renderer {
+  border-radius: 12px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: 12px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: #200e38 !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-mini-guide-entry-renderer {
+  margin-top: 10px !important;
+  border-radius: 12px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}

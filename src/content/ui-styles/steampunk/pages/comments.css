@@ -1,0 +1,45 @@
+/* src/content/ui-styles/steampunk/pages/comments.css */
+html[data-ypp-ui-style="steampunk"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="steampunk"] ytd-comment-renderer {
+  background: #4a3a30 !important;
+  border: 3px double #d2b48c !important;
+  border-radius: 6px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-comment-renderer:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
+  border: 3px solid #d2b48c !important;
+}
+html[data-ypp-ui-style="steampunk"] #author-text.ytd-comment-renderer {
+  color: #d2b48c !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="steampunk"] #content-text.ytd-comment-renderer {
+  color: #f5deb3 !important;
+  font-family: "Playfair Display","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-comment-replies-renderer {
+  border-left: 3px double #d2b48c !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="steampunk"] #header-author yt-img-shadow {
+  border: 3px double #d2b48c !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="steampunk"] #simplebox-placeholder {
+  background: #4a3a30 !important;
+  border-radius: 6px !important;
+  border: 3px double #d2b48c !important;
+  color: #c8a882 !important;
+}
+html[data-ypp-ui-style="steampunk"] ytd-backstage-post-renderer {
+  background: #4a3a30 !important;
+  border: 3px double #d2b48c !important;
+  border-radius: 6px !important;
+  padding: 16px !important;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
+}

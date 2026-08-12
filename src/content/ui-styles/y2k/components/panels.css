@@ -1,0 +1,57 @@
+/* src/content/ui-styles/y2k/components/panels.css */
+html[data-ypp-ui-style="y2k"] ytd-playlist-panel-renderer {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  border-radius: 30px !important;
+}
+html[data-ypp-ui-style="y2k"] #secondary-inner ytd-playlist-panel-renderer {
+  border-radius: 30px !important;
+}
+html[data-ypp-ui-style="y2k"] .header.ytd-playlist-panel-renderer {
+  background: #ff69b4 !important;
+  border-bottom: 3px solid #00ccff !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-miniplayer,
+html[data-ypp-ui-style="y2k"] #miniplayer-bar {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  border-radius: 30px !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="y2k"] .ypp-video-controls,
+html[data-ypp-ui-style="y2k"] .ypp-shadow-panel {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  border-radius: 30px !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-style="y2k"] ytd-transcript-segment-renderer {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  border-radius: 30px !important;
+  color: #191970 !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-transcript-segment-renderer:hover {
+  background: #ff69b4 !important;
+  color: #9370db !important;
+}
+html[data-ypp-ui-style="y2k"] #ypp-pl-root .ypp-pl-sidebar {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+html[data-ypp-ui-style="y2k"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-style="y2k"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-style="y2k"] #ypp-pl-root .ypp-pl-btn-tool {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  border-radius: 30px !important;
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+html[data-ypp-ui-style="y2k"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-style="y2k"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
+  background: #ff69b4 !important;
+  transform: scale(1.04) !important;
+}

@@ -1,0 +1,49 @@
+/* src/content/ui-styles/galaxy/base/animations.css */
+@keyframes galaxy-pulse {
+  0%   { box-shadow: 0 0 20px rgba(0,240,255,0.2); }
+  50%  { box-shadow: 0 0 35px rgba(0,240,255,0.5); }
+  100% { box-shadow: 0 0 20px rgba(0,240,255,0.2); }
+}
+
+
+
+/* Subscribe button pulse */
+html[data-ypp-ui-style="galaxy"] #subscribe-button .yt-spec-button-shape-next--filled {
+  transition: all 0.3s ease !important;
+  animation: galaxy-pulse 2.5s ease-in-out infinite !important;
+  
+}
+
+/* Card hover lift */
+html[data-ypp-ui-style="galaxy"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-style="galaxy"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-style="galaxy"] ytd-video-renderer:hover,
+html[data-ypp-ui-style="galaxy"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-style="galaxy"] ytd-grid-video-renderer:hover {
+  
+  
+  
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  border: 1px solid rgba(0,240,255,0.8) !important;
+}
+
+/* Guide sidebar hover slide */
+html[data-ypp-ui-style="galaxy"] ytd-guide-entry-renderer:hover {
+  background-color: #101318 !important;
+  transform: translateX(8px) !important;
+  border-left: 4px solid #00f0ff !important;
+  transition: all var(--bounce) !important;
+}
+
+/* Mini guide hover */
+html[data-ypp-ui-style="galaxy"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+}
+
+/* Button scale */
+html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+  transform: scale(1.08);
+  animation: galaxy-pulse 5s ease-in-out infinite;
+}

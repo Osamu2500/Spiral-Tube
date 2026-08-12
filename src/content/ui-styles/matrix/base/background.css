@@ -1,0 +1,63 @@
+/* src/content/ui-styles/matrix/base/background.css */
+html[data-ypp-ui-style="matrix"] html,
+html[data-ypp-ui-style="matrix"] body,
+html[data-ypp-ui-style="matrix"] ytd-app,
+html[data-ypp-ui-style="matrix"] #page-manager {
+  background-color: #000000 !important;
+  color: #00ff00 !important;
+}
+
+html[data-ypp-ui-style="matrix"] body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0,255,0,0.03) 0px, transparent 2px, transparent 4px);
+  z-index: 0;
+}
+html[data-ypp-ui-style="matrix"] tp-yt-app-header {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="matrix"] ::-webkit-scrollbar {
+  width: 12px !important;
+  background-color: #000000 !important;
+}
+html[data-ypp-ui-style="matrix"] ::-webkit-scrollbar-track {
+  background: #000000 !important;
+  border-left: 1px solid #00ff00;
+}
+html[data-ypp-ui-style="matrix"] ::-webkit-scrollbar-thumb {
+  background: #002200 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="matrix"] ::-webkit-scrollbar-thumb:hover {
+  background: #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] .ypp-organizer-modal,
+html[data-ypp-ui-style="matrix"] .ypp-modal-content {
+  background: #001100 !important;
+  border: 1px dotted #00ff00 !important;
+  border-radius: 0px !important;
+  box-shadow: 0 0 20px #00ff00,0 0 40px #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] #simplebox-placeholder {
+  background: #001100 !important;
+  border-radius: 0px !important;
+  border: 1px dotted #00ff00 !important;
+}
+html[data-ypp-ui-style="matrix"] .ypp-slider,
+html[data-ypp-ui-style="matrix"] .ypp-gpb-vol-slider {
+  accent-color: #00ff00 !important;
+  background: #001100 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="matrix"] .tab-content.tp-yt-paper-tab {
+  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="matrix"] .tab-content.tp-yt-paper-tab:hover {
+  background: rgba(0,255,0,0.2) !important;
+  transform: scale(1.05) !important;
+}

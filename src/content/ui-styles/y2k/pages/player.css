@@ -1,0 +1,52 @@
+/* src/content/ui-styles/y2k/pages/player.css */
+html[data-ypp-ui-style="y2k"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="y2k"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #ff69b4 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-play-progress,
+html[data-ypp-ui-style="y2k"] .ytp-swatch-background-color {
+  background-color: #9370db !important;
+  box-shadow: 0 0 8px #9370db !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-load-progress {
+  background-color: #4040aa !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-volume-slider-handle {
+  background: #9370db !important;
+  border-radius: 50% !important;
+  border: 3px solid #00ccff !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-chrome-controls button {
+  color: #191970 !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-chrome-controls button:hover {
+  color: #9370db !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-settings-menu,
+html[data-ypp-ui-style="y2k"] .ytp-panel-menu {
+  background: #f0f0ff !important;
+  border: 3px solid #00ccff !important;
+  border-radius: 30px !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-menuitem {
+  color: #191970 !important;
+  font-family: "Comic Sans MS","Trebuchet MS",cursive !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-menuitem:hover {
+  background: #ff69b4 !important;
+  color: #9370db !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-ce-element {
+  border-radius: 30px !important;
+  border: 3px solid #00ccff !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="y2k"] .ytp-ce-element:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.04) !important;
+}

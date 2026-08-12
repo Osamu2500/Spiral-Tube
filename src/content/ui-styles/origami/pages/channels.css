@@ -1,0 +1,42 @@
+/* src/content/ui-styles/origami/pages/channels.css */
+html[data-ypp-ui-style="origami"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="origami"] #channel-header,
+html[data-ypp-ui-style="origami"] #channel-container {
+  background: #fdfdfd !important;
+  border-bottom: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] #tabs-inner-container {
+  background: #f8f8f5 !important;
+  border-bottom: 1px solid #d0d0c0 !important;
+}
+html[data-ypp-ui-style="origami"] tp-yt-paper-tab {
+  border-radius: 0px !important;
+  transition: all var(--bounce) !important;
+  color: #444444 !important;
+}
+html[data-ypp-ui-style="origami"] tp-yt-paper-tab:hover {
+  background: #f4f4f0 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-ui-style="origami"] tp-yt-paper-tab[aria-selected="true"] {
+  background: #ff7f50 !important;
+  color: #fdfdfd !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="origami"] ytd-channel-renderer {
+  background: #f8f8f5 !important;
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
+  padding: 16px !important;
+}
+html[data-ypp-ui-style="origami"] ytd-channel-renderer:hover {
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+  transform: translateY(-2px) !important;
+}
+html[data-ypp-ui-style="origami"] ytd-c4-tabbed-header-renderer yt-img-shadow {
+  border: 1px solid #d0d0c0 !important;
+  border-radius: 50% !important;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.18) !important;
+}

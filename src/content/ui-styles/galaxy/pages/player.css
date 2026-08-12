@@ -1,0 +1,52 @@
+/* src/content/ui-styles/galaxy/pages/player.css */
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="galaxy"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #450256 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-play-progress,
+html[data-ypp-ui-style="galaxy"] .ytp-swatch-background-color {
+  background-color: #00f0ff !important;
+  box-shadow: 0 0 8px #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-load-progress {
+  background-color: #a0a0c0 !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-volume-slider-handle {
+  background: #00f0ff !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(0,240,255,0.3) !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button {
+  color: #e0e0e0 !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-chrome-controls button:hover {
+  color: #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-settings-menu,
+html[data-ypp-ui-style="galaxy"] .ytp-panel-menu {
+  background: #101318 !important;
+  border: 1px solid rgba(0,240,255,0.3) !important;
+  border-radius: 16px !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-menuitem {
+  color: #e0e0e0 !important;
+  font-family: "Space Grotesk","Segoe UI",sans-serif !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-menuitem:hover {
+  background: #450256 !important;
+  color: #00f0ff !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-ce-element {
+  border-radius: 16px !important;
+  border: 1px solid rgba(0,240,255,0.3) !important;
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="galaxy"] .ytp-ce-element:hover {
+  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
+  transform: scale(1.04) !important;
+}

@@ -1,0 +1,53 @@
+/* src/content/ui-styles/hologram/components/menus.css */
+html[data-ypp-ui-style="hologram"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="hologram"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="hologram"] tp-yt-iron-dropdown,
+html[data-ypp-ui-style="hologram"] #contentWrapper tp-yt-iron-dropdown,
+html[data-ypp-ui-style="hologram"] ytd-multi-page-menu-renderer {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #003344 !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-menu-popup-renderer .ytd-menu-popup-renderer {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-settings-menu,
+html[data-ypp-ui-style="hologram"] .ytp-panel-menu {
+  background: #f0fdff !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  border-radius: 10px !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-menuitem {
+  color: #003344 !important;
+  font-family: "Orbitron","Space Mono",monospace !important;
+}
+html[data-ypp-ui-style="hologram"] .ytp-menuitem:hover {
+  background: #cff4fc !important;
+  color: #00e5e5 !important;
+}
+html[data-ypp-ui-style="hologram"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="hologram"] tp-yt-paper-item {
+  background: transparent !important;
+  color: #003344 !important;
+}
+html[data-ypp-ui-style="hologram"] tp-yt-paper-item:hover {
+  background: #cff4fc !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-notification-renderer {
+  background: #f0fdff !important;
+  border-bottom: 1px solid rgba(0,255,255,0.5) !important;
+  transition: background var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-notification-renderer:hover {
+  background: #cff4fc !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-settings-sidebar-renderer {
+  background: #f0fdff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  padding: 15px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+}

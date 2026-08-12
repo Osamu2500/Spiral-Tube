@@ -1,0 +1,96 @@
+/* src/content/ui-styles/hologram/components/cards.css */
+html[data-ypp-ui-style="hologram"] ytd-rich-grid-media,
+html[data-ypp-ui-style="hologram"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="hologram"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="hologram"] ytd-video-renderer,
+html[data-ypp-ui-style="hologram"] ytd-grid-video-renderer {
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  background: #f0fdff !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  border-radius: 10px !important;
+  transition: all var(--bounce) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  position: relative;
+  overflow: hidden;
+}
+html[data-ypp-ui-style="hologram"] ytd-rich-item-renderer {
+  background: #f0fdff !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  transition: all var(--bounce) !important;
+  margin-bottom: 8px !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-thumbnail,
+html[data-ypp-ui-style="hologram"] #thumbnail {
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-reel-video-renderer {
+  background: #f0fdff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: 10px !important;
+  padding: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  margin: 5px 0 !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-playlist-panel-video-renderer:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: translateX(4px) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-macro-markers-list-item-renderer {
+  border-radius: 10px !important;
+  margin: 5px;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-macro-markers-list-item-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="hologram"] ytd-add-to-playlist-renderer {
+  background: #f0fdff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="hologram"] ytd-account-settings-renderer {
+  background: #f0fdff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
+  padding: 25px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-ui-style="hologram"] ytd-reel-item-renderer #dismissible {
+  transition: all var(--bounce) !important;
+  border-radius: 10px !important;
+  border: 2px solid transparent !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-ui-style="hologram"] ytd-reel-item-renderer:hover #dismissible {
+  background: #f0fdff !important;
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+  transform: scale(1.04) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(0,255,255,0.5) !important;
+}
+html[data-ypp-ui-style="hologram"] ytd-expandable-metadata-renderer:hover {
+  box-shadow: 0 0 30px rgba(0,255,255,0.7) !important;
+}
+html[data-ypp-ui-style="hologram"] #contents.ytd-rich-grid-renderer {
+  margin-left: 24px !important;
+  margin-right: 12px !important;
+}

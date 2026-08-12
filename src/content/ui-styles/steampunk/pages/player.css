@@ -1,0 +1,52 @@
+/* src/content/ui-styles/steampunk/pages/player.css */
+html[data-ypp-ui-style="steampunk"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="steampunk"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #5c4033 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-play-progress,
+html[data-ypp-ui-style="steampunk"] .ytp-swatch-background-color {
+  background-color: #d2b48c !important;
+  box-shadow: 0 0 8px #d2b48c !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-load-progress {
+  background-color: #c8a882 !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-volume-slider-handle {
+  background: #d2b48c !important;
+  border-radius: 50% !important;
+  border: 3px double #d2b48c !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-chrome-controls button {
+  color: #f5deb3 !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-chrome-controls button:hover {
+  color: #d2b48c !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-settings-menu,
+html[data-ypp-ui-style="steampunk"] .ytp-panel-menu {
+  background: #4a3a30 !important;
+  border: 3px double #d2b48c !important;
+  border-radius: 6px !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-menuitem {
+  color: #f5deb3 !important;
+  font-family: "Playfair Display","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-menuitem:hover {
+  background: #5c4033 !important;
+  color: #d2b48c !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-ce-element {
+  border-radius: 6px !important;
+  border: 3px double #d2b48c !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="steampunk"] .ytp-ce-element:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
+  transform: scale(1.04) !important;
+}

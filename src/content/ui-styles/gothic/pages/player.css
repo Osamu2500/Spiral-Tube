@@ -1,0 +1,52 @@
+/* src/content/ui-styles/gothic/pages/player.css */
+html[data-ypp-ui-style="gothic"] .ytp-chrome-bottom,
+html[data-ypp-ui-style="gothic"] .ytp-gradient-bottom {
+  background: linear-gradient(to top, #2a0800 0%, transparent 100%) !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-progress-bar-container {
+  height: 4px !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-play-progress,
+html[data-ypp-ui-style="gothic"] .ytp-swatch-background-color {
+  background-color: #cc0000 !important;
+  box-shadow: 0 0 8px #cc0000 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-load-progress {
+  background-color: #888888 !important;
+  opacity: 0.5 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-volume-slider-handle {
+  background: #cc0000 !important;
+  border-radius: 50% !important;
+  border: 2px solid #8b0000 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-chrome-controls button {
+  color: #d3d3d3 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-chrome-controls button:hover {
+  color: #cc0000 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-settings-menu,
+html[data-ypp-ui-style="gothic"] .ytp-panel-menu {
+  background: #1c1c1c !important;
+  border: 2px solid #8b0000 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-menuitem {
+  color: #d3d3d3 !important;
+  font-family: "Cinzel","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-menuitem:hover {
+  background: #2a0800 !important;
+  color: #cc0000 !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-ce-element {
+  border-radius: 0px !important;
+  border: 2px solid #8b0000 !important;
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="gothic"] .ytp-ce-element:hover {
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  transform: scale(1.04) !important;
+}

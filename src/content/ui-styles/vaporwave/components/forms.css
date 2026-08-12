@@ -1,0 +1,34 @@
+/* src/content/ui-styles/vaporwave/components/forms.css */
+html[data-ypp-ui-style="vaporwave"] ytd-searchbox,
+html[data-ypp-ui-style="vaporwave"] #search-form,
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-input,
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-textarea {
+  background: #200e38 !important;
+  border: 2px solid #ff71ce !important;
+  border-radius: 12px !important;
+  color: #f0e6ff !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
+  font-family: "Syncopate","Audiowide",sans-serif !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-searchbox[has-focus],
+html[data-ypp-ui-style="vaporwave"] tp-yt-paper-input:focus-within {
+  border: 2px solid #01cdfe !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ypp-filter-dropdown {
+  background: #200e38 !important;
+  border-radius: 12px !important;
+  border: 2px solid #ff71ce !important;
+  color: #f0e6ff !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="vaporwave"] .ypp-filter-dropdown:hover {
+  background: #200e38 !important;
+  box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
+}
+html[data-ypp-ui-style="vaporwave"] ytd-comment-simplebox-renderer {
+  background: #200e38 !important;
+  border: 2px solid #ff71ce !important;
+  border-radius: 12px !important;
+}

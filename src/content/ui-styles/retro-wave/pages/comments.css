@@ -1,0 +1,45 @@
+/* src/content/ui-styles/retro-wave/pages/comments.css */
+html[data-ypp-ui-style="retro-wave"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="retro-wave"] ytd-comment-renderer {
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-comment-renderer:hover {
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+  border: 2px solid #00ffff !important;
+}
+html[data-ypp-ui-style="retro-wave"] #author-text.ytd-comment-renderer {
+  color: #ff007f !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="retro-wave"] #content-text.ytd-comment-renderer {
+  color: #00ffff !important;
+  font-family: "VT323","Share Tech Mono",monospace !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-comment-replies-renderer {
+  border-left: 2px solid #ff007f !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="retro-wave"] #header-author yt-img-shadow {
+  border: 2px solid #ff007f !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="retro-wave"] #simplebox-placeholder {
+  background: #22103c !important;
+  border-radius: 8px !important;
+  border: 2px solid #ff007f !important;
+  color: #cc66ff !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-backstage-post-renderer {
+  background: #22103c !important;
+  border: 2px solid #ff007f !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+}

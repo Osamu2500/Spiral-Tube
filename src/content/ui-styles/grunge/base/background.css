@@ -1,0 +1,54 @@
+/* src/content/ui-styles/grunge/base/background.css */
+html[data-ypp-ui-style="grunge"] html,
+html[data-ypp-ui-style="grunge"] body,
+html[data-ypp-ui-style="grunge"] ytd-app,
+html[data-ypp-ui-style="grunge"] #page-manager {
+  background-color: #2b2b2b !important;
+  color: #cccccc !important;
+}
+
+html[data-ypp-ui-style="grunge"] tp-yt-app-header {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="grunge"] ::-webkit-scrollbar {
+  width: 12px !important;
+  background-color: #2b2b2b !important;
+}
+html[data-ypp-ui-style="grunge"] ::-webkit-scrollbar-track {
+  background: #2b2b2b !important;
+  border-left: 1px solid #a8b870;
+}
+html[data-ypp-ui-style="grunge"] ::-webkit-scrollbar-thumb {
+  background: #3d3d3d !important;
+  border: 1px dashed #8a9a5b !important;
+  border-radius: 2px !important;
+}
+html[data-ypp-ui-style="grunge"] ::-webkit-scrollbar-thumb:hover {
+  background: #a8b870 !important;
+}
+html[data-ypp-ui-style="grunge"] .ypp-organizer-modal,
+html[data-ypp-ui-style="grunge"] .ypp-modal-content {
+  background: #333333 !important;
+  border: 1px dashed #8a9a5b !important;
+  border-radius: 2px !important;
+  box-shadow: 2px 2px 0 #111 !important;
+}
+html[data-ypp-ui-style="grunge"] #simplebox-placeholder {
+  background: #333333 !important;
+  border-radius: 2px !important;
+  border: 1px dashed #8a9a5b !important;
+}
+html[data-ypp-ui-style="grunge"] .ypp-slider,
+html[data-ypp-ui-style="grunge"] .ypp-gpb-vol-slider {
+  accent-color: #a8b870 !important;
+  background: #333333 !important;
+  border-radius: 2px !important;
+}
+html[data-ypp-ui-style="grunge"] .tab-content.tp-yt-paper-tab {
+  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: 2px !important;
+}
+html[data-ypp-ui-style="grunge"] .tab-content.tp-yt-paper-tab:hover {
+  background: rgba(138,154,91,0.3) !important;
+  transform: scale(1.05) !important;
+}

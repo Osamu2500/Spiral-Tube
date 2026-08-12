@@ -1,0 +1,34 @@
+/* src/content/ui-styles/neo-brutalism/pages/livechat.css */
+html[data-ypp-ui-style="neo-brutalism"] yt-live-chat-app,
+html[data-ypp-ui-style="neo-brutalism"] #chat,
+html[data-ypp-ui-style="neo-brutalism"] yt-live-chat-renderer {
+  background: #ffffff !important;
+  border: 4px solid #000000 !important;
+  border-radius: 0px !important;
+  font-family: "Space Mono","Courier New",monospace !important;
+  color: #000000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] yt-live-chat-text-message-renderer {
+  background: #fffbf0 !important;
+  border-bottom: 4px solid #000000 !important;
+  padding: 6px 12px !important;
+  transition: background var(--bounce) !important;
+  color: #000000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] yt-live-chat-text-message-renderer:hover {
+  background: #ffcc00 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] yt-live-chat-ticker-renderer {
+  background: #ffcc00 !important;
+  border-bottom: 4px solid #000000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #author-name.yt-live-chat-author-chip {
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] yt-live-chat-paid-message-renderer {
+  background: linear-gradient(135deg, #ffcc00, #ff6699) !important;
+  border: 4px solid #ff6699 !important;
+  border-radius: 0px !important;
+  box-shadow: 10px 10px 0px #000000 !important;
+}

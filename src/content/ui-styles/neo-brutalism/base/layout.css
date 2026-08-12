@@ -1,0 +1,58 @@
+/* src/content/ui-styles/neo-brutalism/base/layout.css */
+html[data-ypp-ui-style="neo-brutalism"] * {
+  font-family: "Space Mono","Courier New",monospace !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html[data-ypp-ui-style="neo-brutalism"] body.yt-pro-ambient {
+  overflow-x: hidden !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+  opacity: 1;
+  mix-blend-mode: lighten;
+}
+html[data-ypp-ui-style="neo-brutalism"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 10px 10px 0px #000000;
+}
+html[data-ypp-ui-style="neo-brutalism"] #video-title {
+  color: #000000 !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] #description-text,
+html[data-ypp-ui-style="neo-brutalism"] yt-formatted-string#description-text {
+  color: #333333 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytSuggestionComponentRoundedSuggestion {
+  margin: 5px 10px;
+  border: 4px solid #000000 !important;
+  border-radius: 0px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 10px 10px 0px #000000 !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] yt-img-shadow#avatar {
+  border: 4px solid #000000 !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+  border-radius: 0px !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytPlayerProgressBarDragContainer {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 5px !important;
+}
+html[data-ypp-ui-style="neo-brutalism"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-style="neo-brutalism"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: 0px !important;
+}
+
+html[data-ypp-ui-style="neo-brutalism"] *:hover {
+  /* slight push on all interactive elements */
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+}

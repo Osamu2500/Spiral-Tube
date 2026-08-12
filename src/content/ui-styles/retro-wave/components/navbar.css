@@ -1,0 +1,55 @@
+/* src/content/ui-styles/retro-wave/components/navbar.css */
+html[data-ypp-ui-style="retro-wave"] ytd-masthead,
+html[data-ypp-ui-style="retro-wave"] #masthead-container {
+  background: #4a0e4e !important;
+  border-bottom: 2px solid #ff007f !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-topbar-logo-renderer {
+  border-radius: 8px !important;
+  padding: 0 !important;
+  max-height: 45px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+}
+html[data-ypp-ui-style="retro-wave"] #guide-wrapper.ytd-app {
+  background: #22103c !important;
+  border-radius: 0 8px 8px 0 !important;
+  border: 2px solid #ff007f !important;
+  box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
+}
+html[data-ypp-ui-style="retro-wave"] #guide-content.ytd-app {
+  background: transparent;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-guide-section-renderer {
+  border-bottom: 2px solid #ff007f !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-guide-entry-renderer {
+  border-radius: 8px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  background: transparent !important;
+  border-radius: 8px !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
+  background: #22103c !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-mini-guide-renderer.ytd-app {
+  top: 70px !important;
+  left: 10px !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-mini-guide-entry-renderer {
+  margin-top: 10px !important;
+  border-radius: 8px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="retro-wave"] ytd-mini-guide-entry-renderer:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
+}

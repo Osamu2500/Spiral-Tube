@@ -1,0 +1,96 @@
+/* src/content/ui-styles/y2k/components/cards.css */
+html[data-ypp-ui-style="y2k"] ytd-rich-grid-media,
+html[data-ypp-ui-style="y2k"] ytd-compact-video-renderer,
+html[data-ypp-ui-style="y2k"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-style="y2k"] ytd-video-renderer,
+html[data-ypp-ui-style="y2k"] ytd-grid-video-renderer {
+  border: 3px solid #00ccff !important;
+  background: #f0f0ff !important;
+  padding: 10px !important;
+  margin-bottom: 16px !important;
+  border-radius: 30px !important;
+  transition: all var(--bounce) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  position: relative;
+  overflow: hidden;
+}
+html[data-ypp-ui-style="y2k"] ytd-rich-item-renderer {
+  background: #f0f0ff !important;
+  border-radius: 30px !important;
+  border: 3px solid #00ccff !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: all var(--bounce) !important;
+  margin-bottom: 8px !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-thumbnail,
+html[data-ypp-ui-style="y2k"] #thumbnail {
+  border-radius: 30px !important;
+  border: 3px solid #00ccff !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-reel-video-renderer {
+  background: #f0f0ff !important;
+  border-radius: 30px !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  border: 3px solid #00ccff !important;
+  overflow: hidden !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+  border-radius: 30px !important;
+  padding: 10px !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  margin: 5px 0 !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-playlist-panel-video-renderer:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: translateX(4px) !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-macro-markers-list-item-renderer {
+  border-radius: 30px !important;
+  margin: 5px;
+  border: 3px solid #00ccff !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-macro-markers-list-item-renderer:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="y2k"] ytd-add-to-playlist-renderer {
+  background: #f0f0ff !important;
+  border-radius: 30px !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  border: 3px solid #00ccff !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-settings-options-renderer,
+html[data-ypp-ui-style="y2k"] ytd-account-settings-renderer {
+  background: #f0f0ff !important;
+  border-radius: 30px !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  padding: 25px !important;
+  border: 3px solid #00ccff !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-ui-style="y2k"] ytd-reel-item-renderer #dismissible {
+  transition: all var(--bounce) !important;
+  border-radius: 30px !important;
+  border: 2px solid transparent !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-ui-style="y2k"] ytd-reel-item-renderer:hover #dismissible {
+  background: #f0f0ff !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.04) !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-expandable-metadata-renderer {
+  padding: 5px !important;
+  border-radius: 30px !important;
+  border: 3px solid #00ccff !important;
+}
+html[data-ypp-ui-style="y2k"] ytd-expandable-metadata-renderer:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+html[data-ypp-ui-style="y2k"] #contents.ytd-rich-grid-renderer {
+  margin-left: 24px !important;
+  margin-right: 12px !important;
+}

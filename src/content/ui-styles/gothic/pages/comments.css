@@ -1,0 +1,45 @@
+/* src/content/ui-styles/gothic/pages/comments.css */
+html[data-ypp-ui-style="gothic"] ytd-comment-thread-renderer,
+html[data-ypp-ui-style="gothic"] ytd-comment-renderer {
+  background: #1c1c1c !important;
+  border: 2px solid #8b0000 !important;
+  border-radius: 0px !important;
+  padding: 12px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+  transition: all var(--bounce) !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-comment-renderer:hover {
+  box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
+  border: 2px solid #cc0000 !important;
+}
+html[data-ypp-ui-style="gothic"] #author-text.ytd-comment-renderer {
+  color: #cc0000 !important;
+  font-weight: bold !important;
+}
+html[data-ypp-ui-style="gothic"] #content-text.ytd-comment-renderer {
+  color: #d3d3d3 !important;
+  font-family: "Cinzel","Palatino Linotype",serif !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-comment-replies-renderer {
+  border-left: 2px solid #8b0000 !important;
+  margin-left: 16px !important;
+  padding-left: 12px !important;
+}
+html[data-ypp-ui-style="gothic"] #header-author yt-img-shadow {
+  border: 2px solid #8b0000 !important;
+  border-radius: 50% !important;
+}
+html[data-ypp-ui-style="gothic"] #simplebox-placeholder {
+  background: #1c1c1c !important;
+  border-radius: 0px !important;
+  border: 2px solid #8b0000 !important;
+  color: #888888 !important;
+}
+html[data-ypp-ui-style="gothic"] ytd-backstage-post-renderer {
+  background: #1c1c1c !important;
+  border: 2px solid #8b0000 !important;
+  border-radius: 0px !important;
+  padding: 16px !important;
+  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
+}

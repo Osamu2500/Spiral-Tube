@@ -1,0 +1,54 @@
+/* src/content/ui-styles/anime/base/background.css */
+html[data-ypp-ui-style="anime"] html,
+html[data-ypp-ui-style="anime"] body,
+html[data-ypp-ui-style="anime"] ytd-app,
+html[data-ypp-ui-style="anime"] #page-manager {
+  background-color: #fff0f5 !important;
+  color: #3a1a2a !important;
+}
+
+html[data-ypp-ui-style="anime"] tp-yt-app-header {
+  background: transparent !important;
+}
+html[data-ypp-ui-style="anime"] ::-webkit-scrollbar {
+  width: 12px !important;
+  background-color: #fff0f5 !important;
+}
+html[data-ypp-ui-style="anime"] ::-webkit-scrollbar-track {
+  background: #fff0f5 !important;
+  border-left: 1px solid #ff1493;
+}
+html[data-ypp-ui-style="anime"] ::-webkit-scrollbar-thumb {
+  background: #ff69b4 !important;
+  border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important;
+}
+html[data-ypp-ui-style="anime"] ::-webkit-scrollbar-thumb:hover {
+  background: #ff1493 !important;
+}
+html[data-ypp-ui-style="anime"] .ypp-organizer-modal,
+html[data-ypp-ui-style="anime"] .ypp-modal-content {
+  background: #ffe4ef !important;
+  border: 2px solid #ffb6c1 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 16px 45px rgba(255,105,180,0.5) !important;
+}
+html[data-ypp-ui-style="anime"] #simplebox-placeholder {
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+  border: 2px solid #ffb6c1 !important;
+}
+html[data-ypp-ui-style="anime"] .ypp-slider,
+html[data-ypp-ui-style="anime"] .ypp-gpb-vol-slider {
+  accent-color: #ff1493 !important;
+  background: #ffe4ef !important;
+  border-radius: 20px !important;
+}
+html[data-ypp-ui-style="anime"] .tab-content.tp-yt-paper-tab {
+  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: 20px !important;
+}
+html[data-ypp-ui-style="anime"] .tab-content.tp-yt-paper-tab:hover {
+  background: rgba(255,105,180,0.4) !important;
+  transform: scale(1.05) !important;
+}
