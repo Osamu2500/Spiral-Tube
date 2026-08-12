@@ -5,7 +5,7 @@ yt-icon-button.ytd-masthead,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
 tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -23,7 +23,7 @@ tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button):
 }
 ytd-comment-view-model button,
 ytd-comment-renderer button {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
   transform: none !important;
 }
@@ -35,7 +35,7 @@ ytd-comment-renderer button:hover {
 }
 /* src/content/themes/ui-styles/vintage/pages/comments.css */
 ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   margin: 10px !important;
   border: var(--abyss-border) !important;
   box-shadow: var(--shadow-base) !important;
@@ -51,7 +51,7 @@ ytd-comment-renderer yt-interaction .fill {
 ytd-comment-thread-renderer,
 ytd-comment-view-model {
   background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 15px !important;
   margin-bottom: 15px !important;
   box-shadow: var(--shadow-base) !important;
@@ -68,7 +68,7 @@ ytd-comment-view-model:hover {
 }
 ytd-comment-simplebox-renderer {
   background: rgba(128, 128, 128, 0.08) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 15px !important;
   box-shadow: var(--shadow-active) !important;
   border: var(--abyss-border) !important;
@@ -78,7 +78,7 @@ ytd-comment-simplebox-renderer {
 }
 ytd-comment-thread-renderer {
   background: var(--abyss-card) !important;
-  border-radius: 2px !important;
+  border-radius: 0 12px 0 12px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;
   border: 1px solid var(--abyss-bg) !important;
@@ -94,7 +94,7 @@ html[data-ypp-ui-style="abyss"] .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="abyss"] ytd-menu-renderer yt-button-shape button,
 html[data-ypp-ui-style="abyss"] button.ytSpecButtonShapeNextText {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),

@@ -19,7 +19,7 @@
 }
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
   margin-right: 0 !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   z-index: 30000 !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -59,7 +59,7 @@ ytd-alert-with-button-renderer[type=INFO] {
 ytd-thumbnail-overlay-toggle-button-renderer {
   background: var(--sf) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 ytd-thumbnail-overlay-toggle-button-renderer:hover {
   transform: scale(1.1) !important;
@@ -81,7 +81,7 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   cursor: pointer !important;
 }
 button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: var(--sf) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -103,7 +103,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
 }
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: var(--sf) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -119,7 +119,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
   box-shadow: var(--shadow-active) !important;
 }
 button.ytSpecButtonShapeNextText {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -137,7 +137,7 @@ button.ytSpecButtonShapeNextText:active {
 .ypp-btn-primary,
 .ypp-play-all-btn,
 .ypp-health-btn {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -156,7 +156,7 @@ button.ytSpecButtonShapeNextText:active {
   box-shadow: var(--shadow-active) !important;
 }
 .ypp-pill-toggle {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border: var(--abyss-border) !important;
   transition:
@@ -183,7 +183,7 @@ html[data-ypp-ui-style="abyss"] .ytSegmentedLikeDislikeButtonViewModelSegmentedB
 html[data-ypp-ui-style="abyss"] ytd-download-button-renderer button,
 html[data-ypp-ui-style="abyss"] yt-download-button-view-model button {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     color: var(--abyss-secondary) !important;
     box-shadow: 2px 2px rgba(0,0,0,0.15) !important;
@@ -279,7 +279,7 @@ html[data-ypp-ui-style="abyss"] ytd-comment-action-buttons-renderer .yt-spec-but
 html[data-ypp-ui-style="abyss"] #reply-button-end .yt-spec-button-shape-next,
 html[data-ypp-ui-style="abyss"] ytd-comment-replies-renderer .yt-spec-button-shape-next {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     color: var(--abyss-secondary) !important;
     box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
@@ -321,7 +321,7 @@ html[data-ypp-ui-style="abyss"] #menu.ytd-watch-metadata yt-button-shape button,
 html[data-ypp-ui-style="abyss"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button,
 html[data-ypp-ui-style="abyss"] ytd-watch-metadata yt-button-view-model button {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     color: var(--abyss-secondary) !important;
     border-radius: 0 !important;
     box-shadow: 2px 2px #0000001a !important;

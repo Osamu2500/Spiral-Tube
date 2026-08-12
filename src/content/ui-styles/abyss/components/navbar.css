@@ -10,7 +10,7 @@ ytd-masthead,
   background-color: transparent !important;
 }
 ytd-masthead #container {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: var(--sf) !important;
   margin: 1px !important;
   box-shadow: var(--shadow-active) !important;
@@ -26,7 +26,7 @@ ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target=button],
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background-color: transparent !important;
   transition:
     transform var(--bounce),
@@ -51,7 +51,7 @@ tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   background: transparent !important;
 }
 #buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: var(--sf) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
@@ -68,7 +68,7 @@ tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   box-shadow: var(--shadow-active) !important;
 }
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 4px !important;
   transition:
     transform var(--bounce),
@@ -85,7 +85,7 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
 /* Vintage Search Box */
 html[data-ypp-ui-style="abyss"] ytd-searchbox #container.ytd-searchbox {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
 }
@@ -107,7 +107,7 @@ html[data-ypp-ui-style="abyss"] ytd-searchbox input#search::placeholder {
 
 html[data-ypp-ui-style="abyss"] button#search-icon-legacy.ytd-searchbox {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-left: none !important;
     border-radius: 0 !important;
     box-shadow: 2px 2px #0000001a !important;
@@ -143,7 +143,7 @@ html[data-ypp-ui-style="abyss"] form[action*="search"] + div,
 html[data-ypp-ui-style="abyss"] ytd-searchbox ~ * {
     background: var(--sf) !important;
     background-color: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     box-shadow: 4px 4px rgba(0,0,0,0.1) !important;
     color: var(--abyss-secondary) !important;
@@ -196,7 +196,7 @@ html[data-ypp-ui-style="abyss"] ytd-topbar-menu-button-renderer.ytd-masthead,
 html[data-ypp-ui-style="abyss"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon,
 html[data-ypp-ui-style="abyss"] #end.ytd-masthead ytd-button-renderer yt-button-shape button {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     box-shadow: 2px 2px #0000001a !important;
     transition: all 0.2s ease-out !important;
@@ -230,7 +230,7 @@ html[data-ypp-ui-style="abyss"] ytd-menu-popup-renderer,
 html[data-ypp-ui-style="abyss"] tp-yt-paper-listbox,
 html[data-ypp-ui-style="abyss"] tp-yt-paper-dialog,
 html[data-ypp-ui-style="abyss"] #contentWrapper.tp-yt-iron-dropdown > * {
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
 }
 

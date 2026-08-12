@@ -1,7 +1,7 @@
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: none !important;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   overflow: hidden !important;
   transition:
     transform var(--bounce),
@@ -86,7 +86,7 @@ html[data-ypp-ui-style="abyss"] .ytp-tooltip-text {
     font-family: Georgia, "Times New Roman", serif !important;
     background: var(--sf) !important;
     color: var(--abyss-secondary) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     text-shadow: none !important;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2) !important;
@@ -108,5 +108,5 @@ html[data-ypp-ui-style="abyss"] .ytp-panel {
 /* Base video radius override */
 html[data-ypp-ui-style="abyss"] video.video-stream.html5-main-video,
 html[data-ypp-ui-style="abyss"] .html5-video-player {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }

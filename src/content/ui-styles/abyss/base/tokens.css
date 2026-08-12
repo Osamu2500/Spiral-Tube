@@ -12,7 +12,7 @@
 .ytSuggestionComponentRoundedSuggestion {
   margin: 5px 10px;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 .ytSuggestionComponentRoundedSuggestion:hover {
@@ -34,11 +34,10 @@ body.yt-pro-ambient {
 }
 * {
   font-family:
-    "Courier New",
-    Courier,
-    "Lucida Sans Typewriter",
-    "Lucida Typewriter",
-    monospace !important;
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    sans-serif !important;
 }
 #video-title {
   color: var(--abyss-primary) !important;
@@ -54,10 +53,10 @@ body.yt-pro-ambient {
 }
 * {
   font-family:
-    "Georgia",
-    "Garamond",
-    "Times New Roman",
-    serif !important;
+    "Orbitron",
+    "Inter",
+    "Segoe UI",
+    sans-serif !important;
 }
 ::-webkit-scrollbar {
   width: 14px !important;
@@ -126,8 +125,8 @@ html[data-ypp-ui-style="abyss"] [dark] {
   --yt-spec-general-background-a: var(--sf) !important;
 
   /* Typography */
-  --ytd-user-comment-font-family: Georgia, "Times New Roman", serif !important;
-  --yt-font-family: Georgia, "Times New Roman", serif !important;
+  --ytd-user-comment-font-family: "Inter", "Segoe UI", sans-serif !important;
+  --yt-font-family: "Orbitron", "Inter", "Segoe UI", sans-serif !important;
 }
 
 /* ── Global dark text enforcement ───────────────────────────────────────── */

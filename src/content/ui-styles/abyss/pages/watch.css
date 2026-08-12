@@ -23,7 +23,7 @@
   border: var(--abyss-border) !important;
   border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
   box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 .ypp-eq-header,
 .ypp-eq-footer,
@@ -50,7 +50,7 @@
 .ypp-eq-canvas {
   background: rgba(128, 128, 128, 0.03) !important;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 
 /* ==========================================================================

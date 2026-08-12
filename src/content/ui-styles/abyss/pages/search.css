@@ -6,12 +6,12 @@ ytd-search[has-search-header][has-bigger-thumbs] #header.ytd-search {
   background: none !important;
   border: var(--abyss-border) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-base) !important;
 }
 .ytSearchboxComponentSearchButton {
   margin-left: 10px !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
   background-color: transparent !important;
   transition:
@@ -33,7 +33,7 @@ ytd-multi-page-menu-renderer {
   top: 55px !important;
   border: var(--abyss-border) !important;
   box-shadow: var(--shadow-hover) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
@@ -110,7 +110,7 @@ html,
 }
 ytd-search-filter-group-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 15px !important;
   box-shadow: var(--shadow-base) !important;
   margin-bottom: 10px !important;

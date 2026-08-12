@@ -16,19 +16,19 @@ html,
 .ypp-gpb-vol-slider {
   accent-color: #ff4e45 !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 .ypp-badge,
 .ypp-value-display {
   background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
 }
 .ypp-organizer-modal,
 .ypp-modal-content {
   background: rgba(10, 10, 15, 0.65) !important;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 .ypp-modal-header {
@@ -41,7 +41,7 @@ tp-yt-app-header {
 }
 .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 .tab-content.tp-yt-paper-tab:hover {
   background: rgba(128, 128, 128, 0.1) !important;
@@ -49,15 +49,15 @@ tp-yt-app-header {
 }
 ::-webkit-scrollbar-track {
   background: var(--abyss-bg) !important;
-  border-radius: 4px;
+  border-radius: 0 24px 0 24px;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--abyss-primary) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 #simplebox-placeholder {
   background: var(--abyss-card) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 8px 16px !important;
   border: 1px solid var(--abyss-primary) !important;
 }
@@ -78,7 +78,7 @@ tp-yt-app-header {
 }
 .ypp-filter-dropdown {
   background: rgba(255, 255, 255, 0.05) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
   color: white !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -92,7 +92,7 @@ tp-yt-app-header {
   background: var(--sf) !important;
   border: var(--abyss-border) !important;
   box-shadow: var(--shadow-base) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 /* src/content/themes/ui-styles/vintage/pages/home.css */

@@ -16,7 +16,7 @@ ytd-mini-guide-renderer.ytd-app {
   left: 10px !important;
 }
 yt-icon-button#guide-button {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -35,7 +35,7 @@ yt-icon-button#guide-button:active {
 .yt-spec-button-shape-next--filled,
 .yt-spec-button-shape-next--tonal {
   background: var(--sf) !important;
-  border: 2px dashed var(--abyss-secondary) !important;
+  border: 1px solid var(--abyss-secondary) !important;
   color: var(--abyss-secondary) !important;
   border-radius: 0 !important;
   transition: all 0.2s ease;
@@ -58,7 +58,7 @@ ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
   overflow: hidden !important;
   padding: 0 10px !important;
   margin: 16px 16px 0 0 !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: var(--sf) !important;
   border: var(--abyss-border) !important;
   box-shadow: var(--shadow-base) !important;
@@ -70,7 +70,7 @@ ytd-guide-renderer #sections {
 ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 ytd-browse[page-subtype=home] #chips {
   margin: 16px 0 0 0 !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-active) !important;
   position: relative !important;
   overflow: hidden !important;
@@ -85,7 +85,7 @@ ytd-browse[page-subtype=home] #chips {
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   background: transparent !important;
   box-shadow: none !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -95,7 +95,7 @@ ytd-browse[page-subtype=home] #chips {
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
   background: var(--sf) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 0px !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05);
@@ -108,11 +108,11 @@ ytd-browse[page-subtype=home] #chips {
   padding: 10px 3px !important;
 }
 ytd-guide-entry-renderer {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 ytd-mini-guide-entry-renderer {
   margin-top: 10px !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 ytd-mini-guide-entry-renderer:hover {
@@ -120,7 +120,7 @@ ytd-mini-guide-entry-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 .ytChipShapeChip {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 .ytChipShapeChip:hover {
@@ -137,7 +137,7 @@ iron-selector.yt-chip-cloud-renderer {
 }
 ytd-settings-sidebar-renderer {
   background: var(--sf) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-base) !important;
   padding: 15px !important;
   border: var(--abyss-border) !important;

@@ -2,7 +2,7 @@
   background: var(--sf) !important;
   padding: 5px;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-active) !important;
   margin-top: 15px !important;
 }
@@ -16,7 +16,7 @@ ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
   border: var(--abyss-border) !important;
 }
 #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
   box-shadow: var(--shadow-hover) !important;
 }

@@ -1,13 +1,13 @@
 /* src/content/themes/ui-styles/vintage/components/cards.css */
 ytd-playlist-panel-video-renderer[selected][use-color-palette],
 ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 10px !important;
   box-shadow: var(--shadow-active) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 10px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   margin: 5px 0 !important;
@@ -22,7 +22,7 @@ ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer:hover {
   border: var(--abyss-border) !important;
 }
 ytd-expandable-metadata-renderer:not([is-expanded]) {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 ytd-expandable-metadata-renderer:not([is-expanded]):hover {
@@ -30,10 +30,10 @@ ytd-expandable-metadata-renderer:not([is-expanded]):hover {
 }
 ytd-expandable-metadata-renderer {
   padding: 5px !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -49,11 +49,11 @@ ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metad
 .ytProgressBarLineProgressBarHovered,
 .ytProgressBarLineProgressBarPlayed,
 .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 .yt-badge-shape--thumbnail-default {
   background: var(--sf) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -65,13 +65,13 @@ ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metad
 ytd-playlist-video-renderer:not(.dragging) {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   margin: 5px;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 ytd-playlist-video-renderer:not(.dragging):hover {
   box-shadow: var(--shadow-hover) !important;
 }
 ytd-macro-markers-list-item-renderer {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   margin: 5px;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -80,7 +80,7 @@ ytd-macro-markers-list-item-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 ytd-topbar-logo-renderer {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   padding: 0px !important;
   max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -109,12 +109,12 @@ ytd-rich-grid-slim-media:hover {
 ytd-rich-grid-slim-media #dismissible,
 ytd-reel-item-renderer #dismissible {
   transition: all var(--bounce) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: 2px solid transparent !important;
 }
 ytd-rich-grid-slim-media:hover #dismissible,
 ytd-reel-item-renderer:hover #dismissible {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: var(--sf) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05) !important;
@@ -148,19 +148,19 @@ ytd-playlist-panel-renderer {
   background: rgba(14, 14, 18, 0.55) !important;
 }
 #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 ytd-settings-options-renderer,
 ytd-account-settings-renderer {
   background: var(--sf) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-base) !important;
   padding: 25px !important;
   border: var(--abyss-border) !important;
 }
 ytd-reel-video-renderer {
   background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-base) !important;
   overflow: hidden !important;
   border: var(--abyss-border) !important;
@@ -175,7 +175,7 @@ ytd-reel-video-renderer {
 ytd-unified-share-panel-renderer,
 ytd-add-to-playlist-renderer {
   background: var(--sf) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-hover) !important;
   border: var(--abyss-border) !important;
 }
@@ -238,7 +238,7 @@ ytd-grid-video-renderer {
 }
 ytd-reel-video-renderer {
   background: var(--abyss-bg) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: 10px 10px 0px rgba(62, 53, 47, 0.3) !important;
   border: 8px solid var(--abyss-card) !important;
 }

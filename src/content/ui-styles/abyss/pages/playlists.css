@@ -9,7 +9,7 @@
 html[data-ypp-ui-style="abyss"] ytd-tabbed-page-header {
     background: var(--sf) !important;
     background-color: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     box-shadow: 4px 4px rgba(0,0,0,0.08) !important;
     margin-bottom: 16px !important;
@@ -39,7 +39,7 @@ html[data-ypp-ui-style="abyss"] ytd-tabbed-page-header .yt-spec-button-shape-nex
 html[data-ypp-ui-style="abyss"] ytd-page-header-view-model .yt-spec-button-shape-next,
 html[data-ypp-ui-style="abyss"] yt-page-header-renderer .yt-spec-button-shape-next {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     color: var(--abyss-secondary) !important;
     box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
@@ -62,7 +62,7 @@ html[data-ypp-ui-style="abyss"] ytd-playlist-header-renderer,
 html[data-ypp-ui-style="abyss"] ytd-playlist-panel-renderer {
     background: var(--sf) !important;
     background-color: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
 }
 
@@ -82,7 +82,7 @@ html[data-ypp-ui-style="abyss"] ytd-playlist-header-renderer button,
 html[data-ypp-ui-style="abyss"] ytd-playlist-header-renderer yt-button-shape button,
 html[data-ypp-ui-style="abyss"] ytd-playlist-header-renderer yt-button-view-model button {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     color: var(--abyss-secondary) !important;
     box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
@@ -111,7 +111,7 @@ html[data-ypp-ui-style="abyss"] ytd-playlist-header-renderer button:hover svg {
 /* Playlist Video Items in the grid */
 html[data-ypp-ui-style="abyss"] ytd-playlist-video-renderer {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     margin-bottom: 8px !important;
     transition: all 0.18s ease-out !important;
@@ -143,7 +143,7 @@ html[data-ypp-ui-style="abyss"] ytd-playlist-video-renderer:hover svg {
    ═══════════════════════════════════════════════════════════════════════ */
 html[data-ypp-ui-style="abyss"] #secondary.ytd-browse {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
 }
 
 html[data-ypp-ui-style="abyss"] #secondary.ytd-browse * {
@@ -157,7 +157,7 @@ html[data-ypp-ui-style="abyss"] #secondary.ytd-browse svg {
 html[data-ypp-ui-style="abyss"] #secondary.ytd-browse button,
 html[data-ypp-ui-style="abyss"] #secondary.ytd-browse .yt-spec-button-shape-next {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     color: var(--abyss-secondary) !important;
     font-weight: 700 !important;
@@ -198,7 +198,7 @@ html[data-ypp-ui-style="abyss"] #contentWrapper.tp-yt-iron-dropdown > *,
 html[data-ypp-ui-style="abyss"] tp-yt-paper-listbox {
     background: var(--sf) !important;
     background-color: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     box-shadow: 6px 6px rgba(0,0,0,0.2) !important;
 }
@@ -247,7 +247,7 @@ html[data-ypp-ui-style="abyss"] ytd-share-panel-renderer .yt-spec-button-shape-n
 html[data-ypp-ui-style="abyss"] ytd-add-to-playlist-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-style="abyss"] tp-yt-paper-dialog .yt-spec-button-shape-next {
     background: var(--sf) !important;
-    border: 2px dashed var(--abyss-secondary) !important;
+    border: 1px solid var(--abyss-secondary) !important;
     border-radius: 0 !important;
     color: var(--abyss-secondary) !important;
 }

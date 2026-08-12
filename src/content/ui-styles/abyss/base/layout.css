@@ -7,7 +7,7 @@
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: none !important;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   overflow: hidden !important;
   transition:
     transform var(--bounce),
@@ -39,7 +39,7 @@
 .ytSuggestionComponentRoundedSuggestion {
   margin: 5px 10px;
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
@@ -79,7 +79,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 .ypp-gpb-btn,
 .ypp-action-btn,
 .ypp-icon-btn {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   background: transparent !important;
   transition:
     transform var(--bounce),
@@ -108,13 +108,13 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 .ypp-gpb-vol-slider {
   accent-color: #ff4e45 !important;
   background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 .ypp-badge,
 .ypp-value-display {
   background: rgba(255, 255, 255, 0.1) !important;
   
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   border: var(--abyss-border) !important;
 }
 /* --- Subscriptions Sidebar / Modals --- */
@@ -124,7 +124,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   
   
   border: var(--abyss-border) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
@@ -135,7 +135,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
 }
 #wrapper.ytd-channel-avatar-editor {
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
   box-shadow: var(--shadow-hover) !important;
 }
 tp-yt-app-header {
@@ -145,7 +145,7 @@ tp-yt-app-header {
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
-  border-radius: 4px !important;
+  border-radius: 0 24px 0 24px !important;
 }
 .tab-content.tp-yt-paper-tab:hover {
   background: rgba(128, 128, 128, 0.1) !important;
@@ -184,10 +184,10 @@ tp-yt-app-header {
 }
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px !important; }
-::-webkit-scrollbar-track { background: var(--abyss-bg) !important; border-radius: 4px; }
+::-webkit-scrollbar-track { background: var(--abyss-bg) !important; border-radius: 0 24px 0 24px; }
 ::-webkit-scrollbar-thumb { 
   background: var(--abyss-primary) !important; 
-  border-radius: 4px !important; 
+  border-radius: 0 24px 0 24px !important; 
 }
 /* Force Typography across elements */
 * {
@@ -195,9 +195,9 @@ tp-yt-app-header {
 }
 #simplebox-placeholder {
   background: var(--abyss-bg) !important;
-  border-radius: 2px !important;
+  border-radius: 0 12px 0 12px !important;
   padding: 8px 16px !important;
-  border: 2px dashed var(--abyss-primary) !important;
+  border: 1px solid var(--abyss-primary) !important;
 }
 /* Progress bar */
 .ytp-play-progress {
@@ -240,7 +240,7 @@ html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar {
 }
 html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar-track {
     background: var(--sf) !important;
-    border-left: 2px dashed rgba(44, 31, 20, 0.3) !important;
+    border-left: 1px solid rgba(44, 31, 20, 0.3) !important;
 }
 html[data-ypp-ui-style="abyss"] ::-webkit-scrollbar-thumb {
     background: var(--abyss-secondary) !important;
