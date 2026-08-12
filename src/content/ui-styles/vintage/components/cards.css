@@ -179,6 +179,7 @@ ytd-add-to-playlist-renderer {
   box-shadow: var(--shadow-hover) !important;
   border: var(--vintage-border) !important;
 }
+ytd-rich-grid-media { box-sizing: border-box !important; }
 ytd-rich-grid-media,
 ytd-compact-video-renderer,
 ytd-playlist-panel-video-renderer,
@@ -200,6 +201,7 @@ ytd-video-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translate(-2px, -2px) !important;
 }
+ytd-rich-grid-media { box-sizing: border-box !important; }
 ytd-rich-grid-media,
 ytd-compact-video-renderer,
 ytd-playlist-panel-video-renderer,
@@ -219,6 +221,7 @@ ytd-video-renderer:hover {
   box-shadow: var(--shadow-hover, 0 8px 25px rgba(0,0,0,0.3)) !important;
   transform: translateY(-2px) scale(1.01) !important;
 }
+ytd-rich-grid-media { box-sizing: border-box !important; }
 ytd-rich-grid-media,
 ytd-compact-video-renderer,
 ytd-video-renderer,
@@ -238,4 +241,18 @@ ytd-reel-video-renderer {
   border-radius: 4px !important;
   box-shadow: 10px 10px 0px rgba(62, 53, 47, 0.3) !important;
   border: 8px solid #f4ecd8 !important;
+}
+
+/* Vintage card text color */
+html[data-ypp-ui-style="vintage"] ytd-rich-grid-media *,
+html[data-ypp-ui-style="vintage"] ytd-compact-video-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-video-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-grid-video-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer * {
+    color: var(--vintage-secondary) !important;
+}
+html[data-ypp-ui-style="vintage"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-ui-style="vintage"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-ui-style="vintage"] ytd-video-renderer #metadata-line span {
+    color: var(--vintage-secondary) !important;
 }

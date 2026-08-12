@@ -1,0 +1,285 @@
+/* src/content/themes/ui-styles/vintage/pages/playlists.css */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PLAYLIST FEED PAGE (/feed/playlists) + WATCH HISTORY (/feed/history)
+   TITLE BAR — single border on outermost wrapper only
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Single border ONLY on the outer page header wrapper */
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header {
+    background: var(--sf) !important;
+    background-color: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.08) !important;
+    margin-bottom: 16px !important;
+}
+
+/* Strip border from ALL inner elements of the header — prevents layering */
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header *,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header ytd-page-header-renderer,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header ytd-page-header-view-model,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header yt-page-header-renderer,
+html[data-ypp-ui-style="vintage"] ytd-page-header-renderer,
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model,
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--vintage-secondary) !important;
+}
+
+/* Dark SVG icons inside header */
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header svg,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header path {
+    fill: var(--vintage-secondary) !important;
+}
+
+/* Buttons inside the title bar — re-add border here (not on the wrapper) */
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-next {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    color: var(--vintage-secondary) !important;
+    box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-next:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    transform: translate(-2px,-2px) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INDIVIDUAL PLAYLIST PAGE — Left sidebar panel
+   ═══════════════════════════════════════════════════════════════════════ */
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer,
+html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer {
+    background: var(--sf) !important;
+    background-color: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer * {
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer path,
+html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer path {
+    fill: var(--vintage-secondary) !important;
+}
+
+/* Playlist Sidebar action buttons (Play All, Shuffle, Save, Share, Clean, More) */
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-view-model button {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    color: var(--vintage-secondary) !important;
+    box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
+    font-weight: 700 !important;
+    transition: all 0.18s ease-out !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next path,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button path {
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover path,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover path {
+    fill: var(--sf) !important;
+}
+
+/* Playlist Video Items in the grid */
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    margin-bottom: 8px !important;
+    transition: all 0.18s ease-out !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer * {
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer path {
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover {
+    background: var(--vintage-secondary) !important;
+    transform: translate(-2px,-2px) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.2) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover *,
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-video-renderer:hover path {
+    color: var(--sf) !important;
+    fill: var(--sf) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   WATCH HISTORY — Right side panel (#secondary)
+   ═══════════════════════════════════════════════════════════════════════ */
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse * {
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse path {
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    color: var(--vintage-secondary) !important;
+    font-weight: 700 !important;
+    box-shadow: 2px 2px rgba(0,0,0,0.1) !important;
+    transition: all 0.18s ease-out !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button path,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next path {
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    fill: var(--sf) !important;
+    transform: translate(-2px,-2px) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover path,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover path {
+    fill: var(--sf) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   GLOBAL POPUP / CONTEXT MENUS / DIALOGS
+   ═══════════════════════════════════════════════════════════════════════ */
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-toast,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer,
+html[data-ypp-ui-style="vintage"] ytd-popup-container,
+html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox {
+    background: var(--sf) !important;
+    background-color: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: 6px 6px rgba(0,0,0,0.2) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-toast *,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-popup-container *,
+html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox * {
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer path,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog svg,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog path,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer path,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer path {
+    fill: var(--vintage-secondary) !important;
+}
+
+/* Menu items hover */
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-style="vintage"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item:hover {
+    background: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover *,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover *,
+html[data-ypp-ui-style="vintage"] .yt-list-item-view-model__container--tappable:hover *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item:hover * {
+    color: var(--sf) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer:hover path,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover path {
+    fill: var(--sf) !important;
+}
+
+/* Buttons inside popups (share, copy link etc.) */
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    transform: translate(-2px,-2px) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
+}

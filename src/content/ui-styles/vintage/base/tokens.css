@@ -96,30 +96,146 @@ html {
 }
 
 /* ==========================================================================
-   VINTAGE GLOBAL OVERRIDES (PLAN V2)
+   VINTAGE GLOBAL OVERRIDES
    ========================================================================== */
 html[data-ypp-ui-style="vintage"],
 html[data-ypp-ui-style="vintage"] body,
 html[data-ypp-ui-style="vintage"] [dark] {
-  /* Core Text Colors */
+  /* Core Text Colors — override YouTube's dark-mode white text */
   --yt-spec-text-primary: var(--vintage-secondary) !important;
   --yt-spec-text-secondary: rgba(44, 31, 20, 0.8) !important;
   --yt-spec-text-disabled: rgba(44, 31, 20, 0.5) !important;
   --yt-spec-text-primary-inverse: var(--sf) !important;
-  
+  --yt-spec-wordmark-text: var(--vintage-secondary) !important;
+
   /* Icon Colors */
   --yt-spec-icon-active-other: var(--vintage-secondary) !important;
   --yt-spec-icon-inactive: rgba(44, 31, 20, 0.8) !important;
   --yt-spec-icon-disabled: rgba(44, 31, 20, 0.5) !important;
+  --yt-spec-icon-badge-color: var(--vintage-secondary) !important;
 
-  /* Menu and Popup Backgrounds */
+  /* Menu / Popup Backgrounds */
   --yt-spec-menu-background: var(--sf) !important;
   --yt-spec-raised-background: var(--sf) !important;
   --yt-spec-base-background: var(--sf) !important;
-  
-  /* Global Typography Override Variables */
+  --yt-spec-general-background-a: var(--sf) !important;
+
+  /* Typography */
   --ytd-user-comment-font-family: Georgia, "Times New Roman", serif !important;
   --yt-font-family: Georgia, "Times New Roman", serif !important;
+}
+
+/* ── Global dark text enforcement ───────────────────────────────────────── */
+/* Cover ALL descendant text so no element inherits YouTube's dark-mode white */
+html[data-ypp-ui-style="vintage"] {
+  color: var(--vintage-secondary) !important;
+}
+
+/* Specific text containers */
+html[data-ypp-ui-style="vintage"] yt-formatted-string,
+html[data-ypp-ui-style="vintage"] .yt-core-attributed-string,
+html[data-ypp-ui-style="vintage"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-ui-style="vintage"] span,
+html[data-ypp-ui-style="vintage"] p,
+html[data-ypp-ui-style="vintage"] a,
+html[data-ypp-ui-style="vintage"] h1,
+html[data-ypp-ui-style="vintage"] h2,
+html[data-ypp-ui-style="vintage"] h3,
+html[data-ypp-ui-style="vintage"] h4,
+html[data-ypp-ui-style="vintage"] label,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-item,
+html[data-ypp-ui-style="vintage"] #video-title,
+html[data-ypp-ui-style="vintage"] .ytd-channel-name,
+html[data-ypp-ui-style="vintage"] #channel-name,
+html[data-ypp-ui-style="vintage"] #owner-name,
+html[data-ypp-ui-style="vintage"] #title,
+html[data-ypp-ui-style="vintage"] #description,
+html[data-ypp-ui-style="vintage"] #metadata,
+html[data-ypp-ui-style="vintage"] #metadata-line,
+html[data-ypp-ui-style="vintage"] #subscribers,
+html[data-ypp-ui-style="vintage"] #subscriber-count,
+html[data-ypp-ui-style="vintage"] .ytd-badge-supported-renderer,
+html[data-ypp-ui-style="vintage"] ytd-badge-supported-renderer,
+html[data-ypp-ui-style="vintage"] #count,
+html[data-ypp-ui-style="vintage"] .ytd-video-short-info-renderer,
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model *,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header *,
+html[data-ypp-ui-style="vintage"] .ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-rich-header-renderer *,
+html[data-ypp-ui-style="vintage"] .badge-style-type-simple,
+html[data-ypp-ui-style="vintage"] .badge-style-type-verified {
+  color: var(--vintage-secondary) !important;
+}
+
+/* Topbar / Masthead text and icons */
+html[data-ypp-ui-style="vintage"] ytd-masthead *,
+html[data-ypp-ui-style="vintage"] #masthead *:not(img):not(video) {
+  color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-masthead svg,
+html[data-ypp-ui-style="vintage"] ytd-masthead path,
+html[data-ypp-ui-style="vintage"] #masthead svg,
+html[data-ypp-ui-style="vintage"] #masthead path {
+  fill: var(--vintage-secondary) !important;
+}
+
+/* Sidebar / Guide text */
+html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-mini-guide-entry-renderer *,
+html[data-ypp-ui-style="vintage"] #guide *:not(img):not(video) {
+  color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-guide-entry-renderer path {
+  fill: var(--vintage-secondary) !important;
+}
+
+/* Popup menus / context menus / dropdowns */
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox *,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog *,
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer *,
+html[data-ypp-ui-style="vintage"] .yt-list-item-view-model__container--tappable *,
+html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown * {
+  color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer path,
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-service-item-renderer path,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer path {
+  fill: var(--vintage-secondary) !important;
+}
+
+/* Video player controls text (captions, settings panel) */
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-label,
+html[data-ypp-ui-style="vintage"] .ytp-menuitem-content,
+html[data-ypp-ui-style="vintage"] .ytp-panel-title,
+html[data-ypp-ui-style="vintage"] .ytp-panel-back-button,
+html[data-ypp-ui-style="vintage"] .ytp-settings-menu {
+  color: var(--vintage-secondary) !important;
+}
+
+/* Notification popup */
+html[data-ypp-ui-style="vintage"] ytd-notification-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-popup-container * {
+  color: var(--vintage-secondary) !important;
+}
+
+/* Watch history / playlist sidebar right panel */
+html[data-ypp-ui-style="vintage"] #secondary *:not(img):not(video):not(iframe) {
+  color: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #secondary svg,
+html[data-ypp-ui-style="vintage"] #secondary path {
+  fill: var(--vintage-secondary) !important;
 }
 
 /* Hard enforce typography on text nodes */

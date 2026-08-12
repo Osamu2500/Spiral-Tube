@@ -129,63 +129,116 @@ html[data-ypp-ui-style="vintage"] button#search-icon-legacy.ytd-searchbox:hover 
     fill: var(--sf) !important;
 }
 
-/* Navbar Overhaul for vintage */
-html[data-ypp-ui-style="vintage"] #masthead-container,
-html[data-ypp-ui-style="vintage"] ytd-masthead {
-background: repeating-linear-gradient(45deg, hsl(350, 80%, 55%)22, hsl(350, 80%, 55%)22 10px, hsl(160, 70%, 45%)22 10px, hsl(160, 70%, 45%)22 20px), rgba(20,20,20, 0.9) !important; border: none !important; border-top: none !important; border-bottom: none !important; backdrop-filter: blur(12px) !important; box-shadow: inset 0 0 15px hsl(350, 80%, 55%)33, 0 0 15px hsl(350, 80%, 55%)88 !important;
-}
-html[data-ypp-ui-style="vintage"] ytd-topbar-logo-renderer {
-filter: drop-shadow(2px 2px 4px hsl(350, 80%, 55%)) hue-rotate(170deg) saturate(1) !important; transition: transform 0.3s !important;
-}
-html[data-ypp-ui-style="vintage"] ytd-topbar-logo-renderer:hover {
-transform: scale(1.08) rotate(-5deg) !important;
-}
-html[data-ypp-ui-style="vintage"] #container.ytd-searchbox,
-html[data-ypp-ui-style="vintage"] ytd-searchbox {
-border-radius: 20px !important; border: 3px inset hsl(350, 80%, 55%) !important; background: rgba(10,10,10,0.6) !important; box-shadow: inset 0 0 10px hsl(160, 70%, 45%)66 !important;
-}
-html[data-ypp-ui-style="vintage"] #search-input input {
-font-family: 'Impact', sans-serif !important; color: hsl(350, 80%, 55%) !important; font-weight: bold !important; letter-spacing: 1px !important; text-shadow: 1px 1px 2px hsl(160, 70%, 45%)88 !important;
-}
-html[data-ypp-ui-style="vintage"] #search-icon-legacy {
-background: hsl(160, 70%, 45%)33 !important; border-radius: 0 20px 20px 0 !important; border: none !important; border-left: 3px inset hsl(350, 80%, 55%) !important; transition: all 0.3s !important;
-}
-html[data-ypp-ui-style="vintage"] #search-icon-legacy:hover {
-background: hsl(350, 80%, 55%)88 !important; box-shadow: inset 0 0 15px hsl(350, 80%, 55%)33, 0 0 15px hsl(350, 80%, 55%)88 !important;
-}
-html[data-ypp-ui-style="vintage"] #search-icon-legacy yt-icon {
-color: #ffffff !important; filter: drop-shadow(0 0 2px hsl(350, 80%, 55%)) !important;
-}
-html[data-ypp-ui-style="vintage"] #voice-search-button {
-background: hsl(160, 70%, 45%)44 !important; border-radius: 20px !important; border: 3px inset hsl(350, 80%, 55%) !important; color: #fff !important; box-shadow: 0 0 8px hsl(350, 80%, 55%)88 !important; transition: transform 0.2s !important;
-}
-html[data-ypp-ui-style="vintage"] #voice-search-button:hover {
-transform: scale(1.1) !important; background: hsl(350, 80%, 55%)66 !important;
-}
+
+/* Vintage Search Dropdown — force vintage beige for entire Google autocomplete panel */
 html[data-ypp-ui-style="vintage"] .sbdd_b,
-html[data-ypp-ui-style="vintage"] .sbsb_a {
-border-radius: 20px !important; border: 3px inset hsl(350, 80%, 55%) !important; background: rgba(15,15,20,0.95) !important; backdrop-filter: blur(20px) !important; box-shadow: inset 0 0 15px hsl(350, 80%, 55%)33, 0 0 15px hsl(350, 80%, 55%)88 !important;
+html[data-ypp-ui-style="vintage"] .sbsb_a,
+html[data-ypp-ui-style="vintage"] .sbdd_a,
+html[data-ypp-ui-style="vintage"] .gsib_a,
+html[data-ypp-ui-style="vintage"] .gstl_50,
+html[data-ypp-ui-style="vintage"] .gsfs,
+html[data-ypp-ui-style="vintage"] .gsq_a,
+html[data-ypp-ui-style="vintage"] ul.sbsb_a,
+html[data-ypp-ui-style="vintage"] form[action*="search"] + div,
+html[data-ypp-ui-style="vintage"] ytd-searchbox ~ * {
+    background: var(--sf) !important;
+    background-color: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.1) !important;
+    color: var(--vintage-secondary) !important;
 }
-html[data-ypp-ui-style="vintage"] .sbsb_c {
-color: #e0e0e0 !important; font-family: 'Impact', sans-serif !important; transition: all 0.2s !important;
+
+/* All text inside the autocomplete */
+html[data-ypp-ui-style="vintage"] .sbsb_c,
+html[data-ypp-ui-style="vintage"] .sbsb_d,
+html[data-ypp-ui-style="vintage"] .sbsb_b,
+html[data-ypp-ui-style="vintage"] .sbsb_c span,
+html[data-ypp-ui-style="vintage"] .gsq_a td,
+html[data-ypp-ui-style="vintage"] .gsq_a * {
+    color: var(--vintage-secondary) !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-weight: bold !important;
+    background: transparent !important;
 }
-html[data-ypp-ui-style="vintage"] .sbsb_c:hover {
-background: hsl(160, 70%, 45%)55 !important; color: hsl(350, 80%, 55%) !important; padding-left: 20px !important; font-weight: bold !important; box-shadow: inset 4px 0 0 hsl(350, 80%, 55%) !important;
+
+/* Hover row */
+html[data-ypp-ui-style="vintage"] .sbsb_c:hover,
+html[data-ypp-ui-style="vintage"] li.sbsb_c:hover,
+html[data-ypp-ui-style="vintage"] .gsq_a tr:hover td {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
 }
-html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer yt-icon-button,
-html[data-ypp-ui-style="vintage"] ytd-notification-topbar-button-renderer yt-icon-button {
-background: hsl(160, 70%, 45%)22 !important; border-radius: 20px !important; border: 1px inset hsl(350, 80%, 55%) !important; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+html[data-ypp-ui-style="vintage"] .sbsb_c:hover *,
+html[data-ypp-ui-style="vintage"] li.sbsb_c:hover * {
+    color: var(--sf) !important;
 }
-html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
-html[data-ypp-ui-style="vintage"] ytd-notification-topbar-button-renderer yt-icon-button:hover {
-background: hsl(350, 80%, 55%)66 !important; color: #fff !important; transform: translateY(-4px) scale(1.1) !important; box-shadow: inset 0 0 15px hsl(350, 80%, 55%)33, 0 0 15px hsl(350, 80%, 55%)88 !important;
+
+/* History icon inside search suggestions */
+html[data-ypp-ui-style="vintage"] .sbsb_c .gsst_a,
+html[data-ypp-ui-style="vintage"] .sbsb_c .lsb,
+html[data-ypp-ui-style="vintage"] .sbsb_c svg,
+html[data-ypp-ui-style="vintage"] .sbsb_c path {
+    fill: var(--vintage-secondary) !important;
+    color: var(--vintage-secondary) !important;
 }
-html[data-ypp-ui-style="vintage"] #avatar-btn yt-img-shadow {
-border-radius: 20px !important; border: 3px inset hsl(350, 80%, 55%) !important; box-shadow: inset 0 0 15px hsl(350, 80%, 55%)33, 0 0 15px hsl(350, 80%, 55%)88 !important; padding: 2px !important; background: hsl(160, 70%, 45%)44 !important; transition: transform 0.4s !important;
+
+/* Topbar history clock button icon fix */
+html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer svg,
+html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer path,
+html[data-ypp-ui-style="vintage"] #end.ytd-masthead yt-icon svg,
+html[data-ypp-ui-style="vintage"] #end.ytd-masthead yt-icon path,
+html[data-ypp-ui-style="vintage"] [aria-label="History"] svg,
+html[data-ypp-ui-style="vintage"] [aria-label="History"] path {
+    fill: var(--vintage-secondary) !important;
+    color: var(--vintage-secondary) !important;
 }
-html[data-ypp-ui-style="vintage"] #avatar-btn yt-img-shadow:hover {
-transform: rotate(350deg) scale(1.15) !important;
+
+/* Vintage Topbar Buttons — Voice Search, 3-dot menu, Notifications */
+html[data-ypp-ui-style="vintage"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-style="vintage"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon,
+html[data-ypp-ui-style="vintage"] #end.ytd-masthead ytd-button-renderer yt-button-shape button {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+    box-shadow: 2px 2px #0000001a !important;
+    transition: all 0.2s ease-out !important;
 }
-html[data-ypp-ui-style="vintage"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-border-radius: 20px !important; border: 3px inset hsl(350, 80%, 55%) !important; background: rgba(10,10,15,0.95) !important; backdrop-filter: blur(25px) !important; box-shadow: inset 0 0 15px hsl(350, 80%, 55%)33, 0 0 15px hsl(350, 80%, 55%)88 !important;
+
+html[data-ypp-ui-style="vintage"] #voice-search-button.ytd-masthead:hover,
+html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer.ytd-masthead:hover,
+html[data-ypp-ui-style="vintage"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover,
+html[data-ypp-ui-style="vintage"] #end.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
+    background: var(--vintage-secondary) !important;
+    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
+    transform: translate(-2px, -2px) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #voice-search-button.ytd-masthead svg,
+html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer.ytd-masthead svg,
+html[data-ypp-ui-style="vintage"] ytd-notification-topbar-button-renderer.ytd-masthead svg,
+html[data-ypp-ui-style="vintage"] #end.ytd-masthead svg {
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] #voice-search-button.ytd-masthead:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-topbar-menu-button-renderer.ytd-masthead:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover svg,
+html[data-ypp-ui-style="vintage"] #end.ytd-masthead ytd-button-renderer yt-button-shape button:hover svg {
+    fill: var(--sf) !important;
+}
+
+/* Popup menus / context menus — dashed border consistent with vintage */
+html[data-ypp-ui-style="vintage"] ytd-menu-popup-renderer,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-listbox,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog,
+html[data-ypp-ui-style="vintage"] #contentWrapper.tp-yt-iron-dropdown > * {
+    border: 2px dashed var(--vintage-secondary) !important;
+    border-radius: 0 !important;
+}
+
+/* Search-bar voice mic button border-left gap fix */
+html[data-ypp-ui-style="vintage"] ytd-searchbox #search-icon-legacy {
+    border-left: none !important;
 }

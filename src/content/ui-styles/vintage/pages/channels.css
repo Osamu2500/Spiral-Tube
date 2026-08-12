@@ -19,6 +19,7 @@ ytd-c4-tabbed-header-renderer {
   border: var(--vintage-border) !important;
   border-top: none !important;
 }
+ytd-video-renderer { box-sizing: border-box !important; }
 ytd-video-renderer,
 ytd-channel-renderer,
 ytd-playlist-renderer,
@@ -44,4 +45,48 @@ ytd-radio-renderer:hover {
 html[data-ypp-ui-style="vintage"] .yt-page-header-renderer,
 html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer #banner {
     filter: sepia(0.3) contrast(1.1) !important;
+}
+
+/* Channel Header Overrides */
+html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-style="vintage"] tp-yt-app-header,
+html[data-ypp-ui-style="vintage"] #page-header.ytd-tabbed-page-header,
+html[data-ypp-ui-style="vintage"] #page-header-container,
+html[data-ypp-ui-style="vintage"] .ytd-c4-tabbed-header-renderer {
+    background: var(--sf) !important;
+    background-color: var(--sf) !important;
+}
+
+/* Channel page text colors */
+html[data-ypp-ui-style="vintage"] ytd-channel-featured-content-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-shelf-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-item-section-renderer *,
+html[data-ypp-ui-style="vintage"] ytd-grid-channel-renderer *,
+html[data-ypp-ui-style="vintage"] .ytd-channel-name,
+html[data-ypp-ui-style="vintage"] .tp-yt-paper-tab {
+    color: var(--vintage-secondary) !important;
+}
+
+/* Channel Subscribe/Join buttons */
+html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer button,
+html[data-ypp-ui-style="vintage"] ytd-channel-featured-content-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-channel-featured-content-renderer button,
+html[data-ypp-ui-style="vintage"] ytd-grid-channel-renderer .yt-spec-button-shape-next,
+html[data-ypp-ui-style="vintage"] ytd-grid-channel-renderer button {
+    background: var(--sf) !important;
+    border: 2px dashed var(--vintage-secondary) !important;
+    color: var(--vintage-secondary) !important;
+    fill: var(--vintage-secondary) !important;
+}
+
+html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-c4-tabbed-header-renderer button:hover,
+html[data-ypp-ui-style="vintage"] ytd-channel-featured-content-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-channel-featured-content-renderer button:hover,
+html[data-ypp-ui-style="vintage"] ytd-grid-channel-renderer .yt-spec-button-shape-next:hover,
+html[data-ypp-ui-style="vintage"] ytd-grid-channel-renderer button:hover {
+    background: var(--vintage-secondary) !important;
+    color: var(--sf) !important;
+    fill: var(--sf) !important;
 }

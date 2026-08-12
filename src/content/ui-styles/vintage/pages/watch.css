@@ -73,3 +73,34 @@ html[data-ypp-ui-style="vintage"] #author-text span,
 html[data-ypp-ui-style="vintage"] ytd-comment-thread-renderer * {
   color: #1a0f08 !important;
 }
+
+/* ==========================================================================
+   SECONDARY SIDEBAR BUG FIX — prevents sidebar from disappearing
+   ========================================================================== */
+/* Ensure the secondary sidebar (#secondary) on the watch/player page is
+   always visible. The transparent background + no explicit display was
+   causing it to collapse under certain scroll conditions. */
+html[data-ypp-ui-style="vintage"] #secondary.ytd-watch-flexy,
+html[data-ypp-ui-style="vintage"] #secondary-inner.ytd-watch-flexy {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: var(--sf) !important;
+    min-width: 402px !important;
+    /* Ensure it doesn't get pushed off screen */
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Also prevent the sidebar from being hidden by overflow clipping */
+html[data-ypp-ui-style="vintage"] #columns.ytd-watch-flexy {
+    overflow: visible !important;
+}
+
+/* Compact video cards in sidebar (related videos) */
+html[data-ypp-ui-style="vintage"] #secondary ytd-compact-video-renderer,
+html[data-ypp-ui-style="vintage"] #secondary-inner ytd-compact-video-renderer {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
