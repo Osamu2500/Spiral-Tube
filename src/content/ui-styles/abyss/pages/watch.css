@@ -61,7 +61,7 @@ html[data-ypp-ui-style="abyss"] #owner-sub-count,
 html[data-ypp-ui-style="abyss"] #channel-name a,
 html[data-ypp-ui-style="abyss"] ytd-video-owner-renderer #channel-name,
 html[data-ypp-ui-style="abyss"] ytd-video-owner-renderer #channel-name * {
-  color: #2c1f14 !important;
+  color: var(--abyss-secondary) !important;
   font-weight: 600 !important;
 }
 

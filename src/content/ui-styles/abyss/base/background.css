@@ -56,22 +56,21 @@ tp-yt-app-header {
   border-radius: 4px !important;
 }
 #simplebox-placeholder {
-  background: #e8d5b5 !important;
-  border-radius: 2px !important;
+  background: var(--abyss-card) !important;
+  border-radius: 4px !important;
   padding: 8px 16px !important;
-  border: 2px dashed #3e352f !important;
+  border: 1px solid var(--abyss-primary) !important;
 }
 ::-webkit-scrollbar-track {
-  background: #d1c0a5 !important;
-  border-left: 2px solid #3e352f !important;
+  background: var(--abyss-bg) !important;
+  border-left: 1px solid var(--abyss-primary) !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: #4a7c74 !important;
-  border: 2px solid #3e352f !important;
+  background: var(--abyss-primary) !important;
   border-radius: 0 !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c13a3a !important;
+  background: #fff !important;
 }
 .ypp-nav-btn.active {
   background: var(--sf) !important;
@@ -99,15 +98,13 @@ tp-yt-app-header {
 /* src/content/themes/ui-styles/vintage/pages/home.css */
 html,
 [dark] body {
-  background-color: #1a1410 !important;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><filter id=\"noiseFilter\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"3\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/></svg>") !important;
-  color: #e8d5b5 !important;
+  background-color: var(--abyss-bg) !important;
+  color: var(--abyss-secondary) !important;
 }
 html,
 [dark] body {
-  background-color: #e8d5b5 !important;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><filter id=\"noiseFilter\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"3\" stitchTiles=\"stitch\"/></filter><rect width=\"100%\" height=\"100%\" filter=\"url(%23noiseFilter)\" opacity=\"0.06\"/></svg>") !important;
-  color: #3e352f !important;
+  background-color: var(--abyss-bg) !important;
+  color: var(--abyss-secondary) !important;
 }
 #player-container.ytd-video-preview {
   background: none !important;

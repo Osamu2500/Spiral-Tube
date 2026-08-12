@@ -237,10 +237,10 @@ ytd-grid-video-renderer {
   margin-top: 15px !important;
 }
 ytd-reel-video-renderer {
-  background: #e8d5b5 !important;
+  background: var(--abyss-bg) !important;
   border-radius: 4px !important;
   box-shadow: 10px 10px 0px rgba(62, 53, 47, 0.3) !important;
-  border: 8px solid #f4ecd8 !important;
+  border: 8px solid var(--abyss-card) !important;
 }
 
 /* Vintage card text color */

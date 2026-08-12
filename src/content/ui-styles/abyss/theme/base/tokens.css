@@ -1,15 +1,15 @@
 html.yt-spiral-tube-theme {
-    --ypp-bg-base: #e8d5b5;
-    --ypp-bg-surface: #f4ecd8;
+    --ypp-bg-base: var(--abyss-bg);
+    --ypp-bg-surface: var(--abyss-card);
     --ypp-bg-glass: rgba(244, 236, 216, 0.92);
     --ypp-glass-border: rgba(62, 53, 47, 0.18);
     --ypp-glass-highlight: rgba(255, 255, 255, 0.3);
     --ypp-glass-shine: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 100%);
 
-    --ypp-text-primary: #2c1f14;
-    --ypp-text-secondary: #5c3d2e;
+    --ypp-text-primary: var(--abyss-secondary);
+    --ypp-text-secondary: var(--abyss-secondary);
 
-    --ypp-accent: #c13a3a;
+    --ypp-accent: var(--abyss-primary);
     --ypp-accent-hover: #a32e2e;
     --ypp-accent-glow: rgba(193, 58, 58, 0.28);
 
@@ -21,7 +21,7 @@ html.yt-spiral-tube-theme {
 
     /* COMPONENT OVERRIDES */
     --ytd-searchbox-background: rgba(255, 252, 245, 0.8);
-    --ytd-searchbox-text-color: #2c1f14;
+    --ytd-searchbox-text-color: var(--abyss-secondary);
     --ytd-searchbox-border-radius: 2px;
     --ytd-searchbox-height: 44px;
     --ytd-searchbox-legacy-button-border-radius: 0;
@@ -81,7 +81,7 @@ yt-formatted-string.ytd-rich-grid-media,
 .title.ytd-rich-grid-media,
 #title-wrapper h3 a,
 ytd-watch-metadata h1 {
-  color: #2c1f14 !important;
+  color: var(--abyss-secondary) !important;
   text-shadow: none !important;
 }
 
@@ -101,7 +101,7 @@ ytd-channel-name yt-formatted-string,
 ytd-channel-name a,
 #metadata-line span,
 .inline-metadata-item {
-  color: #5c3d2e !important;
+  color: var(--abyss-secondary) !important;
   text-shadow: none !important;
 }
 
@@ -118,13 +118,13 @@ ytd-compact-video-renderer,
 ytd-video-renderer,
 ytd-playlist-video-renderer,
 ytd-grid-video-renderer {
-  color: #2c1f14 !important;
+  color: var(--abyss-secondary) !important;
 }
 
 /* Description text */
 #description-text,
 yt-formatted-string#description-text {
-  color: #3e352f !important;
+  color: var(--abyss-primary) !important;
 
 
   }
@@ -137,9 +137,9 @@ html.yt-spiral-tube-theme {
   --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
   --blur: var(--ypp-glass-blur, blur(10px));
 
-  --abyss-bg: var(--ypp-bg-base, #e8d5b5);
-  --abyss-primary: var(--ypp-accent, #c13a3a);
-  --abyss-secondary: var(--ypp-text-secondary, #5c3d2e);
+  --abyss-bg: var(--ypp-bg-base, var(--abyss-bg));
+  --abyss-primary: var(--ypp-accent, var(--abyss-primary));
+  --abyss-secondary: var(--ypp-text-secondary, var(--abyss-secondary));
   --abyss-border: var(--ypp-glass-border, 1px solid rgba(62,53,47,0.18));
   --abyss-border-hover: var(--ypp-glass-highlight, 1px solid rgba(62,53,47,0.4));
 

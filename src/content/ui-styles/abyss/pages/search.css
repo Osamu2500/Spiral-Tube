@@ -68,16 +68,16 @@ html,
 }
 ytd-searchbox #container {
   background: var(--sf) !important;
-  border: 2px solid #3e352f !important;
+  border: 2px solid var(--abyss-primary) !important;
   border-radius: 0 !important;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 ytd-searchbox #search-icon-legacy {
   border-radius: 0 !important;
-  border: 2px solid #3e352f !important;
+  border: 2px solid var(--abyss-primary) !important;
   border-left: none !important;
   background: var(--abyss-primary) !important;
-  color: #f4ecd8 !important;
+  color: var(--abyss-card) !important;
 }
 html,
 [dark] ytd-searchbox #container,
@@ -87,23 +87,23 @@ html,
 }
 .ytSearchboxComponentInputBox {
   border-radius: 0 !important;
-  background: #f4ecd8 !important;
-  border: 2px solid #3e352f !important;
+  background: var(--abyss-card) !important;
+  border: 2px solid var(--abyss-primary) !important;
   box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.2), 4px 4px 0px rgba(62, 53, 47, 0.2) !important;
   transition: all 0.2s ease !important;
 }
 .ytSearchboxComponentInputBox:focus-within {
   background: #fffdf8 !important;
-  border-color: #c13a3a !important;
+  border-color: var(--abyss-primary) !important;
   box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.1), 6px 6px 0px rgba(193, 58, 58, 0.4) !important;
 }
 .ytSearchboxComponentSearchButton {
-  background: #e8d5b5 !important;
-  border-left: 2px solid #3e352f !important;
+  background: var(--abyss-bg) !important;
+  border-left: 2px solid var(--abyss-primary) !important;
   border-radius: 0 !important;
 }
 .ytSearchboxComponentSearchButton:hover {
-  background: #c13a3a !important;
+  background: var(--abyss-primary) !important;
 }
 .ytSearchboxComponentSearchButton:hover svg {
   fill: white !important;

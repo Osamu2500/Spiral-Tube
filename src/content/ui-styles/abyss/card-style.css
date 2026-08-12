@@ -9,9 +9,9 @@ html[data-ypp-card-style="vintage"] {
   --shadow-active: var(--ypp-shadow-card, 0 2px 4px rgba(0,0,0,0.1));
   --blur: var(--ypp-glass-blur, blur(10px));
 
-  --abyss-bg: var(--ypp-bg-base, #e8d5b5);
-  --abyss-primary: var(--ypp-accent, #c13a3a);
-  --abyss-secondary: var(--ypp-text-secondary, #5c3d2e);
+  --abyss-bg: var(--ypp-bg-base, var(--abyss-bg));
+  --abyss-primary: var(--ypp-accent, var(--abyss-primary));
+  --abyss-secondary: var(--ypp-text-secondary, var(--abyss-secondary));
   --abyss-border: var(--ypp-glass-border, 1px solid rgba(62,53,47,0.18));
   --abyss-border-hover: var(--ypp-glass-highlight, 1px solid rgba(62,53,47,0.4));
 
@@ -40,7 +40,7 @@ html[data-ypp-card-style='vintage']
         *
     )
   ) {
-  background: #f4ecd8 !important;
+  background: var(--abyss-card) !important;
   --yt-spec-text-primary: #2c2520 !important;
   --yt-spec-text-secondary: #5c5046 !important;
   border-radius: 4px !important;
@@ -76,7 +76,7 @@ html[data-ypp-card-style='vintage']
     )
   ):hover {
   background: #fff8e7 !important;
-  border-color: #c13a3a !important;
+  border-color: var(--abyss-primary) !important;
   transform: translate(-2px, -2px) !important;
   box-shadow: 4px 4px 0px rgba(193, 58, 58, 0.4) !important;
   filter: sepia(0) !important;

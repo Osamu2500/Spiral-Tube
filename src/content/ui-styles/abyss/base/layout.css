@@ -194,38 +194,38 @@ tp-yt-app-header {
   font-family: "Georgia", "Garamond", "Times New Roman", serif !important;
 }
 #simplebox-placeholder {
-  background: #e8d5b5 !important;
+  background: var(--abyss-bg) !important;
   border-radius: 2px !important;
   padding: 8px 16px !important;
-  border: 2px dashed #3e352f !important;
+  border: 2px dashed var(--abyss-primary) !important;
 }
 /* Progress bar */
 .ytp-play-progress {
-  background: #c13a3a !important;
+  background: var(--abyss-primary) !important;
 }
 .ytp-swatch-background-color {
-  background-color: #c13a3a !important;
+  background-color: var(--abyss-primary) !important;
 }
 /* Scrollbar overhaul (Blocky) */
 ::-webkit-scrollbar {
   width: 14px !important;
 }
 ::-webkit-scrollbar-track {
-  background: #d1c0a5 !important;
-  border-left: 2px solid #3e352f !important;
+  background: var(--abyss-bg) !important;
+  border-left: 2px solid var(--abyss-primary) !important;
 }
 ::-webkit-scrollbar-thumb {
   background: #4a7c74 !important;
-  border: 2px solid #3e352f !important;
+  border: 2px solid var(--abyss-primary) !important;
   border-radius: 0 !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c13a3a !important;
+  background: var(--abyss-primary) !important;
 }
 /* Description text */
 #description-text,
 yt-formatted-string#description-text {
-  color: #3e352f !important;
+  color: var(--abyss-primary) !important;
 }
 /* Added for HeaderNav active state */
 .ypp-nav-btn.active {

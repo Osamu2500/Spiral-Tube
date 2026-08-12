@@ -77,12 +77,12 @@ ytd-comment-simplebox-renderer {
   border: var(--abyss-border) !important;
 }
 ytd-comment-thread-renderer {
-  background: #f4ecd8 !important;
+  background: var(--abyss-card) !important;
   border-radius: 2px !important;
   padding: 16px !important;
   margin-bottom: 16px !important;
-  border: 1px solid #d1c0a5 !important;
-  border-left: 6px solid #c13a3a !important;
+  border: 1px solid var(--abyss-bg) !important;
+  border-left: 6px solid var(--abyss-primary) !important;
   box-shadow: 4px 4px 0px rgba(62, 53, 47, 0.15) !important;
 }
 /* Heavy Theme Action Button Coverage Fix */
