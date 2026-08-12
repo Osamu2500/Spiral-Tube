@@ -256,3 +256,11 @@ html[data-ypp-ui-style="vintage"] ytd-compact-video-renderer #metadata-line span
 html[data-ypp-ui-style="vintage"] ytd-video-renderer #metadata-line span {
     color: var(--vintage-secondary) !important;
 }
+
+/* Add spacing between avatar and text */
+html[data-ypp-ui-style="vintage"] ytd-rich-grid-media a#avatar-link,
+html[data-ypp-ui-style="vintage"] ytd-video-renderer a#avatar-link,
+html[data-ypp-ui-style="vintage"] ytd-compact-video-renderer a#avatar-link,
+html[data-ypp-ui-style="vintage"] ytd-grid-video-renderer a#avatar-link {
+    margin-right: 12px !important;
+}
