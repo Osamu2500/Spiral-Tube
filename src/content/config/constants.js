@@ -385,7 +385,8 @@ window.YPP.CONSTANTS = {
         CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' },
         HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' },
         AURORA: { key: 'aurora', label: 'Aurora', class: 'ypp-theme-aurora' },
-        AUTUMN: { key: 'autumn', label: 'Autumn', class: 'ypp-theme-autumn' }
+        AUTUMN: { key: 'autumn', label: 'Autumn', class: 'ypp-theme-autumn' },
+        BENTO: { key: 'bento', label: 'Bento Box', class: 'ypp-theme-bento' }
     },
 
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
@@ -434,6 +435,7 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
   { id: 'aurora', label: 'Aurora (Northern Lights)' },
   { id: 'autumn', label: 'Autumn (Fallen Leaf)' },
+  { id: 'bento', label: 'Bento Box' },
   { id: 'cherry', label: 'Cherry (Night Sakura)' }
 ];
 
