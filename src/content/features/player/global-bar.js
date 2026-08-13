@@ -112,9 +112,10 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     }
 
     scanForVideos() {
+        if (!this._pendingVideos) this._pendingVideos = new WeakSet();
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
-            if (video.hasAttribute('data-ypp-processed') || this.ui.hasVideo(video)) return;
+            if (this.ui.hasVideo(video) || this._pendingVideos.has(video)) return;
             
             // Wait for video to have layout dimensions
             if (video.offsetWidth > 0 && video.offsetHeight > 0) {
@@ -122,15 +123,19 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
                 this.ui.trackVideo(video);
                 this._notifyFeaturesOfNewVideo(video);
             } else {
+                this._pendingVideos.add(video);
                 this.pollFor(() => video.isConnected && video.offsetWidth > 0 ? video : null, 5000, 500)
                     .then(v => {
-                        if (v && !v.hasAttribute('data-ypp-processed') && !this.ui.hasVideo(v)) {
+                        this._pendingVideos.delete(video);
+                        if (v && !this.ui.hasVideo(v)) {
                             v.setAttribute('data-ypp-processed', 'true');
                             this.ui.trackVideo(v);
                             this._notifyFeaturesOfNewVideo(v);
                         }
                     })
-                    .catch(() => {});
+                    .catch(() => {
+                        if (this._pendingVideos) this._pendingVideos.delete(video);
+                    });
             }
         });
     }

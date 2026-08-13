@@ -2,6 +2,13 @@
    YPP Global Player Bar — Luxury Glassmorphism & Adaptive UI
    ========================================================================== */
 
+:root {
+    --ypp-gpb-bg: rgba(14, 15, 23, 0.78);
+    --ypp-gpb-text: #ffffff;
+    --ypp-gpb-blur: blur(28px) saturate(190%);
+    --ypp-gpb-border: rgba(255, 255, 255, 0.12);
+}
+
 /* ── Pill Capsule Dock Base ── */
 .ypp-global-player-bar {
     display: flex !important;
@@ -10,12 +17,14 @@
     padding: 14px 7px !important;
     gap: 10px !important;
     border-radius: 9999px !important;
-    color: #ffffff !important;
-    cursor: default !important;
-    background: rgba(14, 15, 23, 0.78) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-    backdrop-filter: blur(28px) saturate(190%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: var(--ypp-gpb-text) !important;
+    cursor: grab !important;
+    zoom: 1 !important;
+    font-size: 14px !important;
+    background: var(--ypp-gpb-bg) !important;
+    -webkit-backdrop-filter: var(--ypp-gpb-blur) !important;
+    backdrop-filter: var(--ypp-gpb-blur) !important;
+    border: 1px solid var(--ypp-gpb-border) !important;
     border-top-color: rgba(255, 255, 255, 0.28) !important;
     box-shadow:
         0 20px 48px rgba(0, 0, 0, 0.65),
@@ -25,6 +34,10 @@
     -webkit-user-select: none !important;
     user-select: none !important;
     font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.ypp-global-player-bar:active {
+    cursor: grabbing !important;
 }
 
 .ypp-global-player-bar:hover {

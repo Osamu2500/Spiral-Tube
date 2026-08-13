@@ -124,10 +124,39 @@ export class GlobalBarUI {
         setDisp('#ypp-gpb-time', t.gpb_showTime);
         setDisp('#ypp-gpb-mute', t.gpb_showVolume);
         setDisp('#ypp-gpb-vol-wrap', t.gpb_showVolume);
+        setDisp('#ypp-gpb-speed', t.gpb_showSpeed);
         setDisp('#ypp-gpb-loop', t.gpb_showLoop);
         setDisp('#ypp-gpb-pip', t.gpb_showPip);
         setDisp('#ypp-gpb-fullscreen', t.gpb_showFullscreen);
-        setDisp('#ypp-gpb-speed', t.gpb_showSpeed);
+
+        // Update Sub-features (Domain, Vol Booster, Filters)
+        const primary = this._currentPrimaryVideo || this._getPrimaryVideo();
+        if (primary) {
+            this._syncSubFeatureButtons(primary);
+        }
+
+        // Manage visibility of groups
+        const groups = b.querySelectorAll('.ypp-gpb-group');
+        groups.forEach(group => {
+            if (group.id === 'ypp-gpb-features-container') return; // Managed by _syncSubFeatureButtons
+            
+            let hasVisible = false;
+            Array.from(group.children).forEach(child => {
+                if (child.style.display !== 'none') hasVisible = true;
+            });
+            group.style.display = hasVisible ? 'flex' : 'none';
+        });
+
+        // Manage visibility of dividers
+        const g1 = t.gpb_showPlay !== false || t.gpb_showTime !== false;
+        const g2 = t.gpb_showVolume !== false || t.gpb_showSpeed !== false;
+        const featsCont = b.querySelector('#ypp-gpb-features-container');
+        const g3 = featsCont ? featsCont.children.length > 0 : false;
+        const g4 = t.gpb_showLoop !== false || t.gpb_showPip !== false || t.gpb_showFullscreen !== false;
+
+        setDisp('#ypp-gpb-div-1', g1 && (g2 || g3 || g4));
+        setDisp('#ypp-gpb-div-2', (g1 || g2) && g3 && g4);
+        setDisp('#ypp-gpb-div-3', (g1 || g2 || g3 || g4));
     }
 
     trackVideo(video) {
@@ -184,14 +213,16 @@ export class GlobalBarUI {
         }
 
         if (changed && this.barElement) {
-            this.updateUIState();
+            if (this._intersectionThrottle) clearTimeout(this._intersectionThrottle);
+            this._intersectionThrottle = setTimeout(() => {
+                this.updateUIState();
+            }, 100);
         }
     }
 
     /** Create the singular global player bar DOM */
     createBar() {
         if (this.barElement) return;
-        if (sessionStorage.getItem('ypp-gpb-dismissed') === 'true') return;
 
         window.YPP.Utils?.log('Creating singular global player bar', 'GlobalBarUI', 'debug');
 
@@ -217,17 +248,57 @@ export class GlobalBarUI {
         this.ICONS = ICONS;
         this.updatePosition();
         
+        // Draggable Logic
+        bar.addEventListener('mousedown', (e) => {
+            if (e.target.closest('button, input, .ypp-gpb-time-capsule, .ypp-gpb-vol-wrap')) return;
+            e.preventDefault();
+            
+            // Cancel transition during drag for 1:1 movement
+            bar.style.transition = 'none';
+            const rect = bar.getBoundingClientRect();
+            const offsetX = e.clientX - rect.left;
+            const offsetY = e.clientY - rect.top;
+
+            const onMouseMove = (moveEvent) => {
+                bar.style.left = (moveEvent.clientX - offsetX) + 'px';
+                bar.style.top = (moveEvent.clientY - offsetY) + 'px';
+                bar.style.right = 'auto';
+                bar.style.bottom = 'auto';
+                bar.style.transform = 'none';
+            };
+
+            const onMouseUp = () => {
+                bar.style.transition = ''; // Restore CSS transitions
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            };
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        });
+
         let targetContainer = document.body;
         
         // Use Popover API to escape ALL CSS containment (transforms, overflow: hidden)
         if ('popover' in bar) {
             bar.popover = "manual";
+        } else {
+            // Graceful degradation for older browsers lacking Popover API support
+            bar.style.position = 'fixed';
+            bar.style.zIndex = '2147483647';
         }
         
         targetContainer.appendChild(bar);
         
         if ('popover' in bar) {
-            try { bar.showPopover(); } catch (e) {}
+            try { 
+                bar.showPopover(); 
+            } catch (e) {
+                window.YPP.Utils?.log('showPopover failed, falling back to fixed positioning', 'GlobalBarUI', 'warn');
+                bar.removeAttribute('popover');
+                bar.style.position = 'fixed';
+                bar.style.zIndex = '2147483647';
+            }
         }
 
         this._entranceAnim = anime({
@@ -290,42 +361,31 @@ export class GlobalBarUI {
         bar.classList.remove('ypp-bar-pos-right', 'ypp-bar-pos-left', 'ypp-bar-pos-top');
         bar.classList.add(`ypp-bar-pos-${pos}`);
 
+        const setStyle = (prop, val) => bar.style.setProperty(prop, val, 'important');
+
+        setStyle('position', 'fixed');
+        setStyle('z-index', '2147483647');
+        setStyle('display', 'flex');
+        setStyle('visibility', 'visible');
+
         if (pos === 'top') {
-            Object.assign(bar.style, {
-                position: 'fixed',
-                top: '16px',
-                bottom: 'auto',
-                left: '50%',
-                right: 'auto',
-                zIndex: '2147483647',
-                display: 'flex',
-                visibility: 'visible',
-                transform: 'translateX(-50%)'
-            });
+            setStyle('top', '16px');
+            setStyle('bottom', 'auto');
+            setStyle('left', '50%');
+            setStyle('right', 'auto');
+            setStyle('transform', 'translateX(-50%)');
         } else if (pos === 'left') {
-            Object.assign(bar.style, {
-                position: 'fixed',
-                left: '16px',
-                right: 'auto',
-                top: '50%',
-                bottom: 'auto',
-                zIndex: '2147483647',
-                display: 'flex',
-                visibility: 'visible',
-                transform: ''
-            });
+            setStyle('left', '16px');
+            setStyle('right', 'auto');
+            setStyle('top', '50%');
+            setStyle('bottom', 'auto');
+            setStyle('transform', 'translateY(-50%)');
         } else {
-            Object.assign(bar.style, {
-                position: 'fixed',
-                right: '16px',
-                left: 'auto',
-                top: '50%',
-                bottom: 'auto',
-                zIndex: '2147483647',
-                display: 'flex',
-                visibility: 'visible',
-                transform: ''
-            });
+            setStyle('right', '16px');
+            setStyle('left', 'auto');
+            setStyle('top', '50%');
+            setStyle('bottom', 'auto');
+            setStyle('transform', 'translateY(-50%)');
         }
     }
 
@@ -362,26 +422,36 @@ export class GlobalBarUI {
 
         this._syncSubFeatureButtons(primary);
 
-        // Volume is synced across all, but we check if all are muted
+        // Initialize state cache if it doesn't exist
+        this._uiStateCache = this._uiStateCache || {};
+
         let isAllMuted = true;
         for (const v of this.trackedVideos) {
             if (!v.muted && v.volume > 0) isAllMuted = false;
         }
 
-        // Play/Pause reflects primary video
+        // Play/Pause
         const playBtn = this.barElement.querySelector('#ypp-gpb-play');
-        if (playBtn) {
-            playBtn.innerHTML = !primary.paused ? this.ICONS.pause : this.ICONS.play;
+        const isPaused = primary.paused;
+        if (playBtn && this._uiStateCache.paused !== isPaused) {
+            playBtn.innerHTML = !isPaused ? this.ICONS.pause : this.ICONS.play;
+            this._uiStateCache.paused = isPaused;
         }
 
         // Mute & Volume
         const muteBtn = this.barElement.querySelector('#ypp-gpb-mute');
         const volSlider = this.barElement.querySelector('#ypp-gpb-vol');
         if (muteBtn && volSlider) {
-            muteBtn.innerHTML = isAllMuted ? this.ICONS.mute : this.ICONS.volumeHigh;
-            muteBtn.classList.toggle('active', isAllMuted);
-            // Use primary video's volume for the slider
-            volSlider.value = primary.muted ? 0 : primary.volume;
+            if (this._uiStateCache.allMuted !== isAllMuted) {
+                muteBtn.innerHTML = isAllMuted ? this.ICONS.mute : this.ICONS.volumeHigh;
+                muteBtn.classList.toggle('active', isAllMuted);
+                this._uiStateCache.allMuted = isAllMuted;
+            }
+            const primaryVol = primary.muted ? 0 : primary.volume;
+            if (this._uiStateCache.volume !== primaryVol) {
+                volSlider.value = primaryVol;
+                this._uiStateCache.volume = primaryVol;
+            }
         }
 
         // Time
@@ -400,11 +470,14 @@ export class GlobalBarUI {
             const curStr = formatTime(primary.currentTime);
             const totStr = isLive ? "LIVE" : formatTime(primary.duration);
             
-            timeEl.innerHTML = `
-                <span class="ypp-gpb-time-cur">${curStr}</span>
-                <span class="ypp-gpb-time-sep"></span>
-                <span class="ypp-gpb-time-tot">${totStr}</span>
-            `;
+            if (this._uiStateCache.curStr !== curStr || this._uiStateCache.totStr !== totStr) {
+                const curSpan = timeEl.querySelector('.ypp-gpb-time-cur');
+                const totSpan = timeEl.querySelector('.ypp-gpb-time-tot');
+                if (curSpan) curSpan.textContent = curStr;
+                if (totSpan) totSpan.textContent = totStr;
+                this._uiStateCache.curStr = curStr;
+                this._uiStateCache.totStr = totStr;
+            }
 
             let tooltipStr = `${curStr} / ${totStr}`;
             if (this.settings.enableRemainingTime !== false && primary.duration && !isNaN(primary.duration)) {
@@ -424,7 +497,10 @@ export class GlobalBarUI {
                     }
                 }
             }
-            timeEl.title = tooltipStr;
+            if (this._uiStateCache.timeTitle !== tooltipStr) {
+                timeEl.title = tooltipStr;
+                this._uiStateCache.timeTitle = tooltipStr;
+            }
         }
         
         // Speed
@@ -432,32 +508,46 @@ export class GlobalBarUI {
         const speedText = this.barElement.querySelector('#ypp-gpb-speed-text');
         if (speedText) {
             const rate = primary.playbackRate || 1;
-            speedText.textContent = rate.toFixed(2) + 'x';
-            if (speedBtn) {
-                speedBtn.classList.toggle('active-speed', Math.abs(rate - 1.0) > 0.01);
+            if (this._uiStateCache.speed !== rate) {
+                speedText.textContent = rate.toFixed(2) + 'x';
+                if (speedBtn) {
+                    speedBtn.classList.toggle('active-speed', Math.abs(rate - 1.0) > 0.01);
+                }
+                this._uiStateCache.speed = rate;
             }
         }
 
-        // Loop reflects primary video
+        // Loop
         const loopBtn = this.barElement.querySelector('#ypp-gpb-loop');
-        if (loopBtn) {
+        if (loopBtn && this._uiStateCache.loop !== primary.loop) {
             loopBtn.classList.toggle('active', primary.loop);
             loopBtn.style.opacity = primary.loop ? '1' : '0.5';
+            this._uiStateCache.loop = primary.loop;
         }
 
         // Fullscreen
-        const fullscreenBtn = this.barElement.querySelector('#ypp-gpb-fullscreen');
-        if (fullscreenBtn) {
-            let isFs = false;
-            for (const v of this.trackedVideos) {
-                if (document.fullscreenElement === v) {
-                    isFs = true;
-                    break;
-                }
+        let isFs = false;
+        for (const v of this.trackedVideos) {
+            if (document.fullscreenElement === v || document.fullscreenElement === v.closest('.ypp-video-container')) {
+                isFs = true;
+                break;
             }
-            fullscreenBtn.innerHTML = isFs
-                ? `<svg viewBox="0 0 36 36" fill="currentColor"><path d="m 5.390625,8 v 18.179687 h 25.21875 V 8 Z m 2.019531,2.009765 H 28.589844 V 24.169922 H 7.410156 Z M 19.45325,22.331983 h 1.762511 V 19.688214 H 23.85953 V 17.925702 H 19.45325 Z M 14.784019,14.491472 H 12.14025 v 1.762512 h 4.406281 v -4.40628 h -1.762512 z m 0,5.196743 H 12.14025 v -1.762512 h 4.406281 v 4.40628 h -1.762512 z m 4.669231,-7.840512 h 1.762511 v 2.643769 h 2.643769 v 1.762512 h -4.40628 z"/></svg>`
-                : this.ICONS.fullscreen;
+        }
+        
+        if (this._uiStateCache.fullscreen !== isFs) {
+            const fullscreenBtn = this.barElement.querySelector('#ypp-gpb-fullscreen');
+            if (fullscreenBtn) {
+                fullscreenBtn.innerHTML = isFs
+                    ? `<svg viewBox="0 0 36 36" fill="currentColor"><path d="m 5.390625,8 v 18.179687 h 25.21875 V 8 Z m 2.019531,2.009765 H 28.589844 V 24.169922 H 7.410156 Z M 19.45325,22.331983 h 1.762511 V 19.688214 H 23.85953 V 17.925702 H 19.45325 Z M 14.784019,14.491472 H 12.14025 v 1.762512 h 4.406281 v -4.40628 h -1.762512 z m 0,5.196743 H 12.14025 v -1.762512 h 4.406281 v 4.40628 h -1.762512 z m 4.669231,-7.840512 h 1.762511 v 2.643769 h 2.643769 v 1.762512 h -4.40628 z"/></svg>`
+                    : this.ICONS.fullscreen;
+            }
+            // Hide the entire player bar when in fullscreen
+            if (isFs) {
+                this.barElement.style.setProperty('display', 'none', 'important');
+            } else {
+                this.barElement.style.setProperty('display', 'flex', 'important');
+            }
+            this._uiStateCache.fullscreen = isFs;
         }
     }
 
@@ -496,13 +586,10 @@ export class GlobalBarUI {
         }
 
         // Hide container if empty to avoid double dividers
-        const div2 = this.barElement.querySelector('#ypp-gpb-div-2');
         if (featsCont.children.length === 0) {
             featsCont.style.display = 'none';
-            if (div2) div2.style.display = 'none';
         } else {
             featsCont.style.display = 'flex';
-            if (div2) div2.style.display = '';
         }
     }
 
@@ -515,6 +602,41 @@ export class GlobalBarUI {
         this._bindVolumeControls();
         this._bindSpeedControls();
         this._bindWindowControls();
+        this._bindKeyboardControls(signal);
+    }
+
+    _bindKeyboardControls(signal) {
+        document.addEventListener('keydown', (e) => {
+            // Ignore if typing in an input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+            
+            const primary = this._getPrimaryVideo();
+            if (!primary) return;
+
+            switch (e.code) {
+                case 'Space':
+                    // Many sites already handle Space, so only prevent if we are sure it's not handled.
+                    // Actually, if we prevent default it stops page scrolling.
+                    e.preventDefault();
+                    if (primary.paused) primary.play().catch(()=>{});
+                    else primary.pause();
+                    this.updateUIState();
+                    break;
+                case 'KeyM':
+                    e.preventDefault();
+                    const willMute = !primary.muted;
+                    for (const v of this.trackedVideos) v.muted = willMute;
+                    this.updateUIState();
+                    break;
+                case 'KeyF':
+                    e.preventDefault();
+                    try {
+                        if (document.fullscreenElement) document.exitFullscreen();
+                        else primary.requestFullscreen();
+                    } catch (_) {}
+                    break;
+            }
+        }, { signal });
     }
 
     _bindPlaybackControls() {

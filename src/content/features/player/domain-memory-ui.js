@@ -24,7 +24,7 @@ export class DomainMemoryUI {
         panel.className = 'ypp-glass-panel ypp-domain-panel-root';
         Object.assign(panel.style, {
             position: 'fixed',
-            width: '385px',
+            width: 'min(385px, calc(100vw - 32px))',
             backgroundColor: 'rgba(11, 12, 20, 0.88)',
             border: '1px solid rgba(255, 255, 255, 0.12)',
             borderTop: '1px solid rgba(255, 255, 255, 0.25)',
@@ -280,19 +280,25 @@ export class DomainMemoryUI {
         const isSeriesMode = ctx._scopeMode === 'series';
         const faviconUrl = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(ctx._domain)}&sz=32`;
         const accentColor = isSeriesMode ? '#a78bfa' : '#10b981';
-        const titleLabel = isSeriesMode ? 'Series Profile' : `${ctx._domain}`;
+        const savedName = ctx._domainProfile?.name;
+        const titleLabel = savedName ? savedName : (isSeriesMode ? 'Series Profile' : `${ctx._domain}`);
 
         header.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 9px;">
+            <div style="display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0;">
                 <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;">
                     <img src="${faviconUrl}" width="18" height="18" style="border-radius:4px;" onerror="this.style.display='none';this.parentNode.innerHTML='<svg width=16 height=16 viewBox=\\'0 0 24 24\\' fill=\\'${accentColor}\\'><path d=\\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z\\'/></svg>';" />
                 </div>
-                <div>
-                    <div style="font-size:13px;font-weight:700;color:#fff;line-height:1.2;">${titleLabel}</div>
+                <div style="display: flex; flex-direction: column; overflow: hidden; flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <div id="ypp-dm-title" style="font-size:13px;font-weight:700;color:#fff;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${titleLabel}">${titleLabel}</div>
+                        <button id="ypp-dm-edit-name" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;padding:0;display:flex;transition:color 0.2s;" title="Rename Profile">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                        </button>
+                    </div>
                     <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px;">${isSeriesMode ? 'Series-level profile' : 'Site-wide profile'}</div>
                 </div>
             </div>
-            <div style="display:flex;align-items:center;gap:6px;">
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
                 <div style="width:7px;height:7px;border-radius:50%;background:${accentColor};box-shadow:0 0 8px ${accentColor};flex-shrink:0;"></div>
             </div>
         `;
@@ -318,6 +324,25 @@ export class DomainMemoryUI {
 
         const rightGroup = header.querySelector('div:last-child');
         rightGroup.appendChild(closeBtn);
+        
+        const editBtn = header.querySelector('#ypp-dm-edit-name');
+        if (editBtn) {
+            editBtn.onmouseenter = () => editBtn.style.color = '#fff';
+            editBtn.onmouseleave = () => editBtn.style.color = 'rgba(255,255,255,0.4)';
+            editBtn.onclick = () => {
+                const newName = prompt('Enter a custom name for this profile:', savedName || '');
+                if (newName !== null) {
+                    if (!ctx._domainProfile) ctx._domainProfile = {};
+                    ctx._domainProfile.name = newName.trim();
+                    ctx.recordChange('name');
+                    const finalLabel = newName.trim() || (isSeriesMode ? 'Series Profile' : `${ctx._domain}`);
+                    const titleEl = header.querySelector('#ypp-dm-title');
+                    titleEl.textContent = finalLabel;
+                    titleEl.title = finalLabel;
+                }
+            };
+        }
+        
         return header;
     }
 
@@ -583,7 +608,31 @@ export class DomainMemoryUI {
             this._animateClose(ctx._domainPanel, () => ctx._removePanel());
         };
 
-        footer.append(saveBtn, ioRow, resetBtn);
+        const exportAllBtn = document.createElement('button');
+        exportAllBtn.className = 'ypp-domain-btn-action';
+        exportAllBtn.innerHTML = `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Export All Profiles
+        `;
+        exportAllBtn.onclick = async () => {
+            try {
+                if (chrome?.storage?.local) {
+                    const data = await chrome.storage.local.get('domainMemoryProfiles');
+                    const jsonStr = JSON.stringify(data.domainMemoryProfiles || {}, null, 2);
+                    const blob = new Blob([jsonStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `ypp_domain_profiles_backup_${new Date().toISOString().split('T')[0]}.json`;
+                    a.click();
+                    setTimeout(() => URL.revokeObjectURL(url), 100);
+                }
+            } catch (err) {
+                console.error('[YPP] Failed to export profiles:', err);
+            }
+        };
+
+        footer.append(saveBtn, ioRow, exportAllBtn, resetBtn);
         return footer;
     }
 

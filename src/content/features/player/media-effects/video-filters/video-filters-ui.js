@@ -110,8 +110,9 @@ export class VideoFiltersUI {
     }
 
     static _injectStyles() {
-        const existing = document.getElementById('ypp-cinema-styles');
-        if (existing) existing.remove();
+        if (document.getElementById('ypp-cinema-styles')) return;
+        const target = document.head || document.documentElement;
+        if (!target) return;
         const style = document.createElement('style');
         style.id = 'ypp-cinema-styles';
         style.textContent = `
@@ -125,6 +126,7 @@ export class VideoFiltersUI {
                 filter: var(--ypp-video-filter) !important;
                 will-change: filter !important;
                 transform: translateZ(0) !important;
+                transition: filter 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), -webkit-filter 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
             }
 
             /* Modern Tab Buttons */

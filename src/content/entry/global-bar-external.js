@@ -289,6 +289,12 @@
             if (instances['customCursor']) {
                 instances['customCursor'].update(newSettings);
             }
+            if (instances['domainMemory']) {
+                const video = document.querySelector('video');
+                if (video) {
+                    setTimeout(() => instances['domainMemory'].restoreProfile(video, false), 100);
+                }
+            }
         });
     } catch (_) {}
 })();

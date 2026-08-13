@@ -16,7 +16,7 @@
 export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { constructor(n) { this.name = n; } }) {
     static featureId = 'domainMemory';
     static executionPhase = 'idle';
-    static priority = 5; // Run early to manage other features
+    static priority = 10; // Run after other features (like Video Filters) to correctly restore overrides
 
     constructor() {
         super('DomainMemory');
@@ -228,7 +228,24 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     async loadDomainProfile() {
         try {
             const data = await chrome.storage.local.get('ypp_domain_profiles');
-            const allProfiles = data.ypp_domain_profiles || {};
+            let allProfiles = data.ypp_domain_profiles || {};
+
+            // Pruning logic: remove abandoned profiles untouched for > 6 months (180 days)
+            const SIX_MONTHS_MS = 180 * 24 * 60 * 60 * 1000;
+            const now = Date.now();
+            let needsPrune = false;
+            
+            for (const key of Object.keys(allProfiles)) {
+                const profile = allProfiles[key];
+                if (profile && profile.lastUpdated && (now - profile.lastUpdated > SIX_MONTHS_MS)) {
+                    delete allProfiles[key];
+                    needsPrune = true;
+                }
+            }
+            
+            if (needsPrune) {
+                chrome.storage.local.set({ ypp_domain_profiles: allProfiles }).catch(() => {});
+            }
 
             const activeKey = this.getScopeKey();
             const profile = allProfiles[activeKey];
@@ -293,15 +310,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
                     vb.setEQ(vbCfg.eqGains);
                 }
             }
-            if (vbCfg.compressor !== undefined) {
-                vb._compressorEnabled = !!vbCfg.compressor;
-            }
-            if (vbCfg.mono !== undefined) {
-                vb._monoEnabled = !!vbCfg.mono;
-            }
             appliedAny = true;
         }
-
+        
         // 2. Restore Cinema Filters & Ensure CSS/WebGL Connection
         if (p.videoFilters && this._instances['videoFilters']) {
             const vf = this._instances['videoFilters'];
@@ -309,28 +320,62 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
 
             if (vfCfg.filterIndex !== undefined) {
                 vf.currentFilterIndex = vfCfg.filterIndex;
+                if (vf.settings) vf.settings.cinemaFilterIndex = vfCfg.filterIndex;
             }
             if (vfCfg.intensity !== undefined) {
                 vf.filterIntensity = vfCfg.intensity;
+                if (vf.settings) vf.settings.cinemaFilterIntensity = vfCfg.intensity;
             }
             if (vfCfg.adjustments && typeof vfCfg.adjustments === 'object') {
                 Object.assign(vf.filterAdjustments, vfCfg.adjustments);
+                if (vf.settings) {
+                    vf.settings.cinemaFilterBrightness = vfCfg.adjustments.brightness;
+                    vf.settings.cinemaFilterContrast = vfCfg.adjustments.contrast;
+                    vf.settings.cinemaFilterSaturate = vfCfg.adjustments.saturate;
+                    vf.settings.cinemaFilterHue = vfCfg.adjustments.hueRotate;
+                    vf.settings.cinemaFilterSepia = vfCfg.adjustments.sepia;
+                    vf.settings.cinemaFilterGrayscale = vfCfg.adjustments.grayscale;
+                    vf.settings.cinemaFilterInvert = vfCfg.adjustments.invert;
+                    vf.settings.cinemaFilterBlur = vfCfg.adjustments.blur;
+                    vf.settings.cinemaFilterOpacity = vfCfg.adjustments.opacity;
+                    vf.settings.cinemaFilterDehaze = vfCfg.adjustments.dehaze;
+                    vf.settings.cinemaFilterClarity = vfCfg.adjustments.clarity;
+                    vf.settings.cinemaFilterGrain = vfCfg.adjustments.grain;
+                    vf.settings.cinemaFilterSharpness = vfCfg.adjustments.sharpness;
+                    vf.settings.cinemaFilterTemperature = vfCfg.adjustments.temperature;
+                    vf.settings.cinemaFilterVibrance = vfCfg.adjustments.vibrance;
+                    vf.settings.cinemaFilterHighlights = vfCfg.adjustments.highlights;
+                    vf.settings.cinemaFilterShadows = vfCfg.adjustments.shadows;
+                    vf.settings.cinemaFilterVignette = vfCfg.adjustments.vignette;
+                    vf.settings.cinemaFilterExposure = vfCfg.adjustments.exposure;
+                    vf.settings.cinemaFilterTint = vfCfg.adjustments.tint;
+                    vf.settings.cinemaFilterFade = vfCfg.adjustments.fade;
+                    vf.settings.cinemaFilterNoiseReduction = vfCfg.adjustments.noiseReduction;
+                }
             }
-            if (typeof vf._applyComputedFilter === 'function') {
+
+            if (typeof vf.forceEnsureFilter === 'function') {
+                vf.forceEnsureFilter(video);
+                appliedAny = true;
+            } else if (typeof vf._applyComputedFilter === 'function') {
                 vf._applyComputedFilter(video);
+                appliedAny = true;
             }
-            appliedAny = true;
         }
 
-        // 3. Restore Playback Speed
+        // 3. Restore Custom Speed
         if (p.playbackRate && !isNaN(p.playbackRate) && p.playbackRate > 0) {
             try {
                 if (video.playbackRate !== p.playbackRate) {
-                    video.playbackRate = p.playbackRate;
+                    if (this._instances['videoSpeedController']) {
+                        this._instances['videoSpeedController'].settings.vscLastSpeed = p.playbackRate;
+                        this._instances['videoSpeedController'].setSpeed(video, p.playbackRate);
+                    } else {
+                        video.playbackRate = p.playbackRate;
+                    }
                 }
-            } catch (_) {}
-            if (this._instances['videoSpeedController']) {
-                this._instances['videoSpeedController'].playbackRate = p.playbackRate;
+            } catch (e) {
+                console.error('[YPP] Failed to restore playback speed:', e);
             }
             appliedAny = true;
         }
@@ -618,14 +663,17 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         const videoSelector = window.YPP?.CONSTANTS?.SELECTORS?.VIDEO?.[0] || 'video';
         
         if (window.YPP?.sharedObserver) {
-            this._videoWatcherId = window.YPP.sharedObserver.observeSelector(
+            window.YPP.sharedObserver.register(
+                'domain-memory-watcher',
                 videoSelector,
-                (video) => {
-                    this._attachLocalVideoObserver(video);
-                    this.restoreProfile(video, true);
-                },
-                true // continuous
+                (elements) => {
+                    elements.forEach(video => {
+                        this._attachLocalVideoObserver(video);
+                        this.restoreProfile(video, true);
+                    });
+                }
             );
+            this._videoWatcherId = 'domain-memory-watcher';
         } else {
             // Fallback just in case, though sharedObserver should always be present
             this._observer = new MutationObserver((mutations) => {

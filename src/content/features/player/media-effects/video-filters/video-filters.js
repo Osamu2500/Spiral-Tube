@@ -126,13 +126,49 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
     }
 
     _applyComputedFilter(video) {
-        // rAF-throttle: skip if a frame is already queued
-        if (this._rafPending) return;
-        this._rafPending = true;
-        requestAnimationFrame(() => {
-            this._rafPending = false;
+        video = video || this._getVideo();
+        if (!video) return;
+
+        window.YPP?.features?.VideoFiltersUI?._injectStyles?.();
+        
+        if (!this._rafPendingForVideo) {
+            this._rafPendingForVideo = new WeakSet();
+        }
+        
+        if (this._rafPendingForVideo.has(video)) return;
+        this._rafPendingForVideo.add(video);
+        
+        const apply = () => {
+            if (!this._rafPendingForVideo.has(video)) return; // already ran
+            this._rafPendingForVideo.delete(video);
             this._doApplyComputedFilter(video);
-        });
+        };
+        
+        requestAnimationFrame(apply);
+        setTimeout(apply, 32); // Fallback for throttled iframes
+    }
+
+    forceEnsureFilter(video) {
+        video = video || this._getVideo();
+        if (!video) return;
+        
+        this._applyComputedFilter(video);
+        
+        let attempts = 0;
+        const interval = setInterval(() => {
+            attempts++;
+            if (attempts > 6 || !video.isConnected) {
+                clearInterval(interval);
+                return;
+            }
+            // If the user manually cleared the filter in the meantime, stop forcing it.
+            if (this.currentFilterIndex === 0 && !this._hasAdjustments()) {
+                clearInterval(interval);
+                return;
+            }
+            // Re-trigger application to override any SPA player overrides that slipped past the observer
+            this._applyComputedFilter(video);
+        }, 500);
     }
 
     _doApplyComputedFilter(video) {
@@ -159,14 +195,93 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
 
         window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
-        // Hardware-accelerated CSS variable pipeline
+        // Hardware-accelerated CSS variable pipeline + Inline fallback immunity
         video.classList.add('ypp-cinema-active');
         video.style.setProperty('--ypp-video-filter', finalFilter);
         
+        // Directly inject inline to guarantee survival even if site purges <head>
+        video.style.setProperty('filter', finalFilter, 'important');
+        video.style.setProperty('will-change', 'filter', 'important');
+        video.style.setProperty('transform', 'translateZ(0)', 'important');
+        video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
+        
         this._syncOverlays(preset, adj);
+        this._ensureVideoState(video);
+    }
+
+    _ensureVideoState(video) {
+        if (!video) return;
+        
+        if (!this._videoObservers) {
+            this._videoObservers = new WeakMap();
+        }
+        
+        if (this._videoObservers.has(video)) {
+            this._videoObservers.get(video).disconnect();
+        }
+        
+        const observer = new MutationObserver((mutations) => {
+            if (this.currentFilterIndex === 0 && !this._hasAdjustments()) return;
+            
+            let needsReapply = false;
+            for (const m of mutations) {
+                if (m.type === 'attributes') {
+                    if (m.attributeName === 'class' && !video.classList.contains('ypp-cinema-active')) {
+                        needsReapply = true;
+                    }
+                    if (m.attributeName === 'style') {
+                        const currentFilter = video.style.getPropertyValue('filter');
+                        const targetFilter = video.style.getPropertyValue('--ypp-video-filter');
+                        
+                        if (!targetFilter || !currentFilter || currentFilter === 'none' || currentFilter === 'initial' || currentFilter === 'unset') {
+                            needsReapply = true;
+                        }
+                    }
+                }
+            }
+            if (needsReapply) {
+                window.YPP?.features?.VideoFiltersUI?._injectStyles?.();
+                video.classList.add('ypp-cinema-active');
+                
+                const preset = window.YPP.features.VideoFiltersPresets.FILTERS[this.currentFilterIndex];
+                const adj = this.filterAdjustments;
+                const inst = this.filterIntensity / 100;
+                const baseValues = this._calculateBaseValues(adj);
+                const hasSVGCurves = this._applySVGCurves(baseValues, adj);
+                let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
+                if (adj.sharpness > 0) finalFilter += ` url(#ypp-svg-sharpness)`;
+                
+                video.style.setProperty('--ypp-video-filter', finalFilter);
+                video.style.setProperty('filter', finalFilter, 'important');
+                video.style.setProperty('will-change', 'filter', 'important');
+                video.style.setProperty('transform', 'translateZ(0)', 'important');
+                video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
+            }
+        });
+        
+        observer.observe(video, { attributes: true, attributeFilter: ['class', 'style'] });
+        this._videoObservers.set(video, observer);
+    }
+
+    _hasAdjustments() {
+        const adj = this.filterAdjustments;
+        return adj.brightness !== 100 || adj.contrast !== 100 || adj.saturate !== 100 || 
+               adj.dehaze > 0 || adj.clarity > 0 || adj.vibrance !== 100 || 
+               adj.exposure !== 0 || adj.shadows !== 0 || adj.highlights !== 0 || 
+               adj.temperature !== 0 || adj.tint !== 0 || adj.hueRotate !== 0 || 
+               adj.sepia > 0 || adj.grayscale > 0 || adj.invert > 0 || 
+               adj.fade > 0 || adj.blur > 0 || adj.noiseReduction > 0 || adj.sharpness > 0;
     }
 
     _clearVideoFilters(video) {
+        if (this._videoObservers && this._videoObservers.has(video)) {
+            this._videoObservers.get(video).disconnect();
+            this._videoObservers.delete(video);
+        }
+        if (this._videoObserver) {
+            this._videoObserver.disconnect();
+            this._videoObserver = null;
+        }
         video.classList.remove('ypp-cinema-active');
         video.style.removeProperty('--ypp-video-filter');
         video.style.setProperty('filter', 'none', 'important'); // Fallback clear
@@ -315,6 +430,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
 
         if (hasActiveFilter && video) {
             this._applyComputedFilter(video);
+        } else if (this.currentFilterIndex === 0 && !hasActiveFilter && video) {
+            this._clearVideoFilters(video);
         }
     }
 
