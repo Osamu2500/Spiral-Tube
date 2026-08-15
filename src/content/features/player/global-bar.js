@@ -5,15 +5,6 @@
  */
 import css from './global-bar.css?inline';
 
-if (typeof document !== 'undefined') {
-    const style = document.createElement('style');
-    style.id = 'ypp-global-bar-css';
-    style.textContent = css;
-    if (!document.getElementById('ypp-global-bar-css')) {
-        document.head.appendChild(style);
-    }
-}
-
 
 
 export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
@@ -50,12 +41,20 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     // LIFECYCLE
     // =========================================================================
 
+    _injectCSS() {
+        if (document.getElementById('ypp-global-bar-css')) return;
+        const style = document.createElement('style');
+        style.id = 'ypp-global-bar-css';
+        style.textContent = css;
+        (document.head || document.documentElement).appendChild(style);
+    }
+
     async enable() {
         if (this.isYouTube) return; // Skip YouTube (handled by native integration)
 
         try {
             this.utils?.log('Enabling Global Player Bar', 'GlobalPlayerBar');
-            
+            this._injectCSS();
             this.scanForVideos();
             this.startObserver();
         } catch (e) {
@@ -95,6 +94,23 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
             };
             this.addListener(document, 'play', this._fallbackVideoScanner, true);
             this.addListener(document, 'loadeddata', this._fallbackVideoScanner, true);
+
+            // MutationObserver: catch <video> elements injected dynamically after boot
+            // Only trigger when a node is *added* to the DOM that is or contains a <video>
+            if (!this._domVideoObserver) {
+                this._domVideoObserver = new MutationObserver((mutations) => {
+                    for (const m of mutations) {
+                        for (const node of m.addedNodes) {
+                            if (!node || node.nodeType !== 1) continue;
+                            if (node.tagName === 'VIDEO' || node.querySelector?.('video')) {
+                                this.scanForVideos();
+                                return; // one scan per batch is enough
+                            }
+                        }
+                    }
+                });
+                this._domVideoObserver.observe(document.documentElement, { childList: true, subtree: true });
+            }
         }
     }
 
@@ -108,10 +124,17 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
                 // this.addListener will be cleaned up automatically by BaseFeature
                 this._fallbackVideoScanner = null;
             }
+            if (this._domVideoObserver) {
+                this._domVideoObserver.disconnect();
+                this._domVideoObserver = null;
+            }
         }
     }
 
     scanForVideos() {
+        // Respect user's explicit close action for this session
+        if (sessionStorage.getItem('ypp-gpb-dismissed') === 'true') return;
+
         if (!this._pendingVideos) this._pendingVideos = new WeakSet();
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {

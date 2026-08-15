@@ -89,7 +89,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         btn.className = 'ypp-action-btn';
         btn.onclick = (e) => {
             e.stopPropagation();
-            this.toggleFilterPanel(this._getVideo(), btn);
+            // Bug 2F fix: use the captured initialVideo, not a fresh _getVideo() query
+            this.toggleFilterPanel(initialVideo || this._getVideo(), btn);
         };
         this._filterBtn = btn;
         return btn;
@@ -189,11 +190,13 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
         
         if (adj.sharpness > 0) {
-            window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
+            if (video._isProxy) video.injectSVGSharpness(adj.sharpness);
+            else window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
             finalFilter += ` url(#ypp-svg-sharpness)`;
         }
 
-        window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
+        if (video._isProxy) video.manageSVGFilters(finalFilter);
+        else window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
         // Hardware-accelerated CSS variable pipeline + Inline fallback immunity
         video.classList.add('ypp-cinema-active');
@@ -204,8 +207,9 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         video.style.setProperty('will-change', 'filter', 'important');
         video.style.setProperty('transform', 'translateZ(0)', 'important');
         video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
+        // Re-apply overlay elements
+        this._syncOverlays(preset, adj, video);
         
-        this._syncOverlays(preset, adj);
         this._ensureVideoState(video);
     }
 
@@ -216,9 +220,9 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             this._videoObservers = new WeakMap();
         }
         
-        if (this._videoObservers.has(video)) {
-            this._videoObservers.get(video).disconnect();
-        }
+        // Bug 2D fix: do NOT disconnect and recreate on every filter apply
+        // Only set up the observer once per video element
+        if (this._videoObservers.has(video)) return;
         
         const observer = new MutationObserver((mutations) => {
             if (this.currentFilterIndex === 0 && !this._hasAdjustments()) return;
@@ -366,17 +370,23 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         return 'none';
     }
 
-    _syncOverlays(preset, adj) {
+    _syncOverlays(preset, adj, video) {
+        video = video || this._getVideo();
         const overlayKey = `${this.currentFilterIndex}:${adj.grain}:${adj.vignette}`;
         const needsOverlay = preset.overlay || adj.grain > 0 || adj.vignette > 0 || preset.name === 'Night Vision';
         const overlayChanged = this._lastOverlayKey !== overlayKey;
 
         if (!needsOverlay) {
-            window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+            if (video && video._isProxy) video.removeOverlay();
+            else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
             this._lastOverlayKey = null;
         } else if (overlayChanged) {
-            window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
-            window.YPP.features.VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain);
+            if (video && video._isProxy) video.removeOverlay();
+            else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
+            
+            if (video && video._isProxy) video.applyOverlay(preset.overlay, adj.grain);
+            else window.YPP.features.VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain);
+            
             this._lastOverlayKey = overlayKey;
         }
     }
@@ -415,7 +425,13 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             if (s[settingKey] !== undefined) {
                 this.filterAdjustments[stateKey] = s[settingKey];
             }
-            if (this.filterAdjustments[stateKey] !== (['hueRotate','sepia','grayscale','invert','blur','dehaze','clarity','grain','sharpness','temperature','highlights','shadows','vignette'].includes(stateKey) ? 0 : 100)) {
+        if (this.filterAdjustments[stateKey] !== (
+            ['hueRotate','sepia','grayscale','invert','blur','dehaze','clarity',
+             'grain','sharpness','temperature','highlights','shadows','vignette',
+             // V2 keys — default is also 0
+             'exposure','tint','fade','noiseReduction'
+            ].includes(stateKey) ? 0 : 100
+        )) {
                 hasActiveFilter = true;
             }
         }

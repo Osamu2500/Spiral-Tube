@@ -165,8 +165,12 @@ export class GlobalBarUI {
         window.YPP.Utils?.log('Tracking new video for global bar', 'GlobalBarUI', 'debug');
         
         this.trackedVideos.add(video);
-        this.videoVisibility.set(video, 0);
-        this._intersectionObserver.observe(video);
+        // Proxy videos (from iframe bridge) get default visibility; real elements start at 0
+        this.videoVisibility.set(video, video?._proxy ? 0.5 : 0);
+        // IntersectionObserver only works on real DOM Elements, not proxy objects
+        if (!video?._proxy) {
+            this._intersectionObserver.observe(video);
+        }
 
         if (!this.barElement) {
             this.createBar();
@@ -178,7 +182,10 @@ export class GlobalBarUI {
     _untrackVideo(video) {
         this.trackedVideos.delete(video);
         this.videoVisibility.delete(video);
-        this._intersectionObserver.unobserve(video);
+        // IntersectionObserver only accepts real DOM Elements
+        if (!video?._proxy) {
+            this._intersectionObserver.unobserve(video);
+        }
 
         if (this._currentPrimaryVideo === video) {
             this._currentPrimaryVideo = null;
@@ -246,7 +253,6 @@ export class GlobalBarUI {
 
         this.barElement = bar;
         this.ICONS = ICONS;
-        this.updatePosition();
         
         // Draggable Logic
         bar.addEventListener('mousedown', (e) => {
@@ -300,6 +306,11 @@ export class GlobalBarUI {
                 bar.style.zIndex = '2147483647';
             }
         }
+
+        // Position AFTER element is in DOM and top-layer (Popover API requires this)
+        this.updatePosition();
+        // Deferred re-apply: some browsers repaint the popover async
+        setTimeout(() => this.updatePosition(), 50);
 
         this._entranceAnim = anime({
             targets: bar.querySelectorAll('.ypp-gpb-btn, .ypp-gpb-time, .ypp-gpb-vol-wrap'),

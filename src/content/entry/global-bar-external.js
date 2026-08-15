@@ -237,12 +237,128 @@
     if (window.YPP.features.DomainMemory) {
         instances['domainMemory'] = new window.YPP.features.DomainMemory();
         instances['domainMemory'].init(instances, settings);
-        instances['domainMemory'].enable();
+        // Bug 3A fix: await so loadDomainProfile() finishes before restoreProfile() is called
+        await instances['domainMemory'].enable();
     }
     if (window.YPP.features.CustomCursor) {
         instances['customCursor'] = new window.YPP.features.CustomCursor();
         instances['customCursor'].update(settings);
         instances['customCursor'].enable();
+    }
+
+    // ── Guard: are we inside an iframe? ──────────────────────────────────────
+    const isInsideIframe = window !== window.top;
+
+    // ── If inside iframe: run sub-features (VSC, filters, volume) only.
+    //    Post video metadata to parent so the bar appears on the main page.
+    if (isInsideIframe) {
+        // Sub-features still work fine inside the iframe (they act on the <video> directly)
+        // The bar itself is NOT created here — it would be clipped to the iframe viewport.
+
+        // Bridge: listen for video events and relay them to the parent frame
+        const relayVideoEvents = (video) => {
+            if (!video || video._yppBridged) return;
+            video._yppBridged = true;
+
+            const relay = (type) => {
+                try {
+                    window.parent.postMessage({
+                        ypp: true,
+                        type: 'iframe-video-event',
+                        event: type,
+                        state: {
+                            paused: video.paused,
+                            muted: video.muted,
+                            volume: video.volume,
+                            currentTime: video.currentTime,
+                            duration: video.duration || 0,
+                            playbackRate: video.playbackRate,
+                            loop: video.loop,
+                        }
+                    }, '*');
+                } catch (_) {}
+            };
+
+            ['play','pause','timeupdate','ratechange','volumechange','loadedmetadata','ended'].forEach(t => {
+                video.addEventListener(t, () => relay(t), { passive: true });
+            });
+
+            // Signal parent that a video exists
+            relay('video-detected');
+        };
+
+        // Find existing videos
+        document.querySelectorAll('video').forEach(relayVideoEvents);
+
+        // Watch for new videos
+        new MutationObserver((mutations) => {
+            for (const m of mutations) {
+                for (const node of m.addedNodes) {
+                    if (!node || node.nodeType !== 1) continue;
+                    if (node.tagName === 'VIDEO') relayVideoEvents(node);
+                    node.querySelectorAll?.('video').forEach(relayVideoEvents);
+                }
+            }
+        }).observe(document.documentElement, { childList: true, subtree: true });
+
+        // Also relay commands from parent → video
+        window.addEventListener('message', (e) => {
+            if (!e.data?.ypp || e.data.type !== 'iframe-video-command') return;
+            const { cmd, value } = e.data;
+            
+            if (cmd === 'sync-profile' && instances['domainMemory']) {
+                instances['domainMemory']._domainProfile = value;
+                instances['domainMemory']._isRemembering = true;
+                const videos = document.querySelectorAll('video');
+                videos.forEach(video => {
+                    instances['domainMemory'].restoreProfile(video, false);
+                });
+                return;
+            }
+
+            const videos = document.querySelectorAll('video');
+            if (!videos.length) return;
+            
+            videos.forEach(video => {
+                if (cmd === 'play')         video.play().catch(() => {});
+                if (cmd === 'pause')        video.pause();
+                if (cmd === 'mute')         video.muted = true;
+                if (cmd === 'unmute')       video.muted = false;
+                if (cmd === 'volume')       video.volume = value;
+                if (cmd === 'rate')         video.playbackRate = value;
+                if (cmd === 'loop')         video.loop = !video.loop;
+                if (cmd === 'pip')          video.requestPictureInPicture?.().catch(() => {});
+                if (cmd === 'fullscreen')   video.closest?.('[tabindex]')?.requestFullscreen?.();
+                if (cmd === 'seek')         video.currentTime += value;
+                
+                // Real-time styling sync (for filters)
+                if (cmd === 'style')        video.style.setProperty(value.prop, value.val, value.imp || '');
+                if (cmd === 'style-remove') video.style.removeProperty(value);
+                if (cmd === 'class-add')    video.classList.add(value);
+                if (cmd === 'class-remove') video.classList.remove(value);
+            });
+            
+            // Handle Overlay Commands
+            if (cmd === 'applyOverlay' && window.YPP?.features?.VideoFiltersOverlay) {
+                // Mock context for the overlay module since it normally expects `this` (VideoFilters)
+                const mockCtx = { _filterOverlay: window._yppCurrentFilterOverlay };
+                window.YPP.features.VideoFiltersOverlay.applyOverlay(mockCtx, value.type, value.grainAmount);
+                window._yppCurrentFilterOverlay = mockCtx._filterOverlay;
+            }
+            if (cmd === 'removeOverlay' && window.YPP?.features?.VideoFiltersOverlay) {
+                const mockCtx = { _filterOverlay: window._yppCurrentFilterOverlay };
+                window.YPP.features.VideoFiltersOverlay.removeOverlay(mockCtx);
+                window._yppCurrentFilterOverlay = null;
+            }
+            if (cmd === 'manageSVGFilters' && window.YPP?.features?.VideoFiltersOverlay) {
+                window.YPP.features.VideoFiltersOverlay.manageSVGFilters(value);
+            }
+            if (cmd === 'injectSVGSharpness' && window.YPP?.features?.VideoFiltersOverlay) {
+                window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(value);
+            }
+        });
+
+        return; // Do NOT create GlobalPlayerBar inside iframe
     }
 
     // Default ON — show bar unless user explicitly disabled it
@@ -260,39 +376,164 @@
         if (video) instances['domainMemory'].restoreProfile(video, true);
     }
 
+    // ── 4b. Listen for iframe video events (cross-origin iframe bridge) ───────
+    //   When a streaming site embeds the player in a cross-origin iframe,
+    //   the iframe script relays video events here via postMessage.
+    //   We create a lightweight proxy object to drive the GlobalBarUI.
+    (function setupIframeBridge() {
+        let proxyVideo = null;
+        let bridgedIframe = null; // the <iframe> element in this page's DOM
+
+        const sendCommand = (cmd, value) => {
+            // Find the iframe to post commands to
+            if (!bridgedIframe) {
+                // Try to find an iframe that has a cross-origin video source
+                bridgedIframe = Array.from(document.querySelectorAll('iframe')).find(f => {
+                    try { return !f.contentDocument; } catch { return true; } // cross-origin = no access
+                });
+            }
+            bridgedIframe?.contentWindow?.postMessage({ ypp: true, type: 'iframe-video-command', cmd, value }, '*');
+        };
+
+        window.addEventListener('message', (e) => {
+            if (!e.data?.ypp || e.data.type !== 'iframe-video-event') return;
+            const { event: evtType, state } = e.data;
+
+            // Create a proxy video object the first time we hear from the iframe
+            if (!proxyVideo) {
+                // Internal state that gets synced from iframe
+                const _state = {
+                    _proxy: true,
+                    paused: true,
+                    muted: false,
+                    volume: 1,
+                    currentTime: 0,
+                    duration: 0,
+                    playbackRate: 1,
+                    loop: false,
+                    isConnected: true,
+                    offsetWidth: 1,
+                    offsetHeight: 1,
+                };
+
+                // Use ES Proxy so property assignments relay commands to the iframe
+                proxyVideo = new Proxy(_state, {
+                    get(target, key) {
+                        if (key === 'style') {
+                            return { 
+                                setProperty(prop, val, imp) { sendCommand('style', { prop, val, imp }); }, 
+                                removeProperty(prop) { sendCommand('style-remove', prop); }, 
+                                getPropertyValue() { return ''; } 
+                            };
+                        }
+                        if (key === 'classList') {
+                            return { 
+                                add(cls) { sendCommand('class-add', cls); }, 
+                                remove(cls) { sendCommand('class-remove', cls); }, 
+                                contains() { return false; } 
+                            };
+                        }
+                        if (key === 'manageSVGFilters') return (css) => sendCommand('manageSVGFilters', css);
+                        if (key === 'injectSVGSharpness') return (amount) => sendCommand('injectSVGSharpness', amount);
+                        if (key === 'applyOverlay') return (type, grainAmount) => sendCommand('applyOverlay', { type, grainAmount });
+                        if (key === 'removeOverlay') return () => sendCommand('removeOverlay');
+                        
+                        if (key === 'getAttribute')    return () => null;
+                        if (key === 'setAttribute')    return () => {};
+                        if (key === 'removeAttribute') return () => {};
+                        if (key === 'addEventListener')    return () => {};
+                        if (key === 'removeEventListener') return () => {};
+                        if (key === 'requestFullscreen')   return () => { sendCommand('fullscreen'); return Promise.resolve(); };
+                        if (key === 'requestPictureInPicture') return () => { sendCommand('pip'); return Promise.resolve(); };
+                        if (key === 'play')  return () => { sendCommand('play');  return Promise.resolve(); };
+                        if (key === 'pause') return () => { sendCommand('pause'); };
+                        if (key === 'closest') return () => ({ requestFullscreen() { sendCommand('fullscreen'); } });
+                        if (key === '_internalState') return _state; // expose for direct sync
+                        return target[key];
+                    },
+                    set(target, key, value) {
+                        target[key] = value; // Update local state for UI reads
+                        // Relay to iframe video
+                        if (key === 'muted')        sendCommand(value ? 'mute' : 'unmute');
+                        if (key === 'volume')        sendCommand('volume', value);
+                        if (key === 'playbackRate')  sendCommand('rate', value);
+                        if (key === 'loop')          sendCommand('loop');
+                        if (key === 'currentTime')   sendCommand('seek', value);
+                        return true;
+                    }
+                });
+
+                // Inject bar with the proxy video
+                if (bar.ui && !bar.ui.hasVideo(proxyVideo)) {
+                    bar.ui.trackVideo(proxyVideo);
+                }
+
+                // Send the initial domain profile to the iframe so it applies immediately on load
+                if (instances['domainMemory']) {
+                    chrome.storage.local.get('ypp_domain_profiles').then(data => {
+                        const activeKey = instances['domainMemory'].getScopeKey();
+                        const myProfile = data.ypp_domain_profiles?.[activeKey];
+                        if (myProfile) {
+                            sendCommand('sync-profile', myProfile);
+                        }
+                    }).catch(() => {});
+                }
+            }
+
+            // Sync proxy internal state directly from iframe (bypass proxy setter to avoid echo-back)
+            if (state) {
+                const internalState = proxyVideo._internalState;
+                if (internalState) Object.assign(internalState, state);
+            }
+
+            // Trigger UI update
+            if (bar.ui?.barElement) {
+                bar.ui.updateUIState();
+            }
+        });
+
+        // Listen for domain profile changes and broadcast them to the identified video iframe
+        try {
+            chrome.storage.onChanged.addListener((changes) => {
+                if (changes.ypp_domain_profiles && !isInsideIframe && instances['domainMemory']) {
+                    const activeKey = instances['domainMemory'].getScopeKey();
+                    const myProfile = changes.ypp_domain_profiles.newValue?.[activeKey];
+                    if (myProfile) {
+                        sendCommand('sync-profile', myProfile);
+                    }
+                }
+            });
+        } catch (_) {}
+    })();
+
     // ── 5. React to popup toggle changes in real-time ────────────────────────
     try {
         chrome.storage.onChanged.addListener((changes) => {
-            if (!changes.settings) return;
-            const newSettings = changes.settings.newValue || {};
-            const nowEnabled  = newSettings.enableGlobalPlayerBar !== false;
+            if (changes.settings) {
+                const newSettings = changes.settings.newValue || {};
+                const nowEnabled  = newSettings.enableGlobalPlayerBar !== false;
 
-            if (nowEnabled && !bar.isEnabled) {
-                bar.enable();
-                bar.isEnabled = true;
-            } else if (!nowEnabled && bar.isEnabled) {
-                bar.disable();
-                bar.isEnabled = false;
-            }
-            if (bar.update) bar.update(newSettings);
+                if (nowEnabled && !bar.isEnabled) {
+                    bar.enable();
+                    bar.isEnabled = true;
+                } else if (!nowEnabled && bar.isEnabled) {
+                    bar.disable();
+                    bar.isEnabled = false;
+                }
+                if (bar.update) bar.update(newSettings);
 
-            // Update sub-features
-            if (instances['volumeBoost']) {
-                instances['volumeBoost'].update(newSettings);
-            }
-            if (instances['videoFilters']) {
-                instances['videoFilters'].update(newSettings);
-            }
-            if (instances['videoSpeedController']) {
-                instances['videoSpeedController'].update(newSettings);
-            }
-            if (instances['customCursor']) {
-                instances['customCursor'].update(newSettings);
-            }
-            if (instances['domainMemory']) {
-                const video = document.querySelector('video');
-                if (video) {
-                    setTimeout(() => instances['domainMemory'].restoreProfile(video, false), 100);
+                // Update sub-features
+                if (instances['volumeBoost']) {
+                    instances['volumeBoost'].update(newSettings);
+                }
+                if (instances['videoFilters']) {
+                    instances['videoFilters'].update(newSettings);
+                }
+                if (instances['videoSpeedController']) {
+                    instances['videoSpeedController'].update(newSettings);
+                }
+                if (instances['customCursor']) {
+                    instances['customCursor'].update(newSettings);
                 }
             }
         });

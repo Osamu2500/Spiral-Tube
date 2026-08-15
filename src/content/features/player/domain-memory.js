@@ -318,6 +318,10 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             const vf = this._instances['videoFilters'];
             const vfCfg = p.videoFilters;
 
+            // Bug 2B fix: respect the user's enableCinemaFilters toggle
+            if (!vf.settings?.enableCinemaFilters) {
+                // Feature is disabled — skip restoring filters but still continue with speed
+            } else {
             if (vfCfg.filterIndex !== undefined) {
                 vf.currentFilterIndex = vfCfg.filterIndex;
                 if (vf.settings) vf.settings.cinemaFilterIndex = vfCfg.filterIndex;
@@ -361,6 +365,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
                 vf._applyComputedFilter(video);
                 appliedAny = true;
             }
+            } // end enableCinemaFilters check
         }
 
         // 3. Restore Custom Speed
@@ -571,7 +576,9 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
                     brightness: 100, contrast: 100, saturate: 100, hueRotate: 0,
                     sepia: 0, grayscale: 0, invert: 0, blur: 0, opacity: 100,
                     dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0,
-                    vibrance: 100, highlights: 0, shadows: 0, vignette: 0
+                    vibrance: 100, highlights: 0, shadows: 0, vignette: 0,
+                    // Bug 3B fix: include V2 keys in reset
+                    exposure: 0, tint: 0, fade: 0, noiseReduction: 0
                 };
                 const video = this._getVideo();
                 if (video) vf._applyComputedFilter(video);
