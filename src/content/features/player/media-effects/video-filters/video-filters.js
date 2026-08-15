@@ -190,12 +190,12 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
         
         if (adj.sharpness > 0) {
-            if (video._isProxy) video.injectSVGSharpness(adj.sharpness);
+            if (video._proxy) video.injectSVGSharpness(adj.sharpness);
             else window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
             finalFilter += ` url(#ypp-svg-sharpness)`;
         }
 
-        if (video._isProxy) video.manageSVGFilters(finalFilter);
+        if (video._proxy) video.manageSVGFilters(finalFilter);
         else window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
         // Hardware-accelerated CSS variable pipeline + Inline fallback immunity
@@ -377,14 +377,14 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         const overlayChanged = this._lastOverlayKey !== overlayKey;
 
         if (!needsOverlay) {
-            if (video && video._isProxy) video.removeOverlay();
+            if (video && video._proxy) video.removeOverlay();
             else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
             this._lastOverlayKey = null;
         } else if (overlayChanged) {
-            if (video && video._isProxy) video.removeOverlay();
+            if (video && video._proxy) video.removeOverlay();
             else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
             
-            if (video && video._isProxy) video.applyOverlay(preset.overlay, adj.grain);
+            if (video && video._proxy) video.applyOverlay(preset.overlay, adj.grain);
             else window.YPP.features.VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain);
             
             this._lastOverlayKey = overlayKey;

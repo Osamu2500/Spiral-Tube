@@ -4,10 +4,26 @@ export class VideoFiltersOverlay {
   static priority = 999;
 
   static applyOverlay(ctx, type, grainAmount = 0) {
-    const container =
+    let video = null;
+    if (ctx && typeof ctx._getVideo === 'function') {
+        video = ctx._getVideo();
+    }
+
+    let container =
       document.getElementById('movie_player') ||
-      document.querySelector('.html5-video-player') ||
-      document.body;
+      document.querySelector('.html5-video-player');
+
+    // If no YouTube container, try to find the fullscreen-capable player container
+    if (!container && video) {
+        // Try known player classes
+        container = video.closest('.jwplayer, .plyr, .video-js, .vjs-tech, .artplayer-app, .dplayer, .dplayer-video-wrap');
+        // Fallback: If the video is inside a container, and that container is likely to be the fullscreen element
+        if (!container && video.parentElement) {
+            container = video.parentElement;
+        }
+    }
+
+    if (!container) container = document.body;
 
     if (!container) return;
 

@@ -383,7 +383,10 @@
             // Handle Overlay Commands
             if (cmd === 'applyOverlay' && window.YPP?.features?.VideoFiltersOverlay) {
                 // Mock context for the overlay module since it normally expects `this` (VideoFilters)
-                const mockCtx = { _filterOverlay: window._yppCurrentFilterOverlay };
+                const mockCtx = { 
+                    _filterOverlay: window._yppCurrentFilterOverlay,
+                    _getVideo: () => activeVideo 
+                };
                 window.YPP.features.VideoFiltersOverlay.applyOverlay(mockCtx, value.type, value.grainAmount);
                 window._yppCurrentFilterOverlay = mockCtx._filterOverlay;
             }
