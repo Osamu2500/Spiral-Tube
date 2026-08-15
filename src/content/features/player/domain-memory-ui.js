@@ -24,7 +24,7 @@ export class DomainMemoryUI {
         panel.className = 'ypp-glass-panel ypp-domain-panel-root';
         Object.assign(panel.style, {
             position: 'fixed',
-            width: 'min(385px, calc(100vw - 32px))',
+            width: 'min(440px, calc(100vw - 32px))',
             backgroundColor: 'rgba(11, 12, 20, 0.88)',
             border: '1px solid rgba(255, 255, 255, 0.12)',
             borderTop: '1px solid rgba(255, 255, 255, 0.25)',
@@ -338,7 +338,7 @@ export class DomainMemoryUI {
             this._animateClose(ctx._domainPanel, () => ctx._removePanel());
         };
 
-        const rightGroup = header.querySelector('div:last-child');
+        const rightGroup = header.lastElementChild;
         rightGroup.appendChild(closeBtn);
         
         const editBtn = header.querySelector('#ypp-dm-edit-name');

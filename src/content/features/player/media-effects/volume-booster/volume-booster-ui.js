@@ -1046,7 +1046,7 @@ export class VolumeBoosterUI {
     position: fixed;
     bottom: 72px;
     right: 24px;
-    width: 340px;
+    width: 440px;
     background-color: rgba(18, 18, 20, 0.45);
     background-image: radial-gradient(ellipse 80% 60% at 0% 0%, rgba(62, 166, 255, 0.15) 0%, transparent 70%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(255, 65, 108, 0.1) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 65, 108, 0.05) 0%, transparent 100%);
     border: 1px solid rgba(255,255,255,0.1);
