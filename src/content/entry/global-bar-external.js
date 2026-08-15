@@ -255,10 +255,31 @@
         // Sub-features still work fine inside the iframe (they act on the <video> directly)
         // The bar itself is NOT created here — it would be clipped to the iframe viewport.
 
+        let activeVideo = null;
+        let mainObserver = null;
+        let removalObserver = null;
+        let heartbeatInterval = null;
+
+        const capabilities = {
+            pip: document.pictureInPictureEnabled !== false,
+            fullscreen: document.fullscreenEnabled !== false,
+            host: window.location.hostname
+        };
+
         // Bridge: listen for video events and relay them to the parent frame
         const relayVideoEvents = (video) => {
             if (!video || video._yppBridged) return;
+            // Only bridge one active video at a time
+            if (activeVideo && activeVideo !== video) return;
+            
             video._yppBridged = true;
+            activeVideo = video;
+
+            // Disconnect expensive observer
+            if (mainObserver) {
+                mainObserver.disconnect();
+                mainObserver = null;
+            }
 
             const relay = (type) => {
                 try {
@@ -266,6 +287,7 @@
                         ypp: true,
                         type: 'iframe-video-event',
                         event: type,
+                        capabilities: capabilities,
                         state: {
                             paused: video.paused,
                             muted: video.muted,
@@ -283,23 +305,43 @@
                 video.addEventListener(t, () => relay(t), { passive: true });
             });
 
+            // Heartbeat
+            heartbeatInterval = setInterval(() => {
+                if (video.isConnected) relay('heartbeat');
+            }, 1000);
+
+            // Re-arm main observer if video is removed
+            removalObserver = new MutationObserver(() => {
+                if (!document.contains(video)) {
+                    removalObserver.disconnect();
+                    removalObserver = null;
+                    clearInterval(heartbeatInterval);
+                    activeVideo = null;
+                    startMainObserver();
+                }
+            });
+            removalObserver.observe(document.documentElement, { childList: true, subtree: true });
+
             // Signal parent that a video exists
             relay('video-detected');
         };
 
-        // Find existing videos
-        document.querySelectorAll('video').forEach(relayVideoEvents);
-
-        // Watch for new videos
-        new MutationObserver((mutations) => {
-            for (const m of mutations) {
-                for (const node of m.addedNodes) {
-                    if (!node || node.nodeType !== 1) continue;
-                    if (node.tagName === 'VIDEO') relayVideoEvents(node);
-                    node.querySelectorAll?.('video').forEach(relayVideoEvents);
+        const startMainObserver = () => {
+            if (mainObserver) return;
+            mainObserver = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    for (const node of m.addedNodes) {
+                        if (!node || node.nodeType !== 1) continue;
+                        if (node.tagName === 'VIDEO') relayVideoEvents(node);
+                        else node.querySelectorAll?.('video').forEach(relayVideoEvents);
+                    }
                 }
-            }
-        }).observe(document.documentElement, { childList: true, subtree: true });
+            });
+            mainObserver.observe(document.documentElement, { childList: true, subtree: true });
+            document.querySelectorAll('video').forEach(relayVideoEvents);
+        };
+
+        startMainObserver();
 
         // Also relay commands from parent → video
         window.addEventListener('message', (e) => {
@@ -383,21 +425,45 @@
     (function setupIframeBridge() {
         let proxyVideo = null;
         let bridgedIframe = null; // the <iframe> element in this page's DOM
+        let heartbeatTimeout = null;
+
+        const handleHeartbeatLoss = () => {
+            window.YPP.Utils.log('Iframe heartbeat lost. Connection reset.', 'Bridge', 'warn');
+            if (proxyVideo && proxyVideo._internalState) proxyVideo._internalState.isConnected = false;
+            bridgedIframe = null;
+        };
 
         const sendCommand = (cmd, value) => {
             // Find the iframe to post commands to
-            if (!bridgedIframe) {
-                // Try to find an iframe that has a cross-origin video source
-                bridgedIframe = Array.from(document.querySelectorAll('iframe')).find(f => {
-                    try { return !f.contentDocument; } catch { return true; } // cross-origin = no access
-                });
-            }
-            bridgedIframe?.contentWindow?.postMessage({ ypp: true, type: 'iframe-video-command', cmd, value }, '*');
+            if (!bridgedIframe) return; // Only post to authenticated iframe
+            bridgedIframe.contentWindow?.postMessage({ ypp: true, type: 'iframe-video-command', cmd, value }, '*');
         };
 
         window.addEventListener('message', (e) => {
             if (!e.data?.ypp || e.data.type !== 'iframe-video-event') return;
-            const { event: evtType, state } = e.data;
+
+            // Security & Targeting: Only accept events from the verified bridged iframe
+            if (bridgedIframe && e.source !== bridgedIframe.contentWindow) return;
+            if (!bridgedIframe) {
+                bridgedIframe = Array.from(document.querySelectorAll('iframe')).find(f => f.contentWindow === e.source);
+                if (!bridgedIframe) return; // Ignore spoofed messages
+                window.YPP.Utils.log('Bridged to new cross-origin iframe', 'Bridge');
+            }
+
+            const { event: evtType, state, capabilities } = e.data;
+
+            // Capabilities handling
+            if (capabilities && proxyVideo) {
+                const capsChanged = JSON.stringify(proxyVideo._capabilities) !== JSON.stringify(capabilities);
+                proxyVideo._capabilities = capabilities;
+                if (capsChanged && bar._globalBarUI) {
+                    bar._globalBarUI.updateButtonVisibility();
+                }
+            }
+
+            // Heartbeat processing
+            clearTimeout(heartbeatTimeout);
+            heartbeatTimeout = setTimeout(handleHeartbeatLoss, 3500);
 
             // Create a proxy video object the first time we hear from the iframe
             if (!proxyVideo) {

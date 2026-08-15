@@ -120,17 +120,29 @@ export class GlobalBarUI {
             if (el) el.style.display = show !== false ? '' : 'none';
         };
 
+        const primary = this._currentPrimaryVideo || this._getPrimaryVideo();
+        
+        let capPip = true;
+        let capFs = true;
+        
+        if (primary && primary._capabilities) {
+             capPip = primary._capabilities.pip !== false;
+             capFs = primary._capabilities.fullscreen !== false;
+        } else if (primary && !primary._proxy) {
+             capPip = document.pictureInPictureEnabled !== false;
+             capFs = document.fullscreenEnabled !== false;
+        }
+
         setDisp('#ypp-gpb-play', t.gpb_showPlay);
         setDisp('#ypp-gpb-time', t.gpb_showTime);
         setDisp('#ypp-gpb-mute', t.gpb_showVolume);
         setDisp('#ypp-gpb-vol-wrap', t.gpb_showVolume);
         setDisp('#ypp-gpb-speed', t.gpb_showSpeed);
         setDisp('#ypp-gpb-loop', t.gpb_showLoop);
-        setDisp('#ypp-gpb-pip', t.gpb_showPip);
-        setDisp('#ypp-gpb-fullscreen', t.gpb_showFullscreen);
+        setDisp('#ypp-gpb-pip', t.gpb_showPip !== false && capPip);
+        setDisp('#ypp-gpb-fullscreen', t.gpb_showFullscreen !== false && capFs);
 
         // Update Sub-features (Domain, Vol Booster, Filters)
-        const primary = this._currentPrimaryVideo || this._getPrimaryVideo();
         if (primary) {
             this._syncSubFeatureButtons(primary);
         }
