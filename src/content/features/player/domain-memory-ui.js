@@ -139,7 +139,13 @@ export class DomainMemoryUI {
                 border: 1px solid rgba(167, 139, 250, 0.4);
                 box-shadow: 0 2px 8px rgba(167, 139, 250, 0.25);
             }
-            .ypp-scope-tab:hover:not(.active-domain):not(.active-series) {
+            .ypp-scope-tab.active-host {
+                background: rgba(245, 158, 11, 0.2);
+                color: #fcd34d;
+                border: 1px solid rgba(245, 158, 11, 0.4);
+                box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+            }
+            .ypp-scope-tab:hover:not(.active-domain):not(.active-series):not(.active-host) {
                 background: rgba(255, 255, 255, 0.08);
                 color: #fff;
             }
@@ -184,6 +190,10 @@ export class DomainMemoryUI {
             .ypp-domain-stat-value.active-series {
                 background: rgba(167, 139, 250, 0.18);
                 color: #c4b5fd;
+            }
+            .ypp-domain-stat-value.active-host {
+                background: rgba(245, 158, 11, 0.18);
+                color: #fcd34d;
             }
             .ypp-domain-switch-wrap {
                 display: flex;
@@ -278,10 +288,16 @@ export class DomainMemoryUI {
         });
 
         const isSeriesMode = ctx._scopeMode === 'series';
+        const isHostMode = ctx._scopeMode === 'host';
         const faviconUrl = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(ctx._domain)}&sz=32`;
-        const accentColor = isSeriesMode ? '#a78bfa' : '#10b981';
+        const accentColor = isHostMode ? '#fcd34d' : (isSeriesMode ? '#a78bfa' : '#10b981');
         const savedName = ctx._domainProfile?.name;
-        const titleLabel = savedName ? savedName : (isSeriesMode ? 'Series Profile' : `${ctx._domain}`);
+        const defaultTitle = isHostMode ? 'Server Profile' : (isSeriesMode ? 'Series Profile' : `${ctx._domain}`);
+        const titleLabel = savedName ? savedName : defaultTitle;
+
+        const video = ctx._getVideo();
+        const activeHost = video?._capabilities?.host || ctx._domain;
+        const subtext = isHostMode ? `Server: ${activeHost}` : (isSeriesMode ? 'Series-level profile' : 'Site-wide profile');
 
         header.innerHTML = `
             <div style="display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0;">
@@ -295,7 +311,7 @@ export class DomainMemoryUI {
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
                         </button>
                     </div>
-                    <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px;">${isSeriesMode ? 'Series-level profile' : 'Site-wide profile'}</div>
+                    <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px;">${subtext}</div>
                 </div>
             </div>
             <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
@@ -361,20 +377,28 @@ export class DomainMemoryUI {
             flexDirection: 'column'
         });
 
-        // ── 1. Scope Selector Toggle (Domain vs Series) ──
+        // ── 1. Scope Selector Toggle (Domain vs Series vs Host) ──
         const scopeWrap = document.createElement('div');
         scopeWrap.className = 'ypp-domain-scope-toggle';
+        scopeWrap.style.gridTemplateColumns = '1fr 1fr 1fr';
+        
         const isSeriesMode = ctx._scopeMode === 'series';
+        const isHostMode = ctx._scopeMode === 'host';
+        const isDomainMode = !isSeriesMode && !isHostMode;
 
         const domainSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
         const seriesSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7l-5 3V8l5 3zm5-3l-5 3 5 3V9z"/></svg>`;
+        const hostSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H5v-2h9v2zm5-4H5V6h14v8z"/></svg>`;
 
         scopeWrap.innerHTML = `
-            <button class="ypp-scope-tab ${!isSeriesMode ? 'active-domain' : ''}" data-scope="domain">
-                ${domainSvg} Entire Site
+            <button class="ypp-scope-tab ${isDomainMode ? 'active-domain' : ''}" data-scope="domain">
+                ${domainSvg} Site
             </button>
             <button class="ypp-scope-tab ${isSeriesMode ? 'active-series' : ''}" data-scope="series">
-                ${seriesSvg} This Series
+                ${seriesSvg} Series
+            </button>
+            <button class="ypp-scope-tab ${isHostMode ? 'active-host' : ''}" data-scope="host">
+                ${hostSvg} Server
             </button>
         `;
         scopeWrap.querySelectorAll('.ypp-scope-tab').forEach(btn => {
@@ -391,9 +415,10 @@ export class DomainMemoryUI {
 
         // ── 2. Auto-Remember Toggle Box ──
         const isEnabled = ctx._isRemembering !== false;
-        const scopeDesc = isSeriesMode
-            ? 'Remembers presets for this series only'
-            : `Remembers presets across all of ${ctx._domain}`;
+        let scopeDesc = '';
+        if (isSeriesMode) scopeDesc = 'Remembers presets for this series only';
+        else if (isHostMode) scopeDesc = 'Remembers presets globally for this video host';
+        else scopeDesc = `Remembers presets across all of ${ctx._domain}`;
 
         const toggleWrap = document.createElement('div');
         toggleWrap.className = 'ypp-domain-switch-wrap';
@@ -595,7 +620,56 @@ export class DomainMemoryUI {
 
         ioRow.append(copyBtn, pasteBtn);
 
-        // ── 3. Reset Button ──
+        // ── 3. Bypass Button ──
+        const bypassBtn = document.createElement('button');
+        bypassBtn.className = 'ypp-domain-btn-action';
+        bypassBtn.style.userSelect = 'none'; // Prevent text selection on hold
+        bypassBtn.innerHTML = `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            Hold to Bypass Effects
+        `;
+        let bypassActive = false;
+        const enableBypass = () => {
+            if (bypassActive) return;
+            bypassActive = true;
+            bypassBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+            bypassBtn.style.color = '#fca5a5';
+            
+            // Bypass logic
+            if (ctx._instances['videoFilters']) {
+                const vf = ctx._instances['videoFilters'];
+                vf.currentFilterIndex = 0;
+                vf.filterIntensity = 100;
+                vf.filterAdjustments = {
+                    brightness: 100, contrast: 100, saturate: 100, hueRotate: 0,
+                    sepia: 0, grayscale: 0, invert: 0, blur: 0, opacity: 100,
+                    dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0,
+                    vibrance: 100, highlights: 0, shadows: 0, vignette: 0,
+                    exposure: 0, tint: 0, fade: 0, noiseReduction: 0
+                };
+                if (video) vf._applyComputedFilter(video);
+            }
+            if (ctx._instances['volumeBoost']) {
+                const vb = ctx._instances['volumeBoost'];
+                vb.setGain?.(1);
+                vb.setBalance?.(0);
+                vb.setEQ?.([0,0,0,0,0,0,0,0,0,0]);
+            }
+        };
+
+        const disableBypass = () => {
+            if (!bypassActive) return;
+            bypassActive = false;
+            bypassBtn.style.background = '';
+            bypassBtn.style.color = '';
+            if (video) ctx.restoreProfile(video, false);
+        };
+
+        bypassBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); enableBypass(); });
+        bypassBtn.addEventListener('pointerup', (e) => { e.preventDefault(); disableBypass(); });
+        bypassBtn.addEventListener('pointerleave', () => disableBypass());
+
+        // ── 4. Reset Button ──
         const resetBtn = document.createElement('button');
         resetBtn.className = 'ypp-domain-btn-action ypp-domain-btn-danger';
         const displayLabel = ctx._scopeMode === 'series' ? 'Series' : ctx._domain;
@@ -617,8 +691,8 @@ export class DomainMemoryUI {
         exportAllBtn.onclick = async () => {
             try {
                 if (chrome?.storage?.local) {
-                    const data = await chrome.storage.local.get('domainMemoryProfiles');
-                    const jsonStr = JSON.stringify(data.domainMemoryProfiles || {}, null, 2);
+                    const data = await chrome.storage.local.get('ypp_domain_profiles'); // Use the correct key
+                    const jsonStr = JSON.stringify(data.ypp_domain_profiles || {}, null, 2);
                     const blob = new Blob([jsonStr], { type: 'application/json' });
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
@@ -632,7 +706,11 @@ export class DomainMemoryUI {
             }
         };
 
-        footer.append(saveBtn, ioRow, exportAllBtn, resetBtn);
+        const bottomRow = document.createElement('div');
+        bottomRow.className = 'ypp-domain-btn-row';
+        bottomRow.append(exportAllBtn, resetBtn);
+
+        footer.append(saveBtn, ioRow, bypassBtn, bottomRow);
         return footer;
     }
 

@@ -107,6 +107,12 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
         if (this._scopeMode === 'series') {
             return this.getSeriesPath();
         }
+        if (this._scopeMode === 'host') {
+            const video = this._getVideo();
+            if (video && video._capabilities && video._capabilities.host) {
+                return video._capabilities.host;
+            }
+        }
         return this._domain;
     }
 
@@ -529,7 +535,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
      * Improvement 2: Persist scope pref in a dedicated key.
      */
     async setScopeMode(mode) {
-        if (mode !== 'domain' && mode !== 'series') return;
+        if (mode !== 'domain' && mode !== 'series' && mode !== 'host') return;
         this._scopeMode = mode;
         // Save pref first
         await this._saveScopePref();
@@ -592,6 +598,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
             this._updateButtonStatus();
         } catch (_) {}
     }
+
 
     /**
      * Exports current scope profile as a JSON string
