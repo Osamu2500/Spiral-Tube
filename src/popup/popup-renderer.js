@@ -1010,12 +1010,14 @@ function expandParentCardWithChildren(parentEl, childItems, state) {
 function buildSection(section, state) {
     const sec = document.createElement('div');
     sec.className = 'settings-section';
+    sec.setAttribute('draggable', 'true');
 
     // Header
     const hdr = document.createElement('div');
     hdr.className = 'section-header';
     hdr.innerHTML = `
         <div class="section-title-wrap">
+            <span class="drag-handle" title="Drag to reorder">&#8942;&#8942;</span>
             <div class="section-text-wrap">
                 <div class="section-title">
                     ${section.icon ? `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">${section.icon}</svg>` : ''}

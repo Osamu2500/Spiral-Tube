@@ -70,7 +70,7 @@ export const getPopupSchema = (t) => [
                 title: t('visibility_routing'),
                 icon: ICONS.eyeSlash,
                 items: [
-                    { type:'toggle', id:'redirectShorts', class:'span-4', label: t('redirect_shorts'),    desc: t('play_in_normal_ui'),        icon:ICONS.home },
+                    { type:'toggle', id:'redirectShorts', label: t('redirect_shorts'),    desc: t('play_in_normal_ui'),        icon:ICONS.home },
                 ]
             },
             {
@@ -127,7 +127,7 @@ export const getPopupSchema = (t) => [
 
             // Section 4: Sidebar Features
             {
-                title: t('sidebar_features') || 'Sidebar Features',
+                title: t('sidebar_features'),
                 icon: ICONS.sidebar,
                 items: [
                     { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar, default: true },
@@ -190,7 +190,7 @@ export const getPopupSchema = (t) => [
                 title: t('speed_controls'),
                 icon: ICONS.speed,
                 items: [
-                    { type:'toggle', id:'enableCustomSpeed', class:'span-2', label: t('enable_controller'), desc: t('master_toggle'), icon:ICONS.speed },
+                    { type:'toggle', id:'enableCustomSpeed', label: t('enable_controller'), desc: t('master_toggle'), icon:ICONS.speed },
                     { type:'toggle', id:'speedBooster', label: t('10x_speed_booster'), desc: t('unlock_native_speed_up_to_10x'), icon:ICONS.speedBooster },
                     { type:'toggle', id:'vscForceSpeed',    label: t('force_saved_speed'), desc: t('prevent_players_from_overriding'), icon:ICONS.forceSpeed },
                 ]
@@ -245,7 +245,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
                     { type:'toggle', id:'minimalMode',     label: t('minimalist_chrome'), desc: t('strip_non_essential_page_chrome'), icon:ICONS.minimal },
                     { type:'toggle', id:'seamlessMode',    label: t('seamless_mode'),   desc: t('sidebar_comments'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="seamlessModeGridColsUI" min="1" max="10" step="1" style="width:100%;"><span id="seamlessModeGridColsValue" style="font-size:10px; min-width:20px; opacity:0.7;">4</span></div><input type="hidden" id="seamlessModeGridCols" value="4" />` },
-                    { type:'toggle', id:'audioModeEnabled', class:'span-2', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
+                    { type:'toggle', id:'audioModeEnabled', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
                 ]
             }
         ]
@@ -377,14 +377,16 @@ export const getPopupSchema = (t) => [
 
             {
                 title: t('filter_bar_layout'),
+                icon: ICONS.filterMode,
                 items: [
-                    { type:'toggle', id:'enableFilterBar', class:'span-2',     label: t('enable_filter_bar'), desc: t('show_duration_date_filters'), icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
+                    { type:'toggle', id:'enableFilterBar', label: t('enable_filter_bar'), desc: t('show_duration_date_filters'), icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
                     { type:'toggle', id:'ff_opt_multiselect', label: t('multi_select_chips'), desc: t('select_multiple_filters_at_once'), icon:P('M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z') },
                     { type:'toggle', id:'ff_search_visible', label: t('show_search_bar'), desc: t('search_feed_by_title'), icon:ICONS.searchBar }
                 ]
             },
             {
                 title: t('filter_chips_content'),
+                icon: ICONS.title,
                 items: [
                     { type:'toggle', id:'ff_video_visible', label: t('video') },
                     { type:'toggle', id:'ff_shorts_visible', label: t('shorts') },
@@ -392,11 +394,12 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'ff_streamed_visible', label: t('streamed') },
                     { type:'toggle', id:'ff_scheduled_visible', label: t('scheduled') },
                     { type:'toggle', id:'ff_posts_visible', label: t('posts') },
-                    { type:'toggle', id:'ff_playlist_visible', class:'span-2', label: t('playlist') }
+                    { type:'toggle', id:'ff_playlist_visible', label: t('playlist') }
                 ]
             },
             {
                 title: t('filter_chips_status'),
+                icon: ICONS.watched,
                 items: [
                     { type:'toggle', id:'ff_unwatched_visible', label: t('unwatched') },
                     { type:'toggle', id:'ff_watched_visible', label: t('watched') },
@@ -406,8 +409,9 @@ export const getPopupSchema = (t) => [
             },
             {
                 title: t('layout_tools'),
+                icon: ICONS.grid,
                 items: [
-                    { type:'toggle', id:'twoColumnSubscriptions', class:'span-2', label: t('twoColumnSubscriptions'), desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
+                    { type:'toggle', id:'twoColumnSubscriptions', label: t('twoColumnSubscriptions'), desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                     { type:'toggle', id:'enableChannelHealth', class:'span-2', label: t('channel_health'),  desc: t('scan_for_dead_channels'),        icon:ICONS.compressor, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="channelColumnsUI" min="2" max="10" step="1" style="width:100%;"><span id="channelColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="channelColumns" value="5" />` },
                     { type:'range', id:'subscriptionsColumns', class:'span-2', label: t('feed_grid_columns'), desc: t('grid_layout_size_for_subs'), icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), min: 1, max: 8, step: 1, unit: '' }
                 ]
@@ -424,16 +428,18 @@ export const getPopupSchema = (t) => [
         sections: [
             {
                 title: t('watch_time'),
+                icon: ICONS.clock,
                 items: [
                     { type:'custom', id:'historyWidget', slot:'history-widget' },
-                    { type:'toggle', id:'watchTimeAlert', class:'span-2', label: t('watch_time_alert'), desc: t('notify_when_limit_reached'), icon:ICONS.wheel },
+                    { type:'toggle', id:'watchTimeAlert', label: t('watch_time_alert'), desc: t('notify_when_limit_reached'), icon:ICONS.clock },
                     { type:'range',  id:'watchTimeAlertHours', label: t('daily_limit'), unit:'h', min:1, max:12, step:1, parent: 'watchTimeAlert' },
-                    { type:'toggle', id:'intentionalDelay', class:'span-2', label: t('intentional_delay'), desc: t('add_a_pause_before_videos_start'), icon:ICONS.wheel },
+                    { type:'toggle', id:'intentionalDelay', label: t('intentional_delay'), desc: t('add_a_pause_before_videos_start'), icon:ICONS.pause },
                     { type:'range',  id:'intentionalDelayTime', label: t('delay_duration'), unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' }
                 ]
             },
             {
                 title: t('tracking_resume'),
+                icon: ICONS.resume,
                 items: [
                     { type:'toggle', id:'smartHistory', label: t('smart_history_tracker'), desc: t('track_individual_video_progress_watch_time'), icon:ICONS.smartHistory },
                     { type:'toggle', id:'autoResume', label: t('auto_resume_videos'), desc: t('automatically_resume_from_last_watched_timestamp'), icon:ICONS.wheel },
@@ -444,10 +450,11 @@ export const getPopupSchema = (t) => [
             },
             {
                 title: t('history_interface'),
+                icon: ICONS.smartHistory,
                 items: [
                     { type:'toggle', id:'playlistDuration', label: t('duration_calc'), desc: t('show_total_length'), icon:ICONS.wheel },
                     { type:'toggle', id:'reversePlaylist', label: t('reverse_playlist'), desc: t('toggle_direction'), icon:ICONS.reversePlay },
-                    { type:'toggle', id:'historyRedesign', class:'span-2', label: t('history_redesign'), desc: t('new_history_layout'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="historyColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="historyColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="historyColumns" value="5" />` }
+                    { type:'toggle', id:'historyRedesign', label: t('history_redesign'), desc: t('new_history_layout'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="historyColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="historyColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="historyColumns" value="5" />` }
                 ]
             }
         ]
@@ -474,6 +481,7 @@ export const getPopupSchema = (t) => [
         sections: [
             {
                 title: t('global_player_bar'),
+                icon: ICONS.globalBar,
                 items: [
                     { type:'toggle', id:'enableGlobalPlayerBar', label: t('global_player_bar'), desc: t('enable_on_external_sites'), icon:ICONS.globalBar, slot:'globalPlayerBarOptions', style: 'grid-column: 1 / -1;' },
                     { type:'custom', id:'global_player_bar_blocklist', slot:'global_player_bar_blocklist', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' }
@@ -500,6 +508,7 @@ export const getPopupSchema = (t) => [
         sections: [
             {
                 title: t('watch_page_hotkeys'),
+                icon: ICONS.keyboard,
                 items: [
                     { type:'toggle', id:'keyboardShortcuts', class:'span-4', label: t('enable_hotkeys'), icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
                     { type:'custom', id:'advanced_shortcuts_manager', slot:'advanced_shortcuts_manager', class: 'span-4' },
@@ -517,6 +526,7 @@ export const getPopupSchema = (t) => [
         custom: false, sections: [
             {
                 title: t('lang_support_title'),
+                icon: ICONS.title,
                 items: [
                     { 
                         type:'select', 
@@ -538,6 +548,7 @@ export const getPopupSchema = (t) => [
             {
                 title: t('api_integrations'),
                 subtitle: 'Third-party service connections',
+                icon: ICONS.settingsSync,
                 items: [
                     { type:'toggle', id:'returnYouTubeDislike', label: t('return_youtube_dislike'), desc: t('restore_dislike_count_via_ryd_api'), icon:P('M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17') },
                     { type:'toggle', id:'adSkipper',            label: t('ad_skipper'),             desc: t('skip_video_ads_automatically'),   icon:P('M5 4l10 8-10 8V4z M19 5v14') },

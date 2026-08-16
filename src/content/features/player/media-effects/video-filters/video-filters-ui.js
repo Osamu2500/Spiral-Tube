@@ -892,6 +892,11 @@ export class VideoFiltersUI {
             tint:       `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10m0-2a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8z"/></svg>`,
             fade:       `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3H3v18h2V3zm4 0v18h2V3H9zm4 0v18h2V3h-2zm4 0v18h2V3h-2z"/></svg>`,
             noiseReduce:`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`,
+            aberration: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-12h-2v4h2V8zm0 6h-2v2h2v-2z"/></svg>`,
+            bloom:      `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5L12 2z"/></svg>`,
+            scanlines:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v2H2zm0 6h20v2H2zm0 6h20v2H2z"/></svg>`,
+            letterbox:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v4H2zm0 12h20v4H2z"/></svg>`,
+            vhs:        `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 9H8v-2h4v2zm0 4H8v-2h4v2zm4-4h-2v-2h2v2zm0 4h-2v-2h2v2z"/></svg>`
         };
 
         // ── Section icon SVGs ──
@@ -899,6 +904,7 @@ export class VideoFiltersUI {
             exposure: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
             color:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5" fill="currentColor" opacity="0.9"/><circle cx="17.5" cy="10.5" r="2.5" fill="currentColor" opacity="0.55"/><circle cx="8.5" cy="7" r="2.5" fill="currentColor" opacity="0.7"/><path d="M12 22C6.5 22 2 17.5 2 12A10 10 0 0 1 12 2c0 2.76 2.24 5 5 5a5 5 0 0 1 5 5c0 5.52-4.48 10-10 10z"/></svg>`,
             effects:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+            stylized: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22l14-14M16 2l6 6M2 16l6 6"/></svg>`,
             other:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>`,
         };
 
@@ -940,6 +946,16 @@ export class VideoFiltersUI {
                 ]
             },
             {
+                id: 'stylized', label: 'Stylized', open: true,
+                sliders: [
+                    { id: 'aberration',   label: 'Aberration',     svgKey: 'aberration',  min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'bloom',        label: 'Bloom',          svgKey: 'bloom',       min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'scanlines',    label: 'Scanlines',      svgKey: 'scanlines',   min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'letterbox',    label: 'Letterbox',      svgKey: 'letterbox',   min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'vhs',          label: 'VHS Glitch',     svgKey: 'vhs',         min: 0,   max: 100, def: 0,   unit: '%' },
+                ]
+            },
+            {
                 id: 'other', label: 'Other', open: true,
                 sliders: [
                     { id: 'invert',      label: 'Invert',          svgKey: 'invert',      min: 0,   max: 100, def: 0,   unit: '%' },
@@ -949,7 +965,7 @@ export class VideoFiltersUI {
         ];
 
         // Ensure new adjustment keys are initialized
-        ['temperature','vibrance','highlights','shadows','vignette','exposure','tint','fade','noiseReduction'].forEach(k => {
+        ['temperature','vibrance','highlights','shadows','vignette','exposure','tint','fade','noiseReduction','aberration','bloom','scanlines','letterbox','vhs'].forEach(k => {
             if (ctx.filterAdjustments[k] === undefined) {
                 ctx.filterAdjustments[k] = (k === 'vibrance') ? 100 : 0;
             }

@@ -91,6 +91,14 @@ export class VideoFiltersOverlay {
       overlay.style.pointerEvents = 'none';
     }
 
+    const scanlines = ctx.filterAdjustments?.scanlines || 0;
+    if (scanlines > 0) {
+      const existingBg = overlay.style.backgroundImage && overlay.style.backgroundImage !== 'none' ? overlay.style.backgroundImage + ', ' : '';
+      const opacity = scanlines / 100;
+      overlay.style.backgroundImage = existingBg + `repeating-linear-gradient(0deg, rgba(0,0,0,${opacity * 0.4}) 0px, rgba(0,0,0,${opacity * 0.4}) 1px, transparent 1px, transparent 3px)`;
+      overlay.style.pointerEvents = 'none';
+    }
+
     if (type === 'nightvision') {
       overlay.style.backgroundImage = `
                 radial-gradient(circle, transparent 40%, rgba(0, 30, 0, 0.8) 100%),
@@ -658,6 +666,94 @@ export class VideoFiltersOverlay {
             </defs>
         `;
     document.body.appendChild(svg);
+  }
+
+  static injectSVGAberration(intensity) {
+    if (!document.getElementById('ypp-svg-aberration')) {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+        svg.innerHTML = `
+            <defs>
+                <filter id="ypp-svg-aberration" color-interpolation-filters="sRGB">
+                    <feOffset in="SourceGraphic" dx="0" dy="0" result="red" id="ypp-aber-r-offset" />
+                    <feOffset in="SourceGraphic" dx="0" dy="0" result="blue" id="ypp-aber-b-offset" />
+                    <feColorMatrix in="red" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red-only" />
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green-only" />
+                    <feColorMatrix in="blue" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue-only" />
+                    <feBlend mode="screen" in="red-only" in2="green-only" result="red-green" />
+                    <feBlend mode="screen" in="red-green" in2="blue-only" />
+                </filter>
+            </defs>
+        `;
+        document.body.appendChild(svg);
+    }
+    const rOffset = document.getElementById('ypp-aber-r-offset');
+    const bOffset = document.getElementById('ypp-aber-b-offset');
+    if (rOffset && bOffset) {
+        const px = (intensity / 100) * 8; // Max 8px shift
+        rOffset.setAttribute('dx', -px);
+        bOffset.setAttribute('dx', px);
+    }
+  }
+
+  static injectSVGBloom(intensity) {
+    if (!document.getElementById('ypp-svg-bloom')) {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+        svg.innerHTML = `
+            <defs>
+                <filter id="ypp-svg-bloom" color-interpolation-filters="sRGB">
+                    <!-- Extract Highlights -->
+                    <feColorMatrix type="matrix" values="
+                        1 0 0 0 -0.5
+                        0 1 0 0 -0.5
+                        0 0 1 0 -0.5
+                        0 0 0 1 0" in="SourceGraphic" result="high" />
+                    <feGaussianBlur stdDeviation="8" in="high" result="glow" id="ypp-bloom-blur" />
+                    <feComposite in="SourceGraphic" in2="glow" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" id="ypp-bloom-comp" />
+                </filter>
+            </defs>
+        `;
+        document.body.appendChild(svg);
+    }
+    const blur = document.getElementById('ypp-bloom-blur');
+    const comp = document.getElementById('ypp-bloom-comp');
+    if (blur && comp) {
+        blur.setAttribute('stdDeviation', 4 + (intensity / 100) * 12);
+        comp.setAttribute('k3', (intensity / 100) * 2.5); // Boost glow intensity
+    }
+  }
+
+  static injectSVGVHS(intensity) {
+    if (!document.getElementById('ypp-svg-vhs')) {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
+        svg.innerHTML = `
+            <defs>
+                <filter id="ypp-svg-vhs" color-interpolation-filters="sRGB">
+                    <!-- Horizontal color bleeding -->
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4 0" result="blur" id="ypp-vhs-blur" />
+                    <feOffset in="blur" dx="2" dy="0" result="offset" id="ypp-vhs-offset" />
+                    <!-- Soften colors slightly, mix with sharp luma (approximation using composite) -->
+                    <feComposite in="offset" in2="SourceGraphic" operator="arithmetic" k1="0" k2="0.6" k3="0.6" k4="0" id="ypp-vhs-comp" />
+                </filter>
+            </defs>
+        `;
+        document.body.appendChild(svg);
+    }
+    const blur = document.getElementById('ypp-vhs-blur');
+    const offset = document.getElementById('ypp-vhs-offset');
+    const comp = document.getElementById('ypp-vhs-comp');
+    if (blur && offset && comp) {
+        const amt = intensity / 100;
+        blur.setAttribute('stdDeviation', `${amt * 10} 0`);
+        offset.setAttribute('dx', amt * 5);
+        comp.setAttribute('k2', 0.2 + amt * 0.6);
+        comp.setAttribute('k3', 1.0 - amt * 0.4);
+    }
   }
 
   static _pendingDynamicUpdate = null;

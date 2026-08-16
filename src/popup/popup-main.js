@@ -810,8 +810,8 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                 }
 
                 if (key === 'extensionLanguage' && el.value) {
-                    // Reload popup instantly to apply new language without complex state management
-                    setTimeout(() => window.location.reload(), 100);
+                    // Wait 500ms to allow saveSettings() queue to flush before reloading
+                    setTimeout(() => window.location.reload(), 500);
                 }
 
                 if (key === 'youtubePageTheme' && el.value) {
@@ -1001,6 +1001,8 @@ const initApp = async () => {
 
         // 1. v3.1: Render schema-driven tabs before settings hydration
         renderSchema(document, state, t);
+        UI.initDragAndDrop(document);
+
 
         // 1.5 Initialize State (cache DOM elements)
         initStorage(document);

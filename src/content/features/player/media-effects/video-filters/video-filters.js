@@ -21,7 +21,9 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             dehaze: 0, clarity: 0, grain: 0, sharpness: 0, temperature: 0,
             vibrance: 100, highlights: 0, shadows: 0, vignette: 0,
             // V2 new adjustments
-            exposure: 0, tint: 0, fade: 0, noiseReduction: 0
+            exposure: 0, tint: 0, fade: 0, noiseReduction: 0,
+            // V3 Stylized adjustments
+            aberration: 0, bloom: 0, scanlines: 0, letterbox: 0, vhs: 0
         };
         
         this._filterOverlay = null;
@@ -195,6 +197,19 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             finalFilter += ` url(#ypp-svg-sharpness)`;
         }
 
+        if (adj.aberration > 0) {
+            if (!video._proxy) window.YPP.features.VideoFiltersOverlay.injectSVGAberration(adj.aberration);
+            finalFilter += ` url(#ypp-svg-aberration)`;
+        }
+        if (adj.bloom > 0) {
+            if (!video._proxy) window.YPP.features.VideoFiltersOverlay.injectSVGBloom(adj.bloom);
+            finalFilter += ` url(#ypp-svg-bloom)`;
+        }
+        if (adj.vhs > 0) {
+            if (!video._proxy) window.YPP.features.VideoFiltersOverlay.injectSVGVHS(adj.vhs);
+            finalFilter += ` url(#ypp-svg-vhs)`;
+        }
+
         if (video._proxy) video.manageSVGFilters(finalFilter);
         else window.YPP.features.VideoFiltersOverlay.manageSVGFilters(finalFilter);
 
@@ -207,6 +222,16 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         video.style.setProperty('will-change', 'filter', 'important');
         video.style.setProperty('transform', 'translateZ(0)', 'important');
         video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
+        
+        if (adj.letterbox > 0) {
+            const lb = adj.letterbox * 0.3; // scale 0-100 to 0-30%
+            video.style.setProperty('clip-path', `inset(${lb}% 0 ${lb}% 0)`, 'important');
+            video.style.setProperty('--ypp-video-clip', `inset(${lb}% 0 ${lb}% 0)`);
+        } else {
+            video.style.removeProperty('clip-path');
+            video.style.removeProperty('--ypp-video-clip');
+        }
+
         // Re-apply overlay elements
         this._syncOverlays(preset, adj, video);
         
@@ -254,12 +279,24 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 const hasSVGCurves = this._applySVGCurves(baseValues, adj);
                 let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
                 if (adj.sharpness !== 0) finalFilter += ` url(#ypp-svg-sharpness)`;
+                if (adj.aberration > 0) finalFilter += ` url(#ypp-svg-aberration)`;
+                if (adj.bloom > 0) finalFilter += ` url(#ypp-svg-bloom)`;
+                if (adj.vhs > 0) finalFilter += ` url(#ypp-svg-vhs)`;
                 
                 video.style.setProperty('--ypp-video-filter', finalFilter);
                 video.style.setProperty('filter', finalFilter, 'important');
                 video.style.setProperty('will-change', 'filter', 'important');
                 video.style.setProperty('transform', 'translateZ(0)', 'important');
                 video.style.setProperty('transition', 'filter 0.35s ease, -webkit-filter 0.35s ease', 'important');
+
+                if (adj.letterbox > 0) {
+                    const lb = adj.letterbox * 0.3;
+                    video.style.setProperty('clip-path', `inset(${lb}% 0 ${lb}% 0)`, 'important');
+                    video.style.setProperty('--ypp-video-clip', `inset(${lb}% 0 ${lb}% 0)`);
+                } else {
+                    video.style.removeProperty('clip-path');
+                    video.style.removeProperty('--ypp-video-clip');
+                }
             }
         });
         
@@ -274,7 +311,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                adj.exposure !== 0 || adj.shadows !== 0 || adj.highlights !== 0 || 
                adj.temperature !== 0 || adj.tint !== 0 || adj.hueRotate !== 0 || 
                adj.sepia > 0 || adj.grayscale > 0 || adj.invert > 0 || 
-               adj.fade > 0 || adj.blur > 0 || adj.noiseReduction > 0 || adj.sharpness !== 0;
+               adj.fade > 0 || adj.blur > 0 || adj.noiseReduction > 0 || adj.sharpness !== 0 ||
+               adj.aberration > 0 || adj.bloom > 0 || adj.scanlines > 0 || adj.letterbox > 0 || adj.vhs > 0;
     }
 
     _clearVideoFilters(video) {
@@ -290,6 +328,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         video.style.removeProperty('--ypp-video-filter');
         video.style.setProperty('filter', 'none', 'important'); // Fallback clear
         video.style.setProperty('opacity', '1', 'important');
+        video.style.removeProperty('clip-path');
+        video.style.removeProperty('--ypp-video-clip');
         window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
     }
 
@@ -361,8 +401,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
 
     _syncOverlays(preset, adj, video) {
         video = video || this._getVideo();
-        const overlayKey = `${this.currentFilterIndex}:${adj.grain}:${adj.vignette}`;
-        const needsOverlay = preset.overlay || adj.grain > 0 || adj.vignette > 0 || preset.name === 'Night Vision';
+        const overlayKey = `${this.currentFilterIndex}:${adj.grain}:${adj.vignette}:${adj.scanlines}`;
+        const needsOverlay = preset.overlay || adj.grain > 0 || adj.vignette > 0 || adj.scanlines > 0 || preset.name === 'Night Vision';
         const overlayChanged = this._lastOverlayKey !== overlayKey;
 
         if (!needsOverlay) {
@@ -374,7 +414,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             else window.YPP.features.VideoFiltersOverlay.removeOverlay(this);
             
             if (video && video._proxy) video.applyOverlay(preset.overlay, adj.grain);
-            else window.YPP.features.VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain);
+            else window.YPP.features.VideoFiltersOverlay.applyOverlay(this, preset.overlay, adj.grain, adj.scanlines, adj.vignette);
             
             this._lastOverlayKey = overlayKey;
         }
@@ -405,7 +445,12 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
             cinemaFilterExposure: 'exposure',
             cinemaFilterTint: 'tint',
             cinemaFilterFade: 'fade',
-            cinemaFilterNoiseReduction: 'noiseReduction'
+            cinemaFilterNoiseReduction: 'noiseReduction',
+            cinemaFilterAberration: 'aberration',
+            cinemaFilterBloom: 'bloom',
+            cinemaFilterScanlines: 'scanlines',
+            cinemaFilterLetterbox: 'letterbox',
+            cinemaFilterVhs: 'vhs'
         };
 
         let hasActiveFilter = false;

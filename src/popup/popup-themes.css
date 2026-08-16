@@ -2,8 +2,7 @@
 
 
 body.ypp-theme-liquid-glass .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -34,8 +33,7 @@ body.ypp-theme-cherry .nav-item.active svg {
     filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
 }
 body.ypp-theme-liquid-glass .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -54,16 +52,14 @@ body.ypp-theme-liquid-glass .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-crystal-glass .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-crystal-glass .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -82,16 +78,14 @@ body.ypp-theme-crystal-glass .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-glassmorphism .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-glassmorphism .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -110,16 +104,14 @@ body.ypp-theme-glassmorphism .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-nebula .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-nebula .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -138,16 +130,14 @@ body.ypp-theme-nebula .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-deepspace .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-deepspace .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -166,16 +156,14 @@ body.ypp-theme-deepspace .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-aurora .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-aurora .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -194,16 +182,14 @@ body.ypp-theme-aurora .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-hologram .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-hologram .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -222,16 +208,14 @@ body.ypp-theme-hologram .toggle-card:has(input:checked) {
 }
 
 body.ypp-theme-ice-blue .app-container {
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%);
   background: rgba(25, 25, 30, 0.2) !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 24px;
 }
 body.ypp-theme-ice-blue .toggle-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -384,7 +368,7 @@ body.ypp-theme-cyberpunk .app-container::after {
 }
 body.ypp-theme-cyberpunk .toggle-card {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border: 1px dashed rgba(255, 255, 255, 0.3); border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
   border-radius: 0;
   transition: all 0.15s steps(3);
 }
@@ -420,7 +404,7 @@ body.ypp-theme-outrun .app-container::after {
 }
 body.ypp-theme-outrun .toggle-card {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border: 1px dashed rgba(255, 255, 255, 0.3); border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
   border-radius: 0;
   transition: all 0.15s steps(3);
 }
@@ -456,7 +440,7 @@ body.ypp-theme-retrowave-green .app-container::after {
 }
 body.ypp-theme-retrowave-green .toggle-card {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border: 1px dashed rgba(255, 255, 255, 0.3); border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
   border-radius: 0;
   transition: all 0.15s steps(3);
 }
@@ -492,7 +476,7 @@ body.ypp-theme-terminalism .app-container::after {
 }
 body.ypp-theme-terminalism .toggle-card {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border: 1px dashed rgba(255, 255, 255, 0.3); border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
   border-radius: 0;
   transition: all 0.15s steps(3);
 }
@@ -528,7 +512,7 @@ body.ypp-theme-hacker .app-container::after {
 }
 body.ypp-theme-hacker .toggle-card {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border: 1px dashed rgba(255, 255, 255, 0.3); border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
   border-radius: 0;
   transition: all 0.15s steps(3);
 }
@@ -564,7 +548,7 @@ body.ypp-theme-technozen .app-container::after {
 }
 body.ypp-theme-technozen .toggle-card {
   background: rgba(0, 0, 0, 0.6);
-  border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
+  border: 1px dashed rgba(255, 255, 255, 0.3); border: 1px dashed color-mix(in srgb, var(--accent-primary) 40%, transparent);
   border-radius: 0;
   transition: all 0.15s steps(3);
 }
@@ -585,7 +569,7 @@ body.ypp-theme-nature .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-nature .toggle-card {
   border-radius: 20px;
@@ -600,7 +584,7 @@ body.ypp-theme-nature .toggle-card:hover {
 }
 body.ypp-theme-nature .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -609,7 +593,7 @@ body.ypp-theme-ocean .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-ocean .toggle-card {
   border-radius: 20px;
@@ -624,7 +608,7 @@ body.ypp-theme-ocean .toggle-card:hover {
 }
 body.ypp-theme-ocean .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -633,7 +617,7 @@ body.ypp-theme-forest .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-forest .toggle-card {
   border-radius: 20px;
@@ -648,7 +632,7 @@ body.ypp-theme-forest .toggle-card:hover {
 }
 body.ypp-theme-forest .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -657,7 +641,7 @@ body.ypp-theme-sunset .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-sunset .toggle-card {
   border-radius: 20px;
@@ -672,7 +656,7 @@ body.ypp-theme-sunset .toggle-card:hover {
 }
 body.ypp-theme-sunset .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -681,7 +665,7 @@ body.ypp-theme-blue-sky .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-blue-sky .toggle-card {
   border-radius: 20px;
@@ -696,7 +680,7 @@ body.ypp-theme-blue-sky .toggle-card:hover {
 }
 body.ypp-theme-blue-sky .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -705,7 +689,7 @@ body.ypp-theme-bloodmoon .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-bloodmoon .toggle-card {
   border-radius: 20px;
@@ -720,7 +704,7 @@ body.ypp-theme-bloodmoon .toggle-card:hover {
 }
 body.ypp-theme-bloodmoon .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -729,7 +713,7 @@ body.ypp-theme-cherry .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-cherry .toggle-card {
   border-radius: 20px;
@@ -744,7 +728,7 @@ body.ypp-theme-cherry .toggle-card:hover {
 }
 body.ypp-theme-cherry .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -753,7 +737,7 @@ body.ypp-theme-autumn .app-container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   background: rgba(20, 20, 20, 0.4) !important;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
 }
 body.ypp-theme-autumn .toggle-card {
   border-radius: 20px;
@@ -768,7 +752,7 @@ body.ypp-theme-autumn .toggle-card:hover {
 }
 body.ypp-theme-autumn .toggle-card:has(input:checked) {
   background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.3); border-color: color-mix(in srgb, var(--accent-primary) 50%, transparent);
   box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 20%, transparent), inset 0 0 12px color-mix(in srgb, var(--accent-primary) 10%, transparent);
 }
 
@@ -778,7 +762,7 @@ body.ypp-theme-coffee .app-container,
 body.ypp-theme-harry-potter .app-container {
   font-family: 'Georgia', 'Times New Roman', serif;
   background: rgba(30, 25, 20, 0.85) !important;
-  border: 2px solid color-mix(in srgb, var(--accent-primary) 50%, transparent);
+  border: 2px solid rgba(255, 255, 255, 0.3); border: 2px solid color-mix(in srgb, var(--accent-primary) 50%, transparent);
   border-radius: 8px;
   box-shadow: inset 0 0 40px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.6);
 }
@@ -850,7 +834,7 @@ body.ypp-theme-retro .toggle-card:active, body.ypp-theme-retro .toggle-card:has(
 /* Frutiger Aero */
 body.ypp-theme-frutiger-aero .app-container {
   background: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: inset 0 2px 6px rgba(255,255,255,0.9), 0 4px 16px rgba(18,168,221,0.2);
@@ -913,3 +897,51 @@ body.ypp-theme-brutalism .action-btn svg,
 body.ypp-theme-minimalism .action-btn svg {
   color: var(--text-1);
 }
+
+/* ─── Custom Thematic Component Shapes ─── */
+body.ypp-theme-ocean .toggle-card,
+body.ypp-theme-ocean .nav-item {
+  border-radius: 0 24px 24px 24px !important;
+}
+
+body.ypp-theme-nature .toggle-card,
+body.ypp-theme-nature .nav-item,
+body.ypp-theme-forest .toggle-card,
+body.ypp-theme-forest .nav-item {
+  border-radius: 4px 24px 4px 24px !important;
+}
+
+body.ypp-theme-blue-sky .toggle-card,
+body.ypp-theme-blue-sky .nav-item {
+  border-radius: 20px 20px 10px 10px !important;
+}
+
+body.ypp-theme-cherry .toggle-card,
+body.ypp-theme-cherry .nav-item {
+  border-radius: 24px 0 24px 24px !important;
+}
+
+body.ypp-theme-autumn .toggle-card,
+body.ypp-theme-autumn .nav-item {
+  transform: skewX(-2deg);
+  border-radius: 12px !important;
+}
+
+body.ypp-theme-bloodmoon .toggle-card,
+body.ypp-theme-bloodmoon .nav-item {
+  border-radius: 12px 0 12px 0 !important;
+}
+
+body.ypp-theme-ice-blue .toggle-card,
+body.ypp-theme-ice-blue .nav-item {
+  border-radius: 0 16px 0 16px !important;
+}
+
+body.ypp-theme-cyberpunk .toggle-card,
+body.ypp-theme-cyberpunk .nav-item,
+body.ypp-theme-outrun .toggle-card,
+body.ypp-theme-outrun .nav-item {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: 0 !important;
+}
+/* For clip-path elements, use filter drop-shadow instead of box-shadow for hover effects if needed, but existing box-shadow inside is fine */
