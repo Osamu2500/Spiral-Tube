@@ -515,6 +515,9 @@ body {
 }
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+.nav-item:active {
+  transform: scale(0.94);
   border-color: rgba(255, 255, 255, 0.06);
   color: var(--text-2);
   transform: translateY(-1px);
@@ -656,7 +659,7 @@ body {
   transform: translateY(6px);
   transition: opacity var(--med) var(--ease-smooth), transform var(--med) var(--ease-snap);
 }
-.tab-content.active { display: block; opacity: 1; transform: translateY(0); }
+.tab-content.active { display: block; opacity: 1; transform: translateY(0); animation: tab-enter 0.35s var(--ease-spring) both; }
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -686,7 +689,10 @@ body {
   background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
   border-radius: 16px;
   border: 1px solid transparent;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+.feature-card:active {
+  transform: scale(0.97);
   overflow: hidden;
 }
 .settings-section:hover {
@@ -911,6 +917,7 @@ body {
 .toggle input { opacity: 0; width: 0; height: 0; }
 .slider {
   position: absolute; inset: 0;
+  transition: all 0.4s var(--ease-spring);
   background: rgba(255, 255, 255, 0.1);
   border-radius: 99px;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -1269,11 +1276,11 @@ input[type="color"]::-webkit-color-swatch { border: 2px solid rgba(255,255,255,.
 
 /* ─── Entrance animation for sections ─── */
 @keyframes section-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(12px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .tab-content.active .settings-section {
-  animation: section-enter 0.28s var(--ease-snap) both;
+  animation: section-enter 0.4s var(--ease-spring) both;
 }
 .tab-content.active .settings-section:nth-child(1) { animation-delay: 0ms; }
 .tab-content.active .settings-section:nth-child(2) { animation-delay: 50ms; }
@@ -2275,3 +2282,59 @@ body.global-search-active .settings-section { margin-bottom: 24px; }
 .lang-flag-btn { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 11px; font-weight: 500; justify-content: flex-start; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); border-radius: 10px; transition: all 0.2s var(--ease-spring); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .lang-flag-btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); transform: translateY(-1px); }
 .lang-flag-btn.active { background: color-mix(in srgb, var(--accent-primary) 20%, transparent) !important; border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; box-shadow: 0 6px 16px color-mix(in srgb, var(--accent-primary) 45%, transparent) !important; color: #fff !important; }
+
+/* ─── Glow Button Animation ─── */
+.glow {
+  --glow-line-color: var(--accent-primary, #fff);
+  --glow-line-thickness: 2px;
+  --glow-line-length: 20;
+  --glow-blur-color: var(--accent-primary, #fff);
+  --glow-blur-size: 5px;
+  --animation-speed: 1200ms;
+  --container-offset: 60px;
+  position: relative;
+}
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+  z-index: 10;
+}
+.glow-blur, .glow-line {
+  width: calc(100% - var(--container-offset));
+  height: calc(100% - var(--container-offset));
+  x: calc(var(--container-offset) / 2);
+  y: calc(var(--container-offset) / 2);
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: var(--glow-line-length) calc(50 - var(--glow-line-length));
+}
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+.glow:is(:hover, :focus) .glow-blur, .glow:is(:hover, :focus) .glow-line {
+  stroke-dashoffset: -80px;
+  transition: stroke-dashoffset var(--animation-speed) ease-in, stroke-dasharray var(--animation-speed) ease-in;
+}
+.glow:is(:hover, :focus) .glow-container {
+  animation: glow-visibility var(--animation-speed) ease-in;
+}
+@keyframes glow-visibility {
+  0%, 100% { opacity: 0; }
+  25%, 75% { opacity: 1; }
+}
+
+
+.action-btn, .theme-btn, .card-style-btn, .nav-item, .feature-card, .setting-card, .toggle-card, .preset-card, .mode-card {
+  overflow: visible !important;
+}
