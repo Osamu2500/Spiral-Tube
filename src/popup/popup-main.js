@@ -5,13 +5,14 @@ import '../content/config/utils.js';
 import { initStorage, loadSettings, state, saveSettings, updateSetting, notifyThemeChange } from './popup-state.js';
 import * as UI from './popup-ui.js';
 import { initComponents } from './popup-components.js';
-import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerBarOrganizer, renderDomainMemoryManager } from './popup-extras.js';
+import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerBarOrganizer, renderDomainMemoryManager, renderGlobalPlayerBarBlocklist } from './popup-extras.js';
 import { renderSchema, registerSlot, convertStaticDescriptionsToHelpButtons } from './popup-renderer.js';
 import { initI18n, t } from '../shared/i18n.js';
 
 // --- Register Custom Slots ---
 registerSlot('player_bar_organizer', renderPlayerBarOrganizer);
 registerSlot('domain_memory_manager', renderDomainMemoryManager);
+registerSlot('global_player_bar_blocklist', renderGlobalPlayerBarBlocklist);
 registerSlot('intentionalDelaySlot', (container, state) => {
     container.className = 'setting-item toggle-card';
     container.style.cssText = 'grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 12px; padding: 10px 14px;';

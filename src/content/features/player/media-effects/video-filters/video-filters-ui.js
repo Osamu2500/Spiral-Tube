@@ -73,7 +73,6 @@ export class VideoFiltersUI {
         tabAdjustBtn.textContent = 'Adjustments';
 
         tabsWrap.append(tabFiltersBtn, tabAdjustBtn);
-
         const tabContent = document.createElement('div');
         tabContent.className = 'ypp-cinema-scroll';
         tabContent.id = 'ypp-cinema-scroll-container';
@@ -84,7 +83,6 @@ export class VideoFiltersUI {
 
         const presetsContent = this.buildPresetsTab(ctx, video, btn);
         const adjustContent  = this.buildAdjustTab(ctx, video);
-
         const fadeWrap = (el) => { el.style.cssText += ';transition:opacity 0.18s ease;'; return el; };
         fadeWrap(presetsContent);
         fadeWrap(adjustContent);
@@ -93,7 +91,10 @@ export class VideoFiltersUI {
         adjustContent.style.opacity = '0';
         presetsContent.style.opacity = '1';
 
-        this._setupTabSwitching(tabsWrap.children[0], tabsWrap.children[1], presetsContent, adjustContent);
+        this._setupTabSwitching(
+            [tabFiltersBtn, tabAdjustBtn], 
+            [presetsContent, adjustContent]
+        );
 
         tabContent.append(presetsContent, adjustContent);
         
@@ -250,22 +251,29 @@ export class VideoFiltersUI {
         return header;
     }
 
-    static _setupTabSwitching(tab1, tab2, content1, content2) {
-        let tabTransitionTimeout;
-        const switchTab = (show, hide, activeBtn, inactiveBtn) => {
-            if (activeBtn.classList.contains('active')) return;
-            inactiveBtn.classList.remove('active');
-            activeBtn.classList.add('active');
-            hide.style.opacity = '0';
-            clearTimeout(tabTransitionTimeout);
-            tabTransitionTimeout = setTimeout(() => {
-                hide.style.display = 'none';
-                show.style.display = 'block';
-                requestAnimationFrame(() => requestAnimationFrame(() => show.style.opacity = '1'));
-            }, 180);
-        };
-        tab1.onclick = () => switchTab(content1, content2, tab1, tab2);
-        tab2.onclick = () => switchTab(content2, content1, tab2, tab1);
+    static _setupTabSwitching(btns, contents) {
+        btns.forEach((btn, i) => {
+            btn.onclick = () => {
+                if (btn.classList.contains('active')) return;
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                contents.forEach((content, j) => {
+                    if (i === j) {
+                        content.style.display = 'block';
+                        content.offsetHeight;
+                        content.style.opacity = '1';
+                    } else {
+                        content.style.opacity = '0';
+                        setTimeout(() => {
+                            if (!btns[j].classList.contains('active')) {
+                                content.style.display = 'none';
+                            }
+                        }, 180);
+                    }
+                });
+            };
+        });
     }
 
     static _buildFooter(ctx, video, btn) {
@@ -440,11 +448,13 @@ export class VideoFiltersUI {
                 trashBtn.onclick = (e) => {
                     e.stopPropagation();
                     if (confirm(`Delete custom preset "${filter.name}"?`)) {
-                        let custom = [];
-                        try { custom = JSON.parse(localStorage.getItem('ypp-custom-presets') || '[]'); } catch {}
-                        custom = custom.filter(cp => cp.name !== filter.name);
-                        localStorage.setItem('ypp-custom-presets', JSON.stringify(custom));
-                        renderFilteredList(searchInput.value);
+                        chrome.storage.local.get('ypp_custom_presets', (data) => {
+                            let custom = data.ypp_custom_presets || [];
+                            custom = custom.filter(cp => cp.name !== filter.name);
+                            chrome.storage.local.set({ ypp_custom_presets: custom }, () => {
+                                renderFilteredList(searchInput.value);
+                            });
+                        });
                     }
                 };
             }
@@ -517,15 +527,16 @@ export class VideoFiltersUI {
             listContainer.innerHTML = '';
             const q = query.toLowerCase();
             const baseFilters = window.YPP?.features?.VideoFiltersPresets?.FILTERS || [];
-            let customPresets = [];
-            try { customPresets = JSON.parse(localStorage.getItem('ypp-custom-presets') || '[]'); } catch {}
             
-            // Deduplicate to avoid multiple runs pushing the same presets
-            customPresets.forEach(cp => {
-                if (!baseFilters.some(bf => bf.name === cp.name && bf.category === cp.category)) {
-                    baseFilters.push(cp);
-                }
-            });
+            chrome.storage.local.get('ypp_custom_presets', (data) => {
+                let customPresets = data.ypp_custom_presets || [];
+                
+                // Deduplicate to avoid multiple runs pushing the same presets
+                customPresets.forEach(cp => {
+                    if (!baseFilters.some(bf => bf.name === cp.name && bf.category === cp.category)) {
+                        baseFilters.push(cp);
+                    }
+                });
             const FILTERS = baseFilters;
 
             // Favorites at top — always open, only shown without search
@@ -552,6 +563,7 @@ export class VideoFiltersUI {
                 empty.textContent = 'No filters matching your search...';
                 listContainer.appendChild(empty);
             }
+            }); // Close chrome.storage.local.get callback
         };
 
         searchInput.oninput = (e) => renderFilteredList(e.target.value);
@@ -666,12 +678,12 @@ export class VideoFiltersUI {
                 box-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 0 8px rgba(255,255,255,0.5); 
             }
             
-            .ypp-adj-copy-paste { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .ypp-adj-copy-paste { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
             .ypp-adj-cp-btn { 
-                flex:1; padding: 6px 8px; border-radius: 8px; 
+                padding: 6px 4px; border-radius: 8px; 
                 border: 1px solid rgba(255,255,255,0.15); 
                 background: rgba(255,255,255,0.05); 
-                color: rgba(255,255,255,0.8); font-size: 9.5px; font-weight: 600; 
+                color: rgba(255,255,255,0.85); font-size: 9px; font-weight: 600; text-align: center;
                 cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; 
                 transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); 
                 backdrop-filter: blur(8px);
@@ -770,28 +782,89 @@ export class VideoFiltersUI {
                 preview: 'linear-gradient(135deg, #1f4037, #99f2c8)',
                 overlay: null
             };
-            let custom = [];
-            try { custom = JSON.parse(localStorage.getItem('ypp-custom-presets') || '[]'); } catch {}
-            custom.push(newPreset);
-            localStorage.setItem('ypp-custom-presets', JSON.stringify(custom));
-            saveBtn.textContent = '✓ Saved!';
-            setTimeout(() => { 
-                saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save Preset`; 
-                const tabs = document.querySelectorAll('.ypp-filter-tab-btn');
-                if (tabs.length > 0) tabs[0].click();
-            }, 800);
+            chrome.storage.local.get('ypp_custom_presets', (data) => {
+                let custom = data.ypp_custom_presets || [];
+                custom.push(newPreset);
+                chrome.storage.local.set({ ypp_custom_presets: custom }, () => {
+                    saveBtn.textContent = '✓ Saved!';
+                    setTimeout(() => { 
+                        saveBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg> Save`; 
+                        const tabs = document.querySelectorAll('.ypp-cinema-tab-btn');
+                        if (tabs.length > 0) tabs[0].click();
+                    }, 800);
+                });
+            });
+        };
+
+        const exportBtn = document.createElement('button');
+        exportBtn.className = 'ypp-adj-cp-btn';
+        exportBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Export`;
+        exportBtn.onclick = () => {
+            chrome.storage.local.get('ypp_custom_presets', (data) => {
+                const custom = data.ypp_custom_presets || [];
+                if (custom.length === 0) return alert('No custom presets to export!');
+                const blob = new Blob([JSON.stringify(custom, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'spiral_presets.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                exportBtn.textContent = '✓ Exported!';
+                setTimeout(() => exportBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Export`, 2000);
+            });
+        };
+
+        const importBtn = document.createElement('button');
+        importBtn.className = 'ypp-adj-cp-btn';
+        importBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg> Import`;
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.json';
+        fileInput.style.display = 'none';
+        importBtn.appendChild(fileInput);
+        importBtn.onclick = () => fileInput.click();
+        
+        fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                try {
+                    const imported = JSON.parse(ev.target.result);
+                    if (!Array.isArray(imported)) throw new Error('Invalid format');
+                    chrome.storage.local.get('ypp_custom_presets', (data) => {
+                        let custom = data.ypp_custom_presets || [];
+                        const merged = [...custom, ...imported];
+                        chrome.storage.local.set({ ypp_custom_presets: merged }, () => {
+                            importBtn.textContent = '✓ Imported!';
+                            setTimeout(() => {
+                                importBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg> Import`;
+                                const tabs = document.querySelectorAll('.ypp-cinema-tab-btn');
+                                if (tabs.length > 0) tabs[0].click(); // Refresh presets tab
+                            }, 1500);
+                        });
+                    });
+                } catch (err) {
+                    alert('Failed to import presets. Invalid JSON file.');
+                }
+            };
+            reader.readAsText(file);
+            fileInput.value = ''; // reset
         };
         const compareBtn = document.createElement('button');
         compareBtn.className = 'ypp-adj-cp-btn';
         compareBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> Hold to Compare`;
-        compareBtn.onmousedown = () => { video.style.setProperty('filter', 'none', 'important'); window.YPP.features.VideoFiltersOverlay.removeOverlay(ctx); };
-        const restore = () => { ctx._applyComputedFilter(video); };
+        compareBtn.onmousedown = () => { ctx.isComparing = true; ctx._applyComputedFilter(video); };
+        const restore = () => { ctx.isComparing = false; ctx._applyComputedFilter(video); };
         compareBtn.onmouseup = restore;
         compareBtn.onmouseleave = restore;
 
         cpRow.appendChild(copyBtn);
         cpRow.appendChild(pasteBtn);
         cpRow.appendChild(saveBtn);
+        cpRow.appendChild(exportBtn);
+        cpRow.appendChild(importBtn);
         cpRow.appendChild(compareBtn);
         wrap.appendChild(cpRow);
 
@@ -855,11 +928,11 @@ export class VideoFiltersUI {
                 ]
             },
             {
-                id: 'effects', label: 'Effects', open: false,
+                id: 'effects', label: 'Effects', open: true,
                 sliders: [
-                    { id: 'clarity',      label: 'Clarity',        svgKey: 'clarity',     min: 0,   max: 100, def: 0,   unit: '%' },
-                    { id: 'dehaze',       label: 'Dehaze',         svgKey: 'dehaze',      min: 0,   max: 100, def: 0,   unit: '%' },
-                    { id: 'sharpness',    label: 'Sharpness',      svgKey: 'sharpness',   min: 0,   max: 100, def: 0,   unit: '%' },
+                    { id: 'clarity',      label: 'Clarity',        svgKey: 'clarity',     min: -100,max: 100, def: 0,   unit: '%' },
+                    { id: 'dehaze',       label: 'Dehaze',         svgKey: 'dehaze',      min: -100,max: 100, def: 0,   unit: '%' },
+                    { id: 'sharpness',    label: 'Sharpness',      svgKey: 'sharpness',   min: -100,max: 100, def: 0,   unit: '%' },
                     { id: 'noiseReduction',label:'Noise Reduce',   svgKey: 'noiseReduce', min: 0,   max: 100, def: 0,   unit: '%' },
                     { id: 'blur',         label: 'Blur',           svgKey: 'blur',        min: 0,   max: 20,  def: 0,   unit: 'px' },
                     { id: 'vignette',     label: 'Vignette',       svgKey: 'vignette',    min: 0,   max: 100, def: 0,   unit: '%' },
@@ -867,7 +940,7 @@ export class VideoFiltersUI {
                 ]
             },
             {
-                id: 'other', label: 'Other', open: false,
+                id: 'other', label: 'Other', open: true,
                 sliders: [
                     { id: 'invert',      label: 'Invert',          svgKey: 'invert',      min: 0,   max: 100, def: 0,   unit: '%' },
                     { id: 'opacity',     label: 'Opacity',         svgKey: 'opacity',     min: 0,   max: 100, def: 100, unit: '%' },
@@ -1009,7 +1082,6 @@ export class VideoFiltersUI {
 
         return wrap;
     }
-
 
     static _injectStyle(id, css) {
         if (!document.getElementById(id)) {

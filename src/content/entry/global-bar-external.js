@@ -206,11 +206,13 @@
 
     // ── 3. Read user settings ────────────────────────────────────────────────
     let settings = {};
+    let blocklist = [];
     try {
         const { DEFAULT_SETTINGS } = await import('../../shared/default-settings.js');
         settings = { ...DEFAULT_SETTINGS };
-        const data = await chrome.storage.local.get('settings');
+        const data = await chrome.storage.local.get(['settings', 'globalPlayerBarBlocklist']);
         Object.assign(settings, data.settings || {});
+        blocklist = data.globalPlayerBarBlocklist || [];
     } catch (_) {}
 
     // Mock FeatureManager so GlobalBarUI can fetch VolumeBoost / VideoFilters / DomainMemory
@@ -409,6 +411,10 @@
     // Default ON — show bar unless user explicitly disabled it
     if (settings.enableGlobalPlayerBar === false) return;
 
+    // Check Blocklist
+    const hostname = window.location.hostname.replace(/^www\./, '');
+    if (blocklist.includes(hostname)) return;
+
     // ── 4. Boot the feature ──────────────────────────────────────────────────
     const bar = new window.YPP.features.GlobalPlayerBar();
     if (bar.update) bar.update(settings);
@@ -577,18 +583,16 @@
 
     // ── 5. React to popup toggle changes in real-time ────────────────────────
     try {
-        chrome.storage.onChanged.addListener((changes) => {
+        chrome.storage.onChanged.addListener(async (changes) => {
+            let shouldBeEnabled = settings.enableGlobalPlayerBar !== false;
+            let needsUpdate = false;
+
             if (changes.settings) {
                 const newSettings = changes.settings.newValue || {};
-                const nowEnabled  = newSettings.enableGlobalPlayerBar !== false;
+                settings = { ...settings, ...newSettings };
+                shouldBeEnabled = settings.enableGlobalPlayerBar !== false;
+                needsUpdate = true;
 
-                if (nowEnabled && !bar.isEnabled) {
-                    bar.enable();
-                    bar.isEnabled = true;
-                } else if (!nowEnabled && bar.isEnabled) {
-                    bar.disable();
-                    bar.isEnabled = false;
-                }
                 if (bar.update) bar.update(newSettings);
 
                 // Update sub-features
@@ -604,6 +608,26 @@
                 if (instances['customCursor']) {
                     instances['customCursor'].update(newSettings);
                 }
+            }
+
+            if (changes.globalPlayerBarBlocklist) {
+                blocklist = changes.globalPlayerBarBlocklist.newValue || [];
+                needsUpdate = true;
+            }
+
+            if (!needsUpdate) return;
+
+            const hostname = window.location.hostname.replace(/^www\./, '');
+            if (blocklist.includes(hostname)) {
+                shouldBeEnabled = false;
+            }
+
+            if (shouldBeEnabled && !bar.isEnabled) {
+                await bar.enable();
+                bar.isEnabled = true;
+            } else if (!shouldBeEnabled && bar.isEnabled) {
+                await bar.disable();
+                bar.isEnabled = false;
             }
         });
     } catch (_) {}

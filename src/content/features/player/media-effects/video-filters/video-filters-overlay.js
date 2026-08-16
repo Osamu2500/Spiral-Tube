@@ -85,7 +85,7 @@ export class VideoFiltersOverlay {
     }
 
     if (grainAmount > 0 || type === 'grain_custom') {
-      overlay.style.backgroundImage = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
+      overlay.style.backgroundImage = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'%3E%3Canimate attributeName='seed' values='0;20;40;60;80;100;120;140;160;180' dur='0.5s' repeatCount='indefinite'/%3E%3C/feTurbulence%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`;
       overlay.style.opacity = (grainAmount || 20) / 100;
       overlay.style.mixBlendMode = 'overlay';
       overlay.style.pointerEvents = 'none';
@@ -252,12 +252,7 @@ export class VideoFiltersOverlay {
   }
 
   static injectSVGSharpness(amount) {
-    if (amount <= 0) return;
-
-    const strength = (amount / 100) * 2;
-    const center = 1 + 4 * strength;
-    const edge = -strength;
-    const matrix = `0 ${edge} 0 ${edge} ${center} ${edge} 0 ${edge} 0`;
+    if (amount === 0) return;
 
     let svg = document.getElementById('ypp-svg-sharpness-defs');
     if (!svg) {
@@ -269,20 +264,31 @@ export class VideoFiltersOverlay {
       const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
       filter.id = 'ypp-svg-sharpness';
 
+      defs.appendChild(filter);
+      svg.appendChild(defs);
+      document.body.appendChild(svg);
+    }
+
+    const filter = svg.querySelector('filter');
+    filter.innerHTML = ''; // Clear existing primitive
+
+    if (amount > 0) {
+      const strength = (amount / 100) * 2.5;
+      const center = 1 + 4 * strength;
+      const edge = -strength;
+      const matrix = `0 ${edge} 0 ${edge} ${center} ${edge} 0 ${edge} 0`;
+      
       const convolve = document.createElementNS('http://www.w3.org/2000/svg', 'feConvolveMatrix');
       convolve.setAttribute('order', '3 3');
       convolve.setAttribute('preserveAlpha', 'true');
       convolve.setAttribute('kernelMatrix', matrix);
-      convolve.id = 'ypp-sharpness-kernel';
-
       filter.appendChild(convolve);
-      defs.appendChild(filter);
-      svg.appendChild(defs);
-      document.body.appendChild(svg);
     } else {
-      const kernel =
-        document.getElementById('ypp-sharpness-kernel') || svg.querySelector('feConvolveMatrix');
-      if (kernel) kernel.setAttribute('kernelMatrix', matrix);
+      // Negative sharpness is Gaussian Blur
+      const blurStr = Math.abs(amount / 100) * 4; // up to 4px stdDev
+      const blur = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+      blur.setAttribute('stdDeviation', blurStr.toString());
+      filter.appendChild(blur);
     }
   }
 
@@ -647,6 +653,7 @@ export class VideoFiltersOverlay {
                         <feFuncG type="table" tableValues="0 1"/>
                         <feFuncB type="table" tableValues="0 1"/>
                     </feComponentTransfer>
+                    <feColorMatrix id="ypp-svg-tint" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" />
                 </filter>
             </defs>
         `;
@@ -673,6 +680,19 @@ export class VideoFiltersOverlay {
 
     for (let i = 0; i <= steps; i++) {
       let t = i / steps;
+
+      // 1. Fade (Lift Blacks) - Maps 0..1 to (fade)..1
+      if (adj.fade > 0) {
+          const fadeAmt = (adj.fade / 100) * 0.35; 
+          t = fadeAmt + t * (1 - fadeAmt);
+      }
+
+      // 2. Exposure - Non-linear transfer (Gamma curve)
+      if (adj.exposure !== 0) {
+          const exp = adj.exposure / 100;
+          // >0 means curve bows upwards (brighter midtones), <0 bows downwards
+          t = Math.pow(t, Math.pow(2, -exp)); 
+      }
 
       if (adj.shadows !== 0) {
         const shadowEffect = Math.max(0, 1 - t * 2);
@@ -715,15 +735,33 @@ export class VideoFiltersOverlay {
       bTable.push(bt);
     }
 
-    curves
-      .querySelector('feFuncR')
-      .setAttribute('tableValues', rTable.map((n) => n.toFixed(3)).join(' '));
-    curves
-      .querySelector('feFuncG')
-      .setAttribute('tableValues', gTable.map((n) => n.toFixed(3)).join(' '));
-      curves
-        .querySelector('feFuncB')
-        .setAttribute('tableValues', bTable.map((n) => n.toFixed(3)).join(' '));
+    curves.querySelector('feFuncR').setAttribute('tableValues', rTable.map((n) => n.toFixed(3)).join(' '));
+    curves.querySelector('feFuncG').setAttribute('tableValues', gTable.map((n) => n.toFixed(3)).join(' '));
+    curves.querySelector('feFuncB').setAttribute('tableValues', bTable.map((n) => n.toFixed(3)).join(' '));
+    
+    // Process Tint (Green-Magenta axis)
+    const tintMatrix = document.getElementById('ypp-svg-tint');
+    if (tintMatrix) {
+        if (adj.tint !== 0) {
+            const tint = adj.tint / 100; // -1 to 1
+            // Magenta: Increase R and B, decrease G. Green: Increase G, decrease R and B
+            const mg = tint > 0 ? tint * 0.2 : 0; 
+            const gr = tint < 0 ? Math.abs(tint) * 0.2 : 0;
+            // Matrix: R G B A
+            // Row 1 (R): 1+mg  0     0    0
+            // Row 2 (G): 0     1+gr  0    0
+            // Row 3 (B): 0     0     1+mg 0
+            const matrixStr = `
+                ${1+mg} 0 0 0 0 
+                0 ${1+gr} 0 0 0 
+                0 0 ${1+mg} 0 0 
+                0 0 0 1 0
+            `.replace(/\s+/g, ' ').trim();
+            tintMatrix.setAttribute('values', matrixStr);
+        } else {
+            tintMatrix.setAttribute('values', '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0');
+        }
+    }
     });
   }
 }

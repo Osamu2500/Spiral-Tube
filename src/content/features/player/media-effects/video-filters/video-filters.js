@@ -189,7 +189,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         const hasSVGCurves = this._applySVGCurves(baseValues, adj);
         let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
         
-        if (adj.sharpness > 0) {
+        if (adj.sharpness !== 0) {
             if (video._proxy) video.injectSVGSharpness(adj.sharpness);
             else window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(adj.sharpness);
             finalFilter += ` url(#ypp-svg-sharpness)`;
@@ -253,7 +253,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 const baseValues = this._calculateBaseValues(adj);
                 const hasSVGCurves = this._applySVGCurves(baseValues, adj);
                 let finalFilter = this._buildCSSFilterString(preset, adj, inst, hasSVGCurves);
-                if (adj.sharpness > 0) finalFilter += ` url(#ypp-svg-sharpness)`;
+                if (adj.sharpness !== 0) finalFilter += ` url(#ypp-svg-sharpness)`;
                 
                 video.style.setProperty('--ypp-video-filter', finalFilter);
                 video.style.setProperty('filter', finalFilter, 'important');
@@ -274,7 +274,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                adj.exposure !== 0 || adj.shadows !== 0 || adj.highlights !== 0 || 
                adj.temperature !== 0 || adj.tint !== 0 || adj.hueRotate !== 0 || 
                adj.sepia > 0 || adj.grayscale > 0 || adj.invert > 0 || 
-               adj.fade > 0 || adj.blur > 0 || adj.noiseReduction > 0 || adj.sharpness > 0;
+               adj.fade > 0 || adj.blur > 0 || adj.noiseReduction > 0 || adj.sharpness !== 0;
     }
 
     _clearVideoFilters(video) {
@@ -297,13 +297,7 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         let contrast = adj.contrast;
         let brightness = adj.brightness;
         
-        if (adj.dehaze > 0) {
-            contrast += adj.dehaze * 0.5;
-            brightness -= adj.dehaze * 0.1;
-        }
-        if (adj.clarity > 0) {
-            contrast += adj.clarity * 0.3;
-        }
+        // Remove legacy clarity/dehaze hacks here, they are handled in SVG or skipped for better alternatives
         
         let saturate = adj.saturate;
         if (adj.vibrance !== undefined && adj.vibrance !== 100) {
@@ -315,7 +309,8 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
 
     _applySVGCurves(baseValues, adj) {
         const needsCurves = baseValues.contrast !== 100 || baseValues.brightness !== 100 || 
-                            adj.shadows !== 0 || adj.highlights !== 0 || adj.temperature !== 0;
+                            adj.shadows !== 0 || adj.highlights !== 0 || adj.temperature !== 0 ||
+                            adj.exposure !== 0 || adj.tint !== 0 || adj.fade !== 0;
                             
         if (needsCurves) {
             window.YPP.features.VideoFiltersOverlay.setupDynamicSVGFilter();
@@ -324,7 +319,10 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
                 contrast: baseValues.contrast,
                 shadows: adj.shadows || 0,
                 highlights: adj.highlights || 0,
-                temperature: adj.temperature || 0
+                temperature: adj.temperature || 0,
+                exposure: adj.exposure || 0,
+                tint: adj.tint || 0,
+                fade: adj.fade || 0
             });
             return true;
         }
@@ -335,31 +333,22 @@ export class VideoFilters extends window.YPP.features.BaseFeature {
         const s = (v, def = 100) => def + (v - def) * inst;
         const baseValues = this._calculateBaseValues(adj);
 
-        // Exposure: maps -100..+100 => brightness(0.5..1.5)
-        const exposureBrightness = adj.exposure !== 0
-            ? 100 + (adj.exposure * inst)
-            : null;
-
-        // Tint: maps -100..+100 => a subtle hue nudge in green-magenta axis
-        const tintHue = adj.tint !== 0 ? adj.tint * 0.5 * inst : null;
-
-        // Fade: lifts blacks — simulated by a slight brightness + contrast reduction
-        const fadeBrightness = adj.fade > 0 ? 100 + (adj.fade * 0.15 * inst) : null;
-        const fadeContrast   = adj.fade > 0 ? 100 - (adj.fade * 0.3 * inst)  : null;
-
         // Noise Reduction: a very subtle blur
         const noiseBlur = adj.noiseReduction > 0 ? (adj.noiseReduction / 100) * 1.5 * inst : null;
+        
+        // Dehaze & Clarity legacy fallback (we are using CSS contrast/saturate for simplicity in dynamic CSS if SVG is off)
+        const cssDehazeContrast = adj.dehaze !== 0 ? (adj.dehaze * 0.5 * inst) : 0;
+        const cssClarityContrast = adj.clarity !== 0 ? (adj.clarity * 0.3 * inst) : 0;
+        const extraContrast = cssDehazeContrast + cssClarityContrast;
 
         const adjStr = [
             hasSVGCurves ? `url(#ypp-dynamic-filter)` : '',
             baseValues.saturate !== 100 ? `saturate(${s(baseValues.saturate)}%)` : '',
             adj.hueRotate !== 0 ? `hue-rotate(${adj.hueRotate * inst}deg)` : '',
-            tintHue ? `hue-rotate(${tintHue}deg)` : '',
             adj.sepia > 0 ? `sepia(${adj.sepia * inst}%)` : '',
             adj.grayscale > 0 ? `grayscale(${adj.grayscale * inst}%)` : '',
             adj.invert > 0 ? `invert(${adj.invert * inst}%)` : '',
-            exposureBrightness ? `brightness(${exposureBrightness}%)` : '',
-            fadeBrightness ? `brightness(${fadeBrightness}%) contrast(${fadeContrast}%)` : '',
+            extraContrast !== 0 ? `contrast(${100 + extraContrast}%)` : '',
             (adj.blur > 0 || noiseBlur) ? `blur(${((adj.blur || 0) + (noiseBlur || 0)) * inst}px)` : '',
             adj.opacity !== 100 ? `opacity(${s(adj.opacity)}%)` : ''
         ].filter(Boolean).join(' ');

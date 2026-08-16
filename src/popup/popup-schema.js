@@ -476,6 +476,7 @@ export const getPopupSchema = (t) => [
                 title: t('global_player_bar'),
                 items: [
                     { type:'toggle', id:'enableGlobalPlayerBar', label: t('global_player_bar'), desc: t('enable_on_external_sites'), icon:ICONS.globalBar, slot:'globalPlayerBarOptions', style: 'grid-column: 1 / -1;' },
+                    { type:'custom', id:'global_player_bar_blocklist', slot:'global_player_bar_blocklist', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' }
                 ]
             },
             {
@@ -485,15 +486,7 @@ export const getPopupSchema = (t) => [
                     { type:'custom', id:'domain_memory_manager', slot:'domain_memory_manager', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' },
                 ]
             },
-            {
-                title: t('api_integrations'),
-                subtitle: 'Third-party service connections',
-                items: [
-                    { type:'toggle', id:'returnYouTubeDislike', label: t('return_youtube_dislike'), desc: t('restore_dislike_count_via_ryd_api'), icon:P('M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17') },
-                    { type:'toggle', id:'adSkipper',            label: t('ad_skipper'),             desc: t('skip_video_ads_automatically'),   icon:P('M5 4l10 8-10 8V4z M19 5v14') },
-                    { type:'toggle', id:'sponsorBlock', class:'span-2',         label: t('sponsorblock'),           desc: t('skip_sponsored_segments'),        icon:ICONS.explore, slot:'sponsorBlockCategories' }
-                ]
-            },
+
 
         ]
     },
@@ -540,6 +533,15 @@ export const getPopupSchema = (t) => [
                             {value: 'ja', label: t('str_1')}
                         ] 
                     },
+                ]
+            },
+            {
+                title: t('api_integrations'),
+                subtitle: 'Third-party service connections',
+                items: [
+                    { type:'toggle', id:'returnYouTubeDislike', label: t('return_youtube_dislike'), desc: t('restore_dislike_count_via_ryd_api'), icon:P('M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17') },
+                    { type:'toggle', id:'adSkipper',            label: t('ad_skipper'),             desc: t('skip_video_ads_automatically'),   icon:P('M5 4l10 8-10 8V4z M19 5v14') },
+                    { type:'toggle', id:'sponsorBlock', class:'span-2',         label: t('sponsorblock'),           desc: t('skip_sponsored_segments'),        icon:ICONS.explore, slot:'sponsorBlockCategories' }
                 ]
             }
         ]
