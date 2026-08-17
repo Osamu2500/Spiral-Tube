@@ -77,8 +77,13 @@ export class ChannelWhitelist extends window.YPP.features.BaseFilterFeature {
         const parsers = window.YPP.Utils.youtubeParsers;
         if (!parsers) return;
 
-        const channelPath = parsers.extractChannelFromContainer(card);
-        if (channelPath && this._channels.has(channelPath)) {
+        const channelResult = parsers.extractChannelFromContainer(card);
+        if (!channelResult) return;
+        
+        const channels = Array.isArray(channelResult) ? channelResult : [channelResult];
+        const isWhitelisted = channels.some(ch => this._channels.has(ch));
+
+        if (isWhitelisted) {
             card.setAttribute('data-ypp-whitelist-processed', 'true');
             // Add a class that protects the card from being hidden by other features
             card.classList.add('ypp-whitelisted');
@@ -98,7 +103,7 @@ export class ChannelWhitelist extends window.YPP.features.BaseFilterFeature {
                     window.YPP.features.BaseFilterFeature.clearDimmedElement(card);
                 }
             }
-        } else if (channelPath) {
+        } else {
             card.setAttribute('data-ypp-whitelist-processed', 'true');
         }
     }

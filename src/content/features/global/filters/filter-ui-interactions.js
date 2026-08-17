@@ -160,10 +160,14 @@ export function createDimBadge(reason, channelPath) {
     return badge;
 }
 
-export function applyDimMode(element, reason, channelPath = null) {
-    if (!element || element.dataset.yppDimmed) return;
-    const badgeTarget = element.querySelector('ytd-thumbnail') || 
-                        element.querySelector('yt-thumbnail-view-model') || 
+export function applyDimMode(element, reason, channelPathRaw) {
+    if (element.dataset.yppDimmed) return;
+    
+    // For collaboration videos, use the primary channel for the badge UI
+    const channelPath = Array.isArray(channelPathRaw) ? channelPathRaw[0] : channelPathRaw;
+
+    const badgeTarget = element.querySelector('#dismissible') || 
+                        element.querySelector('ytd-thumbnail') || 
                         element.querySelector('ytm-thumbnail-cover-view-model') || 
                         element;
     
@@ -189,10 +193,37 @@ let hoverPillPending = false;
 let lastMouseClientX = 0;
 let lastMouseClientY = 0;
 let hoverPillWatchdog = null;
+let hoverPillFrame = null;
+let hoverPillScrolling = false;
+let hoverPillScrollIdleTimer = null;
+
+const HOVER_PILL_TOP_OFFSET = 14;
+const HOVER_PILL_SCROLL_IDLE_MS = 100;
 
 function trackMouseForHoverPillWatchdog(e) {
   lastMouseClientX = e.clientX;
   lastMouseClientY = e.clientY;
+}
+
+function getHoverPillViewportTop() {
+  const bar = document.querySelector('ytd-masthead, ytm-mobile-topbar-renderer');
+  if (!bar) return 0;
+  const rect = bar.getBoundingClientRect();
+  if (rect.top > 0 || rect.bottom <= 0) return 0;
+  return rect.bottom;
+}
+
+function setHoverPillHidden(hidden) {
+  if (!hoverPillEl) return;
+  if (hidden) {
+      hoverPillEl.style.opacity = '0';
+      hoverPillEl.style.visibility = 'hidden';
+      hoverPillEl.style.transition = 'none';
+  } else {
+      hoverPillEl.style.opacity = '';
+      hoverPillEl.style.visibility = '';
+      hoverPillEl.style.transition = '';
+  }
 }
 
 function positionHoverPill() {
@@ -202,9 +233,53 @@ function positionHoverPill() {
     return;
   }
   const rect = hoverPillAnchor.getBoundingClientRect();
+  const top = rect.top + HOVER_PILL_TOP_OFFSET;
+
+  if (top < getHoverPillViewportTop() || top > window.innerHeight) {
+    setHoverPillHidden(true);
+    return;
+  }
+
+  setHoverPillHidden(false);
   hoverPillEl.style.left = rect.left + rect.width / 2 + 'px';
-  hoverPillEl.style.top = rect.top + 14 + 'px';
+  hoverPillEl.style.top = top + 'px';
   hoverPillEl.style.maxWidth = Math.max(24, rect.width - 12) + 'px';
+}
+
+function schedulePositionHoverPill() {
+  if (hoverPillFrame) return;
+  hoverPillFrame = requestAnimationFrame(() => {
+    hoverPillFrame = null;
+    positionHoverPill();
+  });
+}
+
+function onHoverPillScroll() {
+  hoverPillScrolling = true;
+  if (hoverPillScrollIdleTimer) clearTimeout(hoverPillScrollIdleTimer);
+  hoverPillScrollIdleTimer = setTimeout(onHoverPillScrollIdle, HOVER_PILL_SCROLL_IDLE_MS);
+  if (!hoverPillEl) return;
+  if (hoverPillPending) {
+    setHoverPillHidden(true);
+    return;
+  }
+  clearBlacklistHoverButton();
+}
+
+function onHoverPillScrollIdle() {
+  hoverPillScrollIdleTimer = null;
+  hoverPillScrolling = false;
+  if (hoverPillPending) {
+    positionHoverPill();
+    return;
+  }
+  if (hoverPillEl) return;
+
+  const stack = document.elementsFromPoint(lastMouseClientX, lastMouseClientY);
+  for (const el of stack) {
+    handleBlacklistHoverOver({ target: el });
+    if (hoverPillEl) return;
+  }
 }
 
 function startHoverPillWatchdog() {
@@ -231,7 +306,10 @@ function stopHoverPillWatchdog() {
 
 function clearBlacklistHoverButton() {
   stopHoverPillWatchdog();
-  removeBadgeAnimated(hoverPillEl);
+  if (hoverPillEl) {
+      // Instantly remove to avoid scroll stutter/leftover pill
+      hoverPillEl.remove();
+  }
   hoverPillEl = null;
   hoverPillContainer = null;
   hoverPillAnchor = null;
@@ -295,7 +373,7 @@ function createHoverBlacklistButton(channelPath) {
     return btn;
 }
 
-function showBlacklistHoverButton(container, channelPath) {
+function showBlacklistHoverButton(container, channelPath, quick = false) {
   if (hoverPillPending) return;
   if (hoverPillContainer === container && hoverPillEl) return;
   clearBlacklistHoverButton();
@@ -307,13 +385,17 @@ function showBlacklistHoverButton(container, channelPath) {
 
   const wrapper = document.createElement('div');
   wrapper.className = 'ypp-blacklist-hover-wrapper';
-  // We re-use ypp-dim-badge class for some styles but override position
   wrapper.style.position = 'fixed';
   wrapper.style.transform = 'translateX(-50%)';
   wrapper.style.zIndex = '2000';
   wrapper.style.pointerEvents = 'none';
   wrapper.style.width = 'max-content';
-  wrapper.style.animation = 'ypp-badge-in 180ms ease-out';
+  
+  if (quick) {
+      wrapper.style.animation = 'ypp-badge-in-quick 90ms ease-out';
+  } else {
+      wrapper.style.animation = 'ypp-badge-in 180ms ease-out';
+  }
 
   const btn = createHoverBlacklistButton(channelPath);
   wrapper.appendChild(btn);
@@ -328,6 +410,8 @@ function showBlacklistHoverButton(container, channelPath) {
 }
 
 function handleBlacklistHoverOver(e) {
+  if (hoverPillScrolling) return;
+  
   if (hoverPillPending) {
     if (hoverPillContainer && !hoverPillContainer.isConnected) {
       hoverPillPending = false;
@@ -353,10 +437,13 @@ function handleBlacklistHoverOver(e) {
   if (hoverPillContainer === container && hoverPillEl) return;
 
   const parsers = window.YPP.Utils?.youtubeParsers;
-  const channelPath = parsers ? parsers.extractChannelFromContainer(container) : null;
-  if (!channelPath) return;
+  const channelPathRaw = parsers ? parsers.extractChannelFromContainer(container) : null;
+  if (!channelPathRaw) return;
+  
+  const channelPath = Array.isArray(channelPathRaw) ? channelPathRaw[0] : channelPathRaw;
 
-  showBlacklistHoverButton(container, channelPath);
+  // pass quick=true if we're rendering it right after scroll (no animation or fast animation)
+  showBlacklistHoverButton(container, channelPath, !!e.isFromScrollIdle);
 }
 
 function handleBlacklistHoverOut(e) {
@@ -384,8 +471,8 @@ if (!blacklistHoverListenerAttached) {
   document.addEventListener('mouseover', handleBlacklistHoverOver, true);
   document.addEventListener('mouseout', handleBlacklistHoverOut, true);
   document.addEventListener('mousemove', trackMouseForHoverPillWatchdog, true);
-  document.addEventListener('scroll', positionHoverPill, true);
-  window.addEventListener('resize', positionHoverPill);
+  document.addEventListener('scroll', onHoverPillScroll, true);
+  window.addEventListener('resize', schedulePositionHoverPill);
 }
 
 window.YPP.utils = window.YPP.utils || {};

@@ -76,11 +76,16 @@ export class ChannelBlacklist extends window.YPP.features.BaseFilterFeature {
         const parsers = window.YPP.Utils.youtubeParsers;
         if (!parsers) return;
 
-        const channelPath = parsers.extractChannelFromContainer(card);
-        if (channelPath && this._channels.has(channelPath)) {
+        const channelResult = parsers.extractChannelFromContainer(card);
+        if (!channelResult) return;
+        
+        const channels = Array.isArray(channelResult) ? channelResult : [channelResult];
+        const isBlacklisted = channels.some(ch => this._channels.has(ch));
+
+        if (isBlacklisted) {
             card.setAttribute('data-ypp-blacklist-processed', 'true');
             this._hideElement(card, 'blacklist');
-        } else if (channelPath) {
+        } else {
             card.setAttribute('data-ypp-blacklist-processed', 'true');
         }
     }

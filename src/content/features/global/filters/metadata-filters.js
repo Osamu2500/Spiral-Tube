@@ -91,8 +91,6 @@ export class MetadataFilters extends window.YPP.features.BaseFilterFeature {
         const LIVE_INDICATOR_SELECTORS =
             'badge-shape.yt-badge-shape--thumbnail-live, badge-shape.yt-badge-shape--live, ' +
             'badge-shape.ytBadgeShapeThumbnailLive, badge-shape.ytBadgeShapeLive, ' +
-            '.yt-spec-avatar-shape--live-ring, .yt-spec-avatar-shape__live-badge, ' +
-            '.ytSpecAvatarShapeLiveRing, .ytSpecAvatarShapeLiveBadge, ' +
             'ytd-thumbnail-overlay-time-status-renderer[overlay-style="LIVE"], ' +
             '.badge-style-type-live-now';
         return !!element.querySelector(LIVE_INDICATOR_SELECTORS);

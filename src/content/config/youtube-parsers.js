@@ -203,18 +203,30 @@ window.YPP.Utils.youtubeParsers = (function() {
     function extractChannelFromContainer(container) {
         if (!container) return null;
 
-        // 1. Try direct DOM link (most reliable)
-        const el = container.querySelector('a[href^="/@"]') ||
-                   container.querySelector('a[href^="/channel/"]') ||
-                   container.querySelector('a[href^="/user/"]') ||
-                   container.querySelector('ytd-channel-name a[href], #channel-name a[href]');
-        if (el) {
-            const href = el.href || el.getAttribute('href');
-            if (href) {
-                try {
-                    return new URL(href, window.location.origin).pathname.toLowerCase();
-                } catch (_) {}
+        const links = Array.from(container.querySelectorAll(
+            'a.yt-formatted-string[href^="/@"], ' +
+            'a.yt-formatted-string[href^="/channel/"], ' +
+            'a.yt-formatted-string[href^="/user/"], ' +
+            'a.yt-simple-endpoint[href^="/@"], ' +
+            'a.yt-simple-endpoint[href^="/channel/"], ' +
+            'a.yt-simple-endpoint[href^="/user/"], ' +
+            'ytd-channel-name a[href], #channel-name a[href], ' +
+            'ytm-media-item .ytm-media-item-byline a[href]'
+        ));
+
+        if (links.length > 0) {
+            const paths = [];
+            for (const el of links) {
+                const href = el.href || el.getAttribute('href');
+                if (href) {
+                    try {
+                        const path = new URL(href, window.location.origin).pathname.toLowerCase();
+                        if (!paths.includes(path)) paths.push(path);
+                    } catch (e) {}
+                }
             }
+            if (paths.length === 1) return paths[0];
+            if (paths.length > 1) return paths;
         }
 
         // 2. Fallback: look up videoId in the page-bridge channelCache
