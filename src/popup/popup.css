@@ -829,6 +829,7 @@ body {
 }
 .toggle-card:hover {
   background: color-mix(in srgb, var(--accent-primary) 8%, rgba(255,255,255,0.05));
+  border-color: rgba(255, 255, 255, 0.2); /* fallback */
   border-color: color-mix(in srgb, var(--accent-primary) 50%, rgba(255,255,255,0.1));
   transform: translateY(-2px) scale(1.015);
   box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-primary) 15%, rgba(0,0,0,0.4)), inset 0 1px 0 rgba(255,255,255,0.1);
@@ -1513,6 +1514,7 @@ kbd {
 }
 .vsc-shortcut-row:hover {
   background: color-mix(in srgb, var(--accent-primary) 5%, rgba(255,255,255,0.05));
+  border-color: rgba(255, 255, 255, 0.2); /* fallback */
   border-color: color-mix(in srgb, var(--accent-primary) 30%, rgba(255,255,255,0.1));
   transform: translateY(-2px) scale(1.015);
   box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-primary) 12%, rgba(0,0,0,0.3)), inset 0 1px 0 rgba(255,255,255,0.1);
@@ -1522,6 +1524,7 @@ kbd {
   border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
   padding: 8px 12px; font-size: 11px; outline: none;
   font-family: inherit; transition: all 0.2s var(--ease-spring);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 .vsc-select { flex: 2; }
@@ -2272,7 +2275,7 @@ body.global-search-active .settings-section { margin-bottom: 24px; }
 
 /* ── Language UI Polish (v4) ── */
 .lang-flag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.lang-flag-btn { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 11px; font-weight: 500; justify-content: flex-start; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); border-radius: 10px; transition: all 0.2s var(--ease-spring); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.lang-flag-btn { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 11px; font-weight: 500; justify-content: flex-start; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); border-radius: 10px; transition: all 0.2s var(--ease-spring); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .lang-flag-btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); transform: translateY(-1px); }
 .lang-flag-btn.active { background: color-mix(in srgb, var(--accent-primary) 20%, transparent) !important; border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; box-shadow: 0 6px 16px color-mix(in srgb, var(--accent-primary) 45%, transparent) !important; color: #fff !important; }
 
@@ -2331,3 +2334,4 @@ body.global-search-active .settings-section { margin-bottom: 24px; }
 .action-btn, .theme-btn, .card-style-btn, .nav-item, .feature-card, .setting-card, .toggle-card, .preset-card, .mode-card {
   overflow: visible !important;
 }
+
