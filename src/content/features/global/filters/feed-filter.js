@@ -10,26 +10,13 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
     static executionPhase = 'idle';
     static priority = 999;
 
-    static CARD_SELECTORS = [
-        'ytd-rich-item-renderer',
-        'ytd-video-renderer',
-        'ytd-grid-video-renderer',
-        'ytd-compact-video-renderer',
-        'ytd-post-renderer',
-        'ytd-backstage-post-thread-renderer',
-        'ytd-shared-post-renderer'
-    ].join(',');
-
     constructor() {
         super('FeedFilter');
         this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/'];
-        this._boundProcessMutations = this._processMutations.bind(this);
     }
 
-    /**
-     * Per-page toggle respecting feedFilter[Page] settings (Advanced Mode).
-     * Falls back to true (on) if the per-page key is not set.
-     */
+    getConfigKey() { return 'feedFilter'; }
+
     _shouldRunOnCurrentPage() {
         const path = window.location.pathname;
         const s = this.settings || {};
@@ -42,56 +29,31 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
         return false;
     }
 
-    getConfigKey() { return 'feedFilter'; }
+    async run(settings, oldSettings) {
+        if (this.isEnabled && window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.triggerGlobalReevaluation();
+        }
+    }
 
     async enable() {
         await super.enable();
-        
-        // Initial scan
-        this._processCards();
-
-        // React to SPA navigation
-        this.onBusEvent('app:pageChange', () => {
-            this._processCards();
-        });
-
-        // Register observer for added cards
-        if (window.YPP && window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register(
-                'feed-filter-cards',
-                FeedFilter.CARD_SELECTORS,
-                this._boundProcessMutations,
-                true,
-                true
-            );
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.registerFilter(this);
         }
     }
 
     async disable() {
         await super.disable();
-        if (window.YPP && window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.unregister('feed-filter-cards');
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
 
-    async onUpdate() {
-        this._unhideAll();
-        this._processCards();
-    }
-
-    _processMutations(nodes) {
-        if (!this.isEnabled || !this._shouldRunOnCurrentPage()) return;
-        nodes.forEach(card => this._evaluateCard(card));
-    }
-
-    _processCards() {
-        if (!this.isEnabled || !this._shouldRunOnCurrentPage()) return;
-        const cards = document.querySelectorAll(FeedFilter.CARD_SELECTORS);
-        cards.forEach(card => this._evaluateCard(card));
-    }
-
-    _evaluateCard(card) {
-        if (!card || !card.isConnected) return;
+    evaluate(context) {
+        if (!context.card || !context.card.isConnected) return null;
         
         // Settings flags
         const hideLive = this.settings?.hideLiveStreams;
@@ -100,80 +62,59 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
         const hideMembersOnly = this.settings?.hideMembersOnly;
         const keywordsRaw = this.settings?.feedFilterKeywords || '';
         
-        const keywords = keywordsRaw.split(',').map(k => k.trim().toLowerCase()).filter(k => k.length > 0);
+        const keywords = keywordsRaw.split(',').map(k => k.trim()).filter(k => k.length > 0);
         
-        // Check Posts
-        const isPost = card.tagName.toLowerCase().includes('post-renderer') || card.tagName.toLowerCase().includes('post-thread');
-        if (hidePosts && isPost) {
-            this._hideElement(card, 'post');
-            return;
+        if (hidePosts && context.isPost) {
+            return { action: 'hide', reason: 'Post' };
+        }
+        if (context.isPost) return null;
+
+        if (hideLive && context.isLive) {
+            return { action: 'hide', reason: 'Live stream' };
         }
 
-        // Only evaluate videos below
-        if (isPost) return;
-
-        // Check Live
-        if (hideLive) {
-            const isLive = card.querySelector('.badge-style-type-live-now') || card.querySelector('ytd-badge-supported-renderer[is-live]');
-            if (isLive) {
-                this._hideElement(card, 'live stream');
-                return;
-            }
+        if (hideUpcoming && context.isUpcoming) {
+            return { action: 'hide', reason: 'Upcoming' };
         }
 
-        // Check Upcoming / Premiere
-        if (hideUpcoming) {
-            const isUpcoming = card.querySelector('[overlay-style="UPCOMING"]') || card.querySelector('.badge-style-type-simple[aria-label*="Premiere"]');
-            if (isUpcoming) {
-                this._hideElement(card, 'upcoming');
-                return;
-            }
+        if (hideMembersOnly && context.isMembersOnly) {
+            return { action: 'hide', reason: 'Members only' };
         }
 
-        // Check Members Only (Style 23137)
-        if (hideMembersOnly) {
-            const isMembersOnly = card.querySelector('.badge-style-type-members-only, [aria-label*="Members only"], [aria-label*="Members-only"], [aria-label*="members only"], ytd-badge-supported-renderer[class*="members"]') ||
-                Array.from(card.querySelectorAll('ytd-badge-supported-renderer, .badge-style-type-simple, .badge, #metadata-line span')).some(b => b.textContent?.toLowerCase().includes('members only') || b.textContent?.toLowerCase().includes('members-only') || b.textContent?.toLowerCase().includes('sponsors only'));
-            if (isMembersOnly) {
-                this._hideElement(card, 'members only');
-                return;
-            }
+        if (this.settings?.hidePlaylists && context.isPlaylist) {
+            return { action: 'hide', reason: 'Playlist' };
         }
 
-        // Check Playlists
-        if (this.settings?.hidePlaylists) {
-            const isPlaylist = card.querySelector('[class*="content-id-PL"]') || 
-                               card.tagName.toLowerCase().includes('playlist-renderer');
-            if (isPlaylist) {
-                this._hideElement(card, 'playlist');
-                return;
-            }
+        if (this.settings?.hideMixes && context.isMix) {
+            return { action: 'hide', reason: 'Mix playlist' };
         }
 
-        // Check Mixes
-        if (this.settings?.hideMixes) {
-            const isMix = card.querySelector('[class*="content-id-RD"]') || 
-                          card.querySelector('a[href*="start_radio=1"]') ||
-                          card.tagName.toLowerCase().includes('radio-renderer');
-            if (isMix) {
-                this._hideElement(card, 'mix playlist');
-                return;
-            }
-        }
-
-        // Check Keywords
-        if (keywords.length > 0) {
-            const titleEl = card.querySelector('#video-title, #video-title-link');
-            if (titleEl) {
-                const titleText = titleEl.textContent.trim().toLowerCase();
-                const matchedKeyword = keywords.find(kw => titleText.includes(kw));
-                if (matchedKeyword) {
-                    this._hideElement(card, `keyword: ${matchedKeyword}`);
-                    return;
+        if (keywords.length > 0 && context.title) {
+            const titleText = context.title;
+            const titleLower = titleText.toLowerCase();
+            
+            for (const kw of keywords) {
+                // Regex check if kw starts and ends with /
+                if (kw.startsWith('/') && kw.endsWith('/') && kw.length > 2) {
+                    try {
+                        const regex = new RegExp(kw.slice(1, -1), 'i');
+                        if (regex.test(titleText)) {
+                            return { action: 'hide', reason: `Regex match: ${kw}` };
+                        }
+                    } catch (e) {
+                        // Invalid regex, ignore
+                    }
+                } else {
+                    // Regular match
+                    if (titleLower.includes(kw.toLowerCase())) {
+                        return { action: 'hide', reason: `Keyword: ${kw}` };
+                    }
                 }
             }
         }
+        
+        return null;
     }
-};
+}
 
 window.YPP.features.FeedFilter = FeedFilter;

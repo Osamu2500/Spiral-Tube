@@ -20,32 +20,16 @@ export class MetadataFilters extends window.YPP.features.BaseFilterFeature {
             this.enable();
         } else {
             this.disable();
-        }
+        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/'];
     }
 
-    /**
-     * Per-page toggle respecting metadataFilter[Page] settings (Advanced Mode).
-     * Falls back to true if the per-page key is not set.
-     */
-    _shouldRunOnCurrentPage() {
-        const path = window.location.pathname;
-        const s = this._settings || {};
+    getConfigKey() { return 'viewsFilterEnabled'; }
 
-        if (path === '/' || path === '/index') return s.metaFilterHome !== false;
-        if (path.startsWith('/feed/subscriptions')) return s.metaFilterSubs !== false;
-        if (path.startsWith('/results')) return s.metaFilterSearch !== false;
-        if (path.startsWith('/@') || path.startsWith('/channel/') ||
-            path.startsWith('/user/') || path.startsWith('/c/')) return s.metaFilterChannel !== false;
-        if (path.startsWith('/watch')) return s.metaFilterRelated !== false;
-        return false;
-    }
-
-    run(settings) {
-        this._settings = settings;
-        if (settings.viewsFilterEnabled || settings.dateFilterEnabled) {
-            this.enable();
-        } else {
-            this.disable();
+    async run(settings, oldSettings) {
+        // Trigger global re-evaluation when settings change
+        if (this._isEnabled && window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.triggerGlobalReevaluation();
         }
     }
 
@@ -54,101 +38,69 @@ export class MetadataFilters extends window.YPP.features.BaseFilterFeature {
         if (this._isEnabled) return;
         this._isEnabled = true;
         
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.register(
-                'metadata-filters',
-                'ytd-video-renderer, ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytd-lockup-view-model',
-                this._boundProcess
-            );
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.registerFilter(this);
         }
-        this._processCards();
     }
 
     async disable() {
         await super.disable();
         this._isEnabled = false;
         
-        if (window.YPP.sharedObserver) {
-            window.YPP.sharedObserver.unregister('metadata-filters');
+        if (window.YPP.FeatureManager) {
+            const pipeline = window.YPP.FeatureManager.getFeature('CardPipeline');
+            if (pipeline) pipeline.triggerGlobalReevaluation();
         }
-        
-        this._unhideAll();
-        
-        document.querySelectorAll('[data-ypp-meta-processed]').forEach(el => {
-            el.removeAttribute('data-ypp-meta-processed');
-        });
     }
 
-    _processCards(elements = null) {
-        if (!this._isEnabled || !this._shouldRunOnCurrentPage()) return;
-
-        const cardsToProcess = elements || document.querySelectorAll('ytd-video-renderer, ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytd-lockup-view-model');
+    evaluate(context) {
+        // Return null if fullyParsed is false so the pipeline won't stamp it yet
+        // Wait, CardPipeline handles fullyParsed... Actually CardPipeline doesn't abort on fullyParsed = false,
+        // it just passes the context to filters. If the filter needs something missing, it should just not hide.
+        // Wait! We NEED to ensure it doesn't get stamped if missing.
         
-        cardsToProcess.forEach(card => this._evaluateCard(card));
-    }
-    
-    _isLiveVideo(element) {
-        const LIVE_INDICATOR_SELECTORS =
-            'badge-shape.yt-badge-shape--thumbnail-live, badge-shape.yt-badge-shape--live, ' +
-            'badge-shape.ytBadgeShapeThumbnailLive, badge-shape.ytBadgeShapeLive, ' +
-            'ytd-thumbnail-overlay-time-status-renderer[overlay-style="LIVE"], ' +
-            '.badge-style-type-live-now';
-        return !!element.querySelector(LIVE_INDICATOR_SELECTORS);
-    }
-
-    _evaluateCard(card) {
-        if (card.hasAttribute('hidden') || card.style.display === 'none') return;
-        if (card.hasAttribute('data-ypp-meta-processed')) return;
-
-        // Skip shorts and mixes
-        if (card.querySelector('ytd-reel-item-renderer, ytd-radio-renderer')) return;
-        if (card.classList.contains('ypp-is-mix') || card.classList.contains('ypp-is-short')) return;
+        if (context.isShort || context.isMix) return null;
 
         let shouldHide = false;
         let hideReason = '';
-        
-        const parsers = window.YPP.Utils?.youtubeParsers;
-        if (!parsers) return;
 
-        // 1. Views Filter
-        if (this._settings.viewsFilterEnabled) {
-            const minViews = parseInt(this._settings.viewsHideThreshold, 10) || 0;
-            const viewsResult = parsers.resolveViewsFromSpans(card.querySelectorAll('span'));
-            
-            if (viewsResult && viewsResult.views !== undefined) {
-                const viewsNumber = viewsResult.views;
-                if (viewsNumber < minViews && !this._isLiveVideo(card)) {
+        if (this.settings?.viewsFilterEnabled) {
+            const minViews = parseInt(this.settings.viewsHideThreshold, 10) || 0;
+            if (context.views !== undefined) {
+                if (context.views < minViews && !context.isLive) {
                     shouldHide = true;
                     hideReason = 'Views too low';
                 }
+            } else if (!context.isLive && !context.isUpcoming) {
+                // If views are enabled but not found yet, and we aren't live/upcoming, we aren't fully parsed!
+                // We should throw an error to prevent pipeline from stamping?
+                // Actually we can just tell the pipeline it's not fully parsed.
+                context.fullyParsed = false;
             }
         }
 
-        // 2. Date Filter
-        if (!shouldHide && this._settings.dateFilterEnabled) {
-            const maxDaysOlder = parseInt(this._settings.dateFilterOlderThreshold, 10) || 0; // if > 0, hide older than this
-            const maxDaysNewer = parseInt(this._settings.dateFilterNewerThreshold, 10) || 0; // if > 0, hide newer than this
+        if (!shouldHide && this.settings?.dateFilterEnabled) {
+            const maxDaysOlder = parseInt(this.settings.dateFilterOlderThreshold, 10) || 0;
+            const maxDaysNewer = parseInt(this.settings.dateFilterNewerThreshold, 10) || 0;
             
-            const ageResult = parsers.resolveUploadAgeFromSpans(card.querySelectorAll('span'));
-            
-            if (ageResult && ageResult.ageDays !== undefined) {
-                const days = ageResult.ageDays;
-                
-                if (maxDaysNewer > 0 && days < maxDaysNewer) {
+            if (context.ageDays !== undefined) {
+                if (maxDaysNewer > 0 && context.ageDays < maxDaysNewer) {
                     shouldHide = true;
                     hideReason = 'Video too new';
-                } else if (maxDaysOlder > 0 && days > maxDaysOlder) {
+                } else if (maxDaysOlder > 0 && context.ageDays > maxDaysOlder) {
                     shouldHide = true;
                     hideReason = 'Video too old';
                 }
+            } else if (!context.isLive && !context.isUpcoming) {
+                context.fullyParsed = false;
             }
         }
 
-        card.setAttribute('data-ypp-meta-processed', 'true');
-
         if (shouldHide) {
-            this._hideElement(card, hideReason);
+            return { action: 'hide', reason: hideReason };
         }
+        return null;
     }
 }
 

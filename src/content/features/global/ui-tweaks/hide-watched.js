@@ -107,6 +107,7 @@ export class HideWatched extends window.YPP.features.BaseFilterFeature {
 
     async enable() {
         await super.enable();
+        this.isEnabled = true; // Fix: ensure it's true before _processCards runs
 
         this._updateBodyClass();
 
