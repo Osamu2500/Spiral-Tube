@@ -176,3 +176,4 @@ Spiral Tube is engineered for maximum performance within YouTube's heavy Single 
 ## 🤝 Contributing & License
 Contributions are welcome! Please follow standard PR workflows and test heavily on YouTube due to frequent A/B testing variations.
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+Please also review our [Terms of Service](TERMS.md) and [Privacy Policy](PRIVACY.md).
