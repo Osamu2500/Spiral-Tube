@@ -280,17 +280,6 @@ export const getPopupSchema = (t) => [
         icon: ICONS.filter,
         sections: [
             {
-                title: 'Global',
-                icon: ICONS.filter,
-                items: [
-                    { type:'toggle', id:'hideWatched', class:'span-4', label: t('hide_watched'), desc: t('auto_hide_watched_videos'), icon:ICONS.watched, inlineSlot:`<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5" style="width:100px;"><span id="hideWatchedThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">80%</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="hideWatchedMode" value="dim" />`, slot:'' },
-                    { type:'toggle', id:'hideThumbnails', label: t('hide_thumbnails'),   desc: t('blur_on_hover_to_reveal'),  icon:ICONS.thumbnails },
-                    { type:'toggle', id:'hideMetrics',    label: t('hide_views_subs'),   desc: t('hide_views_likes_sub_counts'), icon:ICONS.metrics },
-                    { type:'toggle', id:'hideCountryCode', label: t('hide_country_code'), desc: t('hide_country_code_desc'), icon:ICONS.channelBar },
-                    { type:'toggle', id:'hideUselessGuideLinks', label: t('hide_useless_guide_links'), desc: t('hide_useless_guide_links_desc'), icon:ICONS.home }
-                ]
-            },
-            {
                 title: t('home_page'),
                 icon: ICONS.secFiltersHome,
                 items: [
