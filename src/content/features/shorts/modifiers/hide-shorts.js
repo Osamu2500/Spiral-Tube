@@ -27,7 +27,7 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     }
 
     onPageChange() {
-        if (!this.settings.hideShorts && !this.settings.hideSearchShorts) return;
+        if (!document.body.classList.contains('ypp-nuke-shorts')) return;
         
         // Temporarily stop to force re-registration of the observer with correct selector for new page
         this.stopShortsMonitoring();
@@ -41,12 +41,9 @@ export class HideShorts extends window.YPP.features.BaseFeature {
     }
 
     applySettings() {
-        // Toggle the body classes that popup.css/content.css relies on
-        document.body.classList.toggle('ypp-hide-shorts', !!this.settings.hideShorts);
-        document.body.classList.toggle('ypp-hide-search-shorts', !!this.settings.hideSearchShorts);
-        
-        // If either is enabled, we need to monitor the DOM to add attributes
-        if (this.settings.hideShorts || this.settings.hideSearchShorts) {
+        // We now rely purely on the global ypp-nuke-shorts class managed by GlobalLayoutManager
+        // If the class is present, we need to monitor the DOM to add attributes
+        if (document.body.classList.contains('ypp-nuke-shorts')) {
             this.removeShortsFromDOM();
             this.startShortsMonitoring();
         } else {

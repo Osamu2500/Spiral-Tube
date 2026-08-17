@@ -331,7 +331,7 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         hideComments: 'Toggle Comments',
         hideRelated: 'Toggle Related Videos',
         hideLiveChat: 'Toggle Live Chat',
-        hideShorts: 'Toggle Shorts',
+        aggressiveShortsBlock: 'Toggle Shorts Remover',
         hideEndScreens: 'Toggle End Screens',
         hideAnnotations: 'Toggle Annotations',
         hideMixes: 'Toggle Mixes',
