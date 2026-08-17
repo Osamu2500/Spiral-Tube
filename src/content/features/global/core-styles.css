@@ -4830,7 +4830,9 @@ body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
 
 html body.ypp-watched-mode-hide [data-ypp-watched="1"],
 html[data-ypp-card-style] body.ypp-watched-mode-hide [data-ypp-watched="1"],
-html[data-ypp-card-style] body.ypp-watched-mode-hide ytd-rich-item-renderer[data-ypp-watched="1"] {
+html[data-ypp-card-style] body.ypp-watched-mode-hide ytd-rich-item-renderer[data-ypp-watched="1"],
+.ypp-hidden,
+.ypp-hidden-by-pipeline {
     display: none !important;
 }
 
