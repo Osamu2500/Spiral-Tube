@@ -1020,7 +1020,7 @@ function buildSection(section, state) {
             <span class="drag-handle" title="Drag to reorder">&#8942;&#8942;</span>
             <div class="section-text-wrap">
                 <div class="section-title">
-                    ${section.icon ? `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">${section.icon}</svg>` : ''}
+                    
                     ${section.title}
                 </div>
                 ${section.subtitle ? `<div class="section-subtitle">${section.subtitle}</div>` : ''}

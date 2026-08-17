@@ -337,12 +337,18 @@ function handleBlacklistHoverOver(e) {
     }
   }
   
-  if (!window.YPP?.settings?.channelBlacklistEnabled) return;
+  // Check via the feature instance (window.YPP.settings doesn't exist as a global)
+  const blFeature = window.YPP?.features?.ChannelBlacklist || window.YPP?.featureManager?.getFeature?.('channelBlacklist');
+  if (!blFeature?.isEnabled) return;
+  // Respect the "hide on-page controls" setting
+  const hideControls = window.YPP?.featureManager?.getSettings?.()?.hideOnPageControls;
+  if (hideControls) return;
   if (!e.target || !e.target.closest) return;
 
   const container = e.target.closest('ytd-video-renderer, ytd-rich-item-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, yt-lockup-view-model, ytd-lockup-view-model');
   if (!container) return;
-  if (container.dataset.yppDimmed || container.dataset.yppHidden) return; // Don't show if already filtered
+  // Don't show pill on cards already filtered (hidden or dimmed)
+  if (container.dataset.yppDimmed || container.classList.contains('ypp-hidden') || container.dataset.yppBlocked) return;
 
   if (hoverPillContainer === container && hoverPillEl) return;
 

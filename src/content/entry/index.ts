@@ -59,6 +59,8 @@ import '../features/global/account-menu/account-menu-data.js';
 import '../features/global/account-menu/account-menu-ui.js';
 import { AccountMenu } from '../features/global/account-menu/account-menu.js';
 window.YPP.FeatureManager.register(AccountMenu);
+import { HeaderButton } from '../features/global/header-button.js';
+window.YPP.FeatureManager.register(HeaderButton);
 import { GridAnimator } from '../features/global/ui-tweaks/grid-animator.js';
 window.YPP.FeatureManager.register(GridAnimator);
 // Toggles handled by GlobalLayoutManager
@@ -195,6 +197,8 @@ import { CommentFilter } from '../features/pages/watch/comment-filter.js';
 window.YPP.FeatureManager.register(CommentFilter);
 import { WatchRedesign } from '../features/pages/watch/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
+import { InlineChannelButtons } from '../features/pages/watch/inline-channel-buttons.js';
+window.YPP.FeatureManager.register(InlineChannelButtons);
 import { SeamlessMode } from '../features/pages/watch/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
 
@@ -230,8 +234,6 @@ window.YPP.FeatureManager.register(PremiumLogo);
 // window.YPP.FeatureManager.register(SmartDownload);
 import { ResumeBadges } from '../features/global/ui-tweaks/resume-badges.js';
 window.YPP.FeatureManager.register(ResumeBadges);
-import { SpeedBooster } from '../features/player/enhancements/speed-booster.js';
-window.YPP.FeatureManager.register(SpeedBooster);
 
 import { VideoSpeedController } from '../features/player/enhancements/video-speed-controller.js';
 window.YPP.FeatureManager.register(VideoSpeedController);

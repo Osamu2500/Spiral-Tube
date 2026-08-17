@@ -191,7 +191,6 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.speed,
                 items: [
                     { type:'toggle', id:'enableCustomSpeed', class:'span-2', label: t('enable_controller'), desc: t('master_toggle'), icon:ICONS.speed },
-                    { type:'toggle', id:'speedBooster', label: t('10x_speed_booster'), desc: t('unlock_native_speed_up_to_10x'), icon:ICONS.speedBooster },
                     { type:'toggle', id:'vscForceSpeed',    label: t('force_saved_speed'), desc: t('prevent_players_from_overriding'), icon:ICONS.forceSpeed },
                 ]
             },

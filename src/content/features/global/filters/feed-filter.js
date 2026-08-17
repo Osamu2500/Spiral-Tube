@@ -22,8 +22,24 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
 
     constructor() {
         super('FeedFilter');
-        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results'];
+        this._allowedPages = ['/', '/index', '/feed/subscriptions', '/results', '/@', '/channel/', '/c/', '/user/'];
         this._boundProcessMutations = this._processMutations.bind(this);
+    }
+
+    /**
+     * Per-page toggle respecting feedFilter[Page] settings (Advanced Mode).
+     * Falls back to true (on) if the per-page key is not set.
+     */
+    _shouldRunOnCurrentPage() {
+        const path = window.location.pathname;
+        const s = this.settings || {};
+
+        if (path === '/' || path === '/index') return s.feedFilterHome !== false;
+        if (path.startsWith('/feed/subscriptions')) return s.feedFilterSubs !== false;
+        if (path.startsWith('/results')) return s.feedFilterSearch !== false;
+        if (path.startsWith('/@') || path.startsWith('/channel/') ||
+            path.startsWith('/user/') || path.startsWith('/c/')) return s.feedFilterChannel !== false;
+        return false;
     }
 
     getConfigKey() { return 'feedFilter'; }

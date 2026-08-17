@@ -202,6 +202,8 @@ window.YPP.Utils.youtubeParsers = (function() {
     
     function extractChannelFromContainer(container) {
         if (!container) return null;
+
+        // 1. Try direct DOM link (most reliable)
         const el = container.querySelector('a[href^="/@"]') ||
                    container.querySelector('a[href^="/channel/"]') ||
                    container.querySelector('a[href^="/user/"]') ||
@@ -214,6 +216,24 @@ window.YPP.Utils.youtubeParsers = (function() {
                 } catch (_) {}
             }
         }
+
+        // 2. Fallback: look up videoId in the page-bridge channelCache
+        const channelCache = window.YPP?.channelCache;
+        if (channelCache && channelCache.size > 0) {
+            const videoLink = container.querySelector('a[href*="/watch?v="]') ||
+                              container.querySelector('a[href*="/shorts/"]');
+            if (videoLink) {
+                try {
+                    const url = new URL(videoLink.href || videoLink.getAttribute('href'), window.location.origin);
+                    const videoId = url.searchParams.get('v') ||
+                                    url.pathname.split('/shorts/')[1]?.split('?')[0];
+                    if (videoId && channelCache.has(videoId)) {
+                        return channelCache.get(videoId);
+                    }
+                } catch (_) {}
+            }
+        }
+
         return null;
     }
 

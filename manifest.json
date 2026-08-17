@@ -52,7 +52,7 @@
         },
         {
             "matches": [
-                "<all_urls>"
+                "*://www.youtube.com/*"
             ],
             "exclude_matches": [
                 "*://*.youtube.com/*",
@@ -63,6 +63,16 @@
             "js": [
                 "dist/global-bar-external.js"
             ]
+        },
+        {
+            "matches": [
+                "*://www.youtube.com/*"
+            ],
+            "js": [
+                "dist/page-bridge.js"
+            ],
+            "run_at": "document_start",
+            "world": "MAIN"
         }
     ],
     "web_accessible_resources": [

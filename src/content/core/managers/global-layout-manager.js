@@ -2,6 +2,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
     constructor(utils, settings) {
         super(utils, settings);
         this.matchPatterns = [/.*/]; // Matches everywhere
+        this._boundNavHandler = () => this._updateDynamicToggles();
         
         // Map settings keys to body CSS classes
         this.TOGGLE_MAP = {
@@ -40,7 +41,6 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hideVideoDescription:  'ypp-hide-video-description',
             hideActionButtons:     'ypp-hide-action-buttons',
             hideFeed:              'ypp-hide-feed',              // Moved from HomePageManager
-            aggressiveShortsBlock: 'ypp-nuke-shorts',
             hideSearchShorts:      'ypp-hide-search-shorts',
             cleanSearch:           'ypp-clean-search',
 
@@ -75,6 +75,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
     onActivate() {
         this.utils.log('Global Layout Active', 'GLOBAL_MANAGER', 'info');
         this._startMonitoring();
+        document.addEventListener('yt-navigate-finish', this._boundNavHandler);
     }
 
 
@@ -88,10 +89,11 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         
         // Remove all dynamically added body classes from TOGGLE_MAP
         const classesToRemove = Object.values(this.TOGGLE_MAP);
-        document.body.classList.remove(...classesToRemove);
+        document.body.classList.remove(...classesToRemove, 'ypp-nuke-shorts');
 
         // Remove event listeners
         this._disableCleanMixUrls();
+        document.removeEventListener('yt-navigate-finish', this._boundNavHandler);
     }
 
     applySettings(settings) {
@@ -107,11 +109,34 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             }
         }
         
+        this._updateDynamicToggles();
+        
         // Handle JS-heavy toggles
         if (settings.cleanMixUrls) {
             this._enableCleanMixUrls();
         } else {
             this._disableCleanMixUrls();
+        }
+    }
+
+    _updateDynamicToggles() {
+        if (!this.isActive) return;
+        
+        let nukeShortsActive = this.settings.aggressiveShortsBlock;
+        if (nukeShortsActive) {
+            const path = window.location.pathname;
+            if (path === '/' || path === '/index') nukeShortsActive = this.settings.shortsFilterHome !== false;
+            else if (path.startsWith('/feed/subscriptions')) nukeShortsActive = this.settings.shortsFilterSubs !== false;
+            else if (path.startsWith('/results')) nukeShortsActive = this.settings.shortsFilterSearch !== false;
+            else if (path.startsWith('/@') || path.startsWith('/channel/') || path.startsWith('/user/') || path.startsWith('/c/')) nukeShortsActive = this.settings.shortsFilterChannel !== false;
+            else if (path.startsWith('/watch')) nukeShortsActive = this.settings.shortsFilterRelated !== false;
+            else nukeShortsActive = false;
+        }
+        
+        if (nukeShortsActive) {
+            document.body.classList.add('ypp-nuke-shorts');
+        } else {
+            document.body.classList.remove('ypp-nuke-shorts');
         }
     }
 

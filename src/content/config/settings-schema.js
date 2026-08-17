@@ -279,6 +279,28 @@ window.YPP.SettingsSchema = {
         blockedChannels:     { type: 'string',  default: '' },
         blockedKeywords:     { type: 'string',  default: '' },
 
+        // --- Per-Page Toggles: Feed Filter (Advanced Mode) ---
+        feedFilterHome:      { type: 'boolean', default: true },
+        feedFilterSubs:      { type: 'boolean', default: true },
+        feedFilterSearch:    { type: 'boolean', default: true },
+        feedFilterChannel:   { type: 'boolean', default: true },
+
+        // --- Per-Page Toggles: Metadata Filters (Advanced Mode) ---
+        metaFilterHome:      { type: 'boolean', default: true },
+        metaFilterSubs:      { type: 'boolean', default: true },
+        metaFilterSearch:    { type: 'boolean', default: true },
+        metaFilterChannel:   { type: 'boolean', default: true },
+        metaFilterRelated:   { type: 'boolean', default: true },
+        shortsFilterHome:    { type: 'boolean', default: true },
+        shortsFilterSubs:    { type: 'boolean', default: true },
+        shortsFilterSearch:  { type: 'boolean', default: true },
+        shortsFilterChannel: { type: 'boolean', default: true },
+        shortsFilterRelated: { type: 'boolean', default: true },
+
+        // --- On-Page Controls ---
+        hoverBlacklistPill:  { type: 'boolean', default: true },
+        hideOnPageControls:  { type: 'boolean', default: false },
+
         // --- Playlist & History (missing from original schema) ---
         reversePlaylist:     { type: 'boolean', default: false },
         playlistDuration:    { type: 'boolean', default: true  },
@@ -388,7 +410,6 @@ window.YPP.SettingsSchema = {
         shortcut_ambientMode:         { type: 'string',  default: 'Shift+A' },
         hasSeenOnboarding:            { type: 'boolean', default: false },
         resumeBadges:                 { type: 'boolean', default: true },
-        speedBooster:                 { type: 'boolean', default: true },
         liquidGlassTheme:             { type: 'boolean', default: false },
         hideVideoTitle:               { type: 'boolean', default: false },
         hideChannelBar:               { type: 'boolean', default: false },

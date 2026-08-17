@@ -23,6 +23,23 @@ export class MetadataFilters extends window.YPP.features.BaseFilterFeature {
         }
     }
 
+    /**
+     * Per-page toggle respecting metadataFilter[Page] settings (Advanced Mode).
+     * Falls back to true if the per-page key is not set.
+     */
+    _shouldRunOnCurrentPage() {
+        const path = window.location.pathname;
+        const s = this._settings || {};
+
+        if (path === '/' || path === '/index') return s.metaFilterHome !== false;
+        if (path.startsWith('/feed/subscriptions')) return s.metaFilterSubs !== false;
+        if (path.startsWith('/results')) return s.metaFilterSearch !== false;
+        if (path.startsWith('/@') || path.startsWith('/channel/') ||
+            path.startsWith('/user/') || path.startsWith('/c/')) return s.metaFilterChannel !== false;
+        if (path.startsWith('/watch')) return s.metaFilterRelated !== false;
+        return false;
+    }
+
     run(settings) {
         this._settings = settings;
         if (settings.viewsFilterEnabled || settings.dateFilterEnabled) {

@@ -42,8 +42,29 @@ export const DEFAULT_SETTINGS = {
   hidePosts: false,
   hideMembersOnly: false, // Hide members-only videos
   feedFilterKeywords: '',
+  // Per-page toggles for FeedFilter (Advanced Mode)
+  feedFilterHome: true,
+  feedFilterSubs: true,
+  feedFilterSearch: true,
+  feedFilterChannel: true,
+  // Per-page toggles for MetadataFilters (Advanced Mode)
+  metaFilterHome: true,
+  metaFilterSubs: true,
+  metaFilterSearch: true,
+  metaFilterChannel: true,
+  metaFilterRelated: true,
+  shortsFilterHome: true,
+  shortsFilterSubs: true,
+  shortsFilterSearch: true,
+  shortsFilterChannel: true,
+  shortsFilterRelated: true,
+  // On-page controls
+  hoverBlacklistPill: true,
+  hideOnPageControls: false,
   hideWatched: false,
   hideWatchedMode: 'dim',
+  dateFilterOlderThreshold: 0,
+  enableHeaderButton: true,
   hideWatchedThreshold: 80,
   hideWatchedHome: true,
   hideWatchedChannel: true,
@@ -279,7 +300,6 @@ export const DEFAULT_SETTINGS = {
   premiumLogo: true,
 
   resumeBadges: true,
-  speedBooster: true,
   liquidGlassTheme: false,
 
   // --- New UserStyles & GreasyFork Features ---

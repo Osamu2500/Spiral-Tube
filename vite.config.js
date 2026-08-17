@@ -15,12 +15,13 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       input: {
-        content: resolve(__dirname, 'src/content/entry/index.ts')
+        content: resolve(__dirname, 'src/content/entry/index.ts'),
+        'page-bridge': resolve(__dirname, 'src/inject/page-bridge.js')
       },
       output: {
         entryFileNames: '[name].js',
-        assetFileNames: '[name].[ext]',
-        format: 'iife'
+        chunkFileNames: '[name].js',
+        assetFileNames: '[name].[ext]'
       }
     },
     emptyOutDir: false,

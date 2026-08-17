@@ -21,10 +21,6 @@ body.ypp-nuke-shorts ytd-video-renderer:has(a[href*="/shorts"]),
 body.ypp-nuke-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]) {
   display: none !important;
 }
-body.ypp-hide-promos ytd-rich-shelf-renderer:not([is-shorts]),
-body.ypp-hide-promos ytd-rich-section-renderer:not([is-shorts]) {
-  display: none !important;
-}
 .ypp-aggressive-shorts-block ytd-rich-item-renderer:has(a[href*="/shorts"]),
 .ypp-aggressive-shorts-block ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
 .ypp-aggressive-shorts-block ytd-video-renderer:has(a[href*="/shorts"]),

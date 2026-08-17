@@ -1027,26 +1027,35 @@ const initApp = async () => {
             }
         ]);
 
-        components.initPremiumAccentDropdown();
-        components.initSearchViewMode();
-        components.initHideWatchedModePill();
-        components.initHideWatchedPageButtons();
-        components.initGlobalPlayerBarGrid();
-        components.initCardStyleGrid();
-        components.initYoutubeStyleGrid();
-        components.initPopupStyleGrid();
-        components.initCursorStyleGrid();
-        components.initAccentColorSwatches();
-        components.initCustomThemeBuilder();
-        components.initImageBackgroundTheme();
-        components.initAutoLikeInlineControls();
-        components.initViewsFilterInlineSlider();
-        components.initDateFilterInlineSliders();
-        components.initBasicInlineSlider('searchColumns', 4);
-        components.initBasicInlineSlider('seamlessModeGridCols', 4);
-        components.initBasicInlineSlider('channelColumns', 5);
-        components.initBasicInlineSlider('subscriptionsColumns', 5);
-        components.initBasicInlineSlider('historyColumns', 5);
+        // Safe component initializer — if any function is missing or throws,
+        // log a warning but NEVER crash the popup.
+        const safeInit = (fn, ...args) => {
+            if (typeof fn !== 'function') { console.warn('[YPP] Missing component function:', fn); return; }
+            try { fn(...args); } catch(e) { console.warn('[YPP] Component init error:', e); }
+        };
+
+        safeInit(components.initPremiumAccentDropdown);
+        safeInit(components.initSearchViewMode);
+        safeInit(components.initHideWatchedModePill);
+        safeInit(components.initHideWatchedPageButtons);
+        safeInit(components.initMetaFilterPageButtons);
+        safeInit(components.initShortsFilterPageButtons);
+        safeInit(components.initGlobalPlayerBarGrid);
+        safeInit(components.initCardStyleGrid);
+        safeInit(components.initYoutubeStyleGrid);
+        safeInit(components.initPopupStyleGrid);
+        safeInit(components.initCursorStyleGrid);
+        safeInit(components.initAccentColorSwatches);
+        safeInit(components.initCustomThemeBuilder);
+        safeInit(components.initImageBackgroundTheme);
+        safeInit(components.initAutoLikeInlineControls);
+        safeInit(components.initViewsFilterInlineSlider);
+        safeInit(components.initDateFilterInlineSliders);
+        safeInit(components.initBasicInlineSlider, 'searchColumns', 4);
+        safeInit(components.initBasicInlineSlider, 'seamlessModeGridCols', 4);
+        safeInit(components.initBasicInlineSlider, 'channelColumns', 5);
+        safeInit(components.initBasicInlineSlider, 'subscriptionsColumns', 5);
+        safeInit(components.initBasicInlineSlider, 'historyColumns', 5);
         UI.initDualAccentToggle(document);
 
         // 5. Wire Universal Event Listeners

@@ -788,20 +788,28 @@ body.ypp-hide-search-music.ypp-search-page ytd-video-renderer:has(ytd-badge-supp
 }
 
 /* Promos */
-body.ypp-hide-promos ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])),
-body.ypp-hide-promos ytd-rich-section-renderer:not(:has([is-shorts])) {
+body.ypp-hide-promos ytd-rich-shelf-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)),
+body.ypp-hide-promos ytd-rich-section-renderer:not([is-shorts]):not(:has([is-shorts])):not(:has(a[href*="/shorts"])):not(:has(ytd-rich-grid-slim-media)) {
     display: none !important;
 }
 
 /* Explore Topics (Chips) */
-body.ypp-hide-explore-topics ytd-feed-filter-chip-bar-renderer,
-body.ypp-hide-explore-topics yt-chip-cloud-renderer,
-body.ypp-hide-explore-topics #chips-wrapper,
-body.ypp-hide-explore-topics ytd-rich-grid-renderer > #header,
+body.ypp-hide-explore-topics ytd-browse ytd-feed-filter-chip-bar-renderer,
+body.ypp-hide-explore-topics ytd-browse yt-chip-cloud-renderer,
+body.ypp-hide-explore-topics ytd-browse #chips-wrapper,
+body.ypp-hide-explore-topics ytd-browse ytd-rich-grid-renderer > #header,
 body.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-chip-cloud-renderer),
 body.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-feed-filter-chip-bar-renderer),
 body.ypp-hide-explore-topics ytd-rich-section-renderer:has(yt-related-chip-cloud-renderer),
 body.ypp-hide-explore-topics ytd-rich-section-renderer:has(ytd-search-query-renderer) {
+    display: none !important;
+}
+
+/* Player Page Topics */
+body.ypp-hide-player-topics ytd-watch-flexy ytd-feed-filter-chip-bar-renderer,
+body.ypp-hide-player-topics ytd-watch-flexy yt-related-chip-cloud-renderer,
+body.ypp-hide-player-topics ytd-watch-flexy yt-chip-cloud-renderer,
+body.ypp-hide-player-topics ytd-watch-flexy #chips-wrapper {
     display: none !important;
 }
 
