@@ -140,6 +140,27 @@ export class FeedFilter extends window.YPP.features.BaseFilterFeature {
             }
         }
 
+        // Check Playlists
+        if (this.settings?.hidePlaylists) {
+            const isPlaylist = card.querySelector('[class*="content-id-PL"]') || 
+                               card.tagName.toLowerCase().includes('playlist-renderer');
+            if (isPlaylist) {
+                this._hideElement(card, 'playlist');
+                return;
+            }
+        }
+
+        // Check Mixes
+        if (this.settings?.hideMixes) {
+            const isMix = card.querySelector('[class*="content-id-RD"]') || 
+                          card.querySelector('a[href*="start_radio=1"]') ||
+                          card.tagName.toLowerCase().includes('radio-renderer');
+            if (isMix) {
+                this._hideElement(card, 'mix playlist');
+                return;
+            }
+        }
+
         // Check Keywords
         if (keywords.length > 0) {
             const titleEl = card.querySelector('#video-title, #video-title-link');
