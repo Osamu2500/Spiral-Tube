@@ -1,0 +1,73 @@
+/* Chip manager styles */
+.ypp-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.ypp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  font-size: 11px;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+.ypp-chip:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+.ypp-chip-remove {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.ypp-chip-remove:hover {
+  color: #ef4444;
+}
+
+.ypp-chip-add-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.ypp-chip-add-input {
+  flex: 1;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #fff;
+  transition: border-color 0.2s;
+}
+.ypp-chip-add-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+.ypp-chip-add-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.ypp-chip-add-btn:hover {
+  background: color-mix(in srgb, var(--accent-primary) 30%, transparent);
+  border-color: var(--accent-primary);
+}
