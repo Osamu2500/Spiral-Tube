@@ -5,7 +5,7 @@
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://github.com/Osamu2500/youtube-premium-extension)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success)]()
 [![Version](https://img.shields.io/badge/version-2.3.0-blue)]()
-[![License](https://img.shields.io/badge/license-Proprietary-red)]()
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
@@ -175,4 +175,4 @@ Spiral Tube is engineered for maximum performance within YouTube's heavy Single 
 
 ## 🤝 Contributing & License
 Contributions are welcome! Please follow standard PR workflows and test heavily on YouTube due to frequent A/B testing variations.
-This project is licensed under a **Proprietary License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
