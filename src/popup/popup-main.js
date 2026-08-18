@@ -1,3 +1,4 @@
+window.addEventListener("error", (e) => { alert("JS Error: " + e.message + " at " + e.filename + ":" + e.lineno); });
 import '../content/config/constants.js';
 import '../content/config/settings-schema.js';
 import '../content/config/utils.js';
@@ -1250,8 +1251,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
             color = '#ffaa00';
         }
         input.style.setProperty('--range-progress', percent + '%');
-        input.style.background = `linear-gradient(90deg, ${color} ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;%, rgba(255,255,255,0.1) ${percent}%)`;
-        }
+        input.style.background = `linear-gradient(90deg, ${color} ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
     };
 
     styledRanges.forEach(input => {
