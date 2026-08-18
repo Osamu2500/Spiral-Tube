@@ -1178,3 +1178,112 @@ function initGlowButtons() {
 }
 
 // Call it after components are rendered
+
+
+// --- POPUP SCALE ENHANCEMENTS ---
+function initPopupScaleEnhancements(doc, saveSettings) {
+    // 1. Precision +/- Buttons
+    doc.querySelectorAll('.range-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.dataset.target;
+            const input = doc.getElementById(targetId);
+            if (!input) return;
+
+            const step = parseFloat(input.step) || 1;
+            const min = parseFloat(input.min) || 0;
+            const max = parseFloat(input.max) || 100;
+            let val = parseFloat(input.value);
+
+            if (btn.classList.contains('btn-minus')) {
+                val = Math.max(min, val - step);
+            } else {
+                val = Math.min(max, val + step);
+            }
+
+            // Round to avoid floating point weirdness
+            input.value = Number(val.toFixed(2));
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    });
+
+    // 2. Dynamic Progress Track
+    const styledRanges = doc.querySelectorAll('.styled-range');
+    const updateRangeProgress = (input) => {
+        const min = parseFloat(input.min) || 0;
+        const max = parseFloat(input.max) || 100;
+        const val = parseFloat(input.value) || 0;
+        const percent = ((val - min) / (max - min)) * 100;
+        input.style.setProperty('--range-progress', percent + '%');
+
+        // Warning colors for extremes
+        if (input.id === 'popupWidth' && val >= 750) {
+            input.style.background = `linear-gradient(90deg, #ff4444 ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
+        } else if (input.id === 'popupZoom' && (val <= 0.3 || val >= 0.9)) {
+            input.style.background = `linear-gradient(90deg, #ffaa00 ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
+        } else {
+            input.style.background = `linear-gradient(90deg, var(--accent-primary) ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
+        }
+    };
+
+    styledRanges.forEach(input => {
+        updateRangeProgress(input);
+        input.addEventListener('input', () => updateRangeProgress(input));
+    });
+
+    // 3. Segmented Grid Picker
+    const gridPicker = doc.getElementById('featureGridColsSegmented');
+    const gridInput = doc.getElementById('featureGridCols');
+    if (gridPicker && gridInput) {
+        const updateActiveSegment = () => {
+            gridPicker.querySelectorAll('.segment-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === gridInput.value);
+            });
+        };
+        
+        gridPicker.querySelectorAll('.segment-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                gridInput.value = btn.dataset.value;
+                updateActiveSegment();
+                gridInput.dispatchEvent(new Event('change', { bubbles: true }));
+                doc.getElementById('featureGridColsValue').textContent = gridInput.value;
+            });
+        });
+
+        // Initialize display
+        setTimeout(updateActiveSegment, 100);
+        gridInput.addEventListener('change', updateActiveSegment);
+    }
+
+    // 4. Smart Presets
+    const presetDefault = doc.getElementById('presetScaleDefault');
+    const presetCompact = doc.getElementById('presetScaleCompact');
+    const presetWide = doc.getElementById('presetScaleWide');
+
+    const setScale = (zoom, width, height, grid) => {
+        const setVal = (id, val) => {
+            const el = doc.getElementById(id);
+            if (el) {
+                el.value = val;
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        };
+        setVal('popupZoom', zoom);
+        setVal('popupWidth', width);
+        setVal('popupHeight', height);
+        setVal('featureGridCols', grid);
+        
+        // Ensure segmented button updates visually
+        if (gridInput) {
+            gridInput.value = grid;
+            gridPicker.querySelectorAll('.segment-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === String(grid));
+            });
+        }
+    };
+
+    if (presetDefault) presetDefault.addEventListener('click', () => setScale(0.6, 560, 600, 4));
+    if (presetCompact) presetCompact.addEventListener('click', () => setScale(0.5, 450, 500, 3));
+    if (presetWide)    presetWide.addEventListener('click', () => setScale(0.8, 800, 600, 6));
+}
