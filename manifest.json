@@ -12,6 +12,7 @@
         "notifications"
     ],
     "host_permissions": [
+        "<all_urls>",
         "*://www.youtube.com/*",
         "*://returnyoutubedislikeapi.com/*",
         "*://sponsor.ajay.app/*"
@@ -52,7 +53,7 @@
         },
         {
             "matches": [
-                "*://www.youtube.com/*"
+                "<all_urls>"
             ],
             "exclude_matches": [
                 "*://*.youtube.com/*",

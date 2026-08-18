@@ -139,6 +139,14 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         }
     }
 
+    _proxyCmd(cmd, value) {
+        if (this._boundVideo && this._boundVideo._proxy) {
+            this._boundVideo[`vb_${cmd}`] = value;
+            return true;
+        }
+        return false;
+    }
+
     setVinylMode(enabled) {
         this._vinylMode = !!enabled;
         if (this._boundVideo) {
@@ -148,6 +156,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setPlaybackRate(rate) {
         this._playbackRate = rate;
+        if (this._proxyCmd('setPlaybackRate', rate)) return;
         if (this._boundVideo) {
             this._boundVideo.playbackRate = rate;
         }
@@ -171,6 +180,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setReverbEnvironment(envName) {
         this._reverbEnv = envName;
+        if (this._proxyCmd('setReverbEnvironment', envName)) return;
         if (!this.reverbNode) return;
         
         let duration = 0, decay = 0;
@@ -191,6 +201,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     
     setReverbMix(value) {
         this._reverbMix = value;
+        if (this._proxyCmd('setReverbMix', value)) return;
         if (this._bypassed) return;
         if (this.reverbDryGain && this.reverbWetGain && this.ctx) {
             if (this.ctx.state === 'suspended') this.ctx.resume().catch(()=>{});
@@ -201,6 +212,11 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
     }
 
     setPhaseInvert(channel, inverted) {
+        if (this._proxyCmd('setPhaseInvert', [channel, inverted])) {
+            if (channel === 'L') this._invertL = inverted;
+            else if (channel === 'R') this._invertR = inverted;
+            return;
+        }
         if (channel === 'L') {
             this._invertL = inverted;
             if (this.phaseGainL) this.phaseGainL.gain.value = inverted ? -1 : 1;
@@ -212,6 +228,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setAutoGain(enabled) {
         this._autoGain = enabled;
+        if (this._proxyCmd('setAutoGain', enabled)) return;
         if (this.agcNode && this.agcMakeup) {
             this.agcNode.ratio.value = enabled ? 10 : 1;
             this.agcMakeup.gain.value = enabled ? 4.0 : 1.0;
@@ -220,6 +237,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setBypass(enabled) {
         this._bypassed = enabled;
+        if (this._proxyCmd('setBypass', enabled)) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
             if (video) this.initAudioContext(video);
@@ -861,6 +879,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setVolume(multiplier) {
         this._volumeGain = multiplier;
+        if (this._proxyCmd('setVolume', multiplier)) return;
         if (this._bypassed) return;
         // FIX Bug 2: Only use _needsAudioGraph as lazy-init guard (not in enable/onVideoChange)
         if (!this._audioConnected && this._needsAudioGraph()) {
@@ -876,6 +895,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setBalance(value) {
         this._balance = value;
+        if (this._proxyCmd('setBalance', value)) return;
         if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
@@ -889,6 +909,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setWidth(value) {
         this._stereoWidth = value;
+        if (this._proxyCmd('setWidth', value)) return;
         if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
@@ -902,6 +923,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     setMono(enabled, forceBypass = false) {
         if (!forceBypass) this._monoEnabled = enabled;
+        if (this._proxyCmd('setMono', [enabled, forceBypass])) return;
         const targetMono = forceBypass ? false : (this._bypassed ? false : this._monoEnabled);
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
@@ -929,6 +951,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
 
     _setEQBand(index, db) {
         this._eqGains[index] = db;
+        if (this._proxyCmd('_setEQBand', [index, db])) return;
         if (this._bypassed) return;
         if (!this._audioConnected && this._needsAudioGraph()) {
             const video = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
@@ -977,7 +1000,7 @@ export class VolumeBooster extends window.YPP.features.BaseFeature {
         this.addListener(btn, 'click', (e) => {
             e.stopPropagation();
             if (window.YPP.features.VolumeBoosterUI) {
-                const activeVideo = document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
+                const activeVideo = this._boundVideo || document.querySelector(window.YPP.CONSTANTS.SELECTORS.VIDEO[0]) || document.querySelector('video');
                 // Synchronously initialize AudioContext during a guaranteed user gesture (click)
                 // This prevents the AudioContext from being created in a 'suspended' state,
                 // which would otherwise cause the video to buffer and the audio to mute.

@@ -479,8 +479,7 @@ export class DomainMemory extends (window.YPP?.features?.BaseFeature || class { 
     }
 
     async _executeSaveProfile() {
-        if (!this._isRemembering) return;
-
+        if (!this._isRemembering || this._readOnlyMode) return;
         const activeKey = this.getScopeKey();
         const p = this._domainProfile || { enabled: true };
         p.lastUpdated = Date.now();

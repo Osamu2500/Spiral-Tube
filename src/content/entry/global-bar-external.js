@@ -239,6 +239,7 @@
     if (window.YPP.features.DomainMemory) {
         instances['domainMemory'] = new window.YPP.features.DomainMemory();
         instances['domainMemory'].init(instances, settings);
+        if (isInsideIframe) instances['domainMemory']._readOnlyMode = true;
         // Bug 3A fix: await so loadDomainProfile() finishes before restoreProfile() is called
         await instances['domainMemory'].enable();
     }
@@ -309,15 +310,20 @@
 
             // Heartbeat
             heartbeatInterval = setInterval(() => {
-                if (video.isConnected) relay('heartbeat');
+                if (video.isConnected && video.offsetWidth > 0) {
+                    relay('heartbeat');
+                } else {
+                    relay('video-hidden');
+                }
             }, 1000);
 
             // Re-arm main observer if video is removed
             removalObserver = new MutationObserver(() => {
-                if (!document.contains(video)) {
+                if (!document.contains(video) || video.offsetWidth === 0) {
                     removalObserver.disconnect();
                     removalObserver = null;
                     clearInterval(heartbeatInterval);
+                    relay('video-hidden');
                     activeVideo = null;
                     startMainObserver();
                 }
@@ -403,6 +409,18 @@
             if (cmd === 'injectSVGSharpness' && window.YPP?.features?.VideoFiltersOverlay) {
                 window.YPP.features.VideoFiltersOverlay.injectSVGSharpness(value);
             }
+
+            // Handle Volume Booster real-time commands
+            if (typeof cmd === 'string' && cmd.startsWith('vb_') && instances['volumeBoost']) {
+                const method = cmd.replace('vb_', '');
+                if (typeof instances['volumeBoost'][method] === 'function') {
+                    if (Array.isArray(value)) {
+                        instances['volumeBoost'][method](...value);
+                    } else {
+                        instances['volumeBoost'][method](value);
+                    }
+                }
+            }
         });
 
         return; // Do NOT create GlobalPlayerBar inside iframe
@@ -439,7 +457,9 @@
         const handleHeartbeatLoss = () => {
             window.YPP.Utils.log('Iframe heartbeat lost. Connection reset.', 'Bridge', 'warn');
             if (proxyVideo && proxyVideo._internalState) proxyVideo._internalState.isConnected = false;
+            if (proxyVideo && bar.ui) bar.ui._untrackVideo(proxyVideo);
             bridgedIframe = null;
+            proxyVideo = null;
         };
 
         const sendCommand = (cmd, value) => {
@@ -468,6 +488,11 @@
                 if (capsChanged && bar._globalBarUI) {
                     bar._globalBarUI.updateButtonVisibility();
                 }
+            }
+
+            if (evtType === 'video-hidden') {
+                handleHeartbeatLoss();
+                return;
             }
 
             // Heartbeat processing
@@ -530,10 +555,13 @@
                         target[key] = value; // Update local state for UI reads
                         // Relay to iframe video
                         if (key === 'muted')        sendCommand(value ? 'mute' : 'unmute');
-                        if (key === 'volume')        sendCommand('volume', value);
-                        if (key === 'playbackRate')  sendCommand('rate', value);
-                        if (key === 'loop')          sendCommand('loop');
-                        if (key === 'currentTime')   sendCommand('seek', value);
+                        if (key === 'volume')       sendCommand('volume', value);
+                        if (key === 'playbackRate') sendCommand('rate', value);
+                        if (key === 'loop')         sendCommand('loop');
+                        if (key === 'currentTime')  sendCommand('seek', value);
+                        if (typeof key === 'string' && key.startsWith('vb_')) {
+                            sendCommand(key, value);
+                        }
                         return true;
                     }
                 });
@@ -541,6 +569,10 @@
                 // Inject bar with the proxy video
                 if (bar.ui && !bar.ui.hasVideo(proxyVideo)) {
                     bar.ui.trackVideo(proxyVideo);
+                    if (instances['volumeBoost']) {
+                        instances['volumeBoost']._boundVideo = proxyVideo;
+                        instances['volumeBoost']._audioConnected = true;
+                    }
                 }
 
                 // Send the initial domain profile to the iframe so it applies immediately on load
