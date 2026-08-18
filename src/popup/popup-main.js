@@ -890,9 +890,9 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
         }
     });
 
-    ['fontScale', 'popupZoom', 'popupWidth', 'popupHeight', 'featureGridCols'].forEach(id => {
+    ['fontScale', 'popupZoom', 'popupWidth', 'popupHeight', 'featureGridCols', 'popupDensity', 'popupRadius'].forEach(id => {
         const el = document.getElementById(id);
-        const suffix = id === 'fontScale' ? '%' : ((id === 'popupWidth' || id === 'popupHeight') ? 'px' : '');
+        const suffix = id === 'fontScale' ? '%' : ((id === 'popupWidth' || id === 'popupHeight' || id === 'popupRadius') ? 'px' : '');
         const disp = document.getElementById(id + 'Value');
         if (el) {
             el.addEventListener('input', () => {
@@ -911,6 +911,12 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                 }
                 if (id === 'featureGridCols') {
                     document.documentElement.style.setProperty('--feature-grid-cols', el.value);
+                }
+                if (id === 'popupDensity') {
+                    document.documentElement.style.setProperty('--ui-density', el.value);
+                }
+                if (id === 'popupRadius') {
+                    document.documentElement.style.setProperty('--ui-radius', el.value + 'px');
                 }
                 saveSettings(() => UI.showSaveIndicator(document));
             });
@@ -1039,6 +1045,12 @@ const initApp = async () => {
                 
                 if (settings.fontScale) {
                     document.documentElement.style.setProperty('--ui-font-scale', (settings.fontScale / 100).toFixed(2));
+                }
+                if (settings.popupDensity) {
+                    document.documentElement.style.setProperty('--ui-density', settings.popupDensity);
+                }
+                if (settings.popupRadius !== undefined) {
+                    document.documentElement.style.setProperty('--ui-radius', settings.popupRadius + 'px');
                 }
                 if (settings.popupZoom) {
                     document.documentElement.style.setProperty('--popup-zoom', settings.popupZoom);
@@ -1248,6 +1260,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
             btn.addEventListener('click', () => {
                 gridInput.value = btn.dataset.value;
                 updateActiveSegment();
+                gridInput.dispatchEvent(new Event('input', { bubbles: true }));
                 gridInput.dispatchEvent(new Event('change', { bubbles: true }));
                 doc.getElementById('featureGridColsValue').textContent = gridInput.value;
             });
@@ -1263,7 +1276,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
     const presetCompact = doc.getElementById('presetScaleCompact');
     const presetWide = doc.getElementById('presetScaleWide');
 
-    const setScale = (zoom, width, height, grid, font = 100) => {
+    const setScale = (zoom, width, height, grid, font = 100, density = 1.0, radius = 12) => {
         const setVal = (id, val) => {
             const el = doc.getElementById(id);
             if (el) {
@@ -1274,6 +1287,8 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         };
         setVal('popupZoom', zoom);
         setVal('fontScale', font);
+        setVal('popupDensity', density);
+        setVal('popupRadius', radius);
         setVal('popupWidth', width);
         setVal('popupHeight', height);
         setVal('featureGridCols', grid);
@@ -1287,7 +1302,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         }
     };
 
-    if (presetDefault) presetDefault.addEventListener('click', () => setScale(0.6, 560, 600, 4, 100));
-    if (presetCompact) presetCompact.addEventListener('click', () => setScale(0.5, 450, 500, 3, 90));
-    if (presetWide)    presetWide.addEventListener('click', () => setScale(0.8, 800, 600, 6, 110));
+    if (presetDefault) presetDefault.addEventListener('click', () => setScale(0.6, 560, 600, 4, 100, 1.0, 12));
+    if (presetCompact) presetCompact.addEventListener('click', () => setScale(0.5, 450, 500, 3, 90, 0.8, 8));
+    if (presetWide)    presetWide.addEventListener('click', () => setScale(0.8, 800, 600, 6, 110, 1.2, 16));
 }
