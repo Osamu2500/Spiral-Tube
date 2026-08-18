@@ -5496,4 +5496,14 @@ body.ypp-ui-extra-rounded ytd-button-renderer {
     flex-shrink: 0 !important;
 }
 
-
+/* HARD OVERRIDE FOR PIPELINE HIDE */
+html body .ypp-hidden,
+html body .ypp-hidden-by-pipeline {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}

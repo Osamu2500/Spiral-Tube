@@ -123,7 +123,54 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
         const target = this._getOutermostCard(card);
         if (!target) return;
 
-        if (!forceReevaluate && target.hasAttribute('data-ypp-v3-processed')) return;
+        // 0. Quick ID extraction to detect Polymer DOM recycling
+        let currentVideoId = null;
+        const attrId = target.dataset.videoId || target.dataset.ytVideoId || target.getAttribute('video-id');
+        const thumb = target.querySelector('ytd-thumbnail[video-id]');
+        const lockup = target.matches('yt-lockup-view-model, ytd-lockup-view-model') ? target : target.querySelector('yt-lockup-view-model, ytd-lockup-view-model');
+        
+        if (attrId) currentVideoId = attrId;
+        else if (thumb) currentVideoId = thumb.getAttribute('video-id');
+        else if (lockup) currentVideoId = lockup.getAttribute('video-id');
+        else {
+            const anchor = target.querySelector('a#thumbnail') || target.querySelector('a[href^="/watch"], a[href^="/shorts"]');
+            if (anchor) {
+                const href = anchor.getAttribute('href') || '';
+                const m = href.match(/[?&]v=([^&]+)/);
+                if (m) currentVideoId = m[1];
+                else {
+                    const s = href.match(/\/shorts\/([A-Za-z0-9_-]{11})/);
+                    if (s) currentVideoId = s[1];
+                }
+            }
+        }
+
+        const isRecycled = currentVideoId && target.dataset.yppV3ProcessedId && target.dataset.yppV3ProcessedId !== currentVideoId;
+
+        if (isRecycled) {
+            // Node was recycled for a new video. Clean up old state!
+            target.removeAttribute('data-ypp-v3-processed');
+            target.removeAttribute('data-ypp-v3-processed-id');
+            target.removeAttribute('data-ypp-hidden-by');
+            target.removeAttribute('data-ypp-hidden-reason');
+            target.removeAttribute('data-ypp-dim-by');
+            target.removeAttribute('data-ypp-dim-reason');
+            target.removeAttribute('data-ypp-dimmed');
+            target.classList.remove('ypp-hidden', 'ypp-hidden-by-pipeline', 'ypp-dim-badge');
+            target.style.removeProperty('display');
+        }
+
+        if (!forceReevaluate && target.hasAttribute('data-ypp-v3-processed')) {
+            // Self-Healing: Re-apply visual states if YouTube's virtual DOM wiped the class/style
+            if (target.dataset.yppHiddenBy === 'CardPipeline') {
+                target.classList.add('ypp-hidden', 'ypp-hidden-by-pipeline');
+                target.style.display = 'none';
+            } else if (target.dataset.yppDimBy === 'CardPipeline') {
+                target.classList.add('ypp-dim-badge');
+                // Ensure opacity is applied since we rely on class mostly, but just in case
+            }
+            return;
+        }
 
         // 1. Extract unified metadata
         const context = this._extractContext(target);
@@ -143,6 +190,7 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
 
         if (context.fullyParsed !== false) {
             target.setAttribute('data-ypp-v3-processed', '1');
+            if (context.videoId) target.dataset.yppV3ProcessedId = context.videoId;
         }
 
         // 3. Resolve verdicts
@@ -216,12 +264,34 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
 
             // Views & Age
             const spans = card.querySelectorAll('span');
-            const viewsResult = parsers.resolveViewsFromSpans(spans);
-            if (viewsResult && viewsResult.views !== undefined) ctx.views = viewsResult.views;
-            else if (!ctx.isLive && !ctx.isUpcoming) ctx.fullyParsed = false; // Missing views on a regular video means it hasn't loaded
+            
+            // Views
+            let viewsResult = parsers.resolveViewsFromSpans(spans);
+            if (viewsResult && viewsResult.views !== undefined) {
+                ctx.views = viewsResult.views;
+            } else if (titleEl && titleEl.getAttribute('aria-label')) {
+                const fallbackResult = parsers.extractViewCount(titleEl.getAttribute('aria-label'));
+                if (fallbackResult && typeof fallbackResult === 'object' && fallbackResult.views !== undefined) {
+                    ctx.views = fallbackResult.views;
+                } else if (!isNaN(fallbackResult)) {
+                    ctx.views = fallbackResult;
+                }
+            }
+            
+            if (ctx.views === undefined && !ctx.isLive && !ctx.isUpcoming) {
+                ctx.fullyParsed = false; // Missing views on a regular video means it hasn't loaded
+            }
 
-            const ageResult = parsers.resolveUploadAgeFromSpans(spans);
-            if (ageResult && ageResult.ageDays !== undefined) ctx.ageDays = ageResult.ageDays;
+            // Age
+            let ageResult = parsers.resolveUploadAgeFromSpans(spans);
+            if (ageResult && ageResult.ageDays !== undefined) {
+                ctx.ageDays = ageResult.ageDays;
+            } else if (titleEl && titleEl.getAttribute('aria-label')) {
+                const fallbackAge = parsers.extractUploadAgeDays(titleEl.getAttribute('aria-label'));
+                if (!isNaN(fallbackAge) && fallbackAge >= 0) {
+                    ctx.ageDays = fallbackAge;
+                }
+            }
             else if (!ctx.isLive && !ctx.isUpcoming) ctx.fullyParsed = false; // Missing age
             
             // Duration
@@ -237,6 +307,16 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
                 ctx.progressPercent = parseFloat(widthStr);
             } else if (progressBar.getAttribute('aria-valuenow')) {
                 ctx.progressPercent = parseFloat(progressBar.getAttribute('aria-valuenow'));
+            } else {
+                // Fallback: Rendered box geometry vs parent width (catches CSS variable / class styling)
+                try {
+                    const rect = progressBar.getBoundingClientRect();
+                    const parent = progressBar.parentElement;
+                    if (rect.width > 0 && parent && parent.clientWidth > 0) {
+                        const pct = Math.round((rect.width / parent.clientWidth) * 100);
+                        if (pct > 0 && pct <= 100) ctx.progressPercent = pct;
+                    }
+                } catch (e) {}
             }
         }
 
@@ -272,6 +352,8 @@ export class CardPipeline extends window.YPP.features.BaseFeature {
             delete target.dataset.yppHiddenReason;
             delete target.dataset.yppHiddenBy;
             target.style.removeProperty('display');
+            
+            target.dataset.yppDimBy = 'CardPipeline';
             
             if (window.YPP.utils?.filterUI?.applyDimMode) {
                 window.YPP.utils.filterUI.applyDimMode(target, reasons, context.channelPath);
