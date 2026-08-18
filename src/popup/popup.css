@@ -412,8 +412,12 @@ body {
 *, *::before, *::after { box-sizing: border-box; }
 body {
   margin: 0; padding: 6px;
-  width: 800px; height: 858px;
-  zoom: 0.7;
+  --popup-zoom: 0.6;
+  --popup-width: 560px;
+  --popup-height: 600px;
+  width: calc(var(--popup-width) / var(--popup-zoom));
+  height: calc(var(--popup-height) / var(--popup-zoom));
+  zoom: var(--popup-zoom);
   font-family: 'Inter', sans-serif;
   background: radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent-primary) 12%, #08080a) 0%, transparent 60%),
               radial-gradient(circle at 90% 90%, color-mix(in srgb, var(--accent-secondary) 12%, #08080a) 0%, transparent 60%),
@@ -806,7 +810,7 @@ body {
 /* ─── Feature grid ─── */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--feature-grid-cols, 4), 1fr);
   gap: 8px;
 }
 
@@ -1607,7 +1611,7 @@ kbd {
 
 /* ─── Experimental Glowing Tiles UI ─── */
 body .feature-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(var(--feature-grid-cols, 4), 1fr);
     grid-auto-flow: row dense;
     gap: 8px;
 }
@@ -2331,7 +2335,7 @@ body.global-search-active .settings-section { margin-bottom: 24px; }
 }
 
 
-.action-btn, .theme-btn, .card-style-btn, .nav-item, .feature-card, .setting-card, .toggle-card, .preset-card, .mode-card {
+.action-btn, .theme-btn, .card-style-btn, .feature-card, .setting-card, .toggle-card, .preset-card, .mode-card {
   overflow: visible !important;
 }
 

@@ -1,5 +1,5 @@
 function initGlowButtons() {
-  const buttons = document.querySelectorAll('.action-btn, .theme-btn, .card-style-btn, .nav-item, .feature-card, .setting-card, .toggle-card, .preset-card, .mode-card');
+  const buttons = document.querySelectorAll('.action-btn, .theme-btn, .card-style-btn, .feature-card, .setting-card, .toggle-card, .preset-card, .mode-card');
   
   buttons.forEach(btn => {
     btn.classList.add('glow');

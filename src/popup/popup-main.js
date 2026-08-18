@@ -890,15 +890,27 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
         }
     });
 
-    ['fontScale'].forEach(id => {
+    ['fontScale', 'popupZoom', 'popupWidth', 'popupHeight', 'featureGridCols'].forEach(id => {
         const el = document.getElementById(id);
-        const suffix = '%';
+        const suffix = id === 'fontScale' ? '%' : ((id === 'popupWidth' || id === 'popupHeight') ? 'px' : '');
         const disp = document.getElementById(id + 'Value');
         if (el) {
             el.addEventListener('input', () => {
                 if (disp) disp.textContent = el.value + suffix;
                 if (id === 'fontScale') {
                     document.documentElement.style.setProperty('--ui-font-scale', (el.value / 100).toFixed(2));
+                }
+                if (id === 'popupZoom') {
+                    document.body.style.setProperty('--popup-zoom', el.value);
+                }
+                if (id === 'popupWidth') {
+                    document.body.style.setProperty('--popup-width', el.value + 'px');
+                }
+                if (id === 'popupHeight') {
+                    document.body.style.setProperty('--popup-height', el.value + 'px');
+                }
+                if (id === 'featureGridCols') {
+                    document.body.style.setProperty('--feature-grid-cols', el.value);
                 }
                 saveSettings(() => UI.showSaveIndicator(document));
             });
@@ -1024,6 +1036,19 @@ const initApp = async () => {
                 document.body.className = `ypp-theme-${popupTheme}`;
                 const themeSelect = document.getElementById('popupUiTheme');
                 if (themeSelect) themeSelect.value = popupTheme;
+                
+                if (settings.popupZoom) {
+                    document.body.style.setProperty('--popup-zoom', settings.popupZoom);
+                }
+                if (settings.popupWidth) {
+                    document.body.style.setProperty('--popup-width', settings.popupWidth + 'px');
+                }
+                if (settings.popupHeight) {
+                    document.body.style.setProperty('--popup-height', settings.popupHeight + 'px');
+                }
+                if (settings.featureGridCols) {
+                    document.body.style.setProperty('--feature-grid-cols', settings.featureGridCols);
+                }
             }
         ]);
 
@@ -1121,7 +1146,7 @@ if (document.readyState === 'loading') {
 
 
 function initGlowButtons() {
-  const buttons = document.querySelectorAll('.action-btn, .theme-btn, .card-style-btn, .nav-item');
+  const buttons = document.querySelectorAll('.action-btn, .theme-btn, .card-style-btn');
   
   buttons.forEach(btn => {
     btn.classList.add('glow');
