@@ -1037,6 +1037,9 @@ const initApp = async () => {
                 const themeSelect = document.getElementById('popupUiTheme');
                 if (themeSelect) themeSelect.value = popupTheme;
                 
+                if (settings.fontScale) {
+                    document.documentElement.style.setProperty('--ui-font-scale', (settings.fontScale / 100).toFixed(2));
+                }
                 if (settings.popupZoom) {
                     document.documentElement.style.setProperty('--popup-zoom', settings.popupZoom);
                 }
@@ -1260,7 +1263,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
     const presetCompact = doc.getElementById('presetScaleCompact');
     const presetWide = doc.getElementById('presetScaleWide');
 
-    const setScale = (zoom, width, height, grid) => {
+    const setScale = (zoom, width, height, grid, font = 100) => {
         const setVal = (id, val) => {
             const el = doc.getElementById(id);
             if (el) {
@@ -1270,6 +1273,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
             }
         };
         setVal('popupZoom', zoom);
+        setVal('fontScale', font);
         setVal('popupWidth', width);
         setVal('popupHeight', height);
         setVal('featureGridCols', grid);
@@ -1283,7 +1287,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         }
     };
 
-    if (presetDefault) presetDefault.addEventListener('click', () => setScale(0.6, 560, 600, 4));
-    if (presetCompact) presetCompact.addEventListener('click', () => setScale(0.5, 450, 500, 3));
-    if (presetWide)    presetWide.addEventListener('click', () => setScale(0.8, 800, 600, 6));
+    if (presetDefault) presetDefault.addEventListener('click', () => setScale(0.6, 560, 600, 4, 100));
+    if (presetCompact) presetCompact.addEventListener('click', () => setScale(0.5, 450, 500, 3, 90));
+    if (presetWide)    presetWide.addEventListener('click', () => setScale(0.8, 800, 600, 6, 110));
 }
