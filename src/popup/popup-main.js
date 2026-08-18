@@ -901,16 +901,16 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                     document.documentElement.style.setProperty('--ui-font-scale', (el.value / 100).toFixed(2));
                 }
                 if (id === 'popupZoom') {
-                    document.body.style.setProperty('--popup-zoom', el.value);
+                    document.documentElement.style.setProperty('--popup-zoom', el.value);
                 }
                 if (id === 'popupWidth') {
-                    document.body.style.setProperty('--popup-width', el.value + 'px');
+                    document.documentElement.style.setProperty('--popup-width', el.value + 'px');
                 }
                 if (id === 'popupHeight') {
-                    document.body.style.setProperty('--popup-height', el.value + 'px');
+                    document.documentElement.style.setProperty('--popup-height', el.value + 'px');
                 }
                 if (id === 'featureGridCols') {
-                    document.body.style.setProperty('--feature-grid-cols', el.value);
+                    document.documentElement.style.setProperty('--feature-grid-cols', el.value);
                 }
                 saveSettings(() => UI.showSaveIndicator(document));
             });
@@ -1038,16 +1038,16 @@ const initApp = async () => {
                 if (themeSelect) themeSelect.value = popupTheme;
                 
                 if (settings.popupZoom) {
-                    document.body.style.setProperty('--popup-zoom', settings.popupZoom);
+                    document.documentElement.style.setProperty('--popup-zoom', settings.popupZoom);
                 }
                 if (settings.popupWidth) {
-                    document.body.style.setProperty('--popup-width', settings.popupWidth + 'px');
+                    document.documentElement.style.setProperty('--popup-width', settings.popupWidth + 'px');
                 }
                 if (settings.popupHeight) {
-                    document.body.style.setProperty('--popup-height', settings.popupHeight + 'px');
+                    document.documentElement.style.setProperty('--popup-height', settings.popupHeight + 'px');
                 }
                 if (settings.featureGridCols) {
-                    document.body.style.setProperty('--feature-grid-cols', settings.featureGridCols);
+                    document.documentElement.style.setProperty('--feature-grid-cols', settings.featureGridCols);
                 }
             }
         ]);

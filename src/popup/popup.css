@@ -410,11 +410,18 @@ body {
 
 /* ─── Reset ─── */
 *, *::before, *::after { box-sizing: border-box; }
-body {
-  margin: 0; padding: 6px;
+:root {
   --popup-zoom: 0.6;
   --popup-width: 560px;
   --popup-height: 600px;
+}
+html {
+  width: var(--popup-width);
+  height: var(--popup-height);
+  overflow: hidden;
+}
+body {
+  margin: 0; padding: 6px;
   width: calc(var(--popup-width) / var(--popup-zoom));
   height: calc(var(--popup-height) / var(--popup-zoom));
   zoom: var(--popup-zoom);

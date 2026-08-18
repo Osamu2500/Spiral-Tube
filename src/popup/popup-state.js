@@ -102,7 +102,8 @@ export function loadSettings(updateUICallbacks) {
                         el.value = state.settings[key] !== undefined ? state.settings[key] : (defaultSettings[key] !== undefined ? defaultSettings[key] : el.value);
                         const display = document.getElementById(key + 'Value');
                         if (display) {
-                            display.textContent = el.value;
+                            const suffix = key === 'fontScale' ? '%' : ((key === 'popupWidth' || key === 'popupHeight') ? 'px' : '');
+                            display.textContent = el.value + suffix;
                         }
                     } else if (el.type === 'color' || el.type === 'text' || el.type === 'select-one') {
                         el.value = state.settings[key] || defaultSettings[key] || '';
