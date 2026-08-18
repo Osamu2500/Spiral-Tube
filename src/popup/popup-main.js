@@ -1087,6 +1087,7 @@ const initApp = async () => {
         initUniversalListeners(document, state, UI, saveSettings);
         initMiscButtons(document, saveSettings, loadSettings);
         initPresets(document, saveSettings, UI);
+        initPopupScaleEnhancements(document, saveSettings);
 
         // 6. Remaining Sub-systems
         initHistoryWidget();

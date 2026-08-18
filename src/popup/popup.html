@@ -1034,7 +1034,17 @@
                     <span class="name slider-name" data-i18n="zoom_level">Zoom Level</span>
                     <span class="desc slider-value" id="popupZoomValue">0.6</span>
                   </div>
-                  <input type="range" id="popupZoom" min="0.2" max="1.0" step="0.05" aria-label="Popup Zoom" title="Popup Zoom" class="full-width-range">
+                  <div class="range-with-buttons">
+    <button type="button" class="range-btn btn-minus" data-target="popupZoom">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+    </button>
+    <div class="range-track-wrap">
+      <input type="range" id="popupZoom" min="0.2" max="1.0" step="0.05" aria-label="Popup Zoom" title="Popup Zoom" class="full-width-range styled-range">
+    </div>
+    <button type="button" class="range-btn btn-plus" data-target="popupZoom">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+    </button>
+  </div>
                 </div>
                 
                 <div class="slider-item slider-item-pill">
@@ -1042,7 +1052,17 @@
                     <span class="name slider-name">Popup Width</span>
                     <span class="desc slider-value" id="popupWidthValue">560px</span>
                   </div>
-                  <input type="range" id="popupWidth" min="400" max="800" step="10" aria-label="Popup Width" title="Popup Width" class="full-width-range">
+                  <div class="range-with-buttons">
+    <button type="button" class="range-btn btn-minus" data-target="popupWidth">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+    </button>
+    <div class="range-track-wrap">
+      <input type="range" id="popupWidth" min="400" max="800" step="10" aria-label="Popup Width" title="Popup Width" class="full-width-range styled-range">
+    </div>
+    <button type="button" class="range-btn btn-plus" data-target="popupWidth">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+    </button>
+  </div>
                 </div>
                 
                 <div class="slider-item slider-item-pill">
@@ -1050,17 +1070,39 @@
                     <span class="name slider-name">Popup Height</span>
                     <span class="desc slider-value" id="popupHeightValue">600px</span>
                   </div>
-                  <input type="range" id="popupHeight" min="400" max="600" step="10" aria-label="Popup Height" title="Popup Height" class="full-width-range">
+                  <div class="range-with-buttons">
+    <button type="button" class="range-btn btn-minus" data-target="popupHeight">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+    </button>
+    <div class="range-track-wrap">
+      <input type="range" id="popupHeight" min="400" max="600" step="10" aria-label="Popup Height" title="Popup Height" class="full-width-range styled-range">
+    </div>
+    <button type="button" class="range-btn btn-plus" data-target="popupHeight">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+    </button>
+  </div>
                 </div>
                 
                 <div class="slider-item slider-item-pill">
                   <div class="slider-header slider-header-spaced">
                     <span class="name slider-name">Extension Grid</span>
-                    <span class="desc slider-value" id="featureGridColsValue">4</span>
-                  </div>
-                  <input type="range" id="featureGridCols" min="2" max="7" step="1" aria-label="Feature Grid Cols" title="Feature Grid Cols" class="full-width-range">
+                    </div>
+    <div class="segmented-picker" id="featureGridColsSegmented">
+      <button type="button" class="segment-btn" data-value="2">2</button>
+      <button type="button" class="segment-btn" data-value="3">3</button>
+      <button type="button" class="segment-btn" data-value="4">4</button>
+      <button type="button" class="segment-btn" data-value="5">5</button>
+      <button type="button" class="segment-btn" data-value="6">6</button>
+      <button type="button" class="segment-btn" data-value="7">7</button>
+    </div>
+    <input type="hidden" id="featureGridCols" value="4">
                 </div>
               </div>
+              </div>
+            <div class="scale-presets">
+              <button type="button" class="preset-btn" id="presetScaleDefault">Reset Defaults</button>
+              <button type="button" class="preset-btn" id="presetScaleCompact">Compact</button>
+              <button type="button" class="preset-btn" id="presetScaleWide">Ultra-Wide</button>
             </div>
           </div>
 
