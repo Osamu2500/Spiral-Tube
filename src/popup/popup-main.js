@@ -1123,6 +1123,17 @@ const initApp = async () => {
         const _removeSkeleton = () => {
             document.body.classList.remove('popup-loading');
             convertStaticDescriptionsToHelpButtons(document);
+            // Sync slider tracks after loading settings
+            document.querySelectorAll('.styled-range').forEach(input => {
+                const min = parseFloat(input.min) || 0;
+                const max = parseFloat(input.max) || 100;
+                const val = parseFloat(input.value) || 0;
+                const percent = ((val - min) / (max - min)) * 100;
+                let color = 'var(--accent-primary)';
+                if (input.id === 'popupWidth' && val >= 750) color = '#ff4444';
+                else if (input.id === 'popupZoom' && (val <= 0.3 || val >= 0.9)) color = '#ffaa00';
+                input.style.background = `linear-gradient(90deg, ${color} ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
+            });
             
             // Spring stagger intro animations
             if (window.anime) {
@@ -1232,12 +1243,14 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         input.style.setProperty('--range-progress', percent + '%');
 
         // Warning colors for extremes
+        let color = 'var(--accent-primary)';
         if (input.id === 'popupWidth' && val >= 750) {
-            input.style.background = `linear-gradient(90deg, #ff4444 ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
+            color = '#ff4444';
         } else if (input.id === 'popupZoom' && (val <= 0.3 || val >= 0.9)) {
-            input.style.background = `linear-gradient(90deg, #ffaa00 ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
-        } else {
-            input.style.background = `linear-gradient(90deg, var(--accent-primary) ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;
+            color = '#ffaa00';
+        }
+        input.style.setProperty('--range-progress', percent + '%');
+        input.style.background = `linear-gradient(90deg, ${color} ${percent}%, rgba(255,255,255,0.1) ${percent}%)`;%, rgba(255,255,255,0.1) ${percent}%)`;
         }
     };
 
