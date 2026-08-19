@@ -139,7 +139,7 @@ const dictionaries = {
         'audio_enhancements_desc': 'Unlock professional equalizer, volume boost up to 300%, frequency tuning, and compression',
         'video_filters': 'Video Color & Visual Filters',
         'video_filters_desc': 'Apply real-time cinematic color filters, brightness, contrast, and visual profiles',
-        'auto_pip': 'Auto Picture-in-Picture',
+        'auto_pip': 'Auto PiP',
         'auto_pip_desc': 'Automatically open a floating Picture-in-Picture window when switching browser tabs',
         'enable_transcript': 'Auto Transcript Panel',
         'enable_transcript_desc': 'Automatically expand the video transcript side panel or provide a quick toggle button',
