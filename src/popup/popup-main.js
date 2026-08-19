@@ -904,12 +904,8 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                 if (id === 'popupZoom') {
                     document.documentElement.style.setProperty('--popup-zoom', el.value);
                 }
-                if (id === 'popupWidth') {
-                    document.documentElement.style.setProperty('--popup-width', el.value + 'px');
-                }
-                if (id === 'popupHeight') {
-                    document.documentElement.style.setProperty('--popup-height', el.value + 'px');
-                }
+                // Width and Height are deliberately omitted from 'input' to prevent popup resize stuttering.
+                // They are handled by the 'change' event below.
                 if (id === 'featureGridCols') {
                     document.documentElement.style.setProperty('--feature-grid-cols', el.value);
                 }
@@ -1284,6 +1280,13 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         let lastVal = el.value;
         el.addEventListener('mousedown', () => { lastVal = el.value; });
         el.addEventListener('change', () => {
+            // Apply popup dimension variables here so it doesn't stutter during drag
+            if (id === 'popupWidth') {
+                document.documentElement.style.setProperty('--popup-width', el.value + 'px');
+            }
+            if (id === 'popupHeight') {
+                document.documentElement.style.setProperty('--popup-height', el.value + 'px');
+            }
             if (el.value !== lastVal) {
                 undoStack.push({ id, value: lastVal });
                 if (undoStack.length > 5) undoStack.shift();
