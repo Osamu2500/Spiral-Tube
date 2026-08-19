@@ -111,7 +111,11 @@ body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   backdrop-filter: none !important;
   display: flex;
   align-items: center;
-  margin-right: 14px;
+  /* Margins calibrated for the new insertion point: before .ytp-settings-button,
+     after the autoplay/CC cluster. Left gap separates us from native left buttons;
+     right gap gives breathing room before the settings gear icon. */
+  margin-left: 4px;
+  margin-right: 4px;
   gap: 8px;
   padding: 4px 6px;
   background: transparent !important;

@@ -91,7 +91,7 @@ export class PlayerBarUI {
         this.attemptInjection();
     }
 
-    attemptInjection() {
+    attemptInjection(forceRebuild = false) {
         if (!this.isActive) return;
         this.updateCustomStyles();
         
@@ -137,6 +137,13 @@ export class PlayerBarUI {
                 if (this.settings.enableVolumeBoost !== false && this.settings.pb_volume !== 'hidden' && !current.querySelector('#ypp-volume-boost-btn')) {
                     needsReinject = true;
                 }
+            }
+
+            // forceRebuild: settings changed — always tear down and rebuild the container
+            // so that button visibility changes (front/back/hidden) take effect immediately
+            // without requiring a page refresh.
+            if (!needsReinject && forceRebuild && current && current.parentNode) {
+                needsReinject = true;
             }
 
             if (needsReinject) {
@@ -486,20 +493,37 @@ export class PlayerBarUI {
         } else {
             // Find where to insert our controls within .ytp-chrome-bottom
             let rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');
-            const fullscreenBtn = controls.querySelector('.ytp-fullscreen-button');
             const chromeControls = controls.querySelector('.ytp-chrome-controls');
             
-            // V5: Safe Container Fallback
-            // If YouTube is testing a new layout without `.ytp-right-controls`, we inject
-            // directly before the fullscreen button to ensure the sequence remains visually consistent.
+            // V6: Corrected insertion point
+            // Extension buttons belong BEFORE the native settings/theater/fullscreen cluster
+            // so they appear between the autoplay/CC group and the YouTube settings gear.
+            // Previously used insertBefore(firstChild) which placed buttons at the far-left
+            // of .ytp-right-controls, pushing all native buttons to the right.
             if (rightControls && document.contains(rightControls)) {
-                // Insert inside the right controls as the very first item
-                rightControls.insertBefore(container, rightControls.firstChild);
-            } else if (fullscreenBtn && fullscreenBtn.parentNode && document.contains(fullscreenBtn)) {
-                // Fallback: insert right before the fullscreen button inside its parent
-                fullscreenBtn.parentNode.insertBefore(container, fullscreenBtn);
+                // Target the settings button as the ideal anchor; fall back to theater, then fullscreen
+                const settingsBtn = rightControls.querySelector('.ytp-settings-button');
+                const theaterBtn = rightControls.querySelector('.ytp-size-button');
+                const fullscreenBtn = rightControls.querySelector('.ytp-fullscreen-button');
+                const insertionPoint = settingsBtn || theaterBtn || fullscreenBtn || null;
+                if (insertionPoint) {
+                    rightControls.insertBefore(container, insertionPoint);
+                } else {
+                    // No known anchor — append to the right controls
+                    rightControls.appendChild(container);
+                }
             } else if (chromeControls && document.contains(chromeControls)) {
-                chromeControls.appendChild(container);
+                // Fallback: no .ytp-right-controls (YouTube A/B test flat layout)
+                // Insert before the last known button cluster rather than appending to the end
+                const settingsBtn = chromeControls.querySelector('.ytp-settings-button');
+                const theaterBtn = chromeControls.querySelector('.ytp-size-button');
+                const fullscreenBtn = chromeControls.querySelector('.ytp-fullscreen-button');
+                const insertionPoint = settingsBtn || theaterBtn || fullscreenBtn || null;
+                if (insertionPoint) {
+                    chromeControls.insertBefore(container, insertionPoint);
+                } else {
+                    chromeControls.appendChild(container);
+                }
             } else {
                 controls.appendChild(container);
             }

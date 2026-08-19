@@ -99,15 +99,11 @@
                 this.initFeatureManager();
                 
                 // Initial feature application BEFORE page managers
+                // NOTE: Must be called synchronously here — deferring to requestIdleCallback
+                // causes a race where WatchPageManager.onActivate() runs before features
+                // are instantiated, resulting in missing player bar buttons on cold load.
                 if (this.featureManager) {
-                    const initFeatures = () => {
-                        this.featureManager.init(this.settings);
-                    };
-                    if (window.requestIdleCallback) {
-                        requestIdleCallback(initFeatures, { timeout: 1500 });
-                    } else {
-                        setTimeout(initFeatures, 1000);
-                    }
+                    this.featureManager.init(this.settings);
                 }
 
                 // Initialize Page Managers
@@ -242,10 +238,13 @@
             // Initialize and start the global shared DOMObserver
             // NOTE: The class lives at window.YPP.core.DOMObserver, not window.YPP.Utils.DOMObserver
             window.YPP.sharedObserver = window.YPP.sharedObserver || new window.YPP.core.DOMObserver();
-            // Start it only after the first page navigation so YouTube has time to paint
-            window.YPP.events.once('app:pageChange', () => {
+            // Start immediately — content.js runs at document_end, so YouTube's DOM is already
+            // partially rendered. Waiting for app:pageChange meant the observer wasn't running
+            // when setupInjectionObserver() registered its callbacks, so the player bar injection
+            // callbacks never fired on cold load.
+            if (!window.YPP.sharedObserver.isRunning) {
                 window.YPP.sharedObserver.start();
-            });
+            }
 
             // Initialize EventDelegator
             window.YPP.sharedEventDelegator = window.YPP.sharedEventDelegator || new window.YPP.core.EventDelegator();

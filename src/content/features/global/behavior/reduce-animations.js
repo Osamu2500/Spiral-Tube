@@ -54,10 +54,13 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
     // ─── Mode Resolution ──────────────────────────────────────────────────────
 
     _resolveMode(settings) {
-        const stored = (settings || this.settings)?.reduceAnimations;
+        const s = settings || this.settings || {};
+        const isEnabled = s.reduceAnimations;
+        const level = s.reduceAnimationsLevel || 'balanced';
+
         // 2B: Check OS prefers-reduced-motion — override to minimal if set
         const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-        if (prefersReduced && (!stored || stored === 'off')) {
+        if (prefersReduced && !isEnabled) {
             // First time auto-activation toast
             if (!this._osAutoActivated) {
                 this._osAutoActivated = true;
@@ -70,9 +73,10 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
             }
             return 'minimal';
         }
-        if (stored === 'balanced' || stored === 'minimal') return stored;
-        if (stored === true) return 'minimal'; // legacy boolean support
-        return 'off';
+        
+        if (!isEnabled) return 'off';
+        if (level === 'minimal') return 'minimal';
+        return 'balanced';
     }
 
     // ─── Apply / Clear ────────────────────────────────────────────────────────

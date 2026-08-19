@@ -47,14 +47,6 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:ICONS.autoScale },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]
-            },
-            {
-                title: t('video_management'),
-                icon: ICONS.player,
-                items: [
-                    { type:'toggle', id:'multiSelect', label: t('multi_select_videos'), desc: t('hold_shift_click_to_select_multiple_videos'), icon:ICONS.multiSelect, slot:'multiSelectOptions' },
-                    { type:'toggle', id:'cleanMixUrls',      label: t('clean_mix_urls'),    desc: t('prevent_mix_auto_play'),    icon:ICONS.cleanMixUrls },
-                ]
             }
         ]
     },
@@ -70,14 +62,14 @@ export const getPopupSchema = (t) => [
                 title: t('visibility_routing'),
                 icon: ICONS.eyeSlash,
                 items: [
-                    { type:'toggle', id:'redirectShorts', class:'span-4', label: t('redirect_shorts'),    desc: t('play_in_normal_ui'),        icon:ICONS.home },
+                    { type:'toggle', id:'redirectShorts', label: t('redirect_shorts'),    desc: t('play_in_normal_ui'),        icon:ICONS.home },
                 ]
             },
             {
                 title: t('global_filters_shorts'),
                 icon: P('M22 3L2 22 M22 22L2 3'),
                 items: [
-                    { type:'toggle', id:'stopShortsLooping', class:'span-2', label: t('stop_looping'), desc: t('no_auto_replay_on_shorts'), icon:ICONS.loopOff },
+                    { type:'toggle', id:'stopShortsLooping', label: t('stop_looping'), desc: t('no_auto_replay_on_shorts'), icon:ICONS.loopOff },
                     { type:'range', id:'minVideoDuration', class:'span-2', label: t('duration_filter'), desc: t('hide_short_videos'), icon:ICONS.clock, min: 0, max: 60, step: 1, unit:'m' },
                 ]
             }
@@ -99,7 +91,7 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'netflixSubtitles', label: t('player_netflix_subtitles'), icon:ICONS.subtitles },
                     { type:'toggle', id:'autoCinema',       label: t('auto_cinema'),        desc: t('expand_player_on_load'),      icon:ICONS.autoCinema },
-                    { type:'toggle', id:'autoPiP',          label: t('auto_pip'),           desc: t('auto_pip_desc'),              icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
+                    { type:'toggle', id:'autoPiP',          label: 'Auto PiP',           desc: t('auto_pip_desc'),              icon:P('M3 3h18v14H3zM12 14h7v5h-7z') },
                     { type:'toggle', id:'enableMiniPlayer', label: t('enable_miniplayer'),  desc: t('enable_miniplayer_desc'),     icon:P('M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z') },
                     { type:'toggle', id:'enableTranscript', label: t('enable_transcript'),  desc: t('enable_transcript_desc'),     icon:P('M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z') },
                     { type:'toggle', id:'enableCpuTamer',   label: t('cpu_tamer'),          desc: t('cpu_tamer_desc'),             icon:ICONS.compressor },
@@ -120,7 +112,14 @@ export const getPopupSchema = (t) => [
                 items: [
 
 
-                    { type:'select', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, options:[{value:'off',label:t('reduce_animations_off')},{value:'balanced',label:t('reduce_animations_balanced')},{value:'minimal',label:t('reduce_animations_minimal')}] },
+                    { type:'toggle', id:'reduceAnimations', class:'span-2', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, inlineSlot: `
+    <div style="display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;">
+        <select id="reduceAnimationsLevel" class="theme-select card-style-select" style="min-width:100px; padding:4px 8px; font-size:11px; border-radius:6px; cursor:pointer; background:var(--bg-lighter); color:var(--text-primary); border:1px solid rgba(255,255,255,0.1);">
+            <option value="balanced">${t('reduce_animations_balanced')}</option>
+            <option value="minimal">${t('reduce_animations_minimal')}</option>
+        </select>
+    </div>`
+},
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
                 ]
             },
@@ -131,7 +130,7 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.sidebar,
                 items: [
                     { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar, default: true },
-                    { type:'layoutToggle', id:'sidebarLayout',        label: t('sidebar_layout'),   desc: t('video_cards_size') },
+                    { type:'layoutToggle', id:'sidebarLayout', class:'span-3', label: t('sidebar_layout'),   desc: t('video_cards_size') },
                     { type:'toggle', id:'splitScrolling',       label: t('split_scrolling'),  desc: t('scroll_sidebar_independently'), icon:ICONS.splitScroll },
                 ]
             },
@@ -139,7 +138,7 @@ export const getPopupSchema = (t) => [
             // Section 5: Player Bar Tools
             {
                 title: 'Player Bar Tools',
-                icon: ICONS.uiComponents,
+                icon: ICONS.secPlayerTools,
                 items: [
                     { type:'toggle', id:'enableLoop',           label: 'Loop',                desc: t('add_loop_toggle'),            icon:ICONS.loopButton },
                     { type:'toggle', id:'enableSnapshot',       label: 'Snapshot',            desc: t('save_frame_as_image'),        icon:ICONS.snapshot },
@@ -160,7 +159,7 @@ export const getPopupSchema = (t) => [
                     { type:'button-group', id:'pb_loop', label: t('loop_button'), desc: t('extension_feature'), icon:ICONS.loopButton, options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_speed', label: t('speed_controls'), desc: t('extension_feature'), icon:P('M5 4l15 8-15 8V4z M19 5v14'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_bookmark', label: t('bookmark_button'), desc: t('extension_feature'), icon:ICONS.saveSupreme, options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
-                    { type:'button-group', id:'pb_pip', label: t('pip_button'), desc: t('extension_feature'), icon:P('M3 3h18v14H3zM12 14h7v5h-7z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
+                    { type:'button-group', id:'pb_pip', label: 'Auto PiP', desc: t('extension_feature'), icon:P('M3 3h18v14H3zM12 14h7v5h-7z'), options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_volume', label: t('volume_booster'), desc: t('extension_feature'), icon:ICONS.volumeUp, options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_cinema', label: t('cinema_filters'), desc: t('extension_feature'), icon:ICONS.cinemaFilters, options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
                     { type:'button-group', id:'pb_native_play', label: t('native_play_pause'), desc: t('youtube_feature'), icon:ICONS.player, options: [{value:'front',label: t('front')},{value:'back',label: t('back')},{value:'hidden',label: t('hidden')}] },
@@ -190,7 +189,8 @@ export const getPopupSchema = (t) => [
                 title: t('speed_controls'),
                 icon: ICONS.speed,
                 items: [
-                    { type:'toggle', id:'enableCustomSpeed', class:'span-2', label: t('enable_controller'), desc: t('master_toggle'), icon:ICONS.speed },
+                    { type:'toggle', id:'enableCustomSpeed', label: t('enable_controller'), desc: t('master_toggle'), icon:ICONS.speed },
+                    { type:'toggle', id:'speedBooster', label: t('10x_speed_booster'), desc: t('unlock_native_speed_up_to_10x'), icon:ICONS.speedBooster },
                     { type:'toggle', id:'vscForceSpeed',    label: t('force_saved_speed'), desc: t('prevent_players_from_overriding'), icon:ICONS.forceSpeed },
                 ]
             },
@@ -200,7 +200,7 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'vscAudioSupport',  label: t('audio_support'), desc: t('control_audio_tags'), icon:ICONS.audioTag },
                     { type:'toggle', id:'vscRememberSpeed', label: t('remember_speed'), desc: t('restore_speed_across_videos'), icon:ICONS.remember },
-                    { type:'toggle', id:'vscHideByDefault', class:'span-2', label: t('hide_by_default'), desc: t('only_show_when_changing_speed'), icon:ICONS.hide },
+                    { type:'toggle', id:'vscHideByDefault', label: t('hide_by_default'), desc: t('only_show_when_changing_speed'), icon:ICONS.hide },
                 ]
             },
             {
@@ -224,7 +224,7 @@ export const getPopupSchema = (t) => [
             {
                 title: t('home_page'),
                 subtitle: 'Immersive experiences for the home feed',
-                icon: ICONS.home,
+                icon: ICONS.secModesHome,
                 items: [
                     { type:'toggle', id:'cinematicMode',  label: t('cinematic_home'),  desc: t('cinematic_styling_for_homepage'),    icon:ICONS.cinematic },
                     { type:'toggle', id:'enableTabviewSidebar', label: t('tabview_sidebar'), desc: t('tabview_sidebar_desc'), icon:ICONS.sidebar }
@@ -233,7 +233,7 @@ export const getPopupSchema = (t) => [
             {
                 title: t('player_page'),
                 subtitle: 'Immersive experiences for the video player',
-                icon: ICONS.autoCinema,
+                icon: ICONS.secModesPlayer,
                 items: [
                     { type:'toggle', id:'zenMode',         label: t('zen_mode'),        desc: t('dim_everything_but_video'),          icon:ICONS.zen },
                     { type:'toggle', id:'cinemaMode',      label: t('cinema_mode'),     desc: t('theater_like_fullscreen_viewing'),   icon:ICONS.cinema },
@@ -244,7 +244,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'enableFocusMode', label: t('focus_mode'),      desc: t('hide_all_distractions_on_page'),     icon:ICONS.focus },
                     { type:'toggle', id:'minimalMode',     label: t('minimalist_chrome'), desc: t('strip_non_essential_page_chrome'), icon:ICONS.minimal },
                     { type:'toggle', id:'seamlessMode',    label: t('seamless_mode'),   desc: t('sidebar_comments'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="seamlessModeGridColsUI" min="1" max="10" step="1" style="width:100%;"><span id="seamlessModeGridColsValue" style="font-size:10px; min-width:20px; opacity:0.7;">4</span></div><input type="hidden" id="seamlessModeGridCols" value="4" />` },
-                    { type:'toggle', id:'audioModeEnabled', class:'span-2', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
+                    { type:'toggle', id:'audioModeEnabled', label: t('audio_only_mode'), desc: t('listen_only_hide_the_video'),     icon:ICONS.audioOnly }
                 ]
             }
         ]
@@ -263,10 +263,9 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'cleanSearch',       label: t('clean_search'),         desc: t('remove_junk_ads'),          icon:ICONS.cleanSearch },
                     { type:'toggle', id:'autoVideoFilter',   label: t('auto_video_filter'),    desc: t('default_to_videos_tab'),    icon:P('M5 4l15 8-15 8V4z'), style:'display:none' },
-                    { type:'layoutToggle', id:'searchLayout',        label: t('list_view_size'),      desc: t('linear_search_thumbnail_size') },
+                    { type:'layoutToggle', id:'searchLayout', class:'span-2', label: t('list_view_size'),      desc: t('linear_search_thumbnail_size') },
                     { type:'toggle', id:'searchGrid',        class:'span-2', label: t('grid_view'),           desc: t('card_layout_for_search'),   icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="searchColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="searchColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="searchColumns" value="4" />` },
-                    { type:'toggle', id:'copyLinkButton',    label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos },
-                ]
+                    ]
             }
         ]
     },
@@ -279,19 +278,8 @@ export const getPopupSchema = (t) => [
         icon: ICONS.filter,
         sections: [
             {
-                title: 'Global',
-                icon: ICONS.filter,
-                items: [
-                    { type:'toggle', id:'hideWatched', class:'span-4', label: t('hide_watched'), desc: t('auto_hide_watched_videos'), icon:ICONS.watched, inlineSlot:`<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5" style="width:100px;"><span id="hideWatchedThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">80%</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="hideWatchedMode" value="dim" />`, slot:'' },
-                    { type:'toggle', id:'hideThumbnails', label: t('hide_thumbnails'),   desc: t('blur_on_hover_to_reveal'),  icon:ICONS.thumbnails },
-                    { type:'toggle', id:'hideMetrics',    label: t('hide_views_subs'),   desc: t('hide_views_likes_sub_counts'), icon:ICONS.metrics },
-                    { type:'toggle', id:'hideCountryCode', label: t('hide_country_code'), desc: t('hide_country_code_desc'), icon:ICONS.channelBar },
-                    { type:'toggle', id:'hideUselessGuideLinks', label: t('hide_useless_guide_links'), desc: t('hide_useless_guide_links_desc'), icon:ICONS.home }
-                ]
-            },
-            {
                 title: t('home_page'),
-                icon: ICONS.home,
+                icon: ICONS.secFiltersHome,
                 items: [
                     { type:'toggle', id:'hideMemberships',   label: t('hide_memberships'),  desc: t('hide_memberships_desc'), icon:ICONS.memberships },
                     { type:'toggle', id:'hideMembersOnly',   label: t('hide_members_only'), desc: t('hide_members_only_desc'), icon:ICONS.memberships },
@@ -312,13 +300,13 @@ export const getPopupSchema = (t) => [
                     { type:'select', id:'filterMode', class:'span-2', label: t('filter_mode'), desc: t('how_to_treat_filtered_content_globally'), icon:ICONS.filterMode, options: [{value:'hide',label: t('hide_completely')},{value:'dim',label: t('dim_hover_to_reveal')}] },
                     { type:'toggle', id:'channelWhitelistEnabled', label: t('enable_channel_whitelist'), desc: t('exempt_channels_from_being_hidden'), icon:ICONS.whitelist },
                     { type:'toggle', id:'channelBlacklistEnabled', label: t('enable_channel_blacklist'), desc: t('always_hide_specific_channels'), icon:ICONS.blacklist },
-                    { type:'toggle', id:'viewsFilterEnabled', class:'span-2', label: t('hide_low_view_videos'), desc: t('filter_out_unpopular_content'), icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'), inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:200px;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1" style="width:100%;"><span id="viewsHideThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div><input type="hidden" id="viewsHideThreshold" value="0" />` },
-                    { type:'toggle', id:'dateFilterEnabled', class:'span-2', label: t('filter_by_upload_date'), desc: t('hide_videos_older_newer_than_n_days'), icon:ICONS.calendar, inlineSlot: `<div style="display:inline-flex; align-items:center; gap:16px; margin-left:auto;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; max-width:180px;"><span style="font-size:10px; opacity:0.5; width:22px;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:10px; min-width:40px; opacity:0.7;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; max-width:180px;"><span style="font-size:10px; opacity:0.5; width:22px;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:10px; min-width:40px; opacity:0.7;">Off</span></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />` },
+                    { type:'toggle', id:'viewsFilterEnabled', class:'span-2', label: t('hide_low_view_videos'), desc: t('filter_out_unpopular_content'), icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'), inlineSlot: `<div class=\"inline-slider-wrapper\" style=\"display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; min-width:0; padding-left:16px;\"><span style=\"font-size:10px; opacity:0.5; white-space:nowrap;\">Min:</span><input type=\"range\" id=\"viewsHideThresholdUI\" min=\"0\" max=\"11\" step=\"1\" style=\"flex:1; min-width:0;\"><span id=\"viewsHideThresholdValue\" style=\"font-size:10px; min-width:30px; opacity:0.7; text-align:right;\">Off</span></div><input type=\"hidden\" id=\"viewsHideThreshold\" value=\"0\" />` },
+                    { type:'toggle', id:'dateFilterEnabled', class:'span-3', label: t('filter_by_upload_date'), desc: t('hide_videos_older_newer_than_n_days'), icon:ICONS.calendar, inlineSlot: `<div style="display:flex; flex:1; align-items:center; justify-content:space-evenly; gap:16px; margin-left:auto; width: 66.66%;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; width: 100%; justify-content:center;"><span style="font-size:10px; opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; width: 100%; justify-content:center;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />` },
                 ]
             },
             {
                 title: t('player_page'),
-                icon: ICONS.autoCinema,
+                icon: ICONS.secFiltersPlayer,
                 items: [
                     { type:'toggle', id:'hidePlayerTopics', label: t('hide_topics_bar'),   desc: t('remove_category_chips'),    icon:ICONS.cinematic },
                     { type:'toggle', id:'hideVideoTitle',   label: t('hide_video_title'),   desc: t('hide_video_title_desc'),    icon:ICONS.titleHidden },
@@ -355,12 +343,29 @@ export const getPopupSchema = (t) => [
                 ]
             },
             {
-                title: t('shorts'),
-                icon: ICONS.shorts,
+                title: 'Global',
+                icon: ICONS.filter,
                 items: [
-                    { type:'toggle', id:'hideShorts',       label: t('hide_shorts'),        desc: t('remove_from_home_feed'),    icon:ICONS.shorts },
-                    { type:'toggle', id:'hideSearchShorts', label: t('hide_search_shorts'), desc: t('remove_from_search_results'), icon:ICONS.search },
-                    { type:'toggle', id:'aggressiveShortsBlock', label: t('nuke_shorts'), desc: t('remove_everywhere'), icon:P('M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10S2 17.52 2 12z') },
+                    // ── Single-tile items first ──────────────────────────────────────────
+                    { type:'toggle', id:'hideThumbnails',    label: t('hide_thumbnails'),            desc: t('blur_on_hover_to_reveal'),         icon:ICONS.thumbnails },
+                    { type:'toggle', id:'hideMetrics',       label: t('hide_views_subs'),            desc: t('hide_views_likes_sub_counts'),     icon:ICONS.metrics },
+                    { type:'toggle', id:'hideCountryCode',   label: t('hide_country_code'),          desc: t('hide_country_code_desc'),          icon:ICONS.channelBar },
+                    { type:'toggle', id:'hideUselessGuideLinks', label: t('hide_useless_guide_links'), desc: t('hide_useless_guide_links_desc'), icon:ICONS.home },
+                    { type:'toggle', id:'hideLiveStreams',   label: 'Hide Live Streams',             desc: 'Remove live-streaming videos from all feeds', icon:P('M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z') },
+                    { type:'toggle', id:'hideUpcoming',      label: 'Hide Upcoming & Premieres',     desc: 'Remove scheduled and premiere videos from feeds', icon:P('M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z') },
+                    { type:'toggle', id:'hidePlaylists',     label: 'Hide Playlists',                desc: 'Remove Playlists from feeds and search results', icon:ICONS.playlists },
+                    { type:'toggle', id:'hideMixes',         label: 'Hide Mixes',                    desc: 'Remove infinite YouTube Mix playlists everywhere', icon:ICONS.mixes },
+                    { type:'toggle', id:'cleanMixUrls',      label: t('clean_mix_urls'),             desc: t('prevent_mix_auto_play'),                        icon:ICONS.cleanMixUrls },
+                    { type:'toggle', id:'feedFilterKeywords', class:'span-2', label: 'Filter by Keywords', desc: 'Hide videos containing specific words (comma separated)', icon:ICONS.search, inlineSlot: '<div style="display:flex; flex-grow:1; max-width:50%; margin-left:auto;"><input type="text" id="feedFilterKeywordsInput" placeholder="e.g. spoiler, review, unboxing" style="width:100%; padding:6px 10px; border-radius:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:12px; outline:none;"><input type="hidden" id="feedFilterKeywords" value="" /></div>' },
+
+                    // ── Full-width filter items (span-4) ─────────────────────────────────
+                    { type:'toggle', id:'hideWatched', class:'span-4', label: t('hide_watched'), desc: t('auto_hide_watched_videos'), icon:ICONS.watched, inlineSlot:'<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5" style="width:100px;"><span id="hideWatchedThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">80%</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="hideWatchedMode" value="dim" />', slot:'' },
+
+                    { type:'toggle', id:'aggressiveShortsBlock', class:'span-4', label: 'Shorts Remover', desc: 'Completely nuke all Shorts, reels, and shelves', icon:ICONS.promos, inlineSlot: '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn shorts-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div>' },
+
+                    { type:'toggle', id:'viewsFilterEnabled', class:'span-4', label: t('hide_low_view_videos'), desc: t('filter_out_unpopular_content'), icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'), inlineSlot: '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1" style="width:100px;"><span id="viewsHideThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">Off</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="viewsHideThreshold" value="0" />' },
+
+                    { type:'toggle', id:'dateFilterEnabled', class:'span-4', label: t('filter_by_upload_date'), desc: t('hide_videos_older_newer_than_n_days'), icon:ICONS.calendar, inlineSlot: '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><span style="font-size:10px; opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:11px; min-width:40px; opacity:0.8; font-weight:600;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:11px; min-width:40px; opacity:0.8; font-weight:600;">Off</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn meta-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />' }
                 ]
             }
         ]
@@ -378,14 +383,14 @@ export const getPopupSchema = (t) => [
                 title: t('filter_bar_layout'),
                 icon: ICONS.filterMode,
                 items: [
-                    { type:'toggle', id:'enableFilterBar', class:'span-2',     label: t('enable_filter_bar'), desc: t('show_duration_date_filters'), icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
+                    { type:'toggle', id:'enableFilterBar', label: t('enable_filter_bar'), desc: t('show_duration_date_filters'), icon:P('M22 3L2 3l8 9.46V19l4 2v-8.54L22 3z') },
                     { type:'toggle', id:'ff_opt_multiselect', label: t('multi_select_chips'), desc: t('select_multiple_filters_at_once'), icon:P('M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z') },
                     { type:'toggle', id:'ff_search_visible', label: t('show_search_bar'), desc: t('search_feed_by_title'), icon:ICONS.searchBar }
                 ]
             },
             {
                 title: t('filter_chips_content'),
-                icon: ICONS.title,
+                icon: ICONS.secSubsChipsContent,
                 items: [
                     { type:'toggle', id:'ff_video_visible', label: t('video') },
                     { type:'toggle', id:'ff_shorts_visible', label: t('shorts') },
@@ -393,7 +398,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'ff_streamed_visible', label: t('streamed') },
                     { type:'toggle', id:'ff_scheduled_visible', label: t('scheduled') },
                     { type:'toggle', id:'ff_posts_visible', label: t('posts') },
-                    { type:'toggle', id:'ff_playlist_visible', class:'span-2', label: t('playlist') }
+                    { type:'toggle', id:'ff_playlist_visible', label: t('playlist') }
                 ]
             },
             {
@@ -408,11 +413,11 @@ export const getPopupSchema = (t) => [
             },
             {
                 title: t('layout_tools'),
-                icon: ICONS.grid,
+                icon: ICONS.secSubsLayout,
                 items: [
-                    { type:'toggle', id:'twoColumnSubscriptions', class:'span-2', label: t('twoColumnSubscriptions'), desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
-                    { type:'toggle', id:'enableChannelHealth', class:'span-2', label: t('channel_health'),  desc: t('scan_for_dead_channels'),        icon:ICONS.compressor, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="channelColumnsUI" min="2" max="10" step="1" style="width:100%;"><span id="channelColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="channelColumns" value="5" />` },
-                    { type:'range', id:'subscriptionsColumns', class:'span-2', label: t('feed_grid_columns'), desc: t('grid_layout_size_for_subs'), icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), min: 1, max: 8, step: 1, unit: '' }
+                    { type:'toggle', id:'enableChannelHealth', label: t('channel_health'), desc: t('scan_for_dead_channels'), icon:ICONS.compressor },
+                    { type:'range', id:'subscriptionsColumns', class:'span-2', label: t('feed_grid_columns'), desc: t('grid_layout_size_for_subs'), icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), min: 1, max: 8, step: 1, unit: '' },
+                    { type:'toggle', id:'twoColumnSubscriptions', label: t('twoColumnSubscriptions'), desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                 ]
             }
         ]
@@ -430,15 +435,15 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.clock,
                 items: [
                     { type:'custom', id:'historyWidget', slot:'history-widget' },
-                    { type:'toggle', id:'watchTimeAlert', class:'span-2', label: t('watch_time_alert'), desc: t('notify_when_limit_reached'), icon:ICONS.wheel },
+                    { type:'toggle', id:'watchTimeAlert', label: t('watch_time_alert'), desc: t('notify_when_limit_reached'), icon:ICONS.clock },
                     { type:'range',  id:'watchTimeAlertHours', label: t('daily_limit'), unit:'h', min:1, max:12, step:1, parent: 'watchTimeAlert' },
-                    { type:'toggle', id:'intentionalDelay', class:'span-2', label: t('intentional_delay'), desc: t('add_a_pause_before_videos_start'), icon:ICONS.wheel },
+                    { type:'toggle', id:'intentionalDelay', label: t('intentional_delay'), desc: t('add_a_pause_before_videos_start'), icon:ICONS.pause },
                     { type:'range',  id:'intentionalDelayTime', label: t('delay_duration'), unit:'s', min:1, max:10, step:1, parent: 'intentionalDelay' }
                 ]
             },
             {
                 title: t('tracking_resume'),
-                icon: ICONS.resume,
+                icon: ICONS.secHistoryTracking,
                 items: [
                     { type:'toggle', id:'smartHistory', label: t('smart_history_tracker'), desc: t('track_individual_video_progress_watch_time'), icon:ICONS.smartHistory },
                     { type:'toggle', id:'autoResume', label: t('auto_resume_videos'), desc: t('automatically_resume_from_last_watched_timestamp'), icon:ICONS.wheel },
@@ -453,7 +458,7 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'playlistDuration', label: t('duration_calc'), desc: t('show_total_length'), icon:ICONS.wheel },
                     { type:'toggle', id:'reversePlaylist', label: t('reverse_playlist'), desc: t('toggle_direction'), icon:ICONS.reversePlay },
-                    { type:'toggle', id:'historyRedesign', class:'span-2', label: t('history_redesign'), desc: t('new_history_layout'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="historyColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="historyColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="historyColumns" value="5" />` }
+                    { type:'toggle', id:'historyRedesign', label: t('history_redesign'), desc: t('new_history_layout'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="historyColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="historyColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="historyColumns" value="5" />` }
                 ]
             }
         ]
@@ -487,8 +492,16 @@ export const getPopupSchema = (t) => [
                 ]
             },
             {
+                title: 'Video Management',
+                icon: ICONS.player,
+                items: [
+                    { type:'toggle', id:'multiSelect', label: t('multi_select_videos'), desc: t('hold_shift_click_to_select_multiple_videos'), icon:ICONS.multiSelect, slot:'multiSelectOptions' },
+                    { type:'toggle', id:'copyLinkButton', class:'span-3', label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos, inlineSlot: '<div style="display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div>' },
+                ]
+            },
+            {
                 title: 'Remembered Streaming Sites (Domain Memory)',
-                icon: ICONS.globalBar,
+                icon: ICONS.secDomainMemory,
                 items: [
                     { type:'custom', id:'domain_memory_manager', slot:'domain_memory_manager', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' },
                 ]
@@ -507,7 +520,7 @@ export const getPopupSchema = (t) => [
         sections: [
             {
                 title: t('watch_page_hotkeys'),
-                icon: ICONS.keyboard,
+                icon: ICONS.secHotkeysWatch,
                 items: [
                     { type:'toggle', id:'keyboardShortcuts', class:'span-4', label: t('enable_hotkeys'), icon:P('M2 4h20v16H2z M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10') },
                     { type:'custom', id:'advanced_shortcuts_manager', slot:'advanced_shortcuts_manager', class: 'span-4' },
@@ -525,7 +538,7 @@ export const getPopupSchema = (t) => [
         custom: false, sections: [
             {
                 title: t('lang_support_title'),
-                icon: ICONS.title,
+                icon: ICONS.secGlobalLang,
                 items: [
                     { 
                         type:'select', 
@@ -551,7 +564,7 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'returnYouTubeDislike', label: t('return_youtube_dislike'), desc: t('restore_dislike_count_via_ryd_api'), icon:P('M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17') },
                     { type:'toggle', id:'adSkipper',            label: t('ad_skipper'),             desc: t('skip_video_ads_automatically'),   icon:P('M5 4l10 8-10 8V4z M19 5v14') },
-                    { type:'toggle', id:'sponsorBlock', class:'span-2',         label: t('sponsorblock'),           desc: t('skip_sponsored_segments'),        icon:ICONS.explore, slot:'sponsorBlockCategories' }
+                    { type:'toggle', id:'sponsorBlock',         label: t('sponsorblock'),           desc: t('skip_sponsored_segments'),        icon:ICONS.explore, slot:'sponsorBlockCategories' }
                 ]
             }
         ]

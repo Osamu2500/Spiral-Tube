@@ -25,9 +25,16 @@ class WatchPageManager extends window.YPP.BasePageManager {
     this.playerBarUI = new window.YPP.features.PlayerBarUI(this);
   }
 
-  onActivate() {
+  async onActivate() {
     this.utils.log('Watch Page Active', 'WATCH_MANAGER', 'info');
     this._cleanUpLegacyStamps();
+    // Wait until featureManager has finished instantiating features so that
+    // feature instances (VolumeBooster, VideoFilters, BookmarksManager etc.)
+    // exist when injectControls() tries to build buttons for the player bar.
+    // Without this, getFeature() returns null and buttons are silently skipped.
+    try {
+      await this.utils.pollFor(() => window.YPP?.featureManager?.instantiated, 3000, 50);
+    } catch (e) { /* continue anyway — pollFor rejects on timeout */ }
     if (this.playerBarUI) this.playerBarUI.enable();
     // NOTE: _applyDOM() is NOT called here directly.
     // The base class activate() calls applySettings() immediately after onActivate(),
@@ -92,7 +99,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
         .forEach((el) => el.removeAttribute('data-ypp-processed'));
       this.playerBarUI.updateCustomStyles();
       this.playerBarUI.injectedButtons = false;
-      this.playerBarUI.attemptInjection();
+      // forceRebuild=true: settings changed, so always rebuild the button container
+      // even if buttons are still present in the DOM from a previous injection
+      this.playerBarUI.attemptInjection(true);
     }
   }
 
@@ -103,7 +112,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
     if (this.playerBarUI) {
       this.playerBarUI.updateCustomStyles();
       this.playerBarUI.injectedButtons = false;
-      this.playerBarUI.attemptInjection();
+      // forceRebuild=true: always rebuild on settings apply so changed visibility
+      // settings (front/back/hidden) take effect without requiring a page refresh
+      this.playerBarUI.attemptInjection(true);
     }
 
     let newSidebar = 'default';

@@ -47,14 +47,6 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'autoScaleLayout',  label: t('auto_scale_grid'),  desc: t('adapt_to_zoom_window_size'), icon:ICONS.autoScale },
                     { type:'range', id:'homeColumns', class:'span-2', icon:'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', label: t('grid_columns'), desc: t('0_auto_scale'), unit:'', min:0, max:10, step:1 },
                 ]
-            },
-            {
-                title: t('video_management'),
-                icon: ICONS.player,
-                items: [
-                    { type:'toggle', id:'multiSelect', label: t('multi_select_videos'), desc: t('hold_shift_click_to_select_multiple_videos'), icon:ICONS.multiSelect, slot:'multiSelectOptions' },
-                    { type:'toggle', id:'cleanMixUrls',      label: t('clean_mix_urls'),    desc: t('prevent_mix_auto_play'),    icon:ICONS.cleanMixUrls },
-                ]
             }
         ]
     },
@@ -120,7 +112,14 @@ export const getPopupSchema = (t) => [
                 items: [
 
 
-                    { type:'select', id:'reduceAnimations', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, options:[{value:'off',label:t('reduce_animations_off')},{value:'balanced',label:t('reduce_animations_balanced')},{value:'minimal',label:t('reduce_animations_minimal')}] },
+                    { type:'toggle', id:'reduceAnimations', class:'span-2', label: t('reduce_animations'), desc: t('reduce_animations_desc'), icon:ICONS.reduceAnimations, inlineSlot: `
+    <div style="display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;">
+        <select id="reduceAnimationsLevel" class="theme-select card-style-select" style="min-width:100px; padding:4px 8px; font-size:11px; border-radius:6px; cursor:pointer; background:var(--bg-lighter); color:var(--text-primary); border:1px solid rgba(255,255,255,0.1);">
+            <option value="balanced">${t('reduce_animations_balanced')}</option>
+            <option value="minimal">${t('reduce_animations_minimal')}</option>
+        </select>
+    </div>`
+},
                     { type:'toggle', id:'revertProgressBar',   label: t('classic_progress_bar'), desc: t('solid_red_no_pink_gradient'), icon:ICONS.progressBar },
                 ]
             },
@@ -131,7 +130,7 @@ export const getPopupSchema = (t) => [
                 icon: ICONS.sidebar,
                 items: [
                     { type:'toggle', id:'enableCustomSidebar',  label: t('custom_sidebar'),   desc: t('master_toggle_for_sidebar_layout'), icon:ICONS.sidebar, default: true },
-                    { type:'layoutToggle', id:'sidebarLayout', class:'span-2', label: t('sidebar_layout'),   desc: t('video_cards_size') },
+                    { type:'layoutToggle', id:'sidebarLayout', class:'span-3', label: t('sidebar_layout'),   desc: t('video_cards_size') },
                     { type:'toggle', id:'splitScrolling',       label: t('split_scrolling'),  desc: t('scroll_sidebar_independently'), icon:ICONS.splitScroll },
                 ]
             },
@@ -266,8 +265,7 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'autoVideoFilter',   label: t('auto_video_filter'),    desc: t('default_to_videos_tab'),    icon:P('M5 4l15 8-15 8V4z'), style:'display:none' },
                     { type:'layoutToggle', id:'searchLayout', class:'span-2', label: t('list_view_size'),      desc: t('linear_search_thumbnail_size') },
                     { type:'toggle', id:'searchGrid',        class:'span-2', label: t('grid_view'),           desc: t('card_layout_for_search'),   icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="searchColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="searchColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="searchColumns" value="4" />` },
-                    { type:'toggle', id:'copyLinkButton',    label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos },
-                ]
+                    ]
             }
         ]
     },
@@ -302,8 +300,8 @@ export const getPopupSchema = (t) => [
                     { type:'select', id:'filterMode', class:'span-2', label: t('filter_mode'), desc: t('how_to_treat_filtered_content_globally'), icon:ICONS.filterMode, options: [{value:'hide',label: t('hide_completely')},{value:'dim',label: t('dim_hover_to_reveal')}] },
                     { type:'toggle', id:'channelWhitelistEnabled', label: t('enable_channel_whitelist'), desc: t('exempt_channels_from_being_hidden'), icon:ICONS.whitelist },
                     { type:'toggle', id:'channelBlacklistEnabled', label: t('enable_channel_blacklist'), desc: t('always_hide_specific_channels'), icon:ICONS.blacklist },
-                    { type:'toggle', id:'viewsFilterEnabled', class:'span-2', label: t('hide_low_view_videos'), desc: t('filter_out_unpopular_content'), icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'), inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:200px;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="viewsHideThresholdUI" min="0" max="11" step="1" style="width:100%;"><span id="viewsHideThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div><input type="hidden" id="viewsHideThreshold" value="0" />` },
-                    { type:'toggle', id:'dateFilterEnabled', class:'span-2', label: t('filter_by_upload_date'), desc: t('hide_videos_older_newer_than_n_days'), icon:ICONS.calendar, inlineSlot: `<div style="display:inline-flex; align-items:center; gap:16px; margin-left:auto;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; max-width:180px;"><span style="font-size:10px; opacity:0.5; width:22px;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:10px; min-width:40px; opacity:0.7;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; max-width:180px;"><span style="font-size:10px; opacity:0.5; width:22px;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:10px; min-width:40px; opacity:0.7;">Off</span></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />` },
+                    { type:'toggle', id:'viewsFilterEnabled', class:'span-2', label: t('hide_low_view_videos'), desc: t('filter_out_unpopular_content'), icon:P('M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z'), inlineSlot: `<div class=\"inline-slider-wrapper\" style=\"display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; min-width:0; padding-left:16px;\"><span style=\"font-size:10px; opacity:0.5; white-space:nowrap;\">Min:</span><input type=\"range\" id=\"viewsHideThresholdUI\" min=\"0\" max=\"11\" step=\"1\" style=\"flex:1; min-width:0;\"><span id=\"viewsHideThresholdValue\" style=\"font-size:10px; min-width:30px; opacity:0.7; text-align:right;\">Off</span></div><input type=\"hidden\" id=\"viewsHideThreshold\" value=\"0\" />` },
+                    { type:'toggle', id:'dateFilterEnabled', class:'span-3', label: t('filter_by_upload_date'), desc: t('hide_videos_older_newer_than_n_days'), icon:ICONS.calendar, inlineSlot: `<div style="display:flex; flex:1; align-items:center; justify-content:space-evenly; gap:16px; margin-left:auto; width: 66.66%;"><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; width: 100%; justify-content:center;"><span style="font-size:10px; opacity:0.5;">Max:</span><input type="range" id="dateFilterOlderThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterOlderThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; width: 100%; justify-content:center;"><span style="font-size:10px; opacity:0.5;">Min:</span><input type="range" id="dateFilterNewerThresholdUI" min="0" max="13" step="1" style="width:100px;"><span id="dateFilterNewerThresholdValue" style="font-size:10px; min-width:30px; opacity:0.7;">Off</span></div></div><input type="hidden" id="dateFilterOlderThreshold" value="0" /><input type="hidden" id="dateFilterNewerThreshold" value="0" />` },
                 ]
             },
             {
@@ -357,7 +355,8 @@ export const getPopupSchema = (t) => [
                     { type:'toggle', id:'hideUpcoming',      label: 'Hide Upcoming & Premieres',     desc: 'Remove scheduled and premiere videos from feeds', icon:P('M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z') },
                     { type:'toggle', id:'hidePlaylists',     label: 'Hide Playlists',                desc: 'Remove Playlists from feeds and search results', icon:ICONS.playlists },
                     { type:'toggle', id:'hideMixes',         label: 'Hide Mixes',                    desc: 'Remove infinite YouTube Mix playlists everywhere', icon:ICONS.mixes },
-                    { type:'toggle', id:'feedFilterKeywords', label: 'Filter by Keywords',          desc: 'Hide videos containing specific words (comma separated)', icon:ICONS.search, inlineSlot: '<div style="display:flex; width:100%; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><input type="text" id="feedFilterKeywordsInput" placeholder="e.g. spoiler, review, unboxing" style="width:100%; padding:6px 10px; border-radius:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:12px; outline:none;"><input type="hidden" id="feedFilterKeywords" value="" /></div>' },
+                    { type:'toggle', id:'cleanMixUrls',      label: t('clean_mix_urls'),             desc: t('prevent_mix_auto_play'),                        icon:ICONS.cleanMixUrls },
+                    { type:'toggle', id:'feedFilterKeywords', class:'span-2', label: 'Filter by Keywords', desc: 'Hide videos containing specific words (comma separated)', icon:ICONS.search, inlineSlot: '<div style="display:flex; flex-grow:1; max-width:50%; margin-left:auto;"><input type="text" id="feedFilterKeywordsInput" placeholder="e.g. spoiler, review, unboxing" style="width:100%; padding:6px 10px; border-radius:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:12px; outline:none;"><input type="hidden" id="feedFilterKeywords" value="" /></div>' },
 
                     // ── Full-width filter items (span-4) ─────────────────────────────────
                     { type:'toggle', id:'hideWatched', class:'span-4', label: t('hide_watched'), desc: t('auto_hide_watched_videos'), icon:ICONS.watched, inlineSlot:'<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;"><div style="display:inline-flex; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;"><button type="button" id="hwMode-dim" class="view-mode-btn hw-mode-btn active" data-mode="dim" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Dim</button><button type="button" id="hwMode-hide" class="view-mode-btn hw-mode-btn" data-mode="hide" style="font-size:11px; padding:4px 10px; border:none; cursor:pointer; color:inherit; background:none;">Hide</button></div><div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; gap:6px; min-width:140px;"><input type="range" id="hideWatchedThreshold" min="5" max="100" step="5" style="width:100px;"><span id="hideWatchedThresholdValue" style="font-size:11px; min-width:30px; opacity:0.8; font-weight:600;">80%</span></div></div><div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn hw-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div></div><input type="hidden" id="hideWatchedMode" value="dim" />', slot:'' },
@@ -416,7 +415,7 @@ export const getPopupSchema = (t) => [
                 title: t('layout_tools'),
                 icon: ICONS.secSubsLayout,
                 items: [
-                    { type:'toggle', id:'enableChannelHealth', class:'span-2', label: t('channel_health'),  desc: t('scan_for_dead_channels'),        icon:ICONS.compressor, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="channelColumnsUI" min="2" max="10" step="1" style="width:100%;"><span id="channelColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="channelColumns" value="5" />` },
+                    { type:'toggle', id:'enableChannelHealth', label: t('channel_health'), desc: t('scan_for_dead_channels'), icon:ICONS.compressor },
                     { type:'range', id:'subscriptionsColumns', class:'span-2', label: t('feed_grid_columns'), desc: t('grid_layout_size_for_subs'), icon:P('M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'), min: 1, max: 8, step: 1, unit: '' },
                     { type:'toggle', id:'twoColumnSubscriptions', label: t('twoColumnSubscriptions'), desc: t('twoColumnSubscriptions_desc'), icon:ICONS.grid },
                 ]
@@ -490,6 +489,14 @@ export const getPopupSchema = (t) => [
                 items: [
                     { type:'toggle', id:'enableGlobalPlayerBar', label: t('global_player_bar'), desc: t('enable_on_external_sites'), icon:ICONS.globalBar, slot:'globalPlayerBarOptions', style: 'grid-column: 1 / -1;' },
                     { type:'custom', id:'global_player_bar_blocklist', slot:'global_player_bar_blocklist', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' }
+                ]
+            },
+            {
+                title: 'Video Management',
+                icon: ICONS.player,
+                items: [
+                    { type:'toggle', id:'multiSelect', label: t('multi_select_videos'), desc: t('hold_shift_click_to_select_multiple_videos'), icon:ICONS.multiSelect, slot:'multiSelectOptions' },
+                    { type:'toggle', id:'copyLinkButton', class:'span-3', label: t('copy_link_button'), desc: t('copy_link_button_desc'), icon:ICONS.promos, inlineSlot: '<div style="display:flex; align-items:center; gap:6px; margin-left:auto; flex:1; justify-content:flex-end; padding-left:16px;"><span style="font-size:11px; opacity:0.6; margin-right:2px; font-weight:500;">Pages:</span><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="home" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Home</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="channel" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Channel</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="subs" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Subs</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="search" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Search</button><button type="button" class="theme-btn card-style-btn copy-link-page-btn active" data-page="related" style="font-size:11px; padding:4px 10px; border-radius:6px; cursor:pointer; transition:all 0.2s;">Related</button></div>' },
                 ]
             },
             {
