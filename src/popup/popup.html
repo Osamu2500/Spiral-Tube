@@ -892,59 +892,11 @@
               
               <div class="slider-group slider-group-grid">
 
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="ui_density">UI Density</span>
-                    <span class="desc slider-value" id="popupDensityValue">1.0</span>
-                  </div>
-                  <div class="range-with-buttons">
-                    <button type="button" class="range-btn btn-minus" data-target="popupDensity">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-                    </button>
-                    <div class="range-track-wrap">
-                      <input type="range" id="popupDensity" min="0.6" max="1.5" step="0.1" aria-label="UI Density" title="UI Density" class="full-width-range styled-range">
-                    </div>
-                    <button type="button" class="range-btn btn-plus" data-target="popupDensity">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                    </button>
-                  </div>
-                </div>
 
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="ui_roundness">UI Roundness</span>
-                    <span class="desc slider-value" id="popupRadiusValue">12px</span>
-                  </div>
-                  <div class="range-with-buttons">
-                    <button type="button" class="range-btn btn-minus" data-target="popupRadius">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-                    </button>
-                    <div class="range-track-wrap">
-                      <input type="range" id="popupRadius" min="0" max="24" step="1" aria-label="UI Roundness" title="UI Roundness" class="full-width-range styled-range">
-                    </div>
-                    <button type="button" class="range-btn btn-plus" data-target="popupRadius">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                    </button>
-                  </div>
-                </div>
 
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="font_scale">Font Scale</span>
-                    <span class="desc slider-value" id="fontScaleValue">100%</span>
-                  </div>
-                  <div class="range-with-buttons">
-                    <button type="button" class="range-btn btn-minus" data-target="fontScale">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-                    </button>
-                    <div class="range-track-wrap">
-                      <input type="range" id="fontScale" min="80" max="150" step="5" aria-label="Font Scale" title="Font Scale" class="full-width-range styled-range">
-                    </div>
-                    <button type="button" class="range-btn btn-plus" data-target="fontScale">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                    </button>
-                  </div>
-                </div>
+
+
+
                 <div class="slider-item slider-item-pill">
                   <div class="slider-header slider-header-spaced">
                     <span class="name slider-name" data-i18n="blue_light_filter">Blue Light Filter</span>
@@ -1103,7 +1055,7 @@
                 
                 <div class="slider-item slider-item-pill">
                   <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name">Popup Width</span>
+                    <span class="name slider-name">Width <button id="aspectRatioLock" title="Lock Aspect Ratio" style="background:transparent;border:none;color:inherit;opacity:0.5;cursor:pointer;padding:0;margin-left:4px;display:inline-flex;align-items:center;justify-content:center;transition:opacity 0.2s;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></button></span>
                     <span class="desc slider-value" id="popupWidthValue">560px</span>
                   </div>
                   <div class="range-with-buttons">
@@ -1121,7 +1073,7 @@
                 
                 <div class="slider-item slider-item-pill">
                   <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name">Popup Height</span>
+                    <span class="name slider-name">Height</span>
                     <span class="desc slider-value" id="popupHeightValue">600px</span>
                   </div>
                   <div class="range-with-buttons">
@@ -1137,10 +1089,11 @@
   </div>
                 </div>
                 
-                <div class="slider-item slider-item-pill">
+                <div class="slider-item slider-item-pill" style="grid-column: 1 / -1;">
                   <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name">Extension Grid</span>
-                    </div>
+                    <span class="name slider-name">Grid</span>
+                    <span class="desc slider-value" id="featureGridColsValue">4</span>
+                  </div>
     <div class="segmented-picker" id="featureGridColsSegmented">
       <button type="button" class="segment-btn" data-value="2">2</button>
       <button type="button" class="segment-btn" data-value="3">3</button>
@@ -1150,6 +1103,57 @@
       <button type="button" class="segment-btn" data-value="7">7</button>
     </div>
     <input type="hidden" id="featureGridCols" value="4">
+                </div>
+                <div class="slider-item slider-item-pill">
+                  <div class="slider-header slider-header-spaced">
+                    <span class="name slider-name" data-i18n="ui_density">UI Density</span>
+                    <span class="desc slider-value" id="popupDensityValue">1.0</span>
+                  </div>
+                  <div class="range-with-buttons">
+                    <button type="button" class="range-btn btn-minus" data-target="popupDensity">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+                    </button>
+                    <div class="range-track-wrap">
+                      <input type="range" id="popupDensity" min="0.6" max="1.5" step="0.1" aria-label="UI Density" title="UI Density" class="full-width-range styled-range">
+                    </div>
+                    <button type="button" class="range-btn btn-plus" data-target="popupDensity">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="slider-item slider-item-pill">
+                  <div class="slider-header slider-header-spaced">
+                    <span class="name slider-name" data-i18n="ui_roundness">UI Roundness</span>
+                    <span class="desc slider-value" id="popupRadiusValue">12px</span>
+                  </div>
+                  <div class="range-with-buttons">
+                    <button type="button" class="range-btn btn-minus" data-target="popupRadius">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+                    </button>
+                    <div class="range-track-wrap">
+                      <input type="range" id="popupRadius" min="0" max="24" step="1" aria-label="UI Roundness" title="UI Roundness" class="full-width-range styled-range">
+                    </div>
+                    <button type="button" class="range-btn btn-plus" data-target="popupRadius">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="slider-item slider-item-pill">
+                  <div class="slider-header slider-header-spaced">
+                    <span class="name slider-name" data-i18n="font_scale">Font Scale</span>
+                    <span class="desc slider-value" id="fontScaleValue">100%</span>
+                  </div>
+                  <div class="range-with-buttons">
+                    <button type="button" class="range-btn btn-minus" data-target="fontScale">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
+                    </button>
+                    <div class="range-track-wrap">
+                      <input type="range" id="fontScale" min="80" max="150" step="5" aria-label="Font Scale" title="Font Scale" class="full-width-range styled-range">
+                    </div>
+                    <button type="button" class="range-btn btn-plus" data-target="fontScale">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                    </button>
+                  </div>
                 </div>
               </div>
               </div>

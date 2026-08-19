@@ -1,0 +1,507 @@
+/*
+  ============================================================
+  popup-animations.css — Spiral Tube Animation System v1.0
+  All new CSS animations injected without touching popup.css
+  ============================================================
+*/
+
+/* ═══════════════════════════════════════════════════════════
+   1. KEYFRAMES — ALL ANIMATIONS
+═══════════════════════════════════════════════════════════ */
+
+/* Shake — duplicate key warning */
+@keyframes ypp-shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-6px); }
+  30%       { transform: translateX(5px); }
+  45%       { transform: translateX(-4px); }
+  60%       { transform: translateX(3px); }
+  75%       { transform: translateX(-2px); }
+}
+
+/* Slide + fade in — for new rows, toasts */
+@keyframes ypp-slide-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide out right — for deleting rows */
+@keyframes ypp-slide-out-right {
+  from { opacity: 1; transform: translateX(0); max-height: 120px; margin-bottom: 8px; }
+  to   { opacity: 0; transform: translateX(60px); max-height: 0; margin-bottom: 0; padding: 0; }
+}
+
+/* Toast slide from bottom-right */
+@keyframes ypp-toast-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.92); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes ypp-toast-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(10px) scale(0.95); }
+}
+
+/* Overlay blur-in */
+@keyframes ypp-overlay-in {
+  from { opacity: 0; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+  to   { opacity: 1; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); }
+}
+
+/* Particle burst — for individual dots */
+@keyframes ypp-particle {
+  0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(0); opacity: 0; }
+}
+
+/* Tab indicator slide */
+@keyframes ypp-tab-slide {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Counter tick — number punching up */
+@keyframes ypp-counter-tick {
+  from { transform: translateY(6px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Glassmorphism card shine sweep */
+@keyframes ypp-shine-sweep {
+  from { left: -100%; opacity: 0.6; }
+  to   { left: 160%;  opacity: 0; }
+}
+
+/* Stat pulse glow */
+@keyframes ypp-stat-pulse {
+  0%, 100% { text-shadow: 0 0 8px currentColor; }
+  50%       { text-shadow: 0 0 22px currentColor, 0 0 40px currentColor; }
+}
+
+/* SVG checkmark stroke draw */
+@keyframes ypp-checkmark-draw {
+  from { stroke-dashoffset: 50; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Floating label float up */
+@keyframes ypp-label-float {
+  from { transform: translateY(0); font-size: 12px; }
+  to   { transform: translateY(-18px); font-size: 9px; }
+}
+
+/* Icon bounce on hover */
+@keyframes ypp-icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  40%       { transform: translateY(-4px); }
+  70%       { transform: translateY(-2px); }
+}
+
+/* Tooltip fade-in */
+@keyframes ypp-tooltip-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Scroll fade-in (for recap list items) */
+@keyframes ypp-scroll-reveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   2. UTILITY CLASSES
+═══════════════════════════════════════════════════════════ */
+
+/* Shake trigger class */
+.ypp-shake {
+  animation: ypp-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* New row entering */
+.ypp-row-enter {
+  animation: ypp-slide-in-up 0.28s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) both;
+}
+
+/* Row being removed */
+.ypp-row-exit {
+  animation: ypp-slide-out-right 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Staggered list item entrance */
+.ypp-stagger-enter {
+  animation: ypp-slide-in-up 0.32s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) both;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   3. TOAST NOTIFICATION SYSTEM
+═══════════════════════════════════════════════════════════ */
+.ypp-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.ypp-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  min-width: 180px;
+  max-width: 280px;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: ypp-toast-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.ypp-toast.ypp-toast-success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.85), rgba(5, 150, 105, 0.85));
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.ypp-toast.ypp-toast-warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.85), rgba(217, 119, 6, 0.85));
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.ypp-toast.ypp-toast-error {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.85), rgba(220, 38, 38, 0.85));
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+.ypp-toast.ypp-toast-info {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.85), rgba(168, 85, 247, 0.85));
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+/* Shine sweep inside toast */
+.ypp-toast::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-15deg);
+  animation: ypp-shine-sweep 0.7s ease 0.15s forwards;
+}
+
+.ypp-toast-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.ypp-toast-progress {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0 0 12px 12px;
+  transition: width linear;
+}
+
+.ypp-toast.ypp-toast-dismissing {
+  animation: ypp-toast-out 0.25s ease-in forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   4. BUTTON RIPPLE EFFECT
+═══════════════════════════════════════════════════════════ */
+.ypp-ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+
+.ypp-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  animation: ypp-ripple-expand 0.55s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ypp-ripple-expand {
+  from { transform: scale(0); opacity: 0.7; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   5. ICON BOUNCE ON HOVER
+═══════════════════════════════════════════════════════════ */
+.toggle-card:hover .feature-icon svg,
+.mode-card:hover .mode-icon svg {
+  animation: ypp-icon-bounce 0.45s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+/* ═══════════════════════════════════════════════════════════
+   6. INPUT FOCUS GLOW RING
+═══════════════════════════════════════════════════════════ */
+.vsc-key-input:focus,
+.vsc-val-input:focus,
+.vsc-select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus {
+  box-shadow:
+    0 0 0 2px var(--accent-primary, #6366f1),
+    0 0 12px color-mix(in srgb, var(--accent-primary, #6366f1) 35%, transparent) !important;
+  border-color: var(--accent-primary, #6366f1) !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   7. GLASS CARD SHINE ON HOVER
+═══════════════════════════════════════════════════════════ */
+.toggle-card,
+.mode-card,
+.settings-section,
+.preset-card,
+.stat-card {
+  --shine-offset: -100%;
+}
+
+.toggle-card::before,
+.mode-card::before,
+.preset-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: var(--shine-offset, -100%) 0;
+  pointer-events: none;
+  transition: background-position 0.6s ease;
+  z-index: 0;
+}
+
+.toggle-card:hover::before,
+.mode-card:hover::before,
+.preset-card:hover::before {
+  background-position: 200% 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   8. ANIMATED OVERLAY (Recap & Resume)
+═══════════════════════════════════════════════════════════ */
+.ypp-overlay-panel {
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    backdrop-filter 0.35s ease,
+    -webkit-backdrop-filter 0.35s ease;
+}
+
+.ypp-overlay-panel.ypp-overlay-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Recap/Resume list items scroll reveal */
+.ypp-scroll-reveal-item {
+  opacity: 0;
+  animation: ypp-scroll-reveal 0.4s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   9. SVG CHECKMARK DRAW ON TOGGLE-ON
+═══════════════════════════════════════════════════════════ */
+.ypp-check-draw {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.ypp-check-draw svg polyline {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+}
+.ypp-check-draw.ypp-check-active {
+  opacity: 1;
+}
+.ypp-check-draw.ypp-check-active svg polyline {
+  animation: ypp-checkmark-draw 0.3s ease 0.05s forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   10. STAT COUNTER ANIMATION
+═══════════════════════════════════════════════════════════ */
+.ypp-counting {
+  animation: ypp-counter-tick 0.25s ease both;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   11. STAT CARD GLOW PULSE (Recap)
+═══════════════════════════════════════════════════════════ */
+.ypp-stat-card .ypp-stat-val {
+  animation: ypp-stat-pulse 2.5s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   12. TOOLTIP ANIMATIONS
+═══════════════════════════════════════════════════════════ */
+.help-btn-tooltip,
+[data-tooltip]::after {
+  animation: ypp-tooltip-in 0.18s var(--ease-snap, cubic-bezier(0.23, 1, 0.32, 1)) both;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   13. PARTICLE BURST CONTAINER
+═══════════════════════════════════════════════════════════ */
+.ypp-particle-host {
+  position: relative;
+  overflow: visible;
+}
+
+.ypp-burst-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary, #6366f1);
+  pointer-events: none;
+  top: 50%; left: 50%;
+  margin: -3px 0 0 -3px;
+  animation: ypp-particle 0.5s ease-out forwards;
+  box-shadow: 0 0 6px var(--accent-glow, rgba(99,102,241,0.5));
+}
+
+/* ═══════════════════════════════════════════════════════════
+   14. SECTION STAGGERED CHILD ENTRANCE (extra nth-children)
+═══════════════════════════════════════════════════════════ */
+.tab-content.active .settings-section:nth-child(5) { animation-delay: 200ms; }
+.tab-content.active .settings-section:nth-child(6) { animation-delay: 250ms; }
+.tab-content.active .settings-section:nth-child(7) { animation-delay: 300ms; }
+.tab-content.active .settings-section:nth-child(8) { animation-delay: 350ms; }
+.tab-content.active .settings-section:nth-child(9) { animation-delay: 400ms; }
+
+/* ═══════════════════════════════════════════════════════════
+   15. TAB INDICATOR SLIDE (Active nav item active line)
+═══════════════════════════════════════════════════════════ */
+.nav-item.active::before {
+  animation: ypp-tab-slide 0.3s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) both;
+  transform-origin: top center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   16. SHORTCUT MANAGER ROW STAGGERED ENTER
+═══════════════════════════════════════════════════════════ */
+.vsc-shortcut-row {
+  animation: ypp-slide-in-up 0.28s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) both;
+}
+.vsc-shortcut-row:nth-child(1) { animation-delay: 0ms; }
+.vsc-shortcut-row:nth-child(2) { animation-delay: 30ms; }
+.vsc-shortcut-row:nth-child(3) { animation-delay: 60ms; }
+.vsc-shortcut-row:nth-child(4) { animation-delay: 90ms; }
+.vsc-shortcut-row:nth-child(5) { animation-delay: 120ms; }
+.vsc-shortcut-row:nth-child(6) { animation-delay: 150ms; }
+.vsc-shortcut-row:nth-child(7) { animation-delay: 180ms; }
+.vsc-shortcut-row:nth-child(8) { animation-delay: 210ms; }
+
+/* ═══════════════════════════════════════════════════════════
+   17. REDUCE MOTION OVERRIDE (respect user preferences)
+═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .ypp-shake,
+  .ypp-row-enter,
+  .ypp-row-exit,
+  .ypp-stagger-enter,
+  .ypp-toast,
+  .ypp-ripple,
+  .ypp-burst-particle,
+  .ypp-check-draw.ypp-check-active svg polyline,
+  .toggle-card::before,
+  .mode-card::before,
+  .preset-card::before,
+  .vsc-shortcut-row {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   18. PER-CATEGORY DISABLE CLASSES
+   Applied by the Popup Design > Animations toggle panel
+═══════════════════════════════════════════════════════════ */
+
+/* Master — kills all ypp animations at once */
+body.ypp-no-animations * {
+  animation-duration: 0.001ms !important;
+  animation-delay: 0ms !important;
+  transition-duration: 0.001ms !important;
+  transition-delay: 0ms !important;
+}
+body.ypp-no-animations .ypp-burst-particle,
+body.ypp-no-animations .ypp-ripple {
+  display: none !important;
+}
+body.ypp-no-animations .ypp-toast-container {
+  display: none !important;
+}
+
+/* Ripple only */
+body.ypp-no-ripple .ypp-ripple {
+  display: none !important;
+}
+
+/* Toast only */
+body.ypp-no-toast .ypp-toast-container {
+  display: none !important;
+}
+
+/* Row enter/exit */
+body.ypp-no-rowAnim .ypp-row-enter,
+body.ypp-no-rowAnim .ypp-row-exit,
+body.ypp-no-rowAnim .ypp-stagger-enter {
+  animation: none !important;
+}
+
+/* Particles */
+body.ypp-no-particles .ypp-burst-particle {
+  display: none !important;
+}
+
+/* Card shine */
+body.ypp-no-cardShine .toggle-card::before,
+body.ypp-no-cardShine .mode-card::before,
+body.ypp-no-cardShine .preset-card::before {
+  display: none !important;
+}
+
+/* Icon bounce */
+body.ypp-no-iconBounce .toggle-card:hover .feature-icon svg,
+body.ypp-no-iconBounce .mode-card:hover .mode-icon svg {
+  animation: none !important;
+}
+
+/* Stagger reveal */
+body.ypp-no-stagger .ypp-stagger-enter,
+body.ypp-no-stagger .ypp-scroll-reveal-item {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* Count-up */
+body.ypp-no-countUp .ypp-counting {
+  animation: none !important;
+}
