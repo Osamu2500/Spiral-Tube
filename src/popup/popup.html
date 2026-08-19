@@ -1034,190 +1034,207 @@
                </div>
             </div>
             <div class="card-group">
-              <div class="slider-group slider-group-grid">
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="zoom_level">Zoom Level</span>
-                    <span class="desc slider-value" id="popupZoomValue">0.6</span>
-                  </div>
-                  <div class="range-with-buttons">
-    <button type="button" class="range-btn btn-minus" data-target="popupZoom">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-    </button>
-    <div class="range-track-wrap">
-      <input type="range" id="popupZoom" min="0.2" max="1.0" step="0.05" aria-label="Popup Zoom" title="Popup Zoom" class="full-width-range styled-range">
-    </div>
-    <button type="button" class="range-btn btn-plus" data-target="popupZoom">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-    </button>
-  </div>
-                </div>
-                
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name">Width <button id="aspectRatioLock" title="Lock Aspect Ratio" style="background:transparent;border:none;color:inherit;opacity:0.5;cursor:pointer;padding:0;margin-left:4px;display:inline-flex;align-items:center;justify-content:center;transition:opacity 0.2s;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></button></span>
-                    <span class="desc slider-value" id="popupWidthValue">560px</span>
-                  </div>
-                  <div class="range-with-buttons">
-    <button type="button" class="range-btn btn-minus" data-target="popupWidth">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-    </button>
-    <div class="range-track-wrap">
-      <input type="range" id="popupWidth" min="400" max="800" step="10" aria-label="Popup Width" title="Popup Width" class="full-width-range styled-range">
-    </div>
-    <button type="button" class="range-btn btn-plus" data-target="popupWidth">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-    </button>
-  </div>
-                </div>
-                
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name">Height</span>
-                    <span class="desc slider-value" id="popupHeightValue">600px</span>
-                  </div>
-                  <div class="range-with-buttons">
-    <button type="button" class="range-btn btn-minus" data-target="popupHeight">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-    </button>
-    <div class="range-track-wrap">
-      <input type="range" id="popupHeight" min="400" max="600" step="10" aria-label="Popup Height" title="Popup Height" class="full-width-range styled-range">
-    </div>
-    <button type="button" class="range-btn btn-plus" data-target="popupHeight">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-    </button>
-  </div>
-                </div>
-                
-                <div class="slider-item slider-item-pill" style="grid-column: 1 / -1;">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name">Grid</span>
-                    <span class="desc slider-value" id="featureGridColsValue">4</span>
-                  </div>
-    <div class="segmented-picker" id="featureGridColsSegmented">
-      <button type="button" class="segment-btn" data-value="2">2</button>
-      <button type="button" class="segment-btn" data-value="3">3</button>
-      <button type="button" class="segment-btn" data-value="4">4</button>
-      <button type="button" class="segment-btn" data-value="5">5</button>
-      <button type="button" class="segment-btn" data-value="6">6</button>
-      <button type="button" class="segment-btn" data-value="7">7</button>
-    </div>
-    <input type="hidden" id="featureGridCols" value="4">
-                </div>
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="ui_density">UI Density</span>
-                    <span class="desc slider-value" id="popupDensityValue">1.0</span>
-                  </div>
-                  <div class="range-with-buttons">
-                    <button type="button" class="range-btn btn-minus" data-target="popupDensity">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-                    </button>
-                    <div class="range-track-wrap">
-                      <input type="range" id="popupDensity" min="0.6" max="1.5" step="0.1" aria-label="UI Density" title="UI Density" class="full-width-range styled-range">
-                    </div>
-                    <button type="button" class="range-btn btn-plus" data-target="popupDensity">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="ui_roundness">UI Roundness</span>
-                    <span class="desc slider-value" id="popupRadiusValue">12px</span>
-                  </div>
-                  <div class="range-with-buttons">
-                    <button type="button" class="range-btn btn-minus" data-target="popupRadius">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-                    </button>
-                    <div class="range-track-wrap">
-                      <input type="range" id="popupRadius" min="0" max="24" step="1" aria-label="UI Roundness" title="UI Roundness" class="full-width-range styled-range">
-                    </div>
-                    <button type="button" class="range-btn btn-plus" data-target="popupRadius">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="slider-item slider-item-pill">
-                  <div class="slider-header slider-header-spaced">
-                    <span class="name slider-name" data-i18n="font_scale">Font Scale</span>
-                    <span class="desc slider-value" id="fontScaleValue">100%</span>
-                  </div>
-                  <div class="range-with-buttons">
-                    <button type="button" class="range-btn btn-minus" data-target="fontScale">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path></svg>
-                    </button>
-                    <div class="range-track-wrap">
-                      <input type="range" id="fontScale" min="80" max="150" step="5" aria-label="Font Scale" title="Font Scale" class="full-width-range styled-range">
-                    </div>
-                    <button type="button" class="range-btn btn-plus" data-target="fontScale">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              </div>
-            <div class="scale-presets">
-              <button type="button" class="preset-btn" id="presetScaleDefault">Reset Defaults</button>
-              <button type="button" class="preset-btn" id="presetScaleCompact">Compact</button>
-              <button type="button" class="preset-btn" id="presetScaleWide">Ultra-Wide</button>
-            </div>
-          </div>
+              <div class="scale-section-grid">
 
-          <!-- 3. Popup UI Design -->
-          <div class="settings-section">
+                <!-- Zoom Level -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                      </span>
+                      <span>Zoom Level</span>
+                             <span class="scale-value-badge" id="popupZoomValue">0.6</span>
+                     <span class="scale-zone-label" id="popupZoomZone">Compact</span>
+                   </div>
+                   <input type="range" class="scale-slider" id="popupZoom" min="0.2" max="1.0" step="0.05" aria-label="Popup Zoom" title="Popup Zoom">
+                </div>
+
+                <!-- Width -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12H3"/><path d="M18 9l3 3-3 3"/><path d="M6 9l-3 3 3 3"/></svg>
+                      </span>
+                      <span>Width</span>
+                             <span class="scale-value-badge" id="popupWidthValue">560px</span>
+                     <span class="scale-zone-label" id="popupWidthZone">Default ✓</span>
+                   </div>
+                   <input type="range" class="scale-slider" id="popupWidth" min="400" max="800" step="10" aria-label="Popup Width" title="Popup Width">
+                </div>
+
+                <!-- Height -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V3"/><path d="M9 18l3 3 3-3"/><path d="M9 6l3-3 3 3"/></svg>
+                      </span>
+                      <span>Height</span>
+                    </span>
+                    <span class="scale-value-badge" id="popupHeightValue">600px</span>
+                  </div>
+                  <input type="range" class="scale-slider" id="popupHeight" min="400" max="600" step="10" aria-label="Popup Height" title="Popup Height">
+                </div>
+
+                <!-- Grid Columns -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                      </span>
+                      <span>Grid Columns</span>
+                    </span>
+                    <span class="scale-value-badge" id="featureGridColsValue">4</span>
+                  </div>
+                  <div class="scale-segmented" id="featureGridColsSegmented">
+                    <button type="button" class="scale-seg-btn" data-value="2">2</button>
+                    <button type="button" class="scale-seg-btn" data-value="3">3</button>
+                    <button type="button" class="scale-seg-btn" data-value="4">4</button>
+                    <button type="button" class="scale-seg-btn" data-value="5">5</button>
+                    <button type="button" class="scale-seg-btn" data-value="6">6</button>
+                    <button type="button" class="scale-seg-btn" data-value="7">7</button>
+                  </div>
+                   <div class="grid-mini-preview" id="gridMiniPreview"></div>
+                   <input type="hidden" id="featureGridCols" value="4">
+                 </div>
+
+                <!-- UI Density -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                      </span>
+                      <span>UI Density</span>
+                             <span class="scale-value-badge" id="popupDensityValue">Normal</span>
+                   </div>
+                   <div class="scale-segmented" id="densitySegmented">
+                     <button type="button" class="scale-seg-btn" data-value="0.7" data-label="Ultra Compact">XS</button>
+                     <button type="button" class="scale-seg-btn" data-value="0.85" data-label="Compact">S</button>
+                     <button type="button" class="scale-seg-btn active" data-value="1.0" data-label="Normal">M</button>
+                     <button type="button" class="scale-seg-btn" data-value="1.2" data-label="Comfortable">L</button>
+                     <button type="button" class="scale-seg-btn" data-value="1.4" data-label="Spacious">XL</button>
+                   </div>
+                   <input type="hidden" id="popupDensity" value="1.0">
+                 </div>
+
+                <!-- UI Roundness -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="6" ry="6"></rect></svg>
+                      </span>
+                      <span>UI Roundness</span>
+                             <span class="scale-value-badge" id="popupRadiusValue">12px</span>
+                     <span class="scale-zone-label" id="popupRadiusZone">Rounded</span>
+                   </div>
+                   <div class="radius-preview-row"><div class="radius-preview-swatch" id="radiusPreviewSwatch" style="border-radius:12px"></div></div>
+                   <input type="range" class="scale-slider" id="popupRadius" min="0" max="24" step="1" aria-label="UI Roundness" title="UI Roundness">
+                 </div>
+
+                <!-- Font Scale -->
+                <div class="scale-pill">
+                  <div class="scale-pill-header">
+                    <span class="scale-pill-label">
+                      <span class="scale-icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                      </span>
+                      <span>Font Scale</span>
+                    </span>
+                    <span class="scale-value-badge" id="fontScaleValue">100%</span>
+                  </div>
+                   <input type="range" class="scale-slider" id="fontScale" min="80" max="150" step="5" aria-label="Font Scale" title="Font Scale">
+                   <div class="font-scale-sample" id="fontScaleSample">The quick brown fox</div>
+                 </div>
+
+                <!-- Presets -->
+                <div class="scale-pill scale-presets-pill">
+                  <p class="scale-presets-label">Quick Presets</p>
+                  <div class="scale-presets-row">
+                    <button type="button" class="scale-preset-btn" id="presetScaleDefault">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+                      Reset
+                    </button>
+                    <button type="button" class="scale-preset-btn" id="presetScaleCompact">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14h6v6"></path><path d="M20 10h-6V4"></path><path d="M14 10l7-7"></path><path d="M3 21l7-7"></path></svg>
+                      Compact
+                    </button>
+                    <button type="button" class="scale-preset-btn" id="presetScaleWide">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>
+                      
+                     </button>
+                   </div>
+                   <div class="scale-presets-row scale-presets-row-2">
+                     <button type="button" class="scale-preset-btn scale-preset-save" id="presetScaleSave">
+                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                       Save Custom
+                     </button>
+                     <button type="button" class="scale-preset-btn scale-preset-custom" id="presetScaleCustom" style="display:none">
+                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                       My Custom
+                     </button>
+                   </div>
+                 </div>
+
+               </div>
+             </div>
+           </div>
+
+           <!-- 3. Popup UI Design -->
+           <div class="settings-section">
             <div class="section-header">
                <div class="section-title-wrap">
                   <div class="section-text-wrap">
                      <div class="section-title">
                         <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                        <span data-i18n="popup_ui_design">Popup UI Design
-                     </span></div>
+                        <span data-i18n="popup_ui_design">Popup UI Design</span>
+                     </div>
                   </div>
                </div>
             </div>
-            <div class="ypp-inline-98 card-group">
-              <input type="hidden" id="popupUiTheme" value="liquid-glass" aria-label="Popup Ui Theme" title="Popup Ui Theme">
-              <div class="ypp-inline-99 theme-grid">
-                <button type="button" class="theme-btn popup-style-btn" data-style="abyss">Abyss</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="aurora">Aurora</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="autumn">Autumn</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="bento">Bento</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="bloodmoon">Blood Moon</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="blue-sky">Blue Sky</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="brutalism">Brutalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cairo-red">Cairo Red</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cherry">Cherry</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="christmas">Christmas</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="claymorphism">Claymorphism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="coffee">Coffee</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="crystal-glass">Crystal Glass</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk">Cyberpunk</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="deepspace">Deep Space</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="default">Default</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="discord">Discord</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="dracula">Dracula</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="fluent">Fluent</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="frutiger-aero">Frutiger Aero</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="glassmorphism">Glassmorphism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="hacker">Hacker</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="harry-potter">Harry Potter</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="kawaii">Kawaii</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass">Liquid Glass</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="material">Material</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="maximalism">Maximalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="minimalism">Minimalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="nature">Nature</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="nebula">Nebula</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic">Neumorphic</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="ocean">Ocean</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="outrun">Outrun</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="retro">Retro</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="startube">StarTube</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="technozen">Technozen</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="terminalism">Terminalism</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="vintage">Vintage</button>
-                <button type="button" class="theme-btn popup-style-btn" data-style="sakura">Sakura</button>
+            <button type="button" class="theme-btn popup-style-btn" data-style="abyss"><span class="theme-preview-dot" data-theme="abyss"></span>Abyss</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="aurora"><span class="theme-preview-dot" data-theme="aurora"></span>Aurora</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="autumn"><span class="theme-preview-dot" data-theme="autumn"></span>Autumn</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="bento"><span class="theme-preview-dot" data-theme="bento"></span>Bento</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="bloodmoon"><span class="theme-preview-dot" data-theme="bloodmoon"></span>Blood Moon</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="blue-sky"><span class="theme-preview-dot" data-theme="blue-sky"></span>Blue Sky</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="brutalism"><span class="theme-preview-dot" data-theme="brutalism"></span>Brutalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cairo-red"><span class="theme-preview-dot" data-theme="cairo-red"></span>Cairo Red</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cherry"><span class="theme-preview-dot" data-theme="cherry"></span>Cherry</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="christmas"><span class="theme-preview-dot" data-theme="christmas"></span>Christmas</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="claymorphism"><span class="theme-preview-dot" data-theme="claymorphism"></span>Claymorphism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="coffee"><span class="theme-preview-dot" data-theme="coffee"></span>Coffee</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="crystal-glass"><span class="theme-preview-dot" data-theme="crystal-glass"></span>Crystal Glass</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="cyberpunk"><span class="theme-preview-dot" data-theme="cyberpunk"></span>Cyberpunk</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="deepspace"><span class="theme-preview-dot" data-theme="deepspace"></span>Deep Space</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="default"><span class="theme-preview-dot" data-theme="default"></span>Default</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="discord"><span class="theme-preview-dot" data-theme="discord"></span>Discord</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="dracula"><span class="theme-preview-dot" data-theme="dracula"></span>Dracula</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="fluent"><span class="theme-preview-dot" data-theme="fluent"></span>Fluent</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="frutiger-aero"><span class="theme-preview-dot" data-theme="frutiger-aero"></span>Frutiger Aero</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="glassmorphism"><span class="theme-preview-dot" data-theme="glassmorphism"></span>Glassmorphism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="hacker"><span class="theme-preview-dot" data-theme="hacker"></span>Hacker</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="harry-potter"><span class="theme-preview-dot" data-theme="harry-potter"></span>Harry Potter</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="kawaii"><span class="theme-preview-dot" data-theme="kawaii"></span>Kawaii</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="liquid-glass"><span class="theme-preview-dot" data-theme="liquid-glass"></span>Liquid Glass</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="material"><span class="theme-preview-dot" data-theme="material"></span>Material</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="maximalism"><span class="theme-preview-dot" data-theme="maximalism"></span>Maximalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="minimalism"><span class="theme-preview-dot" data-theme="minimalism"></span>Minimalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="nature"><span class="theme-preview-dot" data-theme="nature"></span>Nature</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="nebula"><span class="theme-preview-dot" data-theme="nebula"></span>Nebula</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="neumorphic"><span class="theme-preview-dot" data-theme="neumorphic"></span>Neumorphic</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="ocean"><span class="theme-preview-dot" data-theme="ocean"></span>Ocean</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="outrun"><span class="theme-preview-dot" data-theme="outrun"></span>Outrun</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="retro"><span class="theme-preview-dot" data-theme="retro"></span>Retro</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="startube"><span class="theme-preview-dot" data-theme="startube"></span>StarTube</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="technozen"><span class="theme-preview-dot" data-theme="technozen"></span>Technozen</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="terminalism"><span class="theme-preview-dot" data-theme="terminalism"></span>Terminalism</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="vintage"><span class="theme-preview-dot" data-theme="vintage"></span>Vintage</button>
+                <button type="button" class="theme-btn popup-style-btn" data-style="sakura"><span class="theme-preview-dot" data-theme="sakura"></span>Sakura</button>
               </div>
             </div>
           </div>

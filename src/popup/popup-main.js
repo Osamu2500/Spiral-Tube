@@ -1209,6 +1209,291 @@ function initGlowButtons() {
 
 // --- POPUP SCALE ENHANCEMENTS ---
 function initPopupScaleEnhancements(doc, saveSettings) {
+    // Update CSS custom property for slider gradient fill
+    const updateSliderPct = (slider) => {
+        const min = parseFloat(slider.min) || 0;
+        const max = parseFloat(slider.max) || 100;
+        const val = parseFloat(slider.value);
+        const pct = ((val - min) / (max - min)) * 100;
+        slider.style.setProperty('--range-pct', pct + '%');
+    };
+    doc.querySelectorAll('.scale-slider').forEach(slider => {
+        updateSliderPct(slider);
+        slider.addEventListener('input', () => updateSliderPct(slider));
+    });
+
+    // Grid segmented picker: update to use new class name
+    const gridPicker2 = doc.getElementById('featureGridColsSegmented');
+    const gridInput2 = doc.getElementById('featureGridCols');
+    if (gridPicker2 && gridInput2) {
+        const updateSeg = () => {
+            gridPicker2.querySelectorAll('.scale-seg-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === gridInput2.value);
+            });
+        };
+        gridPicker2.querySelectorAll('.scale-seg-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                gridInput2.value = btn.dataset.value;
+                updateSeg();
+                gridInput2.dispatchEvent(new Event('input', { bubbles: true }));
+                gridInput2.dispatchEvent(new Event('change', { bubbles: true }));
+                const display = doc.getElementById('featureGridColsValue');
+                if (display) display.textContent = btn.dataset.value;
+            });
+        });
+        setTimeout(updateSeg, 100);
+        gridInput2.addEventListener('change', updateSeg);
+    }
+
+    // ─── Plan v4 Feature Level-Up ───────────────────────────────────────────────
+
+    // Undo buffer
+    const undoStack = [];
+    const undoChip = (() => {
+        const chip = doc.createElement('div');
+        chip.className = 'scale-undo-chip';
+        chip.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg> Undo last change';
+        const grid = doc.querySelector('.scale-section-grid');
+        if (grid) {
+            grid.style.position = 'relative';
+            grid.appendChild(chip);
+        }
+        let timer;
+        chip.addEventListener('click', () => {
+            if (!undoStack.length) return;
+            const last = undoStack.pop();
+            const el = doc.getElementById(last.id);
+            if (el) {
+                el.value = last.value;
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            chip.classList.remove('visible');
+        });
+        return { chip, show() {
+            clearTimeout(timer);
+            chip.classList.add('visible');
+            timer = setTimeout(() => chip.classList.remove('visible'), 3000);
+        }};
+    })();
+
+    // Track undo for all scale sliders
+    ['popupZoom','popupWidth','popupHeight','popupDensity','popupRadius','fontScale'].forEach(id => {
+        const el = doc.getElementById(id);
+        if (!el) return;
+        let lastVal = el.value;
+        el.addEventListener('mousedown', () => { lastVal = el.value; });
+        el.addEventListener('change', () => {
+            if (el.value !== lastVal) {
+                undoStack.push({ id, value: lastVal });
+                if (undoStack.length > 5) undoStack.shift();
+                undoChip.show();
+                lastVal = el.value;
+            }
+        });
+        // Right-click to reset individual control
+        el.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            const defaults = { popupZoom:'0.6', popupWidth:'560', popupHeight:'600', popupDensity:'1.0', popupRadius:'12', fontScale:'100' };
+            if (defaults[id] !== undefined) {
+                undoStack.push({ id, value: el.value });
+                el.value = defaults[id];
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+                undoChip.show();
+            }
+        });
+    });
+
+    // Double-click value badge to edit inline
+    ['popupZoom','popupWidth','popupHeight','popupRadius','fontScale'].forEach(id => {
+        const badge = doc.getElementById(id + 'Value');
+        const slider = doc.getElementById(id);
+        if (!badge || !slider) return;
+        badge.title = 'Double-click to type a value';
+        badge.addEventListener('dblclick', () => {
+            const orig = badge.textContent;
+            badge.contentEditable = 'true';
+            badge.classList.add('editing');
+            badge.focus();
+            document.execCommand('selectAll', false, null);
+            const finish = () => {
+                badge.contentEditable = 'false';
+                badge.classList.remove('editing');
+                const raw = parseFloat(badge.textContent);
+                if (!isNaN(raw)) {
+                    const min = parseFloat(slider.min);
+                    const max = parseFloat(slider.max);
+                    slider.value = Math.min(max, Math.max(min, raw));
+                    slider.dispatchEvent(new Event('input', { bubbles: true }));
+                    slider.dispatchEvent(new Event('change', { bubbles: true }));
+                } else {
+                    badge.textContent = orig;
+                }
+            };
+            badge.addEventListener('blur', finish, { once: true });
+            badge.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); badge.blur(); } }, { once: true });
+        });
+    });
+
+    // Zoom Level zone labels
+    const zoomSlider = doc.getElementById('popupZoom');
+    const zoomZone   = doc.getElementById('popupZoomZone');
+    const updateZoomZone = () => {
+        if (!zoomSlider || !zoomZone) return;
+        const v = parseFloat(zoomSlider.value);
+        let label='', cls='';
+        if (v <= 0.4)      { label='Too Small'; cls='zone-danger'; }
+        else if (v <= 0.55){ label='Compact';   cls='zone-warn'; }
+        else if (v <= 0.75){ label='Comfortable'; cls='zone-ok'; }
+        else               { label='Large';     cls='zone-accent'; }
+        zoomZone.textContent = label;
+        zoomZone.className = 'scale-zone-label ' + cls;
+    };
+    if (zoomSlider) { zoomSlider.addEventListener('input', updateZoomZone); updateZoomZone(); }
+
+    // Width smart badge
+    const widthSlider = doc.getElementById('popupWidth');
+    const widthZone   = doc.getElementById('popupWidthZone');
+    const updateWidthZone = () => {
+        if (!widthSlider || !widthZone) return;
+        const v = parseFloat(widthSlider.value);
+        let label='', cls='';
+        if (v === 560)      { label='Default ✓'; cls='zone-ok'; }
+        else if (v >= 720)  { label='Very Wide ⚠'; cls='zone-warn'; }
+        else if (v < 480)   { label='Narrow';    cls='zone-warn'; }
+        else                { label='Custom';    cls=''; }
+        widthZone.textContent = label;
+        widthZone.className = 'scale-zone-label ' + cls;
+    };
+    if (widthSlider) { widthSlider.addEventListener('input', updateWidthZone); updateWidthZone(); }
+
+    // Grid Columns mini-preview
+    const gridPreview = doc.getElementById('gridMiniPreview');
+    const updateGridPreview = (cols) => {
+        if (!gridPreview) return;
+        gridPreview.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+        gridPreview.innerHTML = Array.from({length: parseInt(cols)}, () => '<div class="grid-mini-preview-cell"></div>').join('');
+    };
+    const gridHiddenInput = doc.getElementById('featureGridCols');
+    if (gridHiddenInput) { updateGridPreview(gridHiddenInput.value); }
+    doc.getElementById('featureGridColsSegmented')?.querySelectorAll('.scale-seg-btn').forEach(btn => {
+        btn.addEventListener('click', () => updateGridPreview(btn.dataset.value));
+    });
+
+    // UI Density segmented picker
+    const densityPicker = doc.getElementById('densitySegmented');
+    const densityHidden = doc.getElementById('popupDensity');
+    const densityBadge  = doc.getElementById('popupDensityValue');
+    if (densityPicker && densityHidden) {
+        const updateDensityActive = () => {
+            densityPicker.querySelectorAll('.scale-seg-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === densityHidden.value);
+            });
+        };
+        densityPicker.querySelectorAll('.scale-seg-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                densityHidden.value = btn.dataset.value;
+                if (densityBadge) densityBadge.textContent = btn.dataset.label || btn.dataset.value;
+                updateDensityActive();
+                densityHidden.dispatchEvent(new Event('input', { bubbles: true }));
+                densityHidden.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+        });
+        setTimeout(updateDensityActive, 100);
+    }
+
+    // UI Roundness shape preview
+    const radiusSlider = doc.getElementById('popupRadius');
+    const radiusSwatch = doc.getElementById('radiusPreviewSwatch');
+    const radiusZone   = doc.getElementById('popupRadiusZone');
+    const updateRadiusPreview = () => {
+        if (!radiusSlider) return;
+        const v = parseFloat(radiusSlider.value);
+        if (radiusSwatch) radiusSwatch.style.borderRadius = v + 'px';
+        if (radiusZone) {
+            let label='', cls='';
+            if (v === 0)      { label='Square';   cls=''; }
+            else if (v <= 5)  { label='Subtle';   cls=''; }
+            else if (v <= 14) { label='Rounded';  cls='zone-ok'; }
+            else              { label='Pill';     cls='zone-accent'; }
+            radiusZone.textContent = label;
+            radiusZone.className = 'scale-zone-label ' + cls;
+        }
+    };
+    if (radiusSlider) { radiusSlider.addEventListener('input', updateRadiusPreview); updateRadiusPreview(); }
+
+    // Font Scale live sample
+    const fontSlider = doc.getElementById('fontScale');
+    const fontSample = doc.getElementById('fontScaleSample');
+    const updateFontSample = () => {
+        if (!fontSlider || !fontSample) return;
+        const pct = parseFloat(fontSlider.value);
+        fontSample.style.fontSize = (pct * 0.1) + 'px';
+    };
+    if (fontSlider) { fontSlider.addEventListener('input', updateFontSample); updateFontSample(); }
+
+    // Save Custom Preset
+    const saveBtn    = doc.getElementById('presetScaleSave');
+    const customBtn  = doc.getElementById('presetScaleCustom');
+    const getScaleSnapshot = () => ({
+        popupZoom: doc.getElementById('popupZoom')?.value,
+        popupWidth: doc.getElementById('popupWidth')?.value,
+        popupHeight: doc.getElementById('popupHeight')?.value,
+        featureGridCols: doc.getElementById('featureGridCols')?.value,
+        popupDensity: doc.getElementById('popupDensity')?.value,
+        popupRadius: doc.getElementById('popupRadius')?.value,
+        fontScale: doc.getElementById('fontScale')?.value,
+    });
+
+    // Show Custom button if saved preset exists
+    chrome.storage.local.get(['customScalePreset'], (res) => {
+        if (res.customScalePreset && customBtn) customBtn.style.display = '';
+    });
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            const snap = getScaleSnapshot();
+            chrome.storage.local.set({ customScalePreset: snap }, () => {
+                if (customBtn) customBtn.style.display = '';
+                saveBtn.classList.add('applied');
+                const origText = saveBtn.childNodes[saveBtn.childNodes.length - 1].textContent.trim();
+                saveBtn.childNodes[saveBtn.childNodes.length - 1].textContent = ' Saved ✓';
+                setTimeout(() => {
+                    saveBtn.classList.remove('applied');
+                    saveBtn.childNodes[saveBtn.childNodes.length - 1].textContent = ' Save Custom';
+                }, 1500);
+            });
+        });
+    }
+
+    if (customBtn) {
+        customBtn.addEventListener('click', () => {
+            chrome.storage.local.get(['customScalePreset'], (res) => {
+                if (!res.customScalePreset) return;
+                const snap = res.customScalePreset;
+                Object.entries(snap).forEach(([id, val]) => {
+                    const el = doc.getElementById(id);
+                    if (el) {
+                        el.value = val;
+                        el.dispatchEvent(new Event('input', { bubbles: true }));
+                        el.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                });
+                customBtn.classList.add('applied');
+                setTimeout(() => customBtn.classList.remove('applied'), 500);
+            });
+        });
+    }
+
+    // Preset Applied flash for all preset buttons
+    doc.querySelectorAll('.scale-preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.add('applied');
+            setTimeout(() => btn.classList.remove('applied'), 500);
+        });
+    });
+
     // 1. Precision +/- Buttons
     doc.querySelectorAll('.range-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1264,12 +1549,12 @@ function initPopupScaleEnhancements(doc, saveSettings) {
     const gridInput = doc.getElementById('featureGridCols');
     if (gridPicker && gridInput) {
         const updateActiveSegment = () => {
-            gridPicker.querySelectorAll('.segment-btn').forEach(btn => {
+            gridPicker.querySelectorAll('.scale-seg-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.value === gridInput.value);
             });
         };
         
-        gridPicker.querySelectorAll('.segment-btn').forEach(btn => {
+        gridPicker.querySelectorAll('.scale-seg-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 gridInput.value = btn.dataset.value;
                 updateActiveSegment();
@@ -1309,7 +1594,7 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         // Ensure segmented button updates visually
         if (gridInput) {
             gridInput.value = grid;
-            gridPicker.querySelectorAll('.segment-btn').forEach(btn => {
+            gridPicker.querySelectorAll('.scale-seg-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.value === String(grid));
             });
         }
