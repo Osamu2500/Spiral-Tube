@@ -1230,13 +1230,13 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         gridPicker2.querySelectorAll('.scale-seg-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 gridInput2.value = btn.dataset.value;
-                updateSeg();
                 gridInput2.dispatchEvent(new Event('input', { bubbles: true }));
                 gridInput2.dispatchEvent(new Event('change', { bubbles: true }));
                 const display = doc.getElementById('featureGridColsValue');
                 if (display) display.textContent = btn.dataset.value;
             });
         });
+        gridInput2.addEventListener('input', updateSeg);
         setTimeout(updateSeg, 100);
         gridInput2.addEventListener('change', updateSeg);
     }
@@ -1397,11 +1397,17 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         densityPicker.querySelectorAll('.scale-seg-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 densityHidden.value = btn.dataset.value;
-                if (densityBadge) densityBadge.textContent = btn.dataset.label || btn.dataset.value;
-                updateDensityActive();
                 densityHidden.dispatchEvent(new Event('input', { bubbles: true }));
                 densityHidden.dispatchEvent(new Event('change', { bubbles: true }));
             });
+        });
+        // Auto-sync UI when the hidden input's value is changed programmatically
+        densityHidden.addEventListener('input', () => {
+            if (densityBadge) {
+                const activeBtn = densityPicker.querySelector(`[data-value="${densityHidden.value}"]`);
+                densityBadge.textContent = activeBtn ? (activeBtn.dataset.label || densityHidden.value) : densityHidden.value;
+            }
+            updateDensityActive();
         });
         setTimeout(updateDensityActive, 100);
     }
