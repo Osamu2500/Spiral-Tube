@@ -421,6 +421,11 @@ html {
   width: var(--popup-width);
   height: var(--popup-height);
   overflow: hidden;
+  transition: width 0.15s ease-out, height 0.15s ease-out;
+}
+html.full-page {
+  width: 100vw !important;
+  height: 100vh !important;
 }
 body {
   margin: 0; padding: calc(6px * var(--ui-density, 1));
@@ -432,11 +437,17 @@ body {
               radial-gradient(circle at 90% 90%, color-mix(in srgb, var(--accent-secondary) 12%, #08080a) 0%, transparent 60%),
               #050507 !important; /* Deep rich ambient dual gradient */
   color: var(--text-primary);
+}
+html.full-page body {
+  width: calc(100vw / var(--popup-zoom)) !important;
+  height: calc(100vh / var(--popup-zoom)) !important;
+}
   font-size: calc(14px * var(--ui-font-scale, 1));
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   animation: popup-enter 0.28s var(--ease-snap) both;
+  transition: width 0.15s ease-out, height 0.15s ease-out;
 }
 
 /* ─── A11y Focus Rings ─── */
@@ -703,6 +714,33 @@ body {
   border-radius: calc(var(--ui-radius, 12px) * 1.33);
   border: 1px solid transparent;
   box-shadow: 0 8px 32px rgba(0,0,0,0.2);  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+.feature-card:active {
+  transform: scale(0.97);
+  overflow: hidden;
+}
+.settings-section:hover {
+  border-color: rgba(124, 111, 247, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 8px 36px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(124,111,247,0.08);
+}
+
+.section-header {
+  padding: calc(13px * var(--ui-density, 1)) calc(16px * var(--ui-density, 1));
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s ease;
+  position: relative;
+  border-radius: calc(var(--ui-radius, 12px) * 1.33) 16px 0 0;
+  backdrop-filter: blur(30px);
+  margin-bottom: calc(14px * var(--ui-density, 1));
+  background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  border-radius: calc(var(--ui-radius, 12px) * 1.33);
+  border: 1px solid transparent;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
 }
 .feature-card:active {
   transform: scale(0.97);
@@ -1944,6 +1982,7 @@ body.ypp-theme-minimalism .nav-item.active {
   flex-direction: column;
   justify-content: center;
 }
+
 .image-preview-container {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -2787,12 +2826,13 @@ input[type="range"].styled-range::-webkit-slider-thumb:hover {
     margin-top: calc(4px * var(--ui-density, 1));
 }
 .radius-preview-swatch {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: color-mix(in oklch, var(--accent-primary) 35%, transparent);
     border: 1.5px solid var(--accent-primary);
     transition: border-radius 0.15s ease;
     flex-shrink: 0;
+    box-sizing: border-box;
 }
 
 /* Font Scale live sample */

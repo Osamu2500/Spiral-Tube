@@ -485,7 +485,7 @@ export function renderPlayerBarOrganizer(container, state) {
     // The available buttons that can be reordered
     const BUTTON_DEFS = {
         pb_speed: { label: 'Speed Controls', icon: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 6v12l8.5-6L4 6zm9 0v12l8.5-6L13 6z"/></svg>' },
-        pb_pip: { label: 'Picture-in-Picture', icon: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 11h-8v6h8v-6zm4-7H1v16h22V4zm-2 14H3V6h18v12z"/></svg>' },
+        pb_pip: { label: 'Auto PiP', icon: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 11h-8v6h8v-6zm4-7H1v16h22V4zm-2 14H3V6h18v12z"/></svg>' },
         pb_snapshot: { label: 'Snapshot', icon: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="12" cy="12" r="3.2"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>' },
         pb_loop: { label: 'Loop', icon: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0020 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 004 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>' },
         pb_bookmark: { label: 'Bookmarks', icon: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>' },

@@ -852,6 +852,10 @@ function renderButtonGroup(item, state) {
     btnGroup.className = 'button-group';
     btnGroup.style.display = 'flex';
     btnGroup.style.gap = '4px';
+    btnGroup.style.background = 'rgba(255,255,255,0.06)';
+    btnGroup.style.padding = '4px';
+    btnGroup.style.borderRadius = '8px';
+    btnGroup.style.border = '1px solid rgba(255,255,255,0.08)';
     
     if (isWide) {
         btnGroup.style.width = '240px';
@@ -859,7 +863,7 @@ function renderButtonGroup(item, state) {
         btnGroup.style.marginTop = '0';
         btnGroup.style.marginLeft = 'auto';
     } else {
-        btnGroup.style.marginTop = '4px';
+        btnGroup.style.marginTop = '8px';
     }
     
     const input = document.createElement('input');
@@ -876,23 +880,22 @@ function renderButtonGroup(item, state) {
         
         btn.style.flex = '1';
         btn.style.padding = '6px 4px';
-        btn.style.fontSize = '10px';
-        btn.style.background = 'rgba(255,255,255,0.05)';
-        btn.style.border = '1px solid rgba(255,255,255,0.1)';
+        btn.style.fontSize = '11px';
+        btn.style.fontWeight = '500';
+        btn.style.background = 'transparent';
+        btn.style.border = 'none';
         btn.style.color = 'rgba(255,255,255,0.5)';
-        btn.style.borderRadius = '4px';
+        btn.style.borderRadius = '6px';
         btn.style.cursor = 'pointer';
         btn.style.transition = 'all 0.2s ease';
         
         btn.onclick = () => {
             btns.forEach(b => {
-                b.style.background = 'rgba(255,255,255,0.05)';
+                b.style.background = 'transparent';
                 b.style.color = 'rgba(255,255,255,0.5)';
-                b.style.borderColor = 'rgba(255,255,255,0.1)';
             });
             btn.style.background = 'color-mix(in srgb, var(--accent-primary) 22%, transparent)';
             btn.style.color = 'var(--accent-primary)';
-            btn.style.borderColor = 'color-mix(in srgb, var(--accent-primary) 50%, transparent)';
             
             input.value = opt.value;
             input.dispatchEvent(new Event('change', { bubbles: true }));
@@ -912,13 +915,11 @@ function renderButtonGroup(item, state) {
             const activeBtn = btns.find(b => b.dataset.value === val) || btns[0];
             if (activeBtn) {
                 btns.forEach(b => {
-                    b.style.background = 'rgba(255,255,255,0.05)';
+                    b.style.background = 'transparent';
                     b.style.color = 'rgba(255,255,255,0.5)';
-                    b.style.borderColor = 'rgba(255,255,255,0.1)';
                 });
                 activeBtn.style.background = 'color-mix(in srgb, var(--accent-primary) 22%, transparent)';
                 activeBtn.style.color = 'var(--accent-primary)';
-                activeBtn.style.borderColor = 'color-mix(in srgb, var(--accent-primary) 50%, transparent)';
             }
             if (iconWrap) {
                 if (val && val !== 'hidden') {

@@ -10,6 +10,12 @@ import { initHistoryWidget, initBackupTools, initBookmarksManager, renderPlayerB
 import { renderSchema, registerSlot, convertStaticDescriptionsToHelpButtons } from './popup-renderer.js';
 import { initI18n, t } from '../shared/i18n.js';
 
+// Detect if we are running outside a native popup (e.g. Edge extension options modal, full tab)
+// A native Chrome popup never exceeds 800x600 and is never an iframe.
+if (window.innerWidth > 800 || window.innerHeight > 600 || window !== window.top || window.location.search.includes('full')) {
+    document.documentElement.classList.add('full-page');
+}
+
 // --- Register Custom Slots ---
 registerSlot('player_bar_organizer', renderPlayerBarOrganizer);
 registerSlot('domain_memory_manager', renderDomainMemoryManager);
@@ -313,7 +319,7 @@ registerSlot('advanced_shortcuts_manager', (container, state) => {
         ambientMode: 'Toggle Ambient Mode',
         autoCinema: 'Toggle Auto Cinema',
         // --- Player Controls ---
-        pip: 'Picture-in-Picture',
+        pip: 'Auto PiP',
         zenMode: 'Toggle Zen Mode',
         seamlessMode: 'Toggle Seamless Mode',
         snapshot: 'Take Video Snapshot',
@@ -1279,13 +1285,25 @@ function initPopupScaleEnhancements(doc, saveSettings) {
         if (!el) return;
         let lastVal = el.value;
         el.addEventListener('mousedown', () => { lastVal = el.value; });
-        el.addEventListener('change', () => {
-            // Apply popup dimension variables here so it doesn't stutter during drag
+        el.addEventListener('input', () => {
+            // Apply popup dimension variables here so it updates smoothly during drag
             if (id === 'popupWidth') {
                 document.documentElement.style.setProperty('--popup-width', el.value + 'px');
             }
             if (id === 'popupHeight') {
                 document.documentElement.style.setProperty('--popup-height', el.value + 'px');
+            }
+            if (id === 'popupZoom') {
+                document.documentElement.style.setProperty('--popup-zoom', el.value);
+            }
+            if (id === 'popupDensity') {
+                document.documentElement.style.setProperty('--ui-density', el.value);
+            }
+            if (id === 'popupRadius') {
+                document.documentElement.style.setProperty('--ui-radius', el.value + 'px');
+            }
+            if (id === 'fontScale') {
+                document.documentElement.style.setProperty('--ui-font-scale', (el.value / 100).toFixed(2));
             }
             if (el.value !== lastVal) {
                 undoStack.push({ id, value: lastVal });

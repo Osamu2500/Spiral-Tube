@@ -100,6 +100,13 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
         this.settings = { ...this.settings, ...settings };
         if (!this.isActive) return;
         
+        // Apply UI Density
+        if (this.settings.popupDensity) {
+            document.documentElement.style.setProperty('--ui-density', this.settings.popupDensity);
+        } else {
+            document.documentElement.style.removeProperty('--ui-density');
+        }
+        
         // Apply pure CSS toggles
         for (const [key, cssClass] of Object.entries(this.TOGGLE_MAP)) {
             if (this.settings[key]) {
