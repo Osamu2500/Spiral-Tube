@@ -374,8 +374,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 this._Utils.log(`Theme is '${themeKey}', enforcing YouTube native mode: ${isDark ? 'dark' : 'light'}.`, 'THEME');
             } else {
                 // Treat ALL other themes (including 'default' YouTube Dark) as Dark themes to ensure YouTube's native UI elements 
-                // inherit dark backgrounds rather than blinding white ones.
-                const isLightTheme = false;
+                // inherit dark backgrounds rather than blinding white ones, except for explicitly light themes.
+                const lightThemes = ['minimalism', 'vintage', 'sakura', 'woodblock', 'origami', 'neumorphic', 'hologram', 'anime', 'brutalism', 'y2k', 'maximalism', 'kawaii'];
+                const isLightTheme = lightThemes.includes(themeKey);
                 this._enforceYouTubeTheme(!isLightTheme);
             }
         } else {
@@ -399,7 +400,8 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             this._themeObserver = new MutationObserver((mutations) => {
                 if (!this._currentThemeKey || this._currentThemeKey === 'system') return;
                 
-                const shouldBeDark = true; // Always force 'dark' for all custom themes and 'default' YouTube Dark
+                const lightThemes = ['minimalism', 'vintage', 'sakura', 'woodblock', 'origami', 'neumorphic', 'hologram', 'anime', 'brutalism', 'y2k', 'maximalism', 'kawaii'];
+                const shouldBeDark = !lightThemes.includes(this._currentThemeKey); // Always force 'dark' for all custom themes and 'default' YouTube Dark, except explicitly light themes
                 const isDark = document.documentElement.hasAttribute('dark');
                 
                 if (shouldBeDark && !isDark) {
