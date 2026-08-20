@@ -34,7 +34,7 @@ html[data-ypp-card-style='material']
         *
     )
   ) {
-  background: #1f1f1f !important;
+  background: var(--ypp-bg-surface, #1f1f1f) !important;
   border: 1px solid #444746 !important;
   border-radius: 16px !important;
   padding: var(--ypp-density-pad, 16px) !important;

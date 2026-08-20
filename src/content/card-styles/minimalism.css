@@ -34,7 +34,7 @@ html[data-ypp-card-style='minimalism']
         *
     )
   ) {
-  background: #ffffff !important;
+  background: var(--ypp-bg-surface, #ffffff) !important;
   border: 1px solid rgba(0,0,0,0.08) !important;
   border-radius: 4px !important;
   padding: var(--ypp-density-pad, 16px) !important;

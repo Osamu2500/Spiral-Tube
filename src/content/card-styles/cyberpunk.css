@@ -18,7 +18,7 @@ html[data-ypp-card-style="cyberpunk"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ):hover {
-    background: #111 !important;
+    background: var(--ypp-bg-surface, #111) !important;
     border-left: 3px solid var(--cyb-secondary) !important;
     border-bottom: 1px solid var(--cyb-primary) !important;
     clip-path: var(--cyb-clip-hover) !important;

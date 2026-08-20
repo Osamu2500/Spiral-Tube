@@ -14,7 +14,7 @@ html[data-ypp-card-style="discord"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ):hover {
-    background: #32353b !important;
+    background: var(--ypp-bg-surface, #32353b) !important;
 }
 
 html[data-ypp-card-style="discord"] :is(ytd-thumbnail, yt-image) {

@@ -143,9 +143,9 @@ html[data-ypp-card-style='retro']
         *
     )
   ) {
-  background: #c0c0c0 !important;
-  --yt-spec-text-primary: #000000 !important;
-  --yt-spec-text-secondary: #000000 !important;
+  background: var(--ypp-bg-surface, #c0c0c0) !important;
+  --yt-spec-text-primary: var(--ypp-text-primary, #000000) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, #000000) !important;
   border-radius: 0 !important;
   border-top: 2px solid #ffffff !important;
   border-left: 2px solid #ffffff !important;
@@ -194,7 +194,6 @@ html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) :is(ytd-thumbnail,
   border-bottom-color: #808080 !important;
 }
 
-html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) #video-title { 
-  color: #000080 !important; 
+html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #000080) !important; 
   font-family: "MS Sans Serif", Tahoma, sans-serif !important;
 }

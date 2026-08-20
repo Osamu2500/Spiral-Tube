@@ -22,7 +22,7 @@ html[data-ypp-card-style="flat"] :is(
 html[data-ypp-card-style="flat"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
-):hover #video-title { color: #fff !important; }
+):hover #video-title { color: var(--ypp-text-primary, #fff) !important; }
 
 html[data-ypp-card-style="flat"] :is(ytd-thumbnail, yt-image) {
     border-radius: 0 !important;

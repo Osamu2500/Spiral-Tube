@@ -16,7 +16,7 @@ html[data-ypp-card-style="bloodmoon"] :is(
 ):hover {
     border-color: var(--bl-crimson) !important;
     box-shadow: 0 5px 25px rgba(144, 0, 0, 0.4) !important;
-    background: #200505 !important;
+    background: var(--ypp-bg-surface, #200505) !important;
 }
 html[data-ypp-card-style="bloodmoon"] :is(ytd-thumbnail, yt-image) {
     border-radius: 4px !important;

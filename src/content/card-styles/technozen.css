@@ -174,8 +174,7 @@ ytd-compact-video-renderer ytd-thumbnail {
 }
 html[data-ypp-ui-style=technozen] #video-title,
 html[data-ypp-ui-style=technozen] ytd-video-renderer #video-title,
-html[data-ypp-ui-style=technozen] ytd-rich-item-renderer #video-title {
-  color: #152418 !important;
+html[data-ypp-ui-style=technozen] ytd-rich-item-renderer #video-title { color: var(--ypp-text-primary, #152418) !important;
 }
 ytd-rich-grid-media {
   box-shadow:

@@ -34,7 +34,7 @@ html[data-ypp-card-style='terminalism']
         *
     )
   ) {
-  background: #000000 !important;
+  background: var(--ypp-bg-surface, #000000) !important;
   border: 1px solid #00ff41 !important;
   border-radius: 2px !important;
   padding: var(--ypp-density-pad, 16px) !important;

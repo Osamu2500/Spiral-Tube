@@ -158,8 +158,7 @@ html[data-ypp-card-style="harry-potter"] body:not(.ypp-channel-page) :is(ytd-thu
 }
 
 /* Title & Metadata Typography */
-html[data-ypp-card-style="harry-potter"] body:not(.ypp-channel-page) #video-title {
-  color: #f5e6cc !important;
+html[data-ypp-card-style="harry-potter"] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #f5e6cc) !important;
   font-family: "Cinzel", "Garogier", "Garamond", "Georgia", "Times New Roman", serif !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -167,8 +166,7 @@ html[data-ypp-card-style="harry-potter"] body:not(.ypp-channel-page) #video-titl
   transition: color 0.25s ease !important;
 }
 
-html[data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model):hover #video-title {
-  color: #d4af37 !important;
+html[data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model):hover #video-title { color: var(--ypp-text-primary, #d4af37) !important;
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
 }
 

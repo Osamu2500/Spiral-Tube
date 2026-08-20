@@ -45,8 +45,7 @@ html[data-ypp-ui-style="outrun"] #video-title {
 }
 
 html[data-ypp-ui-style="outrun"] ytd-rich-grid-media:hover #video-title,
-html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer:hover #video-title {
-  color: #fff !important;
+html[data-ypp-ui-style="outrun"] ytd-compact-video-renderer:hover #video-title { color: var(--ypp-text-primary, #fff) !important;
   text-shadow: 0 0 5px var(--outrun-neon-cyan) !important;
 }
 
@@ -56,7 +55,7 @@ html[data-ypp-ui-style="outrun"] #channel-name {
 }
 
 html[data-ypp-ui-style="outrun"] ytd-thumbnail-overlay-time-status-renderer {
-  background: #000 !important;
+  background: var(--ypp-bg-surface, #000) !important;
   border: 1px solid var(--outrun-neon-magenta) !important;
   border-radius: 0 !important;
   color: var(--outrun-neon-magenta) !important;

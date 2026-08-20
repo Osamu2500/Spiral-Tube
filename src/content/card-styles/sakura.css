@@ -40,9 +40,9 @@ html[data-ypp-card-style="sakura"]
         *
     )
   ) {
-  background: #fff7fa !important;
-  --yt-spec-text-primary: #2c2520 !important;
-  --yt-spec-text-secondary: #5c5046 !important;
+  background: var(--ypp-bg-surface, #fff7fa) !important;
+  --yt-spec-text-primary: var(--ypp-text-primary, #2c2520) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, #5c5046) !important;
   border-radius: 20px !important;
   border: 1px solid #d4c4a8 !important;
   padding: var(--ypp-density-pad, 14px) !important;
@@ -75,7 +75,7 @@ html[data-ypp-card-style="sakura"]
         *
     )
   ):hover {
-  background: #fff8e7 !important;
+  background: var(--ypp-bg-surface, #fff8e7) !important;
   border-color: #e8527a !important;
   transform: translate(-2px, -2px) !important;
   box-shadow: 4px 4px 0px rgba(193, 58, 58, 0.4) !important;
@@ -105,7 +105,7 @@ html[data-ypp-card-style="sakura"]
         )
         *
     )
-  ) #video-title { color: #2c2520 !important; }
+  ) #video-title { color: var(--ypp-text-primary, #2c2520) !important; }
 
 html[data-ypp-card-style="sakura"]
   :is(
@@ -130,7 +130,7 @@ html[data-ypp-card-style="sakura"]
         )
         *
     )
-  ) #metadata-line span { color: #5c5046 !important; }
+  ) #metadata-line span { color: var(--ypp-text-secondary, #5c5046) !important; }
 
 html[data-ypp-card-style="sakura"] #mouseover-overlay, html[data-ypp-card-style="sakura"] ytd-video-preview,
 html[data-ypp-card-style='ocean'] #mouseover-overlay, html[data-ypp-card-style='ocean'] ytd-video-preview,

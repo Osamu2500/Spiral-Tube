@@ -83,7 +83,7 @@ html[data-ypp-card-style='ocean'] body:not(.ypp-channel-page) :is(ytd-thumbnail,
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
-html[data-ypp-card-style='ocean'] body:not(.ypp-channel-page) #video-title { color: #00bcd4 !important; }
+html[data-ypp-card-style='ocean'] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #00bcd4) !important; }
 
 html[data-ypp-card-style='ocean'] #mouseover-overlay, html[data-ypp-card-style='ocean'] ytd-video-preview,
 html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-style='blue-sky'] ytd-video-preview,

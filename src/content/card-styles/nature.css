@@ -81,7 +81,7 @@ html[data-ypp-card-style='nature'] body:not(.ypp-channel-page) :is(ytd-thumbnail
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
-html[data-ypp-card-style='nature'] body:not(.ypp-channel-page) #video-title { color: #a3be8c !important; }
+html[data-ypp-card-style='nature'] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #a3be8c) !important; }
 
 html[data-ypp-card-style='nature'] #mouseover-overlay, html[data-ypp-card-style='nature'] ytd-video-preview,
 html[data-ypp-card-style='vintage'] #mouseover-overlay, html[data-ypp-card-style='vintage'] ytd-video-preview,
