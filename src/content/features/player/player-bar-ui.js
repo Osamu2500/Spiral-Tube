@@ -529,6 +529,23 @@ export class PlayerBarUI {
             }
         }
         
+        // V6 Hard Fix: Add a local mutation observer to the target container to instantly reinject if YouTube clears innerHTML
+        if (this._localObserver) {
+            this._localObserver.disconnect();
+        }
+        
+        const targetContainer = isShorts ? controls : (controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-chrome-controls') || controls);
+        if (targetContainer) {
+            this._localObserver = new MutationObserver((mutations) => {
+                if (!document.contains(container) || container.children.length === 0) {
+                    this._localObserver.disconnect();
+                    this.injectedButtons = false;
+                    this.attemptInjection();
+                }
+            });
+            this._localObserver.observe(targetContainer, { childList: true });
+        }
+        
         this.injectedButtons = true;
     }
 
@@ -600,6 +617,12 @@ export class PlayerBarUI {
             window.YPP.sharedObserver.unregister('player-bar-injection-shorts');
             window.YPP.sharedObserver.unregister('player-bar-injection-right');
         }
+        
+        if (this._localObserver) {
+            this._localObserver.disconnect();
+            this._localObserver = null;
+        }
+        
         document.querySelectorAll('.ypp-player-controls').forEach(controls => controls.remove());
         document.querySelectorAll('.ypp-overflow-menu').forEach(menu => menu.remove());
         this.injectedButtons = false;

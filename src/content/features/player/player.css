@@ -67,21 +67,13 @@ ytd-watch-metadata #title h1,
 #below #title h1 {
   font-family: 'Inter', 'Roboto', sans-serif;
   font-weight: 800;
-  font-size: 2.2rem;
   line-height: 1.3;
   letter-spacing: -0.5px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 8px;
 }
 
-/* Metadata Row */
-body.yt-spiral-tube-theme ytd-watch-metadata #top-row,
-body.yt-spiral-tube-theme #below #top-row {
-  margin-top: 0px !important;
-  gap: 0px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 16px;
-}
+/* Metadata Row styling removed to preserve native YouTube spacing */
 
 body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   margin-bottom: 0px !important;
