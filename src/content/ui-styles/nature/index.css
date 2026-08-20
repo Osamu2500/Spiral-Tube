@@ -6,10 +6,10 @@
 
 /* Core Token Overrides */
 html[data-ypp-ui-design="nature"] {
-  --ypp-base-bg: transparent;
-  --ypp-surface-bg: rgba(18, 28, 18, 0.95) !important; /* Dark green/grey */
-  --ypp-surface-bg-hover: rgba(28, 48, 28, 0.9) !important;
-  --ypp-surface-bg-active: rgba(38, 68, 38, 0.9) !important;
+  --ypp-bg-base: transparent;
+  --ypp-bg-surface: rgba(18, 28, 18, 0.95) !important; /* Dark green/grey */
+  --ypp-bg-surface-hover: rgba(28, 48, 28, 0.9) !important;
+  --ypp-bg-surface-active: rgba(38, 68, 38, 0.9) !important;
   
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, rgba(163, 230, 53, 0.3)) !important; /* Lime green border */
   
@@ -18,7 +18,7 @@ html[data-ypp-ui-design="nature"] {
   --ypp-font-primary: "Inter", "Segoe UI", sans-serif !important;
   --ypp-font-heading: "Inter", "Segoe UI", sans-serif !important;
   
-  --ypp-text-color: #d9f99d !important;
+  --ypp-text-primary: #d9f99d !important;
   --ypp-text-secondary: rgba(217, 249, 157, 0.7) !important;
   --ypp-text-transform: none !important;
   --ypp-letter-spacing: normal !important;
@@ -49,11 +49,11 @@ html[data-ypp-ui-design="nature"] #video-title,
 html[data-ypp-ui-design="nature"] .title,
 html[data-ypp-ui-design="nature"] ytd-guide-entry-renderer *,
 html[data-ypp-ui-design="nature"] ytd-mini-guide-entry-renderer * {
-  color: var(--ypp-text-color) !important;
+  color: var(--ypp-text-primary) !important;
 }
 
 html[data-ypp-ui-design="nature"] svg {
-  fill: var(--ypp-text-color) !important;
+  fill: var(--ypp-text-primary) !important;
 }
 
 /* Unique Nature Tweaks */

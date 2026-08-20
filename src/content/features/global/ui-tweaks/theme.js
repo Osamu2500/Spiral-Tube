@@ -647,7 +647,25 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             } else {
                 // Auto-match to the current page theme (UI Design)
                 const cardMap = {
-                    'liquid-glass': 'glass'
+                    'liquid-glass': 'glass',
+                    'cyberpunk': 'cyberpunk',
+                    'nature': 'nature',
+                    'vintage': 'vintage',
+                    'neumorphic': 'neumorphic',
+                    'ocean': 'ocean',
+                    'blue-sky': 'blue-sky',
+                    'retro': 'retro',
+                    'technozen': 'technozen',
+                    'frutiger-aero': 'frutiger-aero',
+                    'terminalism': 'terminalism',
+                    'claymorphism': 'claymorphism',
+                    'brutalism': 'brutalism',
+                    'minimalism': 'minimalism',
+                    'maximalism': 'maximalism',
+                    'glassmorphism': 'glassmorphism',
+                    'aurora': 'aurora',
+                    'material': 'material',
+                    'harry-potter': 'harry-potter'
                 };
                 finalCardStyle = cardMap[ytTheme] || ytTheme;
             }

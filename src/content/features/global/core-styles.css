@@ -5570,3 +5570,48 @@ html[data-ypp-ui-style] body ytd-watch-metadata #actions-inner > div:empty {
 
 
 html[data-ypp-ui-style] body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
+/* ===================================================================================
+   10. EXTENDED COMPONENT COVERAGE
+   =================================================================================== */
+
+/* Shorts Shelves */
+html.yt-spiral-tube-theme ytd-reel-shelf-renderer {
+    background-color: transparent !important;
+}
+html.yt-spiral-tube-theme ytd-reel-item-renderer,
+html.yt-spiral-tube-theme ytd-reel-video-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-md) !important;
+    box-shadow: var(--ypp-shadow-base) !important;
+}
+
+/* Live Chat */
+html.yt-spiral-tube-theme ytd-live-chat-frame,
+html.yt-spiral-tube-theme yt-live-chat-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    overflow: hidden !important;
+}
+
+/* Playlist Panels */
+html.yt-spiral-tube-theme ytd-playlist-panel-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+}
+
+/* Community Posts */
+html.yt-spiral-tube-theme ytd-backstage-post-thread-renderer,
+html.yt-spiral-tube-theme ytd-backstage-post-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    padding: 16px !important;
+    box-shadow: var(--ypp-shadow-base) !important;
+}
+
+/* Comment Inputs */
+html.yt-spiral-tube-theme ytd-commentbox,
+html.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    padding: 12px !important;
+}
