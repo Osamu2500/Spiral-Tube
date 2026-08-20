@@ -283,7 +283,7 @@ html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
 100% {
   transform: translateY(0);
 }
-
+}
 /* Colorize Forms */
 html[data-ypp-card-style="colorize"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 20px 0 0 20px) !important;
@@ -797,7 +797,7 @@ html[data-ypp-ui-design="colorize"] ytd-playlist-panel-renderer {
 100% {
   transform: translateX(0);
 }
-
+}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -866,7 +866,7 @@ html[data-ypp-ui-design="colorize"] .badge-style-type-live-now-alternate {
 100% {
   box-shadow: 0 0 20px linear-gradient(to right, red, yellow, green, blue);
 }
-
+}
 /* Colorize Player */
 html[data-ypp-card-style="colorize"] .ytp-chrome-bottom {
   border-radius: var(--ypp-shape-primary, 12px) !important;

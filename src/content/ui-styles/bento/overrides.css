@@ -28,7 +28,7 @@
   transform: translate(0, 0);
   box-shadow: 4px 4px 0px var(--bn-border);
 }
-
+}
 /* Encapsulate the entire master head / nav bar into a bento box! */
 html[data-ypp-card-style="bento"] ytd-masthead {
   border-radius: var(--ypp-shape-primary, 0 0 24px 24px) !important;
@@ -302,7 +302,7 @@ html[data-ypp-ui-design="bento"] tp-yt-paper-tooltip {
 100% {
   transform: translateY(0);
 }
-
+}
 /* Bento Forms */
 html[data-ypp-card-style="bento"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
@@ -744,7 +744,7 @@ html[data-ypp-ui-design="bento"] ytd-playlist-panel-renderer {
 100% {
   transform: translateX(0);
 }
-
+}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -809,7 +809,7 @@ html[data-ypp-ui-design="bento"] .badge-style-type-live-now-alternate {
 100% {
   box-shadow: 0 0 20px #333;
 }
-
+}
 /* Channels for bento */
 #channel-header-banner {
   border-radius: 24px 24px 0 0;

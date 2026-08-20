@@ -32,9 +32,9 @@ yt-button-shape button[title*="Download" i]:hover {
       0 0 15px red,
       0 0 30px red;
 }
-
+}
 body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
-  background-image: url(data:image/svg+xml;
+  /* Removed broken SVG background */
 }
 
 ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
@@ -50,7 +50,7 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
 ytd-rich-grid-media::after,
 ytd-compact-video-renderer::after,
 ytd-video-renderer::after {
-  background-image: url("data:image/svg+xml;
+  /* removed broken svg */
   transform: rotate(15deg);
 }
 

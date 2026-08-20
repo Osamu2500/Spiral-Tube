@@ -45,7 +45,7 @@
 100% {
   box-shadow: 0 0 5px rgba(0, 255, 204, 0.4);
 }
-
+}
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 10px var(--cyb-secondary) !important;
@@ -350,7 +350,7 @@ html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
 100% {
   transform: translateY(0);
 }
-
+}
 /* Cyberpunk Forms */
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0) !important;
@@ -4018,7 +4018,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-playlist-panel-renderer {
 100% {
   transform: translateX(0);
 }
-
+}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -4084,7 +4084,7 @@ html[data-ypp-ui-design="cyberpunk"] .badge-style-type-live-now-alternate {
 100% {
   box-shadow: 0 0 20px #fcee0a;
 }
-
+}
 /* =========================================================
    CYBERPUNK — TOASTS & TOOLTIPS
    ========================================================= */

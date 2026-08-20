@@ -85,8 +85,8 @@ html[data-ypp-ui-design="vintage"] body.yt-pro-ambient #cinematics.ytd-watch-fle
     100% { opacity: 0.55; }
 }
 
-html[data-ypp-ui-design=""vintage""]::before,
-html[data-ypp-ui-design=""vintage""]::after {
+html[data-ypp-ui-design="vintage"]::before,
+html[data-ypp-ui-design="vintage"]::after {
     content: """";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -94,14 +94,14 @@ html[data-ypp-ui-design=""vintage""]::after {
     pointer-events: none;
     will-change: opacity;
 }
-html[data-ypp-ui-design=""vintage""]::before {
+html[data-ypp-ui-design="vintage"]::before {
     /* Film grain noise */
     background-image: url(""data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"");
     background-size: 180px 180px;
     animation: ypp-vintage-flicker 0.15s steps(1) infinite;
     mix-blend-mode: overlay;
 }
-html[data-ypp-ui-design=""vintage""]::after {
+html[data-ypp-ui-design="vintage"]::after {
     /* Dark vignette edges */
     background: radial-gradient(ellipse at center, transparent 50%, rgba(62, 40, 20, 0.5) 100%);
     animation: ypp-vintage-vignette 4s ease-in-out infinite;
@@ -113,49 +113,49 @@ html[data-ypp-ui-design=""vintage""]::after {
 /* =========================================== */
 
 /* Video title text */
-html[data-ypp-ui-design=""vintage""] #video-title,
-html[data-ypp-ui-design=""vintage""] #video-title.ytd-rich-grid-media,
-html[data-ypp-ui-design=""vintage""] #video-title.ytd-compact-video-renderer,
-html[data-ypp-ui-design=""vintage""] ytd-rich-grid-media #video-title,
-html[data-ypp-ui-design=""vintage""] ytd-compact-video-renderer #video-title,
-html[data-ypp-ui-design=""vintage""] ytd-video-renderer #video-title,
-html[data-ypp-ui-design=""vintage""] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design=""vintage""] .title.ytd-rich-grid-media,
-html[data-ypp-ui-design=""vintage""] #title-wrapper h3 a,
-html[data-ypp-ui-design=""vintage""] ytd-watch-metadata h1 {
+html[data-ypp-ui-design="vintage"] #video-title,
+html[data-ypp-ui-design="vintage"] #video-title.ytd-rich-grid-media,
+html[data-ypp-ui-design="vintage"] #video-title.ytd-compact-video-renderer,
+html[data-ypp-ui-design="vintage"] ytd-rich-grid-media #video-title,
+html[data-ypp-ui-design="vintage"] ytd-compact-video-renderer #video-title,
+html[data-ypp-ui-design="vintage"] ytd-video-renderer #video-title,
+html[data-ypp-ui-design="vintage"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="vintage"] .title.ytd-rich-grid-media,
+html[data-ypp-ui-design="vintage"] #title-wrapper h3 a,
+html[data-ypp-ui-design="vintage"] ytd-watch-metadata h1 {
   color: #2c1f14 !important;
   text-shadow: none !important;
 }
 
 /* Channel name / metadata */
-html[data-ypp-ui-design=""vintage""] ytd-rich-grid-media #metadata-line,
-html[data-ypp-ui-design=""vintage""] ytd-compact-video-renderer #metadata-line,
-html[data-ypp-ui-design=""vintage""] ytd-video-renderer #metadata-line,
-html[data-ypp-ui-design=""vintage""] ytd-rich-grid-media #byline-container,
-html[data-ypp-ui-design=""vintage""] ytd-compact-video-renderer #byline-container,
-html[data-ypp-ui-design=""vintage""] ytd-rich-grid-media .yt-simple-endpoint,
-html[data-ypp-ui-design=""vintage""] ytd-compact-video-renderer .yt-simple-endpoint,
-html[data-ypp-ui-design=""vintage""] ytd-rich-grid-media yt-formatted-string,
-html[data-ypp-ui-design=""vintage""] ytd-compact-video-renderer yt-formatted-string,
-html[data-ypp-ui-design=""vintage""] ytd-video-renderer yt-formatted-string,
-html[data-ypp-ui-design=""vintage""] #channel-name .yt-simple-endpoint,
-html[data-ypp-ui-design=""vintage""] ytd-channel-name yt-formatted-string,
-html[data-ypp-ui-design=""vintage""] ytd-channel-name a,
-html[data-ypp-ui-design=""vintage""] #metadata-line span,
-html[data-ypp-ui-design=""vintage""] .inline-metadata-item {
+html[data-ypp-ui-design="vintage"] ytd-rich-grid-media #metadata-line,
+html[data-ypp-ui-design="vintage"] ytd-compact-video-renderer #metadata-line,
+html[data-ypp-ui-design="vintage"] ytd-video-renderer #metadata-line,
+html[data-ypp-ui-design="vintage"] ytd-rich-grid-media #byline-container,
+html[data-ypp-ui-design="vintage"] ytd-compact-video-renderer #byline-container,
+html[data-ypp-ui-design="vintage"] ytd-rich-grid-media .yt-simple-endpoint,
+html[data-ypp-ui-design="vintage"] ytd-compact-video-renderer .yt-simple-endpoint,
+html[data-ypp-ui-design="vintage"] ytd-rich-grid-media yt-formatted-string,
+html[data-ypp-ui-design="vintage"] ytd-compact-video-renderer yt-formatted-string,
+html[data-ypp-ui-design="vintage"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-ui-design="vintage"] #channel-name .yt-simple-endpoint,
+html[data-ypp-ui-design="vintage"] ytd-channel-name yt-formatted-string,
+html[data-ypp-ui-design="vintage"] ytd-channel-name a,
+html[data-ypp-ui-design="vintage"] #metadata-line span,
+html[data-ypp-ui-design="vintage"] .inline-metadata-item {
   color: #5c3d2e !important;
   text-shadow: none !important;
 }
 
 /* View count, date metadata */
-html[data-ypp-ui-design=""vintage""] ytd-rich-grid-media #metadata-line span,
-html[data-ypp-ui-design=""vintage""] ytd-compact-video-renderer #metadata-line span,
-html[data-ypp-ui-design=""vintage""] ytd-video-renderer #metadata-line span {
+html[data-ypp-ui-design="vintage"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-ui-design="vintage"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-ui-design="vintage"] ytd-video-renderer #metadata-line span {
   color: #7a5c45 !important;
 }
 
 /* Description text */
-html[data-ypp-ui-design=""vintage""] #description-text,
-html[data-ypp-ui-design=""vintage""] yt-formatted-string#description-text {
+html[data-ypp-ui-design="vintage"] #description-text,
+html[data-ypp-ui-design="vintage"] yt-formatted-string#description-text {
   color: #3e352f !important;
 }

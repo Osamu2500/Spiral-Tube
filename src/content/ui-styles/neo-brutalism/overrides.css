@@ -24,7 +24,7 @@
 100% {
   filter:brightness(1.1) saturate(1.1);
 }
-
+}
 /* Card hover */
 html[data-ypp-ui-design="neo-brutalism"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-design="neo-brutalism"] ytd-compact-video-renderer:hover,
@@ -63,7 +63,7 @@ html[data-ypp-ui-design="neo-brutalism"] ytd-subscribe-button-renderer button.yt
 
 /* Masthead topbar logo */
 html[data-ypp-ui-design="neo-brutalism"] ytd-topbar-logo-renderer a#logo::before {
-  background-image: url(data:image/svg+xml;
+  /* Removed broken SVG background */
 }
 
 html[data-ypp-ui-design="neo-brutalism"] ::-webkit-scrollbar-thumb {

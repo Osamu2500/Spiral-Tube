@@ -71,7 +71,7 @@ html[data-ypp-ui-design="galaxy"] ytd-subscribe-button-renderer button.ytSpecBut
 
 /* Masthead topbar logo */
 html[data-ypp-ui-design="galaxy"] ytd-topbar-logo-renderer a#logo::before {
-  background-image: url(data:image/svg+xml;
+  /* Removed broken SVG background */
 }
 
 html[data-ypp-ui-design="galaxy"] ::-webkit-scrollbar-thumb {
@@ -362,7 +362,7 @@ html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i]:ho
 50% {
   transform: translateY(-8px);
 }
-
+}
 html[data-ypp-card-style="galaxy"] ytd-app, html[data-ypp-ui-design="galaxy"] ytd-app {
   background: radial-gradient(ellipse at top, #4b0082 0%, #03001c 60%) !important;
 }

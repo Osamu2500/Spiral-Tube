@@ -71,7 +71,7 @@ html[data-ypp-ui-design="vaporwave"] ytd-subscribe-button-renderer button.ytSpec
 
 /* Masthead topbar logo */
 html[data-ypp-ui-design="vaporwave"] ytd-topbar-logo-renderer a#logo::before {
-  background-image: url(data:image/svg+xml;
+  /* Removed broken SVG background */
 }
 
 html[data-ypp-ui-design="vaporwave"] ::-webkit-scrollbar-thumb {
