@@ -1,4 +1,4 @@
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="neumorphic"] {
     --ypp-bg-base: #e8eaf0;
     --ypp-bg-surface: #f0f2f5;
     --ypp-bg-glass: rgba(240, 242, 245, 0.9);
@@ -41,8 +41,8 @@ html.yt-spiral-tube-theme {
     100% { opacity: 0.25; transform: translate(-50%,-50%) scale(1.1) rotate(0deg); }
 }
 
-html.yt-spiral-tube-theme.ypp-theme-effects::before,
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="neumorphic"].ypp-theme-effects::before,
+html[data-ypp-theme="neumorphic"].ypp-theme-effects::after {
     content: "";
     position: fixed;
     top: 50%; left: 50%;
@@ -51,18 +51,18 @@ html.yt-spiral-tube-theme.ypp-theme-effects::after {
     pointer-events: none;
     will-change: transform, opacity;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::before {
+html[data-ypp-theme="neumorphic"].ypp-theme-effects::before {
     background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.12) 0%, rgba(240, 242, 245, 0) 65%);
     animation: ypp-neumorphic-breathe 10s ease-in-out infinite;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="neumorphic"].ypp-theme-effects::after {
     background: radial-gradient(ellipse at 70% 30%, rgba(129, 140, 248, 0.1) 0%, transparent 55%);
     animation: ypp-neumorphic-shift 14s ease-in-out infinite;
 
 
   }
 
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="neumorphic"] {
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));

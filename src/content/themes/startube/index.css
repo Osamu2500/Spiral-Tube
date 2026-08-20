@@ -3,7 +3,7 @@
  */
 
 :root,
-html[data-ypp-theme="startube"] {
+html {
   --yt-spec-general-background-a: #f1f1f1 !important;
   --yt-spec-general-background-b: #e2e2e2 !important;
   --yt-spec-general-background-c: #ffffff !important;
@@ -18,8 +18,8 @@ html[data-ypp-theme="startube"] {
   --ytd-searchbox-legacy-border-color: #cccccc !important;
 }
 
-html[data-ypp-theme="startube"].ypp-theme-dark,
-html[data-ypp-theme="startube"] {
+html.ypp-theme-dark,
+html {
   /* Classic V3 light gray backdrop with white containers */
   background-color: #f1f1f1 !important;
 }

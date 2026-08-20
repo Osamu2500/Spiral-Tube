@@ -1,4 +1,4 @@
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="vintage"] {
     --ypp-bg-base: #e8d5b5;
     --ypp-bg-surface: #f4ecd8;
     --ypp-bg-glass: rgba(244, 236, 216, 0.92);
@@ -43,8 +43,8 @@ html.yt-spiral-tube-theme {
     100% { opacity: 0.55; }
 }
 
-html.yt-spiral-tube-theme.ypp-theme-effects::before,
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="vintage"].ypp-theme-effects::before,
+html[data-ypp-theme="vintage"].ypp-theme-effects::after {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -52,14 +52,14 @@ html.yt-spiral-tube-theme.ypp-theme-effects::after {
     pointer-events: none;
     will-change: opacity;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::before {
+html[data-ypp-theme="vintage"].ypp-theme-effects::before {
     /* Film grain noise */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 180px 180px;
     animation: ypp-vintage-flicker 0.15s steps(1) infinite;
     mix-blend-mode: overlay;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="vintage"].ypp-theme-effects::after {
     /* Dark vignette edges */
     background: radial-gradient(ellipse at center, transparent 50%, rgba(62, 40, 20, 0.5) 100%);
     animation: ypp-vintage-vignette 4s ease-in-out infinite;
@@ -129,7 +129,7 @@ yt-formatted-string#description-text {
 
   }
 
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="vintage"] {
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
   --shadow-base: var(--ypp-shadow-card, 0 4px 6px rgba(0,0,0,0.1));

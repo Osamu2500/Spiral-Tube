@@ -1,4 +1,4 @@
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="sakura"] {
     /* ═══════════════════════════════════════════════
        SAKURA THEME — Cherry Blossom
        Colors: light pink / blush / rose / soft white
@@ -120,7 +120,7 @@ yt-formatted-string#description-text {
   color: var(--sakura-primary) !important;
 }
 
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="sakura"] {
   /* Alias variables for sakura */
   --sf:                 var(--ypp-bg-surface, #fff7fa);
   --shadow-base:        var(--ypp-shadow-card,  4px 6px 0px rgba(220,100,140,0.22));

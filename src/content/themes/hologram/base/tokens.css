@@ -1,4 +1,4 @@
-﻿html.yt-spiral-tube-theme {
+﻿html[data-ypp-theme="hologram"] {
     --ypp-bg-base: #f0f8ff;
     --ypp-bg-surface: #e0f7fa;
     --ypp-bg-glass: rgba(240, 248, 255, 0.85);
@@ -34,7 +34,7 @@
     0% { transform: translateY(-100vh); }
     100% { transform: translateY(100vh); }
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::before {
+html[data-ypp-theme="hologram"].ypp-theme-effects::before {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; height: 20vh;
@@ -44,7 +44,7 @@ html.yt-spiral-tube-theme.ypp-theme-effects::before {
     will-change: transform;
     animation: ypp-hologram-scan 4s linear infinite;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="hologram"].ypp-theme-effects::after {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;

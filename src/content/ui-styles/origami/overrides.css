@@ -2,27 +2,26 @@
 
 /* origami/base/animations.css */
 @keyframes origami-pulse {
-  0%   { box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
-
-50% {
-  box-shadow: 5px 5px 18px rgba(0,0,0,0.18);
-}
-
-100% {
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
-
+  0% { 
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  }
+  50% {
+    box-shadow: 5px 5px 18px rgba(0,0,0,0.18);
+  }
+  100% {
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  }
 }
 
 
 
 @keyframes sepia-bloom {
-  0%{filter:brightness(1);
-}
-
-100% {
-  filter:brightness(1.1) saturate(1.1);
+  0% { 
+    filter:brightness(1);
+  }
+  100% {
+    filter:brightness(1.1) saturate(1.1);
+  }
 }
 
 /* Card hover */
@@ -62,7 +61,7 @@ html[data-ypp-ui-design="origami"] ytd-subscribe-button-renderer button.ytSpecBu
 
 /* Masthead topbar logo */
 html[data-ypp-ui-design="origami"] ytd-topbar-logo-renderer a#logo::before {
-  background-image: url(data:image/svg+xml;
+  background-image: none; /* Removed invalid svg uri */
 }
 
 html[data-ypp-ui-design="origami"] ::-webkit-scrollbar-thumb {

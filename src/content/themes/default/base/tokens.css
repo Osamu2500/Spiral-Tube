@@ -1,4 +1,4 @@
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="default"] {
     /* YouTube Default Dark Theme */
     --ypp-bg-base: #0f0f0f;
     --ypp-bg-surface: #272727;
@@ -73,18 +73,18 @@ ytd-popup-container {
 }
 
 /* Better Scrollbar for YouTube Default */
-html.yt-spiral-tube-theme ::-webkit-scrollbar {
+html[data-ypp-theme="default"] ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
-html.yt-spiral-tube-theme ::-webkit-scrollbar-track {
+html[data-ypp-theme="default"] ::-webkit-scrollbar-track {
     background: transparent;
 }
-html.yt-spiral-tube-theme ::-webkit-scrollbar-thumb {
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb {
     background: var(--ypp-text-secondary);
     border-radius: 4px;
 }
-html.yt-spiral-tube-theme ::-webkit-scrollbar-thumb:hover {
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover {
     background: var(--ypp-text-primary);
 }
 
@@ -111,7 +111,7 @@ ytd-thumbnail {
 }
 
 /* Animated Default Pulse Effect - Kept clean for native feel */
-html.yt-spiral-tube-theme.ypp-theme-effects::before,
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="default"].ypp-theme-effects::before,
+html[data-ypp-theme="default"].ypp-theme-effects::after {
     display: none; 
 }

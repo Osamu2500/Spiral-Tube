@@ -1,20 +1,15 @@
 /* Unique Shapes and Patterns for liquid-glass */
 
-}
-
 @keyframes ypp-liquid-float {
   0% {
     transform: translateY(0px);
-}
-
-50% {
-  transform: translateY(-4px);
-}
-
-100% {
-  transform: translateY(0px);
-}
-
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes ypp-liquid-pulse {
@@ -22,20 +17,17 @@
     box-shadow:
       0 0 12px rgba(255, 255, 255, 0.15),
       0 0 24px rgba(255, 255, 255, 0.08);
-}
-
-50% {
-  box-shadow:
+  }
+  50% {
+    box-shadow:
       0 0 22px rgba(255, 255, 255, 0.30),
       0 0 45px rgba(255, 255, 255, 0.15);
-}
-
-100% {
-  box-shadow:
+  }
+  100% {
+    box-shadow:
       0 0 12px rgba(255, 255, 255, 0.15),
       0 0 24px rgba(255, 255, 255, 0.08);
-}
-
+  }
 }
 
 /* Subscribe button hover luminescence */
@@ -69,57 +61,52 @@ html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer:hover::before {
 
 /* Card entrance — spring rise from below */
 @keyframes lg-card-rise {
-  transform: translateY(16px) scale(0.97);
-}
-
-to {
-  transform: translateY(0)    scale(1);
-}
-
+  from {
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Menu/popup scale-in from origin point */
 @keyframes lg-popup-scale {
-  transform: scale(0.90) translateY(-6px);
-}
-
-to {
-  transform: scale(1)    translateY(0);
-}
-
+  from {
+    transform: scale(0.90) translateY(-6px);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* Shimmer sweep (for logo/button hover shine) */
 @keyframes lg-shimmer {
-  from { transform: translateX(-120%) skewX(-15deg);
-}
-
-to {
-  transform: translateX(220%)  skewX(-15deg);
-}
-
+  from { 
+    transform: translateX(-120%) skewX(-15deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-15deg);
+  }
 }
 
 /* Glass pulse (for active/focused elements) */
 @keyframes lg-pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px rgba(255,255,255,0.25);
-}
-
-50% {
-  box-shadow: 0 0 28px rgba(255,255,255,0.55);
-}
-
+  0%, 100% { 
+    box-shadow: 0 0 12px rgba(255,255,255,0.25);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(255,255,255,0.55);
+  }
 }
 
 /* Toast / alert slide-in from right */
 @keyframes lg-toast-in {
-  transform: translateX(32px) scale(0.95);
-}
-
-to {
-  transform: translateX(0)    scale(1);
-}
-
+  from {
+    transform: translateX(32px) scale(0.95);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
 }
 
 /* Shimmer overlay on hoverable glass buttons */

@@ -1,4 +1,4 @@
-﻿html.yt-spiral-tube-theme {
+﻿html[data-ypp-theme="cyberpunk"] {
     --ypp-bg-base: #0a0a0f;
     --ypp-bg-surface: #12121b;
     --ypp-bg-glass: rgba(10, 10, 15, 0.95);
@@ -35,7 +35,7 @@
     0% { transform: translateY(0); }
     100% { transform: translateY(-50px); }
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::before {
+html[data-ypp-theme="cyberpunk"].ypp-theme-effects::before {
     content: "";
     position: fixed;
     top: -50px; left: -50px; right: -50px; bottom: -100px;

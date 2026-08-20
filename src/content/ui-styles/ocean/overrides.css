@@ -25,16 +25,17 @@ yt-button-shape button[title*="Download" i]:hover {
       0 0 30px #f06;
 }
 
-100% {
-  box-shadow:
+  100% {
+    box-shadow:
       inset 0 0 25px red,
       inset 0 0 50px red,
       0 0 15px red,
       0 0 30px red;
+  }
 }
 
 body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
-  background-image: url(data:image/svg+xml;
+  background-image: none; /* Removed invalid svg uri */
 }
 
 ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
@@ -50,23 +51,20 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
 ytd-rich-grid-media::after,
 ytd-compact-video-renderer::after,
 ytd-video-renderer::after {
-  background-image: url("data:image/svg+xml;
+  background-image: none; /* Removed invalid svg uri */
   transform: rotate(15deg);
 }
 
 @keyframes buoyBob {
   0% {
     transform: translateY(0px) scale(1.01);
-}
-
-50% {
-  transform: translateY(-6px) scale(1.01);
-}
-
-100% {
-  transform: translateY(0px) scale(1.01);
-}
-
+  }
+  50% {
+    transform: translateY(-6px) scale(1.01);
+  }
+  100% {
+    transform: translateY(0px) scale(1.01);
+  }
 }
 ytd-rich-grid-media:hover,
 ytd-compact-video-renderer:hover,
@@ -78,12 +76,10 @@ ytd-video-renderer:hover {
 @keyframes waterRipple {
   0% {
     box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4);
-}
-
-100% {
-  box-shadow: 0 0 0 15px rgba(0, 188, 212, 0);
-}
-
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(0, 188, 212, 0);
+  }
 }
 .yt-spec-button-shape-next--filled:hover,
 .yt-chip-shape:hover,
@@ -214,12 +210,12 @@ html,
 @media (width: 1920px) {
   body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
-}
-
+  }
 }
 @media (width: 1280px) {
   body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
+  }
 }
 
 html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {

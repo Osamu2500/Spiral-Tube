@@ -1,4 +1,4 @@
-html.yt-spiral-tube-theme {
+html[data-ypp-theme="forest"] {
     --ypp-bg-base: #0f1c15;
     --ypp-bg-surface: #1b2e24;
     --ypp-bg-glass: rgba(15, 28, 21, 0.85);
@@ -40,8 +40,8 @@ html.yt-spiral-tube-theme {
     0% { transform: rotate(5deg) scale(1.1); opacity: 0.8; }
     100% { transform: rotate(-2deg) scale(1); opacity: 0.5; }
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::before,
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="forest"].ypp-theme-effects::before,
+html[data-ypp-theme="forest"].ypp-theme-effects::after {
     content: '';
     position: fixed;
     top: -50vh; left: -50vw; width: 200vw; height: 200vh;
@@ -49,11 +49,11 @@ html.yt-spiral-tube-theme.ypp-theme-effects::after {
     pointer-events: none;
     will-change: transform, opacity;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::before {
+html[data-ypp-theme="forest"].ypp-theme-effects::before {
     background: radial-gradient(ellipse at 30% 70%, rgba(163, 190, 140, 0.15) 0%, transparent 40%);
     animation: forestBreezeBg 25s ease-in-out infinite alternate;
 }
-html.yt-spiral-tube-theme.ypp-theme-effects::after {
+html[data-ypp-theme="forest"].ypp-theme-effects::after {
     background: radial-gradient(ellipse at 80% 40%, rgba(163, 190, 140, 0.1) 0%, transparent 50%);
     animation: forestBreezeFg 35s ease-in-out infinite alternate;
 }
