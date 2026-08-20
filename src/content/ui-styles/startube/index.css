@@ -1,5 +1,6 @@
 @import "../shared/timeline-visibility.css";
 @import "./pages/watch.css";
+@import './components/massive_ui.css';
 
 /* StarTube (Classic V3) General Styling */
 html[data-ypp-ui-style="startube"] {
@@ -16,4 +17,4 @@ html[data-ypp-ui-style="startube"] ytd-masthead {
   border-bottom: 1px solid #e2e2e2 !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
 }
-\n@import './components/massive_ui.css';\n
+

@@ -260,7 +260,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             return;
         }
 
-        const cssUrl = chrome.runtime.getURL(`src/content/ui-styles/${uiStyleKey}/bundle.css`);
+        const cssUrl = chrome.runtime.getURL(`dist/ui-styles/${uiStyleKey}/bundle.css`);
 
         if (!link) {
             link = document.createElement('link');
@@ -458,7 +458,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @private
      */
     _getThemeUrl(themeKey) {
-        return chrome.runtime.getURL(`src/content/ui-styles/${themeKey}/theme/bundle.css`);
+        return chrome.runtime.getURL(`dist/ui-styles/${themeKey}/theme/bundle.css`);
     }
 
     /**
@@ -628,32 +628,36 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         }
 
         // ── Card Style ───────────────────────────────────────────────────────
-        let finalCardStyle = this._settings.cardStyle || 'glass';
-        
+        let finalCardStyle = this._settings.cardStyle;
         const ytTheme = this._settings.youtubePageTheme;
 
-        if (ytTheme === 'default') {
-            finalCardStyle = 'default';
-        } else if (ytTheme && ytTheme !== 'default' && (finalCardStyle === 'glass' || finalCardStyle === 'default')) {
-             if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
-             else if (ytTheme === 'nature') finalCardStyle = 'nature';
-             else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
-             else if (ytTheme === 'liquid-glass') finalCardStyle = 'glass';
-             else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
-             else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
-             else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
-             else if (ytTheme === 'retro') finalCardStyle = 'retro';
-             else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
-             else if (ytTheme === 'frutiger-aero') finalCardStyle = 'frutiger-aero';
-             else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
-             else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
-             else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';
-             else if (ytTheme === 'minimalism') finalCardStyle = 'minimalism';
-             else if (ytTheme === 'maximalism') finalCardStyle = 'maximalism';
-             else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
-             else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
-             else if (ytTheme === 'material') finalCardStyle = 'material';
-             else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
+        // If the user hasn't explicitly set a custom card style (or set it to default)
+        if (!finalCardStyle || finalCardStyle === 'default') {
+            if (!ytTheme || ytTheme === 'default') {
+                finalCardStyle = 'default';
+            } else {
+                // Auto-match to the current page theme
+                if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
+                else if (ytTheme === 'nature') finalCardStyle = 'nature';
+                else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
+                else if (ytTheme === 'liquid-glass') finalCardStyle = 'glass';
+                else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
+                else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
+                else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
+                else if (ytTheme === 'retro') finalCardStyle = 'retro';
+                else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
+                else if (ytTheme === 'frutiger-aero') finalCardStyle = 'frutiger-aero';
+                else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
+                else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
+                else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';
+                else if (ytTheme === 'minimalism') finalCardStyle = 'minimalism';
+                else if (ytTheme === 'maximalism') finalCardStyle = 'maximalism';
+                else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
+                else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
+                else if (ytTheme === 'material') finalCardStyle = 'material';
+                else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
+                else finalCardStyle = 'glass'; // fallback for themes without a specific card match
+            }
         }
 
         if (!finalCardStyle || finalCardStyle === 'default' || finalCardStyle === 'none') {
@@ -896,7 +900,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @private
      */
     _getCardStyleUrl(cardStyleKey) {
-        return chrome.runtime.getURL(`src/content/ui-styles/${cardStyleKey}/card-style.css`);
+        return chrome.runtime.getURL(`dist/card-styles/${cardStyleKey}.css`);
     }
 
     /**

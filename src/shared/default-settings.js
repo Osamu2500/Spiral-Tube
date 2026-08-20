@@ -188,27 +188,6 @@ export const DEFAULT_SETTINGS = {
   gpb_showFilters: true,
   gpb_showLoop: true,
   gpb_showPip: true,
-  gpb_showSpeed: true,
-  gpb_showFullscreen: true,
-  gpb_showDomain: true,
-
-  // Ad Skipper
-  adSkipper: true,
-  sponsorBlock: true,
-  // SponsorBlock per-category toggles
-  sb_sponsor: true,
-  sb_intro: true,
-  sb_selfpromo: true,
-  sb_interaction: false,
-  sb_music_offtopic: false,
-  sb_preview: false,
-  returnYouTubeDislike: true,
-
-  // Night Mode
-  blueLight: 0,
-  dim: 0,
-
-  // Zen Mode
   zenMode: false,
 
   // Focus Mode

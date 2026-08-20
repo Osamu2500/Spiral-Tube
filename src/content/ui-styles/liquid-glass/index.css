@@ -1,14 +1,8 @@
 @import "../shared/timeline-visibility.css";
-/* =========================================================
-   LIQUID GLASS (visionOS Specular Acrylic)
-   17-File Structured UI Style System
-   ========================================================= */
-
 @import "./base/tokens.css";
 @import "./base/background.css";
 @import "./base/layout.css";
 @import "./base/animations.css";
-
 @import "./components/navbar.css";
 @import "./components/cards.css";
 @import "./components/buttons.css";
@@ -18,7 +12,6 @@
 @import "./components/miniplayer.css";
 @import "./components/toasts.css";
 @import "./components/dialogs.css";
-
 @import "./pages/watch.css";
 @import "./pages/player.css";
 @import "./pages/home.css";
@@ -28,6 +21,14 @@
 @import "./pages/livechat.css";
 @import "./pages/shorts.css";
 @import "./pages/community.css";
+@import './components/massive_ui.css';
+/* =========================================================
+   LIQUID GLASS (visionOS Specular Acrylic)
+   17-File Structured UI Style System
+   ========================================================= */
+
+
+
 
 /* Global AI-generated missing variable fallbacks */
 :root {
@@ -38,4 +39,4 @@
   --blur: var(--lg-blur-card, blur(25px));
   --ypp-thumb-color: var(--lg-accent, #ffffff);
 }
-\n@import './components/massive_ui.css';\n
+

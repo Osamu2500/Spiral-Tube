@@ -491,6 +491,54 @@ export const getPopupSchema = (t) => [
                     { type:'custom', id:'global_player_bar_blocklist', slot:'global_player_bar_blocklist', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' }
                 ]
             },
+                icon: ICONS.secHistoryTracking,
+                items: [
+                    { type:'toggle', id:'smartHistory', label: t('smart_history_tracker'), desc: t('track_individual_video_progress_watch_time'), icon:ICONS.smartHistory },
+                    { type:'toggle', id:'autoResume', label: t('auto_resume_videos'), desc: t('automatically_resume_from_last_watched_timestamp'), icon:ICONS.wheel },
+                    { type:'toggle', id:'resumeBadges', label: t('resume_badges'), desc: t('show_resume_progress_on_thumbnails'), icon:ICONS.wheel },
+                    { type:'toggle', id:'continueWatching', label: t('continue_watching'), desc: t('resume_from_history'), icon:ICONS.continueWatch },
+                    { type:'custom', id:'recap_buttons', slot:'recapButtons' }
+                ]
+            },
+            {
+                title: t('history_interface'),
+                icon: ICONS.smartHistory,
+                items: [
+                    { type:'toggle', id:'playlistDuration', label: t('duration_calc'), desc: t('show_total_length'), icon:ICONS.wheel },
+                    { type:'toggle', id:'reversePlaylist', label: t('reverse_playlist'), desc: t('toggle_direction'), icon:ICONS.reversePlay },
+                    { type:'toggle', id:'historyRedesign', label: t('history_redesign'), desc: t('new_history_layout'), icon:ICONS.sidebar, inlineSlot: `<div class="inline-slider-wrapper" style="display:inline-flex; align-items:center; margin-left:auto; gap:6px; padding-left: 20px; flex-grow:1; max-width:160px;"><span style="font-size:10px; opacity:0.5;">Cols:</span><input type="range" id="historyColumnsUI" min="1" max="8" step="1" style="width:100%;"><span id="historyColumnsValue" style="font-size:10px; min-width:20px; opacity:0.7;">5</span></div><input type="hidden" id="historyColumns" value="5" />` }
+                ]
+            }
+        ]
+    },
+
+    // ──────────────────────────────────────────────────────────────────
+    // BOOKMARKS (custom — list rendered by popup-extras)
+    // ──────────────────────────────────────────────────────────────────
+    { id: 'bookmarks', label: t('tab_marks'), icon: ICONS.saveSupreme, custom: true, sections: [] },
+
+
+    // ──────────────────────────────────────────────────────────────────
+    // DESIGN (custom — UI layout, cards, theming, effects)
+    // ──────────────────────────────────────────────────────────────────
+    { id: 'appearance', label: 'Designs', icon: ICONS.promos, custom: true, sections: [] },
+    { id: 'popup_design', label: 'Popup Design', icon: ICONS.uiComponents, custom: true, sections: [] },
+
+    // ──────────────────────────────────────────────────────────────────
+    // ADVANCED
+    // ──────────────────────────────────────────────────────────────────
+    {
+        id: 'advanced', label: t('tab_pro'),
+        icon: ICONS.advancedTab,
+        sections: [
+            {
+                title: t('global_player_bar'),
+                icon: ICONS.globalBar,
+                items: [
+                    { type:'toggle', id:'enableGlobalPlayerBar', label: t('global_player_bar'), desc: t('enable_on_external_sites'), icon:ICONS.globalBar, slot:'globalPlayerBarOptions', style: 'grid-column: 1 / -1;' },
+                    { type:'custom', id:'global_player_bar_blocklist', slot:'global_player_bar_blocklist', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' }
+                ]
+            },
             {
                 title: 'Video Management',
                 icon: ICONS.player,
@@ -501,8 +549,6 @@ export const getPopupSchema = (t) => [
             },
             {
                 title: 'Remembered Streaming Sites (Domain Memory)',
-                icon: ICONS.secDomainMemory,
-                items: [
                     { type:'custom', id:'domain_memory_manager', slot:'domain_memory_manager', class: 'span-4', style: 'grid-column: 1 / -1; width: 100%;' },
                 ]
             },

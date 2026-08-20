@@ -1,9 +1,6 @@
-/* Base */
 @import "./base/tokens.css";
 @import "./base/layout.css";
 @import "./base/background.css";
-
-/* Components */
 @import "./components/navbar.css";
 @import "./components/cards.css";
 @import "./components/buttons.css";
@@ -11,8 +8,6 @@
 @import "./components/dialogs.css";
 @import "./components/icons.css";
 @import "./components/panels.css";
-
-/* Pages */
 @import "./pages/watch.css";
 @import "./pages/player.css";
 @import "./pages/comments.css";
@@ -20,4 +15,10 @@
 @import "./pages/search.css";
 @import "./pages/channels.css";
 @import "./pages/livechat.css";
-\n@import './components/massive_ui.css';\n
+@import './components/massive_ui.css';
+/* Base */
+
+/* Components */
+
+/* Pages */
+

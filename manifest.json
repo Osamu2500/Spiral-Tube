@@ -33,8 +33,11 @@
         }
     },
     "background": {
-        "service_worker": "src/background/service-worker.js",
+        "service_worker": "dist/service-worker.js",
         "type": "module"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
     },
     "options_page": "src/options/options.html",
     "content_scripts": [
@@ -85,7 +88,8 @@
                 "src/inject/*",
                 "src/popup/*",
                 "src/content/themes/**/*.css",
-                "src/content/ui-styles/**/*.css",
+                "dist/ui-styles/**/*.css",
+                "dist/card-styles/*.css",
                 "src/content/card-styles/*.css",
                 "src/content/features/**/*.css",
                 "src/content/features/**/*.js"

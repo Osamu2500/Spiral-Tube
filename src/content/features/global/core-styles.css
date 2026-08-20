@@ -5385,19 +5385,6 @@ html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-r
   color: var(--ypp-accent, #3ea6ff) !important;
 }
 
-html.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-button-shape button {
-  background: var(--ypp-accent, #66bb6a) !important;
-  color: var(--yt-spec-text-primary-inverse, #fff) !important;
-  border-radius: var(--ypp-radius-pill, 100px) !important;
-  box-shadow: var(--ypp-shadow-glow, 0 0 24px rgba(102, 187, 106, 0.15));
-  transition: all var(--ypp-transition, 0.3s ease);
-}
-
-html.yt-spiral-tube-theme ytd-subscribe-button-renderer yt-button-shape button:hover {
-  background: var(--ypp-accent-hover, #81c784) !important;
-  transform: scale(1.05);
-  box-shadow: var(--ypp-shadow-accent-glow, 0 0 32px rgba(102, 187, 106, 0.3));
-}
 
 
 

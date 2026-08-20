@@ -230,8 +230,7 @@ import { BookmarksManager } from '../features/player/controls/bookmarks.js';
 window.YPP.FeatureManager.register(BookmarksManager);
 import { IntentionalDelay } from '../features/player/enhancements/intentional-delay.js';
 window.YPP.FeatureManager.register(IntentionalDelay);
-import { ReturnDislike } from '../features/player/enhancements/return-dislike.js';
-window.YPP.FeatureManager.register(ReturnDislike);
+
 
 // YouTube Pro Plus ported features
 import { PremiumLogo } from '../features/global/ui-tweaks/premium-logo.js';
@@ -278,8 +277,7 @@ import { AutoQuality } from '../features/player/automation/auto-quality.js';
 window.YPP.FeatureManager.register(AutoQuality);
 import { TimeDisplay } from '../features/player/enhancements/time-display.js';
 window.YPP.FeatureManager.register(TimeDisplay);
-import { SponsorBlock } from '../features/player/automation/sponsor-block.js';
-window.YPP.FeatureManager.register(SponsorBlock);
+
 import { AdSkipper } from '../features/player/automation/ad-skipper.js';
 window.YPP.FeatureManager.register(AdSkipper);
 import { AmbientMode } from '../features/player/media-effects/ambient-mode/ambient-mode.js';
