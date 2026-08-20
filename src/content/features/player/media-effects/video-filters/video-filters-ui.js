@@ -137,6 +137,11 @@ export class VideoFiltersUI {
             .ypp-cinema-tab-btn.active { color: #fff; }
             .ypp-cinema-tab-btn.active::after { width: 100%; }
 
+            /* Compare Toggle (A/B) Button */
+            .ypp-vcp-compare-toggle { padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.85); cursor: pointer; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); user-select: none; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+            .ypp-vcp-compare-toggle:hover { background: rgba(255, 255, 255, 0.15); color: #fff; border-color: rgba(255, 255, 255, 0.3); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+            .ypp-vcp-compare-toggle.active { background: rgba(62, 166, 255, 0.15); border-color: rgba(62, 166, 255, 0.4); color: #3ea6ff; box-shadow: 0 0 12px rgba(62, 166, 255, 0.25), inset 0 1px 1px rgba(255,255,255,0.1); }
+
             /* Advanced Glassmorphism Category Header */
             .ypp-filter-cat-details summary { list-style: none; padding: 6px 10px; cursor: pointer; font-size: 10.5px; font-weight: 600; background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; transition: all 0.25s ease; backdrop-filter: blur(8px); }
             .ypp-filter-cat-details summary::-webkit-details-marker { display: none; }
@@ -232,13 +237,27 @@ export class VideoFiltersUI {
             <div id="ypp-header-actions" style="display: flex; align-items: center; gap: 8px;"></div>
         `;
 
-        const compareBtn = document.createElement('div');
+        const compareBtn = document.createElement('button');
         compareBtn.className = `ypp-vcp-compare-toggle ${ctx.isComparing ? 'active' : ''}`;
         compareBtn.innerHTML = `A/B`;
+        
+        // Sync function exposed to context so both buttons can use it
+        ctx._syncCompareUI = (val) => {
+            compareBtn.className = `ypp-vcp-compare-toggle ${val ? 'active' : ''}`;
+            const holdBtn = ctx._filterPanel?.querySelector('.ypp-adj-cp-compare-btn');
+            if (holdBtn) {
+                holdBtn.style.background = val ? 'rgba(62, 166, 255, 0.2)' : '';
+                holdBtn.style.borderColor = val ? 'rgba(62, 166, 255, 0.4)' : '';
+                holdBtn.style.color = val ? '#3ea6ff' : '';
+            }
+        };
+
         compareBtn.onclick = (e) => {
+            e.preventDefault();
             e.stopPropagation();
             ctx.isComparing = !ctx.isComparing;
-            compareBtn.className = `ypp-vcp-compare-toggle ${ctx.isComparing ? 'active' : ''}`;
+            window.YPP?.Utils?.log(`A/B toggled to: ${ctx.isComparing}`, 'VideoFiltersUI');
+            ctx._syncCompareUI(ctx.isComparing);
             ctx._applyComputedFilter(video);
         };
         
@@ -853,12 +872,54 @@ export class VideoFiltersUI {
             fileInput.value = ''; // reset
         };
         const compareBtn = document.createElement('button');
-        compareBtn.className = 'ypp-adj-cp-btn';
+        compareBtn.className = 'ypp-adj-cp-btn ypp-adj-cp-compare-btn';
         compareBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> Hold to Compare`;
-        compareBtn.onmousedown = () => { ctx.isComparing = true; ctx._applyComputedFilter(video); };
-        const restore = () => { ctx.isComparing = false; ctx._applyComputedFilter(video); };
-        compareBtn.onmouseup = restore;
-        compareBtn.onmouseleave = restore;
+        
+        let pointerDownTime = 0;
+        let isHolding = false;
+
+        const updateCompareState = (val) => {
+            if (ctx.isComparing === val) return;
+            ctx.isComparing = val;
+            if (ctx._syncCompareUI) ctx._syncCompareUI(val);
+            ctx._applyComputedFilter(video);
+        };
+
+        compareBtn.onpointerdown = (e) => {
+            e.preventDefault();
+            pointerDownTime = Date.now();
+            isHolding = true;
+            updateCompareState(true);
+        };
+        const restore = (e) => {
+            if (e) e.preventDefault();
+            if (!isHolding) return;
+            isHolding = false;
+            
+            const holdDuration = Date.now() - pointerDownTime;
+            // If they just clicked it quickly (< 250ms), treat it as a toggle!
+            if (holdDuration < 250) {
+                // It was true, so let's keep it true (it toggled ON).
+                // Or if it was already ON before the click, we want to toggle OFF.
+                // Wait, if they click, `pointerdown` sets it to TRUE.
+                // So if we just leave it TRUE, the next click will also set it to TRUE?
+                // Better logic: if they click quickly, toggle the base state.
+                // Actually, if they click quickly, just reverse it from whatever it was.
+                // But `pointerdown` already forced it to TRUE. 
+                // So if it was FALSE, it became TRUE (correct toggle).
+                // If it was TRUE, it became TRUE (no change).
+                // Let's just restore it to FALSE, then toggle!
+                updateCompareState(false);
+                setTimeout(() => updateCompareState(!ctx.isComparing), 10);
+            } else {
+                updateCompareState(false);
+            }
+        };
+        compareBtn.onpointerup = restore;
+        compareBtn.onpointerleave = restore;
+        compareBtn.onpointercancel = restore;
+        compareBtn.oncontextmenu = (e) => e.preventDefault();
+
 
         cpRow.appendChild(copyBtn);
         cpRow.appendChild(pasteBtn);

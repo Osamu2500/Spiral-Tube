@@ -164,6 +164,12 @@
             target.addEventListener(type, listener, options);
             this.eventListeners.push({ target, type, listener, options });
         }
+        removeListener(target, type, listener, options) {
+            target.removeEventListener(type, listener, options);
+            this.eventListeners = this.eventListeners.filter(e => 
+                e.target !== target || e.type !== type || e.listener !== listener
+            );
+        }
         pollFor(conditionFn, timeout = 10000, intervalMs = 250) {
             return new Promise((resolve, reject) => {
                 const startTime = Date.now();
@@ -236,6 +242,8 @@
         instances['videoSpeedController'].update(settings);
         if (settings.enableCustomSpeed !== false) instances['videoSpeedController'].enable();
     }
+    const isInsideIframe = window !== window.top;
+
     if (window.YPP.features.DomainMemory) {
         instances['domainMemory'] = new window.YPP.features.DomainMemory();
         instances['domainMemory'].init(instances, settings);
@@ -250,7 +258,6 @@
     }
 
     // ── Guard: are we inside an iframe? ──────────────────────────────────────
-    const isInsideIframe = window !== window.top;
 
     // ── If inside iframe: run sub-features (VSC, filters, volume) only.
     //    Post video metadata to parent so the bar appears on the main page.
@@ -286,7 +293,7 @@
 
             const relay = (type) => {
                 try {
-                    window.parent.postMessage({
+                    window.top.postMessage({
                         ypp: true,
                         type: 'iframe-video-event',
                         event: type,
@@ -451,32 +458,30 @@
     //   We create a lightweight proxy object to drive the GlobalBarUI.
     (function setupIframeBridge() {
         let proxyVideo = null;
-        let bridgedIframe = null; // the <iframe> element in this page's DOM
+        let bridgedSource = null;
         let heartbeatTimeout = null;
 
         const handleHeartbeatLoss = () => {
             window.YPP.Utils.log('Iframe heartbeat lost. Connection reset.', 'Bridge', 'warn');
             if (proxyVideo && proxyVideo._internalState) proxyVideo._internalState.isConnected = false;
             if (proxyVideo && bar.ui) bar.ui._untrackVideo(proxyVideo);
-            bridgedIframe = null;
+            bridgedSource = null;
             proxyVideo = null;
         };
 
         const sendCommand = (cmd, value) => {
-            // Find the iframe to post commands to
-            if (!bridgedIframe) return; // Only post to authenticated iframe
-            bridgedIframe.contentWindow?.postMessage({ ypp: true, type: 'iframe-video-command', cmd, value }, '*');
+            if (!bridgedSource) return;
+            bridgedSource.postMessage({ ypp: true, type: 'iframe-video-command', cmd, value }, '*');
         };
 
         window.addEventListener('message', (e) => {
             if (!e.data?.ypp || e.data.type !== 'iframe-video-event') return;
 
-            // Security & Targeting: Only accept events from the verified bridged iframe
-            if (bridgedIframe && e.source !== bridgedIframe.contentWindow) return;
-            if (!bridgedIframe) {
-                bridgedIframe = Array.from(document.querySelectorAll('iframe')).find(f => f.contentWindow === e.source);
-                if (!bridgedIframe) return; // Ignore spoofed messages
-                window.YPP.Utils.log('Bridged to new cross-origin iframe', 'Bridge');
+            // Security & Targeting: Accept events from the deep iframe
+            if (bridgedSource && e.source !== bridgedSource) return;
+            if (!bridgedSource) {
+                bridgedSource = e.source;
+                window.YPP.Utils.log('Bridged to new nested cross-origin iframe', 'Bridge');
             }
 
             const { event: evtType, state, capabilities } = e.data;

@@ -425,10 +425,17 @@ export class GlobalBarUI {
         
         let bestVideo = null;
         let maxVisibility = -1;
+        let maxArea = -1;
         
         for (const [video, ratio] of this.videoVisibility.entries()) {
-            if (ratio > maxVisibility) {
+            const area = (video.offsetWidth || 0) * (video.offsetHeight || 0);
+            
+            // Ignore tiny/hidden tracking pixels if there are other visible videos
+            if (area < 10 && !video._proxy && this.trackedVideos.size > 1) continue;
+
+            if (ratio > maxVisibility || (ratio === maxVisibility && area > maxArea)) {
                 maxVisibility = ratio;
+                maxArea = area;
                 bestVideo = video;
             }
         }
@@ -564,13 +571,22 @@ export class GlobalBarUI {
                     ? `<svg viewBox="0 0 36 36" fill="currentColor"><path d="m 5.390625,8 v 18.179687 h 25.21875 V 8 Z m 2.019531,2.009765 H 28.589844 V 24.169922 H 7.410156 Z M 19.45325,22.331983 h 1.762511 V 19.688214 H 23.85953 V 17.925702 H 19.45325 Z M 14.784019,14.491472 H 12.14025 v 1.762512 h 4.406281 v -4.40628 h -1.762512 z m 0,5.196743 H 12.14025 v -1.762512 h 4.406281 v 4.40628 h -1.762512 z m 4.669231,-7.840512 h 1.762511 v 2.643769 h 2.643769 v 1.762512 h -4.40628 z"/></svg>`
                     : this.ICONS.fullscreen;
             }
-            // Hide the entire player bar when in fullscreen
-            if (isFs) {
+            this._uiStateCache.fullscreen = isFs;
+        }
+
+        const hasValidSrc = primary._proxy ? true : !!primary.src;
+        const readyState = primary._proxy ? (primary.readyState ?? 1) : primary.readyState;
+        const isActive = !primary.ended && readyState > 0 && hasValidSrc;
+        const isVisibleOnScreen = (this.videoVisibility.get(primary) || 0) > 0;
+        const shouldHideBar = isFs || !isActive || !isVisibleOnScreen;
+
+        if (this._uiStateCache.shouldHideBar !== shouldHideBar) {
+            if (shouldHideBar) {
                 this.barElement.style.setProperty('display', 'none', 'important');
             } else {
                 this.barElement.style.setProperty('display', 'flex', 'important');
             }
-            this._uiStateCache.fullscreen = isFs;
+            this._uiStateCache.shouldHideBar = shouldHideBar;
         }
     }
 
@@ -794,7 +810,7 @@ export class GlobalBarUI {
         const closeBtn = bar.querySelector('#ypp-gpb-close');
         closeBtn.onclick = (e) => {
             e.stopPropagation();
-            sessionStorage.setItem('ypp-gpb-dismissed', 'true');
+            if (this.onDismiss) this.onDismiss();
             this.removeAll();
         };
     }

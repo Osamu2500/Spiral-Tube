@@ -18,11 +18,16 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
         
         this.isYouTube = window.location.hostname.includes('youtube.com');
         this.observer = null;
+        this.isDismissed = false;
         
         // ── Sub-modules ────────────────────────────────────────────────────
         this.ui = new window.YPP.features.GlobalBarUI(
             window.YPP.features.FilterPresets?.PRESETS || []
         );
+
+        this.ui.onDismiss = () => {
+            this.isDismissed = true;
+        };
 
         this._repositionListener = () => this.ui.updatePosition();
     }
@@ -57,6 +62,22 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
             this._injectCSS();
             this.scanForVideos();
             this.startObserver();
+            
+            // Reset dismissal on native navigation
+            this.addListener(window, 'popstate', () => {
+                this.isDismissed = false;
+                this.scanForVideos();
+            });
+            
+            // Simple URL polling for SPAs that use pushState without triggering popstate
+            let lastUrl = location.href;
+            this._urlPoll = setInterval(() => {
+                if (location.href !== lastUrl) {
+                    lastUrl = location.href;
+                    this.isDismissed = false;
+                    this.scanForVideos();
+                }
+            }, 1000);
         } catch (e) {
             this.utils?.log('Error enabling GlobalPlayerBar', 'GLOBAL', 'error', e);
         }
@@ -65,6 +86,7 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     async disable() {
         await super.disable();
         this.stopObserver();
+        if (this._urlPoll) clearInterval(this._urlPoll);
         this.ui.removeAll();
         this.utils?.removeStyle('ypp-global-bar-css');
         
@@ -132,34 +154,16 @@ export class GlobalPlayerBar extends window.YPP.features.BaseFeature {
     }
 
     scanForVideos() {
-        // Respect user's explicit close action for this session
-        if (sessionStorage.getItem('ypp-gpb-dismissed') === 'true') return;
+        // Respect user's explicit close action for this view
+        if (this.isDismissed) return;
 
-        if (!this._pendingVideos) this._pendingVideos = new WeakSet();
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
-            if (this.ui.hasVideo(video) || this._pendingVideos.has(video)) return;
+            if (this.ui.hasVideo(video)) return;
             
-            // Wait for video to have layout dimensions
-            if (video.offsetWidth > 0 && video.offsetHeight > 0) {
-                video.setAttribute('data-ypp-processed', 'true');
-                this.ui.trackVideo(video);
-                this._notifyFeaturesOfNewVideo(video);
-            } else {
-                this._pendingVideos.add(video);
-                this.pollFor(() => video.isConnected && video.offsetWidth > 0 ? video : null, 5000, 500)
-                    .then(v => {
-                        this._pendingVideos.delete(video);
-                        if (v && !this.ui.hasVideo(v)) {
-                            v.setAttribute('data-ypp-processed', 'true');
-                            this.ui.trackVideo(v);
-                            this._notifyFeaturesOfNewVideo(v);
-                        }
-                    })
-                    .catch(() => {
-                        if (this._pendingVideos) this._pendingVideos.delete(video);
-                    });
-            }
+            video.setAttribute('data-ypp-processed', 'true');
+            this.ui.trackVideo(video);
+            this._notifyFeaturesOfNewVideo(video);
         });
     }
 
