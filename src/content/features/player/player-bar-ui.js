@@ -494,18 +494,31 @@ export class PlayerBarUI {
             // Find where to insert our controls within .ytp-chrome-bottom
             let rightControls = controls.querySelector('.ytp-right-controls') || controls.querySelector('.ytp-right-controls-right');
             const chromeControls = controls.querySelector('.ytp-chrome-controls');
-            
+
+            // Helper: given a querySelector result, walk UP until we find a node
+            // whose parentNode is `parent`. This is necessary because insertBefore()
+            // requires the reference node to be a DIRECT child of the parent —
+            // using a deep descendant throws NotFoundError.
+            const getDirectChild = (parent, descendant) => {
+                if (!parent || !descendant) return null;
+                let node = descendant;
+                while (node && node.parentNode !== parent) {
+                    node = node.parentNode;
+                    if (!node || node === document.body) return null;
+                }
+                return node; // direct child of parent, or null
+            };
+
             // V6: Corrected insertion point
             // Extension buttons belong BEFORE the native settings/theater/fullscreen cluster
             // so they appear between the autoplay/CC group and the YouTube settings gear.
-            // Previously used insertBefore(firstChild) which placed buttons at the far-left
-            // of .ytp-right-controls, pushing all native buttons to the right.
             if (rightControls && document.contains(rightControls)) {
-                // Target the settings button as the ideal anchor; fall back to theater, then fullscreen
-                const settingsBtn = rightControls.querySelector('.ytp-settings-button');
-                const theaterBtn = rightControls.querySelector('.ytp-size-button');
+                // Find the anchor button via deep querySelector, then resolve to a direct child
+                const settingsBtn  = rightControls.querySelector('.ytp-settings-button');
+                const theaterBtn   = rightControls.querySelector('.ytp-size-button');
                 const fullscreenBtn = rightControls.querySelector('.ytp-fullscreen-button');
-                const insertionPoint = settingsBtn || theaterBtn || fullscreenBtn || null;
+                const rawAnchor = settingsBtn || theaterBtn || fullscreenBtn || null;
+                const insertionPoint = getDirectChild(rightControls, rawAnchor);
                 if (insertionPoint) {
                     rightControls.insertBefore(container, insertionPoint);
                 } else {
@@ -514,11 +527,11 @@ export class PlayerBarUI {
                 }
             } else if (chromeControls && document.contains(chromeControls)) {
                 // Fallback: no .ytp-right-controls (YouTube A/B test flat layout)
-                // Insert before the last known button cluster rather than appending to the end
-                const settingsBtn = chromeControls.querySelector('.ytp-settings-button');
-                const theaterBtn = chromeControls.querySelector('.ytp-size-button');
+                const settingsBtn  = chromeControls.querySelector('.ytp-settings-button');
+                const theaterBtn   = chromeControls.querySelector('.ytp-size-button');
                 const fullscreenBtn = chromeControls.querySelector('.ytp-fullscreen-button');
-                const insertionPoint = settingsBtn || theaterBtn || fullscreenBtn || null;
+                const rawAnchor = settingsBtn || theaterBtn || fullscreenBtn || null;
+                const insertionPoint = getDirectChild(chromeControls, rawAnchor);
                 if (insertionPoint) {
                     chromeControls.insertBefore(container, insertionPoint);
                 } else {

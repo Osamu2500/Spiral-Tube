@@ -470,15 +470,9 @@ body.ypp-floating-player-active .ytp-chrome-bottom {
   box-sizing: border-box !important;
 }
 
-/* Fix: Prevent player bar from getting squished when video has a smaller aspect ratio */
-body.yt-spiral-tube-theme .html5-video-player:not(.ytp-fullscreen) .ytp-chrome-bottom {
-  width: calc(100% - 24px) !important;
-  left: 12px !important;
-}
-body.yt-spiral-tube-theme .html5-video-player.ytp-fullscreen .ytp-chrome-bottom {
-  width: calc(100% - 48px) !important;
-  left: 24px !important;
-}
+/* Note: .ytp-chrome-bottom width/left overrides were removed — YouTube manages
+   this element's dimensions via its own JS. Overriding them caused the action
+   buttons to be squeezed/shifted relative to their native positions. */
 
 body.ypp-floating-player-active .ytp-progress-bar-container {
   width: 100% !important;

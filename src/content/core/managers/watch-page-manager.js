@@ -27,7 +27,9 @@ class WatchPageManager extends window.YPP.BasePageManager {
 
   async onActivate() {
     this.utils.log('Watch Page Active', 'WATCH_MANAGER', 'info');
-    this._cleanUpLegacyStamps();
+    // Clear any stale data-ypp-processed stamps from a previous session/navigation
+    // so the shared observer and injection retry loops can re-fire cleanly.
+    document.querySelectorAll('[data-ypp-processed="true"]').forEach(el => el.removeAttribute('data-ypp-processed'));
     // Wait until featureManager has finished instantiating features so that
     // feature instances (VolumeBooster, VideoFilters, BookmarksManager etc.)
     // exist when injectControls() tries to build buttons for the player bar.
@@ -41,7 +43,7 @@ class WatchPageManager extends window.YPP.BasePageManager {
     // which calls setState() → _applyDOM(). Calling it here too would cause a double DOM apply.
     this._initFeatures(); // async — will call applySettings again once features load
     this._initPlayer(); // async — waits for video element
-    window.YPP.ui.manager.mount('watchPageTop', this.filterBar, 'prepend');
+    if (this.filterBar) window.YPP.ui.manager.mount('watchPageTop', this.filterBar, 'prepend');
   }
 
   async _initFeatures() {
