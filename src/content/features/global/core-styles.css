@@ -23,13 +23,13 @@
    =================================================================================== */
 
 html.yt-spiral-tube-theme,
-html.yt-spiral-tube-theme [dark],
-html.yt-spiral-tube-theme [theme="dark"],
-html.yt-spiral-tube-theme [dark="true"],
+html.yt-spiral-tube-theme[dark],
+html.yt-spiral-tube-theme[theme="dark"],
+html.yt-spiral-tube-theme[dark="true"],
 .yt-spiral-tube-theme,
-.yt-spiral-tube-theme [dark],
-.yt-spiral-tube-theme [theme="dark"],
-.yt-spiral-tube-theme [dark="true"] {
+.yt-spiral-tube-theme[dark],
+.yt-spiral-tube-theme[theme="dark"],
+.yt-spiral-tube-theme[dark="true"] {
   /* 
      NOTE: COLOR VARIABLES ARE NOW HANDLED BY THEME FILES (default.css, ocean.css, etc.)
      DO NOT ADD COLORS HERE TO AVOID SPECIFICITY CONFLICTS.
