@@ -1,1 +1,10 @@
-@import './components/massive_ui.css';
+/* 
+   ==========================================================================
+   DEFAULT UI DESIGN OVERLAY
+   This simply enforces the fallback variables defined in core-framework/base/tokens.css
+   ========================================================================== 
+*/
+
+html[data-ypp-ui-design="default"] {
+    /* No overrides needed, falls back to core tokens */
+}

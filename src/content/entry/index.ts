@@ -15,6 +15,7 @@ import '../core/system/feature-manager.js';
 
 // CSS Imports
 import '../features/global/core-styles.css';
+import '../core-framework/index.css';
 import '../features/global/layout/grid-layout.css';
 import '../features/player/player.css';
 import '../features/global/layout/header-ast.css';

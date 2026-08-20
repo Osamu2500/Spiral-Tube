@@ -1,0 +1,48 @@
+/* 
+   ==========================================================================
+   CORE FRAMEWORK - TOKENS
+   These are the fallback variables. 
+   When a UI Design is applied (e.g. data-ypp-ui-design="nature"), it will 
+   override these variables to transform the entire layout.
+   ========================================================================== 
+*/
+
+:root {
+  /* --- Colors & Backgrounds --- */
+  --ypp-base-bg: transparent;
+  --ypp-surface-bg: var(--yt-spec-base-background);
+  --ypp-surface-bg-hover: var(--yt-spec-10-percent-layer);
+  --ypp-surface-bg-active: var(--yt-spec-20-percent-layer);
+  --ypp-surface-border: 1px solid var(--yt-spec-10-percent-layer);
+  
+  --ypp-primary-accent: var(--yt-spec-call-to-action);
+  
+  /* --- Typography --- */
+  --ypp-font-primary: "Roboto", "Arial", sans-serif;
+  --ypp-font-heading: "Roboto", "Arial", sans-serif;
+  --ypp-text-color: var(--yt-spec-text-primary);
+  --ypp-text-secondary: var(--yt-spec-text-secondary);
+  --ypp-text-transform: none;
+  --ypp-letter-spacing: normal;
+  
+  /* --- Geometry & Shapes --- */
+  --ypp-border-radius-base: 12px;
+  --ypp-border-radius-pill: 24px;
+  --ypp-border-radius-sharp: 4px;
+  --ypp-border-radius-circle: 50%;
+  
+  /* --- Shadows & Depth --- */
+  --ypp-shadow-base: 0 4px 12px rgba(0,0,0,0.1);
+  --ypp-shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
+  --ypp-shadow-active: 0 2px 6px rgba(0,0,0,0.2);
+  
+  /* --- Animation & Transitions --- */
+  --ypp-transition-bounce: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ypp-transition-smooth: all 0.2s ease-in-out;
+  
+  /* --- Specific Component Variables --- */
+  --ypp-sidebar-radius: var(--ypp-border-radius-base);
+  --ypp-chip-radius: var(--ypp-border-radius-base);
+  --ypp-card-radius: var(--ypp-border-radius-base);
+  --ypp-button-radius: var(--ypp-border-radius-pill);
+}

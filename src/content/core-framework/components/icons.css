@@ -1,0 +1,23 @@
+.ypp-gpb-btn,
+.ypp-action-btn,
+.ypp-icon-btn {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  background: transparent !important;
+  transition:
+    transform var(--ypp-transition-bounce),
+    box-shadow var(--ypp-transition-bounce),
+    background var(--ypp-transition-bounce) !important;
+}
+.ypp-gpb-btn:hover,
+.ypp-action-btn:hover,
+.ypp-icon-btn:hover {
+  background: var(--ypp-surface-bg) !important;
+  box-shadow: var(--ypp-shadow-hover) !important;
+  transform: scale(1.1) !important;
+}
+.ypp-gpb-btn:active,
+.ypp-action-btn:active,
+.ypp-icon-btn:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--ypp-shadow-active) !important;
+}
