@@ -1,10 +1,6 @@
 html, [dark] body {
-  background-color: #064e3b !important; /* Deep emerald base */
-  background-image: 
-    radial-gradient(circle at 15% 50%, rgba(163, 230, 53, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(34, 197, 94, 0.08), transparent 25%),
-    url("data:image/svg+xml;utf8,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10,90 Q50,10 90,90\" stroke=\"rgba(255,255,255,0.02)\" fill=\"none\" stroke-width=\"2\"/></svg>") !important;
-  background-size: 100% 100%, 100% 100%, 200px 200px !important;
+  background-color: var(--ypp-bg-base, #0f1c15) !important;
+  background-image: none !important;
   color: var(--ypp-text-primary, #ffffff) !important;
 }
 * {
@@ -15,7 +11,7 @@ html, [dark] body {
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   background: none !important;
-  border: var(--ypp-surface-border) !important;
+  border: var(--ypp-glass-border, 1px solid rgba(255,255,255,0.1)) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   overflow: hidden !important;
   transition:
@@ -25,7 +21,7 @@ html, [dark] body {
   color: white !important;
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
-  background: var(--ypp-surface-bg) !important;
+  background: var(--ypp-bg-surface, #1e1e1e) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.02);
 }
@@ -41,15 +37,15 @@ html, [dark] body {
     background var(--ypp-transition-bounce) !important;
 }
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
-  background: var(--ypp-surface-bg) !important;
+  background: var(--ypp-bg-surface, #1e1e1e) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.1);
 }
 /* Nature-themed nav button base state */
 .ypp-nav-btn {
   border-radius: var(--ypp-shape-primary, 12px) !important;
-  background: var(--ypp-surface-bg-hover) !important;
-  border: var(--ypp-surface-border) !important;
+  background: var(--ypp-bg-glass, rgba(255,255,255,0.1)) !important;
+  border: var(--ypp-glass-border, 1px solid rgba(255,255,255,0.1)) !important;
   color: var(--ypp-text-primary, #ffffff) !important;
   transition:
     transform var(--ypp-transition-bounce),
@@ -58,7 +54,7 @@ html, [dark] body {
 }
 .ytSuggestionComponentRoundedSuggestion {
   margin: 5px 10px;
-  border: var(--ypp-surface-border) !important;
+  border: var(--ypp-glass-border, 1px solid rgba(255,255,255,0.1)) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   transition:
     transform var(--ypp-transition-bounce),
@@ -109,7 +105,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
 .ypp-gpb-btn:hover,
 .ypp-action-btn:hover,
 .ypp-icon-btn:hover {
-  background: var(--ypp-surface-bg) !important;
+  background: var(--ypp-bg-surface, #1e1e1e) !important;
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.1) !important;
 }
@@ -135,7 +131,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(255, 255, 255, 0.1) !important;
   
   border-radius: var(--ypp-shape-primary, 12px) !important;
-  border: var(--ypp-surface-border) !important;
+  border: var(--ypp-glass-border, 1px solid rgba(255,255,255,0.1)) !important;
 }
 /* --- Subscriptions Sidebar / Modals --- */
 .ypp-organizer-modal,
@@ -143,7 +139,7 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   background: rgba(10, 10, 15, 0.65) !important;
   
   
-  border: var(--ypp-surface-border) !important;
+  border: var(--ypp-glass-border, 1px solid rgba(255,255,255,0.1)) !important;
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
@@ -173,25 +169,25 @@ tp-yt-app-header {
 }
 /* Titles and Text Colors */
 #video-title {
-  color: var(--ypp-primary-accent) !important;
+  color: var(--ypp-accent, #a3e635) !important;
 }
 .ytd-channel-name, .ytd-video-meta-block {
-  color: var(--ypp-primary-accent, #a3e635) !important;
+  color: var(--ypp-accent, #a3e635) !important;
 }
 /* Progress Bar */
 .ytp-play-progress {
-  background: var(--ypp-primary-accent) !important;
+  background: var(--ypp-accent, #a3e635) !important;
 }
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px !important; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2) !important; border-radius: 30px 4px 30px 4px; }
 ::-webkit-scrollbar-thumb { 
-  background: var(--ypp-primary-accent) !important; 
+  background: var(--ypp-accent, #a3e635) !important; 
   border-radius: 30px 4px 30px 4px !important; 
 }
 /* Added for HeaderNav active state — nature green glow */
 .ypp-nav-btn.active {
-  background: var(--ypp-surface-bg-hover) !important;
+  background: var(--ypp-bg-glass, rgba(255,255,255,0.1)) !important;
   box-shadow:
     0 0 16px rgba(163, 230, 53, 0.5),
     0 0 32px rgba(34, 197, 94, 0.25),
