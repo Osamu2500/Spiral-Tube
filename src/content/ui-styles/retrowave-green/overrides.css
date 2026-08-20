@@ -1,7 +1,7 @@
 /* Unique Shapes and Patterns for retrowave-green */
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Headers and Active Text */
@@ -53,17 +53,17 @@ html[data-ypp-ui-design="retrowave-green"] ytd-toggle-button-renderer:nth-of-typ
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox,
 html[data-ypp-ui-design="retrowave-green"] ytd-searchbox {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox > #container,
 html[data-ypp-ui-design="retrowave-green"] ytd-searchbox > #container {
-  border-radius: 0 0 0 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0 0 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] #search-icon-legacy.ytd-searchbox,
 html[data-ypp-ui-design="retrowave-green"] #search-icon-legacy.ytd-searchbox {
-  border-radius: 0 0 0 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0 0 0) !important;
 }
 
 /* Autocomplete Dropdown Box */
@@ -71,7 +71,7 @@ html[data-ypp-card-style="retrowave-green"] .sbsb_a,
 html[data-ypp-ui-design="retrowave-green"] .sbsb_a,
 html[data-ypp-card-style="retrowave-green"] .gstl_50.sbdd_a,
 html[data-ypp-ui-design="retrowave-green"] .gstl_50.sbdd_a {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
 }
 
@@ -83,7 +83,7 @@ html[data-ypp-ui-design="retrowave-green"] yt-img-shadow,
 html[data-ypp-card-style="retrowave-green"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="retrowave-green"] .yt-spec-avatar-shape__image {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Comment cards geometry */
@@ -91,14 +91,14 @@ html[data-ypp-card-style="retrowave-green"] ytd-comment-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-comment-renderer,
 html[data-ypp-card-style="retrowave-green"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-comment-thread-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-guide-entry-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-guide-entry-renderer,
 html[data-ypp-card-style="retrowave-green"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-mini-guide-entry-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-guide-entry-renderer:hover,
@@ -111,7 +111,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-guide-entry-renderer:hover {
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-reel-video-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
@@ -119,7 +119,7 @@ html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer ytd
 html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer ytd-button-renderer,
 html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -131,7 +131,7 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog,
 html[data-ypp-card-style="retrowave-green"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-unified-share-panel-renderer {
   box-shadow: 0 0 30px rgba(0, 255, 65, 0.2) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Dialog Headers */
@@ -146,7 +146,7 @@ html[data-ypp-ui-design="retrowave-green"] #header.ytd-unified-share-panel-rende
 /* Action Buttons inside dialogs */
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog yt-button-renderer,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog yt-button-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog yt-button-renderer:hover,
@@ -158,7 +158,7 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog yt-button-renderer
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
   text-transform: uppercase !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 4px 4px 0 rgba(0, 255, 65, 0.3) !important;
 }
 
@@ -169,17 +169,17 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] yt-live-chat-renderer,
 html[data-ypp-ui-design="retrowave-green"] yt-live-chat-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="retrowave-green"] yt-live-chat-text-message-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] #channel-header.ytd-c4-tabbed-header-renderer,
 html[data-ypp-ui-design="retrowave-green"] #channel-header.ytd-c4-tabbed-header-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* =========================================
@@ -189,7 +189,7 @@ html[data-ypp-card-style="retrowave-green"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="retrowave-green"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 25px rgba(0,255,65,0.5) !important;
   animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
   transform-origin: top right !important;
@@ -207,7 +207,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
 
 html[data-ypp-card-style="retrowave-green"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-compact-link-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* =========================================
@@ -215,7 +215,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-compact-link-renderer {
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] ytd-miniplayer,
 html[data-ypp-ui-design="retrowave-green"] ytd-miniplayer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 25px rgba(0,255,65,0.5) !important;
   transition: transform 0.3s ease !important;
 }
@@ -227,17 +227,17 @@ html[data-ypp-ui-design="retrowave-green"] ytd-miniplayer:hover {
 
 html[data-ypp-card-style="retrowave-green"] ytcp-navigation-drawer,
 html[data-ypp-ui-design="retrowave-green"] ytcp-navigation-drawer {
-  border-radius: 0 0px 0px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-track,
 html[data-ypp-ui-design="retrowave-green"] ::-webkit-scrollbar-track {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb,
 html[data-ypp-ui-design="retrowave-green"] ::-webkit-scrollbar-thumb {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb:hover,
@@ -252,26 +252,26 @@ html[data-ypp-card-style="retrowave-green"] .ytp-swatch-background-color,
 html[data-ypp-ui-design="retrowave-green"] .ytp-swatch-background-color,
 html[data-ypp-card-style="retrowave-green"] .ytp-play-progress,
 html[data-ypp-ui-design="retrowave-green"] .ytp-play-progress {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button,
 html[data-ypp-ui-design="retrowave-green"] .ytp-scrubber-button {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-spinner,
 html[data-ypp-ui-design="retrowave-green"] .ytp-spinner {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: retroGrid 1.5s infinite ease-in-out !important;
   box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-spinner::after,
 html[data-ypp-ui-design="retrowave-green"] .ytp-spinner::after {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   animation: retroGridInner 1s infinite alternate !important;
 }
 
@@ -305,14 +305,14 @@ html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog,
 html[data-ypp-card-style="retrowave-green"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-unified-share-panel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
   animation: retroGridEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: retroGridEntrance 0.3s ease forwards !important;
 }
 
@@ -326,18 +326,18 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
 
 /* Retrowave-Green Forms */
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="retrowave-green"] .yt-spec-button-shape-next--filled ,
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   text-transform: uppercase !important;
   box-shadow: 0 0 5px var(--rw-neon-dim) !important;
 }
@@ -350,11 +350,11 @@ yt-button-shape button[title*="Download" i]:hover {
 }
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="retrowave-green"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="retrowave-green"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -378,7 +378,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-video-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-playlist-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-compact-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -392,7 +392,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="retrowave-green"] ytd-thumbnail, html[data-ypp-card-style="retrowave-green"] yt-image,
 html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail, html[data-ypp-ui-design="retrowave-green"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -406,7 +406,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="retrowave-green"] yt-img-shadow, html[data-ypp-card-style="retrowave-green"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="retrowave-green"] yt-img-shadow, html[data-ypp-ui-design="retrowave-green"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -423,18 +423,18 @@ html[data-ypp-card-style="retrowave-green"] ytd-masthead, html[data-ypp-ui-desig
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="retrowave-green"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 12px 0 0 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="retrowave-green"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 12px 12px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="retrowave-green"] yt-chip-cloud-chip-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -447,7 +447,7 @@ html[data-ypp-ui-design="retrowave-green"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="retrowave-green"] ytd-guide-entry-renderer, html[data-ypp-card-style="retrowave-green"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-guide-entry-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-mini-guide-entry-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-guide-entry-renderer:hover,
@@ -458,41 +458,41 @@ html[data-ypp-ui-design="retrowave-green"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="retrowave-green"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-comment-thread-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] #simplebox-placeholder, html[data-ypp-ui-design="retrowave-green"] #simplebox-placeholder {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="retrowave-green"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="retrowave-green"] .ytp-chrome-bottom {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button,
 html[data-ypp-ui-design="retrowave-green"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-tooltip, html[data-ypp-ui-design="retrowave-green"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog, html[data-ypp-card-style="retrowave-green"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog, html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-multi-page-menu-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -503,57 +503,57 @@ html[data-ypp-ui-design="retrowave-green"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="retrowave-green"] #channel-header,
 html[data-ypp-ui-design="retrowave-green"] #channel-header {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="retrowave-green"] yt-live-chat-renderer,
 html[data-ypp-ui-design="retrowave-green"] yt-live-chat-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="retrowave-green"] yt-live-chat-text-message-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-notification-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-notification-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="retrowave-green"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-badge-supported-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="retrowave-green"] ytd-skeleton, html[data-ypp-ui-design="retrowave-green"] ytd-skeleton, 
 html[data-ypp-card-style="retrowave-green"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="retrowave-green"] .ytd-ghost-grid-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="retrowave-green"] ytd-reel-item-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-reel-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-rich-shelf-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="retrowave-green"] ytd-watch-metadata, html[data-ypp-ui-design="retrowave-green"] ytd-watch-metadata {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -568,34 +568,34 @@ html[data-ypp-card-style="retrowave-green"] yt-icon:hover, html[data-ypp-ui-desi
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="retrowave-green"] .ytp-endscreen-content, html[data-ypp-ui-design="retrowave-green"] .ytp-endscreen-content {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-ce-element, html[data-ypp-ui-design="retrowave-green"] .ytp-ce-element {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="retrowave-green"] ytd-miniplayer, html[data-ypp-ui-design="retrowave-green"] ytd-miniplayer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="retrowave-green"] .ytp-settings-menu, html[data-ypp-ui-design="retrowave-green"] .ytp-settings-menu {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="retrowave-green"] ytd-account-item-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-account-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="retrowave-green"] ytd-search-filter-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="retrowave-green"] ytd-search-filter-renderer:hover {
@@ -604,18 +604,18 @@ html[data-ypp-card-style="retrowave-green"] ytd-search-filter-renderer:hover, ht
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="retrowave-green"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-playlist-panel-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="retrowave-green"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="retrowave-green"] ytd-macro-markers-list-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="retrowave-green"] yt-error-screen, html[data-ypp-ui-design="retrowave-green"] yt-error-screen {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -624,7 +624,7 @@ html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog,
 html[data-ypp-card-style="retrowave-green"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="retrowave-green"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="retrowave-green"] ytd-masthead {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
 }
 
@@ -641,7 +641,7 @@ html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog,
 html[data-ypp-card-style="retrowave-green"] ytd-popup-container,
 html[data-ypp-ui-design="retrowave-green"] ytd-popup-container {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
@@ -669,12 +669,12 @@ html[data-ypp-ui-design="retrowave-green"] ytd-popup-container {
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] tp-yt-paper-toast,
 html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-toast {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* =========================================
@@ -682,7 +682,7 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-toast {
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] ytd-search-filter-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-search-filter-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-search-filter-renderer:hover,
@@ -697,7 +697,7 @@ html[data-ypp-card-style="retrowave-green"] ytd-background-promo-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-background-promo-renderer,
 html[data-ypp-card-style="retrowave-green"] #error-page,
 html[data-ypp-ui-design="retrowave-green"] #error-page {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* Empty state icon geometry override */
@@ -708,7 +708,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-background-promo-renderer yt-icon
 
 html[data-ypp-card-style="retrowave-green"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-mini-guide-entry-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
   transition: transform 0.2s ease !important;
 }
 
@@ -736,7 +736,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-topbar-logo-renderer:hover {
 
 html[data-ypp-ui-design="retrowave-green"] #container.ytd-searchbox,
 html[data-ypp-ui-design="retrowave-green"] ytd-searchbox {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: inset 0 0 10px hsl(122, 70%, 45%)66 !important;
 }
 
@@ -745,7 +745,7 @@ html[data-ypp-ui-design="retrowave-green"] #search-input input {
 }
 
 html[data-ypp-ui-design="retrowave-green"] #search-icon-legacy {
-  border-radius: 0 30px 30px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
 }
 
 html[data-ypp-ui-design="retrowave-green"] #search-icon-legacy:hover {
@@ -757,7 +757,7 @@ html[data-ypp-ui-design="retrowave-green"] #search-icon-legacy yt-icon {
 }
 
 html[data-ypp-ui-design="retrowave-green"] #voice-search-button {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 0 8px hsl(331, 80%, 55%)88 !important;
   transition: transform 0.2s !important;
 }
@@ -768,7 +768,7 @@ html[data-ypp-ui-design="retrowave-green"] #voice-search-button:hover {
 
 html[data-ypp-ui-design="retrowave-green"] .sbdd_b,
 html[data-ypp-ui-design="retrowave-green"] .sbsb_a {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 5px 5px 0 hsl(122, 70%, 45%) !important;
 }
@@ -779,7 +779,7 @@ html[data-ypp-ui-design="retrowave-green"] .sbsb_c:hover {
 
 html[data-ypp-ui-design="retrowave-green"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-design="retrowave-green"] ytd-notification-topbar-button-renderer yt-icon-button {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 html[data-ypp-ui-design="retrowave-green"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
@@ -789,7 +789,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-notification-topbar-button-render
 }
 
 html[data-ypp-ui-design="retrowave-green"] #avatar-btn yt-img-shadow {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 5px 5px 0 hsl(122, 70%, 45%) !important;
   transition: transform 0.4s !important;
 }
@@ -799,7 +799,7 @@ html[data-ypp-ui-design="retrowave-green"] #avatar-btn yt-img-shadow:hover {
 }
 
 html[data-ypp-ui-design="retrowave-green"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 5px 5px 0 hsl(122, 70%, 45%) !important;
 }
@@ -828,7 +828,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-playlist-panel-renderer {
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] ytd-backstage-post-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-backstage-post-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Community Poll Progress Bars */
@@ -836,7 +836,7 @@ html[data-ypp-card-style="retrowave-green"] .ytd-backstage-poll-renderer[checked
 html[data-ypp-ui-design="retrowave-green"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-card-style="retrowave-green"] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-ui-design="retrowave-green"] .progress-bar.ytd-backstage-poll-renderer {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: 0 0 10px #00ff41 !important;
 }
 
@@ -845,7 +845,7 @@ html[data-ypp-ui-design="retrowave-green"] .progress-bar.ytd-backstage-poll-rend
 ========================================= */
 html[data-ypp-card-style="retrowave-green"] ytd-merch-shelf-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-merch-shelf-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Product Image Geometry Override */
@@ -853,7 +853,7 @@ html[data-ypp-card-style="retrowave-green"] .ytd-shopping-carousel-item-renderer
 html[data-ypp-ui-design="retrowave-green"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-card-style="retrowave-green"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
 html[data-ypp-ui-design="retrowave-green"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -865,7 +865,7 @@ html[data-ypp-ui-design="retrowave-green"] .ytd-shopping-carousel-item-renderer:
 /* Buy Buttons */
 html[data-ypp-card-style="retrowave-green"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
@@ -876,7 +876,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-button-renderer.ytd-shopping-caro
 
 html[data-ypp-card-style="retrowave-green"] .badge-style-type-live-now-alternate,
 html[data-ypp-ui-design="retrowave-green"] .badge-style-type-live-now-alternate {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
@@ -965,7 +965,7 @@ html[data-ypp-ui-design="retrowave-green"] .ytp-play-progress {
 html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button,
 html[data-ypp-ui-design="retrowave-green"] .ytp-scrubber-button {
   box-shadow: 0 0 15px #00ff41 !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   /* Square scrubber for retro feel */
     transform: rotate(45deg) !important;
 }
@@ -999,7 +999,7 @@ html[data-ypp-ui-design="retrowave-green"] .ytp-time-display {
 
 /* Retrowave-Green Player */
 html[data-ypp-card-style="retrowave-green"] .ytp-chrome-bottom {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 10px rgba(0, 255, 65, 0.2) !important;
 }
 
@@ -1008,6 +1008,6 @@ html[data-ypp-card-style="retrowave-green"] .ytp-play-progress {
 }
 
 html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 5px var(--rw-neon) !important;
 }

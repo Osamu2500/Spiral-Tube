@@ -8,15 +8,15 @@ html[data-ypp-ui-style="cyberpunk"] {
   --ypp-primary-accent: #ff003c !important;
   --ypp-text-primary: #00f0ff !important;
   
-  --ypp-surface-border: 1px solid #ff003c40 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ff003c40) !important;
   --ypp-shadow-base: 0 4px 12px #ff003c20 !important;
   --ypp-shadow-hover: 0 8px 24px #ff003c40 !important;
   
-  --yt-font-family: 'Courier New', monospace, sans-serif !important;
+  --yt-font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
 }
 
 
 html[data-ypp-ui-style="cyberpunk"] * {
-  font-family: 'Courier New', monospace, sans-serif !important;
+  font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
 }
 

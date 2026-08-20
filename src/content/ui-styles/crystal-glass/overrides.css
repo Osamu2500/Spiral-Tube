@@ -12,7 +12,7 @@ html[data-ypp-ui-design="crystal-glass"] * {
 html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-thumb {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-thumb:hover {
@@ -29,13 +29,13 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-folder-header {
 /* Extension Sliders */
 html[data-ypp-ui-design="crystal-glass"] .ypp-slider,
 html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-vol-slider {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.2) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] .ypp-slider::-webkit-slider-thumb,
 html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
   transition: transform var(--cglass-transition) !important;
 }
@@ -49,7 +49,7 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-vol-slider::-webkit-slider-thu
 html[data-ypp-ui-design="crystal-glass"] .ypp-filter-dropdown {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] .ypp-filter-dropdown:hover {
@@ -60,28 +60,28 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-filter-dropdown:hover {
 html[data-ypp-ui-design="crystal-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 /* Volume Area */
 html[data-ypp-ui-design="crystal-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 /* Progress bar drag container */
 html[data-ypp-ui-design="crystal-glass"] .ytPlayerProgressBarDragContainer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 /* Progress Bar Filled State */
 html[data-ypp-ui-design="crystal-glass"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-design="crystal-glass"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-design="crystal-glass"] .ytp-play-progress {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: 0 0 10px rgba(255,255,255,0.5) !important;
 }
 
@@ -90,7 +90,7 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-nav-btn.active {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
   box-shadow: var(--cglass-shadow-inner) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 /* Primary/Filled Buttons (Like Subscribe) */
@@ -127,7 +127,7 @@ html[data-ypp-ui-design="crystal-glass"] yt-icon-button button {
 html[data-ypp-ui-design="crystal-glass"] yt-icon-button button:hover {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Extension Action Buttons */
@@ -136,7 +136,7 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-action-btn,
 html[data-ypp-ui-design="crystal-glass"] .ypp-pill-toggle {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] .ypp-gpb-btn:hover,
@@ -166,7 +166,7 @@ html[data-ypp-card-style="crystal-glass"] :is(
 ) {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -192,20 +192,20 @@ html[data-ypp-card-style="crystal-glass"] :is(
 /* Thumbnails */
 html[data-ypp-card-style="crystal-glass"] ytd-thumbnail,
 html[data-ypp-card-style="crystal-glass"] .ytd-thumbnail {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 /* Time Status Badge (e.g., 10:05) */
 html[data-ypp-card-style="crystal-glass"] ytd-thumbnail-overlay-time-status-renderer {
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 /* Channel Avatar next to metadata */
 html[data-ypp-card-style="crystal-glass"] #avatar-link img,
 html[data-ypp-card-style="crystal-glass"] yt-img-shadow#avatar img {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-rich-item-renderer:hover #avatar-link img {
@@ -231,13 +231,13 @@ html[data-ypp-ui-design="crystal-glass"] yt-share-panel-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-unified-share-panel-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
 /* Radio Buttons (Report Menu) */
 html[data-ypp-ui-design="crystal-glass"] ytd-report-form-modal-renderer yt-radio-button-view-model {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
@@ -247,7 +247,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-report-form-modal-renderer yt-radio
 /* URL Copy Box (Share Menu) */
 html[data-ypp-ui-design="crystal-glass"] yt-share-panel-renderer #copyLink,
 html[data-ypp-ui-design="crystal-glass"] yt-copy-link-renderer {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 10px rgba(0,0,0,0.1) !important;
 }
 
@@ -266,7 +266,7 @@ html[data-ypp-ui-design="crystal-glass"] .yt-spec-icon-shape {
 html[data-ypp-ui-design="crystal-glass"] .yt-spec-icon-badge-shape__badge {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: 0 2px 10px rgba(255,0,0,0.4) !important;
 }
 
@@ -274,16 +274,16 @@ html[data-ypp-ui-design="crystal-glass"] .yt-spec-icon-badge-shape__badge {
 html[data-ypp-ui-design="crystal-glass"] ytd-badge-supported-renderer {
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 5px rgba(255,255,255,0.2) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="crystal-glass"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -307,7 +307,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-video-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-playlist-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-compact-video-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -323,7 +323,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="crystal-glass"] ytd-thumbnail, html[data-ypp-card-style="crystal-glass"] yt-image,
 html[data-ypp-ui-design="crystal-glass"] ytd-thumbnail, html[data-ypp-ui-design="crystal-glass"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -337,7 +337,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="crystal-glass"] yt-img-shadow, html[data-ypp-card-style="crystal-glass"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="crystal-glass"] yt-img-shadow, html[data-ypp-ui-design="crystal-glass"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -356,18 +356,18 @@ html[data-ypp-card-style="crystal-glass"] ytd-masthead, html[data-ypp-ui-design=
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="crystal-glass"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 20px 0 0 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px 0 0 20px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 20px 20px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="crystal-glass"] yt-chip-cloud-chip-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -380,7 +380,7 @@ html[data-ypp-ui-design="crystal-glass"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="crystal-glass"] ytd-guide-entry-renderer, html[data-ypp-card-style="crystal-glass"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-guide-entry-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-mini-guide-entry-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-guide-entry-renderer:hover,
@@ -391,20 +391,20 @@ html[data-ypp-ui-design="crystal-glass"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="crystal-glass"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-thread-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] #simplebox-placeholder, html[data-ypp-ui-design="crystal-glass"] #simplebox-placeholder {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="crystal-glass"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="crystal-glass"] .ytp-chrome-bottom {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -412,26 +412,26 @@ html[data-ypp-ui-design="crystal-glass"] .ytp-chrome-bottom {
 
 html[data-ypp-card-style="crystal-glass"] .ytp-scrubber-button,
 html[data-ypp-ui-design="crystal-glass"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] .ytp-tooltip, html[data-ypp-ui-design="crystal-glass"] .ytp-tooltip {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="crystal-glass"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="crystal-glass"] ytd-menu-popup-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-multi-page-menu-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
 }
@@ -444,7 +444,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="crystal-glass"] #channel-header,
 html[data-ypp-ui-design="crystal-glass"] #channel-header {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
 }
@@ -452,51 +452,51 @@ html[data-ypp-ui-design="crystal-glass"] #channel-header {
 /* 16. Live Chat Box */
 html[data-ypp-card-style="crystal-glass"] yt-live-chat-renderer,
 html[data-ypp-ui-design="crystal-glass"] yt-live-chat-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="crystal-glass"] yt-live-chat-text-message-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="crystal-glass"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tooltip {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-notification-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-notification-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="crystal-glass"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-badge-supported-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="crystal-glass"] ytd-skeleton, html[data-ypp-ui-design="crystal-glass"] ytd-skeleton, 
 html[data-ypp-card-style="crystal-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="crystal-glass"] .ytd-ghost-grid-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="crystal-glass"] ytd-reel-item-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-reel-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-rich-shelf-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="crystal-glass"] ytd-watch-metadata, html[data-ypp-ui-design="crystal-glass"] ytd-watch-metadata {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -513,17 +513,17 @@ html[data-ypp-card-style="crystal-glass"] yt-icon:hover, html[data-ypp-ui-design
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="crystal-glass"] .ytp-endscreen-content, html[data-ypp-ui-design="crystal-glass"] .ytp-endscreen-content {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] .ytp-ce-element, html[data-ypp-ui-design="crystal-glass"] .ytp-ce-element {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="crystal-glass"] ytd-miniplayer, html[data-ypp-ui-design="crystal-glass"] ytd-miniplayer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -531,7 +531,7 @@ html[data-ypp-card-style="crystal-glass"] ytd-miniplayer, html[data-ypp-ui-desig
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="crystal-glass"] .ytp-settings-menu, html[data-ypp-ui-design="crystal-glass"] .ytp-settings-menu {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -539,12 +539,12 @@ html[data-ypp-card-style="crystal-glass"] .ytp-settings-menu, html[data-ypp-ui-d
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="crystal-glass"] ytd-account-item-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-account-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="crystal-glass"] ytd-search-filter-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-search-filter-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="crystal-glass"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="crystal-glass"] ytd-search-filter-renderer:hover {
@@ -553,18 +553,18 @@ html[data-ypp-card-style="crystal-glass"] ytd-search-filter-renderer:hover, html
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="crystal-glass"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-playlist-panel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="crystal-glass"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-macro-markers-list-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="crystal-glass"] yt-error-screen, html[data-ypp-ui-design="crystal-glass"] yt-error-screen {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
 }
 
@@ -580,7 +580,7 @@ html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-listbox,
 html[data-ypp-ui-design="crystal-glass"] .ytSearchboxComponentSuggestionsContainer {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
@@ -599,7 +599,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="crystal-glass"] .ytp-menuitem,
 html[data-ypp-ui-design="crystal-glass"] ytd-playlist-add-to-option-renderer,
 html[data-ypp-ui-design="crystal-glass"] .ytSuggestionComponentSuggestion {
-  border-radius: var(--cglass-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
 }
 
 /* Menu Item Hover */
@@ -610,12 +610,12 @@ html[data-ypp-ui-design="crystal-glass"] .ytp-menuitem:hover,
 html[data-ypp-ui-design="crystal-glass"] ytd-playlist-add-to-option-renderer:hover,
 html[data-ypp-ui-design="crystal-glass"] .ytSuggestionComponentSuggestion:hover {
   box-shadow: var(--cglass-shadow-inner) !important;
-  border-radius: var(--cglass-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
 }
 
 /* Notifications */
 html[data-ypp-ui-design="crystal-glass"] ytd-notification-renderer {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-notification-renderer:hover {
@@ -630,7 +630,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-masthead #container.ytd-masthead {
 
 /* Search Box Container */
 html[data-ypp-ui-design="crystal-glass"] ytd-searchbox {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: var(--cglass-shadow-inner) !important;
 }
 
@@ -646,12 +646,12 @@ html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #container.ytd-searchbox 
 
 /* Search Button */
 html[data-ypp-ui-design="crystal-glass"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 var(--cglass-radius-pill) var(--cglass-radius-pill) 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 var(--cglass-radius-pill) var(--cglass-radius-pill) 0) !important;
 }
 
 /* Voice Search Button */
 html[data-ypp-ui-design="crystal-glass"] #voice-search-button yt-icon-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: var(--cglass-shadow-inner) !important;
 }
 
@@ -676,7 +676,7 @@ html[data-ypp-ui-design="crystal-glass"] app-drawer#guide-inner-content {
 /* Guide Links / Endpoints */
 html[data-ypp-ui-design="crystal-glass"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-mini-guide-entry-renderer {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 /* Guide Link Hover */
@@ -697,7 +697,7 @@ html[data-ypp-ui-design="crystal-glass"] #ypp-eq-panel,
 html[data-ypp-ui-design="crystal-glass"] .ypp-account-menu {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
@@ -709,28 +709,28 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-account-menu {
 html[data-ypp-ui-design="crystal-glass"] #page-header.ytd-tabbed-page-layout-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
-  border-radius: 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg)) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
 }
 
 /* Channel Avatar */
 html[data-ypp-ui-design="crystal-glass"] ytd-c4-tabbed-header-renderer #avatar {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-c4-tabbed-header-renderer #avatar img {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Channel Banner Image */
 html[data-ypp-ui-design="crystal-glass"] ytd-c4-tabbed-header-renderer #banner {
-  border-radius: 0 0 var(--cglass-radius-md) var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--cglass-radius-md) var(--cglass-radius-md)) !important;
 }
 
 /* Navigation Tabs */
 html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tab {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 /* Selected Tab (Solid white highlight) */
@@ -744,7 +744,7 @@ html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-tab:not(.iron-selected):hov
 
 /* Channel specific search box */
 html[data-ypp-ui-design="crystal-glass"] ytd-expandable-tab-renderer {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 5px rgba(255,255,255,0.2) !important;
 }
 
@@ -754,7 +754,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-expandable-tab-renderer:focus-withi
 
 /* Links in About section */
 html[data-ypp-ui-design="crystal-glass"] ytd-channel-about-metadata-renderer #links-section a {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-channel-about-metadata-renderer #links-section a:hover {
@@ -769,13 +769,13 @@ html[data-ypp-ui-design="crystal-glass"] ytd-channel-about-metadata-renderer #li
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-simplebox-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow-inner) !important;
 }
 
 /* Individual Comment Renderer */
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-renderer {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-renderer:hover {
@@ -795,7 +795,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-comment-renderer[is-highlighted] {
 html[data-ypp-ui-design="crystal-glass"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.2) !important;
 }
 
@@ -814,7 +814,7 @@ html[data-ypp-ui-design="crystal-glass"] yt-chip-cloud-chip-renderer[chip-style=
 html[data-ypp-ui-design="crystal-glass"] ytd-feed-filter-chip-bar-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
-  border-radius: 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--cglass-radius-lg) var(--cglass-radius-lg)) !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
 }
 
@@ -823,7 +823,7 @@ html[data-ypp-ui-design="crystal-glass"] #left-arrow button,
 html[data-ypp-ui-design="crystal-glass"] #right-arrow button {
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
@@ -831,7 +831,7 @@ html[data-ypp-ui-design="crystal-glass"] #right-arrow button {
 html[data-ypp-ui-design="crystal-glass"] ytd-rich-shelf-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -843,7 +843,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-rich-shelf-renderer {
 html[data-ypp-ui-design="crystal-glass"] ytd-live-chat-frame {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -851,7 +851,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-live-chat-frame {
 html[data-ypp-ui-design="crystal-glass"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="crystal-glass"] yt-live-chat-paid-message-renderer,
 html[data-ypp-ui-design="crystal-glass"] yt-live-chat-membership-item-renderer {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 /* Super Chats (Glowing glass blocks) */
@@ -862,12 +862,12 @@ html[data-ypp-ui-design="crystal-glass"] yt-live-chat-membership-item-renderer {
 
 /* Chat Avatars */
 html[data-ypp-ui-design="crystal-glass"] yt-live-chat-text-message-renderer #author-photo img {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* The text input field */
 html[data-ypp-ui-design="crystal-glass"] #input-panel yt-live-chat-text-input-field-renderer {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
 }
 
@@ -884,20 +884,20 @@ html[data-ypp-ui-design="crystal-glass"] #player-container.ytd-watch-flexy,
 html[data-ypp-ui-design="crystal-glass"] #ytd-player {
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
 /* Base Video Player */
 html[data-ypp-ui-design="crystal-glass"] .html5-video-player {
-  border-radius: calc(var(--cglass-radius-lg) - 4px) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--cglass-radius-lg) - 4px)) !important;
 }
 
 /* Play/Pause Large Center Icon Animation */
 html[data-ypp-ui-design="crystal-glass"] .ytp-bezel {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
@@ -909,14 +909,14 @@ html[data-ypp-ui-design="crystal-glass"] .ytp-bezel-icon {
 html[data-ypp-ui-design="crystal-glass"] .ytp-popup {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.2) !important;
 }
 
@@ -928,13 +928,13 @@ html[data-ypp-ui-design="crystal-glass"] ytd-toggle-button-renderer #button.ytd-
 html[data-ypp-ui-design="crystal-glass"] ytd-search-sub-menu-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-lg) !important;
   backdrop-filter: var(--cglass-blur-lg) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow-hover) !important;
 }
 
 /* Individual filter options */
 html[data-ypp-ui-design="crystal-glass"] ytd-search-filter-renderer {
-  border-radius: var(--cglass-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-pill)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-search-filter-renderer:hover {
@@ -945,7 +945,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-search-filter-renderer:hover {
 html[data-ypp-ui-design="crystal-glass"] ytd-channel-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -955,14 +955,14 @@ html[data-ypp-ui-design="crystal-glass"] ytd-channel-renderer:hover {
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-channel-renderer #avatar {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Playlist blocks in search results */
 html[data-ypp-ui-design="crystal-glass"] ytd-playlist-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -975,7 +975,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-playlist-renderer:hover {
 html[data-ypp-ui-design="crystal-glass"] ytd-horizontal-card-list-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-md) !important;
   backdrop-filter: var(--cglass-blur-md) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -988,7 +988,7 @@ html[data-ypp-ui-design="crystal-glass"] #description-inner,
 html[data-ypp-ui-design="crystal-glass"] #description.ytd-watch-metadata {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow-inner) !important;
 }
 
@@ -996,7 +996,7 @@ html[data-ypp-ui-design="crystal-glass"] #description.ytd-watch-metadata {
 html[data-ypp-ui-design="crystal-glass"] ytd-compact-video-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -1007,11 +1007,11 @@ html[data-ypp-ui-design="crystal-glass"] ytd-compact-video-renderer:hover {
 
 /* Key Moments / Chapter Markers */
 html[data-ypp-ui-design="crystal-glass"] ytd-macro-markers-list-renderer {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-macro-markers-list-item-renderer {
-  border-radius: var(--cglass-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-macro-markers-list-item-renderer:hover {
@@ -1022,12 +1022,12 @@ html[data-ypp-ui-design="crystal-glass"] ytd-macro-markers-list-item-renderer:ho
 html[data-ypp-ui-design="crystal-glass"] ytd-transcript-renderer {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-transcript-segment-renderer {
-  border-radius: var(--cglass-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-sm)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-transcript-segment-renderer[is-highlighted] {
@@ -1043,7 +1043,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-transcript-segment-renderer[is-high
 html[data-ypp-ui-design="crystal-glass"] #owner {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
@@ -1057,12 +1057,12 @@ html[data-ypp-ui-design="crystal-glass"] #description.ytd-watch-metadata:hover {
 html[data-ypp-ui-design="crystal-glass"] #comments {
   -webkit-backdrop-filter: var(--cglass-blur-sm) !important;
   backdrop-filter: var(--cglass-blur-sm) !important;
-  border-radius: var(--cglass-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-thread-renderer {
-  border-radius: var(--cglass-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--cglass-radius-md)) !important;
 }
 
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-thread-renderer:hover {

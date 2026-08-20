@@ -11,7 +11,7 @@ html[data-ypp-ui-design="vintage"] {
   --ypp-surface-bg-hover: rgba(222, 184, 135, 0.9) !important; /* Burlywood */
   --ypp-surface-bg-active: rgba(205, 133, 63, 0.9) !important; /* Peru */
   
-  --ypp-surface-border: 2px solid #8b7355 !important;
+  --ypp-surface-border: 2px solid  var(--ypp-surface-border, #8b7355) !important;
   
   --ypp-primary-accent: #8b4513 !important; /* SaddleBrown */
   
@@ -58,9 +58,9 @@ html[data-ypp-ui-design="vintage"] svg {
 
 /* Unique Vintage Tweaks */
 html[data-ypp-ui-design="vintage"] yt-img-shadow#avatar {
-  border: 2px solid #3e352f !important;
+  border: 2px solid  var(--ypp-surface-border, #3e352f) !important;
   box-shadow: 3px 3px 0px rgba(62, 53, 47, 0.4) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   filter: sepia(0.3);
 }
 

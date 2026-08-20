@@ -191,7 +191,7 @@ html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-act
 html[data-ypp-ui-design="frutiger-aero"] button.ytp-button ,
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i] {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: var(--faero-shadow-btn) !important;
   text-shadow: var(--faero-text-shadow-btn) !important;
 }
@@ -226,7 +226,7 @@ html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download
 
 /* Segmented Like/Dislike Tweaks */
 html[data-ypp-ui-design="frutiger-aero"] yt-segmented-like-dislike-button-view-model yt-button-shape > * {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
 }
 
 /* ── Active / Toggled Glow (Like button, etc.) ──────────────── */
@@ -260,7 +260,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer[subscribe
 html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: inset 0 1px 3px rgba(255,255,255,1), 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
@@ -293,7 +293,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-video-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   /* Critical to prevent YouTube grid JS from miscalculating dimensions */
   box-shadow: 0 4px 12px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
 }
@@ -312,12 +312,12 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-compact-video-renderer:hover {
 /* ── Thumbnails ─────────────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail,
 html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-thumbnail {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
 }
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail img {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
 }
 
 /* Authentic Aero Glass Reflection on Thumbnail Hover */
@@ -335,20 +335,20 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-compact-video-renderer:hover ytd-th
 html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail-overlay-time-status-renderer {
   -webkit-backdrop-filter: blur(6px) !important;
   backdrop-filter: blur(6px) !important;
-  border-radius: var(--faero-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,1) !important;
 }
 
 /* ── "New" Badge ────────────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer .badge-style-type-simple {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: 0 0 6px rgba(159,225,30,0.35) !important;
 }
 
 /* ── Avatar / Channel Icons ─────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #avatar img,
 html[data-ypp-ui-design="frutiger-aero"] #author-thumbnail img {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 0 0 1px rgba(159,225,30,0.2) !important;
 }
 
@@ -378,13 +378,13 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-unified-share-panel-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
   /* Glossy top edge */
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Radio Buttons (Report Menu) */
 html[data-ypp-ui-design="frutiger-aero"] ytd-report-form-modal-renderer yt-radio-button-view-model {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
@@ -395,7 +395,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-report-form-modal-renderer yt-radio
 /* URL Copy Box (Share Menu) */
 html[data-ypp-ui-design="frutiger-aero"] yt-share-panel-renderer #copyLink,
 html[data-ypp-ui-design="frutiger-aero"] yt-copy-link-renderer {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: inset 0 2px 6px rgba(0,0,0,0.1) !important;
 }
 
@@ -415,24 +415,24 @@ html[data-ypp-ui-design="frutiger-aero"] .yt-spec-icon-shape {
 /* ── Notification Badge (Number indicator) ──────────────── */
 html[data-ypp-ui-design="frutiger-aero"] .yt-spec-icon-badge-shape__badge {
   background: linear-gradient(180deg, #ff7675 0%, #d63031 100%) !important;
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: 0 2px 5px rgba(214, 48, 49, 0.4), inset 0 1px 2px rgba(255,255,255,0.8) !important;
 }
 
 /* ── LIVE badges ────────────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer {
   background: linear-gradient(180deg, #ff7675 0%, #d63031 100%) !important;
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: 0 2px 5px rgba(214, 48, 49, 0.4), inset 0 1px 2px rgba(255,255,255,0.8) !important;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="frutiger-aero"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -456,7 +456,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-video-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-compact-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -470,7 +470,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="frutiger-aero"] ytd-thumbnail, html[data-ypp-card-style="frutiger-aero"] yt-image,
 html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail, html[data-ypp-ui-design="frutiger-aero"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -484,7 +484,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="frutiger-aero"] yt-img-shadow, html[data-ypp-card-style="frutiger-aero"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="frutiger-aero"] yt-img-shadow, html[data-ypp-ui-design="frutiger-aero"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -501,18 +501,18 @@ html[data-ypp-card-style="frutiger-aero"] ytd-masthead, html[data-ypp-ui-design=
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="frutiger-aero"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 12px 0 0 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 12px 12px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -525,7 +525,7 @@ html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="frutiger-aero"] ytd-guide-entry-renderer, html[data-ypp-card-style="frutiger-aero"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-guide-entry-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-mini-guide-entry-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ytd-guide-entry-renderer:hover,
@@ -536,41 +536,41 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="frutiger-aero"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-thread-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] #simplebox-placeholder, html[data-ypp-ui-design="frutiger-aero"] #simplebox-placeholder {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="frutiger-aero"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="frutiger-aero"] .ytp-chrome-bottom {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] .ytp-scrubber-button,
 html[data-ypp-ui-design="frutiger-aero"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] .ytp-tooltip, html[data-ypp-ui-design="frutiger-aero"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-card-style="frutiger-aero"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-multi-page-menu-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -581,57 +581,57 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="frutiger-aero"] #channel-header,
 html[data-ypp-ui-design="frutiger-aero"] #channel-header {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="frutiger-aero"] yt-live-chat-renderer,
 html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-text-message-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="frutiger-aero"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ytd-notification-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-notification-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="frutiger-aero"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="frutiger-aero"] ytd-skeleton, html[data-ypp-ui-design="frutiger-aero"] ytd-skeleton, 
 html[data-ypp-card-style="frutiger-aero"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="frutiger-aero"] .ytd-ghost-grid-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="frutiger-aero"] ytd-reel-item-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-reel-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-rich-shelf-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="frutiger-aero"] ytd-watch-metadata, html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -646,34 +646,34 @@ html[data-ypp-card-style="frutiger-aero"] yt-icon:hover, html[data-ypp-ui-design
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="frutiger-aero"] .ytp-endscreen-content, html[data-ypp-ui-design="frutiger-aero"] .ytp-endscreen-content {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] .ytp-ce-element, html[data-ypp-ui-design="frutiger-aero"] .ytp-ce-element {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="frutiger-aero"] ytd-miniplayer, html[data-ypp-ui-design="frutiger-aero"] ytd-miniplayer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="frutiger-aero"] .ytp-settings-menu, html[data-ypp-ui-design="frutiger-aero"] .ytp-settings-menu {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="frutiger-aero"] ytd-account-item-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-account-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="frutiger-aero"] ytd-search-filter-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="frutiger-aero"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="frutiger-aero"] ytd-search-filter-renderer:hover {
@@ -682,18 +682,18 @@ html[data-ypp-card-style="frutiger-aero"] ytd-search-filter-renderer:hover, html
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="frutiger-aero"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-panel-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="frutiger-aero"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="frutiger-aero"] ytd-macro-markers-list-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="frutiger-aero"] yt-error-screen, html[data-ypp-ui-design="frutiger-aero"] yt-error-screen {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -713,7 +713,7 @@ html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-listbox,
 html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentSuggestionsContainer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: var(--faero-shadow-menu) !important;
 }
 
@@ -732,7 +732,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="frutiger-aero"] .ytp-menuitem,
 html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-add-to-option-renderer,
 html[data-ypp-ui-design="frutiger-aero"] .ytSuggestionComponentSuggestion {
-  border-radius: var(--faero-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
 }
 
 /* ── Menu Item Hover (The 4PDA pink/blue shift) ─────────── */
@@ -747,7 +747,7 @@ html[data-ypp-ui-design="frutiger-aero"] .ytSuggestionComponentSuggestion:hover 
 
 /* ── Notifications Panel ────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-notification-renderer {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
@@ -777,14 +777,14 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #container.ytd-masthead yt
 /* Container */
 html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox,
 html[data-ypp-ui-design="frutiger-aero"] yt-searchbox {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
 }
 
 /* The actual input pill background */
 html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentInputBox {
   /* depth */
-  border-radius: var(--faero-radius-pill) 0 0 var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill) 0 0 var(--faero-radius-pill)) !important;
   box-shadow: var(--faero-shadow-search-inset) !important;
 }
 
@@ -797,7 +797,7 @@ html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentInputBox:focus-wit
 /* Search Button (Old & New) */
 html[data-ypp-ui-design="frutiger-aero"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="frutiger-aero"] .ytSearchboxComponentSearchButton {
-  border-radius: 0 var(--faero-radius-pill) var(--faero-radius-pill) 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 var(--faero-radius-pill) var(--faero-radius-pill) 0) !important;
   box-shadow: inset 1px 0 0 rgba(255,255,255,1) !important;
 }
 
@@ -815,14 +815,14 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-b
 html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-icon-button,
 html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer yt-button-shape {
   box-shadow: none !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* 2. Apply the actual Frutiger Aero pill styling only to the inner button */
 html[data-ypp-ui-design="frutiger-aero"] #voice-search-button button,
 html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer button,
 html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-topbar-button-renderer button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1), inset 0 2px 4px rgba(255,255,255,0.9) !important;
 }
 
@@ -841,7 +841,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-notification-
 
 /* Explicitly protect the avatar image from being squished */
 html[data-ypp-ui-design="frutiger-aero"] ytd-masthead #buttons ytd-topbar-menu-button-renderer img {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* =========================================================
@@ -863,7 +863,7 @@ html[data-ypp-ui-design="frutiger-aero"] app-drawer#guide-inner-content {
 /* ── Guide Links / Endpoints ────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-mini-guide-entry-renderer {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
 }
 
 /* Guide Link Hover — subtle glass with lime tint */
@@ -889,7 +889,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-guide-entry-renderer[active] #endpo
 }
 
 html[data-ypp-ui-design="frutiger-aero"] #guide-wrapper::-webkit-scrollbar-thumb {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: 0 0 4px rgba(159,225,30,0.3) !important;
 }
 
@@ -899,7 +899,7 @@ html[data-ypp-ui-design="frutiger-aero"] #ypp-eq-panel,
 html[data-ypp-ui-design="frutiger-aero"] .ypp-account-menu {
   -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
   backdrop-filter: var(--faero-blur-heavy) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow:
     0 12px 40px rgba(0,0,0,0.18),
     0 0 0 1px rgba(159,225,30,0.15),
@@ -938,13 +938,13 @@ html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-tabs .selection-bar {
 html[data-ypp-ui-design="frutiger-aero"] ytd-comments-header-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* ── Individual Comment Thread ──────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-thread-renderer {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
 }
 
@@ -954,13 +954,13 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-comment-thread-renderer:hover {
 
 /* ── Comment Input Box ──────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
 /* ── Owner / Creator Badge ──────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-author-comment-badge-renderer {
-  border-radius: var(--faero-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
   box-shadow: inset 0 1px 2px rgba(255,255,255,0.6) !important;
 }
 
@@ -973,14 +973,14 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-author-comment-badge-renderer {
 html[data-ypp-ui-design="frutiger-aero"] ytd-feed-filter-chip-bar-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: 0 0 var(--faero-radius-lg) var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--faero-radius-lg) var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
 }
 
 /* ── Left / Right scroll arrows ─────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #left-arrow button,
 html[data-ypp-ui-design="frutiger-aero"] #right-arrow button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: var(--faero-shadow-btn) !important;
 }
 
@@ -994,13 +994,13 @@ html[data-ypp-ui-design="frutiger-aero"] #right-arrow button:hover {
 html[data-ypp-ui-design="frutiger-aero"] ytd-rich-shelf-renderer {
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
 }
 
 /* ── Masthead Banner / Promo ─────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-statement-banner-renderer {
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important;
 }
 
@@ -1009,7 +1009,7 @@ html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-toast,
 html[data-ypp-ui-design="frutiger-aero"] #toast {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 12px rgba(159,225,30,0.2) !important;
 }
 
@@ -1024,17 +1024,17 @@ html[data-ypp-ui-design="frutiger-aero"] #toast {
 html[data-ypp-ui-design="frutiger-aero"] ytd-live-chat-frame {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-text-message-renderer {
-  border-radius: var(--faero-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
 }
 
 /* Paid Message / Super Chat */
 html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-paid-message-renderer {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.6) !important;
 }
 
@@ -1049,20 +1049,20 @@ html[data-ypp-ui-design="frutiger-aero"] yt-live-chat-paid-message-renderer {
 html[data-ypp-ui-design="frutiger-aero"] #ytd-player {
   -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
   backdrop-filter: var(--faero-blur-heavy) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
 }
 
 /* ── Base Video Player ──────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] .html5-video-player {
-  border-radius: calc(var(--faero-radius-lg) - 8px) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--faero-radius-lg) - 8px)) !important;
 }
 
 /* ── Play/Pause Large Center Icon Animation ─────────────── */
 html[data-ypp-ui-design="frutiger-aero"] .ytp-bezel {
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.9) !important;
 }
 
@@ -1074,7 +1074,7 @@ html[data-ypp-ui-design="frutiger-aero"] .ytp-bezel-icon {
 html[data-ypp-ui-design="frutiger-aero"] .ytp-popup {
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
 }
 
@@ -1087,7 +1087,7 @@ html[data-ypp-ui-design="frutiger-aero"] .ytp-popup {
 html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-header-renderer {
   -webkit-backdrop-filter: var(--faero-blur-heavy) !important;
   backdrop-filter: var(--faero-blur-heavy) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
 }
 
@@ -1109,14 +1109,14 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-playlist-video-renderer[selected] {
 html[data-ypp-ui-design="frutiger-aero"] ytd-search-filter-group-renderer {
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
 }
 
 /* ── Search Video Card Row ──────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] ytd-video-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -1136,7 +1136,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-video-renderer:hover {
 html[data-ypp-ui-design="frutiger-aero"] #above-the-fold {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow:
     0 4px 16px rgba(0,0,0,0.06),
     inset 0 1px 0 rgba(255,255,255,1) !important;
@@ -1149,7 +1149,7 @@ html[data-ypp-ui-design="frutiger-aero"] h1.ytd-watch-metadata {
 
 /* ── Description Box (Expander) ─────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #description-inner.ytd-watch-metadata {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.03) !important;
 }
 
@@ -1161,14 +1161,14 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata[description-collapse
 
 /* ── Channel Info Row ───────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #owner {
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 2px 6px rgba(0,0,0,0.04) !important;
 }
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-watch-next-secondary-results-renderer {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow:
     0 4px 16px rgba(0,0,0,0.06),
     inset 0 1px 0 rgba(255,255,255,1) !important;
@@ -1176,7 +1176,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-watch-next-secondary-results-render
 
 /* ── Chapters / Heatmap Row ─────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #progress.ytd-macro-markers-list-renderer {
-  border-radius: var(--faero-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-sm)) !important;
   box-shadow: 0 0 6px rgba(159,225,30,0.4) !important;
 }
 
@@ -1184,14 +1184,14 @@ html[data-ypp-ui-design="frutiger-aero"] #progress.ytd-macro-markers-list-render
 html[data-ypp-ui-design="frutiger-aero"] #comments {
   -webkit-backdrop-filter: var(--faero-blur) !important;
   backdrop-filter: var(--faero-blur) !important;
-  border-radius: var(--faero-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-lg)) !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,1) !important;
 }
 
 /* ── Comment Input Box ──────────────────────────────────── */
 html[data-ypp-ui-design="frutiger-aero"] #simple-box.ytd-comment-simplebox-renderer,
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1) !important;
 }
 
@@ -1201,5 +1201,5 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer:focus-wi
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-view-model:hover,
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-thread-renderer:hover {
-  border-radius: var(--faero-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--faero-radius-md)) !important;
 }

@@ -43,11 +43,11 @@ html[data-ypp-ui-style=maximalism] .ypp-pill-toggle:hover {
 }
 
 html[data-ypp-card-style="maximalism"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="maximalism"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="maximalism"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -71,7 +71,7 @@ html[data-ypp-ui-design="maximalism"] ytd-video-renderer,
 html[data-ypp-ui-design="maximalism"] ytd-playlist-renderer,
 html[data-ypp-ui-design="maximalism"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="maximalism"] ytd-compact-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -85,7 +85,7 @@ html[data-ypp-ui-design="maximalism"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="maximalism"] ytd-thumbnail, html[data-ypp-card-style="maximalism"] yt-image,
 html[data-ypp-ui-design="maximalism"] ytd-thumbnail, html[data-ypp-ui-design="maximalism"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -99,7 +99,7 @@ html[data-ypp-ui-design="maximalism"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="maximalism"] yt-img-shadow, html[data-ypp-card-style="maximalism"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="maximalism"] yt-img-shadow, html[data-ypp-ui-design="maximalism"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -116,18 +116,18 @@ html[data-ypp-card-style="maximalism"] ytd-masthead, html[data-ypp-ui-design="ma
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="maximalism"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="maximalism"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 12px 0 0 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="maximalism"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 12px 12px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
 html[data-ypp-card-style="maximalism"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="maximalism"] yt-chip-cloud-chip-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -140,7 +140,7 @@ html[data-ypp-ui-design="maximalism"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="maximalism"] ytd-guide-entry-renderer, html[data-ypp-card-style="maximalism"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="maximalism"] ytd-guide-entry-renderer, html[data-ypp-ui-design="maximalism"] ytd-mini-guide-entry-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ytd-guide-entry-renderer:hover,
@@ -151,41 +151,41 @@ html[data-ypp-ui-design="maximalism"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="maximalism"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="maximalism"] ytd-comment-thread-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="maximalism"] #simplebox-placeholder, html[data-ypp-ui-design="maximalism"] #simplebox-placeholder {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="maximalism"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="maximalism"] .ytp-chrome-bottom {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="maximalism"] .ytp-scrubber-button,
 html[data-ypp-ui-design="maximalism"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="maximalism"] .ytp-tooltip, html[data-ypp-ui-design="maximalism"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="maximalism"] tp-yt-paper-dialog, html[data-ypp-card-style="maximalism"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="maximalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="maximalism"] ytd-menu-popup-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="maximalism"] ytd-multi-page-menu-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -196,57 +196,57 @@ html[data-ypp-ui-design="maximalism"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="maximalism"] #channel-header,
 html[data-ypp-ui-design="maximalism"] #channel-header {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="maximalism"] yt-live-chat-renderer,
 html[data-ypp-ui-design="maximalism"] yt-live-chat-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="maximalism"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="maximalism"] yt-live-chat-text-message-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="maximalism"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="maximalism"] tp-yt-paper-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ytd-notification-renderer, html[data-ypp-ui-design="maximalism"] ytd-notification-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="maximalism"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="maximalism"] ytd-badge-supported-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="maximalism"] ytd-skeleton, html[data-ypp-ui-design="maximalism"] ytd-skeleton, 
 html[data-ypp-card-style="maximalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="maximalism"] .ytd-ghost-grid-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="maximalism"] ytd-reel-item-renderer, html[data-ypp-ui-design="maximalism"] ytd-reel-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="maximalism"] ytd-rich-shelf-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="maximalism"] ytd-watch-metadata, html[data-ypp-ui-design="maximalism"] ytd-watch-metadata {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -261,34 +261,34 @@ html[data-ypp-card-style="maximalism"] yt-icon:hover, html[data-ypp-ui-design="m
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="maximalism"] .ytp-endscreen-content, html[data-ypp-ui-design="maximalism"] .ytp-endscreen-content {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="maximalism"] .ytp-ce-element, html[data-ypp-ui-design="maximalism"] .ytp-ce-element {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="maximalism"] ytd-miniplayer, html[data-ypp-ui-design="maximalism"] ytd-miniplayer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="maximalism"] .ytp-settings-menu, html[data-ypp-ui-design="maximalism"] .ytp-settings-menu {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="maximalism"] ytd-account-item-renderer, html[data-ypp-ui-design="maximalism"] ytd-account-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="maximalism"] ytd-search-filter-renderer, html[data-ypp-ui-design="maximalism"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="maximalism"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="maximalism"] ytd-search-filter-renderer:hover {
@@ -297,18 +297,18 @@ html[data-ypp-card-style="maximalism"] ytd-search-filter-renderer:hover, html[da
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="maximalism"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="maximalism"] ytd-playlist-panel-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="maximalism"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="maximalism"] ytd-macro-markers-list-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="maximalism"] yt-error-screen, html[data-ypp-ui-design="maximalism"] yt-error-screen {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -329,7 +329,7 @@ html[data-ypp-ui-style=maximalism] #endpoint.yt-simple-endpoint.ytd-guide-entry-
 
 /* src/content/themes/ui-styles/maximalism/components/buttons.css */
 html[data-ypp-ui-style=maximalism] .ytp-delhi-modern .ytp-chrome-controls .ytp-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 2px 2px 0 #00ffff !important;
 }
 

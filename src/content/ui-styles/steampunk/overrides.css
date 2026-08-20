@@ -74,25 +74,25 @@ html[data-ypp-ui-design="steampunk"] ytd-topbar-logo-renderer a#logo::before {
 }
 
 html[data-ypp-ui-design="steampunk"] ::-webkit-scrollbar-thumb {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-organizer-modal, html[data-ypp-ui-design="steampunk"] .ypp-modal-content {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #simplebox-placeholder {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-slider, html[data-ypp-ui-design="steampunk"] .ypp-gpb-vol-slider {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .tab-content.tp-yt-paper-tab:hover {
@@ -104,7 +104,7 @@ html[data-ypp-ui-design="steampunk"] .ypp-nav-btn.active {
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-badge, html[data-ypp-ui-design="steampunk"] .ypp-value-display {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-play,
@@ -112,7 +112,7 @@ html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-tool,
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
@@ -133,7 +133,7 @@ html[data-ypp-ui-design="steampunk"] body.yt-pro-ambient .style-scope.ytd-watch-
 }
 
 html[data-ypp-ui-design="steampunk"] .ytSuggestionComponentRoundedSuggestion {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -144,23 +144,23 @@ html[data-ypp-ui-design="steampunk"] .ytSuggestionComponentRoundedSuggestion:hov
 
 html[data-ypp-ui-design="steampunk"] yt-img-shadow#avatar {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-design="steampunk"] .ytProgressBarLineProgressBarPlayed {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 /* steampunk/components/badges.css */
 html[data-ypp-ui-design="steampunk"] .yt-badge-shape--thumbnail-default,
 html[data-ypp-ui-design="steampunk"] .ypp-badge, html[data-ypp-ui-design="steampunk"] .ypp-value-display {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-badge-supported-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ytProgressBarLineProgressBarLine,
@@ -169,15 +169,15 @@ html[data-ypp-ui-design="steampunk"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-design="steampunk"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-design="steampunk"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-design="steampunk"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-thumbnail-overlay-time-status-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-thumbnail-overlay-toggle-button-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -196,7 +196,7 @@ html[data-ypp-ui-design="steampunk"] yt-button-shape button[aria-label*="Downloa
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i] {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
   text-transform: uppercase;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
@@ -223,7 +223,7 @@ html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i]
 html[data-ypp-ui-design="steampunk"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i] {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -240,7 +240,7 @@ html[data-ypp-ui-design="steampunk"] .ytSegmentedLikeDislikeButtonViewModelSegme
 
 html[data-ypp-ui-design="steampunk"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
 html[data-ypp-ui-design="steampunk"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -256,7 +256,7 @@ html[data-ypp-ui-design="steampunk"] .ytSegmentedLikeDislikeButtonViewModelSegme
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-pill-toggle {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -266,7 +266,7 @@ html[data-ypp-ui-design="steampunk"] .ypp-pill-toggle:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-btn-primary, html[data-ypp-ui-design="steampunk"] .ypp-play-all-btn, html[data-ypp-ui-design="steampunk"] .ypp-health-btn {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -278,7 +278,7 @@ html[data-ypp-ui-design="steampunk"] .ypp-btn-primary:hover, html[data-ypp-ui-de
 /* steampunk/components/forms.css */
 html[data-ypp-ui-design="steampunk"] ytd-searchbox, html[data-ypp-ui-design="steampunk"] #search-form,
 html[data-ypp-ui-design="steampunk"] tp-yt-paper-input, html[data-ypp-ui-design="steampunk"] tp-yt-paper-textarea {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
 
@@ -287,11 +287,11 @@ html[data-ypp-ui-design="steampunk"] ytd-searchbox[has-focus], html[data-ypp-ui-
 }
 
 html[data-ypp-ui-design="steampunk"] #search-icon-legacy {
-  border-radius: 0 6px 6px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 6px 6px 0) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-filter-dropdown {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -300,12 +300,12 @@ html[data-ypp-ui-design="steampunk"] .ypp-filter-dropdown:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-comment-simplebox-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 4px 8px rgba(0,0,0,0.8) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] yt-icon-button#guide-button {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -340,7 +340,7 @@ html[data-ypp-ui-design="steampunk"] yt-button-shape button[aria-label*="Downloa
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i] {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -355,7 +355,7 @@ html[data-ypp-ui-design="steampunk"] yt-button-shape button[title*="Download" i]
 
 /* Specific Styling for ytd-video-renderer */
 html[data-ypp-card-style="steampunk"] ytd-video-renderer, html[data-ypp-ui-design="steampunk"] ytd-video-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -366,7 +366,7 @@ html[data-ypp-card-style="steampunk"] ytd-video-renderer, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-rich-item-renderer */
 html[data-ypp-card-style="steampunk"] ytd-rich-item-renderer, html[data-ypp-ui-design="steampunk"] ytd-rich-item-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -377,7 +377,7 @@ html[data-ypp-card-style="steampunk"] ytd-rich-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-playlist-renderer */
 html[data-ypp-card-style="steampunk"] ytd-playlist-renderer, html[data-ypp-ui-design="steampunk"] ytd-playlist-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -388,7 +388,7 @@ html[data-ypp-card-style="steampunk"] ytd-playlist-renderer, html[data-ypp-ui-de
 
 /* Specific Styling for ytd-grid-video-renderer */
 html[data-ypp-card-style="steampunk"] ytd-grid-video-renderer, html[data-ypp-ui-design="steampunk"] ytd-grid-video-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -399,7 +399,7 @@ html[data-ypp-card-style="steampunk"] ytd-grid-video-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-compact-video-renderer */
 html[data-ypp-card-style="steampunk"] ytd-compact-video-renderer, html[data-ypp-ui-design="steampunk"] ytd-compact-video-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -410,7 +410,7 @@ html[data-ypp-card-style="steampunk"] ytd-compact-video-renderer, html[data-ypp-
 
 /* Specific Styling for ytd-reel-item-renderer */
 html[data-ypp-card-style="steampunk"] ytd-reel-item-renderer, html[data-ypp-ui-design="steampunk"] ytd-reel-item-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -421,7 +421,7 @@ html[data-ypp-card-style="steampunk"] ytd-reel-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-rich-shelf-renderer */
 html[data-ypp-card-style="steampunk"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="steampunk"] ytd-rich-shelf-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -432,7 +432,7 @@ html[data-ypp-card-style="steampunk"] ytd-rich-shelf-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-comment-thread-renderer */
 html[data-ypp-card-style="steampunk"] ytd-comment-thread-renderer, html[data-ypp-ui-design="steampunk"] ytd-comment-thread-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -443,7 +443,7 @@ html[data-ypp-card-style="steampunk"] ytd-comment-thread-renderer, html[data-ypp
 
 /* Specific Styling for ytd-channel-renderer */
 html[data-ypp-card-style="steampunk"] ytd-channel-renderer, html[data-ypp-ui-design="steampunk"] ytd-channel-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -454,7 +454,7 @@ html[data-ypp-card-style="steampunk"] ytd-channel-renderer, html[data-ypp-ui-des
 
 /* Specific Styling for ytd-playlist-panel-renderer */
 html[data-ypp-card-style="steampunk"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="steampunk"] ytd-playlist-panel-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -465,7 +465,7 @@ html[data-ypp-card-style="steampunk"] ytd-playlist-panel-renderer, html[data-ypp
 
 /* Specific Styling for ytd-watch-metadata */
 html[data-ypp-card-style="steampunk"] ytd-watch-metadata, html[data-ypp-ui-design="steampunk"] ytd-watch-metadata {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -476,7 +476,7 @@ html[data-ypp-card-style="steampunk"] ytd-watch-metadata, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-multi-page-menu-renderer */
 html[data-ypp-card-style="steampunk"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="steampunk"] ytd-multi-page-menu-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -487,7 +487,7 @@ html[data-ypp-card-style="steampunk"] ytd-multi-page-menu-renderer, html[data-yp
 
 /* Specific Styling for ytd-menu-popup-renderer */
 html[data-ypp-card-style="steampunk"] ytd-menu-popup-renderer, html[data-ypp-ui-design="steampunk"] ytd-menu-popup-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -498,7 +498,7 @@ html[data-ypp-card-style="steampunk"] ytd-menu-popup-renderer, html[data-ypp-ui-
 
 /* Specific Styling for tp-yt-paper-dialog */
 html[data-ypp-card-style="steampunk"] tp-yt-paper-dialog, html[data-ypp-ui-design="steampunk"] tp-yt-paper-dialog {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -509,7 +509,7 @@ html[data-ypp-card-style="steampunk"] tp-yt-paper-dialog, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-notification-renderer */
 html[data-ypp-card-style="steampunk"] ytd-notification-renderer, html[data-ypp-ui-design="steampunk"] ytd-notification-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -520,7 +520,7 @@ html[data-ypp-card-style="steampunk"] ytd-notification-renderer, html[data-ypp-u
 
 /* Specific Styling for ytd-account-item-renderer */
 html[data-ypp-card-style="steampunk"] ytd-account-item-renderer, html[data-ypp-ui-design="steampunk"] ytd-account-item-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -531,7 +531,7 @@ html[data-ypp-card-style="steampunk"] ytd-account-item-renderer, html[data-ypp-u
 
 /* Specific Styling for ytd-guide-entry-renderer */
 html[data-ypp-card-style="steampunk"] ytd-guide-entry-renderer, html[data-ypp-ui-design="steampunk"] ytd-guide-entry-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -542,7 +542,7 @@ html[data-ypp-card-style="steampunk"] ytd-guide-entry-renderer, html[data-ypp-ui
 
 /* Specific Styling for ytd-mini-guide-entry-renderer */
 html[data-ypp-card-style="steampunk"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="steampunk"] ytd-mini-guide-entry-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -553,7 +553,7 @@ html[data-ypp-card-style="steampunk"] ytd-mini-guide-entry-renderer, html[data-y
 
 /* Specific Styling for ytd-search-filter-renderer */
 html[data-ypp-card-style="steampunk"] ytd-search-filter-renderer, html[data-ypp-ui-design="steampunk"] ytd-search-filter-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -564,7 +564,7 @@ html[data-ypp-card-style="steampunk"] ytd-search-filter-renderer, html[data-ypp-
 
 /* Specific Styling for ytd-macro-markers-list-item-renderer */
 html[data-ypp-card-style="steampunk"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="steampunk"] ytd-macro-markers-list-item-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -575,7 +575,7 @@ html[data-ypp-card-style="steampunk"] ytd-macro-markers-list-item-renderer, html
 
 /* Specific Styling for ytd-c4-tabbed-header-renderer */
 html[data-ypp-card-style="steampunk"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-design="steampunk"] ytd-c4-tabbed-header-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -586,7 +586,7 @@ html[data-ypp-card-style="steampunk"] ytd-c4-tabbed-header-renderer, html[data-y
 
 /* Specific Styling for #channel-header */
 html[data-ypp-card-style="steampunk"] #channel-header, html[data-ypp-ui-design="steampunk"] #channel-header {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -597,7 +597,7 @@ html[data-ypp-card-style="steampunk"] #channel-header, html[data-ypp-ui-design="
 
 /* Specific Styling for ytd-live-chat-renderer */
 html[data-ypp-card-style="steampunk"] ytd-live-chat-renderer, html[data-ypp-ui-design="steampunk"] ytd-live-chat-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -608,7 +608,7 @@ html[data-ypp-card-style="steampunk"] ytd-live-chat-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for yt-live-chat-text-message-renderer */
 html[data-ypp-card-style="steampunk"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="steampunk"] yt-live-chat-text-message-renderer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -619,7 +619,7 @@ html[data-ypp-card-style="steampunk"] yt-live-chat-text-message-renderer, html[d
 
 /* Specific Styling for ytd-miniplayer */
 html[data-ypp-card-style="steampunk"] ytd-miniplayer, html[data-ypp-ui-design="steampunk"] ytd-miniplayer {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -630,7 +630,7 @@ html[data-ypp-card-style="steampunk"] ytd-miniplayer, html[data-ypp-ui-design="s
 
 /* Specific Styling for .ytp-settings-menu */
 html[data-ypp-card-style="steampunk"] .ytp-settings-menu, html[data-ypp-ui-design="steampunk"] .ytp-settings-menu {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -641,7 +641,7 @@ html[data-ypp-card-style="steampunk"] .ytp-settings-menu, html[data-ypp-ui-desig
 
 /* Specific Styling for .ytp-chrome-bottom */
 html[data-ypp-card-style="steampunk"] .ytp-chrome-bottom, html[data-ypp-ui-design="steampunk"] .ytp-chrome-bottom {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -652,7 +652,7 @@ html[data-ypp-card-style="steampunk"] .ytp-chrome-bottom, html[data-ypp-ui-desig
 
 /* Specific Styling for .ytp-endscreen-content */
 html[data-ypp-card-style="steampunk"] .ytp-endscreen-content, html[data-ypp-ui-design="steampunk"] .ytp-endscreen-content {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -663,7 +663,7 @@ html[data-ypp-card-style="steampunk"] .ytp-endscreen-content, html[data-ypp-ui-d
 
 /* Specific Styling for .ytp-ce-element */
 html[data-ypp-card-style="steampunk"] .ytp-ce-element, html[data-ypp-ui-design="steampunk"] .ytp-ce-element {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -674,7 +674,7 @@ html[data-ypp-card-style="steampunk"] .ytp-ce-element, html[data-ypp-ui-design="
 
 /* Specific Styling for yt-error-screen */
 html[data-ypp-card-style="steampunk"] yt-error-screen, html[data-ypp-ui-design="steampunk"] yt-error-screen {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
   background: radial-gradient(circle, #f5deb3 0%, #deb887 100%) !important;
 }
@@ -685,1512 +685,1512 @@ html[data-ypp-card-style="steampunk"] yt-error-screen, html[data-ypp-ui-design="
 
 /* Avatars */
 html[data-ypp-card-style="steampunk"] yt-img-shadow, html[data-ypp-ui-design="steampunk"] yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: inset 0 0 10px #000 !important;
 }
 
 html[data-ypp-card-style="steampunk"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="steampunk"] .yt-spec-avatar-shape__image {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: inset 0 0 10px #000 !important;
 }
 
 /* steampunk Specific Override Block 1 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-1, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-1 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 2 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-2, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-2 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 3 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-3, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-3 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 4 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-4, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-4 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 5 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-5, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-5 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 6 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-6, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-6 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 7 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-7, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-7 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 8 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-8, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-8 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 9 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-9, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-9 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 10 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-10, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-10 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 11 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-11, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-11 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 12 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-12, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-12 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 13 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-13, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-13 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 14 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-14, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-14 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 15 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-15, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-15 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 16 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-16, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-16 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 17 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-17, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-17 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 18 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-18, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-18 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 19 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-19, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-19 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 20 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-20, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-20 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 21 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-21, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-21 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 22 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-22, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-22 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 23 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-23, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-23 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 24 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-24, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-24 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 25 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-25, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-25 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 26 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-26, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-26 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 27 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-27, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-27 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 28 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-28, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-28 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 29 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-29, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-29 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 30 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-30, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-30 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 31 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-31, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-31 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 32 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-32, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-32 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 33 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-33, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-33 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 34 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-34, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-34 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 35 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-35, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-35 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 36 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-36, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-36 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 37 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-37, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-37 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 38 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-38, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-38 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 39 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-39, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-39 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 40 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-40, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-40 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 41 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-41, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-41 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 42 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-42, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-42 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 43 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-43, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-43 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 44 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-44, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-44 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 45 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-45, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-45 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 46 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-46, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-46 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 47 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-47, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-47 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 48 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-48, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-48 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 49 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-49, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-49 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 50 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-50, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-50 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 51 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-51, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-51 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 52 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-52, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-52 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 53 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-53, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-53 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 54 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-54, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-54 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 55 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-55, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-55 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 56 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-56, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-56 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 57 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-57, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-57 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 58 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-58, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-58 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 59 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-59, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-59 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 60 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-60, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-60 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 61 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-61, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-61 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 62 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-62, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-62 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 63 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-63, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-63 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 64 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-64, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-64 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 65 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-65, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-65 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 66 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-66, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-66 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 67 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-67, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-67 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 68 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-68, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-68 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 69 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-69, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-69 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 70 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-70, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-70 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 71 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-71, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-71 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 72 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-72, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-72 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 73 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-73, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-73 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 74 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-74, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-74 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 75 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-75, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-75 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 76 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-76, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-76 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 77 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-77, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-77 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 78 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-78, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-78 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 79 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-79, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-79 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 80 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-80, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-80 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 81 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-81, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-81 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 82 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-82, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-82 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 83 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-83, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-83 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 84 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-84, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-84 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 85 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-85, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-85 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 86 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-86, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-86 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 87 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-87, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-87 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 88 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-88, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-88 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 89 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-89, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-89 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 90 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-90, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-90 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 91 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-91, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-91 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 92 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-92, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-92 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 93 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-93, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-93 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 94 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-94, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-94 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 95 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-95, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-95 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 96 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-96, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-96 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 97 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-97, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-97 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 98 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-98, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-98 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 99 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-99, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-99 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 100 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-100, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-100 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 101 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-101, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-101 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 102 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-102, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-102 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 103 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-103, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-103 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 104 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-104, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-104 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 105 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-105, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-105 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 106 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-106, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-106 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 107 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-107, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-107 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 108 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-108, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-108 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 109 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-109, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-109 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 110 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-110, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-110 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 111 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-111, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-111 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 112 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-112, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-112 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 113 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-113, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-113 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 114 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-114, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-114 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 115 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-115, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-115 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 116 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-116, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-116 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 117 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-117, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-117 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 118 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-118, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-118 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 119 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-119, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-119 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 120 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-120, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-120 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 121 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-121, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-121 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 122 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-122, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-122 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 123 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-123, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-123 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 124 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-124, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-124 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 125 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-125, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-125 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 126 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-126, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-126 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 127 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-127, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-127 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 128 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-128, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-128 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 129 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-129, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-129 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 130 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-130, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-130 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 131 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-131, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-131 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 132 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-132, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-132 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 133 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-133, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-133 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 134 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-134, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-134 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 135 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-135, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-135 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 136 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-136, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-136 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 137 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-137, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-137 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 138 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-138, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-138 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 139 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-139, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-139 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 140 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-140, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-140 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 141 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-141, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-141 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 142 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-142, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-142 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 143 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-143, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-143 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 144 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-144, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-144 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 145 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-145, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-145 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 146 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-146, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-146 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 147 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-147, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-147 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 148 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-148, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-148 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 149 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-149, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-149 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 150 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-150, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-150 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 151 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-151, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-151 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 152 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-152, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-152 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 153 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-153, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-153 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 154 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-154, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-154 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 155 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-155, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-155 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 156 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-156, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-156 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 157 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-157, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-157 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 158 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-158, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-158 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 159 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-159, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-159 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 160 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-160, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-160 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 161 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-161, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-161 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 162 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-162, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-162 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 163 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-163, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-163 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 164 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-164, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-164 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 165 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-165, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-165 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 166 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-166, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-166 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 167 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-167, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-167 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 168 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-168, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-168 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 169 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-169, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-169 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 170 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-170, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-170 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 171 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-171, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-171 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 172 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-172, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-172 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 173 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-173, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-173 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 174 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-174, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-174 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 175 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-175, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-175 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 176 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-176, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-176 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 177 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-177, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-177 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 178 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-178, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-178 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 179 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-179, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-179 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 180 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-180, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-180 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 181 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-181, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-181 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 182 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-182, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-182 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 183 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-183, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-183 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 184 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-184, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-184 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 185 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-185, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-185 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 186 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-186, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-186 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 187 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-187, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-187 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 188 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-188, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-188 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 189 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-189, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-189 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 190 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-190, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-190 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 191 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-191, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-191 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 192 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-192, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-192 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 193 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-193, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-193 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 194 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-194, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-194 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 195 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-195, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-195 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 196 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-196, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-196 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 197 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-197, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-197 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 198 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-198, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-198 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 199 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-199, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-199 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 200 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-200, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-200 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 201 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-201, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-201 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 202 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-202, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-202 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 203 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-203, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-203 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 204 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-204, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-204 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 205 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-205, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-205 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 206 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-206, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-206 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 207 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-207, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-207 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 208 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-208, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-208 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 209 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-209, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-209 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 210 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-210, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-210 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 211 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-211, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-211 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 212 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-212, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-212 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 213 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-213, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-213 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 214 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-214, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-214 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 215 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-215, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-215 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 216 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-216, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-216 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 217 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-217, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-217 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 218 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-218, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-218 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 219 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-219, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-219 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 220 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-220, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-220 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 221 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-221, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-221 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 222 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-222, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-222 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 223 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-223, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-223 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 224 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-224, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-224 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 225 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-225, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-225 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 226 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-226, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-226 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 227 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-227, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-227 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 228 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-228, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-228 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 229 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-229, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-229 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 230 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-230, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-230 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 231 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-231, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-231 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 232 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-232, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-232 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 233 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-233, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-233 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 234 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-234, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-234 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 235 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-235, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-235 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 236 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-236, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-236 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 237 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-237, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-237 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 238 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-238, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-238 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 239 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-239, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-239 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 240 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-240, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-240 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 241 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-241, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-241 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 242 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-242, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-242 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 243 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-243, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-243 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 244 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-244, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-244 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 245 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-245, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-245 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 246 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-246, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-246 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 247 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-247, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-247 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 248 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-248, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-248 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 249 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-249, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-249 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
 /* steampunk Specific Override Block 250 */
 html[data-ypp-card-style="steampunk"] .steampunk-gen-class-250, html[data-ypp-ui-design="steampunk"] .steampunk-gen-class-250 {
-  border-radius: var(--steampunk-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--steampunk-radius)) !important;
   box-shadow: var(--steampunk-shadow) !important;
 }
 
@@ -2198,7 +2198,7 @@ html[data-ypp-card-style="steampunk"] .steampunk-gen-class-250, html[data-ypp-ui
 html[data-ypp-ui-design="steampunk"] tp-yt-paper-dialog, html[data-ypp-ui-design="steampunk"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="steampunk"] tp-yt-iron-dropdown, html[data-ypp-ui-design="steampunk"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-design="steampunk"] ytd-multi-page-menu-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
@@ -2206,18 +2206,18 @@ html[data-ypp-ui-design="steampunk"] ytd-multi-page-menu-renderer {
 
 html[data-ypp-ui-design="steampunk"] .ytp-settings-menu, html[data-ypp-ui-design="steampunk"] .ytp-panel-menu, html[data-ypp-ui-design="steampunk"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-ui-design="steampunk"] .ytp-panel {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ytp-tooltip-text {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   text-shadow: none !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-settings-sidebar-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
@@ -2233,7 +2233,7 @@ html[data-ypp-ui-design="steampunk"] ytd-masthead, html[data-ypp-ui-design="stea
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-topbar-logo-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2243,23 +2243,23 @@ html[data-ypp-ui-design="steampunk"] ytd-topbar-logo-renderer:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] #guide-wrapper.ytd-app {
-  border-radius: 0 6px 6px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 6px 6px 0) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-guide-entry-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
@@ -2269,7 +2269,7 @@ html[data-ypp-ui-design="steampunk"] #endpoint.yt-simple-endpoint.ytd-guide-entr
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-mini-guide-entry-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2291,7 +2291,7 @@ html[data-ypp-ui-design="steampunk"] ytd-topbar-logo-renderer {
 
 html[data-ypp-ui-design="steampunk"] #container.ytd-searchbox,
 html[data-ypp-ui-design="steampunk"] ytd-searchbox {
-  border-radius: 5px !important;
+  border-radius: var(--ypp-shape-primary, 5px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.8) !important;
 }
 
@@ -2301,25 +2301,25 @@ html[data-ypp-ui-design="steampunk"] #search-input input {
 
 html[data-ypp-ui-design="steampunk"] #search-icon-legacy {
   background: linear-gradient(to bottom, #d2b48c, #8b6508) !important;
-  border-radius: 0 5px 5px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 5px 5px 0) !important;
   box-shadow: inset 0 0 5px rgba(255,255,255,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #voice-search-button {
   background: radial-gradient(circle, #8b6508, #4a3a30) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5), inset 0 0 5px rgba(0,0,0,0.8) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .sbdd_b,
 html[data-ypp-ui-design="steampunk"] .sbsb_a {
-  border-radius: 5px !important;
+  border-radius: var(--ypp-shape-primary, 5px) !important;
   box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-design="steampunk"] ytd-notification-topbar-button-renderer yt-icon-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transition: transform 0.5s !important;
 }
 
@@ -2329,44 +2329,44 @@ html[data-ypp-ui-design="steampunk"] ytd-notification-topbar-button-renderer yt-
 }
 
 html[data-ypp-ui-design="steampunk"] #avatar-btn yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.6) !important;
   filter: sepia(0.6) contrast(1.1) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-  border-radius: 5px !important;
+  border-radius: var(--ypp-shape-primary, 5px) !important;
   box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
 }
 
 /* steampunk/components/panels.css */
 html[data-ypp-ui-design="steampunk"] ytd-playlist-panel-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-miniplayer, html[data-ypp-ui-design="steampunk"] #miniplayer-bar {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ypp-video-controls, html[data-ypp-ui-design="steampunk"] .ypp-shadow-panel {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-transcript-search-panel-renderer,
 html[data-ypp-ui-design="steampunk"] ytd-transcript-segment-renderer,
 html[data-ypp-ui-design="steampunk"] #segments-container {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-macro-markers-info-item-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-sidebar {
@@ -2376,7 +2376,7 @@ html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-sidebar {
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
@@ -2385,7 +2385,7 @@ html[data-ypp-ui-design="steampunk"] #ypp-pl-root .ypp-pl-btn-play:hover, html[d
 }
 
 html[data-ypp-ui-design="steampunk"] tp-yt-paper-tab {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] tp-yt-paper-tab:hover {
@@ -2394,11 +2394,11 @@ html[data-ypp-ui-design="steampunk"] tp-yt-paper-tab:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] tp-yt-paper-tab[aria-selected="true"] {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-channel-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
@@ -2408,12 +2408,12 @@ html[data-ypp-ui-design="steampunk"] ytd-channel-renderer:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-c4-tabbed-header-renderer yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-expandable-tab-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-expandable-tab-renderer:hover {
@@ -2422,7 +2422,7 @@ html[data-ypp-ui-design="steampunk"] ytd-expandable-tab-renderer:hover {
 
 /* steampunk/pages/comments.css */
 html[data-ypp-ui-design="steampunk"] ytd-comment-view-model button, html[data-ypp-ui-design="steampunk"] ytd-comment-renderer button {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
 }
 
@@ -2432,12 +2432,12 @@ html[data-ypp-ui-design="steampunk"] ytd-comment-view-model button:hover, html[d
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-comment-thread-renderer, html[data-ypp-ui-design="steampunk"] ytd-comment-view-model {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
@@ -2447,40 +2447,40 @@ html[data-ypp-ui-design="steampunk"] ytd-comment-thread-renderer:hover, html[dat
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-comment-simplebox-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 4px 8px rgba(0,0,0,0.8) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #header-author yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-backstage-post-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #description.ytd-watch-metadata,
 html[data-ypp-ui-design="steampunk"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 html[data-ypp-ui-design="steampunk"] ytd-browse[page-subtype=home] #chips {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 4px 8px rgba(0,0,0,0.8) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--chip-radius)) !important;
   box-shadow: var(--chip-shadow) !important;
 }
 
@@ -2493,7 +2493,7 @@ html[data-ypp-ui-design="steampunk"] yt-chip-cloud-chip-renderer[selected] {
 }
 
 html[data-ypp-ui-design="steampunk"] .ytChipShapeChip {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2503,32 +2503,32 @@ html[data-ypp-ui-design="steampunk"] .ytChipShapeChip:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-settings-sidebar-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 /* steampunk/pages/livechat.css */
 html[data-ypp-ui-design="steampunk"] yt-live-chat-app, html[data-ypp-ui-design="steampunk"] #chat, html[data-ypp-ui-design="steampunk"] yt-live-chat-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] yt-live-chat-paid-message-renderer {
   background: linear-gradient(135deg, #5c4033, #8b5a2b) !important;
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] yt-live-chat-paid-sticker-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] yt-live-chat-membership-item-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 /* steampunk/pages/player.css */
 html[data-ypp-ui-design="steampunk"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -2551,7 +2551,7 @@ html[data-ypp-ui-design="steampunk"] .ytp-chrome-bottom, html[data-ypp-ui-design
 }
 
 html[data-ypp-ui-design="steampunk"] .ytp-scrubber-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transform: rotate(45deg) scale(0.8) scale(0.8) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
   transition: transform 0.1s ease !important;
@@ -2566,22 +2566,22 @@ html[data-ypp-ui-design="steampunk"] .ytp-time-display, html[data-ypp-ui-design=
 }
 
 html[data-ypp-ui-design="steampunk"] .ytp-tooltip-text {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   text-shadow: none !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-design="steampunk"] .ytp-panel {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ytp-volume-slider-handle {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] .ytp-ce-element {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: 0 8px 20px rgba(0,0,0,0.7),inset 0 0 15px rgba(0,0,0,0.3) !important;
 }
 
@@ -2591,11 +2591,11 @@ html[data-ypp-ui-design="steampunk"] .ytp-ce-element:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] video.video-stream.html5-main-video, html[data-ypp-ui-design="steampunk"] .html5-video-player {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-video-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
@@ -2605,30 +2605,30 @@ html[data-ypp-ui-design="steampunk"] ytd-video-renderer:hover {
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-search-pyv-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-shelf-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-channel-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-horizontal-card-list-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-reel-video-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
@@ -2638,7 +2638,7 @@ html[data-ypp-ui-design="steampunk"] #actions.ytd-reel-player-overlay-renderer y
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-reel-item-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-reel-item-renderer:hover {
@@ -2650,18 +2650,18 @@ html[data-ypp-ui-design="steampunk"] .ytd-reel-video-renderer .overlay-dir {
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-video-primary-info-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-video-secondary-info-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-watch-metadata {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 html[data-ypp-ui-design="steampunk"] ytd-expandable-metadata-renderer {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }

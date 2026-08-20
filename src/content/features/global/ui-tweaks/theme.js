@@ -256,6 +256,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (!uiStyleKey || uiStyleKey === 'default') {
             if (link) link.remove();
             document.documentElement.removeAttribute('data-ypp-ui-style');
+            document.documentElement.removeAttribute('data-ypp-ui-design');
             document.documentElement.removeAttribute('data-ypp-has-bg-image'); // Force clear background
             
             // Clean global styling classes
@@ -286,6 +287,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         link.href = cssUrl; // Browser caches correctly; only bust on explicit forceReload()
 
         document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
+        document.documentElement.setAttribute('data-ypp-ui-design', uiStyleKey);
         
         // Handle Frutiger Aero specific bubbles (respect Theme Effects toggle)
         const enableEffects = this._settings.enableThemeEffects !== false;
@@ -395,9 +397,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         // Setup observer to keep it enforced if YouTube tries to change it
         if (!this._themeObserver) {
             this._themeObserver = new MutationObserver((mutations) => {
-                if (!this._currentThemeKey || this._currentThemeKey === 'system' || this._currentThemeKey === 'default') return;
+                if (!this._currentThemeKey || this._currentThemeKey === 'system') return;
                 
-                const shouldBeDark = true; // Always force 'dark' for all custom themes
+                const shouldBeDark = true; // Always force 'dark' for all custom themes and 'default' YouTube Dark
                 const isDark = document.documentElement.hasAttribute('dark');
                 
                 if (shouldBeDark && !isDark) {

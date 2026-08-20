@@ -55,7 +55,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer::before {
   background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 65%) !important;
   filter: blur(20px) !important;
   transition: opacity 0.45s var(--lg-smooth), transform 0.45s var(--lg-smooth) !important;
-  border-radius: 26px !important;
+  border-radius: var(--ypp-shape-primary, 26px) !important;
   transform: scale(0.95) !important;
 }
 
@@ -127,7 +127,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-button::after,
 html[data-ypp-ui-design="liquid-glass"] ytd-guide-entry-renderer::after,
 html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer::after {
   background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%) !important;
-  border-radius: inherit !important;
+  border-radius: var(--ypp-shape-primary, inherit) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-button:hover::after,
@@ -184,7 +184,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytSuggestionComponentRoundedSuggestion:
 
 html[data-ypp-ui-design="liquid-glass"] .ypp-slider,
 html[data-ypp-ui-design="liquid-glass"] .ypp-gpb-vol-slider {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ypp-modal-header {
@@ -193,7 +193,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-modal-header {
 
 html[data-ypp-ui-design="liquid-glass"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--lg-spring), background var(--lg-spring) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .tab-content.tp-yt-paper-tab:hover {
@@ -201,11 +201,11 @@ html[data-ypp-ui-design="liquid-glass"] .tab-content.tp-yt-paper-tab:hover {
 }
 
 html[data-ypp-ui-design="liquid-glass"] ::-webkit-scrollbar-track {
-  border-radius: 3000px !important;
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ::-webkit-scrollbar-thumb {
-  border-radius: 3000px !important;
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ::-webkit-scrollbar-thumb:hover {
@@ -219,7 +219,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-nav-btn.active {
 html[data-ypp-ui-design="liquid-glass"] .ypp-filter-dropdown {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -232,7 +232,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-shadow-panel {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   box-shadow: var(--lg-shadow-card) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -240,7 +240,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-badge,
 html[data-ypp-ui-design="liquid-glass"] .ypp-value-display {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-highlight) !important;
 }
 
@@ -248,7 +248,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-organizer-modal,
 html[data-ypp-ui-design="liquid-glass"] .ypp-modal-content {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 32px !important;
+  border-radius: var(--ypp-shape-primary, 32px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
 }
 
@@ -280,7 +280,7 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-btn-tool:hover {
    ========================================================= */
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
 
@@ -304,7 +304,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-delhi-modern.ytp-delhi-horizontal-v
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytSuggestionComponentRoundedSuggestion {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -316,7 +316,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytSuggestionComponentRoundedSuggestion:
 html[data-ypp-ui-design="liquid-glass"] .ypp-gpb-btn,
 html[data-ypp-ui-design="liquid-glass"] .ypp-action-btn,
 html[data-ypp-ui-design="liquid-glass"] .ypp-icon-btn {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
 
@@ -335,7 +335,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-icon-btn:active {
 }
 
 html[data-ypp-ui-design="liquid-glass"] #wrapper.ytd-channel-avatar-editor {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-shadow-hover) !important;
 }
 
@@ -376,7 +376,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button,
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled ,
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), filter var(--lg-smooth) !important;
 }
@@ -410,7 +410,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-
 html[data-ypp-ui-design="liquid-glass"] segmented-like-dislike-button-view-model {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-highlight) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
@@ -429,7 +429,7 @@ html[data-ypp-ui-design="liquid-glass"] segmented-like-dislike-button-view-model
 html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
 }
 
@@ -455,7 +455,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-r
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText ,
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), filter var(--lg-smooth) !important;
 }
@@ -516,7 +516,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), outline-color var(--lg-smooth) !important;
   animation: lg-card-rise 0.5s var(--lg-spring) both !important;
@@ -540,7 +540,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-rich-grid-media ytd-thumbnail,
 html[data-ypp-ui-design="liquid-glass"] ytd-video-renderer ytd-thumbnail,
 html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer ytd-thumbnail,
 html[data-ypp-ui-design="liquid-glass"] ytd-compact-video-renderer ytd-thumbnail {
-  border-radius: 16px 16px 0 0 !important;
+  border-radius: var(--ypp-shape-primary, 16px 16px 0 0) !important;
 }
 
 /* Channel Avatar Ring */
@@ -552,7 +552,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer yt-avatar-shape 
     0 0 0 2px rgba(255, 255, 255, 0.25),
     0 0 0 4px rgba(255, 255, 255, 0.08),
     0 4px 12px rgba(0, 0, 0, 0.40) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: box-shadow var(--lg-spring) !important;
 }
 
@@ -570,7 +570,7 @@ html[data-ypp-ui-design="liquid-glass"] span.ytd-thumbnail-overlay-time-status-r
 html[data-ypp-ui-design="liquid-glass"] .yt-badge-shape--thumbnail-default {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.4) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
@@ -581,7 +581,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-rich-grid-slim-media #dismissible,
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-item-renderer #dismissible {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
@@ -595,13 +595,13 @@ html[data-ypp-ui-design="liquid-glass"] ytd-reel-item-renderer:hover #dismissibl
 /* Playlist panel selections */
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
-  border-radius: 22px !important;
+  border-radius: var(--ypp-shape-primary, 22px) !important;
   box-shadow: var(--lg-shadow-glow) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
-  border-radius: 22px !important;
+  border-radius: var(--ypp-shape-primary, 22px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -611,7 +611,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-video-renderer.ytd-pl
 
 /* Acrylic Metadata Expanders */
 html[data-ypp-ui-design="liquid-glass"] ytd-expandable-metadata-renderer:not([is-expanded]) {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -620,11 +620,11 @@ html[data-ypp-ui-design="liquid-glass"] ytd-expandable-metadata-renderer:not([is
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-expandable-metadata-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -639,7 +639,7 @@ html[data-ypp-ui-design="liquid-glass"] .immersive-header-container.ytd-playlist
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 /* =========================================================
@@ -652,7 +652,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-confirm-dialog-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-report-form-modal-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 32px !important;
+  border-radius: var(--ypp-shape-primary, 32px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
   animation: lg-popup-scale 0.4s var(--lg-spring) both !important;
   transform-origin: center center !important;
@@ -693,16 +693,16 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-nav-btn.active yt-icon {
 /* Notification & Badge Dot Droplet Indicators */
 html[data-ypp-ui-design="liquid-glass"] .yt-spec-icon-badge-shape__badge,
 html[data-ypp-ui-design="liquid-glass"] ytd-notification-topbar-button-renderer .yt-spec-icon-badge-shape__badge {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="liquid-glass"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="liquid-glass"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -726,7 +726,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-playlist-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-compact-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -740,7 +740,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="liquid-glass"] ytd-thumbnail, html[data-ypp-card-style="liquid-glass"] yt-image,
 html[data-ypp-ui-design="liquid-glass"] ytd-thumbnail, html[data-ypp-ui-design="liquid-glass"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -754,7 +754,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="liquid-glass"] yt-img-shadow, html[data-ypp-card-style="liquid-glass"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="liquid-glass"] yt-img-shadow, html[data-ypp-ui-design="liquid-glass"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -771,18 +771,18 @@ html[data-ypp-card-style="liquid-glass"] ytd-masthead, html[data-ypp-ui-design="
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="liquid-glass"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="liquid-glass"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 12px 0 0 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="liquid-glass"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 12px 12px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -795,7 +795,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="liquid-glass"] ytd-guide-entry-renderer, html[data-ypp-card-style="liquid-glass"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-guide-entry-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-mini-guide-entry-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ytd-guide-entry-renderer:hover,
@@ -806,41 +806,41 @@ html[data-ypp-ui-design="liquid-glass"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="liquid-glass"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-thread-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] #simplebox-placeholder, html[data-ypp-ui-design="liquid-glass"] #simplebox-placeholder {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="liquid-glass"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="liquid-glass"] .ytp-chrome-bottom {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] .ytp-scrubber-button,
 html[data-ypp-ui-design="liquid-glass"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] .ytp-tooltip, html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="liquid-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="liquid-glass"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="liquid-glass"] ytd-menu-popup-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-multi-page-menu-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -851,57 +851,57 @@ html[data-ypp-ui-design="liquid-glass"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="liquid-glass"] #channel-header,
 html[data-ypp-ui-design="liquid-glass"] #channel-header {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="liquid-glass"] yt-live-chat-renderer,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-text-message-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="liquid-glass"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ytd-notification-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-notification-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="liquid-glass"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-badge-supported-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="liquid-glass"] ytd-skeleton, html[data-ypp-ui-design="liquid-glass"] ytd-skeleton, 
 html[data-ypp-card-style="liquid-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="liquid-glass"] .ytd-ghost-grid-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="liquid-glass"] ytd-reel-item-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-reel-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-rich-shelf-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="liquid-glass"] ytd-watch-metadata, html[data-ypp-ui-design="liquid-glass"] ytd-watch-metadata {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -916,34 +916,34 @@ html[data-ypp-card-style="liquid-glass"] yt-icon:hover, html[data-ypp-ui-design=
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="liquid-glass"] .ytp-endscreen-content, html[data-ypp-ui-design="liquid-glass"] .ytp-endscreen-content {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] .ytp-ce-element, html[data-ypp-ui-design="liquid-glass"] .ytp-ce-element {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="liquid-glass"] ytd-miniplayer, html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="liquid-glass"] .ytp-settings-menu, html[data-ypp-ui-design="liquid-glass"] .ytp-settings-menu {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="liquid-glass"] ytd-account-item-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-account-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="liquid-glass"] ytd-search-filter-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="liquid-glass"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="liquid-glass"] ytd-search-filter-renderer:hover {
@@ -952,18 +952,18 @@ html[data-ypp-card-style="liquid-glass"] ytd-search-filter-renderer:hover, html[
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="liquid-glass"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-playlist-panel-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="liquid-glass"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="liquid-glass"] ytd-macro-markers-list-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="liquid-glass"] yt-error-screen, html[data-ypp-ui-design="liquid-glass"] yt-error-screen {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -979,7 +979,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-settings-options-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-account-settings-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
   transform-origin: top right !important;
   animation: lg-popup-scale 0.4s var(--lg-spring) both !important;
@@ -997,7 +997,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-iron-dropdown > #contentWrapper > 
 html[data-ypp-ui-design="liquid-glass"] ytd-menu-service-item-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-menu-navigation-item-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-compact-link-renderer {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
@@ -1024,13 +1024,13 @@ html[data-ypp-ui-design="liquid-glass"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-add-to-playlist-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 32px !important;
+  border-radius: var(--ypp-shape-primary, 32px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
   animation: lg-popup-scale 0.5s var(--lg-spring) both !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .yt-share-target-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth) !important;
 }
 
@@ -1041,7 +1041,7 @@ html[data-ypp-ui-design="liquid-glass"] .yt-share-target-renderer:hover {
 /* Adjust & Filter Cards inside extension popup modals */
 html[data-ypp-ui-design="liquid-glass"] .ypp-adjust-card,
 html[data-ypp-ui-design="liquid-glass"] .ypp-filter-card {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
 }
 
@@ -1059,7 +1059,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-filter-card:hover {
 html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
@@ -1072,7 +1072,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer:hover {
 
 /* Video Player area in miniplayer */
 html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer #player-container {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 /* Hover Controls Scrim */
@@ -1083,7 +1083,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer .ytp-miniplayer-ui {
 
 /* Buttons in miniplayer */
 html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer .ytp-miniplayer-button {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-shadow-card) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth) !important;
 }
@@ -1097,7 +1097,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-miniplayer .ytp-miniplayer-button:ho
 html[data-ypp-ui-design="liquid-glass"] ytd-masthead #container {
   -webkit-backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
   backdrop-filter: blur(72px) saturate(240%) brightness(1.1) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow:
     var(--lg-border-top-light),
     var(--lg-border-bottom-dark),
@@ -1115,7 +1115,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-masthead #container:hover {
 
 /* Logo */
 html[data-ypp-ui-design="liquid-glass"] ytd-topbar-logo-renderer {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-topbar-logo-renderer:hover {
@@ -1126,7 +1126,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-topbar-logo-renderer:hover {
 html[data-ypp-ui-design="liquid-glass"] #container.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border-radius: 2000px 0 0 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px 0 0 2000px) !important;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
   transition: border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
@@ -1142,7 +1142,7 @@ html[data-ypp-ui-design="liquid-glass"] #container.ytd-searchbox:focus-within::a
 html[data-ypp-ui-design="liquid-glass"] #search-icon-legacy.ytd-searchbox {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
-  border-radius: 0 2000px 2000px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 2000px 2000px 0) !important;
   transition: background var(--lg-spring), box-shadow var(--lg-spring), border-color var(--lg-spring) !important;
 }
 
@@ -1159,7 +1159,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-menu-renderer .ytd-menu-renderer[sty
 html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
 html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
 
@@ -1177,13 +1177,13 @@ html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download"
 
 /* Avatar / Notifications Badge updates */
 html[data-ypp-ui-design="liquid-glass"] yt-icon-badge-shape .badge {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
 }
 
@@ -1207,7 +1207,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-guide-renderer {
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-guide-entry-renderer {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-guide-entry-renderer:hover {
@@ -1236,7 +1236,7 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-eq-panel,
 html[data-ypp-ui-design="liquid-glass"] #ypp-cinema-panel {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
 }
 
@@ -1244,20 +1244,20 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-global-player-bar,
 html[data-ypp-ui-design="liquid-glass"] .ypp-global-bar {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-shadow-modal), var(--lg-border-modal-rim) !important;
 }
 
 /* EQ Frequency Canvas & Sliders */
 html[data-ypp-ui-design="liquid-glass"] .ypp-eq-canvas {
-  border-radius: 18px !important;
+  border-radius: var(--ypp-shape-primary, 18px) !important;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ypp-eq-hslider,
 html[data-ypp-ui-design="liquid-glass"] .ypp-vcp-slider,
 html[data-ypp-ui-design="liquid-glass"] .ypp-eq-vslider {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ypp-eq-preset-btn,
@@ -1265,7 +1265,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-cinema-tab-btn,
 html[data-ypp-ui-design="liquid-glass"] .ypp-vcp-compare-toggle {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
 }
 
@@ -1283,7 +1283,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-cinema-tab-btn.active {
 
 /* Playlist Organizer Modal Panels */
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-card {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
 }
 
@@ -1293,12 +1293,12 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-card:hover {
 }
 
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-duration-card {
-  border-radius: 18px !important;
+  border-radius: var(--ypp-shape-primary, 18px) !important;
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-duration-grid {
-  border-radius: 18px !important;
+  border-radius: var(--ypp-shape-primary, 18px) !important;
 }
 
 /* =========================================================
@@ -1309,7 +1309,7 @@ html[data-ypp-ui-design="liquid-glass"] #ypp-pl-root .ypp-pl-duration-grid {
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-toast {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-modal) !important;
 }
 
@@ -1317,7 +1317,7 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-toast {
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tooltip .tooltip {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
@@ -1330,26 +1330,26 @@ html[data-ypp-ui-design="liquid-glass"] #channel-header-container.ytd-c4-tabbed-
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-channel-avatar-editor #avatar,
 html[data-ypp-ui-design="liquid-glass"] #channel-header ytd-avatar-shape #avatar {
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.5) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 /* Channel Tabs Navigation Bar */
 html[data-ypp-ui-design="liquid-glass"] #tabs-inner-container.ytd-c4-tabbed-header-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-border-top-light) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
@@ -1363,14 +1363,14 @@ html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-tab.iron-selected.ytd-c4-tab
 
 html[data-ypp-ui-design="liquid-glass"] #selection-bar.paper-tabs {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 /* Sort Menu Button */
 html[data-ypp-ui-design="liquid-glass"] #sort-menu.ytd-comments {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
   backdrop-filter: var(--lg-blur-surface) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -1383,7 +1383,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-comment-simplebox-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-dialog-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-top-light) !important;
   transition: outline-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
@@ -1397,7 +1397,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-comment-dialog-renderer:focus-within
 /* Individual Comment Thread Cards */
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-view-model {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: background var(--lg-smooth), border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
@@ -1408,22 +1408,22 @@ html[data-ypp-ui-design="liquid-glass"] ytd-comment-view-model:hover {
 
 /* Reply Thread Depth styling */
 html[data-ypp-ui-design="liquid-glass"] ytd-comment-replies-renderer {
-  border-radius: 0 0 0 8px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 0 8px) !important;
 }
 
 /* Like count badge */
 html[data-ypp-ui-design="liquid-glass"] #vote-count-middle.ytd-comment-action-buttons-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Author Badges & Creator Hearts */
 html[data-ypp-ui-design="liquid-glass"] ytd-author-comment-badge-renderer {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.4) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-creator-heart-renderer {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -1436,7 +1436,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-backstage-post-thread-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-post-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
@@ -1449,14 +1449,14 @@ html[data-ypp-ui-design="liquid-glass"] ytd-post-renderer:hover {
 
 /* Post Attached Images */
 html[data-ypp-ui-design="liquid-glass"] ytd-backstage-image-renderer {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .choice-info.ytd-backstage-poll-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth) !important;
 }
 
@@ -1466,14 +1466,14 @@ html[data-ypp-ui-design="liquid-glass"] .choice-info.ytd-backstage-poll-renderer
 
 html[data-ypp-ui-design="liquid-glass"] .progress-bar.ytd-backstage-poll-renderer {
   /* Filled bar */
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Shorts Shelf Frosted Container */
 html[data-ypp-ui-design="liquid-glass"] ytd-rich-shelf-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
   transition: outline-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
@@ -1483,13 +1483,13 @@ html[data-ypp-ui-design="liquid-glass"] ytd-rich-shelf-renderer:hover {
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-rich-shelf-renderer ytd-reel-item-renderer {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
@@ -1511,7 +1511,7 @@ html[data-ypp-ui-design="liquid-glass"] #left-arrow.ytd-feed-filter-chip-bar-ren
 html[data-ypp-ui-design="liquid-glass"] #right-arrow.ytd-feed-filter-chip-bar-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-shadow-card) !important;
 }
 
@@ -1524,14 +1524,14 @@ html[data-ypp-ui-design="liquid-glass"] ytd-live-chat-frame,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
 /* Chat Messages Hover Specular Highlight */
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-membership-item-renderer {
-  border-radius: 14px !important;
+  border-radius: var(--ypp-shape-primary, 14px) !important;
   transition: background var(--lg-smooth), transform var(--lg-spring) !important;
 }
 
@@ -1545,7 +1545,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-live-chat-paid-message-renderer,
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-paid-sticker-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5), var(--lg-border-top-light) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
@@ -1557,7 +1557,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-live-chat-paid-sticker-renderer:hover
 }
 
 html[data-ypp-ui-design="liquid-glass"] yt-live-chat-message-input-renderer #container {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: border-color var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
@@ -1571,7 +1571,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-live-chat-message-input-renderer #con
    ========================================================= */
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-chrome-bottom {
-  border-radius: 0 0 24px 24px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 24px 24px) !important;
   box-shadow: none !important;
 }
 
@@ -1583,7 +1583,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-right-controls {
 
 /* Base button reset to glass-native style */
 html[data-ypp-ui-design="liquid-glass"] .ytp-button {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: background var(--lg-spring), transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -1601,13 +1601,13 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-button:active {
 html[data-ypp-ui-design="liquid-glass"] .ytp-play-button {
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
 /* Progress bar container — frosted channel */
 html[data-ypp-ui-design="liquid-glass"] .ytp-progress-bar-container {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: none !important;
 }
 
@@ -1621,12 +1621,12 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-play-progress {
     0 0 8px rgba(255, 255, 255, 0.70),
     0 0 16px rgba(255, 255, 255, 0.40),
     0 0 32px rgba(255, 255, 255, 0.20) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 /* Buffered zone */
 html[data-ypp-ui-design="liquid-glass"] .ytp-load-progress {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
@@ -1637,7 +1637,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-scrubber-button {
     0 0 0 4px rgba(255, 255, 255, 0.20),
     0 0 14px rgba(255, 255, 255, 0.80),
     0 2px 8px rgba(0, 0, 0, 0.40) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
 
@@ -1648,14 +1648,14 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-scrubber-button:hover {
 
 /* Volume Panel & Slider */
 html[data-ypp-ui-design="liquid-glass"] .ytp-volume-slider {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-volume-slider-fill {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1.0)) !important;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-volume-slider-handle {
@@ -1667,7 +1667,7 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip {
   -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
   backdrop-filter: blur(56px) saturate(240%) !important;
   background: linear-gradient(var(--lg-shine-modal), rgba(255, 255, 255, 0.08)) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow:
     var(--lg-border-top-light),
     var(--lg-border-bottom-dark),
@@ -1677,23 +1677,23 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip {
 html[data-ypp-ui-design="liquid-glass"] .ytp-timed-markers-dial-tooltip {
   -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-tooltip-image-inner-div {
-  border-radius: 14px !important;
+  border-radius: var(--ypp-shape-primary, 14px) !important;
 }
 
 /* Player Settings Panel */
 html[data-ypp-ui-design="liquid-glass"] .ytp-panel-menu {
   -webkit-backdrop-filter: blur(56px) saturate(240%) !important;
   backdrop-filter: blur(56px) saturate(240%) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-modal) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-menuitem {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] .ytp-menuitem:hover {
@@ -1705,18 +1705,18 @@ html[data-ypp-ui-design="liquid-glass"] .ytp-menuitem:hover {
 html[data-ypp-ui-design="liquid-glass"] .caption-window {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Rounded Video Inner Container */
 html[data-ypp-ui-design="liquid-glass"] #player-container-inner.ytd-watch-flexy,
 html[data-ypp-ui-design="liquid-glass"] .html5-video-player {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-search-filter-renderer {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   transition: transform var(--lg-spring), background var(--lg-smooth), box-shadow var(--lg-smooth) !important;
 }
 
@@ -1741,7 +1741,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-shelf-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
   background: linear-gradient(var(--lg-shine-card), rgba(255, 255, 255, 0.05)) !important;
-  border-radius: 26px !important;
+  border-radius: var(--ypp-shape-primary, 26px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), outline-color var(--lg-smooth) !important;
   animation: lg-card-rise 0.5s var(--lg-spring) both !important;
@@ -1758,14 +1758,14 @@ html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-playlist-renderer:hover {
 
 html[data-ypp-ui-design="liquid-glass"] ytd-search ytd-channel-renderer #avatar {
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.3) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 /* Shorts Video Player Inner container */
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer[is-active] {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-shadow-card) !important;
 }
 
@@ -1773,12 +1773,12 @@ html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer[is-active] {
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer #channel-info {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* Shorts Subscribe Button */
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer #subscribe-button yt-button-shape button {
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer #progress-bar-line {
@@ -1789,7 +1789,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-reel-video-renderer #progress-bar-li
 html[data-ypp-ui-design="liquid-glass"] ytd-engagement-panel-section-list-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 24px 0 0 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px 0 0 24px) !important;
   box-shadow: var(--lg-shadow-modal) !important;
 }
 
@@ -1797,7 +1797,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-engagement-panel-section-list-render
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: var(--lg-shadow-glow) !important;
 }
 
@@ -1815,7 +1815,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-watch-metadata #description,
 html[data-ypp-ui-design="liquid-glass"] ytd-text-inline-expander {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-shadow-card), var(--lg-border-top-light) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), outline-color var(--lg-smooth) !important;
 }
@@ -1834,7 +1834,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-text-inline-expander:hover {
 html[data-ypp-ui-design="liquid-glass"] #owner {
   -webkit-backdrop-filter: var(--lg-blur-surface) !important;
   backdrop-filter: var(--lg-blur-surface) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
@@ -1846,12 +1846,12 @@ html[data-ypp-ui-design="liquid-glass"] #owner:hover {
 html[data-ypp-ui-design="liquid-glass"] ytd-macro-markers-list-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-macro-markers-list-item-renderer {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] ytd-macro-markers-list-item-renderer:hover {
@@ -1870,7 +1870,7 @@ html[data-ypp-ui-design="liquid-glass"] #secondary.ytd-watch-flexy ytd-compact-v
 html[data-ypp-ui-design="liquid-glass"] #related ytd-compact-video-renderer {
   -webkit-backdrop-filter: var(--lg-blur-card) !important;
   backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--lg-shadow-card) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring) !important;
 }
@@ -1883,25 +1883,25 @@ html[data-ypp-ui-design="liquid-glass"] #related ytd-compact-video-renderer:hove
 
 html[data-ypp-ui-design="liquid-glass"] #secondary.ytd-watch-flexy ytd-compact-video-renderer ytd-thumbnail,
 html[data-ypp-ui-design="liquid-glass"] #related ytd-compact-video-renderer ytd-thumbnail {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Up Next Badge */
 html[data-ypp-ui-design="liquid-glass"] .badge-style-type-simple .badge {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;
   backdrop-filter: var(--lg-blur-subtle) !important;
-  border-radius: 2000px !important;
+  border-radius: var(--ypp-shape-primary, 2000px) !important;
 }
 
 /* Watch Page Playlist Panel Sidebar */
 html[data-ypp-ui-design="liquid-glass"] #secondary-inner ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--lg-blur-modal) !important;
   backdrop-filter: var(--lg-blur-modal) !important;
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: var(--lg-border-top-light), var(--lg-shadow-modal) !important;
 }
 
 html[data-ypp-ui-design="liquid-glass"] #secondary-inner ytd-playlist-panel-video-renderer[selected] {
   box-shadow: var(--lg-shadow-glow) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }

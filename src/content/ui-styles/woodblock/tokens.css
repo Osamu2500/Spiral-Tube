@@ -8,15 +8,15 @@ html[data-ypp-ui-style="woodblock"] {
   --ypp-primary-accent: #deb887 !important;
   --ypp-text-primary: #d2b48c !important;
   
-  --ypp-surface-border: 1px solid #deb88740 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #deb88740) !important;
   --ypp-shadow-base: 0 4px 12px #deb88720 !important;
   --ypp-shadow-hover: 0 8px 24px #deb88740 !important;
   
-  --yt-font-family: "Lora","Noto Serif",serif !important;
+  --yt-font-family: var(--ypp-font-primary, "Lora","Noto Serif",serif) !important;
 }
 
 
 html[data-ypp-ui-style="woodblock"] * {
-  font-family: "Lora","Noto Serif",serif !important;
+  font-family: var(--ypp-font-primary, "Lora","Noto Serif",serif) !important;
 }
 

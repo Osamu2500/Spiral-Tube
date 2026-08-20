@@ -47,7 +47,7 @@
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 10px var(--cyb-secondary) !important;
 }
 
@@ -56,13 +56,13 @@ html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb {
             html[data-ypp-ui-design="cyberpunk"] ytd-thumbnail,
             html[data-ypp-card-style="cyberpunk"] ytd-button-renderer,
             html[data-ypp-ui-design="cyberpunk"] ytd-button-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] *,
             html[data-ypp-ui-design="cyberpunk"] * {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* src/content/ui-styles/cyberpunk/components/buttons.css */
@@ -70,11 +70,11 @@ html[data-ypp-card-style="cyberpunk"] *,
 html[data-ypp-theme="cyberpunk"] yt-button-shape,
 html[data-ypp-theme="cyberpunk"] ytd-button-renderer {
   clip-path: var(--ypp-clip-parallelogram) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-theme="cyberpunk"] button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-sm) !important;
   text-transform: uppercase !important;
 }
@@ -93,17 +93,17 @@ html[data-ypp-theme="cyberpunk"] button:active {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox,
 html[data-ypp-ui-design="cyberpunk"] ytd-searchbox {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox > #container,
 html[data-ypp-ui-design="cyberpunk"] ytd-searchbox > #container {
-  border-radius: 0 0 0 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0 0 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] #search-icon-legacy.ytd-searchbox,
 html[data-ypp-ui-design="cyberpunk"] #search-icon-legacy.ytd-searchbox {
-  border-radius: 0 0 0 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0 0 0) !important;
 }
 
 /* Autocomplete Dropdown Box */
@@ -111,7 +111,7 @@ html[data-ypp-card-style="cyberpunk"] .sbsb_a,
 html[data-ypp-ui-design="cyberpunk"] .sbsb_a,
 html[data-ypp-card-style="cyberpunk"] .gstl_50.sbdd_a,
 html[data-ypp-ui-design="cyberpunk"] .gstl_50.sbdd_a {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
 }
 
@@ -123,7 +123,7 @@ html[data-ypp-ui-design="cyberpunk"] yt-img-shadow,
 html[data-ypp-card-style="cyberpunk"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="cyberpunk"] .yt-spec-avatar-shape__image {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Comment cards geometry */
@@ -131,14 +131,14 @@ html[data-ypp-card-style="cyberpunk"] ytd-comment-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-comment-renderer,
 html[data-ypp-card-style="cyberpunk"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-comment-thread-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-guide-entry-renderer,
 html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer:hover,
@@ -151,7 +151,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-guide-entry-renderer:hover {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-reel-video-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
@@ -159,7 +159,7 @@ html[data-ypp-card-style="cyberpunk"] #actions.ytd-reel-video-renderer ytd-butto
 html[data-ypp-ui-design="cyberpunk"] #actions.ytd-reel-video-renderer ytd-button-renderer,
 html[data-ypp-card-style="cyberpunk"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="cyberpunk"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -168,7 +168,7 @@ html[data-ypp-ui-design="cyberpunk"] #actions.ytd-reel-video-renderer ytd-toggle
 /* Modals and Dialogs */
 html[data-ypp-theme="cyberpunk"] tp-yt-paper-dialog,
 html[data-ypp-theme="cyberpunk"] ytd-popup-container {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-lg) !important;
   box-shadow: var(--ypp-glow-pink) !important;
   /* Hazard stripes */
@@ -192,19 +192,19 @@ html[data-ypp-theme="cyberpunk"] tp-yt-paper-dialog h2 {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] yt-live-chat-renderer,
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-text-message-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] #channel-header.ytd-c4-tabbed-header-renderer,
 html[data-ypp-ui-design="cyberpunk"] #channel-header.ytd-c4-tabbed-header-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* =========================================
@@ -214,7 +214,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px rgba(0,255,255,0.5) !important;
   animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
   transform-origin: top right !important;
@@ -232,7 +232,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
 
 html[data-ypp-card-style="cyberpunk"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-compact-link-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* =========================================
@@ -240,10 +240,10 @@ html[data-ypp-ui-design="cyberpunk"] ytd-compact-link-renderer {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] ytd-miniplayer,
 html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px rgba(0,255,255,0.5) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -254,17 +254,17 @@ html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer:hover {
 
 html[data-ypp-card-style="cyberpunk"] ytcp-navigation-drawer,
 html[data-ypp-ui-design="cyberpunk"] ytcp-navigation-drawer {
-  border-radius: 0 0px 0px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-track,
 html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-track {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb,
 html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb:hover,
@@ -279,26 +279,26 @@ html[data-ypp-card-style="cyberpunk"] .ytp-swatch-background-color,
 html[data-ypp-ui-design="cyberpunk"] .ytp-swatch-background-color,
 html[data-ypp-card-style="cyberpunk"] .ytp-play-progress,
 html[data-ypp-ui-design="cyberpunk"] .ytp-play-progress {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button,
 html[data-ypp-ui-design="cyberpunk"] .ytp-scrubber-button {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-spinner,
 html[data-ypp-ui-design="cyberpunk"] .ytp-spinner {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: cyberSpin 1.5s infinite ease-in-out !important;
   box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-spinner::after,
 html[data-ypp-ui-design="cyberpunk"] .ytp-spinner::after {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   animation: cyberSpinInner 1s infinite alternate !important;
 }
 
@@ -332,14 +332,14 @@ html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog,
 html[data-ypp-card-style="cyberpunk"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-unified-share-panel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
   animation: cyberSpinEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: cyberSpinEntrance 0.3s ease forwards !important;
 }
 
@@ -353,12 +353,12 @@ html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
 
 /* Cyberpunk Forms */
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: inset 0 0 10px rgba(0,240,255,0.2) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-subscribe-button-renderer yt-button-shape button,
@@ -368,7 +368,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 html[data-ypp-card-style="cyberpunk"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-card-style="cyberpunk"] yt-button-shape button[title*="Download" i] {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   text-transform: uppercase !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%) !important;
   box-shadow: 0 0 10px rgba(252,226,5,0.2) !important;
@@ -430,7 +430,7 @@ html[data-ypp-card-style="cyberpunk"] *, html[data-ypp-ui-design="cyberpunk"] * 
 html[data-ypp-card-style="cyberpunk"] ytd-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-video-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -445,7 +445,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-video-renderer, html[data-ypp-ui-desig
 html[data-ypp-card-style="cyberpunk"] ytd-rich-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-rich-item-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -460,7 +460,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-rich-item-renderer, html[data-ypp-ui-d
 html[data-ypp-card-style="cyberpunk"] ytd-playlist-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-playlist-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -475,7 +475,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-playlist-renderer, html[data-ypp-ui-de
 html[data-ypp-card-style="cyberpunk"] ytd-grid-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-grid-video-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -490,7 +490,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-grid-video-renderer, html[data-ypp-ui-
 html[data-ypp-card-style="cyberpunk"] ytd-compact-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-compact-video-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -505,7 +505,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-compact-video-renderer, html[data-ypp-
 html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-reel-item-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -518,14 +518,14 @@ html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-rich-shelf-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-rich-shelf-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
 
 /* Specific Styling for ytd-comment-thread-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-comment-thread-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-comment-thread-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
@@ -534,7 +534,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-comment-thread-renderer, html[data-ypp
 html[data-ypp-card-style="cyberpunk"] ytd-channel-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-channel-renderer {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -547,21 +547,21 @@ html[data-ypp-card-style="cyberpunk"] ytd-channel-renderer, html[data-ypp-ui-des
 
 /* Specific Styling for ytd-playlist-panel-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-playlist-panel-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
 
 /* Specific Styling for ytd-watch-metadata */
 html[data-ypp-card-style="cyberpunk"] ytd-watch-metadata, html[data-ypp-ui-design="cyberpunk"] ytd-watch-metadata {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
 
 /* Specific Styling for ytd-multi-page-menu-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-multi-page-menu-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
   clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   backdrop-filter: blur(5px) !important;
@@ -569,7 +569,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer, html[data-yp
 
 /* Specific Styling for ytd-menu-popup-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
   clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   backdrop-filter: blur(5px) !important;
@@ -577,7 +577,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer, html[data-ypp-ui-
 
 /* Specific Styling for tp-yt-paper-dialog */
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
   clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   backdrop-filter: blur(5px) !important;
@@ -585,7 +585,7 @@ html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-notification-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-notification-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-notification-renderer:hover {
@@ -594,7 +594,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-u
 
 /* Specific Styling for ytd-account-item-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-account-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-account-item-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-account-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-account-item-renderer:hover {
@@ -603,7 +603,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-account-item-renderer, html[data-ypp-u
 
 /* Specific Styling for ytd-guide-entry-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-guide-entry-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-guide-entry-renderer:hover {
@@ -612,7 +612,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer, html[data-ypp-ui
 
 /* Specific Styling for ytd-mini-guide-entry-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer:hover {
@@ -621,7 +621,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer, html[data-y
 
 /* Specific Styling for ytd-search-filter-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer:hover {
@@ -630,7 +630,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer, html[data-ypp-
 
 /* Specific Styling for ytd-macro-markers-list-item-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-macro-markers-list-item-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-macro-markers-list-item-renderer:hover {
@@ -639,26 +639,26 @@ html[data-ypp-card-style="cyberpunk"] ytd-macro-markers-list-item-renderer, html
 
 /* Specific Styling for ytd-c4-tabbed-header-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 10px 20px rgba(0,0,0,0.8) !important;
 }
 
 /* Specific Styling for #channel-header */
 html[data-ypp-card-style="cyberpunk"] #channel-header, html[data-ypp-ui-design="cyberpunk"] #channel-header {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 10px 20px rgba(0,0,0,0.8) !important;
 }
 
 /* Specific Styling for ytd-live-chat-renderer */
 html[data-ypp-card-style="cyberpunk"] ytd-live-chat-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-live-chat-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
 
 /* Specific Styling for yt-live-chat-text-message-renderer */
 html[data-ypp-card-style="cyberpunk"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="cyberpunk"] yt-live-chat-text-message-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="cyberpunk"] yt-live-chat-text-message-renderer:hover {
@@ -667,7 +667,7 @@ html[data-ypp-card-style="cyberpunk"] yt-live-chat-text-message-renderer, html[d
 
 /* Specific Styling for ytd-miniplayer */
 html[data-ypp-card-style="cyberpunk"] ytd-miniplayer, html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
   clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   backdrop-filter: blur(5px) !important;
@@ -675,7 +675,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-miniplayer, html[data-ypp-ui-design="c
 
 /* Specific Styling for .ytp-settings-menu */
 html[data-ypp-card-style="cyberpunk"] .ytp-settings-menu, html[data-ypp-ui-design="cyberpunk"] .ytp-settings-menu {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
   clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   backdrop-filter: blur(5px) !important;
@@ -683,13 +683,13 @@ html[data-ypp-card-style="cyberpunk"] .ytp-settings-menu, html[data-ypp-ui-desig
 
 /* Specific Styling for .ytp-chrome-bottom */
 html[data-ypp-card-style="cyberpunk"] .ytp-chrome-bottom, html[data-ypp-ui-design="cyberpunk"] .ytp-chrome-bottom {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 15px rgba(252, 238, 10, 0.2) !important;
 }
 
 /* Specific Styling for .ytp-endscreen-content */
 html[data-ypp-card-style="cyberpunk"] .ytp-endscreen-content, html[data-ypp-ui-design="cyberpunk"] .ytp-endscreen-content {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
@@ -698,7 +698,7 @@ html[data-ypp-card-style="cyberpunk"] .ytp-endscreen-content, html[data-ypp-ui-d
 html[data-ypp-card-style="cyberpunk"] .ytp-ce-element, html[data-ypp-ui-design="cyberpunk"] .ytp-ce-element {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px) !important;
   /* Scanlines */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip) !important;
   box-shadow: var(--cyber-shadow-glitch) !important;
 }
@@ -711,14 +711,14 @@ html[data-ypp-card-style="cyberpunk"] .ytp-ce-element, html[data-ypp-ui-design="
 
 /* Specific Styling for yt-error-screen */
 html[data-ypp-card-style="cyberpunk"] yt-error-screen, html[data-ypp-ui-design="cyberpunk"] yt-error-screen {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: -2px 0 10px rgba(255,0,60,0.5) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%) !important;
 }
 
 /* Cyberpunk Thumbnail Masks */
 html[data-ypp-card-style="cyberpunk"] ytd-thumbnail, html[data-ypp-ui-design="cyberpunk"] ytd-thumbnail {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   filter: contrast(1.2) saturate(1.2) !important;
 }
@@ -730,7 +730,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-thumbnail, html[data-ypp-ui-design="cy
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-image, html[data-ypp-ui-design="cyberpunk"] yt-image {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   filter: contrast(1.2) saturate(1.2) !important;
 }
@@ -742,7 +742,7 @@ html[data-ypp-card-style="cyberpunk"] yt-image, html[data-ypp-ui-design="cyberpu
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-playlist-thumbnail, html[data-ypp-ui-design="cyberpunk"] ytd-playlist-thumbnail {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   filter: contrast(1.2) saturate(1.2) !important;
 }
@@ -757,7 +757,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-playlist-thumbnail, html[data-ypp-ui-d
 html[data-ypp-card-style="cyberpunk"] yt-img-shadow, html[data-ypp-ui-design="cyberpunk"] yt-img-shadow {
   clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%) !important;
   /* Octagon */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-img-shadow, html[data-ypp-ui-design="cyberpunk"] yt-img-shadow:hover {
@@ -767,7 +767,7 @@ html[data-ypp-card-style="cyberpunk"] yt-img-shadow, html[data-ypp-ui-design="cy
 html[data-ypp-card-style="cyberpunk"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="cyberpunk"] .yt-spec-avatar-shape__image {
   clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%) !important;
   /* Octagon */
-    border-radius: 0 !important;
+    border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="cyberpunk"] .yt-spec-avatar-shape__image:hover {
@@ -779,7 +779,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="cyberpunk"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="cyberpunk"] yt-button-shape button[title*="Download" i] {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   text-transform: uppercase !important;
   box-shadow: 2px 2px 0 var(--cyber-primary) !important;
@@ -794,7 +794,7 @@ html[data-ypp-ui-design="cyberpunk"] yt-button-shape button[title*="Download" i]
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-design="cyberpunk"] yt-chip-cloud-chip-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   text-transform: uppercase !important;
   box-shadow: 2px 2px 0 var(--cyber-primary) !important;
@@ -805,17 +805,17 @@ html[data-ypp-card-style="cyberpunk"] yt-chip-cloud-chip-renderer, html[data-ypp
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Cyberpunk Scrubber */
 html[data-ypp-card-style="cyberpunk"] .ytp-play-progress, html[data-ypp-ui-design="cyberpunk"] .ytp-play-progress {
   background: repeating-linear-gradient(45deg, var(--cyber-primary), var(--cyber-primary) 10px, #000 10px, #000 20px) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button, html[data-ypp-ui-design="cyberpunk"] .ytp-scrubber-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important;
   /* Diamond shape */
     transform: scale(1.5) !important;
@@ -3575,11 +3575,11 @@ html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-250:hover, html[data-ypp-
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-track {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -3603,7 +3603,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-video-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-playlist-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-compact-video-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
@@ -3617,7 +3617,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="cyberpunk"] ytd-thumbnail, html[data-ypp-card-style="cyberpunk"] yt-image,
 html[data-ypp-ui-design="cyberpunk"] ytd-thumbnail, html[data-ypp-ui-design="cyberpunk"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -3631,7 +3631,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="cyberpunk"] yt-img-shadow, html[data-ypp-card-style="cyberpunk"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="cyberpunk"] yt-img-shadow, html[data-ypp-ui-design="cyberpunk"] .yt-spec-avatar-shape__image {
   clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -3648,18 +3648,18 @@ html[data-ypp-card-style="cyberpunk"] ytd-masthead, html[data-ypp-ui-design="cyb
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="cyberpunk"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 0px 0 0 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px 0 0 0px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="cyberpunk"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 0px 0px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="cyberpunk"] yt-chip-cloud-chip-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -3672,7 +3672,7 @@ html[data-ypp-ui-design="cyberpunk"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer, html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-guide-entry-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-guide-entry-renderer:hover,
@@ -3683,41 +3683,41 @@ html[data-ypp-ui-design="cyberpunk"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="cyberpunk"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-comment-thread-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] #simplebox-placeholder, html[data-ypp-ui-design="cyberpunk"] #simplebox-placeholder {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="cyberpunk"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="cyberpunk"] .ytp-chrome-bottom {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button,
 html[data-ypp-ui-design="cyberpunk"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-tooltip, html[data-ypp-ui-design="cyberpunk"] .ytp-tooltip {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-multi-page-menu-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -3728,64 +3728,64 @@ html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="cyberpunk"] #channel-header,
 html[data-ypp-ui-design="cyberpunk"] #channel-header {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 15. Subscribe & Primary Buttons */
 html[data-ypp-card-style="cyberpunk"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-ui-design="cyberpunk"] ytd-subscribe-button-renderer yt-button-shape button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 4px 4px 0 #00ff00 !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="cyberpunk"] yt-live-chat-renderer,
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-text-message-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-notification-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="cyberpunk"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-badge-supported-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="cyberpunk"] ytd-skeleton, html[data-ypp-ui-design="cyberpunk"] ytd-skeleton, 
 html[data-ypp-card-style="cyberpunk"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cyberpunk"] .ytd-ghost-grid-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-reel-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-rich-shelf-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="cyberpunk"] ytd-watch-metadata, html[data-ypp-ui-design="cyberpunk"] ytd-watch-metadata {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
@@ -3800,34 +3800,34 @@ html[data-ypp-card-style="cyberpunk"] yt-icon:hover, html[data-ypp-ui-design="cy
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="cyberpunk"] .ytp-endscreen-content, html[data-ypp-ui-design="cyberpunk"] .ytp-endscreen-content {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] .ytp-ce-element, html[data-ypp-ui-design="cyberpunk"] .ytp-ce-element {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="cyberpunk"] ytd-miniplayer, html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="cyberpunk"] .ytp-settings-menu, html[data-ypp-ui-design="cyberpunk"] .ytp-settings-menu {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="cyberpunk"] ytd-account-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-account-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer:hover {
@@ -3836,18 +3836,18 @@ html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer:hover, html[dat
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="cyberpunk"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-playlist-panel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="cyberpunk"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-macro-markers-list-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="cyberpunk"] yt-error-screen, html[data-ypp-ui-design="cyberpunk"] yt-error-screen {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
 }
 
@@ -3855,7 +3855,7 @@ html[data-ypp-card-style="cyberpunk"] yt-error-screen, html[data-ypp-ui-design="
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog,
 html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyb-clip) !important;
   box-shadow: inset 0 0 10px rgba(255,0,60,0.2), 0 0 20px rgba(255,0,60,0.3) !important;
 }
@@ -3869,7 +3869,7 @@ html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog,
 html[data-ypp-card-style="cyberpunk"] ytd-popup-container,
 html[data-ypp-ui-design="cyberpunk"] ytd-popup-container {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
@@ -3898,12 +3898,12 @@ html[data-ypp-ui-design="cyberpunk"] ytd-popup-container {
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] tp-yt-paper-toast,
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-toast {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* =========================================
@@ -3911,7 +3911,7 @@ html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-toast {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer:hover,
@@ -3926,7 +3926,7 @@ html[data-ypp-card-style="cyberpunk"] ytd-background-promo-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-background-promo-renderer,
 html[data-ypp-card-style="cyberpunk"] #error-page,
 html[data-ypp-ui-design="cyberpunk"] #error-page {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Empty state icon geometry override */
@@ -3938,7 +3938,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-background-promo-renderer yt-icon {
 
 html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform 0.2s ease !important;
 }
 
@@ -3952,14 +3952,14 @@ html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer:hover {
    ========================================================= */
 
 html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-sm) !important;
   box-shadow: var(--cyber-glow-dual) !important;
 }
 
 /* Buttons in Miniplayer */
 html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer .ytp-miniplayer-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer .ytp-miniplayer-button:hover {
@@ -3975,7 +3975,7 @@ html[data-ypp-theme="cyberpunk"] ytd-masthead {
 }
 
 html[data-ypp-theme="cyberpunk"] ytd-searchbox form {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-sm) !important;
 }
 
@@ -3984,7 +3984,7 @@ html[data-ypp-theme="cyberpunk"] ytd-searchbox form:focus-within {
 }
 
 html[data-ypp-theme="cyberpunk"] #search-icon-legacy {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-sm) !important;
 }
 
@@ -3993,7 +3993,7 @@ html[data-ypp-theme="cyberpunk"] #search-icon-legacy:hover {
 }
 
 html[data-ypp-theme="cyberpunk"] ytd-guide-entry-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-theme="cyberpunk"] ytd-guide-entry-renderer[active] {
@@ -4024,7 +4024,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-playlist-panel-renderer {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] ytd-backstage-post-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-backstage-post-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* Community Poll Progress Bars */
@@ -4032,7 +4032,7 @@ html[data-ypp-card-style="cyberpunk"] .ytd-backstage-poll-renderer[checked] .pro
 html[data-ypp-ui-design="cyberpunk"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-card-style="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-ui-design="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #fcee0a !important;
 }
 
@@ -4041,7 +4041,7 @@ html[data-ypp-ui-design="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer {
 ========================================= */
 html[data-ypp-card-style="cyberpunk"] ytd-merch-shelf-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-merch-shelf-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* Product Image Geometry Override */
@@ -4050,7 +4050,7 @@ html[data-ypp-ui-design="cyberpunk"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-card-style="cyberpunk"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
 html[data-ypp-ui-design="cyberpunk"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -4062,7 +4062,7 @@ html[data-ypp-ui-design="cyberpunk"] .ytd-shopping-carousel-item-renderer:hover 
 /* Buy Buttons */
 html[data-ypp-card-style="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-card-style="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
@@ -4073,7 +4073,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-i
 
 html[data-ypp-card-style="cyberpunk"] .badge-style-type-live-now-alternate,
 html[data-ypp-ui-design="cyberpunk"] .badge-style-type-live-now-alternate {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
@@ -4090,7 +4090,7 @@ html[data-ypp-ui-design="cyberpunk"] .badge-style-type-live-now-alternate {
    ========================================================= */
 
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-toast {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-slash) !important;
   box-shadow: var(--cyber-glow-secondary) !important;
 }
@@ -4098,7 +4098,7 @@ html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-toast {
 /* Tooltips */
 html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip .tooltip,
 html[data-ypp-ui-design="cyberpunk"] .ytp-tooltip-text {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   text-transform: uppercase !important;
   box-shadow: 0 0 8px rgba(255, 0, 85, 0.5) !important;
 }
@@ -4109,7 +4109,7 @@ html[data-ypp-ui-design="cyberpunk"] .ytp-tooltip-text {
 
 /* Channel Banner & Header */
 html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 8px 30px rgba(0, 255, 204, 0.1), 0 0 2px var(--cyber-secondary) !important;
 }
 
@@ -4123,7 +4123,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer::before {
 html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer yt-avatar-shape img,
 html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer yt-img-shadow img {
   clip-path: var(--cyber-clip-hex) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   filter: drop-shadow(0 0 8px var(--cyber-secondary)) !important;
 }
 
@@ -4134,7 +4134,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer #channel-name
 }
 
 html[data-ypp-ui-design="cyberpunk"] yt-tab-shape[tab-identifier] {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="cyberpunk"] yt-tab-shape[tab-identifier][active] {
@@ -4145,7 +4145,7 @@ html[data-ypp-ui-design="cyberpunk"] yt-tab-shape[tab-identifier][active] {
 html[data-ypp-ui-design="cyberpunk"] ytd-video-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-channel-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-playlist-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-sm) !important;
 }
 
@@ -4159,11 +4159,11 @@ html[data-ypp-ui-design="cyberpunk"] ytd-playlist-renderer:hover {
 /* src/content/ui-styles/cyberpunk/pages/comments.css */
 
 html[data-ypp-theme="cyberpunk"] ytd-comment-thread-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-theme="cyberpunk"] #simple-box {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-md) !important;
 }
 
@@ -4173,7 +4173,7 @@ html[data-ypp-theme="cyberpunk"] #simple-box {
 
 html[data-ypp-ui-design="cyberpunk"] ytd-backstage-post-thread-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-post-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-md) !important;
 }
 
@@ -4184,7 +4184,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-post-renderer:hover {
 
 /* Polls */
 html[data-ypp-ui-design="cyberpunk"] .choice-info.ytd-backstage-poll-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-slash) !important;
 }
 
@@ -4193,13 +4193,13 @@ html[data-ypp-ui-design="cyberpunk"] .choice-info.ytd-backstage-poll-renderer:ho
 }
 
 html[data-ypp-ui-design="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* src/content/ui-styles/cyberpunk/pages/home.css */
 
 html[data-ypp-theme="cyberpunk"] yt-chip-cloud-chip-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-parallelogram) !important;
 }
 
@@ -4214,7 +4214,7 @@ html[data-ypp-theme="cyberpunk"] yt-chip-cloud-chip-renderer[selected] {
 /* Chat Frame */
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-app,
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-glow-secondary) !important;
 }
 
@@ -4224,7 +4224,7 @@ html[data-ypp-ui-design="cyberpunk"] #header.yt-live-chat-renderer::before {
 
 /* Chat Messages */
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-text-message-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Author Name */
@@ -4234,7 +4234,7 @@ html[data-ypp-ui-design="cyberpunk"] #author-name.yt-live-chat-text-message-rend
 
 /* Super Chat / Paid Messages */
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-paid-message-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-sm) !important;
   box-shadow: var(--cyber-glow-primary) !important;
 }
@@ -4245,14 +4245,14 @@ html[data-ypp-ui-design="cyberpunk"] yt-live-chat-paid-message-renderer #header.
 
 /* Membership Banners */
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-membership-item-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-sm) !important;
   box-shadow: 0 0 8px rgba(0, 255, 204, 0.2) !important;
 }
 
 /* Chat Input Field */
 html[data-ypp-ui-design="cyberpunk"] #message-input.yt-live-chat-text-input-field-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="cyberpunk"] #message-input.yt-live-chat-text-input-field-renderer:focus {
@@ -4261,7 +4261,7 @@ html[data-ypp-ui-design="cyberpunk"] #message-input.yt-live-chat-text-input-fiel
 
 /* Send Button */
 html[data-ypp-ui-design="cyberpunk"] #send-button.yt-live-chat-message-input-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="cyberpunk"] #send-button.yt-live-chat-message-input-renderer:hover {
@@ -4271,12 +4271,12 @@ html[data-ypp-ui-design="cyberpunk"] #send-button.yt-live-chat-message-input-ren
 /* Avatar in Chat */
 html[data-ypp-ui-design="cyberpunk"] yt-live-chat-text-message-renderer yt-img-shadow img {
   clip-path: var(--cyber-clip-hex) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Cyberpunk Player */
 html[data-ypp-card-style="cyberpunk"] .ytp-chrome-bottom {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%) !important;
   box-shadow: 0 0 15px rgba(0,240,255,0.3) !important;
 }
@@ -4287,14 +4287,14 @@ html[data-ypp-card-style="cyberpunk"] .ytp-play-progress {
 
 html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button {
   box-shadow: 0 0 10px var(--cyb-secondary) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transform: rotate(45deg) !important;
 }
 
 /* Search Input Box */
 html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBoxDark,
 html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBox {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: inset 0 0 8px rgba(0, 255, 204, 0.1) !important;
 }
 
@@ -4305,7 +4305,7 @@ html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBox:focus-within 
 
 /* Search Button */
 html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentSearchButton {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%) !important;
 }
 
@@ -4315,23 +4315,23 @@ html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentSearchButton:hover {
 
 /* Suggestions Dropdown */
 html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentSuggestionsContainer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-glow-secondary) !important;
 }
 
 html[data-ypp-ui-design="cyberpunk"] .ytSuggestionComponentRoundedSuggestion {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Search Filter Groups */
 html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-group-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-sm) !important;
 }
 
 /* Filter Chips */
 html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer a {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--cyber-clip-slash) !important;
 }
 
@@ -4349,7 +4349,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer[is-selected] a {
 
 /* Shorts Container */
 html[data-ypp-ui-design="cyberpunk"] ytd-reel-video-renderer[is-active] {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--cyber-glow-secondary) !important;
   clip-path: var(--cyber-clip-md) !important;
 }
@@ -4377,7 +4377,7 @@ html[data-ypp-theme="cyberpunk"] #subscribe-button button:hover {
 
 /* Description box */
 html[data-ypp-theme="cyberpunk"] #bottom-row {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   clip-path: var(--ypp-clip-md) !important;
 }
 

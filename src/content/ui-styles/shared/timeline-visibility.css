@@ -26,7 +26,7 @@
   top: 0 !important;
   bottom: 0 !important;
   width: 2px !important;
-  background: #fff !important;
+  background: var(--ypp-bg-surface, #fff) !important;
   height: 140% !important;
   margin-top: -1px !important;
 }

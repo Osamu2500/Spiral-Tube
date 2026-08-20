@@ -8,15 +8,15 @@ html[data-ypp-ui-style="anime"] {
   --ypp-primary-accent: #ff69b4 !important;
   --ypp-text-primary: #d63384 !important;
   
-  --ypp-surface-border: 1px solid #ff69b440 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ff69b440) !important;
   --ypp-shadow-base: 0 4px 12px #ff69b420 !important;
   --ypp-shadow-hover: 0 8px 24px #ff69b440 !important;
   
-  --yt-font-family: "Nunito","Segoe UI",sans-serif !important;
+  --yt-font-family: var(--ypp-font-primary, "Nunito","Segoe UI",sans-serif) !important;
 }
 
 
 html[data-ypp-ui-style="anime"] * {
-  font-family: "Nunito","Segoe UI",sans-serif !important;
+  font-family: var(--ypp-font-primary, "Nunito","Segoe UI",sans-serif) !important;
 }
 

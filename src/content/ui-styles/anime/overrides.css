@@ -78,25 +78,25 @@ html[data-ypp-ui-design="anime"] ytd-topbar-logo-renderer a#logo::before {
 }
 
 html[data-ypp-ui-design="anime"] ::-webkit-scrollbar-thumb {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ypp-organizer-modal, html[data-ypp-ui-design="anime"] .ypp-modal-content {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
 html[data-ypp-ui-design="anime"] #simplebox-placeholder {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ypp-slider, html[data-ypp-ui-design="anime"] .ypp-gpb-vol-slider {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] .tab-content.tp-yt-paper-tab:hover {
@@ -108,7 +108,7 @@ html[data-ypp-ui-design="anime"] .ypp-nav-btn.active {
 }
 
 html[data-ypp-ui-design="anime"] .ypp-badge, html[data-ypp-ui-design="anime"] .ypp-value-display {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-play,
@@ -116,7 +116,7 @@ html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-tool,
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
@@ -137,7 +137,7 @@ html[data-ypp-ui-design="anime"] body.yt-pro-ambient .style-scope.ytd-watch-flex
 }
 
 html[data-ypp-ui-design="anime"] .ytSuggestionComponentRoundedSuggestion {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -148,23 +148,23 @@ html[data-ypp-ui-design="anime"] .ytSuggestionComponentRoundedSuggestion:hover {
 
 html[data-ypp-ui-design="anime"] yt-img-shadow#avatar {
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-design="anime"] .ytProgressBarLineProgressBarPlayed {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* anime/components/badges.css */
 html[data-ypp-ui-design="anime"] .yt-badge-shape--thumbnail-default,
 html[data-ypp-ui-design="anime"] .ypp-badge, html[data-ypp-ui-design="anime"] .ypp-value-display {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-badge-supported-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ytProgressBarLineProgressBarLine,
@@ -173,15 +173,15 @@ html[data-ypp-ui-design="anime"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-design="anime"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-design="anime"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-design="anime"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-thumbnail-overlay-time-status-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-thumbnail-overlay-toggle-button-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -200,7 +200,7 @@ html[data-ypp-ui-design="anime"] yt-button-shape button[aria-label*="Download" i
 html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i] {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
   text-transform: uppercase;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
@@ -227,7 +227,7 @@ html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i]:hov
 html[data-ypp-ui-design="anime"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
 html[data-ypp-ui-design="anime"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i] {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -244,7 +244,7 @@ html[data-ypp-ui-design="anime"] .ytSegmentedLikeDislikeButtonViewModelSegmented
 
 html[data-ypp-ui-design="anime"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
 html[data-ypp-ui-design="anime"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -260,7 +260,7 @@ html[data-ypp-ui-design="anime"] .ytSegmentedLikeDislikeButtonViewModelSegmented
 }
 
 html[data-ypp-ui-design="anime"] .ypp-pill-toggle {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -270,7 +270,7 @@ html[data-ypp-ui-design="anime"] .ypp-pill-toggle:hover {
 }
 
 html[data-ypp-ui-design="anime"] .ypp-btn-primary, html[data-ypp-ui-design="anime"] .ypp-play-all-btn, html[data-ypp-ui-design="anime"] .ypp-health-btn {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -282,7 +282,7 @@ html[data-ypp-ui-design="anime"] .ypp-btn-primary:hover, html[data-ypp-ui-design
 /* anime/components/forms.css */
 html[data-ypp-ui-design="anime"] ytd-searchbox, html[data-ypp-ui-design="anime"] #search-form,
 html[data-ypp-ui-design="anime"] tp-yt-paper-input, html[data-ypp-ui-design="anime"] tp-yt-paper-textarea {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
 
@@ -291,11 +291,11 @@ html[data-ypp-ui-design="anime"] ytd-searchbox[has-focus], html[data-ypp-ui-desi
 }
 
 html[data-ypp-ui-design="anime"] #search-icon-legacy {
-  border-radius: 0 20px 20px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ypp-filter-dropdown {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -304,12 +304,12 @@ html[data-ypp-ui-design="anime"] .ypp-filter-dropdown:hover {
 }
 
 html[data-ypp-ui-design="anime"] ytd-comment-simplebox-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 2px 8px rgba(255,105,180,0.2) !important;
 }
 
 html[data-ypp-ui-design="anime"] yt-icon-button#guide-button {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -344,7 +344,7 @@ html[data-ypp-ui-design="anime"] yt-button-shape button[aria-label*="Download" i
 html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i] {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -387,13 +387,13 @@ html[data-ypp-card-style="anime"] #masthead, html[data-ypp-ui-design="anime"] #m
 }
 
 html[data-ypp-card-style="anime"] #search, html[data-ypp-ui-design="anime"] #search {
-  border-radius: 40px !important;
+  border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 0 4px 0 #5c2d91 !important;
 }
 
 /* anime -> ytd-video-renderer */
 html[data-ypp-card-style="anime"] ytd-video-renderer, html[data-ypp-ui-design="anime"] ytd-video-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -405,7 +405,7 @@ html[data-ypp-card-style="anime"] ytd-video-renderer, html[data-ypp-ui-design="a
 
 /* anime -> ytd-rich-item-renderer */
 html[data-ypp-card-style="anime"] ytd-rich-item-renderer, html[data-ypp-ui-design="anime"] ytd-rich-item-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -417,7 +417,7 @@ html[data-ypp-card-style="anime"] ytd-rich-item-renderer, html[data-ypp-ui-desig
 
 /* anime -> ytd-playlist-renderer */
 html[data-ypp-card-style="anime"] ytd-playlist-renderer, html[data-ypp-ui-design="anime"] ytd-playlist-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -429,7 +429,7 @@ html[data-ypp-card-style="anime"] ytd-playlist-renderer, html[data-ypp-ui-design
 
 /* anime -> ytd-grid-video-renderer */
 html[data-ypp-card-style="anime"] ytd-grid-video-renderer, html[data-ypp-ui-design="anime"] ytd-grid-video-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -441,7 +441,7 @@ html[data-ypp-card-style="anime"] ytd-grid-video-renderer, html[data-ypp-ui-desi
 
 /* anime -> ytd-compact-video-renderer */
 html[data-ypp-card-style="anime"] ytd-compact-video-renderer, html[data-ypp-ui-design="anime"] ytd-compact-video-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -453,7 +453,7 @@ html[data-ypp-card-style="anime"] ytd-compact-video-renderer, html[data-ypp-ui-d
 
 /* anime -> ytd-reel-item-renderer */
 html[data-ypp-card-style="anime"] ytd-reel-item-renderer, html[data-ypp-ui-design="anime"] ytd-reel-item-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -465,7 +465,7 @@ html[data-ypp-card-style="anime"] ytd-reel-item-renderer, html[data-ypp-ui-desig
 
 /* anime -> ytd-rich-shelf-renderer */
 html[data-ypp-card-style="anime"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="anime"] ytd-rich-shelf-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -477,7 +477,7 @@ html[data-ypp-card-style="anime"] ytd-rich-shelf-renderer, html[data-ypp-ui-desi
 
 /* anime -> ytd-comment-thread-renderer */
 html[data-ypp-card-style="anime"] ytd-comment-thread-renderer, html[data-ypp-ui-design="anime"] ytd-comment-thread-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -489,7 +489,7 @@ html[data-ypp-card-style="anime"] ytd-comment-thread-renderer, html[data-ypp-ui-
 
 /* anime -> ytd-channel-renderer */
 html[data-ypp-card-style="anime"] ytd-channel-renderer, html[data-ypp-ui-design="anime"] ytd-channel-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -501,7 +501,7 @@ html[data-ypp-card-style="anime"] ytd-channel-renderer, html[data-ypp-ui-design=
 
 /* anime -> ytd-playlist-panel-renderer */
 html[data-ypp-card-style="anime"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="anime"] ytd-playlist-panel-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -513,7 +513,7 @@ html[data-ypp-card-style="anime"] ytd-playlist-panel-renderer, html[data-ypp-ui-
 
 /* anime -> ytd-watch-metadata */
 html[data-ypp-card-style="anime"] ytd-watch-metadata, html[data-ypp-ui-design="anime"] ytd-watch-metadata {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -525,7 +525,7 @@ html[data-ypp-card-style="anime"] ytd-watch-metadata, html[data-ypp-ui-design="a
 
 /* anime -> ytd-multi-page-menu-renderer */
 html[data-ypp-card-style="anime"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="anime"] ytd-multi-page-menu-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -537,7 +537,7 @@ html[data-ypp-card-style="anime"] ytd-multi-page-menu-renderer, html[data-ypp-ui
 
 /* anime -> ytd-menu-popup-renderer */
 html[data-ypp-card-style="anime"] ytd-menu-popup-renderer, html[data-ypp-ui-design="anime"] ytd-menu-popup-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -549,7 +549,7 @@ html[data-ypp-card-style="anime"] ytd-menu-popup-renderer, html[data-ypp-ui-desi
 
 /* anime -> tp-yt-paper-dialog */
 html[data-ypp-card-style="anime"] tp-yt-paper-dialog, html[data-ypp-ui-design="anime"] tp-yt-paper-dialog {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -561,7 +561,7 @@ html[data-ypp-card-style="anime"] tp-yt-paper-dialog, html[data-ypp-ui-design="a
 
 /* anime -> ytd-notification-renderer */
 html[data-ypp-card-style="anime"] ytd-notification-renderer, html[data-ypp-ui-design="anime"] ytd-notification-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -573,7 +573,7 @@ html[data-ypp-card-style="anime"] ytd-notification-renderer, html[data-ypp-ui-de
 
 /* anime -> ytd-account-item-renderer */
 html[data-ypp-card-style="anime"] ytd-account-item-renderer, html[data-ypp-ui-design="anime"] ytd-account-item-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -585,7 +585,7 @@ html[data-ypp-card-style="anime"] ytd-account-item-renderer, html[data-ypp-ui-de
 
 /* anime -> ytd-guide-entry-renderer */
 html[data-ypp-card-style="anime"] ytd-guide-entry-renderer, html[data-ypp-ui-design="anime"] ytd-guide-entry-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -597,7 +597,7 @@ html[data-ypp-card-style="anime"] ytd-guide-entry-renderer, html[data-ypp-ui-des
 
 /* anime -> ytd-mini-guide-entry-renderer */
 html[data-ypp-card-style="anime"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="anime"] ytd-mini-guide-entry-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -609,7 +609,7 @@ html[data-ypp-card-style="anime"] ytd-mini-guide-entry-renderer, html[data-ypp-u
 
 /* anime -> ytd-search-filter-renderer */
 html[data-ypp-card-style="anime"] ytd-search-filter-renderer, html[data-ypp-ui-design="anime"] ytd-search-filter-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -621,7 +621,7 @@ html[data-ypp-card-style="anime"] ytd-search-filter-renderer, html[data-ypp-ui-d
 
 /* anime -> ytd-macro-markers-list-item-renderer */
 html[data-ypp-card-style="anime"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="anime"] ytd-macro-markers-list-item-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -633,7 +633,7 @@ html[data-ypp-card-style="anime"] ytd-macro-markers-list-item-renderer, html[dat
 
 /* anime -> ytd-c4-tabbed-header-renderer */
 html[data-ypp-card-style="anime"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-design="anime"] ytd-c4-tabbed-header-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -645,7 +645,7 @@ html[data-ypp-card-style="anime"] ytd-c4-tabbed-header-renderer, html[data-ypp-u
 
 /* anime -> #channel-header */
 html[data-ypp-card-style="anime"] #channel-header, html[data-ypp-ui-design="anime"] #channel-header {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -657,7 +657,7 @@ html[data-ypp-card-style="anime"] #channel-header, html[data-ypp-ui-design="anim
 
 /* anime -> ytd-live-chat-renderer */
 html[data-ypp-card-style="anime"] ytd-live-chat-renderer, html[data-ypp-ui-design="anime"] ytd-live-chat-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -669,7 +669,7 @@ html[data-ypp-card-style="anime"] ytd-live-chat-renderer, html[data-ypp-ui-desig
 
 /* anime -> yt-live-chat-text-message-renderer */
 html[data-ypp-card-style="anime"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="anime"] yt-live-chat-text-message-renderer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -681,7 +681,7 @@ html[data-ypp-card-style="anime"] yt-live-chat-text-message-renderer, html[data-
 
 /* anime -> ytd-miniplayer */
 html[data-ypp-card-style="anime"] ytd-miniplayer, html[data-ypp-ui-design="anime"] ytd-miniplayer {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -693,7 +693,7 @@ html[data-ypp-card-style="anime"] ytd-miniplayer, html[data-ypp-ui-design="anime
 
 /* anime -> .ytp-settings-menu */
 html[data-ypp-card-style="anime"] .ytp-settings-menu, html[data-ypp-ui-design="anime"] .ytp-settings-menu {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -705,7 +705,7 @@ html[data-ypp-card-style="anime"] .ytp-settings-menu, html[data-ypp-ui-design="a
 
 /* anime -> .ytp-chrome-bottom */
 html[data-ypp-card-style="anime"] .ytp-chrome-bottom, html[data-ypp-ui-design="anime"] .ytp-chrome-bottom {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -717,7 +717,7 @@ html[data-ypp-card-style="anime"] .ytp-chrome-bottom, html[data-ypp-ui-design="a
 
 /* anime -> .ytp-endscreen-content */
 html[data-ypp-card-style="anime"] .ytp-endscreen-content, html[data-ypp-ui-design="anime"] .ytp-endscreen-content {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -729,7 +729,7 @@ html[data-ypp-card-style="anime"] .ytp-endscreen-content, html[data-ypp-ui-desig
 
 /* anime -> .ytp-ce-element */
 html[data-ypp-card-style="anime"] .ytp-ce-element, html[data-ypp-ui-design="anime"] .ytp-ce-element {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -741,7 +741,7 @@ html[data-ypp-card-style="anime"] .ytp-ce-element, html[data-ypp-ui-design="anim
 
 /* anime -> yt-error-screen */
 html[data-ypp-card-style="anime"] yt-error-screen, html[data-ypp-ui-design="anime"] yt-error-screen {
-  border-radius: 20px 4px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px 20px 4px) !important;
   box-shadow: 5px 5px 0px #5c2d91 !important;
 }
 
@@ -753,7 +753,7 @@ html[data-ypp-card-style="anime"] yt-error-screen, html[data-ypp-ui-design="anim
 
 /* Thumbnails */
 html[data-ypp-card-style="anime"] ytd-thumbnail, html[data-ypp-ui-design="anime"] ytd-thumbnail {
-  border-radius: 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px) !important;
 }
 
 html[data-ypp-card-style="anime"] ytd-thumbnail, html[data-ypp-ui-design="anime"] ytd-thumbnail:hover {
@@ -761,7 +761,7 @@ html[data-ypp-card-style="anime"] ytd-thumbnail, html[data-ypp-ui-design="anime"
 }
 
 html[data-ypp-card-style="anime"] yt-image, html[data-ypp-ui-design="anime"] yt-image {
-  border-radius: 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 4px) !important;
 }
 
 html[data-ypp-card-style="anime"] yt-image, html[data-ypp-ui-design="anime"] yt-image:hover {
@@ -770,7 +770,7 @@ html[data-ypp-card-style="anime"] yt-image, html[data-ypp-ui-design="anime"] yt-
 
 /* Avatars */
 html[data-ypp-card-style="anime"] yt-img-shadow, html[data-ypp-ui-design="anime"] yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 0 4px #ffd700 !important;
 }
 
@@ -780,7 +780,7 @@ html[data-ypp-card-style="anime"] yt-img-shadow, html[data-ypp-ui-design="anime"
 }
 
 html[data-ypp-card-style="anime"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="anime"] .yt-spec-avatar-shape__image {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 0 4px #ffd700 !important;
 }
 
@@ -794,7 +794,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i] {
-  border-radius: 40px !important;
+  border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 4px 4px 0 #5c2d91 !important;
 }
 
@@ -808,7 +808,7 @@ html[data-ypp-ui-design="anime"] yt-button-shape button[title*="Download" i]:hov
 }
 
 html[data-ypp-card-style="anime"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-design="anime"] yt-chip-cloud-chip-renderer {
-  border-radius: 40px !important;
+  border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 4px 4px 0 #5c2d91 !important;
 }
 
@@ -818,1527 +818,1527 @@ html[data-ypp-card-style="anime"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-
 }
 
 html[data-ypp-card-style="anime"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="anime"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="anime"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="anime"] ::-webkit-scrollbar-thumb {
   background: linear-gradient(#e91e8c, #5c2d91) !important;
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* Progress bar */
 html[data-ypp-card-style="anime"] .ytp-play-progress, html[data-ypp-ui-design="anime"] .ytp-play-progress {
   background: linear-gradient(90deg, #e91e8c, #ffd700) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="anime"] .ytp-scrubber-button, html[data-ypp-ui-design="anime"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.5) !important;
 }
 
 /* Chip filters */
 html[data-ypp-card-style="anime"] yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"], html[data-ypp-ui-design="anime"] yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"] {
-  border-radius: 40px !important;
+  border-radius: var(--ypp-shape-primary, 40px) !important;
 }
 
 /* anime Deep UI Ruleset 1 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-1, html[data-ypp-ui-design="anime"] .anime-lvl2-class-1 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 2 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-2, html[data-ypp-ui-design="anime"] .anime-lvl2-class-2 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 3 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-3, html[data-ypp-ui-design="anime"] .anime-lvl2-class-3 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 4 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-4, html[data-ypp-ui-design="anime"] .anime-lvl2-class-4 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 5 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-5, html[data-ypp-ui-design="anime"] .anime-lvl2-class-5 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 6 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-6, html[data-ypp-ui-design="anime"] .anime-lvl2-class-6 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 7 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-7, html[data-ypp-ui-design="anime"] .anime-lvl2-class-7 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 8 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-8, html[data-ypp-ui-design="anime"] .anime-lvl2-class-8 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 9 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-9, html[data-ypp-ui-design="anime"] .anime-lvl2-class-9 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 10 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-10, html[data-ypp-ui-design="anime"] .anime-lvl2-class-10 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 11 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-11, html[data-ypp-ui-design="anime"] .anime-lvl2-class-11 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 12 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-12, html[data-ypp-ui-design="anime"] .anime-lvl2-class-12 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 13 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-13, html[data-ypp-ui-design="anime"] .anime-lvl2-class-13 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 14 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-14, html[data-ypp-ui-design="anime"] .anime-lvl2-class-14 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 15 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-15, html[data-ypp-ui-design="anime"] .anime-lvl2-class-15 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 16 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-16, html[data-ypp-ui-design="anime"] .anime-lvl2-class-16 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 17 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-17, html[data-ypp-ui-design="anime"] .anime-lvl2-class-17 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 18 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-18, html[data-ypp-ui-design="anime"] .anime-lvl2-class-18 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 19 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-19, html[data-ypp-ui-design="anime"] .anime-lvl2-class-19 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 20 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-20, html[data-ypp-ui-design="anime"] .anime-lvl2-class-20 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 21 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-21, html[data-ypp-ui-design="anime"] .anime-lvl2-class-21 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 22 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-22, html[data-ypp-ui-design="anime"] .anime-lvl2-class-22 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 23 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-23, html[data-ypp-ui-design="anime"] .anime-lvl2-class-23 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 24 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-24, html[data-ypp-ui-design="anime"] .anime-lvl2-class-24 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 25 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-25, html[data-ypp-ui-design="anime"] .anime-lvl2-class-25 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 26 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-26, html[data-ypp-ui-design="anime"] .anime-lvl2-class-26 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 27 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-27, html[data-ypp-ui-design="anime"] .anime-lvl2-class-27 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 28 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-28, html[data-ypp-ui-design="anime"] .anime-lvl2-class-28 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 29 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-29, html[data-ypp-ui-design="anime"] .anime-lvl2-class-29 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 30 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-30, html[data-ypp-ui-design="anime"] .anime-lvl2-class-30 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 31 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-31, html[data-ypp-ui-design="anime"] .anime-lvl2-class-31 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 32 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-32, html[data-ypp-ui-design="anime"] .anime-lvl2-class-32 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 33 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-33, html[data-ypp-ui-design="anime"] .anime-lvl2-class-33 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 34 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-34, html[data-ypp-ui-design="anime"] .anime-lvl2-class-34 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 35 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-35, html[data-ypp-ui-design="anime"] .anime-lvl2-class-35 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 36 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-36, html[data-ypp-ui-design="anime"] .anime-lvl2-class-36 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 37 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-37, html[data-ypp-ui-design="anime"] .anime-lvl2-class-37 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 38 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-38, html[data-ypp-ui-design="anime"] .anime-lvl2-class-38 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 39 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-39, html[data-ypp-ui-design="anime"] .anime-lvl2-class-39 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 40 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-40, html[data-ypp-ui-design="anime"] .anime-lvl2-class-40 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 41 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-41, html[data-ypp-ui-design="anime"] .anime-lvl2-class-41 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 42 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-42, html[data-ypp-ui-design="anime"] .anime-lvl2-class-42 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 43 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-43, html[data-ypp-ui-design="anime"] .anime-lvl2-class-43 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 44 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-44, html[data-ypp-ui-design="anime"] .anime-lvl2-class-44 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 45 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-45, html[data-ypp-ui-design="anime"] .anime-lvl2-class-45 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 46 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-46, html[data-ypp-ui-design="anime"] .anime-lvl2-class-46 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 47 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-47, html[data-ypp-ui-design="anime"] .anime-lvl2-class-47 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 48 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-48, html[data-ypp-ui-design="anime"] .anime-lvl2-class-48 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 49 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-49, html[data-ypp-ui-design="anime"] .anime-lvl2-class-49 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 50 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-50, html[data-ypp-ui-design="anime"] .anime-lvl2-class-50 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 51 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-51, html[data-ypp-ui-design="anime"] .anime-lvl2-class-51 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 52 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-52, html[data-ypp-ui-design="anime"] .anime-lvl2-class-52 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 53 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-53, html[data-ypp-ui-design="anime"] .anime-lvl2-class-53 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 54 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-54, html[data-ypp-ui-design="anime"] .anime-lvl2-class-54 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 55 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-55, html[data-ypp-ui-design="anime"] .anime-lvl2-class-55 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 56 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-56, html[data-ypp-ui-design="anime"] .anime-lvl2-class-56 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 57 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-57, html[data-ypp-ui-design="anime"] .anime-lvl2-class-57 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 58 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-58, html[data-ypp-ui-design="anime"] .anime-lvl2-class-58 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 59 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-59, html[data-ypp-ui-design="anime"] .anime-lvl2-class-59 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 60 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-60, html[data-ypp-ui-design="anime"] .anime-lvl2-class-60 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 61 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-61, html[data-ypp-ui-design="anime"] .anime-lvl2-class-61 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 62 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-62, html[data-ypp-ui-design="anime"] .anime-lvl2-class-62 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 63 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-63, html[data-ypp-ui-design="anime"] .anime-lvl2-class-63 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 64 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-64, html[data-ypp-ui-design="anime"] .anime-lvl2-class-64 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 65 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-65, html[data-ypp-ui-design="anime"] .anime-lvl2-class-65 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 66 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-66, html[data-ypp-ui-design="anime"] .anime-lvl2-class-66 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 67 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-67, html[data-ypp-ui-design="anime"] .anime-lvl2-class-67 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 68 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-68, html[data-ypp-ui-design="anime"] .anime-lvl2-class-68 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 69 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-69, html[data-ypp-ui-design="anime"] .anime-lvl2-class-69 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 70 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-70, html[data-ypp-ui-design="anime"] .anime-lvl2-class-70 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 71 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-71, html[data-ypp-ui-design="anime"] .anime-lvl2-class-71 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 72 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-72, html[data-ypp-ui-design="anime"] .anime-lvl2-class-72 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 73 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-73, html[data-ypp-ui-design="anime"] .anime-lvl2-class-73 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 74 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-74, html[data-ypp-ui-design="anime"] .anime-lvl2-class-74 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 75 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-75, html[data-ypp-ui-design="anime"] .anime-lvl2-class-75 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 76 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-76, html[data-ypp-ui-design="anime"] .anime-lvl2-class-76 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 77 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-77, html[data-ypp-ui-design="anime"] .anime-lvl2-class-77 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 78 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-78, html[data-ypp-ui-design="anime"] .anime-lvl2-class-78 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 79 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-79, html[data-ypp-ui-design="anime"] .anime-lvl2-class-79 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 80 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-80, html[data-ypp-ui-design="anime"] .anime-lvl2-class-80 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 81 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-81, html[data-ypp-ui-design="anime"] .anime-lvl2-class-81 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 82 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-82, html[data-ypp-ui-design="anime"] .anime-lvl2-class-82 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 83 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-83, html[data-ypp-ui-design="anime"] .anime-lvl2-class-83 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 84 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-84, html[data-ypp-ui-design="anime"] .anime-lvl2-class-84 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 85 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-85, html[data-ypp-ui-design="anime"] .anime-lvl2-class-85 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 86 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-86, html[data-ypp-ui-design="anime"] .anime-lvl2-class-86 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 87 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-87, html[data-ypp-ui-design="anime"] .anime-lvl2-class-87 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 88 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-88, html[data-ypp-ui-design="anime"] .anime-lvl2-class-88 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 89 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-89, html[data-ypp-ui-design="anime"] .anime-lvl2-class-89 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 90 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-90, html[data-ypp-ui-design="anime"] .anime-lvl2-class-90 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 91 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-91, html[data-ypp-ui-design="anime"] .anime-lvl2-class-91 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 92 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-92, html[data-ypp-ui-design="anime"] .anime-lvl2-class-92 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 93 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-93, html[data-ypp-ui-design="anime"] .anime-lvl2-class-93 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 94 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-94, html[data-ypp-ui-design="anime"] .anime-lvl2-class-94 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 95 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-95, html[data-ypp-ui-design="anime"] .anime-lvl2-class-95 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 96 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-96, html[data-ypp-ui-design="anime"] .anime-lvl2-class-96 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 97 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-97, html[data-ypp-ui-design="anime"] .anime-lvl2-class-97 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 98 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-98, html[data-ypp-ui-design="anime"] .anime-lvl2-class-98 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 99 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-99, html[data-ypp-ui-design="anime"] .anime-lvl2-class-99 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 100 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-100, html[data-ypp-ui-design="anime"] .anime-lvl2-class-100 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 101 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-101, html[data-ypp-ui-design="anime"] .anime-lvl2-class-101 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 102 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-102, html[data-ypp-ui-design="anime"] .anime-lvl2-class-102 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 103 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-103, html[data-ypp-ui-design="anime"] .anime-lvl2-class-103 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 104 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-104, html[data-ypp-ui-design="anime"] .anime-lvl2-class-104 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 105 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-105, html[data-ypp-ui-design="anime"] .anime-lvl2-class-105 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 106 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-106, html[data-ypp-ui-design="anime"] .anime-lvl2-class-106 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 107 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-107, html[data-ypp-ui-design="anime"] .anime-lvl2-class-107 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 108 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-108, html[data-ypp-ui-design="anime"] .anime-lvl2-class-108 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 109 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-109, html[data-ypp-ui-design="anime"] .anime-lvl2-class-109 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 110 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-110, html[data-ypp-ui-design="anime"] .anime-lvl2-class-110 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 111 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-111, html[data-ypp-ui-design="anime"] .anime-lvl2-class-111 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 112 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-112, html[data-ypp-ui-design="anime"] .anime-lvl2-class-112 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 113 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-113, html[data-ypp-ui-design="anime"] .anime-lvl2-class-113 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 114 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-114, html[data-ypp-ui-design="anime"] .anime-lvl2-class-114 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 115 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-115, html[data-ypp-ui-design="anime"] .anime-lvl2-class-115 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 116 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-116, html[data-ypp-ui-design="anime"] .anime-lvl2-class-116 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 117 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-117, html[data-ypp-ui-design="anime"] .anime-lvl2-class-117 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 118 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-118, html[data-ypp-ui-design="anime"] .anime-lvl2-class-118 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 119 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-119, html[data-ypp-ui-design="anime"] .anime-lvl2-class-119 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 120 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-120, html[data-ypp-ui-design="anime"] .anime-lvl2-class-120 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 121 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-121, html[data-ypp-ui-design="anime"] .anime-lvl2-class-121 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 122 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-122, html[data-ypp-ui-design="anime"] .anime-lvl2-class-122 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 123 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-123, html[data-ypp-ui-design="anime"] .anime-lvl2-class-123 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 124 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-124, html[data-ypp-ui-design="anime"] .anime-lvl2-class-124 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 125 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-125, html[data-ypp-ui-design="anime"] .anime-lvl2-class-125 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 126 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-126, html[data-ypp-ui-design="anime"] .anime-lvl2-class-126 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 127 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-127, html[data-ypp-ui-design="anime"] .anime-lvl2-class-127 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 128 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-128, html[data-ypp-ui-design="anime"] .anime-lvl2-class-128 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 129 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-129, html[data-ypp-ui-design="anime"] .anime-lvl2-class-129 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 130 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-130, html[data-ypp-ui-design="anime"] .anime-lvl2-class-130 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 131 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-131, html[data-ypp-ui-design="anime"] .anime-lvl2-class-131 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 132 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-132, html[data-ypp-ui-design="anime"] .anime-lvl2-class-132 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 133 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-133, html[data-ypp-ui-design="anime"] .anime-lvl2-class-133 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 134 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-134, html[data-ypp-ui-design="anime"] .anime-lvl2-class-134 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 135 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-135, html[data-ypp-ui-design="anime"] .anime-lvl2-class-135 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 136 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-136, html[data-ypp-ui-design="anime"] .anime-lvl2-class-136 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 137 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-137, html[data-ypp-ui-design="anime"] .anime-lvl2-class-137 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 138 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-138, html[data-ypp-ui-design="anime"] .anime-lvl2-class-138 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 139 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-139, html[data-ypp-ui-design="anime"] .anime-lvl2-class-139 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 140 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-140, html[data-ypp-ui-design="anime"] .anime-lvl2-class-140 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 141 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-141, html[data-ypp-ui-design="anime"] .anime-lvl2-class-141 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 142 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-142, html[data-ypp-ui-design="anime"] .anime-lvl2-class-142 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 143 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-143, html[data-ypp-ui-design="anime"] .anime-lvl2-class-143 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 144 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-144, html[data-ypp-ui-design="anime"] .anime-lvl2-class-144 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 145 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-145, html[data-ypp-ui-design="anime"] .anime-lvl2-class-145 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 146 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-146, html[data-ypp-ui-design="anime"] .anime-lvl2-class-146 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 147 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-147, html[data-ypp-ui-design="anime"] .anime-lvl2-class-147 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 148 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-148, html[data-ypp-ui-design="anime"] .anime-lvl2-class-148 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 149 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-149, html[data-ypp-ui-design="anime"] .anime-lvl2-class-149 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 150 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-150, html[data-ypp-ui-design="anime"] .anime-lvl2-class-150 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 151 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-151, html[data-ypp-ui-design="anime"] .anime-lvl2-class-151 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 152 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-152, html[data-ypp-ui-design="anime"] .anime-lvl2-class-152 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 153 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-153, html[data-ypp-ui-design="anime"] .anime-lvl2-class-153 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 154 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-154, html[data-ypp-ui-design="anime"] .anime-lvl2-class-154 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 155 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-155, html[data-ypp-ui-design="anime"] .anime-lvl2-class-155 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 156 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-156, html[data-ypp-ui-design="anime"] .anime-lvl2-class-156 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 157 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-157, html[data-ypp-ui-design="anime"] .anime-lvl2-class-157 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 158 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-158, html[data-ypp-ui-design="anime"] .anime-lvl2-class-158 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 159 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-159, html[data-ypp-ui-design="anime"] .anime-lvl2-class-159 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 160 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-160, html[data-ypp-ui-design="anime"] .anime-lvl2-class-160 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 161 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-161, html[data-ypp-ui-design="anime"] .anime-lvl2-class-161 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 162 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-162, html[data-ypp-ui-design="anime"] .anime-lvl2-class-162 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 163 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-163, html[data-ypp-ui-design="anime"] .anime-lvl2-class-163 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 164 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-164, html[data-ypp-ui-design="anime"] .anime-lvl2-class-164 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 165 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-165, html[data-ypp-ui-design="anime"] .anime-lvl2-class-165 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 166 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-166, html[data-ypp-ui-design="anime"] .anime-lvl2-class-166 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 167 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-167, html[data-ypp-ui-design="anime"] .anime-lvl2-class-167 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 168 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-168, html[data-ypp-ui-design="anime"] .anime-lvl2-class-168 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 169 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-169, html[data-ypp-ui-design="anime"] .anime-lvl2-class-169 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 170 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-170, html[data-ypp-ui-design="anime"] .anime-lvl2-class-170 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 171 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-171, html[data-ypp-ui-design="anime"] .anime-lvl2-class-171 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 172 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-172, html[data-ypp-ui-design="anime"] .anime-lvl2-class-172 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 173 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-173, html[data-ypp-ui-design="anime"] .anime-lvl2-class-173 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 174 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-174, html[data-ypp-ui-design="anime"] .anime-lvl2-class-174 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 175 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-175, html[data-ypp-ui-design="anime"] .anime-lvl2-class-175 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 176 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-176, html[data-ypp-ui-design="anime"] .anime-lvl2-class-176 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 177 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-177, html[data-ypp-ui-design="anime"] .anime-lvl2-class-177 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 178 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-178, html[data-ypp-ui-design="anime"] .anime-lvl2-class-178 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 179 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-179, html[data-ypp-ui-design="anime"] .anime-lvl2-class-179 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 180 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-180, html[data-ypp-ui-design="anime"] .anime-lvl2-class-180 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 181 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-181, html[data-ypp-ui-design="anime"] .anime-lvl2-class-181 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 182 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-182, html[data-ypp-ui-design="anime"] .anime-lvl2-class-182 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 183 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-183, html[data-ypp-ui-design="anime"] .anime-lvl2-class-183 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 184 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-184, html[data-ypp-ui-design="anime"] .anime-lvl2-class-184 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 185 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-185, html[data-ypp-ui-design="anime"] .anime-lvl2-class-185 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 186 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-186, html[data-ypp-ui-design="anime"] .anime-lvl2-class-186 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 187 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-187, html[data-ypp-ui-design="anime"] .anime-lvl2-class-187 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 188 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-188, html[data-ypp-ui-design="anime"] .anime-lvl2-class-188 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 189 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-189, html[data-ypp-ui-design="anime"] .anime-lvl2-class-189 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 190 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-190, html[data-ypp-ui-design="anime"] .anime-lvl2-class-190 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 191 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-191, html[data-ypp-ui-design="anime"] .anime-lvl2-class-191 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 192 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-192, html[data-ypp-ui-design="anime"] .anime-lvl2-class-192 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 193 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-193, html[data-ypp-ui-design="anime"] .anime-lvl2-class-193 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 194 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-194, html[data-ypp-ui-design="anime"] .anime-lvl2-class-194 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 195 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-195, html[data-ypp-ui-design="anime"] .anime-lvl2-class-195 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 196 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-196, html[data-ypp-ui-design="anime"] .anime-lvl2-class-196 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 197 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-197, html[data-ypp-ui-design="anime"] .anime-lvl2-class-197 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 198 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-198, html[data-ypp-ui-design="anime"] .anime-lvl2-class-198 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 199 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-199, html[data-ypp-ui-design="anime"] .anime-lvl2-class-199 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 200 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-200, html[data-ypp-ui-design="anime"] .anime-lvl2-class-200 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 201 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-201, html[data-ypp-ui-design="anime"] .anime-lvl2-class-201 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 202 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-202, html[data-ypp-ui-design="anime"] .anime-lvl2-class-202 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 203 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-203, html[data-ypp-ui-design="anime"] .anime-lvl2-class-203 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 204 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-204, html[data-ypp-ui-design="anime"] .anime-lvl2-class-204 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 205 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-205, html[data-ypp-ui-design="anime"] .anime-lvl2-class-205 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 206 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-206, html[data-ypp-ui-design="anime"] .anime-lvl2-class-206 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 207 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-207, html[data-ypp-ui-design="anime"] .anime-lvl2-class-207 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 208 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-208, html[data-ypp-ui-design="anime"] .anime-lvl2-class-208 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 209 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-209, html[data-ypp-ui-design="anime"] .anime-lvl2-class-209 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 210 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-210, html[data-ypp-ui-design="anime"] .anime-lvl2-class-210 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 211 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-211, html[data-ypp-ui-design="anime"] .anime-lvl2-class-211 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 212 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-212, html[data-ypp-ui-design="anime"] .anime-lvl2-class-212 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 213 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-213, html[data-ypp-ui-design="anime"] .anime-lvl2-class-213 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 214 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-214, html[data-ypp-ui-design="anime"] .anime-lvl2-class-214 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 215 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-215, html[data-ypp-ui-design="anime"] .anime-lvl2-class-215 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 216 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-216, html[data-ypp-ui-design="anime"] .anime-lvl2-class-216 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 217 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-217, html[data-ypp-ui-design="anime"] .anime-lvl2-class-217 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 218 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-218, html[data-ypp-ui-design="anime"] .anime-lvl2-class-218 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 219 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-219, html[data-ypp-ui-design="anime"] .anime-lvl2-class-219 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 220 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-220, html[data-ypp-ui-design="anime"] .anime-lvl2-class-220 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 221 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-221, html[data-ypp-ui-design="anime"] .anime-lvl2-class-221 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 222 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-222, html[data-ypp-ui-design="anime"] .anime-lvl2-class-222 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 223 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-223, html[data-ypp-ui-design="anime"] .anime-lvl2-class-223 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 224 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-224, html[data-ypp-ui-design="anime"] .anime-lvl2-class-224 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 225 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-225, html[data-ypp-ui-design="anime"] .anime-lvl2-class-225 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 226 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-226, html[data-ypp-ui-design="anime"] .anime-lvl2-class-226 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 227 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-227, html[data-ypp-ui-design="anime"] .anime-lvl2-class-227 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 228 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-228, html[data-ypp-ui-design="anime"] .anime-lvl2-class-228 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 229 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-229, html[data-ypp-ui-design="anime"] .anime-lvl2-class-229 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 230 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-230, html[data-ypp-ui-design="anime"] .anime-lvl2-class-230 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 231 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-231, html[data-ypp-ui-design="anime"] .anime-lvl2-class-231 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 232 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-232, html[data-ypp-ui-design="anime"] .anime-lvl2-class-232 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 233 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-233, html[data-ypp-ui-design="anime"] .anime-lvl2-class-233 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 234 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-234, html[data-ypp-ui-design="anime"] .anime-lvl2-class-234 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 235 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-235, html[data-ypp-ui-design="anime"] .anime-lvl2-class-235 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 236 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-236, html[data-ypp-ui-design="anime"] .anime-lvl2-class-236 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 237 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-237, html[data-ypp-ui-design="anime"] .anime-lvl2-class-237 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 238 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-238, html[data-ypp-ui-design="anime"] .anime-lvl2-class-238 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 239 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-239, html[data-ypp-ui-design="anime"] .anime-lvl2-class-239 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 240 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-240, html[data-ypp-ui-design="anime"] .anime-lvl2-class-240 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 241 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-241, html[data-ypp-ui-design="anime"] .anime-lvl2-class-241 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 242 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-242, html[data-ypp-ui-design="anime"] .anime-lvl2-class-242 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 243 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-243, html[data-ypp-ui-design="anime"] .anime-lvl2-class-243 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 244 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-244, html[data-ypp-ui-design="anime"] .anime-lvl2-class-244 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 245 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-245, html[data-ypp-ui-design="anime"] .anime-lvl2-class-245 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 246 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-246, html[data-ypp-ui-design="anime"] .anime-lvl2-class-246 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 247 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-247, html[data-ypp-ui-design="anime"] .anime-lvl2-class-247 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 248 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-248, html[data-ypp-ui-design="anime"] .anime-lvl2-class-248 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 249 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-249, html[data-ypp-ui-design="anime"] .anime-lvl2-class-249 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
 /* anime Deep UI Ruleset 250 */
 html[data-ypp-card-style="anime"] .anime-lvl2-class-250, html[data-ypp-ui-design="anime"] .anime-lvl2-class-250 {
-  border-radius: var(--anime-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--anime-radius)) !important;
   box-shadow: var(--anime-shadow) !important;
 }
 
@@ -2346,7 +2346,7 @@ html[data-ypp-card-style="anime"] .anime-lvl2-class-250, html[data-ypp-ui-design
 html[data-ypp-ui-design="anime"] tp-yt-paper-dialog, html[data-ypp-ui-design="anime"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="anime"] tp-yt-iron-dropdown, html[data-ypp-ui-design="anime"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-design="anime"] ytd-multi-page-menu-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
@@ -2354,18 +2354,18 @@ html[data-ypp-ui-design="anime"] ytd-multi-page-menu-renderer {
 
 html[data-ypp-ui-design="anime"] .ytp-settings-menu, html[data-ypp-ui-design="anime"] .ytp-panel-menu, html[data-ypp-ui-design="anime"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-ui-design="anime"] .ytp-panel {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ytp-tooltip-text {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   text-shadow: none !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-settings-sidebar-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
@@ -2381,7 +2381,7 @@ html[data-ypp-ui-design="anime"] ytd-masthead, html[data-ypp-ui-design="anime"] 
 }
 
 html[data-ypp-ui-design="anime"] ytd-topbar-logo-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2391,23 +2391,23 @@ html[data-ypp-ui-design="anime"] ytd-topbar-logo-renderer:hover {
 }
 
 html[data-ypp-ui-design="anime"] #guide-wrapper.ytd-app {
-  border-radius: 0 20px 20px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-guide-entry-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="anime"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
@@ -2417,7 +2417,7 @@ html[data-ypp-ui-design="anime"] #endpoint.yt-simple-endpoint.ytd-guide-entry-re
 }
 
 html[data-ypp-ui-design="anime"] ytd-mini-guide-entry-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2444,28 +2444,28 @@ html[data-ypp-ui-design="anime"] ytd-topbar-logo-renderer:hover {
 
 html[data-ypp-ui-design="anime"] #container.ytd-searchbox,
 html[data-ypp-ui-design="anime"] ytd-searchbox {
-  border-radius: 50px !important;
+  border-radius: var(--ypp-shape-primary, 50px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-ui-design="anime"] #search-icon-legacy {
-  border-radius: 0 50px 50px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 50px 50px 0) !important;
 }
 
 html[data-ypp-ui-design="anime"] #voice-search-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 2px 10px rgba(255,117,140,0.4) !important;
 }
 
 html[data-ypp-ui-design="anime"] .sbdd_b,
 html[data-ypp-ui-design="anime"] .sbsb_a {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 10px 25px rgba(255,117,140,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-design="anime"] ytd-notification-topbar-button-renderer yt-icon-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
@@ -2474,7 +2474,7 @@ html[data-ypp-ui-design="anime"] ytd-notification-topbar-button-renderer yt-icon
 }
 
 html[data-ypp-ui-design="anime"] #avatar-btn yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transition: transform 0.3s !important;
 }
 
@@ -2484,38 +2484,38 @@ html[data-ypp-ui-design="anime"] #avatar-btn yt-img-shadow:hover {
 
 html[data-ypp-ui-design="anime"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="anime"] tp-yt-iron-dropdown ytd-account-settings-menu-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 10px 25px rgba(255,117,140,0.3) !important;
 }
 
 /* anime/components/panels.css */
 html[data-ypp-ui-design="anime"] ytd-playlist-panel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-miniplayer, html[data-ypp-ui-design="anime"] #miniplayer-bar {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ypp-video-controls, html[data-ypp-ui-design="anime"] .ypp-shadow-panel {
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-transcript-search-panel-renderer,
 html[data-ypp-ui-design="anime"] ytd-transcript-segment-renderer,
 html[data-ypp-ui-design="anime"] #segments-container {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-macro-markers-info-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-sidebar {
@@ -2525,7 +2525,7 @@ html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-sidebar {
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
@@ -2534,7 +2534,7 @@ html[data-ypp-ui-design="anime"] #ypp-pl-root .ypp-pl-btn-play:hover, html[data-
 }
 
 html[data-ypp-ui-design="anime"] tp-yt-paper-tab {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] tp-yt-paper-tab:hover {
@@ -2543,11 +2543,11 @@ html[data-ypp-ui-design="anime"] tp-yt-paper-tab:hover {
 }
 
 html[data-ypp-ui-design="anime"] tp-yt-paper-tab[aria-selected="true"] {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-channel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
@@ -2557,12 +2557,12 @@ html[data-ypp-ui-design="anime"] ytd-channel-renderer:hover {
 }
 
 html[data-ypp-ui-design="anime"] ytd-c4-tabbed-header-renderer yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-expandable-tab-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-expandable-tab-renderer:hover {
@@ -2571,7 +2571,7 @@ html[data-ypp-ui-design="anime"] ytd-expandable-tab-renderer:hover {
 
 /* anime/pages/comments.css */
 html[data-ypp-ui-design="anime"] ytd-comment-view-model button, html[data-ypp-ui-design="anime"] ytd-comment-renderer button {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
 }
 
@@ -2581,12 +2581,12 @@ html[data-ypp-ui-design="anime"] ytd-comment-view-model button:hover, html[data-
 }
 
 html[data-ypp-ui-design="anime"] ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-comment-thread-renderer, html[data-ypp-ui-design="anime"] ytd-comment-view-model {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
@@ -2596,40 +2596,40 @@ html[data-ypp-ui-design="anime"] ytd-comment-thread-renderer:hover, html[data-yp
 }
 
 html[data-ypp-ui-design="anime"] ytd-comment-simplebox-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 2px 8px rgba(255,105,180,0.2) !important;
 }
 
 html[data-ypp-ui-design="anime"] #header-author yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-backstage-post-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="anime"] #description.ytd-watch-metadata,
 html[data-ypp-ui-design="anime"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 html[data-ypp-ui-design="anime"] ytd-browse[page-subtype=home] #chips {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 2px 8px rgba(255,105,180,0.2) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="anime"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--chip-radius)) !important;
   box-shadow: var(--chip-shadow) !important;
 }
 
@@ -2642,7 +2642,7 @@ html[data-ypp-ui-design="anime"] yt-chip-cloud-chip-renderer[selected] {
 }
 
 html[data-ypp-ui-design="anime"] .ytChipShapeChip {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2652,32 +2652,32 @@ html[data-ypp-ui-design="anime"] .ytChipShapeChip:hover {
 }
 
 html[data-ypp-ui-design="anime"] ytd-settings-sidebar-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 /* anime/pages/livechat.css */
 html[data-ypp-ui-design="anime"] yt-live-chat-app, html[data-ypp-ui-design="anime"] #chat, html[data-ypp-ui-design="anime"] yt-live-chat-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] yt-live-chat-paid-message-renderer {
   background: linear-gradient(135deg, #ff69b4, #d63384) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
 html[data-ypp-ui-design="anime"] yt-live-chat-paid-sticker-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] yt-live-chat-membership-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* anime/pages/player.css */
 html[data-ypp-ui-design="anime"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -2700,7 +2700,7 @@ html[data-ypp-ui-design="anime"] .ytp-chrome-bottom, html[data-ypp-ui-design="an
 }
 
 html[data-ypp-ui-design="anime"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: rotate(0deg) scale(0.8) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
   transition: transform 0.1s ease !important;
@@ -2715,22 +2715,22 @@ html[data-ypp-ui-design="anime"] .ytp-time-display, html[data-ypp-ui-design="ani
 }
 
 html[data-ypp-ui-design="anime"] .ytp-tooltip-text {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   text-shadow: none !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-design="anime"] .ytp-panel {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ytp-volume-slider-handle {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="anime"] .ytp-ce-element {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important;
 }
 
@@ -2740,11 +2740,11 @@ html[data-ypp-ui-design="anime"] .ytp-ce-element:hover {
 }
 
 html[data-ypp-ui-design="anime"] video.video-stream.html5-main-video, html[data-ypp-ui-design="anime"] .html5-video-player {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-video-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
@@ -2754,30 +2754,30 @@ html[data-ypp-ui-design="anime"] ytd-video-renderer:hover {
 }
 
 html[data-ypp-ui-design="anime"] ytd-search-pyv-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-shelf-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-channel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-horizontal-card-list-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-reel-video-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
@@ -2787,7 +2787,7 @@ html[data-ypp-ui-design="anime"] #actions.ytd-reel-player-overlay-renderer ytd-b
 }
 
 html[data-ypp-ui-design="anime"] ytd-reel-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-reel-item-renderer:hover {
@@ -2799,18 +2799,18 @@ html[data-ypp-ui-design="anime"] .ytd-reel-video-renderer .overlay-dir {
 }
 
 html[data-ypp-ui-design="anime"] ytd-video-primary-info-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 30px rgba(255,105,180,0.3) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-video-secondary-info-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-watch-metadata {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="anime"] ytd-expandable-metadata-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }

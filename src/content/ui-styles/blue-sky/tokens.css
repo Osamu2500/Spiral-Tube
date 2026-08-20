@@ -8,7 +8,7 @@ html[data-ypp-ui-style="blue-sky"] {
   --ypp-primary-accent: #87CEFA !important;
   --ypp-text-primary: var(--sky-text-secondary) !important;
   
-  --ypp-surface-border: 1px solid #87CEFA40 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #87CEFA40) !important;
   --ypp-shadow-base: 0 4px 12px #87CEFA20 !important;
   --ypp-shadow-hover: 0 8px 24px #87CEFA40 !important;
   

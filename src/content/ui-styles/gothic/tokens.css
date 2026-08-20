@@ -8,15 +8,15 @@ html[data-ypp-ui-style="gothic"] {
   --ypp-primary-accent: #2a0800 !important;
   --ypp-text-primary: #8b0000 !important;
   
-  --ypp-surface-border: 1px solid #2a080040 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #2a080040) !important;
   --ypp-shadow-base: 0 4px 12px #2a080020 !important;
   --ypp-shadow-hover: 0 8px 24px #2a080040 !important;
   
-  --yt-font-family: "Cinzel","Palatino Linotype",serif !important;
+  --yt-font-family: var(--ypp-font-primary, "Cinzel","Palatino Linotype",serif) !important;
 }
 
 
 html[data-ypp-ui-style="gothic"] * {
-  font-family: "Cinzel","Palatino Linotype",serif !important;
+  font-family: var(--ypp-font-primary, "Cinzel","Palatino Linotype",serif) !important;
 }
 

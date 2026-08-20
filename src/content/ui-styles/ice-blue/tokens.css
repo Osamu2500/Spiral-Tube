@@ -8,7 +8,7 @@ html[data-ypp-ui-style="ice-blue"] {
   --ypp-primary-accent: #ffffff !important;
   --ypp-text-primary: rgba(255, 255, 255, 0.7) !important;
   
-  --ypp-surface-border: 1px solid #ffffff40 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
   

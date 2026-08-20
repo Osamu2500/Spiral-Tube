@@ -107,25 +107,25 @@ html[data-ypp-ui-design="matrix"] ytd-topbar-logo-renderer a#logo::before {
 }
 
 html[data-ypp-ui-design="matrix"] ::-webkit-scrollbar-thumb {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-organizer-modal, html[data-ypp-ui-design="matrix"] .ypp-modal-content {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #simplebox-placeholder {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-slider, html[data-ypp-ui-design="matrix"] .ypp-gpb-vol-slider {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .tab-content.tp-yt-paper-tab:hover {
@@ -137,7 +137,7 @@ html[data-ypp-ui-design="matrix"] .ypp-nav-btn.active {
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-badge, html[data-ypp-ui-design="matrix"] .ypp-value-display {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-play,
@@ -145,7 +145,7 @@ html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-tool,
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
@@ -166,7 +166,7 @@ html[data-ypp-ui-design="matrix"] body.yt-pro-ambient .style-scope.ytd-watch-fle
 }
 
 html[data-ypp-ui-design="matrix"] .ytSuggestionComponentRoundedSuggestion {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -177,23 +177,23 @@ html[data-ypp-ui-design="matrix"] .ytSuggestionComponentRoundedSuggestion:hover 
 
 html[data-ypp-ui-design="matrix"] yt-img-shadow#avatar {
   box-shadow: 0 0 10px #00ff00 !important;
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarLine,
 html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarPlayed {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* matrix/components/badges.css */
 html[data-ypp-ui-design="matrix"] .yt-badge-shape--thumbnail-default,
 html[data-ypp-ui-design="matrix"] .ypp-badge, html[data-ypp-ui-design="matrix"] .ypp-value-display {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-badge-supported-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarLine,
@@ -202,15 +202,15 @@ html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarLoaded,
 html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarHovered,
 html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarPlayed,
 html[data-ypp-ui-design="matrix"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-thumbnail-overlay-time-status-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-thumbnail-overlay-toggle-button-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -229,7 +229,7 @@ html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" 
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i] {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
   text-transform: uppercase;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
@@ -256,7 +256,7 @@ html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i]:ho
 html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i] {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -273,7 +273,7 @@ html[data-ypp-ui-design="matrix"] .ytSegmentedLikeDislikeButtonViewModelSegmente
 
 html[data-ypp-ui-design="matrix"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
 html[data-ypp-ui-design="matrix"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -289,7 +289,7 @@ html[data-ypp-ui-design="matrix"] .ytSegmentedLikeDislikeButtonViewModelSegmente
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-pill-toggle {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -299,7 +299,7 @@ html[data-ypp-ui-design="matrix"] .ypp-pill-toggle:hover {
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-btn-primary, html[data-ypp-ui-design="matrix"] .ypp-play-all-btn, html[data-ypp-ui-design="matrix"] .ypp-health-btn {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -311,7 +311,7 @@ html[data-ypp-ui-design="matrix"] .ypp-btn-primary:hover, html[data-ypp-ui-desig
 /* matrix/components/forms.css */
 html[data-ypp-ui-design="matrix"] ytd-searchbox, html[data-ypp-ui-design="matrix"] #search-form,
 html[data-ypp-ui-design="matrix"] tp-yt-paper-input, html[data-ypp-ui-design="matrix"] tp-yt-paper-textarea {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
 
@@ -320,11 +320,11 @@ html[data-ypp-ui-design="matrix"] ytd-searchbox[has-focus], html[data-ypp-ui-des
 }
 
 html[data-ypp-ui-design="matrix"] #search-icon-legacy {
-  border-radius: 0 0px 0px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-filter-dropdown {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -333,12 +333,12 @@ html[data-ypp-ui-design="matrix"] .ypp-filter-dropdown:hover {
 }
 
 html[data-ypp-ui-design="matrix"] ytd-comment-simplebox-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 5px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] yt-icon-button#guide-button {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -373,7 +373,7 @@ html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" 
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i] {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -392,7 +392,7 @@ html[data-ypp-card-style="matrix"] *, html[data-ypp-ui-design="matrix"] * {
 
 /* Specific Styling for ytd-video-renderer */
 html[data-ypp-card-style="matrix"] ytd-video-renderer, html[data-ypp-ui-design="matrix"] ytd-video-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -403,7 +403,7 @@ html[data-ypp-card-style="matrix"] ytd-video-renderer, html[data-ypp-ui-design="
 
 /* Specific Styling for ytd-rich-item-renderer */
 html[data-ypp-card-style="matrix"] ytd-rich-item-renderer, html[data-ypp-ui-design="matrix"] ytd-rich-item-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -414,7 +414,7 @@ html[data-ypp-card-style="matrix"] ytd-rich-item-renderer, html[data-ypp-ui-desi
 
 /* Specific Styling for ytd-playlist-renderer */
 html[data-ypp-card-style="matrix"] ytd-playlist-renderer, html[data-ypp-ui-design="matrix"] ytd-playlist-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -425,7 +425,7 @@ html[data-ypp-card-style="matrix"] ytd-playlist-renderer, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-grid-video-renderer */
 html[data-ypp-card-style="matrix"] ytd-grid-video-renderer, html[data-ypp-ui-design="matrix"] ytd-grid-video-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -436,7 +436,7 @@ html[data-ypp-card-style="matrix"] ytd-grid-video-renderer, html[data-ypp-ui-des
 
 /* Specific Styling for ytd-compact-video-renderer */
 html[data-ypp-card-style="matrix"] ytd-compact-video-renderer, html[data-ypp-ui-design="matrix"] ytd-compact-video-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -447,7 +447,7 @@ html[data-ypp-card-style="matrix"] ytd-compact-video-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-reel-item-renderer */
 html[data-ypp-card-style="matrix"] ytd-reel-item-renderer, html[data-ypp-ui-design="matrix"] ytd-reel-item-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -458,7 +458,7 @@ html[data-ypp-card-style="matrix"] ytd-reel-item-renderer, html[data-ypp-ui-desi
 
 /* Specific Styling for ytd-rich-shelf-renderer */
 html[data-ypp-card-style="matrix"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="matrix"] ytd-rich-shelf-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -469,7 +469,7 @@ html[data-ypp-card-style="matrix"] ytd-rich-shelf-renderer, html[data-ypp-ui-des
 
 /* Specific Styling for ytd-comment-thread-renderer */
 html[data-ypp-card-style="matrix"] ytd-comment-thread-renderer, html[data-ypp-ui-design="matrix"] ytd-comment-thread-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -480,7 +480,7 @@ html[data-ypp-card-style="matrix"] ytd-comment-thread-renderer, html[data-ypp-ui
 
 /* Specific Styling for ytd-channel-renderer */
 html[data-ypp-card-style="matrix"] ytd-channel-renderer, html[data-ypp-ui-design="matrix"] ytd-channel-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -491,7 +491,7 @@ html[data-ypp-card-style="matrix"] ytd-channel-renderer, html[data-ypp-ui-design
 
 /* Specific Styling for ytd-playlist-panel-renderer */
 html[data-ypp-card-style="matrix"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="matrix"] ytd-playlist-panel-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -502,7 +502,7 @@ html[data-ypp-card-style="matrix"] ytd-playlist-panel-renderer, html[data-ypp-ui
 
 /* Specific Styling for ytd-watch-metadata */
 html[data-ypp-card-style="matrix"] ytd-watch-metadata, html[data-ypp-ui-design="matrix"] ytd-watch-metadata {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -513,7 +513,7 @@ html[data-ypp-card-style="matrix"] ytd-watch-metadata, html[data-ypp-ui-design="
 
 /* Specific Styling for ytd-multi-page-menu-renderer */
 html[data-ypp-card-style="matrix"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="matrix"] ytd-multi-page-menu-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -524,7 +524,7 @@ html[data-ypp-card-style="matrix"] ytd-multi-page-menu-renderer, html[data-ypp-u
 
 /* Specific Styling for ytd-menu-popup-renderer */
 html[data-ypp-card-style="matrix"] ytd-menu-popup-renderer, html[data-ypp-ui-design="matrix"] ytd-menu-popup-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -535,7 +535,7 @@ html[data-ypp-card-style="matrix"] ytd-menu-popup-renderer, html[data-ypp-ui-des
 
 /* Specific Styling for tp-yt-paper-dialog */
 html[data-ypp-card-style="matrix"] tp-yt-paper-dialog, html[data-ypp-ui-design="matrix"] tp-yt-paper-dialog {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -546,7 +546,7 @@ html[data-ypp-card-style="matrix"] tp-yt-paper-dialog, html[data-ypp-ui-design="
 
 /* Specific Styling for ytd-notification-renderer */
 html[data-ypp-card-style="matrix"] ytd-notification-renderer, html[data-ypp-ui-design="matrix"] ytd-notification-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -557,7 +557,7 @@ html[data-ypp-card-style="matrix"] ytd-notification-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-account-item-renderer */
 html[data-ypp-card-style="matrix"] ytd-account-item-renderer, html[data-ypp-ui-design="matrix"] ytd-account-item-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -568,7 +568,7 @@ html[data-ypp-card-style="matrix"] ytd-account-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-guide-entry-renderer */
 html[data-ypp-card-style="matrix"] ytd-guide-entry-renderer, html[data-ypp-ui-design="matrix"] ytd-guide-entry-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -579,7 +579,7 @@ html[data-ypp-card-style="matrix"] ytd-guide-entry-renderer, html[data-ypp-ui-de
 
 /* Specific Styling for ytd-mini-guide-entry-renderer */
 html[data-ypp-card-style="matrix"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="matrix"] ytd-mini-guide-entry-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -590,7 +590,7 @@ html[data-ypp-card-style="matrix"] ytd-mini-guide-entry-renderer, html[data-ypp-
 
 /* Specific Styling for ytd-search-filter-renderer */
 html[data-ypp-card-style="matrix"] ytd-search-filter-renderer, html[data-ypp-ui-design="matrix"] ytd-search-filter-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -601,7 +601,7 @@ html[data-ypp-card-style="matrix"] ytd-search-filter-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-macro-markers-list-item-renderer */
 html[data-ypp-card-style="matrix"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="matrix"] ytd-macro-markers-list-item-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -612,7 +612,7 @@ html[data-ypp-card-style="matrix"] ytd-macro-markers-list-item-renderer, html[da
 
 /* Specific Styling for ytd-c4-tabbed-header-renderer */
 html[data-ypp-card-style="matrix"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-design="matrix"] ytd-c4-tabbed-header-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -623,7 +623,7 @@ html[data-ypp-card-style="matrix"] ytd-c4-tabbed-header-renderer, html[data-ypp-
 
 /* Specific Styling for #channel-header */
 html[data-ypp-card-style="matrix"] #channel-header, html[data-ypp-ui-design="matrix"] #channel-header {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -634,7 +634,7 @@ html[data-ypp-card-style="matrix"] #channel-header, html[data-ypp-ui-design="mat
 
 /* Specific Styling for ytd-live-chat-renderer */
 html[data-ypp-card-style="matrix"] ytd-live-chat-renderer, html[data-ypp-ui-design="matrix"] ytd-live-chat-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -645,7 +645,7 @@ html[data-ypp-card-style="matrix"] ytd-live-chat-renderer, html[data-ypp-ui-desi
 
 /* Specific Styling for yt-live-chat-text-message-renderer */
 html[data-ypp-card-style="matrix"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="matrix"] yt-live-chat-text-message-renderer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -656,7 +656,7 @@ html[data-ypp-card-style="matrix"] yt-live-chat-text-message-renderer, html[data
 
 /* Specific Styling for ytd-miniplayer */
 html[data-ypp-card-style="matrix"] ytd-miniplayer, html[data-ypp-ui-design="matrix"] ytd-miniplayer {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -667,7 +667,7 @@ html[data-ypp-card-style="matrix"] ytd-miniplayer, html[data-ypp-ui-design="matr
 
 /* Specific Styling for .ytp-settings-menu */
 html[data-ypp-card-style="matrix"] .ytp-settings-menu, html[data-ypp-ui-design="matrix"] .ytp-settings-menu {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -678,7 +678,7 @@ html[data-ypp-card-style="matrix"] .ytp-settings-menu, html[data-ypp-ui-design="
 
 /* Specific Styling for .ytp-chrome-bottom */
 html[data-ypp-card-style="matrix"] .ytp-chrome-bottom, html[data-ypp-ui-design="matrix"] .ytp-chrome-bottom {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -689,7 +689,7 @@ html[data-ypp-card-style="matrix"] .ytp-chrome-bottom, html[data-ypp-ui-design="
 
 /* Specific Styling for .ytp-endscreen-content */
 html[data-ypp-card-style="matrix"] .ytp-endscreen-content, html[data-ypp-ui-design="matrix"] .ytp-endscreen-content {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -700,7 +700,7 @@ html[data-ypp-card-style="matrix"] .ytp-endscreen-content, html[data-ypp-ui-desi
 
 /* Specific Styling for .ytp-ce-element */
 html[data-ypp-card-style="matrix"] .ytp-ce-element, html[data-ypp-ui-design="matrix"] .ytp-ce-element {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -711,7 +711,7 @@ html[data-ypp-card-style="matrix"] .ytp-ce-element, html[data-ypp-ui-design="mat
 
 /* Specific Styling for yt-error-screen */
 html[data-ypp-card-style="matrix"] yt-error-screen, html[data-ypp-ui-design="matrix"] yt-error-screen {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
   background-image: repeating-linear-gradient(180deg, transparent, rgba(0,255,65,0.02) 2px, transparent 4px) !important;
 }
@@ -722,1514 +722,1514 @@ html[data-ypp-card-style="matrix"] yt-error-screen, html[data-ypp-ui-design="mat
 
 /* Unique Avatar Masking */
 html[data-ypp-card-style="matrix"] yt-img-shadow, html[data-ypp-ui-design="matrix"] yt-img-shadow {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   filter: sepia(1) hue-rotate(60deg) saturate(3) !important;
   box-shadow: 0 0 10px #00ff41 !important;
 }
 
 html[data-ypp-card-style="matrix"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="matrix"] .yt-spec-avatar-shape__image {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   filter: sepia(1) hue-rotate(60deg) saturate(3) !important;
   box-shadow: 0 0 10px #00ff41 !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 1 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-1, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-1 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 2 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-2, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-2 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 3 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-3, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-3 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 4 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-4, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-4 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 5 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-5, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-5 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 6 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-6, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-6 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 7 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-7, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-7 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 8 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-8, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-8 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 9 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-9, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-9 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 10 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-10, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-10 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 11 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-11, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-11 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 12 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-12, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-12 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 13 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-13, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-13 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 14 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-14, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-14 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 15 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-15, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-15 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 16 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-16, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-16 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 17 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-17, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-17 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 18 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-18, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-18 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 19 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-19, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-19 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 20 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-20, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-20 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 21 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-21, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-21 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 22 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-22, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-22 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 23 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-23, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-23 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 24 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-24, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-24 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 25 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-25, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-25 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 26 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-26, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-26 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 27 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-27, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-27 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 28 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-28, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-28 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 29 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-29, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-29 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 30 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-30, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-30 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 31 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-31, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-31 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 32 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-32, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-32 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 33 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-33, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-33 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 34 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-34, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-34 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 35 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-35, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-35 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 36 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-36, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-36 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 37 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-37, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-37 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 38 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-38, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-38 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 39 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-39, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-39 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 40 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-40, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-40 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 41 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-41, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-41 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 42 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-42, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-42 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 43 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-43, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-43 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 44 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-44, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-44 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 45 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-45, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-45 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 46 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-46, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-46 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 47 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-47, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-47 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 48 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-48, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-48 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 49 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-49, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-49 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 50 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-50, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-50 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 51 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-51, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-51 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 52 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-52, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-52 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 53 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-53, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-53 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 54 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-54, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-54 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 55 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-55, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-55 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 56 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-56, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-56 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 57 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-57, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-57 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 58 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-58, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-58 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 59 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-59, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-59 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 60 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-60, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-60 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 61 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-61, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-61 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 62 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-62, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-62 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 63 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-63, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-63 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 64 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-64, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-64 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 65 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-65, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-65 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 66 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-66, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-66 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 67 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-67, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-67 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 68 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-68, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-68 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 69 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-69, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-69 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 70 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-70, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-70 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 71 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-71, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-71 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 72 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-72, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-72 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 73 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-73, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-73 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 74 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-74, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-74 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 75 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-75, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-75 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 76 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-76, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-76 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 77 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-77, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-77 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 78 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-78, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-78 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 79 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-79, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-79 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 80 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-80, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-80 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 81 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-81, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-81 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 82 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-82, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-82 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 83 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-83, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-83 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 84 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-84, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-84 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 85 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-85, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-85 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 86 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-86, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-86 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 87 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-87, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-87 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 88 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-88, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-88 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 89 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-89, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-89 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 90 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-90, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-90 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 91 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-91, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-91 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 92 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-92, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-92 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 93 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-93, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-93 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 94 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-94, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-94 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 95 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-95, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-95 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 96 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-96, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-96 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 97 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-97, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-97 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 98 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-98, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-98 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 99 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-99, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-99 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 100 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-100, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-100 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 101 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-101, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-101 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 102 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-102, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-102 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 103 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-103, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-103 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 104 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-104, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-104 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 105 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-105, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-105 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 106 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-106, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-106 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 107 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-107, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-107 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 108 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-108, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-108 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 109 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-109, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-109 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 110 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-110, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-110 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 111 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-111, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-111 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 112 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-112, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-112 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 113 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-113, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-113 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 114 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-114, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-114 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 115 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-115, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-115 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 116 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-116, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-116 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 117 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-117, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-117 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 118 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-118, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-118 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 119 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-119, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-119 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 120 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-120, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-120 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 121 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-121, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-121 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 122 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-122, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-122 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 123 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-123, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-123 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 124 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-124, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-124 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 125 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-125, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-125 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 126 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-126, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-126 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 127 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-127, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-127 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 128 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-128, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-128 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 129 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-129, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-129 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 130 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-130, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-130 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 131 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-131, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-131 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 132 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-132, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-132 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 133 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-133, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-133 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 134 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-134, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-134 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 135 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-135, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-135 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 136 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-136, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-136 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 137 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-137, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-137 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 138 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-138, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-138 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 139 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-139, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-139 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 140 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-140, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-140 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 141 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-141, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-141 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 142 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-142, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-142 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 143 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-143, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-143 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 144 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-144, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-144 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 145 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-145, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-145 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 146 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-146, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-146 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 147 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-147, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-147 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 148 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-148, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-148 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 149 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-149, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-149 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 150 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-150, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-150 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 151 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-151, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-151 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 152 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-152, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-152 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 153 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-153, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-153 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 154 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-154, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-154 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 155 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-155, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-155 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 156 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-156, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-156 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 157 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-157, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-157 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 158 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-158, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-158 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 159 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-159, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-159 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 160 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-160, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-160 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 161 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-161, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-161 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 162 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-162, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-162 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 163 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-163, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-163 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 164 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-164, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-164 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 165 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-165, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-165 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 166 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-166, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-166 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 167 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-167, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-167 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 168 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-168, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-168 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 169 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-169, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-169 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 170 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-170, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-170 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 171 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-171, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-171 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 172 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-172, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-172 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 173 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-173, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-173 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 174 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-174, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-174 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 175 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-175, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-175 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 176 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-176, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-176 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 177 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-177, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-177 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 178 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-178, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-178 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 179 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-179, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-179 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 180 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-180, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-180 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 181 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-181, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-181 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 182 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-182, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-182 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 183 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-183, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-183 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 184 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-184, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-184 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 185 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-185, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-185 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 186 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-186, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-186 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 187 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-187, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-187 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 188 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-188, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-188 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 189 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-189, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-189 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 190 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-190, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-190 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 191 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-191, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-191 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 192 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-192, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-192 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 193 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-193, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-193 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 194 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-194, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-194 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 195 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-195, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-195 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 196 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-196, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-196 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 197 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-197, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-197 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 198 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-198, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-198 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 199 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-199, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-199 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 200 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-200, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-200 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 201 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-201, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-201 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 202 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-202, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-202 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 203 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-203, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-203 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 204 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-204, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-204 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 205 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-205, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-205 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 206 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-206, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-206 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 207 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-207, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-207 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 208 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-208, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-208 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 209 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-209, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-209 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 210 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-210, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-210 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 211 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-211, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-211 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 212 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-212, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-212 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 213 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-213, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-213 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 214 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-214, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-214 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 215 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-215, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-215 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 216 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-216, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-216 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 217 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-217, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-217 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 218 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-218, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-218 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 219 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-219, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-219 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 220 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-220, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-220 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 221 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-221, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-221 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 222 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-222, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-222 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 223 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-223, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-223 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 224 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-224, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-224 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 225 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-225, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-225 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 226 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-226, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-226 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 227 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-227, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-227 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 228 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-228, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-228 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 229 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-229, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-229 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 230 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-230, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-230 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 231 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-231, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-231 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 232 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-232, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-232 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 233 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-233, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-233 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 234 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-234, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-234 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 235 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-235, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-235 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 236 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-236, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-236 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 237 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-237, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-237 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 238 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-238, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-238 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 239 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-239, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-239 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 240 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-240, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-240 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 241 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-241, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-241 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 242 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-242, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-242 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 243 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-243, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-243 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 244 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-244, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-244 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 245 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-245, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-245 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 246 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-246, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-246 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 247 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-247, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-247 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 248 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-248, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-248 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 249 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-249, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-249 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
 /* matrix Exotic Deep UI Ruleset 250 */
 html[data-ypp-card-style="matrix"] .matrix-exotic-class-250, html[data-ypp-ui-design="matrix"] .matrix-exotic-class-250 {
-  border-radius: var(--matrix-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--matrix-radius)) !important;
   box-shadow: var(--matrix-shadow) !important;
 }
 
@@ -2237,7 +2237,7 @@ html[data-ypp-card-style="matrix"] .matrix-exotic-class-250, html[data-ypp-ui-de
 html[data-ypp-ui-design="matrix"] tp-yt-paper-dialog, html[data-ypp-ui-design="matrix"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="matrix"] tp-yt-iron-dropdown, html[data-ypp-ui-design="matrix"] #contentWrapper tp-yt-iron-dropdown,
 html[data-ypp-ui-design="matrix"] ytd-multi-page-menu-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
@@ -2245,18 +2245,18 @@ html[data-ypp-ui-design="matrix"] ytd-multi-page-menu-renderer {
 
 html[data-ypp-ui-design="matrix"] .ytp-settings-menu, html[data-ypp-ui-design="matrix"] .ytp-panel-menu, html[data-ypp-ui-design="matrix"] .ytp-popup.ytp-settings-menu,
 html[data-ypp-ui-design="matrix"] .ytp-panel {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ytp-tooltip-text {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   text-shadow: none !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-settings-sidebar-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
@@ -2272,7 +2272,7 @@ html[data-ypp-ui-design="matrix"] ytd-masthead, html[data-ypp-ui-design="matrix"
 }
 
 html[data-ypp-ui-design="matrix"] ytd-topbar-logo-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2282,23 +2282,23 @@ html[data-ypp-ui-design="matrix"] ytd-topbar-logo-renderer:hover {
 }
 
 html[data-ypp-ui-design="matrix"] #guide-wrapper.ytd-app {
-  border-radius: 0 0px 0px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
   box-shadow: 0 0 10px #00ff00 !important;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-guide-entry-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
@@ -2308,7 +2308,7 @@ html[data-ypp-ui-design="matrix"] #endpoint.yt-simple-endpoint.ytd-guide-entry-r
 }
 
 html[data-ypp-ui-design="matrix"] ytd-mini-guide-entry-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2329,7 +2329,7 @@ html[data-ypp-ui-design="matrix"] ytd-topbar-logo-renderer {
 
 html[data-ypp-ui-design="matrix"] #container.ytd-searchbox,
 html[data-ypp-ui-design="matrix"] ytd-searchbox {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #search-input input {
@@ -2337,16 +2337,16 @@ html[data-ypp-ui-design="matrix"] #search-input input {
 }
 
 html[data-ypp-ui-design="matrix"] #search-icon-legacy {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #voice-search-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .sbdd_b,
 html[data-ypp-ui-design="matrix"] .sbsb_a {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 5px 20px rgba(0,255,0,0.4) !important;
 }
 
@@ -2356,7 +2356,7 @@ html[data-ypp-ui-design="matrix"] .sbsb_c:hover {
 
 html[data-ypp-ui-design="matrix"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-design="matrix"] ytd-notification-topbar-button-renderer yt-icon-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
@@ -2365,42 +2365,42 @@ html[data-ypp-ui-design="matrix"] ytd-notification-topbar-button-renderer yt-ico
 }
 
 html[data-ypp-ui-design="matrix"] #avatar-btn yt-img-shadow {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* matrix/components/panels.css */
 html[data-ypp-ui-design="matrix"] ytd-playlist-panel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #secondary-inner ytd-playlist-panel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-miniplayer, html[data-ypp-ui-design="matrix"] #miniplayer-bar {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ypp-video-controls, html[data-ypp-ui-design="matrix"] .ypp-shadow-panel {
   box-shadow: 0 0 10px #00ff00 !important;
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-transcript-search-panel-renderer,
 html[data-ypp-ui-design="matrix"] ytd-transcript-segment-renderer,
 html[data-ypp-ui-design="matrix"] #segments-container {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-macro-markers-info-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-sidebar {
@@ -2410,7 +2410,7 @@ html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-sidebar {
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle,
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-filter,
 html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-col-switcher {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
@@ -2419,7 +2419,7 @@ html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-play:hover, html[data
 }
 
 html[data-ypp-ui-design="matrix"] tp-yt-paper-tab {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] tp-yt-paper-tab:hover {
@@ -2428,11 +2428,11 @@ html[data-ypp-ui-design="matrix"] tp-yt-paper-tab:hover {
 }
 
 html[data-ypp-ui-design="matrix"] tp-yt-paper-tab[aria-selected="true"] {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-channel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
@@ -2442,12 +2442,12 @@ html[data-ypp-ui-design="matrix"] ytd-channel-renderer:hover {
 }
 
 html[data-ypp-ui-design="matrix"] ytd-c4-tabbed-header-renderer yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-expandable-tab-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-expandable-tab-renderer:hover {
@@ -2456,7 +2456,7 @@ html[data-ypp-ui-design="matrix"] ytd-expandable-tab-renderer:hover {
 
 /* matrix/pages/comments.css */
 html[data-ypp-ui-design="matrix"] ytd-comment-view-model button, html[data-ypp-ui-design="matrix"] ytd-comment-renderer button {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
 }
 
@@ -2466,12 +2466,12 @@ html[data-ypp-ui-design="matrix"] ytd-comment-view-model button:hover, html[data
 }
 
 html[data-ypp-ui-design="matrix"] ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-comment-thread-renderer, html[data-ypp-ui-design="matrix"] ytd-comment-view-model {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
@@ -2481,40 +2481,40 @@ html[data-ypp-ui-design="matrix"] ytd-comment-thread-renderer:hover, html[data-y
 }
 
 html[data-ypp-ui-design="matrix"] ytd-comment-simplebox-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 5px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] #header-author yt-img-shadow {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-backstage-post-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="matrix"] #description.ytd-watch-metadata,
 html[data-ypp-ui-design="matrix"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 html[data-ypp-ui-design="matrix"] ytd-browse[page-subtype=home] #chips {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 5px #00ff00 !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 html[data-ypp-ui-design="matrix"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--chip-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--chip-radius)) !important;
   box-shadow: var(--chip-shadow) !important;
 }
 
@@ -2527,7 +2527,7 @@ html[data-ypp-ui-design="matrix"] yt-chip-cloud-chip-renderer[selected] {
 }
 
 html[data-ypp-ui-design="matrix"] .ytChipShapeChip {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -2537,32 +2537,32 @@ html[data-ypp-ui-design="matrix"] .ytChipShapeChip:hover {
 }
 
 html[data-ypp-ui-design="matrix"] ytd-settings-sidebar-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 /* matrix/pages/livechat.css */
 html[data-ypp-ui-design="matrix"] yt-live-chat-app, html[data-ypp-ui-design="matrix"] #chat, html[data-ypp-ui-design="matrix"] yt-live-chat-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] yt-live-chat-paid-message-renderer {
   background: linear-gradient(135deg, #002200, #003300) !important;
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] yt-live-chat-paid-sticker-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] yt-live-chat-membership-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* matrix/pages/player.css */
 html[data-ypp-ui-design="matrix"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
@@ -2585,7 +2585,7 @@ html[data-ypp-ui-design="matrix"] .ytp-chrome-bottom, html[data-ypp-ui-design="m
 }
 
 html[data-ypp-ui-design="matrix"] .ytp-scrubber-button {
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transform: rotate(0deg) scaleX(2) scale(0.8) !important;
   box-shadow: 0 0 10px #00ff00 !important;
   transition: transform 0.1s ease !important;
@@ -2600,22 +2600,22 @@ html[data-ypp-ui-design="matrix"] .ytp-time-display, html[data-ypp-ui-design="ma
 }
 
 html[data-ypp-ui-design="matrix"] .ytp-tooltip-text {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   text-shadow: none !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ytp-popup.ytp-settings-menu, html[data-ypp-ui-design="matrix"] .ytp-panel {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ytp-volume-slider-handle {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] .ytp-ce-element {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
 }
 
@@ -2625,11 +2625,11 @@ html[data-ypp-ui-design="matrix"] .ytp-ce-element:hover {
 }
 
 html[data-ypp-ui-design="matrix"] video.video-stream.html5-main-video, html[data-ypp-ui-design="matrix"] .html5-video-player {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-video-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
@@ -2639,30 +2639,30 @@ html[data-ypp-ui-design="matrix"] ytd-video-renderer:hover {
 }
 
 html[data-ypp-ui-design="matrix"] ytd-search-pyv-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-shelf-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-channel-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-horizontal-card-list-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-reel-video-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
@@ -2672,7 +2672,7 @@ html[data-ypp-ui-design="matrix"] #actions.ytd-reel-player-overlay-renderer ytd-
 }
 
 html[data-ypp-ui-design="matrix"] ytd-reel-item-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-reel-item-renderer:hover {
@@ -2684,18 +2684,18 @@ html[data-ypp-ui-design="matrix"] .ytd-reel-video-renderer .overlay-dir {
 }
 
 html[data-ypp-ui-design="matrix"] ytd-video-primary-info-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-video-secondary-info-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-watch-metadata {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 html[data-ypp-ui-design="matrix"] ytd-expandable-metadata-renderer {
-  border-radius: 0px !important;
+  border-radius: var(--ypp-shape-primary, 0px) !important;
 }

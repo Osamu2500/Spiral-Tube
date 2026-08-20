@@ -116,7 +116,7 @@ ytd-playlist-panel-video-renderer {
 }
 
 .ytSuggestionComponentRoundedSuggestion {
-  border-radius: var(--tz-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -164,7 +164,7 @@ ytd-playlist-panel-video-renderer {
       to right,
       rgba(210, 248, 195, 0.70) 0%,
       rgba(195, 240, 248, 0.65) 100%) !important;
-  border-radius: var(--tz-radius-md) var(--tz-radius-md) 0 0 !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md) var(--tz-radius-md) 0 0) !important;
 }
 
 #ypp-pl-root .ypp-pl-btn-play,
@@ -178,7 +178,7 @@ ytd-playlist-panel-video-renderer {
       rgba(255, 255, 255, 0.85) 0%,
       rgba(210, 245, 200, 0.80) 45%,
       rgba(180, 230, 170, 0.85) 100%) !important;
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
   transition:
     transform var(--bounce-alt),
@@ -221,7 +221,7 @@ ytd-playlist-panel-video-renderer {
 }
 
 .ytSuggestionComponentRoundedSuggestion {
-  border-radius: var(--tz-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -237,7 +237,7 @@ ytd-playlist-panel-video-renderer {
    PLAYER CONTROLS — Rounded gel buttons
    ============================================================ */
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  border-radius: var(--tz-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -288,7 +288,7 @@ ytd-playlist-panel-video-renderer {
 }
 
 button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
     transform var(--bounce),
@@ -309,7 +309,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled ,
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   background:
     var(--tz-gloss),
     linear-gradient(
@@ -330,7 +330,7 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
       to bottom,
       rgba(215, 248, 205, 0.95) 0%,
       rgba(195, 238, 185, 0.90) 100%) !important;
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -343,7 +343,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -362,14 +362,14 @@ yt-button-shape button[title*="Download" i]:hover {
 yt-button-shape button[aria-label*="Download" i]:hover,
 yt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--shadow-base) !important;
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -392,7 +392,7 @@ yt-button-shape button[title*="Download" i]:hover {
 
 ytd-thumbnail-overlay-toggle-button-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
-  border-radius: var(--tz-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
 }
 
 ytd-thumbnail-overlay-toggle-button-renderer:hover {
@@ -402,7 +402,7 @@ ytd-thumbnail-overlay-toggle-button-renderer:hover {
 
 ytd-alert-with-button-renderer[type=INFO] {
   box-shadow: var(--shadow-base) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -427,11 +427,11 @@ yt-button-shape button[title*="Download" i]:hover {
 }
 
 html[data-ypp-card-style="technozen"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="technozen"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -455,7 +455,7 @@ html[data-ypp-ui-design="technozen"] ytd-video-renderer,
 html[data-ypp-ui-design="technozen"] ytd-playlist-renderer,
 html[data-ypp-ui-design="technozen"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="technozen"] ytd-compact-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -469,7 +469,7 @@ html[data-ypp-ui-design="technozen"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="technozen"] ytd-thumbnail, html[data-ypp-card-style="technozen"] yt-image,
 html[data-ypp-ui-design="technozen"] ytd-thumbnail, html[data-ypp-ui-design="technozen"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -483,7 +483,7 @@ html[data-ypp-ui-design="technozen"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="technozen"] yt-img-shadow, html[data-ypp-card-style="technozen"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="technozen"] yt-img-shadow, html[data-ypp-ui-design="technozen"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -500,18 +500,18 @@ html[data-ypp-card-style="technozen"] ytd-masthead, html[data-ypp-ui-design="tec
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="technozen"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="technozen"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 12px 0 0 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="technozen"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="technozen"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 12px 12px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
 html[data-ypp-card-style="technozen"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="technozen"] yt-chip-cloud-chip-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -524,7 +524,7 @@ html[data-ypp-ui-design="technozen"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="technozen"] ytd-guide-entry-renderer, html[data-ypp-card-style="technozen"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="technozen"] ytd-guide-entry-renderer, html[data-ypp-ui-design="technozen"] ytd-mini-guide-entry-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="technozen"] ytd-guide-entry-renderer:hover,
@@ -535,41 +535,41 @@ html[data-ypp-ui-design="technozen"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="technozen"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="technozen"] ytd-comment-thread-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="technozen"] #simplebox-placeholder, html[data-ypp-ui-design="technozen"] #simplebox-placeholder {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="technozen"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="technozen"] .ytp-chrome-bottom {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="technozen"] .ytp-scrubber-button,
 html[data-ypp-ui-design="technozen"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="technozen"] .ytp-tooltip, html[data-ypp-ui-design="technozen"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="technozen"] tp-yt-paper-dialog, html[data-ypp-card-style="technozen"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog, html[data-ypp-ui-design="technozen"] ytd-menu-popup-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="technozen"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="technozen"] ytd-multi-page-menu-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -580,57 +580,57 @@ html[data-ypp-ui-design="technozen"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="technozen"] #channel-header,
 html[data-ypp-ui-design="technozen"] #channel-header {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="technozen"] yt-live-chat-renderer,
 html[data-ypp-ui-design="technozen"] yt-live-chat-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="technozen"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="technozen"] yt-live-chat-text-message-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="technozen"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="technozen"] tp-yt-paper-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="technozen"] ytd-notification-renderer, html[data-ypp-ui-design="technozen"] ytd-notification-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="technozen"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="technozen"] ytd-badge-supported-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="technozen"] ytd-skeleton, html[data-ypp-ui-design="technozen"] ytd-skeleton, 
 html[data-ypp-card-style="technozen"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="technozen"] .ytd-ghost-grid-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="technozen"] ytd-reel-item-renderer, html[data-ypp-ui-design="technozen"] ytd-reel-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="technozen"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="technozen"] ytd-rich-shelf-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="technozen"] ytd-watch-metadata, html[data-ypp-ui-design="technozen"] ytd-watch-metadata {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -645,34 +645,34 @@ html[data-ypp-card-style="technozen"] yt-icon:hover, html[data-ypp-ui-design="te
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="technozen"] .ytp-endscreen-content, html[data-ypp-ui-design="technozen"] .ytp-endscreen-content {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="technozen"] .ytp-ce-element, html[data-ypp-ui-design="technozen"] .ytp-ce-element {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="technozen"] ytd-miniplayer, html[data-ypp-ui-design="technozen"] ytd-miniplayer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="technozen"] .ytp-settings-menu, html[data-ypp-ui-design="technozen"] .ytp-settings-menu {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="technozen"] ytd-account-item-renderer, html[data-ypp-ui-design="technozen"] ytd-account-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="technozen"] ytd-search-filter-renderer, html[data-ypp-ui-design="technozen"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="technozen"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="technozen"] ytd-search-filter-renderer:hover {
@@ -681,23 +681,23 @@ html[data-ypp-card-style="technozen"] ytd-search-filter-renderer:hover, html[dat
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="technozen"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="technozen"] ytd-playlist-panel-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="technozen"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="technozen"] ytd-macro-markers-list-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="technozen"] yt-error-screen, html[data-ypp-ui-design="technozen"] yt-error-screen {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 #trigger.tp-yt-paper-menu-button {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -710,7 +710,7 @@ html[data-ypp-card-style="technozen"] yt-error-screen, html[data-ypp-ui-design="
 }
 
 ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #label.ytd-thumbnail-overlay-toggle-button-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
@@ -720,18 +720,18 @@ ytd-video-preview,
 tp-yt-paper-dialog {
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
   transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
 }
 
 tp-yt-paper-dialog {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -746,7 +746,7 @@ tp-yt-paper-dialog {
 ytd-menu-service-item-renderer,
 .yt-list-item-view-model__container--tappable,
 tp-yt-paper-item.ytd-menu-service-item-download-renderer {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -761,15 +761,15 @@ tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
 }
 
 tp-yt-paper-listbox.yt-dropdown-menu {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
 tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
 }
 
 a.yt-simple-endpoint.yt-dropdown-menu {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -780,7 +780,7 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
 
 .tp-yt-paper-tooltip[style-target=tooltip] {
   box-shadow: var(--shadow-hover) !important;
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
 }
 
 tp-yt-paper-dialog,
@@ -788,12 +788,12 @@ ytd-hotkey-dialog-renderer,
 ytd-multi-page-menu-renderer {
   -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
-  border-radius: var(--tz-radius-xl) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
   box-shadow: 0px 12px 48px rgba(90, 191, 71, 0.25), inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
 }
 
 ytd-masthead #container {
-  border-radius: 3000px !important;
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
   background:
     var(--tz-gloss),
     linear-gradient(
@@ -812,7 +812,7 @@ ytd-menu-renderer .ytd-menu-renderer[style-target=button],
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -832,7 +832,7 @@ yt-button-shape button[title*="Download" i]:hover {
 }
 
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -849,23 +849,23 @@ ytd-masthead#masthead {
 }
 
 ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
-  border-radius: var(--tz-radius-xl) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
 .anchored-panel.ytd-shorts {
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
 tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
-  border-radius: var(--tz-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition: background var(--bounce), transform var(--bounce);
 }
 
@@ -876,7 +876,7 @@ tp-yt-paper-tab.ytd-c4-tabbed-header-renderer.iron-selected {
 ytd-video-renderer,
 ytd-channel-renderer,
 ytd-playlist-renderer {
-  border-radius: var(--tz-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
@@ -895,7 +895,7 @@ ytd-playlist-renderer:hover {
 }
 
 #tabs-inner-container.ytd-c4-tabbed-header-renderer {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
 }
 
 html[data-ypp-ui-style=technozen] yt-formatted-string,
@@ -932,7 +932,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -957,20 +957,20 @@ yt-button-shape button[title*="Download" i]:hover {
 
 /* src/content/themes/ui-styles/technozen/pages/comments.css */
 ytd-comments-header-renderer[engagement-panel] {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
 #guide-wrapper.ytd-app {
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
 yt-icon-button#guide-button {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -988,12 +988,12 @@ yt-icon-button#guide-button:active {
 }
 
 ytd-guide-entry-renderer {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
 }
 
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1003,7 +1003,7 @@ ytd-guide-entry-renderer {
 
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:hover,
 #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer:focus {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: translateX(2px) !important;
 }
@@ -1014,7 +1014,7 @@ ytd-guide-entry-renderer {
 }
 
 ytd-mini-guide-entry-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -1025,20 +1025,20 @@ ytd-mini-guide-entry-renderer:hover {
 
 #description.ytd-watch-metadata,
 ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
-  border-radius: 3000px !important;
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
 ytd-browse[page-subtype=home] #chips {
-  border-radius: 3000px !important;
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
   box-shadow: var(--shadow-active) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
 .ytChipShapeChip {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1051,7 +1051,7 @@ ytd-browse[page-subtype=home] #chips {
 }
 
 ytd-settings-sidebar-renderer {
-  border-radius: var(--tz-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
@@ -1082,17 +1082,17 @@ yt-chip-cloud-chip-renderer:hover {
     var(--shadow-base),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     0 0 40px rgba(90, 191, 71, 0.10) !important;
-  border-radius: var(--tz-radius-xl) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
 }
 
 ytd-comment-simplebox-renderer,
 yt-live-chat-message-input-renderer {
-  border-radius: var(--tz-radius-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   box-shadow: inset 0 2px 6px rgba(90, 191, 71, 0.1) !important;
 }
 
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
-  border-radius: var(--tz-radius-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1128,7 +1128,7 @@ yt-live-chat-message-input-renderer {
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
 }
 
 .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
@@ -1146,7 +1146,7 @@ yt-live-chat-message-input-renderer {
 }
 
 .ytp-fullscreen-grid-expand-button {
-  border-radius: var(--tz-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1158,7 +1158,7 @@ yt-live-chat-message-input-renderer {
 }
 
 .ytp-menuitem:not([aria-disabled=true]) {
-  border-radius: var(--tz-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1166,34 +1166,34 @@ yt-live-chat-message-input-renderer {
 }
 
 .ytp-menuitem:not([aria-disabled=true]):hover {
-  border-radius: var(--tz-radius-sm) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
 .ytp-delhi-modern .ytp-popup {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 .ytp-popup.ytp-delhi-modern-contextmenu {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: none !important;
 }
 
 .ytp-panel {
   box-shadow: var(--shadow-hover) !important;
   transition: box-shadow var(--bounce) !important;
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* src/content/themes/ui-styles/technozen/pages/watch.css */
 video.video-stream.html5-main-video,
 .html5-video-player {
-  border-radius: 18px !important;
+  border-radius: var(--ypp-shape-primary, 18px) !important;
 }
 
 .ytSearchboxComponentInputBoxDark,
 .ytSearchboxComponentInputBox {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base), inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
   transition: box-shadow var(--bounce), border-color var(--bounce) !important;
 }
@@ -1207,7 +1207,7 @@ video.video-stream.html5-main-video,
 }
 
 .ytSearchboxComponentSearchButton {
-  border-radius: var(--tz-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   background:
     var(--tz-gloss),
     linear-gradient(
@@ -1251,7 +1251,7 @@ ytd-multi-page-menu-renderer {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: var(--shadow-hover) !important;
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
@@ -1267,14 +1267,14 @@ ytd-searchbox:focus-within {
 
 /* 2. Channel Bar (#owner) */
 html[data-ypp-ui-design="technozen"] #owner {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: 0 4px 16px rgba(90, 191, 71, 0.12) !important;
 }
 
 /* 3. Description Box (Bio-Curved Organic Card) */
 html[data-ypp-ui-design="technozen"] #description-inner,
 html[data-ypp-ui-design="technozen"] ytd-watch-metadata #description {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: 0 4px 18px rgba(90, 191, 71, 0.12) !important;
 }
 
@@ -1285,11 +1285,11 @@ html[data-ypp-ui-design="technozen"] ytd-watch-metadata #description:hover {
 
 /* 4. Comments Section (Organic Mint Petal Cards) */
 html[data-ypp-ui-design="technozen"] #comments {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-ui-design="technozen"] ytd-comment-thread-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-ui-design="technozen"] ytd-comment-thread-renderer:hover {

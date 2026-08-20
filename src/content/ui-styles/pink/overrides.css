@@ -1,7 +1,7 @@
 /* Unique Shapes and Patterns for pink */
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb {
-  border-radius: 7px !important;
+  border-radius: var(--ypp-shape-primary, 7px) !important;
 }
 
 /* =========================================
@@ -9,17 +9,17 @@ html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb {
 ========================================= */
 html[data-ypp-card-style="pink"] ytd-searchbox,
 html[data-ypp-ui-design="pink"] ytd-searchbox {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-searchbox > #container,
 html[data-ypp-ui-design="pink"] ytd-searchbox > #container {
-  border-radius: 20px 0 0 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px 0 0 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] #search-icon-legacy.ytd-searchbox,
 html[data-ypp-ui-design="pink"] #search-icon-legacy.ytd-searchbox {
-  border-radius: 0 20px 20px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
 }
 
 /* Autocomplete Dropdown Box */
@@ -27,7 +27,7 @@ html[data-ypp-card-style="pink"] .sbsb_a,
 html[data-ypp-ui-design="pink"] .sbsb_a,
 html[data-ypp-card-style="pink"] .gstl_50.sbdd_a,
 html[data-ypp-ui-design="pink"] .gstl_50.sbdd_a {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
 }
 
@@ -39,7 +39,7 @@ html[data-ypp-ui-design="pink"] yt-img-shadow,
 html[data-ypp-card-style="pink"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="pink"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Comment cards geometry */
@@ -47,14 +47,14 @@ html[data-ypp-card-style="pink"] ytd-comment-renderer,
 html[data-ypp-ui-design="pink"] ytd-comment-renderer,
 html[data-ypp-card-style="pink"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="pink"] ytd-comment-thread-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-guide-entry-renderer,
 html[data-ypp-ui-design="pink"] ytd-guide-entry-renderer,
 html[data-ypp-card-style="pink"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="pink"] ytd-mini-guide-entry-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-guide-entry-renderer:hover,
@@ -67,7 +67,7 @@ html[data-ypp-ui-design="pink"] ytd-guide-entry-renderer:hover {
 ========================================= */
 html[data-ypp-card-style="pink"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="pink"] ytd-reel-video-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
@@ -75,7 +75,7 @@ html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer ytd-button-ren
 html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer ytd-button-renderer,
 html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -86,17 +86,17 @@ html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer ytd-toggle-butt
 ========================================= */
 html[data-ypp-card-style="pink"] yt-live-chat-renderer,
 html[data-ypp-ui-design="pink"] yt-live-chat-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="pink"] yt-live-chat-text-message-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] #channel-header.ytd-c4-tabbed-header-renderer,
 html[data-ypp-ui-design="pink"] #channel-header.ytd-c4-tabbed-header-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* =========================================
@@ -106,7 +106,7 @@ html[data-ypp-card-style="pink"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="pink"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="pink"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="pink"] ytd-menu-popup-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 15px 35px rgba(244,143,177,0.4) !important;
   animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
   transform-origin: top right !important;
@@ -124,7 +124,7 @@ html[data-ypp-ui-design="pink"] ytd-menu-popup-renderer {
 
 html[data-ypp-card-style="pink"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="pink"] ytd-compact-link-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* =========================================
@@ -132,7 +132,7 @@ html[data-ypp-ui-design="pink"] ytd-compact-link-renderer {
 ========================================= */
 html[data-ypp-card-style="pink"] ytd-miniplayer,
 html[data-ypp-ui-design="pink"] ytd-miniplayer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 15px 35px rgba(244,143,177,0.4) !important;
   transition: transform 0.3s ease !important;
 }
@@ -144,17 +144,17 @@ html[data-ypp-ui-design="pink"] ytd-miniplayer:hover {
 
 html[data-ypp-card-style="pink"] ytcp-navigation-drawer,
 html[data-ypp-ui-design="pink"] ytcp-navigation-drawer {
-  border-radius: 0 20px 20px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 20px 20px 0) !important;
 }
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-track,
 html[data-ypp-ui-design="pink"] ::-webkit-scrollbar-track {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb,
 html[data-ypp-ui-design="pink"] ::-webkit-scrollbar-thumb {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb:hover,
@@ -169,26 +169,26 @@ html[data-ypp-card-style="pink"] .ytp-swatch-background-color,
 html[data-ypp-ui-design="pink"] .ytp-swatch-background-color,
 html[data-ypp-card-style="pink"] .ytp-play-progress,
 html[data-ypp-ui-design="pink"] .ytp-play-progress {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-scrubber-button,
 html[data-ypp-ui-design="pink"] .ytp-scrubber-button {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-spinner,
 html[data-ypp-ui-design="pink"] .ytp-spinner {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   animation: pinkHeart 1.5s infinite ease-in-out !important;
   box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-spinner::after,
 html[data-ypp-ui-design="pink"] .ytp-spinner::after {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   animation: pinkHeartInner 1s infinite alternate !important;
 }
 
@@ -222,14 +222,14 @@ html[data-ypp-card-style="pink"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="pink"] tp-yt-paper-dialog,
 html[data-ypp-card-style="pink"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="pink"] ytd-unified-share-panel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
   animation: pinkHeartEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
 html[data-ypp-card-style="pink"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="pink"] tp-yt-paper-tooltip {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   animation: pinkHeartEntrance 0.3s ease forwards !important;
 }
 
@@ -243,18 +243,18 @@ html[data-ypp-ui-design="pink"] tp-yt-paper-tooltip {
 
 /* Pink Forms */
 html[data-ypp-card-style="pink"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 30px 0 0 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px 0 0 30px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 30px 30px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="pink"] .yt-spec-button-shape-next--filled ,
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4) !important;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
@@ -267,11 +267,11 @@ yt-button-shape button[title*="Download" i]:hover {
 }
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="pink"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="pink"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -295,7 +295,7 @@ html[data-ypp-ui-design="pink"] ytd-video-renderer,
 html[data-ypp-ui-design="pink"] ytd-playlist-renderer,
 html[data-ypp-ui-design="pink"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="pink"] ytd-compact-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -309,7 +309,7 @@ html[data-ypp-ui-design="pink"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="pink"] ytd-thumbnail, html[data-ypp-card-style="pink"] yt-image,
 html[data-ypp-ui-design="pink"] ytd-thumbnail, html[data-ypp-ui-design="pink"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -323,7 +323,7 @@ html[data-ypp-ui-design="pink"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="pink"] yt-img-shadow, html[data-ypp-card-style="pink"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="pink"] yt-img-shadow, html[data-ypp-ui-design="pink"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -340,18 +340,18 @@ html[data-ypp-card-style="pink"] ytd-masthead, html[data-ypp-ui-design="pink"] y
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="pink"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="pink"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 12px 0 0 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="pink"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 12px 12px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
 html[data-ypp-card-style="pink"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="pink"] yt-chip-cloud-chip-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -364,7 +364,7 @@ html[data-ypp-ui-design="pink"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="pink"] ytd-guide-entry-renderer, html[data-ypp-card-style="pink"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="pink"] ytd-guide-entry-renderer, html[data-ypp-ui-design="pink"] ytd-mini-guide-entry-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-guide-entry-renderer:hover,
@@ -375,41 +375,41 @@ html[data-ypp-ui-design="pink"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="pink"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="pink"] ytd-comment-thread-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="pink"] #simplebox-placeholder, html[data-ypp-ui-design="pink"] #simplebox-placeholder {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="pink"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="pink"] .ytp-chrome-bottom {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-scrubber-button,
 html[data-ypp-ui-design="pink"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-tooltip, html[data-ypp-ui-design="pink"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="pink"] tp-yt-paper-dialog, html[data-ypp-card-style="pink"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="pink"] tp-yt-paper-dialog, html[data-ypp-ui-design="pink"] ytd-menu-popup-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="pink"] ytd-multi-page-menu-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -420,57 +420,57 @@ html[data-ypp-ui-design="pink"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="pink"] #channel-header,
 html[data-ypp-ui-design="pink"] #channel-header {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="pink"] yt-live-chat-renderer,
 html[data-ypp-ui-design="pink"] yt-live-chat-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="pink"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="pink"] yt-live-chat-text-message-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="pink"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="pink"] tp-yt-paper-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-notification-renderer, html[data-ypp-ui-design="pink"] ytd-notification-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="pink"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="pink"] ytd-badge-supported-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="pink"] ytd-skeleton, html[data-ypp-ui-design="pink"] ytd-skeleton, 
 html[data-ypp-card-style="pink"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="pink"] .ytd-ghost-grid-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="pink"] ytd-reel-item-renderer, html[data-ypp-ui-design="pink"] ytd-reel-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="pink"] ytd-rich-shelf-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="pink"] ytd-watch-metadata, html[data-ypp-ui-design="pink"] ytd-watch-metadata {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -485,34 +485,34 @@ html[data-ypp-card-style="pink"] yt-icon:hover, html[data-ypp-ui-design="pink"] 
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="pink"] .ytp-endscreen-content, html[data-ypp-ui-design="pink"] .ytp-endscreen-content {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-ce-element, html[data-ypp-ui-design="pink"] .ytp-ce-element {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="pink"] ytd-miniplayer, html[data-ypp-ui-design="pink"] ytd-miniplayer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="pink"] .ytp-settings-menu, html[data-ypp-ui-design="pink"] .ytp-settings-menu {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="pink"] ytd-account-item-renderer, html[data-ypp-ui-design="pink"] ytd-account-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="pink"] ytd-search-filter-renderer, html[data-ypp-ui-design="pink"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="pink"] ytd-search-filter-renderer:hover {
@@ -521,18 +521,18 @@ html[data-ypp-card-style="pink"] ytd-search-filter-renderer:hover, html[data-ypp
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="pink"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="pink"] ytd-playlist-panel-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="pink"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="pink"] ytd-macro-markers-list-item-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="pink"] yt-error-screen, html[data-ypp-ui-design="pink"] yt-error-screen {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
@@ -541,12 +541,12 @@ html[data-ypp-card-style="pink"] tp-yt-paper-dialog,
 html[data-ypp-card-style="pink"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="pink"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="pink"] ytd-masthead {
-  border-radius: var(--pin-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--pin-radius)) !important;
   box-shadow: var(--pin-shadow) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-masthead {
-  border-radius: 0 0 32px 32px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 32px 32px) !important;
 }
 
 /* PINK MICRO-INTERACTIONS PAYLOAD V12 */
@@ -558,7 +558,7 @@ html[data-ypp-card-style="pink"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="pink"] tp-yt-paper-dialog,
 html[data-ypp-card-style="pink"] ytd-popup-container,
 html[data-ypp-ui-design="pink"] ytd-popup-container {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
@@ -586,12 +586,12 @@ html[data-ypp-ui-design="pink"] ytd-popup-container {
 ========================================= */
 html[data-ypp-card-style="pink"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="pink"] tp-yt-paper-tooltip {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
 }
 
 html[data-ypp-card-style="pink"] tp-yt-paper-toast,
 html[data-ypp-ui-design="pink"] tp-yt-paper-toast {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 /* =========================================
@@ -599,7 +599,7 @@ html[data-ypp-ui-design="pink"] tp-yt-paper-toast {
 ========================================= */
 html[data-ypp-card-style="pink"] ytd-search-filter-renderer,
 html[data-ypp-ui-design="pink"] ytd-search-filter-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-search-filter-renderer:hover,
@@ -614,7 +614,7 @@ html[data-ypp-card-style="pink"] ytd-background-promo-renderer,
 html[data-ypp-ui-design="pink"] ytd-background-promo-renderer,
 html[data-ypp-card-style="pink"] #error-page,
 html[data-ypp-ui-design="pink"] #error-page {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 /* Empty state icon geometry override */
@@ -625,7 +625,7 @@ html[data-ypp-ui-design="pink"] ytd-background-promo-renderer yt-icon {
 
 html[data-ypp-card-style="pink"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="pink"] ytd-mini-guide-entry-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
   transition: transform 0.2s ease !important;
 }
 
@@ -653,7 +653,7 @@ html[data-ypp-ui-design="pink"] ytd-topbar-logo-renderer:hover {
 
 html[data-ypp-ui-design="pink"] #container.ytd-searchbox,
 html[data-ypp-ui-design="pink"] ytd-searchbox {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: inset 0 0 10px hsl(268, 70%, 45%)66 !important;
 }
 
@@ -662,7 +662,7 @@ html[data-ypp-ui-design="pink"] #search-input input {
 }
 
 html[data-ypp-ui-design="pink"] #search-icon-legacy {
-  border-radius: 0 30px 30px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
 }
 
 html[data-ypp-ui-design="pink"] #search-icon-legacy:hover {
@@ -674,7 +674,7 @@ html[data-ypp-ui-design="pink"] #search-icon-legacy yt-icon {
 }
 
 html[data-ypp-ui-design="pink"] #voice-search-button {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 0 8px hsl(134, 80%, 55%)88 !important;
   transition: transform 0.2s !important;
 }
@@ -685,7 +685,7 @@ html[data-ypp-ui-design="pink"] #voice-search-button:hover {
 
 html[data-ypp-ui-design="pink"] .sbdd_b,
 html[data-ypp-ui-design="pink"] .sbsb_a {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -696,7 +696,7 @@ html[data-ypp-ui-design="pink"] .sbsb_c:hover {
 
 html[data-ypp-ui-design="pink"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-design="pink"] ytd-notification-topbar-button-renderer yt-icon-button {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 html[data-ypp-ui-design="pink"] ytd-topbar-menu-button-renderer yt-icon-button:hover,
@@ -706,7 +706,7 @@ html[data-ypp-ui-design="pink"] ytd-notification-topbar-button-renderer yt-icon-
 }
 
 html[data-ypp-ui-design="pink"] #avatar-btn yt-img-shadow {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
   transition: transform 0.4s !important;
 }
@@ -716,7 +716,7 @@ html[data-ypp-ui-design="pink"] #avatar-btn yt-img-shadow:hover {
 }
 
 html[data-ypp-ui-design="pink"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -745,7 +745,7 @@ html[data-ypp-ui-design="pink"] ytd-playlist-panel-renderer {
 ========================================= */
 html[data-ypp-card-style="pink"] ytd-backstage-post-renderer,
 html[data-ypp-ui-design="pink"] ytd-backstage-post-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Community Poll Progress Bars */
@@ -753,7 +753,7 @@ html[data-ypp-card-style="pink"] .ytd-backstage-poll-renderer[checked] .progress
 html[data-ypp-ui-design="pink"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-card-style="pink"] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-ui-design="pink"] .progress-bar.ytd-backstage-poll-renderer {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: 0 0 10px #f48fb1 !important;
 }
 
@@ -762,7 +762,7 @@ html[data-ypp-ui-design="pink"] .progress-bar.ytd-backstage-poll-renderer {
 ========================================= */
 html[data-ypp-card-style="pink"] ytd-merch-shelf-renderer,
 html[data-ypp-ui-design="pink"] ytd-merch-shelf-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Product Image Geometry Override */
@@ -770,7 +770,7 @@ html[data-ypp-card-style="pink"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-ui-design="pink"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-card-style="pink"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
 html[data-ypp-ui-design="pink"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -782,7 +782,7 @@ html[data-ypp-ui-design="pink"] .ytd-shopping-carousel-item-renderer:hover img {
 /* Buy Buttons */
 html[data-ypp-card-style="pink"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
 html[data-ypp-ui-design="pink"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="pink"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
@@ -793,7 +793,7 @@ html[data-ypp-ui-design="pink"] ytd-button-renderer.ytd-shopping-carousel-item-r
 
 html[data-ypp-card-style="pink"] .badge-style-type-live-now-alternate,
 html[data-ypp-ui-design="pink"] .badge-style-type-live-now-alternate {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
@@ -807,10 +807,10 @@ html[data-ypp-ui-design="pink"] .badge-style-type-live-now-alternate {
 
 /* Pink Player */
 html[data-ypp-card-style="pink"] .ytp-chrome-bottom {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--pin-shadow) !important;
 }
 
 html[data-ypp-card-style="pink"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }

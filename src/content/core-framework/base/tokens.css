@@ -56,15 +56,15 @@
 
 html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]),
 html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) body,
-html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) [dark],
+html[data-ypp-ui-design]:not([data-ypp-ui-design="default"])[dark],
 html.yt-spiral-tube-theme,
 html.yt-spiral-tube-theme body,
-html.yt-spiral-tube-theme [dark] {
+html.yt-spiral-tube-theme[dark] {
   /* Backgrounds */
-  --yt-spec-base-background: var(--ypp-bg-surface, var(--ypp-surface-bg, #0f0f0f)) !important;
-  --yt-spec-general-background-a: var(--ypp-bg-surface, var(--ypp-surface-bg, #0f0f0f)) !important;
-  --yt-spec-general-background-b: var(--ypp-bg-surface, var(--ypp-surface-bg, #0f0f0f)) !important;
-  --yt-spec-general-background-c: var(--ypp-bg-surface, var(--ypp-surface-bg, #0f0f0f)) !important;
+  --yt-spec-base-background: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-general-background-a: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-general-background-b: var(--ypp-bg-base, #0f0f0f) !important;
+  --yt-spec-general-background-c: var(--ypp-bg-base, #0f0f0f) !important;
   --yt-spec-menu-background: var(--ypp-bg-surface, var(--ypp-surface-bg, #212121)) !important;
   --yt-spec-raised-background: var(--ypp-bg-surface, var(--ypp-surface-bg, #212121)) !important;
   
@@ -85,24 +85,3 @@ html.yt-spiral-tube-theme [dark] {
   --yt-spec-call-to-action: var(--ypp-accent, var(--ypp-primary-accent, #3ea6ff)) !important;
   --yt-spec-wordmark-text: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
 }  
-  /* --- Geometry & Shapes --- */
-  --ypp-border-radius-base: 12px;
-  --ypp-border-radius-pill: 24px;
-  --ypp-border-radius-sharp: 4px;
-  --ypp-border-radius-circle: 50%;
-  
-  /* --- Shadows & Depth --- */
-  --ypp-shadow-base: 0 4px 12px rgba(0,0,0,0.1);
-  --ypp-shadow-hover: 0 8px 24px rgba(0,0,0,0.15);
-  --ypp-shadow-active: 0 2px 6px rgba(0,0,0,0.2);
-  
-  /* --- Animation & Transitions --- */
-  --ypp-transition-bounce: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --ypp-transition-smooth: all 0.2s ease-in-out;
-  
-  /* --- Specific Component Variables --- */
-  --ypp-sidebar-radius: var(--ypp-border-radius-base);
-  --ypp-chip-radius: var(--ypp-border-radius-base);
-  --ypp-card-radius: var(--ypp-border-radius-base);
-  --ypp-button-radius: var(--ypp-border-radius-pill);
-}

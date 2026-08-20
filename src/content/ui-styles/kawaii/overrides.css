@@ -120,7 +120,7 @@ html[data-ypp-ui-design="kawaii"] ytd-page-manager > * {
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-thumb,
 html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-thumb {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* Inject Base64 Heart Icon */
@@ -167,7 +167,7 @@ html[data-ypp-ui-design="kawaii"] ytd-toggle-button-renderer:nth-of-type(2).styl
     animation: kawaiShake 0.5s ease-in-out !important;
 }
 
-background-color: #fff !important;
+background-color: var(--ypp-bg-surface, #fff) !important;
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
     -webkit-mask-repeat: no-repeat !important;
@@ -186,14 +186,14 @@ html[data-ypp-ui-design="kawaii"] ytd-subscribe-button-renderer [subscribed] yt-
 }
 
 html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-thumb {
-  border-radius: var(--kawaii-r-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-pill)) !important;
 }
 
 /* Kawaii Chips & Segmented Buttons */
 /* Chips Filter Bar */
 html[data-ypp-card-style="kawaii"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--kawaii-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-pill)) !important;
   transition: transform 0.3s var(--kawaii-ease-bouncy), box-shadow 0.3s ease !important;
 }
 
@@ -210,7 +210,7 @@ html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer:hover {
 /* Segmented Buttons (Like/Dislike) */
 html[data-ypp-card-style="kawaii"] ytd-segmented-like-dislike-button-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-segmented-like-dislike-button-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-button) !important;
 }
 
@@ -228,7 +228,7 @@ html[data-ypp-ui-design="kawaii"] yt-button-shape[is-filled] button,
 html[data-ypp-ui-design="kawaii"] .yt-spec-button-shape-next--filled ,
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i] {
-  border-radius: var(--kawaii-r-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-pill)) !important;
   box-shadow: var(--kawaii-shadow-button) !important;
 }
 
@@ -245,7 +245,7 @@ html[data-ypp-ui-design="kawaii"] yt-button-shape[is-tonal] button,
 html[data-ypp-ui-design="kawaii"] .yt-spec-button-shape-next--tonal ,
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i] {
-  border-radius: var(--kawaii-r-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-pill)) !important;
   box-shadow: 0 4px 10px rgba(255, 158, 187, 0.1) !important;
 }
 
@@ -260,14 +260,14 @@ html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i]:ho
 /* Kawaii Comments Section (Bubbly Chat Boxes) */
 html[data-ypp-card-style="kawaii"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-comment-thread-renderer {
-  border-radius: 20px 20px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 20px 20px 4px) !important;
   box-shadow: 0 4px 10px rgba(255, 223, 211, 0.4) !important;
 }
 
 /* Kawaii Community Posts & Polls */
 html[data-ypp-card-style="kawaii"] ytd-backstage-post-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-backstage-post-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-fluffy) !important;
 }
 
@@ -275,13 +275,13 @@ html[data-ypp-card-style="kawaii"] .tp-yt-paper-progress,
 html[data-ypp-ui-design="kawaii"] .tp-yt-paper-progress,
 html[data-ypp-card-style="kawaii"] ytd-backstage-poll-renderer tp-yt-paper-progress,
 html[data-ypp-ui-design="kawaii"] ytd-backstage-poll-renderer tp-yt-paper-progress {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
 /* The actual progress fill */
 html[data-ypp-card-style="kawaii"] ytd-backstage-poll-renderer #primaryProgress,
 html[data-ypp-ui-design="kawaii"] ytd-backstage-poll-renderer #primaryProgress {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
 /* Custom Heart Sprite on active poll bar */
@@ -295,17 +295,17 @@ html[data-ypp-ui-design="kawaii"] ytd-backstage-poll-renderer [selected] #primar
 ========================================= */
 html[data-ypp-card-style="kawaii"] ytd-searchbox,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-searchbox > #container,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox > #container {
-  border-radius: 28px 0 0 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px 0 0 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] #search-icon-legacy.ytd-searchbox,
 html[data-ypp-ui-design="kawaii"] #search-icon-legacy.ytd-searchbox {
-  border-radius: 0 28px 28px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 28px 28px 0) !important;
 }
 
 /* Autocomplete Dropdown Box */
@@ -313,7 +313,7 @@ html[data-ypp-card-style="kawaii"] .sbsb_a,
 html[data-ypp-ui-design="kawaii"] .sbsb_a,
 html[data-ypp-card-style="kawaii"] .gstl_50.sbdd_a,
 html[data-ypp-ui-design="kawaii"] .gstl_50.sbdd_a {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
 }
 
@@ -325,7 +325,7 @@ html[data-ypp-ui-design="kawaii"] yt-img-shadow,
 html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="kawaii"] .yt-spec-avatar-shape__image {
   clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 /* Comment cards geometry */
@@ -333,14 +333,14 @@ html[data-ypp-card-style="kawaii"] ytd-comment-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-comment-renderer,
 html[data-ypp-card-style="kawaii"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-comment-thread-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer,
 html[data-ypp-card-style="kawaii"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer:hover,
@@ -353,7 +353,7 @@ html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer:hover {
 ========================================= */
 html[data-ypp-card-style="kawaii"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
@@ -361,7 +361,7 @@ html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-button-r
 html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-button-renderer,
 html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -371,14 +371,14 @@ html[data-ypp-card-style="kawaii"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-unified-share-panel-renderer,
 html[data-ypp-card-style="kawaii"] .ytd-clip-creation-dialog,
 html[data-ypp-ui-design="kawaii"] .ytd-clip-creation-dialog {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: var(--kawaii-shadow-fluffy) !important;
 }
 
 /* Social Media Share Icons */
 html[data-ypp-card-style="kawaii"] yt-share-target-renderer,
 html[data-ypp-ui-design="kawaii"] yt-share-target-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
 }
 
@@ -391,7 +391,7 @@ html[data-ypp-ui-design="kawaii"] yt-share-target-renderer:hover {
 /* Copy Link Bar inside Share Dialog */
 html[data-ypp-card-style="kawaii"] #copy-link.ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="kawaii"] #copy-link.ytd-unified-share-panel-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* KAWAII ECOSYSTEM PAYLOAD V10 */
@@ -401,17 +401,17 @@ html[data-ypp-ui-design="kawaii"] #copy-link.ytd-unified-share-panel-renderer {
 ========================================= */
 html[data-ypp-card-style="kawaii"] yt-live-chat-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-text-message-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] #channel-header.ytd-c4-tabbed-header-renderer,
 html[data-ypp-ui-design="kawaii"] #channel-header.ytd-c4-tabbed-header-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 /* =========================================
@@ -421,7 +421,7 @@ html[data-ypp-card-style="kawaii"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="kawaii"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: 0 20px 50px rgba(255,158,187,0.3) !important;
   animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
   transform-origin: top right !important;
@@ -439,7 +439,7 @@ html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
 
 html[data-ypp-card-style="kawaii"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-compact-link-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 /* =========================================
@@ -447,7 +447,7 @@ html[data-ypp-ui-design="kawaii"] ytd-compact-link-renderer {
 ========================================= */
 html[data-ypp-card-style="kawaii"] ytd-miniplayer,
 html[data-ypp-ui-design="kawaii"] ytd-miniplayer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: 0 20px 50px rgba(255,158,187,0.3) !important;
   transition: transform 0.3s ease !important;
 }
@@ -459,13 +459,13 @@ html[data-ypp-ui-design="kawaii"] ytd-miniplayer:hover {
 
 html[data-ypp-card-style="kawaii"] ytcp-navigation-drawer,
 html[data-ypp-ui-design="kawaii"] ytcp-navigation-drawer {
-  border-radius: 0 28px 28px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 28px 28px 0) !important;
 }
 
 /* Kawaii Video End Screens */
 html[data-ypp-card-style="kawaii"] .ytp-ce-element,
 html[data-ypp-ui-design="kawaii"] .ytp-ce-element {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: 0 10px 30px rgba(255, 158, 187, 0.6) !important;
   transition: transform 0.4s var(--kawaii-ease-bouncy) !important;
 }
@@ -478,17 +478,17 @@ html[data-ypp-ui-design="kawaii"] .ytp-ce-element:hover {
 /* Profile Picture End Screen Card */
 html[data-ypp-card-style="kawaii"] .ytp-ce-channel,
 html[data-ypp-ui-design="kawaii"] .ytp-ce-channel {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-track,
 html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-track {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-thumb,
 html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-thumb {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-thumb:hover,
@@ -503,26 +503,26 @@ html[data-ypp-card-style="kawaii"] .ytp-swatch-background-color,
 html[data-ypp-ui-design="kawaii"] .ytp-swatch-background-color,
 html[data-ypp-card-style="kawaii"] .ytp-play-progress,
 html[data-ypp-ui-design="kawaii"] .ytp-play-progress {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-scrubber-button,
 html[data-ypp-ui-design="kawaii"] .ytp-scrubber-button {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-spinner,
 html[data-ypp-ui-design="kawaii"] .ytp-spinner {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   animation: kawaiiStar 1.5s infinite ease-in-out !important;
   box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-spinner::after,
 html[data-ypp-ui-design="kawaii"] .ytp-spinner::after {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   animation: kawaiiStarInner 1s infinite alternate !important;
 }
 
@@ -556,14 +556,14 @@ html[data-ypp-card-style="kawaii"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog,
 html[data-ypp-card-style="kawaii"] ytd-unified-share-panel-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-unified-share-panel-renderer {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
   animation: kawaiiStarEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
-  border-radius: 28px !important;
+  border-radius: var(--ypp-shape-primary, 28px) !important;
   animation: kawaiiStarEntrance 0.3s ease forwards !important;
 }
 
@@ -578,12 +578,12 @@ html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
 /* Kawaii Forms, Buttons, and Search */
 html[data-ypp-card-style="kawaii"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 30px 0 0 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px 0 0 30px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 30px 30px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button,
@@ -594,7 +594,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i] {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
   box-shadow: 0 4px 0px rgba(255, 158, 187, 0.6) !important;
 }
@@ -617,7 +617,7 @@ html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i]:ho
 html[data-ypp-card-style="kawaii"] yt-page-navigation-progress,
 html[data-ypp-ui-design="kawaii"] yt-page-navigation-progress {
   box-shadow: 0 0 10px var(--kawaii-accent-primary) !important;
-  border-radius: 0 4px 4px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 4px 4px 0) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-spinner::before,
@@ -673,7 +673,7 @@ html[data-ypp-ui-design="kawaii"] .ytp-spinner::after {
 
 /* Specific Styling for ytd-video-renderer */
 html[data-ypp-card-style="kawaii"] ytd-video-renderer, html[data-ypp-ui-design="kawaii"] ytd-video-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -684,7 +684,7 @@ html[data-ypp-card-style="kawaii"] ytd-video-renderer, html[data-ypp-ui-design="
 
 /* Specific Styling for ytd-rich-item-renderer */
 html[data-ypp-card-style="kawaii"] ytd-rich-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-rich-item-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -695,7 +695,7 @@ html[data-ypp-card-style="kawaii"] ytd-rich-item-renderer, html[data-ypp-ui-desi
 
 /* Specific Styling for ytd-playlist-renderer */
 html[data-ypp-card-style="kawaii"] ytd-playlist-renderer, html[data-ypp-ui-design="kawaii"] ytd-playlist-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -706,7 +706,7 @@ html[data-ypp-card-style="kawaii"] ytd-playlist-renderer, html[data-ypp-ui-desig
 
 /* Specific Styling for ytd-grid-video-renderer */
 html[data-ypp-card-style="kawaii"] ytd-grid-video-renderer, html[data-ypp-ui-design="kawaii"] ytd-grid-video-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -717,7 +717,7 @@ html[data-ypp-card-style="kawaii"] ytd-grid-video-renderer, html[data-ypp-ui-des
 
 /* Specific Styling for ytd-compact-video-renderer */
 html[data-ypp-card-style="kawaii"] ytd-compact-video-renderer, html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -728,7 +728,7 @@ html[data-ypp-card-style="kawaii"] ytd-compact-video-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-reel-item-renderer */
 html[data-ypp-card-style="kawaii"] ytd-reel-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-reel-item-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -739,19 +739,19 @@ html[data-ypp-card-style="kawaii"] ytd-reel-item-renderer, html[data-ypp-ui-desi
 
 /* Specific Styling for ytd-rich-shelf-renderer */
 html[data-ypp-card-style="kawaii"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="kawaii"] ytd-rich-shelf-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Specific Styling for ytd-comment-thread-renderer */
 html[data-ypp-card-style="kawaii"] ytd-comment-thread-renderer, html[data-ypp-ui-design="kawaii"] ytd-comment-thread-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Specific Styling for ytd-channel-renderer */
 html[data-ypp-card-style="kawaii"] ytd-channel-renderer, html[data-ypp-ui-design="kawaii"] ytd-channel-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -762,40 +762,40 @@ html[data-ypp-card-style="kawaii"] ytd-channel-renderer, html[data-ypp-ui-design
 
 /* Specific Styling for ytd-playlist-panel-renderer */
 html[data-ypp-card-style="kawaii"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Specific Styling for ytd-watch-metadata */
 html[data-ypp-card-style="kawaii"] ytd-watch-metadata, html[data-ypp-ui-design="kawaii"] ytd-watch-metadata {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Specific Styling for ytd-multi-page-menu-renderer */
 html[data-ypp-card-style="kawaii"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="kawaii"] ytd-multi-page-menu-renderer {
   /* Floral White */
-    border-radius: var(--kawaii-radius) !important;
+    border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3) !important;
 }
 
 /* Specific Styling for ytd-menu-popup-renderer */
 html[data-ypp-card-style="kawaii"] ytd-menu-popup-renderer, html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
   /* Floral White */
-    border-radius: var(--kawaii-radius) !important;
+    border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3) !important;
 }
 
 /* Specific Styling for tp-yt-paper-dialog */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-dialog, html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog {
   /* Floral White */
-    border-radius: var(--kawaii-radius) !important;
+    border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3) !important;
 }
 
 /* Specific Styling for ytd-notification-renderer */
 html[data-ypp-card-style="kawaii"] ytd-notification-renderer, html[data-ypp-ui-design="kawaii"] ytd-notification-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-notification-renderer, html[data-ypp-ui-design="kawaii"] ytd-notification-renderer:hover {
@@ -805,7 +805,7 @@ html[data-ypp-card-style="kawaii"] ytd-notification-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-account-item-renderer */
 html[data-ypp-card-style="kawaii"] ytd-account-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-account-item-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-account-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-account-item-renderer:hover {
@@ -815,7 +815,7 @@ html[data-ypp-card-style="kawaii"] ytd-account-item-renderer, html[data-ypp-ui-d
 
 /* Specific Styling for ytd-guide-entry-renderer */
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer, html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer, html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer:hover {
@@ -825,7 +825,7 @@ html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer, html[data-ypp-ui-de
 
 /* Specific Styling for ytd-mini-guide-entry-renderer */
 html[data-ypp-card-style="kawaii"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer:hover {
@@ -835,7 +835,7 @@ html[data-ypp-card-style="kawaii"] ytd-mini-guide-entry-renderer, html[data-ypp-
 
 /* Specific Styling for ytd-search-filter-renderer */
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer, html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer, html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer:hover {
@@ -845,7 +845,7 @@ html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer, html[data-ypp-ui-
 
 /* Specific Styling for ytd-macro-markers-list-item-renderer */
 html[data-ypp-card-style="kawaii"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-macro-markers-list-item-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-macro-markers-list-item-renderer:hover {
@@ -856,26 +856,26 @@ html[data-ypp-card-style="kawaii"] ytd-macro-markers-list-item-renderer, html[da
 /* Specific Styling for ytd-c4-tabbed-header-renderer */
 html[data-ypp-card-style="kawaii"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-design="kawaii"] ytd-c4-tabbed-header-renderer {
   background: linear-gradient(180deg, #fff0f5 0%, #ffffff 100%) !important;
-  border-radius: 0 0 50px 50px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 50px 50px) !important;
   box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2) !important;
 }
 
 /* Specific Styling for #channel-header */
 html[data-ypp-card-style="kawaii"] #channel-header, html[data-ypp-ui-design="kawaii"] #channel-header {
   background: linear-gradient(180deg, #fff0f5 0%, #ffffff 100%) !important;
-  border-radius: 0 0 50px 50px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 50px 50px) !important;
   box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2) !important;
 }
 
 /* Specific Styling for ytd-live-chat-renderer */
 html[data-ypp-card-style="kawaii"] ytd-live-chat-renderer, html[data-ypp-ui-design="kawaii"] ytd-live-chat-renderer {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Specific Styling for yt-live-chat-text-message-renderer */
 html[data-ypp-card-style="kawaii"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="kawaii"] yt-live-chat-text-message-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="kawaii"] yt-live-chat-text-message-renderer:hover {
@@ -886,33 +886,33 @@ html[data-ypp-card-style="kawaii"] yt-live-chat-text-message-renderer, html[data
 /* Specific Styling for ytd-miniplayer */
 html[data-ypp-card-style="kawaii"] ytd-miniplayer, html[data-ypp-ui-design="kawaii"] ytd-miniplayer {
   /* Floral White */
-    border-radius: var(--kawaii-radius) !important;
+    border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3) !important;
 }
 
 /* Specific Styling for .ytp-settings-menu */
 html[data-ypp-card-style="kawaii"] .ytp-settings-menu, html[data-ypp-ui-design="kawaii"] .ytp-settings-menu {
   /* Floral White */
-    border-radius: var(--kawaii-radius) !important;
+    border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3) !important;
 }
 
 /* Specific Styling for .ytp-chrome-bottom */
 html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom, html[data-ypp-ui-design="kawaii"] .ytp-chrome-bottom {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 6px 0 var(--kawaii-primary) !important;
   backdrop-filter: blur(10px) !important;
 }
 
 /* Specific Styling for .ytp-endscreen-content */
 html[data-ypp-card-style="kawaii"] .ytp-endscreen-content, html[data-ypp-ui-design="kawaii"] .ytp-endscreen-content {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Specific Styling for .ytp-ce-element */
 html[data-ypp-card-style="kawaii"] .ytp-ce-element, html[data-ypp-ui-design="kawaii"] .ytp-ce-element {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -923,13 +923,13 @@ html[data-ypp-card-style="kawaii"] .ytp-ce-element, html[data-ypp-ui-design="kaw
 
 /* Specific Styling for yt-error-screen */
 html[data-ypp-card-style="kawaii"] yt-error-screen, html[data-ypp-ui-design="kawaii"] yt-error-screen {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: 0 8px 24px rgba(255, 182, 193, 0.4) !important;
 }
 
 /* Kawaii Thumbnails */
 html[data-ypp-card-style="kawaii"] ytd-thumbnail, html[data-ypp-ui-design="kawaii"] ytd-thumbnail {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
@@ -938,7 +938,7 @@ html[data-ypp-card-style="kawaii"] ytd-thumbnail, html[data-ypp-ui-design="kawai
 }
 
 html[data-ypp-card-style="kawaii"] yt-image, html[data-ypp-ui-design="kawaii"] yt-image {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
@@ -947,7 +947,7 @@ html[data-ypp-card-style="kawaii"] yt-image, html[data-ypp-ui-design="kawaii"] y
 }
 
 html[data-ypp-card-style="kawaii"] ytd-playlist-thumbnail, html[data-ypp-ui-design="kawaii"] ytd-playlist-thumbnail {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
@@ -958,7 +958,7 @@ html[data-ypp-card-style="kawaii"] ytd-playlist-thumbnail, html[data-ypp-ui-desi
 /* Kawaii Avatars (Perfect Circles with thick borders) */
 html[data-ypp-card-style="kawaii"] yt-img-shadow, html[data-ypp-ui-design="kawaii"] yt-img-shadow {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-card-style="kawaii"] yt-img-shadow, html[data-ypp-ui-design="kawaii"] yt-img-shadow:hover {
@@ -968,7 +968,7 @@ html[data-ypp-card-style="kawaii"] yt-img-shadow, html[data-ypp-ui-design="kawai
 
 html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="kawaii"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="kawaii"] .yt-spec-avatar-shape__image:hover {
@@ -981,7 +981,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i] {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 5px 0 var(--kawaii-primary) !important;
 }
 
@@ -1004,7 +1004,7 @@ html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i]:ac
 }
 
 html[data-ypp-card-style="kawaii"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 5px 0 var(--kawaii-primary) !important;
 }
 
@@ -1019,37 +1019,37 @@ html[data-ypp-card-style="kawaii"] yt-chip-cloud-chip-renderer, html[data-ypp-ui
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-track {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-thumb {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* Kawaii Scrubber */
 html[data-ypp-card-style="kawaii"] .ytp-play-progress, html[data-ypp-ui-design="kawaii"] .ytp-play-progress {
   background: linear-gradient(90deg, #ffb6c1, #ff69b4) !important;
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-load-progress, html[data-ypp-ui-design="kawaii"] .ytp-load-progress {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-scrubber-button, html[data-ypp-ui-design="kawaii"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.6) !important;
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5) !important;
 }
 
 /* Soft Tooltips */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip, html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 5px 15px rgba(255,105,180,0.4) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-badge-supported-renderer, html[data-ypp-ui-design="kawaii"] ytd-badge-supported-renderer {
-  border-radius: var(--kawaii-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
 }
 
 /* ========================================================================== */
@@ -1057,7 +1057,7 @@ html[data-ypp-card-style="kawaii"] ytd-badge-supported-renderer, html[data-ypp-u
 /* ========================================================================== */
 /* Kawaii Specific Override Block 1 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-1, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-1 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1068,7 +1068,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-1:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 2 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-2, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-2 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1079,7 +1079,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-2:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 3 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-3, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-3 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1090,7 +1090,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-3:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 4 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-4, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-4 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1101,7 +1101,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-4:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 5 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-5, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-5 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1112,7 +1112,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-5:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 6 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-6, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-6 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1123,7 +1123,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-6:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 7 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-7, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-7 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1134,7 +1134,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-7:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 8 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-8, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-8 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1145,7 +1145,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-8:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 9 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-9, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-9 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1156,7 +1156,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-9:hover, html[data-ypp-ui-d
 
 /* Kawaii Specific Override Block 10 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-10, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-10 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1167,7 +1167,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-10:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 11 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-11, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-11 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1178,7 +1178,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-11:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 12 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-12, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-12 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1189,7 +1189,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-12:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 13 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-13, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-13 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1200,7 +1200,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-13:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 14 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-14, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-14 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1211,7 +1211,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-14:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 15 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-15, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-15 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1222,7 +1222,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-15:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 16 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-16, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-16 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1233,7 +1233,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-16:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 17 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-17, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-17 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1244,7 +1244,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-17:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 18 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-18, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-18 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1255,7 +1255,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-18:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 19 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-19, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-19 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1266,7 +1266,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-19:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 20 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-20, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-20 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1277,7 +1277,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-20:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 21 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-21, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-21 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1288,7 +1288,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-21:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 22 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-22, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-22 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1299,7 +1299,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-22:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 23 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-23, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-23 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1310,7 +1310,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-23:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 24 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-24, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-24 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1321,7 +1321,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-24:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 25 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-25, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-25 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1332,7 +1332,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-25:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 26 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-26, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-26 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1343,7 +1343,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-26:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 27 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-27, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-27 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1354,7 +1354,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-27:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 28 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-28, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-28 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1365,7 +1365,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-28:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 29 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-29, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-29 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1376,7 +1376,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-29:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 30 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-30, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-30 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1387,7 +1387,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-30:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 31 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-31, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-31 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1398,7 +1398,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-31:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 32 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-32, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-32 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1409,7 +1409,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-32:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 33 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-33, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-33 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1420,7 +1420,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-33:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 34 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-34, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-34 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1431,7 +1431,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-34:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 35 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-35, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-35 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1442,7 +1442,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-35:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 36 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-36, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-36 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1453,7 +1453,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-36:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 37 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-37, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-37 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1464,7 +1464,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-37:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 38 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-38, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-38 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1475,7 +1475,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-38:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 39 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-39, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-39 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1486,7 +1486,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-39:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 40 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-40, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-40 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1497,7 +1497,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-40:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 41 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-41, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-41 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1508,7 +1508,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-41:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 42 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-42, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-42 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1519,7 +1519,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-42:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 43 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-43, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-43 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1530,7 +1530,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-43:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 44 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-44, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-44 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1541,7 +1541,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-44:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 45 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-45, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-45 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1552,7 +1552,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-45:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 46 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-46, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-46 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1563,7 +1563,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-46:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 47 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-47, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-47 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1574,7 +1574,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-47:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 48 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-48, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-48 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1585,7 +1585,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-48:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 49 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-49, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-49 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1596,7 +1596,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-49:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 50 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-50, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-50 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1607,7 +1607,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-50:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 51 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-51, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-51 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1618,7 +1618,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-51:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 52 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-52, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-52 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1629,7 +1629,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-52:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 53 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-53, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-53 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1640,7 +1640,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-53:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 54 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-54, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-54 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1651,7 +1651,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-54:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 55 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-55, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-55 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1662,7 +1662,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-55:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 56 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-56, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-56 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1673,7 +1673,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-56:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 57 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-57, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-57 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1684,7 +1684,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-57:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 58 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-58, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-58 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1695,7 +1695,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-58:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 59 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-59, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-59 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1706,7 +1706,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-59:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 60 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-60, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-60 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1717,7 +1717,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-60:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 61 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-61, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-61 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1728,7 +1728,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-61:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 62 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-62, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-62 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1739,7 +1739,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-62:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 63 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-63, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-63 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1750,7 +1750,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-63:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 64 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-64, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-64 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1761,7 +1761,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-64:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 65 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-65, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-65 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1772,7 +1772,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-65:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 66 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-66, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-66 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1783,7 +1783,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-66:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 67 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-67, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-67 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1794,7 +1794,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-67:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 68 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-68, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-68 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1805,7 +1805,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-68:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 69 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-69, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-69 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1816,7 +1816,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-69:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 70 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-70, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-70 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1827,7 +1827,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-70:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 71 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-71, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-71 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1838,7 +1838,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-71:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 72 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-72, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-72 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1849,7 +1849,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-72:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 73 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-73, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-73 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1860,7 +1860,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-73:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 74 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-74, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-74 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1871,7 +1871,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-74:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 75 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-75, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-75 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1882,7 +1882,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-75:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 76 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-76, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-76 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1893,7 +1893,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-76:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 77 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-77, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-77 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1904,7 +1904,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-77:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 78 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-78, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-78 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1915,7 +1915,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-78:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 79 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-79, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-79 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1926,7 +1926,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-79:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 80 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-80, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-80 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1937,7 +1937,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-80:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 81 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-81, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-81 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1948,7 +1948,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-81:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 82 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-82, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-82 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1959,7 +1959,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-82:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 83 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-83, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-83 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1970,7 +1970,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-83:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 84 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-84, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-84 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1981,7 +1981,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-84:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 85 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-85, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-85 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -1992,7 +1992,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-85:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 86 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-86, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-86 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2003,7 +2003,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-86:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 87 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-87, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-87 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2014,7 +2014,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-87:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 88 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-88, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-88 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2025,7 +2025,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-88:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 89 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-89, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-89 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2036,7 +2036,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-89:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 90 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-90, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-90 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2047,7 +2047,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-90:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 91 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-91, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-91 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2058,7 +2058,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-91:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 92 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-92, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-92 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2069,7 +2069,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-92:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 93 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-93, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-93 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2080,7 +2080,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-93:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 94 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-94, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-94 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2091,7 +2091,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-94:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 95 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-95, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-95 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2102,7 +2102,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-95:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 96 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-96, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-96 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2113,7 +2113,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-96:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 97 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-97, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-97 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2124,7 +2124,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-97:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 98 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-98, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-98 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2135,7 +2135,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-98:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 99 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-99, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-99 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2146,7 +2146,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-99:hover, html[data-ypp-ui-
 
 /* Kawaii Specific Override Block 100 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-100, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-100 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2157,7 +2157,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-100:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 101 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-101, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-101 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2168,7 +2168,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-101:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 102 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-102, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-102 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2179,7 +2179,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-102:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 103 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-103, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-103 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2190,7 +2190,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-103:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 104 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-104, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-104 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2201,7 +2201,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-104:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 105 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-105, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-105 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2212,7 +2212,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-105:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 106 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-106, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-106 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2223,7 +2223,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-106:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 107 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-107, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-107 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2234,7 +2234,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-107:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 108 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-108, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-108 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2245,7 +2245,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-108:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 109 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-109, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-109 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2256,7 +2256,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-109:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 110 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-110, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-110 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2267,7 +2267,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-110:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 111 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-111, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-111 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2278,7 +2278,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-111:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 112 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-112, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-112 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2289,7 +2289,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-112:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 113 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-113, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-113 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2300,7 +2300,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-113:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 114 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-114, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-114 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2311,7 +2311,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-114:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 115 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-115, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-115 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2322,7 +2322,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-115:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 116 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-116, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-116 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2333,7 +2333,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-116:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 117 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-117, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-117 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2344,7 +2344,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-117:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 118 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-118, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-118 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2355,7 +2355,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-118:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 119 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-119, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-119 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2366,7 +2366,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-119:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 120 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-120, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-120 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2377,7 +2377,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-120:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 121 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-121, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-121 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2388,7 +2388,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-121:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 122 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-122, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-122 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2399,7 +2399,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-122:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 123 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-123, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-123 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2410,7 +2410,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-123:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 124 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-124, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-124 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2421,7 +2421,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-124:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 125 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-125, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-125 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2432,7 +2432,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-125:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 126 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-126, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-126 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2443,7 +2443,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-126:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 127 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-127, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-127 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2454,7 +2454,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-127:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 128 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-128, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-128 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2465,7 +2465,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-128:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 129 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-129, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-129 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2476,7 +2476,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-129:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 130 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-130, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-130 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2487,7 +2487,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-130:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 131 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-131, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-131 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2498,7 +2498,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-131:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 132 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-132, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-132 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2509,7 +2509,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-132:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 133 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-133, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-133 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2520,7 +2520,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-133:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 134 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-134, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-134 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2531,7 +2531,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-134:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 135 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-135, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-135 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2542,7 +2542,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-135:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 136 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-136, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-136 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2553,7 +2553,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-136:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 137 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-137, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-137 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2564,7 +2564,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-137:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 138 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-138, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-138 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2575,7 +2575,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-138:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 139 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-139, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-139 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2586,7 +2586,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-139:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 140 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-140, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-140 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2597,7 +2597,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-140:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 141 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-141, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-141 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2608,7 +2608,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-141:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 142 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-142, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-142 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2619,7 +2619,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-142:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 143 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-143, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-143 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2630,7 +2630,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-143:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 144 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-144, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-144 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2641,7 +2641,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-144:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 145 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-145, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-145 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2652,7 +2652,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-145:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 146 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-146, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-146 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2663,7 +2663,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-146:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 147 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-147, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-147 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2674,7 +2674,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-147:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 148 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-148, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-148 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2685,7 +2685,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-148:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 149 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-149, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-149 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2696,7 +2696,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-149:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 150 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-150, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-150 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2707,7 +2707,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-150:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 151 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-151, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-151 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2718,7 +2718,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-151:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 152 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-152, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-152 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2729,7 +2729,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-152:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 153 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-153, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-153 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2740,7 +2740,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-153:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 154 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-154, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-154 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2751,7 +2751,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-154:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 155 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-155, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-155 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2762,7 +2762,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-155:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 156 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-156, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-156 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2773,7 +2773,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-156:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 157 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-157, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-157 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2784,7 +2784,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-157:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 158 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-158, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-158 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2795,7 +2795,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-158:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 159 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-159, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-159 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2806,7 +2806,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-159:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 160 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-160, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-160 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2817,7 +2817,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-160:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 161 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-161, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-161 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2828,7 +2828,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-161:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 162 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-162, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-162 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2839,7 +2839,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-162:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 163 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-163, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-163 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2850,7 +2850,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-163:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 164 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-164, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-164 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2861,7 +2861,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-164:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 165 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-165, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-165 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2872,7 +2872,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-165:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 166 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-166, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-166 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2883,7 +2883,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-166:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 167 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-167, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-167 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2894,7 +2894,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-167:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 168 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-168, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-168 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2905,7 +2905,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-168:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 169 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-169, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-169 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2916,7 +2916,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-169:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 170 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-170, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-170 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2927,7 +2927,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-170:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 171 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-171, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-171 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2938,7 +2938,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-171:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 172 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-172, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-172 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2949,7 +2949,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-172:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 173 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-173, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-173 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2960,7 +2960,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-173:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 174 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-174, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-174 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2971,7 +2971,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-174:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 175 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-175, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-175 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2982,7 +2982,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-175:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 176 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-176, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-176 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -2993,7 +2993,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-176:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 177 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-177, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-177 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3004,7 +3004,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-177:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 178 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-178, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-178 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3015,7 +3015,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-178:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 179 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-179, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-179 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3026,7 +3026,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-179:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 180 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-180, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-180 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3037,7 +3037,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-180:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 181 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-181, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-181 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3048,7 +3048,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-181:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 182 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-182, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-182 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3059,7 +3059,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-182:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 183 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-183, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-183 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3070,7 +3070,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-183:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 184 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-184, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-184 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3081,7 +3081,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-184:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 185 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-185, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-185 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3092,7 +3092,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-185:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 186 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-186, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-186 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3103,7 +3103,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-186:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 187 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-187, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-187 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3114,7 +3114,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-187:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 188 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-188, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-188 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3125,7 +3125,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-188:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 189 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-189, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-189 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3136,7 +3136,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-189:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 190 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-190, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-190 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3147,7 +3147,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-190:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 191 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-191, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-191 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3158,7 +3158,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-191:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 192 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-192, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-192 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3169,7 +3169,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-192:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 193 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-193, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-193 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3180,7 +3180,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-193:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 194 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-194, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-194 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3191,7 +3191,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-194:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 195 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-195, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-195 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3202,7 +3202,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-195:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 196 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-196, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-196 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3213,7 +3213,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-196:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 197 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-197, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-197 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3224,7 +3224,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-197:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 198 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-198, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-198 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3235,7 +3235,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-198:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 199 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-199, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-199 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3246,7 +3246,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-199:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 200 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-200, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-200 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3257,7 +3257,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-200:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 201 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-201, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-201 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3268,7 +3268,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-201:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 202 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-202, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-202 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3279,7 +3279,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-202:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 203 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-203, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-203 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3290,7 +3290,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-203:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 204 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-204, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-204 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3301,7 +3301,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-204:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 205 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-205, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-205 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3312,7 +3312,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-205:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 206 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-206, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-206 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3323,7 +3323,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-206:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 207 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-207, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-207 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3334,7 +3334,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-207:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 208 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-208, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-208 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3345,7 +3345,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-208:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 209 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-209, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-209 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3356,7 +3356,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-209:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 210 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-210, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-210 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3367,7 +3367,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-210:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 211 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-211, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-211 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3378,7 +3378,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-211:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 212 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-212, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-212 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3389,7 +3389,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-212:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 213 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-213, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-213 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3400,7 +3400,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-213:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 214 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-214, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-214 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3411,7 +3411,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-214:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 215 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-215, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-215 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3422,7 +3422,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-215:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 216 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-216, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-216 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3433,7 +3433,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-216:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 217 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-217, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-217 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3444,7 +3444,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-217:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 218 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-218, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-218 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3455,7 +3455,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-218:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 219 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-219, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-219 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3466,7 +3466,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-219:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 220 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-220, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-220 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3477,7 +3477,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-220:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 221 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-221, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-221 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3488,7 +3488,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-221:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 222 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-222, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-222 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3499,7 +3499,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-222:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 223 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-223, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-223 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3510,7 +3510,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-223:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 224 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-224, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-224 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3521,7 +3521,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-224:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 225 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-225, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-225 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3532,7 +3532,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-225:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 226 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-226, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-226 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3543,7 +3543,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-226:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 227 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-227, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-227 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3554,7 +3554,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-227:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 228 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-228, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-228 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3565,7 +3565,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-228:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 229 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-229, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-229 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3576,7 +3576,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-229:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 230 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-230, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-230 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3587,7 +3587,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-230:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 231 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-231, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-231 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3598,7 +3598,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-231:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 232 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-232, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-232 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3609,7 +3609,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-232:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 233 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-233, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-233 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3620,7 +3620,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-233:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 234 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-234, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-234 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3631,7 +3631,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-234:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 235 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-235, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-235 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3642,7 +3642,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-235:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 236 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-236, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-236 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3653,7 +3653,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-236:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 237 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-237, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-237 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3664,7 +3664,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-237:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 238 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-238, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-238 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3675,7 +3675,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-238:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 239 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-239, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-239 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3686,7 +3686,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-239:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 240 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-240, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-240 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3697,7 +3697,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-240:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 241 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-241, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-241 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3708,7 +3708,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-241:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 242 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-242, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-242 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3719,7 +3719,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-242:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 243 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-243, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-243 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3730,7 +3730,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-243:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 244 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-244, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-244 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3741,7 +3741,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-244:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 245 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-245, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-245 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3752,7 +3752,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-245:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 246 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-246, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-246 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3763,7 +3763,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-246:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 247 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-247, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-247 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3774,7 +3774,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-247:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 248 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-248, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-248 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3785,7 +3785,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-248:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 249 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-249, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-249 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3796,7 +3796,7 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-249:hover, html[data-ypp-ui
 
 /* Kawaii Specific Override Block 250 */
 html[data-ypp-card-style="kawaii"] .kawaii-gen-class-250, html[data-ypp-ui-design="kawaii"] .kawaii-gen-class-250 {
-  border-radius: var(--kawaii-radius) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius)) !important;
   box-shadow: var(--kawaii-shadow) !important;
 }
 
@@ -3806,11 +3806,11 @@ html[data-ypp-card-style="kawaii"] .kawaii-gen-class-250:hover, html[data-ypp-ui
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-track {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="kawaii"] ::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 /* 3. Global Text Overrides */
@@ -3834,7 +3834,7 @@ html[data-ypp-ui-design="kawaii"] ytd-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-playlist-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
@@ -3848,7 +3848,7 @@ html[data-ypp-ui-design="kawaii"] ytd-video-renderer:hover {
 /* 5. Thumbnails & Media */
 html[data-ypp-card-style="kawaii"] ytd-thumbnail, html[data-ypp-card-style="kawaii"] yt-image,
 html[data-ypp-ui-design="kawaii"] ytd-thumbnail, html[data-ypp-ui-design="kawaii"] yt-image {
-  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
@@ -3862,7 +3862,7 @@ html[data-ypp-ui-design="kawaii"] ytd-thumbnail:hover yt-image {
 html[data-ypp-card-style="kawaii"] yt-img-shadow, html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image,
 html[data-ypp-ui-design="kawaii"] yt-img-shadow, html[data-ypp-ui-design="kawaii"] .yt-spec-avatar-shape__image {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -3879,18 +3879,18 @@ html[data-ypp-card-style="kawaii"] ytd-masthead, html[data-ypp-ui-design="kawaii
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="kawaii"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox #container.ytd-searchbox {
-  border-radius: 30px 0 0 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px 0 0 30px) !important;
   box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-searchbox #search-icon-legacy,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox #search-icon-legacy {
-  border-radius: 0 30px 30px 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
 }
 
 html[data-ypp-card-style="kawaii"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
   transition: transform 0.2s !important;
 }
@@ -3903,7 +3903,7 @@ html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer:hover {
 /* 10. Left Sidebar / Guide */
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer, html[data-ypp-card-style="kawaii"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer, html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer:hover,
@@ -3914,41 +3914,41 @@ html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer:hover {
 /* 11. Comments Section */
 html[data-ypp-card-style="kawaii"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-comment-thread-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 html[data-ypp-card-style="kawaii"] #simplebox-placeholder, html[data-ypp-ui-design="kawaii"] #simplebox-placeholder {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 12. Video Player Controls & OSD */
 html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="kawaii"] .ytp-chrome-bottom {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-scrubber-button,
 html[data-ypp-ui-design="kawaii"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-tooltip, html[data-ypp-ui-design="kawaii"] .ytp-tooltip {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 13. Dialogs, Popups, and Menus */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-dialog, html[data-ypp-card-style="kawaii"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog, html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="kawaii"] ytd-multi-page-menu-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 14. Channel Headers & Banners */
@@ -3959,63 +3959,63 @@ html[data-ypp-ui-design="kawaii"] ytd-c4-tabbed-header-renderer {
 
 html[data-ypp-card-style="kawaii"] #channel-header,
 html[data-ypp-ui-design="kawaii"] #channel-header {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 15. Subscribe & Primary Buttons */
 html[data-ypp-card-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-ui-design="kawaii"] ytd-subscribe-button-renderer yt-button-shape button {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="kawaii"] yt-live-chat-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 html[data-ypp-card-style="kawaii"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-text-message-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 17. Notifications & Tooltips */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-notification-renderer, html[data-ypp-ui-design="kawaii"] ytd-notification-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 18. Badges (Live, New, Premieres) */
 html[data-ypp-card-style="kawaii"] ytd-badge-supported-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-badge-supported-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 19. Skeletons & Loading States */
 html[data-ypp-card-style="kawaii"] ytd-skeleton, html[data-ypp-ui-design="kawaii"] ytd-skeleton, 
 html[data-ypp-card-style="kawaii"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="kawaii"] .ytd-ghost-grid-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 20. Shorts Carousel & Panels */
 html[data-ypp-card-style="kawaii"] ytd-reel-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-reel-item-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="kawaii"] ytd-rich-shelf-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 21. Metadata & Descriptions */
 html[data-ypp-card-style="kawaii"] ytd-watch-metadata, html[data-ypp-ui-design="kawaii"] ytd-watch-metadata {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
@@ -4030,34 +4030,34 @@ html[data-ypp-card-style="kawaii"] yt-icon:hover, html[data-ypp-ui-design="kawai
 
 /* 23. Video Endscreens & Overlay */
 html[data-ypp-card-style="kawaii"] .ytp-endscreen-content, html[data-ypp-ui-design="kawaii"] .ytp-endscreen-content {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-ce-element, html[data-ypp-ui-design="kawaii"] .ytp-ce-element {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 /* 24. YouTube Miniplayer */
 html[data-ypp-card-style="kawaii"] ytd-miniplayer, html[data-ypp-ui-design="kawaii"] ytd-miniplayer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="kawaii"] .ytp-settings-menu, html[data-ypp-ui-design="kawaii"] .ytp-settings-menu {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 /* 26. Account Switcher & Profiles */
 html[data-ypp-card-style="kawaii"] ytd-account-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-account-item-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 27. Search Filters (Filter Menu) */
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer, html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer:hover {
@@ -4066,18 +4066,18 @@ html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer:hover, html[data-y
 
 /* 28. Playlists Page Inner Layout */
 html[data-ypp-card-style="kawaii"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
 /* 29. Chapters & Timestamp Links */
 html[data-ypp-card-style="kawaii"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="kawaii"] ytd-macro-markers-list-item-renderer {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* 30. Offline & Error Screens */
 html[data-ypp-card-style="kawaii"] yt-error-screen, html[data-ypp-ui-design="kawaii"] yt-error-screen {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 8px 0 #ff69b4 !important;
 }
 
@@ -4090,13 +4090,13 @@ html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-masthead {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-bubbly) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-masthead,
 html[data-ypp-ui-design="kawaii"] ytd-masthead {
-  border-radius: 0 0 30px 30px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 30px 30px) !important;
 }
 
 /* KAWAII MICRO-INTERACTIONS PAYLOAD V12 */
@@ -4108,7 +4108,7 @@ html[data-ypp-card-style="kawaii"] tp-yt-paper-dialog,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog,
 html[data-ypp-card-style="kawaii"] ytd-popup-container,
 html[data-ypp-ui-design="kawaii"] ytd-popup-container {
-  border-radius: 36px !important;
+  border-radius: var(--ypp-shape-primary, 36px) !important;
   animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
@@ -4137,12 +4137,12 @@ html[data-ypp-ui-design="kawaii"] ytd-popup-container {
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
 }
 
 html[data-ypp-card-style="kawaii"] tp-yt-paper-toast,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-toast {
-  border-radius: 36px !important;
+  border-radius: var(--ypp-shape-primary, 36px) !important;
 }
 
 /* =========================================
@@ -4150,7 +4150,7 @@ html[data-ypp-ui-design="kawaii"] tp-yt-paper-toast {
 ========================================= */
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer:hover,
@@ -4165,7 +4165,7 @@ html[data-ypp-card-style="kawaii"] ytd-background-promo-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-background-promo-renderer,
 html[data-ypp-card-style="kawaii"] #error-page,
 html[data-ypp-ui-design="kawaii"] #error-page {
-  border-radius: 36px !important;
+  border-radius: var(--ypp-shape-primary, 36px) !important;
 }
 
 /* Empty state icon geometry override */
@@ -4177,7 +4177,7 @@ html[data-ypp-ui-design="kawaii"] ytd-background-promo-renderer yt-icon {
 
 html[data-ypp-card-style="kawaii"] ytd-mini-guide-entry-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
   transition: transform 0.2s ease !important;
 }
 
@@ -4193,7 +4193,7 @@ html[data-ypp-ui-design="kawaii"] ytd-masthead {
 }
 
 html[data-ypp-ui-design="kawaii"] ytd-searchbox#search form {
-  border-radius: var(--kawaii-r-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-pill)) !important;
   box-shadow: var(--kawaii-shadow-inset) !important;
 }
 
@@ -4202,7 +4202,7 @@ html[data-ypp-ui-design="kawaii"] ytd-searchbox#search form:focus-within {
 }
 
 html[data-ypp-ui-design="kawaii"] ytd-searchbox#search button#search-icon-legacy {
-  border-radius: 0 var(--kawaii-r-pill) var(--kawaii-r-pill) 0 !important;
+  border-radius: var(--ypp-shape-primary, 0 var(--kawaii-r-pill) var(--kawaii-r-pill) 0) !important;
 }
 
 /* Icons */
@@ -4210,7 +4210,7 @@ html[data-ypp-ui-design="kawaii"] ytd-masthead yt-icon-button,
 html[data-ypp-ui-design="kawaii"] ytd-masthead .yt-spec-button-shape-next--icon-only-default ,
 html[data-ypp-ui-design="kawaii"] ytd-masthead yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="kawaii"] ytd-masthead yt-button-shape button[title*="Download" i] {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 html[data-ypp-ui-design="kawaii"] ytd-masthead yt-icon-button:hover,
@@ -4224,7 +4224,7 @@ html[data-ypp-ui-design="kawaii"] ytd-masthead yt-button-shape button[title*="Do
 /* Kawaii Notifications Dropdown */
 html[data-ypp-card-style="kawaii"] ytd-notification-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-notification-renderer {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
   transition: transform 0.2s ease, background 0.2s ease !important;
 }
 
@@ -4237,20 +4237,20 @@ html[data-ypp-ui-design="kawaii"] ytd-notification-renderer:hover {
 /* Unread Indicator - Mint Green Pill */
 html[data-ypp-card-style="kawaii"] ytd-notification-renderer[unread] .unread-indicator,
 html[data-ypp-ui-design="kawaii"] ytd-notification-renderer[unread] .unread-indicator {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 5px var(--kawaii-accent-secondary) !important;
 }
 
 /* Kawaii Panels (Transcript / Chapters) */
 html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-engagement-panel-section-list-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-fluffy) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer #header,
 html[data-ypp-ui-design="kawaii"] ytd-engagement-panel-section-list-renderer #header {
-  border-radius: 24px 24px 0 0 !important;
+  border-radius: var(--ypp-shape-primary, 24px 24px 0 0) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer #content,
@@ -4264,20 +4264,20 @@ html[data-ypp-card-style="kawaii"] ytd-text-inline-expander,
 html[data-ypp-ui-design="kawaii"] ytd-text-inline-expander,
 html[data-ypp-card-style="kawaii"] #description-inner,
 html[data-ypp-ui-design="kawaii"] #description-inner {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* Kawaii Playlist Queue */
 html[data-ypp-card-style="kawaii"] ytd-playlist-panel-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-fluffy) !important;
 }
 
 /* Individual Queue Items */
 html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-video-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-playlist-panel-video-renderer[selected]::before,
@@ -4290,19 +4290,19 @@ html[data-ypp-card-style="kawaii"] .ytp-settings-menu,
 html[data-ypp-ui-design="kawaii"] .ytp-settings-menu,
 html[data-ypp-card-style="kawaii"] .ytp-panel-menu,
 html[data-ypp-ui-design="kawaii"] .ytp-panel-menu {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-bubbly) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-menuitem:hover,
 html[data-ypp-ui-design="kawaii"] .ytp-menuitem:hover {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Custom Autoplay/Toggle Switches */
 html[data-ypp-card-style="kawaii"] .ytp-autonav-toggle-button,
 html[data-ypp-ui-design="kawaii"] .ytp-autonav-toggle-button {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-autonav-toggle-button::after,
@@ -4315,13 +4315,13 @@ html[data-ypp-ui-design="kawaii"] .ytp-autonav-toggle-button::after {
 /* Merch Carousel */
 html[data-ypp-card-style="kawaii"] ytd-merch-shelf-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-merch-shelf-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
 }
 
 /* Individual Product Cards */
 html[data-ypp-card-style="kawaii"] ytd-product-list-item-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-product-list-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
   transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
 }
@@ -4335,24 +4335,24 @@ html[data-ypp-ui-design="kawaii"] ytd-product-list-item-renderer:hover {
 /* Fundraiser Progress */
 html[data-ypp-card-style="kawaii"] ytd-donation-shelf-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-donation-shelf-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-donation-shelf-renderer .progress-bar,
 html[data-ypp-ui-design="kawaii"] ytd-donation-shelf-renderer .progress-bar {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-donation-shelf-renderer .progress-bar-fill,
 html[data-ypp-ui-design="kawaii"] ytd-donation-shelf-renderer .progress-bar-fill {
   background: linear-gradient(90deg, var(--kawaii-accent-primary), var(--kawaii-accent-secondary)) !important;
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Kawaii Guide Sidebar */
 html[data-ypp-card-style="kawaii"] ytd-guide-entry-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-guide-entry-renderer {
-  border-radius: var(--kawaii-radius-pill) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-pill)) !important;
   transition: transform 0.3s var(--kawaii-ease-bouncy), background-color 0.2s ease !important;
 }
 
@@ -4391,7 +4391,7 @@ html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-renderer {
 ========================================= */
 html[data-ypp-card-style="kawaii"] ytd-backstage-post-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-backstage-post-renderer {
-  border-radius: 24px !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
 /* Community Poll Progress Bars */
@@ -4399,7 +4399,7 @@ html[data-ypp-card-style="kawaii"] .ytd-backstage-poll-renderer[checked] .progre
 html[data-ypp-ui-design="kawaii"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-card-style="kawaii"] .progress-bar.ytd-backstage-poll-renderer,
 html[data-ypp-ui-design="kawaii"] .progress-bar.ytd-backstage-poll-renderer {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: 0 0 10px #ff9ebb !important;
 }
 
@@ -4408,7 +4408,7 @@ html[data-ypp-ui-design="kawaii"] .progress-bar.ytd-backstage-poll-renderer {
 ========================================= */
 html[data-ypp-card-style="kawaii"] ytd-merch-shelf-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-merch-shelf-renderer {
-  border-radius: 8px !important;
+  border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Product Image Geometry Override */
@@ -4417,7 +4417,7 @@ html[data-ypp-ui-design="kawaii"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-card-style="kawaii"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
 html[data-ypp-ui-design="kawaii"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
   clip-path: circle(50% at 50% 50%) !important;
-  border-radius: 0 !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
 }
 
@@ -4429,7 +4429,7 @@ html[data-ypp-ui-design="kawaii"] .ytd-shopping-carousel-item-renderer:hover img
 /* Buy Buttons */
 html[data-ypp-card-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
@@ -4440,7 +4440,7 @@ html[data-ypp-ui-design="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item
 
 html[data-ypp-card-style="kawaii"] .badge-style-type-live-now-alternate,
 html[data-ypp-ui-design="kawaii"] .badge-style-type-live-now-alternate {
-  border-radius: 4px !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
@@ -4457,7 +4457,7 @@ html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-card-style="kawaii"] .ytp-tooltip,
 html[data-ypp-ui-design="kawaii"] .ytp-tooltip {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
   /* Force entrance animation if possible */
     animation: kawaiiTooltip 0.3s var(--kawaii-ease-bouncy) forwards !important;
@@ -4475,7 +4475,7 @@ html[data-ypp-ui-design="kawaii"] .ytp-tooltip {
 /* Miniplayer */
 html[data-ypp-card-style="kawaii"] ytd-miniplayer,
 html[data-ypp-ui-design="kawaii"] ytd-miniplayer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-fluffy) !important;
 }
 
@@ -4484,18 +4484,18 @@ html[data-ypp-card-style="kawaii"] yt-live-chat-app,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-app,
 html[data-ypp-card-style="kawaii"] yt-live-chat-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] yt-live-chat-text-message-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-text-message-renderer {
-  border-radius: 20px 20px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 20px 20px 4px) !important;
 }
 
 /* Aggressive Superchat Override */
 html[data-ypp-card-style="kawaii"] yt-live-chat-paid-message-renderer,
 html[data-ypp-ui-design="kawaii"] yt-live-chat-paid-message-renderer {
-  border-radius: 20px 20px 20px 4px !important;
+  border-radius: var(--ypp-shape-primary, 20px 20px 20px 4px) !important;
 }
 
 /* Kawaii Monetization UI (Memberships & Super Thanks) */
@@ -4503,7 +4503,7 @@ html[data-ypp-ui-design="kawaii"] yt-live-chat-paid-message-renderer {
 /* Memberships Purchase Dialog */
 html[data-ypp-card-style="kawaii"] ytd-sponsorships-offer-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-sponsorships-offer-renderer {
-  border-radius: 40px !important;
+  border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 0 20px 50px rgba(255, 158, 187, 0.4) !important;
 }
 
@@ -4511,7 +4511,7 @@ html[data-ypp-ui-design="kawaii"] ytd-sponsorships-offer-renderer {
 html[data-ypp-card-style="kawaii"] ytd-sponsorships-tier-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-sponsorships-tier-renderer {
   /* Mint border */
-    border-radius: 20px !important;
+    border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 20px rgba(196, 245, 214, 0.3) !important;
   transition: transform 0.4s var(--kawaii-ease-bouncy), box-shadow 0.4s ease !important;
 }
@@ -4525,31 +4525,31 @@ html[data-ypp-ui-design="kawaii"] ytd-sponsorships-tier-renderer:hover {
 /* Super Thanks Panels */
 html[data-ypp-card-style="kawaii"] ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-super-thanks"],
 html[data-ypp-ui-design="kawaii"] ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-super-thanks"] {
-  border-radius: 30px !important;
+  border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* Kawaii Player & Shorts */
 html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="kawaii"] .ytp-chrome-bottom {
-  border-radius: 20px !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--kawaii-shadow-bubbly) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-play-progress,
 html[data-ypp-ui-design="kawaii"] .ytp-play-progress {
-  border-radius: 10px !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] .ytp-scrubber-button,
 html[data-ypp-ui-design="kawaii"] .ytp-scrubber-button {
-  border-radius: 50% !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
   transform: scale(1.2) !important;
 }
 
 /* Shorts Player Scalloped/Rounded Edges */
 html[data-ypp-card-style="kawaii"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
 }
 
 /* Kawaii Search Filters & Autocomplete Dropdown */
@@ -4559,19 +4559,19 @@ html[data-ypp-card-style="kawaii"] .sbdd_b,
 html[data-ypp-ui-design="kawaii"] .sbdd_b,
 html[data-ypp-card-style="kawaii"] .sbsb_a,
 html[data-ypp-ui-design="kawaii"] .sbsb_a {
-  border-radius: 0 0 24px 24px !important;
+  border-radius: var(--ypp-shape-primary, 0 0 24px 24px) !important;
   box-shadow: 0 10px 25px rgba(255,158,187,0.3) !important;
 }
 
 /* Search Filters Panel */
 html[data-ypp-card-style="kawaii"] ytd-search-filter-group-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-search-filter-group-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-search-filter-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
   transition: background 0.3s ease, transform 0.2s var(--kawaii-ease-bouncy) !important;
 }
 
@@ -4585,7 +4585,7 @@ html[data-ypp-ui-design="kawaii"] ytd-search-filter-renderer:hover {
 /* Shorts Container */
 html[data-ypp-card-style="kawaii"] ytd-reel-video-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: 0 15px 40px rgba(255,158,187,0.3) !important;
 }
 
@@ -4593,7 +4593,7 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions,
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions {
   backdrop-filter: blur(10px) !important;
-  border-radius: 40px !important;
+  border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 0 5px 15px rgba(255,158,187,0.4) !important;
 }
 
@@ -4616,7 +4616,7 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #overlay-info,
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #overlay-info {
   background: linear-gradient(0deg, rgba(255,227,227,0.9) 0%, rgba(255,227,227,0) 100%) !important;
-  border-radius: 0 0 var(--kawaii-radius-squircle) var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, 0 0 var(--kawaii-radius-squircle) var(--kawaii-radius-squircle)) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer .title,
@@ -4627,7 +4627,7 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer .title {
 /* Shorts Progress Bar */
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #progress-bar,
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #progress-bar {
-  border-radius: 6px !important;
+  border-radius: var(--ypp-shape-primary, 6px) !important;
 }
 
 /* Kawaii Creator Studio Elements on Main Site */
@@ -4637,7 +4637,7 @@ html[data-ypp-card-style="kawaii"] ytd-creator-heartbeat-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-creator-heartbeat-renderer,
 html[data-ypp-card-style="kawaii"] ytd-analytics-video-snapshot-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-analytics-video-snapshot-renderer {
-  border-radius: var(--kawaii-radius-squircle) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: 0 10px 25px rgba(232, 223, 245, 0.8) !important;
 }
 
@@ -4646,13 +4646,13 @@ html[data-ypp-card-style="kawaii"] .analytics-sparkline,
 html[data-ypp-ui-design="kawaii"] .analytics-sparkline,
 html[data-ypp-card-style="kawaii"] .yt-progress-bar,
 html[data-ypp-ui-design="kawaii"] .yt-progress-bar {
-  border-radius: 12px !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Edit Video / Studio Action Bar */
 html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer ytd-button-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer ytd-button-renderer {
-  border-radius: 16px !important;
+  border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
 html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer ytd-button-renderer:hover,
@@ -4662,7 +4662,7 @@ html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer ytd-button-renderer:h
 }
 
 html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer {
-  border-radius: var(--kawaii-r-md) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-md)) !important;
   box-shadow: none !important;
 }
 
@@ -4675,11 +4675,11 @@ html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer:hover {
 html[data-ypp-ui-design="kawaii"] #secondary-inner.ytd-watch-flexy {
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
-  border-radius: var(--kawaii-r-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-lg)) !important;
 }
 
 html[data-ypp-ui-design="kawaii"] #description.ytd-watch-metadata {
-  border-radius: var(--kawaii-r-lg) !important;
+  border-radius: var(--ypp-shape-primary, var(--kawaii-r-lg)) !important;
 }
 
 html[data-ypp-ui-design="kawaii"] #description.ytd-watch-metadata:hover {

@@ -8,15 +8,15 @@ html[data-ypp-ui-style="vaporwave"] {
   --ypp-primary-accent: #6b2fa0 !important;
   --ypp-text-primary: #1a8fa0 !important;
   
-  --ypp-surface-border: 1px solid #6b2fa040 !important;
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #6b2fa040) !important;
   --ypp-shadow-base: 0 4px 12px #6b2fa020 !important;
   --ypp-shadow-hover: 0 8px 24px #6b2fa040 !important;
   
-  --yt-font-family: "Syncopate","Audiowide",sans-serif !important;
+  --yt-font-family: var(--ypp-font-primary, "Syncopate","Audiowide",sans-serif) !important;
 }
 
 
 html[data-ypp-ui-style="vaporwave"] * {
-  font-family: "Syncopate","Audiowide",sans-serif !important;
+  font-family: var(--ypp-font-primary, "Syncopate","Audiowide",sans-serif) !important;
 }
 
