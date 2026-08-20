@@ -188,8 +188,13 @@ html.yt-spiral-tube-theme,
 html.yt-spiral-tube-theme:root,
 html.yt-spiral-tube-theme:root[dark],
 html.yt-spiral-tube-theme:root[dark="true"],
-html.yt-spiral-tube-theme:root[system-icons] {
-  background-color: var(--ypp-bg-base, #0f0f0f) !important;
+html.yt-spiral-tube-theme:root[system-icons],
+html.yt-spiral-tube-theme body,
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #background,
+html.yt-spiral-tube-theme #page-manager {
+  background-color: var(--ypp-bg-base, var(--ypp-bg-surface, #0f0f0f)) !important;
+  background-image: none !important;
   
   position: relative;
 }
