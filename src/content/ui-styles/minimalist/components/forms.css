@@ -18,7 +18,9 @@ html[data-ypp-card-style="minimalist"] ytd-searchbox #search-icon-legacy {
 
 /* Subscribe Button */
 html[data-ypp-card-style="minimalist"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="minimalist"] .yt-spec-button-shape-next--filled {
+html[data-ypp-card-style="minimalist"] .yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
     background: transparent !important;
     color: #fff !important;
     border: 1px solid #fff !important;

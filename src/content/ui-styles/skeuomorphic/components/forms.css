@@ -30,7 +30,9 @@ html[data-ypp-card-style="skeuomorphic"] ytd-searchbox #search-icon-legacy:activ
 
 /* Subscribe Hardware Switch */
 html[data-ypp-card-style="skeuomorphic"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--filled {
+html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
     background: linear-gradient(180deg, #ff4e45, #cc0000) !important;
     border: 1px solid #660000 !important;
     border-top: 1px solid #ff8888 !important;
@@ -44,7 +46,9 @@ html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--filled {
     transition: none !important;
 }
 html[data-ypp-card-style="skeuomorphic"] ytd-subscribe-button-renderer yt-button-shape button:active,
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--filled:active {
+html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--filled:active ,
+yt-button-shape button[aria-label*="Download" i]:active,
+yt-button-shape button[title*="Download" i]:active {
     box-shadow: 0 0 0 #880000, inset 2px 2px 5px rgba(0,0,0,0.8) !important;
     transform: translateY(4px) !important;
     border-top: 1px solid #660000 !important;

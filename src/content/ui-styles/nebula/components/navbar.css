@@ -42,7 +42,9 @@ html[data-ypp-ui-style="nebula"] ytd-searchbox#search button#search-icon-legacy:
 
 /* Nav icon buttons */
 html[data-ypp-ui-style="nebula"] ytd-masthead yt-icon-button,
-html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-only-default {
+html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-only-default ,
+html[data-ypp-ui-style="nebula"] ytd-masthead yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="nebula"] ytd-masthead yt-button-shape button[title*="Download" i] {
   background: transparent !important;
   border-radius: 50% !important;
   transition: all 0.3s var(--nebula-ease) !important;
@@ -50,7 +52,9 @@ html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-o
 }
 
 html[data-ypp-ui-style="nebula"] ytd-masthead yt-icon-button:hover,
-html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover {
+html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover ,
+html[data-ypp-ui-style="nebula"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="nebula"] ytd-masthead yt-button-shape button[title*="Download" i]:hover {
   background: rgba(155, 93, 229, 0.15) !important;
   box-shadow: var(--nebula-glow-purple) !important;
 }
@@ -62,7 +66,9 @@ html[data-ypp-ui-style="nebula"] ytd-masthead yt-icon {
 }
 
 html[data-ypp-ui-style="nebula"] ytd-masthead yt-icon-button:hover yt-icon,
-html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon {
+html[data-ypp-ui-style="nebula"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon ,
+html[data-ypp-ui-style="nebula"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover yt-icon,
+html[data-ypp-ui-style="nebula"] ytd-masthead yt-button-shape button[title*="Download" i]:hover yt-icon {
   fill: var(--nebula-accent-cyan) !important;
   color: var(--nebula-accent-cyan) !important;
   filter: drop-shadow(0 0 6px var(--nebula-accent-cyan)) !important;

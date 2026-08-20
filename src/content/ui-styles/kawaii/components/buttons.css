@@ -1,5 +1,7 @@
 html[data-ypp-ui-style="kawaii"] yt-button-shape[is-filled] button,
-html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled {
+html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i] {
   background: var(--kawaii-accent-primary) !important;
   color: #fff !important;
   border-radius: var(--kawaii-r-pill) !important;
@@ -9,14 +11,18 @@ html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled {
 }
 
 html[data-ypp-ui-style="kawaii"] yt-button-shape[is-filled] button:hover,
-html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i]:hover {
   background: #FFB3CB !important; /* Slightly lighter bubblegum */
   transform: translateY(-4px) scale(1.05) !important;
   box-shadow: 0 10px 20px rgba(255, 158, 187, 0.4) !important;
 }
 
 html[data-ypp-ui-style="kawaii"] yt-button-shape[is-tonal] button,
-html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i] {
   background: rgba(255, 255, 255, 0.8) !important;
   color: var(--kawaii-accent-primary) !important;
   border-radius: var(--kawaii-r-pill) !important;
@@ -27,7 +33,9 @@ html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--tonal {
 }
 
 html[data-ypp-ui-style="kawaii"] yt-button-shape[is-tonal] button:hover,
-html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i]:hover {
   background: #fff !important;
   border-color: var(--kawaii-accent-primary) !important;
   transform: translateY(-4px) scale(1.05) !important;

@@ -14,7 +14,11 @@ html[data-ypp-theme="claymorphism"] ytd-button-renderer {
 html[data-ypp-theme="claymorphism"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd),
 html[data-ypp-theme="claymorphism"] button.ytSpecButtonShapeNextText,
 html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
+html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] {
   background: var(--ypp-bg-surface) !important;
   color: var(--ypp-text-primary) !important;
   box-shadow: var(--ypp-shadow-clay-sm) !important;
@@ -28,7 +32,11 @@ html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-but
 html[data-ypp-theme="claymorphism"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover,
 html[data-ypp-theme="claymorphism"] button.ytSpecButtonShapeNextText:hover,
 html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
-html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i]:hover {
   transform: translateY(-2px) !important;
   box-shadow: var(--ypp-shadow-clay-md) !important;
   background: #ffffff !important;
@@ -37,7 +45,9 @@ html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-but
 /* === Active === */
 html[data-ypp-theme="claymorphism"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active,
 html[data-ypp-theme="claymorphism"] button.ytSpecButtonShapeNextText:active,
-html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:active {
+html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:active ,
+yt-button-shape button[aria-label*="Download" i]:active,
+yt-button-shape button[title*="Download" i]:active {
   transform: translateY(2px) scale(0.96) !important;
   box-shadow: var(--ypp-shadow-clay-inset) !important;
 }
@@ -45,7 +55,11 @@ html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--mono.yt-spec-but
 /* === Subscribe (CTA filled) === */
 html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
 html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
-html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] {
   background: var(--ypp-accent-primary) !important;
   color: #fff !important;
   box-shadow: 
@@ -57,7 +71,9 @@ html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecB
   transition: var(--ypp-transition-clay) !important;
 }
 html[data-ypp-theme="claymorphism"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   background: var(--ypp-accent-secondary) !important;
   transform: translateY(-2px) !important;
   box-shadow: 
@@ -147,7 +163,41 @@ html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer #ask-button bu
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono,
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button,
-html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText {
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText ,
+yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button,
+yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] #ask-button button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] #ask-button button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] #ask-button button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] #ask-button button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i],
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   background: var(--ypp-accent-primary) !important;
   color: #fff !important;
   box-shadow: 
@@ -174,7 +224,25 @@ html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer #ask-button bu
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover ,
+yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] #ask-button button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] #ask-button button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-theme="claymorphism"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   background: var(--ypp-accent-secondary) !important;
   transform: translateY(-2px) !important;
   box-shadow: 

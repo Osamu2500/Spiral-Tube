@@ -10,7 +10,9 @@
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *,
 html[data-ypp-ui-style="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > *,
 html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action,
-html[data-ypp-ui-style="frutiger-aero"] button.ytp-button {
+html[data-ypp-ui-style="frutiger-aero"] button.ytp-button ,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[title*="Download" i] {
   background: var(--faero-gloss-btn) !important;
   background-color: var(--faero-blue-btn) !important;
   border: var(--faero-border-btn) !important;
@@ -27,7 +29,9 @@ html[data-ypp-ui-style="frutiger-aero"] button.ytp-button {
 /* Force icons and text inside these buttons to be white */
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > * yt-icon,
 html[data-ypp-ui-style="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > * yt-icon,
-html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action yt-icon {
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action yt-icon ,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[aria-label*="Download" i] yt-icon,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[title*="Download" i] yt-icon {
   color: var(--faero-text-white) !important;
   fill: var(--faero-text-white) !important;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3)) !important;
@@ -35,7 +39,9 @@ html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-acti
 
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > * .yt-core-attributed-string,
 html[data-ypp-ui-style="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > * .yt-core-attributed-string,
-html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action .yt-core-attributed-string {
+html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action .yt-core-attributed-string ,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[aria-label*="Download" i] .yt-core-attributed-string,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[title*="Download" i] .yt-core-attributed-string {
   color: var(--faero-text-white) !important;
   text-shadow: var(--faero-text-shadow-btn) !important;
 }
@@ -44,7 +50,9 @@ html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-acti
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *:hover,
 html[data-ypp-ui-style="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > *:hover,
 html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action:hover,
-html[data-ypp-ui-style="frutiger-aero"] button.ytp-button:hover {
+html[data-ypp-ui-style="frutiger-aero"] button.ytp-button:hover ,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[title*="Download" i]:hover {
   background-color: #5bb0f0 !important;
   box-shadow: var(--faero-shadow-btn-hover) !important;
   transform: scale(1.02);

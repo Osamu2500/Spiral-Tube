@@ -44,7 +44,9 @@ ytd-masthead #container a {
 ytd-topbar-menu-button-renderer.ytd-masthead,
 #trailing-button.ytd-playlist-panel-renderer,
 ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
   border-radius: 24px 4px 24px 4px !important;
   background-color: transparent !important;
   transition:
@@ -57,7 +59,9 @@ ytd-menu-renderer .ytd-menu-renderer[style-target=button],
 ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 #trailing-button.ytd-playlist-panel-renderer:hover,
 ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   background: rgba(163, 230, 53, 0.18) !important;
   box-shadow: 0 0 12px rgba(163, 230, 53, 0.4), var(--shadow-hover) !important;
   transform: scale(1.08) !important;

@@ -14,7 +14,9 @@ html[data-ypp-card-style="nord"] ytd-searchbox #search-icon-legacy {
 }
 
 html[data-ypp-card-style="nord"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled {
+html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
     background: var(--nord8) !important;
     color: var(--nord0) !important;
     border: none !important;
@@ -23,6 +25,8 @@ html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled {
     transition: background 0.15s ease !important;
 }
 html[data-ypp-card-style="nord"] ytd-subscribe-button-renderer yt-button-shape button:hover,
-html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-card-style="nord"] .yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
     background: var(--nord9) !important;
 }

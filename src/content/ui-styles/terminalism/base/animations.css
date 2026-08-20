@@ -83,7 +83,9 @@ html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer #ask-button bu
 html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
 html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
 html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover ,
+html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.06) !important;
   animation: termGlowPulse 3s ease-in-out infinite !important;
   background: rgba(0, 255, 65, 0.12) !important;

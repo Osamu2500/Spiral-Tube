@@ -36,7 +36,9 @@ ytd-searchbox #search-icon-legacy.ytd-searchbox:hover {
 }
 
 /* Icons & Buttons Typography/Shapes */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
     border-radius: 12px;
     font-family: var(--ypp-font-family);
     text-transform: capitalize;

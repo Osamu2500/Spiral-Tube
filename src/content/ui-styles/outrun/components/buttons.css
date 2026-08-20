@@ -1,5 +1,7 @@
 html[data-ypp-ui-style="outrun"] yt-button-shape[is-filled] button,
-html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--filled {
+html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-style="outrun"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="outrun"] yt-button-shape button[title*="Download" i] {
   background: var(--outrun-neon-magenta) !important;
   color: #fff !important;
   border-radius: var(--outrun-r-sm) !important;
@@ -13,14 +15,18 @@ html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--filled {
 }
 
 html[data-ypp-ui-style="outrun"] yt-button-shape[is-filled] button:hover,
-html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="outrun"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="outrun"] yt-button-shape button[title*="Download" i]:hover {
   background: #fff !important;
   color: var(--outrun-neon-magenta) !important;
   box-shadow: 0 0 20px #fff !important;
 }
 
 html[data-ypp-ui-style="outrun"] yt-button-shape[is-tonal] button,
-html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-style="outrun"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="outrun"] yt-button-shape button[title*="Download" i] {
   background: rgba(0, 240, 255, 0.1) !important;
   color: var(--outrun-neon-cyan) !important;
   border-radius: var(--outrun-r-sm) !important;
@@ -32,7 +38,9 @@ html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--tonal {
 }
 
 html[data-ypp-ui-style="outrun"] yt-button-shape[is-tonal] button:hover,
-html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-ui-style="outrun"] .yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-style="outrun"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="outrun"] yt-button-shape button[title*="Download" i]:hover {
   background: var(--outrun-neon-cyan) !important;
   color: #000 !important;
   box-shadow: var(--outrun-glow-cyan) !important;

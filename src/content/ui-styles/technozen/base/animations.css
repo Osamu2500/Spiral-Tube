@@ -91,7 +91,9 @@ body::before {
       rgba(48, 184, 200, 0.12) 0%,
       transparent 100%);
 }
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   transform: translateY(-2px) scale(1.04) !important;
   background:
     var(--tz-gloss),
@@ -107,7 +109,9 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   color: #2a4a2a !important;
   animation: technozenGreenPulse 4s ease-in-out infinite !important;
 }
-.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after ,
+yt-button-shape button[aria-label*="Download" i]:hover::after,
+yt-button-shape button[title*="Download" i]:hover::after {
   background: none !important;
 }
 @keyframes technozenBreathe {

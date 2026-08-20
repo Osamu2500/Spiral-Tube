@@ -463,7 +463,11 @@ html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image, html[data-ypp-u
     border-color: var(--kawaii-secondary) !important;
     box-shadow: 0 10px 15px rgba(255, 105, 180, 0.4) !important;
 }
-html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next {
+html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i] {
     border-radius: var(--kawaii-pill) !important;
     border: 3px solid var(--kawaii-primary) !important;
     background: #ffffff !important;
@@ -472,13 +476,21 @@ html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-
     box-shadow: 0 5px 0 var(--kawaii-primary) !important;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
-html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next:hover {
+html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next:hover ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i]:hover {
     background: var(--kawaii-primary) !important;
     color: #ffffff !important;
     transform: translateY(-4px) !important;
     box-shadow: 0 9px 0 var(--kawaii-secondary) !important;
 }
-html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next:active {
+html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next, html[data-ypp-ui-style="kawaii"] .yt-spec-button-shape-next:active ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-style="kawaii"] yt-button-shape button[title*="Download" i]:active {
     transform: translateY(2px) !important;
     box-shadow: 0 2px 0 var(--kawaii-secondary) !important;
 }

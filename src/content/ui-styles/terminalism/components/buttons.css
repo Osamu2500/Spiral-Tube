@@ -4,7 +4,11 @@
 html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--call-to-action,
 html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
 html[data-ypp-ui-style="terminalism"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
-html[data-ypp-ui-style="terminalism"] #subscribe-button button {
+html[data-ypp-ui-style="terminalism"] #subscribe-button button ,
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[title*="Download" i] {
   background: var(--term-green-fade) !important;
   border: var(--term-border) !important;
   color: var(--term-green) !important;
@@ -15,7 +19,11 @@ html[data-ypp-ui-style="terminalism"] #subscribe-button button {
 /* Primary Button Hover */
 html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--call-to-action:hover,
 html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-style="terminalism"] #subscribe-button button:hover {
+html[data-ypp-ui-style="terminalism"] #subscribe-button button:hover ,
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="terminalism"] yt-button-shape button[title*="Download" i]:hover {
   background: var(--term-green) !important;
   color: var(--term-bg) !important;
   box-shadow: var(--term-glow-intense) !important;

@@ -5,7 +5,9 @@
 
 /* Subscribe Button — Clean Transparent White Glow */
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   background: rgba(255, 255, 255, 0.25) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -16,7 +18,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-bu
 }
 
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.06) !important;
   background: rgba(255, 255, 255, 0.35) !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
@@ -25,7 +29,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-bu
 
 /* Subscribed / Tonal Button State */
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer[subscribed] button,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--tonal {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   background: rgba(255, 255, 255, 0.12) !important;
   color: var(--lg-text-secondary, #cccccc) !important;
   border: var(--lg-border-specular) !important;
@@ -33,7 +39,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-bu
 }
 
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer[subscribed] button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   background: rgba(255, 255, 255, 0.20) !important;
   color: #ffffff !important;
   box-shadow: var(--lg-shadow-hover) !important;
@@ -108,7 +116,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer #ask-button
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   background: rgba(255, 255, 255, 0.25) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -125,7 +135,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer #ask-button
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.06) !important;
   background: rgba(255, 255, 255, 0.35) !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
@@ -139,7 +151,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer #ask-button
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   background: rgba(255, 255, 255, 0.12) !important;
   color: var(--lg-text-secondary, #cccccc) !important;
   border: var(--lg-border-specular) !important;
@@ -153,7 +167,9 @@ html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer #ask-button
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   background: rgba(255, 255, 255, 0.20) !important;
   color: #ffffff !important;
   box-shadow: var(--lg-shadow-hover) !important;

@@ -2,7 +2,11 @@
 
 /* Primary Subscribe/Filled Buttons */
 html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--call-to-action,
-html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--filled {
+html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-theme="christmas"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-theme="christmas"] yt-button-shape button[title*="Download" i] {
   background: var(--christmas-accent-primary) !important;
   color: #fff !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -13,7 +17,11 @@ html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--filled {
 }
 
 html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--call-to-action:hover,
-html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-theme="christmas"] .yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-theme="christmas"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-theme="christmas"] yt-button-shape button[title*="Download" i]:hover {
   background: #ff4d5a !important;
   color: #fff !important;
   border-color: rgba(255, 255, 255, 0.5) !important;

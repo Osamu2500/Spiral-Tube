@@ -14,7 +14,11 @@ html[data-ypp-card-style="forest"] ytd-searchbox #search-icon-legacy {
 
 html[data-ypp-card-style="forest"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="forest"] .yt-spec-button-shape-next--filled,
-html[data-ypp-card-style="forest"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-card-style="forest"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="forest"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="forest"] yt-button-shape button[title*="Download" i] {
     background: var(--for-secondary) !important;
     color: #fff !important;
     border: none !important;
@@ -23,7 +27,9 @@ html[data-ypp-card-style="forest"] .yt-spec-button-shape-next--tonal {
     transition: transform 0.2s ease !important;
 }
 html[data-ypp-card-style="forest"] ytd-subscribe-button-renderer yt-button-shape button:hover,
-html[data-ypp-card-style="forest"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-card-style="forest"] .yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
     background: var(--for-primary) !important;
     transform: scale(1.05) !important;
 }

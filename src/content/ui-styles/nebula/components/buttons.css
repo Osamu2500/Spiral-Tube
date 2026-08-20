@@ -1,5 +1,7 @@
 html[data-ypp-ui-style="nebula"] yt-button-shape[is-filled] button,
-html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--filled {
+html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-style="nebula"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="nebula"] yt-button-shape button[title*="Download" i] {
   background: linear-gradient(135deg, var(--nebula-accent-purple), var(--nebula-accent-pink)) !important;
   color: #fff !important;
   border-radius: var(--nebula-r-pill) !important;
@@ -10,14 +12,18 @@ html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--filled {
 }
 
 html[data-ypp-ui-style="nebula"] yt-button-shape[is-filled] button:hover,
-html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="nebula"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="nebula"] yt-button-shape button[title*="Download" i]:hover {
   background: linear-gradient(135deg, var(--nebula-accent-cyan), var(--nebula-accent-purple)) !important;
   box-shadow: var(--nebula-glow-cyan) !important;
   transform: translateY(-2px) scale(1.03) !important;
 }
 
 html[data-ypp-ui-style="nebula"] yt-button-shape[is-tonal] button,
-html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-style="nebula"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="nebula"] yt-button-shape button[title*="Download" i] {
   background: rgba(155, 93, 229, 0.12) !important;
   color: var(--nebula-accent-cyan) !important;
   border-radius: var(--nebula-r-pill) !important;
@@ -27,7 +33,9 @@ html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--tonal {
 }
 
 html[data-ypp-ui-style="nebula"] yt-button-shape[is-tonal] button:hover,
-html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-ui-style="nebula"] .yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-style="nebula"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="nebula"] yt-button-shape button[title*="Download" i]:hover {
   background: rgba(0, 245, 212, 0.12) !important;
   border-color: var(--nebula-accent-cyan) !important;
   box-shadow: var(--nebula-glow-cyan) !important;

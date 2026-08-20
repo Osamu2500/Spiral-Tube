@@ -3,7 +3,13 @@
 ytd-notification-topbar-button-renderer.ytd-masthead,
 yt-icon-button.ytd-masthead,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
   border-radius: var(--tz-radius-pill) !important;
   transition:
     transform var(--bounce),
@@ -15,7 +21,13 @@ ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-
 ytd-notification-topbar-button-renderer.ytd-masthead:hover,
 yt-icon-button.ytd-masthead:hover,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover {
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   background: rgba(200, 245, 188, 0.65) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.06);

@@ -23,7 +23,11 @@ html[data-ypp-card-style="frosted"] ytd-searchbox #search-icon-legacy {
 
 html[data-ypp-card-style="frosted"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--filled,
-html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="frosted"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="frosted"] yt-button-shape button[title*="Download" i] {
     background: var(--fro-glass-light) !important;
     backdrop-filter: blur(10px) !important;
     border: var(--fro-border-light) !important;
@@ -33,7 +37,11 @@ html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal {
 @media (prefers-color-scheme: dark) {
     html[data-ypp-card-style="frosted"] ytd-subscribe-button-renderer yt-button-shape button,
     html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--filled,
-    html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal {
+    html[data-ypp-card-style="frosted"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="frosted"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="frosted"] yt-button-shape button[title*="Download" i] {
         background: var(--fro-glass-dark) !important;
         border: var(--fro-border-dark) !important;
         color: #fff !important;

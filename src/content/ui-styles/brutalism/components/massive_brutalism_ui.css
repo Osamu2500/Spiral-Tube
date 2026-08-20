@@ -478,7 +478,11 @@ html[data-ypp-card-style="brutalism"] .yt-spec-avatar-shape__image, html[data-yp
     border-color: var(--brut-secondary) !important;
     box-shadow: 4px 4px 0 var(--brut-black) !important;
 }
-html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next {
+html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="brutalism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="brutalism"] yt-button-shape button[title*="Download" i] {
     border-radius: 0 !important;
     border: 3px solid var(--brut-black) !important;
     background: var(--brut-primary) !important;
@@ -488,13 +492,21 @@ html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-
     box-shadow: 4px 4px 0 var(--brut-black) !important;
     transition: none !important;
 }
-html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next:hover {
+html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next:hover ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="brutalism"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="brutalism"] yt-button-shape button[title*="Download" i]:hover {
     background: var(--brut-secondary) !important;
     color: var(--brut-white) !important;
     transform: translate(2px, 2px) !important;
     box-shadow: 2px 2px 0 var(--brut-black) !important;
 }
-html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next:active {
+html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next:active ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="brutalism"] yt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-style="brutalism"] yt-button-shape button[title*="Download" i]:active {
     transform: translate(4px, 4px) !important;
     box-shadow: 0 0 0 var(--brut-black) !important;
     background: var(--brut-accent) !important;

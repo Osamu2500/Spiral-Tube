@@ -169,7 +169,9 @@ html[data-ypp-ui-style='harry-potter'] .ypp-anim-lumos {
   }
 }
 
-html[data-ypp-ui-style='harry-potter'] :is(button, .yt-spec-button-shape-next, a):active {
+html[data-ypp-ui-style='harry-potter'] :is(button, .yt-spec-button-shape-next, a):active ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
   animation: ypp-spell-spark 0.4s ease-out !important;
 }
 

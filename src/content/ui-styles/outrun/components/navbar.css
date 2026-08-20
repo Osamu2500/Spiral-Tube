@@ -40,14 +40,18 @@ html[data-ypp-ui-style="outrun"] ytd-searchbox#search button#search-icon-legacy:
 
 /* Icons */
 html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon-button,
-html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default {
+html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default ,
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-button-shape button[title*="Download" i] {
   background: transparent !important;
   border-radius: var(--outrun-r-sm) !important;
   transition: all 0.2s var(--outrun-ease-retro) !important;
 }
 
 html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon-button:hover,
-html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover {
+html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover ,
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-button-shape button[title*="Download" i]:hover {
   background: rgba(0, 240, 255, 0.1) !important;
   box-shadow: var(--outrun-glow-cyan-inset) !important;
   border: 1px solid var(--outrun-neon-cyan) !important;
@@ -59,7 +63,9 @@ html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon {
 }
 
 html[data-ypp-ui-style="outrun"] ytd-masthead yt-icon-button:hover yt-icon,
-html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon {
+html[data-ypp-ui-style="outrun"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon ,
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover yt-icon,
+html[data-ypp-ui-style="outrun"] ytd-masthead yt-button-shape button[title*="Download" i]:hover yt-icon {
   fill: var(--outrun-neon-cyan) !important;
   color: var(--outrun-neon-cyan) !important;
   filter: drop-shadow(0 0 5px var(--outrun-neon-cyan)) !important;

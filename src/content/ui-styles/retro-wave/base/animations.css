@@ -10,7 +10,9 @@
 @keyframes sepia-bloom { 0%{filter:brightness(1);} 100%{filter:brightness(1.1) saturate(1.1);} }
 
 /* Subscribe button */
-html[data-ypp-ui-style="retro-wave"] #subscribe-button .yt-spec-button-shape-next--filled {
+html[data-ypp-ui-style="retro-wave"] #subscribe-button .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-style="retro-wave"] #subscribe-button yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="retro-wave"] #subscribe-button yt-button-shape button[title*="Download" i] {
   transition: all 0.3s ease !important;
   animation: retro-wave-pulse 2.5s ease-in-out infinite !important;
   
@@ -42,7 +44,9 @@ html[data-ypp-ui-style="retro-wave"] ytd-mini-guide-entry-renderer:hover {
 }
 
 /* Button base */
-html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="retro-wave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="retro-wave"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="retro-wave"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08); animation: retro-wave-pulse 5s ease-in-out infinite;
 }
 html[data-ypp-ui-style="retro-wave"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {

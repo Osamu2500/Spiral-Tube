@@ -37,7 +37,13 @@ html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header svg {
 /* Buttons inside the title bar — re-add border here (not on the wrapper) */
 html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header .yt-spec-button-shape-next,
 html[data-ypp-ui-style="vintage"] ytd-page-header-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-next {
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-next ,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer yt-button-shape button[title*="Download" i] {
     background: var(--sf) !important;
     border: 2px dashed var(--vintage-secondary) !important;
     border-radius: 0 !important;
@@ -47,7 +53,13 @@ html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-
 
 html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header .yt-spec-button-shape-next:hover,
 html[data-ypp-ui-style="vintage"] ytd-page-header-view-model .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-next:hover {
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer .yt-spec-button-shape-next:hover ,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-tabbed-page-header yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-page-header-view-model yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] yt-page-header-renderer yt-button-shape button[title*="Download" i]:hover {
     background: var(--vintage-secondary) !important;
     color: var(--sf) !important;
     transform: translate(-2px,-2px) !important;
@@ -77,12 +89,16 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-panel-renderer svg {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button svg {
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button svg ,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button[aria-label*="Download" i] svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button[title*="Download" i] svg {
     fill: var(--vintage-secondary) !important;
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover {
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover ,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button[title*="Download" i]:hover {
     background: var(--vintage-secondary) !important;
     color: var(--sf) !important;
     transform: translate(-2px, -2px) !important;
@@ -90,7 +106,9 @@ html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover {
 }
 
 html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover svg {
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer button:hover svg ,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button[aria-label*="Download" i]:hover svg,
+html[data-ypp-ui-style="vintage"] ytd-playlist-header-renderer yt-button-shape button[title*="Download" i]:hover svg {
     fill: var(--sf) !important;
 }
 
@@ -141,7 +159,9 @@ html[data-ypp-ui-style="vintage"] #secondary.ytd-browse svg {
 }
 
 html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next ,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[title*="Download" i] {
     background: var(--sf) !important;
     border: 2px dashed var(--vintage-secondary) !important;
     border-radius: 0 !important;
@@ -152,12 +172,16 @@ html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-ne
 }
 
 html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next svg {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next svg ,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[aria-label*="Download" i] svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[title*="Download" i] svg {
     fill: var(--vintage-secondary) !important;
 }
 
 html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover ,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[title*="Download" i]:hover {
     background: var(--vintage-secondary) !important;
     color: var(--sf) !important;
     fill: var(--sf) !important;
@@ -166,7 +190,9 @@ html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-ne
 }
 
 html[data-ypp-ui-style="vintage"] #secondary.ytd-browse button:hover svg,
-html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover svg {
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse .yt-spec-button-shape-next:hover svg ,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[aria-label*="Download" i]:hover svg,
+html[data-ypp-ui-style="vintage"] #secondary.ytd-browse yt-button-shape button[title*="Download" i]:hover svg {
     fill: var(--sf) !important;
 }
 
@@ -231,7 +257,15 @@ html[data-ypp-ui-style="vintage"] ytd-menu-navigation-item-renderer:hover svg {
 html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next {
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next ,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog yt-button-shape button[title*="Download" i] {
     background: var(--sf) !important;
     border: 2px dashed var(--vintage-secondary) !important;
     border-radius: 0 !important;
@@ -241,7 +275,15 @@ html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next 
 html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer .yt-spec-button-shape-next:hover,
 html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer .yt-spec-button-shape-next:hover,
 html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next:hover {
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog .yt-spec-button-shape-next:hover ,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-unified-share-panel-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-share-panel-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] ytd-add-to-playlist-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="vintage"] tp-yt-paper-dialog yt-button-shape button[title*="Download" i]:hover {
     background: var(--vintage-secondary) !important;
     color: var(--sf) !important;
     transform: translate(-2px,-2px) !important;

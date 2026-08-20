@@ -21,7 +21,9 @@ html[data-ypp-card-style="glass"] ytd-searchbox #search-icon-legacy:hover {
 
 /* Subscribe Button */
 html[data-ypp-card-style="glass"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled {
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
     background: rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.5) !important;
@@ -31,7 +33,9 @@ html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled {
     transition: all 0.2s ease !important;
 }
 html[data-ypp-card-style="glass"] ytd-subscribe-button-renderer yt-button-shape button:hover,
-html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-card-style="glass"] .yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
     background: rgba(255, 255, 255, 0.4) !important;
     transform: scale(1.05) !important;
 }

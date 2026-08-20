@@ -4,7 +4,11 @@
 html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer button,
 html[data-ypp-ui-style="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--call-to-action,
 html[data-ypp-ui-style="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--filled,
-html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button {
+html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button ,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i] {
   background-color: var(--neu-bg) !important;
   box-shadow: var(--neu-shadow-outset) !important;
   color: var(--neu-accent) !important;
@@ -13,13 +17,21 @@ html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button {
 html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer button:hover,
 html[data-ypp-ui-style="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--call-to-action:hover,
 html[data-ypp-ui-style="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button:hover {
+html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button:hover ,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--neu-shadow-outset-hover) !important;
 }
 html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer button:active,
 html[data-ypp-ui-style="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--call-to-action:active,
 html[data-ypp-ui-style="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--filled:active,
-html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button:active {
+html[data-ypp-ui-style="neumorphic"] ytd-button-renderer.style-primary button:active ,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-style="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:active {
   box-shadow: var(--neu-shadow-inset) !important;
 }
 

@@ -1,6 +1,8 @@
 /* Holographic Forms */
 html[data-ypp-card-style="holographic"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="holographic"] .yt-spec-button-shape-next--filled {
+html[data-ypp-card-style="holographic"] .yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
     background: var(--holo-gradient) !important;
     background-size: 400% !important;
     border: none !important;

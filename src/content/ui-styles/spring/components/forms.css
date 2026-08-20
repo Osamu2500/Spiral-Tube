@@ -14,7 +14,11 @@ html[data-ypp-card-style="spring"] ytd-searchbox #search-icon-legacy {
 
 html[data-ypp-card-style="spring"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--filled,
-html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="spring"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="spring"] yt-button-shape button[title*="Download" i] {
     background: var(--spring-grad) !important;
     color: #fff !important;
     border: none !important;
@@ -26,6 +30,10 @@ html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--tonal {
 }
 html[data-ypp-card-style="spring"] ytd-subscribe-button-renderer yt-button-shape button:hover,
 html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--filled:hover,
-html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-card-style="spring"] .yt-spec-button-shape-next--tonal:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-card-style="spring"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-card-style="spring"] yt-button-shape button[title*="Download" i]:hover {
     transform: scale(1.05) !important;
 }

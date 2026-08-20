@@ -22,12 +22,20 @@ html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--overlay.yt-s
 html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-style="neo-brutalism"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-style="neo-brutalism"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[title*="Download" i] {
   border-radius: 0px !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
 html[data-ypp-ui-style="neo-brutalism"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
-html[data-ypp-ui-style="neo-brutalism"] yt-icon-button.ytd-masthead:hover {
+html[data-ypp-ui-style="neo-brutalism"] yt-icon-button.ytd-masthead:hover ,
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="neo-brutalism"] yt-button-shape button[title*="Download" i]:hover {
   box-shadow: 10px 10px 0px #000 !important; transform: scale(1.1);
 }

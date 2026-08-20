@@ -4,7 +4,11 @@
 html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--call-to-action,
 html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
 html[data-ypp-ui-style="crystal-glass"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
-html[data-ypp-ui-style="crystal-glass"] #subscribe-button button {
+html[data-ypp-ui-style="crystal-glass"] #subscribe-button button ,
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[title*="Download" i] {
   background: rgba(255, 255, 255, 0.9) !important;
   color: #000 !important;
   border: var(--cglass-border) !important;
@@ -16,7 +20,11 @@ html[data-ypp-ui-style="crystal-glass"] #subscribe-button button {
 /* Primary Button Hover */
 html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--call-to-action:hover,
 html[data-ypp-ui-style="crystal-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-style="crystal-glass"] #subscribe-button button:hover {
+html[data-ypp-ui-style="crystal-glass"] #subscribe-button button:hover ,
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="crystal-glass"] yt-button-shape button[title*="Download" i]:hover {
   background: #fff !important;
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6) !important;
   transform: translateY(-2px);

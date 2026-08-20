@@ -22,12 +22,20 @@ html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next--overlay.yt-spec-butt
 html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-style="anime"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-style="anime"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-style="anime"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[title*="Download" i] {
   border-radius: 20px !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
 html[data-ypp-ui-style="anime"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
-html[data-ypp-ui-style="anime"] yt-icon-button.ytd-masthead:hover {
+html[data-ypp-ui-style="anime"] yt-icon-button.ytd-masthead:hover ,
+html[data-ypp-ui-style="anime"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="anime"] yt-button-shape button[title*="Download" i]:hover {
   box-shadow: 0 16px 45px rgba(255,105,180,0.55) !important; transform: scale(1.1);
 }

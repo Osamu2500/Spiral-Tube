@@ -246,6 +246,20 @@
                 window.YPP.sharedObserver.start();
             }
 
+            // V6 Hard Fix: Force the Download button to pretend it's a standard tonal button
+            // so that all custom CSS themes will automatically style it correctly!
+            if (window.YPP.sharedObserver) {
+                window.YPP.sharedObserver.register('fix-download-btn-theme', 'ytd-watch-metadata yt-button-shape button[aria-label*="Download" i], ytd-watch-metadata yt-button-shape button[title*="Download" i]', (elements) => {
+                    elements.forEach(el => {
+                        if (el && el.classList && el.classList.contains('yt-spec-button-shape-next--call-to-action')) {
+                            el.classList.remove('yt-spec-button-shape-next--call-to-action');
+                            el.classList.add('yt-spec-button-shape-next--tonal');
+                        }
+                    });
+                });
+            }
+
+
             // Initialize EventDelegator
             window.YPP.sharedEventDelegator = window.YPP.sharedEventDelegator || new window.YPP.core.EventDelegator();
             window.YPP.sharedEventDelegator.start();

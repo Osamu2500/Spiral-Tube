@@ -4,7 +4,13 @@ ytd-notification-topbar-button-renderer.ytd-masthead,
 yt-icon-button.ytd-masthead,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) {
+tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
   border-radius: 0 24px 0 24px !important;
   transition:
     transform var(--bounce),
@@ -17,7 +23,13 @@ ytd-notification-topbar-button-renderer.ytd-masthead:hover,
 yt-icon-button.ytd-masthead:hover,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
 ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model:hover,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button):hover {
+tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button):hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }

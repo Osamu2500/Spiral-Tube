@@ -579,11 +579,19 @@ html[data-ypp-card-style="anime"] .yt-spec-avatar-shape__image, html[data-ypp-ui
 html[data-ypp-card-style="anime"] .yt-spec-avatar-shape__image, html[data-ypp-ui-style="anime"] .yt-spec-avatar-shape__image:hover {
     transform: scale(1.15) !important; border-color: #5c2d91 !important; box-shadow: 0 0 0 6px #e91e8c !important;
 }
-html[data-ypp-card-style="anime"] .yt-spec-button-shape-next, html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next {
+html[data-ypp-card-style="anime"] .yt-spec-button-shape-next, html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[title*="Download" i] {
     border-radius: 40px !important; border: 3px solid #e91e8c !important; background: #fff !important; color: #e91e8c !important; font-weight: 900 !important; box-shadow: 4px 4px 0 #5c2d91 !important;
     transition: all 0.3s ease !important;
 }
-html[data-ypp-card-style="anime"] .yt-spec-button-shape-next, html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next:hover {
+html[data-ypp-card-style="anime"] .yt-spec-button-shape-next, html[data-ypp-ui-style="anime"] .yt-spec-button-shape-next:hover ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="anime"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="anime"] yt-button-shape button[title*="Download" i]:hover {
     background: #e91e8c !important; color: #fff !important; transform: translate(-2px, -2px) !important; box-shadow: 6px 6px 0 #ffd700 !important;
 }
 html[data-ypp-card-style="anime"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-style="anime"] yt-chip-cloud-chip-renderer {

@@ -7,14 +7,18 @@
 html[data-ypp-ui-style="harry-potter"] #trigger.tp-yt-paper-menu-button,
 html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton button-view-model,
 html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton button,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--icon-only-default {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--icon-only-default ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   border-radius: 4px 12px 4px 12px !important;
   transition: all 0.28s var(--hp-ease-spell) !important;
 }
 
 html[data-ypp-ui-style="harry-potter"] #trigger.tp-yt-paper-menu-button:hover,
 html[data-ypp-ui-style="harry-potter"] .ytLockupMetadataViewModelMenuButton button:hover,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--icon-only-default:hover {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--icon-only-default:hover ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover {
   background: rgba(212, 175, 55, 0.15) !important;
   box-shadow: 0 0 12px rgba(212, 175, 55, 0.25) !important;
   transform: scale(1.08) !important;

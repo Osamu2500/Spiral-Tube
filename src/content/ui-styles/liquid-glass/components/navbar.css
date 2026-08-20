@@ -115,7 +115,9 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-nav-btn,
 html[data-ypp-ui-style="liquid-glass"] ytd-topbar-menu-button-renderer.ytd-masthead,
 html[data-ypp-ui-style="liquid-glass"] #trailing-button.ytd-playlist-panel-renderer,
 html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] {
   border-radius: 2000px !important;
   background-color: transparent !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-spring) !important;
@@ -126,7 +128,9 @@ html[data-ypp-ui-style="liquid-glass"] .ypp-nav-btn:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 html[data-ypp-ui-style="liquid-glass"] #trailing-button.ytd-playlist-panel-renderer:hover,
 html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
-html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i]:hover {
   background: rgba(255, 255, 255, 0.14) !important;
   box-shadow: var(--lg-shadow-hover) !important;
   transform: scale(1.08) !important;

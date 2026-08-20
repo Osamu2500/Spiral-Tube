@@ -448,7 +448,11 @@ html[data-ypp-card-style="nature"] .yt-spec-avatar-shape__image, html[data-ypp-u
 html[data-ypp-card-style="nature"] .yt-spec-avatar-shape__image, html[data-ypp-ui-style="nature"] .yt-spec-avatar-shape__image:hover {
     transform: rotate(30deg) scale(1.15) !important;
 }
-html[data-ypp-card-style="nature"] .yt-spec-button-shape-next, html[data-ypp-ui-style="nature"] .yt-spec-button-shape-next {
+html[data-ypp-card-style="nature"] .yt-spec-button-shape-next, html[data-ypp-ui-style="nature"] .yt-spec-button-shape-next ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="nature"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="nature"] yt-button-shape button[title*="Download" i] {
     border-radius: 20px 4px 20px 4px !important;
     border: 2px solid var(--nature-primary) !important;
     background: #ffffff !important;
@@ -457,7 +461,11 @@ html[data-ypp-card-style="nature"] .yt-spec-button-shape-next, html[data-ypp-ui-
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1) !important;
     transition: all 0.3s ease !important;
 }
-html[data-ypp-card-style="nature"] .yt-spec-button-shape-next, html[data-ypp-ui-style="nature"] .yt-spec-button-shape-next:hover {
+html[data-ypp-card-style="nature"] .yt-spec-button-shape-next, html[data-ypp-ui-style="nature"] .yt-spec-button-shape-next:hover ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="nature"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="nature"] yt-button-shape button[title*="Download" i]:hover {
     background: var(--nature-primary) !important;
     color: #ffffff !important;
     border-radius: 4px 20px 4px 20px !important;

@@ -56,7 +56,9 @@
 
 /* Subscribe button hover luminescence */
 html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover,
-html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.06) !important;
   color: white !important;
   background: rgba(255, 255, 255, 0.25) !important;
@@ -64,7 +66,9 @@ html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-
   animation: ypp-liquid-pulse 3s ease-in-out infinite !important;
 }
 
-html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after ,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i]:hover::after,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i]:hover::after {
   background: none !important;
 }
 
@@ -173,7 +177,25 @@ html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono #ask-but
 html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover,
 html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
 html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-style="liquid-glass"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover ,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] #ask-button button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] #ask-button button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-ui-style="liquid-glass"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText:hover {
   transform: scale(1.06) !important;
   color: white !important;
   background: rgba(255, 255, 255, 0.25) !important;

@@ -4,7 +4,11 @@
 html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next svg,
 html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
-html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path {
+html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path ,
+html[data-ypp-ui-style="technozen"] yt-button-shape button[aria-label*="Download" i] svg,
+html[data-ypp-ui-style="technozen"] yt-button-shape button[title*="Download" i] svg,
+html[data-ypp-ui-style="technozen"] yt-button-shape button[aria-label*="Download" i] path,
+html[data-ypp-ui-style="technozen"] yt-button-shape button[title*="Download" i] path {
   fill: #153320 !important;
   color: #153320 !important;
 }

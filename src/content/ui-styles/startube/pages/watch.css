@@ -62,7 +62,11 @@ html[data-ypp-ui-style="startube"] ytd-watch-metadata #owner {
 html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next svg,
 html[data-ypp-ui-style="startube"] .yt-spec-button-shape-next path,
 html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
-html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path {
+html[data-ypp-ui-style="startube"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button path ,
+html[data-ypp-ui-style="startube"] yt-button-shape button[aria-label*="Download" i] svg,
+html[data-ypp-ui-style="startube"] yt-button-shape button[title*="Download" i] svg,
+html[data-ypp-ui-style="startube"] yt-button-shape button[aria-label*="Download" i] path,
+html[data-ypp-ui-style="startube"] yt-button-shape button[title*="Download" i] path {
   fill: #333333 !important;
   color: #333333 !important;
 }

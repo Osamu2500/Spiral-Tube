@@ -16,7 +16,11 @@ html[data-ypp-card-style="dracula"] ytd-searchbox #search-icon-legacy {
 
 html[data-ypp-card-style="dracula"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="dracula"] .yt-spec-button-shape-next--filled,
-html[data-ypp-card-style="dracula"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-card-style="dracula"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="dracula"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="dracula"] yt-button-shape button[title*="Download" i] {
     background: var(--dra-purple) !important;
     color: var(--dra-bg) !important;
     border: none !important;
@@ -25,7 +29,9 @@ html[data-ypp-card-style="dracula"] .yt-spec-button-shape-next--tonal {
     box-shadow: 0 0 10px rgba(189, 147, 249, 0.4) !important;
 }
 html[data-ypp-card-style="dracula"] ytd-subscribe-button-renderer yt-button-shape button:hover,
-html[data-ypp-card-style="dracula"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-card-style="dracula"] .yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
     background: var(--dra-pink) !important;
     box-shadow: 0 0 20px rgba(255, 121, 198, 0.6) !important;
 }

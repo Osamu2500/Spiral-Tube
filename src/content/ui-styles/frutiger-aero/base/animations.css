@@ -14,7 +14,9 @@
 /* Apply shine sweep to all blue pill buttons on hover */
 html[data-ypp-ui-style="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *::before,
 html[data-ypp-ui-style="frutiger-aero"] .yt-spec-button-shape-next--call-to-action::before,
-html[data-ypp-ui-style="frutiger-aero"] yt-chip-cloud-chip-renderer[selected]::before {
+html[data-ypp-ui-style="frutiger-aero"] yt-chip-cloud-chip-renderer[selected]::before ,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[aria-label*="Download" i]::before,
+html[data-ypp-ui-style="frutiger-aero"] yt-button-shape button[title*="Download" i]::before {
   content: '';
   position: absolute;
   top: 0; left: 0;

@@ -1,5 +1,7 @@
 html[data-ypp-ui-style="deepspace"] yt-button-shape[is-filled] button,
-html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--filled {
+html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[title*="Download" i] {
   background: var(--ds-accent-blue) !important;
   color: #fff !important;
   border-radius: var(--ds-r-sm) !important;
@@ -11,14 +13,18 @@ html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--filled {
 }
 
 html[data-ypp-ui-style="deepspace"] yt-button-shape[is-filled] button:hover,
-html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--filled:hover {
+html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[title*="Download" i]:hover {
   background: #2563EB !important;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.7) !important;
   transform: translateY(-1px) !important;
 }
 
 html[data-ypp-ui-style="deepspace"] yt-button-shape[is-tonal] button,
-html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[title*="Download" i] {
   background: rgba(59, 130, 246, 0.1) !important;
   color: var(--ds-accent-ice) !important;
   border-radius: var(--ds-r-sm) !important;
@@ -28,7 +34,9 @@ html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--tonal {
 }
 
 html[data-ypp-ui-style="deepspace"] yt-button-shape[is-tonal] button:hover,
-html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-ui-style="deepspace"] .yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="deepspace"] yt-button-shape button[title*="Download" i]:hover {
   background: rgba(59, 130, 246, 0.18) !important;
   border-color: var(--ds-glass-border-active) !important;
   box-shadow: var(--ds-glow-blue) !important;

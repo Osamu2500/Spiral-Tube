@@ -22,12 +22,20 @@ html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--overlay.yt-spec-bu
 html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-style="origami"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-style="origami"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
+html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-style="origami"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="origami"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="origami"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="origami"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="origami"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="origami"] yt-button-shape button[title*="Download" i] {
   border-radius: 0px !important;
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
 html[data-ypp-ui-style="origami"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
-html[data-ypp-ui-style="origami"] yt-icon-button.ytd-masthead:hover {
+html[data-ypp-ui-style="origami"] yt-icon-button.ytd-masthead:hover ,
+html[data-ypp-ui-style="origami"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="origami"] yt-button-shape button[title*="Download" i]:hover {
   box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important; transform: scale(1.1);
 }

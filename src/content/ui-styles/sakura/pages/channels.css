@@ -73,7 +73,13 @@ html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer button,
 html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer button,
 html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer button {
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer button ,
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer yt-button-shape button[title*="Download" i] {
     background: var(--sf) !important;
     border: 1px solid rgba(232, 82, 122, 0.45) !important;
     color: var(--vintage-secondary) !important;
@@ -85,7 +91,13 @@ html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer button:hover,
 html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer .yt-spec-button-shape-next:hover,
 html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer button:hover,
 html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer button:hover {
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer button:hover ,
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="sakura"] ytd-c4-tabbed-header-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="sakura"] ytd-channel-featured-content-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="sakura"] ytd-grid-channel-renderer yt-button-shape button[title*="Download" i]:hover {
     background: var(--vintage-secondary) !important;
     color: var(--sf) !important;
     fill: var(--sf) !important;

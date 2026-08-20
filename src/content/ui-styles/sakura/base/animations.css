@@ -1,5 +1,7 @@
 /* src/content/themes/ui-styles/vintage/base/animations.css */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover {
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.1);
   color: white !important;
   animation: youtubeRedPulse 5s ease-in-out infinite;
@@ -27,7 +29,9 @@
       0 0 30px red;
   }
 }
-.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after {
+.yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start:hover::after ,
+yt-button-shape button[aria-label*="Download" i]:hover::after,
+yt-button-shape button[title*="Download" i]:hover::after {
   background: none !important;
 }
 .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls .ytp-button::before {

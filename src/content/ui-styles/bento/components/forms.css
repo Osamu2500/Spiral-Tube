@@ -13,7 +13,11 @@ html[data-ypp-card-style="bento"] ytd-searchbox #search-icon-legacy {
 
 html[data-ypp-card-style="bento"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--filled,
-html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--tonal {
+html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="bento"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="bento"] yt-button-shape button[title*="Download" i] {
     background: var(--ben-surface) !important;
     color: var(--yt-spec-text-primary) !important;
     border: var(--ben-border) !important;
@@ -22,6 +26,10 @@ html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--tonal {
 }
 html[data-ypp-card-style="bento"] ytd-subscribe-button-renderer yt-button-shape button:hover,
 html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--filled:hover,
-html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--tonal:hover {
+html[data-ypp-card-style="bento"] .yt-spec-button-shape-next--tonal:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-card-style="bento"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-card-style="bento"] yt-button-shape button[title*="Download" i]:hover {
     background: var(--yt-spec-badge-chip-background) !important;
 }

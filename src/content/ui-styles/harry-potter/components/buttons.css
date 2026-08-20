@@ -10,7 +10,13 @@ html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--call-to-actio
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
 html[data-ypp-ui-style="harry-potter"] .ypp-btn-primary,
 html[data-ypp-ui-style="harry-potter"] .ypp-play-all-btn,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--call-to-action {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--call-to-action ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   background: linear-gradient(135deg, var(--hp-crimson, #740001) 0%, #a30001 50%, #4a0000 100%) !important;
   color: var(--hp-gold-bright, #e6c280) !important;
   border: 1px solid rgba(180, 150, 60, 0.7) !important;
@@ -33,7 +39,13 @@ html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--call-to-actio
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-style="harry-potter"] .ypp-btn-primary:hover,
 html[data-ypp-ui-style="harry-potter"] .ypp-play-all-btn:hover,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--call-to-action:hover {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--call-to-action:hover ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover {
   background: linear-gradient(135deg, #a30001 0%, var(--hp-crimson, #740001) 100%) !important;
   box-shadow:
     0 8px 22px rgba(80, 8, 8, 0.75),
@@ -63,7 +75,11 @@ html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSeg
 html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd,
 html[data-ypp-ui-style="harry-potter"] .ytLikeButtonViewModelHost button,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--segmented-start,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--segmented-end {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--segmented-end ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   background: rgba(18, 16, 12, 0.75) !important;
   color: var(--hp-parchment, #f0ddb8) !important;
   border: 1px solid rgba(180, 150, 60, 0.3) !important;
@@ -76,7 +92,11 @@ html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSeg
 html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover,
 html[data-ypp-ui-style="harry-potter"] .ytLikeButtonViewModelHost button:hover,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--segmented-start:hover,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--segmented-end:hover {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--segmented-end:hover ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover {
   background: rgba(24, 20, 14, 0.95) !important;
   border-color: rgba(180, 150, 60, 0.65) !important;
   color: var(--hp-gold-bright, #e6c280) !important;
@@ -91,7 +111,11 @@ html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
 html[data-ypp-ui-style="harry-potter"] .ypp-health-btn,
-html[data-ypp-ui-style="harry-potter"] .ypp-pill-toggle {
+html[data-ypp-ui-style="harry-potter"] .ypp-pill-toggle ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   background: rgba(18, 16, 12, 0.65) !important;
   color: var(--hp-parchment, #f0ddb8) !important;
   border: 1px solid rgba(180, 150, 60, 0.28) !important;
@@ -103,7 +127,11 @@ html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText:hover,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover,
 html[data-ypp-ui-style="harry-potter"] .ypp-health-btn:hover,
-html[data-ypp-ui-style="harry-potter"] .ypp-pill-toggle:hover {
+html[data-ypp-ui-style="harry-potter"] .ypp-pill-toggle:hover ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i]:hover {
   background: rgba(24, 20, 14, 0.95) !important;
   border-color: rgba(180, 150, 60, 0.6) !important;
   color: var(--hp-gold-bright, #e6c280) !important;
@@ -141,7 +169,11 @@ html[data-ypp-ui-style="harry-potter"] .ytPlayerQuickActionButtonsHost:not(:empt
 
 /* Remove default touch feedback ripple strokes that clash with gold borders */
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke ,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] .yt-spec-touch-feedback-shape__stroke {
   display: none !important;
 }
 
@@ -267,7 +299,43 @@ html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay #ask-
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText {
   background: linear-gradient(135deg, var(--hp-crimson, #740001) 0%, #a30001 50%, #4a0000 100%) !important;
   color: var(--hp-gold-bright, #e6c280) !important;
   border: 1px solid rgba(180, 150, 60, 0.7) !important;
@@ -315,7 +383,43 @@ html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay #ask-
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay .yt-spec-button-shape-next--mono:hover,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--overlay button.ytSpecButtonShapeNextText:hover ,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText:hover {
   background: linear-gradient(135deg, #a30001 0%, var(--hp-crimson, #740001) 100%) !important;
   box-shadow:
     0 8px 22px rgba(80, 8, 8, 0.75),
@@ -339,7 +443,11 @@ html[data-ypp-ui-style="harry-potter"] #ask-button button,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="harry-potter"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:active,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   transform: scale(0.97) !important;
   box-shadow: 0 2px 8px rgba(116, 0, 1, 0.4) !important;
 }
@@ -359,7 +467,11 @@ html[data-ypp-ui-style="harry-potter"] #ask-button button,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="harry-potter"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   position: relative !important;
   overflow: visible !important;
 }
@@ -379,7 +491,11 @@ html[data-ypp-ui-style="harry-potter"] #ask-button button,
 html[data-ypp-ui-style="harry-potter"] .yt-spec-button-shape-next--mono,
 html[data-ypp-ui-style="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
 html[data-ypp-ui-style="harry-potter"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-style="harry-potter"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="harry-potter"] yt-button-shape button[title*="Download" i] {
   content: "✦ 10 Points to Gryffindor!" !important;
   position: absolute !important;
   bottom: 115% !important;

@@ -41,14 +41,18 @@ html[data-ypp-ui-style="deepspace"] ytd-searchbox#search button#search-icon-lega
 
 /* Nav icons */
 html[data-ypp-ui-style="deepspace"] ytd-masthead yt-icon-button,
-html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default {
+html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default ,
+html[data-ypp-ui-style="deepspace"] ytd-masthead yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-style="deepspace"] ytd-masthead yt-button-shape button[title*="Download" i] {
   background: transparent !important;
   border-radius: var(--ds-r-sm) !important;
   transition: all 0.2s var(--ds-ease) !important;
 }
 
 html[data-ypp-ui-style="deepspace"] ytd-masthead yt-icon-button:hover,
-html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover {
+html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover ,
+html[data-ypp-ui-style="deepspace"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-style="deepspace"] ytd-masthead yt-button-shape button[title*="Download" i]:hover {
   background: rgba(59, 130, 246, 0.1) !important;
   box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.15) !important;
 }
@@ -60,7 +64,9 @@ html[data-ypp-ui-style="deepspace"] ytd-masthead yt-icon {
 }
 
 html[data-ypp-ui-style="deepspace"] ytd-masthead yt-icon-button:hover yt-icon,
-html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon {
+html[data-ypp-ui-style="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon ,
+html[data-ypp-ui-style="deepspace"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover yt-icon,
+html[data-ypp-ui-style="deepspace"] ytd-masthead yt-button-shape button[title*="Download" i]:hover yt-icon {
   fill: var(--ds-accent-ice) !important;
   color: var(--ds-accent-ice) !important;
   filter: drop-shadow(0 0 4px var(--ds-accent-blue)) !important;
