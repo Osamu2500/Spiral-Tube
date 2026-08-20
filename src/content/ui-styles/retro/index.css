@@ -2,20 +2,20 @@
 @import "./overrides.css";
 
 /* No animations — Win95 never had animations! */
-html[data-ypp-ui-design=""retro""]::before,
-html[data-ypp-ui-design=""retro""]::after {
+html[data-ypp-ui-design="retro"]::before,
+html[data-ypp-ui-design="retro"]::after {
     content: """";
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: -2;
     pointer-events: none;
 }
-html[data-ypp-ui-design=""retro""]::before {
+html[data-ypp-ui-design="retro"]::before {
     /* Tiled desktop checker pattern */
     background-image: url(""data:image/svg+xml,%3Csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='4' height='4' fill='rgba(0,0,0,0.06)'/%3E%3Crect x='4' y='4' width='4' height='4' fill='rgba(0,0,0,0.06)'/%3E%3C/svg%3E"");
     background-size: 8px 8px;
 }
-html[data-ypp-ui-design=""retro""]::after {
+html[data-ypp-ui-design="retro"]::after {
     display: none;
 }
 
@@ -25,65 +25,65 @@ html[data-ypp-ui-design=""retro""]::after {
 /* =========================================== */
 
 /* Video title text */
-html[data-ypp-ui-design=""retro""] #video-title,
-html[data-ypp-ui-design=""retro""] #video-title.ytd-rich-grid-media,
-html[data-ypp-ui-design=""retro""] #video-title.ytd-compact-video-renderer,
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media #video-title,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer #video-title,
-html[data-ypp-ui-design=""retro""] ytd-video-renderer #video-title,
-html[data-ypp-ui-design=""retro""] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design=""retro""] .title.ytd-rich-grid-media,
-html[data-ypp-ui-design=""retro""] #title-wrapper h3 a,
-html[data-ypp-ui-design=""retro""] ytd-watch-metadata h1 {
+html[data-ypp-ui-design="retro"] #video-title,
+html[data-ypp-ui-design="retro"] #video-title.ytd-rich-grid-media,
+html[data-ypp-ui-design="retro"] #video-title.ytd-compact-video-renderer,
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media #video-title,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer #video-title,
+html[data-ypp-ui-design="retro"] ytd-video-renderer #video-title,
+html[data-ypp-ui-design="retro"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="retro"] .title.ytd-rich-grid-media,
+html[data-ypp-ui-design="retro"] #title-wrapper h3 a,
+html[data-ypp-ui-design="retro"] ytd-watch-metadata h1 {
   color: #000000 !important;
   text-shadow: none !important;
   font-family: 'Courier New', monospace !important;
 }
 
 /* Channel name / metadata */
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media #metadata-line,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer #metadata-line,
-html[data-ypp-ui-design=""retro""] ytd-video-renderer #metadata-line,
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media #byline-container,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer #byline-container,
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media .yt-simple-endpoint,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer .yt-simple-endpoint,
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media yt-formatted-string,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer yt-formatted-string,
-html[data-ypp-ui-design=""retro""] ytd-video-renderer yt-formatted-string,
-html[data-ypp-ui-design=""retro""] #channel-name .yt-simple-endpoint,
-html[data-ypp-ui-design=""retro""] ytd-channel-name yt-formatted-string,
-html[data-ypp-ui-design=""retro""] ytd-channel-name a,
-html[data-ypp-ui-design=""retro""] #metadata-line span,
-html[data-ypp-ui-design=""retro""] .inline-metadata-item {
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media #metadata-line,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer #metadata-line,
+html[data-ypp-ui-design="retro"] ytd-video-renderer #metadata-line,
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media #byline-container,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer #byline-container,
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media .yt-simple-endpoint,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer .yt-simple-endpoint,
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media yt-formatted-string,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer yt-formatted-string,
+html[data-ypp-ui-design="retro"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-ui-design="retro"] #channel-name .yt-simple-endpoint,
+html[data-ypp-ui-design="retro"] ytd-channel-name yt-formatted-string,
+html[data-ypp-ui-design="retro"] ytd-channel-name a,
+html[data-ypp-ui-design="retro"] #metadata-line span,
+html[data-ypp-ui-design="retro"] .inline-metadata-item {
   color: #333333 !important;
   text-shadow: none !important;
   font-family: 'Courier New', monospace !important;
 }
 
 /* View count, date metadata */
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media #metadata-line span,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer #metadata-line span,
-html[data-ypp-ui-design=""retro""] ytd-video-renderer #metadata-line span {
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-ui-design="retro"] ytd-video-renderer #metadata-line span {
   color: #555555 !important;
 }
 
 /* Video card container — force black text */
-html[data-ypp-ui-design=""retro""] ytd-rich-grid-media,
-html[data-ypp-ui-design=""retro""] ytd-compact-video-renderer,
-html[data-ypp-ui-design=""retro""] ytd-video-renderer,
-html[data-ypp-ui-design=""retro""] ytd-playlist-video-renderer,
-html[data-ypp-ui-design=""retro""] ytd-grid-video-renderer {
+html[data-ypp-ui-design="retro"] ytd-rich-grid-media,
+html[data-ypp-ui-design="retro"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="retro"] ytd-video-renderer,
+html[data-ypp-ui-design="retro"] ytd-playlist-video-renderer,
+html[data-ypp-ui-design="retro"] ytd-grid-video-renderer {
   color: #000000 !important;
 }
 
 /* Description text */
-html[data-ypp-ui-design=""retro""] #description-text,
-html[data-ypp-ui-design=""retro""] yt-formatted-string#description-text {
+html[data-ypp-ui-design="retro"] #description-text,
+html[data-ypp-ui-design="retro"] yt-formatted-string#description-text {
   color: #111111 !important;
 }
 
 /* Watch page title */
-html[data-ypp-ui-design=""retro""] h1.ytd-watch-metadata yt-formatted-string {
+html[data-ypp-ui-design="retro"] h1.ytd-watch-metadata yt-formatted-string {
   color: #000000 !important;
 }

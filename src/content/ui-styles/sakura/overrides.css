@@ -225,7 +225,7 @@ html,
 }
 
 }
-@media (width: 1280px) {
+/* @media (width: 1280px) { */
   body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
 }
@@ -836,13 +836,12 @@ tp-yt-paper-toast {
 
 /* Account Menu Inline Drawers & Satellites */
 @keyframes ypp-fade-down {
-  transform: translateY(-5px);
-}
-
-to {
-  transform: translateY(0);
-}
-
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .ypp-inline-drawer {

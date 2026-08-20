@@ -96,6 +96,12 @@ html.yt-spiral-tube-theme[dark="true"],
   --yt-spec-verified-badge-background: var(--ypp-accent) !important;
   --yt-spec-button-chip-background-hover: var(--ypp-glass-highlight) !important;
 
+  /* Interactive States & Dividers */
+  --yt-spec-20-percent-layer: var(--ypp-glass-highlight) !important;
+  --yt-spec-hover-background: var(--ypp-glass-highlight) !important;
+  --yt-spec-touch-response: var(--ypp-glass-highlight) !important;
+  --yt-spec-outline: var(--ypp-glass-border) !important;
+
   /* Paper Elements (Legacy) */
   --paper-toggle-button-checked-bar-color: var(--ypp-accent) !important;
   --paper-toggle-button-checked-button-color: var(--ypp-accent) !important;
