@@ -458,7 +458,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @private
      */
     _getThemeUrl(themeKey) {
-        return chrome.runtime.getURL(`dist/ui-styles/${themeKey}/theme/bundle.css`);
+        return chrome.runtime.getURL(`dist/themes/${themeKey}/bundle.css`);
     }
 
     /**

@@ -1,9 +1,0 @@
-/* Flat Menus */
-html[data-ypp-card-style="flat"] tp-yt-paper-dialog,
-html[data-ypp-card-style="flat"] ytd-menu-popup-renderer,
-html[data-ypp-card-style="flat"] ytd-multi-page-menu-renderer {
-    background: var(--yt-spec-raised-background) !important;
-    border: var(--flat-border) !important;
-    border-radius: 0 !important;
-    box-shadow: 6px 6px 0px var(--yt-spec-text-primary) !important;
-}

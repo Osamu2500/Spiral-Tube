@@ -953,9 +953,22 @@ export function initComponents(
 
     btns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        applyStyle(btn.dataset.style);
+        const styleName = btn.dataset.style;
+        applyStyle(styleName);
         const event = new Event('change', { bubbles: true });
         hiddenInput.dispatchEvent(event);
+
+        // Auto-apply corresponding theme if it exists
+        const relatedThemeBtn = document.querySelector(`.theme-btn[data-theme="${styleName}"]`);
+        if (relatedThemeBtn) {
+          relatedThemeBtn.click();
+        }
+
+        // Auto-apply corresponding card style if it exists
+        const relatedCardStyleBtn = document.querySelector(`.card-style-btn[data-style="${styleName}"]`);
+        if (relatedCardStyleBtn) {
+          relatedCardStyleBtn.click();
+        }
       });
     });
   }

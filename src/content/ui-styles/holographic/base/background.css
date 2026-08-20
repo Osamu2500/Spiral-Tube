@@ -1,7 +1,0 @@
-/* Holographic Background */
-html[data-ypp-card-style="holographic"] ::-webkit-scrollbar-thumb {
-  background: var(--holo-gradient) !important;
-  background-size: 400% !important;
-  animation: ypp-holo-sweep 5s linear infinite !important;
-  border-radius: 10px !important;
-}

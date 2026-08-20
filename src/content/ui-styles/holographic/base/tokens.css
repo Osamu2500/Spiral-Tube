@@ -1,9 +1,0 @@
-/* Holographic Tokens */
-html[data-ypp-card-style="holographic"] {
-  --holo-gradient: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-}
-
-@keyframes ypp-holo-sweep {
-    0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-    100% { background-position: 400% 50%; filter: hue-rotate(360deg); }
-}

@@ -3,31 +3,45 @@ const fs = require('fs');
 const path = require('path');
 
 const uiStylesDir = path.join(__dirname, '../src/content/ui-styles');
+const themesDir = path.join(__dirname, '../src/content/themes');
+const cardStylesDir = path.join(__dirname, '../src/content/card-styles');
 
-const getDirs = source => fs.readdirSync(source, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
+const getDirs = source => {
+    if (!fs.existsSync(source)) return [];
+    return fs.readdirSync(source, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
+};
+
+const getFiles = source => {
+    if (!fs.existsSync(source)) return [];
+    return fs.readdirSync(source, { withFileTypes: true })
+        .filter(dirent => dirent.isFile() && dirent.name.endsWith('.css'))
+        .map(dirent => dirent.name);
+};
 
 // --- Build Color Themes ---
 const themeEntryPoints = [];
 
-getDirs(uiStylesDir).forEach(dir => {
-    const embeddedThemePath = path.join(uiStylesDir, dir, 'theme', 'index.css');
-    if (fs.existsSync(embeddedThemePath)) {
-        themeEntryPoints.push({ in: embeddedThemePath, out: path.join(dir, 'theme', 'bundle') });
+getDirs(themesDir).forEach(dir => {
+    const indexPath = path.join(themesDir, dir, 'index.css');
+    if (fs.existsSync(indexPath)) {
+        themeEntryPoints.push({ in: indexPath, out: path.join(dir, 'bundle') });
     }
 });
 
 console.log(`Building ${themeEntryPoints.length} color themes...`);
-esbuild.build({
-    entryPoints: themeEntryPoints,
-    bundle: true,
-    outdir: path.join(__dirname, '../dist/ui-styles'),
-    minify: true,
-    sourcemap: false,
-    external: ['chrome-extension://*'],
-    target: ['chrome100', 'safari14']
-}).catch(() => process.exit(1));
+if (themeEntryPoints.length > 0) {
+    esbuild.build({
+        entryPoints: themeEntryPoints,
+        bundle: true,
+        outdir: path.join(__dirname, '../dist/themes'),
+        minify: true,
+        sourcemap: false,
+        external: ['chrome-extension://*'],
+        target: ['chrome100', 'safari14']
+    }).catch(() => process.exit(1));
+}
 
 // --- Build UI Styles ---
 const uiStyleEntryPoints = [];
@@ -39,26 +53,24 @@ getDirs(uiStylesDir).forEach(dir => {
 });
 
 console.log(`Building ${uiStyleEntryPoints.length} UI styles...`);
-esbuild.build({
-    entryPoints: uiStyleEntryPoints,
-    bundle: true,
-    outdir: path.join(__dirname, '../dist/ui-styles'),
-    minify: true,
-    sourcemap: false,
-    external: ['chrome-extension://*'],
-    target: ['chrome100', 'safari14']
-}).catch(() => process.exit(1));
+if (uiStyleEntryPoints.length > 0) {
+    esbuild.build({
+        entryPoints: uiStyleEntryPoints,
+        bundle: true,
+        outdir: path.join(__dirname, '../dist/ui-styles'),
+        minify: true,
+        sourcemap: false,
+        external: ['chrome-extension://*'],
+        target: ['chrome100', 'safari14']
+    }).catch(() => process.exit(1));
+}
 
 // --- Build Card Styles ---
 const cardStyleEntryPoints = [];
-getDirs(uiStylesDir).forEach(dir => {
-    let cardPath = path.join(uiStylesDir, dir, 'card-style.css');
-    if (!fs.existsSync(cardPath)) {
-        cardPath = path.join(uiStylesDir, dir, 'components', 'cards.css');
-    }
-    if (fs.existsSync(cardPath)) {
-        cardStyleEntryPoints.push({ in: cardPath, out: dir });
-    }
+getFiles(cardStylesDir).forEach(file => {
+    const cardPath = path.join(cardStylesDir, file);
+    const name = file.replace('.css', '');
+    cardStyleEntryPoints.push({ in: cardPath, out: name });
 });
 
 console.log(`Building ${cardStyleEntryPoints.length} standalone card styles...`);
