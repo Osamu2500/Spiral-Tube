@@ -148,33 +148,3 @@ ytd-grid-video-renderer:hover {
   border: var(--vintage-border-hover) !important;
   animation: sepia-bloom 0.3s forwards !important;
 }
-/* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="sakura"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] #ask-button button:hover,
-html[data-ypp-ui-style="sakura"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="sakura"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] button.ytSpecButtonShapeNextText:hover {
-  transform: scale(1.1);
-  color: white !important;
-  animation: youtubeRedPulse 5s ease-in-out infinite;
-}
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="sakura"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] #ask-button button:hover,
-html[data-ypp-ui-style="sakura"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="sakura"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] button.ytSpecButtonShapeNextText:hover {
-  transform: scale(1.08) !important;
-  color: white !important;
-  box-shadow:
-    inset 0 0 25px red,
-    inset 0 0 50px red,
-    0 0 15px red,
-    0 0 30px red !important;
-  animation: youtubeRedPulse 5s ease-in-out infinite !important;
-}

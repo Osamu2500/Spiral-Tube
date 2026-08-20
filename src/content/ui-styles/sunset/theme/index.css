@@ -1,35 +1,4 @@
-@import "../../shared/timeline-visibility.css";
-@import "./base/tokens.css";
 
-/* ==========================================================================
-   SUNSET TWILIGHT — COMPLETE PLAYER PAGE STYLING
-   Action Buttons, Channel Bar, Description Box & Comments Section Dusk Cards
-   ========================================================================== */
-
-/* 1. Action Buttons */
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="sunset"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="sunset"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next {
-    background: rgba(255, 107, 107, 0.2) !important;
-    border: 1px solid rgba(255, 107, 107, 0.4) !important;
-    border-radius: 20px !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.15) !important;
-    transition: all 0.25s ease !important;
-}
-
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--tonal:hover,
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="sunset"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="sunset"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next:hover {
-    background: rgba(255, 107, 107, 0.35) !important;
-    border-color: #ff8787 !important;
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35) !important;
-    transform: translateY(-2px) !important;
-}
 
 /* 2. Channel Bar (#owner) */
 html[data-ypp-ui-style="sunset"] #owner {
@@ -92,37 +61,5 @@ html[data-ypp-ui-style="sunset"] ytd-comment-thread-renderer:hover {
     border-color: #ff8787 !important;
     background: rgba(50, 15, 38, 0.8) !important;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2) !important;
-}
-
-/* Heavy Theme Action Button Coverage Fix */
-
-html[data-ypp-ui-style="sunset"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="sunset"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="sunset"] #ask-button yt-button-shape button,
-html[data-ypp-ui-style="sunset"] #ask-button button,
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="sunset"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="sunset"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="sunset"] button.ytSpecButtonShapeNextText {
-    background: rgba(255, 107, 107, 0.2) !important;
-    border: 1px solid rgba(255, 107, 107, 0.4) !important;
-    border-radius: 20px !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(255, 107, 107, 0.15) !important;
-    transition: all 0.25s ease !important;
-}
-
-html[data-ypp-ui-style="sunset"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sunset"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="sunset"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="sunset"] #ask-button button:hover,
-html[data-ypp-ui-style="sunset"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="sunset"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="sunset"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sunset"] button.ytSpecButtonShapeNextText:hover {
-    background: rgba(255, 107, 107, 0.35) !important;
-    border-color: #ff8787 !important;
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.35) !important;
-    transform: translateY(-2px) !important;
 }
 

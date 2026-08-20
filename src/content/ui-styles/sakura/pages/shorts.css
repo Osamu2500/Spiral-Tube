@@ -22,40 +22,6 @@ html[data-ypp-ui-style="sakura"] ytd-reel-video-renderer {
     box-shadow: 4px 4px 0 rgba(0,0,0,0.3) !important;
 }
 
-/* Floating Action Buttons */
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer yt-button-shape button,
-html[data-ypp-ui-style="sakura"] .ytd-shorts-player-controls button {
-    background: var(--sf) !important;
-    border: 1px solid rgba(232, 82, 122, 0.45) !important;
-    border-radius: 20px !important;
-    box-shadow: 2px 2px #0000001a !important;
-    color: var(--vintage-secondary) !important;
-}
-
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] .ytd-shorts-player-controls button:hover {
-    background: var(--vintage-secondary) !important;
-    color: var(--sf) !important;
-    border: 2px solid var(--vintage-secondary) !important;
-    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
-    transform: translate(-2px, -2px) !important;
-}
-
-/* Icons inside shorts buttons */
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer yt-button-shape button svg,
-html[data-ypp-ui-style="sakura"] .ytd-shorts-player-controls button svg {
-    fill: var(--vintage-secondary) !important;
-}
-
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="sakura"] ytd-reel-player-overlay-renderer yt-button-shape button:hover svg,
-html[data-ypp-ui-style="sakura"] .ytd-shorts-player-controls button:hover svg {
-    fill: var(--sf) !important;
-}
-
 /* Channel info in shorts */
 html[data-ypp-ui-style="sakura"] .ytd-reel-player-overlay-renderer #channel-name *,
 html[data-ypp-ui-style="sakura"] .ytd-reel-player-overlay-renderer .title * {

@@ -57,35 +57,6 @@ html[data-ypp-theme="aurora"] ytd-comment-renderer #pinned-comment-badge {
   font-weight: bold !important;
 }
 
-/* Comment Action Buttons (Like/Reply) */
-html[data-ypp-theme="aurora"] #reply-button-end yt-button-shape button,
-html[data-ypp-theme="aurora"] #comment-action-buttons-end yt-button-shape button {
-  background: transparent !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  margin: 0 4px !important;
-  transition: all var(--aurora-bounce) !important;
-}
-html[data-ypp-theme="aurora"] #reply-button-end yt-button-shape button:hover,
-html[data-ypp-theme="aurora"] #comment-action-buttons-end yt-button-shape button:hover {
-  background: var(--aurora-glass-light) !important;
-  box-shadow: var(--aurora-glow-cyan) !important;
-  transform: translateY(-2px) !important;
-}
-
-/* Sort Menu */
-html[data-ypp-theme="aurora"] #sort-menu yt-button-shape button {
-  background: var(--aurora-glass-heavy) !important;
-  border: var(--aurora-border-glass) !important;
-  border-radius: var(--aurora-radius-pill) !important;
-  padding: 4px 16px !important;
-  transition: all var(--aurora-bounce) !important;
-}
-html[data-ypp-theme="aurora"] #sort-menu yt-button-shape button:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: var(--aurora-border-glow) !important;
-  box-shadow: var(--aurora-glow-cyan) !important;
-}
-
 /* View Replies Expander */
 html[data-ypp-theme="aurora"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button {
   background: var(--aurora-glass-heavy) !important;

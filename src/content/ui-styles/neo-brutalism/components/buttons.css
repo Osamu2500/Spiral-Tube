@@ -58,40 +58,6 @@ html[data-ypp-ui-style="neo-brutalism"] .ypp-pill-toggle {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="neo-brutalism"] .ypp-pill-toggle:hover { box-shadow: 10px 10px 0px #000 !important; transform: scale(1.05) !important; }
-
-/* Full action button coverage */
-html[data-ypp-ui-style="neo-brutalism"] #top-level-buttons-computed .yt-spec-button-shape-next,
-html[data-ypp-ui-style="neo-brutalism"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="neo-brutalism"] yt-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="neo-brutalism"] ytd-download-button-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="neo-brutalism"] yt-download-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="neo-brutalism"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="neo-brutalism"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="neo-brutalism"] #ask-button yt-button-shape button, html[data-ypp-ui-style="neo-brutalism"] #ask-button button,
-html[data-ypp-ui-style="neo-brutalism"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="neo-brutalism"] button.ytSpecButtonShapeNextText {
-  background: #fffbf0 !important; border: 4px solid #000 !important;
-  color: #000 !important; border-radius: 0px !important;
-  box-shadow: 6px 6px 0px #000 !important; font-weight: 700 !important;
-  transition: all var(--bounce) !important; margin-right: 6px !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="neo-brutalism"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="neo-brutalism"] button.ytSpecButtonShapeNextText:hover {
-  background: #ffcc00 !important; color: #000 !important;
-  border: 4px solid #ff6699 !important; box-shadow: 10px 10px 0px #000 !important;
-  transform: translate(-4px,-4px) !important;
-}
-html[data-ypp-ui-style="neo-brutalism"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="neo-brutalism"] #top-level-buttons-computed .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer yt-button-shape button svg,
-html[data-ypp-ui-style="neo-brutalism"] ytd-menu-renderer yt-button-shape button path { fill: #000 !important; }
 html[data-ypp-ui-style="neo-brutalism"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
 html[data-ypp-ui-style="neo-brutalism"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path { fill: #000 !important; }
 html[data-ypp-ui-style="neo-brutalism"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper { background: none !important; border: none !important; }

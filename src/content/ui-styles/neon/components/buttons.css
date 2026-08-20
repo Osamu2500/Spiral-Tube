@@ -1,36 +1,4 @@
-/* src/content/themes/ui-styles/neon/components/buttons.css */
-html[data-ypp-card-style="neon"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-card-style="neon"] yt-download-button-view-model yt-button-shape button,
-html[data-ypp-card-style="neon"] yt-download-button-view-model button,
-html[data-ypp-card-style="neon"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-card-style="neon"] ytd-download-button-renderer button,
-html[data-ypp-card-style="neon"] #ask-button yt-button-shape button,
-html[data-ypp-card-style="neon"] #ask-button button,
-html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--tonal,
-html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--outline,
-html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--mono {
-    background: transparent !important;
-    color: var(--neon-cyan) !important;
-    border: 1px solid var(--neon-cyan) !important;
-    border-radius: 4px !important;
-    transition: all 0.2s ease !important;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2), inset 0 0 5px rgba(0, 255, 255, 0.1) !important;
-}
 
-html[data-ypp-card-style="neon"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-card-style="neon"] yt-download-button-view-model yt-button-shape button:hover,
-html[data-ypp-card-style="neon"] yt-download-button-view-model button:hover,
-html[data-ypp-card-style="neon"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-card-style="neon"] ytd-download-button-renderer button:hover,
-html[data-ypp-card-style="neon"] #ask-button yt-button-shape button:hover,
-html[data-ypp-card-style="neon"] #ask-button button:hover,
-html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--tonal:hover,
-html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--outline:hover,
-html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--mono:hover {
-    background: var(--neon-cyan) !important;
-    color: #000 !important;
-    box-shadow: 0 0 15px var(--neon-cyan), 0 0 5px var(--neon-cyan) !important;
-}
 
 html[data-ypp-card-style="neon"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="neon"] .yt-spec-button-shape-next--filled {

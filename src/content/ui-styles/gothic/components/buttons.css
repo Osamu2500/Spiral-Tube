@@ -58,40 +58,6 @@ html[data-ypp-ui-style="gothic"] .ypp-pill-toggle {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="gothic"] .ypp-pill-toggle:hover { box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important; transform: scale(1.05) !important; }
-
-/* Full action button coverage */
-html[data-ypp-ui-style="gothic"] #top-level-buttons-computed .yt-spec-button-shape-next,
-html[data-ypp-ui-style="gothic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="gothic"] yt-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="gothic"] ytd-download-button-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="gothic"] yt-download-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="gothic"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="gothic"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="gothic"] #ask-button yt-button-shape button, html[data-ypp-ui-style="gothic"] #ask-button button,
-html[data-ypp-ui-style="gothic"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="gothic"] button.ytSpecButtonShapeNextText {
-  background: #1c1c1c !important; border: 2px solid #8b0000 !important;
-  color: #d3d3d3 !important; border-radius: 0px !important;
-  box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important; font-weight: 700 !important;
-  transition: all var(--bounce) !important; margin-right: 6px !important;
-}
-html[data-ypp-ui-style="gothic"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="gothic"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="gothic"] button.ytSpecButtonShapeNextText:hover {
-  background: #2a0800 !important; color: #cc0000 !important;
-  border: 2px solid #cc0000 !important; box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
-  transform: scale(1.05) !important;
-}
-html[data-ypp-ui-style="gothic"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="gothic"] #top-level-buttons-computed .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer yt-button-shape button svg,
-html[data-ypp-ui-style="gothic"] ytd-menu-renderer yt-button-shape button path { fill: #d3d3d3 !important; }
 html[data-ypp-ui-style="gothic"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
 html[data-ypp-ui-style="gothic"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path { fill: #cc0000 !important; }
 html[data-ypp-ui-style="gothic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper { background: none !important; border: none !important; }

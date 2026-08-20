@@ -448,24 +448,6 @@ html[data-ypp-card-style="nature"] .yt-spec-avatar-shape__image, html[data-ypp-u
 html[data-ypp-card-style="nature"] .yt-spec-avatar-shape__image, html[data-ypp-ui-style="nature"] .yt-spec-avatar-shape__image:hover {
     transform: rotate(30deg) scale(1.15) !important;
 }
-
-/* Buttons and Chips - Organic */
-html[data-ypp-card-style="nature"] yt-button-shape button, html[data-ypp-ui-style="nature"] yt-button-shape button {
-    border-radius: 20px 4px 20px 4px !important;
-    border: 2px solid var(--nature-primary) !important;
-    background: #ffffff !important;
-    color: var(--nature-primary) !important;
-    font-weight: bold !important;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1) !important;
-    transition: all 0.3s ease !important;
-}
-html[data-ypp-card-style="nature"] yt-button-shape button, html[data-ypp-ui-style="nature"] yt-button-shape button:hover {
-    background: var(--nature-primary) !important;
-    color: #ffffff !important;
-    border-radius: 4px 20px 4px 20px !important;
-    transform: translateY(-3px) !important;
-    box-shadow: 4px 6px 10px rgba(46, 139, 87, 0.3) !important;
-}
 html[data-ypp-card-style="nature"] .yt-spec-button-shape-next, html[data-ypp-ui-style="nature"] .yt-spec-button-shape-next {
     border-radius: 20px 4px 20px 4px !important;
     border: 2px solid var(--nature-primary) !important;

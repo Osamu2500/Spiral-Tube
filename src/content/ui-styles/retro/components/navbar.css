@@ -62,31 +62,6 @@ ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
 tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   background: transparent !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 0 !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.06);
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-dark) !important;
-  border-left: 2px solid var(--retro-border-dark) !important;
-  border-bottom: 2px solid var(--retro-border-light) !important;
-  border-right: 2px solid var(--retro-border-light) !important;
-}
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: 0 !important;
   padding: 4px !important;
@@ -109,36 +84,4 @@ ytd-masthead #container {
   border-radius: 0 !important;
   box-shadow: var(--win95-flat) !important;
   border: 2px solid #000 !important;
-}
-/* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-style="retro"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="retro"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="retro"] #ask-button yt-button-shape button,
-html[data-ypp-ui-style="retro"] #ask-button button,
-html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="retro"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="retro"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextText {
-  border-radius: 0 !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-html[data-ypp-ui-style="retro"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="retro"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="retro"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="retro"] #ask-button button:hover,
-html[data-ypp-ui-style="retro"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="retro"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="retro"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="retro"] button.ytSpecButtonShapeNextText:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: none !important;
-  border-top: 2px solid var(--retro-border-light) !important;
-  border-left: 2px solid var(--retro-border-light) !important;
-  border-bottom: 2px solid var(--retro-border-dark) !important;
-  border-right: 2px solid var(--retro-border-dark) !important;
-  transform: scale(1.1);
 }

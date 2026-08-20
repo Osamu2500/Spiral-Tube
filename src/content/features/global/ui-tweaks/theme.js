@@ -244,6 +244,13 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (!uiStyleKey || uiStyleKey === 'default') {
             if (link) link.remove();
             document.documentElement.removeAttribute('data-ypp-ui-style');
+            document.documentElement.removeAttribute('data-ypp-has-bg-image'); // Force clear background
+            
+            // Clean global styling classes
+            document.body.classList.remove('ypp-ui-square-corners');
+            document.body.classList.remove('ypp-ui-extra-rounded');
+            document.body.classList.remove('ypp-dual-accent-enabled');
+            
             this._removeFrutigerBubbles();
             return;
         }
@@ -675,6 +682,14 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             const blur = this._settings.customBackgroundImageBlur ?? 0;
             const brightness = this._settings.customBackgroundImageBrightness ?? 1.0;
             const saturation = this._settings.customBackgroundImageSaturation ?? 1.0;
+            
+            // Only apply if not 'default' UI theme
+            if (this._settings.youtubePageTheme === 'default') {
+                if (bgContainer) bgContainer.remove();
+                if (bgStyleEl) bgStyleEl.remove();
+                root.removeAttribute('data-ypp-has-bg-image');
+                return;
+            }
             
             // Mark html element so core-styles.css and UI style bundles can suppress their bg colors
             root.setAttribute('data-ypp-has-bg-image', 'true');

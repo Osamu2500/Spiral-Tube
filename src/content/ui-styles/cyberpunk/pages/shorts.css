@@ -11,29 +11,6 @@ html[data-ypp-ui-style="cyberpunk"] ytd-reel-video-renderer[is-active] {
   clip-path: var(--cyber-clip-md) !important;
 }
 
-/* Action Sidebar */
-html[data-ypp-ui-style="cyberpunk"] ytd-reel-video-renderer #actions yt-button-shape button {
-  background: transparent !important;
-  border: 1px solid var(--cyber-secondary) !important;
-  border-radius: 0 !important;
-  clip-path: var(--cyber-clip-slash) !important;
-  color: var(--cyber-secondary) !important;
-  transition: all var(--cyber-snap) !important;
-}
-html[data-ypp-ui-style="cyberpunk"] ytd-reel-video-renderer #actions yt-button-shape button:hover {
-  background: var(--cyber-secondary) !important;
-  color: #000 !important;
-  box-shadow: 0 0 10px var(--cyber-secondary) !important;
-}
-
-/* Like Button (Pressed state) */
-html[data-ypp-ui-style="cyberpunk"] ytd-reel-video-renderer #actions yt-button-shape button[aria-pressed="true"] {
-  background: var(--cyber-primary) !important;
-  border-color: var(--cyber-primary) !important;
-  color: #000 !important;
-  box-shadow: var(--cyber-glow-primary) !important;
-}
-
 /* Progress Bar */
 html[data-ypp-ui-style="cyberpunk"] ytd-reel-video-renderer #progress-bar {
   background: rgba(255, 0, 85, 0.2) !important;

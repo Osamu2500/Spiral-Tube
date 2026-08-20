@@ -23,31 +23,6 @@ html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer[is-active] {
   overflow: hidden !important;
 }
 
-/* Shorts Action Buttons Sidebar */
-html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions ytd-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions ytd-toggle-button-renderer yt-button-shape button {
-  -webkit-backdrop-filter: var(--lg-blur-surface) !important;
-  backdrop-filter: var(--lg-blur-surface) !important;
-  background: var(--lg-bg-level-1) !important;
-  border: var(--lg-border-subtle) !important;
-  border-radius: 2000px !important;
-  box-shadow: var(--lg-border-top-light), var(--lg-shadow-card) !important;
-  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
-  margin-bottom: 8px !important;
-}
-
-html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions yt-button-shape button:hover {
-  background: var(--lg-bg-level-2) !important;
-  box-shadow: var(--lg-border-top-light), var(--lg-shadow-hover) !important;
-  transform: scale(1.08) !important;
-}
-
-html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #actions yt-button-shape button[aria-pressed="true"] {
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #000 !important;
-  box-shadow: var(--lg-shadow-glow) !important;
-}
-
 /* Avatar / Channel Info */
 html[data-ypp-ui-style="liquid-glass"] ytd-reel-video-renderer #channel-info {
   background: rgba(0, 0, 0, 0.4) !important;

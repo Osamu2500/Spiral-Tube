@@ -40,15 +40,3 @@ html[data-ypp-ui-style="crystal-glass"] #replies.ytd-comment-thread-renderer {
   margin-left: 24px !important;
   padding-left: 16px !important;
 }
-
-/* Sort Menu Button */
-html[data-ypp-ui-style="crystal-glass"] #sort-menu yt-button-shape button {
-  background: transparent !important;
-  border: var(--cglass-border) !important;
-  border-radius: var(--cglass-radius-pill) !important;
-  padding: 4px 16px !important;
-}
-html[data-ypp-ui-style="crystal-glass"] #sort-menu yt-button-shape button:hover {
-  background: var(--cglass-base-hover) !important;
-  border: var(--cglass-border-heavy) !important;
-}

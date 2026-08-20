@@ -58,40 +58,6 @@ html[data-ypp-ui-style="woodblock"] .ypp-pill-toggle {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="woodblock"] .ypp-pill-toggle:hover { box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important; transform: scale(1.05) !important; }
-
-/* Full action button coverage */
-html[data-ypp-ui-style="woodblock"] #top-level-buttons-computed .yt-spec-button-shape-next,
-html[data-ypp-ui-style="woodblock"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="woodblock"] yt-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="woodblock"] ytd-download-button-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="woodblock"] yt-download-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="woodblock"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="woodblock"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="woodblock"] #ask-button yt-button-shape button, html[data-ypp-ui-style="woodblock"] #ask-button button,
-html[data-ypp-ui-style="woodblock"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="woodblock"] button.ytSpecButtonShapeNextText {
-  background: #faf8f0 !important; border: 2px solid #8b4513 !important;
-  color: #5c3d1e !important; border-radius: 4px !important;
-  box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important; font-weight: 700 !important;
-  transition: all var(--bounce) !important; margin-right: 6px !important;
-}
-html[data-ypp-ui-style="woodblock"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="woodblock"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="woodblock"] button.ytSpecButtonShapeNextText:hover {
-  background: #deb887 !important; color: #8b4513 !important;
-  border: 2px solid #a0522d !important; box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
-  transform: scale(1.05) !important;
-}
-html[data-ypp-ui-style="woodblock"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="woodblock"] #top-level-buttons-computed .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer yt-button-shape button svg,
-html[data-ypp-ui-style="woodblock"] ytd-menu-renderer yt-button-shape button path { fill: #5c3d1e !important; }
 html[data-ypp-ui-style="woodblock"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
 html[data-ypp-ui-style="woodblock"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path { fill: #8b4513 !important; }
 html[data-ypp-ui-style="woodblock"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper { background: none !important; border: none !important; }

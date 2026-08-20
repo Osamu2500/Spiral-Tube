@@ -478,30 +478,6 @@ html[data-ypp-card-style="brutalism"] .yt-spec-avatar-shape__image, html[data-yp
     border-color: var(--brut-secondary) !important;
     box-shadow: 4px 4px 0 var(--brut-black) !important;
 }
-
-/* Blocky Harsh Buttons */
-html[data-ypp-card-style="brutalism"] yt-button-shape button, html[data-ypp-ui-style="brutalism"] yt-button-shape button {
-    border-radius: 0 !important;
-    border: 3px solid var(--brut-black) !important;
-    background: var(--brut-primary) !important;
-    color: var(--brut-white) !important;
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    box-shadow: 4px 4px 0 var(--brut-black) !important;
-    transition: none !important;
-}
-html[data-ypp-card-style="brutalism"] yt-button-shape button, html[data-ypp-ui-style="brutalism"] yt-button-shape button:hover {
-    background: var(--brut-secondary) !important;
-    color: var(--brut-white) !important;
-    transform: translate(2px, 2px) !important;
-    box-shadow: 2px 2px 0 var(--brut-black) !important;
-}
-html[data-ypp-card-style="brutalism"] yt-button-shape button, html[data-ypp-ui-style="brutalism"] yt-button-shape button:active {
-    transform: translate(4px, 4px) !important;
-    box-shadow: 0 0 0 var(--brut-black) !important;
-    background: var(--brut-accent) !important;
-    color: var(--brut-black) !important;
-}
 html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-style="brutalism"] .yt-spec-button-shape-next {
     border-radius: 0 !important;
     border: 3px solid var(--brut-black) !important;

@@ -57,36 +57,6 @@ html[data-ypp-card-style="skeuomorphic"] ytd-miniplayer {
     box-shadow: 10px 10px 20px rgba(0,0,0,0.8) !important;
 }
 
-/* Embossed Metal Action Buttons */
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--tonal,
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next--mono,
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next,
-html[data-ypp-card-style="skeuomorphic"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-card-style="skeuomorphic"] #ask-button yt-button-shape button,
-html[data-ypp-card-style="skeuomorphic"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-card-style="skeuomorphic"] ytd-menu-renderer yt-button-shape button {
-  background: linear-gradient(145deg, #383838, #222222) !important;
-  border: 1px solid #111 !important;
-  border-top: 1px solid #555 !important;
-  border-left: 1px solid #444 !important;
-  border-radius: 8px !important;
-  color: #f0f0f0 !important;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), inset 1px 1px 2px rgba(255, 255, 255, 0.15) !important;
-  transition: all 0.2s ease !important;
-}
-
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next:hover,
-html[data-ypp-card-style="skeuomorphic"] ytd-menu-renderer yt-button-shape button:hover {
-  background: linear-gradient(145deg, #444444, #2a2a2a) !important;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.85), inset 1px 1px 3px rgba(255, 255, 255, 0.25) !important;
-}
-html[data-ypp-card-style="skeuomorphic"] .yt-spec-button-shape-next:active,
-html[data-ypp-card-style="skeuomorphic"] ytd-menu-renderer yt-button-shape button:active {
-  background: #1a1a1a !important;
-  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.8) !important;
-  border-top: 1px solid #000 !important;
-}
-
 /* Channel Bar (#owner - Beveled Dark Metal Panel) */
 html[data-ypp-card-style="skeuomorphic"] #owner {
   background: linear-gradient(145deg, #282828, #1c1c1c) !important;

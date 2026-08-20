@@ -58,40 +58,6 @@ html[data-ypp-ui-style="origami"] .ypp-pill-toggle {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 html[data-ypp-ui-style="origami"] .ypp-pill-toggle:hover { box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important; transform: scale(1.05) !important; }
-
-/* Full action button coverage */
-html[data-ypp-ui-style="origami"] #top-level-buttons-computed .yt-spec-button-shape-next,
-html[data-ypp-ui-style="origami"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .yt-spec-button-shape-next,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="origami"] yt-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="origami"] ytd-download-button-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="origami"] yt-download-button-view-model .yt-spec-button-shape-next,
-html[data-ypp-ui-style="origami"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="origami"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="origami"] #ask-button yt-button-shape button, html[data-ypp-ui-style="origami"] #ask-button button,
-html[data-ypp-ui-style="origami"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="origami"] button.ytSpecButtonShapeNextText {
-  background: #f8f8f5 !important; border: 1px solid #d0d0c0 !important;
-  color: #444 !important; border-radius: 0px !important;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important; font-weight: 700 !important;
-  transition: all var(--bounce) !important; margin-right: 6px !important;
-}
-html[data-ypp-ui-style="origami"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="origami"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="origami"] button.ytSpecButtonShapeNextText:hover {
-  background: #f4f4f0 !important; color: #ff7f50 !important;
-  border: 2px solid #ff7f50 !important; box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
-  transform: scale(1.05) !important;
-}
-html[data-ypp-ui-style="origami"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="origami"] #top-level-buttons-computed .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer .yt-spec-button-shape-next path,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer yt-button-shape button svg,
-html[data-ypp-ui-style="origami"] ytd-menu-renderer yt-button-shape button path { fill: #444 !important; }
 html[data-ypp-ui-style="origami"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
 html[data-ypp-ui-style="origami"] #top-level-buttons-computed .yt-spec-button-shape-next:hover path { fill: #ff7f50 !important; }
 html[data-ypp-ui-style="origami"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper { background: none !important; border: none !important; }

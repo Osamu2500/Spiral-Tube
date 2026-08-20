@@ -1,25 +1,4 @@
-/* =========================================================
-   TERMINALISM — WATCH PAGE
-   ========================================================= */
 
-/* Action Button Row (Like, Share, Download) */
-html[data-ypp-ui-style="terminalism"] #top-level-buttons-computed yt-button-shape button {
-  background: var(--term-bg) !important;
-  border: var(--term-border-dim) !important;
-  color: var(--term-text-primary) !important;
-  margin: 0 4px !important;
-  border-radius: 0 !important;
-  text-transform: uppercase !important;
-}
-html[data-ypp-ui-style="terminalism"] #top-level-buttons-computed yt-button-shape button:hover {
-  border: var(--term-border) !important;
-  background: var(--term-green-fade) !important;
-  box-shadow: var(--term-glow) !important;
-}
-html[data-ypp-ui-style="terminalism"] #top-level-buttons-computed yt-button-shape button:active {
-  background: var(--term-green) !important;
-  color: var(--term-bg) !important;
-}
 
 /* Subscribe Button */
 html[data-ypp-ui-style="terminalism"] ytd-subscribe-button-renderer button {

@@ -55,36 +55,6 @@ html[data-ypp-ui-style="neumorphic"] ytd-comment-renderer #pinned-comment-badge 
   color: var(--neu-text-secondary) !important;
 }
 
-/* Comment Action Buttons (Like, Dislike, Reply) */
-html[data-ypp-ui-style="neumorphic"] #reply-button-end yt-button-shape button,
-html[data-ypp-ui-style="neumorphic"] #comment-action-buttons-end yt-button-shape button {
-  background-color: var(--neu-bg) !important;
-  box-shadow: var(--neu-shadow-outset-sm) !important;
-  border-radius: var(--neu-radius-pill) !important;
-  border: none !important;
-  margin: 0 4px !important;
-  transition: all var(--neu-snap) !important;
-}
-html[data-ypp-ui-style="neumorphic"] #reply-button-end yt-button-shape button:active,
-html[data-ypp-ui-style="neumorphic"] #comment-action-buttons-end yt-button-shape button:active {
-  box-shadow: var(--neu-shadow-inset) !important;
-}
-
-/* Sort Menu Button */
-html[data-ypp-ui-style="neumorphic"] #sort-menu yt-button-shape button {
-  background-color: var(--neu-bg) !important;
-  box-shadow: var(--neu-shadow-outset-sm) !important;
-  border-radius: var(--neu-radius-pill) !important;
-  padding: 4px 16px !important;
-  transition: all var(--neu-snap) !important;
-}
-html[data-ypp-ui-style="neumorphic"] #sort-menu yt-button-shape button:hover {
-  box-shadow: var(--neu-shadow-outset) !important;
-}
-html[data-ypp-ui-style="neumorphic"] #sort-menu yt-button-shape button:active {
-  box-shadow: var(--neu-shadow-inset) !important;
-}
-
 /* View Replies Expander Button */
 html[data-ypp-ui-style="neumorphic"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button {
   background-color: var(--neu-bg) !important;

@@ -1,26 +1,4 @@
-/* =========================================================
-   NEUMORPHIC — WATCH PAGE
-   ========================================================= */
 
-/* Action Button Row (Like, Share, Download) */
-html[data-ypp-ui-style="neumorphic"] #top-level-buttons-computed yt-button-shape button {
-  background-color: var(--neu-bg) !important;
-  box-shadow: var(--neu-shadow-outset-sm) !important;
-  border-radius: var(--neu-radius-pill) !important;
-  border: none !important;
-  color: var(--neu-text-primary) !important;
-  margin: 0 4px !important;
-  transition: all var(--neu-snap) !important;
-}
-html[data-ypp-ui-style="neumorphic"] #top-level-buttons-computed yt-button-shape button:hover {
-  box-shadow: var(--neu-shadow-outset) !important;
-  color: var(--neu-accent) !important;
-  transform: translateY(-1px) !important;
-}
-html[data-ypp-ui-style="neumorphic"] #top-level-buttons-computed yt-button-shape button:active {
-  box-shadow: var(--neu-shadow-inset) !important;
-  transform: translateY(1px) !important;
-}
 
 /* Subscribe Button */
 html[data-ypp-ui-style="neumorphic"] ytd-subscribe-button-renderer button {

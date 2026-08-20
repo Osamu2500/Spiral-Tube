@@ -129,22 +129,6 @@ html[data-ypp-card-style="player-retouch"] ytd-searchbox #search-icon-legacy:hov
 html[data-ypp-ui-style="player-retouch"] ytd-searchbox #search-icon-legacy:hover {
     background: rgba(128,128,128,0.2) !important;
 }
-
-/* 9. Buttons, Chips & Action Menus */
-html[data-ypp-card-style="player-retouch"] yt-button-shape button, html[data-ypp-card-style="player-retouch"] .yt-spec-button-shape-next,
-html[data-ypp-ui-style="player-retouch"] yt-button-shape button, html[data-ypp-ui-style="player-retouch"] .yt-spec-button-shape-next {
-    border-radius: 12px !important;
-    border: 1px solid rgba(128,128,128,0.2) !important;
-    text-transform: none !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-}
-html[data-ypp-card-style="player-retouch"] yt-button-shape button:hover,
-html[data-ypp-ui-style="player-retouch"] yt-button-shape button:hover {
-    transform: scale(1.05) !important;
-    filter: brightness(1.2) !important;
-}
 html[data-ypp-card-style="player-retouch"] yt-chip-cloud-chip-renderer,
 html[data-ypp-ui-style="player-retouch"] yt-chip-cloud-chip-renderer {
     border-radius: 12px !important;

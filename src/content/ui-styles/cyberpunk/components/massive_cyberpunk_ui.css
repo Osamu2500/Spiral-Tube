@@ -573,24 +573,6 @@ html[data-ypp-card-style="cyberpunk"] .yt-spec-avatar-shape__image, html[data-yp
     transform: rotate(45deg) scale(1.1) !important;
     background: var(--cyber-secondary) !important;
 }
-
-/* Tech Buttons */
-html[data-ypp-card-style="cyberpunk"] yt-button-shape button, html[data-ypp-ui-style="cyberpunk"] yt-button-shape button {
-    border-radius: 0 !important;
-    border: 1px solid var(--cyber-secondary) !important;
-    background: rgba(0,0,0,0.8) !important;
-    color: var(--cyber-secondary) !important;
-    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
-    text-transform: uppercase !important;
-    font-weight: bold !important;
-    box-shadow: 2px 2px 0 var(--cyber-primary) !important;
-    transition: all 0.1s steps(2, end) !important;
-}
-html[data-ypp-card-style="cyberpunk"] yt-button-shape button, html[data-ypp-ui-style="cyberpunk"] yt-button-shape button:hover {
-    background: var(--cyber-secondary) !important;
-    color: #000 !important;
-    box-shadow: -2px -2px 0 var(--cyber-accent) !important;
-}
 html[data-ypp-card-style="cyberpunk"] .yt-spec-button-shape-next, html[data-ypp-ui-style="cyberpunk"] .yt-spec-button-shape-next {
     border-radius: 0 !important;
     border: 1px solid var(--cyber-secondary) !important;

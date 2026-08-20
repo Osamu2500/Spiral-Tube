@@ -76,20 +76,6 @@ html[data-ypp-ui-style="sakura"] ytd-playlist-panel-renderer svg {
     fill: var(--vintage-secondary) !important;
 }
 
-/* Playlist Sidebar action buttons (Play All, Shuffle, Save, Share, Clean, More) */
-html[data-ypp-ui-style="sakura"] ytd-playlist-header-renderer .yt-spec-button-shape-next,
-html[data-ypp-ui-style="sakura"] ytd-playlist-header-renderer button,
-html[data-ypp-ui-style="sakura"] ytd-playlist-header-renderer yt-button-shape button,
-html[data-ypp-ui-style="sakura"] ytd-playlist-header-renderer yt-button-view-model button {
-    background: var(--sf) !important;
-    border: 1px solid rgba(232, 82, 122, 0.45) !important;
-    border-radius: 20px !important;
-    color: var(--vintage-secondary) !important;
-    box-shadow: 2px 2px rgba(0,0,0,0.12) !important;
-    font-weight: 700 !important;
-    transition: all 0.18s ease-out !important;
-}
-
 html[data-ypp-ui-style="sakura"] ytd-playlist-header-renderer .yt-spec-button-shape-next svg,
 html[data-ypp-ui-style="sakura"] ytd-playlist-header-renderer button svg {
     fill: var(--vintage-secondary) !important;

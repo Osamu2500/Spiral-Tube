@@ -73,27 +73,6 @@ html[data-ypp-ui-style="liquid-glass"] segmented-like-dislike-button-view-model 
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Secondary Action Buttons (Share, Download, Save, More) */
-html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="liquid-glass"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="liquid-glass"] ytd-button-renderer yt-button-shape button {
-  -webkit-backdrop-filter: var(--lg-blur-card) !important;
-  backdrop-filter: var(--lg-blur-card) !important;
-  border-radius: 2000px !important;
-  background: var(--lg-bg-level-1) !important;
-  border: var(--lg-border-specular) !important;
-  box-shadow: var(--lg-shadow-card) !important;
-  transition: transform var(--lg-spring), box-shadow var(--lg-spring), background var(--lg-smooth) !important;
-}
-
-html[data-ypp-ui-style="liquid-glass"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="liquid-glass"] ytd-button-renderer yt-button-shape button:hover {
-  background: rgba(255, 255, 255, 0.16) !important;
-  box-shadow: var(--lg-shadow-hover) !important;
-  transform: scale(1.05) !important;
-}
-
 /* Chip Cloud / Category Shelf Pills */
 html[data-ypp-ui-style="liquid-glass"] yt-chip-cloud-chip-renderer {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;

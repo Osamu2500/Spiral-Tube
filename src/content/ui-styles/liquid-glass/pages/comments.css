@@ -79,16 +79,6 @@ html[data-ypp-ui-style="liquid-glass"] ytd-comment-replies-renderer {
   border-radius: 0 0 0 8px !important;
 }
 
-/* Action Buttons (Like / Reply) */
-html[data-ypp-ui-style="liquid-glass"] ytd-comment-action-buttons-renderer yt-button-shape button {
-  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
-  border-radius: 2000px !important;
-}
-html[data-ypp-ui-style="liquid-glass"] ytd-comment-action-buttons-renderer yt-button-shape button:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  transform: scale(1.05) !important;
-}
-
 /* Like count badge */
 html[data-ypp-ui-style="liquid-glass"] #vote-count-middle.ytd-comment-action-buttons-renderer {
   font-weight: 600 !important;

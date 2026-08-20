@@ -34,14 +34,3 @@ html[data-ypp-ui-style="kawaii"] ytd-engagement-panel-section-list-renderer[targ
     border: 4px dashed var(--kawaii-accent-primary) !important;
     border-radius: 30px !important;
 }
-/* Purchase Buttons */
-html[data-ypp-card-style="kawaii"] #purchase-button yt-button-shape button,
-html[data-ypp-ui-style="kawaii"] #purchase-button yt-button-shape button {
-    background: linear-gradient(45deg, var(--kawaii-accent-primary), #FFB6C1) !important;
-    color: #fff !important;
-    border: 3px solid #fff !important;
-    border-radius: 24px !important;
-    font-size: 18px !important;
-    padding: 12px 24px !important;
-    animation: kawaiHeartBeat 2s infinite !important; /* Bumping button */
-}

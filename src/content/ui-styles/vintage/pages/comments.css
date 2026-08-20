@@ -85,29 +85,3 @@ ytd-comment-thread-renderer {
   border-left: 6px solid #c13a3a !important;
   box-shadow: 4px 4px 0px rgba(62, 53, 47, 0.15) !important;
 }
-/* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="vintage"] #ask-button yt-button-shape button,
-html[data-ypp-ui-style="vintage"] #ask-button button,
-html[data-ypp-ui-style="vintage"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="vintage"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="vintage"] button.ytSpecButtonShapeNextText {
-  border-radius: 4px !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="vintage"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="vintage"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="vintage"] #ask-button button:hover,
-html[data-ypp-ui-style="vintage"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="vintage"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="vintage"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="vintage"] button.ytSpecButtonShapeNextText:hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.1);
-}

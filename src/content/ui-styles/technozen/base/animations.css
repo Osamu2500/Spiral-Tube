@@ -163,34 +163,3 @@ ytd-playlist-panel-video-renderer {
   pointer-events: none;
   z-index: 0;
 }
-/* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="technozen"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] #ask-button button:hover,
-html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="technozen"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] button.ytSpecButtonShapeNextText:hover {
-  transform: translateY(-2px) scale(1.04) !important;
-  background:
-    var(--tz-gloss),
-    linear-gradient(
-      to bottom,
-      #7de168,
-      #5ac045) !important;
-  animation: technozenGreenPulse 4s ease-in-out infinite !important;
-  color: white !important;
-}
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="technozen"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] #ask-button button:hover,
-html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="technozen"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] button.ytSpecButtonShapeNextText:hover {
-  transform: translateY(-2px) scale(1.06) !important;
-  color: #2a4a2a !important;
-  animation: technozenGreenPulse 4s ease-in-out infinite !important;
-}

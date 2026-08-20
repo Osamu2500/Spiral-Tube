@@ -55,25 +55,6 @@ ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.06);
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: var(--tz-radius-pill) !important;
-  background: var(--tz-gloss), rgba(215, 248, 205, 0.92) !important;
-  border: 1px solid var(--tz-glass-border) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: translateY(-2px) scale(1.06);
-  background: var(--tz-gloss), rgba(195, 245, 182, 0.98) !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: var(--shadow-active) !important;
-}
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: var(--tz-radius-pill) !important;
   padding: 4px !important;
@@ -93,32 +74,4 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
 }
 ytd-masthead#masthead {
   box-shadow: 0 2px 16px rgba(90, 191, 71, 0.18), 0 4px 32px rgba(90, 191, 71, 0.10) !important;
-}
-/* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="technozen"] #ask-button yt-button-shape button,
-html[data-ypp-ui-style="technozen"] #ask-button button,
-html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="technozen"] ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="technozen"] button.ytSpecButtonShapeNextText {
-  border-radius: var(--tz-radius-pill) !important;
-  background-color: transparent !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="technozen"] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] #ask-button button:hover,
-html[data-ypp-ui-style="technozen"] .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="technozen"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="technozen"] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="technozen"] button.ytSpecButtonShapeNextText:hover {
-  background: var(--tz-gloss), rgba(200, 245, 188, 0.70) !important;
-  box-shadow: var(--shadow-hover) !important;
-  transform: translateY(-1px) scale(1.06);
 }

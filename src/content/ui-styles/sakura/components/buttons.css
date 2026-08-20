@@ -170,41 +170,6 @@ button.ytSpecButtonShapeNextText:active {
   transform: scale(1.05) !important;
 }
 
-/* ==========================================================================
-   VINTAGE ACTION BUTTONS — CLEAN IMPLEMENTATION
-   All player-page action, like/dislike, share, ask, download, reply buttons
-   ========================================================================== */
-
-/* ── Base: ALL action buttons on the player page ── */
-html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-button-shape-next,
-html[data-ypp-ui-style="sakura"] #flexible-item-buttons .yt-spec-button-shape-next,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata .yt-spec-button-shape-next,
-html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer button,
-html[data-ypp-ui-style="sakura"] yt-download-button-view-model button {
-    background: var(--sf) !important;
-    border: 1px solid rgba(232, 82, 122, 0.45) !important;
-    border-radius: 20px !important;
-    color: var(--vintage-secondary) !important;
-    box-shadow: 2px 2px rgba(0,0,0,0.15) !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    margin-right: 6px !important;
-    transition: all 0.18s ease-out !important;
-    /* Remove any inner border created by YouTube's focus/touch shapes */
-    outline: none !important;
-}
-
-/* ── Download button: strip the double border ── */
-/* YouTube wraps download in ytd-download-button-renderer which also has a border;
-   remove the wrapper's border so only the inner button border shows */
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer,
-html[data-ypp-ui-style="sakura"] yt-download-button-view-model {
-    border: none !important;
-    background: none !important;
-    padding: 0 !important;
-}
-
 /* ── Strip YouTube's tonal/fill inner stroke/fill shapes that create extra layers ── */
 html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-touch-feedback-shape__stroke,
 html[data-ypp-ui-style="sakura"] #flexible-item-buttons .yt-spec-touch-feedback-shape__stroke,
@@ -213,47 +178,12 @@ html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmented
     display: none !important;
 }
 
-/* ── Icons: dark fill on all action button icons ── */
-html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="sakura"] #flexible-item-buttons .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata .yt-spec-button-shape-next svg,
-html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button svg,
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer button svg,
-html[data-ypp-ui-style="sakura"] yt-download-button-view-model button svg {
-    fill: var(--vintage-secondary) !important;
-    color: var(--vintage-secondary) !important;
-    stroke: none !important;
-}
-
 /* ── Inner text children: dark ── */
 html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-button-shape-next *,
 html[data-ypp-ui-style="sakura"] #flexible-item-buttons .yt-spec-button-shape-next *,
 html[data-ypp-ui-style="sakura"] ytd-watch-metadata .yt-spec-button-shape-next *,
 html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button * {
     color: var(--vintage-secondary) !important;
-}
-
-/* ── HOVER: invert (dark bg, light text/icons) ── */
-html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="sakura"] #flexible-item-buttons .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="sakura"] yt-download-button-view-model button:hover {
-    background: var(--vintage-secondary) !important;
-    color: var(--sf) !important;
-    border: 2px solid var(--vintage-secondary) !important;
-    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
-    transform: translate(-2px, -2px) !important;
-}
-
-html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="sakura"] #flexible-item-buttons .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata .yt-spec-button-shape-next:hover svg,
-html[data-ypp-ui-style="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover svg,
-html[data-ypp-ui-style="sakura"] ytd-download-button-renderer button:hover svg {
-    fill: var(--sf) !important;
-    color: var(--sf) !important;
 }
 
 html[data-ypp-ui-style="sakura"] #top-level-buttons-computed .yt-spec-button-shape-next:hover *,
@@ -314,37 +244,4 @@ html[data-ypp-ui-style="sakura"] ytd-comment-action-buttons-renderer .yt-spec-bu
 html[data-ypp-ui-style="sakura"] #reply-button-end .yt-spec-button-shape-next:hover svg {
     fill: var(--sf) !important;
     color: var(--sf) !important;
-}
-
-/* ── Player page 3-dots / overflow menu button ── */
-html[data-ypp-ui-style="sakura"] #menu.ytd-watch-metadata yt-button-shape button,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata yt-button-view-model button {
-    background: var(--sf) !important;
-    border: 1px solid rgba(232, 82, 122, 0.45) !important;
-    color: var(--vintage-secondary) !important;
-    border-radius: 20px !important;
-    box-shadow: 2px 2px #0000001a !important;
-    margin-right: 6px !important;
-    transition: all 0.2s ease-out !important;
-}
-
-html[data-ypp-ui-style="sakura"] #menu.ytd-watch-metadata yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button:hover,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata yt-button-view-model button:hover {
-    background: var(--vintage-secondary) !important;
-    color: var(--sf) !important;
-    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
-    transform: translate(-2px, -2px) !important;
-}
-
-html[data-ypp-ui-style="sakura"] #menu.ytd-watch-metadata yt-button-shape button svg,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button svg,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata yt-button-view-model button svg {
-    fill: var(--vintage-secondary) !important;
-}
-
-html[data-ypp-ui-style="sakura"] #menu.ytd-watch-metadata yt-button-shape button:hover svg,
-html[data-ypp-ui-style="sakura"] ytd-watch-metadata #flexible-item-buttons yt-button-shape button:hover svg {
-    fill: var(--sf) !important;
 }

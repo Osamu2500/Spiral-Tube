@@ -50,23 +50,6 @@ ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {
 tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   background: transparent !important;
 }
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button {
-  border-radius: 20px !important;
-  background: var(--sf) !important;
-  box-shadow: var(--shadow-base) !important;
-  transition:
-    transform var(--bounce),
-    box-shadow var(--bounce),
-    background var(--bounce) !important;
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-  box-shadow: var(--shadow-hover) !important;
-  transform: scale(1.06);
-}
-#buttons.ytd-masthead ytd-button-renderer yt-button-shape button:active {
-  transform: scale(0.97) !important;
-  box-shadow: var(--shadow-active) !important;
-}
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: 20px !important;
   padding: 4px !important;
@@ -190,39 +173,11 @@ html[data-ypp-ui-style="sakura"] [aria-label="History"] svg {
     color: var(--vintage-secondary) !important;
 }
 
-/* Sakura Topbar Buttons — Voice Search, 3-dot menu, Notifications */
-html[data-ypp-ui-style="sakura"] #voice-search-button.ytd-masthead,
-html[data-ypp-ui-style="sakura"] ytd-topbar-menu-button-renderer.ytd-masthead,
-html[data-ypp-ui-style="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon,
-html[data-ypp-ui-style="sakura"] #end.ytd-masthead ytd-button-renderer yt-button-shape button {
-    background: var(--sf) !important;
-    border: 1px solid rgba(232, 82, 122, 0.45) !important;
-    border-radius: 20px !important;
-    box-shadow: 2px 2px #0000001a !important;
-    transition: all 0.2s ease-out !important;
-}
-
-html[data-ypp-ui-style="sakura"] #voice-search-button.ytd-masthead:hover,
-html[data-ypp-ui-style="sakura"] ytd-topbar-menu-button-renderer.ytd-masthead:hover,
-html[data-ypp-ui-style="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover,
-html[data-ypp-ui-style="sakura"] #end.ytd-masthead ytd-button-renderer yt-button-shape button:hover {
-    background: var(--vintage-secondary) !important;
-    box-shadow: 4px 4px rgba(0,0,0,0.3) !important;
-    transform: translate(-2px, -2px) !important;
-}
-
 html[data-ypp-ui-style="sakura"] #voice-search-button.ytd-masthead svg,
 html[data-ypp-ui-style="sakura"] ytd-topbar-menu-button-renderer.ytd-masthead svg,
 html[data-ypp-ui-style="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead svg,
 html[data-ypp-ui-style="sakura"] #end.ytd-masthead svg {
     fill: var(--vintage-secondary) !important;
-}
-
-html[data-ypp-ui-style="sakura"] #voice-search-button.ytd-masthead:hover svg,
-html[data-ypp-ui-style="sakura"] ytd-topbar-menu-button-renderer.ytd-masthead:hover svg,
-html[data-ypp-ui-style="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover svg,
-html[data-ypp-ui-style="sakura"] #end.ytd-masthead ytd-button-renderer yt-button-shape button:hover svg {
-    fill: var(--sf) !important;
 }
 
 /* Popup menus / context menus — dashed border consistent with vintage */

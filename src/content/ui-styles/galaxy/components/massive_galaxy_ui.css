@@ -582,15 +582,6 @@ html[data-ypp-card-style="galaxy"] .yt-spec-avatar-shape__image, html[data-ypp-u
 html[data-ypp-card-style="galaxy"] .yt-spec-avatar-shape__image, html[data-ypp-ui-style="galaxy"] .yt-spec-avatar-shape__image:hover {
     transform: scale(1.15) rotate(36deg) !important; filter: drop-shadow(0 0 15px var(--galaxy-accent)) !important;
 }
-
-/* Buttons & Chips */
-html[data-ypp-card-style="galaxy"] yt-button-shape button, html[data-ypp-ui-style="galaxy"] yt-button-shape button {
-    border-radius: 50% 10px !important; border: 1px solid var(--galaxy-secondary) !important; background: rgba(3,0,28,0.7) !important; color: var(--galaxy-accent) !important; box-shadow: 0 0 10px rgba(148,0,211,0.4) !important;
-    transition: all 0.3s ease !important;
-}
-html[data-ypp-card-style="galaxy"] yt-button-shape button, html[data-ypp-ui-style="galaxy"] yt-button-shape button:hover {
-    background: var(--galaxy-secondary) !important; box-shadow: 0 0 25px rgba(125,249,255,0.5) !important; color: #fff !important;
-}
 html[data-ypp-card-style="galaxy"] .yt-spec-button-shape-next, html[data-ypp-ui-style="galaxy"] .yt-spec-button-shape-next {
     border-radius: 50% 10px !important; border: 1px solid var(--galaxy-secondary) !important; background: rgba(3,0,28,0.7) !important; color: var(--galaxy-accent) !important; box-shadow: 0 0 10px rgba(148,0,211,0.4) !important;
     transition: all 0.3s ease !important;

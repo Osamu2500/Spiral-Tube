@@ -61,29 +61,3 @@ html[data-ypp-ui-style="terminalism"] ytd-comment-renderer[is-highlighted] {
 html[data-ypp-ui-style="terminalism"] ytd-comment-renderer #pinned-comment-badge {
   color: var(--term-green) !important;
 }
-
-/* Comment Action Buttons */
-html[data-ypp-ui-style="terminalism"] #reply-button-end yt-button-shape button,
-html[data-ypp-ui-style="terminalism"] #comment-action-buttons-end yt-button-shape button {
-  background: transparent !important;
-  border: 1px solid transparent !important;
-  margin: 0 4px !important;
-  border-radius: 0 !important;
-}
-html[data-ypp-ui-style="terminalism"] #reply-button-end yt-button-shape button:hover,
-html[data-ypp-ui-style="terminalism"] #comment-action-buttons-end yt-button-shape button:hover {
-  background: var(--term-green-fade) !important;
-  border: var(--term-border) !important;
-}
-
-/* Sort Menu Button */
-html[data-ypp-ui-style="terminalism"] #sort-menu yt-button-shape button {
-  background: var(--term-bg) !important;
-  border: var(--term-border-dim) !important;
-  border-radius: 0 !important;
-  padding: 4px 16px !important;
-}
-html[data-ypp-ui-style="terminalism"] #sort-menu yt-button-shape button:hover {
-  border: var(--term-border) !important;
-  background: var(--term-green-fade) !important;
-}

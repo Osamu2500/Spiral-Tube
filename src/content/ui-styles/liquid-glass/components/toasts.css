@@ -15,20 +15,6 @@ html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-toast {
   padding: 14px 20px !important;
 }
 
-/* Toast Action Buttons */
-html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-toast yt-button-shape button {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border: var(--lg-border-subtle) !important;
-  border-radius: 2000px !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-  transition: transform var(--lg-spring), background var(--lg-smooth) !important;
-}
-html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-toast yt-button-shape button:hover {
-  background: rgba(255, 255, 255, 0.25) !important;
-  transform: scale(1.05) !important;
-}
-
 /* Generic Tooltips */
 html[data-ypp-ui-style="liquid-glass"] tp-yt-paper-tooltip .tooltip {
   -webkit-backdrop-filter: var(--lg-blur-subtle) !important;

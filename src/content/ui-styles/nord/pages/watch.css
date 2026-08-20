@@ -19,25 +19,12 @@ ytd-watch-flexy[theater] #ytd-player {
     border-bottom: 1px solid #4c566a;
 }
 
-/* Info Panel below video */
-#top-row.ytd-watch-metadata {
-    border-bottom: 1px dashed var(--ypp-border-color);
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-}
-
 ytd-watch-metadata h1.ytd-watch-metadata {
     font-family: var(--ypp-font-family);
     font-weight: 800 !important;
-    font-size: 2.4rem !important;
+    
     line-height: 1.2;
     margin-bottom: 12px;
-}
-
-/* Action Buttons (Like, Share, etc.) */
-#actions.ytd-watch-metadata {
-    display: flex;
-    gap: 8px;
 }
 
 ytd-segmented-like-dislike-button-renderer {

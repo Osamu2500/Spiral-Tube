@@ -1,26 +1,4 @@
-/* =========================================================
-   TERMINALISM — BUTTONS
-   ========================================================= */
 
-/* Default Button State (Sharp blocks) */
-html[data-ypp-ui-style="terminalism"] yt-button-shape button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next,
-html[data-ypp-ui-style="terminalism"] ytd-button-renderer button {
-  background: var(--term-bg) !important;
-  border: var(--term-border-dim) !important;
-  color: var(--term-text-primary) !important;
-  text-transform: uppercase !important;
-  font-weight: bold !important;
-}
-
-/* Button Hover State */
-html[data-ypp-ui-style="terminalism"] yt-button-shape button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next:hover,
-html[data-ypp-ui-style="terminalism"] ytd-button-renderer button:hover {
-  background: var(--term-green-fade) !important;
-  border: var(--term-border) !important;
-  box-shadow: var(--term-glow) !important;
-}
 
 /* Primary/Filled Buttons (Like Subscribe) */
 html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--call-to-action,
@@ -42,19 +20,6 @@ html[data-ypp-ui-style="terminalism"] #subscribe-button button:hover {
   color: var(--term-bg) !important;
   box-shadow: var(--term-glow-intense) !important;
   animation: none !important;
-}
-
-/* Active / Toggled / Pressed Buttons */
-html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-pressed="true"],
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next[aria-pressed="true"] {
-  background: var(--term-green) !important;
-  color: var(--term-bg) !important;
-  border: var(--term-border) !important;
-}
-html[data-ypp-ui-style="terminalism"] yt-button-shape button[aria-pressed="true"]::before,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next[aria-pressed="true"]::before {
-  content: "[ON] " !important;
-  font-weight: bold;
 }
 
 /* Icon Buttons */
@@ -81,32 +46,4 @@ html[data-ypp-ui-style="terminalism"] .ypp-pill-toggle:hover {
   background: var(--term-green-fade) !important;
   border: var(--term-border) !important;
   box-shadow: var(--term-glow) !important;
-}
-/* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText {
-  background: var(--term-green-fade) !important;
-  border: var(--term-border) !important;
-  color: var(--term-green) !important;
-  box-shadow: var(--term-glow) !important;
-  animation: termGlowPulse 3s infinite !important;
-}
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-download-button-renderer button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono #ask-button button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-style="terminalism"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover {
-  background: var(--term-green) !important;
-  color: var(--term-bg) !important;
-  box-shadow: var(--term-glow-intense) !important;
-  animation: none !important;
 }
