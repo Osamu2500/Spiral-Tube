@@ -1,0 +1,22 @@
+/* Token Overrides for matrix */
+:root[data-ypp-ui-design="matrix"],
+html[data-ypp-ui-style="matrix"] {
+  --ypp-surface-bg: #000 !important;
+  --ypp-surface-bg-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-surface-bg-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #002200 !important;
+  --ypp-text-primary: #003300 !important;
+  
+  --ypp-surface-border: 1px solid #00220040 !important;
+  --ypp-shadow-base: 0 4px 12px #00220020 !important;
+  --ypp-shadow-hover: 0 8px 24px #00220040 !important;
+  
+  --yt-font-family: "Share Tech Mono","Courier New",monospace !important;
+}
+
+
+html[data-ypp-ui-style="matrix"] * {
+  font-family: "Share Tech Mono","Courier New",monospace !important;
+}
+

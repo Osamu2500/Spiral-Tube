@@ -74,7 +74,7 @@
   box-shadow: var(--ypp-shadow-hover) !important;
 }
 .ytp-scrubber-button {
-  background: #a3e635 !important;
+  background: var(--ypp-primary-accent, #a3e635) !important;
   border: 2px solid var(--ypp-primary-accent) !important;
 }
 /* src/content/themes/ui-styles/nature/components/menus.css */

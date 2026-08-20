@@ -162,6 +162,18 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (enable) {
             // Determine active theme
             let activeThemeKey = this._settings.activeTheme || 'default';
+            const ytTheme = this._settings.youtubePageTheme;
+
+            // Auto-match color theme to UI Design if not explicitly overridden by the user
+            if (!this._settings.activeTheme || this._settings.activeTheme === 'default') {
+                if (ytTheme && ytTheme !== 'default') {
+                    // Map UI styles to their corresponding color themes (most are 1:1)
+                    const themeMap = {
+                        'liquid-glass': 'glassmorphism'
+                    };
+                    activeThemeKey = themeMap[ytTheme] || ytTheme;
+                }
+            }
 
             // Legacy support: if trueBlack is on and theme is default, use midnight
             if (this._settings.trueBlack === true && activeThemeKey === 'default') {
@@ -636,27 +648,11 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             if (!ytTheme || ytTheme === 'default') {
                 finalCardStyle = 'default';
             } else {
-                // Auto-match to the current page theme
-                if (ytTheme === 'cyberpunk') finalCardStyle = 'cyberpunk';
-                else if (ytTheme === 'nature') finalCardStyle = 'nature';
-                else if (ytTheme === 'vintage') finalCardStyle = 'vintage';
-                else if (ytTheme === 'liquid-glass') finalCardStyle = 'glass';
-                else if (ytTheme === 'neumorphic') finalCardStyle = 'neumorphic';
-                else if (ytTheme === 'ocean') finalCardStyle = 'ocean';
-                else if (ytTheme === 'blue-sky') finalCardStyle = 'blue-sky';
-                else if (ytTheme === 'retro') finalCardStyle = 'retro';
-                else if (ytTheme === 'technozen') finalCardStyle = 'technozen';
-                else if (ytTheme === 'frutiger-aero') finalCardStyle = 'frutiger-aero';
-                else if (ytTheme === 'terminalism') finalCardStyle = 'terminalism';
-                else if (ytTheme === 'claymorphism') finalCardStyle = 'claymorphism';
-                else if (ytTheme === 'brutalism') finalCardStyle = 'brutalism';
-                else if (ytTheme === 'minimalism') finalCardStyle = 'minimalism';
-                else if (ytTheme === 'maximalism') finalCardStyle = 'maximalism';
-                else if (ytTheme === 'glassmorphism') finalCardStyle = 'glassmorphism';
-                else if (ytTheme === 'aurora') finalCardStyle = 'aurora';
-                else if (ytTheme === 'material') finalCardStyle = 'material';
-                else if (ytTheme === 'harry-potter') finalCardStyle = 'harry-potter';
-                else finalCardStyle = 'glass'; // fallback for themes without a specific card match
+                // Auto-match to the current page theme (UI Design)
+                const cardMap = {
+                    'liquid-glass': 'glass'
+                };
+                finalCardStyle = cardMap[ytTheme] || ytTheme;
             }
         }
 

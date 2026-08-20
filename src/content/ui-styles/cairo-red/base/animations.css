@@ -1,9 +1,0 @@
-/* =========================================================
-   CAIRO RED — ANIMATIONS
-   ========================================================= */
-
-/* Sharp, linear transitions for a rigid architectural feel */
-html[data-ypp-ui-style="cairo-red"] * {
-  --cairo-transition-fast: 0.15s cubic-bezier(0, 0, 0.2, 1);
-  --cairo-transition-med: 0.25s cubic-bezier(0, 0, 0.2, 1);
-}

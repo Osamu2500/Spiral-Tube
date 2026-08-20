@@ -64,16 +64,16 @@ html,
 [dark] .ytSearchboxComponentSuggestionsContainer,
 html,
 [dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #0f0f0f !important;
+  color: var(--ypp-text-primary, #ffffff) !important;
 }
 ytd-searchbox #container {
-  background: rgba(18, 28, 18, 0.6) !important;
-  border: 1px solid rgba(163, 230, 53, 0.4) !important;
+  background: var(--ypp-surface-bg) !important;
+  border: var(--ypp-surface-border) !important;
   border-radius: var(--ypp-shape-secondary, 12px) 0 0 var(--ypp-shape-secondary, 12px) !important;
 }
 ytd-searchbox #search-icon-legacy {
-  background: rgba(34, 197, 94, 0.2) !important;
-  border: 1px solid rgba(163, 230, 53, 0.4) !important;
+  background: var(--ypp-surface-bg-active) !important;
+  border: var(--ypp-surface-border) !important;
   border-radius: 0 var(--ypp-shape-secondary, 12px) var(--ypp-shape-secondary, 12px) 0 !important;
 }
 ytd-search-filter-group-renderer {

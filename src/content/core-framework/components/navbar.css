@@ -27,13 +27,13 @@ ytd-masthead #container,
 ytd-masthead #container yt-icon,
 ytd-masthead #container .yt-icon,
 ytd-masthead #container yt-icon-shape svg {
-  color: #166534 !important;
-  fill: #166534 !important;
+  color: var(--ypp-text-primary, #ffffff) !important;
+  fill: var(--ypp-text-primary, #ffffff) !important;
 }
 ytd-masthead #container yt-formatted-string,
 ytd-masthead #container span,
 ytd-masthead #container a {
-  color: #166534 !important;
+  color: var(--ypp-text-primary, #ffffff) !important;
 }
 #contents.ytd-page-manager {
   margin-top: 0;
@@ -62,7 +62,7 @@ ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover ,
 yt-button-shape button[aria-label*="Download" i]:hover,
 yt-button-shape button[title*="Download" i]:hover {
-  background: rgba(163, 230, 53, 0.18) !important;
+  background: var(--ypp-surface-bg-hover) !important;
   box-shadow: 0 0 12px rgba(163, 230, 53, 0.4), var(--ypp-shadow-hover) !important;
   transform: scale(1.08) !important;
 }
@@ -89,6 +89,6 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
 #voice-search-button.ytd-masthead yt-icon,
 ytd-topbar-menu-button-renderer.ytd-masthead yt-icon,
 ytd-notification-topbar-button-renderer.ytd-masthead yt-icon {
-  color: #166534 !important;
-  fill: #166534 !important;
+  color: var(--ypp-text-primary, #ffffff) !important;
+  fill: var(--ypp-text-primary, #ffffff) !important;
 }

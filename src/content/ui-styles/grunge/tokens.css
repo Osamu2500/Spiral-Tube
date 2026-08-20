@@ -1,0 +1,22 @@
+/* Token Overrides for grunge */
+:root[data-ypp-ui-design="grunge"],
+html[data-ypp-ui-style="grunge"] {
+  --ypp-surface-bg: #2b2b2b !important;
+  --ypp-surface-bg-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-surface-bg-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #3d3d3d !important;
+  --ypp-text-primary: #8a9a5b !important;
+  
+  --ypp-surface-border: 1px solid #3d3d3d40 !important;
+  --ypp-shadow-base: 0 4px 12px #3d3d3d20 !important;
+  --ypp-shadow-hover: 0 8px 24px #3d3d3d40 !important;
+  
+  --yt-font-family: "Special Elite","Courier New",monospace !important;
+}
+
+
+html[data-ypp-ui-style="grunge"] * {
+  font-family: "Special Elite","Courier New",monospace !important;
+}
+

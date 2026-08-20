@@ -1,0 +1,22 @@
+/* Token Overrides for origami */
+:root[data-ypp-ui-design="origami"],
+html[data-ypp-ui-style="origami"] {
+  --ypp-surface-bg: #fdfdfd !important;
+  --ypp-surface-bg-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-surface-bg-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #f4f4f0 !important;
+  --ypp-text-primary: #eaeae0 !important;
+  
+  --ypp-surface-border: 1px solid #f4f4f040 !important;
+  --ypp-shadow-base: 0 4px 12px #f4f4f020 !important;
+  --ypp-shadow-hover: 0 8px 24px #f4f4f040 !important;
+  
+  --yt-font-family: "Quicksand","Nunito",sans-serif !important;
+}
+
+
+html[data-ypp-ui-style="origami"] * {
+  font-family: "Quicksand","Nunito",sans-serif !important;
+}
+

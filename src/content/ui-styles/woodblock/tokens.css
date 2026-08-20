@@ -1,0 +1,22 @@
+/* Token Overrides for woodblock */
+:root[data-ypp-ui-design="woodblock"],
+html[data-ypp-ui-style="woodblock"] {
+  --ypp-surface-bg: #f5f5dc !important;
+  --ypp-surface-bg-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-surface-bg-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #deb887 !important;
+  --ypp-text-primary: #d2b48c !important;
+  
+  --ypp-surface-border: 1px solid #deb88740 !important;
+  --ypp-shadow-base: 0 4px 12px #deb88720 !important;
+  --ypp-shadow-hover: 0 8px 24px #deb88740 !important;
+  
+  --yt-font-family: "Lora","Noto Serif",serif !important;
+}
+
+
+html[data-ypp-ui-style="woodblock"] * {
+  font-family: "Lora","Noto Serif",serif !important;
+}
+

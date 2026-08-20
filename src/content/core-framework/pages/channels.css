@@ -4,7 +4,7 @@
 }
 .ytd-channel-name,
 .ytd-video-meta-block {
-  color: #a3e635 !important;
+  color: var(--ypp-primary-accent, #a3e635) !important;
 }
 ytd-c4-tabbed-header-renderer {
   background: var(--ypp-surface-bg) !important;

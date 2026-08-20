@@ -1,0 +1,271 @@
+/* Unique Shapes and Patterns for player-retouch */
+
+html[data-ypp-card-style="player-retouch"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="player-retouch"] ::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="player-retouch"] ::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="player-retouch"] h1, html[data-ypp-card-style="player-retouch"] h2, html[data-ypp-card-style="player-retouch"] h3, 
+html[data-ypp-card-style="player-retouch"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="player-retouch"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="player-retouch"] h1, html[data-ypp-ui-design="player-retouch"] h2, html[data-ypp-ui-design="player-retouch"] h3, 
+html[data-ypp-ui-design="player-retouch"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="player-retouch"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+html[data-ypp-card-style="player-retouch"] ytd-rich-item-renderer,
+html[data-ypp-card-style="player-retouch"] ytd-video-renderer,
+html[data-ypp-card-style="player-retouch"] ytd-playlist-renderer,
+html[data-ypp-card-style="player-retouch"] ytd-grid-video-renderer,
+html[data-ypp-card-style="player-retouch"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-video-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-playlist-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-compact-video-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-rich-item-renderer:hover,
+html[data-ypp-card-style="player-retouch"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="player-retouch"] ytd-rich-item-renderer:hover,
+html[data-ypp-ui-design="player-retouch"] ytd-video-renderer:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="player-retouch"] ytd-thumbnail, html[data-ypp-card-style="player-retouch"] yt-image,
+html[data-ypp-ui-design="player-retouch"] ytd-thumbnail, html[data-ypp-ui-design="player-retouch"] yt-image {
+  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-thumbnail:hover yt-image,
+html[data-ypp-ui-design="player-retouch"] ytd-thumbnail:hover yt-image {
+  transform: scale(1.08) !important;
+  filter: contrast(1.1) brightness(1.1) saturate(1.2) !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="player-retouch"] yt-img-shadow, html[data-ypp-card-style="player-retouch"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="player-retouch"] yt-img-shadow, html[data-ypp-ui-design="player-retouch"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: 0 !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="player-retouch"] yt-img-shadow:hover,
+html[data-ypp-ui-design="player-retouch"] yt-img-shadow:hover {
+  transform: rotate(10deg) scale(1.1) !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="player-retouch"] ytd-masthead, html[data-ypp-ui-design="player-retouch"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="player-retouch"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="player-retouch"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: 12px 0 0 12px !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="player-retouch"] ytd-searchbox #search-icon-legacy {
+  border-radius: 0 12px 12px 0 !important;
+}
+
+html[data-ypp-card-style="player-retouch"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="player-retouch"] yt-chip-cloud-chip-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+html[data-ypp-card-style="player-retouch"] yt-chip-cloud-chip-renderer:hover,
+html[data-ypp-ui-design="player-retouch"] yt-chip-cloud-chip-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 10. Left Sidebar / Guide */
+html[data-ypp-card-style="player-retouch"] ytd-guide-entry-renderer, html[data-ypp-card-style="player-retouch"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-guide-entry-renderer, html[data-ypp-ui-design="player-retouch"] ytd-mini-guide-entry-renderer {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-design="player-retouch"] ytd-guide-entry-renderer:hover {
+  transform: translateX(5px) !important;
+}
+
+/* 11. Comments Section */
+html[data-ypp-card-style="player-retouch"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-comment-thread-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] #simplebox-placeholder, html[data-ypp-ui-design="player-retouch"] #simplebox-placeholder {
+  border-radius: 12px !important;
+}
+
+/* 12. Video Player Controls & OSD */
+html[data-ypp-card-style="player-retouch"] .ytp-chrome-bottom,
+html[data-ypp-ui-design="player-retouch"] .ytp-chrome-bottom {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] .ytp-scrubber-button,
+html[data-ypp-ui-design="player-retouch"] .ytp-scrubber-button {
+  border-radius: 50% !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] .ytp-tooltip, html[data-ypp-ui-design="player-retouch"] .ytp-tooltip {
+  border-radius: 12px !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="player-retouch"] tp-yt-paper-dialog, html[data-ypp-card-style="player-retouch"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="player-retouch"] tp-yt-paper-dialog, html[data-ypp-ui-design="player-retouch"] ytd-menu-popup-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="player-retouch"] ytd-multi-page-menu-renderer {
+  border-radius: 12px !important;
+}
+
+/* 14. Channel Headers & Banners */
+html[data-ypp-card-style="player-retouch"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-c4-tabbed-header-renderer {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] #channel-header,
+html[data-ypp-ui-design="player-retouch"] #channel-header {
+  border-radius: 12px !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="player-retouch"] yt-live-chat-renderer,
+html[data-ypp-ui-design="player-retouch"] yt-live-chat-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="player-retouch"] yt-live-chat-text-message-renderer {
+  border-radius: 12px !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="player-retouch"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="player-retouch"] tp-yt-paper-tooltip {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-notification-renderer, html[data-ypp-ui-design="player-retouch"] ytd-notification-renderer {
+  border-radius: 12px !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="player-retouch"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="player-retouch"] ytd-badge-supported-renderer {
+  border-radius: 12px !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="player-retouch"] ytd-skeleton, html[data-ypp-ui-design="player-retouch"] ytd-skeleton, 
+html[data-ypp-card-style="player-retouch"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="player-retouch"] .ytd-ghost-grid-renderer {
+  border-radius: 12px !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+html[data-ypp-card-style="player-retouch"] ytd-reel-item-renderer, html[data-ypp-ui-design="player-retouch"] ytd-reel-item-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="player-retouch"] ytd-rich-shelf-renderer {
+  border-radius: 12px !important;
+}
+
+/* 21. Metadata & Descriptions */
+html[data-ypp-card-style="player-retouch"] ytd-watch-metadata, html[data-ypp-ui-design="player-retouch"] ytd-watch-metadata {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="player-retouch"] yt-icon, html[data-ypp-ui-design="player-retouch"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="player-retouch"] yt-icon:hover, html[data-ypp-ui-design="player-retouch"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+html[data-ypp-card-style="player-retouch"] .ytp-endscreen-content, html[data-ypp-ui-design="player-retouch"] .ytp-endscreen-content {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="player-retouch"] .ytp-ce-element, html[data-ypp-ui-design="player-retouch"] .ytp-ce-element {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 24. YouTube Miniplayer */
+html[data-ypp-card-style="player-retouch"] ytd-miniplayer, html[data-ypp-ui-design="player-retouch"] ytd-miniplayer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 25. Settings Gear & Dropdowns */
+html[data-ypp-card-style="player-retouch"] .ytp-settings-menu, html[data-ypp-ui-design="player-retouch"] .ytp-settings-menu {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 26. Account Switcher & Profiles */
+html[data-ypp-card-style="player-retouch"] ytd-account-item-renderer, html[data-ypp-ui-design="player-retouch"] ytd-account-item-renderer {
+  border-radius: 12px !important;
+}
+
+/* 27. Search Filters (Filter Menu) */
+html[data-ypp-card-style="player-retouch"] ytd-search-filter-renderer, html[data-ypp-ui-design="player-retouch"] ytd-search-filter-renderer {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="player-retouch"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="player-retouch"] ytd-search-filter-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 28. Playlists Page Inner Layout */
+html[data-ypp-card-style="player-retouch"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="player-retouch"] ytd-playlist-panel-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 29. Chapters & Timestamp Links */
+html[data-ypp-card-style="player-retouch"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="player-retouch"] ytd-macro-markers-list-item-renderer {
+  border-radius: 12px !important;
+}
+
+/* 30. Offline & Error Screens */
+html[data-ypp-card-style="player-retouch"] yt-error-screen, html[data-ypp-ui-design="player-retouch"] yt-error-screen {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}

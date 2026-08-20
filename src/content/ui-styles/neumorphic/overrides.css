@@ -1,0 +1,1154 @@
+/* Unique Shapes and Patterns for neumorphic */
+
+/* src/content/themes/ui-styles/neumorphic/base/animations.css */
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  transform: scale(1.1);
+  animation: youtubeRedPulse 5s ease-in-out infinite;
+}
+
+@keyframes youtubeRedPulse {
+  0% {
+    box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+}
+
+50% {
+  box-shadow:
+      inset 0 0 25px #f06,
+      inset 0 0 50px #f06,
+      0 0 15px #f06,
+      0 0 30px #f06;
+}
+
+100% {
+  box-shadow:
+      inset 0 0 25px red,
+      inset 0 0 50px red,
+      0 0 15px red,
+      0 0 30px red;
+}
+
+body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+  background-image: url(data:image/svg+xml;
+}
+
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important;
+  box-shadow:
+    inset 0 0 25px red,
+    inset 0 0 50px red,
+    0 0 15px red,
+    0 0 30px red !important;
+  animation: youtubeRedPulse 5s ease-in-out infinite !important;
+}
+
+ytd-rich-grid-media::after,
+ytd-compact-video-renderer::after,
+ytd-video-renderer::after {
+  background-image: url("data:image/svg+xml;
+  transform: rotate(15deg);
+}
+
+/* ---- Extension Global UI ---- */
+
+/* Badges / Value Displays */
+html[data-ypp-ui-design="neumorphic"] .ypp-badge,
+html[data-ypp-ui-design="neumorphic"] .ypp-value-display {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Extension header / folders */
+html[data-ypp-ui-design="neumorphic"] .ypp-vcp-header,
+html[data-ypp-ui-design="neumorphic"] .ypp-folder-header {
+  /* Placeholder for spacing */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02) !important;
+}
+
+/* App Header (Masthead) */
+html[data-ypp-ui-design="neumorphic"] tp-yt-app-header {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Extension Sliders */
+html[data-ypp-ui-design="neumorphic"] .ypp-slider,
+html[data-ypp-ui-design="neumorphic"] .ypp-gpb-vol-slider {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Webkit Slider Thumb */
+html[data-ypp-ui-design="neumorphic"] .ypp-slider::-webkit-slider-thumb,
+html[data-ypp-ui-design="neumorphic"] .ypp-gpb-vol-slider::-webkit-slider-thumb {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  transition: transform var(--neu-snap) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] .ypp-slider::-webkit-slider-thumb:active,
+html[data-ypp-ui-design="neumorphic"] .ypp-gpb-vol-slider::-webkit-slider-thumb:active {
+  transform: scale(0.9) !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Filter Dropdowns */
+html[data-ypp-ui-design="neumorphic"] .ypp-filter-dropdown {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] .ypp-filter-dropdown:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] .ypp-filter-dropdown:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ::-webkit-scrollbar-track {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ::-webkit-scrollbar-thumb {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Ambient Cinematics - Large soft blur to match soft UI */
+@media (width: 1920px) {
+  html[data-ypp-ui-style="neumorphic"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
+  filter: saturate(150%) blur(40px) opacity(0.5);
+}
+
+}
+@media (width: 1280px) {
+  html[data-ypp-ui-style="neumorphic"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+    transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
+  filter: saturate(150%) blur(40px) opacity(0.5);
+}
+
+}
+
+/* Ambient Player Frame */
+html[data-ypp-ui-design="neumorphic"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  border-radius: var(--neu-radius-lg) !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+/* Player Controls Group (Right side) */
+html[data-ypp-ui-design="neumorphic"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Volume Area */
+html[data-ypp-ui-design="neumorphic"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Progress bar drag container */
+html[data-ypp-ui-design="neumorphic"] .ytPlayerProgressBarDragContainer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] .ytp-play-progress {
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Suggestions Row (Channel page / Watch sidebar) */
+html[data-ypp-ui-design="neumorphic"] .ytSuggestionComponentRoundedSuggestion {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] .ytSuggestionComponentRoundedSuggestion:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Channel Avatar Editor */
+html[data-ypp-ui-design="neumorphic"] #wrapper.ytd-channel-avatar-editor {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+/* Extension Navigation Button Active State */
+html[data-ypp-ui-design="neumorphic"] .ypp-nav-btn.active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Primary / Filled / Brand Buttons (Subscribe, Primary CTA) */
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer button,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--call-to-action,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="neumorphic"] ytd-button-renderer.style-primary button ,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i] {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer button:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--call-to-action:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-button-renderer.style-primary button:hover ,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:hover {
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer button:active,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--call-to-action:active,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button.yt-spec-button-shape-next--filled:active,
+html[data-ypp-ui-design="neumorphic"] ytd-button-renderer.style-primary button:active ,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:active,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[aria-label*="Download" i]:active,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape buttonyt-button-shape button[title*="Download" i]:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Subscribed State (depressed/inset) */
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer[subscribed] button {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer[subscribed] button:hover {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Top-level Topbar action buttons */
+html[data-ypp-ui-design="neumorphic"] #buttons ytd-button-renderer button,
+html[data-ypp-ui-design="neumorphic"] #buttons ytd-topbar-menu-button-renderer button {
+  border-radius: 50% !important;
+}
+
+/* Thumbnail Overlay Buttons (Watch Later, Queue) */
+html[data-ypp-ui-design="neumorphic"] ytd-thumbnail-overlay-toggle-button-renderer {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: 50% !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-thumbnail-overlay-toggle-button-renderer:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — CARDS (Thumbnails & Grid items)
+   ========================================================= */
+
+/* The actual Card container (thumbnail + metadata) */
+html[data-ypp-card-style="neumorphic"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+        ytd-rich-item-renderer,
+        ytd-video-renderer,
+        ytd-compact-video-renderer,
+        ytd-grid-video-renderer,
+        .ypp-grid-item
+      )
+      *
+  )
+) {
+  border-radius: var(--neu-radius-lg) !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* Card Hover State */
+html[data-ypp-card-style="neumorphic"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  yt-lockup-view-model:not(
+    :is(
+        ytd-rich-item-renderer,
+        ytd-video-renderer,
+        ytd-compact-video-renderer,
+        ytd-grid-video-renderer,
+        .ypp-grid-item
+      )
+      *
+  )
+):hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+/* Video Thumbnail Frame */
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail,
+html[data-ypp-card-style="neumorphic"] .ytd-thumbnail {
+  border-radius: var(--neu-radius-md) !important;
+  /* Push the thumbnail down slightly to look inset into the card */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Rounded Thumbnail Images */
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail img {
+  border-radius: var(--neu-radius-md) !important;
+  transition: transform var(--neu-snap) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail:hover img {
+  transform: scale(1.05) !important;
+}
+
+/* Time Status Overlay (e.g. 10:05 badge on thumbnail) */
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail-overlay-time-status-renderer {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Channel Avatar next to thumbnail */
+html[data-ypp-card-style="neumorphic"] #avatar-link img,
+html[data-ypp-card-style="neumorphic"] yt-img-shadow#avatar img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Base Dialog Container */
+html[data-ypp-ui-design="neumorphic"] ytd-dialog-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-confirm-dialog-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-report-form-modal-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-dialog-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-super-thanks-dialog-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-share-panel-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-unified-share-panel-renderer {
+  border-radius: var(--neu-radius-lg) !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+/* Dialog Header */
+html[data-ypp-ui-design="neumorphic"] ytd-dialog-renderer #header,
+html[data-ypp-ui-design="neumorphic"] ytd-confirm-dialog-renderer #header,
+html[data-ypp-ui-design="neumorphic"] yt-dialog-renderer #header,
+html[data-ypp-ui-design="neumorphic"] yt-share-panel-renderer #header {
+  box-shadow: 0 4px 6px -4px rgba(0,0,0,0.05) !important;
+}
+
+/* Report Form Radio Buttons */
+html[data-ypp-ui-design="neumorphic"] ytd-report-form-modal-renderer yt-radio-button-view-model {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-report-form-modal-renderer yt-radio-button-view-model:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Share URL Copy Box */
+html[data-ypp-ui-design="neumorphic"] yt-share-panel-renderer #copyLink,
+html[data-ypp-ui-design="neumorphic"] yt-copy-link-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Hover State for icons (except those in primary buttons) */
+html[data-ypp-ui-design="neumorphic"] yt-icon:hover,
+html[data-ypp-ui-design="neumorphic"] .yt-spec-icon-shape:hover {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Badge (e.g. notifications count) */
+html[data-ypp-ui-design="neumorphic"] .yt-spec-icon-badge-shape__badge {
+  border-radius: var(--neu-radius-pill) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* LIVE badge */
+html[data-ypp-ui-design="neumorphic"] ytd-badge-supported-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="neumorphic"] ::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="neumorphic"] ::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="neumorphic"] h1, html[data-ypp-card-style="neumorphic"] h2, html[data-ypp-card-style="neumorphic"] h3, 
+html[data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="neumorphic"] h1, html[data-ypp-ui-design="neumorphic"] h2, html[data-ypp-ui-design="neumorphic"] h3, 
+html[data-ypp-ui-design="neumorphic"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="neumorphic"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+html[data-ypp-card-style="neumorphic"] ytd-rich-item-renderer,
+html[data-ypp-card-style="neumorphic"] ytd-video-renderer,
+html[data-ypp-card-style="neumorphic"] ytd-playlist-renderer,
+html[data-ypp-card-style="neumorphic"] ytd-grid-video-renderer,
+html[data-ypp-card-style="neumorphic"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-video-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-playlist-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-compact-video-renderer {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-rich-item-renderer:hover,
+html[data-ypp-card-style="neumorphic"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-rich-item-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-video-renderer:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail, html[data-ypp-card-style="neumorphic"] yt-image,
+html[data-ypp-ui-design="neumorphic"] ytd-thumbnail, html[data-ypp-ui-design="neumorphic"] yt-image {
+  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail:hover yt-image,
+html[data-ypp-ui-design="neumorphic"] ytd-thumbnail:hover yt-image {
+  transform: scale(1.08) !important;
+  filter: contrast(1.1) brightness(1.1) saturate(1.2) !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="neumorphic"] yt-img-shadow, html[data-ypp-card-style="neumorphic"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="neumorphic"] yt-img-shadow, html[data-ypp-ui-design="neumorphic"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: 0 !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="neumorphic"] yt-img-shadow:hover,
+html[data-ypp-ui-design="neumorphic"] yt-img-shadow:hover {
+  transform: rotate(10deg) scale(1.1) !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="neumorphic"] ytd-masthead, html[data-ypp-ui-design="neumorphic"] ytd-masthead {
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="neumorphic"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: 20px 0 0 20px !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox #search-icon-legacy {
+  border-radius: 0 20px 20px 0 !important;
+}
+
+html[data-ypp-card-style="neumorphic"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-chip-cloud-chip-renderer {
+  border-radius: 20px !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+html[data-ypp-card-style="neumorphic"] yt-chip-cloud-chip-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] yt-chip-cloud-chip-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 10. Left Sidebar / Guide */
+html[data-ypp-card-style="neumorphic"] ytd-guide-entry-renderer, html[data-ypp-card-style="neumorphic"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-guide-entry-renderer, html[data-ypp-ui-design="neumorphic"] ytd-mini-guide-entry-renderer {
+  border-radius: 20px !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-guide-entry-renderer:hover {
+  transform: translateX(5px) !important;
+}
+
+/* 11. Comments Section */
+html[data-ypp-card-style="neumorphic"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-comment-thread-renderer {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] #simplebox-placeholder, html[data-ypp-ui-design="neumorphic"] #simplebox-placeholder {
+  border-radius: 20px !important;
+}
+
+/* 12. Video Player Controls & OSD */
+html[data-ypp-card-style="neumorphic"] .ytp-chrome-bottom,
+html[data-ypp-ui-design="neumorphic"] .ytp-chrome-bottom {
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] .ytp-scrubber-button,
+html[data-ypp-ui-design="neumorphic"] .ytp-scrubber-button {
+  border-radius: 50% !important;
+  transform: scale(1.2) !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] .ytp-tooltip, html[data-ypp-ui-design="neumorphic"] .ytp-tooltip {
+  border-radius: 20px !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="neumorphic"] tp-yt-paper-dialog, html[data-ypp-card-style="neumorphic"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="neumorphic"] tp-yt-paper-dialog, html[data-ypp-ui-design="neumorphic"] ytd-menu-popup-renderer {
+  border-radius: 20px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="neumorphic"] ytd-multi-page-menu-renderer {
+  border-radius: 20px !important;
+}
+
+/* 14. Channel Headers & Banners */
+html[data-ypp-card-style="neumorphic"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-c4-tabbed-header-renderer {
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] #channel-header,
+html[data-ypp-ui-design="neumorphic"] #channel-header {
+  border-radius: 20px !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="neumorphic"] yt-live-chat-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-renderer {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-text-message-renderer {
+  border-radius: 20px !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="neumorphic"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="neumorphic"] tp-yt-paper-tooltip {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-notification-renderer, html[data-ypp-ui-design="neumorphic"] ytd-notification-renderer {
+  border-radius: 20px !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="neumorphic"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-badge-supported-renderer {
+  border-radius: 20px !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="neumorphic"] ytd-skeleton, html[data-ypp-ui-design="neumorphic"] ytd-skeleton, 
+html[data-ypp-card-style="neumorphic"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="neumorphic"] .ytd-ghost-grid-renderer {
+  border-radius: 20px !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+html[data-ypp-card-style="neumorphic"] ytd-reel-item-renderer, html[data-ypp-ui-design="neumorphic"] ytd-reel-item-renderer {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="neumorphic"] ytd-rich-shelf-renderer {
+  border-radius: 20px !important;
+}
+
+/* 21. Metadata & Descriptions */
+html[data-ypp-card-style="neumorphic"] ytd-watch-metadata, html[data-ypp-ui-design="neumorphic"] ytd-watch-metadata {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="neumorphic"] yt-icon, html[data-ypp-ui-design="neumorphic"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="neumorphic"] yt-icon:hover, html[data-ypp-ui-design="neumorphic"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+html[data-ypp-card-style="neumorphic"] .ytp-endscreen-content, html[data-ypp-ui-design="neumorphic"] .ytp-endscreen-content {
+  border-radius: 20px !important;
+}
+
+html[data-ypp-card-style="neumorphic"] .ytp-ce-element, html[data-ypp-ui-design="neumorphic"] .ytp-ce-element {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* 24. YouTube Miniplayer */
+html[data-ypp-card-style="neumorphic"] ytd-miniplayer, html[data-ypp-ui-design="neumorphic"] ytd-miniplayer {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* 25. Settings Gear & Dropdowns */
+html[data-ypp-card-style="neumorphic"] .ytp-settings-menu, html[data-ypp-ui-design="neumorphic"] .ytp-settings-menu {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* 26. Account Switcher & Profiles */
+html[data-ypp-card-style="neumorphic"] ytd-account-item-renderer, html[data-ypp-ui-design="neumorphic"] ytd-account-item-renderer {
+  border-radius: 20px !important;
+}
+
+/* 27. Search Filters (Filter Menu) */
+html[data-ypp-card-style="neumorphic"] ytd-search-filter-renderer, html[data-ypp-ui-design="neumorphic"] ytd-search-filter-renderer {
+  border-radius: 20px !important;
+}
+
+html[data-ypp-card-style="neumorphic"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="neumorphic"] ytd-search-filter-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 28. Playlists Page Inner Layout */
+html[data-ypp-card-style="neumorphic"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="neumorphic"] ytd-playlist-panel-renderer {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* 29. Chapters & Timestamp Links */
+html[data-ypp-card-style="neumorphic"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="neumorphic"] ytd-macro-markers-list-item-renderer {
+  border-radius: 20px !important;
+}
+
+/* 30. Offline & Error Screens */
+html[data-ypp-card-style="neumorphic"] yt-error-screen, html[data-ypp-ui-design="neumorphic"] yt-error-screen {
+  border-radius: 20px !important;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — MENUS & DROPDOWNS
+   ========================================================= */
+
+/* Base Outer Container */
+html[data-ypp-ui-design="neumorphic"] tp-yt-iron-dropdown,
+html[data-ypp-ui-design="neumorphic"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-settings-options-renderer,
+html[data-ypp-ui-design="neumorphic"] tp-yt-paper-listbox,
+html[data-ypp-ui-design="neumorphic"] .ytSearchboxComponentSuggestionsContainer {
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Fix for nested popups removing double shadows */
+html[data-ypp-ui-design="neumorphic"] tp-yt-iron-dropdown > ytd-menu-popup-renderer,
+html[data-ypp-ui-design="neumorphic"] tp-yt-iron-dropdown > ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="neumorphic"] tp-yt-iron-dropdown > #contentWrapper > ytd-menu-popup-renderer,
+html[data-ypp-ui-design="neumorphic"] tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Menu Items (List Items) */
+html[data-ypp-ui-design="neumorphic"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-menu-navigation-item-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-compact-link-renderer,
+html[data-ypp-ui-design="neumorphic"] .ytp-menuitem,
+html[data-ypp-ui-design="neumorphic"] ytd-playlist-add-to-option-renderer,
+html[data-ypp-ui-design="neumorphic"] .ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--neu-radius-md) !important;
+}
+
+/* Menu Items Hover state (Soft inset) */
+html[data-ypp-ui-design="neumorphic"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-menu-navigation-item-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-compact-link-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] .ytp-menuitem:hover,
+html[data-ypp-ui-design="neumorphic"] ytd-playlist-add-to-option-renderer:hover,
+html[data-ypp-ui-design="neumorphic"] .ytSuggestionComponentRoundedSuggestion:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Separators */
+html[data-ypp-ui-design="neumorphic"] ytd-menu-popup-renderer hr,
+html[data-ypp-ui-design="neumorphic"] ytd-menu-popup-renderer #separator {
+  /* spacing */
+  box-shadow: 0 2px 2px rgba(0,0,0,0.03) !important;
+}
+
+/* Account / Multi-page Header */
+html[data-ypp-ui-design="neumorphic"] ytd-multi-page-menu-renderer #header-container,
+html[data-ypp-ui-design="neumorphic"] ytd-multi-page-menu-renderer #header,
+html[data-ypp-ui-design="neumorphic"] ytd-active-account-header-renderer {
+  box-shadow: 0 4px 6px -4px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-active-account-header-renderer yt-img-shadow img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Notification Items */
+html[data-ypp-ui-design="neumorphic"] ytd-notification-renderer {
+  border-radius: var(--neu-radius-md) !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-notification-renderer:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-notification-renderer[is-new] {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-notification-renderer yt-img-shadow img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — NAVBAR / MASTHEAD
+   ========================================================= */
+
+/* Main Masthead Container */
+html[data-ypp-ui-design="neumorphic"] ytd-masthead {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+}
+
+/* Center Search Container */
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox[has-focus] {
+  box-shadow: var(--neu-shadow-inset-deep) !important;
+}
+
+/* The actual text input field */
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox #container.ytd-searchbox {
+  box-shadow: none !important;
+}
+
+/* Search Button */
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox #search-icon-legacy {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox #search-icon-legacy:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-searchbox #search-icon-legacy:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Voice Search Mic Button */
+html[data-ypp-ui-design="neumorphic"] #voice-search-button yt-icon-button {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: 50% !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] #voice-search-button yt-icon-button:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] #voice-search-button yt-icon-button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — PANELS & CONTAINERS
+   ========================================================= */
+
+/* Generic Shadow Panels (Extension specific) */
+html[data-ypp-ui-design="neumorphic"] .ypp-shadow-panel,
+html[data-ypp-ui-design="neumorphic"] .ypp-video-controls {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Side Panels (Live Chat, Playlist, Engagement Panels) */
+html[data-ypp-ui-design="neumorphic"] ytd-live-chat-frame,
+html[data-ypp-ui-design="neumorphic"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="neumorphic"] ytd-engagement-panel-section-list-renderer,
+html[data-ypp-ui-design="neumorphic"] #chat-container,
+html[data-ypp-ui-design="neumorphic"] #ypp-pl-root .ypp-pl-sidebar {
+  box-shadow: var(--neu-shadow-inset-deep) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Panel Headers */
+html[data-ypp-ui-design="neumorphic"] ytd-engagement-panel-title-header-renderer,
+html[data-ypp-ui-design="neumorphic"] .ytd-playlist-panel-renderer#header,
+html[data-ypp-ui-design="neumorphic"] #ypp-pl-root .ypp-pl-toolbar {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.03) !important;
+}
+
+/* Description Panel (Watch page) */
+html[data-ypp-ui-design="neumorphic"] ytd-watch-metadata #description-inner,
+html[data-ypp-ui-design="neumorphic"] ytd-watch-metadata #description {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-md) !important;
+}
+
+/* Offer Module (Premium upsell in descriptions) */
+html[data-ypp-ui-design="neumorphic"] ytd-offer-module-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — CHANNELS
+   ========================================================= */
+
+/* Channel Banner Area */
+html[data-ypp-ui-design="neumorphic"] #page-header.ytd-tabbed-page-layout-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: 0 0 var(--neu-radius-lg) var(--neu-radius-lg) !important;
+}
+
+/* Channel Avatar (Large) */
+html[data-ypp-ui-design="neumorphic"] ytd-c4-tabbed-header-renderer #avatar {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-c4-tabbed-header-renderer #avatar img {
+  border-radius: 50% !important;
+}
+
+/* Channel Banner Image */
+html[data-ypp-ui-design="neumorphic"] ytd-c4-tabbed-header-renderer #banner {
+  border-radius: 0 0 var(--neu-radius-md) var(--neu-radius-md) !important;
+  box-shadow: inset 0 -4px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Channel Tabs (Home, Videos, Shorts, etc) */
+html[data-ypp-ui-design="neumorphic"] tp-yt-paper-tab {
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] tp-yt-paper-tab.iron-selected {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] tp-yt-paper-tab:not(.iron-selected):hover {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Channel Search Box in Tabs */
+html[data-ypp-ui-design="neumorphic"] ytd-expandable-tab-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Links inside Channel About section */
+html[data-ypp-ui-design="neumorphic"] ytd-channel-about-metadata-renderer #links-section a {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-channel-about-metadata-renderer #links-section a:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — COMMENTS
+   ========================================================= */
+
+/* Main Comment Input Box (Trough) */
+html[data-ypp-ui-design="neumorphic"] ytd-comment-simplebox-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-comment-simplebox-renderer:focus-within {
+  box-shadow: var(--neu-shadow-inset-deep) !important;
+}
+
+/* Individual Comment Renderer */
+html[data-ypp-ui-design="neumorphic"] ytd-comment-renderer {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Comment Thread / Replies Container */
+html[data-ypp-ui-design="neumorphic"] #replies.ytd-comment-thread-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Creator Highlighted Comment (or pinned) */
+html[data-ypp-ui-design="neumorphic"] ytd-comment-renderer[is-highlighted] {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* View Replies Expander Button */
+html[data-ypp-ui-design="neumorphic"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-comment-replies-renderer #more-replies > yt-button-shape > button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Creator Heart */
+html[data-ypp-ui-design="neumorphic"] ytd-comment-action-buttons-renderer #creator-heart {
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1)) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — HOME PAGE
+   ========================================================= */
+
+/* Filter Chips (e.g. "All", "Music", "Gaming" at the top of Home) */
+html[data-ypp-ui-design="neumorphic"] yt-chip-cloud-chip-renderer {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+/* Hover on Filter Chip */
+html[data-ypp-ui-design="neumorphic"] yt-chip-cloud-chip-renderer:hover {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* Selected Filter Chip (inset shadow) */
+html[data-ypp-ui-design="neumorphic"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-design="neumorphic"] yt-chip-cloud-chip-renderer[chip-style="STYLE_DEFAULT"][selected] {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Left / Right scroll arrows for filter chips */
+html[data-ypp-ui-design="neumorphic"] #left-arrow button,
+html[data-ypp-ui-design="neumorphic"] #right-arrow button {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: 50% !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] #left-arrow button:active,
+html[data-ypp-ui-design="neumorphic"] #right-arrow button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Home Page Sections (e.g. "Latest YouTube posts") */
+html[data-ypp-ui-design="neumorphic"] ytd-rich-shelf-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — LIVE CHAT
+   ========================================================= */
+
+/* The whole Live Chat container */
+html[data-ypp-ui-design="neumorphic"] ytd-live-chat-frame {
+  box-shadow: var(--neu-shadow-inset-deep) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Individual Messages */
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-membership-item-renderer {
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-text-message-renderer:hover {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* Super Chats (Outset colored blocks) */
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-membership-item-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* Avatars in Chat */
+html[data-ypp-ui-design="neumorphic"] yt-live-chat-text-message-renderer #author-photo img {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+/* The actual text input box */
+html[data-ypp-ui-design="neumorphic"] #input-panel yt-live-chat-text-input-field-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-md) !important;
+}
+
+/* =========================================================
+   NEUMORPHIC — PLAYER UI
+   ========================================================= */
+
+/* The outer player container */
+html[data-ypp-ui-design="neumorphic"] #player-container.ytd-watch-flexy,
+html[data-ypp-ui-design="neumorphic"] #ytd-player {
+  border-radius: var(--neu-radius-lg) !important;
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+}
+
+/* Base Video Player */
+html[data-ypp-ui-design="neumorphic"] .html5-video-player {
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Play/Pause Large Center Icon Animation */
+html[data-ypp-ui-design="neumorphic"] .ytp-bezel {
+  box-shadow: var(--neu-shadow-outset-hover) !important;
+  border-radius: 50% !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] .ytp-button:hover {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+html[data-ypp-ui-design="neumorphic"] .ytp-button[aria-pressed="true"]::after {
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow: 0 0 4px var(--neu-accent);
+}
+
+/* Player Error Screen */
+html[data-ypp-ui-design="neumorphic"] .ytp-error {
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-toggle-button-renderer #button.ytd-toggle-button-renderer:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Search Filters Expansion Panel */
+html[data-ypp-ui-design="neumorphic"] ytd-search-sub-menu-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-search-filter-renderer {
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-search-filter-renderer:hover {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-search-filter-renderer[selected] {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Channel blocks in search results */
+html[data-ypp-ui-design="neumorphic"] ytd-channel-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-channel-renderer #avatar {
+  border-radius: 50% !important;
+  box-shadow: var(--neu-shadow-outset) !important;
+}
+
+/* Playlist blocks in search results */
+html[data-ypp-ui-design="neumorphic"] ytd-playlist-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Search "People also watched" shelf */
+html[data-ypp-ui-design="neumorphic"] ytd-horizontal-card-list-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer button {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-pill) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer button:active {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer[subscribed] button {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Description Box */
+html[data-ypp-ui-design="neumorphic"] #description-inner,
+html[data-ypp-ui-design="neumorphic"] #description.ytd-watch-metadata {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+/* Sidebar Recommendation Cards */
+html[data-ypp-ui-design="neumorphic"] ytd-compact-video-renderer {
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-compact-video-renderer:hover {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Key Moments / Chapter Markers */
+html[data-ypp-ui-design="neumorphic"] ytd-macro-markers-list-renderer {
+  box-shadow: var(--neu-shadow-inset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-macro-markers-list-item-renderer {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-macro-markers-list-item-renderer:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+/* Transcript Panel */
+html[data-ypp-ui-design="neumorphic"] ytd-transcript-renderer {
+  box-shadow: var(--neu-shadow-outset) !important;
+  border-radius: var(--neu-radius-lg) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-transcript-segment-renderer {
+  border-radius: var(--neu-radius-md) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-transcript-segment-renderer:hover {
+  box-shadow: var(--neu-shadow-inset) !important;
+}
+
+html[data-ypp-ui-design="neumorphic"] ytd-transcript-segment-renderer[is-highlighted] {
+  box-shadow: var(--neu-shadow-outset-sm) !important;
+}

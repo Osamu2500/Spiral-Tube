@@ -1,0 +1,271 @@
+/* Unique Shapes and Patterns for material */
+
+html[data-ypp-card-style="material"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="material"] ::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+}
+
+html[data-ypp-card-style="material"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="material"] ::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="material"] h1, html[data-ypp-card-style="material"] h2, html[data-ypp-card-style="material"] h3, 
+html[data-ypp-card-style="material"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="material"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="material"] h1, html[data-ypp-ui-design="material"] h2, html[data-ypp-ui-design="material"] h3, 
+html[data-ypp-ui-design="material"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="material"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+html[data-ypp-card-style="material"] ytd-rich-item-renderer,
+html[data-ypp-card-style="material"] ytd-video-renderer,
+html[data-ypp-card-style="material"] ytd-playlist-renderer,
+html[data-ypp-card-style="material"] ytd-grid-video-renderer,
+html[data-ypp-card-style="material"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="material"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="material"] ytd-video-renderer,
+html[data-ypp-ui-design="material"] ytd-playlist-renderer,
+html[data-ypp-ui-design="material"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="material"] ytd-compact-video-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] ytd-rich-item-renderer:hover,
+html[data-ypp-card-style="material"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="material"] ytd-rich-item-renderer:hover,
+html[data-ypp-ui-design="material"] ytd-video-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="material"] ytd-thumbnail, html[data-ypp-card-style="material"] yt-image,
+html[data-ypp-ui-design="material"] ytd-thumbnail, html[data-ypp-ui-design="material"] yt-image {
+  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+html[data-ypp-card-style="material"] ytd-thumbnail:hover yt-image,
+html[data-ypp-ui-design="material"] ytd-thumbnail:hover yt-image {
+  transform: scale(1.08) !important;
+  filter: contrast(1.1) brightness(1.1) saturate(1.2) !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="material"] yt-img-shadow, html[data-ypp-card-style="material"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="material"] yt-img-shadow, html[data-ypp-ui-design="material"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: 0 !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="material"] yt-img-shadow:hover,
+html[data-ypp-ui-design="material"] yt-img-shadow:hover {
+  transform: rotate(10deg) scale(1.1) !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="material"] ytd-masthead, html[data-ypp-ui-design="material"] ytd-masthead {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="material"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="material"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: 16px 0 0 16px !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="material"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="material"] ytd-searchbox #search-icon-legacy {
+  border-radius: 0 16px 16px 0 !important;
+}
+
+html[data-ypp-card-style="material"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="material"] yt-chip-cloud-chip-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+html[data-ypp-card-style="material"] yt-chip-cloud-chip-renderer:hover,
+html[data-ypp-ui-design="material"] yt-chip-cloud-chip-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 10. Left Sidebar / Guide */
+html[data-ypp-card-style="material"] ytd-guide-entry-renderer, html[data-ypp-card-style="material"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="material"] ytd-guide-entry-renderer, html[data-ypp-ui-design="material"] ytd-mini-guide-entry-renderer {
+  border-radius: 16px !important;
+}
+
+html[data-ypp-card-style="material"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-design="material"] ytd-guide-entry-renderer:hover {
+  transform: translateX(5px) !important;
+}
+
+/* 11. Comments Section */
+html[data-ypp-card-style="material"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="material"] ytd-comment-thread-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] #simplebox-placeholder, html[data-ypp-ui-design="material"] #simplebox-placeholder {
+  border-radius: 16px !important;
+}
+
+/* 12. Video Player Controls & OSD */
+html[data-ypp-card-style="material"] .ytp-chrome-bottom,
+html[data-ypp-ui-design="material"] .ytp-chrome-bottom {
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="material"] .ytp-scrubber-button,
+html[data-ypp-ui-design="material"] .ytp-scrubber-button {
+  border-radius: 50% !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] .ytp-tooltip, html[data-ypp-ui-design="material"] .ytp-tooltip {
+  border-radius: 16px !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="material"] tp-yt-paper-dialog, html[data-ypp-card-style="material"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="material"] tp-yt-paper-dialog, html[data-ypp-ui-design="material"] ytd-menu-popup-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="material"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="material"] ytd-multi-page-menu-renderer {
+  border-radius: 16px !important;
+}
+
+/* 14. Channel Headers & Banners */
+html[data-ypp-card-style="material"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-design="material"] ytd-c4-tabbed-header-renderer {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] #channel-header,
+html[data-ypp-ui-design="material"] #channel-header {
+  border-radius: 16px !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="material"] yt-live-chat-renderer,
+html[data-ypp-ui-design="material"] yt-live-chat-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="material"] yt-live-chat-text-message-renderer {
+  border-radius: 16px !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="material"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="material"] tp-yt-paper-tooltip {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] ytd-notification-renderer, html[data-ypp-ui-design="material"] ytd-notification-renderer {
+  border-radius: 16px !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="material"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="material"] ytd-badge-supported-renderer {
+  border-radius: 16px !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="material"] ytd-skeleton, html[data-ypp-ui-design="material"] ytd-skeleton, 
+html[data-ypp-card-style="material"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="material"] .ytd-ghost-grid-renderer {
+  border-radius: 16px !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+html[data-ypp-card-style="material"] ytd-reel-item-renderer, html[data-ypp-ui-design="material"] ytd-reel-item-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+html[data-ypp-card-style="material"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="material"] ytd-rich-shelf-renderer {
+  border-radius: 16px !important;
+}
+
+/* 21. Metadata & Descriptions */
+html[data-ypp-card-style="material"] ytd-watch-metadata, html[data-ypp-ui-design="material"] ytd-watch-metadata {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="material"] yt-icon, html[data-ypp-ui-design="material"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="material"] yt-icon:hover, html[data-ypp-ui-design="material"] yt-icon:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+html[data-ypp-card-style="material"] .ytp-endscreen-content, html[data-ypp-ui-design="material"] .ytp-endscreen-content {
+  border-radius: 16px !important;
+}
+
+html[data-ypp-card-style="material"] .ytp-ce-element, html[data-ypp-ui-design="material"] .ytp-ce-element {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+/* 24. YouTube Miniplayer */
+html[data-ypp-card-style="material"] ytd-miniplayer, html[data-ypp-ui-design="material"] ytd-miniplayer {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+/* 25. Settings Gear & Dropdowns */
+html[data-ypp-card-style="material"] .ytp-settings-menu, html[data-ypp-ui-design="material"] .ytp-settings-menu {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+/* 26. Account Switcher & Profiles */
+html[data-ypp-card-style="material"] ytd-account-item-renderer, html[data-ypp-ui-design="material"] ytd-account-item-renderer {
+  border-radius: 16px !important;
+}
+
+/* 27. Search Filters (Filter Menu) */
+html[data-ypp-card-style="material"] ytd-search-filter-renderer, html[data-ypp-ui-design="material"] ytd-search-filter-renderer {
+  border-radius: 16px !important;
+}
+
+html[data-ypp-card-style="material"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="material"] ytd-search-filter-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 28. Playlists Page Inner Layout */
+html[data-ypp-card-style="material"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="material"] ytd-playlist-panel-renderer {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+/* 29. Chapters & Timestamp Links */
+html[data-ypp-card-style="material"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="material"] ytd-macro-markers-list-item-renderer {
+  border-radius: 16px !important;
+}
+
+/* 30. Offline & Error Screens */
+html[data-ypp-card-style="material"] yt-error-screen, html[data-ypp-ui-design="material"] yt-error-screen {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}

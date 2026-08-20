@@ -1,0 +1,22 @@
+/* Token Overrides for anime */
+:root[data-ypp-ui-design="anime"],
+html[data-ypp-ui-style="anime"] {
+  --ypp-surface-bg: #fff0f5 !important;
+  --ypp-surface-bg-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-surface-bg-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #ff69b4 !important;
+  --ypp-text-primary: #d63384 !important;
+  
+  --ypp-surface-border: 1px solid #ff69b440 !important;
+  --ypp-shadow-base: 0 4px 12px #ff69b420 !important;
+  --ypp-shadow-hover: 0 8px 24px #ff69b440 !important;
+  
+  --yt-font-family: "Nunito","Segoe UI",sans-serif !important;
+}
+
+
+html[data-ypp-ui-style="anime"] * {
+  font-family: "Nunito","Segoe UI",sans-serif !important;
+}
+

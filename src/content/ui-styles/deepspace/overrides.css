@@ -1,0 +1,430 @@
+/* Unique Shapes and Patterns for deepspace */
+
+/* Subtle scanline texture */
+html[data-ypp-ui-design="deepspace"] ytd-app::after {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.012) 2px,
+    rgba(255, 255, 255, 0.012) 4px
+  ) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ds-r-pill) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] yt-button-shape[is-filled] button,
+html[data-ypp-ui-design="deepspace"] .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ds-r-sm) !important;
+  box-shadow: var(--ds-glow-blue) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] yt-button-shape[is-filled] button:hover,
+html[data-ypp-ui-design="deepspace"] .yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[title*="Download" i]:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.7) !important;
+  transform: translateY(-1px) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] yt-button-shape[is-tonal] button,
+html[data-ypp-ui-design="deepspace"] .yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ds-r-sm) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] yt-button-shape[is-tonal] button:hover,
+html[data-ypp-ui-design="deepspace"] .yt-spec-button-shape-next--tonal:hover ,
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="deepspace"] yt-button-shape button[title*="Download" i]:hover {
+  box-shadow: var(--ds-glow-blue) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="deepspace"] ytd-popup-container {
+  -webkit-backdrop-filter: blur(24px) !important;
+  backdrop-filter: blur(24px) !important;
+  border-radius: var(--ds-r-md) !important;
+  box-shadow: var(--ds-glow-blue), 0 24px 60px rgba(0, 0, 5, 0.9) !important;
+}
+
+html[data-ypp-card-style="deepspace"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="deepspace"] ::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+}
+
+html[data-ypp-card-style="deepspace"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="deepspace"] ::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="deepspace"] h1, html[data-ypp-card-style="deepspace"] h2, html[data-ypp-card-style="deepspace"] h3, 
+html[data-ypp-card-style="deepspace"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="deepspace"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="deepspace"] h1, html[data-ypp-ui-design="deepspace"] h2, html[data-ypp-ui-design="deepspace"] h3, 
+html[data-ypp-ui-design="deepspace"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="deepspace"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+html[data-ypp-card-style="deepspace"] ytd-rich-item-renderer,
+html[data-ypp-card-style="deepspace"] ytd-video-renderer,
+html[data-ypp-card-style="deepspace"] ytd-playlist-renderer,
+html[data-ypp-card-style="deepspace"] ytd-grid-video-renderer,
+html[data-ypp-card-style="deepspace"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-video-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-playlist-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-compact-video-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-rich-item-renderer:hover,
+html[data-ypp-card-style="deepspace"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="deepspace"] ytd-rich-item-renderer:hover,
+html[data-ypp-ui-design="deepspace"] ytd-video-renderer:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="deepspace"] ytd-thumbnail, html[data-ypp-card-style="deepspace"] yt-image,
+html[data-ypp-ui-design="deepspace"] ytd-thumbnail, html[data-ypp-ui-design="deepspace"] yt-image {
+  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-thumbnail:hover yt-image,
+html[data-ypp-ui-design="deepspace"] ytd-thumbnail:hover yt-image {
+  transform: scale(1.08) !important;
+  filter: contrast(1.1) brightness(1.1) saturate(1.2) !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="deepspace"] yt-img-shadow, html[data-ypp-card-style="deepspace"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="deepspace"] yt-img-shadow, html[data-ypp-ui-design="deepspace"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: 0 !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="deepspace"] yt-img-shadow:hover,
+html[data-ypp-ui-design="deepspace"] yt-img-shadow:hover {
+  transform: rotate(10deg) scale(1.1) !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="deepspace"] ytd-masthead, html[data-ypp-ui-design="deepspace"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="deepspace"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="deepspace"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: 12px 0 0 12px !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="deepspace"] ytd-searchbox #search-icon-legacy {
+  border-radius: 0 12px 12px 0 !important;
+}
+
+html[data-ypp-card-style="deepspace"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="deepspace"] yt-chip-cloud-chip-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+html[data-ypp-card-style="deepspace"] yt-chip-cloud-chip-renderer:hover,
+html[data-ypp-ui-design="deepspace"] yt-chip-cloud-chip-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 10. Left Sidebar / Guide */
+html[data-ypp-card-style="deepspace"] ytd-guide-entry-renderer, html[data-ypp-card-style="deepspace"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-guide-entry-renderer, html[data-ypp-ui-design="deepspace"] ytd-mini-guide-entry-renderer {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-design="deepspace"] ytd-guide-entry-renderer:hover {
+  transform: translateX(5px) !important;
+}
+
+/* 11. Comments Section */
+html[data-ypp-card-style="deepspace"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-comment-thread-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] #simplebox-placeholder, html[data-ypp-ui-design="deepspace"] #simplebox-placeholder {
+  border-radius: 12px !important;
+}
+
+/* 12. Video Player Controls & OSD */
+html[data-ypp-card-style="deepspace"] .ytp-chrome-bottom,
+html[data-ypp-ui-design="deepspace"] .ytp-chrome-bottom {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="deepspace"] .ytp-scrubber-button,
+html[data-ypp-ui-design="deepspace"] .ytp-scrubber-button {
+  border-radius: 50% !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] .ytp-tooltip, html[data-ypp-ui-design="deepspace"] .ytp-tooltip {
+  border-radius: 12px !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="deepspace"] tp-yt-paper-dialog, html[data-ypp-card-style="deepspace"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="deepspace"] tp-yt-paper-dialog, html[data-ypp-ui-design="deepspace"] ytd-menu-popup-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="deepspace"] ytd-multi-page-menu-renderer {
+  border-radius: 12px !important;
+}
+
+/* 14. Channel Headers & Banners */
+html[data-ypp-card-style="deepspace"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-c4-tabbed-header-renderer {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] #channel-header,
+html[data-ypp-ui-design="deepspace"] #channel-header {
+  border-radius: 12px !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="deepspace"] yt-live-chat-renderer,
+html[data-ypp-ui-design="deepspace"] yt-live-chat-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="deepspace"] yt-live-chat-text-message-renderer {
+  border-radius: 12px !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="deepspace"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="deepspace"] tp-yt-paper-tooltip {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-notification-renderer, html[data-ypp-ui-design="deepspace"] ytd-notification-renderer {
+  border-radius: 12px !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="deepspace"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-badge-supported-renderer {
+  border-radius: 12px !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="deepspace"] ytd-skeleton, html[data-ypp-ui-design="deepspace"] ytd-skeleton, 
+html[data-ypp-card-style="deepspace"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="deepspace"] .ytd-ghost-grid-renderer {
+  border-radius: 12px !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+html[data-ypp-card-style="deepspace"] ytd-reel-item-renderer, html[data-ypp-ui-design="deepspace"] ytd-reel-item-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="deepspace"] ytd-rich-shelf-renderer {
+  border-radius: 12px !important;
+}
+
+/* 21. Metadata & Descriptions */
+html[data-ypp-card-style="deepspace"] ytd-watch-metadata, html[data-ypp-ui-design="deepspace"] ytd-watch-metadata {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="deepspace"] yt-icon, html[data-ypp-ui-design="deepspace"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="deepspace"] yt-icon:hover, html[data-ypp-ui-design="deepspace"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+html[data-ypp-card-style="deepspace"] .ytp-endscreen-content, html[data-ypp-ui-design="deepspace"] .ytp-endscreen-content {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="deepspace"] .ytp-ce-element, html[data-ypp-ui-design="deepspace"] .ytp-ce-element {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 24. YouTube Miniplayer */
+html[data-ypp-card-style="deepspace"] ytd-miniplayer, html[data-ypp-ui-design="deepspace"] ytd-miniplayer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 25. Settings Gear & Dropdowns */
+html[data-ypp-card-style="deepspace"] .ytp-settings-menu, html[data-ypp-ui-design="deepspace"] .ytp-settings-menu {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 26. Account Switcher & Profiles */
+html[data-ypp-card-style="deepspace"] ytd-account-item-renderer, html[data-ypp-ui-design="deepspace"] ytd-account-item-renderer {
+  border-radius: 12px !important;
+}
+
+/* 27. Search Filters (Filter Menu) */
+html[data-ypp-card-style="deepspace"] ytd-search-filter-renderer, html[data-ypp-ui-design="deepspace"] ytd-search-filter-renderer {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="deepspace"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="deepspace"] ytd-search-filter-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 28. Playlists Page Inner Layout */
+html[data-ypp-card-style="deepspace"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="deepspace"] ytd-playlist-panel-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 29. Chapters & Timestamp Links */
+html[data-ypp-card-style="deepspace"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="deepspace"] ytd-macro-markers-list-item-renderer {
+  border-radius: 12px !important;
+}
+
+/* 30. Offline & Error Screens */
+html[data-ypp-card-style="deepspace"] yt-error-screen, html[data-ypp-ui-design="deepspace"] yt-error-screen {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-mini-guide-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-guide-entry-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-mini-guide-entry-renderer {
+  border-radius: var(--ds-r-sm) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] tp-yt-iron-dropdown,
+html[data-ypp-ui-design="deepspace"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="deepspace"] ytd-menu-popup-renderer {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: var(--ds-r-md) !important;
+  box-shadow: var(--ds-glow-blue), 0 16px 40px rgba(0, 0, 5, 0.8) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-masthead {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 5, 0.8) !important;
+}
+
+/* Search */
+html[data-ypp-ui-design="deepspace"] ytd-searchbox#search form {
+  border-radius: var(--ds-r-sm) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-searchbox#search form:focus-within {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2), var(--ds-glow-blue) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-searchbox#search button#search-icon-legacy {
+  border-radius: 0 var(--ds-r-sm) var(--ds-r-sm) 0 !important;
+}
+
+/* Nav icons */
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-icon-button,
+html[data-ypp-ui-design="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default ,
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ds-r-sm) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-icon-button:hover,
+html[data-ypp-ui-design="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover ,
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-button-shape button[title*="Download" i]:hover {
+  box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.15) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-icon-button:hover yt-icon,
+html[data-ypp-ui-design="deepspace"] ytd-masthead .yt-spec-button-shape-next--icon-only-default:hover yt-icon ,
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-button-shape button[aria-label*="Download" i]:hover yt-icon,
+html[data-ypp-ui-design="deepspace"] ytd-masthead yt-button-shape button[title*="Download" i]:hover yt-icon {
+  filter: drop-shadow(0 0 4px var(--ds-accent-blue)) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] .ytp-play-progress {
+  background: linear-gradient(90deg, var(--ds-accent-blue), var(--ds-accent-teal)) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] .ytp-scrubber-button {
+  box-shadow: var(--ds-glow-ice) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] .ytp-volume-slider-handle {
+  box-shadow: var(--ds-glow-teal) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] .ytp-settings-menu {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: var(--ds-r-md) !important;
+  box-shadow: var(--ds-glow-blue) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-compact-video-renderer {
+  border-radius: var(--ds-r-md) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+html[data-ypp-ui-design="deepspace"] ytd-compact-video-renderer:hover {
+  box-shadow: var(--ds-glow-blue) !important;
+  transform: translateX(4px) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] #secondary-inner.ytd-watch-flexy {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: var(--ds-r-lg) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] #description.ytd-watch-metadata {
+  border-radius: var(--ds-r-md) !important;
+}
+
+html[data-ypp-ui-design="deepspace"] #description.ytd-watch-metadata:hover {
+  box-shadow: var(--ds-glow-blue) !important;
+}

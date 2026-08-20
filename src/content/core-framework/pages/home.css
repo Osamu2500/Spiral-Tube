@@ -143,13 +143,13 @@ yt-chip-cloud-chip-renderer[selected] {
 }
 yt-chip-cloud-chip-renderer {
   --chip-radius: 16px 4px 16px 4px;
-  --chip-border: 1px solid rgba(163, 230, 53, 0.3);
-  --chip-bg: rgba(18, 28, 18, 0.8);
+  --chip-border: var(--ypp-surface-border);
+  --chip-bg: var(--ypp-surface-bg);
 }
 yt-chip-cloud-chip-renderer[selected] {
-  --chip-bg-selected: rgba(163, 230, 53, 0.8);
+  --chip-bg-selected: var(--ypp-primary-accent);
   --chip-color-selected: black;
-  --chip-border-selected: 1px solid #65a30d;
+  --chip-border-selected: 1px solid var(--ypp-primary-accent);
 }
 #ypp-pl-root .ypp-pl-sidebar {
   background: var(--ypp-surface-bg) !important;

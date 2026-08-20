@@ -1,0 +1,282 @@
+/* Unique Shapes and Patterns for minimalism */
+
+html[data-ypp-card-style="minimalism"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="minimalism"] ::-webkit-scrollbar-track {
+  border-radius: 10px !important;
+}
+
+html[data-ypp-card-style="minimalism"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="minimalism"] ::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="minimalism"] h1, html[data-ypp-card-style="minimalism"] h2, html[data-ypp-card-style="minimalism"] h3, 
+html[data-ypp-card-style="minimalism"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="minimalism"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="minimalism"] h1, html[data-ypp-ui-design="minimalism"] h2, html[data-ypp-ui-design="minimalism"] h3, 
+html[data-ypp-ui-design="minimalism"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="minimalism"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+html[data-ypp-card-style="minimalism"] ytd-rich-item-renderer,
+html[data-ypp-card-style="minimalism"] ytd-video-renderer,
+html[data-ypp-card-style="minimalism"] ytd-playlist-renderer,
+html[data-ypp-card-style="minimalism"] ytd-grid-video-renderer,
+html[data-ypp-card-style="minimalism"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-rich-item-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-video-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-playlist-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-compact-video-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-rich-item-renderer:hover,
+html[data-ypp-card-style="minimalism"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="minimalism"] ytd-rich-item-renderer:hover,
+html[data-ypp-ui-design="minimalism"] ytd-video-renderer:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="minimalism"] ytd-thumbnail, html[data-ypp-card-style="minimalism"] yt-image,
+html[data-ypp-ui-design="minimalism"] ytd-thumbnail, html[data-ypp-ui-design="minimalism"] yt-image {
+  border-radius: calc(var(--ypp-global-radius) * 0.8) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-thumbnail:hover yt-image,
+html[data-ypp-ui-design="minimalism"] ytd-thumbnail:hover yt-image {
+  transform: scale(1.08) !important;
+  filter: contrast(1.1) brightness(1.1) saturate(1.2) !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="minimalism"] yt-img-shadow, html[data-ypp-card-style="minimalism"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="minimalism"] yt-img-shadow, html[data-ypp-ui-design="minimalism"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: 0 !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="minimalism"] yt-img-shadow:hover,
+html[data-ypp-ui-design="minimalism"] yt-img-shadow:hover {
+  transform: rotate(10deg) scale(1.1) !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="minimalism"] ytd-masthead, html[data-ypp-ui-design="minimalism"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="minimalism"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="minimalism"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: 12px 0 0 12px !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="minimalism"] ytd-searchbox #search-icon-legacy {
+  border-radius: 0 12px 12px 0 !important;
+}
+
+html[data-ypp-card-style="minimalism"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="minimalism"] yt-chip-cloud-chip-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+html[data-ypp-card-style="minimalism"] yt-chip-cloud-chip-renderer:hover,
+html[data-ypp-ui-design="minimalism"] yt-chip-cloud-chip-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 10. Left Sidebar / Guide */
+html[data-ypp-card-style="minimalism"] ytd-guide-entry-renderer, html[data-ypp-card-style="minimalism"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-guide-entry-renderer, html[data-ypp-ui-design="minimalism"] ytd-mini-guide-entry-renderer {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-guide-entry-renderer:hover,
+html[data-ypp-ui-design="minimalism"] ytd-guide-entry-renderer:hover {
+  transform: translateX(5px) !important;
+}
+
+/* 11. Comments Section */
+html[data-ypp-card-style="minimalism"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-comment-thread-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] #simplebox-placeholder, html[data-ypp-ui-design="minimalism"] #simplebox-placeholder {
+  border-radius: 12px !important;
+}
+
+/* 12. Video Player Controls & OSD */
+html[data-ypp-card-style="minimalism"] .ytp-chrome-bottom,
+html[data-ypp-ui-design="minimalism"] .ytp-chrome-bottom {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="minimalism"] .ytp-scrubber-button,
+html[data-ypp-ui-design="minimalism"] .ytp-scrubber-button {
+  border-radius: 50% !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] .ytp-tooltip, html[data-ypp-ui-design="minimalism"] .ytp-tooltip {
+  border-radius: 12px !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="minimalism"] tp-yt-paper-dialog, html[data-ypp-card-style="minimalism"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="minimalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="minimalism"] ytd-menu-popup-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="minimalism"] ytd-multi-page-menu-renderer {
+  border-radius: 12px !important;
+}
+
+/* 14. Channel Headers & Banners */
+html[data-ypp-card-style="minimalism"] ytd-c4-tabbed-header-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-c4-tabbed-header-renderer {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] #channel-header,
+html[data-ypp-ui-design="minimalism"] #channel-header {
+  border-radius: 12px !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="minimalism"] yt-live-chat-renderer,
+html[data-ypp-ui-design="minimalism"] yt-live-chat-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="minimalism"] yt-live-chat-text-message-renderer {
+  border-radius: 12px !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="minimalism"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="minimalism"] tp-yt-paper-tooltip {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-notification-renderer, html[data-ypp-ui-design="minimalism"] ytd-notification-renderer {
+  border-radius: 12px !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="minimalism"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="minimalism"] ytd-badge-supported-renderer {
+  border-radius: 12px !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="minimalism"] ytd-skeleton, html[data-ypp-ui-design="minimalism"] ytd-skeleton, 
+html[data-ypp-card-style="minimalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="minimalism"] .ytd-ghost-grid-renderer {
+  border-radius: 12px !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+html[data-ypp-card-style="minimalism"] ytd-reel-item-renderer, html[data-ypp-ui-design="minimalism"] ytd-reel-item-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="minimalism"] ytd-rich-shelf-renderer {
+  border-radius: 12px !important;
+}
+
+/* 21. Metadata & Descriptions */
+html[data-ypp-card-style="minimalism"] ytd-watch-metadata, html[data-ypp-ui-design="minimalism"] ytd-watch-metadata {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="minimalism"] yt-icon, html[data-ypp-ui-design="minimalism"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="minimalism"] yt-icon:hover, html[data-ypp-ui-design="minimalism"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+html[data-ypp-card-style="minimalism"] .ytp-endscreen-content, html[data-ypp-ui-design="minimalism"] .ytp-endscreen-content {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="minimalism"] .ytp-ce-element, html[data-ypp-ui-design="minimalism"] .ytp-ce-element {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 24. YouTube Miniplayer */
+html[data-ypp-card-style="minimalism"] ytd-miniplayer, html[data-ypp-ui-design="minimalism"] ytd-miniplayer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 25. Settings Gear & Dropdowns */
+html[data-ypp-card-style="minimalism"] .ytp-settings-menu, html[data-ypp-ui-design="minimalism"] .ytp-settings-menu {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 26. Account Switcher & Profiles */
+html[data-ypp-card-style="minimalism"] ytd-account-item-renderer, html[data-ypp-ui-design="minimalism"] ytd-account-item-renderer {
+  border-radius: 12px !important;
+}
+
+/* 27. Search Filters (Filter Menu) */
+html[data-ypp-card-style="minimalism"] ytd-search-filter-renderer, html[data-ypp-ui-design="minimalism"] ytd-search-filter-renderer {
+  border-radius: 12px !important;
+}
+
+html[data-ypp-card-style="minimalism"] ytd-search-filter-renderer:hover, html[data-ypp-ui-design="minimalism"] ytd-search-filter-renderer:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* 28. Playlists Page Inner Layout */
+html[data-ypp-card-style="minimalism"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="minimalism"] ytd-playlist-panel-renderer {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 29. Chapters & Timestamp Links */
+html[data-ypp-card-style="minimalism"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="minimalism"] ytd-macro-markers-list-item-renderer {
+  border-radius: 12px !important;
+}
+
+/* 30. Offline & Error Screens */
+html[data-ypp-card-style="minimalism"] yt-error-screen, html[data-ypp-ui-design="minimalism"] yt-error-screen {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-ui-style=minimalism] #frosted-glass.with-chipbar.ytd-app {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* src/content/themes/ui-styles/minimalism/pages/watch.css */
+html[data-ypp-ui-style=minimalism] video.video-stream.html5-main-video,
+html[data-ypp-ui-style=minimalism] .html5-video-player {
+  border-radius: 0 !important;
+}
