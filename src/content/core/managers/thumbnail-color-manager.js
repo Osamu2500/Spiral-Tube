@@ -188,8 +188,6 @@ export class ThumbnailColorManager {
         // Load the image in the content script context using new Image() +
         // crossOrigin = "Anonymous". This works because content scripts run
         // in the YouTube page origin, so i.ytimg.com sends CORS headers for it.
-        // The background service-worker fetch() approach was failing because
-        // i.ytimg.com doesn't send CORS headers for service-worker requests.
         const tempImg = new Image();
         tempImg.crossOrigin = 'Anonymous';
 
@@ -199,7 +197,9 @@ export class ThumbnailColorManager {
                 this.ctx.drawImage(tempImg, 0, 0, 10, 10);
 
                 const data = this.ctx.getImageData(0, 0, 10, 10).data;
-                let r = 0, g = 0, b = 0, count = 0;
+                
+                // Hue bins: 12 bins of 30 degrees each
+                const bins = new Array(12).fill(0).map(() => ({ r: 0, g: 0, b: 0, count: 0, weight: 0 }));
 
                 for (let i = 0; i < data.length; i += 4) {
                     const pr = data[i];
@@ -207,38 +207,76 @@ export class ThumbnailColorManager {
                     const pb = data[i + 2];
                     const pa = data[i + 3];
 
-                    if (pa < 200) continue; // Skip transparent/semi-transparent
+                    if (pa < 200) continue; // Skip transparent
 
-                    // Skip near-black (letterbox bars) and near-white
-                    if (pr < 15 && pg < 15 && pb < 15) continue;
-                    if (pr > 240 && pg > 240 && pb > 240) continue;
+                    // Skip near-black and near-white
+                    if (pr < 20 && pg < 20 && pb < 20) continue;
+                    if (pr > 235 && pg > 235 && pb > 235) continue;
 
                     // ── SKIN TONE FILTER ──────────────────────────────────────────
-                    // If the pixel looks like human skin (flesh tones), skip it.
-                    // This forces the algorithm to pick the environment/background color
-                    // instead of making the card look like a giant face.
                     const isSkinTone = (pr > 95 && pg > 40 && pb > 20) &&
                                        (Math.max(pr, pg, pb) - Math.min(pr, pg, pb) > 15) &&
                                        (Math.abs(pr - pg) > 15) &&
                                        (pr > pg && pr > pb);
                     if (isSkinTone) continue;
 
-                    r += pr;
-                    g += pg;
-                    b += pb;
-                    count++;
+                    // Calculate HSL to find Hue
+                    const rNorm = pr / 255;
+                    const gNorm = pg / 255;
+                    const bNorm = pb / 255;
+                    const max = Math.max(rNorm, gNorm, bNorm);
+                    const min = Math.min(rNorm, gNorm, bNorm);
+                    let h, s, l = (max + min) / 2;
+
+                    if (max === min) {
+                        h = s = 0; // achromatic
+                    } else {
+                        const d = max - min;
+                        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                        switch (max) {
+                            case rNorm: h = (gNorm - bNorm) / d + (gNorm < bNorm ? 6 : 0); break;
+                            case gNorm: h = (bNorm - rNorm) / d + 2; break;
+                            case bNorm: h = (rNorm - gNorm) / d + 4; break;
+                        }
+                        h /= 6;
+                    }
+
+                    // Skip very low saturation (muddy/grey pixels)
+                    if (s < 0.15) continue;
+
+                    const hueDegree = h * 360;
+                    const binIndex = Math.floor(hueDegree / 30) % 12;
+                    
+                    // Weight highly saturated and mid-lightness pixels heavier
+                    const weight = s * (1 - Math.abs(l - 0.5));
+                    
+                    bins[binIndex].r += pr;
+                    bins[binIndex].g += pg;
+                    bins[binIndex].b += pb;
+                    bins[binIndex].count++;
+                    bins[binIndex].weight += weight;
                 }
 
-                // If we skipped everything (e.g., an image that is ONLY a face),
-                // fallback to a soft vibrant default (like a pleasant teal or purple).
-                if (count === 0) {
-                    r = 80; g = 180; b = 200;
-                    count = 1;
+                // Find the dominant hue bin
+                let bestBin = null;
+                let maxWeight = -1;
+                for (const bin of bins) {
+                    if (bin.count > 0 && bin.weight > maxWeight) {
+                        maxWeight = bin.weight;
+                        bestBin = bin;
+                    }
                 }
 
-                r = Math.round(r / count);
-                g = Math.round(g / count);
-                b = Math.round(b / count);
+                let r, g, b;
+                if (bestBin) {
+                    // Average ONLY the pixels that share the dominant hue
+                    r = Math.round(bestBin.r / bestBin.count);
+                    g = Math.round(bestBin.g / bestBin.count);
+                    b = Math.round(bestBin.b / bestBin.count);
+                } else {
+                    // Fallback to a pleasant teal if the image was 100% skin/grey/black
+                    r = 40; g = 180; b = 180;
+                }
 
                 const enhanced = this.enhanceColor(r, g, b);
                 const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
@@ -255,7 +293,7 @@ export class ThumbnailColorManager {
         };
 
         tempImg.onerror = () => {
-            // Image rejected CORS — skip silently, card will show fallback beige
+            // Image rejected CORS — skip silently
         };
 
         tempImg.src = cleanSrc;
@@ -294,33 +332,61 @@ export class ThumbnailColorManager {
     }
 
     enhanceColor(r, g, b) {
-        // ── Step 1: Normalize brightness ────────────────────────────────────────
-        // Bring the dominant channel up to 215 (vivid but not blown-out white)
-        const max = Math.max(r, g, b);
-        if (max === 0) return { r: 80, g: 80, b: 80 };
+        // ── HSL FORCED VIBRANCY ALGORITHM ───────────────────────────────────────
+        // Instead of blindly multiplying RGB values, we convert to HSL and mathematically
+        // FORCE the saturation and lightness into the "Vibrant & Rich" sweet spot.
+        const rNorm = r / 255;
+        const gNorm = g / 255;
+        const bNorm = b / 255;
+        const max = Math.max(rNorm, gNorm, bNorm);
+        const min = Math.min(rNorm, gNorm, bNorm);
+        let h, s, l = (max + min) / 2;
 
-        const brightnessTarget = 215;
-        const brightnessBoost = Math.min(brightnessTarget / max, 3.5); // Up to 3.5× on dark images
-        let nr = r * brightnessBoost;
-        let ng = g * brightnessBoost;
-        let nb = b * brightnessBoost;
+        if (max === min) {
+            h = s = 0;
+        } else {
+            const d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case rNorm: h = (gNorm - bNorm) / d + (gNorm < bNorm ? 6 : 0); break;
+                case gNorm: h = (bNorm - rNorm) / d + 2; break;
+                case bNorm: h = (rNorm - gNorm) / d + 4; break;
+            }
+            h /= 6;
+        }
 
-        // ── Step 2: Boost saturation ─────────────────────────────────────────────
-        // Push colors away from grey — grey = midpoint between new min/max.
-        // satFactor > 1 makes colors more vivid. Increased to 2.1 for extra pop.
-        const newMax = Math.max(nr, ng, nb);
-        const newMin = Math.min(nr, ng, nb);
-        const grey = (newMax + newMin) / 2;
-        const satFactor = 2.1; // More vivid
+        // FORCE high saturation (minimum 70%, maximum 95%)
+        // This instantly cures muddy/pastel colors.
+        s = Math.max(0.70, Math.min(s * 1.5, 0.95)); 
+        
+        // FORCE rich lightness (minimum 40%, maximum 65%)
+        // Keeps colors deeply pigmented but bright enough to pop.
+        l = Math.max(0.40, Math.min(l * 1.2, 0.65));
 
-        nr = grey + (nr - grey) * satFactor;
-        ng = grey + (ng - grey) * satFactor;
-        nb = grey + (nb - grey) * satFactor;
+        // Convert back to RGB
+        let rr, gg, bb;
+        if (s === 0) {
+            rr = gg = bb = l;
+        } else {
+            const hue2rgb = (p, q, t) => {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1/6) return p + (q - p) * 6 * t;
+                if (t < 1/2) return q;
+                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                return p;
+            };
+            const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            const p = 2 * l - q;
+            rr = hue2rgb(p, q, h + 1/3);
+            gg = hue2rgb(p, q, h);
+            bb = hue2rgb(p, q, h - 1/3);
+        }
 
         return {
-            r: Math.round(Math.min(255, Math.max(0, nr))),
-            g: Math.round(Math.min(255, Math.max(0, ng))),
-            b: Math.round(Math.min(255, Math.max(0, nb)))
+            r: Math.round(rr * 255),
+            g: Math.round(gg * 255),
+            b: Math.round(bb * 255)
         };
     }
 }
