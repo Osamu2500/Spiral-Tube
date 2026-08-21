@@ -11,8 +11,11 @@ html[data-ypp-ui-style="christmas"] {
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
-  
-  
+
+  /* Global Background Overrides */
+  --ypp-bg-global-image: radial-gradient(ellipse at top left, var(--christmas-bg-secondary) 0%, transparent 70%),
+    radial-gradient(ellipse at bottom right, var(--christmas-bg-tertiary) 0%, transparent 70%) !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 

@@ -975,3 +975,17 @@ ytd-comment-thread-renderer {
   border-radius: 30px;
   box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5);
 }
+
+html[data-ypp-ui-design="blue-sky"]::before {
+  background: linear-gradient(
+    90deg,
+    #87CEFA,
+    #00BFFF,
+    #f7c948,
+    #00BFFF,
+    #87CEFA
+  ) !important;
+  background-size: 300% 100% !important;
+  animation: sky-vapor 3s linear infinite !important;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.6) !important;
+}

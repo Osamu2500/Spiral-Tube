@@ -13,6 +13,10 @@ html[data-ypp-ui-style="retro"] {
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
   
   --yt-font-family: var(--ypp-font-primary,  var(--retro-font)) !important;
+
+  /* Global Background Overrides */
+  --ypp-bg-global-color: #008080 !important;
+  --ypp-bg-global-image: none !important;
 }
 
 

@@ -13,6 +13,12 @@ html[data-ypp-ui-style="cyberpunk"] {
   --ypp-shadow-hover: 0 8px 24px #ff003c40 !important;
   
   --yt-font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
+
+  /* Global Background Overrides */
+  --ypp-bg-global-color: var(--cyber-bg) !important;
+  --ypp-bg-global-image: linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px) !important;
+  --ypp-bg-global-size: 60px 60px !important;
 }
 
 

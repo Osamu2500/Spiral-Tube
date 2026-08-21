@@ -428,3 +428,18 @@ html[data-ypp-ui-design="deepspace"] #description.ytd-watch-metadata {
 html[data-ypp-ui-design="deepspace"] #description.ytd-watch-metadata:hover {
   box-shadow: var(--ds-glow-blue) !important;
 }
+
+html[data-ypp-ui-design="deepspace"]::after {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.012) 2px,
+    rgba(255, 255, 255, 0.012) 4px
+  ) !important;
+}

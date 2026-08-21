@@ -11,8 +11,37 @@ html[data-ypp-ui-style="blue-sky"] {
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, #87CEFA40) !important;
   --ypp-shadow-base: 0 4px 12px #87CEFA20 !important;
   --ypp-shadow-hover: 0 8px 24px #87CEFA40 !important;
-  
-  
+
+  /* Global Background Overrides */
+  --ypp-bg-global-color: #c8e6fa !important;
+  --ypp-bg-global-image: radial-gradient(
+      ellipse at 85% 0%,
+      rgba(255, 248, 200, 0.60) 0%,
+      rgba(135, 206, 250, 0.20) 40%,
+      transparent 70%
+    ),
+    
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(30, 120, 200, 0.20) 0%,
+      transparent 50%
+    ),
+    
+    radial-gradient(
+      ellipse at 10% 90%,
+      rgba(200, 240, 255, 0.70) 0%,
+      transparent 60%
+    ),
+    
+    linear-gradient(
+      180deg,
+      #b8dcf8 0%,
+      #d8eeff 35%,
+      #eef7ff 70%,
+      #f5faff 100%
+    ) !important;
+  --ypp-bg-global-size: 100% 100% !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 

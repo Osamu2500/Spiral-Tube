@@ -11,8 +11,12 @@ html[data-ypp-ui-style="bloodmoon"] {
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
-  
-  
+
+  /* Global Background Overrides */
+  --ypp-bg-global-image: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(192, 21, 42, 0.25) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(100, 5, 20, 0.3) 0%, transparent 60%),
+    linear-gradient(180deg, #060205 0%, #100409 100%) !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 

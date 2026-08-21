@@ -11,8 +11,13 @@ html[data-ypp-ui-style="brutalism"] {
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
-  
-  
+
+  /* Global Background Overrides */
+  --ypp-bg-global-color: var(--brutal-white) !important;
+  --ypp-bg-global-image: linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px) !important;
+  --ypp-bg-global-size: 20px 20px !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 

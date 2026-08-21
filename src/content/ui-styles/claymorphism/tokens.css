@@ -11,8 +11,13 @@ html[data-ypp-ui-style="claymorphism"] {
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
-  
-  
+
+  /* Global Background Overrides */
+  --ypp-bg-global-image: radial-gradient(at 0% 0%, #fce4f0 0px, transparent 50%),
+    radial-gradient(at 100% 0%, #e4f0ff 0px, transparent 50%),
+    radial-gradient(at 100% 100%, #f0e8ff 0px, transparent 50%),
+    radial-gradient(at 0% 100%, #fef5ff 0px, transparent 50%) !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 

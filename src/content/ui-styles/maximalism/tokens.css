@@ -13,6 +13,14 @@ html[data-ypp-ui-style="maximalism"] {
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
   
   
+
+  /* Global Background Overrides */
+  --ypp-bg-global-image: repeating-linear-gradient(
+      45deg,
+      #ff0055,
+      #ff0055 10px,
+      #ffff00 10px,
+      #ffff00 20px) !important;
 }
 
 

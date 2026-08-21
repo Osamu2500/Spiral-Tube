@@ -13,6 +13,11 @@ html[data-ypp-ui-style="kawaii"] {
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
   
   --yt-font-family: var(--ypp-font-primary, 'Quicksand', 'Roboto', sans-serif) !important;
+
+  /* Global Background Overrides */
+  --ypp-bg-global-image: radial-gradient(ellipse at top right, var(--kawaii-accent-tertiary) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom left, var(--kawaii-bg-tertiary) 0%, transparent 70%) !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 

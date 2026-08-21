@@ -11,8 +11,17 @@ html[data-ypp-ui-style="frutiger-aero"] {
   --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
-  
-  
+
+  /* Global Background Overrides */
+  --ypp-bg-global-image: linear-gradient(to bottom, 
+    var(--faero-sky-light) 0%, 
+    var(--faero-sky-mid) 25%, 
+    var(--faero-sky-deep) 50%, 
+    var(--faero-green-mid) 75%, 
+    var(--faero-green-lt) 100%
+  ) !important;
+  --ypp-bg-global-size: 100vw 100vh !important;
+  --ypp-bg-global-attachment: fixed !important;
 }
 
 
