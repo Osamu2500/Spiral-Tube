@@ -75,33 +75,48 @@ html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-ca
 }
 
 /* ── DARK TEXT — SHARPIE HANDWRITING ─────────────────────────────────────────
-   Force dark text on ALL polaroid text elements regardless of YouTube dark mode.
-   We use a nuclear `*` selector specifically inside the text containers (#details, #meta)
-   to ensure that no nested span or YouTube inline style can override the black text.
+   Force dark text on ALL polaroid text elements using brute-force tag selectors.
+   This guarantees that even if YouTube uses highly specific classes or variables,
+   our `!important` tag rule will nuke it.
 */
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] :is(
-    #details, #meta, #metadata, .yt-lockup-metadata-view-model-wiz
-) * {
-  font-family: 'Caveat', cursive, sans-serif !important;
-  color: #111111 !important;
-  text-shadow: 0 0 5px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.8) !important;
-  --yt-spec-text-primary: #111111 !important;
-  --yt-spec-text-secondary: #222222 !important;
-  --yt-spec-text-disabled: #444444 !important;
-  --yt-endpoint-color: #111111 !important;
-  --yt-endpoint-visited-color: #111111 !important;
-  --yt-endpoint-hover-color: #111111 !important;
-}
-
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] :is(
-    #details, #meta, #metadata, .yt-lockup-metadata-view-model-wiz
-) {
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-rich-item-renderer yt-formatted-string,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-rich-item-renderer yt-formatted-string *,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-rich-item-renderer span,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-rich-item-renderer a,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-renderer yt-formatted-string *,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-renderer span,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-renderer a,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-lockup-view-model yt-formatted-string,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-lockup-view-model yt-formatted-string *,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-lockup-view-model span,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-lockup-view-model a {
   font-family: 'Caveat', cursive, sans-serif !important;
   color: #111111 !important;
   text-shadow: 0 0 5px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.8) !important;
   line-height: 1.15 !important;
   letter-spacing: 0.5px !important;
   font-weight: 700 !important;
+  --yt-spec-text-primary: #111111 !important;
+  --yt-spec-text-secondary: #222222 !important;
+}
+
+/* ── REVERT TIME BADGES ON THUMBNAILS ────────────────────────────────────────
+   Since we brute-forced all spans to be black and caveat, we must revert the
+   time indicators sitting on top of the thumbnail back to YouTube native styling.
+*/
+html[data-ypp-card-style="polaroid"] ytd-thumbnail span,
+html[data-ypp-card-style="polaroid"] ytd-thumbnail yt-formatted-string,
+html[data-ypp-card-style="polaroid"] ytd-thumbnail yt-formatted-string *,
+html[data-ypp-card-style="polaroid"] yt-image span,
+html[data-ypp-card-style="polaroid"] .ytd-thumbnail-overlay-time-status-renderer span,
+html[data-ypp-card-style="polaroid"] .badge-shape-wiz__text {
+  color: #ffffff !important;
+  font-family: "Roboto", Arial, sans-serif !important;
+  text-shadow: none !important;
+  line-height: normal !important;
+  letter-spacing: normal !important;
+  font-weight: 500 !important;
 }
 
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] #video-title {
