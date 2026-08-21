@@ -2117,11 +2117,6 @@ html[data-ypp-ui-design="neo-brutalism"] .ytChipShapeChip {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="neo-brutalism"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 10px 10px 0px #000 !important;
-}
-
 html[data-ypp-ui-design="neo-brutalism"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 6px 6px 0px #000 !important;

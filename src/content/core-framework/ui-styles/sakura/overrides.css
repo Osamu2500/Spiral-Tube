@@ -990,11 +990,6 @@ ytd-mini-guide-entry-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-
 ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;

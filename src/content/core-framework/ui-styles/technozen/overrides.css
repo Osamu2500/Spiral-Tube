@@ -832,11 +832,6 @@ ytd-browse[page-subtype=home] #chips {
     background var(--bounce) !important;
 }
 
-.ytChipShapeChip:hover {
-  transform: translateY(-1px) scale(1.06) !important;
-  box-shadow: var(--shadow-hover) !important;
-}
-
 ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   box-shadow: var(--shadow-base) !important;

@@ -13,6 +13,16 @@ html[data-ypp-ui-design="origami"] {
   --ypp-shadow-hover: 0 8px 24px #f4f4f040 !important;
   
   --yt-font-family: var(--ypp-font-primary, "Quicksand","Nunito",sans-serif) !important;
+
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    #fdfdfd !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #f4f4f040) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #f4f4f040) !important;
+  --ypp-card-shadow:                0 4px 12px #f4f4f020 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #f4f4f040 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
 }
 
 

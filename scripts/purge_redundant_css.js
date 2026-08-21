@@ -45,7 +45,12 @@ const REDUNDANT_SELECTORS = [
   '.yt-spec-avatar-shape__image',
   '.yt-spec-button-shape-next',
   'yt-button-shape button',
-  'yt-chip-cloud-chip-renderer'
+  'yt-chip-cloud-chip-renderer',
+  '.yt-chip-shape',
+  '.ytChipShapeChip',
+  'ytd-browse[page-subtype=home] #chips',
+  'button[aria-label*="Download" i]',
+  'button[title*="Download" i]'
 ];
 
 const plugin = postcss.plugin('purge-bloat', () => {

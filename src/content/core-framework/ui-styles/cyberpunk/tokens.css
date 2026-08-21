@@ -14,7 +14,17 @@ html[data-ypp-ui-design="cyberpunk"] {
   
   --yt-font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
 
-  }
+  
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    #050508 !important;
+  --ypp-card-bg-hover:              rgba(10,10,15,0.9) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #ff003c40) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ff003c40) !important;
+  --ypp-card-shadow:                0 4px 12px #ff003c20 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #ff003c40 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
 
 
 html[data-ypp-ui-design="cyberpunk"] * {

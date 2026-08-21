@@ -937,23 +937,9 @@ ytd-mini-guide-entry-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: none !important;
-}
-
 ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: var(--shadow-base) !important;
-}
-
-.yt-chip-shape {
-  border-radius: var(--ypp-shape-primary, 0) !important;
-  box-shadow: var(--win95-raise) !important;
-}
-
-.yt-chip-shape[aria-selected=true] {
-  box-shadow: var(--win95-sink) !important;
 }
 
 #ypp-pl-root .ypp-pl-sidebar {

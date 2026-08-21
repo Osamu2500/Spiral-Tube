@@ -1,0 +1,148 @@
+/*
+   ==========================================================================
+   CORE FRAMEWORK — CHIPS COMPONENT
+   Wires --ypp-chip-* tokens to YouTube's filter chip bar and all chip/tag
+   pill elements across the site. This is the single source of truth —
+   overrides.css files should NOT duplicate these selectors.
+   ========================================================================== 
+*/
+
+/* ── Chip Cloud Bar (the "All / Gaming / Music" filter row) ─────────────── */
+yt-chip-cloud-renderer,
+ytd-feed-filter-chip-bar-renderer {
+  background: var(--ypp-chip-bar-bg, transparent) !important;
+  border-bottom: var(--ypp-chip-bar-border, none) !important;
+  backdrop-filter: var(--ypp-chip-bar-backdrop-filter, none) !important;
+  -webkit-backdrop-filter: var(--ypp-chip-bar-backdrop-filter, none) !important;
+  padding: var(--ypp-chip-bar-padding, 0) !important;
+  transition: background 0.3s ease !important;
+}
+
+/* ── Individual Chips ───────────────────────────────────────────────────── */
+yt-chip-cloud-chip-renderer,
+yt-chip-cloud-chip-renderer.style-scope {
+  background: var(--ypp-chip-bg, var(--yt-spec-10-percent-layer)) !important;
+  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;
+  border: var(--ypp-chip-border, 1px solid transparent) !important;
+  color: var(--ypp-chip-color, var(--ypp-text-color, inherit)) !important;
+  box-shadow: var(--ypp-chip-shadow, none) !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    border-color var(--ypp-transition-smooth),
+    box-shadow var(--ypp-transition-smooth),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+yt-chip-cloud-chip-renderer:hover {
+  background: var(--ypp-chip-bg-hover, var(--yt-spec-20-percent-layer)) !important;
+  border: var(--ypp-chip-border-hover, var(--ypp-chip-border, 1px solid transparent)) !important;
+  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;
+  transform: translateY(-1px) scale(1.03) !important;
+}
+
+/* ── Active / Selected Chip ─────────────────────────────────────────────── */
+yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"],
+yt-chip-cloud-chip-renderer[aria-selected="true"] {
+  background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;
+  color: var(--ypp-chip-active-color, #fff) !important;
+  border: var(--ypp-chip-active-border, 1px solid transparent) !important;
+  box-shadow: var(--ypp-chip-active-shadow, var(--ypp-shadow-base, none)) !important;
+  transform: none !important;
+}
+
+yt-chip-cloud-chip-renderer[chip-style="STYLE_TARGET"]:hover,
+yt-chip-cloud-chip-renderer[aria-selected="true"]:hover {
+  background: var(--ypp-chip-active-bg, var(--ypp-primary-accent, var(--yt-spec-call-to-action))) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* ── Search Chip Filters (Results page) ─────────────────────────────────── */
+ytd-search-filter-renderer a,
+ytd-search-filter-renderer a:visited {
+  background: var(--ypp-chip-bg, var(--yt-spec-10-percent-layer)) !important;
+  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;
+  border: var(--ypp-chip-border, 1px solid transparent) !important;
+  color: var(--ypp-chip-color, var(--ypp-text-color, inherit)) !important;
+  box-shadow: var(--ypp-chip-shadow, none) !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    box-shadow var(--ypp-transition-smooth),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+ytd-search-filter-renderer a:hover {
+  background: var(--ypp-chip-bg-hover, var(--yt-spec-20-percent-layer)) !important;
+  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Hashtag / Topic Chips (on video pages) ─────────────────────────────── */
+a.ytd-hashtag,
+ytd-hashtag a {
+  background: var(--ypp-chip-bg, transparent) !important;
+  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;
+  border: var(--ypp-chip-border, 1px solid transparent) !important;
+  color: var(--ypp-chip-color, var(--ypp-primary-accent, inherit)) !important;
+  padding: 2px 8px !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+a.ytd-hashtag:hover,
+ytd-hashtag a:hover {
+  background: var(--ypp-chip-bg-hover, var(--yt-spec-10-percent-layer)) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Legacy Chip Shape Classes (used across many designs) ───────────────── */
+.yt-chip-shape,
+.ytChipShapeChip {
+  border-radius: var(--ypp-chip-radius, var(--ypp-border-radius-base, 12px)) !important;
+  background: var(--ypp-chip-bg, var(--yt-spec-10-percent-layer)) !important;
+  border: var(--ypp-chip-border, 1px solid transparent) !important;
+  box-shadow: var(--ypp-chip-shadow, none) !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    box-shadow var(--ypp-transition-smooth),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+.yt-chip-shape:hover,
+.ytChipShapeChip:hover {
+  background: var(--ypp-chip-bg-hover, var(--yt-spec-20-percent-layer)) !important;
+  box-shadow: var(--ypp-chip-shadow-hover, var(--ypp-shadow-hover, none)) !important;
+  transform: scale(1.05) !important;
+}
+
+/* ── Chip Container Bar (#chips) ────────────────────────────────────────── */
+ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+ytd-browse[page-subtype=home] #chips {
+  background: var(--ypp-chip-bar-bg, transparent) !important;
+  border-radius: var(--ypp-chip-bar-radius, var(--ypp-border-radius-base, 12px)) !important;
+  box-shadow: var(--ypp-chip-bar-shadow, none) !important;
+  backdrop-filter: var(--ypp-chip-bar-backdrop-filter, none) !important;
+  -webkit-backdrop-filter: var(--ypp-chip-bar-backdrop-filter, none) !important;
+  transition: background 0.3s ease !important;
+}
+
+/* ── Download Button (video actions bar) ────────────────────────────────── */
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  background: var(--ypp-download-btn-bg, var(--ypp-surface-bg-hover, transparent)) !important;
+  border-radius: var(--ypp-download-btn-radius, var(--ypp-border-radius-base, 12px)) !important;
+  border: var(--ypp-download-btn-border, var(--ypp-surface-border, none)) !important;
+  box-shadow: var(--ypp-download-btn-shadow, var(--ypp-shadow-base, none)) !important;
+  color: var(--ypp-download-btn-color, inherit) !important;
+  transition:
+    background var(--ypp-transition-smooth),
+    box-shadow var(--ypp-transition-bounce),
+    transform var(--ypp-transition-bounce) !important;
+}
+
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  background: var(--ypp-download-btn-bg-hover, var(--ypp-surface-bg-active, transparent)) !important;
+  box-shadow: var(--ypp-download-btn-shadow-hover, var(--ypp-shadow-hover, none)) !important;
+  transform: scale(1.05) !important;
+}

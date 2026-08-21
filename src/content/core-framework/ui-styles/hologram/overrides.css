@@ -2296,11 +2296,6 @@ html[data-ypp-ui-design="hologram"] .ytChipShapeChip {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="hologram"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
-}
-
 html[data-ypp-ui-design="hologram"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
   box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;

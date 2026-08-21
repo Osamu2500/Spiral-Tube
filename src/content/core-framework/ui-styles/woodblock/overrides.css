@@ -2127,11 +2127,6 @@ html[data-ypp-ui-design="woodblock"] .ytChipShapeChip {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="woodblock"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
-}
-
 html[data-ypp-ui-design="woodblock"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;

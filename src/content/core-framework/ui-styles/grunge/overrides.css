@@ -2111,11 +2111,6 @@ html[data-ypp-ui-design="grunge"] .ytChipShapeChip {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="grunge"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 3px 3px 0 #111 !important;
-}
-
 html[data-ypp-ui-design="grunge"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 2px) !important;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;

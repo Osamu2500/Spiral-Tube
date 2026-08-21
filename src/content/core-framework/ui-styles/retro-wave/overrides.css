@@ -2145,11 +2145,6 @@ html[data-ypp-ui-design="retro-wave"] .ytChipShapeChip {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="retro-wave"] .ytChipShapeChip:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
-}
-
 html[data-ypp-ui-design="retro-wave"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 0 15px rgba(255,0,127,0.5) !important;
