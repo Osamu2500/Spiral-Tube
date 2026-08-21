@@ -9,7 +9,19 @@ export class ThumbnailColorManager {
         this.activeStyle = '';
         this.waitingElements = new Set();
         this._pollingInterval = null;
+        this._rescanInterval = null;
 
+        // CARD SELECTORS — the elements that get the background color applied
+        this.CARD_SELECTOR = [
+            'ytd-rich-item-renderer',
+            'ytd-video-renderer',
+            'ytd-grid-video-renderer',
+            'ytd-compact-video-renderer',
+            'yt-lockup-view-model',
+            '.ypp-grid-item'
+        ].join(', ');
+
+        // IntersectionObserver: process elements as they enter the viewport
         this.observer = new IntersectionObserver((entries) => {
             if (!this.enabled) return;
             entries.forEach(entry => {
@@ -18,13 +30,14 @@ export class ThumbnailColorManager {
                 }
             });
         }, {
-            rootMargin: '300px' // Pre-load slightly offscreen
+            rootMargin: '600px' // Pre-load well offscreen so all rows are ready
         });
 
+        // MutationObserver: catch dynamically-added cards (YouTube SPA loads cards progressively)
         this.mutationObserver = new MutationObserver((mutations) => {
             if (!this.enabled) return;
-            for (let mut of mutations) {
-                for (let node of mut.addedNodes) {
+            for (const mut of mutations) {
+                for (const node of mut.addedNodes) {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         this.observeNewNodes(node);
                     }
@@ -36,12 +49,8 @@ export class ThumbnailColorManager {
     updateSettings(settings) {
         if (!settings) return;
         this.activeStyle = settings.cardStyle || 'default';
-        const needsExtraction = [
-            'polaroid', 
-            'neon',
-            'holographic'
-        ].includes(this.activeStyle);
-        
+        const needsExtraction = ['polaroid', 'neon', 'holographic'].includes(this.activeStyle);
+
         if (needsExtraction && !this.enabled) {
             this.start();
         } else if (!needsExtraction && this.enabled) {
@@ -52,61 +61,98 @@ export class ThumbnailColorManager {
     start() {
         if (this.enabled) return;
         this.enabled = true;
+
+        // Step 1: Immediately scan the entire DOM for cards that already exist.
+        // This covers the first screen load.
         this.observeNewNodes(document.body);
-        
+
+        // Step 2: ALWAYS run MutationObserver — this catches every card YouTube
+        // adds to the DOM after the initial load (SPA navigation, lazy loading).
+        // The old code used `else if`, which meant MutationObserver was NEVER
+        // started when sharedObserver was available — that's why lower rows missed colors.
+        this.mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+        // Step 3: Also register with sharedObserver if available (belt-and-suspenders).
         if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.register('thumbnail-color-manager', 'ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model, .ypp-grid-item', (elements) => {
-                if (this.enabled) {
+            window.YPP.sharedObserver.register(
+                'thumbnail-color-manager',
+                this.CARD_SELECTOR,
+                (elements) => {
+                    if (!this.enabled) return;
                     elements.forEach(node => this.observer.observe(node));
-                }
-            }, false);
-        } else if (this.mutationObserver) {
-            this.mutationObserver.observe(document.body, { childList: true, subtree: true });
+                },
+                false
+            );
         }
+
+        // Step 4: Periodic rescan for the first 15 seconds.
+        // YouTube can inject cards at any time. This is the ultimate safety net.
+        let rescanCount = 0;
+        this._rescanInterval = setInterval(() => {
+            if (!this.enabled || rescanCount >= 15) {
+                clearInterval(this._rescanInterval);
+                this._rescanInterval = null;
+                return;
+            }
+            rescanCount++;
+            // Find cards that haven't been processed yet and observe them
+            document.querySelectorAll(this.CARD_SELECTOR).forEach(node => {
+                if (!node.hasAttribute('data-ypp-thumb-color') && !node.hasAttribute('data-ypp-color-wait')) {
+                    this.observer.observe(node);
+                }
+            });
+        }, 1000); // Every 1 second for 15 seconds
     }
 
     stop() {
         this.enabled = false;
         this.observer.disconnect();
-        
+        this.mutationObserver.disconnect();
+
         if (window.YPP?.sharedObserver) {
             window.YPP.sharedObserver.unregister('thumbnail-color-manager');
-        }
-        if (this.mutationObserver) {
-            this.mutationObserver.disconnect();
         }
 
         if (this._pollingInterval) {
             clearInterval(this._pollingInterval);
             this._pollingInterval = null;
         }
+        if (this._rescanInterval) {
+            clearInterval(this._rescanInterval);
+            this._rescanInterval = null;
+        }
+
         this.waitingElements.clear();
-        document.querySelectorAll('[data-ypp-thumb-color]').forEach(el => {
+        document.querySelectorAll('[data-ypp-thumb-color], [data-ypp-color-wait]').forEach(el => {
             el.style.removeProperty('--ypp-thumb-color');
             el.style.removeProperty('--ypp-thumb-rgb');
             el.removeAttribute('data-ypp-thumb-color');
+            el.removeAttribute('data-ypp-color-wait');
         });
     }
 
     observeNewNodes(root) {
-        if (root.matches && root.matches('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model, .ypp-grid-item')) {
+        if (root.matches && root.matches(this.CARD_SELECTOR)) {
             this.observer.observe(root);
         }
         if (root.querySelectorAll) {
-            const nodes = root.querySelectorAll('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model, .ypp-grid-item');
-            nodes.forEach(node => this.observer.observe(node));
+            root.querySelectorAll(this.CARD_SELECTOR).forEach(node => this.observer.observe(node));
         }
     }
 
     getImage(el) {
-        // Try normal img selector first
-        let img = el.querySelector('yt-image img, ytd-thumbnail img, yt-lockup-view-model img, .yt-core-image, img');
-        // Try shadow root fallback for yt-image
+        // Try direct img selectors first (fastest)
+        let img = el.querySelector('yt-image img, ytd-thumbnail img, yt-lockup-view-model img, .yt-core-image');
+        // Fall back to shadow root (yt-image uses shadow DOM on some YouTube builds)
         if (!img) {
             const ytImage = el.querySelector('yt-image');
             if (ytImage && ytImage.shadowRoot) {
                 img = ytImage.shadowRoot.querySelector('img');
             }
+        }
+        // Last resort: any img
+        if (!img) {
+            img = el.querySelector('img');
         }
         return img;
     }
@@ -117,8 +163,8 @@ export class ThumbnailColorManager {
         const img = this.getImage(el);
         const src = img ? img.src : null;
 
-        // Allow hqdefault thumbnails — don't wait for maxres
-        const isReady = src && !src.includes('data:image');
+        // Accept hqdefault thumbnails — don't block on maxres
+        const isReady = src && !src.includes('data:image') && src.startsWith('http');
 
         if (!isReady) {
             if (!el.hasAttribute('data-ypp-color-wait')) {
@@ -129,25 +175,23 @@ export class ThumbnailColorManager {
             return;
         }
 
-        // Strip URL params to maximize cache hits (e.g. sqp=... on YouTube CDN URLs)
+        // Strip URL params (sqp=, v=, etc.) to maximize in-memory cache hits
         const cleanSrc = src.split('?')[0];
 
         if (this.cache.has(cleanSrc)) {
             const cached = this.cache.get(cleanSrc);
-            el.style.setProperty('--ypp-thumb-color', cached.colorStr);
-            el.style.setProperty('--ypp-thumb-rgb', cached.rgbStr);
-            el.setAttribute('data-ypp-thumb-color', 'true');
+            this._applyColor(el, cached.colorStr, cached.rgbStr);
             return;
         }
 
-        // ---- ORIGINAL PROVEN APPROACH FROM COMMIT 7f2c736f ----
-        // Use new Image() with crossOrigin=Anonymous in the CONTENT SCRIPT context.
-        // This works because content scripts run in the page's origin context,
-        // which means YouTube CDN (i.ytimg.com) allows the crossOrigin request.
-        // The background service worker fetch() approach was FAILING silently due
-        // to CORS / OffscreenCanvas issues in the service worker context.
+        // ── PROVEN APPROACH from commit 7f2c736f ──────────────────────────────
+        // Load the image in the content script context using new Image() +
+        // crossOrigin = "Anonymous". This works because content scripts run
+        // in the YouTube page origin, so i.ytimg.com sends CORS headers for it.
+        // The background service-worker fetch() approach was failing because
+        // i.ytimg.com doesn't send CORS headers for service-worker requests.
         const tempImg = new Image();
-        tempImg.crossOrigin = 'Anonymous'; // Crucial for canvas pixel reading
+        tempImg.crossOrigin = 'Anonymous';
 
         tempImg.onload = () => {
             try {
@@ -158,10 +202,9 @@ export class ThumbnailColorManager {
                 let r = 0, g = 0, b = 0, count = 0;
 
                 for (let i = 0; i < data.length; i += 4) {
-                    const alpha = data[i + 3];
-                    if (alpha < 255) continue;
+                    if (data[i + 3] < 200) continue; // Skip transparent/semi-transparent
 
-                    // Exclude pure black letterboxes and pure white
+                    // Skip near-black (letterbox bars) and near-white
                     if (data[i] < 15 && data[i + 1] < 15 && data[i + 2] < 15) continue;
                     if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) continue;
 
@@ -172,32 +215,38 @@ export class ThumbnailColorManager {
                 }
 
                 if (count > 0) {
-                    r = Math.floor(r / count);
-                    g = Math.floor(g / count);
-                    b = Math.floor(b / count);
+                    r = Math.round(r / count);
+                    g = Math.round(g / count);
+                    b = Math.round(b / count);
 
-                    const enhanced = this.enhanceColorForGlow(r, g, b);
+                    const enhanced = this.enhanceColor(r, g, b);
                     const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
                     const rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
 
                     this.cache.set(cleanSrc, { colorStr, rgbStr });
 
                     if (el.isConnected) {
-                        el.style.setProperty('--ypp-thumb-color', colorStr);
-                        el.style.setProperty('--ypp-thumb-rgb', rgbStr);
-                        el.setAttribute('data-ypp-thumb-color', 'true');
+                        this._applyColor(el, colorStr, rgbStr);
                     }
                 }
             } catch (e) {
-                // Ignore CORS tainted canvas errors silently
+                // Silently ignore CORS/tainted canvas errors
             }
         };
 
         tempImg.onerror = () => {
-            // Some images might strictly reject CORS — skip them silently
+            // Image rejected CORS — skip silently, card will show fallback beige
         };
 
         tempImg.src = cleanSrc;
+    }
+
+    _applyColor(el, colorStr, rgbStr) {
+        el.style.setProperty('--ypp-thumb-color', colorStr);
+        el.style.setProperty('--ypp-thumb-rgb', rgbStr);
+        el.setAttribute('data-ypp-thumb-color', 'true');
+        el.removeAttribute('data-ypp-color-wait');
+        this.waitingElements.delete(el);
     }
 
     startPolling() {
@@ -208,37 +257,50 @@ export class ThumbnailColorManager {
                 this._pollingInterval = null;
                 return;
             }
-
-            for (const el of this.waitingElements) {
+            for (const el of [...this.waitingElements]) {
                 if (!document.body.contains(el)) {
                     this.waitingElements.delete(el);
                     continue;
                 }
-                const currentImg = this.getImage(el);
-                const currentSrc = currentImg ? currentImg.src : null;
-                if (currentSrc && !currentSrc.includes('data:image')) {
+                const img = this.getImage(el);
+                const src = img ? img.src : null;
+                if (src && !src.includes('data:image') && src.startsWith('http')) {
                     this.waitingElements.delete(el);
                     el.removeAttribute('data-ypp-color-wait');
                     this.processElement(el);
                 }
             }
-        }, 300); // Poll every 300ms
+        }, 250);
     }
 
-    enhanceColorForGlow(r, g, b) {
-        // Boost vibrance for a rich polaroid background effect
+    enhanceColor(r, g, b) {
+        // ── Step 1: Normalize brightness ────────────────────────────────────────
+        // Bring the dominant channel up to 210 (vivid but not blown-out white)
         const max = Math.max(r, g, b);
+        if (max === 0) return { r: 80, g: 80, b: 80 };
 
-        if (max === 0) return { r: 50, g: 50, b: 50 }; // Fallback dark grey
+        const brightnessTarget = 210;
+        const brightnessBoost = Math.min(brightnessTarget / max, 3.0); // Up to 3× on dark images
+        let nr = r * brightnessBoost;
+        let ng = g * brightnessBoost;
+        let nb = b * brightnessBoost;
 
-        // Push brightness up by at most 40%
-        let boost = 255 / max;
-        boost = Math.min(boost, 1.4);
+        // ── Step 2: Boost saturation ─────────────────────────────────────────────
+        // Push colors away from grey — grey = midpoint between new min/max.
+        // satFactor > 1 makes colors more vivid, < 1 makes them more pastel.
+        const newMax = Math.max(nr, ng, nb);
+        const newMin = Math.min(nr, ng, nb);
+        const grey = (newMax + newMin) / 2;
+        const satFactor = 1.8; // 80% saturation boost for vivid, rich polaroid colors
+
+        nr = grey + (nr - grey) * satFactor;
+        ng = grey + (ng - grey) * satFactor;
+        nb = grey + (nb - grey) * satFactor;
 
         return {
-            r: Math.min(255, Math.floor(r * boost)),
-            g: Math.min(255, Math.floor(g * boost)),
-            b: Math.min(255, Math.floor(b * boost))
+            r: Math.round(Math.min(255, Math.max(0, nr))),
+            g: Math.round(Math.min(255, Math.max(0, ng))),
+            b: Math.round(Math.min(255, Math.max(0, nb)))
         };
     }
 }

@@ -1,32 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
 
-/* POLAROID CARD STYLE — V8
-   Uses 8x attribute specificity to override core YouTube styles.
+/* POLAROID CARD STYLE — V9
+   8× attribute specificity to guarantee we beat YouTube dark-mode overrides.
    Color comes from --ypp-thumb-color set by ThumbnailColorManager.
 */
 
-/* ── POLAROID FRAME ─────────────────────────────────────────────────── */
+/* ── POLAROID FRAME ───────────────────────────────────────────────────────── */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
     yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
 ) {
-  /* The extracted thumbnail color — vivid and boosted by ThumbnailColorManager */
   background-color: var(--ypp-thumb-color, #E8E4D9) !important;
-  
   border-radius: 4px !important;
-  padding: 10px 10px 45px 10px !important; /* Thick bottom white bar = polaroid */
-  
+  padding: 10px 10px 45px 10px !important;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 2px 5px rgba(0, 0, 0, 0.2) !important;
   border: 1px solid rgba(0, 0, 0, 0.12) !important;
-  
   transform: rotate(-1.5deg) translateZ(0) !important;
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease !important;
   will-change: transform, box-shadow;
   position: relative !important;
 }
 
-/* ── ALTERNATING TILTS ──────────────────────────────────────────────── */
+/* ── ALTERNATING TILTS ────────────────────────────────────────────────────── */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
@@ -40,7 +36,7 @@ html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-ca
   transform: rotate(-2.5deg) translateZ(0) !important;
 }
 
-/* ── HOVER ──────────────────────────────────────────────────────────── */
+/* ── HOVER ────────────────────────────────────────────────────────────────── */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
@@ -51,7 +47,7 @@ html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-ca
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* ── THE PHOTO (THUMBNAIL) ──────────────────────────────────────────── */
+/* ── PHOTO (THUMBNAIL) ────────────────────────────────────────────────────── */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] body:not(.ypp-channel-page) :is(ytd-thumbnail, yt-image) {
   border-radius: 2px !important;
   border: 1px solid rgba(0,0,0,0.15) !important;
@@ -60,45 +56,56 @@ html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-ca
   overflow: hidden !important;
   filter: sepia(0.15) contrast(1.1) brightness(0.95) !important;
   transition: filter 0.3s ease !important;
-  opacity: 1;
 }
-
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] body:not(.ypp-channel-page) :is(ytd-thumbnail, yt-image):hover {
   filter: sepia(0) contrast(1) brightness(1) !important;
 }
-
-/* Photo glare */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] body:not(.ypp-channel-page) :is(ytd-thumbnail, yt-image)::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, transparent 40%);
   pointer-events: none;
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] body:not(.ypp-channel-page) :is(ytd-thumbnail, yt-image):hover::after {
   opacity: 1;
 }
 
-/* ── TEXT — DARK "SHARPIE" HANDWRITING ──────────────────────────────── 
-   Force dark text on ALL polaroid cards so it's always readable against
-   the colorful extracted backgrounds. Uses strong text-shadow to
-   give a "written in sharpie" look.
+/* ── DARK TEXT — SHARPIE HANDWRITING ─────────────────────────────────────────
+   Force dark text on ALL polaroid text elements regardless of YouTube dark mode.
+   The white glow text-shadow acts as a universal contrast halo — black ink
+   is always readable on ANY extracted background (blue, red, green, dark).
+   We override both the element color AND YouTube's CSS custom property
+   --yt-spec-text-primary which dark-mode normally sets to white.
 */
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
+    yt-lockup-view-model
+) {
+  /* Override YouTube's CSS tokens for text color */
+  --yt-spec-text-primary: #111111 !important;
+  --yt-spec-text-secondary: #333333 !important;
+  --yt-spec-text-disabled: #555555 !important;
+}
+
+/* Target every individual text element with maximum specificity */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] #video-title,
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] .yt-core-attributed-string,
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] .yt-core-attributed-string--link-inherit-color,
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-formatted-string,
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] #metadata-line span,
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] .ytd-channel-name,
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] yt-formatted-string.ytd-video-renderer,
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-meta-block span {
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] a.yt-simple-endpoint,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-channel-name *,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-meta-block span,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] .yt-lockup-view-model-wiz__metadata * {
   font-family: 'Caveat', cursive, sans-serif !important;
   color: #111111 !important;
-  /* White halo ensures legibility on ANY background color */
-  text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.7) !important;
+  /* White glow halo = readable on any color background */
+  text-shadow: 0 0 5px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.8) !important;
   line-height: 1.15 !important;
   letter-spacing: 0.5px !important;
   font-weight: 700 !important;
@@ -111,15 +118,14 @@ html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-ca
 }
 
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] #metadata-line span,
-html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] .ytd-channel-name,
+html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-channel-name *,
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-meta-block span {
   font-size: 1.6rem !important;
-  color: #333333 !important;
-  text-shadow: 0 0 3px rgba(255,255,255,0.8) !important;
-  opacity: 0.85 !important;
+  color: #222222 !important;
+  opacity: 0.9 !important;
 }
 
-/* ── HIDE HOVER OVERLAYS ────────────────────────────────────────────── */
+/* ── HIDE HOVER OVERLAYS ──────────────────────────────────────────────────── */
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] #mouseover-overlay,
 html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"] ytd-video-preview {
   display: none !important;
