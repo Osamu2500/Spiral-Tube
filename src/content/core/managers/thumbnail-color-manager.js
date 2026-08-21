@@ -37,12 +37,8 @@ export class ThumbnailColorManager {
         if (!settings) return;
         this.activeStyle = settings.cardStyle || 'default';
         const needsExtraction = [
-            'holographic', 
             'polaroid', 
-            'glass', 
-            'neon', 
-            'cyberpunk', 
-            'frosted'
+            'neon'
         ].includes(this.activeStyle);
         
         if (needsExtraction && !this.enabled) {
@@ -152,8 +148,8 @@ export class ThumbnailColorManager {
         }, (response) => {
             if (chrome.runtime.lastError || !response || !response.success) {
                 // Fallback error handler (if background script fails or is asleep)
-                const colorStr = 'rgb(40, 40, 40)';
-                const rgbStr = '40, 40, 40';
+                const colorStr = 'transparent';
+                const rgbStr = '232, 228, 217';
                 this.cache.set(cleanSrc, { colorStr, rgbStr });
                 if (el.isConnected) {
                     el.style.setProperty('--ypp-thumb-color', colorStr);
@@ -163,9 +159,8 @@ export class ThumbnailColorManager {
                 return;
             }
 
-            const enhanced = this.enhanceColorForGlow(response.r, response.g, response.b);
-            const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
-            const rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
+            const colorStr = `rgb(${response.r}, ${response.g}, ${response.b})`;
+            const rgbStr = `${response.r}, ${response.g}, ${response.b}`;
 
             this.cache.set(cleanSrc, { colorStr, rgbStr });
             

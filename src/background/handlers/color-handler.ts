@@ -23,7 +23,7 @@ export async function handleExtractColor(url: string, sendResponse: (response: a
     const blob = await response.blob();
     const bitmap = await createImageBitmap(blob);
 
-    const size = 16;
+    const size = 10;
     let canvas;
     try {
       canvas = new OffscreenCanvas(size, size);
@@ -37,32 +37,49 @@ export async function handleExtractColor(url: string, sendResponse: (response: a
     }
     ctx.drawImage(bitmap, 0, 0, size, size);
 
-    const imageData = ctx.getImageData(0, 0, size, size).data;
-    let r = 0,
-      g = 0,
-      b = 0,
-      count = 0;
-    const skip = 4 * 3; // Sample every 3rd pixel
+    const data = ctx.getImageData(0, 0, size, size).data;
+    let r = 0, g = 0, b = 0, count = 0;
+    
+    for (let i = 0; i < data.length; i += 4) {
+        const alpha = data[i + 3];
+        if (alpha < 255) continue; 
+        
+        // Exclude pure black (often letterboxes) and pure white
+        if (data[i] < 15 && data[i+1] < 15 && data[i+2] < 15) continue;
+        if (data[i] > 240 && data[i+1] > 240 && data[i+2] > 240) continue;
 
-    for (let i = 0; i < imageData.length; i += skip) {
-      // Ignore pixels that are too dark (letterboxing)
-      if (imageData[i] > 15 || imageData[i + 1] > 15 || imageData[i + 2] > 15) {
-        r += imageData[i];
-        g += imageData[i + 1];
-        b += imageData[i + 2];
+        r += data[i];
+        g += data[i+1];
+        b += data[i+2];
         count++;
-      }
     }
 
     bitmap.close();
 
     if (count > 0) {
-      r = Math.floor(r / count);
-      g = Math.floor(g / count);
-      b = Math.floor(b / count);
-      sendResponse({ success: true, r, g, b });
+        r = Math.floor(r / count);
+        g = Math.floor(g / count);
+        b = Math.floor(b / count);
+
+        // ORIGINAL LOGIC: Boost vibrance for a better neon/polaroid glow effect!
+        let max = Math.max(r, g, b);
+        
+        if (max === 0) {
+            sendResponse({ success: true, r: 50, g: 50, b: 50 }); // Fallback dark grey
+            return;
+        }
+        
+        // Push brightness up
+        let boost = 255 / max;
+        boost = Math.min(boost, 1.4); // Max 40% boost to avoid washing out
+        
+        r = Math.min(255, Math.floor(r * boost));
+        g = Math.min(255, Math.floor(g * boost));
+        b = Math.min(255, Math.floor(b * boost));
+
+        sendResponse({ success: true, r, g, b });
     } else {
-      sendResponse({ success: false, error: 'No valid pixels' });
+        sendResponse({ success: false, error: 'No valid pixels' });
     }
   } catch (error) {
     sendResponse({ success: false, error: (error as Error).message });
