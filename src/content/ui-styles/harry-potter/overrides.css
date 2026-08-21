@@ -6,16 +6,17 @@
 /* Organic Candlelight Flicker (Replacing Neon Lumos Pulse) */
 /* Antique Gold Filigree Border Shimmer */
 /* Micro-interaction utility classes */
-html[data-ypp-ui-style='harry-potter'] .ypp-anim-levitate:hover {
+html[data-ypp-ui-design='harry-potter'] .ypp-anim-levitate:hover {
   animation: ypp-levitate 3s ease-in-out infinite;
 }
 
-html[data-ypp-ui-style='harry-potter'] .ypp-anim-lumos {
+html[data-ypp-ui-design='harry-potter'] .ypp-anim-lumos {
   animation: ypp-lumos-pulse 3.5s ease-in-out infinite;
 }
 
 /* Soft Starlight Wand Spark (Replacing Neon Burst) */
-html[data-ypp-ui-style='harry-potter'] :is(button, .yt-spec-button-shape-next, a):active ,")
+html[data-ypp-ui-design='harry-potter'] :is(button, .yt-spec-button-shape-next, a):active ,
+")
 yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i] {
   animation: ypp-spell-spark 0.4s ease-out !important;

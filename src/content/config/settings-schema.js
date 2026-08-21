@@ -24,7 +24,10 @@ window.YPP.SettingsSchema = {
         // --- Theme ---
         premiumTheme:        { type: 'boolean', default: true },
         premiumLogo:         { type: 'boolean', default: false },
-        activeTheme:         { type: 'string',  default: 'default', values: ['default','ocean','sunset','dracula','forest','midnight','cherry','system', 'coffee', 'cyberpunk', 'nord', 'discord', 'hacker', 'outrun', 'bloodmoon', 'deepspace', 'nebula', 'abyss', 'ember', 'hologram', 'blue-sky', 'retro', 'vintage', 'sakura', 'neumorphic', 'aurora', 'nature', 'technozen', 'terminalism', 'glassmorphism', 'material', 'maximalism', 'minimalism', 'claymorphism', 'brutalism', 'christmas', 'liquid-glass', 'frutiger-aero', 'pink', 'retrowave-green', 'harry-potter'] },
+        // Canonical names: "Theme" (background color) / "UI Design" (page overlay) / "Card Styles" (card shapes)
+        // activeTheme controls the background color theme — loaded from dist/themes/
+        // Keys not found in dist/themes/ fall back to dist/ui-styles/ (see theme.js _getThemeUrl)
+        activeTheme:         { type: 'string',  default: 'default', values: ['abyss', 'anime', 'aurora', 'autumn', 'bento', 'bloodmoon', 'blue-sky', 'brutalism', 'cairo-red', 'cherry', 'christmas', 'claymorphism', 'coffee', 'colorize', 'crystal-glass', 'cyberpunk', 'deepspace', 'default', 'discord', 'dracula', 'ember', 'fluent', 'forest', 'frutiger-aero', 'galaxy', 'glassmorphism', 'gothic', 'grunge', 'hacker', 'harry-potter', 'hologram', 'ice-blue', 'kawaii', 'liquid-glass', 'material', 'matrix', 'maximalism', 'midnight', 'minimalism', 'nature', 'nebula', 'neo-brutalism', 'neumorphic', 'nord', 'ocean', 'origami', 'outrun', 'pink', 'retro', 'retro-wave', 'retrowave-green', 'sakura', 'startube', 'steampunk', 'sunset', 'system', 'technozen', 'terminalism', 'vaporwave', 'vintage', 'woodblock', 'y2k'] },
         trueBlack:           { type: 'boolean', default: false },
         hideScrollbar:       { type: 'boolean', default: false },
         customCursor:        { type: 'string',  default: 'default', values: ['default', 'among-us', 'fifa-2026', 'hello-kitty', 'luffy', 'mickey-mouse', 'minecraft-sword', 'pinky-pixel'] },

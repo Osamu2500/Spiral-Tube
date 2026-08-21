@@ -256,7 +256,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         if (!uiStyleKey || uiStyleKey === 'default') {
             if (link) link.remove();
             document.documentElement.removeAttribute('data-ypp-ui-design');
-            document.documentElement.removeAttribute('data-ypp-ui-design');
+            document.documentElement.removeAttribute('data-ypp-ui-style'); // legacy attribute cleanup
             document.documentElement.removeAttribute('data-ypp-has-bg-image'); // Force clear background
             
             // Clean global styling classes
@@ -287,7 +287,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         link.href = cssUrl; // Browser caches correctly; only bust on explicit forceReload()
 
         document.documentElement.setAttribute('data-ypp-ui-design', uiStyleKey);
-        document.documentElement.setAttribute('data-ypp-ui-design', uiStyleKey);
+        document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey); // legacy compat — some CSS still uses this attribute
         
         // Handle Frutiger Aero specific bubbles (respect Theme Effects toggle)
         const enableEffects = this._settings.enableThemeEffects !== false;
@@ -463,11 +463,32 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
     }
 
     /**
-     * Helper to get correct theme URL based on architecture
+     * Known theme keys that exist in dist/themes/ (compiled color themes).
+     * Any key NOT in this set falls back to dist/ui-styles/ for its CSS.
+     * @private
+     */
+    _THEME_KEYS = new Set([
+        'abyss','anime','aurora','brutalism','coffee','cyberpunk','default',
+        'discord','dracula','ember','forest','galaxy','glassmorphism','gothic',
+        'grunge','hacker','harry-potter','hologram','liquid-glass','material',
+        'matrix','maximalism','midnight','minimalism','neo-brutalism','neumorphic',
+        'nord','ocean','origami','retro','retro-wave','sakura','startube',
+        'steampunk','sunset','system','technozen','terminalism','vaporwave',
+        'vintage','woodblock','y2k'
+    ]);
+
+    /**
+     * Helper to get correct theme URL based on architecture.
+     * Falls back to dist/ui-styles/ when the key has no dedicated theme bundle.
      * @private
      */
     _getThemeUrl(themeKey) {
-        return chrome.runtime.getURL(`dist/themes/${themeKey}/bundle.css`);
+        if (this._THEME_KEYS.has(themeKey)) {
+            return chrome.runtime.getURL(`dist/themes/${themeKey}/bundle.css`);
+        }
+        // Fallback: key only exists in ui-styles (legacy/hybrid keys)
+        this._Utils.log(`Theme key '${themeKey}' not in dist/themes — falling back to dist/ui-styles/`, 'THEME', 'warn');
+        return chrome.runtime.getURL(`dist/ui-styles/${themeKey}/bundle.css`);
     }
 
     /**
