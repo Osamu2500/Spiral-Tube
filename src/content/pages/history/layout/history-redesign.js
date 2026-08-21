@@ -416,7 +416,7 @@ export class HistoryRedesign extends window.YPP.features.BaseFeature {
             }
 
             /* Style buttons/links in sidebar */
-            ytd-browse[page-subtype="history"] #secondary ytd-button-renderer,
+            ytd-browse[page-subtype="history"] #secondary :is(ytd-button-renderer, yt-button-view-model),
             ytd-browse[page-subtype="history"] #secondary ytd-compact-link-renderer {
                 background: transparent !important;
                 border-radius: 8px !important;
@@ -424,7 +424,7 @@ export class HistoryRedesign extends window.YPP.features.BaseFeature {
                 margin-bottom: 4px !important;
             }
             
-            ytd-browse[page-subtype="history"] #secondary ytd-button-renderer:hover,
+            ytd-browse[page-subtype="history"] #secondary :is(ytd-button-renderer, yt-button-view-model):hover,
             ytd-browse[page-subtype="history"] #secondary ytd-compact-link-renderer:hover {
                 background: rgba(255, 255, 255, 0.08) !important;
                 transform: translateX(4px) !important;

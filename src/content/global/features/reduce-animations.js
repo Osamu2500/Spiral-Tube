@@ -150,12 +150,12 @@ export class ReduceAnimations extends window.YPP.features.BaseFeature {
             }
 
             /* 2. Premium Micro-interactions on Buttons */
-            .ypp-reduce-anim-balanced ytd-button-renderer tp-yt-paper-button,
+            .ypp-reduce-anim-balanced :is(ytd-button-renderer, yt-button-view-model) :is(tp-yt-paper-button, button),
             .ypp-reduce-anim-balanced yt-icon-button,
             .ypp-reduce-anim-balanced .ytp-button {
                 transition: transform 0.2s var(--ypp-spring-easing) !important;
             }
-            .ypp-reduce-anim-balanced ytd-button-renderer tp-yt-paper-button:active,
+            .ypp-reduce-anim-balanced :is(ytd-button-renderer, yt-button-view-model) :is(tp-yt-paper-button, button):active,
             .ypp-reduce-anim-balanced yt-icon-button:active,
             .ypp-reduce-anim-balanced .ytp-button:active {
                 transform: scale(0.92) !important;

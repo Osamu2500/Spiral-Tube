@@ -36,7 +36,7 @@ export class AdSkipper extends window.YPP.features.BaseFeature {
             }, true);
             
             // Register for promos/banners using sharedObserver instead of MutationObserver
-            window.YPP.sharedObserver.register('ad-skipper-promos', '.ytp-ad-overlay-close-button, #dismiss-button.ytd-button-renderer, .ytp-paid-content-overlay', () => {
+            window.YPP.sharedObserver.register('ad-skipper-promos', '.ytp-ad-overlay-close-button, :is(ytd-button-renderer, yt-button-view-model)#dismiss-button, #dismiss-button.ytd-button-renderer, .ytp-paid-content-overlay', () => {
                 this._checkPromosAndNext();
             }, true);
         }
@@ -101,7 +101,7 @@ export class AdSkipper extends window.YPP.features.BaseFeature {
             overlayCloseBtns.forEach(btn => btn.click());
 
             // Generic YT Promos (Premium, Music, etc.)
-            const promoDismissBtns = document.querySelectorAll('#dismiss-button.ytd-button-renderer');
+            const promoDismissBtns = document.querySelectorAll(':is(ytd-button-renderer, yt-button-view-model)#dismiss-button, #dismiss-button.ytd-button-renderer');
             promoDismissBtns.forEach(btn => {
                 if (btn.closest('ytd-mealbar-promo-renderer') || btn.closest('ytd-popup-container')) {
                     btn.click();

@@ -249,7 +249,7 @@
             // V6 Hard Fix: Force the Download button to pretend it's a standard tonal button
             // so that all custom CSS themes will automatically style it correctly!
             if (window.YPP.sharedObserver) {
-                window.YPP.sharedObserver.register('fix-download-btn-theme', 'ytd-watch-metadata yt-button-shape button[aria-label*="Download" i], ytd-watch-metadata yt-button-shape button[title*="Download" i]', (elements) => {
+                window.YPP.sharedObserver.register('fix-download-btn-theme', 'ytd-watch-metadata yt-button-shape button[aria-label*="Download" i], ytd-watch-metadata yt-button-shape button[title*="Download" i], ytd-watch-metadata yt-download-button-view-model button, ytd-watch-metadata yt-button-view-model button[title*="Download" i], ytd-watch-metadata yt-button-view-model button[aria-label*="Download" i]', (elements) => {
                     elements.forEach(el => {
                         if (el && el.classList && el.classList.contains('yt-spec-button-shape-next--call-to-action')) {
                             el.classList.remove('yt-spec-button-shape-next--call-to-action');

@@ -64,7 +64,7 @@ export class CustomCursor extends window.YPP.features.BaseFeature {
             input[type="button"], input[type="submit"], input[type="reset"], 
             input[type="checkbox"], input[type="radio"],
             select, .ytp-button, tp-yt-paper-button, tp-yt-paper-tab, 
-            tp-yt-paper-icon-button, yt-icon-button, ytd-button-renderer, 
+            tp-yt-paper-icon-button, yt-icon-button, ytd-button-renderer, yt-button-view-model, yt-download-button-view-model, yt-segmented-like-dislike-button-view-model,
             ytd-toggle-button-renderer, ytd-subscribe-button-renderer, 
             ytd-thumbnail, ytd-rich-grid-media, ytd-compact-video-renderer, 
             ytd-playlist-panel-video-renderer, .ytp-progress-bar-container, 

@@ -325,7 +325,7 @@ export class CPUTamer extends window.YPP.features.BaseFeature {
             }
 
             /* 11. (NEW) All button hover transitions */
-            ytd-button-renderer tp-yt-paper-button {
+            :is(ytd-button-renderer, yt-button-view-model) :is(tp-yt-paper-button, button) {
                 transition-duration: 0.01ms !important;
             }
 

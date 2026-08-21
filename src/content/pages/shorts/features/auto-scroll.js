@@ -98,7 +98,7 @@ export class ShortsAutoScroll extends window.YPP.features.BaseFeature {
         if (!activeReel || !video) return;
         if (isNaN(video.duration) || video.duration === 0) return;
         
-        const nextButton = document.querySelector('#navigation-button-down ytd-button-renderer button, .navigation-button.down button');
+        const nextButton = document.querySelector('#navigation-button-down :is(ytd-button-renderer, yt-button-view-model) button, .navigation-button.down button');
 
         // V4: Variable Speed Playback (Attention-Span Optimizer)
         let targetSpeed = this.settings?.shortsPlaybackSpeed || 1.0;

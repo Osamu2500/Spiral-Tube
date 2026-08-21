@@ -126,7 +126,7 @@ export class WatchRedesign extends (window.YPP.features.BaseFeature || Object) {
             }
 
             /* Action Buttons under player (Like, Share, etc.) */
-            html.ypp-glass-player-active ytd-watch-metadata #actions ytd-button-renderer button,
+            html.ypp-glass-player-active ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button,
             html.ypp-glass-player-active ytd-watch-metadata #actions ytd-toggle-button-renderer button,
             html.ypp-glass-player-active ytd-watch-metadata #actions yt-button-shape button {
                 background: rgba(255, 255, 255, 0.08) !important;
