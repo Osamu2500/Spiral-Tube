@@ -201,6 +201,9 @@ export class ThumbnailColorManager {
                 // Hue bins: 12 bins of 30 degrees each
                 const bins = new Array(12).fill(0).map(() => ({ r: 0, g: 0, b: 0, count: 0, weight: 0 }));
 
+                let totalValidPixels = 0;
+                let saturatedPixels = 0;
+
                 for (let i = 0; i < data.length; i += 4) {
                     const pr = data[i];
                     const pg = data[i + 1];
@@ -212,6 +215,8 @@ export class ThumbnailColorManager {
                     // Skip near-black and near-white
                     if (pr < 20 && pg < 20 && pb < 20) continue;
                     if (pr > 235 && pg > 235 && pb > 235) continue;
+
+                    totalValidPixels++;
 
                     // ── SKIN TONE FILTER ──────────────────────────────────────────
                     const isSkinTone = (pr > 95 && pg > 40 && pb > 20) &&
@@ -244,6 +249,8 @@ export class ThumbnailColorManager {
                     // Skip very low saturation (muddy/grey pixels)
                     if (s < 0.15) continue;
 
+                    saturatedPixels++;
+
                     const hueDegree = h * 360;
                     const binIndex = Math.floor(hueDegree / 30) % 12;
                     
@@ -257,6 +264,9 @@ export class ThumbnailColorManager {
                     bins[binIndex].weight += weight;
                 }
 
+                // If less than 5% of valid pixels have color, treat as Black & White
+                let isGreyscale = (totalValidPixels > 0 && saturatedPixels < totalValidPixels * 0.05);
+
                 // Find the dominant hue bin
                 let bestBin = null;
                 let maxWeight = -1;
@@ -268,19 +278,30 @@ export class ThumbnailColorManager {
                 }
 
                 let r, g, b;
-                if (bestBin) {
+                if (isGreyscale) {
+                    // Pure white for B&W thumbnails
+                    r = 250; g = 250; b = 250;
+                } else if (bestBin) {
                     // Average ONLY the pixels that share the dominant hue
                     r = Math.round(bestBin.r / bestBin.count);
                     g = Math.round(bestBin.g / bestBin.count);
                     b = Math.round(bestBin.b / bestBin.count);
                 } else {
-                    // Fallback to a pleasant teal if the image was 100% skin/grey/black
-                    r = 40; g = 180; b = 180;
+                    // Fallback to white if no bins were populated
+                    r = 250; g = 250; b = 250;
+                    isGreyscale = true;
                 }
 
-                const enhanced = this.enhanceColor(r, g, b);
-                const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
-                const rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
+                let colorStr, rgbStr;
+                if (isGreyscale) {
+                    // Bypass enhancement for B&W to prevent turning it into vibrant red
+                    colorStr = `rgb(${r}, ${g}, ${b})`;
+                    rgbStr = `${r}, ${g}, ${b}`;
+                } else {
+                    const enhanced = this.enhanceColor(r, g, b);
+                    colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
+                    rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
+                }
 
                 this.cache.set(cleanSrc, { colorStr, rgbStr });
 
