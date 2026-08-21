@@ -46,7 +46,11 @@ ytd-topbar-menu-button-renderer.ytd-masthead,
 ytd-menu-renderer .ytd-menu-renderer[style-target=button],
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
 yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+yt-button-shape button[title*="Download" i],
+yt-button-view-model button[aria-label*="Download" i],
+yt-button-view-model button[title*="Download" i],
+ytd-download-button-renderer button,
+yt-download-button-view-model button {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   background-color: transparent !important;
   transition:
@@ -61,9 +65,13 @@ ytd-topbar-menu-button-renderer.ytd-masthead:hover,
 ytd-menu-renderer .ytd-menu-renderer[style-target=button]:hover,
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover ,
 yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+yt-button-shape button[title*="Download" i]:hover,
+yt-button-view-model button[aria-label*="Download" i]:hover,
+yt-button-view-model button[title*="Download" i]:hover,
+ytd-download-button-renderer button:hover,
+yt-download-button-view-model button:hover {
   background: var(--ypp-surface-bg-hover) !important;
-  box-shadow: 0 0 12px rgba(163, 230, 53, 0.4), var(--ypp-shadow-hover) !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1), var(--ypp-shadow-hover) !important;
   transform: scale(1.08) !important;
 }
 ytd-app[frosted-glass-exp] tp-yt-app-drawer.ytd-app[persistent] {

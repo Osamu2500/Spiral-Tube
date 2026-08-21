@@ -50,7 +50,7 @@
 }
 
 .ytp-scrubber-button {
-  background: var(--ypp-primary-accent, #a3e635) !important;
+  background: var(--ypp-primary-accent, var(--ypp-accent, #f00)) !important;
   border: 2px solid var(--ypp-primary-accent) !important;
 }
 
