@@ -1,0 +1,1044 @@
+/* Unique Shapes and Patterns for technozen */
+
+/* src/content/themes/ui-styles/technozen/base/animations.css */
+@keyframes technozenGreenPulse {
+  0% {
+    box-shadow:
+      0 0 12px rgba(90, 191, 71, 0.4),
+      0 0 28px rgba(90, 191, 71, 0.2),
+      inset 0 0 20px rgba(90, 191, 71, 0.1);
+}
+
+50% {
+  box-shadow:
+      0 0 20px rgba(48, 184, 200, 0.5),
+      0 0 44px rgba(48, 184, 200, 0.25),
+      inset 0 0 28px rgba(48, 184, 200, 0.15);
+}
+
+100% {
+  box-shadow:
+      0 0 12px rgba(90, 191, 71, 0.4),
+      0 0 28px rgba(90, 191, 71, 0.2),
+      inset 0 0 20px rgba(90, 191, 71, 0.1);
+}
+
+}
+@keyframes technozenFloat {
+  0% {
+    transform: translateY(0px);
+}
+
+50% {
+  transform: translateY(-3px);
+}
+
+100% {
+  transform: translateY(0px);
+}
+
+}
+@keyframes technozenBubbleRise {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-60px) scale(1.4); }
+}
+
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      #7de168,
+      #5ac045) !important;
+  animation: technozenGreenPulse 4s ease-in-out infinite !important;
+}
+
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+  animation: technozenGreenPulse 4s ease-in-out infinite !important;
+}
+
+@keyframes technozenBreathe {
+  0% {
+    box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
+}
+
+50% {
+  box-shadow: 0 0 30px rgba(48, 184, 200, 0.25);
+}
+
+100% {
+  box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
+}
+
+}
+@keyframes technozenAmbientFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+}
+
+50% {
+  transform: translateY(-4px) rotate(0.5deg);
+}
+
+100% {
+  transform: translateY(0px) rotate(0deg);
+}
+
+}
+ytd-rich-grid-media #dismissible,
+ytd-compact-video-renderer,
+ytd-playlist-panel-video-renderer {
+  animation: technozenBreathe 8s infinite ease-in-out;
+}
+
+#page-manager::before {
+  background-image:
+    radial-gradient(
+      circle 2px at 20% 80%,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 100%),
+    radial-gradient(
+      circle 3px at 80% 20%,
+      rgba(90, 191, 71, 0.4) 0%,
+      transparent 100%);
+  animation: technozenAmbientFloat 12s infinite alternate ease-in-out;
+}
+
+#ypp-pl-root .ypp-pl-sidebar::before {
+  border-radius: var(--tz-radius-xl);
+}
+
+.ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytSuggestionComponentRoundedSuggestion:hover {
+  transform: translateY(-1px) scale(1.01) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(90, 191, 71, 0.40),
+      rgba(48, 184, 200, 0.35));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(90, 191, 71, 0.65),
+      rgba(48, 184, 200, 0.55));
+}
+
+.ypp-nav-btn.active {
+  box-shadow:
+    0 0 14px rgba(90, 191, 71, 0.45),
+    0 0 28px rgba(48, 184, 200, 0.2),
+    var(--shadow-active) !important;
+}
+
+#ypp-pl-root .ypp-pl-toolbar {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  background:
+    linear-gradient(
+      to right,
+      rgba(210, 248, 195, 0.70) 0%,
+      rgba(195, 240, 248, 0.65) 100%) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md) var(--tz-radius-md) 0 0) !important;
+}
+
+#ypp-pl-root .ypp-pl-btn-play,
+#ypp-pl-root .ypp-pl-btn-shuffle,
+#ypp-pl-root .ypp-pl-btn-tool,
+#ypp-pl-root .ypp-pl-filter,
+#ypp-pl-root .ypp-pl-col-switcher {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(210, 245, 200, 0.80) 45%,
+      rgba(180, 230, 170, 0.85) 100%) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  box-shadow: var(--shadow-base), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transition:
+    transform var(--bounce-alt),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#ypp-pl-root .ypp-pl-btn-play:hover,
+#ypp-pl-root .ypp-pl-btn-shuffle:hover,
+#ypp-pl-root .ypp-pl-btn-tool:hover {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(195, 240, 180, 0.90) 45%,
+      rgba(160, 220, 148, 0.92) 100%) !important;
+  box-shadow:
+    var(--shadow-hover),
+    0 0 16px rgba(90, 191, 71, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 1.0) !important;
+  transform: scale(1.05) translateY(-1px) !important;
+}
+
+#ypp-pl-root .ypp-pl-btn-play {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(90, 191, 71, 0.90) 0%,
+      rgba(48, 184, 200, 0.85) 100%) !important;
+  box-shadow: 0 4px 16px rgba(90, 191, 71, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.50) !important;
+}
+
+#ypp-pl-root .ypp-pl-btn-play:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(100, 210, 80, 0.95) 0%,
+      rgba(55, 200, 218, 0.92) 100%) !important;
+  box-shadow: 0 6px 24px rgba(90, 191, 71, 0.55), 0 0 20px rgba(48, 184, 200, 0.30) !important;
+}
+
+.ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytSuggestionComponentRoundedSuggestion:hover {
+  transform: translateY(-1px) scale(1.01) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* ============================================================
+   PLAYER CONTROLS — Rounded gel buttons
+   ============================================================ */
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.1);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(90, 191, 71, 0.40), rgba(48, 184, 200, 0.35));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(90, 191, 71, 0.65), rgba(48, 184, 200, 0.55));
+}
+
+/* Added for HeaderNav active state — Technozen lime glow */
+.ypp-nav-btn.active {
+  box-shadow:
+    0 0 14px rgba(90, 191, 71, 0.45),
+    0 0 28px rgba(48, 184, 200, 0.2),
+    var(--shadow-active) !important;
+}
+
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+  transform: translateY(0px) scale(0.97) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      #6dd15a,
+      #4aab38) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      rgba(215, 248, 205, 0.95) 0%,
+      rgba(195, 238, 185, 0.90) 100%) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  box-shadow: var(--shadow-base) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+.ytInlinePlayerControlsTopRightControlsCircleButton {
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-thumbnail-overlay-toggle-button-renderer {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
+}
+
+ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: var(--shadow-base) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button {
+  box-shadow: 0 0 10px var(--tz-lime), inset 0 2px 4px rgba(255, 255, 255, 0.8) !important;
+}
+
+ytd-subscribe-button-renderer button {
+  box-shadow: 0 0 10px rgba(90, 191, 71, 0.25), 0 0 20px rgba(90, 191, 71, 0.10) !important;
+  transition: box-shadow var(--bounce), transform var(--bounce) !important;
+}
+
+ytd-subscribe-button-renderer button:hover {
+  box-shadow: 0 0 18px rgba(90, 191, 71, 0.45), 0 0 36px rgba(48, 184, 200, 0.20) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-card-style="technozen"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="technozen"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="technozen"] h1, html[data-ypp-card-style="technozen"] h2, html[data-ypp-card-style="technozen"] h3, 
+html[data-ypp-card-style="technozen"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="technozen"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="technozen"] h1, html[data-ypp-ui-design="technozen"] h2, html[data-ypp-ui-design="technozen"] h3, 
+html[data-ypp-ui-design="technozen"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="technozen"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="technozen"] ytd-thumbnail, html[data-ypp-card-style="technozen"] yt-image,
+html[data-ypp-ui-design="technozen"] ytd-thumbnail, html[data-ypp-ui-design="technozen"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="technozen"] yt-img-shadow, html[data-ypp-card-style="technozen"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="technozen"] yt-img-shadow, html[data-ypp-ui-design="technozen"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="technozen"] ytd-masthead, html[data-ypp-ui-design="technozen"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="technozen"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="technozen"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="technozen"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="technozen"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="technozen"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="technozen"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="technozen"] #simplebox-placeholder, html[data-ypp-ui-design="technozen"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="technozen"] .ytp-scrubber-button,
+html[data-ypp-ui-design="technozen"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="technozen"] .ytp-tooltip, html[data-ypp-ui-design="technozen"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="technozen"] tp-yt-paper-dialog, html[data-ypp-card-style="technozen"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog, html[data-ypp-ui-design="technozen"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="technozen"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="technozen"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="technozen"] #channel-header,
+html[data-ypp-ui-design="technozen"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="technozen"] yt-live-chat-renderer,
+html[data-ypp-ui-design="technozen"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="technozen"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="technozen"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="technozen"] ytd-notification-renderer, html[data-ypp-ui-design="technozen"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="technozen"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="technozen"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="technozen"] ytd-skeleton, html[data-ypp-ui-design="technozen"] ytd-skeleton, 
+html[data-ypp-card-style="technozen"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="technozen"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="technozen"] yt-icon, html[data-ypp-ui-design="technozen"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="technozen"] yt-icon:hover, html[data-ypp-ui-design="technozen"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+#trigger.tp-yt-paper-menu-button {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#trigger.tp-yt-paper-menu-button:hover {
+  transform: translateY(-1px) scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-menu-popup-renderer,
+ytd-video-preview,
+#contentWrapper.tp-yt-iron-dropdown > *,
+tp-yt-paper-dialog {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
+  transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
+}
+
+tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-menu-service-item-renderer,
+.yt-list-item-view-model__container--tappable,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-menu-service-item-renderer:hover,
+.yt-list-item-view-model__container--tappable:hover,
+tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu {
+  border-radius: var(--ypp-shape-primary, 16px) !important;
+}
+
+tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+}
+
+a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.tp-yt-paper-tooltip[style-target=tooltip] {
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+}
+
+tp-yt-paper-dialog,
+ytd-hotkey-dialog-renderer,
+ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
+  box-shadow: 0px 12px 48px rgba(90, 191, 71, 0.25), inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
+}
+
+ytd-masthead #container {
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      rgba(215, 248, 205, 0.96) 0%,
+      rgba(200, 240, 210, 0.92) 100%) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+#voice-search-button.ytd-masthead,
+.ypp-nav-btn,
+ytd-topbar-menu-button-renderer.ytd-masthead,
+#trailing-button.ytd-playlist-panel-renderer,
+ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.1);
+}
+
+ytd-masthead#masthead {
+  box-shadow: 0 2px 16px rgba(90, 191, 71, 0.18), 0 4px 32px rgba(90, 191, 71, 0.10) !important;
+}
+
+ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.anchored-panel.ytd-shorts {
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
+  transition: background var(--bounce), transform var(--bounce);
+}
+
+ytd-video-renderer,
+ytd-channel-renderer,
+ytd-playlist-renderer {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+#channel-header.ytd-c4-tabbed-header-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+html[data-ypp-ui-design=technozen] yt-formatted-string,
+html[data-ypp-ui-design=technozen] span,
+html[data-ypp-ui-design=technozen] a,
+html[data-ypp-ui-design=technozen] h1,
+html[data-ypp-ui-design=technozen] h2,
+html[data-ypp-ui-design=technozen] h3,
+html[data-ypp-ui-design=technozen] p,
+html[data-ypp-ui-design=technozen] #video-title,
+html[data-ypp-ui-design=technozen] .ytd-video-meta-block,
+html[data-ypp-ui-design=technozen] #metadata-line span,
+html[data-ypp-ui-design=technozen] yt-formatted-string.ytd-channel-name,
+html[data-ypp-ui-design=technozen] #channel-name a,
+html[data-ypp-ui-design=technozen] .ytd-channel-name,
+html[data-ypp-ui-design=technozen] ytd-badge-supported-renderer span,
+html[data-ypp-ui-design=technozen] #title-wrapper yt-formatted-string,
+html[data-ypp-ui-design=technozen] .title-text,
+html[data-ypp-ui-design=technozen] ytd-rich-grid-renderer #title,
+html[data-ypp-ui-design=technozen] .shortsLockupViewModelHostThumbnailOverlayFooter,
+html[data-ypp-ui-design=technozen] ytd-guide-entry-renderer yt-formatted-string {
+  text-shadow: none !important;
+}
+
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+ytd-notification-topbar-button-renderer.ytd-masthead,
+yt-icon-button.ytd-masthead,
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+/* src/content/themes/ui-styles/technozen/pages/comments.css */
+ytd-comments-header-renderer[engagement-panel] {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+#guide-wrapper.ytd-app {
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+yt-icon-button#guide-button {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+yt-icon-button#guide-button:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.06);
+}
+
+yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+  box-shadow: var(--shadow-active) !important;
+}
+
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  box-shadow: none !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce),
+    border-radius var(--bounce) !important;
+}
+
+ytd-mini-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+#description.ytd-watch-metadata,
+ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+ytd-browse[page-subtype=home] #chips {
+  border-radius: var(--ypp-shape-primary, 3000px) !important;
+  box-shadow: var(--shadow-active) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+.ytChipShapeChip {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytChipShapeChip:hover {
+  transform: translateY(-1px) scale(1.06) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+ytd-settings-sidebar-renderer {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  transition:
+    box-shadow var(--bounce),
+    background var(--bounce),
+    transform var(--bounce) !important;
+}
+
+#ypp-pl-root .ypp-pl-sidebar {
+  -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
+  backdrop-filter: blur(40px) saturate(1.4) !important;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(220, 250, 205, 0.88) 0%,
+      rgba(205, 245, 240, 0.82) 100%) !important;
+  box-shadow:
+    var(--shadow-base),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(90, 191, 71, 0.10) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
+}
+
+ytd-comment-simplebox-renderer,
+yt-live-chat-message-input-renderer {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
+  box-shadow: inset 0 2px 6px rgba(90, 191, 71, 0.1) !important;
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-active) !important;
+}
+
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.1);
+}
+
+.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
+.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
+.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+}
+
+.ytp-fullscreen-grid-expand-button {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-fullscreen-grid-expand-button:hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.ytp-menuitem:not([aria-disabled=true]) {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytp-menuitem:not([aria-disabled=true]):hover {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+.ytp-delhi-modern .ytp-popup {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+.ytp-popup.ytp-delhi-modern-contextmenu {
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: none !important;
+}
+
+.ytp-panel {
+  box-shadow: var(--shadow-hover) !important;
+  transition: box-shadow var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+}
+
+/* src/content/themes/ui-styles/technozen/pages/watch.css */
+video.video-stream.html5-main-video,
+.html5-video-player {
+  border-radius: var(--ypp-shape-primary, 18px) !important;
+}
+
+.ytSearchboxComponentInputBoxDark,
+.ytSearchboxComponentInputBox {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  box-shadow: var(--shadow-base), inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+  transition: box-shadow var(--bounce), border-color var(--bounce) !important;
+}
+
+.ytSearchboxComponentInputBoxDark:focus-within,
+.ytSearchboxComponentInputBox:focus-within {
+  box-shadow:
+    var(--shadow-hover),
+    0 0 0 3px rgba(90, 191, 71, 0.12),
+    inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+}
+
+.ytSearchboxComponentSearchButton {
+  border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      rgba(210, 245, 200, 0.95) 0%,
+      rgba(180, 230, 175, 0.90) 100%) !important;
+  box-shadow: var(--shadow-base) !important;
+  transition:
+    transform var(--bounce),
+    box-shadow var(--bounce),
+    background var(--bounce) !important;
+}
+
+.ytSearchboxComponentSearchButton:hover {
+  background:
+    var(--tz-gloss),
+    linear-gradient(
+      to bottom,
+      rgba(195, 245, 182, 0.98) 0%,
+      rgba(160, 225, 155, 0.95) 100%) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-1px) scale(1.04);
+}
+
+.ytSearchboxComponentSearchButton:active {
+  transform: translateY(0px) scale(0.97);
+  box-shadow: var(--shadow-active) !important;
+}
+
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.ytSearchboxComponentSuggestionsContainer,
+ytd-multi-page-menu-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+#search-icon-legacy.ytd-searchbox,
+.ytSearchboxComponentSearchButton {
+  box-shadow: 0 0 12px rgba(48, 184, 200, 0.30) !important;
+}
+
+#search.ytd-searchbox:focus-within,
+ytd-searchbox:focus-within {
+  box-shadow: 0 0 0 2px rgba(90, 191, 71, 0.40), 0 0 20px rgba(90, 191, 71, 0.18) !important;
+}
+
+/* 2. Channel Bar (#owner) */
+html[data-ypp-ui-design="technozen"] #owner {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 4px 16px rgba(90, 191, 71, 0.12) !important;
+}
+
+/* 3. Description Box (Bio-Curved Organic Card) */
+
+/* 4. Comments Section (Organic Mint Petal Cards) */
+html[data-ypp-ui-design="technozen"] #comments {
+  border-radius: var(--ypp-shape-primary, 28px) !important;
+}

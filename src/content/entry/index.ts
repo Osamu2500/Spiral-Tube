@@ -38,7 +38,7 @@ import '../core/managers/home-page-manager.js';
 import '../core/managers/subs-page-manager.js';
 import '../core/managers/search-page-manager.js';
 import '../core/managers/watch-page-manager.js';
-import '../core/managers/thumbnail-color-manager.js';
+import '../core-framework/color/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
 import '../ui/managers/ui-manager.js';

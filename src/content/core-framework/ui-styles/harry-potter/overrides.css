@@ -1,0 +1,1801 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+/* Unique Shapes and Patterns for harry-potter */
+
+/* 3. Hogwarts Magic Wand-Spell & Atmospheric Keyframe Animations */
+
+/* Organic Candlelight Flicker (Replacing Neon Lumos Pulse) */
+/* Antique Gold Filigree Border Shimmer */
+/* Micro-interaction utility classes */
+html[data-ypp-ui-design='harry-potter'] .ypp-anim-levitate:hover {
+  animation: ypp-levitate 3s ease-in-out infinite;
+}
+
+html[data-ypp-ui-design='harry-potter'] .ypp-anim-lumos {
+  animation: ypp-lumos-pulse 3.5s ease-in-out infinite;
+}
+
+/* Soft Starlight Wand Spark (Replacing Neon Burst) */
+html[data-ypp-ui-design='harry-potter'] :is(button, .yt-spec-button-shape-next, a):active ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  animation: ypp-spell-spark 0.4s ease-out !important;
+}
+
+/* =========================================================
+   PHASE 2 & 3: WAND SPELLCASTING, PENSIEVE & ATMOSPHERIC KEYFRAMES
+   ========================================================= */
+
+/* Soft Candlelight Lumos Burst */
+/* Levitating Starlight Feather */
+/* Ethereal Silver Apparition Mist (Replacing Yellow Smoke) */
+/* Iridescent Moonlight Pensieve Swirl */
+/* Floating Starlight / Magical Motes Animation */
+/* Ancient Runic Glow Shimmer */
+/* =========================================================
+   NEW PHASE 2+ KEYFRAMES
+   ========================================================= */
+
+/* Crystal Ball Scrying — slow moonlit pulse on search bar focus */
+/* Wand-Cast Spark — active button press flash */
+/* Candle Flicker — sidebar active item living flame */
+/* Marauder's Map Reveal — content fades in like ink appearing on parchment */
+/* Howler Pulse — pinned live chat message crimson throb */
+/* Sorting Hat Spin — Easter egg for triple-click */
+/* Broken keyframes removed */
+
+/* Google Fonts — Cinzel (headings) + EB Garamond (body manuscript text) */
+
+/* 2. Hogwarts Great Hall — Deep Stone & Parchment Ambient Background */
+/* Organic candlelight warmth — no neon dots, no grid patterns */
+html,
+[dark] body,
+html[data-ypp-ui-design="harry-potter"],
+html[data-ypp-ui-design="harry-potter"] body,
+html[data-ypp-ui-design="harry-potter"] #page-manager,
+html[data-ypp-ui-design="harry-potter"] ytd-app {
+  background-image:
+    /* Warm north fireplace glow — very soft, off to the left */
+    radial-gradient(
+      ellipse 55% 40% at 8% 0%,
+      rgba(180, 80, 20, 0.07),
+      transparent 75%
+    ),
+    /* Candlelight amber bloom — centre-upper ceiling of the Great Hall */
+    radial-gradient(
+      ellipse 60% 30% at 50% 0%,
+      rgba(212, 150, 30, 0.06),
+      transparent 70%
+    ),
+    /* Moonlight through enchanted windows — right side */
+    radial-gradient(
+      ellipse 45% 50% at 95% 25%,
+      rgba(90, 100, 160, 0.05),
+      transparent 75%
+    ),
+    /* Deep dungeon floor — cool stone undertone */
+    radial-gradient(
+      ellipse 80% 40% at 50% 100%,
+      rgba(14, 20, 40, 0.18),
+      transparent 70%
+    ),
+    /* Aged parchment / stone wall noise texture — very fine grain, no dots */
+    url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='stoneGrain'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.045'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23stoneGrain)' fill='rgba(200,180,140,1)'/></svg>"),
+    /* Deeper overall page darkness */
+    linear-gradient(180deg, #090a0e 0%, #0c0d14 60%, #0a0b12 100%) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #masthead-container,
+html[data-ypp-ui-design="harry-potter"] #masthead-container.ytd-app,
+html[data-ypp-ui-design="harry-potter"] #background.ytd-masthead {
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   AMBIENT MYSTICAL OVERLAYS — Ethereal Candlelight & Moonlight
+   (No neon — purely organic warm/cool atmospheric breathing)
+   ========================================================= */
+
+/* Breathes like a distant fireplace — warm amber, very low opacity */
+html[data-ypp-ui-design="harry-potter"]::before {
+  will-change: transform, opacity;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    rgba(200, 130, 40, 0.09) 0%,
+    rgba(160, 60, 20, 0.06) 35%,
+    transparent 65%
+  );
+  animation: ypp-hogwarts-lumos-bg 18s ease-in-out infinite;
+}
+
+/* Breathes like moonlight through tall gothic windows — cool silver-blue */
+html[data-ypp-ui-design="harry-potter"]::after {
+  will-change: transform, opacity;
+  background: radial-gradient(
+    ellipse at 70% 15%,
+    rgba(80, 95, 155, 0.07) 0%,
+    rgba(30, 40, 90, 0.05) 40%,
+    transparent 68%
+  );
+  animation: ypp-hogwarts-ink-fg 12s ease-in-out infinite;
+}
+
+/* Glassmorphism Backdrop Containers */
+html[data-ypp-ui-design="harry-potter"] :is(ytd-playlist-panel-renderer, ytd-expandable-metadata-renderer, ytd-unified-share-panel-renderer, ytd-add-to-playlist-renderer, ytd-settings-options-renderer, ytd-account-settings-renderer) {
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: var(--hp-shadow-float) !important;
+}
+
+/* Sidebar Navigation Container */
+html[data-ypp-ui-design="harry-potter"] ytd-guide-renderer,
+html[data-ypp-ui-design="harry-potter"] #guide-content,
+html[data-ypp-ui-design="harry-potter"] #guide-inner-content,
+html[data-ypp-ui-design="harry-potter"] ytd-mini-guide-renderer {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC WAND & CREST BUTTONS
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & crimson.
+   ========================================================= */
+
+/* Subscribe & Primary Action Buttons */
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd),
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="harry-potter"] .ypp-btn-primary,
+html[data-ypp-ui-design="harry-potter"] .ypp-play-all-btn,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action ,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] {
+  background: linear-gradient(135deg, var(--hp-crimson, #740001) 0%, #a30001 50%, #4a0000 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  text-transform: uppercase !important;
+  box-shadow:
+    0 4px 14px rgba(80, 8, 8, 0.6),
+    0 0 8px rgba(180, 140, 40, 0.18) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:active,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active,
+html[data-ypp-ui-design="harry-potter"] .ypp-btn-primary:active,
+html[data-ypp-ui-design="harry-potter"] .ypp-play-all-btn:active {
+  transform: scale(0.97) !important;
+  box-shadow: 0 2px 8px rgba(116, 0, 1, 0.4) !important;
+}
+
+/* Segmented Like & Dislike Pills */
+html[data-ypp-ui-design="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  box-shadow: none !important;
+}
+
+/* Tonal, Mono & Text Action Buttons */
+
+/* Watch Later, Queue & Alert Thumbnail Overlay Buttons */
+
+html[data-ypp-ui-design="harry-potter"] .ytPlayerQuickActionButtonsHost:not(:empty) {
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover::after,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover::after {
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, rgba(14, 12, 8, 0.98) 0%, rgba(90, 8, 8, 0.96) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(180, 130, 30, 0.3) !important;
+  animation: ypp-levitate 1.5s ease-in-out infinite alternate !important;
+}
+
+/* Subscribed State — Owl Post */
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer[subscribed] button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer[is-subscribed] button,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextTonal[aria-label*="Subscribed"] {
+  background: linear-gradient(135deg, rgba(18, 16, 12, 0.9) 0%, rgba(22, 20, 14, 0.95) 100%) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer[subscribed] button:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer[is-subscribed] button:hover::after,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextTonal[aria-label*="Subscribed"]:hover::after {
+  background: linear-gradient(135deg, rgba(14, 12, 8, 0.98) 0%, rgba(20, 35, 24, 0.95) 100%) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85), 0 0 14px rgba(163, 193, 173, 0.4) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #more:hover::after,
+html[data-ypp-ui-design="harry-potter"] #continuation:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-button-renderer#show-more-button button:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-button-renderer#more button:hover::after {
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, rgba(14, 12, 8, 0.96) 0%, rgba(30, 24, 16, 0.98) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85), 0 0 14px rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Heavy Theme Action Button Coverage Fix */
+
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer #ask-button button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-design="harry-potter"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] #ask-button button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-design="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action #ask-button button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--call-to-action button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay #ask-button button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--overlay button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] #ask-button button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] #ask-button button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText {
+  background: linear-gradient(135deg, var(--hp-crimson, #740001) 0%, #a30001 50%, #4a0000 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  text-transform: uppercase !important;
+  box-shadow:
+    0 4px 14px rgba(80, 8, 8, 0.6),
+    0 0 8px rgba(180, 140, 40, 0.18) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer ytd-download-button-renderer yt-button-shape button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer ytd-download-button-renderer button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer #ask-button button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-download-button-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] ytd-download-button-renderer button,
+html[data-ypp-ui-design="harry-potter"] #ask-button yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] #ask-button button,
+html[data-ypp-ui-design="harry-potter"] .yt-spec-button-shape-next--mono,
+html[data-ypp-ui-design="harry-potter"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html[data-ypp-ui-design="harry-potter"] ytd-menu-renderer yt-button-shape button,
+html[data-ypp-ui-design="harry-potter"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover,
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="harry-potter"] yt-button-shape button[title*="Download" i] {
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, rgba(14, 12, 8, 0.98) 0%, rgba(90, 8, 8, 0.96) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(180, 130, 30, 0.3) !important;
+  animation: ypp-levitate 1.5s ease-in-out infinite alternate !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC CARDS — Illuminated Manuscript Video Cards
+   No neon (#ffd700). Antique gold (#d4af37), house borders, no emojis.
+   ========================================================= */
+
+/* Core Video & Grid Cards — Illuminated Manuscript Frame Base */
+
+/* Playlist Panel Items & Headers */
+
+/* Expandable Metadata & Macro Markers (Chapters) */
+
+html[data-ypp-ui-design="harry-potter"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 8px 24px 8px 24px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(180, 150, 60, 0.15) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .overlay-dir.ytd-reel-video-renderer {
+  background: linear-gradient(to top, rgba(12, 10, 8, 0.88) 0%, rgba(116, 0, 1, 0.2) 30%, transparent 60%) !important;
+}
+
+/* Share & Playlist Modals */
+html[data-ypp-ui-design="harry-potter"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-add-to-playlist-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-settings-options-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-account-settings-renderer {
+  border-radius: var(--ypp-shape-primary, 6px 20px 6px 20px) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.92), 0 0 20px rgba(212, 175, 55, 0.15) !important;
+}
+
+/* =========================================================
+   THUMBNAILS & DURATION BADGES — Parchment Typography
+   ========================================================= */
+
+/* Duration Badge — Antique Parchment Tag */
+
+/* LIVE STREAM BADGE — Howler Red Wax Seal */
+html[data-ypp-ui-design="harry-potter"] ytd-thumbnail-overlay-time-status-renderer[overlay-style="LIVE"],
+html[data-ypp-ui-design="harry-potter"] .yt-badge-shape--style-value-badge-style-type-live-now {
+  background: linear-gradient(135deg, #a00000 0%, #740001 100%) !important;
+  animation: ypp-runic-glow 2s infinite ease-in-out !important;
+  box-shadow: 0 0 12px rgba(116, 0, 1, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Progress Bars on Thumbnails */
+
+/* =========================================================
+   CARD TYPOGRAPHY — Cinzel Title + EB Garamond Metadata
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] #video-title,
+html[data-ypp-ui-design="harry-potter"] ytd-rich-grid-media #video-title,
+html[data-ypp-ui-design="harry-potter"] ytd-compact-video-renderer #video-title,
+html[data-ypp-ui-design="harry-potter"] ytd-video-renderer #video-title,
+html[data-ypp-ui-design="harry-potter"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="harry-potter"] .title.ytd-rich-grid-media,
+html[data-ypp-ui-design="harry-potter"] #title-wrapper h3 a,
+html[data-ypp-ui-design="harry-potter"] ytd-watch-metadata h1 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Extension Organizer Custom Cards */
+html[data-ypp-ui-design="harry-potter"] .ypp-adjust-card,
+html[data-ypp-ui-design="harry-potter"] .ypp-filter-card,
+html[data-ypp-ui-design="harry-potter"] #ypp-pl-root .ypp-pl-card,
+html[data-ypp-ui-design="harry-potter"] #ypp-pl-root .ypp-pl-duration-card,
+html[data-ypp-ui-design="harry-potter"] #ypp-pl-root .ypp-pl-duration-grid {
+  border-radius: var(--ypp-shape-primary, 4px 16px 4px 16px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ypp-adjust-card:hover,
+html[data-ypp-ui-design="harry-potter"] .ypp-filter-card:hover,
+html[data-ypp-ui-design="harry-potter"] #ypp-pl-root .ypp-pl-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.85), 0 0 15px rgba(212, 175, 55, 0.18) !important;
+  transform: translateY(-3px) scale(1.01) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   4 HOGWARTS HOUSES CARD FRAMES (:nth-child cycling)
+   Illuminated manuscript borders with antique brass corners
+   ========================================================= */
+
+/* 1. Gryffindor (Crimson Ridge Frame) */
+
+/* 2. Slytherin (Emerald Groove Frame) */
+
+/* 3. Ravenclaw (Sapphire Ridge Frame) */
+
+/* 4. Hufflepuff (Warm Amber Outset Frame) */
+
+/* =========================================================
+   ILLUMINATED MANUSCRIPT CORNER ORNAMENT (NO EMOJIS)
+   Pure CSS brass corner bracket in top-left of each card
+   ========================================================= */
+
+/* =========================================================
+   WATCHED VIDEO — Faded Antique Scroll & "✓ Viewed" Stamp
+   ========================================================= */
+
+/* "✓ Viewed" Parchment Seal in Thumbnail Top-Right */
+
+/* =========================================================
+   REDESIGNED PLAYLIST PAGE & HERO CARDS (LEGACY & MODERN)
+   ========================================================= */
+
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-panel-video-renderer[selected],
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-panel-video-renderer[aria-selected="true"],
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-video-renderer[selected],
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-video-renderer[aria-selected="true"] {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.03) 100%) !important;
+  box-shadow: inset 4px 0 12px rgba(212, 175, 55, 0.25) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-panel-video-renderer[selected] #video-title,
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-video-renderer[selected] #video-title {
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Base style for all injected Code-Drawn SVG Icons */
+
+/* Hover Lumos Glow on Icons */
+
+/* ==========================================================================
+   1. GUIDE SIDEBAR ICONS — Code-Drawn SVGs (Zero Emojis)
+   ========================================================================== */
+
+/* --- 1a. Home → Hogwarts Castle Silhouette SVG --- */
+
+/* --- 1b. Shorts → Crossed Wands with Spell Spark SVG --- */
+
+/* --- 1c. Subscriptions → Hogwarts House Shield Crest SVG --- */
+
+/* --- 1d. Library / History → Antique Parchment Scroll SVG --- */
+
+/* --- 1e. Watch Later / Playlists → Time-Turner Hourglass SVG --- */
+
+/* --- 1f. Liked Videos → Harry Potter Lightning Bolt SVG --- */
+
+/* --- 1g. Trending → Goblet of Fire Phoenix Flame SVG --- */
+
+/* --- 1h. Gaming → Wizard's Chess Knight Piece SVG --- */
+
+/* --- 1i. News → Daily Prophet Rolled Newspaper SVG --- */
+
+/* --- 1j. Settings Sidebar Icon → Enchanted Brass Orrery Gears SVG --- */
+
+/* ==========================================================================
+   2. TOPBAR SEARCH & VOICE SEARCH ICONS — Code-Drawn SVGs
+   ========================================================================== */
+
+/* --- 2a. Search Button → Crystal Ball on Stand SVG --- */
+html[data-ypp-ui-design="harry-potter"] #search-icon-legacy yt-icon::before,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #search-icon yt-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='10' r='7' fill='%23201208' stroke='%23d4af37' stroke-width='1.3'/%3E%3Cpath d='M8 19H16L18 22H6L8 19Z' fill='%23740001' stroke='%23d4af37' stroke-width='1'/%3E%3Ccircle cx='14' cy='8' r='1.5' fill='%23e6c280' opacity='0.7'/%3E%3C/svg%3E") !important;
+}
+
+/* --- 2b. Voice Search → Magic Wand with Glow SVG --- */
+html[data-ypp-ui-design="harry-potter"] #voice-search-button yt-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 21L17 7M16 4L18 2M20 8L22 6M13 3L14 5' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='18' cy='6' r='2' fill='%23e6c280'/%3E%3C/svg%3E") !important;
+}
+
+/* ==========================================================================
+   3. ACTION BUTTON ICONS (SHARE, SAVE, DOWNLOAD) — Code-Drawn SVGs
+   ========================================================================== */
+
+/* --- 3a. Share Button → Owl Post Sealed Letter Envelope SVG --- */
+html[data-ypp-ui-design="harry-potter"] button[aria-label*="Share" i] yt-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='5' width='18' height='14' rx='2' fill='%23201208' stroke='%23d4af37' stroke-width='1.3'/%3E%3Cpath d='M3 7L12 13L21 7' fill='none' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ccircle cx='12' cy='13' r='2.5' fill='%23740001' stroke='%23d4af37' stroke-width='0.8'/%3E%3C/svg%3E") !important;
+}
+
+/* --- 3b. Save Button → Spellbook with Bookmark Ribbon SVG --- */
+html[data-ypp-ui-design="harry-potter"] button[aria-label*="Save" i] yt-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 3H19C20 3 21 4 21 5V21C21 21 17 19 12 19C7 19 3 21 3 21V5C3 4 4 3 5 3Z' fill='%23201208' stroke='%23d4af37' stroke-width='1.2'/%3E%3Cpath d='M12 3V19' stroke='%23d4af37' stroke-width='1'/%3E%3Cpath d='M15 3V11L17.5 9.5L20 11V3' fill='%23740001' stroke='%23d4af37' stroke-width='0.8'/%3E%3C/svg%3E") !important;
+}
+
+/* --- 3c. Download / Clip Button → Cauldron Potion Vial SVG --- */
+html[data-ypp-ui-design="harry-potter"] button[aria-label*="Download" i] yt-icon::before,
+html[data-ypp-ui-design="harry-potter"] button[aria-label*="Clip" i] yt-icon::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 2H14V7L19 15C20 16.5 19 20 17 21H7C5 20 4 16.5 5 15L10 7V2Z' fill='%23201208' stroke='%23d4af37' stroke-width='1.3'/%3E%3Cline x1='8' y1='2' x2='16' y2='2' stroke='%23d4af37' stroke-width='1.5'/%3E%3Cpath d='M6.5 16C8 16 10 17 12 17C14 17 16 16 17.5 16V19H6.5V16Z' fill='%23740001'/%3E%3Ccircle cx='12' cy='12' r='1' fill='%23e6c280'/%3E%3C/svg%3E") !important;
+}
+
+html[data-ypp-card-style="harry-potter"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="harry-potter"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="harry-potter"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="harry-potter"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="harry-potter"] h1, html[data-ypp-card-style="harry-potter"] h2, html[data-ypp-card-style="harry-potter"] h3, 
+html[data-ypp-card-style="harry-potter"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="harry-potter"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="harry-potter"] h1, html[data-ypp-ui-design="harry-potter"] h2, html[data-ypp-ui-design="harry-potter"] h3, 
+html[data-ypp-ui-design="harry-potter"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="harry-potter"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="harry-potter"] ytd-thumbnail, html[data-ypp-card-style="harry-potter"] yt-image,
+html[data-ypp-ui-design="harry-potter"] ytd-thumbnail, html[data-ypp-ui-design="harry-potter"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="harry-potter"] yt-img-shadow, html[data-ypp-card-style="harry-potter"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="harry-potter"] yt-img-shadow, html[data-ypp-ui-design="harry-potter"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="harry-potter"] ytd-masthead, html[data-ypp-ui-design="harry-potter"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="harry-potter"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="harry-potter"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="harry-potter"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="harry-potter"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="harry-potter"] #simplebox-placeholder, html[data-ypp-ui-design="harry-potter"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="harry-potter"] .ytp-scrubber-button,
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="harry-potter"] .ytp-tooltip, html[data-ypp-ui-design="harry-potter"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="harry-potter"] tp-yt-paper-dialog, html[data-ypp-card-style="harry-potter"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-dialog, html[data-ypp-ui-design="harry-potter"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="harry-potter"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="harry-potter"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="harry-potter"] #channel-header,
+html[data-ypp-ui-design="harry-potter"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="harry-potter"] yt-live-chat-renderer,
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="harry-potter"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="harry-potter"] ytd-notification-renderer, html[data-ypp-ui-design="harry-potter"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="harry-potter"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="harry-potter"] ytd-skeleton, html[data-ypp-ui-design="harry-potter"] ytd-skeleton, 
+html[data-ypp-card-style="harry-potter"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="harry-potter"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="harry-potter"] yt-icon, html[data-ypp-ui-design="harry-potter"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="harry-potter"] yt-icon:hover, html[data-ypp-ui-design="harry-potter"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* =========================================================
+   HOGWARTS MAGIC MENUS — Dropdowns, Scrolls & Wax Tooltips
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & parchment.
+   ========================================================= */
+
+/* Three-Dots & Menu Trigger Buttons */
+
+/* Dropdown Menus, Video Preview Hover Cards & Dialog Modals */
+html[data-ypp-ui-design="harry-potter"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-video-preview,
+html[data-ypp-ui-design="harry-potter"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-listbox.yt-dropdown-menu,
+html[data-ypp-ui-design="harry-potter"] .ypp-account-menu,
+html[data-ypp-ui-design="harry-potter"] #ypp-top-bar {
+  background: linear-gradient(160deg, rgba(20, 16, 12, 0.98) 0%, rgba(14, 12, 8, 0.98) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 18px 4px 18px) !important;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.92),
+    0 0 20px rgba(212, 175, 55, 0.18),
+    inset 0 1px 0 rgba(255, 248, 220, 0.07) !important;
+}
+
+/* Multi-Page Menu Sections (Account Menu Items) */
+html[data-ypp-ui-design="harry-potter"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer),
+html[data-ypp-ui-design="harry-potter"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="harry-potter"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-item.ytd-menu-service-item-download-renderer,
+html[data-ypp-ui-design="harry-potter"] a.yt-simple-endpoint.yt-dropdown-menu {
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="harry-potter"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover,
+html[data-ypp-ui-design="harry-potter"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
+  box-shadow: 0 4px 15px rgba(116, 0, 1, 0.4), 0 0 10px rgba(212, 175, 55, 0.15) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Howler Red Wax Seal Dot in Tooltip Corner */
+html[data-ypp-ui-design="harry-potter"] .tp-yt-paper-tooltip[style-target=tooltip]::before,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-toast::before {
+  transform: translateY(-50%) !important;
+  background: radial-gradient(circle, #a00000, #740001) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 0 4px rgba(116, 0, 1, 0.6) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-compact-link-renderer[icon-label*="Appearance"]:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-compact-link-renderer[icon-label*="Theme"]:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-toggle-theme-compact-link-renderer:hover::after,
+html[data-ypp-ui-design="harry-potter"] .ypp-theme-btn:hover::after,
+html[data-ypp-ui-design="harry-potter"] #appearance-item:hover::after,
+html[data-ypp-ui-design="harry-potter"] [aria-label*="Appearance"]:hover::after,
+html[data-ypp-ui-design="harry-potter"] [aria-label*="Theme"]:hover::after {
+  background: linear-gradient(135deg, rgba(20, 16, 12, 0.98) 0%, rgba(14, 12, 8, 0.98) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9), 0 0 16px rgba(212, 175, 55, 0.22) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* =========================================================
+   VIDEO PLAYER SETTINGS MENU & QUALITY/SUBTITLE PANELS
+   ========================================================= */
+
+html[data-ypp-ui-design="harry-potter"] .ytp-menuitem[aria-checked="true"],
+html[data-ypp-ui-design="harry-potter"] .ytp-menuitem:hover {
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
+}
+
+/* =========================================================
+   SHARE MODALS & ADD-TO-PLAYLIST POPUPS
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-add-to-playlist-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="harry-potter"] tp-yt-paper-dialog.ytd-popup-container {
+  background: linear-gradient(160deg, rgba(20, 17, 12, 0.98) 0%, rgba(14, 12, 9, 0.98) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 6px 20px 6px 20px) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 24px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* 5. Hogwarts Magic Top Masthead Navbar — Ancient Castle Rampart */
+
+html[data-ypp-ui-design="harry-potter"] #masthead-container,
+html[data-ypp-ui-design="harry-potter"] #container.ytd-masthead,
+html[data-ypp-ui-design="harry-potter"] ytd-masthead {
+  -webkit-backdrop-filter: blur(24px) saturate(1.15) !important;
+  backdrop-filter: blur(24px) saturate(1.15) !important;
+  box-shadow:
+    0 4px 28px rgba(0, 0, 0, 0.92),
+    0 1px 0 rgba(212, 175, 55, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 248, 220, 0.04) !important;
+}
+
+/* Top gold filigree rule — illuminated manuscript header line */
+html[data-ypp-ui-design="harry-potter"] ytd-masthead::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(180, 140, 50, 0.25) 8%,
+    rgba(212, 175, 55, 0.55) 25%,
+    rgba(240, 210, 120, 0.85) 50%,
+    rgba(212, 175, 55, 0.55) 75%,
+    rgba(180, 140, 50, 0.25) 92%,
+    transparent 100%
+  ) !important;
+}
+
+/* Bottom edge: very faint dark vignette below navbar */
+html[data-ypp-ui-design="harry-potter"] ytd-masthead::after {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22), transparent) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-logo-renderer {
+  border-radius: var(--ypp-shape-primary, 8px) !important;
+  transition: transform var(--hp-transition-normal, 280ms), box-shadow var(--hp-transition-normal, 280ms) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.04) translateY(-1px) !important;
+  /* Warm candlelight emanating from the logo — no neon */
+  box-shadow:
+    0 0 18px rgba(200, 140, 40, 0.25),
+    inset 0 0 10px rgba(212, 175, 55, 0.1) !important;
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* =========================================================
+   MARAUDER'S MAP EASTER EGG — Subtitle Script
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-logo-renderer::after {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 248, 220, 0.08) !important;
+  /* Aged ink text glow — very subtle */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(212, 175, 55, 0.2) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-logo-renderer:hover::after {
+  background: linear-gradient(135deg, rgba(100, 10, 10, 0.92) 0%, rgba(14, 15, 22, 0.96) 100%) !important;
+  /* Warm candlelight instead of neon blast */
+  box-shadow:
+    0 0 14px rgba(180, 130, 40, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.8) !important;
+  transform: scale(1.06) translateX(2px) !important;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(212, 175, 55, 0.4) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-logo-renderer #country-code {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* =========================================================
+   PLATFORM 9¾ ENCHANTED STEAM LOCOMOTIVE PROGRESS BAR
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] yt-page-navigation-progress #progress,
+html[data-ypp-ui-design="harry-potter"] #progress.yt-page-navigation-progress {
+  /* Crimson & antique gold gradient — Hogwarts Express livery */
+  background: linear-gradient(90deg, #5a0001 0%, #c9a227 70%, #e6c280 100%) !important;
+  /* Soft warm glow of a steam locomotive headlamp — NOT neon laser */
+  box-shadow:
+    0 0 10px rgba(200, 150, 30, 0.5),
+    0 0 4px rgba(255, 248, 220, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Locomotive headlamp — soft warm ember at the tip */
+html[data-ypp-ui-design="harry-potter"] yt-page-navigation-progress #progress::after,
+html[data-ypp-ui-design="harry-potter"] #progress.yt-page-navigation-progress::after {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 6px rgba(200, 140, 30, 0.5)) !important;
+  animation: ypp-snitch-flutter-left 0.2s infinite ease-in-out !important;
+}
+
+/* =========================================================
+   MIRROR OF ERISED — Account Avatar
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] #avatar-btn,
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-menu-button-renderer #avatar-btn {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow:
+    0 0 10px rgba(180, 150, 60, 0.3),
+    inset 0 0 8px rgba(80, 10, 10, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #avatar-btn:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-menu-button-renderer #avatar-btn:hover {
+  transform: scale(1.1) !important;
+  /* Antique warm mirror reflection — no neon blast */
+  box-shadow:
+    0 0 18px rgba(200, 160, 60, 0.45),
+    inset 0 0 12px rgba(255, 248, 220, 0.15),
+    0 6px 18px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Mirror of Erised reflection inscription tooltip */
+html[data-ypp-ui-design="harry-potter"] #avatar-btn:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-topbar-menu-button-renderer #avatar-btn:hover::after {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 15, 22, 0.97) 0%,
+    rgba(12, 22, 52, 0.96) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 8px 18px 8px 18px) !important;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.95),
+    0 0 14px rgba(180, 150, 60, 0.3) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 8px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* =========================================================
+   ANTIQUE GOLD NOTIFICATION BELL — Original icon, Harry Potter gold tint
+   Wax seal badge kept. Owl removed per user request.
+   ========================================================= */
+
+/* Restore bell icon visibility — gold tint applied via global SVG recolor */
+html[data-ypp-ui-design="harry-potter"] ytd-notification-topbar-button-renderer yt-icon,
+html[data-ypp-ui-design="harry-potter"] ytd-notification-topbar-button-renderer .yt-spec-icon-badge-shape__icon,
+html[data-ypp-ui-design="harry-potter"] ytd-notification-topbar-button-renderer svg {
+  transition: fill 0.3s ease, filter 0.3s ease !important;
+}
+
+/* Hover: bell glows with candlelight warmth */
+html[data-ypp-ui-design="harry-potter"] ytd-notification-topbar-button-renderer:hover yt-icon svg {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5)) !important;
+}
+
+/* Button container hover glow */
+html[data-ypp-ui-design="harry-potter"] ytd-notification-topbar-button-renderer button:hover {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+/* 3D Antique Crimson Wax Seal Badge */
+html[data-ypp-ui-design="harry-potter"] .yt-spec-icon-badge-shape__badge,
+html[data-ypp-ui-design="harry-potter"] ytd-notification-topbar-button-renderer .yt-spec-icon-badge-shape__badge {
+  /* Aged wax seal — rich crimson with embossed depth */
+  background: radial-gradient(
+    circle at 35% 30%,
+    #c41a1a 0%,
+    #740001 45%,
+    #3d0000 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.9),
+    inset 0 1px 3px rgba(255, 220, 170, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.75),
+    0 0 6px rgba(180, 130, 50, 0.25) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* =========================================================
+   SEARCH BAR — Crystal Orb Scrying Bowl
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #search-form,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 24px 4px 24px 4px) !important;
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.7),
+    0 1px 0 rgba(255, 248, 220, 0.05) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #search-form:focus-within,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #container.ytd-searchbox:focus-within {
+  animation: ypp-crystal-glow 4s ease-in-out infinite !important;
+}
+
+/* Search button — antique brass magnifying glass / scrying lens */
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox button#search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 4px 24px 0) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox #search-icon-legacy:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-searchbox button#search-icon-legacy:hover {
+  box-shadow: inset 0 0 12px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* Voice search microphone button — Magic Wand button */
+html[data-ypp-ui-design="harry-potter"] #voice-search-button button,
+html[data-ypp-ui-design="harry-potter"] ytd-button-renderer#voice-search-button button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #voice-search-button button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-button-renderer#voice-search-button button:hover {
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.08) rotate(-8deg) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #buttons ytd-topbar-menu-button-renderer button:hover,
+html[data-ypp-ui-design="harry-potter"] #buttons ytd-notification-topbar-button-renderer button:hover,
+html[data-ypp-ui-design="harry-potter"] #buttons ytd-button-renderer button:hover {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #buttons ytd-topbar-menu-button-renderer button:active,
+html[data-ypp-ui-design="harry-potter"] #buttons ytd-notification-topbar-button-renderer button:active,
+html[data-ypp-ui-design="harry-potter"] #buttons ytd-button-renderer button:active {
+  animation: ypp-wand-cast-spark 0.35s ease-out !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC PANELS — Stone Corridor & Pensieve Basins
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & stone.
+   ========================================================= */
+
+/* =========================================================
+   SIDEBAR GUIDE — Dungeon Corridor & Torchlit Niches
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-guide-renderer,
+html[data-ypp-ui-design="harry-potter"] #guide-inner-content {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 12, 18, 0.98) 0%,
+    rgba(14, 16, 24, 0.95) 100%
+  ) !important;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.88) !important;
+}
+
+/* Sidebar entry rows */
+
+/* Active guide item — Illuminated Entry */
+
+/* Guide item hover state */
+
+/* Guide Section Headers — Runic Chapter Breaks */
+html[data-ypp-ui-design="harry-potter"] ytd-guide-section-renderer #guide-section-title,
+html[data-ypp-ui-design="harry-potter"] ytd-guide-section-renderer h3 {
+  text-transform: uppercase !important;
+}
+
+/* Mini guide (collapsed sidebar) */
+
+html[data-ypp-ui-design="harry-potter"] ytd-mini-guide-entry-renderer:hover {
+  animation: ypp-candle-flicker 2.5s infinite ease-in-out !important;
+}
+
+/* =========================================================
+   MODAL BACKDROPS — Ethereal Silver Moonbeam Vignette
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-popup-container tp-yt-iron-overlay-backdrop,
+html[data-ypp-ui-design="harry-potter"] ytd-popup-container .tp-yt-iron-overlay-backdrop {
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(25, 30, 48, 0.72) 0%,
+    rgba(8, 10, 18, 0.92) 65%,
+    rgba(4, 5, 10, 0.98) 100%
+  ) !important;
+}
+
+/* Dialog Panels — Ancient Stone Table */
+html[data-ypp-ui-design="harry-potter"] ytd-popup-container tp-yt-paper-dialog,
+html[data-ypp-ui-design="harry-potter"] ytd-popup-container ytd-menu-popup-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-popup-container .ytd-popup-container {
+  background: linear-gradient(
+    160deg,
+    rgba(18, 16, 12, 0.97) 0%,
+    rgba(14, 12, 8, 0.98) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 4px 20px 4px 20px) !important;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(255, 248, 220, 0.08) !important;
+}
+
+/* =========================================================
+   EXTENSION POP-OVER PANELS & CARDS
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] :is(.ypp-adjust-card, .ypp-filter-card, .ypp-pl-card, .ypp-duration-card, .ypp-stats-panel) {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 17, 26, 0.94) 0%,
+    rgba(12, 20, 52, 0.88) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 8px 22px 8px 22px) !important;
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.9),
+    0 0 14px rgba(180, 130, 40, 0.18),
+    inset 0 0 18px rgba(80, 10, 10, 0.18),
+    inset 0 1px 0 rgba(255, 248, 220, 0.07) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] :is(.ypp-adjust-card, .ypp-filter-card, .ypp-pl-card, .ypp-duration-card, .ypp-stats-panel)::before {
+  border-radius: var(--ypp-shape-primary, 6px 18px 6px 18px) !important;
+  box-shadow: inset 0 0 10px rgba(180, 130, 40, 0.1) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] :is(.ypp-adjust-card, .ypp-filter-card, .ypp-pl-card, .ypp-duration-card, .ypp-stats-panel):hover {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 22, 34, 0.97) 0%,
+    rgba(16, 28, 68, 0.93) 100%
+  ) !important;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(180, 130, 40, 0.28),
+    inset 0 0 22px rgba(90, 10, 10, 0.22),
+    inset 0 1px 0 rgba(255, 248, 220, 0.1) !important;
+  transform: translateY(-3px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ypp-card-title,
+html[data-ypp-ui-design="harry-potter"] .ypp-section-header {
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(180, 140, 40, 0.35) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ypp-dismiss:hover::after,
+html[data-ypp-ui-design="harry-potter"] .ypp-filter-hidden:hover::after,
+html[data-ypp-ui-design="harry-potter"] #dismiss-button:hover::after,
+html[data-ypp-ui-design="harry-potter"] [aria-label*="Not interested"]:hover::after,
+html[data-ypp-ui-design="harry-potter"] [aria-label*="Don't recommend"]:hover::after {
+  transform: translateX(-50%) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 15, 22, 0.98) 0%,
+    rgba(45, 36, 20, 0.96) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 8px 16px 8px 16px) !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(180, 140, 40, 0.22) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 6px rgba(180, 140, 40, 0.25) !important;
+}
+
+/* =========================================================
+   SWIRLING PENSIEVE MEMORY BASIN DRAWERS
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-history-page-renderer,
+html[data-ypp-ui-design="harry-potter"] #playlist.ytd-watch-flexy,
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-video-list-renderer {
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(80, 100, 140, 0.18) 0%,
+    rgba(30, 42, 80, 0.22) 30%,
+    rgba(10, 14, 26, 1) 70%,
+    rgba(6, 8, 16, 1) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 12px 24px 12px 24px) !important;
+  box-shadow:
+    0 18px 52px rgba(0, 0, 0, 0.96),
+    0 0 18px rgba(100, 130, 160, 0.2),
+    inset 0 0 20px rgba(60, 80, 120, 0.15) !important;
+  animation: ypp-pensieve-swirl 16s infinite alternate ease-in-out !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-panel-video-renderer:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-video-history-entry-renderer:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(180, 200, 230, 0.12) 0%,
+    rgba(120, 150, 190, 0.06) 100%
+  ) !important;
+  box-shadow:
+    -4px 0 12px rgba(160, 185, 215, 0.3),
+    0 4px 14px rgba(0, 0, 0, 0.75) !important;
+  transform: translateX(5px) scale(1.01) !important;
+}
+
+/* =========================================================
+   EXTENSION POPUP PANELS (#ypp-eq-panel, #ypp-cinema-panel)
+   NO CSS POSITION OVERRIDES — Strictly preserve JS coordinates
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] #ypp-eq-panel,
+html[data-ypp-ui-design="harry-potter"] #ypp-cinema-panel,
+html[data-ypp-ui-design="harry-potter"] #ypp-settings-modal,
+html[data-ypp-ui-design="harry-potter"] #ypp-stats-modal,
+html[data-ypp-ui-design="harry-potter"] .ypp-popup-panel {
+  background: linear-gradient(
+    160deg,
+    rgba(16, 14, 10, 0.98) 0%,
+    rgba(10, 9, 6, 0.98) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 6px 20px 6px 20px) !important;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(212, 175, 55, 0.22),
+    inset 0 1px 0 rgba(255, 248, 220, 0.08) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #ypp-eq-panel h3,
+html[data-ypp-ui-design="harry-potter"] #ypp-cinema-panel h3,
+html[data-ypp-ui-design="harry-potter"] .ypp-popup-panel-title {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.35) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ypp-cinema-tab-btn {
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ypp-cinema-tab-btn.active,
+html[data-ypp-ui-design="harry-potter"] .ypp-cinema-tab-btn:hover {
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC CHANNELS — Great Hall Tapestry & Header
+   No neon (#ffd700). Antique gold (#d4af37), crimson, & parchment.
+   ========================================================= */
+
+/* =========================================================
+   CHANNEL BANNER — Great Hall Tapestry Frame
+   ========================================================= */
+
+/* Heraldic Tapestry Trim — Studs and Antique Gold Border along Banner Bottom */
+
+/* =========================================================
+   CHANNEL AVATAR — House Crest Portrait Frame
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] #wrapper.ytd-channel-avatar-editor,
+html[data-ypp-ui-design="harry-potter"] ytd-c4-tabbed-header-renderer #avatar-editor {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow:
+    0 0 0 2px rgba(40, 30, 10, 0.9),
+    0 0 0 5px rgba(180, 150, 60, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.85) !important;
+  transition: transform 0.35s var(--hp-ease-spell), box-shadow 0.35s ease !important;
+}
+
+/* Subscriber badge pill */
+
+/* Tab selection bar / indicator line */
+
+/* =========================================================
+   CHANNEL ITEMS (Playlists, Featured Channels, Cards)
+   ========================================================= */
+
+/* =========================================================
+   HOGWARTS MAGIC QUILL — Comment System
+   Parchment letters, quill inkwell input, dashed reply threads
+   No neon (#ffd700). All antique gold (#d4af37) and crimson (#740001).
+   ========================================================= */
+
+/* =========================================================
+   COMMENT THREADS — Parchment Letter Cards
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-comment-view-model {
+  background: linear-gradient(
+    158deg,
+    rgba(28, 20, 10, 0.88) 0%,
+    rgba(20, 14, 8, 0.92) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 2px 16px 2px 16px) !important;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.72),
+    inset 0 1px 0 rgba(255, 248, 220, 0.04) !important;
+  transition:
+    border-color 0.28s ease,
+    transform 0.28s var(--hp-ease-spell),
+    box-shadow 0.28s ease !important;
+}
+
+/* Channel author / OP badge */
+html[data-ypp-ui-design="harry-potter"] ytd-comment-view-model #author-text[owner],
+html[data-ypp-ui-design="harry-potter"] ytd-comment-view-model .ytd-comment-view-model[is-pinned] #author-text {
+  border-radius: var(--ypp-shape-primary, 3px 10px 3px 10px) !important;
+}
+
+/* =========================================================
+   COMMENT ACTION BUTTONS — Aged brass controls
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-comment-view-model button,
+html[data-ypp-ui-design="harry-potter"] ytd-comment-renderer button {
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-comment-view-model button:hover,
+html[data-ypp-ui-design="harry-potter"] ytd-comment-renderer button:hover {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 0 6px rgba(212, 175, 55, 0.18) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-comment-replies-renderer ytd-comment-view-model {
+  background: linear-gradient(
+    158deg,
+    rgba(32, 24, 12, 0.82) 0%,
+    rgba(22, 16, 8, 0.88) 100%
+  ) !important;
+}
+
+/* =========================================================
+   COMMENT SECTION HEADER — Chapter Heading
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-comments-header-renderer {
+  border-radius: var(--ypp-shape-primary, 4px 18px 4px 18px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* =========================================================
+   COMMENT INPUT — Enchanted Quill Inkwell
+   ========================================================= */
+
+/* Input container */
+html[data-ypp-ui-design="harry-potter"] ytd-commentbox,
+html[data-ypp-ui-design="harry-potter"] #simple-box,
+html[data-ypp-ui-design="harry-potter"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, 3px 16px 3px 16px) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Focus state: crystal glow */
+html[data-ypp-ui-design="harry-potter"] ytd-commentbox:focus-within,
+html[data-ypp-ui-design="harry-potter"] #simple-box:focus-within {
+  box-shadow:
+    0 0 0 1px rgba(180, 150, 60, 0.3),
+    inset 0 2px 10px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* =========================================================
+   PINNED COMMENT BADGES & HIGHLIGHTED COMMENTS — WAX SEAL
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] ytd-pinned-comment-badge-renderer,
+html[data-ypp-ui-design="harry-potter"] .ytd-pinned-comment-badge-renderer {
+  background: linear-gradient(135deg, rgba(116, 0, 1, 0.85) 0%, rgba(74, 0, 1, 0.95) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 10px rgba(212, 175, 55, 0.3) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-pinned-comment-badge-renderer yt-formatted-string,
+html[data-ypp-ui-design="harry-potter"] .ytd-pinned-comment-badge-renderer yt-formatted-string {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC HOME GRID — Category Pills & Guide Sidebar
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & parchment.
+   ========================================================= */
+
+/* Left Sidebar Navigation & Mini Guide */
+html[data-ypp-ui-design="harry-potter"] #guide-wrapper.ytd-app,
+html[data-ypp-ui-design="harry-potter"] ytd-settings-sidebar-renderer,
+html[data-ypp-ui-design="harry-potter"] #guide-wrapper {
+  box-shadow:
+    4px 0 20px rgba(0, 0, 0, 0.88),
+    0 0 16px rgba(212, 175, 55, 0.15) !important;
+  border-radius: var(--ypp-shape-primary, 0 16px 16px 0) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] ytd-mini-guide-renderer.ytd-app {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] yt-icon-button#guide-button {
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] yt-icon-button#guide-button:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.08) !important;
+}
+
+/* Guide Navigation Links */
+
+/* Homepage Category Chip Bar */
+
+/* =========================================================
+   POTION BREWING CAULDRON FILTER CHIPS
+   ========================================================= */
+
+/* Unselected Glass Potion Vials with Silver Cork Caps */
+
+/* Selected: Felix Felicis Liquid Luck Amber Gold */
+html[data-ypp-ui-design="harry-potter"] yt-chip-cloud-chip-renderer[selected],
+html[data-ypp-ui-design="harry-potter"] .ytChipShapeChip[aria-selected="true"],
+html[data-ypp-ui-design="harry-potter"] .iron-selected.yt-chip-cloud-chip-renderer {
+  background: linear-gradient(
+    180deg,
+    rgba(180, 140, 30, 0.92) 0%,
+    rgba(140, 80, 10, 0.95) 55%,
+    rgba(100, 10, 10, 0.98) 100%
+  ) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 6px rgba(180, 140, 30, 0.35) !important;
+  box-shadow:
+    0 10px 26px rgba(80, 40, 5, 0.8),
+    0 0 16px rgba(212, 175, 55, 0.35),
+    inset 0 0 12px rgba(255, 220, 100, 0.25) !important;
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+/* Shimmering Runic Spark on Selected Chip (NO EMOJIS) */
+html[data-ypp-ui-design="harry-potter"] yt-chip-cloud-chip-renderer[selected]::after,
+html[data-ypp-ui-design="harry-potter"] .ytChipShapeChip[aria-selected="true"]::after {
+  animation: ypp-levitate 1.4s infinite alternate ease-in-out !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC LIVE CHAT — Owl Post & Royal Decree Super Chats
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & crimson.
+   ========================================================= */
+
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-app,
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 4px 20px 4px 20px) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.88),
+    0 0 16px rgba(212, 175, 55, 0.15) !important;
+}
+
+/* Chat Messages — Owl Post Parchment Slips */
+
+/* Super Chats & Memberships — Royal Decree Proclamation Cards */
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-membership-item-renderer {
+  background: linear-gradient(135deg, rgba(116, 0, 1, 0.88) 0%, rgba(35, 25, 12, 0.95) 100%) !important;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(212, 175, 55, 0.28) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-paid-message-renderer #author-name,
+html[data-ypp-ui-design="harry-potter"] yt-live-chat-paid-message-renderer #purchase-amount {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #message-input.yt-live-chat-text-input-field-renderer {
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC VIDEO PLAYER — Wand Progress, Snitch & Controls
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & crimson.
+   ========================================================= */
+
+html[data-ypp-ui-design="harry-potter"] .ytp-chrome-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(8, 9, 13, 0.98) 0%,
+    rgba(12, 13, 20, 0.75) 60%,
+    transparent 100%
+  ) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* =========================================================
+   WAND SPELL BEAM PROGRESS BAR — Crimson to Bright Gold
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] .ytp-swatch-background-color,
+html[data-ypp-ui-design="harry-potter"] .ytp-play-progress {
+  background: linear-gradient(90deg, #5a0001 0%, #b8860b 70%, #d4af37 88%, #fff8e1 100%) !important;
+  box-shadow:
+    0 0 10px rgba(212, 175, 55, 0.45),
+    0 0 4px rgba(255, 248, 220, 0.35),
+    inset 0 1px 0 rgba(255, 248, 220, 0.2) !important;
+}
+
+/* Expecto Patronum Load Trail — Ethereal silver-blue mist */
+html[data-ypp-ui-design="harry-potter"] .ytp-load-progress {
+  background: linear-gradient(
+    90deg,
+    rgba(25, 40, 90, 0.5) 0%,
+    rgba(60, 90, 160, 0.55) 45%,
+    rgba(180, 200, 230, 0.65) 100%
+  ) !important;
+  box-shadow: 0 0 8px rgba(140, 170, 210, 0.35) !important;
+  animation: ypp-patronum-flow 4s ease-in-out infinite !important;
+}
+
+/* =========================================================
+   PLAYER CHROME CONTROLS & PARCHMENT PREVIEW CARDS
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls,
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover,
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  box-shadow:
+    0 0 12px rgba(180, 150, 60, 0.25),
+    inset 0 0 8px rgba(14, 26, 64, 0.4) !important;
+  transform: scale(1.02) !important;
+}
+
+/* Chapter & Thumbnail Hover Previews — Floating Parchment Cards */
+html[data-ypp-ui-design="harry-potter"] .ytp-tooltip.ytp-preview,
+html[data-ypp-ui-design="harry-potter"] .ytp-tooltip.ytp-bottom {
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.9),
+    0 0 14px rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Player Popup Settings Menus — Ravenclaw Library Panel */
+
+html[data-ypp-ui-design="harry-potter"] .ytp-menuitem:not([aria-disabled=true]) {
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-menuitem:not([aria-disabled=true]):hover {
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.7),
+    inset 0 0 6px rgba(130, 30, 30, 0.3) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Player Control Buttons */
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button),
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
+html[data-ypp-ui-design="harry-potter"] .ytp-fullscreen-grid-expand-button {
+  border-radius: var(--ypp-shape-primary, 4px 12px 4px 12px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button, .ytp-mute-button.ytp-button):hover,
+html[data-ypp-ui-design="harry-potter"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover,
+html[data-ypp-ui-design="harry-potter"] .ytp-fullscreen-grid-expand-button:hover {
+  box-shadow:
+    0 0 10px rgba(180, 140, 40, 0.2),
+    inset 0 0 4px rgba(255, 248, 220, 0.06) !important;
+  transform: scale(1.08) !important;
+}
+
+/* =========================================================
+   3D GOLDEN SNITCH SCRUBBER — Hand-polished Gold Sphere
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button {
+  background: radial-gradient(
+    circle at 32% 28%,
+    #fff8e1 0%,
+    #f4d03f 20%,
+    #d4af37 50%,
+    #9a7a20 80%,
+    #5a1a10 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.85),
+    0 0 10px rgba(212, 175, 55, 0.5),
+    0 0 22px rgba(180, 140, 30, 0.25),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(80, 40, 10, 0.4) !important;
+  transform: scale(1.3) !important;
+  transition: transform 0.25s var(--hp-ease-spell), box-shadow 0.25s ease !important;
+}
+
+/* Snitch Wings (Translucent Membrane) */
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button::before,
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button::after {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(245, 245, 255, 0.88) 0%,
+    rgba(220, 230, 245, 0.6) 40%,
+    rgba(212, 175, 55, 0.2) 75%,
+    transparent 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 50% 50% 0 50%) !important;
+  box-shadow:
+    0 0 6px rgba(200, 215, 240, 0.5),
+    inset 0 0 4px rgba(255, 255, 255, 0.4) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button::before {
+  border-radius: var(--ypp-shape-primary, 80% 0 20% 50%) !important;
+  transform-origin: bottom right !important;
+  animation: ypp-snitch-flutter-left 0.15s infinite ease-in-out !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button::after {
+  border-radius: var(--ypp-shape-primary, 0 80% 50% 20%) !important;
+  transform-origin: bottom left !important;
+  animation: ypp-snitch-flutter-right 0.15s infinite ease-in-out !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-container:hover .ytp-scrubber-button,
+html[data-ypp-ui-design="harry-potter"] .ytp-scrubber-button:hover {
+  transform: scale(1.65) !important;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(212, 175, 55, 0.6),
+    0 0 38px rgba(180, 140, 30, 0.35),
+    inset 0 2px 5px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 5px rgba(80, 40, 10, 0.5) !important;
+}
+
+/* =========================================================
+   TIME-TURNER LOADING SPINNER — Pure CSS Rings (NO EMOJIS)
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] .ytp-spinner-circle {
+  box-shadow:
+    0 0 12px rgba(180, 140, 40, 0.4),
+    inset 0 0 6px rgba(180, 140, 40, 0.25) !important;
+}
+
+/* Inner Hourglass symbol drawn without emoji */
+html[data-ypp-ui-design="harry-potter"] .ytp-spinner-container::after {
+  transform: translate(-50%, -50%) !important;
+  filter:
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.85))
+    drop-shadow(0 0 8px rgba(212, 175, 55, 0.5)) !important;
+  animation: ypp-levitate 1.4s ease-in-out infinite alternate !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-mute-button:hover::after,
+html[data-ypp-ui-design="harry-potter"] .ytp-mute-button[data-title*="Unmute"]::after,
+html[data-ypp-ui-design="harry-potter"] .ytp-mute-button[title*="Unmute"]::after,
+html[data-ypp-ui-design="harry-potter"] .ytp-mute-button[aria-label*="Unmute"]::after {
+  transform: translateX(-50%) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(12, 14, 20, 0.98) 0%,
+    rgba(20, 55, 30, 0.96) 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(90, 130, 100, 0.25) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* =========================================================
+   WAND SPELLCASTING PLAYER CONTROLS
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] .ytp-play-button:hover {
+  animation: ypp-lumos-burst 2s infinite ease-in-out !important;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5)) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-play-button:active {
+  transform: scale(1.18) !important;
+  filter: drop-shadow(0 0 14px rgba(116, 0, 1, 0.6)) brightness(1.2) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-volume-slider-handle {
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff8e1 0%,
+    #d4af37 45%,
+    #9a7a20 100%
+  ) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.8),
+    0 0 8px rgba(212, 175, 55, 0.35),
+    inset 0 1px 2px rgba(255, 248, 220, 0.4) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytp-fullscreen-button:active,
+html[data-ypp-ui-design="harry-potter"] .ytp-size-button:active,
+html[data-ypp-ui-design="harry-potter"] .ytp-fullscreen-button:hover,
+html[data-ypp-ui-design="harry-potter"] .ytp-size-button:hover {
+  animation: ypp-apparition-smoke 0.6s ease-out !important;
+  filter: drop-shadow(0 0 10px rgba(140, 160, 200, 0.4)) !important;
+}
+
+/* =========================================================
+   FELIX FELICIS LIQUID GOLD PROGRESS BAR & EXTENSION PLAYER BAR
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] .ytp-swatch-background-color,
+html[data-ypp-ui-design="harry-potter"] .ytp-play-progress,
+html[data-ypp-ui-design="harry-potter"] .ypp-progress-fill,
+html[data-ypp-ui-design="harry-potter"] .ypp-player-progress-bar {
+  background: linear-gradient(
+    90deg,
+    rgba(140, 95, 20, 0.95) 0%,
+    rgba(212, 175, 55, 1) 55%,
+    rgba(255, 223, 128, 1) 85%,
+    rgba(255, 248, 220, 1) 100%
+  ) !important;
+  box-shadow:
+    0 0 14px rgba(212, 175, 55, 0.65),
+    0 0 6px rgba(255, 248, 220, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Custom Extension Player Bar Wrapper */
+html[data-ypp-ui-design="harry-potter"] .ypp-control-bar,
+html[data-ypp-ui-design="harry-potter"] .ypp-player-bar {
+  background: linear-gradient(
+    to top,
+    rgba(10, 9, 7, 0.98) 0%,
+    rgba(16, 14, 11, 0.88) 100%
+  ) !important;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* =========================================================
+   HOGWARTS MAGIC SEARCH — Marauder's Map & Potion Vial Pills
+   No neon (#ffd700), no emojis. Antique gold (#d4af37) & parchment.
+   ========================================================= */
+
+/* Marauder's Map Search Page Background Reveal */
+html[data-ypp-ui-design="harry-potter"] ytd-search {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 28, 15, 0.45) 0%,
+    rgba(18, 14, 8, 0.95) 100%
+  ) !important;
+}
+
+/* Search Results List Items */
+
+/* Modern Searchbox Input Box & Button */
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentInputBox,
+html[data-ypp-ui-design="harry-potter"] #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 24px 4px 24px 4px) !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px rgba(212, 175, 55, 0.1) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentInputBoxDark:focus-within,
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentInputBox:focus-within,
+html[data-ypp-ui-design="harry-potter"] #container.ytd-searchbox:focus-within {
+  box-shadow:
+    0 0 25px rgba(212, 175, 55, 0.35),
+    inset 0 0 15px rgba(212, 175, 55, 0.18) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentSearchButton,
+html[data-ypp-ui-design="harry-potter"] #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  background: linear-gradient(135deg, var(--hp-crimson, #740001) 0%, #4a0000 100%) !important;
+  box-shadow: 0 4px 12px rgba(116, 0, 1, 0.5) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentSearchButton:hover,
+html[data-ypp-ui-design="harry-potter"] #search-icon-legacy:hover {
+  background: linear-gradient(135deg, #a30001 0%, var(--hp-crimson, #740001) 100%) !important;
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.45),
+    0 4px 18px rgba(116, 0, 1, 0.8) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Search Suggestions Container Dropdown */
+html[data-ypp-ui-design="harry-potter"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-design="harry-potter"] ytd-multi-page-menu-renderer {
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.95),
+    0 0 25px rgba(212, 175, 55, 0.2) !important;
+  border-radius: var(--ypp-shape-primary, 4px 18px 4px 18px) !important;
+}
+
+/* =========================================================
+   POTION VIAL FILTER PILLS & SEARCH FILTER CHIPS
+   ========================================================= */
+
+/* Selected / Active Filter Pill — Glowing Crimson Potion */
+
+/* Search Filter Group Cards */
+html[data-ypp-ui-design="harry-potter"] ytd-search-filter-group-renderer {
+  border-radius: var(--ypp-shape-primary, 4px 18px 4px 18px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* =========================================================
+   SPELLBOOK SCROLL DESCRIPTION BOX
+   ========================================================= */
+
+html[data-ypp-ui-design="harry-potter"] ytd-watch-metadata #description::before,
+html[data-ypp-ui-design="harry-potter"] ytd-text-inline-expander::before {
+  border-radius: var(--ypp-shape-primary, 6px 18px 6px 18px) !important;
+  box-shadow: inset 0 0 10px rgba(180, 140, 40, 0.08) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* =========================================================
+   ENCHANTED INK ILLUMINATED DROP CAP
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] #description-inline-expander::first-letter,
+html[data-ypp-ui-design="harry-potter"] #description-text::first-letter,
+html[data-ypp-ui-design="harry-potter"] ytd-watch-metadata #description-inline-expander yt-attributed-string span:first-of-type::first-letter {
+  background: linear-gradient(135deg, rgba(116, 0, 1, 0.85) 0%, rgba(20, 18, 14, 0.95) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px) !important;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.8),
+    inset 0 0 8px rgba(212, 175, 55, 0.35) !important;
+  text-shadow: 0 2px 4px #000000, 0 0 10px rgba(212, 175, 55, 0.5) !important;
+}
+
+/* =========================================================
+   RECOMMENDATION SIDEBAR — NO BORDER BOX (USER DIRECTIVE)
+   Secondary sidebar and items must NOT have border boxes or backgrounds
+   ========================================================= */
+
+/* =========================================================
+   EXTENSION EQ & CINEMA PANELS
+   ========================================================= */
+html[data-ypp-ui-design="harry-potter"] #ypp-eq-panel,
+html[data-ypp-ui-design="harry-potter"] #ypp-cinema-panel {
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  background: linear-gradient(135deg, rgba(16, 15, 12, 0.96) 0%, rgba(20, 18, 14, 0.92) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 20px 4px 20px) !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(212, 175, 55, 0.18),
+    inset 0 0 15px rgba(116, 0, 1, 0.25) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #ypp-eq-panel::before,
+html[data-ypp-ui-design="harry-potter"] #ypp-cinema-panel::before {
+  border-radius: var(--ypp-shape-primary, 6px 18px 6px 18px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] .ypp-eq-canvas {
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+}
+
+html[data-ypp-ui-design="harry-potter"] #shuffle-button:hover::after,
+html[data-ypp-ui-design="harry-potter"] ytd-playlist-panel-renderer #shuffle-button:hover::after,
+html[data-ypp-ui-design="harry-potter"] .ytp-playlist-menu-shuffle-button:hover::after,
+html[data-ypp-ui-design="harry-potter"] [aria-label*="Shuffle"]:hover::after,
+html[data-ypp-ui-design="harry-potter"] [title*="Shuffle"]:hover::after {
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, rgba(20, 18, 12, 0.98) 0%, rgba(140, 100, 20, 0.25) 100%) !important;
+  border-radius: var(--ypp-shape-primary, 4px 14px 4px 14px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.9), 0 0 16px rgba(212, 175, 55, 0.3) !important;
+  animation: ypp-levitate 1.5s ease-in-out infinite alternate !important;
+}

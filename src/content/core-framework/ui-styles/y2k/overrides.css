@@ -1,0 +1,2469 @@
+/* Unique Shapes and Patterns for y2k */
+
+/* y2k/base/animations.css */
+@keyframes y2k-pulse {
+  0%   { box-shadow: 0 0 15px rgba(255,105,180,0.4);
+}
+
+50% {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3);
+}
+
+100% {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4);
+}
+
+}
+
+@keyframes y2k-float {
+  0%{transform:translateY(0);
+}
+
+50% {
+  transform:translateY(-7px);
+}
+
+100% {
+  transform:translateY(0);
+}
+
+}
+
+@keyframes sepia-bloom {
+  0%{filter:brightness(1);
+}
+
+100% {
+  filter:brightness(1.1) saturate(1.1);
+}
+}
+/* Card hover */
+html[data-ypp-ui-design="y2k"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="y2k"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="y2k"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="y2k"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-design="y2k"] ytd-grid-video-renderer:hover {
+  transform:scale(1.05) rotate(1deg) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  animation: sepia-bloom 0.3s forwards !important;
+}
+
+/* Sidebar guide */
+
+/* Button base */
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i]:hover {
+  transform: scale(1.08);
+  animation: y2k-pulse 5s ease-in-out infinite;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  animation: y2k-pulse 5s ease-in-out infinite !important;
+}
+
+/* Masthead topbar logo */
+html[data-ypp-ui-design="y2k"] ytd-topbar-logo-renderer a#logo::before {
+  /* Removed broken SVG background */
+}
+
+html[data-ypp-ui-design="y2k"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-organizer-modal, html[data-ypp-ui-design="y2k"] .ypp-modal-content {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-slider, html[data-ypp-ui-design="y2k"] .ypp-gpb-vol-slider {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .tab-content.tp-yt-paper-tab {
+  transition: transform var(--bounce), background var(--bounce) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .tab-content.tp-yt-paper-tab:hover {
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-nav-btn.active {
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-badge, html[data-ypp-ui-design="y2k"] .ypp-value-display {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-col-switcher {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-tool:hover {
+  transform: scale(1.02) !important;
+}
+
+html[data-ypp-ui-design="y2k"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  filter: saturate(200%) blur(12px) contrast(1.1) brightness(1.2);
+  transform: scale(3);
+}
+
+html[data-ypp-ui-design="y2k"] body.yt-pro-ambient .style-scope.ytd-watch-flexy#player-container-inner {
+  border-radius: 24px;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3);
+}
+
+html[data-ypp-ui-design="y2k"] .ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytSuggestionComponentRoundedSuggestion:hover {
+  transform: scale(1.01) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarPlayed {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+/* y2k/components/badges.css */
+html[data-ypp-ui-design="y2k"] .yt-badge-shape--thumbnail-default,
+html[data-ypp-ui-design="y2k"] .ypp-badge, html[data-ypp-ui-design="y2k"] .ypp-value-display {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-design="y2k"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-design="y2k"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-thumbnail-overlay-toggle-button-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .yt-chip-shape,
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="y2k"] ytd-button-renderer,
+html[data-ypp-ui-design="y2k"] button.ytSpecButtonShapeNextTonal,
+html[data-ypp-ui-design="y2k"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  text-transform: uppercase;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html[data-ypp-ui-design="y2k"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.06) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:active {
+  transform: scale(0.97) !important;
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-pill-toggle {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-pill-toggle:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-btn-primary, html[data-ypp-ui-design="y2k"] .ypp-play-all-btn, html[data-ypp-ui-design="y2k"] .ypp-health-btn {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-btn-primary:hover, html[data-ypp-ui-design="y2k"] .ypp-play-all-btn:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+/* y2k/components/forms.css */
+html[data-ypp-ui-design="y2k"] ytd-searchbox, html[data-ypp-ui-design="y2k"] #search-form,
+html[data-ypp-ui-design="y2k"] tp-yt-paper-input, html[data-ypp-ui-design="y2k"] tp-yt-paper-textarea {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-searchbox[has-focus], html[data-ypp-ui-design="y2k"] tp-yt-paper-input:focus-within {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 24px 24px 0) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-filter-dropdown {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ypp-filter-dropdown:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
+}
+
+html[data-ypp-ui-design="y2k"] yt-icon-button#guide-button {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] yt-icon-button#guide-button:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.1);
+}
+
+html[data-ypp-ui-design="y2k"] yt-icon-button#guide-button:active {
+  transform: scale(0.95) !important;
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytInlinePlayerControlsTopRightControlsCircleButton {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="y2k"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="y2k"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="y2k"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+/* Specific Styling for ytd-video-renderer */
+html[data-ypp-card-style="y2k"] ytd-video-renderer, html[data-ypp-ui-design="y2k"] ytd-video-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-rich-item-renderer */
+html[data-ypp-card-style="y2k"] ytd-rich-item-renderer, html[data-ypp-ui-design="y2k"] ytd-rich-item-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-playlist-renderer */
+html[data-ypp-card-style="y2k"] ytd-playlist-renderer, html[data-ypp-ui-design="y2k"] ytd-playlist-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-grid-video-renderer */
+html[data-ypp-card-style="y2k"] ytd-grid-video-renderer, html[data-ypp-ui-design="y2k"] ytd-grid-video-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-compact-video-renderer */
+html[data-ypp-card-style="y2k"] ytd-compact-video-renderer, html[data-ypp-ui-design="y2k"] ytd-compact-video-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-reel-item-renderer */
+html[data-ypp-card-style="y2k"] ytd-reel-item-renderer, html[data-ypp-ui-design="y2k"] ytd-reel-item-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-rich-shelf-renderer */
+html[data-ypp-card-style="y2k"] ytd-rich-shelf-renderer, html[data-ypp-ui-design="y2k"] ytd-rich-shelf-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-comment-thread-renderer */
+html[data-ypp-card-style="y2k"] ytd-comment-thread-renderer, html[data-ypp-ui-design="y2k"] ytd-comment-thread-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-channel-renderer */
+html[data-ypp-card-style="y2k"] ytd-channel-renderer, html[data-ypp-ui-design="y2k"] ytd-channel-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-playlist-panel-renderer */
+html[data-ypp-card-style="y2k"] ytd-playlist-panel-renderer, html[data-ypp-ui-design="y2k"] ytd-playlist-panel-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-watch-metadata */
+html[data-ypp-card-style="y2k"] ytd-watch-metadata, html[data-ypp-ui-design="y2k"] ytd-watch-metadata {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-multi-page-menu-renderer */
+html[data-ypp-card-style="y2k"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="y2k"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+html[data-ypp-card-style="y2k"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="y2k"] ytd-multi-page-menu-renderer:hover {
+  transform: scale(1.05) rotate(1deg) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 50%, #00ffff 100%) !important;
+  box-shadow: 0 10px 20px rgba(255,0,255,0.4), inset 0 15px 30px rgba(255,255,255,1) !important;
+}
+
+/* Specific Styling for ytd-menu-popup-renderer */
+html[data-ypp-card-style="y2k"] ytd-menu-popup-renderer, html[data-ypp-ui-design="y2k"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+html[data-ypp-card-style="y2k"] ytd-menu-popup-renderer, html[data-ypp-ui-design="y2k"] ytd-menu-popup-renderer:hover {
+  transform: scale(1.05) rotate(1deg) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 50%, #00ffff 100%) !important;
+  box-shadow: 0 10px 20px rgba(255,0,255,0.4), inset 0 15px 30px rgba(255,255,255,1) !important;
+}
+
+/* Specific Styling for tp-yt-paper-dialog */
+html[data-ypp-card-style="y2k"] tp-yt-paper-dialog, html[data-ypp-ui-design="y2k"] tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+html[data-ypp-card-style="y2k"] tp-yt-paper-dialog, html[data-ypp-ui-design="y2k"] tp-yt-paper-dialog:hover {
+  transform: scale(1.05) rotate(1deg) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 50%, #00ffff 100%) !important;
+  box-shadow: 0 10px 20px rgba(255,0,255,0.4), inset 0 15px 30px rgba(255,255,255,1) !important;
+}
+
+/* Specific Styling for ytd-notification-renderer */
+html[data-ypp-card-style="y2k"] ytd-notification-renderer, html[data-ypp-ui-design="y2k"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+html[data-ypp-card-style="y2k"] ytd-notification-renderer, html[data-ypp-ui-design="y2k"] ytd-notification-renderer:hover {
+  transform: scale(1.05) rotate(1deg) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 50%, #00ffff 100%) !important;
+  box-shadow: 0 10px 20px rgba(255,0,255,0.4), inset 0 15px 30px rgba(255,255,255,1) !important;
+}
+
+/* Specific Styling for ytd-account-item-renderer */
+html[data-ypp-card-style="y2k"] ytd-account-item-renderer, html[data-ypp-ui-design="y2k"] ytd-account-item-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-guide-entry-renderer */
+html[data-ypp-card-style="y2k"] ytd-guide-entry-renderer, html[data-ypp-ui-design="y2k"] ytd-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-mini-guide-entry-renderer */
+html[data-ypp-card-style="y2k"] ytd-mini-guide-entry-renderer, html[data-ypp-ui-design="y2k"] ytd-mini-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-search-filter-renderer */
+html[data-ypp-card-style="y2k"] ytd-search-filter-renderer, html[data-ypp-ui-design="y2k"] ytd-search-filter-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-macro-markers-list-item-renderer */
+html[data-ypp-card-style="y2k"] ytd-macro-markers-list-item-renderer, html[data-ypp-ui-design="y2k"] ytd-macro-markers-list-item-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-c4-tabbed-header-renderer */
+html[data-ypp-card-style="y2k"] ytd-c4-tabbed-header-renderer, html[data-ypp-ui-design="y2k"] ytd-c4-tabbed-header-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for #channel-header */
+html[data-ypp-card-style="y2k"] #channel-header, html[data-ypp-ui-design="y2k"] #channel-header {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+html[data-ypp-card-style="y2k"] #channel-header, html[data-ypp-ui-design="y2k"] #channel-header:hover {
+  transform: scale(1.05) rotate(1deg) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 50%, #00ffff 100%) !important;
+  box-shadow: 0 10px 20px rgba(255,0,255,0.4), inset 0 15px 30px rgba(255,255,255,1) !important;
+}
+
+/* Specific Styling for ytd-live-chat-renderer */
+html[data-ypp-card-style="y2k"] ytd-live-chat-renderer, html[data-ypp-ui-design="y2k"] ytd-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for yt-live-chat-text-message-renderer */
+html[data-ypp-card-style="y2k"] yt-live-chat-text-message-renderer, html[data-ypp-ui-design="y2k"] yt-live-chat-text-message-renderer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for ytd-miniplayer */
+html[data-ypp-card-style="y2k"] ytd-miniplayer, html[data-ypp-ui-design="y2k"] ytd-miniplayer {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for .ytp-settings-menu */
+html[data-ypp-card-style="y2k"] .ytp-settings-menu, html[data-ypp-ui-design="y2k"] .ytp-settings-menu {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for .ytp-chrome-bottom */
+html[data-ypp-card-style="y2k"] .ytp-chrome-bottom, html[data-ypp-ui-design="y2k"] .ytp-chrome-bottom {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for .ytp-endscreen-content */
+html[data-ypp-card-style="y2k"] .ytp-endscreen-content, html[data-ypp-ui-design="y2k"] .ytp-endscreen-content {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for .ytp-ce-element */
+html[data-ypp-card-style="y2k"] .ytp-ce-element, html[data-ypp-ui-design="y2k"] .ytp-ce-element {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Specific Styling for yt-error-screen */
+html[data-ypp-card-style="y2k"] yt-error-screen, html[data-ypp-ui-design="y2k"] yt-error-screen {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e6e6fa 50%, #c0c0c0 100%) !important;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 10px 20px rgba(255,255,255,0.8) !important;
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+}
+
+/* Unique Avatar Masking */
+
+/* y2k Extreme Deep UI Ruleset 1 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-1, html[data-ypp-ui-design="y2k"] .y2k-deep-class-1 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 2 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-2, html[data-ypp-ui-design="y2k"] .y2k-deep-class-2 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 3 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-3, html[data-ypp-ui-design="y2k"] .y2k-deep-class-3 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 4 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-4, html[data-ypp-ui-design="y2k"] .y2k-deep-class-4 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 5 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-5, html[data-ypp-ui-design="y2k"] .y2k-deep-class-5 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 6 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-6, html[data-ypp-ui-design="y2k"] .y2k-deep-class-6 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 7 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-7, html[data-ypp-ui-design="y2k"] .y2k-deep-class-7 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 8 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-8, html[data-ypp-ui-design="y2k"] .y2k-deep-class-8 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 9 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-9, html[data-ypp-ui-design="y2k"] .y2k-deep-class-9 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 10 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-10, html[data-ypp-ui-design="y2k"] .y2k-deep-class-10 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 11 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-11, html[data-ypp-ui-design="y2k"] .y2k-deep-class-11 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 12 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-12, html[data-ypp-ui-design="y2k"] .y2k-deep-class-12 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 13 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-13, html[data-ypp-ui-design="y2k"] .y2k-deep-class-13 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 14 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-14, html[data-ypp-ui-design="y2k"] .y2k-deep-class-14 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 15 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-15, html[data-ypp-ui-design="y2k"] .y2k-deep-class-15 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 16 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-16, html[data-ypp-ui-design="y2k"] .y2k-deep-class-16 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 17 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-17, html[data-ypp-ui-design="y2k"] .y2k-deep-class-17 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 18 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-18, html[data-ypp-ui-design="y2k"] .y2k-deep-class-18 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 19 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-19, html[data-ypp-ui-design="y2k"] .y2k-deep-class-19 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 20 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-20, html[data-ypp-ui-design="y2k"] .y2k-deep-class-20 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 21 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-21, html[data-ypp-ui-design="y2k"] .y2k-deep-class-21 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 22 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-22, html[data-ypp-ui-design="y2k"] .y2k-deep-class-22 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 23 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-23, html[data-ypp-ui-design="y2k"] .y2k-deep-class-23 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 24 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-24, html[data-ypp-ui-design="y2k"] .y2k-deep-class-24 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 25 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-25, html[data-ypp-ui-design="y2k"] .y2k-deep-class-25 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 26 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-26, html[data-ypp-ui-design="y2k"] .y2k-deep-class-26 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 27 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-27, html[data-ypp-ui-design="y2k"] .y2k-deep-class-27 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 28 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-28, html[data-ypp-ui-design="y2k"] .y2k-deep-class-28 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 29 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-29, html[data-ypp-ui-design="y2k"] .y2k-deep-class-29 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 30 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-30, html[data-ypp-ui-design="y2k"] .y2k-deep-class-30 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 31 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-31, html[data-ypp-ui-design="y2k"] .y2k-deep-class-31 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 32 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-32, html[data-ypp-ui-design="y2k"] .y2k-deep-class-32 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 33 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-33, html[data-ypp-ui-design="y2k"] .y2k-deep-class-33 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 34 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-34, html[data-ypp-ui-design="y2k"] .y2k-deep-class-34 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 35 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-35, html[data-ypp-ui-design="y2k"] .y2k-deep-class-35 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 36 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-36, html[data-ypp-ui-design="y2k"] .y2k-deep-class-36 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 37 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-37, html[data-ypp-ui-design="y2k"] .y2k-deep-class-37 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 38 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-38, html[data-ypp-ui-design="y2k"] .y2k-deep-class-38 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 39 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-39, html[data-ypp-ui-design="y2k"] .y2k-deep-class-39 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 40 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-40, html[data-ypp-ui-design="y2k"] .y2k-deep-class-40 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 41 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-41, html[data-ypp-ui-design="y2k"] .y2k-deep-class-41 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 42 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-42, html[data-ypp-ui-design="y2k"] .y2k-deep-class-42 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 43 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-43, html[data-ypp-ui-design="y2k"] .y2k-deep-class-43 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 44 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-44, html[data-ypp-ui-design="y2k"] .y2k-deep-class-44 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 45 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-45, html[data-ypp-ui-design="y2k"] .y2k-deep-class-45 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 46 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-46, html[data-ypp-ui-design="y2k"] .y2k-deep-class-46 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 47 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-47, html[data-ypp-ui-design="y2k"] .y2k-deep-class-47 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 48 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-48, html[data-ypp-ui-design="y2k"] .y2k-deep-class-48 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 49 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-49, html[data-ypp-ui-design="y2k"] .y2k-deep-class-49 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 50 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-50, html[data-ypp-ui-design="y2k"] .y2k-deep-class-50 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 51 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-51, html[data-ypp-ui-design="y2k"] .y2k-deep-class-51 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 52 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-52, html[data-ypp-ui-design="y2k"] .y2k-deep-class-52 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 53 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-53, html[data-ypp-ui-design="y2k"] .y2k-deep-class-53 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 54 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-54, html[data-ypp-ui-design="y2k"] .y2k-deep-class-54 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 55 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-55, html[data-ypp-ui-design="y2k"] .y2k-deep-class-55 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 56 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-56, html[data-ypp-ui-design="y2k"] .y2k-deep-class-56 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 57 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-57, html[data-ypp-ui-design="y2k"] .y2k-deep-class-57 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 58 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-58, html[data-ypp-ui-design="y2k"] .y2k-deep-class-58 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 59 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-59, html[data-ypp-ui-design="y2k"] .y2k-deep-class-59 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 60 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-60, html[data-ypp-ui-design="y2k"] .y2k-deep-class-60 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 61 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-61, html[data-ypp-ui-design="y2k"] .y2k-deep-class-61 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 62 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-62, html[data-ypp-ui-design="y2k"] .y2k-deep-class-62 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 63 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-63, html[data-ypp-ui-design="y2k"] .y2k-deep-class-63 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 64 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-64, html[data-ypp-ui-design="y2k"] .y2k-deep-class-64 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 65 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-65, html[data-ypp-ui-design="y2k"] .y2k-deep-class-65 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 66 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-66, html[data-ypp-ui-design="y2k"] .y2k-deep-class-66 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 67 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-67, html[data-ypp-ui-design="y2k"] .y2k-deep-class-67 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 68 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-68, html[data-ypp-ui-design="y2k"] .y2k-deep-class-68 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 69 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-69, html[data-ypp-ui-design="y2k"] .y2k-deep-class-69 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 70 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-70, html[data-ypp-ui-design="y2k"] .y2k-deep-class-70 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 71 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-71, html[data-ypp-ui-design="y2k"] .y2k-deep-class-71 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 72 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-72, html[data-ypp-ui-design="y2k"] .y2k-deep-class-72 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 73 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-73, html[data-ypp-ui-design="y2k"] .y2k-deep-class-73 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 74 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-74, html[data-ypp-ui-design="y2k"] .y2k-deep-class-74 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 75 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-75, html[data-ypp-ui-design="y2k"] .y2k-deep-class-75 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 76 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-76, html[data-ypp-ui-design="y2k"] .y2k-deep-class-76 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 77 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-77, html[data-ypp-ui-design="y2k"] .y2k-deep-class-77 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 78 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-78, html[data-ypp-ui-design="y2k"] .y2k-deep-class-78 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 79 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-79, html[data-ypp-ui-design="y2k"] .y2k-deep-class-79 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 80 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-80, html[data-ypp-ui-design="y2k"] .y2k-deep-class-80 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 81 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-81, html[data-ypp-ui-design="y2k"] .y2k-deep-class-81 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 82 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-82, html[data-ypp-ui-design="y2k"] .y2k-deep-class-82 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 83 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-83, html[data-ypp-ui-design="y2k"] .y2k-deep-class-83 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 84 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-84, html[data-ypp-ui-design="y2k"] .y2k-deep-class-84 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 85 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-85, html[data-ypp-ui-design="y2k"] .y2k-deep-class-85 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 86 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-86, html[data-ypp-ui-design="y2k"] .y2k-deep-class-86 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 87 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-87, html[data-ypp-ui-design="y2k"] .y2k-deep-class-87 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 88 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-88, html[data-ypp-ui-design="y2k"] .y2k-deep-class-88 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 89 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-89, html[data-ypp-ui-design="y2k"] .y2k-deep-class-89 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 90 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-90, html[data-ypp-ui-design="y2k"] .y2k-deep-class-90 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 91 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-91, html[data-ypp-ui-design="y2k"] .y2k-deep-class-91 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 92 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-92, html[data-ypp-ui-design="y2k"] .y2k-deep-class-92 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 93 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-93, html[data-ypp-ui-design="y2k"] .y2k-deep-class-93 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 94 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-94, html[data-ypp-ui-design="y2k"] .y2k-deep-class-94 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 95 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-95, html[data-ypp-ui-design="y2k"] .y2k-deep-class-95 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 96 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-96, html[data-ypp-ui-design="y2k"] .y2k-deep-class-96 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 97 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-97, html[data-ypp-ui-design="y2k"] .y2k-deep-class-97 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 98 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-98, html[data-ypp-ui-design="y2k"] .y2k-deep-class-98 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 99 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-99, html[data-ypp-ui-design="y2k"] .y2k-deep-class-99 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 100 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-100, html[data-ypp-ui-design="y2k"] .y2k-deep-class-100 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 101 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-101, html[data-ypp-ui-design="y2k"] .y2k-deep-class-101 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 102 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-102, html[data-ypp-ui-design="y2k"] .y2k-deep-class-102 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 103 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-103, html[data-ypp-ui-design="y2k"] .y2k-deep-class-103 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 104 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-104, html[data-ypp-ui-design="y2k"] .y2k-deep-class-104 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 105 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-105, html[data-ypp-ui-design="y2k"] .y2k-deep-class-105 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 106 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-106, html[data-ypp-ui-design="y2k"] .y2k-deep-class-106 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 107 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-107, html[data-ypp-ui-design="y2k"] .y2k-deep-class-107 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 108 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-108, html[data-ypp-ui-design="y2k"] .y2k-deep-class-108 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 109 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-109, html[data-ypp-ui-design="y2k"] .y2k-deep-class-109 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 110 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-110, html[data-ypp-ui-design="y2k"] .y2k-deep-class-110 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 111 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-111, html[data-ypp-ui-design="y2k"] .y2k-deep-class-111 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 112 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-112, html[data-ypp-ui-design="y2k"] .y2k-deep-class-112 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 113 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-113, html[data-ypp-ui-design="y2k"] .y2k-deep-class-113 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 114 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-114, html[data-ypp-ui-design="y2k"] .y2k-deep-class-114 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 115 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-115, html[data-ypp-ui-design="y2k"] .y2k-deep-class-115 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 116 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-116, html[data-ypp-ui-design="y2k"] .y2k-deep-class-116 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 117 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-117, html[data-ypp-ui-design="y2k"] .y2k-deep-class-117 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 118 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-118, html[data-ypp-ui-design="y2k"] .y2k-deep-class-118 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 119 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-119, html[data-ypp-ui-design="y2k"] .y2k-deep-class-119 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 120 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-120, html[data-ypp-ui-design="y2k"] .y2k-deep-class-120 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 121 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-121, html[data-ypp-ui-design="y2k"] .y2k-deep-class-121 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 122 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-122, html[data-ypp-ui-design="y2k"] .y2k-deep-class-122 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 123 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-123, html[data-ypp-ui-design="y2k"] .y2k-deep-class-123 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 124 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-124, html[data-ypp-ui-design="y2k"] .y2k-deep-class-124 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 125 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-125, html[data-ypp-ui-design="y2k"] .y2k-deep-class-125 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 126 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-126, html[data-ypp-ui-design="y2k"] .y2k-deep-class-126 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 127 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-127, html[data-ypp-ui-design="y2k"] .y2k-deep-class-127 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 128 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-128, html[data-ypp-ui-design="y2k"] .y2k-deep-class-128 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 129 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-129, html[data-ypp-ui-design="y2k"] .y2k-deep-class-129 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 130 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-130, html[data-ypp-ui-design="y2k"] .y2k-deep-class-130 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 131 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-131, html[data-ypp-ui-design="y2k"] .y2k-deep-class-131 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 132 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-132, html[data-ypp-ui-design="y2k"] .y2k-deep-class-132 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 133 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-133, html[data-ypp-ui-design="y2k"] .y2k-deep-class-133 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 134 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-134, html[data-ypp-ui-design="y2k"] .y2k-deep-class-134 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 135 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-135, html[data-ypp-ui-design="y2k"] .y2k-deep-class-135 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 136 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-136, html[data-ypp-ui-design="y2k"] .y2k-deep-class-136 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 137 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-137, html[data-ypp-ui-design="y2k"] .y2k-deep-class-137 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 138 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-138, html[data-ypp-ui-design="y2k"] .y2k-deep-class-138 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 139 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-139, html[data-ypp-ui-design="y2k"] .y2k-deep-class-139 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 140 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-140, html[data-ypp-ui-design="y2k"] .y2k-deep-class-140 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 141 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-141, html[data-ypp-ui-design="y2k"] .y2k-deep-class-141 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 142 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-142, html[data-ypp-ui-design="y2k"] .y2k-deep-class-142 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 143 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-143, html[data-ypp-ui-design="y2k"] .y2k-deep-class-143 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 144 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-144, html[data-ypp-ui-design="y2k"] .y2k-deep-class-144 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 145 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-145, html[data-ypp-ui-design="y2k"] .y2k-deep-class-145 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 146 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-146, html[data-ypp-ui-design="y2k"] .y2k-deep-class-146 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 147 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-147, html[data-ypp-ui-design="y2k"] .y2k-deep-class-147 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 148 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-148, html[data-ypp-ui-design="y2k"] .y2k-deep-class-148 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 149 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-149, html[data-ypp-ui-design="y2k"] .y2k-deep-class-149 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 150 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-150, html[data-ypp-ui-design="y2k"] .y2k-deep-class-150 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 151 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-151, html[data-ypp-ui-design="y2k"] .y2k-deep-class-151 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 152 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-152, html[data-ypp-ui-design="y2k"] .y2k-deep-class-152 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 153 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-153, html[data-ypp-ui-design="y2k"] .y2k-deep-class-153 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 154 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-154, html[data-ypp-ui-design="y2k"] .y2k-deep-class-154 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 155 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-155, html[data-ypp-ui-design="y2k"] .y2k-deep-class-155 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 156 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-156, html[data-ypp-ui-design="y2k"] .y2k-deep-class-156 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 157 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-157, html[data-ypp-ui-design="y2k"] .y2k-deep-class-157 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 158 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-158, html[data-ypp-ui-design="y2k"] .y2k-deep-class-158 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 159 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-159, html[data-ypp-ui-design="y2k"] .y2k-deep-class-159 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 160 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-160, html[data-ypp-ui-design="y2k"] .y2k-deep-class-160 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 161 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-161, html[data-ypp-ui-design="y2k"] .y2k-deep-class-161 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 162 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-162, html[data-ypp-ui-design="y2k"] .y2k-deep-class-162 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 163 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-163, html[data-ypp-ui-design="y2k"] .y2k-deep-class-163 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 164 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-164, html[data-ypp-ui-design="y2k"] .y2k-deep-class-164 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 165 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-165, html[data-ypp-ui-design="y2k"] .y2k-deep-class-165 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 166 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-166, html[data-ypp-ui-design="y2k"] .y2k-deep-class-166 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 167 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-167, html[data-ypp-ui-design="y2k"] .y2k-deep-class-167 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 168 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-168, html[data-ypp-ui-design="y2k"] .y2k-deep-class-168 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 169 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-169, html[data-ypp-ui-design="y2k"] .y2k-deep-class-169 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 170 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-170, html[data-ypp-ui-design="y2k"] .y2k-deep-class-170 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 171 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-171, html[data-ypp-ui-design="y2k"] .y2k-deep-class-171 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 172 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-172, html[data-ypp-ui-design="y2k"] .y2k-deep-class-172 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 173 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-173, html[data-ypp-ui-design="y2k"] .y2k-deep-class-173 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 174 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-174, html[data-ypp-ui-design="y2k"] .y2k-deep-class-174 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 175 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-175, html[data-ypp-ui-design="y2k"] .y2k-deep-class-175 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 176 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-176, html[data-ypp-ui-design="y2k"] .y2k-deep-class-176 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 177 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-177, html[data-ypp-ui-design="y2k"] .y2k-deep-class-177 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 178 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-178, html[data-ypp-ui-design="y2k"] .y2k-deep-class-178 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 179 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-179, html[data-ypp-ui-design="y2k"] .y2k-deep-class-179 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 180 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-180, html[data-ypp-ui-design="y2k"] .y2k-deep-class-180 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 181 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-181, html[data-ypp-ui-design="y2k"] .y2k-deep-class-181 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 182 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-182, html[data-ypp-ui-design="y2k"] .y2k-deep-class-182 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 183 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-183, html[data-ypp-ui-design="y2k"] .y2k-deep-class-183 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 184 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-184, html[data-ypp-ui-design="y2k"] .y2k-deep-class-184 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 185 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-185, html[data-ypp-ui-design="y2k"] .y2k-deep-class-185 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 186 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-186, html[data-ypp-ui-design="y2k"] .y2k-deep-class-186 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 187 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-187, html[data-ypp-ui-design="y2k"] .y2k-deep-class-187 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 188 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-188, html[data-ypp-ui-design="y2k"] .y2k-deep-class-188 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 189 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-189, html[data-ypp-ui-design="y2k"] .y2k-deep-class-189 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 190 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-190, html[data-ypp-ui-design="y2k"] .y2k-deep-class-190 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 191 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-191, html[data-ypp-ui-design="y2k"] .y2k-deep-class-191 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 192 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-192, html[data-ypp-ui-design="y2k"] .y2k-deep-class-192 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 193 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-193, html[data-ypp-ui-design="y2k"] .y2k-deep-class-193 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 194 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-194, html[data-ypp-ui-design="y2k"] .y2k-deep-class-194 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 195 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-195, html[data-ypp-ui-design="y2k"] .y2k-deep-class-195 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 196 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-196, html[data-ypp-ui-design="y2k"] .y2k-deep-class-196 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 197 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-197, html[data-ypp-ui-design="y2k"] .y2k-deep-class-197 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 198 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-198, html[data-ypp-ui-design="y2k"] .y2k-deep-class-198 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 199 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-199, html[data-ypp-ui-design="y2k"] .y2k-deep-class-199 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 200 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-200, html[data-ypp-ui-design="y2k"] .y2k-deep-class-200 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 201 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-201, html[data-ypp-ui-design="y2k"] .y2k-deep-class-201 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 202 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-202, html[data-ypp-ui-design="y2k"] .y2k-deep-class-202 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 203 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-203, html[data-ypp-ui-design="y2k"] .y2k-deep-class-203 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 204 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-204, html[data-ypp-ui-design="y2k"] .y2k-deep-class-204 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 205 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-205, html[data-ypp-ui-design="y2k"] .y2k-deep-class-205 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 206 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-206, html[data-ypp-ui-design="y2k"] .y2k-deep-class-206 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 207 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-207, html[data-ypp-ui-design="y2k"] .y2k-deep-class-207 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 208 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-208, html[data-ypp-ui-design="y2k"] .y2k-deep-class-208 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 209 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-209, html[data-ypp-ui-design="y2k"] .y2k-deep-class-209 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 210 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-210, html[data-ypp-ui-design="y2k"] .y2k-deep-class-210 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 211 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-211, html[data-ypp-ui-design="y2k"] .y2k-deep-class-211 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 212 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-212, html[data-ypp-ui-design="y2k"] .y2k-deep-class-212 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 213 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-213, html[data-ypp-ui-design="y2k"] .y2k-deep-class-213 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 214 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-214, html[data-ypp-ui-design="y2k"] .y2k-deep-class-214 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 215 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-215, html[data-ypp-ui-design="y2k"] .y2k-deep-class-215 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 216 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-216, html[data-ypp-ui-design="y2k"] .y2k-deep-class-216 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 217 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-217, html[data-ypp-ui-design="y2k"] .y2k-deep-class-217 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 218 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-218, html[data-ypp-ui-design="y2k"] .y2k-deep-class-218 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 219 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-219, html[data-ypp-ui-design="y2k"] .y2k-deep-class-219 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 220 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-220, html[data-ypp-ui-design="y2k"] .y2k-deep-class-220 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 221 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-221, html[data-ypp-ui-design="y2k"] .y2k-deep-class-221 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 222 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-222, html[data-ypp-ui-design="y2k"] .y2k-deep-class-222 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 223 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-223, html[data-ypp-ui-design="y2k"] .y2k-deep-class-223 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 224 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-224, html[data-ypp-ui-design="y2k"] .y2k-deep-class-224 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 225 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-225, html[data-ypp-ui-design="y2k"] .y2k-deep-class-225 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 226 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-226, html[data-ypp-ui-design="y2k"] .y2k-deep-class-226 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 227 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-227, html[data-ypp-ui-design="y2k"] .y2k-deep-class-227 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 228 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-228, html[data-ypp-ui-design="y2k"] .y2k-deep-class-228 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 229 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-229, html[data-ypp-ui-design="y2k"] .y2k-deep-class-229 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 230 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-230, html[data-ypp-ui-design="y2k"] .y2k-deep-class-230 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 231 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-231, html[data-ypp-ui-design="y2k"] .y2k-deep-class-231 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 232 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-232, html[data-ypp-ui-design="y2k"] .y2k-deep-class-232 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 233 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-233, html[data-ypp-ui-design="y2k"] .y2k-deep-class-233 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 234 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-234, html[data-ypp-ui-design="y2k"] .y2k-deep-class-234 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 235 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-235, html[data-ypp-ui-design="y2k"] .y2k-deep-class-235 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 236 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-236, html[data-ypp-ui-design="y2k"] .y2k-deep-class-236 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 237 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-237, html[data-ypp-ui-design="y2k"] .y2k-deep-class-237 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 238 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-238, html[data-ypp-ui-design="y2k"] .y2k-deep-class-238 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 239 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-239, html[data-ypp-ui-design="y2k"] .y2k-deep-class-239 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 240 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-240, html[data-ypp-ui-design="y2k"] .y2k-deep-class-240 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 241 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-241, html[data-ypp-ui-design="y2k"] .y2k-deep-class-241 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 242 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-242, html[data-ypp-ui-design="y2k"] .y2k-deep-class-242 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 243 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-243, html[data-ypp-ui-design="y2k"] .y2k-deep-class-243 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 244 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-244, html[data-ypp-ui-design="y2k"] .y2k-deep-class-244 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 245 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-245, html[data-ypp-ui-design="y2k"] .y2k-deep-class-245 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 246 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-246, html[data-ypp-ui-design="y2k"] .y2k-deep-class-246 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 247 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-247, html[data-ypp-ui-design="y2k"] .y2k-deep-class-247 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 248 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-248, html[data-ypp-ui-design="y2k"] .y2k-deep-class-248 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 249 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-249, html[data-ypp-ui-design="y2k"] .y2k-deep-class-249 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k Extreme Deep UI Ruleset 250 */
+html[data-ypp-card-style="y2k"] .y2k-deep-class-250, html[data-ypp-ui-design="y2k"] .y2k-deep-class-250 {
+  border-radius: var(--ypp-shape-primary, var(--y2k-radius)) !important;
+  box-shadow: var(--y2k-shadow) !important;
+}
+
+/* y2k/components/menus.css */
+html[data-ypp-ui-design="y2k"] tp-yt-paper-dialog, html[data-ypp-ui-design="y2k"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="y2k"] tp-yt-iron-dropdown, html[data-ypp-ui-design="y2k"] #contentWrapper tp-yt-iron-dropdown,
+html[data-ypp-ui-design="y2k"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-tooltip-text {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-settings-sidebar-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-alert-with-button-renderer[type=INFO] {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  border-radius: 24px;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+/* y2k/components/navbar.css */
+html[data-ypp-ui-design="y2k"] ytd-masthead, html[data-ypp-ui-design="y2k"] #masthead-container {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-topbar-logo-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-topbar-logo-renderer:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #guide-wrapper.ytd-app {
+  border-radius: var(--ypp-shape-primary, 0 24px 24px 0) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+  box-shadow: none !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce), border-radius var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-mini-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+/* Navbar Overhaul for y2k */
+html[data-ypp-ui-design="y2k"] #masthead-container,
+html[data-ypp-ui-design="y2k"] ytd-masthead {
+  background: linear-gradient(180deg, #d4d4d4 0%, #ffffff 50%, #b5b5b5 100%) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-topbar-logo-renderer {
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)) saturate(1.5) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #container.ytd-searchbox,
+html[data-ypp-ui-design="y2k"] ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 25px) !important;
+  background: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 4px rgba(255,255,255,0.8) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #search-input input {
+  text-shadow: 1px 1px 0 #fff !important;
+}
+
+html[data-ypp-ui-design="y2k"] #search-icon-legacy {
+  background: linear-gradient(to bottom, #4da6ff 0%, #0066cc 100%) !important;
+  border-radius: var(--ypp-shape-primary, 20px) !important;
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #search-icon-legacy yt-icon {
+  filter: drop-shadow(0 -1px 1px rgba(0,0,0,0.5)) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #search-icon-legacy:hover {
+  background: linear-gradient(to bottom, #66b3ff 0%, #0073e6 100%) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #voice-search-button {
+  background: linear-gradient(to bottom, #ff4d4d 0%, #cc0000 100%) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .sbdd_b,
+html[data-ypp-ui-design="y2k"] .sbsb_a {
+  border-radius: var(--ypp-shape-primary, 15px) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .sbsb_c:hover {
+  background: linear-gradient(to bottom, #4da6ff 0%, #0066cc 100%) !important;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-topbar-menu-button-renderer yt-icon-button,
+html[data-ypp-ui-design="y2k"] ytd-notification-topbar-button-renderer yt-icon-button {
+  background: linear-gradient(to bottom, #f0f0f0 0%, #cccccc 100%) !important;
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.8), 0 2px 3px rgba(0,0,0,0.2) !important;
+  transition: transform 0.1s !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-topbar-menu-button-renderer yt-icon-button:active,
+html[data-ypp-ui-design="y2k"] ytd-notification-topbar-button-renderer yt-icon-button:active {
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.4) !important;
+  transform: translateY(2px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 15px) !important;
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;
+}
+
+/* y2k/components/panels.css */
+
+html[data-ypp-ui-design="y2k"] .ypp-video-controls, html[data-ypp-ui-design="y2k"] .ypp-shadow-panel {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-transcript-search-panel-renderer,
+html[data-ypp-ui-design="y2k"] ytd-transcript-segment-renderer,
+html[data-ypp-ui-design="y2k"] #segments-container {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-macro-markers-info-item-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-sidebar {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-col-switcher {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-play:hover, html[data-ypp-ui-design="y2k"] #ypp-pl-root .ypp-pl-btn-shuffle:hover {
+  transform: scale(1.02) !important;
+}
+
+html[data-ypp-ui-design="y2k"] tp-yt-paper-tab {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] tp-yt-paper-tab:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] tp-yt-paper-tab[aria-selected="true"] {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-expandable-tab-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-expandable-tab-renderer:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+/* y2k/pages/comments.css */
+html[data-ypp-ui-design="y2k"] ytd-comment-view-model button, html[data-ypp-ui-design="y2k"] ytd-comment-renderer button {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-comment-view-model button:hover, html[data-ypp-ui-design="y2k"] ytd-comment-renderer button:hover {
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transform: none !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-comments-header-renderer[engagement-panel] {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-comment-thread-renderer, html[data-ypp-ui-design="y2k"] ytd-comment-view-model {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-comment-simplebox-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-backstage-post-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #description.ytd-watch-metadata,
+html[data-ypp-ui-design="y2k"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-design="y2k"] ytd-browse[page-subtype=home] #chips {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 6px rgba(147,112,219,0.2) !important;
+  transition: box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytChipShapeChip {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytChipShapeChip:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-settings-sidebar-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+/* y2k/pages/livechat.css */
+html[data-ypp-ui-design="y2k"] yt-live-chat-app, html[data-ypp-ui-design="y2k"] #chat, html[data-ypp-ui-design="y2k"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] yt-live-chat-paid-message-renderer {
+  background: linear-gradient(135deg, #c8c8ff, #ff69b4) !important;
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+}
+
+html[data-ypp-ui-design="y2k"] yt-live-chat-paid-sticker-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] yt-live-chat-membership-item-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+/* y2k/pages/player.css */
+html[data-ypp-ui-design="y2k"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.02);
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+  transition: transform var(--bounce), box-shadow var(--bounce) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.1);
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: rotate(0deg) scale(0.8) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+  transition: transform 0.1s ease !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-scrubber-button:hover {
+  transform: rotate(0deg) scale(1) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-time-display, html[data-ypp-ui-design="y2k"] .ytp-chapter-title-content {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-tooltip-text {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytp-volume-slider-handle {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+}
+
+html[data-ypp-ui-design="y2k"] video.video-stream.html5-main-video, html[data-ypp-ui-design="y2k"] .html5-video-player {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-search-pyv-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-shelf-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-horizontal-card-list-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+  box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
+  transform: scale(1.1) !important;
+}
+
+html[data-ypp-ui-design="y2k"] .ytd-reel-video-renderer .overlay-dir {
+  background: linear-gradient(to top, #c8c8ffaa 0%, transparent 40%) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-video-primary-info-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+  box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-video-secondary-info-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
+html[data-ypp-ui-design="y2k"] ytd-expandable-metadata-renderer {
+  border-radius: var(--ypp-shape-primary, 24px) !important;
+}

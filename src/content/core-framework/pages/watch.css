@@ -1,30 +1,88 @@
+/* 
+   ==========================================================================
+   UNIVERSAL WATCH PAGE COMPONENT
+   ========================================================================== 
+*/
+
+/* Core Watch Metadata & Info */
+:is(
+  ytd-watch-metadata,
+  ytd-comment-thread-renderer,
+  ytd-live-chat-renderer,
+  ytd-playlist-panel-renderer,
+  #channel-header,
+  ytd-c4-tabbed-header-renderer,
+  ytd-search-filter-renderer,
+  ytd-macro-markers-list-item-renderer,
+  ytd-account-item-renderer,
+  ytd-guide-entry-renderer,
+  ytd-mini-guide-entry-renderer
+) {
+  background: var(--ypp-card-bg, transparent) !important;
+  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
+  border: var(--ypp-card-border, 1px solid transparent) !important;
+  padding: var(--ypp-card-pad, 0px) !important;
+  box-shadow: var(--ypp-card-shadow, none) !important;
+  filter: var(--ypp-card-filter, none) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  transition: var(--ypp-card-transition, all 0.2s ease) !important;
+}
+
+:is(
+  ytd-watch-metadata,
+  ytd-comment-thread-renderer,
+  ytd-live-chat-renderer,
+  ytd-playlist-panel-renderer,
+  #channel-header,
+  ytd-c4-tabbed-header-renderer,
+  ytd-search-filter-renderer,
+  ytd-macro-markers-list-item-renderer,
+  ytd-account-item-renderer,
+  ytd-guide-entry-renderer,
+  ytd-mini-guide-entry-renderer
+):hover {
+  background: var(--ypp-card-bg-hover, var(--ypp-card-bg, transparent)) !important;
+  border: var(--ypp-card-border-hover, var(--ypp-card-border, 1px solid transparent)) !important;
+  box-shadow: var(--ypp-card-shadow-hover, var(--ypp-card-shadow, none)) !important;
+  filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
+}
+
+/* Extension Specific Overrides (EQ, Cinema, etc) */
 .ypp-eq-preset-btn,
 .ypp-cinema-tab-btn,
 .ypp-vcp-compare-toggle {
   background: rgba(128, 128, 128, 0.05) !important;
   border: var(--ypp-surface-border) !important;
   transition: transform var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
+  border-radius: var(--ypp-button-radius, var(--ypp-border-radius-pill, 24px)) !important;
 }
+
 .ypp-eq-preset-btn:hover,
 .ypp-cinema-tab-btn:hover,
 .ypp-vcp-compare-toggle:hover {
   background: rgba(128, 128, 128, 0.15) !important;
   transform: scale(1.05) !important;
 }
+
 #ypp-global-player-bar,
 .ypp-global-bar {
   background: var(--ypp-surface-bg) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: var(--ypp-shadow-base) !important;
 }
+
 #ypp-eq-panel,
 #ypp-cinema-panel {
   background: var(--ypp-surface-bg) !important;
   border: var(--ypp-surface-border) !important;
   border-top: 1px solid rgba(128, 128, 128, 0.25) !important;
-  box-shadow: var(--ypp-shadow-hover), 0 var(--ypp-shape-secondary, 12px) 64px rgba(0, 0, 0, 0.6) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: var(--ypp-shadow-hover), 0 12px 64px rgba(0, 0, 0, 0.6) !important;
+  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
+
 .ypp-eq-header,
 .ypp-eq-footer,
 .ypp-intensity-section,
@@ -35,20 +93,23 @@
   border-bottom-color: rgba(128, 128, 128, 0.1) !important;
   border-top-color: rgba(128, 128, 128, 0.1) !important;
 }
+
 .ypp-global-player-bar,
 #ypp-global-player-bar {
   background: var(--ypp-surface-bg) !important;
   border: var(--ypp-surface-border) !important;
   box-shadow: var(--ypp-shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
+
 .ypp-eq-hslider,
 .ypp-vcp-slider,
 .ypp-eq-vslider {
   background: rgba(128, 128, 128, 0.15) !important;
   border: var(--ypp-surface-border) !important;
 }
+
 .ypp-eq-canvas {
   background: rgba(128, 128, 128, 0.03) !important;
   border: var(--ypp-surface-border) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-card-radius, var(--ypp-border-radius-base, 12px)) !important;
 }

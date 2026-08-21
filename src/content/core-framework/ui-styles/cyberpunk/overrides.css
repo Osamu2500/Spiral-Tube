@@ -1,0 +1,3930 @@
+/* Unique Shapes and Patterns for cyberpunk */
+
+/* src/content/ui-styles/cyberpunk/base/animations.css */
+
+@keyframes cyber-glitch {
+  0% { transform: translate(0);
+  clip-path: inset(0 0 0 0);
+}
+
+20% {
+  transform: translate(-2px, 1px);
+  clip-path: inset(10% 0 80% 0);
+}
+
+40% {
+  transform: translate(2px, -1px);
+  clip-path: inset(40% 0 20% 0);
+}
+
+60% {
+  transform: translate(-1px, 2px);
+  clip-path: inset(80% 0 10% 0);
+}
+
+80% {
+  transform: translate(1px, -2px);
+  clip-path: inset(20% 0 40% 0);
+}
+
+100% {
+  transform: translate(0);
+  clip-path: inset(0 0 0 0);
+}
+
+}
+
+@keyframes cyber-pulse {
+  0% { box-shadow: 0 0 5px rgba(0, 255, 204, 0.4);
+}
+
+50% {
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 30px rgba(0, 255, 204, 0.4);
+}
+
+100% {
+  box-shadow: 0 0 5px rgba(0, 255, 204, 0.4);
+}
+}
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: 0 0 10px var(--cyb-secondary) !important;
+}
+
+/* Cut-corner Clip Paths for Cyberpunk */
+
+html[data-ypp-card-style="cyberpunk"] *,
+            html[data-ypp-ui-design="cyberpunk"] * {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* src/content/ui-styles/cyberpunk/components/buttons.css */
+
+html[data-ypp-theme="cyberpunk"] yt-button-shape,
+html[data-ypp-theme="cyberpunk"] ytd-button-renderer {
+  clip-path: var(--ypp-clip-parallelogram) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] button {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--ypp-clip-sm) !important;
+  text-transform: uppercase !important;
+}
+
+html[data-ypp-theme="cyberpunk"] button:hover {
+  box-shadow: var(--ypp-glow-cyan) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] button:active {
+  animation: cyber-glitch 0.2s linear forwards !important;
+  box-shadow: var(--ypp-glow-pink) !important;
+}
+
+/* =========================================
+   2. SEARCH AUTOCOMPLETE & INPUT
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-searchbox,
+html[data-ypp-ui-design="cyberpunk"] ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-searchbox > #container,
+html[data-ypp-ui-design="cyberpunk"] ytd-searchbox > #container {
+  border-radius: var(--ypp-shape-primary, 0 0 0 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] #search-icon-legacy.ytd-searchbox,
+html[data-ypp-ui-design="cyberpunk"] #search-icon-legacy.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0 0 0 0) !important;
+}
+
+/* Autocomplete Dropdown Box */
+html[data-ypp-card-style="cyberpunk"] .sbsb_a,
+html[data-ypp-ui-design="cyberpunk"] .sbsb_a,
+html[data-ypp-card-style="cyberpunk"] .gstl_50.sbdd_a,
+html[data-ypp-ui-design="cyberpunk"] .gstl_50.sbdd_a {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+}
+
+/* =========================================
+   3. AVATAR GEOMETRY (Hexagons, Squares, Squircles)
+========================================= */
+
+/* Comment cards geometry */
+
+/* =========================================
+   5. SHORTS INTERFACE Overhaul
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-reel-video-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-reel-video-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* Shorts Floating Actions (Like, Dislike, Share) */
+html[data-ypp-card-style="cyberpunk"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-ui-design="cyberpunk"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="cyberpunk"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
+html[data-ypp-ui-design="cyberpunk"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* src/content/ui-styles/cyberpunk/components/dialogs.css */
+
+/* Modals and Dialogs */
+html[data-ypp-theme="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-theme="cyberpunk"] ytd-popup-container {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--ypp-clip-lg) !important;
+  box-shadow: var(--ypp-glow-pink) !important;
+  /* Hazard stripes */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 0, 85, 0.05),
+    rgba(255, 0, 85, 0.05) 10px,
+    transparent 10px,
+    transparent 20px
+  ) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] tp-yt-paper-dialog h2 {
+  text-transform: uppercase !important;
+}
+
+/* CYBERPUNK ECOSYSTEM PAYLOAD V10 */
+
+/* =========================================
+   1. LIVE CHAT ENGINE
+========================================= */
+html[data-ypp-card-style="cyberpunk"] yt-live-chat-renderer,
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* =========================================
+   3. CONTEXT MENUS & SETTINGS
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-multi-page-menu-renderer,
+html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 0 0 20px rgba(0,255,255,0.5) !important;
+  animation: menuEntranceV10 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  transform-origin: top right !important;
+}
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-compact-link-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-compact-link-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* =========================================
+   4. THE FLOATING MINIPLAYER
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-miniplayer,
+html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 0 0 20px rgba(0,255,255,0.5) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytcp-navigation-drawer,
+html[data-ypp-ui-design="cyberpunk"] ytcp-navigation-drawer {
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-track,
+html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb,
+html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb:hover,
+html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2) !important;
+}
+
+/* =========================================
+   2. CUSTOM VIDEO PLAYER SCRUBBER
+========================================= */
+html[data-ypp-card-style="cyberpunk"] .ytp-swatch-background-color,
+html[data-ypp-ui-design="cyberpunk"] .ytp-swatch-background-color,
+html[data-ypp-card-style="cyberpunk"] .ytp-play-progress,
+html[data-ypp-ui-design="cyberpunk"] .ytp-play-progress {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button,
+html[data-ypp-ui-design="cyberpunk"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytp-spinner,
+html[data-ypp-ui-design="cyberpunk"] .ytp-spinner {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  animation: cyberSpin 1.5s infinite ease-in-out !important;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytp-spinner::after,
+html[data-ypp-ui-design="cyberpunk"] .ytp-spinner::after {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  animation: cyberSpinInner 1s infinite alternate !important;
+}
+
+@keyframes cyberSpin {
+  0% { transform: rotate(0deg) scale(1);
+}
+
+50% {
+  transform: rotate(180deg) scale(1.2);
+}
+
+100% {
+  transform: rotate(360deg) scale(1);
+}
+
+}
+@keyframes cyberSpinInner {
+  0% { transform: scale(0.5);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+/* =========================================
+   4. DIALOGS & TOOLTIPS
+========================================= */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-card-style="cyberpunk"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-unified-share-panel-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  animation: cyberSpinEntrance 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  animation: cyberSpinEntrance 0.3s ease forwards !important;
+}
+
+@keyframes cyberSpinEntrance {
+  0% { transform: translateY(20px);
+}
+
+100% {
+  transform: translateY(0);
+}
+}
+/* Cyberpunk Forms */
+html[data-ypp-card-style="cyberpunk"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: inset 0 0 10px rgba(0,240,255,0.2) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-subscribe-button-renderer yt-button-shape button,
+html[data-ypp-card-style="cyberpunk"] .yt-spec-button-shape-next--filled,
+html[data-ypp-card-style="cyberpunk"] .yt-spec-button-shape-next--tonal ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-card-style="cyberpunk"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-card-style="cyberpunk"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  text-transform: uppercase !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%) !important;
+  box-shadow: 0 0 10px rgba(252,226,5,0.2) !important;
+}
+
+/* src/content/ui-styles/cyberpunk/components/icons.css */
+
+html[data-ypp-theme="cyberpunk"] yt-icon svg,
+html[data-ypp-theme="cyberpunk"] .yt-icon-container svg {
+  filter: drop-shadow(0px 0px 4px var(--ypp-accent-primary)) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] .ytd-logo svg {
+  filter: drop-shadow(0px 0px 6px var(--ypp-accent-warning)) !important;
+}
+
+/* 1. Global Typography */
+html[data-ypp-card-style="cyberpunk"] *, html[data-ypp-ui-design="cyberpunk"] * {
+  text-transform: uppercase !important;
+}
+
+@keyframes cyberGlitch {
+  0% { transform: translate(0);
+}
+
+20% {
+  transform: translate(-2px, 2px);
+}
+
+40% {
+  transform: translate(-2px, -2px);
+}
+
+60% {
+  transform: translate(2px, 2px);
+}
+
+80% {
+  transform: translate(2px, -2px);
+}
+
+100% {
+  transform: translate(0);
+}
+
+}
+
+/* Specific Styling for ytd-video-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-video-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-rich-item-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-rich-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-rich-item-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-playlist-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-playlist-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-playlist-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-grid-video-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-grid-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-grid-video-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-compact-video-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-compact-video-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-compact-video-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-reel-item-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-reel-item-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-reel-item-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-rich-shelf-renderer */
+
+/* Specific Styling for ytd-comment-thread-renderer */
+
+/* Specific Styling for ytd-channel-renderer */
+
+html[data-ypp-card-style="cyberpunk"] ytd-channel-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-channel-renderer:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for ytd-playlist-panel-renderer */
+
+/* Specific Styling for ytd-watch-metadata */
+
+/* Specific Styling for ytd-multi-page-menu-renderer */
+html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+  clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Specific Styling for ytd-menu-popup-renderer */
+html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+  clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Specific Styling for tp-yt-paper-dialog */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+  clip-path: polygon(0 15px, 15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Specific Styling for ytd-notification-renderer */
+html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-notification-renderer:hover {
+  box-shadow: 2px 2px 0 var(--cyber-accent) !important;
+}
+
+/* Specific Styling for ytd-account-item-renderer */
+
+/* Specific Styling for ytd-guide-entry-renderer */
+
+/* Specific Styling for ytd-mini-guide-entry-renderer */
+
+/* Specific Styling for ytd-search-filter-renderer */
+
+/* Specific Styling for ytd-macro-markers-list-item-renderer */
+
+/* Specific Styling for ytd-c4-tabbed-header-renderer */
+
+/* Specific Styling for #channel-header */
+html[data-ypp-card-style="cyberpunk"] #channel-header, html[data-ypp-ui-design="cyberpunk"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.8) !important;
+}
+
+/* Specific Styling for ytd-live-chat-renderer */
+
+/* Specific Styling for yt-live-chat-text-message-renderer */
+
+/* Specific Styling for ytd-miniplayer */
+
+/* Specific Styling for .ytp-settings-menu */
+
+/* Specific Styling for .ytp-chrome-bottom */
+
+/* Specific Styling for .ytp-endscreen-content */
+
+/* Specific Styling for .ytp-ce-element */
+
+html[data-ypp-card-style="cyberpunk"] .ytp-ce-element, html[data-ypp-ui-design="cyberpunk"] .ytp-ce-element:hover {
+  clip-path: var(--cyber-clip-hover) !important;
+  box-shadow: var(--cyber-shadow-hover) !important;
+  animation: cyberGlitch 0.3s ease-in-out !important;
+}
+
+/* Specific Styling for yt-error-screen */
+
+/* Cyberpunk Thumbnail Masks */
+
+/* Cyberpunk Avatars (Octagons/Tech Shapes) */
+
+html[data-ypp-card-style="cyberpunk"] .yt-spec-button-shape-next, html[data-ypp-ui-design="cyberpunk"] .yt-spec-button-shape-next ,
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="cyberpunk"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="cyberpunk"] yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  text-transform: uppercase !important;
+  box-shadow: 2px 2px 0 var(--cyber-primary) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] yt-chip-cloud-chip-renderer, html[data-ypp-ui-design="cyberpunk"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  text-transform: uppercase !important;
+  box-shadow: 2px 2px 0 var(--cyber-primary) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* Cyberpunk Scrubber */
+html[data-ypp-card-style="cyberpunk"] .ytp-play-progress, html[data-ypp-ui-design="cyberpunk"] .ytp-play-progress {
+  background: repeating-linear-gradient(45deg, var(--cyber-primary), var(--cyber-primary) 10px, #000 10px, #000 20px) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button, html[data-ypp-ui-design="cyberpunk"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important;
+  /* Diamond shape */
+    transform: scale(1.5) !important;
+}
+
+/* ========================================================================== */
+/* MASSIVE SELECTOR OVERRIDES FOR CYBERPUNK (GENERATED)                       */
+/* ========================================================================== */
+/* Cyberpunk Specific Override Block 1 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-1, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-1 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-1:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-1:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 2 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-2, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-2 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-2:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-2:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 3 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-3, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-3 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-3:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-3:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 4 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-4, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-4 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-4:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-4:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 5 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-5, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-5 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-5:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-5:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 6 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-6, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-6 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-6:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-6:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 7 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-7, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-7 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-7:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-7:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 8 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-8, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-8 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-8:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-8:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 9 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-9, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-9 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-9:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-9:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 10 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-10, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-10 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-10:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-10:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 11 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-11, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-11 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-11:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-11:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 12 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-12, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-12 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-12:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-12:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 13 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-13, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-13 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-13:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-13:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 14 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-14, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-14 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-14:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-14:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 15 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-15, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-15 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-15:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-15:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 16 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-16, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-16 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-16:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-16:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 17 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-17, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-17 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-17:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-17:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 18 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-18, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-18 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-18:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-18:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 19 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-19, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-19 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-19:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-19:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 20 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-20, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-20 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-20:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-20:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 21 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-21, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-21 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-21:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-21:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 22 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-22, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-22 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-22:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-22:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 23 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-23, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-23 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-23:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-23:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 24 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-24, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-24 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-24:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-24:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 25 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-25, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-25 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-25:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-25:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 26 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-26, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-26 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-26:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-26:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 27 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-27, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-27 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-27:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-27:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 28 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-28, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-28 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-28:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-28:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 29 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-29, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-29 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-29:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-29:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 30 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-30, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-30 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-30:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-30:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 31 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-31, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-31 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-31:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-31:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 32 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-32, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-32 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-32:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-32:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 33 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-33, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-33 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-33:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-33:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 34 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-34, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-34 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-34:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-34:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 35 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-35, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-35 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-35:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-35:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 36 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-36, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-36 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-36:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-36:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 37 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-37, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-37 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-37:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-37:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 38 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-38, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-38 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-38:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-38:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 39 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-39, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-39 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-39:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-39:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 40 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-40, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-40 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-40:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-40:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 41 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-41, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-41 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-41:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-41:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 42 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-42, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-42 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-42:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-42:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 43 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-43, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-43 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-43:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-43:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 44 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-44, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-44 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-44:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-44:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 45 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-45, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-45 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-45:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-45:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 46 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-46, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-46 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-46:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-46:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 47 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-47, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-47 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-47:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-47:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 48 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-48, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-48 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-48:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-48:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 49 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-49, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-49 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-49:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-49:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 50 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-50, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-50 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-50:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-50:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 51 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-51, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-51 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-51:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-51:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 52 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-52, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-52 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-52:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-52:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 53 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-53, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-53 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-53:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-53:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 54 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-54, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-54 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-54:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-54:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 55 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-55, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-55 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-55:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-55:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 56 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-56, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-56 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-56:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-56:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 57 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-57, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-57 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-57:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-57:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 58 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-58, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-58 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-58:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-58:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 59 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-59, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-59 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-59:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-59:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 60 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-60, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-60 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-60:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-60:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 61 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-61, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-61 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-61:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-61:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 62 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-62, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-62 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-62:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-62:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 63 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-63, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-63 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-63:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-63:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 64 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-64, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-64 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-64:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-64:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 65 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-65, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-65 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-65:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-65:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 66 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-66, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-66 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-66:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-66:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 67 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-67, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-67 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-67:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-67:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 68 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-68, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-68 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-68:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-68:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 69 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-69, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-69 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-69:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-69:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 70 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-70, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-70 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-70:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-70:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 71 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-71, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-71 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-71:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-71:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 72 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-72, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-72 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-72:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-72:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 73 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-73, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-73 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-73:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-73:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 74 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-74, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-74 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-74:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-74:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 75 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-75, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-75 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-75:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-75:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 76 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-76, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-76 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-76:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-76:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 77 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-77, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-77 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-77:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-77:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 78 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-78, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-78 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-78:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-78:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 79 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-79, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-79 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-79:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-79:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 80 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-80, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-80 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-80:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-80:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 81 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-81, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-81 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-81:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-81:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 82 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-82, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-82 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-82:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-82:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 83 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-83, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-83 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-83:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-83:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 84 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-84, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-84 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-84:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-84:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 85 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-85, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-85 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-85:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-85:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 86 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-86, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-86 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-86:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-86:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 87 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-87, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-87 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-87:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-87:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 88 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-88, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-88 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-88:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-88:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 89 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-89, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-89 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-89:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-89:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 90 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-90, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-90 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-90:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-90:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 91 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-91, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-91 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-91:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-91:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 92 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-92, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-92 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-92:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-92:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 93 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-93, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-93 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-93:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-93:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 94 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-94, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-94 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-94:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-94:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 95 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-95, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-95 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-95:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-95:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 96 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-96, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-96 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-96:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-96:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 97 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-97, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-97 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-97:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-97:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 98 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-98, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-98 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-98:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-98:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 99 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-99, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-99 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-99:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-99:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 100 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-100, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-100 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-100:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-100:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 101 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-101, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-101 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-101:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-101:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 102 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-102, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-102 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-102:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-102:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 103 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-103, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-103 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-103:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-103:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 104 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-104, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-104 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-104:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-104:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 105 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-105, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-105 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-105:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-105:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 106 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-106, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-106 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-106:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-106:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 107 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-107, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-107 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-107:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-107:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 108 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-108, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-108 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-108:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-108:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 109 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-109, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-109 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-109:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-109:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 110 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-110, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-110 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-110:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-110:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 111 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-111, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-111 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-111:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-111:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 112 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-112, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-112 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-112:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-112:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 113 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-113, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-113 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-113:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-113:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 114 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-114, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-114 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-114:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-114:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 115 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-115, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-115 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-115:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-115:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 116 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-116, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-116 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-116:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-116:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 117 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-117, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-117 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-117:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-117:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 118 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-118, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-118 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-118:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-118:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 119 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-119, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-119 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-119:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-119:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 120 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-120, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-120 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-120:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-120:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 121 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-121, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-121 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-121:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-121:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 122 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-122, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-122 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-122:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-122:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 123 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-123, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-123 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-123:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-123:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 124 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-124, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-124 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-124:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-124:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 125 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-125, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-125 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-125:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-125:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 126 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-126, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-126 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-126:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-126:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 127 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-127, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-127 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-127:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-127:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 128 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-128, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-128 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-128:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-128:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 129 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-129, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-129 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-129:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-129:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 130 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-130, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-130 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-130:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-130:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 131 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-131, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-131 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-131:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-131:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 132 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-132, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-132 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-132:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-132:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 133 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-133, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-133 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-133:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-133:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 134 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-134, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-134 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-134:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-134:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 135 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-135, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-135 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-135:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-135:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 136 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-136, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-136 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-136:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-136:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 137 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-137, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-137 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-137:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-137:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 138 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-138, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-138 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-138:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-138:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 139 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-139, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-139 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-139:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-139:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 140 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-140, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-140 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-140:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-140:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 141 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-141, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-141 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-141:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-141:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 142 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-142, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-142 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-142:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-142:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 143 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-143, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-143 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-143:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-143:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 144 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-144, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-144 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-144:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-144:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 145 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-145, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-145 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-145:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-145:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 146 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-146, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-146 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-146:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-146:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 147 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-147, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-147 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-147:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-147:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 148 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-148, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-148 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-148:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-148:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 149 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-149, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-149 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-149:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-149:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 150 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-150, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-150 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-150:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-150:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 151 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-151, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-151 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-151:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-151:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 152 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-152, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-152 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-152:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-152:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 153 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-153, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-153 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-153:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-153:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 154 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-154, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-154 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-154:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-154:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 155 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-155, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-155 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-155:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-155:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 156 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-156, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-156 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-156:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-156:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 157 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-157, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-157 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-157:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-157:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 158 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-158, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-158 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-158:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-158:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 159 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-159, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-159 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-159:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-159:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 160 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-160, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-160 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-160:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-160:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 161 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-161, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-161 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-161:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-161:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 162 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-162, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-162 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-162:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-162:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 163 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-163, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-163 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-163:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-163:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 164 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-164, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-164 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-164:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-164:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 165 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-165, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-165 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-165:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-165:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 166 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-166, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-166 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-166:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-166:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 167 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-167, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-167 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-167:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-167:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 168 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-168, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-168 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-168:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-168:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 169 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-169, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-169 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-169:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-169:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 170 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-170, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-170 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-170:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-170:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 171 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-171, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-171 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-171:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-171:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 172 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-172, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-172 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-172:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-172:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 173 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-173, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-173 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-173:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-173:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 174 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-174, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-174 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-174:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-174:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 175 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-175, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-175 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-175:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-175:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 176 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-176, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-176 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-176:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-176:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 177 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-177, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-177 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-177:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-177:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 178 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-178, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-178 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-178:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-178:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 179 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-179, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-179 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-179:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-179:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 180 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-180, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-180 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-180:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-180:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 181 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-181, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-181 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-181:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-181:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 182 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-182, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-182 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-182:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-182:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 183 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-183, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-183 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-183:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-183:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 184 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-184, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-184 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-184:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-184:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 185 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-185, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-185 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-185:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-185:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 186 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-186, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-186 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-186:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-186:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 187 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-187, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-187 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-187:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-187:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 188 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-188, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-188 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-188:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-188:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 189 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-189, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-189 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-189:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-189:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 190 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-190, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-190 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-190:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-190:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 191 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-191, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-191 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-191:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-191:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 192 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-192, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-192 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-192:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-192:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 193 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-193, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-193 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-193:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-193:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 194 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-194, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-194 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-194:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-194:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 195 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-195, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-195 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-195:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-195:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 196 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-196, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-196 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-196:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-196:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 197 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-197, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-197 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-197:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-197:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 198 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-198, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-198 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-198:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-198:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 199 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-199, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-199 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-199:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-199:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 200 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-200, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-200 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-200:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-200:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 201 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-201, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-201 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-201:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-201:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 202 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-202, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-202 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-202:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-202:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 203 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-203, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-203 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-203:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-203:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 204 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-204, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-204 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-204:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-204:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 205 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-205, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-205 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-205:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-205:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 206 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-206, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-206 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-206:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-206:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 207 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-207, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-207 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-207:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-207:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 208 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-208, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-208 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-208:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-208:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 209 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-209, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-209 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-209:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-209:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 210 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-210, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-210 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-210:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-210:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 211 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-211, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-211 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-211:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-211:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 212 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-212, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-212 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-212:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-212:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 213 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-213, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-213 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-213:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-213:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 214 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-214, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-214 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-214:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-214:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 215 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-215, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-215 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-215:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-215:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 216 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-216, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-216 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-216:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-216:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 217 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-217, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-217 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-217:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-217:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 218 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-218, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-218 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-218:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-218:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 219 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-219, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-219 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-219:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-219:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 220 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-220, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-220 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-220:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-220:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 221 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-221, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-221 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-221:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-221:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 222 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-222, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-222 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-222:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-222:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 223 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-223, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-223 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-223:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-223:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 224 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-224, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-224 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-224:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-224:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 225 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-225, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-225 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-225:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-225:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 226 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-226, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-226 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-226:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-226:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 227 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-227, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-227 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-227:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-227:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 228 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-228, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-228 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-228:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-228:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 229 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-229, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-229 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-229:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-229:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 230 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-230, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-230 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-230:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-230:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 231 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-231, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-231 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-231:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-231:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 232 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-232, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-232 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-232:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-232:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 233 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-233, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-233 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-233:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-233:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 234 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-234, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-234 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-234:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-234:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 235 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-235, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-235 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-235:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-235:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 236 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-236, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-236 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-236:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-236:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 237 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-237, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-237 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-237:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-237:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 238 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-238, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-238 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-238:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-238:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 239 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-239, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-239 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-239:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-239:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 240 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-240, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-240 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-240:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-240:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 241 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-241, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-241 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-241:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-241:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 242 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-242, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-242 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-242:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-242:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 243 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-243, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-243 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-243:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-243:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 244 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-244, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-244 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-244:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-244:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 245 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-245, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-245 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-245:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-245:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 246 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-246, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-246 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-246:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-246:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 247 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-247, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-247 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-247:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-247:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 248 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-248, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-248 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-248:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-248:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 249 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-249, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-249 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-249:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-249:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+/* Cyberpunk Specific Override Block 250 */
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-250, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-250 {
+  clip-path: var(--cyber-clip) !important;
+  box-shadow: var(--cyber-shadow-glitch) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .cyber-gen-class-250:hover, html[data-ypp-ui-design="cyberpunk"] .cyber-gen-class-250:hover {
+  transform: translate(2px, 2px) !important;
+  clip-path: var(--cyber-clip-hover) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="cyberpunk"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="cyberpunk"] h1, html[data-ypp-card-style="cyberpunk"] h2, html[data-ypp-card-style="cyberpunk"] h3, 
+html[data-ypp-card-style="cyberpunk"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="cyberpunk"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="cyberpunk"] h1, html[data-ypp-ui-design="cyberpunk"] h2, html[data-ypp-ui-design="cyberpunk"] h3, 
+html[data-ypp-ui-design="cyberpunk"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="cyberpunk"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="cyberpunk"] ytd-thumbnail, html[data-ypp-card-style="cyberpunk"] yt-image,
+html[data-ypp-ui-design="cyberpunk"] ytd-thumbnail, html[data-ypp-ui-design="cyberpunk"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="cyberpunk"] yt-img-shadow, html[data-ypp-card-style="cyberpunk"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="cyberpunk"] yt-img-shadow, html[data-ypp-ui-design="cyberpunk"] .yt-spec-avatar-shape__image {
+  clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="cyberpunk"] ytd-masthead, html[data-ypp-ui-design="cyberpunk"] ytd-masthead {
+  box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="cyberpunk"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="cyberpunk"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 0px 0 0 0px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="cyberpunk"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="cyberpunk"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="cyberpunk"] #simplebox-placeholder, html[data-ypp-ui-design="cyberpunk"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button,
+html[data-ypp-ui-design="cyberpunk"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytp-tooltip, html[data-ypp-ui-design="cyberpunk"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog, html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="cyberpunk"] #channel-header,
+html[data-ypp-ui-design="cyberpunk"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 15. Subscribe & Primary Buttons */
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="cyberpunk"] yt-live-chat-renderer,
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 4px 4px 0 #00ff00, -4px -4px 0 #ff003c !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-notification-renderer, html[data-ypp-ui-design="cyberpunk"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="cyberpunk"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="cyberpunk"] ytd-skeleton, html[data-ypp-ui-design="cyberpunk"] ytd-skeleton, 
+html[data-ypp-card-style="cyberpunk"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cyberpunk"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="cyberpunk"] yt-icon, html[data-ypp-ui-design="cyberpunk"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] yt-icon:hover, html[data-ypp-ui-design="cyberpunk"] yt-icon:hover {
+  transform: translate(4px, 4px) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+/* Cyberpunk Menus */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-card-style="cyberpunk"] ytd-menu-popup-renderer,
+html[data-ypp-card-style="cyberpunk"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyb-clip) !important;
+  box-shadow: inset 0 0 10px rgba(255,0,60,0.2), 0 0 20px rgba(255,0,60,0.3) !important;
+}
+
+/* CYBERPUNK MICRO-INTERACTIONS PAYLOAD V12 */
+
+/* =========================================
+   1. DIALOGS & OVERLAYS
+========================================= */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-dialog,
+html[data-ypp-card-style="cyberpunk"] ytd-popup-container,
+html[data-ypp-ui-design="cyberpunk"] ytd-popup-container {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9);
+}
+
+100% {
+  transform: translateY(0) scale(1);
+}
+
+}
+@keyframes snapInDialog {
+  0% { transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+/* =========================================
+   2. TOOLTIPS & TOASTS
+========================================= */
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] tp-yt-paper-toast,
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-toast {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* =========================================
+   3. SEARCH FILTERS
+========================================= */
+
+html[data-ypp-card-style="cyberpunk"] ytd-search-filter-renderer:hover,
+html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-renderer:hover {
+  text-shadow: 0 0 10px #00ffff !important;
+}
+
+/* =========================================
+   4. EMPTY STATES & ERROR PAGES
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-background-promo-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-background-promo-renderer,
+html[data-ypp-card-style="cyberpunk"] #error-page,
+html[data-ypp-ui-design="cyberpunk"] #error-page {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* Empty state icon geometry override */
+html[data-ypp-card-style="cyberpunk"] ytd-background-promo-renderer yt-icon,
+html[data-ypp-ui-design="cyberpunk"] ytd-background-promo-renderer yt-icon {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+  transform: scale(1.5) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-mini-guide-entry-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-mini-guide-entry-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* =========================================================
+   CYBERPUNK — MINIPLAYER
+   ========================================================= */
+
+/* Buttons in Miniplayer */
+
+html[data-ypp-ui-design="cyberpunk"] ytd-miniplayer .ytp-miniplayer-button:hover {
+  animation: cyber-glitch 0.2s both !important;
+}
+
+/* src/content/ui-styles/cyberpunk/components/navbar.css */
+
+/* Masthead (Navbar) */
+html[data-ypp-theme="cyberpunk"] ytd-masthead {
+  box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2) !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 10px)) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] ytd-searchbox form {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--ypp-clip-sm) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] ytd-searchbox form:focus-within {
+  box-shadow: var(--ypp-glow-pink) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--ypp-clip-sm) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] #search-icon-legacy:hover {
+  box-shadow: var(--ypp-glow-cyan) !important;
+}
+
+/* CYBERPUNK SUB-SYSTEMS PAYLOAD V11 */
+
+/* =========================================
+   1. PLAYLIST INTERFACE
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-playlist-panel-renderer {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px);
+}
+
+100% {
+  transform: translateX(0);
+}
+}
+/* =========================================
+   2. COMMUNITY POSTS & POLLS
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-backstage-post-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-backstage-post-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* Community Poll Progress Bars */
+html[data-ypp-card-style="cyberpunk"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-ui-design="cyberpunk"] .ytd-backstage-poll-renderer[checked] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-card-style="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer,
+html[data-ypp-ui-design="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 0 0 10px #fcee0a !important;
+}
+
+/* =========================================
+   3. MERCH & SHOPPING SHELVES
+========================================= */
+html[data-ypp-card-style="cyberpunk"] ytd-merch-shelf-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-merch-shelf-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* Product Image Geometry Override */
+html[data-ypp-card-style="cyberpunk"] .ytd-shopping-carousel-item-renderer img,
+html[data-ypp-ui-design="cyberpunk"] .ytd-shopping-carousel-item-renderer img,
+html[data-ypp-card-style="cyberpunk"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
+html[data-ypp-ui-design="cyberpunk"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytd-shopping-carousel-item-renderer:hover img,
+html[data-ypp-ui-design="cyberpunk"] .ytd-shopping-carousel-item-renderer:hover img {
+  transform: scale(1.1) !important;
+}
+
+/* Buy Buttons */
+html[data-ypp-card-style="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-design="cyberpunk"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+  filter: brightness(1.2) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .badge-style-type-live-now-alternate,
+html[data-ypp-ui-design="cyberpunk"] .badge-style-type-live-now-alternate {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  animation: pulseBadge 1.5s infinite alternate !important;
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px #fcee0a;
+}
+
+100% {
+  box-shadow: 0 0 20px #fcee0a;
+}
+}
+/* =========================================================
+   CYBERPUNK — TOASTS & TOOLTIPS
+   ========================================================= */
+
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-toast {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyber-clip-slash) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+
+/* Tooltips */
+html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip .tooltip,
+html[data-ypp-ui-design="cyberpunk"] .ytp-tooltip-text {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 0 8px rgba(255, 0, 85, 0.5) !important;
+}
+
+/* =========================================================
+   CYBERPUNK — CHANNELS PAGE
+   ========================================================= */
+
+/* Channel Banner & Header */
+
+/* Neon data-stripe across the top of the banner */
+html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer::before {
+  background: linear-gradient(90deg, var(--cyber-primary), var(--cyber-secondary), var(--cyber-tertiary), var(--cyber-secondary), var(--cyber-primary));
+  animation: cyber-scanline-move 3s linear infinite;
+}
+
+/* Channel Avatar */
+
+/* Channel Name */
+html[data-ypp-ui-design="cyberpunk"] ytd-c4-tabbed-header-renderer #channel-name {
+  text-transform: uppercase !important;
+  text-shadow: 0 0 10px var(--cyber-secondary) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] yt-tab-shape[tab-identifier] {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] yt-tab-shape[tab-identifier][active] {
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.2) !important;
+}
+
+/* Search & filter results on channel page */
+
+/* src/content/ui-styles/cyberpunk/pages/comments.css */
+
+html[data-ypp-theme="cyberpunk"] #simple-box {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--ypp-clip-md) !important;
+}
+
+/* =========================================================
+   CYBERPUNK — COMMUNITY POSTS
+   ========================================================= */
+
+html[data-ypp-ui-design="cyberpunk"] ytd-backstage-post-thread-renderer,
+html[data-ypp-ui-design="cyberpunk"] ytd-post-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyber-clip-md) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] ytd-backstage-post-thread-renderer:hover,
+html[data-ypp-ui-design="cyberpunk"] ytd-post-renderer:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2) !important;
+}
+
+/* Polls */
+html[data-ypp-ui-design="cyberpunk"] .choice-info.ytd-backstage-poll-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyber-clip-slash) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] .choice-info.ytd-backstage-poll-renderer:hover {
+  box-shadow: inset 0 0 10px rgba(255, 0, 85, 0.2) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] .progress-bar.ytd-backstage-poll-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* src/content/ui-styles/cyberpunk/pages/home.css */
+
+/* =========================================================
+   CYBERPUNK — LIVE CHAT
+   ========================================================= */
+
+/* Chat Frame */
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-app,
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] #header.yt-live-chat-renderer::before {
+  animation: blink 1.2s step-end infinite;
+}
+
+/* Chat Messages */
+
+/* Author Name */
+html[data-ypp-ui-design="cyberpunk"] #author-name.yt-live-chat-text-message-renderer {
+  text-shadow: 0 0 4px var(--cyber-secondary) !important;
+}
+
+/* Super Chat / Paid Messages */
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: var(--cyber-glow-primary) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-paid-message-renderer #header.yt-live-chat-paid-message-renderer {
+  clip-path: none !important;
+}
+
+/* Membership Banners */
+html[data-ypp-ui-design="cyberpunk"] yt-live-chat-membership-item-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyber-clip-sm) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.2) !important;
+}
+
+/* Chat Input Field */
+html[data-ypp-ui-design="cyberpunk"] #message-input.yt-live-chat-text-input-field-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] #message-input.yt-live-chat-text-input-field-renderer:focus {
+  box-shadow: var(--cyber-glow-primary) !important;
+}
+
+/* Send Button */
+html[data-ypp-ui-design="cyberpunk"] #send-button.yt-live-chat-message-input-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] #send-button.yt-live-chat-message-input-renderer:hover {
+  box-shadow: 0 0 12px var(--cyber-secondary) !important;
+}
+
+/* Avatar in Chat */
+
+/* Cyberpunk Player */
+
+html[data-ypp-card-style="cyberpunk"] .ytp-play-progress {
+  box-shadow: 0 0 10px var(--cyb-primary) !important;
+}
+
+html[data-ypp-card-style="cyberpunk"] .ytp-scrubber-button {
+  box-shadow: 0 0 10px var(--cyb-secondary) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transform: rotate(45deg) !important;
+}
+
+/* Search Input Box */
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBox {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: inset 0 0 8px rgba(0, 255, 204, 0.1) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBoxDark:focus-within,
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentInputBox:focus-within {
+  box-shadow: var(--cyber-glow-primary) !important;
+}
+
+/* Search Button */
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentSearchButton {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentSearchButton:hover {
+  box-shadow: 0 0 12px var(--cyber-secondary) !important;
+}
+
+/* Suggestions Dropdown */
+html[data-ypp-ui-design="cyberpunk"] .ytSearchboxComponentSuggestionsContainer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] .ytSuggestionComponentRoundedSuggestion {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+}
+
+/* Search Filter Groups */
+html[data-ypp-ui-design="cyberpunk"] ytd-search-filter-group-renderer {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--cyber-clip-sm) !important;
+}
+
+/* Filter Chips */
+
+/* =========================================================
+   CYBERPUNK — SHORTS PLAYER
+   ========================================================= */
+
+/* Shorts Container */
+html[data-ypp-ui-design="cyberpunk"] ytd-reel-video-renderer[is-active] {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  box-shadow: var(--cyber-glow-secondary) !important;
+  clip-path: var(--cyber-clip-md) !important;
+}
+
+html[data-ypp-ui-design="cyberpunk"] ytd-reel-video-renderer #progress-bar-line {
+  box-shadow: 0 0 10px var(--cyber-primary) !important;
+}
+
+/* src/content/ui-styles/cyberpunk/pages/watch.css */
+
+/* Video info box */
+html[data-ypp-theme="cyberpunk"] #above-the-fold {
+  clip-path: var(--ypp-clip-lg) !important;
+}
+
+/* Subscribe Button */
+html[data-ypp-theme="cyberpunk"] #subscribe-button button {
+  box-shadow: 0 0 10px rgba(250, 230, 0, 0.5) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] #subscribe-button button:hover {
+  animation: cyber-glitch 0.2s linear forwards !important;
+  box-shadow: 0 0 20px rgba(250, 230, 0, 0.8) !important;
+}
+
+/* Description box */
+html[data-ypp-theme="cyberpunk"] #bottom-row {
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  clip-path: var(--ypp-clip-md) !important;
+}
+
+/* ==========================================================================
+   CYBERPUNK — PLAYER PAGE COMPONENT UPGRADES
+   Neon Clipped Cards for Channel Bar, Description & Comments Section
+   ========================================================================== */
+
+/* 1. Channel Bar (#owner) */
+html[data-ypp-theme="cyberpunk"] #owner {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] ytd-video-owner-renderer #channel-name a {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important;
+}
+
+html[data-ypp-theme="cyberpunk"] ytd-video-owner-renderer #channel-name a:hover {
+  text-shadow: 0 0 12px rgba(250, 230, 0, 0.8) !important;
+}
+
+/* 2. Description Box Hover Neon Effect */
+html[data-ypp-theme="cyberpunk"] #bottom-row:hover,
+html[data-ypp-theme="cyberpunk"] #description-inner:hover {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4) !important;
+}
+
+/* 3. Comments Section (Neon Clipped Cyber Cards) */
+html[data-ypp-theme="cyberpunk"] #comments {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+}

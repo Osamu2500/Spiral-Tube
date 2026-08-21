@@ -1,0 +1,325 @@
+/* Unique Shapes and Patterns for christmas */
+
+html[data-ypp-theme="christmas"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, var(--christmas-r-pill)) !important;
+}
+
+html[data-ypp-theme="christmas"] ::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--christmas-glow-red);
+}
+
+/* Primary Subscribe/Filled Buttons */
+
+/* === Filter Chips === */
+
+html[data-ypp-theme="christmas"] tp-yt-paper-dialog,
+html[data-ypp-theme="christmas"] ytd-popup-container {
+  border-radius: var(--ypp-shape-primary, var(--christmas-r-lg)) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5) !important;
+}
+
+/* =========================================================
+   CHRISTMAS — ICONS
+   ========================================================= */
+
+html[data-ypp-theme="christmas"] yt-icon svg,
+html[data-ypp-theme="christmas"] .yt-icon-container svg {
+  transition: fill 0.3s var(--christmas-ease-smooth), filter 0.3s var(--christmas-ease-smooth) !important;
+}
+
+html[data-ypp-theme="christmas"] yt-icon:hover svg,
+html[data-ypp-theme="christmas"] .yt-icon-container:hover svg {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6)) !important;
+}
+
+html[data-ypp-theme="christmas"] [aria-selected="true"] yt-icon svg,
+html[data-ypp-theme="christmas"] [aria-current="page"] yt-icon svg,
+html[data-ypp-theme="christmas"] [active] yt-icon svg {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7)) !important;
+}
+
+html[data-ypp-card-style="christmas"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="christmas"] ::-webkit-scrollbar-track {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+html[data-ypp-card-style="christmas"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-design="christmas"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
+/* 3. Global Text Overrides */
+html[data-ypp-card-style="christmas"] h1, html[data-ypp-card-style="christmas"] h2, html[data-ypp-card-style="christmas"] h3, 
+html[data-ypp-card-style="christmas"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-card-style="christmas"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-ui-design="christmas"] h1, html[data-ypp-ui-design="christmas"] h2, html[data-ypp-ui-design="christmas"] h3, 
+html[data-ypp-ui-design="christmas"] yt-formatted-string.ytd-video-renderer, 
+html[data-ypp-ui-design="christmas"] yt-formatted-string.ytd-rich-grid-media {
+  text-transform: none !important;
+}
+
+/* 4. Core Card Structures */
+
+/* 5. Thumbnails & Media */
+html[data-ypp-card-style="christmas"] ytd-thumbnail, html[data-ypp-card-style="christmas"] yt-image,
+html[data-ypp-ui-design="christmas"] ytd-thumbnail, html[data-ypp-ui-design="christmas"] yt-image {
+  border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
+  transition: transform 0.4s ease, filter 0.4s ease !important;
+}
+
+/* 6. Avatars & Channel Icons */
+html[data-ypp-card-style="christmas"] yt-img-shadow, html[data-ypp-card-style="christmas"] .yt-spec-avatar-shape__image,
+html[data-ypp-ui-design="christmas"] yt-img-shadow, html[data-ypp-ui-design="christmas"] .yt-spec-avatar-shape__image {
+  clip-path: circle(50% at 50% 50%) !important;
+  border-radius: var(--ypp-shape-primary, 0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* 7. Masthead (Header) & Global Navigation */
+html[data-ypp-card-style="christmas"] ytd-masthead, html[data-ypp-ui-design="christmas"] ytd-masthead {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 8. Search Box & Inputs */
+html[data-ypp-card-style="christmas"] ytd-searchbox #container.ytd-searchbox,
+html[data-ypp-ui-design="christmas"] ytd-searchbox #container.ytd-searchbox {
+  border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+html[data-ypp-card-style="christmas"] ytd-searchbox #search-icon-legacy,
+html[data-ypp-ui-design="christmas"] ytd-searchbox #search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
+}
+
+html[data-ypp-card-style="christmas"] yt-chip-cloud-chip-renderer,
+html[data-ypp-ui-design="christmas"] yt-chip-cloud-chip-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+/* 10. Left Sidebar / Guide */
+
+/* 11. Comments Section */
+
+html[data-ypp-card-style="christmas"] #simplebox-placeholder, html[data-ypp-ui-design="christmas"] #simplebox-placeholder {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 12. Video Player Controls & OSD */
+
+html[data-ypp-card-style="christmas"] .ytp-scrubber-button,
+html[data-ypp-ui-design="christmas"] .ytp-scrubber-button {
+  border-radius: var(--ypp-shape-primary, 50%) !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="christmas"] .ytp-tooltip, html[data-ypp-ui-design="christmas"] .ytp-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 13. Dialogs, Popups, and Menus */
+html[data-ypp-card-style="christmas"] tp-yt-paper-dialog, html[data-ypp-card-style="christmas"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="christmas"] tp-yt-paper-dialog, html[data-ypp-ui-design="christmas"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+}
+
+html[data-ypp-card-style="christmas"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="christmas"] ytd-multi-page-menu-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 14. Channel Headers & Banners */
+
+html[data-ypp-card-style="christmas"] #channel-header,
+html[data-ypp-ui-design="christmas"] #channel-header {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 16. Live Chat Box */
+html[data-ypp-card-style="christmas"] yt-live-chat-renderer,
+html[data-ypp-ui-design="christmas"] yt-live-chat-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* 17. Notifications & Tooltips */
+html[data-ypp-card-style="christmas"] tp-yt-paper-tooltip,
+html[data-ypp-ui-design="christmas"] tp-yt-paper-tooltip {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+html[data-ypp-card-style="christmas"] ytd-notification-renderer, html[data-ypp-ui-design="christmas"] ytd-notification-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 18. Badges (Live, New, Premieres) */
+html[data-ypp-card-style="christmas"] ytd-badge-supported-renderer,
+html[data-ypp-ui-design="christmas"] ytd-badge-supported-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 19. Skeletons & Loading States */
+html[data-ypp-card-style="christmas"] ytd-skeleton, html[data-ypp-ui-design="christmas"] ytd-skeleton, 
+html[data-ypp-card-style="christmas"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="christmas"] .ytd-ghost-grid-renderer {
+  border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
+/* 20. Shorts Carousel & Panels */
+
+/* 21. Metadata & Descriptions */
+
+/* 22. SVG Icons (Thumb up, Share, Save) */
+html[data-ypp-card-style="christmas"] yt-icon, html[data-ypp-ui-design="christmas"] yt-icon {
+  transition: transform 0.2s ease !important;
+}
+
+html[data-ypp-card-style="christmas"] yt-icon:hover, html[data-ypp-ui-design="christmas"] yt-icon:hover {
+  transform: scale(1.02) !important;
+}
+
+/* 23. Video Endscreens & Overlay */
+
+/* 24. YouTube Miniplayer */
+
+/* 25. Settings Gear & Dropdowns */
+
+/* 26. Account Switcher & Profiles */
+
+/* 27. Search Filters (Filter Menu) */
+
+/* 28. Playlists Page Inner Layout */
+
+/* 29. Chapters & Timestamp Links */
+
+/* 30. Offline & Error Screens */
+
+html[data-ypp-theme="christmas"] ytd-mini-guide-renderer,
+html[data-ypp-theme="christmas"] ytd-app[guide-persistent-and-visible] ytd-guide-renderer {
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+/* Sidebar items */
+
+/* Context Menus / Popups */
+html[data-ypp-theme="christmas"] tp-yt-iron-dropdown,
+html[data-ypp-theme="christmas"] ytd-multi-page-menu-renderer,
+html[data-ypp-theme="christmas"] ytd-menu-popup-renderer {
+  border-radius: var(--ypp-shape-primary, var(--christmas-r-md)) !important;
+  box-shadow: var(--christmas-glass-shadow) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-masthead {
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  box-shadow: var(--christmas-glass-shadow) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-searchbox#search form {
+  border-radius: var(--ypp-shape-primary, var(--christmas-r-pill)) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-searchbox#search button#search-icon-legacy {
+  border-radius: var(--ypp-shape-primary, 0 var(--christmas-r-pill) var(--christmas-r-pill) 0) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-searchbox#search button#search-icon-legacy:hover {
+  box-shadow: var(--christmas-glow-gold) !important;
+}
+
+/* Voice search & notification buttons */
+
+/* =========================================================
+   CHRISTMAS — CHANNELS
+   ========================================================= */
+
+html[data-ypp-theme="christmas"] #channel-avatar img {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-card)) !important;
+  box-shadow: var(--christmas-glow-red) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-tab-renderer {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-btn)) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-tab-renderer:hover,
+html[data-ypp-theme="christmas"] ytd-tab-renderer[selected] {
+  box-shadow: inset 0 -10px 15px -10px rgba(230, 57, 70, 0.4) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-comment-renderer[is-pinned] {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-card)) !important;
+  box-shadow: var(--christmas-glow-gold) !important;
+}
+
+html[data-ypp-theme="christmas"] #placeholder-area,
+html[data-ypp-theme="christmas"] ytd-commentbox {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-chip)) !important;
+}
+
+html[data-ypp-theme="christmas"] #placeholder-area:focus,
+html[data-ypp-theme="christmas"] ytd-commentbox:focus-within {
+  box-shadow: var(--christmas-glow-red) !important;
+}
+
+html[data-ypp-theme="christmas"] ytd-comment-renderer #author-thumbnail img {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-btn)) !important;
+}
+
+/* =========================================================
+   CHRISTMAS — LIVE CHAT
+   ========================================================= */
+
+html[data-ypp-theme="christmas"] yt-live-chat-renderer,
+html[data-ypp-theme="christmas"] ytd-live-chat-frame {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-card)) !important;
+}
+
+html[data-ypp-theme="christmas"] #input-container,
+html[data-ypp-theme="christmas"] yt-live-chat-text-input-field-renderer {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-chip)) !important;
+}
+
+html[data-ypp-theme="christmas"] #input-container:focus-within {
+  box-shadow: var(--christmas-glow-red) !important;
+}
+
+html[data-ypp-theme="christmas"] yt-live-chat-paid-message-renderer {
+  border-radius: var(--ypp-shape-primary, var(--christmas-shape-chip)) !important;
+  box-shadow: var(--christmas-glow-gold) !important;
+}
+
+html[data-ypp-theme="christmas"] .ytp-play-progress {
+  box-shadow: var(--christmas-glow-red) !important;
+}
+
+html[data-ypp-theme="christmas"] .ytp-scrubber-button {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+html[data-ypp-theme="christmas"] .ytp-volume-slider-handle {
+  box-shadow: 0 0 8px rgba(255,255,255,0.8) !important;
+}
+
+html[data-ypp-theme="christmas"] .ytp-settings-menu {
+  border-radius: var(--ypp-shape-primary, var(--christmas-r-md)) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* =========================================================
+   CHRISTMAS — SEARCH
+   ========================================================= */
+
+/* Recommended video cards in the sidebar */
+
+html[data-ypp-theme="christmas"] #secondary-inner.ytd-watch-flexy {
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: var(--ypp-shape-primary, var(--christmas-r-lg)) !important;
+}
+
+/* Title and description box */

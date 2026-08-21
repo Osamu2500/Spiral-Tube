@@ -1,0 +1,486 @@
+/* 
+=======================================================================================
+   Spiral Tube - Glassmorphism Redesign
+=======================================================================================
+   A complete visual overhaul for YouTube with premium glassmorphic aesthetics
+   
+   TABLE OF CONTENTS
+   -----------------
+   1. CSS Variables & Theme Base .................................. Line 30
+   2. Feature Toggle Classes ...................................... Line 110
+   3. Global UI Elements .......................................... Line 180
+   4. Header & Navigation ......................................... Line 350
+   5. Video Grid & Cards .......................................... Line 650
+   6. Search Redesign ............................................. Line 900
+   7. Player Enhancements ......................................... Line 1100
+   8. Zen Mode & Focus Features ................................... Line 1250
+   9. Utility Classes & Animations ................................ Line 1350
+=======================================================================================
+*/
+
+/* ===================================================================================
+   1. CSS VARIABLES & THEME BASE
+   =================================================================================== */
+
+html.yt-spiral-tube-theme,
+html.yt-spiral-tube-theme[dark],
+html.yt-spiral-tube-theme[theme="dark"],
+html.yt-spiral-tube-theme[dark="true"],
+.yt-spiral-tube-theme,
+.yt-spiral-tube-theme[dark],
+.yt-spiral-tube-theme[theme="dark"],
+.yt-spiral-tube-theme[dark="true"] {
+  /* 
+     NOTE: COLOR VARIABLES ARE NOW HANDLED BY THEME FILES (default.css, ocean.css, etc.)
+     DO NOT ADD COLORS HERE TO AVOID SPECIFICITY CONFLICTS.
+  */
+
+  /* Dimensions & Spacing */
+  --ypp-header-height: 56px;
+  --ypp-header-margin: 16px;
+  --ypp-sidebar-width: 240px;
+  --ypp-sidebar-mini-width: 72px;
+  --ypp-sidebar-gap: 16px;
+  --ypp-sidebar-top-gap: 16px;
+  --ypp-content-gap: 32px;
+  --ypp-grid-gap: 24px;
+
+  /* Shape & Motion */
+  --ypp-radius-lg: 20px;
+  --ypp-radius-md: 14px;
+  --ypp-radius-sm: 8px;
+  --ypp-radius-pill: 100px;
+  --ypp-blur-subtle: blur(8px);
+  --ypp-blur-med: blur(20px);
+  --ypp-blur-high: blur(32px);
+  --ypp-transition-fast: 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ypp-transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ypp-transition-slow: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Z-Index Layers */
+  --ypp-z-background: -1;
+  --ypp-z-content: 1;
+  --ypp-z-card-hover: 100;
+  --ypp-z-chips: 2100;
+  --ypp-z-header: 2200;
+  --ypp-z-popup: 2400;
+
+  /* Backgrounds */
+  --yt-spec-base-background: var(--ypp-bg-base) !important;
+  --yt-spec-raised-background: var(--ypp-bg-surface) !important;
+  --yt-spec-menu-background: var(--ypp-bg-surface) !important;
+  --yt-spec-inverted-background: var(--ypp-text-primary) !important;
+  --yt-spec-additive-background: var(--ypp-glass-highlight) !important;
+
+  /* Text */
+  --yt-spec-text-primary: var(--ypp-text-primary) !important;
+  --yt-spec-text-primary-inverse: var(--ypp-bg-base) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary) !important;
+  --yt-spec-text-disabled: rgba(255, 255, 255, 0.3) !important;
+
+  /* Icons */
+  --yt-spec-icon-active-other: var(--ypp-accent) !important;
+  --yt-spec-icon-inactive: var(--ypp-text-secondary) !important;
+  --yt-spec-icon-disabled: rgba(255, 255, 255, 0.3) !important;
+  --yt-spec-brand-icon-active: var(--ypp-accent) !important;
+  --yt-spec-brand-icon-inactive: var(--ypp-text-secondary) !important;
+
+  /* General Layers */
+  --yt-spec-general-background-a: var(--ypp-bg-base) !important;
+  --yt-spec-general-background-b: var(--ypp-bg-surface) !important;
+  --yt-spec-general-background-c: var(--ypp-bg-base) !important;
+
+  /* Chips & Badges */
+  --yt-spec-10-percent-layer: var(--ypp-glass-highlight) !important;
+  --yt-spec-badge-chip-background: var(--ypp-glass-highlight) !important;
+  --yt-spec-verified-badge-background: var(--ypp-accent) !important;
+  --yt-spec-button-chip-background-hover: var(--ypp-glass-highlight) !important;
+
+  /* Interactive States & Dividers */
+  --yt-spec-20-percent-layer: var(--ypp-glass-highlight) !important;
+  --yt-spec-hover-background: var(--ypp-glass-highlight) !important;
+  --yt-spec-touch-response: var(--ypp-glass-highlight) !important;
+  --yt-spec-outline: var(--ypp-glass-border) !important;
+
+  /* Paper Elements (Legacy) */
+  --paper-toggle-button-checked-bar-color: var(--ypp-accent) !important;
+  --paper-toggle-button-checked-button-color: var(--ypp-accent) !important;
+  --paper-dialog-background-color: var(--ypp-bg-surface) !important;
+  --paper-listbox-background-color: var(--ypp-bg-surface) !important;
+  --paper-menu-background-color: var(--ypp-bg-surface) !important;
+
+  /* Searchbox Overrides (Mapped to YPP vars) */
+  --ytd-searchbox-background: transparent !important;
+  --ytd-searchbox-text-color: var(--ypp-text-primary) !important;
+  --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/**
+ * Spiral Tube - Global Styles
+ * Core variables and overrides injected into the YouTube page
+ */
+
+:root {
+  /* UI Architecture Core Variables */
+  --ypp-bg-surface: var(--ypp-glass-tint, rgba(20, 20, 20, 0.85));
+  --ypp-bg-hover: rgba(255, 255, 255, 0.1);
+  --ypp-bg-active: rgba(255, 255, 255, 0.2);
+  --ypp-glass-blur-default: blur(16px);
+  --ypp-glass-border-default: 1px solid rgba(255, 255, 255, 0.08);
+  --ypp-glass-blur-active: var(--ypp-glass-blur, var(--ypp-glass-blur-default));
+  --ypp-glass-border-active: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08));
+  
+  --ypp-radius-sm: 6px;
+  --ypp-radius-md: 10px;
+  --ypp-radius-lg: 14px;
+  --ypp-radius-xl: 18px;
+  --ypp-accent: #3ea6ff;
+  --ypp-accent-hover: #65b8ff;
+
+  /* Variables for original theme features */
+  --ypp-player-radius: 12px;
+  --ypp-thumbnail-radius: 12px;
+}
+
+/* Responsive Grid Variables */
+
+:root {
+  --ypp-grid-column-min: 280px;
+  --ypp-card-padding: 12px;
+  --ypp-card-radius: 12px;
+}
+
+
+@media (max-width: 1600px) {
+  :root {
+    --ypp-grid-column-min: 260px;
+    --ypp-grid-gap: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --ypp-grid-column-min: 240px;
+    --ypp-grid-gap: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --ypp-grid-column-min: 220px;
+    --ypp-grid-gap: 12px;
+    --ypp-header-height: 56px;
+    --ypp-radius-lg: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --ypp-grid-column-min: 100%;
+    --ypp-card-padding: 10px;
+    --ypp-radius-lg: 12px;
+    --ypp-radius-md: 10px;
+  }
+}
+
+/* Force YouTube background to respect theme variables - Deep DOM Targeting */
+
+html[data-ypp-theme],
+html[data-ypp-theme]:root,
+html[data-ypp-theme]:root[dark],
+html[data-ypp-theme]:root[dark="true"],
+html[data-ypp-theme]:root[system-icons],
+html[data-ypp-theme] body,
+html[data-ypp-theme] ytd-app,
+html[data-ypp-theme] #background,
+html[data-ypp-theme] #contentcontainer,
+html[data-ypp-theme] tp-yt-app-header,
+html[data-ypp-theme] #page-manager,
+html[data-ypp-theme] #contents,
+html[data-ypp-theme] #primary,
+html[data-ypp-theme] #secondary,
+html[data-ypp-theme] ytd-watch-flexy,
+html[data-ypp-theme] ytd-two-column-watch-layout {
+  background-color: var(--ypp-bg-global-color, var(--ypp-bg-base, #0f0f0f)) !important;
+  background-image: var(--ypp-bg-global-image, none) !important;
+  background-attachment: var(--ypp-bg-global-attachment, fixed) !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Force restore video thumbnail images - override all backgrounds */
+html[data-ypp-theme] ytd-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-grid-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-rich-item-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-compact-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-playlist-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail-renderer,
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a,
+html[data-ypp-theme] .ytd-thumbnail a img {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a img,
+html[data-ypp-theme] .ytd-thumbnail-renderer img,
+html[data-ypp-theme] .ytd-thumbnail-renderer a img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* ===================================================================================
+   2. TYPOGRAPHY & ANIMATION
+   =================================================================================== */
+
+/* Typography */
+
+html.yt-spiral-tube-theme, 
+html.yt-spiral-tube-theme body, 
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #content-text {
+  font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+}
+
+html.yt-spiral-tube-theme {
+    --yt-spec-font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+}
+
+html.yt-spiral-tube-theme tp-yt-paper-button,
+html.yt-spiral-tube-theme ytd-button-renderer {
+  font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
+}
+
+/* Animations & Reduced Motion */
+
+html.ypp-no-animations *,
+html.ypp-no-animations *::before,
+html.ypp-no-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.ypp-reduced-motion *,
+html.ypp-reduced-motion *::before,
+html.ypp-reduced-motion *::after {
+  animation-duration: 0.1s !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: linear !important;
+}
+
+/* ── Reduce Animations: Balanced mode ── halves all durations, keeps easing */
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-balanced *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.15s !important;
+  transition-duration: 0.15s !important;
+}
+
+/* ── Reduce Animations: Minimal mode ── near-instant, kills iterations & scroll */
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *):not(.ypp-custom-subtitles):not(.ypp-custom-subtitles *):not(.ypp-pip-container):not(.ypp-pip-container *),
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::before,
+body.ypp-reduce-anim-minimal *:not(.ypp-toast):not(.ypp-toast *)::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Accent Color Overrides via injected variables */
+html.yt-spiral-tube-theme {
+  --ypp-accent: var(--ypp-accent-primary, #3ea6ff) !important;
+  --ypp-accent-hover: var(--ypp-accent-glow, #65b8ff) !important;
+  --yt-spec-static-brand-red: var(--ypp-accent-primary, #f00) !important;
+  --yt-spec-icon-active-other: var(--ypp-accent-primary, #3ea6ff) !important;
+  --yt-spec-brand-icon-active: var(--ypp-accent-primary, #3ea6ff) !important;
+  --paper-toggle-button-checked-bar-color: var(--ypp-accent-primary, #3ea6ff) !important;
+  --paper-toggle-button-checked-button-color: var(--ypp-accent-primary, #3ea6ff) !important;
+}
+
+body.ypp-dual-accent-enabled .ytp-play-progress,
+body.ypp-dual-accent-enabled .ytp-swatch-background-color,
+body.ypp-dual-accent-enabled tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button,
+body.ypp-dual-accent-enabled #progress.ytd-thumbnail-overlay-resume-playback-renderer {
+    background: var(--ypp-accent-gradient) !important;
+    background-color: transparent !important;
+}
+body.ypp-dual-accent-enabled .ytp-scrubber-button {
+    background: var(--ypp-accent-gradient) !important;
+    border-color: transparent !important;
+}
+
+/* Thumbnail Radius */
+html.yt-spiral-tube-theme {
+  --ypp-player-radius: var(--ypp-thumb-radius, 12px);
+  --ypp-thumbnail-radius: var(--ypp-thumb-radius, 12px);
+}
+html.yt-spiral-tube-theme yt-image, 
+html.yt-spiral-tube-theme .ytd-thumbnail {
+  border-radius: var(--ypp-thumbnail-radius, 12px) !important;
+}
+
+/* Card Styles - Optimized with :is() pseudo-class */
+
+/* Base transition for all supported renderers */
+
+/* Flat Cards */
+
+/* Elevated Cards */
+
+/* Glass Cards */
+
+/* ── FOLDER STYLE ── */
+
+/* Cycle folder tab colors */
+
+/* ── BENTO STYLE ── */
+
+/* ── NEON STYLE ── */
+
+@keyframes ypp-neon-pulse {
+  0% { box-shadow: 0 0 10px rgba(108,99,255,0.2), inset 0 0 10px rgba(108,99,255,0.05); }
+  50% { box-shadow: 0 0 25px rgba(108,99,255,0.5), inset 0 0 15px rgba(108,99,255,0.1); }
+  100% { box-shadow: 0 0 10px rgba(108,99,255,0.2), inset 0 0 10px rgba(108,99,255,0.05); }
+}
+
+/* ── COMPACT STYLE ── */
+
+/* ── POLAROID STYLE ── */
+
+/* ── NEUMORPHIC STYLE (NEW) ── */
+
+/* ── CYBERPUNK STYLE (NEW) ── */
+
+/* ── HOLOGRAPHIC STYLE (NEW) ── */
+
+@keyframes ypp-holo-sweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── MINIMALIST STYLE (NEW) ── */
+
+/* YouTube Dropdowns & Custom Popups */
+
+/* tp-yt-iron-dropdown: must NOT have overflow:hidden — YouTube positions it via JS
+   in the next tick; overflow:hidden before positioning causes content clipping.
+   Also needs border-radius applied to inner content, not the wrapper. */
+
+html.yt-spiral-tube-theme tp-yt-iron-dropdown {
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, var(--ypp-border-opacity, 0.08)) !important;  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 48px rgba(0,0,0,0.6) !important;
+}
+
+html.yt-spiral-tube-theme tp-yt-paper-listbox,
+html.yt-spiral-tube-theme ytd-active-account-header-renderer {
+  background: transparent !important;
+}
+
+/* Popup Inner Structure Overrides */
+
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer {
+  padding: 8px 0 !important;
+}
+
+html.yt-spiral-tube-theme ytd-active-account-header-renderer {
+  padding: 16px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Hide native bottom borders inside header */
+
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #header {
+  border-bottom: none !important;
+}
+
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer #separator,
+html.yt-spiral-tube-theme ytd-menu-popup-renderer ytd-menu-service-item-renderer[has-separator] {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  margin: 4px 16px !important;
+  height: 1px !important;
+}
+
+/* Popup Menu Items Hover & Aesthetics */
+
+/* Popup Icon Interactions */
+
+/* Phase 3: Ultra-Premium Popup Polish */
+
+/* Popup Typography Hierarchy */
+
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #account-name {
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 2px !important;
+  color: #fff !important;
+}
+
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #account-byline,
+html.yt-spiral-tube-theme ytd-active-account-header-renderer #channel-handle {
+  opacity: 0.65 !important;
+  font-weight: 400 !important;
+  font-size: 1.3rem !important;
+}
+
+/* Entry Animation */
+
+@keyframes ypp-popup-enter {
+  0% { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Non-iron-dropdown popups animate immediately — their position is already known */
+
+/* tp-yt-iron-dropdown: YouTube positions it via JS (iron-overlay) AFTER the element
+   is added to DOM. Without a delay, the animation starts at left:0/top:0 causing
+   the visible 'jump from left' bug. The 80ms delay lets YouTube place it first. */
+
+html.yt-spiral-tube-theme tp-yt-iron-dropdown {
+  animation: ypp-popup-enter 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  animation-delay: 80ms !important;
+  animation-fill-mode: both !important; /* stays opacity:0 during the delay */
+  transform-origin: top right !important;
+}
+
+/* Custom Themed Scrollbar for Popups */
+
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar {
+  width: 4px !important;
+  background: transparent !important;
+}
+
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-track,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 4px !important;
+}
+
+html.yt-spiral-tube-theme ytd-multi-page-menu-renderer ::-webkit-scrollbar-thumb:hover,
+html.yt-spiral-tube-theme tp-yt-iron-dropdown ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Sidebar Opacity */
+
+/* Layout Density Grid Gap Override */
+
+html.yt-spiral-tube-theme {
+  --ytd-rich-grid-item-margin: var(--ypp-density-gap, 16px) !important;
+}
+
+/* ===================================================================================*/

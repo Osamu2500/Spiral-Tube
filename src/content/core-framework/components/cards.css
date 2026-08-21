@@ -32,6 +32,9 @@
   padding: var(--ypp-card-pad, 0px) !important;
   box-shadow: var(--ypp-card-shadow, none) !important;
   filter: var(--ypp-card-filter, none) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  transform: var(--ypp-card-transform, none) !important;
   transition: var(--ypp-card-transition, all 0.2s ease) !important;
 }
 
@@ -60,7 +63,53 @@
   transform: var(--ypp-card-transform-hover, none) !important;
   box-shadow: var(--ypp-card-shadow-hover, var(--ypp-card-shadow, none)) !important;
   filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
+  -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
 }
+
+/* Inner Text Hooks for Card Styles */
+:is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  ytd-rich-grid-media,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  yt-lockup-view-model:not(ytd-watch-metadata *)
+) #video-title {
+  font-family: var(--ypp-card-title-font, var(--ypp-font-primary)) !important;
+}
+
+:is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  ytd-rich-grid-media,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  yt-lockup-view-model:not(ytd-watch-metadata *)
+) #metadata-line span,
+:is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item,
+  ytd-rich-grid-media,
+  ytd-playlist-renderer,
+  ytd-radio-renderer,
+  ytd-channel-renderer,
+  yt-lockup-view-model:not(ytd-watch-metadata *)
+) ytd-channel-name * {
+  color: var(--ypp-card-meta-color, var(--ypp-text-secondary)) !important;
+}
+
 
 /* Base Overrides for Cards elements like thumbnails */
 body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
