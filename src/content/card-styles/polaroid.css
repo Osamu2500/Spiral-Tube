@@ -5,7 +5,12 @@
 */
 
 /* ── 1. FRAMEWORK VARIABLES ─────────────────────────────────────────────── */
-html[data-ypp-card-style="polaroid"] {
+/* Set variables directly on the card elements so that var(--ypp-thumb-color) evaluates per-card */
+html[data-ypp-card-style="polaroid"] :is(
+    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
+    yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
+) {
   /* Layout */
   --ypp-card-pad: 12px 12px 45px 12px !important;
   --ypp-card-radius: 2px !important;
@@ -19,14 +24,8 @@ html[data-ypp-card-style="polaroid"] {
   /* Paper Texture Background */
   --ypp-card-bg: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E"), var(--ypp-thumb-color, #E8E4D9) !important;
   --ypp-card-bg-hover: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E"), var(--ypp-thumb-color, #E8E4D9) !important;
-}
 
-/* Because cards.css doesn't support blend-mode natively, we apply it directly to the cards */
-html[data-ypp-card-style="polaroid"] :is(
-    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
-    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
-    yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
-) {
+  /* Since cards.css doesn't support blend-mode natively, we apply it directly */
   background-blend-mode: multiply !important;
   transform: rotate(-1.5deg) translateZ(0) !important;
 }
