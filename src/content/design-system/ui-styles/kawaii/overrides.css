@@ -161,19 +161,19 @@ html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer {
 }
 
 /* Segmented Buttons (Like/Dislike) */
-html[data-ypp-card-style="kawaii"] ytd-segmented-like-dislike-button-renderer,
-html[data-ypp-ui-design="kawaii"] ytd-segmented-like-dislike-button-renderer {
+html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper),
+html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-button) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-segmented-like-dislike-button-renderer button,
-html[data-ypp-ui-design="kawaii"] ytd-segmented-like-dislike-button-renderer button {
+html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button,
+html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
   transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-segmented-like-dislike-button-renderer button:hover,
-html[data-ypp-ui-design="kawaii"] ytd-segmented-like-dislike-button-renderer button:hover {
+html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover,
+html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
   transform: scale(1.1) !important;
 }
 

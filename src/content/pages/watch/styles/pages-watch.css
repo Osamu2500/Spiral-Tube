@@ -87,7 +87,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata #actions {
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button,
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button,
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button {
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
   background: transparent !important;
   color: var(--ypp-text-primary, #fff) !important;
   transition: all 0.2s ease;
@@ -95,7 +95,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-r
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button:hover {
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
   background: var(--ypp-bg-hover, rgba(255, 255, 255, 0.1)) !important;
   color: var(--ypp-accent, #3ea6ff) !important;
 }
@@ -167,7 +167,11 @@ body.ypp-ui-extra-rounded #avatar {
     border-radius: 50% !important;
 }
 
-body.ypp-ui-extra-rounded ytd-button-renderer {
+body.ypp-ui-extra-rounded ytd-button-renderer,
+body.ypp-ui-extra-rounded yt-button-view-model,
+body.ypp-ui-extra-rounded yt-segmented-like-dislike-button-view-model,
+body.ypp-ui-extra-rounded .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+body.ypp-ui-extra-rounded .yt-spec-button-shape-next {
     border-radius: 32px !important;
 }
 
@@ -196,7 +200,7 @@ html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*
 html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i],
 html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i],
 html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] {
-    background-color: var(--yt-spec-button-chip-background-inactive, rgba(255, 255, 255, 0.1)) !important;
+    background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1)) !important;
     color: var(--yt-spec-text-primary) !important;
     border: none !important;
     border-radius: 100px !important;
@@ -276,4 +280,5 @@ html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner > div:empty {
 }
 
 html.yt-spiral-tube-theme body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
+
 

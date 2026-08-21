@@ -1063,7 +1063,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-dislike-button yt-
   box-shadow: none !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   background: rgba(255, 255, 255, 0.08) !important;
 
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -1077,14 +1077,14 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-bu
     box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer:hover {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper):hover {
   background: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Like button side */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
   yt-button-shape:first-child
   button {
   border-radius: 100px 0 0 100px !important;
@@ -1094,7 +1094,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-bu
 
 /* Dislike button side */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
   yt-button-shape:last-child
   button {
   border-radius: 0 100px 100px 0 !important;
@@ -1212,3 +1212,4 @@ html.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
     border-radius: var(--ypp-radius-lg) !important;
     padding: 12px !important;
 }
+

@@ -334,7 +334,7 @@ ytd-toggle-button-renderer a {
   box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6);
 }
 
-ytd-segmented-like-dislike-button-renderer {
+:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 50px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }

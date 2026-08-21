@@ -2309,7 +2309,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-dislike-button yt-
   box-shadow: none !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   background: rgba(255, 255, 255, 0.08) !important;  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 100px !important;
   display: flex !important;
@@ -2321,14 +2321,14 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-bu
     box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer:hover {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper):hover {
   background: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Like button side */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
   yt-button-shape:first-child
   button {
   border-radius: 100px 0 0 100px !important;
@@ -2338,7 +2338,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-bu
 
 /* Dislike button side */
 
-html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+html[data-ypp-ui-design] body.yt-spiral-tube-theme :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper)
   yt-button-shape:last-child
   button {
   border-radius: 0 100px 100px 0 !important;
@@ -4405,7 +4405,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata #actions {
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button,
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button,
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button {
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
   background: transparent !important;
   color: var(--ypp-text-primary, #fff) !important;
   transition: all 0.2s ease;
@@ -4413,7 +4413,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-r
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button:hover {
+html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
   background: var(--ypp-bg-hover, rgba(255, 255, 255, 0.1)) !important;
   color: var(--ypp-accent, #3ea6ff) !important;
 }
@@ -4485,7 +4485,11 @@ body.ypp-ui-extra-rounded #avatar {
     border-radius: 50% !important;
 }
 
-body.ypp-ui-extra-rounded ytd-button-renderer {
+body.ypp-ui-extra-rounded ytd-button-renderer,
+body.ypp-ui-extra-rounded yt-button-view-model,
+body.ypp-ui-extra-rounded yt-segmented-like-dislike-button-view-model,
+body.ypp-ui-extra-rounded .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+body.ypp-ui-extra-rounded .yt-spec-button-shape-next {
     border-radius: 32px !important;
 }
 
@@ -4641,3 +4645,4 @@ html.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
 
 /* Hide AI Logo/Altered Content Badges */
 /* Catch-all for AI/Altered content badges on Player Page and elsewhere */
+
