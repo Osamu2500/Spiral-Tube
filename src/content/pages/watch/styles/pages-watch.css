@@ -86,6 +86,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata #actions {
 }
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button,
 html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button {
   background: transparent !important;
   color: var(--ypp-text-primary, #fff) !important;
@@ -93,6 +94,7 @@ html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-r
 }
 
 html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata ytd-segmented-like-dislike-button-renderer button:hover {
   background: var(--ypp-bg-hover, rgba(255, 255, 255, 0.1)) !important;
   color: var(--ypp-accent, #3ea6ff) !important;
