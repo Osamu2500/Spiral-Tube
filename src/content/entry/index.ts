@@ -32,7 +32,7 @@ import '../pages/home/styles/cards.css';
 
 // Managers (Phase 4.5)
 import '../global/features/hotkeys-manager.js';
-import '../core/managers/base-page-manager.js';
+import '../core/system/base-page-manager.js';
 import '../global/layout/global-layout-manager.js';
 import '../pages/home/home-manager.js';
 import '../pages/subscriptions/subs-manager.js';

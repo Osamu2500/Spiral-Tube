@@ -983,7 +983,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             searchCompatLink.className = 'ypp-ui-style-link';
             (document.head || document.documentElement).appendChild(searchCompatLink);
         }
-        searchCompatLink.href = chrome.runtime.getURL('src/content/core-framework/card-styles/search-card-compat.css');
+        searchCompatLink.href = chrome.runtime.getURL('src/content/design-system/card-styles/search-card-compat.css');
 
         this._Utils.log(`Injecting Card Style: ${cardStyleKey} + search-card-compat`, 'THEME');
     }

@@ -198,6 +198,8 @@ html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[ti
     color: var(--yt-spec-text-primary) !important;
     border: none !important;
     border-radius: 100px !important;
+    padding: 0 16px !important;
+    min-height: 36px !important;
 }
 
 html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i]:hover,
