@@ -322,7 +322,8 @@ html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-button-re
 html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 28px) !important;
-  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 /* Kawaii Share & Clip Dialogs */
@@ -824,7 +825,8 @@ html[data-ypp-card-style="kawaii"] .ytp-settings-menu, html[data-ypp-ui-design="
 html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom, html[data-ypp-ui-design="kawaii"] .ytp-chrome-bottom {
   border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 6px 0 var(--kawaii-primary) !important;
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 /* Specific Styling for .ytp-endscreen-content */
@@ -4104,8 +4106,10 @@ html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer:hover {
 }
 
 html[data-ypp-ui-design="kawaii"] ytd-masthead {
+  -webkit--webkit-backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
   box-shadow: 0 4px 15px rgba(255, 158, 187, 0.1) !important;
 }
 
@@ -4500,7 +4504,8 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
 /* Shorts Action Buttons (Right Side Pill) */
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions,
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions {
-  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 0 5px 15px rgba(255,158,187,0.4) !important;
 }
@@ -4581,8 +4586,10 @@ html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer:hover {
 }
 
 html[data-ypp-ui-design="kawaii"] #secondary-inner.ytd-watch-flexy {
+  -webkit--webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
   border-radius: var(--ypp-shape-primary, var(--kawaii-r-lg)) !important;
 }
 

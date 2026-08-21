@@ -438,7 +438,8 @@ ytd-searchbox #search-icon-legacy.ytd-searchbox {
 /* Navbar Overhaul for autumn */
 html[data-ypp-ui-design="autumn"] #masthead-container,
 html[data-ypp-ui-design="autumn"] ytd-masthead {
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
   box-shadow: 0 0 10px hsl(130, 80%, 55%), 0 0 20px hsl(130, 80%, 55%) !important;
 }
 
@@ -486,7 +487,8 @@ html[data-ypp-ui-design="autumn"] #voice-search-button:hover {
 html[data-ypp-ui-design="autumn"] .sbdd_b,
 html[data-ypp-ui-design="autumn"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 0px) !important;
-  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
   box-shadow: 0 0 10px hsl(130, 80%, 55%), 0 0 20px hsl(130, 80%, 55%) !important;
 }
 
@@ -517,7 +519,8 @@ html[data-ypp-ui-design="autumn"] #avatar-btn yt-img-shadow:hover {
 
 html[data-ypp-ui-design="autumn"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
-  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+    backdrop-filter: blur(25px) !important;
   box-shadow: 0 0 10px hsl(130, 80%, 55%), 0 0 20px hsl(130, 80%, 55%) !important;
 }
 
