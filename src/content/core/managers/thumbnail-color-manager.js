@@ -38,7 +38,8 @@ export class ThumbnailColorManager {
         this.activeStyle = settings.cardStyle || 'default';
         const needsExtraction = [
             'polaroid', 
-            'neon'
+            'neon',
+            'holographic'
         ].includes(this.activeStyle);
         
         if (needsExtraction && !this.enabled) {
@@ -82,6 +83,7 @@ export class ThumbnailColorManager {
         this.waitingElements.clear();
         document.querySelectorAll('[data-ypp-thumb-color]').forEach(el => {
             el.style.removeProperty('--ypp-thumb-color');
+            el.style.removeProperty('--ypp-thumb-rgb');
             el.removeAttribute('data-ypp-thumb-color');
         });
     }
@@ -97,7 +99,9 @@ export class ThumbnailColorManager {
     }
 
     getImage(el) {
+        // Try normal img selector first
         let img = el.querySelector('yt-image img, ytd-thumbnail img, yt-lockup-view-model img, .yt-core-image, img');
+        // Try shadow root fallback for yt-image
         if (!img) {
             const ytImage = el.querySelector('yt-image');
             if (ytImage && ytImage.shadowRoot) {
@@ -112,7 +116,8 @@ export class ThumbnailColorManager {
 
         const img = this.getImage(el);
         const src = img ? img.src : null;
-        
+
+        // Allow hqdefault thumbnails — don't wait for maxres
         const isReady = src && !src.includes('data:image');
 
         if (!isReady) {
@@ -124,52 +129,75 @@ export class ThumbnailColorManager {
             return;
         }
 
-        const cleanSrc = src;
+        // Strip URL params to maximize cache hits (e.g. sqp=... on YouTube CDN URLs)
+        const cleanSrc = src.split('?')[0];
+
         if (this.cache.has(cleanSrc)) {
             const cached = this.cache.get(cleanSrc);
-            // Support both old string cache and new object cache during transition
-            if (typeof cached === 'string') {
-                el.style.setProperty('--ypp-thumb-color', cached);
-            } else {
-                el.style.setProperty('--ypp-thumb-color', cached.colorStr);
-                el.style.setProperty('--ypp-thumb-rgb', cached.rgbStr);
-            }
+            el.style.setProperty('--ypp-thumb-color', cached.colorStr);
+            el.style.setProperty('--ypp-thumb-rgb', cached.rgbStr);
             el.setAttribute('data-ypp-thumb-color', 'true');
             return;
         }
 
-        // The Ultimate Fix: Offload extraction to the Background Service Worker
-        // The background script has <all_urls> permission, completely bypassing
-        // CORS, Tainted Canvas errors, and URL signature issues. It also frees up
-        // the main thread, greatly improving the homepage scrolling performance!
-        chrome.runtime.sendMessage({
-            action: 'EXTRACT_COLOR',
-            url: cleanSrc
-        }, (response) => {
-            if (chrome.runtime.lastError || !response || !response.success) {
-                // Fallback error handler (if background script fails or is asleep)
-                const colorStr = 'transparent';
-                const rgbStr = '232, 228, 217';
-                this.cache.set(cleanSrc, { colorStr, rgbStr });
-                if (el.isConnected) {
-                    el.style.setProperty('--ypp-thumb-color', colorStr);
-                    el.style.setProperty('--ypp-thumb-rgb', rgbStr);
-                    el.setAttribute('data-ypp-thumb-color', 'true');
+        // ---- ORIGINAL PROVEN APPROACH FROM COMMIT 7f2c736f ----
+        // Use new Image() with crossOrigin=Anonymous in the CONTENT SCRIPT context.
+        // This works because content scripts run in the page's origin context,
+        // which means YouTube CDN (i.ytimg.com) allows the crossOrigin request.
+        // The background service worker fetch() approach was FAILING silently due
+        // to CORS / OffscreenCanvas issues in the service worker context.
+        const tempImg = new Image();
+        tempImg.crossOrigin = 'Anonymous'; // Crucial for canvas pixel reading
+
+        tempImg.onload = () => {
+            try {
+                this.ctx.clearRect(0, 0, 10, 10);
+                this.ctx.drawImage(tempImg, 0, 0, 10, 10);
+
+                const data = this.ctx.getImageData(0, 0, 10, 10).data;
+                let r = 0, g = 0, b = 0, count = 0;
+
+                for (let i = 0; i < data.length; i += 4) {
+                    const alpha = data[i + 3];
+                    if (alpha < 255) continue;
+
+                    // Exclude pure black letterboxes and pure white
+                    if (data[i] < 15 && data[i + 1] < 15 && data[i + 2] < 15) continue;
+                    if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) continue;
+
+                    r += data[i];
+                    g += data[i + 1];
+                    b += data[i + 2];
+                    count++;
                 }
-                return;
-            }
 
-            const colorStr = `rgb(${response.r}, ${response.g}, ${response.b})`;
-            const rgbStr = `${response.r}, ${response.g}, ${response.b}`;
+                if (count > 0) {
+                    r = Math.floor(r / count);
+                    g = Math.floor(g / count);
+                    b = Math.floor(b / count);
 
-            this.cache.set(cleanSrc, { colorStr, rgbStr });
-            
-            if (el.isConnected) {
-                el.style.setProperty('--ypp-thumb-color', colorStr);
-                el.style.setProperty('--ypp-thumb-rgb', rgbStr);
-                el.setAttribute('data-ypp-thumb-color', 'true');
+                    const enhanced = this.enhanceColorForGlow(r, g, b);
+                    const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
+                    const rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
+
+                    this.cache.set(cleanSrc, { colorStr, rgbStr });
+
+                    if (el.isConnected) {
+                        el.style.setProperty('--ypp-thumb-color', colorStr);
+                        el.style.setProperty('--ypp-thumb-rgb', rgbStr);
+                        el.setAttribute('data-ypp-thumb-color', 'true');
+                    }
+                }
+            } catch (e) {
+                // Ignore CORS tainted canvas errors silently
             }
-        });
+        };
+
+        tempImg.onerror = () => {
+            // Some images might strictly reject CORS — skip them silently
+        };
+
+        tempImg.src = cleanSrc;
     }
 
     startPolling() {
@@ -180,7 +208,7 @@ export class ThumbnailColorManager {
                 this._pollingInterval = null;
                 return;
             }
-            
+
             for (const el of this.waitingElements) {
                 if (!document.body.contains(el)) {
                     this.waitingElements.delete(el);
@@ -198,16 +226,15 @@ export class ThumbnailColorManager {
     }
 
     enhanceColorForGlow(r, g, b) {
-        // Boost vibrance for a better neon glow effect
-        let max = Math.max(r, g, b);
-        let min = Math.min(r, g, b);
-        
-        if (max === 0) return {r:50, g:50, b:50}; // Fallback dark grey
-        
-        // Push brightness up
+        // Boost vibrance for a rich polaroid background effect
+        const max = Math.max(r, g, b);
+
+        if (max === 0) return { r: 50, g: 50, b: 50 }; // Fallback dark grey
+
+        // Push brightness up by at most 40%
         let boost = 255 / max;
-        boost = Math.min(boost, 1.4); // Max 40% boost to avoid washing out
-        
+        boost = Math.min(boost, 1.4);
+
         return {
             r: Math.min(255, Math.floor(r * boost)),
             g: Math.min(255, Math.floor(g * boost)),
