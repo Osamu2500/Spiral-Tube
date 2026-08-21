@@ -12,10 +12,14 @@ html[data-ypp-card-style="polaroid"][data-ypp-card-style="polaroid"][data-ypp-ca
     yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
 ) {
   background-color: var(--ypp-thumb-color, #E8E4D9) !important;
-  border-radius: 4px !important;
-  padding: 10px 10px 45px 10px !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 2px 5px rgba(0, 0, 0, 0.2) !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  /* Seamless SVG noise for physical paper texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E") !important;
+  background-blend-mode: multiply !important;
+  border-radius: 2px !important; /* polaroids have sharp corners */
+  padding: 12px 12px 45px 12px !important;
+  /* inner shadow creates a slight darkened vignette around the edges like old paper */
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.35), 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
   transform: rotate(-1.5deg) translateZ(0) !important;
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease !important;
   will-change: transform, box-shadow;
