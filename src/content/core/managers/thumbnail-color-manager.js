@@ -58,7 +58,7 @@ export class ThumbnailColorManager {
         this.observeNewNodes(document.body);
         
         if (window.YPP?.sharedObserver) {
-            window.YPP.sharedObserver.register('thumbnail-color-manager', 'ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer', (elements) => {
+            window.YPP.sharedObserver.register('thumbnail-color-manager', 'ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model, .ypp-grid-item', (elements) => {
                 if (this.enabled) {
                     elements.forEach(node => this.observer.observe(node));
                 }
@@ -91,17 +91,17 @@ export class ThumbnailColorManager {
     }
 
     observeNewNodes(root) {
-        if (root.matches && root.matches('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer')) {
+        if (root.matches && root.matches('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model, .ypp-grid-item')) {
             this.observer.observe(root);
         }
         if (root.querySelectorAll) {
-            const nodes = root.querySelectorAll('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer');
+            const nodes = root.querySelectorAll('ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, yt-lockup-view-model, .ypp-grid-item');
             nodes.forEach(node => this.observer.observe(node));
         }
     }
 
     getImage(el) {
-        let img = el.querySelector('yt-image img, ytd-thumbnail img, yt-lockup-view-model img, .yt-core-image');
+        let img = el.querySelector('yt-image img, ytd-thumbnail img, yt-lockup-view-model img, .yt-core-image, img');
         if (!img) {
             const ytImage = el.querySelector('yt-image');
             if (ytImage && ytImage.shadowRoot) {

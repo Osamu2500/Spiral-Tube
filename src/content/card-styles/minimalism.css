@@ -1,6 +1,5 @@
-
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="minimalism"] {
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] {
 
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
@@ -10,7 +9,7 @@ html[data-ypp-card-style="minimalism"] {
   --blur: var(--ypp-glass-blur, blur(10px));
 
 }
-html[data-ypp-card-style='minimalism']
+html[data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -36,7 +35,7 @@ html[data-ypp-card-style='minimalism']
   ) {
   background: var(--ypp-bg-surface, #ffffff) !important;
   border: 1px solid rgba(0,0,0,0.08) !important;
-  border-radius: 4px !important;
+  border-radius: 8px !important;
   padding: var(--ypp-density-pad, 16px) !important;
   box-shadow: none !important;
   transition:
@@ -44,7 +43,7 @@ html[data-ypp-card-style='minimalism']
     box-shadow 0.3s !important;
 }
 
-html[data-ypp-card-style='minimalism']
+html[data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -72,7 +71,7 @@ html[data-ypp-card-style='minimalism']
   box-shadow: none !important;
 }
 
-html[data-ypp-card-style='minimalism']
+html[data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -97,7 +96,7 @@ html[data-ypp-card-style='minimalism']
     )
   )
   #video-title,
-html[data-ypp-card-style='minimalism']
+html[data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -126,7 +125,7 @@ html[data-ypp-card-style='minimalism']
   color: #111111 !important;
 }
 
-html[data-ypp-card-style='minimalism']
+html[data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism'][data-ypp-card-style='minimalism']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -151,35 +150,107 @@ html[data-ypp-card-style='minimalism']
     )
   )
   :is(ytd-thumbnail, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__image, yt-image) {
-  border-radius: 4px 4px 0 0 !important;
+  border-radius: 8px !important;
 }
 
 /* Text Visibility Overrides */
-html[data-ypp-card-style="minimalism"] #video-title,
-html[data-ypp-card-style="minimalism"] .yt-core-attributed-string--link-inherit-color,
-html[data-ypp-card-style="minimalism"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #video-title,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
     color: #111111 !important;
 }
 
-html[data-ypp-card-style="minimalism"] ytd-channel-name .yt-core-attributed-string,
-html[data-ypp-card-style="minimalism"] #metadata-line .yt-core-attributed-string,
-html[data-ypp-card-style="minimalism"] .ytd-channel-name,
-html[data-ypp-card-style="minimalism"] #metadata,
-html[data-ypp-card-style="minimalism"] #metadata-line span {
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] .ytd-channel-name,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #metadata,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #metadata-line span {
     color: #606060 !important;
 }
 
-html[data-ypp-card-style="minimalism"] yt-icon.ytd-badge-supported-renderer {
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] yt-icon.ytd-badge-supported-renderer {
     color: #606060 !important;
     fill: #606060 !important;
 }
 
 /* GLOBAL REDESIGN INJECT - minimalism */
-html[data-ypp-card-style="minimalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
-  border-radius: 12px !important;
-  border: 1px solid var(--yt-spec-10-percent-layer, rgba(0,0,0,0.1)) !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #video-title,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] .yt-core-attributed-string,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #metadata-line span,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] .ytd-channel-name,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] ytd-video-meta-block span { 
+  color: #333333 !important; 
+  text-shadow: none !important;
 }
-html[data-ypp-card-style="minimalism"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #ffffff !important;
+  border: none; border-radius: 0; box-shadow: none;
+}
+
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
   border-radius: 8px !important;
+  
+}
+
+/* GLOBAL REDESIGN V3 INJECT - minimalism */
+/* GPU Acceleration & Base Transitions for Smooth Morphing */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  will-change: transform, clip-path, background-color, border-radius;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Hover Interaction: 3D Tilt & Glows */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
+  z-index: 10;
+}
+
+/* Thematic Typography */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #video-title,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] .yt-core-attributed-string,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] #metadata-line span,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] .ytd-channel-name,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] ytd-video-meta-block span { 
+  font-family: inherit !important;
+}
+
+/* Thematic Thumbnail Filters */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  filter: none !important;
+  transition: filter 0.4s ease !important;
+}
+
+/* Clear filters on thumbnail hover */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image):hover {
+  filter: none !important;
+}
+
+
+/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
+/* V4 Glassmorphic Container */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  clip-path: none !important;
+}
+
+/* V4 Glassmorphic Hover State */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* V4 Border Radius on Thumbnails */
+html[data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"][data-ypp-card-style="minimalism"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 8px !important;
+  clip-path: none !important;
 }

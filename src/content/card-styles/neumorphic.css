@@ -1,6 +1,5 @@
-
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="neumorphic"] {
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] {
 
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
@@ -18,14 +17,14 @@ html[data-ypp-card-style="neumorphic"] {
   --shadow-out-hover: 7px 7px 14px #b3b9c5, -7px -7px 14px #ffffff;
 
 }
-html[data-ypp-card-style='neumorphic']
+html[data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic']
   body:not(.ypp-channel-page)
   :is(ytd-thumbnail, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__image, yt-image) {
-  border-radius: 12px !important;
+  border-radius: 24px !important;
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5) !important;
 }
 
-html[data-ypp-card-style='neumorphic']
+html[data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -50,7 +49,7 @@ html[data-ypp-card-style='neumorphic']
     )
   ) {
   background: var(--ypp-bg-surface, #1a1a1a) !important;
-  border-radius: 20px !important;
+  border-radius: 24px !important;
   border: none !important;
   padding: var(--ypp-density-pad, 12px) !important;
   box-shadow:
@@ -58,7 +57,7 @@ html[data-ypp-card-style='neumorphic']
     -8px -8px 16px rgba(255, 255, 255, 0.04) !important;
 }
 
-html[data-ypp-card-style='neumorphic']
+html[data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic'][data-ypp-card-style='neumorphic']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -89,17 +88,88 @@ html[data-ypp-card-style='neumorphic']
 }
 
 /* Safe Visibility Text Shadow */
-html[data-ypp-card-style="neumorphic"] #video-title {
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] #video-title {
     text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
 }
 
 /* GLOBAL REDESIGN INJECT - neumorphic */
-html[data-ypp-card-style="neumorphic"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
-  background: var(--yt-spec-base-background, #f0f0f0) !important;
-  border-radius: 24px !important;
-  border: none !important;
-  box-shadow: inset 4px 4px 10px rgba(255,255,255,0.7), 6px 6px 15px rgba(0,0,0,0.1) !important;
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] #video-title,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] .yt-core-attributed-string,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] #metadata-line span,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] .ytd-channel-name,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] ytd-video-meta-block span { 
+  color: #4a5568 !important; 
+  text-shadow: none !important;
 }
-html[data-ypp-card-style="neumorphic"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  border-radius: 16px !important;
+
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #e0e5ec !important;
+  border-radius: 20px; box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+}
+
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 24px !important;
+  
+}
+
+/* GLOBAL REDESIGN V3 INJECT - neumorphic */
+/* GPU Acceleration & Base Transitions for Smooth Morphing */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  will-change: transform, clip-path, background-color, border-radius;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Hover Interaction: 3D Tilt & Glows */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
+  z-index: 10;
+}
+
+/* Thematic Typography */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] #video-title,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] .yt-core-attributed-string,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] #metadata-line span,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] .ytd-channel-name,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] ytd-video-meta-block span { 
+  font-family: inherit !important;
+}
+
+/* Thematic Thumbnail Filters */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  filter: none !important;
+  transition: filter 0.4s ease !important;
+}
+
+/* Clear filters on thumbnail hover */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image):hover {
+  filter: none !important;
+}
+
+
+/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
+/* V4 Glassmorphic Container */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: rgba(224, 229, 236, 0.1) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  clip-path: none !important;
+}
+
+/* V4 Glassmorphic Hover State */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  background: rgba(224, 229, 236, 0.1) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* V4 Border Radius on Thumbnails */
+html[data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"][data-ypp-card-style="neumorphic"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 24px !important;
+  clip-path: none !important;
 }

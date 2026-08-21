@@ -1,5 +1,5 @@
 /* grunge/card-style.css */
-html[data-ypp-card-style="grunge"] {
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] {
   --sf: #333; --shadow-base: inset 0 0 6px rgba(0,0,0,0.7); --shadow-hover: 3px 3px 0 #111;
   --shadow-active: inset 0 2px 4px rgba(0,0,0,0.9); --blur: blur(10px);
   --grunge-bg: #2b2b2b; --grunge-sf: #333; --grunge-primary: #3d3d3d;
@@ -7,7 +7,7 @@ html[data-ypp-card-style="grunge"] {
   --grunge-border: 1px dashed #8a9a5b; --grunge-border-hover: 2px solid #a8b870;
   --grunge-text: #ccc; --grunge-text-sub: #999; --grunge-radius: 2px;
 }
-html[data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
   ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
   background: var(--ypp-bg-surface, #333) !important;
@@ -17,31 +17,103 @@ html[data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-rendere
   padding: var(--ypp-density-pad, 14px) !important; box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
   transition: all 0.2s ease !important;
 }
-html[data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
   ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
   background: var(--ypp-bg-surface, #3d3d3d) !important; border-color: #a8b870 !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 3px 3px 0 #111 !important;
 }
-html[data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title { color: var(--ypp-text-primary, #ccc) !important; font-family: "Special Elite","Courier New",monospace !important;
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #video-title { color: var(--ypp-text-primary, #ccc) !important; font-family: "Special Elite","Courier New",monospace !important;
 }
-html[data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span { color: var(--ypp-text-secondary, #999) !important;
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #metadata-line span { color: var(--ypp-text-secondary, #999) !important;
 }
-html[data-ypp-card-style="grunge"] ytd-thumbnail { border-radius: 2px !important; border: 1px dashed #8a9a5b !important; overflow: hidden !important; }
-html[data-ypp-card-style="grunge"] #mouseover-overlay, html[data-ypp-card-style="grunge"] ytd-video-preview { display: none !important; }
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] ytd-thumbnail { border-radius: 2px !important; border: 1px dashed #8a9a5b !important; overflow: hidden !important; }
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] #mouseover-overlay, html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] ytd-video-preview { display: none !important; }
 
 /* Safe Visibility Text Shadow */
-html[data-ypp-card-style="grunge"] #video-title {
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] #video-title {
     text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
 }
 
 /* GLOBAL REDESIGN INJECT - grunge */
-html[data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
-  border-radius: 12px !important;
-  border: none !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] #video-title,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] .yt-core-attributed-string,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] #metadata-line span,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] .ytd-channel-name,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] ytd-video-meta-block span { 
+  color: #000000 !important; 
+  text-shadow: none !important;
 }
-html[data-ypp-card-style="grunge"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  border-radius: 8px !important;
+
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #556b2f !important;
+  
+}
+
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 2px !important;
+  
+}
+
+/* GLOBAL REDESIGN V3 INJECT - grunge */
+/* GPU Acceleration & Base Transitions for Smooth Morphing */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  will-change: transform, clip-path, background-color, border-radius;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Hover Interaction: 3D Tilt & Glows */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
+  z-index: 10;
+}
+
+/* Thematic Typography */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] #video-title,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] .yt-core-attributed-string,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] #metadata-line span,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] .ytd-channel-name,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] ytd-video-meta-block span { 
+  font-family: inherit !important;
+}
+
+/* Thematic Thumbnail Filters */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  filter: none !important;
+  transition: filter 0.4s ease !important;
+}
+
+/* Clear filters on thumbnail hover */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image):hover {
+  filter: none !important;
+}
+
+
+/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
+/* V4 Glassmorphic Container */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: rgba(85, 107, 47, 0.25) !important;
+  border-radius: 2px !important;
+  border: 1px solid rgba(85, 107, 47, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  clip-path: none !important;
+}
+
+/* V4 Glassmorphic Hover State */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  background: rgba(85, 107, 47, 0.25) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* V4 Border Radius on Thumbnails */
+html[data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"][data-ypp-card-style="grunge"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 2px !important;
+  clip-path: none !important;
 }

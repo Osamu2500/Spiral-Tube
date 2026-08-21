@@ -1,6 +1,5 @@
-
 /* Global AI-generated missing variable fallbacks */
-html[data-ypp-card-style="retro"] {
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] {
 
   /* Global AI-generated missing variable fallbacks */
   --sf: var(--ypp-bg-surface, #1e1e1e);
@@ -19,7 +18,7 @@ html[data-ypp-card-style="retro"] {
   --win95-flat: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
 
 }
-html[data-ypp-card-style='retro']
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -45,7 +44,7 @@ html[data-ypp-card-style='retro']
   ) {
   background: linear-gradient(180deg, #2a0845 0%, #6441a5 100%) !important;
   border: 2px solid #ff00c8 !important;
-  border-radius: 8px !important;
+  border-radius: 16px !important;
   padding: var(--ypp-density-pad, 12px) !important;
   box-shadow: 4px 4px 0px #00ffd5 !important;
   image-rendering: pixelated !important;
@@ -54,7 +53,7 @@ html[data-ypp-card-style='retro']
     box-shadow 0.1s !important;
 }
 
-html[data-ypp-card-style='retro']
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -85,7 +84,7 @@ html[data-ypp-card-style='retro']
   border-color: #00ffd5 !important;
 }
 
-html[data-ypp-card-style='retro']
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -115,11 +114,11 @@ html[data-ypp-card-style='retro']
   text-shadow: 1px 1px 0px #ff00c8 !important;
 }
 
-html[data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'] ytd-video-preview {
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] ytd-video-preview {
   display: none !important;
 }
 
-html[data-ypp-card-style='retro']
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -146,7 +145,7 @@ html[data-ypp-card-style='retro']
   background: var(--ypp-bg-surface, #c0c0c0) !important;
   --yt-spec-text-primary: var(--ypp-text-primary, #000000) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, #000000) !important;
-  border-radius: 0 !important;
+  border-radius: 16px !important;
   border-top: 2px solid #ffffff !important;
   border-left: 2px solid #ffffff !important;
   border-right: 2px solid #808080 !important;
@@ -156,7 +155,7 @@ html[data-ypp-card-style='retro']
   transition: none !important;
 }
 
-html[data-ypp-card-style='retro']
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
     ytd-rich-item-renderer,
     ytd-video-renderer,
@@ -187,28 +186,100 @@ html[data-ypp-card-style='retro']
   padding: calc(var(--ypp-density-pad, 12px) + 1px) calc(var(--ypp-density-pad, 12px) - 1px) calc(var(--ypp-density-pad, 12px) - 1px) calc(var(--ypp-density-pad, 12px) + 1px) !important;
 }
 
-html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__image, yt-image) {
-  border-radius: 0 !important;
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__image, yt-image) {
+  border-radius: 16px !important;
   border: 2px inset #ffffff !important;
   border-right-color: #808080 !important;
   border-bottom-color: #808080 !important;
 }
 
-html[data-ypp-card-style='retro'] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #000080) !important; 
+html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #000080) !important; 
   font-family: "MS Sans Serif", Tahoma, sans-serif !important;
 }
 
 /* Safe Visibility Text Shadow */
-html[data-ypp-card-style="retro"] #video-title {
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] #video-title {
     text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
 }
 
 /* GLOBAL REDESIGN INJECT - retro */
-html[data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
-  border-radius: 8px !important;
-  border: 2px solid #ff00ff !important;
-  box-shadow: 4px 4px 0px #00ffff !important;
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] #video-title,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] .yt-core-attributed-string,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] #metadata-line span,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] .ytd-channel-name,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] ytd-video-meta-block span { 
+  color: #111111 !important; 
+  text-shadow: none !important;
 }
-html[data-ypp-card-style="retro"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
-  border-radius: 4px !important;
+
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #f5f5dc !important;
+  border-radius: 15px; border: 5px solid #d3d3d3;
+}
+
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 16px !important;
+  
+}
+
+/* GLOBAL REDESIGN V3 INJECT - retro */
+/* GPU Acceleration & Base Transitions for Smooth Morphing */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  will-change: transform, clip-path, background-color, border-radius;
+  transform: translateZ(0);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Hover Interaction: 3D Tilt & Glows */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
+  z-index: 10;
+}
+
+/* Thematic Typography */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] #video-title,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] .yt-core-attributed-string,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] #metadata-line span,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] .ytd-channel-name,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] yt-formatted-string.ytd-video-renderer,
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] ytd-video-meta-block span { 
+  font-family: inherit !important;
+}
+
+/* Thematic Thumbnail Filters */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  filter: none !important;
+  transition: filter 0.4s ease !important;
+}
+
+/* Clear filters on thumbnail hover */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image):hover {
+  filter: none !important;
+}
+
+
+/* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
+/* V4 Glassmorphic Container */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: rgba(245, 245, 220, 0.15) !important;
+  border-radius: 16px !important;
+  border: 2px solid rgba(211, 211, 211, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  clip-path: none !important;
+}
+
+/* V4 Glassmorphic Hover State */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+  background: rgba(245, 245, 220, 0.15) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* V4 Border Radius on Thumbnails */
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 16px !important;
+  clip-path: none !important;
 }
