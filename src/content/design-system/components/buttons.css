@@ -284,3 +284,16 @@ html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-download-button-vi
 html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button .yt-spec-button-shape-next__button-text-content {
     color: var(--yt-spec-text-primary) !important;
 }
+
+/* Fix native YouTube hover turning action buttons blue */
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #top-level-buttons-computed .yt-spec-button-shape-next--call-to-action:hover .yt-core-image,
+html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button:hover .yt-core-image {
+    fill: var(--yt-spec-text-primary) !important;
+}
+
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #top-level-buttons-computed .yt-spec-button-shape-next--call-to-action:hover .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #actions-inner :is(ytd-download-button-renderer, yt-button-view-model) button:hover .yt-spec-button-shape-next__button-text-content {
+    color: var(--yt-spec-text-primary) !important;
+}
