@@ -31,13 +31,13 @@ import '../global/styles/header-nav.css';
 import '../pages/home/styles/cards.css';
 
 // Managers (Phase 4.5)
-import '../core/managers/hotkeys-manager.js';
+import '../global/features/hotkeys-manager.js';
 import '../core/managers/base-page-manager.js';
-import '../core/managers/global-layout-manager.js';
-import '../core/managers/home-page-manager.js';
-import '../core/managers/subs-page-manager.js';
-import '../core/managers/search-page-manager.js';
-import '../core/managers/watch-page-manager.js';
+import '../global/layout/global-layout-manager.js';
+import '../pages/home/home-manager.js';
+import '../pages/subscriptions/subs-manager.js';
+import '../pages/search/search-manager.js';
+import '../pages/watch/watch-manager.js';
 import '../design-system/color/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
