@@ -1144,7 +1144,12 @@ input[type="range"]:focus::-webkit-slider-runnable-track { background: rgba(255,
   text-align: left; position: relative; overflow: hidden; font-family: inherit;
 }
 .theme-btn:hover { background: var(--bg-card-hover); transform: translateY(-1px); border-color: rgba(255,255,255,.15); }
-.theme-btn.active { border-color: var(--accent-primary); box-shadow: 0 0 8px var(--accent-primary); }
+.theme-btn.active { 
+    border-color: var(--accent-primary); 
+    box-shadow: 0 0 15px color-mix(in srgb, var(--accent-primary) 50%, transparent), inset 0 0 10px color-mix(in srgb, var(--accent-primary) 20%, transparent);
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+}
 .theme-btn.active::after { display: none; }
 .theme-preview { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,.1); flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,.3); overflow: hidden; }
 .theme-preview.split { background: linear-gradient(135deg,#eee 50%,#222 50%); }

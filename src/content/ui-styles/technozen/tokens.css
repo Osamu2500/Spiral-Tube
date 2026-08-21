@@ -1,6 +1,6 @@
 /* Token Overrides for technozen */
 :root[data-ypp-ui-design="technozen"],
-html[data-ypp-ui-style="technozen"] {
+html[data-ypp-ui-design="technozen"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -19,6 +19,21 @@ html[data-ypp-ui-style="technozen"] {
     "Lucida Grande",
     sans-serif !important;
 
+  }
+
+
+html[data-ypp-ui-design="technozen"] * {
+  font-family: "Segoe UI",
+    "Tahoma",
+    "Trebuchet MS",
+    "Verdana",
+    "Lucida Grande",
+    sans-serif !important;
+}
+
+
+
+html[data-ypp-theme="technozen"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: #dff4e8 !important;
   --ypp-bg-global-image: radial-gradient(
@@ -46,15 +61,5 @@ html[data-ypp-ui-style="technozen"] {
       #e2f8e0 0%,
       #d4f0f7 50%,
       #e8f9df 100%) !important;
+
 }
-
-
-html[data-ypp-ui-style="technozen"] * {
-  font-family: "Segoe UI",
-    "Tahoma",
-    "Trebuchet MS",
-    "Verdana",
-    "Lucida Grande",
-    sans-serif !important;
-}
-

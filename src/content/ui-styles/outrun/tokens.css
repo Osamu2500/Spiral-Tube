@@ -1,6 +1,6 @@
 /* Token Overrides for outrun */
 :root[data-ypp-ui-design="outrun"],
-html[data-ypp-ui-style="outrun"] {
+html[data-ypp-ui-design="outrun"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,9 +12,14 @@ html[data-ypp-ui-style="outrun"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="outrun"] {
   /* Global Background Overrides */
   --ypp-bg-global-image: linear-gradient(to bottom, #000000 0%, #1a0b2e 100%) !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

@@ -248,8 +248,8 @@ html[data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-in
 }
 
 /* Ensure normal static thumbnail image remains visible at all times on search results page */
-html[data-ypp-ui-style="harry-potter"] ytd-search ytd-thumbnail yt-image,
-html[data-ypp-ui-style="harry-potter"] ytd-search ytd-thumbnail img,
+html[data-ypp-ui-design="harry-potter"] ytd-search ytd-thumbnail yt-image,
+html[data-ypp-ui-design="harry-potter"] ytd-search ytd-thumbnail img,
 html[data-ypp-card-style="harry-potter"] ytd-search ytd-thumbnail yt-image,
 html[data-ypp-card-style="harry-potter"] ytd-search ytd-thumbnail img {
   display: block !important;
@@ -258,9 +258,9 @@ html[data-ypp-card-style="harry-potter"] ytd-search ytd-thumbnail img {
 }
 
 /* Remove the moving picture thing (hover video preview) on search results and keep normal thumbnails */
-html[data-ypp-ui-style="harry-potter"] ytd-search ytd-moving-thumbnail-renderer,
-html[data-ypp-ui-style="harry-potter"] ytd-search #video-preview,
-html[data-ypp-ui-style="harry-potter"] ytd-search ytd-video-preview,
+html[data-ypp-ui-design="harry-potter"] ytd-search ytd-moving-thumbnail-renderer,
+html[data-ypp-ui-design="harry-potter"] ytd-search #video-preview,
+html[data-ypp-ui-design="harry-potter"] ytd-search ytd-video-preview,
 html[data-ypp-card-style="harry-potter"] ytd-search ytd-moving-thumbnail-renderer,
 html[data-ypp-card-style="harry-potter"] ytd-search #video-preview,
 html[data-ypp-card-style="harry-potter"] ytd-search ytd-video-preview {

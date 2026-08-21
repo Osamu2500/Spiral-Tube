@@ -1,6 +1,6 @@
 /* Token Overrides for frutiger-aero */
 :root[data-ypp-ui-design="frutiger-aero"],
-html[data-ypp-ui-style="frutiger-aero"] {
+html[data-ypp-ui-design="frutiger-aero"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,6 +12,12 @@ html[data-ypp-ui-style="frutiger-aero"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="frutiger-aero"] {
   /* Global Background Overrides */
   --ypp-bg-global-image: linear-gradient(to bottom, 
     var(--faero-sky-light) 0%, 
@@ -22,6 +28,5 @@ html[data-ypp-ui-style="frutiger-aero"] {
   ) !important;
   --ypp-bg-global-size: 100vw 100vh !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

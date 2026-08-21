@@ -1,6 +1,6 @@
 /* Token Overrides for abyss */
 :root[data-ypp-ui-design="abyss"],
-html[data-ypp-ui-style="abyss"] {
+html[data-ypp-ui-design="abyss"] {
   --ypp-bg-surface: #010609 !important;
   --ypp-bg-surface-hover: #020c11 !important;
   --ypp-bg-surface-active: #020c11 !important;
@@ -20,7 +20,7 @@ html[data-ypp-ui-style="abyss"] {
 }
 
 
-html[data-ypp-ui-style="abyss"] * {
+html[data-ypp-ui-design="abyss"] * {
   font-family: "SF Pro Text",
     "Inter",
     "Segoe UI Variable Text",

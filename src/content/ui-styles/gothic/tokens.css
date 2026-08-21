@@ -1,6 +1,6 @@
 /* Token Overrides for gothic */
 :root[data-ypp-ui-design="gothic"],
-html[data-ypp-ui-style="gothic"] {
+html[data-ypp-ui-design="gothic"] {
   --ypp-bg-surface: #121212 !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="gothic"] {
 }
 
 
-html[data-ypp-ui-style="gothic"] * {
+html[data-ypp-ui-design="gothic"] * {
   font-family: var(--ypp-font-primary, "Cinzel","Palatino Linotype",serif) !important;
 }
 

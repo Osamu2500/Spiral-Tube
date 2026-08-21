@@ -255,7 +255,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         // If no UI style or 'default', remove any previously injected style
         if (!uiStyleKey || uiStyleKey === 'default') {
             if (link) link.remove();
-            document.documentElement.removeAttribute('data-ypp-ui-style');
+            document.documentElement.removeAttribute('data-ypp-ui-design');
             document.documentElement.removeAttribute('data-ypp-ui-design');
             document.documentElement.removeAttribute('data-ypp-has-bg-image'); // Force clear background
             
@@ -286,7 +286,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
         link.setAttribute('data-ui-style', uiStyleKey);
         link.href = cssUrl; // Browser caches correctly; only bust on explicit forceReload()
 
-        document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey);
+        document.documentElement.setAttribute('data-ypp-ui-design', uiStyleKey);
         document.documentElement.setAttribute('data-ypp-ui-design', uiStyleKey);
         
         // Handle Frutiger Aero specific bubbles (respect Theme Effects toggle)
@@ -745,7 +745,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
 
                 /* Strip background from html, body, and all major layout containers */
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image],
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style],
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design],
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image]:root,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image]:root[dark],
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image]:root[dark="true"],
@@ -761,16 +761,16 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                    gradient/particle background effects — the image must win) */
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image]::before,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image]::after,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style]::before,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style]::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design]::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design]::after,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] body::before,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] body::after,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] body::before,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] body::after,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] body::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] body::after,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-app::before,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-app::after,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-app::before,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-app::after {
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] ytd-app::before,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] ytd-app::after {
                     background: transparent !important;
                     background-color: transparent !important;
                     background-image: none !important;
@@ -780,7 +780,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
 
                 /* Strip body */
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] body,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] body,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] body,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] body[dir],
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] body.dir {
                     background: transparent !important;
@@ -790,7 +790,7 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 
                 /* Ensure YouTube content sits on top of our custom bg container */
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-app,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-app {
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] ytd-app {
                     position: relative;
                     z-index: 1;
                     background: transparent !important;
@@ -800,10 +800,10 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 
                 /* Hide native YouTube background block and make core layout transparent */
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] #background,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] #background,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] #background,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] #background.ytd-app,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-page-manager,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] ytd-page-manager,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] ytd-page-manager,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-browse,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-search,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-watch-flexy,
@@ -811,9 +811,9 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] ytd-rich-grid-renderer,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] yt-page-background,
                 html[data-ypp-has-bg-image][data-ypp-has-bg-image] #ypp-cinematic-app,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] #contentContainer,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] tp-yt-app-header-layout,
-                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-style] #columns {
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] #contentContainer,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] tp-yt-app-header-layout,
+                html[data-ypp-has-bg-image][data-ypp-has-bg-image][data-ypp-ui-design] #columns {
                     background: transparent !important;
                     background-color: transparent !important;
                     background-image: none !important;
@@ -824,12 +824,12 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
                 }
                 
                 /* Keep masthead and guide readable with a dark overlay (except for frutiger-aero which has its own gradients) */
-                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) #masthead-container.ytd-app,
-                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) ytd-masthead #container.ytd-masthead,
-                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) ytd-mini-guide-renderer,
-                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) ytd-guide-renderer,
-                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) #guide-wrapper.ytd-app,
-                html[data-ypp-has-bg-image][data-ypp-ui-style]:not([data-ypp-ui-style="frutiger-aero"]) app-drawer#guide-inner-content {
+                html[data-ypp-has-bg-image][data-ypp-ui-design]:not([data-ypp-ui-design="frutiger-aero"]) #masthead-container.ytd-app,
+                html[data-ypp-has-bg-image][data-ypp-ui-design]:not([data-ypp-ui-design="frutiger-aero"]) ytd-masthead #container.ytd-masthead,
+                html[data-ypp-has-bg-image][data-ypp-ui-design]:not([data-ypp-ui-design="frutiger-aero"]) ytd-mini-guide-renderer,
+                html[data-ypp-has-bg-image][data-ypp-ui-design]:not([data-ypp-ui-design="frutiger-aero"]) ytd-guide-renderer,
+                html[data-ypp-has-bg-image][data-ypp-ui-design]:not([data-ypp-ui-design="frutiger-aero"]) #guide-wrapper.ytd-app,
+                html[data-ypp-has-bg-image][data-ypp-ui-design]:not([data-ypp-ui-design="frutiger-aero"]) app-drawer#guide-inner-content {
                     background: rgba(0, 0, 0, 0.5) !important;
                     background-color: rgba(0, 0, 0, 0.5) !important;
                     backdrop-filter: blur(16px) !important;

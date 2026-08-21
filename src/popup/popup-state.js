@@ -246,5 +246,6 @@ export function updateSetting(key, value) {
 /** @param {string} newTheme */
 export function notifyThemeChange(newTheme) {
     updateSetting('activeTheme', newTheme);
+    updateSetting('premiumTheme', true);
 }
 

@@ -1,6 +1,6 @@
 /* Token Overrides for liquid-glass */
 :root[data-ypp-ui-design="liquid-glass"],
-html[data-ypp-ui-style="liquid-glass"] {
+html[data-ypp-ui-design="liquid-glass"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -19,12 +19,10 @@ html[data-ypp-ui-style="liquid-glass"] {
     "Segoe UI",
     sans-serif !important;
 
-  /* Global Background Overrides */
-  --ypp-bg-global-color: rgba(255, 255, 255, 0.12) !important;
-}
+  }
 
 
-html[data-ypp-ui-style="liquid-glass"] * {
+html[data-ypp-ui-design="liquid-glass"] * {
   font-family: "SF Pro Display",
     "SF Pro Text",
     "Inter",
@@ -33,3 +31,10 @@ html[data-ypp-ui-style="liquid-glass"] * {
     sans-serif !important;
 }
 
+
+
+html[data-ypp-theme="liquid-glass"] {
+  /* Global Background Overrides */
+  --ypp-bg-global-color: rgba(255, 255, 255, 0.12) !important;
+
+}

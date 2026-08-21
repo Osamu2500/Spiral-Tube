@@ -1,6 +1,6 @@
 /* Token Overrides for woodblock */
 :root[data-ypp-ui-design="woodblock"],
-html[data-ypp-ui-style="woodblock"] {
+html[data-ypp-ui-design="woodblock"] {
   --ypp-bg-surface: #f5f5dc !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="woodblock"] {
 }
 
 
-html[data-ypp-ui-style="woodblock"] * {
+html[data-ypp-ui-design="woodblock"] * {
   font-family: var(--ypp-font-primary, "Lora","Noto Serif",serif) !important;
 }
 

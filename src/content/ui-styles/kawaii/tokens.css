@@ -1,6 +1,6 @@
 /* Token Overrides for kawaii */
 :root[data-ypp-ui-design="kawaii"],
-html[data-ypp-ui-style="kawaii"] {
+html[data-ypp-ui-design="kawaii"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -14,14 +14,19 @@ html[data-ypp-ui-style="kawaii"] {
   
   --yt-font-family: var(--ypp-font-primary, 'Quicksand', 'Roboto', sans-serif) !important;
 
+  }
+
+
+html[data-ypp-ui-design="kawaii"] * {
+  font-family: var(--ypp-font-primary, 'Quicksand', 'Roboto', sans-serif) !important;
+}
+
+
+
+html[data-ypp-theme="kawaii"] {
   /* Global Background Overrides */
   --ypp-bg-global-image: radial-gradient(ellipse at top right, var(--kawaii-accent-tertiary) 0%, transparent 60%),
     radial-gradient(ellipse at bottom left, var(--kawaii-bg-tertiary) 0%, transparent 70%) !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-
-html[data-ypp-ui-style="kawaii"] * {
-  font-family: var(--ypp-font-primary, 'Quicksand', 'Roboto', sans-serif) !important;
-}
-

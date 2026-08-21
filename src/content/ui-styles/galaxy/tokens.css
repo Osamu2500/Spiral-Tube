@@ -1,6 +1,6 @@
 /* Token Overrides for galaxy */
 :root[data-ypp-ui-design="galaxy"],
-html[data-ypp-ui-style="galaxy"] {
+html[data-ypp-ui-design="galaxy"] {
   --ypp-bg-surface: #0b0c10 !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="galaxy"] {
 }
 
 
-html[data-ypp-ui-style="galaxy"] * {
+html[data-ypp-ui-design="galaxy"] * {
   font-family: var(--ypp-font-primary, "Space Grotesk","Segoe UI",sans-serif) !important;
 }
 

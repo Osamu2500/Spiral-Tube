@@ -2,7 +2,7 @@
    CAIRO RED — CARDS (Monolith Blocks)
    ========================================================= */
 
-html[data-ypp-ui-style="cairo-red"] :is(
+html[data-ypp-ui-design="cairo-red"] :is(
   ytd-rich-item-renderer,
   ytd-video-renderer,
   ytd-playlist-renderer,
@@ -33,7 +33,7 @@ html[data-ypp-ui-style="cairo-red"] :is(
 }
 
 /* Hover: The "Glint" / Red Border Reveal */
-html[data-ypp-ui-style="cairo-red"] :is(
+html[data-ypp-ui-design="cairo-red"] :is(
   ytd-rich-item-renderer,
   ytd-video-renderer,
   ytd-playlist-renderer,

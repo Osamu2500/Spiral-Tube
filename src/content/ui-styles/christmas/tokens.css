@@ -1,6 +1,6 @@
 /* Token Overrides for christmas */
 :root[data-ypp-ui-design="christmas"],
-html[data-ypp-ui-style="christmas"] {
+html[data-ypp-ui-design="christmas"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,10 +12,15 @@ html[data-ypp-ui-style="christmas"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="christmas"] {
   /* Global Background Overrides */
   --ypp-bg-global-image: radial-gradient(ellipse at top left, var(--christmas-bg-secondary) 0%, transparent 70%),
     radial-gradient(ellipse at bottom right, var(--christmas-bg-tertiary) 0%, transparent 70%) !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

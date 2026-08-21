@@ -150,6 +150,7 @@ html.yt-spiral-tube-theme[dark="true"],
   --ypp-card-radius: 12px;
 }
 
+
 @media (max-width: 1600px) {
   :root {
     --ypp-grid-column-min: 260px;
@@ -182,75 +183,60 @@ html.yt-spiral-tube-theme[dark="true"],
   }
 }
 
-/* Force YouTube background to respect theme variables */
+/* Force YouTube background to respect theme variables - Deep DOM Targeting */
 
-html.yt-spiral-tube-theme,
-html.yt-spiral-tube-theme:root,
-html.yt-spiral-tube-theme:root[dark],
-html.yt-spiral-tube-theme:root[dark="true"],
-html.yt-spiral-tube-theme:root[system-icons],
-html.yt-spiral-tube-theme body,
-html.yt-spiral-tube-theme ytd-app,
-html.yt-spiral-tube-theme #background,
-html.yt-spiral-tube-theme #page-manager {
+html[data-ypp-theme],
+html[data-ypp-theme]:root,
+html[data-ypp-theme]:root[dark],
+html[data-ypp-theme]:root[dark="true"],
+html[data-ypp-theme]:root[system-icons],
+html[data-ypp-theme] body,
+html[data-ypp-theme] ytd-app,
+html[data-ypp-theme] #background,
+html[data-ypp-theme] #contentcontainer,
+html[data-ypp-theme] tp-yt-app-header,
+html[data-ypp-theme] #page-manager,
+html[data-ypp-theme] #contents,
+html[data-ypp-theme] #primary,
+html[data-ypp-theme] #secondary,
+html[data-ypp-theme] ytd-watch-flexy,
+html[data-ypp-theme] ytd-two-column-watch-layout {
   background-color: var(--ypp-bg-global-color, var(--ypp-bg-base, #0f0f0f)) !important;
   background-image: var(--ypp-bg-global-image, none) !important;
   background-attachment: var(--ypp-bg-global-attachment, fixed) !important;
-  background-size: var(--ypp-bg-global-size, cover) !important;
-  
-  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
-/* Make inner containers transparent so HTML background and effects show through */
-
-html.ypp-no-theme-animations::before,
-html.ypp-no-theme-animations::after {
-  animation-play-state: paused !important;
-}
-
-/* Hide explicit shape/pattern effects when theme animations are disabled */
-html.ypp-no-theme-animations[data-ypp-theme="nature"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="nature"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="vintage"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="vintage"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="outrun"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="outrun"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="holographic"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="holographic"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="hologram"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="hologram"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="hacker"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="hacker"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="dracula"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="dracula"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="deepspace"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="deepspace"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="cyberpunk"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="cyberpunk"]::after,
-html.ypp-no-theme-animations[data-ypp-theme="forest"]::before,
-html.ypp-no-theme-animations[data-ypp-theme="forest"]::after {
-    display: none !important;
-}
-
-html.yt-spiral-tube-theme body, 
-html.yt-spiral-tube-theme ytd-app,
-html.yt-spiral-tube-theme #background,
-html.yt-spiral-tube-theme yt-page-background,
-html.yt-spiral-tube-theme ytd-page-manager,
-html.yt-spiral-tube-theme ytd-browse,
-html.yt-spiral-tube-theme ytd-watch-flexy,
-html.yt-spiral-tube-theme ytd-search,
-html.yt-spiral-tube-theme ytd-two-column-browse-results-renderer,
-html.yt-spiral-tube-theme ytd-rich-grid-renderer,
-html.yt-spiral-tube-theme #columns,
-html.yt-spiral-tube-theme #primary,
-html.yt-spiral-tube-theme #secondary {
+/* Force restore video thumbnail images - override all backgrounds */
+html[data-ypp-theme] ytd-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-grid-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-rich-item-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-compact-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] ytd-playlist-video-renderer .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail,
+html[data-ypp-theme] .ytd-thumbnail-renderer,
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a,
+html[data-ypp-theme] .ytd-thumbnail a img {
   background: transparent !important;
   background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-ypp-theme] .ytd-thumbnail img,
+html[data-ypp-theme] .ytd-thumbnail a img,
+html[data-ypp-theme] .ytd-thumbnail-renderer img,
+html[data-ypp-theme] .ytd-thumbnail-renderer a img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 /* ===================================================================================
-   2. CUSTOMIZATION FEATURE VARIABLES & OVERRIDES
+   2. TYPOGRAPHY & ANIMATION
    =================================================================================== */
 
 /* Typography */
@@ -1011,7 +997,7 @@ body.ypp-floating-guide ytd-page-manager {
   font-weight: 500;
   text-align: center;
   font-family: inherit;
-  pointer-events: auto;
+  pointer-events: auto;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1039,8 +1025,8 @@ body.ypp-hide-scrollbar,
 body.ypp-hide-scrollbar *,
 html:has(body.ypp-hide-scrollbar),
 html:has(body.ypp-hide-scrollbar) *,
-html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar),
-html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar),
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
@@ -1053,15 +1039,15 @@ body.ypp-hide-scrollbar::-webkit-scrollbar,
 body.ypp-hide-scrollbar *::-webkit-scrollbar,
 html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
 html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
-html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
-html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
 html[data-ypp-theme]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
-html[data-ypp-ui-style] body.ypp-hide-scrollbar *::-webkit-scrollbar,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar,
 html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar,
-html[data-ypp-ui-style] body.ypp-hide-scrollbar::-webkit-scrollbar,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar::-webkit-scrollbar,
 html[data-ypp-card-style] body.ypp-hide-scrollbar::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
@@ -1073,9 +1059,9 @@ body.ypp-hide-scrollbar::-webkit-scrollbar-thumb,
 body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
 html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-thumb,
 html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
-html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
-html[data-ypp-ui-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
 html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb {
   display: none !important;
   width: 0 !important;
@@ -1087,9 +1073,9 @@ body.ypp-hide-scrollbar::-webkit-scrollbar-track,
 body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
 html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-track,
 html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
-html[data-ypp-ui-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
 html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
-html[data-ypp-ui-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
 html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track {
   display: none !important;
   width: 0 !important;
@@ -1129,7 +1115,7 @@ html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track {
     align-items: center;
     justify-content: center;
     z-index: var(--ypp-z-card-hover);
-    pointer-events: none;
+    pointer-events: none;
     box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
     animation: ypp-pulse-badge 2s infinite ease-in-out;
 }
@@ -1214,7 +1200,7 @@ html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer 
   opacity: 0;
   transition: all 0.2s ease;
   z-index: var(--ypp-z-content);
-  cursor: pointer;
+  cursor: pointer;
 }
 
 ytd-thumbnail:hover .ypp-watched-icon {
@@ -1839,7 +1825,7 @@ body.ypp-zen-mode #columns {
 .yt-spiral-tube-theme ytd-simple-menu-header-renderer,
 .yt-spiral-tube-theme ytd-active-account-header-renderer,
 .yt-spiral-tube-theme ytd-voice-search-dialog-renderer {
-  background: rgba(30, 30, 30, 0.95);
+  background: rgba(30, 30, 30, 0.95);
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   box-shadow: var(--ypp-shadow-float);
@@ -1933,7 +1919,7 @@ body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: var(--ypp-bg-surface);
+  background: var(--ypp-bg-surface);
   color: var(--ypp-text-secondary);
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-sm);
@@ -1963,7 +1949,7 @@ body.yt-spiral-tube-theme ytd-feed-nudge-renderer {
 
 .ypp-tag-popover {
   position: absolute;
-  background: var(--ypp-bg-glass);
+  background: var(--ypp-bg-glass);
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-md);
   box-shadow: var(--ypp-shadow-float);
@@ -2179,7 +2165,7 @@ body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.85);
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
@@ -2262,7 +2248,7 @@ body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   width: 28px;
   height: 28px;
   border-radius: 8px; /* Squircle */
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
   display: flex;
@@ -2671,7 +2657,7 @@ body.yt-spiral-tube-theme
   font-weight: 500;
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
+  align-items: center;
   margin-right: 8px;
   transition:
     transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -2710,7 +2696,7 @@ body.yt-spiral-tube-theme
 
 .ypp-glass-popover {
   position: absolute;
-  background: var(--ypp-bg-elevated);
+  background: var(--ypp-bg-elevated);
   border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   padding: 16px;
@@ -2913,7 +2899,7 @@ body.yt-spiral-tube-theme ytd-watch-metadata #owner {
   justify-content: space-between !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button {
   margin-left: 20px !important;
   display: flex !important;
   align-items: center !important;
@@ -2921,13 +2907,13 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button {
 
 /* Subscribe Button */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   > ytd-subscribe-button-renderer
   > yt-smartimation
   > div
   > yt-button-shape
   > button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   ytd-button-renderer
   yt-button-shape
   > button {
@@ -2943,13 +2929,13 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   > ytd-subscribe-button-renderer
   > yt-smartimation
   > div
   > yt-button-shape
   > button:hover,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   ytd-button-renderer
   yt-button-shape
   > button:hover {
@@ -2961,22 +2947,22 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
 
 /* Subscribed State */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button {
   background: rgba(255, 255, 255, 0.02) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
   color: var(--ypp-text-secondary, #aaa) !important;
   box-shadow: none !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button:hover {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--ypp-text-primary, #fff) !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content {
@@ -2985,10 +2971,10 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button
 
 /* Actions Menu Container */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions.ytd-watch-metadata,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #top-level-buttons-computed,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #flexible-item-buttons {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions.ytd-watch-metadata,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #top-level-buttons-computed,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #flexible-item-buttons {
   display: flex !important;
   gap: 8px !important;
   align-items: center !important;
@@ -2999,44 +2985,44 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #flexible-item-buttons {
 
 /* Base button container fixes (remove native YouTube backgrounds that cause double layering) */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-button-renderer
   yt-button-shape
   button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
   border: none !important; /* Will be overridden by above specific rules if subscribe */
 }
 
 /* Hide native ripple and dark mode overlay pseudo-elements responsible for the "double view" */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
   display: none !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-button-renderer
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button
@@ -3046,20 +3032,20 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
 
 /* Individual Action Pills (Share, Download, Save, etc.) applying glassmorphism to the outer button structure */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-button-renderer
   yt-button-shape
   > button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   > button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-download-button-renderer
   yt-button-shape-with-explainer
   yt-button-shape
   > button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   > button {
@@ -3079,15 +3065,15 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
     box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-button-renderer
   yt-button-shape
   > button:hover,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-download-button-renderer
   yt-button-shape
   > button:hover,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
   ytd-menu-renderer
   yt-button-shape
   button:hover {
@@ -3100,14 +3086,14 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner
 
 /* Reset background on the container so we can style the inner buttons */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
   background: rgba(255, 255, 255, 0.08) !important;  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 100px !important;
   display: flex !important;
@@ -3119,14 +3105,14 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-but
     box-shadow 0.2s ease !important;
 }
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer:hover {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer:hover {
   background: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Like button side */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
   yt-button-shape:first-child
   button {
   border-radius: 100px 0 0 100px !important;
@@ -3136,7 +3122,7 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-but
 
 /* Dislike button side */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
   yt-button-shape:last-child
   button {
   border-radius: 0 100px 100px 0 !important;
@@ -3147,7 +3133,7 @@ html[data-ypp-ui-style] body.yt-spiral-tube-theme ytd-segmented-like-dislike-but
 
 /* Adjust icons inside buttons */
 
-html[data-ypp-ui-style] body.yt-spiral-tube-theme #actions-inner yt-icon {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-icon {
   width: 20px !important;
   height: 20px !important;
 }
@@ -3421,7 +3407,7 @@ ytd-popup-container ytd-multi-page-menu-renderer {
     display: none;
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.85);
     align-items: center;
     justify-content: center;
     border-radius: 14px;
@@ -3487,7 +3473,7 @@ tp-yt-paper-tab:has([title*="podcast"]) {
     height: 28px !important;
     border-radius: 6px !important;
     border: 2px solid rgba(255,255,255,0.7) !important;
-    background: rgba(0,0,0,0.5) !important;
+    background: rgba(0,0,0,0.5) !important;
     cursor: pointer !important;
     display: flex !important;
     align-items: center !important;
@@ -3682,7 +3668,7 @@ body.ypp-hide-thumbnails ytd-reel-item-renderer:hover {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background: rgba(10, 10, 10, 0.95) !important;
+    background: rgba(10, 10, 10, 0.95) !important;
     z-index: var(--ypp-z-popup) !important;
     display: flex !important;
     align-items: center !important;
@@ -4984,7 +4970,7 @@ body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModel
     margin: 0 !important;
     z-index: 9999 !important;
 }
-body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.75) !important;
     border-radius: 12px !important;
     height: 705px !important;
@@ -5496,65 +5482,65 @@ html body .ypp-hidden-by-pipeline {
 
 
 /* Normalize YouTube Native "Call to Action" Download Button to match standard tonal buttons */
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i],
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[title*="Download" i],
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] {
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i],
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i],
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i],
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i],
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] {
     background-color: var(--yt-spec-button-chip-background-inactive, rgba(255, 255, 255, 0.1)) !important;
     color: var(--yt-spec-text-primary) !important;
     border: none !important;
     border-radius: 100px !important;
 }
 
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[title*="Download" i]:hover,
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[title*="Download" i]:hover {
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i]:hover,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i]:hover {
     background-color: var(--yt-spec-button-chip-background-hover, rgba(255, 255, 255, 0.2)) !important;
     color: var(--yt-spec-text-primary) !important;
 }
 
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-core-image,
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-core-image {
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-core-image,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-core-image {
     fill: var(--yt-spec-text-primary) !important;
 }
 
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
-html:not([data-ypp-ui-style]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content {
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[aria-label*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #actions-inner yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #top-level-buttons-computed yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body #flexible-item-buttons yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-button-shape button[title*="Download" i] .yt-spec-button-shape-next__button-text-content {
     color: var(--yt-spec-text-primary) !important;
 }
 
 
 
 /* Fix huge gaps in Action Bar */
-html[data-ypp-ui-style] body ytd-watch-metadata #actions.ytd-watch-metadata,
-html[data-ypp-ui-style] body ytd-watch-metadata #actions-inner {
+html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata,
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
     justify-content: flex-end !important;
     flex-grow: 1 !important;
     width: auto !important;
 }
-html[data-ypp-ui-style] body ytd-watch-metadata #top-level-buttons-computed,
-html[data-ypp-ui-style] body ytd-watch-metadata #flexible-item-buttons {
+html[data-ypp-ui-design] body ytd-watch-metadata #top-level-buttons-computed,
+html[data-ypp-ui-design] body ytd-watch-metadata #flexible-item-buttons {
     flex: 0 0 auto !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -5563,26 +5549,26 @@ html[data-ypp-ui-style] body ytd-watch-metadata #flexible-item-buttons {
 
 
 /* Universal Action Bar Layout Fix */
-html[data-ypp-ui-style] body ytd-watch-metadata #actions-inner {
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
     justify-content: flex-end !important;
     gap: 8px !important;
     width: 100% !important;
     flex-wrap: nowrap !important;
 }
-html[data-ypp-ui-style] body ytd-watch-metadata #actions-inner > * {
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > * {
     flex-grow: 0 !important;
     flex-shrink: 0 !important;
 }
 /* Hide YouTube's native spacer that separates buttons */
-html[data-ypp-ui-style] body ytd-watch-metadata #actions-inner .spacer,
-html[data-ypp-ui-style] body ytd-watch-metadata #actions-inner > div:empty {
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner .spacer,
+html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > div:empty {
     display: none !important;
     width: 0 !important;
     flex: 0 !important;
 }
 
 
-html[data-ypp-ui-style] body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
+html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
 /* ===================================================================================
    10. EXTENDED COMPONENT COVERAGE
    =================================================================================== */

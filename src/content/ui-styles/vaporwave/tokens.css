@@ -1,6 +1,6 @@
 /* Token Overrides for vaporwave */
 :root[data-ypp-ui-design="vaporwave"],
-html[data-ypp-ui-style="vaporwave"] {
+html[data-ypp-ui-design="vaporwave"] {
   --ypp-bg-surface: #1a0a2e !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="vaporwave"] {
 }
 
 
-html[data-ypp-ui-style="vaporwave"] * {
+html[data-ypp-ui-design="vaporwave"] * {
   font-family: var(--ypp-font-primary, "Syncopate","Audiowide",sans-serif) !important;
 }
 

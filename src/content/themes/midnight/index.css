@@ -1,7 +1,7 @@
 
 
 /* 2. Channel Bar (#owner) */
-html[data-ypp-ui-style="midnight"] #owner {
+html[data-ypp-ui-design="midnight"] #owner {
   background: #000000 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px !important;
@@ -10,18 +10,18 @@ html[data-ypp-ui-style="midnight"] #owner {
   margin-bottom: 16px !important;
 }
 
-html[data-ypp-ui-style="midnight"] #channel-name a {
+html[data-ypp-ui-design="midnight"] #channel-name a {
   color: #ffffff !important;
   font-weight: 700 !important;
 }
 
-html[data-ypp-ui-style="midnight"] #owner-sub-count {
+html[data-ypp-ui-design="midnight"] #owner-sub-count {
   color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* 3. Description Box (Deep Obsidian Card) */
-html[data-ypp-ui-style="midnight"] #description-inner,
-html[data-ypp-ui-style="midnight"] ytd-watch-metadata #description {
+html[data-ypp-ui-design="midnight"] #description-inner,
+html[data-ypp-ui-design="midnight"] ytd-watch-metadata #description {
   background: #080808 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px !important;
@@ -30,14 +30,14 @@ html[data-ypp-ui-style="midnight"] ytd-watch-metadata #description {
   transition: all 0.3s ease !important;
 }
 
-html[data-ypp-ui-style="midnight"] #description-inner:hover,
-html[data-ypp-ui-style="midnight"] ytd-watch-metadata #description:hover {
+html[data-ypp-ui-design="midnight"] #description-inner:hover,
+html[data-ypp-ui-design="midnight"] ytd-watch-metadata #description:hover {
   border-color: rgba(255, 255, 255, 0.28) !important;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05) !important;
 }
 
 /* 4. Comments Section (Midnight AMOLED Cards) */
-html[data-ypp-ui-style="midnight"] #comments {
+html[data-ypp-ui-design="midnight"] #comments {
   background: #000000 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 16px !important;
@@ -45,7 +45,7 @@ html[data-ypp-ui-style="midnight"] #comments {
   margin-top: 24px !important;
 }
 
-html[data-ypp-ui-style="midnight"] ytd-comment-thread-renderer {
+html[data-ypp-ui-design="midnight"] ytd-comment-thread-renderer {
   background: #0d0d0d !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
   border-radius: 12px !important;
@@ -54,7 +54,7 @@ html[data-ypp-ui-style="midnight"] ytd-comment-thread-renderer {
   transition: all 0.3s ease !important;
 }
 
-html[data-ypp-ui-style="midnight"] ytd-comment-thread-renderer:hover {
+html[data-ypp-ui-design="midnight"] ytd-comment-thread-renderer:hover {
   border-color: rgba(255, 255, 255, 0.25) !important;
   background: #151515 !important;
 }

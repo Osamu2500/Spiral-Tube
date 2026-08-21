@@ -356,7 +356,7 @@ export function initComponents(
                   }
                 }
                 st.activeTheme = newTheme;
-                st.premiumTheme = newTheme; // Sync with content script
+                st.premiumTheme = true; // Sync with content script
 
                 chrome.storage.local.set({ settings: st }, () => {
                   applyThemeToPopup(newTheme, customThemesObj, st.nativeThemeMode);

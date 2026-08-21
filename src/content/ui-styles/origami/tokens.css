@@ -1,6 +1,6 @@
 /* Token Overrides for origami */
 :root[data-ypp-ui-design="origami"],
-html[data-ypp-ui-style="origami"] {
+html[data-ypp-ui-design="origami"] {
   --ypp-bg-surface: #fdfdfd !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="origami"] {
 }
 
 
-html[data-ypp-ui-style="origami"] * {
+html[data-ypp-ui-design="origami"] * {
   font-family: var(--ypp-font-primary, "Quicksand","Nunito",sans-serif) !important;
 }
 

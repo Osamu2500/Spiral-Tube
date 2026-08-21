@@ -1,7 +1,7 @@
 
 
 /* 2. Channel Bar (#owner) */
-html[data-ypp-ui-style="sunset"] #owner {
+html[data-ypp-ui-design="sunset"] #owner {
     background: linear-gradient(135deg, rgba(40, 10, 30, 0.85), rgba(26, 11, 26, 0.85)) !important;
     border: 1px solid rgba(255, 107, 107, 0.3) !important;
     border-left: 4px solid #ff6b6b !important;
@@ -11,19 +11,19 @@ html[data-ypp-ui-style="sunset"] #owner {
     margin-bottom: 16px !important;
 }
 
-html[data-ypp-ui-style="sunset"] #channel-name a {
+html[data-ypp-ui-design="sunset"] #channel-name a {
     color: #ffffff !important;
     font-weight: 700 !important;
     text-shadow: 0 0 10px rgba(255, 107, 107, 0.5) !important;
 }
 
-html[data-ypp-ui-style="sunset"] #owner-sub-count {
+html[data-ypp-ui-design="sunset"] #owner-sub-count {
     color: #f8bbd0 !important;
 }
 
 /* 3. Description Box (Sunset Dusk Glass Box) */
-html[data-ypp-ui-style="sunset"] #description-inner,
-html[data-ypp-ui-style="sunset"] ytd-watch-metadata #description {
+html[data-ypp-ui-design="sunset"] #description-inner,
+html[data-ypp-ui-design="sunset"] ytd-watch-metadata #description {
     background: rgba(40, 10, 30, 0.75) !important;
     border: 1px solid rgba(255, 107, 107, 0.3) !important;
     border-radius: 16px !important;
@@ -33,14 +33,14 @@ html[data-ypp-ui-style="sunset"] ytd-watch-metadata #description {
     transition: all 0.3s ease !important;
 }
 
-html[data-ypp-ui-style="sunset"] #description-inner:hover,
-html[data-ypp-ui-style="sunset"] ytd-watch-metadata #description:hover {
+html[data-ypp-ui-design="sunset"] #description-inner:hover,
+html[data-ypp-ui-design="sunset"] ytd-watch-metadata #description:hover {
     border-color: #ff8787 !important;
     box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
 }
 
 /* 4. Comments Section (Sunset Petal Cards) */
-html[data-ypp-ui-style="sunset"] #comments {
+html[data-ypp-ui-design="sunset"] #comments {
     background: rgba(26, 11, 26, 0.8) !important;
     border: 1px solid rgba(255, 107, 107, 0.25) !important;
     border-radius: 16px !important;
@@ -48,7 +48,7 @@ html[data-ypp-ui-style="sunset"] #comments {
     margin-top: 24px !important;
 }
 
-html[data-ypp-ui-style="sunset"] ytd-comment-thread-renderer {
+html[data-ypp-ui-design="sunset"] ytd-comment-thread-renderer {
     background: rgba(40, 10, 30, 0.6) !important;
     border: 1px solid rgba(255, 107, 107, 0.2) !important;
     border-radius: 12px !important;
@@ -57,7 +57,7 @@ html[data-ypp-ui-style="sunset"] ytd-comment-thread-renderer {
     transition: all 0.3s ease !important;
 }
 
-html[data-ypp-ui-style="sunset"] ytd-comment-thread-renderer:hover {
+html[data-ypp-ui-design="sunset"] ytd-comment-thread-renderer:hover {
     border-color: #ff8787 !important;
     background: rgba(50, 15, 38, 0.8) !important;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2) !important;

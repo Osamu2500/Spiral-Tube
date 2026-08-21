@@ -1,6 +1,6 @@
 /* Token Overrides for brutalism */
 :root[data-ypp-ui-design="brutalism"],
-html[data-ypp-ui-style="brutalism"] {
+html[data-ypp-ui-design="brutalism"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,12 +12,17 @@ html[data-ypp-ui-style="brutalism"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="brutalism"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: var(--brutal-white) !important;
   --ypp-bg-global-image: linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px) !important;
   --ypp-bg-global-size: 20px 20px !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

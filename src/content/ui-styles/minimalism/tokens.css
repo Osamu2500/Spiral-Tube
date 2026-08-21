@@ -1,6 +1,6 @@
 /* Token Overrides for minimalism */
 :root[data-ypp-ui-design="minimalism"],
-html[data-ypp-ui-style="minimalism"] {
+html[data-ypp-ui-design="minimalism"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,8 +12,13 @@ html[data-ypp-ui-style="minimalism"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="minimalism"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: #000 !important;
+
 }
-
-

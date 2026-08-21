@@ -1,6 +1,6 @@
 /* Token Overrides for harry-potter */
 :root[data-ypp-ui-design="harry-potter"],
-html[data-ypp-ui-style="harry-potter"] {
+html[data-ypp-ui-design="harry-potter"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -14,6 +14,16 @@ html[data-ypp-ui-style="harry-potter"] {
   
   --yt-font-family: var(--ypp-font-primary,  var(--hp-font-serif)) !important;
 
+  }
+
+
+html[data-ypp-ui-design="harry-potter"] * {
+  font-family: var(--ypp-font-primary,  var(--hp-font-serif)) !important;
+}
+
+
+
+html[data-ypp-theme="harry-potter"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: #090a0e !important;
   --ypp-bg-global-image: radial-gradient(
@@ -50,10 +60,5 @@ html[data-ypp-ui-style="harry-potter"] {
     400px 400px,
     100% 100% !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-
-html[data-ypp-ui-style="harry-potter"] * {
-  font-family: var(--ypp-font-primary,  var(--hp-font-serif)) !important;
-}
-

@@ -1,6 +1,6 @@
 /* Token Overrides for steampunk */
 :root[data-ypp-ui-design="steampunk"],
-html[data-ypp-ui-style="steampunk"] {
+html[data-ypp-ui-design="steampunk"] {
   --ypp-bg-surface: #3b2f2f !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="steampunk"] {
 }
 
 
-html[data-ypp-ui-style="steampunk"] * {
+html[data-ypp-ui-design="steampunk"] * {
   font-family: var(--ypp-font-primary, "Playfair Display","Palatino Linotype",serif) !important;
 }
 

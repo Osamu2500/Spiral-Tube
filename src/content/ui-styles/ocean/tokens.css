@@ -1,6 +1,6 @@
 /* Token Overrides for ocean */
 :root[data-ypp-ui-design="ocean"],
-html[data-ypp-ui-style="ocean"] {
+html[data-ypp-ui-design="ocean"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -18,6 +18,20 @@ html[data-ypp-ui-style="ocean"] {
     "Segoe UI",
     sans-serif !important;
 
+  }
+
+
+html[data-ypp-ui-design="ocean"] * {
+  font-family: "SF Pro Text",
+    "Inter",
+    "Segoe UI Variable Text",
+    "Segoe UI",
+    sans-serif !important;
+}
+
+
+
+html[data-ypp-theme="ocean"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: #001a33 !important;
   --ypp-bg-global-image: radial-gradient(
@@ -32,14 +46,5 @@ html[data-ypp-ui-style="ocean"] {
   --ypp-bg-global-size: 100% 100%,
     100% 100%,
     200px 200px !important;
+
 }
-
-
-html[data-ypp-ui-style="ocean"] * {
-  font-family: "SF Pro Text",
-    "Inter",
-    "Segoe UI Variable Text",
-    "Segoe UI",
-    sans-serif !important;
-}
-

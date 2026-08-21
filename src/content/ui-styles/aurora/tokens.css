@@ -1,6 +1,6 @@
 /* Token Overrides for aurora */
 :root[data-ypp-ui-design="aurora"],
-html[data-ypp-ui-style="aurora"] {
+html[data-ypp-ui-design="aurora"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,11 +12,16 @@ html[data-ypp-ui-style="aurora"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="aurora"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: var(--aurora-bg-void) !important;
   --ypp-bg-global-image: radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.05), transparent 40%),
                     radial-gradient(circle at 85% 30%, rgba(240, 147, 251, 0.05), transparent 40%) !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

@@ -1,6 +1,6 @@
 /* Token Overrides for claymorphism */
 :root[data-ypp-ui-design="claymorphism"],
-html[data-ypp-ui-style="claymorphism"] {
+html[data-ypp-ui-design="claymorphism"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,12 +12,17 @@ html[data-ypp-ui-style="claymorphism"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="claymorphism"] {
   /* Global Background Overrides */
   --ypp-bg-global-image: radial-gradient(at 0% 0%, #fce4f0 0px, transparent 50%),
     radial-gradient(at 100% 0%, #e4f0ff 0px, transparent 50%),
     radial-gradient(at 100% 100%, #f0e8ff 0px, transparent 50%),
     radial-gradient(at 0% 100%, #fef5ff 0px, transparent 50%) !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

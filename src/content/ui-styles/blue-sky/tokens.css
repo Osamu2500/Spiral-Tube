@@ -1,6 +1,6 @@
 /* Token Overrides for blue-sky */
 :root[data-ypp-ui-design="blue-sky"],
-html[data-ypp-ui-style="blue-sky"] {
+html[data-ypp-ui-design="blue-sky"] {
   --ypp-bg-surface: var(--sky-bg-base) !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,6 +12,12 @@ html[data-ypp-ui-style="blue-sky"] {
   --ypp-shadow-base: 0 4px 12px #87CEFA20 !important;
   --ypp-shadow-hover: 0 8px 24px #87CEFA40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="blue-sky"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: #c8e6fa !important;
   --ypp-bg-global-image: radial-gradient(
@@ -42,6 +48,5 @@ html[data-ypp-ui-style="blue-sky"] {
     ) !important;
   --ypp-bg-global-size: 100% 100% !important;
   --ypp-bg-global-attachment: fixed !important;
+
 }
-
-

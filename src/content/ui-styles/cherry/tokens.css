@@ -1,6 +1,6 @@
 /* Token Overrides for cherry */
 :root[data-ypp-ui-design="cherry"],
-html[data-ypp-ui-style="cherry"] {
+html[data-ypp-ui-design="cherry"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -12,8 +12,13 @@ html[data-ypp-ui-style="cherry"] {
   --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
   --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
 
+  }
+
+
+
+
+html[data-ypp-theme="cherry"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: var(--cherry-bg-base) !important;
+
 }
-
-

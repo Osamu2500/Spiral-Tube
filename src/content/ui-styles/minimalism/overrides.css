@@ -270,13 +270,13 @@ html[data-ypp-card-style="minimalism"] yt-error-screen, html[data-ypp-ui-design=
   box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
 }
 
-html[data-ypp-ui-style=minimalism] #frosted-glass.with-chipbar.ytd-app {
+html[data-ypp-ui-design=minimalism] #frosted-glass.with-chipbar.ytd-app {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
 
 /* src/content/themes/ui-styles/minimalism/pages/watch.css */
-html[data-ypp-ui-style=minimalism] video.video-stream.html5-main-video,
-html[data-ypp-ui-style=minimalism] .html5-video-player {
+html[data-ypp-ui-design=minimalism] video.video-stream.html5-main-video,
+html[data-ypp-ui-design=minimalism] .html5-video-player {
   border-radius: var(--ypp-shape-primary, 0) !important;
 }

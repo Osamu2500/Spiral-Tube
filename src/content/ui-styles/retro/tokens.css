@@ -1,6 +1,6 @@
 /* Token Overrides for retro */
 :root[data-ypp-ui-design="retro"],
-html[data-ypp-ui-style="retro"] {
+html[data-ypp-ui-design="retro"] {
   --ypp-bg-surface: transparent !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -14,13 +14,18 @@ html[data-ypp-ui-style="retro"] {
   
   --yt-font-family: var(--ypp-font-primary,  var(--retro-font)) !important;
 
-  /* Global Background Overrides */
-  --ypp-bg-global-color: #008080 !important;
-  --ypp-bg-global-image: none !important;
-}
+  }
 
 
-html[data-ypp-ui-style="retro"] * {
+html[data-ypp-ui-design="retro"] * {
   font-family: var(--ypp-font-primary,  var(--retro-font)) !important;
 }
 
+
+
+html[data-ypp-theme="retro"] {
+  /* Global Background Overrides */
+  --ypp-bg-global-color: #008080 !important;
+  --ypp-bg-global-image: none !important;
+
+}

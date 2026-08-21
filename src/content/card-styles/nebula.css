@@ -1,8 +1,8 @@
-html[data-ypp-ui-style="nebula"] ytd-rich-grid-media,
-html[data-ypp-ui-style="nebula"] ytd-compact-video-renderer,
-html[data-ypp-ui-style="nebula"] ytd-video-renderer,
-html[data-ypp-ui-style="nebula"] ytd-grid-video-renderer,
-html[data-ypp-ui-style="nebula"] ytd-playlist-renderer {
+html[data-ypp-ui-design="nebula"] ytd-rich-grid-media,
+html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="nebula"] ytd-video-renderer,
+html[data-ypp-ui-design="nebula"] ytd-grid-video-renderer,
+html[data-ypp-ui-design="nebula"] ytd-playlist-renderer {
   background: var(--nebula-glass-bg) !important;
   border: 1px solid var(--nebula-glass-border) !important;
   border-radius: var(--nebula-r-lg) !important;
@@ -12,38 +12,38 @@ html[data-ypp-ui-style="nebula"] ytd-playlist-renderer {
   box-shadow: 0 4px 20px rgba(4, 2, 13, 0.4) !important;
 }
 
-html[data-ypp-ui-style="nebula"] ytd-rich-grid-media:hover,
-html[data-ypp-ui-style="nebula"] ytd-compact-video-renderer:hover,
-html[data-ypp-ui-style="nebula"] ytd-video-renderer:hover,
-html[data-ypp-ui-style="nebula"] ytd-grid-video-renderer:hover,
-html[data-ypp-ui-style="nebula"] ytd-playlist-renderer:hover {
+html[data-ypp-ui-design="nebula"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="nebula"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="nebula"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="nebula"] ytd-grid-video-renderer:hover,
+html[data-ypp-ui-design="nebula"] ytd-playlist-renderer:hover {
   background: var(--nebula-glass-bg-hover) !important;
   border-color: var(--nebula-glass-border-hover) !important;
   box-shadow: var(--nebula-glow-cyan), 0 8px 32px rgba(4, 2, 13, 0.6) !important;
   transform: translateY(-6px) !important;
 }
 
-html[data-ypp-ui-style="nebula"] ytd-thumbnail {
+html[data-ypp-ui-design="nebula"] ytd-thumbnail {
   border-radius: var(--nebula-r-md) !important;
   overflow: hidden !important;
 }
 
-html[data-ypp-ui-style="nebula"] #video-title {
+html[data-ypp-ui-design="nebula"] #video-title {
   color: var(--nebula-text-primary) !important;
   font-weight: 600 !important;
 }
 
-html[data-ypp-ui-style="nebula"] ytd-rich-grid-media:hover #video-title {
+html[data-ypp-ui-design="nebula"] ytd-rich-grid-media:hover #video-title {
   color: var(--nebula-accent-cyan) !important;
   text-shadow: 0 0 8px rgba(0, 245, 212, 0.4) !important;
 }
 
-html[data-ypp-ui-style="nebula"] #metadata-line span,
-html[data-ypp-ui-style="nebula"] #channel-name {
+html[data-ypp-ui-design="nebula"] #metadata-line span,
+html[data-ypp-ui-design="nebula"] #channel-name {
   color: var(--nebula-text-secondary) !important;
 }
 
-html[data-ypp-ui-style="nebula"] ytd-thumbnail-overlay-time-status-renderer {
+html[data-ypp-ui-design="nebula"] ytd-thumbnail-overlay-time-status-renderer {
   background: rgba(4, 2, 13, 0.85) !important;
   border: 1px solid var(--nebula-glass-border) !important;
   border-radius: var(--nebula-r-sm) !important;

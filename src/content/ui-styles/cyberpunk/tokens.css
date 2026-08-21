@@ -1,6 +1,6 @@
 /* Token Overrides for cyberpunk */
 :root[data-ypp-ui-design="cyberpunk"],
-html[data-ypp-ui-style="cyberpunk"] {
+html[data-ypp-ui-design="cyberpunk"] {
   --ypp-bg-surface: #050508 !important;
   --ypp-bg-surface-hover: rgba(10,10,15,0.9) !important;
   --ypp-bg-surface-active: rgba(10,10,15,0.9) !important;
@@ -14,15 +14,20 @@ html[data-ypp-ui-style="cyberpunk"] {
   
   --yt-font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
 
+  }
+
+
+html[data-ypp-ui-design="cyberpunk"] * {
+  font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
+}
+
+
+
+html[data-ypp-theme="cyberpunk"] {
   /* Global Background Overrides */
   --ypp-bg-global-color: var(--cyber-bg) !important;
   --ypp-bg-global-image: linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px) !important;
   --ypp-bg-global-size: 60px 60px !important;
+
 }
-
-
-html[data-ypp-ui-style="cyberpunk"] * {
-  font-family: var(--ypp-font-primary, 'Courier New', monospace, sans-serif) !important;
-}
-

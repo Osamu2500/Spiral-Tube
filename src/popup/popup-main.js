@@ -823,6 +823,17 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
 
                 if (key === 'youtubePageTheme' && el.value) {
                     const uiStyle = el.value;
+                    
+                    // Immediately notify content script to change theme for 0 latency
+                    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                        if (tabs[0] && tabs[0].url.includes("youtube.com")) {
+                            chrome.tabs.sendMessage(tabs[0].id, {
+                                type: 'YPP_SET_THEME_IMMEDIATE',
+                                theme: uiStyle
+                            }).catch(() => {}); // ignore errors if content script isn't ready
+                        }
+                    });
+
                     const themeMap = {
                         'default': 'default',
                         'nature': 'forest',

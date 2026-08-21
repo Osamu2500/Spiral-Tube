@@ -1,6 +1,6 @@
 /* Token Overrides for grunge */
 :root[data-ypp-ui-design="grunge"],
-html[data-ypp-ui-style="grunge"] {
+html[data-ypp-ui-design="grunge"] {
   --ypp-bg-surface: #2b2b2b !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="grunge"] {
 }
 
 
-html[data-ypp-ui-style="grunge"] * {
+html[data-ypp-ui-design="grunge"] * {
   font-family: var(--ypp-font-primary, "Special Elite","Courier New",monospace) !important;
 }
 

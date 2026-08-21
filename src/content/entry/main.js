@@ -432,6 +432,11 @@
                 const messageHandler = (request, sender, sendResponse) => {
                     // UPDATE_SETTINGS is now handled exclusively by chrome.storage.onChanged
                     
+                    if (request.type === 'YPP_SET_THEME_IMMEDIATE') {
+                        this.Utils?.log('Immediate theme update received: ' + request.theme, 'MAIN', 'info');
+                        document.documentElement.setAttribute('data-ypp-theme', request.theme);
+                        sendResponse({ success: true });
+                    }
                     if (request.action === 'FORCE_THEME_UPDATE') {
                         this.Utils?.log('Force theme update received', 'MAIN', 'info');
                         const themeManager = this.featureManager?.getFeature('theme');

@@ -1,6 +1,6 @@
 /* Token Overrides for retro-wave */
 :root[data-ypp-ui-design="retro-wave"],
-html[data-ypp-ui-style="retro-wave"] {
+html[data-ypp-ui-design="retro-wave"] {
   --ypp-bg-surface: rgba(255,0,127,0.1) !important;
   --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
   --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
@@ -16,7 +16,7 @@ html[data-ypp-ui-style="retro-wave"] {
 }
 
 
-html[data-ypp-ui-style="retro-wave"] * {
+html[data-ypp-ui-design="retro-wave"] * {
   font-family: var(--ypp-font-primary, "Audiowide","VT323",cursive) !important;
 }
 
