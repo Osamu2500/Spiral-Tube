@@ -5063,26 +5063,25 @@ html[data-ypp-ui-design] body ytd-watch-metadata #flexible-item-buttons {
 
 
 /* Universal Action Bar Layout Fix */
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner {
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner {
     justify-content: flex-end !important;
     gap: 8px !important;
     width: 100% !important;
     flex-wrap: nowrap !important;
 }
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > * {
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner > * {
     flex-grow: 0 !important;
     flex-shrink: 0 !important;
 }
 /* Hide YouTube's native spacer that separates buttons */
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner .spacer,
-html[data-ypp-ui-design] body ytd-watch-metadata #actions-inner > div:empty {
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner .spacer,
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions-inner > div:empty {
     display: none !important;
     width: 0 !important;
     flex: 0 !important;
 }
 
-
-html[data-ypp-ui-design] body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
+html.yt-spiral-tube-theme body ytd-watch-metadata #actions.ytd-watch-metadata { flex-grow: 1 !important; width: 100% !important; justify-content: flex-end !important; }
 /* ===================================================================================
    10. EXTENDED COMPONENT COVERAGE
    =================================================================================== */
