@@ -1,4 +1,4 @@
-﻿
+
 .yt-spiral-tube-theme #guide-button,
 .yt-spiral-tube-theme ytd-masthead #buttons ytd-button-renderer,
 .yt-spiral-tube-theme ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
@@ -41,16 +41,6 @@
   background: transparent;
   border: none;
   margin-right: 16px;
-}
-body.ypp-zen-mode #masthead-container,
-body.ypp-zen-mode ytd-mini-guide-renderer,
-body.ypp-zen-mode ytd-guide-renderer,
-body.ypp-zen-mode #related,
-body.ypp-zen-mode #comments,
-body.ypp-zen-mode #merch-shelf {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
 }
 .ypp-cinema-mode ytd-masthead {
     opacity: 0.4;

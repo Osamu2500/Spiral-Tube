@@ -1,9 +1,4 @@
 
-body.ypp-hide-search-shorts ytd-search ytd-video-renderer:has(a[href^="/shorts/"]),
-body.ypp-hide-search-shorts ytd-search ytd-reel-shelf-renderer,
-body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer) {
-  display: none !important;
-}
 body.ypp-nuke-shorts ytd-rich-section-renderer[is-shorts],
 body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
 body.ypp-nuke-shorts ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
@@ -37,107 +32,6 @@ body.ypp-nuke-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]) {
 .ypp-aggressive-shorts-block ytd-guide-entry-renderer:has(a[title="Shorts"]),
 .ypp-aggressive-shorts-block ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
 .ypp-aggressive-shorts-block yt-tab-shape[tab-title="Shorts"] {
-  display: none !important;
-}
-body.ypp-hide-shorts ytd-reel-shelf-renderer,
-body.ypp-hide-shorts ytd-rich-shelf-renderer[is-shorts],
-body.ypp-hide-shorts ytd-rich-section-renderer[is-shorts],
-body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-shelf-renderer),
-body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-rich-grid-slim-media),
-body.ypp-hide-shorts ytd-rich-section-renderer:has(ytd-reel-item-renderer),
-body.ypp-hide-shorts ytd-rich-section-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon[icon="yt-icons:shorts"]),
-body.ypp-hide-shorts ytd-rich-section-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
-body.ypp-hide-shorts ytd-rich-section-renderer:has([aria-label*="Shorts"]),
-body.ypp-hide-shorts ytd-shelf-renderer[is-shorts],
-body.ypp-hide-shorts [is-shorts],
-body.ypp-hide-shorts ytm-reel-shelf-renderer,
-
-/* --- New Renderer Types (2024+) --- */
-body.ypp-hide-shorts reels-video-with-pill-title-renderer,
-body.ypp-hide-shorts ytd-reel-video-renderer,
-body.ypp-hide-shorts grid-shelf-view-model,
-body.ypp-hide-shorts ytd-reel-item-renderer,
-body.ypp-hide-shorts ytd-rich-grid-slim-media,
-body.ypp-hide-shorts ytd-shorts,
-
-/* --- Individual Shorts Videos (URL Match & Slim Media) --- */
-body.ypp-hide-shorts ytd-rich-item-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-rich-grid-slim-media),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(ytm-reel-item-renderer),
-body.ypp-hide-shorts yt-lockup-view-model:has(a[href*="/shorts"]),
-body.ypp-hide-shorts yt-lockup-view-model:has(ytd-rich-grid-slim-media),
-body.ypp-hide-shorts yt-lockup-view-model:has(ytd-reel-item-renderer),
-body.ypp-hide-shorts yt-lockup-view-model:has(yt-icon[icon="yt-icons:shorts"]),
-body.ypp-hide-shorts yt-lockup-view-model:has(yt-icon-shape[icon="yt-icons:shorts"]),
-body.ypp-hide-shorts ytd-video-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-grid-video-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-compact-video-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-playlist-video-renderer:has(a[href*="/shorts"]),
-
-/* --- Shorts Badge/Label Detection --- */
-body.ypp-hide-shorts ytd-grid-video-renderer:has(span#text[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-compact-video-renderer:has(span[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-video-renderer:has(span[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-video-renderer:has(ytd-badge-supported-renderer[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(ytd-badge-supported-renderer[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(span[aria-label="Shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(yt-icon[icon="yt-icons:shorts"]),
-body.ypp-hide-shorts ytd-rich-item-renderer:has(yt-icon-shape[icon="yt-icons:shorts"]),
-
-/* --- Navigation (Sidebar & Guide) --- */
-body.ypp-hide-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
-body.ypp-hide-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
-
-/* --- Channel Page Tabs --- */
-body.ypp-hide-shorts tp-yt-paper-tab[aria-label="Shorts"],
-body.ypp-hide-shorts tp-yt-paper-tab[tab-title="Shorts"],
-body.ypp-hide-shorts yt-tab-shape[tab-title="Shorts"],
-
-/* --- Search & Chip Filters --- */
-body.ypp-hide-shorts yt-chip-cloud-chip-renderer:has(a[href*="/shorts"]),
-
-/* --- Shelf Title Detection --- */
-body.ypp-hide-shorts ytd-shelf-renderer:has(span#title[aria-label*="Shorts"]),
-body.ypp-hide-shorts ytd-shelf-renderer:has(div#title-container h2 span[aria-label*="Shorts"]),
-body.ypp-hide-shorts ytd-shelf-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-shelf-renderer:has(ytd-icon-button-renderer[aria-label="Shorts"]),
-
-/* --- Watch Page (Secondary Results) --- */
-body.ypp-hide-shorts #related ytd-reel-shelf-renderer,
-body.ypp-hide-shorts #related ytd-compact-video-renderer:has(a[href*="/shorts"]),
-body.ypp-hide-shorts ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
-
-/* --- Subscription Feed --- */
-body.ypp-hide-shorts ytd-rich-section-renderer:has([is-shorts]),
-body.ypp-hide-shorts #grid-container ytd-rich-item-renderer:has(a[href*="/shorts"]),
-
-/* --- Stamped Heuristic Shorts --- */
-body.ypp-hide-shorts [data-ypp-is-short="true"] {
-  display: none !important;
-}
-body.ypp-hide-shorts
-  ytd-item-section-renderer:has(ytd-reel-shelf-renderer):not(
-    :has(*:not(ytd-reel-shelf-renderer))
-  ),
-body.ypp-hide-shorts
-  ytd-item-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]):not(
-    :has(*:not(ytd-rich-shelf-renderer[is-shorts]))
-  ),
-body.ypp-hide-shorts
-  ytd-section-list-renderer:has([is-shorts]):not(:has(*:not([is-shorts]))) {
-  display: none !important;
-}
-body.ypp-hide-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
-body.ypp-hide-shorts
-  ytd-item-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
-body.ypp-hide-shorts
-  ytd-item-section-renderer:has(ytd-shelf-renderer[is-shorts]),
-body.ypp-hide-shorts
-  ytd-item-section-renderer:has(
-    ytd-shelf-renderer span#title[aria-label*="Shorts"]
-  ) {
   display: none !important;
 }
 
@@ -269,12 +163,4 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn:hover {
 body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn.active {
     background: rgba(255, 255, 255, 0.25);
     color: #fff;
-}
-body.ypp-hide-shorts ytd-rich-section-renderer[is-shorts],
-body.ypp-hide-shorts ytd-reel-shelf-renderer,
-body.ypp-hide-shorts ytd-rich-item-renderer:has(a[href^="/shorts/"]),
-body.ypp-hide-shorts ytd-video-renderer:has(a[href^="/shorts/"]),
-body.ypp-hide-shorts ytd-grid-video-renderer:has(a[href^="/shorts/"]),
-body.ypp-hide-shorts ytd-compact-video-renderer:has(a[href^="/shorts/"]) {
-    display: none !important;
 }

@@ -1,11 +1,6 @@
-﻿
+
 html.yt-spiral-tube-theme #guide-wrapper {
   opacity: var(--ypp-sidebar-opacity, 1) !important;
-}
-body.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/trending"]),
-body.ypp-hide-trending ytd-mini-guide-entry-renderer:has(a[href*="/feed/trending"]),
-body.ypp-hide-trending ytd-guide-entry-renderer:has(a[href*="/feed/explore"]) {
-  display: none !important;
 }
 body.ypp-floating-guide ytd-guide-renderer {
   -webkit-backdrop-filter: blur(32px) saturate(1.4) !important;

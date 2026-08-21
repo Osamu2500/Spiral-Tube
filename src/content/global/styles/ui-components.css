@@ -32,27 +32,9 @@ html.yt-spiral-tube-theme #guide-content {
 
 /* Ensure frosted glass doesn't show up as a white bar when scrolling */
 
-body.ypp-hide-explore-topics #frosted-glass.with-chipbar,
-#frosted-glass {
-  display: none !important;
-}
-
-body.ypp-hide-explore-topics ytd-page-manager {
-  margin-top: var(--ytd-masthead-height, 56px) !important;
-}
-
 /* Hide Voice Search */
 
-body.ypp-hide-voice-search #voice-search-button,
-body.ypp-hide-voice-search ytm-voice-search-button-renderer {
-  display: none !important;
-}
-
 /* Hide Shorts Interaction Bar */
-
-body.ypp-hide-shorts-interaction ytd-reel-player-overlay-renderer #actions.ytd-reel-player-overlay-renderer {
-  display: none !important;
-}
 
 /* Hide Shorts in Search Results */
 
@@ -259,67 +241,6 @@ body.ypp-floating-guide ytd-page-manager {
 /* Hide Scrollbar */
 
 /* Hide Scrollbar Globally (Highest Specificity over all UI Styles & Themes) */
-body.ypp-hide-scrollbar,
-body.ypp-hide-scrollbar *,
-html:has(body.ypp-hide-scrollbar),
-html:has(body.ypp-hide-scrollbar) *,
-html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar),
-html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *,
-html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
-html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
-html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
-html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-}
-
-body.ypp-hide-scrollbar::-webkit-scrollbar,
-body.ypp-hide-scrollbar *::-webkit-scrollbar,
-html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
-html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
-html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
-html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
-html[data-ypp-card-style]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
-html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
-html[data-ypp-theme]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
-html[data-ypp-theme]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
-html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar,
-html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar,
-html[data-ypp-ui-design] body.ypp-hide-scrollbar::-webkit-scrollbar,
-html[data-ypp-card-style] body.ypp-hide-scrollbar::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
-}
-
-body.ypp-hide-scrollbar::-webkit-scrollbar-thumb,
-body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
-html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-thumb,
-html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
-html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
-html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
-html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
-html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
-}
-
-body.ypp-hide-scrollbar::-webkit-scrollbar-track,
-body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
-html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-track,
-html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
-html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
-html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
-html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
-html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
-}
 
 /* ===================================================================================
    3. GLOBAL UI ELEMENTS
@@ -372,10 +293,6 @@ body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
 .yt-spiral-tube-theme #avatar-btn yt-img-shadow,
 .yt-spiral-tube-theme #avatar-btn img {
   border-radius: 12px !important;
-}
-
-body.ypp-hide-sidebar #content {
-  margin-left: 0 !important;
 }
 
 /* Header Navigation Group (Header Nav Feature) */
@@ -619,20 +536,6 @@ body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
 }
 
 /* Hidden Short Class */
-
-.ypp-hidden-short {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  position: absolute !important;
-  left: -9999px !important;
-  pointer-events: none !important;
-}
 
 /* [Legacy Search Grid Styles Removed - Consolidated into Section 6] */
 

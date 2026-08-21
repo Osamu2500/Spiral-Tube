@@ -7,31 +7,6 @@ ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer,
 ) {
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
-body.ypp-hide-feed ytd-browse[page-subtype="home"] #primary {
-  display: none !important;
-}
-body.ypp-home-page:not(.cinematic-home).ypp-hide-mixes ytd-rich-item-renderer:has(a[href*='start_radio']),
-body.ypp-home-page:not(.cinematic-home).ypp-hide-mixes ytd-rich-item-renderer:has(a[href*='list=RD']),
-body.ypp-home-page.ypp-hide-mixes ytd-compact-video-renderer:has(a[href*='start_radio']),
-body.ypp-home-page.ypp-hide-mixes ytd-compact-video-renderer:has(a[href*='list=RD']) {
-  display: none !important;
-}
-body.ypp-hide-playlists:not(.cinematic-home) ytd-rich-item-renderer:has(ytd-playlist-thumbnail),
-body.ypp-hide-playlists:not(.cinematic-home) ytd-rich-item-renderer:has(a[href*='list=PL']),
-body.ypp-hide-playlists ytd-compact-video-renderer:has(ytd-playlist-thumbnail),
-body.ypp-hide-playlists ytd-compact-video-renderer:has(a[href*='list=PL']) {
-  display: none !important;
-}
-body:not(.cinematic-home).ypp-hide-podcasts ytd-rich-item-renderer:has(a[href*='/podcast/']),
-body.ypp-hide-podcasts ytd-compact-video-renderer:has(a[href*='/podcast/']) {
-  display: none !important;
-}
-body:not(.cinematic-home).ypp-hide-posts ytd-rich-item-renderer:has(ytd-post-renderer),
-body:not(.cinematic-home).ypp-hide-posts ytd-rich-item-renderer:has(ytd-shared-post-renderer),
-body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-post-renderer),
-body.ypp-hide-posts ytd-rich-section-renderer:has(ytd-shared-post-renderer) {
-  display: none !important;
-}
 body.yt-spiral-tube-theme ytd-video-renderer ytd-menu-renderer,
 body.yt-spiral-tube-theme ytd-playlist-renderer ytd-menu-renderer,
 body.yt-spiral-tube-theme ytd-radio-renderer ytd-menu-renderer,
@@ -170,17 +145,6 @@ body.yt-spiral-tube-theme:not(.ypp-channel-page):not(.cinematic-home) ytd-rich-i
   opacity: 1;
   transform: translateY(0);
 }
-body.ypp-hide-playlists [data-ypp-is-playlist="true"],
-body.ypp-hide-playlists:not(.cinematic-home) ytd-rich-item-renderer:has(ytd-playlist-thumbnail),
-body.ypp-hide-playlists:not(.cinematic-home) ytd-rich-item-renderer:has(a[href*="playlist?list"]),
-body.ypp-hide-playlists 
-ytd-playlist-renderer,
-body.ypp-hide-playlists 
-ytd-radio-renderer,
-body.ypp-hide-playlists
-ytd-compact-playlist-renderer {
-    display: none !important;
-}
 body:not(.cinematic-home) ytd-rich-item-renderer:hover .ypp-ms-checkbox,
 ytd-video-renderer:hover .ypp-ms-checkbox,
 ytd-compact-video-renderer:hover .ypp-ms-checkbox,
@@ -218,7 +182,4 @@ body.cinematic-home ytd-masthead button.yt-icon-button {
 body.cinematic-home ytd-masthead #container {
   --yt-spec-raised-background: transparent !important;
   --yt-spec-base-background: transparent !important;
-}
-body.ypp-hide-feed ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {
-    display: none !important;
 }

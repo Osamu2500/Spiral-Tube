@@ -140,35 +140,8 @@ body.ypp-lightsaber-progress .ytp-scrubber-button {
 }
 
 /* --- Customize Your YouTube --- */
-body.ypp-hide-country-code #country-code {
-  display: none !important;
-}
-body.ypp-hide-thanks-donate button[aria-label="Thanks"],
-body.ypp-hide-thanks-donate #sponsor-button,
-body.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
-body.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
-body.ypp-hide-thanks-donate a[title="Patreon"] {
-  display: none !important;
-}
-body.ypp-hide-player-branding .iv-branding,
-body.ypp-hide-player-branding .annotation-shape {
-  display: none !important;
-}
-body.ypp-hide-useless-guide-links #endpoint[title="Help"],
-body.ypp-hide-useless-guide-links #endpoint[title="Report history"],
-body.ypp-hide-useless-guide-links #endpoint[title="Send feedback"],
-body.ypp-hide-useless-guide-links #guide-content #footer {
-  display: none !important;
-}
 
 /* --- Hide Paid Promotion Banner --- */
-body.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
-body.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
-body.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
-body.ypp-hide-paid-promotion .ytp-paid-content-overlay,
-body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
-  display: none !important;
-}
 
 /* --- Show Live Stream Elapsed Time --- */
 :is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-current,

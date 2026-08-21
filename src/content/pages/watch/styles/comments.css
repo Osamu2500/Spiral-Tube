@@ -1,4 +1,4 @@
-﻿
+
 body.yt-spiral-tube-theme ytd-comment-thread-renderer,
 body.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
   -webkit-backdrop-filter: blur(12px);
@@ -17,8 +17,4 @@ body.yt-spiral-tube-theme
   margin-top: 12px !important;
   padding: 12px 0 0 0 !important;
   border-top: 1px solid var(--ypp-glass-border) !important;
-}
-
-body.ypp-hide-metrics #count.ytd-comments-header-renderer {
-    display: none !important;
 }
