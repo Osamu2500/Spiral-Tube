@@ -9,7 +9,7 @@ html[data-ypp-card-style="woodblock"] {
 }
 html[data-ypp-card-style="woodblock"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model) {
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
   background: var(--ypp-bg-surface, #faf8f0) !important;
   --yt-spec-text-primary: var(--ypp-text-primary, #5c3d1e) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, #8b6914) !important;
@@ -19,7 +19,7 @@ html[data-ypp-card-style="woodblock"] :is(ytd-rich-item-renderer, ytd-video-rend
 }
 html[data-ypp-card-style="woodblock"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model):hover {
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
   background: var(--ypp-bg-surface, #deb887) !important; border-color: #8b4513 !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
@@ -30,3 +30,18 @@ html[data-ypp-card-style="woodblock"] :is(ytd-rich-item-renderer, ytd-video-rend
 }
 html[data-ypp-card-style="woodblock"] ytd-thumbnail { border-radius: 4px !important; border: 2px solid #8b4513 !important; overflow: hidden !important; }
 html[data-ypp-card-style="woodblock"] #mouseover-overlay, html[data-ypp-card-style="woodblock"] ytd-video-preview { display: none !important; }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="woodblock"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - woodblock */
+html[data-ypp-card-style="woodblock"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 12px !important;
+  border: 4px solid #8b4513 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="woodblock"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 8px !important;
+}

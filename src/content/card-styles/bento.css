@@ -31,3 +31,33 @@ html[data-ypp-card-style="bento"] :is(
 html[data-ypp-card-style="bento"] :is(ytd-thumbnail, yt-image) {
     border-radius: 12px !important;
 }
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="bento"] #video-title,
+html[data-ypp-card-style="bento"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="bento"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="bento"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="bento"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="bento"] .ytd-channel-name,
+html[data-ypp-card-style="bento"] #metadata,
+html[data-ypp-card-style="bento"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="bento"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - bento */
+html[data-ypp-card-style="bento"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="bento"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+}

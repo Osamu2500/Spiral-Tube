@@ -27,3 +27,19 @@ html[data-ypp-card-style="sunset"] :is(
 html[data-ypp-card-style="sunset"] :is(ytd-thumbnail, yt-image) {
     border-radius: 14px !important;
 }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="sunset"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - sunset */
+html[data-ypp-card-style="sunset"] #video-title { color: #111111 !important; }
+html[data-ypp-card-style="sunset"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 40px 10px 40px 10px !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="sunset"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 35px 8px 35px 8px !important;
+}

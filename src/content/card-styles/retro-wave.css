@@ -9,7 +9,7 @@ html[data-ypp-card-style="retro-wave"] {
 }
 html[data-ypp-card-style="retro-wave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model) {
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
   background: var(--ypp-bg-surface, #22103c) !important;
   --yt-spec-text-primary: var(--ypp-text-primary, #00ffff) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, #cc66ff) !important;
@@ -19,7 +19,7 @@ html[data-ypp-card-style="retro-wave"] :is(ytd-rich-item-renderer, ytd-video-ren
 }
 html[data-ypp-card-style="retro-wave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model):hover {
+  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
   background: var(--ypp-bg-surface, #2e0f50) !important; border-color: #ff007f !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 0 0 30px rgba(255,0,127,0.8),0 0 60px rgba(0,255,255,0.3) !important;
@@ -30,3 +30,18 @@ html[data-ypp-card-style="retro-wave"] :is(ytd-rich-item-renderer, ytd-video-ren
 }
 html[data-ypp-card-style="retro-wave"] ytd-thumbnail { border-radius: 8px !important; border: 2px solid #ff007f !important; overflow: hidden !important; }
 html[data-ypp-card-style="retro-wave"] #mouseover-overlay, html[data-ypp-card-style="retro-wave"] ytd-video-preview { display: none !important; }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="retro-wave"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - retro-wave */
+html[data-ypp-card-style="retro-wave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 8px !important;
+  border: 2px solid #ff00ff !important;
+  box-shadow: 4px 4px 0px #00ffff !important;
+}
+html[data-ypp-card-style="retro-wave"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 4px !important;
+}

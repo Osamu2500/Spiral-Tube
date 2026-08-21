@@ -236,3 +236,35 @@ html[data-ypp-card-style='folder']
   ):nth-child(6n + 6)::before {
   --ypp-folder-tab: #ec4899;
 }
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="folder"] #video-title,
+html[data-ypp-card-style="folder"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="folder"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="folder"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="folder"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="folder"] .ytd-channel-name,
+html[data-ypp-card-style="folder"] #metadata,
+html[data-ypp-card-style="folder"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="folder"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - folder */
+html[data-ypp-card-style="folder"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) { border-top-left-radius: 40px !important; }
+html[data-ypp-card-style="folder"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) { border-top-left-radius: 36px !important; }
+html[data-ypp-card-style="folder"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="folder"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+}

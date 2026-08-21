@@ -121,3 +121,35 @@ html[data-ypp-card-style='crystal-glass']
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="crystal-glass"] #video-title,
+html[data-ypp-card-style="crystal-glass"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="crystal-glass"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="crystal-glass"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="crystal-glass"] .ytd-channel-name,
+html[data-ypp-card-style="crystal-glass"] #metadata,
+html[data-ypp-card-style="crystal-glass"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="crystal-glass"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - crystal-glass */
+html[data-ypp-card-style="crystal-glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) { backdrop-filter: blur(24px) !important; }
+html[data-ypp-card-style="crystal-glass"] #video-title { text-shadow: 0 0 8px rgba(255,255,255,0.5) !important; }
+html[data-ypp-card-style="crystal-glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.2) !important;
+}
+html[data-ypp-card-style="crystal-glass"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+}

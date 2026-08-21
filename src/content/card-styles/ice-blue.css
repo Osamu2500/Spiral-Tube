@@ -28,3 +28,19 @@ html[data-ypp-card-style="ice-blue"] :is(ytd-thumbnail, yt-image) {
     border-radius: 0 !important;
     filter: brightness(1.1) contrast(1.1) !important; /* Frost effect on images */
 }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="ice-blue"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - ice-blue */
+html[data-ypp-card-style="ice-blue"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #e0f7fa !important;
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="ice-blue"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 4px !important;
+}

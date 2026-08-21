@@ -14,7 +14,7 @@ html[data-ypp-card-style='immersive-glass'] .ypp-grid-item {
 
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-video-renderer,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-playlist-renderer,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model,
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-radio-renderer,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-channel-renderer,
 html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer {
@@ -28,7 +28,7 @@ html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer > #content,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode ytd-video-renderer,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-video-renderer,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-playlist-renderer,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model,
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-radio-renderer,
 html[data-ypp-card-style='immersive-glass']
   body.ypp-search-list-mode
@@ -52,13 +52,13 @@ html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode ytd-radio-
 html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer,
 html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer #dismissible,
 html[data-ypp-card-style='immersive-glass'] ytd-grid-video-renderer #dismissible,
-/* Scoped yt-lockup-view-model — ONLY inside known video card containers */
-html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] ytd-grid-video-renderer yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] #related yt-lockup-view-model {
+/* Scoped yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) — ONLY inside known video card containers */
+html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] ytd-grid-video-renderer yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] #related yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) {
   position: relative !important;
   width: 100% !important; /* Fix search grid collapsing */
   border-radius: 20px !important;
@@ -83,9 +83,9 @@ html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode ytd-playli
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode ytd-radio-renderer:hover,
 html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer:hover #dismissible,
 html[data-ypp-card-style='immersive-glass'] ytd-grid-video-renderer:hover #dismissible,
-html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer:hover yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode *:hover > yt-lockup-view-model,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode *:hover > yt-lockup-view-model {
+html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer:hover yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode *:hover > yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode *:hover > yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) {
   transform: none !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
 }
@@ -110,7 +110,7 @@ html[data-ypp-card-style='immersive-glass']
   ytd-playlist-thumbnail,
 html[data-ypp-card-style='immersive-glass']
   body.ypp-search-list-mode
-  yt-lockup-view-model
+  yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
   ytd-thumbnail,
 html[data-ypp-card-style='immersive-glass']
   body.ypp-search-list-mode
@@ -135,7 +135,7 @@ html[data-ypp-card-style='immersive-glass'] body.ypp-search-grid-mode ytd-video-
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-video-renderer ytd-thumbnail img,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-playlist-renderer ytd-thumbnail img,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-playlist-renderer ytd-playlist-thumbnail img,
-html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model ytd-thumbnail img,
+html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) ytd-thumbnail img,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-radio-renderer ytd-thumbnail img,
 html[data-ypp-card-style='immersive-glass'] body.ypp-search-list-mode ytd-channel-renderer ytd-thumbnail img,
 html[data-ypp-card-style='immersive-glass'] ytd-compact-video-renderer ytd-thumbnail img,
@@ -173,7 +173,7 @@ html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer a#thumbnail,
 html[data-ypp-card-style='immersive-glass'] ytd-grid-video-renderer a#thumbnail,
 html[data-ypp-card-style='immersive-glass'] ytd-rich-item-renderer a#video-title-link,
 html[data-ypp-card-style='immersive-glass'] ytd-grid-video-renderer a#video-title-link,
-html[data-ypp-card-style='immersive-glass'] .yt-lockup-view-model-wiz__url {
+html[data-ypp-card-style='immersive-glass'] .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__url {
   position: relative !important;
   z-index: 1 !important;
 }
@@ -845,7 +845,7 @@ html[data-ypp-card-style='immersive-glass']
   ytd-compact-video-renderer,
 html[data-ypp-card-style='immersive-glass']
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  yt-lockup-view-model {
+  yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) {
   margin-bottom: 24px !important;
 }
 
@@ -1251,4 +1251,9 @@ html[data-ypp-card-style='immersive-glass'] ytd-inline-preview-ui .ytp-inline-pr
 /* Also target the outer container just in case YouTube uses a different wrapper for controls */
 html[data-ypp-card-style='immersive-glass'] ytd-inline-preview-ui {
   padding-top: 48px !important;
+}
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="immersive-glass"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
 }

@@ -237,3 +237,33 @@ html[data-ypp-card-style='winter']
     0 0 20px rgba(255, 255, 255, 0.4) !important;
   border-top: 2px solid #ffffff !important;
 }
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="winter"] #video-title,
+html[data-ypp-card-style="winter"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="winter"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="winter"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="winter"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="winter"] .ytd-channel-name,
+html[data-ypp-card-style="winter"] #metadata,
+html[data-ypp-card-style="winter"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="winter"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - winter */
+html[data-ypp-card-style="winter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 0px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="winter"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 0px !important;
+}

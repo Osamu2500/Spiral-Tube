@@ -51,3 +51,20 @@ html[data-ypp-ui-design="deepspace"] ytd-thumbnail-overlay-time-status-renderer 
   font-size: 12px !important;
   letter-spacing: 0.5px !important;
 }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="deepspace"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - deepspace */
+html[data-ypp-card-style="deepspace"] #video-title { color: #ffffff !important; text-shadow: 0 0 5px #ffffff !important; }
+html[data-ypp-card-style="deepspace"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #050510 !important;
+  border-radius: 24px !important;
+  border: 1px solid #8a2be2 !important;
+  box-shadow: 0 0 15px #8a2be2 !important;
+}
+html[data-ypp-card-style="deepspace"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 20px !important;
+}

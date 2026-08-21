@@ -137,3 +137,35 @@ html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-styl
 html[data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'] ytd-video-preview {
   display: none !important;
 }
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="abyss"] #video-title,
+html[data-ypp-card-style="abyss"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="abyss"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #ffffff !important;
+}
+
+html[data-ypp-card-style="abyss"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="abyss"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="abyss"] .ytd-channel-name,
+html[data-ypp-card-style="abyss"] #metadata,
+html[data-ypp-card-style="abyss"] #metadata-line span {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+html[data-ypp-card-style="abyss"] yt-icon.ytd-badge-supported-renderer {
+    color: rgba(255,255,255,0.7) !important;
+    fill: rgba(255,255,255,0.7) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - abyss */
+html[data-ypp-card-style="abyss"] #video-title { color: #ffffff !important; text-shadow: 0 0 5px #ffffff !important; }
+html[data-ypp-card-style="abyss"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  background: #050510 !important;
+  border-radius: 24px !important;
+  border: 1px solid #8a2be2 !important;
+  box-shadow: 0 0 15px #8a2be2 !important;
+}
+html[data-ypp-card-style="abyss"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 20px !important;
+}

@@ -74,9 +74,7 @@ export function initComponents(
       {
         name: t('core_colors'),
         themes: [
-          { key: 'ocean', label: t('ocean_blue'), meta: t('deep_blue'), color: '#051421' },
-          { key: 'forest', label: t('forest'), meta: t('green'), color: '#0f1c15' },
-          { key: 'cherry', label: t('cherry'), meta: t('pink'), color: '#26181b' },
+          { key: 'ocean', label: t('ocean_blue'), meta: t('deep_blue'), color: '#051421' },{ key: 'cherry', label: t('cherry'), meta: t('pink'), color: '#26181b' },
           { key: 'kawaii', label: t('kawaii'), meta: t('pink_cute'), color: '#fff1f4' },
           { key: 'coffee', label: t('coffee'), meta: t('latte'), color: '#2a201c' },
           { key: 'bloodmoon', label: t('blood_moon'), meta: t('crimson'), color: '#1a0505' },
@@ -169,9 +167,7 @@ export function initComponents(
           { key: 'y2k', label: 'Y2K', meta: 'Late 90s', color: '#e6e6fa' },
           { key: 'steampunk', label: 'Steampunk', meta: 'Brass & Copper', color: '#f5deb3' },
           { key: 'origami', label: 'Origami', meta: 'Paper Folds', color: '#fdfbf7' },
-          { key: 'gothic', label: 'Gothic', meta: 'Dark Arches', color: '#121212' },
-          { key: 'anime', label: 'Anime', meta: 'Manga & Sakura', color: '#fff0f8' },
-          { key: 'woodblock', label: 'Woodblock', meta: 'Ukiyo-e Art', color: '#f5e6c8' },
+          { key: 'gothic', label: 'Gothic', meta: 'Dark Arches', color: '#121212' },{ key: 'woodblock', label: 'Woodblock', meta: 'Ukiyo-e Art', color: '#f5e6c8' },
           { key: 'grunge', label: 'Grunge', meta: 'Zine & Torn', color: '#1c1c1c' },
           { key: 'galaxy', label: 'Galaxy', meta: 'Deep Space', color: '#03001c' },
           { key: 'aurora', label: 'Aurora', meta: 'Northern Lights', color: '#0f172a' }

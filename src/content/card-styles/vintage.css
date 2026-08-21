@@ -138,3 +138,18 @@ html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-styl
 html[data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'] ytd-video-preview {
   display: none !important;
 }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="vintage"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - vintage */
+html[data-ypp-card-style="vintage"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="vintage"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 8px !important;
+}

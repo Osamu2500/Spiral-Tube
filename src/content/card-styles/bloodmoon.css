@@ -22,3 +22,18 @@ html[data-ypp-card-style="bloodmoon"] :is(ytd-thumbnail, yt-image) {
     border-radius: 4px !important;
     filter: sepia(0.3) hue-rotate(-30deg) saturate(1.5) !important; /* Blood tint on images */
 }
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="bloodmoon"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - bloodmoon */
+html[data-ypp-card-style="bloodmoon"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 16px !important;
+  border: 1px solid #ff0000 !important;
+  box-shadow: 0 0 20px rgba(255,0,0,0.4) !important;
+}
+html[data-ypp-card-style="bloodmoon"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+}

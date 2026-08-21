@@ -836,7 +836,6 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
 
                     const themeMap = {
                         'default': 'default',
-                        'nature': 'forest',
                         'liquid-glass': 'default',
                         'neumorphic': 'default'
                     };
@@ -850,7 +849,6 @@ const initUniversalListeners = (document, state, UI, saveSettings) => {
                         const cardStyleMap = {
                             'default': 'default',
                             'liquid-glass': 'glass',
-                            'forest': 'nature',
                             'technozen': 'minimalist'
                         };
                         const mappedCardStyle = cardStyleMap[uiStyle] || uiStyle;

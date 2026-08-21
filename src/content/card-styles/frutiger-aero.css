@@ -134,7 +134,7 @@ html[data-ypp-card-style='frutiger-aero']
 /* ── Thumbnails ───────────────────────────────────────────── */
 html[data-ypp-card-style='frutiger-aero'] ytd-thumbnail,
 html[data-ypp-card-style='frutiger-aero'] yt-image,
-html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model-wiz__image {
+html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__image {
   border-radius: 16px !important;
   overflow: hidden !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
@@ -143,13 +143,13 @@ html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model-wiz__image {
 
 /* ── Text overrides — dark text on light Aero bg ──────────── */
 html[data-ypp-card-style='frutiger-aero']
-  :is(ytd-rich-item-renderer,ytd-video-renderer,ytd-compact-video-renderer,ytd-grid-video-renderer,.ypp-grid-item,yt-lockup-view-model)
+  :is(ytd-rich-item-renderer,ytd-video-renderer,ytd-compact-video-renderer,ytd-grid-video-renderer,.ypp-grid-item,yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *))
   #video-title,
 html[data-ypp-card-style='frutiger-aero']
   :is(ytd-rich-item-renderer,ytd-video-renderer,ytd-compact-video-renderer)
   h3 a,
-html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model-wiz__title,
-html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model-wiz__title a {
+html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__title,
+html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__title a {
   color: #000000 !important;
   text-shadow: none !important;
 }
@@ -160,7 +160,7 @@ html[data-ypp-card-style='frutiger-aero']
 html[data-ypp-card-style='frutiger-aero']
   :is(ytd-rich-item-renderer,ytd-video-renderer,ytd-compact-video-renderer,ytd-grid-video-renderer)
   #channel-name a,
-html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model-wiz__author,
+html[data-ypp-card-style='frutiger-aero'] .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)-wiz__author,
 html[data-ypp-card-style='frutiger-aero'] .yt-lockup-metadata-view-model-wiz__byline-text {
   color: #1a3a5c !important;
 }
@@ -178,4 +178,34 @@ html[data-ypp-card-style='frutiger-aero']
 html[data-ypp-card-style='frutiger-aero'] ytd-thumbnail-overlay-time-status-renderer span,
 html[data-ypp-card-style='frutiger-aero'] .ytd-thumbnail-overlay-time-status-renderer span {
   color: #ffffff !important;
+}
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="frutiger-aero"] #video-title,
+html[data-ypp-card-style="frutiger-aero"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="frutiger-aero"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="frutiger-aero"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="frutiger-aero"] .ytd-channel-name,
+html[data-ypp-card-style="frutiger-aero"] #metadata,
+html[data-ypp-card-style="frutiger-aero"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="frutiger-aero"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - frutiger-aero */
+html[data-ypp-card-style="frutiger-aero"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="frutiger-aero"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 8px !important;
 }

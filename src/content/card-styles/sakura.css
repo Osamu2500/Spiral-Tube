@@ -138,3 +138,33 @@ html[data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-styl
 html[data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'] ytd-video-preview {
   display: none !important;
 }
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="sakura"] #video-title,
+html[data-ypp-card-style="sakura"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="sakura"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="sakura"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="sakura"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="sakura"] .ytd-channel-name,
+html[data-ypp-card-style="sakura"] #metadata,
+html[data-ypp-card-style="sakura"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="sakura"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - sakura */
+html[data-ypp-card-style="sakura"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 30px 0px 30px 0px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="sakura"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 30px 0px 30px 0px !important;
+}

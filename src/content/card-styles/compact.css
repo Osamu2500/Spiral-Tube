@@ -10,12 +10,33 @@ html[data-ypp-card-style="compact"] :is(
 html[data-ypp-card-style="compact"] :is(ytd-thumbnail, yt-image) {
     border-radius: 4px !important;
 }
-html[data-ypp-card-style="compact"] #video-title {
-    font-size: 12px !important;
-    -webkit-line-clamp: 2 !important;
-    line-clamp: 2 !important;
-    margin-top: 4px !important;
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="compact"] #video-title,
+html[data-ypp-card-style="compact"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="compact"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
 }
-html[data-ypp-card-style="compact"] #metadata-line {
-    font-size: 10px !important;
+
+html[data-ypp-card-style="compact"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="compact"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="compact"] .ytd-channel-name,
+html[data-ypp-card-style="compact"] #metadata,
+html[data-ypp-card-style="compact"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="compact"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
+}
+
+/* GLOBAL REDESIGN INJECT - compact */
+html[data-ypp-card-style="compact"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 12px !important;
+  border: 1px solid var(--yt-spec-10-percent-layer, rgba(0,0,0,0.1)) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+}
+html[data-ypp-card-style="compact"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 8px !important;
 }

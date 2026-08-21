@@ -1,8 +1,8 @@
-html[data-ypp-theme="christmas"] ytd-rich-item-renderer,
-html[data-ypp-theme="christmas"] ytd-video-renderer,
-html[data-ypp-theme="christmas"] ytd-compact-video-renderer,
-html[data-ypp-theme="christmas"] ytd-grid-video-renderer,
-html[data-ypp-theme="christmas"] ytd-playlist-renderer {
+html[data-ypp-card-style="christmas"] ytd-rich-item-renderer,
+html[data-ypp-card-style="christmas"] ytd-video-renderer,
+html[data-ypp-card-style="christmas"] ytd-compact-video-renderer,
+html[data-ypp-card-style="christmas"] ytd-grid-video-renderer,
+html[data-ypp-card-style="christmas"] ytd-playlist-renderer {
   background: linear-gradient(145deg, rgba(32, 58, 67, 0.6), rgba(15, 32, 39, 0.8)) !important;
   border: 1px solid var(--christmas-glass-border) !important;
   border-radius: var(--christmas-shape-card) !important;
@@ -11,38 +11,53 @@ html[data-ypp-theme="christmas"] ytd-playlist-renderer {
   box-sizing: border-box !important;
 }
 
-html[data-ypp-theme="christmas"] ytd-rich-grid-media:hover,
-html[data-ypp-theme="christmas"] ytd-compact-video-renderer:hover,
-html[data-ypp-theme="christmas"] ytd-video-renderer:hover,
-html[data-ypp-theme="christmas"] ytd-grid-video-renderer:hover,
-html[data-ypp-theme="christmas"] ytd-playlist-renderer:hover {
+html[data-ypp-card-style="christmas"] ytd-rich-grid-media:hover,
+html[data-ypp-card-style="christmas"] ytd-compact-video-renderer:hover,
+html[data-ypp-card-style="christmas"] ytd-video-renderer:hover,
+html[data-ypp-card-style="christmas"] ytd-grid-video-renderer:hover,
+html[data-ypp-card-style="christmas"] ytd-playlist-renderer:hover {
   background: var(--christmas-glass-bg-hover) !important;
   border-color: rgba(255, 255, 255, 0.3) !important;
   box-shadow: var(--christmas-snow-shadow), var(--christmas-glow-gold) !important;
 }
 
-html[data-ypp-theme="christmas"] ytd-thumbnail {
+html[data-ypp-card-style="christmas"] ytd-thumbnail {
   border-radius: var(--christmas-r-sm) !important;
   overflow: hidden !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
 }
 
-html[data-ypp-theme="christmas"] #video-title {
+html[data-ypp-card-style="christmas"] #video-title {
   color: var(--christmas-text-primary) !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
 }
 
-html[data-ypp-theme="christmas"] #metadata-line span,
-html[data-ypp-theme="christmas"] #channel-name {
+html[data-ypp-card-style="christmas"] #metadata-line span,
+html[data-ypp-card-style="christmas"] #channel-name {
   color: var(--christmas-text-secondary) !important;
 }
 
-html[data-ypp-theme="christmas"] ytd-thumbnail-overlay-time-status-renderer {
+html[data-ypp-card-style="christmas"] ytd-thumbnail-overlay-time-status-renderer {
   background: rgba(0, 0, 0, 0.7) !important;
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
   border-radius: var(--christmas-r-sm) !important;
   color: #fff !important;
   font-weight: 700 !important;
+}
+
+/* Safe Visibility Text Shadow */
+html[data-ypp-card-style="christmas"] #video-title {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* GLOBAL REDESIGN INJECT - christmas */
+html[data-ypp-card-style="christmas"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+html[data-ypp-card-style="christmas"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
 }

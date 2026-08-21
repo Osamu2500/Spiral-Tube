@@ -3,11 +3,12 @@ html[data-ypp-card-style="polaroid"] :is(
     ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
     ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item
 ) {
-  background: var(--ypp-bg-surface, #ffffff) !important;
+  /* Extract dominant colors from YouTube ambient variables if available, otherwise classic polaroid white */
+  background: var(--yt-video-dominant-color, var(--yt-spec-brand-background-solid, var(--ypp-bg-surface, #ffffff))) !important;
   border-radius: 4px !important;
   padding: 8px 8px 32px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid var(--yt-video-dominant-color, rgba(0, 0, 0, 0.05)) !important;
   transform: rotate(1deg) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
@@ -33,9 +34,23 @@ html[data-ypp-card-style="polaroid"] :is(ytd-thumbnail, yt-image) {
 }
 
 /* Handwritten Video Titles */
-html[data-ypp-card-style="polaroid"] #video-title {
-  font-size: 14px !important;
-  color: #1a1a1a !important;
-  margin-top: 12px !important;
-  font-weight: bold !important;
+
+/* Text Visibility Overrides */
+html[data-ypp-card-style="polaroid"] #video-title,
+html[data-ypp-card-style="polaroid"] .yt-core-attributed-string--link-inherit-color,
+html[data-ypp-card-style="polaroid"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
+    color: #111111 !important;
+}
+
+html[data-ypp-card-style="polaroid"] ytd-channel-name .yt-core-attributed-string,
+html[data-ypp-card-style="polaroid"] #metadata-line .yt-core-attributed-string,
+html[data-ypp-card-style="polaroid"] .ytd-channel-name,
+html[data-ypp-card-style="polaroid"] #metadata,
+html[data-ypp-card-style="polaroid"] #metadata-line span {
+    color: #606060 !important;
+}
+
+html[data-ypp-card-style="polaroid"] yt-icon.ytd-badge-supported-renderer {
+    color: #606060 !important;
+    fill: #606060 !important;
 }
