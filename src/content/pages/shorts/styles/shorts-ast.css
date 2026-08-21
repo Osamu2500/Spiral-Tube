@@ -58,12 +58,12 @@ body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer {
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-toggle-button-renderer,
-body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
     margin-bottom: 12px !important;
     transition: transform 0.2s ease !important;
 }
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-toggle-button-renderer:hover,
-body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
     transform: scale(1.1) !important;
 }
 body.ypp-shorts-page .overlay.ytd-reel-video-renderer {

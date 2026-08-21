@@ -49,7 +49,7 @@ yt-button-shape button[aria-label*="Download" i],
 yt-button-shape button[title*="Download" i],
 yt-button-view-model button[aria-label*="Download" i],
 yt-button-view-model button[title*="Download" i],
-ytd-download-button-renderer button,
+:is(ytd-download-button-renderer, yt-button-view-model) button,
 yt-download-button-view-model button {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   background-color: transparent !important;
@@ -68,7 +68,7 @@ yt-button-shape button[aria-label*="Download" i]:hover,
 yt-button-shape button[title*="Download" i]:hover,
 yt-button-view-model button[aria-label*="Download" i]:hover,
 yt-button-view-model button[title*="Download" i]:hover,
-ytd-download-button-renderer button:hover,
+:is(ytd-download-button-renderer, yt-button-view-model) button:hover,
 yt-download-button-view-model button:hover {
   background: var(--ypp-surface-bg-hover) !important;
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.1), var(--ypp-shadow-hover) !important;

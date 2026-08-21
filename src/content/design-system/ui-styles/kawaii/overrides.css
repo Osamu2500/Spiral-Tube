@@ -247,8 +247,8 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-button-renderer,
-html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
+html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 28px) !important;
@@ -3876,13 +3876,13 @@ html[data-ypp-ui-design="kawaii"] .ytd-shopping-carousel-item-renderer:hover img
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-design="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="kawaii"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-design="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -4022,16 +4022,16 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions {
 }
 
 /* Individual Action Buttons */
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-button-renderer,
+html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer,
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-button-renderer,
+html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer {
   transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-button-renderer:hover,
+html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover,
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover,
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-button-renderer:hover,
+html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover,
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover {
   transform: scale(1.15) !important;
 }
@@ -4074,13 +4074,13 @@ html[data-ypp-ui-design="kawaii"] .yt-progress-bar {
 }
 
 /* Edit Video / Studio Action Bar */
-html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer ytd-button-renderer,
-html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer ytd-button-renderer {
+html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model),
+html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer ytd-button-renderer:hover,
-html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer ytd-button-renderer:hover {
+html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model):hover,
+html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
   transform: translateY(-3px) !important;
   box-shadow: 0 4px 10px rgba(196,245,214,0.6) !important;
 }
@@ -4098,3 +4098,4 @@ html[data-ypp-ui-design="kawaii"] #secondary-inner.ytd-watch-flexy {
     backdrop-filter: blur(8px) !important;
   border-radius: var(--ypp-shape-primary, var(--kawaii-r-lg)) !important;
 }
+

@@ -171,7 +171,7 @@ html[data-ypp-ui-design="y2k"] ytd-thumbnail-overlay-toggle-button-renderer {
 html[data-ypp-ui-design="y2k"] .yt-chip-shape,
 html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="y2k"] .yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-design="y2k"] ytd-button-renderer,
+html[data-ypp-ui-design="y2k"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="y2k"] button.ytSpecButtonShapeNextTonal,
 html[data-ypp-ui-design="y2k"] button.ytSpecButtonShapeNextText ,
 html[data-ypp-ui-design="y2k"] yt-button-shape button[aria-label*="Download" i],
@@ -2436,12 +2436,12 @@ html[data-ypp-ui-design="y2k"] ytd-reel-video-renderer {
   box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
 }
 
-html[data-ypp-ui-design="y2k"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+html[data-ypp-ui-design="y2k"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 15px rgba(255,105,180,0.4) !important;
 }
 
-html[data-ypp-ui-design="y2k"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+html[data-ypp-ui-design="y2k"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
   box-shadow: 0 0 25px rgba(255,105,180,0.6),0 0 50px rgba(147,112,219,0.3) !important;
   transform: scale(1.1) !important;
 }

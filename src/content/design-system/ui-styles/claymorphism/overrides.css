@@ -12,7 +12,7 @@ html[data-ypp-theme="claymorphism"] ::-webkit-scrollbar-thumb {
 
 /* === Shape wrappers only === */
 html[data-ypp-theme="claymorphism"] yt-button-shape,
-html[data-ypp-theme="claymorphism"] ytd-button-renderer {
+html[data-ypp-theme="claymorphism"] :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, var(--ypp-shape-btn)) !important;
 }
 

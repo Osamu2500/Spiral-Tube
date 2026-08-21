@@ -58,8 +58,8 @@ html[data-ypp-ui-design="fluent"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer ytd-button-renderer,
-html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
+html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
@@ -673,13 +673,13 @@ html[data-ypp-ui-design="fluent"] .ytd-shopping-carousel-item-renderer:hover img
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="fluent"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="fluent"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-design="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="fluent"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="fluent"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-design="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }

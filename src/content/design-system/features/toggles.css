@@ -57,17 +57,17 @@ html.yt-spiral-tube-theme #guide-content {
 /* 1. Hide from top-level row */
 ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Save" i]),
 ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Save" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[aria-label*="Save" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[title*="Save" i]),
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Save" i]),
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Save" i]),
 ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Download" i]),
 ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Download" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[aria-label*="Download" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[title*="Download" i]),
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Download" i]),
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Download" i]),
 ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[aria-label*="Ask" i]),
 ytd-watch-metadata #top-level-buttons-computed > yt-button-view-model:has(button[title*="Ask" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[aria-label*="Ask" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-button-renderer:has(button[title*="Ask" i]),
-ytd-watch-metadata #top-level-buttons-computed > ytd-download-button-renderer,
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[aria-label*="Ask" i]),
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-button-renderer, yt-button-view-model):has(button[title*="Ask" i]),
+ytd-watch-metadata #top-level-buttons-computed > :is(ytd-download-button-renderer, yt-button-view-model),
 ytd-watch-metadata #top-level-buttons-computed > yt-download-button-view-model {
     display: none !important;
 }
@@ -2130,7 +2130,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   > yt-button-shape
   > button,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
-  ytd-button-renderer
+  :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
@@ -2152,7 +2152,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
   > yt-button-shape
   > button:hover,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
-  ytd-button-renderer
+  :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button:hover {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)) !important;
@@ -2164,7 +2164,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
 /* Subscribed State */
 
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button {
   background: rgba(255, 255, 255, 0.02) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
   color: var(--ypp-text-secondary, #aaa) !important;
@@ -2172,7 +2172,7 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-
 }
 
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
-html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button:hover {
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button :is(ytd-button-renderer, yt-button-view-model).style-text yt-button-shape > button:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   color: var(--ypp-text-primary, #fff) !important;
@@ -2202,11 +2202,11 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #flexible-item-buttons {
 /* Base button container fixes (remove native YouTube backgrounds that cause double layering) */
 
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-button-renderer
+  :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   button,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-download-button-renderer
+  :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   button,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
@@ -2229,12 +2229,12 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-touch-fe
 }
 
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-button-renderer
+  :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-download-button-renderer
+  :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   button
   .yt-spec-button-shape-next__button-text-content,
@@ -2249,15 +2249,15 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
 /* Individual Action Pills (Share, Download, Save, etc.) applying glassmorphism to the outer button structure */
 
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-button-renderer
+  :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-download-button-renderer
+  :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   > button,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-download-button-renderer
+  :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape-with-explainer
   yt-button-shape
   > button,
@@ -2282,11 +2282,11 @@ html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
 }
 
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-button-renderer
+  :is(ytd-button-renderer, yt-button-view-model)
   yt-button-shape
   > button:hover,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
-  ytd-download-button-renderer
+  :is(ytd-download-button-renderer, yt-button-view-model)
   yt-button-shape
   > button:hover,
 html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
@@ -4403,16 +4403,16 @@ html.yt-spiral-tube-theme ytd-watch-metadata #actions {
   align-items: center;
 }
 
-html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button,
 html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
   background: transparent !important;
   color: var(--ypp-text-primary, #fff) !important;
   transition: all 0.2s ease;
 }
 
-html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-button-renderer button:hover,
-html.yt-spiral-tube-theme ytd-watch-metadata #actions ytd-download-button-renderer button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-button-renderer, yt-button-view-model) button:hover,
+html.yt-spiral-tube-theme ytd-watch-metadata #actions :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
 html.yt-spiral-tube-theme ytd-watch-metadata :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
   background: var(--ypp-bg-hover, rgba(255, 255, 255, 0.1)) !important;
   color: var(--ypp-accent, #3ea6ff) !important;
@@ -4485,7 +4485,7 @@ body.ypp-ui-extra-rounded #avatar {
     border-radius: 50% !important;
 }
 
-body.ypp-ui-extra-rounded ytd-button-renderer,
+body.ypp-ui-extra-rounded :is(ytd-button-renderer, yt-button-view-model),
 body.ypp-ui-extra-rounded yt-button-view-model,
 body.ypp-ui-extra-rounded yt-segmented-like-dislike-button-view-model,
 body.ypp-ui-extra-rounded .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
@@ -4496,7 +4496,7 @@ body.ypp-ui-extra-rounded .yt-spec-button-shape-next {
 /* Fix for squished buttons in action bar (e.g. Download) */
 #top-level-buttons-computed > *,
 #top-level-buttons-computed yt-button-view-model,
-#top-level-buttons-computed ytd-download-button-renderer {
+#top-level-buttons-computed :is(ytd-download-button-renderer, yt-button-view-model) {
     flex-shrink: 0 !important;
 }
 
@@ -4645,4 +4645,5 @@ html.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
 
 /* Hide AI Logo/Altered Content Badges */
 /* Catch-all for AI/Altered content badges on Player Page and elsewhere */
+
 

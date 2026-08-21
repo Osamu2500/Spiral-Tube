@@ -190,7 +190,7 @@ html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer[subscribed] 
 }
 
 /* Top-level Topbar action buttons */
-html[data-ypp-ui-design="neumorphic"] #buttons ytd-button-renderer button,
+html[data-ypp-ui-design="neumorphic"] #buttons :is(ytd-button-renderer, yt-button-view-model) button,
 html[data-ypp-ui-design="neumorphic"] #buttons ytd-topbar-menu-button-renderer button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }

@@ -57,8 +57,8 @@ html[data-ypp-ui-design="colorize"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer ytd-button-renderer,
-html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
+html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
@@ -665,14 +665,14 @@ html[data-ypp-ui-design="colorize"] .ytd-shopping-carousel-item-renderer:hover i
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="colorize"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="colorize"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   background: linear-gradient(to right, red, yellow, green, blue) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="colorize"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="colorize"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }

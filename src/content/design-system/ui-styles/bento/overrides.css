@@ -94,8 +94,8 @@ html[data-ypp-ui-design="bento"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="bento"] #actions.ytd-reel-video-renderer ytd-button-renderer,
-html[data-ypp-ui-design="bento"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="bento"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
+html[data-ypp-ui-design="bento"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-card-style="bento"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="bento"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 24px) !important;
@@ -594,13 +594,13 @@ html[data-ypp-ui-design="bento"] .ytd-shopping-carousel-item-renderer:hover img 
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="bento"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="bento"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="bento"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-design="bento"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="bento"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="bento"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="bento"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-design="bento"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -701,3 +701,4 @@ ytd-toggle-button-renderer a {
   border-radius: 24px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+

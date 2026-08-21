@@ -23,7 +23,7 @@ html[data-ypp-theme="bloodmoon"] ::-webkit-scrollbar-thumb {
 
 /* === Shape wrappers only === */
 html[data-ypp-theme="bloodmoon"] yt-button-shape,
-html[data-ypp-theme="bloodmoon"] ytd-button-renderer {
+html[data-ypp-theme="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, var(--bm-shape-btn)) !important;
 }
 
@@ -114,8 +114,8 @@ html[data-ypp-ui-design="bloodmoon"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer ytd-button-renderer,
-html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer ytd-button-renderer,
+html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
+html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
 html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 0) !important;
@@ -642,13 +642,13 @@ html[data-ypp-ui-design="bloodmoon"] .ytd-shopping-carousel-item-renderer:hover 
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="bloodmoon"] ytd-button-renderer.ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="bloodmoon"] ytd-button-renderer.ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
+html[data-ypp-ui-design="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="bloodmoon"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="bloodmoon"] ytd-button-renderer.ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
+html[data-ypp-ui-design="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }

@@ -157,7 +157,7 @@ html[data-ypp-ui-design="woodblock"] ytd-thumbnail-overlay-toggle-button-rendere
 html[data-ypp-ui-design="woodblock"] .yt-chip-shape,
 html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-design="woodblock"] ytd-button-renderer,
+html[data-ypp-ui-design="woodblock"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="woodblock"] button.ytSpecButtonShapeNextTonal,
 html[data-ypp-ui-design="woodblock"] button.ytSpecButtonShapeNextText ,
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i],
@@ -2218,12 +2218,12 @@ html[data-ypp-ui-design="woodblock"] ytd-reel-video-renderer {
   box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
 }
 
-html[data-ypp-ui-design="woodblock"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+html[data-ypp-ui-design="woodblock"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
 }
 
-html[data-ypp-ui-design="woodblock"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+html[data-ypp-ui-design="woodblock"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
   box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
   transform: scale(1.1) !important;
 }

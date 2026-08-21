@@ -253,7 +253,7 @@ html.yt-spiral-tube-theme {
 }
 
 html.yt-spiral-tube-theme tp-yt-paper-button,
-html.yt-spiral-tube-theme ytd-button-renderer {
+html.yt-spiral-tube-theme :is(ytd-button-renderer, yt-button-view-model) {
   font-family: var(--ypp-font-family, "Inter", system-ui, sans-serif) !important;
 }
 
@@ -484,3 +484,4 @@ html.yt-spiral-tube-theme {
 }
 
 /* ===================================================================================*/
+

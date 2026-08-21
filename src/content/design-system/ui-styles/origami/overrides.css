@@ -156,7 +156,7 @@ html[data-ypp-ui-design="origami"] ytd-thumbnail-overlay-toggle-button-renderer 
 html[data-ypp-ui-design="origami"] .yt-chip-shape,
 html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--tonal,
-html[data-ypp-ui-design="origami"] ytd-button-renderer,
+html[data-ypp-ui-design="origami"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="origami"] button.ytSpecButtonShapeNextTonal,
 html[data-ypp-ui-design="origami"] button.ytSpecButtonShapeNextText ,
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i],
@@ -2199,12 +2199,12 @@ html[data-ypp-ui-design="origami"] ytd-reel-video-renderer {
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
 }
 
-html[data-ypp-ui-design="origami"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer {
+html[data-ypp-ui-design="origami"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
 }
 
-html[data-ypp-ui-design="origami"] #actions.ytd-reel-player-overlay-renderer ytd-button-renderer:hover {
+html[data-ypp-ui-design="origami"] #actions.ytd-reel-player-overlay-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
   box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
   transform: scale(1.1) !important;
 }
