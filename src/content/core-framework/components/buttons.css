@@ -1,32 +1,5 @@
 /* src/content/themes/ui-styles/nature/components/buttons.css */
-.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__fill,
-.yt-spec-button-shape-next--mono .yt-spec-touch-feedback-shape__stroke {
-  display: none !important;
-}
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled {
-  transition:
-    transform var(--ypp-transition-bounce),
-    box-shadow var(--ypp-transition-bounce),
-    background var(--ypp-transition-bounce) !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer !important;
-}
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
-  border: var(--ypp-surface-border) !important;
-  box-shadow: var(--ypp-shadow-base) !important;
-  transition: box-shadow var(--ypp-transition-bounce) !important;
-}
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-  margin-right: 0 !important;
-  border-radius: var(--ypp-button-radius, 12px) !important;
-  z-index: 30000 !important;
-  transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
-}
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
-  transform: scale(1.04) !important;
-  box-shadow: var(--ypp-shadow-hover) !important;
-}
+
 .ytLikeButtonViewModelHost {
   margin-right: 5px;
 }
