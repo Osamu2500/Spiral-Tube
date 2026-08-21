@@ -73,7 +73,15 @@ ytd-watch-metadata #title h1,
   margin-bottom: 8px;
 }
 
-/* Metadata Row styling removed to preserve native YouTube spacing */
+/* Reduce 16px gap to 0 on watch metadata row */
+html.yt-spiral-tube-theme ytd-watch-metadata,
+html.yt-spiral-tube-theme ytd-watch-metadata #top-row,
+body.yt-spiral-tube-theme ytd-watch-metadata,
+body.yt-spiral-tube-theme ytd-watch-metadata #top-row {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  gap: 0 !important;
+}
 
 body.yt-spiral-tube-theme ytd-watch-metadata h1 {
   margin-bottom: 0px !important;

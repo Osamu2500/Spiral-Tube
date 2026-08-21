@@ -1,4 +1,4 @@
-// @ts-check
+﻿// @ts-check
 import { ICONS } from './popup-icons.js';
 /**
  * popup-schema.js  — v3.1 Architecture
@@ -921,7 +921,14 @@ export const getPopupSchema = (t) => [
         items: [
           {
             type: 'toggle',
-            id: 'hidePlayerTopics',
+            id: 'hideAiLogo',
+              label: t('hide_ai_logo'),
+              desc: t('hide_ai_logo_desc'),
+              icon: ICONS.aiBadge,
+            },
+            {
+              type: 'toggle',
+              id: 'hidePlayerTopics',
             label: t('hide_topics_bar'),
             desc: t('remove_category_chips'),
             icon: ICONS.cinematic,

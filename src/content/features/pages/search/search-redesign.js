@@ -224,12 +224,12 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
             } else {
                 // ── CARD STYLE FALLBACK:
-                // Some card styles (e.g. immersive-glass) need a body class on
+                // Some card styles (e.g. immersive) need a body class on
                 // search pages to activate their CSS, even when Search Grid is OFF.
                 // Check if the active card style requires search-page context and
                 // activate a minimal list-mode + observer without the full grid layout.
                 const activeCardStyle = document.documentElement.getAttribute('data-ypp-card-style');
-                const LAYOUT_AWARE_CARD_STYLES = new Set(['immersive-glass']);
+                const LAYOUT_AWARE_CARD_STYLES = new Set(['immersive']);
 
                 if (activeCardStyle && LAYOUT_AWARE_CARD_STYLES.has(activeCardStyle)) {
                     document.body.classList.add(SearchRedesign.CLASSES.LIST_MODE);

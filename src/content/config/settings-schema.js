@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Settings Schema & Validator for Spiral Tube
  *
  * Defines the expected type, default, and optional range for every setting key.
@@ -421,6 +421,7 @@ window.YPP.SettingsSchema = {
         hasSeenOnboarding:            { type: 'boolean', default: false },
         resumeBadges:                 { type: 'boolean', default: true },
         liquidGlassTheme:             { type: 'boolean', default: false },
+        hideAiLogo:                   { type: 'boolean', default: false },
         hideVideoTitle:               { type: 'boolean', default: false },
         hideChannelBar:               { type: 'boolean', default: false },
         hideVideoDescription:         { type: 'boolean', default: false },

@@ -54,6 +54,7 @@ class GlobalLayoutManager extends window.YPP.BasePageManager {
             hidePlayerBranding:    'ypp-hide-player-branding',
             hideUselessGuideLinks: 'ypp-hide-useless-guide-links',
             hidePaidPromotion:     'ypp-hide-paid-promotion',
+            hideAiLogo:            'ypp-hide-ai-logo',
             hideUploadButton:      'ypp-hide-upload-button',
             hideScrollbar:         'ypp-hide-scrollbar',
             // New Custom feature toggles

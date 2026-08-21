@@ -651,7 +651,7 @@ function renderLayoutToggle(item, state) {
 
         const lockIcon = wrap.querySelector('#sidebar-layout-lock');
         const cardStyleInput = document.getElementById('cardStyle');
-        const isLocked = cardStyleInput && cardStyleInput.value === 'immersive-glass';
+        const isLocked = cardStyleInput && cardStyleInput.value === 'immersive';
         
         if (isLocked) {
             if (lockIcon) lockIcon.style.display = 'inline-block';
