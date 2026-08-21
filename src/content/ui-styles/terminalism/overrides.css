@@ -1,14 +1,9 @@
 /* Unique Shapes and Patterns for terminalism */
 
-}
 @keyframes termGlowPulse {
-  0%, 100% {
-    box-shadow: 0 0 4px rgba(0, 255, 65, 0.3);
-}
+  0%, 100% { box-shadow: 0 0 4px rgba(0, 255, 65, 0.3); }
 
-50% {
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.6), 0 0 24px rgba(0, 255, 65, 0.2);
-}
+50% { box-shadow: 0 0 12px rgba(0, 255, 65, 0.6), 0 0 24px rgba(0, 255, 65, 0.2); }
 
 }
 html[data-ypp-ui-style=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {

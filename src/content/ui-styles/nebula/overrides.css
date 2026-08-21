@@ -5,9 +5,7 @@
   transform: scale(1);
 }
 
-50% {
-  transform: scale(1.4);
-}
+50% { transform: scale(1.4); }
 
 /* Starfield overlay using pseudo-element */
 html[data-ypp-ui-design="nebula"] ytd-app::before {

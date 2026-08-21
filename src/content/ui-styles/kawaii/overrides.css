@@ -13,102 +13,62 @@ html[data-ypp-ui-design="kawaii"] ytd-cinematics {
 /* Kawaii Massive Animation Library */
 
 @keyframes kawaiHeartBeat {
-  0% { transform: scale(1);
-}
+  0% { transform: scale(1); }
 
-25% {
-  transform: scale(1.4);
-}
+25% { transform: scale(1.4); }
 
-50% {
-  transform: scale(1);
-}
+50% { transform: scale(1); }
 
-75% {
-  transform: scale(1.4);
-}
+75% { transform: scale(1.4); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
 @keyframes kawaiShake {
-  0% { transform: translateX(0) rotate(0);
-}
+  0% { transform: translateX(0) rotate(0); }
 
-25% {
-  transform: translateX(-4px) rotate(-10deg);
-}
+25% { transform: translateX(-4px) rotate(-10deg); }
 
-50% {
-  transform: translateX(4px) rotate(10deg);
-}
+50% { transform: translateX(4px) rotate(10deg); }
 
-75% {
-  transform: translateX(-4px) rotate(-10deg);
-}
+75% { transform: translateX(-4px) rotate(-10deg); }
 
-100% {
-  transform: translateX(0) rotate(0);
-}
+100% { transform: translateX(0) rotate(0); }
 
 }
 
 @keyframes kawaiRing {
-  0% { transform: rotate(0);
-}
+  0% { transform: rotate(0); }
 
-5% {
-  transform: rotate(15deg);
-}
+5% { transform: rotate(15deg); }
 
-10% {
-  transform: rotate(-15deg);
-}
+10% { transform: rotate(-15deg); }
 
-15% {
-  transform: rotate(20deg);
-}
+15% { transform: rotate(20deg); }
 
-20% {
-  transform: rotate(-20deg);
-}
+20% { transform: rotate(-20deg); }
 
-25% {
-  transform: rotate(15deg);
-}
+25% { transform: rotate(15deg); }
 
-30% {
-  transform: rotate(-15deg);
-}
+30% { transform: rotate(-15deg); }
 
-35% {
-  transform: rotate(0);
-}
+35% { transform: rotate(0); }
 
-100% {
-  transform: rotate(0);
-}
+100% { transform: rotate(0); }
 
 }
 
 @keyframes kawaiiSlideIn {
-  0% { transform: translateY(40px) scale(0.9);
-}
+  0% { transform: translateY(40px) scale(0.9); }
 
-100% {
-  transform: translateY(0) scale(1);
-}
+100% { transform: translateY(0) scale(1); }
 
 @keyframes floatingParticles {
   transform: translateY(0);
 }
 
-100% {
-  transform: translateY(-100vh);
-}
+100% { transform: translateY(-100vh); }
 
 }
 
@@ -147,7 +107,7 @@ html[data-ypp-ui-design="kawaii"] segmented-like-dislike-button-view-model like-
   animation: kawaiHeartBeat 0.5s var(--kawaii-ease-bouncy) !important;
 }
 
-/* background-color: var(--kawaii-text-secondary) */ !important;
+/* background-color: var(--kawaii-text-secondary) */
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35zm0-2.35l1.3-1.2C17.6 14.3 20 11.6 20 8.5c0-2.2-1.8-4-4-4-1.5 0-3 .9-3.7 2.3h-1.6C10 5.4 8.5 4.5 7 4.5c-2.2 0-4 1.8-4 4 0 3.1 2.4 5.8 6.7 9.3l1.3 1.2zm-1-8h2L11 15v-4H9l4-4v4z"/></svg>') !important;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35zm0-2.35l1.3-1.2C17.6 14.3 20 11.6 20 8.5c0-2.2-1.8-4-4-4-1.5 0-3 .9-3.7 2.3h-1.6C10 5.4 8.5 4.5 7 4.5c-2.2 0-4 1.8-4 4 0 3.1 2.4 5.8 6.7 9.3l1.3 1.2zm-1-8h2L11 15v-4H9l4-4v4z"/></svg>') !important;
     -webkit-mask-repeat: no-repeat !important;
@@ -167,7 +127,7 @@ html[data-ypp-ui-design="kawaii"] ytd-toggle-button-renderer:nth-of-type(2).styl
     animation: kawaiShake 0.5s ease-in-out !important;
 }
 
-/* background-color: var(--ypp-bg-surface, #fff) */ !important;
+/* background-color: var(--ypp-bg-surface, #fff) */
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
     -webkit-mask-repeat: no-repeat !important;
@@ -428,12 +388,9 @@ html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
 }
 
 @keyframes menuEntranceV10 {
-  0% { transform: scale(0.9);
-}
+  0% { transform: scale(0.9); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
@@ -527,25 +484,17 @@ html[data-ypp-ui-design="kawaii"] .ytp-spinner::after {
 }
 
 @keyframes kawaiiStar {
-  0% { transform: rotate(0deg) scale(1);
-}
+  0% { transform: rotate(0deg) scale(1); }
 
-50% {
-  transform: rotate(180deg) scale(1.2);
-}
+50% { transform: rotate(180deg) scale(1.2); }
 
-100% {
-  transform: rotate(360deg) scale(1);
-}
+100% { transform: rotate(360deg) scale(1); }
 
 }
 @keyframes kawaiiStarInner {
-  0% { transform: scale(0.5);
-}
+  0% { transform: scale(0.5); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
@@ -568,12 +517,9 @@ html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
 }
 
 @keyframes kawaiiStarEntrance {
-  0% { transform: translateY(20px);
-}
+  0% { transform: translateY(20px); }
 
-100% {
-  transform: translateY(0);
-}
+100% { transform: translateY(0); }
 }
 /* Kawaii Forms, Buttons, and Search */
 html[data-ypp-card-style="kawaii"] ytd-searchbox #container.ytd-searchbox,
@@ -632,42 +578,19 @@ html[data-ypp-ui-design="kawaii"] .ytp-spinner::after {
   animation-delay: 0.2s !important;
 }
 
-@keyframes kawaiiBounce {
-  0% { transform: translateY(0) scale(1);
-}
-
-100% {
-  transform: translateY(-15px) scale(1.2);
-}
-
-@keyframes kawaiiBounce {
-  0%, 100% { transform: translateY(0);
-}
-
-50% {
-  transform: translateY(-10px);
-}
+50% { transform: translateY(-10px); }
 
 }
 @keyframes kawaiiWiggle {
-  0% { transform: rotate(0deg);
-}
+  0% { transform: rotate(0deg); }
 
-25% {
-  transform: rotate(3deg);
-}
+25% { transform: rotate(3deg); }
 
-50% {
-  transform: rotate(0deg);
-}
+50% { transform: rotate(0deg); }
 
-75% {
-  transform: rotate(-3deg);
-}
+75% { transform: rotate(-3deg); }
 
-100% {
-  transform: rotate(0deg);
-}
+100% { transform: rotate(0deg); }
 
 }
 
@@ -4113,21 +4036,15 @@ html[data-ypp-ui-design="kawaii"] ytd-popup-container {
 }
 
 @keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9);
-}
+  0% { transform: translateY(50px) scale(0.9); }
 
-100% {
-  transform: translateY(0) scale(1);
-}
+100% { transform: translateY(0) scale(1); }
 
 }
 @keyframes snapInDialog {
-  0% { transform: scale(1.2);
-}
+  0% { transform: scale(1.2); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
@@ -4379,12 +4296,9 @@ html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-renderer {
 }
 
 @keyframes slideInPlaylist {
-  0% { transform: translateX(20px);
-}
+  0% { transform: translateX(20px); }
 
-100% {
-  transform: translateX(0);
-}
+100% { transform: translateX(0); }
 }
 /* =========================================
    2. COMMUNITY POSTS & POLLS
@@ -4445,12 +4359,9 @@ html[data-ypp-ui-design="kawaii"] .badge-style-type-live-now-alternate {
 }
 
 @keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #ff9ebb;
-}
+  0% { box-shadow: 0 0 5px #ff9ebb; }
 
-100% {
-  box-shadow: 0 0 20px #ff9ebb;
-}
+100% { box-shadow: 0 0 20px #ff9ebb; }
 }
 /* Kawaii Tooltips */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
@@ -4464,12 +4375,9 @@ html[data-ypp-ui-design="kawaii"] .ytp-tooltip {
 }
 
 @keyframes kawaiiTooltip {
-  0% { transform: scale(0.5) translateY(10px);
-}
+  0% { transform: scale(0.5) translateY(10px); }
 
-100% {
-  transform: scale(1) translateY(0);
-}
+100% { transform: scale(1) translateY(0); }
 }
 /* Kawaii Miniplayer & Live Chat */
 /* Miniplayer */

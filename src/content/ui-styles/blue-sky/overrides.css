@@ -1,16 +1,13 @@
 /* Unique Shapes and Patterns for blue-sky */
 
-}
-
 /* ── Card soar: upward float on hover ── */
 @keyframes sky-soar {
-  from { transform: translateY(0) scale(1);
-}
-
-to {
-  transform: translateY(-8px) scale(1.02);
-}
-
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-8px) scale(1.02);
+  }
 }
 
 /* ── Subscribe pulse: sunlight glow ── */
@@ -20,26 +17,23 @@ to {
       0 0 20px rgba(0, 191, 255, 0.4),
       0 0 40px rgba(135, 206, 250, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.6);
-}
-
-50% {
-  box-shadow:
+  }
+  50% {
+    box-shadow:
       0 0 30px rgba(0, 191, 255, 0.7),
       0 0 60px rgba(135, 206, 250, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
+  }
 }
 
 /* ── Fade-in for cards on load ── */
 @keyframes sky-fade-in {
-  transform: translateY(16px) scale(0.98);
-}
-
-to {
-  transform: translateY(0) scale(1);
-}
-
+  from {
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Apply fade-in to cards on load */

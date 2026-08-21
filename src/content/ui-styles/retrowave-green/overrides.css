@@ -26,14 +26,11 @@ html[data-ypp-ui-design="retrowave-green"] #video-title:hover {
 }
 
 @keyframes gridMove {
-  0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px);
-}
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
 
-100% {
-  transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px);
-}
+100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
 
-/* background-color */ !important;
+/* background-color */
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>') !important;
     -webkit-mask-size: 80% !important;
     -webkit-mask-position: center !important;
@@ -196,12 +193,9 @@ html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
 }
 
 @keyframes menuEntranceV10 {
-  0% { transform: scale(0.9);
-}
+  0% { transform: scale(0.9); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
@@ -276,25 +270,17 @@ html[data-ypp-ui-design="retrowave-green"] .ytp-spinner::after {
 }
 
 @keyframes retroGrid {
-  0% { transform: rotate(0deg) scale(1);
-}
+  0% { transform: rotate(0deg) scale(1); }
 
-50% {
-  transform: rotate(180deg) scale(1.2);
-}
+50% { transform: rotate(180deg) scale(1.2); }
 
-100% {
-  transform: rotate(360deg) scale(1);
-}
+100% { transform: rotate(360deg) scale(1); }
 
 }
 @keyframes retroGridInner {
-  0% { transform: scale(0.5);
-}
+  0% { transform: scale(0.5); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
@@ -317,12 +303,9 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
 }
 
 @keyframes retroGridEntrance {
-  0% { transform: translateY(20px);
-}
+  0% { transform: translateY(20px); }
 
-100% {
-  transform: translateY(0);
-}
+100% { transform: translateY(0); }
 }
 /* Retrowave-Green Forms */
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox #container.ytd-searchbox {
@@ -646,21 +629,15 @@ html[data-ypp-ui-design="retrowave-green"] ytd-popup-container {
 }
 
 @keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9);
-}
+  0% { transform: translateY(50px) scale(0.9); }
 
-100% {
-  transform: translateY(0) scale(1);
-}
+100% { transform: translateY(0) scale(1); }
 
 }
 @keyframes snapInDialog {
-  0% { transform: scale(1.2);
-}
+  0% { transform: scale(1.2); }
 
-100% {
-  transform: scale(1);
-}
+100% { transform: scale(1); }
 
 }
 
@@ -816,12 +793,9 @@ html[data-ypp-ui-design="retrowave-green"] ytd-playlist-panel-renderer {
 }
 
 @keyframes slideInPlaylist {
-  0% { transform: translateX(20px);
-}
+  0% { transform: translateX(20px); }
 
-100% {
-  transform: translateX(0);
-}
+100% { transform: translateX(0); }
 }
 /* =========================================
    2. COMMUNITY POSTS & POLLS
@@ -881,12 +855,9 @@ html[data-ypp-ui-design="retrowave-green"] .badge-style-type-live-now-alternate 
 }
 
 @keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #00ff41;
-}
+  0% { box-shadow: 0 0 5px #00ff41; }
 
-100% {
-  box-shadow: 0 0 20px #00ff41;
-}
+100% { box-shadow: 0 0 20px #00ff41; }
 }
 html[data-ypp-card-style="retrowave-green"] ytd-thumbnail:hover,
 html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail:hover {
@@ -911,38 +882,24 @@ html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail:hover::after {
 }
 
 @keyframes vhsGlitch {
-  0% { transform: translate(0);
-}
+  0% { transform: translate(0); }
 
-20% {
-  transform: translate(-2px, 1px);
-}
+20% { transform: translate(-2px, 1px); }
 
-40% {
-  transform: translate(-1px, -1px);
-}
+40% { transform: translate(-1px, -1px); }
 
-60% {
-  transform: translate(2px, 1px);
-}
+60% { transform: translate(2px, 1px); }
 
-80% {
-  transform: translate(1px, -1px);
-}
+80% { transform: translate(1px, -1px); }
 
-100% {
-  transform: translate(0);
-}
+100% { transform: translate(0); }
 
 }
 
 @keyframes vhsRgbShift {
-  0% { transform: translateX(-3px);
-}
+  0% { transform: translateX(-3px); }
 
-100% {
-  transform: translateX(3px);
-}
+100% { transform: translateX(3px); }
 }
 /* Retrowave-Green Neon Cyber-Player */
 
@@ -982,12 +939,9 @@ html[data-ypp-ui-design="retrowave-green"] .ytp-spinner::before {
 }
 
 @keyframes cyberSpin {
-  0% { transform: rotateX(0) rotateY(0) rotateZ(0);
-}
+  0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
 
-100% {
-  transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg);
-}
+100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
 
 }
 

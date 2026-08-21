@@ -2,28 +2,20 @@
 
 /* galaxy/base/animations.css */
 @keyframes galaxy-pulse {
-  0%   { box-shadow: 0 0 20px rgba(0,240,255,0.2);
-}
+  0% { box-shadow: 0 0 20px rgba(0,240,255,0.2); }
 
-50% {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5);
-}
+50% { box-shadow: 0 0 35px rgba(0,240,255,0.5); }
 
-100% {
-  box-shadow: 0 0 20px rgba(0,240,255,0.2);
-}
+100% { box-shadow: 0 0 20px rgba(0,240,255,0.2); }
 
 }
 
 
 
 @keyframes sepia-bloom {
-  0%{filter:brightness(1);
-}
+  0% { filter:brightness(1); }
 
-100% {
-  filter:brightness(1.1) saturate(1.1);
-}
+100% { filter:brightness(1.1) saturate(1.1); }
 
 }
 
@@ -349,24 +341,6 @@ html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--overlay.yt-spec-bu
 html[data-ypp-ui-design="galaxy"] ytd-notification-topbar-button-renderer.ytd-masthead:hover,
 html[data-ypp-ui-design="galaxy"] yt-icon-button.ytd-masthead:hover ,
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i]:hover,
-html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i]:hover {
-  box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
-  transform: scale(1.1);
-}
-
-}
-@keyframes galaxyFloat {
-  0%, 100% { transform: translateY(0);
-}
-
-50% {
-  transform: translateY(-8px);
-}
-}
-html[data-ypp-card-style="galaxy"] ytd-app, html[data-ypp-ui-design="galaxy"] ytd-app {
-  background: radial-gradient(ellipse at top, #4b0082 0%, #03001c 60%) !important;
-}
-
 html[data-ypp-card-style="galaxy"] #masthead, html[data-ypp-ui-design="galaxy"] #masthead {
   box-shadow: 0 2px 20px rgba(148, 0, 211, 0.4) !important;
 }
