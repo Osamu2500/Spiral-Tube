@@ -100,3 +100,10 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon {
   color: var(--ypp-text-primary, #ffffff) !important;
   fill: var(--ypp-text-primary, #ffffff) !important;
 }
+
+/* Force circle-square shapes for topbar buttons */
+html:not([data-ypp-ui-design]) body #buttons ytd-notification-topbar-button-renderer yt-button-shape button,
+html:not([data-ypp-ui-design]) body #buttons ytd-topbar-menu-button-renderer yt-button-shape button,
+html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-icon-button {
+    border-radius: var(--ypp-shape-primary, 12px) !important;
+}

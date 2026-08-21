@@ -314,3 +314,12 @@ html:not([data-ypp-ui-design]) body ytd-subscribe-button-renderer yt-button-shap
 html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
     border-radius: var(--ypp-shape-primary, 12px) !important;
 }
+
+/* Explicitly force action buttons to circle-square because native 100px overrides might exist */
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-shape button,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata #actions-inner yt-button-view-model button,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
+html:not([data-ypp-ui-design]) body ytd-watch-metadata yt-download-button-view-model button {
+    border-radius: var(--ypp-shape-primary, 12px) !important;
+}
