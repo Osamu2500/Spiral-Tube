@@ -1,0 +1,212 @@
+/* ===================================================================================
+   4X4 GRID LAYOUT - ENHANCED STYLING
+   =================================================================================== */
+
+/* Force 4-column CSS Grid on home feed */
+
+/* Hide row wrappers to allow direct grid children */
+
+/* Style individual video cards for grid */
+
+/* Hide parent section of Shorts shelves to prevent gaps */
+
+/* Ensure video thumbnails scale properly */
+
+/* Video metadata styling */
+
+/* Card hover effects for grid items */
+
+/* -----------------------------------------------------------------------------------
+   CHANNEL TAGS (Injected by Home Organizer)
+   ----------------------------------------------------------------------------------- */
+
+.ypp-tag-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--ypp-bg-surface);
+  color: var(--ypp-text-secondary);
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: var(--ypp-radius-sm);
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: var(--ypp-z-card-hover);
+  opacity: 0;
+  transition: var(--ypp-transition);
+  box-shadow: var(--ypp-shadow-card);
+  text-transform: uppercase;
+}
+
+.ypp-tag-btn:hover {
+  background: var(--ypp-glass-highlight);
+  color: var(--ypp-text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ypp-tag-btn.tagged {
+  opacity: 1;
+  background: rgba(62, 166, 255, 0.15);
+  color: var(--ypp-accent-blue);
+  border-color: rgba(62, 166, 255, 0.3);
+}
+
+.ypp-tag-popover {
+  position: absolute;
+  background: var(--ypp-bg-glass);
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: var(--ypp-radius-md);
+  box-shadow: var(--ypp-shadow-float);
+  padding: 8px 0;
+  z-index: var(--ypp-z-popup);
+  min-width: 140px;
+  overflow: hidden;
+  animation: ypp-fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-tag-option {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--ypp-text-primary);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ypp-tag-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===================================================================================
+   11. HOME ORGANIZER & TAGGING
+   =================================================================================== */
+
+.ypp-feed-separator {
+  grid-column: 1 / -1; /* Span full width of grid */
+  padding: 24px 0 12px 0;
+  margin-top: 24px;
+  border-bottom: 1px solid var(--ypp-glass-border);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ypp-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.ypp-feed-separator:hover {
+  color: var(--ypp-accent);
+}
+
+.ypp-feed-separator::after {
+  content: "";
+  display: block;
+  margin-left: 12px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.ypp-feed-separator.collapsed::after {
+  transform: rotate(-45deg);
+}
+
+.ypp-section-hidden {
+  display: none !important;
+}
+
+/* Tag Button on Thumbnail */
+
+.yt-spiral-tube-theme ytd-thumbnail .ypp-tag-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px; /* Squircle */
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px) translateZ(0); /* Hardware Acceleration */
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  will-change: opacity, transform, background-color, box-shadow;
+  z-index: var(--ypp-z-card-hover);
+}
+
+.ypp-tag-btn:hover {
+  background: var(--ypp-accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ypp-tag-btn.tagged {
+  background: var(--ypp-accent-glow);
+  color: var(--ypp-accent);
+  border-color: var(--ypp-accent);
+}
+
+/* Tag Popover */
+
+.ypp-tag-popover {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  position: absolute;
+  background: var(--ypp-bg-surface);
+  /* backdrop-filter: blur(16px); */
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: var(--ypp-shadow-float);
+  z-index: var(--ypp-z-popup);
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: ypp-fade-in 0.15s ease-out;
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, opacity;
+}
+
+.ypp-tag-option {
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--ypp-text-secondary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  
+}
+
+.ypp-tag-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ypp-text-primary);
+}
+
+@keyframes ypp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

@@ -1,0 +1,1311 @@
+/*    3. FEATURE TOGGLE CLASSES
+   =================================================================================== */
+
+/* Theme Base */
+
+html.yt-spiral-tube-theme body,
+html.yt-spiral-tube-theme:root body,
+html.yt-spiral-tube-theme:root[dark] body {
+  background-color: transparent !important;
+  overflow-x: hidden;
+}
+
+/* Force YouTube's native opaque layout wrappers to be transparent globally
+   so that custom theme backgrounds on HTML/Body can show through. */
+html.yt-spiral-tube-theme ytd-app,
+html.yt-spiral-tube-theme #page-manager,
+html.yt-spiral-tube-theme ytd-masthead,
+html.yt-spiral-tube-theme #masthead-container,
+html.yt-spiral-tube-theme tp-yt-app-header,
+html.yt-spiral-tube-theme tp-yt-app-header-layout,
+html.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer,
+html.yt-spiral-tube-theme #chips-wrapper,
+html.yt-spiral-tube-theme ytd-guide-renderer,
+html.yt-spiral-tube-theme ytd-mini-guide-renderer,
+html.yt-spiral-tube-theme tp-yt-app-drawer,
+html.yt-spiral-tube-theme #guide-content {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Hide Explore Topics */
+
+/* Ensure frosted glass doesn't show up as a white bar when scrolling */
+
+body.ypp-hide-explore-topics #frosted-glass.with-chipbar,
+#frosted-glass {
+  display: none !important;
+}
+
+body.ypp-hide-explore-topics ytd-page-manager {
+  margin-top: var(--ytd-masthead-height, 56px) !important;
+}
+
+/* Hide Voice Search */
+
+body.ypp-hide-voice-search #voice-search-button,
+body.ypp-hide-voice-search ytm-voice-search-button-renderer {
+  display: none !important;
+}
+
+/* Hide Shorts Interaction Bar */
+
+body.ypp-hide-shorts-interaction ytd-reel-player-overlay-renderer #actions.ytd-reel-player-overlay-renderer {
+  display: none !important;
+}
+
+/* Hide Shorts in Search Results */
+
+/* Nuke Shorts — Aggressive removal from all pages */
+
+/* ==========================================================================
+   FLOATING GLASSMORPHIC GUIDE DOCK
+   body.ypp-floating-guide — floats the left nav as a peekable glass panel.
+   ========================================================================== */
+
+/* Break YouTube's normal layout so the guide can float freely */
+
+body.ypp-floating-guide ytd-app {
+  --ytd-nav-drawer-width: 0px !important; /* collapse the space the guide would normally take */
+}
+
+/* Float the guide container */
+
+body.ypp-floating-guide #guide {
+  position: fixed !important;
+  top: calc(var(--ytd-masthead-height, 56px) + 12px) !important;
+  left: 0 !important;
+  z-index: var(--ypp-z-popup) !important;
+  pointer-events: all !important;
+  transform: translateX(calc(-100% + 8px)) !important; /* 8px peeks out so you can hover */
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease,
+    opacity 0.32s ease !important;
+  opacity: 0.85 !important;
+  will-change: transform !important;
+}
+
+/* Slide fully open on hover */
+
+body.ypp-floating-guide #guide:hover {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.6),
+    0 2px 12px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.12) !important;
+}
+
+/* Glass panel on the guide renderer */
+
+/* Peek strip — the 8px visible sliver on the left edge */
+
+body.ypp-floating-guide #guide::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; right: 0 !important;
+  width: 8px !important;
+  height: 100% !important;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.06) 50%,
+    rgba(255,255,255,0.18) 100%
+  ) !important;
+  border-radius: 0 4px 4px 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+}
+
+/* Hide the peek strip once fully open */
+
+body.ypp-floating-guide #guide:hover::before {
+  opacity: 0 !important;
+}
+
+/* Custom scrollbar inside the floating guide */
+
+/* Guide entry items — glass-friendly */
+
+/* Section dividers inside the guide */
+
+/* Expand main page content to fill the vacated guide space */
+
+body.ypp-floating-guide #content.ytd-app,
+body.ypp-floating-guide ytd-page-manager {
+  margin-left: 0 !important;
+}
+
+/* ==========================================================================
+   YPP UI Component Frame (Phase 6 UI Consistency)
+   ========================================================================== */
+
+/* Button Components */
+
+.ypp-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: var(--ypp-radius-full, 50%);
+  color: var(--yt-spec-text-primary, #fff);
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-btn:hover {
+  background-color: var(--ypp-bg-hover);
+}
+
+/* Nav buttons manage their own hover — don't let base .ypp-btn:hover override */
+
+.ypp-nav-btn.ypp-btn:hover {
+  background-color: transparent;
+}
+
+.ypp-btn:active {
+  background-color: var(--ypp-bg-active);
+}
+
+.ypp-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.ypp-btn-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  pointer-events: none;
+}
+
+/* Header Navigation Group */
+
+.ypp-nav-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 16px 0 8px;
+}
+
+.ypp-nav-btn {
+  opacity: 0.8;
+  position: relative;
+}
+
+.ypp-nav-btn:hover {
+  opacity: 1;
+}
+
+.ypp-nav-btn.active {
+  color: var(--ypp-accent) !important;
+  opacity: 1;
+  /* No background — the ::after dot indicator below shows active state */
+}
+
+.ypp-nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 3px;
+  background-color: var(--ypp-accent);
+  border-radius: 2px;
+}
+
+/* Specific component tweaks */
+
+.ypp-speed-input {
+  width: 44px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--ypp-radius-sm);
+  padding: 4px 6px;
+  margin-right: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  font-family: inherit;
+  pointer-events: auto;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ypp-speed-input:focus {
+  outline: none;
+  border-color: var(--ypp-accent);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.2);
+}
+
+/* Hide arrows on number input */
+
+.ypp-speed-input::-webkit-outer-spin-button,
+.ypp-speed-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Display Full Video Titles */
+
+/* Hide Scrollbar */
+
+/* Hide Scrollbar Globally (Highest Specificity over all UI Styles & Themes) */
+body.ypp-hide-scrollbar,
+body.ypp-hide-scrollbar *,
+html:has(body.ypp-hide-scrollbar),
+html:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar),
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar),
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar),
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar) * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+body.ypp-hide-scrollbar::-webkit-scrollbar,
+body.ypp-hide-scrollbar *::-webkit-scrollbar,
+html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar)::-webkit-scrollbar,
+html[data-ypp-theme]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar,
+html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar::-webkit-scrollbar,
+html[data-ypp-card-style] body.ypp-hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+body.ypp-hide-scrollbar::-webkit-scrollbar-thumb,
+body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
+html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-thumb,
+html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-thumb,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb,
+html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-thumb {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+body.ypp-hide-scrollbar::-webkit-scrollbar-track,
+body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
+html:has(body.ypp-hide-scrollbar)::-webkit-scrollbar-track,
+html:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-ui-design]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-card-style]:has(body.ypp-hide-scrollbar) *::-webkit-scrollbar-track,
+html[data-ypp-ui-design] body.ypp-hide-scrollbar *::-webkit-scrollbar-track,
+html[data-ypp-card-style] body.ypp-hide-scrollbar *::-webkit-scrollbar-track {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* ===================================================================================
+   3. GLOBAL UI ELEMENTS
+   =================================================================================== */
+
+/* Custom Scrollbar */
+
+body.ypp-custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+body.ypp-custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body.ypp-custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+body.ypp-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide Default Elements */
+
+/* Ensure Profile Button Visible */
+
+/* Hide Create Button */
+
+/* Hide Create Button (All variants) */
+
+/* Specific targetting for the "Pill" styled Create button */
+
+/* Topbar Polish (Dynamic Injection from HeaderNav) */
+
+/* Center Mic Icon */
+
+.yt-spiral-tube-theme #voice-search-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 50% !important;
+}
+
+/* Profile Icon Squircle */
+
+.yt-spiral-tube-theme #avatar-btn,
+.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
+.yt-spiral-tube-theme #avatar-btn img {
+  border-radius: 12px !important;
+}
+
+body.ypp-hide-sidebar #content {
+  margin-left: 0 !important;
+}
+
+/* Header Navigation Group (Header Nav Feature) */
+
+.ypp-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+  height: 40px;
+  order: -1;
+}
+
+.ypp-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px !important; /* Premium Squircle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--yt-spec-text-primary);
+  background: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  position: relative;
+}
+
+.ypp-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+.ypp-nav-btn.active {
+  /* Active = accent-coloured icon + underline dot only — no background fill */
+  color: var(--ypp-accent, #fff) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
+.ypp-nav-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.ypp-nav-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Tooltip integration (simple title for now) */
+
+.ypp-nav-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.2,0.8,0.2,1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: var(--ypp-z-popup);
+}
+
+.ypp-nav-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Logo Area */
+
+/* Sidebar Scrolling */
+
+/* Watch Page: Hide Sidebar by Default */
+
+/* Sidebar No-Mini Mode - Full Width without margin gaps (Except Watch Page) */
+
+ytd-app[mini-guide-visible]:not([is-watch-page]) ytd-page-manager,
+ytd-app[mini-guide-visible]:not([is-watch-page]) #content {
+  margin-left: 0 !important;
+  --ytd-mini-guide-width: 0px !important;
+}
+
+/* Full Video Titles - Always */
+body.ypp-full-title-always :is(
+  #video-title,
+  yt-formatted-string[id="video-title"],
+  .yt-lockup-metadata-view-model-wiz__title,
+  #video-title .yt-core-attributed-string,
+  .yt-lockup-metadata-view-model-wiz__title .yt-core-attributed-string
+) {
+  -webkit-line-clamp: initial !important;
+  line-clamp: initial !important;
+  max-height: none !important;
+  white-space: normal !important;
+  display: block !important;
+}
+
+@keyframes yppExpandTitleHoverDelay {
+  100% {
+    -webkit-line-clamp: initial !important;
+    line-clamp: initial !important;
+    max-height: none !important;
+    white-space: normal !important;
+    display: block !important;
+  }
+}
+
+/* Full Video Titles - On Hover (V2 Premium Pop-up & Shorts Protection) */
+body.ypp-full-title-hover :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*="/shorts"])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon="yt-icons:shorts"])) {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-radius 0.2s ease;
+}
+
+body.ypp-full-title-hover :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*="/shorts"])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon="yt-icons:shorts"])):hover {
+  transform: scale(1.06);
+  background-color: var(--yt-spec-base-background, #0f0f0f);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+  z-index: 99;
+  position: relative;
+  border-radius: 12px;
+}
+
+/* Delay title expansion to sync with pop-up animation */
+body.ypp-full-title-hover :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-grid-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-playlist-video-renderer,
+  ytd-playlist-panel-video-renderer,
+  yt-lockup-view-model
+):not([is-shorts]):not(:has(a[href*="/shorts"])):not(:has(ytd-reel-item-renderer)):not(:has(yt-icon[icon="yt-icons:shorts"])):hover :is(
+  #video-title,
+  yt-formatted-string[id="video-title"],
+  .yt-lockup-metadata-view-model-wiz__title,
+  #video-title .yt-core-attributed-string,
+  .yt-lockup-metadata-view-model-wiz__title .yt-core-attributed-string
+) {
+  animation: yppExpandTitleHoverDelay 0s 0.15s forwards;
+}
+
+/* Auto Scale Grid */
+
+/* Full Video Titles - Legacy Support */
+body.ypp-full-title #video-title,
+body.ypp-full-title yt-formatted-string[id="video-title"],
+body.ypp-full-title .yt-lockup-metadata-view-model-wiz__title {
+  -webkit-line-clamp: 4 !important;
+  line-clamp: 4 !important;
+  max-height: none !important;
+}
+
+/* ==========================================================================
+   VIEW MODE TOGGLE BUTTON STYLES
+   ========================================================================== */
+
+.ypp-view-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 12px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.ypp-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.ypp-toggle-btn.active {
+  background: rgba(62, 166, 255, 0.2);
+  color: #3ea6ff;
+  border: 1px solid rgba(62, 166, 255, 0.3);
+}
+
+/* ===================================================================================
+   9. UTILITY CLASSES & ANIMATIONS
+   =================================================================================== */
+
+/* Fade Up Animation */
+
+@keyframes ypp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hidden Short Class */
+
+.ypp-hidden-short {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+}
+
+/* [Legacy Search Grid Styles Removed - Consolidated into Section 6] */
+
+/* --- 6. View Toggle Button --- */
+
+#ypp-view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0); /* Hardware Acceleration */
+  will-change: transform, box-shadow, background-color, color;
+}
+
+.ypp-toggle-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ypp-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.yt-spiral-tube-theme ytd-multi-page-menu-renderer,
+.yt-spiral-tube-theme ytd-simple-menu-header-renderer,
+.yt-spiral-tube-theme ytd-active-account-header-renderer,
+.yt-spiral-tube-theme ytd-voice-search-dialog-renderer {
+  background: rgba(30, 30, 30, 0.95);
+  border: 1px solid var(--ypp-glass-border);
+  border-radius: var(--ypp-radius-lg);
+  box-shadow: var(--ypp-shadow-float);
+}
+
+.yt-spiral-tube-theme ytd-popup-container {
+  z-index: var(--ypp-z-popup);
+}
+
+/* [Unused Filter Drawer Styles Removed] */
+
+/* Ad Hiding & Grid Protection */
+
+/* ===================================================================================
+   10. JS-INJECTED UTILITIES (Performance Optimization)
+   =================================================================================== */
+
+/* Grid Layout (Replaces inline styles in layout-manager.js) */
+
+/* Flatten Row Wrappers globally (Massive performance boost vs JS mutation) */
+
+/* Grid Item Reset */
+
+/* ── Card Style: Search Results Sync ───────────────────────────────────────
+   The .ypp-grid-item reset uses !important which would override the card
+   style selectors. These rules re-apply each card style specifically for
+   .ypp-grid-item so search results stay in sync with the home/feed cards.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* FLAT ── search */
+
+/* ELEVATED ── search */
+
+/* GLASS ── search */
+
+/* FOLDER ── search */
+
+/* BENTO ── search */
+
+/* NEON ── search */
+
+/* COMPACT ── search */
+
+/* POLAROID ── search */
+
+/* NEUMORPHIC ── search (NEW) */
+
+/* CYBERPUNK ── search (NEW) */
+
+/* HOLOGRAPHIC ── search (NEW) */
+
+/* MINIMALIST ── search (NEW) */
+
+/* RETRO ── search (NEW) */
+
+/* BRUTALISM ── search (NEW) */
+
+/* SKEUOMORPHIC ── search (NEW) */
+
+/* FROSTED ── search (NEW) */
+
+/* SUMMER ── search (NEW) */
+
+@keyframes ypp-summer-heat {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ypp-sun-pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 1; }
+}
+
+/* WINTER ── search (NEW) */
+
+@keyframes ypp-winter-shimmer {
+  0% { transform: rotate(45deg) translateY(-200%); }
+  20% { transform: rotate(45deg) translateY(200%); }
+  100% { transform: rotate(45deg) translateY(200%); }
+}
+
+/* SPRING ── search (NEW) */
+
+@keyframes ypp-spring-bloom {
+  0% { box-shadow: 0 8px 24px rgba(255, 150, 180, 0.1), inset 0 0 10px rgba(255, 180, 200, 0); }
+  100% { box-shadow: 0 8px 24px rgba(255, 150, 180, 0.2), inset 0 0 20px rgba(255, 180, 200, 0.2); }
+}
+
+/* AUTUMN ── search (NEW) */
+
+@keyframes ypp-autumn-leaves {
+  0% { background-position: 0% 0%; border-left-color: rgba(220, 120, 40, 0.7); }
+  50% { background-position: 100% 50%; border-left-color: rgba(200, 60, 20, 0.8); }
+  100% { background-position: 0% 100%; border-left-color: rgba(180, 140, 30, 0.7); }
+}
+
+/* Zen Mode Shadow */
+
+.ypp-zen-shadow {
+  transition: box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* Toast Notification (Moved from player-tools.js) */
+
+.ypp-toast-mini {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: var(--ypp-z-popup);
+  animation: ypp-fade-in-out 2s forwards;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes ypp-fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+
+/* ===================================================================================
+   14. PRO MAX UI ENHANCEMENTS (Left Guide, Buttons, Inputs)
+   =================================================================================== */
+
+/* Left Sidebar (Guide) Glassmorphism */
+
+/* Global Buttons & Searchbox Tactile Enhancements */
+
+body.yt-spiral-tube-theme yt-button-shape {
+  transition:
+    transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme yt-button-shape:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.yt-spiral-tube-theme #container.ytd-searchbox {
+  background: rgba(20, 20, 20, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme #container.ytd-searchbox[has-focus] {
+  border-color: var(--ypp-accent) !important;
+  box-shadow:
+    0 0 12px var(--ypp-accent-glow),
+    inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 2. Slide-out Hover Animation for Related Videos */
+
+/* 3. Pro Max Rounding for Core Elements */
+
+#container.ytd-searchbox {
+  border-radius: var(--ypp-radius-md) 0 0 var(--ypp-radius-md) !important;
+}
+
+#search-icon-legacy.ytd-searchbox {
+  border-radius: 0 var(--ypp-radius-md) var(--ypp-radius-md) 0 !important;
+}
+
+/* 4. Segmented Comments Cards */
+
+/* 5. Live Badge Red Voids */
+
+body.yt-spiral-tube-theme
+  .badge-style-type-live-now.ytd-badge-supported-renderer,
+body.yt-spiral-tube-theme
+  .badge-style-type-starting-soon.ytd-badge-supported-renderer {
+  padding: 4px 6px !important;
+  background-color: #cc0000 !important;
+  color: white !important;
+  border-radius: var(--ypp-radius-sm) !important;
+  font-weight: bold !important;
+}
+
+/* ===================================================================================
+   16. REDESIGNED UI ELEMENTS (PREMIUM GLASSMORPHIC AESTHETIC)
+   =================================================================================== */
+
+/* ── 1. Detached Glass Control Bar (ytp-chrome-bottom) [DISABLED DUE TO RENDERING BUG] ── */
+
+/* ── Glowing Progress Bar [DISABLED DUE TO RENDERING BUG] ── */
+
+/* ── Player Control Buttons ── */
+
+/* Remove default gradients to ensure pure transparency */
+
+/* ── 8. Settings / quality popup ── */
+
+/* --- Unified Speed-Aware Time Dashboard --- */
+
+.ypp-time-dashboard {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-left: 10px !important;
+  padding: 2px 6px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  height: 24px !important;
+  font-family: var(--ypp-font-family, "Inter", sans-serif) !important;
+}
+
+.ypp-time-dashboard.active {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 2. Action Buttons Redesign (Beneath Video Title) */
+
+/* Container for the entire top row (Channel info + Actions) */
+
+body.yt-spiral-tube-theme ytd-watch-metadata #top-row {
+  margin-top: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+
+/* Channel Owner Section Pill */
+
+body.yt-spiral-tube-theme ytd-watch-metadata #owner {
+  background: rgba(255, 255, 255, 0.05) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 100px !important;
+  padding: 4px 16px 4px 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme ytd-watch-metadata #owner:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Subscribe Button Container & Positioning */
+
+body.yt-spiral-tube-theme ytd-watch-metadata #owner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button {
+  margin-left: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Subscribe Button */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  > ytd-subscribe-button-renderer
+  > yt-smartimation
+  > div
+  > yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  ytd-button-renderer
+  yt-button-shape
+  > button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;  padding: 0 20px !important;
+  height: 40px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  > ytd-subscribe-button-renderer
+  > yt-smartimation
+  > div
+  > yt-button-shape
+  > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  ytd-button-renderer
+  yt-button-shape
+  > button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1)) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Subscribed State */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--ypp-text-secondary, #aaa) !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-subscribe-button-renderer[subscribed] yt-button-shape > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button ytd-button-renderer.style-text yt-button-shape > button:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content {
+  color: inherit !important;
+}
+
+/* Actions Menu Container */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions.ytd-watch-metadata,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #top-level-buttons-computed,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #flexible-item-buttons {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Base button container fixes (remove native YouTube backgrounds that cause double layering) */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-button-renderer
+  yt-button-shape
+  button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-download-button-renderer
+  yt-button-shape
+  button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button {
+  border: none !important; /* Will be overridden by above specific rules if subscribe */
+}
+
+/* Hide native ripple and dark mode overlay pseudo-elements responsible for the "double view" */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::before,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-button-shape button::after,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-touch-feedback-shape,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::before,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-button-shape button::after,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #subscribe-button yt-touch-feedback-shape {
+  display: none !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-button-renderer
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-download-button-renderer
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button
+  .yt-spec-button-shape-next__button-text-content {
+  margin: 0 !important;
+}
+
+/* Individual Action Pills (Share, Download, Save, etc.) applying glassmorphism to the outer button structure */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-button-renderer
+  yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-download-button-renderer
+  yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-download-button-renderer
+  yt-button-shape-with-explainer
+  yt-button-shape
+  > button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  > button {
+  border-radius: 100px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-weight: 500 !important;
+  color: var(--ypp-text-primary, #fff) !important;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-button-renderer
+  yt-button-shape
+  > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-download-button-renderer
+  yt-button-shape
+  > button:hover,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner
+  ytd-menu-renderer
+  yt-button-shape
+  button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Segmented Like/Dislike Button Fixes */
+
+/* Reset background on the container so we can style the inner buttons */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-like-button yt-button-shape button,
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #segmented-dislike-button yt-button-shape button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer {
+  background: rgba(255, 255, 255, 0.08) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 100px !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 36px !important;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Like button side */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+  yt-button-shape:first-child
+  button {
+  border-radius: 100px 0 0 100px !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+}
+
+/* Dislike button side */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme ytd-segmented-like-dislike-button-renderer
+  yt-button-shape:last-child
+  button {
+  border-radius: 0 100px 100px 0 !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Adjust icons inside buttons */
+
+html[data-ypp-ui-design] body.yt-spiral-tube-theme #actions-inner yt-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* 3. Pop-up Menus Redesign (3-dot menus) */
+
+body.yt-spiral-tube-theme tp-yt-paper-listbox {
+  border-radius: 16px !important;
+  background: rgba(25, 25, 25, 0.8) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Added micro-animations on hovering menu items */
+
+body.yt-spiral-tube-theme ytd-menu-service-item-renderer,
+body.yt-spiral-tube-theme ytd-menu-navigation-item-renderer {
+  border-radius: 8px !important;
+  margin: 4px 8px !important;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+body.yt-spiral-tube-theme ytd-menu-service-item-renderer:hover,
+body.yt-spiral-tube-theme ytd-menu-navigation-item-renderer:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  transform: translateX(4px) !important;
+}
+
+/* 4. Search Results Chapters Redesign */
+
+/* The cleanest approach for a grid layout is to remove this element. */
+
+/* Also hide any accompanying chapter expanding teasers inside search video cards */
+
+/* ===========================================================================
+   GLOBAL UI FIXES (All Pages)
+   Fixes white glowing backgrounds on masthead icons, logos, and chips,
+   and prevents horizontal scrollbar on the body.
+   =========================================================================== */
+
+/* Global overflow fix to prevent bottom slidebar */
+
+html.yt-spiral-tube-theme body {
+  overflow-x: hidden !important;
+}
+
+/* Fix white backgrounds on masthead buttons and chips globally [DISABLED DUE TO INVISIBLE NAVIGATION BUGS] */
+
+/* Fix the filter chips globally [DISABLED DUE TO INVISIBLE CHIPS BUG] */
+
+html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer[selected],
+html.yt-spiral-tube-theme yt-chip-cloud-chip-renderer.iron-selected {
+  --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.15) !important;
+  --yt-spec-button-chip-background-hover: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+/* ===================================================================================
+   10. EXTENDED COMPONENT COVERAGE
+   =================================================================================== */
+
+/* Shorts Shelves */
+html.yt-spiral-tube-theme ytd-reel-shelf-renderer {
+    background-color: transparent !important;
+}
+html.yt-spiral-tube-theme ytd-reel-item-renderer,
+html.yt-spiral-tube-theme ytd-reel-video-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-md) !important;
+    box-shadow: var(--ypp-shadow-base) !important;
+}
+
+/* Live Chat */
+html.yt-spiral-tube-theme ytd-live-chat-frame,
+html.yt-spiral-tube-theme yt-live-chat-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    overflow: hidden !important;
+}
+
+/* Playlist Panels */
+html.yt-spiral-tube-theme ytd-playlist-panel-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+}
+
+/* Community Posts */
+html.yt-spiral-tube-theme ytd-backstage-post-thread-renderer,
+html.yt-spiral-tube-theme ytd-backstage-post-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    padding: 16px !important;
+    box-shadow: var(--ypp-shadow-base) !important;
+}
+
+/* Comment Inputs */
+html.yt-spiral-tube-theme ytd-commentbox,
+html.yt-spiral-tube-theme ytd-comment-simplebox-renderer {
+    background-color: var(--ypp-bg-surface) !important;
+    border-radius: var(--ypp-radius-lg) !important;
+    padding: 12px !important;
+}

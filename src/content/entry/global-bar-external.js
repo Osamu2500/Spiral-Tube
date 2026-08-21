@@ -193,22 +193,22 @@
     // ── 2. Load feature modules AFTER namespace is ready ─────────────────────
     // Dynamic imports are inlined by Rollup but execute after the awaits,
     // so BaseFeature above is guaranteed to exist when the modules run.
-    await import('../features/player/global-bar-ui.js');
-    await import('../features/player/global-bar.js');
+    await import('../global/global-bar/global-bar-ui.js');
+    await import('../global/global-bar/global-bar.js');
 
     // Load custom cursor
-    await import('../features/global/ui-tweaks/custom-cursor.js');
+    await import('../global/features/custom-cursor.js');
     
     // Load rich features
-    await import('../features/player/media-effects/volume-booster/volume-booster.js');
-    await import('../features/player/media-effects/volume-booster/volume-booster-ui.js');
-    await import('../features/player/media-effects/video-filters/video-filters-presets.js');
-    await import('../features/player/media-effects/video-filters/video-filters-overlay.js');
-    await import('../features/player/media-effects/video-filters/video-filters-ui.js');
-    await import('../features/player/media-effects/video-filters/video-filters.js');
-    await import('../features/player/enhancements/video-speed-controller.js');
-    await import('../features/player/domain-memory.js');
-    await import('../features/player/domain-memory-ui.js');
+    await import('../pages/watch/player/media-effects/volume-booster/volume-booster.js');
+    await import('../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js');
+    await import('../pages/watch/player/media-effects/video-filters/video-filters-presets.js');
+    await import('../pages/watch/player/media-effects/video-filters/video-filters-overlay.js');
+    await import('../pages/watch/player/media-effects/video-filters/video-filters-ui.js');
+    await import('../pages/watch/player/media-effects/video-filters/video-filters.js');
+    await import('../pages/watch/player/enhancements/video-speed-controller.js');
+    await import('../pages/watch/player/domain-memory.js');
+    await import('../pages/watch/player/domain-memory-ui.js');
 
     // ── 3. Read user settings ────────────────────────────────────────────────
     let settings = {};

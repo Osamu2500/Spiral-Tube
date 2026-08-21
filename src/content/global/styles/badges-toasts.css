@@ -1,0 +1,340 @@
+/* ===================================================================================
+   PREMIUM VERIFIED BADGE
+   =================================================================================== */
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist {
+    background: var(--ypp-accent, #3ea6ff) !important;
+    border-radius: 50% !important;
+    width: 14px !important;
+    height: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 0 8px var(--ypp-accent, #3ea6ff) !important;
+    margin-left: 4px !important;
+    transition: all 0.3s ease;
+    padding: 0 !important;
+}
+
+/* Ensure the checkmark path is white/dark based on contrast, but let's force white with the accent color */
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon {
+    width: 10px !important;
+    height: 10px !important;
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon svg,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg {
+    fill: #fff !important;
+    color: #fff !important;
+}
+
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified yt-icon svg path,
+html.yt-spiral-tube-theme ytd-badge-supported-renderer .badge-style-type-verified-artist yt-icon svg path {
+    fill: #fff !important;
+}
+
+/* Hover glow effect for the verified badge */
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified,
+html.yt-spiral-tube-theme ytd-rich-item-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist,
+html.yt-spiral-tube-theme ytd-video-renderer:hover ytd-badge-supported-renderer .badge-style-type-verified-artist {
+    box-shadow: 0 0 12px var(--ypp-accent, #3ea6ff) !important;
+    transform: scale(1.15);
+}
+
+/* ===================================================================================
+   MARK AS WATCHED (MANUAL)
+   =================================================================================== */
+
+.ypp-watched-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: var(--ypp-z-content);
+  cursor: pointer;
+}
+
+ytd-thumbnail:hover .ypp-watched-icon {
+  opacity: 0.8;
+}
+
+.ypp-watched-icon:hover {
+  opacity: 1 !important;
+  transform: scale(1.1);
+  background: var(--ypp-accent, #3ea6ff);
+}
+
+.ypp-watched-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Visually indicate manually watched videos */
+
+.ypp-manually-watched::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--ypp-accent, #f00);
+  z-index: var(--ypp-z-content);
+}
+
+.ypp-manually-watched img {
+  opacity: 0.4;
+  filter: grayscale(0.5);
+}
+
+/* Advanced Filter Hidden Items */
+
+.ypp-filter-hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   KEYBOARD SHORTCUT TOAST
+   Small action label that fades in at the bottom of the screen on keypress.
+   ========================================================================== */
+
+.ypp-shortcut-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: rgba(20, 20, 30, 0.88);
+
+  color: #fff;
+  font-family: "Roboto", "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: var(--ypp-z-popup);
+  white-space: nowrap;
+}
+
+.ypp-shortcut-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   WATCH TIME ALERT OVERLAY
+   Dismissible reminder banner that slides in from the top-right.
+   ========================================================================== */
+
+/* =========================================================================
+   NEW FEATURES (Premium Logo & Resume Badges)
+   ========================================================================= */
+
+/* Expand primary column */
+
+.ypp-cinema-mode #primary {
+    max-width: 100% !important;
+}
+
+/* Darken the page background for immersion */
+
+.ypp-cinema-mode ytd-page-manager {
+    background: #050505 !important;
+}
+
+/* Dim masthead by default, hide completely on idle */
+
+/* Ultra-Dark Contrast for Video */
+
+.ypp-cinema-mode video {
+    filter: contrast(1.1) brightness(0.95) !important;
+}
+
+/* Letterbox Subtitle Repositioning */
+
+/* Vignette Overlay */
+
+.ypp-cinema-mode #player-container-outer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 130%);
+    z-index: 10;
+    opacity: 1;
+    animation: yppFadeInVignette 2s ease forwards;
+}
+
+@keyframes yppFadeInVignette {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Curtain Animation */
+
+@keyframes yppOpenCurtains {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}
+
+.ypp-cinema-mode::before, .ypp-cinema-mode::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    pointer-events: none;
+    animation: yppOpenCurtains 1.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.ypp-cinema-mode::before {
+    left: 0;
+    transform-origin: left;
+    box-shadow: inset -10px 0 30px rgba(0,0,0,0.8);
+}
+
+.ypp-cinema-mode::after {
+    right: 0;
+    transform-origin: right;
+    box-shadow: inset 10px 0 30px rgba(0,0,0,0.8);
+}
+
+/* Minimal Mode — strip non-essentials */
+
+/* Hide action buttons row (Like/Share/Save/…) */
+
+.ypp-minimal-mode ytd-watch-metadata #top-level-buttons-computed,
+.ypp-minimal-mode ytd-watch-metadata #flexible-item-buttons {
+    opacity: 0.2;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.ypp-minimal-mode ytd-watch-metadata #top-level-buttons-computed:hover,
+.ypp-minimal-mode ytd-watch-metadata #flexible-item-buttons:hover {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Fade subscriptions/channel row */
+
+.ypp-minimal-mode #owner {
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.ypp-minimal-mode #owner:hover { opacity: 1; }
+
+/* Collapse comments section */
+
+.ypp-minimal-mode #comments {
+    opacity: 0.08;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    max-height: 60px;
+    overflow: hidden;
+}
+body.ypp-study-mode #ypp-study-notes {
+    width: var(--ytd-watch-flexy-sidebar-width, 402px);
+    margin-left: 24px;
+    flex-shrink: 0;
+    margin-top: 24px;
+}
+
+@media (max-width: 1000px) {
+    body.ypp-study-mode #ypp-study-notes {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+ * YOUTUBE UI AESTHETIC SYNC
+ * ══════════════════════════════════════════════════════════════════════════ */
+
+/* =========================================================================
+   GRAYSCALE THUMBNAILS (Re-implemented via Global Layout)
+   ========================================================================= */
+
+body.ypp-grayscale-thumbs ytd-thumbnail img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail img {
+    filter: grayscale(100%) !important;
+    transition: filter 0.3s ease !important;
+}
+
+body.ypp-grayscale-thumbs ytd-thumbnail:hover img,
+body.ypp-grayscale-thumbs ytd-playlist-thumbnail:hover img {
+    filter: grayscale(0%) !important;
+}
+
+/* =========================================================================
+   NEW FEATURES (Premium Logo & Resume Badges)
+   ========================================================================= */
+
+/* --- PREMIUM LOGO --- */
+body.ypp-premium-logo ytd-topbar-logo-renderer { margin-left: 16px !important; display: flex !important; align-items: center !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo { display: flex !important; align-items: center !important; text-decoration: none !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo > * { display: none !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo::before { content: ""; display: block !important; width: 34px !important; height: 24px !important; background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgNzAiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik05Ny43LDExQzk2LjUsNi42LDkzLDMuMSw4OC42LDJDODAuOCwwLDUwLDAsNTAsMFMxOS4yLDAsMTEuNCwyQzcsMy4xLDMuNSw2LjYsMi4zLDExQzAsMTguOCwwLDM1LDAsMzVzMCwxNi4yLDIuMywyNGMxLjIsNC40LDQuNyw3LjksOS4xLDlDMTkuMiw3MCw1MCw3MCw1MCw3MHMzMC44LDAsMzguNi0yYzQuNC0xLjIsNy45LTQuNyw5LjEtOUMxMDAsNTEuMiwxMDAsMzUsMTAwLDM1UzEwMCwxOC44LDk3LjcsMTF6Ii8+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQwLDUwbDI2LTE1TDQwLDIwVjUweiIvPjwvc3ZnPg==") !important; background-size: contain !important; background-repeat: no-repeat !important; background-position: center !important; margin-right: 2px !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer a#logo::after { content: "Premium"; display: block !important; font-family: "YouTube Sans", "Roboto", "Segoe UI", Arial, sans-serif !important; font-size: 22px !important; font-weight: 500 !important; color: var(--yt-spec-text-primary, #FFFFFF) !important; margin-left: 2px !important; letter-spacing: -0.5px !important; line-height: 22px !important; }
+body.ypp-premium-logo ytd-topbar-logo-renderer #country-code { position: relative !important; display: block !important; margin-left: 2px !important; top: -8px !important; color: var(--yt-spec-text-secondary, #aaaaaa) !important; font-size: 11px !important; font-family: "Roboto", sans-serif !important; font-weight: 500 !important; }
+
+/* --- RESUME BADGES --- */
+.yt-pro-pbar-wrap { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(0,0,0,0.5); z-index: 100; pointer-events: none; }
+.yt-pro-pbar { height: 100%; background: #3ea6ff; transition: width 0.2s ease; }
+.yt-pro-resume-badge {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.ypp-account-menu {
+    width: 100%;
+}
+
+.ypp-more-items {
+    display: none;
+    overflow: hidden;
+    animation: ypp-fade-down 0.2s ease forwards;
+}
+
+.ypp-more-items.open {
+    display: block;
+}
+
+.ypp-chevron {
+    transition: transform 0.2s ease;
+    margin-left: auto;
+}
+
+@keyframes ypp-fade-down {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HIDE SAVE AND WATCH LATER BUTTONS HOVERING OVER VIDEO CARDS */
+ytd-thumbnail-overlay-toggle-button-renderer,
+ytd-thumbnail-overlay-button-renderer {
+  display: none !important;
+}
+

@@ -1,0 +1,226 @@
+/* ===================================================================================
+   6. SEARCH REDESIGN
+   =================================================================================== */
+
+/* ── 0. SEARCH PAGE: MINI-GUIDE & LAYOUT MARGIN FIX ──────────────── */
+
+/* Reinforces the global mini-guide rule with a search-scoped, higher-specificity
+   selector. This prevents the blank left gutter that appears on /results when
+   YouTube's own search-page stylesheet overrides the generic rule. */
+
+/* Stretch the search container edge-to-edge (applied for ALL search page
+   layouts, not just grid mode, so the fix survives a grid toggle). */
+
+/* Hide the secondary sidebar column (watch-next / ads) on the search page —
+   keeps the layout single-column and prevents a gap on the right. */
+
+/* ── 1. CONTAINER RESETS ──────────────────────────────────────────── */
+
+/* ── 2. MASTER GRID — lives on the section-list, not the item section ─── */
+
+/* Architecture:
+     ytd-section-list-renderer > #contents   ← CSS GRID (this rule)
+       ytd-item-section-renderer             ← display:contents (transparent)
+         ytd-item-section-renderer > #contents ← display:contents (transparent)
+           ytd-video-renderer                ← GRID CELL
+*/
+
+/* Bulletproof shelf grids in case JS fallback misses the container */
+
+/* Flatten item-section wrappers so video cards land directly in master grid */
+
+/* BUG 3: Staggered/misaligned middle cards (Image 3) */
+
+/* BUG 4 & OPTION B: Force full width for shelf renderers */
+
+/* FIX 4c: Convert shelf inner lists to grids so items inside them (like playlists) form grid cards! */
+
+/* OPTION A: Hide completely if clean search or hide search shelves is on */
+
+/* ── 4. FULL-WIDTH ITEMS (ads, continuation, non-card types) ─────── */
+
+/* =====================================================================
+   SEARCH GRID: INTERNAL CARD LAYOUT — VERTICAL STACK (matches homepage)
+   =====================================================================
+   The native ytd-video-renderer has a HORIZONTAL layout:
+     • ytd-thumbnail   → fixed width ~246px, floated/positioned left
+     • .text-wrapper   → margin-left ~246px to sit beside the thumbnail
+   We MUST override both CSS AND inline styles (the JS _cleanInlineStyles
+   method clears the inline values; these rules cover any stragglers).
+   ===================================================================== */
+
+/* ── 1. #dismissible or #content: primary inner wrapper → column stack ────────── */
+
+/* ── 1b. Brute-force any inner links to column stack (sometimes YouTube wraps the whole thing in <a>) ────────── */
+
+/* ── 2. Thumbnail: override the inline width YouTube's Polymer injects ─ */
+
+/* ── 3. Thumbnail inner elements ─────────────────────────────────── */
+
+/* ── 4. .text-wrapper: CRITICAL — zero out the side-offset margin ─── */
+
+/* ── 4. .text-wrapper: Grid layout to mimic Homepage ─── */
+
+/* Maintain flex column behavior for Playlists and Radios since they lack avatars */
+
+/* Flatten the internal wrappers to participate in grid */
+
+/* Avatar to grid area */
+
+/* Title wrapper to grid area */
+
+/* Channel name to grid area */
+
+/* Metadata (views/time) to grid area */
+
+/* Hide description text and badges for unified look */
+
+/* ── 9. Playlist / radio internal wrappers ───────────────────────── */
+
+/* Brute force all wrappers into flex columns */
+
+/* Hide YouTube's native 'stacked folder' backdrops for playlists */
+
+/* Ensure inner links don't inherit weird margins */
+
+/* ── 10. Action menu: pin to top-right corner of card ───────────── */
+
+/* Hover: identical float-and-glow to homepage cards */
+
+/* Strip the YouTube-native search-specific skew/arrow */
+
+/* Fix prominent-thumb variants: force correct aspect ratio */
+
+/* Hide description snippet in grid mode (too cluttered) */
+
+/* Hide inline badge labels in grid mode */
+
+/* Hide chapter bars (too cluttered in grid) */
+
+/* Non-Video Elements Span Full Width (shelves, promos) */
+
+/* Channel card: spans 2 columns, not full row */
+
+/* Channel Result Card — glassmorphic square card spanning 2 grid columns */
+
+/* Force intermediate wrappers to be columns so text isn't clipped out of view */
+
+/* Force channel name alignment and visibility */
+
+/* Subscribe Button centered at bottom */
+
+/* Noise Section Hiding */
+
+/* Continuation item MUST remain visible — it is YouTube's scroll sentinel.
+   When it enters the viewport, YouTube's IntersectionObserver loads the next
+   page of results. Hiding it with display:none breaks infinite scroll entirely.
+   We just make it span the full row and keep it at the bottom of the grid. */
+
+/* Section separator spacing – works because item-section is display:contents,
+   these are effectively no-ops on layout but prevent flash of spacing during load */
+
+/* Strict Shorts Suppression on Search */
+
+/* Responsive Search Grid — matches homepage responsive breakpoints */
+
+/* ===================================================================================
+   6b. SEARCH REDESIGN — Supplement (Playlist Wrappers & Misc)
+   Grid flattening is handled in section 6 above.
+   =================================================================================== */
+
+/* Playlist Specific Badge Overlays */
+
+body.yt-spiral-tube-theme ytd-playlist-thumbnail {
+  border-radius: var(--ypp-radius-md) !important;
+  overflow: hidden !important;
+  margin-bottom: 12px !important;
+  position: relative !important;
+}
+
+/* Premium Playlist Side Panel Overlay */
+
+body.yt-spiral-tube-theme ytd-thumbnail-overlay-side-panel-renderer {
+  background: rgba(10, 10, 15, 0.6) !important;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  width: 35% !important;
+  max-width: 100% !important; /* Fixed: was 100px */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.yt-spiral-tube-theme ytd-thumbnail-overlay-side-panel-renderer yt-formatted-string {
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Mix/Radio Premium Overlay */
+
+body.yt-spiral-tube-theme ytd-thumbnail-overlay-bottom-panel-renderer {
+  background: linear-gradient(to top, rgba(10, 10, 15, 0.95), transparent) !important;
+  padding: 16px 8px 8px 8px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  height: 40% !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Premium Playlist "View Full Playlist" Label */
+
+/* Uniform metadata line colour across all card types */
+
+/* Hover-Only Menu Button */
+
+/* Non-Video Elements Span Full Width (Except Channels) */
+
+/* Shelf Internal Grid (e.g. "From related searches") */
+
+/* Annihilate Horizontal Scroll Containers */
+
+/* Gap Annihilation: Nuke Hidden Shorts and Spacers */
+
+/* Channel search renderer height fix merged into the primary rules at line 2628 */
+
+/* Chips rule deleted due to deduplication */
+
+/* Next/Prev Buttons */
+
+/* Responsive Search Grid - Forcing specific column counts for perfect cards */
+
+/* Responsive breakpoints for grid */
+
+/* Ensure chip bar doesn't interfere with grid */
+
+body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   SEARCH GRID — TARGETED BUG FIXES
+   ============================================================ */
+
+/* FIX 1: Circular avatar in search results — match homepage style */
+
+/* FIX 2: Duration badge visible in search grid */
+
+/* FIX 3: Remove gap caused by continuation loader spanning a full tall row */
+
+/* FIX 4: Playlist cards in grid — treat same as video cards, not full-width */
+
+/* FIX 4b: Playlist thumbnail overlay — video count badge */
+
+/* FIX 5: Mix/radio cards — same grid treatment as videos */
+
+/* FIX 6: Remove the large left gap on first load (image 2) —
+   caused by YouTube injecting a wide promo in column 1-2 before results load */
+
+/* FIX 7: Bracket/bracket artifacts (image 3 purple markers) —
+   these are ytd-search-refinement-card-renderer elements leaking into grid */
+

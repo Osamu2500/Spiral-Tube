@@ -14,21 +14,21 @@ import '../core/events/event-delegator.js';
 import '../core/system/feature-manager.js';
 
 // CSS Imports
-import '../features/global/core-styles.css';
-import '../core-framework/index.css';
-import '../features/global/layout/grid-layout.css';
-import '../features/player/player.css';
-import '../features/global/layout/header-ast.css';
-import '../features/global/layout/sidebar-ast.css';
-import '../features/pages/watch/comments.css';
-import '../features/pages/search/search-ast.css';
-import '../features/pages/library/playlist/playlist-ast.css';
-import '../features/pages/library/history/history-ast.css';
-import '../features/pages/subscriptions/subscriptions-ast.css';
-import '../features/pages/home/home-ast.css';
-import '../features/shorts/shorts-ast.css';
-import '../features/global/layout/header-nav.css';
-import '../features/pages/home/cards.css';
+import '../global/styles/core-styles.css';
+import '../design-system/index.css';
+import '../global/styles/grid-layout.css';
+import '../pages/watch/player/player.css';
+import '../global/styles/header-ast.css';
+import '../global/styles/sidebar-ast.css';
+import '../pages/watch/styles/comments.css';
+import '../pages/search/styles/search-ast.css';
+import '../pages/playlist/styles/playlist-ast.css';
+import '../pages/history/styles/history-ast.css';
+import '../pages/subscriptions/styles/subscriptions-ast.css';
+import '../pages/home/styles/home-ast.css';
+import '../pages/shorts/styles/shorts-ast.css';
+import '../global/styles/header-nav.css';
+import '../pages/home/styles/cards.css';
 
 // Managers (Phase 4.5)
 import '../core/managers/hotkeys-manager.js';
@@ -38,284 +38,284 @@ import '../core/managers/home-page-manager.js';
 import '../core/managers/subs-page-manager.js';
 import '../core/managers/search-page-manager.js';
 import '../core/managers/watch-page-manager.js';
-import '../core-framework/color/thumbnail-color-manager.js';
+import '../design-system/color/thumbnail-color-manager.js';
 
 // UI Architecture (Phase 4)
-import '../ui/managers/ui-manager.js';
-import '../ui/components/button.js';
-import '../ui/components/panel.js';
+import '../design-system/components/managers/ui-manager.js';
+import '../design-system/components/components/button.js';
+import '../design-system/components/components/panel.js';
 
 // Base feature class
 import '../core/system/base-feature.js';
-import { BaseFilterFeature } from '../features/global/filters/base-filter-feature.js';
+import { BaseFilterFeature } from '../global/declutter/base-filter-feature.js';
 window.YPP.FeatureManager.register(BaseFilterFeature);
 
-import { SplitScrolling } from '../features/player/enhancements/split-scrolling.js';
+import { SplitScrolling } from '../pages/watch/player/enhancements/split-scrolling.js';
 window.YPP.FeatureManager.register(SplitScrolling);
 
 // Global features
-import { ThemeManager } from '../features/global/ui-tweaks/theme.js';
+import { ThemeManager } from '../global/features/theme.js';
 window.YPP.FeatureManager.register(ThemeManager);
-import '../features/global/account-menu/account-menu-data.js';
-import '../features/global/account-menu/account-menu-ui.js';
-import { AccountMenu } from '../features/global/account-menu/account-menu.js';
+import '../global/features/account-menu-data.js';
+import '../global/features/account-menu-ui.js';
+import { AccountMenu } from '../global/features/account-menu.js';
 window.YPP.FeatureManager.register(AccountMenu);
-import { HeaderButton } from '../features/global/header-button.js';
+import { HeaderButton } from '../global/features/header-button.js';
 window.YPP.FeatureManager.register(HeaderButton);
-import { GridAnimator } from '../features/global/ui-tweaks/grid-animator.js';
+import { GridAnimator } from '../global/layout/grid-animator.js';
 window.YPP.FeatureManager.register(GridAnimator);
 // Toggles handled by GlobalLayoutManager
-import { ScreenFilters } from '../features/global/ui-tweaks/screen-filters.js';
+import { ScreenFilters } from '../global/declutter/screen-filters.js';
 window.YPP.FeatureManager.register(ScreenFilters);
-import { CustomCursor } from '../features/global/ui-tweaks/custom-cursor.js';
+import { CustomCursor } from '../global/features/custom-cursor.js';
 window.YPP.FeatureManager.register(CustomCursor);
 
-import '../features/global/behavior/watched-store.js';
-import { MultiSelect } from '../features/global/behavior/multi-select.js';
+import '../global/features/watched-store.js';
+import { MultiSelect } from '../global/features/multi-select.js';
 window.YPP.FeatureManager.register(MultiSelect);
-import '../features/global/ui-tweaks/multi-select.css';
+import '../global/styles/multi-select.css';
 
-import { HideWatched } from '../features/global/ui-tweaks/hide-watched.js';
+import { HideWatched } from '../global/declutter/hide-watched.js';
 window.YPP.FeatureManager.register(HideWatched);
-import { HideMetrics } from '../features/global/ui-tweaks/hide-metrics.js';
+import { HideMetrics } from '../global/declutter/hide-metrics.js';
 window.YPP.FeatureManager.register(HideMetrics);
-import { CopyLinkButton } from '../features/global/ui-tweaks/copy-link.js';
+import { CopyLinkButton } from '../global/features/copy-link.js';
 window.YPP.FeatureManager.register(CopyLinkButton);
-import { KeyboardShortcuts } from '../features/global/behavior/keyboard-shortcuts.js';
+import { KeyboardShortcuts } from '../global/features/keyboard-shortcuts.js';
 window.YPP.FeatureManager.register(KeyboardShortcuts);
-import '../features/global/filters/filter-ui-interactions.js';
-import '../features/global/filters/filters.css';
-import { DurationFilter } from '../features/global/filters/duration-filter.js';
+import '../global/declutter/filter-ui-interactions.js';
+import '../global/styles/filters.css';
+import { DurationFilter } from '../global/declutter/duration-filter.js';
 window.YPP.FeatureManager.register(DurationFilter);
-import { BlocklistFilter } from '../features/global/filters/blocklist-filter.js';
+import { BlocklistFilter } from '../global/declutter/blocklist-filter.js';
 window.YPP.FeatureManager.register(BlocklistFilter);
-import { FeedFilter } from '../features/global/filters/feed-filter.js';
+import { FeedFilter } from '../global/declutter/feed-filter.js';
 window.YPP.FeatureManager.register(FeedFilter);
-import { FiltersManager } from '../features/global/filters/filters-manager.js';
+import { FiltersManager } from '../global/declutter/filters-manager.js';
 window.YPP.FeatureManager.register(FiltersManager);
-import { CardPipeline } from '../features/global/filters/card-pipeline.js';
+import { CardPipeline } from '../global/features/card-pipeline.js';
 window.YPP.FeatureManager.register(CardPipeline);
-import { ViewsFilter } from '../features/global/filters/views-filter.js';
+import { ViewsFilter } from '../global/declutter/views-filter.js';
 window.YPP.FeatureManager.register(ViewsFilter);
-import { UploadDateFilter } from '../features/global/filters/upload-date-filter.js';
+import { UploadDateFilter } from '../global/declutter/upload-date-filter.js';
 window.YPP.FeatureManager.register(UploadDateFilter);
-import { ClickbaitFilter } from '../features/global/filters/clickbait-filter.js';
+import { ClickbaitFilter } from '../global/declutter/clickbait-filter.js';
 window.YPP.FeatureManager.register(ClickbaitFilter);
-import { ChannelBlacklist } from '../features/global/filters/channel-blacklist.js';
+import { ChannelBlacklist } from '../global/features/channel-blacklist.js';
 window.YPP.FeatureManager.register(ChannelBlacklist);
-import { ChannelWhitelist } from '../features/global/filters/channel-whitelist.js';
+import { ChannelWhitelist } from '../global/features/channel-whitelist.js';
 window.YPP.FeatureManager.register(ChannelWhitelist);
 
 
 // Layout features
-import { AutoScaleGrid } from '../features/global/layout/auto-scale-grid.js';
+import { AutoScaleGrid } from '../global/layout/auto-scale-grid.js';
 window.YPP.FeatureManager.register(AutoScaleGrid);
-import { HeaderNav } from '../features/global/layout/header-nav.js';
+import { HeaderNav } from '../global/features/header-nav.js';
 window.YPP.FeatureManager.register(HeaderNav);
-import { GridLayoutManager } from '../features/global/layout/layout-manager.js';
+import { GridLayoutManager } from '../global/layout/layout-manager.js';
 window.YPP.FeatureManager.register(GridLayoutManager);
 
 // Home page features
-import { HomeOrganizer } from '../features/pages/home/home-organizer.js';
+import { HomeOrganizer } from '../pages/home/features/home-organizer.js';
 window.YPP.FeatureManager.register(HomeOrganizer);
-import { CinematicMode } from '../features/pages/home/cinematic-mode.js';
+import { CinematicMode } from '../pages/home/layout/cinematic-mode.js';
 window.YPP.FeatureManager.register(CinematicMode);
 
 // Shorts features
-import { HideShorts } from '../features/shorts/modifiers/hide-shorts.js';
+import { HideShorts } from '../pages/shorts/declutter/hide-shorts.js';
 window.YPP.FeatureManager.register(HideShorts);
-import { RedirectShorts } from '../features/shorts/modifiers/redirect-shorts.js';
+import { RedirectShorts } from '../pages/shorts/features/redirect-shorts.js';
 window.YPP.FeatureManager.register(RedirectShorts);
-import { StopShortsLooping } from '../features/shorts/modifiers/stop-looping.js';
+import { StopShortsLooping } from '../pages/shorts/features/stop-looping.js';
 window.YPP.FeatureManager.register(StopShortsLooping);
-import { ShortsAutoScroll } from '../features/shorts/enhancements/auto-scroll.js';
+import { ShortsAutoScroll } from '../pages/shorts/features/auto-scroll.js';
 window.YPP.FeatureManager.register(ShortsAutoScroll);
-import { ShortsVolumeNormalizer } from '../features/shorts/enhancements/volume-normalizer.js';
+import { ShortsVolumeNormalizer } from '../pages/shorts/features/volume-normalizer.js';
 window.YPP.FeatureManager.register(ShortsVolumeNormalizer);
 
 // Subscription features
-import { FolderStorage } from '../features/pages/subscriptions/folder-storage.js';
+import { FolderStorage } from '../pages/subscriptions/features/folder-storage.js';
 window.YPP.FeatureManager.register(FolderStorage);
-import { CustomDialog } from '../features/pages/subscriptions/folder-ui.js';
+import { CustomDialog } from '../pages/subscriptions/features/folder-ui.js';
 window.YPP.FeatureManager.register(CustomDialog);
-import { ContextMenu } from '../features/pages/subscriptions/context-menu.js';
+import { ContextMenu } from '../pages/subscriptions/features/context-menu.js';
 window.YPP.FeatureManager.register(ContextMenu);
-import { SubscriptionFolders } from '../features/pages/subscriptions/subscription-folders.js';
+import { SubscriptionFolders } from '../pages/subscriptions/features/subscription-folders.js';
 window.YPP.FeatureManager.register(SubscriptionFolders);
-import { SubscriptionManager } from '../features/pages/subscriptions/subscription-manager.js';
+import { SubscriptionManager } from '../pages/subscriptions/features/subscription-manager.js';
 window.YPP.FeatureManager.register(SubscriptionManager);
-import { FolderFeed } from '../features/pages/subscriptions/folder-feed.js';
+import { FolderFeed } from '../pages/subscriptions/features/folder-feed.js';
 window.YPP.FeatureManager.register(FolderFeed);
-import { DeckMode } from '../features/pages/subscriptions/deck-mode.js';
+import { DeckMode } from '../pages/subscriptions/layout/deck-mode.js';
 window.YPP.FeatureManager.register(DeckMode);
-import { SubscriptionsOrganizer } from '../features/pages/subscriptions/index.js';
+import { SubscriptionsOrganizer } from '../pages/subscriptions/features/index.js';
 window.YPP.FeatureManager.register(SubscriptionsOrganizer);
-import { ChannelHealth } from '../features/pages/subscriptions/channel-health.js';
+import { ChannelHealth } from '../pages/subscriptions/features/channel-health.js';
 window.YPP.FeatureManager.register(ChannelHealth);
-import { GroupSidebar } from '../features/pages/subscriptions/group-sidebar.js';
+import { GroupSidebar } from '../pages/subscriptions/layout/group-sidebar.js';
 window.YPP.FeatureManager.register(GroupSidebar);
 
 // Layout features
-import { ChannelColumns } from '../features/global/layout/channel-columns.js';
+import { ChannelColumns } from '../global/features/channel-columns.js';
 window.YPP.FeatureManager.register(ChannelColumns);
-import { FeedGridColumns } from '../features/global/layout/feed-grid-columns.js';
+import { FeedGridColumns } from '../global/layout/feed-grid-columns.js';
 window.YPP.FeatureManager.register(FeedGridColumns);
 
 // Search features
-import { SearchViewMode } from '../features/pages/search/search-view-mode.js';
+import { SearchViewMode } from '../pages/search/layout/search-view-mode.js';
 window.YPP.FeatureManager.register(SearchViewMode);
-import { SearchObserver } from '../features/pages/search/search-observer.js';
+import { SearchObserver } from '../pages/search/features/search-observer.js';
 window.YPP.FeatureManager.register(SearchObserver);
-import { SearchFilter } from '../features/pages/search/search-filter.js';
+import { SearchFilter } from '../pages/search/declutter/search-filter.js';
 window.YPP.FeatureManager.register(SearchFilter);
-import { SearchRedesign } from '../features/pages/search/search-redesign.js';
+import { SearchRedesign } from '../pages/search/layout/search-redesign.js';
 window.YPP.FeatureManager.register(SearchRedesign);
 
 
 // Library & History features
 
-import { HistoryRedesign } from '../features/pages/library/history/history-redesign.js';
+import { HistoryRedesign } from '../pages/history/layout/history-redesign.js';
 window.YPP.FeatureManager.register(HistoryRedesign);
-import { PlaylistRedesign } from '../features/pages/library/playlist/playlist-redesign.js';
+import { PlaylistRedesign } from '../pages/playlist/layout/playlist-redesign.js';
 window.YPP.FeatureManager.register(PlaylistRedesign);
-import { PlaylistDuration } from '../features/pages/library/playlist/duration-calculator.js';
+import { PlaylistDuration } from '../pages/playlist/features/duration-calculator.js';
 window.YPP.FeatureManager.register(PlaylistDuration);
-import { ReversePlaylist } from '../features/pages/library/playlist/reverse-playlist.js';
+import { ReversePlaylist } from '../pages/playlist/features/reverse-playlist.js';
 window.YPP.FeatureManager.register(ReversePlaylist);
 
 // Watch page features
-import { WatchHistoryTracker } from '../features/pages/watch/watch-history.js';
+import { WatchHistoryTracker } from '../pages/watch/features/watch-history.js';
 window.YPP.FeatureManager.register(WatchHistoryTracker);
-import { SmartHistory } from '../features/pages/watch/smart-history.js';
+import { SmartHistory } from '../pages/watch/features/smart-history.js';
 window.YPP.FeatureManager.register(SmartHistory);
-import { WatchTimeAlert } from '../features/pages/watch/watch-time-alert.js';
+import { WatchTimeAlert } from '../pages/watch/features/watch-time-alert.js';
 window.YPP.FeatureManager.register(WatchTimeAlert);
-import { WatchTimeLimit } from '../features/pages/watch/watch-time-limit.js';
+import { WatchTimeLimit } from '../pages/watch/features/watch-time-limit.js';
 window.YPP.FeatureManager.register(WatchTimeLimit);
-import { ContinueWatching } from '../features/pages/watch/continue-watching.js';
+import { ContinueWatching } from '../pages/watch/features/continue-watching.js';
 window.YPP.FeatureManager.register(ContinueWatching);
-import { ZenMode } from '../features/pages/watch/zen-mode.js';
+import { ZenMode } from '../pages/watch/layout/zen-mode.js';
 window.YPP.FeatureManager.register(ZenMode);
-import { FocusMode } from '../features/pages/watch/focus-mode.js';
+import { FocusMode } from '../pages/watch/layout/focus-mode.js';
 window.YPP.FeatureManager.register(FocusMode);
-import { StudyMode } from '../features/pages/watch/study-mode.js';
+import { StudyMode } from '../pages/watch/layout/study-mode.js';
 window.YPP.FeatureManager.register(StudyMode);
-import { CommentFilter } from '../features/pages/watch/comment-filter.js';
+import { CommentFilter } from '../pages/watch/declutter/comment-filter.js';
 window.YPP.FeatureManager.register(CommentFilter);
-import { WatchRedesign } from '../features/pages/watch/watch-redesign.js';
+import { WatchRedesign } from '../pages/watch/layout/watch-redesign.js';
 window.YPP.FeatureManager.register(WatchRedesign);
-import { InlineChannelButtons } from '../features/pages/watch/inline-channel-buttons.js';
+import { InlineChannelButtons } from '../pages/watch/features/inline-channel-buttons.js';
 window.YPP.FeatureManager.register(InlineChannelButtons);
-import { SeamlessMode } from '../features/pages/watch/seamless-mode.js';
+import { SeamlessMode } from '../pages/watch/layout/seamless-mode.js';
 window.YPP.FeatureManager.register(SeamlessMode);
 
 // Player features (imported to register on window.YPP.features for WatchPageManager)
-import '../features/player/player-bar-ui.js';
-import '../features/player/player-controls.js';
-import { SnapshotButton } from '../features/player/controls/snapshot-button.js';
+import '../pages/watch/player/player-bar-ui.js';
+import '../pages/watch/player/player-controls.js';
+import { SnapshotButton } from '../pages/watch/player/controls/snapshot-button.js';
 window.YPP.FeatureManager.register(SnapshotButton);
-import { LoopButton } from '../features/player/controls/loop-button.js';
+import { LoopButton } from '../pages/watch/player/controls/loop-button.js';
 window.YPP.FeatureManager.register(LoopButton);
-import '../features/player/player-settings-menu.js';
+import '../pages/watch/player/player-settings-menu.js';
 // FilterPresets is a standalone UI/data manager, not a standard BaseFeature. Keep standard import.
-import '../features/player/filter-presets.js';
-import { GlobalBarUI } from '../features/player/global-bar-ui.js';
+import '../pages/watch/player/filter-presets.js';
+import { GlobalBarUI } from '../global/global-bar/global-bar-ui.js';
 window.YPP.FeatureManager.register(GlobalBarUI);
-import { GlobalPlayerBar } from '../features/player/global-bar.js';
+import { GlobalPlayerBar } from '../global/global-bar/global-bar.js';
 window.YPP.FeatureManager.register(GlobalPlayerBar);
-import { PlayerTools } from '../features/player/controls/player-tools.js';
+import { PlayerTools } from '../pages/watch/player/controls/player-tools.js';
 window.YPP.FeatureManager.register(PlayerTools);
-import { AutoLike } from '../features/player/automation/auto-like.js';
+import { AutoLike } from '../pages/watch/player/automation/auto-like.js';
 window.YPP.FeatureManager.register(AutoLike);
-import { BookmarksManager } from '../features/player/controls/bookmarks.js';
+import { BookmarksManager } from '../pages/watch/player/controls/bookmarks.js';
 window.YPP.FeatureManager.register(BookmarksManager);
-import { IntentionalDelay } from '../features/player/enhancements/intentional-delay.js';
+import { IntentionalDelay } from '../pages/watch/player/enhancements/intentional-delay.js';
 window.YPP.FeatureManager.register(IntentionalDelay);
 
 
 // YouTube Pro Plus ported features
-import { PremiumLogo } from '../features/global/ui-tweaks/premium-logo.js';
+import { PremiumLogo } from '../global/features/premium-logo.js';
 window.YPP.FeatureManager.register(PremiumLogo);
 // import { SmartDownload } from '../features/player/enhancements/smart-download.js';
 // window.YPP.FeatureManager.register(SmartDownload);
-import { ResumeBadges } from '../features/global/ui-tweaks/resume-badges.js';
+import { ResumeBadges } from '../global/features/resume-badges.js';
 window.YPP.FeatureManager.register(ResumeBadges);
 
-import { VideoSpeedController } from '../features/player/enhancements/video-speed-controller.js';
+import { VideoSpeedController } from '../pages/watch/player/enhancements/video-speed-controller.js';
 window.YPP.FeatureManager.register(VideoSpeedController);
-import { AudioEQ } from '../features/player/media-effects/audio-eq.js';
+import { AudioEQ } from '../pages/watch/player/media-effects/audio-eq.js';
 window.YPP.FeatureManager.register(AudioEQ);
-import { AutoSubtitles } from '../features/player/automation/auto-subtitles.js';
+import { AutoSubtitles } from '../pages/watch/player/automation/auto-subtitles.js';
 // Always purge leftover subtitle DOM from previous sessions before deciding whether to enable.
 // This is what prevents the custom subtitles from appearing when the feature is toggled OFF.
 AutoSubtitles._purgeOrphans();
 window.YPP.FeatureManager.register(AutoSubtitles);
-import { AutoTranscript } from '../features/player/automation/auto-transcript.js';
+import { AutoTranscript } from '../pages/watch/player/automation/auto-transcript.js';
 window.YPP.FeatureManager.register(AutoTranscript);
-import { MiniPlayerScroll } from '../features/player/automation/mini-player-scroll.js';
+import { MiniPlayerScroll } from '../pages/watch/player/automation/mini-player-scroll.js';
 window.YPP.FeatureManager.register(MiniPlayerScroll);
-import { VSCAudioSupport } from '../features/player/enhancements/vsc-audio-support.js';
+import { VSCAudioSupport } from '../pages/watch/player/enhancements/vsc-audio-support.js';
 window.YPP.FeatureManager.register(VSCAudioSupport);
-import { VSCHideByDefault } from '../features/player/enhancements/vsc-hide-by-default.js';
+import { VSCHideByDefault } from '../pages/watch/player/enhancements/vsc-hide-by-default.js';
 window.YPP.FeatureManager.register(VSCHideByDefault);
-import { VSCForceSpeed } from '../features/player/enhancements/vsc-force-speed.js';
+import { VSCForceSpeed } from '../pages/watch/player/enhancements/vsc-force-speed.js';
 window.YPP.FeatureManager.register(VSCForceSpeed);
-import { VSCRememberSpeed } from '../features/player/enhancements/vsc-remember-speed.js';
+import { VSCRememberSpeed } from '../pages/watch/player/enhancements/vsc-remember-speed.js';
 window.YPP.FeatureManager.register(VSCRememberSpeed);
 
-import '../features/player/media-effects/video-filters/video-filters-presets.js';
-import '../features/player/media-effects/video-filters/video-filters-overlay.js';
-import '../features/player/media-effects/video-filters/video-filters-ui.js';
-import { VideoFilters } from '../features/player/media-effects/video-filters/video-filters.js';
+import '../pages/watch/player/media-effects/video-filters/video-filters-presets.js';
+import '../pages/watch/player/media-effects/video-filters/video-filters-overlay.js';
+import '../pages/watch/player/media-effects/video-filters/video-filters-ui.js';
+import { VideoFilters } from '../pages/watch/player/media-effects/video-filters/video-filters.js';
 window.YPP.FeatureManager.register(VideoFilters);
-import '../features/player/media-effects/volume-booster/volume-booster-ui.js';
-import { VolumeBooster } from '../features/player/media-effects/volume-booster/volume-booster.js';
+import '../pages/watch/player/media-effects/volume-booster/volume-booster-ui.js';
+import { VolumeBooster } from '../pages/watch/player/media-effects/volume-booster/volume-booster.js';
 window.YPP.FeatureManager.register(VolumeBooster);
-import '../features/player/domain-memory-ui.js';
-import { DomainMemory } from '../features/player/domain-memory.js';
+import '../pages/watch/player/domain-memory-ui.js';
+import { DomainMemory } from '../pages/watch/player/domain-memory.js';
 window.YPP.FeatureManager.register(DomainMemory);
-import { AutoQuality } from '../features/player/automation/auto-quality.js';
+import { AutoQuality } from '../pages/watch/player/automation/auto-quality.js';
 window.YPP.FeatureManager.register(AutoQuality);
-import { TimeDisplay } from '../features/player/enhancements/time-display.js';
+import { TimeDisplay } from '../pages/watch/player/enhancements/time-display.js';
 window.YPP.FeatureManager.register(TimeDisplay);
 
-import { AdSkipper } from '../features/player/automation/ad-skipper.js';
+import { AdSkipper } from '../pages/watch/player/automation/ad-skipper.js';
 window.YPP.FeatureManager.register(AdSkipper);
-import { AmbientMode } from '../features/player/media-effects/ambient-mode/ambient-mode.js';
+import { AmbientMode } from '../pages/watch/player/media-effects/ambient-mode/ambient-mode.js';
 window.YPP.FeatureManager.register(AmbientMode);
-import { AudioMode } from '../features/player/media-effects/ambient-mode/audio-mode.js';
+import { AudioMode } from '../pages/watch/player/media-effects/ambient-mode/audio-mode.js';
 window.YPP.FeatureManager.register(AudioMode);
-import { ClassicProgressBar } from '../features/player/controls/classic-progress-bar.js';
+import { ClassicProgressBar } from '../pages/watch/player/controls/classic-progress-bar.js';
 window.YPP.FeatureManager.register(ClassicProgressBar);
-import { VideoResumer } from '../features/player/automation/video-resumer.js';
+import { VideoResumer } from '../pages/watch/player/automation/video-resumer.js';
 window.YPP.FeatureManager.register(VideoResumer);
-import { AutoPause } from '../features/player/automation/auto-pause.js';
+import { AutoPause } from '../pages/watch/player/automation/auto-pause.js';
 window.YPP.FeatureManager.register(AutoPause);
-import { AutoCinema } from '../features/player/automation/auto-cinema.js';
+import { AutoCinema } from '../pages/watch/player/automation/auto-cinema.js';
 window.YPP.FeatureManager.register(AutoCinema);
-import { AutoPiP } from '../features/player/automation/auto-pip.js';
+import { AutoPiP } from '../pages/watch/player/automation/auto-pip.js';
 window.YPP.FeatureManager.register(AutoPiP);
-import { RealCinemaMode } from '../features/player/enhancements/real-cinema-mode.js';
+import { RealCinemaMode } from '../pages/watch/player/enhancements/real-cinema-mode.js';
 window.YPP.FeatureManager.register(RealCinemaMode);
-import { LiveStreamTime } from '../features/player/enhancements/live-stream-time.js';
+import { LiveStreamTime } from '../pages/watch/player/enhancements/live-stream-time.js';
 window.YPP.FeatureManager.register(LiveStreamTime);
-import { TwoColumnSubscriptions } from '../features/pages/subscriptions/two-column-subscriptions.js';
+import { TwoColumnSubscriptions } from '../pages/subscriptions/features/two-column-subscriptions.js';
 window.YPP.FeatureManager.register(TwoColumnSubscriptions);
 
 
-import { SaveSupremeUI } from '../features/global/ui-tweaks/save-supreme-ui.js';
+import { SaveSupremeUI } from '../global/features/save-supreme-ui.js';
 window.YPP.FeatureManager.register(SaveSupremeUI);
-import { CustomizeYouTubeUI } from '../features/global/ui-tweaks/customize-youtube-ui.js';
+import { CustomizeYouTubeUI } from '../global/features/customize-youtube-ui.js';
 window.YPP.FeatureManager.register(CustomizeYouTubeUI);
-import { CPUTamer } from '../features/global/behavior/cpu-tamer.js';
+import { CPUTamer } from '../global/features/cpu-tamer.js';
 window.YPP.FeatureManager.register(CPUTamer);
-import { ReduceAnimations } from '../features/global/behavior/reduce-animations.js';
+import { ReduceAnimations } from '../global/features/reduce-animations.js';
 window.YPP.FeatureManager.register(ReduceAnimations);
-import { TabviewSidebar } from '../features/global/layout/tabview-sidebar.js';
+import { TabviewSidebar } from '../global/layout/tabview-sidebar.js';
 window.YPP.FeatureManager.register(TabviewSidebar);
-import { StarTubeLayout } from '../features/global/ui-tweaks/startube-layout.js';
+import { StarTubeLayout } from '../global/layout/startube-layout.js';
 window.YPP.FeatureManager.register(StarTubeLayout);
-import '../features/player/controls/sidebar-layout.css';
+import '../pages/watch/player/controls/sidebar-layout.css';
 
 // Main entry
 import './main.js';

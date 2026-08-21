@@ -1,0 +1,191 @@
+/* =========================================
+   NETFLIX SUBTITLES (From 3881)
+========================================= */
+body.ypp-netflix-subtitles .ytp-caption-segment {
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-weight: 500 !important;
+    text-shadow: 
+        0px 2px 4px rgba(0,0,0,0.8), 
+        0px 4px 8px rgba(0,0,0,0.8), 
+        0px 0px 10px rgba(0,0,0,0.6) !important;
+    background: transparent !important;
+}
+
+/* =========================================
+   RETRO 2011 LOGO (From 5285)
+========================================= */
+body.ypp-retro-logo #logo .style-scope.yt-icon {
+    display: none !important;
+}
+body.ypp-retro-logo #logo-container .logo {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2011.svg/320px-YouTube_Logo_2011.svg.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+    min-width: 100px !important;
+    min-height: 30px !important;
+}
+
+/* =========================================
+   EXTRA ROUNDED UI (From 8064)
+========================================= */
+body.ypp-extra-rounded-ui,
+body.ypp-extra-rounded-ui *,
+body.ypp-extra-rounded-ui *::before,
+body.ypp-extra-rounded-ui *::after {
+    --ytd-thumbnail-border-radius: 24px !important;
+    --yt-button-border-radius: 24px !important;
+    --yt-spec-menu-border-radius: 24px !important;
+    --yt-spec-badge-border-radius: 24px !important;
+    --yt-spec-avatar-border-radius: 24px !important;
+    --yt-spec-button-shape-border-radius: 24px !important;
+}
+
+body.ypp-extra-rounded-ui ytd-thumbnail,
+body.ypp-extra-rounded-ui ytd-thumbnail img,
+body.ypp-extra-rounded-ui ytd-playlist-panel-renderer,
+body.ypp-extra-rounded-ui .yt-spec-avatar-shape__image,
+body.ypp-extra-rounded-ui tp-yt-paper-button,
+body.ypp-extra-rounded-ui .yt-spec-button-shape-next,
+body.ypp-extra-rounded-ui #search-form {
+    border-radius: 24px !important;
+}
+
+/* =========================================
+   SAVE SUPREME UI (From 25092)
+========================================= */
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 90vw !important;
+    width: 500px !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytSheetViewModelHost {
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.75) !important;
+    border-radius: 12px !important;
+    height: 705px !important;
+    max-height: 80vh !important;
+    width: 100% !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHost {
+    background: rgba(0, 0, 0, 0.65) !important;
+
+    max-width: 100% !important;
+    border-radius: 12px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutHeaderContainer { 
+    display: none !important; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytContextualSheetLayoutContentContainer {
+    padding: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) yt-list-item-view-model[aria-pressed="true"] {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__container--has-subtitle {
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__image-container {
+    height: 58px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionThumbnailViewModelHost {
+    width: 104px !important;
+    height: 60px !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackSpacer, 
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytCollectionsStackCollectionStack1Small { 
+    display: none !important; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .ytThumbnailViewModelSmall {
+    border-radius: 6px !important;
+    margin: unset !important;
+    border: 1px solid rgba(255, 255, 255, 0.41) !important;
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__title { 
+    font-size: 1.9rem !important; 
+    font-weight: 500 !important; 
+}
+body.ypp-save-supreme-ui tp-yt-iron-dropdown:has(.ytCollectionThumbnailViewModelHost) .yt-list-item-view-model__text-wrapper .yt-list-item-view-model__subtitle-container { 
+    display: none !important; 
+}
+
+
+
+
+/* --- Lightsaber Progress Bar (Red Sith) --- */
+body.ypp-lightsaber-progress {
+    --ypp-lightsaber-color: #EB212E; 
+}
+body.ypp-lightsaber-progress .ytp-play-progress {
+    background: #fff2f2 !important;
+    box-shadow: 0px 0px 5px var(--ypp-lightsaber-color), 
+                0px 0px 5px var(--ypp-lightsaber-color), 
+                0px 0px 8px var(--ypp-lightsaber-color), 
+                0px 0px 10px var(--ypp-lightsaber-color) !important;
+}
+body.ypp-lightsaber-progress .ytp-scrubber-button {
+    background: #272727 !important;
+    border: solid 2px #d4d4d4 !important;
+    border-radius: 4px !important;
+    transform: scaleY(1.3) scaleX(0.7) !important;
+}
+
+/* --- Customize Your YouTube --- */
+body.ypp-hide-country-code #country-code {
+  display: none !important;
+}
+body.ypp-hide-thanks-donate button[aria-label="Thanks"],
+body.ypp-hide-thanks-donate #sponsor-button,
+body.ypp-hide-thanks-donate button[aria-label^="Show your support for"],
+body.ypp-hide-thanks-donate #contents > ytd-recognition-shelf-renderer,
+body.ypp-hide-thanks-donate a[title="Patreon"] {
+  display: none !important;
+}
+body.ypp-hide-player-branding .iv-branding,
+body.ypp-hide-player-branding .annotation-shape {
+  display: none !important;
+}
+body.ypp-hide-useless-guide-links #endpoint[title="Help"],
+body.ypp-hide-useless-guide-links #endpoint[title="Report history"],
+body.ypp-hide-useless-guide-links #endpoint[title="Send feedback"],
+body.ypp-hide-useless-guide-links #guide-content #footer {
+  display: none !important;
+}
+
+/* --- Hide Paid Promotion Banner --- */
+body.ypp-hide-paid-promotion .ad-container-single-media-element-annotations,
+body.ypp-hide-paid-promotion .ytp-paid-content-overlay-link,
+body.ypp-hide-paid-promotion .ytmPaidContentOverlayHost,
+body.ypp-hide-paid-promotion .ytp-paid-content-overlay,
+body.ypp-hide-paid-promotion .ytm-paid-content-overlay-renderer {
+  display: none !important;
+}
+
+/* --- Show Live Stream Elapsed Time --- */
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-current,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-separator,
+:is(body, html).ypp-live-stream-time ytd-watch-flexy[is-live-stream] .ytp-time-display .ytp-time-duration {
+  display: inline-block !important;
+}
+
+/* --- Two Rows/Columns in Subscriptions Feed --- */
+:is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 2 !important;
+  --ytd-rich-grid-posts-per-row: 2 !important;
+}
+:is(body, html).ypp-two-column-subs ytd-browse[page-subtype="subscriptions"] #contents.ytd-rich-grid-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+

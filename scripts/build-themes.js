@@ -2,9 +2,9 @@ const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
 
-const uiStylesDir = path.join(__dirname, '../src/content/core-framework/ui-styles');
-const themesDir = path.join(__dirname, '../src/content/core-framework/themes');
-const cardStylesDir = path.join(__dirname, '../src/content/core-framework/card-styles');
+const uiStylesDir = path.join(__dirname, '../src/content/design-system/ui-styles');
+const themesDir = path.join(__dirname, '../src/content/design-system/themes');
+const cardStylesDir = path.join(__dirname, '../src/content/design-system/card-styles');
 
 const getDirs = source => {
     if (!fs.existsSync(source)) return [];

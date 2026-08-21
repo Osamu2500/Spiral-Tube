@@ -1,6 +1,6 @@
 // popup-extras.js — History Widget, Backup Tools, and Bookmarks Manager
 // All code is wrapped in exported functions. No side-effects at module level.
-import { FILTERS } from '../content/features/player/media-effects/video-filters/video-filters-presets.js';
+import { FILTERS } from '../content/pages/watch/player/media-effects/video-filters/video-filters-presets.js';
 
 // =========================================================================
 // HISTORY WIDGET
