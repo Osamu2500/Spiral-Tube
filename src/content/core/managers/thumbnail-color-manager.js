@@ -202,32 +202,52 @@ export class ThumbnailColorManager {
                 let r = 0, g = 0, b = 0, count = 0;
 
                 for (let i = 0; i < data.length; i += 4) {
-                    if (data[i + 3] < 200) continue; // Skip transparent/semi-transparent
+                    const pr = data[i];
+                    const pg = data[i + 1];
+                    const pb = data[i + 2];
+                    const pa = data[i + 3];
+
+                    if (pa < 200) continue; // Skip transparent/semi-transparent
 
                     // Skip near-black (letterbox bars) and near-white
-                    if (data[i] < 15 && data[i + 1] < 15 && data[i + 2] < 15) continue;
-                    if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) continue;
+                    if (pr < 15 && pg < 15 && pb < 15) continue;
+                    if (pr > 240 && pg > 240 && pb > 240) continue;
 
-                    r += data[i];
-                    g += data[i + 1];
-                    b += data[i + 2];
+                    // ── SKIN TONE FILTER ──────────────────────────────────────────
+                    // If the pixel looks like human skin (flesh tones), skip it.
+                    // This forces the algorithm to pick the environment/background color
+                    // instead of making the card look like a giant face.
+                    const isSkinTone = (pr > 95 && pg > 40 && pb > 20) &&
+                                       (Math.max(pr, pg, pb) - Math.min(pr, pg, pb) > 15) &&
+                                       (Math.abs(pr - pg) > 15) &&
+                                       (pr > pg && pr > pb);
+                    if (isSkinTone) continue;
+
+                    r += pr;
+                    g += pg;
+                    b += pb;
                     count++;
                 }
 
-                if (count > 0) {
-                    r = Math.round(r / count);
-                    g = Math.round(g / count);
-                    b = Math.round(b / count);
+                // If we skipped everything (e.g., an image that is ONLY a face),
+                // fallback to a soft vibrant default (like a pleasant teal or purple).
+                if (count === 0) {
+                    r = 80; g = 180; b = 200;
+                    count = 1;
+                }
 
-                    const enhanced = this.enhanceColor(r, g, b);
-                    const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
-                    const rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
+                r = Math.round(r / count);
+                g = Math.round(g / count);
+                b = Math.round(b / count);
 
-                    this.cache.set(cleanSrc, { colorStr, rgbStr });
+                const enhanced = this.enhanceColor(r, g, b);
+                const colorStr = `rgb(${enhanced.r}, ${enhanced.g}, ${enhanced.b})`;
+                const rgbStr = `${enhanced.r}, ${enhanced.g}, ${enhanced.b}`;
 
-                    if (el.isConnected) {
-                        this._applyColor(el, colorStr, rgbStr);
-                    }
+                this.cache.set(cleanSrc, { colorStr, rgbStr });
+
+                if (el.isConnected) {
+                    this._applyColor(el, colorStr, rgbStr);
                 }
             } catch (e) {
                 // Silently ignore CORS/tainted canvas errors
@@ -275,23 +295,23 @@ export class ThumbnailColorManager {
 
     enhanceColor(r, g, b) {
         // ── Step 1: Normalize brightness ────────────────────────────────────────
-        // Bring the dominant channel up to 210 (vivid but not blown-out white)
+        // Bring the dominant channel up to 215 (vivid but not blown-out white)
         const max = Math.max(r, g, b);
         if (max === 0) return { r: 80, g: 80, b: 80 };
 
-        const brightnessTarget = 210;
-        const brightnessBoost = Math.min(brightnessTarget / max, 3.0); // Up to 3× on dark images
+        const brightnessTarget = 215;
+        const brightnessBoost = Math.min(brightnessTarget / max, 3.5); // Up to 3.5× on dark images
         let nr = r * brightnessBoost;
         let ng = g * brightnessBoost;
         let nb = b * brightnessBoost;
 
         // ── Step 2: Boost saturation ─────────────────────────────────────────────
         // Push colors away from grey — grey = midpoint between new min/max.
-        // satFactor > 1 makes colors more vivid, < 1 makes them more pastel.
+        // satFactor > 1 makes colors more vivid. Increased to 2.1 for extra pop.
         const newMax = Math.max(nr, ng, nb);
         const newMin = Math.min(nr, ng, nb);
         const grey = (newMax + newMin) / 2;
-        const satFactor = 1.8; // 80% saturation boost for vivid, rich polaroid colors
+        const satFactor = 2.1; // More vivid
 
         nr = grey + (nr - grey) * satFactor;
         ng = grey + (ng - grey) * satFactor;
