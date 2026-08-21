@@ -126,23 +126,3 @@ ytd-browse[page-subtype=home] #chips {
   transition: background 0.3s ease !important;
 }
 
-/* ── Download Button (video actions bar) ────────────────────────────────── */
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
-  background: var(--ypp-download-btn-bg, var(--ypp-surface-bg-hover, transparent)) !important;
-  border-radius: var(--ypp-download-btn-radius, var(--ypp-border-radius-base, 12px)) !important;
-  border: var(--ypp-download-btn-border, var(--ypp-surface-border, none)) !important;
-  box-shadow: var(--ypp-download-btn-shadow, var(--ypp-shadow-base, none)) !important;
-  color: var(--ypp-download-btn-color, inherit) !important;
-  transition:
-    background var(--ypp-transition-smooth),
-    box-shadow var(--ypp-transition-bounce),
-    transform var(--ypp-transition-bounce) !important;
-}
-
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
-  background: var(--ypp-download-btn-bg-hover, var(--ypp-surface-bg-active, transparent)) !important;
-  box-shadow: var(--ypp-download-btn-shadow-hover, var(--ypp-shadow-hover, none)) !important;
-  transform: scale(1.05) !important;
-}

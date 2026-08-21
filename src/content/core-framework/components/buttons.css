@@ -19,7 +19,7 @@
 }
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
   margin-right: 0 !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
   z-index: 30000 !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
 }
@@ -59,7 +59,7 @@ ytd-alert-with-button-renderer[type=INFO] {
 ytd-thumbnail-overlay-toggle-button-renderer {
   background: var(--ypp-surface-bg) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
 }
 ytd-thumbnail-overlay-toggle-button-renderer:hover {
   transform: scale(1.1) !important;
@@ -80,17 +80,23 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   overflow: hidden;
   cursor: pointer !important;
 }
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd),
+yt-button-shape button[aria-label*="Download" i],
+yt-button-shape button[title*="Download" i] {
+  border-radius: var(--ypp-button-radius, 12px) !important;
   background: var(--ypp-surface-bg) !important;
   box-shadow: var(--ypp-shadow-base) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
 }
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--ypp-shadow-hover) !important;
   transform: scale(1.06);
 }
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active,
+yt-button-shape button[aria-label*="Download" i]:active,
+yt-button-shape button[title*="Download" i]:active {
   transform: scale(0.97) !important;
   box-shadow: var(--ypp-shadow-active) !important;
 }
@@ -103,7 +109,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
 }
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
 .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
   background: var(--ypp-surface-bg) !important;
   box-shadow: var(--ypp-shadow-base) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce) !important;
@@ -119,7 +125,7 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
   box-shadow: var(--ypp-shadow-active) !important;
 }
 button.ytSpecButtonShapeNextText {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
   transition:
     transform var(--ypp-transition-bounce),
     box-shadow var(--ypp-transition-bounce),
@@ -137,7 +143,7 @@ button.ytSpecButtonShapeNextText:active {
 .ypp-btn-primary,
 .ypp-play-all-btn,
 .ypp-health-btn {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
   transition:
     transform var(--ypp-transition-bounce),
     box-shadow var(--ypp-transition-bounce),
@@ -156,7 +162,7 @@ button.ytSpecButtonShapeNextText:active {
   box-shadow: var(--ypp-shadow-active) !important;
 }
 .ypp-pill-toggle {
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  border-radius: var(--ypp-button-radius, 12px) !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border: var(--ypp-surface-border) !important;
   transition:
