@@ -357,3 +357,48 @@ html[data-ypp-card-style] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-
   line-height: initial !important;
   max-height: none !important;
 }
+
+/* ==========================================================================
+   AVATAR SPACING & COLLAB UI ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Global Avatar-to-Title Spacing (Homepage & Grid layouts) */
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer) #avatar-link {
+  margin-right: 14px !important; /* Ensure breathing room before title */
+}
+
+/* 2. Search Grid Font Normalization */
+/* When in a grid layout, ytd-video-renderer (search result) titles are too big natively. We normalize them. */
+html[data-ypp-card-style] ytd-video-renderer[is-grid-item] #video-title,
+html[data-ypp-card-style] ytd-item-section-renderer[is-grid-layout] ytd-video-renderer #video-title,
+/* Catch all ytd-video-renderer when forced into grid */
+html[data-ypp-card-style] ytd-section-list-renderer:not([hidden]) ytd-video-renderer #video-title {
+  font-size: 1.4rem !important; /* Match homepage title size */
+  line-height: 2rem !important;
+  font-weight: 500 !important;
+  max-height: 4rem !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+/* 3. Multi-Avatar (Collaboration) UI Support */
+/* YouTube now groups multiple avatars. We target the container / multiple yt-img-shadow elements. */
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avatar-link,
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #channel-info {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+/* Overlapping effect for multiple avatars */
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avatar-link yt-img-shadow ~ yt-img-shadow {
+  margin-left: -12px !important;
+  z-index: 1 !important;
+}
+
+html[data-ypp-card-style] :is(ytd-rich-item-renderer, ytd-video-renderer) #avatar-link yt-img-shadow {
+  border-radius: 50% !important;
+  border: 2px solid var(--ypp-bg-base, #000) !important;
+  box-sizing: border-box !important;
+  /* Elevate consecutive avatars so they overlap cleanly */
+  position: relative !important;
+}

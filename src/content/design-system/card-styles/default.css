@@ -1,0 +1,88 @@
+/* ============================================================
+   DEFAULT CARD STYLE (Premium Fallback)
+   ============================================================ */
+
+/*
+  When "Default" is selected, the extension removes the proportional grid logic,
+  reverting to YouTube's standard vertical card structure.
+  This stylesheet adds premium polish (hover effects, shadows, rounding) 
+  to those native cards without breaking their core layout.
+*/
+
+html[data-ypp-card-style="default"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item
+) {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s ease !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  /* Very subtle transparent base so the hover transition is smooth */
+  background-color: transparent !important;
+}
+
+/* Hover effects */
+html[data-ypp-card-style="default"] :is(
+  ytd-rich-item-renderer,
+  ytd-video-renderer,
+  ytd-compact-video-renderer,
+  ytd-grid-video-renderer,
+  .ypp-grid-item
+):hover {
+  transform: translateY(-4px) scale(1.01) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+  background-color: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.05)) !important;
+  z-index: 2 !important;
+}
+
+/* Ensure the thumbnail has a premium rounding */
+html[data-ypp-card-style="default"] body:not(.ypp-channel-page) :is(ytd-thumbnail, .yt-lockup-view-model-wiz__image, yt-image) {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+/* Optional: Slight border adjustment to match thumbnail */
+html[data-ypp-card-style="default"] ytd-thumbnail a {
+  border-radius: 12px !important;
+}
+
+/* ---------------------------------------------------------
+   Premium 3-dots Menu interactions
+   --------------------------------------------------------- */
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu {
+  z-index: 99 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu ytd-menu-renderer {
+  display: block !important;
+}
+
+/* Native-like menu button styling */
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button {
+  transition: all 0.2s ease !important;
+  border-radius: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-renderer) #menu yt-icon-button:hover {
+  background: var(--ypp-bg-elevated, rgba(255, 255, 255, 0.1)) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Protect Shorts & Reel items from global hover lift (keep them native) */
+html[data-ypp-card-style="default"] :is(ytd-rich-item-renderer, yt-lockup-view-model, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer):is(:has(a[href*="/shorts"]), :has(ytd-rich-grid-slim-media), :has(ytd-reel-item-renderer), :has(yt-icon[icon="yt-icons:shorts"]), :has(yt-icon-shape[icon="yt-icons:shorts"]), :has(span[aria-label="Shorts"]), [is-shorts]) {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
