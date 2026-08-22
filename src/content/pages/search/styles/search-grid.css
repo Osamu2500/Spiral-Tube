@@ -2064,11 +2064,9 @@ html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-render
   border-radius: 20px !important;
 }
 
-/* ── 4. .text-wrapper / #meta: absolute overlay at bottom, NO gradient ─ */
-/* ── 4. #meta: the REAL overlay container (no .text-wrapper exists in ytd-video-renderer DOM) ─ */
-/* #meta is ytd-video-renderer's native text container — we make it fill the whole card
-   and push its children to the bottom, exactly like homepage's #details overlay */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta {
+/* ── 4. .text-wrapper: absolute overlay at bottom, NO gradient ─ */
+/* .text-wrapper is ytd-video-renderer's native text container (unlike homepage which uses #details) */
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-end !important;
@@ -2088,22 +2086,11 @@ html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-render
   background: transparent !important;
 }
 
-/* ── 5. Flatten #channel-info into #meta's flex flow ───────────────── */
-/* #channel-info becomes display:contents so its direct children (channel name, badges)
-   flow directly as siblings inside #meta's flex column */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info {
+/* ── 5. Flatten #meta so its children flow into .text-wrapper ─────── */
+/* By making #meta display:contents, its children (#title-wrapper, ytd-video-meta-block) 
+   become direct flex children of .text-wrapper alongside #channel-info */
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta {
   display: contents !important;
-  position: static !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* ── 5. #channel-info: remove any inline styles that fight our layout ─── */
-/* #channel-info is a direct flex child of #meta (order:3 below) — NOT display:contents */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info {
-  position: static !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 /* ── 6. TEXT STACK ORDER: title → views/date → channel ─────────────── */
@@ -2135,7 +2122,9 @@ html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-render
   align-items: center !important;
   gap: 4px !important;
   margin: 0 !important;
+  padding: 0 !important;
   pointer-events: auto !important;
+  position: static !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
