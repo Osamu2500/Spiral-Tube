@@ -320,6 +320,7 @@ export class SearchObserver {
                             for (let j = 0; j < op.flattenData.cards.length; j++) {
                                 const card = op.flattenData.cards[j];
                                 card.classList.add(CLASSES.GRID_ITEM);
+                                this._cleanInlineStyles(card, op.flattenData.cardsCleanData[j]);
                             }
                             continue;
                         }
@@ -337,6 +338,7 @@ export class SearchObserver {
                             op.tag === 'ytd-lockup-view-model'
                         ) {
                             op.node.classList.add(CLASSES.GRID_ITEM, 'ypp-card-container');
+                            this._cleanInlineStyles(op.node, op.cleanData);
 
                             // Move all badges (4K, Subtitles, etc.) into #channel-info so they flow next to the channel name
                             if (op.cleanData && op.cleanData.extraBadges && op.cleanData.channelInfo) {
@@ -453,6 +455,58 @@ export class SearchObserver {
     }
 
 
+
+    // -------------------------------------------------------------------------
+    // Inline style cleanup
+    // -------------------------------------------------------------------------
+
+    _cleanInlineStyles(node, data) {
+        if (node.style.width)    node.style.width    = '';
+        if (node.style.maxWidth) node.style.maxWidth = '';
+        if (node.style.minWidth) node.style.minWidth = '';
+        if (node.style.height)   node.style.height   = '';
+        if (node.style.margin)   node.style.margin   = '';
+
+        if (!data) return;
+
+        if (data.dismissible) {
+            data.dismissible.style.display       = '';
+            data.dismissible.style.flexDirection = '';
+            data.dismissible.style.width         = '';
+            data.dismissible.style.height        = '';
+        }
+
+        if (data.thumb) {
+            data.thumb.style.width       = '';
+            data.thumb.style.minWidth    = '';
+            data.thumb.style.maxWidth    = '';
+            data.thumb.style.height      = '';
+            data.thumb.style.margin      = '';
+            data.thumb.style.marginRight = '';
+            data.thumb.style.flexBasis   = '';
+            data.thumb.style.flexShrink  = '';
+
+            if (data.innerThumb) {
+                data.innerThumb.style.width    = '';
+                data.innerThumb.style.height   = '';
+                data.innerThumb.style.maxWidth = '';
+            }
+        }
+
+        if (data.textWrapper) {
+            data.textWrapper.style.marginLeft  = '';
+            data.textWrapper.style.marginRight = '';
+            data.textWrapper.style.marginTop   = '';
+            data.textWrapper.style.width       = '';
+            data.textWrapper.style.maxWidth    = '';
+        }
+
+        if (data.actionMenu) {
+            data.actionMenu.style.width    = '';
+            data.actionMenu.style.height   = '';
+            data.actionMenu.style.position = '';
+        }
+    }
 
     // -------------------------------------------------------------------------
     // Utility

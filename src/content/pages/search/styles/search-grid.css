@@ -264,6 +264,27 @@ body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   100% { background-position: -200% 0; }
 }
 
+/* Apply to all cards as soon as they enter the grid.
+   animation-fill-mode: backwards means they start hidden until the
+   animation fires, preventing a FOUC flash. */
+body.ypp-search-grid-mode .ypp-grid-item {
+  animation: ypp-card-in 0.18s ease-out both;
+  
+  /* PERFORMANCE VIRUALIZATION: 
+     Skip rendering off-screen cards to maintain 60FPS on infinite scroll */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
+}
+
+body.ypp-search-grid-mode .ypp-full-width-item,
+body.ypp-search-grid-mode ytd-continuation-item-renderer,
+body.ypp-search-grid-mode ytd-search-sub-menu-renderer {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 body.ypp-search-page ytd-app[mini-guide-visible] ytd-page-manager,
 body.ypp-search-page ytd-app[mini-guide-visible] #page-manager,
 body.ypp-search-page ytd-app[mini-guide-visible] #content {
@@ -531,43 +552,7 @@ body.ypp-search-grid-mode ytd-playlist-renderer:hover ytd-playlist-thumbnail,
 body.ypp-search-grid-mode ytd-radio-renderer:hover ytd-thumbnail {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
 }
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer {
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail {
-  width: 100% !important;
-  aspect-ratio: 16/9 !important;
-  overflow: hidden !important;
-}
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img,
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail yt-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer #dismissible {
-  display: flex !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  flex-direction: column !important;
-}
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer #meta {
-  width: 100% !important;
-  min-width: 0 !important;
-  padding: 8px 0 !important;
-}
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer #channel-info,
-.ypp-search-page.ypp-search-grid-mode ytd-video-renderer #metadata-line {
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
+
 body.ypp-search-grid-mode ytd-video-renderer ytd-thumbnail img,
 body.ypp-search-grid-mode ytd-playlist-renderer ytd-thumbnail img,
 body.ypp-search-grid-mode ytd-radio-renderer ytd-thumbnail img {
@@ -611,23 +596,7 @@ body.ypp-search-grid-mode ytd-radio-renderer:hover #video-title {
   color: var(--yt-spec-text-primary) !important;
   text-decoration: none !important;
 }
-body.ypp-search-grid-mode ytd-video-renderer,
-body.ypp-search-grid-mode ytd-playlist-renderer,
-body.ypp-search-grid-mode ytd-radio-renderer {
-  /* Size */
-  width: 100% !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  flex: none !important;
-  align-self: stretch !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
+
 body.ypp-search-grid-mode ytd-video-renderer #video-title,
 body.ypp-search-grid-mode ytd-playlist-renderer #video-title,
 body.ypp-search-grid-mode ytd-radio-renderer #video-title,
