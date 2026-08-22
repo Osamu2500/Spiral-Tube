@@ -2065,7 +2065,10 @@ html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-render
 }
 
 /* ── 4. .text-wrapper / #meta: absolute overlay at bottom, NO gradient ─ */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .text-wrapper {
+/* ── 4. #meta: the REAL overlay container (no .text-wrapper exists in ytd-video-renderer DOM) ─ */
+/* #meta is ytd-video-renderer's native text container — we make it fill the whole card
+   and push its children to the bottom, exactly like homepage's #details overlay */
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta {
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-end !important;
@@ -2085,10 +2088,19 @@ html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-render
   background: transparent !important;
 }
 
-/* ── 5. Flatten #meta + #channel-info into .text-wrapper flex flow ──── */
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta,
+/* ── 5. Flatten #channel-info into #meta's flex flow ───────────────── */
+/* #channel-info becomes display:contents so its direct children (channel name, badges)
+   flow directly as siblings inside #meta's flex column */
 html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info {
   display: contents !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ── 5. #channel-info: remove any inline styles that fight our layout ─── */
+/* #channel-info is a direct flex child of #meta (order:3 below) — NOT display:contents */
+html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #channel-info {
   position: static !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2124,10 +2136,10 @@ html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-render
   gap: 4px !important;
   margin: 0 !important;
   pointer-events: auto !important;
-  position: static !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
+
 
 /* ── 7. TITLE: 3-line clamp, stroke shadow — same as homepage ────────── */
 html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #video-title,
