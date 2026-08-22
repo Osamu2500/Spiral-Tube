@@ -20,7 +20,7 @@ ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered] #l
 
 #trigger.tp-yt-paper-menu-button:hover {
   transform: scale(1.1) !important;
-  background: var(--ypp-menu-bg, var(--ypp-surface-bg)) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
 }
 
@@ -68,10 +68,10 @@ ytd-menu-popup-renderer,
 ytd-video-preview,
 #contentWrapper.tp-yt-iron-dropdown > *,
 ytd-multi-page-menu-renderer {
-  background: var(--ypp-menu-bg, var(--ypp-surface-bg)) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
-  border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
-  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
+  border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover, 0 8px 24px rgba(0, 0, 0, 0.3)))) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
@@ -82,13 +82,13 @@ ytd-multi-page-menu-renderer {
 }
 
 .tp-yt-paper-tooltip[style-target=tooltip] {
-  border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
-  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active)) !important;
-  background: var(--ypp-menu-bg, var(--ypp-surface-bg)) !important;
+  border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active, 0 4px 12px rgba(0, 0, 0, 0.3)))) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
-  color: white !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary)) !important;
 }
 
 tp-yt-paper-listbox {
@@ -145,7 +145,7 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
 
 .ypp-account-menu,
 #ypp-top-bar {
-  background: var(--ypp-menu-bg, var(--ypp-surface-bg)) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
   border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-base)) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
@@ -153,7 +153,7 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
   }
 
 tp-yt-paper-toast {
-  background: var(--ypp-dialog-bg, var(--ypp-surface-bg)) !important;
+  background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
   border-radius: var(--ypp-dialog-radius, var(--ypp-border-radius-base, 12px)) !important;
   box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover)) !important;
   border: var(--ypp-dialog-border, var(--ypp-surface-border)) !important;

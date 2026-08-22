@@ -1,29 +1,29 @@
 yt-live-chat-app,
 yt-live-chat-renderer {
-  background: var(--ypp-surface-bg) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
-  box-shadow: var(--ypp-shadow-base) !important;
-  border: var(--ypp-surface-border) !important;
+  background: var(--ypp-bg-surface, var(--yt-spec-base-background)) !important;
+  border-radius: var(--ypp-border-radius-base, 12px) !important;
+  box-shadow: var(--ypp-shadow-card, 0 4px 12px rgba(0, 0, 0, 0.1)) !important;
+  border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1)) !important;
   overflow: hidden !important;
 }
 yt-live-chat-text-message-renderer,
 yt-live-chat-paid-message-renderer,
 yt-live-chat-membership-item-renderer {
-  background: rgba(128, 128, 128, 0.05) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  background: var(--yt-spec-10-percent-layer, rgba(128, 128, 128, 0.05)) !important;
+  border-radius: var(--ypp-border-radius-base, 12px) !important;
   margin: 4px 8px !important;
   padding: 8px !important;
   transition: transform 0.2s, background 0.2s !important;
 }
 yt-live-chat-text-message-renderer:hover {
-  background: rgba(128, 128, 128, 0.12) !important;
+  background: var(--yt-spec-20-percent-layer, rgba(128, 128, 128, 0.12)) !important;
   transform: scale(1.02) !important;
 }
 #ticker.yt-live-chat-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
+  background: var(--yt-spec-10-percent-layer, rgba(128, 128, 128, 0.1)) !important;
 }
 #message-input.yt-live-chat-text-input-field-renderer {
-  background: rgba(128, 128, 128, 0.1) !important;
-  border-radius: var(--ypp-shape-primary, 12px) !important;
+  background: var(--yt-spec-10-percent-layer, rgba(128, 128, 128, 0.1)) !important;
+  border-radius: var(--ypp-border-radius-base, 12px) !important;
   padding: 5px 15px !important;
 }
