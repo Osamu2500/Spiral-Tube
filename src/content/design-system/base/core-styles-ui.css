@@ -485,5 +485,8 @@ html.yt-spiral-tube-theme {
   --ytd-rich-grid-item-margin: var(--ypp-density-gap, 16px) !important;
 }
 
-/* ===================================================================================*/
-
+/* Remove the weird blue color from YouTube Native Progress Bar */
+yt-page-navigation-progress, 
+#progress.yt-page-navigation-progress {
+  display: none !important;
+}

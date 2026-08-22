@@ -659,39 +659,7 @@ html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
         }
 
         // ── Card Style ───────────────────────────────────────────────────────
-        let finalCardStyle = this._settings.cardStyle;
-        const ytTheme = this._settings.youtubePageTheme;
-
-        // If the user hasn't explicitly set a custom card style (or set it to default)
-        if (!finalCardStyle || finalCardStyle === 'default') {
-            if (!ytTheme || ytTheme === 'default') {
-                finalCardStyle = 'default';
-            } else {
-                // Auto-match to the current page theme (UI Design)
-                const cardMap = {
-                    'liquid-glass': 'glass',
-                    'cyberpunk': 'cyberpunk',
-                    'nature': 'nature',
-                    'vintage': 'vintage',
-                    'neumorphic': 'neumorphic',
-                    'ocean': 'ocean',
-                    'blue-sky': 'blue-sky',
-                    'retro': 'retro',
-                    'technozen': 'technozen',
-                    'frutiger-aero': 'frutiger-aero',
-                    'terminalism': 'terminalism',
-                    'claymorphism': 'claymorphism',
-                    'brutalism': 'brutalism',
-                    'minimalism': 'minimalism',
-                    'maximalism': 'maximalism',
-                    'glassmorphism': 'glassmorphism',
-                    'aurora': 'aurora',
-                    'material': 'material',
-                    'harry-potter': 'harry-potter'
-                };
-                finalCardStyle = cardMap[ytTheme] || ytTheme;
-            }
-        }
+        let finalCardStyle = this._settings.cardStyle || 'default';
 
         if (!finalCardStyle || finalCardStyle === 'default' || finalCardStyle === 'none') {
             root.removeAttribute('data-ypp-card-style');
