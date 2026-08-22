@@ -137,6 +137,23 @@ body.ypp-minimal-mode ytd-rich-item-renderer {
 html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-grid-renderer {
   --ytd-rich-grid-items-per-row: initial;
 }
+
+/* =====================================================
+   IMMERSIVE: Force 3-column grid so cards are larger.
+   YouTube's default is 4; 3 gives ~33% bigger cards.
+   Scoped tightly so only immersive mode is affected.
+   ===================================================== */
+html[data-ypp-card-style='immersive'] ytd-rich-grid-renderer,
+html[data-ypp-card-style='immersive'] yt-rich-grid-renderer,
+html[data-ypp-card-style='immersive'] yt-rich-grid-view-model {
+  --ytd-rich-grid-items-per-row: 3 !important;
+}
+
+/* Also constrain the custom grid container when immersive is on homepage */
+html[data-ypp-card-style='immersive'] .ypp-grid-container {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
 html[data-ypp-card-style]:not([data-ypp-card-style="default"]):not([data-ypp-card-style="none"]) ytd-rich-item-renderer {
   width: auto;
   max-width: none;

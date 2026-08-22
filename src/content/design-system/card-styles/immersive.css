@@ -355,7 +355,7 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   box-sizing: border-box !important;
   padding: 16px !important;
   margin: 0 !important;
-  background: linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 15%) !important;
+  background: transparent !important;
   pointer-events: none !important;
   z-index: 2 !important;
 }
@@ -392,7 +392,7 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   display: none !important;
 }
 
-/* Remove normal flow from inner containers so children can be absolutely positioned relative to .text-wrapper */
+/* Let inner containers flow naturally, but re-order them so they stack bottom-up correctly */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer #meta,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
@@ -409,7 +409,7 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   padding: 0 !important;
 }
 
-/* 1. Title (Top-most text, anchored to bottom so it grows upwards) */
+/* 1. Title (order: 1) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
  ytd-video-renderer
@@ -422,42 +422,36 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   body.ypp-search-grid-mode
  ytd-video-renderer
  #title-wrapper {
-  position: absolute !important;
-  bottom: 54px !important;
-  left: 16px !important;
-  right: 16px !important;
-  margin: 0 !important;
+  position: static !important;
+  order: 1 !important;
+  margin: 0 0 -2px 0 !important;
   pointer-events: auto !important;
   width: auto !important;
-  display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
   z-index: 10 !important;
 }
 
-/* 2. Channel Name (Middle text) */
+/* 2. Channel Name (order: 2) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
  ytd-video-renderer
- ytd-channel-name,
+ #channel-info,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
  ytd-video-renderer
- ytd-channel-name {
-  position: absolute !important;
-  bottom: 34px !important;
-  left: 16px !important;
-  right: 16px !important;
-  margin: 0 !important;
+ #channel-info {
+  position: static !important;
+  order: 2 !important;
+  margin: -4px 0 0 0 !important;
   pointer-events: auto !important;
   width: auto !important;
-  display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
   z-index: 10 !important;
 }
 
-/* 3. Views / Time (Bottom-most text) */
+/* 3. Views / Time (order: 3) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
  ytd-video-renderer
@@ -466,18 +460,22 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   body.ypp-search-grid-mode
  ytd-video-renderer
  ytd-video-meta-block {
-  position: absolute !important;
-  bottom: 16px !important;
-  left: 16px !important;
-  right: 16px !important;
-  margin: 0 !important;
+  position: static !important;
+  order: 3 !important;
+  margin: -4px 0 0 0 !important;
   pointer-events: auto !important;
   width: auto !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
   opacity: 1 !important;
   visibility: visible !important;
   z-index: 10 !important;
+}
+
+/* Hide the description snippet and badges that break the clean card look */
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer .metadata-snippet-container,
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer .metadata-snippet-container,
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer ytd-badge-supported-renderer,
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer ytd-badge-supported-renderer {
+  display: none !important;
 }
 
 /* Hide the intrusive SAVE button injected into cards */
@@ -576,17 +574,7 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   body.ypp-search-grid-mode
  ytd-video-renderer
  #channel-info
- > a:first-child,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
-  body.ypp-search-list-mode
- ytd-video-renderer
- #channel-info
- yt-avatar-shape,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
-  body.ypp-search-grid-mode
- ytd-video-renderer
- #channel-info
- yt-avatar-shape {
+ > a:first-child {
   position: absolute !important;
   top: 12px !important;
   left: 12px !important;
@@ -1133,15 +1121,9 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
    ======================================================== */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-thumbnail #overlays badge-shape,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-thumbnail #overlays ytd-thumbnail-overlay-time-status-renderer {
-  -webkit-backdrop-filter: blur(4px) !important;
-  backdrop-filter: blur(4px) !important;
   margin: 0 !important;
   z-index: 10 !important;
   pointer-events: auto !important;
-  background: rgba(0, 0, 0, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 6px !important;
-  padding: 4px 6px !important;
 }
 
 /* Clear native inner background and padding to prevent multiple borders/layers */

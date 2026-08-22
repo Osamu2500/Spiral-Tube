@@ -59,6 +59,7 @@ export class SearchViewMode {
         const baseGridEnabled = !!(this._settings.searchGrid || this._settings.cleanSearch || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.autoVideoFilter);
         const mode = this._settings.searchViewMode || (baseGridEnabled ? SearchViewMode.MODES.GRID : SearchViewMode.MODES.LIST);
 
+
         if (mode === SearchViewMode.MODES.GRID) {
             body.classList.add(SearchViewMode.CLASSES.GRID_MODE);
             body.classList.remove(SearchViewMode.CLASSES.LIST_MODE);
