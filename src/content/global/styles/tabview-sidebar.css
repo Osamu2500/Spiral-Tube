@@ -89,7 +89,7 @@ body.ypp-tabview-sidebar .ypp-tabview-btn:active {
 
 /* Active Segmented Pill Glow */
 body.ypp-tabview-sidebar .ypp-tabview-btn.active {
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   background: rgba(255, 255, 255, 0.18) !important;
   font-weight: 600 !important;
   box-shadow: 
@@ -101,7 +101,7 @@ body.ypp-tabview-sidebar .ypp-tabview-btn.active {
 
 body.ypp-tabview-sidebar .ypp-tabview-btn.active svg {
   opacity: 1 !important;
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5)) !important;
 }
 

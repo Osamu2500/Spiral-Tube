@@ -1,3 +1,10 @@
+
+
+
+
+
+
+html[data-ypp-ui-design="crystal-glass"] {
 /* Unique Shapes and Patterns for crystal-glass */
 
 /* Global Border overrides */
@@ -866,4 +873,5 @@ html[data-ypp-ui-design="crystal-glass"] #comments {
   backdrop-filter: var(--cglass-blur-sm) !important;
   border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
+}
 }

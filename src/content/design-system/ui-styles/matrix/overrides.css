@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for matrix */
 
-/* matrix/base/animations.css */
+
+
+
 @keyframes matrix-pulse {
   0%   { box-shadow: 0 0 10px #00ff00;
 }
@@ -14,6 +15,7 @@
 }
 
 }
+
 @keyframes matrix-glitch {
   0%{transform:translate(0);
   filter:none;
@@ -57,6 +59,15 @@
 }
 
 }
+
+html[data-ypp-ui-design="matrix"] {
+/* Unique Shapes and Patterns for matrix */
+
+/* matrix/base/animations.css */
+
+
+
+
 
 /* Subscribe button */
 html[data-ypp-ui-design="matrix"] #subscribe-button .yt-spec-button-shape-next--filled ,
@@ -2276,4 +2287,6 @@ html[data-ypp-ui-design="matrix"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="matrix"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
 }

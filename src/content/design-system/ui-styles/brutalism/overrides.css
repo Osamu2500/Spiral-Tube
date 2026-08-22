@@ -1,22 +1,6 @@
-/* Unique Shapes and Patterns for brutalism */
 
-html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-thumb {
-  border-radius: var(--ypp-shape-primary, 0px) !important;
-}
 
-/* ── Mini guide buttons ── */
 
-/* ── Full guide entries ── */
-
-/* Dialogs for brutalism */
-tp-yt-paper-dialog {
-  border-radius: var(--ypp-shape-primary, 0px) !important;
-  box-shadow: 8px 8px 0px #000 !important;
-}
-
-yt-icon:hover {
-  transform: scale(1.1);
-}
 
 @keyframes brutalTremble {
   0% { transform: translate(0, 0);
@@ -39,6 +23,29 @@ yt-icon:hover {
 }
 
 }
+
+html[data-ypp-ui-design="brutalism"] {
+/* Unique Shapes and Patterns for brutalism */
+
+html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-thumb {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
+/* ── Mini guide buttons ── */
+
+/* ── Full guide entries ── */
+
+/* Dialogs for brutalism */
+tp-yt-paper-dialog {
+  border-radius: var(--ypp-shape-primary, 0px) !important;
+  box-shadow: 8px 8px 0px #000 !important;
+}
+
+yt-icon:hover {
+  transform: scale(1.1);
+}
+
+
 
 /* Specific Styling for ytd-video-renderer */
 
@@ -3281,4 +3288,6 @@ ytd-toggle-button-renderer a {
 :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 0px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
 }

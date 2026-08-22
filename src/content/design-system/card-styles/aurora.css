@@ -55,7 +55,7 @@ html[data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-s
 html[data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"] .ytd-channel-name,
 html[data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"][data-ypp-card-style="aurora"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

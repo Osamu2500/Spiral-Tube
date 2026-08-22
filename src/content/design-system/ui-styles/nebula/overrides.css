@@ -1,10 +1,17 @@
-/* Unique Shapes and Patterns for nebula */
 
-/* Twinkling star keyframe */
+
+
+
 @keyframes nebula-twinkle {
   0% { transform: scale(1); }
   50% { transform: scale(1.4); }
 }
+
+html[data-ypp-ui-design="nebula"] {
+/* Unique Shapes and Patterns for nebula */
+
+/* Twinkling star keyframe */
+
 
 /* Starfield overlay using pseudo-element */
 html[data-ypp-ui-design="nebula"] ytd-app::before {
@@ -299,4 +306,5 @@ html[data-ypp-ui-design="nebula"]::before {
     radial-gradient(2px 2px at 41% 15%, rgba(255,255,255,0.7) 0%, transparent 100%),
     radial-gradient(2px 2px at 88% 55%, rgba(241,91,181,0.7) 0%, transparent 100%) !important;
   opacity: 0.7 !important;
+}
 }

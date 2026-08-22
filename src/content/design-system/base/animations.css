@@ -59,7 +59,7 @@ body.yt-pro-premium ytd-topbar-logo-renderer a#logo::after {
     sans-serif !important;
   font-size: 22px !important;
   font-weight: 500 !important;
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   margin-left: 2px !important;
   letter-spacing: -0.5px !important;
   line-height: 22px !important;

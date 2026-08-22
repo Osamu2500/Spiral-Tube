@@ -1,3 +1,89 @@
+
+
+
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes bloodDrip {
+  0% { transform: rotate(0deg) scale(1);
+}
+
+50% {
+  transform: rotate(180deg) scale(1.2);
+}
+
+100% {
+  transform: rotate(360deg) scale(1);
+}
+
+}
+
+@keyframes bloodDripInner {
+  0% { transform: scale(0.5);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes bloodDripEntrance {
+  0% { transform: translateY(20px);
+}
+
+100% {
+  transform: translateY(0);
+}
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9);
+}
+
+100% {
+  transform: translateY(0) scale(1);
+}
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px);
+}
+
+100% {
+  transform: translateX(0);
+}
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px #ff0000;
+}
+
+100% {
+  box-shadow: 0 0 20px #ff0000;
+}
+}
+
+html[data-ypp-ui-design="bloodmoon"] {
 /* Unique Shapes and Patterns for bloodmoon */
 
 html[data-ypp-card-style="bloodmoon"] ::-webkit-scrollbar-thumb {
@@ -153,15 +239,7 @@ html[data-ypp-ui-design="bloodmoon"] ytd-menu-popup-renderer {
   transform-origin: top right !important;
 }
 
-@keyframes menuEntranceV10 {
-  0% { transform: scale(0.9);
-}
 
-100% {
-  transform: scale(1);
-}
-
-}
 
 html[data-ypp-card-style="bloodmoon"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="bloodmoon"] ytd-compact-link-renderer {
@@ -228,28 +306,8 @@ html[data-ypp-ui-design="bloodmoon"] .ytp-spinner::after {
   animation: bloodDripInner 1s infinite alternate !important;
 }
 
-@keyframes bloodDrip {
-  0% { transform: rotate(0deg) scale(1);
-}
 
-50% {
-  transform: rotate(180deg) scale(1.2);
-}
 
-100% {
-  transform: rotate(360deg) scale(1);
-}
-
-}
-@keyframes bloodDripInner {
-  0% { transform: scale(0.5);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    4. DIALOGS & TOOLTIPS
@@ -269,14 +327,7 @@ html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-tooltip {
   animation: bloodDripEntrance 0.3s ease forwards !important;
 }
 
-@keyframes bloodDripEntrance {
-  0% { transform: translateY(20px);
-}
 
-100% {
-  transform: translateY(0);
-}
-}
 /* Bloodmoon Forms */
 html[data-ypp-card-style="bloodmoon"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 4px 0 0 4px) !important;
@@ -498,24 +549,8 @@ html[data-ypp-ui-design="bloodmoon"] ytd-popup-container {
   animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9);
-}
 
-100% {
-  transform: translateY(0) scale(1);
-}
 
-}
-@keyframes snapInDialog {
-  0% { transform: scale(1.2);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    2. TOOLTIPS & TOASTS
@@ -594,14 +629,7 @@ html[data-ypp-ui-design="bloodmoon"] ytd-playlist-panel-renderer {
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideInPlaylist {
-  0% { transform: translateX(20px);
-}
 
-100% {
-  transform: translateX(0);
-}
-}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -659,14 +687,7 @@ html[data-ypp-ui-design="bloodmoon"] .badge-style-type-live-now-alternate {
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
-@keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #ff0000;
-}
 
-100% {
-  box-shadow: 0 0 20px #ff0000;
-}
-}
 /* =========================================================
    BLOOD MOON — CHANNELS
    ========================================================= */
@@ -756,4 +777,6 @@ html[data-ypp-ui-design="bloodmoon"]::before {
   border-radius: 50% !important;
   pointer-events: none !important;
   z-index: 0 !important;
+}
+
 }

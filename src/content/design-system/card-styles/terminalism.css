@@ -47,7 +47,7 @@ html[data-ypp-card-style='terminalism'][data-ypp-card-style='terminalism'][data-
 html[data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"] #video-title,
 html[data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"] .yt-core-attributed-string--link-inherit-color,
 html[data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
 }
 
 html[data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"][data-ypp-card-style="terminalism"] ytd-channel-name .yt-core-attributed-string,

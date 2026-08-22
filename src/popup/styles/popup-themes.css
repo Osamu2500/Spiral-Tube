@@ -11,27 +11,10 @@ body.ypp-theme-liquid-glass .app-container {
 /* Ensure dark accent colors are visible on dark themes */
 body.ypp-theme-liquid-glass .nav-item.active,
 body.ypp-theme-crystal-glass .nav-item.active,
-body.ypp-theme-bento .nav-item.active,
-body.ypp-theme-nature .nav-item.active,
-body.ypp-theme-ocean .nav-item.active,
-body.ypp-theme-forest .nav-item.active,
-body.ypp-theme-sunset .nav-item.active,
-body.ypp-theme-bloodmoon .nav-item.active,
-body.ypp-theme-cherry .nav-item.active {
-    color: #fff !important;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
+
 body.ypp-theme-liquid-glass .nav-item.active svg,
 body.ypp-theme-crystal-glass .nav-item.active svg,
-body.ypp-theme-bento .nav-item.active svg,
-body.ypp-theme-nature .nav-item.active svg,
-body.ypp-theme-ocean .nav-item.active svg,
-body.ypp-theme-forest .nav-item.active svg,
-body.ypp-theme-sunset .nav-item.active svg,
-body.ypp-theme-bloodmoon .nav-item.active svg,
-body.ypp-theme-cherry .nav-item.active svg {
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
-}
+
 body.ypp-theme-liquid-glass .toggle-card {
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.03);
@@ -275,27 +258,11 @@ body.ypp-theme-claymorphism .toggle-card:has(input:checked) {
   transform: scale(0.98);
 }
 
-/* Bento */
-body.ypp-theme-bento .app-container {
-  background: #f4f4f5 !important;
-  border-radius: 24px;
-  padding: 16px;
-  gap: 12px;
-}
-body.ypp-theme-bento .toggle-card {
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid #e4e4e7;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-body.ypp-theme-bento .toggle-card:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
-}
-body.ypp-theme-bento .toggle-card:has(input:checked) {
-  background: var(--accent-primary);
-  color: #fff !important;
-}
+
+
+
+
+
 
 /* Brutalism */
 body.ypp-theme-brutalism .app-container {

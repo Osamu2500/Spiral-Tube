@@ -52,7 +52,8 @@ body.ypp-shorts-page .reel-video-in-sequence-thumbnail {
 body.ypp-shorts-page #actions.ytd-reel-player-overlay-renderer {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
-    background: rgba(255, 255, 255, 0.1) !important;    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
     padding: 12px 8px !important;
     margin-right: 16px !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -76,12 +77,13 @@ body.ypp-shorts-page #avatar yt-img-shadow {
     transition: border-color 0.3s ease !important;
 }
 body.ypp-shorts-page #avatar:hover yt-img-shadow {
-    border-color: #fff !important;
+    border-color: var(--ypp-text-primary, #fff) !important;
 }
 body.ypp-shorts-page ytd-reel-player-header-renderer #subscribe-button yt-button-shape button {
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
-    background: rgba(255, 255, 255, 0.15) !important;    color: #fff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: var(--ypp-text-primary, #fff) !important;
     border-radius: 20px !important;
     font-weight: 600 !important;
     transition: background 0.2s ease !important;
@@ -105,7 +107,8 @@ body.ypp-shorts-page .ypp-shorts-controls {
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.15) !important;    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 20px !important;
     padding: 8px 16px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     z-index: var(--ypp-z-card-hover);
@@ -120,7 +123,7 @@ body.ypp-shorts-page .ypp-shorts-controls:hover {
 body.ypp-shorts-page .ypp-shorts-controls .ypp-action-btn {
     background: transparent !important;
     border: none !important;
-    color: #fff !important;
+    color: var(--ypp-text-primary, #fff) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,9 +161,9 @@ body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn {
 }
 body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
 }
 body.ypp-shorts-page .ypp-shorts-controls .ypp-speed-btn.active {
     background: rgba(255, 255, 255, 0.25);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
 }

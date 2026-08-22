@@ -1,12 +1,6 @@
-/* Unique Shapes and Patterns for sakura */
 
-/* src/content/themes/ui-styles/vintage/base/animations.css */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
-  transform: scale(1.1);
-  animation: youtubeRedPulse 5s ease-in-out infinite;
-}
+
+
 
 @keyframes youtubeRedPulse {
   0% {
@@ -33,6 +27,39 @@ yt-button-shape button[title*="Download" i]:hover {
       0 0 30px red;
 }
 }
+
+@keyframes sepia-bloom {
+  0% {
+    filter: sepia(0) contrast(1);
+}
+
+100% {
+  filter: sepia(0.4) contrast(1.1);
+}
+
+}
+
+@keyframes ypp-fade-down {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+html[data-ypp-ui-design="sakura"] {
+/* Unique Shapes and Patterns for sakura */
+
+/* src/content/themes/ui-styles/vintage/base/animations.css */
+.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+yt-button-shape button[aria-label*="Download" i]:hover,
+yt-button-shape button[title*="Download" i]:hover {
+  transform: scale(1.1);
+  animation: youtubeRedPulse 5s ease-in-out infinite;
+}
+
+
 body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
   /* Removed broken SVG background */
 }
@@ -47,16 +74,7 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   animation: youtubeRedPulse 5s ease-in-out infinite !important;
 }
 
-@keyframes sepia-bloom {
-  0% {
-    filter: sepia(0) contrast(1);
-}
 
-100% {
-  filter: sepia(0.4) contrast(1.1);
-}
-
-}
 
 ytd-rich-grid-media:hover,
 ytd-compact-video-renderer:hover,
@@ -731,14 +749,7 @@ tp-yt-paper-toast {
 }
 
 /* Account Menu Inline Drawers & Satellites */
-@keyframes ypp-fade-down {
-  from {
-    transform: translateY(-5px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
+
 
 .ypp-inline-drawer {
   animation: ypp-fade-down 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1253,4 +1264,5 @@ html[data-ypp-ui-design="sakura"] .ytd-reel-player-overlay-renderer .title * {
 
 .ypp-eq-canvas {
   border-radius: var(--ypp-shape-primary, 20px) !important;
+}
 }

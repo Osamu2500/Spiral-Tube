@@ -385,8 +385,7 @@ window.YPP.CONSTANTS = {
         CHRISTMAS: { key: 'christmas', label: 'Christmas (Festive)', class: 'ypp-theme-christmas' },
         HARRY_POTTER: { key: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)', class: 'ypp-theme-harry-potter' },
         AURORA: { key: 'aurora', label: 'Aurora', class: 'ypp-theme-aurora' },
-        AUTUMN: { key: 'autumn', label: 'Autumn', class: 'ypp-theme-autumn' },
-        BENTO: { key: 'bento', label: 'Bento Box', class: 'ypp-theme-bento' }
+        AUTUMN: { key: 'autumn', label: 'Autumn', class: 'ypp-theme-autumn' }
     },
 
     // FEATURE_MAP removed. Features self-register via FeatureManager.register()
@@ -396,7 +395,6 @@ const CARD_STYLES = [
   { id: 'elevated', label: 'Elevated Cards (Shadowed)' },
   { id: 'glass', label: 'Frosted Glass Cards' },
   { id: 'neon', label: 'Neon Outline Cards' },
-  { id: 'bento', label: 'Bento Box Cards' },
   { id: 'folder', label: 'Folder Tab Cards' },
   { id: 'polaroid', label: 'Polaroid Style Cards' },
   { id: 'cyberpunk', label: 'Cyberpunk Cut Cards' },
@@ -435,7 +433,6 @@ export const YOUTUBE_PAGE_THEMES = [
   { id: 'harry-potter', label: 'Hogwarts Magic (Harry Potter)' },
   { id: 'aurora', label: 'Aurora (Northern Lights)' },
   { id: 'autumn', label: 'Autumn (Fallen Leaf)' },
-  { id: 'bento', label: 'Bento Box' },
   { id: 'cherry', label: 'Cherry (Night Sakura)' }
 ];
 

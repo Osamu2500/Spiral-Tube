@@ -2,7 +2,8 @@
 body.yt-spiral-tube-theme ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--ypp-blur-high);
   backdrop-filter: var(--ypp-blur-high);
-  background: var(--ypp-bg-surface);  border: 1px solid var(--ypp-glass-border);
+  background: var(--ypp-bg-surface);
+  border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   box-shadow: var(--ypp-shadow-float);
   margin-bottom: 24px;
@@ -121,7 +122,8 @@ body.ypp-playlist-redesign ytd-masthead {
     height: calc(100vh - 88px); /* 64px top + 24px bottom */
     z-index: var(--ypp-z-content);
     /* Background (Premium Glassmorphism) */
-    background: var(--ypp-bg-surface, linear-gradient(135deg, rgba(20, 20, 24, 0.45), rgba(20, 20, 24, 0.25)));    border: var(--ypp-glass-border-active, 1px solid rgba(255, 255, 255, 0.08));
+    background: var(--ypp-bg-surface, linear-gradient(135deg, rgba(20, 20, 24, 0.45), rgba(20, 20, 24, 0.25)));
+    border: var(--ypp-glass-border-active, 1px solid rgba(255, 255, 255, 0.08));
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
@@ -178,7 +180,7 @@ body.ypp-playlist-redesign ytd-masthead {
 #ypp-pl-root .ypp-pl-title {
     font-size: 18px;
     font-weight: 700;
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     margin: 0;
     line-height: 1.3;
 }
@@ -190,7 +192,7 @@ body.ypp-playlist-redesign ytd-masthead {
     font-weight: 500;
 }
 
-#ypp-pl-root .ypp-pl-owner:hover { text-decoration: underline; color: #fff; }
+#ypp-pl-root .ypp-pl-owner:hover { text-decoration: underline; color: var(--ypp-text-primary, #fff); }
 
 #ypp-pl-root .ypp-pl-stats {
     font-size: 12px;
@@ -266,7 +268,7 @@ body.ypp-playlist-redesign ytd-masthead {
 
 #ypp-pl-root .ypp-pl-btn-tool:hover {
     background: rgba(255,255,255,0.1);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     border-radius: 12px;
 }
 
@@ -284,7 +286,7 @@ body.ypp-playlist-redesign ytd-masthead {
 
 #ypp-pl-root #ypp-pl-native-sort-container:hover {
     background: rgba(255,255,255,0.1);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     border-radius: 12px;
 }
 
@@ -370,7 +372,7 @@ body.ypp-playlist-redesign ytd-masthead {
 #ypp-pl-root .ypp-pl-duration-time {
     font-size: 24px;
     font-weight: 800;
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     letter-spacing: -0.5px;
     line-height: 1;
 }
@@ -434,7 +436,8 @@ body.ypp-playlist-redesign ytd-masthead {
     right: 24px;
     z-index: var(--ypp-z-card-hover);
     /* Use theme surface variable — falls back to a neutral dark glass for default dark mode */
-    background: var(--sf, rgba(10, 10, 12, 0.55));    display: flex;
+    background: var(--sf, rgba(10, 10, 12, 0.55));
+    display: flex;
     align-items: center;
     gap: 12px;
     padding: 10px 2px;
@@ -465,7 +468,7 @@ body.ypp-playlist-redesign ytd-masthead {
 
 #ypp-pl-native-sort-container:hover {
     background: rgba(255,255,255,0.1);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     border-radius: 12px;
 }
 
@@ -537,7 +540,7 @@ body.ypp-playlist-redesign ytd-masthead {
 
 #ypp-pl-root .ypp-col-btn.active {
     background: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -549,7 +552,7 @@ body.ypp-playlist-redesign ytd-masthead {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 9px;
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     font-size: 13px;
     outline: none;
     box-sizing: border-box;
@@ -623,7 +626,8 @@ body.ypp-playlist-redesign ytd-masthead {
     font-size: 11px;
     font-weight: 600;
     padding: 2px 6px;
-    border-radius: 5px;    z-index: var(--ypp-z-content);
+    border-radius: 5px;
+    z-index: var(--ypp-z-content);
     line-height: 1.4;
 }
 
@@ -634,11 +638,12 @@ body.ypp-playlist-redesign ytd-masthead {
     bottom: 6px;
     right: 7px;
     background: rgba(0,0,0,0.80);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     font-size: 11px;
     font-weight: 600;
     padding: 2px 6px;
-    border-radius: 5px;    z-index: var(--ypp-z-content);
+    border-radius: 5px;
+    z-index: var(--ypp-z-content);
     line-height: 1.4;
     letter-spacing: 0.3px;
 }
@@ -716,7 +721,8 @@ body.ypp-playlist-redesign ytd-masthead {
 .ypp-pl-card-context-menu {
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-    background: rgba(22,22,22,0.97);    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(22,22,22,0.97);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 6px;
     min-width: 200px;

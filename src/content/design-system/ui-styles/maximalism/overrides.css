@@ -1,4 +1,6 @@
-/* Unique Shapes and Patterns for maximalism */
+
+
+
 
 @keyframes wobble {
   0% {
@@ -11,6 +13,11 @@
     transform: rotate(-2deg);
   }
 }
+
+html[data-ypp-ui-design="maximalism"] {
+/* Unique Shapes and Patterns for maximalism */
+
+
 /* src/content/themes/ui-styles/maximalism/base/layout.css */
 html[data-ypp-ui-design=maximalism] .ytProgressBarLineProgressBarPlayed {
   background:
@@ -216,4 +223,5 @@ html[data-ypp-ui-design=maximalism] .ytp-delhi-modern .ytp-chrome-controls .ytp-
 
 html[data-ypp-ui-design=maximalism] .ytp-scrubber-button {
   transform: scale(1.5) !important;
+}
 }

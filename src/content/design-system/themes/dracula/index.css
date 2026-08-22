@@ -1,3 +1,47 @@
+
 @import "../../ui-styles/shared/timeline-visibility.css";
-@import "./base/tokens.css";
+
+﻿html[data-ypp-theme="dracula"] {
+    --ypp-bg-base: #282a36;
+    --ypp-bg-surface: #44475a;
+    --ypp-bg-glass: rgba(40, 42, 54, 0.95);
+    --ypp-glass-border: rgba(255, 255, 255, 0.08);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.1);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+
+    
+    --ypp-text-primary: #f8f8f2;
+    --ypp-text-secondary: #bd93f9;
+    
+    --ypp-accent: #ff79c6;
+    --ypp-accent-hover: #ff92d0;
+    --ypp-accent-glow: rgba(255, 121, 198, 0.3);
+
+    /* SHADOWS */
+    --ypp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.25);
+    --ypp-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --ypp-shadow-glow: 0 0 24px rgba(255, 121, 198, 0.15);
+    --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
+
+    /* COMPONENT OVERRIDES */
+    --ytd-searchbox-background: transparent;
+    --ytd-searchbox-text-color: #f8f8f2;
+    --ytd-searchbox-legacy-button-color: rgba(248, 248, 242, 0.05);
+}
+
+
+/* Dracula Isometric Vector Effect */
+@keyframes draculaShift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-40px, -40px); }
+}
+html[data-ypp-theme="dracula"].ypp-theme-effects::before {
+    content: '';
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0' stroke='rgba(189,147,249,0.05)' stroke-width='2'/%3E%3Cpath d='M0 20L20 0M20 40L40 20' stroke='rgba(255,121,198,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
+    will-change: transform;
+    animation: draculaShift 5s linear infinite;
+}
+
 

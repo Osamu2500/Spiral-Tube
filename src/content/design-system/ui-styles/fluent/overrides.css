@@ -1,3 +1,89 @@
+
+
+
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes fluentSpin {
+  0% { transform: rotate(0deg) scale(1);
+}
+
+50% {
+  transform: rotate(180deg) scale(1.2);
+}
+
+100% {
+  transform: rotate(360deg) scale(1);
+}
+
+}
+
+@keyframes fluentSpinInner {
+  0% { transform: scale(0.5);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes fluentSpinEntrance {
+  0% { transform: translateY(20px);
+}
+
+100% {
+  transform: translateY(0);
+}
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9);
+}
+
+100% {
+  transform: translateY(0) scale(1);
+}
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px);
+}
+
+100% {
+  transform: translateX(0);
+}
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px #0078d4;
+}
+
+100% {
+  box-shadow: 0 0 20px #0078d4;
+}
+}
+
+html[data-ypp-ui-design="fluent"] {
 /* Unique Shapes and Patterns for fluent */
 
 html[data-ypp-card-style="fluent"] ::-webkit-scrollbar-thumb {
@@ -89,15 +175,7 @@ html[data-ypp-ui-design="fluent"] ytd-menu-popup-renderer {
   transform-origin: top right !important;
 }
 
-@keyframes menuEntranceV10 {
-  0% { transform: scale(0.9);
-}
 
-100% {
-  transform: scale(1);
-}
-
-}
 
 html[data-ypp-card-style="fluent"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="fluent"] ytd-compact-link-renderer {
@@ -164,28 +242,8 @@ html[data-ypp-ui-design="fluent"] .ytp-spinner::after {
   animation: fluentSpinInner 1s infinite alternate !important;
 }
 
-@keyframes fluentSpin {
-  0% { transform: rotate(0deg) scale(1);
-}
 
-50% {
-  transform: rotate(180deg) scale(1.2);
-}
 
-100% {
-  transform: rotate(360deg) scale(1);
-}
-
-}
-@keyframes fluentSpinInner {
-  0% { transform: scale(0.5);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    4. DIALOGS & TOOLTIPS
@@ -205,14 +263,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-paper-tooltip {
   animation: fluentSpinEntrance 0.3s ease forwards !important;
 }
 
-@keyframes fluentSpinEntrance {
-  0% { transform: translateY(20px);
-}
 
-100% {
-  transform: translateY(0);
-}
-}
 /* Fluent Forms */
 html[data-ypp-card-style="fluent"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 4px 0 0 4px) !important;
@@ -459,24 +510,8 @@ html[data-ypp-ui-design="fluent"] ytd-popup-container {
   animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9);
-}
 
-100% {
-  transform: translateY(0) scale(1);
-}
 
-}
-@keyframes snapInDialog {
-  0% { transform: scale(1.2);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    2. TOOLTIPS & TOASTS
@@ -625,14 +660,7 @@ html[data-ypp-ui-design="fluent"] ytd-playlist-panel-renderer {
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideInPlaylist {
-  0% { transform: translateX(20px);
-}
 
-100% {
-  transform: translateX(0);
-}
-}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -690,17 +718,12 @@ html[data-ypp-ui-design="fluent"] .badge-style-type-live-now-alternate {
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
-@keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #0078d4;
-}
 
-100% {
-  box-shadow: 0 0 20px #0078d4;
-}
-}
 /* Fluent Player */
 
 html[data-ypp-card-style="fluent"] .ytp-scrubber-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+}
+
 }

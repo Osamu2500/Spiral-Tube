@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for galaxy */
 
-/* galaxy/base/animations.css */
+
+
+
 @keyframes galaxy-pulse {
   0% { box-shadow: 0 0 20px rgba(0,240,255,0.2); }
 
@@ -16,6 +17,14 @@
 100% { filter:brightness(1.1) saturate(1.1); }
 
 }
+
+html[data-ypp-ui-design="galaxy"] {
+/* Unique Shapes and Patterns for galaxy */
+
+/* galaxy/base/animations.css */
+
+
+
 
 /* Subscribe button */
 html[data-ypp-ui-design="galaxy"] #subscribe-button .yt-spec-button-shape-next--filled ,
@@ -2399,4 +2408,6 @@ html[data-ypp-ui-design="galaxy"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="galaxy"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
+}
+
 }

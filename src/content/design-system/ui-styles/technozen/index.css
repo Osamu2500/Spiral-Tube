@@ -1,2 +1,87 @@
-@import "./tokens.css";
+/* Merged tokens.css */
+
+
+
+
+
+
+html[data-ypp-ui-design="technozen"] {
+/* Token Overrides for technozen */
+:root[data-ypp-ui-design="technozen"],
+html[data-ypp-ui-design="technozen"] {
+  --ypp-bg-surface: transparent !important;
+  --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #ffffff !important;
+  --ypp-text-primary: rgba(255, 255, 255, 0.7) !important;
+  
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
+  --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
+  
+  --yt-font-family: "Segoe UI",
+    "Tahoma",
+    "Trebuchet MS",
+    "Verdana",
+    "Lucida Grande",
+    sans-serif !important;
+
+  
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    transparent !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-shadow:                0 4px 12px #ffffff20 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #ffffff40 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+html[data-ypp-ui-design="technozen"] * {
+  font-family: "Segoe UI",
+    "Tahoma",
+    "Trebuchet MS",
+    "Verdana",
+    "Lucida Grande",
+    sans-serif !important;
+}
+
+
+
+html[data-ypp-theme="technozen"] {
+  /* Global Background Overrides */
+  --ypp-bg-global-color: #dff4e8 !important;
+  --ypp-bg-global-image: radial-gradient(
+      ellipse 80% 60% at 20% 10%,
+      rgba(180, 235, 160, 0.55) 0%,
+      transparent 60%),
+    radial-gradient(
+      ellipse 70% 50% at 80% 90%,
+      rgba(144, 218, 230, 0.45) 0%,
+      transparent 60%),
+    radial-gradient(
+      ellipse 50% 40% at 60% 30%,
+      rgba(200, 245, 195, 0.3) 0%,
+      transparent 50%),
+    radial-gradient(
+      ellipse 60% 50% at 10% 80%,
+      rgba(160, 225, 240, 0.3) 0%,
+      transparent 55%),
+    radial-gradient(
+      ellipse 40% 30% at 50% 50%,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 60%),
+    linear-gradient(
+      145deg,
+      #e2f8e0 0%,
+      #d4f0f7 50%,
+      #e8f9df 100%) !important;
+
+}
+
+}
+
 @import "./overrides.css";

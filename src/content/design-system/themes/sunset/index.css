@@ -1,65 +1,68 @@
+﻿html[data-ypp-theme="sunset"] {
+    --ypp-bg-base: #1a0b1a;
+    --ypp-bg-surface: #280a1e;
+    --ypp-bg-glass: rgba(26, 11, 26, 0.95);
+    --ypp-glass-border: rgba(255, 255, 255, 0.08);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.1);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    
+    --ypp-text-primary: #fff0f5;
+    --ypp-text-secondary: #f8bbd0;
+    
+    --ypp-accent: #ff6b6b;
+    --ypp-accent-hover: #ff8787;
+    --ypp-accent-glow: rgba(255, 107, 107, 0.3);
+
+    /* SHADOWS */
+    --ypp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.25);
+    --ypp-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --ypp-shadow-glow: 0 0 24px rgba(255, 107, 107, 0.15);
+    --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
+
+    /* COMPONENT OVERRIDES */
+    --ytd-searchbox-background: transparent;
+    --ytd-searchbox-text-color: #fff0f5;
+    --ytd-searchbox-legacy-button-color: rgba(255, 240, 245, 0.05);
+}
+
+/* Animated Sunset Layered Gradient Effect */
+@keyframes ypp-sunset-glow-bg {
+    0% { transform: translateY(-50vh); opacity: 0.5; }
+    50% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-50vh); opacity: 0.5; }
+}
+@keyframes ypp-sunset-glow-fg {
+    0% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-30vh); opacity: 0.4; }
+    100% { transform: translateY(0); opacity: 0.7; }
+}
+html[data-ypp-theme="sunset"].ypp-theme-effects::before,
+html[data-ypp-theme="sunset"].ypp-theme-effects::after {
+    content: "";
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+html[data-ypp-theme="sunset"].ypp-theme-effects::before {
+    background: radial-gradient(ellipse at top center, rgba(255,107,107,0.15) 0%, transparent 70%);
+    animation: ypp-sunset-glow-bg 20s ease-in-out infinite;
+}
+html[data-ypp-theme="sunset"].ypp-theme-effects::after {
+    background: radial-gradient(ellipse at bottom center, rgba(255,200,100,0.1) 0%, transparent 60%);
+    animation: ypp-sunset-glow-fg 25s ease-in-out infinite;
+}
+
 
 
 /* 2. Channel Bar (#owner) */
-html[data-ypp-ui-design="sunset"] #owner {
-    background: linear-gradient(135deg, rgba(40, 10, 30, 0.85), rgba(26, 11, 26, 0.85)) !important;
-    border: 1px solid rgba(255, 107, 107, 0.3) !important;
-    border-left: 4px solid #ff6b6b !important;
-    border-radius: 16px !important;
-    padding: 12px 16px !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-    margin-bottom: 16px !important;
-}
 
-html[data-ypp-ui-design="sunset"] #channel-name a {
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5) !important;
-}
 
-html[data-ypp-ui-design="sunset"] #owner-sub-count {
-    color: #f8bbd0 !important;
-}
 
 /* 3. Description Box (Sunset Dusk Glass Box) */
-html[data-ypp-ui-design="sunset"] #description-inner,
-html[data-ypp-ui-design="sunset"] ytd-watch-metadata #description {
-    background: rgba(40, 10, 30, 0.75) !important;
-    border: 1px solid rgba(255, 107, 107, 0.3) !important;
-    border-radius: 16px !important;
-    padding: 16px !important;
-    color: #fff0f5 !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
-    transition: all 0.3s ease !important;
-}
+html[data-ypp-theme="sunset"] #description-inner,
 
-html[data-ypp-ui-design="sunset"] #description-inner:hover,
-html[data-ypp-ui-design="sunset"] ytd-watch-metadata #description:hover {
-    border-color: #ff8787 !important;
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
-}
+html[data-ypp-theme="sunset"] #description-inner:hover,
 
 /* 4. Comments Section (Sunset Petal Cards) */
-html[data-ypp-ui-design="sunset"] #comments {
-    background: rgba(26, 11, 26, 0.8) !important;
-    border: 1px solid rgba(255, 107, 107, 0.25) !important;
-    border-radius: 16px !important;
-    padding: 20px !important;
-    margin-top: 24px !important;
-}
 
-html[data-ypp-ui-design="sunset"] ytd-comment-thread-renderer {
-    background: rgba(40, 10, 30, 0.6) !important;
-    border: 1px solid rgba(255, 107, 107, 0.2) !important;
-    border-radius: 12px !important;
-    padding: 14px !important;
-    margin-bottom: 12px !important;
-    transition: all 0.3s ease !important;
-}
 
-html[data-ypp-ui-design="sunset"] ytd-comment-thread-renderer:hover {
-    border-color: #ff8787 !important;
-    background: rgba(50, 15, 38, 0.8) !important;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2) !important;
-}
 

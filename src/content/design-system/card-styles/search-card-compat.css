@@ -109,7 +109,7 @@ html[data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-
 html[data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"] .ytd-channel-name,
 html[data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"][data-ypp-card-style="search-card-compat"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

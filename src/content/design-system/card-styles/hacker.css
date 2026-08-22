@@ -30,7 +30,7 @@ html[data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-s
 html[data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"] #video-title,
 html[data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"] .yt-core-attributed-string--link-inherit-color,
 html[data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
 }
 
 html[data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"][data-ypp-card-style="hacker"] ytd-channel-name .yt-core-attributed-string,

@@ -1,3 +1,89 @@
+
+
+
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes rainbowSpin {
+  0% { transform: rotate(0deg) scale(1);
+}
+
+50% {
+  transform: rotate(180deg) scale(1.2);
+}
+
+100% {
+  transform: rotate(360deg) scale(1);
+}
+
+}
+
+@keyframes rainbowSpinInner {
+  0% { transform: scale(0.5);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes rainbowSpinEntrance {
+  0% { transform: translateY(20px);
+}
+
+100% {
+  transform: translateY(0);
+}
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9);
+}
+
+100% {
+  transform: translateY(0) scale(1);
+}
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px);
+}
+
+100% {
+  transform: translateX(0);
+}
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px linear-gradient(to right, red, yellow, green, blue);
+}
+
+100% {
+  box-shadow: 0 0 20px linear-gradient(to right, red, yellow, green, blue);
+}
+}
+
+html[data-ypp-ui-design="colorize"] {
 /* Unique Shapes and Patterns for colorize */
 
 html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb {
@@ -96,15 +182,7 @@ html[data-ypp-ui-design="colorize"] ytd-menu-popup-renderer {
   transform-origin: top right !important;
 }
 
-@keyframes menuEntranceV10 {
-  0% { transform: scale(0.9);
-}
 
-100% {
-  transform: scale(1);
-}
-
-}
 
 html[data-ypp-card-style="colorize"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="colorize"] ytd-compact-link-renderer {
@@ -191,28 +269,8 @@ html[data-ypp-ui-design="colorize"] .ytp-spinner::after {
   animation: rainbowSpinInner 1s infinite alternate !important;
 }
 
-@keyframes rainbowSpin {
-  0% { transform: rotate(0deg) scale(1);
-}
 
-50% {
-  transform: rotate(180deg) scale(1.2);
-}
 
-100% {
-  transform: rotate(360deg) scale(1);
-}
-
-}
-@keyframes rainbowSpinInner {
-  0% { transform: scale(0.5);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    4. DIALOGS & TOOLTIPS
@@ -234,14 +292,7 @@ html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
   animation: rainbowSpinEntrance 0.3s ease forwards !important;
 }
 
-@keyframes rainbowSpinEntrance {
-  0% { transform: translateY(20px);
-}
 
-100% {
-  transform: translateY(0);
-}
-}
 /* Colorize Forms */
 html[data-ypp-card-style="colorize"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 20px 0 0 20px) !important;
@@ -447,24 +498,8 @@ html[data-ypp-ui-design="colorize"] ytd-popup-container {
   animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9);
-}
 
-100% {
-  transform: translateY(0) scale(1);
-}
 
-}
-@keyframes snapInDialog {
-  0% { transform: scale(1.2);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    2. TOOLTIPS & TOASTS
@@ -615,14 +650,7 @@ html[data-ypp-ui-design="colorize"] ytd-playlist-panel-renderer {
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideInPlaylist {
-  0% { transform: translateX(20px);
-}
 
-100% {
-  transform: translateX(0);
-}
-}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -684,14 +712,7 @@ html[data-ypp-ui-design="colorize"] .badge-style-type-live-now-alternate {
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
-@keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px linear-gradient(to right, red, yellow, green, blue);
-}
 
-100% {
-  box-shadow: 0 0 20px linear-gradient(to right, red, yellow, green, blue);
-}
-}
 /* Colorize Player */
 html[data-ypp-card-style="colorize"] .ytp-chrome-bottom {
   border-radius: var(--ypp-shape-primary, 12px) !important;
@@ -705,4 +726,6 @@ html[data-ypp-card-style="colorize"] .ytp-play-progress {
 html[data-ypp-card-style="colorize"] .ytp-scrubber-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
   animation: rgbBorder 5s infinite linear !important;
+}
+
 }

@@ -35,6 +35,9 @@
    It ONLY applies when a custom design is selected to keep the Core Framework purely agnostic.
    ========================================================================== */
 
+html[data-ypp-theme],
+html[data-ypp-theme] body,
+html[data-ypp-theme][dark],
 html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]),
 html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) body,
 html[data-ypp-ui-design]:not([data-ypp-ui-design="default"])[dark],
@@ -55,17 +58,21 @@ html.yt-spiral-tube-theme[dark] {
   
   /* Text */
   --yt-spec-text-primary: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
-  --yt-spec-text-secondary: var(--ypp-text-secondary, #aaa) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, var(--ypp-text-primary, #aaa)) !important;
   --yt-spec-text-disabled: var(--ypp-text-secondary, #aaa) !important;
   --yt-spec-text-primary-inverse: var(--ypp-bg-base, #000) !important;
   
   /* Icons & Accents */
-  --yt-spec-icon-active-other: var(--ypp-accent, var(--ypp-primary-accent, #fff)) !important;
-  --yt-spec-brand-icon-active: var(--ypp-accent, var(--ypp-primary-accent, #fff)) !important;
-  --yt-spec-icon-badge-color: var(--ypp-accent, var(--ypp-primary-accent, #fff)) !important;
-  --yt-spec-call-to-action: var(--ypp-accent, var(--ypp-primary-accent, #3ea6ff)) !important;
+  --yt-spec-icon-inactive: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+  --yt-spec-icon-disabled: var(--ypp-text-secondary, #aaa) !important;
+  --yt-spec-brand-icon-inactive: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+  --yt-spec-icon-active-other: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #fff))) !important;
+  --yt-spec-brand-icon-active: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #fff))) !important;
+  --yt-spec-icon-badge-color: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #fff))) !important;
+  --yt-spec-call-to-action: var(--ypp-accent, var(--ypp-accent-primary, var(--ypp-primary-accent, #3ea6ff))) !important;
   --yt-spec-wordmark-text: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
-}  
+  --ytd-searchbox-text-color: var(--ypp-text-primary, var(--ypp-text-color, #fff)) !important;
+}
 
 /* === DEFAULT THEME TOKENS === */
 html[data-ypp-theme="default"] {

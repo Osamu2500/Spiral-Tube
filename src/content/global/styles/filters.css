@@ -92,7 +92,7 @@
 }
 .ypp-blacklist-btn.ypp-blacklist-btn--solid {
     background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
 }
 .ypp-blacklist-btn.ypp-blacklist-btn--solid:hover {
     background: rgba(0, 0, 0, 0.92);
@@ -150,7 +150,7 @@
 }
 .ypp-inline-btn:hover {
     background: rgba(255,255,255,0.16);
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
 }
 .ypp-inline-btn--active {
     background: rgba(34,197,94,0.18);

@@ -39,7 +39,7 @@ html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-
 html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] .ytd-channel-name,
 html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

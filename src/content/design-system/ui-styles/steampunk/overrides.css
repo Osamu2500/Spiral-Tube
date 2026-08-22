@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for steampunk */
 
-/* steampunk/base/animations.css */
+
+
+
 @keyframes steampunk-pulse {
   0%   { box-shadow: inset 0 0 10px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.5);
 }
@@ -24,6 +25,7 @@ to {
 }
 
 }
+
 @keyframes sepia-bloom {
   0%{filter:brightness(1);
 }
@@ -32,6 +34,15 @@ to {
   filter:brightness(1.1) saturate(1.1);
 }
 }
+
+html[data-ypp-ui-design="steampunk"] {
+/* Unique Shapes and Patterns for steampunk */
+
+/* steampunk/base/animations.css */
+
+
+
+
 /* Card hover */
 html[data-ypp-ui-design="steampunk"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-design="steampunk"] ytd-compact-video-renderer:hover,
@@ -2243,4 +2254,6 @@ html[data-ypp-ui-design="steampunk"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="steampunk"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 6px) !important;
+}
+
 }

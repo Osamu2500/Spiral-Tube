@@ -1,2 +1,54 @@
-@import "./tokens.css";
+/* Merged tokens.css */
+
+
+
+
+
+
+html[data-ypp-ui-design="frutiger-aero"] {
+/* Token Overrides for frutiger-aero */
+:root[data-ypp-ui-design="frutiger-aero"],
+html[data-ypp-ui-design="frutiger-aero"] {
+  --ypp-bg-surface: transparent !important;
+  --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #ffffff !important;
+  --ypp-text-primary: rgba(255, 255, 255, 0.7) !important;
+  
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
+  --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
+
+  
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    transparent !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-shadow:                0 4px 12px #ffffff20 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #ffffff40 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+
+
+html[data-ypp-theme="frutiger-aero"] {
+  /* Global Background Overrides */
+  --ypp-bg-global-image: linear-gradient(to bottom, 
+    var(--faero-sky-light) 0%, 
+    var(--faero-sky-mid) 25%, 
+    var(--faero-sky-deep) 50%, 
+    var(--faero-green-mid) 75%, 
+    var(--faero-green-lt) 100%
+  ) !important;
+  --ypp-bg-global-size: 100vw 100vh !important;
+  --ypp-bg-global-attachment: fixed !important;
+
+}
+
+}
+
 @import "./overrides.css";

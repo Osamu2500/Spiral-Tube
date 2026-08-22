@@ -35,7 +35,7 @@ html[data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-ca
 html[data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"] .ytd-channel-name,
 html[data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"][data-ypp-card-style="colorize"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

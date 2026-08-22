@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for technozen */
 
-/* src/content/themes/ui-styles/technozen/base/animations.css */
+
+
+
 @keyframes technozenGreenPulse {
   0% {
     box-shadow:
@@ -24,6 +25,7 @@
 }
 
 }
+
 @keyframes technozenFloat {
   0% {
     transform: translateY(0px);
@@ -38,10 +40,49 @@
 }
 
 }
+
 @keyframes technozenBubbleRise {
   0% { transform: translateY(0) scale(1); }
   100% { transform: translateY(-60px) scale(1.4); }
 }
+
+@keyframes technozenBreathe {
+  0% {
+    box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
+}
+
+50% {
+  box-shadow: 0 0 30px rgba(48, 184, 200, 0.25);
+}
+
+100% {
+  box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
+}
+
+}
+
+@keyframes technozenAmbientFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+}
+
+50% {
+  transform: translateY(-4px) rotate(0.5deg);
+}
+
+100% {
+  transform: translateY(0px) rotate(0deg);
+}
+
+}
+
+html[data-ypp-ui-design="technozen"] {
+/* Unique Shapes and Patterns for technozen */
+
+/* src/content/themes/ui-styles/technozen/base/animations.css */
+
+
+
 
 .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
 yt-button-shape button[aria-label*="Download" i]:hover,
@@ -61,34 +102,8 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   animation: technozenGreenPulse 4s ease-in-out infinite !important;
 }
 
-@keyframes technozenBreathe {
-  0% {
-    box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
-}
 
-50% {
-  box-shadow: 0 0 30px rgba(48, 184, 200, 0.25);
-}
 
-100% {
-  box-shadow: 0 0 15px rgba(90, 191, 71, 0.1);
-}
-
-}
-@keyframes technozenAmbientFloat {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-}
-
-50% {
-  transform: translateY(-4px) rotate(0.5deg);
-}
-
-100% {
-  transform: translateY(0px) rotate(0deg);
-}
-
-}
 ytd-rich-grid-media #dismissible,
 ytd-compact-video-renderer,
 ytd-playlist-panel-video-renderer {
@@ -1036,4 +1051,5 @@ html[data-ypp-ui-design="technozen"] #owner {
 /* 4. Comments Section (Organic Mint Petal Cards) */
 html[data-ypp-ui-design="technozen"] #comments {
   border-radius: var(--ypp-shape-primary, 28px) !important;
+}
 }

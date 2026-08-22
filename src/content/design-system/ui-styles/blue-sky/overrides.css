@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for blue-sky */
 
-/* ── Card soar: upward float on hover ── */
+
+
+
 @keyframes sky-soar {
   from {
     transform: translateY(0) scale(1);
@@ -10,7 +11,6 @@
   }
 }
 
-/* ── Subscribe pulse: sunlight glow ── */
 @keyframes sky-subscribe-pulse {
   0%, 100% {
     box-shadow:
@@ -26,7 +26,6 @@
   }
 }
 
-/* ── Fade-in for cards on load ── */
 @keyframes sky-fade-in {
   from {
     transform: translateY(16px) scale(0.98);
@@ -35,6 +34,18 @@
     transform: translateY(0) scale(1);
   }
 }
+
+html[data-ypp-ui-design="blue-sky"] {
+/* Unique Shapes and Patterns for blue-sky */
+
+/* ── Card soar: upward float on hover ── */
+
+
+/* ── Subscribe pulse: sunlight glow ── */
+
+
+/* ── Fade-in for cards on load ── */
+
 
 /* Apply fade-in to cards on load */
 html[data-ypp-theme="blue-sky"] :is(
@@ -810,4 +821,6 @@ html[data-ypp-ui-design="blue-sky"]::before {
   background-size: 300% 100% !important;
   animation: sky-vapor 3s linear infinite !important;
   box-shadow: 0 0 10px rgba(0, 191, 255, 0.6) !important;
+}
+
 }

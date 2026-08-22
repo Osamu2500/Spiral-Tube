@@ -1,3 +1,10 @@
+
+
+
+
+
+
+html[data-ypp-ui-design="cairo-red"] {
 /* Unique Shapes and Patterns for cairo-red */
 
 /* Remove default YouTube curve, force sharp corners */
@@ -261,4 +268,6 @@ ytd-toggle-button-renderer a {
 :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
 }

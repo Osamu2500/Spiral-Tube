@@ -1,2 +1,60 @@
+
 @import "../../ui-styles/shared/timeline-visibility.css";
-@import "./base/tokens.css";
+
+/* origami/theme/base/tokens.css */
+html[data-ypp-theme="origami"] {
+  --ypp-bg-base: #fdfdfd; --ypp-bg-surface: #f8f8f5;
+  --ypp-accent: #ff7f50; --ypp-text-primary: #444;
+  --ypp-text-secondary: #888;
+
+  /* Critical YouTube Overrides for Light Themes */
+  --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
+  --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
+  --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
+}
+
+/* --- TEXT READABILITY FIX --- */
+/* Enforce dark text color globally for this light theme */
+html[data-ypp-theme="origami"] body,
+html[data-ypp-theme="origami"] yt-formatted-string,
+html[data-ypp-theme="origami"] span,
+html[data-ypp-theme="origami"] div,
+html[data-ypp-theme="origami"] a,
+html[data-ypp-theme="origami"] h1,
+html[data-ypp-theme="origami"] h2,
+html[data-ypp-theme="origami"] h3,
+html[data-ypp-theme="origami"] #video-title,
+html[data-ypp-theme="origami"] .title,
+html[data-ypp-theme="origami"] ytd-guide-entry-renderer *,
+html[data-ypp-theme="origami"] ytd-mini-guide-entry-renderer * {
+  color: var(--ypp-text-primary) !important;
+  text-shadow: none !important;
+}
+
+html[data-ypp-theme="origami"] svg {
+  fill: var(--ypp-text-primary) !important;
+}
+
+/* Secondary text overrides */
+html[data-ypp-theme="origami"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="origami"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="origami"] ytd-video-renderer #metadata-line span,
+html[data-ypp-theme="origami"] #metadata-line span,
+html[data-ypp-theme="origami"] .inline-metadata-item,
+html[data-ypp-theme="origami"] #byline-container yt-formatted-string,
+html[data-ypp-theme="origami"] #byline-container span,
+html[data-ypp-theme="origami"] #byline-container a,
+html[data-ypp-theme="origami"] #description-text {
+  color: var(--ypp-text-secondary) !important;
+}
+
+/* Exempt Buttons to preserve contrast */
+html[data-ypp-theme="origami"] ytd-button-renderer yt-formatted-string,
+html[data-ypp-theme="origami"] yt-button-shape *,
+html[data-ypp-theme="origami"] ytd-subscribe-button-renderer *,
+html[data-ypp-theme="origami"] ytd-badge-supported-renderer * {
+  color: inherit !important;
+}

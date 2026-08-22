@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for grunge */
 
-/* grunge/base/animations.css */
+
+
+
 @keyframes grunge-pulse {
   0%   { box-shadow: inset 0 0 6px rgba(0,0,0,0.7);
 }
@@ -23,6 +24,14 @@
   filter:brightness(1.1) saturate(1.1);
 }
 }
+
+html[data-ypp-ui-design="grunge"] {
+/* Unique Shapes and Patterns for grunge */
+
+/* grunge/base/animations.css */
+
+
+
 /* Card hover */
 html[data-ypp-ui-design="grunge"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-design="grunge"] ytd-compact-video-renderer:hover,
@@ -2227,4 +2236,6 @@ html[data-ypp-ui-design="grunge"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="grunge"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 2px) !important;
+}
+
 }

@@ -1,3 +1,96 @@
+
+
+
+
+@keyframes gridMove {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
+}
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9); }
+
+100% { transform: scale(1); }
+
+}
+
+@keyframes retroGrid {
+  0% { transform: rotate(0deg) scale(1); }
+
+50% { transform: rotate(180deg) scale(1.2); }
+
+100% { transform: rotate(360deg) scale(1); }
+
+}
+
+@keyframes retroGridInner {
+  0% { transform: scale(0.5); }
+
+100% { transform: scale(1); }
+
+}
+
+@keyframes retroGridEntrance {
+  0% { transform: translateY(20px); }
+
+100% { transform: translateY(0); }
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9); }
+
+100% { transform: translateY(0) scale(1); }
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2); }
+
+100% { transform: scale(1); }
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px); }
+
+100% { transform: translateX(0); }
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px #00ff41; }
+
+100% { box-shadow: 0 0 20px #00ff41; }
+}
+
+@keyframes vhsGlitch {
+  0% { transform: translate(0); }
+
+20% { transform: translate(-2px, 1px); }
+
+40% { transform: translate(-1px, -1px); }
+
+60% { transform: translate(2px, 1px); }
+
+80% { transform: translate(1px, -1px); }
+
+100% { transform: translate(0); }
+
+}
+
+@keyframes vhsRgbShift {
+  0% { transform: translateX(-3px); }
+
+100% { transform: translateX(3px); }
+}
+
+@keyframes cyberSpin {
+  0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+
+100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
+
+}
+
+html[data-ypp-ui-design="retrowave-green"] {
 /* Unique Shapes and Patterns for retrowave-green */
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb {
@@ -25,10 +118,7 @@ html[data-ypp-ui-design="retrowave-green"] #video-title:hover {
   text-shadow: var(--retrowave-green-text-glow-intense) !important;
 }
 
-@keyframes gridMove {
-  0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
-  100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
-}
+
 
 /* background-color */
 html[data-ypp-ui-design="retrowave-green"] yt-icon {
@@ -158,12 +248,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
   transform-origin: top right !important;
 }
 
-@keyframes menuEntranceV10 {
-  0% { transform: scale(0.9); }
 
-100% { transform: scale(1); }
-
-}
 
 html[data-ypp-card-style="retrowave-green"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="retrowave-green"] ytd-compact-link-renderer {
@@ -230,20 +315,8 @@ html[data-ypp-ui-design="retrowave-green"] .ytp-spinner::after {
   animation: retroGridInner 1s infinite alternate !important;
 }
 
-@keyframes retroGrid {
-  0% { transform: rotate(0deg) scale(1); }
 
-50% { transform: rotate(180deg) scale(1.2); }
 
-100% { transform: rotate(360deg) scale(1); }
-
-}
-@keyframes retroGridInner {
-  0% { transform: scale(0.5); }
-
-100% { transform: scale(1); }
-
-}
 
 /* =========================================
    4. DIALOGS & TOOLTIPS
@@ -263,11 +336,7 @@ html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-tooltip {
   animation: retroGridEntrance 0.3s ease forwards !important;
 }
 
-@keyframes retroGridEntrance {
-  0% { transform: translateY(20px); }
 
-100% { transform: translateY(0); }
-}
 /* Retrowave-Green Forms */
 html[data-ypp-card-style="retrowave-green"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0) !important;
@@ -469,18 +538,8 @@ html[data-ypp-ui-design="retrowave-green"] ytd-popup-container {
   animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9); }
 
-100% { transform: translateY(0) scale(1); }
 
-}
-@keyframes snapInDialog {
-  0% { transform: scale(1.2); }
-
-100% { transform: scale(1); }
-
-}
 
 /* =========================================
    2. TOOLTIPS & TOASTS
@@ -620,11 +679,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-playlist-panel-renderer {
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideInPlaylist {
-  0% { transform: translateX(20px); }
 
-100% { transform: translateX(0); }
-}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -682,11 +737,7 @@ html[data-ypp-ui-design="retrowave-green"] .badge-style-type-live-now-alternate 
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
-@keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #00ff41; }
 
-100% { box-shadow: 0 0 20px #00ff41; }
-}
 
 /* The Glitch Image Overlay */
 html[data-ypp-card-style="retrowave-green"] ytd-thumbnail:hover img,
@@ -705,26 +756,9 @@ html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail:hover::after {
   animation: vhsRgbShift 0.3s linear infinite alternate-reverse !important;
 }
 
-@keyframes vhsGlitch {
-  0% { transform: translate(0); }
 
-20% { transform: translate(-2px, 1px); }
 
-40% { transform: translate(-1px, -1px); }
 
-60% { transform: translate(2px, 1px); }
-
-80% { transform: translate(1px, -1px); }
-
-100% { transform: translate(0); }
-
-}
-
-@keyframes vhsRgbShift {
-  0% { transform: translateX(-3px); }
-
-100% { transform: translateX(3px); }
-}
 /* Retrowave-Green Neon Cyber-Player */
 
 /* Control Bar Background */
@@ -757,12 +791,7 @@ html[data-ypp-ui-design="retrowave-green"] .ytp-spinner::before {
   animation: cyberSpin 1.5s linear infinite reverse !important;
 }
 
-@keyframes cyberSpin {
-  0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
 
-100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
-
-}
 
 /* Player Time Display */
 html[data-ypp-card-style="retrowave-green"] .ytp-time-display,
@@ -779,4 +808,6 @@ html[data-ypp-card-style="retrowave-green"] .ytp-play-progress {
 html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button {
   border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 5px var(--rw-neon) !important;
+}
+
 }

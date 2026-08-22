@@ -81,7 +81,7 @@ html[data-ypp-card-style="polaroid"] ytd-thumbnail yt-formatted-string *,
 html[data-ypp-card-style="polaroid"] yt-image span,
 html[data-ypp-card-style="polaroid"] .ytd-thumbnail-overlay-time-status-renderer span,
 html[data-ypp-card-style="polaroid"] .badge-shape-wiz__text {
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   font-family: "Roboto", Arial, sans-serif !important;
   text-shadow: none !important;
   line-height: normal !important;

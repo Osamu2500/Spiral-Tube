@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for origami */
 
-/* origami/base/animations.css */
+
+
+
 @keyframes origami-pulse {
   0% { 
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
@@ -21,6 +22,14 @@
     filter:brightness(1.1) saturate(1.1);
   }
 }
+
+html[data-ypp-ui-design="origami"] {
+/* Unique Shapes and Patterns for origami */
+
+/* origami/base/animations.css */
+
+
+
 
 /* Card hover */
 html[data-ypp-ui-design="origami"] ytd-rich-grid-media:hover,
@@ -2224,4 +2233,6 @@ html[data-ypp-ui-design="origami"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="origami"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
 }

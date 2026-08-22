@@ -1,3 +1,44 @@
+
+
+
+
+@keyframes faero-shine-sweep {
+  0% { transform: translateX(-100%) skewX(-30deg); }
+
+50%, 100% { transform: translateX(250%) skewX(-30deg); }
+
+}
+
+@keyframes faero-lime-pulse {
+  0% { box-shadow: 0 0 8px rgba(159,225,30,0.4), inset 0 0 5px rgba(255,255,255,0.8); }
+
+50% { box-shadow: 0 0 18px rgba(159,225,30,0.7), inset 0 0 8px rgba(255,255,255,0.9); }
+
+100% { box-shadow: 0 0 8px rgba(159,225,30,0.4), inset 0 0 5px rgba(255,255,255,0.8); }
+
+}
+
+@keyframes faero-pop-in {
+  0% { transform: scale(0.94) translateY(-6px); }
+  60% { transform: scale(1.02) translateY(1px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes faero-card-in {
+  0% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes faero-focus-pulse {
+  0% { box-shadow: 0 0 0 2px var(--faero-lime); }
+
+50% { box-shadow: 0 0 10px 5px var(--faero-lime); }
+
+100% { box-shadow: 0 0 0 2px var(--faero-lime); }
+
+}
+
+html[data-ypp-ui-design="frutiger-aero"] {
 /* Unique Shapes and Patterns for frutiger-aero */
 
 /* =========================================================
@@ -8,12 +49,7 @@
    ========================================================= */
 
 /* ── Aero Gloss Shine Sweep ─────────────────────────────── */
-@keyframes faero-shine-sweep {
-  0% { transform: translateX(-100%) skewX(-30deg); }
 
-50%, 100% { transform: translateX(250%) skewX(-30deg); }
-
-}
 
 /* Apply shine sweep to all blue pill buttons on hover */
 html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *::before,
@@ -27,25 +63,14 @@ html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download
 }
 
 /* ── Lime Glow Pulse on Active Buttons ──────────────────── */
-@keyframes faero-lime-pulse {
-  0% { box-shadow: 0 0 8px rgba(159,225,30,0.4), inset 0 0 5px rgba(255,255,255,0.8); }
 
-50% { box-shadow: 0 0 18px rgba(159,225,30,0.7), inset 0 0 8px rgba(255,255,255,0.9); }
-
-100% { box-shadow: 0 0 8px rgba(159,225,30,0.4), inset 0 0 5px rgba(255,255,255,0.8); }
-
-}
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *[aria-pressed="true"] {
   animation: faero-lime-pulse 2.5s ease-in-out infinite !important;
 }
 
 /* ── Menu Pop-in Spring ─────────────────────────────────── */
-@keyframes faero-pop-in {
-  0% { transform: scale(0.94) translateY(-6px); }
-  60% { transform: scale(1.02) translateY(1px); }
-  100% { transform: scale(1) translateY(0); }
-}
+
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer,
 html[data-ypp-ui-design="frutiger-aero"] .ytp-popup {
@@ -53,10 +78,7 @@ html[data-ypp-ui-design="frutiger-aero"] .ytp-popup {
 }
 
 /* ── Card Reveal (page load feel) ───────────────────────── */
-@keyframes faero-card-in {
-  0% { transform: translateY(10px); }
-  100% { transform: translateY(0); }
-}
+
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer {
   animation: faero-card-in 0.35s ease-out both;
@@ -100,14 +122,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-rich-item-renderer:nth-child(n+9) {
 }
 
 /* ── Focus Ring Pulse ───────────────────────────────────── */
-@keyframes faero-focus-pulse {
-  0% { box-shadow: 0 0 0 2px var(--faero-lime); }
 
-50% { box-shadow: 0 0 10px 5px var(--faero-lime); }
-
-100% { box-shadow: 0 0 0 2px var(--faero-lime); }
-
-}
 
 html[data-ypp-ui-design="frutiger-aero"] *:focus-visible {
   animation: faero-focus-pulse 2s ease-in-out infinite !important;
@@ -954,4 +969,5 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer {
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer:focus-within {
   box-shadow: 0 0 10px rgba(159,225,30,0.3), inset 0 2px 4px rgba(0,0,0,0.04) !important;
+}
 }

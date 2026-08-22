@@ -1,3 +1,10 @@
+
+
+
+
+
+
+html[data-ypp-ui-design="claymorphism"] {
 /* Unique Shapes and Patterns for claymorphism */
 
 html[data-ypp-theme="claymorphism"] ::-webkit-scrollbar-thumb {
@@ -1963,4 +1970,6 @@ html[data-ypp-theme="claymorphism"] #above-the-fold {
 html[data-ypp-theme="claymorphism"] #bottom-row {
   border-radius: var(--ypp-shape-primary, var(--ypp-radius-lg)) !important;
   box-shadow: var(--ypp-shadow-clay-inset) !important;
+}
+
 }

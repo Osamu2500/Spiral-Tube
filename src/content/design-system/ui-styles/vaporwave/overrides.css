@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for vaporwave */
 
-/* vaporwave/base/animations.css */
+
+
+
 @keyframes vaporwave-pulse {
   0%   { box-shadow: 0 0 20px rgba(255,113,206,0.4);
 }
@@ -24,6 +25,14 @@
 }
 
 }
+
+html[data-ypp-ui-design="vaporwave"] {
+/* Unique Shapes and Patterns for vaporwave */
+
+/* vaporwave/base/animations.css */
+
+
+
 
 /* Subscribe button */
 html[data-ypp-ui-design="vaporwave"] #subscribe-button .yt-spec-button-shape-next--filled ,
@@ -2247,4 +2256,6 @@ html[data-ypp-ui-design="vaporwave"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="vaporwave"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+}
+
 }

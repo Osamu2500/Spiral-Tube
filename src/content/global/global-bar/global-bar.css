@@ -115,7 +115,7 @@
 .ypp-global-player-bar button:hover {
     background: rgba(255, 255, 255, 0.18) !important;
     border-color: rgba(255, 255, 255, 0.28) !important;
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
     transform: translateY(-2px) scale(1.06) !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 12px rgba(255, 255, 255, 0.15) !important;
 }
@@ -133,7 +133,7 @@
 .ypp-global-player-bar button.active {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(99, 102, 241, 0.35)) !important;
     border-color: rgba(99, 102, 241, 0.6) !important;
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
     box-shadow: 0 0 16px rgba(59, 130, 246, 0.45) !important;
 }
 
@@ -152,7 +152,7 @@
     height: 44px !important;
     border-radius: 50% !important;
     background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
     border: 1px solid rgba(255, 255, 255, 0.25) !important;
     box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
 }
@@ -190,7 +190,7 @@
 .ypp-global-player-bar .ypp-gpb-time-cur {
     font-size: 10px !important;
     font-weight: 700 !important;
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
     line-height: 1.15 !important;
 }
 
@@ -282,7 +282,7 @@
     font-size: 11px !important;
     font-weight: 700 !important;
     letter-spacing: 0.3px !important;
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
 }
 
 .ypp-global-player-bar #ypp-gpb-speed.active-speed {

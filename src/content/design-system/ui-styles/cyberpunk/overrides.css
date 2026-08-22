@@ -1,6 +1,6 @@
-/* Unique Shapes and Patterns for cyberpunk */
 
-/* src/content/ui-styles/cyberpunk/base/animations.css */
+
+
 
 @keyframes cyber-glitch {
   0% { transform: translate(0);
@@ -46,6 +46,122 @@
   box-shadow: 0 0 5px rgba(0, 255, 204, 0.4);
 }
 }
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes cyberSpin {
+  0% { transform: rotate(0deg) scale(1);
+}
+
+50% {
+  transform: rotate(180deg) scale(1.2);
+}
+
+100% {
+  transform: rotate(360deg) scale(1);
+}
+
+}
+
+@keyframes cyberSpinInner {
+  0% { transform: scale(0.5);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes cyberSpinEntrance {
+  0% { transform: translateY(20px);
+}
+
+100% {
+  transform: translateY(0);
+}
+}
+
+@keyframes cyberGlitch {
+  0% { transform: translate(0);
+}
+
+20% {
+  transform: translate(-2px, 2px);
+}
+
+40% {
+  transform: translate(-2px, -2px);
+}
+
+60% {
+  transform: translate(2px, 2px);
+}
+
+80% {
+  transform: translate(2px, -2px);
+}
+
+100% {
+  transform: translate(0);
+}
+
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9);
+}
+
+100% {
+  transform: translateY(0) scale(1);
+}
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2);
+}
+
+100% {
+  transform: scale(1);
+}
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px);
+}
+
+100% {
+  transform: translateX(0);
+}
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px #fcee0a;
+}
+
+100% {
+  box-shadow: 0 0 20px #fcee0a;
+}
+}
+
+html[data-ypp-ui-design="cyberpunk"] {
+/* Unique Shapes and Patterns for cyberpunk */
+
+/* src/content/ui-styles/cyberpunk/base/animations.css */
+
+
+
+
 html[data-ypp-card-style="cyberpunk"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 0 0 10px var(--cyb-secondary) !important;
@@ -176,15 +292,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-menu-popup-renderer {
   transform-origin: top right !important;
 }
 
-@keyframes menuEntranceV10 {
-  0% { transform: scale(0.9);
-}
 
-100% {
-  transform: scale(1);
-}
-
-}
 
 html[data-ypp-card-style="cyberpunk"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="cyberpunk"] ytd-compact-link-renderer {
@@ -253,28 +361,8 @@ html[data-ypp-ui-design="cyberpunk"] .ytp-spinner::after {
   animation: cyberSpinInner 1s infinite alternate !important;
 }
 
-@keyframes cyberSpin {
-  0% { transform: rotate(0deg) scale(1);
-}
 
-50% {
-  transform: rotate(180deg) scale(1.2);
-}
 
-100% {
-  transform: rotate(360deg) scale(1);
-}
-
-}
-@keyframes cyberSpinInner {
-  0% { transform: scale(0.5);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    4. DIALOGS & TOOLTIPS
@@ -294,14 +382,7 @@ html[data-ypp-ui-design="cyberpunk"] tp-yt-paper-tooltip {
   animation: cyberSpinEntrance 0.3s ease forwards !important;
 }
 
-@keyframes cyberSpinEntrance {
-  0% { transform: translateY(20px);
-}
 
-100% {
-  transform: translateY(0);
-}
-}
 /* Cyberpunk Forms */
 html[data-ypp-card-style="cyberpunk"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0) !important;
@@ -341,31 +422,7 @@ html[data-ypp-card-style="cyberpunk"] *, html[data-ypp-ui-design="cyberpunk"] * 
   text-transform: uppercase !important;
 }
 
-@keyframes cyberGlitch {
-  0% { transform: translate(0);
-}
 
-20% {
-  transform: translate(-2px, 2px);
-}
-
-40% {
-  transform: translate(-2px, -2px);
-}
-
-60% {
-  transform: translate(2px, 2px);
-}
-
-80% {
-  transform: translate(2px, -2px);
-}
-
-100% {
-  transform: translate(0);
-}
-
-}
 
 /* Specific Styling for ytd-video-renderer */
 
@@ -3477,24 +3534,8 @@ html[data-ypp-ui-design="cyberpunk"] ytd-popup-container {
   animation: snapInDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9);
-}
 
-100% {
-  transform: translateY(0) scale(1);
-}
 
-}
-@keyframes snapInDialog {
-  0% { transform: scale(1.2);
-}
-
-100% {
-  transform: scale(1);
-}
-
-}
 
 /* =========================================
    2. TOOLTIPS & TOASTS
@@ -3589,14 +3630,7 @@ html[data-ypp-ui-design="cyberpunk"] ytd-playlist-panel-renderer {
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideInPlaylist {
-  0% { transform: translateX(20px);
-}
 
-100% {
-  transform: translateX(0);
-}
-}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -3655,14 +3689,7 @@ html[data-ypp-ui-design="cyberpunk"] .badge-style-type-live-now-alternate {
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
-@keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #fcee0a;
-}
 
-100% {
-  box-shadow: 0 0 20px #fcee0a;
-}
-}
 /* =========================================================
    CYBERPUNK — TOASTS & TOOLTIPS
    ========================================================= */
@@ -3927,4 +3954,6 @@ html[data-ypp-theme="cyberpunk"] #description-inner:hover {
 /* 3. Comments Section (Neon Clipped Cyber Cards) */
 html[data-ypp-theme="cyberpunk"] #comments {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
+}
+
 }

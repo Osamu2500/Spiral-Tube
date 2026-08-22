@@ -1,16 +1,6 @@
-/* Unique Shapes and Patterns for kawaii */
 
-/* Kawaii Ambient Mode (Cinematic Lighting) Override */
-/* Hijack the cinematic canvas to force a pastel glow instead of video colors */
-html[data-ypp-card-style="kawaii"] #cinematics,
-html[data-ypp-ui-design="kawaii"] #cinematics,
-html[data-ypp-card-style="kawaii"] ytd-cinematics,
-html[data-ypp-ui-design="kawaii"] ytd-cinematics {
-  /* Apply heavy filtering to force the glow into the pastel pink/purple range */
-    filter: sepia(0.5) hue-rotate(280deg) saturate(2) brightness(1.3) !important;
-}
 
-/* Kawaii Massive Animation Library */
+
 
 @keyframes kawaiHeartBeat {
   0% { transform: scale(1); }
@@ -68,6 +58,111 @@ html[data-ypp-ui-design="kawaii"] ytd-cinematics {
   0% { transform: translateY(0); }
   100% { transform: translateY(-100vh); }
 }
+
+@keyframes menuEntranceV10 {
+  0% { transform: scale(0.9); }
+
+100% { transform: scale(1); }
+
+}
+
+@keyframes kawaiiStar {
+  0% { transform: rotate(0deg) scale(1); }
+
+50% { transform: rotate(180deg) scale(1.2); }
+
+100% { transform: rotate(360deg) scale(1); }
+
+}
+
+@keyframes kawaiiStarInner {
+  0% { transform: scale(0.5); }
+
+100% { transform: scale(1); }
+
+}
+
+@keyframes kawaiiStarEntrance {
+  0% { transform: translateY(20px); }
+
+100% { transform: translateY(0); }
+}
+
+@keyframes kawaiiBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes kawaiiWiggle {
+  0% { transform: rotate(0deg); }
+
+25% { transform: rotate(3deg); }
+
+50% { transform: rotate(0deg); }
+
+75% { transform: rotate(-3deg); }
+
+100% { transform: rotate(0deg); }
+
+}
+
+@keyframes slideUpDialog {
+  0% { transform: translateY(50px) scale(0.9); }
+
+100% { transform: translateY(0) scale(1); }
+
+}
+
+@keyframes snapInDialog {
+  0% { transform: scale(1.2); }
+
+100% { transform: scale(1); }
+
+}
+
+@keyframes slideInPlaylist {
+  0% { transform: translateX(20px); }
+
+100% { transform: translateX(0); }
+}
+
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 5px #ff9ebb; }
+
+100% { box-shadow: 0 0 20px #ff9ebb; }
+}
+
+@keyframes kawaiiTooltip {
+  0% { transform: scale(0.5) translateY(10px); }
+
+100% { transform: scale(1) translateY(0); }
+}
+
+html[data-ypp-ui-design="kawaii"] {
+/* Unique Shapes and Patterns for kawaii */
+
+/* Kawaii Ambient Mode (Cinematic Lighting) Override */
+/* Hijack the cinematic canvas to force a pastel glow instead of video colors */
+html[data-ypp-card-style="kawaii"] #cinematics,
+html[data-ypp-ui-design="kawaii"] #cinematics,
+html[data-ypp-card-style="kawaii"] ytd-cinematics,
+html[data-ypp-ui-design="kawaii"] ytd-cinematics {
+  /* Apply heavy filtering to force the glow into the pastel pink/purple range */
+    filter: sepia(0.5) hue-rotate(280deg) saturate(2) brightness(1.3) !important;
+}
+
+/* Kawaii Massive Animation Library */
+
+
+
+
+
+
+
+
+
+
 
 /* Page Load Animation */
 html[data-ypp-card-style="kawaii"] ytd-page-manager > *,
@@ -308,12 +403,7 @@ html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
   transform-origin: top right !important;
 }
 
-@keyframes menuEntranceV10 {
-  0% { transform: scale(0.9); }
 
-100% { transform: scale(1); }
-
-}
 
 html[data-ypp-card-style="kawaii"] ytd-compact-link-renderer,
 html[data-ypp-ui-design="kawaii"] ytd-compact-link-renderer {
@@ -394,20 +484,8 @@ html[data-ypp-ui-design="kawaii"] .ytp-spinner::after {
   animation: kawaiiStarInner 1s infinite alternate !important;
 }
 
-@keyframes kawaiiStar {
-  0% { transform: rotate(0deg) scale(1); }
 
-50% { transform: rotate(180deg) scale(1.2); }
 
-100% { transform: rotate(360deg) scale(1); }
-
-}
-@keyframes kawaiiStarInner {
-  0% { transform: scale(0.5); }
-
-100% { transform: scale(1); }
-
-}
 
 /* =========================================
    4. DIALOGS & TOOLTIPS
@@ -427,11 +505,7 @@ html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
   animation: kawaiiStarEntrance 0.3s ease forwards !important;
 }
 
-@keyframes kawaiiStarEntrance {
-  0% { transform: translateY(20px); }
 
-100% { transform: translateY(0); }
-}
 /* Kawaii Forms, Buttons, and Search */
 html[data-ypp-card-style="kawaii"] ytd-searchbox #container.ytd-searchbox,
 html[data-ypp-ui-design="kawaii"] ytd-searchbox #container.ytd-searchbox {
@@ -477,23 +551,8 @@ html[data-ypp-ui-design="kawaii"] .ytp-spinner::after {
   animation-delay: 0.2s !important;
 }
 
-@keyframes kawaiiBounce {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-@keyframes kawaiiWiggle {
-  0% { transform: rotate(0deg); }
 
-25% { transform: rotate(3deg); }
 
-50% { transform: rotate(0deg); }
-
-75% { transform: rotate(-3deg); }
-
-100% { transform: rotate(0deg); }
-
-}
 
 /* Specific Styling for ytd-video-renderer */
 
@@ -3614,18 +3673,8 @@ html[data-ypp-ui-design="kawaii"] ytd-popup-container {
   animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideUpDialog {
-  0% { transform: translateY(50px) scale(0.9); }
 
-100% { transform: translateY(0) scale(1); }
 
-}
-@keyframes snapInDialog {
-  0% { transform: scale(1.2); }
-
-100% { transform: scale(1); }
-
-}
 
 /* =========================================
    2. TOOLTIPS & TOASTS
@@ -3830,11 +3879,7 @@ html[data-ypp-ui-design="kawaii"] ytd-playlist-panel-renderer {
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
 
-@keyframes slideInPlaylist {
-  0% { transform: translateX(20px); }
 
-100% { transform: translateX(0); }
-}
 /* =========================================
    2. COMMUNITY POSTS & POLLS
 ========================================= */
@@ -3893,11 +3938,7 @@ html[data-ypp-ui-design="kawaii"] .badge-style-type-live-now-alternate {
   animation: pulseBadge 1.5s infinite alternate !important;
 }
 
-@keyframes pulseBadge {
-  0% { box-shadow: 0 0 5px #ff9ebb; }
 
-100% { box-shadow: 0 0 20px #ff9ebb; }
-}
 /* Kawaii Tooltips */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip,
@@ -3909,11 +3950,7 @@ html[data-ypp-ui-design="kawaii"] .ytp-tooltip {
     animation: kawaiiTooltip 0.3s var(--kawaii-ease-bouncy) forwards !important;
 }
 
-@keyframes kawaiiTooltip {
-  0% { transform: scale(0.5) translateY(10px); }
 
-100% { transform: scale(1) translateY(0); }
-}
 /* Kawaii Miniplayer & Live Chat */
 /* Miniplayer */
 
@@ -4099,3 +4136,5 @@ html[data-ypp-ui-design="kawaii"] #secondary-inner.ytd-watch-flexy {
   border-radius: var(--ypp-shape-primary, var(--kawaii-r-lg)) !important;
 }
 
+
+}

@@ -1,4 +1,6 @@
-/* Unique Shapes and Patterns for terminalism */
+
+
+
 
 @keyframes termGlowPulse {
   0%, 100% { box-shadow: 0 0 4px rgba(0, 255, 65, 0.3); }
@@ -6,6 +8,11 @@
 50% { box-shadow: 0 0 12px rgba(0, 255, 65, 0.6), 0 0 24px rgba(0, 255, 65, 0.2); }
 
 }
+
+html[data-ypp-ui-design="terminalism"] {
+/* Unique Shapes and Patterns for terminalism */
+
+
 html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   transform: scale(1.06) !important;
   animation: termGlowPulse 3s ease-in-out infinite !important;
@@ -581,3 +588,5 @@ html[data-ypp-ui-design="terminalism"]::before {
     animation: none !important;
     transition: none !important;
   }
+
+}

@@ -39,7 +39,8 @@
   backdrop-filter: blur(12px);
     display: grid;
     grid-template-rows: auto 1fr;
-    background: rgba(30, 30, 34, 0.4);    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(30, 30, 34, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     overflow: hidden;
     height: 100%;
@@ -51,7 +52,8 @@
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
     padding: 16px 20px;
-    background: rgba(20, 20, 24, 0.85);    z-index: 10;
+    background: rgba(20, 20, 24, 0.85);
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,7 +63,7 @@
     margin: 0;
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     letter-spacing: 0.2px;
 }
 
@@ -132,7 +134,8 @@
     position: absolute;
     bottom: 6px;
     right: 6px;
-    background: rgba(0, 0, 0, 0.85);    color: #fff;
+    background: rgba(0, 0, 0, 0.85);
+    color: var(--ypp-text-primary, #fff);
     padding: 3px 6px;
     border-radius: 6px;
     font-size: 12px;
@@ -148,7 +151,7 @@
 }
 
 .ypp-deck-title {
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;

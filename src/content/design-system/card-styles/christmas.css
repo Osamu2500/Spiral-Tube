@@ -43,7 +43,7 @@ html[data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
   border-radius: 40px 40px 8px 8px !important;
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   font-weight: 700 !important;
 }
 
@@ -59,7 +59,7 @@ html[data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-
 html[data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"] .ytd-channel-name,
 html[data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"][data-ypp-card-style="christmas"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

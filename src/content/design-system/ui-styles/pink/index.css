@@ -1,2 +1,40 @@
-@import "./tokens.css";
+/* Merged tokens.css */
+
+
+
+
+
+
+html[data-ypp-ui-design="pink"] {
+/* Token Overrides for pink */
+:root[data-ypp-ui-design="pink"],
+html[data-ypp-ui-design="pink"] {
+  --ypp-bg-surface: #ffe4e1 !important;
+  --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #ff69b4 !important;
+  --ypp-text-primary: #ffb6c1 !important;
+  
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ff69b440) !important;
+  --ypp-shadow-base: 0 4px 12px #ff69b420 !important;
+  --ypp-shadow-hover: 0 8px 24px #ff69b440 !important;
+  
+  
+
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    #ffe4e1 !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #ff69b440) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ff69b440) !important;
+  --ypp-card-shadow:                0 4px 12px #ff69b420 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #ff69b440 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+
+}
+
 @import "./overrides.css";

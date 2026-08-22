@@ -157,7 +157,7 @@ html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-ca
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] .ytd-channel-name,
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

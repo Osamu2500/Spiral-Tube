@@ -433,7 +433,7 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
   max-height: 4.8rem !important;
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   letter-spacing: -0.1px !important;
   margin: 0 !important;
 }
@@ -725,7 +725,8 @@ body.ypp-search-grid-mode ytd-channel-renderer {
     135deg,
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.01)
-  ) !important;  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-top-color: rgba(255, 255, 255, 0.15) !important;
   border-radius: var(--ypp-radius-lg);
   padding: 32px 24px !important;
@@ -846,7 +847,7 @@ body.ypp-search-grid-mode ytd-channel-renderer ytd-channel-name * {
   font-family: 'Inter', 'Roboto', sans-serif !important;
   font-size: 22px !important;
   font-weight: 700 !important;
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   text-align: center !important;
   display: inline-block !important;
   opacity: 1 !important;
@@ -958,7 +959,8 @@ body.ypp-search-list-mode ytd-video-renderer {
   background: none !important;
   border: none !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-  box-shadow: none !important;  transform: none !important;
+  box-shadow: none !important;
+  transform: none !important;
   border-radius: 0 !important;
   padding: 12px 4px !important;
 }
@@ -1079,7 +1081,7 @@ body.ypp-search-grid-mode ytd-playlist-renderer #view-more a {
 }
 body.ypp-search-grid-mode ytd-playlist-renderer:hover #view-more a {
   background: rgba(99, 102, 241, 0.2) !important;
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
   border-color: rgba(99, 102, 241, 0.4) !important;
 }
@@ -1126,7 +1128,8 @@ body.ypp-search-grid-mode #left-arrow-button,
 body.ypp-search-grid-mode #right-arrow-button {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  background: rgba(10, 10, 10, 0.8);}
+  background: rgba(10, 10, 10, 0.8);
+}
 @media (max-width: 1600px) {
   body.ypp-search-grid-mode ytd-item-section-renderer > #contents,
   body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
@@ -1322,7 +1325,7 @@ body.ypp-search-grid-mode ytd-radio-renderer #video-title yt-formatted-string {
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
   max-height: 4.8rem !important;
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   letter-spacing: -0.1px !important;
   margin: 0 !important;
 }

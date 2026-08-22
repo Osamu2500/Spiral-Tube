@@ -27,7 +27,7 @@ html[data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card
 html[data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"] .ytd-channel-name,
 html[data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"] yt-formatted-string.ytd-video-renderer,
 html[data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"][data-ypp-card-style="discord"] ytd-video-meta-block span { 
-  color: #ffffff !important; 
+  color: var(--ypp-text-primary, #fff) !important; 
   text-shadow: none !important;
 }
 

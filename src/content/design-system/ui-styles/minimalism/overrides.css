@@ -1,3 +1,10 @@
+
+
+
+
+
+
+html[data-ypp-ui-design="minimalism"] {
 /* Unique Shapes and Patterns for minimalism */
 
 html[data-ypp-card-style="minimalism"] ::-webkit-scrollbar-track, html[data-ypp-ui-design="minimalism"] ::-webkit-scrollbar-track {
@@ -166,4 +173,5 @@ html[data-ypp-ui-design=minimalism] #frosted-glass.with-chipbar.ytd-app {
 html[data-ypp-ui-design=minimalism] video.video-stream.html5-main-video,
 html[data-ypp-ui-design=minimalism] .html5-video-player {
   border-radius: var(--ypp-shape-primary, 0) !important;
+}
 }

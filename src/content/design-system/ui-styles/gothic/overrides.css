@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for gothic */
 
-/* gothic/base/animations.css */
+
+
+
 @keyframes gothic-pulse {
   0%   { box-shadow: 0 4px 25px rgba(139,0,0,0.5);
 }
@@ -23,6 +24,14 @@
   filter:brightness(1.1) saturate(1.1);
 }
 }
+
+html[data-ypp-ui-design="gothic"] {
+/* Unique Shapes and Patterns for gothic */
+
+/* gothic/base/animations.css */
+
+
+
 /* Card hover */
 html[data-ypp-ui-design="gothic"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-design="gothic"] ytd-compact-video-renderer:hover,
@@ -2223,4 +2232,6 @@ html[data-ypp-ui-design="gothic"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="gothic"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
 }

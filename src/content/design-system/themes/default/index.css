@@ -1,3 +1,111 @@
+
 @import "../../ui-styles/shared/timeline-visibility.css";
-@import "./base/tokens.css";
+
+html[data-ypp-theme="default"] {
+    /* YouTube Default Dark Theme */
+    --ypp-bg-base: #0f0f0f;
+    --ypp-bg-surface: #272727;
+    --ypp-bg-glass: rgba(15, 15, 15, 0.9);
+    --ypp-glass-border: rgba(255, 255, 255, 0.1);
+    --ypp-glass-highlight: rgba(255, 255, 255, 0.05);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+
+    --ypp-text-primary: #f1f1f1;
+    --ypp-text-secondary: #aaaaaa;
+
+    --ypp-accent: #3ea6ff;
+    --ypp-accent-hover: #65b8ff;
+    --ypp-accent-glow: rgba(62, 166, 255, 0.3);
+
+    /* SEMANTIC COLORS */
+    --ypp-success: #2ba640;
+    --ypp-error: #cc0000;
+    --ypp-warning: #ffa500;
+    
+    /* SHADOWS */
+    --ypp-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --ypp-shadow-float: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --ypp-shadow-glow: 0 0 16px rgba(62, 166, 255, 0.15);
+    --ypp-shadow-accent-glow: 0 0 24px var(--ypp-accent-glow);
+
+    /* COMPONENT OVERRIDES */
+    --ytd-searchbox-background: #121212;
+    --ytd-searchbox-text-color: #f1f1f1;
+    --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.08);
+}
+
+html:not([dark]).yt-spiral-tube-theme {
+    /* YouTube Default Light Theme */
+    --ypp-bg-base: #ffffff;
+    --ypp-bg-surface: #f2f2f2;
+    --ypp-bg-glass: rgba(255, 255, 255, 0.95);
+    --ypp-glass-border: rgba(0, 0, 0, 0.1);
+    --ypp-glass-highlight: rgba(0, 0, 0, 0.05);
+    --ypp-glass-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+
+    --ypp-text-primary: #0f0f0f;
+    --ypp-text-secondary: #606060;
+
+    --ypp-accent: #065fd4;
+    --ypp-accent-hover: #0056b3;
+    --ypp-accent-glow: rgba(6, 95, 212, 0.2);
+
+    /* SEMANTIC COLORS */
+    --ypp-success: #128e2c;
+    --ypp-error: #cc0000;
+    --ypp-warning: #ea8600;
+
+    --ypp-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --ypp-shadow-float: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --ypp-shadow-glow: 0 0 16px rgba(6, 95, 212, 0.1);
+    --ypp-shadow-accent-glow: 0 0 24px var(--ypp-accent-glow);
+
+    --ytd-searchbox-background: #ffffff;
+    --ytd-searchbox-text-color: #0f0f0f;
+    --ytd-searchbox-legacy-button-color: rgba(0, 0, 0, 0.05);
+}
+
+/* FIXES AND OTHER STUFF */
+/* Fix dropdown z-indexes to ensure they stay above custom UI */
+ytd-popup-container {
+}
+
+/* Better Scrollbar for YouTube Default */
+html[data-ypp-theme="default"] ::-webkit-scrollbar {
+}
+html[data-ypp-theme="default"] ::-webkit-scrollbar-track {
+    background: transparent;
+}
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb {
+    background: var(--ypp-text-secondary);
+}
+html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--ypp-text-primary);
+}
+
+/* Fix scrolling on some native popups */
+.tp-yt-iron-dropdown {
+    max-height: 90vh !important;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure consistent border radius on thumbnails */
+ytd-thumbnail {
+    overflow: hidden;
+}
+
+/* Video Player rounded corners fix for ambient mode */
+#ytd-player {
+    overflow: hidden;
+}
+
+/* Animated Default Pulse Effect - Kept clean for native feel */
+html[data-ypp-theme="default"].ypp-theme-effects::before,
+html[data-ypp-theme="default"].ypp-theme-effects::after {
+}
+
 

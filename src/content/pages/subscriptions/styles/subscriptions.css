@@ -14,7 +14,8 @@ ytd-browse[page-subtype="channels"] #contents.ypp-grid-layout > ytd-channel-rend
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    background: var(--ypp-bg-surface) !important;    border: 1px solid var(--ypp-glass-border) !important;
+    background: var(--ypp-bg-surface) !important;
+    border: 1px solid var(--ypp-glass-border) !important;
     border-radius: var(--ypp-radius-lg) !important;
     padding: 24px 16px !important;
     width: auto !important;
@@ -58,7 +59,8 @@ ytd-browse[page-subtype="channels"] #contents.ypp-grid-layout ytd-channel-render
   gap: 12px;
   padding: 16px 24px;
   margin-bottom: 24px;
-  background: var(--ypp-bg-surface);  border: 1px solid var(--ypp-glass-border);
+  background: var(--ypp-bg-surface);
+  border: 1px solid var(--ypp-glass-border);
   border-radius: var(--ypp-radius-lg);
   align-items: center;
   overflow-x: auto;
@@ -118,7 +120,8 @@ ytd-browse[page-subtype="channels"] #contents.ypp-grid-layout ytd-channel-render
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85);  z-index: 2147483647 !important;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2147483647 !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,7 +140,8 @@ ytd-browse[page-subtype="channels"] #contents.ypp-grid-layout ytd-channel-render
   backdrop-filter: blur(40px) saturate(150%);
   width: 900px;
   height: 600px;
-  background: rgba(255, 255, 255, 0.05);  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   display: flex;
@@ -350,7 +354,7 @@ ytd-browse[page-subtype="channels"] #contents.ypp-grid-layout ytd-channel-render
 .ypp-icon-btn, .ypp-del-cat-btn {
   background: rgba(255, 255, 255, 0.1);
   border: none;
-  color: #fff;
+  color: var(--ypp-text-primary, #fff);
   width: 24px;
   height: 24px;
   border-radius: 4px;

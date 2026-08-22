@@ -144,7 +144,7 @@ body.yt-spiral-tube-theme ytd-thumbnail-overlay-side-panel-renderer {
   background: rgba(10, 10, 15, 0.6) !important;
 
   border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   width: 35% !important;
   max-width: 100% !important; /* Fixed: was 100px */

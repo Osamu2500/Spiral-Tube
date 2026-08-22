@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for retro-wave */
 
-/* retro-wave/base/animations.css */
+
+
+
 @keyframes retro-wave-pulse {
   0%   { box-shadow: 0 0 15px rgba(255,0,127,0.5);
 }
@@ -24,6 +25,14 @@
 }
 
 }
+
+html[data-ypp-ui-design="retro-wave"] {
+/* Unique Shapes and Patterns for retro-wave */
+
+/* retro-wave/base/animations.css */
+
+
+
 
 /* Subscribe button */
 html[data-ypp-ui-design="retro-wave"] #subscribe-button .yt-spec-button-shape-next--filled ,
@@ -2261,4 +2270,6 @@ html[data-ypp-ui-design="retro-wave"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="retro-wave"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
+}
+
 }

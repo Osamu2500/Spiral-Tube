@@ -69,7 +69,7 @@ html[data-ypp-card-style='neon'][data-ypp-card-style='neon'][data-ypp-card-style
 html[data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"] #video-title,
 html[data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"] .yt-core-attributed-string--link-inherit-color,
 html[data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"] yt-formatted-string[has-link-only_]:not([force-default-style]) a.yt-simple-endpoint.yt-formatted-string {
-    color: #ffffff !important;
+    color: var(--ypp-text-primary, #fff) !important;
 }
 
 html[data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"][data-ypp-card-style="neon"] ytd-channel-name .yt-core-attributed-string,

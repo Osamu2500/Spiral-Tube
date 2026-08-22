@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for hologram */
 
-/* hologram/base/animations.css */
+
+
+
 @keyframes hologram-pulse {
   0%   { box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15);
 }
@@ -24,6 +25,14 @@
 }
 
 }
+
+html[data-ypp-ui-design="hologram"] {
+/* Unique Shapes and Patterns for hologram */
+
+/* hologram/base/animations.css */
+
+
+
 
 /* Subscribe button */
 html[data-ypp-ui-design="hologram"] #subscribe-button .yt-spec-button-shape-next--filled ,
@@ -2412,4 +2421,6 @@ html[data-ypp-ui-design="hologram"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="hologram"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
+}
+
 }

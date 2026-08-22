@@ -1,16 +1,6 @@
-/* Unique Shapes and Patterns for cherry */
 
-/* =========================================================
-   CHERRY (NIGHT SAKURA) — ANIMATIONS
-   ========================================================= */
 
-html[data-ypp-ui-design="cherry"] * {
-  transition: background-color 0.4s ease, 
-              border-color 0.4s ease, 
-              color 0.4s ease, 
-              box-shadow 0.4s ease,
-              transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-}
+
 
 @keyframes cherryGlowPulse {
   0% { box-shadow: 0 0 10px rgba(255, 183, 178, 0.2);
@@ -44,6 +34,27 @@ html[data-ypp-ui-design="cherry"] * {
   transform: translate(20px, 20px) scale(1);
 }
 }
+
+html[data-ypp-ui-design="cherry"] {
+/* Unique Shapes and Patterns for cherry */
+
+/* =========================================================
+   CHERRY (NIGHT SAKURA) — ANIMATIONS
+   ========================================================= */
+
+html[data-ypp-ui-design="cherry"] * {
+  transition: background-color 0.4s ease, 
+              border-color 0.4s ease, 
+              color 0.4s ease, 
+              box-shadow 0.4s ease,
+              transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+
+
+
+
+
 /* Background floating petals/glows */
 html[data-ypp-ui-design="cherry"].ypp-theme-effects::before,
 html[data-ypp-ui-design="cherry"].ypp-theme-effects::after {
@@ -356,4 +367,6 @@ html[data-ypp-ui-design="cherry"]::before {
 html[data-ypp-ui-design="cherry"]::after {
   background: radial-gradient(circle at 20% 80%, rgba(253, 164, 175, 0.1) 0%, transparent 40%);
   animation: cherryFloatFg 25s ease-in-out infinite alternate;
+}
+
 }

@@ -114,11 +114,37 @@ export function initComponents(
           { key: 'blue-sky', label: t('blue_sky'), meta: t('airy_clouds'), color: '#87ceeb' },
           { key: 'technozen', label: t('technozen'), meta: t('eco_tech'), color: '#dff4e8' },
           { key: 'frutiger-aero', label: t('frutiger_aero'), meta: t('web_2_0'), color: '#bfe6ff' },
-          { key: 'claymorphism', label: t('claymorphism'), meta: t('puffy_3d'), color: '#f0e8ff' },
-          { key: 'brutalism', label: t('brutalism'), meta: t('raw_ui'), color: '#ffffff' },
-          { key: 'glassmorphism', label: t('glassmorphism'), meta: t('frosted'), color: '#0f0c29' },
+          { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy 3D', color: '#f0e8ff' },
+          { key: 'brutalism', label: 'Brutalism', meta: 'Raw UI', color: '#ffffff' },
+          { key: 'neo-brutalism', label: 'Neo-Brutal', meta: 'Bold Offset', color: '#f4f4f0' },
+          { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted Glass', color: '#0f0c29' },
           { key: 'colorize', label: t('colorize'), meta: t('glass_dynamic'), color: '#0f0f0f' },
+          { key: 'vaporwave', label: 'Vaporwave', meta: '90s Neon', color: '#b967ff' },
+          { key: 'retro-wave', label: 'Retro Wave', meta: '80s Synth', color: '#2b003a' },
+          { key: 'y2k', label: 'Y2K', meta: 'Late 90s', color: '#e6e6fa' },
+          { key: 'grunge', label: 'Grunge', meta: 'Zine & Torn', color: '#1c1c1c' },
         ],
+      },
+      {
+        name: 'Nature & Seasonal',
+        themes: [
+          { key: 'autumn', label: 'Autumn', meta: 'Seasonal', color: '#b5541b' },
+          { key: 'nature', label: 'Nature', meta: 'Forest', color: '#2e8b57' },
+          { key: 'christmas', label: 'Christmas', meta: 'Festive', color: '#165016' },
+          { key: 'sakura', label: 'Sakura', meta: 'Cherry Blossom', color: '#fff0f5' },
+        ]
+      },
+      {
+        name: 'Art, Culture & Design',
+        themes: [
+          { key: 'kawaii', label: 'Kawaii', meta: 'Bubbly Pink', color: '#ffb6c1' },
+          { key: 'steampunk', label: 'Steampunk', meta: 'Brass & Copper', color: '#f5deb3' },
+          { key: 'origami', label: 'Origami', meta: 'Paper Folds', color: '#fdfbf7' },
+          { key: 'gothic', label: 'Gothic', meta: 'Dark Arches', color: '#121212' },
+          { key: 'woodblock', label: 'Woodblock', meta: 'Ukiyo-e Art', color: '#f5e6c8' },
+          { key: 'neumorphic', label: 'Neumorphic', meta: 'Soft 3D', color: '#e0e5ec' },
+          { key: 'liquid-glass', label: 'Liquid Glass', meta: 'Apple', color: '#1a1a1a' },
+        ]
       },
       {
         name: 'UserStyles',
@@ -130,48 +156,6 @@ export function initComponents(
           { key: 'pink', label: t('cherry'), meta: 'Pink', color: '#ffb6c1' },
           { key: 'retrowave-green', label: t('hacker_green'), meta: 'Retro', color: '#00ff00' },
         ],
-      },
-
-      {
-        name: 'New Additions',
-        themes: [
-          { key: 'autumn', label: 'Autumn', meta: 'Seasonal', color: '#b5541b' },
-          { key: 'bento', label: 'Bento', meta: 'Japanese', color: '#1a1a1a' },
-          { key: 'christmas', label: 'Christmas', meta: 'Festive', color: '#165016' },
-          { key: 'liquid-glass', label: 'Liquid Glass', meta: 'Apple', color: '#1a1a1a' },
-          { key: 'nature', label: 'Nature', meta: 'Forest', color: '#2e8b57' },
-          { key: 'neumorphic', label: 'Neumorphic', meta: 'Soft 3D', color: '#e0e5ec' }
-        ]
-      },
-
-      {
-        name: 'UI Designs — Aesthetics',
-        themes: [
-          { key: 'kawaii', label: 'Kawaii', meta: 'Bubbly Pink', color: '#ffb6c1' },
-          { key: 'cyberpunk', label: 'Cyberpunk', meta: 'Neon Glitch', color: '#0a0a0f' },
-          { key: 'brutalism', label: 'Brutalism', meta: 'Stark Blocks', color: '#ffffff' },
-          { key: 'neo-brutalism', label: 'Neo-Brutal', meta: 'Bold Offset', color: '#f4f4f0' },
-          { key: 'vaporwave', label: 'Vaporwave', meta: '90s Neon', color: '#b967ff' },
-          { key: 'matrix', label: 'Matrix', meta: 'Digital Rain', color: '#000000' },
-          { key: 'hologram', label: 'Hologram', meta: 'Cyan Tech', color: '#001a1a' },
-          { key: 'retro-wave', label: 'Retro Wave', meta: '80s Synth', color: '#2b003a' },
-          { key: 'glassmorphism', label: 'Glassmorphism', meta: 'Frosted Glass', color: '#0f0c29' },
-          { key: 'claymorphism', label: 'Claymorphism', meta: 'Puffy Clay', color: '#e0e5ec' }
-        ]
-      },
-
-      {
-        name: 'UI Designs — Art & Culture',
-        themes: [
-          { key: 'sakura', label: 'Sakura', meta: 'Cherry Blossom', color: '#fff0f5' },
-          { key: 'y2k', label: 'Y2K', meta: 'Late 90s', color: '#e6e6fa' },
-          { key: 'steampunk', label: 'Steampunk', meta: 'Brass & Copper', color: '#f5deb3' },
-          { key: 'origami', label: 'Origami', meta: 'Paper Folds', color: '#fdfbf7' },
-          { key: 'gothic', label: 'Gothic', meta: 'Dark Arches', color: '#121212' },{ key: 'woodblock', label: 'Woodblock', meta: 'Ukiyo-e Art', color: '#f5e6c8' },
-          { key: 'grunge', label: 'Grunge', meta: 'Zine & Torn', color: '#1c1c1c' },
-          { key: 'galaxy', label: 'Galaxy', meta: 'Deep Space', color: '#03001c' },
-          { key: 'aurora', label: 'Aurora', meta: 'Northern Lights', color: '#0f172a' }
-        ]
       },
     ];
 
@@ -206,34 +190,20 @@ export function initComponents(
       }
 
       themeGrid.innerHTML = '';
-      themeGrid.style.display = 'flex';
-      themeGrid.style.flexDirection = 'column';
-      themeGrid.style.gap = '16px';
+      themeGrid.style.display = 'grid';
+      themeGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+      themeGrid.style.gap = '8px';
+      themeGrid.style.width = '100%';
 
-      themeCategories.forEach((category) => {
-        const categoryWrapper = document.createElement('div');
-        categoryWrapper.className = 'theme-category-wrapper';
+      // Flatten all themes into a single array
+      const allThemes = [];
+      themeCategories.forEach(category => {
+        category.themes.forEach(theme => {
+          allThemes.push(theme);
+        });
+      });
 
-        const groupLabel = document.createElement('div');
-        groupLabel.className = 'theme-group-label';
-        groupLabel.textContent = category.name;
-        groupLabel.style.width = '100%';
-        groupLabel.style.fontSize = '11px';
-        groupLabel.style.color = 'rgba(255,255,255,0.4)';
-        groupLabel.style.textTransform = 'uppercase';
-        groupLabel.style.letterSpacing = '0.05em';
-        groupLabel.style.marginBottom = '8px';
-        groupLabel.style.fontWeight = '600';
-        categoryWrapper.appendChild(groupLabel);
-
-        const innerGrid = document.createElement('div');
-        innerGrid.className = 'theme-grid-inner';
-        innerGrid.style.display = 'grid';
-        innerGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
-        innerGrid.style.gap = '8px';
-        innerGrid.style.width = '100%';
-
-        category.themes.forEach((theme) => {
+      allThemes.forEach((theme) => {
           const btn = document.createElement('div');
           btn.className = `theme-btn ${theme.key === currentTheme ? 'active' : ''}`;
           btn.dataset.theme = theme.key;
@@ -383,12 +353,8 @@ export function initComponents(
             }
           });
 
-          innerGrid.appendChild(btn);
+          themeGrid.appendChild(btn);
         });
-
-        categoryWrapper.appendChild(innerGrid);
-        themeGrid.appendChild(categoryWrapper);
-      });
 
       applyThemeToPopup(currentTheme, customThemesObj, nativeMode);
     });

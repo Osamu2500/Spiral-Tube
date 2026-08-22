@@ -1,11 +1,12 @@
 @import "../../ui-styles/shared/timeline-visibility.css";
+
 /* =========================================================
    LIQUID GLASS (visionOS / macOS Sonoma Specular Acrylic)
    Color Theme Companion Bundle
    ========================================================= */
 
 html[data-ypp-theme="liquid-glass"],
-html[data-ypp-ui-design="liquid-glass"] {
+html[data-ypp-theme="liquid-glass"] {
   
   --ypp-bg-surface: rgba(255, 255, 255, 0.05);
   --ypp-bg-glass: rgba(255, 255, 255, 0.08);
@@ -26,11 +27,7 @@ html[data-ypp-ui-design="liquid-glass"] {
   --ypp-shadow-accent-glow: 0 0 36px var(--ypp-accent-glow);
   
   --ytd-searchbox-background: rgba(255, 255, 255, 0.08);
-  --ytd-searchbox-text-color: #ffffff;
-  --ytd-searchbox-border-radius: 2000px 0 0 2000px;
-  --ytd-searchbox-height: 40px;
-  --ytd-searchbox-legacy-button-border-radius: 0 2000px 2000px 0;
-  --ytd-searchbox-legacy-button-width: 64px;
+  --ytd-searchbox-text-color: var(--ypp-text-primary, #fff);
   --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.15);
 }
 

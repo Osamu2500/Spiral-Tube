@@ -426,7 +426,7 @@ body.ypp-grayscale-thumbnails ytd-thumbnail:hover img {
     width: 100%;
     min-height: 100vh;
     background-color: #0f0f0f; /* YouTube Dark Theme Base */
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     font-family: "YouTube Noto", Roboto, Arial, sans-serif;
     position: relative;
     z-index: var(--ypp-z-content);
@@ -794,7 +794,7 @@ ytd-popup-container ytd-multi-page-menu-renderer[data-ypp-redesigned] {
 .ypp-active-name {
     font-size: 17px;
     font-weight: 600;
-    color: #fff;
+    color: var(--ypp-text-primary, #fff);
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 

@@ -1,2 +1,44 @@
-@import "./tokens.css";
+/* Merged tokens.css */
+
+
+
+
+
+
+html[data-ypp-ui-design="neo-brutalism"] {
+/* Token Overrides for neo-brutalism */
+:root[data-ypp-ui-design="neo-brutalism"],
+html[data-ypp-ui-design="neo-brutalism"] {
+  --ypp-bg-surface: #ffcc00 !important;
+  --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #ffffff !important;
+  --ypp-text-primary: rgba(255, 255, 255, 0.7) !important;
+  
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
+  --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
+  
+  --yt-font-family: var(--ypp-font-primary, "Space Mono","Courier New",monospace) !important;
+
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    #ffcc00 !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-shadow:                0 4px 12px #ffffff20 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #ffffff40 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+html[data-ypp-ui-design="neo-brutalism"] * {
+  font-family: var(--ypp-font-primary, "Space Mono","Courier New",monospace) !important;
+}
+
+
+}
+
 @import "./overrides.css";

@@ -58,7 +58,7 @@ html,
 [dark] .ytSearchboxComponentSuggestionsContainer,
 html,
 [dark] .ytSearchboxComponentSuggestionsContainer * {
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
 }
 html,
 [dark] .ytSearchboxComponentSuggestionsContainer,

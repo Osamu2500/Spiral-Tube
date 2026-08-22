@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for y2k */
 
-/* y2k/base/animations.css */
+
+
+
 @keyframes y2k-pulse {
   0%   { box-shadow: 0 0 15px rgba(255,105,180,0.4);
 }
@@ -37,6 +38,16 @@
   filter:brightness(1.1) saturate(1.1);
 }
 }
+
+html[data-ypp-ui-design="y2k"] {
+/* Unique Shapes and Patterns for y2k */
+
+/* y2k/base/animations.css */
+
+
+
+
+
 /* Card hover */
 html[data-ypp-ui-design="y2k"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-design="y2k"] ytd-compact-video-renderer:hover,
@@ -2461,4 +2472,6 @@ html[data-ypp-ui-design="y2k"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="y2k"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 24px) !important;
+}
+
 }

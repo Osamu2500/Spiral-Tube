@@ -1,2 +1,54 @@
-@import "./tokens.css";
+/* Merged tokens.css */
+
+
+
+
+
+
+html[data-ypp-ui-design="kawaii"] {
+/* Token Overrides for kawaii */
+:root[data-ypp-ui-design="kawaii"],
+html[data-ypp-ui-design="kawaii"] {
+  --ypp-bg-surface: transparent !important;
+  --ypp-bg-surface-hover: rgba(0, 0, 0, 0.5) !important;
+  --ypp-bg-surface-active: rgba(0, 0, 0, 0.5) !important;
+  
+  --ypp-primary-accent: #ffffff !important;
+  --ypp-text-primary: rgba(255, 255, 255, 0.7) !important;
+  
+  --ypp-surface-border: 1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-shadow-base: 0 4px 12px #ffffff20 !important;
+  --ypp-shadow-hover: 0 8px 24px #ffffff40 !important;
+  
+  --yt-font-family: var(--ypp-font-primary, 'Quicksand', 'Roboto', sans-serif) !important;
+
+  
+  /* ── Card Token Connections ─────────────────────────────────────────── */
+  --ypp-card-bg:                    transparent !important;
+  --ypp-card-bg-hover:              rgba(0, 0, 0, 0.5) !important;
+  --ypp-card-border:                1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ffffff40) !important;
+  --ypp-card-shadow:                0 4px 12px #ffffff20 !important;
+  --ypp-card-shadow-hover:          0 8px 24px #ffffff40 !important;
+  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card-backdrop-filter-hover: none !important;
+}
+
+
+html[data-ypp-ui-design="kawaii"] * {
+  font-family: var(--ypp-font-primary, 'Quicksand', 'Roboto', sans-serif) !important;
+}
+
+
+
+html[data-ypp-theme="kawaii"] {
+  /* Global Background Overrides */
+  --ypp-bg-global-image: radial-gradient(ellipse at top right, var(--kawaii-accent-tertiary) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom left, var(--kawaii-bg-tertiary) 0%, transparent 70%) !important;
+  --ypp-bg-global-attachment: fixed !important;
+
+}
+
+}
+
 @import "./overrides.css";

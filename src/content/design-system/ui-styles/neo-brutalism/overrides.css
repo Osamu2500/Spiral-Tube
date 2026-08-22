@@ -1,6 +1,7 @@
-/* Unique Shapes and Patterns for neo-brutalism */
 
-/* neo-brutalism/base/animations.css */
+
+
+
 @keyframes neo-brutalism-pulse {
   0%   { box-shadow: 6px 6px 0px #000;
 }
@@ -23,6 +24,14 @@
   filter:brightness(1.1) saturate(1.1);
 }
 }
+
+html[data-ypp-ui-design="neo-brutalism"] {
+/* Unique Shapes and Patterns for neo-brutalism */
+
+/* neo-brutalism/base/animations.css */
+
+
+
 /* Card hover */
 html[data-ypp-ui-design="neo-brutalism"] ytd-rich-grid-media:hover,
 html[data-ypp-ui-design="neo-brutalism"] ytd-compact-video-renderer:hover,
@@ -2233,4 +2242,6 @@ html[data-ypp-ui-design="neo-brutalism"] ytd-video-secondary-info-renderer {
 
 html[data-ypp-ui-design="neo-brutalism"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
+}
+
 }

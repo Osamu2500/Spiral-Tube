@@ -249,12 +249,8 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @param {string} uiStyleKey  e.g. 'nature', 'liquid-glass', 'ocean'
      */
     _applyUiStyle(uiStyleKey) {
-        const id = 'ypp-ui-style-css';
-        let link = document.getElementById(id);
-
-        // If no UI style or 'default', remove any previously injected style
+        // If no UI style or 'default', clean up attributes
         if (!uiStyleKey || uiStyleKey === 'default') {
-            if (link) link.remove();
             document.documentElement.removeAttribute('data-ypp-ui-design');
             document.documentElement.removeAttribute('data-ypp-ui-style'); // legacy attribute cleanup
             document.documentElement.removeAttribute('data-ypp-has-bg-image'); // Force clear background
@@ -268,23 +264,8 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             return;
         }
 
-        // Skip if the same UI style is already injected
-        if (link && link.getAttribute('data-ui-style') === uiStyleKey) {
-            return;
-        }
-
-        const cssUrl = chrome.runtime.getURL(`dist/ui-styles/${uiStyleKey}/bundle.css`);
-
-        if (!link) {
-            link = document.createElement('link');
-            link.id = id;
-            link.rel = 'stylesheet';
-            link.className = 'ypp-ui-style-link';
-            (document.head || document.documentElement).appendChild(link);
-        }
-
-        link.setAttribute('data-ui-style', uiStyleKey);
-        link.href = cssUrl; // Browser caches correctly; only bust on explicit forceReload()
+        // Ensure design system bundles are present
+        this._injectDesignSystemBundles();
 
         document.documentElement.setAttribute('data-ypp-ui-design', uiStyleKey);
         document.documentElement.setAttribute('data-ypp-ui-style', uiStyleKey); // legacy compat — some CSS still uses this attribute
@@ -458,37 +439,81 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
             .map(([k, v]) => `${k}: ${v} !important;`)
             .join('\n');
 
-        style.textContent = `:root.ypp-spiral-tube-theme, :root.yt-spiral-tube-theme, html[data-ypp-theme="${themeKey}"] {\n${cssVars}\n}`;
+        let textFixBlock = '';
+        if (theme.variables && theme.variables['--ypp-text-primary']) {
+            textFixBlock = `
+/* --- TEXT READABILITY FIX --- */
+html[data-ypp-theme="${themeKey}"] body,
+html[data-ypp-theme="${themeKey}"] yt-formatted-string,
+html[data-ypp-theme="${themeKey}"] span,
+html[data-ypp-theme="${themeKey}"] div,
+html[data-ypp-theme="${themeKey}"] a,
+html[data-ypp-theme="${themeKey}"] h1,
+html[data-ypp-theme="${themeKey}"] h2,
+html[data-ypp-theme="${themeKey}"] h3,
+html[data-ypp-theme="${themeKey}"] #video-title,
+html[data-ypp-theme="${themeKey}"] .title,
+html[data-ypp-theme="${themeKey}"] ytd-guide-entry-renderer *,
+html[data-ypp-theme="${themeKey}"] ytd-mini-guide-entry-renderer * {
+  color: var(--ypp-text-primary) !important;
+  text-shadow: none !important;
+}
+html[data-ypp-theme="${themeKey}"] svg {
+  fill: var(--ypp-text-primary) !important;
+}
+html[data-ypp-theme="${themeKey}"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="${themeKey}"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="${themeKey}"] ytd-video-renderer #metadata-line span,
+html[data-ypp-theme="${themeKey}"] #metadata-line span,
+html[data-ypp-theme="${themeKey}"] .inline-metadata-item,
+html[data-ypp-theme="${themeKey}"] #byline-container yt-formatted-string,
+html[data-ypp-theme="${themeKey}"] #byline-container span,
+html[data-ypp-theme="${themeKey}"] #byline-container a,
+html[data-ypp-theme="${themeKey}"] #description-text {
+  color: var(--ypp-text-secondary, var(--ypp-text-primary)) !important;
+}
+html[data-ypp-theme="${themeKey}"] ytd-button-renderer yt-formatted-string,
+html[data-ypp-theme="${themeKey}"] yt-button-shape *,
+html[data-ypp-theme="${themeKey}"] ytd-subscribe-button-renderer *,
+html[data-ypp-theme="${themeKey}"] ytd-badge-supported-renderer * {
+  color: inherit !important;
+}
+`;
+        }
+
+        style.textContent = `:root.ypp-spiral-tube-theme, :root.yt-spiral-tube-theme, html[data-ypp-theme="${themeKey}"] {\n${cssVars}\n}\n${textFixBlock}`;
         this._Utils.log(`Injecting Custom Theme: ${themeKey}`, 'THEME');
     }
 
     /**
-     * Known theme keys that exist in dist/themes/ (compiled color themes).
-     * Any key NOT in this set falls back to dist/ui-styles/ for its CSS.
+     * Inject Design System Bundles exactly once
      * @private
+     * @param {boolean} [force=false] - Force cache bust
      */
-    _THEME_KEYS = new Set([
-        'abyss','anime','aurora','brutalism','coffee','cyberpunk','default',
-        'discord','dracula','ember','forest','galaxy','glassmorphism','gothic',
-        'grunge','hacker','harry-potter','hologram','liquid-glass','material',
-        'matrix','maximalism','midnight','minimalism','neo-brutalism','neumorphic',
-        'nord','ocean','origami','retro','retro-wave','sakura','startube',
-        'steampunk','sunset','system','technozen','terminalism','vaporwave',
-        'vintage','woodblock','y2k'
-    ]);
+    _injectDesignSystemBundles(force = false) {
+        const bundles = [
+            { id: 'ypp-themes-bundle-css', file: 'themes-bundle.css' },
+            { id: 'ypp-ui-styles-bundle-css', file: 'ui-styles-bundle.css' },
+            { id: 'ypp-card-styles-bundle-css', file: 'card-styles-bundle.css' }
+        ];
 
-    /**
-     * Helper to get correct theme URL based on architecture.
-     * Falls back to dist/ui-styles/ when the key has no dedicated theme bundle.
-     * @private
-     */
-    _getThemeUrl(themeKey) {
-        if (this._THEME_KEYS.has(themeKey)) {
-            return chrome.runtime.getURL(`dist/themes/${themeKey}/bundle.css`);
+        for (const bundle of bundles) {
+            let link = document.getElementById(bundle.id);
+            const cssUrl = chrome.runtime.getURL(`dist/${bundle.file}`);
+            const fullUrl = force ? `${cssUrl}?t=${Date.now()}` : cssUrl;
+
+            if (!link) {
+                link = document.createElement('link');
+                link.id = bundle.id;
+                link.rel = 'stylesheet';
+                link.className = 'ypp-theme-link';
+                (document.head || document.documentElement).appendChild(link);
+            }
+
+            if (link.href !== fullUrl || force) {
+                link.href = fullUrl;
+            }
         }
-        // Fallback: key only exists in ui-styles (legacy/hybrid keys)
-        this._Utils.log(`Theme key '${themeKey}' not in dist/themes — falling back to dist/ui-styles/`, 'THEME', 'warn');
-        return chrome.runtime.getURL(`dist/ui-styles/${themeKey}/bundle.css`);
     }
 
     /**
@@ -497,40 +522,16 @@ export class ThemeManager extends window.YPP.features.BaseFeature {
      * @param {boolean} [force=false] - Force cache bust
      */
     _injectThemeFile(themeKey, force = false) {
-        const id = 'ypp-active-theme-css';
-        let link = document.getElementById(id);
-        
-        // If the element exists but is a <style> (from previous custom theme), replace it
-        if (link && link.tagName.toLowerCase() !== 'link') {
-            link.remove();
-            link = null;
-        }
-
-        const cssUrl = this._getThemeUrl(themeKey);
-        const fullUrl = force ? `${cssUrl}?t=${Date.now()}` : cssUrl;
-
-        if (!link) {
-            link = document.createElement('link');
-            link.id = id;
-            link.rel = 'stylesheet';
-            link.className = 'ypp-theme-link';
-            (document.head || document.documentElement).appendChild(link);
-        }
-
-        // Always update to ensure we force a repaint/reload if requested
-        link.href = fullUrl;
-
-        // VERIFICATION LOG
-        this._Utils.log(`Injecting Theme: ${themeKey} (Force: ${force})`, 'THEME');
+        // Ensure design system bundles are present
+        this._injectDesignSystemBundles(force);
+        this._Utils.log(`Applied Theme Attribute: ${themeKey} (Force: ${force})`, 'THEME');
     }
 
     /**
      * Remove the injected theme file
      */
     _removeThemeFile() {
-        const id = 'ypp-active-theme-css';
-        const link = document.getElementById(id);
-        if (link) link.remove();
+        document.documentElement.removeAttribute('data-ypp-theme');
     }
 
     // =========================================================================

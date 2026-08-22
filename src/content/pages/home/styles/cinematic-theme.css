@@ -53,7 +53,7 @@ body.cinematic ytd-masthead .yt-spec-icon-shape svg,
 body.cinematic ytd-masthead ytd-button-renderer,
 body.cinematic ytd-masthead yt-icon-button {
   fill: #fff !important;
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
 }
 
 /* Ensure header icons and text maintain dark mode appearance regardless of system theme */
@@ -70,7 +70,7 @@ body.cinematic ytd-masthead .yt-spec-icon-shape svg,
 body.cinematic ytd-masthead ytd-button-renderer,
 body.cinematic ytd-masthead yt-icon-button {
   fill: #fff !important;
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
 }
 
 /* Make the pill container fully transparent in cinematic mode */
@@ -109,11 +109,11 @@ body.cinematic-home ytd-masthead yt-icon-button:hover {
 body.cinematic-home ytd-masthead .yt-spec-button-shape-next,
 body.cinematic-home ytd-masthead .yt-spec-button-shape-with-label__button {
   background: transparent !important;
-  --yt-spec-icon-button-icon-active-color: #fff !important;
+  --yt-spec-icon-button-icon-active-color: var(--ypp-text-primary, #fff) !important;
 }
 
 body.cinematic .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
 }
 
 /* ============================================================================
@@ -178,7 +178,7 @@ body.cinematic-home yt-chip-cloud-chip-renderer[selected],
 body.cinematic-home .ypp-filter-chip.active {
   background: rgba(255, 255, 255, 0.15) !important;
   background-color: rgba(255, 255, 255, 0.15) !important;
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   border-color: transparent !important;
   /* Override YouTube's internal CSS variables for chip background */
   --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.15) !important;
@@ -186,7 +186,7 @@ body.cinematic-home .ypp-filter-chip.active {
 }
 body.cinematic-home yt-chip-cloud-chip-renderer[selected] *,
 body.cinematic-home .ypp-filter-chip.active * {
-  color: #fff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   fill: #fff !important;
 }
 
@@ -615,12 +615,12 @@ body.cinematic-home #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
 
 body.cinematic-home yt-chip-cloud-chip-renderer:hover {
   background-color: rgba(255, 255, 255, 0.25) !important;
-  color: #ffffff !important;
+  color: var(--ypp-text-primary, #fff) !important;
   transform: scale(1.04);
 }
 
 body.cinematic-home yt-chip-cloud-chip-renderer.iron-selected {
-  background-color: #ffffff !important;
+  background-color: var(--ypp-text-primary, #fff) !important;
   color: #0f0f0f !important;
   font-weight: 600 !important;
 }

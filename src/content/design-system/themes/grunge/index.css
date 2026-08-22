@@ -1,2 +1,10 @@
+
 @import "../../ui-styles/shared/timeline-visibility.css";
-@import "./base/tokens.css";
+
+/* grunge/theme/base/tokens.css */
+html[data-ypp-theme="grunge"] {
+  --ypp-bg-base: #2b2b2b; --ypp-bg-surface: #333;
+  --ypp-accent: #a8b870; --ypp-text-primary: #ccc;
+  --ypp-text-secondary: #999;
+}
+
