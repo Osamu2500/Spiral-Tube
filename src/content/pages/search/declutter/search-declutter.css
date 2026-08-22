@@ -81,7 +81,8 @@ body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-shelf-rendere
 body.ypp-hide-search-shorts ytd-shelf-renderer:has(a[href*="/shorts/"]),
 body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-shelf-renderer a[href*="/shorts/"]),
 body.ypp-hide-search-shorts ytd-shelf-renderer:has(ytd-reel-item-renderer),
-body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-item-renderer) {
+body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-item-renderer),
+body.ypp-hide-search-shorts yt-collection-shelf-view-model:has(a[href*="/shorts/"]) {
   display: none !important;
 }
 body.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer,

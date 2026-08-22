@@ -30,6 +30,22 @@
 
 /* Flatten item-section wrappers so video cards land directly in master grid */
 
+/* Hide headers of flattened shelves (prevents floating text in grid) */
+body.ypp-search-grid-mode .ypp-flattened-container yt-shelf-header-layout,
+body.ypp-search-grid-mode .ypp-flattened-container #header,
+body.ypp-search-grid-mode .ypp-flattened-container #title-container,
+body.ypp-search-grid-mode .ypp-flattened-container .ytShelfHeaderLayoutTitleRow {
+    display: none !important;
+}
+
+/* Ensure flattened containers span the entire grid width so their internal items can break out,
+   and ensure full width elements span across all columns. */
+body.ypp-search-grid-mode .ypp-flattened-container,
+body.ypp-search-grid-mode .ypp-full-width-item {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+}
+
 /* BUG 3: Staggered/misaligned middle cards (Image 3) */
 
 /* BUG 4 & OPTION B: Force full width for shelf renderers */
@@ -284,6 +300,15 @@ body.ypp-search-grid-mode ytd-two-column-search-results-renderer #primary {
 }
 body.ypp-search-grid-mode ytd-section-list-renderer {
   padding: 0 !important;
+}
+body.ypp-search-grid-mode ytd-section-list-renderer > #contents,
+body.ypp-search-grid-mode .ypp-flattened-grid,
+body.ypp-search-grid-mode .ypp-grid-container {
+  display: grid !important;
+  grid-template-columns: repeat(var(--ypp-active-columns, var(--ypp-search-columns, 4)), minmax(0, 1fr)) !important;
+  grid-auto-flow: dense !important;
+  gap: 20px !important;
+  align-items: start !important;
 }
 body.ypp-search-grid-mode ytd-shelf-renderer #items,
 body.ypp-search-grid-mode ytd-shelf-renderer #contents,

@@ -5,6 +5,7 @@ class SearchPageManager extends window.YPP.BasePageManager {
         
         // Initialize features managed by this page
         this.features = {
+            searchViewMode: window.YPP.features.SearchViewMode ? new window.YPP.features.SearchViewMode() : null,
             searchRedesign: window.YPP.features.SearchRedesign ? new window.YPP.features.SearchRedesign() : null,
             searchObserver: window.YPP.features.SearchObserver ? new window.YPP.features.SearchObserver() : null
         };
@@ -12,11 +13,17 @@ class SearchPageManager extends window.YPP.BasePageManager {
         if (this.features.searchRedesign) {
             this.features.searchRedesign.init(this.settings);
         }
+        if (this.features.searchViewMode) {
+            this.features.searchViewMode.init(this.settings);
+        }
     }
 
     onActivate() {
         this.utils.log('Search Page Active', 'SEARCH_MANAGER', 'info');
         // Features without specific toggles (like the redesign itself if it's always on or managed differently)
+        if (this.features.searchViewMode?.enable) {
+            this.features.searchViewMode.enable();
+        }
         if (this.features.searchRedesign?.enable) {
             this.features.searchRedesign.enable();
         }
@@ -35,6 +42,9 @@ class SearchPageManager extends window.YPP.BasePageManager {
     applySettings(settings) {
         this.settings = { ...this.settings, ...settings };
         
+        if (this.features.searchViewMode) {
+            this.features.searchViewMode.run(this.settings);
+        }
         if (this.features.searchRedesign) {
             this.features.searchRedesign.run(this.settings);
         }

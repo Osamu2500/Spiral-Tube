@@ -47,7 +47,7 @@ export class SearchObserver {
         GENERIC_ITEMS: '#items',
         GENERIC_SCROLL: '#scroll-container',
         CONTENTS: '#contents',
-        RENDERERS: 'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, ytd-channel-renderer',
+        RENDERERS: 'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, ytd-channel-renderer, yt-lockup-view-model',
         THUMBNAIL: 'ytd-thumbnail, ytd-playlist-thumbnail',
         DISMISSIBLE: '#dismissible',
         INNER_THUMB: 'a, yt-image',
@@ -126,7 +126,7 @@ export class SearchObserver {
 
             window.YPP.sharedObserver.register(
                 'search-results-scanner',
-                'ytd-item-section-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer',
+                'ytd-item-section-renderer, yt-collection-shelf-view-model, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer',
                 debouncedProcess
             );
             this.processAll();
@@ -153,10 +153,10 @@ export class SearchObserver {
         
         for (let i = 0; i < matches.length; i++) {
             const node = matches[i];
-            if (node.tagName === 'YTD-ITEM-SECTION-RENDERER') {
+            if (node.tagName === 'YTD-ITEM-SECTION-RENDERER' || node.tagName === 'YT-COLLECTION-SHELF-VIEW-MODEL') {
                 sectionsToProcess.add(node);
             } else if (node.closest) {
-                const section = node.closest('ytd-item-section-renderer');
+                const section = node.closest('ytd-item-section-renderer, yt-collection-shelf-view-model');
                 if (section) sectionsToProcess.add(section);
             }
         }
@@ -181,7 +181,7 @@ export class SearchObserver {
         if (!this._isEnabled()) return;
 
         try {
-            const itemSections = document.querySelectorAll('ytd-item-section-renderer');
+            const itemSections = document.querySelectorAll('ytd-item-section-renderer, yt-collection-shelf-view-model');
             for (let i = 0; i < itemSections.length; i++) {
                 this._processSection(itemSections[i]);
             }
@@ -191,8 +191,14 @@ export class SearchObserver {
     }
 
     _processSection(section) {
-        const contents = section.querySelector('#contents');
-        if (!contents) return;
+        let contents = section.querySelector('#contents');
+        if (!contents) {
+            if (section.tagName === 'YT-COLLECTION-SHELF-VIEW-MODEL') {
+                contents = section; // Fallback to the section itself for newer layouts
+            } else {
+                return;
+            }
+        }
 
         const children = Array.from(contents.children);
         if (children.length === 0) return;
@@ -292,6 +298,13 @@ export class SearchObserver {
                 for (let op of operations) {
                     this._processedNodes.add(op.node);
 
+                    if (op.isShorts) {
+                        if (this._settings.hideSearchShorts) {
+                            op.node.style.setProperty('display', 'none', 'important');
+                            continue;
+                        }
+                    }
+
                     if (NOISE_TAGS.has(op.tag)) {
                         if (this._settings.hideSearchShelves) {
                             op.node.style.setProperty('display', 'none', 'important');
@@ -313,11 +326,6 @@ export class SearchObserver {
                         continue;
                     }
 
-                    if (op.isShorts) {
-                        op.node.style.setProperty('display', 'none', 'important');
-                        continue;
-                    }
-
                     if (stats.hasVideos || isGridContainer) {
                         if (
                             op.tag === 'ytd-video-renderer'         ||
@@ -328,7 +336,7 @@ export class SearchObserver {
                             op.tag === 'yt-lockup-view-model'       ||
                             op.tag === 'ytd-lockup-view-model'
                         ) {
-                            op.node.classList.add(CLASSES.GRID_ITEM);
+                            op.node.classList.add(CLASSES.GRID_ITEM, 'ypp-card-container');
 
                             // Move all badges (4K, Subtitles, etc.) into #channel-info so they flow next to the channel name
                             if (op.cleanData && op.cleanData.extraBadges && op.cleanData.channelInfo) {
@@ -407,6 +415,9 @@ export class SearchObserver {
         for (let i = 0; i < badges.length; i++) {
             if (badges[i].textContent.trim() === 'Shorts') return true;
         }
+        
+        if (this._isShortsShelf(node)) return true;
+        
         return false;
     }
 
@@ -414,6 +425,8 @@ export class SearchObserver {
         const { SELECTORS } = SearchObserver;
         const title = node.querySelector(SELECTORS.TITLE)?.textContent?.trim() || '';
         if (/shorts/i.test(title)) return true;
+        const titleRow = node.querySelector('.ytShelfHeaderLayoutTitleRow')?.textContent?.trim() || '';
+        if (/shorts/i.test(titleRow)) return true;
         if (node.querySelector(SELECTORS.SHORTS_BTN)) return true;
         if (node.querySelector(SELECTORS.SHORTS_LINK)) return true;
         return false;
@@ -425,13 +438,14 @@ export class SearchObserver {
             tag === 'ytd-horizontal-card-list-renderer' ||
             tag === 'ytd-vertical-list-renderer'        ||
             tag === 'ytd-shelf-renderer'                ||
-            tag === 'ytd-rich-shelf-renderer'
+            tag === 'ytd-rich-shelf-renderer'           ||
+            tag === 'yt-collection-shelf-view-model'
         ) {
             if (!this._isShortsShelf(node)) {
                 return !!node.querySelector(
                     // ytd-compact-video-renderer covers music/song results in shelves —
                     // without it, music shelves are never flattenable and get hidden.
-                    'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer'
+                    'ytd-video-renderer, ytd-compact-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-rich-item-renderer, yt-lockup-view-model'
                 );
             }
         }

@@ -162,6 +162,8 @@ import { FeedGridColumns } from '../global/layout/feed-grid-columns.js';
 window.YPP.FeatureManager.register(FeedGridColumns);
 
 // Search features
+import { SearchViewMode } from '../pages/search/layout/search-view-mode.js';
+window.YPP.FeatureManager.register(SearchViewMode);
 import { SearchObserver } from '../pages/search/features/search-observer.js';
 window.YPP.FeatureManager.register(SearchObserver);
 import { SearchRedesign } from '../pages/search/layout/search-redesign.js';

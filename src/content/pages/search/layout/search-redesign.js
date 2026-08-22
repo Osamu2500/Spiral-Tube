@@ -25,6 +25,9 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
     static CLASSES = {
         GRID_MODE:       'ypp-search-grid-mode',
         LIST_MODE:       'ypp-search-list-mode',
+        GRID_CONTAINER:  'ypp-grid-container',
+        GRID_ITEM:       'ypp-grid-item',
+        FULL_WIDTH:      'ypp-full-width-item',
         TOGGLE_BTN:      'ypp-toggle-btn',
         TOGGLE_CONTAINER:'ypp-view-mode-toggle',
         ACTIVE:          'active',
@@ -181,13 +184,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 SearchRedesign.CLASSES
             );
             if (this._settings.searchGrid || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.cleanSearch || this._settings.searchLayout) {
-                if (this._settings.searchGrid) {
-                    document.body.classList.add(SearchRedesign.CLASSES.GRID_MODE);
-                    document.body.classList.remove(SearchRedesign.CLASSES.LIST_MODE);
-                } else {
-                    document.body.classList.add(SearchRedesign.CLASSES.LIST_MODE);
-                }
-
                 // Apply the selected search layout size class
                 const layoutSize = this._settings.searchLayout || 'regular';
                 document.body.classList.add('ypp-search-layout-' + layoutSize);
@@ -203,7 +199,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
                 const LAYOUT_AWARE_CARD_STYLES = new Set(['immersive']);
 
                 if (activeCardStyle && LAYOUT_AWARE_CARD_STYLES.has(activeCardStyle)) {
-                    document.body.classList.add(SearchRedesign.CLASSES.LIST_MODE);
                     this._searchObserver.start(SearchRedesign.SELECTORS.SEARCH_CONTAINER);
                     this._log(`Card style "${activeCardStyle}" activated search list-mode fallback`, 'info');
                 }
@@ -237,8 +232,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
 
         // Ensure body classes do not leak to non-search pages
         document.body.classList.remove(
-            SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE,
             'ypp-search-layout-dense',
             'ypp-search-layout-compact',
             'ypp-search-layout-regular',
@@ -261,8 +254,6 @@ export class SearchRedesign extends window.YPP.features.BaseFeature {
 
     _removeClasses() {
         document.body.classList.remove(
-            SearchRedesign.CLASSES.GRID_MODE,
-            SearchRedesign.CLASSES.LIST_MODE,
             'ypp-search-layout-dense',
             'ypp-search-layout-compact',
             'ypp-search-layout-regular',

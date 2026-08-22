@@ -17,43 +17,55 @@ export class SearchViewMode {
         LIST: 'list',
     };
 
+    static CLASSES = {
+        GRID_MODE: 'ypp-search-grid-mode',
+        LIST_MODE: 'ypp-search-list-mode'
+    };
+
     constructor() {
-        this._viewMode = SearchViewMode.MODES.GRID;
-        this._boundMessageListener = null;
-        this._classes = {};
-        this._logFn = null;
+        this._settings = {};
+        this._isEnabled = false;
+        this._logFn = ((msg, level) => console[level]?.(`[SearchViewMode] ${msg}`));
     }
 
-    /**
-     * @param {Object} classes - SearchRedesign.CLASSES reference
-     * @param {Function} logFn - Optional logging function
-     */
-    sync(classes, logFn) {
-        this._classes = classes || {};
-        this._logFn = logFn || ((msg, level) => console[level]?.(`[SearchViewMode] ${msg}`));
+    async init(settings) {
+        this._settings = settings || {};
     }
 
-    async init() {}
-    run() {}
-    enable() { this.applyViewMode(); }
+    run(settings) {
+        this._settings = settings || {};
+        if (this._isEnabled) this.applyViewMode();
+    }
+    enable() { 
+        this._isEnabled = true;
+        this.applyViewMode(); 
+    }
     
     disable() {
-        document.body.classList.remove(this._classes.GRID_MODE, this._classes.LIST_MODE);
+        this._isEnabled = false;
+        document.body.classList.remove(SearchViewMode.CLASSES.GRID_MODE, SearchViewMode.CLASSES.LIST_MODE);
     }
 
     applyViewMode() {
         const body = document.body;
-        if (!this._classes.GRID_MODE) return;
 
         const isSearch = window.location.pathname === '/results';
-
         if (!isSearch) {
-            body.classList.remove(this._classes.GRID_MODE, this._classes.LIST_MODE);
+            body.classList.remove(SearchViewMode.CLASSES.GRID_MODE, SearchViewMode.CLASSES.LIST_MODE);
             return;
         }
 
-        body.classList.add(this._classes.GRID_MODE);
-        body.classList.remove(this._classes.LIST_MODE);
+        // Use searchGrid setting as base, override with searchViewMode if explicitly set
+        const baseGridEnabled = !!(this._settings.searchGrid || this._settings.cleanSearch || this._settings.hideSearchShelves || this._settings.hideChannelCards || this._settings.autoVideoFilter);
+        const mode = this._settings.searchViewMode || (baseGridEnabled ? SearchViewMode.MODES.GRID : SearchViewMode.MODES.LIST);
+
+        if (mode === SearchViewMode.MODES.GRID) {
+            body.classList.add(SearchViewMode.CLASSES.GRID_MODE);
+            body.classList.remove(SearchViewMode.CLASSES.LIST_MODE);
+        } else {
+            body.classList.add(SearchViewMode.CLASSES.LIST_MODE);
+            body.classList.remove(SearchViewMode.CLASSES.GRID_MODE);
+        }
     }
 };
 
