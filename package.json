@@ -4,8 +4,8 @@
   "description": "Spiral Tube — YouTube Power Extension",
   "license": "MIT",
   "scripts": {
-    "build:css": "node scripts/build-themes.js",
-    "create-theme": "node scripts/create-theme.js",
+    "build:css": "node scripts/build/build-themes.js",
+    "create-theme": "node scripts/build/create-theme.js",
     "build": "npm run build:css && vite build && vite build --config vite.config.sw.js && vite build --config vite.config.external.js",
     "watch": "vite build --watch",
     "test": "vitest run"
