@@ -81,10 +81,7 @@
 100% {
   box-shadow: 0 0 20px #0078d4;
 }
-}
-
-html[data-ypp-ui-design="fluent"] {
-/* Unique Shapes and Patterns for fluent */
+}/* Unique Shapes and Patterns for fluent */
 
 html[data-ypp-card-style="fluent"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 4px) !important;
@@ -99,6 +96,7 @@ html[data-ypp-card-style="fluent"] ::-webkit-scrollbar-thumb {
 ========================================= */
 html[data-ypp-card-style="fluent"] ytd-masthead,
 html[data-ypp-ui-design="fluent"] ytd-masthead {
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 
@@ -144,11 +142,9 @@ html[data-ypp-ui-design="fluent"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
-html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="fluent"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="fluent"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -282,12 +278,7 @@ html[data-ypp-card-style="fluent"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-d
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="fluent"] h1, html[data-ypp-card-style="fluent"] h2, html[data-ypp-card-style="fluent"] h3, 
-html[data-ypp-card-style="fluent"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="fluent"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="fluent"] h1, html[data-ypp-ui-design="fluent"] h2, html[data-ypp-ui-design="fluent"] h3, 
-html[data-ypp-ui-design="fluent"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="fluent"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="fluent"] h1, html[data-ypp-card-style="fluent"] h2, html[data-ypp-card-style="fluent"] h3, html[data-ypp-card-style="fluent"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="fluent"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="fluent"] h1, html[data-ypp-ui-design="fluent"] h2, html[data-ypp-ui-design="fluent"] h3, html[data-ypp-ui-design="fluent"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="fluent"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
@@ -304,20 +295,19 @@ html[data-ypp-ui-design="fluent"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="fluent"] ytd-compact-video-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="fluent"] ytd-thumbnail, html[data-ypp-card-style="fluent"] yt-image,
-html[data-ypp-ui-design="fluent"] ytd-thumbnail, html[data-ypp-ui-design="fluent"] yt-image {
+html[data-ypp-card-style="fluent"] ytd-thumbnail, html[data-ypp-card-style="fluent"] yt-image, html[data-ypp-ui-design="fluent"] ytd-thumbnail, html[data-ypp-ui-design="fluent"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="fluent"] yt-img-shadow, html[data-ypp-card-style="fluent"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="fluent"] yt-img-shadow, html[data-ypp-ui-design="fluent"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="fluent"] yt-img-shadow, html[data-ypp-card-style="fluent"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="fluent"] yt-img-shadow, html[data-ypp-ui-design="fluent"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -326,9 +316,9 @@ html[data-ypp-ui-design="fluent"] yt-img-shadow, html[data-ypp-ui-design="fluent
 /* 7. Masthead (Header) & Global Navigation */
 html[data-ypp-card-style="fluent"] ytd-masthead, html[data-ypp-ui-design="fluent"] ytd-masthead {
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="fluent"] ytd-searchbox #container.ytd-searchbox,
@@ -356,9 +346,9 @@ html[data-ypp-card-style="fluent"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="fluent"] ytd-comment-thread-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 html[data-ypp-card-style="fluent"] #simplebox-placeholder, html[data-ypp-ui-design="fluent"] #simplebox-placeholder {
   border-radius: var(--ypp-shape-primary, 8px) !important;
@@ -369,9 +359,9 @@ html[data-ypp-card-style="fluent"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="fluent"] .ytp-chrome-bottom {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 html[data-ypp-card-style="fluent"] .ytp-scrubber-button,
 html[data-ypp-ui-design="fluent"] .ytp-scrubber-button {
@@ -385,28 +375,27 @@ html[data-ypp-card-style="fluent"] .ytp-tooltip, html[data-ypp-ui-design="fluent
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="fluent"] tp-yt-paper-dialog, html[data-ypp-card-style="fluent"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="fluent"] tp-yt-paper-dialog, html[data-ypp-ui-design="fluent"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="fluent"] tp-yt-paper-dialog, html[data-ypp-card-style="fluent"] ytd-menu-popup-renderer, html[data-ypp-ui-design="fluent"] tp-yt-paper-dialog, html[data-ypp-ui-design="fluent"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="fluent"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 14. Channel Headers & Banners */
 
 html[data-ypp-card-style="fluent"] #channel-header,
 html[data-ypp-ui-design="fluent"] #channel-header {
   border-radius: var(--ypp-shape-primary, 8px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="fluent"] yt-live-chat-renderer,
@@ -433,8 +422,7 @@ html[data-ypp-ui-design="fluent"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="fluent"] ytd-skeleton, html[data-ypp-ui-design="fluent"] ytd-skeleton, 
-html[data-ypp-card-style="fluent"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="fluent"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="fluent"] ytd-skeleton, html[data-ypp-ui-design="fluent"] ytd-skeleton, html[data-ypp-card-style="fluent"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="fluent"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
@@ -444,9 +432,9 @@ html[data-ypp-card-style="fluent"] .ytd-ghost-grid-renderer, html[data-ypp-ui-de
 html[data-ypp-card-style="fluent"] ytd-watch-metadata, html[data-ypp-ui-design="fluent"] ytd-watch-metadata {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 22. SVG Icons (Thumb up, Share, Save) */
 html[data-ypp-card-style="fluent"] yt-icon, html[data-ypp-ui-design="fluent"] yt-icon {
@@ -463,17 +451,17 @@ html[data-ypp-card-style="fluent"] yt-icon:hover, html[data-ypp-ui-design="fluen
 html[data-ypp-card-style="fluent"] ytd-miniplayer, html[data-ypp-ui-design="fluent"] ytd-miniplayer {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="fluent"] .ytp-settings-menu, html[data-ypp-ui-design="fluent"] .ytp-settings-menu {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 26. Account Switcher & Profiles */
 
@@ -490,8 +478,8 @@ html[data-ypp-card-style="fluent"] tp-yt-paper-dialog,
 html[data-ypp-card-style="fluent"] ytd-menu-popup-renderer,
 html[data-ypp-card-style="fluent"] ytd-multi-page-menu-renderer,
 html[data-ypp-card-style="fluent"] ytd-masthead {
-  backdrop-filter: blur(30px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
   border-radius: var(--ypp-shape-primary, var(--flu-radius)) !important;
   box-shadow: var(--flu-shadow) !important;
 }
@@ -506,6 +494,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-paper-dialog,
 html[data-ypp-card-style="fluent"] ytd-popup-container,
 html[data-ypp-ui-design="fluent"] ytd-popup-container {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
   backdrop-filter: blur(30px) !important;
   animation: slideUpDialog 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
 }
@@ -524,6 +513,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-paper-tooltip {
 html[data-ypp-card-style="fluent"] tp-yt-paper-toast,
 html[data-ypp-ui-design="fluent"] tp-yt-paper-toast {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
   backdrop-filter: blur(30px) !important;
 }
 
@@ -557,6 +547,7 @@ html[data-ypp-ui-design="fluent"] ytd-background-promo-renderer yt-icon {
 ========================================= */
 html[data-ypp-card-style="fluent"] ytd-mini-guide-renderer,
 html[data-ypp-ui-design="fluent"] ytd-mini-guide-renderer {
+  -webkit-backdrop-filter: blur(30px) !important;
   backdrop-filter: blur(30px) !important;
 }
 
@@ -569,6 +560,7 @@ html[data-ypp-ui-design="fluent"] ytd-mini-guide-entry-renderer {
 /* Navbar Overhaul for fluent */
 html[data-ypp-ui-design="fluent"] #masthead-container,
 html[data-ypp-ui-design="fluent"] ytd-masthead {
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 0 0 10px hsl(52, 80%, 55%), 0 0 20px hsl(52, 80%, 55%) !important;
 }
@@ -617,6 +609,7 @@ html[data-ypp-ui-design="fluent"] #voice-search-button:hover {
 html[data-ypp-ui-design="fluent"] .sbdd_b,
 html[data-ypp-ui-design="fluent"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 10px 30px 10px 30px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 0 10px hsl(52, 80%, 55%), 0 0 20px hsl(52, 80%, 55%) !important;
 }
@@ -644,6 +637,7 @@ html[data-ypp-ui-design="fluent"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="fluent"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 10px 30px 10px 30px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 0 0 10px hsl(52, 80%, 55%), 0 0 20px hsl(52, 80%, 55%) !important;
 }
@@ -655,6 +649,7 @@ html[data-ypp-ui-design="fluent"] tp-yt-iron-dropdown ytd-multi-page-menu-render
 ========================================= */
 html[data-ypp-card-style="fluent"] ytd-playlist-panel-renderer,
 html[data-ypp-ui-design="fluent"] ytd-playlist-panel-renderer {
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: 8px;
   animation: slideInPlaylist 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
@@ -701,13 +696,11 @@ html[data-ypp-ui-design="fluent"] .ytd-shopping-carousel-item-renderer:hover img
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="fluent"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -726,4 +719,3 @@ html[data-ypp-card-style="fluent"] .ytp-scrubber-button {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
 }
 
-}

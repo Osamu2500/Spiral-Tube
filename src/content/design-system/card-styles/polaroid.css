@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+
 
 /* POLAROID CARD STYLE — V10
    Refactored to use the expanded core-framework token system.
 */
 
-/* ── 1. FRAMEWORK VARIABLES ─────────────────────────────────────────────── */
-html[data-ypp-card-style="polaroid"] {
-  --ypp-card-pad: 12px 12px 45px 12px !important;
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+
+/* ── 1. FRAMEWORK VARIABLES ─────────────────────────────────────────────── */--ypp-card-pad: 12px 12px 45px 12px !important;
   --ypp-card-radius: 2px !important;
   --ypp-card-border: 1px solid rgba(0, 0, 0, 0.15) !important;
   --ypp-card-border-hover: 1px solid rgba(0, 0, 0, 0.15) !important;
@@ -19,7 +19,7 @@ html[data-ypp-card-style="polaroid"] {
 
   --ypp-card-title-font: 'Caveat', cursive, sans-serif !important;
   --ypp-card-meta-color: #222222 !important;
-}
+
 
 /* Structural Additions */
 html[data-ypp-card-style="polaroid"] :is(
@@ -62,8 +62,7 @@ html[data-ypp-card-style="polaroid"] :is(
   ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
   ytd-rich-grid-media, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer,
   yt-lockup-view-model:not(ytd-watch-metadata *)
-) #metadata-line span,
-html[data-ypp-card-style="polaroid"] :is(
+) #metadata-line span, html[data-ypp-card-style="polaroid"] :is(
   ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
   ytd-rich-grid-media, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer,
   yt-lockup-view-model:not(ytd-watch-metadata *)

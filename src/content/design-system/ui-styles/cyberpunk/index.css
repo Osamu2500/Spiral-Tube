@@ -5,7 +5,7 @@
 
 
 
-html[data-ypp-ui-design="cyberpunk"] {
+@import "./overrides.css";
 /* Token Overrides for cyberpunk */
 :root[data-ypp-ui-design="cyberpunk"],
 html[data-ypp-ui-design="cyberpunk"] {
@@ -30,7 +30,8 @@ html[data-ypp-ui-design="cyberpunk"] {
   --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ff003c40) !important;
   --ypp-card-shadow:                0 4px 12px #ff003c20 !important;
   --ypp-card-shadow-hover:          0 8px 24px #ff003c40 !important;
-  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card--webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   --ypp-card-backdrop-filter-hover: none !important;
 }
 
@@ -50,6 +51,6 @@ html[data-ypp-theme="cyberpunk"] {
 
 }
 
-}
 
-@import "./overrides.css";
+
+

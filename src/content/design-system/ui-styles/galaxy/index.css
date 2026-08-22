@@ -5,7 +5,7 @@
 
 
 
-html[data-ypp-ui-design="galaxy"] {
+@import "./overrides.css";
 /* Token Overrides for galaxy */
 :root[data-ypp-ui-design="galaxy"],
 html[data-ypp-ui-design="galaxy"] {
@@ -29,7 +29,8 @@ html[data-ypp-ui-design="galaxy"] {
   --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #0d1b2e40) !important;
   --ypp-card-shadow:                0 4px 12px #0d1b2e20 !important;
   --ypp-card-shadow-hover:          0 8px 24px #0d1b2e40 !important;
-  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card--webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   --ypp-card-backdrop-filter-hover: none !important;
 }
 
@@ -39,6 +40,6 @@ html[data-ypp-ui-design="galaxy"] * {
 }
 
 
-}
 
-@import "./overrides.css";
+
+

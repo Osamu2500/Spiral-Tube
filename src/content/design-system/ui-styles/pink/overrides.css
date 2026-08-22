@@ -81,10 +81,7 @@
 100% {
   box-shadow: 0 0 20px #f48fb1;
 }
-}
-
-html[data-ypp-ui-design="pink"] {
-/* Unique Shapes and Patterns for pink */
+}/* Unique Shapes and Patterns for pink */
 
 html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 7px) !important;
@@ -132,11 +129,9 @@ html[data-ypp-ui-design="pink"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
-html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="pink"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -262,9 +257,9 @@ html[data-ypp-card-style="pink"] ytd-searchbox #search-icon-legacy {
 }
 
 html[data-ypp-card-style="pink"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="pink"] .yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-card-style="pink"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="pink"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="pink"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4) !important;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
@@ -279,27 +274,21 @@ html[data-ypp-card-style="pink"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-des
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="pink"] h1, html[data-ypp-card-style="pink"] h2, html[data-ypp-card-style="pink"] h3, 
-html[data-ypp-card-style="pink"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="pink"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="pink"] h1, html[data-ypp-ui-design="pink"] h2, html[data-ypp-ui-design="pink"] h3, 
-html[data-ypp-ui-design="pink"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="pink"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="pink"] h1, html[data-ypp-card-style="pink"] h2, html[data-ypp-card-style="pink"] h3, html[data-ypp-card-style="pink"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="pink"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="pink"] h1, html[data-ypp-ui-design="pink"] h2, html[data-ypp-ui-design="pink"] h3, html[data-ypp-ui-design="pink"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="pink"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="pink"] ytd-thumbnail, html[data-ypp-card-style="pink"] yt-image,
-html[data-ypp-ui-design="pink"] ytd-thumbnail, html[data-ypp-ui-design="pink"] yt-image {
+html[data-ypp-card-style="pink"] ytd-thumbnail, html[data-ypp-card-style="pink"] yt-image, html[data-ypp-ui-design="pink"] ytd-thumbnail, html[data-ypp-ui-design="pink"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="pink"] yt-img-shadow, html[data-ypp-card-style="pink"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="pink"] yt-img-shadow, html[data-ypp-ui-design="pink"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="pink"] yt-img-shadow, html[data-ypp-card-style="pink"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="pink"] yt-img-shadow, html[data-ypp-ui-design="pink"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -351,8 +340,7 @@ html[data-ypp-card-style="pink"] .ytp-tooltip, html[data-ypp-ui-design="pink"] .
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="pink"] tp-yt-paper-dialog, html[data-ypp-card-style="pink"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="pink"] tp-yt-paper-dialog, html[data-ypp-ui-design="pink"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="pink"] tp-yt-paper-dialog, html[data-ypp-card-style="pink"] ytd-menu-popup-renderer, html[data-ypp-ui-design="pink"] tp-yt-paper-dialog, html[data-ypp-ui-design="pink"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -393,8 +381,7 @@ html[data-ypp-ui-design="pink"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="pink"] ytd-skeleton, html[data-ypp-ui-design="pink"] ytd-skeleton, 
-html[data-ypp-card-style="pink"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="pink"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="pink"] ytd-skeleton, html[data-ypp-ui-design="pink"] ytd-skeleton, html[data-ypp-card-style="pink"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="pink"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -504,6 +491,7 @@ html[data-ypp-ui-design="pink"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-design="pink"] #masthead-container,
 html[data-ypp-ui-design="pink"] ytd-masthead {
   background: repeating-linear-gradient(45deg, hsl(134, 80%, 55%)22, hsl(134, 80%, 55%)22 10px, hsl(268, 70%, 45%)22 10px, hsl(268, 70%, 45%)22 20px), rgba(20,20,20, 0.9) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -552,6 +540,7 @@ html[data-ypp-ui-design="pink"] #voice-search-button:hover {
 html[data-ypp-ui-design="pink"] .sbdd_b,
 html[data-ypp-ui-design="pink"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 30px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -579,6 +568,7 @@ html[data-ypp-ui-design="pink"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="pink"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 30px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: inset 0 0 15px hsl(134, 80%, 55%)33, 0 0 15px hsl(134, 80%, 55%)88 !important;
 }
@@ -635,13 +625,11 @@ html[data-ypp-ui-design="pink"] .ytd-shopping-carousel-item-renderer:hover img {
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="pink"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -659,4 +647,3 @@ html[data-ypp-card-style="pink"] .ytp-scrubber-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
-}

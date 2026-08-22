@@ -9,7 +9,7 @@ html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-s
 }
 html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+ ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-compact-video-renderer, .ypp-grid-item) *)) {
   background: var(--ypp-bg-surface, #101318) !important;
   --yt-spec-text-primary: var(--ypp-text-primary, #e0e0e0) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, #a0a0c0) !important;
@@ -19,7 +19,7 @@ html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-s
 }
 html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+ ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-compact-video-renderer, .ypp-grid-item) *)):hover {
   background: var(--ypp-bg-surface, #0d1b2e) !important; border-color: #00f0ff !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
@@ -45,14 +45,14 @@ html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-s
 
 /* GLOBAL REDESIGN V3 INJECT - galaxy */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 0 25px var(--ypp-accent, #0ff), 0 0 45px var(--ypp-accent, #0ff) !important;
   z-index: 10;
@@ -70,20 +70,21 @@ html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-s
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(25, 10, 60, 0.5) !important;
   border-radius: 60px 12px 60px 12px !important;
   border: 1px solid rgba(138, 43, 226, 0.4) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"][data-ypp-card-style="galaxy"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(25, 10, 60, 0.5) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

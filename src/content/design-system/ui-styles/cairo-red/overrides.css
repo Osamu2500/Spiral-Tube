@@ -1,21 +1,14 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="cairo-red"] {
 /* Unique Shapes and Patterns for cairo-red */
 
 /* Remove default YouTube curve, force sharp corners */
 
 /* Dialogs for cairo-red */
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="cairo-red"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3) !important;
 }
 
-yt-icon:hover {
+html[data-ypp-ui-design="cairo-red"] yt-icon:hover {
   transform: scale(1.1);
 }
 
@@ -28,27 +21,21 @@ html[data-ypp-card-style="cairo-red"] ::-webkit-scrollbar-thumb, html[data-ypp-u
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="cairo-red"] h1, html[data-ypp-card-style="cairo-red"] h2, html[data-ypp-card-style="cairo-red"] h3, 
-html[data-ypp-card-style="cairo-red"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="cairo-red"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="cairo-red"] h1, html[data-ypp-ui-design="cairo-red"] h2, html[data-ypp-ui-design="cairo-red"] h3, 
-html[data-ypp-ui-design="cairo-red"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="cairo-red"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="cairo-red"] h1, html[data-ypp-card-style="cairo-red"] h2, html[data-ypp-card-style="cairo-red"] h3, html[data-ypp-card-style="cairo-red"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="cairo-red"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="cairo-red"] h1, html[data-ypp-ui-design="cairo-red"] h2, html[data-ypp-ui-design="cairo-red"] h3, html[data-ypp-ui-design="cairo-red"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="cairo-red"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="cairo-red"] ytd-thumbnail, html[data-ypp-card-style="cairo-red"] yt-image,
-html[data-ypp-ui-design="cairo-red"] ytd-thumbnail, html[data-ypp-ui-design="cairo-red"] yt-image {
+html[data-ypp-card-style="cairo-red"] ytd-thumbnail, html[data-ypp-card-style="cairo-red"] yt-image, html[data-ypp-ui-design="cairo-red"] ytd-thumbnail, html[data-ypp-ui-design="cairo-red"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="cairo-red"] yt-img-shadow, html[data-ypp-card-style="cairo-red"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="cairo-red"] yt-img-shadow, html[data-ypp-ui-design="cairo-red"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="cairo-red"] yt-img-shadow, html[data-ypp-card-style="cairo-red"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="cairo-red"] yt-img-shadow, html[data-ypp-ui-design="cairo-red"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -100,8 +87,7 @@ html[data-ypp-card-style="cairo-red"] .ytp-tooltip, html[data-ypp-ui-design="cai
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="cairo-red"] tp-yt-paper-dialog, html[data-ypp-card-style="cairo-red"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="cairo-red"] tp-yt-paper-dialog, html[data-ypp-ui-design="cairo-red"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="cairo-red"] tp-yt-paper-dialog, html[data-ypp-card-style="cairo-red"] ytd-menu-popup-renderer, html[data-ypp-ui-design="cairo-red"] tp-yt-paper-dialog, html[data-ypp-ui-design="cairo-red"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -142,8 +128,7 @@ html[data-ypp-ui-design="cairo-red"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="cairo-red"] ytd-skeleton, html[data-ypp-ui-design="cairo-red"] ytd-skeleton, 
-html[data-ypp-card-style="cairo-red"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cairo-red"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="cairo-red"] ytd-skeleton, html[data-ypp-ui-design="cairo-red"] ytd-skeleton, html[data-ypp-card-style="cairo-red"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cairo-red"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -188,32 +173,32 @@ html[data-ypp-ui-design="cairo-red"] .ytp-popup {
 }
 
 /* Navbar UI for cairo-red */
-ytd-masthead {
+html[data-ypp-ui-design="cairo-red"] ytd-masthead {
   box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3);
 }
 
-ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-ui-design="cairo-red"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 8px 0 0 8px) !important;
 }
 
-ytd-searchbox #search-icon-legacy.ytd-searchbox {
+html[data-ypp-ui-design="cairo-red"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0 8px 8px 0) !important;
 }
 
-#voice-search-button {
+html[data-ypp-ui-design="cairo-red"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Panels for cairo-red */
 
-ytd-live-chat-frame {
+html[data-ypp-ui-design="cairo-red"] ytd-live-chat-frame {
   border-radius: var(--ypp-shape-primary, 8px) !important;
 }
 
 /* Sidebar for cairo-red */
 
 /* Channels for cairo-red */
-#channel-header-banner {
+html[data-ypp-ui-design="cairo-red"] #channel-header-banner {
   border-radius: 8px 8px 0 0;
 }
 
@@ -255,19 +240,18 @@ html[data-ypp-ui-design="cairo-red"] .ytp-scrubber-button {
 
 /* Search for cairo-red */
 
-ytd-toggle-button-renderer a {
+html[data-ypp-ui-design="cairo-red"] ytd-toggle-button-renderer a {
   border-radius: 8px;
 }
 
 /* Watch for cairo-red */
-#ytd-player {
+html[data-ypp-ui-design="cairo-red"] #ytd-player {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(201, 24, 24, 0.3);
 }
 
-:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-ui-design="cairo-red"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-}

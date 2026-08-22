@@ -94,6 +94,7 @@ body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__conten
   background-color: transparent !important;
   background-image: none !important;
   box-shadow: none !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
   border-radius: var(--ypp-radius-md, 12px) !important;
 }

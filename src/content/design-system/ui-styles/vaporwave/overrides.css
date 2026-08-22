@@ -24,10 +24,7 @@
   filter:brightness(1.1) saturate(1.1);
 }
 
-}
-
-html[data-ypp-ui-design="vaporwave"] {
-/* Unique Shapes and Patterns for vaporwave */
+}/* Unique Shapes and Patterns for vaporwave */
 
 /* vaporwave/base/animations.css */
 
@@ -35,7 +32,7 @@ html[data-ypp-ui-design="vaporwave"] {
 
 
 /* Subscribe button */
-html[data-ypp-ui-design="vaporwave"] #subscribe-button .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-design="vaporwave"] #subscribe-button .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="vaporwave"] #subscribe-button yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="vaporwave"] #subscribe-button yt-button-shape button[title*="Download" i] {
   animation: vaporwave-pulse 2.5s ease-in-out infinite !important;
@@ -55,7 +52,7 @@ html[data-ypp-ui-design="vaporwave"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -149,7 +146,8 @@ html[data-ypp-ui-design="vaporwave"] .ytProgressBarLineProgressBarPlayed {
 
 /* vaporwave/components/badges.css */
 html[data-ypp-ui-design="vaporwave"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="vaporwave"] .ypp-badge, html[data-ypp-ui-design="vaporwave"] .ypp-value-display {
+html[data-ypp-ui-design="vaporwave"] .ypp-badge,
+html[data-ypp-ui-design="vaporwave"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
 }
@@ -177,7 +175,7 @@ html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="vaporwave"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="vaporwave"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="vaporwave"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="vaporwave"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[aria-label*="Download" i],
@@ -188,7 +186,7 @@ html[data-ypp-ui-design="vaporwave"] yt-button-shape button[title*="Download" i]
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 12px) !important;
@@ -237,8 +235,7 @@ html[data-ypp-ui-design="vaporwave"] .ypp-btn-primary:hover, html[data-ypp-ui-de
 }
 
 /* vaporwave/components/forms.css */
-html[data-ypp-ui-design="vaporwave"] ytd-searchbox, html[data-ypp-ui-design="vaporwave"] #search-form,
-html[data-ypp-ui-design="vaporwave"] tp-yt-paper-input, html[data-ypp-ui-design="vaporwave"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="vaporwave"] ytd-searchbox, html[data-ypp-ui-design="vaporwave"] #search-form, html[data-ypp-ui-design="vaporwave"] tp-yt-paper-input, html[data-ypp-ui-design="vaporwave"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -294,7 +291,7 @@ html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--overlay.yt-spec
 html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="vaporwave"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="vaporwave"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="vaporwave"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="vaporwave"] yt-button-shape button[aria-label*="Download" i],
@@ -336,6 +333,7 @@ html[data-ypp-card-style="vaporwave"] ytd-multi-page-menu-renderer, html[data-yp
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -350,6 +348,7 @@ html[data-ypp-card-style="vaporwave"] ytd-menu-popup-renderer, html[data-ypp-ui-
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -364,6 +363,7 @@ html[data-ypp-card-style="vaporwave"] tp-yt-paper-dialog, html[data-ypp-ui-desig
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -378,6 +378,7 @@ html[data-ypp-card-style="vaporwave"] ytd-notification-renderer, html[data-ypp-u
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -404,6 +405,7 @@ html[data-ypp-card-style="vaporwave"] #channel-header, html[data-ypp-ui-design="
   border-radius: var(--ypp-shape-primary, var(--vaporwave-radius)) !important;
   box-shadow: var(--vaporwave-shadow) !important;
   background: linear-gradient(135deg, rgba(255, 113, 206, 0.4) 0%, rgba(1, 205, 254, 0.4) 100%) !important;
+  -webkit-backdrop-filter: hue-rotate(90deg) blur(5px) !important;
   backdrop-filter: hue-rotate(90deg) blur(5px) !important;
 }
 
@@ -1932,9 +1934,7 @@ html[data-ypp-card-style="vaporwave"] .vaporwave-exotic-class-250, html[data-ypp
 }
 
 /* vaporwave/components/menus.css */
-html[data-ypp-ui-design="vaporwave"] tp-yt-paper-dialog, html[data-ypp-ui-design="vaporwave"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="vaporwave"] tp-yt-iron-dropdown, html[data-ypp-ui-design="vaporwave"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="vaporwave"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="vaporwave"] tp-yt-paper-dialog, html[data-ypp-ui-design="vaporwave"] ytd-menu-popup-renderer, html[data-ypp-ui-design="vaporwave"] tp-yt-iron-dropdown, html[data-ypp-ui-design="vaporwave"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="vaporwave"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2052,9 +2052,7 @@ html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 0 0 20px rgba(255,113,206,0.4) !important;
 }
 
-html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="vaporwave"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2258,4 +2256,3 @@ html[data-ypp-ui-design="vaporwave"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
-}

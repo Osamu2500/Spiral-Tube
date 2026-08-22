@@ -26,25 +26,22 @@
       0 0 15px red,
       0 0 30px red;
 }
-}
-
-html[data-ypp-ui-design="neumorphic"] {
-/* Unique Shapes and Patterns for neumorphic */
+}/* Unique Shapes and Patterns for neumorphic */
 
 /* src/content/themes/ui-styles/neumorphic/base/animations.css */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="neumorphic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="neumorphic"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.1);
   animation: youtubeRedPulse 5s ease-in-out infinite;
 }
 
 
-body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+html[data-ypp-ui-design="neumorphic"] body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
   /* Removed broken SVG background */
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   transform: scale(1.08) !important;
   box-shadow:
     inset 0 0 25px red,
@@ -197,8 +194,7 @@ html[data-ypp-ui-design="neumorphic"] ytd-subscribe-button-renderer[subscribed] 
 }
 
 /* Top-level Topbar action buttons */
-html[data-ypp-ui-design="neumorphic"] #buttons :is(ytd-button-renderer, yt-button-view-model) button,
-html[data-ypp-ui-design="neumorphic"] #buttons ytd-topbar-menu-button-renderer button {
+html[data-ypp-ui-design="neumorphic"] #buttons :is(ytd-button-renderer, yt-button-view-model) button, html[data-ypp-ui-design="neumorphic"] #buttons ytd-topbar-menu-button-renderer button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
@@ -288,27 +284,21 @@ html[data-ypp-card-style="neumorphic"] ::-webkit-scrollbar-thumb, html[data-ypp-
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="neumorphic"] h1, html[data-ypp-card-style="neumorphic"] h2, html[data-ypp-card-style="neumorphic"] h3, 
-html[data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="neumorphic"] h1, html[data-ypp-ui-design="neumorphic"] h2, html[data-ypp-ui-design="neumorphic"] h3, 
-html[data-ypp-ui-design="neumorphic"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="neumorphic"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="neumorphic"] h1, html[data-ypp-card-style="neumorphic"] h2, html[data-ypp-card-style="neumorphic"] h3, html[data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="neumorphic"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="neumorphic"] h1, html[data-ypp-ui-design="neumorphic"] h2, html[data-ypp-ui-design="neumorphic"] h3, html[data-ypp-ui-design="neumorphic"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="neumorphic"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="neumorphic"] ytd-thumbnail, html[data-ypp-card-style="neumorphic"] yt-image,
-html[data-ypp-ui-design="neumorphic"] ytd-thumbnail, html[data-ypp-ui-design="neumorphic"] yt-image {
+html[data-ypp-card-style="neumorphic"] ytd-thumbnail, html[data-ypp-card-style="neumorphic"] yt-image, html[data-ypp-ui-design="neumorphic"] ytd-thumbnail, html[data-ypp-ui-design="neumorphic"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="neumorphic"] yt-img-shadow, html[data-ypp-card-style="neumorphic"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="neumorphic"] yt-img-shadow, html[data-ypp-ui-design="neumorphic"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="neumorphic"] yt-img-shadow, html[data-ypp-card-style="neumorphic"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="neumorphic"] yt-img-shadow, html[data-ypp-ui-design="neumorphic"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -360,8 +350,7 @@ html[data-ypp-card-style="neumorphic"] .ytp-tooltip, html[data-ypp-ui-design="ne
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="neumorphic"] tp-yt-paper-dialog, html[data-ypp-card-style="neumorphic"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="neumorphic"] tp-yt-paper-dialog, html[data-ypp-ui-design="neumorphic"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="neumorphic"] tp-yt-paper-dialog, html[data-ypp-card-style="neumorphic"] ytd-menu-popup-renderer, html[data-ypp-ui-design="neumorphic"] tp-yt-paper-dialog, html[data-ypp-ui-design="neumorphic"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -402,8 +391,7 @@ html[data-ypp-ui-design="neumorphic"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="neumorphic"] ytd-skeleton, html[data-ypp-ui-design="neumorphic"] ytd-skeleton, 
-html[data-ypp-card-style="neumorphic"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="neumorphic"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="neumorphic"] ytd-skeleton, html[data-ypp-ui-design="neumorphic"] ytd-skeleton, html[data-ypp-card-style="neumorphic"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="neumorphic"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
@@ -822,4 +810,3 @@ html[data-ypp-ui-design="neumorphic"] ytd-transcript-segment-renderer[is-highlig
   box-shadow: var(--neu-shadow-outset-sm) !important;
 }
 
-}

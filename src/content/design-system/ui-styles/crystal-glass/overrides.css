@@ -1,10 +1,3 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="crystal-glass"] {
 /* Unique Shapes and Patterns for crystal-glass */
 
 /* Global Border overrides */
@@ -104,7 +97,7 @@ html[data-ypp-ui-design="crystal-glass"] .ypp-nav-btn.active {
 html[data-ypp-ui-design="crystal-glass"] .yt-spec-button-shape-next--call-to-action,
 html[data-ypp-ui-design="crystal-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="crystal-glass"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
-html[data-ypp-ui-design="crystal-glass"] #subscribe-button button ,
+html[data-ypp-ui-design="crystal-glass"] #subscribe-button button,
 html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="crystal-glass"] yt-button-shape button[aria-label*="Download" i],
@@ -255,12 +248,7 @@ html[data-ypp-card-style="crystal-glass"] ::-webkit-scrollbar-thumb, html[data-y
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="crystal-glass"] h1, html[data-ypp-card-style="crystal-glass"] h2, html[data-ypp-card-style="crystal-glass"] h3, 
-html[data-ypp-card-style="crystal-glass"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="crystal-glass"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="crystal-glass"] h1, html[data-ypp-ui-design="crystal-glass"] h2, html[data-ypp-ui-design="crystal-glass"] h3, 
-html[data-ypp-ui-design="crystal-glass"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="crystal-glass"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="crystal-glass"] h1, html[data-ypp-card-style="crystal-glass"] h2, html[data-ypp-card-style="crystal-glass"] h3, html[data-ypp-card-style="crystal-glass"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="crystal-glass"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="crystal-glass"] h1, html[data-ypp-ui-design="crystal-glass"] h2, html[data-ypp-ui-design="crystal-glass"] h3, html[data-ypp-ui-design="crystal-glass"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="crystal-glass"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
@@ -277,20 +265,19 @@ html[data-ypp-ui-design="crystal-glass"] ytd-grid-video-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-compact-video-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="crystal-glass"] ytd-thumbnail, html[data-ypp-card-style="crystal-glass"] yt-image,
-html[data-ypp-ui-design="crystal-glass"] ytd-thumbnail, html[data-ypp-ui-design="crystal-glass"] yt-image {
+html[data-ypp-card-style="crystal-glass"] ytd-thumbnail, html[data-ypp-card-style="crystal-glass"] yt-image, html[data-ypp-ui-design="crystal-glass"] ytd-thumbnail, html[data-ypp-ui-design="crystal-glass"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="crystal-glass"] yt-img-shadow, html[data-ypp-card-style="crystal-glass"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="crystal-glass"] yt-img-shadow, html[data-ypp-ui-design="crystal-glass"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="crystal-glass"] yt-img-shadow, html[data-ypp-card-style="crystal-glass"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="crystal-glass"] yt-img-shadow, html[data-ypp-ui-design="crystal-glass"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -299,9 +286,9 @@ html[data-ypp-ui-design="crystal-glass"] yt-img-shadow, html[data-ypp-ui-design=
 /* 7. Masthead (Header) & Global Navigation */
 html[data-ypp-card-style="crystal-glass"] ytd-masthead, html[data-ypp-ui-design="crystal-glass"] ytd-masthead {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 8. Search Box & Inputs */
 html[data-ypp-card-style="crystal-glass"] ytd-searchbox #container.ytd-searchbox,
@@ -329,9 +316,9 @@ html[data-ypp-card-style="crystal-glass"] ytd-comment-thread-renderer,
 html[data-ypp-ui-design="crystal-glass"] ytd-comment-thread-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 html[data-ypp-card-style="crystal-glass"] #simplebox-placeholder, html[data-ypp-ui-design="crystal-glass"] #simplebox-placeholder {
   border-radius: var(--ypp-shape-primary, 20px) !important;
@@ -342,9 +329,9 @@ html[data-ypp-card-style="crystal-glass"] .ytp-chrome-bottom,
 html[data-ypp-ui-design="crystal-glass"] .ytp-chrome-bottom {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 html[data-ypp-card-style="crystal-glass"] .ytp-scrubber-button,
 html[data-ypp-ui-design="crystal-glass"] .ytp-scrubber-button {
@@ -358,28 +345,27 @@ html[data-ypp-card-style="crystal-glass"] .ytp-tooltip, html[data-ypp-ui-design=
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="crystal-glass"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="crystal-glass"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="crystal-glass"] ytd-menu-popup-renderer, html[data-ypp-ui-design="crystal-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="crystal-glass"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 html[data-ypp-card-style="crystal-glass"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="crystal-glass"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 14. Channel Headers & Banners */
 
 html[data-ypp-card-style="crystal-glass"] #channel-header,
 html[data-ypp-ui-design="crystal-glass"] #channel-header {
   border-radius: var(--ypp-shape-primary, 20px) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 16. Live Chat Box */
 html[data-ypp-card-style="crystal-glass"] yt-live-chat-renderer,
@@ -406,8 +392,7 @@ html[data-ypp-ui-design="crystal-glass"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="crystal-glass"] ytd-skeleton, html[data-ypp-ui-design="crystal-glass"] ytd-skeleton, 
-html[data-ypp-card-style="crystal-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="crystal-glass"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="crystal-glass"] ytd-skeleton, html[data-ypp-ui-design="crystal-glass"] ytd-skeleton, html[data-ypp-card-style="crystal-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="crystal-glass"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
@@ -417,9 +402,9 @@ html[data-ypp-card-style="crystal-glass"] .ytd-ghost-grid-renderer, html[data-yp
 html[data-ypp-card-style="crystal-glass"] ytd-watch-metadata, html[data-ypp-ui-design="crystal-glass"] ytd-watch-metadata {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 22. SVG Icons (Thumb up, Share, Save) */
 html[data-ypp-card-style="crystal-glass"] yt-icon, html[data-ypp-ui-design="crystal-glass"] yt-icon {
@@ -436,17 +421,17 @@ html[data-ypp-card-style="crystal-glass"] yt-icon:hover, html[data-ypp-ui-design
 html[data-ypp-card-style="crystal-glass"] ytd-miniplayer, html[data-ypp-ui-design="crystal-glass"] ytd-miniplayer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 25. Settings Gear & Dropdowns */
 html[data-ypp-card-style="crystal-glass"] .ytp-settings-menu, html[data-ypp-ui-design="crystal-glass"] .ytp-settings-menu {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
   backdrop-filter: blur(20px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-}
+  }
 
 /* 26. Account Switcher & Profiles */
 
@@ -873,5 +858,4 @@ html[data-ypp-ui-design="crystal-glass"] #comments {
   backdrop-filter: var(--cglass-blur-sm) !important;
   border-radius: var(--ypp-shape-primary, var(--cglass-radius-lg)) !important;
   box-shadow: var(--cglass-shadow) !important;
-}
 }

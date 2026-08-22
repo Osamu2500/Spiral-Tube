@@ -5,7 +5,7 @@
 
 
 
-html[data-ypp-ui-design="grunge"] {
+@import "./overrides.css";
 /* Token Overrides for grunge */
 :root[data-ypp-ui-design="grunge"],
 html[data-ypp-ui-design="grunge"] {
@@ -29,7 +29,8 @@ html[data-ypp-ui-design="grunge"] {
   --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #3d3d3d40) !important;
   --ypp-card-shadow:                0 4px 12px #3d3d3d20 !important;
   --ypp-card-shadow-hover:          0 8px 24px #3d3d3d40 !important;
-  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card--webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   --ypp-card-backdrop-filter-hover: none !important;
 }
 
@@ -39,6 +40,6 @@ html[data-ypp-ui-design="grunge"] * {
 }
 
 
-}
 
-@import "./overrides.css";
+
+

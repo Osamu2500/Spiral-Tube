@@ -23,10 +23,7 @@
 100% {
   filter:brightness(1.1) saturate(1.1);
 }
-}
-
-html[data-ypp-ui-design="gothic"] {
-/* Unique Shapes and Patterns for gothic */
+}/* Unique Shapes and Patterns for gothic */
 
 /* gothic/base/animations.css */
 
@@ -46,7 +43,7 @@ html[data-ypp-ui-design="gothic"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="gothic"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="gothic"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -140,7 +137,8 @@ html[data-ypp-ui-design="gothic"] .ytProgressBarLineProgressBarPlayed {
 
 /* gothic/components/badges.css */
 html[data-ypp-ui-design="gothic"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="gothic"] .ypp-badge, html[data-ypp-ui-design="gothic"] .ypp-value-display {
+html[data-ypp-ui-design="gothic"] .ypp-badge,
+html[data-ypp-ui-design="gothic"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
 }
@@ -168,7 +166,7 @@ html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="gothic"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="gothic"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="gothic"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="gothic"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="gothic"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="gothic"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="gothic"] yt-button-shape button[aria-label*="Download" i],
@@ -179,7 +177,7 @@ html[data-ypp-ui-design="gothic"] yt-button-shape button[title*="Download" i] {
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="gothic"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="gothic"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 0px) !important;
@@ -228,8 +226,7 @@ html[data-ypp-ui-design="gothic"] .ypp-btn-primary:hover, html[data-ypp-ui-desig
 }
 
 /* gothic/components/forms.css */
-html[data-ypp-ui-design="gothic"] ytd-searchbox, html[data-ypp-ui-design="gothic"] #search-form,
-html[data-ypp-ui-design="gothic"] tp-yt-paper-input, html[data-ypp-ui-design="gothic"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="gothic"] ytd-searchbox, html[data-ypp-ui-design="gothic"] #search-form, html[data-ypp-ui-design="gothic"] tp-yt-paper-input, html[data-ypp-ui-design="gothic"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -285,7 +282,7 @@ html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--overlay.yt-spec-bu
 html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="gothic"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="gothic"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="gothic"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="gothic"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="gothic"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="gothic"] yt-button-shape button[aria-label*="Download" i],
@@ -322,6 +319,7 @@ html[data-ypp-ui-design="gothic"] yt-button-shape button[title*="Download" i] {
 html[data-ypp-card-style="gothic"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="gothic"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, var(--gothic-radius)) !important;
   box-shadow: var(--gothic-shadow) !important;
+  -webkit-clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
   clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
 }
 
@@ -334,6 +332,7 @@ html[data-ypp-card-style="gothic"] ytd-multi-page-menu-renderer, html[data-ypp-u
 html[data-ypp-card-style="gothic"] ytd-menu-popup-renderer, html[data-ypp-ui-design="gothic"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, var(--gothic-radius)) !important;
   box-shadow: var(--gothic-shadow) !important;
+  -webkit-clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
   clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
 }
 
@@ -346,6 +345,7 @@ html[data-ypp-card-style="gothic"] ytd-menu-popup-renderer, html[data-ypp-ui-des
 html[data-ypp-card-style="gothic"] tp-yt-paper-dialog, html[data-ypp-ui-design="gothic"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, var(--gothic-radius)) !important;
   box-shadow: var(--gothic-shadow) !important;
+  -webkit-clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
   clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
 }
 
@@ -358,6 +358,7 @@ html[data-ypp-card-style="gothic"] tp-yt-paper-dialog, html[data-ypp-ui-design="
 html[data-ypp-card-style="gothic"] ytd-notification-renderer, html[data-ypp-ui-design="gothic"] ytd-notification-renderer {
   border-radius: var(--ypp-shape-primary, var(--gothic-radius)) !important;
   box-shadow: var(--gothic-shadow) !important;
+  -webkit-clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
   clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
 }
 
@@ -382,6 +383,7 @@ html[data-ypp-card-style="gothic"] ytd-notification-renderer, html[data-ypp-ui-d
 html[data-ypp-card-style="gothic"] #channel-header, html[data-ypp-ui-design="gothic"] #channel-header {
   border-radius: var(--ypp-shape-primary, var(--gothic-radius)) !important;
   box-shadow: var(--gothic-shadow) !important;
+  -webkit-clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
   clip-path: polygon(50% 0, 100% 15px, 100% 100%, 0 100%, 0 15px) !important;
 }
 
@@ -1909,9 +1911,7 @@ html[data-ypp-card-style="gothic"] .gothic-deep-class-250, html[data-ypp-ui-desi
 }
 
 /* gothic/components/menus.css */
-html[data-ypp-ui-design="gothic"] tp-yt-paper-dialog, html[data-ypp-ui-design="gothic"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="gothic"] tp-yt-iron-dropdown, html[data-ypp-ui-design="gothic"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="gothic"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="gothic"] tp-yt-paper-dialog, html[data-ypp-ui-design="gothic"] ytd-menu-popup-renderer, html[data-ypp-ui-design="gothic"] tp-yt-iron-dropdown, html[data-ypp-ui-design="gothic"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="gothic"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 8px 40px rgba(204,0,0,0.7) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2028,9 +2028,7 @@ html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 0 4px 25px rgba(139,0,0,0.5) !important;
 }
 
-html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="gothic"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2234,4 +2232,3 @@ html[data-ypp-ui-design="gothic"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
-}

@@ -23,10 +23,7 @@
 100% {
   filter:brightness(1.1) saturate(1.1);
 }
-}
-
-html[data-ypp-ui-design="grunge"] {
-/* Unique Shapes and Patterns for grunge */
+}/* Unique Shapes and Patterns for grunge */
 
 /* grunge/base/animations.css */
 
@@ -46,7 +43,7 @@ html[data-ypp-ui-design="grunge"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="grunge"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="grunge"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -140,7 +137,8 @@ html[data-ypp-ui-design="grunge"] .ytProgressBarLineProgressBarPlayed {
 
 /* grunge/components/badges.css */
 html[data-ypp-ui-design="grunge"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="grunge"] .ypp-badge, html[data-ypp-ui-design="grunge"] .ypp-value-display {
+html[data-ypp-ui-design="grunge"] .ypp-badge,
+html[data-ypp-ui-design="grunge"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 2px) !important;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
 }
@@ -168,7 +166,7 @@ html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="grunge"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="grunge"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="grunge"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="grunge"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="grunge"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="grunge"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="grunge"] yt-button-shape button[aria-label*="Download" i],
@@ -179,7 +177,7 @@ html[data-ypp-ui-design="grunge"] yt-button-shape button[title*="Download" i] {
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="grunge"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="grunge"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 2px) !important;
@@ -228,8 +226,7 @@ html[data-ypp-ui-design="grunge"] .ypp-btn-primary:hover, html[data-ypp-ui-desig
 }
 
 /* grunge/components/forms.css */
-html[data-ypp-ui-design="grunge"] ytd-searchbox, html[data-ypp-ui-design="grunge"] #search-form,
-html[data-ypp-ui-design="grunge"] tp-yt-paper-input, html[data-ypp-ui-design="grunge"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="grunge"] ytd-searchbox, html[data-ypp-ui-design="grunge"] #search-form, html[data-ypp-ui-design="grunge"] tp-yt-paper-input, html[data-ypp-ui-design="grunge"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 2px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -285,7 +282,7 @@ html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--overlay.yt-spec-bu
 html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="grunge"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="grunge"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="grunge"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="grunge"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="grunge"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="grunge"] yt-button-shape button[aria-label*="Download" i],
@@ -327,11 +324,13 @@ html[data-ypp-card-style="grunge"] ytd-multi-page-menu-renderer, html[data-ypp-u
   border-radius: var(--ypp-shape-primary, var(--grunge-radius)) !important;
   box-shadow: var(--grunge-shadow) !important;
   background: repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #2a2a2a 10px, #2a2a2a 20px) !important;
+  -webkit-clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
   clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
 }
 
 html[data-ypp-card-style="grunge"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="grunge"] ytd-multi-page-menu-renderer:hover {
   transform: rotate(-1deg) scale(1.02) !important;
+  -webkit-clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
   clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
 }
 
@@ -340,11 +339,13 @@ html[data-ypp-card-style="grunge"] ytd-menu-popup-renderer, html[data-ypp-ui-des
   border-radius: var(--ypp-shape-primary, var(--grunge-radius)) !important;
   box-shadow: var(--grunge-shadow) !important;
   background: repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #2a2a2a 10px, #2a2a2a 20px) !important;
+  -webkit-clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
   clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
 }
 
 html[data-ypp-card-style="grunge"] ytd-menu-popup-renderer, html[data-ypp-ui-design="grunge"] ytd-menu-popup-renderer:hover {
   transform: rotate(-1deg) scale(1.02) !important;
+  -webkit-clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
   clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
 }
 
@@ -353,11 +354,13 @@ html[data-ypp-card-style="grunge"] tp-yt-paper-dialog, html[data-ypp-ui-design="
   border-radius: var(--ypp-shape-primary, var(--grunge-radius)) !important;
   box-shadow: var(--grunge-shadow) !important;
   background: repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #2a2a2a 10px, #2a2a2a 20px) !important;
+  -webkit-clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
   clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
 }
 
 html[data-ypp-card-style="grunge"] tp-yt-paper-dialog, html[data-ypp-ui-design="grunge"] tp-yt-paper-dialog:hover {
   transform: rotate(-1deg) scale(1.02) !important;
+  -webkit-clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
   clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
 }
 
@@ -366,11 +369,13 @@ html[data-ypp-card-style="grunge"] ytd-notification-renderer, html[data-ypp-ui-d
   border-radius: var(--ypp-shape-primary, var(--grunge-radius)) !important;
   box-shadow: var(--grunge-shadow) !important;
   background: repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #2a2a2a 10px, #2a2a2a 20px) !important;
+  -webkit-clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
   clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
 }
 
 html[data-ypp-card-style="grunge"] ytd-notification-renderer, html[data-ypp-ui-design="grunge"] ytd-notification-renderer:hover {
   transform: rotate(-1deg) scale(1.02) !important;
+  -webkit-clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
   clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
 }
 
@@ -391,11 +396,13 @@ html[data-ypp-card-style="grunge"] #channel-header, html[data-ypp-ui-design="gru
   border-radius: var(--ypp-shape-primary, var(--grunge-radius)) !important;
   box-shadow: var(--grunge-shadow) !important;
   background: repeating-linear-gradient(45deg, #1c1c1c, #1c1c1c 10px, #2a2a2a 10px, #2a2a2a 20px) !important;
+  -webkit-clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
   clip-path: polygon(2% 0, 100% 2%, 98% 100%, 0 98%) !important;
 }
 
 html[data-ypp-card-style="grunge"] #channel-header, html[data-ypp-ui-design="grunge"] #channel-header:hover {
   transform: rotate(-1deg) scale(1.02) !important;
+  -webkit-clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
   clip-path: polygon(0 2%, 98% 0, 100% 98%, 2% 100%) !important;
 }
 
@@ -1918,9 +1925,7 @@ html[data-ypp-card-style="grunge"] .grunge-exotic-class-250, html[data-ypp-ui-de
 }
 
 /* grunge/components/menus.css */
-html[data-ypp-ui-design="grunge"] tp-yt-paper-dialog, html[data-ypp-ui-design="grunge"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="grunge"] tp-yt-iron-dropdown, html[data-ypp-ui-design="grunge"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="grunge"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="grunge"] tp-yt-paper-dialog, html[data-ypp-ui-design="grunge"] ytd-menu-popup-renderer, html[data-ypp-ui-design="grunge"] tp-yt-iron-dropdown, html[data-ypp-ui-design="grunge"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="grunge"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 2px) !important;
   box-shadow: 3px 3px 0 #111 !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2032,9 +2037,7 @@ html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: inset 0 0 6px rgba(0,0,0,0.7) !important;
 }
 
-html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="grunge"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 2px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2238,4 +2241,3 @@ html[data-ypp-ui-design="grunge"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 2px) !important;
 }
 
-}

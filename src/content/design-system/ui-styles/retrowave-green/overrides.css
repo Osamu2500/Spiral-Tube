@@ -88,10 +88,7 @@
 
 100% { transform: rotateX(360deg) rotateY(180deg) rotateZ(360deg); }
 
-}
-
-html[data-ypp-ui-design="retrowave-green"] {
-/* Unique Shapes and Patterns for retrowave-green */
+}/* Unique Shapes and Patterns for retrowave-green */
 
 html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 0) !important;
@@ -123,9 +120,13 @@ html[data-ypp-ui-design="retrowave-green"] #video-title:hover {
 /* background-color */
 html[data-ypp-ui-design="retrowave-green"] yt-icon {
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>') !important;
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>') !important;
     -webkit-mask-size: 80% !important;
+  mask-size: 80% !important;
     -webkit-mask-position: center !important;
+  mask-position: center !important;
     -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
     display: block !important;
     width: 24px !important; height: 24px !important;
     transition: all 0.3s ease !important;
@@ -178,11 +179,9 @@ html[data-ypp-ui-design="retrowave-green"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
-html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="retrowave-green"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 0) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -347,9 +346,9 @@ html[data-ypp-card-style="retrowave-green"] ytd-searchbox #search-icon-legacy {
 }
 
 html[data-ypp-card-style="retrowave-green"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="retrowave-green"] .yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-card-style="retrowave-green"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="retrowave-green"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="retrowave-green"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 0) !important;
   text-transform: uppercase !important;
   box-shadow: 0 0 5px var(--rw-neon-dim) !important;
@@ -364,27 +363,21 @@ html[data-ypp-card-style="retrowave-green"] ::-webkit-scrollbar-thumb, html[data
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="retrowave-green"] h1, html[data-ypp-card-style="retrowave-green"] h2, html[data-ypp-card-style="retrowave-green"] h3, 
-html[data-ypp-card-style="retrowave-green"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="retrowave-green"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="retrowave-green"] h1, html[data-ypp-ui-design="retrowave-green"] h2, html[data-ypp-ui-design="retrowave-green"] h3, 
-html[data-ypp-ui-design="retrowave-green"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="retrowave-green"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="retrowave-green"] h1, html[data-ypp-card-style="retrowave-green"] h2, html[data-ypp-card-style="retrowave-green"] h3, html[data-ypp-card-style="retrowave-green"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="retrowave-green"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="retrowave-green"] h1, html[data-ypp-ui-design="retrowave-green"] h2, html[data-ypp-ui-design="retrowave-green"] h3, html[data-ypp-ui-design="retrowave-green"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="retrowave-green"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="retrowave-green"] ytd-thumbnail, html[data-ypp-card-style="retrowave-green"] yt-image,
-html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail, html[data-ypp-ui-design="retrowave-green"] yt-image {
+html[data-ypp-card-style="retrowave-green"] ytd-thumbnail, html[data-ypp-card-style="retrowave-green"] yt-image, html[data-ypp-ui-design="retrowave-green"] ytd-thumbnail, html[data-ypp-ui-design="retrowave-green"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="retrowave-green"] yt-img-shadow, html[data-ypp-card-style="retrowave-green"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="retrowave-green"] yt-img-shadow, html[data-ypp-ui-design="retrowave-green"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="retrowave-green"] yt-img-shadow, html[data-ypp-card-style="retrowave-green"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="retrowave-green"] yt-img-shadow, html[data-ypp-ui-design="retrowave-green"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -436,8 +429,7 @@ html[data-ypp-card-style="retrowave-green"] .ytp-tooltip, html[data-ypp-ui-desig
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog, html[data-ypp-card-style="retrowave-green"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog, html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="retrowave-green"] tp-yt-paper-dialog, html[data-ypp-card-style="retrowave-green"] ytd-menu-popup-renderer, html[data-ypp-ui-design="retrowave-green"] tp-yt-paper-dialog, html[data-ypp-ui-design="retrowave-green"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -478,8 +470,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="retrowave-green"] ytd-skeleton, html[data-ypp-ui-design="retrowave-green"] ytd-skeleton, 
-html[data-ypp-card-style="retrowave-green"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="retrowave-green"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="retrowave-green"] ytd-skeleton, html[data-ypp-ui-design="retrowave-green"] ytd-skeleton, html[data-ypp-card-style="retrowave-green"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="retrowave-green"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -589,6 +580,7 @@ html[data-ypp-ui-design="retrowave-green"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-design="retrowave-green"] #masthead-container,
 html[data-ypp-ui-design="retrowave-green"] ytd-masthead {
   background: radial-gradient(circle, hsl(331, 80%, 55%)ee, hsl(122, 70%, 45%)ee) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 5px 5px 0 hsl(122, 70%, 45%) !important;
 }
@@ -637,6 +629,7 @@ html[data-ypp-ui-design="retrowave-green"] #voice-search-button:hover {
 html[data-ypp-ui-design="retrowave-green"] .sbdd_b,
 html[data-ypp-ui-design="retrowave-green"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 30px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 5px 5px 0 hsl(122, 70%, 45%) !important;
 }
@@ -664,6 +657,7 @@ html[data-ypp-ui-design="retrowave-green"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="retrowave-green"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 30px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 5px 5px 0 hsl(122, 70%, 45%) !important;
 }
@@ -720,13 +714,11 @@ html[data-ypp-ui-design="retrowave-green"] .ytd-shopping-carousel-item-renderer:
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="retrowave-green"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -810,4 +802,3 @@ html[data-ypp-card-style="retrowave-green"] .ytp-scrubber-button {
   box-shadow: 0 0 5px var(--rw-neon) !important;
 }
 
-}

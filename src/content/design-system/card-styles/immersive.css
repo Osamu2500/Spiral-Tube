@@ -26,23 +26,37 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 
 /* Base card body clipping */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-rich-item-renderer #dismissible,
-/* Search page: activate via body.ypp-search-list-mode (set by search-redesign.js fallback) */
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-playlist-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-radio-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-channel-renderer #dismissible,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-playlist-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-radio-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-compact-video-renderer,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-compact-video-renderer #dismissible,
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-grid-video-renderer #dismissible,
-/* Scoped yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) — ONLY inside known video card containers */
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-rich-item-renderer yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-grid-video-renderer yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-compact-video-renderer yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
+
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #related yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) {
   position: relative !important;
   width: 100% !important; /* Fix search grid collapsing */
@@ -63,32 +77,32 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-rich-item-renderer ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  ytd-thumbnail,
+ ytd-video-renderer
+ ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  ytd-thumbnail,
+ ytd-video-renderer
+ ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  ytd-thumbnail,
+ ytd-playlist-renderer
+ ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  ytd-playlist-thumbnail,
+ ytd-playlist-renderer
+ ytd-playlist-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
-  ytd-thumbnail,
+ yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
+ ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-radio-renderer
-  ytd-thumbnail,
+ ytd-radio-renderer
+ ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-channel-renderer
-  ytd-thumbnail,
+ ytd-channel-renderer
+ ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-compact-video-renderer ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-grid-video-renderer ytd-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupViewModelContentImage {
@@ -180,16 +194,16 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #related #meta,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-rich-item-renderer
-  .ytLockupMetadataViewModelTextContainer,
+ .ytLockupMetadataViewModelTextContainer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-grid-video-renderer
-  .ytLockupMetadataViewModelTextContainer,
+ .ytLockupMetadataViewModelTextContainer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-compact-video-renderer
-  .ytLockupMetadataViewModelTextContainer,
+ .ytLockupMetadataViewModelTextContainer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   #related
-  .ytLockupMetadataViewModelTextContainer {
+ .ytLockupMetadataViewModelTextContainer {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   position: absolute !important;
@@ -210,10 +224,10 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-grid-video-renderer .yt-avatar-stack,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-rich-item-renderer
-  .ytLockupMetadataViewModelAvatarContainer,
+ .ytLockupMetadataViewModelAvatarContainer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-grid-video-renderer
-  .ytLockupMetadataViewModelAvatarContainer {
+ .ytLockupMetadataViewModelAvatarContainer {
   position: absolute !important;
   top: 12px !important;
   left: 12px !important;
@@ -227,10 +241,10 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Search page: scoped avatar stacking container */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  .ytLockupMetadataViewModelAvatarContainer,
+ .ytLockupMetadataViewModelAvatarContainer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  .ytLockupMetadataViewModelAvatarContainer,
+ .ytLockupMetadataViewModelAvatarContainer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode .yt-avatar-stack,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode .yt-avatar-stack {
   position: absolute !important;
@@ -259,36 +273,36 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Fix search list/grid mode dismissible so thumbnails and text stack perfectly */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #dismissible,
+ ytd-video-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  #dismissible,
+ ytd-playlist-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-radio-renderer
-  #dismissible,
+ ytd-radio-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-channel-renderer
-  #dismissible,
+ ytd-channel-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #dismissible,
+ ytd-video-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-playlist-renderer
-  #dismissible,
+ ytd-playlist-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-radio-renderer
-  #dismissible,
+ ytd-radio-renderer
+ #dismissible,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-channel-renderer
-  #dismissible {
+ ytd-channel-renderer
+ #dismissible {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
@@ -302,32 +316,32 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  .text-wrapper,
+ ytd-video-renderer
+ .text-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  .text-wrapper,
+ ytd-playlist-renderer
+ .text-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-radio-renderer
-  .text-wrapper,
+ ytd-radio-renderer
+ .text-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-channel-renderer
-  .text-wrapper,
+ ytd-channel-renderer
+ .text-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  .text-wrapper,
+ ytd-video-renderer
+ .text-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-playlist-renderer
-  .text-wrapper,
+ ytd-playlist-renderer
+ .text-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-radio-renderer
-  .text-wrapper {
+ ytd-radio-renderer
+ .text-wrapper {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   display: flex !important;
@@ -349,32 +363,32 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Remove the ::before spacer, we will use margin-top: auto on the title */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  .text-wrapper::before,
+ ytd-video-renderer
+ .text-wrapper::before,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  .text-wrapper::before,
+ ytd-playlist-renderer
+ .text-wrapper::before,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-radio-renderer
-  .text-wrapper::before,
+ ytd-radio-renderer
+ .text-wrapper::before,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-channel-renderer
-  .text-wrapper::before,
+ ytd-channel-renderer
+ .text-wrapper::before,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  .text-wrapper::before,
+ ytd-video-renderer
+ .text-wrapper::before,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-playlist-renderer
-  .text-wrapper::before,
+ ytd-playlist-renderer
+ .text-wrapper::before,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-radio-renderer
-  .text-wrapper::before {
+ ytd-radio-renderer
+ .text-wrapper::before {
   display: none !important;
 }
 
@@ -382,13 +396,13 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer #meta,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #channel-info,
+ ytd-video-renderer
+ #channel-info,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer #meta,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #channel-info {
+ ytd-video-renderer
+ #channel-info {
   display: block !important;
   position: static !important;
   margin: 0 !important;
@@ -398,16 +412,16 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* 1. Title (Top-most text, anchored to bottom so it grows upwards) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #title-wrapper,
+ ytd-video-renderer
+ #title-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  #title-wrapper,
+ ytd-playlist-renderer
+ #title-wrapper,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #title-wrapper {
+ ytd-video-renderer
+ #title-wrapper {
   position: absolute !important;
   bottom: 54px !important;
   left: 16px !important;
@@ -424,12 +438,12 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* 2. Channel Name (Middle text) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  ytd-channel-name,
+ ytd-video-renderer
+ ytd-channel-name,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  ytd-channel-name {
+ ytd-video-renderer
+ ytd-channel-name {
   position: absolute !important;
   bottom: 34px !important;
   left: 16px !important;
@@ -446,12 +460,12 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* 3. Views / Time (Bottom-most text) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  ytd-video-meta-block,
+ ytd-video-renderer
+ ytd-video-meta-block,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  ytd-video-meta-block {
+ ytd-video-renderer
+ ytd-video-meta-block {
   position: absolute !important;
   bottom: 16px !important;
   left: 16px !important;
@@ -469,13 +483,13 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Hide the intrusive SAVE button injected into cards */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-video-renderer
-  ytd-thumbnail-overlay-toggle-button-renderer,
+ ytd-thumbnail-overlay-toggle-button-renderer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-video-renderer
-  ytd-thumbnail-overlay-button-renderer,
+ ytd-thumbnail-overlay-button-renderer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-video-renderer
-  yt-button-shape:has(path[d*='M20 6h-8l-2-2']),
+ yt-button-shape:has(path[d*='M20 6h-8l-2-2']),
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-video-renderer [aria-label*='Save'],
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-video-renderer [title*='Save'],
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-video-renderer .ypp-folder-save-btn,
@@ -487,28 +501,28 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Hide snippet, badges, and action buttons that clash with the overlay layout */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  .metadata-snippet-container,
+ ytd-video-renderer
+ .metadata-snippet-container,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  yt-formatted-string.metadata-snippet-text,
+ ytd-video-renderer
+ yt-formatted-string.metadata-snippet-text,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  yt-formatted-string#description-text,
+ ytd-video-renderer
+ yt-formatted-string#description-text,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  .metadata-snippet-container,
+ ytd-video-renderer
+ .metadata-snippet-container,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  yt-formatted-string.metadata-snippet-text,
+ ytd-video-renderer
+ yt-formatted-string.metadata-snippet-text,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  yt-formatted-string#description-text,
+ ytd-video-renderer
+ yt-formatted-string#description-text,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-list-mode .ypp-card-folder-btn,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] body.ypp-search-grid-mode .ypp-card-folder-btn {
   display: none !important;
@@ -517,14 +531,14 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Ensure any other elements inside text-wrapper don't have bottom margins pushing content up */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  .text-wrapper
-  > *,
+ ytd-video-renderer
+ .text-wrapper
+ > *,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  .text-wrapper
-  > * {
+ ytd-video-renderer
+ .text-wrapper
+ > * {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -535,44 +549,44 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #channel-thumbnail,
+ ytd-video-renderer
+ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  #channel-thumbnail,
+ ytd-playlist-renderer
+ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-channel-renderer
-  #channel-thumbnail,
+ ytd-channel-renderer
+ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #channel-thumbnail,
+ ytd-video-renderer
+ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-playlist-renderer
-  #channel-thumbnail,
+ ytd-playlist-renderer
+ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #channel-info
-  > a:first-child,
+ ytd-video-renderer
+ #channel-info
+ > a:first-child,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #channel-info
-  > a:first-child,
+ ytd-video-renderer
+ #channel-info
+ > a:first-child,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #channel-info
-  yt-avatar-shape,
+ ytd-video-renderer
+ #channel-info
+ yt-avatar-shape,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #channel-info
-  yt-avatar-shape {
+ ytd-video-renderer
+ #channel-info
+ yt-avatar-shape {
   position: absolute !important;
   top: 12px !important;
   left: 12px !important;
@@ -589,38 +603,38 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Title — bold, white, 2-line clamp */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #video-title,
+ ytd-video-renderer
+ #video-title,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-playlist-renderer
-  #video-title,
+ ytd-playlist-renderer
+ #video-title,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-radio-renderer
-  #video-title,
+ ytd-radio-renderer
+ #video-title,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #video-title,
+ ytd-video-renderer
+ #video-title,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-playlist-renderer
-  #video-title,
+ ytd-playlist-renderer
+ #video-title,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-radio-renderer
-  #video-title,
+ ytd-radio-renderer
+ #video-title,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #video-title
-  yt-formatted-string,
+ ytd-video-renderer
+ #video-title
+ yt-formatted-string,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #video-title
-  yt-formatted-string {
+ ytd-video-renderer
+ #video-title
+ yt-formatted-string {
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
   line-clamp: 2 !important;
@@ -645,14 +659,14 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Channel name */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  ytd-channel-name
-  yt-formatted-string,
+ ytd-video-renderer
+ ytd-channel-name
+ yt-formatted-string,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  ytd-channel-name
-  a {
+ ytd-video-renderer
+ ytd-channel-name
+ a {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 600 !important;
   text-shadow:
@@ -670,14 +684,14 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  ytd-channel-name
-  yt-formatted-string,
+ ytd-video-renderer
+ ytd-channel-name
+ yt-formatted-string,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  ytd-channel-name
-  a {
+ ytd-video-renderer
+ ytd-channel-name
+ a {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 600 !important;
   text-shadow:
@@ -696,22 +710,22 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Metadata line (views • time ago) */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #metadata-line,
+ ytd-video-renderer
+ #metadata-line,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #metadata-line
-  span,
+ ytd-video-renderer
+ #metadata-line
+ span,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #metadata-line,
+ ytd-video-renderer
+ #metadata-line,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #metadata-line
-  span {
+ ytd-video-renderer
+ #metadata-line
+ span {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 600 !important;
   text-shadow:
@@ -727,12 +741,12 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Channel-info row: flex so avatar + text line up */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #channel-info,
+ ytd-video-renderer
+ #channel-info,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #channel-info {
+ ytd-video-renderer
+ #channel-info {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
@@ -747,14 +761,14 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Badges beside channel name — keep visible */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  ytd-video-renderer
-  #channel-info
-  ytd-badge-supported-renderer,
+ ytd-video-renderer
+ #channel-info
+ ytd-badge-supported-renderer,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  ytd-video-renderer
-  #channel-info
-  ytd-badge-supported-renderer {
+ ytd-video-renderer
+ #channel-info
+ ytd-badge-supported-renderer {
   display: flex !important;
   flex-shrink: 0 !important;
 }
@@ -762,24 +776,22 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* Handle multiple collab avatars in search results */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  #channel-thumbnail
-  ~ #channel-thumbnail,
+ #channel-thumbnail
+ ~ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  #channel-thumbnail
-  ~ #channel-thumbnail {
+ #channel-thumbnail
+ ~ #channel-thumbnail {
   left: 56px !important;
 }
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-list-mode
-  #channel-thumbnail
-  ~ #channel-thumbnail
-  ~ #channel-thumbnail,
+ #channel-thumbnail
+ ~ #channel-thumbnail,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   body.ypp-search-grid-mode
-  #channel-thumbnail
-  ~ #channel-thumbnail
-  ~ #channel-thumbnail {
+ #channel-thumbnail
+ ~ #channel-thumbnail {
   left: 100px !important;
 }
 
@@ -813,10 +825,9 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  ytd-compact-video-renderer,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
+ ytd-compact-video-renderer, html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(#related, ytd-watch-next-secondary-results-renderer)
-  yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) {
+ yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *) {
   margin-bottom: 24px !important;
 }
 
@@ -848,20 +859,19 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #avatar-link:nth-of-type(2),
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelAvatar:nth-of-type(2),
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-channel-thumbnail-with-link-renderer:nth-of-type(2),
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #avatar ~ #avatar,
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #avatar ~,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-channel-thumbnail-with-link-renderer
-  ~ ytd-channel-thumbnail-with-link-renderer {
+ ~ ytd-channel-thumbnail-with-link-renderer {
   left: 56px !important; /* 12 + 40 + 4 */
 }
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #avatar-link:nth-of-type(3),
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelAvatar:nth-of-type(3),
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] ytd-channel-thumbnail-with-link-renderer:nth-of-type(3),
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #avatar ~ #avatar ~ #avatar,
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] #avatar ~,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   ytd-channel-thumbnail-with-link-renderer
-  ~ ytd-channel-thumbnail-with-link-renderer
-  ~ ytd-channel-thumbnail-with-link-renderer {
+ ~ ytd-channel-thumbnail-with-link-renderer {
   left: 100px !important; /* 56 + 40 + 4 */
 }
 
@@ -872,7 +882,7 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .yt-avatar-stack .ytLockupMetadataViewModelAvatar,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   .ytLockupMetadataViewModelAvatarContainer
-  .ytLockupMetadataViewModelAvatar {
+ .ytLockupMetadataViewModelAvatar {
   position: relative !important;
   top: auto !important;
   left: auto !important;
@@ -894,9 +904,9 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
     0 4px 12px rgba(0, 0, 0, 0.7) !important;
   border: 1.5px solid #000 !important;
   background: transparent !important;
-  clip-path: none !important;
   -webkit-clip-path: none !important;
-}
+  clip-path: none !important;
+  }
 
 /* Target the specific YouTube inner wrapper that restricts avatar image size.
    YouTube sets max-width: 36px on .yt-spec-avatar-shape__image-wrapper —
@@ -911,9 +921,9 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   max-height: none !important;
   border-radius: 50% !important; /* Circular */
   overflow: hidden !important;
-  clip-path: none !important;
   -webkit-clip-path: none !important;
-}
+  clip-path: none !important;
+  }
 
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .yt-spec-avatar-shape__image-wrapper img,
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] yt-avatar-shape img,
@@ -924,8 +934,8 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   max-height: none !important;
   object-fit: cover !important;
   border-radius: 50% !important;
-  clip-path: none !important;
   -webkit-clip-path: none !important;
+  clip-path: none !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -948,25 +958,24 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
-  clip-path: none !important;
   -webkit-clip-path: none !important;
-}
+  clip-path: none !important;
+  }
 /* ========================================================
    6. GLOBAL MENU BUTTON (Top Right)
    ======================================================== */
 
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-playlist-renderer,
-    body.ypp-search-list-mode ytd-radio-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  :is(#menu, ytd-menu-renderer),
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton {
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ body.ypp-search-list-mode ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ :is(#menu, ytd-menu-renderer),
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton {
   position: absolute !important;
   top: 12px !important;
   right: 12px !important;
@@ -979,37 +988,33 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 }
 
 /* Restore native pointer events so YouTube's JS isn't confused by our overrides */
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape),
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape) button,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton {
+html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape), html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] :is(#menu, ytd-menu-renderer) :is(yt-icon-button, yt-button-shape) button, html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton {
   pointer-events: auto !important;
 }
 
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-playlist-renderer,
-    body.ypp-search-list-mode ytd-radio-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  :is(#menu, ytd-menu-renderer) yt-icon,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton yt-icon,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ body.ypp-search-list-mode ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ :is(#menu, ytd-menu-renderer) yt-icon,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton yt-icon,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-playlist-renderer,
-    body.ypp-search-list-mode ytd-radio-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  :is(#menu, ytd-menu-renderer)
-  svg,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton svg {
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ body.ypp-search-list-mode ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ :is(#menu, ytd-menu-renderer)
+ svg,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton svg {
   color: var(--ypp-text-primary, #fff) !important;
   fill: #fff !important;
   filter: drop-shadow(-1px -1px 0px #000) drop-shadow(1px -1px 0px #000)
@@ -1026,17 +1031,16 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-video-renderer,
-    body.ypp-search-list-mode ytd-playlist-renderer,
-    body.ypp-search-list-mode ytd-radio-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  :is(#menu, ytd-menu-renderer)
-  :is(yt-icon-button, yt-button-shape) button,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton {
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ body.ypp-search-list-mode ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ :is(#menu, ytd-menu-renderer)
+ :is(yt-icon-button, yt-button-shape) button,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelMenuButton {
   -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
   background: rgba(0, 0, 0, 0.6) !important;
@@ -1069,14 +1073,14 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
    ======================================================== */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  #video-title,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelTitle,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelTitle * {
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ #video-title,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelTitle,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytLockupMetadataViewModelTitle * {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 700 !important;
   font-size: 1.5rem !important;
@@ -1094,24 +1098,24 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  #metadata-line,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytContentMetadataViewModelMetadataText,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytContentMetadataViewModelMetadataText *,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytContentMetadataViewModelDelimiter,
-html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ #metadata-line,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytContentMetadataViewModelMetadataText,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytContentMetadataViewModelMetadataText *,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'] .ytContentMetadataViewModelDelimiter,
+    html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   :is(
-    ytd-rich-item-renderer,
-    body.ypp-search-grid-mode ytd-video-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer
-  )
-  #channel-name
-  * {
+ ytd-rich-item-renderer,
+ body.ypp-search-grid-mode ytd-video-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer
+ )
+ #channel-name
+ * {
   color: var(--ypp-text-primary, #fff) !important;
   font-weight: 600 !important;
 
@@ -1145,7 +1149,7 @@ html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-
 /* De-duplicate timestamps by hiding badge-shape if the old time-status-renderer exists */
 html[data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive'][data-ypp-card-style='immersive']
   #overlays:has(ytd-thumbnail-overlay-time-status-renderer)
-  badge-shape.badge-shape-wiz--thumbnail-default {
+ badge-shape.badge-shape-wiz--thumbnail-default {
   display: none !important;
 }
 
@@ -1203,14 +1207,14 @@ html[data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass
 
 /* GLOBAL REDESIGN V3 INJECT - immersive-glass */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -1228,12 +1232,7 @@ html[data-ypp-card-style="immersive-glass"][data-ypp-card-style="immersive-glass
 /* ========================================================
    4. HOVER ANIMATIONS
    ======================================================== */
-html[data-ypp-card-style='immersive'] ytd-rich-item-renderer:hover yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),
-html[data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer:hover,
-html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer:hover,
-html[data-ypp-card-style='immersive'] ytd-grid-video-renderer:hover,
-html[data-ypp-card-style='immersive'] ytd-compact-video-renderer:hover,
-html[data-ypp-card-style='immersive'] #related yt-lockup-view-model:hover {
+html[data-ypp-card-style='immersive'] ytd-rich-item-renderer:hover yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), html[data-ypp-card-style='immersive'] body.ypp-search-list-mode ytd-video-renderer:hover, html[data-ypp-card-style='immersive'] body.ypp-search-grid-mode ytd-video-renderer:hover, html[data-ypp-card-style='immersive'] ytd-grid-video-renderer:hover, html[data-ypp-card-style='immersive'] ytd-compact-video-renderer:hover, html[data-ypp-card-style='immersive'] #related yt-lockup-view-model:hover {
   transform: translateY(-4px) scale(1.01) !important;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
 }

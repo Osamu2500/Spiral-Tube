@@ -21,7 +21,7 @@ import '../pages/watch/player/player.css';
 import '../global/styles/header-ast.css';
 import '../global/styles/sidebar-ast.css';
 import '../pages/watch/styles/comments.css';
-import '../pages/search/styles/search-ast.css';
+import '../pages/search/styles/search-grid.css';
 import '../pages/playlist/styles/playlist-ast.css';
 import '../pages/history/styles/history-ast.css';
 import '../pages/subscriptions/styles/subscriptions-ast.css';
@@ -162,12 +162,8 @@ import { FeedGridColumns } from '../global/layout/feed-grid-columns.js';
 window.YPP.FeatureManager.register(FeedGridColumns);
 
 // Search features
-import { SearchViewMode } from '../pages/search/layout/search-view-mode.js';
-window.YPP.FeatureManager.register(SearchViewMode);
 import { SearchObserver } from '../pages/search/features/search-observer.js';
 window.YPP.FeatureManager.register(SearchObserver);
-import { SearchFilter } from '../pages/search/declutter/search-filter.js';
-window.YPP.FeatureManager.register(SearchFilter);
 import { SearchRedesign } from '../pages/search/layout/search-redesign.js';
 window.YPP.FeatureManager.register(SearchRedesign);
 

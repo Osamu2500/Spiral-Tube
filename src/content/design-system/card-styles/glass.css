@@ -1,13 +1,13 @@
 /* src/content/themes/ui-styles/glass/components/cards.css */
 /* Frosted Glass Video Cards */
 html[data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'] :is(
-    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
-    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
-    yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
+  ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+ ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
+ yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-radio-renderer, .ypp-grid-item) *)
 ) {
   background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(32px) saturate(150%) !important;
   -webkit-backdrop-filter: blur(32px) saturate(150%) !important;
+  backdrop-filter: blur(32px) saturate(150%) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-top-color: rgba(255, 255, 255, 0.4) !important;
@@ -17,9 +17,9 @@ html[data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-sty
 }
 
 html[data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'][data-ypp-card-style='glass'] :is(
-    ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
-    ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
-    yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)
+  ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer,
+ ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item,
+ yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-radio-renderer, .ypp-grid-item) *)
 ):hover {
   transform: translateY(-5px) !important;
   background: rgba(255, 255, 255, 0.15) !important;
@@ -60,14 +60,14 @@ html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-sty
 
 /* GLOBAL REDESIGN V3 INJECT - glass */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -85,20 +85,21 @@ html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-sty
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(0, 0, 0, 0.3) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"][data-ypp-card-style="glass"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(0, 0, 0, 0.3) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

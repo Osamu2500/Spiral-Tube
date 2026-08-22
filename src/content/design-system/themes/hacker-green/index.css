@@ -1,6 +1,4 @@
-/* Theme: hacker-green */
-html[data-ypp-theme="hacker-green"] {
-  --ypp-bg-base: #00ff00 !important;
+/* Theme: hacker-green */--ypp-bg-base: #00ff00 !important;
   --ypp-bg-surface: #00ff00 !important;
   --ypp-text-primary: #ffffff !important;
   --ypp-text-secondary: rgba(255,255,255,0.7) !important;
@@ -12,7 +10,7 @@ html[data-ypp-theme="hacker-green"] {
   --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
-}
+
 
 /* --- TEXT READABILITY FIX --- */
 /* Enforce dark text color globally for this light theme */

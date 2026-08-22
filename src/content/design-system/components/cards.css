@@ -32,8 +32,8 @@
   padding: var(--ypp-card-pad, 0px) !important;
   box-shadow: var(--ypp-card-shadow, none) !important;
   filter: var(--ypp-card-filter, none) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
   transform: var(--ypp-card-transform, none) !important;
   transition: var(--ypp-card-transition, all 0.2s ease) !important;
 }
@@ -63,9 +63,9 @@
   transform: var(--ypp-card-transform-hover, none) !important;
   box-shadow: var(--ypp-card-shadow-hover, var(--ypp-card-shadow, none)) !important;
   filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
   -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
-}
+  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
+  }
 
 /* Inner Text Hooks for Card Styles */
 :is(

@@ -23,10 +23,7 @@
 100% {
   filter:brightness(1.1) saturate(1.1);
 }
-}
-
-html[data-ypp-ui-design="neo-brutalism"] {
-/* Unique Shapes and Patterns for neo-brutalism */
+}/* Unique Shapes and Patterns for neo-brutalism */
 
 /* neo-brutalism/base/animations.css */
 
@@ -46,7 +43,7 @@ html[data-ypp-ui-design="neo-brutalism"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -140,7 +137,8 @@ html[data-ypp-ui-design="neo-brutalism"] .ytProgressBarLineProgressBarPlayed {
 
 /* neo-brutalism/components/badges.css */
 html[data-ypp-ui-design="neo-brutalism"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="neo-brutalism"] .ypp-badge, html[data-ypp-ui-design="neo-brutalism"] .ypp-value-display {
+html[data-ypp-ui-design="neo-brutalism"] .ypp-badge,
+html[data-ypp-ui-design="neo-brutalism"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 6px 6px 0px #000 !important;
 }
@@ -168,7 +166,7 @@ html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="neo-brutalism"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="neo-brutalism"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="neo-brutalism"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="neo-brutalism"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
@@ -179,7 +177,7 @@ html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[title*="Download
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 0px) !important;
@@ -228,8 +226,7 @@ html[data-ypp-ui-design="neo-brutalism"] .ypp-btn-primary:hover, html[data-ypp-u
 }
 
 /* neo-brutalism/components/forms.css */
-html[data-ypp-ui-design="neo-brutalism"] ytd-searchbox, html[data-ypp-ui-design="neo-brutalism"] #search-form,
-html[data-ypp-ui-design="neo-brutalism"] tp-yt-paper-input, html[data-ypp-ui-design="neo-brutalism"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="neo-brutalism"] ytd-searchbox, html[data-ypp-ui-design="neo-brutalism"] #search-form, html[data-ypp-ui-design="neo-brutalism"] tp-yt-paper-input, html[data-ypp-ui-design="neo-brutalism"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -285,7 +282,7 @@ html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--overlay.yt-
 html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="neo-brutalism"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="neo-brutalism"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="neo-brutalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="neo-brutalism"] yt-button-shape button[aria-label*="Download" i],
@@ -1904,9 +1901,7 @@ html[data-ypp-card-style="neo-brutalism"] .neo-brutalism-deep-class-250, html[da
 }
 
 /* neo-brutalism/components/menus.css */
-html[data-ypp-ui-design="neo-brutalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="neo-brutalism"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="neo-brutalism"] tp-yt-iron-dropdown, html[data-ypp-ui-design="neo-brutalism"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="neo-brutalism"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="neo-brutalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="neo-brutalism"] ytd-menu-popup-renderer, html[data-ypp-ui-design="neo-brutalism"] tp-yt-iron-dropdown, html[data-ypp-ui-design="neo-brutalism"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="neo-brutalism"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 10px 10px 0px #000 !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2038,9 +2033,7 @@ html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 6px 6px 0px #000 !important;
 }
 
-html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="neo-brutalism"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2244,4 +2237,3 @@ html[data-ypp-ui-design="neo-brutalism"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
-}

@@ -1,5 +1,4 @@
-﻿html[data-ypp-theme="sunset"] {
-    --ypp-bg-base: #1a0b1a;
+--ypp-bg-base: #1a0b1a;
     --ypp-bg-surface: #280a1e;
     --ypp-bg-glass: rgba(26, 11, 26, 0.95);
     --ypp-glass-border: rgba(255, 255, 255, 0.08);
@@ -23,7 +22,7 @@
     --ytd-searchbox-background: transparent;
     --ytd-searchbox-text-color: #fff0f5;
     --ytd-searchbox-legacy-button-color: rgba(255, 240, 245, 0.05);
-}
+
 
 /* Animated Sunset Layered Gradient Effect */
 @keyframes ypp-sunset-glow-bg {
@@ -55,14 +54,6 @@ html[data-ypp-theme="sunset"].ypp-theme-effects::after {
 
 /* 2. Channel Bar (#owner) */
 
-
-
 /* 3. Description Box (Sunset Dusk Glass Box) */
-html[data-ypp-theme="sunset"] #description-inner,
-
-html[data-ypp-theme="sunset"] #description-inner:hover,
 
 /* 4. Comments Section (Sunset Petal Cards) */
-
-
-

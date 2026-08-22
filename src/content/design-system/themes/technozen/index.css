@@ -1,7 +1,5 @@
 @import "../../ui-styles/shared/timeline-visibility.css";
-
-html[data-ypp-theme="technozen"] {
-    --ypp-bg-base: #dff4e8;
+--ypp-bg-base: #dff4e8;
     --ypp-bg-surface: #e2f8e0;
     --ypp-bg-glass: rgba(228, 248, 218, 0.92);
     --ypp-glass-border: rgba(255, 255, 255, 0.75);
@@ -42,7 +40,7 @@ html[data-ypp-theme="technozen"] {
   --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
-}
+
 
 /* --- TEXT READABILITY FIX --- */
 /* Enforce dark text color globally for this light theme */

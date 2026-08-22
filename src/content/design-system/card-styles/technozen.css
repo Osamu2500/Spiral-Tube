@@ -1,22 +1,22 @@
 /* src/content/themes/ui-styles/technozen/components/cards.css */
-#contents.ytd-rich-grid-renderer {
+html[data-ypp-card-style="technozen"] #contents.ytd-rich-grid-renderer {
   margin-left: 30px !important;
   margin-right: 20px !important;
 }
-ytd-rich-grid-slim-media {
+html[data-ypp-card-style="technozen"] ytd-rich-grid-slim-media {
   z-index: 1 !important;
 }
-ytd-rich-grid-slim-media:hover {
+html[data-ypp-card-style="technozen"] ytd-rich-grid-slim-media:hover {
   z-index: 2000 !important;
 }
-ytd-rich-grid-slim-media #dismissible,
-ytd-reel-item-renderer #dismissible {
+html[data-ypp-card-style="technozen"] ytd-rich-grid-slim-media #dismissible,
+html[data-ypp-card-style="technozen"] ytd-reel-item-renderer #dismissible {
   transition: all var(--bounce) !important;
   border-radius: 40px 0 40px 0 !important;
   border: 1px solid transparent !important;
 }
-ytd-rich-grid-slim-media:hover #dismissible,
-ytd-reel-item-renderer:hover #dismissible {
+html[data-ypp-card-style="technozen"] ytd-rich-grid-slim-media:hover #dismissible,
+html[data-ypp-card-style="technozen"] ytd-reel-item-renderer:hover #dismissible {
   border-radius: 40px 0 40px 0 !important;
   background: var(--tz-gloss), rgba(228, 250, 220, 0.92) !important;
   box-shadow: var(--shadow-hover) !important;
@@ -25,101 +25,101 @@ ytd-reel-item-renderer:hover #dismissible {
   padding-bottom: 12px !important;
   margin-bottom: -12px !important;
 }
-.ytProgressBarLineProgressBarLine,
-.ytProgressBarLineProgressBarBackground,
-.ytProgressBarLineProgressBarLoaded,
-.ytProgressBarLineProgressBarHovered,
-.ytProgressBarLineProgressBarPlayed,
-.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+html[data-ypp-card-style="technozen"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-card-style="technozen"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-card-style="technozen"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-card-style="technozen"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-card-style="technozen"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-card-style="technozen"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
   border-radius: 40px 0 40px 0 !important;
 }
-ytd-topbar-logo-renderer {
+html[data-ypp-card-style="technozen"] ytd-topbar-logo-renderer {
   border-radius: 40px 0 40px 0 !important;
   padding: 0px !important;
   max-height: 45px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-ytd-topbar-logo-renderer:hover {
+html[data-ypp-card-style="technozen"] ytd-topbar-logo-renderer:hover {
   transform: translateY(-1px) scale(1.04) !important;
   box-shadow: var(--shadow-hover) !important;
 }
-ytd-expandable-metadata-renderer:not([is-expanded]) {
+html[data-ypp-card-style="technozen"] ytd-expandable-metadata-renderer:not([is-expanded]) {
   border-radius: 40px 0 40px 0 !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-ytd-expandable-metadata-renderer:not([is-expanded]):hover {
+html[data-ypp-card-style="technozen"] ytd-expandable-metadata-renderer:not([is-expanded]):hover {
   box-shadow: var(--shadow-hover) !important;
 }
-ytd-expandable-metadata-renderer {
+html[data-ypp-card-style="technozen"] ytd-expandable-metadata-renderer {
   padding: 5px !important;
   border-radius: 40px 0 40px 0 !important;
 }
-ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
+html[data-ypp-card-style="technozen"] ytd-expandable-metadata-renderer:not([is-expanded]) #header.ytd-expandable-metadata-renderer:hover {
   background: none !important;
 }
-ytd-playlist-panel-video-renderer[selected][use-color-palette],
-ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+html[data-ypp-card-style="technozen"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-card-style="technozen"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
   border-radius: 40px 0 40px 0 !important;
   padding: 10px !important;
   background: rgba(190, 240, 175, 0.50) !important;
   box-shadow: var(--shadow-active) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+html[data-ypp-card-style="technozen"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
   border-radius: 40px 0 40px 0 !important;
   padding: 10px !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   margin: 5px 0 !important;
 }
-ytd-playlist-video-renderer:not(.dragging) {
+html[data-ypp-card-style="technozen"] ytd-playlist-video-renderer:not(.dragging) {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   margin: 5px;
   border-radius: 40px 0 40px 0 !important;
 }
-ytd-playlist-video-renderer:not(.dragging):hover {
+html[data-ypp-card-style="technozen"] ytd-playlist-video-renderer:not(.dragging):hover {
   box-shadow: var(--shadow-hover) !important;
   background: rgba(200, 245, 188, 0.35) !important;
 }
-.immersive-header-container.ytd-playlist-header-renderer {
+html[data-ypp-card-style="technozen"] .immersive-header-container.ytd-playlist-header-renderer {
   border: 1px solid var(--tz-glass-border) !important;
   box-shadow: var(--shadow-base) !important;
   border-radius: 40px 0 40px 0 !important;
 }
-.yt-badge-shape--thumbnail-default {
+html[data-ypp-card-style="technozen"] .yt-badge-shape--thumbnail-default {
   background: var(--tz-gloss), rgba(228, 250, 220, 0.90) !important;
   border-radius: 40px 0 40px 0 !important;
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
+html[data-ypp-card-style="technozen"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-card-style="technozen"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-card-style="technozen"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
   padding: 100px !important;
   border-radius: 40px 0 40px 0 !important;
 }
-ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
+html[data-ypp-card-style="technozen"] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
   border-radius: 40px 0 40px 0 !important;
   border: 1px solid rgba(90, 191, 71, 0.12) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-ytd-macro-markers-list-item-renderer {
+html[data-ypp-card-style="technozen"] ytd-macro-markers-list-item-renderer {
   border-radius: 40px 0 40px 0 !important;
   margin: 5px;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-ytd-watch-next-secondary-results-renderer,
-ytd-watch-next-secondary-results-renderer #items,
-#related.ytd-watch-flexy,
-#related.ytd-watch-flexy {
+html[data-ypp-card-style="technozen"] ytd-watch-next-secondary-results-renderer,
+html[data-ypp-card-style="technozen"] ytd-watch-next-secondary-results-renderer #items,
+html[data-ypp-card-style="technozen"] #related.ytd-watch-flexy,
+html[data-ypp-card-style="technozen"] #related.ytd-watch-flexy {
   background: transparent !important;
   border: none !important;
   border-radius: 40px 0 40px 0 !important;
   overflow: visible !important;
 }
-ytd-compact-video-renderer,
-ytd-compact-playlist-renderer,
-ytd-compact-radio-renderer {
+html[data-ypp-card-style="technozen"] ytd-compact-video-renderer,
+html[data-ypp-card-style="technozen"] ytd-compact-playlist-renderer,
+html[data-ypp-card-style="technozen"] ytd-compact-radio-renderer {
   background: var(--tz-gloss), rgba(235, 252, 228, 0.90) !important;
   border: 1px solid var(--tz-glass-border) !important;
   border-radius: 40px 0 40px 0 !important;
@@ -132,26 +132,26 @@ ytd-compact-radio-renderer {
   overflow: visible !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
-ytd-compact-video-renderer ytd-thumbnail {
+html[data-ypp-card-style="technozen"] ytd-compact-video-renderer ytd-thumbnail {
   border-radius: 40px 0 40px 0 !important;
   overflow: hidden !important;
   margin-right: 12px !important;
 }
-ytd-rich-grid-media {
+html[data-ypp-card-style="technozen"] ytd-rich-grid-media {
   box-shadow:
     0 0 0 1px rgba(90, 191, 71, 0.12),
     0px 4px 20px rgba(90, 191, 71, 0.14),
     0px 1px 4px rgba(0, 0, 0, 0.05) !important;
   transition: box-shadow var(--bounce), transform var(--bounce) !important;
 }
-ytd-rich-grid-media:hover {
+html[data-ypp-card-style="technozen"] ytd-rich-grid-media:hover {
   box-shadow:
     0 0 0 1.5px rgba(90, 191, 71, 0.30),
     0px 8px 32px rgba(90, 191, 71, 0.28),
     0px 0px 20px rgba(48, 184, 200, 0.16) !important;
   transform: translateY(-3px) !important;
 }
-#ypp-pl-root .ypp-pl-card {
+html[data-ypp-card-style="technozen"] #ypp-pl-root .ypp-pl-card {
   background:
     linear-gradient(
       135deg,
@@ -165,7 +165,7 @@ ytd-rich-grid-media:hover {
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
-#ypp-pl-root .ypp-pl-card:hover {
+html[data-ypp-card-style="technozen"] #ypp-pl-root .ypp-pl-card:hover {
   background:
     linear-gradient(
       135deg,
@@ -175,18 +175,18 @@ ytd-rich-grid-media:hover {
   border-color: rgba(90, 191, 71, 0.38) !important;
   transform: translateY(-2px) scale(1.01) !important;
 }
-#ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
+html[data-ypp-card-style="technozen"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
   background: rgba(220, 248, 215, 0.35) !important;
   border: 1px solid rgba(90, 191, 71, 0.15) !important;
   box-shadow: none !important;
   border-radius: 40px 0 40px 0 !important;
 }
-#ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
+html[data-ypp-card-style="technozen"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
   background: rgba(210, 245, 210, 0.55) !important;
   transform: none !important;
   border-color: rgba(90, 191, 71, 0.28) !important;
 }
-#ypp-pl-root .ypp-pl-duration-card {
+html[data-ypp-card-style="technozen"] #ypp-pl-root .ypp-pl-duration-card {
   background:
     linear-gradient(
       135deg,
@@ -196,7 +196,7 @@ ytd-rich-grid-media:hover {
   border-radius: 40px 0 40px 0 !important;
   box-shadow: inset 0 2px 12px rgba(90, 191, 71, 0.10), var(--shadow-base) !important;
 }
-#ypp-pl-root .ypp-pl-duration-grid {
+html[data-ypp-card-style="technozen"] #ypp-pl-root .ypp-pl-duration-grid {
   background: rgba(90, 191, 71, 0.08) !important;
   border: 1px solid rgba(90, 191, 71, 0.18) !important;
   border-radius: 40px 0 40px 0 !important;
@@ -234,14 +234,14 @@ html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-
 
 /* GLOBAL REDESIGN V3 INJECT - technozen */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -259,20 +259,21 @@ html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(223, 244, 232, 0.15) !important;
   border-radius: 40px 0 40px 0 !important;
   border: 1px solid rgba(46, 74, 61, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"][data-ypp-card-style="technozen"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(223, 244, 232, 0.15) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

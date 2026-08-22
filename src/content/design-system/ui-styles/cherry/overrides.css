@@ -33,10 +33,7 @@
 100% {
   transform: translate(20px, 20px) scale(1);
 }
-}
-
-html[data-ypp-ui-design="cherry"] {
-/* Unique Shapes and Patterns for cherry */
+}/* Unique Shapes and Patterns for cherry */
 
 /* =========================================================
    CHERRY (NIGHT SAKURA) — ANIMATIONS
@@ -76,12 +73,12 @@ html[data-ypp-ui-design="cherry"] ::-webkit-scrollbar-thumb {
 }
 
 /* Dialogs for cherry */
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="cherry"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 50px) !important;
   box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6) !important;
 }
 
-yt-icon:hover {
+html[data-ypp-ui-design="cherry"] yt-icon:hover {
   transform: scale(1.1);
 }
 
@@ -94,27 +91,21 @@ html[data-ypp-card-style="cherry"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-d
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="cherry"] h1, html[data-ypp-card-style="cherry"] h2, html[data-ypp-card-style="cherry"] h3, 
-html[data-ypp-card-style="cherry"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="cherry"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="cherry"] h1, html[data-ypp-ui-design="cherry"] h2, html[data-ypp-ui-design="cherry"] h3, 
-html[data-ypp-ui-design="cherry"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="cherry"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="cherry"] h1, html[data-ypp-card-style="cherry"] h2, html[data-ypp-card-style="cherry"] h3, html[data-ypp-card-style="cherry"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="cherry"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="cherry"] h1, html[data-ypp-ui-design="cherry"] h2, html[data-ypp-ui-design="cherry"] h3, html[data-ypp-ui-design="cherry"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="cherry"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="cherry"] ytd-thumbnail, html[data-ypp-card-style="cherry"] yt-image,
-html[data-ypp-ui-design="cherry"] ytd-thumbnail, html[data-ypp-ui-design="cherry"] yt-image {
+html[data-ypp-card-style="cherry"] ytd-thumbnail, html[data-ypp-card-style="cherry"] yt-image, html[data-ypp-ui-design="cherry"] ytd-thumbnail, html[data-ypp-ui-design="cherry"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="cherry"] yt-img-shadow, html[data-ypp-card-style="cherry"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="cherry"] yt-img-shadow, html[data-ypp-ui-design="cherry"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="cherry"] yt-img-shadow, html[data-ypp-card-style="cherry"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="cherry"] yt-img-shadow, html[data-ypp-ui-design="cherry"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -166,8 +157,7 @@ html[data-ypp-card-style="cherry"] .ytp-tooltip, html[data-ypp-ui-design="cherry
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="cherry"] tp-yt-paper-dialog, html[data-ypp-card-style="cherry"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="cherry"] tp-yt-paper-dialog, html[data-ypp-ui-design="cherry"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="cherry"] tp-yt-paper-dialog, html[data-ypp-card-style="cherry"] ytd-menu-popup-renderer, html[data-ypp-ui-design="cherry"] tp-yt-paper-dialog, html[data-ypp-ui-design="cherry"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -208,8 +198,7 @@ html[data-ypp-ui-design="cherry"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="cherry"] ytd-skeleton, html[data-ypp-ui-design="cherry"] ytd-skeleton, 
-html[data-ypp-card-style="cherry"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cherry"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="cherry"] ytd-skeleton, html[data-ypp-ui-design="cherry"] ytd-skeleton, html[data-ypp-card-style="cherry"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="cherry"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -249,8 +238,8 @@ html[data-ypp-card-style="cherry"] yt-icon:hover, html[data-ypp-ui-design="cherr
 html[data-ypp-ui-design="cherry"] ytd-multi-page-menu-renderer,
 html[data-ypp-ui-design="cherry"] tp-yt-paper-listbox,
 html[data-ypp-ui-design="cherry"] .ytp-popup {
-  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--cherry-radius)) !important;
   box-shadow: var(--cherry-shadow-soft) !important;
 }
@@ -262,32 +251,32 @@ html[data-ypp-ui-design="cherry"] .ytp-menuitem:hover {
 }
 
 /* Navbar UI for cherry */
-ytd-masthead {
+html[data-ypp-ui-design="cherry"] ytd-masthead {
   box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6);
 }
 
-ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-ui-design="cherry"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 50px 0 0 50px) !important;
 }
 
-ytd-searchbox #search-icon-legacy.ytd-searchbox {
+html[data-ypp-ui-design="cherry"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0 50px 50px 0) !important;
 }
 
-#voice-search-button {
+html[data-ypp-ui-design="cherry"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Panels for cherry */
 
-ytd-live-chat-frame {
+html[data-ypp-ui-design="cherry"] ytd-live-chat-frame {
   border-radius: var(--ypp-shape-primary, 50px) !important;
 }
 
 /* Sidebar for cherry */
 
 /* Channels for cherry */
-#channel-header-banner {
+html[data-ypp-ui-design="cherry"] #channel-header-banner {
   border-radius: 50px 50px 0 0;
 }
 
@@ -311,8 +300,8 @@ html[data-ypp-ui-design="cherry"] ytd-comment-simplebox-renderer {
 
 html[data-ypp-ui-design="cherry"] yt-live-chat-renderer,
 html[data-ypp-ui-design="cherry"] yt-live-chat-header-renderer {
-  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--cherry-radius)) !important;
 }
 
@@ -335,17 +324,17 @@ html[data-ypp-ui-design="cherry"] .ytp-scrubber-button {
 
 /* Search for cherry */
 
-ytd-toggle-button-renderer a {
+html[data-ypp-ui-design="cherry"] ytd-toggle-button-renderer a {
   border-radius: 50px;
 }
 
 /* Watch for cherry */
-#ytd-player {
+html[data-ypp-ui-design="cherry"] #ytd-player {
   border-radius: 50px;
   box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6);
 }
 
-:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-ui-design="cherry"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 50px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
@@ -369,4 +358,3 @@ html[data-ypp-ui-design="cherry"]::after {
   animation: cherryFloatFg 25s ease-in-out infinite alternate;
 }
 
-}

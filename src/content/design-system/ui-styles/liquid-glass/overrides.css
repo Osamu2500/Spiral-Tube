@@ -75,10 +75,7 @@
   to {
     transform: translateX(0) scale(1);
   }
-}
-
-html[data-ypp-ui-design="liquid-glass"] {
-/* Unique Shapes and Patterns for liquid-glass */
+}/* Unique Shapes and Patterns for liquid-glass */
 
 
 
@@ -86,7 +83,7 @@ html[data-ypp-ui-design="liquid-glass"] {
 
 /* Subscribe button hover luminescence */
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.06) !important;
@@ -132,40 +129,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer:hover::after
 
 /* Heavy Theme Action Button Coverage Fix */
 
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button button:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono #ask-button button:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover ,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] #ask-button button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] #ask-button button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i]:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i]:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText:hover,
-html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) button:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button button:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono :is(ytd-download-button-renderer, yt-button-view-model) button:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono #ask-button yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono #ask-button button:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono .yt-spec-button-shape-next--mono:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono ytd-menu-renderer yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono button.ytSpecButtonShapeNextText:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] :is(ytd-download-button-renderer, yt-button-view-model) button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] #ask-button yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] #ask-button yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] #ask-button button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] #ask-button button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] yt-button-shape button[aria-label*="Download" i]:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] yt-button-shape button[title*="Download" i]:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] ytd-menu-renderer yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] ytd-menu-renderer yt-button-shape button:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i] button.ytSpecButtonShapeNextText:hover, html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] button.ytSpecButtonShapeNextText:hover {
   transform: scale(1.06) !important;
   box-shadow: var(--lg-shadow-glow) !important;
   animation: ypp-liquid-pulse 3s ease-in-out infinite !important;
@@ -367,7 +331,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-formatted-string {
 
 /* Subscribe Button — Clean Transparent White Glow */
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -406,16 +370,7 @@ html[data-ypp-ui-design="liquid-glass"] yt-chip-cloud-chip-renderer {
 
 /* Heavy Theme Action Button Coverage Fix */
 
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button yt-button-shape button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText ,
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i],
-html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) button, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button yt-button-shape button, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer #ask-button button, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText, html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i], html[data-ypp-ui-design="liquid-glass"] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 2000px) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
   transition: transform var(--lg-spring), box-shadow var(--lg-spring), filter var(--lg-smooth) !important;
@@ -583,27 +538,21 @@ html[data-ypp-card-style="liquid-glass"] ::-webkit-scrollbar-thumb, html[data-yp
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="liquid-glass"] h1, html[data-ypp-card-style="liquid-glass"] h2, html[data-ypp-card-style="liquid-glass"] h3, 
-html[data-ypp-card-style="liquid-glass"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="liquid-glass"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="liquid-glass"] h1, html[data-ypp-ui-design="liquid-glass"] h2, html[data-ypp-ui-design="liquid-glass"] h3, 
-html[data-ypp-ui-design="liquid-glass"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="liquid-glass"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="liquid-glass"] h1, html[data-ypp-card-style="liquid-glass"] h2, html[data-ypp-card-style="liquid-glass"] h3, html[data-ypp-card-style="liquid-glass"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="liquid-glass"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="liquid-glass"] h1, html[data-ypp-ui-design="liquid-glass"] h2, html[data-ypp-ui-design="liquid-glass"] h3, html[data-ypp-ui-design="liquid-glass"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="liquid-glass"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="liquid-glass"] ytd-thumbnail, html[data-ypp-card-style="liquid-glass"] yt-image,
-html[data-ypp-ui-design="liquid-glass"] ytd-thumbnail, html[data-ypp-ui-design="liquid-glass"] yt-image {
+html[data-ypp-card-style="liquid-glass"] ytd-thumbnail, html[data-ypp-card-style="liquid-glass"] yt-image, html[data-ypp-ui-design="liquid-glass"] ytd-thumbnail, html[data-ypp-ui-design="liquid-glass"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="liquid-glass"] yt-img-shadow, html[data-ypp-card-style="liquid-glass"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="liquid-glass"] yt-img-shadow, html[data-ypp-ui-design="liquid-glass"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="liquid-glass"] yt-img-shadow, html[data-ypp-card-style="liquid-glass"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="liquid-glass"] yt-img-shadow, html[data-ypp-ui-design="liquid-glass"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -655,8 +604,7 @@ html[data-ypp-card-style="liquid-glass"] .ytp-tooltip, html[data-ypp-ui-design="
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="liquid-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="liquid-glass"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="liquid-glass"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="liquid-glass"] tp-yt-paper-dialog, html[data-ypp-card-style="liquid-glass"] ytd-menu-popup-renderer, html[data-ypp-ui-design="liquid-glass"] tp-yt-paper-dialog, html[data-ypp-ui-design="liquid-glass"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -697,8 +645,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="liquid-glass"] ytd-skeleton, html[data-ypp-ui-design="liquid-glass"] ytd-skeleton, 
-html[data-ypp-card-style="liquid-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="liquid-glass"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="liquid-glass"] ytd-skeleton, html[data-ypp-ui-design="liquid-glass"] ytd-skeleton, html[data-ypp-card-style="liquid-glass"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="liquid-glass"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -908,7 +855,7 @@ html[data-ypp-ui-design="liquid-glass"] .ypp-nav-btn,
 html[data-ypp-ui-design="liquid-glass"] ytd-topbar-menu-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="liquid-glass"] #trailing-button.ytd-playlist-panel-renderer,
 html[data-ypp-ui-design="liquid-glass"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
+html[data-ypp-ui-design="liquid-glass"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="liquid-glass"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 2000px) !important;
@@ -946,6 +893,7 @@ html[data-ypp-ui-design="liquid-glass"] ytd-guide-renderer {
 html[data-ypp-ui-design="liquid-glass"] yt-page-navigation-progress,
 html[data-ypp-ui-design="liquid-glass"] #ticker.ytd-app,
 html[data-ypp-ui-design="liquid-glass"] ytd-app > div.style-scope.ytd-app {
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
 }
@@ -1524,4 +1472,3 @@ html[data-ypp-ui-design="liquid-glass"] #secondary-inner ytd-playlist-panel-vide
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-}

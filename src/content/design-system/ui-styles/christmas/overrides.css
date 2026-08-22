@@ -1,10 +1,3 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="christmas"] {
 /* Unique Shapes and Patterns for christmas */
 
 html[data-ypp-theme="christmas"] ::-webkit-scrollbar-thumb {
@@ -54,27 +47,21 @@ html[data-ypp-card-style="christmas"] ::-webkit-scrollbar-thumb, html[data-ypp-u
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="christmas"] h1, html[data-ypp-card-style="christmas"] h2, html[data-ypp-card-style="christmas"] h3, 
-html[data-ypp-card-style="christmas"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="christmas"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="christmas"] h1, html[data-ypp-ui-design="christmas"] h2, html[data-ypp-ui-design="christmas"] h3, 
-html[data-ypp-ui-design="christmas"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="christmas"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="christmas"] h1, html[data-ypp-card-style="christmas"] h2, html[data-ypp-card-style="christmas"] h3, html[data-ypp-card-style="christmas"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="christmas"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="christmas"] h1, html[data-ypp-ui-design="christmas"] h2, html[data-ypp-ui-design="christmas"] h3, html[data-ypp-ui-design="christmas"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="christmas"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="christmas"] ytd-thumbnail, html[data-ypp-card-style="christmas"] yt-image,
-html[data-ypp-ui-design="christmas"] ytd-thumbnail, html[data-ypp-ui-design="christmas"] yt-image {
+html[data-ypp-card-style="christmas"] ytd-thumbnail, html[data-ypp-card-style="christmas"] yt-image, html[data-ypp-ui-design="christmas"] ytd-thumbnail, html[data-ypp-ui-design="christmas"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="christmas"] yt-img-shadow, html[data-ypp-card-style="christmas"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="christmas"] yt-img-shadow, html[data-ypp-ui-design="christmas"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="christmas"] yt-img-shadow, html[data-ypp-card-style="christmas"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="christmas"] yt-img-shadow, html[data-ypp-ui-design="christmas"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -126,8 +113,7 @@ html[data-ypp-card-style="christmas"] .ytp-tooltip, html[data-ypp-ui-design="chr
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="christmas"] tp-yt-paper-dialog, html[data-ypp-card-style="christmas"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="christmas"] tp-yt-paper-dialog, html[data-ypp-ui-design="christmas"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="christmas"] tp-yt-paper-dialog, html[data-ypp-card-style="christmas"] ytd-menu-popup-renderer, html[data-ypp-ui-design="christmas"] tp-yt-paper-dialog, html[data-ypp-ui-design="christmas"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -168,8 +154,7 @@ html[data-ypp-ui-design="christmas"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="christmas"] ytd-skeleton, html[data-ypp-ui-design="christmas"] ytd-skeleton, 
-html[data-ypp-card-style="christmas"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="christmas"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="christmas"] ytd-skeleton, html[data-ypp-ui-design="christmas"] ytd-skeleton, html[data-ypp-card-style="christmas"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="christmas"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -330,4 +315,3 @@ html[data-ypp-theme="christmas"] #secondary-inner.ytd-watch-flexy {
 }
 
 /* Title and description box */
-}

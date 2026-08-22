@@ -24,10 +24,7 @@
   filter:brightness(1.1) saturate(1.1);
 }
 
-}
-
-html[data-ypp-ui-design="hologram"] {
-/* Unique Shapes and Patterns for hologram */
+}/* Unique Shapes and Patterns for hologram */
 
 /* hologram/base/animations.css */
 
@@ -35,7 +32,7 @@ html[data-ypp-ui-design="hologram"] {
 
 
 /* Subscribe button */
-html[data-ypp-ui-design="hologram"] #subscribe-button .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-design="hologram"] #subscribe-button .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="hologram"] #subscribe-button yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="hologram"] #subscribe-button yt-button-shape button[title*="Download" i] {
   animation: hologram-pulse 2.5s ease-in-out infinite !important;
@@ -55,7 +52,7 @@ html[data-ypp-ui-design="hologram"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="hologram"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="hologram"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -153,7 +150,8 @@ html[data-ypp-ui-design="hologram"] .ytProgressBarLineProgressBarPlayed {
 
 /* hologram/components/badges.css */
 html[data-ypp-ui-design="hologram"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="hologram"] .ypp-badge, html[data-ypp-ui-design="hologram"] .ypp-value-display {
+html[data-ypp-ui-design="hologram"] .ypp-badge,
+html[data-ypp-ui-design="hologram"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 10px) !important;
   box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
 }
@@ -181,7 +179,7 @@ html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="hologram"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="hologram"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="hologram"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="hologram"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="hologram"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="hologram"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="hologram"] yt-button-shape button[aria-label*="Download" i],
@@ -192,7 +190,7 @@ html[data-ypp-ui-design="hologram"] yt-button-shape button[title*="Download" i] 
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="hologram"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="hologram"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 10px) !important;
@@ -241,8 +239,7 @@ html[data-ypp-ui-design="hologram"] .ypp-btn-primary:hover, html[data-ypp-ui-des
 }
 
 /* hologram/components/forms.css */
-html[data-ypp-ui-design="hologram"] ytd-searchbox, html[data-ypp-ui-design="hologram"] #search-form,
-html[data-ypp-ui-design="hologram"] tp-yt-paper-input, html[data-ypp-ui-design="hologram"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="hologram"] ytd-searchbox, html[data-ypp-ui-design="hologram"] #search-form, html[data-ypp-ui-design="hologram"] tp-yt-paper-input, html[data-ypp-ui-design="hologram"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 10px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -298,7 +295,7 @@ html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--overlay.yt-spec-
 html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="hologram"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="hologram"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="hologram"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="hologram"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="hologram"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="hologram"] yt-button-shape button[aria-label*="Download" i],
@@ -339,6 +336,7 @@ html[data-ypp-card-style="hologram"] *, html[data-ypp-ui-design="hologram"] * {
 html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="hologram"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -350,6 +348,7 @@ html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp
 html[data-ypp-card-style="hologram"] ytd-menu-popup-renderer, html[data-ypp-ui-design="hologram"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -361,6 +360,7 @@ html[data-ypp-card-style="hologram"] ytd-menu-popup-renderer, html[data-ypp-ui-d
 html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design="hologram"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -372,6 +372,7 @@ html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design
 html[data-ypp-card-style="hologram"] ytd-notification-renderer, html[data-ypp-ui-design="hologram"] ytd-notification-renderer {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -395,6 +396,7 @@ html[data-ypp-card-style="hologram"] ytd-notification-renderer, html[data-ypp-ui
 html[data-ypp-card-style="hologram"] #channel-header, html[data-ypp-ui-design="hologram"] #channel-header {
   border-radius: var(--ypp-shape-primary, var(--hologram-radius)) !important;
   box-shadow: var(--hologram-shadow) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
   backdrop-filter: blur(4px) !important;
 }
 
@@ -1927,27 +1929,21 @@ html[data-ypp-card-style="hologram"] ::-webkit-scrollbar-thumb, html[data-ypp-ui
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="hologram"] h1, html[data-ypp-card-style="hologram"] h2, html[data-ypp-card-style="hologram"] h3, 
-html[data-ypp-card-style="hologram"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="hologram"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="hologram"] h1, html[data-ypp-ui-design="hologram"] h2, html[data-ypp-ui-design="hologram"] h3, 
-html[data-ypp-ui-design="hologram"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="hologram"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="hologram"] h1, html[data-ypp-card-style="hologram"] h2, html[data-ypp-card-style="hologram"] h3, html[data-ypp-card-style="hologram"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="hologram"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="hologram"] h1, html[data-ypp-ui-design="hologram"] h2, html[data-ypp-ui-design="hologram"] h3, html[data-ypp-ui-design="hologram"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="hologram"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="hologram"] ytd-thumbnail, html[data-ypp-card-style="hologram"] yt-image,
-html[data-ypp-ui-design="hologram"] ytd-thumbnail, html[data-ypp-ui-design="hologram"] yt-image {
+html[data-ypp-card-style="hologram"] ytd-thumbnail, html[data-ypp-card-style="hologram"] yt-image, html[data-ypp-ui-design="hologram"] ytd-thumbnail, html[data-ypp-ui-design="hologram"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="hologram"] yt-img-shadow, html[data-ypp-card-style="hologram"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="hologram"] yt-img-shadow, html[data-ypp-ui-design="hologram"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="hologram"] yt-img-shadow, html[data-ypp-card-style="hologram"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="hologram"] yt-img-shadow, html[data-ypp-ui-design="hologram"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -1956,6 +1952,7 @@ html[data-ypp-ui-design="hologram"] yt-img-shadow, html[data-ypp-ui-design="holo
 /* 7. Masthead (Header) & Global Navigation */
 html[data-ypp-card-style="hologram"] ytd-masthead, html[data-ypp-ui-design="hologram"] ytd-masthead {
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(255, 0, 255, 0.2) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
@@ -2000,15 +1997,16 @@ html[data-ypp-card-style="hologram"] .ytp-tooltip, html[data-ypp-ui-design="holo
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-card-style="hologram"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design="hologram"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="hologram"] tp-yt-paper-dialog, html[data-ypp-card-style="hologram"] ytd-menu-popup-renderer, html[data-ypp-ui-design="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design="hologram"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
 html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="hologram"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
@@ -2017,6 +2015,7 @@ html[data-ypp-card-style="hologram"] ytd-multi-page-menu-renderer, html[data-ypp
 html[data-ypp-card-style="hologram"] #channel-header,
 html[data-ypp-ui-design="hologram"] #channel-header {
   border-radius: var(--ypp-shape-primary, 16px) !important;
+  -webkit-backdrop-filter: blur(5px) hue-rotate(90deg) !important;
   backdrop-filter: blur(5px) hue-rotate(90deg) !important;
 }
 
@@ -2045,8 +2044,7 @@ html[data-ypp-ui-design="hologram"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="hologram"] ytd-skeleton, html[data-ypp-ui-design="hologram"] ytd-skeleton, 
-html[data-ypp-card-style="hologram"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="hologram"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="hologram"] ytd-skeleton, html[data-ypp-ui-design="hologram"] ytd-skeleton, html[data-ypp-card-style="hologram"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="hologram"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
@@ -2080,9 +2078,7 @@ html[data-ypp-card-style="hologram"] yt-icon:hover, html[data-ypp-ui-design="hol
 /* 30. Offline & Error Screens */
 
 /* hologram/components/menus.css */
-html[data-ypp-ui-design="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design="hologram"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="hologram"] tp-yt-iron-dropdown, html[data-ypp-ui-design="hologram"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="hologram"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="hologram"] tp-yt-paper-dialog, html[data-ypp-ui-design="hologram"] ytd-menu-popup-renderer, html[data-ypp-ui-design="hologram"] tp-yt-iron-dropdown, html[data-ypp-ui-design="hologram"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="hologram"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
   box-shadow: 0 0 30px rgba(0,255,255,0.7),0 0 60px rgba(0,255,255,0.3) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2141,6 +2137,7 @@ html[data-ypp-ui-design="hologram"] ytd-mini-guide-entry-renderer {
 /* Navbar Overhaul for hologram */
 html[data-ypp-ui-design="hologram"] #masthead-container,
 html[data-ypp-ui-design="hologram"] ytd-masthead {
+  -webkit-backdrop-filter: blur(15px) !important;
   backdrop-filter: blur(15px) !important;
   box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1) !important;
 }
@@ -2153,6 +2150,7 @@ html[data-ypp-ui-design="hologram"] #container.ytd-searchbox,
 html[data-ypp-ui-design="hologram"] ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 8px) !important;
   box-shadow: inset 0 0 10px rgba(0,255,255,0.2), 0 0 10px rgba(0,255,255,0.2) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -2176,6 +2174,7 @@ html[data-ypp-ui-design="hologram"] #voice-search-button {
 html[data-ypp-ui-design="hologram"] .sbdd_b,
 html[data-ypp-ui-design="hologram"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 12px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 10px 40px rgba(0,255,255,0.2) !important;
 }
@@ -2217,9 +2216,7 @@ html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 0 0 15px rgba(0,255,255,0.4),inset 0 0 8px rgba(0,255,255,0.15) !important;
 }
 
-html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="hologram"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 10px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2423,4 +2420,3 @@ html[data-ypp-ui-design="hologram"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
 }
 
-}

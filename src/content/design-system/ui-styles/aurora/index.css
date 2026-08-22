@@ -1,12 +1,4 @@
-/* Merged tokens.css */
-
-
-
-
-
-
-html[data-ypp-ui-design="aurora"] {
-/* Token Overrides for aurora */
+/* Merged tokens.css *//* Token Overrides for aurora */
 :root[data-ypp-ui-design="aurora"],
 html[data-ypp-ui-design="aurora"] {
   --ypp-bg-surface: rgba(0, 0, 0, 0.2) !important;
@@ -21,9 +13,12 @@ html[data-ypp-ui-design="aurora"] {
   --ypp-shadow-hover: 0 8px 24px rgba(240, 147, 251, 0.2) !important;
   
   /* Aurora Structural Tokens */
-  --ypp-menu-backdrop-filter: blur(12px) !important;
-  --ypp-dialog-backdrop-filter: blur(12px) !important;
-  --ypp-card-backdrop-filter: blur(8px) !important;
+  --ypp-menu--webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  --ypp-dialog--webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  --ypp-card--webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   --ypp-card-backdrop-filter-hover: blur(12px) !important;
   
   --ypp-card-bg: rgba(0, 0, 0, 0.15) !important;
@@ -42,5 +37,5 @@ html[data-ypp-theme="aurora"] {
   --ypp-bg-global-attachment: fixed !important;
 }
 
-}
+
 

@@ -9,7 +9,7 @@ html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-
 }
 html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+ ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-compact-video-renderer, .ypp-grid-item) *)) {
   background: var(--ypp-bg-surface, #200e38) !important;
   --yt-spec-text-primary: var(--ypp-text-primary, #f0e6ff) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, #c8a0e0) !important;
@@ -19,7 +19,7 @@ html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-
 }
 html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer,
   ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer,
-  ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+ ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-compact-video-renderer, .ypp-grid-item) *)):hover {
   background: var(--ypp-bg-surface, #6b2fa0) !important; border-color: #ff71ce !important;
   transform: translateY(-2px) scale(1.01) !important;
   box-shadow: 0 0 35px rgba(255,113,206,0.7),0 0 70px rgba(1,205,254,0.3) !important;
@@ -45,14 +45,14 @@ html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-
 
 /* GLOBAL REDESIGN V3 INJECT - vaporwave */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 0 25px var(--ypp-accent, #0ff), 0 0 45px var(--ypp-accent, #0ff) !important;
   z-index: 10;
@@ -70,20 +70,21 @@ html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(0, 255, 255, 0.15) !important;
   border-radius: 0 30px 0 30px !important;
   border: 1px solid rgba(255, 0, 255, 0.4) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"][data-ypp-card-style="vaporwave"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(0, 255, 255, 0.15) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

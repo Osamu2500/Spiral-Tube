@@ -1,10 +1,3 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="deepspace"] {
 /* Unique Shapes and Patterns for deepspace */
 
 /* Subtle scanline texture */
@@ -39,27 +32,21 @@ html[data-ypp-card-style="deepspace"] ::-webkit-scrollbar-thumb, html[data-ypp-u
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="deepspace"] h1, html[data-ypp-card-style="deepspace"] h2, html[data-ypp-card-style="deepspace"] h3, 
-html[data-ypp-card-style="deepspace"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="deepspace"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="deepspace"] h1, html[data-ypp-ui-design="deepspace"] h2, html[data-ypp-ui-design="deepspace"] h3, 
-html[data-ypp-ui-design="deepspace"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="deepspace"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="deepspace"] h1, html[data-ypp-card-style="deepspace"] h2, html[data-ypp-card-style="deepspace"] h3, html[data-ypp-card-style="deepspace"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="deepspace"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="deepspace"] h1, html[data-ypp-ui-design="deepspace"] h2, html[data-ypp-ui-design="deepspace"] h3, html[data-ypp-ui-design="deepspace"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="deepspace"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="deepspace"] ytd-thumbnail, html[data-ypp-card-style="deepspace"] yt-image,
-html[data-ypp-ui-design="deepspace"] ytd-thumbnail, html[data-ypp-ui-design="deepspace"] yt-image {
+html[data-ypp-card-style="deepspace"] ytd-thumbnail, html[data-ypp-card-style="deepspace"] yt-image, html[data-ypp-ui-design="deepspace"] ytd-thumbnail, html[data-ypp-ui-design="deepspace"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="deepspace"] yt-img-shadow, html[data-ypp-card-style="deepspace"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="deepspace"] yt-img-shadow, html[data-ypp-ui-design="deepspace"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="deepspace"] yt-img-shadow, html[data-ypp-card-style="deepspace"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="deepspace"] yt-img-shadow, html[data-ypp-ui-design="deepspace"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -111,8 +98,7 @@ html[data-ypp-card-style="deepspace"] .ytp-tooltip, html[data-ypp-ui-design="dee
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="deepspace"] tp-yt-paper-dialog, html[data-ypp-card-style="deepspace"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="deepspace"] tp-yt-paper-dialog, html[data-ypp-ui-design="deepspace"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="deepspace"] tp-yt-paper-dialog, html[data-ypp-card-style="deepspace"] ytd-menu-popup-renderer, html[data-ypp-ui-design="deepspace"] tp-yt-paper-dialog, html[data-ypp-ui-design="deepspace"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -153,8 +139,7 @@ html[data-ypp-ui-design="deepspace"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="deepspace"] ytd-skeleton, html[data-ypp-ui-design="deepspace"] ytd-skeleton, 
-html[data-ypp-card-style="deepspace"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="deepspace"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="deepspace"] ytd-skeleton, html[data-ypp-ui-design="deepspace"] ytd-skeleton, html[data-ypp-card-style="deepspace"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="deepspace"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -262,5 +247,4 @@ html[data-ypp-ui-design="deepspace"]::after {
     rgba(255, 255, 255, 0.012) 2px,
     rgba(255, 255, 255, 0.012) 4px
   ) !important;
-}
 }

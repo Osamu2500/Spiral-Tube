@@ -1,8 +1,5 @@
-
 @import "../../ui-styles/shared/timeline-visibility.css";
-
-﻿html[data-ypp-theme="coffee"] {
-    --ypp-bg-base: #2a201c;
+--ypp-bg-base: #2a201c;
     --ypp-bg-surface: #382c26;
     --ypp-bg-glass: rgba(42, 32, 28, 0.95);
     --ypp-glass-border: rgba(255, 255, 255, 0.08);
@@ -27,7 +24,7 @@
     --ytd-searchbox-background: transparent;
     --ytd-searchbox-text-color: #f2e6d9;
     --ytd-searchbox-legacy-button-color: rgba(242, 230, 217, 0.05);
-}
+
 
 
 /* Animated Coffee Steam Effect */

@@ -6,29 +6,21 @@
 
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(
   ytd-rich-item-renderer,
-  ytd-video-renderer,
-  ytd-playlist-renderer,
-  ytd-radio-renderer,
-  ytd-channel-renderer,
-  ytd-compact-video-renderer,
-  ytd-grid-video-renderer,
-  .ypp-grid-item,
-  yt-lockup-view-model:not(
-    :is(
-      ytd-rich-item-renderer,
-      ytd-video-renderer,
-      ytd-playlist-renderer,
-      ytd-radio-renderer,
-      ytd-channel-renderer,
-      ytd-compact-video-renderer,
-      ytd-grid-video-renderer,
-      .ypp-grid-item
-    ) *
-  )
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ ) *
+ )
 ) {
   background: var(--sky-glass-gradient) !important;
-  backdrop-filter: var(--sky-blur-card) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: 40px 40px 8px 8px !important;
   border: var(--sky-border) !important;
   padding: 12px !important;
@@ -60,8 +52,8 @@ html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-ca
 /* ── Time badge ── */
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] ytd-thumbnail-overlay-time-status-renderer {
   background: rgba(255, 255, 255, 0.80) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
   border-radius: 40px 40px 8px 8px !important;
   color: var(--sky-text-primary) !important;
@@ -126,8 +118,8 @@ html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-ca
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] ytd-expandable-metadata-renderer {
   border-radius: 40px 40px 8px 8px !important;
   background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border: var(--sky-border) !important;
 }
 html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] ytd-expandable-metadata-renderer:hover {
@@ -140,8 +132,8 @@ html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-ca
   border-radius: 40px 40px 8px 8px !important;
   margin: 4px !important;
   background: rgba(255, 255, 255, 0.40) !important;
-  backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   border: var(--sky-border) !important;
   transition: all 0.3s var(--sky-bounce) !important;
 }
@@ -163,14 +155,14 @@ html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-ca
 
 /* GLOBAL REDESIGN V3 INJECT - blue-sky */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -188,20 +180,21 @@ html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-ca
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(135, 206, 235, 0.15) !important;
   border-radius: 40px 40px 8px 8px !important;
   border: 1px solid rgba(135, 206, 235, 0.4) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"][data-ypp-card-style="blue-sky"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(135, 206, 235, 0.15) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

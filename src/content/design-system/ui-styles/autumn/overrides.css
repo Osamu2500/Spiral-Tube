@@ -9,10 +9,7 @@
   50% {
     box-shadow: 4px 4px 18px rgba(0,0,0,0.55), 0 0 15px rgba(200,100,40,0.2);
   }
-}
-
-html[data-ypp-ui-design="autumn"] {
-/* Unique Shapes and Patterns for autumn */
+}/* Unique Shapes and Patterns for autumn */
 
 
 html[data-ypp-theme="autumn"] ::-webkit-scrollbar-thumb {
@@ -91,12 +88,12 @@ html[data-ypp-theme="autumn"] ytd-thumbnail img {
 /* Channel avatar */
 
 /* Dialogs for autumn */
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="autumn"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4) !important;
 }
 
-yt-icon:hover {
+html[data-ypp-ui-design="autumn"] yt-icon:hover {
   transform: scale(1.1);
 }
 
@@ -109,27 +106,21 @@ html[data-ypp-card-style="autumn"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-d
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="autumn"] h1, html[data-ypp-card-style="autumn"] h2, html[data-ypp-card-style="autumn"] h3, 
-html[data-ypp-card-style="autumn"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="autumn"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="autumn"] h1, html[data-ypp-ui-design="autumn"] h2, html[data-ypp-ui-design="autumn"] h3, 
-html[data-ypp-ui-design="autumn"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="autumn"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="autumn"] h1, html[data-ypp-card-style="autumn"] h2, html[data-ypp-card-style="autumn"] h3, html[data-ypp-card-style="autumn"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="autumn"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="autumn"] h1, html[data-ypp-ui-design="autumn"] h2, html[data-ypp-ui-design="autumn"] h3, html[data-ypp-ui-design="autumn"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="autumn"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="autumn"] ytd-thumbnail, html[data-ypp-card-style="autumn"] yt-image,
-html[data-ypp-ui-design="autumn"] ytd-thumbnail, html[data-ypp-ui-design="autumn"] yt-image {
+html[data-ypp-card-style="autumn"] ytd-thumbnail, html[data-ypp-card-style="autumn"] yt-image, html[data-ypp-ui-design="autumn"] ytd-thumbnail, html[data-ypp-ui-design="autumn"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="autumn"] yt-img-shadow, html[data-ypp-card-style="autumn"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="autumn"] yt-img-shadow, html[data-ypp-ui-design="autumn"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="autumn"] yt-img-shadow, html[data-ypp-card-style="autumn"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="autumn"] yt-img-shadow, html[data-ypp-ui-design="autumn"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -181,8 +172,7 @@ html[data-ypp-card-style="autumn"] .ytp-tooltip, html[data-ypp-ui-design="autumn
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="autumn"] tp-yt-paper-dialog, html[data-ypp-card-style="autumn"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="autumn"] tp-yt-paper-dialog, html[data-ypp-ui-design="autumn"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="autumn"] tp-yt-paper-dialog, html[data-ypp-card-style="autumn"] ytd-menu-popup-renderer, html[data-ypp-ui-design="autumn"] tp-yt-paper-dialog, html[data-ypp-ui-design="autumn"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -223,8 +213,7 @@ html[data-ypp-ui-design="autumn"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="autumn"] ytd-skeleton, html[data-ypp-ui-design="autumn"] ytd-skeleton, 
-html[data-ypp-card-style="autumn"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="autumn"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="autumn"] ytd-skeleton, html[data-ypp-ui-design="autumn"] ytd-skeleton, html[data-ypp-card-style="autumn"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="autumn"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -269,19 +258,19 @@ html[data-ypp-theme="autumn"] ytd-menu-popup-renderer {
 }
 
 /* Navbar UI for autumn */
-ytd-masthead {
+html[data-ypp-ui-design="autumn"] ytd-masthead {
   box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
 }
 
-ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-ui-design="autumn"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 12px 0 0 12px) !important;
 }
 
-ytd-searchbox #search-icon-legacy.ytd-searchbox {
+html[data-ypp-ui-design="autumn"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0 12px 12px 0) !important;
 }
 
-#voice-search-button {
+html[data-ypp-ui-design="autumn"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
@@ -289,7 +278,7 @@ ytd-searchbox #search-icon-legacy.ytd-searchbox {
 html[data-ypp-ui-design="autumn"] #masthead-container,
 html[data-ypp-ui-design="autumn"] ytd-masthead {
   -webkit-backdrop-filter: blur(12px) !important;
-    backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   box-shadow: 0 0 10px hsl(130, 80%, 55%), 0 0 20px hsl(130, 80%, 55%) !important;
 }
 
@@ -338,7 +327,7 @@ html[data-ypp-ui-design="autumn"] .sbdd_b,
 html[data-ypp-ui-design="autumn"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-    backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   box-shadow: 0 0 10px hsl(130, 80%, 55%), 0 0 20px hsl(130, 80%, 55%) !important;
 }
 
@@ -366,20 +355,20 @@ html[data-ypp-ui-design="autumn"] #avatar-btn yt-img-shadow {
 html[data-ypp-ui-design="autumn"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
-    backdrop-filter: blur(25px) !important;
+  backdrop-filter: blur(25px) !important;
   box-shadow: 0 0 10px hsl(130, 80%, 55%), 0 0 20px hsl(130, 80%, 55%) !important;
 }
 
 /* Panels for autumn */
 
-ytd-live-chat-frame {
+html[data-ypp-ui-design="autumn"] ytd-live-chat-frame {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
 /* Sidebar for autumn */
 
 /* Channels for autumn */
-#channel-header-banner {
+html[data-ypp-ui-design="autumn"] #channel-header-banner {
   border-radius: 12px 12px 0 0;
 }
 
@@ -474,19 +463,18 @@ html[data-ypp-theme="autumn"] .ytp-caption-segment {
 
 /* Search for autumn */
 
-ytd-toggle-button-renderer a {
+html[data-ypp-ui-design="autumn"] ytd-toggle-button-renderer a {
   border-radius: 12px;
 }
 
 /* Watch for autumn */
-#ytd-player {
+html[data-ypp-ui-design="autumn"] #ytd-player {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
 }
 
-:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-ui-design="autumn"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-}

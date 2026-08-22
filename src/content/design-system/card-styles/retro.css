@@ -20,28 +20,19 @@ html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-sty
 }
 html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ) {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ) {
   background: linear-gradient(180deg, #2a0845 0%, #6441a5 100%) !important;
   border: 2px solid #ff00c8 !important;
   border-radius: 16px !important;
@@ -55,28 +46,19 @@ html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-sty
 
 html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):hover {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):hover {
   transform: translate(2px, 2px) !important;
   box-shadow:
     2px 2px 0px #00ffd5,
@@ -86,29 +68,19 @@ html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-sty
 
 html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  )
-  #video-title {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ #video-title {
   font-family: 'Courier New', monospace !important;
   color: #fffb00 !important;
   text-shadow: 1px 1px 0px #ff00c8 !important;
@@ -120,28 +92,19 @@ html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-sty
 
 html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ) {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ) {
   background: var(--ypp-bg-surface, #c0c0c0) !important;
   --yt-spec-text-primary: var(--ypp-text-primary, #000000) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, #000000) !important;
@@ -157,28 +120,19 @@ html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-sty
 
 html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):active {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):active {
   border-top: 2px solid #808080 !important;
   border-left: 2px solid #808080 !important;
   border-right: 2px solid #ffffff !important;
@@ -215,14 +169,14 @@ html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-sty
 
 /* GLOBAL REDESIGN V3 INJECT - retro */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -240,20 +194,21 @@ html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-sty
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(245, 245, 220, 0.15) !important;
   border-radius: 16px !important;
   border: 2px solid rgba(211, 211, 211, 0.4) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"][data-ypp-card-style="retro"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(245, 245, 220, 0.15) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

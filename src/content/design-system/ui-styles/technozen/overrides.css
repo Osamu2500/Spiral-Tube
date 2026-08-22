@@ -74,19 +74,16 @@
   transform: translateY(0px) rotate(0deg);
 }
 
-}
-
-html[data-ypp-ui-design="technozen"] {
-/* Unique Shapes and Patterns for technozen */
+}/* Unique Shapes and Patterns for technozen */
 
 /* src/content/themes/ui-styles/technozen/base/animations.css */
 
 
 
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i]:hover {
   transform: translateY(-2px) scale(1.04) !important;
   background:
     var(--tz-gloss),
@@ -97,20 +94,20 @@ yt-button-shape button[title*="Download" i]:hover {
   animation: technozenGreenPulse 4s ease-in-out infinite !important;
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+html[data-ypp-ui-design="technozen"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   transform: translateY(-2px) scale(1.06) !important;
   animation: technozenGreenPulse 4s ease-in-out infinite !important;
 }
 
 
 
-ytd-rich-grid-media #dismissible,
-ytd-compact-video-renderer,
-ytd-playlist-panel-video-renderer {
+html[data-ypp-ui-design="technozen"] ytd-rich-grid-media #dismissible,
+html[data-ypp-ui-design="technozen"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="technozen"] ytd-playlist-panel-video-renderer {
   animation: technozenBreathe 8s infinite ease-in-out;
 }
 
-#page-manager::before {
+html[data-ypp-ui-design="technozen"] #page-manager::before {
   background-image:
     radial-gradient(
       circle 2px at 20% 80%,
@@ -123,11 +120,11 @@ ytd-playlist-panel-video-renderer {
   animation: technozenAmbientFloat 12s infinite alternate ease-in-out;
 }
 
-#ypp-pl-root .ypp-pl-sidebar::before {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-sidebar::before {
   border-radius: var(--tz-radius-xl);
 }
 
-.ytSuggestionComponentRoundedSuggestion {
+html[data-ypp-ui-design="technozen"] .ytSuggestionComponentRoundedSuggestion {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
@@ -135,16 +132,16 @@ ytd-playlist-panel-video-renderer {
     background var(--bounce) !important;
 }
 
-.ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="technozen"] .ytSuggestionComponentRoundedSuggestion:hover {
   transform: translateY(-1px) scale(1.01) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-::-webkit-scrollbar-track {
+html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-thumb {
   background:
     linear-gradient(
       to bottom,
@@ -153,7 +150,7 @@ ytd-playlist-panel-video-renderer {
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-thumb:hover {
   background:
     linear-gradient(
       to bottom,
@@ -161,14 +158,14 @@ ytd-playlist-panel-video-renderer {
       rgba(48, 184, 200, 0.55));
 }
 
-.ypp-nav-btn.active {
+html[data-ypp-ui-design="technozen"] .ypp-nav-btn.active {
   box-shadow:
     0 0 14px rgba(90, 191, 71, 0.45),
     0 0 28px rgba(48, 184, 200, 0.2),
     var(--shadow-active) !important;
 }
 
-#ypp-pl-root .ypp-pl-toolbar {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-toolbar {
   -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   background:
@@ -179,11 +176,11 @@ ytd-playlist-panel-video-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md) var(--tz-radius-md) 0 0) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play,
-#ypp-pl-root .ypp-pl-btn-shuffle,
-#ypp-pl-root .ypp-pl-btn-tool,
-#ypp-pl-root .ypp-pl-filter,
-#ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-col-switcher {
   background:
     linear-gradient(
       to bottom,
@@ -198,9 +195,9 @@ ytd-playlist-panel-video-renderer {
     background var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play:hover,
-#ypp-pl-root .ypp-pl-btn-shuffle:hover,
-#ypp-pl-root .ypp-pl-btn-tool:hover {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-tool:hover {
   background:
     linear-gradient(
       to bottom,
@@ -214,7 +211,7 @@ ytd-playlist-panel-video-renderer {
   transform: scale(1.05) translateY(-1px) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-play {
   background:
     linear-gradient(
       135deg,
@@ -223,7 +220,7 @@ ytd-playlist-panel-video-renderer {
   box-shadow: 0 4px 16px rgba(90, 191, 71, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.50) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play:hover {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-btn-play:hover {
   background:
     linear-gradient(
       135deg,
@@ -232,7 +229,7 @@ ytd-playlist-panel-video-renderer {
   box-shadow: 0 6px 24px rgba(90, 191, 71, 0.55), 0 0 20px rgba(48, 184, 200, 0.30) !important;
 }
 
-.ytSuggestionComponentRoundedSuggestion {
+html[data-ypp-ui-design="technozen"] .ytSuggestionComponentRoundedSuggestion {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
@@ -240,7 +237,7 @@ ytd-playlist-panel-video-renderer {
     background var(--bounce) !important;
 }
 
-.ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="technozen"] .ytSuggestionComponentRoundedSuggestion:hover {
   transform: translateY(-1px) scale(1.01) !important;
   box-shadow: var(--shadow-base) !important;
 }
@@ -248,7 +245,7 @@ ytd-playlist-panel-video-renderer {
 /* ============================================================
    PLAYER CONTROLS — Rounded gel buttons
    ============================================================ */
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   transition:
     transform var(--bounce),
@@ -256,50 +253,50 @@ ytd-playlist-panel-video-renderer {
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.02);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.1);
 }
 
-::-webkit-scrollbar-track {
+html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, rgba(90, 191, 71, 0.40), rgba(48, 184, 200, 0.35));
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html[data-ypp-ui-design="technozen"] ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, rgba(90, 191, 71, 0.65), rgba(48, 184, 200, 0.55));
 }
 
 /* Added for HeaderNav active state — Technozen lime glow */
-.ypp-nav-btn.active {
+html[data-ypp-ui-design="technozen"] .ypp-nav-btn.active {
   box-shadow:
     0 0 14px rgba(90, 191, 71, 0.45),
     0 0 28px rgba(48, 184, 200, 0.2),
     var(--shadow-active) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+html[data-ypp-ui-design="technozen"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
@@ -308,19 +305,19 @@ button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(
     background var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+html[data-ypp-ui-design="technozen"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-2px) scale(1.04) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+html[data-ypp-ui-design="technozen"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
   transform: translateY(0px) scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   background:
     var(--tz-gloss),
@@ -335,7 +332,7 @@ yt-button-shape button[title*="Download" i] {
     background var(--bounce) !important;
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+html[data-ypp-ui-design="technozen"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   background:
     var(--tz-gloss),
     linear-gradient(
@@ -349,63 +346,63 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
     background var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--shadow-base) !important;
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytInlinePlayerControlsTopRightControlsCircleButton {
+html[data-ypp-ui-design="technozen"] .ytInlinePlayerControlsTopRightControlsCircleButton {
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+html[data-ypp-ui-design="technozen"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
   transform: translateY(-1px) scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-thumbnail-overlay-toggle-button-renderer {
+html[data-ypp-ui-design="technozen"] ytd-thumbnail-overlay-toggle-button-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
 }
 
-ytd-alert-with-button-renderer[type=INFO] {
+html[data-ypp-ui-design="technozen"] ytd-alert-with-button-renderer[type=INFO] {
   box-shadow: var(--shadow-base) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button {
+html[data-ypp-ui-design="technozen"] tp-yt-paper-toggle-button[checked] .toggle-button.tp-yt-paper-toggle-button {
   box-shadow: 0 0 10px var(--tz-lime), inset 0 2px 4px rgba(255, 255, 255, 0.8) !important;
 }
 
-ytd-subscribe-button-renderer button {
+html[data-ypp-ui-design="technozen"] ytd-subscribe-button-renderer button {
   box-shadow: 0 0 10px rgba(90, 191, 71, 0.25), 0 0 20px rgba(90, 191, 71, 0.10) !important;
   transition: box-shadow var(--bounce), transform var(--bounce) !important;
 }
 
-ytd-subscribe-button-renderer button:hover {
+html[data-ypp-ui-design="technozen"] ytd-subscribe-button-renderer button:hover {
   box-shadow: 0 0 18px rgba(90, 191, 71, 0.45), 0 0 36px rgba(48, 184, 200, 0.20) !important;
   transform: scale(1.05) !important;
 }
@@ -419,27 +416,21 @@ html[data-ypp-card-style="technozen"] ::-webkit-scrollbar-thumb, html[data-ypp-u
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="technozen"] h1, html[data-ypp-card-style="technozen"] h2, html[data-ypp-card-style="technozen"] h3, 
-html[data-ypp-card-style="technozen"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="technozen"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="technozen"] h1, html[data-ypp-ui-design="technozen"] h2, html[data-ypp-ui-design="technozen"] h3, 
-html[data-ypp-ui-design="technozen"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="technozen"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="technozen"] h1, html[data-ypp-card-style="technozen"] h2, html[data-ypp-card-style="technozen"] h3, html[data-ypp-card-style="technozen"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="technozen"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="technozen"] h1, html[data-ypp-ui-design="technozen"] h2, html[data-ypp-ui-design="technozen"] h3, html[data-ypp-ui-design="technozen"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="technozen"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="technozen"] ytd-thumbnail, html[data-ypp-card-style="technozen"] yt-image,
-html[data-ypp-ui-design="technozen"] ytd-thumbnail, html[data-ypp-ui-design="technozen"] yt-image {
+html[data-ypp-card-style="technozen"] ytd-thumbnail, html[data-ypp-card-style="technozen"] yt-image, html[data-ypp-ui-design="technozen"] ytd-thumbnail, html[data-ypp-ui-design="technozen"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="technozen"] yt-img-shadow, html[data-ypp-card-style="technozen"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="technozen"] yt-img-shadow, html[data-ypp-ui-design="technozen"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="technozen"] yt-img-shadow, html[data-ypp-card-style="technozen"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="technozen"] yt-img-shadow, html[data-ypp-ui-design="technozen"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -491,8 +482,7 @@ html[data-ypp-card-style="technozen"] .ytp-tooltip, html[data-ypp-ui-design="tec
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="technozen"] tp-yt-paper-dialog, html[data-ypp-card-style="technozen"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog, html[data-ypp-ui-design="technozen"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="technozen"] tp-yt-paper-dialog, html[data-ypp-card-style="technozen"] ytd-menu-popup-renderer, html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog, html[data-ypp-ui-design="technozen"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -533,8 +523,7 @@ html[data-ypp-ui-design="technozen"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="technozen"] ytd-skeleton, html[data-ypp-ui-design="technozen"] ytd-skeleton, 
-html[data-ypp-card-style="technozen"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="technozen"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="technozen"] ytd-skeleton, html[data-ypp-ui-design="technozen"] ytd-skeleton, html[data-ypp-card-style="technozen"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="technozen"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -567,7 +556,7 @@ html[data-ypp-card-style="technozen"] yt-icon:hover, html[data-ypp-ui-design="te
 
 /* 30. Offline & Error Screens */
 
-#trigger.tp-yt-paper-menu-button {
+html[data-ypp-ui-design="technozen"] #trigger.tp-yt-paper-menu-button {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
@@ -575,15 +564,15 @@ html[data-ypp-card-style="technozen"] yt-icon:hover, html[data-ypp-ui-design="te
     background var(--bounce) !important;
 }
 
-#trigger.tp-yt-paper-menu-button:hover {
+html[data-ypp-ui-design="technozen"] #trigger.tp-yt-paper-menu-button:hover {
   transform: translateY(-1px) scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="technozen"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="technozen"] ytd-video-preview,
+html[data-ypp-ui-design="technozen"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog {
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
@@ -592,11 +581,11 @@ tp-yt-paper-dialog {
   transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
 }
 
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+html[data-ypp-ui-design="technozen"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
@@ -604,14 +593,14 @@ tp-yt-paper-dialog {
     background var(--bounce) !important;
 }
 
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+html[data-ypp-ui-design="technozen"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
   transform: translateY(-1px) scale(1.02);
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+html[data-ypp-ui-design="technozen"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="technozen"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-ui-design="technozen"] tp-yt-paper-item.ytd-menu-service-item-download-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
     transform var(--bounce),
@@ -619,46 +608,46 @@ tp-yt-paper-item.ytd-menu-service-item-download-renderer {
     background var(--bounce) !important;
 }
 
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+html[data-ypp-ui-design="technozen"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="technozen"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-design="technozen"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
   transform: translateY(-1px) scale(1.02) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-tp-yt-paper-listbox.yt-dropdown-menu {
+html[data-ypp-ui-design="technozen"] tp-yt-paper-listbox.yt-dropdown-menu {
   border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+html[data-ypp-ui-design="technozen"] tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
 }
 
-a.yt-simple-endpoint.yt-dropdown-menu {
+html[data-ypp-ui-design="technozen"] a.yt-simple-endpoint.yt-dropdown-menu {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
+html[data-ypp-ui-design="technozen"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
   transform: translateY(-1px) scale(1.04) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.tp-yt-paper-tooltip[style-target=tooltip] {
+html[data-ypp-ui-design="technozen"] .tp-yt-paper-tooltip[style-target=tooltip] {
   box-shadow: var(--shadow-hover) !important;
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
 }
 
-tp-yt-paper-dialog,
-ytd-hotkey-dialog-renderer,
-ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="technozen"] tp-yt-paper-dialog,
+html[data-ypp-ui-design="technozen"] ytd-hotkey-dialog-renderer,
+html[data-ypp-ui-design="technozen"] ytd-multi-page-menu-renderer {
   -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
   box-shadow: 0px 12px 48px rgba(90, 191, 71, 0.25), inset 0 2px 10px rgba(255, 255, 255, 0.9) !important;
 }
 
-ytd-masthead #container {
+html[data-ypp-ui-design="technozen"] ytd-masthead #container {
   border-radius: var(--ypp-shape-primary, 3000px) !important;
   background:
     var(--tz-gloss),
@@ -670,14 +659,14 @@ ytd-masthead #container {
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="technozen"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-design="technozen"] .ypp-nav-btn,
+html[data-ypp-ui-design="technozen"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="technozen"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="technozen"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
@@ -685,7 +674,7 @@ yt-button-shape button[title*="Download" i] {
     background var(--bounce) !important;
 }
 
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+html[data-ypp-ui-design="technozen"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
@@ -693,45 +682,45 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
     background var(--bounce) !important;
 }
 
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+html[data-ypp-ui-design="technozen"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.1);
 }
 
-ytd-masthead#masthead {
+html[data-ypp-ui-design="technozen"] ytd-masthead#masthead {
   box-shadow: 0 2px 16px rgba(90, 191, 71, 0.18), 0 4px 32px rgba(90, 191, 71, 0.10) !important;
 }
 
-ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
+html[data-ypp-ui-design="technozen"] ytd-engagement-panel-section-list-renderer:not([live-chat-engagement-panel]) {
   border-radius: var(--ypp-shape-primary, 24px) !important;
 }
 
-#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+html[data-ypp-ui-design="technozen"] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.anchored-panel.ytd-shorts {
+html[data-ypp-ui-design="technozen"] .anchored-panel.ytd-shorts {
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
+html[data-ypp-ui-design="technozen"] tp-yt-paper-tab.ytd-c4-tabbed-header-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition: background var(--bounce), transform var(--bounce);
 }
 
-ytd-video-renderer,
-ytd-channel-renderer,
-ytd-playlist-renderer {
+html[data-ypp-ui-design="technozen"] ytd-video-renderer,
+html[data-ypp-ui-design="technozen"] ytd-channel-renderer,
+html[data-ypp-ui-design="technozen"] ytd-playlist-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#channel-header.ytd-c4-tabbed-header-renderer {
+html[data-ypp-ui-design="technozen"] #channel-header.ytd-c4-tabbed-header-renderer {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: var(--shadow-base) !important;
@@ -759,18 +748,18 @@ html[data-ypp-ui-design=technozen] ytd-guide-entry-renderer yt-formatted-string 
   text-shadow: none !important;
 }
 
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
-ytd-notification-topbar-button-renderer.ytd-masthead,
-yt-icon-button.ytd-masthead,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="technozen"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="technozen"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-design="technozen"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="technozen"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="technozen"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
@@ -779,12 +768,12 @@ yt-button-shape button[title*="Download" i] {
 }
 
 /* src/content/themes/ui-styles/technozen/pages/comments.css */
-ytd-comments-header-renderer[engagement-panel] {
+html[data-ypp-ui-design="technozen"] ytd-comments-header-renderer[engagement-panel] {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-#guide-wrapper.ytd-app {
+html[data-ypp-ui-design="technozen"] #guide-wrapper.ytd-app {
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
   border-radius: var(--ypp-shape-primary, 24px) !important;
@@ -792,7 +781,7 @@ ytd-comments-header-renderer[engagement-panel] {
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-yt-icon-button#guide-button {
+html[data-ypp-ui-design="technozen"] yt-icon-button#guide-button {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
@@ -800,17 +789,17 @@ yt-icon-button#guide-button {
     background var(--bounce) !important;
 }
 
-yt-icon-button#guide-button:hover {
+html[data-ypp-ui-design="technozen"] yt-icon-button#guide-button:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.06);
 }
 
-yt-icon-button#guide-button:active {
+html[data-ypp-ui-design="technozen"] yt-icon-button#guide-button:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+html[data-ypp-ui-design="technozen"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   transition:
@@ -820,26 +809,26 @@ yt-icon-button#guide-button:active {
     border-radius var(--bounce) !important;
 }
 
-ytd-mini-guide-entry-renderer {
+html[data-ypp-ui-design="technozen"] ytd-mini-guide-entry-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#description.ytd-watch-metadata,
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+html[data-ypp-ui-design="technozen"] #description.ytd-watch-metadata,
+html[data-ypp-ui-design="technozen"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
   border-radius: var(--ypp-shape-primary, 3000px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-ytd-browse[page-subtype=home] #chips {
+html[data-ypp-ui-design="technozen"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-design="technozen"] ytd-browse[page-subtype=home] #chips {
   border-radius: var(--ypp-shape-primary, 3000px) !important;
   box-shadow: var(--shadow-active) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-.ytChipShapeChip {
+html[data-ypp-ui-design="technozen"] .ytChipShapeChip {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   transition:
     transform var(--bounce),
@@ -847,19 +836,19 @@ ytd-browse[page-subtype=home] #chips {
     background var(--bounce) !important;
 }
 
-ytd-settings-sidebar-renderer {
+html[data-ypp-ui-design="technozen"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+html[data-ypp-ui-design="technozen"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   transition:
     box-shadow var(--bounce),
     background var(--bounce),
     transform var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-sidebar {
+html[data-ypp-ui-design="technozen"] #ypp-pl-root .ypp-pl-sidebar {
   -webkit-backdrop-filter: blur(40px) saturate(1.4) !important;
   backdrop-filter: blur(40px) saturate(1.4) !important;
   background:
@@ -874,13 +863,13 @@ ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-xl)) !important;
 }
 
-ytd-comment-simplebox-renderer,
-yt-live-chat-message-input-renderer {
+html[data-ypp-ui-design="technozen"] ytd-comment-simplebox-renderer,
+html[data-ypp-ui-design="technozen"] yt-live-chat-message-input-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-md)) !important;
   box-shadow: inset 0 2px 6px rgba(90, 191, 71, 0.1) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-lg)) !important;
   transition:
     transform var(--bounce),
@@ -888,31 +877,29 @@ yt-live-chat-message-input-renderer {
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.02);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-1px) scale(1.1);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button), html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *), html[data-ypp-ui-design="technozen"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -920,7 +907,7 @@ yt-live-chat-message-input-renderer {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
 }
 
-.ytp-fullscreen-grid-expand-button {
+html[data-ypp-ui-design="technozen"] .ytp-fullscreen-grid-expand-button {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
@@ -928,11 +915,11 @@ yt-live-chat-message-input-renderer {
     background var(--bounce) !important;
 }
 
-.ytp-fullscreen-grid-expand-button:hover {
+html[data-ypp-ui-design="technozen"] .ytp-fullscreen-grid-expand-button:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytp-menuitem:not([aria-disabled=true]) {
+html[data-ypp-ui-design="technozen"] .ytp-menuitem:not([aria-disabled=true]) {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   transition:
     transform var(--bounce),
@@ -940,48 +927,48 @@ yt-live-chat-message-input-renderer {
     background var(--bounce) !important;
 }
 
-.ytp-menuitem:not([aria-disabled=true]):hover {
+html[data-ypp-ui-design="technozen"] .ytp-menuitem:not([aria-disabled=true]):hover {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-sm)) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-.ytp-delhi-modern .ytp-popup {
+html[data-ypp-ui-design="technozen"] .ytp-delhi-modern .ytp-popup {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ytp-popup.ytp-delhi-modern-contextmenu {
+html[data-ypp-ui-design="technozen"] .ytp-popup.ytp-delhi-modern-contextmenu {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: none !important;
 }
 
-.ytp-panel {
+html[data-ypp-ui-design="technozen"] .ytp-panel {
   box-shadow: var(--shadow-hover) !important;
   transition: box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* src/content/themes/ui-styles/technozen/pages/watch.css */
-video.video-stream.html5-main-video,
-.html5-video-player {
+html[data-ypp-ui-design="technozen"] video.video-stream.html5-main-video,
+html[data-ypp-ui-design="technozen"] .html5-video-player {
   border-radius: var(--ypp-shape-primary, 18px) !important;
 }
 
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentInputBox {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   box-shadow: var(--shadow-base), inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
   transition: box-shadow var(--bounce), border-color var(--bounce) !important;
 }
 
-.ytSearchboxComponentInputBoxDark:focus-within,
-.ytSearchboxComponentInputBox:focus-within {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentInputBoxDark:focus-within,
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentInputBox:focus-within {
   box-shadow:
     var(--shadow-hover),
     0 0 0 3px rgba(90, 191, 71, 0.12),
     inset 0 1px 3px rgba(255, 255, 255, 0.8) !important;
 }
 
-.ytSearchboxComponentSearchButton {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentSearchButton {
   border-radius: var(--ypp-shape-primary, var(--tz-radius-pill)) !important;
   background:
     var(--tz-gloss),
@@ -996,7 +983,7 @@ video.video-stream.html5-main-video,
     background var(--bounce) !important;
 }
 
-.ytSearchboxComponentSearchButton:hover {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentSearchButton:hover {
   background:
     var(--tz-gloss),
     linear-gradient(
@@ -1007,22 +994,22 @@ video.video-stream.html5-main-video,
   transform: translateY(-1px) scale(1.04);
 }
 
-.ytSearchboxComponentSearchButton:active {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentSearchButton:active {
   transform: translateY(0px) scale(0.97);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytSearchboxComponentSuggestionsContainer,
-ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-design="technozen"] ytd-multi-page-menu-renderer {
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: var(--shadow-hover) !important;
@@ -1030,13 +1017,13 @@ ytd-multi-page-menu-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#search-icon-legacy.ytd-searchbox,
-.ytSearchboxComponentSearchButton {
+html[data-ypp-ui-design="technozen"] #search-icon-legacy.ytd-searchbox,
+html[data-ypp-ui-design="technozen"] .ytSearchboxComponentSearchButton {
   box-shadow: 0 0 12px rgba(48, 184, 200, 0.30) !important;
 }
 
-#search.ytd-searchbox:focus-within,
-ytd-searchbox:focus-within {
+html[data-ypp-ui-design="technozen"] #search.ytd-searchbox:focus-within,
+html[data-ypp-ui-design="technozen"] ytd-searchbox:focus-within {
   box-shadow: 0 0 0 2px rgba(90, 191, 71, 0.40), 0 0 20px rgba(90, 191, 71, 0.18) !important;
 }
 
@@ -1051,5 +1038,4 @@ html[data-ypp-ui-design="technozen"] #owner {
 /* 4. Comments Section (Organic Mint Petal Cards) */
 html[data-ypp-ui-design="technozen"] #comments {
   border-radius: var(--ypp-shape-primary, 28px) !important;
-}
 }

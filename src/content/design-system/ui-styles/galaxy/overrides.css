@@ -16,10 +16,7 @@
 
 100% { filter:brightness(1.1) saturate(1.1); }
 
-}
-
-html[data-ypp-ui-design="galaxy"] {
-/* Unique Shapes and Patterns for galaxy */
+}/* Unique Shapes and Patterns for galaxy */
 
 /* galaxy/base/animations.css */
 
@@ -27,7 +24,7 @@ html[data-ypp-ui-design="galaxy"] {
 
 
 /* Subscribe button */
-html[data-ypp-ui-design="galaxy"] #subscribe-button .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-design="galaxy"] #subscribe-button .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="galaxy"] #subscribe-button yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="galaxy"] #subscribe-button yt-button-shape button[title*="Download" i] {
   animation: galaxy-pulse 2.5s ease-in-out infinite !important;
@@ -47,7 +44,7 @@ html[data-ypp-ui-design="galaxy"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -141,7 +138,8 @@ html[data-ypp-ui-design="galaxy"] .ytProgressBarLineProgressBarPlayed {
 
 /* galaxy/components/badges.css */
 html[data-ypp-ui-design="galaxy"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="galaxy"] .ypp-badge, html[data-ypp-ui-design="galaxy"] .ypp-value-display {
+html[data-ypp-ui-design="galaxy"] .ypp-badge,
+html[data-ypp-ui-design="galaxy"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
@@ -169,7 +167,7 @@ html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="galaxy"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="galaxy"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="galaxy"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="galaxy"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i],
@@ -180,7 +178,7 @@ html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i] {
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 16px) !important;
@@ -229,8 +227,7 @@ html[data-ypp-ui-design="galaxy"] .ypp-btn-primary:hover, html[data-ypp-ui-desig
 }
 
 /* galaxy/components/forms.css */
-html[data-ypp-ui-design="galaxy"] ytd-searchbox, html[data-ypp-ui-design="galaxy"] #search-form,
-html[data-ypp-ui-design="galaxy"] tp-yt-paper-input, html[data-ypp-ui-design="galaxy"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="galaxy"] ytd-searchbox, html[data-ypp-ui-design="galaxy"] #search-form, html[data-ypp-ui-design="galaxy"] tp-yt-paper-input, html[data-ypp-ui-design="galaxy"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -286,7 +283,7 @@ html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--overlay.yt-spec-bu
 html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="galaxy"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="galaxy"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="galaxy"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="galaxy"] yt-button-shape button[aria-label*="Download" i],
@@ -553,6 +550,7 @@ html[data-ypp-card-style="galaxy"] .ytp-play-progress, html[data-ypp-ui-design="
 
 html[data-ypp-card-style="galaxy"] .ytp-scrubber-button, html[data-ypp-ui-design="galaxy"] .ytp-scrubber-button {
   box-shadow: 0 0 20px #7df9ff !important;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%) !important;
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%) !important;
 }
 
@@ -2059,9 +2057,7 @@ html[data-ypp-card-style="galaxy"] .galaxy-lvl2-class-250, html[data-ypp-ui-desi
 }
 
 /* galaxy/components/menus.css */
-html[data-ypp-ui-design="galaxy"] tp-yt-paper-dialog, html[data-ypp-ui-design="galaxy"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="galaxy"] tp-yt-iron-dropdown, html[data-ypp-ui-design="galaxy"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="galaxy"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="galaxy"] tp-yt-paper-dialog, html[data-ypp-ui-design="galaxy"] ytd-menu-popup-renderer, html[data-ypp-ui-design="galaxy"] tp-yt-iron-dropdown, html[data-ypp-ui-design="galaxy"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="galaxy"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   box-shadow: 0 0 35px rgba(0,240,255,0.5) !important;
   -webkit--webkit-backdrop-filter: blur(12px) !important;
@@ -2204,9 +2200,7 @@ html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 0 0 20px rgba(0,240,255,0.2) !important;
 }
 
-html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="galaxy"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 16px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2410,4 +2404,3 @@ html[data-ypp-ui-design="galaxy"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
-}

@@ -81,10 +81,7 @@
 100% {
   box-shadow: 0 0 20px linear-gradient(to right, red, yellow, green, blue);
 }
-}
-
-html[data-ypp-ui-design="colorize"] {
-/* Unique Shapes and Patterns for colorize */
+}/* Unique Shapes and Patterns for colorize */
 
 html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb {
   animation: rgbBg 10s infinite linear !important;
@@ -143,11 +140,9 @@ html[data-ypp-ui-design="colorize"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
-html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="colorize"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -196,6 +191,7 @@ html[data-ypp-card-style="colorize"] ytd-miniplayer,
 html[data-ypp-ui-design="colorize"] ytd-miniplayer {
   border-radius: var(--ypp-shape-primary, 10px) !important;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -305,9 +301,9 @@ html[data-ypp-card-style="colorize"] ytd-searchbox #search-icon-legacy {
 }
 
 html[data-ypp-card-style="colorize"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="colorize"] .yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-card-style="colorize"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="colorize"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="colorize"] yt-button-shape button[title*="Download" i] {
   animation: rgbBg 5s infinite linear !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   text-transform: uppercase !important;
@@ -323,27 +319,21 @@ html[data-ypp-card-style="colorize"] ::-webkit-scrollbar-thumb, html[data-ypp-ui
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="colorize"] h1, html[data-ypp-card-style="colorize"] h2, html[data-ypp-card-style="colorize"] h3, 
-html[data-ypp-card-style="colorize"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="colorize"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="colorize"] h1, html[data-ypp-ui-design="colorize"] h2, html[data-ypp-ui-design="colorize"] h3, 
-html[data-ypp-ui-design="colorize"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="colorize"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="colorize"] h1, html[data-ypp-card-style="colorize"] h2, html[data-ypp-card-style="colorize"] h3, html[data-ypp-card-style="colorize"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="colorize"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="colorize"] h1, html[data-ypp-ui-design="colorize"] h2, html[data-ypp-ui-design="colorize"] h3, html[data-ypp-ui-design="colorize"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="colorize"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="colorize"] ytd-thumbnail, html[data-ypp-card-style="colorize"] yt-image,
-html[data-ypp-ui-design="colorize"] ytd-thumbnail, html[data-ypp-ui-design="colorize"] yt-image {
+html[data-ypp-card-style="colorize"] ytd-thumbnail, html[data-ypp-card-style="colorize"] yt-image, html[data-ypp-ui-design="colorize"] ytd-thumbnail, html[data-ypp-ui-design="colorize"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="colorize"] yt-img-shadow, html[data-ypp-card-style="colorize"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="colorize"] yt-img-shadow, html[data-ypp-ui-design="colorize"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="colorize"] yt-img-shadow, html[data-ypp-card-style="colorize"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="colorize"] yt-img-shadow, html[data-ypp-ui-design="colorize"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -395,8 +385,7 @@ html[data-ypp-card-style="colorize"] .ytp-tooltip, html[data-ypp-ui-design="colo
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="colorize"] tp-yt-paper-dialog, html[data-ypp-card-style="colorize"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="colorize"] tp-yt-paper-dialog, html[data-ypp-ui-design="colorize"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="colorize"] tp-yt-paper-dialog, html[data-ypp-card-style="colorize"] ytd-menu-popup-renderer, html[data-ypp-ui-design="colorize"] tp-yt-paper-dialog, html[data-ypp-ui-design="colorize"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -437,8 +426,7 @@ html[data-ypp-ui-design="colorize"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="colorize"] ytd-skeleton, html[data-ypp-ui-design="colorize"] ytd-skeleton, 
-html[data-ypp-card-style="colorize"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="colorize"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="colorize"] ytd-skeleton, html[data-ypp-ui-design="colorize"] ytd-skeleton, html[data-ypp-card-style="colorize"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="colorize"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -506,6 +494,7 @@ html[data-ypp-ui-design="colorize"] ytd-popup-container {
 ========================================= */
 html[data-ypp-card-style="colorize"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="colorize"] tp-yt-paper-tooltip {
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
 }
@@ -538,6 +527,7 @@ html[data-ypp-ui-design="colorize"] #error-page {
 /* Empty state icon geometry override */
 html[data-ypp-card-style="colorize"] ytd-background-promo-renderer yt-icon,
 html[data-ypp-ui-design="colorize"] ytd-background-promo-renderer yt-icon {
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   transform: scale(1.5) !important;
 }
@@ -560,6 +550,7 @@ html[data-ypp-ui-design="colorize"] ytd-mini-guide-entry-renderer {
 html[data-ypp-ui-design="colorize"] #masthead-container,
 html[data-ypp-ui-design="colorize"] ytd-masthead {
   background: linear-gradient(to right, rgba(0,0,0,0.9), hsl(207, 80%, 55%)88) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
@@ -608,6 +599,7 @@ html[data-ypp-ui-design="colorize"] #voice-search-button:hover {
 html[data-ypp-ui-design="colorize"] .sbdd_b,
 html[data-ypp-ui-design="colorize"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   backdrop-filter: blur(20px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
@@ -635,6 +627,7 @@ html[data-ypp-ui-design="colorize"] #avatar-btn yt-img-shadow {
 
 html[data-ypp-ui-design="colorize"] tp-yt-iron-dropdown ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 50% 10% 50% 10%) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   backdrop-filter: blur(25px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
 }
@@ -682,6 +675,7 @@ html[data-ypp-card-style="colorize"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-ui-design="colorize"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-card-style="colorize"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
 html[data-ypp-ui-design="colorize"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
+  -webkit-clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -693,14 +687,12 @@ html[data-ypp-ui-design="colorize"] .ytd-shopping-carousel-item-renderer:hover i
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   background: linear-gradient(to right, red, yellow, green, blue) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="colorize"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -728,4 +720,3 @@ html[data-ypp-card-style="colorize"] .ytp-scrubber-button {
   animation: rgbBorder 5s infinite linear !important;
 }
 
-}

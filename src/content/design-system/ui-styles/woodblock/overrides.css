@@ -23,10 +23,7 @@
 100% {
   filter:brightness(1.1) saturate(1.1);
 }
-}
-
-html[data-ypp-ui-design="woodblock"] {
-/* Unique Shapes and Patterns for woodblock */
+}/* Unique Shapes and Patterns for woodblock */
 
 /* woodblock/base/animations.css */
 
@@ -46,7 +43,7 @@ html[data-ypp-ui-design="woodblock"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -140,7 +137,8 @@ html[data-ypp-ui-design="woodblock"] .ytProgressBarLineProgressBarPlayed {
 
 /* woodblock/components/badges.css */
 html[data-ypp-ui-design="woodblock"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="woodblock"] .ypp-badge, html[data-ypp-ui-design="woodblock"] .ypp-value-display {
+html[data-ypp-ui-design="woodblock"] .ypp-badge,
+html[data-ypp-ui-design="woodblock"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
 }
@@ -168,7 +166,7 @@ html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="woodblock"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="woodblock"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="woodblock"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="woodblock"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i],
@@ -179,7 +177,7 @@ html[data-ypp-ui-design="woodblock"] yt-button-shape button[title*="Download" i]
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 4px) !important;
@@ -228,8 +226,7 @@ html[data-ypp-ui-design="woodblock"] .ypp-btn-primary:hover, html[data-ypp-ui-de
 }
 
 /* woodblock/components/forms.css */
-html[data-ypp-ui-design="woodblock"] ytd-searchbox, html[data-ypp-ui-design="woodblock"] #search-form,
-html[data-ypp-ui-design="woodblock"] tp-yt-paper-input, html[data-ypp-ui-design="woodblock"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="woodblock"] ytd-searchbox, html[data-ypp-ui-design="woodblock"] #search-form, html[data-ypp-ui-design="woodblock"] tp-yt-paper-input, html[data-ypp-ui-design="woodblock"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -285,7 +282,7 @@ html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--overlay.yt-spec
 html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="woodblock"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="woodblock"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="woodblock"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="woodblock"] yt-button-shape button[aria-label*="Download" i],
@@ -1921,9 +1918,7 @@ html[data-ypp-card-style="woodblock"] .woodblock-lvl2-class-250, html[data-ypp-u
 }
 
 /* woodblock/components/menus.css */
-html[data-ypp-ui-design="woodblock"] tp-yt-paper-dialog, html[data-ypp-ui-design="woodblock"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="woodblock"] tp-yt-iron-dropdown, html[data-ypp-ui-design="woodblock"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="woodblock"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="woodblock"] tp-yt-paper-dialog, html[data-ypp-ui-design="woodblock"] ytd-menu-popup-renderer, html[data-ypp-ui-design="woodblock"] tp-yt-iron-dropdown, html[data-ypp-ui-design="woodblock"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="woodblock"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 4px) !important;
   box-shadow: 5px 5px 15px rgba(139,69,19,0.4) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2048,9 +2043,7 @@ html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 3px 3px 8px rgba(139,69,19,0.25) !important;
 }
 
-html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="woodblock"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 4px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2254,4 +2247,3 @@ html[data-ypp-ui-design="woodblock"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 4px) !important;
 }
 
-}

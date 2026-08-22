@@ -36,10 +36,7 @@
 
 100% { box-shadow: 0 0 0 2px var(--faero-lime); }
 
-}
-
-html[data-ypp-ui-design="frutiger-aero"] {
-/* Unique Shapes and Patterns for frutiger-aero */
+}/* Unique Shapes and Patterns for frutiger-aero */
 
 /* =========================================================
    FRUTIGER AERO — ANIMATIONS & EFFECTS
@@ -54,7 +51,7 @@ html[data-ypp-ui-design="frutiger-aero"] {
 /* Apply shine sweep to all blue pill buttons on hover */
 html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *::before,
 html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action::before,
-html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer[selected]::before ,
+html[data-ypp-ui-design="frutiger-aero"] yt-chip-cloud-chip-renderer[selected]::before,
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i]::before,
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i]::before {
   background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
@@ -177,7 +174,7 @@ html[data-ypp-ui-design="frutiger-aero"] #background {
 html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > *,
 html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > *,
 html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action,
-html[data-ypp-ui-design="frutiger-aero"] button.ytp-button ,
+html[data-ypp-ui-design="frutiger-aero"] button.ytp-button,
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, var(--faero-radius-pill)) !important;
@@ -189,7 +186,7 @@ html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-watch-metadata #actions yt-button-shape > * .yt-core-attributed-string,
 html[data-ypp-ui-design="frutiger-aero"] ytd-subscribe-button-renderer yt-button-shape > * .yt-core-attributed-string,
-html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action .yt-core-attributed-string ,
+html[data-ypp-ui-design="frutiger-aero"] .yt-spec-button-shape-next--call-to-action .yt-core-attributed-string,
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[aria-label*="Download" i] .yt-core-attributed-string,
 html[data-ypp-ui-design="frutiger-aero"] yt-button-shape button[title*="Download" i] .yt-core-attributed-string {
   text-shadow: var(--faero-text-shadow-btn) !important;
@@ -368,27 +365,21 @@ html[data-ypp-card-style="frutiger-aero"] ::-webkit-scrollbar-thumb, html[data-y
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="frutiger-aero"] h1, html[data-ypp-card-style="frutiger-aero"] h2, html[data-ypp-card-style="frutiger-aero"] h3, 
-html[data-ypp-card-style="frutiger-aero"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="frutiger-aero"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="frutiger-aero"] h1, html[data-ypp-ui-design="frutiger-aero"] h2, html[data-ypp-ui-design="frutiger-aero"] h3, 
-html[data-ypp-ui-design="frutiger-aero"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="frutiger-aero"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="frutiger-aero"] h1, html[data-ypp-card-style="frutiger-aero"] h2, html[data-ypp-card-style="frutiger-aero"] h3, html[data-ypp-card-style="frutiger-aero"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="frutiger-aero"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="frutiger-aero"] h1, html[data-ypp-ui-design="frutiger-aero"] h2, html[data-ypp-ui-design="frutiger-aero"] h3, html[data-ypp-ui-design="frutiger-aero"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="frutiger-aero"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="frutiger-aero"] ytd-thumbnail, html[data-ypp-card-style="frutiger-aero"] yt-image,
-html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail, html[data-ypp-ui-design="frutiger-aero"] yt-image {
+html[data-ypp-card-style="frutiger-aero"] ytd-thumbnail, html[data-ypp-card-style="frutiger-aero"] yt-image, html[data-ypp-ui-design="frutiger-aero"] ytd-thumbnail, html[data-ypp-ui-design="frutiger-aero"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="frutiger-aero"] yt-img-shadow, html[data-ypp-card-style="frutiger-aero"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="frutiger-aero"] yt-img-shadow, html[data-ypp-ui-design="frutiger-aero"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="frutiger-aero"] yt-img-shadow, html[data-ypp-card-style="frutiger-aero"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="frutiger-aero"] yt-img-shadow, html[data-ypp-ui-design="frutiger-aero"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -440,8 +431,7 @@ html[data-ypp-card-style="frutiger-aero"] .ytp-tooltip, html[data-ypp-ui-design=
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-card-style="frutiger-aero"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-card-style="frutiger-aero"] ytd-menu-popup-renderer, html[data-ypp-ui-design="frutiger-aero"] tp-yt-paper-dialog, html[data-ypp-ui-design="frutiger-aero"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -482,8 +472,7 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="frutiger-aero"] ytd-skeleton, html[data-ypp-ui-design="frutiger-aero"] ytd-skeleton, 
-html[data-ypp-card-style="frutiger-aero"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="frutiger-aero"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="frutiger-aero"] ytd-skeleton, html[data-ypp-ui-design="frutiger-aero"] ytd-skeleton, html[data-ypp-card-style="frutiger-aero"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="frutiger-aero"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -969,5 +958,4 @@ html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer {
 
 html[data-ypp-ui-design="frutiger-aero"] ytd-comment-simplebox-renderer:focus-within {
   box-shadow: 0 0 10px rgba(159,225,30,0.3), inset 0 2px 4px rgba(0,0,0,0.04) !important;
-}
 }

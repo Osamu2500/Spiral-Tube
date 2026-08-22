@@ -6,22 +6,22 @@
 
 html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] yt-lockup-view-model:not(:is(
   ytd-rich-item-renderer,
-  ytd-video-renderer,
-  ytd-playlist-renderer,
-  ytd-radio-renderer,
-  ytd-channel-renderer,
-  ytd-compact-video-renderer,
-  ytd-grid-video-renderer,
-  .ypp-grid-item
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item
 ) *),
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-rich-item-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-video-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-playlist-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-radio-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-channel-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-compact-video-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-grid-video-renderer,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] .ypp-grid-item {
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-rich-item-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-video-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-playlist-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-radio-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-channel-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-compact-video-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-grid-video-renderer,
+  html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] .ypp-grid-item {
   background: var(--brutal-white) !important;
   border: 4px solid #000 !important; box-shadow: 8px 8px 0px #000 !important;
   border-radius: 0px !important;
@@ -32,15 +32,7 @@ html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-
 }
 
 /* Hover: The card pushes down, crushing the shadow */
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *):hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-rich-item-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-video-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-playlist-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-radio-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-channel-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-compact-video-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-grid-video-renderer:hover,
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] .ypp-grid-item:hover {
+html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *):hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-rich-item-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-video-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-playlist-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-radio-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-channel-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-compact-video-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] ytd-grid-video-renderer:hover, html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] .ypp-grid-item:hover {
   transform: translate(4px, 4px) !important;
   box-shadow: 2px 2px 0px var(--brutal-black) !important;
   border-color: var(--brutal-accent) !important;
@@ -117,14 +109,14 @@ html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-
 
 /* GLOBAL REDESIGN V3 INJECT - brutalism */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -142,20 +134,21 @@ html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: #FFFF00 !important;
   border-radius: 0px !important;
   border: 4px solid #000 !important; box-shadow: 8px 8px 0px #000 !important;
-  backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"][data-ypp-card-style="brutalism"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: #FFFF00 !important;
-  backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-}
+  backdrop-filter: none !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

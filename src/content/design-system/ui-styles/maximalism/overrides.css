@@ -12,10 +12,7 @@
   100% {
     transform: rotate(-2deg);
   }
-}
-
-html[data-ypp-ui-design="maximalism"] {
-/* Unique Shapes and Patterns for maximalism */
+}/* Unique Shapes and Patterns for maximalism */
 
 
 /* src/content/themes/ui-styles/maximalism/base/layout.css */
@@ -55,27 +52,21 @@ html[data-ypp-card-style="maximalism"] ::-webkit-scrollbar-thumb, html[data-ypp-
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="maximalism"] h1, html[data-ypp-card-style="maximalism"] h2, html[data-ypp-card-style="maximalism"] h3, 
-html[data-ypp-card-style="maximalism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="maximalism"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="maximalism"] h1, html[data-ypp-ui-design="maximalism"] h2, html[data-ypp-ui-design="maximalism"] h3, 
-html[data-ypp-ui-design="maximalism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="maximalism"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="maximalism"] h1, html[data-ypp-card-style="maximalism"] h2, html[data-ypp-card-style="maximalism"] h3, html[data-ypp-card-style="maximalism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="maximalism"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="maximalism"] h1, html[data-ypp-ui-design="maximalism"] h2, html[data-ypp-ui-design="maximalism"] h3, html[data-ypp-ui-design="maximalism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="maximalism"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="maximalism"] ytd-thumbnail, html[data-ypp-card-style="maximalism"] yt-image,
-html[data-ypp-ui-design="maximalism"] ytd-thumbnail, html[data-ypp-ui-design="maximalism"] yt-image {
+html[data-ypp-card-style="maximalism"] ytd-thumbnail, html[data-ypp-card-style="maximalism"] yt-image, html[data-ypp-ui-design="maximalism"] ytd-thumbnail, html[data-ypp-ui-design="maximalism"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="maximalism"] yt-img-shadow, html[data-ypp-card-style="maximalism"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="maximalism"] yt-img-shadow, html[data-ypp-ui-design="maximalism"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="maximalism"] yt-img-shadow, html[data-ypp-card-style="maximalism"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="maximalism"] yt-img-shadow, html[data-ypp-ui-design="maximalism"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -127,8 +118,7 @@ html[data-ypp-card-style="maximalism"] .ytp-tooltip, html[data-ypp-ui-design="ma
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="maximalism"] tp-yt-paper-dialog, html[data-ypp-card-style="maximalism"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="maximalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="maximalism"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="maximalism"] tp-yt-paper-dialog, html[data-ypp-card-style="maximalism"] ytd-menu-popup-renderer, html[data-ypp-ui-design="maximalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="maximalism"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -169,8 +159,7 @@ html[data-ypp-ui-design="maximalism"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="maximalism"] ytd-skeleton, html[data-ypp-ui-design="maximalism"] ytd-skeleton, 
-html[data-ypp-card-style="maximalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="maximalism"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="maximalism"] ytd-skeleton, html[data-ypp-ui-design="maximalism"] ytd-skeleton, html[data-ypp-card-style="maximalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="maximalism"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -223,5 +212,4 @@ html[data-ypp-ui-design=maximalism] .ytp-delhi-modern .ytp-chrome-controls .ytp-
 
 html[data-ypp-ui-design=maximalism] .ytp-scrubber-button {
   transform: scale(1.5) !important;
-}
 }

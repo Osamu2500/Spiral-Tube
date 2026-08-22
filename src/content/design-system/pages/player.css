@@ -9,8 +9,8 @@
   background: var(--ypp-player-control-bg, transparent) !important;
   border: var(--ypp-surface-border) !important;
   border-radius: var(--ypp-player-control-radius, var(--ypp-border-radius-base, 12px)) !important;
-  backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
   overflow: hidden !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
   color: white !important;
@@ -60,8 +60,8 @@
 .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
   background: var(--ypp-player-control-bg, transparent) !important;
   border: var(--ypp-surface-border) !important;
-  backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-player-control-backdrop-filter, none) !important;
   transition: transform var(--ypp-transition-bounce), box-shadow var(--ypp-transition-bounce), background var(--ypp-transition-bounce) !important;
   border-radius: var(--ypp-player-control-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
@@ -96,9 +96,9 @@
 .ytp-panel,
 .ytp-popup.ytp-settings-menu {
   background: var(--ypp-menu-bg, rgba(0, 0, 0, 0.35)) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
-}
+  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  }
 
 .ytp-menuitem:not([aria-disabled=true]) {
   margin-left: 100px !important;
@@ -114,8 +114,8 @@
 
 .ytp-delhi-modern .ytp-popup {
   background: var(--ypp-menu-bg, transparent) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
 }
 

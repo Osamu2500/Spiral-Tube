@@ -1,8 +1,5 @@
-
 @import "../../ui-styles/shared/timeline-visibility.css";
-
-html[data-ypp-theme="ocean"] {
-    --ypp-bg-base: #051421;
+--ypp-bg-base: #051421;
     --ypp-bg-surface: #0a1e32;
     --ypp-bg-glass: rgba(5, 20, 33, 0.95);
     --ypp-glass-border: rgba(255, 255, 255, 0.08);
@@ -26,7 +23,7 @@ html[data-ypp-theme="ocean"] {
     --ytd-searchbox-background: transparent;
     --ytd-searchbox-text-color: #e1f5fe;
     --ytd-searchbox-legacy-button-color: rgba(225, 245, 254, 0.05);
-}
+
 
 /* Animated Ocean Pulse Effect */
 @keyframes ypp-ocean-pulse {

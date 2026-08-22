@@ -1,10 +1,3 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="claymorphism"] {
 /* Unique Shapes and Patterns for claymorphism */
 
 html[data-ypp-theme="claymorphism"] ::-webkit-scrollbar-thumb {
@@ -1700,27 +1693,21 @@ html[data-ypp-card-style="claymorphism"] ::-webkit-scrollbar-thumb, html[data-yp
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="claymorphism"] h1, html[data-ypp-card-style="claymorphism"] h2, html[data-ypp-card-style="claymorphism"] h3, 
-html[data-ypp-card-style="claymorphism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="claymorphism"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="claymorphism"] h1, html[data-ypp-ui-design="claymorphism"] h2, html[data-ypp-ui-design="claymorphism"] h3, 
-html[data-ypp-ui-design="claymorphism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="claymorphism"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="claymorphism"] h1, html[data-ypp-card-style="claymorphism"] h2, html[data-ypp-card-style="claymorphism"] h3, html[data-ypp-card-style="claymorphism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="claymorphism"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="claymorphism"] h1, html[data-ypp-ui-design="claymorphism"] h2, html[data-ypp-ui-design="claymorphism"] h3, html[data-ypp-ui-design="claymorphism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="claymorphism"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="claymorphism"] ytd-thumbnail, html[data-ypp-card-style="claymorphism"] yt-image,
-html[data-ypp-ui-design="claymorphism"] ytd-thumbnail, html[data-ypp-ui-design="claymorphism"] yt-image {
+html[data-ypp-card-style="claymorphism"] ytd-thumbnail, html[data-ypp-card-style="claymorphism"] yt-image, html[data-ypp-ui-design="claymorphism"] ytd-thumbnail, html[data-ypp-ui-design="claymorphism"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="claymorphism"] yt-img-shadow, html[data-ypp-card-style="claymorphism"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="claymorphism"] yt-img-shadow, html[data-ypp-ui-design="claymorphism"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="claymorphism"] yt-img-shadow, html[data-ypp-card-style="claymorphism"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="claymorphism"] yt-img-shadow, html[data-ypp-ui-design="claymorphism"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -1772,8 +1759,7 @@ html[data-ypp-card-style="claymorphism"] .ytp-tooltip, html[data-ypp-ui-design="
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="claymorphism"] tp-yt-paper-dialog, html[data-ypp-card-style="claymorphism"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="claymorphism"] tp-yt-paper-dialog, html[data-ypp-ui-design="claymorphism"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="claymorphism"] tp-yt-paper-dialog, html[data-ypp-card-style="claymorphism"] ytd-menu-popup-renderer, html[data-ypp-ui-design="claymorphism"] tp-yt-paper-dialog, html[data-ypp-ui-design="claymorphism"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -1814,8 +1800,7 @@ html[data-ypp-ui-design="claymorphism"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="claymorphism"] ytd-skeleton, html[data-ypp-ui-design="claymorphism"] ytd-skeleton, 
-html[data-ypp-card-style="claymorphism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="claymorphism"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="claymorphism"] ytd-skeleton, html[data-ypp-ui-design="claymorphism"] ytd-skeleton, html[data-ypp-card-style="claymorphism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="claymorphism"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -1972,4 +1957,3 @@ html[data-ypp-theme="claymorphism"] #bottom-row {
   box-shadow: var(--ypp-shadow-clay-inset) !important;
 }
 
-}

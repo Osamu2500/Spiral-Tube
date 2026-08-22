@@ -1,6 +1,4 @@
-/* Theme: blue-sky */
-html[data-ypp-theme="blue-sky"] {
-  --ypp-bg-base: #87ceeb !important;
+/* Theme: blue-sky */--ypp-bg-base: #87ceeb !important;
   --ypp-bg-surface: #79b9d3 !important;
   --ypp-text-primary: #0f0f0f !important;
   --ypp-text-secondary: rgba(0,0,0,0.7) !important;
@@ -12,7 +10,7 @@ html[data-ypp-theme="blue-sky"] {
   --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
-}
+
 
 /* --- TEXT READABILITY FIX --- */
 /* Enforce dark text color globally for this light theme */

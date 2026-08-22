@@ -47,26 +47,23 @@
   100% {
     box-shadow: 0 0 0 15px rgba(0, 188, 212, 0);
   }
-}
-
-html[data-ypp-ui-design="ocean"] {
-/* Unique Shapes and Patterns for ocean */
+}/* Unique Shapes and Patterns for ocean */
 
 /* src/content/themes/ui-styles/ocean/base/animations.css */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.1);
   animation: youtubeRedPulse 5s ease-in-out infinite;
 }
 
 
 
-body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+html[data-ypp-ui-design="ocean"] body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
   background-image: none; /* Removed invalid svg uri */
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+html[data-ypp-ui-design="ocean"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   transform: scale(1.08) !important;
   box-shadow:
     inset 0 0 25px red,
@@ -77,99 +74,99 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
 }
 
 
-ytd-rich-grid-media:hover,
-ytd-compact-video-renderer:hover,
-ytd-video-renderer:hover {
+html[data-ypp-ui-design="ocean"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="ocean"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="ocean"] ytd-video-renderer:hover {
   animation: buoyBob 3s ease-in-out infinite !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
 
-.yt-spec-button-shape-next--filled:hover,
-.yt-chip-shape:hover,
-.ytp-play-button:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="ocean"] .yt-chip-shape:hover,
+html[data-ypp-ui-design="ocean"] .ytp-play-button:hover,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i]:hover {
   animation: waterRipple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite !important;
 }
 
-html,
-[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="ocean"] html,
+html[data-ypp-ui-design="ocean"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
 }
 
-.ypp-slider,
-.ypp-gpb-vol-slider {
+html[data-ypp-ui-design="ocean"] .ypp-slider,
+html[data-ypp-ui-design="ocean"] .ypp-gpb-vol-slider {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ypp-badge,
-.ypp-value-display {
+html[data-ypp-ui-design="ocean"] .ypp-badge,
+html[data-ypp-ui-design="ocean"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ypp-organizer-modal,
-.ypp-modal-content {
+html[data-ypp-ui-design="ocean"] .ypp-organizer-modal,
+html[data-ypp-ui-design="ocean"] .ypp-modal-content {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 
-.ypp-modal-header {
+html[data-ypp-ui-design="ocean"] .ypp-modal-header {
   box-shadow: none !important;
 }
 
-.tab-content.tp-yt-paper-tab {
+html[data-ypp-ui-design="ocean"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.tab-content.tp-yt-paper-tab:hover {
+html[data-ypp-ui-design="ocean"] .tab-content.tp-yt-paper-tab:hover {
   transform: scale(1.05) !important;
 }
 
-::-webkit-scrollbar-track {
+html[data-ypp-ui-design="ocean"] ::-webkit-scrollbar-track {
   border-radius: 4px 24px 24px 24px;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="ocean"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ypp-nav-btn.active {
+html[data-ypp-ui-design="ocean"] .ypp-nav-btn.active {
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-filter-dropdown {
+html[data-ypp-ui-design="ocean"] .ypp-filter-dropdown {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ypp-filter-dropdown:hover {
+html[data-ypp-ui-design="ocean"] .ypp-filter-dropdown:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ypp-video-controls,
-.ypp-shadow-panel {
+html[data-ypp-ui-design="ocean"] .ypp-video-controls,
+html[data-ypp-ui-design="ocean"] .ypp-shadow-panel {
   box-shadow: var(--shadow-base) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play,
-#ypp-pl-root .ypp-pl-btn-shuffle,
-#ypp-pl-root .ypp-pl-btn-tool,
-#ypp-pl-root .ypp-pl-filter,
-#ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-col-switcher {
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play:hover,
-#ypp-pl-root .ypp-pl-btn-shuffle:hover,
-#ypp-pl-root .ypp-pl-btn-tool:hover {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-btn-tool:hover {
   transform: scale(1.02) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -177,58 +174,58 @@ html,
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.02);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-.ytSuggestionComponentRoundedSuggestion {
+html[data-ypp-ui-design="ocean"] .ytSuggestionComponentRoundedSuggestion {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
 }
 
-.ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="ocean"] .ytSuggestionComponentRoundedSuggestion:hover {
   transform: scale(1.01) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
 @media (width: 1920px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  html[data-ypp-ui-design="ocean"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
   }
 }
 @media (width: 1280px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  html[data-ypp-ui-design="ocean"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
   }
 }
 
-html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="ocean"] html, html[data-ypp-ui-design="ocean"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
 }
 
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+html[data-ypp-ui-design="ocean"] .ypp-gpb-btn,
+html[data-ypp-ui-design="ocean"] .ypp-action-btn,
+html[data-ypp-ui-design="ocean"] .ypp-icon-btn {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -236,173 +233,173 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
     background var(--bounce) !important;
 }
 
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
+html[data-ypp-ui-design="ocean"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-icon-btn:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1) !important;
 }
 
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
+html[data-ypp-ui-design="ocean"] .ypp-gpb-btn:active,
+html[data-ypp-ui-design="ocean"] .ypp-action-btn:active,
+html[data-ypp-ui-design="ocean"] .ypp-icon-btn:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-slider,
-.ypp-gpb-vol-slider {
+html[data-ypp-ui-design="ocean"] .ypp-slider,
+html[data-ypp-ui-design="ocean"] .ypp-gpb-vol-slider {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ypp-badge,
-.ypp-value-display {
+html[data-ypp-ui-design="ocean"] .ypp-badge,
+html[data-ypp-ui-design="ocean"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
 /* --- Subscriptions Sidebar / Modals --- */
-.ypp-organizer-modal,
-.ypp-modal-content {
+html[data-ypp-ui-design="ocean"] .ypp-organizer-modal,
+html[data-ypp-ui-design="ocean"] .ypp-modal-content {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 
-.ypp-modal-header {
+html[data-ypp-ui-design="ocean"] .ypp-modal-header {
   box-shadow: none !important;
 }
 
-#wrapper.ytd-channel-avatar-editor {
+html[data-ypp-ui-design="ocean"] #wrapper.ytd-channel-avatar-editor {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.tab-content.tp-yt-paper-tab {
+html[data-ypp-ui-design="ocean"] .tab-content.tp-yt-paper-tab {
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.tab-content.tp-yt-paper-tab:hover {
+html[data-ypp-ui-design="ocean"] .tab-content.tp-yt-paper-tab:hover {
   transform: scale(1.05) !important;
 }
 
-::-webkit-scrollbar-track {
+html[data-ypp-ui-design="ocean"] ::-webkit-scrollbar-track {
   border-radius: 4px 24px 24px 24px;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="ocean"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
 /* Added for HeaderNav active state */
-.ypp-nav-btn.active {
+html[data-ypp-ui-design="ocean"] .ypp-nav-btn.active {
   box-shadow: var(--shadow-active) !important;
 }
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i] {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytInlinePlayerControlsTopRightControlsCircleButton {
+html[data-ypp-ui-design="ocean"] .ytInlinePlayerControlsTopRightControlsCircleButton {
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+html[data-ypp-ui-design="ocean"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i] {
   box-shadow: var(--shadow-active) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-alert-with-button-renderer[type=INFO] {
+html[data-ypp-ui-design="ocean"] ytd-alert-with-button-renderer[type=INFO] {
   box-shadow: var(--shadow-base) !important;
   border-radius: 20px;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-thumbnail-overlay-toggle-button-renderer {
+html[data-ypp-ui-design="ocean"] ytd-thumbnail-overlay-toggle-button-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+html[data-ypp-ui-design="ocean"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+html[data-ypp-ui-design="ocean"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+html[data-ypp-ui-design="ocean"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.06);
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+html[data-ypp-ui-design="ocean"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
   transform: scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   box-shadow: none !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.06);
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
+html[data-ypp-ui-design="ocean"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
   transform: scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-design="ocean"] button.ytSpecButtonShapeNextText {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -410,19 +407,19 @@ button.ytSpecButtonShapeNextText {
     background var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-design="ocean"] button.ytSpecButtonShapeNextText:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05);
 }
 
-button.ytSpecButtonShapeNextText:active {
+html[data-ypp-ui-design="ocean"] button.ytSpecButtonShapeNextText:active {
   transform: scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-btn-primary,
-.ypp-play-all-btn,
-.ypp-health-btn {
+html[data-ypp-ui-design="ocean"] .ypp-btn-primary,
+html[data-ypp-ui-design="ocean"] .ypp-play-all-btn,
+html[data-ypp-ui-design="ocean"] .ypp-health-btn {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -430,21 +427,21 @@ button.ytSpecButtonShapeNextText:active {
     background var(--bounce) !important;
 }
 
-.ypp-btn-primary:hover,
-.ypp-play-all-btn:hover,
-.ypp-health-btn:hover {
+html[data-ypp-ui-design="ocean"] .ypp-btn-primary:hover,
+html[data-ypp-ui-design="ocean"] .ypp-play-all-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-health-btn:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05) !important;
 }
 
-.ypp-btn-primary:active,
-.ypp-play-all-btn:active,
-.ypp-health-btn:active {
+html[data-ypp-ui-design="ocean"] .ypp-btn-primary:active,
+html[data-ypp-ui-design="ocean"] .ypp-play-all-btn:active,
+html[data-ypp-ui-design="ocean"] .ypp-health-btn:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-pill-toggle {
+html[data-ypp-ui-design="ocean"] .ypp-pill-toggle {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -452,104 +449,104 @@ button.ytSpecButtonShapeNextText:active {
     background var(--bounce) !important;
 }
 
-.ypp-pill-toggle:hover {
+html[data-ypp-ui-design="ocean"] .ypp-pill-toggle:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05) !important;
 }
 
 /* src/content/themes/ui-styles/ocean/components/cards.css */
-ytd-playlist-panel-video-renderer[selected][use-color-palette],
-ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+html[data-ypp-ui-design="ocean"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-ui-design="ocean"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-active) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+html[data-ypp-ui-design="ocean"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-expandable-metadata-renderer:not([is-expanded]) {
+html[data-ypp-ui-design="ocean"] ytd-expandable-metadata-renderer:not([is-expanded]) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-expandable-metadata-renderer:not([is-expanded]):hover {
+html[data-ypp-ui-design="ocean"] ytd-expandable-metadata-renderer:not([is-expanded]):hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-expandable-metadata-renderer {
+html[data-ypp-ui-design="ocean"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
+html[data-ypp-ui-design="ocean"] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytProgressBarLineProgressBarLine,
-.ytProgressBarLineProgressBarBackground,
-.ytProgressBarLineProgressBarLoaded,
-.ytProgressBarLineProgressBarHovered,
-.ytProgressBarLineProgressBarPlayed,
-.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+html[data-ypp-ui-design="ocean"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-design="ocean"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-design="ocean"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-design="ocean"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-design="ocean"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-design="ocean"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.yt-badge-shape--thumbnail-default {
+html[data-ypp-ui-design="ocean"] .yt-badge-shape--thumbnail-default {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.immersive-header-container.ytd-playlist-header-renderer {
+html[data-ypp-ui-design="ocean"] .immersive-header-container.ytd-playlist-header-renderer {
   box-shadow: var(--shadow-active) !important;
 }
 
-ytd-playlist-video-renderer:not(.dragging) {
+html[data-ypp-ui-design="ocean"] ytd-playlist-video-renderer:not(.dragging) {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-ytd-playlist-video-renderer:not(.dragging):hover {
+html[data-ypp-ui-design="ocean"] ytd-playlist-video-renderer:not(.dragging):hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-macro-markers-list-item-renderer {
+html[data-ypp-ui-design="ocean"] ytd-macro-markers-list-item-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-topbar-logo-renderer {
+html[data-ypp-ui-design="ocean"] ytd-topbar-logo-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-topbar-logo-renderer:hover {
+html[data-ypp-ui-design="ocean"] ytd-topbar-logo-renderer:hover {
   transform: scale(1.02) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
+html[data-ypp-ui-design="ocean"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-ui-design="ocean"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-design="ocean"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-settings-options-renderer,
-ytd-account-settings-renderer {
+html[data-ypp-ui-design="ocean"] ytd-settings-options-renderer,
+html[data-ypp-ui-design="ocean"] ytd-account-settings-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-ytd-reel-video-renderer {
+html[data-ypp-ui-design="ocean"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-.overlay-dir.ytd-reel-video-renderer {
+html[data-ypp-ui-design="ocean"] .overlay-dir.ytd-reel-video-renderer {
   background:
     linear-gradient(
       to top,
@@ -557,18 +554,18 @@ ytd-reel-video-renderer {
       transparent 40%) !important;
 }
 
-ytd-unified-share-panel-renderer,
-ytd-add-to-playlist-renderer {
+html[data-ypp-ui-design="ocean"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="ocean"] ytd-add-to-playlist-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-reel-video-renderer[is-active] {
+html[data-ypp-ui-design="ocean"] ytd-reel-video-renderer[is-active] {
   border-radius: var(--ypp-shape-primary, 32px) !important;
   box-shadow: 0 0 40px rgba(0, 188, 212, 0.15) !important;
 }
 
-.overlay.ytd-reel-video-renderer {
+html[data-ypp-ui-design="ocean"] .overlay.ytd-reel-video-renderer {
   background:
     linear-gradient(
       to top,
@@ -576,8 +573,8 @@ ytd-reel-video-renderer[is-active] {
       rgba(0, 26, 51, 0) 40%) !important;
 }
 
-.ypp-adjust-card,
-.ypp-filter-card {
+html[data-ypp-ui-design="ocean"] .ypp-adjust-card,
+html[data-ypp-ui-design="ocean"] .ypp-filter-card {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -585,50 +582,50 @@ ytd-reel-video-renderer[is-active] {
     background var(--bounce) !important;
 }
 
-.ypp-adjust-card:hover,
-.ypp-filter-card:hover {
+html[data-ypp-ui-design="ocean"] .ypp-adjust-card:hover,
+html[data-ypp-ui-design="ocean"] .ypp-filter-card:hover {
   box-shadow: var(--shadow-base) !important;
 }
 
-ytd-rich-grid-media,
-ytd-compact-video-renderer,
-ytd-playlist-panel-video-renderer,
-ytd-video-renderer,
-ytd-grid-video-renderer {
+html[data-ypp-ui-design="ocean"] ytd-rich-grid-media,
+html[data-ypp-ui-design="ocean"] ytd-compact-video-renderer,
+html[data-ypp-ui-design="ocean"] ytd-playlist-panel-video-renderer,
+html[data-ypp-ui-design="ocean"] ytd-video-renderer,
+html[data-ypp-ui-design="ocean"] ytd-grid-video-renderer {
   -webkit-backdrop-filter: blur(var(--blur)) !important;
   backdrop-filter: blur(var(--blur)) !important;
 }
 
-ytd-reel-player-overlay-renderer {
+html[data-ypp-ui-design="ocean"] ytd-reel-player-overlay-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-#ypp-pl-root .ypp-pl-card {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-card {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-card:hover {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-card:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-#ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card {
   box-shadow: none !important;
 }
 
-#ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-cols-1 .ypp-pl-card:hover {
   transform: none !important;
 }
 
-#ypp-pl-root .ypp-pl-duration-card {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-duration-card {
   box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+html[data-ypp-ui-design="ocean"] .ypp-gpb-btn,
+html[data-ypp-ui-design="ocean"] .ypp-action-btn,
+html[data-ypp-ui-design="ocean"] .ypp-icon-btn {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -636,16 +633,16 @@ ytd-reel-player-overlay-renderer {
     background var(--bounce) !important;
 }
 
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
+html[data-ypp-ui-design="ocean"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-icon-btn:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1) !important;
 }
 
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
+html[data-ypp-ui-design="ocean"] .ypp-gpb-btn:active,
+html[data-ypp-ui-design="ocean"] .ypp-action-btn:active,
+html[data-ypp-ui-design="ocean"] .ypp-icon-btn:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
@@ -659,27 +656,21 @@ html[data-ypp-card-style="ocean"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-de
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="ocean"] h1, html[data-ypp-card-style="ocean"] h2, html[data-ypp-card-style="ocean"] h3, 
-html[data-ypp-card-style="ocean"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="ocean"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="ocean"] h1, html[data-ypp-ui-design="ocean"] h2, html[data-ypp-ui-design="ocean"] h3, 
-html[data-ypp-ui-design="ocean"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="ocean"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="ocean"] h1, html[data-ypp-card-style="ocean"] h2, html[data-ypp-card-style="ocean"] h3, html[data-ypp-card-style="ocean"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="ocean"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="ocean"] h1, html[data-ypp-ui-design="ocean"] h2, html[data-ypp-ui-design="ocean"] h3, html[data-ypp-ui-design="ocean"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="ocean"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="ocean"] ytd-thumbnail, html[data-ypp-card-style="ocean"] yt-image,
-html[data-ypp-ui-design="ocean"] ytd-thumbnail, html[data-ypp-ui-design="ocean"] yt-image {
+html[data-ypp-card-style="ocean"] ytd-thumbnail, html[data-ypp-card-style="ocean"] yt-image, html[data-ypp-ui-design="ocean"] ytd-thumbnail, html[data-ypp-ui-design="ocean"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="ocean"] yt-img-shadow, html[data-ypp-card-style="ocean"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="ocean"] yt-img-shadow, html[data-ypp-ui-design="ocean"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="ocean"] yt-img-shadow, html[data-ypp-card-style="ocean"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="ocean"] yt-img-shadow, html[data-ypp-ui-design="ocean"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -731,8 +722,7 @@ html[data-ypp-card-style="ocean"] .ytp-tooltip, html[data-ypp-ui-design="ocean"]
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="ocean"] tp-yt-paper-dialog, html[data-ypp-card-style="ocean"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="ocean"] tp-yt-paper-dialog, html[data-ypp-ui-design="ocean"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="ocean"] tp-yt-paper-dialog, html[data-ypp-card-style="ocean"] ytd-menu-popup-renderer, html[data-ypp-ui-design="ocean"] tp-yt-paper-dialog, html[data-ypp-ui-design="ocean"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -773,8 +763,7 @@ html[data-ypp-ui-design="ocean"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="ocean"] ytd-skeleton, html[data-ypp-ui-design="ocean"] ytd-skeleton, 
-html[data-ypp-card-style="ocean"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="ocean"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="ocean"] ytd-skeleton, html[data-ypp-ui-design="ocean"] ytd-skeleton, html[data-ypp-card-style="ocean"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="ocean"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -807,7 +796,7 @@ html[data-ypp-card-style="ocean"] yt-icon:hover, html[data-ypp-ui-design="ocean"
 
 /* 30. Offline & Error Screens */
 
-#trigger.tp-yt-paper-menu-button {
+html[data-ypp-ui-design="ocean"] #trigger.tp-yt-paper-menu-button {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -815,103 +804,103 @@ html[data-ypp-card-style="ocean"] yt-icon:hover, html[data-ypp-ui-design="ocean"
     background var(--bounce) !important;
 }
 
-#trigger.tp-yt-paper-menu-button:hover {
+html[data-ypp-ui-design="ocean"] #trigger.tp-yt-paper-menu-button:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytLockupMetadataViewModelMenuButton button-view-model,
-.ytLockupMetadataViewModelMenuButton button {
+html[data-ypp-ui-design="ocean"] .ytLockupMetadataViewModelMenuButton button-view-model,
+html[data-ypp-ui-design="ocean"] .ytLockupMetadataViewModelMenuButton button {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: background var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytLockupMetadataViewModelMenuButton button:hover {
+html[data-ypp-ui-design="ocean"] .ytLockupMetadataViewModelMenuButton button:hover {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
   transform: none !important;
 }
 
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+html[data-ypp-ui-design="ocean"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+html[data-ypp-ui-design="ocean"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
   transform: scale(1.02);
   box-shadow: var(--shadow-hover) !important;
 }
 
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="ocean"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="ocean"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="ocean"] ytd-video-preview,
+html[data-ypp-ui-design="ocean"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-design="ocean"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
   transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
 }
 
-.tp-yt-paper-tooltip[style-target=tooltip] {
+html[data-ypp-ui-design="ocean"] .tp-yt-paper-tooltip[style-target=tooltip] {
   box-shadow: var(--shadow-active) !important;
 }
 
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+html[data-ypp-ui-design="ocean"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="ocean"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-ui-design="ocean"] tp-yt-paper-item.ytd-menu-service-item-download-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+html[data-ypp-ui-design="ocean"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="ocean"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-design="ocean"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
   transform: scale(1.04) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+html[data-ypp-ui-design="ocean"] tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
   box-shadow: var(--shadow-hover) !important;
 }
 
-a.yt-simple-endpoint.yt-dropdown-menu {
+html[data-ypp-ui-design="ocean"] a.yt-simple-endpoint.yt-dropdown-menu {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
+html[data-ypp-ui-design="ocean"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
   transform: scale(1.05) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ypp-account-menu,
-#ypp-top-bar {
+html[data-ypp-ui-design="ocean"] .ypp-account-menu,
+html[data-ypp-ui-design="ocean"] #ypp-top-bar {
   box-shadow: var(--shadow-base) !important;
 }
 
-tp-yt-paper-toast {
+html[data-ypp-ui-design="ocean"] tp-yt-paper-toast {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-masthead #container {
+html[data-ypp-ui-design="ocean"] ytd-masthead #container {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="ocean"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-design="ocean"] .ypp-nav-btn,
+html[data-ypp-ui-design="ocean"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="ocean"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="ocean"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -919,7 +908,7 @@ yt-button-shape button[title*="Download" i] {
     background var(--bounce) !important;
 }
 
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+html[data-ypp-ui-design="ocean"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -927,58 +916,58 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
     background var(--bounce) !important;
 }
 
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+html[data-ypp-ui-design="ocean"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-.anchored-panel.ytd-shorts {
+html[data-ypp-ui-design="ocean"] .anchored-panel.ytd-shorts {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+html[data-ypp-ui-design="ocean"] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-#wrapper.ytd-channel-avatar-editor {
+html[data-ypp-ui-design="ocean"] #wrapper.ytd-channel-avatar-editor {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-yt-img-shadow.ytd-topbar-menu-button-renderer,
-yt-img-shadow.ytd-comment-view-model,
-yt-img-shadow.ytd-channel-name,
-yt-img-shadow.ytd-video-owner-renderer {
+html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-topbar-menu-button-renderer,
+html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-comment-view-model,
+html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-channel-name,
+html[data-ypp-ui-design="ocean"] yt-img-shadow.ytd-video-owner-renderer {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   border-radius: var(--ypp-shape-primary, 50%) !important;
   box-shadow: 0 0 12px rgba(0, 188, 212, 0.2);
 }
 
-ytd-video-renderer,
-ytd-channel-renderer,
-ytd-playlist-renderer,
-ytd-radio-renderer {
+html[data-ypp-ui-design="ocean"] ytd-video-renderer,
+html[data-ypp-ui-design="ocean"] ytd-channel-renderer,
+html[data-ypp-ui-design="ocean"] ytd-playlist-renderer,
+html[data-ypp-ui-design="ocean"] ytd-radio-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
-ytd-notification-topbar-button-renderer.ytd-masthead,
-yt-icon-button.ytd-masthead,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="ocean"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="ocean"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-design="ocean"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="ocean"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
+html[data-ypp-ui-design="ocean"] tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button),
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="ocean"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -986,27 +975,27 @@ yt-button-shape button[title*="Download" i] {
     background var(--bounce) !important;
 }
 
-ytd-comment-view-model button,
-ytd-comment-renderer button {
+html[data-ypp-ui-design="ocean"] ytd-comment-view-model button,
+html[data-ypp-ui-design="ocean"] ytd-comment-renderer button {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
   transform: none !important;
 }
 
-ytd-comment-view-model button:hover,
-ytd-comment-renderer button:hover {
+html[data-ypp-ui-design="ocean"] ytd-comment-view-model button:hover,
+html[data-ypp-ui-design="ocean"] ytd-comment-renderer button:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
   transform: none !important;
 }
 
 /* src/content/themes/ui-styles/ocean/pages/comments.css */
-ytd-comments-header-renderer[engagement-panel] {
+html[data-ypp-ui-design="ocean"] ytd-comments-header-renderer[engagement-panel] {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-ytd-comment-thread-renderer,
-ytd-comment-view-model {
+html[data-ypp-ui-design="ocean"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="ocean"] ytd-comment-view-model {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
@@ -1015,29 +1004,29 @@ ytd-comment-view-model {
     background var(--bounce) !important;
 }
 
-ytd-comment-simplebox-renderer {
+html[data-ypp-ui-design="ocean"] ytd-comment-simplebox-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-ytd-comment-thread-renderer {
+html[data-ypp-ui-design="ocean"] ytd-comment-thread-renderer {
   -webkit-backdrop-filter: blur(var(--blur)) !important;
   backdrop-filter: blur(var(--blur)) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-#placeholder-area.ytd-comment-simplebox-renderer {
+html[data-ypp-ui-design="ocean"] #placeholder-area.ytd-comment-simplebox-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-#guide-wrapper.ytd-app {
+html[data-ypp-ui-design="ocean"] #guide-wrapper.ytd-app {
   border-radius: var(--ypp-shape-primary, calc(20px * 1.15) / 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-yt-icon-button#guide-button {
+html[data-ypp-ui-design="ocean"] yt-icon-button#guide-button {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -1045,32 +1034,32 @@ yt-icon-button#guide-button {
     background var(--bounce) !important;
 }
 
-yt-icon-button#guide-button:hover {
+html[data-ypp-ui-design="ocean"] yt-icon-button#guide-button:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-yt-icon-button#guide-button:active {
+html[data-ypp-ui-design="ocean"] yt-icon-button#guide-button:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
 /* src/content/themes/ui-styles/ocean/pages/home.css */
-#description.ytd-watch-metadata,
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+html[data-ypp-ui-design="ocean"] #description.ytd-watch-metadata,
+html[data-ypp-ui-design="ocean"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-ytd-browse[page-subtype=home] #chips {
+html[data-ypp-ui-design="ocean"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-design="ocean"] ytd-browse[page-subtype=home] #chips {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-active) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+html[data-ypp-ui-design="ocean"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
@@ -1080,43 +1069,43 @@ ytd-browse[page-subtype=home] #chips {
     border-radius var(--bounce) !important;
 }
 
-ytd-mini-guide-entry-renderer {
+html[data-ypp-ui-design="ocean"] ytd-mini-guide-entry-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytChipShapeChip {
+html[data-ypp-ui-design="ocean"] .ytChipShapeChip {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-settings-sidebar-renderer {
+html[data-ypp-ui-design="ocean"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-#ypp-pl-root .ypp-pl-sidebar {
+html[data-ypp-ui-design="ocean"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: var(--shadow-base) !important;
 }
 
-yt-live-chat-app,
-yt-live-chat-renderer {
+html[data-ypp-ui-design="ocean"] yt-live-chat-app,
+html[data-ypp-ui-design="ocean"] yt-live-chat-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-yt-live-chat-text-message-renderer,
-yt-live-chat-paid-message-renderer,
-yt-live-chat-membership-item-renderer {
+html[data-ypp-ui-design="ocean"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="ocean"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="ocean"] yt-live-chat-membership-item-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform 0.2s, background 0.2s !important;
 }
 
-#message-input.yt-live-chat-text-input-field-renderer {
+html[data-ypp-ui-design="ocean"] #message-input.yt-live-chat-text-input-field-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -1124,31 +1113,29 @@ yt-live-chat-membership-item-renderer {
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.02);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
-.ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *),
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button), html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *), html[data-ypp-ui-design="ocean"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-chrome-bottom.ytp-volume-slider-active .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
@@ -1156,56 +1143,56 @@ yt-live-chat-membership-item-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ytp-fullscreen-grid-expand-button {
+html[data-ypp-ui-design="ocean"] .ytp-fullscreen-grid-expand-button {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-fullscreen-grid-expand-button:hover {
+html[data-ypp-ui-design="ocean"] .ytp-fullscreen-grid-expand-button:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytp-menuitem:not([aria-disabled=true]) {
+html[data-ypp-ui-design="ocean"] .ytp-menuitem:not([aria-disabled=true]) {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytp-menuitem:not([aria-disabled=true]):hover {
+html[data-ypp-ui-design="ocean"] .ytp-menuitem:not([aria-disabled=true]):hover {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytp-delhi-modern .ytp-popup {
+html[data-ypp-ui-design="ocean"] .ytp-delhi-modern .ytp-popup {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ytp-popup.ytp-delhi-modern-contextmenu {
+html[data-ypp-ui-design="ocean"] .ytp-popup.ytp-delhi-modern-contextmenu {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: none !important;
 }
 
-.ytp-panel {
+html[data-ypp-ui-design="ocean"] .ytp-panel {
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
 /* src/content/themes/ui-styles/ocean/pages/watch.css */
-video.video-stream.html5-main-video,
-.html5-video-player {
+html[data-ypp-ui-design="ocean"] video.video-stream.html5-main-video,
+html[data-ypp-ui-design="ocean"] .html5-video-player {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBox {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-.ytSearchboxComponentSearchButton {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentSearchButton {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition:
     transform var(--bounce),
@@ -1213,81 +1200,80 @@ video.video-stream.html5-main-video,
     background var(--bounce) !important;
 }
 
-.ytSearchboxComponentSearchButton:hover {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentSearchButton:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-.ytSearchboxComponentSearchButton:active {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentSearchButton:active {
   transform: scale(0.95);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytSearchboxComponentSuggestionsContainer,
-ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-design="ocean"] ytd-multi-page-menu-renderer {
   box-shadow: var(--shadow-hover) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox,
-ytd-searchbox #container {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBox,
+html[data-ypp-ui-design="ocean"] ytd-searchbox #container {
   -webkit-backdrop-filter: blur(var(--blur)) !important;
   backdrop-filter: blur(var(--blur)) !important;
   border-radius: var(--ypp-shape-primary, 50px) !important;
   box-shadow: inset 0 0 10px rgba(0, 188, 212, 0.05);
 }
 
-.ytSearchboxComponentInputBoxDark:focus-within,
-.ytSearchboxComponentInputBox:focus-within,
-ytd-searchbox #container:focus-within {
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBoxDark:focus-within,
+html[data-ypp-ui-design="ocean"] .ytSearchboxComponentInputBox:focus-within,
+html[data-ypp-ui-design="ocean"] ytd-searchbox #container:focus-within {
   box-shadow: 0 0 20px rgba(0, 188, 212, 0.3), inset 0 0 10px rgba(0, 188, 212, 0.2) !important;
 }
 
-ytd-search-filter-group-renderer {
+html[data-ypp-ui-design="ocean"] ytd-search-filter-group-renderer {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-.ypp-eq-preset-btn,
-.ypp-cinema-tab-btn,
-.ypp-vcp-compare-toggle {
+html[data-ypp-ui-design="ocean"] .ypp-eq-preset-btn,
+html[data-ypp-ui-design="ocean"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-design="ocean"] .ypp-vcp-compare-toggle {
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
-.ypp-eq-preset-btn:hover,
-.ypp-cinema-tab-btn:hover,
-.ypp-vcp-compare-toggle:hover {
+html[data-ypp-ui-design="ocean"] .ypp-eq-preset-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-cinema-tab-btn:hover,
+html[data-ypp-ui-design="ocean"] .ypp-vcp-compare-toggle:hover {
   transform: scale(1.05) !important;
 }
 
-#ypp-global-player-bar,
-.ypp-global-bar {
+html[data-ypp-ui-design="ocean"] #ypp-global-player-bar,
+html[data-ypp-ui-design="ocean"] .ypp-global-bar {
   box-shadow: var(--shadow-base) !important;
 }
 
-#ypp-eq-panel,
-#ypp-cinema-panel {
+html[data-ypp-ui-design="ocean"] #ypp-eq-panel,
+html[data-ypp-ui-design="ocean"] #ypp-cinema-panel {
   box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
 }
 
-.ypp-global-player-bar,
-#ypp-global-player-bar {
+html[data-ypp-ui-design="ocean"] .ypp-global-player-bar,
+html[data-ypp-ui-design="ocean"] #ypp-global-player-bar {
   box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
 
-.ypp-eq-canvas {
+html[data-ypp-ui-design="ocean"] .ypp-eq-canvas {
   border-radius: var(--ypp-shape-primary, 4px 24px 24px 24px) !important;
-}
 }

@@ -33,10 +33,7 @@
   to {
     transform: translateY(0) scale(1);
   }
-}
-
-html[data-ypp-ui-design="blue-sky"] {
-/* Unique Shapes and Patterns for blue-sky */
+}/* Unique Shapes and Patterns for blue-sky */
 
 /* ── Card soar: upward float on hover ── */
 
@@ -124,7 +121,8 @@ html[data-ypp-theme="blue-sky"] .ytp-play-progress::before {
 /* ── Global text: dark for readability on light glass ── */
 html[data-ypp-theme="blue-sky"] #video-title,
 html[data-ypp-theme="blue-sky"] yt-formatted-string.ytd-video-primary-info-renderer,
-html[data-ypp-theme="blue-sky"] h1, html[data-ypp-theme="blue-sky"] h2,
+html[data-ypp-theme="blue-sky"] h1,
+html[data-ypp-theme="blue-sky"] h2,
 html[data-ypp-theme="blue-sky"] h3 {
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5) !important;
 }
@@ -135,7 +133,7 @@ html[data-ypp-theme="blue-sky"] .ypp-modal-content,
 html[data-ypp-theme="blue-sky"] ytd-unified-share-panel-renderer,
 html[data-ypp-theme="blue-sky"] ytd-add-to-playlist-renderer {
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
-    backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-modal)) !important;
   box-shadow:
     0 32px 80px rgba(0, 100, 180, 0.25),
@@ -146,7 +144,7 @@ html[data-ypp-theme="blue-sky"] ytd-add-to-playlist-renderer {
 html[data-ypp-theme="blue-sky"] .ypp-adjust-card,
 html[data-ypp-theme="blue-sky"] .ypp-filter-card {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -170,7 +168,7 @@ html[data-ypp-theme="blue-sky"] .ypp-gpb-vol-slider {
 /* ── Filter dropdown ── */
 html[data-ypp-theme="blue-sky"] .ypp-filter-dropdown {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -182,7 +180,7 @@ html[data-ypp-theme="blue-sky"] .ypp-filter-dropdown:hover {
 html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion {
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
 }
 
 html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion:hover {
@@ -193,12 +191,12 @@ html[data-ypp-theme="blue-sky"] .ytSuggestionComponentRoundedSuggestion:hover {
 /* ── Playlist panel ── */
 html[data-ypp-theme="blue-sky"] ytd-playlist-panel-renderer {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
 }
 
 html[data-ypp-theme="blue-sky"] tp-yt-app-drawer.ytd-app #contentContainer.tp-yt-app-drawer {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
 }
 
 /* ── Channel tabs ── */
@@ -215,7 +213,7 @@ html[data-ypp-theme="blue-sky"] .tab-content.tp-yt-paper-tab:hover {
 html[data-ypp-theme="blue-sky"] #simplebox-placeholder,
 html[data-ypp-theme="blue-sky"] ytd-commentbox {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -226,7 +224,7 @@ html[data-ypp-theme="blue-sky"] ytd-commentbox:focus-within {
 /* ── Player controls area ── */
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -251,7 +249,7 @@ html[data-ypp-theme="blue-sky"] .ypp-icon-btn,
 html[data-ypp-theme="blue-sky"] .ypp-video-controls,
 html[data-ypp-theme="blue-sky"] .ypp-shadow-panel {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -276,7 +274,7 @@ html[data-ypp-theme="blue-sky"] .ypp-icon-btn:active {
 html[data-ypp-theme="blue-sky"] ytd-settings-options-renderer,
 html[data-ypp-theme="blue-sky"] ytd-account-settings-renderer {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -284,7 +282,7 @@ html[data-ypp-theme="blue-sky"] ytd-account-settings-renderer {
 /* ── Reel videos ── */
 html[data-ypp-theme="blue-sky"] ytd-reel-video-renderer {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -294,12 +292,12 @@ html[data-ypp-theme="blue-sky"] ytd-reel-player-overlay-renderer {
 }
 
 /* Dialogs for blue-sky */
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="blue-sky"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5) !important;
 }
 
-yt-icon:hover {
+html[data-ypp-ui-design="blue-sky"] yt-icon:hover {
   transform: scale(1.1);
 }
 
@@ -312,27 +310,21 @@ html[data-ypp-card-style="blue-sky"] ::-webkit-scrollbar-thumb, html[data-ypp-ui
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="blue-sky"] h1, html[data-ypp-card-style="blue-sky"] h2, html[data-ypp-card-style="blue-sky"] h3, 
-html[data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="blue-sky"] h1, html[data-ypp-ui-design="blue-sky"] h2, html[data-ypp-ui-design="blue-sky"] h3, 
-html[data-ypp-ui-design="blue-sky"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="blue-sky"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="blue-sky"] h1, html[data-ypp-card-style="blue-sky"] h2, html[data-ypp-card-style="blue-sky"] h3, html[data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="blue-sky"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="blue-sky"] h1, html[data-ypp-ui-design="blue-sky"] h2, html[data-ypp-ui-design="blue-sky"] h3, html[data-ypp-ui-design="blue-sky"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="blue-sky"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="blue-sky"] ytd-thumbnail, html[data-ypp-card-style="blue-sky"] yt-image,
-html[data-ypp-ui-design="blue-sky"] ytd-thumbnail, html[data-ypp-ui-design="blue-sky"] yt-image {
+html[data-ypp-card-style="blue-sky"] ytd-thumbnail, html[data-ypp-card-style="blue-sky"] yt-image, html[data-ypp-ui-design="blue-sky"] ytd-thumbnail, html[data-ypp-ui-design="blue-sky"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="blue-sky"] yt-img-shadow, html[data-ypp-card-style="blue-sky"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="blue-sky"] yt-img-shadow, html[data-ypp-ui-design="blue-sky"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="blue-sky"] yt-img-shadow, html[data-ypp-card-style="blue-sky"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="blue-sky"] yt-img-shadow, html[data-ypp-ui-design="blue-sky"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -384,8 +376,7 @@ html[data-ypp-card-style="blue-sky"] .ytp-tooltip, html[data-ypp-ui-design="blue
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="blue-sky"] tp-yt-paper-dialog, html[data-ypp-card-style="blue-sky"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="blue-sky"] tp-yt-paper-dialog, html[data-ypp-ui-design="blue-sky"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="blue-sky"] tp-yt-paper-dialog, html[data-ypp-card-style="blue-sky"] ytd-menu-popup-renderer, html[data-ypp-ui-design="blue-sky"] tp-yt-paper-dialog, html[data-ypp-ui-design="blue-sky"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -426,8 +417,7 @@ html[data-ypp-ui-design="blue-sky"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="blue-sky"] ytd-skeleton, html[data-ypp-ui-design="blue-sky"] ytd-skeleton, 
-html[data-ypp-card-style="blue-sky"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="blue-sky"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="blue-sky"] ytd-skeleton, html[data-ypp-ui-design="blue-sky"] ytd-skeleton, html[data-ypp-card-style="blue-sky"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="blue-sky"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -470,7 +460,7 @@ html[data-ypp-theme="blue-sky"] ytd-menu-popup-renderer,
 html[data-ypp-theme="blue-sky"] #contentWrapper.tp-yt-iron-dropdown > *,
 html[data-ypp-theme="blue-sky"] tp-yt-paper-dialog {
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
-    backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow:
     0 32px 80px rgba(0, 100, 200, 0.20),
@@ -514,7 +504,7 @@ html[data-ypp-theme="blue-sky"] #trigger.tp-yt-paper-menu-button:hover {
 /* ── Tooltip ── */
 html[data-ypp-theme="blue-sky"] .tp-yt-paper-tooltip[style-target=tooltip] {
   -webkit-backdrop-filter: blur(16px) !important;
-    backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -523,7 +513,7 @@ html[data-ypp-theme="blue-sky"] .tp-yt-paper-tooltip[style-target=tooltip] {
 html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox,
 html[data-ypp-theme="blue-sky"] tp-yt-paper-listbox.yt-dropdown-menu {
   -webkit-backdrop-filter: blur(20px) !important;
-    backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -539,7 +529,7 @@ html[data-ypp-theme="blue-sky"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
 html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button {
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button:hover {
@@ -549,7 +539,7 @@ html[data-ypp-theme="blue-sky"] .ytLockupMetadataViewModelMenuButton button:hove
 /* ── Toast notifications ── */
 html[data-ypp-theme="blue-sky"] tp-yt-paper-toast {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
   box-shadow: var(--sky-shadow-hover) !important;
 }
@@ -558,44 +548,44 @@ html[data-ypp-theme="blue-sky"] tp-yt-paper-toast {
 html[data-ypp-theme="blue-sky"] .ypp-account-menu,
 html[data-ypp-theme="blue-sky"] #ypp-top-bar {
   -webkit-backdrop-filter: var(--sky-blur-nav) !important;
-    backdrop-filter: var(--sky-blur-nav) !important;
+  backdrop-filter: var(--sky-blur-nav) !important;
   box-shadow: var(--sky-shadow-nav) !important;
 }
 
 /* Navbar UI for blue-sky */
-ytd-masthead {
+html[data-ypp-ui-design="blue-sky"] ytd-masthead {
   box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5);
 }
 
-ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-ui-design="blue-sky"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 30px 0 0 30px) !important;
 }
 
-ytd-searchbox #search-icon-legacy.ytd-searchbox {
+html[data-ypp-ui-design="blue-sky"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0 30px 30px 0) !important;
 }
 
-#voice-search-button {
+html[data-ypp-ui-design="blue-sky"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Panels for blue-sky */
 
-ytd-live-chat-frame {
+html[data-ypp-ui-design="blue-sky"] ytd-live-chat-frame {
   border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
 /* Sidebar for blue-sky */
 
 /* Channels for blue-sky */
-#channel-header-banner {
+html[data-ypp-ui-design="blue-sky"] #channel-header-banner {
   border-radius: 30px 30px 0 0;
 }
 
 /* ── Individual comment threads ── */
 html[data-ypp-theme="blue-sky"] ytd-comment-thread-renderer {
   -webkit-backdrop-filter: blur(14px) !important;
-    backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -612,7 +602,7 @@ html[data-ypp-theme="blue-sky"] ytd-comment-renderer[is-pinned] {
 html[data-ypp-theme="blue-sky"] #placeholder-area,
 html[data-ypp-theme="blue-sky"] ytd-commentbox {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -638,7 +628,7 @@ html[data-ypp-theme="blue-sky"] ytd-comment-renderer #author-thumbnail img {
 html[data-ypp-theme="blue-sky"] yt-live-chat-renderer,
 html[data-ypp-theme="blue-sky"] ytd-live-chat-frame {
   -webkit-backdrop-filter: var(--sky-blur-card) !important;
-    backdrop-filter: var(--sky-blur-card) !important;
+  backdrop-filter: var(--sky-blur-card) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -646,7 +636,7 @@ html[data-ypp-theme="blue-sky"] ytd-live-chat-frame {
 /* ── Chat header ── */
 html[data-ypp-theme="blue-sky"] yt-live-chat-header-renderer {
   -webkit-backdrop-filter: blur(15px) !important;
-    backdrop-filter: blur(15px) !important;
+  backdrop-filter: blur(15px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip) var(--sky-shape-chip) 0 0) !important;
 }
 
@@ -656,7 +646,7 @@ html[data-ypp-theme="blue-sky"] yt-live-chat-header-renderer {
 html[data-ypp-theme="blue-sky"] #input-container,
 html[data-ypp-theme="blue-sky"] yt-live-chat-text-input-field-renderer {
   -webkit-backdrop-filter: blur(12px) !important;
-    backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
   box-shadow: var(--sky-shadow-card) !important;
 }
@@ -695,7 +685,7 @@ html[data-ypp-theme="blue-sky"] .html5-video-player {
 /* ── Player chrome controls ── */
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   -webkit-backdrop-filter: blur(12px) !important;
-    backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -711,7 +701,7 @@ html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-righ
 
 html[data-ypp-theme="blue-sky"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   box-shadow: var(--sky-shadow-card) !important;
   transform: scale(1.06) !important;
 }
@@ -736,21 +726,18 @@ html[data-ypp-theme="blue-sky"] .ytp-scrubber-button {
 }
 
 /* ── Control buttons (play, skip, settings etc.) ── */
-html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button),
-html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *) {
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button), html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *) {
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
-html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover,
-html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover {
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):hover, html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):hover {
   -webkit-backdrop-filter: blur(8px) !important;
-    backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   box-shadow: var(--sky-shadow-card) !important;
   transform: scale(1.08) !important;
 }
 
-html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active,
-html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active {
+html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-chrome-controls .ytp-button:not(.ytp-right-controls .ytp-button, .ytp-volume-icon.ytp-button):active, html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-miniplayer-ui *):active {
   transform: scale(0.95) !important;
   box-shadow: var(--sky-shadow-active) !important;
 }
@@ -758,7 +745,7 @@ html[data-ypp-theme="blue-sky"] .ytp-delhi-modern .ytp-time-wrapper:not(.ytp-min
 /* ── Fullscreen expand ── */
 html[data-ypp-theme="blue-sky"] .ytp-fullscreen-grid-expand-button {
   -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-chip)) !important;
 }
 
@@ -771,7 +758,7 @@ html[data-ypp-theme="blue-sky"] .ytp-fullscreen-grid-expand-button:hover {
 html[data-ypp-theme="blue-sky"] .ytp-panel,
 html[data-ypp-theme="blue-sky"] .ytp-popup.ytp-settings-menu {
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
-    backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-hover) !important;
 }
@@ -787,24 +774,24 @@ html[data-ypp-theme="blue-sky"] .ytp-menuitem:not([aria-disabled=true]):hover {
 /* ── Context menu ── */
 html[data-ypp-theme="blue-sky"] .ytp-popup.ytp-delhi-modern-contextmenu {
   -webkit-backdrop-filter: var(--sky-blur-modal) !important;
-    backdrop-filter: var(--sky-blur-modal) !important;
+  backdrop-filter: var(--sky-blur-modal) !important;
   border-radius: var(--ypp-shape-primary, var(--sky-shape-card)) !important;
   box-shadow: var(--sky-shadow-hover) !important;
 }
 
 /* Search for blue-sky */
 
-ytd-toggle-button-renderer a {
+html[data-ypp-ui-design="blue-sky"] ytd-toggle-button-renderer a {
   border-radius: 30px;
 }
 
 /* Watch for blue-sky */
-#ytd-player {
+html[data-ypp-ui-design="blue-sky"] #ytd-player {
   border-radius: 30px;
   box-shadow: 0 10px 20px rgba(135, 206, 235, 0.5);
 }
 
-:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-ui-design="blue-sky"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 30px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
@@ -823,4 +810,3 @@ html[data-ypp-ui-design="blue-sky"]::before {
   box-shadow: 0 0 10px rgba(0, 191, 255, 0.6) !important;
 }
 
-}

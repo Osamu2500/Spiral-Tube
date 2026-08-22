@@ -58,10 +58,7 @@
   filter:brightness(1.1) saturate(1.1);
 }
 
-}
-
-html[data-ypp-ui-design="matrix"] {
-/* Unique Shapes and Patterns for matrix */
+}/* Unique Shapes and Patterns for matrix */
 
 /* matrix/base/animations.css */
 
@@ -70,7 +67,7 @@ html[data-ypp-ui-design="matrix"] {
 
 
 /* Subscribe button */
-html[data-ypp-ui-design="matrix"] #subscribe-button .yt-spec-button-shape-next--filled ,
+html[data-ypp-ui-design="matrix"] #subscribe-button .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="matrix"] #subscribe-button yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] #subscribe-button yt-button-shape button[title*="Download" i] {
   animation: matrix-glitch 8s linear infinite !important;
@@ -90,7 +87,7 @@ html[data-ypp-ui-design="matrix"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -184,7 +181,8 @@ html[data-ypp-ui-design="matrix"] .ytProgressBarLineProgressBarPlayed {
 
 /* matrix/components/badges.css */
 html[data-ypp-ui-design="matrix"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="matrix"] .ypp-badge, html[data-ypp-ui-design="matrix"] .ypp-value-display {
+html[data-ypp-ui-design="matrix"] .ypp-badge,
+html[data-ypp-ui-design="matrix"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 10px #00ff00 !important;
 }
@@ -212,7 +210,7 @@ html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="matrix"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="matrix"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="matrix"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="matrix"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
@@ -223,7 +221,7 @@ html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i] {
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 0px) !important;
@@ -272,8 +270,7 @@ html[data-ypp-ui-design="matrix"] .ypp-btn-primary:hover, html[data-ypp-ui-desig
 }
 
 /* matrix/components/forms.css */
-html[data-ypp-ui-design="matrix"] ytd-searchbox, html[data-ypp-ui-design="matrix"] #search-form,
-html[data-ypp-ui-design="matrix"] tp-yt-paper-input, html[data-ypp-ui-design="matrix"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="matrix"] ytd-searchbox, html[data-ypp-ui-design="matrix"] #search-form, html[data-ypp-ui-design="matrix"] tp-yt-paper-input, html[data-ypp-ui-design="matrix"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -329,7 +326,7 @@ html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--overlay.yt-spec-bu
 html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="matrix"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="matrix"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="matrix"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="matrix"] yt-button-shape button[aria-label*="Download" i],
@@ -1952,9 +1949,7 @@ html[data-ypp-card-style="matrix"] .matrix-exotic-class-250, html[data-ypp-ui-de
 }
 
 /* matrix/components/menus.css */
-html[data-ypp-ui-design="matrix"] tp-yt-paper-dialog, html[data-ypp-ui-design="matrix"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="matrix"] tp-yt-iron-dropdown, html[data-ypp-ui-design="matrix"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="matrix"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="matrix"] tp-yt-paper-dialog, html[data-ypp-ui-design="matrix"] ytd-menu-popup-renderer, html[data-ypp-ui-design="matrix"] tp-yt-iron-dropdown, html[data-ypp-ui-design="matrix"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="matrix"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 20px #00ff00,0 0 40px rgba(0,255,0,0.3) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -2083,9 +2078,7 @@ html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 0 0 10px #00ff00 !important;
 }
 
-html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="matrix"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2289,4 +2282,3 @@ html[data-ypp-ui-design="matrix"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
-}

@@ -52,19 +52,19 @@ html[data-ypp-ui-design="sakura"] {
 /* Unique Shapes and Patterns for sakura */
 
 /* src/content/themes/ui-styles/vintage/base/animations.css */
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.1);
   animation: youtubeRedPulse 5s ease-in-out infinite;
 }
 
 
-body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
+html[data-ypp-ui-design="sakura"] body.yt-pro-premium ytd-topbar-logo-renderer a#logo::before {
   /* Removed broken SVG background */
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
+html[data-ypp-ui-design="sakura"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
   transform: scale(1.08) !important;
   box-shadow:
     inset 0 0 25px red,
@@ -76,101 +76,101 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
 
 
 
-ytd-rich-grid-media:hover,
-ytd-compact-video-renderer:hover,
-ytd-video-renderer:hover,
-ytd-playlist-video-renderer:hover,
-ytd-grid-video-renderer:hover {
+html[data-ypp-ui-design="sakura"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="sakura"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-grid-video-renderer:hover {
   transform: scale(1.02) !important;
   box-shadow: var(--shadow-hover) !important;
   animation: sepia-bloom 0.3s forwards !important;
 }
 
-html,
-[dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="sakura"] html,
+html[data-ypp-ui-design="sakura"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
 }
 
-.ypp-slider,
-.ypp-gpb-vol-slider {
+html[data-ypp-ui-design="sakura"] .ypp-slider,
+html[data-ypp-ui-design="sakura"] .ypp-gpb-vol-slider {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ypp-badge,
-.ypp-value-display {
+html[data-ypp-ui-design="sakura"] .ypp-badge,
+html[data-ypp-ui-design="sakura"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ypp-organizer-modal,
-.ypp-modal-content {
+html[data-ypp-ui-design="sakura"] .ypp-organizer-modal,
+html[data-ypp-ui-design="sakura"] .ypp-modal-content {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 
-.ypp-modal-header {
+html[data-ypp-ui-design="sakura"] .ypp-modal-header {
   box-shadow: none !important;
 }
 
-.tab-content.tp-yt-paper-tab {
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab {
   transition: transform var(--bounce), background var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.tab-content.tp-yt-paper-tab:hover {
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab:hover {
   transform: scale(1.05) !important;
 }
 
-::-webkit-scrollbar-track {
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-track {
   border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-#simplebox-placeholder {
+html[data-ypp-ui-design="sakura"] #simplebox-placeholder {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ypp-nav-btn.active {
+html[data-ypp-ui-design="sakura"] .ypp-nav-btn.active {
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-filter-dropdown {
+html[data-ypp-ui-design="sakura"] .ypp-filter-dropdown {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ypp-filter-dropdown:hover {
+html[data-ypp-ui-design="sakura"] .ypp-filter-dropdown:hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ypp-video-controls,
-.ypp-shadow-panel {
+html[data-ypp-ui-design="sakura"] .ypp-video-controls,
+html[data-ypp-ui-design="sakura"] .ypp-shadow-panel {
   box-shadow: var(--shadow-base) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play,
-#ypp-pl-root .ypp-pl-btn-shuffle,
-#ypp-pl-root .ypp-pl-btn-tool,
-#ypp-pl-root .ypp-pl-filter,
-#ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-play,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-shuffle,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-tool,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-filter,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-col-switcher {
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
-#ypp-pl-root .ypp-pl-btn-play:hover,
-#ypp-pl-root .ypp-pl-btn-shuffle:hover,
-#ypp-pl-root .ypp-pl-btn-tool:hover {
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-play:hover,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-shuffle:hover,
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-btn-tool:hover {
   transform: scale(1.02) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -178,58 +178,58 @@ html,
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.02);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-.ytSuggestionComponentRoundedSuggestion {
+html[data-ypp-ui-design="sakura"] .ytSuggestionComponentRoundedSuggestion {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
     box-shadow var(--bounce) !important;
 }
 
-.ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="sakura"] .ytSuggestionComponentRoundedSuggestion:hover {
   transform: scale(1.01) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
 @media (width: 1920px) {
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  html[data-ypp-ui-design="sakura"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(1.8) scaleY(1.7) translateX(130px) translateY(100px);
 }
 
 }
 /* @media (width: 1280px) { */
-  body.yt-pro-ambient #cinematics.ytd-watch-flexy {
+  html[data-ypp-ui-design="sakura"] body.yt-pro-ambient #cinematics.ytd-watch-flexy {
     transform: scaleX(2) scaleY(2.1) translateX(190px) translateY(100px) !important;
 }
 
-html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
+html[data-ypp-ui-design="sakura"] html, html[data-ypp-ui-design="sakura"] [dark] .ytSuggestionComponentRoundedSuggestion:hover {
   box-shadow: none !important;
 }
 
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -237,87 +237,87 @@ html, [dark] .ytSuggestionComponentRoundedSuggestion:hover {
     background var(--bounce) !important;
 }
 
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1) !important;
 }
 
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-slider,
-.ypp-gpb-vol-slider {
+html[data-ypp-ui-design="sakura"] .ypp-slider,
+html[data-ypp-ui-design="sakura"] .ypp-gpb-vol-slider {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ypp-badge,
-.ypp-value-display {
+html[data-ypp-ui-design="sakura"] .ypp-badge,
+html[data-ypp-ui-design="sakura"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* --- Subscriptions Sidebar / Modals --- */
-.ypp-organizer-modal,
-.ypp-modal-content {
+html[data-ypp-ui-design="sakura"] .ypp-organizer-modal,
+html[data-ypp-ui-design="sakura"] .ypp-modal-content {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
 }
 
-.ypp-modal-header {
+html[data-ypp-ui-design="sakura"] .ypp-modal-header {
   box-shadow: none !important;
 }
 
-#wrapper.ytd-channel-avatar-editor {
+html[data-ypp-ui-design="sakura"] #wrapper.ytd-channel-avatar-editor {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.tab-content.tp-yt-paper-tab {
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab {
   transition:
     transform var(--bounce),
     background var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.tab-content.tp-yt-paper-tab:hover {
+html[data-ypp-ui-design="sakura"] .tab-content.tp-yt-paper-tab:hover {
   transform: scale(1.05) !important;
 }
 
 /* Titles and Text */
-#video-title {
+html[data-ypp-ui-design="sakura"] #video-title {
   text-transform: uppercase !important;
 }
 
 /* Progress Bar */
-.ytp-play-progress {
+html[data-ypp-ui-design="sakura"] .ytp-play-progress {
   border-radius: 0px;
 }
 
-::-webkit-scrollbar-track {
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-track {
   border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-#simplebox-placeholder {
+html[data-ypp-ui-design="sakura"] #simplebox-placeholder {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-::-webkit-scrollbar-thumb {
+html[data-ypp-ui-design="sakura"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
 /* Added for HeaderNav active state */
-.ypp-nav-btn.active {
+html[data-ypp-ui-design="sakura"] .ypp-nav-btn.active {
   box-shadow: var(--shadow-active) !important;
 }
 
@@ -335,107 +335,107 @@ html[data-ypp-ui-design="sakura"] .badge-style-type-premiere {
   text-transform: uppercase !important;
 }
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover ,
-yt-button-shape button[aria-label*="Download" i]:hover,
-yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i]:hover,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i]:hover {
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytInlinePlayerControlsTopRightControlsCircleButton {
+html[data-ypp-ui-design="sakura"] .ytInlinePlayerControlsTopRightControlsCircleButton {
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytInlinePlayerControlsTopRightControlsCircleButton:hover {
+html[data-ypp-ui-design="sakura"] .ytInlinePlayerControlsTopRightControlsCircleButton:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
   box-shadow: var(--shadow-active) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-alert-with-button-renderer[type=INFO] {
+html[data-ypp-ui-design="sakura"] ytd-alert-with-button-renderer[type=INFO] {
   box-shadow: var(--shadow-base) !important;
   border-radius: 20px;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-thumbnail-overlay-toggle-button-renderer {
+html[data-ypp-ui-design="sakura"] ytd-thumbnail-overlay-toggle-button-renderer {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
+html[data-ypp-ui-design="sakura"] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.06);
 }
 
-button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextSegmentedStart):not(.ytSpecButtonShapeNextSegmentedEnd):active {
   transform: scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
   box-shadow: none !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart,
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:hover,
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.06);
 }
 
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
-.ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedStart:active,
+html[data-ypp-ui-design="sakura"] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button.ytSpecButtonShapeNextSegmentedEnd:active {
   transform: scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-button.ytSpecButtonShapeNextText {
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextText {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -443,19 +443,19 @@ button.ytSpecButtonShapeNextText {
     background var(--bounce) !important;
 }
 
-button.ytSpecButtonShapeNextText:hover {
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextText:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05);
 }
 
-button.ytSpecButtonShapeNextText:active {
+html[data-ypp-ui-design="sakura"] button.ytSpecButtonShapeNextText:active {
   transform: scale(0.97) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-btn-primary,
-.ypp-play-all-btn,
-.ypp-health-btn {
+html[data-ypp-ui-design="sakura"] .ypp-btn-primary,
+html[data-ypp-ui-design="sakura"] .ypp-play-all-btn,
+html[data-ypp-ui-design="sakura"] .ypp-health-btn {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -463,21 +463,21 @@ button.ytSpecButtonShapeNextText:active {
     background var(--bounce) !important;
 }
 
-.ypp-btn-primary:hover,
-.ypp-play-all-btn:hover,
-.ypp-health-btn:hover {
+html[data-ypp-ui-design="sakura"] .ypp-btn-primary:hover,
+html[data-ypp-ui-design="sakura"] .ypp-play-all-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-health-btn:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05) !important;
 }
 
-.ypp-btn-primary:active,
-.ypp-play-all-btn:active,
-.ypp-health-btn:active {
+html[data-ypp-ui-design="sakura"] .ypp-btn-primary:active,
+html[data-ypp-ui-design="sakura"] .ypp-play-all-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-health-btn:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.ypp-pill-toggle {
+html[data-ypp-ui-design="sakura"] .ypp-pill-toggle {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -485,7 +485,7 @@ button.ytSpecButtonShapeNextText:active {
     background var(--bounce) !important;
 }
 
-.ypp-pill-toggle:hover {
+html[data-ypp-ui-design="sakura"] .ypp-pill-toggle:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.05) !important;
 }
@@ -495,7 +495,7 @@ button.ytSpecButtonShapeNextText:active {
    Keep only the button's border, strip the wrapper. */
 html[data-ypp-ui-design="sakura"] ytd-comment-action-buttons-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-design="sakura"] #reply-button-end .yt-spec-button-shape-next,
-html[data-ypp-ui-design="sakura"] ytd-comment-replies-renderer .yt-spec-button-shape-next ,
+html[data-ypp-ui-design="sakura"] ytd-comment-replies-renderer .yt-spec-button-shape-next,
 html[data-ypp-ui-design="sakura"] ytd-comment-action-buttons-renderer yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="sakura"] ytd-comment-action-buttons-renderer yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="sakura"] #reply-button-end yt-button-shape button[aria-label*="Download" i],
@@ -508,98 +508,98 @@ html[data-ypp-ui-design="sakura"] ytd-comment-replies-renderer yt-button-shape b
 }
 
 /* src/content/themes/ui-styles/vintage/components/cards.css */
-ytd-playlist-panel-video-renderer[selected][use-color-palette],
-ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
+html[data-ypp-ui-design="sakura"] ytd-playlist-panel-video-renderer[selected][use-color-palette],
+html[data-ypp-ui-design="sakura"] ytd-playlist-panel-video-renderer[selected][use-color-palette]:hover:not(.dragging) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-active) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
+html[data-ypp-ui-design="sakura"] ytd-playlist-panel-video-renderer.ytd-playlist-panel-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-expandable-metadata-renderer:not([is-expanded]) {
+html[data-ypp-ui-design="sakura"] ytd-expandable-metadata-renderer:not([is-expanded]) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-expandable-metadata-renderer:not([is-expanded]):hover {
+html[data-ypp-ui-design="sakura"] ytd-expandable-metadata-renderer:not([is-expanded]):hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-expandable-metadata-renderer {
+html[data-ypp-ui-design="sakura"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
+html[data-ypp-ui-design="sakura"] ytd-macro-markers-list-item-renderer[modern][layout=MACRO_MARKERS_LIST_ITEM_RENDERER_LAYOUT_VERTICAL]:not([carousel-type=MACRO_MARKERS_LIST_ITEM_RENDERER_CAROUSEL_TYPE_TEXT_ONLY]) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytProgressBarLineProgressBarLine,
-.ytProgressBarLineProgressBarBackground,
-.ytProgressBarLineProgressBarLoaded,
-.ytProgressBarLineProgressBarHovered,
-.ytProgressBarLineProgressBarPlayed,
-.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarLine,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarBackground,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarLoaded,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarHovered,
+html[data-ypp-ui-design="sakura"] .ytProgressBarLineProgressBarPlayed,
+html[data-ypp-ui-design="sakura"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.yt-badge-shape--thumbnail-default {
+html[data-ypp-ui-design="sakura"] .yt-badge-shape--thumbnail-default {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.immersive-header-container.ytd-playlist-header-renderer {
+html[data-ypp-ui-design="sakura"] .immersive-header-container.ytd-playlist-header-renderer {
   box-shadow: var(--shadow-active) !important;
 }
 
-ytd-playlist-video-renderer:not(.dragging) {
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:not(.dragging) {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-ytd-playlist-video-renderer:not(.dragging):hover {
+html[data-ypp-ui-design="sakura"] ytd-playlist-video-renderer:not(.dragging):hover {
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-macro-markers-list-item-renderer {
+html[data-ypp-ui-design="sakura"] ytd-macro-markers-list-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-topbar-logo-renderer {
+html[data-ypp-ui-design="sakura"] ytd-topbar-logo-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-topbar-logo-renderer:hover {
+html[data-ypp-ui-design="sakura"] ytd-topbar-logo-renderer:hover {
   transform: scale(1.02) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
-.yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
+html[data-ypp-ui-design="sakura"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__stroke,
+html[data-ypp-ui-design="sakura"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__fill,
+html[data-ypp-ui-design="sakura"] .yt-spec-touch-feedback-shape--thumbnail-size-large .yt-spec-touch-feedback-shape__hover-effect {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-settings-options-renderer,
-ytd-account-settings-renderer {
+html[data-ypp-ui-design="sakura"] ytd-settings-options-renderer,
+html[data-ypp-ui-design="sakura"] ytd-account-settings-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-ytd-reel-video-renderer {
+html[data-ypp-ui-design="sakura"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-.overlay-dir.ytd-reel-video-renderer {
+html[data-ypp-ui-design="sakura"] .overlay-dir.ytd-reel-video-renderer {
   background:
     linear-gradient(
       to top,
@@ -607,22 +607,22 @@ ytd-reel-video-renderer {
       transparent 40%) !important;
 }
 
-ytd-unified-share-panel-renderer,
-ytd-add-to-playlist-renderer {
+html[data-ypp-ui-design="sakura"] ytd-unified-share-panel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-add-to-playlist-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-rich-grid-media:hover,
-ytd-compact-video-renderer:hover,
-ytd-video-renderer:hover {
+html[data-ypp-ui-design="sakura"] ytd-rich-grid-media:hover,
+html[data-ypp-ui-design="sakura"] ytd-compact-video-renderer:hover,
+html[data-ypp-ui-design="sakura"] ytd-video-renderer:hover {
   box-shadow: var(--shadow-hover) !important;
   border-radius: var(--ypp-shape-primary, 44% 56% 38% 62% / 50% 50% 50% 50%) !important;
   transform: translateY(-3px) scale(1.015) !important;
   animation: sakura-glow-pulse 2s ease-in-out infinite !important;
 }
 
-ytd-reel-video-renderer {
+html[data-ypp-ui-design="sakura"] ytd-reel-video-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 6px 8px 0px rgba(220, 100, 140, 0.22) !important;
 }
@@ -632,9 +632,9 @@ html[data-ypp-ui-design="sakura"] ytd-commentbox #creation-box {
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
 }
 
-.ypp-gpb-btn,
-.ypp-action-btn,
-.ypp-icon-btn {
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -642,21 +642,21 @@ html[data-ypp-ui-design="sakura"] ytd-commentbox #creation-box {
     background var(--bounce) !important;
 }
 
-.ypp-gpb-btn:hover,
-.ypp-action-btn:hover,
-.ypp-icon-btn:hover {
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1) !important;
 }
 
-.ypp-gpb-btn:active,
-.ypp-action-btn:active,
-.ypp-icon-btn:active {
+html[data-ypp-ui-design="sakura"] .ypp-gpb-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-action-btn:active,
+html[data-ypp-ui-design="sakura"] .ypp-icon-btn:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#trigger.tp-yt-paper-menu-button {
+html[data-ypp-ui-design="sakura"] #trigger.tp-yt-paper-menu-button {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -664,86 +664,86 @@ html[data-ypp-ui-design="sakura"] ytd-commentbox #creation-box {
     background var(--bounce) !important;
 }
 
-#trigger.tp-yt-paper-menu-button:hover {
+html[data-ypp-ui-design="sakura"] #trigger.tp-yt-paper-menu-button:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ytLockupMetadataViewModelMenuButton button-view-model,
-.ytLockupMetadataViewModelMenuButton button {
+html[data-ypp-ui-design="sakura"] .ytLockupMetadataViewModelMenuButton button-view-model,
+html[data-ypp-ui-design="sakura"] .ytLockupMetadataViewModelMenuButton button {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: background var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytLockupMetadataViewModelMenuButton button:hover {
+html[data-ypp-ui-design="sakura"] .ytLockupMetadataViewModelMenuButton button:hover {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.12) !important;
   transform: none !important;
 }
 
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
+html[data-ypp-ui-design="sakura"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-#items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
+html[data-ypp-ui-design="sakura"] #items.yt-multi-page-menu-section-renderer > *.yt-multi-page-menu-section-renderer:not([compact-link-style=compact-link-style-type-disclaimer]):not(ytd-message-renderer):hover {
   transform: scale(1.02);
   box-shadow: var(--shadow-hover) !important;
 }
 
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="sakura"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-ytd-menu-popup-renderer,
-ytd-video-preview,
-#contentWrapper.tp-yt-iron-dropdown > *,
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="sakura"] ytd-menu-popup-renderer,
+html[data-ypp-ui-design="sakura"] ytd-video-preview,
+html[data-ypp-ui-design="sakura"] #contentWrapper.tp-yt-iron-dropdown > *,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
   transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
 }
 
-.tp-yt-paper-tooltip[style-target=tooltip] {
+html[data-ypp-ui-design="sakura"] .tp-yt-paper-tooltip[style-target=tooltip] {
   box-shadow: var(--shadow-active) !important;
 }
 
-ytd-menu-service-item-renderer,
-.yt-list-item-view-model__container--tappable,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer {
+html[data-ypp-ui-design="sakura"] ytd-menu-service-item-renderer,
+html[data-ypp-ui-design="sakura"] .yt-list-item-view-model__container--tappable,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-item.ytd-menu-service-item-download-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-menu-service-item-renderer:hover,
-.yt-list-item-view-model__container--tappable:hover,
-tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
+html[data-ypp-ui-design="sakura"] ytd-menu-service-item-renderer:hover,
+html[data-ypp-ui-design="sakura"] .yt-list-item-view-model__container--tappable:hover,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-item.ytd-menu-service-item-download-renderer:hover {
   transform: scale(1.04) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
+html[data-ypp-ui-design="sakura"] tp-yt-paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu {
   box-shadow: var(--shadow-hover) !important;
 }
 
-a.yt-simple-endpoint.yt-dropdown-menu {
+html[data-ypp-ui-design="sakura"] a.yt-simple-endpoint.yt-dropdown-menu {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-a.yt-simple-endpoint.yt-dropdown-menu:hover {
+html[data-ypp-ui-design="sakura"] a.yt-simple-endpoint.yt-dropdown-menu:hover {
   transform: scale(1.05) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-.ypp-account-menu,
-#ypp-top-bar {
+html[data-ypp-ui-design="sakura"] .ypp-account-menu,
+html[data-ypp-ui-design="sakura"] #ypp-top-bar {
   box-shadow: var(--shadow-base) !important;
 }
 
-tp-yt-paper-toast {
+html[data-ypp-ui-design="sakura"] tp-yt-paper-toast {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
@@ -751,27 +751,27 @@ tp-yt-paper-toast {
 /* Account Menu Inline Drawers & Satellites */
 
 
-.ypp-inline-drawer {
+html[data-ypp-ui-design="sakura"] .ypp-inline-drawer {
   animation: ypp-fade-down 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.ypp-theme-opt:hover,
-.ypp-lang-opt:hover,
-.ypp-loc-opt:hover {
+html[data-ypp-ui-design="sakura"] .ypp-theme-opt:hover,
+html[data-ypp-ui-design="sakura"] .ypp-lang-opt:hover,
+html[data-ypp-ui-design="sakura"] .ypp-loc-opt:hover {
   transform: translateY(-1px);
 }
 
-.ypp-quick-sat:hover > div {
+html[data-ypp-ui-design="sakura"] .ypp-quick-sat:hover > div {
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(255, 78, 69, 0.4) !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#ypp-toggle-restricted-btn {
+html[data-ypp-ui-design="sakura"] #ypp-toggle-restricted-btn {
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
-#ypp-toggle-restricted-btn:hover {
+html[data-ypp-ui-design="sakura"] #ypp-toggle-restricted-btn:hover {
   transform: scale(1.05);
 }
 
@@ -780,19 +780,19 @@ html[data-ypp-ui-design="sakura"] .tp-yt-paper-tooltip[style-target=tooltip] {
   box-shadow: 4px 4px rgba(0,0,0,0.1) !important;
 }
 
-ytd-masthead #container {
+html[data-ypp-ui-design="sakura"] ytd-masthead #container {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#voice-search-button.ytd-masthead,
-.ypp-nav-btn,
-ytd-topbar-menu-button-renderer.ytd-masthead,
-#trailing-button.ytd-playlist-panel-renderer,
-ytd-menu-renderer .ytd-menu-renderer[style-target=button],
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="sakura"] #voice-search-button.ytd-masthead,
+html[data-ypp-ui-design="sakura"] .ypp-nav-btn,
+html[data-ypp-ui-design="sakura"] ytd-topbar-menu-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="sakura"] #trailing-button.ytd-playlist-panel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-menu-renderer .ytd-menu-renderer[style-target=button],
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -800,7 +800,7 @@ yt-button-shape button[title*="Download" i] {
     background var(--bounce) !important;
 }
 
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
+html[data-ypp-ui-design="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -808,7 +808,7 @@ ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon {
     background var(--bounce) !important;
 }
 
-ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
+html[data-ypp-ui-design="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead yt-icon-button#icon:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
@@ -851,25 +851,25 @@ html[data-ypp-ui-design="sakura"] #contentWrapper.tp-yt-iron-dropdown > * {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.anchored-panel.ytd-shorts {
+html[data-ypp-ui-design="sakura"] .anchored-panel.ytd-shorts {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
+html[data-ypp-ui-design="sakura"] #subheader.ytd-engagement-panel-title-header-renderer:not(:empty) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-#wrapper.ytd-channel-avatar-editor {
+html[data-ypp-ui-design="sakura"] #wrapper.ytd-channel-avatar-editor {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-video-renderer,
-ytd-channel-renderer,
-ytd-playlist-renderer,
-ytd-radio-renderer {
+html[data-ypp-ui-design="sakura"] ytd-video-renderer,
+html[data-ypp-ui-design="sakura"] ytd-channel-renderer,
+html[data-ypp-ui-design="sakura"] ytd-playlist-renderer,
+html[data-ypp-ui-design="sakura"] ytd-radio-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
@@ -877,19 +877,19 @@ ytd-radio-renderer {
 
 /* Channel Banner Sepia */
 
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-.yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
-ytd-notification-topbar-button-renderer.ytd-masthead,
-yt-icon-button.ytd-masthead,
-.yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
-ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
-tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button) ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="sakura"] ytd-notification-topbar-button-renderer.ytd-masthead,
+html[data-ypp-ui-design="sakura"] yt-icon-button.ytd-masthead,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model[optimal-reading-width-comments] #action-menu.ytd-comment-view-model,
+html[data-ypp-ui-design="sakura"] tp-yt-paper-menu-button.yt-dropdown-menu::not(#trigger.tp-yt-paper-menu-button),
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -897,27 +897,27 @@ yt-button-shape button[title*="Download" i] {
     background var(--bounce) !important;
 }
 
-ytd-comment-view-model button,
-ytd-comment-renderer button {
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model button,
+html[data-ypp-ui-design="sakura"] ytd-comment-renderer button {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: background 0.15s ease, box-shadow 0.15s ease !important;
   transform: none !important;
 }
 
-ytd-comment-view-model button:hover,
-ytd-comment-renderer button:hover {
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model button:hover,
+html[data-ypp-ui-design="sakura"] ytd-comment-renderer button:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
   transform: none !important;
 }
 
 /* src/content/themes/ui-styles/vintage/pages/comments.css */
-ytd-comments-header-renderer[engagement-panel] {
+html[data-ypp-ui-design="sakura"] ytd-comments-header-renderer[engagement-panel] {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-ytd-comment-thread-renderer,
-ytd-comment-view-model {
+html[data-ypp-ui-design="sakura"] ytd-comment-thread-renderer,
+html[data-ypp-ui-design="sakura"] ytd-comment-view-model {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition:
@@ -926,18 +926,18 @@ ytd-comment-view-model {
     background var(--bounce) !important;
 }
 
-ytd-comment-simplebox-renderer {
+html[data-ypp-ui-design="sakura"] ytd-comment-simplebox-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-#guide-wrapper.ytd-app {
+html[data-ypp-ui-design="sakura"] #guide-wrapper.ytd-app {
   border-radius: var(--ypp-shape-primary, calc(20px * 1.15) / 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-yt-icon-button#guide-button {
+html[data-ypp-ui-design="sakura"] yt-icon-button#guide-button {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -945,43 +945,43 @@ yt-icon-button#guide-button {
     background var(--bounce) !important;
 }
 
-yt-icon-button#guide-button:hover {
+html[data-ypp-ui-design="sakura"] yt-icon-button#guide-button:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-yt-icon-button#guide-button:active {
+html[data-ypp-ui-design="sakura"] yt-icon-button#guide-button:active {
   transform: scale(0.95) !important;
   box-shadow: var(--shadow-active) !important;
 }
 
-.yt-chip-shape,
-.yt-spec-button-shape-next--filled,
-.yt-spec-button-shape-next--tonal ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-ui-design="sakura"] .yt-chip-shape,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="sakura"] .yt-spec-button-shape-next--tonal,
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="sakura"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
 
-#description.ytd-watch-metadata,
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
+html[data-ypp-ui-design="sakura"] #description.ytd-watch-metadata,
+html[data-ypp-ui-design="sakura"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections) {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
-ytd-browse[page-subtype=home] #chips {
+html[data-ypp-ui-design="sakura"] ytd-browse[page-subtype=home] #chips:not(ytd-guide-renderer #sections),
+html[data-ypp-ui-design="sakura"] ytd-browse[page-subtype=home] #chips {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-active) !important;
   transition: box-shadow var(--bounce) !important;
 }
 
-#endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
+html[data-ypp-ui-design="sakura"] #endpoint.yt-simple-endpoint.ytd-guide-entry-renderer {
   box-shadow: none !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
@@ -991,39 +991,39 @@ ytd-browse[page-subtype=home] #chips {
     border-radius var(--bounce) !important;
 }
 
-ytd-mini-guide-entry-renderer {
+html[data-ypp-ui-design="sakura"] ytd-mini-guide-entry-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytChipShapeChip {
+html[data-ypp-ui-design="sakura"] .ytChipShapeChip {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-ytd-settings-sidebar-renderer {
+html[data-ypp-ui-design="sakura"] ytd-settings-sidebar-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-#ypp-pl-root .ypp-pl-sidebar {
+html[data-ypp-ui-design="sakura"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: var(--shadow-base) !important;
 }
 
-yt-live-chat-app,
-yt-live-chat-renderer {
+html[data-ypp-ui-design="sakura"] yt-live-chat-app,
+html[data-ypp-ui-design="sakura"] yt-live-chat-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-yt-live-chat-text-message-renderer,
-yt-live-chat-paid-message-renderer,
-yt-live-chat-membership-item-renderer {
+html[data-ypp-ui-design="sakura"] yt-live-chat-text-message-renderer,
+html[data-ypp-ui-design="sakura"] yt-live-chat-paid-message-renderer,
+html[data-ypp-ui-design="sakura"] yt-live-chat-membership-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform 0.2s, background 0.2s !important;
 }
 
-#message-input.yt-live-chat-text-input-field-renderer {
+html[data-ypp-ui-design="sakura"] #message-input.yt-live-chat-text-input-field-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
@@ -1034,7 +1034,7 @@ html[data-ypp-ui-design="sakura"] yt-live-chat-paid-sticker-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -1042,24 +1042,24 @@ html[data-ypp-ui-design="sakura"] yt-live-chat-paid-sticker-renderer {
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.02);
 }
 
-.ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern .ytp-chrome-controls .ytp-right-controls:active {
   transform: scale(0.98);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area {
   transition:
     transform var(--bounce),
     box-shadow var(--bounce),
     background var(--bounce) !important;
 }
 
-.ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
+html[data-ypp-ui-design="sakura"] .ytp-delhi-modern.ytp-delhi-horizontal-volume-controls .ytp-volume-area:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
@@ -1154,14 +1154,14 @@ html[data-ypp-ui-design="sakura"] tp-yt-paper-listbox {
 
 /* Buttons inside popups (share, copy link etc.) */
 
-.ytSearchboxComponentInputBoxDark,
-.ytSearchboxComponentInputBox {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBoxDark,
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBox {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
 
-.ytSearchboxComponentSearchButton {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition:
     transform var(--bounce),
@@ -1169,55 +1169,55 @@ html[data-ypp-ui-design="sakura"] tp-yt-paper-listbox {
     background var(--bounce) !important;
 }
 
-.ytSearchboxComponentSearchButton:hover {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton:hover {
   box-shadow: var(--shadow-hover) !important;
   transform: scale(1.1);
 }
 
-.ytSearchboxComponentSearchButton:active {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton:active {
   transform: scale(0.95);
   box-shadow: var(--shadow-active) !important;
 }
 
-.ytSearchboxComponentSuggestionsContainer,
-ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSuggestionsContainer,
+html[data-ypp-ui-design="sakura"] ytd-multi-page-menu-renderer {
   box-shadow: var(--shadow-hover) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton {
   transition: transform var(--bounce), box-shadow var(--bounce) !important;
 }
 
-.ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentDesktop .ytSearchboxComponentClearButton:hover {
   transform: scale(1.1) !important;
   box-shadow: var(--shadow-hover) !important;
 }
 
-ytd-searchbox #container {
+html[data-ypp-ui-design="sakura"] ytd-searchbox #container {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-ytd-searchbox #search-icon-legacy {
+html[data-ypp-ui-design="sakura"] ytd-searchbox #search-icon-legacy {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ytSearchboxComponentInputBox {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBox {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.2), 4px 4px 0px rgba(62, 53, 47, 0.2) !important;
 }
 
-.ytSearchboxComponentInputBox:focus-within {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentInputBox:focus-within {
   box-shadow: inset 2px 2px 5px rgba(62, 53, 47, 0.1), 6px 6px 0px rgba(193, 58, 58, 0.4) !important;
 }
 
-.ytSearchboxComponentSearchButton {
+html[data-ypp-ui-design="sakura"] .ytSearchboxComponentSearchButton {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-ytd-search-filter-group-renderer {
+html[data-ypp-ui-design="sakura"] ytd-search-filter-group-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
   box-shadow: var(--shadow-base) !important;
 }
@@ -1234,35 +1234,35 @@ html[data-ypp-ui-design="sakura"] .ytd-reel-player-overlay-renderer .title * {
   text-shadow: 1px 1px 2px #000, -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000 !important;
 }
 
-.ypp-eq-preset-btn,
-.ypp-cinema-tab-btn,
-.ypp-vcp-compare-toggle {
+html[data-ypp-ui-design="sakura"] .ypp-eq-preset-btn,
+html[data-ypp-ui-design="sakura"] .ypp-cinema-tab-btn,
+html[data-ypp-ui-design="sakura"] .ypp-vcp-compare-toggle {
   transition: transform var(--bounce), background var(--bounce) !important;
 }
 
-.ypp-eq-preset-btn:hover,
-.ypp-cinema-tab-btn:hover,
-.ypp-vcp-compare-toggle:hover {
+html[data-ypp-ui-design="sakura"] .ypp-eq-preset-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-cinema-tab-btn:hover,
+html[data-ypp-ui-design="sakura"] .ypp-vcp-compare-toggle:hover {
   transform: scale(1.05) !important;
 }
 
-#ypp-global-player-bar,
-.ypp-global-bar {
+html[data-ypp-ui-design="sakura"] #ypp-global-player-bar,
+html[data-ypp-ui-design="sakura"] .ypp-global-bar {
   box-shadow: var(--shadow-base) !important;
 }
 
-#ypp-eq-panel,
-#ypp-cinema-panel {
+html[data-ypp-ui-design="sakura"] #ypp-eq-panel,
+html[data-ypp-ui-design="sakura"] #ypp-cinema-panel {
   box-shadow: var(--shadow-hover), 0 24px 64px rgba(0, 0, 0, 0.6) !important;
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-.ypp-global-player-bar,
-#ypp-global-player-bar {
+html[data-ypp-ui-design="sakura"] .ypp-global-player-bar,
+html[data-ypp-ui-design="sakura"] #ypp-global-player-bar {
   box-shadow: var(--shadow-hover), 0 10px 40px rgba(0, 0, 0, 0.4) !important;
 }
 
-.ypp-eq-canvas {
+html[data-ypp-ui-design="sakura"] .ypp-eq-canvas {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 }

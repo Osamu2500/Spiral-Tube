@@ -1,8 +1,4 @@
-
-@import "../../ui-styles/shared/timeline-visibility.css";
-
-html[data-ypp-theme="retro"] {
-    --ypp-bg-base: #008080;
+@import "../../ui-styles/shared/timeline-visibility.css";--ypp-bg-base: #008080;
     --ypp-bg-surface: #c0c0c0;
     --ypp-bg-glass: rgba(192, 192, 192, 0.97);
     --ypp-glass-border: rgba(0, 0, 0, 0.6);
@@ -27,7 +23,7 @@ html[data-ypp-theme="retro"] {
     --ytd-searchbox-background: #ffffff;
     --ytd-searchbox-text-color: #000000;
     --ytd-searchbox-legacy-button-color: #c0c0c0;
-}
+
 
 /* No animations — Win95 never had animations! */
 html[data-ypp-theme="retro"].ypp-theme-effects::before,
@@ -49,55 +45,53 @@ html[data-ypp-theme="retro"].ypp-theme-effects::after {
 /* =========================================== */
 
 /* Video title text */
-#video-title,
-#video-title.ytd-rich-grid-media,
-#video-title.ytd-compact-video-renderer,
-ytd-rich-grid-media #video-title,
-ytd-compact-video-renderer #video-title,
-ytd-video-renderer #video-title,
-yt-formatted-string.ytd-rich-grid-media,
-.title.ytd-rich-grid-media,
-#title-wrapper h3 a,
-
-/* Channel name / metadata */
-ytd-rich-grid-media #metadata-line,
-ytd-compact-video-renderer #metadata-line,
-ytd-video-renderer #metadata-line,
-ytd-rich-grid-media #byline-container,
-ytd-compact-video-renderer #byline-container,
-ytd-rich-grid-media .yt-simple-endpoint,
-ytd-compact-video-renderer .yt-simple-endpoint,
-ytd-rich-grid-media yt-formatted-string,
-ytd-compact-video-renderer yt-formatted-string,
-ytd-video-renderer yt-formatted-string,
-#channel-name .yt-simple-endpoint,
-ytd-channel-name yt-formatted-string,
-ytd-channel-name a,
-#metadata-line span,
-.inline-metadata-item {
+html[data-ypp-theme="retro"] #video-title,
+html[data-ypp-theme="retro"] #video-title.ytd-rich-grid-media,
+html[data-ypp-theme="retro"] #video-title.ytd-compact-video-renderer,
+html[data-ypp-theme="retro"] ytd-rich-grid-media #video-title,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #video-title,
+html[data-ypp-theme="retro"] ytd-video-renderer #video-title,
+html[data-ypp-theme="retro"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-theme="retro"] .title.ytd-rich-grid-media,
+html[data-ypp-theme="retro"] #title-wrapper h3 a,
+html[data-ypp-theme="retro"] ytd-rich-grid-media #metadata-line,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #metadata-line,
+html[data-ypp-theme="retro"] ytd-video-renderer #metadata-line,
+html[data-ypp-theme="retro"] ytd-rich-grid-media #byline-container,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #byline-container,
+html[data-ypp-theme="retro"] ytd-rich-grid-media .yt-simple-endpoint,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer .yt-simple-endpoint,
+html[data-ypp-theme="retro"] ytd-rich-grid-media yt-formatted-string,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer yt-formatted-string,
+html[data-ypp-theme="retro"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-theme="retro"] #channel-name .yt-simple-endpoint,
+html[data-ypp-theme="retro"] ytd-channel-name yt-formatted-string,
+html[data-ypp-theme="retro"] ytd-channel-name a,
+html[data-ypp-theme="retro"] #metadata-line span,
+html[data-ypp-theme="retro"] .inline-metadata-item {
   color: #333333 !important;
   text-shadow: none !important;
   font-family: 'Courier New', monospace !important;
 }
 
 /* View count, date metadata */
-ytd-rich-grid-media #metadata-line span,
-ytd-compact-video-renderer #metadata-line span,
-ytd-video-renderer #metadata-line span {
+html[data-ypp-theme="retro"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="retro"] ytd-video-renderer #metadata-line span {
   color: #555555 !important;
 }
 
 /* Video card container — force black text */
-ytd-rich-grid-media,
-ytd-compact-video-renderer,
-ytd-video-renderer,
-ytd-playlist-video-renderer,
-ytd-grid-video-renderer {
+html[data-ypp-theme="retro"] ytd-rich-grid-media,
+html[data-ypp-theme="retro"] ytd-compact-video-renderer,
+html[data-ypp-theme="retro"] ytd-video-renderer,
+html[data-ypp-theme="retro"] ytd-playlist-video-renderer,
+html[data-ypp-theme="retro"] ytd-grid-video-renderer {
   color: #000000 !important;
 }
 
 /* Description text */
-#description-text,
+html[data-ypp-theme="retro"] #description-text,
 
 /* Watch page title */
 

@@ -72,8 +72,8 @@ ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
   border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
   transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
   max-height: 80vh !important;
@@ -85,8 +85,8 @@ ytd-multi-page-menu-renderer {
   border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active)) !important;
   background: var(--ypp-menu-bg, var(--ypp-surface-bg)) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
   color: white !important;
 }
@@ -148,15 +148,15 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
   background: var(--ypp-menu-bg, var(--ypp-surface-bg)) !important;
   border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-base)) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
-}
+  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  }
 
 tp-yt-paper-toast {
   background: var(--ypp-dialog-bg, var(--ypp-surface-bg)) !important;
   border-radius: var(--ypp-dialog-radius, var(--ypp-border-radius-base, 12px)) !important;
   box-shadow: var(--ypp-dialog-shadow, var(--ypp-shadow-hover)) !important;
   border: var(--ypp-dialog-border, var(--ypp-surface-border)) !important;
-  backdrop-filter: var(--ypp-dialog-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-dialog-backdrop-filter, none) !important;
-}
+  backdrop-filter: var(--ypp-dialog-backdrop-filter, none) !important;
+  }

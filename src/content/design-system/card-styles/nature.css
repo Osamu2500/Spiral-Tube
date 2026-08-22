@@ -14,28 +14,19 @@ html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-s
 }
 html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ) {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ) {
   background: rgba(17, 26, 20, 0.6) !important;
   border-radius: 60px 8px 60px 8px !important;
   border: 1px solid rgba(163, 190, 140, 0.2) !important;
@@ -46,28 +37,19 @@ html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-s
 
 html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):hover {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):hover {
   background: rgba(17, 26, 20, 0.9) !important;
   border-color: rgba(163, 190, 140, 0.6) !important;
   transform: translateY(-4px) !important;
@@ -76,11 +58,7 @@ html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-s
 
 html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'] body:not(.ypp-channel-page) #video-title { color: var(--ypp-text-primary, #a3be8c) !important; }
 
-html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'] #mouseover-overlay, html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'] ytd-video-preview,
-html[data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'] #mouseover-overlay, html[data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'] ytd-video-preview,
-html[data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'] #mouseover-overlay, html[data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'] ytd-video-preview,
-html[data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'] ytd-video-preview,
-html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] ytd-video-preview {
+html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'] #mouseover-overlay, html[data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'][data-ypp-card-style='nature'] ytd-video-preview, html[data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'] #mouseover-overlay, html[data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'][data-ypp-card-style='vintage'] ytd-video-preview, html[data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'] #mouseover-overlay, html[data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'][data-ypp-card-style='ocean'] ytd-video-preview, html[data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'] #mouseover-overlay, html[data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'][data-ypp-card-style='blue-sky'] ytd-video-preview, html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] #mouseover-overlay, html[data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'][data-ypp-card-style='retro'] ytd-video-preview {
   display: none !important;
 }
 
@@ -102,14 +80,14 @@ html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-s
 
 /* GLOBAL REDESIGN V3 INJECT - nature */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -127,20 +105,21 @@ html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-s
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(17, 26, 20, 0.6) !important;
   border-radius: 60px 8px 60px 8px !important;
   border: 1px solid rgba(163, 190, 140, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"][data-ypp-card-style="nature"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(17, 26, 20, 0.6) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

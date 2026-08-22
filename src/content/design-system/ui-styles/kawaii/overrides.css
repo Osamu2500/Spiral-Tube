@@ -137,10 +137,7 @@
   0% { transform: scale(0.5) translateY(10px); }
 
 100% { transform: scale(1) translateY(0); }
-}
-
-html[data-ypp-ui-design="kawaii"] {
-/* Unique Shapes and Patterns for kawaii */
+}/* Unique Shapes and Patterns for kawaii */
 
 /* Kawaii Ambient Mode (Cinematic Lighting) Override */
 /* Hijack the cinematic canvas to force a pastel glow instead of video colors */
@@ -180,13 +177,17 @@ html[data-ypp-card-style="kawaii"] ytd-toggle-button-renderer:nth-of-type(1) yt-
 html[data-ypp-ui-design="kawaii"] ytd-toggle-button-renderer:nth-of-type(1) yt-icon {
     background-color: var(--kawaii-text-primary) !important;
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') !important;
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') !important;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') !important;
     -webkit-mask-repeat: no-repeat !important;
-    mask-repeat: no-repeat !important;
+
+  mask-repeat: no-repeat !important;
     -webkit-mask-position: center !important;
-    mask-position: center !important;
+
+  mask-position: center !important;
     -webkit-mask-size: 80% !important;
-    mask-size: 80% !important;
+
+  mask-size: 80% !important;
     display: block !important;
     width: 24px !important;
     height: 24px !important;
@@ -205,13 +206,17 @@ html[data-ypp-ui-design="kawaii"] segmented-like-dislike-button-view-model like-
 html[data-ypp-card-style="kawaii"] ytd-toggle-button-renderer:nth-of-type(1) yt-icon.inactive,
 html[data-ypp-ui-design="kawaii"] ytd-toggle-button-renderer:nth-of-type(1) yt-icon.inactive {
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35zm0-2.35l1.3-1.2C17.6 14.3 20 11.6 20 8.5c0-2.2-1.8-4-4-4-1.5 0-3 .9-3.7 2.3h-1.6C10 5.4 8.5 4.5 7 4.5c-2.2 0-4 1.8-4 4 0 3.1 2.4 5.8 6.7 9.3l1.3 1.2zm-1-8h2L11 15v-4H9l4-4v4z"/></svg>') !important;
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35zm0-2.35l1.3-1.2C17.6 14.3 20 11.6 20 8.5c0-2.2-1.8-4-4-4-1.5 0-3 .9-3.7 2.3h-1.6C10 5.4 8.5 4.5 7 4.5c-2.2 0-4 1.8-4 4 0 3.1 2.4 5.8 6.7 9.3l1.3 1.2zm-1-8h2L11 15v-4H9l4-4v4z"/></svg>') !important;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35zm0-2.35l1.3-1.2C17.6 14.3 20 11.6 20 8.5c0-2.2-1.8-4-4-4-1.5 0-3 .9-3.7 2.3h-1.6C10 5.4 8.5 4.5 7 4.5c-2.2 0-4 1.8-4 4 0 3.1 2.4 5.8 6.7 9.3l1.3 1.2zm-1-8h2L11 15v-4H9l4-4v4z"/></svg>') !important;
     -webkit-mask-repeat: no-repeat !important;
-    mask-repeat: no-repeat !important;
+
+  mask-repeat: no-repeat !important;
     -webkit-mask-position: center !important;
-    mask-position: center !important;
+
+  mask-position: center !important;
     -webkit-mask-size: 80% !important;
-    mask-size: 80% !important;
+
+  mask-size: 80% !important;
     display: block !important;
     width: 24px !important;
     height: 24px !important;
@@ -227,13 +232,17 @@ html[data-ypp-ui-design="kawaii"] ytd-toggle-button-renderer:nth-of-type(2).styl
 html[data-ypp-card-style="kawaii"] ytd-toggle-button-renderer:nth-of-type(2) yt-icon,
 html[data-ypp-ui-design="kawaii"] ytd-toggle-button-renderer:nth-of-type(2) yt-icon {
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>') !important;
     -webkit-mask-repeat: no-repeat !important;
-    mask-repeat: no-repeat !important;
+
+  mask-repeat: no-repeat !important;
     -webkit-mask-position: center !important;
-    mask-position: center !important;
+
+  mask-position: center !important;
     -webkit-mask-size: 80% !important;
-    mask-size: 80% !important;
+
+  mask-size: 80% !important;
     display: block !important;
     width: 24px !important;
     height: 24px !important;
@@ -256,19 +265,16 @@ html[data-ypp-ui-design="kawaii"] yt-chip-cloud-chip-renderer {
 }
 
 /* Segmented Buttons (Like/Dislike) */
-html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper),
-html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper), html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: var(--ypp-shape-primary, var(--kawaii-radius-squircle)) !important;
   box-shadow: var(--kawaii-shadow-button) !important;
 }
 
-html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button,
-html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
+html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button, html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button {
   transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
 }
 
-html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover,
-html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
+html[data-ypp-card-style="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover, html[data-ypp-ui-design="kawaii"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) button:hover {
   transform: scale(1.1) !important;
 }
 
@@ -342,13 +348,10 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
-html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="kawaii"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 28px) !important;
   -webkit-backdrop-filter: blur(5px) !important;
-    backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
 }
 
 /* Kawaii Share & Clip Dialogs */
@@ -520,9 +523,9 @@ html[data-ypp-ui-design="kawaii"] ytd-searchbox #search-icon-legacy {
 html[data-ypp-card-style="kawaii"] ytd-subscribe-button-renderer yt-button-shape button,
 html[data-ypp-card-style="kawaii"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="kawaii"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-ui-design="kawaii"] .yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
+html[data-ypp-ui-design="kawaii"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="kawaii"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="kawaii"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 30px) !important;
@@ -669,7 +672,7 @@ html[data-ypp-card-style="kawaii"] .ytp-chrome-bottom, html[data-ypp-ui-design="
   border-radius: var(--ypp-shape-primary, var(--kawaii-pill)) !important;
   box-shadow: 0 6px 0 var(--kawaii-primary) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 /* Specific Styling for .ytp-endscreen-content */
@@ -3492,27 +3495,21 @@ html[data-ypp-card-style="kawaii"] ::-webkit-scrollbar-thumb, html[data-ypp-ui-d
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="kawaii"] h1, html[data-ypp-card-style="kawaii"] h2, html[data-ypp-card-style="kawaii"] h3, 
-html[data-ypp-card-style="kawaii"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="kawaii"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="kawaii"] h1, html[data-ypp-ui-design="kawaii"] h2, html[data-ypp-ui-design="kawaii"] h3, 
-html[data-ypp-ui-design="kawaii"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="kawaii"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="kawaii"] h1, html[data-ypp-card-style="kawaii"] h2, html[data-ypp-card-style="kawaii"] h3, html[data-ypp-card-style="kawaii"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="kawaii"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="kawaii"] h1, html[data-ypp-ui-design="kawaii"] h2, html[data-ypp-ui-design="kawaii"] h3, html[data-ypp-ui-design="kawaii"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="kawaii"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="kawaii"] ytd-thumbnail, html[data-ypp-card-style="kawaii"] yt-image,
-html[data-ypp-ui-design="kawaii"] ytd-thumbnail, html[data-ypp-ui-design="kawaii"] yt-image {
+html[data-ypp-card-style="kawaii"] ytd-thumbnail, html[data-ypp-card-style="kawaii"] yt-image, html[data-ypp-ui-design="kawaii"] ytd-thumbnail, html[data-ypp-ui-design="kawaii"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="kawaii"] yt-img-shadow, html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="kawaii"] yt-img-shadow, html[data-ypp-ui-design="kawaii"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="kawaii"] yt-img-shadow, html[data-ypp-card-style="kawaii"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="kawaii"] yt-img-shadow, html[data-ypp-ui-design="kawaii"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -3564,8 +3561,7 @@ html[data-ypp-card-style="kawaii"] .ytp-tooltip, html[data-ypp-ui-design="kawaii
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="kawaii"] tp-yt-paper-dialog, html[data-ypp-card-style="kawaii"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog, html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="kawaii"] tp-yt-paper-dialog, html[data-ypp-card-style="kawaii"] ytd-menu-popup-renderer, html[data-ypp-ui-design="kawaii"] tp-yt-paper-dialog, html[data-ypp-ui-design="kawaii"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 30px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -3608,8 +3604,7 @@ html[data-ypp-ui-design="kawaii"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="kawaii"] ytd-skeleton, html[data-ypp-ui-design="kawaii"] ytd-skeleton, 
-html[data-ypp-card-style="kawaii"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="kawaii"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="kawaii"] ytd-skeleton, html[data-ypp-ui-design="kawaii"] ytd-skeleton, html[data-ypp-card-style="kawaii"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="kawaii"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 30px) !important;
 }
 
@@ -3681,6 +3676,7 @@ html[data-ypp-ui-design="kawaii"] ytd-popup-container {
 ========================================= */
 html[data-ypp-card-style="kawaii"] tp-yt-paper-tooltip,
 html[data-ypp-ui-design="kawaii"] tp-yt-paper-tooltip {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
 }
@@ -3712,6 +3708,7 @@ html[data-ypp-ui-design="kawaii"] #error-page {
 /* Empty state icon geometry override */
 html[data-ypp-card-style="kawaii"] ytd-background-promo-renderer yt-icon,
 html[data-ypp-ui-design="kawaii"] ytd-background-promo-renderer yt-icon {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   transform: scale(1.5) !important;
 }
@@ -3724,9 +3721,9 @@ html[data-ypp-ui-design="kawaii"] ytd-mini-guide-entry-renderer {
 
 html[data-ypp-ui-design="kawaii"] ytd-masthead {
   -webkit--webkit-backdrop-filter: blur(12px) !important;
-    backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-    backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
   box-shadow: 0 4px 15px rgba(255, 158, 187, 0.1) !important;
 }
 
@@ -3910,6 +3907,7 @@ html[data-ypp-card-style="kawaii"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-ui-design="kawaii"] .ytd-shopping-carousel-item-renderer img,
 html[data-ypp-card-style="kawaii"] yt-img-shadow.ytd-merch-shelf-item-renderer img,
 html[data-ypp-ui-design="kawaii"] yt-img-shadow.ytd-merch-shelf-item-renderer img {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -3921,13 +3919,11 @@ html[data-ypp-ui-design="kawaii"] .ytd-shopping-carousel-item-renderer:hover img
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="kawaii"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -4053,23 +4049,17 @@ html[data-ypp-ui-design="kawaii"] ytd-reel-video-renderer {
 html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions,
 html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions {
   -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
   border-radius: var(--ypp-shape-primary, 40px) !important;
   box-shadow: 0 5px 15px rgba(255,158,187,0.4) !important;
 }
 
 /* Individual Action Buttons */
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer,
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer {
+html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer, html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer {
   transition: transform 0.3s var(--kawaii-ease-bouncy) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover,
-html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover,
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover,
-html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover {
+html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover, html[data-ypp-card-style="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover, html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions :is(ytd-button-renderer, yt-button-view-model):hover, html[data-ypp-ui-design="kawaii"] ytd-reel-player-overlay-renderer #actions ytd-toggle-button-renderer:hover {
   transform: scale(1.15) !important;
 }
 
@@ -4111,13 +4101,11 @@ html[data-ypp-ui-design="kawaii"] .yt-progress-bar {
 }
 
 /* Edit Video / Studio Action Bar */
-html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model) {
+html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model) {
   border-radius: var(--ypp-shape-primary, 16px) !important;
 }
 
-html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model):hover,
-html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
+html[data-ypp-card-style="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model):hover, html[data-ypp-ui-design="kawaii"] ytd-video-owner-renderer :is(ytd-button-renderer, yt-button-view-model):hover {
   transform: translateY(-3px) !important;
   box-shadow: 0 4px 10px rgba(196,245,214,0.6) !important;
 }
@@ -4130,11 +4118,10 @@ html[data-ypp-ui-design="kawaii"] ytd-compact-video-renderer:hover {
 
 html[data-ypp-ui-design="kawaii"] #secondary-inner.ytd-watch-flexy {
   -webkit--webkit-backdrop-filter: blur(8px) !important;
-    backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-    backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
   border-radius: var(--ypp-shape-primary, var(--kawaii-r-lg)) !important;
 }
 
 
-}

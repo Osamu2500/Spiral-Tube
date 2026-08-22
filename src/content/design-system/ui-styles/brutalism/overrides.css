@@ -22,10 +22,7 @@
   transform: translate(0, 0);
 }
 
-}
-
-html[data-ypp-ui-design="brutalism"] {
-/* Unique Shapes and Patterns for brutalism */
+}/* Unique Shapes and Patterns for brutalism */
 
 html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 0px) !important;
@@ -36,12 +33,12 @@ html[data-ypp-theme="brutalism"] ::-webkit-scrollbar-thumb {
 /* ── Full guide entries ── */
 
 /* Dialogs for brutalism */
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="brutalism"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 8px 8px 0px #000 !important;
 }
 
-yt-icon:hover {
+html[data-ypp-ui-design="brutalism"] yt-icon:hover {
   transform: scale(1.1);
 }
 
@@ -150,11 +147,7 @@ html[data-ypp-card-style="brutalism"] ytd-playlist-thumbnail, html[data-ypp-ui-d
 
 /* Brutalist Avatars (Squares, NO Circles) */
 
-html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-design="brutalism"] .yt-spec-button-shape-next ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i],
-html[data-ypp-ui-design="brutalism"] yt-button-shape button[aria-label*="Download" i],
-html[data-ypp-ui-design="brutalism"] yt-button-shape button[title*="Download" i] {
+html[data-ypp-card-style="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-design="brutalism"] .yt-spec-button-shape-next, html[data-ypp-ui-design="brutalism"] yt-button-shape button[aria-label*="Download" i], html[data-ypp-ui-design="brutalism"] yt-button-shape button[title*="Download" i], html[data-ypp-ui-design="brutalism"] yt-button-shape button[aria-label*="Download" i], html[data-ypp-ui-design="brutalism"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 0) !important;
   text-transform: uppercase !important;
   box-shadow: 4px 4px 0 var(--brut-black) !important;
@@ -2963,27 +2956,21 @@ html[data-ypp-card-style="brutalism"] ::-webkit-scrollbar-thumb, html[data-ypp-u
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="brutalism"] h1, html[data-ypp-card-style="brutalism"] h2, html[data-ypp-card-style="brutalism"] h3, 
-html[data-ypp-card-style="brutalism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="brutalism"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="brutalism"] h1, html[data-ypp-ui-design="brutalism"] h2, html[data-ypp-ui-design="brutalism"] h3, 
-html[data-ypp-ui-design="brutalism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="brutalism"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="brutalism"] h1, html[data-ypp-card-style="brutalism"] h2, html[data-ypp-card-style="brutalism"] h3, html[data-ypp-card-style="brutalism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="brutalism"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="brutalism"] h1, html[data-ypp-ui-design="brutalism"] h2, html[data-ypp-ui-design="brutalism"] h3, html[data-ypp-ui-design="brutalism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="brutalism"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: uppercase !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="brutalism"] ytd-thumbnail, html[data-ypp-card-style="brutalism"] yt-image,
-html[data-ypp-ui-design="brutalism"] ytd-thumbnail, html[data-ypp-ui-design="brutalism"] yt-image {
+html[data-ypp-card-style="brutalism"] ytd-thumbnail, html[data-ypp-card-style="brutalism"] yt-image, html[data-ypp-ui-design="brutalism"] ytd-thumbnail, html[data-ypp-ui-design="brutalism"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="brutalism"] yt-img-shadow, html[data-ypp-card-style="brutalism"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="brutalism"] yt-img-shadow, html[data-ypp-ui-design="brutalism"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="brutalism"] yt-img-shadow, html[data-ypp-card-style="brutalism"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="brutalism"] yt-img-shadow, html[data-ypp-ui-design="brutalism"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: none !important;
   clip-path: none !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -3035,8 +3022,7 @@ html[data-ypp-card-style="brutalism"] .ytp-tooltip, html[data-ypp-ui-design="bru
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="brutalism"] tp-yt-paper-dialog, html[data-ypp-card-style="brutalism"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="brutalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="brutalism"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="brutalism"] tp-yt-paper-dialog, html[data-ypp-card-style="brutalism"] ytd-menu-popup-renderer, html[data-ypp-ui-design="brutalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="brutalism"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -3077,8 +3063,7 @@ html[data-ypp-ui-design="brutalism"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="brutalism"] ytd-skeleton, html[data-ypp-ui-design="brutalism"] ytd-skeleton, 
-html[data-ypp-card-style="brutalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="brutalism"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="brutalism"] ytd-skeleton, html[data-ypp-ui-design="brutalism"] ytd-skeleton, html[data-ypp-card-style="brutalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="brutalism"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
@@ -3151,32 +3136,32 @@ html[data-ypp-theme="brutalism"] tp-yt-paper-toast {
 }
 
 /* Navbar UI for brutalism */
-ytd-masthead {
+html[data-ypp-ui-design="brutalism"] ytd-masthead {
   box-shadow: 8px 8px 0px #000;
 }
 
-ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-ui-design="brutalism"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0px 0 0 0px) !important;
 }
 
-ytd-searchbox #search-icon-legacy.ytd-searchbox {
+html[data-ypp-ui-design="brutalism"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
 }
 
-#voice-search-button {
+html[data-ypp-ui-design="brutalism"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Panels for brutalism */
 
-ytd-live-chat-frame {
+html[data-ypp-ui-design="brutalism"] ytd-live-chat-frame {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* Sidebar for brutalism */
 
 /* Channels for brutalism */
-#channel-header-banner {
+html[data-ypp-ui-design="brutalism"] #channel-header-banner {
   border-radius: 0px 0px 0 0;
 }
 
@@ -3275,19 +3260,18 @@ html[data-ypp-theme="brutalism"] .ytp-tooltip-text {
 
 /* Search for brutalism */
 
-ytd-toggle-button-renderer a {
+html[data-ypp-ui-design="brutalism"] ytd-toggle-button-renderer a {
   border-radius: 0px;
 }
 
 /* Watch for brutalism */
-#ytd-player {
+html[data-ypp-ui-design="brutalism"] #ytd-player {
   border-radius: 0px;
   box-shadow: 8px 8px 0px #000;
 }
 
-:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-ui-design="brutalism"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 0px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-}

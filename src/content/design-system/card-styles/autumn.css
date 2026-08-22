@@ -1,27 +1,18 @@
 html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ) {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ) {
   background: linear-gradient(150deg, rgba(160, 60, 20, 0.15), rgba(100, 30, 10, 0.2)) !important;
   background-size: 200% 200% !important;
   animation: ypp-autumn-leaves 6s infinite alternate ease-in-out !important;
@@ -35,28 +26,19 @@ html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-s
 
 html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):hover {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):hover {
   background: linear-gradient(150deg, rgba(180, 70, 25, 0.2), rgba(120, 40, 15, 0.3)) !important;
   background-size: 200% 200% !important;
   transform: translateX(4px) translateY(-2px) !important;
@@ -69,28 +51,19 @@ html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-s
 
 html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ) {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ) {
   background: linear-gradient(150deg, rgba(160, 60, 20, 0.15), rgba(100, 30, 10, 0.2)) !important;
   background-size: 200% 200% !important;
   animation: ypp-autumn-leaves 6s infinite alternate ease-in-out !important;
@@ -104,28 +77,19 @@ html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-s
 
 html[data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn'][data-ypp-card-style='autumn']
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):hover {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):hover {
   background: linear-gradient(150deg, rgba(180, 70, 25, 0.2), rgba(120, 40, 15, 0.3)) !important;
   background-size: 200% 200% !important;
   transform: translateX(4px) translateY(-2px) !important;
@@ -169,14 +133,14 @@ html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-s
 
 /* GLOBAL REDESIGN V3 INJECT - autumn */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -194,20 +158,21 @@ html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-s
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(199, 90, 34, 0.25) !important;
   border-radius: 50px 8px 50px 8px !important;
   border: 1px solid rgba(255, 165, 0, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"][data-ypp-card-style="autumn"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(199, 90, 34, 0.25) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

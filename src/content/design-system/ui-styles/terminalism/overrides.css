@@ -7,10 +7,7 @@
 
 50% { box-shadow: 0 0 12px rgba(0, 255, 65, 0.6), 0 0 24px rgba(0, 255, 65, 0.2); }
 
-}
-
-html[data-ypp-ui-design="terminalism"] {
-/* Unique Shapes and Patterns for terminalism */
+}/* Unique Shapes and Patterns for terminalism */
 
 
 html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
@@ -27,16 +24,7 @@ html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer button.ytSpec
 
 }
 /* Heavy Theme Action Button Coverage Fix */
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) button:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer #ask-button button:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover ,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover,
-html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
+html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) yt-button-shape button:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer :is(ytd-download-button-renderer, yt-button-view-model) button:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer #ask-button yt-button-shape button:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer #ask-button button:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer .yt-spec-button-shape-next--mono:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper button:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer ytd-menu-renderer yt-button-shape button:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer button.ytSpecButtonShapeNextText:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer yt-button-shape button[aria-label*="Download" i]:hover, html[data-ypp-ui-design=terminalism] ytd-subscribe-button-renderer yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.06) !important;
   animation: termGlowPulse 3s ease-in-out infinite !important;
 }
@@ -95,7 +83,7 @@ html[data-ypp-ui-design="terminalism"] .ypp-nav-btn.active {
 html[data-ypp-ui-design="terminalism"] .yt-spec-button-shape-next--call-to-action,
 html[data-ypp-ui-design="terminalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="terminalism"] ytd-subscribe-button-renderer[subscribe-button-style="SUBSCRIBE_BUTTON_STYLE_SOLID"] button,
-html[data-ypp-ui-design="terminalism"] #subscribe-button button ,
+html[data-ypp-ui-design="terminalism"] #subscribe-button button,
 html[data-ypp-ui-design="terminalism"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="terminalism"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="terminalism"] yt-button-shape button[aria-label*="Download" i],
@@ -107,7 +95,7 @@ html[data-ypp-ui-design="terminalism"] yt-button-shape button[title*="Download" 
 /* Primary Button Hover */
 html[data-ypp-ui-design="terminalism"] .yt-spec-button-shape-next--call-to-action:hover,
 html[data-ypp-ui-design="terminalism"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
-html[data-ypp-ui-design="terminalism"] #subscribe-button button:hover ,
+html[data-ypp-ui-design="terminalism"] #subscribe-button button:hover,
 html[data-ypp-ui-design="terminalism"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="terminalism"] yt-button-shape button[title*="Download" i]:hover,
 html[data-ypp-ui-design="terminalism"] yt-button-shape button[aria-label*="Download" i]:hover,
@@ -178,27 +166,21 @@ html[data-ypp-card-style="terminalism"] ::-webkit-scrollbar-thumb, html[data-ypp
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="terminalism"] h1, html[data-ypp-card-style="terminalism"] h2, html[data-ypp-card-style="terminalism"] h3, 
-html[data-ypp-card-style="terminalism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="terminalism"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="terminalism"] h1, html[data-ypp-ui-design="terminalism"] h2, html[data-ypp-ui-design="terminalism"] h3, 
-html[data-ypp-ui-design="terminalism"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="terminalism"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="terminalism"] h1, html[data-ypp-card-style="terminalism"] h2, html[data-ypp-card-style="terminalism"] h3, html[data-ypp-card-style="terminalism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="terminalism"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="terminalism"] h1, html[data-ypp-ui-design="terminalism"] h2, html[data-ypp-ui-design="terminalism"] h3, html[data-ypp-ui-design="terminalism"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="terminalism"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="terminalism"] ytd-thumbnail, html[data-ypp-card-style="terminalism"] yt-image,
-html[data-ypp-ui-design="terminalism"] ytd-thumbnail, html[data-ypp-ui-design="terminalism"] yt-image {
+html[data-ypp-card-style="terminalism"] ytd-thumbnail, html[data-ypp-card-style="terminalism"] yt-image, html[data-ypp-ui-design="terminalism"] ytd-thumbnail, html[data-ypp-ui-design="terminalism"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="terminalism"] yt-img-shadow, html[data-ypp-card-style="terminalism"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="terminalism"] yt-img-shadow, html[data-ypp-ui-design="terminalism"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="terminalism"] yt-img-shadow, html[data-ypp-card-style="terminalism"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="terminalism"] yt-img-shadow, html[data-ypp-ui-design="terminalism"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -250,8 +232,7 @@ html[data-ypp-card-style="terminalism"] .ytp-tooltip, html[data-ypp-ui-design="t
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="terminalism"] tp-yt-paper-dialog, html[data-ypp-card-style="terminalism"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="terminalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="terminalism"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="terminalism"] tp-yt-paper-dialog, html[data-ypp-card-style="terminalism"] ytd-menu-popup-renderer, html[data-ypp-ui-design="terminalism"] tp-yt-paper-dialog, html[data-ypp-ui-design="terminalism"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -292,8 +273,7 @@ html[data-ypp-ui-design="terminalism"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="terminalism"] ytd-skeleton, html[data-ypp-ui-design="terminalism"] ytd-skeleton, 
-html[data-ypp-card-style="terminalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="terminalism"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="terminalism"] ytd-skeleton, html[data-ypp-ui-design="terminalism"] ytd-skeleton, html[data-ypp-card-style="terminalism"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="terminalism"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -589,4 +569,3 @@ html[data-ypp-ui-design="terminalism"]::before {
     transition: none !important;
   }
 
-}

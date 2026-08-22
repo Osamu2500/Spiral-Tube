@@ -1,19 +1,12 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="blood-moon"] {
 /* Unique Shapes and Patterns for blood-moon */
 
 /* Dialogs for blood-moon */
-tp-yt-paper-dialog {
+html[data-ypp-ui-design="blood-moon"] tp-yt-paper-dialog {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 0 0 15px #8a0303 !important;
 }
 
-yt-icon:hover {
+html[data-ypp-ui-design="blood-moon"] yt-icon:hover {
   transform: scale(1.1);
 }
 
@@ -26,27 +19,21 @@ html[data-ypp-card-style="blood-moon"] ::-webkit-scrollbar-thumb, html[data-ypp-
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="blood-moon"] h1, html[data-ypp-card-style="blood-moon"] h2, html[data-ypp-card-style="blood-moon"] h3, 
-html[data-ypp-card-style="blood-moon"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="blood-moon"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="blood-moon"] h1, html[data-ypp-ui-design="blood-moon"] h2, html[data-ypp-ui-design="blood-moon"] h3, 
-html[data-ypp-ui-design="blood-moon"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="blood-moon"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="blood-moon"] h1, html[data-ypp-card-style="blood-moon"] h2, html[data-ypp-card-style="blood-moon"] h3, html[data-ypp-card-style="blood-moon"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="blood-moon"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="blood-moon"] h1, html[data-ypp-ui-design="blood-moon"] h2, html[data-ypp-ui-design="blood-moon"] h3, html[data-ypp-ui-design="blood-moon"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="blood-moon"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="blood-moon"] ytd-thumbnail, html[data-ypp-card-style="blood-moon"] yt-image,
-html[data-ypp-ui-design="blood-moon"] ytd-thumbnail, html[data-ypp-ui-design="blood-moon"] yt-image {
+html[data-ypp-card-style="blood-moon"] ytd-thumbnail, html[data-ypp-card-style="blood-moon"] yt-image, html[data-ypp-ui-design="blood-moon"] ytd-thumbnail, html[data-ypp-ui-design="blood-moon"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="blood-moon"] yt-img-shadow, html[data-ypp-card-style="blood-moon"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="blood-moon"] yt-img-shadow, html[data-ypp-ui-design="blood-moon"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="blood-moon"] yt-img-shadow, html[data-ypp-card-style="blood-moon"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="blood-moon"] yt-img-shadow, html[data-ypp-ui-design="blood-moon"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -98,8 +85,7 @@ html[data-ypp-card-style="blood-moon"] .ytp-tooltip, html[data-ypp-ui-design="bl
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="blood-moon"] tp-yt-paper-dialog, html[data-ypp-card-style="blood-moon"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="blood-moon"] tp-yt-paper-dialog, html[data-ypp-ui-design="blood-moon"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="blood-moon"] tp-yt-paper-dialog, html[data-ypp-card-style="blood-moon"] ytd-menu-popup-renderer, html[data-ypp-ui-design="blood-moon"] tp-yt-paper-dialog, html[data-ypp-ui-design="blood-moon"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -140,8 +126,7 @@ html[data-ypp-ui-design="blood-moon"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="blood-moon"] ytd-skeleton, html[data-ypp-ui-design="blood-moon"] ytd-skeleton, 
-html[data-ypp-card-style="blood-moon"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="blood-moon"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="blood-moon"] ytd-skeleton, html[data-ypp-ui-design="blood-moon"] ytd-skeleton, html[data-ypp-card-style="blood-moon"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="blood-moon"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -175,32 +160,32 @@ html[data-ypp-card-style="blood-moon"] yt-icon:hover, html[data-ypp-ui-design="b
 /* 30. Offline & Error Screens */
 
 /* Navbar UI for blood-moon */
-ytd-masthead {
+html[data-ypp-ui-design="blood-moon"] ytd-masthead {
   box-shadow: 0 0 15px #8a0303;
 }
 
-ytd-searchbox #container.ytd-searchbox {
+html[data-ypp-ui-design="blood-moon"] ytd-searchbox #container.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0px 0 0 0px) !important;
 }
 
-ytd-searchbox #search-icon-legacy.ytd-searchbox {
+html[data-ypp-ui-design="blood-moon"] ytd-searchbox #search-icon-legacy.ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0 0px 0px 0) !important;
 }
 
-#voice-search-button {
+html[data-ypp-ui-design="blood-moon"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 50%) !important;
 }
 
 /* Panels for blood-moon */
 
-ytd-live-chat-frame {
+html[data-ypp-ui-design="blood-moon"] ytd-live-chat-frame {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
 /* Sidebar for blood-moon */
 
 /* Channels for blood-moon */
-#channel-header-banner {
+html[data-ypp-ui-design="blood-moon"] #channel-header-banner {
   border-radius: 0px 0px 0 0;
 }
 
@@ -208,19 +193,18 @@ ytd-live-chat-frame {
 
 /* Search for blood-moon */
 
-ytd-toggle-button-renderer a {
+html[data-ypp-ui-design="blood-moon"] ytd-toggle-button-renderer a {
   border-radius: 0px;
 }
 
 /* Watch for blood-moon */
-#ytd-player {
+html[data-ypp-ui-design="blood-moon"] #ytd-player {
   border-radius: 0px;
   box-shadow: 0 0 15px #8a0303;
 }
 
-:is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
+html[data-ypp-ui-design="blood-moon"] :is(ytd-segmented-like-dislike-button-renderer, yt-segmented-like-dislike-button-view-model, .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper) {
   border-radius: 0px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-}

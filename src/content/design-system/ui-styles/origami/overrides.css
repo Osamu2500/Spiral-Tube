@@ -21,10 +21,7 @@
   100% {
     filter:brightness(1.1) saturate(1.1);
   }
-}
-
-html[data-ypp-ui-design="origami"] {
-/* Unique Shapes and Patterns for origami */
+}/* Unique Shapes and Patterns for origami */
 
 /* origami/base/animations.css */
 
@@ -45,7 +42,7 @@ html[data-ypp-ui-design="origami"] ytd-grid-video-renderer:hover {
 /* Sidebar guide */
 
 /* Button base */
-html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover ,
+html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i]:hover,
 html[data-ypp-ui-design="origami"] yt-button-shape button[title*="Download" i]:hover {
   transform: scale(1.08);
@@ -139,7 +136,8 @@ html[data-ypp-ui-design="origami"] .ytProgressBarLineProgressBarPlayed {
 
 /* origami/components/badges.css */
 html[data-ypp-ui-design="origami"] .yt-badge-shape--thumbnail-default,
-html[data-ypp-ui-design="origami"] .ypp-badge, html[data-ypp-ui-design="origami"] .ypp-value-display {
+html[data-ypp-ui-design="origami"] .ypp-badge,
+html[data-ypp-ui-design="origami"] .ypp-value-display {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
 }
@@ -167,7 +165,7 @@ html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--filled,
 html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="origami"] :is(ytd-button-renderer, yt-button-view-model),
 html[data-ypp-ui-design="origami"] button.ytSpecButtonShapeNextTonal,
-html[data-ypp-ui-design="origami"] button.ytSpecButtonShapeNextText ,
+html[data-ypp-ui-design="origami"] button.ytSpecButtonShapeNextText,
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="origami"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i],
@@ -178,7 +176,7 @@ html[data-ypp-ui-design="origami"] yt-button-shape button[title*="Download" i] {
   transition: transform var(--bounce), box-shadow var(--bounce), background var(--bounce) !important;
 }
 
-html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="origami"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 0px) !important;
@@ -227,8 +225,7 @@ html[data-ypp-ui-design="origami"] .ypp-btn-primary:hover, html[data-ypp-ui-desi
 }
 
 /* origami/components/forms.css */
-html[data-ypp-ui-design="origami"] ytd-searchbox, html[data-ypp-ui-design="origami"] #search-form,
-html[data-ypp-ui-design="origami"] tp-yt-paper-input, html[data-ypp-ui-design="origami"] tp-yt-paper-textarea {
+html[data-ypp-ui-design="origami"] ytd-searchbox, html[data-ypp-ui-design="origami"] #search-form, html[data-ypp-ui-design="origami"] tp-yt-paper-input, html[data-ypp-ui-design="origami"] tp-yt-paper-textarea {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15) !important;
 }
@@ -284,7 +281,7 @@ html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--overlay.yt-spec-b
 html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--tonal,
 html[data-ypp-ui-design="origami"] ytd-notification-topbar-button-renderer.ytd-masthead,
 html[data-ypp-ui-design="origami"] yt-icon-button.ytd-masthead,
-html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text ,
+html[data-ypp-ui-design="origami"] .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text,
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i],
 html[data-ypp-ui-design="origami"] yt-button-shape button[title*="Download" i],
 html[data-ypp-ui-design="origami"] yt-button-shape button[aria-label*="Download" i],
@@ -322,10 +319,12 @@ html[data-ypp-card-style="origami"] ytd-multi-page-menu-renderer, html[data-ypp-
   border-radius: var(--ypp-shape-primary, var(--origami-radius)) !important;
   box-shadow: var(--origami-shadow) !important;
   background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)), linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)) !important;
+  -webkit-clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
 }
 
 html[data-ypp-card-style="origami"] ytd-multi-page-menu-renderer, html[data-ypp-ui-design="origami"] ytd-multi-page-menu-renderer:hover {
+  -webkit-clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.15), -5px -5px 15px rgba(255,255,255,1) !important;
 }
@@ -335,10 +334,12 @@ html[data-ypp-card-style="origami"] ytd-menu-popup-renderer, html[data-ypp-ui-de
   border-radius: var(--ypp-shape-primary, var(--origami-radius)) !important;
   box-shadow: var(--origami-shadow) !important;
   background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)), linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)) !important;
+  -webkit-clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
 }
 
 html[data-ypp-card-style="origami"] ytd-menu-popup-renderer, html[data-ypp-ui-design="origami"] ytd-menu-popup-renderer:hover {
+  -webkit-clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.15), -5px -5px 15px rgba(255,255,255,1) !important;
 }
@@ -348,10 +349,12 @@ html[data-ypp-card-style="origami"] tp-yt-paper-dialog, html[data-ypp-ui-design=
   border-radius: var(--ypp-shape-primary, var(--origami-radius)) !important;
   box-shadow: var(--origami-shadow) !important;
   background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)), linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)) !important;
+  -webkit-clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
 }
 
 html[data-ypp-card-style="origami"] tp-yt-paper-dialog, html[data-ypp-ui-design="origami"] tp-yt-paper-dialog:hover {
+  -webkit-clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.15), -5px -5px 15px rgba(255,255,255,1) !important;
 }
@@ -361,10 +364,12 @@ html[data-ypp-card-style="origami"] ytd-notification-renderer, html[data-ypp-ui-
   border-radius: var(--ypp-shape-primary, var(--origami-radius)) !important;
   box-shadow: var(--origami-shadow) !important;
   background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)), linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)) !important;
+  -webkit-clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
 }
 
 html[data-ypp-card-style="origami"] ytd-notification-renderer, html[data-ypp-ui-design="origami"] ytd-notification-renderer:hover {
+  -webkit-clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.15), -5px -5px 15px rgba(255,255,255,1) !important;
 }
@@ -386,10 +391,12 @@ html[data-ypp-card-style="origami"] #channel-header, html[data-ypp-ui-design="or
   border-radius: var(--ypp-shape-primary, var(--origami-radius)) !important;
   box-shadow: var(--origami-shadow) !important;
   background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)), linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)) !important;
+  -webkit-clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
 }
 
 html[data-ypp-card-style="origami"] #channel-header, html[data-ypp-ui-design="origami"] #channel-header:hover {
+  -webkit-clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px) !important;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.15), -5px -5px 15px rgba(255,255,255,1) !important;
 }
@@ -1913,9 +1920,7 @@ html[data-ypp-card-style="origami"] .origami-deep-class-250, html[data-ypp-ui-de
 }
 
 /* origami/components/menus.css */
-html[data-ypp-ui-design="origami"] tp-yt-paper-dialog, html[data-ypp-ui-design="origami"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="origami"] tp-yt-iron-dropdown, html[data-ypp-ui-design="origami"] #contentWrapper tp-yt-iron-dropdown,
-html[data-ypp-ui-design="origami"] ytd-multi-page-menu-renderer {
+html[data-ypp-ui-design="origami"] tp-yt-paper-dialog, html[data-ypp-ui-design="origami"] ytd-menu-popup-renderer, html[data-ypp-ui-design="origami"] tp-yt-iron-dropdown, html[data-ypp-ui-design="origami"] #contentWrapper tp-yt-iron-dropdown, html[data-ypp-ui-design="origami"] ytd-multi-page-menu-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   box-shadow: 5px 5px 18px rgba(0,0,0,0.18) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -1980,17 +1985,20 @@ html[data-ypp-ui-design="origami"] ytd-masthead {
 html[data-ypp-ui-design="origami"] #container.ytd-searchbox,
 html[data-ypp-ui-design="origami"] ytd-searchbox {
   border-radius: var(--ypp-shape-primary, 0) !important;
+  -webkit-clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important;
   clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important;
   box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05) !important;
 }
 
 html[data-ypp-ui-design="origami"] #search-icon-legacy {
   border-radius: var(--ypp-shape-primary, 0) !important;
+  -webkit-clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important;
   clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%) !important;
 }
 
 html[data-ypp-ui-design="origami"] #voice-search-button {
   border-radius: var(--ypp-shape-primary, 0) !important;
+  -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%) !important;
 }
 
@@ -1998,12 +2006,14 @@ html[data-ypp-ui-design="origami"] .sbdd_b,
 html[data-ypp-ui-design="origami"] .sbsb_a {
   border-radius: var(--ypp-shape-primary, 0) !important;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.1) !important;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%) !important;
 }
 
 html[data-ypp-ui-design="origami"] ytd-topbar-menu-button-renderer yt-icon-button,
 html[data-ypp-ui-design="origami"] ytd-notification-topbar-button-renderer yt-icon-button {
   border-radius: var(--ypp-shape-primary, 0) !important;
+  -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%) !important;
   clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%) !important;
 }
 
@@ -2029,9 +2039,7 @@ html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-sidebar {
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1) !important;
 }
 
-html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-btn-shuffle,
-html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-filter,
-html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-col-switcher {
+html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-btn-play, html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-btn-shuffle, html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-btn-tool, html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-filter, html[data-ypp-ui-design="origami"] #ypp-pl-root .ypp-pl-col-switcher {
   border-radius: var(--ypp-shape-primary, 0px) !important;
   transition: transform var(--bounce), background var(--bounce) !important;
 }
@@ -2235,4 +2243,3 @@ html[data-ypp-ui-design="origami"] ytd-expandable-metadata-renderer {
   border-radius: var(--ypp-shape-primary, 0px) !important;
 }
 
-}

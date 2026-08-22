@@ -1,8 +1,5 @@
-
 @import "../../ui-styles/shared/timeline-visibility.css";
-
-html[data-ypp-theme="default"] {
-    /* YouTube Default Dark Theme */
+/* YouTube Default Dark Theme */
     --ypp-bg-base: #0f0f0f;
     --ypp-bg-surface: #272727;
     --ypp-bg-glass: rgba(15, 15, 15, 0.9);
@@ -32,9 +29,9 @@ html[data-ypp-theme="default"] {
     --ytd-searchbox-background: #121212;
     --ytd-searchbox-text-color: #f1f1f1;
     --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.08);
-}
 
-html:not([dark]).yt-spiral-tube-theme {
+
+html[data-ypp-theme="default"] html:not([dark]).yt-spiral-tube-theme {
     /* YouTube Default Light Theme */
     --ypp-bg-base: #ffffff;
     --ypp-bg-surface: #f2f2f2;
@@ -67,7 +64,7 @@ html:not([dark]).yt-spiral-tube-theme {
 
 /* FIXES AND OTHER STUFF */
 /* Fix dropdown z-indexes to ensure they stay above custom UI */
-ytd-popup-container {
+html[data-ypp-theme="default"] ytd-popup-container {
 }
 
 /* Better Scrollbar for YouTube Default */
@@ -84,22 +81,22 @@ html[data-ypp-theme="default"] ::-webkit-scrollbar-thumb:hover {
 }
 
 /* Fix scrolling on some native popups */
-.tp-yt-iron-dropdown {
+html[data-ypp-theme="default"] .tp-yt-iron-dropdown {
     max-height: 90vh !important;
 }
 
 /* Smooth scrolling for the whole page */
-html {
+html[data-ypp-theme="default"] html {
     scroll-behavior: smooth;
 }
 
 /* Ensure consistent border radius on thumbnails */
-ytd-thumbnail {
+html[data-ypp-theme="default"] ytd-thumbnail {
     overflow: hidden;
 }
 
 /* Video Player rounded corners fix for ambient mode */
-#ytd-player {
+html[data-ypp-theme="default"] #ytd-player {
     overflow: hidden;
 }
 

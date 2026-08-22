@@ -1,33 +1,26 @@
-
-
-
-
-
-
-html[data-ypp-ui-design="shared"] {
 /* ==========================================================================
    YouTube: Better timeline and text visibility (UserStyle #4708)
    ========================================================================== */
 
-.ytp-time-current,
-.ytp-time-separator,
-.ytp-time-duration,
-.ytp-chapter-title-content,
-.ytp-tooltip-title > span {
+html[data-ypp-ui-design="shared"] .ytp-time-current,
+html[data-ypp-ui-design="shared"] .ytp-time-separator,
+html[data-ypp-ui-design="shared"] .ytp-time-duration,
+html[data-ypp-ui-design="shared"] .ytp-chapter-title-content,
+html[data-ypp-ui-design="shared"] .ytp-tooltip-title > span {
   text-shadow: 1px 1px 2px black, 0 0 5px black !important;
 }
 
-.ytp-svg-shadow {
+html[data-ypp-ui-design="shared"] .ytp-svg-shadow {
   stroke-opacity: 0.55 !important;
 }
 
-.ytp-chapter-hover-container {
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent) !important;
   box-sizing: border-box !important;
 }
 
-.ytp-chapter-hover-container::before, 
-.ytp-chapter-hover-container::after {
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container::before, 
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container::after {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
@@ -38,21 +31,20 @@ html[data-ypp-ui-design="shared"] {
   margin-top: -1px !important;
 }
 
-.ytp-chapter-hover-container::before {
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container::before {
   left: 0 !important;
 }
 
-.ytp-chapter-hover-container::after {
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container::after {
   right: 0 !important;
 }
 
-.ytp-chapter-hover-container:hover {
+html[data-ypp-ui-design="shared"] .ytp-chapter-hover-container:hover {
   border-right: solid #f1f1f1 5px !important;
   border-left: solid #fff 5px !important;
 }
 
-.caption-window.ytp-caption-window-bottom {
+html[data-ypp-ui-design="shared"] .caption-window.ytp-caption-window-bottom {
   background: transparent !important;
 }
 
-}

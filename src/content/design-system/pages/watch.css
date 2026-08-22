@@ -24,8 +24,8 @@
   padding: var(--ypp-card-pad, 0px) !important;
   box-shadow: var(--ypp-card-shadow, none) !important;
   filter: var(--ypp-card-filter, none) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
   -webkit-backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
+  backdrop-filter: var(--ypp-card-backdrop-filter, none) !important;
   transition: var(--ypp-card-transition, all 0.2s ease) !important;
 }
 
@@ -46,9 +46,9 @@
   border: var(--ypp-card-border-hover, var(--ypp-card-border, 1px solid transparent)) !important;
   box-shadow: var(--ypp-card-shadow-hover, var(--ypp-card-shadow, none)) !important;
   filter: var(--ypp-card-filter-hover, var(--ypp-card-filter, none)) !important;
-  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
   -webkit-backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
-}
+  backdrop-filter: var(--ypp-card-backdrop-filter-hover, var(--ypp-card-backdrop-filter, none)) !important;
+  }
 
 /* Extension Specific Overrides (EQ, Cinema, etc) */
 .ypp-eq-preset-btn,

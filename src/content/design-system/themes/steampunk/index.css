@@ -1,9 +1,9 @@
 
-@import "../../ui-styles/shared/timeline-visibility.css";
+
 
 /* steampunk/theme/base/tokens.css */
-html[data-ypp-theme="steampunk"] {
-  --ypp-bg-base: #3b2f2f; --ypp-bg-surface: #4a3a30;
+@import "../../ui-styles/shared/timeline-visibility.css";
+--ypp-bg-base: #3b2f2f; --ypp-bg-surface: #4a3a30;
   --ypp-accent: #d2b48c; --ypp-text-primary: #f5deb3;
   --ypp-text-secondary: #c8a882;
 
@@ -14,7 +14,7 @@ html[data-ypp-theme="steampunk"] {
   --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
-}
+
 
 /* --- TEXT READABILITY FIX --- */
 /* Enforce dark text color globally for this light theme */

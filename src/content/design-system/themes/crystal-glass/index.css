@@ -1,6 +1,4 @@
-/* Theme: crystal-glass */
-html[data-ypp-theme="crystal-glass"] {
-  --ypp-bg-base: #f0f0f0 !important;
+/* Theme: crystal-glass */--ypp-bg-base: #f0f0f0 !important;
   --ypp-bg-surface: #d8d8d8 !important;
   --ypp-text-primary: #0f0f0f !important;
   --ypp-text-secondary: rgba(0,0,0,0.7) !important;
@@ -12,7 +10,7 @@ html[data-ypp-theme="crystal-glass"] {
   --yt-spec-icon-active-other: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-brand-icon-active: var(--ypp-text-primary, #0f0f0f) !important;
-}
+
 
 /* --- TEXT READABILITY FIX --- */
 /* Enforce dark text color globally for this light theme */

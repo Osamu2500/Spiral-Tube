@@ -1,8 +1,5 @@
-
 @import "../../ui-styles/shared/timeline-visibility.css";
-
-﻿html[data-ypp-theme="ember"] {
-    --ypp-bg-base: #141414;
+--ypp-bg-base: #141414;
     --ypp-bg-surface: #1e1e1e;
     --ypp-bg-glass: rgba(20, 20, 20, 0.95);
     --ypp-glass-border: rgba(255, 69, 0, 0.15);
@@ -26,7 +23,7 @@
     --ytd-searchbox-background: rgba(30, 30, 30, 0.8);
     --ytd-searchbox-text-color: var(--ypp-text-primary, #fff);
     --ytd-searchbox-legacy-button-color: rgba(255, 69, 0, 0.1);
-}
+
 
 /* Animated Ember Layered Glow Effect */
 @keyframes ypp-ember-glow-bg {

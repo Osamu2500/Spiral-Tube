@@ -5,7 +5,7 @@
 
 
 
-html[data-ypp-ui-design="sakura"] {
+@import "./overrides.css";
 /* Token Overrides for sakura */
 :root[data-ypp-ui-design="sakura"],
 html[data-ypp-ui-design="sakura"] {
@@ -29,7 +29,8 @@ html[data-ypp-ui-design="sakura"] {
   --ypp-card-border-hover:          1px solid  var(--ypp-surface-border, #ffffff40) !important;
   --ypp-card-shadow:                0 4px 12px #ffffff20 !important;
   --ypp-card-shadow-hover:          0 8px 24px #ffffff40 !important;
-  --ypp-card-backdrop-filter:       none !important;
+  --ypp-card--webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   --ypp-card-backdrop-filter-hover: none !important;
 }
 
@@ -39,6 +40,6 @@ html[data-ypp-ui-design="sakura"] * {
 }
 
 
-}
 
-@import "./overrides.css";
+
+

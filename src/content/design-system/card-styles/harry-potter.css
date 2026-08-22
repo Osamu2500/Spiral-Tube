@@ -14,28 +14,19 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
 /* Base Card Styling — Spellbook & Parchment Aesthetic */
 html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"]
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ) {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ) {
   background: rgba(20, 21, 31, 0.85) !important;
   border-radius: 40px 8px 40px 8px !important;
   border: 1px solid rgba(211, 166, 37, 0.35) !important;
@@ -49,28 +40,19 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
 /* Glowing Rune Corner / Marauder's Map Inner Foil Effect */
 html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"]
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  )::before {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ )::before {
   content: "";
   position: absolute;
   top: 3px;
@@ -86,28 +68,19 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
 /* Hover State — Leviosa Floating & Lumos Gold Glow */
 html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"]
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):hover {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):hover {
   background: rgba(25, 27, 40, 0.95) !important;
   border-color: rgba(255, 215, 0, 0.75) !important;
   transform: translateY(-6px) scale(1.015) !important;
@@ -117,28 +90,19 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
 
 html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"]
   :is(
-    ytd-rich-item-renderer,
-    ytd-video-renderer,
-    ytd-playlist-renderer,
-    ytd-radio-renderer,
-    ytd-channel-renderer,
-    ytd-compact-video-renderer,
-    ytd-grid-video-renderer,
-    .ypp-grid-item,
-    yt-lockup-view-model:not(
-      :is(
-          ytd-rich-item-renderer,
-          ytd-video-renderer,
-          ytd-playlist-renderer,
-          ytd-radio-renderer,
-          ytd-channel-renderer,
-          ytd-compact-video-renderer,
-          ytd-grid-video-renderer,
-          .ypp-grid-item
-        )
-        *
-    )
-  ):hover::before {
+ ytd-rich-item-renderer,
+ ytd-video-renderer,
+ ytd-playlist-renderer,
+ ytd-radio-renderer,
+ ytd-channel-renderer,
+ ytd-compact-video-renderer,
+ ytd-grid-video-renderer,
+ .ypp-grid-item,
+ yt-lockup-view-model:not(
+ .ypp-grid-item
+ )
+ *
+ ):hover::before {
   border-color: rgba(255, 215, 0, 0.45);
   box-shadow: inset 0 0 12px rgba(255, 215, 0, 0.15);
 }
@@ -166,7 +130,7 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
   transition: color 0.25s ease !important;
 }
 
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover #video-title { color: var(--ypp-text-primary, #d4af37) !important;
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover #video-title { color: var(--ypp-text-primary, #d4af37) !important;
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
 }
 
@@ -175,49 +139,41 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
    ========================================================= */
 
 /* 1. Gryffindor (Crimson & Gold) */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1) {
   border-color: rgba(116, 0, 1, 0.65) !important;
   background: linear-gradient(135deg, rgba(20, 21, 31, 0.88) 0%, rgba(116, 0, 1, 0.18) 100%) !important;
 }
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1):hover {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+1):hover {
   border-color: #d4af37 !important;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 25px rgba(116, 0, 1, 0.6), 0 0 15px rgba(212, 175, 55, 0.45) !important;
 }
 
 /* 2. Slytherin (Emerald & Silver) */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2) {
   border-color: rgba(26, 71, 42, 0.65) !important;
   background: linear-gradient(135deg, rgba(20, 21, 31, 0.88) 0%, rgba(26, 71, 42, 0.22) 100%) !important;
 }
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2):hover {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+2):hover {
   border-color: #a3c1ad !important;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 25px rgba(26, 71, 42, 0.7), 0 0 15px rgba(163, 193, 173, 0.55) !important;
 }
 
 /* 3. Ravenclaw (Sapphire & Bronze) */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3) {
   border-color: rgba(14, 26, 64, 0.75) !important;
   background: linear-gradient(135deg, rgba(20, 21, 31, 0.88) 0%, rgba(14, 26, 64, 0.28) 100%) !important;
 }
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3):hover {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+3):hover {
   border-color: #946b2d !important;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 25px rgba(14, 26, 64, 0.8), 0 0 15px rgba(148, 107, 45, 0.55) !important;
 }
 
 /* 4. Hufflepuff (Amber & Charcoal) */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4) :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4) {
   border-color: rgba(236, 185, 57, 0.55) !important;
   background: linear-gradient(135deg, rgba(20, 21, 31, 0.88) 0%, rgba(236, 185, 57, 0.15) 100%) !important;
 }
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), ytd-video-renderer, ytd-compact-video-renderer),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4):hover {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4):hover :is(ytd-rich-grid-media, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, .ypp-grid-item) *), ytd-compact-video-renderer), html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-grid-video-renderer, ytd-compact-video-renderer, ytd-playlist-video-renderer, .ypp-grid-item):nth-child(4n+4):hover {
   border-color: #ecb939 !important;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 25px rgba(236, 185, 57, 0.6), 0 0 15px rgba(55, 46, 41, 0.55) !important;
 }
@@ -226,8 +182,7 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
    SECONDARY VIDEO SIDEBAR — NO BORDER BOX (USER DIRECTIVE)
    Secondary sidebar items in #secondary / #related must never have boxes
    ========================================================= */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) :is(ytd-compact-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), .ypp-grid-item),
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) :is(ytd-compact-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *),, html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) {
   background: transparent !important;
   border: none !important;
   border-left: none !important;
@@ -239,8 +194,7 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
   padding: 0 !important;
 }
 
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) :is(ytd-compact-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), .ypp-grid-item)::before,
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) :is(ytd-compact-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), .ypp-grid-item)::after {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) :is(ytd-compact-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), .ypp-grid-item)::before, html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(#secondary, #related, #secondary-inner) :is(ytd-compact-video-renderer, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *), .ypp-grid-item)::after {
   display: none !important;
   content: none !important;
 }
@@ -286,14 +240,14 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
 
 /* GLOBAL REDESIGN V3 INJECT - harry-potter */
 /* GPU Acceleration & Base Transitions for Smooth Morphing */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   will-change: transform, clip-path, background-color, border-radius;
   transform: translateZ(0);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 /* Hover Interaction: 3D Tilt & Glows */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02) !important;
   box-shadow: 0 15px 30px rgba(0,0,0,0.3) !important;
   z-index: 10;
@@ -311,20 +265,21 @@ html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][dat
 
 /* GLOBAL REDESIGN V4 INJECT - GLASSMORPHISM */
 /* V4 Glassmorphic Container */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)) {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) {
   background: rgba(116, 0, 1, 0.3) !important;
   border-radius: 40px 8px 40px 8px !important;
   border: 1px solid rgba(211, 166, 37, 0.4) !important;
-  backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
 }
 
 /* V4 Glassmorphic Hover State */
-html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item) *)):hover {
+html[data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"][data-ypp-card-style="harry-potter"] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)):hover {
   background: rgba(116, 0, 1, 0.3) !important;
-  backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
-}
+  backdrop-filter: blur(15px) !important;
+  }
 
 /* V4 Border Radius on Thumbnails */

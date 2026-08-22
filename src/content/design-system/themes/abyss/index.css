@@ -1,8 +1,5 @@
-
 @import "../../ui-styles/shared/timeline-visibility.css";
-
-html[data-ypp-theme="abyss"] {
-    --ypp-bg-base: var(--abyss-bg);
+--ypp-bg-base: var(--abyss-bg);
     --ypp-bg-surface: var(--abyss-card);
     --ypp-bg-glass: rgba(244, 236, 216, 0.92);
     --ypp-glass-border: rgba(62, 53, 47, 0.18);
@@ -26,7 +23,7 @@ html[data-ypp-theme="abyss"] {
     --ytd-searchbox-background: rgba(255, 252, 245, 0.8);
     --ytd-searchbox-text-color: var(--abyss-secondary);
     --ytd-searchbox-legacy-button-color: rgba(193, 58, 58, 0.12);
-}
+
 
 /* Film grain texture overlay */
 @keyframes ypp-vintage-flicker {
@@ -67,54 +64,52 @@ html[data-ypp-theme="abyss"].ypp-theme-effects::after {
 /* =========================================== */
 
 /* Video title text */
-#video-title,
-#video-title.ytd-rich-grid-media,
-#video-title.ytd-compact-video-renderer,
-ytd-rich-grid-media #video-title,
-ytd-compact-video-renderer #video-title,
-ytd-video-renderer #video-title,
-yt-formatted-string.ytd-rich-grid-media,
-.title.ytd-rich-grid-media,
-#title-wrapper h3 a,
-
-/* Channel name / metadata */
-ytd-rich-grid-media #metadata-line,
-ytd-compact-video-renderer #metadata-line,
-ytd-video-renderer #metadata-line,
-ytd-rich-grid-media #byline-container,
-ytd-compact-video-renderer #byline-container,
-ytd-rich-grid-media .yt-simple-endpoint,
-ytd-compact-video-renderer .yt-simple-endpoint,
-ytd-rich-grid-media yt-formatted-string,
-ytd-compact-video-renderer yt-formatted-string,
-ytd-video-renderer yt-formatted-string,
-#channel-name .yt-simple-endpoint,
-ytd-channel-name yt-formatted-string,
-ytd-channel-name a,
-#metadata-line span,
-.inline-metadata-item {
+html[data-ypp-theme="abyss"] #video-title,
+html[data-ypp-theme="abyss"] #video-title.ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] #video-title.ytd-compact-video-renderer,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #video-title,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #video-title,
+html[data-ypp-theme="abyss"] ytd-video-renderer #video-title,
+html[data-ypp-theme="abyss"] yt-formatted-string.ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] .title.ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] #title-wrapper h3 a,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #metadata-line,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #metadata-line,
+html[data-ypp-theme="abyss"] ytd-video-renderer #metadata-line,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #byline-container,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #byline-container,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media .yt-simple-endpoint,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer .yt-simple-endpoint,
+html[data-ypp-theme="abyss"] ytd-rich-grid-media yt-formatted-string,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer yt-formatted-string,
+html[data-ypp-theme="abyss"] ytd-video-renderer yt-formatted-string,
+html[data-ypp-theme="abyss"] #channel-name .yt-simple-endpoint,
+html[data-ypp-theme="abyss"] ytd-channel-name yt-formatted-string,
+html[data-ypp-theme="abyss"] ytd-channel-name a,
+html[data-ypp-theme="abyss"] #metadata-line span,
+html[data-ypp-theme="abyss"] .inline-metadata-item {
   color: var(--abyss-secondary) !important;
   text-shadow: none !important;
 }
 
 /* View count, date metadata */
-ytd-rich-grid-media #metadata-line span,
-ytd-compact-video-renderer #metadata-line span,
-ytd-video-renderer #metadata-line span {
+html[data-ypp-theme="abyss"] ytd-rich-grid-media #metadata-line span,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer #metadata-line span,
+html[data-ypp-theme="abyss"] ytd-video-renderer #metadata-line span {
   color: #7a5c45 !important;
 }
 
 /* Video card background */
-ytd-rich-grid-media,
-ytd-compact-video-renderer,
-ytd-video-renderer,
-ytd-playlist-video-renderer,
-ytd-grid-video-renderer {
+html[data-ypp-theme="abyss"] ytd-rich-grid-media,
+html[data-ypp-theme="abyss"] ytd-compact-video-renderer,
+html[data-ypp-theme="abyss"] ytd-video-renderer,
+html[data-ypp-theme="abyss"] ytd-playlist-video-renderer,
+html[data-ypp-theme="abyss"] ytd-grid-video-renderer {
   color: var(--abyss-secondary) !important;
 }
 
 /* Description text */
-#description-text,
+html[data-ypp-theme="abyss"] #description-text,
 
 html[data-ypp-theme="abyss"] {
   /* Global AI-generated missing variable fallbacks */

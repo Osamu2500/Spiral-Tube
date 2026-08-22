@@ -1505,7 +1505,8 @@ body.yt-spiral-tube-theme ytd-feed-filter-chip-bar-renderer {
   backdrop-filter: blur(16px);
   position: absolute;
   background: var(--ypp-bg-surface);
-  /* backdrop-filter: blur(16px); */
+  /* -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px); */
   border: 1px solid var(--ypp-glass-border);
   border-radius: 12px;
   padding: 8px;
@@ -3317,6 +3318,7 @@ body.yt-spiral-tube-theme yt-lockup-view-model .yt-lockup-view-model-wiz__conten
   background-color: transparent !important;
   background-image: none !important;
   box-shadow: none !important;
+  -webkit-clip-path: none !important;
   clip-path: none !important;
   border-radius: var(--ypp-radius-md, 12px) !important;
 }

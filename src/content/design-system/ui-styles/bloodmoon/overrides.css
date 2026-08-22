@@ -81,10 +81,7 @@
 100% {
   box-shadow: 0 0 20px #ff0000;
 }
-}
-
-html[data-ypp-ui-design="bloodmoon"] {
-/* Unique Shapes and Patterns for bloodmoon */
+}/* Unique Shapes and Patterns for bloodmoon */
 
 html[data-ypp-card-style="bloodmoon"] ::-webkit-scrollbar-thumb {
   border-radius: var(--ypp-shape-primary, 4px) !important;
@@ -200,11 +197,9 @@ html[data-ypp-ui-design="bloodmoon"] ytd-reel-video-renderer {
 }
 
 /* Shorts Floating Actions (Like, Dislike, Share) */
-html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model),
-html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer,
-html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
+html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer :is(ytd-button-renderer, yt-button-view-model), html[data-ypp-card-style="bloodmoon"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer, html[data-ypp-ui-design="bloodmoon"] #actions.ytd-reel-video-renderer ytd-toggle-button-renderer {
   border-radius: var(--ypp-shape-primary, 0) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
   backdrop-filter: blur(5px) !important;
 }
 
@@ -338,9 +333,9 @@ html[data-ypp-card-style="bloodmoon"] ytd-searchbox #search-icon-legacy {
 }
 
 html[data-ypp-card-style="bloodmoon"] ytd-subscribe-button-renderer yt-button-shape button,
-html[data-ypp-card-style="bloodmoon"] .yt-spec-button-shape-next--filled ,
-yt-button-shape button[aria-label*="Download" i],
-yt-button-shape button[title*="Download" i] {
+html[data-ypp-card-style="bloodmoon"] .yt-spec-button-shape-next--filled,
+html[data-ypp-ui-design="bloodmoon"] yt-button-shape button[aria-label*="Download" i],
+html[data-ypp-ui-design="bloodmoon"] yt-button-shape button[title*="Download" i] {
   border-radius: var(--ypp-shape-primary, 4px) !important;
   text-transform: uppercase !important;
 }
@@ -374,27 +369,21 @@ html[data-ypp-card-style="bloodmoon"] ::-webkit-scrollbar-thumb, html[data-ypp-u
 }
 
 /* 3. Global Text Overrides */
-html[data-ypp-card-style="bloodmoon"] h1, html[data-ypp-card-style="bloodmoon"] h2, html[data-ypp-card-style="bloodmoon"] h3, 
-html[data-ypp-card-style="bloodmoon"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-card-style="bloodmoon"] yt-formatted-string.ytd-rich-grid-media,
-html[data-ypp-ui-design="bloodmoon"] h1, html[data-ypp-ui-design="bloodmoon"] h2, html[data-ypp-ui-design="bloodmoon"] h3, 
-html[data-ypp-ui-design="bloodmoon"] yt-formatted-string.ytd-video-renderer, 
-html[data-ypp-ui-design="bloodmoon"] yt-formatted-string.ytd-rich-grid-media {
+html[data-ypp-card-style="bloodmoon"] h1, html[data-ypp-card-style="bloodmoon"] h2, html[data-ypp-card-style="bloodmoon"] h3, html[data-ypp-card-style="bloodmoon"] yt-formatted-string.ytd-video-renderer, html[data-ypp-card-style="bloodmoon"] yt-formatted-string.ytd-rich-grid-media, html[data-ypp-ui-design="bloodmoon"] h1, html[data-ypp-ui-design="bloodmoon"] h2, html[data-ypp-ui-design="bloodmoon"] h3, html[data-ypp-ui-design="bloodmoon"] yt-formatted-string.ytd-video-renderer, html[data-ypp-ui-design="bloodmoon"] yt-formatted-string.ytd-rich-grid-media {
   text-transform: none !important;
 }
 
 /* 4. Core Card Structures */
 
 /* 5. Thumbnails & Media */
-html[data-ypp-card-style="bloodmoon"] ytd-thumbnail, html[data-ypp-card-style="bloodmoon"] yt-image,
-html[data-ypp-ui-design="bloodmoon"] ytd-thumbnail, html[data-ypp-ui-design="bloodmoon"] yt-image {
+html[data-ypp-card-style="bloodmoon"] ytd-thumbnail, html[data-ypp-card-style="bloodmoon"] yt-image, html[data-ypp-ui-design="bloodmoon"] ytd-thumbnail, html[data-ypp-ui-design="bloodmoon"] yt-image {
   border-radius: var(--ypp-shape-primary, calc(var(--ypp-global-radius) * 0.8)) !important;
   transition: transform 0.4s ease, filter 0.4s ease !important;
 }
 
 /* 6. Avatars & Channel Icons */
-html[data-ypp-card-style="bloodmoon"] yt-img-shadow, html[data-ypp-card-style="bloodmoon"] .yt-spec-avatar-shape__image,
-html[data-ypp-ui-design="bloodmoon"] yt-img-shadow, html[data-ypp-ui-design="bloodmoon"] .yt-spec-avatar-shape__image {
+html[data-ypp-card-style="bloodmoon"] yt-img-shadow, html[data-ypp-card-style="bloodmoon"] .yt-spec-avatar-shape__image, html[data-ypp-ui-design="bloodmoon"] yt-img-shadow, html[data-ypp-ui-design="bloodmoon"] .yt-spec-avatar-shape__image {
+  -webkit-clip-path: circle(50% at 50% 50%) !important;
   clip-path: circle(50% at 50% 50%) !important;
   border-radius: var(--ypp-shape-primary, 0) !important;
   transition: transform 0.3s ease !important;
@@ -446,8 +435,7 @@ html[data-ypp-card-style="bloodmoon"] .ytp-tooltip, html[data-ypp-ui-design="blo
 }
 
 /* 13. Dialogs, Popups, and Menus */
-html[data-ypp-card-style="bloodmoon"] tp-yt-paper-dialog, html[data-ypp-card-style="bloodmoon"] ytd-menu-popup-renderer,
-html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-dialog, html[data-ypp-ui-design="bloodmoon"] ytd-menu-popup-renderer {
+html[data-ypp-card-style="bloodmoon"] tp-yt-paper-dialog, html[data-ypp-card-style="bloodmoon"] ytd-menu-popup-renderer, html[data-ypp-ui-design="bloodmoon"] tp-yt-paper-dialog, html[data-ypp-ui-design="bloodmoon"] ytd-menu-popup-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
   box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
 }
@@ -488,8 +476,7 @@ html[data-ypp-ui-design="bloodmoon"] ytd-badge-supported-renderer {
 }
 
 /* 19. Skeletons & Loading States */
-html[data-ypp-card-style="bloodmoon"] ytd-skeleton, html[data-ypp-ui-design="bloodmoon"] ytd-skeleton, 
-html[data-ypp-card-style="bloodmoon"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="bloodmoon"] .ytd-ghost-grid-renderer {
+html[data-ypp-card-style="bloodmoon"] ytd-skeleton, html[data-ypp-ui-design="bloodmoon"] ytd-skeleton, html[data-ypp-card-style="bloodmoon"] .ytd-ghost-grid-renderer, html[data-ypp-ui-design="bloodmoon"] .ytd-ghost-grid-renderer {
   border-radius: var(--ypp-shape-primary, 12px) !important;
 }
 
@@ -670,13 +657,11 @@ html[data-ypp-ui-design="bloodmoon"] .ytd-shopping-carousel-item-renderer:hover 
 }
 
 /* Buy Buttons */
-html[data-ypp-card-style="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer,
-html[data-ypp-ui-design="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
+html[data-ypp-card-style="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer, html[data-ypp-ui-design="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer {
   border-radius: var(--ypp-shape-primary, 20px) !important;
 }
 
-html[data-ypp-card-style="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover,
-html[data-ypp-ui-design="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
+html[data-ypp-card-style="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover, html[data-ypp-ui-design="bloodmoon"] :is(ytd-button-renderer, yt-button-view-model).ytd-shopping-carousel-item-renderer:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
   filter: brightness(1.2) !important;
 }
@@ -779,4 +764,3 @@ html[data-ypp-ui-design="bloodmoon"]::before {
   z-index: 0 !important;
 }
 
-}

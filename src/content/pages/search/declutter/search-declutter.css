@@ -75,9 +75,13 @@ body.ypp-hide-search-shelves.ypp-search-page yt-horizontal-list-renderer,
 body.ypp-hide-search-shelves.ypp-search-page yt-collection-shelf-view-model {
   display: none !important;
 }
-body.ypp-hide-search-shorts ytd-search ytd-video-renderer:has(a[href^="/shorts/"]),
+body.ypp-hide-search-shorts ytd-search ytd-video-renderer:has(a[href*="/shorts/"]),
 body.ypp-hide-search-shorts ytd-search ytd-reel-shelf-renderer,
-body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer) {
+body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+body.ypp-hide-search-shorts ytd-shelf-renderer:has(a[href*="/shorts/"]),
+body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-shelf-renderer a[href*="/shorts/"]),
+body.ypp-hide-search-shorts ytd-shelf-renderer:has(ytd-reel-item-renderer),
+body.ypp-hide-search-shorts ytd-item-section-renderer:has(ytd-reel-item-renderer) {
   display: none !important;
 }
 body.ypp-hide-channel-cards.ypp-search-page ytd-channel-renderer,

@@ -73,20 +73,4 @@ ytd-subscribe-button-renderer button.ytSpecButtonShapeNextTonal:hover {
     0 0 15px red,
     0 0 30px red !important;
   animation: youtubeRedPulse 5s ease-in-out infinite !important;
-}
-ytd-rich-grid-media::after,
-ytd-compact-video-renderer::after,
-ytd-video-renderer::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 50px;
-  height: 50px;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(163%2C230%2C53%2C0.2)%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M12%202C6.48%202%202%206.48%202%2012s4.48%2010%2010%2010%2010-4.48%2010-10S17.52%202%2012%202zm0%2018c-4.41%200-8-3.59-8-8s3.59-8%208-8%208%203.59%208%208-3.59%208-8%208zm-1-13h2v6h-2zm0%208h2v2h-2z%22%2F%3E%3C%2Fsvg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  pointer-events: none;
-  transform: rotate(15deg);
-}
+}
