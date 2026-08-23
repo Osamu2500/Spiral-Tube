@@ -42,24 +42,42 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
         try {
             // Track which topbar button was clicked to definitively separate Account from Notifications!
             this.addListener(document, 'click', e => {
+                // Walk up from the click target to find either the avatar button
+                // or a notification button. We check multiple selectors because
+                // YouTube renders the avatar button differently across versions.
                 const btn = e.target.closest(
-                    '#avatar-btn, yt-notification-topbar-button-renderer, ' +
-                    'ytd-topbar-menu-button-renderer, #notification-button, ' +
+                    '#avatar-btn, ' +
+                    'button#avatar-btn, ' +
+                    'yt-img-shadow#avatar-img, ' +
+                    '#masthead #avatar-btn, ' +
+                    'ytd-topbar-menu-button-renderer #avatar-btn, ' +
+                    'yt-notification-topbar-button-renderer, ' +
+                    'ytd-topbar-menu-button-renderer, ' +
+                    '#notification-button, ' +
                     '[aria-label*="notification" i], [aria-label*="bell" i]'
                 );
-                if (btn) {
-                    const tag  = (btn.tagName  || '').toUpperCase();
-                    const id   = (btn.id       || '').toLowerCase();
-                    const aria = (btn.getAttribute('aria-label') || '').toLowerCase();
+
+                // Also check if the click happened anywhere inside the masthead
+                // avatar area — even if the button id isn't #avatar-btn
+                const mastheadAvatarArea = e.target.closest(
+                    '#masthead ytd-topbar-menu-button-renderer:last-of-type, ' +
+                    '#masthead #buttons > ytd-topbar-menu-button-renderer:last-child'
+                );
+
+                if (btn || mastheadAvatarArea) {
+                    const el = btn || mastheadAvatarArea;
+                    const tag  = (el.tagName  || '').toUpperCase();
+                    const id   = (el.id       || '').toLowerCase();
+                    const aria = (el.getAttribute('aria-label') || '').toLowerCase();
                     const isNotif = tag.includes('NOTIFICATION') ||
                                    id.includes('notification') ||
                                    aria.includes('notification') ||
                                    aria.includes('bell');
                     window.YPP.lastMenuClick = isNotif ? 'NOTIFICATION' :
+                                               (id === 'avatar-btn' || mastheadAvatarArea) ? 'avatar-btn' :
                                                id === 'avatar-btn' ? 'avatar-btn' :
                                                tag;
 
-                    // When clicking the avatar button, check for menu opening even if DOM element was already in document!
                     if (!isNotif && window.YPP.lastMenuClick) {
                         setTimeout(() => this._onMutation(), 50);
                         setTimeout(() => this._onMutation(), 150);
@@ -175,6 +193,8 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
             menu.querySelector('ytd-active-account-header-renderer') ||
             menu.querySelector('ytd-account-item-renderer') ||
             menu.querySelector('ytd-account-item') ||
+            menu.querySelector('ytd-account-section-list-renderer') ||
+            menu.querySelector('ytd-account-item-section-renderer') ||
             menu.querySelector('a[href*="studio.youtube.com"]') ||
             menu.querySelector('a[href*="logout"]') ||
             menu.querySelector('a[href*="myaccount.google.com"]')

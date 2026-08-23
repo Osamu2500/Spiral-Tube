@@ -200,3 +200,151 @@ html[data-ypp-theme] tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-y
     0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
     50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
 }
+
+/* ==========================================================================
+   NATIVE SWITCH-ACCOUNT PAGE STYLING — GUARANTEED FALLBACK
+   
+   These rules style YouTube's native switch-account page elements to match
+   the glassmorphism design even when the JS custom-panel hasn't injected.
+   ========================================================================== */
+
+/* ── The multi-page menu: always glassmorphism ── */
+ytd-multi-page-menu-renderer {
+    background: var(--ypp-menu-bg, linear-gradient(135deg, rgba(22, 22, 26, 0.93), rgba(14, 14, 18, 0.97))) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+/* ── Switch-account page root: transparent, not black ── */
+ytd-account-section-list-renderer,
+ytd-account-item-section-renderer {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* ── "Accounts" section heading ── */
+#header.ytd-account-section-list-renderer,
+#header.ytd-account-item-section-renderer {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+ytd-account-section-list-renderer #header yt-formatted-string,
+ytd-account-section-list-renderer #header span,
+ytd-account-item-section-renderer #header yt-formatted-string {
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+/* ── Contents container ── */
+#contents.ytd-account-section-list-renderer,
+#contents.ytd-account-item-section-renderer {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* ── Individual account row ── */
+ytd-account-item-renderer,
+ytd-account-item {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-radius: 10px !important;
+    margin: 2px 8px !important;
+    transition: background 0.15s ease !important;
+}
+
+ytd-account-item-renderer:hover,
+ytd-account-item:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* ── Paper item row ── */
+tp-yt-paper-item.ytd-account-item-renderer,
+tp-yt-paper-item.ytd-account-item {
+    background: transparent !important;
+    padding: 8px 12px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ── Account name ── */
+ytd-account-item-renderer #channel-title,
+ytd-account-item-renderer #account-name,
+ytd-account-item #channel-title,
+ytd-account-item #account-name {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-weight: 500 !important;
+}
+
+/* ── Account email/handle ── */
+ytd-account-item-renderer #account-byline,
+ytd-account-item-renderer #channel-handle,
+ytd-account-item #account-byline,
+ytd-account-item #channel-handle {
+    color: rgba(255, 255, 255, 0.48) !important;
+    font-size: 12px !important;
+}
+
+/* ── Subscriber count ── */
+ytd-account-item-renderer #subscriber-count,
+ytd-account-item #subscriber-count {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 11px !important;
+}
+
+/* ── Checkmark for active account ── */
+ytd-account-item-renderer #check-icon,
+ytd-account-item #check-icon {
+    color: var(--ypp-accent-primary, #3ea6ff) !important;
+    fill: var(--ypp-accent-primary, #3ea6ff) !important;
+}
+
+/* ── Avatar ── */
+ytd-account-item-renderer yt-img-shadow,
+ytd-account-item yt-img-shadow {
+    background: transparent !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+}
+
+/* ── Separator lines ── */
+ytd-account-section-list-renderer #separator,
+ytd-account-item-section-renderer #separator {
+    background: rgba(255, 255, 255, 0.08) !important;
+    margin: 6px 16px !important;
+}
+
+/* ── "View all channels" link ── */
+ytd-account-section-list-renderer a,
+ytd-account-section-list-renderer tp-yt-paper-button {
+    color: var(--ypp-accent-primary, #3ea6ff) !important;
+    text-decoration: none !important;
+}
+
+ytd-account-section-list-renderer a:hover,
+ytd-account-section-list-renderer tp-yt-paper-button:hover {
+    text-decoration: underline !important;
+}
+
+/* ── Multi-page menu back button / header ── */
+ytd-multi-page-menu-renderer #header-container,
+ytd-multi-page-menu-renderer #back-button {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ── Strip black from all div wrappers inside the menu ── */
+ytd-multi-page-menu-renderer > div:not(.ypp-account-menu),
+ytd-account-section-list-renderer > div,
+ytd-account-item-section-renderer > div {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* ── All text inside native account menu ── */
+ytd-multi-page-menu-renderer yt-formatted-string,
+ytd-account-section-list-renderer yt-formatted-string {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
