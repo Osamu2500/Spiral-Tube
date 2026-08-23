@@ -1,0 +1,83 @@
+/* 
+   ==========================================================================
+   NATIVE ACCOUNT & MULTI-PAGE MENUS
+   Specific styling for YouTube's native ytd-multi-page-menu-renderer,
+   Switch Account panels, and profile popups.
+   ========================================================================== 
+*/
+
+/* 1. Ensure the outer container and all structural layers are perfectly transparent 
+   so the frosted glass from our base ui (`menus.css`) can shine through. */
+ytd-multi-page-menu-renderer > #background,
+ytd-multi-page-menu-renderer > #container,
+ytd-multi-page-menu-renderer #sections,
+ytd-multi-page-menu-renderer ytd-multi-page-menu-section-renderer,
+ytd-active-account-header-renderer,
+ytd-simple-menu-header-renderer {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* 2. Sub-menus (like Switch Account) Header Area */
+ytd-simple-menu-header-renderer {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+ytd-simple-menu-header-renderer h2,
+ytd-simple-menu-header-renderer yt-icon {
+    color: var(--ypp-text-primary, #ffffff) !important;
+}
+
+/* 3. Account Items (Active and Inactive) */
+ytd-account-item-renderer,
+ytd-compact-link-renderer {
+    background: transparent !important;
+    border-radius: var(--ypp-radius-btn, 12px) !important;
+    margin: 4px 8px !important;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: 1px solid transparent !important;
+}
+
+ytd-account-item-renderer:hover,
+ytd-compact-link-renderer:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    transform: scale(1.02) !important;
+}
+
+ytd-account-item-renderer:active,
+ytd-compact-link-renderer:active {
+    transform: scale(0.98) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Ensure text inside the account rows stays crisp */
+ytd-account-item-renderer #account-name,
+ytd-account-item-renderer #email,
+ytd-account-item-renderer #channel-title,
+ytd-compact-link-renderer yt-formatted-string {
+    color: var(--ypp-text-primary, #ffffff) !important;
+}
+
+ytd-account-item-renderer #subscriber-count {
+    color: var(--ypp-text-secondary, rgba(255, 255, 255, 0.7)) !important;
+}
+
+/* Avatar inside account list */
+ytd-account-item-renderer yt-img-shadow {
+    border-radius: var(--ypp-radius-btn, 12px) !important;
+}
+
+/* 4. Separators inside the multi-page menu */
+ytd-multi-page-menu-section-renderer {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+ytd-multi-page-menu-section-renderer:last-child {
+    border-bottom: none !important;
+}
+
+/* 5. Switch Account section header ("Other accounts") */
+ytd-multi-page-menu-section-renderer #title {
+    color: var(--ypp-text-secondary, rgba(255, 255, 255, 0.6)) !important;
+    font-weight: 600 !important;
+}
