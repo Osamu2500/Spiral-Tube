@@ -138,25 +138,29 @@ html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-i
 
 /* Inner Masthead - The Floating Pill */
 .yt-spiral-tube-theme ytd-masthead {
-  position: absolute;
-  top: 4px;
+  position: absolute !important;
+  top: 4px !important;
   left: var(--ypp-header-margin, 16px) !important;
   right: var(--ypp-header-margin, 16px) !important;
   height: var(--ypp-header-height, 56px) !important;
-  width: auto;
-  background: transparent;
-  padding: 0;
-  pointer-events: none;
+  /* width: auto is correct when left+right are both set — browser stretches it. */
+  /* But YouTube's own JS can inject inline width — override it: */
+  width: auto !important;
+  max-width: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  pointer-events: none !important;
 }
 
 /* The Navbar Container — Always-On Structural Layout */
 .yt-spiral-tube-theme ytd-masthead #container {
-  pointer-events: auto;
-  border-radius: var(--ypp-radius-pill);
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  height: 100%;
+  pointer-events: auto !important;
+  border-radius: var(--ypp-radius-pill, 100px) !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important; /* Keep native YouTube layout: logo | search | buttons */
+  height: 100% !important;
   width: 100% !important;
   box-sizing: border-box !important;
   transition:
