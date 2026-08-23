@@ -140,9 +140,9 @@ html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-i
 .yt-spiral-tube-theme ytd-masthead {
   position: absolute;
   top: 4px;
-  left: var(--ypp-header-margin);
-  right: var(--ypp-header-margin);
-  height: var(--ypp-header-height);
+  left: var(--ypp-header-margin, 16px) !important;
+  right: var(--ypp-header-margin, 16px) !important;
+  height: var(--ypp-header-height, 56px) !important;
   width: auto;
   background: transparent;
   padding: 0;
@@ -157,6 +157,7 @@ html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-i
   display: flex;
   align-items: center;
   height: 100%;
+  width: 100% !important;
   box-sizing: border-box !important;
   transition:
     box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -212,6 +213,7 @@ html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) .yt-spiral-tube-the
 .yt-spiral-tube-theme ytd-searchbox #search-form {
   display: flex;
   height: 100%;
+  width: 100% !important;
   max-width: 800px;
   flex: 1 1 auto;
   margin-left: 0;
@@ -554,3 +556,109 @@ body.ypp-dopamine-detox .yt-spec-button-shape-next,
 body.ypp-dopamine-detox ytd-badge-supported-renderer {
     filter: grayscale(100%) !important;
 }
+
+
+
+
+/* Topbar Polish (Dynamic Injection from HeaderNav) */
+
+/* Center Mic Icon */
+
+.yt-spiral-tube-theme #voice-search-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: var(--ypp-shape-md, 12px) !important;
+}
+
+/* Profile Icon Squircle */
+
+.yt-spiral-tube-theme #avatar-btn,
+.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
+.yt-spiral-tube-theme #avatar-btn img {
+  border-radius: var(--ypp-shape-md, 12px) !important;
+}
+
+/* Header Navigation Group (Header Nav Feature) */
+
+.ypp-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+  height: 40px;
+  order: -1;
+}
+
+.ypp-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--yt-spec-text-primary);
+  background: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  position: relative;
+}
+
+.ypp-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: var(--ypp-text-primary, #fff) !important;
+}
+
+.ypp-nav-btn.active {
+  /* Active = accent-coloured icon + underline dot only — no background fill */
+  color: var(--ypp-accent, #fff) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
+.ypp-nav-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.ypp-nav-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Tooltip integration (simple title for now) */
+
+.ypp-nav-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.2,0.8,0.2,1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: var(--ypp-z-popup);
+}
+
+.ypp-nav-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Logo Area */
+
