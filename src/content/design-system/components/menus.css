@@ -143,14 +143,13 @@ a.yt-simple-endpoint.yt-dropdown-menu:hover {
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover)) !important;
 }
 
-.ypp-account-menu,
 #ypp-top-bar {
   background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
   border: var(--ypp-menu-border, var(--ypp-surface-border)) !important;
   box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-base)) !important;
   -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
   backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
-  }
+}
 
 tp-yt-paper-toast {
   background: var(--ypp-dialog-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
