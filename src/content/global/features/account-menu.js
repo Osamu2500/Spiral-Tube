@@ -188,34 +188,51 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
     // ─── Cloaking — done BEFORE inject to prevent flash ───────────────────────
 
     /**
-     * Immediately hides native children with a thin 1px slice (not display:none,
-     * so YouTube's IntersectionObserver still fires and loads lazy images).
+     * Hides ALL native children so their opaque black backgrounds never show.
+     * Uses visibility:hidden + overflow:hidden + clip so nothing bleeds through,
+     * while still allowing IntersectionObserver to fire for lazy image loading.
+     *
+     * Also sets up a MutationObserver on the menu so that when YouTube injects
+     * the Switch-Account sub-page dynamically, those new children are cloaked
+     * immediately before they paint.
      *
      * @param {Element} menu
      */
     _cloakNativeChildren(menu) {
         menu.dataset.yppCloaked = '1';
 
-        Array.from(menu.children).forEach(child => {
-            if (!child.classList.contains('ypp-account-menu')) {
-                child.style.setProperty('position', 'fixed', 'important');
-                child.style.setProperty('top', '0', 'important');
-                child.style.setProperty('left', '0', 'important');
-                child.style.setProperty('width', '10px', 'important');
-                child.style.setProperty('height', '10px', 'important');
-                child.style.setProperty('opacity', '0.001', 'important');
-                child.style.setProperty('pointer-events', 'none', 'important');
-                child.style.setProperty('z-index', '-1', 'important');
-                
-                child.querySelectorAll('ytd-account-item-renderer, ytd-account-item, yt-img-shadow').forEach(item => {
-                    item.style.setProperty('position', 'absolute', 'important');
-                    item.style.setProperty('top', '0', 'important');
-                    item.style.setProperty('left', '0', 'important');
-                    item.style.setProperty('width', '10px', 'important');
-                    item.style.setProperty('height', '10px', 'important');
-                });
-            }
-        });
+        // Clamp the menu itself so nothing can overflow/bleed out
+        menu.style.setProperty('overflow', 'hidden', 'important');
+
+        const cloakEl = (child) => {
+            if (child.classList && child.classList.contains('ypp-account-menu')) return;
+            // Use visibility:hidden + 1x1 pixel clip — stronger than opacity
+            child.style.setProperty('position', 'fixed', 'important');
+            child.style.setProperty('top', '-9999px', 'important');
+            child.style.setProperty('left', '-9999px', 'important');
+            child.style.setProperty('width', '1px', 'important');
+            child.style.setProperty('height', '1px', 'important');
+            child.style.setProperty('opacity', '0', 'important');
+            child.style.setProperty('visibility', 'hidden', 'important');
+            child.style.setProperty('pointer-events', 'none', 'important');
+            child.style.setProperty('z-index', '-9999', 'important');
+            child.style.setProperty('overflow', 'hidden', 'important');
+        };
+
+        Array.from(menu.children).forEach(cloakEl);
+
+        // Watch for dynamically added children (e.g. Switch Account sub-page)
+        if (!menu._yppCloakObserver) {
+            const obs = new MutationObserver(mutations => {
+                for (const m of mutations) {
+                    for (const node of m.addedNodes) {
+                        if (node.nodeType === 1) cloakEl(node);
+                    }
+                }
+            });
+            obs.observe(menu, { childList: true });
+            menu._yppCloakObserver = obs;
+        }
     }
 
     // ─── Polling ──────────────────────────────────────────────────────────────
@@ -656,28 +673,28 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
         this._injected = false;
         this._currentMenu = null;
 
+        const uncloakEl = (el) => {
+            el.style.removeProperty('position');
+            el.style.removeProperty('opacity');
+            el.style.removeProperty('visibility');
+            el.style.removeProperty('pointer-events');
+            el.style.removeProperty('z-index');
+            el.style.removeProperty('top');
+            el.style.removeProperty('left');
+            el.style.removeProperty('width');
+            el.style.removeProperty('height');
+            el.style.removeProperty('overflow');
+        };
+
         document.querySelectorAll('[data-ypp-redesigned]').forEach(el => {
+            // Disconnect the cloak observer
+            if (el._yppCloakObserver) {
+                el._yppCloakObserver.disconnect();
+                delete el._yppCloakObserver;
+            }
+            el.style.removeProperty('overflow');
             Array.from(el.children).forEach(child => {
-                if (!child.classList.contains('ypp-account-menu')) {
-                    child.style.removeProperty('position');
-                    child.style.removeProperty('opacity');
-                    child.style.removeProperty('pointer-events');
-                    child.style.removeProperty('z-index');
-                    child.style.removeProperty('top');
-                    child.style.removeProperty('left');
-                    child.style.removeProperty('width');
-                    child.style.removeProperty('height');
-                }
-            });
-            el.querySelectorAll('ytd-account-item-renderer, ytd-account-item, yt-img-shadow').forEach(item => {
-                item.style.removeProperty('position');
-                item.style.removeProperty('opacity');
-                item.style.removeProperty('pointer-events');
-                item.style.removeProperty('z-index');
-                item.style.removeProperty('top');
-                item.style.removeProperty('left');
-                item.style.removeProperty('width');
-                item.style.removeProperty('height');
+                if (!child.classList.contains('ypp-account-menu')) uncloakEl(child);
             });
             delete el.dataset.yppRedesigned;
             delete el.dataset.yppCloaked;
@@ -685,16 +702,12 @@ export class AccountMenu extends window.YPP.features.BaseFeature {
         });
 
         document.querySelectorAll('[data-ypp-cloaked]').forEach(el => {
-            Array.from(el.children).forEach(child => {
-                child.style.removeProperty('position');
-                child.style.removeProperty('opacity');
-                child.style.removeProperty('pointer-events');
-                child.style.removeProperty('z-index');
-                child.style.removeProperty('top');
-                child.style.removeProperty('left');
-                child.style.removeProperty('width');
-                child.style.removeProperty('height');
-            });
+            if (el._yppCloakObserver) {
+                el._yppCloakObserver.disconnect();
+                delete el._yppCloakObserver;
+            }
+            el.style.removeProperty('overflow');
+            Array.from(el.children).forEach(child => uncloakEl(child));
             delete el.dataset.yppCloaked;
         });
     }

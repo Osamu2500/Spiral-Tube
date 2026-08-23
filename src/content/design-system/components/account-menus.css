@@ -1,87 +1,202 @@
 /* 
    ==========================================================================
-   NUCLEAR ACCOUNT MENU OVERRIDES
-   Complete redesign of the default Switch Account menu.
-   This strips ALL default YouTube backgrounds from every single structural 
-   element inside the menu and re-applies our custom glassmorphism.
+   ACCOUNT MENU — NATIVE ELEMENT SUPPRESSION
+   
+   The AccountMenu JS feature (account-menu.js) completely replaces YouTube's
+   native account popup with our custom .ypp-account-menu panel.
+   
+   The native children are cloaked via inline styles (position:fixed, top:-9999px,
+   visibility:hidden) but this CSS acts as a hard safety net — ensuring that even
+   if any native child somehow escapes the JS cloaking, it is invisible and clipped.
+   
+   We also handle the case where the "Switch Account" sub-page is rendered inside
+   the same ytd-multi-page-menu-renderer. The MutationObserver in account-menu.js
+   cloak new children, but this CSS provides the backup.
    ========================================================================== */
 
-/* 1. STRIP EVERYTHING: Nuke all backgrounds, borders, and shadows from every 
-   descendant of the multi-page menu to guarantee a clean slate. */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer *,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer * {
+/* 
+   HARD CONTAINMENT: When our menu is active (cloaked or redesigned), the root
+   renderer MUST clip all overflowing content so native backgrounds can't bleed.
+*/
+ytd-multi-page-menu-renderer[data-ypp-cloaked],
+ytd-multi-page-menu-renderer[data-ypp-redesigned] {
+    overflow: hidden !important;
+    /* Ensure the renderer itself is transparent — our custom panel provides the background */
     background: transparent !important;
     background-color: transparent !important;
-    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/*
+   NUCLEAR CHILD SUPPRESSION: Every direct child of the renderer that is NOT
+   our custom panel gets nuked to invisible. This is the CSS backup for the JS
+   cloaking in _cloakNativeChildren().
+*/
+ytd-multi-page-menu-renderer[data-ypp-cloaked] > :not(.ypp-account-menu),
+ytd-multi-page-menu-renderer[data-ypp-redesigned] > :not(.ypp-account-menu) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: fixed !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    z-index: -9999 !important;
+}
+
+/*
+   ALLOW OUR PANEL: The .ypp-account-menu div that we inject must be fully
+   visible and interactive. The rules above use :not(.ypp-account-menu) so
+   this rule just ensures nothing accidentally hides it.
+*/
+ytd-multi-page-menu-renderer .ypp-account-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    z-index: auto !important;
+}
+
+/*
+   DROPDOWN HOST TRANSPARENCY: Make the iron-dropdown wrapper and popup
+   container fully transparent so only our panel's background shows.
+*/
+html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html.yt-spiral-tube-theme tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
+html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html.yt-spiral-tube-theme ytd-popup-container:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]),
+html[data-ypp-theme] tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-cloaked]),
+html[data-ypp-theme] tp-yt-iron-dropdown:has(ytd-multi-page-menu-renderer[data-ypp-redesigned]) {
+    overflow: visible !important;
+    background: transparent !important;
+    background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
 
-/* 2. REBUILD BASE: Apply the frosted glass to the main containers */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer > #container,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer > #container,
-html[data-ypp-theme] body tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer,
-html.yt-spiral-tube-theme body tp-yt-iron-dropdown > #contentWrapper > ytd-multi-page-menu-renderer {
-    background: var(--ypp-menu-bg, var(--ypp-bg-surface, linear-gradient(135deg, rgba(22, 22, 26, 0.85), rgba(14, 14, 18, 0.95)))) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-    backdrop-filter: blur(16px) saturate(180%) !important;
+/*
+   .ypp-account-menu GLASSMORPHISM BASE STYLES
+   (These are the foundational cosmetics for our custom panel)
+*/
+.ypp-account-menu {
+    width: 320px;
+    background: var(--ypp-menu-bg, linear-gradient(135deg, rgba(22, 22, 26, 0.88), rgba(14, 14, 18, 0.96))) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
     border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 18px)) !important;
-    box-shadow: var(--ypp-shadow-elevation-3, 0 12px 32px rgba(0, 0, 0, 0.4)) !important;
-    border: 1px solid var(--ypp-border-color, rgba(255, 255, 255, 0.08)) !important;
-    padding: 8px 0 !important;
+    border: 1px solid var(--ypp-border-color, rgba(255, 255, 255, 0.1)) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
     overflow: hidden !important;
+    font-family: 'Roboto', Arial, sans-serif !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    position: relative !important;
 }
 
-/* 3. REBUILD ITEMS: Style the actual clickable account items with premium padding, radius, and hover */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-account-item-renderer,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-compact-link-renderer,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-navigation-item-renderer,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-service-item-renderer,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer tp-yt-paper-item,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-account-item-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-compact-link-renderer,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-item {
-    margin: 4px 12px !important;
-    width: calc(100% - 24px) !important;
+/*
+   MENU ITEM STYLES — premium look for all interactive rows
+*/
+.ypp-menu-item {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 10px 14px !important;
     border-radius: 10px !important;
-    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s ease !important;
-    box-sizing: border-box !important;
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    font-size: 13.5px !important;
+    font-family: 'Roboto', Arial, sans-serif !important;
     cursor: pointer !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    transition: background 0.18s ease, transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    gap: 8px !important;
 }
 
-/* Active Account Header padding */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-active-account-header-renderer {
-    padding: 8px 16px !important;
-    margin-bottom: 8px !important;
+.ypp-menu-item:hover {
+    background: rgba(255, 255, 255, 0.09) !important;
+    transform: translateX(3px) !important;
 }
 
-/* 4. HOVER STATES: Re-apply the glassy hover effect */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-account-item-renderer:hover,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-compact-link-renderer:hover,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-navigation-item-renderer:hover,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer ytd-menu-service-item-renderer:hover,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer tp-yt-paper-item:hover,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-account-item-renderer:hover,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-compact-link-renderer:hover,
-html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-item:hover {
-    background: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
-    background-color: var(--ypp-surface-bg-hover, rgba(255, 255, 255, 0.1)) !important;
-    transform: translateX(4px) !important;
+.ypp-menu-item:active {
+    transform: translateX(1px) !important;
+    background: rgba(255, 255, 255, 0.13) !important;
 }
 
-/* 5. DIVIDERS: Premium subtle borders instead of solid black blocks */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer yt-multi-page-menu-section-renderer {
-    border-bottom: 1px solid var(--ypp-border-color, rgba(255, 255, 255, 0.05)) !important;
-}
-html[data-ypp-theme] body ytd-multi-page-menu-renderer yt-multi-page-menu-section-renderer:last-child {
-    border-bottom: none !important;
+/*
+   SIGNOUT CONFIRM DIALOG
+*/
+.ypp-signout-confirm {
+    display: none;
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(4px) !important;
+    z-index: 100 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: inherit !important;
 }
 
-/* Exceptions: Make sure SVGs and Avatars are visible */
-html[data-ypp-theme] body ytd-multi-page-menu-renderer svg,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer img,
-html[data-ypp-theme] body ytd-multi-page-menu-renderer yt-img-shadow {
-    background-color: transparent !important;
+.ypp-confirm-box {
+    background: rgba(28, 28, 32, 0.98) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 14px !important;
+    padding: 24px 20px !important;
+    text-align: center !important;
+    width: 220px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+.ypp-confirm-box p {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin: 0 0 16px !important;
+}
+
+.ypp-confirm-actions {
+    display: flex !important;
+    gap: 10px !important;
+    justify-content: center !important;
+}
+
+.ypp-confirm-actions button {
+    padding: 8px 18px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+    transition: background 0.15s !important;
+}
+
+.ypp-confirm-actions button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.ypp-confirm-actions button.danger {
+    background: rgba(255, 78, 69, 0.2) !important;
+    border-color: rgba(255, 78, 69, 0.5) !important;
+    color: #ff4e45 !important;
+}
+
+.ypp-confirm-actions button.danger:hover {
+    background: rgba(255, 78, 69, 0.35) !important;
+}
+
+/* Blacklight animation */
+@keyframes ypp-blacklight-pulse {
+    0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+    50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
 }
