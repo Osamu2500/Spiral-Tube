@@ -68,12 +68,12 @@ ytd-menu-popup-renderer,
 ytd-video-preview,
 #contentWrapper.tp-yt-iron-dropdown > *,
 ytd-multi-page-menu-renderer {
-  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
-  border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, linear-gradient(135deg, rgba(22, 22, 26, 0.85), rgba(14, 14, 18, 0.95)))) !important;
+  border-radius: var(--ypp-menu-radius, var(--ypp-radius-xl, 18px)) !important;
   border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
-  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover, 0 8px 24px rgba(0, 0, 0, 0.3)))) !important;
-  -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-hover, 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12))) !important;
+  -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, blur(16px)) !important;
+  backdrop-filter: var(--ypp-menu-backdrop-filter, blur(16px)) !important;
   transform: scale(1) translate(var(--ytd-video-preview-translate-left), var(--ytd-video-preview-translate-top));
   transition: opacity 0.2s ease-in, transform 0.16s ease-out 0.2s;
   max-height: 80vh !important;
@@ -83,10 +83,10 @@ ytd-multi-page-menu-renderer {
 
 .tp-yt-paper-tooltip[style-target=tooltip] {
   border: var(--ypp-menu-border, var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.1))) !important;
-  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active, 0 4px 12px rgba(0, 0, 0, 0.3)))) !important;
-  background: var(--ypp-menu-bg, var(--ypp-bg-surface, var(--yt-spec-menu-background))) !important;
-  -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
-  backdrop-filter: var(--ypp-menu-backdrop-filter, none) !important;
+  box-shadow: var(--ypp-menu-shadow, var(--ypp-shadow-active, 0 4px 12px rgba(0, 0, 0, 0.3))) !important;
+  background: var(--ypp-menu-bg, var(--ypp-bg-surface, rgba(15, 15, 15, 0.92))) !important;
+  -webkit-backdrop-filter: var(--ypp-menu-backdrop-filter, blur(8px)) !important;
+  backdrop-filter: var(--ypp-menu-backdrop-filter, blur(8px)) !important;
   border-radius: var(--ypp-menu-radius, var(--ypp-border-radius-base, 12px)) !important;
   color: var(--ypp-text-primary, var(--yt-spec-text-primary)) !important;
 }
