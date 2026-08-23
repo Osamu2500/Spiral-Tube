@@ -15,11 +15,26 @@ html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer > #background,
 html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer > #container,
 html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer #sections,
 html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-multi-page-menu-section-renderer,
+html.yt-spiral-tube-theme body ytd-account-section-list-renderer,
+html.yt-spiral-tube-theme body ytd-account-section-list-renderer > #contents,
 html.yt-spiral-tube-theme body ytd-active-account-header-renderer,
-html.yt-spiral-tube-theme body ytd-simple-menu-header-renderer {
+html.yt-spiral-tube-theme body ytd-simple-menu-header-renderer,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-listbox,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-paper-item,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer tp-yt-iron-dropdown,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-account-item-section-renderer,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-compact-link-renderer,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-menu-service-item-renderer {
     background: transparent !important;
     background-color: transparent !important;
+    background-image: none !important;
     border: none !important;
+}
+
+/* Force specific wrappers that YouTube sometimes uses to be transparent */
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer div,
+html.yt-spiral-tube-theme body ytd-multi-page-menu-renderer ytd-multi-page-menu-section-renderer > div {
+    background-color: transparent !important;
 }
 
 /* 2. Sub-menus (like Switch Account) Header Area */
