@@ -152,14 +152,14 @@ html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-i
   pointer-events: none !important;
 }
 
-/* The Navbar Container — Always-On Structural Layout */
+/* The Navbar Container — Squircle Layout (not pill) */
 .yt-spiral-tube-theme ytd-masthead #container {
   pointer-events: auto !important;
-  border-radius: var(--ypp-radius-pill, 100px) !important;
+  border-radius: var(--ypp-radius-xl, 20px) !important; /* Squircle — not pill */
   padding: 0 16px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important; /* Keep native YouTube layout: logo | search | buttons */
+  justify-content: space-between !important;
   height: 100% !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -167,8 +167,7 @@ html:not([data-ypp-ui-design]) body ytd-notification-topbar-button-renderer yt-i
     box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
     border-color 0.4s ease,
     background 0.4s ease;
-  transform: translateZ(0); /* Hardware Acceleration */
-  /* Default: transparent — matches native YouTube look */
+  transform: translateZ(0);
   background: transparent;
   border: 1px solid transparent;
   box-shadow: none;
@@ -181,6 +180,7 @@ html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) .yt-spiral-tube-the
   background: var(--ypp-surface-bg, rgba(255, 255, 255, 0.06)) !important;
   border: var(--ypp-surface-border, 1px solid rgba(255, 255, 255, 0.08)) !important;
   box-shadow: var(--ypp-shadow-float, 0 8px 32px rgba(0, 0, 0, 0.3)) !important;
+  border-radius: var(--ypp-radius-xl, 20px) !important; /* Squircle — matches container */
 }
 
 html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) .yt-spiral-tube-theme ytd-masthead #container:hover {
@@ -269,15 +269,15 @@ html[data-ypp-ui-design]:not([data-ypp-ui-design="default"]) .yt-spiral-tube-the
   color: var(--ypp-text-primary, #fff) !important;
 }
 
-/* Voice Search Button */
+/* Voice Search Button — this is the gold-standard design all other buttons match */
 body #voice-search-button {
   background: rgba(255, 255, 255, 0.18) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
-  margin-left: 12px;
-  width: 40px;
-  height: 40px;
+  border-radius: var(--ypp-radius-btn, 12px) !important;
+  margin-left: 12px !important;
+  width: 40px !important;
+  height: 40px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -296,6 +296,9 @@ body #voice-search-button:hover {
   box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
 }
+body #voice-search-button:active {
+  transform: scale(0.96) !important;
+}
 
 /* Center Section Alignment */
 .yt-spiral-tube-theme #center.ytd-masthead {
@@ -307,11 +310,18 @@ body #voice-search-button:hover {
   display: flex;
 }
 
-/* TopBar Buttons (Notifications, Create, etc) */
+/* =============================================================================
+   UNIFIED TOPBAR BUTTON SYSTEM
+   All 40x40 icon buttons (notification bell, menu buttons, nav buttons, voice mic)
+   share the EXACT same visual language: frosted glass, 12px squircle, white rim.
+   The voice mic button is the gold standard.
+   ============================================================================= */
+
+/* --- Shared base: notification, topbar menu buttons --- */
 body ytd-notification-topbar-button-renderer,
 body ytd-masthead #buttons yt-button-shape > button,
 body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) {
-  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
+  border-radius: var(--ypp-radius-btn, 12px) !important;
   background: rgba(255, 255, 255, 0.18) !important;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
@@ -321,7 +331,8 @@ body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn,
   transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
   color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
 }
-/* Ensure the Create button keeps its auto width for text */
+
+/* Notification bell sizing */
 body ytd-notification-topbar-button-renderer {
   width: 40px !important;
   height: 40px !important;
@@ -329,6 +340,7 @@ body ytd-notification-topbar-button-renderer {
   overflow: hidden !important;
 }
 
+/* Icon colors inside notification / menu buttons */
 body ytd-notification-topbar-button-renderer yt-icon,
 body ytd-notification-topbar-button-renderer svg,
 body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) yt-icon,
@@ -339,6 +351,7 @@ body ytd-masthead #buttons yt-button-shape * {
   color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
 }
 
+/* Hover — identical across all topbar buttons */
 body ytd-notification-topbar-button-renderer:hover,
 body ytd-masthead #buttons yt-button-shape > button:hover,
 body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)):hover {
@@ -348,7 +361,14 @@ body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn,
   border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Fix inner button of notification to be transparent/full size */
+/* Active */
+body ytd-notification-topbar-button-renderer:active,
+body ytd-masthead #buttons yt-button-shape > button:active,
+body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)):active {
+  transform: scale(0.96) !important;
+}
+
+/* Inner button passthrough — let the outer container handle all visual styling */
 body ytd-notification-topbar-button-renderer #button,
 body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn, yt-img-shadow, yt-image, img)) #button {
   width: 100% !important;
@@ -359,13 +379,13 @@ body ytd-masthead #buttons ytd-topbar-menu-button-renderer:not(:has(#avatar-btn,
   margin: 0 !important;
   border-radius: 0 !important;
   display: flex !important;
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* Profile Avatar Outer Container */
+/* --- Profile Avatar — same shape/border, but overflows image instead of icon --- */
 body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img) {
-  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
+  border-radius: var(--ypp-radius-btn, 12px) !important;
   width: 40px !important;
   height: 40px !important;
   background: rgba(255, 255, 255, 0.18) !important;
@@ -381,11 +401,14 @@ body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, i
 }
 body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):hover {
   transform: translateY(-1px) scale(1.05) !important;
-  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.25) !important;
-  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.35) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+body ytd-topbar-menu-button-renderer:has(#avatar-btn, yt-img-shadow, yt-image, img):active {
+  transform: scale(0.96) !important;
 }
 
-/* Make inner profile button transparent and full size */
+/* Avatar inner button — passthrough */
 body #avatar-btn {
   width: 100% !important;
   height: 100% !important;
@@ -393,101 +416,126 @@ body #avatar-btn {
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  border-radius: 0 !important; /* Let container handle shape */
+  border-radius: 0 !important;
 }
 
-/* Ensure Image Fills */
+/* Avatar image fills container */
 body #avatar-btn yt-img-shadow,
 body #avatar-btn img {
   width: 100% !important;
   height: 100% !important;
-  border-radius: 0 !important; /* Let container handle shape */
+  border-radius: 0 !important;
   object-fit: cover !important;
   margin: 0 !important;
 }
 
-/* Header Navigation Buttons */
+/* --- Custom Nav Buttons — matches the unified button system exactly --- */
 .ypp-nav-group {
   display: flex !important;
-  align-items: center;
-  gap: 8px;
-  margin-left: 16px;
-  pointer-events: auto !important; /* Ensure clickability - override masthead */
-  z-index: var(--ypp-z-popup) !important; /* Above all header elements and zen mode */
-  position: relative;
-  visibility: visible !important; /* Force visibility */
-  opacity: 1 !important; /* Force opacity */
-  order: -1; /* Visually prepend without DOM shifting */
+  align-items: center !important;
+  gap: 8px !important;
+  margin-left: 16px !important;
+  pointer-events: auto !important;
+  z-index: var(--ypp-z-popup, 100) !important;
+  position: relative !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  order: -1; /* Visually prepend in the #end flex row */
 }
 
-/* Extra specificity for individual buttons */
 .ypp-nav-group .ypp-nav-btn {
   pointer-events: auto !important;
   visibility: visible !important;
   display: flex !important;
 }
 
+/* Canonical .ypp-nav-btn — identical visual treatment to notification bell & mic */
 .ypp-nav-btn {
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  transition: border-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  cursor: pointer;
-  text-decoration: none;
-  position: relative;
-  overflow: visible;
-  z-index: var(--ypp-z-popup); /* Ensure above other elements */
-  transform: translateZ(0); /* Hardware Acceleration */
-  will-change: transform, box-shadow, background-color, border-color, color;
-}
-
-.ypp-nav-btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--ypp-accent), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-  border-color: var(--ypp-accent);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: var(--ypp-radius-btn, 12px) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  color: var(--ypp-text-primary, var(--yt-spec-text-primary, #fff)) !important;
+  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
+  position: relative !important;
+  z-index: var(--ypp-z-popup, 100) !important;
+  transform: translateZ(0);
+  will-change: transform, box-shadow, background-color, border-color;
 }
 
 .ypp-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: var(--ypp-text-primary, #fff);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: var(--ypp-text-primary, #fff) !important;
 }
 
 .ypp-nav-btn:active {
-  transform: translateY(0) scale(0.95);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: scale(0.96) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+
+.ypp-nav-btn:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--ypp-accent, #3ea6ff), 0 4px 12px rgba(0,0,0,0.3) !important;
+  border-color: var(--ypp-accent, #3ea6ff) !important;
 }
 
 .ypp-nav-btn.active {
-  color: var(--yt-spec-text-primary, #fff) !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 0 0 1.5px var(--ypp-accent, #3ea6ff) !important;
+  color: var(--ypp-accent, #fff) !important;
 }
 
-.ypp-nav-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-  opacity: 0.9;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease;
-}
-
-.ypp-nav-btn:hover svg {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
-}
-
-/* Nav Icon Styling */
+/* SVG icons inside nav buttons */
+.ypp-nav-btn svg,
 .ypp-nav-icon {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
+  width: 22px !important;
+  height: 22px !important;
+  fill: currentColor !important;
+  pointer-events: none !important;
+  display: block !important;
+  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.ypp-nav-btn:hover svg,
+.ypp-nav-btn:hover .ypp-nav-icon {
+  transform: scale(1.12);
+}
+
+/* Tooltip */
+.ypp-nav-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -38px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(15, 15, 15, 0.92);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
   pointer-events: none;
-  display: block;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: var(--ypp-z-popup, 100);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.ypp-nav-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 
@@ -564,105 +612,16 @@ body.ypp-dopamine-detox ytd-badge-supported-renderer {
 
 
 
-/* Topbar Polish (Dynamic Injection from HeaderNav) */
+/* =============================================================================
+   TOPBAR POLISH — Supplemental overrides using the .yt-spiral-tube-theme scope
+   These fire only after ThemeManager has applied the theme class.
+   The core unified button styles above are class-agnostic (always active).
+   ============================================================================= */
 
-/* Center Mic Icon */
-
+/* Ensure voice search button stays flexbox-centred */
 .yt-spiral-tube-theme #voice-search-button {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  border-radius: var(--ypp-shape-md, 12px) !important;
 }
-
-/* Profile Icon Squircle */
-
-.yt-spiral-tube-theme #avatar-btn,
-.yt-spiral-tube-theme #avatar-btn yt-img-shadow,
-.yt-spiral-tube-theme #avatar-btn img {
-  border-radius: var(--ypp-shape-md, 12px) !important;
-}
-
-/* Header Navigation Group (Header Nav Feature) */
-
-.ypp-nav-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 16px;
-  margin-right: 16px;
-  height: 40px;
-  order: -1;
-}
-
-.ypp-nav-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--ypp-shape-md, 12px) !important; /* Premium Squircle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--yt-spec-text-primary);
-  background: rgba(0, 0, 0, 0.2) !important;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1) !important;
-  position: relative;
-}
-
-.ypp-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  transform: translateY(-1px) scale(1.05) !important;
-  box-shadow: inset 0 0 0 rgba(0,0,0,0), 0 4px 12px rgba(0,0,0,0.3) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: var(--ypp-text-primary, #fff) !important;
-}
-
-.ypp-nav-btn.active {
-  /* Active = accent-coloured icon + underline dot only — no background fill */
-  color: var(--ypp-accent, #fff) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  box-shadow: none !important;
-}
-
-.ypp-nav-btn svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-  transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
-}
-
-.ypp-nav-btn:hover svg {
-  transform: scale(1.1);
-}
-
-/* Tooltip integration (simple title for now) */
-
-.ypp-nav-btn::after {
-  content: attr(title);
-  position: absolute;
-  bottom: -36px;
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.2s cubic-bezier(0.2,0.8,0.2,1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: var(--ypp-z-popup);
-}
-
-.ypp-nav-btn:hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Logo Area */
 

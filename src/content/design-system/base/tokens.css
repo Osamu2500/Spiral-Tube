@@ -60,6 +60,11 @@
   --ypp-border-radius-pill: 16px; /* Force pills to be squircles */
   --ypp-border-radius-sharp: 4px;
 
+  /* Topbar-specific radius tokens */
+  --ypp-radius-btn: 12px;       /* All 40x40 icon buttons in the topbar (mic, nav, bell, etc.) */
+  --ypp-radius-xl: 20px;        /* Masthead container — squircle, not a full pill */
+
+
   /* --- Override YouTube's native button border-radius variables GLOBALLY ---
      These are read by Polymer at render time. Putting them on :root means
      squircle shapes apply immediately, before ThemeManager adds any class. */
