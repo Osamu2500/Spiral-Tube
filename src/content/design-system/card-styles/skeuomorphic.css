@@ -16,7 +16,7 @@ html[data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][dat
 }
 
 /* Inset Sunken Thumbnails */
-html[data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) :is(ytd-thumbnail, .yt-lockup-view-model:not(:is(ytd-rich-item-renderer, *) .yt-core-image, yt-image) {
+html[data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'][data-ypp-card-style='skeuomorphic'] :is(ytd-rich-item-renderer, ytd-video-renderer, ytd-playlist-renderer, ytd-radio-renderer, ytd-channel-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, .ypp-grid-item, yt-lockup-view-model:not(:is(ytd-rich-item-renderer, .ypp-grid-item) *)) :is(ytd-thumbnail, .yt-lockup-view-model:not(.ypp-grid-item *) .yt-core-image, yt-image) {
   border: 2px solid #000 !important;
   border-bottom: 2px solid #333 !important;
   border-radius: 12px !important;

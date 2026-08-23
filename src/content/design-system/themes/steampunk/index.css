@@ -9,7 +9,7 @@
     --ypp-text-secondary: #c8a882;
 
   /* Critical YouTube Overrides for Light Themes */
-}
+
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
@@ -59,4 +59,6 @@ html[data-ypp-theme="steampunk"] yt-button-shape *,
 html[data-ypp-theme="steampunk"] ytd-subscribe-button-renderer *,
 html[data-ypp-theme="steampunk"] ytd-badge-supported-renderer * {
   color: inherit !important;
+}
+
 }

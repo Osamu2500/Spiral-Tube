@@ -1,5 +1,6 @@
-@import "../../ui-styles/shared/timeline-visibility.css";--ypp-bg-base: #008080;
+@import "../../ui-styles/shared/timeline-visibility.css";
 [data-ypp-theme="retro"] {
+    --ypp-bg-base: #008080;
     --ypp-bg-surface: #c0c0c0;
     --ypp-bg-glass: rgba(192, 192, 192, 0.97);
     --ypp-glass-border: rgba(0, 0, 0, 0.6);
@@ -21,7 +22,7 @@
     --ypp-shadow-accent-glow: none;
 
     /* COMPONENT OVERRIDES */
-}
+
     --ytd-searchbox-background: #ffffff;
     --ytd-searchbox-text-color: #000000;
     --ytd-searchbox-legacy-button-color: #c0c0c0;
@@ -117,3 +118,5 @@ html[data-ypp-theme="retro"] {
 }
 
 
+
+}

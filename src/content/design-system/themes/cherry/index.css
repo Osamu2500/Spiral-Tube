@@ -1,11 +1,13 @@
-/* Theme: cherry */--ypp-bg-base: #ffb6c1 !important;
+html.yt-spiral-tube-theme[data-ypp-theme="cherry"] {
+/* Theme: cherry */
+--ypp-bg-base: #ffb6c1 !important;
 [data-ypp-theme="cherry"] {
     --ypp-bg-surface: #e5a3ad !important;
     --ypp-text-primary: #0f0f0f !important;
     --ypp-text-secondary: rgba(0,0,0,0.7) !important;
 
   /* Critical YouTube Overrides for Light Themes */
-}
+
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
@@ -55,4 +57,7 @@ html[data-ypp-theme="cherry"] yt-button-shape *,
 html[data-ypp-theme="cherry"] ytd-subscribe-button-renderer *,
 html[data-ypp-theme="cherry"] ytd-badge-supported-renderer * {
   color: inherit !important;
+}
+
+}
 }

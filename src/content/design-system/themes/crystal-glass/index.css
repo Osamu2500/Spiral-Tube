@@ -1,11 +1,13 @@
-/* Theme: crystal-glass */--ypp-bg-base: #f0f0f0 !important;
+html.yt-spiral-tube-theme[data-ypp-theme="crystal-glass"] {
+/* Theme: crystal-glass */
+--ypp-bg-base: #f0f0f0 !important;
 [data-ypp-theme="crystal-glass"] {
     --ypp-bg-surface: #d8d8d8 !important;
     --ypp-text-primary: #0f0f0f !important;
     --ypp-text-secondary: rgba(0,0,0,0.7) !important;
 
   /* Critical YouTube Overrides for Light Themes */
-}
+
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
@@ -55,4 +57,7 @@ html[data-ypp-theme="crystal-glass"] yt-button-shape *,
 html[data-ypp-theme="crystal-glass"] ytd-subscribe-button-renderer *,
 html[data-ypp-theme="crystal-glass"] ytd-badge-supported-renderer * {
   color: inherit !important;
+}
+
+}
 }

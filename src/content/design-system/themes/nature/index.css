@@ -1,8 +1,11 @@
-/* Theme: nature */--ypp-bg-base: #2e8b57 !important;
+html.yt-spiral-tube-theme[data-ypp-theme="nature"] {
+/* Theme: nature */
+--ypp-bg-base: #2e8b57 !important;
 [data-ypp-theme="nature"] {
     --ypp-bg-surface: #349f64 !important;
     --ypp-text-primary: #ffffff !important;
     --ypp-text-secondary: rgba(255,255,255,0.7) !important;
 
 
+}
 }

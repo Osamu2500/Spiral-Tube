@@ -1,8 +1,11 @@
-/* Theme: cairo-red */--ypp-bg-base: #ff0000 !important;
+html.yt-spiral-tube-theme[data-ypp-theme="cairo-red"] {
+/* Theme: cairo-red */
+--ypp-bg-base: #ff0000 !important;
 [data-ypp-theme="cairo-red"] {
     --ypp-bg-surface: #ff0000 !important;
     --ypp-text-primary: #ffffff !important;
     --ypp-text-secondary: rgba(255,255,255,0.7) !important;
 
 
+}
 }

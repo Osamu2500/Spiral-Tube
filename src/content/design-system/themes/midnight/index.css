@@ -20,13 +20,14 @@
     --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
 
     /* COMPONENT OVERRIDES */
-}
+
     --ytd-searchbox-background: #111;
     --ytd-searchbox-text-color: var(--ypp-text-primary, #fff);
     --ytd-searchbox-legacy-button-color: #222;
 
 
 
+}
 /* Animated Midnight Glow Effect */
 @keyframes midnightGlowBg {
     0% { opacity: 0.4; transform: scale(1) translateY(0); }

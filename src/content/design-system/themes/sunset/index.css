@@ -20,12 +20,13 @@
     --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
 
     /* COMPONENT OVERRIDES */
-}
+
     --ytd-searchbox-background: transparent;
     --ytd-searchbox-text-color: #fff0f5;
     --ytd-searchbox-legacy-button-color: rgba(255, 240, 245, 0.05);
 
 
+}
 /* Animated Sunset Layered Gradient Effect */
 @keyframes ypp-sunset-glow-bg {
     0% { transform: translateY(-50vh); opacity: 0.5; }

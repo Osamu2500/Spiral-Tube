@@ -23,12 +23,13 @@
     --ypp-shadow-glow: 0 0 24px rgba(212, 175, 55, 0.35);
     --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
 
-}
+
   --ytd-searchbox-background: rgba(20, 21, 31, 0.85);
   --ytd-searchbox-text-color: #f5e6cc;
   --ytd-searchbox-legacy-button-color: rgba(211, 166, 37, 0.15);
 
 
+}
 @keyframes ypp-hogwarts-lumos-bg {
   0% { transform: translate(-50%, 0) scale(1); opacity: 0.12; }
   50% { transform: translate(-50%, -10px) scale(1.25); opacity: 0.28; }

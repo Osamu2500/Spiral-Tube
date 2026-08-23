@@ -27,7 +27,7 @@
     --ypp-shadow-accent-glow: 0 0 24px var(--ypp-accent-glow);
 
     /* COMPONENT OVERRIDES */
-}
+
     --ytd-searchbox-background: #121212;
     --ytd-searchbox-text-color: #f1f1f1;
     --ytd-searchbox-legacy-button-color: rgba(255, 255, 255, 0.08);
@@ -104,6 +104,7 @@ html[data-ypp-theme="default"] #ytd-player {
     overflow: hidden;
 }
 
+}
 /* Animated Default Pulse Effect - Kept clean for native feel */
 html[data-ypp-theme="default"].ypp-theme-effects::before,
 html[data-ypp-theme="default"].ypp-theme-effects::after {

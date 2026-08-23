@@ -1,11 +1,13 @@
-/* Theme: frutiger-aero */--ypp-bg-base: #bfe6ff !important;
+html.yt-spiral-tube-theme[data-ypp-theme="frutiger-aero"] {
+/* Theme: frutiger-aero */
+--ypp-bg-base: #bfe6ff !important;
 [data-ypp-theme="frutiger-aero"] {
     --ypp-bg-surface: #abcfe5 !important;
     --ypp-text-primary: #0f0f0f !important;
     --ypp-text-secondary: rgba(0,0,0,0.7) !important;
 
   /* Critical YouTube Overrides for Light Themes */
-}
+
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
@@ -55,4 +57,7 @@ html[data-ypp-theme="frutiger-aero"] yt-button-shape *,
 html[data-ypp-theme="frutiger-aero"] ytd-subscribe-button-renderer *,
 html[data-ypp-theme="frutiger-aero"] ytd-badge-supported-renderer * {
   color: inherit !important;
+}
+
+}
 }

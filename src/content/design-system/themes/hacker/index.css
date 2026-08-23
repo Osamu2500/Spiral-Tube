@@ -21,12 +21,13 @@
     --ypp-shadow-accent-glow: 0 0 32px var(--ypp-accent-glow);
 
     /* COMPONENT OVERRIDES */
-}
+
     --ytd-searchbox-background: #001100;
     --ytd-searchbox-text-color: #00ff00;
     --ytd-searchbox-legacy-button-color: #002200;
 
 
+}
 /* Animated Hacker Vector Matrix Effect */
 @keyframes ypp-matrix-rain {
     0% { transform: translateY(0); }

@@ -1,11 +1,13 @@
-/* Theme: claymorphism */--ypp-bg-base: #e0e5ec !important;
+html.yt-spiral-tube-theme[data-ypp-theme="claymorphism"] {
+/* Theme: claymorphism */
+--ypp-bg-base: #e0e5ec !important;
 [data-ypp-theme="claymorphism"] {
     --ypp-bg-surface: #c9ced4 !important;
     --ypp-text-primary: #0f0f0f !important;
     --ypp-text-secondary: rgba(0,0,0,0.7) !important;
 
   /* Critical YouTube Overrides for Light Themes */
-}
+
   --yt-spec-text-primary: var(--ypp-text-primary, #0f0f0f) !important;
   --yt-spec-text-secondary: var(--ypp-text-secondary, rgba(0,0,0,0.7)) !important;
   --yt-spec-icon-inactive: var(--ypp-text-primary, #0f0f0f) !important;
@@ -55,4 +57,7 @@ html[data-ypp-theme="claymorphism"] yt-button-shape *,
 html[data-ypp-theme="claymorphism"] ytd-subscribe-button-renderer *,
 html[data-ypp-theme="claymorphism"] ytd-badge-supported-renderer * {
   color: inherit !important;
+}
+
+}
 }
